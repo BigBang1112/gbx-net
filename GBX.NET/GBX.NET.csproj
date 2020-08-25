@@ -1,0 +1,115 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Description>A completely open source GBX file interaction library for .NET.</Description>
+    <Authors>BigBang1112</Authors>
+    <Company>BigBang1112</Company>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <Version>0.0.1</Version>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright />
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk, x86</PackageTags>
+    <RepositoryUrl>https://github.com/BigBang1112/GBX.NET</RepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+    <DocumentationFile></DocumentationFile>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>false</Optimize>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Engines\GameData\CGameItemModel.cs" />
+    <Compile Remove="Engines\GameData\CGameObjectPhyModel.cs" />
+    <Compile Remove="Engines\GameData\CGameObjectVisModel.cs" />
+    <Compile Remove="Engines\Plug\CPlugDataTape.cs" />
+    <Compile Remove="Engines\Plug\CPlugEntRecordData.cs" />
+    <Compile Remove="Engines\Plug\CPlugSurface.cs" />
+    <Compile Remove="Engines\Plug\CPlugVehicleCarPhyShape.cs" />
+    <Compile Remove="Engines\Plug\CPlugVehiclePhyModel.cs" />
+    <Compile Remove="Engines\Plug\CPlugVehicleVisModel.cs" />
+    <Compile Remove="NadeoPak.cs" />
+    <Compile Remove="NodeRef.cs" />
+    <Compile Remove="StreamExtensions.cs" />
+    <Compile Remove="Unclear.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="NodeRef.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BlowFish" Version="1.0.2" />
+    <PackageReference Include="SharpZipLib.NETStandard" Version="1.0.7" />
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Engines\Audio\" />
+    <Folder Include="Engines\Function\" />
+    <Folder Include="Engines\Graphic\" />
+    <Folder Include="Engines\Input\" />
+    <Folder Include="Engines\Motion\" />
+    <Folder Include="Engines\Net\" />
+    <Folder Include="Engines\Scene\" />
+    <Folder Include="Engines\System\" />
+    <Folder Include="Engines\TrackMania\" />
+    <Folder Include="Engines\VirtualSkipper\" />
+    <Folder Include="Engines\Vision\" />
+    <Folder Include="Engines\Xml\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Engines\GameData\CGameItemModel.cs" />
+    <None Include="Engines\GameData\CGameObjectPhyModel.cs" />
+    <None Include="Engines\GameData\CGameObjectVisModel.cs" />
+    <None Include="Engines\Plug\CPlugDataTape.cs" />
+    <None Include="Engines\Plug\CPlugEntRecordData.cs" />
+    <None Include="Engines\Plug\CPlugSurface.cs" />
+    <None Include="Engines\Plug\CPlugVehicleCarPhyShape.cs" />
+    <None Include="Engines\Plug\CPlugVehiclePhyModel.cs" />
+    <None Include="Engines\Plug\CPlugVehicleVisModel.cs" />
+    <None Include="NadeoPak.cs" />
+    <None Include="StreamExtensions.cs" />
+    <None Include="Unclear.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE.txt">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

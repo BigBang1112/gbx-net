@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+
+namespace GBX.NET.Engines.Hms
+{
+    [Node(0x06022000)]
+    public class CHmsLightMapCache : Node
+    {
+        public CHmsLightMapCache(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
+        {
+
+        }
+
+        [Chunk(0x0602201A, true)]
+        public class Chunk01A : SkippableChunk
+        {
+            public Chunk01A(CHmsLightMapCache node, byte[] data) : base(node, data)
+            {
+                
+            }
+        }
+    }
+}
