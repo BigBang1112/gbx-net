@@ -2718,9 +2718,9 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x016 skippable chunk
         /// </summary>
         [Chunk(0x03043000, 0x016, true)]
-        public class Chunk016 : Chunk
+        public class Chunk016 : SkippableChunk
         {
-            public Chunk016(CGameCtnChallenge node) : base(node)
+            public Chunk016(CGameCtnChallenge node, byte[] data) : base(node, data)
             {
                 
             }
