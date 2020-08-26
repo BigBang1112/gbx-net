@@ -98,10 +98,15 @@ namespace IslandConverter
 
                                 item.Name = mapUid;
 
-                                lvMaps.LargeImageList.Images.Add(mapUid, map.Thumbnail);
+                                if (map.Thumbnail == null)
+                                    item.ImageKey = "";
+                                else
+                                {
+                                    lvMaps.LargeImageList.Images.Add(mapUid, map.Thumbnail);
+                                    item.ImageKey = mapUid;
+                                }
 
                                 item.Text = Formatter.Deformat(map.MapName);
-                                item.ImageKey = mapUid;
                             }));
 
                             return containsMap;
