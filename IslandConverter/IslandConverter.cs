@@ -181,7 +181,27 @@ namespace IslandConverter
             map.Collection = "Stadium";
 
             Log.Write("Setting player model...");
-            map.PlayerModelID = "IslandCar.Item.Gbx";
+
+            var carTranslations = new Dictionary<string, string>(
+                new KeyValuePair<string, string>[]
+                {
+                    KeyValuePair.Create("American", "DesertCar"),
+                    KeyValuePair.Create("DesertCar", "DesertCar"),
+                    KeyValuePair.Create("Rally", "RallyCar"),
+                    KeyValuePair.Create("RallyCar", "RallyCar"),
+                    KeyValuePair.Create("SnowCar", "SnowCar"),
+                    KeyValuePair.Create("SportCar", "IslandCar"),
+                    KeyValuePair.Create("IslandCar", "IslandCar"),
+                    KeyValuePair.Create("CoastCar", "CoastCar"),
+                    KeyValuePair.Create("BayCar", "BayCar"),
+                    KeyValuePair.Create("StadiumCar", ""),
+                }
+            );
+
+            var beforeCar = map.PlayerModelID;
+            if(carTranslations[beforeCar] == "IslandCar")
+                map.PlayerModelID = "IslandCar.Item.Gbx";
+            else map.PlayerModelID = "";
             map.GetChunk<CGameCtnChallenge.Chunk00D>().Vehicle.Collection = "Stadium";
             map.GetChunk<CGameCtnChallenge.Chunk00D>().Vehicle.Author = "adamkooo";
 
@@ -430,7 +450,7 @@ namespace IslandConverter
             gbx.CreateBodyChunk<CGameCtnChallenge.Chunk044>();
             map = gbx.MainNode; // Due to current solution this must be presented
 
-            map.MetadataTraits.Declare("MapVehicle", "IslandCar");
+            map.MetadataTraits.Declare("MapVehicle", carTranslations[beforeCar]);
 
             if (map.Type == CGameCtnChallenge.TrackType.Stunts)
             {
