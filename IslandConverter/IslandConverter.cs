@@ -188,7 +188,11 @@ namespace IslandConverter
             Log.Write("Applying texture mod...");
             map.ModPackDesc = new FileRef(3, Convert.FromBase64String("AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="), @"Skins\Stadium\Mod\IslandTM2U.zip", "");
 
-            var thumbnail = new Bitmap(map.Thumbnail, 512, 512);
+            Bitmap thumbnail;
+            if (map.Thumbnail == null)
+                thumbnail = new Bitmap(512, 512);
+            else
+                thumbnail = new Bitmap(map.Thumbnail, 512, 512);
 
             using (var g = Graphics.FromImage(thumbnail))
             {
