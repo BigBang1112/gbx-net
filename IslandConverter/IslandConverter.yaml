@@ -1546,7 +1546,7 @@ IslandSeaWayGTCurve3:
     OffsetAbsolutePosition: [0, -8, 0]
     Directions:
     - OffsetAbsolutePosition: [128, 0, 128]
-    - ~
+    - OffsetAbsolutePosition: [128, 0, 0]
     - ~
     - OffsetAbsolutePosition: [0, 0, 128]
   Ground:
@@ -1568,8 +1568,8 @@ IslandSeaWayGTCurve3Pillar:
     - 5RoadThin\7Turns\5RoadThinTurnPillars\8Turn3Pillars\7RoadThinTurn3PillarBlock.Item.gbx
     Directions:
     - ~
-    - ~
-    - ~
+    - OffsetAbsolutePosition: [0, 0, 128]
+    - OffsetAbsolutePosition: [128, 0, 128]
     - OffsetAbsolutePosition: [128, 0, 0]
   Ground:
     ItemModels:
@@ -1577,16 +1577,16 @@ IslandSeaWayGTCurve3Pillar:
       - 5RoadThin\7Turns\5RoadThinTurnPillars\8Turn3Pillars\7RoadThinTurn3PillarBlock.Item.gbx
       Directions:
       - ~
-      - ~
-      - ~
+      - OffsetAbsolutePosition: [0, 0, 128]
+      - OffsetAbsolutePosition: [128, 0, 128]
       - OffsetAbsolutePosition: [128, 0, 0]
     - ItemModel:
       - 5RoadThin\7Turns\5RoadThinTurnPillars\8Turn3Pillars\8RoadThinTurn3PillarBase.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
       Directions:
       - ~
-      - ~
-      - ~
+      - OffsetAbsolutePosition: [0, 0, 128]
+      - OffsetAbsolutePosition: [128, 0, 128]
       - OffsetAbsolutePosition: [128, 0, 0]
 
 IslandSeaWayBiSlopeStart:
@@ -1597,6 +1597,9 @@ IslandSeaWayBiSlopeStart:
     OffsetDirection: 2
     Directions:
     - OffsetAbsolutePosition: [64, 0, 0]
+    - ~
+    - ~
+    - OffsetAbsolutePosition: [0, 0, 64]
 
 IslandSeaWayBiSlopeEnd:
 - Air:
@@ -1606,6 +1609,9 @@ IslandSeaWayBiSlopeEnd:
     OffsetDirection: 2
     Directions:
     - OffsetAbsolutePosition: [64, 0, 0]
+    - ~
+    - ~
+    - OffsetAbsolutePosition: [0, 0, 64]
   Ground:
     ItemModels:
     - ItemModel:
@@ -2447,21 +2453,30 @@ IslandSeaWayGTCurve2Pillar:
 - Air:
     ItemModel:
     - 5RoadThin\7Turns\5RoadThinTurnPillars\9Turn2Pillars\7RoadThinTurn2PillarBlock.Item.gbx
-    OffsetAbsolutePosition: [0, -8, 0]
+    OffsetAbsolutePosition: [0, 0, 0]
     Directions:
     - ~
     - OffsetAbsolutePosition: [0, 0, 64]
     - OffsetAbsolutePosition: [64, 0, 64]
     - OffsetAbsolutePosition: [64, 0, 0]
   Ground:
-    ItemModel:
-    - 5RoadThin\7Turns\5RoadThinTurnPillars\9Turn2Pillars\8RoadThinTurn2PillarBase.Item.gbx
-    OffsetAbsolutePosition: [0, -8, 0]
-    Directions:
-    - ~
-    - OffsetAbsolutePosition: [0, 0, 64]
-    - OffsetAbsolutePosition: [64, 0, 64]
-    - OffsetAbsolutePosition: [64, 0, 0]
+    ItemModels:
+    - ItemModel:
+      - 5RoadThin\7Turns\5RoadThinTurnPillars\9Turn2Pillars\7RoadThinTurn2PillarBlock.Item.gbx
+      OffsetAbsolutePosition: [0, 0, 0]
+      Directions:
+      - ~
+      - OffsetAbsolutePosition: [0, 0, 64]
+      - OffsetAbsolutePosition: [64, 0, 64]
+      - OffsetAbsolutePosition: [64, 0, 0]
+    - ItemModel:
+      - 5RoadThin\7Turns\5RoadThinTurnPillars\9Turn2Pillars\8RoadThinTurn2PillarBase.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+      Directions:
+      - ~
+      - OffsetAbsolutePosition: [0, 0, 64]
+      - OffsetAbsolutePosition: [64, 0, 64]
+      - OffsetAbsolutePosition: [64, 0, 0]
 
 IslandPlatformLoopWallCorner:
 - Air:
