@@ -1,4 +1,4 @@
-# GBX.NET
+![GBX.NET](logo.png)
 
 GBX.NET is a .NET GBX file parser library written in C#. GBX (or GameBox) is a file type available in many of the Nadeo games.
 
