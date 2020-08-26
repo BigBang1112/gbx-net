@@ -211,6 +211,9 @@ namespace IslandConverter
                 var chunk = gbx.Body.MainNode.CreateChunk<CGameCtnChallenge.Chunk043>(File.ReadAllBytes("0x03043043.dat"));
             }
 
+            Log.Write("Cracking the map password if presented...");
+            map.CrackPassword();
+
             var startConvert = DateTime.Now;
 
             var blocks = map.Blocks.ToArray();
