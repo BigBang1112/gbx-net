@@ -62,4 +62,4 @@ Island Converter is licensed under GNU GPL-3.0 license (read LICENSE.txt for eve
 If you're going to use code from the Island Converter or GBX.NET, make sure to make it open source as well.
 
 Source code of Island Converter is available on GitHub:
-https://github.com/BigBang1112/gbx-net/IslandConverter
+https://github.com/BigBang1112/gbx-net/tree/master/IslandConverter
