@@ -465,6 +465,7 @@ namespace IslandConverter
 
             map.MetadataTraits.Declare("MadeByConverter", true);
             map.MetadataTraits.Declare("RequiresOpenPlanet", size == MapSize.X45WithSmallBorder);
+            map.MetadataTraits.Declare("OriginalAuthorLogin", map.AuthorLogin);
 
             switch (size)
             {
