@@ -5,6 +5,8 @@ GBX.NET is a .NET GBX file parser library written in C#. GBX (or GameBox) is a f
 This GBX parser can recognize the entire GBX file. Modification of some GBX types is supported.
 All versions of GBX are supported: ranging from TM1.0 to TM®.
 
+Reading PAK file isn't currently supported.
+
 ## Compatibility
 
 GBX.NET is currently compatible with .NET Standard 2.1. At the moment you can't use the library in .NET Framework projects or .NET Core 2 or lower. Wider compatibility is planned for the future.
