@@ -608,14 +608,15 @@ void Read(GameBoxReader r)
 	Meta mapInfo = r.ReadMeta();
 	string mapName = r.ReadString();
 	Meta decoration = r.ReadMeta();
-	(int, int, int) size = r.ReadInt3();
+	Int3 size = r.ReadInt3();
 	bool needUnlock = r.ReadBoolean();
 
 	if ((chunk.ID & 0xFFF) != 0x013) // If this chunk is not 0x013
 		int version = r.ReadInt32();
 
-	int numBlocks = r.ReadInt32();
-	for (var i = 0; i < numBlocks; i++)
+	int numBlocks = r.ReadInt32(); // Amount of blocks that aren't flag -1
+
+	while ((r.PeekUInt32() & 0xC0000000) > 0)
 	{
 		LookbackString blockName = r.ReadLookbackString();
 		Direction dir = (Direction)r.ReadByte();
