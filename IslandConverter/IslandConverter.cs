@@ -165,9 +165,9 @@ namespace IslandConverter
             return blocks;
         }
 
-        internal static void ConvertToTM2Island(GameBox<CGameCtnChallenge> gbx, TimeSpan? mapLoadTime, string fileName, MapSize size, Int3 mapRange, Int3 minCoord, Random randomizer, bool cutoff, bool ignoreMediaTracker)
+        internal static void ConvertToTM2Island(GameBox<CGameCtnChallenge> gbx, TimeSpan? mapLoadTime, string fileName, string outputFolder, MapSize size, Int3 mapRange, Int3 minCoord, Random randomizer, bool cutoff, bool ignoreMediaTracker)
         {
-            var outputFileBase = $"output/{Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(fileName))}.Map.Gbx";
+            var outputFileBase = $"{outputFolder}/{Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(fileName))}.Map.Gbx";
             var logFileBase = $"log/{Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(fileName))}.Map.Gbx";
 
             Log.Start(logFileBase + ".log");
@@ -696,7 +696,7 @@ namespace IslandConverter
 
             var startMapSave = DateTime.Now;
 
-            Directory.CreateDirectory("output");
+            Directory.CreateDirectory(outputFolder);
             gbx.Save(outputFileBase);
 
             Log.Write($"Saving log to {logFileBase}.log");

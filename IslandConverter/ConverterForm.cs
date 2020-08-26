@@ -315,7 +315,7 @@ namespace IslandConverter
                     {
                         var map = gbx.MainNode;
 
-                        IslandConverter.ConvertToTM2Island(gbx, null, gbx.FileName, size, blockRange, minCoord.GetValueOrDefault(), random, cutoff, ignoreMediaTracker);
+                        IslandConverter.ConvertToTM2Island(gbx, null, gbx.FileName, "output", size, blockRange, minCoord.GetValueOrDefault(), random, cutoff, ignoreMediaTracker);
                     }
                 }
                 catch (Exception e)
