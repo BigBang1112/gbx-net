@@ -33,7 +33,7 @@ namespace IslandConverter
 
         private void llSourceCode_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            OpenWeb("https://github.com/BigBang1112/gbx-net/IslandConverter");
+            OpenWeb("https://github.com/BigBang1112/gbx-net/tree/master/IslandConverter");
         }
 
         private void llBigBang1112YouTube_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
