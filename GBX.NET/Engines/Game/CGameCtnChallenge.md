@@ -461,7 +461,7 @@ void Read(GameBoxReader r)
 
 	int numBlocks = r.ReadInt32();
 	for (var i = 0; i < numBlocks; i++)
-		NodeRef<CGameCtnBlock> block = r.ReadNodeRef();
+		CGameCtnBlock block = r.ReadNodeRef<CGameCtnBlock>();
 
 	int a = r.ReadInt32();
 	int b = r.ReadMeta();
@@ -473,8 +473,8 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	NodeRef<CGameCtnCollectorList> collectorList = r.ReadNodeRef();
-	NodeRef<CGameCtnChallengeParameters> challengeParameters = r.ReadNodeRef();
+	CGameCtnCollectorList collectorList = r.ReadNodeRef<CGameCtnCollectorList>();
+	CGameCtnChallengeParameters challengeParameters = r.ReadNodeRef<CGameCtnChallengeParameters>();
 	TrackKind kind = (TrackKind)r.ReadInt32();
 }
 ```
@@ -637,25 +637,11 @@ void Read(GameBoxReader r)
 		if ((flags & 0x8000) != 0) // custom block
 		{
 			LookbackString author = r.ReadLookbackString();
-			NodeRef<CGameCtnBlockSkin> skin = r.ReadNodeRef();
+			CGameCtnBlockSkin skin = r.ReadNodeRef<CGameCtnBlockSkin>();
 		}
 
 		if ((flags & 0x100000) != 0)
-			NodeRef<CGameWaypointSpecialProperty> parameters = r.ReadNodeRef();
-	}
-
-	// Some blocks appear after the number of blocks for unknown reason.
-	// The loop below is one of my own solutions.
-
-	// It basically checks if the next uint is a chunk ID, without moving the cursor.
-	// If not, it reads the mysterious block.
-
-	while(!GetAllChunkIDs<CGameCtnChallenge>().Contains(r.PeekUInt32()))
-	{
-		LookbackString blockName = r.ReadLookbackString();
-		Direction dir = (Direction)r.ReadByte();
-		(byte, byte, byte) coord = r.ReadByte3();
-		int flags = r.ReadInt32(); // Always -1
+			CGameWaypointSpecialProperty parameters = r.ReadNodeRef<CGameWaypointSpecialProperty>();
 	}
 }
 ```
@@ -677,9 +663,9 @@ public enum Direction : byte
 ```cs
 void Read(GameBoxReader r)
 {
-	NodeRef<CGameCtnMediaClip> clipIntro = r.ReadNodeRef();
-	NodeRef<CGameCtnMediaClipGroup> clipGroupInGame = r.ReadNodeRef();
-	NodeRef<CGameCtnMediaClipGroup> clipGroupEndRace = r.ReadNodeRef();
+	CGameCtnMediaClip clipIntro = r.ReadNodeRef<CGameCtnMediaClip>();
+	CGameCtnMediaClipGroup clipGroupInGame = r.ReadNodeRef<CGameCtnMediaClipGroup>();
+	CGameCtnMediaClipGroup clipGroupEndRace = r.ReadNodeRef<CGameCtnMediaClipGroup>();
 }
 ```
 
