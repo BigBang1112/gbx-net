@@ -1556,11 +1556,17 @@ IslandSeaWayGTCurve3:
       OffsetAbsolutePosition: [0, -8, 0]
       Directions:
       - OffsetAbsolutePosition: [128, 0, 128]
+      - OffsetAbsolutePosition: [128, 0, 0]
+      - ~
+      - OffsetAbsolutePosition: [0, 0, 128]
     - ItemModel:
       - 5RoadThin\7Turns\5RoadThinTurnPillars\8Turn3Pillars\9RoadThinTurn3PillarWater.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
       Directions:
+      - OffsetAbsolutePosition: [128, 0, 128]
+      - OffsetAbsolutePosition: [0, 0, 128]
       - ~
+      - OffsetAbsolutePosition: [128, 0, 0]
 
 IslandSeaWayGTCurve3Pillar:
 - Air:
@@ -2060,7 +2066,6 @@ IslandCroisette:
 - Air:
     ItemModel:
     - 4Road2\9Basic\9Road\Air\6Road2Turn.Item.gbx
-    OffsetYFromTerrain: 1
     OffsetAbsolutePosition: [0, -8, 0]
   Ground:
     ItemModel:
@@ -2070,7 +2075,6 @@ IslandCroisette:
 - Air:
     ItemModel:
     - 4Road2\9Basic\9Road\Air\8Road2.Item.gbx
-    OffsetYFromTerrain: 1
     OffsetAbsolutePosition: [0, -8, 0]
   Ground:
     ItemModel:
@@ -2081,6 +2085,19 @@ IslandCroisette:
     ItemModel:
     - 4Road2\9Basic\9Road\Ground\5Road2CrossGround.Item.gbx
     OffsetDirection: 3
+    OffsetYFromTerrain: 1
+    OffsetAbsolutePosition: [0, -8, 0]
+
+IslandCroisetteCheckpoint:
+- Air:
+    ItemModel:
+    - 4Road2\9Basic\7Road2CP\Air\Road2CP.Item.gbx
+    OffsetDirection: 2
+    OffsetAbsolutePosition: [0, -8, 0]
+  Ground:
+    ItemModel:
+    - 4Road2\9Basic\7Road2CP\Ground\Road2CPGround.Item.gbx
+    OffsetDirection: 2
     OffsetYFromTerrain: 1
     OffsetAbsolutePosition: [0, -8, 0]
 
@@ -2368,8 +2385,13 @@ IslandSeaWaySupport:
       - 5RoadThin\9Basic\8_RoadThinPillarExtra\7Turn\6TurnPillarTop.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
   Ground:
-    ItemModel:
-    - ~
+    ItemModels:
+    - ItemModel:
+      - 5RoadThin\9Basic\9RoadThin\Air\6RoadThinTurn.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+    - ItemModel:
+      - 5RoadThin\9Basic\8_RoadThinPillarExtra\7Turn\9TurnPillarWater.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
 - Air:
     ItemModels:
     - ItemModel:
@@ -2409,13 +2431,18 @@ IslandSeaWayPillar:
 - Air:
     ItemModel:
     - 5RoadThin\9Basic\8_RoadThinPillarExtra\8End\7EndPillarBlock.Item.gbx
-    OffsetAbsolutePosition: [0, -8, 0]
+    OffsetAbsolutePosition: [0, 0, 0]
     OffsetDirection: 2
   Ground:
-    ItemModel:
-    - 5RoadThin\9Basic\8_RoadThinPillarExtra\8End\8EndPillarBase.Item.gbx
-    OffsetAbsolutePosition: [0, -16, 0]
-    OffsetDirection: 2
+    ItemModels:
+    - ItemModel:
+      - 5RoadThin\9Basic\8_RoadThinPillarExtra\8End\7EndPillarBlock.Item.gbx
+      OffsetAbsolutePosition: [0, 0, 0]
+      OffsetDirection: 2
+    - ItemModel:
+      - 5RoadThin\9Basic\8_RoadThinPillarExtra\8End\8EndPillarBase.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
+      OffsetDirection: 2
 - Air:
     ItemModel:
     - 5RoadThin\9Basic\8_RoadThinPillarExtra\7Turn\7TurnPillarBlock.Item.gbx
@@ -3091,7 +3118,7 @@ IslandHighWayUTurnSlopeLeft:
       - [1, 0, -1]
       - [1, 0, -2]
       - [0, 0, -2]
-    - ~
+    - OffsetAbsolutePosition: [64, 0, 64]
     - OffsetAbsolutePosition: [64, 0, 0]
       Units:
       - [0, 0, 0]
@@ -3100,6 +3127,14 @@ IslandHighWayUTurnSlopeLeft:
       - [-1, 0, 1]
       - [-1, 0, 2]
       - [0, 0, 2]
+    - OffsetAbsolutePosition: [0, 0, 64]
+      Units:
+      - [0, 0, 0]
+      - [1, 0, 0]
+      - [0, 0, 1]
+      - [1, 0, 1]
+      - [0, 0, 2]
+      - [1, 0, 2]
 
 IslandHighWayTriRamp:
 - Air:
@@ -3205,3 +3240,19 @@ IslandRoadWallCorner:
   - 7Road\4Vertical\8RoadVerticalTurn\RoadVerticalTurn.Item.gbx
   OffsetDirection: 3
   OffsetAbsolutePosition: [0, 16, 0]
+
+IslandHills6HighWayBridgeAir:
+- ItemModel:
+  - 7Road\9Basic\9Road\Air\8Road.Item.gbx
+  OffsetAbsolutePosition: [0, -16, 0]
+
+IslandRoadWallGTCurve1SlopeLeft:
+- ItemModel:
+  - 7Road\4Vertical\1RoadVerticalUpTurnMirrored\RoadVerticalUpTurnB.Item.gbx
+  OffsetAbsolutePosition: [0, 16, 0]
+  OffsetDirection: 2
+
+IslandPlatformStartFinishLine:
+- ItemModel:
+  - 6Platform\9Basic\4PlatformMulti\PlatformMulti.Item.gbx
+  OffsetAbsolutePosition: [0, -4, 0]

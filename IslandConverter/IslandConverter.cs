@@ -181,9 +181,28 @@ namespace IslandConverter
             map.Collection = "Stadium";
 
             Log.Write("Setting player model...");
-            map.PlayerModelID = "IslandCar.Item.Gbx";
-            map.GetChunk<CGameCtnChallenge.Chunk00D>().Vehicle.Collection = "Stadium";
-            map.GetChunk<CGameCtnChallenge.Chunk00D>().Vehicle.Author = "adamkooo";
+
+            var carTranslations = new Dictionary<string, string>(
+                new KeyValuePair<string, string>[]
+                {
+                    KeyValuePair.Create("", "IslandCar"),
+                    KeyValuePair.Create("American", "DesertCar"),
+                    KeyValuePair.Create("DesertCar", "DesertCar"),
+                    KeyValuePair.Create("Rally", "RallyCar"),
+                    KeyValuePair.Create("RallyCar", "RallyCar"),
+                    KeyValuePair.Create("SnowCar", "SnowCar"),
+                    KeyValuePair.Create("SportCar", "IslandCar"),
+                    KeyValuePair.Create("IslandCar", "IslandCar"),
+                    KeyValuePair.Create("CoastCar", "CoastCar"),
+                    KeyValuePair.Create("BayCar", "BayCar"),
+                    KeyValuePair.Create("StadiumCar", ""),
+                }
+            );
+
+            var chunk00D = map.GetChunk<CGameCtnChallenge.Chunk00D>();
+
+            var beforeCar = map.PlayerModelID;
+            chunk00D.Vehicle = new Meta("IslandCar.Item.Gbx", "Stadium", "adamkooo");
 
             Log.Write("Applying texture mod...");
             map.ModPackDesc = new FileRef(3, Convert.FromBase64String("AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="), @"Skins\Stadium\Mod\IslandTM2U.zip", "");
@@ -210,6 +229,9 @@ namespace IslandConverter
                 Log.Write("Importing chunk 0x03043043 for water on ground...");
                 var chunk = gbx.Body.MainNode.CreateChunk<CGameCtnChallenge.Chunk043>(File.ReadAllBytes("0x03043043.dat"));
             }
+
+            Log.Write("Cracking the map password if presented...");
+            map.CrackPassword();
 
             var startConvert = DateTime.Now;
 
@@ -427,7 +449,7 @@ namespace IslandConverter
             gbx.CreateBodyChunk<CGameCtnChallenge.Chunk044>();
             map = gbx.MainNode; // Due to current solution this must be presented
 
-            map.MetadataTraits.Declare("MapVehicle", "IslandCar");
+            map.MetadataTraits.Declare("MapVehicle", carTranslations[beforeCar]);
 
             if (map.Type == CGameCtnChallenge.TrackType.Stunts)
             {
@@ -462,6 +484,7 @@ namespace IslandConverter
 
             map.MetadataTraits.Declare("MadeByConverter", true);
             map.MetadataTraits.Declare("RequiresOpenPlanet", size == MapSize.X45WithSmallBorder);
+            map.MetadataTraits.Declare("OriginalAuthorLogin", map.AuthorLogin);
 
             switch (size)
             {
