@@ -207,17 +207,17 @@ public enum AILevel : byte
 
 #### Unknown variables
 
-Variable | Map 1 | Map 2 | Map 3 | Map 4 | Map 5
-- | - | - | - | - | - 
-bool a | false | true | true | false | true
-int b | 0 | 1 | 5 | 0 | 1
-byte c | 0 | 1 | 5 | 0 | 1
-byte d | 0 | 1 | 5 | 0 | 1
-byte e | 0 | 1 | 5 | 0 | 1
-byte f | 0 | 1 | 5 | 0 | 1
-byte g | 0 | 1 | 5 | 0 | 1
-bool h | true | false | true | true | true
-string i | "" | "" | "" | "" | ""
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| bool a | ~ | ~ | ~ | ~ | ~
+| int b | ~ | ~ | ~ | ~ | ~
+| byte c | ~ | ~ | ~ | ~ | ~
+| byte d | ~ | ~ | ~ | ~ | ~
+| byte e | ~ | ~ | ~ | ~ | ~
+| byte f | ~ | ~ | ~ | ~ | ~
+| byte g | ~ | ~ | ~ | ~ | ~
+| bool h | ~ | ~ | ~ | ~ | ~
+| string i | ~ | ~ | ~ | ~ | ~
 
 ### 0x002 (map info)
 
@@ -293,13 +293,13 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
-byte b |
-int c |
-int d |
-int e |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | ---
+| int a | ~ | ~ | ~ | ~ | ~
+| byte b | ~ | ~ | ~ | ~ | ~
+| int c | ~ | ~ | ~ | ~ | ~
+| int d | ~ | ~ | ~ | ~ | ~
+| int e | ~ | ~ | ~ | ~ | ~
 
 ### 0x003 (common)
 
