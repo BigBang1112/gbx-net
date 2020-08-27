@@ -384,10 +384,10 @@ public enum TrackKind : byte
 
 #### Unknown variables
 
-Variable |
-- |
-byte[] a |
-bool b |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| byte[] a | ~ | ~ | ~ | ~ | ~
+| bool b | ~ | ~ | ~ | ~ | ~
 
 ### 0x004 (version)
 
@@ -511,9 +511,9 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-string a |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| string a | ~ | ~ | ~ | ~ | ~
 
 ### 0x013 (legacy block data)
 
@@ -536,9 +536,9 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| int a | ~ | ~ | ~ | ~ | ~
 
 ### 0x016 - skippable
 
@@ -551,9 +551,9 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | ---
+| int a | ~ | ~ | ~ | ~ | ~
 
 ### 0x017 - skippable (checkpoints)
 
@@ -680,9 +680,9 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-bool a |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| bool a | ~ | ~ | ~ | ~ | ~
 
 ### 0x024 (music)
 
@@ -722,10 +722,10 @@ void Read(GameBoxReader r)
 	if (archiveGmCamVal)
 	{
 		byte a = r.ReadByte();
-		(float, float, float) b = r.ReadVec3();
-		(float, float, float) c = r.ReadVec3();
-		(float, float, float) d = r.ReadVec3();
-		(float, float, float) e = r.ReadVec3();
+		Vec3 b = r.ReadVec3();
+		Vec3 c = r.ReadVec3();
+		Vec3 d = r.ReadVec3();
+		Vec3 e = r.ReadVec3();
 		float f = r.ReadSingle();
 		float g = r.ReadSingle();
 		float h = r.ReadSingle();
@@ -735,16 +735,16 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-byte a |
-(float, float, float) b |
-(float, float, float) c |
-(float, float, float) d |
-(float, float, float) e |
-float f |
-float g |
-float h |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| byte a | ~ | ~ | ~ | ~ | ~
+| Vec3 b | ~ | ~ | ~ | ~ | ~
+| Vec3 c | ~ | ~ | ~ | ~ | ~
+| Vec3 d | ~ | ~ | ~ | ~ | ~
+| Vec3 e | ~ | ~ | ~ | ~ | ~
+| float f | ~ | ~ | ~ | ~ | ~
+| float g | ~ | ~ | ~ | ~ | ~
+| float h | ~ | ~ | ~ | ~ | ~
 
 ### 0x028 (comments)
 
@@ -757,6 +757,8 @@ void Read(GameBoxReader r)
 ```
 
 ### 0x029 - skippable (password)
+
+If you want to remove a password from a map, you can just remove this chunk.
 
 ```cs
 void Read(GameBoxReader r)
@@ -777,9 +779,9 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-bool a |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| bool a | ~ | ~ | ~ | ~ | ~
 
 ### 0x034 - skippable
 
@@ -788,8 +790,8 @@ bool a |
 ```cs
 void Read(GameBoxReader r)
 {
-	(float, float, float) thumbnailPosition = r.ReadVec3();
-	(float, float, float) thumbnailPitchYawRoll = r.ReadVec3(); // in radians
+	Vec3 thumbnailPosition = r.ReadVec3();
+	Vec3 thumbnailPitchYawRoll = r.ReadVec3(); // in radians
 	float thumbnailFOV = r.ReadSingle();
 
 	float a = r.ReadSingle();
@@ -802,13 +804,13 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-float a |
-float b |
-float c |
-float d |
-float e |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| float a | ~ | ~ | ~ | ~ | ~
+| float b | ~ | ~ | ~ | ~ | ~
+| float c | ~ | ~ | ~ | ~ | ~
+| float d | ~ | ~ | ~ | ~ | ~
+| float e | ~ | ~ | ~ | ~ | ~
 
 ### 0x038 - skippable
 
@@ -850,9 +852,12 @@ void Read(GameBoxReader r)
 		{
 			int uncompressedSize = r.ReadInt32();
 			int compressedSize = r.ReadInt32();
-			byte[] data = r.ReadBytes(compressedSize); // ZLIB compressed data
+			byte[] lightmapCacheData = r.ReadBytes(compressedSize); // ZLIB compressed data
 
-			CHmsLightMapCache lightmapCache = DecompressZLIB(data);
+			using (var ms = new MemoryStream(data))
+            using (var zlib = new InflaterInputStream(ms))
+            using (var gbxr = new GameBoxReader(zlib))
+				CHmsLightMapCache lightmapCache = Parse(gbxr);
 		}
 	}
 }
@@ -860,9 +865,9 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-bool a |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| bool a | ~ | ~ | ~ | ~ | ~
 
 ### 0x03E - skippable
 ### 0x042 - skippable
