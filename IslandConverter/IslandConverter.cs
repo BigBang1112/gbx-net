@@ -185,6 +185,7 @@ namespace IslandConverter
             var carTranslations = new Dictionary<string, string>(
                 new KeyValuePair<string, string>[]
                 {
+                    KeyValuePair.Create("", "IslandCar"),
                     KeyValuePair.Create("American", "DesertCar"),
                     KeyValuePair.Create("DesertCar", "DesertCar"),
                     KeyValuePair.Create("Rally", "RallyCar"),
@@ -198,12 +199,10 @@ namespace IslandConverter
                 }
             );
 
+            var chunk00D = map.GetChunk<CGameCtnChallenge.Chunk00D>();
+
             var beforeCar = map.PlayerModelID;
-            if(carTranslations[beforeCar] == "IslandCar")
-                map.PlayerModelID = "IslandCar.Item.Gbx";
-            else map.PlayerModelID = "";
-            map.GetChunk<CGameCtnChallenge.Chunk00D>().Vehicle.Collection = "Stadium";
-            map.GetChunk<CGameCtnChallenge.Chunk00D>().Vehicle.Author = "adamkooo";
+            chunk00D.Vehicle = new Meta("IslandCar.Item.Gbx", "Stadium", "adamkooo");
 
             Log.Write("Applying texture mod...");
             map.ModPackDesc = new FileRef(3, Convert.FromBase64String("AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="), @"Skins\Stadium\Mod\IslandTM2U.zip", "");
