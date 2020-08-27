@@ -552,7 +552,7 @@ void Read(GameBoxReader r)
 #### Unknown variables
 
 | Variable | ~ | ~ | ~ | ~ | ~
-| --- | --- | --- | --- | ---
+| --- | --- | --- | --- | --- | ---
 | int a | ~ | ~ | ~ | ~ | ~
 
 ### 0x017 - skippable (checkpoints)
