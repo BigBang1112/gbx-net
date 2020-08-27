@@ -1588,7 +1588,7 @@ namespace GBX.NET.Engines.Game
         /// </summary>
         public void CrackPassword()
         {
-            CallChunkMethod<Chunk029>(x => x.CrackPassword());
+            Body.GBX.RemoveBodyChunk<Chunk029>();
         }
 
         public void PlaceItem(Meta itemModel, Vector3 absolutePosition, Vector3 pitchYawRoll, Byte3 blockUnitCoord, Vector3 offsetPivot, int variant = 0)
@@ -3238,14 +3238,6 @@ namespace GBX.NET.Engines.Game
                 Crc32 crc32 = new Crc32();
                 crc32.Update(Encoding.ASCII.GetBytes("0x" + BitConverter.ToInt16(HashedPassword).ToString() + "???" + (Node as CGameCtnChallenge).MapUid));
                 CRC32 = Convert.ToUInt32(crc32.Value);
-            }
-
-            /// <summary>
-            /// Cracks the map password.
-            /// </summary>
-            public void CrackPassword()
-            {
-                NewPassword("");
             }
         }
 

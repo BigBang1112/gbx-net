@@ -37,6 +37,7 @@ namespace IslandConverter
             bool? cutoff = default;
             bool? noask = default;
             bool? ignoreMediaTracker = default;
+            string outputFolder = null;
 
             string[] fileNames = new string[0];
 
@@ -141,6 +142,13 @@ namespace IslandConverter
                                     ignoreMediaTracker = true;
                                     Console.WriteLine($"- Ignore MediaTracker: {ignoreMediaTracker}");
                                     break;
+                                case "-out":
+                                    if (enumerator.MoveNext())
+                                    {
+                                        outputFolder = enumerator.Current;
+                                        Console.WriteLine($"- Output folder: {outputFolder}");
+                                    }
+                                    break;
                             }
                         }
                     }
@@ -180,6 +188,12 @@ namespace IslandConverter
                     {
                         ignoreMediaTracker = false;
                         Console.WriteLine($"- Ignore MediaTracker: {ignoreMediaTracker}");
+                    }
+
+                    if(outputFolder == null)
+                    {
+                        outputFolder = "output";
+                        Console.WriteLine($"- Output folder: output");
                     }
 
                     Console.WriteLine();
@@ -329,7 +343,7 @@ namespace IslandConverter
                     }
                 }
 
-                IslandConverter.ConvertToTM2Island(gbx, finishMapLoad.Value, f, size.GetValueOrDefault(), mapRange, minCoord.GetValueOrDefault(), random, cutoff.GetValueOrDefault(), ignoreMediaTracker.GetValueOrDefault());
+                IslandConverter.ConvertToTM2Island(gbx, finishMapLoad.Value, f, outputFolder, size.GetValueOrDefault(), mapRange, minCoord.GetValueOrDefault(), random, cutoff.GetValueOrDefault(), ignoreMediaTracker.GetValueOrDefault());
             }
 
             Log.Write();
