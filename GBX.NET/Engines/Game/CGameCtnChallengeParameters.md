@@ -35,16 +35,16 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
-int b |
-int c |
-int d |
-int e |
-int f |
-int g |
-int h |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| int a | ~ | ~ | ~ | ~ | ~
+| int b | ~ | ~ | ~ | ~ | ~
+| int c | ~ | ~ | ~ | ~ | ~
+| int d | ~ | ~ | ~ | ~ | ~
+| int e | ~ | ~ | ~ | ~ | ~
+| int f | ~ | ~ | ~ | ~ | ~
+| int g | ~ | ~ | ~ | ~ | ~
+| int h | ~ | ~ | ~ | ~ | ~
 
 ### 0x001
 
@@ -86,24 +86,24 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
-int b |
-int c |
-float d |
-float e |
-float f |
-int g |
-int h |
-int i |
-int j |
-int k |
-int l |
-int m |
-int n |
-int o |
-int p |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| int a | ~ | ~ | ~ | ~ | ~
+| int b | ~ | ~ | ~ | ~ | ~
+| int c | ~ | ~ | ~ | ~ | ~
+| float d | ~ | ~ | ~ | ~ | ~
+| float e | ~ | ~ | ~ | ~ | ~
+| float f | ~ | ~ | ~ | ~ | ~
+| int g | ~ | ~ | ~ | ~ | ~
+| int h | ~ | ~ | ~ | ~ | ~
+| int i | ~ | ~ | ~ | ~ | ~
+| int j | ~ | ~ | ~ | ~ | ~
+| int k | ~ | ~ | ~ | ~ | ~
+| int l | ~ | ~ | ~ | ~ | ~
+| int m | ~ | ~ | ~ | ~ | ~
+| int n | ~ | ~ | ~ | ~ | ~
+| int o | ~ | ~ | ~ | ~ | ~
+| int p | ~ | ~ | ~ | ~ | ~
 
 ### 0x003
 
@@ -123,14 +123,14 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
-float b |
-int c |
-int d |
-int e |
-int f |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | ---
+| int a | ~ | ~ | ~ | ~ | ~
+| float b | ~ | ~ | ~ | ~ | ~
+| int c | ~ | ~ | ~ | ~ | ~
+| int d | ~ | ~ | ~ | ~ | ~
+| int e | ~ | ~ | ~ | ~ | ~
+| int f | ~ | ~ | ~ | ~ | ~
 
 ### 0x004
 
@@ -148,9 +148,9 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | ---
+| int a | ~ | ~ | ~ | ~ | ~
 
 ### 0x005
 
@@ -165,11 +165,11 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
-int b |
-int c |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | ---
+| int a | ~ | ~ | ~ | ~ | ~
+| int b | ~ | ~ | ~ | ~ | ~
+| int c | ~ | ~ | ~ | ~ | ~
 
 ### 0x006
 
@@ -193,9 +193,9 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-uint a |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | ---
+| uint a | ~ | ~ | ~ | ~ | ~
 
 ### 0x008 (stunts)
 
@@ -220,9 +220,9 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | ---
+| int a | ~ | ~ | ~ | ~ | ~
 
 ### 0x00E - skippable
 
@@ -237,8 +237,8 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
-int b |
-int c |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | ---
+| int a | ~ | ~ | ~ | ~ | ~
+| int b | ~ | ~ | ~ | ~ | ~
+| int c | ~ | ~ | ~ | ~ | ~
