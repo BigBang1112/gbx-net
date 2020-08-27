@@ -22,7 +22,7 @@ void Read(GameBoxReader r)
 
 	int numMapGroups = r.ReadInt32();
 	for(var i = 0; i < numMapGroups; i++)
-		NodeRef<CGameCtnChallengeGroup> mapGroup = r.ReadNodeRef<CGameCtnChallengeGroup>();
+		CGameCtnChallengeGroup mapGroup = r.ReadNodeRef<CGameCtnChallengeGroup>();
 }
 ```
 
