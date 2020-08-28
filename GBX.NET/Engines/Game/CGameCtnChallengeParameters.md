@@ -13,7 +13,7 @@
 - [0x008 (stunts)](#0x008-stunts)
 - [0x00A - skippable](#0x00A---skippable)
 - [0x00D](#0x00D)
-- [0x00E - skippable](#0x00E---skippable)
+- [0x00E - skippable (map type)](#0x00E---skippable-map-type)
 
 ### 0x000
 
@@ -209,6 +209,20 @@ void Read(GameBoxReader r)
 
 ### 0x00A - skippable
 
+```cs
+void Read(GameBoxReader r)
+{
+	int a = r.ReadInt32();
+
+	int bronzeTime = r.ReadInt32();
+	int silverTime = r.ReadInt32();
+	int goldTime = r.ReadInt32();
+	int authorTime = r.ReadInt32();
+	int timeLimit = r.ReadInt32();
+	int authorScore = r.ReadInt32();
+}
+```
+
 ### 0x00D
 
 ```cs
@@ -224,14 +238,14 @@ void Read(GameBoxReader r)
 | --- | --- | --- | --- | --- | ---
 | int a | ~ | ~ | ~ | ~ | ~
 
-### 0x00E - skippable
+### 0x00E - skippable (map type)
 
 ```cs
 void Read(GameBoxReader r)
 {
+	string mapType = r.ReadString();
+	string mapStyle = r.ReadString();
 	int a = r.ReadInt32();
-	int b = r.ReadInt32();
-	int c = r.ReadInt32();
 }
 ```
 
@@ -240,5 +254,3 @@ void Read(GameBoxReader r)
 | Variable | ~ | ~ | ~ | ~ | ~
 | --- | --- | --- | --- | --- | ---
 | int a | ~ | ~ | ~ | ~ | ~
-| int b | ~ | ~ | ~ | ~ | ~
-| int c | ~ | ~ | ~ | ~ | ~
