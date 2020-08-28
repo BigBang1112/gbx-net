@@ -1249,7 +1249,7 @@ void Read(GameBoxReader r)
 
 Undiscovered.
 
-### 0x05F - skippable (free blocks) (TM®️)
+### 0x05F - skippable (free blocks) [TM®️]
 
 ```cs
 void Read(GameBoxReader r)
@@ -1268,13 +1268,13 @@ To understand the vectors, the amount of them is undefined in this chunk. The st
 - 1st free block in 0x01F
 	- Vec3 absolutePositionInMap
 	- Vec3 pitchYawRoll
-	- for each snap point of that block (let's say x amount of snap points)
+	- for each snap point of that block
 		- Vec3 snapPointPosition
 		- Vec3 snapPointPitchYawRoll
 - 2nd free block in 0x01F
 	- Vec3 absolutePositionInMap
 	- Vec3 pitchYawRoll
-	- for each snap point of that block (let's say y)
+	- for each snap point of that block
 		- Vec3 snapPointPosition
 		- Vec3 snapPointPitchYawRoll
 - ...
