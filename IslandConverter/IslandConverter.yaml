@@ -851,9 +851,15 @@ IslandSeaSignsLightRampPillar:
     ItemModel:
     - 2Deco\5Signs\_Pillar\SignBlock.Item.gbx
   Ground:
-    ItemModel:
-    - 2Deco\5Signs\_Pillar\SignBase.Item.gbx
-    OffsetAbsolutePosition: [0, -8, 0]
+    ItemModels:
+    - ItemModel:
+      - 2Deco\5Signs\_Pillar\SignBlock.Item.gbx
+    - ItemModel:
+      - 2Deco\5Signs\_Pillar\SignBlock.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+    - ItemModel:
+      - 2Deco\5Signs\_Pillar\SignBase.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
 
 IslandCommitee:
 - ItemModel:
