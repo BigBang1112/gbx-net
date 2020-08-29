@@ -607,10 +607,19 @@ IslandPlatformRoad:
       - 6Platform\2Pillars\9PlatformUniversal\PlatformPillarWater.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
 - Air:
-    ItemModel:
-    - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar4.Item.gbx
-    OffsetAbsolutePosition: [0, -4, 0]
-    OffsetDirection: 3
+    ItemModels:
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar4.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 0
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 1
   Ground:
     ItemModels:
     - ItemModel:
@@ -618,17 +627,58 @@ IslandPlatformRoad:
       OffsetAbsolutePosition: [0, -4, 0]
       OffsetDirection: 3
     - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 0
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 1
+    - ItemModel:
       - 6Platform\2Pillars\9PlatformUniversal\PlatformPillarWater.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
 - Air:
-    ItemModel:
-    - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVarDef.Item.gbx
-    OffsetAbsolutePosition: [0, -4, 0]
+    ItemModels:
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVarDef.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 0
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 1
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 2
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
   Ground:
     ItemModels:
     - ItemModel:
       - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVarDef.Item.gbx
       OffsetAbsolutePosition: [0, -4, 0]
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 0
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 1
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 2
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
     - ItemModel:
       - 6Platform\2Pillars\9PlatformUniversal\PlatformPillarWater.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
@@ -689,10 +739,19 @@ IslandPlatformRoadSupport:
       - 6Platform\2Pillars\9PlatformUniversal\PlatformPillarWater.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
 - Air:
-    ItemModel:
-    - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar4.Item.gbx
-    OffsetAbsolutePosition: [0, -4, 0]
-    OffsetDirection: 3
+    ItemModels:
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar4.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 0
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 1
   Ground:
     ItemModels:
     - ItemModel:
@@ -700,17 +759,58 @@ IslandPlatformRoadSupport:
       OffsetAbsolutePosition: [0, -4, 0]
       OffsetDirection: 3
     - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 0
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 1
+    - ItemModel:
       - 6Platform\2Pillars\9PlatformUniversal\PlatformPillarWater.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
 - Air:
-    ItemModel:
-    - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVarDef.Item.gbx
-    OffsetAbsolutePosition: [0, -4, 0]
+    ItemModels:
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVarDef.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 0
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 1
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 2
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
   Ground:
     ItemModels:
     - ItemModel:
       - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVarDef.Item.gbx
       OffsetAbsolutePosition: [0, -4, 0]
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 0
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 1
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 2
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
     - ItemModel:
       - 6Platform\2Pillars\9PlatformUniversal\PlatformPillarWater.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
