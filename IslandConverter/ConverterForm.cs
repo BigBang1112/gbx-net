@@ -35,6 +35,12 @@ namespace IslandConverter
             tsmiASuperSecretOption.Click += TsmiASuperSecretOption_Click;
             addAMapToolStripMenuItem.Click += AddAMapToolStripMenuItem_Click;
             toolStripMenuItem2.Click += AboutToolStripMenuItem_Click;
+            tsmiChangeManiaPlanetUserdataLocation.Click += TsmiChangeManiaPlanetUserdataLocation_Click;
+        }
+
+        private void TsmiChangeManiaPlanetUserdataLocation_Click(object sender, EventArgs e)
+        {
+            SetOpenFolder();
         }
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -376,36 +382,37 @@ namespace IslandConverter
                     if(value == null)
                         value = SetOpenFolder();
                     
-                    Process.Start("explorer.exe", value);
+                    if(value != null)
+                        Process.Start("explorer.exe", value);
                 }
             }
             else
             {
                 SetOpenFolder();
             }
+        }
 
-            static string SetOpenFolder()
+        string SetOpenFolder()
+        {
+            string folderName = null;
+
+            MessageBox.Show("Please select your ManiaPlanet Maps folder.", "Select Maps folder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            using (var ofd = new CommonOpenFileDialog())
             {
-                string folderName = null;
+                ofd.IsFolderPicker = true;
 
-                MessageBox.Show("Please select your ManiaPlanet Maps folder.", "Select Maps folder", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                using (var ofd = new CommonOpenFileDialog())
+                if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
                 {
-                    ofd.IsFolderPicker = true;
+                    folderName = ofd.FileName;
 
-                    if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
-                    {
-                        folderName = ofd.FileName;
-                    }
+                    Serializer s = new Serializer();
+                    var output = s.Serialize(new Dictionary<string, string>(new KeyValuePair<string, string>[] { new KeyValuePair<string, string>("ManiaPlanetMapsFolder", folderName) }));
+                    File.WriteAllText("Config.yaml", output);
                 }
-
-                Serializer s = new Serializer();
-                var output = s.Serialize(new Dictionary<string, string>(new KeyValuePair<string, string>[] { new KeyValuePair<string, string>("ManiaPlanetMapsFolder", folderName) }));
-                File.WriteAllText("Config.yaml", output);
-
-                return folderName;
             }
+
+            return folderName;
         }
 
         private void AddAMapToolStripMenuItem_Click(object sender, EventArgs e)
