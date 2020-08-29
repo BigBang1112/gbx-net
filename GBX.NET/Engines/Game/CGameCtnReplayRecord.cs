@@ -27,7 +27,7 @@ namespace GBX.NET.Engines.Game
         #region 0x000 chunk
 
         [Chunk(0x03093000)]
-        public class Chunk000 : Chunk
+        public class Chunk000 : SkippableChunk
         {
             public int Version { get; set; }
             public Meta MapInfo { get; set; }
@@ -37,7 +37,7 @@ namespace GBX.NET.Engines.Game
             public byte Unknown1 { get; set; }
             public string TitleUID { get; set; }
 
-            public Chunk000(CGameCtnReplayRecord node) : base(node)
+            public Chunk000(CGameCtnReplayRecord node, byte[] data) : base(node, data)
             {
                 
             }
@@ -71,11 +71,11 @@ namespace GBX.NET.Engines.Game
         #region 0x001 chunk
 
         [Chunk(0x03093001)]
-        public class Chunk001 : Chunk
+        public class Chunk001 : SkippableChunk
         {
             public string XML { get; set; }
 
-            public Chunk001(CGameCtnReplayRecord node) : base(node)
+            public Chunk001(CGameCtnReplayRecord node, byte[] data) : base(node, data)
             {
                 
             }
