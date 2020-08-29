@@ -155,6 +155,21 @@ namespace GBX.NET
             return variable;
         }
 
+        public void Int16(Stream stream)
+        {
+            if (Reader != null)
+            {
+                using var w = new GameBoxWriter(stream, Reader.Lookbackable);
+                w.Write(Reader.ReadInt16());
+                w.Flush();
+            }
+            else if (Writer != null)
+            {
+                using var r = new GameBoxReader(stream, Writer.Lookbackable);
+                Writer.Write(r.ReadInt16());
+            }
+        }
+
         public int Int32(int variable)
         {
             if (Reader != null) return Reader.ReadInt32();
