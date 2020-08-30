@@ -13,7 +13,7 @@
 - [0x008 (stunts)](#0x008-stunts)
 - [0x00A - skippable](#0x00A---skippable)
 - [0x00D](#0x00D)
-- [0x00E - skippable](#0x00E---skippable)
+- [0x00E - skippable (map type)](#0x00E---skippable-map-type)
 
 ### 0x000
 
@@ -35,16 +35,16 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
-int b |
-int c |
-int d |
-int e |
-int f |
-int g |
-int h |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| int a | ~ | ~ | ~ | ~ | ~
+| int b | ~ | ~ | ~ | ~ | ~
+| int c | ~ | ~ | ~ | ~ | ~
+| int d | ~ | ~ | ~ | ~ | ~
+| int e | ~ | ~ | ~ | ~ | ~
+| int f | ~ | ~ | ~ | ~ | ~
+| int g | ~ | ~ | ~ | ~ | ~
+| int h | ~ | ~ | ~ | ~ | ~
 
 ### 0x001
 
@@ -86,24 +86,24 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
-int b |
-int c |
-float d |
-float e |
-float f |
-int g |
-int h |
-int i |
-int j |
-int k |
-int l |
-int m |
-int n |
-int o |
-int p |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| int a | ~ | ~ | ~ | ~ | ~
+| int b | ~ | ~ | ~ | ~ | ~
+| int c | ~ | ~ | ~ | ~ | ~
+| float d | ~ | ~ | ~ | ~ | ~
+| float e | ~ | ~ | ~ | ~ | ~
+| float f | ~ | ~ | ~ | ~ | ~
+| int g | ~ | ~ | ~ | ~ | ~
+| int h | ~ | ~ | ~ | ~ | ~
+| int i | ~ | ~ | ~ | ~ | ~
+| int j | ~ | ~ | ~ | ~ | ~
+| int k | ~ | ~ | ~ | ~ | ~
+| int l | ~ | ~ | ~ | ~ | ~
+| int m | ~ | ~ | ~ | ~ | ~
+| int n | ~ | ~ | ~ | ~ | ~
+| int o | ~ | ~ | ~ | ~ | ~
+| int p | ~ | ~ | ~ | ~ | ~
 
 ### 0x003
 
@@ -123,14 +123,14 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
-float b |
-int c |
-int d |
-int e |
-int f |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | ---
+| int a | ~ | ~ | ~ | ~ | ~
+| float b | ~ | ~ | ~ | ~ | ~
+| int c | ~ | ~ | ~ | ~ | ~
+| int d | ~ | ~ | ~ | ~ | ~
+| int e | ~ | ~ | ~ | ~ | ~
+| int f | ~ | ~ | ~ | ~ | ~
 
 ### 0x004
 
@@ -148,9 +148,9 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | ---
+| int a | ~ | ~ | ~ | ~ | ~
 
 ### 0x005
 
@@ -165,11 +165,11 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
-int b |
-int c |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | ---
+| int a | ~ | ~ | ~ | ~ | ~
+| int b | ~ | ~ | ~ | ~ | ~
+| int c | ~ | ~ | ~ | ~ | ~
 
 ### 0x006
 
@@ -193,9 +193,9 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-uint a |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | ---
+| uint a | ~ | ~ | ~ | ~ | ~
 
 ### 0x008 (stunts)
 
@@ -209,6 +209,20 @@ void Read(GameBoxReader r)
 
 ### 0x00A - skippable
 
+```cs
+void Read(GameBoxReader r)
+{
+	int a = r.ReadInt32();
+
+	int bronzeTime = r.ReadInt32();
+	int silverTime = r.ReadInt32();
+	int goldTime = r.ReadInt32();
+	int authorTime = r.ReadInt32();
+	int timeLimit = r.ReadInt32();
+	int authorScore = r.ReadInt32();
+}
+```
+
 ### 0x00D
 
 ```cs
@@ -220,25 +234,23 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | ---
+| int a | ~ | ~ | ~ | ~ | ~
 
-### 0x00E - skippable
+### 0x00E - skippable (map type)
 
 ```cs
 void Read(GameBoxReader r)
 {
+	string mapType = r.ReadString();
+	string mapStyle = r.ReadString();
 	int a = r.ReadInt32();
-	int b = r.ReadInt32();
-	int c = r.ReadInt32();
 }
 ```
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
-int b |
-int c |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | ---
+| int a | ~ | ~ | ~ | ~ | ~

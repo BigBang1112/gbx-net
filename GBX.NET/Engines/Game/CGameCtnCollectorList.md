@@ -9,9 +9,9 @@
 ```cs
 void Read(GameBoxReader r)
 {
-	int num = r.ReadInt32();
+	int numCollectors = r.ReadInt32();
 
 	for(var i = 0; i < num; i++)
-		Meta meta = r.ReadMeta();
+		Meta collector = r.ReadMeta();
 }
 ```

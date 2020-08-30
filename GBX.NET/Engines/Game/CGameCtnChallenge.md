@@ -36,21 +36,25 @@ The class behind every single map made in Trackmania.
 - 0x038 - skippable
 - [0x03D - skippable (lightmaps)](#0x03D---skippable-lightmaps)
 - 0x03E - skippable
-- 0x042 - skippable
+- [0x040 - skippable (items)](#0x040---skippable-items)
+- [0x042 - skippable (author)](#0x042---skippable-author)
 - 0x043 - skippable
-- 0x044 - skippable (metadata)
+- [0x044 - skippable (metadata)](0x044---skippable-metadata)
 - 0x048 - skippable
-- 0x049 (mediatracker)
+- [0x049 (mediatracker)](0x049-mediatracker)
+- [0x04B - skippable (objectives)](#0x04B---skippable-objectives)
 - 0x050 - skippable
-- 0x051 - skippable
+- [0x051 - skippable (title info)](#0x051---skippable-title-info)
 - 0x052 - skippable
 - 0x053 - skippable
-- 0x054 - skippable (embedded items)
+- 0x054 - skippable
 - 0x055 - skippable
 - 0x056 - skippable
 - 0x057 - skippable
 - 0x058 - skippable
-- 0x059 - skippable
+- [0x059 - skippable](#0x059---skippable)
+- 0x05A - skippable (TM®️)
+- [0x05F - skippable (free blocks) [TM®️]](#0x05F---skippable-free-blocks-tm®)
 
 ### 0x001 (Virtual Skipper)
 
@@ -207,17 +211,17 @@ public enum AILevel : byte
 
 #### Unknown variables
 
-Variable | Map 1 | Map 2 | Map 3 | Map 4 | Map 5
-- | - | - | - | - | - 
-bool a | false | true | true | false | true
-int b | 0 | 1 | 5 | 0 | 1
-byte c | 0 | 1 | 5 | 0 | 1
-byte d | 0 | 1 | 5 | 0 | 1
-byte e | 0 | 1 | 5 | 0 | 1
-byte f | 0 | 1 | 5 | 0 | 1
-byte g | 0 | 1 | 5 | 0 | 1
-bool h | true | false | true | true | true
-string i | "" | "" | "" | "" | ""
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| bool a | ~ | ~ | ~ | ~ | ~
+| int b | ~ | ~ | ~ | ~ | ~
+| byte c | ~ | ~ | ~ | ~ | ~
+| byte d | ~ | ~ | ~ | ~ | ~
+| byte e | ~ | ~ | ~ | ~ | ~
+| byte f | ~ | ~ | ~ | ~ | ~
+| byte g | ~ | ~ | ~ | ~ | ~
+| bool h | ~ | ~ | ~ | ~ | ~
+| string i | ~ | ~ | ~ | ~ | ~
 
 ### 0x002 (map info)
 
@@ -293,13 +297,13 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
-byte b |
-int c |
-int d |
-int e |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | ---
+| int a | ~ | ~ | ~ | ~ | ~
+| byte b | ~ | ~ | ~ | ~ | ~
+| int c | ~ | ~ | ~ | ~ | ~
+| int d | ~ | ~ | ~ | ~ | ~
+| int e | ~ | ~ | ~ | ~ | ~
 
 ### 0x003 (common)
 
@@ -384,10 +388,10 @@ public enum TrackKind : byte
 
 #### Unknown variables
 
-Variable |
-- |
-byte[] a |
-bool b |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| byte[] a | ~ | ~ | ~ | ~ | ~
+| bool b | ~ | ~ | ~ | ~ | ~
 
 ### 0x004 (version)
 
@@ -461,7 +465,7 @@ void Read(GameBoxReader r)
 
 	int numBlocks = r.ReadInt32();
 	for (var i = 0; i < numBlocks; i++)
-		NodeRef<CGameCtnBlock> block = r.ReadNodeRef();
+		CGameCtnBlock block = r.ReadNodeRef<CGameCtnBlock>();
 
 	int a = r.ReadInt32();
 	int b = r.ReadMeta();
@@ -473,8 +477,8 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	NodeRef<CGameCtnCollectorList> collectorList = r.ReadNodeRef();
-	NodeRef<CGameCtnChallengeParameters> challengeParameters = r.ReadNodeRef();
+	CGameCtnCollectorList collectorList = r.ReadNodeRef<CGameCtnCollectorList>();
+	CGameCtnChallengeParameters challengeParameters = r.ReadNodeRef<CGameCtnChallengeParameters>();
 	TrackKind kind = (TrackKind)r.ReadInt32();
 }
 ```
@@ -511,9 +515,9 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-string a |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| string a | ~ | ~ | ~ | ~ | ~
 
 ### 0x013 (legacy block data)
 
@@ -536,9 +540,9 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| int a | ~ | ~ | ~ | ~ | ~
 
 ### 0x016 - skippable
 
@@ -551,9 +555,9 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-int a |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | ---
+| int a | ~ | ~ | ~ | ~ | ~
 
 ### 0x017 - skippable (checkpoints)
 
@@ -564,7 +568,7 @@ void Read(GameBoxReader r)
 {
 	int numCheckpoints = r.ReadInt32();
 	for(var i = 0; i < numCheckpoints; i++)
-		(int, int, int) checkpointCoord = r.ReadInt3();
+		Int3 checkpointCoord = r.ReadInt3();
 }
 ```
 
@@ -637,25 +641,11 @@ void Read(GameBoxReader r)
 		if ((flags & 0x8000) != 0) // custom block
 		{
 			LookbackString author = r.ReadLookbackString();
-			NodeRef<CGameCtnBlockSkin> skin = r.ReadNodeRef();
+			CGameCtnBlockSkin skin = r.ReadNodeRef<CGameCtnBlockSkin>();
 		}
 
 		if ((flags & 0x100000) != 0)
-			NodeRef<CGameWaypointSpecialProperty> parameters = r.ReadNodeRef();
-	}
-
-	// Some blocks appear after the number of blocks for unknown reason.
-	// The loop below is one of my own solutions.
-
-	// It basically checks if the next uint is a chunk ID, without moving the cursor.
-	// If not, it reads the mysterious block.
-
-	while(!GetAllChunkIDs<CGameCtnChallenge>().Contains(r.PeekUInt32()))
-	{
-		LookbackString blockName = r.ReadLookbackString();
-		Direction dir = (Direction)r.ReadByte();
-		(byte, byte, byte) coord = r.ReadByte3();
-		int flags = r.ReadInt32(); // Always -1
+			CGameWaypointSpecialProperty parameters = r.ReadNodeRef<CGameWaypointSpecialProperty>();
 	}
 }
 ```
@@ -677,9 +667,9 @@ public enum Direction : byte
 ```cs
 void Read(GameBoxReader r)
 {
-	NodeRef<CGameCtnMediaClip> clipIntro = r.ReadNodeRef();
-	NodeRef<CGameCtnMediaClipGroup> clipGroupInGame = r.ReadNodeRef();
-	NodeRef<CGameCtnMediaClipGroup> clipGroupEndRace = r.ReadNodeRef();
+	CGameCtnMediaClip clipIntro = r.ReadNodeRef<CGameCtnMediaClip>();
+	CGameCtnMediaClipGroup clipGroupInGame = r.ReadNodeRef<CGameCtnMediaClipGroup>();
+	CGameCtnMediaClipGroup clipGroupEndRace = r.ReadNodeRef<CGameCtnMediaClipGroup>();
 }
 ```
 
@@ -694,9 +684,9 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-bool a |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| bool a | ~ | ~ | ~ | ~ | ~
 
 ### 0x024 (music)
 
@@ -712,8 +702,8 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	(float, float) mapCoordOrigin = r.ReadVec2();
-	(float, float) mapCoordTarget = r.ReadVec2();
+	Vec2 mapCoordOrigin = r.ReadVec2();
+	Vec2 mapCoordTarget = r.ReadVec2();
 }
 ```
 
@@ -736,10 +726,10 @@ void Read(GameBoxReader r)
 	if (archiveGmCamVal)
 	{
 		byte a = r.ReadByte();
-		(float, float, float) b = r.ReadVec3();
-		(float, float, float) c = r.ReadVec3();
-		(float, float, float) d = r.ReadVec3();
-		(float, float, float) e = r.ReadVec3();
+		Vec3 b = r.ReadVec3();
+		Vec3 c = r.ReadVec3();
+		Vec3 d = r.ReadVec3();
+		Vec3 e = r.ReadVec3();
 		float f = r.ReadSingle();
 		float g = r.ReadSingle();
 		float h = r.ReadSingle();
@@ -749,16 +739,16 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-byte a |
-(float, float, float) b |
-(float, float, float) c |
-(float, float, float) d |
-(float, float, float) e |
-float f |
-float g |
-float h |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| byte a | ~ | ~ | ~ | ~ | ~
+| Vec3 b | ~ | ~ | ~ | ~ | ~
+| Vec3 c | ~ | ~ | ~ | ~ | ~
+| Vec3 d | ~ | ~ | ~ | ~ | ~
+| Vec3 e | ~ | ~ | ~ | ~ | ~
+| float f | ~ | ~ | ~ | ~ | ~
+| float g | ~ | ~ | ~ | ~ | ~
+| float h | ~ | ~ | ~ | ~ | ~
 
 ### 0x028 (comments)
 
@@ -771,6 +761,8 @@ void Read(GameBoxReader r)
 ```
 
 ### 0x029 - skippable (password)
+
+If you want to remove a password from a map, you can just remove this chunk.
 
 ```cs
 void Read(GameBoxReader r)
@@ -791,9 +783,9 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-bool a |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| bool a | ~ | ~ | ~ | ~ | ~
 
 ### 0x034 - skippable
 
@@ -802,8 +794,8 @@ bool a |
 ```cs
 void Read(GameBoxReader r)
 {
-	(float, float, float) thumbnailPosition = r.ReadVec3();
-	(float, float, float) thumbnailPitchYawRoll = r.ReadVec3(); // in radians
+	Vec3 thumbnailPosition = r.ReadVec3();
+	Vec3 thumbnailPitchYawRoll = r.ReadVec3(); // in radians
 	float thumbnailFOV = r.ReadSingle();
 
 	float a = r.ReadSingle();
@@ -816,13 +808,13 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-float a |
-float b |
-float c |
-float d |
-float e |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| float a | ~ | ~ | ~ | ~ | ~
+| float b | ~ | ~ | ~ | ~ | ~
+| float c | ~ | ~ | ~ | ~ | ~
+| float d | ~ | ~ | ~ | ~ | ~
+| float e | ~ | ~ | ~ | ~ | ~
 
 ### 0x038 - skippable
 
@@ -864,9 +856,12 @@ void Read(GameBoxReader r)
 		{
 			int uncompressedSize = r.ReadInt32();
 			int compressedSize = r.ReadInt32();
-			byte[] data = r.ReadBytes(compressedSize); // ZLIB compressed data
+			byte[] lightmapCacheData = r.ReadBytes(compressedSize); // ZLIB compressed data
 
-			CHmsLightMapCache lightmapCache = DecompressZLIB(data);
+			using (var ms = new MemoryStream(data))
+            using (var zlib = new InflaterInputStream(ms))
+            using (var gbxr = new GameBoxReader(zlib))
+				CHmsLightMapCache lightmapCache = Parse(gbxr);
 		}
 	}
 }
@@ -874,24 +869,416 @@ void Read(GameBoxReader r)
 
 #### Unknown variables
 
-Variable |
-- |
-bool a |
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| bool a | ~ | ~ | ~ | ~ | ~
 
 ### 0x03E - skippable
-### 0x042 - skippable
-### 0x043 - skippable
+### 0x040 - skippable (items)
+
+**Note: This chunk has it's own lookback.**
+
+```cs
+void Read(GameBoxReader r)
+{
+	int version = r.ReadInt32();
+
+	if (Version != 0)
+	{
+		int a = r.ReadInt32();
+		int size = r.ReadInt32();
+		int b = r.ReadInt32();
+		
+		int numItems = r.ReadInt32();
+
+		for (var i = 0; i < numItems; i++)
+			CGameCtnAnchoredObject item = Parse<CGameCtnAnchoredObject>(r);
+
+		int c = r.ReadInt32();
+	}
+}
+```
+
+### 0x042 - skippable (author)
+
+```cs
+void Read(GameBoxReader r)
+{
+	int version = r.ReadInt32();
+	int authorVersion = r.ReadInt32();
+	string authorLogin = r.ReadString();
+	string authorNickname = r.ReadString();
+	string authorZone = r.ReadString();
+	string authorExtraInfo = r.ReadString();
+}
+```
+
+### 0x043 - skippable (genealogy)
+
+**Note: This chunk has it's own lookback.**
+
+```cs
+void Read(GameBoxReader r)
+{
+	int version = r.ReadInt32();
+	int size = r.ReadInt32();
+	byte[] data = r.ReadBytes(size);
+
+	using(var ms = new MemoryStream(data));
+	using(var r2 = new GameBoxReader(ms, this));
+
+	int numGenealogies = r2.ReadInt32();
+
+	for(var i = 0; i < numGenealogies; i++)
+		CGameCtnZoneGenealogy zoneGenealogy = Parse<CGameCtnZoneGenealogy>(r2);
+}
+```
+
+Note: There's usually a LOT of zone genealogy classes which with a the current parser of GBX.NET can take over 3 seconds to read all.
+You can take the `byte[] data` to process on a seperate thread, or just at a time it's needed.
+
 ### 0x044 - skippable (metadata)
+
+Note: Purely theoretical read of ManiaPlanet 4.1+ metadata
+
+```cs
+void Read(GameBoxReader r)
+{
+	int unknown = r.ReadInt32();
+	int size = r.ReadInt32();
+	uint classID = r.ReadUInt32(); // CScriptTraitsMetadata
+	int version = r.ReadInt32();
+
+	byte typeCount = r.ReadByte();
+	Type[] types = new Types[typeCount];
+
+	for (var i = 0; i < typeCount; i++)
+	{
+		byte varType;
+
+		switch (varType)
+		{
+			case 7: // Array
+				ReadScriptArray();
+				break;
+			case 15: // Struct
+				ReadScriptStruct();
+				break;
+		}
+
+		types[i] = ConstructType();
+	}
+
+	byte varCount = r.ReadByte();
+
+	for (var i = 0; i < varCount; i++)
+	{
+		string metadataVarNam = r.ReadString(); // If smaller than 255, length must be read as byte, not integer!
+		byte typeIndex = r.ReadByte();
+
+		ReadType(types[typeIndex]);
+	}
+
+	void ReadScriptArray()
+	{
+		ScriptVariable indexVar;
+
+		byte indexType = r.ReadByte(); // Array index type
+		if (indexType == 15) // Struct
+			ReadScriptStruct(); // Haven't tested this case, might bug out, but structs can be apparently used as an index
+
+		byte arrayType = r.ReadByte(); // Array value type
+		if (arrayType == 7) // Array
+			ReadScriptArray();
+		else if (arrayType == 15) // Struct
+			ReadScriptStruct();
+
+		ReadUntilByteIsNotZero(); // Sometimes the amount of zero bytes is 1 when struct array, could be a struct read issue, usually 0
+	}
+
+	ScriptStruct ReadScriptStruct(out int defaultLength)
+	{
+		byte numMembers = r.ReadByte();
+		string structName = r.ReadString();
+
+		for (var i = 0; i < numMembers; i++)
+		{
+			string memberName = r.ReadString();
+			byte memberType = r.ReadByte();
+
+			switch (memberType)
+			{
+				case 7: // Array
+					ReadScriptArray();
+					break;
+				case 15: // Struct
+					ReadScriptStruct();
+					break;
+			}
+
+			switch (memberType)
+			{
+				case ScriptType.Integer:
+					int default = r.ReadInt32();
+					break;
+				case ScriptType.Real:
+					float default = r.ReadString();
+					break;
+				case ScriptType.Vec2:
+					Vec2 default = r.ReadVec2();
+					break;
+				case ScriptType.Vec3:
+					Vec3 default = r.ReadVec3();
+					break;
+				case ScriptType.Int3:
+					Int3 default = r.ReadInt3();
+					break;
+				case ScriptType.Int2:
+					Int2 default = r.ReadInt2();
+					break;
+				case ScriptType.Array:
+					break;
+				case ScriptType.Struct:
+					break;
+				default:
+					byte default = r.ReadByte();
+					break;
+			}
+		}
+
+		ReadUntilByteIsNotZero();
+	}
+
+	Type ReadType(Type type)
+	{
+		switch (type.Type)
+		{
+			case ScriptType.Boolean:
+				byte boolean = r.ReadByte();
+				break;
+			case ScriptType.Integer:
+				int integer = r.ReadInt32();
+				break;
+			case ScriptType.Real:
+				float real = r.ReadSingle();
+				break;
+			case ScriptType.Text:
+				string str = r.ReadString(); // If smaller than 255, length must be read as byte, not integer!
+				break;
+			case ScriptType.Vec2:
+				Vec2 vec2 = r.ReadVec2();
+				break;
+			case ScriptType.Vec3:
+				Vec3 vec3 = r.ReadVec3();
+				break;
+			case ScriptType.Int3:
+				Int3 int3 = r.ReadInt3();
+				break;
+			case ScriptType.Int2:
+				Int2 int2 = r.ReadInt2();
+				break;
+			case ScriptType.Array:
+				byte numElements = r.ReadByte();
+
+				if (numElements > 0)
+				{
+					if (type.Key == ScriptType.Void)
+					{
+						for (var i = 0; i < numElements; i++)
+							ReadType(type.Value);
+					}
+					else
+					{
+						ReadType(type.Key);
+						for (var i = 0; i < numElements; i++)
+							ReadType(type.Key);
+					}
+				}
+				break;
+			case ScriptType.Struct:
+				for (var i = 0; i < type.Members.Length; i++)
+					type.Members[i] = ReadType(type.Members[i]);
+				break;
+		}
+	}
+}
+```
+
+#### Enums
+
+```cs
+public enum ScriptType
+{
+	Void,
+	Boolean,
+	Integer,
+	Real,
+	Class, // Not allowed for metadata
+	Text,
+	Enum,
+	Array,
+	ParamArray,
+	Vec2,
+	Vec3,
+	Int3,
+	Iso4, // Not allowed for metadata
+	Ident, // Not allowed for metadata
+	Int2,
+	Struct
+}
+```
+
 ### 0x048 - skippable
+
 ### 0x049 (mediatracker)
+
+```cs
+void Read(GameBoxReader r)
+{
+	int version = r.ReadInt32();
+
+	CGameCtnMediaClip clipIntro = r.ReadNodeRef<CGameCtnMediaClip>();
+	CGameCtnMediaClip clipPodium = r.ReadNodeRef<CGameCtnMediaClip>();
+	CGameCtnMediaClipGroup clipGroupInGame = r.ReadNodeRef<CGameCtnMediaClipGroup>();
+	CGameCtnMediaClipGroup clipGroupEndRace = r.ReadNodeRef<CGameCtnMediaClipGroup>();
+
+	if(version >= 2)
+        CGameCtnMediaClip clipAmbiance = r.ReadNodeRef<CGameCtnMediaClip>();
+
+	int a = r.ReadInt32();
+    int b = r.ReadInt32();
+    int c = r.ReadInt32();
+}
+```
+
+#### Unknown variables
+
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| int a | ~ | ~ | ~ | ~ | ~
+| int b | ~ | ~ | ~ | ~ | ~
+| int c | ~ | ~ | ~ | ~ | ~
+
+### 0x04B - skippable (objectives)
+
+```cs
+void Read(GameBoxReader r)
+{
+	string objectiveTextAuthor = r.ReadString();
+	string objectiveTextGold = r.ReadString();
+	string objectiveTextSilver = r.ReadString();
+	string objectiveTextBronze = r.ReadString();
+}
+```
+
 ### 0x050 - skippable
-### 0x051 - skippable
+
+Undiscovered.
+
+### 0x051 - skippable (title info)
+
+```cs
+void Read(GameBoxReader r)
+{
+	int version = r.ReadInt32();
+    string titleID = r.ReadLookbackString();
+    string buildVersion = r.ReadString();
+}
+```
+
 ### 0x052 - skippable
+
+Undiscovered.
+
 ### 0x053 - skippable
-### 0x054 - skippable (embedded items)
+
+Undiscovered.
+
+### 0x054 - skippable
+
+Undiscovered.
+
 ### 0x055 - skippable
+
+Undiscovered.
+
 ### 0x056 - skippable
+
+Undiscovered.
+
 ### 0x057 - skippable
+
+Undiscovered.
+
 ### 0x058 - skippable
+
+Undiscovered.
+
 ### 0x059 - skippable
+
+```cs
+void Read(GameBoxReader r)
+{
+	int version = r.ReadInt32(); // 3
+
+	Vec3 a = r.ReadVec3();
+
+	if (version != 0)
+	{
+		bool b = r.ReadBoolean();
+
+		if (Version >= 3)
+		{
+			float c = r.ReadSingle();
+			float d = r.ReadSingle();
+		}
+	}
+}
+```
+
+#### Unknown variables
+
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| Vec3 a | ~ | ~ | ~ | ~ | ~
+| bool b | ~ | ~ | ~ | ~ | ~
+| float c | ~ | ~ | ~ | ~ | ~
+| float d | ~ | ~ | ~ | ~ | ~
+
 ### 0x05A - skippable [TM®️]
+
+Undiscovered.
+
+### 0x05F - skippable (free blocks) [TM®️]
+
+```cs
+void Read(GameBoxReader r)
+{
+	int version = r.ReadInt32();
+
+	List<Vec3> vectors = new List<Vec3>();
+	while (r.BaseStream.Position < r.BaseStream.Length)
+		vectors.Add(new Vec3(r.ReadSingle(), r.ReadSingle(), r.ReadSingle()));
+}
+```
+
+This chunk data strictly relies on the 0x01F chunk data.
+
+To understand the vectors, the amount of them is undefined in this chunk. The structure of the vector list looks something like this:
+- 1st free block in 0x01F
+	- Vec3 absolutePositionInMap
+	- Vec3 pitchYawRoll
+	- for each snap point of that block
+		- Vec3 snapPointPosition
+		- Vec3 snapPointPitchYawRoll
+- 2nd free block in 0x01F
+	- Vec3 absolutePositionInMap
+	- Vec3 pitchYawRoll
+	- for each snap point of that block
+		- Vec3 snapPointPosition
+		- Vec3 snapPointPitchYawRoll
+- ...
+
+You can't tell the amount of free blocks without the chunk 0x01F (because of the snap points). Free block in the block flags is defined by the bit 29. If the bit is set, the block is a free block. Free blocks also have a coordinate (0, 0, 0).
+
+You also can't tell the amount of free blocks without knowing the amount of snap points the block model has. It is unsure where this information is available, but probably in the CGameCtnBlockInfo nodes which are available in the PAK files.
