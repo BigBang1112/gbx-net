@@ -119,16 +119,28 @@ namespace GBX.NET
 
         public Node ReadNodeRef(IGameBoxBody body)
         {
-            var index = ReadInt32() - 1;
+            var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
-            if (index >= 0 && body.AuxilaryNodes.Count <= index)
+            if (index >= 0 && body.AuxilaryNodes.ElementAtOrDefault(index) == null) // If index is 0 or bigger and the node wasn't read yet
             {
                 var classID = ReadUInt32();
                 Debug.WriteLine("Node ref class: " + classID.ToString("x8"));
-                body.AuxilaryNodes.Add(Node.Parse(body, classID, this));
+
+                Node node = Node.Parse(body, classID, this);
+
+                if (index >= body.AuxilaryNodes.Count)
+                    body.AuxilaryNodes.Add(node);
+                else
+                    body.AuxilaryNodes.Insert(index, node);
             }
 
-            return body.AuxilaryNodes.ElementAtOrDefault(index);
+            if (index < 0) // If aux node index is below 0 then there's not much to solve
+                return null;
+            var nod = body.AuxilaryNodes.ElementAtOrDefault(index); // Tries to get the available node from index
+            if (nod == null) // But sometimes it indexes the node reference that is further in the expected indexes
+                return body.AuxilaryNodes.Last(); // So it grabs the last one instead, needs to be further tested
+            else // If the node is presented at the index, then it's simple
+                return nod;
         }
 
         public Node ReadNodeRef()

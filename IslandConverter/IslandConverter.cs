@@ -367,7 +367,7 @@ namespace IslandConverter
                 case MapSize.X32WithBigBorder:
                     Log.Write("Centering the map...");
 
-                    offsetHeight = 16;
+                    offsetHeight = 20;
 
                     map.Size = (64, 64, 64);
 
