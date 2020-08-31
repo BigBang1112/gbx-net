@@ -34,9 +34,7 @@ namespace GBX.NET
                     MainNode.Unknown = true;
                 }
                 else
-                {
                     MainNode = (T)Activator.CreateInstance(availableClass, this, classID);
-                }
 
                 if (parameters.Version == 6)
                 {
@@ -74,16 +72,14 @@ namespace GBX.NET
                             foreach (var chunkType in availableInheritanceClass.GetNestedTypes().Where(x => x.IsClass
                                 && x.Namespace.StartsWith("GBX.NET.Engines") && x.BaseType == typeof(Chunk)
                                 && (x.GetCustomAttribute<ChunkAttribute>().ClassID == cls)).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ChunkID))
-                            {
                                 availableChunkClasses[chunkType.Key + cls] = chunkType.Value;
-                            }
                         }
 
                         using var ms = new MemoryStream(parameters.UserData);
                         using var r = new GameBoxReader(ms, this);
 
                         var numHeaderChunks = r.ReadInt32();
-                        var chunks = new SkippableChunk[numHeaderChunks];
+                        var chunks = new HeaderChunk[numHeaderChunks];
 
                         var chunkList = new Dictionary<uint, (int, bool)>();
 
@@ -119,13 +115,11 @@ namespace GBX.NET
 
                             if (availableChunkClasses.TryGetValue(chunkId, out Type type))
                             {
-                                chunks[counter] = (SkippableChunk)Activator.CreateInstance(type, MainNode, d);
+                                chunks[counter] = (HeaderChunk)Activator.CreateInstance(type, MainNode, d);
                                 chunks[counter].IsHeavy = chunk.Value.Item2;
                             }
                             else
-                            {
-                                chunks[counter] = new SkippableChunk(MainNode, chunkId, d);
-                            }
+                                chunks[counter] = new HeaderChunk(MainNode, chunkId, d);
 
                             counter++;
                         }
@@ -183,7 +177,7 @@ namespace GBX.NET
                     // Write number of header chunks integer
                     w.Write(MainNode.Chunks.Count);
 
-                    foreach (SkippableChunk chunk in MainNode.Chunks.Values)
+                    foreach (HeaderChunk chunk in MainNode.Chunks.Values)
                     {
                         w.Write(Chunk.Remap(chunk.ID, remap));
                         var length = lengths[chunk.ID];
