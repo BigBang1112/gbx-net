@@ -6,7 +6,7 @@
     <Authors>BigBang1112</Authors>
     <Company>BigBang1112</Company>
     <PackageLicenseExpression></PackageLicenseExpression>
-    <Version>0.0.2</Version>
+    <Version>0.0.3</Version>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Copyright />
@@ -32,7 +32,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Engines\GameData\CGameItemModel.cs" />
     <Compile Remove="Engines\GameData\CGameObjectPhyModel.cs" />
     <Compile Remove="Engines\GameData\CGameObjectVisModel.cs" />
     <Compile Remove="Engines\Plug\CPlugDataTape.cs" />
@@ -48,11 +47,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Engines\Plug\CPlugDataTape.cs" />
+    <None Include="Engines\Plug\CPlugEntRecordData.cs" />
+    <None Include="Engines\Plug\CPlugSurface.cs" />
+    <None Include="Engines\Plug\CPlugVehicleCarPhyShape.cs" />
+    <None Include="Engines\Plug\CPlugVehiclePhyModel.cs" />
+    <None Include="Engines\Plug\CPlugVehicleVisModel.cs" />
     <None Include="LICENSE.txt">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include="NodeRef.cs" />
   </ItemGroup>
 
   <ItemGroup>
