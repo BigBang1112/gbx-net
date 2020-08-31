@@ -13,6 +13,7 @@ namespace GBX.NET
         public override uint ID => chunkID;
         [IgnoreDataMember]
         public MemoryStream Stream { get; }
+        public bool IsHeavy { get; set; }
 
         public int Length => (int)Stream.Length;
         public bool Discovered { get; private set; }

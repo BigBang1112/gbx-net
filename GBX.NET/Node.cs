@@ -167,9 +167,19 @@ namespace GBX.NET
                 return classes;
             }
 
-            availableChunkClasses = type.GetNestedTypes().Where(x => x.IsClass
-                && x.Namespace.StartsWith("GBX.NET.Engines") && (x.BaseType == typeof(Chunk) || x.BaseType == typeof(SkippableChunk))
-                && (x.GetCustomAttribute<ChunkAttribute>().ClassID == type.GetCustomAttribute<NodeAttribute>().ID)).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ChunkID);
+            availableChunkClasses = type.GetNestedTypes().Where(x =>
+            {
+                var isChunk = x.IsClass
+                && x.Namespace.StartsWith("GBX.NET.Engines")
+                && (x.BaseType == typeof(Chunk) || x.BaseType == typeof(SkippableChunk));
+                if (!isChunk) return false;
+
+                var chunkAttribute = x.GetCustomAttribute<ChunkAttribute>();
+                if (chunkAttribute == null) throw new Exception($"Chunk {x.FullName} doesn't have a ChunkAttribute.");
+
+                var attributesMet = chunkAttribute.ClassID == type.GetCustomAttribute<NodeAttribute>().ID;
+                return isChunk && attributesMet;
+            }).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ChunkID);
 
             foreach (var cls in inheritanceClasses)
             {

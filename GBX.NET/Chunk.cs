@@ -16,7 +16,6 @@ namespace GBX.NET
         /// </summary>
         [IgnoreDataMember]
         public MemoryStream Unknown { get; }
-        public bool IsHeavy { get; set; }
 
         public bool IsHeader => Node.Lookbackable is GameBoxHeader;
         public bool IsBody => Node.Lookbackable is IGameBoxBody;

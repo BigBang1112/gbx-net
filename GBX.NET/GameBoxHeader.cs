@@ -183,7 +183,7 @@ namespace GBX.NET
                     // Write number of header chunks integer
                     w.Write(MainNode.Chunks.Count);
 
-                    foreach (var chunk in MainNode.Chunks.Values)
+                    foreach (SkippableChunk chunk in MainNode.Chunks.Values)
                     {
                         w.Write(Chunk.Remap(chunk.ID, remap));
                         var length = lengths[chunk.ID];
