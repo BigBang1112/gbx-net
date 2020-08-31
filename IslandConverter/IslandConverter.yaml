@@ -1,4 +1,4 @@
-﻿IslandGrass:
+IslandGrass:
 - ItemModel:
   - 8Terrain\9Grass\9Grass\Grass.Item.gbx
 
@@ -607,10 +607,19 @@ IslandPlatformRoad:
       - 6Platform\2Pillars\9PlatformUniversal\PlatformPillarWater.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
 - Air:
-    ItemModel:
-    - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar4.Item.gbx
-    OffsetAbsolutePosition: [0, -4, 0]
-    OffsetDirection: 3
+    ItemModels:
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar4.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 0
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 1
   Ground:
     ItemModels:
     - ItemModel:
@@ -618,17 +627,58 @@ IslandPlatformRoad:
       OffsetAbsolutePosition: [0, -4, 0]
       OffsetDirection: 3
     - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 0
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 1
+    - ItemModel:
       - 6Platform\2Pillars\9PlatformUniversal\PlatformPillarWater.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
 - Air:
-    ItemModel:
-    - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVarDef.Item.gbx
-    OffsetAbsolutePosition: [0, -4, 0]
+    ItemModels:
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVarDef.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 0
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 1
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 2
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
   Ground:
     ItemModels:
     - ItemModel:
       - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVarDef.Item.gbx
       OffsetAbsolutePosition: [0, -4, 0]
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 0
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 1
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 2
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
     - ItemModel:
       - 6Platform\2Pillars\9PlatformUniversal\PlatformPillarWater.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
@@ -689,10 +739,19 @@ IslandPlatformRoadSupport:
       - 6Platform\2Pillars\9PlatformUniversal\PlatformPillarWater.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
 - Air:
-    ItemModel:
-    - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar4.Item.gbx
-    OffsetAbsolutePosition: [0, -4, 0]
-    OffsetDirection: 3
+    ItemModels:
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar4.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 0
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 1
   Ground:
     ItemModels:
     - ItemModel:
@@ -700,17 +759,58 @@ IslandPlatformRoadSupport:
       OffsetAbsolutePosition: [0, -4, 0]
       OffsetDirection: 3
     - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 0
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 1
+    - ItemModel:
       - 6Platform\2Pillars\9PlatformUniversal\PlatformPillarWater.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
 - Air:
-    ItemModel:
-    - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVarDef.Item.gbx
-    OffsetAbsolutePosition: [0, -4, 0]
+    ItemModels:
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVarDef.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 0
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 1
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 2
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
   Ground:
     ItemModels:
     - ItemModel:
       - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVarDef.Item.gbx
       OffsetAbsolutePosition: [0, -4, 0]
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 0
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 1
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 2
+    - ItemModel:
+      - 6Platform\9Basic\9Platform\PlatformVariants\PlatformVar5.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
     - ItemModel:
       - 6Platform\2Pillars\9PlatformUniversal\PlatformPillarWater.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
@@ -751,9 +851,15 @@ IslandSeaSignsLightRampPillar:
     ItemModel:
     - 2Deco\5Signs\_Pillar\SignBlock.Item.gbx
   Ground:
-    ItemModel:
-    - 2Deco\5Signs\_Pillar\SignBase.Item.gbx
-    OffsetAbsolutePosition: [0, -8, 0]
+    ItemModels:
+    - ItemModel:
+      - 2Deco\5Signs\_Pillar\SignBlock.Item.gbx
+    - ItemModel:
+      - 2Deco\5Signs\_Pillar\SignBlock.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+    - ItemModel:
+      - 2Deco\5Signs\_Pillar\SignBase.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
 
 IslandCommitee:
 - ItemModel:
@@ -1538,6 +1644,20 @@ IslandCroisetteTurbo:
     - 4Road2\9Basic\6Turbo\Ground\Road2TurboGround.Item.gbx
     OffsetAbsolutePosition: [0, -8, 0]
     OffsetDirection: 3
+    OffsetYFromTerrain: 1
+
+IslandCroisetteTurbo2:
+- Air:
+    ItemModel:
+    - 4Road2\9Basic\5Turbo2\Air\Road2Turbo2.Item.gbx
+    OffsetAbsolutePosition: [0, -8, 0]
+    OffsetDirection: 3
+  Ground:
+    ItemModel:
+    - 4Road2\9Basic\5Turbo2\Ground\Road2Turbo2Ground.Item.gbx
+    OffsetAbsolutePosition: [0, -8, 0]
+    OffsetDirection: 3
+    OffsetYFromTerrain: 1
 
 IslandSeaWayGTCurve3:
 - Air:
@@ -1563,8 +1683,8 @@ IslandSeaWayGTCurve3:
       - 5RoadThin\7Turns\5RoadThinTurnPillars\8Turn3Pillars\9RoadThinTurn3PillarWater.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
       Directions:
-      - OffsetAbsolutePosition: [128, 0, 128]
-      - OffsetAbsolutePosition: [0, 0, 128]
+      - ~
+      - ~
       - ~
       - OffsetAbsolutePosition: [128, 0, 0]
 
@@ -1931,7 +2051,15 @@ IslandTunnelExit:
     OffsetYFromTerrain: -1
 
 IslandSeaWaySlope:
-- Ground:
+- Air:
+    ItemModels:
+    - ItemModel:
+      - 5RoadThin\8Slopes\8RoadThinUpB\RoadThinUpB.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+    - ItemModel:
+      - 5RoadThin\8Slopes\7RoadThinUpPillar\9RoadUpUniPillarTop.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+  Ground:
     ItemModels:
     - ItemModel:
       - 5RoadThin\8Slopes\9RoadThinUp\RoadThinUpA.Item.gbx
@@ -2066,6 +2194,7 @@ IslandCroisette:
 - Air:
     ItemModel:
     - 4Road2\9Basic\9Road\Air\6Road2Turn.Item.gbx
+    OffsetYFromTerrain: 1
     OffsetAbsolutePosition: [0, -8, 0]
   Ground:
     ItemModel:
@@ -2075,6 +2204,7 @@ IslandCroisette:
 - Air:
     ItemModel:
     - 4Road2\9Basic\9Road\Air\8Road2.Item.gbx
+    OffsetYFromTerrain: 1
     OffsetAbsolutePosition: [0, -8, 0]
   Ground:
     ItemModel:
@@ -2085,19 +2215,6 @@ IslandCroisette:
     ItemModel:
     - 4Road2\9Basic\9Road\Ground\5Road2CrossGround.Item.gbx
     OffsetDirection: 3
-    OffsetYFromTerrain: 1
-    OffsetAbsolutePosition: [0, -8, 0]
-
-IslandCroisetteCheckpoint:
-- Air:
-    ItemModel:
-    - 4Road2\9Basic\7Road2CP\Air\Road2CP.Item.gbx
-    OffsetDirection: 2
-    OffsetAbsolutePosition: [0, -8, 0]
-  Ground:
-    ItemModel:
-    - 4Road2\9Basic\7Road2CP\Ground\Road2CPGround.Item.gbx
-    OffsetDirection: 2
     OffsetYFromTerrain: 1
     OffsetAbsolutePosition: [0, -8, 0]
 
@@ -2362,15 +2479,28 @@ IslandPlatformBiSlopeEnd:
     - OffsetAbsolutePosition: [0, 0, 64]
 
 IslandSeaWaySupport:
-- Ground:
+- Air:
+    ItemModels:
+    - ItemModel:
+      - 5RoadThin\9Basic\9RoadThin\Air\9RoadThinBlock.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+    - ItemModel:
+      - 5RoadThin\9Basic\8_RoadThinPillarExtra\9Block\6BlockPillarTop.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+  Ground:
     ItemModel:
     - 5RoadThin\9Basic\9RoadThin\Air\9RoadThinBlock.Item.gbx
     OffsetAbsolutePosition: [0, -8, 0]
 - Air:
-    ItemModel:
-    - 5RoadThin\9Basic\9RoadThin\Air\7RoadThinEnd.Item.gbx
-    OffsetAbsolutePosition: [0, -8, 0]
-    OffsetDirection: 2
+    ItemModels:
+    - ItemModel:
+      - 5RoadThin\9Basic\9RoadThin\Air\7RoadThinEnd.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+      OffsetDirection: 2
+    - ItemModel:
+      - 5RoadThin\9Basic\8_RoadThinPillarExtra\8End\6EndPillarTop.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+      OffsetDirection: 2
   Ground:
     ItemModel:
     - 5RoadThin\9Basic\9RoadThin\Air\7RoadThinEnd.Item.gbx
@@ -2427,22 +2557,24 @@ IslandSeaWaySupport:
       OffsetAbsolutePosition: [0, -8, 0]
 
 IslandSeaWayPillar:
-- ~
+- Air:
+    ItemModel:
+    - 5RoadThin\9Basic\8_RoadThinPillarExtra\9Block\7BlockPillarBlock.Item.gbx
+    OffsetAbsolutePosition: [0, -8, 0]
+  Ground:
+    ItemModel:
+    - 5RoadThin\9Basic\8_RoadThinPillarExtra\9Block\8BlockPillarBase.Item.gbx
+    OffsetAbsolutePosition: [0, -16, 0]
 - Air:
     ItemModel:
     - 5RoadThin\9Basic\8_RoadThinPillarExtra\8End\7EndPillarBlock.Item.gbx
-    OffsetAbsolutePosition: [0, 0, 0]
+    OffsetAbsolutePosition: [0, -8, 0]
     OffsetDirection: 2
   Ground:
-    ItemModels:
-    - ItemModel:
-      - 5RoadThin\9Basic\8_RoadThinPillarExtra\8End\7EndPillarBlock.Item.gbx
-      OffsetAbsolutePosition: [0, 0, 0]
-      OffsetDirection: 2
-    - ItemModel:
-      - 5RoadThin\9Basic\8_RoadThinPillarExtra\8End\8EndPillarBase.Item.gbx
-      OffsetAbsolutePosition: [0, -16, 0]
-      OffsetDirection: 2
+    ItemModel:
+    - 5RoadThin\9Basic\8_RoadThinPillarExtra\8End\8EndPillarBase.Item.gbx
+    OffsetAbsolutePosition: [0, -16, 0]
+    OffsetDirection: 2
 - Air:
     ItemModel:
     - 5RoadThin\9Basic\8_RoadThinPillarExtra\7Turn\7TurnPillarBlock.Item.gbx
@@ -2889,6 +3021,12 @@ IslandTunnelCircularWallV:
   OffsetDirection: 1
   OffsetAbsolutePosition: [0, -8, 0]
 
+IslandTunnelCircularWallH:
+- ItemModel:
+  - 3Tunnels\6Tunnel2\3Obstacle2\Tunnel2Obstacle2.Item.gbx
+  OffsetDirection: 1
+  OffsetAbsolutePosition: [0, -8, 0]
+
 IslandPlatformSlopeSupport:
 - Air:
     ItemModel:
@@ -3118,7 +3256,7 @@ IslandHighWayUTurnSlopeLeft:
       - [1, 0, -1]
       - [1, 0, -2]
       - [0, 0, -2]
-    - OffsetAbsolutePosition: [64, 0, 64]
+    - ~
     - OffsetAbsolutePosition: [64, 0, 0]
       Units:
       - [0, 0, 0]
@@ -3127,14 +3265,6 @@ IslandHighWayUTurnSlopeLeft:
       - [-1, 0, 1]
       - [-1, 0, 2]
       - [0, 0, 2]
-    - OffsetAbsolutePosition: [0, 0, 64]
-      Units:
-      - [0, 0, 0]
-      - [1, 0, 0]
-      - [0, 0, 1]
-      - [1, 0, 1]
-      - [0, 0, 2]
-      - [1, 0, 2]
 
 IslandHighWayTriRamp:
 - Air:
@@ -3241,18 +3371,21 @@ IslandRoadWallCorner:
   OffsetDirection: 3
   OffsetAbsolutePosition: [0, 16, 0]
 
-IslandHills6HighWayBridgeAir:
-- ItemModel:
-  - 7Road\9Basic\9Road\Air\8Road.Item.gbx
-  OffsetAbsolutePosition: [0, -16, 0]
+IslandCroisetteCheckpoint:
+- Air:
+    ItemModel:
+    - 4Road2\9Basic\7Road2CP\Air\Road2CP.Item.gbx
+    OffsetAbsolutePosition: [0, -8, 0]
+    OffsetDirection: 2
 
-IslandRoadWallGTCurve1SlopeLeft:
+IslandTunnelSlope2HoleBase:
 - ItemModel:
-  - 7Road\4Vertical\1RoadVerticalUpTurnMirrored\RoadVerticalUpTurnB.Item.gbx
-  OffsetAbsolutePosition: [0, 16, 0]
-  OffsetDirection: 2
+  - 3Tunnels\8Basic\2TunnelsMix\TunnelsMix.Item.gbx
+  OffsetAbsolutePosition: [0, -8, 0]
+  OffsetPivot: [0, 0.5, 0]
 
-IslandPlatformStartFinishLine:
+IslandTunnelCircularSlopeBase:
 - ItemModel:
-  - 6Platform\9Basic\4PlatformMulti\PlatformMulti.Item.gbx
-  OffsetAbsolutePosition: [0, -4, 0]
+  - 3Tunnels\5Tunnel2Extra\9Tunnel2Up\Tunnel2Up.Item.gbx
+  OffsetAbsolutePosition: [0, -8, 0]
+  OffsetDirection: 1

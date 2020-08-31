@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
 	<UseWindowsForms>true</UseWindowsForms>
-	<Version>0.2.0</Version>
+	<Version>0.3.0</Version>
 	<PackageLicenseExpression></PackageLicenseExpression>
 	<Authors>BigBang1112</Authors>
 	<Product>Island Converter</Product>

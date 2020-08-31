@@ -37,81 +37,74 @@ namespace GBX.NET.Engines.GameData
 
         }
 
-        [Chunk(0x2E002000, 0x000)]
-        public class Chunk000 : Chunk
+        [Chunk(0x2E002000)]
+        public class Chunk2E002000 : SkippableChunk
         {
             public ItemType Type { get; set; }
 
-            public Chunk000(CGameItemModel node, Stream stream, int? length) : base(node, 0x000, length)
+            public Chunk2E002000(CGameItemModel node, byte[] data) : base(node, data)
             {
-                Progress += stream.Read(out int type);
-                Type = (ItemType)type;
+                
+            }
+
+            public override void ReadWrite(GameBoxReaderWriter rw)
+            {
+                Type = (ItemType)rw.Int32((int)Type);
             }
         }
 
-        [Chunk(0x2E002000, 0x001)]
-        public class Chunk001 : Chunk
+        [Chunk(0x2E002008)]
+        public class Chunk2E002008 : Chunk
         {
-            public Chunk001(CGameItemModel node, Stream stream, int? length) : base(node, 0x001, length)
+            public Node[] NadeoSkinFids { get; set; }
+
+            public Chunk2E002008(CGameItemModel node) : base(node)
             {
-                Progress += stream.Read(out int _);
+                
+            }
+
+            public override void ReadWrite(GameBoxReaderWriter rw)
+            {
+                NadeoSkinFids = rw.Array(NadeoSkinFids, i => rw.Reader.ReadNodeRef(), x => rw.Writer.Write(x));
             }
         }
 
-        [Chunk(0x2E002000, 0x008)]
-        public class Chunk008_002 : Chunk
-        {
-            public NodeRef[] NadeoSkinFids { get; }
-
-            public Chunk008_002(CGameItemModel node, Stream stream, int? length) : base(node, 0x008, length)
-            {
-                Progress += stream.Read(out int numNadeoSkinFids);
-                NadeoSkinFids = new NodeRef[numNadeoSkinFids];
-
-                for (var i = 0; i < numNadeoSkinFids; i++)
-                {
-                    Progress += stream.Read(out NodeRef skinFid, GetBody());
-                    NadeoSkinFids[i] = skinFid;
-                }
-            }
-        }
-
-        [Chunk(0x2E002000, 0x009)]
-        public class Chunk009_002 : Chunk
+        [Chunk(0x2E002009)]
+        public class Chunk2E002009 : Chunk
         {
             public int Version { get; set; }
-            public NodeRef[] Cameras { get; }
+            public Node[] Cameras { get; set; }
 
-            public Chunk009_002(CGameItemModel node, Stream stream, int? length) : base(node, 0x009, length)
+            public Chunk2E002009(CGameItemModel node) : base(node)
             {
-                Progress += stream.Read(out int version);
-                Version = version;
+                
+            }
 
-                Progress += stream.Read(out int numCameras);
-                Cameras = new NodeRef[numCameras];
-
-                for (var i = 0; i < numCameras; i++)
-                {
-                    Progress += stream.Read(out NodeRef camera, GetBody());
-                    Cameras[i] = camera;
-                }
+            public override void ReadWrite(GameBoxReaderWriter rw)
+            {
+                Version = rw.Int32(Version);
+                Cameras = rw.Array(Cameras, i => rw.Reader.ReadNodeRef(), x => rw.Writer.Write(x));
             }
         }
 
-        [Chunk(0x2E002000, 0x00C)]
-        public class Chunk00C_002 : Chunk
+        [Chunk(0x2E00200C)]
+        public class Chunk2E00200C : Chunk
         {
-            public NodeRef RaceInterfaceFid { get; }
+            public Node RaceInterfaceFid { get; set; }
 
-            public Chunk00C_002(CGameItemModel node, Stream stream, int? length) : base(node, 0x00C, length)
+            public Chunk2E00200C(CGameItemModel node) : base(node)
             {
-                Progress += stream.Read(out NodeRef raceInterfaceFid, GetBody());
-                RaceInterfaceFid = raceInterfaceFid;
+                
+            }
+
+            public override void ReadWrite(GameBoxReaderWriter rw)
+            {
+                RaceInterfaceFid = rw.NodeRef(RaceInterfaceFid);
             }
         }
 
-        [Chunk(0x2E002000, 0x012)]
-        public class Chunk012 : Chunk
+        [Chunk(0x2E002012)]
+        public class Chunk2E002012 : Chunk
         {
             public Vector3 GroundPoint { get; set; }
             public float PainterGroundMargin { get; set; }
@@ -119,168 +112,215 @@ namespace GBX.NET.Engines.GameData
             public float OrbitalRadiusBase { get; set; }
             public float OrbitalPreviewAngle { get; set; }
 
-            public Chunk012(CGameItemModel node, Stream stream, int? length) : base(node, 0x012, length)
+            public Chunk2E002012(CGameItemModel node) : base(node)
             {
-                Progress += stream.Read(out Vector3 groundPoint);
-                GroundPoint = groundPoint;
+                
+            }
 
-                Progress += stream.Read(out float painterGroundMargin);
-                PainterGroundMargin = painterGroundMargin;
-
-                Progress += stream.Read(out float orbitalCenterHeightFromGround);
-                OrbitalCenterHeightFromGround = orbitalCenterHeightFromGround;
-
-                Progress += stream.Read(out float orbitalRadiusBase);
-                OrbitalRadiusBase = orbitalRadiusBase;
-
-                Progress += stream.Read(out float orbitalPreviewAngle);
-                OrbitalPreviewAngle = orbitalPreviewAngle;
+            public override void ReadWrite(GameBoxReaderWriter rw)
+            {
+                GroundPoint = rw.Vec3(GroundPoint);
+                PainterGroundMargin = rw.Single(PainterGroundMargin);
+                OrbitalCenterHeightFromGround = rw.Single(OrbitalCenterHeightFromGround);
+                OrbitalRadiusBase = rw.Single(OrbitalRadiusBase);
+                OrbitalPreviewAngle = rw.Single(OrbitalPreviewAngle);
             }
         }
 
-        [Chunk(0x2E002000, 0x013)]
-        public class Chunk013 : Chunk
+        [Chunk(0x2E002013)]
+        public class Chunk2E002013 : Chunk
         {
-            public NodeRef BaseAttributes { get; }
+            public Node BaseAttributes { get; set; }
 
-            public Chunk013(CGameItemModel node, Stream stream, int? length) : base(node, 0x013, length)
+            public Chunk2E002013(CGameItemModel node) : base(node)
             {
-                Progress += stream.Read(out NodeRef baseAttributes, GetBody());
-                BaseAttributes = baseAttributes;
+                
+            }
+
+            public override void ReadWrite(GameBoxReaderWriter rw)
+            {
+                BaseAttributes = rw.NodeRef(BaseAttributes);
             }
         }
 
-        [Chunk(0x2E002000, 0x015)]
-        public class Chunk015 : Chunk
+        [Chunk(0x2E002015)]
+        public class Chunk2E002015 : Chunk
         {
             public ItemType ItemObjectType { get; set; }
 
-            public Chunk015(CGameItemModel node, Stream stream, int? length) : base(node, 0x015, length)
+            public Chunk2E002015(CGameItemModel node) : base(node)
             {
-                Progress += stream.Read(out int itemObjectType);
-                ItemObjectType = (ItemType)itemObjectType;
+                
+            }
+
+            public override void ReadWrite(GameBoxReaderWriter rw)
+            {
+                ItemObjectType = (ItemType)rw.Int32((int)ItemObjectType);
             }
         }
 
-        [Chunk(0x2E002000, 0x019)]
-        public class Chunk019 : Chunk
+        [Chunk(0x2E002019)]
+        public class Chunk2E002019 : Chunk
         {
             public int Version { get; set; }
-            public NodeRef PhyModel { get; }
-            public NodeRef VisModel { get; }
-            public NodeRef VisModelStatic { get; }
+            public Node PhyModel { get; set; }
+            public Node VisModel { get; set; }
+            public Node VisModelStatic { get; set; }
+            public Node Block { get; set; }
+            public Node Unknown1 { get; set; }
 
-            public Chunk019(CGameItemModel node, Stream stream, int? length) : base(node, 0x019, length)
+            public Chunk2E002019(CGameItemModel node) : base(node)
             {
-                Progress += stream.Read(out int version);
-                Version = version;
+                
+            }
 
-                Progress += stream.Read(out NodeRef phyModel, GetBody());
-                PhyModel = phyModel;
+            public override void ReadWrite(GameBoxReaderWriter rw)
+            {
+                Version = rw.Int32(Version);
+                PhyModel = rw.NodeRef(PhyModel);
+                VisModel = rw.NodeRef(VisModel);
 
-                Progress += stream.Read(out NodeRef visModel, GetBody());
-                VisModel = visModel;
-
-                if(version >= 1)
+                if (Version >= 1)
                 {
-                    Progress += stream.Read(out NodeRef visModelStatic, GetBody());
-                    VisModelStatic = visModelStatic;
+                    VisModelStatic = rw.NodeRef(VisModelStatic);
+
+                    if(Version >= 12)
+                    {
+                        rw.Int32(Unknown);
+                        rw.Int32(Unknown);
+                        Block = rw.NodeRef(Block);
+                        if(Version >= 13)
+                            Unknown1 = rw.NodeRef(Unknown1);
+                    }
                 }
 
-                Progress += stream.Read(out uint[] dsgadsgasd, 4*4);
             }
         }
 
-        [Chunk(0x2E002000, 0x01A)]
-        public class Chunk01A : Chunk
+        [Chunk(0x2E00201A)]
+        public class Chunk2E00201A : Chunk
         {
-            public Chunk01A(CGameItemModel node, Stream stream, int? length) : base(node, 0x01A, length)
+            public Node Unknown1 { get; set; }
+
+            public Chunk2E00201A(CGameItemModel node) : base(node)
             {
-                Progress += stream.Read(out uint dsgadsgasd);
+                
+            }
+
+            public override void ReadWrite(GameBoxReaderWriter rw)
+            {
+                Unknown1 = rw.NodeRef(Unknown1);
             }
         }
 
-        [Chunk(0x2E002000, 0x01C)]
-        public class Chunk01C : Chunk
-        {
-            public int Version { get; set; }
-            public NodeRef ItemPlacement { get; }
-
-            public Chunk01C(CGameItemModel node, Stream stream, int? length) : base(node, 0x01C, length)
-            {
-                Progress += stream.Read(out int version);
-                Version = version;
-
-                Progress += stream.Read(out NodeRef itemPlacement, GetBody());
-                ItemPlacement = itemPlacement;
-            }
-        }
-
-        [Chunk(0x2E002000, 0x01E)]
-        public class Chunk01E : Chunk
-        {
-            public Chunk01E(CGameItemModel node, Stream stream, int? length) : base(node, 0x01E, length)
-            {
-                Progress += stream.Read(out uint[] dsgadsgasd, 4 * 4);
-            }
-        }
-
-        [Chunk(0x2E002000, 0x01F)]
-        public class Chunk01F : Chunk
+        [Chunk(0x2E00201C)]
+        public class Chunk2E00201C : Chunk
         {
             public int Version { get; set; }
+            public CGameItemPlacementParam ItemPlacement { get; set; }
 
-            public Chunk01F(CGameItemModel node, Stream stream, int? length) : base(node, 0x01F, length)
+            public Chunk2E00201C(CGameItemModel node) : base(node)
             {
-                Progress += stream.Read(out int version);
-                Version = version;
+                
+            }
 
-                Progress += stream.Read(out int numOfSomething);
-                for(var i = 0; i < numOfSomething; i++)
-                {
-                    Progress += stream.Read(out uint[] adsfga, 4 * 4);
-                }
-
-                Progress += stream.Read(out uint _); // 0
+            public override void ReadWrite(GameBoxReaderWriter rw)
+            {
+                Version = rw.Int32(Version);
+                ItemPlacement = rw.NodeRef<CGameItemPlacementParam>(ItemPlacement);
             }
         }
 
-        [Chunk(0x2E002000, 0x020)]
-        public class Chunk020 : Chunk
+        [Chunk(0x2E00201E)]
+        public class Chunk2E00201E : Chunk
         {
-            public Chunk020(CGameItemModel node, Stream stream, int? length) : base(node, 0x020, length)
+            public Chunk2E00201E(CGameItemModel node) : base(node)
             {
-                Progress += stream.Read(out int[] dsgadsgasd, 3 * 4);
+                
+            }
 
+            public override void ReadWrite(GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
             }
         }
 
-        [Chunk(0x2E002000, 0x021)]
-        public class Chunk021 : Chunk
+        [Chunk(0x2E00201F)]
+        public class Chunk2E00201F : Chunk
         {
-            public Chunk021(CGameItemModel node, Stream stream, int? length) : base(node, 0x021, length)
+            public int Version { get; set; }
+
+            public Chunk2E00201F(CGameItemModel node) : base(node)
             {
-                Progress += stream.Read(out int[] dsgadsgasd, 2 * 4);
+                
+            }
+
+            public override void ReadWrite(GameBoxReaderWriter rw)
+            {
+                Version = rw.Int32(Version);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+                if(Version >= 10)
+                    rw.Int32(Unknown);
             }
         }
 
-        [Chunk(0x2E002000, 0x023)]
-        public class Chunk023 : Chunk
+        [Chunk(0x2E002020)]
+        public class Chunk2E002020 : Chunk
         {
-            public Chunk023(CGameItemModel node, Stream stream, int? length) : base(node, 0x023, length)
+            public Chunk2E002020(CGameItemModel node) : base(node)
             {
-                Progress += stream.Read(out byte idk);
-                Progress += stream.Read(out uint _);
-                Progress += stream.Read(out uint _);
+                
+            }
+
+            public override void ReadWrite(GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+                rw.Byte(Unknown);
             }
         }
 
-        [Chunk(0x2E002000, 0x024)]
-        public class Chunk024 : Chunk
+        [Chunk(0x2E002021)]
+        public class Chunk2E002021 : Chunk
         {
-            public Chunk024(CGameItemModel node, Stream stream, int? length) : base(node, 0x024, length)
+            public Chunk2E002021(CGameItemModel node) : base(node)
             {
-                Progress += stream.Read(out uint[] dsgadsgasd, 4 * 4);
+                
+            }
+
+            public override void ReadWrite(GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+            }
+        }
+
+        [Chunk(0x2E002023)]
+        public class Chunk2E002023 : Chunk
+        {
+            public Chunk2E002023(CGameItemModel node) : base(node)
+            {
+                
+            }
+
+            public override void ReadWrite(GameBoxReaderWriter rw)
+            {
+                rw.Byte(Unknown);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+            }
+        }
+
+        [Chunk(0x2E002024)]
+        public class Chunk2E002024 : SkippableChunk
+        {
+            public Chunk2E002024(CGameItemModel node, byte[] data) : base(node, data)
+            {
+                
             }
         }
     }
