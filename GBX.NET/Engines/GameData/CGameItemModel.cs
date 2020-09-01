@@ -38,7 +38,7 @@ namespace GBX.NET.Engines.GameData
         }
 
         [Chunk(0x2E002000)]
-        public class Chunk2E002000 : SkippableChunk
+        public class Chunk2E002000 : HeaderChunk
         {
             public ItemType Type { get; set; }
 

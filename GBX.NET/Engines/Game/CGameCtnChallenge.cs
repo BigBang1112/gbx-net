@@ -1974,7 +1974,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x002 chunk (map info)
         /// </summary>
         [Chunk(0x03043002)]
-        public class Chunk002 : SkippableChunk
+        public class Chunk002 : HeaderChunk
         {
             /// <summary>
             /// Version of the chunk.
@@ -2155,7 +2155,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x003 chunk (common)
         /// </summary>
         [Chunk(0x03043003)]
-        public class Chunk003 : SkippableChunk
+        public class Chunk003 : HeaderChunk
         {
             /// <summary>
             /// Version of the chunk.
@@ -2299,7 +2299,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x004 chunk (version)
         /// </summary>
         [Chunk(0x03043004)]
-        public class Chunk004 : SkippableChunk
+        public class Chunk004 : HeaderChunk
         {
             /// <summary>
             /// Version of the chunk.
@@ -2325,7 +2325,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x005 chunk (xml)
         /// </summary>
         [Chunk(0x03043005)]
-        public class Chunk005 : SkippableChunk
+        public class Chunk005 : HeaderChunk
         {
             /// <summary>
             /// XML track information and dependencies.
@@ -2351,7 +2351,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x007 chunk (thumbnail)
         /// </summary>
         [Chunk(0x03043007)]
-        public class Chunk007 : SkippableChunk
+        public class Chunk007 : HeaderChunk
         {
             /// <summary>
             /// Version of the chunk.
@@ -2501,7 +2501,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x008 chunk (author)
         /// </summary>
         [Chunk(0x03043008)]
-        public class Chunk008 : SkippableChunk
+        public class Chunk008 : HeaderChunk
         {
             /// <summary>
             /// Version of the chunk.
