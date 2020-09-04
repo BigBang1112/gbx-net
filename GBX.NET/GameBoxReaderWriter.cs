@@ -148,6 +148,21 @@ namespace GBX.NET
             return variable;
         }
 
+        public void FileRef(Stream stream)
+        {
+            if (Reader != null)
+            {
+                using var w = new GameBoxWriter(stream, Reader.Lookbackable);
+                w.Write(Reader.ReadFileRef());
+                w.Flush();
+            }
+            else if (Writer != null)
+            {
+                using var r = new GameBoxReader(stream, Writer.Lookbackable);
+                Writer.Write(r.ReadFileRef());
+            }
+        }
+
         public short Int16(short variable)
         {
             if (Reader != null) return Reader.ReadInt16();
