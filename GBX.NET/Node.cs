@@ -114,10 +114,7 @@ namespace GBX.NET
             var inheritanceClasses = new List<uint>();
 
             if (availableClass == null)
-            {
-                Debug.WriteLine("Unknown node: " + classID.ToString("x8"));
-                return new Node(body, classID) { Unknown = true };
-            }
+                throw new Exception("Unknown node: 0x" + classID.ToString("x8"));
 
             return Parse(availableClass, body, r);
         }
@@ -224,7 +221,6 @@ namespace GBX.NET
 
                 if (chunkID == 0xFACADE01) // no more chunks
                 {
-                    Debug.WriteLine("FACADE");
                     break;
                 }
                 else if(chunkID == 0)
