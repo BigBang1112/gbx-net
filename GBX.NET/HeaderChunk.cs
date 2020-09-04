@@ -8,6 +8,11 @@ namespace GBX.NET
     {
         public bool IsHeavy { get; set; }
 
+        public HeaderChunk()
+        {
+
+        }
+
         public HeaderChunk(Node node, byte[] data) : base(node, data)
         {
 

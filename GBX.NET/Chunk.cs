@@ -8,23 +8,27 @@ namespace GBX.NET
 {
     public abstract class Chunk
     {
-        public Node Node { get; }
+        public Node Node { get; internal set; }
         public virtual uint ID => GetType().GetCustomAttribute<ChunkAttribute>().ID;
         public int Progress { get; internal set; }
         /// <summary>
         /// Stream of unknown bytes
         /// </summary>
         [IgnoreDataMember]
-        public MemoryStream Unknown { get; }
+        public MemoryStream Unknown { get; } = new MemoryStream();
 
         public bool IsHeader => Node.Lookbackable is GameBoxHeader;
         public bool IsBody => Node.Lookbackable is IGameBoxBody;
         public bool Skippable => this is SkippableChunk;
 
+        public Chunk()
+        {
+
+        }
+
         public Chunk(Node node)
         {
             Node = node;
-            Unknown = new MemoryStream();
         }
 
         [Obsolete]

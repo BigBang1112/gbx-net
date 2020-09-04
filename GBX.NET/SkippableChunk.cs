@@ -12,11 +12,16 @@ namespace GBX.NET
 
         public override uint ID => chunkID;
         [IgnoreDataMember]
-        public MemoryStream Stream { get; }
+        public MemoryStream Stream { get; internal set; }
 
         public int Length => (int)Stream.Length;
-        public bool Discovered { get; private set; }
+        public bool Discovered { get; internal set; }
         public byte[] Data => Stream.ToArray();
+
+        public SkippableChunk()
+        {
+            chunkID = GetType().GetCustomAttribute<ChunkAttribute>().ID;
+        }
 
         public SkippableChunk(Node node, uint id, byte[] data) : base(node)
         {

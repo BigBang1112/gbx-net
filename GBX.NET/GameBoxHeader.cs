@@ -41,7 +41,7 @@ namespace GBX.NET
                     if (parameters.UserData != null && parameters.UserData.Length > 0)
                     {
                         var availableChunkClasses = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
-                        && x.Namespace.StartsWith("GBX.NET.Engines") && (x.BaseType == typeof(Chunk) || x.BaseType == typeof(SkippableChunk))
+                        && x.Namespace.StartsWith("GBX.NET.Engines") && x.BaseType == typeof(HeaderChunk)
                         && x.GetCustomAttribute<ChunkAttribute>().ClassID == modernID).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ID);
 
                         var inheritanceClasses = new List<uint>();
@@ -115,7 +115,21 @@ namespace GBX.NET
 
                             if (availableChunkClasses.TryGetValue(chunkId, out Type type))
                             {
-                                chunks[counter] = (HeaderChunk)Activator.CreateInstance(type, MainNode, d);
+                                var constructor = type.GetConstructors().First();
+                                var constructorParams = constructor.GetParameters();
+                                if (constructorParams.Length == 0)
+                                {
+                                    var headerChunk = (HeaderChunk)constructor.Invoke(new object[0]);
+                                    headerChunk.Node = MainNode;
+                                    headerChunk.Stream = new MemoryStream(d, 0, d.Length, false);
+                                    if (d == null || d.Length == 0)
+                                        headerChunk.Discovered = true;
+                                    chunks[counter] = headerChunk;
+                                }
+                                else if (constructorParams.Length == 2)
+                                    chunks[counter] = (HeaderChunk)constructor.Invoke(new object[] { MainNode, d });
+                                else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
+
                                 chunks[counter].IsHeavy = chunk.Value.Item2;
                             }
                             else

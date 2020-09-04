@@ -278,7 +278,22 @@ namespace GBX.NET
 
                     if (reflected && chunkClass.GetCustomAttribute<IgnoreChunkAttribute>() == null)
                     {
-                        var c = (SkippableChunk)Activator.CreateInstance(chunkClass, node, chunkData);
+                        SkippableChunk c;
+
+                        var constructor = chunkClass.GetConstructors().First();
+                        var constructorParams = constructor.GetParameters();
+                        if (constructorParams.Length == 0)
+                        {
+                            c = (SkippableChunk)constructor.Invoke(new object[0]);
+                            c.Node = node;
+                            c.Stream = new MemoryStream(chunkData, 0, chunkData.Length, false);
+                            if (chunkData == null || chunkData.Length == 0)
+                                c.Discovered = true;
+                        }
+                        else if (constructorParams.Length == 2)
+                            c = (SkippableChunk)constructor.Invoke(new object[] { node, chunkData });
+                        else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
+
                         chunks.Add(c);
 
                         if (!chunkClass.GetCustomAttribute<ChunkAttribute>().ProcessAsync)
@@ -301,7 +316,18 @@ namespace GBX.NET
                         var chunkDataSize = r.ReadInt32();
                     }
 
-                    var chunk = (Chunk)Activator.CreateInstance(chunkClass, node);
+                    Chunk chunk;
+
+                    var constructor = chunkClass.GetConstructors().First();
+                    var constructorParams = constructor.GetParameters();
+                    if (constructorParams.Length == 0)
+                    {
+                        chunk = (Chunk)constructor.Invoke(new object[0]);
+                        chunk.Node = node;
+                    }
+                    else if (constructorParams.Length == 1)
+                        chunk = (Chunk)constructor.Invoke(new object[] { node });
+                    else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
                     chunks.Add(chunk);
 
                     var posBefore = r.BaseStream.Position;
