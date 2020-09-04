@@ -42,9 +42,8 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        public class Key
+        public class Key : MediaBlockKey
         {
-            public float Time { get; set; }
             public float UpToMax { get; set; }
             public float ScreenDist { get; set; }
         }

@@ -192,9 +192,8 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        public class Key
+        public class Key : MediaBlockKey
         {
-            public float Time { get; set; }
             public int Anchor { get; set; }
             public bool AnchorVis { get; set; }
             public bool AnchorRot { get; set; }

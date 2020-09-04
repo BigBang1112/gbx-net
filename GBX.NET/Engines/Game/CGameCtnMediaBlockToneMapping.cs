@@ -46,9 +46,8 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        public class Key
+        public class Key : MediaBlockKey
         {
-            public float Time { get; set; }
             public float Exposure { get; set; }
             public float MaxHDR { get; set; }
             public float LightTrailScale { get; set; }

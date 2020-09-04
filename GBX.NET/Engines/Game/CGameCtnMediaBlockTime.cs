@@ -35,9 +35,8 @@
             }
         }
 
-        public class Key
+        public class Key : MediaBlockKey
         {
-            public float Time { get; set; }
             public float TimeValue { get; set; }
             public float Tangent { get; set; }
         }
