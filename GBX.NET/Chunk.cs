@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -8,7 +9,6 @@ namespace GBX.NET
 {
     public abstract class Chunk
     {
-        [Obsolete]
         public virtual uint ID => GetType().GetCustomAttribute<ChunkAttribute>().ID;
         public int Progress { get; internal set; }
         /// <summary>
@@ -91,7 +91,7 @@ namespace GBX.NET
         [Obsolete]
         public virtual void ReadWrite(GameBoxReaderWriter rw)
         {
-            
+            Debug.WriteLine("ReadWrite on Chunk is no longer supported.");
         }
 
         public virtual void ReadWrite(Node n, GameBoxReaderWriter rw)
@@ -127,7 +127,7 @@ namespace GBX.NET
         /// </summary>
         /// <param name="r"></param>
         /// <param name="unknownW">Writer of the <see cref="Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
-        public new virtual void Read(GameBoxReader r, GameBoxWriter unknownW)
+        public virtual void Read(T n, GameBoxReader r, GameBoxWriter unknownW)
         {
             throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support Read.");
         }
@@ -137,12 +137,17 @@ namespace GBX.NET
         /// </summary>
         /// <param name="w"></param>
         /// <param name="unknownR">Reader of the <see cref="Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
-        public new virtual void Write(GameBoxWriter w, GameBoxReader unknownR)
+        public virtual void Write(T n, GameBoxWriter w, GameBoxReader unknownR)
         {
             throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support Write.");
         }
 
         public new virtual void ReadWrite(GameBoxReaderWriter rw)
+        {
+            ReadWrite(null, rw);
+        }
+
+        public virtual void ReadWrite(T n, GameBoxReaderWriter rw)
         {
             ILookbackable lb = Node.Lookbackable;
             if (this is ILookbackable l) lb = l;
@@ -150,19 +155,16 @@ namespace GBX.NET
             if (rw.Reader != null)
             {
                 var unknownW = new GameBoxWriter(Unknown, lb);
-                Read(rw.Reader, unknownW);
+                if (n == null) Read(rw.Reader, unknownW);
+                else Read(n, rw.Reader, unknownW);
             }
 
             if (rw.Writer != null)
             {
                 var unknownR = new GameBoxReader(Unknown, lb);
-                Write(rw.Writer, unknownR);
+                if (n == null) Write(rw.Writer, unknownR);
+                else Write(n, rw.Writer, unknownR);
             }
-        }
-
-        public virtual void ReadWrite(T n, GameBoxReaderWriter rw)
-        {
-            ReadWrite(Node, rw);
         }
 
         public byte[] ToByteArray()
