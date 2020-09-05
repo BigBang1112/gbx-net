@@ -8,7 +8,7 @@ namespace GBX.NET
 {
     public abstract class Chunk
     {
-        public Node Node { get; internal set; }
+        [Obsolete]
         public virtual uint ID => GetType().GetCustomAttribute<ChunkAttribute>().ID;
         public int Progress { get; internal set; }
         /// <summary>
@@ -17,24 +17,15 @@ namespace GBX.NET
         [IgnoreDataMember]
         public MemoryStream Unknown { get; } = new MemoryStream();
 
-        public bool IsHeader => Node.Lookbackable is GameBoxHeader;
-        public bool IsBody => Node.Lookbackable is IGameBoxBody;
-        public bool Skippable => this is SkippableChunk;
-
         public Chunk()
         {
 
         }
 
+        [Obsolete]
         public Chunk(Node node)
         {
-            Node = node;
-        }
-
-        [Obsolete]
-        public ILookbackable GetLookbackable()
-        {
-            return Node.Lookbackable;
+            
         }
 
         public override int GetHashCode()
@@ -48,58 +39,6 @@ namespace GBX.NET
         }
 
         public bool Equals(Chunk chunk) => chunk != null && chunk.ID == ID;
-
-        public virtual void Parse(Stream stream)
-        {
-            throw new NotImplementedException(ID + " This chunk doesn't support Parse.");
-        }
-
-        public virtual object[] GetUnknownObjects()
-        {
-            throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support GetUnknownObjects.");
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="r"></param>
-        /// <param name="unknownW">Writer of the <see cref="Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
-        public virtual void Read(GameBoxReader r, GameBoxWriter unknownW)
-        {
-            throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support Read.");
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="w"></param>
-        /// <param name="unknownR">Reader of the <see cref="Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
-        public virtual void Write(GameBoxWriter w, GameBoxReader unknownR)
-        {
-            throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support Write.");
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="rw"></param>
-        public virtual void ReadWrite(GameBoxReaderWriter rw)
-        {
-            ILookbackable lb = Node.Lookbackable;
-            if (this is ILookbackable l) lb = l;
-
-            if (rw.Reader != null)
-            {
-                var unknownW = new GameBoxWriter(Unknown, lb);
-                Read(rw.Reader, unknownW);
-            }
-
-            if (rw.Writer != null)
-            {
-                var unknownR = new GameBoxReader(Unknown, lb);
-                Write(rw.Writer, unknownR);
-            }
-        }
 
         public static uint Remap(uint chunkID, ClassIDRemap remap = ClassIDRemap.Latest)
         {
@@ -121,20 +60,109 @@ namespace GBX.NET
             }
         }
 
-        public void FromData(byte[] data)
+        [Obsolete]
+        public virtual object[] GetUnknownObjects()
         {
-            var lookbackable = Node.Lookbackable;
+            throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} doesn't support GetUnknownObjects.");
+        }
 
-            if (this is ILookbackable l)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="r"></param>
+        /// <param name="unknownW">Writer of the <see cref="Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
+        [Obsolete]
+        public virtual void Read(GameBoxReader r, GameBoxWriter unknownW)
+        {
+            throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} doesn't support Read.");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="w"></param>
+        /// <param name="unknownR">Reader of the <see cref="Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
+        [Obsolete]
+        public virtual void Write(GameBoxWriter w, GameBoxReader unknownR)
+        {
+            throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} doesn't support Write.");
+        }
+
+        [Obsolete]
+        public virtual void ReadWrite(GameBoxReaderWriter rw)
+        {
+            
+        }
+
+        public virtual void ReadWrite(Node n, GameBoxReaderWriter rw)
+        {
+            ReadWrite(null, rw);
+        }
+    }
+
+    public abstract class Chunk<T> : Chunk where T : Node
+    {
+        public new T Node { get; internal set; }
+
+        public bool IsHeader => Node.Lookbackable is GameBoxHeader;
+        public bool IsBody => Node.Lookbackable is GameBoxBody;
+
+        public Chunk()
+        {
+
+        }
+
+        public Chunk(T node)
+        {
+            Node = node;
+        }
+
+        public new virtual object[] GetUnknownObjects()
+        {
+            throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support GetUnknownObjects.");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="r"></param>
+        /// <param name="unknownW">Writer of the <see cref="Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
+        public new virtual void Read(GameBoxReader r, GameBoxWriter unknownW)
+        {
+            throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support Read.");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="w"></param>
+        /// <param name="unknownR">Reader of the <see cref="Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
+        public new virtual void Write(GameBoxWriter w, GameBoxReader unknownR)
+        {
+            throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support Write.");
+        }
+
+        public new virtual void ReadWrite(GameBoxReaderWriter rw)
+        {
+            ILookbackable lb = Node.Lookbackable;
+            if (this is ILookbackable l) lb = l;
+
+            if (rw.Reader != null)
             {
-                l.LookbackVersion = null;
-                lookbackable = l;
+                var unknownW = new GameBoxWriter(Unknown, lb);
+                Read(rw.Reader, unknownW);
             }
 
-            using var ms = new MemoryStream(data);
-            using var r = new GameBoxReader(ms, lookbackable);
-            var rw = new GameBoxReaderWriter(r);
-            ReadWrite(rw);
+            if (rw.Writer != null)
+            {
+                var unknownR = new GameBoxReader(Unknown, lb);
+                Write(rw.Writer, unknownR);
+            }
+        }
+
+        public virtual void ReadWrite(T n, GameBoxReaderWriter rw)
+        {
+            ReadWrite(Node, rw);
         }
 
         public byte[] ToByteArray()
@@ -155,11 +183,12 @@ namespace GBX.NET
             return ms.ToArray();
         }
 
-        public void Cast<TChunk>() where TChunk : Chunk
+        [Obsolete]
+        public void Cast<TChunk>() where TChunk : Chunk<T>
         {
             var chunk = (TChunk)this;
-            Node.Chunks.Add(chunk);
-            Node.Chunks.Remove(this);
+            //Node.Chunks.Add(chunk);
+            //Node.Chunks.Remove(this);
         }
     }
 }

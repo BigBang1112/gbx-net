@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GBX.NET
 {
-    public class HeaderChunk : SkippableChunk
+    public class HeaderChunk<T> : SkippableChunk<T> where T : Node
     {
         public bool IsHeavy { get; set; }
 
@@ -13,12 +13,12 @@ namespace GBX.NET
 
         }
 
-        public HeaderChunk(Node node, byte[] data) : base(node, data)
+        public HeaderChunk(T node, byte[] data) : base(node, data)
         {
 
         }
 
-        public HeaderChunk(Node node, uint id, byte[] data) : base(node, id, data)
+        public HeaderChunk(T node, uint id, byte[] data) : base(node, id, data)
         {
 
         }

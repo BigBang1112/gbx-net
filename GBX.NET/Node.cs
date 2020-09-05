@@ -1,14 +1,10 @@
-﻿using GBX.NET.Engines.Game;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GBX.NET
 {
@@ -17,11 +13,12 @@ namespace GBX.NET
         public static Dictionary<uint, string> Names { get; }
         public static Dictionary<uint, uint> Mappings { get; } // key: older, value: newer
 
-        public IGameBoxBody Body => Lookbackable as IGameBoxBody;
+        public GameBoxBody Body => Lookbackable as GameBoxBody;
+
+        public AuxNodeChunkList Chunks { get; internal set; }
 
         public uint ID { get; }
         public ILookbackable Lookbackable { get; }
-        public ChunkList Chunks { get; set; }
         public uint? FaultyChunk { get; private set; }
         public byte[] Rest { get; private set; }
         public bool Unknown { get; internal set; }
@@ -69,28 +66,16 @@ namespace GBX.NET
         /// </summary>
         /// <param name="lookbackable">Usually <see cref="GameBoxHeader{T}"/> or <see cref="GameBoxBody{T}"/></param>
         /// <param name="classID"></param>
-        public Node(ILookbackable lookbackable, uint classID, params Chunk[] chunks)
+        public Node(ILookbackable lookbackable, uint classID)
         {
             Lookbackable = lookbackable;
             ID = classID;
-            Chunks = new ChunkList(chunks);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="lookbackable">Usually <see cref="GameBoxHeader{T}"/> or <see cref="GameBoxBody{T}"/></param>
-        /// <param name="classID"></param>
-        public Node(ILookbackable lookbackable, uint classID) : this(lookbackable, classID, new Chunk[0])
-        {
-
         }
 
         public Node(ILookbackable lookbackable) 
         {
             Lookbackable = lookbackable;
             ID = GetType().GetCustomAttribute<NodeAttribute>().ID;
-            Chunks = new ChunkList();
         }
 
         static Type GetBaseType(Type t)
@@ -100,23 +85,6 @@ namespace GBX.NET
             if (t.BaseType == typeof(Node))
                 return t.BaseType;
             return GetBaseType(t.BaseType);
-        }
-
-        public static Node Parse(ILookbackable body, uint classID, GameBoxReader r)
-        {
-            var hasNewerID = Mappings.TryGetValue(classID, out uint newerClassID);
-            if (!hasNewerID) newerClassID = classID;
-
-            var availableClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
-                   && x.Namespace.StartsWith("GBX.NET.Engines") && GetBaseType(x) == typeof(Node)
-                   && (x.GetCustomAttribute<NodeAttribute>().ID == newerClassID)).FirstOrDefault();
-
-            var inheritanceClasses = new List<uint>();
-
-            if (availableClass == null)
-                throw new Exception("Unknown node: 0x" + classID.ToString("x8"));
-
-            return Parse(availableClass, body, r);
         }
 
         public static Node[] ParseArray(Type type, ILookbackable body, GameBoxReader r)
@@ -132,9 +100,9 @@ namespace GBX.NET
                 _ = r.ReadUInt32();
 
                 if (i == 0)
-                    array[i] = Parse(type, body, r, out inheritanceClasses, out availableChunkClasses);
+                    array[i] = Parse(type, body, r, out inheritanceClasses, out availableChunkClasses, true);
                 else
-                    array[i] = Parse(type, body, r, inheritanceClasses, availableChunkClasses);
+                    array[i] = Parse(type, body, r, inheritanceClasses, availableChunkClasses, true);
             }
 
             return array;
@@ -145,7 +113,24 @@ namespace GBX.NET
             return ParseArray(typeof(T), body, r).Cast<T>().ToArray();
         }
 
-        private static Node Parse(Type type, ILookbackable body, GameBoxReader r, out List<uint> inheritanceClasses, out Dictionary<uint, Type> availableChunkClasses)
+        public static Node Parse(ILookbackable body, uint classID, GameBoxReader r, bool isAux = false)
+        {
+            var hasNewerID = Mappings.TryGetValue(classID, out uint newerClassID);
+            if (!hasNewerID) newerClassID = classID;
+
+            var availableClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
+                   && x.Namespace.StartsWith("GBX.NET.Engines") && GetBaseType(x) == typeof(Node)
+                   && (x.GetCustomAttribute<NodeAttribute>().ID == newerClassID)).FirstOrDefault();
+
+            var inheritanceClasses = new List<uint>();
+
+            if (availableClass == null)
+                throw new Exception("Unknown node: 0x" + classID.ToString("x8"));
+
+            return Parse(availableClass, body, r, isAux);
+        }
+
+        private static Node Parse(Type type, ILookbackable body, GameBoxReader r, out List<uint> inheritanceClasses, out Dictionary<uint, Type> availableChunkClasses, bool isAux = false)
         {
             inheritanceClasses = GetInheritance(type);
 
@@ -164,11 +149,14 @@ namespace GBX.NET
                 return classes;
             }
 
+            var chunkType = typeof(Chunk<>).MakeGenericType(type);
+            var skippableChunkType = typeof(SkippableChunk<>).MakeGenericType(type);
+
             availableChunkClasses = type.GetNestedTypes().Where(x =>
             {
                 var isChunk = x.IsClass
                 && x.Namespace.StartsWith("GBX.NET.Engines")
-                && (x.BaseType == typeof(Chunk) || x.BaseType == typeof(SkippableChunk));
+                && (x.BaseType == chunkType || x.BaseType == skippableChunkType);
                 if (!isChunk) return false;
 
                 var chunkAttribute = x.GetCustomAttribute<ChunkAttribute>();
@@ -184,34 +172,34 @@ namespace GBX.NET
                    && x.Namespace.StartsWith("GBX.NET.Engines") && (GetBaseType(x) == typeof(Node))
                    && (x.GetCustomAttribute<NodeAttribute>().ID == cls)).FirstOrDefault();
 
-                foreach (var chunkType in availableInheritanceClass.GetNestedTypes().Where(x => x.IsClass
-                    && x.Namespace.StartsWith("GBX.NET.Engines") && (x.BaseType == typeof(Chunk) || x.BaseType == typeof(SkippableChunk))
+                foreach (var chunkT in availableInheritanceClass.GetNestedTypes().Where(x => x.IsClass
+                    && x.Namespace.StartsWith("GBX.NET.Engines") && (x.BaseType == chunkType || x.BaseType == skippableChunkType)
                     && (x.GetCustomAttribute<ChunkAttribute>().ClassID == cls)).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ChunkID))
                 {
-                    availableChunkClasses[chunkType.Key + cls] = chunkType.Value;
+                    availableChunkClasses[chunkT.Key + cls] = chunkT.Value;
                 }
             }
 
-            return Parse(type, body, r, inheritanceClasses, availableChunkClasses);
+            return Parse(type, body, r, inheritanceClasses, availableChunkClasses, isAux);
         }
 
-        public static Node Parse(Type type, ILookbackable body, GameBoxReader r)
+        public static Node Parse(Type type, ILookbackable body, GameBoxReader r, bool isAux = false)
         {
-            return Parse(type, body, r, out List<uint> _, out Dictionary<uint, Type> _);
+            return Parse(type, body, r, out List<uint> _, out Dictionary<uint, Type> _, isAux);
         }
 
-        public static T Parse<T>(ILookbackable body, GameBoxReader r) where T : Node
+        public static T Parse<T>(ILookbackable body, GameBoxReader r, bool isAux = false) where T : Node
         {
-            return (T)Parse(typeof(T), body, r);
+            return (T)Parse(typeof(T), body, r, isAux);
         }
 
-        private static Node Parse(Type type, ILookbackable body, GameBoxReader r, List<uint> inheritanceClasses, Dictionary<uint, Type> availableChunkClasses)
+        private static Node Parse(Type type, ILookbackable body, GameBoxReader r, List<uint> inheritanceClasses, Dictionary<uint, Type> availableChunkClasses, bool isAux = false)
         {
             var readNodeStart = DateTime.Now;
 
-            Node node = (Node)Activator.CreateInstance(type, body, type.GetCustomAttribute<NodeAttribute>().ID);
+            dynamic node = Activator.CreateInstance(type, body, type.GetCustomAttribute<NodeAttribute>().ID);
 
-            var chunks = new ChunkList();
+            var chunks = new AuxNodeChunkList();
 
             uint? previousChunk = null;
 
@@ -229,7 +217,7 @@ namespace GBX.NET
                 }
                 else
                 {
-                    if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
+                    if (node.Body != null && (node as Node).Body.GBX.ClassID.HasValue && Remap((node as Node).Body.GBX.ClassID.Value) == node.ID)
                         Log.Write($"[{node.ClassName}] 0x{chunkID:x8} ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})");
                     else
                         Log.Write($"~ [{node.ClassName}] 0x{chunkID:x8} ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})");
@@ -240,7 +228,9 @@ namespace GBX.NET
                 var reflected = ((Chunk.Remap(chunkID) & 0xFFFFF000) == node.ID || inheritanceClasses.Contains(Chunk.Remap(chunkID) & 0xFFFFF000))
                     && (availableChunkClasses.TryGetValue(chunkID, out chunkClass) || availableChunkClasses.TryGetValue(chunkID & 0xFFF, out chunkClass));
 
-                if (!reflected || chunkClass.BaseType == typeof(SkippableChunk))
+                var skippable = reflected && chunkClass.BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>);
+
+                if (!reflected || skippable)
                 {
                     var skip = r.ReadUInt32();
 
@@ -248,10 +238,10 @@ namespace GBX.NET
                     {
                         if (chunkID != 0 && !reflected)
                         {
-                            Debug.WriteLine("Wrong chunk format or unskippable chunk: " + chunkID.ToString("x8")); // Read till facade
+                            Debug.WriteLine($"Wrong chunk format or unskippable chunk: {chunkID:x8} ({Names.Where(x => x.Key == (chunkID&0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})"); // Read till facade
                             node.FaultyChunk = chunkID;
 
-                            if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
+                            if (node.Body != null && (node as Node).Body.GBX.ClassID.HasValue && Remap((node as Node).Body.GBX.ClassID.Value) == node.ID)
                                 Log.Write($"[{node.ClassName}] 0x{chunkID:x8} ERROR (wrong chunk format or unknown unskippable chunk)", ConsoleColor.Red);
                             else
                                 Log.Write($"~ [{node.ClassName}] 0x{chunkID:x8} ERROR (wrong chunk format or unknown unskippable chunk)", ConsoleColor.Red);
@@ -278,23 +268,23 @@ namespace GBX.NET
 
                     if (reflected && chunkClass.GetCustomAttribute<IgnoreChunkAttribute>() == null)
                     {
-                        SkippableChunk c;
+                        dynamic c;
 
                         var constructor = chunkClass.GetConstructors().First();
                         var constructorParams = constructor.GetParameters();
                         if (constructorParams.Length == 0)
                         {
-                            c = (SkippableChunk)constructor.Invoke(new object[0]);
+                            c = constructor.Invoke(new object[0]);
                             c.Node = node;
                             c.Stream = new MemoryStream(chunkData, 0, chunkData.Length, false);
                             if (chunkData == null || chunkData.Length == 0)
                                 c.Discovered = true;
                         }
                         else if (constructorParams.Length == 2)
-                            c = (SkippableChunk)constructor.Invoke(new object[] { node, chunkData });
+                            c = constructor.Invoke(new object[] { node, chunkData });
                         else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
 
-                        chunks.Add(c);
+                        chunks.Add(c.ID, c);
 
                         if (!chunkClass.GetCustomAttribute<ChunkAttribute>().ProcessAsync)
                             c.Discover();
@@ -302,33 +292,33 @@ namespace GBX.NET
                     else
                     {
                         Debug.WriteLine("Unknown skippable chunk: " + chunkID.ToString("x"));
-                        chunks.Add(new SkippableChunk(node, chunkID, chunkData));
+                        chunks.Add(chunkID, (Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkID, chunkData));
                     }
                 }
 
-                if (reflected && chunkClass.BaseType != typeof(SkippableChunk))
+                if (reflected && !skippable)
                 {
                     Debug.WriteLine("Unskippable chunk: " + chunkID.ToString("x8"));
 
-                    if (chunkClass.BaseType == typeof(SkippableChunk)) // Does it ever happen?
+                    if (skippable) // Does it ever happen?
                     {
                         var skip = r.ReadUInt32();
                         var chunkDataSize = r.ReadInt32();
                     }
 
-                    Chunk chunk;
+                    dynamic chunk;
 
                     var constructor = chunkClass.GetConstructors().First();
                     var constructorParams = constructor.GetParameters();
                     if (constructorParams.Length == 0)
                     {
-                        chunk = (Chunk)constructor.Invoke(new object[0]);
+                        chunk = constructor.Invoke(new object[0]);
                         chunk.Node = node;
                     }
                     else if (constructorParams.Length == 1)
-                        chunk = (Chunk)constructor.Invoke(new object[] { node });
+                        chunk = constructor.Invoke(new object[] { node });
                     else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
-                    chunks.Add(chunk);
+                    chunks.Add(chunk.ID, chunk);
 
                     var posBefore = r.BaseStream.Position;
 
@@ -341,12 +331,16 @@ namespace GBX.NET
                 previousChunk = chunkID;
             }
 
-            if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
+            if (node.Body != null && (node as Node).Body.GBX.ClassID.HasValue && Remap((node as Node).Body.GBX.ClassID.Value) == node.ID)
                 Log.Write($"[{node.ClassName}] DONE! ({(DateTime.Now - readNodeStart).TotalMilliseconds}ms)", ConsoleColor.Green);
             else
                 Log.Write($"~ [{node.ClassName}] DONE! ({(DateTime.Now - readNodeStart).TotalMilliseconds}ms)", ConsoleColor.Green);
 
-            node.Chunks = chunks;
+            if (isAux)
+                node.Chunks = chunks;
+            else
+                (body as GameBoxBody).Chunks = chunks;
+
             return node;
         }
 
@@ -364,197 +358,58 @@ namespace GBX.NET
         {
             int counter = 0;
 
-            foreach (var chunk in Chunks.Values)
+            if (Chunks != null)
             {
-                counter += 1;
-
-                chunk.Unknown.Position = 0;
-
-                ILookbackable lb = Lookbackable;
-
-                if (chunk is ILookbackable l)
+                foreach (var chunk in Chunks.Values)
                 {
-                    l.LookbackWritten = false;
-                    l.LookbackStrings.Clear();
+                    counter += 1;
 
-                    lb = l;
-                }
+                    chunk.Unknown.Position = 0;
 
-                using var ms = new MemoryStream();
-                using var msW = new GameBoxWriter(ms, lb);
-                var rw = new GameBoxReaderWriter(msW);
+                    ILookbackable lb = Lookbackable;
 
-                try
-                {
-                    if (chunk is SkippableChunk s && !s.Discovered)
-                        s.Write(msW);
-                    else
-                        chunk.ReadWrite(rw);
-
-                    w.Write(Chunk.Remap(chunk.ID, remap));
-
-                    if (chunk is SkippableChunk)
+                    if (chunk is ILookbackable l)
                     {
-                        w.Write(0x534B4950);
-                        w.Write((int)ms.Length);
+                        l.LookbackWritten = false;
+                        l.LookbackStrings.Clear();
+
+                        lb = l;
                     }
 
-                    w.Write(ms.ToArray(), 0, (int)ms.Length);
-                }
-                catch (NotImplementedException e)
-                {
-                    if (chunk is SkippableChunk s)
+                    using var ms = new MemoryStream();
+                    using var msW = new GameBoxWriter(ms, lb);
+                    var rw = new GameBoxReaderWriter(msW);
+
+                    try
                     {
-                        Debug.WriteLine(e.Message);
-                        Debug.WriteLine("Ignoring the skippable chunk from writing.");
+                        if (chunk is ISkippableChunk s && !s.Discovered)
+                            s.Write(msW);
+                        else
+                            chunk.ReadWrite(this, rw);
+
+                        w.Write(Chunk.Remap(chunk.ID, remap));
+
+                        if (chunk is ISkippableChunk)
+                        {
+                            w.Write(0x534B4950);
+                            w.Write((int)ms.Length);
+                        }
+
+                        w.Write(ms.ToArray(), 0, (int)ms.Length);
                     }
-                    else throw e; // Unskippable chunk must have a Write implementation
+                    catch (NotImplementedException e)
+                    {
+                        if (chunk is ISkippableChunk)
+                        {
+                            Debug.WriteLine(e.Message);
+                            Debug.WriteLine("Ignoring the skippable chunk from writing.");
+                        }
+                        else throw e; // Unskippable chunk must have a Write implementation
+                    }
                 }
             }
 
             w.Write(0xFACADE01);
-        }
-
-        public T CreateChunk<T>(byte[] data) where T : Chunk
-        {
-            var chunkId = typeof(T).GetCustomAttribute<ChunkAttribute>().ID;
-
-            if (Chunks.TryGetValue(chunkId, out Chunk c))
-                return (T)c;
-
-            T chunk;
-            if (typeof(T).BaseType == typeof(SkippableChunk))
-                chunk = (T)Activator.CreateInstance(typeof(T), this, data);
-            else
-            {
-                chunk = (T)Activator.CreateInstance(typeof(T), this);
-                if (data.Length > 0) chunk.FromData(data);
-            }
-            if (chunk is ILookbackable l) l.LookbackVersion = 3;
-            Chunks.Add(chunk);
-            return chunk;
-        }
-
-        public T CreateChunk<T>() where T : Chunk
-        {
-            return CreateChunk<T>(new byte[0]);
-        }
-
-        public void InsertChunk(Chunk chunk)
-        {
-            Chunks.Add(chunk);
-        }
-
-        public static T FromGBX<T>(GameBox<T> loadedGbx) where T : Node
-        {
-            return loadedGbx.MainNode;
-        }
-
-        public void DiscoverChunk<TChunk>() where TChunk : SkippableChunk
-        {
-            foreach (var chunk in Chunks.Values)
-                if (chunk is TChunk c)
-                    c.Discover();
-        }
-
-        public void DiscoverChunks<TChunk1, TChunk2>() where TChunk1 : SkippableChunk where TChunk2 : SkippableChunk
-        {
-            foreach (var chunk in Chunks.Values)
-            {
-                if (chunk is TChunk1 c1)
-                    c1.Discover();
-                if (chunk is TChunk2 c2)
-                    c2.Discover();
-            }
-        }
-
-        public void DiscoverChunks<TChunk1, TChunk2, TChunk3>() where TChunk1 : SkippableChunk where TChunk2 : SkippableChunk where TChunk3 : SkippableChunk
-        {
-            foreach (var chunk in Chunks.Values)
-            {
-                if (chunk is TChunk1 c1)
-                    c1.Discover();
-                if (chunk is TChunk2 c2)
-                    c2.Discover();
-                if (chunk is TChunk3 c3)
-                    c3.Discover();
-            }
-        }
-
-        public void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4>() where TChunk1 : SkippableChunk where TChunk2 : SkippableChunk where TChunk3 : SkippableChunk where TChunk4 : SkippableChunk
-        {
-            foreach (var chunk in Chunks.Values)
-            {
-                if (chunk is TChunk1 c1)
-                    c1.Discover();
-                if (chunk is TChunk2 c2)
-                    c2.Discover();
-                if (chunk is TChunk3 c3)
-                    c3.Discover();
-                if (chunk is TChunk4 c4)
-                    c4.Discover();
-            }
-        }
-
-        public void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5>() where TChunk1 : SkippableChunk where TChunk2 : SkippableChunk where TChunk3 : SkippableChunk where TChunk4 : SkippableChunk where TChunk5 : SkippableChunk
-        {
-            foreach (var chunk in Chunks.Values)
-            {
-                if (chunk is TChunk1 c1)
-                    c1.Discover();
-                if (chunk is TChunk2 c2)
-                    c2.Discover();
-                if (chunk is TChunk3 c3)
-                    c3.Discover();
-                if (chunk is TChunk4 c4)
-                    c4.Discover();
-                if (chunk is TChunk5 c5)
-                    c5.Discover();
-            }
-        }
-
-        public void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5, TChunk6>() where TChunk1 : SkippableChunk where TChunk2 : SkippableChunk where TChunk3 : SkippableChunk where TChunk4 : SkippableChunk where TChunk5 : SkippableChunk where TChunk6 : SkippableChunk
-        {
-            foreach (var chunk in Chunks.Values)
-            {
-                if (chunk is TChunk1 c1)
-                    c1.Discover();
-                if (chunk is TChunk2 c2)
-                    c2.Discover();
-                if (chunk is TChunk3 c3)
-                    c3.Discover();
-                if (chunk is TChunk4 c4)
-                    c4.Discover();
-                if (chunk is TChunk5 c5)
-                    c5.Discover();
-                if (chunk is TChunk6 c6)
-                    c6.Discover();
-            }
-        }
-
-        public void DiscoverAllChunks()
-        {
-            foreach (var chunk in Chunks.Values)
-                if (chunk is SkippableChunk s)
-                    s.Discover();
-        }
-
-        public static T FromGBX<T>(string gbxFile) where T : Node
-        {
-            using var fs = File.OpenRead(gbxFile);
-
-            var type = GameBox.GetGameBoxType(fs);
-            fs.Seek(0, SeekOrigin.Begin);
-
-            GameBox gbx;
-            if (type == null)
-                gbx = new GameBox();
-            else
-                gbx = (GameBox)Activator.CreateInstance(type);
-
-            if (gbx.Read(fs))
-                return FromGBX((GameBox<T>)gbx);
-            return null;
         }
 
         static Node()
@@ -626,724 +481,128 @@ namespace GBX.NET
             Debug.WriteLine("Mappings defined in " + (DateTime.Now - startTimestamp).TotalMilliseconds + "ms");
         }
 
+        [Obsolete]
         public object GetValue<T>(Func<T, object> val) where T : Chunk
         {
-            foreach (var chunk in Chunks.Values)
-            {
-                if (chunk is T t)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    return val.Invoke(t);
-                }
-            }
             return default;
         }
 
+        [Obsolete]
         public object GetValue<T1, T2>(Func<T1, object> val1, Func<T2, object> val2, DifferenceSolution diffSolution = DifferenceSolution.Default) where T1 : Chunk where T2 : Chunk
         {
-            HashSet<object> values = new HashSet<object>();
-
-            void AddIfNotNull<T>(Chunk chunk, Func<T, object> val)
-            {
-                if (chunk is T t)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    var value = val.Invoke(t);
-                    if (value != null) values.Add(value);
-                }
-            }
-
-            switch (diffSolution)
-            {
-                case DifferenceSolution.ExceptionIfDifferent:
-                    foreach (var chunk in Chunks.Values)
-                    {
-                        AddIfNotNull(chunk, val1);
-                        AddIfNotNull(chunk, val2);
-                    }
-
-                    if (values.Count > 1)
-                    {
-                        if (values.Count == 1)
-                            return values;
-                        else
-                            throw new Exception("Some values are different.");
-                    }
-                    else if (values.Count > 0)
-                        return values.First();
-
-                    return default;
-                case DifferenceSolution.FirstChunk:
-                    foreach (var chunk in Chunks.Values)
-                    {
-                        if (chunk is T1 t1)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val1.Invoke(t1);
-                        }
-
-                        if (chunk is T2 t2)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val2.Invoke(t2);
-                        }
-                    }
-                    return default;
-                case DifferenceSolution.Average:
-                    foreach (var chunk in Chunks.Values)
-                    {
-                        if (chunk is T1 t1)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val1.Invoke(t1));
-                        }
-
-                        if (chunk is T2 t2)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val2.Invoke(t2));
-                        }
-                    }
-
-                    if (values.Count > 0)
-                    {
-                        if (values.First() is int i) return values.Average(x => i);
-                        else if (values.First() is uint ui) return values.Average(x => ui);
-                        else if (values.First() is short s) return values.Average(x => s);
-                        else if (values.First() is ushort us) return values.Average(x => us);
-                        else if (values.First() is long l) return values.Average(x => l);
-                        else if (values.First() is float f) return values.Average(x => f);
-                        else throw new Exception("Cannot average this type.");
-                    }
-
-                    return default;
-                default:
-                    return default;
-            }
+            return default;
         }
 
+        [Obsolete]
         public object GetValue<T1, T2, T3>(Func<T1, object> val1, Func<T2, object> val2, Func<T3, object> val3, DifferenceSolution diffSolution = DifferenceSolution.Default) where T1 : Chunk where T2 : Chunk where T3 : Chunk
         {
-            HashSet<object> values = new HashSet<object>();
-
-            void AddIfNotNull<T>(Chunk chunk, Func<T, object> val)
-            {
-                if (chunk is T t)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    var value = val.Invoke(t);
-                    if (value != null) values.Add(value);
-                }
-            }
-
-            switch (diffSolution)
-            {
-                case DifferenceSolution.ExceptionIfDifferent:
-                    foreach (var chunk in Chunks.Values)
-                    {
-                        AddIfNotNull(chunk, val1);
-                        AddIfNotNull(chunk, val2);
-                        AddIfNotNull(chunk, val3);
-                    }
-
-                    if (values.Count > 1)
-                    {
-                        if (values.Distinct().Skip(1).Any())
-                            return values;
-                        else
-                            throw new Exception("Some values are different.");
-                    }
-                    else if (values.Count > 0)
-                        return values.First();
-
-                    return default;
-                case DifferenceSolution.FirstChunk:
-                    foreach (var chunk in Chunks.Values)
-                    {
-                        if (chunk is T1 t1)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val1.Invoke(t1);
-                        }
-                        if (chunk is T2 t2)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val2.Invoke(t2);
-                        }
-                        if (chunk is T3 t3)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val3.Invoke(t3);
-                        }
-                    }
-                    return default;
-                case DifferenceSolution.Average:
-                    foreach (var chunk in Chunks.Values)
-                    {
-                        if (chunk is T1 t1)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val1.Invoke(t1));
-                        }
-                        if (chunk is T2 t2)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val2.Invoke(t2));
-                        }
-                        if (chunk is T3 t3)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val3.Invoke(t3));
-                        }
-                    }
-
-                    if (values.Count > 0)
-                    {
-                        if (values.First() is int i) return values.Average(x => i);
-                        else if (values.First() is uint ui) return values.Average(x => ui);
-                        else if (values.First() is short s) return values.Average(x => s);
-                        else if (values.First() is ushort us) return values.Average(x => us);
-                        else if (values.First() is long l) return values.Average(x => l);
-                        else if (values.First() is float f) return values.Average(x => f);
-                        else throw new Exception("Cannot average this type.");
-                    }
-
-                    return default;
-                default:
-                    return default;
-            }
+            return default;
         }
 
+        [Obsolete]
         public object GetValue<T1, T2, T3, T4>(Func<T1, object> val1, Func<T2, object> val2, Func<T3, object> val3, Func<T4, object> val4, DifferenceSolution diffSolution = DifferenceSolution.Default) where T1 : Chunk where T2 : Chunk where T3 : Chunk where T4 : Chunk
         {
-            HashSet<object> values = new HashSet<object>();
-
-            void AddIfNotNull<T>(Chunk chunk, Func<T, object> val)
-            {
-                if (chunk is T t)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    var value = val.Invoke(t);
-                    if (value != null) values.Add(value);
-                }
-            }
-
-            switch (diffSolution)
-            {
-                case DifferenceSolution.ExceptionIfDifferent:
-                    foreach (var chunk in Chunks.Values)
-                    {
-                        AddIfNotNull(chunk, val1);
-                        AddIfNotNull(chunk, val2);
-                        AddIfNotNull(chunk, val3);
-                        AddIfNotNull(chunk, val4);
-                    }
-
-                    if (values.Count > 1)
-                    {
-                        if (values.Where(x => x != null).All(x => x.Equals(values.FirstOrDefault())))
-                            return values.Where(x => x != null).FirstOrDefault();
-                        else
-                            throw new Exception("Some values are different.");
-                    }
-                    else if (values.Count > 0)
-                        return values.First();
-
-                    return default;
-                case DifferenceSolution.FirstChunk:
-                    foreach (var chunk in Chunks.Values)
-                    {
-                        if (chunk is T1 t1)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val1.Invoke(t1);
-                        }
-                        if (chunk is T2 t2)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val2.Invoke(t2);
-                        }
-                        if (chunk is T3 t3)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val3.Invoke(t3);
-                        }
-                        if (chunk is T4 t4)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val4.Invoke(t4);
-                        }
-                    }
-                    return default;
-                case DifferenceSolution.Average:
-                    foreach (var chunk in Chunks.Values)
-                    {
-                        if (chunk is T1 t1)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val1.Invoke(t1));
-                        }
-                        if (chunk is T2 t2)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val2.Invoke(t2));
-                        }
-                        if (chunk is T3 t3)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val3.Invoke(t3));
-                        }
-                        if (chunk is T4 t4)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val4.Invoke(t4));
-                        }
-                    }
-
-                    if (values.Count > 0)
-                    {
-                        if (values.First() is int i) return values.Average(x => i);
-                        else if (values.First() is uint ui) return values.Average(x => ui);
-                        else if (values.First() is short s) return values.Average(x => s);
-                        else if (values.First() is ushort us) return values.Average(x => us);
-                        else if (values.First() is long l) return values.Average(x => l);
-                        else if (values.First() is float f) return values.Average(x => f);
-                        else throw new Exception("Cannot average this type.");
-                    }
-
-                    return default;
-                default:
-                    return default;
-            }
+            return default;
         }
 
+        [Obsolete]
         public object GetValue<T1, T2, T3, T4, T5>(Func<T1, object> val1, Func<T2, object> val2, Func<T3, object> val3, Func<T4, object> val4, Func<T5, object> val5, DifferenceSolution diffSolution = DifferenceSolution.Default) where T1 : Chunk where T2 : Chunk where T3 : Chunk where T4 : Chunk where T5 : Chunk
         {
-            HashSet<object> values = new HashSet<object>();
-
-            void AddIfNotNull<T>(Chunk chunk, Func<T, object> val)
-            {
-                if (chunk is T t)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    var value = val.Invoke(t);
-                    if (value != null) values.Add(value);
-                }
-            }
-
-            switch (diffSolution)
-            {
-                case DifferenceSolution.ExceptionIfDifferent:
-                    foreach (var chunk in Chunks.Values)
-                    {
-                        AddIfNotNull(chunk, val1);
-                        AddIfNotNull(chunk, val2);
-                        AddIfNotNull(chunk, val3);
-                        AddIfNotNull(chunk, val4);
-                        AddIfNotNull(chunk, val5);
-                    }
-
-                    if (values.Count > 1)
-                    {
-                        if (values.Where(x => x != null).All(x => x.Equals(values.FirstOrDefault())))
-                            return values.Where(x => x != null).FirstOrDefault();
-                        else
-                            throw new Exception("Some values are different.");
-                    }
-                    else if (values.Count > 0)
-                        return values.First();
-
-                    return default;
-                case DifferenceSolution.FirstChunk:
-                    foreach (var chunk in Chunks.Values)
-                    {
-                        if (chunk is T1 t1)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val1.Invoke(t1);
-                        }
-                        if (chunk is T2 t2)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val2.Invoke(t2);
-                        }
-                        if (chunk is T3 t3)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val3.Invoke(t3);
-                        }
-                        if (chunk is T4 t4)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val4.Invoke(t4);
-                        }
-                        if (chunk is T5 t5)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val5.Invoke(t5);
-                        }
-                    }
-                    return default;
-                case DifferenceSolution.Average:
-                    foreach (var chunk in Chunks.Values)
-                    {
-                        if (chunk is T1 t1)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val1.Invoke(t1));
-                        }
-                        if (chunk is T2 t2)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val2.Invoke(t2));
-                        }
-                        if (chunk is T3 t3)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val3.Invoke(t3));
-                        }
-                        if (chunk is T4 t4)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val4.Invoke(t4));
-                        }
-                        if (chunk is T5 t5)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val5.Invoke(t5));
-                        }
-                    }
-
-                    if (values.Count > 0)
-                    {
-                        if (values.First() is int i) return values.Average(x => i);
-                        else if (values.First() is uint ui) return values.Average(x => ui);
-                        else if (values.First() is short s) return values.Average(x => s);
-                        else if (values.First() is ushort us) return values.Average(x => us);
-                        else if (values.First() is long l) return values.Average(x => l);
-                        else if (values.First() is float f) return values.Average(x => f);
-                        else throw new Exception("Cannot average this type.");
-                    }
-
-                    return default;
-                default:
-                    return default;
-            }
+            return default;
         }
 
+        [Obsolete]
         public object GetValue<T1, T2, T3, T4, T5, T6>(Func<T1, object> val1, Func<T2, object> val2, Func<T3, object> val3, Func<T4, object> val4, Func<T5, object> val5, Func<T6, object> val6, DifferenceSolution diffSolution = DifferenceSolution.Default) where T1 : Chunk where T2 : Chunk where T3 : Chunk where T4 : Chunk where T5 : Chunk where T6 : Chunk
         {
-            HashSet<object> values = new HashSet<object>();
-
-            void AddIfNotNull<T>(Chunk chunk, Func<T, object> val)
-            {
-                if (chunk is T t)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    var value = val.Invoke(t);
-                    if (value != null) values.Add(value);
-                }
-            }
-
-            switch (diffSolution)
-            {
-                case DifferenceSolution.ExceptionIfDifferent:
-                    foreach (var chunk in Chunks.Values)
-                    {
-                        AddIfNotNull(chunk, val1);
-                        AddIfNotNull(chunk, val2);
-                        AddIfNotNull(chunk, val3);
-                        AddIfNotNull(chunk, val4);
-                        AddIfNotNull(chunk, val5);
-                        AddIfNotNull(chunk, val6);
-                    }
-
-                    if (values.Count > 1)
-                    {
-                        if (values.Where(x => x != null).All(x => x.Equals(values.FirstOrDefault())))
-                            return values.Where(x => x != null).FirstOrDefault();
-                        else
-                            throw new Exception("Some values are different.");
-                    }
-                    else if (values.Count > 0)
-                        return values.First();
-
-                    return default;
-                case DifferenceSolution.FirstChunk:
-                    foreach (var chunk in Chunks.Values)
-                    {
-                        if (chunk is T1 t1)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val1.Invoke(t1);
-                        }
-                        if (chunk is T2 t2)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val2.Invoke(t2);
-                        }
-                        if (chunk is T3 t3)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val3.Invoke(t3);
-                        }
-                        if (chunk is T4 t4)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val4.Invoke(t4);
-                        }
-                        if (chunk is T5 t5)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val5.Invoke(t5);
-                        }
-                        if (chunk is T6 t6)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            return val6.Invoke(t6);
-                        }
-                    }
-                    return default;
-                case DifferenceSolution.Average:
-                    foreach (var chunk in Chunks.Values)
-                    {
-                        if (chunk is T1 t1)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val1.Invoke(t1));
-                        }
-                        if (chunk is T2 t2)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val2.Invoke(t2));
-                        }
-                        if (chunk is T3 t3)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val3.Invoke(t3));
-                        }
-                        if (chunk is T4 t4)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val4.Invoke(t4));
-                        }
-                        if (chunk is T5 t5)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val5.Invoke(t5));
-                        }
-                        if (chunk is T6 t6)
-                        {
-                            if (chunk is SkippableChunk s) s.Discover();
-                            values.Add(val6.Invoke(t6));
-                        }
-                    }
-
-                    if (values.Count > 0)
-                    {
-                        if (values.First() is int i) return values.Average(x => i);
-                        else if (values.First() is uint ui) return values.Average(x => ui);
-                        else if (values.First() is short s) return values.Average(x => s);
-                        else if (values.First() is ushort us) return values.Average(x => us);
-                        else if (values.First() is long l) return values.Average(x => l);
-                        else if (values.First() is float f) return values.Average(x => f);
-                        else throw new Exception("Cannot average this type.");
-                    }
-
-                    return default;
-                default:
-                    return default;
-            }
+            return default;
         }
 
+        [Obsolete]
         public void SetValue<T1>(Action<T1> val) where T1 : Chunk
         {
-            foreach (var chunk in Chunks.Values)
-            {
-                if (chunk is T1 t)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val.Invoke(t);
-                }
-            }
+            
         }
 
+        [Obsolete]
         public void SetValue<T1, T2>(Action<T1> val1, Action<T2> val2) where T1 : Chunk where T2 : Chunk
         {
-            foreach (var chunk in Chunks.Values)
-            {
-                if (chunk is T1 t1)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val1.Invoke(t1);
-                }
-                if (chunk is T2 t2)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val2.Invoke(t2);
-                }
-            }
+            
         }
 
+        [Obsolete]
         public void SetValue<T1, T2, T3>(Action<T1> val1, Action<T2> val2, Action<T3> val3) where T1 : Chunk where T2 : Chunk where T3 : Chunk
         {
-            foreach (var chunk in Chunks.Values)
-            {
-                if (chunk is T1 t1)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val1.Invoke(t1);
-                }
-                if (chunk is T2 t2)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val2.Invoke(t2);
-                }
-                if (chunk is T3 t3)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val3.Invoke(t3);
-                }
-            }
+            
         }
 
+        [Obsolete]
         public void SetValue<T1, T2, T3, T4>(Action<T1> val1, Action<T2> val2, Action<T3> val3, Action<T4> val4) where T1 : Chunk where T2 : Chunk where T3 : Chunk where T4 : Chunk
         {
-            foreach (var chunk in Chunks.Values)
-            {
-                if (chunk is T1 t1)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val1.Invoke(t1);
-                }
-                if (chunk is T2 t2)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val2.Invoke(t2);
-                }
-                if (chunk is T3 t3)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val3.Invoke(t3);
-                }
-                if (chunk is T4 t4)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val4.Invoke(t4);
-                }
-            }
+            
         }
 
+        [Obsolete]
         public void SetValue<T1, T2, T3, T4, T5>(Action<T1> val1, Action<T2> val2, Action<T3> val3, Action<T4> val4, Action<T5> val5) where T1 : Chunk where T2 : Chunk where T3 : Chunk where T4 : Chunk where T5 : Chunk
         {
-            foreach (var chunk in Chunks.Values)
-            {
-                if (chunk is T1 t1)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val1.Invoke(t1);
-                }
-                if (chunk is T2 t2)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val2.Invoke(t2);
-                }
-                if (chunk is T3 t3)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val3.Invoke(t3);
-                }
-                if (chunk is T4 t4)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val4.Invoke(t4);
-                }
-                if (chunk is T5 t5)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val5.Invoke(t5);
-                }
-            }
+            
         }
 
+        [Obsolete]
         public void SetValue<T1, T2, T3, T4, T5, T6>(Action<T1> val1, Action<T2> val2, Action<T3> val3, Action<T4> val4, Action<T5> val5, Action<T6> val6) where T1 : Chunk where T2 : Chunk where T3 : Chunk where T4 : Chunk where T5 : Chunk where T6 : Chunk
         {
-            foreach (var chunk in Chunks.Values)
-            {
-                if (chunk is T1 t1)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val1.Invoke(t1);
-                }
-                if (chunk is T2 t2)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val2.Invoke(t2);
-                }
-                if (chunk is T3 t3)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val3.Invoke(t3);
-                }
-                if (chunk is T4 t4)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val4.Invoke(t4);
-                }
-                if (chunk is T5 t5)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val5.Invoke(t5);
-                }
-                if (chunk is T6 t6)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    val6.Invoke(t6);
-                }
-            }
+            
         }
 
         public T GetChunk<T>() where T : Chunk
         {
-            foreach (var chunk in Chunks.Values)
-            {
-                if (chunk is T t)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    return t;
-                }
-            }
-            return default;
+            if (Chunks != null)
+                return Chunks.Get<T>();
+            else
+                return Body.GetChunk<T>();
         }
 
+        public T CreateChunk<T>() where T : Chunk
+        {
+            if (Chunks != null)
+                return Chunks.Create<T>();
+            else
+                return Body.CreateChunk<T>();
+        }
+
+        public bool RemoveChunk<T>() where T : Chunk
+        {
+            if (Chunks != null)
+                return Chunks.Remove<T>();
+            else
+                return Body.RemoveChunk<T>();
+        }
+
+        [Obsolete]
         public bool TryGetChunk<T>(out T chunk) where T : Chunk
         {
-            chunk = GetChunk<T>();
-            return chunk != default;
+            if (Chunks != null)
+                return Chunks.TryGet(out chunk);
+            else
+            {
+                chunk = Body.GetChunk<T>();
+                return chunk != default;
+            }
         }
 
+        public void DiscoverChunk<T>() where T : Chunk
+        {
+
+        }
+
+        [Obsolete]
         public void CallChunkMethod<T>(Action<T> method) where T : Chunk
         {
-            foreach (var chunk in Chunks.Values)
-            {
-                if (chunk is T t)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    method.Invoke(t);
-                }
-            }
+            
         }
 
+        [Obsolete]
         public T2 CallChunkMethod<T1, T2>(Func<T1, T2> method) where T1 : Chunk
         {
-            foreach (var chunk in Chunks.Values)
-            {
-                if (chunk is T1 t)
-                {
-                    if (chunk is SkippableChunk s) s.Discover();
-                    return method.Invoke(t);
-                }
-            }
             return default;
         }
 
@@ -1352,6 +611,29 @@ namespace GBX.NET
             if (Mappings.TryGetValue(id, out uint newerClassID))
                 return newerClassID;
             return id;
+        }
+
+        public static T FromGBX<T>(GameBox<T> loadedGbx) where T : Node
+        {
+            return loadedGbx.MainNode;
+        }
+
+        public static T FromGBX<T>(string gbxFile) where T : Node
+        {
+            using var fs = File.OpenRead(gbxFile);
+
+            var type = GameBox.GetGameBoxType(fs);
+            fs.Seek(0, SeekOrigin.Begin);
+
+            GameBox gbx;
+            if (type == null)
+                gbx = new GameBox();
+            else
+                gbx = (GameBox)Activator.CreateInstance(type);
+
+            if (gbx.Read(fs))
+                return FromGBX((GameBox<T>)gbx);
+            return default;
         }
     }
 }

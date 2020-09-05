@@ -6,16 +6,16 @@ using System.Runtime.Serialization;
 
 namespace GBX.NET
 {
-    public class SkippableChunk : Chunk
+    public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
     {
         readonly uint chunkID;
 
         public override uint ID => chunkID;
         [IgnoreDataMember]
-        public MemoryStream Stream { get; internal set; }
+        public MemoryStream Stream { get; set; }
 
         public int Length => (int)Stream.Length;
-        public bool Discovered { get; internal set; }
+        public bool Discovered { get; set; }
         public byte[] Data => Stream.ToArray();
 
         public SkippableChunk()
@@ -23,7 +23,7 @@ namespace GBX.NET
             chunkID = GetType().GetCustomAttribute<ChunkAttribute>().ID;
         }
 
-        public SkippableChunk(Node node, uint id, byte[] data) : base(node)
+        public SkippableChunk(T node, uint id, byte[] data) : base(node)
         {
             chunkID = id;
             Stream = new MemoryStream(data, 0, data.Length, false);
@@ -32,7 +32,7 @@ namespace GBX.NET
                 Discovered = true;
         }
 
-        public SkippableChunk(Node node, byte[] data) : base(node)
+        public SkippableChunk(T node, byte[] data) : base(node)
         {
             chunkID = GetType().GetCustomAttribute<ChunkAttribute>().ID;
             Stream = new MemoryStream(data, 0, data.Length, false);
@@ -83,5 +83,11 @@ namespace GBX.NET
         {
             w.Write(Stream.ToArray(), 0, (int)Stream.Length);
         }
+    }
+
+    [Obsolete]
+    public class SkippableChunk : Chunk
+    {
+
     }
 }

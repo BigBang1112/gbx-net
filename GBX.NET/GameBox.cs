@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GBX.NET
 {
-    public class GameBox<T> : GameBox, IGameBox, IDisposable where T : Node
+    public class GameBox<T> : GameBox, IDisposable where T : Node
     {
         public override short Version => Header.Result.Parameters.Version;
         public override char? ByteFormat => Header.Result.Parameters.ByteFormat;
@@ -21,56 +22,54 @@ namespace GBX.NET
         public GameBoxBody<T> Body { get; private set; }
         public ClassIDRemap Game { get; set; }
 
-        public T MainNode
-        {
-            get
-            {
-                var headerChunks = Header.Result.MainNode.Chunks;
-                var bodyChunks = Body.MainNode.Chunks;
-                var node = (T)Activator.CreateInstance(typeof(T), Body, Header.Result.MainNode.ID);
-                node.Chunks = new ChunkList(headerChunks.Union(bodyChunks));
-                return node;
-            }
-        }
+        public T MainNode { get; internal set; }
 
         public GameBox()
         {
             Game = ClassIDRemap.ManiaPlanet;
         }
 
-        public TChunk CreateHeaderChunk<TChunk>() where TChunk : Chunk
+        public TChunk CreateHeaderChunk<TChunk>() where TChunk : HeaderChunk<T>
         {
-            return Header.Result.MainNode.CreateChunk<TChunk>();
+            return (TChunk)Header.Result.Chunks.Create<TChunk>();
         }
 
         public void RemoveAllHeaderChunks()
         {
-            Header.Result.MainNode.Chunks.Clear();
+            Header.Result.Chunks.Clear();
         }
 
-        public bool RemoveHeaderChunk<TChunk>() where TChunk : Chunk
+        public bool RemoveHeaderChunk<TChunk>() where TChunk : HeaderChunk<T>
         {
-            return Header.Result.MainNode.Chunks.Remove(typeof(TChunk).GetCustomAttribute<ChunkAttribute>().ID);
+            return Header.Result.Chunks.Remove(typeof(TChunk).GetCustomAttribute<ChunkAttribute>().ID);
         }
 
-        public TChunk CreateBodyChunk<TChunk>(byte[] data) where TChunk : Chunk
+        public TChunk CreateBodyChunk<TChunk>(byte[] data) where TChunk : Chunk<T>
         {
-            return Body.MainNode.CreateChunk<TChunk>(data);
+            return Body.Chunks.Create<TChunk>(data);
         }
 
-        public TChunk CreateBodyChunk<TChunk>() where TChunk : Chunk
+        public TChunk CreateBodyChunk<TChunk>() where TChunk : Chunk<T>
         {
             return CreateBodyChunk<TChunk>(new byte[0]);
         }
 
         public void RemoveAllBodyChunks()
         {
-            Body.MainNode.Chunks.Clear();
+            Body.Chunks.Clear();
         }
 
-        public bool RemoveBodyChunk<TChunk>() where TChunk : Chunk
+        public bool RemoveBodyChunk<TChunk>() where TChunk : Chunk<T>
         {
-            return Body.MainNode.Chunks.Remove(typeof(TChunk).GetCustomAttribute<ChunkAttribute>().ID);
+            return Body.Chunks.Remove<TChunk>();
+        }
+
+        public void DiscoverAllChunks()
+        {
+            foreach (var chunk in Header.Result.Chunks.Values)
+                chunk.Discover();
+            foreach (ISkippableChunk chunk in Body.Chunks.Values)
+                chunk.Discover();
         }
 
         public override bool Read(Stream stream, bool withoutBody)
@@ -86,7 +85,7 @@ namespace GBX.NET
 
             Log.Write("Working out the header chunks in the background...");
 
-            Header = Task.Run(() => new GameBoxHeader<T>(parameters));
+            Header = Task.Run(() => new GameBoxHeader<T>(this, parameters));
             Header.ContinueWith(x =>
             {
                 if (x.IsCompletedSuccessfully)
@@ -240,8 +239,10 @@ namespace GBX.NET
         }
     }
 
-    public class GameBox
+    public class GameBox : IGameBox
     {
+        public ClassIDRemap Game { get; set; }
+
         public virtual short Version => Header.Result.Parameters.Version;
         public virtual char? ByteFormat => Header.Result.Parameters.ByteFormat;
         public virtual char? RefTableCompression => Header.Result.Parameters.RefTableCompression;
@@ -263,7 +264,7 @@ namespace GBX.NET
 
             Log.Write("Working out the header chunks in the background...");
 
-            Header = Task.Run(() => new GameBoxHeader(parameters));
+            Header = Task.Run(() => new GameBoxHeader(this, parameters));
             Header.ContinueWith(x =>
             {
                 if(x.IsCompletedSuccessfully)
@@ -318,6 +319,8 @@ namespace GBX.NET
                 var modernID = parameters.ClassID.GetValueOrDefault();
                 if (Node.Mappings.TryGetValue(parameters.ClassID.GetValueOrDefault(), out uint newerClassID))
                     modernID = newerClassID;
+
+                Debug.WriteLine("GetGameBoxType: " + modernID.ToString("x8"));
 
                 var availableClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
                         && x.Namespace.StartsWith("GBX.NET.Engines") && GetBaseType(x) == typeof(Node)

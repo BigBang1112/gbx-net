@@ -227,7 +227,7 @@ namespace IslandConverter
             if (size == MapSize.X32WithBigBorder)
             {
                 Log.Write("Importing chunk 0x03043043 for water on ground...");
-                var chunk = gbx.Body.MainNode.CreateChunk<CGameCtnChallenge.Chunk043>(File.ReadAllBytes("0x03043043.dat"));
+                var chunk = gbx.Body.Chunks.Create<CGameCtnChallenge.Chunk043>(File.ReadAllBytes("0x03043043.dat"));
             }
 
             Log.Write("Cracking the map password if presented...");
@@ -421,7 +421,7 @@ namespace IslandConverter
             }
             else
             { 
-                gbx.Body.MainNode.TransferMediaTrackerTo049(6);
+                gbx.MainNode.TransferMediaTrackerTo049(6);
 
                 var xzCameraOffset = new Vector3();
                 var xzTriggerOffset = new Int3();
@@ -438,9 +438,9 @@ namespace IslandConverter
                         xzTriggerOffset += (0, 1, 0);
                 }
 
-                gbx.Body.MainNode.OffsetMediaTrackerTriggers(xzTriggerOffset);
+                gbx.MainNode.OffsetMediaTrackerTriggers(xzTriggerOffset);
 
-                gbx.Body.MainNode.OffsetMediaTrackerCameras(new Vector3(64, -6 - offsetHeight, 64) + xzCameraOffset);
+                gbx.MainNode.OffsetMediaTrackerCameras(new Vector3(64, -6 - offsetHeight, 64) + xzCameraOffset);
             }
 
             var chunk003 = map.GetChunk<CGameCtnChallenge.Chunk003>();
@@ -490,11 +490,11 @@ namespace IslandConverter
             {
                 case MapSize.X32WithBigBorder:
                     Log.Write("Placing the background item...");
-                    gbx.Body.MainNode.PlaceItem(("Island\\8Terrain\\7BackGround\\Background.Item.gbx", "10003", "adamkooo"), new Vector3(), new Vector3(), new Byte3(), new Vector3(1024, 9, 1024));
+                    gbx.MainNode.PlaceItem(("Island\\8Terrain\\7BackGround\\Background.Item.gbx", "10003", "adamkooo"), new Vector3(), new Vector3(), new Byte3(), new Vector3(1024, 9, 1024));
                     break;
                 case MapSize.X45WithSmallBorder:
                     Log.Write("Placing the background item...");
-                    gbx.Body.MainNode.PlaceItem(("Island\\8Terrain\\6BigBackground\\Background_45x45.Item.gbx", "10003", "adamkooo"), new Vector3(), new Vector3(), new Byte3(), new Vector3(1504, 17, 1504));
+                    gbx.MainNode.PlaceItem(("Island\\8Terrain\\6BigBackground\\Background_45x45.Item.gbx", "10003", "adamkooo"), new Vector3(), new Vector3(), new Byte3(), new Vector3(1504, 17, 1504));
                     break;
                 default:
                     Log.Write($"Island background is not supported for {size}.", ConsoleColor.Yellow);
@@ -643,7 +643,7 @@ namespace IslandConverter
                                             throw new FormatException($"Wrong format of OffsetPitchYawRoll: {block.Name} -> index {block.Variant} -> [{string.Join(", ", conversion.OffsetPitchYawRoll)}]");
                                     }
 
-                                    gbx.Body.MainNode.PlaceItem(meta, offsetAbsolutePosition, offsetPitchYawRoll, (0, 0, 0), offsetPivot);
+                                    gbx.MainNode.PlaceItem(meta, offsetAbsolutePosition, offsetPitchYawRoll, (0, 0, 0), offsetPivot);
 
                                     Vector3 skinPosOffset = default;
                                     if (conversion.SkinPositionOffset != null)
@@ -655,7 +655,7 @@ namespace IslandConverter
                                         if (skinInfo.TryGetValue(conversion.SkinSignSet, out Dictionary<string, string> skinDic))
                                         {
                                             if (skinDic.TryGetValue(block.Skin.PackDesc.FilePath, out string itemFile))
-                                                gbx.Body.MainNode.PlaceItem(new Meta("Island\\" + itemFile, "10003", "adamkooo"),
+                                                gbx.MainNode.PlaceItem(new Meta("Island\\" + itemFile, "10003", "adamkooo"),
                                                     offsetAbsolutePosition + skinPosOffset,
                                                     offsetPitchYawRoll + new Vector3(-conversion.SkinDirectionOffset % 4 * 90f / 180 * MathF.PI, 0, 0), (0, 0, 0), offsetPivot);
                                             else

@@ -12,9 +12,11 @@ namespace GBX.NET
         List<string> ILookbackable.LookbackStrings { get; set; } = new List<string>();
         bool ILookbackable.LookbackWritten { get; set; }
 
-        public T MainNode { get; }
+        public new GameBox<T> GBX => (GameBox<T>)base.GBX;
 
-        public GameBoxHeader(GameBoxHeaderParameters parameters) : base(parameters)
+        public HeaderChunkList<T> Chunks { get; set; }
+
+        public GameBoxHeader(GameBox<T> gbx, GameBoxHeaderParameters parameters) : base(gbx, parameters)
         {
             if (parameters.Version >= 3)
             {
@@ -28,25 +30,19 @@ namespace GBX.NET
                     && x.Namespace.StartsWith("GBX.NET.Engines") && GetBaseType(x) == typeof(Node)
                     && x.GetCustomAttribute<NodeAttribute>().ID == modernID).FirstOrDefault();
 
-                if (availableClass == null)
-                {
-                    MainNode = (T)new Node(this, classID);
-                    MainNode.Unknown = true;
-                }
-                else
-                    MainNode = (T)Activator.CreateInstance(availableClass, this, classID);
-
                 if (parameters.Version == 6)
                 {
                     if (parameters.UserData != null && parameters.UserData.Length > 0)
                     {
+                        var headerChunkBaseType = typeof(HeaderChunk<>).MakeGenericType(availableClass);
+
                         var availableChunkClasses = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
-                        && x.Namespace.StartsWith("GBX.NET.Engines") && x.BaseType == typeof(HeaderChunk)
+                        && x.Namespace.StartsWith("GBX.NET.Engines") && x.BaseType == headerChunkBaseType
                         && x.GetCustomAttribute<ChunkAttribute>().ClassID == modernID).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ID);
 
                         var inheritanceClasses = new List<uint>();
-                        if (GetBaseType(MainNode.GetType()) == typeof(Node))
-                            inheritanceClasses = GetInheritance(MainNode.GetType());
+                        if (GetBaseType(availableClass) == typeof(Node))
+                            inheritanceClasses = GetInheritance(availableClass);
 
                         List<uint> GetInheritance(Type t)
                         {
@@ -79,7 +75,8 @@ namespace GBX.NET
                         using var r = new GameBoxReader(ms, this);
 
                         var numHeaderChunks = r.ReadInt32();
-                        var chunks = new HeaderChunk[numHeaderChunks];
+                        
+                        var chunks = new HeaderChunk<T>[numHeaderChunks];
 
                         var chunkList = new Dictionary<uint, (int, bool)>();
 
@@ -119,25 +116,25 @@ namespace GBX.NET
                                 var constructorParams = constructor.GetParameters();
                                 if (constructorParams.Length == 0)
                                 {
-                                    var headerChunk = (HeaderChunk)constructor.Invoke(new object[0]);
-                                    headerChunk.Node = MainNode;
+                                    var headerChunk = (HeaderChunk<T>)constructor.Invoke(new object[0]);
+                                    headerChunk.Node = GBX.MainNode;
                                     headerChunk.Stream = new MemoryStream(d, 0, d.Length, false);
                                     if (d == null || d.Length == 0)
                                         headerChunk.Discovered = true;
                                     chunks[counter] = headerChunk;
                                 }
                                 else if (constructorParams.Length == 2)
-                                    chunks[counter] = (HeaderChunk)constructor.Invoke(new object[] { MainNode, d });
+                                    chunks[counter] = (HeaderChunk<T>)constructor.Invoke(new object[] { GBX.MainNode, d });
                                 else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
 
                                 chunks[counter].IsHeavy = chunk.Value.Item2;
                             }
                             else
-                                chunks[counter] = new HeaderChunk(MainNode, chunkId, d);
+                                chunks[counter] = new HeaderChunk<T>(GBX.MainNode, chunkId, d);
 
                             counter++;
                         }
-                        MainNode.Chunks = new ChunkList(chunks.Cast<Chunk>());
+                        Chunks = new HeaderChunkList<T>(chunks);
                     }
                 }
             }
@@ -163,7 +160,7 @@ namespace GBX.NET
                 w.Write((byte)RefTableCompression.GetValueOrDefault());
                 w.Write((byte)BodyCompression.GetValueOrDefault());
                 if (Version >= 4) w.Write((byte)UnknownByte.GetValueOrDefault());
-                w.Write(MainNode.ID);
+                w.Write(ClassID.GetValueOrDefault());
 
                 if (Version >= 6)
                 {
@@ -173,25 +170,25 @@ namespace GBX.NET
 
                     Dictionary<uint, int> lengths = new Dictionary<uint, int>();
 
-                    foreach (var chunk in MainNode.Chunks.Values)
+                    foreach (var chunk in Chunks.Values)
                     {
                         chunk.Unknown.Position = 0;
 
                         var pos = userData.Position;
-                        if (chunk is SkippableChunk s && !s.Discovered)
-                            s.Write(gbxw);
+                        if (!chunk.Discovered)
+                            chunk.Write(gbxw);
                         else
                             chunk.ReadWrite(gbxrw);
                         lengths[chunk.ID] = (int)(userData.Position - pos);
                     }
 
                     // Actual data size plus the class id (4 bytes) and each length (4 bytes) plus the number of chunks integer
-                    w.Write((int)userData.Length + MainNode.Chunks.Count * 8 + 4);
+                    w.Write((int)userData.Length + Chunks.Count * 8 + 4);
 
                     // Write number of header chunks integer
-                    w.Write(MainNode.Chunks.Count);
+                    w.Write(Chunks.Count);
 
-                    foreach (HeaderChunk chunk in MainNode.Chunks.Values)
+                    foreach (var chunk in Chunks.Values)
                     {
                         w.Write(Chunk.Remap(chunk.ID, remap));
                         var length = lengths[chunk.ID];
@@ -213,7 +210,7 @@ namespace GBX.NET
         }
     }
 
-    public class GameBoxHeader : ILookbackable
+    public class GameBoxHeader : GameBoxPart, ILookbackable
     {
         int? ILookbackable.LookbackVersion { get; set; }
         List<string> ILookbackable.LookbackStrings { get; set; } = new List<string>();
@@ -229,9 +226,74 @@ namespace GBX.NET
         public uint? ClassID => Parameters.ClassID;
         public int? NumNodes => Parameters.NumNodes;
 
-        public GameBoxHeader(GameBoxHeaderParameters parameters)
+        public GameBoxHeader(GameBox gbx, GameBoxHeaderParameters parameters) : base(gbx)
         {
             Parameters = parameters;
+        }
+
+        public override T CreateChunk<T>(byte[] data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override T CreateChunk<T>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void InsertChunk(Chunk chunk)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void DiscoverChunk<TChunk>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void DiscoverChunks<TChunk1, TChunk2>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void DiscoverChunks<TChunk1, TChunk2, TChunk3>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5, TChunk6>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void DiscoverAllChunks()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override T GetChunk<T>()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool TryGetChunk<T>(out T chunk)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool RemoveChunk<T>()
+        {
+            throw new NotImplementedException();
         }
     }
 }

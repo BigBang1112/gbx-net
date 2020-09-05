@@ -117,7 +117,7 @@ namespace GBX.NET
             return ReadMeta(Lookbackable);
         }
 
-        public Node ReadNodeRef(IGameBoxBody body)
+        public Node ReadNodeRef(GameBoxBody body)
         {
             var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
@@ -145,10 +145,10 @@ namespace GBX.NET
 
         public Node ReadNodeRef()
         {
-            return ReadNodeRef((IGameBoxBody)Lookbackable);
+            return ReadNodeRef((GameBoxBody)Lookbackable);
         }
 
-        public T ReadNodeRef<T>(bool hasInheritance, IGameBoxBody body) where T : Node
+        public T ReadNodeRef<T>(bool hasInheritance, GameBoxBody body) where T : Node
         {
             var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
@@ -159,9 +159,9 @@ namespace GBX.NET
 
                 Node node;
                 if (hasInheritance)
-                    node = Node.Parse(body, classID, this);
+                    node = Node.Parse(body, classID, this, true);
                 else
-                    node = Node.Parse<T>(body, this);
+                    node = Node.Parse<T>(body, this, true);
 
                 if (index >= body.AuxilaryNodes.Count)
                     body.AuxilaryNodes.Add(node);
@@ -180,7 +180,7 @@ namespace GBX.NET
 
         public T ReadNodeRef<T>(bool hasInheritance) where T : Node
         {
-            return ReadNodeRef<T>(hasInheritance, (IGameBoxBody)Lookbackable);
+            return ReadNodeRef<T>(hasInheritance, (GameBoxBody)Lookbackable);
         }
 
         public T ReadNodeRef<T>() where T : Node
