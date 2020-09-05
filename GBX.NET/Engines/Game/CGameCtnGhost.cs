@@ -18,7 +18,7 @@ namespace GBX.NET.Engines.Game
 
         #region 0x000 skippable chunk (basic)
 
-        [Chunk(0x03092000, true)]
+        [Chunk(0x03092000)]
         public class Chunk000 : SkippableChunk
         {
             public int Version { get; set; }
@@ -27,11 +27,6 @@ namespace GBX.NET.Engines.Game
             public string GhostNickname { get; set; }
             public string GhostAvatarName { get; set; }
             public string RecordingContext { get; set; }
-
-            public Chunk000(CGameCtnGhost node, byte[] data) : base(node, data)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -53,15 +48,10 @@ namespace GBX.NET.Engines.Game
 
         #region 0x005 skippable chunk (race time)
 
-        [Chunk(0x03092005, true)]
+        [Chunk(0x03092005)]
         public class Chunk005_2 : SkippableChunk
         {
             public TimeSpan RaceTime { get; set; }
-
-            public Chunk005_2(CGameCtnGhost node, byte[] data) : base(node, data)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -73,15 +63,10 @@ namespace GBX.NET.Engines.Game
 
         #region 0x008 skippable chunk (respawns)
 
-        [Chunk(0x03092008, true)]
+        [Chunk(0x03092008)]
         public class Chunk008 : SkippableChunk
         {
             public int Respawns { get; set; }
-
-            public Chunk008(CGameCtnGhost node, byte[] data) : base(node, data)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -93,15 +78,10 @@ namespace GBX.NET.Engines.Game
 
         #region 0x009 skippable chunk (light trail color)
 
-        [Chunk(0x03092009, true)]
+        [Chunk(0x03092009)]
         public class Chunk009 : SkippableChunk
         {
             public Vector3 LightTrailColor { get; set; }
-
-            public Chunk009(CGameCtnGhost node, byte[] data) : base(node, data)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -113,15 +93,10 @@ namespace GBX.NET.Engines.Game
 
         #region 0x00A skippable chunk (stunt score)
 
-        [Chunk(0x0309200A, true)]
+        [Chunk(0x0309200A)]
         public class Chunk00A : SkippableChunk
         {
             public int StuntScore { get; set; }
-
-            public Chunk00A(CGameCtnGhost node, byte[] data) : base(node, data)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -133,15 +108,10 @@ namespace GBX.NET.Engines.Game
 
         #region 0x00B skippable chunk (checkpoint times)
 
-        [Chunk(0x0309200B, true)]
+        [Chunk(0x0309200B)]
         public class Chunk00B : SkippableChunk
         {
             public TimeSpan[] Checkpoints { get; set; }
-
-            public Chunk00B(CGameCtnGhost node, byte[] data) : base(node, data)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -158,11 +128,6 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0309200C)]
         public class Chunk00C : Chunk
         {
-            public Chunk00C(CGameCtnGhost node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
@@ -177,11 +142,6 @@ namespace GBX.NET.Engines.Game
         public class Chunk00E : Chunk
         {
             public string UID { get; set; }
-
-            public Chunk00E(CGameCtnGhost node) : base(node)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -198,11 +158,6 @@ namespace GBX.NET.Engines.Game
         {
             public string GhostLogin { get; set; }
 
-            public Chunk00F(CGameCtnGhost node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 GhostLogin = rw.String(GhostLogin);
@@ -216,11 +171,6 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03092010)]
         public class Chunk010 : Chunk
         {
-            public Chunk010(CGameCtnGhost node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.LookbackString(Unknown);
@@ -234,11 +184,6 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03092012)]
         public class Chunk012 : Chunk
         {
-            public Chunk012(CGameCtnGhost node) : base(node)
-            {
-
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
@@ -251,14 +196,9 @@ namespace GBX.NET.Engines.Game
 
         #region 0x013 skippable chunk
 
-        [Chunk(0x03092013, true)]
+        [Chunk(0x03092013)]
         public class Chunk013 : SkippableChunk
         {
-            public Chunk013(CGameCtnGhost node, byte[] data) : base(node, data)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
@@ -270,14 +210,9 @@ namespace GBX.NET.Engines.Game
 
         #region 0x014 skippable chunk
 
-        [Chunk(0x03092014, true)]
+        [Chunk(0x03092014)]
         public class Chunk014 : SkippableChunk
         {
-            public Chunk014(CGameCtnGhost node, byte[] data) : base(node, data)
-            {
-
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
@@ -293,11 +228,6 @@ namespace GBX.NET.Engines.Game
         {
             public string VehicleID { get; set; }
 
-            public Chunk015(CGameCtnGhost node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 VehicleID = rw.LookbackString(VehicleID);
@@ -308,17 +238,12 @@ namespace GBX.NET.Engines.Game
 
         #region 0x017 skippable chunk
 
-        [Chunk(0x03092017, true)]
+        [Chunk(0x03092017)]
         public class Chunk017 : SkippableChunk
         {
             public FileRef[] SkinPackDescs { get; set; }
             public string GhostNickname { get; set; }
             public string GhostAvatarName { get; set; }
-
-            public Chunk017(CGameCtnGhost node, byte[] data) : base(node, data)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -336,11 +261,6 @@ namespace GBX.NET.Engines.Game
         public class Chunk018 : Chunk
         {
             public Meta Meta { get; set; }
-
-            public Chunk018(CGameCtnGhost node) : base(node)
-            {
-                
-            }
 
             public override void Read(GameBoxReader r, GameBoxWriter unknownW)
             {
@@ -364,18 +284,13 @@ namespace GBX.NET.Engines.Game
             public uint Unknown1 { get; set; }
             public string[] ControlNames { get; set; }
             public int Unknown2 { get; set; }
-            public ControlEntry[] ControlEntries { get; set; }
+            public ControlEntry[] ControlEntries { get; set; } = new ControlEntry[0];
             public string GameVersion { get; set; }
             public int ExeChecksum { get; set; }
             public int OSKind { get; set; }
             public int CPUKind { get; set; }
             public string RaceSettingsXML { get; set; }
             public int Unknown3 { get; set; }
-
-            public Chunk019(CGameCtnGhost node) : base(node)
-            {
-                ControlEntries = new ControlEntry[0];
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -437,11 +352,6 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0309201C)]
         public class Chunk01C : Chunk
         {
-            public Chunk01C(CGameCtnGhost node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);

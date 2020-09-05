@@ -30,11 +30,6 @@ namespace GBX.NET.Engines.Game
             public string Text { get; set; }
             public CControlEffectSimi Simi { get; set; }
 
-            public Chunk001(CGameCtnMediaBlockText node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Text = rw.String(Text);
@@ -49,11 +44,6 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x030A8002)]
         public class Chunk002 : Chunk
         {
-            public Chunk002(CGameCtnMediaBlockText node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Single(Unknown);

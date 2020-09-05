@@ -31,11 +31,6 @@ namespace GBX.NET.Engines.GameData
             public short CatalogPosition { get; set; }
             public string Name { get; set; }
 
-            public Chunk003(CGameCtnCollector node, byte[] data) : base(node, data)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Metadata = rw.Meta(Metadata);
@@ -67,11 +62,6 @@ namespace GBX.NET.Engines.GameData
         public class Chunk004 : SkippableChunk
         {
             public Task<Bitmap> Icon { get; set; }
-
-            public Chunk004(CGameCtnCollector node, byte[] data) : base(node, data)
-            {
-                
-            }
 
             public override void Read(GameBoxReader r, GameBoxWriter unknownW)
             {
@@ -111,11 +101,6 @@ namespace GBX.NET.Engines.GameData
         {
             public long FileTime { get; set; }
 
-            public Chunk006(CGameCtnCollector node, byte[] data) : base(node, data)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 FileTime = rw.Int64(FileTime);
@@ -130,11 +115,6 @@ namespace GBX.NET.Engines.GameData
         public class Chunk008 : Chunk
         {
             public string SkinFile { get; set; }
-
-            public Chunk008(CGameCtnCollector node) : base(node)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -152,11 +132,6 @@ namespace GBX.NET.Engines.GameData
         {
             public string PageName { get; set; }
             public Node IconFid { get; set; }
-
-            public Chunk009(CGameCtnCollector node) : base(node)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -179,11 +154,6 @@ namespace GBX.NET.Engines.GameData
         {
             public Meta Decoration { get; set; }
 
-            public Chunk00B(CGameCtnCollector node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Decoration = rw.Meta(Decoration);
@@ -199,11 +169,6 @@ namespace GBX.NET.Engines.GameData
         {
             public string CollectorName { get; set; }
 
-            public Chunk00C(CGameCtnCollector node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 CollectorName = rw.String(CollectorName);
@@ -218,11 +183,6 @@ namespace GBX.NET.Engines.GameData
         public class Chunk00D : Chunk
         {
             public string Description { get; set; }
-
-            public Chunk00D(CGameCtnCollector node) : base(node)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -240,11 +200,6 @@ namespace GBX.NET.Engines.GameData
             public bool IconUseAutoRender { get; set; }
             public int IconQuarterRotationY { get; set; }
 
-            public Chunk00E(CGameCtnCollector node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 IconUseAutoRender = rw.Boolean(IconUseAutoRender);
@@ -259,11 +214,6 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E001010)]
         public class Chunk010 : Chunk
         {
-            public Chunk010(CGameCtnCollector node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown); // 2
@@ -280,11 +230,6 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E001011)]
         public class Chunk011 : Chunk
         {
-            public Chunk011(CGameCtnCollector node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Byte(Unknown);

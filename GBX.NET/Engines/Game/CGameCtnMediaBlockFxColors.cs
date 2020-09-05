@@ -16,11 +16,6 @@ namespace GBX.NET.Engines.Game
         public class Chunk003 : Chunk
         {
             public Key[] Keys { get; set; }
-
-            public Chunk003(CGameCtnMediaBlockFxColors node) : base(node)
-            {
-
-            }
         }
     }
 }

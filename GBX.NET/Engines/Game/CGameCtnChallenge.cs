@@ -1867,11 +1867,6 @@ namespace GBX.NET.Engines.Game
 
             public bool StartSailUp { get; set; }
 
-            public Chunk001(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-              
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Byte(Version);
@@ -2057,11 +2052,6 @@ namespace GBX.NET.Engines.Game
             public int Unknown4 { get; set; }
             public int Unknown5 { get; set; }
 
-            public Chunk002(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Byte(Version);
@@ -2229,11 +2219,6 @@ namespace GBX.NET.Engines.Game
 
             public int Unknown1 { get; set; }
 
-            public Chunk003(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Byte(Version);
@@ -2306,11 +2291,6 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public int Version { get; set; }
 
-            public Chunk004(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
@@ -2331,11 +2311,6 @@ namespace GBX.NET.Engines.Game
             /// XML track information and dependencies.
             /// </summary>
             public string XML { get; set; }
-
-            public Chunk005(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -2370,11 +2345,6 @@ namespace GBX.NET.Engines.Game
             /// Comments of the map.
             /// </summary>
             public string Comments { get; set; }
-
-            public Chunk007(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -2527,11 +2497,6 @@ namespace GBX.NET.Engines.Game
 
             public string AuthorExtraInfo { get; set; }
 
-            public Chunk008(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
@@ -2586,11 +2551,6 @@ namespace GBX.NET.Engines.Game
             public int Unknown2 { get; set; }
             public Meta Unknown3 { get; set; }
 
-            public Chunk00F(Node node) : base(node)
-            {
-
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 MapInfo = rw.Meta(MapInfo);
@@ -2626,11 +2586,6 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public TrackKind Kind { get; set; }
 
-            public Chunk011(CGameCtnChallenge node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 CollectorList = rw.NodeRef<CGameCtnCollectorList>(CollectorList);
@@ -2649,11 +2604,6 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03043012)]
         public class Chunk012 : Chunk
         {
-            public Chunk012(CGameCtnChallenge node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.String(Unknown);
@@ -2698,11 +2648,6 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public string Password { get; set; }
 
-            public Chunk014(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
@@ -2720,11 +2665,6 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03043016)]
         public class Chunk016 : SkippableChunk
         {
-            public Chunk016(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
@@ -2745,11 +2685,6 @@ namespace GBX.NET.Engines.Game
             /// All checkpoints and their map coordinates.
             /// </summary>
             public Int3[] Checkpoints { get; set; }
-
-            public Chunk017(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -2773,11 +2708,6 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public int Laps { get; set; }
 
-            public Chunk018(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 IsLapRace = rw.Boolean(IsLapRace);
@@ -2800,11 +2730,6 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public FileRef ModPackDesc { get; set; }
 
-            public Chunk019(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 ModPackDesc = rw.FileRef(ModPackDesc);
@@ -2822,11 +2747,6 @@ namespace GBX.NET.Engines.Game
         public class Chunk01C : SkippableChunk
         {
             public PlayMode Mode { get; set; }
-
-            public Chunk01C(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -3017,11 +2937,6 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public CGameCtnMediaClipGroup ClipGroupEndRace { get; set; }
 
-            public Chunk021(CGameCtnChallenge node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 ClipIntro = rw.NodeRef<CGameCtnMediaClip>(ClipIntro);
@@ -3040,11 +2955,6 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03043022)]
         public class Chunk022 : Chunk
         {
-            public Chunk022(CGameCtnChallenge node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Boolean(Unknown);
@@ -3065,11 +2975,6 @@ namespace GBX.NET.Engines.Game
             /// Reference to a music file.
             /// </summary>
             public FileRef CustomMusicPackDesc { get; set; }
-
-            public Chunk024(CGameCtnChallenge node) : base(node)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -3097,11 +3002,6 @@ namespace GBX.NET.Engines.Game
             public Vector2 MapCoordOrigin { get; set; }
             public Vector2 MapCoordTarget { get; set; }
 
-            public Chunk025(CGameCtnChallenge node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 MapCoordOrigin = rw.Vec2(MapCoordOrigin);
@@ -3120,11 +3020,6 @@ namespace GBX.NET.Engines.Game
         public class Chunk026 : Chunk
         {
             public Node ClipGlobal { get; set; }
-
-            public Chunk026(CGameCtnChallenge node) : base(node)
-            {
-
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -3146,11 +3041,6 @@ namespace GBX.NET.Engines.Game
             public Vector3? Vec1 { get; set; }
             public Vector3? Vec2 { get; set; }
             public Vector3? Vec3 { get; set; }
-
-            public Chunk027(CGameCtnChallenge node) : base(node)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -3185,9 +3075,9 @@ namespace GBX.NET.Engines.Game
             public Chunk027 Chunk027 { get; }
             public string Comments { get; set; }
 
-            public Chunk028(CGameCtnChallenge node) : base(node)
+            public Chunk028()
             {
-                Chunk027 = new Chunk027(node);
+                Chunk027 = new Chunk027();
             }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
@@ -3213,11 +3103,6 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public byte[] HashedPassword { get; set; }
             public uint CRC32 { get; set; }
-
-            public Chunk029(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -3250,11 +3135,6 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0304302A)]
         public class Chunk02A : Chunk
         {
-            public Chunk02A(CGameCtnChallenge node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Boolean(Unknown);
@@ -3286,11 +3166,6 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public float ThumbnailFOV { get; set; }
 
-            public Chunk036(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 ThumbnailPosition = rw.Vec3(ThumbnailPosition);
@@ -3314,11 +3189,6 @@ namespace GBX.NET.Engines.Game
         {
             public int Version { get; set; }
             public Task<CHmsLightMapCache> LightmapCache { get; set; }
-
-            public Chunk03D(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
 
             public override void Read(GameBoxReader r, GameBoxWriter unknownW)
             {
@@ -3395,11 +3265,6 @@ namespace GBX.NET.Engines.Game
             public int Unknown1 { get; set; }
             public int Unknown2 { get; set; } = 10;
             public int Unknown3 { get; set; }
-
-            public Chunk040(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
 
             public override void Read(GameBoxReader r, GameBoxWriter unknownW)
             {
@@ -3478,11 +3343,6 @@ namespace GBX.NET.Engines.Game
 
             public string AuthorExtraInfo { get; set; }
 
-            public Chunk042(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
@@ -3512,11 +3372,6 @@ namespace GBX.NET.Engines.Game
             public new byte[] Data { get; set; }
 
             public Task<CGameCtnZoneGenealogy[]> Genealogies { get; set; }
-
-            public Chunk043(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
 
             public override void Read(GameBoxReader r, GameBoxWriter unknownW)
             {
@@ -3564,7 +3419,7 @@ namespace GBX.NET.Engines.Game
             public int Version { get; set; }
             public CScriptTraitsMetadata MetadataTraits { get; }
 
-            public Chunk044(CGameCtnChallenge node, byte[] data) : base(node, data)
+            public Chunk044()
             {
                 MetadataTraits = new CScriptTraitsMetadata();
             }
@@ -3617,11 +3472,6 @@ namespace GBX.NET.Engines.Game
             public int Unknown2 { get; set; } = 1;
             public int Unknown3 { get; set; } = 3;
 
-            public Chunk049(CGameCtnChallenge node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
@@ -3654,11 +3504,6 @@ namespace GBX.NET.Engines.Game
             public string ObjectiveTextSilver { get; set; }
             public string ObjectiveTextBronze { get; set; }
 
-            public Chunk04B(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 ObjectiveTextAuthor = rw.String(ObjectiveTextAuthor);
@@ -3682,11 +3527,6 @@ namespace GBX.NET.Engines.Game
             public string TitleID { get; set; }
             public string BuildVersion { get; set; }
 
-            public Chunk051(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
@@ -3706,11 +3546,6 @@ namespace GBX.NET.Engines.Game
         public class Chunk059 : SkippableChunk
         {
             public int Version { get; set; }
-
-            public Chunk059(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -3741,11 +3576,6 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0304305A)]
         public class Chunk05A : SkippableChunk
         {
-            public Chunk05A(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
@@ -3800,7 +3630,7 @@ namespace GBX.NET.Engines.Game
                 }
             }
 
-            public Chunk05F(CGameCtnChallenge node, byte[] data) : base(node, data)
+            public Chunk05F()
             {
                 Vectors = new List<Vector3>();
             }

@@ -29,11 +29,6 @@ namespace GBX.NET.Engines.Game
         {
             public string Default { get; set; }
 
-            public Chunk002(CGameCtnChallengeGroup node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Default = rw.String(Default);
@@ -49,11 +44,6 @@ namespace GBX.NET.Engines.Game
         {
             public int Version { get; set; }
             public MapInfo[] MapInfos { get; set; }
-
-            public Chunk00B(CGameCtnChallengeGroup node) : base(node)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {

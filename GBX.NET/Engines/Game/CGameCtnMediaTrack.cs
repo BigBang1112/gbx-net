@@ -44,11 +44,6 @@ namespace GBX.NET.Engines.Game
             public int Unknown1 { get; set; }
             public int Unknown2 { get; set; }
 
-            public Chunk001(CGameCtnMediaTrack node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Name = rw.String(Name);
@@ -65,11 +60,6 @@ namespace GBX.NET.Engines.Game
         {
             public bool Unknown1 { get; set; }
 
-            public Chunk002(CGameCtnMediaTrack node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Unknown1 = rw.Boolean(Unknown1); // 1
@@ -79,11 +69,6 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03078000, 0x003)]
         public class Chunk003 : Chunk
         {
-            public Chunk003(CGameCtnMediaTrack node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown); // 0
@@ -97,11 +82,6 @@ namespace GBX.NET.Engines.Game
         public class Chunk004 : Chunk
         {
             public int Unknown1 { get; set; }
-
-            public Chunk004(CGameCtnMediaTrack node) : base(node)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -118,11 +98,6 @@ namespace GBX.NET.Engines.Game
             public int Unknown3 { get; set; }
             public float Unknown4 { get; set; } = -1;
             public float Unknown5 { get; set; } = -1;
-
-            public Chunk005(CGameCtnMediaTrack node) : base(node)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {

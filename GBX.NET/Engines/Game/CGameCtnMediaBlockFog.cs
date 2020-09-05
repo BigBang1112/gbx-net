@@ -25,11 +25,6 @@ namespace GBX.NET.Engines.Game
             public int Version { get; set; }
             public Key[] Keys { get; set; }
 
-            public Chunk000(CGameCtnMediaBlockFog node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);

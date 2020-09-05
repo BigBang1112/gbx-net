@@ -18,11 +18,6 @@ namespace GBX.NET.Engines.Game
         {
             public Key[] Keys { get; set; }
 
-            public Chunk002(CGameCtnMediaBlockDOF node) : base(node)
-            {
-                
-            }
-
             public override void Read(GameBoxReader r, GameBoxWriter unknownW)
             {
                 Keys = r.ReadArray(i =>

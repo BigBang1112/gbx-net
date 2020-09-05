@@ -35,11 +35,6 @@ namespace GBX.NET.Engines.Game
             public float Start { get; set; }
             public float End { get; set; }
 
-            public Chunk000(CGameCtnMediaBlockFxBlurMotion node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Start = rw.Single(Start);

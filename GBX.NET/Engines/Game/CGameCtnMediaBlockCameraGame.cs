@@ -31,11 +31,6 @@ namespace GBX.NET.Engines.Game
             public float Start { get; set; }
             public float End { get; set; }
 
-            public Chunk000_084(CGameCtnMediaBlockCamera node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Start = rw.Single(Start);
@@ -60,11 +55,6 @@ namespace GBX.NET.Engines.Game
             public GameCam Type { get; set; }
             public int Target { get; set; }
 
-            public Chunk001(CGameCtnMediaBlockCamera node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Start = rw.Single(Start);
@@ -81,11 +71,6 @@ namespace GBX.NET.Engines.Game
             public float End { get; set; }
             public string GameCam { get; set; }
             public int Target { get; set; }
-
-            public Chunk003(CGameCtnMediaBlockCamera node) : base(node)
-            {
-
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -113,11 +98,6 @@ namespace GBX.NET.Engines.Game
             public GameCam Type { get; set; }
             public float Start { get; set; }
             public float End { get; set; }
-
-            public Chunk007(CGameCtnMediaBlockCameraGame node) : base(node)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {

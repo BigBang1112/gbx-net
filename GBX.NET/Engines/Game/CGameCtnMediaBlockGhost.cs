@@ -81,11 +81,6 @@ namespace GBX.NET.Engines.Game
             public bool ForceLight { get; set; }
             public bool ForceHue { get; set; }
 
-            public Chunk002(CGameCtnMediaBlockGhost node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);

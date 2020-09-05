@@ -42,11 +42,6 @@ namespace GBX.NET.Engines.GameData
         {
             public ItemType Type { get; set; }
 
-            public Chunk2E002000(CGameItemModel node, byte[] data) : base(node, data)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Type = (ItemType)rw.Int32((int)Type);
@@ -57,11 +52,6 @@ namespace GBX.NET.Engines.GameData
         public class Chunk2E002008 : Chunk
         {
             public Node[] NadeoSkinFids { get; set; }
-
-            public Chunk2E002008(CGameItemModel node) : base(node)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -75,11 +65,6 @@ namespace GBX.NET.Engines.GameData
             public int Version { get; set; }
             public Node[] Cameras { get; set; }
 
-            public Chunk2E002009(CGameItemModel node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
@@ -91,11 +76,6 @@ namespace GBX.NET.Engines.GameData
         public class Chunk2E00200C : Chunk
         {
             public Node RaceInterfaceFid { get; set; }
-
-            public Chunk2E00200C(CGameItemModel node) : base(node)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -112,11 +92,6 @@ namespace GBX.NET.Engines.GameData
             public float OrbitalRadiusBase { get; set; }
             public float OrbitalPreviewAngle { get; set; }
 
-            public Chunk2E002012(CGameItemModel node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 GroundPoint = rw.Vec3(GroundPoint);
@@ -132,11 +107,6 @@ namespace GBX.NET.Engines.GameData
         {
             public Node BaseAttributes { get; set; }
 
-            public Chunk2E002013(CGameItemModel node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 BaseAttributes = rw.NodeRef(BaseAttributes);
@@ -147,11 +117,6 @@ namespace GBX.NET.Engines.GameData
         public class Chunk2E002015 : Chunk
         {
             public ItemType ItemObjectType { get; set; }
-
-            public Chunk2E002015(CGameItemModel node) : base(node)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -168,11 +133,6 @@ namespace GBX.NET.Engines.GameData
             public Node VisModelStatic { get; set; }
             public Node Block { get; set; }
             public Node Unknown1 { get; set; }
-
-            public Chunk2E002019(CGameItemModel node) : base(node)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -202,11 +162,6 @@ namespace GBX.NET.Engines.GameData
         {
             public Node Unknown1 { get; set; }
 
-            public Chunk2E00201A(CGameItemModel node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Unknown1 = rw.NodeRef(Unknown1);
@@ -219,11 +174,6 @@ namespace GBX.NET.Engines.GameData
             public int Version { get; set; }
             public CGameItemPlacementParam ItemPlacement { get; set; }
 
-            public Chunk2E00201C(CGameItemModel node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
@@ -234,11 +184,6 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E00201E)]
         public class Chunk2E00201E : Chunk
         {
-            public Chunk2E00201E(CGameItemModel node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
@@ -253,11 +198,6 @@ namespace GBX.NET.Engines.GameData
         {
             public int Version { get; set; }
 
-            public Chunk2E00201F(CGameItemModel node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
@@ -271,11 +211,6 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E002020)]
         public class Chunk2E002020 : Chunk
         {
-            public Chunk2E002020(CGameItemModel node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
@@ -287,11 +222,6 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E002021)]
         public class Chunk2E002021 : Chunk
         {
-            public Chunk2E002021(CGameItemModel node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
@@ -302,11 +232,6 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E002023)]
         public class Chunk2E002023 : Chunk
         {
-            public Chunk2E002023(CGameItemModel node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Byte(Unknown);
@@ -318,10 +243,7 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E002024)]
         public class Chunk2E002024 : SkippableChunk
         {
-            public Chunk2E002024(CGameItemModel node, byte[] data) : base(node, data)
-            {
-                
-            }
+            
         }
     }
 }

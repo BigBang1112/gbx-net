@@ -33,11 +33,6 @@ namespace GBX.NET.Engines.Game
             public int Unknown1 { get; set; }
             public string CurrentZone { get; set; }
 
-            public Chunk002(CGameCtnZoneGenealogy node) : base(node)
-            {
-
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Zones = rw.Array(Zones, i => rw.Reader.ReadLookbackString(), x => rw.Writer.WriteLookbackString(x));

@@ -30,11 +30,6 @@ namespace GBX.NET.Engines.Game
         {
             public List<Key> Keys { get; set; } = new List<Key>();
 
-            public Chunk002(CGameCtnMediaBlockCameraCustom node) : base(node)
-            {
-                
-            }
-
             public override void Read(GameBoxReader r, GameBoxWriter unknownW)
             {
                 Keys = r.ReadArray(i =>
@@ -106,11 +101,6 @@ namespace GBX.NET.Engines.Game
         {
             public int Version { get; set; }
             public List<Key> Keys { get; set; } = new List<Key>();
-
-            public Chunk005(CGameCtnMediaBlockCameraCustom node) : base(node)
-            {
-                
-            }
 
             public override void Read(GameBoxReader r, GameBoxWriter unknownW)
             {
@@ -190,12 +180,12 @@ namespace GBX.NET.Engines.Game
             /// Constructs a new 0x030A2006 chunk with version 3.
             /// </summary>
             /// <param name="node"></param>
-            public Chunk006(CGameCtnMediaBlockCameraCustom node) : base(node)
+            public Chunk006() : this(3)
             {
                 
             }
 
-            public Chunk006(CGameCtnMediaBlockCameraCustom node, int version) : this(node)
+            public Chunk006(int version)
             {
                 Version = version;
             }
@@ -272,7 +262,11 @@ namespace GBX.NET.Engines.Game
 
             public static explicit operator Chunk006(Chunk005 c)
             {
-                return new Chunk006(c.Node as CGameCtnMediaBlockCameraCustom) { Keys = c.Keys };
+                return new Chunk006()
+                {
+                    Node = c.Node,
+                    Keys = c.Keys
+                };
             }
         }
 

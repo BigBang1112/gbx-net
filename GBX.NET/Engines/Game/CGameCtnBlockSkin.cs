@@ -52,11 +52,6 @@ namespace GBX.NET.Engines.Game
             public string Text { get; set; }
             public string Ignored { get; set; }
 
-            public Chunk000(CGameCtnBlockSkin node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Text = rw.String(Text);
@@ -72,12 +67,7 @@ namespace GBX.NET.Engines.Game
         public class Chunk001 : Chunk
         {
             public string Text { get; set; }
-            public FileRef PackDesc { get; set; } = new FileRef(3, new byte[32], "", "");
-
-            public Chunk001(CGameCtnBlockSkin node) : base(node)
-            {
-                
-            }
+            public FileRef PackDesc { get; set; } = new FileRef();
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -94,13 +84,8 @@ namespace GBX.NET.Engines.Game
         public class Chunk002 : Chunk
         {
             public string Text { get; set; }
-            public FileRef PackDesc { get; set; } = new FileRef(3, new byte[32], "", "");
-            public FileRef ParentPackDesc { get; set; } = new FileRef(3, new byte[32], "", "");
-
-            public Chunk002(CGameCtnBlockSkin node) : base(node)
-            {
-                
-            }
+            public FileRef PackDesc { get; set; } = new FileRef();
+            public FileRef ParentPackDesc { get; set; } = new FileRef();
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -119,11 +104,6 @@ namespace GBX.NET.Engines.Game
         {
             public int Version { get; set; }
             public FileRef SecondaryPackDesc { get; set; } = new FileRef();
-
-            public Chunk003(CGameCtnBlockSkin node) : base(node)
-            {
-
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {

@@ -15,10 +15,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03029001)]
         public class Chunk001 : Chunk
         {
-            public Chunk001(CGameCtnMediaBlockTriangles node) : base(node)
-            {
-
-            }
+            
         }
     }
 }

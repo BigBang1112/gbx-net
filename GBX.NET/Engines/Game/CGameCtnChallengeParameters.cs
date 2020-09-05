@@ -82,11 +82,6 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0305B000)]
         public class Chunk000 : Chunk
         {
-            public Chunk000(CGameCtnChallengeParameters node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
@@ -105,12 +100,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0305B001)]
         public class Chunk001 : Chunk
         {
-            public string[] Tips { get; }
-
-            public Chunk001(CGameCtnChallengeParameters node) : base(node)
-            {
-                Tips = new string[4];
-            }
+            public string[] Tips { get; } = new string[4];
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -122,11 +112,6 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0305B002)]
         public class Chunk002 : Chunk
         {
-            public Chunk002(CGameCtnChallengeParameters node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
@@ -153,11 +138,6 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0305B003)]
         public class Chunk003 : Chunk
         {
-            public Chunk003(CGameCtnChallengeParameters node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
@@ -194,11 +174,6 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public TimeSpan? AuthorTime { get; set; }
 
-            public Chunk004(CGameCtnChallengeParameters node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 BronzeTime = rw.TimeSpan32(BronzeTime);
@@ -213,11 +188,6 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0305B005)]
         public class Chunk005 : Chunk
         {
-            public Chunk005(CGameCtnChallengeParameters node) : base(node)
-            {
-
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
@@ -231,11 +201,6 @@ namespace GBX.NET.Engines.Game
         {
             public uint[] Items { get; set; }
 
-            public Chunk006(CGameCtnChallengeParameters node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Items = rw.Array(Items, i => rw.Reader.ReadUInt32(), x => rw.Writer.Write(x));
@@ -245,11 +210,6 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0305B007)]
         public class Chunk007 : Chunk
         {
-            public Chunk007(CGameCtnChallengeParameters node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.UInt32(Unknown);
@@ -270,11 +230,6 @@ namespace GBX.NET.Engines.Game
             /// Stunt author score.
             /// </summary>
             public int AuthorScore { get; set; }
-
-            public Chunk008(CGameCtnChallengeParameters node) : base(node)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -317,11 +272,6 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public int AuthorScore { get; set; }
 
-            public Chunk00A(CGameCtnChallengeParameters node, byte[] data) : base(node, data)
-            {
-
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Unknown1 = rw.Int32(Unknown1);
@@ -338,11 +288,6 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0305B00D)]
         public class Chunk00D : Chunk
         {
-            public Chunk00D(CGameCtnChallengeParameters node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
@@ -355,11 +300,6 @@ namespace GBX.NET.Engines.Game
             public string MapType { get; set; }
             public string MapStyle { get; set; }
             public int Unknown1 { get; set; }
-
-            public Chunk00E(CGameCtnChallengeParameters node, byte[] data) : base(node, data)
-            {
-
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {

@@ -21,11 +21,6 @@ namespace GBX.NET.Engines.Plug
             public int Version { get; set; }
             public CPlugMaterialUserInst[] Materials { get; set; }
 
-            public Chunk09003003(Node node) : base(node)
-            {
-
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
@@ -48,10 +43,7 @@ namespace GBX.NET.Engines.Plug
         [Chunk(0x09003004)]
         public class Chunk09003004 : SkippableChunk
         {
-            public Chunk09003004(Node node, byte[] data) : base(node, data)
-            {
-
-            }
+            
         }
 
         [Chunk(0x09003005)]
@@ -59,11 +51,6 @@ namespace GBX.NET.Engines.Plug
         {
             public int Version { get; set; }
             public Layer[] Layers { get; set; }
-
-            public Chunk09003005(Node node) : base(node)
-            {
-
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -204,11 +191,6 @@ namespace GBX.NET.Engines.Plug
             public int Version { get; set; }
             public Vector2[] Vectors { get; set; }
 
-            public Chunk09003006(Node node) : base(node)
-            {
-
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
@@ -221,11 +203,6 @@ namespace GBX.NET.Engines.Plug
         {
             public int Version { get; set; }
             public int[] Numbers { get; set; }
-
-            public Chunk09003007(Node node) : base(node)
-            {
-
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {

@@ -35,11 +35,6 @@ namespace GBX.NET.Engines.Game
             public CGameCtnMediaClip[] Clips { get; set; }
             public Trigger[] Triggers { get; set; }
 
-            public Chunk002(CGameCtnMediaClipGroup node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
@@ -81,11 +76,6 @@ namespace GBX.NET.Engines.Game
             public int Version { get; set; } = 10;
             public CGameCtnMediaClip[] Clips { get; set; }
             public Trigger[] Triggers { get; set; }
-
-            public Chunk003(CGameCtnMediaClipGroup node) : base(node)
-            {
-                
-            }
 
             public override void Read(GameBoxReader r, GameBoxWriter unknownW)
             {

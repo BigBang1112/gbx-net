@@ -43,11 +43,6 @@ namespace GBX.NET.Engines.GameData
             public string Tag { get; set; }
             public int Order { get; set; }
 
-            public Chunk000(CGameWaypointSpecialProperty node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
@@ -69,14 +64,9 @@ namespace GBX.NET.Engines.GameData
 
         #region 0x001 skippable chunk
 
-        [Chunk(0x2E009001, true)]
+        [Chunk(0x2E009001)]
         public class Chunk001 : SkippableChunk
         {
-            public Chunk001(CGameWaypointSpecialProperty node, byte[] data) : base(node, data)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);

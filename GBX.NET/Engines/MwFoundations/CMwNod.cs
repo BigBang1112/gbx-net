@@ -21,11 +21,6 @@ namespace GBX.NET.Engines.MwFoundations
         {
             public string[] Dependencies { get; set; }
 
-            public Chunk000(CMwNod node) : base(node)
-            {
-
-            }
-
             public override void Read(GameBoxReader r, GameBoxWriter unknownW)
             {
                 Dependencies = r.ReadArray(i => r.ReadString());

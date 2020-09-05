@@ -14,11 +14,6 @@
             public int Version { get; set; }
             public Key[] Keys { get; set; }
 
-            public Chunk000(CGameCtnMediaBlockDirtyLens node) : base(node)
-            {
-
-            }
-
             public override void Read(GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();

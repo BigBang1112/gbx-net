@@ -22,11 +22,6 @@
         {
             public Collector[] CollectorStock { get; set; }
 
-            public Chunk000(CGameCtnCollectorList node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 CollectorStock = rw.Array(CollectorStock,

@@ -32,11 +32,6 @@ namespace GBX.NET.Engines.Game
             public CControlEffectSimi Simi { get; set; }
             public FileRef Image { get; set; }
 
-            public Chunk000(CGameCtnMediaBlockImage node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Simi = rw.NodeRef<CControlEffectSimi>(Simi);

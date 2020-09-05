@@ -21,11 +21,6 @@ namespace GBX.NET.Engines.GameData
             public int Unknown1 { get; set; }
             public CPlugCrystal[] Crystals { get; set; }
 
-            public Chunk000(Node node) : base(node)
-            {
-
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);

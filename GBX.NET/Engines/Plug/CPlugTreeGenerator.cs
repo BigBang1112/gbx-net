@@ -17,11 +17,6 @@ namespace GBX.NET.Engines.Plug
         {
             public int Version { get; set; }
 
-            public Chunk09051000(Node node) : base(node)
-            {
-
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);

@@ -91,11 +91,6 @@ namespace GBX.NET.Engines.Game
             public Vector3 Unknown3 { get; set; }
             public Vector3 Unknown4 { get; set; }
 
-            public Chunk002(CGameCtnAnchoredObject node) : base(node)
-            {
-
-            }
-
             public override void Read(GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
@@ -156,11 +151,6 @@ namespace GBX.NET.Engines.Game
         {
             public int Unknown1 { get; set; } = 0;
             public int Unknown2 { get; set; } = -1;
-
-            public Chunk004(CGameCtnAnchoredObject node, byte[] data) : base(node, data)
-            {
-
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {

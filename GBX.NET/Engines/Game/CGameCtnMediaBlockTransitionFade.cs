@@ -32,11 +32,6 @@ namespace GBX.NET.Engines.Game
             public Key[] Keys { get; set; }
             public Vector3 Color { get; set; }
 
-            public Chunk000(CGameCtnMediaBlockTransitionFade node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Keys = rw.Array(Keys, i =>

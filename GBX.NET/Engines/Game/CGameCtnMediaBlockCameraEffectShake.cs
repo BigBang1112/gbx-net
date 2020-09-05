@@ -25,11 +25,6 @@ namespace GBX.NET.Engines.Game
         {
             public Key[] Keys { get; set; }
 
-            public Chunk000(CGameCtnMediaBlockCameraEffectShake node) : base(node)
-            {
-               
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Keys = rw.Array(Keys, i =>

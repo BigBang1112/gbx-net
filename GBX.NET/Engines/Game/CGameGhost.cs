@@ -34,11 +34,6 @@ namespace GBX.NET.Engines.Game
             public int CompressedSize { get; set; }
             public byte[] Data { get; set; }
 
-            public Chunk005(CGameGhost node) : base(node)
-            {
-                
-            }
-
             public override void Read(GameBoxReader r, GameBoxWriter unknownW)
             {
                 UncompressedSize = r.ReadInt32();
@@ -62,12 +57,7 @@ namespace GBX.NET.Engines.Game
         public class Chunk006 : Chunk
         {
             public bool IsReplaying { get; set; }
-            public Chunk005 Chunk005 { get; }
-
-            public Chunk006(CGameGhost node) : base(node)
-            {
-                Chunk005 = new Chunk005(node);
-            }
+            public Chunk005 Chunk005 { get; } = new Chunk005();
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {

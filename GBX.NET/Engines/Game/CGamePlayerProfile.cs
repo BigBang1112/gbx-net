@@ -23,11 +23,6 @@ namespace GBX.NET.Engines.Game
             public string OnlineLogin { get; set; }
             public string OnlineSupportKey { get; set; }
 
-            public Chunk000(CGamePlayerProfile node) : base(node)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 OnlineLogin = rw.String(OnlineLogin);

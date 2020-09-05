@@ -24,11 +24,6 @@ namespace GBX.NET.Engines.Game
         {
             public Key[] Keys { get; set; }
 
-            public Chunk000(CGameCtnMediaBlockMusicEffect node) : base(node)
-            {
-
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Keys = rw.Array(Keys, i =>
@@ -54,11 +49,6 @@ namespace GBX.NET.Engines.Game
         public class Chunk001 : Chunk
         {
             public Key[] Keys { get; set; }
-
-            public Chunk001(CGameCtnMediaBlockMusicEffect node) : base(node)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {

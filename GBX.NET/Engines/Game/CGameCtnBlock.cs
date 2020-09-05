@@ -54,11 +54,6 @@ namespace GBX.NET.Engines.Game
             public Byte3 Coord { get; set; }
             public int Flags { get; set; }
 
-            public Chunk002(CGameCtnBlock node) : base(node)
-            {
-
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 BlockInfo = rw.Meta(BlockInfo);
