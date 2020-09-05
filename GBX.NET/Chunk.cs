@@ -91,12 +91,7 @@ namespace GBX.NET
         [Obsolete]
         public virtual void ReadWrite(GameBoxReaderWriter rw)
         {
-            Debug.WriteLine("ReadWrite on Chunk is no longer supported.");
-        }
-
-        public virtual void ReadWrite(Node n, GameBoxReaderWriter rw)
-        {
-            ReadWrite(null, rw);
+            Debug.WriteLine("ReadWrite on Chunk is no longer supported. " + GetType().FullName);
         }
     }
 

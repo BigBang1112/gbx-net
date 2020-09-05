@@ -86,8 +86,19 @@ namespace GBX.NET
     }
 
     [Obsolete]
-    public class SkippableChunk : Chunk
+    public class SkippableChunk : Chunk, ISkippableChunk
     {
+        public bool Discovered { get; set; }
+        public MemoryStream Stream { get; set; }
 
+        public void Discover()
+        {
+            
+        }
+
+        public void Write(GameBoxWriter w)
+        {
+            w.Write(Stream.ToArray(), 0, (int)Stream.Length);
+        }
     }
 }

@@ -156,7 +156,7 @@ namespace GBX.NET
             {
                 var isChunk = x.IsClass
                 && x.Namespace.StartsWith("GBX.NET.Engines")
-                && (x.BaseType == chunkType || x.BaseType == skippableChunkType);
+                && (x.BaseType == chunkType || x.BaseType == skippableChunkType || x.BaseType == typeof(Chunk) || x.BaseType == typeof(SkippableChunk));
                 if (!isChunk) return false;
 
                 var chunkAttribute = x.GetCustomAttribute<ChunkAttribute>();
@@ -197,7 +197,7 @@ namespace GBX.NET
         {
             var readNodeStart = DateTime.Now;
 
-            dynamic node = Activator.CreateInstance(type, body, type.GetCustomAttribute<NodeAttribute>().ID);
+            Node node = (Node)Activator.CreateInstance(type, body, type.GetCustomAttribute<NodeAttribute>().ID);
 
             var chunks = new AuxNodeChunkList();
 
@@ -217,7 +217,7 @@ namespace GBX.NET
                 }
                 else
                 {
-                    if (node.Body != null && (node as Node).Body.GBX.ClassID.HasValue && Remap((node as Node).Body.GBX.ClassID.Value) == node.ID)
+                    if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
                         Log.Write($"[{node.ClassName}] 0x{chunkID:x8} ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})");
                     else
                         Log.Write($"~ [{node.ClassName}] 0x{chunkID:x8} ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})");
@@ -228,7 +228,8 @@ namespace GBX.NET
                 var reflected = ((Chunk.Remap(chunkID) & 0xFFFFF000) == node.ID || inheritanceClasses.Contains(Chunk.Remap(chunkID) & 0xFFFFF000))
                     && (availableChunkClasses.TryGetValue(chunkID, out chunkClass) || availableChunkClasses.TryGetValue(chunkID & 0xFFF, out chunkClass));
 
-                var skippable = reflected && chunkClass.BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>);
+                var skippable = reflected && (chunkClass.BaseType == typeof(Chunk) || chunkClass.BaseType == typeof(SkippableChunk)
+                    || chunkClass.BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>));
 
                 if (!reflected || skippable)
                 {
@@ -241,7 +242,7 @@ namespace GBX.NET
                             Debug.WriteLine($"Wrong chunk format or unskippable chunk: {chunkID:x8} ({Names.Where(x => x.Key == (chunkID&0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})"); // Read till facade
                             node.FaultyChunk = chunkID;
 
-                            if (node.Body != null && (node as Node).Body.GBX.ClassID.HasValue && Remap((node as Node).Body.GBX.ClassID.Value) == node.ID)
+                            if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
                                 Log.Write($"[{node.ClassName}] 0x{chunkID:x8} ERROR (wrong chunk format or unknown unskippable chunk)", ConsoleColor.Red);
                             else
                                 Log.Write($"~ [{node.ClassName}] 0x{chunkID:x8} ERROR (wrong chunk format or unknown unskippable chunk)", ConsoleColor.Red);
@@ -275,10 +276,13 @@ namespace GBX.NET
                         if (constructorParams.Length == 0)
                         {
                             c = constructor.Invoke(new object[0]);
-                            c.Node = node;
-                            c.Stream = new MemoryStream(chunkData, 0, chunkData.Length, false);
-                            if (chunkData == null || chunkData.Length == 0)
-                                c.Discovered = true;
+                            if (chunkClass.BaseType != typeof(SkippableChunk))
+                            {
+                                c.Node = (dynamic)node;
+                                c.Stream = new MemoryStream(chunkData, 0, chunkData.Length, false);
+                                if (chunkData == null || chunkData.Length == 0)
+                                    c.Discovered = true;
+                            }
                         }
                         else if (constructorParams.Length == 2)
                             c = constructor.Invoke(new object[] { node, chunkData });
@@ -313,7 +317,7 @@ namespace GBX.NET
                     if (constructorParams.Length == 0)
                     {
                         chunk = constructor.Invoke(new object[0]);
-                        chunk.Node = node;
+                        chunk.Node = (dynamic)node;
                     }
                     else if (constructorParams.Length == 1)
                         chunk = constructor.Invoke(new object[] { node });
@@ -323,7 +327,7 @@ namespace GBX.NET
                     var posBefore = r.BaseStream.Position;
 
                     GameBoxReaderWriter gbxrw = new GameBoxReaderWriter(r);
-                    chunk.ReadWrite(gbxrw);
+                    chunk.ReadWrite((dynamic)node, gbxrw);
 
                     chunk.Progress = (int)(r.BaseStream.Position - posBefore);
                 }
@@ -331,7 +335,7 @@ namespace GBX.NET
                 previousChunk = chunkID;
             }
 
-            if (node.Body != null && (node as Node).Body.GBX.ClassID.HasValue && Remap((node as Node).Body.GBX.ClassID.Value) == node.ID)
+            if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
                 Log.Write($"[{node.ClassName}] DONE! ({(DateTime.Now - readNodeStart).TotalMilliseconds}ms)", ConsoleColor.Green);
             else
                 Log.Write($"~ [{node.ClassName}] DONE! ({(DateTime.Now - readNodeStart).TotalMilliseconds}ms)", ConsoleColor.Green);
@@ -360,7 +364,7 @@ namespace GBX.NET
 
             if (Chunks != null)
             {
-                foreach (var chunk in Chunks.Values)
+                foreach (dynamic chunk in Chunks.Values)
                 {
                     counter += 1;
 
