@@ -99,8 +99,8 @@ namespace GBX.NET
     {
         public new T Node { get; internal set; }
 
-        public bool IsHeader => Node.Lookbackable is GameBoxHeader;
-        public bool IsBody => Node.Lookbackable is GameBoxBody;
+        public bool IsHeader => Node?.Lookbackable is GameBoxHeader;
+        public bool IsBody => Node?.Lookbackable is GameBoxBody;
 
         public Chunk()
         {

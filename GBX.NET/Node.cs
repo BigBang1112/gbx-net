@@ -357,7 +357,7 @@ namespace GBX.NET
             if (isAux)
                 node.Chunks = chunks;
             else
-                (body as GameBoxBody).Chunks = chunks;
+                ((dynamic)body).Chunks.FromAuxNodeChunkList(chunks);
 
             return node;
         }

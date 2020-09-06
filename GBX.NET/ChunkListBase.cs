@@ -181,5 +181,12 @@ namespace GBX.NET
             chunk = Get<T>();
             return chunk != default;
         }
+
+        public void FromAuxNodeChunkList(AuxNodeChunkList chunkList)
+        {
+            Clear();
+            foreach (var c in chunkList)
+                Add((TChunk)c.Value);
+        }
     }
 }

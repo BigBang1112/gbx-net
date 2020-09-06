@@ -10,7 +10,7 @@ namespace GBX.NET
     {
         public int? CompressedSize { get; }
         public int UncompressedSize { get; }
-        public new ChunkList<T> Chunks { get; set; } = new ChunkList<T>();
+        public ChunkList<T> Chunks { get; set; } = new ChunkList<T>();
         public byte[] Rest { get; }
         public bool Aborting { get; private set; }
 
@@ -229,8 +229,6 @@ namespace GBX.NET
 
     public class GameBoxBody : GameBoxPart
     {
-        public SortedList<uint, Chunk> Chunks { get; set; }
-
         public List<Node> AuxilaryNodes { get; } = new List<Node>();
 
         public GameBoxBody(GameBox gbx) : base(gbx)
