@@ -10,7 +10,7 @@ namespace GBX.NET
     {
         public int? CompressedSize { get; }
         public int UncompressedSize { get; }
-        public new ChunkList<T> Chunks { get; set; }
+        public new ChunkList<T> Chunks { get; set; } = new ChunkList<T>();
         public byte[] Rest { get; }
         public bool Aborting { get; private set; }
 
@@ -255,37 +255,37 @@ namespace GBX.NET
 
         public override void DiscoverChunk<TChunk>()
         {
-            throw new NotSupportedException();
+            (this as dynamic).DiscoverChunk<TChunk>();
         }
 
         public override void DiscoverChunks<TChunk1, TChunk2>()
         {
-            throw new NotSupportedException();
+            (this as dynamic).DiscoverChunks<TChunk1, TChunk2>();
         }
 
         public override void DiscoverChunks<TChunk1, TChunk2, TChunk3>()
         {
-            throw new NotSupportedException();
+            (this as dynamic).DiscoverChunks<TChunk1, TChunk2, TChunk3>();
         }
 
         public override void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4>()
         {
-            throw new NotSupportedException();
+            (this as dynamic).DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4>();
         }
 
         public override void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5>()
         {
-            throw new NotSupportedException();
+            (this as dynamic).DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5>();
         }
 
         public override void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5, TChunk6>()
         {
-            throw new NotSupportedException();
+            (this as dynamic).DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5, TChunk6>();
         }
 
         public override void DiscoverAllChunks()
         {
-            throw new NotSupportedException();
+            (this as dynamic).DiscoverAllChunks();
         }
 
         public override T GetChunk<T>()
