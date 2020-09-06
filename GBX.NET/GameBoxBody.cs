@@ -197,7 +197,7 @@ namespace GBX.NET
                     s.Discover();
         }
 
-        public new TChunk GetChunk<TChunk>() where TChunk : Chunk
+        public new TChunk GetChunk<TChunk>() where TChunk : Chunk<T>
         {
             foreach (var chunk in Chunks.Values)
             {
@@ -210,7 +210,7 @@ namespace GBX.NET
             return default;
         }
 
-        public new bool TryGetChunk<TChunk>(out TChunk chunk) where TChunk : Chunk
+        public new bool TryGetChunk<TChunk>(out TChunk chunk) where TChunk : Chunk<T>
         {
             chunk = GetChunk<TChunk>();
             return chunk != default;

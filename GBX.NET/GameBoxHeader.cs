@@ -127,6 +127,10 @@ namespace GBX.NET
                                     chunks[counter] = (HeaderChunk<T>)constructor.Invoke(new object[] { GBX.MainNode, d });
                                 else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
 
+                                using (var msChunk = new MemoryStream(d))
+                                using (var rChunk = new GameBoxReader(msChunk, this))
+                                    chunks[counter].ReadWrite(null, new GameBoxReaderWriter(rChunk));
+
                                 chunks[counter].IsHeavy = chunk.Value.Item2;
                             }
                             else
@@ -178,7 +182,7 @@ namespace GBX.NET
                         if (!chunk.Discovered)
                             chunk.Write(gbxw);
                         else
-                            chunk.ReadWrite(gbxrw);
+                            chunk.ReadWrite(chunk.Node, gbxrw);
                         lengths[chunk.ID] = (int)(userData.Position - pos);
                     }
 
@@ -207,6 +211,157 @@ namespace GBX.NET
         public void Write(GameBoxWriter w, int numNodes)
         {
             Write(w, numNodes, ClassIDRemap.Latest);
+        }
+
+        public new TChunk CreateChunk<TChunk>(byte[] data) where TChunk : HeaderChunk<T>
+        {
+            return Chunks.Create<TChunk>(data);
+        }
+
+        public new TChunk CreateChunk<TChunk>() where TChunk : HeaderChunk<T>
+        {
+            return CreateChunk<TChunk>(new byte[0]);
+        }
+
+        public void InsertChunk(HeaderChunk<T> chunk)
+        {
+            Chunks.Add(chunk);
+        }
+
+        public new void DiscoverChunk<TChunk>() where TChunk : HeaderChunk<T>
+        {
+            foreach (var chunk in Chunks.Values)
+                if (chunk is TChunk c)
+                    c.Discover();
+        }
+
+        public new void DiscoverChunks<TChunk1, TChunk2>() where TChunk1 : HeaderChunk<T> where TChunk2 : HeaderChunk<T>
+        {
+            foreach (var chunk in Chunks.Values)
+            {
+                if (chunk is TChunk1 c1)
+                    c1.Discover();
+                if (chunk is TChunk2 c2)
+                    c2.Discover();
+            }
+        }
+
+        public new void DiscoverChunks<TChunk1, TChunk2, TChunk3>()
+            where TChunk1 : HeaderChunk<T>
+            where TChunk2 : HeaderChunk<T>
+            where TChunk3 : HeaderChunk<T>
+        {
+            foreach (var chunk in Chunks.Values)
+            {
+                if (chunk is TChunk1 c1)
+                    c1.Discover();
+                if (chunk is TChunk2 c2)
+                    c2.Discover();
+                if (chunk is TChunk3 c3)
+                    c3.Discover();
+            }
+        }
+
+        public new void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4>()
+            where TChunk1 : HeaderChunk<T>
+            where TChunk2 : HeaderChunk<T>
+            where TChunk3 : HeaderChunk<T>
+            where TChunk4 : HeaderChunk<T>
+        {
+            foreach (var chunk in Chunks.Values)
+            {
+                if (chunk is TChunk1 c1)
+                    c1.Discover();
+                if (chunk is TChunk2 c2)
+                    c2.Discover();
+                if (chunk is TChunk3 c3)
+                    c3.Discover();
+                if (chunk is TChunk4 c4)
+                    c4.Discover();
+            }
+        }
+
+        public new void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5>()
+            where TChunk1 : HeaderChunk<T>
+            where TChunk2 : HeaderChunk<T>
+            where TChunk3 : HeaderChunk<T>
+            where TChunk4 : HeaderChunk<T>
+            where TChunk5 : HeaderChunk<T>
+        {
+            foreach (var chunk in Chunks.Values)
+            {
+                if (chunk is TChunk1 c1)
+                    c1.Discover();
+                if (chunk is TChunk2 c2)
+                    c2.Discover();
+                if (chunk is TChunk3 c3)
+                    c3.Discover();
+                if (chunk is TChunk4 c4)
+                    c4.Discover();
+                if (chunk is TChunk5 c5)
+                    c5.Discover();
+            }
+        }
+
+        public new void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5, TChunk6>()
+            where TChunk1 : HeaderChunk<T>
+            where TChunk2 : HeaderChunk<T>
+            where TChunk3 : HeaderChunk<T>
+            where TChunk4 : HeaderChunk<T>
+            where TChunk5 : HeaderChunk<T>
+            where TChunk6 : HeaderChunk<T>
+        {
+            foreach (var chunk in Chunks.Values)
+            {
+                if (chunk is TChunk1 c1)
+                    c1.Discover();
+                if (chunk is TChunk2 c2)
+                    c2.Discover();
+                if (chunk is TChunk3 c3)
+                    c3.Discover();
+                if (chunk is TChunk4 c4)
+                    c4.Discover();
+                if (chunk is TChunk5 c5)
+                    c5.Discover();
+                if (chunk is TChunk6 c6)
+                    c6.Discover();
+            }
+        }
+
+        public new void DiscoverAllChunks()
+        {
+            foreach (var chunk in Chunks.Values)
+                if (chunk is HeaderChunk<T> s)
+                    s.Discover();
+        }
+
+        public new TChunk GetChunk<TChunk>() where TChunk : HeaderChunk<T>
+        {
+            foreach (var chunk in Chunks.Values)
+            {
+                if (chunk is TChunk t)
+                {
+                    t.Discover();
+                    return t;
+                }
+            }
+            return default;
+        }
+
+        public new bool TryGetChunk<TChunk>(out TChunk chunk) where TChunk : HeaderChunk<T>
+        {
+            chunk = GetChunk<TChunk>();
+            return chunk != default;
+        }
+
+        public void RemoveAllChunks()
+        {
+            Chunks.Clear();
+        }
+
+        public new bool RemoveChunk<TChunk>() where TChunk : HeaderChunk<T>
+        {
+            return Chunks.Remove<TChunk>();
         }
     }
 

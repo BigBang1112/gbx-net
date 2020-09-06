@@ -190,7 +190,7 @@ namespace GBX.NET
             }
             else
                 Task.WaitAll(Header);
-            
+
             return true;
         }
 

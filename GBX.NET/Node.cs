@@ -14,11 +14,13 @@ namespace GBX.NET
         public static Dictionary<uint, uint> Mappings { get; } // key: older, value: newer
 
         public GameBoxBody Body => Lookbackable as GameBoxBody;
+        public GameBoxHeader Header => Lookbackable as GameBoxHeader;
+        public GameBox GBX => Body?.GBX ?? Header.GBX;
 
         public AuxNodeChunkList Chunks { get; internal set; }
 
         public uint ID { get; }
-        public ILookbackable Lookbackable { get; }
+        public ILookbackable Lookbackable { get; internal set; }
         public uint? FaultyChunk { get; private set; }
         public byte[] Rest { get; private set; }
         public bool Unknown { get; internal set; }
@@ -610,6 +612,8 @@ namespace GBX.NET
         {
             if (Chunks != null)
                 Chunks.Discover<T>();
+            else if (typeof(T).GetInterface("IHeaderChunk") != null)
+                ((dynamic)GBX).Header.Result.DiscoverChunk<T>();
             else
                 Body.DiscoverChunk<T>();
         }
@@ -618,6 +622,9 @@ namespace GBX.NET
         {
             if (Chunks != null)
                 Chunks.Discover<T1, T2>();
+            else if (typeof(T1).GetInterface("IHeaderChunk") != null
+                  && typeof(T2).GetInterface("IHeaderChunk") != null)
+                ((dynamic)GBX).Header.Result.DiscoverChunks<T1, T2>();
             else
                 Body.DiscoverChunks<T1, T2>();
         }
