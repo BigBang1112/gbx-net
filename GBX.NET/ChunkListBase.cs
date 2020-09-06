@@ -87,7 +87,7 @@ namespace GBX.NET
             }
         }
 
-        public void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4>()
+        public void Discover<TChunk1, TChunk2, TChunk3, TChunk4>()
             where TChunk1 : SkippableChunk<TNode>
             where TChunk2 : SkippableChunk<TNode>
             where TChunk3 : SkippableChunk<TNode>
@@ -102,7 +102,7 @@ namespace GBX.NET
             }
         }
 
-        public void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5>()
+        public void Discover<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5>()
             where TChunk1 : SkippableChunk<TNode>
             where TChunk2 : SkippableChunk<TNode>
             where TChunk3 : SkippableChunk<TNode>
@@ -119,7 +119,7 @@ namespace GBX.NET
             }
         }
 
-        public void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5, TChunk6>()
+        public void Discover<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5, TChunk6>()
             where TChunk1 : SkippableChunk<TNode>
             where TChunk2 : SkippableChunk<TNode>
             where TChunk3 : SkippableChunk<TNode>
@@ -138,7 +138,7 @@ namespace GBX.NET
             }
         }
 
-        public void DiscoverAllChunks()
+        public void DiscoverAll()
         {
             foreach (var chunk in Values)
                 if (chunk is SkippableChunk<TNode> s)

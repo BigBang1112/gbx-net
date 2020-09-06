@@ -55,7 +55,7 @@ namespace GBX.NET
 
             try
             {
-                ReadWrite(gbxrw);
+                ReadWrite(Node, gbxrw);
             }
             catch (NotImplementedException)
             {
@@ -63,7 +63,7 @@ namespace GBX.NET
 
                 try
                 {
-                    Read(gbxr, unknownGbxw);
+                    Read(Node, gbxr, unknownGbxw);
                 }
                 catch (NotImplementedException e)
                 {

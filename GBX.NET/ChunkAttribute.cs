@@ -9,23 +9,23 @@ namespace GBX.NET
         public uint ChunkID => ID & 0xFFF;
         public bool ProcessAsync { get; }
 
-        public ChunkAttribute(uint classID, uint chunkID, bool processAsync = false)
+        public ChunkAttribute(uint classID, uint chunkID, bool processAsync = true)
         {
             ID = classID + chunkID;
             ProcessAsync = processAsync;
         }
 
-        public ChunkAttribute(uint classID, uint chunkID) : this(classID, chunkID, false)
+        public ChunkAttribute(uint classID, uint chunkID) : this(classID, chunkID, true)
         {
 
         }
 
-        public ChunkAttribute(uint chunkID, bool processAsync = false) : this(chunkID & 0xFFFFF000, chunkID & 0xFFF, processAsync)
+        public ChunkAttribute(uint chunkID, bool processAsync = true) : this(chunkID & 0xFFFFF000, chunkID & 0xFFF, processAsync)
         {
 
         }
 
-        public ChunkAttribute(uint chunkID) : this(chunkID, false)
+        public ChunkAttribute(uint chunkID) : this(chunkID, true)
         {
 
         }

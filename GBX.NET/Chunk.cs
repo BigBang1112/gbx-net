@@ -137,6 +137,7 @@ namespace GBX.NET
             throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support Write.");
         }
 
+        [Obsolete]
         public new virtual void ReadWrite(GameBoxReaderWriter rw)
         {
             ReadWrite(null, rw);
@@ -150,14 +151,14 @@ namespace GBX.NET
             if (rw.Reader != null)
             {
                 var unknownW = new GameBoxWriter(Unknown, lb);
-                if (n == null) Read(rw.Reader, unknownW);
+                if (n == null) Read(null, rw.Reader, unknownW);
                 else Read(n, rw.Reader, unknownW);
             }
 
             if (rw.Writer != null)
             {
                 var unknownR = new GameBoxReader(Unknown, lb);
-                if (n == null) Write(rw.Writer, unknownR);
+                if (n == null) Write(null, rw.Writer, unknownR);
                 else Write(n, rw.Writer, unknownR);
             }
         }

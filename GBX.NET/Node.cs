@@ -581,7 +581,6 @@ namespace GBX.NET
                 return Body.RemoveChunk<T>();
         }
 
-        [Obsolete]
         public bool TryGetChunk<T>(out T chunk) where T : Chunk
         {
             if (Chunks != null)
@@ -593,9 +592,67 @@ namespace GBX.NET
             }
         }
 
-        public void DiscoverChunk<T>() where T : Chunk
+        public void DiscoverChunk<T>() where T : ISkippableChunk
         {
+            if (Chunks != null)
+                Chunks.Discover<T>();
+            else
+                Body.DiscoverChunk<T>();
+        }
 
+        public void DiscoverChunks<T1, T2>() where T1 : ISkippableChunk where T2 : ISkippableChunk
+        {
+            if (Chunks != null)
+                Chunks.Discover<T1, T2>();
+            else
+                Body.DiscoverChunks<T1, T2>();
+        }
+
+        public void DiscoverChunks<T1, T2, T3>() where T1 : ISkippableChunk where T2 : ISkippableChunk where T3 : ISkippableChunk
+        {
+            if (Chunks != null)
+                Chunks.Discover<T1, T2, T3>();
+            else
+                Body.DiscoverChunks<T1, T2, T3>();
+        }
+
+        public void DiscoverChunks<T1, T2, T3, T4>()
+            where T1 : ISkippableChunk
+            where T2 : ISkippableChunk
+            where T3 : ISkippableChunk
+            where T4 : ISkippableChunk
+        {
+            if (Chunks != null)
+                Chunks.Discover<T1, T2, T3, T4>();
+            else
+                Body.DiscoverChunks<T1, T2, T3, T4>();
+        }
+
+        public void DiscoverChunks<T1, T2, T3, T4, T5>()
+            where T1 : ISkippableChunk
+            where T2 : ISkippableChunk
+            where T3 : ISkippableChunk
+            where T4 : ISkippableChunk
+            where T5 : ISkippableChunk
+        {
+            if (Chunks != null)
+                Chunks.Discover<T1, T2, T3, T4, T5>();
+            else
+                Body.DiscoverChunks<T1, T2, T3, T4, T5>();
+        }
+
+        public void DiscoverChunks<T1, T2, T3, T4, T5, T6>()
+            where T1 : ISkippableChunk
+            where T2 : ISkippableChunk
+            where T3 : ISkippableChunk
+            where T4 : ISkippableChunk
+            where T5 : ISkippableChunk
+            where T6 : ISkippableChunk
+        {
+            if (Chunks != null)
+                Chunks.Discover<T1, T2, T3, T4, T5, T6>();
+            else
+                Body.DiscoverChunks<T1, T2, T3, T4, T5, T6>();
         }
 
         [Obsolete]
