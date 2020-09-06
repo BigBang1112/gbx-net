@@ -172,8 +172,11 @@ namespace GBX.NET
                    && x.Namespace.StartsWith("GBX.NET.Engines") && (GetBaseType(x) == typeof(Node))
                    && (x.GetCustomAttribute<NodeAttribute>().ID == cls)).FirstOrDefault();
 
+                var inheritChunkType = typeof(Chunk<>).MakeGenericType(availableInheritanceClass);
+                var inheritSkippableChunkType = typeof(SkippableChunk<>).MakeGenericType(availableInheritanceClass);
+
                 foreach (var chunkT in availableInheritanceClass.GetNestedTypes().Where(x => x.IsClass
-                    && x.Namespace.StartsWith("GBX.NET.Engines") && (x.BaseType == chunkType || x.BaseType == skippableChunkType)
+                    && x.Namespace.StartsWith("GBX.NET.Engines") && (x.BaseType == inheritChunkType || x.BaseType == inheritSkippableChunkType || x.BaseType == typeof(Chunk) || x.BaseType == typeof(SkippableChunk))
                     && (x.GetCustomAttribute<ChunkAttribute>().ClassID == cls)).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ChunkID))
                 {
                     availableChunkClasses[chunkT.Key + cls] = chunkT.Value;
