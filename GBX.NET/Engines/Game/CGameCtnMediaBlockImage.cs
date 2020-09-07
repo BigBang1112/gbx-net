@@ -9,17 +9,9 @@ namespace GBX.NET.Engines.Game
     [Node(0x030A5000)]
     public class CGameCtnMediaBlockImage : CGameCtnMediaBlock
     {
-        public CControlEffectSimi Simi
-        {
-            get => GetValue<Chunk000>(x => x.Simi) as CControlEffectSimi;
-            set => SetValue<Chunk000>(x => x.Simi = value);
-        }
+        public CControlEffectSimi Simi { get; set; }
 
-        public FileRef Image
-        {
-            get => GetValue<Chunk000>(x => x.Image) as FileRef;
-            set => SetValue<Chunk000>(x => x.Image = value);
-        }
+        public FileRef Image { get; set; }
 
         public CGameCtnMediaBlockImage(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -27,15 +19,12 @@ namespace GBX.NET.Engines.Game
         }
 
         [Chunk(0x030A5000)]
-        public class Chunk000 : Chunk
+        public class Chunk030A5000 : Chunk<CGameCtnMediaBlockImage>
         {
-            public CControlEffectSimi Simi { get; set; }
-            public FileRef Image { get; set; }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnMediaBlockImage n, GameBoxReaderWriter rw)
             {
-                Simi = rw.NodeRef<CControlEffectSimi>(Simi);
-                Image = rw.FileRef(Image);
+                n.Simi = rw.NodeRef<CControlEffectSimi>(n.Simi);
+                n.Image = rw.FileRef(n.Image);
             }
         }
     }

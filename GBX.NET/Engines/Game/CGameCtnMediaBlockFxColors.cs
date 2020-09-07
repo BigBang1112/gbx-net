@@ -13,7 +13,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [Chunk(0x03080003)]
-        public class Chunk003 : Chunk
+        public class Chunk03080003 : Chunk
         {
             public Key[] Keys { get; set; }
         }

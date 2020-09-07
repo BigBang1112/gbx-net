@@ -14,7 +14,7 @@ namespace GBX.NET.Engines.Hms
         }
 
         [Chunk(0x0602201A)]
-        public class Chunk01A : SkippableChunk
+        public class Chunk0602201A : SkippableChunk<CHmsLightMapCache>
         {
             
         }

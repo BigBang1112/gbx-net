@@ -8,40 +8,20 @@ namespace GBX.NET.Engines.Game
     [Node(0x030E5000)]
     public class CGameCtnMediaBlockGhost : CGameCtnMediaBlock
     {
-        public Key[] Keys
-        {
-            get => GetValue<Chunk002>(x => x.Keys) as Key[];
-            set => SetValue<Chunk002>(x => x.Keys = value);
-        }
+        public float? Start { get; set; }
+        public float? End { get; set; }
 
-        public CGameGhost Ghost
-        {
-            get => GetValue<Chunk001, Chunk002>(x => x.Ghost, x => x.Ghost) as CGameGhost;
-        }
+        public Key[] Keys { get; set; }
 
-        public float? Offset
-        {
-            get => GetValue<Chunk001, Chunk002>(x => x.Offset, x => x.Offset) as float?;
-            set => SetValue<Chunk001, Chunk002>(x => x.Offset = value.GetValueOrDefault(), x => x.Offset = value.GetValueOrDefault());
-        }
+        public CGameGhost Ghost { get; set; }
 
-        public bool NoDamage
-        {
-            get => (bool)GetValue<Chunk002>(x => x.NoDamage);
-            set => SetValue<Chunk002>(x => x.NoDamage = value);
-        }
+        public float? Offset { get; set; }
 
-        public bool ForceLight
-        {
-            get => (bool)GetValue<Chunk002>(x => x.ForceLight);
-            set => SetValue<Chunk002>(x => x.ForceLight = value);
-        }
+        public bool NoDamage { get; set; }
 
-        public bool ForceHue
-        {
-            get => (bool)GetValue<Chunk002>(x => x.ForceHue);
-            set => SetValue<Chunk002>(x => x.ForceHue = value);
-        }
+        public bool ForceLight { get; set; }
+
+        public bool ForceHue { get; set; }
 
         public CGameCtnMediaBlockGhost(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -49,48 +29,30 @@ namespace GBX.NET.Engines.Game
         }
 
         [Chunk(0x030E5001)]
-        public class Chunk001 : Chunk
+        public class Chunk030E5001 : Chunk<CGameCtnMediaBlockGhost>
         {
-            public float Start { get; set; }
-            public float End { get; set; }
-            public CGameCtnGhost Ghost { get; set; }
-            public float Offset { get; set; }
-
-            public Chunk001(CGameCtnMediaBlockGhost node) : base(node)
+            public override void ReadWrite(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw)
             {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Start = rw.Single(Start);
-                End = rw.Single(End);
-                Ghost = rw.NodeRef<CGameCtnGhost>(Ghost, true);
-                Offset = rw.Single(Offset);
+                n.Start = rw.Single(n.Start.GetValueOrDefault());
+                n.End = rw.Single(n.End.GetValueOrDefault(3));
+                n.Ghost = rw.NodeRef<CGameCtnGhost>(n.Ghost, true);
+                n.Offset = rw.Single(n.Offset.GetValueOrDefault());
             }
         }
 
-        [Chunk(0x030E5000, 0x002)]
-        public class Chunk002 : Chunk
+        [Chunk(0x030E5002)]
+        public class Chunk030E5002 : Chunk<CGameCtnMediaBlockGhost>
         {
             public int Version { get; set; }
-            public Key[] Keys { get; set; }
-            public CGameCtnGhost Ghost { get; set; }
-            public float Offset { get; set; }
-            public bool NoDamage { get; set; }
-            public bool ForceLight { get; set; }
-            public bool ForceHue { get; set; }
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
 
-                Keys = rw.Array(Keys, i =>
+                n.Keys = rw.Array(n.Keys, i => new Key()
                 {
-                    var time = rw.Reader.ReadSingle();
-                    var unknown = rw.Reader.ReadSingle();
-
-                    return new Key() { Time = time, Unknown = unknown };
+                    Time = rw.Reader.ReadSingle(),
+                    Unknown = rw.Reader.ReadSingle()
                 },
                 x =>
                 {
@@ -98,11 +60,11 @@ namespace GBX.NET.Engines.Game
                     rw.Writer.Write(x.Unknown);
                 });
 
-                Ghost = rw.NodeRef<CGameCtnGhost>(Ghost, true);
-                Offset = rw.Single(Offset);
-                NoDamage = rw.Boolean(NoDamage);
-                ForceLight = rw.Boolean(ForceLight);
-                ForceHue = rw.Boolean(ForceHue);
+                n.Ghost = rw.NodeRef<CGameCtnGhost>(n.Ghost, true);
+                n.Offset = rw.Single(n.Offset.GetValueOrDefault());
+                n.NoDamage = rw.Boolean(n.NoDamage);
+                n.ForceLight = rw.Boolean(n.ForceLight);
+                n.ForceHue = rw.Boolean(n.ForceHue);
             }
         }
 

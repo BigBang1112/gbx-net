@@ -8,19 +8,19 @@ namespace GBX.NET.Engines.Game
     [Node(0x03126000)]
     public class CGameCtnMediaBlockDOF : CGameCtnMediaBlock
     {
+        public Key[] Keys { get; set; }
+
         public CGameCtnMediaBlockDOF(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
 
         }
 
         [Chunk(0x03126002)]
-        public class Chunk002 : Chunk
+        public class Chunk03126002 : Chunk<CGameCtnMediaBlockDOF>
         {
-            public Key[] Keys { get; set; }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaBlockDOF n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                Keys = r.ReadArray(i =>
+                n.Keys = r.ReadArray(i =>
                 {
                     var time = r.ReadSingle();
                     var zFocus = r.ReadSingle();
@@ -40,9 +40,9 @@ namespace GBX.NET.Engines.Game
                 });
             }
 
-            public override void Write(GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaBlockDOF n, GameBoxWriter w, GameBoxReader unknownR)
             {
-                w.Write(Keys, x =>
+                w.Write(n.Keys, x =>
                 {
                     w.Write(x.Time);
                     w.Write(x.ZFocus);

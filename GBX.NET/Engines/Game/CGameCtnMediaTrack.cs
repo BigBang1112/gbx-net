@@ -9,17 +9,9 @@ namespace GBX.NET.Engines.Game
     [Node(0x03078000)]
     public class CGameCtnMediaTrack : Node
     {
-        public string Name
-        {
-            get => GetValue<Chunk001>(x => x.Name) as string;
-            set => SetValue<Chunk001>(x => x.Name = value);
-        }
+        public string Name { get; set; }
 
-        public List<CGameCtnMediaBlock> Blocks
-        {
-            get => GetValue<Chunk001>(x => x.Blocks) as List<CGameCtnMediaBlock>;
-            set => SetValue<Chunk001>(x => x.Blocks = value);
-        }
+        public List<CGameCtnMediaBlock> Blocks { get; set; }
 
         public CGameCtnMediaTrack(ILookbackable lookbackable) : base(lookbackable)
         {
@@ -37,18 +29,16 @@ namespace GBX.NET.Engines.Game
         }
 
         [Chunk(0x03078001)]
-        public class Chunk001 : Chunk
+        public class Chunk03078001 : Chunk<CGameCtnMediaTrack>
         {
-            public string Name { get; set; }
-            public List<CGameCtnMediaBlock> Blocks { get; set; } = new List<CGameCtnMediaBlock>();
             public int Unknown1 { get; set; }
             public int Unknown2 { get; set; }
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
-                Name = rw.String(Name);
+                n.Name = rw.String(n.Name);
                 Unknown1 = rw.Int32(Unknown1); // 10, probably version
-                Blocks = rw.Array(Blocks?.ToArray(),
+                n.Blocks = rw.Array(n.Blocks?.ToArray(),
                     i => rw.Reader.ReadNodeRef<CGameCtnMediaBlock>(true),
                     x => rw.Writer.Write(x))?.ToList();
                 Unknown2 = rw.Int32(Unknown2);
@@ -56,20 +46,20 @@ namespace GBX.NET.Engines.Game
         }
 
         [Chunk(0x03078002)]
-        public class Chunk002 : Chunk
+        public class Chunk03078002 : Chunk<CGameCtnMediaTrack>
         {
             public bool Unknown1 { get; set; }
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
                 Unknown1 = rw.Boolean(Unknown1); // 1
             }
         }
 
-        [Chunk(0x03078000, 0x003)]
-        public class Chunk003 : Chunk
+        [Chunk(0x03078003)]
+        public class Chunk03078003 : Chunk<CGameCtnMediaTrack>
         {
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown); // 0
             }
@@ -79,18 +69,18 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnMediaTrack 0x004 chunk. This chunk should be removed in the new versions of ManiaPlanet.
         /// </summary>
         [Chunk(0x03078004)]
-        public class Chunk004 : Chunk
+        public class Chunk03078004 : Chunk<CGameCtnMediaTrack>
         {
             public int Unknown1 { get; set; }
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
                 Unknown1 = rw.Int32(Unknown1);
             }
         }
 
         [Chunk(0x03078005)]
-        public class Chunk005 : Chunk
+        public class Chunk03078005 : Chunk<CGameCtnMediaTrack>
         {
             public int Version { get; set; } = 1;
             public int Unknown1 { get; set; }
@@ -99,7 +89,7 @@ namespace GBX.NET.Engines.Game
             public float Unknown4 { get; set; } = -1;
             public float Unknown5 { get; set; } = -1;
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
                 Unknown1 = rw.Int32(Unknown1);

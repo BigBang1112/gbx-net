@@ -8,17 +8,8 @@ namespace GBX.NET.Engines.Game
     [Node(0x030A9000)]
     public class CGameCtnMediaBlockTrails : CGameCtnMediaBlock
     {
-        public float Start
-        {
-            get => (float)GetValue<Chunk000>(x => x.Start);
-            set => SetValue<Chunk000>(x => x.Start = value);
-        }
-
-        public float End
-        {
-            get => (float)GetValue<Chunk000>(x => x.End);
-            set => SetValue<Chunk000>(x => x.End = value);
-        }
+        public float Start { get; set; }
+        public float End { get; set; }
 
         public CGameCtnMediaBlockTrails(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -30,15 +21,12 @@ namespace GBX.NET.Engines.Game
         #region 0x000 chunk
 
         [Chunk(0x030A9000)]
-        public class Chunk000 : Chunk
+        public class Chunk030A9000 : Chunk<CGameCtnMediaBlockTrails>
         {
-            public float Start { get; set; }
-            public float End { get; set; }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnMediaBlockTrails n, GameBoxReaderWriter rw)
             {
-                Start = rw.Single(Start);
-                End = rw.Single(End);
+                n.Start = rw.Single(n.Start);
+                n.End = rw.Single(n.End);
             }
         }
 

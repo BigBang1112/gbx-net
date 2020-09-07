@@ -3,11 +3,7 @@
     [Node(0x07010000)]
     public class CControlEffectSimi : Node
     {
-        public Key[] Keys
-        {
-            get => GetValue<Chunk005>(x => x.Keys) as Key[];
-            set => SetValue<Chunk005>(x => x.Keys = value);
-        }
+        public Key[] Keys { get; set; }
 
         public CControlEffectSimi(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -15,22 +11,15 @@
         }
 
         [Chunk(0x07010004)]
-        public class Chunk004 : Chunk
+        public class Chunk004 : Chunk<CControlEffectSimi>
         {
-            public Key[] Keys { get; set; }
-
             public int Unknown1 { get; set; }
             public int Unknown2 { get; set; }
             public int Unknown3 { get; set; }
 
-            public Chunk004(CControlEffectSimi node) : base(node)
+            public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
             {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Keys = rw.Array(Keys, i =>
+                n.Keys = rw.Array(n.Keys, i =>
                 {
                     var time = rw.Reader.ReadSingle();
                     var x = rw.Reader.ReadSingle();
@@ -73,18 +62,11 @@
         }
 
         [Chunk(0x07010005)]
-        public class Chunk005 : Chunk
+        public class Chunk005 : Chunk<CControlEffectSimi>
         {
-            public Key[] Keys { get; set; }
-
-            public Chunk005(CControlEffectSimi node) : base(node)
+            public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
             {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Keys = rw.Array(Keys, i =>
+                n.Keys = rw.Array(n.Keys, i =>
                 {
                     var time = rw.Reader.ReadSingle();
                     var x = rw.Reader.ReadSingle();

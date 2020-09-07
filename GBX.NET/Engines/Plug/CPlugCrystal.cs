@@ -10,22 +10,24 @@ namespace GBX.NET.Engines.Plug
     [Node(0x09003000)]
     public class CPlugCrystal : CPlugTreeGenerator
     {
+        public CPlugMaterialUserInst[] Materials { get; set; }
+        public Layer[] Layers { get; set; }
+
         public CPlugCrystal(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
 
         }
 
         [Chunk(0x09003003)]
-        public class Chunk09003003 : Chunk
+        public class Chunk09003003 : Chunk<CPlugCrystal>
         {
             public int Version { get; set; }
-            public CPlugMaterialUserInst[] Materials { get; set; }
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CPlugCrystal n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
 
-                Materials = rw.Array(Materials, i =>
+                n.Materials = rw.Array(n.Materials, i =>
                 {
                     var name = rw.Reader.ReadString();
                     if(name == "") // If the material file exists (name != ""), it references the file instead
@@ -41,22 +43,21 @@ namespace GBX.NET.Engines.Plug
         }
 
         [Chunk(0x09003004)]
-        public class Chunk09003004 : SkippableChunk
+        public class Chunk09003004 : SkippableChunk<CPlugCrystal>
         {
             
         }
 
         [Chunk(0x09003005)]
-        public class Chunk09003005 : Chunk
+        public class Chunk09003005 : Chunk<CPlugCrystal>
         {
             public int Version { get; set; }
-            public Layer[] Layers { get; set; }
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CPlugCrystal n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
 
-                Layers = rw.Array(Layers, i =>
+                n.Layers = rw.Array(n.Layers, i =>
                 {
                     var uA = rw.Reader.ReadInt32();
                     var uB = rw.Reader.ReadInt32();
@@ -159,39 +160,15 @@ namespace GBX.NET.Engines.Plug
                     };
                 }, x => { });
             }
-
-            public class Layer
-            {
-                public string LayerID { get; set; }
-                public string LayerName { get; set; }
-                public Vector3[] Verticies { get; set; }
-                public Int2[] Indicies { get; set; }
-                public UVMap[] UVs { get; set; }
-                public object[] Unknown { get; set; }
-            }
-
-            public class UVMap
-            {
-                public int VertCount { get; set; }
-                public int[] Inds { get; set; }
-                public Vector2[] XY { get; set; }
-                public int Unknown1 { get; set; }
-                public int Unknown2 { get; set; }
-
-                public override string ToString()
-                {
-                    return $"({string.Join(" ", Inds)}) ({string.Join(" ", XY)})";
-                }
-            }
         }
 
         [Chunk(0x09003006)]
-        public class Chunk09003006 : Chunk
+        public class Chunk09003006 : Chunk<CPlugCrystal>
         {
             public int Version { get; set; }
             public Vector2[] Vectors { get; set; }
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CPlugCrystal n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
                 Vectors = rw.Array(Vectors, i => rw.Reader.ReadVec2(), x => rw.Writer.Write(x));
@@ -199,12 +176,12 @@ namespace GBX.NET.Engines.Plug
         }
 
         [Chunk(0x09003007)]
-        public class Chunk09003007 : Chunk
+        public class Chunk09003007 : Chunk<CPlugCrystal>
         {
             public int Version { get; set; }
             public int[] Numbers { get; set; }
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CPlugCrystal n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
                 rw.Int32(Unknown);
@@ -212,6 +189,30 @@ namespace GBX.NET.Engines.Plug
                 rw.Single(Unknown);
                 rw.Single(Unknown);
                 Numbers = rw.Array(Numbers, i => rw.Reader.ReadInt32(), x => rw.Writer.Write(x));
+            }
+        }
+
+        public class Layer
+        {
+            public string LayerID { get; set; }
+            public string LayerName { get; set; }
+            public Vector3[] Verticies { get; set; }
+            public Int2[] Indicies { get; set; }
+            public UVMap[] UVs { get; set; }
+            public object[] Unknown { get; set; }
+        }
+
+        public class UVMap
+        {
+            public int VertCount { get; set; }
+            public int[] Inds { get; set; }
+            public Vector2[] XY { get; set; }
+            public int Unknown1 { get; set; }
+            public int Unknown2 { get; set; }
+
+            public override string ToString()
+            {
+                return $"({string.Join(" ", Inds)}) ({string.Join(" ", XY)})";
             }
         }
     }

@@ -9,13 +9,16 @@ namespace GBX.NET.Engines.Game
     [Node(0x03093000)]
     public class CGameCtnReplayRecord : Node
     {
-        public GameBox<CGameCtnChallenge> Track
-        {
-            get => GetValue<Chunk002>(x => {
-                if (x.Track == null) return null;
-                return x.Track.Result;
-            }) as GameBox<CGameCtnChallenge>;
-        }
+        public Task<GameBox<CGameCtnChallenge>> Track { get; set; }
+
+        public int? AuthorVersion { get; set; }
+        public string AuthorLogin { get; set; }
+        public string AuthorNickname { get; set; }
+        public string AuthorZone { get; set; }
+        public string AuthorExtraInfo { get; set; }
+
+        public CGameCtnGhost[] Ghosts { get; set; }
+        public long[] Extras { get; set; }
 
         public CGameCtnReplayRecord(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -27,7 +30,7 @@ namespace GBX.NET.Engines.Game
         #region 0x000 chunk
 
         [Chunk(0x03093000)]
-        public class Chunk000 : SkippableChunk
+        public class Chunk03093000 : HeaderChunk<CGameCtnReplayRecord>
         {
             public int Version { get; set; }
             public Meta MapInfo { get; set; }
@@ -37,7 +40,7 @@ namespace GBX.NET.Engines.Game
             public byte Unknown1 { get; set; }
             public string TitleUID { get; set; }
 
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
 
@@ -66,11 +69,11 @@ namespace GBX.NET.Engines.Game
         #region 0x001 chunk
 
         [Chunk(0x03093001)]
-        public class Chunk001 : SkippableChunk
+        public class Chunk03093001 : HeaderChunk<CGameCtnReplayRecord>
         {
             public string XML { get; set; }
 
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 XML = r.ReadString();
             }
@@ -81,26 +84,20 @@ namespace GBX.NET.Engines.Game
         #region 0x002 chunk
 
         [Chunk(0x03093002)]
-        public class Chunk002 : Chunk
+        public class Chunk03093002 : Chunk<CGameCtnReplayRecord>
         {
-            public int? Version { get; set; }
-            public int? AuthorVersion { get; set; }
-            public string AuthorLogin { get; set; }
-            public string AuthorNickname { get; set; }
-            public string AuthorZone { get; set; }
-            public string AuthorExtraInfo { get; set; }
-            public Task<GameBox<CGameCtnChallenge>> Track { get; set; }
+            public int Version { get; set; }
 
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 if (IsHeader)
                 {
                     Version = r.ReadInt32();
-                    AuthorVersion = r.ReadInt32();
-                    AuthorLogin = r.ReadString();
-                    AuthorNickname = r.ReadString();
-                    AuthorZone = r.ReadString();
-                    AuthorExtraInfo = r.ReadString();
+                    n.AuthorVersion = r.ReadInt32();
+                    n.AuthorLogin = r.ReadString();
+                    n.AuthorNickname = r.ReadString();
+                    n.AuthorZone = r.ReadString();
+                    n.AuthorExtraInfo = r.ReadString();
                 }
 
                 if (IsBody)
@@ -111,7 +108,7 @@ namespace GBX.NET.Engines.Game
                     {
                         var trackGbx = r.ReadBytes(size);
 
-                        Track = Task.Run(() =>
+                        n.Track = Task.Run(() =>
                         {
                             using var ms = new MemoryStream(trackGbx);
                             var gbx = new GameBox<CGameCtnChallenge>();
@@ -128,19 +125,17 @@ namespace GBX.NET.Engines.Game
         #region 0x014 chunk
 
         [Chunk(0x03093014)]
-        public class Chunk014 : Chunk
+        public class Chunk03093014 : Chunk<CGameCtnReplayRecord>
         {
-            public int Version { get; private set; }
-            public CGameCtnGhost[] Ghosts { get; private set; }
+            public int Version { get; set; }
             public int Unknown1 { get; set; }
-            public long[] Extras { get; private set; }
 
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
-                Ghosts = r.ReadArray(i => r.ReadNodeRef<CGameCtnGhost>(true));
+                n.Ghosts = r.ReadArray(i => r.ReadNodeRef<CGameCtnGhost>(true));
                 Unknown1 = r.ReadInt32();
-                Extras = r.ReadArray(i => r.ReadInt64());
+                n.Extras = r.ReadArray(i => r.ReadInt64());
             }
         }
 
@@ -149,11 +144,11 @@ namespace GBX.NET.Engines.Game
         #region 0x015 chunk
 
         [Chunk(0x03093015)]
-        public class Chunk015 : Chunk
+        public class Chunk03093015 : Chunk<CGameCtnReplayRecord>
         {
             public int Unknown1 { get; set; }
 
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Unknown1 = r.ReadInt32();
             }
@@ -164,18 +159,13 @@ namespace GBX.NET.Engines.Game
         #region 0x024 chunk
 
         [Chunk(0x03093024)]
-        public class Chunk024 : Chunk
+        public class Chunk024 : Chunk<CGameCtnReplayRecord>
         {
             public int Unknown1 { get; set; }
             public int Unknown2 { get; set; }
             public Node Unknown3 { get; set; }
 
-            public Chunk024(CGameCtnReplayRecord node) : base(node)
-            {
-                
-            }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Unknown1 = r.ReadInt32();
                 Unknown2 = r.ReadInt32();

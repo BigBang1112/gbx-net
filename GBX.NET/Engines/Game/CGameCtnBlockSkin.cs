@@ -8,29 +8,13 @@ namespace GBX.NET.Engines.Game
     [Node(0x03059000)]
     public class CGameCtnBlockSkin : Node
     {
-        public string Text
-        {
-            get => GetValue<Chunk000, Chunk001, Chunk002>(x => x.Text, x=> x.Text, x => x.Text) as string;
-            set => SetValue<Chunk000, Chunk001, Chunk002>(x => x.Text = value, x => x.Text = value, x => x.Text = value);
-        }
+        public string Text { get; set; }
 
-        public FileRef PackDesc
-        {
-            get => GetValue<Chunk001, Chunk002>(x => x.PackDesc, x => x.PackDesc) as FileRef;
-            set => SetValue<Chunk001, Chunk002>(x => x.PackDesc = value, x => x.PackDesc = value);
-        }
+        public FileRef PackDesc { get; set; } = new FileRef();
 
-        public FileRef ParentPackDesc
-        {
-            get => GetValue<Chunk002>(x => x.ParentPackDesc) as FileRef;
-            set => SetValue<Chunk002>(x => x.ParentPackDesc = value);
-        }
+        public FileRef ParentPackDesc { get; set; } = new FileRef();
 
-        public FileRef SecondaryPackDesc
-        {
-            get => GetValue<Chunk003>(x => x.SecondaryPackDesc) as FileRef;
-            set => SetValue<Chunk003>(x => x.SecondaryPackDesc = value);
-        }
+        public FileRef SecondaryPackDesc { get; set; }
 
         public CGameCtnBlockSkin(ILookbackable lookbackable) : this(lookbackable, 0x03059000)
         {
@@ -47,14 +31,13 @@ namespace GBX.NET.Engines.Game
         #region 0x000 chunk
 
         [Chunk(0x03059000)]
-        public class Chunk000 : Chunk
+        public class Chunk03059000 : Chunk<CGameCtnBlockSkin>
         {
-            public string Text { get; set; }
             public string Ignored { get; set; }
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnBlockSkin n, GameBoxReaderWriter rw)
             {
-                Text = rw.String(Text);
+                n.Text = rw.String(n.Text);
                 Ignored = rw.String(Ignored);
             }
         }
@@ -64,15 +47,12 @@ namespace GBX.NET.Engines.Game
         #region 0x001 chunk
 
         [Chunk(0x03059001)]
-        public class Chunk001 : Chunk
+        public class Chunk03059001 : Chunk<CGameCtnBlockSkin>
         {
-            public string Text { get; set; }
-            public FileRef PackDesc { get; set; } = new FileRef();
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnBlockSkin n, GameBoxReaderWriter rw)
             {
-                Text = rw.String(Text);
-                PackDesc = rw.FileRef(PackDesc);
+                n.Text = rw.String(n.Text);
+                n.PackDesc = rw.FileRef(n.PackDesc);
             }
         }
 
@@ -81,17 +61,13 @@ namespace GBX.NET.Engines.Game
         #region 0x002 chunk
 
         [Chunk(0x03059002)]
-        public class Chunk002 : Chunk
+        public class Chunk03059002 : Chunk<CGameCtnBlockSkin>
         {
-            public string Text { get; set; }
-            public FileRef PackDesc { get; set; } = new FileRef();
-            public FileRef ParentPackDesc { get; set; } = new FileRef();
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnBlockSkin n, GameBoxReaderWriter rw)
             {
-                Text = rw.String(Text);
-                PackDesc = rw.FileRef(PackDesc);
-                ParentPackDesc = rw.FileRef(ParentPackDesc);
+                n.Text = rw.String(n.Text);
+                n.PackDesc = rw.FileRef(n.PackDesc);
+                n.ParentPackDesc = rw.FileRef(n.ParentPackDesc);
             }
         }
 
@@ -100,15 +76,14 @@ namespace GBX.NET.Engines.Game
         #region 0x003 chunk
 
         [Chunk(0x03059003)]
-        public class Chunk003 : Chunk
+        public class Chunk03059003 : Chunk<CGameCtnBlockSkin>
         {
             public int Version { get; set; }
-            public FileRef SecondaryPackDesc { get; set; } = new FileRef();
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnBlockSkin n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                SecondaryPackDesc = rw.FileRef(SecondaryPackDesc);
+                n.SecondaryPackDesc = rw.FileRef(n.SecondaryPackDesc);
             }
         }
 

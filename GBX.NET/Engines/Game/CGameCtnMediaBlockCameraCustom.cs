@@ -10,11 +10,7 @@ namespace GBX.NET.Engines.Game
     [Node(0x030A2000)]
     public class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera
     {
-        public List<Key> Keys
-        {
-            get => GetValue<Chunk002, Chunk005, Chunk006>(x => x.Keys, x => x.Keys, x => x.Keys) as List<Key>;
-            set => SetValue<Chunk002, Chunk005, Chunk006>(x => x.Keys = value, x => x.Keys = value, x => x.Keys = value);
-        }
+        public List<Key> Keys { get; set; } = new List<Key>();
 
         public CGameCtnMediaBlockCameraCustom(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -26,13 +22,11 @@ namespace GBX.NET.Engines.Game
         #region 0x002 chunk
 
         [Chunk(0x030A2002)]
-        public class Chunk002 : Chunk
+        public class Chunk030A2002 : Chunk<CGameCtnMediaBlockCameraCustom>
         {
-            public List<Key> Keys { get; set; } = new List<Key>();
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaBlockCameraCustom n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                Keys = r.ReadArray(i =>
+                n.Keys = r.ReadArray(i =>
                 {
                     var time = r.ReadSingle();
                     var a = r.ReadInt32(); // 1
@@ -67,9 +61,9 @@ namespace GBX.NET.Engines.Game
                 }).ToList();
             }
 
-            public override void Write(GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaBlockCameraCustom n, GameBoxWriter w, GameBoxReader unknownR)
             {
-                w.Write(Keys?.ToArray(), x =>
+                w.Write(n.Keys?.ToArray(), x =>
                 {
                     w.Write(x.Time);
                     w.Write((int)x.Unknown.ElementAtOrDefault(0));
@@ -97,14 +91,13 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnMediaBlockCameraCustom 0x005 chunk (TMUF)
         /// </summary>
         [Chunk(0x030A2005)]
-        public class Chunk005 : Chunk
+        public class Chunk030A2005 : Chunk<CGameCtnMediaBlockCameraCustom>
         {
             public int Version { get; set; }
-            public List<Key> Keys { get; set; } = new List<Key>();
 
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaBlockCameraCustom n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                Keys = r.ReadArray(i =>
+                n.Keys = r.ReadArray(i =>
                 {
                     var time = r.ReadSingle();
                     var a = r.ReadInt32(); // 1
@@ -141,9 +134,9 @@ namespace GBX.NET.Engines.Game
                 }).ToList();
             }
 
-            public override void Write(GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaBlockCameraCustom n, GameBoxWriter w, GameBoxReader unknownR)
             {
-                w.Write(Keys.ToArray(), x =>
+                w.Write(n.Keys.ToArray(), x =>
                 {
                     w.Write(x.Time);
                     w.Write((int)x.Unknown.ElementAtOrDefault(0));
@@ -171,29 +164,28 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnMediaBlockCameraCustom 0x006 chunk (ManiaPlanet)
         /// </summary>
         [Chunk(0x030A2006)]
-        public class Chunk006 : Chunk
+        public class Chunk030A2006 : Chunk<CGameCtnMediaBlockCameraCustom>
         {
             public int Version { get; set; } = 3;
-            public List<Key> Keys { get; set; } = new List<Key>();
 
             /// <summary>
             /// Constructs a new 0x030A2006 chunk with version 3.
             /// </summary>
             /// <param name="node"></param>
-            public Chunk006() : this(3)
+            public Chunk030A2006() : this(3)
             {
                 
             }
 
-            public Chunk006(int version)
+            public Chunk030A2006(int version)
             {
                 Version = version;
             }
 
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaBlockCameraCustom n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
-                Keys = r.ReadArray(i =>
+                n.Keys = r.ReadArray(i =>
                 {
                     var time = r.ReadSingle();
                     var a = r.ReadInt32(); // 1
@@ -234,11 +226,11 @@ namespace GBX.NET.Engines.Game
                 }).ToList();
             }
 
-            public override void Write(GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaBlockCameraCustom n, GameBoxWriter w, GameBoxReader unknownR)
             {
                 w.Write(Version);
 
-                w.Write(Keys?.ToArray(), x =>
+                w.Write(n.Keys?.ToArray(), x =>
                 {
                     w.Write(x.Time);
                     w.Write((int)x.Unknown.ElementAtOrDefault(0));
@@ -258,15 +250,6 @@ namespace GBX.NET.Engines.Game
                     w.Write(x.RightTangent);
                     w.Write((float[])x.Unknown.ElementAtOrDefault(5));
                 });
-            }
-
-            public static explicit operator Chunk006(Chunk005 c)
-            {
-                return new Chunk006()
-                {
-                    Node = c.Node,
-                    Keys = c.Keys
-                };
             }
         }
 

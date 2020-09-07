@@ -9,11 +9,8 @@ namespace GBX.NET.Engines.Game
     [Node(0x0308F000)]
     public class CGameCtnChallengeGroup : Node
     {
-        public MapInfo[] MapInfos
-        {
-            get => GetValue<Chunk00B>(x => x.MapInfos) as MapInfo[];
-            set => SetValue<Chunk00B>(x => x.MapInfos = value);
-        }
+        public string Default { get; set; }
+        public MapInfo[] MapInfos { get; set; }
 
         public CGameCtnChallengeGroup(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -25,13 +22,11 @@ namespace GBX.NET.Engines.Game
         #region 0x002 chunk
 
         [Chunk(0x0308F002)]
-        public class Chunk002 : Chunk
+        public class Chunk0308F002 : Chunk<CGameCtnChallengeGroup>
         {
-            public string Default { get; set; }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallengeGroup n, GameBoxReaderWriter rw)
             {
-                Default = rw.String(Default);
+                n.Default = rw.String(n.Default);
             }
         }
 
@@ -40,19 +35,18 @@ namespace GBX.NET.Engines.Game
         #region 0x00B chunk
 
         [Chunk(0x0308F00B)]
-        public class Chunk00B : Chunk
+        public class Chunk0308F00B : Chunk<CGameCtnChallengeGroup>
         {
             public int Version { get; set; }
-            public MapInfo[] MapInfos { get; set; }
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallengeGroup n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                MapInfos = rw.Array(MapInfos, i =>
+
+                n.MapInfos = rw.Array(n.MapInfos, i => new MapInfo()
                 {
-                    var mapInfo = rw.Reader.ReadMeta();
-                    var filePath = rw.Reader.ReadString();
-                    return new MapInfo(mapInfo, filePath);
+                    Metadata = rw.Reader.ReadMeta(),
+                    FilePath = rw.Reader.ReadString()
                 },
                 x =>
                 {
@@ -68,14 +62,8 @@ namespace GBX.NET.Engines.Game
 
         public class MapInfo
         {
-            public Meta Metadata { get; }
+            public Meta Metadata { get; set; }
             public string FilePath { get; set; }
-
-            public MapInfo(Meta metadata, string filePath)
-            {
-                Metadata = metadata;
-                FilePath = filePath;
-            }
 
             public override string ToString()
             {

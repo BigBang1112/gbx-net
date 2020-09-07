@@ -7,6 +7,8 @@ namespace GBX.NET.Engines.MwFoundations
     [Node(0x01001000)]
     public class CMwNod : Node
     {
+        public string[] Dependencies { get; set; }
+
         public CMwNod(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
 
@@ -17,13 +19,11 @@ namespace GBX.NET.Engines.MwFoundations
         #region 0x000 chunk (FolderDep)
 
         [Chunk(0x01001000)]
-        public class Chunk000 : Chunk
+        public class Chunk01001000 : Chunk<CMwNod>
         {
-            public string[] Dependencies { get; set; }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void ReadWrite(CMwNod n, GameBoxReaderWriter rw)
             {
-                Dependencies = r.ReadArray(i => r.ReadString());
+                n.Dependencies = rw.Array(n.Dependencies, i => rw.Reader.ReadString(), x => rw.Writer.Write(x));
             }
         }
 

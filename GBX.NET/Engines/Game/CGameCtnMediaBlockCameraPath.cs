@@ -9,11 +9,7 @@ namespace GBX.NET.Engines.Game
     [Node(0x030A1000)]
     public class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera
     {
-        public Key[] Keys
-        {
-            get => GetValue<Chunk002>(x => x.Keys) as Key[];
-            set => SetValue<Chunk002>(x => x.Keys = value);
-        }
+        public Key[] Keys { get; set; }
 
         public CGameCtnMediaBlockCameraPath(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -21,18 +17,11 @@ namespace GBX.NET.Engines.Game
         }
 
         [Chunk(0x030A1000)]
-        public class Chunk000_0A1 : Chunk
+        public class Chunk030A1000 : Chunk<CGameCtnMediaBlockCameraPath>
         {
-            public Key[] Keys { get; set; }
-
-            public Chunk000_0A1(CGameCtnMediaBlockCameraPath node) : base(node)
+            public override void Read(CGameCtnMediaBlockCameraPath n, GameBoxReader r, GameBoxWriter unknownW)
             {
-
-            }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
-            {
-                Keys = r.ReadArray(i =>
+                n.Keys = r.ReadArray(i =>
                 {
                     var time = r.ReadSingle();
                     var position = r.ReadVec3();
@@ -65,9 +54,9 @@ namespace GBX.NET.Engines.Game
                 });
             }
 
-            public override void Write(GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaBlockCameraPath n, GameBoxWriter w, GameBoxReader unknownR)
             {
-                w.Write(Keys, x =>
+                w.Write(n.Keys, x =>
                 {
                     w.Write(x.Time);
                     w.Write(x.Position);
@@ -88,18 +77,11 @@ namespace GBX.NET.Engines.Game
         }
 
         [Chunk(0x030A1002)]
-        public class Chunk002 : Chunk
+        public class Chunk030A1002 : Chunk<CGameCtnMediaBlockCameraPath>
         {
-            public Key[] Keys { get; set; }
-
-            public Chunk002(CGameCtnMediaBlockCameraPath node) : base(node)
+            public override void Read(CGameCtnMediaBlockCameraPath n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                
-            }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
-            {
-                Keys = r.ReadArray(i =>
+                n.Keys = r.ReadArray(i =>
                 {
                     var time = r.ReadSingle();
                     var position = r.ReadVec3();
@@ -132,9 +114,9 @@ namespace GBX.NET.Engines.Game
                 });
             }
 
-            public override void Write(GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaBlockCameraPath n, GameBoxWriter w, GameBoxReader unknownR)
             {
-                w.Write(Keys, x =>
+                w.Write(n.Keys, x =>
                 {
                     w.Write(x.Time);
                     w.Write(x.Position);
@@ -154,21 +136,16 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        [Chunk(0x030A1000, 0x003)]
-        public class Chunk003 : Chunk
+        [Chunk(0x030A1003)]
+        public class Chunk030A1003 : Chunk<CGameCtnMediaBlockCameraPath>
         {
-            public Key[] Keys { get; set; }
+            public int Version { get; set; }
 
-            public Chunk003(CGameCtnMediaBlockCameraPath node) : base(node)
+            public override void Read(CGameCtnMediaBlockCameraPath n, GameBoxReader r, GameBoxWriter unknownW)
             {
+                Version = r.ReadInt32();
 
-            }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
-            {
-                var version = r.ReadInt32(); // 5
-
-                Keys = r.ReadArray(i =>
+                n.Keys = r.ReadArray(i =>
                 {
                     var time = r.ReadSingle();
                     var position = r.ReadVec3();

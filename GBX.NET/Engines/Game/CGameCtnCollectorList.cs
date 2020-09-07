@@ -3,10 +3,7 @@
     [Node(0x0301B000)]
     public class CGameCtnCollectorList : Node
     {
-        public Collector[] CollectorStock
-        {
-            get => GetValue<Chunk000>(x => x.CollectorStock) as Collector[];
-        }
+        public Collector[] CollectorStock { get; set; }
 
         public CGameCtnCollectorList(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -18,13 +15,11 @@
         #region 0x000 chunk
 
         [Chunk(0x0301B000)]
-        public class Chunk000 : Chunk
+        public class Chunk0301B000 : Chunk<CGameCtnCollectorList>
         {
-            public Collector[] CollectorStock { get; set; }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnCollectorList n, GameBoxReaderWriter rw)
             {
-                CollectorStock = rw.Array(CollectorStock,
+                n.CollectorStock = rw.Array(n.CollectorStock,
                     i => new Collector()
                     {
                         Meta = rw.Reader.ReadMeta(),

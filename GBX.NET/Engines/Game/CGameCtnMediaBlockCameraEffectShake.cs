@@ -9,11 +9,7 @@ namespace GBX.NET.Engines.Game
     [Node(0x030A4000)]
     public class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCameraEffect
     {
-        public Key[] Keys
-        {
-            get => GetValue<Chunk000>(x => x.Keys) as Key[];
-            set => SetValue<Chunk000>(x => x.Keys = value);
-        }
+        public Key[] Keys { get; set; }
 
         public CGameCtnMediaBlockCameraEffectShake(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -21,13 +17,11 @@ namespace GBX.NET.Engines.Game
         }
 
         [Chunk(0x030A4000)]
-        public class Chunk000 : Chunk
+        public class Chunk030A4000 : Chunk<CGameCtnMediaBlockCameraEffectShake>
         {
-            public Key[] Keys { get; set; }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnMediaBlockCameraEffectShake n, GameBoxReaderWriter rw)
             {
-                Keys = rw.Array(Keys, i =>
+                n.Keys = rw.Array(n.Keys, i =>
                 {
                     var time = rw.Reader.ReadSingle();
                     var intensity = rw.Reader.ReadSingle();

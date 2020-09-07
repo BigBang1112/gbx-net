@@ -13,9 +13,9 @@ namespace GBX.NET.Engines.GameData
         }
 
         [Chunk(0x03120001)]
-        public class Chunk001 : Chunk
+        public class Chunk03120001 : Chunk<CGameCtnAutoTerrain>
         {
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnAutoTerrain n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 var offset = r.ReadInt3();
                 var genealogy = r.ReadNodeRef();
