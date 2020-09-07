@@ -7,29 +7,25 @@ namespace GBX.NET.Engines.Game
     [Node(0x03172000)]
     public class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock
     {
+        public Key[] Keys { get; set; }
+        public int BaseIndex { get; set; }
+
         public CGameCtnMediaBlockColoringBase(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
 
         }
 
         [Chunk(0x03172000)]
-        public class Chunk000 : Chunk
+        public class Chunk03172000 : Chunk<CGameCtnMediaBlockColoringBase>
         {
             public int Version { get; set; }
-            public Key[] Keys { get; set; }
-            public int BaseIndex { get; set; }
 
-            public Chunk000(Node node) : base(node)
-            {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnMediaBlockColoringBase n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
                 rw.Int32(Unknown);
 
-                Keys = rw.Array(Keys, i => new Key()
+                n.Keys = rw.Array(n.Keys, i => new Key()
                 {
                     Time = rw.Reader.ReadSingle(),
                     Hue = rw.Reader.ReadSingle(),
@@ -44,7 +40,7 @@ namespace GBX.NET.Engines.Game
                     rw.Writer.Write(x.Unknown);
                 });
                 
-                BaseIndex = rw.Int32(BaseIndex);
+                n.BaseIndex = rw.Int32(n.BaseIndex);
             }
         }
 

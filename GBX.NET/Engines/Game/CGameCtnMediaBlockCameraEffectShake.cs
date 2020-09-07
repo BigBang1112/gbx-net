@@ -21,13 +21,11 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaBlockCameraEffectShake n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, i =>
+                n.Keys = rw.Array(n.Keys, i => new Key()
                 {
-                    var time = rw.Reader.ReadSingle();
-                    var intensity = rw.Reader.ReadSingle();
-                    var speed = rw.Reader.ReadSingle();
-
-                    return new Key(time, intensity, speed);
+                    Time = rw.Reader.ReadSingle(),
+                    Intensity = rw.Reader.ReadSingle(),
+                    Speed = rw.Reader.ReadSingle()
                 },
                 x =>
                 {
@@ -42,13 +40,6 @@ namespace GBX.NET.Engines.Game
         {
             public float Intensity { get; set; }
             public float Speed { get; set; }
-
-            public Key(float time, float intensity, float speed)
-            {
-                Time = time;
-                Intensity = intensity;
-                Speed = speed;
-            }
         }
     }
 }

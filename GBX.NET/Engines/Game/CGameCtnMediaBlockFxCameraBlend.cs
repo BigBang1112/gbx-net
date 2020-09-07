@@ -7,27 +7,23 @@ namespace GBX.NET.Engines.Game
     [Node(0x0316D000)]
     public class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock
     {
+        public Key[] Keys { get; set; }
+
         public CGameCtnMediaBlockFxCameraBlend(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
 
         }
 
         [Chunk(0x0316D000)]
-        public class Chunk000 : Chunk
+        public class Chunk0316D000 : Chunk<CGameCtnMediaBlockFxCameraBlend>
         {
             public int Version { get; set; }
-            public Key[] Keys { get; set; }
 
-            public Chunk000(Node node) : base(node)
-            {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnMediaBlockFxCameraBlend n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
 
-                Keys = rw.Array(Keys, i =>
+                n.Keys = rw.Array(n.Keys, i =>
                 {
                     return new Key()
                     {

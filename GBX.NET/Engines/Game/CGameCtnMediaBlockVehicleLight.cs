@@ -7,42 +7,31 @@ namespace GBX.NET.Engines.Game
     [Node(0x03133000)]
     public class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock
     {
+        public float Start { get; set; }
+        public float End { get; set; }
+        public int Target { get; set; }
+
         public CGameCtnMediaBlockVehicleLight(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
 
         }
 
         [Chunk(0x03133000)]
-        public class Chunk000 : Chunk
+        public class Chunk03133000 : Chunk<CGameCtnMediaBlockVehicleLight>
         {
-            public float Start { get; set; }
-            public float End { get; set; }
-
-            public Chunk000(Node node) : base(node)
+            public override void ReadWrite(CGameCtnMediaBlockVehicleLight n, GameBoxReaderWriter rw)
             {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Start = rw.Single(Start);
-                End = rw.Single(End);
+                n.Start = rw.Single(n.Start);
+                n.End = rw.Single(n.End);
             }
         }
 
         [Chunk(0x03133001)]
-        public class Chunk001 : Chunk
+        public class Chunk03133001 : Chunk<CGameCtnMediaBlockVehicleLight>
         {
-            public int Target { get; set; }
-
-            public Chunk001(Node node) : base(node)
+            public override void ReadWrite(CGameCtnMediaBlockVehicleLight n, GameBoxReaderWriter rw)
             {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Target = rw.Int32(Target);
+                n.Target = rw.Int32(n.Target);
             }
         }
     }

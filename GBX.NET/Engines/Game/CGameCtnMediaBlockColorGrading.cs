@@ -7,46 +7,32 @@ namespace GBX.NET.Engines.Game
     [Node(0x03186000)]
     public class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock
     {
+        public FileRef Image { get; set; }
+        public Key[] Keys { get; set; }
+
         public CGameCtnMediaBlockColorGrading(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
 
         }
 
         [Chunk(0x03186000)]
-        public class Chunk000 : Chunk
+        public class Chunk03186000 : Chunk<CGameCtnMediaBlockColorGrading>
         {
-            public FileRef Image { get; set; }
-
-            public Chunk000(Node node) : base(node)
+            public override void ReadWrite(CGameCtnMediaBlockColorGrading n, GameBoxReaderWriter rw)
             {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Image = rw.FileRef(Image);
+                n.Image = rw.FileRef(n.Image);
             }
         }
 
         [Chunk(0x03186001)]
-        public class Chunk001 : Chunk
+        public class Chunk03186001 : Chunk<CGameCtnMediaBlockColorGrading>
         {
-            public Key[] Keys { get; set; }
-
-            public Chunk001(Node node) : base(node)
+            public override void ReadWrite(CGameCtnMediaBlockColorGrading n, GameBoxReaderWriter rw)
             {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Keys = rw.Array(Keys, i =>
+                n.Keys = rw.Array(n.Keys, i => new Key()
                 {
-                    return new Key()
-                    {
-                        Time = rw.Reader.ReadSingle(),
-                        Intensity = rw.Reader.ReadSingle()
-                    };
+                    Time = rw.Reader.ReadSingle(),
+                    Intensity = rw.Reader.ReadSingle()
                 },
                 x =>
                 {

@@ -7,32 +7,29 @@ namespace GBX.NET.Engines.Game
     [Node(0x03195000)]
     public class CGameCtnMediaBlockInterface : CGameCtnMediaBlock
     {
+        public float Start { get; set; }
+        public float End { get; set; }
+        public bool ShowInterface { get; set; }
+        public string Manialink { get; set; }
+
         public CGameCtnMediaBlockInterface(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
 
         }
 
         [Chunk(0x03195000)]
-        public class Chunk000 : Chunk
+        public class Chunk000 : Chunk<CGameCtnMediaBlockInterface>
         {
             public int Version { get; set; }
-            public float Start { get; set; }
-            public float End { get; set; }
-            public bool ShowInterface { get; set; }
-            public string Manialink { get; set; }
 
-            public Chunk000(Node node) : base(node)
-            {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnMediaBlockInterface n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                Start = rw.Single(Start);
-                End = rw.Single(End);
-                ShowInterface = rw.Boolean(ShowInterface);
-                Manialink = rw.String(Manialink);
+
+                n.Start = rw.Single(n.Start);
+                n.End = rw.Single(n.End);
+                n.ShowInterface = rw.Boolean(n.ShowInterface);
+                n.Manialink = rw.String(n.Manialink);
             }
         }
     }

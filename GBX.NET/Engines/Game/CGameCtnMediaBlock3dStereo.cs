@@ -7,31 +7,23 @@ namespace GBX.NET.Engines.Game
     [Node(0x03024000)]
     public class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock
     {
+        public Key[] Keys { get; set; }
+
         public CGameCtnMediaBlock3dStereo(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
 
         }
 
         [Chunk(0x03024000)]
-        public class Chunk000 : Chunk
+        public class Chunk03024000 : Chunk<CGameCtnMediaBlock3dStereo>
         {
-            public Key[] Keys { get; set; }
-
-            public Chunk000(Node node) : base(node)
+            public override void ReadWrite(CGameCtnMediaBlock3dStereo n, GameBoxReaderWriter rw)
             {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Keys = rw.Array(Keys, i =>
+                n.Keys = rw.Array(n.Keys, i => new Key()
                 {
-                    return new Key()
-                    {
-                        Time = rw.Reader.ReadSingle(),
-                        UpToMax = rw.Reader.ReadSingle(),
-                        ScreenDist = rw.Reader.ReadSingle()
-                    };
+                    Time = rw.Reader.ReadSingle(),
+                    UpToMax = rw.Reader.ReadSingle(),
+                    ScreenDist = rw.Reader.ReadSingle()
                 },
                 x =>
                 {

@@ -3,24 +3,19 @@
     [Node(0x03085000)]
     public class CGameCtnMediaBlockTime : CGameCtnMediaBlock
     {
+        public Key[] Keys { get; set; }
+
         public CGameCtnMediaBlockTime(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
 
         }
 
         [Chunk(0x03085000)]
-        public class Chunk000 : Chunk
+        public class Chunk03085000 : Chunk<CGameCtnMediaBlockTime>
         {
-            public Key[] Keys { get; set; }
-
-            public Chunk000(Node node) : base(node)
+            public override void ReadWrite(CGameCtnMediaBlockTime n, GameBoxReaderWriter rw)
             {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Keys = rw.Array(Keys, i => new Key()
+                n.Keys = rw.Array(n.Keys, i => new Key()
                 {
                     Time = rw.Reader.ReadSingle(),
                     TimeValue = rw.Reader.ReadSingle(),

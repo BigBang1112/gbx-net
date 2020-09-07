@@ -7,24 +7,19 @@ namespace GBX.NET.Engines.Game
     [Node(0x03128000)]
     public class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock
     {
+        public Key[] Keys { get; set; }
+
         public CGameCtnMediaBlockBloomHdr(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
 
         }
 
         [Chunk(0x03128002)]
-        public class Chunk002 : Chunk
+        public class Chunk03128002 : Chunk<CGameCtnMediaBlockBloomHdr>
         {
-            public Key[] Keys { get; set; }
-
-            public Chunk002(Node node) : base(node)
+            public override void ReadWrite(CGameCtnMediaBlockBloomHdr n, GameBoxReaderWriter rw)
             {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Keys = rw.Array(Keys, i => new Key()
+                n.Keys = rw.Array(n.Keys, i => new Key()
                 {
                     Time = rw.Reader.ReadSingle(),
                     Intensity = rw.Reader.ReadSingle(),
