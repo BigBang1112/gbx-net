@@ -38,11 +38,10 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        public class Key
+        public class Key : MediaBlockKey
         {
-            public float Time { get; }
-            public float Intensity { get; }
-            public float Speed { get; }
+            public float Intensity { get; set; }
+            public float Speed { get; set; }
 
             public Key(float time, float intensity, float speed)
             {

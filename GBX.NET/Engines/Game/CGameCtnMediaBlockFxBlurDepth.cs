@@ -44,9 +44,8 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        public class Key
+        public class Key : MediaBlockKey
         {
-            public float Time { get; set; }
             public float LensSize { get; set; }
             public bool ForceFocus { get; set; }
             public float FocusZ { get; set; }

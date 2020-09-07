@@ -257,9 +257,8 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        public class Key
+        public class Key : MediaBlockKey
         {
-            public float Time { get; set; }
             public Vector3 Position { get; set; }
             /// <summary>
             /// Pitch, yaw and roll in radians

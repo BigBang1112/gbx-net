@@ -66,9 +66,8 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        public class Key
+        public class Key : MediaBlockKey
         {
-            public float Time { get; set; }
             public float MusicVolume { get; set; }
             public float SoundVolume { get; set; }
         }
