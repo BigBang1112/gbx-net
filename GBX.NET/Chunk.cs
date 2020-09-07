@@ -22,12 +22,6 @@ namespace GBX.NET
 
         }
 
-        [Obsolete]
-        public Chunk(Node node)
-        {
-            
-        }
-
         public override int GetHashCode()
         {
             return (int)ID;
@@ -137,12 +131,6 @@ namespace GBX.NET
             throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support Write.");
         }
 
-        [Obsolete]
-        public new virtual void ReadWrite(GameBoxReaderWriter rw)
-        {
-            ReadWrite(null, rw);
-        }
-
         public virtual void ReadWrite(T n, GameBoxReaderWriter rw)
         {
             if (rw.Reader != null)
@@ -176,14 +164,6 @@ namespace GBX.NET
             var rw = new GameBoxReaderWriter(w);
             ReadWrite(Node, rw);
             return ms.ToArray();
-        }
-
-        [Obsolete]
-        public void Cast<TChunk>() where TChunk : Chunk<T>
-        {
-            var chunk = (TChunk)this;
-            //Node.Chunks.Add(chunk);
-            //Node.Chunks.Remove(this);
         }
     }
 }

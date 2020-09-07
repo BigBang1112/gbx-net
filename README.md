@@ -15,9 +15,12 @@ The library is also set to x86 assembly due to LZO compression problems in x64. 
 
 ## Dependencies
 
-The library currently requires these dependencies:
+The library requires these dependencies:
 - SharpZipLib.NETStandard
 - System.Drawing.Common
+
+Since 0.1.0, the library requires these dependencies:
+- Microsoft.CSharp
 
 ## Usage
 

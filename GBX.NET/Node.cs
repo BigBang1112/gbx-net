@@ -497,78 +497,6 @@ namespace GBX.NET
             Debug.WriteLine("Mappings defined in " + (DateTime.Now - startTimestamp).TotalMilliseconds + "ms");
         }
 
-        [Obsolete]
-        public object GetValue<T>(Func<T, object> val) where T : Chunk
-        {
-            return default;
-        }
-
-        [Obsolete]
-        public object GetValue<T1, T2>(Func<T1, object> val1, Func<T2, object> val2, DifferenceSolution diffSolution = DifferenceSolution.Default) where T1 : Chunk where T2 : Chunk
-        {
-            return default;
-        }
-
-        [Obsolete]
-        public object GetValue<T1, T2, T3>(Func<T1, object> val1, Func<T2, object> val2, Func<T3, object> val3, DifferenceSolution diffSolution = DifferenceSolution.Default) where T1 : Chunk where T2 : Chunk where T3 : Chunk
-        {
-            return default;
-        }
-
-        [Obsolete]
-        public object GetValue<T1, T2, T3, T4>(Func<T1, object> val1, Func<T2, object> val2, Func<T3, object> val3, Func<T4, object> val4, DifferenceSolution diffSolution = DifferenceSolution.Default) where T1 : Chunk where T2 : Chunk where T3 : Chunk where T4 : Chunk
-        {
-            return default;
-        }
-
-        [Obsolete]
-        public object GetValue<T1, T2, T3, T4, T5>(Func<T1, object> val1, Func<T2, object> val2, Func<T3, object> val3, Func<T4, object> val4, Func<T5, object> val5, DifferenceSolution diffSolution = DifferenceSolution.Default) where T1 : Chunk where T2 : Chunk where T3 : Chunk where T4 : Chunk where T5 : Chunk
-        {
-            return default;
-        }
-
-        [Obsolete]
-        public object GetValue<T1, T2, T3, T4, T5, T6>(Func<T1, object> val1, Func<T2, object> val2, Func<T3, object> val3, Func<T4, object> val4, Func<T5, object> val5, Func<T6, object> val6, DifferenceSolution diffSolution = DifferenceSolution.Default) where T1 : Chunk where T2 : Chunk where T3 : Chunk where T4 : Chunk where T5 : Chunk where T6 : Chunk
-        {
-            return default;
-        }
-
-        [Obsolete]
-        public void SetValue<T1>(Action<T1> val) where T1 : Chunk
-        {
-            
-        }
-
-        [Obsolete]
-        public void SetValue<T1, T2>(Action<T1> val1, Action<T2> val2) where T1 : Chunk where T2 : Chunk
-        {
-            
-        }
-
-        [Obsolete]
-        public void SetValue<T1, T2, T3>(Action<T1> val1, Action<T2> val2, Action<T3> val3) where T1 : Chunk where T2 : Chunk where T3 : Chunk
-        {
-            
-        }
-
-        [Obsolete]
-        public void SetValue<T1, T2, T3, T4>(Action<T1> val1, Action<T2> val2, Action<T3> val3, Action<T4> val4) where T1 : Chunk where T2 : Chunk where T3 : Chunk where T4 : Chunk
-        {
-            
-        }
-
-        [Obsolete]
-        public void SetValue<T1, T2, T3, T4, T5>(Action<T1> val1, Action<T2> val2, Action<T3> val3, Action<T4> val4, Action<T5> val5) where T1 : Chunk where T2 : Chunk where T3 : Chunk where T4 : Chunk where T5 : Chunk
-        {
-            
-        }
-
-        [Obsolete]
-        public void SetValue<T1, T2, T3, T4, T5, T6>(Action<T1> val1, Action<T2> val2, Action<T3> val3, Action<T4> val4, Action<T5> val5, Action<T6> val6) where T1 : Chunk where T2 : Chunk where T3 : Chunk where T4 : Chunk where T5 : Chunk where T6 : Chunk
-        {
-            
-        }
-
         public T GetChunk<T>() where T : Chunk
         {
             if (Chunks != null)
@@ -670,18 +598,6 @@ namespace GBX.NET
                 Chunks.Discover<T1, T2, T3, T4, T5, T6>();
             else
                 Body.DiscoverChunks<T1, T2, T3, T4, T5, T6>();
-        }
-
-        [Obsolete]
-        public void CallChunkMethod<T>(Action<T> method) where T : Chunk
-        {
-            
-        }
-
-        [Obsolete]
-        public T2 CallChunkMethod<T1, T2>(Func<T1, T2> method) where T1 : Chunk
-        {
-            return default;
         }
 
         public static uint Remap(uint id)
