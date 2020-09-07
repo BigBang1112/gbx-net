@@ -167,7 +167,7 @@ namespace GBX.NET
                 {
                     var isChunk = x.IsClass
                     && x.Namespace.StartsWith("GBX.NET.Engines")
-                    && (x.BaseType == chunkType || x.BaseType == skippableChunkType || x.BaseType == typeof(Chunk) || x.BaseType == typeof(SkippableChunk));
+                    && (x.BaseType == chunkType || x.BaseType == skippableChunkType);
                     if (!isChunk) return false;
 
                     var chunkAttribute = x.GetCustomAttribute<ChunkAttribute>();
@@ -187,7 +187,7 @@ namespace GBX.NET
                     var inheritSkippableChunkType = typeof(SkippableChunk<>).MakeGenericType(availableInheritanceClass);
 
                     foreach (var chunkT in availableInheritanceClass.GetNestedTypes().Where(x => x.IsClass
-                        && x.Namespace.StartsWith("GBX.NET.Engines") && (x.BaseType == inheritChunkType || x.BaseType == inheritSkippableChunkType || x.BaseType == typeof(Chunk) || x.BaseType == typeof(SkippableChunk))
+                        && x.Namespace.StartsWith("GBX.NET.Engines") && (x.BaseType == inheritChunkType || x.BaseType == inheritSkippableChunkType)
                         && (x.GetCustomAttribute<ChunkAttribute>().ClassID == cls)).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ChunkID))
                     {
                         availableChunkClasses[chunkT.Key + cls] = chunkT.Value;
@@ -244,8 +244,7 @@ namespace GBX.NET
                 var reflected = ((Chunk.Remap(chunkID) & 0xFFFFF000) == node.ID || inheritanceClasses.Contains(Chunk.Remap(chunkID) & 0xFFFFF000))
                     && (availableChunkClasses.TryGetValue(chunkID, out chunkClass) || availableChunkClasses.TryGetValue(chunkID & 0xFFF, out chunkClass));
 
-                var skippable = reflected && (chunkClass.BaseType == typeof(Chunk) || chunkClass.BaseType == typeof(SkippableChunk)
-                    || chunkClass.BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>));
+                var skippable = reflected && chunkClass.BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>);
 
                 if (!reflected || skippable)
                 {
@@ -292,13 +291,10 @@ namespace GBX.NET
                         if (constructorParams.Length == 0)
                         {
                             c = constructor.Invoke(new object[0]);
-                            if (chunkClass.BaseType != typeof(SkippableChunk))
-                            {
-                                c.Node = (dynamic)node;
-                                c.Stream = new MemoryStream(chunkData, 0, chunkData.Length, false);
-                                if (chunkData == null || chunkData.Length == 0)
-                                    c.Discovered = true;
-                            }
+                            c.Node = (dynamic)node;
+                            c.Stream = new MemoryStream(chunkData, 0, chunkData.Length, false);
+                            if (chunkData == null || chunkData.Length == 0)
+                                c.Discovered = true;
                         }
                         else if (constructorParams.Length == 2)
                             c = constructor.Invoke(new object[] { node, chunkData });

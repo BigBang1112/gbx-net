@@ -20,7 +20,6 @@ namespace GBX.NET
         public new Task<GameBoxHeader<T>> Header { get; private set; }
         public GameBoxRefTable RefTable { get; private set; }
         public GameBoxBody<T> Body { get; private set; }
-        public ClassIDRemap Game { get; set; }
 
         public T MainNode { get; internal set; }
 

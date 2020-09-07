@@ -97,7 +97,7 @@ namespace GBX.NET
 
     public abstract class Chunk<T> : Chunk where T : Node
     {
-        public new T Node { get; internal set; }
+        public T Node { get; internal set; }
 
         public bool IsHeader => Node?.Lookbackable is GameBoxHeader;
         public bool IsBody => Node?.Lookbackable is GameBoxBody;
@@ -145,19 +145,16 @@ namespace GBX.NET
 
         public virtual void ReadWrite(T n, GameBoxReaderWriter rw)
         {
-            ILookbackable lb = Node.Lookbackable;
-            if (this is ILookbackable l) lb = l;
-
             if (rw.Reader != null)
             {
-                var unknownW = new GameBoxWriter(Unknown, lb);
+                var unknownW = new GameBoxWriter(Unknown, rw.Reader.Lookbackable);
                 if (n == null) Read(null, rw.Reader, unknownW);
                 else Read(n, rw.Reader, unknownW);
             }
 
             if (rw.Writer != null)
             {
-                var unknownR = new GameBoxReader(Unknown, lb);
+                var unknownR = new GameBoxReader(Unknown, rw.Writer.Lookbackable);
                 if (n == null) Write(null, rw.Writer, unknownR);
                 else Write(n, rw.Writer, unknownR);
             }
@@ -177,7 +174,7 @@ namespace GBX.NET
             using var ms = new MemoryStream();
             using var w = new GameBoxWriter(ms, lookbackable);
             var rw = new GameBoxReaderWriter(w);
-            ReadWrite(rw);
+            ReadWrite(Node, rw);
             return ms.ToArray();
         }
 
