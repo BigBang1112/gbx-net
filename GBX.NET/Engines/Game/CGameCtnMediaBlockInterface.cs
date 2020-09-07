@@ -18,7 +18,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [Chunk(0x03195000)]
-        public class Chunk000 : Chunk<CGameCtnMediaBlockInterface>
+        public class Chunk03195000 : Chunk<CGameCtnMediaBlockInterface>
         {
             public int Version { get; set; }
 
