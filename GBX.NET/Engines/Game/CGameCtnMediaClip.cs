@@ -80,6 +80,10 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x007 chunk
+
         [Chunk(0x03079007)]
         public class Chunk03079007 : Chunk<CGameCtnMediaClip>
         {
@@ -89,6 +93,10 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x008 chunk
+
         [Chunk(0x03079008)]
         public class Chunk03079008 : Chunk<CGameCtnMediaClip>
         {
@@ -97,6 +105,10 @@ namespace GBX.NET.Engines.Game
                 rw.Single(Unknown); // 0.2
             }
         }
+
+        #endregion
+
+        #region 0x009 chunk
 
         [Chunk(0x03079009)]
         public class Chunk03079009 : Chunk<CGameCtnMediaClip>
