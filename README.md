@@ -27,35 +27,20 @@ Since 0.1.0, the library requires these dependencies:
 To parse a GBX with a known type:
 
 ```cs
-GameBox<CGameCtnChallenge> gbx = new GameBox<CGameCtnChallenge>();
-gbx.Load("MyMap.Map.Gbx");
-
-// Node data is available in gbx.MainNode
+var gbx = GameBox.Parse<CGameCtnChallenge>("MyMap.Map.Gbx"); // Node data is available in gbx.MainNode
 ```
 
 To parse a GBX with an unknown type:
 
 ```cs
-using (var fs = File.OpenRead("MyMap.Map.Gbx"))
-{
-	var type = GameBox.GetGameBoxType(fs);
-	fs.Seek(0, SeekOrigin.Begin);
+var gbx = GameBox.Parse("MyMap.Map.Gbx");
 
-	if (type == null)
-		gbx = new GameBox();
-	else
-		gbx = (GameBox)Activator.CreateInstance(type);
-					
-	if (gbx.Read(fs))
-	{
-		if(gbx is GameBox<CGameCtnChallenge> gbxMap)
-		{
-			// Node data is available in gbxMap.MainNode
-		}
-		else if(gbx is GameBox<CGameCtnReplayRecord> gbxReplay)
-		{
-			// Node data is available in gbxReplay.MainNode
-		}
-	}
+if(gbx is GameBox<CGameCtnChallenge> gbxMap)
+{
+	// Node data is available in gbxMap.MainNode
+}
+else if(gbx is GameBox<CGameCtnReplayRecord> gbxReplay)
+{
+	// Node data is available in gbxReplay.MainNode
 }
 ```

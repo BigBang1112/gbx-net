@@ -280,6 +280,7 @@ namespace GBX.NET
             return Read(stream, false);
         }
 
+        [Obsolete]
         public bool Load(string fileName)
         {
             Log.Write($"Loading {fileName}...");
@@ -295,6 +296,7 @@ namespace GBX.NET
             return success;
         }
 
+        [Obsolete]
         public bool Load(string fileName, bool loadToMemory)
         {
             if (loadToMemory)
@@ -306,6 +308,61 @@ namespace GBX.NET
             return Load(fileName);
         }
 
+        public static GameBox<T> Parse<T>(string fileName) where T : Node
+        {
+            GameBox<T> gbx = new GameBox<T>();
+            using (var fs = File.OpenRead(fileName))
+                gbx.Read(fs);
+            return gbx;
+        }
+
+        public static GameBox Parse(string fileName)
+        {
+            using (var fs = File.OpenRead(fileName))
+            {
+                var r = new GameBoxReader(fs);
+
+                var parameters = new GameBoxHeaderParameters();
+                parameters.Read(r);
+
+                if (parameters.Version >= 3)
+                {
+                    var modernID = parameters.ClassID.GetValueOrDefault();
+                    if (Node.Mappings.TryGetValue(parameters.ClassID.GetValueOrDefault(), out uint newerClassID))
+                        modernID = newerClassID;
+
+                    Debug.WriteLine("Parse: " + modernID.ToString("x8"));
+
+                    var availableClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
+                            && x.Namespace.StartsWith("GBX.NET.Engines") && GetBaseType(x) == typeof(Node)
+                            && x.GetCustomAttribute<NodeAttribute>().ID == modernID).FirstOrDefault();
+
+                    GameBox gbx;
+
+                    if (availableClass == null)
+                        gbx = new GameBox();
+                    else
+                        gbx = (GameBox)Activator.CreateInstance(typeof(GameBox<>).MakeGenericType(availableClass));
+
+                    fs.Seek(0, SeekOrigin.Begin);
+
+                    gbx.Read(fs);
+                }
+            }
+
+            static Type GetBaseType(Type t)
+            {
+                if (t == null)
+                    return null;
+                if (t.BaseType == typeof(Node))
+                    return t.BaseType;
+                return GetBaseType(t.BaseType);
+            }
+
+            return null;
+        }
+
+        [Obsolete]
         public static Type GetGameBoxType(Stream stream)
         {
             var gbxr = new GameBoxReader(stream);
