@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GBX.NET.Engines.Plug;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Numerics;
@@ -120,7 +121,6 @@ namespace GBX.NET.Engines.Game
             set => checkpoints = value;
         }
 
-        public string UID { get; set; }
         public string GhostLogin { get; set; }
         public string VehicleID { get; set; }
 
@@ -132,6 +132,9 @@ namespace GBX.NET.Engines.Game
         public int OSKind { get; set; }
         public int CPUKind { get; set; }
         public string RaceSettingsXML { get; set; }
+
+        public CPlugEntRecordData RecordData { get; set; }
+        public string GhostTrigram { get; set; }
 
         public CGameCtnGhost(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -145,7 +148,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnGhost 0x000 skippable chunk (basic)
         /// </summary>
-        [Chunk(0x03092000)]
+        [Chunk(0x03092000, false)]
         public class Chunk03092000 : SkippableChunk<CGameCtnGhost>
         {
             public int Version { get; set; }
@@ -161,8 +164,26 @@ namespace GBX.NET.Engines.Game
                 rw.Int32(Unknown); // unknown
                 n.GhostNickname = rw.String(n.ghostNickname);
                 n.GhostAvatarName = rw.String(n.ghostAvatarName);
-                if(Version >= 2)
+
+                if (Version >= 2)
+                {
                     n.RecordingContext = rw.String(n.recordingContext);
+
+                    if(Version < 5)
+                    {
+
+                    }
+
+                    if (Version >= 5)
+                    {
+                        rw.Int32(Unknown);
+                        n.RecordData = rw.NodeRef<CPlugEntRecordData>(n.RecordData);
+                        rw.Boolean(Unknown);
+                        rw.Int32(Unknown);
+                        if (Version >= 6)
+                            n.GhostTrigram = rw.String(n.GhostTrigram);
+                    }
+                }
             }
         }
 
@@ -269,14 +290,14 @@ namespace GBX.NET.Engines.Game
         #region 0x00E chunk
 
         /// <summary>
-        /// CGameCtnGhost 0x00C chunk
+        /// CGameCtnGhost 0x00E chunk
         /// </summary>
         [Chunk(0x0309200E)]
         public class Chunk0309200E : Chunk<CGameCtnGhost>
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.UID = rw.LookbackString(n.UID);
+                rw.Int32(Unknown);
             }
         }
 
@@ -308,7 +329,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.LookbackString(Unknown);
+                var dsgsd = rw.Reader.ReadLookbackString();
             }
         }
 

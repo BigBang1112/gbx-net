@@ -35,7 +35,6 @@
     <Compile Remove="Engines\GameData\CGameObjectPhyModel.cs" />
     <Compile Remove="Engines\GameData\CGameObjectVisModel.cs" />
     <Compile Remove="Engines\Plug\CPlugDataTape.cs" />
-    <Compile Remove="Engines\Plug\CPlugEntRecordData.cs" />
     <Compile Remove="Engines\Plug\CPlugSurface.cs" />
     <Compile Remove="Engines\Plug\CPlugVehicleCarPhyShape.cs" />
     <Compile Remove="Engines\Plug\CPlugVehiclePhyModel.cs" />
@@ -48,7 +47,6 @@
 
   <ItemGroup>
     <None Include="Engines\Plug\CPlugDataTape.cs" />
-    <None Include="Engines\Plug\CPlugEntRecordData.cs" />
     <None Include="Engines\Plug\CPlugSurface.cs" />
     <None Include="Engines\Plug\CPlugVehicleCarPhyShape.cs" />
     <None Include="Engines\Plug\CPlugVehiclePhyModel.cs" />
