@@ -29,7 +29,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameGhost n, GameBoxReaderWriter rw)
             { 
                 UncompressedSize = rw.Int32(UncompressedSize);
-                CompressedSize = rw.Int32(UncompressedSize);
+                CompressedSize = rw.Int32(CompressedSize);
                 Data = rw.Bytes(Data, CompressedSize);
             }
         }

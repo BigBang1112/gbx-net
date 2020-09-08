@@ -405,7 +405,7 @@ namespace GBX.NET
                     if (chunk is ISkippableChunk s && !s.Discovered)
                         s.Write(msW);
                     else
-                        chunk.ReadWrite(this, rw);
+                        chunk.ReadWrite((dynamic)this, rw);
 
                     w.Write(Chunk.Remap(chunk.ID, remap));
 

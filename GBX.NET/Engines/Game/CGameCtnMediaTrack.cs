@@ -76,6 +76,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
                 Unknown1 = rw.Int32(Unknown1);
+                // There is sometimes a second int
             }
         }
 

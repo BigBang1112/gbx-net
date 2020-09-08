@@ -74,7 +74,7 @@ namespace GBX.NET
             Progress = (int)Stream.Position;
         }
 
-        public override void Write(GameBoxWriter w, GameBoxReader unknownR)
+        public override void Write(T n, GameBoxWriter w, GameBoxReader unknownR)
         {
             w.Write(Stream.ToArray(), 0, (int)Stream.Length);
         }

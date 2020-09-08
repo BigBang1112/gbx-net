@@ -215,6 +215,7 @@ namespace GBX.NET.Engines.Game
                         Position = position,
                         PitchYawRoll = pitchYawRoll,
                         FOV = fov,
+                        ZIndex = zIndex,
                         LeftTangent = leftTangent,
                         RightTangent = rightTangent,
 
