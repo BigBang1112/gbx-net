@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -259,6 +260,19 @@ namespace GBX.NET
         {
             var bytes = ReadBytes(3);
             return (bytes[0], bytes[1], bytes[2]);
+        }
+
+        public byte[] ReadTill(uint uint32)
+        {
+            List<byte> bytes = new List<byte>();
+            while (PeekUInt32() != uint32)
+                bytes.Add(ReadByte());
+            return bytes.ToArray();
+        }
+
+        public byte[] ReadTillFacade()
+        {
+            return ReadTill(0xFACADE01);
         }
 
         public uint PeekUInt32()
