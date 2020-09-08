@@ -362,6 +362,8 @@ namespace GBX.NET.Engines.Game
 
         public bool? NeedUnlock { get; set; }
 
+        public CGameCtnBlock[] OldBlocks { get; set; }
+
         /// <summary>
         /// Array of all blocks on the map.
         /// </summary>
@@ -1497,7 +1499,6 @@ namespace GBX.NET.Engines.Game
         public class Chunk0304300F : Chunk<CGameCtnChallenge>
         {
             public int Unknown1 { get; set; }
-            public CGameCtnBlock[] Blocks { get; set; }
             public int Unknown2 { get; set; }
             public Meta Unknown3 { get; set; }
 
@@ -1506,7 +1507,7 @@ namespace GBX.NET.Engines.Game
                 n.MapInfo = rw.Meta(n.MapInfo);
                 n.Size = rw.Int3(n.Size.GetValueOrDefault());
                 Unknown1 = rw.Int32(Unknown1);
-                Blocks = rw.Array(Blocks,
+                n.OldBlocks = rw.Array(n.OldBlocks,
                     i => rw.Reader.ReadNodeRef<CGameCtnBlock>(),
                     x => rw.Writer.Write(x));
                 Unknown2 = rw.Int32(Unknown2);
