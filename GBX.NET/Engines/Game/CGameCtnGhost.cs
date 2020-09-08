@@ -329,7 +329,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.LookbackString(Unknown);
+                var dsgsd = rw.Reader.ReadLookbackString();
             }
         }
 
