@@ -2281,12 +2281,14 @@ namespace GBX.NET.Engines.Game
                 n.ClipGroupInGame = rw.NodeRef<CGameCtnMediaClipGroup>(n.ClipGroupInGame);
                 n.ClipGroupEndRace = rw.NodeRef<CGameCtnMediaClipGroup>(n.ClipGroupEndRace);
 
-                if(Version >= 2)
+                if (Version >= 2)
+                {
                     n.ClipAmbiance = rw.NodeRef<CGameCtnMediaClip>(n.ClipAmbiance);
 
-                Unknown1 = rw.Int32(Unknown1);
-                Unknown2 = rw.Int32(Unknown2);
-                Unknown3 = rw.Int32(Unknown3);
+                    Unknown1 = rw.Int32(Unknown1);
+                    Unknown2 = rw.Int32(Unknown2);
+                    Unknown3 = rw.Int32(Unknown3);
+                }
             }
         }
 

@@ -89,6 +89,24 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        [Chunk(0x03079008)]
+        public class Chunk03079008 : Chunk<CGameCtnMediaClip>
+        {
+            public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
+            {
+                rw.Single(Unknown); // 0.2
+            }
+        }
+
+        [Chunk(0x03079009)]
+        public class Chunk03079009 : Chunk<CGameCtnMediaClip>
+        {
+            public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
+            }
+        }
+
         #endregion
 
         #region 0x00D chunk
