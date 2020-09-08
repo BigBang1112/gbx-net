@@ -373,55 +373,58 @@ namespace GBX.NET
         public void Write(GameBoxWriter w, ClassIDRemap remap)
         {
             int counter = 0;
-
-            if (Chunks != null)
+            
+            dynamic chunks;
+            if (Chunks == null)
+                chunks = ((dynamic)Body).Chunks.Values;
+            else
+                chunks = Chunks.Values;
+            
+            foreach (dynamic chunk in chunks)
             {
-                foreach (dynamic chunk in Chunks.Values)
+                counter += 1;
+
+                chunk.Unknown.Position = 0;
+
+                ILookbackable lb = Lookbackable;
+
+                if (chunk is ILookbackable l)
                 {
-                    counter += 1;
+                    l.LookbackWritten = false;
+                    l.LookbackStrings.Clear();
 
-                    chunk.Unknown.Position = 0;
+                    lb = l;
+                }
 
-                    ILookbackable lb = Lookbackable;
+                using var ms = new MemoryStream();
+                using var msW = new GameBoxWriter(ms, lb);
+                var rw = new GameBoxReaderWriter(msW);
 
-                    if (chunk is ILookbackable l)
+                try
+                {
+                    if (chunk is ISkippableChunk s && !s.Discovered)
+                        s.Write(msW);
+                    else
+                        chunk.ReadWrite(this, rw);
+
+                    w.Write(Chunk.Remap(chunk.ID, remap));
+
+                    if (chunk is ISkippableChunk)
                     {
-                        l.LookbackWritten = false;
-                        l.LookbackStrings.Clear();
-
-                        lb = l;
+                        w.Write(0x534B4950);
+                        w.Write((int)ms.Length);
                     }
 
-                    using var ms = new MemoryStream();
-                    using var msW = new GameBoxWriter(ms, lb);
-                    var rw = new GameBoxReaderWriter(msW);
-
-                    try
+                    w.Write(ms.ToArray(), 0, (int)ms.Length);
+                }
+                catch (NotImplementedException e)
+                {
+                    if (chunk is ISkippableChunk)
                     {
-                        if (chunk is ISkippableChunk s && !s.Discovered)
-                            s.Write(msW);
-                        else
-                            chunk.ReadWrite(this, rw);
-
-                        w.Write(Chunk.Remap(chunk.ID, remap));
-
-                        if (chunk is ISkippableChunk)
-                        {
-                            w.Write(0x534B4950);
-                            w.Write((int)ms.Length);
-                        }
-
-                        w.Write(ms.ToArray(), 0, (int)ms.Length);
+                        Debug.WriteLine(e.Message);
+                        Debug.WriteLine("Ignoring the skippable chunk from writing.");
                     }
-                    catch (NotImplementedException e)
-                    {
-                        if (chunk is ISkippableChunk)
-                        {
-                            Debug.WriteLine(e.Message);
-                            Debug.WriteLine("Ignoring the skippable chunk from writing.");
-                        }
-                        else throw e; // Unskippable chunk must have a Write implementation
-                    }
+                    else throw e; // Unskippable chunk must have a Write implementation
                 }
             }
 
