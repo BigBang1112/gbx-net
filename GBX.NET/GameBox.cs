@@ -346,7 +346,8 @@ namespace GBX.NET
 
                     fs.Seek(0, SeekOrigin.Begin);
 
-                    gbx.Read(fs);
+                    if (gbx.Read(fs))
+                        return gbx;
                 }
             }
 
