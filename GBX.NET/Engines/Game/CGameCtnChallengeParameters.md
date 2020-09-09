@@ -20,16 +20,16 @@
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
-	int b = r.ReadInt32();
-	int c = r.ReadInt32();
-	int d = r.ReadInt32();
+    int a = r.ReadInt32();
+    int b = r.ReadInt32();
+    int c = r.ReadInt32();
+    int d = r.ReadInt32();
 
-	int e = r.ReadInt32();
-	int f = r.ReadInt32();
-	int g = r.ReadInt32();
+    int e = r.ReadInt32();
+    int f = r.ReadInt32();
+    int g = r.ReadInt32();
 
-	int h = r.ReadInt32();
+    int h = r.ReadInt32();
 }
 ```
 
@@ -51,10 +51,10 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	string tip1 = r.ReadString();
-	string tip2 = r.ReadString();
-	string tip3 = r.ReadString();
-	string tip4 = r.ReadString();
+    string tip1 = r.ReadString();
+    string tip2 = r.ReadString();
+    string tip3 = r.ReadString();
+    string tip4 = r.ReadString();
 }
 ```
 
@@ -63,24 +63,24 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
-	int b = r.ReadInt32();
-	int c = r.ReadInt32();
+    int a = r.ReadInt32();
+    int b = r.ReadInt32();
+    int c = r.ReadInt32();
 
-	float d = r.ReadSingle();
-	float e = r.ReadSingle();
-	float f = r.ReadSingle();
+    float d = r.ReadSingle();
+    float e = r.ReadSingle();
+    float f = r.ReadSingle();
 
-	int g = r.ReadInt32();
-	int h = r.ReadInt32();
-	int i = r.ReadInt32();
-	int j = r.ReadInt32();
-	int k = r.ReadInt32();
-	int l = r.ReadInt32();
-	int m = r.ReadInt32();
-	int n = r.ReadInt32();
-	int o = r.ReadInt32();
-	int p = r.ReadInt32();
+    int g = r.ReadInt32();
+    int h = r.ReadInt32();
+    int i = r.ReadInt32();
+    int j = r.ReadInt32();
+    int k = r.ReadInt32();
+    int l = r.ReadInt32();
+    int m = r.ReadInt32();
+    int n = r.ReadInt32();
+    int o = r.ReadInt32();
+    int p = r.ReadInt32();
 }
 ```
 
@@ -110,14 +110,14 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
-	float b = r.ReadSingle();
+    int a = r.ReadInt32();
+    float b = r.ReadSingle();
 
-	int c = r.ReadInt32();
-	int d = r.ReadInt32();
-	int e = r.ReadInt32();
+    int c = r.ReadInt32();
+    int d = r.ReadInt32();
+    int e = r.ReadInt32();
 
-	int f = r.ReadInt32();
+    int f = r.ReadInt32();
 }
 ```
 
@@ -137,12 +137,12 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int bronzeTime = r.ReadInt32();
-	int silverTime = r.ReadInt32();
-	int goldTime = r.ReadInt32();
-	int authorTime = r.ReadInt32();
+    int bronzeTime = r.ReadInt32();
+    int silverTime = r.ReadInt32();
+    int goldTime = r.ReadInt32();
+    int authorTime = r.ReadInt32();
 
-	int a = r.ReadInt32();
+    int a = r.ReadInt32();
 }
 ```
 
@@ -157,9 +157,9 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
-	int b = r.ReadInt32();
-	int c = r.ReadInt32();
+    int a = r.ReadInt32();
+    int b = r.ReadInt32();
+    int c = r.ReadInt32();
 }
 ```
 
@@ -176,9 +176,9 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int itemCount = r.ReadInt32();
-	for(var i = 0; i < itemCount; i++)
-		int item = r.ReadUInt32();
+    int itemCount = r.ReadInt32();
+    for(var i = 0; i < itemCount; i++)
+        int item = r.ReadUInt32();
 }
 ```
 
@@ -187,7 +187,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	uint a = r.ReadUInt32();
+    uint a = r.ReadUInt32();
 }
 ```
 
@@ -202,8 +202,8 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int timeLimit = r.ReadInt32();
-	int authorScore = r.ReadInt32();
+    int timeLimit = r.ReadInt32();
+    int authorScore = r.ReadInt32();
 }
 ```
 
@@ -212,14 +212,14 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
+    int a = r.ReadInt32();
 
-	int bronzeTime = r.ReadInt32();
-	int silverTime = r.ReadInt32();
-	int goldTime = r.ReadInt32();
-	int authorTime = r.ReadInt32();
-	int timeLimit = r.ReadInt32();
-	int authorScore = r.ReadInt32();
+    int bronzeTime = r.ReadInt32();
+    int silverTime = r.ReadInt32();
+    int goldTime = r.ReadInt32();
+    int authorTime = r.ReadInt32();
+    int timeLimit = r.ReadInt32();
+    int authorScore = r.ReadInt32();
 }
 ```
 
@@ -228,7 +228,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
+    int a = r.ReadInt32();
 }
 ```
 
@@ -243,9 +243,9 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	string mapType = r.ReadString();
-	string mapStyle = r.ReadString();
-	int a = r.ReadInt32();
+    string mapType = r.ReadString();
+    string mapStyle = r.ReadString();
+    int a = r.ReadInt32();
 }
 ```
 

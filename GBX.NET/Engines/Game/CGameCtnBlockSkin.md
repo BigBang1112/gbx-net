@@ -12,8 +12,8 @@
 ```cs
 void Read(GameBoxReader r)
 {
-	string text = r.ReadString();
-	string ignored = r.ReadString();
+    string text = r.ReadString();
+    string ignored = r.ReadString();
 }
 ```
 
@@ -22,8 +22,8 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	string text = r.ReadString();
-	FileRef packDesc = r.ReadFileRef();
+    string text = r.ReadString();
+    FileRef packDesc = r.ReadFileRef();
 }
 ```
 
@@ -32,9 +32,9 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	string text = r.ReadString();
-	FileRef packDesc = r.ReadFileRef();
-	FileRef parentPackDesc = r.ReadFileRef();
+    string text = r.ReadString();
+    FileRef packDesc = r.ReadFileRef();
+    FileRef parentPackDesc = r.ReadFileRef();
 }
 ```
 
@@ -43,7 +43,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int version = r.ReadInt32();
-	FileRef secondaryPackDesc = r.ReadFileRef();
+    int version = r.ReadInt32();
+    FileRef secondaryPackDesc = r.ReadFileRef();
 }
 ```

@@ -19,7 +19,7 @@
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
+    int a = r.ReadInt32();
 }
 ```
 
@@ -28,7 +28,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
+    int a = r.ReadInt32();
 }
 ```
 
@@ -37,7 +37,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
+    int a = r.ReadInt32();
 }
 ```
 
@@ -46,7 +46,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
+    int a = r.ReadInt32();
 }
 ```
 
@@ -55,7 +55,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
+    int a = r.ReadInt32();
 }
 ```
 
@@ -64,9 +64,9 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
-	int b = r.ReadInt32();
-	int c = r.ReadInt32();
+    int a = r.ReadInt32();
+    int b = r.ReadInt32();
+    int c = r.ReadInt32();
 }
 ```
 
@@ -75,9 +75,9 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
-	int b = r.ReadInt32();
-	int c = r.ReadInt32();
+    int a = r.ReadInt32();
+    int b = r.ReadInt32();
+    int c = r.ReadInt32();
 }
 ```
 
@@ -86,9 +86,9 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
-	int b = r.ReadInt32();
-	int c = r.ReadInt32();
+    int a = r.ReadInt32();
+    int b = r.ReadInt32();
+    int c = r.ReadInt32();
 }
 ```
 
@@ -97,7 +97,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
-	int b = r.ReadInt32();
+    int a = r.ReadInt32();
+    int b = r.ReadInt32();
 }
 ```

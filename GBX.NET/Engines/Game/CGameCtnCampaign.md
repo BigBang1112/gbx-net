@@ -18,11 +18,11 @@
 ```cs
 void Read(GameBoxReader r)
 {
-	int version = r.ReadInt32();
+    int version = r.ReadInt32();
 
-	int numMapGroups = r.ReadInt32();
-	for(var i = 0; i < numMapGroups; i++)
-		CGameCtnChallengeGroup mapGroup = r.ReadNodeRef<CGameCtnChallengeGroup>();
+    int numMapGroups = r.ReadInt32();
+    for(var i = 0; i < numMapGroups; i++)
+        CGameCtnChallengeGroup mapGroup = r.ReadNodeRef<CGameCtnChallengeGroup>();
 }
 ```
 
@@ -31,7 +31,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	LookbackString campaignID = r.ReadLookbackString();
+    LookbackString campaignID = r.ReadLookbackString();
 }
 ```
 
@@ -40,9 +40,9 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	byte a = r.ReadByte();
-	int b = r.ReadInt32();
-	int c = r.ReadInt32();
+    byte a = r.ReadByte();
+    int b = r.ReadInt32();
+    int c = r.ReadInt32();
 }
 ```
 
@@ -51,8 +51,8 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
-	int b = r.ReadInt32();
+    int a = r.ReadInt32();
+    int b = r.ReadInt32();
 }
 ```
 
@@ -61,7 +61,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
+    int a = r.ReadInt32();
 }
 ```
 
@@ -70,7 +70,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
+    int a = r.ReadInt32();
 }
 ```
 
@@ -79,7 +79,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
+    int a = r.ReadInt32();
 }
 ```
 
@@ -88,9 +88,9 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	string name = r.ReadString();
-	int type = r.ReadInt32();
-	int unlockType = r.ReadInt32();
+    string name = r.ReadString();
+    int type = r.ReadInt32();
+    int unlockType = r.ReadInt32();
 }
 ```
 
@@ -99,8 +99,8 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
-	int b = r.ReadInt32();
+    int a = r.ReadInt32();
+    int b = r.ReadInt32();
 }
 ```
 
@@ -109,9 +109,9 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int a = r.ReadInt32();
-	int b = r.ReadInt32();
-	byte c = r.ReadByte();
-	int d = r.ReadInt32();
+    int a = r.ReadInt32();
+    int b = r.ReadInt32();
+    byte c = r.ReadByte();
+    int d = r.ReadInt32();
 }
 ```
