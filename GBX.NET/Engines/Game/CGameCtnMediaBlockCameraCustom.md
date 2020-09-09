@@ -1,6 +1,6 @@
 ﻿# CGameCtnMediaBlockCamera (0x030A2000)
 
-### Inherits [CGameCtnMediaBlockCamera](CGameCtnMediaBlockCamera)
+### Inherits [CGameCtnMediaBlockCamera.md](CGameCtnMediaBlockCamera.md)
 
 ## Chunks
 
