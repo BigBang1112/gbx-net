@@ -19,6 +19,7 @@ namespace GBX.NET.Engines.Game
 
         public CGameCtnGhost[] Ghosts { get; set; }
         public long[] Extras { get; set; }
+        public CGameCtnMediaClip Clip { get; set; }
 
         public CGameCtnReplayRecord(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -158,11 +159,9 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03093015)]
         public class Chunk03093015 : Chunk<CGameCtnReplayRecord>
         {
-            public int Unknown1 { get; set; }
-
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                Unknown1 = r.ReadInt32();
+                n.Clip = r.ReadNodeRef<CGameCtnMediaClip>();
             }
         }
 

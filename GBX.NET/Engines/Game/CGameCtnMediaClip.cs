@@ -25,7 +25,7 @@ namespace GBX.NET.Engines.Game
 
         public override string ToString()
         {
-            return Name;
+            return string.IsNullOrEmpty(Name) ? "Unnamed clip" : Name;
         }
 
         #region Chunks
