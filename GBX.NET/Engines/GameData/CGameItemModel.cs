@@ -145,7 +145,7 @@ namespace GBX.NET.Engines.GameData
                     {
                         rw.Int32(Unknown);
                         rw.Int32(Unknown);
-                        n.Block = rw.NodeRef(n.Block);
+                        n.Block = rw.NodeRef<CGameBlockItem>(n.Block);
                         if(Version >= 13)
                             Unknown1 = rw.NodeRef(Unknown1);
                     }

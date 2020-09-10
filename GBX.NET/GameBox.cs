@@ -40,7 +40,7 @@ namespace GBX.NET
 
         public bool RemoveHeaderChunk<TChunk>() where TChunk : HeaderChunk<T>
         {
-            return Header.Result.Chunks.Remove(typeof(TChunk).GetCustomAttribute<ChunkAttribute>().ID);
+            return Header.Result.Chunks.RemoveWhere(x => x.ID == typeof(TChunk).GetCustomAttribute<ChunkAttribute>().ID) > 0;
         }
 
         public TChunk CreateBodyChunk<TChunk>(byte[] data) where TChunk : Chunk<T>
@@ -67,7 +67,7 @@ namespace GBX.NET
         {
             //foreach (var chunk in Header.Result.Chunks.Values)
             //    chunk.Discover();
-            foreach (var chunk in Body.Chunks.Values)
+            foreach (var chunk in Body.Chunks)
                 if(chunk is ISkippableChunk s)
                     s.Discover();
         }

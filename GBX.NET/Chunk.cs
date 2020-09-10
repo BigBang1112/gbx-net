@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 
 namespace GBX.NET
 {
-    public abstract class Chunk
+    public abstract class Chunk : IComparable<Chunk>
     {
         public virtual uint ID => GetType().GetCustomAttribute<ChunkAttribute>().ID;
         public int Progress { get; internal set; }
@@ -82,10 +82,9 @@ namespace GBX.NET
             throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} doesn't support Write.");
         }
 
-        [Obsolete]
-        public virtual void ReadWrite(GameBoxReaderWriter rw)
+        public int CompareTo(Chunk other)
         {
-            Debug.WriteLine("ReadWrite on Chunk is no longer supported. " + GetType().FullName);
+            return ID.CompareTo(other.ID);
         }
     }
 

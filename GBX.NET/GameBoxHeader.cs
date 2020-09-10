@@ -14,7 +14,7 @@ namespace GBX.NET
 
         public new GameBox<T> GBX => (GameBox<T>)base.GBX;
 
-        public HeaderChunkList<T> Chunks { get; set; }
+        public ChunkList Chunks { get; set; }
 
         public GameBoxHeader(GameBox<T> gbx, GameBoxHeaderParameters parameters) : base(gbx, parameters)
         {
@@ -138,7 +138,7 @@ namespace GBX.NET
 
                             counter++;
                         }
-                        Chunks = new HeaderChunkList<T>(chunks);
+                        Chunks = new ChunkList(chunks);
                     }
                 }
             }
@@ -174,15 +174,15 @@ namespace GBX.NET
 
                     Dictionary<uint, int> lengths = new Dictionary<uint, int>();
 
-                    foreach (var chunk in Chunks.Values)
+                    foreach (var chunk in Chunks)
                     {
                         chunk.Unknown.Position = 0;
 
                         var pos = userData.Position;
-                        if (!chunk.Discovered)
-                            chunk.Write(gbxw);
+                        if (!((ISkippableChunk)chunk).Discovered)
+                            ((ISkippableChunk)chunk).Write(gbxw);
                         else
-                            chunk.ReadWrite(chunk.Node, gbxrw);
+                            ((IHeaderChunk)chunk).ReadWrite(gbxrw);
                         lengths[chunk.ID] = (int)(userData.Position - pos);
                     }
 
@@ -192,11 +192,11 @@ namespace GBX.NET
                     // Write number of header chunks integer
                     w.Write(Chunks.Count);
 
-                    foreach (var chunk in Chunks.Values)
+                    foreach (Chunk chunk in Chunks)
                     {
                         w.Write(Chunk.Remap(chunk.ID, remap));
                         var length = lengths[chunk.ID];
-                        if (chunk.IsHeavy)
+                        if (((IHeaderChunk)chunk).IsHeavy)
                             length |= 1 << 31;
                         w.Write(length);
                     }
@@ -230,14 +230,14 @@ namespace GBX.NET
 
         public new void DiscoverChunk<TChunk>() where TChunk : HeaderChunk<T>
         {
-            foreach (var chunk in Chunks.Values)
+            foreach (var chunk in Chunks)
                 if (chunk is TChunk c)
                     c.Discover();
         }
 
         public new void DiscoverChunks<TChunk1, TChunk2>() where TChunk1 : HeaderChunk<T> where TChunk2 : HeaderChunk<T>
         {
-            foreach (var chunk in Chunks.Values)
+            foreach (var chunk in Chunks)
             {
                 if (chunk is TChunk1 c1)
                     c1.Discover();
@@ -251,7 +251,7 @@ namespace GBX.NET
             where TChunk2 : HeaderChunk<T>
             where TChunk3 : HeaderChunk<T>
         {
-            foreach (var chunk in Chunks.Values)
+            foreach (var chunk in Chunks)
             {
                 if (chunk is TChunk1 c1)
                     c1.Discover();
@@ -268,7 +268,7 @@ namespace GBX.NET
             where TChunk3 : HeaderChunk<T>
             where TChunk4 : HeaderChunk<T>
         {
-            foreach (var chunk in Chunks.Values)
+            foreach (var chunk in Chunks)
             {
                 if (chunk is TChunk1 c1)
                     c1.Discover();
@@ -288,7 +288,7 @@ namespace GBX.NET
             where TChunk4 : HeaderChunk<T>
             where TChunk5 : HeaderChunk<T>
         {
-            foreach (var chunk in Chunks.Values)
+            foreach (var chunk in Chunks)
             {
                 if (chunk is TChunk1 c1)
                     c1.Discover();
@@ -311,7 +311,7 @@ namespace GBX.NET
             where TChunk5 : HeaderChunk<T>
             where TChunk6 : HeaderChunk<T>
         {
-            foreach (var chunk in Chunks.Values)
+            foreach (var chunk in Chunks)
             {
                 if (chunk is TChunk1 c1)
                     c1.Discover();
@@ -330,14 +330,14 @@ namespace GBX.NET
 
         public new void DiscoverAllChunks()
         {
-            foreach (var chunk in Chunks.Values)
+            foreach (var chunk in Chunks)
                 if (chunk is HeaderChunk<T> s)
                     s.Discover();
         }
 
         public new TChunk GetChunk<TChunk>() where TChunk : HeaderChunk<T>
         {
-            foreach (var chunk in Chunks.Values)
+            foreach (var chunk in Chunks)
             {
                 if (chunk is TChunk t)
                 {

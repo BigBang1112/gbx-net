@@ -22,7 +22,7 @@ namespace GBX.NET
         [IgnoreDataMember]
         public GameBox GBX => Body?.GBX ?? Header.GBX;
 
-        public AuxNodeChunkList Chunks { get; internal set; }
+        public ChunkList Chunks { get; internal set; }
 
         public uint ID { get; }
         public uint? FaultyChunk { get; private set; }
@@ -219,7 +219,7 @@ namespace GBX.NET
 
             Node node = (Node)Activator.CreateInstance(type, body, type.GetCustomAttribute<NodeAttribute>().ID);
 
-            var chunks = new AuxNodeChunkList();
+            var chunks = new ChunkList();
 
             uint? previousChunk = null;
 
@@ -304,7 +304,7 @@ namespace GBX.NET
                             c = constructor.Invoke(new object[] { node, chunkData });
                         else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
 
-                        chunks.Add(c.ID, c);
+                        chunks.Add(c);
 
                         if (chunkClass.GetCustomAttribute<ChunkAttribute>().ProcessSync)
                             c.Discover();
@@ -312,7 +312,7 @@ namespace GBX.NET
                     else
                     {
                         Debug.WriteLine("Unknown skippable chunk: " + chunkID.ToString("x"));
-                        chunks.Add(chunkID, (Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkID, chunkData));
+                        chunks.Add((Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkID, chunkData));
                     }
                 }
 
@@ -338,7 +338,7 @@ namespace GBX.NET
                     else if (constructorParams.Length == 1)
                         chunk = constructor.Invoke(new object[] { node });
                     else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
-                    chunks.Add(chunk.ID, chunk);
+                    chunks.Add(chunk);
 
                     var posBefore = r.BaseStream.Position;
 
@@ -359,7 +359,7 @@ namespace GBX.NET
             if (isAux)
                 node.Chunks = chunks;
             else
-                ((dynamic)body).Chunks.FromAuxNodeChunkList(chunks);
+                ((dynamic)body).Chunks = chunks;
 
             return node;
         }
@@ -382,7 +382,7 @@ namespace GBX.NET
             if (Chunks == null)
                 chunks = ((dynamic)Body).Chunks.Values;
             else
-                chunks = Chunks.Values;
+                chunks = Chunks;
             
             foreach (dynamic chunk in chunks)
             {

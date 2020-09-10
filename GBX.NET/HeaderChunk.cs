@@ -22,5 +22,10 @@ namespace GBX.NET
         {
 
         }
+
+        public virtual void ReadWrite(GameBoxReaderWriter rw)
+        {
+
+        }
     }
 }
