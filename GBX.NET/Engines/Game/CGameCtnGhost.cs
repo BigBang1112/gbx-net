@@ -7,9 +7,14 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// Ghost (0x03092000)
+    /// </summary>
     [Node(0x03092000)]
     public class CGameCtnGhost : CGameGhost
     {
+        #region Fields
+
         private Meta playerModel;
         private FileRef[] skinPackDescs;
         private string ghostNickname;
@@ -20,6 +25,10 @@ namespace GBX.NET.Engines.Game
         private Vector3? lightTrailColor;
         private int? stuntScore;
         private TimeSpan[] checkpoints;
+
+        #endregion
+
+        #region Properties
 
         public Meta PlayerModel
         {
@@ -136,6 +145,8 @@ namespace GBX.NET.Engines.Game
         public CPlugEntRecordData RecordData { get; set; }
         public string GhostTrigram { get; set; }
 
+        #endregion
+
         public CGameCtnGhost(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
             
@@ -148,7 +159,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnGhost 0x000 skippable chunk (basic)
         /// </summary>
-        [Chunk(0x03092000, false)]
+        [Chunk(0x03092000, true, "basic")]
         public class Chunk03092000 : SkippableChunk<CGameCtnGhost>
         {
             public int Version { get; set; }
@@ -194,7 +205,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnGhost 0x005 skippable chunk (race time)
         /// </summary>
-        [Chunk(0x03092005)]
+        [Chunk(0x03092005, "race time")]
         public class Chunk03092005 : SkippableChunk<CGameCtnGhost>
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
@@ -210,7 +221,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnGhost 0x008 skippable chunk (respawns)
         /// </summary>
-        [Chunk(0x03092008)]
+        [Chunk(0x03092008, "respawns")]
         public class Chunk03092008 : SkippableChunk<CGameCtnGhost>
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
@@ -226,7 +237,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnGhost 0x009 skippable chunk (light trail color)
         /// </summary>
-        [Chunk(0x03092009)]
+        [Chunk(0x03092009, "light trail color")]
         public class Chunk03092009 : SkippableChunk<CGameCtnGhost>
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
@@ -242,7 +253,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnGhost 0x00A skippable chunk (stunt score)
         /// </summary>
-        [Chunk(0x0309200A)]
+        [Chunk(0x0309200A, "stunt score")]
         public class Chunk0309200A : SkippableChunk<CGameCtnGhost>
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
@@ -258,7 +269,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnGhost 0x00B skippable chunk (checkpoint times)
         /// </summary>
-        [Chunk(0x0309200B)]
+        [Chunk(0x0309200B, "checkpoint times")]
         public class Chunk0309200B : SkippableChunk<CGameCtnGhost>
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
@@ -308,7 +319,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnGhost 0x00F chunk (ghost login)
         /// </summary>
-        [Chunk(0x0309200F)]
+        [Chunk(0x0309200F, "ghost login")]
         public class Chunk0309200F : Chunk<CGameCtnGhost>
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
@@ -391,7 +402,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnGhost 0x015 chunk (vehicle)
         /// </summary>
-        [Chunk(0x03092015)]
+        [Chunk(0x03092015, "vehicle")]
         public class Chunk03092015 : Chunk<CGameCtnGhost>
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
@@ -438,12 +449,12 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x019 chunk (ghost core)
+        #region 0x019 chunk (core)
 
         /// <summary>
-        /// CGameCtnGhost 0x019 chunk (ghost core)
+        /// CGameCtnGhost 0x019 chunk (core)
         /// </summary>
-        [Chunk(0x03092019)]
+        [Chunk(0x03092019, "core")]
         public class Chunk03092019 : Chunk<CGameCtnGhost>
         {
             public uint Unknown1 { get; set; }

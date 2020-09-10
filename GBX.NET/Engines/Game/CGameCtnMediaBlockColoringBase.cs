@@ -4,6 +4,9 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// MediaTracker block - Coloring base
+    /// </summary>
     [Node(0x03172000)]
     public class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock
     {
@@ -15,6 +18,13 @@ namespace GBX.NET.Engines.Game
 
         }
 
+        #region Chunks
+
+        #region 0x000 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockColoringBase 0x000 chunk
+        /// </summary>
         [Chunk(0x03172000)]
         public class Chunk03172000 : Chunk<CGameCtnMediaBlockColoringBase>
         {
@@ -43,6 +53,10 @@ namespace GBX.NET.Engines.Game
                 n.BaseIndex = rw.Int32(n.BaseIndex);
             }
         }
+
+        #endregion
+
+        #endregion
 
         public class Key : MediaBlockKey
         {

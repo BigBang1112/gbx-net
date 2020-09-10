@@ -27,9 +27,9 @@ namespace GBX.NET.Engines.Game
 
         #region Chunks
 
-        #region 0x000 chunk
+        #region 0x000 chunk (basic)
 
-        [Chunk(0x03093000)]
+        [Chunk(0x03093000, "basic")]
         public class Chunk03093000 : HeaderChunk<CGameCtnReplayRecord>
         {
             public int Version { get; set; }
@@ -66,9 +66,9 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x001 chunk
+        #region 0x001 chunk (xml)
 
-        [Chunk(0x03093001)]
+        [Chunk(0x03093001, "xml")]
         public class Chunk03093001 : HeaderChunk<CGameCtnReplayRecord>
         {
             public string XML { get; set; }
@@ -81,9 +81,9 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x002 chunk
+        #region 0x002 chunk (author)
 
-        [Chunk(0x03093002)]
+        [Chunk(0x03093002, "author")]
         public class Chunk03093002 : Chunk<CGameCtnReplayRecord>
         {
             public int Version { get; set; }

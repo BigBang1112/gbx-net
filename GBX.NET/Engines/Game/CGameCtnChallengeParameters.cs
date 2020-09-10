@@ -5,9 +5,14 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// Map parameters (0x0305B000)
+    /// </summary>
     [Node(0x0305B000)]
     public class CGameCtnChallengeParameters : Node
     {
+        #region Properties
+
         /// <summary>
         /// Time of the bronze medal.
         /// </summary>
@@ -44,11 +49,20 @@ namespace GBX.NET.Engines.Game
 
         public string[] Tips { get; } = new string[4];
 
+        #endregion
+
         public CGameCtnChallengeParameters(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
             
         }
 
+        #region Chunks
+
+        #region 0x000 chunk
+
+        /// <summary>
+        /// CGameCtnChallengeParameters 0x000 chunk
+        /// </summary>
         [Chunk(0x0305B000)]
         public class Chunk0305B000 : Chunk<CGameCtnChallengeParameters>
         {
@@ -67,7 +81,14 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        [Chunk(0x0305B001)]
+        #endregion
+
+        #region 0x001 chunk (tips)
+
+        /// <summary>
+        /// CGameCtnChallengeParameters 0x001 chunk (tips)
+        /// </summary>
+        [Chunk(0x0305B001, "tips")]
         public class Chunk0305B001 : Chunk<CGameCtnChallengeParameters>
         {
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
@@ -77,6 +98,13 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x002 chunk
+
+        /// <summary>
+        /// CGameCtnChallengeParameters 0x002 chunk
+        /// </summary>
         [Chunk(0x0305B002)]
         public class Chunk0305B002 : Chunk<CGameCtnChallengeParameters>
         {
@@ -103,6 +131,13 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x003 chunk
+
+        /// <summary>
+        /// CGameCtnChallengeParameters 0x003 chunk
+        /// </summary>
         [Chunk(0x0305B003)]
         public class Chunk0305B003 : Chunk<CGameCtnChallengeParameters>
         {
@@ -119,7 +154,14 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        [Chunk(0x0305B004)]
+        #endregion
+
+        #region 0x004 chunk (medals)
+
+        /// <summary>
+        /// CGameCtnChallengeParameters 0x004 chunk (medals)
+        /// </summary>
+        [Chunk(0x0305B004, "medals")]
         public class Chunk0305B004 : Chunk<CGameCtnChallengeParameters>
         {
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
@@ -133,6 +175,13 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x005 chunk
+
+        /// <summary>
+        /// CGameCtnChallengeParameters 0x005 chunk
+        /// </summary>
         [Chunk(0x0305B005)]
         public class Chunk0305B005 : Chunk<CGameCtnChallengeParameters>
         {
@@ -144,7 +193,14 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        [Chunk(0x0305B006)]
+        #endregion
+
+        #region 0x006 chunk
+
+        /// <summary>
+        /// CGameCtnChallengeParameters 0x006 chunk (items)
+        /// </summary>
+        [Chunk(0x0305B006, "items")]
         public class Chunk0305B006 : Chunk<CGameCtnChallengeParameters>
         {
             public uint[] Items { get; set; }
@@ -155,6 +211,13 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x007 chunk
+
+        /// <summary>
+        /// CGameCtnChallengeParameters 0x007 chunk
+        /// </summary>
         [Chunk(0x0305B007)]
         public class Chunk0305B007 : Chunk<CGameCtnChallengeParameters>
         {
@@ -164,10 +227,14 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x008 chunk (stunts)
+
         /// <summary>
         /// CGameCtnChallengeParameters 0x008 chunk (stunts)
         /// </summary>
-        [Chunk(0x0305B008)]
+        [Chunk(0x0305B008, "stunts")]
         public class Chunk0305B008 : Chunk<CGameCtnChallengeParameters>
         {
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
@@ -177,7 +244,14 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        [Chunk(0x0305B00A)]
+        #endregion
+
+        #region 0x00A chunk (medals)
+
+        /// <summary>
+        /// CGameCtnChallengeParameters 0x00A chunk (medals)
+        /// </summary>
+        [Chunk(0x0305B00A, "medals")]
         public class Chunk0305B00A : SkippableChunk<CGameCtnChallengeParameters>
         {
             public int Unknown1 { get; set; }
@@ -195,6 +269,13 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x00D chunk
+
+        /// <summary>
+        /// CGameCtnChallengeParameters 0x00D chunk
+        /// </summary>
         [Chunk(0x0305B00D)]
         public class Chunk0305B00D : Chunk<CGameCtnChallengeParameters>
         {
@@ -204,7 +285,14 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        [Chunk(0x0305B00E)]
+        #endregion
+
+        #region 0x00E skippable chunk (map type)
+
+        /// <summary>
+        /// CGameCtnChallengeParameters 0x00E skippable chunk (map type)
+        /// </summary>
+        [Chunk(0x0305B00E, "map type")]
         public class Chunk0305B00E : SkippableChunk<CGameCtnChallengeParameters>
         {
             public int Unknown1 { get; set; }
@@ -216,5 +304,9 @@ namespace GBX.NET.Engines.Game
                 Unknown1 = rw.Int32(Unknown1);
             }
         }
+
+        #endregion
+
+        #endregion
     }
 }

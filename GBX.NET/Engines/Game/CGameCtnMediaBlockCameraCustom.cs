@@ -7,6 +7,9 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// MediaTracker block (0x030A2000)
+    /// </summary>
     [Node(0x030A2000)]
     public class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera
     {
@@ -21,6 +24,9 @@ namespace GBX.NET.Engines.Game
 
         #region 0x002 chunk
 
+        /// <summary>
+        /// CGameCtnMediaBlockCameraCustom 0x002 chunk
+        /// </summary>
         [Chunk(0x030A2002)]
         public class Chunk030A2002 : Chunk<CGameCtnMediaBlockCameraCustom>
         {
@@ -90,7 +96,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnMediaBlockCameraCustom 0x005 chunk (TMUF)
         /// </summary>
-        [Chunk(0x030A2005)]
+        [Chunk(0x030A2005, "TMUF")]
         public class Chunk030A2005 : Chunk<CGameCtnMediaBlockCameraCustom>
         {
             public int Version { get; set; }
@@ -163,7 +169,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnMediaBlockCameraCustom 0x006 chunk (ManiaPlanet)
         /// </summary>
-        [Chunk(0x030A2006)]
+        [Chunk(0x030A2006, "ManiaPlanet")]
         public class Chunk030A2006 : Chunk<CGameCtnMediaBlockCameraCustom>
         {
             public int Version { get; set; } = 3;
@@ -262,7 +268,7 @@ namespace GBX.NET.Engines.Game
         {
             public Vector3 Position { get; set; }
             /// <summary>
-            /// Pitch, yaw and roll in radians
+            /// Pitch, yaw and roll in radians.
             /// </summary>
             public Vector3 PitchYawRoll { get; set; }
             public float FOV { get; set; }

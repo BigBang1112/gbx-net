@@ -7,6 +7,9 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// Macroblock (0x0310D000)
+    /// </summary>
     [Node(0x0310D000)]
     public class CGameCtnMacroBlockInfo : CGameCtnCollector
     {
@@ -21,7 +24,14 @@ namespace GBX.NET.Engines.Game
 
         }
 
-        [Chunk(0x0310D000)]
+        #region Chunks
+
+        #region 0x000 chunk (blocks)
+
+        /// <summary>
+        /// CGameCtnMacroBlockInfo 0x000 chunk (blocks)
+        /// </summary>
+        [Chunk(0x0310D000, "blocks")]
         public class Chunk0310D000 : Chunk<CGameCtnMacroBlockInfo>
         {
             public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
@@ -80,6 +90,13 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x001 chunk
+
+        /// <summary>
+        /// CGameCtnMacroBlockInfo 0x001 chunk
+        /// </summary>
         [Chunk(0x0310D001)]
         public class Chunk0310D001 : Chunk<CGameCtnMacroBlockInfo>
         {
@@ -104,6 +121,13 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x002 chunk
+
+        /// <summary>
+        /// CGameCtnMacroBlockInfo 0x002 chunk
+        /// </summary>
         [Chunk(0x0310D002)]
         public class Chunk0310D002 : Chunk<CGameCtnMacroBlockInfo>
         {
@@ -123,6 +147,13 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x006 chunk
+
+        /// <summary>
+        /// CGameCtnMacroBlockInfo 0x006 chunk
+        /// </summary>
         [Chunk(0x0310D006)]
         public class Chunk0310D006 : Chunk<CGameCtnMacroBlockInfo>
         {
@@ -133,6 +164,13 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x008 chunk
+
+        /// <summary>
+        /// CGameCtnMacroBlockInfo 0x008 chunk
+        /// </summary>
         [Chunk(0x0310D008)]
         public class Chunk0310D008 : Chunk<CGameCtnMacroBlockInfo>
         {
@@ -140,9 +178,13 @@ namespace GBX.NET.Engines.Game
             {
                 var version = r.ReadInt32();
                 var nodrefs = r.ReadArray(i => r.ReadNodeRef());
-                var idk = r.ReadArray<int>(2);
+                r.ReadArray<int>(2);
             }
         }
+
+        #endregion
+
+        #region 0x00E chunk (items)
 
         /// <summary>
         /// CGameCtnMacroBlockInfo 0x00E chunk (items)
@@ -214,6 +256,13 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x00F chunk
+
+        /// <summary>
+        /// CGameCtnMacroBlockInfo 0x00F chunk
+        /// </summary>
         [Chunk(0x0310D00F)]
         public class Chunk0310D00F : Chunk<CGameCtnMacroBlockInfo>
         {
@@ -223,5 +272,9 @@ namespace GBX.NET.Engines.Game
                 _ = r.ReadArray<int>(7);
             }
         }
+
+        #endregion
+
+        #endregion
     }
 }

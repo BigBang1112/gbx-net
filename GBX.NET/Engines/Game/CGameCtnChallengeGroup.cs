@@ -6,6 +6,9 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// Group of maps (0x0308F000)
+    /// </summary>
     [Node(0x0308F000)]
     public class CGameCtnChallengeGroup : Node
     {
@@ -19,9 +22,12 @@ namespace GBX.NET.Engines.Game
 
         #region Chunks
 
-        #region 0x002 chunk
+        #region 0x002 chunk (default)
 
-        [Chunk(0x0308F002)]
+        /// <summary>
+        /// CGameCtnChallengeGroup 0x002 chunk (default)
+        /// </summary>
+        [Chunk(0x0308F002, "default")]
         public class Chunk0308F002 : Chunk<CGameCtnChallengeGroup>
         {
             public override void ReadWrite(CGameCtnChallengeGroup n, GameBoxReaderWriter rw)
@@ -32,9 +38,12 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x00B chunk
+        #region 0x00B chunk (map infos)
 
-        [Chunk(0x0308F00B)]
+        /// <summary>
+        /// CGameCtnChallengeGroup 0x00B chunk (map infos)
+        /// </summary>
+        [Chunk(0x0308F00B, "map infos")]
         public class Chunk0308F00B : Chunk<CGameCtnChallengeGroup>
         {
             public int Version { get; set; }

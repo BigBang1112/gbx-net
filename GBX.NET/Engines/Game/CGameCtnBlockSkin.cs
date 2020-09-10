@@ -5,6 +5,9 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// Skin for a block (0x03059000)
+    /// </summary>
     [Node(0x03059000)]
     public class CGameCtnBlockSkin : Node
     {
@@ -30,6 +33,9 @@ namespace GBX.NET.Engines.Game
 
         #region 0x000 chunk
 
+        /// <summary>
+        /// CGameCtnBlockSkin 0x000 chunk
+        /// </summary>
         [Chunk(0x03059000)]
         public class Chunk03059000 : Chunk<CGameCtnBlockSkin>
         {
@@ -46,6 +52,9 @@ namespace GBX.NET.Engines.Game
 
         #region 0x001 chunk
 
+        /// <summary>
+        /// CGameCtnBlockSkin 0x001 chunk
+        /// </summary>
         [Chunk(0x03059001)]
         public class Chunk03059001 : Chunk<CGameCtnBlockSkin>
         {
@@ -60,7 +69,10 @@ namespace GBX.NET.Engines.Game
 
         #region 0x002 chunk
 
-        [Chunk(0x03059002)]
+        /// <summary>
+        /// CGameCtnBlockSkin 0x002 chunk (skin)
+        /// </summary>
+        [Chunk(0x03059002, "skin")]
         public class Chunk03059002 : Chunk<CGameCtnBlockSkin>
         {
             public override void ReadWrite(CGameCtnBlockSkin n, GameBoxReaderWriter rw)
@@ -73,9 +85,12 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x003 chunk
+        #region 0x003 chunk (secondary skin)
 
-        [Chunk(0x03059003)]
+        /// <summary>
+        /// CGameCtnBlockSkin 0x003 chunk (secondary skin)
+        /// </summary>
+        [Chunk(0x03059003, "secondary skin")]
         public class Chunk03059003 : Chunk<CGameCtnBlockSkin>
         {
             public int Version { get; set; }

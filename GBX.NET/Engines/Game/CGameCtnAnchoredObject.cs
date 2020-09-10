@@ -4,6 +4,10 @@ using System.Runtime.Serialization;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// Item on a map (0x03101000)
+    /// </summary>
+    /// <remarks>An item placed on a map.</remarks>
     [Node(0x03101000)]
     public class CGameCtnAnchoredObject : Node
     {
@@ -48,6 +52,9 @@ namespace GBX.NET.Engines.Game
 
         #region 0x002 chunk
 
+        /// <summary>
+        /// CGameCtnAnchoredObject 0x002 chunk
+        /// </summary>
         [Chunk(0x03101002)]
         public class Chunk03101002 : Chunk<CGameCtnAnchoredObject>
         {
@@ -112,6 +119,9 @@ namespace GBX.NET.Engines.Game
 
         #region 0x004 chunk
 
+        /// <summary>
+        /// CGameCtnAnchoredObject 0x004 skippable chunk
+        /// </summary>
         [Chunk(0x03101004)]
         public class Chunk03101004 : SkippableChunk<CGameCtnAnchoredObject>
         {

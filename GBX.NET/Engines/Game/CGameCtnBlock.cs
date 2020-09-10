@@ -4,6 +4,10 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// Block on a map (0x03057000)
+    /// </summary>
+    /// <remarks>A block placed on a map.</remarks>
     [Node(0x03057000)]
     public class CGameCtnBlock : Node
     {
@@ -30,6 +34,13 @@ namespace GBX.NET.Engines.Game
             return $"{BlockInfo?.ID} {Coord}";
         }
 
+        #region Chunks
+
+        #region 0x002 chunk
+
+        /// <summary>
+        /// CGameCtnBlock 0x002 chunk
+        /// </summary>
         [Chunk(0x03057002)]
         public class Chunk03057002 : Chunk<CGameCtnBlock>
         {
@@ -41,5 +52,9 @@ namespace GBX.NET.Engines.Game
                 n.Flags = rw.Int32(n.Flags.GetValueOrDefault());
             }
         }
+
+        #endregion
+
+        #endregion
     }
 }

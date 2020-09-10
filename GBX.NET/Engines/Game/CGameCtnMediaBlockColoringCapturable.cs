@@ -4,6 +4,9 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// MediaTracker block - Coloring capturable
+    /// </summary>
     [Node(0x0316C000)]
     public class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock
     {
@@ -14,6 +17,13 @@ namespace GBX.NET.Engines.Game
 
         }
 
+        #region Chunks
+
+        #region 0x000 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockColoringCapturable 0x000 chunk
+        /// </summary>
         [Chunk(0x0316C000)]
         public class Chunk0316C000 : Chunk<CGameCtnMediaBlockColoringCapturable>
         {
@@ -40,6 +50,10 @@ namespace GBX.NET.Engines.Game
                 });
             }
         }
+
+        #endregion
+
+        #endregion
 
         public class Key : MediaBlockKey
         {

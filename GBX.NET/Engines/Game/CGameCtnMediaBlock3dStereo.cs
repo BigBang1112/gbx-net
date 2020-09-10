@@ -4,6 +4,9 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// MediaTracker block - 3D stereo (0x03024000)
+    /// </summary>
     [Node(0x03024000)]
     public class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock
     {
@@ -14,6 +17,13 @@ namespace GBX.NET.Engines.Game
 
         }
 
+        #region Chunks
+
+        #region 0x000 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlock3dStereo 0x000 chunk
+        /// </summary>
         [Chunk(0x03024000)]
         public class Chunk03024000 : Chunk<CGameCtnMediaBlock3dStereo>
         {
@@ -33,6 +43,10 @@ namespace GBX.NET.Engines.Game
                 });
             }
         }
+
+        #endregion
+
+        #endregion
 
         public class Key : MediaBlockKey
         {

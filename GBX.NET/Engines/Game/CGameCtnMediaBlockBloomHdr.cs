@@ -4,6 +4,9 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// MediaTracker block - Bloom HDR (0x03128000)
+    /// </summary>
     [Node(0x03128000)]
     public class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock
     {
@@ -14,6 +17,13 @@ namespace GBX.NET.Engines.Game
 
         }
 
+        #region Chunks
+
+        #region 0x002 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockBloomHdr 0x002 chunk
+        /// </summary>
         [Chunk(0x03128002)]
         public class Chunk03128002 : Chunk<CGameCtnMediaBlockBloomHdr>
         {
@@ -35,6 +45,10 @@ namespace GBX.NET.Engines.Game
                 });
             }
         }
+
+        #endregion
+
+        #endregion
 
         public class Key : MediaBlockKey
         {

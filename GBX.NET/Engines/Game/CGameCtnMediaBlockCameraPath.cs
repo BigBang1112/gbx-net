@@ -6,6 +6,9 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// MediaTracker block - Camera path
+    /// </summary>
     [Node(0x030A1000)]
     public class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera
     {
@@ -16,6 +19,13 @@ namespace GBX.NET.Engines.Game
 
         }
 
+        #region Chunks
+
+        #region 0x000 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockCameraPath 0x000 chunk
+        /// </summary>
         [Chunk(0x030A1000)]
         public class Chunk030A1000 : Chunk<CGameCtnMediaBlockCameraPath>
         {
@@ -76,6 +86,13 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x002 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockCameraPath 0x002 chunk
+        /// </summary>
         [Chunk(0x030A1002)]
         public class Chunk030A1002 : Chunk<CGameCtnMediaBlockCameraPath>
         {
@@ -136,6 +153,13 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x003 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockCameraPath 0x003 chunk
+        /// </summary>
         [Chunk(0x030A1003)]
         public class Chunk030A1003 : Chunk<CGameCtnMediaBlockCameraPath>
         {
@@ -168,6 +192,10 @@ namespace GBX.NET.Engines.Game
                 });
             }
         }
+
+        #endregion
+
+        #endregion
 
         public class Key : MediaBlockKey
         {

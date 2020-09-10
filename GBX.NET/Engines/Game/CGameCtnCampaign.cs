@@ -6,6 +6,10 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// Campaign info (0x03090000)
+    /// </summary>
+    /// <remarks>Information about a campaign.</remarks>
     [Node(0x03090000)]
     public class CGameCtnCampaign : Node
     {
@@ -26,9 +30,12 @@ namespace GBX.NET.Engines.Game
 
         #region Chunks
 
-        #region 0x000 chunk
+        #region 0x000 chunk (map groups)
 
-        [Chunk(0x03090000)]
+        /// <summary>
+        /// CGameCtnCampaign 0x000 chunk (map groups)
+        /// </summary>
+        [Chunk(0x03090000, "map groups")]
         public class Chunk03090000 : Chunk<CGameCtnCampaign>
         {
             public int Version { get; set; }
@@ -44,9 +51,12 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x006 chunk
+        #region 0x006 chunk (campaign ID)
 
-        [Chunk(0x03090006)]
+        /// <summary>
+        /// CGameCtnCampaign 0x006 chunk (campaign ID)
+        /// </summary>
+        [Chunk(0x03090006, "campaign ID")]
         public class Chunk03090006 : Chunk<CGameCtnCampaign>
         {
             public override void ReadWrite(CGameCtnCampaign n, GameBoxReaderWriter rw)
@@ -59,6 +69,9 @@ namespace GBX.NET.Engines.Game
 
         #region 0x009 skippable chunk
 
+        /// <summary>
+        /// CGameCtnCampaign 0x009 skippable chunk
+        /// </summary>
         [Chunk(0x03090009)]
         public class Chunk03090009 : SkippableChunk<CGameCtnCampaign>
         {
@@ -71,9 +84,12 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x00A skippable chunk
+        #region 0x00A skippable chunk (index)
 
-        [Chunk(0x0309000A)]
+        /// <summary>
+        /// CGameCtnCampaign 0x00A skippable chunk (index)
+        /// </summary>
+        [Chunk(0x0309000A, "index")]
         public class Chunk0309000A : SkippableChunk<CGameCtnCampaign>
         {
             public override void ReadWrite(CGameCtnCampaign n, GameBoxReaderWriter rw)
@@ -86,6 +102,9 @@ namespace GBX.NET.Engines.Game
 
         #region 0x00D chunk
 
+        /// <summary>
+        /// CGameCtnCampaign 0x00D chunk
+        /// </summary>
         [Chunk(0x0309000D)]
         public class Chunk0309000D : Chunk<CGameCtnCampaign>
         {
@@ -99,6 +118,9 @@ namespace GBX.NET.Engines.Game
 
         #region 0x00E chunk
 
+        /// <summary>
+        /// CGameCtnCampaign 0x00E chunk
+        /// </summary>
         [Chunk(0x0309000E)]
         public class Chunk0309000E : Chunk<CGameCtnCampaign>
         {
@@ -110,9 +132,13 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x00F skippable chunk
+        #region 0x00F skippable chunk (name)
 
-        [Chunk(0x0309000F)]
+
+        /// <summary>
+        /// CGameCtnCampaign 0x00F skippable chunk (name)
+        /// </summary>
+        [Chunk(0x0309000F, "name")]
         public class Chunk0309000F : SkippableChunk<CGameCtnCampaign>
         {
             public override void ReadWrite(CGameCtnCampaign n, GameBoxReaderWriter rw)
@@ -127,6 +153,9 @@ namespace GBX.NET.Engines.Game
 
         #region 0x010 chunk
 
+        /// <summary>
+        /// CGameCtnCampaign 0x010 chunk
+        /// </summary>
         [Chunk(0x03090010)]
         public class Chunk03090010 : Chunk<CGameCtnCampaign>
         {

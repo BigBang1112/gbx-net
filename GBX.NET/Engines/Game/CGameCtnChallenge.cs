@@ -4,7 +4,6 @@ using GBX.NET.Engines.Script;
 using ICSharpCode.SharpZipLib.Checksum;
 using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
@@ -16,14 +15,11 @@ using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Linq;
-using System.Xml.XPath;
 
 namespace GBX.NET.Engines.Game
 {
     /// <summary>
-    /// Class of a map (0x03043000)
+    /// Map (0x03043000)
     /// </summary>
     /// <remarks>A map. Known extensions: .Challenge.Gbx, .Map.Gbx</remarks>
     [Node(0x03043000)]
@@ -766,12 +762,12 @@ namespace GBX.NET.Engines.Game
 
         #region Chunks
 
-        #region 0x001 chunk (virtual skipper)
+        #region 0x001 chunk (Virtual Skipper)
 
         /// <summary>
-        /// CGameCtnChallenge 0x001 chunk (virtual skipper)
+        /// CGameCtnChallenge 0x001 chunk (Virtual Skipper)
         /// </summary>
-        [Chunk(0x03043001)]
+        [Chunk(0x03043001, "Virtual Skipper")]
         public class Chunk03043001 : HeaderChunk<CGameCtnChallenge>
         {
             /// <summary>
@@ -930,7 +926,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x002 chunk (map info)
         /// </summary>
-        [Chunk(0x03043002)]
+        [Chunk(0x03043002, "map info")]
         public class Chunk03043002 : HeaderChunk<CGameCtnChallenge>
         {
             /// <summary>
@@ -1108,7 +1104,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x003 chunk (common)
         /// </summary>
-        [Chunk(0x03043003)]
+        [Chunk(0x03043003, "common")]
         public class Chunk03043003 : HeaderChunk<CGameCtnChallenge>
         {
             /// <summary>
@@ -1247,7 +1243,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x004 chunk (version)
         /// </summary>
-        [Chunk(0x03043004)]
+        [Chunk(0x03043004, "version")]
         public class Chunk03043004 : HeaderChunk<CGameCtnChallenge>
         {
             /// <summary>
@@ -1268,7 +1264,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x005 chunk (xml)
         /// </summary>
-        [Chunk(0x03043005)]
+        [Chunk(0x03043005, "xml")]
         public class Chunk03043005 : HeaderChunk<CGameCtnChallenge>
         {
             /// <summary>
@@ -1289,7 +1285,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x007 chunk (thumbnail)
         /// </summary>
-        [Chunk(0x03043007)]
+        [Chunk(0x03043007, "thumbnail")]
         public class Chunk03043007 : HeaderChunk<CGameCtnChallenge>
         {
             /// <summary>
@@ -1434,7 +1430,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x008 chunk (author)
         /// </summary>
-        [Chunk(0x03043008)]
+        [Chunk(0x03043008, "author")]
         public class Chunk03043008 : HeaderChunk<CGameCtnChallenge>
         {
             /// <summary>
@@ -1479,7 +1475,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x00D chunk (vehicle)
         /// </summary>
-        [Chunk(0x0304300D)]
+        [Chunk(0x0304300D, "vehicle")]
         public class Chunk0304300D : Chunk<CGameCtnChallenge>
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
@@ -1495,7 +1491,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x00F chunk (old block data)
         /// </summary>
-        [Chunk(0x0304300F)]
+        [Chunk(0x0304300F, "old block data")]
         public class Chunk0304300F : Chunk<CGameCtnChallenge>
         {
             public int Unknown1 { get; set; }
@@ -1556,7 +1552,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x013 chunk (legacy block data)
         /// </summary>
-        [Chunk(0x03043013)]
+        [Chunk(0x03043013, "legacy block data")]
         public class Chunk03043013 : Chunk<CGameCtnChallenge>
         {
             public Chunk0304301F Chunk01F { get; }
@@ -1579,7 +1575,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x014 skippable chunk (legacy password)
         /// </summary>
-        [Chunk(0x03043014)]
+        [Chunk(0x03043014, "legacy password")]
         public class Chunk03043014 : SkippableChunk<CGameCtnChallenge>
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
@@ -1612,7 +1608,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x017 skippable chunk (checkpoints)
         /// </summary>
-        [Chunk(0x03043017)]
+        [Chunk(0x03043017, "checkpoints")]
         public class Chunk03043017 : SkippableChunk<CGameCtnChallenge>
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
@@ -1628,7 +1624,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x018 skippable chunk (laps)
         /// </summary>
-        [Chunk(0x03043018)]
+        [Chunk(0x03043018, "laps")]
         public class Chunk03043018 : SkippableChunk<CGameCtnChallenge>
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
@@ -1645,7 +1641,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x019 skippable chunk (mod)
         /// </summary>
-        [Chunk(0x03043019)]
+        [Chunk(0x03043019, "mod")]
         public class Chunk03043019 : SkippableChunk<CGameCtnChallenge>
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
@@ -1661,7 +1657,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x01C skippable chunk (play mode)
         /// </summary>
-        [Chunk(0x0304301C)]
+        [Chunk(0x0304301C, "play mode")]
         public class Chunk0304301C : SkippableChunk<CGameCtnChallenge>
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
@@ -1677,7 +1673,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x01F chunk (block data)
         /// </summary>
-        [Chunk(0x0304301F)]
+        [Chunk(0x0304301F, "block data")]
         public class Chunk0304301F : Chunk<CGameCtnChallenge>
         {
             public bool NeedUnlock { get; set; }
@@ -1800,12 +1796,12 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x021 chunk (TMUF mediatracker)
+        #region 0x021 chunk (old mediatracker)
 
         /// <summary>
-        /// CGameCtnChallenge 0x021 chunk (TMUF mediatracker)
+        /// CGameCtnChallenge 0x021 chunk (old mediatracker)
         /// </summary>
-        [Chunk(0x03043021)]
+        [Chunk(0x03043021, "old mediatracker")]
         public class Chunk03043021 : Chunk<CGameCtnChallenge>
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
@@ -1839,7 +1835,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x024 chunk (music)
         /// </summary>
-        [Chunk(0x03043024)]
+        [Chunk(0x03043024, "music")]
         public class Chunk03043024 : Chunk<CGameCtnChallenge>
         {
             /// <summary>
@@ -1937,7 +1933,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x028 chunk (comments)
         /// </summary>
-        [Chunk(0x03043028)]
+        [Chunk(0x03043028, "comments")]
         public class Chunk03043028 : Chunk<CGameCtnChallenge>
         {
             public Chunk03043027 Chunk027 { get; }
@@ -1962,7 +1958,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x029 skippable chunk (password)
         /// </summary>
-        [Chunk(0x03043029)]
+        [Chunk(0x03043029, "password")]
         public class Chunk03043029 : SkippableChunk<CGameCtnChallenge>
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
@@ -1995,7 +1991,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x036 skippable chunk (realtime thumbnail)
         /// </summary>
-        [Chunk(0x03043036)]
+        [Chunk(0x03043036, "realtime thumbnail")]
         public class Chunk03043036 : SkippableChunk<CGameCtnChallenge>
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
@@ -2016,7 +2012,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x03D skippable chunk (lightmaps)
         /// </summary>
         [IgnoreChunk]
-        [Chunk(0x0304303D)]
+        [Chunk(0x0304303D, "lightmaps")]
         public class Chunk0304303D : SkippableChunk<CGameCtnChallenge>
         {
             public int Version { get; set; }
@@ -2083,7 +2079,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x040 skippable chunk (items)
         /// </summary>
-        [Chunk(0x03043040)]
+        [Chunk(0x03043040, "items")]
         public class Chunk03043040 : SkippableChunk<CGameCtnChallenge>, ILookbackable
         {
             int? ILookbackable.LookbackVersion { get; set; }
@@ -2146,7 +2142,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x042 skippable chunk (author)
         /// </summary>
-        [Chunk(0x03043042)]
+        [Chunk(0x03043042, "author")]
         public class Chunk03043042 : SkippableChunk<CGameCtnChallenge>
         {
             /// <summary>
@@ -2222,7 +2218,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x044 skippable chunk (metadata)
         /// </summary>
-        [Chunk(0x03043044)]
+        [Chunk(0x03043044, "metadata")]
         public class Chunk03043044 : SkippableChunk<CGameCtnChallenge>
         {
             public int Version { get; set; }
@@ -2262,7 +2258,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x049 chunk (mediatracker)
         /// </summary>
-        [Chunk(0x03043049)]
+        [Chunk(0x03043049, "mediatracker")]
         public class Chunk03043049 : Chunk<CGameCtnChallenge>
         {
             public int Version { get; set; } = 2;
@@ -2299,7 +2295,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x04B skippable chunk (objectives)
         /// </summary>
-        [Chunk(0x0304304B)]
+        [Chunk(0x0304304B, "objectives")]
         public class Chunk0304304B : SkippableChunk<CGameCtnChallenge>
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
@@ -2318,7 +2314,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x051 skippable chunk (title info)
         /// </summary>
-        [Chunk(0x03043051)]
+        [Chunk(0x03043051, "title info")]
         public class Chunk03043051 : SkippableChunk<CGameCtnChallenge>
         {
             public int Version { get; set; }
@@ -2387,7 +2383,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x05F skippable chunk (free blocks) [TM®️]
         /// </summary>
-        [Chunk(0x0304305F)]
+        [Chunk(0x0304305F, "free blocks")]
         public class Chunk0304305F : SkippableChunk<CGameCtnChallenge>
         {
             public int Version { get; set; }

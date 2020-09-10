@@ -4,6 +4,9 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// MediaTracker block - Color grading
+    /// </summary>
     [Node(0x03186000)]
     public class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock
     {
@@ -15,6 +18,13 @@ namespace GBX.NET.Engines.Game
 
         }
 
+        #region Chunks
+
+        #region 0x000 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockColorGrading 0x000 chunk
+        /// </summary>
         [Chunk(0x03186000)]
         public class Chunk03186000 : Chunk<CGameCtnMediaBlockColorGrading>
         {
@@ -24,6 +34,13 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x001 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockColorGrading 0x001 chunk
+        /// </summary>
         [Chunk(0x03186001)]
         public class Chunk03186001 : Chunk<CGameCtnMediaBlockColorGrading>
         {
@@ -41,6 +58,10 @@ namespace GBX.NET.Engines.Game
                 });
             }
         }
+
+        #endregion
+
+        #endregion
 
         public class Key : MediaBlockKey
         {

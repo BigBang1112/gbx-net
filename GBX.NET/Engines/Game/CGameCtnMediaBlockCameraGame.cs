@@ -5,6 +5,9 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// MediaTracker block - Camera ingame
+    /// </summary>
     [Node(0x03084000)]
     public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera
     {
@@ -39,6 +42,13 @@ namespace GBX.NET.Engines.Game
 
         }
 
+        #region Chunks
+
+        #region 0x000 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockCameraGame 0x000 chunk
+        /// </summary>
         [Chunk(0x03084000)]
         public class Chunk03084000 : Chunk<CGameCtnMediaBlockCameraGame>
         {
@@ -50,6 +60,13 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x001 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockCameraGame 0x001 chunk
+        /// </summary>
         [Chunk(0x03084001)]
         public class Chunk03084001 : Chunk<CGameCtnMediaBlockCameraGame>
         {
@@ -62,6 +79,13 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x003 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockCameraGame 0x003 chunk
+        /// </summary>
         [Chunk(0x03084003)]
         public class Chunk03084003 : Chunk<CGameCtnMediaBlockCameraGame>
         {
@@ -74,6 +98,13 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x007 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockCameraGame 0x007 chunk
+        /// </summary>
         [Chunk(0x03084007)]
         public class Chunk03084007 : Chunk<CGameCtnMediaBlockCameraGame>
         {
@@ -92,5 +123,9 @@ namespace GBX.NET.Engines.Game
                 rw.Array<uint>(Unknown, 5);
             }
         }
+
+        #endregion
+
+        #endregion
     }
 }

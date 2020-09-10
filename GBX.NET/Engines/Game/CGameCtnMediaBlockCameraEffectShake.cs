@@ -6,6 +6,9 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// MediaTracker block - Camera shake
+    /// </summary>
     [Node(0x030A4000)]
     public class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCameraEffect
     {
@@ -16,6 +19,13 @@ namespace GBX.NET.Engines.Game
 
         }
 
+        #region Chunks
+
+        #region 0x000 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockCameraEffectShake 0x000 chunk
+        /// </summary>
         [Chunk(0x030A4000)]
         public class Chunk030A4000 : Chunk<CGameCtnMediaBlockCameraEffectShake>
         {
@@ -35,6 +45,10 @@ namespace GBX.NET.Engines.Game
                 });
             }
         }
+
+        #endregion
+
+        #endregion
 
         public class Key : MediaBlockKey
         {
