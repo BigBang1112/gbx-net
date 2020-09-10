@@ -58,7 +58,7 @@ namespace GBX.NET.Engines.GameData
         {
             public ItemType Type { get; set; }
 
-            public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
+            public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Type = (ItemType)rw.Int32((int)Type);
             }
