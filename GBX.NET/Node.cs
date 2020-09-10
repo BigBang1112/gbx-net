@@ -607,6 +607,14 @@ namespace GBX.NET
                 Body.DiscoverChunks<T1, T2, T3, T4, T5, T6>();
         }
 
+        public void DiscoverAllChunks()
+        {
+            if (Chunks != null)
+                Chunks.DiscoverAll();
+            else
+                Body.DiscoverAllChunks();
+        }
+
         public static uint Remap(uint id)
         {
             if (Mappings.TryGetValue(id, out uint newerClassID))
