@@ -302,7 +302,7 @@ namespace GBX.NET
 
                         chunks.Add(c.ID, c);
 
-                        if (!chunkClass.GetCustomAttribute<ChunkAttribute>().ProcessAsync)
+                        if (chunkClass.GetCustomAttribute<ChunkAttribute>().ProcessSync)
                             c.Discover();
                     }
                     else
