@@ -825,7 +825,7 @@ namespace GBX.NET.Engines.Game
 
             public bool StartSailUp { get; set; }
 
-            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+            public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Byte(Version);
 
@@ -1028,7 +1028,7 @@ namespace GBX.NET.Engines.Game
             public int Unknown4 { get; set; }
             public int Unknown5 { get; set; }
 
-            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+            public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Byte(Version);
 
@@ -1179,7 +1179,7 @@ namespace GBX.NET.Engines.Game
 
             public int Unknown1 { get; set; }
 
-            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+            public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Byte(Version);
                 MapInfo = rw.Meta(MapInfo);
@@ -1251,7 +1251,7 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public int Version { get; set; }
 
-            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+            public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
             }
@@ -1272,7 +1272,7 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public string XML { get; set; }
 
-            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+            public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 XML = rw.String(XML);
             }
@@ -1306,7 +1306,7 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public string Comments { get; set; }
 
-            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+            public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
 
@@ -1457,7 +1457,7 @@ namespace GBX.NET.Engines.Game
 
             public string AuthorExtraInfo { get; set; }
 
-            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+            public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
                 AuthorVersion = rw.Int32(AuthorVersion);

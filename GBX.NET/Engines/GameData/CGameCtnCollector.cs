@@ -40,7 +40,7 @@ namespace GBX.NET.Engines.GameData
             public short CatalogPosition { get; set; }
             public string Name { get; set; }
 
-            public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
+            public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Metadata = rw.Meta(Metadata);
                 Version = rw.Int32(Version);
@@ -72,7 +72,7 @@ namespace GBX.NET.Engines.GameData
         {
             public Task<Bitmap> Icon { get; set; }
 
-            public override void Read(CGameCtnCollector n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
             {
                 var width = r.ReadInt16();
                 var height = r.ReadInt16();
@@ -110,7 +110,7 @@ namespace GBX.NET.Engines.GameData
         {
             public long FileTime { get; set; }
 
-            public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
+            public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 FileTime = rw.Int64(FileTime);
             }

@@ -41,7 +41,7 @@ namespace GBX.NET.Engines.Game
             public byte Unknown1 { get; set; }
             public string TitleUID { get; set; }
 
-            public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
 
@@ -74,7 +74,7 @@ namespace GBX.NET.Engines.Game
         {
             public string XML { get; set; }
 
-            public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
             {
                 XML = r.ReadString();
             }
@@ -94,7 +94,7 @@ namespace GBX.NET.Engines.Game
             public string AuthorZone { get; set; }
             public string AuthorExtraInfo { get; set; }
 
-            public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
                 AuthorVersion = r.ReadInt32();

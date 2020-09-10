@@ -60,28 +60,6 @@ namespace GBX.NET
             throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} doesn't support GetUnknownObjects.");
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="r"></param>
-        /// <param name="unknownW">Writer of the <see cref="Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
-        [Obsolete]
-        public virtual void Read(GameBoxReader r, GameBoxWriter unknownW)
-        {
-            throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} doesn't support Read.");
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="w"></param>
-        /// <param name="unknownR">Reader of the <see cref="Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
-        [Obsolete]
-        public virtual void Write(GameBoxWriter w, GameBoxReader unknownR)
-        {
-            throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} doesn't support Write.");
-        }
-
         public int CompareTo(Chunk other)
         {
             return ID.CompareTo(other.ID);

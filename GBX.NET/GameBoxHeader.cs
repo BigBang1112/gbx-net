@@ -76,7 +76,7 @@ namespace GBX.NET
 
                         var numHeaderChunks = r.ReadInt32();
                         
-                        var chunks = new HeaderChunk<T>[numHeaderChunks];
+                        var chunks = new Chunk[numHeaderChunks];
 
                         var chunkList = new Dictionary<uint, (int, bool)>();
 
@@ -116,7 +116,7 @@ namespace GBX.NET
                                 var constructorParams = constructor.GetParameters();
                                 if (constructorParams.Length == 0)
                                 {
-                                    var headerChunk = (HeaderChunk<T>)constructor.Invoke(new object[0]);
+                                    dynamic headerChunk = constructor.Invoke(new object[0]);
                                     headerChunk.Node = GBX.MainNode;
                                     headerChunk.Stream = new MemoryStream(d, 0, d.Length, false);
                                     if (d == null || d.Length == 0)
@@ -129,9 +129,9 @@ namespace GBX.NET
 
                                 using (var msChunk = new MemoryStream(d))
                                 using (var rChunk = new GameBoxReader(msChunk, this))
-                                    chunks[counter].ReadWrite(null, new GameBoxReaderWriter(rChunk));
+                                    ((IHeaderChunk)chunks[counter]).ReadWrite(new GameBoxReaderWriter(rChunk));
 
-                                chunks[counter].IsHeavy = chunk.Value.Item2;
+                                ((IHeaderChunk)chunks[counter]).IsHeavy = chunk.Value.Item2;
                             }
                             else
                                 chunks[counter] = new HeaderChunk<T>(GBX.MainNode, chunkId, d);
@@ -179,10 +179,13 @@ namespace GBX.NET
                         chunk.Unknown.Position = 0;
 
                         var pos = userData.Position;
-                        if (!((ISkippableChunk)chunk).Discovered)
-                            ((ISkippableChunk)chunk).Write(gbxw);
-                        else
+                        if (((ISkippableChunk)chunk).Discovered)
+                        {
                             ((IHeaderChunk)chunk).ReadWrite(gbxrw);
+                        }
+                        else
+                            ((ISkippableChunk)chunk).Write(gbxw);
+
                         lengths[chunk.ID] = (int)(userData.Position - pos);
                     }
 
