@@ -15,12 +15,15 @@ The library is also set to x86 assembly due to LZO compression problems in x64. 
 
 ## Dependencies
 
-The library requires these dependencies:
+### GBX.NET
 - SharpZipLib.NETStandard
 - System.Drawing.Common
 
-Since 0.1.0, the library requires these dependencies:
+#### 0.1.0+
 - Microsoft.CSharp
+
+### GBX.NET.Json
+- Newtonsoft.Json
 
 ## Usage
 
@@ -35,12 +38,12 @@ To parse a GBX with an unknown type:
 ```cs
 var gbx = GameBox.Parse("MyMap.Map.Gbx");
 
-if(gbx is GameBox<CGameCtnChallenge> gbxMap)
+if (gbx is GameBox<CGameCtnChallenge> gbxMap)
 {
-	// Node data is available in gbxMap.MainNode
+    // Node data is available in gbxMap.MainNode
 }
-else if(gbx is GameBox<CGameCtnReplayRecord> gbxReplay)
+else if (gbx is GameBox<CGameCtnReplayRecord> gbxReplay)
 {
-	// Node data is available in gbxReplay.MainNode
+    // Node data is available in gbxReplay.MainNode
 }
 ```
