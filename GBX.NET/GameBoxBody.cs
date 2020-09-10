@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.Serialization;
 
 namespace GBX.NET
 {
@@ -229,6 +230,7 @@ namespace GBX.NET
 
     public class GameBoxBody : GameBoxPart
     {
+        [IgnoreDataMember]
         public List<Node> AuxilaryNodes { get; } = new List<Node>();
 
         public GameBoxBody(GameBox gbx) : base(gbx)

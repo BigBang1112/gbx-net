@@ -13,14 +13,18 @@ namespace GBX.NET
         public static Dictionary<uint, string> Names { get; }
         public static Dictionary<uint, uint> Mappings { get; } // key: older, value: newer
 
+        [IgnoreDataMember]
+        public ILookbackable Lookbackable { get; internal set; }
+        [IgnoreDataMember]
         public GameBoxBody Body => Lookbackable as GameBoxBody;
+        [IgnoreDataMember]
         public GameBoxHeader Header => Lookbackable as GameBoxHeader;
+        [IgnoreDataMember]
         public GameBox GBX => Body?.GBX ?? Header.GBX;
 
         public AuxNodeChunkList Chunks { get; internal set; }
 
         public uint ID { get; }
-        public ILookbackable Lookbackable { get; internal set; }
         public uint? FaultyChunk { get; private set; }
         public byte[] Rest { get; private set; }
         public bool Unknown { get; internal set; }

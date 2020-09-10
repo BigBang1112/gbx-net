@@ -91,6 +91,7 @@ namespace GBX.NET
 
     public abstract class Chunk<T> : Chunk where T : Node
     {
+        [IgnoreDataMember]
         public T Node { get; internal set; }
 
         public bool IsHeader => Node?.Lookbackable is GameBoxHeader;
