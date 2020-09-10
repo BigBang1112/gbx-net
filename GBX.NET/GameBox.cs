@@ -65,10 +65,11 @@ namespace GBX.NET
 
         public void DiscoverAllChunks()
         {
-            foreach (var chunk in Header.Result.Chunks.Values)
-                chunk.Discover();
-            foreach (ISkippableChunk chunk in Body.Chunks.Values)
-                chunk.Discover();
+            //foreach (var chunk in Header.Result.Chunks.Values)
+            //    chunk.Discover();
+            foreach (var chunk in Body.Chunks.Values)
+                if(chunk is ISkippableChunk s)
+                    s.Discover();
         }
 
         public override bool Read(Stream stream, bool withoutBody)

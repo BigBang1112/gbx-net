@@ -84,38 +84,50 @@ namespace GBX.NET.Engines.Game
         #region 0x002 chunk (author)
 
         [Chunk(0x03093002, "author")]
-        public class Chunk03093002 : Chunk<CGameCtnReplayRecord>
+        public class Chunk03093002H : HeaderChunk<CGameCtnReplayRecord>
+        {
+            public int Version { get; set; }
+            public int AuthorVersion { get; set; }
+            public string AuthorLogin { get; set; }
+            public string AuthorNickname { get; set; }
+            public string AuthorZone { get; set; }
+            public string AuthorExtraInfo { get; set; }
+
+            public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
+            {
+                Version = r.ReadInt32();
+                AuthorVersion = r.ReadInt32();
+                AuthorLogin = r.ReadString();
+                AuthorNickname = r.ReadString();
+                AuthorZone = r.ReadString();
+                AuthorExtraInfo = r.ReadString();
+            }
+        }
+
+        #endregion
+
+        #region 0x002 chunk (track)
+
+        [Chunk(0x03093002, "track")]
+        public class Chunk03093002B : Chunk<CGameCtnReplayRecord>
         {
             public int Version { get; set; }
 
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                if (IsHeader)
-                {
-                    Version = r.ReadInt32();
-                    n.AuthorVersion = r.ReadInt32();
-                    n.AuthorLogin = r.ReadString();
-                    n.AuthorNickname = r.ReadString();
-                    n.AuthorZone = r.ReadString();
-                    n.AuthorExtraInfo = r.ReadString();
-                }
+                var size = r.ReadInt32();
 
-                if (IsBody)
+                if (size > 0)
                 {
-                    var size = r.ReadInt32();
+                    var trackGbx = r.ReadBytes(size);
 
-                    if (size > 0)
+                    n.Track = Task.Run(() =>
                     {
-                        var trackGbx = r.ReadBytes(size);
-
-                        n.Track = Task.Run(() =>
-                        {
-                            using var ms = new MemoryStream(trackGbx);
-                            var gbx = new GameBox<CGameCtnChallenge>();
-                            gbx.Read(ms);
-                            return gbx;
-                        });
-                    }
+                        using var ms = new MemoryStream(trackGbx);
+                        var gbx = new GameBox<CGameCtnChallenge>();
+                        gbx.Read(ms);
+                        return gbx;
+                    });
                 }
             }
         }
