@@ -509,7 +509,7 @@ namespace GBX.NET
             if (Chunks != null)
                 return Chunks.Get<T>();
             else
-                return Body.GetChunk<T>();
+                return ((dynamic)Body).GetChunk<T>();
         }
 
         public T CreateChunk<T>() where T : Chunk
@@ -517,7 +517,7 @@ namespace GBX.NET
             if (Chunks != null)
                 return Chunks.Create<T>();
             else
-                return Body.CreateChunk<T>();
+                return ((dynamic)Body).CreateChunk<T>();
         }
 
         public bool RemoveChunk<T>() where T : Chunk
@@ -525,7 +525,7 @@ namespace GBX.NET
             if (Chunks != null)
                 return Chunks.Remove<T>();
             else
-                return Body.RemoveChunk<T>();
+                return ((dynamic)Body).RemoveChunk<T>();
         }
 
         public bool TryGetChunk<T>(out T chunk) where T : Chunk
@@ -534,7 +534,7 @@ namespace GBX.NET
                 return Chunks.TryGet(out chunk);
             else
             {
-                chunk = Body.GetChunk<T>();
+                chunk = ((dynamic)Body).GetChunk<T>();
                 return chunk != default;
             }
         }
@@ -546,7 +546,7 @@ namespace GBX.NET
             else if (typeof(T).GetInterface("IHeaderChunk") != null)
                 ((dynamic)GBX).Header.Result.DiscoverChunk<T>();
             else
-                Body.DiscoverChunk<T>();
+                ((dynamic)Body).DiscoverChunk<T>();
         }
 
         public void DiscoverChunks<T1, T2>() where T1 : ISkippableChunk where T2 : ISkippableChunk
@@ -557,7 +557,7 @@ namespace GBX.NET
                   && typeof(T2).GetInterface("IHeaderChunk") != null)
                 ((dynamic)GBX).Header.Result.DiscoverChunks<T1, T2>();
             else
-                Body.DiscoverChunks<T1, T2>();
+                ((dynamic)Body).DiscoverChunks<T1, T2>();
         }
 
         public void DiscoverChunks<T1, T2, T3>() where T1 : ISkippableChunk where T2 : ISkippableChunk where T3 : ISkippableChunk
@@ -565,7 +565,7 @@ namespace GBX.NET
             if (Chunks != null)
                 Chunks.Discover<T1, T2, T3>();
             else
-                Body.DiscoverChunks<T1, T2, T3>();
+                ((dynamic)Body).DiscoverChunks<T1, T2, T3>();
         }
 
         public void DiscoverChunks<T1, T2, T3, T4>()
@@ -577,7 +577,7 @@ namespace GBX.NET
             if (Chunks != null)
                 Chunks.Discover<T1, T2, T3, T4>();
             else
-                Body.DiscoverChunks<T1, T2, T3, T4>();
+                ((dynamic)Body).DiscoverChunks<T1, T2, T3, T4>();
         }
 
         public void DiscoverChunks<T1, T2, T3, T4, T5>()
@@ -590,7 +590,7 @@ namespace GBX.NET
             if (Chunks != null)
                 Chunks.Discover<T1, T2, T3, T4, T5>();
             else
-                Body.DiscoverChunks<T1, T2, T3, T4, T5>();
+                ((dynamic)Body).DiscoverChunks<T1, T2, T3, T4, T5>();
         }
 
         public void DiscoverChunks<T1, T2, T3, T4, T5, T6>()
@@ -604,7 +604,7 @@ namespace GBX.NET
             if (Chunks != null)
                 Chunks.Discover<T1, T2, T3, T4, T5, T6>();
             else
-                Body.DiscoverChunks<T1, T2, T3, T4, T5, T6>();
+                ((dynamic)Body).DiscoverChunks<T1, T2, T3, T4, T5, T6>();
         }
 
         public void DiscoverAllChunks()
@@ -612,7 +612,7 @@ namespace GBX.NET
             if (Chunks != null)
                 Chunks.DiscoverAll();
             else
-                Body.DiscoverAllChunks();
+                ((dynamic)Body).DiscoverAllChunks();
         }
 
         public static uint Remap(uint id)
