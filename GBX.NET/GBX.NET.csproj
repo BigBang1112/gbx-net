@@ -85,9 +85,7 @@
     <Folder Include="Engines\Input\" />
     <Folder Include="Engines\Motion\" />
     <Folder Include="Engines\Net\" />
-    <Folder Include="Engines\Scene\" />
     <Folder Include="Engines\System\" />
-    <Folder Include="Engines\TrackMania\" />
     <Folder Include="Engines\VirtualSkipper\" />
     <Folder Include="Engines\Vision\" />
     <Folder Include="Engines\Xml\" />
