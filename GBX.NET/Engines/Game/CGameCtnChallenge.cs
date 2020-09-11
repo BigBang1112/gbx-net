@@ -370,7 +370,7 @@ namespace GBX.NET.Engines.Game
             get => Blocks.Where(x => x.Flags != -1).Count();
         }
 
-        public ReadOnlyCollection<FreeBlock> FreeBlocks => GetChunk<Chunk0304305F>().FreeBlocks;
+        public ReadOnlyCollection<FreeBlock> FreeBlocks => GetChunk<Chunk0304305F>()?.FreeBlocks;
 
         public CGameCtnMediaClip ClipIntro { get; set; }
 

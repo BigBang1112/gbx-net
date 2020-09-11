@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Numerics;
 using System.Text;
 
@@ -131,7 +132,8 @@ namespace GBX.NET.Engines.Game
         }
 
         public string GhostLogin { get; set; }
-        public string VehicleID { get; set; }
+        public Meta Vehicle { get; set; }
+        public string Skin { get; set; }
 
         public int EventsDuration { get; set; }
         public string[] ControlNames { get; set; }
@@ -211,6 +213,25 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 n.RaceTime = TimeSpan.FromMilliseconds(rw.Int32(Convert.ToInt32(n.raceTime.GetValueOrDefault().TotalMilliseconds)));
+            }
+        }
+
+        #endregion
+
+        #region 0x006 chunk
+
+        /// <summary>
+        /// CGameCtnGhost 0x006 chunk
+        /// </summary>
+        [Chunk(0x03092006)]
+        public class Chunk03092006 : Chunk<CGameCtnGhost>
+        {
+            public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
+            {
+                n.Vehicle = rw.Meta(n.Vehicle);
+                n.Skin = rw.String(n.Skin);
+                rw.Int32(Unknown);
+                rw.String(Unknown);
             }
         }
 
@@ -407,7 +428,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.VehicleID = rw.LookbackString(n.VehicleID);
+                n.Vehicle = new Meta(rw.LookbackString(n.Vehicle?.ID));
             }
         }
 

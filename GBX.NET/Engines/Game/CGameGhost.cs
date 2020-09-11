@@ -17,6 +17,40 @@ namespace GBX.NET.Engines.Game
 
         #region Chunks
 
+        #region 0x003 chunk
+
+        [Chunk(0x0303F003)]
+        public class Chunk0303F003 : Chunk<CGameGhost>
+        {
+            public byte[] Data { get; set; }
+            public int[] Samples { get; set; }
+
+            public override void ReadWrite(CGameGhost n, GameBoxReaderWriter rw)
+            {
+                Data = rw.Bytes(Data);
+                Samples = rw.Array(Samples);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+            }
+        }
+
+        #endregion
+
+        #region 0x004 chunk
+
+        [Chunk(0x0303F004)]
+        public class Chunk0303F004 : Chunk<CGameGhost>
+        {
+            public override void ReadWrite(CGameGhost n, GameBoxReaderWriter rw)
+            {
+                rw.Reader.ReadInt32(); // 0x0A103000
+            }
+        }
+
+        #endregion
+
         #region 0x005 chunk
 
         [Chunk(0x0303F005)]
