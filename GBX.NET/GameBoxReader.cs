@@ -23,6 +23,11 @@ namespace GBX.NET
             Lookbackable = lookbackable;
         }
 
+        public byte[] ReadBytes()
+        {
+            return ReadBytes(ReadInt32());
+        }
+
         public string ReadString(StringLengthPrefix readPrefix)
         {
             int length;
@@ -213,6 +218,11 @@ namespace GBX.NET
             var array = new T[count];
             Buffer.BlockCopy(buffer, 0, array, 0, buffer.Length);
             return array;
+        }
+
+        public T[] ReadArray<T>()
+        {
+            return ReadArray<T>(ReadInt32());
         }
 
         /// <summary>

@@ -41,6 +41,17 @@ namespace GBX.NET
             return array;
         }
 
+        public T[] Array<T>(T[] array)
+        {
+            if (Reader != null) return Reader.ReadArray<T>();
+            else if (Writer != null)
+            {
+                Writer.Write(array.Length);
+                Writer.Write(array);
+            }
+            return array;
+        }
+
         public void Array<T>(Stream stream, int count)
         {
             if (Reader != null)
@@ -123,6 +134,17 @@ namespace GBX.NET
         {
             if (Reader != null) return Reader.ReadBytes(count);
             else if (Writer != null) Writer.Write(variable, 0, count);
+            return variable;
+        }
+
+        public byte[] Bytes(byte[] variable)
+        {
+            if (Reader != null) return Reader.ReadBytes();
+            else if (Writer != null)
+            {
+                Writer.Write(variable.Length);
+                Writer.Write(variable);
+            }
             return variable;
         }
 
