@@ -229,7 +229,17 @@ namespace GBX.NET.Engines.Game
 
         public Meta Decoration { get; set; }
 
-        public string Collection { get; set; }
+        public string Collection
+        {
+            get => Decoration?.Collection ?? MapInfo?.Collection;
+            set
+            {
+                if (Decoration != null)
+                    Decoration.Collection = value;
+                if (MapInfo != null)
+                    MapInfo.Collection = value;
+            }
+        }
 
         /// <summary>
         /// Origin of the map.
@@ -341,7 +351,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03043019>();
                 return modPackDesc;
             }
-            set => modPackDesc = value;
+            set
+            {
+                DiscoverChunk<Chunk03043019>();
+                modPackDesc = value;
+            }
         }
 
         public PlayMode? Mode
@@ -570,7 +584,7 @@ namespace GBX.NET.Engines.Game
         {
             var chunkItems = CreateChunk<Chunk03043040>();
 
-            var it = new CGameCtnAnchoredObject(chunkItems)
+            var it = new CGameCtnAnchoredObject((Chunk)chunkItems)
             {
                 ItemModel = itemModel,
                 AbsolutePositionInMap = absolutePosition,
@@ -579,6 +593,7 @@ namespace GBX.NET.Engines.Game
                 PivotPosition = offsetPivot,
                 Variant = variant
             };
+            it.Chunks = new ChunkList();
             it.CreateChunk<CGameCtnAnchoredObject.Chunk03101002>();
             it.CreateChunk<CGameCtnAnchoredObject.Chunk03101004>();
             Items.Add(it);
@@ -2065,7 +2080,7 @@ namespace GBX.NET.Engines.Game
                             using var ms = new MemoryStream(data);
                             using var zlib = new InflaterInputStream(ms);
                             using var gbxr = new GameBoxReader(zlib);
-                            return (CHmsLightMapCache)Parse(Node.Lookbackable, 0x06022000, gbxr);
+                            return (CHmsLightMapCache)Parse(Node.Body, 0x06022000, gbxr);
                         });
                     }
                 }
@@ -2092,6 +2107,11 @@ namespace GBX.NET.Engines.Game
             public int Unknown2 { get; set; } = 10;
             public int Unknown3 { get; set; }
 
+            public override void OnLoad()
+            {
+                Node.items = new List<CGameCtnAnchoredObject>();
+            }
+
             public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
@@ -2116,7 +2136,7 @@ namespace GBX.NET.Engines.Game
                     w.Write(Unknown1);
 
                     using var itemMs = new MemoryStream();
-                    using var wr = new GameBoxWriter(itemMs);
+                    using var wr = new GameBoxWriter(itemMs, w.Lookbackable);
 
                     wr.Write(Unknown2);
                     wr.Write(n.items.Count);
@@ -2223,9 +2243,9 @@ namespace GBX.NET.Engines.Game
         {
             public int Version { get; set; }
 
-            public Chunk03043044(CGameCtnChallenge node, byte[] data) : base(node, data)
+            public override void OnLoad()
             {
-                node.MetadataTraits = new CScriptTraitsMetadata();
+                Node.MetadataTraits = new CScriptTraitsMetadata();
             }
 
             public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)

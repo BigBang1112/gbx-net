@@ -38,6 +38,11 @@ namespace GBX.NET
             }
         }
 
+        public override void ReadWrite(T n, GameBoxReaderWriter rw)
+        {
+            ReadWrite(rw);
+        }
+
         /// <summary>
         /// 
         /// </summary>

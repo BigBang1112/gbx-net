@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Numerics;
+using System.Threading.Tasks;
 using YamlDotNet.Serialization;
 
 namespace IslandConverter
@@ -36,11 +37,11 @@ namespace IslandConverter
 
             Log.Write();
 
-            GameBox<CGameCtnChallenge> gbx = new GameBox<CGameCtnChallenge>();
-
             var startMapLoad = DateTime.Now;
 
-            if (!gbx.Load(fileName))
+            var gbx = GameBox.Parse<CGameCtnChallenge>(fileName);
+
+            if (gbx == null)
             {
                 Log.Write("GBX failed to load!", ConsoleColor.Red);
                 return null;
@@ -175,7 +176,7 @@ namespace IslandConverter
             var map = gbx.MainNode;
 
             Log.Write("Converting decoration...");
-            map.DecorationName = "64x64" + map.DecorationName.TrimEnd();
+            map.Decoration.ID = "64x64" + map.Decoration.ID.TrimEnd();
 
             Log.Write("Converting environment...");
             map.Collection = "Stadium";
@@ -199,19 +200,19 @@ namespace IslandConverter
                 }
             );
 
-            var chunk00D = map.GetChunk<CGameCtnChallenge.Chunk00D>();
+            var chunk00D = map.GetChunk<CGameCtnChallenge.Chunk0304300D>();
 
-            var beforeCar = map.PlayerModelID;
-            chunk00D.Vehicle = new Meta("IslandCar.Item.Gbx", "Stadium", "adamkooo");
+            var beforeCar = map.Vehicle.ID;
+            map.Vehicle = new Meta("IslandCar.Item.Gbx", "Stadium", "adamkooo");
 
             Log.Write("Applying texture mod...");
             map.ModPackDesc = new FileRef(3, Convert.FromBase64String("AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="), @"Skins\Stadium\Mod\IslandTM2U.zip", "");
 
             Bitmap thumbnail;
-            if (map.Thumbnail == null)
+            if (gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail == null)
                 thumbnail = new Bitmap(512, 512);
             else
-                thumbnail = new Bitmap(map.Thumbnail, 512, 512);
+                thumbnail = new Bitmap(gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail.Result, 512, 512);
 
             using (var g = Graphics.FromImage(thumbnail))
             {
@@ -220,14 +221,14 @@ namespace IslandConverter
                     g.DrawImage(Resources.OverlayOpenplanet, 0, 0);
             }
 
-            map.Thumbnail = thumbnail;
+            gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail = Task.FromResult(thumbnail);
 
-            map.GetChunk<CGameCtnChallenge.Chunk01F>().Version = 6;
+            map.GetChunk<CGameCtnChallenge.Chunk0304301F>().Version = 6;
 
             if (size == MapSize.X32WithBigBorder)
             {
                 Log.Write("Importing chunk 0x03043043 for water on ground...");
-                var chunk = gbx.Body.Chunks.Create<CGameCtnChallenge.Chunk043>(File.ReadAllBytes("0x03043043.dat"));
+                var chunk = gbx.Body.Chunks.Create<CGameCtnChallenge.Chunk03043043>(File.ReadAllBytes("0x03043043.dat"));
             }
 
             Log.Write("Cracking the map password if presented...");
@@ -417,7 +418,7 @@ namespace IslandConverter
 
             if (ignoreMediaTracker)
             {
-                gbx.RemoveBodyChunk<CGameCtnChallenge.Chunk021>();
+                gbx.RemoveBodyChunk<CGameCtnChallenge.Chunk03043021>();
             }
             else
             { 
@@ -443,23 +444,22 @@ namespace IslandConverter
                 gbx.MainNode.OffsetMediaTrackerCameras(new Vector3(64, -6 - offsetHeight, 64) + xzCameraOffset);
             }
 
-            var chunk003 = map.GetChunk<CGameCtnChallenge.Chunk003>();
+            var chunk003 = gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043003>();
             chunk003.Version = 6;
 
-            gbx.CreateBodyChunk<CGameCtnChallenge.Chunk044>();
+            gbx.CreateBodyChunk<CGameCtnChallenge.Chunk03043044>();
             map = gbx.MainNode; // Due to current solution this must be presented
 
             map.MetadataTraits.Declare("MapVehicle", carTranslations[beforeCar]);
 
-            if (map.Type == CGameCtnChallenge.TrackType.Stunts)
+            if (gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043002>().Type == CGameCtnChallenge.TrackType.Stunts)
             {
-                map.MapType = "Stunts";
-                map.Type = CGameCtnChallenge.TrackType.Script;
+                gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043002>().Type = CGameCtnChallenge.TrackType.Script;
 
                 var challParams = map.ChallengeParameters;
 
-                var chunk00E = challParams.CreateChunk<CGameCtnChallengeParameters.Chunk00E>();
-                chunk00E.MapType = "Stunts";
+                var chunk00E = challParams.CreateChunk<CGameCtnChallengeParameters.Chunk0305B00E>();
+                challParams.MapType = "Stunts";
 
                 var authorScore = challParams.AuthorScore.GetValueOrDefault();
                 var goldScore = challParams.GoldTime.GetValueOrDefault().ToMilliseconds();
@@ -468,8 +468,7 @@ namespace IslandConverter
                 var timeLimit = challParams.TimeLimit.GetValueOrDefault().ToMilliseconds();
 
                 var mapStyle = $"{authorScore}|{goldScore}|{silverScore}|{bronzeScore}";
-                map.MapStyle = mapStyle;
-                chunk00E.MapStyle = mapStyle;
+                challParams.MapStyle = mapStyle;
 
                 map.MetadataTraits.Declare("MapTimeLimit", timeLimit);
                 map.MetadataTraits.Declare("ObjectiveAuthor", authorScore);

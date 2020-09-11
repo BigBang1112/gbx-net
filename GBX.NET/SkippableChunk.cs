@@ -46,10 +46,7 @@ namespace GBX.NET
             if (Discovered) return;
             Discovered = true;
 
-            ILookbackable lb = Node.Lookbackable;
-            if (this is ILookbackable l) lb = l;
-
-            using var gbxr = new GameBoxReader(Stream, lb);
+            using var gbxr = new GameBoxReader(Stream, Lookbackable);
 
             GameBoxReaderWriter gbxrw = new GameBoxReaderWriter(gbxr);
 
@@ -59,7 +56,7 @@ namespace GBX.NET
             }
             catch (NotImplementedException)
             {
-                var unknownGbxw = new GameBoxWriter(Unknown, lb);
+                var unknownGbxw = new GameBoxWriter(Unknown, Lookbackable);
 
                 try
                 {

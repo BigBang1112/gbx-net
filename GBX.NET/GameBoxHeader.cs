@@ -118,6 +118,7 @@ namespace GBX.NET
                                 {
                                     dynamic headerChunk = constructor.Invoke(new object[0]);
                                     headerChunk.Node = GBX.MainNode;
+                                    headerChunk.Part = this;
                                     headerChunk.Stream = new MemoryStream(d, 0, d.Length, false);
                                     if (d == null || d.Length == 0)
                                         headerChunk.Discovered = true;
@@ -129,7 +130,10 @@ namespace GBX.NET
 
                                 using (var msChunk = new MemoryStream(d))
                                 using (var rChunk = new GameBoxReader(msChunk, this))
+                                {
                                     ((IHeaderChunk)chunks[counter]).ReadWrite(new GameBoxReaderWriter(rChunk));
+                                    ((ISkippableChunk)chunks[counter]).Discovered = true;
+                                }
 
                                 ((IHeaderChunk)chunks[counter]).IsHeavy = chunk.Value.Item2;
                             }

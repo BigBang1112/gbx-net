@@ -14,15 +14,16 @@ namespace GBX.NET
         public static Dictionary<uint, uint> Mappings { get; } // key: older, value: newer
 
         [IgnoreDataMember]
-        public ILookbackable Lookbackable { get; internal set; }
+        public GameBoxBody Body { get; set; }
         [IgnoreDataMember]
-        public GameBoxBody Body => Lookbackable as GameBoxBody;
-        [IgnoreDataMember]
-        public GameBoxHeader Header => Lookbackable as GameBoxHeader;
-        [IgnoreDataMember]
-        public GameBox GBX => Body?.GBX ?? Header.GBX;
+        public GameBox GBX => Body?.GBX;
 
         public ChunkList Chunks { get; internal set; }
+
+        /// <summary>
+        /// Chunk where the aux node appeared
+        /// </summary>
+        public Chunk ParentChunk { get; set; }
 
         public uint ID { get; }
         public uint? FaultyChunk { get; private set; }
@@ -77,13 +78,20 @@ namespace GBX.NET
         /// <param name="classID"></param>
         public Node(ILookbackable lookbackable, uint classID)
         {
-            Lookbackable = lookbackable;
+            Body = (GameBoxBody)lookbackable;
             ID = classID;
         }
 
-        public Node(ILookbackable lookbackable) 
+        public Node(ILookbackable lookbackable)
         {
-            Lookbackable = lookbackable;
+            Body = (GameBoxBody)lookbackable;
+            ID = GetType().GetCustomAttribute<NodeAttribute>().ID;
+        }
+
+        public Node(Chunk chunk)
+        {
+            ParentChunk = chunk;
+            Body = (GameBoxBody)chunk.Part;
             ID = GetType().GetCustomAttribute<NodeAttribute>().ID;
         }
 
@@ -220,6 +228,7 @@ namespace GBX.NET
             Node node = (Node)Activator.CreateInstance(type, body, type.GetCustomAttribute<NodeAttribute>().ID);
 
             var chunks = new ChunkList();
+            chunks.Node = node;
 
             uint? previousChunk = null;
 
@@ -296,9 +305,11 @@ namespace GBX.NET
                         {
                             c = constructor.Invoke(new object[0]);
                             c.Node = (dynamic)node;
+                            c.Part = (GameBoxPart)body;
                             c.Stream = new MemoryStream(chunkData, 0, chunkData.Length, false);
                             if (chunkData == null || chunkData.Length == 0)
                                 c.Discovered = true;
+                            c.OnLoad();
                         }
                         else if (constructorParams.Length == 2)
                             c = constructor.Invoke(new object[] { node, chunkData });
@@ -334,9 +345,15 @@ namespace GBX.NET
                     {
                         chunk = constructor.Invoke(new object[0]);
                         chunk.Node = (dynamic)node;
+                        chunk.Part = (GameBoxPart)body;
+                        chunk.OnLoad();
                     }
                     else if (constructorParams.Length == 1)
+                    {
                         chunk = constructor.Invoke(new object[] { node });
+                        chunk.Part = (GameBoxPart)body;
+                        chunk.OnLoad();
+                    }
                     else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
                     chunks.Add(chunk);
 
@@ -380,7 +397,7 @@ namespace GBX.NET
             
             dynamic chunks;
             if (Chunks == null)
-                chunks = ((dynamic)Body).Chunks.Values;
+                chunks = ((dynamic)Body).Chunks;
             else
                 chunks = Chunks;
             
@@ -390,7 +407,7 @@ namespace GBX.NET
 
                 chunk.Unknown.Position = 0;
 
-                ILookbackable lb = Lookbackable;
+                ILookbackable lb = chunk.Lookbackable;
 
                 if (chunk is ILookbackable l)
                 {
@@ -399,6 +416,9 @@ namespace GBX.NET
 
                     lb = l;
                 }
+
+                if (lb == null && ParentChunk is ILookbackable l2)
+                    lb = l2;
 
                 using var ms = new MemoryStream();
                 using var msW = new GameBoxWriter(ms, lb);

@@ -36,6 +36,8 @@ namespace GBX.NET
             byte[] restBuffer = new byte[s.Length - s.Position];
             gbxr.Read(restBuffer, 0, restBuffer.Length);
             Rest = restBuffer;
+
+            Chunks.Node = gbx.MainNode;
         }
 
         public static GameBoxBody<T> DecompressAndConstruct(GameBox<T> gbx, uint mainNodeID, byte[] data, int compressedSize, int uncompressedSize)

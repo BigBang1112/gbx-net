@@ -26,6 +26,19 @@ namespace GBX.NET
             get => throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} doesn't support UnknownValues.");
         }
 
+        [IgnoreDataMember]
+        public virtual ILookbackable Lookbackable
+        {
+            get
+            {
+                if (this is ILookbackable l)
+                    return l;
+                return Part;
+            }
+        }
+
+        public GameBoxPart Part { get; set; }
+
         public Chunk()
         {
 
@@ -68,6 +81,8 @@ namespace GBX.NET
             return new GameBoxReader(Unknown, null);
         }
 
+        public virtual void OnLoad() { }
+
         public int CompareTo(Chunk other)
         {
             return ID.CompareTo(other.ID);
@@ -79,8 +94,19 @@ namespace GBX.NET
         [IgnoreDataMember]
         public T Node { get; internal set; }
 
-        public bool IsHeader => Node?.Lookbackable is GameBoxHeader;
-        public bool IsBody => Node?.Lookbackable is GameBoxBody;
+        public bool IsHeader => Lookbackable is GameBoxHeader;
+        public bool IsBody => Lookbackable is GameBoxBody;
+
+        [IgnoreDataMember]
+        public override ILookbackable Lookbackable
+        {
+            get
+            {
+                if (Node?.ParentChunk is ILookbackable l)
+                    return l;
+                return base.Lookbackable;
+            }
+        }
 
         [IgnoreDataMember]
         public override object[] UnknownValues
@@ -100,7 +126,7 @@ namespace GBX.NET
 
         public override GameBoxReader OpenUnknownStream()
         {
-            return new GameBoxReader(Unknown, Node?.Lookbackable);
+            return new GameBoxReader(Unknown, Lookbackable);
         }
 
         /// <summary>
@@ -142,7 +168,7 @@ namespace GBX.NET
 
         public byte[] ToByteArray()
         {
-            var lookbackable = Node.Lookbackable;
+            var lookbackable = Lookbackable;
 
             if (this is ILookbackable l)
             {

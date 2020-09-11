@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
+using System.IO;
+using System.Runtime.Serialization;
 
 namespace GBX.NET
 {
     public class ChunkList : SortedSet<Chunk>
     {
+        [IgnoreDataMember]
+        public Node Node { get; set; }
+
         public ChunkList() : base()
         {
 
@@ -31,13 +36,24 @@ namespace GBX.NET
                 return (T)c;
 
             dynamic chunk;
-            if (typeof(T).BaseType == typeof(SkippableChunk<>))
-                chunk = (T)Activator.CreateInstance(typeof(T), this, data);
+            if (typeof(T).BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>))
+            {
+                chunk = (T)Activator.CreateInstance(typeof(T));
+                chunk.Stream = new MemoryStream(data, 0, data.Length, false);
+                chunk.Node = (dynamic)Node;
+                if (data == null || data.Length == 0)
+                    chunk.Discovered = true;
+
+                chunk.OnLoad();
+            }
             else
             {
-                chunk = (T)Activator.CreateInstance(typeof(T), this);
+                chunk = (T)Activator.CreateInstance(typeof(T));
+                chunk.Node = (dynamic)Node;
                 if (data.Length > 0) chunk.FromData(data);
             }
+
+            chunk.Part = Node?.Body;
 
             if (chunk is ILookbackable l) l.LookbackVersion = 3;
             Add(chunk);

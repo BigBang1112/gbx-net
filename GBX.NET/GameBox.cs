@@ -313,7 +313,11 @@ namespace GBX.NET
         {
             GameBox<T> gbx = new GameBox<T>();
             using (var fs = File.OpenRead(fileName))
-                gbx.Read(fs);
+            {
+                gbx.FileName = fileName;
+                if (!gbx.Read(fs))
+                    return null;
+            }
             return gbx;
         }
 
@@ -346,6 +350,8 @@ namespace GBX.NET
                         gbx = (GameBox)Activator.CreateInstance(typeof(GameBox<>).MakeGenericType(availableClass));
 
                     fs.Seek(0, SeekOrigin.Begin);
+
+                    gbx.FileName = fileName;
 
                     if (gbx.Read(fs))
                         return gbx;

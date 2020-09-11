@@ -43,6 +43,11 @@ namespace GBX.NET.Engines.Game
 
         }
 
+        public CGameCtnAnchoredObject(Chunk chunk) : base(chunk)
+        {
+
+        }
+
         public override string ToString()
         {
             return ItemModel.ToString();
@@ -74,7 +79,7 @@ namespace GBX.NET.Engines.Game
                 n.AbsolutePositionInMap = r.ReadVec3();
                 var specialWaypoint = r.ReadInt32();
                 if(specialWaypoint != -1)
-                    n.WaypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(Node.Lookbackable, r, true);
+                    n.WaypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(Node.Body, r, true);
                 n.Flags = r.ReadInt16();
                 n.PivotPosition = r.ReadVec3();
                 n.Scale = r.ReadSingle();
