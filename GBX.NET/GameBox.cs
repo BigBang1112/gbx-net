@@ -364,7 +364,6 @@ namespace GBX.NET
             return null;
         }
 
-        [Obsolete]
         public static Type GetGameBoxType(Stream stream)
         {
             var gbxr = new GameBoxReader(stream);

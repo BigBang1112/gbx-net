@@ -74,7 +74,7 @@ namespace GBX.NET.Engines.Game
             {
                 n.Start = rw.Single(n.Start);
                 n.End = rw.Single(n.End);
-                n.Type = (EGameCam)rw.Int32((int)n.Type);
+                n.Type = (EGameCam)rw.Int32((int)n.Type.GetValueOrDefault());
                 n.Target = rw.Int32(n.Target);
             }
         }

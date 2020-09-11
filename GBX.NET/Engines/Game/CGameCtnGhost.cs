@@ -134,6 +134,7 @@ namespace GBX.NET.Engines.Game
         public string GhostLogin { get; set; }
         public Meta Vehicle { get; set; }
         public string Skin { get; set; }
+        public string UID { get; set; }
 
         public int EventsDuration { get; set; }
         public string[] ControlNames { get; set; }
@@ -319,6 +320,30 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region 0x00D chunk
+
+        /// <summary>
+        /// CGameCtnGhost 0x00D chunk
+        /// </summary>
+        [Chunk(0x0309200D)]
+        public class Chunk0309200D : Chunk<CGameCtnGhost>
+        {
+            public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
+            {
+                n.Vehicle = rw.Meta(n.Vehicle);
+                n.Skin = rw.Reader.ReadString();
+
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+
+                rw.String(Unknown);
+            }
+        }
+
+        #endregion
+
         #region 0x00E chunk
 
         /// <summary>
@@ -329,7 +354,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                n.UID = rw.LookbackString(n.UID);
             }
         }
 
@@ -362,6 +387,22 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 rw.LookbackString(Unknown);
+            }
+        }
+
+        #endregion
+
+        #region 0x011 chunk
+
+        /// <summary>
+        /// CGameCtnGhost 0x011 chunk
+        /// </summary>
+        [Chunk(0x03092011)]
+        public class Chunk03092011 : Chunk<CGameCtnGhost>
+        {
+            public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
             }
         }
 
