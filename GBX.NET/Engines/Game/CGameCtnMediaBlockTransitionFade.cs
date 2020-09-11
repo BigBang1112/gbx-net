@@ -9,17 +9,9 @@ namespace GBX.NET.Engines.Game
     [Node(0x030AB000)]
     public class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlock
     {
-        public Key[] Keys
-        {
-            get => GetValue<Chunk000>(x => x.Keys) as Key[];
-            set => SetValue<Chunk000>(x => x.Keys = value);
-        }
+        public Key[] Keys { get; set; }
 
-        public Vector3 Color
-        {
-            get => (Vector3)GetValue<Chunk000>(x => x.Color);
-            set => SetValue<Chunk000>(x => x.Color = value);
-        }
+        public Vector3 Color { get; set; }
 
         public CGameCtnMediaBlockTransitionFade(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -27,19 +19,11 @@ namespace GBX.NET.Engines.Game
         }
 
         [Chunk(0x030AB000)]
-        public class Chunk000 : Chunk
+        public class Chunk030AB000 : Chunk<CGameCtnMediaBlockTransitionFade>
         {
-            public Key[] Keys { get; set; }
-            public Vector3 Color { get; set; }
-
-            public Chunk000(CGameCtnMediaBlockTransitionFade node) : base(node)
+            public override void ReadWrite(CGameCtnMediaBlockTransitionFade n, GameBoxReaderWriter rw)
             {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Keys = rw.Array(Keys, i =>
+                n.Keys = rw.Array(n.Keys, i =>
                 {
                     var time = rw.Reader.ReadSingle();
                     var opacity = rw.Reader.ReadSingle();
@@ -56,14 +40,13 @@ namespace GBX.NET.Engines.Game
                     rw.Writer.Write(x.Opacity);
                 });
 
-                Color = rw.Vec3(Color);
+                n.Color = rw.Vec3(n.Color);
                 rw.Single(Unknown);
             }
         }
 
-        public class Key
+        public class Key : MediaBlockKey
         {
-            public float Time { get; set; }
             public float Opacity { get; set; }
         }
     }

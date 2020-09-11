@@ -8,11 +8,7 @@ namespace GBX.NET.Engines.Game
     [Node(0x03199000)]
     public class CGameCtnMediaBlockFog : CGameCtnMediaBlock
     {
-        public Key[] Keys
-        {
-            get => GetValue<Chunk000>(x => x.Keys) as Key[];
-            set => SetValue<Chunk000>(x => x.Keys = value);
-        }
+        public Key[] Keys { get; set; }
 
         public CGameCtnMediaBlockFog(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -20,20 +16,14 @@ namespace GBX.NET.Engines.Game
         }
 
         [Chunk(0x03199000)]
-        public class Chunk000 : Chunk
+        public class Chunk03199000 : Chunk<CGameCtnMediaBlockFog>
         {
             public int Version { get; set; }
-            public Key[] Keys { get; set; }
 
-            public Chunk000(CGameCtnMediaBlockFog node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnMediaBlockFog n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                Keys = rw.Array(Keys, i =>
+                n.Keys = rw.Array(n.Keys, i =>
                 {
                     var time = rw.Reader.ReadSingle();
                     var unknown = rw.Reader.ReadArray<float>(9);
@@ -52,9 +42,8 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        public class Key
+        public class Key : MediaBlockKey
         {
-            public float Time { get; set; }
             public float[] Unknown { get; set; }
         }
     }

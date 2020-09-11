@@ -8,17 +8,9 @@ namespace GBX.NET.Engines.Game
     [Node(0x030A7000)]
     public class CGameCtnMediaBlockSound : CGameCtnMediaBlock
     {
-        public FileRef Sound
-        {
-            get => GetValue<Chunk004>(x => x.Sound) as FileRef;
-            set => SetValue<Chunk004>(x => x.Sound = value);
-        }
+        public FileRef Sound { get; set; }
 
-        public Key[] Keys
-        {
-            get => GetValue<Chunk004>(x => x.Keys) as Key[];
-            set => SetValue<Chunk004>(x => x.Keys = value);
-        }
+        public Key[] Keys { get; set; }
 
         public CGameCtnMediaBlockSound(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -30,21 +22,13 @@ namespace GBX.NET.Engines.Game
         #region 0x001 chunk
 
         [Chunk(0x030A7001)]
-        public class Chunk001 : Chunk
+        public class Chunk030A7001 : Chunk<CGameCtnMediaBlockSound>
         {
-            public FileRef Sound { get; set; }
-            public Key[] Keys { get; set; }
-
-            public Chunk001(CGameCtnMediaBlockSound node) : base(node)
+            public override void ReadWrite(CGameCtnMediaBlockSound n, GameBoxReaderWriter rw)
             {
+                n.Sound = rw.FileRef(n.Sound);
 
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Sound = rw.FileRef(Sound);
-
-                Keys = rw.Array(Keys, i =>
+                n.Keys = rw.Array(n.Keys, i =>
                 {
                     var time = rw.Reader.ReadSingle();
                     var unknown = rw.Reader.ReadArray<float>(2);
@@ -68,14 +52,9 @@ namespace GBX.NET.Engines.Game
         #region 0x002 chunk
 
         [Chunk(0x030A7002)]
-        public class Chunk002 : Chunk
+        public class Chunk030A7002 : Chunk<CGameCtnMediaBlockSound>
         {
-            public Chunk002(CGameCtnMediaBlockSound node) : base(node)
-            {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnMediaBlockSound n, GameBoxReaderWriter rw)
             {
                 rw.Array<int>(Unknown, 2);
             }
@@ -86,14 +65,9 @@ namespace GBX.NET.Engines.Game
         #region 0x003 chunk
 
         [Chunk(0x030A7003)]
-        public class Chunk003 : Chunk
+        public class Chunk030A7003 : Chunk<CGameCtnMediaBlockSound>
         {
-            public Chunk003(CGameCtnMediaBlockSound node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnMediaBlockSound n, GameBoxReaderWriter rw)
             {
                 rw.Array<int>(Unknown, 7);
             }
@@ -104,21 +78,13 @@ namespace GBX.NET.Engines.Game
         #region 0x004 chunk
 
         [Chunk(0x030A7004)]
-        public class Chunk004 : Chunk
+        public class Chunk030A7004 : Chunk<CGameCtnMediaBlockSound>
         {
-            public FileRef Sound { get; set; }
-            public Key[] Keys { get; set; }
-
-            public Chunk004(CGameCtnMediaBlockSound node) : base(node)
+            public override void ReadWrite(CGameCtnMediaBlockSound n, GameBoxReaderWriter rw)
             {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Sound = rw.FileRef(Sound);
+                n.Sound = rw.FileRef(n.Sound);
                 rw.Int32(Unknown); // 1
-                Keys = rw.Array(Keys, i =>
+                n.Keys = rw.Array(n.Keys, i =>
                 {
                     var time = rw.Reader.ReadSingle();
                     var unknown = rw.Reader.ReadArray<float>(5);
@@ -141,9 +107,8 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        public class Key
+        public class Key : MediaBlockKey
         {
-            public float Time { get; set; }
             public float[] Unknown { get; set; }
         }
     }

@@ -41,6 +41,17 @@ namespace GBX.NET
             return array;
         }
 
+        public T[] Array<T>(T[] array)
+        {
+            if (Reader != null) return Reader.ReadArray<T>();
+            else if (Writer != null)
+            {
+                Writer.Write(array.Length);
+                Writer.Write(array);
+            }
+            return array;
+        }
+
         public void Array<T>(Stream stream, int count)
         {
             if (Reader != null)
@@ -123,6 +134,17 @@ namespace GBX.NET
         {
             if (Reader != null) return Reader.ReadBytes(count);
             else if (Writer != null) Writer.Write(variable, 0, count);
+            return variable;
+        }
+
+        public byte[] Bytes(byte[] variable)
+        {
+            if (Reader != null) return Reader.ReadBytes();
+            else if (Writer != null)
+            {
+                Writer.Write(variable.Length);
+                Writer.Write(variable);
+            }
             return variable;
         }
 
@@ -329,7 +351,7 @@ namespace GBX.NET
             throw new Exception();
         }
 
-        public Node NodeRef(Node variable, IGameBoxBody body)
+        public Node NodeRef(Node variable, GameBoxBody body)
         {
             if (Reader != null) return Reader.ReadNodeRef(body);
             else if (Writer != null) Writer.Write(variable, body);
@@ -338,12 +360,12 @@ namespace GBX.NET
 
         public Node NodeRef(Node variable)
         {
-            if (Reader != null) return NodeRef(variable, (IGameBoxBody)Reader.Lookbackable);
-            else if (Writer != null) return NodeRef(variable, (IGameBoxBody)Writer.Lookbackable);
+            if (Reader != null) return NodeRef(variable, (GameBoxBody)Reader.Lookbackable);
+            else if (Writer != null) return NodeRef(variable, (GameBoxBody)Writer.Lookbackable);
             throw new Exception();
         }
 
-        public void NodeRef(Stream stream, IGameBoxBody body)
+        public void NodeRef(Stream stream, GameBoxBody body)
         {
             if (Reader != null)
             {
@@ -360,12 +382,12 @@ namespace GBX.NET
 
         public void NodeRef(Stream stream)
         {
-            if (Reader != null) NodeRef(stream, (IGameBoxBody)Reader.Lookbackable);
-            else if (Writer != null) NodeRef(stream, (IGameBoxBody)Writer.Lookbackable);
+            if (Reader != null) NodeRef(stream, (GameBoxBody)Reader.Lookbackable);
+            else if (Writer != null) NodeRef(stream, (GameBoxBody)Writer.Lookbackable);
             else throw new Exception();
         }
 
-        public T NodeRef<T>(Node variable, bool hasInheritance, IGameBoxBody body) where T : Node
+        public T NodeRef<T>(Node variable, bool hasInheritance, GameBoxBody body) where T : Node
         {
             if (Reader != null) return Reader.ReadNodeRef<T>(hasInheritance, body);
             else if (Writer != null) Writer.Write(variable, body);
@@ -374,8 +396,8 @@ namespace GBX.NET
 
         public T NodeRef<T>(Node variable, bool hasInheritance) where T : Node
         {
-            if (Reader != null) return NodeRef<T>(variable, hasInheritance, (IGameBoxBody)Reader.Lookbackable);
-            else if (Writer != null) return NodeRef<T>(variable, hasInheritance, (IGameBoxBody)Writer.Lookbackable);
+            if (Reader != null) return NodeRef<T>(variable, hasInheritance, (GameBoxBody)Reader.Lookbackable);
+            else if (Writer != null) return NodeRef<T>(variable, hasInheritance, (GameBoxBody)Writer.Lookbackable);
             else throw new Exception();
         }
 

@@ -5,125 +5,114 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// MediaTracker block - Camera ingame
+    /// </summary>
     [Node(0x03084000)]
     public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera
     {
-        public float? Start
+        public enum EGameCam : int
         {
-            get => GetValue<Chunk007>(x => x.Start) as float?;
-            set => SetValue<Chunk007>(x => x.Start = value.GetValueOrDefault());
+            Behind,
+            Close,
+            Internal,
+            Orbital
         }
 
-        public float? End
+        public enum EGameCam2 : int
         {
-            get => GetValue<Chunk007>(x => x.End) as float?;
-            set => SetValue<Chunk007>(x => x.End = value.GetValueOrDefault());
+            Default,
+            Internal,
+            External,
+            Helico,
+            Free,
+            Spectator,
+            External_2
         }
+
+        public float Start { get; set; }
+        public float End { get; set; } = 3;
+        public EGameCam? Type { get; set; }
+        public EGameCam2? Type2 { get; set; }
+        public int Target { get; set; } = -1;
+        public string GameCam { get; set; }
 
         public CGameCtnMediaBlockCameraGame(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
 
         }
 
+        #region Chunks
+
+        #region 0x000 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockCameraGame 0x000 chunk
+        /// </summary>
         [Chunk(0x03084000)]
-        public class Chunk000_084 : Chunk
+        public class Chunk03084000 : Chunk<CGameCtnMediaBlockCameraGame>
         {
-            public float Start { get; set; }
-            public float End { get; set; }
-
-            public Chunk000_084(CGameCtnMediaBlockCamera node) : base(node)
+            public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
             {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Start = rw.Single(Start);
-                End = rw.Single(End);
+                n.Start = rw.Single(n.Start);
+                n.End = rw.Single(n.End);
                 rw.Int32(Unknown);
             }
         }
 
+        #endregion
+
+        #region 0x001 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockCameraGame 0x001 chunk
+        /// </summary>
         [Chunk(0x03084001)]
-        public class Chunk001 : Chunk
+        public class Chunk03084001 : Chunk<CGameCtnMediaBlockCameraGame>
         {
-            public enum GameCam : int
+            public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
             {
-                Behind,
-                Close,
-                Internal,
-                Orbital
-            }
-
-            public float Start { get; set; }
-            public float End { get; set; }
-            public GameCam Type { get; set; }
-            public int Target { get; set; }
-
-            public Chunk001(CGameCtnMediaBlockCamera node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Start = rw.Single(Start);
-                End = rw.Single(End);
-                Type = (GameCam)rw.Int32((int)Type);
-                Target = rw.Int32(Target);
+                n.Start = rw.Single(n.Start);
+                n.End = rw.Single(n.End);
+                n.Type = (EGameCam)rw.Int32((int)n.Type.GetValueOrDefault());
+                n.Target = rw.Int32(n.Target);
             }
         }
 
+        #endregion
+
+        #region 0x003 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockCameraGame 0x003 chunk
+        /// </summary>
         [Chunk(0x03084003)]
-        public class Chunk003 : Chunk
+        public class Chunk03084003 : Chunk<CGameCtnMediaBlockCameraGame>
         {
-            public float Start { get; set; }
-            public float End { get; set; }
-            public string GameCam { get; set; }
-            public int Target { get; set; }
-
-            public Chunk003(CGameCtnMediaBlockCamera node) : base(node)
+            public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
             {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Start = rw.Single(Start);
-                End = rw.Single(End);
-                GameCam = rw.LookbackString(GameCam);
-                Target = rw.Int32(Target);
+                n.Start = rw.Single(n.Start);
+                n.End = rw.Single(n.End);
+                n.GameCam = rw.LookbackString(n.GameCam);
+                n.Target = rw.Int32(n.Target);
             }
         }
 
+        #endregion
+
+        #region 0x007 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockCameraGame 0x007 chunk
+        /// </summary>
         [Chunk(0x03084007)]
-        public class Chunk007 : Chunk
+        public class Chunk03084007 : Chunk<CGameCtnMediaBlockCameraGame>
         {
-            public enum GameCam : int
+            public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
             {
-                Default,
-                Internal,
-                External,
-                Helico,
-                Free,
-                Spectator,
-                External_2
-            }
-
-            public GameCam Type { get; set; }
-            public float Start { get; set; }
-            public float End { get; set; }
-
-            public Chunk007(CGameCtnMediaBlockCameraGame node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Type = (GameCam)rw.Int32((int)Type);
-                Start = rw.Single(Start);
-                End = rw.Single(End);
+                n.Type2 = (EGameCam2)rw.Int32((int)n.Type.GetValueOrDefault());
+                n.Start = rw.Single(n.Start);
+                n.End = rw.Single(n.End);
 
                 // not right
 
@@ -134,5 +123,9 @@ namespace GBX.NET.Engines.Game
                 rw.Array<uint>(Unknown, 5);
             }
         }
+
+        #endregion
+
+        #endregion
     }
 }

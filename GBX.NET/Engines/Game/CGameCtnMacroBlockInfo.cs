@@ -7,45 +7,36 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// Macroblock (0x0310D000)
+    /// </summary>
     [Node(0x0310D000)]
     public class CGameCtnMacroBlockInfo : CGameCtnCollector
     {
-        public Block[] Blocks
-        {
-            get => GetValue<Chunk000>(x => x.Blocks) as Block[];
-            set => SetValue<Chunk000>(x => x.Blocks = value);
-        }
+        public Block[] Blocks { get; set; }
 
-        public Item[] Items
-        {
-            get => GetValue<Chunk00E_2>(x => x.Items) as Item[];
-            set => SetValue<Chunk00E_2>(x => x.Items = value);
-        }
+        public Item[] Items { get; set; }
 
-        public List<FreeBlock> FreeBlocks
-        {
-            get => GetValue<Chunk000>(x => x.FreeBlocks) as List<FreeBlock>;
-        }
+        public List<FreeBlock> FreeBlocks { get; set; } = new List<FreeBlock>();
 
         public CGameCtnMacroBlockInfo(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
 
         }
 
-        [Chunk(0x0310D000)]
-        public class Chunk000 : Chunk
+        #region Chunks
+
+        #region 0x000 chunk (blocks)
+
+        /// <summary>
+        /// CGameCtnMacroBlockInfo 0x000 chunk (blocks)
+        /// </summary>
+        [Chunk(0x0310D000, "blocks")]
+        public class Chunk0310D000 : Chunk<CGameCtnMacroBlockInfo>
         {
-            public Block[] Blocks { get; set; }
-            public List<FreeBlock> FreeBlocks { get; set; }
-
-            public Chunk000(CGameCtnMacroBlockInfo node) : base(node)
+            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                FreeBlocks = new List<FreeBlock>();
-            }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
-            {
-                Blocks = r.ReadArray(i =>
+                n.Blocks = r.ReadArray(i =>
                 {
                     Int3? coord = null;
                     Direction? dir = null;
@@ -90,7 +81,7 @@ namespace GBX.NET.Engines.Game
 
                     if (position.HasValue && pitchYawRoll.HasValue)
                     {
-                        FreeBlocks.Add(new FreeBlock(block) { Position = position.Value, PitchYawRoll = pitchYawRoll.Value });
+                        n.FreeBlocks.Add(new FreeBlock(block) { Position = position.Value, PitchYawRoll = pitchYawRoll.Value });
                         return null;
                     }
 
@@ -99,17 +90,19 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x001 chunk
+
+        /// <summary>
+        /// CGameCtnMacroBlockInfo 0x001 chunk
+        /// </summary>
         [Chunk(0x0310D001)]
-        public class Chunk001 : Chunk
+        public class Chunk0310D001 : Chunk<CGameCtnMacroBlockInfo>
         {
-            public Chunk001(CGameCtnMacroBlockInfo node) : base(node)
+            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
             {
-
-            }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
-            {
-                var gsdg = r.ReadArray(i =>
+                var unknown = r.ReadArray(i =>
                 {
                     var version = r.ReadInt32();
                     r.ReadNodeRef();
@@ -128,17 +121,19 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x002 chunk
+
+        /// <summary>
+        /// CGameCtnMacroBlockInfo 0x002 chunk
+        /// </summary>
         [Chunk(0x0310D002)]
-        public class Chunk002 : Chunk
+        public class Chunk0310D002 : Chunk<CGameCtnMacroBlockInfo>
         {
-            public Chunk002(CGameCtnMacroBlockInfo node) : base(node)
+            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
             {
-
-            }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
-            {
-                var gsdg = r.ReadArray(i =>
+                var unknown = r.ReadArray(i =>
                 {
                     r.ReadInt32();
                     var dsgds = r.ReadArray(i => r.ReadMeta());
@@ -152,56 +147,58 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x006 chunk
+
+        /// <summary>
+        /// CGameCtnMacroBlockInfo 0x006 chunk
+        /// </summary>
         [Chunk(0x0310D006)]
-        public class Chunk006_2 : Chunk
+        public class Chunk0310D006 : Chunk<CGameCtnMacroBlockInfo>
         {
-            public Chunk006_2(CGameCtnMacroBlockInfo node) : base(node)
-            {
-
-            }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 var version = r.ReadInt32();
                 var arrayLength = r.ReadInt32();
             }
         }
 
+        #endregion
+
+        #region 0x008 chunk
+
+        /// <summary>
+        /// CGameCtnMacroBlockInfo 0x008 chunk
+        /// </summary>
         [Chunk(0x0310D008)]
-        public class Chunk008_2 : Chunk
+        public class Chunk0310D008 : Chunk<CGameCtnMacroBlockInfo>
         {
-            public Chunk008_2(CGameCtnMacroBlockInfo node) : base(node)
-            {
-
-            }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 var version = r.ReadInt32();
                 var nodrefs = r.ReadArray(i => r.ReadNodeRef());
-                var idk = r.ReadArray<int>(2);
+                r.ReadArray<int>(2);
             }
         }
+
+        #endregion
+
+        #region 0x00E chunk (items)
 
         /// <summary>
         /// CGameCtnMacroBlockInfo 0x00E chunk (items)
         /// </summary>
         [Chunk(0x0310D00E)]
-        public class Chunk00E_2 : Chunk
+        public class Chunk0310D00E : Chunk<CGameCtnMacroBlockInfo>
         {
             public int Version { get; set; }
-            public Item[] Items { get; set; }
 
-            public Chunk00E_2(CGameCtnMacroBlockInfo node) : base(node)
-            {
-
-            }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
 
-                Items = r.ReadArray(i =>
+                n.Items = r.ReadArray(i =>
                 {
                     var v = r.ReadInt32();
 
@@ -259,19 +256,25 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x00F chunk
+
+        /// <summary>
+        /// CGameCtnMacroBlockInfo 0x00F chunk
+        /// </summary>
         [Chunk(0x0310D00F)]
-        public class Chunk00F : Chunk
+        public class Chunk0310D00F : Chunk<CGameCtnMacroBlockInfo>
         {
-            public Chunk00F(CGameCtnMacroBlockInfo node) : base(node)
-            {
-
-            }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 var version = r.ReadInt32();
                 _ = r.ReadArray<int>(7);
             }
         }
+
+        #endregion
+
+        #endregion
     }
 }

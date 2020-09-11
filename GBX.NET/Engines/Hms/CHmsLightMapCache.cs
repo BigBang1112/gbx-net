@@ -13,13 +13,10 @@ namespace GBX.NET.Engines.Hms
 
         }
 
-        [Chunk(0x0602201A, true)]
-        public class Chunk01A : SkippableChunk
+        [Chunk(0x0602201A)]
+        public class Chunk0602201A : SkippableChunk<CHmsLightMapCache>
         {
-            public Chunk01A(CHmsLightMapCache node, byte[] data) : base(node, data)
-            {
-                
-            }
+            
         }
     }
 }

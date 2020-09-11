@@ -6,39 +6,36 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// MediaTracker block - Camera shake
+    /// </summary>
     [Node(0x030A4000)]
     public class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCameraEffect
     {
-        public Key[] Keys
-        {
-            get => GetValue<Chunk000>(x => x.Keys) as Key[];
-            set => SetValue<Chunk000>(x => x.Keys = value);
-        }
+        public Key[] Keys { get; set; }
 
         public CGameCtnMediaBlockCameraEffectShake(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
 
         }
 
+        #region Chunks
+
+        #region 0x000 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockCameraEffectShake 0x000 chunk
+        /// </summary>
         [Chunk(0x030A4000)]
-        public class Chunk000 : Chunk
+        public class Chunk030A4000 : Chunk<CGameCtnMediaBlockCameraEffectShake>
         {
-            public Key[] Keys { get; set; }
-
-            public Chunk000(CGameCtnMediaBlockCameraEffectShake node) : base(node)
+            public override void ReadWrite(CGameCtnMediaBlockCameraEffectShake n, GameBoxReaderWriter rw)
             {
-               
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Keys = rw.Array(Keys, i =>
+                n.Keys = rw.Array(n.Keys, i => new Key()
                 {
-                    var time = rw.Reader.ReadSingle();
-                    var intensity = rw.Reader.ReadSingle();
-                    var speed = rw.Reader.ReadSingle();
-
-                    return new Key(time, intensity, speed);
+                    Time = rw.Reader.ReadSingle(),
+                    Intensity = rw.Reader.ReadSingle(),
+                    Speed = rw.Reader.ReadSingle()
                 },
                 x =>
                 {
@@ -49,18 +46,14 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        public class Key
-        {
-            public float Time { get; }
-            public float Intensity { get; }
-            public float Speed { get; }
+        #endregion
 
-            public Key(float time, float intensity, float speed)
-            {
-                Time = time;
-                Intensity = intensity;
-                Speed = speed;
-            }
+        #endregion
+
+        public class Key : MediaBlockKey
+        {
+            public float Intensity { get; set; }
+            public float Speed { get; set; }
         }
     }
 }

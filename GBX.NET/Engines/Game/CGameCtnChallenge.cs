@@ -4,7 +4,6 @@ using GBX.NET.Engines.Script;
 using ICSharpCode.SharpZipLib.Checksum;
 using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
@@ -16,14 +15,11 @@ using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Linq;
-using System.Xml.XPath;
 
 namespace GBX.NET.Engines.Game
 {
     /// <summary>
-    /// Class of a map (0x03043000)
+    /// Map (0x03043000)
     /// </summary>
     /// <remarks>A map. Known extensions: .Challenge.Gbx, .Map.Gbx</remarks>
     [Node(0x03043000)]
@@ -150,1309 +146,274 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Fields
+
+        private bool? isLapRace;
+        private int? nbLaps;
+        private string password;
+        private string titleID;
+        private int? authorVersion;
+        private string authorNickname;
+        private string authorZone;
+        private string authorExtraInfo;
+        private Int3[] checkpoints;
+        private FileRef modPackDesc;
+        private PlayMode? mode;
+        private byte[] hashedPassword;
+        private uint? crc32;
+        private Vector3? thumbnailPosition;
+        private Vector3? thumbnailPitchYawRoll;
+        private float? thumbnailFOV;
+        private List<CGameCtnAnchoredObject> items;
+        private CScriptTraitsMetadata metadataTraits;
+        private Task<CHmsLightMapCache> lightmapCache;
+        private Task<CGameCtnZoneGenealogy[]> genealogies;
+        private string objectiveTextAuthor;
+        private string objectiveTextGold;
+        private string objectiveTextSilver;
+        private string objectiveTextBronze;
+        private string buildVersion;
+
+        #endregion
+
         #region Properties
 
-        /// <summary>
-        /// Time of the bronze medal.
-        /// </summary>
-        public TimeSpan? BronzeTime
+        public bool? TMObjective_IsLapRace
         {
             get
             {
-                return GetValue<Chunk002, Chunk005>(x => x.BronzeTime, x =>
-                {
-                    if (!string.IsNullOrEmpty(x.XML))
-                    {
-                        try
-                        {
-                            using var sr = new StringReader(x.XML);
-                            var doc = new XPathDocument(sr);
-                            var att = doc.CreateNavigator().SelectSingleNode("/header/times/@bronze");
-                            if (att != null)
-                            {
-                                var bronze = Convert.ToInt32(att.Value);
-                                if (bronze == -1) return null;
-                                return TimeSpan.FromMilliseconds(bronze);
-                            }
-                        }
-                        catch { }
-                    }
-                    return null;
-                }) as TimeSpan?;
+                DiscoverChunk<Chunk03043018>();
+                return isLapRace;
             }
-            set
-            {
-                SetValue<Chunk002, Chunk005>(x => x.BronzeTime = value, x =>
-                {
-                    if (!string.IsNullOrEmpty(x.XML))
-                    {
-                        try
-                        {
-                            var doc = new XmlDocument();
-                            doc.LoadXml(x.XML);
-                            var att = doc.SelectSingleNode("/header/times/@bronze");
-                            if (att != null)
-                            {
-                                att.Value = Convert.ToInt32(value.HasValue ? value.Value.TotalMilliseconds : -1).ToString();
-                                x.XML = doc.OuterXml;
-                            }
-                        }
-                        catch { }
-                    }
-                });
-            }
+            set => isLapRace = value;
         }
 
         /// <summary>
-        /// Time of the silver medal.
+        /// Number of laps.
         /// </summary>
-        public TimeSpan? SilverTime
+        public int? TMObjective_NbLaps
         {
             get
             {
-                return GetValue<Chunk002, Chunk005>(x => x.SilverTime, x =>
-                {
-                    if (!string.IsNullOrEmpty(x.XML))
-                    {
-                        try
-                        {
-                            using var sr = new StringReader(x.XML);
-                            var doc = new XPathDocument(sr);
-                            var att = doc.CreateNavigator().SelectSingleNode("/header/times/@silver");
-                            if (att != null)
-                            {
-                                var silver = Convert.ToInt32(att.Value);
-                                if (silver == -1) return null;
-                                return TimeSpan.FromMilliseconds(silver);
-                            }
-                        }
-                        catch { }
-                    }
-                    return null;
-                }) as TimeSpan?;
+                DiscoverChunk<Chunk03043018>();
+                return nbLaps;
             }
-            set
-            {
-                SetValue<Chunk002, Chunk005>(x => x.SilverTime = value, x =>
-                {
-                    if (!string.IsNullOrEmpty(x.XML))
-                    {
-                        try
-                        {
-                            var doc = new XmlDocument();
-                            doc.LoadXml(x.XML);
-                            var att = doc.SelectSingleNode("/header/times/@silver");
-                            if (att != null)
-                            {
-                                att.Value = Convert.ToInt32(value.HasValue ? value.Value.TotalMilliseconds : -1).ToString();
-                                x.XML = doc.OuterXml;
-                            }
-                        }
-                        catch { }
-                    }
-                });
-            }
+            set => nbLaps = value;
         }
 
-        /// <summary>
-        /// Time of the gold medal.
-        /// </summary>
-        public TimeSpan? GoldTime
-        {
-            get
-            {
-                return GetValue<Chunk002, Chunk005>(x => x.GoldTime, x =>
-                {
-                    if (!string.IsNullOrEmpty(x.XML))
-                    {
-                        try
-                        {
-                            using var sr = new StringReader(x.XML);
-                            var doc = new XPathDocument(sr);
-                            var att = doc.CreateNavigator().SelectSingleNode("/header/times/@gold");
-                            if (att != null)
-                            {
-                                var gold = Convert.ToInt32(att.Value);
-                                if (gold == -1) return null;
-                                return TimeSpan.FromMilliseconds(gold);
-                            }
-                        }
-                        catch { }
-                    }
-                    return null;
-                }) as TimeSpan?;
-            }
-            set
-            {
-                SetValue<Chunk002, Chunk005>(x => x.GoldTime = value, x =>
-                {
-                    if (!string.IsNullOrEmpty(x.XML))
-                    {
-                        try
-                        {
-                            var doc = new XmlDocument();
-                            doc.LoadXml(x.XML);
-                            var att = doc.SelectSingleNode("/header/times/@gold");
-                            if (att != null)
-                            {
-                                att.Value = Convert.ToInt32(value.HasValue ? value.Value.TotalMilliseconds : -1).ToString();
-                                x.XML = doc.OuterXml;
-                            }
-                        }
-                        catch { }
-                    }
-                });
-            }
-        }
+        public Meta MapInfo { get; set; }
 
-        /// <summary>
-        /// Time of the author medal.
-        /// </summary>
-        public TimeSpan? AuthorTime
-        {
-            get
-            {
-                return GetValue<Chunk002, Chunk005>(x => x.AuthorTime, x =>
-                {
-                    if (!string.IsNullOrEmpty(x.XML))
-                    {
-                        try
-                        {
-                            using var sr = new StringReader(x.XML);
-                            var doc = new XPathDocument(sr);
-                            var att = doc.CreateNavigator().SelectSingleNode("/header/times/@authortime");
-                            if (att != null)
-                            {
-                                var author = Convert.ToInt32(att.Value);
-                                if (author == -1) return null;
-                                return TimeSpan.FromMilliseconds(author);
-                            }
-                        }
-                        catch { }
-                    }
-                    return null;
-                }) as TimeSpan?;
-            }
-            set
-            {
-                SetValue<Chunk002, Chunk005>(x => x.AuthorTime = value, x =>
-                {
-                    if (!string.IsNullOrEmpty(x.XML))
-                    {
-                        try
-                        {
-                            var doc = new XmlDocument();
-                            doc.LoadXml(x.XML);
-                            var att = doc.SelectSingleNode("/header/times/@authortime");
-                            if (att != null)
-                            {
-                                att.Value = Convert.ToInt32(value.HasValue ? value.Value.TotalMilliseconds : -1).ToString();
-                                x.XML = doc.OuterXml;
-                            }
-                        }
-                        catch { }
-                    }
-                });
-            }
-        }
+        public string MapUid => MapInfo?.ID;
 
-        /// <summary>
-        /// Display cost (or coppers) of the track.
-        /// </summary>
-        public int? Cost
-        {
-            get
-            {
-                return GetValue<Chunk002, Chunk005>(x => x.Cost, x =>
-                {
-                    if (!string.IsNullOrEmpty(x.XML))
-                    {
-                        try
-                        {
-                            using var sr = new StringReader(x.XML);
-                            var doc = new XPathDocument(sr);
-                            var nav = doc.CreateNavigator();
-                            var att = nav.SelectSingleNode("/header/desc/@displaycost");
-                            if (att == null)
-                                att = nav.SelectSingleNode("/header/desc/@price");
-                            if (att != null)
-                                return Convert.ToInt32(att.Value);
-                        }
-                        catch { }
-                    }
-                    return null;
-                }) as int?;
-            }
-            set
-            {
-                SetValue<Chunk002, Chunk005>(x => x.Cost = value, x =>
-                {
-                    if (!string.IsNullOrEmpty(x.XML))
-                    {
-                        try
-                        {
-                            var doc = new XmlDocument();
-                            doc.LoadXml(x.XML);
-                            var att = doc.SelectSingleNode("/header/desc/@displaycost");
-                            if (att == null)
-                                att = doc.SelectSingleNode("/header/desc/@price");
-                            if (att == null)
-                                att = doc.SelectSingleNode("/header/desc").Attributes.Append(doc.CreateAttribute("displaycost"));
-                            else
-                                att.Value = value.GetValueOrDefault().ToString();
-                            x.XML = doc.OuterXml;
-                        }
-                        catch { }
-                    }
-                });
-            }
-        }
+        public string AuthorLogin { get; set; }
 
-        /// <summary>
-        /// If the track has multiple laps.
-        /// </summary>
-        public bool? IsMultilap
-        {
-            get
-            {
-                return GetValue<Chunk002, Chunk005>(x => x.IsMultilap, x =>
-                {
-                    if (!string.IsNullOrEmpty(x.XML))
-                    {
-                        try
-                        {
-                            using var sr = new StringReader(x.XML);
-                            var doc = new XPathDocument(sr);
-                            var att = doc.CreateNavigator().SelectSingleNode("/header/desc/@nblaps");
-                            if(att != null)
-                                return Convert.ToInt32(att.Value) != 0;
-                        }
-                        catch { }
-                    }
-                    return null;
-                }) as bool?;
-            }
-            set
-            {
-                SetValue<Chunk002, Chunk005>(x => x.IsMultilap = value, x =>
-                {
-                    if (!string.IsNullOrEmpty(x.XML))
-                    {
-                        try
-                        {
-                            var doc = new XmlDocument();
-                            doc.LoadXml(x.XML);
-                            if(!value.GetValueOrDefault()) doc.SelectSingleNode("/header/desc/@nblaps").Value = "0";
-                            x.XML = doc.OuterXml;
-                        }
-                        catch { }
-                    }
-                });
-            }
-        }
-
-        /// <summary>
-        /// Map type in which the track was validated in.
-        /// </summary>
-        public TrackType? Type
-        {
-            get
-            {
-                return GetValue<Chunk002, Chunk005>(x => x.Type, x =>
-                {
-                    if (!string.IsNullOrEmpty(x.XML))
-                    {
-                        try
-                        {
-                            using var sr = new StringReader(x.XML);
-                            var doc = new XPathDocument(sr);
-                            return (TrackType)Enum.Parse(typeof(TrackType), doc.CreateNavigator().SelectSingleNode("/header/desc/@type").Value);
-                        }
-                        catch { }
-                    }
-                    return null;
-                }) as TrackType?;
-            }
-            set
-            {
-                SetValue<Chunk002, Chunk005>(x => x.Type = value, x =>
-                {
-                    if (!string.IsNullOrEmpty(x.XML))
-                    {
-                        try
-                        {
-                            var doc = new XmlDocument();
-                            doc.LoadXml(x.XML);
-                            doc.SelectSingleNode("/header/desc/@type").Value = Enum.GetName(typeof(TrackType), value);
-                            x.XML = doc.OuterXml;
-                        }
-                        catch { }
-                    }
-                });
-            }
-        }
-
-        /// <summary>
-        /// Usually author time or stunt score.
-        /// </summary>
-        public int? AuthorScore
-        {
-            get
-            {
-                return GetValue<Chunk002, Chunk005>(x => x.AuthorScore, x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var times = header.Element("times");
-                            if (times != null)
-                            {
-                                var author = times.Attribute("authorscore");
-                                if (author != null && author.Value != "-1")
-                                    return Convert.ToInt32(author.Value);
-                            }
-                        }
-                    }
-                    return null;
-                }) as int?;
-            }
-            set
-            {
-                SetValue<Chunk002, Chunk005>(x => x.AuthorScore = value, x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var times = header.Element("times");
-                            if (times != null)
-                            {
-                                var author = times.Attribute("authorscore");
-                                if (author != null)
-                                {
-                                    author.Value = value.ToString();
-                                    x.XML = header.ToString(SaveOptions.DisableFormatting);
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        }
-
-        public bool? CreatedWithSimpleEditor
-        {
-            get => GetValue<Chunk002>(x => x.CreatedWithSimpleEditor) as bool?;
-            set => SetValue<Chunk002>(x => x.CreatedWithSimpleEditor = value);
-        }
-
-        public bool? HasGhostBlocks
-        {
-            get
-            {
-                return GetValue<Chunk002, Chunk005>(x => x.HasGhostBlocks, x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var desc = header.Element("desc");
-                            if (desc != null)
-                            {
-                                var hasGhostBlocks = desc.Attribute("hasghostblocks");
-                                if (hasGhostBlocks != null)
-                                    return hasGhostBlocks.Value == "1";
-                            }
-                        }
-                    }
-                    return null;
-                }) as bool?;
-            }
-            set
-            {
-                SetValue<Chunk002, Chunk005>(x => x.HasGhostBlocks = value, x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var desc = header.Element("desc");
-                            if (desc != null)
-                            {
-                                var hasGhostBlocks = desc.Attribute("hasghostblocks");
-                                if (hasGhostBlocks != null)
-                                {
-                                    if (value.GetValueOrDefault())
-                                        hasGhostBlocks.Value = "1";
-                                    else hasGhostBlocks.Value = "0";
-                                    x.XML = header.ToString(SaveOptions.DisableFormatting);
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        }
-
-        public int? NbCheckpoints
-        {
-            get => GetValue<Chunk002>(x => x.NbCheckpoints) as int?;
-            set => SetValue<Chunk002>(x => x.NbCheckpoints = value);
-        }
-
-        public int? NbLaps
-        {
-            get
-            {
-                return GetValue<Chunk002, Chunk005, Chunk018>(x => x.NbLaps, x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var desc = header.Element("desc");
-                            if (desc != null)
-                            {
-                                var nbLaps = desc.Attribute("nblaps");
-                                if (nbLaps != null)
-                                    return Convert.ToInt32(nbLaps.Value);
-                            }
-                        }
-                    }
-                    return null;
-                },
-                x => x.Laps) as int?;
-            }
-            set
-            {
-                SetValue<Chunk002, Chunk005, Chunk018>(x => x.NbLaps = value, x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var desc = header.Element("desc");
-                            if (desc != null)
-                            {
-                                var nbLaps = desc.Attribute("nblaps");
-                                if (nbLaps != null)
-                                {
-                                    nbLaps.Value = value.ToString();
-                                    x.XML = header.ToString(SaveOptions.DisableFormatting);
-                                }
-                            }
-                        }
-                    }
-                },
-                x => x.Laps = value.GetValueOrDefault());
-            }
-        }
-
-        public string MapUid
-        {
-            get
-            {
-                return GetValue<Chunk003, Chunk005, Chunk013, Chunk01F>(x =>
-                {
-                    if (x.MapInfo == null) return null;
-                    return x.MapInfo.ID;
-                },
-                x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var ident = header.Element("ident");
-                            if (ident != null)
-                            {
-                                var uid = ident.Attribute("uid");
-                                if (uid != null)
-                                    return uid.Value;
-                            }
-                        }
-                    }
-                    return null;
-                },
-                x => x.Chunk01F.MapInfo.ID,
-                x => x.MapInfo.ID) as string;
-            }
-            set
-            {
-                SetValue<Chunk003, Chunk005, Chunk013, Chunk01F>(x => x.MapInfo.ID = value, x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var ident = header.Element("ident");
-                            if (ident != null)
-                            {
-                                var uid = ident.Attribute("uid");
-                                if (uid != null)
-                                {
-                                    uid.Value = value;
-                                    x.XML = header.ToString(SaveOptions.DisableFormatting);
-                                }
-                            }
-                        }
-                    }
-                },
-                x => x.Chunk01F.MapInfo.ID = value,
-                x => x.MapInfo.ID = value);
-            }
-        }
-
-        public string AuthorLogin
-        {
-            get
-            {
-                return GetValue<Chunk003, Chunk005, Chunk008, Chunk013, Chunk01F, Chunk042>(x =>
-                {
-                    if (x.MapInfo == null) return null;
-                    return x.MapInfo.Author;
-                },
-                x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var ident = header.Element("ident");
-                            if (ident != null)
-                            {
-                                var author = ident.Attribute("author");
-                                if (author != null)
-                                    return author.Value;
-                            }
-                        }
-                    }
-                    return null;
-                },
-                x => x.AuthorLogin,
-                x => x.Chunk01F.MapInfo.Author,
-                x => x.MapInfo.Author,
-                x => x.AuthorLogin) as string;
-            }
-            set
-            {
-                SetValue<Chunk003, Chunk005, Chunk008, Chunk013, Chunk01F, Chunk042> (x => x.MapInfo.Author = value, x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var ident = header.Element("ident");
-                            if (ident != null)
-                            {
-                                var author = ident.Attribute("author");
-                                if (author != null)
-                                {
-                                    author.Value = value;
-                                    x.XML = header.ToString(SaveOptions.DisableFormatting);
-                                }
-                            }
-                        }
-                    }
-                },
-                x => x.AuthorLogin = value,
-                x => x.Chunk01F.MapInfo.Author = value,
-                x => x.MapInfo.Author = value,
-                x => x.AuthorLogin = value);
-            }
-        }
-
-        public string MapName
-        {
-            get
-            {
-                return GetValue<Chunk003, Chunk005, Chunk013, Chunk01F>(x => x.MapName, x =>
-                {
-                    if (!string.IsNullOrEmpty(x.XML))
-                    {
-                        try
-                        {
-                            using var sr = new StringReader(x.XML);
-                            var doc = new XPathDocument(sr);
-                            return doc.CreateNavigator().SelectSingleNode("/header/ident/@name").Value;
-                        }
-                        catch { }
-                    }
-                    return null;
-                },
-                x => x.Chunk01F.MapName,
-                x => x.MapName, DifferenceSolution.FirstChunk) as string;
-            }
-            set
-            {
-                SetValue<Chunk003, Chunk005, Chunk013, Chunk01F>(x => x.MapName = value, x =>
-                {
-                    if (!string.IsNullOrEmpty(x.XML))
-                    {
-                        try
-                        {
-                            var doc = new XmlDocument();
-                            doc.LoadXml(x.XML);
-                            doc.SelectSingleNode("/header/ident/@name").Value = value;
-                            x.XML = doc.OuterXml;
-                        }
-                        catch { }
-                    }
-                },
-                x => x.Chunk01F.MapName = value,
-                x => x.MapName = value);
-            }
-        }
+        public string MapName { get; set; }
 
         /// <summary>
         /// The track's intended use.
         /// </summary>
-        public TrackKind? Kind
-        {
-            get => GetValue<Chunk003, Chunk011>(x => x.Kind, x => x.Kind, DifferenceSolution.FirstChunk) as TrackKind?;
-            set => SetValue<Chunk003, Chunk011>(x => x.Kind = value.GetValueOrDefault(), x => x.Kind = value.GetValueOrDefault());
-        }
-
-        public bool? Locked
-        {
-            get => GetValue<Chunk003>(x => x.Locked) as bool?;
-            set => SetValue<Chunk003>(x => x.Locked = value);
-        }
+        public TrackKind? Kind { get; set; }
 
         /// <summary>
         /// Password of the map used by older tracks.
         /// </summary>
         public string Password
         {
-            get => GetValue<Chunk003, Chunk014>(x => x.Password, x => x.Password) as string;
-            set => SetValue<Chunk003, Chunk014>(x => x.Password = value, x => x.Password = value);
+            get
+            {
+                DiscoverChunk<Chunk03043014>();
+                return password;
+            }
+            set => password = value;
         }
 
-        public string DecorationName
-        {
-            get => GetValue<Chunk013, Chunk01F>(x => x.Chunk01F.Decoration.ID, x => x.Decoration.ID) as string;
-            set => SetValue<Chunk003, Chunk013, Chunk01F>(x => x.Decoration.ID = value, x => x.Chunk01F.Decoration.ID = value, x => x.Decoration.ID = value);
-        }
-
-        public string DecorationAuthor
-        {
-            get => GetValue<Chunk003, Chunk013, Chunk01F>(x => x.Decoration?.Author, x => x.Chunk01F.Decoration.Author, x => x.Decoration.Author) as string;
-            set => SetValue<Chunk003, Chunk013, Chunk01F>(x => x.Decoration.Author = value, x => x.Chunk01F.Decoration.Author = value, x => x.Decoration.Author = value);
-        }
+        public Meta Decoration { get; set; }
 
         public string Collection
         {
-            get => GetValue<Chunk003, Chunk013, Chunk01F, Chunk003, Chunk013, Chunk01F>(x => x.Decoration?.Collection, x => x.Chunk01F.Decoration.Collection, x => x.Decoration.Collection,
-                x => x.MapInfo.Collection, x => x.Chunk01F.MapInfo.Collection, x => x.MapInfo.Collection) as string;
-            set => SetValue<Chunk003, Chunk013, Chunk01F, Chunk003, Chunk013, Chunk01F>(x => x.Decoration.Collection = value, x => x.Chunk01F.Decoration.Collection = value, x => x.Decoration.Collection = value,
-            x => x.MapInfo.Collection = value, x => x.Chunk01F.MapInfo.Collection = value, x => x.MapInfo.Collection = value);
+            get => Decoration?.Collection ?? MapInfo?.Collection;
+            set
+            {
+                if (Decoration != null)
+                    Decoration.Collection = value;
+                if (MapInfo != null)
+                    MapInfo.Collection = value;
+            }
         }
 
         /// <summary>
         /// Origin of the map.
         /// </summary>
-        public Vector2? MapOrigin
-        {
-            get => GetValue<Chunk003>(x => x.MapOrigin) as Vector2?;
-            set => SetValue<Chunk003>(x => x.MapOrigin = value);
-        }
+        public Vector2? MapOrigin { get; set; }
 
         /// <summary>
-        /// Target of the map. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="4"/></c>.
+        /// Target of the map.
         /// </summary>
-        public Vector2? MapTarget
-        {
-            get => GetValue<Chunk003>(x => x.MapTarget) as Vector2?;
-            set => SetValue<Chunk003>(x => x.MapTarget = value);
-        }
-
-        /// <summary>
-        /// Name of the map type script.
-        /// </summary>
-        public string MapType
-        {
-            get
-            {
-                return GetValue<Chunk003, Chunk005>(x => x.MapType, x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var desc = header.Element("desc");
-                            if (desc != null)
-                            {
-                                var mapType = desc.Attribute("maptype");
-                                if (mapType != null)
-                                    return mapType.Value;
-                            }
-                        }
-                    }
-                    return null;
-                }) as string;
-            }
-            set
-            {
-                SetValue<Chunk003, Chunk005>(x =>
-                {
-                    if (x.Version < 6)
-                        x.Version = 6;
-                    x.MapType = value;
-                }, x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var desc = header.Element("desc");
-                            if (desc != null)
-                            {
-                                var mapType = desc.Attribute("maptype");
-                                if (mapType != null)
-                                {
-                                    mapType.Value = value;
-                                    x.XML = header.ToString(SaveOptions.DisableFormatting);
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        }
-
-        /// <summary>
-        /// Style of the map (Fullspeed, LOL, Tech), usually unused and defined by user.
-        /// </summary>
-        public string MapStyle
-        {
-            get
-            {
-                return GetValue<Chunk003, Chunk005>(x => x.MapStyle, x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var desc = header.Element("desc");
-                            if (desc != null)
-                            {
-                                var mapStyle = desc.Attribute("mapstyle");
-                                if (mapStyle != null)
-                                    return mapStyle.Value;
-                            }
-                        }
-                    }
-                    return null;
-                }) as string;
-            }
-            set
-            {
-                SetValue<Chunk003, Chunk005>(x => x.MapStyle = value, x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var desc = header.Element("desc");
-                            if (desc != null)
-                            {
-                                var mapStyle = desc.Attribute("mapstyle");
-                                if (mapStyle != null)
-                                {
-                                    mapStyle.Value = value.ToString();
-                                    x.XML = header.ToString(SaveOptions.DisableFormatting);
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        }
-
-        public ulong? LightmapCacheUID
-        {
-            get => GetValue<Chunk003>(x => x.LightmapCacheUID) as ulong?;
-            set => SetValue<Chunk003>(x => x.LightmapCacheUID = value);
-        }
-
-        /// <summary>
-        /// Version of the lightmap calculation.
-        /// </summary>
-        public byte? LightmapVersion
-        {
-            get
-            {
-                return GetValue<Chunk003, Chunk005>(x => x.LightmapVersion, x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var lightmap = header.Attribute("lightmap");
-                            if (lightmap != null)
-                                return Convert.ToByte(lightmap.Value);
-                        }
-                    }
-                    return null;
-                }) as byte?;
-            }
-            set
-            {
-                SetValue<Chunk003, Chunk005>(x => x.LightmapVersion = value, x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var lightmap = header.Attribute("lightmap");
-                            if (lightmap != null)
-                            {
-                                lightmap.Value = value.ToString();
-                                x.XML = header.ToString(SaveOptions.DisableFormatting);
-                            }
-                        }
-                    }
-                });
-            }
-        }
-
-        public string Version
-        {
-            get
-            {
-                return GetValue<Chunk005>(x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var version = header.Attribute("version");
-                            if (version != null)
-                                return version.Value;
-                        }
-                    }
-                    return null;
-                }) as string;
-            }
-            set
-            {
-                SetValue<Chunk005>(x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var version = header.Attribute("version");
-                            if (version != null)
-                            {
-                                version.Value = value;
-                                x.XML = header.ToString(SaveOptions.DisableFormatting);
-                            }
-                        }
-                    }
-                });
-            }
-        }
-
-        public string ExeBuild
-        {
-            get
-            {
-                return GetValue<Chunk005>(x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var exeBuild = header.Attribute("exebuild");
-                            if (exeBuild != null)
-                                return exeBuild.Value;
-                        }
-                    }
-                    return null;
-                }) as string;
-            }
-            set
-            {
-                SetValue<Chunk005>(x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var exeBuild = header.Attribute("exebuild");
-                            if (exeBuild != null)
-                            {
-                                exeBuild.Value = value;
-                                x.XML = header.ToString(SaveOptions.DisableFormatting);
-                            }
-                        }
-                    }
-                });
-            }
-        }
-
-        public string ExeVersion
-        {
-            get
-            {
-                return GetValue<Chunk005>(x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var exeVer = header.Attribute("exever");
-                            if (exeVer != null)
-                                return exeVer.Value;
-                        }
-                    }
-                    return null;
-                }) as string;
-            }
-            set
-            {
-                SetValue<Chunk005>(x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var exeVer = header.Attribute("exever");
-                            if (exeVer != null)
-                            {
-                                exeVer.Value = value;
-                                x.XML = header.ToString(SaveOptions.DisableFormatting);
-                            }
-                        }
-                    }
-                });
-            }
-        }
+        public Vector2? MapTarget { get; set; }
 
         /// <summary>
         /// Title pack the map was built in.
         /// </summary>
-        public string TitleUID
+        public string TitleID
         {
             get
             {
-                return GetValue<Chunk003, Chunk005>(x => x.TitleUID, x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var title = header.Attribute("title");
-                            if (title != null)
-                                return title.Value;
-                        }
-                    }
-                    return null;
-                }) as string;
+                DiscoverChunk<Chunk03043051>();
+                return titleID;
             }
-            set
-            {
-                SetValue<Chunk003, Chunk005>(x =>
-                {
-                    if (x.Version < 11)
-                        x.Version = 11;
-                    x.TitleUID = value;
-                }, x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var title = header.Attribute("title");
-                            if (title != null)
-                            {
-                                title.Value = value;
-                                x.XML = header.ToString(SaveOptions.DisableFormatting);
-                            }
-                        }
-                    }
-                });
-            }
+            set => titleID = value;
         }
 
-        /// <summary>
-        /// XML track information and dependencies.
-        /// </summary>
-        public string XML
-        {
-            get => GetValue<Chunk005>(x => x.XML) as string;
-            set => SetValue<Chunk005>(x => x.XML = value);
-        }
-
-        public Dependency[] Dependencies
+        public string BuildVersion
         {
             get
             {
-                return GetValue<Chunk005>(x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var deps = header.Element("deps");
-                            if (deps != null)
-                            {
-                                var depList = deps.Elements();
-                                var dependencies = new Dependency[depList.Count()];
-
-                                var i = 0;
-                                foreach (var dep in depList)
-                                {
-                                    var file = "";
-                                    var fileAtt = dep.Attribute("file");
-                                    if (fileAtt != null) file = fileAtt.Value;
-
-                                    var url = "";
-                                    var urlAtt = dep.Attribute("url");
-                                    if (urlAtt != null) url = urlAtt.Value;
-
-                                    dependencies[i] = new Dependency(file, url);
-
-                                    i++;
-                                }
-
-                                return dependencies;
-                            }
-                        }
-                    }
-                    return null;
-                }) as Dependency[];
+                DiscoverChunk<Chunk03043051>();
+                return buildVersion;
             }
+            set => buildVersion = value;
         }
 
-        [IgnoreDataMember]
-        public Bitmap Thumbnail
-        {
-            get => GetValue<Chunk007>(x =>
-            {
-                if (x.Thumbnail == null) return null;
-                return x.Thumbnail.Result;
-            }) as Bitmap;
-            set => SetValue<Chunk007>(x => x.Thumbnail = Task.Run(() => value));
-        }
-
-        public string Comments
-        {
-            get => GetValue<Chunk007, Chunk028>(x => x.Comments, x => x.Comments) as string;
-            set => SetValue<Chunk007, Chunk028>(x => x.Comments = value, x => x.Comments = value);
-        }
+        public string Comments { get; set; }
 
         public int? AuthorVersion
         {
-            get => GetValue<Chunk008>(x => x.AuthorVersion) as int?;
-            set => SetValue<Chunk008>(x => x.AuthorVersion = value.GetValueOrDefault());
+            get
+            {
+                DiscoverChunk<Chunk03043042>();
+                return authorVersion;
+            }
+            set => authorVersion = value;
         }
 
         public string AuthorNickname
         {
-            get => GetValue<Chunk008>(x => x.AuthorNickname) as string;
-            set => SetValue<Chunk008>(x => x.AuthorNickname = value);
+            get
+            {
+                DiscoverChunk<Chunk03043042>();
+                return authorNickname;
+            }
+            set => authorNickname = value;
         }
 
         public string AuthorZone
         {
-            get => GetValue<Chunk008>(x => x.AuthorZone) as string;
-            set => SetValue<Chunk008>(x => x.AuthorZone = value);
+            get
+            {
+                DiscoverChunk<Chunk03043042>();
+                return authorZone;
+            }
+            set => authorZone = value;
         }
 
         public string AuthorExtraInfo
         {
-            get => GetValue<Chunk008>(x => x.AuthorExtraInfo) as string;
-            set => SetValue<Chunk008>(x => x.AuthorExtraInfo = value);
-        }
-
-        public string PlayerModelID
-        {
             get
             {
-                return GetValue<Chunk005, Chunk00D>(x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var playermodel = header.Element("playermodel");
-                            if (playermodel != null)
-                            {
-                                var id = playermodel.Attribute("id");
-                                if (id != null)
-                                    return id.Value;
-                            }
-                        }
-                    }
-                    return null;
-                },
-                x =>
-                {
-                    if (x.Vehicle == null) return null;
-                    return x.Vehicle.ID;
-                }) as string;
+                DiscoverChunk<Chunk03043042>();
+                return authorExtraInfo;
             }
-            set
-            {
-                SetValue<Chunk005, Chunk00D>(x =>
-                {
-                    if (x.XML != "")
-                    {
-                        var header = XElement.Parse(x.XML);
-                        if (header != null)
-                        {
-                            var playermodel = header.Element("playermodel");
-                            if (playermodel != null)
-                            {
-                                var id = playermodel.Attribute("id");
-                                if (id != null)
-                                {
-                                    id.Value = value;
-                                    x.XML = header.ToString(SaveOptions.DisableFormatting);
-                                }
-                            }
-                        }
-                    }
-                },
-                x => x.Vehicle.ID = value);
-            }
+            set => authorExtraInfo = value;
         }
+
+        /// <summary>
+        /// Vehicle metadata info.
+        /// </summary>
+        public Meta Vehicle { get; set; }
 
         /// <summary>
         /// Map parameters.
         /// </summary>
-        public CGameCtnChallengeParameters ChallengeParameters
-        {
-            get => GetValue<Chunk011>(x => x.ChallengeParameters) as CGameCtnChallengeParameters;
-        }
+        public CGameCtnChallengeParameters ChallengeParameters { get; set; }
 
         /// <summary>
         /// List of puzzle pieces.
         /// </summary>
-        public CGameCtnCollectorList CollectorList
-        {
-            get => GetValue<Chunk011>(x => x.CollectorList) as CGameCtnCollectorList;
-        }
+        public CGameCtnCollectorList CollectorList { get; set; }
 
         /// <summary>
         /// All checkpoints and their map coordinates. Used by older Trackmania.
         /// </summary>
         public Int3[] Checkpoints
         {
-            get => GetValue<Chunk017>(x => x.Checkpoints) as Int3[];
-            set => SetValue<Chunk017>(x => x.Checkpoints = value);
+            get
+            {
+                DiscoverChunk<Chunk03043017>();
+                return checkpoints;
+            }
+            set => checkpoints = value;
         }
 
         public FileRef ModPackDesc
         {
-            get => GetValue<Chunk019>(x => x.ModPackDesc) as FileRef;
-            set => SetValue<Chunk019>(x => x.ModPackDesc = value);
+            get
+            {
+                DiscoverChunk<Chunk03043019>();
+                return modPackDesc;
+            }
+            set
+            {
+                DiscoverChunk<Chunk03043019>();
+                modPackDesc = value;
+            }
         }
 
         public PlayMode? Mode
         {
-            get => GetValue<Chunk01C>(x => x.Mode) as PlayMode?;
-            set => SetValue<Chunk01C>(x => x.Mode = value.GetValueOrDefault());
+            get
+            {
+                DiscoverChunk<Chunk0304301C>();
+                return mode;
+            }
+            set => mode = value;
         }
 
-        public Int3? Size
-        {
-            get => GetValue<Chunk013, Chunk01F>(x => x.Chunk01F.Size, x => x.Size) as Int3?;
-            set => SetValue<Chunk013, Chunk01F>(x => x.Chunk01F.Size = value.GetValueOrDefault(), x => x.Size = value.GetValueOrDefault());
-        }
+        public Int3? Size { get; set; }
 
-        public bool? NeedUnlock
-        {
-            get => GetValue<Chunk013, Chunk01F>(x => x.Chunk01F.NeedUnlock, x => x.NeedUnlock) as bool?;
-            set => SetValue<Chunk013, Chunk01F>(x => x.Chunk01F.NeedUnlock = value.GetValueOrDefault(), x => x.NeedUnlock = value.GetValueOrDefault());
-        }
+        public bool? NeedUnlock { get; set; }
+
+        public CGameCtnBlock[] OldBlocks { get; set; }
 
         /// <summary>
         /// Array of all blocks on the map.
         /// </summary>
-        public List<Block> Blocks
+        public List<Block> Blocks { get; set; }
+
+        public int NbBlocks
         {
-            get => GetValue<Chunk013, Chunk01F>(x => x.Chunk01F.Blocks, x => x.Blocks) as List<Block>;
-            set => SetValue<Chunk013, Chunk01F>(x => x.Chunk01F.Blocks = value, x => x.Blocks = value);
+            get => Blocks.Where(x => x.Flags != -1).Count();
         }
 
-        public ReadOnlyCollection<FreeBlock> FreeBlocks
-        {
-            get => GetValue<Chunk05F>(x => x.FreeBlocks) as ReadOnlyCollection<FreeBlock>;
-        }
+        public ReadOnlyCollection<FreeBlock> FreeBlocks => GetChunk<Chunk0304305F>()?.FreeBlocks;
 
-        public CGameCtnMediaClip ClipIntro
-        {
-            get => GetValue<Chunk021, Chunk049>(x => x.ClipIntro, x => x.ClipIntro) as CGameCtnMediaClip;
-        }
+        public CGameCtnMediaClip ClipIntro { get; set; }
 
-        public CGameCtnMediaClipGroup ClipGroupInGame
-        {
-            get => GetValue<Chunk021, Chunk049>(x => x.ClipGroupInGame, x => x.ClipGroupInGame) as CGameCtnMediaClipGroup;
-        }
+        public CGameCtnMediaClipGroup ClipGroupInGame { get; set; }
 
-        public CGameCtnMediaClipGroup ClipGroupEndRace
-        {
-            get => GetValue<Chunk021, Chunk049>(x => x.ClipGroupEndRace, x => x.ClipGroupEndRace) as CGameCtnMediaClipGroup;
-        }
+        public CGameCtnMediaClipGroup ClipGroupEndRace { get; set; }
 
-        public FileRef CustomMusicPackDesc
-        {
-            get => GetValue<Chunk024>(x => x.CustomMusicPackDesc) as FileRef;
-            set => SetValue<Chunk024>(x => x.CustomMusicPackDesc = value);
-        }
+        public CGameCtnMediaClip ClipAmbiance { get; set; }
 
-        public Vector2? MapCoordOrigin
-        {
-            get => GetValue<Chunk025>(x => x.MapCoordOrigin) as Vector2?;
-            set => SetValue<Chunk025>(x => x.MapCoordOrigin = value.GetValueOrDefault());
-        }
-
-        public Vector2? MapCoordTarget
-        {
-            get => GetValue<Chunk025>(x => x.MapCoordTarget) as Vector2?;
-            set => SetValue<Chunk025>(x => x.MapCoordTarget = value.GetValueOrDefault());
-        }
+        public FileRef CustomMusicPackDesc { get; set; }
 
         public byte[] HashedPassword
         {
-            get => GetValue<Chunk029>(x => x.HashedPassword) as byte[];
-            set => SetValue<Chunk029>(x => x.HashedPassword = value);
+            get
+            {
+                DiscoverChunk<Chunk03043029>();
+                return hashedPassword;
+            }
+            set => hashedPassword = value;
         }
 
         public uint? CRC32
         {
-            get => GetValue<Chunk029>(x => x.CRC32) as uint?;
-            set => SetValue<Chunk029>(x => x.CRC32 = value.GetValueOrDefault());
+            get
+            {
+                DiscoverChunk<Chunk03043029>();
+                return crc32;
+            }
+            set => crc32 = value;
         }
 
         /// <summary>
@@ -1460,8 +421,12 @@ namespace GBX.NET.Engines.Game
         /// </summary>
         public Vector3? ThumbnailPosition
         {
-            get => GetValue<Chunk036>(x => x.ThumbnailPosition) as Vector3?;
-            set => SetValue<Chunk036>(x => x.ThumbnailPosition = value.GetValueOrDefault());
+            get
+            {
+                DiscoverChunk<Chunk03043036>();
+                return thumbnailPosition;
+            }
+            set => thumbnailPosition = value;
         }
 
         /// <summary>
@@ -1469,8 +434,12 @@ namespace GBX.NET.Engines.Game
         /// </summary>
         public Vector3? ThumbnailPitchYawRoll
         {
-            get => GetValue<Chunk036>(x => x.ThumbnailPitchYawRoll) as Vector3?;
-            set => SetValue<Chunk036>(x => x.ThumbnailPitchYawRoll = value.GetValueOrDefault());
+            get
+            {
+                DiscoverChunk<Chunk03043036>();
+                return thumbnailPitchYawRoll;
+            }
+            set => thumbnailPitchYawRoll = value;
         }
 
         /// <summary>
@@ -1478,19 +447,92 @@ namespace GBX.NET.Engines.Game
         /// </summary>
         public float? ThumbnailFOV
         {
-            get => GetValue<Chunk036>(x => x.ThumbnailFOV) as float?;
-            set => SetValue<Chunk036>(x => x.ThumbnailFOV = value.GetValueOrDefault());
+            get
+            {
+                DiscoverChunk<Chunk03043036>();
+                return thumbnailFOV;
+            }
+            set => thumbnailFOV = value;
+        }
+
+        public Task<CHmsLightMapCache> LightmapCache
+        {
+            get
+            {
+                DiscoverChunk<Chunk0304303D>();
+                return lightmapCache;
+            }
+            set => lightmapCache = value;
         }
 
         public List<CGameCtnAnchoredObject> Items
         {
-            get => GetValue<Chunk040>(x => x.Items) as List<CGameCtnAnchoredObject>;
-            set => SetValue<Chunk040>(x => x.Items = value);
+            get
+            {
+                DiscoverChunk<Chunk03043040>();
+                return items;
+            }
+            set => items = value;
+        }
+
+        public Task<CGameCtnZoneGenealogy[]> Genealogies
+        {
+            get
+            {
+                DiscoverChunk<Chunk03043043>();
+                return genealogies;
+            }
+            set => genealogies = value;
         }
 
         public CScriptTraitsMetadata MetadataTraits
         {
-            get => GetValue<Chunk044>(x => x.MetadataTraits) as CScriptTraitsMetadata;
+            get
+            {
+                DiscoverChunk<Chunk03043044>();
+                return metadataTraits;
+            }
+            set => metadataTraits = value;
+        }
+
+        public string ObjectiveTextAuthor
+        {
+            get
+            {
+                DiscoverChunk<Chunk0304304B>();
+                return objectiveTextAuthor;
+            }
+            set => objectiveTextAuthor = value;
+        }
+
+        public string ObjectiveTextGold
+        {
+            get
+            {
+                DiscoverChunk<Chunk0304304B>();
+                return objectiveTextGold;
+            }
+            set => objectiveTextGold = value;
+        }
+
+        public string ObjectiveTextSilver
+        {
+            get
+            {
+                DiscoverChunk<Chunk0304304B>();
+                return objectiveTextSilver;
+            }
+            set => objectiveTextSilver = value;
+        }
+
+        public string ObjectiveTextBronze
+        {
+            get
+            {
+                DiscoverChunk<Chunk0304304B>();
+                return objectiveTextBronze;
+            }
+            set => objectiveTextBronze = value;
         }
 
         #endregion
@@ -1517,70 +559,17 @@ namespace GBX.NET.Engines.Game
         #region Methods
 
         /// <summary>
-        /// Exports the map's thumbnail.
-        /// </summary>
-        /// <param name="stream">Stream to export to.</param>
-        /// <param name="format">Image format to use.</param>
-        public void ExportThumbnail(Stream stream, ImageFormat format)
-        {
-            CallChunkMethod<Chunk007>(x => x.ExportThumbnail(stream, format));
-        }
-
-        /// <summary>
-        /// Exports the map's thumbnail.
-        /// </summary>
-        /// <param name="fileName">File to export to.</param>
-        /// <param name="format">Image format to use.</param>
-        public void ExportThumbnail(string fileName, ImageFormat format)
-        {
-            CallChunkMethod<Chunk007>(x => x.ExportThumbnail(fileName, format));
-        }
-
-        /// <summary>
-        /// Asynchronously imports (and replaces) a thumbnail to use for the map.
-        /// </summary>
-        /// <param name="stream">Stream to import from.</param>
-        /// <returns>A task that processes the thumbnail.</returns>
-        public Task<Bitmap> ImportThumbnailAsync(Stream stream)
-        {
-            return CallChunkMethod<Chunk007, Task<Bitmap>>(x => x.ImportThumbnailAsync(stream));
-        }
-
-        /// <summary>
-        /// Asynchronously imports (and replaces) a thumbnail to use for the map.
-        /// </summary>
-        /// <param name="fileName">File to import from.</param>
-        /// <returns>A task that processes the thumbnail.</returns>
-        public Task<Bitmap> ImportThumbnailAsync(string fileName)
-        {
-            return CallChunkMethod<Chunk007, Task<Bitmap>>(x => x.ImportThumbnailAsync(fileName));
-        }
-
-        /// <summary>
-        /// Imports (and replaces) a thumbnail to use for the map.
-        /// </summary>
-        /// <param name="stream">Stream to import from.</param>
-        public void ImportThumbnail(Stream stream)
-        {
-            CallChunkMethod<Chunk007>(x => x.ImportThumbnail(stream));
-        }
-
-        /// <summary>
-        /// Imports (and replaces) a thumbnail to use for the map.
-        /// </summary>
-        /// <param name="fileName">File to import from.</param>
-        public void ImportThumbnail(string fileName)
-        {
-            CallChunkMethod<Chunk007>(x => ImportThumbnail(fileName));
-        }
-
-        /// <summary>
         /// Sets a new map password.
         /// </summary>
         /// <param name="password">Password that will be hashed.</param>
         public void NewPassword(string password)
         {
-            CallChunkMethod<Chunk029>(x => x.NewPassword(password));
+            var md5 = MD5.Create();
+            HashedPassword = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
+
+            Crc32 crc32 = new Crc32();
+            crc32.Update(Encoding.ASCII.GetBytes("0x" + BitConverter.ToInt16(HashedPassword).ToString() + "???" + MapUid));
+            CRC32 = Convert.ToUInt32(crc32.Value);
         }
 
         /// <summary>
@@ -1588,23 +577,26 @@ namespace GBX.NET.Engines.Game
         /// </summary>
         public void CrackPassword()
         {
-            Body.GBX.RemoveBodyChunk<Chunk029>();
+            RemoveChunk<Chunk03043029>();
         }
 
         public void PlaceItem(Meta itemModel, Vector3 absolutePosition, Vector3 pitchYawRoll, Byte3 blockUnitCoord, Vector3 offsetPivot, int variant = 0)
         {
-            var chunkItems = CreateChunk<Chunk040>();
+            var chunkItems = CreateChunk<Chunk03043040>();
 
-            var it = new CGameCtnAnchoredObject(chunkItems);
-            var itChunk = it.CreateChunk<CGameCtnAnchoredObject.Chunk002>();
-            it.CreateChunk<CGameCtnAnchoredObject.Chunk004>();
-            itChunk.ItemModel = itemModel;
-            itChunk.AbsolutePositionInMap = absolutePosition;
-            itChunk.PitchYawRoll = pitchYawRoll;
-            itChunk.BlockUnitCoord = blockUnitCoord;
-            itChunk.PivotPosition = offsetPivot;
-            itChunk.Variant = variant;
-            chunkItems.Items.Add(it);
+            var it = new CGameCtnAnchoredObject((Chunk)chunkItems)
+            {
+                ItemModel = itemModel,
+                AbsolutePositionInMap = absolutePosition,
+                PitchYawRoll = pitchYawRoll,
+                BlockUnitCoord = blockUnitCoord,
+                PivotPosition = offsetPivot,
+                Variant = variant
+            };
+            it.Chunks = new ChunkList();
+            it.CreateChunk<CGameCtnAnchoredObject.Chunk03101002>();
+            it.CreateChunk<CGameCtnAnchoredObject.Chunk03101004>();
+            Items.Add(it);
         }
 
         public FreeBlock PlaceFreeBlock(string name, Vector3 position, Vector3 pitchYawRoll)
@@ -1618,7 +610,7 @@ namespace GBX.NET.Engines.Game
 
             Blocks.Add(block);
 
-            var freeBlockChunk = Body.GBX.CreateBodyChunk<Chunk05F>();
+            var freeBlockChunk = CreateChunk<Chunk0304305F>();
             freeBlockChunk.Vectors.Add(position);
             freeBlockChunk.Vectors.Add(pitchYawRoll);
 
@@ -1650,25 +642,21 @@ namespace GBX.NET.Engines.Game
         /// <returns>Returns <see cref="true"/> if any action was performed, otherwise <see cref="false"/>.</returns>
         public bool TransferMediaTrackerTo049(int upsaleTriggerCoord = 3)
         {
-            var chunk021 = GetChunk<Chunk021>();
-            var chunk049 = CreateChunk<Chunk049>();
+            var chunk021 = GetChunk<Chunk03043021>();
+            var chunk049 = CreateChunk<Chunk03043049>();
 
             if (chunk021 == null) return false;
 
-            chunk049.ClipIntro = chunk021.ClipIntro;
-            chunk049.ClipGroupInGame = chunk021.ClipGroupInGame;
-            chunk049.ClipGroupEndRace = chunk021.ClipGroupEndRace;
+            if (ClipIntro != null)
+                ConvertMediaClip(ClipIntro);
 
-            if (chunk049.ClipIntro != null && chunk049.ClipIntro != null)
-                ConvertMediaClip(chunk049.ClipIntro);
+            if (ClipGroupInGame != null)
+                ConvertMediaClipGroup(ClipGroupInGame);
 
-            if (chunk049.ClipGroupInGame != null && chunk049.ClipGroupInGame != null)
-                ConvertMediaClipGroup(chunk049.ClipGroupInGame);
+            if (ClipGroupEndRace != null)
+                ConvertMediaClipGroup(ClipGroupEndRace);
 
-            if (chunk049.ClipGroupEndRace != null && chunk049.ClipGroupEndRace != null)
-                ConvertMediaClipGroup(chunk049.ClipGroupEndRace);
-
-            Chunks.Remove<Chunk021>();
+            RemoveChunk<Chunk03043021>();
 
             void ConvertMediaClip(CGameCtnMediaClip node)
             {
@@ -1707,12 +695,12 @@ namespace GBX.NET.Engines.Game
 
             void ConvertMediaTrack(CGameCtnMediaTrack node)
             {
-                var chunk001 = node.GetChunk<CGameCtnMediaTrack.Chunk001>();
+                var chunk001 = node.GetChunk<CGameCtnMediaTrack.Chunk03078001>();
 
                 // Chunk 0x004 has to be removed so that ManiaPlanet accepts the entire map.
-                node.Chunks.Remove<CGameCtnMediaTrack.Chunk004>();
+                node.RemoveChunk<CGameCtnMediaTrack.Chunk03078004>();
 
-                chunk001.Blocks.RemoveAll(x => x is CGameCtnMediaBlockGhost); // Some ghosts can crash the game
+                node.Blocks.RemoveAll(x => x is CGameCtnMediaBlockGhost); // Some ghosts can crash the game
             }
 
             return true;
@@ -1720,20 +708,13 @@ namespace GBX.NET.Engines.Game
 
         public void OffsetMediaTrackerCameras(Vector3 offset)
         {
-            if (TryGetChunk(out Chunk021 c021))
-            {
-                OffsetCamerasInClip(c021.ClipIntro);
-                OffsetCamerasInClipGroup(c021.ClipGroupInGame);
-                OffsetCamerasInClipGroup(c021.ClipGroupEndRace);
-            }
-            else if (TryGetChunk(out Chunk049 c049))
-            {
-                OffsetCamerasInClip(c049.ClipIntro);
+            OffsetCamerasInClip(ClipIntro);
+            OffsetCamerasInClipGroup(ClipGroupInGame);
+            OffsetCamerasInClipGroup(ClipGroupEndRace);
+            OffsetCamerasInClip(ClipAmbiance);
+
+            if (TryGetChunk(out Chunk03043049 c049))
                 OffsetCamerasInClip(c049.ClipPodium);
-                OffsetCamerasInClipGroup(c049.ClipGroupInGame);
-                OffsetCamerasInClipGroup(c049.ClipGroupEndRace);
-                OffsetCamerasInClip(c049.ClipAmbiance);
-            }
 
             void OffsetCamerasInClipGroup(CGameCtnMediaClipGroup group)
             {
@@ -1778,16 +759,8 @@ namespace GBX.NET.Engines.Game
 
         public void OffsetMediaTrackerTriggers(Int3 offset)
         {
-            if (TryGetChunk(out Chunk021 c021))
-            {
-                OffsetTriggers(c021.ClipGroupInGame);
-                OffsetTriggers(c021.ClipGroupEndRace);
-            }
-            else if (TryGetChunk(out Chunk049 c049))
-            {
-                OffsetTriggers(c049.ClipGroupInGame);
-                OffsetTriggers(c049.ClipGroupEndRace);
-            }
+            OffsetTriggers(ClipGroupInGame);
+            OffsetTriggers(ClipGroupEndRace);
 
             void OffsetTriggers(CGameCtnMediaClipGroup group)
             {
@@ -1804,13 +777,13 @@ namespace GBX.NET.Engines.Game
 
         #region Chunks
 
-        #region 0x001 chunk (virtual skipper)
+        #region 0x001 chunk (Virtual Skipper)
 
         /// <summary>
-        /// CGameCtnChallenge 0x001 chunk (virtual skipper)
+        /// CGameCtnChallenge 0x001 chunk (Virtual Skipper)
         /// </summary>
-        [Chunk(0x03043001)]
-        public class Chunk001 : SkippableChunk
+        [Chunk(0x03043001, "Virtual Skipper")]
+        public class Chunk03043001 : HeaderChunk<CGameCtnChallenge>
         {
             /// <summary>
             /// Version of the chunk.
@@ -1866,11 +839,6 @@ namespace GBX.NET.Engines.Game
             public bool NoRules { get; set; }
 
             public bool StartSailUp { get; set; }
-
-            public Chunk001(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-              
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -1973,8 +941,8 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x002 chunk (map info)
         /// </summary>
-        [Chunk(0x03043002)]
-        public class Chunk002 : SkippableChunk
+        [Chunk(0x03043002, "map info")]
+        public class Chunk03043002 : HeaderChunk<CGameCtnChallenge>
         {
             /// <summary>
             /// Version of the chunk.
@@ -2031,15 +999,33 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public int? AuthorScore { get; set; }
 
+            public int? EditorMode { get; set; }
+
             /// <summary>
             /// If the track was made using the simple editor. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="11"/></c>.
             /// </summary>
-            public bool? CreatedWithSimpleEditor { get; set; }
+            public bool? CreatedWithSimpleEditor
+            {
+                get => (EditorMode & (1 << 0)) != 0;
+                set
+                {
+                    if (value.GetValueOrDefault()) EditorMode |= 1 << 0;
+                    else EditorMode &= ~(1 << 0);
+                }
+            }
 
             /// <summary>
             /// If the track uses ghost blocks. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="11"/></c>.
             /// </summary>
-            public bool? HasGhostBlocks { get; set; }
+            public bool? HasGhostBlocks
+            {
+                get => (EditorMode & (1 << 1)) != 0;
+                set
+                {
+                    if (value.GetValueOrDefault()) EditorMode |= 1 << 1;
+                    else EditorMode &= ~(1 << 1);
+                }
+            }
 
             /// <summary>
             /// Number of checkpoints on the map. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="13"/></c>.
@@ -2056,11 +1042,6 @@ namespace GBX.NET.Engines.Game
             public int Unknown3 { get; set; }
             public int Unknown4 { get; set; }
             public int Unknown5 { get; set; }
-
-            public Chunk002(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -2109,24 +1090,8 @@ namespace GBX.NET.Engines.Game
 
                                         if (Version >= 11)
                                         {
-                                            if(rw.Mode == GameBoxReaderWriterMode.Read)
-                                            {
-                                                var editorMode = rw.Reader.ReadInt32();
-                                                BitArray ba = new BitArray(new int[] { editorMode });
-                                                CreatedWithSimpleEditor = ba.Get(0);
-                                                HasGhostBlocks = ba.Get(1);
-                                            }
-                                            else if (rw.Mode == GameBoxReaderWriterMode.Write)
-                                            {
-                                                BitArray editorModeBit = new BitArray(32);
-                                                editorModeBit.Set(0, CreatedWithSimpleEditor.GetValueOrDefault());
-                                                editorModeBit.Set(1, HasGhostBlocks.GetValueOrDefault());
+                                            EditorMode = rw.Int32(EditorMode.GetValueOrDefault());
 
-                                                var editorMode = new int[1];
-                                                editorModeBit.CopyTo(editorMode, 0);
-                                                rw.Writer.Write(editorMode[0]);
-                                            }
-                                            
                                             if (Version >= 12)
                                             {
                                                 Unknown5 = rw.Int32(Unknown5);
@@ -2154,8 +1119,8 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x003 chunk (common)
         /// </summary>
-        [Chunk(0x03043003)]
-        public class Chunk003 : SkippableChunk
+        [Chunk(0x03043003, "common")]
+        public class Chunk03043003 : HeaderChunk<CGameCtnChallenge>
         {
             /// <summary>
             /// Version of the chunk.
@@ -2229,11 +1194,6 @@ namespace GBX.NET.Engines.Game
 
             public int Unknown1 { get; set; }
 
-            public Chunk003(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Byte(Version);
@@ -2298,18 +1258,13 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x004 chunk (version)
         /// </summary>
-        [Chunk(0x03043004)]
-        public class Chunk004 : SkippableChunk
+        [Chunk(0x03043004, "version")]
+        public class Chunk03043004 : HeaderChunk<CGameCtnChallenge>
         {
             /// <summary>
             /// Version of the chunk.
             /// </summary>
             public int Version { get; set; }
-
-            public Chunk004(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -2324,18 +1279,13 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x005 chunk (xml)
         /// </summary>
-        [Chunk(0x03043005)]
-        public class Chunk005 : SkippableChunk
+        [Chunk(0x03043005, "xml")]
+        public class Chunk03043005 : HeaderChunk<CGameCtnChallenge>
         {
             /// <summary>
             /// XML track information and dependencies.
             /// </summary>
             public string XML { get; set; }
-
-            public Chunk005(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
@@ -2350,8 +1300,8 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x007 chunk (thumbnail)
         /// </summary>
-        [Chunk(0x03043007)]
-        public class Chunk007 : SkippableChunk
+        [Chunk(0x03043007, "thumbnail")]
+        public class Chunk03043007 : HeaderChunk<CGameCtnChallenge>
         {
             /// <summary>
             /// Version of the chunk.
@@ -2371,16 +1321,11 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public string Comments { get; set; }
 
-            public Chunk007(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
 
-                if(Version != 0)
+                if (Version != 0)
                 {
                     using var ms = new MemoryStream();
                     if (rw.Mode == GameBoxReaderWriterMode.Write)
@@ -2397,7 +1342,7 @@ namespace GBX.NET.Engines.Game
                     Comments = rw.String(Comments);
                     rw.Bytes(Encoding.UTF8.GetBytes("</Comments>"), "</Comments>".Length);
 
-                    if(rw.Mode == GameBoxReaderWriterMode.Read && thumbnailData.Length > 0)
+                    if (rw.Mode == GameBoxReaderWriterMode.Read && thumbnailData.Length > 0)
                     {
                         Thumbnail = Task.Run(() =>
                         {
@@ -2500,8 +1445,8 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x008 chunk (author)
         /// </summary>
-        [Chunk(0x03043008)]
-        public class Chunk008 : SkippableChunk
+        [Chunk(0x03043008, "author")]
+        public class Chunk03043008 : HeaderChunk<CGameCtnChallenge>
         {
             /// <summary>
             /// Version of the chunk.
@@ -2527,11 +1472,6 @@ namespace GBX.NET.Engines.Game
 
             public string AuthorExtraInfo { get; set; }
 
-            public Chunk008(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
-
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
@@ -2550,22 +1490,12 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x00D chunk (vehicle)
         /// </summary>
-        [Chunk(0x0304300D)]
-        public class Chunk00D : Chunk
+        [Chunk(0x0304300D, "vehicle")]
+        public class Chunk0304300D : Chunk<CGameCtnChallenge>
         {
-            /// <summary>
-            /// Vehicle metadata info.
-            /// </summary>
-            public Meta Vehicle { get; set; }
-
-            public Chunk00D(CGameCtnChallenge node) : base(node)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Vehicle = rw.Meta(Vehicle);
+                n.Vehicle = rw.Meta(n.Vehicle);
             }
         }
 
@@ -2576,27 +1506,19 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x00F chunk (old block data)
         /// </summary>
-        [Chunk(0x0304300F)]
-        public class Chunk00F : Chunk
+        [Chunk(0x0304300F, "old block data")]
+        public class Chunk0304300F : Chunk<CGameCtnChallenge>
         {
-            public Meta MapInfo { get; set; }
-            public Int3 Size { get; set; }
             public int Unknown1 { get; set; }
-            public CGameCtnBlock[] Blocks { get; set; }
             public int Unknown2 { get; set; }
             public Meta Unknown3 { get; set; }
 
-            public Chunk00F(Node node) : base(node)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                MapInfo = rw.Meta(MapInfo);
-                Size = rw.Int3(Size);
+                n.MapInfo = rw.Meta(n.MapInfo);
+                n.Size = rw.Int3(n.Size.GetValueOrDefault());
                 Unknown1 = rw.Int32(Unknown1);
-                Blocks = rw.Array(Blocks,
+                n.OldBlocks = rw.Array(n.OldBlocks,
                     i => rw.Reader.ReadNodeRef<CGameCtnBlock>(),
                     x => rw.Writer.Write(x));
                 Unknown2 = rw.Int32(Unknown2);
@@ -2612,30 +1534,13 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x011 chunk
         /// </summary>
         [Chunk(0x03043011)]
-        public class Chunk011 : Chunk
+        public class Chunk03043011 : Chunk<CGameCtnChallenge>
         {
-            /// <summary>
-            /// List of puzzle pieces.
-            /// </summary>
-            public CGameCtnCollectorList CollectorList { get; set; }
-
-            public CGameCtnChallengeParameters ChallengeParameters { get; set; }
-
-            /// <summary>
-            /// The track's intended use.
-            /// </summary>
-            public TrackKind Kind { get; set; }
-
-            public Chunk011(CGameCtnChallenge node) : base(node)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                CollectorList = rw.NodeRef<CGameCtnCollectorList>(CollectorList);
-                ChallengeParameters = rw.NodeRef<CGameCtnChallengeParameters>(ChallengeParameters);
-                Kind = (TrackKind)rw.Int32((int)Kind);
+                n.CollectorList = rw.NodeRef<CGameCtnCollectorList>(n.CollectorList);
+                n.ChallengeParameters = rw.NodeRef<CGameCtnChallengeParameters>(n.ChallengeParameters);
+                n.Kind = (TrackKind)rw.Int32((int)(n.Kind ?? TrackKind.InProgress));
             }
         }
 
@@ -2647,14 +1552,9 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x012 chunk
         /// </summary>
         [Chunk(0x03043012)]
-        public class Chunk012 : Chunk
+        public class Chunk03043012 : Chunk<CGameCtnChallenge>
         {
-            public Chunk012(CGameCtnChallenge node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 rw.String(Unknown);
             }
@@ -2667,19 +1567,19 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x013 chunk (legacy block data)
         /// </summary>
-        [Chunk(0x03043013)]
-        public class Chunk013 : Chunk
+        [Chunk(0x03043013, "legacy block data")]
+        public class Chunk03043013 : Chunk<CGameCtnChallenge>
         {
-            public Chunk01F Chunk01F { get; }
+            public Chunk0304301F Chunk01F { get; }
 
-            public Chunk013(CGameCtnChallenge node) : base(node)
+            public Chunk03043013(CGameCtnChallenge node) : base(node)
             {
-                Chunk01F = new Chunk01F(node, this);
+                Chunk01F = new Chunk0304301F(node, this);
             }
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                Chunk01F.ReadWrite(rw);
+                Chunk01F.ReadWrite(n, rw);
             }
         }
 
@@ -2690,23 +1590,13 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x014 skippable chunk (legacy password)
         /// </summary>
-        [Chunk(0x03043014)]
-        public class Chunk014 : SkippableChunk
+        [Chunk(0x03043014, "legacy password")]
+        public class Chunk03043014 : SkippableChunk<CGameCtnChallenge>
         {
-            /// <summary>
-            /// Legacy password string.
-            /// </summary>
-            public string Password { get; set; }
-
-            public Chunk014(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
-                Password = rw.String(Password);
+                n.Password = rw.String(n.Password);
             }
         }
 
@@ -2718,14 +1608,9 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x016 skippable chunk
         /// </summary>
         [Chunk(0x03043016)]
-        public class Chunk016 : SkippableChunk
+        public class Chunk03043016 : SkippableChunk<CGameCtnChallenge>
         {
-            public Chunk016(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
             }
@@ -2738,22 +1623,12 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x017 skippable chunk (checkpoints)
         /// </summary>
-        [Chunk(0x03043017)]
-        public class Chunk017 : SkippableChunk
+        [Chunk(0x03043017, "checkpoints")]
+        public class Chunk03043017 : SkippableChunk<CGameCtnChallenge>
         {
-            /// <summary>
-            /// All checkpoints and their map coordinates.
-            /// </summary>
-            public Int3[] Checkpoints { get; set; }
-
-            public Chunk017(CGameCtnChallenge node, byte[] data) : base(node, data)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Checkpoints = rw.Array(Checkpoints, i => rw.Reader.ReadInt3(), x => rw.Writer.Write(x));
+                n.Checkpoints = rw.Array(n.Checkpoints, i => rw.Reader.ReadInt3(), x => rw.Writer.Write(x));
             }
         }
 
@@ -2764,24 +1639,13 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x018 skippable chunk (laps)
         /// </summary>
-        [Chunk(0x03043018)]
-        public class Chunk018 : SkippableChunk
+        [Chunk(0x03043018, "laps")]
+        public class Chunk03043018 : SkippableChunk<CGameCtnChallenge>
         {
-            public bool IsLapRace { get; set; }
-            /// <summary>
-            /// Number of laps.
-            /// </summary>
-            public int Laps { get; set; }
-
-            public Chunk018(CGameCtnChallenge node, byte[] data) : base(node, data)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                IsLapRace = rw.Boolean(IsLapRace);
-                Laps = rw.Int32(Laps);
+                n.TMObjective_IsLapRace = rw.Boolean(n.TMObjective_IsLapRace.GetValueOrDefault());
+                n.TMObjective_NbLaps = rw.Int32(n.TMObjective_NbLaps.GetValueOrDefault());
             }
         }
 
@@ -2792,22 +1656,12 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x019 skippable chunk (mod)
         /// </summary>
-        [Chunk(0x03043019)]
-        public class Chunk019 : SkippableChunk
+        [Chunk(0x03043019, "mod")]
+        public class Chunk03043019 : SkippableChunk<CGameCtnChallenge>
         {
-            /// <summary>
-            /// Used mod pack on the map.
-            /// </summary>
-            public FileRef ModPackDesc { get; set; }
-
-            public Chunk019(CGameCtnChallenge node, byte[] data) : base(node, data)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                ModPackDesc = rw.FileRef(ModPackDesc);
+                n.ModPackDesc = rw.FileRef(n.ModPackDesc);
             }
         }
 
@@ -2818,19 +1672,12 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x01C skippable chunk (play mode)
         /// </summary>
-        [Chunk(0x0304301C)]
-        public class Chunk01C : SkippableChunk
+        [Chunk(0x0304301C, "play mode")]
+        public class Chunk0304301C : SkippableChunk<CGameCtnChallenge>
         {
-            public PlayMode Mode { get; set; }
-
-            public Chunk01C(CGameCtnChallenge node, byte[] data) : base(node, data)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Mode = (PlayMode)rw.Int32((int)Mode);
+                n.Mode = (PlayMode)rw.Int32((int)n.Mode.GetValueOrDefault());
             }
         }
 
@@ -2841,61 +1688,31 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x01F chunk (block data)
         /// </summary>
-        [Chunk(0x0304301F)]
-        public class Chunk01F : Chunk
+        [Chunk(0x0304301F, "block data")]
+        public class Chunk0304301F : Chunk<CGameCtnChallenge>
         {
-            /// <summary>
-            /// Map metadata with UID.
-            /// </summary>
-            public Meta MapInfo { get; set; }
-
-            /// <summary>
-            /// Formatted name of the map.
-            /// </summary>
-            public string MapName { get; set; }
-
-            /// <summary>
-            /// Map base metadata info.
-            /// </summary>
-            public Meta Decoration { get; set; }
-
-            /// <summary>
-            /// Size of the placeable area in block coordinates.
-            /// </summary>
-            public Int3 Size { get; set; }
-
             public bool NeedUnlock { get; set; }
 
             public int? Version { get; set; }
 
-            public int NbBlocks
-            {
-                get => Blocks.Where(x => x.Flags != -1).Count();
-            }
-
-            /// <summary>
-            /// Array of all blocks on the map.
-            /// </summary>
-            public List<Block> Blocks { get; set; }
-
             readonly bool is013;
 
-            public Chunk01F(CGameCtnChallenge node) : this(node, null)
+            public Chunk0304301F(CGameCtnChallenge node) : this(node, null)
             {
 
             }
 
-            public Chunk01F(CGameCtnChallenge node, Chunk chunk) : base(node)
+            public Chunk0304301F(CGameCtnChallenge node, Chunk chunk) : base(node)
             {
-                is013 = chunk is Chunk013;
+                is013 = chunk is Chunk03043013;
             }
 
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                MapInfo = r.ReadMeta();
-                MapName = r.ReadString();
-                Decoration = r.ReadMeta();
-                Size = r.ReadInt3();
+                n.MapInfo = r.ReadMeta();
+                n.MapName = r.ReadString();
+                n.Decoration = r.ReadMeta();
+                n.Size = r.ReadInt3();
                 NeedUnlock = r.ReadBoolean();
 
                 if (!is013)
@@ -2950,23 +1767,23 @@ namespace GBX.NET.Engines.Game
                     blocks.Add(new Block(blockName, dir, (Int3)coord, flags, author, skin, parameters));
                 }
 
-                Blocks = blocks;
+                n.Blocks = blocks;
             }
 
-            public override void Write(GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
             {
-                w.Write(MapInfo);
-                w.Write(MapName);
-                w.Write(Decoration);
-                w.Write(Size);
+                w.Write(n.MapInfo);
+                w.Write(n.MapName);
+                w.Write(n.Decoration);
+                w.Write(n.Size.GetValueOrDefault());
                 w.Write(NeedUnlock);
 
                 if (!is013)
                     w.Write(Version.GetValueOrDefault());
 
-                w.Write(NbBlocks);
+                w.Write(n.NbBlocks);
 
-                foreach (var x in Blocks)
+                foreach (var x in n.Blocks)
                 {
                     w.WriteLookbackString(x.Name);
                     w.Write((byte)x.Direction);
@@ -2994,39 +1811,19 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x021 chunk (TMUF mediatracker)
+        #region 0x021 chunk (old mediatracker)
 
         /// <summary>
-        /// CGameCtnChallenge 0x021 chunk (TMUF mediatracker)
+        /// CGameCtnChallenge 0x021 chunk (old mediatracker)
         /// </summary>
-        [Chunk(0x03043021)]
-        public class Chunk021 : Chunk
+        [Chunk(0x03043021, "old mediatracker")]
+        public class Chunk03043021 : Chunk<CGameCtnChallenge>
         {
-            /// <summary>
-            /// Reference to <see cref="CGameCtnMediaClip"/> intro.
-            /// </summary>
-            public CGameCtnMediaClip ClipIntro { get; set; }
-
-            /// <summary>
-            /// Reference to <see cref="CGameCtnMediaClipGroup"/> in game.
-            /// </summary>
-            public CGameCtnMediaClipGroup ClipGroupInGame { get; set; }
-
-            /// <summary>
-            /// Reference to <see cref="CGameCtnMediaClipGroup"/> end race.
-            /// </summary>
-            public CGameCtnMediaClipGroup ClipGroupEndRace { get; set; }
-
-            public Chunk021(CGameCtnChallenge node) : base(node)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                ClipIntro = rw.NodeRef<CGameCtnMediaClip>(ClipIntro);
-                ClipGroupInGame = rw.NodeRef<CGameCtnMediaClipGroup>(ClipGroupInGame);
-                ClipGroupEndRace = rw.NodeRef<CGameCtnMediaClipGroup>(ClipGroupEndRace);
+                n.ClipIntro = rw.NodeRef<CGameCtnMediaClip>(n.ClipIntro);
+                n.ClipGroupInGame = rw.NodeRef<CGameCtnMediaClipGroup>(n.ClipGroupInGame);
+                n.ClipGroupEndRace = rw.NodeRef<CGameCtnMediaClipGroup>(n.ClipGroupEndRace);
             }
         }
 
@@ -3038,14 +1835,9 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x022 chunk
         /// </summary>
         [Chunk(0x03043022)]
-        public class Chunk022 : Chunk
+        public class Chunk03043022 : Chunk<CGameCtnChallenge>
         {
-            public Chunk022(CGameCtnChallenge node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 rw.Boolean(Unknown);
             }
@@ -3058,20 +1850,15 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x024 chunk (music)
         /// </summary>
-        [Chunk(0x03043024)]
-        public class Chunk024 : Chunk
+        [Chunk(0x03043024, "music")]
+        public class Chunk03043024 : Chunk<CGameCtnChallenge>
         {
             /// <summary>
             /// Reference to a music file.
             /// </summary>
             public FileRef CustomMusicPackDesc { get; set; }
 
-            public Chunk024(CGameCtnChallenge node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 CustomMusicPackDesc = rw.FileRef(CustomMusicPackDesc);
 
@@ -3092,20 +1879,12 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x025 chunk
         /// </summary>
         [Chunk(0x03043025)]
-        public class Chunk025 : Chunk
+        public class Chunk03043025 : Chunk<CGameCtnChallenge>
         {
-            public Vector2 MapCoordOrigin { get; set; }
-            public Vector2 MapCoordTarget { get; set; }
-
-            public Chunk025(CGameCtnChallenge node) : base(node)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                MapCoordOrigin = rw.Vec2(MapCoordOrigin);
-                MapCoordTarget = rw.Vec2(MapCoordTarget);
+                n.MapOrigin = rw.Vec2(n.MapOrigin.GetValueOrDefault());
+                n.MapTarget = rw.Vec2(n.MapTarget.GetValueOrDefault());
             }
         }
 
@@ -3117,16 +1896,11 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x026 chunk
         /// </summary>
         [Chunk(0x03043026)]
-        public class Chunk026 : Chunk
+        public class Chunk03043026 : Chunk<CGameCtnChallenge>
         {
             public Node ClipGlobal { get; set; }
 
-            public Chunk026(CGameCtnChallenge node) : base(node)
-            {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 ClipGlobal = rw.NodeRef(ClipGlobal);
             }
@@ -3140,19 +1914,14 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x027 chunk
         /// </summary>
         [Chunk(0x03043027)]
-        public class Chunk027 : Chunk
+        public class Chunk03043027 : Chunk<CGameCtnChallenge>
         {
             public bool ArchiveGmCamVal { get; set; }
             public Vector3? Vec1 { get; set; }
             public Vector3? Vec2 { get; set; }
             public Vector3? Vec3 { get; set; }
 
-            public Chunk027(CGameCtnChallenge node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 ArchiveGmCamVal = rw.Boolean(ArchiveGmCamVal);
 
@@ -3179,22 +1948,21 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x028 chunk (comments)
         /// </summary>
-        [Chunk(0x03043028)]
-        public class Chunk028 : Chunk
+        [Chunk(0x03043028, "comments")]
+        public class Chunk03043028 : Chunk<CGameCtnChallenge>
         {
-            public Chunk027 Chunk027 { get; }
-            public string Comments { get; set; }
+            public Chunk03043027 Chunk027 { get; }
 
-            public Chunk028(CGameCtnChallenge node) : base(node)
+            public Chunk03043028()
             {
-                Chunk027 = new Chunk027(node);
+                Chunk027 = new Chunk03043027();
             }
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 Chunk027.Unknown.Position = 0;
-                Chunk027.ReadWrite(rw);
-                Comments = rw.String(Comments);
+                Chunk027.ReadWrite(n, rw);
+                n.Comments = rw.String(n.Comments);
             }
         }
 
@@ -3205,38 +1973,13 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x029 skippable chunk (password)
         /// </summary>
-        [Chunk(0x03043029)]
-        public class Chunk029 : SkippableChunk
+        [Chunk(0x03043029, "password")]
+        public class Chunk03043029 : SkippableChunk<CGameCtnChallenge>
         {
-            /// <summary>
-            /// 128bit password MD5 hash.
-            /// </summary>
-            public byte[] HashedPassword { get; set; }
-            public uint CRC32 { get; set; }
-
-            public Chunk029(CGameCtnChallenge node, byte[] data) : base(node, data)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                HashedPassword = rw.Bytes(HashedPassword, 16);
-                CRC32 = rw.UInt32(CRC32);
-            }
-
-            /// <summary>
-            /// Sets a new map password.
-            /// </summary>
-            /// <param name="password">Password that will be hashed.</param>
-            public void NewPassword(string password)
-            {
-                var md5 = MD5.Create();
-                HashedPassword = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
-
-                Crc32 crc32 = new Crc32();
-                crc32.Update(Encoding.ASCII.GetBytes("0x" + BitConverter.ToInt16(HashedPassword).ToString() + "???" + (Node as CGameCtnChallenge).MapUid));
-                CRC32 = Convert.ToUInt32(crc32.Value);
+                n.HashedPassword = rw.Bytes(n.HashedPassword, 16);
+                n.CRC32 = rw.UInt32(n.CRC32.GetValueOrDefault());
             }
         }
 
@@ -3248,14 +1991,9 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x02A chunk
         /// </summary>
         [Chunk(0x0304302A)]
-        public class Chunk02A : Chunk
+        public class Chunk0304302A : Chunk<CGameCtnChallenge>
         {
-            public Chunk02A(CGameCtnChallenge node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 rw.Boolean(Unknown);
             }
@@ -3268,34 +2006,14 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x036 skippable chunk (realtime thumbnail)
         /// </summary>
-        [Chunk(0x03043036)]
-        public class Chunk036 : SkippableChunk
+        [Chunk(0x03043036, "realtime thumbnail")]
+        public class Chunk03043036 : SkippableChunk<CGameCtnChallenge>
         {
-            /// <summary>
-            /// Position of the thumnail camera.
-            /// </summary>
-            public Vector3 ThumbnailPosition { get; set; }
-
-            /// <summary>
-            /// Pitch, yaw and roll of the thumbnail camera in radians.
-            /// </summary>
-            public Vector3 ThumbnailPitchYawRoll { get; set; }
-
-            /// <summary>
-            /// Thumbnail camera FOV.
-            /// </summary>
-            public float ThumbnailFOV { get; set; }
-
-            public Chunk036(CGameCtnChallenge node, byte[] data) : base(node, data)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                ThumbnailPosition = rw.Vec3(ThumbnailPosition);
-                ThumbnailPitchYawRoll = rw.Vec3(ThumbnailPitchYawRoll);
-                ThumbnailFOV = rw.Single(ThumbnailFOV);
+                n.ThumbnailPosition = rw.Vec3(n.ThumbnailPosition.GetValueOrDefault());
+                n.ThumbnailPitchYawRoll = rw.Vec3(n.ThumbnailPitchYawRoll.GetValueOrDefault());
+                n.ThumbnailFOV = rw.Single(n.ThumbnailFOV.GetValueOrDefault());
 
                 rw.Bytes(Unknown, 31);
             }
@@ -3309,18 +2027,12 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x03D skippable chunk (lightmaps)
         /// </summary>
         [IgnoreChunk]
-        [Chunk(0x0304303D)]
-        public class Chunk03D : SkippableChunk
+        [Chunk(0x0304303D, "lightmaps")]
+        public class Chunk0304303D : SkippableChunk<CGameCtnChallenge>
         {
             public int Version { get; set; }
-            public Task<CHmsLightMapCache> LightmapCache { get; set; }
 
-            public Chunk03D(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 unknownW.Write(r.ReadBoolean());
                 Version = r.ReadInt32();
@@ -3363,12 +2075,12 @@ namespace GBX.NET.Engines.Game
                         var compressedSize = r.ReadInt32();
                         var data = r.ReadBytes(compressedSize);
 
-                        LightmapCache = Task.Run(() =>
+                        n.LightmapCache = Task.Run(() =>
                         {
                             using var ms = new MemoryStream(data);
                             using var zlib = new InflaterInputStream(ms);
                             using var gbxr = new GameBoxReader(zlib);
-                            return (CHmsLightMapCache)Node.Parse(Node.Lookbackable, 0x06022000, gbxr);
+                            return (CHmsLightMapCache)Parse(Node.Body, 0x06022000, gbxr);
                         });
                     }
                 }
@@ -3382,26 +2094,25 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x040 skippable chunk (items)
         /// </summary>
-        [Chunk(0x03043040)]
-        public class Chunk040 : SkippableChunk, ILookbackable
+        [Chunk(0x03043040, "items")]
+        public class Chunk03043040 : SkippableChunk<CGameCtnChallenge>, ILookbackable
         {
             int? ILookbackable.LookbackVersion { get; set; }
             List<string> ILookbackable.LookbackStrings { get; set; } = new List<string>();
             bool ILookbackable.LookbackWritten { get; set; }
 
             public int Version { get; set; } = 4;
-            public List<CGameCtnAnchoredObject> Items { get; set; } = new List<CGameCtnAnchoredObject>();
 
             public int Unknown1 { get; set; }
             public int Unknown2 { get; set; } = 10;
             public int Unknown3 { get; set; }
 
-            public Chunk040(CGameCtnChallenge node, byte[] data) : base(node, data)
+            public override void OnLoad()
             {
-                
+                Node.items = new List<CGameCtnAnchoredObject>();
             }
 
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
 
@@ -3411,12 +2122,12 @@ namespace GBX.NET.Engines.Game
                     var size = r.ReadInt32();
                     Unknown2 = r.ReadInt32(); // 10
 
-                    Items = ParseArray<CGameCtnAnchoredObject>(this, r).ToList();
+                    n.Items = ParseArray<CGameCtnAnchoredObject>(this, r).ToList();
                     Unknown3 = r.ReadInt32(); // 0
                 }
             }
 
-            public override void Write(GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
             {
                 w.Write(Version);
 
@@ -3425,12 +2136,12 @@ namespace GBX.NET.Engines.Game
                     w.Write(Unknown1);
 
                     using var itemMs = new MemoryStream();
-                    using var wr = new GameBoxWriter(itemMs);
+                    using var wr = new GameBoxWriter(itemMs, w.Lookbackable);
 
                     wr.Write(Unknown2);
-                    wr.Write(Items.Count);
+                    wr.Write(n.items.Count);
 
-                    foreach (var item in Items)
+                    foreach (var item in n.items)
                     {
                         wr.Write(item.ID);
                         item.Write(wr);
@@ -3451,46 +2162,22 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x042 skippable chunk (author)
         /// </summary>
-        [Chunk(0x03043042)]
-        public class Chunk042 : SkippableChunk
+        [Chunk(0x03043042, "author")]
+        public class Chunk03043042 : SkippableChunk<CGameCtnChallenge>
         {
             /// <summary>
             /// Version of the chunk.
             /// </summary>
             public int Version { get; set; }
 
-            public int AuthorVersion { get; set; }
-
-            /// <summary>
-            /// Map author login.
-            /// </summary>
-            public string AuthorLogin { get; set; }
-
-            /// <summary>
-            /// Map author formatted nickname.
-            /// </summary>
-            public string AuthorNickname { get; set; }
-
-            /// <summary>
-            /// Map author zone.
-            /// </summary>
-            public string AuthorZone { get; set; }
-
-            public string AuthorExtraInfo { get; set; }
-
-            public Chunk042(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                AuthorVersion = rw.Int32(AuthorVersion);
-                AuthorLogin = rw.String(AuthorLogin);
-                AuthorNickname = rw.String(AuthorNickname);
-                AuthorZone = rw.String(AuthorZone);
-                AuthorExtraInfo = rw.String(AuthorExtraInfo);
+                n.AuthorVersion = rw.Int32(n.AuthorVersion.GetValueOrDefault());
+                n.AuthorLogin = rw.String(n.AuthorLogin);
+                n.AuthorNickname = rw.String(n.AuthorNickname);
+                n.AuthorZone = rw.String(n.AuthorZone);
+                n.AuthorExtraInfo = rw.String(n.AuthorExtraInfo);
             }
         }
 
@@ -3502,7 +2189,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x043 skippable chunk
         /// </summary>
         [Chunk(0x03043043)]
-        public class Chunk043 : SkippableChunk, ILookbackable
+        public class Chunk03043043 : SkippableChunk<CGameCtnChallenge>, ILookbackable
         {
             int? ILookbackable.LookbackVersion { get; set; }
             List<string> ILookbackable.LookbackStrings { get; set; } = new List<string>();
@@ -3511,20 +2198,13 @@ namespace GBX.NET.Engines.Game
             public int Version { get; set; }
             public new byte[] Data { get; set; }
 
-            public Task<CGameCtnZoneGenealogy[]> Genealogies { get; set; }
-
-            public Chunk043(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
                 var sizeOfNodeWithClassID = r.ReadInt32();
                 Data = r.ReadBytes(sizeOfNodeWithClassID);
 
-                Genealogies = Task.Run(() =>
+                n.Genealogies = Task.Run(() =>
                 {
                     using var ms = new MemoryStream(Data);
                     using var r2 = new GameBoxReader(ms, this);
@@ -3533,14 +2213,14 @@ namespace GBX.NET.Engines.Game
                 });
             }
 
-            public override void Write(GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
             {
                 w.Write(Version);
 
                 using var ms = new MemoryStream();
                 using var w2 = new GameBoxWriter(ms);
 
-                w2.Write(Genealogies.Result, x =>
+                w2.Write(n.Genealogies.Result, x =>
                 {
                     w2.Write(0x0311D000);
                     x.Write(w2);
@@ -3558,33 +2238,32 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x044 skippable chunk (metadata)
         /// </summary>
-        [Chunk(0x03043044)]
-        public class Chunk044 : SkippableChunk
+        [Chunk(0x03043044, "metadata")]
+        public class Chunk03043044 : SkippableChunk<CGameCtnChallenge>
         {
             public int Version { get; set; }
-            public CScriptTraitsMetadata MetadataTraits { get; }
 
-            public Chunk044(CGameCtnChallenge node, byte[] data) : base(node, data)
+            public override void OnLoad()
             {
-                MetadataTraits = new CScriptTraitsMetadata();
+                Node.MetadataTraits = new CScriptTraitsMetadata();
             }
 
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
                 var size = r.ReadInt32();
 
-                MetadataTraits.Read(r);
+                n.MetadataTraits.Read(r);
             }
 
-            public override void Write(GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
             {
                 w.Write(Version);
 
                 using (var ms = new MemoryStream())
                 {
                     using (var wm = new GameBoxWriter(ms))
-                        MetadataTraits.Write(wm);
+                        n.MetadataTraits.Write(wm);
 
                     w.Write((int)ms.Length);
                     w.Write(ms.ToArray(), 0, (int)ms.Length);
@@ -3599,43 +2278,33 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x049 chunk (mediatracker)
         /// </summary>
-        [Chunk(0x03043049)]
-        public class Chunk049 : Chunk
+        [Chunk(0x03043049, "mediatracker")]
+        public class Chunk03043049 : Chunk<CGameCtnChallenge>
         {
             public int Version { get; set; } = 2;
 
-            public CGameCtnMediaClip ClipIntro { get; set; }
-
-            public CGameCtnMediaClipGroup ClipGroupInGame { get; set; }
-
-            public CGameCtnMediaClipGroup ClipGroupEndRace { get; set; }
-
             public CGameCtnMediaClip ClipPodium { get; set; }
-            public CGameCtnMediaClip ClipAmbiance { get; set; }
 
             public int Unknown1 { get; set; } = 3;
             public int Unknown2 { get; set; } = 1;
             public int Unknown3 { get; set; } = 3;
 
-            public Chunk049(CGameCtnChallenge node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                ClipIntro = rw.NodeRef<CGameCtnMediaClip>(ClipIntro);
+                n.ClipIntro = rw.NodeRef<CGameCtnMediaClip>(n.ClipIntro);
                 ClipPodium = rw.NodeRef<CGameCtnMediaClip>(ClipPodium); //
-                ClipGroupInGame = rw.NodeRef<CGameCtnMediaClipGroup>(ClipGroupInGame);
-                ClipGroupEndRace = rw.NodeRef<CGameCtnMediaClipGroup>(ClipGroupEndRace);
+                n.ClipGroupInGame = rw.NodeRef<CGameCtnMediaClipGroup>(n.ClipGroupInGame);
+                n.ClipGroupEndRace = rw.NodeRef<CGameCtnMediaClipGroup>(n.ClipGroupEndRace);
 
-                if(Version >= 2)
-                    ClipAmbiance = rw.NodeRef<CGameCtnMediaClip>(ClipAmbiance);
+                if (Version >= 2)
+                {
+                    n.ClipAmbiance = rw.NodeRef<CGameCtnMediaClip>(n.ClipAmbiance);
 
-                Unknown1 = rw.Int32(Unknown1);
-                Unknown2 = rw.Int32(Unknown2);
-                Unknown3 = rw.Int32(Unknown3);
+                    Unknown1 = rw.Int32(Unknown1);
+                    Unknown2 = rw.Int32(Unknown2);
+                    Unknown3 = rw.Int32(Unknown3);
+                }
             }
         }
 
@@ -3646,25 +2315,15 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x04B skippable chunk (objectives)
         /// </summary>
-        [Chunk(0x0304304B)]
-        public class Chunk04B : SkippableChunk
+        [Chunk(0x0304304B, "objectives")]
+        public class Chunk0304304B : SkippableChunk<CGameCtnChallenge>
         {
-            public string ObjectiveTextAuthor { get; set; }
-            public string ObjectiveTextGold { get; set; }
-            public string ObjectiveTextSilver { get; set; }
-            public string ObjectiveTextBronze { get; set; }
-
-            public Chunk04B(CGameCtnChallenge node, byte[] data) : base(node, data)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                ObjectiveTextAuthor = rw.String(ObjectiveTextAuthor);
-                ObjectiveTextGold = rw.String(ObjectiveTextGold);
-                ObjectiveTextSilver = rw.String(ObjectiveTextSilver);
-                ObjectiveTextBronze = rw.String(ObjectiveTextBronze);
+                n.ObjectiveTextAuthor = rw.String(n.ObjectiveTextAuthor);
+                n.ObjectiveTextGold = rw.String(n.ObjectiveTextGold);
+                n.ObjectiveTextSilver = rw.String(n.ObjectiveTextSilver);
+                n.ObjectiveTextBronze = rw.String(n.ObjectiveTextBronze);
             }
         }
 
@@ -3675,23 +2334,17 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x051 skippable chunk (title info)
         /// </summary>
-        [Chunk(0x03043051)]
-        public class Chunk051 : SkippableChunk
+        [Chunk(0x03043051, "title info")]
+        public class Chunk03043051 : SkippableChunk<CGameCtnChallenge>
         {
             public int Version { get; set; }
-            public string TitleID { get; set; }
-            public string BuildVersion { get; set; }
 
-            public Chunk051(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                TitleID = rw.LookbackString(TitleID);
-                BuildVersion = rw.String(BuildVersion);
+
+                n.TitleID = rw.LookbackString(n.TitleID);
+                n.BuildVersion = rw.String(n.BuildVersion);
             }
         }
 
@@ -3703,16 +2356,11 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x059 skippable chunk
         /// </summary>
         [Chunk(0x03043059)]
-        public class Chunk059 : SkippableChunk
+        public class Chunk03043059 : SkippableChunk<CGameCtnChallenge>
         {
             public int Version { get; set; }
 
-            public Chunk059(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version); // 3
 
@@ -3739,14 +2387,9 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x05A skippable chunk [TM®️]
         /// </summary>
         [Chunk(0x0304305A)]
-        public class Chunk05A : SkippableChunk
+        public class Chunk0304305A : SkippableChunk<CGameCtnChallenge>
         {
-            public Chunk05A(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
@@ -3760,15 +2403,15 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x05F skippable chunk (free blocks) [TM®️]
         /// </summary>
-        [Chunk(0x0304305F)]
-        public class Chunk05F : SkippableChunk
+        [Chunk(0x0304305F, "free blocks")]
+        public class Chunk0304305F : SkippableChunk<CGameCtnChallenge>
         {
             public int Version { get; set; }
 
             /// <summary>
             /// List of vectors that can't be directly figured out without information from <see cref="Chunk01F"/>.
             /// </summary>
-            public List<Vector3> Vectors { get; set; }
+            public List<Vector3> Vectors { get; set; } = new List<Vector3>();
 
             [IgnoreDataMember]
             public ReadOnlyCollection<FreeBlock> FreeBlocks
@@ -3779,7 +2422,7 @@ namespace GBX.NET.Engines.Game
 
                     var enumerator = Vectors.GetEnumerator();
 
-                    foreach(var b in ((CGameCtnChallenge)Node).Blocks.Where(x => x.IsFree))
+                    foreach(var b in Node.Blocks.Where(x => x.IsFree))
                     {
                         enumerator.MoveNext();
                         var position = enumerator.Current;
@@ -3800,12 +2443,7 @@ namespace GBX.NET.Engines.Game
                 }
             }
 
-            public Chunk05F(CGameCtnChallenge node, byte[] data) : base(node, data)
-            {
-                Vectors = new List<Vector3>();
-            }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
 
@@ -3814,7 +2452,7 @@ namespace GBX.NET.Engines.Game
                     Vectors.Add(new Vector3(r.ReadSingle(), r.ReadSingle(), r.ReadSingle()));
             }
 
-            public override void Write(GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
             {
                 w.Write(Version);
                 foreach (var v in Vectors)

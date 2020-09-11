@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -6,31 +7,41 @@ using System.Runtime.Serialization;
 
 namespace GBX.NET
 {
-    public abstract class Chunk
+    public abstract class Chunk : IComparable<Chunk>
     {
-        public Node Node { get; }
         public virtual uint ID => GetType().GetCustomAttribute<ChunkAttribute>().ID;
         public int Progress { get; internal set; }
         /// <summary>
         /// Stream of unknown bytes
         /// </summary>
         [IgnoreDataMember]
-        public MemoryStream Unknown { get; }
+        public MemoryStream Unknown { get; } = new MemoryStream();
 
-        public bool IsHeader => Node.Lookbackable is GameBoxHeader;
-        public bool IsBody => Node.Lookbackable is IGameBoxBody;
-        public bool Skippable => this is SkippableChunk;
-
-        public Chunk(Node node)
+        /// <summary>
+        /// A virtual property usable to parse unknown data from the <see cref="Unknown"/> stream.
+        /// </summary>
+        [IgnoreDataMember]
+        public virtual object[] UnknownValues
         {
-            Node = node;
-            Unknown = new MemoryStream();
+            get => throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} doesn't support UnknownValues.");
         }
 
-        [Obsolete]
-        public ILookbackable GetLookbackable()
+        [IgnoreDataMember]
+        public virtual ILookbackable Lookbackable
         {
-            return Node.Lookbackable;
+            get
+            {
+                if (this is ILookbackable l)
+                    return l;
+                return Part;
+            }
+        }
+
+        public GameBoxPart Part { get; set; }
+
+        public Chunk()
+        {
+
         }
 
         public override int GetHashCode()
@@ -44,58 +55,6 @@ namespace GBX.NET
         }
 
         public bool Equals(Chunk chunk) => chunk != null && chunk.ID == ID;
-
-        public virtual void Parse(Stream stream)
-        {
-            throw new NotImplementedException(ID + " This chunk doesn't support Parse.");
-        }
-
-        public virtual object[] GetUnknownObjects()
-        {
-            throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support GetUnknownObjects.");
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="r"></param>
-        /// <param name="unknownW">Writer of the <see cref="Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
-        public virtual void Read(GameBoxReader r, GameBoxWriter unknownW)
-        {
-            throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support Read.");
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="w"></param>
-        /// <param name="unknownR">Reader of the <see cref="Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
-        public virtual void Write(GameBoxWriter w, GameBoxReader unknownR)
-        {
-            throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support Write.");
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="rw"></param>
-        public virtual void ReadWrite(GameBoxReaderWriter rw)
-        {
-            ILookbackable lb = Node.Lookbackable;
-            if (this is ILookbackable l) lb = l;
-
-            if (rw.Reader != null)
-            {
-                var unknownW = new GameBoxWriter(Unknown, lb);
-                Read(rw.Reader, unknownW);
-            }
-
-            if (rw.Writer != null)
-            {
-                var unknownR = new GameBoxReader(Unknown, lb);
-                Write(rw.Writer, unknownR);
-            }
-        }
 
         public static uint Remap(uint chunkID, ClassIDRemap remap = ClassIDRemap.Latest)
         {
@@ -117,25 +76,99 @@ namespace GBX.NET
             }
         }
 
-        public void FromData(byte[] data)
+        public virtual GameBoxReader OpenUnknownStream()
         {
-            var lookbackable = Node.Lookbackable;
+            return new GameBoxReader(Unknown, null);
+        }
 
-            if (this is ILookbackable l)
+        public virtual void OnLoad() { }
+
+        public int CompareTo(Chunk other)
+        {
+            return ID.CompareTo(other.ID);
+        }
+    }
+
+    public abstract class Chunk<T> : Chunk where T : Node
+    {
+        [IgnoreDataMember]
+        public T Node { get; internal set; }
+
+        public bool IsHeader => Lookbackable is GameBoxHeader;
+        public bool IsBody => Lookbackable is GameBoxBody;
+
+        [IgnoreDataMember]
+        public override ILookbackable Lookbackable
+        {
+            get
             {
-                l.LookbackVersion = null;
-                lookbackable = l;
+                if (Node?.ParentChunk is ILookbackable l)
+                    return l;
+                return base.Lookbackable;
+            }
+        }
+
+        [IgnoreDataMember]
+        public override object[] UnknownValues
+        {
+            get => throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support UnknownValues.");
+        }
+
+        public Chunk()
+        {
+            
+        }
+
+        public Chunk(T node)
+        {
+            Node = node;
+        }
+
+        public override GameBoxReader OpenUnknownStream()
+        {
+            return new GameBoxReader(Unknown, Lookbackable);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="r"></param>
+        /// <param name="unknownW">Writer of the <see cref="Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
+        public virtual void Read(T n, GameBoxReader r, GameBoxWriter unknownW)
+        {
+            throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support Read.");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="w"></param>
+        /// <param name="unknownR">Reader of the <see cref="Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
+        public virtual void Write(T n, GameBoxWriter w, GameBoxReader unknownR)
+        {
+            throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support Write.");
+        }
+
+        public virtual void ReadWrite(T n, GameBoxReaderWriter rw)
+        {
+            if (rw.Reader != null)
+            {
+                var unknownW = new GameBoxWriter(Unknown, rw.Reader.Lookbackable);
+                if (n == null) Read(null, rw.Reader, unknownW);
+                else Read(n, rw.Reader, unknownW);
             }
 
-            using var ms = new MemoryStream(data);
-            using var r = new GameBoxReader(ms, lookbackable);
-            var rw = new GameBoxReaderWriter(r);
-            ReadWrite(rw);
+            if (rw.Writer != null)
+            {
+                var unknownR = new GameBoxReader(Unknown, rw.Writer.Lookbackable);
+                if (n == null) Write(null, rw.Writer, unknownR);
+                else Write(n, rw.Writer, unknownR);
+            }
         }
 
         public byte[] ToByteArray()
         {
-            var lookbackable = Node.Lookbackable;
+            var lookbackable = Lookbackable;
 
             if (this is ILookbackable l)
             {
@@ -147,15 +180,8 @@ namespace GBX.NET
             using var ms = new MemoryStream();
             using var w = new GameBoxWriter(ms, lookbackable);
             var rw = new GameBoxReaderWriter(w);
-            ReadWrite(rw);
+            ReadWrite(Node, rw);
             return ms.ToArray();
-        }
-
-        public void Cast<TChunk>() where TChunk : Chunk
-        {
-            var chunk = (TChunk)this;
-            Node.Chunks.Add(chunk);
-            Node.Chunks.Remove(this);
         }
     }
 }

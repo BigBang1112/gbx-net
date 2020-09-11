@@ -8,24 +8,19 @@ namespace GBX.NET.Engines.Game
     [Node(0x03081000)]
     public class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx
     {
+        public Key[] Keys { get; set; }
+
         public CGameCtnMediaBlockFxBlurDepth(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
 
         }
 
         [Chunk(0x03081001)]
-        public class Chunk001 : Chunk
+        public class Chunk03081001 : Chunk<CGameCtnMediaBlockFxBlurDepth>
         {
-            public Key[] Keys { get; set; }
-
-            public Chunk001(CGameCtnMediaBlockFxBlurDepth node) : base(node)
+            public override void Read(CGameCtnMediaBlockFxBlurDepth n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                
-            }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
-            {
-                Keys = r.ReadArray(i =>
+                n.Keys = r.ReadArray(i =>
                 {
                     return new Key()
                     {
@@ -37,9 +32,9 @@ namespace GBX.NET.Engines.Game
                 });
             }
 
-            public override void Write(GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaBlockFxBlurDepth n, GameBoxWriter w, GameBoxReader unknownR)
             {
-                w.Write(Keys, x =>
+                w.Write(n.Keys, x =>
                 {
                     w.Write(x.Time);
                     w.Write(x.LensSize);
@@ -49,9 +44,8 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        public class Key
+        public class Key : MediaBlockKey
         {
-            public float Time { get; set; }
             public float LensSize { get; set; }
             public bool ForceFocus { get; set; }
             public float FocusZ { get; set; }

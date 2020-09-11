@@ -4,32 +4,20 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// Block on a map (0x03057000)
+    /// </summary>
+    /// <remarks>A block placed on a map.</remarks>
     [Node(0x03057000)]
     public class CGameCtnBlock : Node
     {
-        public Meta BlockInfo
-        {
-            get => GetValue<Chunk002>(x => x.BlockInfo) as Meta;
-            set => SetValue<Chunk002>(x => x.BlockInfo = value);
-        }
+        public Meta BlockInfo { get; set; }
 
-        public Direction? Direction
-        {
-            get => GetValue<Chunk002>(x => x.Direction) as Direction?;
-            set => SetValue<Chunk002>(x => x.Direction = value.GetValueOrDefault());
-        }
+        public Direction? Direction { get; set; }
 
-        public Byte3? Coord
-        {
-            get => GetValue<Chunk002>(x => x.Coord) as Byte3?;
-            set => SetValue<Chunk002>(x => x.Coord = value.GetValueOrDefault());
-        }
+        public Byte3? Coord { get; set; }
 
-        public int? Flags
-        {
-            get => GetValue<Chunk002>(x => x.Flags) as int?;
-            set => SetValue<Chunk002>(x => x.Flags = value.GetValueOrDefault());
-        }
+        public int? Flags { get; set; }
 
         public CGameCtnBlock(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -46,26 +34,27 @@ namespace GBX.NET.Engines.Game
             return $"{BlockInfo?.ID} {Coord}";
         }
 
+        #region Chunks
+
+        #region 0x002 chunk
+
+        /// <summary>
+        /// CGameCtnBlock 0x002 chunk
+        /// </summary>
         [Chunk(0x03057002)]
-        public class Chunk002 : Chunk
+        public class Chunk03057002 : Chunk<CGameCtnBlock>
         {
-            public Meta BlockInfo { get; set; }
-            public Direction Direction { get; set; }
-            public Byte3 Coord { get; set; }
-            public int Flags { get; set; }
-
-            public Chunk002(CGameCtnBlock node) : base(node)
+            public override void ReadWrite(CGameCtnBlock n, GameBoxReaderWriter rw)
             {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                BlockInfo = rw.Meta(BlockInfo);
-                Direction = (Direction)rw.Byte((byte)Direction);
-                Coord = rw.Byte3(Coord);
-                Flags = rw.Int32(Flags);
+                n.BlockInfo = rw.Meta(n.BlockInfo);
+                n.Direction = (Direction)rw.Byte((byte)n.Direction.GetValueOrDefault());
+                n.Coord = rw.Byte3(n.Coord.GetValueOrDefault());
+                n.Flags = rw.Int32(n.Flags.GetValueOrDefault());
             }
         }
+
+        #endregion
+
+        #endregion
     }
 }

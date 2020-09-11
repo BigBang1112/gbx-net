@@ -104,11 +104,11 @@ namespace IslandConverter
 
                                 item.Name = mapUid;
 
-                                if (map.Thumbnail == null)
+                                if (gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail == null)
                                     item.ImageKey = "";
                                 else
                                 {
-                                    lvMaps.LargeImageList.Images.Add(mapUid, map.Thumbnail);
+                                    lvMaps.LargeImageList.Images.Add(mapUid, gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail.Result);
                                     item.ImageKey = mapUid;
                                 }
 
@@ -256,13 +256,13 @@ namespace IslandConverter
                         else if (map.Size == (36, 36, 36)) lSize.Text += " (made in TMU or Sunrise)";
                         else lSize.Text += " (made in China)";
 
-                        lDecoration.Text = "Decoration: " + map.DecorationName;
+                        lDecoration.Text = "Decoration: " + map.Decoration.ID;
                         lMedals.Text = "Medals:";
-                        lAuthorM.Text = "Author: " + (map.AuthorTime.HasValue ? map.AuthorTime.Value.ToString("m':'ss':'fff") : "None");
-                        lGoldM.Text = "Gold: " + (map.GoldTime.HasValue ? map.GoldTime.Value.ToString("m':'ss':'fff") : "None");
-                        lSilverM.Text = "Silver: " + (map.SilverTime.HasValue ? map.SilverTime.Value.ToString("m':'ss':'fff") : "None");
-                        lBronzeM.Text = "Bronze: " + (map.BronzeTime.HasValue ? map.BronzeTime.Value.ToString("m':'ss':'fff") : "None");
-                        lMapType.Text = "Map type: " + (map.Type.HasValue ? map.Type.Value.ToString() : "Unknown");
+                        lAuthorM.Text = "Author: " + (map.ChallengeParameters.AuthorTime.HasValue ? map.ChallengeParameters.AuthorTime.Value.ToString("m':'ss':'fff") : "None");
+                        lGoldM.Text = "Gold: " + (map.ChallengeParameters.GoldTime.HasValue ? map.ChallengeParameters.GoldTime.Value.ToString("m':'ss':'fff") : "None");
+                        lSilverM.Text = "Silver: " + (map.ChallengeParameters.SilverTime.HasValue ? map.ChallengeParameters.SilverTime.Value.ToString("m':'ss':'fff") : "None");
+                        lBronzeM.Text = "Bronze: " + (map.ChallengeParameters.BronzeTime.HasValue ? map.ChallengeParameters.BronzeTime.Value.ToString("m':'ss':'fff") : "None");
+                        lMapType.Text = "Map type: " + (gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043002>().Type.HasValue ? gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043002>().Type.Value.ToString() : "Unknown");
 
                         blockRange = IslandConverter.DefineMapRange(map.Blocks.ToArray(), out minCoord);
 
@@ -285,7 +285,7 @@ namespace IslandConverter
 
                         lBlockRange.Text = "Block range: " + blockRange;
 
-                        pbThumbnail.Image = map.Thumbnail;
+                        pbThumbnail.Image = gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail.Result;
                     }
                 }
             }

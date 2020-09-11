@@ -4,6 +4,7 @@ using System.Text;
 
 namespace GBX.NET
 {
+    [Obsolete]
     public class ChunkDescriptionAttribute : Attribute
     {
         public string Description { get; }

@@ -8,30 +8,19 @@ namespace GBX.NET.Engines.Game
     [Node(0x030A6000)]
     public class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock
     {
-        public Key[] Keys
-        {
-            get => GetValue<Chunk001>(x => x.Keys) as Key[];
-            set => SetValue<Chunk001>(x => x.Keys = value);
-        }
+        public Key[] Keys { get; set; }
 
         public CGameCtnMediaBlockMusicEffect(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
-
+            
         }
 
         [Chunk(0x030A6000)]
-        public class Chunk000 : Chunk
+        public class Chunk030A6000 : Chunk<CGameCtnMediaBlockMusicEffect>
         {
-            public Key[] Keys { get; set; }
-
-            public Chunk000(CGameCtnMediaBlockMusicEffect node) : base(node)
+            public override void ReadWrite(CGameCtnMediaBlockMusicEffect n, GameBoxReaderWriter rw)
             {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Keys = rw.Array(Keys, i =>
+                n.Keys = rw.Array(n.Keys, i =>
                 {
                     var time = rw.Reader.ReadSingle();
                     var musicVol = rw.Reader.ReadSingle();
@@ -51,18 +40,11 @@ namespace GBX.NET.Engines.Game
         }
 
         [Chunk(0x030A6001)]
-        public class Chunk001 : Chunk
+        public class Chunk030A6001 : Chunk<CGameCtnMediaBlockMusicEffect>
         {
-            public Key[] Keys { get; set; }
-
-            public Chunk001(CGameCtnMediaBlockMusicEffect node) : base(node)
+            public override void ReadWrite(CGameCtnMediaBlockMusicEffect n, GameBoxReaderWriter rw)
             {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Keys = rw.Array(Keys, i =>
+                n.Keys = rw.Array(n.Keys, i =>
                 {
                     var time = rw.Reader.ReadSingle();
                     var musicVol = rw.Reader.ReadSingle();
@@ -84,9 +66,8 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        public class Key
+        public class Key : MediaBlockKey
         {
-            public float Time { get; set; }
             public float MusicVolume { get; set; }
             public float SoundVolume { get; set; }
         }

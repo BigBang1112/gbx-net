@@ -6,20 +6,24 @@ using System.Runtime.Serialization;
 
 namespace GBX.NET
 {
-    public class SkippableChunk : Chunk
+    public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
     {
         readonly uint chunkID;
 
         public override uint ID => chunkID;
         [IgnoreDataMember]
-        public MemoryStream Stream { get; }
-        public bool IsHeavy { get; set; }
+        public MemoryStream Stream { get; set; }
 
         public int Length => (int)Stream.Length;
-        public bool Discovered { get; private set; }
+        public bool Discovered { get; set; }
         public byte[] Data => Stream.ToArray();
 
-        public SkippableChunk(Node node, uint id, byte[] data) : base(node)
+        public SkippableChunk()
+        {
+            chunkID = GetType().GetCustomAttribute<ChunkAttribute>().ID;
+        }
+
+        public SkippableChunk(T node, uint id, byte[] data) : base(node)
         {
             chunkID = id;
             Stream = new MemoryStream(data, 0, data.Length, false);
@@ -28,7 +32,7 @@ namespace GBX.NET
                 Discovered = true;
         }
 
-        public SkippableChunk(Node node, byte[] data) : base(node)
+        public SkippableChunk(T node, byte[] data) : base(node)
         {
             chunkID = GetType().GetCustomAttribute<ChunkAttribute>().ID;
             Stream = new MemoryStream(data, 0, data.Length, false);
@@ -42,24 +46,21 @@ namespace GBX.NET
             if (Discovered) return;
             Discovered = true;
 
-            ILookbackable lb = Node.Lookbackable;
-            if (this is ILookbackable l) lb = l;
-
-            using var gbxr = new GameBoxReader(Stream, lb);
+            using var gbxr = new GameBoxReader(Stream, Lookbackable);
 
             GameBoxReaderWriter gbxrw = new GameBoxReaderWriter(gbxr);
 
             try
             {
-                ReadWrite(gbxrw);
+                ReadWrite(Node, gbxrw);
             }
             catch (NotImplementedException)
             {
-                var unknownGbxw = new GameBoxWriter(Unknown, lb);
+                var unknownGbxw = new GameBoxWriter(Unknown, Lookbackable);
 
                 try
                 {
-                    Read(gbxr, unknownGbxw);
+                    Read(Node, gbxr, unknownGbxw);
                 }
                 catch (NotImplementedException e)
                 {
@@ -70,7 +71,7 @@ namespace GBX.NET
             Progress = (int)Stream.Position;
         }
 
-        public override void Write(GameBoxWriter w, GameBoxReader unknownR)
+        public override void Write(T n, GameBoxWriter w, GameBoxReader unknownR)
         {
             w.Write(Stream.ToArray(), 0, (int)Stream.Length);
         }

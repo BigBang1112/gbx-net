@@ -6,7 +6,7 @@
     <Authors>BigBang1112</Authors>
     <Company>BigBang1112</Company>
     <PackageLicenseExpression></PackageLicenseExpression>
-    <Version>0.0.3</Version>
+    <Version>0.1.0</Version>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Copyright />
@@ -35,7 +35,6 @@
     <Compile Remove="Engines\GameData\CGameObjectPhyModel.cs" />
     <Compile Remove="Engines\GameData\CGameObjectVisModel.cs" />
     <Compile Remove="Engines\Plug\CPlugDataTape.cs" />
-    <Compile Remove="Engines\Plug\CPlugEntRecordData.cs" />
     <Compile Remove="Engines\Plug\CPlugSurface.cs" />
     <Compile Remove="Engines\Plug\CPlugVehicleCarPhyShape.cs" />
     <Compile Remove="Engines\Plug\CPlugVehiclePhyModel.cs" />
@@ -48,7 +47,6 @@
 
   <ItemGroup>
     <None Include="Engines\Plug\CPlugDataTape.cs" />
-    <None Include="Engines\Plug\CPlugEntRecordData.cs" />
     <None Include="Engines\Plug\CPlugSurface.cs" />
     <None Include="Engines\Plug\CPlugVehicleCarPhyShape.cs" />
     <None Include="Engines\Plug\CPlugVehiclePhyModel.cs" />
@@ -60,6 +58,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="SharpZipLib.NETStandard" Version="1.0.7" />
     <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
   </ItemGroup>
@@ -86,9 +85,7 @@
     <Folder Include="Engines\Input\" />
     <Folder Include="Engines\Motion\" />
     <Folder Include="Engines\Net\" />
-    <Folder Include="Engines\Scene\" />
     <Folder Include="Engines\System\" />
-    <Folder Include="Engines\TrackMania\" />
     <Folder Include="Engines\VirtualSkipper\" />
     <Folder Include="Engines\Vision\" />
     <Folder Include="Engines\Xml\" />

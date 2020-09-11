@@ -7,13 +7,9 @@ namespace GBX.NET.Engines.Game
     [Node(0x0311D000)]
     public class CGameCtnZoneGenealogy : Node
     {
-        public string[] Zones => GetValue<Chunk002>(x => x.Zones) as string[];
-        public int BaseHeight => (int)GetValue<Chunk002>(x => x.BaseHeight);
-        public string CurrentZone
-        {
-            get => GetValue<Chunk002>(x => x.CurrentZone) as string;
-            set => SetValue<Chunk002>(x => x.CurrentZone = value);
-        }
+        public string[] Zones { get; set; }
+        public int BaseHeight { get; set; }
+        public string CurrentZone { get; set; }
 
         public CGameCtnZoneGenealogy(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -26,24 +22,16 @@ namespace GBX.NET.Engines.Game
         }
 
         [Chunk(0x0311D002)]
-        public class Chunk002 : Chunk
+        public class Chunk0311D002 : Chunk<CGameCtnZoneGenealogy>
         {
-            public string[] Zones { get; set; }
-            public int BaseHeight { get; set; }
             public int Unknown1 { get; set; }
-            public string CurrentZone { get; set; }
 
-            public Chunk002(CGameCtnZoneGenealogy node) : base(node)
+            public override void ReadWrite(CGameCtnZoneGenealogy n, GameBoxReaderWriter rw)
             {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                Zones = rw.Array(Zones, i => rw.Reader.ReadLookbackString(), x => rw.Writer.WriteLookbackString(x));
-                BaseHeight = rw.Int32(BaseHeight); // 9
+                n.Zones = rw.Array(n.Zones, i => rw.Reader.ReadLookbackString(), x => rw.Writer.WriteLookbackString(x));
+                n.BaseHeight = rw.Int32(n.BaseHeight); // 9
                 Unknown1 = rw.Int32(Unknown1);
-                CurrentZone = rw.LookbackString(CurrentZone);
+                n.CurrentZone = rw.LookbackString(n.CurrentZone);
             }
         }
     }

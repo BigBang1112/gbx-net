@@ -6,6 +6,9 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// Decoration of a map (0x03038000)
+    /// </summary>
     [Node(0x03038000)]
     public class CGameCtnDecoration : CGameCtnCollector
     {
@@ -18,15 +21,10 @@ namespace GBX.NET.Engines.Game
 
         #region 0x011 chunk
 
-        [Chunk(0x03038000, 0x011)]
-        public class Chunk011_038 : Chunk
+        [Chunk(0x03038011)]
+        public class Chunk03038011 : Chunk<CGameCtnDecoration>
         {
-            public Chunk011_038(CGameCtnCollector node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
             }
@@ -36,15 +34,10 @@ namespace GBX.NET.Engines.Game
 
         #region 0x013 chunk
 
-        [Chunk(0x03038000, 0x013)]
-        public class Chunk013 : Chunk
+        [Chunk(0x03038013)]
+        public class Chunk03038013 : Chunk<CGameCtnDecoration>
         {
-            public Chunk013(CGameCtnCollector node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
             }
@@ -54,15 +47,10 @@ namespace GBX.NET.Engines.Game
 
         #region 0x014 chunk
 
-        [Chunk(0x03038000, 0x014)]
-        public class Chunk014 : Chunk
+        [Chunk(0x03038014)]
+        public class Chunk03038014 : Chunk<CGameCtnDecoration>
         {
-            public Chunk014(CGameCtnCollector node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
             }
@@ -72,15 +60,10 @@ namespace GBX.NET.Engines.Game
 
         #region 0x015 chunk
 
-        [Chunk(0x03038000, 0x015)]
-        public class Chunk015 : Chunk
+        [Chunk(0x03038015)]
+        public class Chunk03038015 : Chunk<CGameCtnDecoration>
         {
-            public Chunk015(CGameCtnCollector node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
             }
@@ -90,15 +73,10 @@ namespace GBX.NET.Engines.Game
 
         #region 0x016 chunk
 
-        [Chunk(0x03038000, 0x016)]
-        public class Chunk016 : Chunk
+        [Chunk(0x03038016)]
+        public class Chunk03038016 : Chunk<CGameCtnDecoration>
         {
-            public Chunk016(CGameCtnCollector node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
             }
@@ -108,15 +86,10 @@ namespace GBX.NET.Engines.Game
 
         #region 0x017 chunk
 
-        [Chunk(0x03038000, 0x017)]
-        public class Chunk017 : Chunk
+        [Chunk(0x03038017)]
+        public class Chunk03038017 : Chunk<CGameCtnDecoration>
         {
-            public Chunk017(CGameCtnCollector node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
@@ -128,15 +101,10 @@ namespace GBX.NET.Engines.Game
 
         #region 0x018 chunk
 
-        [Chunk(0x03038000, 0x018)]
-        public class Chunk018 : Chunk
+        [Chunk(0x03038018)]
+        public class Chunk03038018 : Chunk<CGameCtnDecoration>
         {
-            public Chunk018(CGameCtnCollector node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
@@ -148,15 +116,10 @@ namespace GBX.NET.Engines.Game
 
         #region 0x019 chunk
 
-        [Chunk(0x03038000, 0x019)]
-        public class Chunk019 : Chunk
+        [Chunk(0x03038019)]
+        public class Chunk03038019 : Chunk<CGameCtnDecoration>
         {
-            public Chunk019(CGameCtnCollector node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
@@ -168,15 +131,10 @@ namespace GBX.NET.Engines.Game
 
         #region 0x01A chunk
 
-        [Chunk(0x03038000, 0x01A)]
-        public class Chunk01A : Chunk
+        [Chunk(0x0303801A)]
+        public class Chunk0303801A : Chunk<CGameCtnDecoration>
         {
-            public Chunk01A(CGameCtnCollector node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);

@@ -258,15 +258,15 @@ namespace IslandConverter
                         else if (map.Size == (36, 36, 36)) Console.WriteLine("(made in Sunrise or TMU)");
                         else Console.WriteLine("(made in China)");
 
-                        Console.WriteLine($"- Decoration: {map.DecorationName}");
+                        Console.WriteLine($"- Decoration: {map.Decoration.ID}");
 
                         Console.WriteLine($"- Medals:");
-                        Console.WriteLine($" - Author: {map.AuthorTime}");
-                        Console.WriteLine($" - Gold: {map.GoldTime}");
-                        Console.WriteLine($" - Silver: {map.SilverTime}");
-                        Console.WriteLine($" - Bronze: {map.BronzeTime}");
+                        Console.WriteLine($" - Author: {map.ChallengeParameters.AuthorTime}");
+                        Console.WriteLine($" - Gold: {map.ChallengeParameters.GoldTime}");
+                        Console.WriteLine($" - Silver: {map.ChallengeParameters.SilverTime}");
+                        Console.WriteLine($" - Bronze: {map.ChallengeParameters.BronzeTime}");
 
-                        Console.WriteLine($"- Map type: {map.Type}");
+                        Console.WriteLine($"- Map type: {gbx.Body.GetChunk<CGameCtnChallenge.Chunk03043002>().Type}");
 
                         Console.Write($"- Block range: ");
 

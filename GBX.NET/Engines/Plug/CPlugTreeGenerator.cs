@@ -13,16 +13,11 @@ namespace GBX.NET.Engines.Plug
         }
 
         [Chunk(0x09051000)]
-        public class Chunk09051000 : Chunk
+        public class Chunk09051000 : Chunk<CPlugTreeGenerator>
         {
             public int Version { get; set; }
 
-            public Chunk09051000(Node node) : base(node)
-            {
-
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CPlugTreeGenerator n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
             }

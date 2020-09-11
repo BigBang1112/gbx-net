@@ -3,27 +3,23 @@
     [Node(0x03165000)]
     public class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock
     {
+        public Key[] Keys { get; set; }
+
         public CGameCtnMediaBlockDirtyLens(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
 
         }
 
         [Chunk(0x03165000)]
-        public class Chunk000 : Chunk
+        public class Chunk03165000 : Chunk<CGameCtnMediaBlockDirtyLens>
         {
             public int Version { get; set; }
-            public Key[] Keys { get; set; }
 
-            public Chunk000(CGameCtnMediaBlockDirtyLens node) : base(node)
-            {
-
-            }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaBlockDirtyLens n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
 
-                Keys = r.ReadArray(i =>
+                n.Keys = r.ReadArray(i =>
                 {
                     var time = r.ReadSingle();
                     var intensity = r.ReadSingle();
@@ -36,11 +32,11 @@
                 });
             }
 
-            public override void Write(GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaBlockDirtyLens n, GameBoxWriter w, GameBoxReader unknownR)
             {
                 w.Write(Version);
 
-                w.Write(Keys, x =>
+                w.Write(n.Keys, x =>
                 {
                     w.Write(x.Time);
                     w.Write(x.Intensity);
@@ -49,9 +45,8 @@
         }
     }
 
-    public class Key
+    public class Key : MediaBlockKey
     {
-        public float Time { get; set; }
         public float Intensity { get; set; }
     }
 }

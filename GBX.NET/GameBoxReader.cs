@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -20,6 +21,11 @@ namespace GBX.NET
         public GameBoxReader(Stream input, ILookbackable lookbackable) : this(input)
         {
             Lookbackable = lookbackable;
+        }
+
+        public byte[] ReadBytes()
+        {
+            return ReadBytes(ReadInt32());
         }
 
         public string ReadString(StringLengthPrefix readPrefix)
@@ -117,7 +123,7 @@ namespace GBX.NET
             return ReadMeta(Lookbackable);
         }
 
-        public Node ReadNodeRef(IGameBoxBody body)
+        public Node ReadNodeRef(GameBoxBody body)
         {
             var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
@@ -145,10 +151,10 @@ namespace GBX.NET
 
         public Node ReadNodeRef()
         {
-            return ReadNodeRef((IGameBoxBody)Lookbackable);
+            return ReadNodeRef((GameBoxBody)Lookbackable);
         }
 
-        public T ReadNodeRef<T>(bool hasInheritance, IGameBoxBody body) where T : Node
+        public T ReadNodeRef<T>(bool hasInheritance, GameBoxBody body) where T : Node
         {
             var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
@@ -159,9 +165,9 @@ namespace GBX.NET
 
                 Node node;
                 if (hasInheritance)
-                    node = Node.Parse(body, classID, this);
+                    node = Node.Parse(body, classID, this, true);
                 else
-                    node = Node.Parse<T>(body, this);
+                    node = Node.Parse<T>(body, this, true);
 
                 if (index >= body.AuxilaryNodes.Count)
                     body.AuxilaryNodes.Add(node);
@@ -180,7 +186,7 @@ namespace GBX.NET
 
         public T ReadNodeRef<T>(bool hasInheritance) where T : Node
         {
-            return ReadNodeRef<T>(hasInheritance, (IGameBoxBody)Lookbackable);
+            return ReadNodeRef<T>(hasInheritance, (GameBoxBody)Lookbackable);
         }
 
         public T ReadNodeRef<T>() where T : Node
@@ -212,6 +218,11 @@ namespace GBX.NET
             var array = new T[count];
             Buffer.BlockCopy(buffer, 0, array, 0, buffer.Length);
             return array;
+        }
+
+        public T[] ReadArray<T>()
+        {
+            return ReadArray<T>(ReadInt32());
         }
 
         /// <summary>
@@ -259,6 +270,19 @@ namespace GBX.NET
         {
             var bytes = ReadBytes(3);
             return (bytes[0], bytes[1], bytes[2]);
+        }
+
+        public byte[] ReadTill(uint uint32)
+        {
+            List<byte> bytes = new List<byte>();
+            while (PeekUInt32() != uint32)
+                bytes.Add(ReadByte());
+            return bytes.ToArray();
+        }
+
+        public byte[] ReadTillFacade()
+        {
+            return ReadTill(0xFACADE01);
         }
 
         public uint PeekUInt32()

@@ -1,12 +1,13 @@
 ﻿namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// Puzzle piece list (0x0301B000)
+    /// </summary>
+    /// <remarks>A list of puzzle pieces.</remarks>
     [Node(0x0301B000)]
     public class CGameCtnCollectorList : Node
     {
-        public Collector[] CollectorStock
-        {
-            get => GetValue<Chunk000>(x => x.CollectorStock) as Collector[];
-        }
+        public Collector[] CollectorStock { get; set; }
 
         public CGameCtnCollectorList(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -17,29 +18,25 @@
 
         #region 0x000 chunk
 
+        /// <summary>
+        /// CGameCtnCollectorList 0x000 chunk
+        /// </summary>
         [Chunk(0x0301B000)]
-        public class Chunk000 : Chunk
+        public class Chunk0301B000 : Chunk<CGameCtnCollectorList>
         {
-            public Collector[] CollectorStock { get; set; }
-
-            public Chunk000(CGameCtnCollectorList node) : base(node)
+            public override void ReadWrite(CGameCtnCollectorList n, GameBoxReaderWriter rw)
             {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
-            {
-                CollectorStock = rw.Array(CollectorStock,
-                    i => new Collector()
-                    {
-                        Meta = rw.Reader.ReadMeta(),
-                        Count = rw.Reader.ReadInt32()
-                    },
-                    x =>
-                    {
-                        rw.Writer.Write(x.Meta);
-                        rw.Writer.Write(x.Count);
-                    });
+                n.CollectorStock = rw.Array(n.CollectorStock,
+                i => new Collector()
+                {
+                    Meta = rw.Reader.ReadMeta(),
+                    Count = rw.Reader.ReadInt32()
+                },
+                x =>
+                {
+                    rw.Writer.Write(x.Meta);
+                    rw.Writer.Write(x.Count);
+                });
             }
         }
 

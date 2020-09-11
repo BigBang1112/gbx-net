@@ -10,18 +10,9 @@ namespace GBX.NET.Engines.Game
     [Node(0x0307A000)]
     public class CGameCtnMediaClipGroup : Node
     {
-        public CGameCtnMediaClip[] Clips
-        {
-            get => GetValue<Chunk002, Chunk003>(
-                x => x.Clips,
-                x => x.Clips) as CGameCtnMediaClip[];
-        }
+        public CGameCtnMediaClip[] Clips { get; set; }
 
-        public Trigger[] Triggers
-        {
-            get => GetValue<Chunk002, Chunk003>(x => x.Triggers, x => x.Triggers) as Trigger[];
-            set => SetValue<Chunk002, Chunk003>(x => x.Triggers = value, x => x.Triggers = value);
-        }
+        public Trigger[] Triggers { get; set; }
 
         public CGameCtnMediaClipGroup(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -29,25 +20,18 @@ namespace GBX.NET.Engines.Game
         }
 
         [Chunk(0x0307A002)]
-        public class Chunk002 : Chunk
+        public class Chunk0307A002 : Chunk<CGameCtnMediaClipGroup>
         {
             public int Version { get; set; }
-            public CGameCtnMediaClip[] Clips { get; set; }
-            public Trigger[] Triggers { get; set; }
 
-            public Chunk002(CGameCtnMediaClipGroup node) : base(node)
-            {
-                
-            }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnMediaClipGroup n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                Clips = rw.Array(Clips,
+                n.Clips = rw.Array(n.Clips,
                     i => rw.Reader.ReadNodeRef<CGameCtnMediaClip>(),
                     x => rw.Writer.Write(x));
 
-                Triggers = rw.Array(Triggers, i =>
+                n.Triggers = rw.Array(n.Triggers, i =>
                 {
                     var coords = rw.Reader.ReadArray(i => rw.Reader.ReadInt3());
                     var unknown1 = rw.Reader.ReadInt32();
@@ -76,23 +60,16 @@ namespace GBX.NET.Engines.Game
         }
 
         [Chunk(0x0307A003)]
-        public class Chunk003 : Chunk
+        public class Chunk0307A003 : Chunk<CGameCtnMediaClipGroup>
         {
             public int Version { get; set; } = 10;
-            public CGameCtnMediaClip[] Clips { get; set; }
-            public Trigger[] Triggers { get; set; }
 
-            public Chunk003(CGameCtnMediaClipGroup node) : base(node)
-            {
-                
-            }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaClipGroup n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
-                Clips = r.ReadArray(i => r.ReadNodeRef<CGameCtnMediaClip>());
+                n.Clips = r.ReadArray(i => r.ReadNodeRef<CGameCtnMediaClip>());
 
-                Triggers = r.ReadArray(i =>
+                n.Triggers = r.ReadArray(i =>
                 {
                     var unknown1 = r.ReadInt32();
                     var unknown2 = r.ReadInt32();
@@ -115,12 +92,12 @@ namespace GBX.NET.Engines.Game
                 });
             }
 
-            public override void Write(GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaClipGroup n, GameBoxWriter w, GameBoxReader unknownR)
             {
                 w.Write(Version);
-                w.Write(Clips, x => w.Write(x));
+                w.Write(n.Clips, x => w.Write(x));
 
-                w.Write(Triggers, x =>
+                w.Write(n.Triggers, x =>
                 {
                     w.Write(x.Unknown1);
                     w.Write(x.Unknown2);
