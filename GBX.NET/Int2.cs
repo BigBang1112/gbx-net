@@ -11,19 +11,26 @@
             Y = y;
         }
 
-        public override string ToString()
-        {
-            return $"({X}, {Y})";
-        }
+        public override string ToString() => $"({X}, {Y})";
+        public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode();
+        public override bool Equals(object obj) => obj is Int2 a && a == this;
 
-        public static implicit operator Int2((int, int) v)
-        {
-            return new Int2(v.Item1, v.Item2);
-        }
+        public static bool operator ==(Int2 a, Int2 b) => a.X == b.X && a.Y == b.Y;
+        public static bool operator !=(Int2 a, Int2 b) => !(a.X == b.X && a.Y == b.Y);
 
-        public static implicit operator (int, int)(Int2 v)
-        {
-            return (v.X, v.Y);
-        }
+        public static Int2 operator +(Int2 a, Int2 b) => new Int2(a.X + b.X, a.Y + b.Y);
+        public static Int2 operator +(Int2 a, int b) => new Int2(a.X + b, a.Y + b);
+
+        public static Int2 operator -(Int2 a, Int2 b) => new Int2(a.X - b.X, a.Y - b.Y);
+        public static Int2 operator -(Int2 a, int b) => new Int2(a.X - b, a.Y - b);
+
+        public static Int2 operator *(Int2 a, Int2 b) => new Int2(a.X * b.X, a.Y * b.Y);
+        public static Int2 operator *(Int2 a, int b) => new Int2(a.X * b, a.Y * b);
+
+        public static Int2 operator ^(Int2 a, Int2 b) => new Int2(a.X ^ b.X, a.Y ^ b.Y);
+        public static Int2 operator ^(Int2 a, int b) => new Int2(a.X ^ b, a.Y ^ b);
+
+        public static implicit operator Int2((int X, int Y) v) => new Int2(v.X, v.Y);
+        public static implicit operator (int X, int Y)(Int2 v) => (v.X, v.Y);
     }
 }

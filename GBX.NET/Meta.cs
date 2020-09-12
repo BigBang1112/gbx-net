@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GBX.NET
+﻿namespace GBX.NET
 {
     public class Meta
     {
@@ -27,19 +23,14 @@ namespace GBX.NET
             Author = author;
         }
 
-        public override string ToString()
-        {
-            return $"(\"{ID}\", \"{Collection}\", \"{Author}\")";
-        }
+        public override string ToString() => $"(\"{ID}\", \"{Collection}\", \"{Author}\")";
+        public override int GetHashCode() => ID.GetHashCode() ^ Collection.GetHashCode() ^ Author.GetHashCode();
+        public override bool Equals(object obj) => this is Meta m && this == m;
 
-        public static implicit operator Meta((string ID, string Collection, string Author) v)
-        {
-            return new Meta(v.Item1, v.Item2, v.Item3);
-        }
+        public static bool operator ==(Meta a, Meta b) => a.ID == b.ID && a.Collection == b.Collection && a.Author == b.Author;
+        public static bool operator !=(Meta a, Meta b) => !(a.ID == b.ID && a.Collection == b.Collection && a.Author == b.Author);
 
-        public static implicit operator (string ID, string Collection, string Author)(Meta v)
-        {
-            return (v.ID, v.Collection, v.Author);
-        }
+        public static implicit operator Meta((string ID, string Collection, string Author) v) => new Meta(v.ID, v.Collection, v.Author);
+        public static implicit operator (string ID, string Collection, string Author)(Meta v) => (v.ID, v.Collection, v.Author);
     }
 }
