@@ -27,8 +27,8 @@
         public override int GetHashCode() => ID.GetHashCode() ^ Collection.GetHashCode() ^ Author.GetHashCode();
         public override bool Equals(object obj) => this is Meta m && this == m;
 
-        public static bool operator ==(Meta a, Meta b) => a.ID == b.ID && a.Collection == b.Collection && a.Author == b.Author;
-        public static bool operator !=(Meta a, Meta b) => !(a.ID == b.ID && a.Collection == b.Collection && a.Author == b.Author);
+        public static bool operator ==(Meta a, Meta b) => a?.ID == b?.ID && a?.Collection == b?.Collection && a?.Author == b?.Author;
+        public static bool operator !=(Meta a, Meta b) => !(a?.ID == b?.ID && a?.Collection == b?.Collection && a?.Author == b?.Author);
 
         public static implicit operator Meta((string ID, string Collection, string Author) v) => new Meta(v.ID, v.Collection, v.Author);
         public static implicit operator (string ID, string Collection, string Author)(Meta v) => (v.ID, v.Collection, v.Author);
