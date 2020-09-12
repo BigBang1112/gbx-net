@@ -593,7 +593,7 @@ namespace GBX.NET.Engines.Game
                 PivotPosition = offsetPivot,
                 Variant = variant
             };
-            it.Chunks = new ChunkList();
+            it.Chunks = new ChunkSet();
             it.CreateChunk<CGameCtnAnchoredObject.Chunk03101002>();
             it.CreateChunk<CGameCtnAnchoredObject.Chunk03101004>();
             Items.Add(it);

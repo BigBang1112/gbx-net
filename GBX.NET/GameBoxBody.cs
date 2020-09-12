@@ -11,7 +11,7 @@ namespace GBX.NET
     {
         public int? CompressedSize { get; }
         public int UncompressedSize { get; }
-        public ChunkList Chunks { get; set; } = new ChunkList();
+        public ChunkSet Chunks { get; set; } = new ChunkSet();
         public byte[] Rest { get; }
         public bool Aborting { get; private set; }
 

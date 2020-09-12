@@ -14,7 +14,7 @@ namespace GBX.NET
 
         public new GameBox<T> GBX => (GameBox<T>)base.GBX;
 
-        public ChunkList Chunks { get; set; }
+        public ChunkSet Chunks { get; set; }
 
         public GameBoxHeader(GameBox<T> gbx, GameBoxHeaderParameters parameters) : base(gbx, parameters)
         {
@@ -142,7 +142,7 @@ namespace GBX.NET
 
                                 counter++;
                             }
-                            Chunks = new ChunkList(chunks);
+                            Chunks = new ChunkSet(chunks);
                         }
                     }
                 }
