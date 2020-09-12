@@ -155,7 +155,7 @@ namespace GBX.NET
         {
             inheritanceClasses = GetInheritance(type);
 
-            static List<uint> GetInheritance(Type t)
+            List<uint> GetInheritance(Type t)
             {
                 List<uint> classes = new List<uint>();
 
@@ -275,13 +275,16 @@ namespace GBX.NET
                             else
                                 Log.Write($"~ [{node.ClassName}] 0x{chunkID:x8} ERROR (wrong chunk format or unknown unskippable chunk)", ConsoleColor.Red);
 
-                            using var restMs = new MemoryStream(ushort.MaxValue);
-                            restMs.Write(BitConverter.GetBytes(chunkID));
+                            var buffer = BitConverter.GetBytes(chunkID);
+                            using (var restMs = new MemoryStream(ushort.MaxValue))
+                            {
+                                restMs.Write(buffer, 0, buffer.Length);
 
-                            while(r.PeekUInt32() != 0xFACADE01)
-                                restMs.WriteByte(r.ReadByte());
+                                while (r.PeekUInt32() != 0xFACADE01)
+                                    restMs.WriteByte(r.ReadByte());
 
-                            node.Rest = restMs.ToArray();
+                                node.Rest = restMs.ToArray();
+                            }
                             Debug.WriteLine("FACADE found.");
                         }
                         break;
@@ -420,35 +423,37 @@ namespace GBX.NET
                 if (lb == null && ParentChunk is ILookbackable l2)
                     lb = l2;
 
-                using var ms = new MemoryStream();
-                using var msW = new GameBoxWriter(ms, lb);
-                var rw = new GameBoxReaderWriter(msW);
-
-                try
+                using (var ms = new MemoryStream())
+                using (var msW = new GameBoxWriter(ms, lb))
                 {
-                    if (chunk is ISkippableChunk s && !s.Discovered)
-                        s.Write(msW);
-                    else
-                        chunk.ReadWrite((dynamic)this, rw);
+                    var rw = new GameBoxReaderWriter(msW);
 
-                    w.Write(Chunk.Remap(chunk.ID, remap));
-
-                    if (chunk is ISkippableChunk)
+                    try
                     {
-                        w.Write(0x534B4950);
-                        w.Write((int)ms.Length);
-                    }
+                        if (chunk is ISkippableChunk s && !s.Discovered)
+                            s.Write(msW);
+                        else
+                            chunk.ReadWrite((dynamic)this, rw);
 
-                    w.Write(ms.ToArray(), 0, (int)ms.Length);
-                }
-                catch (NotImplementedException e)
-                {
-                    if (chunk is ISkippableChunk)
-                    {
-                        Debug.WriteLine(e.Message);
-                        Debug.WriteLine("Ignoring the skippable chunk from writing.");
+                        w.Write(Chunk.Remap(chunk.ID, remap));
+
+                        if (chunk is ISkippableChunk)
+                        {
+                            w.Write(0x534B4950);
+                            w.Write((int)ms.Length);
+                        }
+
+                        w.Write(ms.ToArray(), 0, (int)ms.Length);
                     }
-                    else throw e; // Unskippable chunk must have a Write implementation
+                    catch (NotImplementedException e)
+                    {
+                        if (chunk is ISkippableChunk)
+                        {
+                            Debug.WriteLine(e.Message);
+                            Debug.WriteLine("Ignoring the skippable chunk from writing.");
+                        }
+                        else throw e; // Unskippable chunk must have a Write implementation
+                    }
                 }
             }
 
@@ -477,7 +482,7 @@ namespace GBX.NET
                     if (line.StartsWith("  "))
                     {
                         var cl = line.Substring(2, 3);
-                        if (line.Length - 6 > 0) className = line[6..];
+                        if (line.Length - 6 > 0) className = line.Substring(6);
 
                         var classIDString = $"{en}{cl}{ch}";
 
@@ -493,7 +498,7 @@ namespace GBX.NET
                     else
                     {
                         en = line.Substring(0, 2);
-                        if (line.Length - 3 > 0) engineName = line[3..];
+                        if (line.Length - 3 > 0) engineName = line.Substring(3);
                     }
                 }
             }
@@ -649,20 +654,21 @@ namespace GBX.NET
 
         public static T FromGBX<T>(string gbxFile) where T : Node
         {
-            using var fs = File.OpenRead(gbxFile);
+            using (var fs = File.OpenRead(gbxFile))
+            {
+                var type = GameBox.GetGameBoxType(fs);
+                fs.Seek(0, SeekOrigin.Begin);
 
-            var type = GameBox.GetGameBoxType(fs);
-            fs.Seek(0, SeekOrigin.Begin);
+                GameBox gbx;
+                if (type == null)
+                    gbx = new GameBox();
+                else
+                    gbx = (GameBox)Activator.CreateInstance(type);
 
-            GameBox gbx;
-            if (type == null)
-                gbx = new GameBox();
-            else
-                gbx = (GameBox)Activator.CreateInstance(type);
-
-            if (gbx.Read(fs))
-                return FromGBX((GameBox<T>)gbx);
-            return default;
+                if (gbx.Read(fs))
+                    return FromGBX((GameBox<T>)gbx);
+                return default;
+            }
         }
     }
 }

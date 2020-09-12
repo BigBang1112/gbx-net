@@ -125,10 +125,12 @@ namespace GBX.NET.Engines.Game
 
                     n.Track = Task.Run(() =>
                     {
-                        using var ms = new MemoryStream(trackGbx);
-                        var gbx = new GameBox<CGameCtnChallenge>();
-                        gbx.Read(ms);
-                        return gbx;
+                        using (var ms = new MemoryStream(trackGbx))
+                        {
+                            var gbx = new GameBox<CGameCtnChallenge>();
+                            gbx.Read(ms);
+                            return gbx;
+                        }
                     });
                 }
             }

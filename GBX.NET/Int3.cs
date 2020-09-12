@@ -61,7 +61,7 @@ namespace GBX.NET
         public static explicit operator Int3(Byte3 a) => new Int3(a.X, a.Y, a.Z);
         public static explicit operator Int3(Int2 a) => new Int3(a.X, 0, a.Y);
 
-        public static implicit operator Vector3(Int3 a) => new Vector3(a.X, a.Y, a.Z);
+        public static implicit operator Vec3(Int3 a) => new Vec3(a.X, a.Y, a.Z);
 
         public static explicit operator Int3(Direction a)
         {

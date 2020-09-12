@@ -74,122 +74,124 @@ namespace GBX.NET
 
         public override bool Read(Stream stream, bool withoutBody)
         {
-            using var gbxr = new GameBoxReader(stream);
-
-            // Header
-
-            Log.Write("Reading the header...");
-
-            var parameters = new GameBoxHeaderParameters();
-            if (!parameters.Read(gbxr)) return false;
-
-            Log.Write("Working out the header chunks in the background...");
-
-            Header = Task.Run(() => new GameBoxHeader<T>(this, parameters));
-            Header.ContinueWith(x =>
+            using (var gbxr = new GameBoxReader(stream))
             {
-                if (x.IsCompletedSuccessfully)
-                    Log.Write("Header chunks parsed without any exceptions.", ConsoleColor.Green);
-                else
-                    Log.Write("Header chunks parsed with exceptions.", ConsoleColor.Red);
-            });
 
-            // Reference table
+                // Header
 
-            Log.Write("Reading the reference table...");
+                Log.Write("Reading the header...");
 
-            var numExternalNodes = gbxr.ReadInt32();
+                var parameters = new GameBoxHeaderParameters();
+                if (!parameters.Read(gbxr)) return false;
 
-            if (numExternalNodes > 0)
-            {
-                var ancestorLevel = gbxr.ReadInt32();
+                Log.Write("Working out the header chunks in the background...");
 
-                GameBoxRefTableFolder rootFolder = new GameBoxRefTableFolder("Root");
-
-                var numSubFolders = gbxr.ReadInt32();
-                ReadRefTableFolders(numSubFolders, ref rootFolder);
-
-                void ReadRefTableFolders(int n, ref GameBoxRefTableFolder folder)
+                Header = Task.Run(() => new GameBoxHeader<T>(this, parameters));
+                Header.ContinueWith(x =>
                 {
-                    for (var i = 0; i < n; i++)
-                    {
-                        var name = gbxr.ReadString();
-                        var numSubFolders = gbxr.ReadInt32();
-
-                        var f = new GameBoxRefTableFolder(name, folder);
-                        folder.Folders.Add(f);
-
-                        ReadRefTableFolders(numSubFolders, ref f);
-                    }
-                }
-
-                var externalNodes = new ExternalNode[numExternalNodes];
-
-                for (var i = 0; i < numExternalNodes; i++)
-                {
-                    string fileName = null;
-                    int? resourceIndex = null;
-                    bool? useFile = null;
-                    int? folderIndex = null;
-
-                    var flags = gbxr.ReadInt32();
-
-                    if ((flags & 4) == 0)
-                        fileName = gbxr.ReadString();
+                    if (x.Exception == null)
+                        Log.Write("Header chunks parsed without any exceptions.", ConsoleColor.Green);
                     else
-                        resourceIndex = gbxr.ReadInt32();
+                        Log.Write("Header chunks parsed with exceptions.", ConsoleColor.Red);
+                });
 
-                    var nodeIndex = gbxr.ReadInt32();
+                // Reference table
 
-                    if (parameters.Version >= 5)
-                        useFile = gbxr.ReadBoolean();
+                Log.Write("Reading the reference table...");
 
-                    if ((flags & 4) == 0)
-                        folderIndex = gbxr.ReadInt32();
+                var numExternalNodes = gbxr.ReadInt32();
 
-                    var extNode = new ExternalNode(flags, fileName, resourceIndex, nodeIndex, useFile, folderIndex);
-                    externalNodes[i] = extNode;
-                }
-
-                var refTable = new GameBoxRefTable(rootFolder, externalNodes);
-                RefTable = refTable;
-            }
-            else
-            {
-                Log.Write("No external nodes found, reference table completed.", ConsoleColor.Green);
-            }
-
-            // Body
-
-            if (!withoutBody)
-            {
-                Log.Write("Reading the body...");
-
-                switch (parameters.BodyCompression)
+                if (numExternalNodes > 0)
                 {
-                    case 'C':
-                        var uncompressedSize = gbxr.ReadInt32();
-                        var compressedSize = gbxr.ReadInt32();
+                    var ancestorLevel = gbxr.ReadInt32();
 
-                        var data = gbxr.ReadBytes(compressedSize);
+                    GameBoxRefTableFolder rootFolder = new GameBoxRefTableFolder("Root");
 
-                        Body = GameBoxBody<T>.DecompressAndConstruct(this, parameters.ClassID.GetValueOrDefault(), data, compressedSize, uncompressedSize);
-                        break;
-                    case 'U':
-                        var uncompressedData = gbxr.ReadBytes((int)(stream.Length - stream.Position));
-                        Body = new GameBoxBody<T>(this, parameters.ClassID.GetValueOrDefault(), uncompressedData, null, uncompressedData.Length);
-                        break;
-                    default:
-                        Task.WaitAll(Header);
-                        return false;
+                    var numSubFolders = gbxr.ReadInt32();
+                    ReadRefTableFolders(numSubFolders, ref rootFolder);
+
+                    void ReadRefTableFolders(int n, ref GameBoxRefTableFolder folder)
+                    {
+                        for (var i = 0; i < n; i++)
+                        {
+                            var name = gbxr.ReadString();
+                            var numSubSubFolders = gbxr.ReadInt32();
+
+                            var f = new GameBoxRefTableFolder(name, folder);
+                            folder.Folders.Add(f);
+
+                            ReadRefTableFolders(numSubSubFolders, ref f);
+                        }
+                    }
+
+                    var externalNodes = new ExternalNode[numExternalNodes];
+
+                    for (var i = 0; i < numExternalNodes; i++)
+                    {
+                        string fileName = null;
+                        int? resourceIndex = null;
+                        bool? useFile = null;
+                        int? folderIndex = null;
+
+                        var flags = gbxr.ReadInt32();
+
+                        if ((flags & 4) == 0)
+                            fileName = gbxr.ReadString();
+                        else
+                            resourceIndex = gbxr.ReadInt32();
+
+                        var nodeIndex = gbxr.ReadInt32();
+
+                        if (parameters.Version >= 5)
+                            useFile = gbxr.ReadBoolean();
+
+                        if ((flags & 4) == 0)
+                            folderIndex = gbxr.ReadInt32();
+
+                        var extNode = new ExternalNode(flags, fileName, resourceIndex, nodeIndex, useFile, folderIndex);
+                        externalNodes[i] = extNode;
+                    }
+
+                    var refTable = new GameBoxRefTable(rootFolder, externalNodes);
+                    RefTable = refTable;
+                }
+                else
+                {
+                    Log.Write("No external nodes found, reference table completed.", ConsoleColor.Green);
                 }
 
-                Log.Write("Body completed!");
+                // Body
 
-                Task.WaitAll(Header);
+                if (!withoutBody)
+                {
+                    Log.Write("Reading the body...");
+
+                    switch (parameters.BodyCompression)
+                    {
+                        case 'C':
+                            var uncompressedSize = gbxr.ReadInt32();
+                            var compressedSize = gbxr.ReadInt32();
+
+                            var data = gbxr.ReadBytes(compressedSize);
+
+                            Body = GameBoxBody<T>.DecompressAndConstruct(this, parameters.ClassID.GetValueOrDefault(), data, compressedSize, uncompressedSize);
+                            break;
+                        case 'U':
+                            var uncompressedData = gbxr.ReadBytes((int)(stream.Length - stream.Position));
+                            Body = new GameBoxBody<T>(this, parameters.ClassID.GetValueOrDefault(), uncompressedData, null, uncompressedData.Length);
+                            break;
+                        default:
+                            Task.WaitAll(Header);
+                            return false;
+                    }
+
+                    Log.Write("Body completed!");
+
+                    Task.WaitAll(Header);
+                }
+                else
+                    Task.WaitAll(Header);
             }
-            else
-                Task.WaitAll(Header);
 
             return true;
         }
@@ -219,11 +221,13 @@ namespace GBX.NET
 
         public void Save(string fileName, ClassIDRemap remap)
         {
-            using var ms = new MemoryStream();
-            using var w = new GameBoxWriter(ms);
-            Write(w, remap);
-            ms.Position = 0;
-            File.WriteAllBytes(fileName, ms.ToArray());
+            using (var ms = new MemoryStream())
+            using (var w = new GameBoxWriter(ms))
+            {
+                Write(w, remap);
+                ms.Position = 0;
+                File.WriteAllBytes(fileName, ms.ToArray());
+            }
         }
 
         public void Save(string fileName)
@@ -257,21 +261,23 @@ namespace GBX.NET
 
         public virtual bool Read(Stream stream, bool withoutBody)
         {
-            using var gbxr = new GameBoxReader(stream);
-
-            var parameters = new GameBoxHeaderParameters();
-            if (!parameters.Read(gbxr)) return false;
-
-            Log.Write("Working out the header chunks in the background...");
-
-            Header = Task.Run(() => new GameBoxHeader(this, parameters));
-            Header.ContinueWith(x =>
+            using (var gbxr = new GameBoxReader(stream))
             {
-                if(x.IsCompletedSuccessfully)
-                    Log.Write("Header chunks parsed without any exceptions.");
-                else
-                    Log.Write("Header chunks parsed with exceptions.");
-            });
+
+                var parameters = new GameBoxHeaderParameters();
+                if (!parameters.Read(gbxr)) return false;
+
+                Log.Write("Working out the header chunks in the background...");
+
+                Header = Task.Run(() => new GameBoxHeader(this, parameters));
+                Header.ContinueWith(x =>
+                {
+                    if (x.Exception == null)
+                        Log.Write("Header chunks parsed without any exceptions.");
+                    else
+                        Log.Write("Header chunks parsed with exceptions.");
+                });
+            }
 
             return true;
         }
@@ -288,13 +294,15 @@ namespace GBX.NET
 
             FileName = fileName;
 
-            using var fs = File.OpenRead(fileName);
-            var success = Read(fs);
+            using (var fs = File.OpenRead(fileName))
+            {
+                var success = Read(fs);
 
-            if(success) Log.Write($"Loaded {fileName}!", ConsoleColor.Green);
-            else Log.Write($"File {fileName} has't loaded successfully.", ConsoleColor.Red);
+                if (success) Log.Write($"Loaded {fileName}!", ConsoleColor.Green);
+                else Log.Write($"File {fileName} has't loaded successfully.", ConsoleColor.Red);
 
-            return success;
+                return success;
+            }
         }
 
         [Obsolete]
@@ -302,8 +310,8 @@ namespace GBX.NET
         {
             if (loadToMemory)
             {
-                using var ms = new MemoryStream(File.ReadAllBytes(fileName));
-                return Read(ms);
+                using (var ms = new MemoryStream(File.ReadAllBytes(fileName)))
+                    return Read(ms);
             }
 
             return Load(fileName);
@@ -358,7 +366,7 @@ namespace GBX.NET
                 }
             }
 
-            static Type GetBaseType(Type t)
+            Type GetBaseType(Type t)
             {
                 if (t == null)
                     return null;
@@ -394,7 +402,7 @@ namespace GBX.NET
                 return typeof(GameBox<>).MakeGenericType(availableClass);
             }
 
-            static Type GetBaseType(Type t)
+            Type GetBaseType(Type t)
             {
                 if (t == null)
                     return null;

@@ -13,11 +13,11 @@ namespace GBX.NET.Engines.Game
     {
         public Meta ItemModel { get; set; }
 
-        public Vector3? PitchYawRoll { get; set; }
+        public Vec3? PitchYawRoll { get; set; }
 
         public Byte3 BlockUnitCoord { get; set; }
 
-        public Vector3? AbsolutePositionInMap { get; set; }
+        public Vec3? AbsolutePositionInMap { get; set; }
 
         public CGameWaypointSpecialProperty WaypointSpecialProperty { get; set; }
 
@@ -25,7 +25,7 @@ namespace GBX.NET.Engines.Game
 
         public float Scale { get; set; } = 1;
 
-        public Vector3 PivotPosition { get; set; }
+        public Vec3 PivotPosition { get; set; }
 
         public int Variant
         {
@@ -66,8 +66,8 @@ namespace GBX.NET.Engines.Game
             public int Version { get; set; } = 7;
             public int Unknown1 { get; set; } = -1;
 
-            public Vector3 Unknown3 { get; set; }
-            public Vector3 Unknown4 { get; set; }
+            public Vec3 Unknown3 { get; set; }
+            public Vec3 Unknown4 { get; set; }
 
             public override void Read(CGameCtnAnchoredObject n, GameBoxReader r, GameBoxWriter unknownW)
             {

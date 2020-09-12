@@ -84,12 +84,15 @@ namespace GBX.NET
             }
             else if ((index & 0x3FFF) == 0x3FFF)
             {
-                return (index >> 30) switch
+                switch(index >> 30)
                 {
-                    2 => new LookbackString("Unassigned", lookbackable),
-                    3 => new LookbackString("", lookbackable),
-                    _ => throw new Exception(),
-                };
+                    case 2:
+                        return new LookbackString("Unassigned", lookbackable);
+                    case 3:
+                        return new LookbackString("", lookbackable);
+                    default:
+                        throw new Exception();
+                }
             }
             else if (index >> 30 == 0)
             {
@@ -242,16 +245,16 @@ namespace GBX.NET
             return result;
         }
 
-        public Vector2 ReadVec2()
+        public Vec2 ReadVec2()
         {
             var floats = ReadArray<float>(2);
-            return new Vector2(floats[0], floats[1]);
+            return new Vec2(floats[0], floats[1]);
         }
 
-        public Vector3 ReadVec3()
+        public Vec3 ReadVec3()
         {
             var floats = ReadArray<float>(3);
-            return new Vector3(floats[0], floats[1], floats[2]);
+            return new Vec3(floats[0], floats[1], floats[2]);
         }
 
         public Int3 ReadInt3()

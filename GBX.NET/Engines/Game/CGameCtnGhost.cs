@@ -23,7 +23,7 @@ namespace GBX.NET.Engines.Game
         private string recordingContext;
         private TimeSpan? raceTime;
         private int? respawns;
-        private Vector3? lightTrailColor;
+        private Vec3? lightTrailColor;
         private int? stuntScore;
         private TimeSpan[] checkpoints;
 
@@ -101,7 +101,7 @@ namespace GBX.NET.Engines.Game
             set => respawns = value;
         }
 
-        public Vector3? LightTrailColor
+        public Vec3? LightTrailColor
         {
             get
             {

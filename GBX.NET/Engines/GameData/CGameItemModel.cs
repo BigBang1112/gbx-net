@@ -35,7 +35,7 @@ namespace GBX.NET.Engines.GameData
         public Node[] NadeoSkinFids { get; set; }
         public Node[] Cameras { get; set; }
         public Node RaceInterfaceFid { get; set; }
-        public Vector3 GroundPoint { get; set; }
+        public Vec3 GroundPoint { get; set; }
         public float PainterGroundMargin { get; set; }
         public float OrbitalCenterHeightFromGround { get; set; }
         public float OrbitalRadiusBase { get; set; }

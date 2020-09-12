@@ -161,8 +161,8 @@ namespace GBX.NET.Engines.Game
         private PlayMode? mode;
         private byte[] hashedPassword;
         private uint? crc32;
-        private Vector3? thumbnailPosition;
-        private Vector3? thumbnailPitchYawRoll;
+        private Vec3? thumbnailPosition;
+        private Vec3? thumbnailPitchYawRoll;
         private float? thumbnailFOV;
         private List<CGameCtnAnchoredObject> items;
         private CScriptTraitsMetadata metadataTraits;
@@ -244,12 +244,12 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// Origin of the map.
         /// </summary>
-        public Vector2? MapOrigin { get; set; }
+        public Vec2? MapOrigin { get; set; }
 
         /// <summary>
         /// Target of the map.
         /// </summary>
-        public Vector2? MapTarget { get; set; }
+        public Vec2? MapTarget { get; set; }
 
         /// <summary>
         /// Title pack the map was built in.
@@ -419,7 +419,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// Position of the thumnail camera.
         /// </summary>
-        public Vector3? ThumbnailPosition
+        public Vec3? ThumbnailPosition
         {
             get
             {
@@ -432,7 +432,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// Pitch, yaw and roll of the thumbnail camera in radians.
         /// </summary>
-        public Vector3? ThumbnailPitchYawRoll
+        public Vec3? ThumbnailPitchYawRoll
         {
             get
             {
@@ -568,7 +568,7 @@ namespace GBX.NET.Engines.Game
             HashedPassword = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
 
             Crc32 crc32 = new Crc32();
-            crc32.Update(Encoding.ASCII.GetBytes("0x" + BitConverter.ToInt16(HashedPassword).ToString() + "???" + MapUid));
+            crc32.Update(Encoding.ASCII.GetBytes("0x" + BitConverter.ToInt16(HashedPassword, 0).ToString() + "???" + MapUid));
             CRC32 = Convert.ToUInt32(crc32.Value);
         }
 
@@ -580,7 +580,7 @@ namespace GBX.NET.Engines.Game
             RemoveChunk<Chunk03043029>();
         }
 
-        public void PlaceItem(Meta itemModel, Vector3 absolutePosition, Vector3 pitchYawRoll, Byte3 blockUnitCoord, Vector3 offsetPivot, int variant = 0)
+        public void PlaceItem(Meta itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Byte3 blockUnitCoord, Vec3 offsetPivot, int variant = 0)
         {
             var chunkItems = CreateChunk<Chunk03043040>();
 
@@ -599,7 +599,7 @@ namespace GBX.NET.Engines.Game
             Items.Add(it);
         }
 
-        public FreeBlock PlaceFreeBlock(string name, Vector3 position, Vector3 pitchYawRoll)
+        public FreeBlock PlaceFreeBlock(string name, Vec3 position, Vec3 pitchYawRoll)
         {
             var block = new Block(name, Direction.North, (0, 0, 0), 0x20000000, null, null, null);
             var freeBlock = new FreeBlock(block)
@@ -706,7 +706,7 @@ namespace GBX.NET.Engines.Game
             return true;
         }
 
-        public void OffsetMediaTrackerCameras(Vector3 offset)
+        public void OffsetMediaTrackerCameras(Vec3 offset)
         {
             OffsetCamerasInClip(ClipIntro);
             OffsetCamerasInClipGroup(ClipGroupInGame);
@@ -1160,12 +1160,12 @@ namespace GBX.NET.Engines.Game
             /// <summary>
             /// Origin of the map. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="3"/></c>.
             /// </summary>
-            public Vector2? MapOrigin { get; set; }
+            public Vec2? MapOrigin { get; set; }
 
             /// <summary>
             /// Target of the map. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="4"/></c>.
             /// </summary>
-            public Vector2? MapTarget { get; set; }
+            public Vec2? MapTarget { get; set; }
 
             /// <summary>
             /// Name of the map type script.
@@ -1327,30 +1327,32 @@ namespace GBX.NET.Engines.Game
 
                 if (Version != 0)
                 {
-                    using var ms = new MemoryStream();
-                    if (rw.Mode == GameBoxReaderWriterMode.Write)
+                    using (var ms = new MemoryStream())
                     {
-                        Thumbnail.Result.RotateFlip(RotateFlipType.Rotate180FlipX);
-                        ExportThumbnail(ms, ImageFormat.Jpeg);
-                    }
-
-                    var thumbnailSize = rw.Int32((int)ms.Length);
-                    rw.Bytes(Encoding.UTF8.GetBytes("<Thumbnail.jpg>"), "<Thumbnail.jpg>".Length); // Because the string is purely ASCII anyway, Length is usable
-                    var thumbnailData = rw.Bytes(ms.ToArray(), thumbnailSize);
-                    rw.Bytes(Encoding.UTF8.GetBytes("</Thumbnail.jpg>"), "</Thumbnail.jpg>".Length);
-                    rw.Bytes(Encoding.UTF8.GetBytes("<Comments>"), "<Comments>".Length);
-                    Comments = rw.String(Comments);
-                    rw.Bytes(Encoding.UTF8.GetBytes("</Comments>"), "</Comments>".Length);
-
-                    if (rw.Mode == GameBoxReaderWriterMode.Read && thumbnailData.Length > 0)
-                    {
-                        Thumbnail = Task.Run(() =>
+                        if (rw.Mode == GameBoxReaderWriterMode.Write)
                         {
-                            msT = new MemoryStream(thumbnailData);
-                            var bitmap = (Bitmap)Image.FromStream(msT);
-                            bitmap.RotateFlip(RotateFlipType.Rotate180FlipX);
-                            return bitmap;
-                        });
+                            Thumbnail.Result.RotateFlip(RotateFlipType.Rotate180FlipX);
+                            ExportThumbnail(ms, ImageFormat.Jpeg);
+                        }
+
+                        var thumbnailSize = rw.Int32((int)ms.Length);
+                        rw.Bytes(Encoding.UTF8.GetBytes("<Thumbnail.jpg>"), "<Thumbnail.jpg>".Length); // Because the string is purely ASCII anyway, Length is usable
+                        var thumbnailData = rw.Bytes(ms.ToArray(), thumbnailSize);
+                        rw.Bytes(Encoding.UTF8.GetBytes("</Thumbnail.jpg>"), "</Thumbnail.jpg>".Length);
+                        rw.Bytes(Encoding.UTF8.GetBytes("<Comments>"), "<Comments>".Length);
+                        Comments = rw.String(Comments);
+                        rw.Bytes(Encoding.UTF8.GetBytes("</Comments>"), "</Comments>".Length);
+
+                        if (rw.Mode == GameBoxReaderWriterMode.Read && thumbnailData.Length > 0)
+                        {
+                            Thumbnail = Task.Run(() =>
+                            {
+                                msT = new MemoryStream(thumbnailData);
+                                var bitmap = (Bitmap)Image.FromStream(msT);
+                                bitmap.RotateFlip(RotateFlipType.Rotate180FlipX);
+                                return bitmap;
+                            });
+                        }
                     }
                 }
             }
@@ -1917,9 +1919,9 @@ namespace GBX.NET.Engines.Game
         public class Chunk03043027 : Chunk<CGameCtnChallenge>
         {
             public bool ArchiveGmCamVal { get; set; }
-            public Vector3? Vec1 { get; set; }
-            public Vector3? Vec2 { get; set; }
-            public Vector3? Vec3 { get; set; }
+            public Vec3? Vec1 { get; set; }
+            public Vec3? Vec2 { get; set; }
+            public Vec3? Vec3 { get; set; }
 
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
@@ -2077,10 +2079,10 @@ namespace GBX.NET.Engines.Game
 
                         n.LightmapCache = Task.Run(() =>
                         {
-                            using var ms = new MemoryStream(data);
-                            using var zlib = new InflaterInputStream(ms);
-                            using var gbxr = new GameBoxReader(zlib);
-                            return (CHmsLightMapCache)Parse(Node.Body, 0x06022000, gbxr);
+                            using (var ms = new MemoryStream(data))
+                            using (var zlib = new InflaterInputStream(ms))
+                            using (var gbxr = new GameBoxReader(zlib))
+                                return (CHmsLightMapCache)Parse(Node.Body, 0x06022000, gbxr);
                         });
                     }
                 }
@@ -2135,22 +2137,24 @@ namespace GBX.NET.Engines.Game
                 {
                     w.Write(Unknown1);
 
-                    using var itemMs = new MemoryStream();
-                    using var wr = new GameBoxWriter(itemMs, w.Lookbackable);
-
-                    wr.Write(Unknown2);
-                    wr.Write(n.items.Count);
-
-                    foreach (var item in n.items)
+                    using (var itemMs = new MemoryStream())
+                    using (var wr = new GameBoxWriter(itemMs, w.Lookbackable))
                     {
-                        wr.Write(item.ID);
-                        item.Write(wr);
+
+                        wr.Write(Unknown2);
+                        wr.Write(n.items.Count);
+
+                        foreach (var item in n.items)
+                        {
+                            wr.Write(item.ID);
+                            item.Write(wr);
+                        }
+
+                        wr.Write(Unknown3);
+
+                        w.Write((int)itemMs.Length);
+                        w.Write(itemMs.ToArray(), 0, (int)itemMs.Length);
                     }
-
-                    wr.Write(Unknown3);
-
-                    w.Write((int)itemMs.Length);
-                    w.Write(itemMs.ToArray(), 0, (int)itemMs.Length);
                 }
             }
         }
@@ -2206,10 +2210,9 @@ namespace GBX.NET.Engines.Game
 
                 n.Genealogies = Task.Run(() =>
                 {
-                    using var ms = new MemoryStream(Data);
-                    using var r2 = new GameBoxReader(ms, this);
-
-                    return ParseArray<CGameCtnZoneGenealogy>(this, r2);
+                    using (var ms = new MemoryStream(Data))
+                    using (var r2 = new GameBoxReader(ms, this))
+                        return ParseArray<CGameCtnZoneGenealogy>(this, r2);
                 });
             }
 
@@ -2217,17 +2220,19 @@ namespace GBX.NET.Engines.Game
             {
                 w.Write(Version);
 
-                using var ms = new MemoryStream();
-                using var w2 = new GameBoxWriter(ms);
-
-                w2.Write(n.Genealogies.Result, x =>
+                using (var ms = new MemoryStream())
+                using (var w2 = new GameBoxWriter(ms))
                 {
-                    w2.Write(0x0311D000);
-                    x.Write(w2);
-                });
 
-                w.Write((int)ms.Length);
-                w.Write(ms.ToArray());
+                    w2.Write(n.Genealogies.Result, x =>
+                    {
+                        w2.Write(0x0311D000);
+                        x.Write(w2);
+                    });
+
+                    w.Write((int)ms.Length);
+                    w.Write(ms.ToArray());
+                }
             }
         }
 
@@ -2411,7 +2416,7 @@ namespace GBX.NET.Engines.Game
             /// <summary>
             /// List of vectors that can't be directly figured out without information from <see cref="Chunk01F"/>.
             /// </summary>
-            public List<Vector3> Vectors { get; set; } = new List<Vector3>();
+            public List<Vec3> Vectors { get; set; } = new List<Vec3>();
 
             [IgnoreDataMember]
             public ReadOnlyCollection<FreeBlock> FreeBlocks
@@ -2449,7 +2454,7 @@ namespace GBX.NET.Engines.Game
 
                 Vectors.Clear();
                 while (r.BaseStream.Position < r.BaseStream.Length)
-                    Vectors.Add(new Vector3(r.ReadSingle(), r.ReadSingle(), r.ReadSingle()));
+                    Vectors.Add(new Vec3(r.ReadSingle(), r.ReadSingle(), r.ReadSingle()));
             }
 
             public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)

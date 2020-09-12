@@ -100,16 +100,16 @@ namespace GBX.NET.Engines.Plug
                     }
 
                     var uP = rw.Reader.ReadInt32();
-                    var verticies = rw.Reader.ReadArray(i => rw.Reader.ReadVec3());
-                    var indicies = rw.Reader.ReadArray(i => rw.Reader.ReadInt2());
+                    var verticies = rw.Reader.ReadArray(j => rw.Reader.ReadVec3());
+                    var indicies = rw.Reader.ReadArray(j => rw.Reader.ReadInt2());
 
-                    var uvmaps = rw.Reader.ReadArray(i =>
+                    var uvmaps = rw.Reader.ReadArray(j =>
                     {
                         var uvVerticies = rw.Reader.ReadInt32();
                         var inds = rw.Reader.ReadArray<int>(uvVerticies);
-                        var xy = new Vector2[uvVerticies];
-                        for (var j = 0; j < uvVerticies; j++)
-                            xy[j] = rw.Reader.ReadVec2();
+                        var xy = new Vec2[uvVerticies];
+                        for (var k = 0; k < uvVerticies; k++)
+                            xy[k] = rw.Reader.ReadVec2();
                         var one = rw.Reader.ReadInt32();
                         var two = rw.Reader.ReadInt32();
 
@@ -166,7 +166,7 @@ namespace GBX.NET.Engines.Plug
         public class Chunk09003006 : Chunk<CPlugCrystal>
         {
             public int Version { get; set; }
-            public Vector2[] Vectors { get; set; }
+            public Vec2[] Vectors { get; set; }
 
             public override void ReadWrite(CPlugCrystal n, GameBoxReaderWriter rw)
             {
@@ -196,7 +196,7 @@ namespace GBX.NET.Engines.Plug
         {
             public string LayerID { get; set; }
             public string LayerName { get; set; }
-            public Vector3[] Verticies { get; set; }
+            public Vec3[] Verticies { get; set; }
             public Int2[] Indicies { get; set; }
             public UVMap[] UVs { get; set; }
             public object[] Unknown { get; set; }
@@ -206,7 +206,7 @@ namespace GBX.NET.Engines.Plug
         {
             public int VertCount { get; set; }
             public int[] Inds { get; set; }
-            public Vector2[] XY { get; set; }
+            public Vec2[] XY { get; set; }
             public int Unknown1 { get; set; }
             public int Unknown2 { get; set; }
 

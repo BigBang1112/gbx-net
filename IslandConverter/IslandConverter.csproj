@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+	<TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
 	<UseWindowsForms>true</UseWindowsForms>
-	<Version>0.3.0</Version>
+	<Version>0.4.0</Version>
 	<PackageLicenseExpression></PackageLicenseExpression>
 	<Authors>BigBang1112</Authors>
 	<Product>Island Converter</Product>
@@ -14,13 +14,16 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	<TargetFramework>net461</TargetFramework>
     <PlatformTarget>x86</PlatformTarget>
     <Prefer32Bit>true</Prefer32Bit>
+    <Optimize>false</Optimize>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <PlatformTarget>x86</PlatformTarget>
-    <Prefer32Bit>true</Prefer32Bit>
+	  <TargetFramework>net461</TargetFramework>
+	  <PlatformTarget>x86</PlatformTarget>
+	  <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
 
   <ItemGroup>

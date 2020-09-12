@@ -177,11 +177,13 @@ namespace GBX.NET
                 lookbackable = l;
             }
 
-            using var ms = new MemoryStream();
-            using var w = new GameBoxWriter(ms, lookbackable);
-            var rw = new GameBoxReaderWriter(w);
-            ReadWrite(Node, rw);
-            return ms.ToArray();
+            using (var ms = new MemoryStream())
+            using (var w = new GameBoxWriter(ms, lookbackable))
+            {
+                var rw = new GameBoxReaderWriter(w);
+                ReadWrite(Node, rw);System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+                return ms.ToArray();
+            }
         }
     }
 }

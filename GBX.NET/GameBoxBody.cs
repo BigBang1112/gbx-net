@@ -28,14 +28,16 @@ namespace GBX.NET
             CompressedSize = compressedSize;
             UncompressedSize = uncompressedSize;
 
-            using var s = new MemoryStream(data);
-            using var gbxr = new GameBoxReader(s, this);
-            gbx.MainNode = (T)Node.Parse(this, mainNodeID, gbxr);
-            Debug.WriteLine("Amount read: " + (s.Position / (float)s.Length).ToString("P"));
+            using (var s = new MemoryStream(data))
+            using (var gbxr = new GameBoxReader(s, this))
+            {
+                gbx.MainNode = (T)Node.Parse(this, mainNodeID, gbxr);
+                Debug.WriteLine("Amount read: " + (s.Position / (float)s.Length).ToString("P"));
 
-            byte[] restBuffer = new byte[s.Length - s.Position];
-            gbxr.Read(restBuffer, 0, restBuffer.Length);
-            Rest = restBuffer;
+                byte[] restBuffer = new byte[s.Length - s.Position];
+                gbxr.Read(restBuffer, 0, restBuffer.Length);
+                Rest = restBuffer;
+            }
 
             Chunks.Node = gbx.MainNode;
         }
@@ -56,15 +58,17 @@ namespace GBX.NET
         {
             if(GBX.Header.Result.BodyCompression == 'C')
             {
-                using var msBody = new MemoryStream();
-                using var gbxwBody = new GameBoxWriter(msBody, this);
+                using (var msBody = new MemoryStream())
+                using (var gbxwBody = new GameBoxWriter(msBody, this))
+                {
 
-                GBX.MainNode.Write(gbxwBody, remap);
-                MiniLZO.Compress(msBody.ToArray(), out byte[] output);
+                    GBX.MainNode.Write(gbxwBody, remap);
+                    MiniLZO.Compress(msBody.ToArray(), out byte[] output);
 
-                w.Write((int)msBody.Length); // Uncompressed
-                w.Write(output.Length); // Compressed
-                w.Write(output, 0, output.Length); // Compressed body data
+                    w.Write((int)msBody.Length); // Uncompressed
+                    w.Write(output.Length); // Compressed
+                    w.Write(output, 0, output.Length); // Compressed body data
+                }
             }
             else
                 GBX.MainNode.Write(w);

@@ -46,25 +46,26 @@ namespace GBX.NET
             if (Discovered) return;
             Discovered = true;
 
-            using var gbxr = new GameBoxReader(Stream, Lookbackable);
-
-            GameBoxReaderWriter gbxrw = new GameBoxReaderWriter(gbxr);
-
-            try
+            using (var gbxr = new GameBoxReader(Stream, Lookbackable))
             {
-                ReadWrite(Node, gbxrw);
-            }
-            catch (NotImplementedException)
-            {
-                var unknownGbxw = new GameBoxWriter(Unknown, Lookbackable);
+                GameBoxReaderWriter gbxrw = new GameBoxReaderWriter(gbxr);
 
                 try
                 {
-                    Read(Node, gbxr, unknownGbxw);
+                    ReadWrite(Node, gbxrw);
                 }
-                catch (NotImplementedException e)
+                catch (NotImplementedException)
                 {
-                    Debug.WriteLine(e.Message);
+                    var unknownGbxw = new GameBoxWriter(Unknown, Lookbackable);
+
+                    try
+                    {
+                        Read(Node, gbxr, unknownGbxw);
+                    }
+                    catch (NotImplementedException e)
+                    {
+                        Debug.WriteLine(e.Message);
+                    }
                 }
             }
 

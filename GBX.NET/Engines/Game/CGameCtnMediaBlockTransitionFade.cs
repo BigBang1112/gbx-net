@@ -11,7 +11,7 @@ namespace GBX.NET.Engines.Game
     {
         public Key[] Keys { get; set; }
 
-        public Vector3 Color { get; set; }
+        public Vec3 Color { get; set; }
 
         public CGameCtnMediaBlockTransitionFade(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
