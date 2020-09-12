@@ -397,13 +397,7 @@ namespace GBX.NET
         {
             int counter = 0;
             
-            dynamic chunks;
-            if (Chunks == null)
-                chunks = ((dynamic)Body).Chunks;
-            else
-                chunks = Chunks;
-            
-            foreach (dynamic chunk in chunks)
+            foreach (dynamic chunk in Chunks)
             {
                 counter += 1;
 
