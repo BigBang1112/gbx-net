@@ -181,7 +181,7 @@ namespace GBX.NET
             using (var w = new GameBoxWriter(ms, lookbackable))
             {
                 var rw = new GameBoxReaderWriter(w);
-                ReadWrite(Node, rw);System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+                ReadWrite(Node, rw);
                 return ms.ToArray();
             }
         }
