@@ -45,7 +45,7 @@ namespace GBX.NET
 
         public TChunk CreateBodyChunk<TChunk>(byte[] data) where TChunk : Chunk<T>
         {
-            return Body.Chunks.Create<TChunk>(data);
+            return MainNode.Chunks.Create<TChunk>(data);
         }
 
         public TChunk CreateBodyChunk<TChunk>() where TChunk : Chunk<T>
@@ -55,19 +55,19 @@ namespace GBX.NET
 
         public void RemoveAllBodyChunks()
         {
-            Body.Chunks.Clear();
+            MainNode.Chunks.Clear();
         }
 
         public bool RemoveBodyChunk<TChunk>() where TChunk : Chunk<T>
         {
-            return Body.Chunks.Remove<TChunk>();
+            return MainNode.Chunks.Remove<TChunk>();
         }
 
         public void DiscoverAllChunks()
         {
             //foreach (var chunk in Header.Result.Chunks.Values)
             //    chunk.Discover();
-            foreach (var chunk in Body.Chunks)
+            foreach (var chunk in MainNode.Chunks)
                 if(chunk is ISkippableChunk s)
                     s.Discover();
         }

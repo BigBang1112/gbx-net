@@ -168,9 +168,9 @@ namespace GBX.NET
 
                 Node node;
                 if (hasInheritance)
-                    node = Node.Parse(body, classID, this, true);
+                    node = Node.Parse(body, classID, this);
                 else
-                    node = Node.Parse<T>(body, this, true);
+                    node = Node.Parse<T>(body, this);
 
                 if (index >= body.AuxilaryNodes.Count)
                     body.AuxilaryNodes.Add(node);

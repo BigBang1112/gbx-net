@@ -224,7 +224,7 @@ namespace IslandConverter
             if (size == MapSize.X32WithBigBorder)
             {
                 Log.Write("Importing chunk 0x03043043 for water on ground...");
-                var chunk = gbx.Body.Chunks.Create<CGameCtnChallenge.Chunk03043043>(File.ReadAllBytes("0x03043043.dat"));
+                var chunk = gbx.CreateBodyChunk<CGameCtnChallenge.Chunk03043043>(File.ReadAllBytes("0x03043043.dat"));
             }
 
             Log.Write("Cracking the map password if presented...");

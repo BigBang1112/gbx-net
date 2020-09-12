@@ -29,6 +29,11 @@ namespace GBX.NET.Engines.Game
 
         }
 
+        public CGameCtnBlockSkin(Chunk chunk) : base(chunk)
+        {
+
+        }
+
         #region Chunks
 
         #region 0x000 chunk
