@@ -9,7 +9,7 @@ Reading PAK file isn't currently supported.
 
 ## Compatibility
 
-GBX.NET is currently compatible with .NET Standard 2.1. At the moment you can't use the library in .NET Framework projects or .NET Core 2 or lower. Wider compatibility is planned for the future.
+GBX.NET is compatible with .NET Standard 2.0 since version 0.2.0. Earlier versions are built on .NET Standard 2.1.
 
 The library is also set to x86 assembly due to LZO compression problems in x64. It is unsure whenever this will be resolved.
 
