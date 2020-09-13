@@ -1,9 +1,9 @@
 ![GBX.NET](logo.png)
 
-![Nuget](https://img.shields.io/nuget/v/GBX.NET?style=for-the-badge)
-![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/BigBang1112/gbx-net?include_prereleases&style=for-the-badge)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/BigBang1112/gbx-net?style=for-the-badge)
-![GitHub](https://img.shields.io/github/license/BigBang1112/gbx-net?style=for-the-badge)
+[![Nuget](https://img.shields.io/nuget/v/GBX.NET?style=for-the-badge)](https://www.nuget.org/packages/GBX.NET/)
+[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/BigBang1112/gbx-net?include_prereleases&style=for-the-badge)](https://github.com/BigBang1112/gbx-net/releases/latest)
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/BigBang1112/gbx-net?style=for-the-badge)](#)
+[![GitHub](https://img.shields.io/github/license/BigBang1112/gbx-net?style=for-the-badge)](#)
 
 GBX.NET is a .NET GBX file parser library written in C#. GBX (or GameBox) is a file type available in many of the Nadeo games.
 
