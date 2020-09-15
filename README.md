@@ -1,9 +1,9 @@
 ![GBX.NET](logo.png)
 
 [![Nuget](https://img.shields.io/nuget/v/GBX.NET?style=for-the-badge)](https://www.nuget.org/packages/GBX.NET/)
-[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/BigBang1112/gbx-net?include_prereleases&style=for-the-badge)](https://github.com/BigBang1112/gbx-net/releases/latest)
+[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/BigBang1112/gbx-net?include_prereleases&style=for-the-badge)](https://github.com/BigBang1112/gbx-net/releases)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/BigBang1112/gbx-net?style=for-the-badge)](#)
-[![GitHub](https://img.shields.io/github/license/BigBang1112/gbx-net?style=for-the-badge)](#)
+[![GitHub](https://img.shields.io/github/license/BigBang1112/gbx-net?style=for-the-badge)](https://github.com/BigBang1112/gbx-net/blob/master/LICENSE)
 
 GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software framework. This file type can be in many of the Nadeo games - TrackMania, ShootMania, Virtual Skipper...
 
