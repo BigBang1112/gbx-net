@@ -69,6 +69,7 @@ namespace GBX.NET
         }
 
         public static Dictionary<uint, Type> AvailableClasses { get; } = new Dictionary<uint, Type>();
+        public static Dictionary<Type, List<uint>> AvailableInheritanceClasses { get; } = new Dictionary<Type, List<uint>>();
         public static Dictionary<Type, Dictionary<uint, Type>> AvailableChunkClasses { get; } = new Dictionary<Type, Dictionary<uint, Type>>();
 
         /// <summary>
@@ -109,17 +110,11 @@ namespace GBX.NET
             var count = r.ReadInt32();
             var array = new Node[count];
 
-            List<uint> inheritanceClasses = null;
-            Dictionary<uint, Type> availableChunkClasses = null;
-
             for (var i = 0; i < count; i++)
             {
                 _ = r.ReadUInt32();
 
-                if (i == 0)
-                    array[i] = Parse(type, body, r, out inheritanceClasses, out availableChunkClasses);
-                else
-                    array[i] = Parse(type, body, r, inheritanceClasses, availableChunkClasses);
+                array[i] = Parse(type, body, r);
             }
 
             return array;
@@ -137,10 +132,7 @@ namespace GBX.NET
 
             if (!AvailableClasses.TryGetValue(newerClassID, out Type availableClass))
             {
-                availableClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
-                   && x.Namespace.StartsWith("GBX.NET.Engines") && GetBaseType(x) == typeof(Node)
-                   && (x.GetCustomAttribute<NodeAttribute>().ID == newerClassID)).FirstOrDefault();
-                AvailableClasses.Add(newerClassID, availableClass);
+                
             }
 
             var inheritanceClasses = new List<uint>();
@@ -151,77 +143,12 @@ namespace GBX.NET
             return Parse(availableClass, body, r);
         }
 
-        private static Node Parse(Type type, ILookbackable body, GameBoxReader r, out List<uint> inheritanceClasses, out Dictionary<uint, Type> availableChunkClasses)
-        {
-            inheritanceClasses = GetInheritance(type);
-
-            List<uint> GetInheritance(Type t)
-            {
-                List<uint> classes = new List<uint>();
-
-                Type cur = t.BaseType;
-
-                while (cur != typeof(Node))
-                {
-                    classes.Add(cur.GetCustomAttribute<NodeAttribute>().ID);
-                    cur = cur.BaseType;
-                }
-
-                return classes;
-            }
-
-            var chunkType = typeof(Chunk<>).MakeGenericType(type);
-            var skippableChunkType = typeof(SkippableChunk<>).MakeGenericType(type);
-
-            if (!AvailableChunkClasses.TryGetValue(type, out availableChunkClasses))
-            {
-                availableChunkClasses = type.GetNestedTypes().Where(x =>
-                {
-                    var isChunk = x.IsClass
-                    && x.Namespace.StartsWith("GBX.NET.Engines")
-                    && (x.BaseType == chunkType || x.BaseType == skippableChunkType);
-                    if (!isChunk) return false;
-
-                    var chunkAttribute = x.GetCustomAttribute<ChunkAttribute>();
-                    if (chunkAttribute == null) throw new Exception($"Chunk {x.FullName} doesn't have a ChunkAttribute.");
-
-                    var attributesMet = chunkAttribute.ClassID == type.GetCustomAttribute<NodeAttribute>().ID;
-                    return isChunk && attributesMet;
-                }).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ChunkID);
-
-                foreach (var cls in inheritanceClasses)
-                {
-                    var availableInheritanceClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
-                       && x.Namespace.StartsWith("GBX.NET.Engines") && (GetBaseType(x) == typeof(Node))
-                       && (x.GetCustomAttribute<NodeAttribute>().ID == cls)).FirstOrDefault();
-
-                    var inheritChunkType = typeof(Chunk<>).MakeGenericType(availableInheritanceClass);
-                    var inheritSkippableChunkType = typeof(SkippableChunk<>).MakeGenericType(availableInheritanceClass);
-
-                    foreach (var chunkT in availableInheritanceClass.GetNestedTypes().Where(x => x.IsClass
-                        && x.Namespace.StartsWith("GBX.NET.Engines") && (x.BaseType == inheritChunkType || x.BaseType == inheritSkippableChunkType)
-                        && (x.GetCustomAttribute<ChunkAttribute>().ClassID == cls)).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ChunkID))
-                    {
-                        availableChunkClasses[chunkT.Key + cls] = chunkT.Value;
-                    }
-                }
-                AvailableChunkClasses.Add(type, availableChunkClasses);
-            }
-
-            return Parse(type, body, r, inheritanceClasses, availableChunkClasses);
-        }
-
-        public static Node Parse(Type type, ILookbackable body, GameBoxReader r)
-        {
-            return Parse(type, body, r, out List<uint> _, out Dictionary<uint, Type> _);
-        }
-
         public static T Parse<T>(ILookbackable body, GameBoxReader r) where T : Node
         {
             return (T)Parse(typeof(T), body, r);
         }
 
-        private static Node Parse(Type type, ILookbackable body, GameBoxReader r, List<uint> inheritanceClasses, Dictionary<uint, Type> availableChunkClasses)
+        private static Node Parse(Type type, ILookbackable body, GameBoxReader r)
         {
             var readNodeStart = DateTime.Now;
 
@@ -256,8 +183,8 @@ namespace GBX.NET
 
                 Type chunkClass = null;
 
-                var reflected = ((Chunk.Remap(chunkID) & 0xFFFFF000) == node.ID || inheritanceClasses.Contains(Chunk.Remap(chunkID) & 0xFFFFF000))
-                    && (availableChunkClasses.TryGetValue(chunkID, out chunkClass) || availableChunkClasses.TryGetValue(chunkID & 0xFFF, out chunkClass));
+                var reflected = ((Chunk.Remap(chunkID) & 0xFFFFF000) == node.ID || AvailableInheritanceClasses[type].Contains(Chunk.Remap(chunkID) & 0xFFFFF000))
+                    && (AvailableChunkClasses[type].TryGetValue(chunkID, out chunkClass) || AvailableChunkClasses[type].TryGetValue(chunkID & 0xFFF, out chunkClass));
 
                 var skippable = reflected && chunkClass.BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>);
 
@@ -520,6 +447,74 @@ namespace GBX.NET
             }
 
             Debug.WriteLine("Mappings defined in " + (DateTime.Now - startTimestamp).TotalMilliseconds + "ms");
+
+            startTimestamp = DateTime.Now;
+
+            foreach (var nodeType in Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
+                   && x.Namespace.StartsWith("GBX.NET.Engines") && GetBaseType(x) == typeof(Node)))
+            {
+                var nodeID = nodeType.GetCustomAttribute<NodeAttribute>().ID;
+
+                AvailableClasses.Add(nodeID, nodeType);
+
+                var inheritanceClasses = GetInheritance(nodeType);
+                AvailableInheritanceClasses[nodeType] = inheritanceClasses;
+
+                List<uint> GetInheritance(Type t)
+                {
+                    List<uint> classes = new List<uint>();
+
+                    Type cur = t.BaseType;
+
+                    while (cur != typeof(Node))
+                    {
+                        classes.Add(cur.GetCustomAttribute<NodeAttribute>().ID);
+                        cur = cur.BaseType;
+                    }
+
+                    return classes;
+                }
+
+                var chunkType = typeof(Chunk<>).MakeGenericType(nodeType);
+                var skippableChunkType = typeof(SkippableChunk<>).MakeGenericType(nodeType);
+
+                if (!AvailableChunkClasses.TryGetValue(nodeType, out Dictionary<uint, Type> availableChunkClasses))
+                {
+                    availableChunkClasses = nodeType.GetNestedTypes().Where(x =>
+                    {
+                        var isChunk = x.IsClass
+                        && x.Namespace.StartsWith("GBX.NET.Engines")
+                        && (x.BaseType == chunkType || x.BaseType == skippableChunkType);
+                        if (!isChunk) return false;
+
+                        var chunkAttribute = x.GetCustomAttribute<ChunkAttribute>();
+                        if (chunkAttribute == null) throw new Exception($"Chunk {x.FullName} doesn't have a ChunkAttribute.");
+
+                        var attributesMet = chunkAttribute.ClassID == nodeID;
+                        return isChunk && attributesMet;
+                    }).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ChunkID);
+
+                    foreach (var cls in inheritanceClasses)
+                    {
+                        var availableInheritanceClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
+                           && x.Namespace.StartsWith("GBX.NET.Engines") && (GetBaseType(x) == typeof(Node))
+                           && (x.GetCustomAttribute<NodeAttribute>().ID == cls)).FirstOrDefault();
+
+                        var inheritChunkType = typeof(Chunk<>).MakeGenericType(availableInheritanceClass);
+                        var inheritSkippableChunkType = typeof(SkippableChunk<>).MakeGenericType(availableInheritanceClass);
+
+                        foreach (var chunkT in availableInheritanceClass.GetNestedTypes().Where(x => x.IsClass
+                            && x.Namespace.StartsWith("GBX.NET.Engines") && (x.BaseType == inheritChunkType || x.BaseType == inheritSkippableChunkType)
+                            && (x.GetCustomAttribute<ChunkAttribute>().ClassID == cls)).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ChunkID))
+                        {
+                            availableChunkClasses[chunkT.Key + cls] = chunkT.Value;
+                        }
+                    }
+                    AvailableChunkClasses.Add(nodeType, availableChunkClasses);
+                }
+            }
+
+            Debug.WriteLine("Types defined in " + (DateTime.Now - startTimestamp).TotalMilliseconds + "ms");
         }
 
         public T GetChunk<T>() where T : Chunk
