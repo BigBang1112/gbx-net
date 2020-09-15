@@ -39,7 +39,7 @@ namespace GBX.NET.Engines.Game
                 n.Name = rw.String(n.Name);
                 Unknown1 = rw.Int32(Unknown1); // 10, probably version
                 n.Blocks = rw.Array(n.Blocks?.ToArray(),
-                    i => rw.Reader.ReadNodeRef<CGameCtnMediaBlock>(true),
+                    i => rw.Reader.ReadNodeRef<CGameCtnMediaBlock>(),
                     x => rw.Writer.Write(x))?.ToList();
                 Unknown2 = rw.Int32(Unknown2);
             }

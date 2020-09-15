@@ -2082,7 +2082,7 @@ namespace GBX.NET.Engines.Game
                             using (var ms = new MemoryStream(data))
                             using (var zlib = new InflaterInputStream(ms))
                             using (var gbxr = new GameBoxReader(zlib))
-                                return (CHmsLightMapCache)Parse(Node.Body, 0x06022000, gbxr);
+                                return Parse<CHmsLightMapCache>(Node.Body, gbxr);
                         });
                     }
                 }

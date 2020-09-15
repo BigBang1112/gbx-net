@@ -116,13 +116,13 @@ namespace GBX.NET
                                     var constructorParams = constructor.GetParameters();
                                     if (constructorParams.Length == 0)
                                     {
-                                        dynamic headerChunk = constructor.Invoke(new object[0]);
+                                        ISkippableChunk headerChunk = (ISkippableChunk)constructor.Invoke(new object[0]);
                                         headerChunk.Node = GBX.MainNode;
                                         headerChunk.Part = this;
                                         headerChunk.Stream = new MemoryStream(d, 0, d.Length, false);
                                         if (d == null || d.Length == 0)
                                             headerChunk.Discovered = true;
-                                        chunks[counter] = headerChunk;
+                                        chunks[counter] = (Chunk)headerChunk;
                                     }
                                     else if (constructorParams.Length == 2)
                                         chunks[counter] = (HeaderChunk<T>)constructor.Invoke(new object[] { GBX.MainNode, d });

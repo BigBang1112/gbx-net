@@ -105,54 +105,33 @@ namespace GBX.NET
             return GetBaseType(t.BaseType);
         }
 
-        public static Node[] ParseArray(Type type, ILookbackable body, GameBoxReader r)
+        public static T[] ParseArray<T>(ILookbackable body, GameBoxReader r) where T : Node
         {
             var count = r.ReadInt32();
-            var array = new Node[count];
+            var array = new T[count];
 
             for (var i = 0; i < count; i++)
             {
                 _ = r.ReadUInt32();
 
-                array[i] = Parse(type, body, r);
+                array[i] = Parse<T>(body, r);
             }
 
             return array;
         }
 
-        public static T[] ParseArray<T>(ILookbackable body, GameBoxReader r) where T : Node
-        {
-            return ParseArray(typeof(T), body, r).Cast<T>().ToArray();
-        }
-
-        public static Node Parse(ILookbackable body, uint classID, GameBoxReader r)
-        {
-            var hasNewerID = Mappings.TryGetValue(classID, out uint newerClassID);
-            if (!hasNewerID) newerClassID = classID;
-
-            if (!AvailableClasses.TryGetValue(newerClassID, out Type availableClass))
-            {
-                
-            }
-
-            var inheritanceClasses = new List<uint>();
-
-            if (availableClass == null)
-                throw new Exception("Unknown node: 0x" + classID.ToString("x8"));
-
-            return Parse(availableClass, body, r);
-        }
-
-        public static T Parse<T>(ILookbackable body, GameBoxReader r) where T : Node
-        {
-            return (T)Parse(typeof(T), body, r);
-        }
-
-        private static Node Parse(Type type, ILookbackable body, GameBoxReader r)
+        public static T Parse<T>(ILookbackable body, GameBoxReader r, uint? classID = null) where T : Node
         {
             var readNodeStart = DateTime.Now;
 
-            Node node = (Node)Activator.CreateInstance(type, body, type.GetCustomAttribute<NodeAttribute>().ID);
+            if (classID == null)
+                classID = r.ReadUInt32();
+            if (Mappings.TryGetValue(classID.Value, out uint newerClassID))
+                classID = newerClassID;
+
+            var type = AvailableClasses[classID.Value];
+
+            T node = (T)Activator.CreateInstance(type, body, type.GetCustomAttribute<NodeAttribute>().ID);
 
             var chunks = new ChunkSet
             {
@@ -229,14 +208,14 @@ namespace GBX.NET
 
                     if (reflected && chunkClass.GetCustomAttribute<IgnoreChunkAttribute>() == null)
                     {
-                        dynamic c;
+                        ISkippableChunk c;
 
                         var constructor = chunkClass.GetConstructors().First();
                         var constructorParams = constructor.GetParameters();
                         if (constructorParams.Length == 0)
                         {
-                            c = constructor.Invoke(new object[0]);
-                            c.Node = (dynamic)node;
+                            c = (ISkippableChunk)constructor.Invoke(new object[0]);
+                            c.Node = node;
                             c.Part = (GameBoxPart)body;
                             c.Stream = new MemoryStream(chunkData, 0, chunkData.Length, false);
                             if (chunkData == null || chunkData.Length == 0)
@@ -244,10 +223,10 @@ namespace GBX.NET
                             c.OnLoad();
                         }
                         else if (constructorParams.Length == 2)
-                            c = constructor.Invoke(new object[] { node, chunkData });
+                            c = (ISkippableChunk)constructor.Invoke(new object[] { node, chunkData });
                         else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
 
-                        chunks.Add(c);
+                        chunks.Add((Chunk)c);
 
                         if (chunkClass.GetCustomAttribute<ChunkAttribute>().ProcessSync)
                             c.Discover();
@@ -269,30 +248,30 @@ namespace GBX.NET
                         var chunkDataSize = r.ReadInt32();
                     }
 
-                    dynamic chunk;
+                    IChunk chunk;
 
                     var constructor = chunkClass.GetConstructors().First();
                     var constructorParams = constructor.GetParameters();
                     if (constructorParams.Length == 0)
                     {
-                        chunk = constructor.Invoke(new object[0]);
-                        chunk.Node = (dynamic)node;
+                        chunk = (IChunk)constructor.Invoke(new object[0]);
+                        chunk.Node = node;
                         chunk.Part = (GameBoxPart)body;
                         chunk.OnLoad();
                     }
                     else if (constructorParams.Length == 1)
                     {
-                        chunk = constructor.Invoke(new object[] { node });
+                        chunk = (IChunk)constructor.Invoke(new object[] { node });
                         chunk.Part = (GameBoxPart)body;
                         chunk.OnLoad();
                     }
                     else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
-                    chunks.Add(chunk);
+                    chunks.Add((Chunk)chunk);
 
                     var posBefore = r.BaseStream.Position;
 
                     GameBoxReaderWriter gbxrw = new GameBoxReaderWriter(r);
-                    chunk.ReadWrite((dynamic)node, gbxrw);
+                    chunk.ReadWrite(node, gbxrw);
 
                     chunk.Progress = (int)(r.BaseStream.Position - posBefore);
                 }

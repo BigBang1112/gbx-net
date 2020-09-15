@@ -175,7 +175,7 @@ namespace GBX.NET.Engines.Game
                 r.ReadInt32();
                 r.ReadInt32();
 
-                n.Ghosts = r.ReadArray(i => r.ReadNodeRef<CGameCtnGhost>(true));
+                n.Ghosts = r.ReadArray(i => r.ReadNodeRef<CGameCtnGhost>());
 
                 r.ReadInt32();
                 r.ReadInt32();
@@ -260,7 +260,7 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
-                n.Ghosts = r.ReadArray(i => r.ReadNodeRef<CGameCtnGhost>(true));
+                n.Ghosts = r.ReadArray(i => r.ReadNodeRef<CGameCtnGhost>());
                 Unknown1 = r.ReadInt32();
                 n.Extras = r.ReadArray(i => r.ReadInt64());
             }

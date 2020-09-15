@@ -409,23 +409,18 @@ namespace GBX.NET
             else throw new Exception();
         }
 
-        public T NodeRef<T>(Node variable, bool hasInheritance, GameBoxBody body) where T : Node
+        public T NodeRef<T>(Node variable, GameBoxBody body) where T : Node
         {
-            if (Reader != null) return Reader.ReadNodeRef<T>(hasInheritance, body);
+            if (Reader != null) return Reader.ReadNodeRef<T>(body);
             else if (Writer != null) Writer.Write(variable, body);
             return (T)variable;
         }
 
-        public T NodeRef<T>(Node variable, bool hasInheritance) where T : Node
-        {
-            if (Reader != null) return NodeRef<T>(variable, hasInheritance, (GameBoxBody)Reader.Lookbackable);
-            else if (Writer != null) return NodeRef<T>(variable, hasInheritance, (GameBoxBody)Writer.Lookbackable);
-            else throw new Exception();
-        }
-
         public T NodeRef<T>(Node variable) where T : Node
         {
-            return NodeRef<T>(variable, false);
+            if (Reader != null) return NodeRef<T>(variable, (GameBoxBody)Reader.Lookbackable);
+            else if (Writer != null) return NodeRef<T>(variable, (GameBoxBody)Writer.Lookbackable);
+            else throw new Exception();
         }
 
         public float Single(float variable)

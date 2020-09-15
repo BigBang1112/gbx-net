@@ -126,51 +126,13 @@ namespace GBX.NET
             return ReadMeta(Lookbackable);
         }
 
-        public Node ReadNodeRef(GameBoxBody body)
+        public T ReadNodeRef<T>(GameBoxBody body) where T : Node
         {
             var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
             if (index >= 0 && body.AuxilaryNodes.ElementAtOrDefault(index) == null) // If index is 0 or bigger and the node wasn't read yet
             {
-                var classID = ReadUInt32();
-                Debug.WriteLine("Node ref class: " + classID.ToString("x8"));
-
-                Node node = Node.Parse(body, classID, this);
-
-                if (index >= body.AuxilaryNodes.Count)
-                    body.AuxilaryNodes.Add(node);
-                else
-                    body.AuxilaryNodes.Insert(index, node);
-            }
-
-            if (index < 0) // If aux node index is below 0 then there's not much to solve
-                return null;
-            var nod = body.AuxilaryNodes.ElementAtOrDefault(index); // Tries to get the available node from index
-            if (nod == null) // But sometimes it indexes the node reference that is further in the expected indexes
-                return body.AuxilaryNodes.Last(); // So it grabs the last one instead, needs to be further tested
-            else // If the node is presented at the index, then it's simple
-                return nod;
-        }
-
-        public Node ReadNodeRef()
-        {
-            return ReadNodeRef((GameBoxBody)Lookbackable);
-        }
-
-        public T ReadNodeRef<T>(bool hasInheritance, GameBoxBody body) where T : Node
-        {
-            var index = ReadInt32() - 1; // GBX seems to start the index at 1
-
-            if (index >= 0 && body.AuxilaryNodes.ElementAtOrDefault(index) == null) // If index is 0 or bigger and the node wasn't read yet
-            {
-                var classID = ReadUInt32();
-                Debug.WriteLine("Node ref class: " + classID.ToString("x8"));
-
-                Node node;
-                if (hasInheritance)
-                    node = Node.Parse(body, classID, this);
-                else
-                    node = Node.Parse<T>(body, this);
+                T node = Node.Parse<T>(body, this);
 
                 if (index >= body.AuxilaryNodes.Count)
                     body.AuxilaryNodes.Add(node);
@@ -187,14 +149,19 @@ namespace GBX.NET
                 return nod;
         }
 
-        public T ReadNodeRef<T>(bool hasInheritance) where T : Node
-        {
-            return ReadNodeRef<T>(hasInheritance, (GameBoxBody)Lookbackable);
-        }
-
         public T ReadNodeRef<T>() where T : Node
         {
-            return ReadNodeRef<T>(false);
+            return ReadNodeRef<T>((GameBoxBody)Lookbackable);
+        }
+
+        public Node ReadNodeRef(GameBoxBody body)
+        {
+            return ReadNodeRef<Node>(body);
+        }
+
+        public Node ReadNodeRef()
+        {
+            return ReadNodeRef<Node>((GameBoxBody)Lookbackable);
         }
 
         public FileRef ReadFileRef()

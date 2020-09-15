@@ -10,7 +10,6 @@ namespace GBX.NET
     public abstract class Chunk : IComparable<Chunk>
     {
         public virtual uint ID => GetType().GetCustomAttribute<ChunkAttribute>().ID;
-        public int Progress { get; internal set; }
         /// <summary>
         /// Stream of unknown bytes
         /// </summary>
@@ -37,6 +36,7 @@ namespace GBX.NET
             }
         }
 
+        [IgnoreDataMember]
         public GameBoxPart Part { get; set; }
 
         public Chunk()
@@ -89,10 +89,17 @@ namespace GBX.NET
         }
     }
 
-    public abstract class Chunk<T> : Chunk where T : Node
+    public abstract class Chunk<T> : Chunk, IChunk where T : Node
     {
         [IgnoreDataMember]
         public T Node { get; internal set; }
+        public int Progress { get; set; }
+
+        Node IChunk.Node
+        {
+            get => Node;
+            set => Node = (T)value;
+        }
 
         public bool IsHeader => Lookbackable is GameBoxHeader;
         public bool IsBody => Lookbackable is GameBoxBody;
@@ -165,6 +172,8 @@ namespace GBX.NET
                 else Write(n, rw.Writer, unknownR);
             }
         }
+
+        void IChunk.ReadWrite(Node n, GameBoxReaderWriter rw) => ReadWrite((T)n, rw);
 
         public byte[] ToByteArray()
         {
