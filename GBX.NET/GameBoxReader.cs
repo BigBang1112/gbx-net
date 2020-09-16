@@ -255,6 +255,11 @@ namespace GBX.NET
             return ReadTill(0xFACADE01);
         }
 
+        public byte[] ReadToEnd()
+        {
+            return ReadBytes((int)(BaseStream.Length - BaseStream.Position));
+        }
+
         public uint PeekUInt32()
         {
             var result = ReadUInt32();
