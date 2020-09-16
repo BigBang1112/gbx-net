@@ -53,12 +53,11 @@ namespace GBX.NET
 
         public void Write(GameBoxWriter w, ClassIDRemap remap)
         {
-            if(GBX.Header.Result.BodyCompression == 'C')
+            if(GBX.BodyCompression == 'C')
             {
                 using (var msBody = new MemoryStream())
                 using (var gbxwBody = new GameBoxWriter(msBody, this))
                 {
-
                     GBX.MainNode.Write(gbxwBody, remap);
                     MiniLZO.Compress(msBody.ToArray(), out byte[] output);
 

@@ -16,11 +16,11 @@ namespace GBX.NET
 
         public ChunkSet Chunks { get; set; }
 
-        public GameBoxHeader(GameBox<T> gbx, GameBoxHeaderParameters parameters) : base(gbx, parameters)
+        public GameBoxHeader(GameBox<T> gbx, byte[] userData) : base(gbx, userData)
         {
-            if (parameters.Version >= 3)
+            if (gbx.Version >= 3)
             {
-                var classID = parameters.ClassID.GetValueOrDefault();
+                var classID = gbx.ClassID.GetValueOrDefault();
 
                 var modernID = classID;
                 if (Node.Mappings.TryGetValue(classID, out uint newerClassID))
@@ -30,9 +30,9 @@ namespace GBX.NET
                     && x.Namespace.StartsWith("GBX.NET.Engines") && GetBaseType(x) == typeof(Node)
                     && x.GetCustomAttribute<NodeAttribute>().ID == modernID).FirstOrDefault();
 
-                if (parameters.Version == 6)
+                if (gbx.Version == 6)
                 {
-                    if (parameters.UserData != null && parameters.UserData.Length > 0)
+                    if (userData != null && userData.Length > 0)
                     {
                         var headerChunkBaseType = typeof(HeaderChunk<>).MakeGenericType(availableClass);
 
@@ -71,7 +71,7 @@ namespace GBX.NET
                                 availableChunkClasses[chunkType.Key + cls] = chunkType.Value;
                         }
 
-                        using (var ms = new MemoryStream(parameters.UserData))
+                        using (var ms = new MemoryStream(userData))
                         using (var r = new GameBoxReader(ms, this))
                         {
                             var numHeaderChunks = r.ReadInt32();
@@ -161,17 +161,17 @@ namespace GBX.NET
         public void Write(GameBoxWriter w, int numNodes, ClassIDRemap remap)
         {
             w.Write("GBX", StringLengthPrefix.None);
-            w.Write(Version);
+            w.Write(GBX.Version);
 
-            if (Version >= 3)
+            if (GBX.Version >= 3)
             {
-                w.Write((byte)ByteFormat.GetValueOrDefault());
-                w.Write((byte)RefTableCompression.GetValueOrDefault());
-                w.Write((byte)BodyCompression.GetValueOrDefault());
-                if (Version >= 4) w.Write((byte)UnknownByte.GetValueOrDefault());
-                w.Write(ClassID.GetValueOrDefault());
+                w.Write((byte)GBX.ByteFormat.GetValueOrDefault());
+                w.Write((byte)GBX.RefTableCompression.GetValueOrDefault());
+                w.Write((byte)GBX.BodyCompression.GetValueOrDefault());
+                if (GBX.Version >= 4) w.Write((byte)GBX.UnknownByte.GetValueOrDefault());
+                w.Write(GBX.ClassID.GetValueOrDefault());
 
-                if (Version >= 6)
+                if (GBX.Version >= 6)
                 {
                     using (var userData = new MemoryStream())
                     using (var gbxw = new GameBoxWriter(userData, this))
@@ -381,19 +381,9 @@ namespace GBX.NET
         List<string> ILookbackable.LookbackStrings { get; set; } = new List<string>();
         bool ILookbackable.LookbackWritten { get; set; }
 
-        public GameBoxHeaderParameters Parameters { get; }
-
-        public short Version => Parameters.Version;
-        public char? ByteFormat => Parameters.ByteFormat;
-        public char? RefTableCompression => Parameters.RefTableCompression;
-        public char? BodyCompression => Parameters.BodyCompression;
-        public char? UnknownByte => Parameters.UnknownByte;
-        public uint? ClassID => Parameters.ClassID;
-        public int? NumNodes => Parameters.NumNodes;
-
-        public GameBoxHeader(GameBox gbx, GameBoxHeaderParameters parameters) : base(gbx)
+        public GameBoxHeader(GameBox gbx, byte[] userData) : base(gbx)
         {
-            Parameters = parameters;
+            
         }
 
         public override T CreateChunk<T>(byte[] data)
