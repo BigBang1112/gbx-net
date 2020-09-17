@@ -260,6 +260,50 @@ namespace GBX.NET
             return ReadBytes((int)(BaseStream.Length - BaseStream.Position));
         }
 
+        public string ReadStringTillFacade()
+        {
+            return Encoding.UTF8.GetString(ReadTillFacade());
+        }
+
+        public T[] ReadArrayTillFacade<T>()
+        {
+            var bytes = ReadTillFacade();
+
+            var array = new T[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T)))];
+            Buffer.BlockCopy(bytes, 0, array, 0, bytes.Length);
+
+            return array;
+        }
+
+        public (T1[], T2[]) ReadArrayTillFacade<T1, T2>()
+        {
+            var bytes = ReadTillFacade();
+
+            var array = new T1[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T1)))];
+            Buffer.BlockCopy(bytes, 0, array, 0, bytes.Length);
+
+            var array2 = new T2[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T2)))];
+            Buffer.BlockCopy(bytes, 0, array2, 0, bytes.Length);
+
+            return (array, array2);
+        }
+
+        public (T1[], T2[], T3[]) ReadArrayTillFacade<T1, T2, T3>()
+        {
+            var bytes = ReadTillFacade();
+
+            var array = new T1[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T1)))];
+            Buffer.BlockCopy(bytes, 0, array, 0, bytes.Length);
+
+            var array2 = new T2[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T2)))];
+            Buffer.BlockCopy(bytes, 0, array2, 0, bytes.Length);
+
+            var array3 = new T3[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T3)))];
+            Buffer.BlockCopy(bytes, 0, array3, 0, bytes.Length);
+
+            return (array, array2, array3);
+        }
+
         public uint PeekUInt32()
         {
             var result = ReadUInt32();
