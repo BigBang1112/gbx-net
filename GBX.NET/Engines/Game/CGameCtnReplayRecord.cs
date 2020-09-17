@@ -23,6 +23,7 @@ namespace GBX.NET.Engines.Game
         public long[] Extras { get; set; }
         public CGameCtnMediaClip Clip { get; set; }
         public CPlugEntRecordData RecordData { get; set; }
+        public CCtnMediaBlockEventTrackMania Events { get; set; }
 
         public CGameCtnReplayRecord(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
         {
@@ -230,7 +231,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                var mediaBlockEvent = r.ReadNodeRef<CCtnMediaBlockEventTrackMania>();
+                n.Events = r.ReadNodeRef<CCtnMediaBlockEventTrackMania>();
             }
         }
 
