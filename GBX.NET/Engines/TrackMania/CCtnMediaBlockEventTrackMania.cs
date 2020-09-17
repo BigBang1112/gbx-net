@@ -77,7 +77,7 @@ namespace GBX.NET.Engines.TrackMania
                     Angle = rw.Reader.ReadInt32(),
                     Score = rw.Reader.ReadInt32(),
                     Factor = rw.Reader.ReadSingle(),
-                    U01 = rw.Reader.ReadInt32(),
+                    Straight = rw.Reader.ReadBoolean(),
                     U02 = rw.Reader.ReadInt32(),
                     U03 = rw.Reader.ReadInt32(),
                     U04 = rw.Reader.ReadInt32(),
@@ -91,7 +91,7 @@ namespace GBX.NET.Engines.TrackMania
                     rw.Writer.Write(x.Angle);
                     rw.Writer.Write(x.Score);
                     rw.Writer.Write(x.Factor);
-                    rw.Writer.Write(x.U01);
+                    rw.Writer.Write(x.Straight);
                     rw.Writer.Write(x.U02);
                     rw.Writer.Write(x.U03);
                     rw.Writer.Write(x.U04);
@@ -117,7 +117,7 @@ namespace GBX.NET.Engines.TrackMania
             public int Angle { get; set; }
             public int Score { get; set; }
             public float Factor { get; set; }
-            public int U01 { get; set; }
+            public bool Straight { get; set; }
             public int U02 { get; set; }
             public int U03 { get; set; }
             public int U04 { get; set; }
@@ -126,7 +126,8 @@ namespace GBX.NET.Engines.TrackMania
 
             public override string ToString()
             {
-                return $"[{Time}] {Figure} {Angle}° (+{Score} = {TotalScore})";
+                return $"[{Time}] {(Combo > 1 ? Combo + "x " : "")}{(Combo > 0 ? "Chained " : "")}{Figure} " +
+                    $"{(Angle > 0 ? Angle + "° " : "")}({(Figure == EStuntFigure.TimePenalty ? "-" : "+")}{Score} = {TotalScore})";
             }
         }
     }
