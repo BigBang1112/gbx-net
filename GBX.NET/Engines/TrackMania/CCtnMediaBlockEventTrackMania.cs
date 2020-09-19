@@ -48,7 +48,6 @@ namespace GBX.NET.Engines.TrackMania
             RespawnPenalty,
             Grind,
             Reset
-<<<<<<< HEAD
         }
 
         public float Start { get; set; }
@@ -60,24 +59,6 @@ namespace GBX.NET.Engines.TrackMania
         {
             public int U01 { get; set; }
 
-=======
-        }
-
-        public float Start { get; set; }
-        public float End { get; set; }
-        public Stunt[] Stunts { get; set; }
-
-        public CCtnMediaBlockEventTrackMania(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
-        [Chunk(0x2407F000)]
-        public class Chunk2407F000 : Chunk<CCtnMediaBlockEventTrackMania>
-        {
-            public int U01 { get; set; }
-
->>>>>>> e498fde4a097e9f2e23e4118dcf01c81d61542cb
             public override void ReadWrite(CCtnMediaBlockEventTrackMania n, GameBoxReaderWriter rw)
             {
                 n.Start = rw.Single(n.Start);

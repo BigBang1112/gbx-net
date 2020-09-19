@@ -97,7 +97,7 @@ namespace IslandConverter
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pbThumbnail.Location = new System.Drawing.Point(7, 221);
             this.pbThumbnail.Name = "pbThumbnail";
-            this.pbThumbnail.Size = new System.Drawing.Size(210, 206);
+            this.pbThumbnail.Size = new System.Drawing.Size(209, 206);
             this.pbThumbnail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbThumbnail.TabIndex = 1;
             this.pbThumbnail.TabStop = false;
@@ -109,7 +109,7 @@ namespace IslandConverter
             this.bConvertAll.Enabled = false;
             this.bConvertAll.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.bConvertAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.bConvertAll.Location = new System.Drawing.Point(424, 264);
+            this.bConvertAll.Location = new System.Drawing.Point(523, 264);
             this.bConvertAll.Name = "bConvertAll";
             this.bConvertAll.Size = new System.Drawing.Size(161, 34);
             this.bConvertAll.TabIndex = 2;
@@ -137,9 +137,9 @@ namespace IslandConverter
             this.groupBox1.Controls.Add(this.lMapName);
             this.groupBox1.Controls.Add(this.pbThumbnail);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(225, 434);
+            this.groupBox1.Size = new System.Drawing.Size(224, 434);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selected map";
@@ -276,7 +276,7 @@ namespace IslandConverter
             this.panel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel1.Location = new System.Drawing.Point(6, 19);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(574, 105);
+            this.panel1.Size = new System.Drawing.Size(673, 105);
             this.panel1.TabIndex = 4;
             // 
             // lbLog
@@ -287,7 +287,7 @@ namespace IslandConverter
             this.lbLog.ItemHeight = 15;
             this.lbLog.Location = new System.Drawing.Point(0, 0);
             this.lbLog.Name = "lbLog";
-            this.lbLog.Size = new System.Drawing.Size(572, 103);
+            this.lbLog.Size = new System.Drawing.Size(671, 103);
             this.lbLog.TabIndex = 0;
             // 
             // groupBox2
@@ -299,7 +299,7 @@ namespace IslandConverter
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.groupBox2.Location = new System.Drawing.Point(6, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(585, 130);
+            this.groupBox2.Size = new System.Drawing.Size(684, 130);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Output";
@@ -315,7 +315,7 @@ namespace IslandConverter
             this.ProgramMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.ProgramMenuStrip.Name = "ProgramMenuStrip";
             this.ProgramMenuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.ProgramMenuStrip.Size = new System.Drawing.Size(823, 24);
+            this.ProgramMenuStrip.Size = new System.Drawing.Size(924, 24);
             this.ProgramMenuStrip.TabIndex = 5;
             this.ProgramMenuStrip.Text = "File";
             // 
@@ -414,7 +414,7 @@ namespace IslandConverter
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.groupBox3.Location = new System.Drawing.Point(6, 135);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(582, 99);
+            this.groupBox3.Size = new System.Drawing.Size(681, 99);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Map base size";
@@ -465,7 +465,7 @@ namespace IslandConverter
             this.bConvertSelected.Enabled = false;
             this.bConvertSelected.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.bConvertSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.bConvertSelected.Location = new System.Drawing.Point(256, 264);
+            this.bConvertSelected.Location = new System.Drawing.Point(355, 264);
             this.bConvertSelected.Name = "bConvertSelected";
             this.bConvertSelected.Size = new System.Drawing.Size(161, 34);
             this.bConvertSelected.TabIndex = 2;
@@ -498,7 +498,7 @@ namespace IslandConverter
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel2MinSize = 100;
-            this.splitContainer1.Size = new System.Drawing.Size(591, 440);
+            this.splitContainer1.Size = new System.Drawing.Size(690, 437);
             this.splitContainer1.SplitterDistance = 300;
             this.splitContainer1.TabIndex = 9;
             // 
@@ -507,7 +507,7 @@ namespace IslandConverter
             this.cbIgnoreMediaTracker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbIgnoreMediaTracker.AutoSize = true;
             this.cbIgnoreMediaTracker.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cbIgnoreMediaTracker.Location = new System.Drawing.Point(460, 241);
+            this.cbIgnoreMediaTracker.Location = new System.Drawing.Point(559, 241);
             this.cbIgnoreMediaTracker.Name = "cbIgnoreMediaTracker";
             this.cbIgnoreMediaTracker.Size = new System.Drawing.Size(125, 17);
             this.cbIgnoreMediaTracker.TabIndex = 10;
@@ -538,7 +538,7 @@ namespace IslandConverter
             this.lvMaps.LargeImageList = this.ilThumbnails;
             this.lvMaps.Location = new System.Drawing.Point(6, 5);
             this.lvMaps.Name = "lvMaps";
-            this.lvMaps.Size = new System.Drawing.Size(583, 125);
+            this.lvMaps.Size = new System.Drawing.Size(682, 125);
             this.lvMaps.TabIndex = 9;
             this.lvMaps.UseCompatibleStateImageBehavior = false;
             this.lvMaps.View = System.Windows.Forms.View.Tile;
@@ -568,10 +568,8 @@ namespace IslandConverter
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer2.Panel2MinSize = 260;
-            this.splitContainer2.Size = new System.Drawing.Size(823, 437);
+            this.splitContainer2.Size = new System.Drawing.Size(924, 437);
             this.splitContainer2.SplitterDistance = 690;
-            this.splitContainer2.SplitterWidth = 3;
             this.splitContainer2.TabIndex = 10;
             this.splitContainer2.Text = "splitContainer2";
             // 
@@ -580,9 +578,10 @@ namespace IslandConverter
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(823, 461);
+            this.ClientSize = new System.Drawing.Size(924, 461);
             this.Controls.Add(this.splitContainer2);
             this.Controls.Add(this.ProgramMenuStrip);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.ProgramMenuStrip;
             this.MinimumSize = new System.Drawing.Size(839, 500);
