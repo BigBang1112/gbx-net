@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace GBX.NET.Engines.Game
 {
@@ -129,6 +130,18 @@ namespace GBX.NET.Engines.Game
                             gbx.Read(ms);
                             return gbx;
                         }
+                    });
+
+                    n.Track.ContinueWith(x =>
+                    {
+#if DEBUG
+                        if (x.IsFaulted)
+                        {
+                            var e = x.Exception.InnerException;
+                            Debug.WriteLine(e.Message);
+                            Debug.WriteLine(e.StackTrace);
+                        }
+#endif
                     });
                 }
             }
