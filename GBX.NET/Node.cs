@@ -296,6 +296,7 @@ namespace GBX.NET
             {
                 counter += 1;
 
+                ((IChunk)chunk).Node = this;
                 chunk.Unknown.Position = 0;
 
                 ILookbackable lb = chunk.Lookbackable;
@@ -308,8 +309,13 @@ namespace GBX.NET
                     lb = l;
                 }
 
-                if (lb == null && ParentChunk is ILookbackable l2)
-                    lb = l2;
+                if (lb == null)
+                {
+                    if(ParentChunk is ILookbackable l2)
+                        lb = l2;
+                    else
+                        lb = w.Lookbackable;
+                }
 
                 using (var ms = new MemoryStream())
                 using (var msW = new GameBoxWriter(ms, lb))

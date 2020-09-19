@@ -2121,7 +2121,6 @@ namespace GBX.NET.Engines.Game
                     using (var itemMs = new MemoryStream())
                     using (var wr = new GameBoxWriter(itemMs, w.Lookbackable))
                     {
-
                         wr.Write(Unknown2);
                         wr.Write(n.items.Count);
 
