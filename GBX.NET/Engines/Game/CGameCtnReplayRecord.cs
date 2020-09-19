@@ -202,18 +202,21 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                r.ReadInt32();
-                r.ReadInt32();
+                var unknown = r.ReadInt32();
+                if (unknown != 0)
+                {
+                    r.ReadInt32();
 
-                var controlNames = r.ReadArray<string>(i => r.ReadLookbackString());
+                    var controlNames = r.ReadArray<string>(i => r.ReadLookbackString());
 
-                var num = r.ReadInt32();
-                r.ReadInt32();
+                    var num = r.ReadInt32();
+                    r.ReadInt32();
 
-                var array = new (int time, int index, byte enabled)[num];
+                    var array = new (int time, int index, byte enabled)[num];
 
-                for(var i = 0; i < num; i++)
-                    array[i] = (r.ReadInt32(), r.ReadInt32(), r.ReadByte());
+                    for (var i = 0; i < num; i++)
+                        array[i] = (r.ReadInt32(), r.ReadInt32(), r.ReadByte());
+                }
             }
         }
 

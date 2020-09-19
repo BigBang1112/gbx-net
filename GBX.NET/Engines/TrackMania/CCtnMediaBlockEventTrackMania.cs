@@ -48,6 +48,7 @@ namespace GBX.NET.Engines.TrackMania
             RespawnPenalty,
             Grind,
             Reset
+<<<<<<< HEAD
         }
 
         public float Start { get; set; }
@@ -59,6 +60,24 @@ namespace GBX.NET.Engines.TrackMania
         {
             public int U01 { get; set; }
 
+=======
+        }
+
+        public float Start { get; set; }
+        public float End { get; set; }
+        public Stunt[] Stunts { get; set; }
+
+        public CCtnMediaBlockEventTrackMania(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
+        {
+
+        }
+
+        [Chunk(0x2407F000)]
+        public class Chunk2407F000 : Chunk<CCtnMediaBlockEventTrackMania>
+        {
+            public int U01 { get; set; }
+
+>>>>>>> e498fde4a097e9f2e23e4118dcf01c81d61542cb
             public override void ReadWrite(CCtnMediaBlockEventTrackMania n, GameBoxReaderWriter rw)
             {
                 n.Start = rw.Single(n.Start);
@@ -72,7 +91,7 @@ namespace GBX.NET.Engines.TrackMania
                     Angle = rw.Reader.ReadInt32(),
                     Score = rw.Reader.ReadInt32(),
                     Factor = rw.Reader.ReadSingle(),
-                    U01 = rw.Reader.ReadInt32(),
+                    Straight = rw.Reader.ReadBoolean(),
                     U02 = rw.Reader.ReadInt32(),
                     U03 = rw.Reader.ReadInt32(),
                     U04 = rw.Reader.ReadInt32(),
@@ -86,7 +105,7 @@ namespace GBX.NET.Engines.TrackMania
                     rw.Writer.Write(x.Angle);
                     rw.Writer.Write(x.Score);
                     rw.Writer.Write(x.Factor);
-                    rw.Writer.Write(x.U01);
+                    rw.Writer.Write(x.Straight);
                     rw.Writer.Write(x.U02);
                     rw.Writer.Write(x.U03);
                     rw.Writer.Write(x.U04);
@@ -112,7 +131,7 @@ namespace GBX.NET.Engines.TrackMania
             public int Angle { get; set; }
             public int Score { get; set; }
             public float Factor { get; set; }
-            public int U01 { get; set; }
+            public bool Straight { get; set; }
             public int U02 { get; set; }
             public int U03 { get; set; }
             public int U04 { get; set; }
@@ -121,7 +140,8 @@ namespace GBX.NET.Engines.TrackMania
 
             public override string ToString()
             {
-                return $"[{Time}] {Figure} {Angle}° (+{Score} = {TotalScore})";
+                return $"[{Time}] {(Combo > 1 ? Combo + "x " : "")}{(Combo > 0 ? "Chained " : "")}{Figure} " +
+                    $"{(Angle > 0 ? Angle + "° " : "")}({(Figure == EStuntFigure.TimePenalty ? "-" : "+")}{Score} = {TotalScore})";
             }
         }
     }
