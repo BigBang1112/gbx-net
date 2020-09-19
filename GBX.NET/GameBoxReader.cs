@@ -226,6 +226,12 @@ namespace GBX.NET
             return new Vec3(floats[0], floats[1], floats[2]);
         }
 
+        public Vec4 ReadVec4()
+        {
+            var floats = ReadArray<float>(4);
+            return new Vec4(floats[0], floats[1], floats[2], floats[3]);
+        }
+
         public Int3 ReadInt3()
         {
             var ints = ReadArray<int>(3);

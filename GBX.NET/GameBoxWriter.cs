@@ -95,14 +95,19 @@ namespace GBX.NET
             }
         }
 
+        public void Write(Vec2 value)
+        {
+            Write(new float[] { value.X, value.Y });
+        }
+
         public void Write(Vec3 value)
         {
             Write(new float[] { value.X, value.Y, value.Z });
         }
 
-        public void Write(Vec2 value)
+        public void Write(Vec4 value)
         {
-            Write(new float[] { value.X, value.Y });
+            Write(new float[] { value.X, value.Y, value.Z, value.W });
         }
 
         public void Write(Int3 value)
