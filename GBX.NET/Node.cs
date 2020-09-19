@@ -91,22 +91,18 @@ namespace GBX.NET
             return GetBaseType(t.BaseType);
         }
 
-        public static T[] ParseArray<T>(ILookbackable body, GameBoxReader r) where T : Node
+        public static T[] ParseArray<T>(GameBoxReader r) where T : Node
         {
             var count = r.ReadInt32();
             var array = new T[count];
 
             for (var i = 0; i < count; i++)
-            {
-                _ = r.ReadUInt32();
-
-                array[i] = Parse<T>(body, r);
-            }
+                array[i] = Parse<T>(r);
 
             return array;
         }
 
-        public static T Parse<T>(ILookbackable body, GameBoxReader r, uint? classID = null) where T : Node
+        public static T Parse<T>(GameBoxReader r, uint? classID = null) where T : Node
         {
             var readNodeStart = DateTime.Now;
 
@@ -115,11 +111,21 @@ namespace GBX.NET
             if (Mappings.TryGetValue(classID.Value, out uint newerClassID))
                 classID = newerClassID;
 
+            if (classID == uint.MaxValue) return null;
+
             if (!AvailableClasses.TryGetValue(classID.Value, out Type type))
                 throw new NotImplementedException($"Node ID 0x{classID.Value:x8} is not implemented. ({Names.Where(x => x.Key == Chunk.Remap(classID.Value)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
 
             T node = (T)Activator.CreateInstance(type);
-            node.Body = (GameBoxBody)r.Lookbackable;
+
+            GameBoxBody body;
+
+            if (r.Lookbackable is Chunk ch)
+                body = (GameBoxBody)ch.Part;
+            else
+                body = (GameBoxBody)r.Lookbackable;
+
+            node.Body = body;
 
             var chunks = new ChunkSet
             {
@@ -204,7 +210,7 @@ namespace GBX.NET
                         {
                             c = (ISkippableChunk)constructor.Invoke(new object[0]);
                             c.Node = node;
-                            c.Part = (GameBoxPart)body;
+                            c.Part = body;
                             c.Stream = new MemoryStream(chunkData, 0, chunkData.Length, false);
                             if (chunkData == null || chunkData.Length == 0)
                                 c.Discovered = true;
@@ -249,7 +255,7 @@ namespace GBX.NET
                         chunk = (IChunk)constructor.Invoke(new object[] { node });
                     else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
 
-                    chunk.Part = (GameBoxPart)body;
+                    chunk.Part = body;
                     chunk.OnLoad();
 
                     chunks.Add((Chunk)chunk);

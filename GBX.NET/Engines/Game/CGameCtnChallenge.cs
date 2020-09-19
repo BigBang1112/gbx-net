@@ -2065,7 +2065,7 @@ namespace GBX.NET.Engines.Game
                             using (var ms = new MemoryStream(data))
                             using (var zlib = new InflaterInputStream(ms))
                             using (var gbxr = new GameBoxReader(zlib))
-                                return Parse<CHmsLightMapCache>(Node.Body, gbxr);
+                                return Parse<CHmsLightMapCache>(gbxr);
                         });
                     }
                 }
@@ -2107,7 +2107,7 @@ namespace GBX.NET.Engines.Game
                     var size = r.ReadInt32();
                     Unknown2 = r.ReadInt32(); // 10
 
-                    n.Items = ParseArray<CGameCtnAnchoredObject>(this, r).ToList();
+                    n.Items = ParseArray<CGameCtnAnchoredObject>(r).ToList();
                     Unknown3 = r.ReadInt32(); // 0
                 }
             }
@@ -2194,7 +2194,7 @@ namespace GBX.NET.Engines.Game
                 {
                     using (var ms = new MemoryStream(Data))
                     using (var r2 = new GameBoxReader(ms, this))
-                        return ParseArray<CGameCtnZoneGenealogy>(this, r2);
+                        return ParseArray<CGameCtnZoneGenealogy>(r2);
                 });
             }
 
@@ -2255,6 +2255,19 @@ namespace GBX.NET.Engines.Game
                     w.Write((int)ms.Length);
                     w.Write(ms.ToArray(), 0, (int)ms.Length);
                 }
+            }
+        }
+
+        #endregion
+
+        #region 0x048 skippable chunk
+
+        [Chunk(0x03043048)]
+        public class Chunk03043048 : SkippableChunk<CGameCtnChallenge>
+        {
+            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
+            {
+                
             }
         }
 

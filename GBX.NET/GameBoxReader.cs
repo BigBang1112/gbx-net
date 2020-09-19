@@ -137,7 +137,7 @@ namespace GBX.NET
 
                 try
                 {
-                    T node = Node.Parse<T>(body, this);
+                    T node = Node.Parse<T>(this);
 
                     if (index >= body.AuxilaryNodes.Count)
                         body.AuxilaryNodes.Add(node);
