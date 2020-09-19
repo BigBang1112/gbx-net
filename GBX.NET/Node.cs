@@ -72,28 +72,14 @@ namespace GBX.NET
         public static Dictionary<Type, List<uint>> AvailableInheritanceClasses { get; } = new Dictionary<Type, List<uint>>();
         public static Dictionary<Type, Dictionary<uint, Type>> AvailableChunkClasses { get; } = new Dictionary<Type, Dictionary<uint, Type>>();
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="lookbackable">Usually <see cref="GameBoxHeader{T}"/> or <see cref="GameBoxBody{T}"/></param>
-        /// <param name="classID"></param>
-        public Node(ILookbackable lookbackable, uint classID)
+        public Node()
         {
-            Body = (GameBoxBody)lookbackable;
+            ID = GetType().GetCustomAttribute<NodeAttribute>().ID;
+        }
+
+        public Node(uint classID)
+        {
             ID = classID;
-        }
-
-        public Node(ILookbackable lookbackable)
-        {
-            Body = (GameBoxBody)lookbackable;
-            ID = GetType().GetCustomAttribute<NodeAttribute>().ID;
-        }
-
-        public Node(Chunk chunk)
-        {
-            ParentChunk = chunk;
-            Body = (GameBoxBody)chunk.Part;
-            ID = GetType().GetCustomAttribute<NodeAttribute>().ID;
         }
 
         static Type GetBaseType(Type t)
@@ -131,7 +117,8 @@ namespace GBX.NET
 
             var type = AvailableClasses[classID.Value];
 
-            T node = (T)Activator.CreateInstance(type, body, type.GetCustomAttribute<NodeAttribute>().ID);
+            T node = (T)Activator.CreateInstance(type);
+            node.Body = (GameBoxBody)r.Lookbackable;
 
             var chunks = new ChunkSet
             {
@@ -256,17 +243,17 @@ namespace GBX.NET
                     {
                         chunk = (IChunk)constructor.Invoke(new object[0]);
                         chunk.Node = node;
-                        chunk.Part = (GameBoxPart)body;
-                        chunk.OnLoad();
                     }
                     else if (constructorParams.Length == 1)
-                    {
                         chunk = (IChunk)constructor.Invoke(new object[] { node });
-                        chunk.Part = (GameBoxPart)body;
-                        chunk.OnLoad();
-                    }
                     else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
+
+                    chunk.Part = (GameBoxPart)body;
+                    chunk.OnLoad();
+
                     chunks.Add((Chunk)chunk);
+
+                    r.Chunk = (Chunk)chunk; // Set chunk temporarily for reading
 
                     var posBefore = r.BaseStream.Position;
 
@@ -274,6 +261,8 @@ namespace GBX.NET
                     chunk.ReadWrite(node, gbxrw);
 
                     chunk.Progress = (int)(r.BaseStream.Position - posBefore);
+
+                    r.Chunk = null;
                 }
 
                 previousChunk = chunkID;

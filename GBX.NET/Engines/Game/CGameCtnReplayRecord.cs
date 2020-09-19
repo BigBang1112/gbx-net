@@ -25,11 +25,6 @@ namespace GBX.NET.Engines.Game
         public CPlugEntRecordData RecordData { get; set; }
         public CCtnMediaBlockEventTrackMania Events { get; set; }
 
-        public CGameCtnReplayRecord(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         #region Chunks
 
         #region 0x000 chunk (basic)

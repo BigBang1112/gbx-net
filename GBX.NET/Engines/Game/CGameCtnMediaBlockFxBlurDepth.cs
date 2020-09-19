@@ -10,11 +10,6 @@ namespace GBX.NET.Engines.Game
     {
         public Key[] Keys { get; set; }
 
-        public CGameCtnMediaBlockFxBlurDepth(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x03081001)]
         public class Chunk03081001 : Chunk<CGameCtnMediaBlockFxBlurDepth>
         {

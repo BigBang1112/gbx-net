@@ -13,11 +13,6 @@ namespace GBX.NET.Engines.Game
 
         public FileRef Image { get; set; }
 
-        public CGameCtnMediaBlockImage(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x030A5000)]
         public class Chunk030A5000 : Chunk<CGameCtnMediaBlockImage>
         {

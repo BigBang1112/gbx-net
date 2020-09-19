@@ -9,11 +9,6 @@ namespace GBX.NET.Engines.Plug
     {
         public string MaterialFile { get; set; }
 
-        public CPlugMaterialUserInst(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x090FD000)]
         public class Chunk090FD000 : Chunk<CPlugMaterialUserInst>
         {

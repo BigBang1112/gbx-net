@@ -10,11 +10,6 @@ namespace GBX.NET.Engines.Plug
     [Node(0x0911F000)]
     public class CPlugEntRecordData : Node
     {
-        public CPlugEntRecordData(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x0911F000)]
         public class Chunk000 : Chunk<CPlugEntRecordData>
         {

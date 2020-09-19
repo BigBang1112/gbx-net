@@ -9,11 +9,6 @@ namespace GBX.NET.Engines.MwFoundations
     {
         public string[] Dependencies { get; set; }
 
-        public CMwNod(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         #region Chunks
 
         #region 0x000 chunk (FolderDep)

@@ -537,25 +537,6 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        /// <summary>
-        /// Creates a new <see cref="CGameCtnChallenge"/> instance with the latest node ID of 0x03043000.
-        /// </summary>
-        /// <param name="lookbackable">The parent of the node, usually <see cref="GameBoxHeader{T}"/> or <see cref="GameBoxBody{T}"/>.</param>
-        public CGameCtnChallenge(ILookbackable lookbackable) : this(lookbackable, 0x03043000)
-        {
-            
-        }
-
-        /// <summary>
-        /// Creates a new <see cref="CGameCtnChallenge"/> instance with a specified node ID used for compatibility.
-        /// </summary>
-        /// <param name="lookbackable">The parent of the node, usually <see cref="GameBoxHeader{T}"/> or <see cref="GameBoxBody{T}"/>.</param>
-        /// <param name="classID">Whole ID of the node.</param>
-        public CGameCtnChallenge(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-            
-        }
-
         #region Methods
 
         /// <summary>
@@ -584,7 +565,7 @@ namespace GBX.NET.Engines.Game
         {
             var chunkItems = CreateChunk<Chunk03043040>();
 
-            var it = new CGameCtnAnchoredObject((Chunk)chunkItems)
+            var it = new CGameCtnAnchoredObject()
             {
                 ItemModel = itemModel,
                 AbsolutePositionInMap = absolutePosition,

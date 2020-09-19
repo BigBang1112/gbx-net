@@ -11,11 +11,6 @@ namespace GBX.NET.Engines.Game
     {
         public bool IsReplaying { get; set; }
 
-        public CGameGhost(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         #region Chunks
 
         #region 0x003 chunk

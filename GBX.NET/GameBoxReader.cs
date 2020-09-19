@@ -12,6 +12,7 @@ namespace GBX.NET
     public class GameBoxReader : BinaryReader
     {
         public ILookbackable Lookbackable { get; }
+        public Chunk Chunk { get; internal set; }
 
         public GameBoxReader(Stream input) : base(input, Encoding.UTF8, true)
         {
@@ -133,6 +134,7 @@ namespace GBX.NET
             if (index >= 0 && body.AuxilaryNodes.ElementAtOrDefault(index) == null) // If index is 0 or bigger and the node wasn't read yet
             {
                 T node = Node.Parse<T>(body, this);
+                node.ParentChunk = Chunk;
 
                 if (index >= body.AuxilaryNodes.Count)
                     body.AuxilaryNodes.Add(node);

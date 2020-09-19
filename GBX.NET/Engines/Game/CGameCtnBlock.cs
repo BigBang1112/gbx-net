@@ -19,16 +19,6 @@ namespace GBX.NET.Engines.Game
 
         public int? Flags { get; set; }
 
-        public CGameCtnBlock(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
-        public CGameCtnBlock(ILookbackable lookbackable) : base(lookbackable, 0x03057000)
-        {
-
-        }
-
         public override string ToString()
         {
             return $"{BlockInfo?.ID} {Coord}";

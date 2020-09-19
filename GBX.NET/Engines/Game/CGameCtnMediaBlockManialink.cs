@@ -11,11 +11,6 @@ namespace GBX.NET.Engines.Game
         public float End { get; set; }
         public string Manialink { get; set; }
 
-        public CGameCtnMediaBlockManialink(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x0312A001)]
         public class Chunk0312A001 : Chunk<CGameCtnMediaBlockManialink>
         {

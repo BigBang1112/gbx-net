@@ -54,11 +54,6 @@ namespace GBX.NET.Engines.TrackMania
         public float End { get; set; }
         public Stunt[] Stunts { get; set; }
 
-        public CCtnMediaBlockEventTrackMania(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x2407F000)]
         public class Chunk2407F000 : Chunk<CCtnMediaBlockEventTrackMania>
         {

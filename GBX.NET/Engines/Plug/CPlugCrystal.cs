@@ -13,11 +13,6 @@ namespace GBX.NET.Engines.Plug
         public CPlugMaterialUserInst[] Materials { get; set; }
         public Layer[] Layers { get; set; }
 
-        public CPlugCrystal(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x09003003)]
         public class Chunk09003003 : Chunk<CPlugCrystal>
         {

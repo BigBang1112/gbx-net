@@ -22,11 +22,6 @@ namespace GBX.NET.Engines.GameData
         public bool IconUseAutoRender { get; set; }
         public int IconQuarterRotationY { get; set; }
 
-        public CGameCtnCollector(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         #region Chunks
 
         #region 0x003 chunk

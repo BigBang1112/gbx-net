@@ -23,11 +23,6 @@ namespace GBX.NET.Engines.Game
 
         public bool ForceHue { get; set; }
 
-        public CGameCtnMediaBlockGhost(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x030E5001)]
         public class Chunk030E5001 : Chunk<CGameCtnMediaBlockGhost>
         {

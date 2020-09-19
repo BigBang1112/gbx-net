@@ -5,11 +5,6 @@
     {
         public Key[] Keys { get; set; }
 
-        public CGameCtnMediaBlockDirtyLens(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x03165000)]
         public class Chunk03165000 : Chunk<CGameCtnMediaBlockDirtyLens>
         {

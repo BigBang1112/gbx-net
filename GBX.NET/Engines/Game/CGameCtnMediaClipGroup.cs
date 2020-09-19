@@ -14,11 +14,6 @@ namespace GBX.NET.Engines.Game
 
         public Trigger[] Triggers { get; set; }
 
-        public CGameCtnMediaClipGroup(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x0307A002)]
         public class Chunk0307A002 : Chunk<CGameCtnMediaClipGroup>
         {

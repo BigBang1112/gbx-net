@@ -5,11 +5,6 @@
     {
         public Key[] Keys { get; set; }
 
-        public CGameCtnMediaBlockTime(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x03085000)]
         public class Chunk03085000 : Chunk<CGameCtnMediaBlockTime>
         {

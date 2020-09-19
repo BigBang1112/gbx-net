@@ -13,16 +13,6 @@ namespace GBX.NET.Engines.Game
 
         public List<CGameCtnMediaBlock> Blocks { get; set; }
 
-        public CGameCtnMediaTrack(ILookbackable lookbackable) : base(lookbackable)
-        {
-
-        }
-
-        public CGameCtnMediaTrack(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-            
-        }
-
         public override string ToString()
         {
             return Name;

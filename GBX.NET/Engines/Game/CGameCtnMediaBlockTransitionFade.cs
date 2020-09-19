@@ -13,11 +13,6 @@ namespace GBX.NET.Engines.Game
 
         public Vec3 Color { get; set; }
 
-        public CGameCtnMediaBlockTransitionFade(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x030AB000)]
         public class Chunk030AB000 : Chunk<CGameCtnMediaBlockTransitionFade>
         {

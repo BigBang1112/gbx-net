@@ -150,11 +150,6 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        public CGameCtnGhost(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-            
-        }
-
         #region Chunks
 
         #region 0x000 skippable chunk (basic)

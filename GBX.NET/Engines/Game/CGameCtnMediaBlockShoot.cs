@@ -10,11 +10,6 @@ namespace GBX.NET.Engines.Game
         public float Start { get; set; }
         public float End { get; set; }
 
-        public CGameCtnMediaBlockShoot(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x03145000)]
         public class Chunk03145000 : Chunk<CGameCtnMediaBlockShoot>
         {

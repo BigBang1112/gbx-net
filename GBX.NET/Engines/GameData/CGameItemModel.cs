@@ -48,11 +48,6 @@ namespace GBX.NET.Engines.GameData
         public Node Block { get; set; }
         public CGameItemPlacementParam ItemPlacement { get; set; }
 
-        public CGameItemModel(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x2E002000)]
         public class Chunk2E002000 : HeaderChunk<CGameItemModel>
         {

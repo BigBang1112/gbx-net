@@ -10,11 +10,6 @@ namespace GBX.NET.Engines.Game
     {
         public Key[] Keys { get; set; }
 
-        public CGameCtnMediaBlockMusicEffect(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-            
-        }
-
         [Chunk(0x030A6000)]
         public class Chunk030A6000 : Chunk<CGameCtnMediaBlockMusicEffect>
         {

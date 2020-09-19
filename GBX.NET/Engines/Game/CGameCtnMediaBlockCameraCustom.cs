@@ -15,11 +15,6 @@ namespace GBX.NET.Engines.Game
     {
         public List<Key> Keys { get; set; } = new List<Key>();
 
-        public CGameCtnMediaBlockCameraCustom(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-            
-        }
-
         #region Chunks
 
         #region 0x002 chunk

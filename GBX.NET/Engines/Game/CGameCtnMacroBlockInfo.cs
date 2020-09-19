@@ -19,11 +19,6 @@ namespace GBX.NET.Engines.Game
 
         public List<FreeBlock> FreeBlocks { get; set; } = new List<FreeBlock>();
 
-        public CGameCtnMacroBlockInfo(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         #region Chunks
 
         #region 0x000 chunk (blocks)

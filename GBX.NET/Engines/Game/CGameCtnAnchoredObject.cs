@@ -33,21 +33,6 @@ namespace GBX.NET.Engines.Game
             set => Flags = (short)((Flags & 0xF0FF) | ((value & 15) << 8));
         }
 
-        public CGameCtnAnchoredObject(ILookbackable lookbackable) : base(lookbackable)
-        {
-            
-        }
-
-        public CGameCtnAnchoredObject(ILookbackable lookbackable, uint classId) : base(lookbackable, classId)
-        {
-
-        }
-
-        public CGameCtnAnchoredObject(Chunk chunk) : base(chunk)
-        {
-
-        }
-
         public override string ToString()
         {
             return ItemModel.ToString();

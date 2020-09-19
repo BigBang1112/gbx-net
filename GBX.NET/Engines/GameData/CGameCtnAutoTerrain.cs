@@ -8,11 +8,6 @@ namespace GBX.NET.Engines.GameData
     [Node(0x03120000)]
     public class CGameCtnAutoTerrain : Node
     {
-        public CGameCtnAutoTerrain(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x03120001)]
         public class Chunk03120001 : Chunk<CGameCtnAutoTerrain>
         {

@@ -37,11 +37,6 @@ namespace GBX.NET.Engines.Game
         public int Target { get; set; } = -1;
         public string GameCam { get; set; }
 
-        public CGameCtnMediaBlockCameraGame(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         #region Chunks
 
         #region 0x000 chunk

@@ -11,11 +11,6 @@ namespace GBX.NET.Engines.Game
         public float Start { get; set; }
         public float End { get; set; }
 
-        public CGameCtnMediaBlockTrails(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-            
-        }
-
         #region Chunks
 
         #region 0x000 chunk

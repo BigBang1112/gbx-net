@@ -48,6 +48,8 @@ namespace GBX.NET
 
             using (var gbxr = new GameBoxReader(Stream, Lookbackable))
             {
+                gbxr.Chunk = this;
+
                 GameBoxReaderWriter gbxrw = new GameBoxReaderWriter(gbxr);
 
                 try

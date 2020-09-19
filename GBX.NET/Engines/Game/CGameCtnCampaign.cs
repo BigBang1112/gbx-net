@@ -23,11 +23,6 @@ namespace GBX.NET.Engines.Game
         public int Type { get; set; }
         public int UnlockType { get; set; }
 
-        public CGameCtnCampaign(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         #region Chunks
 
         #region 0x000 chunk (map groups)
