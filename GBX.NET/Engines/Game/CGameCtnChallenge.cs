@@ -563,7 +563,7 @@ namespace GBX.NET.Engines.Game
 
         public void PlaceItem(Meta itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Byte3 blockUnitCoord, Vec3 offsetPivot, int variant = 0)
         {
-            var chunkItems = CreateChunk<Chunk03043040>();
+            CreateChunk<Chunk03043040>();
 
             var it = new CGameCtnAnchoredObject()
             {
@@ -682,6 +682,8 @@ namespace GBX.NET.Engines.Game
                 node.RemoveChunk<CGameCtnMediaTrack.Chunk03078004>();
 
                 node.Blocks.RemoveAll(x => x is CGameCtnMediaBlockGhost); // Some ghosts can crash the game
+                node.Blocks.RemoveAll(x => x is CGameCtnMediaBlockTriangles); // 2D triangles can't be written atm
+                node.Blocks.RemoveAll(x => x is CGameCtnMediaBlockFxColors); // FX colors can't be written atm
             }
 
             return true;
