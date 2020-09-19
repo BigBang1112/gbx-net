@@ -18,7 +18,7 @@ namespace GBX.NET
         [IgnoreDataMember]
         public GameBox GBX => Body?.GBX;
 
-        public ChunkSet Chunks { get; internal set; }
+        public ChunkSet Chunks { get; internal set; } = new ChunkSet();
 
         /// <summary>
         /// Chunk where the aux node appeared
