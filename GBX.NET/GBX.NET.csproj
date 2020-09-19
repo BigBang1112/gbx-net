@@ -14,6 +14,7 @@
     <PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk, x86</PackageTags>
     <RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
     <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
+    <PackageReleaseNotes>Makes library compatible with .NET Standard 2.0, hugely improves reading speed.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
