@@ -133,13 +133,21 @@ namespace GBX.NET
 
             if (index >= 0 && body.AuxilaryNodes.ElementAtOrDefault(index) == null) // If index is 0 or bigger and the node wasn't read yet
             {
-                T node = Node.Parse<T>(body, this);
-                node.ParentChunk = Chunk;
+                var before = BaseStream.Position;
 
-                if (index >= body.AuxilaryNodes.Count)
-                    body.AuxilaryNodes.Add(node);
-                else
-                    body.AuxilaryNodes.Insert(index, node);
+                try
+                {
+                    T node = Node.Parse<T>(body, this);
+
+                    if (index >= body.AuxilaryNodes.Count)
+                        body.AuxilaryNodes.Add(node);
+                    else
+                        body.AuxilaryNodes.Insert(index, node);
+                }
+                catch
+                {
+                    BaseStream.Position = before;
+                }
             }
 
             if (index < 0) // If aux node index is below 0 then there's not much to solve
