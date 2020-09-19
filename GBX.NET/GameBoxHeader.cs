@@ -173,44 +173,51 @@ namespace GBX.NET
 
                 if (GBX.Version >= 6)
                 {
-                    using (var userData = new MemoryStream())
-                    using (var gbxw = new GameBoxWriter(userData, this))
+                    if (Chunks == null)
                     {
-                        var gbxrw = new GameBoxReaderWriter(gbxw);
-
-                        Dictionary<uint, int> lengths = new Dictionary<uint, int>();
-
-                        foreach (var chunk in Chunks)
+                        w.Write(0);
+                    }
+                    else
+                    {
+                        using (var userData = new MemoryStream())
+                        using (var gbxw = new GameBoxWriter(userData, this))
                         {
-                            chunk.Unknown.Position = 0;
+                            var gbxrw = new GameBoxReaderWriter(gbxw);
 
-                            var pos = userData.Position;
-                            if (((ISkippableChunk)chunk).Discovered)
+                            Dictionary<uint, int> lengths = new Dictionary<uint, int>();
+
+                            foreach (var chunk in Chunks)
                             {
-                                ((IHeaderChunk)chunk).ReadWrite(gbxrw);
+                                chunk.Unknown.Position = 0;
+
+                                var pos = userData.Position;
+                                if (((ISkippableChunk)chunk).Discovered)
+                                {
+                                    ((IHeaderChunk)chunk).ReadWrite(gbxrw);
+                                }
+                                else
+                                    ((ISkippableChunk)chunk).Write(gbxw);
+
+                                lengths[chunk.ID] = (int)(userData.Position - pos);
                             }
-                            else
-                                ((ISkippableChunk)chunk).Write(gbxw);
 
-                            lengths[chunk.ID] = (int)(userData.Position - pos);
+                            // Actual data size plus the class id (4 bytes) and each length (4 bytes) plus the number of chunks integer
+                            w.Write((int)userData.Length + Chunks.Count * 8 + 4);
+
+                            // Write number of header chunks integer
+                            w.Write(Chunks.Count);
+
+                            foreach (Chunk chunk in Chunks)
+                            {
+                                w.Write(Chunk.Remap(chunk.ID, remap));
+                                var length = lengths[chunk.ID];
+                                if (((IHeaderChunk)chunk).IsHeavy)
+                                    length |= 1 << 31;
+                                w.Write(length);
+                            }
+
+                            w.Write(userData.ToArray(), 0, (int)userData.Length);
                         }
-
-                        // Actual data size plus the class id (4 bytes) and each length (4 bytes) plus the number of chunks integer
-                        w.Write((int)userData.Length + Chunks.Count * 8 + 4);
-
-                        // Write number of header chunks integer
-                        w.Write(Chunks.Count);
-
-                        foreach (Chunk chunk in Chunks)
-                        {
-                            w.Write(Chunk.Remap(chunk.ID, remap));
-                            var length = lengths[chunk.ID];
-                            if (((IHeaderChunk)chunk).IsHeavy)
-                                length |= 1 << 31;
-                            w.Write(length);
-                        }
-
-                        w.Write(userData.ToArray(), 0, (int)userData.Length);
                     }
                 }
 
