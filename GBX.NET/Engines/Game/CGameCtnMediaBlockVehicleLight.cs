@@ -11,11 +11,6 @@ namespace GBX.NET.Engines.Game
         public float End { get; set; }
         public int Target { get; set; }
 
-        public CGameCtnMediaBlockVehicleLight(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x03133000)]
         public class Chunk03133000 : Chunk<CGameCtnMediaBlockVehicleLight>
         {

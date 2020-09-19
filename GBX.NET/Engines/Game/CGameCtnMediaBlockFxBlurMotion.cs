@@ -12,11 +12,6 @@ namespace GBX.NET.Engines.Game
 
         public float? End { get; set; }
 
-        public CGameCtnMediaBlockFxBlurMotion(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         #region Chunks
 
         #region 0x000 chunk

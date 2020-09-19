@@ -19,16 +19,6 @@ namespace GBX.NET.Engines.Game
 
         public FileRef SecondaryPackDesc { get; set; }
 
-        public CGameCtnBlockSkin(ILookbackable lookbackable) : this(lookbackable, 0x03059000)
-        {
-
-        }
-
-        public CGameCtnBlockSkin(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         #region Chunks
 
         #region 0x000 chunk

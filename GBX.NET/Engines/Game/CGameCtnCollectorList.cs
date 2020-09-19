@@ -9,11 +9,6 @@
     {
         public Collector[] CollectorStock { get; set; }
 
-        public CGameCtnCollectorList(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         #region Chunks
 
         #region 0x000 chunk

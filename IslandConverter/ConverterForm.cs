@@ -100,7 +100,8 @@ namespace IslandConverter
                                 if (Maps.ContainsKey(mapUid))
                                     containsMap = false;
 
-                                Maps.TryAdd(mapUid, gbx);
+                                if(!Maps.ContainsKey(mapUid))
+                                    Maps.Add(mapUid, gbx);
 
                                 item.Name = mapUid;
 
@@ -407,7 +408,7 @@ namespace IslandConverter
                     folderName = ofd.FileName;
 
                     Serializer s = new Serializer();
-                    var output = s.Serialize(new Dictionary<string, string>(new KeyValuePair<string, string>[] { new KeyValuePair<string, string>("ManiaPlanetMapsFolder", folderName) }));
+                    var output = s.Serialize(new Dictionary<string, string> { { "ManiaPlanetMapsFolder", folderName } });
                     File.WriteAllText("Config.yaml", output);
                 }
             }

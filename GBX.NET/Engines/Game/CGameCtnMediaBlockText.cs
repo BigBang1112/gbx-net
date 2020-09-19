@@ -12,11 +12,6 @@ namespace GBX.NET.Engines.Game
         public string Text { get; set; }
         public CControlEffectSimi Simi { get; set; }
 
-        public CGameCtnMediaBlockText(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         #region Chunks
 
         #region 0x001 chunk

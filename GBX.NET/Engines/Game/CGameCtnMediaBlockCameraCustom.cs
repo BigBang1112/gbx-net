@@ -15,11 +15,6 @@ namespace GBX.NET.Engines.Game
     {
         public List<Key> Keys { get; set; } = new List<Key>();
 
-        public CGameCtnMediaBlockCameraCustom(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-            
-        }
-
         #region Chunks
 
         #region 0x002 chunk
@@ -266,16 +261,16 @@ namespace GBX.NET.Engines.Game
 
         public class Key : MediaBlockKey
         {
-            public Vector3 Position { get; set; }
+            public Vec3 Position { get; set; }
             /// <summary>
             /// Pitch, yaw and roll in radians.
             /// </summary>
-            public Vector3 PitchYawRoll { get; set; }
+            public Vec3 PitchYawRoll { get; set; }
             public float FOV { get; set; }
             public float? ZIndex { get; set; }
-            public Vector3? TargetPosition { get; set; }
-            public Vector3 LeftTangent { get; set; }
-            public Vector3 RightTangent { get; set; }
+            public Vec3? TargetPosition { get; set; }
+            public Vec3 LeftTangent { get; set; }
+            public Vec3 RightTangent { get; set; }
             public int Anchor { get; set; }
             public int Target { get; set; }
             public bool AnchorVis { get; set; }

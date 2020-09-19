@@ -14,11 +14,6 @@ namespace GBX.NET.Engines.Game
 
         public Trigger[] Triggers { get; set; }
 
-        public CGameCtnMediaClipGroup(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x0307A002)]
         public class Chunk0307A002 : Chunk<CGameCtnMediaClipGroup>
         {
@@ -33,7 +28,7 @@ namespace GBX.NET.Engines.Game
 
                 n.Triggers = rw.Array(n.Triggers, i =>
                 {
-                    var coords = rw.Reader.ReadArray(i => rw.Reader.ReadInt3());
+                    var coords = rw.Reader.ReadArray(j => rw.Reader.ReadInt3());
                     var unknown1 = rw.Reader.ReadInt32();
                     var unknown2 = rw.Reader.ReadInt32();
                     var unknown3 = rw.Reader.ReadInt32();
@@ -50,7 +45,7 @@ namespace GBX.NET.Engines.Game
                 },
                 x =>
                 {
-                    rw.Writer.Write(x.Coords, x => rw.Writer.Write(x));
+                    rw.Writer.Write(x.Coords, y => rw.Writer.Write(y));
                     rw.Writer.Write(x.Unknown1);
                     rw.Writer.Write(x.Unknown2);
                     rw.Writer.Write(x.Unknown3);
@@ -77,7 +72,7 @@ namespace GBX.NET.Engines.Game
                     var unknown4 = r.ReadInt32();
                     var unknown5 = r.ReadInt32();
                     var unknown6 = r.ReadInt32();
-                    var coords = r.ReadArray(i => r.ReadInt3());
+                    var coords = r.ReadArray(j => r.ReadInt3());
 
                     return new Trigger()
                     {

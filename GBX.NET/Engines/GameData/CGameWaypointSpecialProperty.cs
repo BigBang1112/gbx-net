@@ -12,11 +12,6 @@ namespace GBX.NET.Engines.GameData
         public string Tag { get; set; }
         public int Order { get; set; }
 
-        public CGameWaypointSpecialProperty(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         #region Chunks
 
         #region 0x000 chunk

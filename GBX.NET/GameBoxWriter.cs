@@ -95,14 +95,19 @@ namespace GBX.NET
             }
         }
 
-        public void Write(Vector3 value)
+        public void Write(Vec2 value)
+        {
+            Write(new float[] { value.X, value.Y });
+        }
+
+        public void Write(Vec3 value)
         {
             Write(new float[] { value.X, value.Y, value.Z });
         }
 
-        public void Write(Vector2 value)
+        public void Write(Vec4 value)
         {
-            Write(new float[] { value.X, value.Y });
+            Write(new float[] { value.X, value.Y, value.Z, value.W });
         }
 
         public void Write(Int3 value)
@@ -117,7 +122,8 @@ namespace GBX.NET
 
         public void Write(Byte3 value)
         {
-            Write(new ReadOnlySpan<byte>(new byte[] { value.X, value.Y, value.Z }));
+            var bytes = new byte[] { value.X, value.Y, value.Z };
+            Write(bytes, 0, bytes.Length);
         }
 
         public void Write(FileRef fileRef)

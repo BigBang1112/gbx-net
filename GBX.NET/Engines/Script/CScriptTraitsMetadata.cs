@@ -73,13 +73,13 @@ namespace GBX.NET.Engines.Script
             Metadata.Add(new ScriptVariable(ScriptType.Text) { Name = name, Value = value });
         }
 
-        public void Declare(string name, Vector2 value)
+        public void Declare(string name, Vec2 value)
         {
             Remove(name);
             Metadata.Add(new ScriptVariable(ScriptType.Vec2) { Name = name, Value = value });
         }
 
-        public void Declare(string name, Vector3 value)
+        public void Declare(string name, Vec3 value)
         {
             Remove(name);
             Metadata.Add(new ScriptVariable(ScriptType.Vec3) { Name = name, Value = value });
@@ -125,12 +125,18 @@ namespace GBX.NET.Engines.Script
             {
                 var varType = r.ReadByte();
 
-                types[i] = ((ScriptType)varType) switch
+                switch ((ScriptType)varType)
                 {
-                    ScriptType.Array => ReadScriptArray(),
-                    ScriptType.Struct => ReadScriptStruct(out int defaultLength),
-                    _ => new ScriptVariable((ScriptType)varType),
-                };
+                    case ScriptType.Array:
+                        types[i] = ReadScriptArray();
+                        break;
+                    case ScriptType.Struct:
+                        types[i] = ReadScriptStruct(out int defaultLength);
+                        break;
+                    default:
+                        types[i] = new ScriptVariable((ScriptType)varType);
+                        break;
+                }
             }
 
             var varCount = r.ReadByte();
@@ -435,10 +441,10 @@ namespace GBX.NET.Engines.Script
                             w.Write(0f);
                             break;
                         case ScriptType.Vec2:
-                            w.Write(new Vector2());
+                            w.Write(new Vec2());
                             break;
                         case ScriptType.Vec3:
-                            w.Write(new Vector3());
+                            w.Write(new Vec3());
                             break;
                         case ScriptType.Int3:
                             w.Write(new Int3());
@@ -477,10 +483,10 @@ namespace GBX.NET.Engines.Script
                         w.Write((string)type.Value, StringLengthPrefix.Byte);
                         break;
                     case ScriptType.Vec2:
-                        w.Write((Vector2)type.Value);
+                        w.Write((Vec2)type.Value);
                         break;
                     case ScriptType.Vec3:
-                        w.Write((Vector3)type.Value);
+                        w.Write((Vec3)type.Value);
                         break;
                     case ScriptType.Int3:
                         w.Write((Int3)type.Value);

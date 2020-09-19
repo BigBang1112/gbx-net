@@ -14,11 +14,6 @@ namespace GBX.NET.Engines.Game
     {
         public Key[] Keys { get; set; }
 
-        public CGameCtnMediaBlockCameraEffectShake(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         #region Chunks
 
         #region 0x000 chunk

@@ -92,7 +92,7 @@ namespace IslandConverter
 
                     if (arguments.Count() > 0)
                     {
-                        Console.WriteLine($"Specified optional arguments: {string.Join(' ', arguments)}");
+                        Console.WriteLine($"Specified optional arguments: {string.Join(" ", arguments)}");
 
                         var enumerator = arguments.GetEnumerator();
                         while (enumerator.MoveNext())

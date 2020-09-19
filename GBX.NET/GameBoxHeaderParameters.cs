@@ -7,14 +7,13 @@ namespace GBX.NET
 {
     public class GameBoxHeaderParameters
     {
-        public short Version { get; set; }
-        public char? ByteFormat { get; set; }
-        public char? RefTableCompression { get; set; }
-        public char? BodyCompression { get; set; }
-        public char? UnknownByte { get; set; }
-        public uint? ClassID { get; set; }
+        public GameBox GBX { get; }
         public byte[] UserData { get; set; }
-        public int? NumNodes { get; set; }
+
+        public GameBoxHeaderParameters(GameBox gbx)
+        {
+            GBX = gbx;
+        }
 
         public bool Read(GameBoxReader r)
         {
@@ -26,30 +25,30 @@ namespace GBX.NET
                 return false;
             }
 
-            Version = r.ReadInt16();
-            Log.Write($"- Version: {Version}");
+            GBX.Version = r.ReadInt16();
+            Log.Write($"- Version: {GBX.Version}");
 
-            if (Version >= 3)
+            if (GBX.Version >= 3)
             {
-                ByteFormat = (char)r.ReadByte();
-                Log.Write($"- Byte format: {ByteFormat}");
+                GBX.ByteFormat = (char)r.ReadByte();
+                Log.Write($"- Byte format: {GBX.ByteFormat}");
 
-                RefTableCompression = (char)r.ReadByte();
-                Log.Write($"- Ref. table compression: {RefTableCompression}");
+                GBX.RefTableCompression = (char)r.ReadByte();
+                Log.Write($"- Ref. table compression: {GBX.RefTableCompression}");
 
-                BodyCompression = (char)r.ReadByte();
-                Log.Write($"- Body compression: {RefTableCompression}");
+                GBX.BodyCompression = (char)r.ReadByte();
+                Log.Write($"- Body compression: {GBX.RefTableCompression}");
 
-                if (Version >= 4)
+                if (GBX.Version >= 4)
                 {
-                    UnknownByte = (char)r.ReadByte();
-                    Log.Write($"- Unknown byte: {UnknownByte}");
+                    GBX.UnknownByte = (char)r.ReadByte();
+                    Log.Write($"- Unknown byte: {GBX.UnknownByte}");
                 }
 
-                ClassID = r.ReadUInt32();
-                Log.Write($"- Class ID: 0x{ClassID:x8}");
+                GBX.ClassID = r.ReadUInt32();
+                Log.Write($"- Class ID: 0x{GBX.ClassID:x8}");
 
-                if (Version >= 6)
+                if (GBX.Version >= 6)
                 {
                     var userDataSize = r.ReadInt32();
                     Log.Write($"- User data size: {userDataSize/1024f} kB");
@@ -58,8 +57,8 @@ namespace GBX.NET
                         UserData = r.ReadBytes(userDataSize);
                 }
 
-                NumNodes = r.ReadInt32();
-                Log.Write($"- Number of nodes: {NumNodes}");
+                GBX.NumNodes = r.ReadInt32();
+                Log.Write($"- Number of nodes: {GBX.NumNodes}");
             }
 
             Log.Write("Header completed!", ConsoleColor.Green);

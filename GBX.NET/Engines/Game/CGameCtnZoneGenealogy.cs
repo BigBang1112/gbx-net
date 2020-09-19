@@ -11,11 +11,6 @@ namespace GBX.NET.Engines.Game
         public int BaseHeight { get; set; }
         public string CurrentZone { get; set; }
 
-        public CGameCtnZoneGenealogy(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         public override string ToString()
         {
             return string.Join(" ", Zones);

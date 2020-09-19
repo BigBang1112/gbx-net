@@ -19,11 +19,6 @@ namespace GBX.NET.Engines.Game
 
         public List<FreeBlock> FreeBlocks { get; set; } = new List<FreeBlock>();
 
-        public CGameCtnMacroBlockInfo(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         #region Chunks
 
         #region 0x000 chunk (blocks)
@@ -40,8 +35,8 @@ namespace GBX.NET.Engines.Game
                 {
                     Int3? coord = null;
                     Direction? dir = null;
-                    Vector3? position = null;
-                    Vector3? pitchYawRoll = null;
+                    Vec3? position = null;
+                    Vec3? pitchYawRoll = null;
 
                     var ver = r.ReadInt32();
                     var meta = r.ReadMeta();
@@ -136,7 +131,7 @@ namespace GBX.NET.Engines.Game
                 var unknown = r.ReadArray(i =>
                 {
                     r.ReadInt32();
-                    var dsgds = r.ReadArray(i => r.ReadMeta());
+                    r.ReadArray(j => r.ReadMeta());
 
                     r.ReadInt32();
                     r.ReadInt32();
@@ -204,8 +199,8 @@ namespace GBX.NET.Engines.Game
 
                     var meta = r.ReadMeta();
 
-                    Vector3? pitchYawRoll = null;
-                    Vector3? pivotPosition = null;
+                    Vec3? pitchYawRoll = null;
+                    Vec3? pivotPosition = null;
                     float? scale = null;
 
                     if (v < 3)

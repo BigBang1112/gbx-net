@@ -12,11 +12,6 @@ namespace GBX.NET.Engines.Game
         public bool ShowInterface { get; set; }
         public string Manialink { get; set; }
 
-        public CGameCtnMediaBlockInterface(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x03195000)]
         public class Chunk03195000 : Chunk<CGameCtnMediaBlockInterface>
         {

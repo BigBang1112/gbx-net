@@ -23,11 +23,6 @@ namespace GBX.NET.Engines.Game
 
         public bool ForceHue { get; set; }
 
-        public CGameCtnMediaBlockGhost(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x030E5001)]
         public class Chunk030E5001 : Chunk<CGameCtnMediaBlockGhost>
         {
@@ -35,7 +30,7 @@ namespace GBX.NET.Engines.Game
             {
                 n.Start = rw.Single(n.Start.GetValueOrDefault());
                 n.End = rw.Single(n.End.GetValueOrDefault(3));
-                n.Ghost = rw.NodeRef<CGameCtnGhost>(n.Ghost, true);
+                n.Ghost = rw.NodeRef<CGameCtnGhost>(n.Ghost);
                 n.Offset = rw.Single(n.Offset.GetValueOrDefault());
             }
         }
@@ -60,7 +55,7 @@ namespace GBX.NET.Engines.Game
                     rw.Writer.Write(x.Unknown);
                 });
 
-                n.Ghost = rw.NodeRef<CGameCtnGhost>(n.Ghost, true);
+                n.Ghost = rw.NodeRef<CGameCtnGhost>(n.Ghost);
                 n.Offset = rw.Single(n.Offset.GetValueOrDefault());
                 n.NoDamage = rw.Boolean(n.NoDamage);
                 n.ForceLight = rw.Boolean(n.ForceLight);

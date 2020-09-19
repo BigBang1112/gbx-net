@@ -13,16 +13,6 @@ namespace GBX.NET.Engines.Game
 
         public List<CGameCtnMediaTrack> Tracks { get; set; }
 
-        public CGameCtnMediaClip(ILookbackable lookbackable) : base(lookbackable)
-        {
-
-        }
-
-        public CGameCtnMediaClip(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         public override string ToString()
         {
             return string.IsNullOrEmpty(Name) ? "Unnamed clip" : Name;

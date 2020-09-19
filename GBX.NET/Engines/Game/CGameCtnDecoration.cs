@@ -12,11 +12,6 @@ namespace GBX.NET.Engines.Game
     [Node(0x03038000)]
     public class CGameCtnDecoration : CGameCtnCollector
     {
-        public CGameCtnDecoration(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         #region Chunks
 
         #region 0x011 chunk

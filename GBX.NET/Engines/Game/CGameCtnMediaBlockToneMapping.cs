@@ -9,11 +9,6 @@ namespace GBX.NET.Engines.Game
     {
         public Key[] Keys { get; set; }
 
-        public CGameCtnMediaBlockToneMapping(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x03127004)]
         public class Chunk03127004 : Chunk<CGameCtnMediaBlockToneMapping>
         {

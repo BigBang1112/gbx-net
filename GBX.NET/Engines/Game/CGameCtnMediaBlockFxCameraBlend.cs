@@ -9,11 +9,6 @@ namespace GBX.NET.Engines.Game
     {
         public Key[] Keys { get; set; }
 
-        public CGameCtnMediaBlockFxCameraBlend(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x0316D000)]
         public class Chunk0316D000 : Chunk<CGameCtnMediaBlockFxCameraBlend>
         {

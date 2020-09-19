@@ -5,11 +5,6 @@
     {
         public Key[] Keys { get; set; }
 
-        public CControlEffectSimi(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x07010004)]
         public class Chunk004 : Chunk<CControlEffectSimi>
         {

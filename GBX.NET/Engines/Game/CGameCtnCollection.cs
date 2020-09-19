@@ -14,11 +14,6 @@ namespace GBX.NET.Engines.Game
         public Meta Vehicle { get; set; }
         public string LoadingScreen { get; set; }
 
-        public CGameCtnCollection(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         #region Chunks
 
         #region 0x001 chunk

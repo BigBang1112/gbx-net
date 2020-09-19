@@ -11,11 +11,6 @@ namespace GBX.NET.Engines.Game
     {
         public bool IsReplaying { get; set; }
 
-        public CGameGhost(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         #region Chunks
 
         #region 0x003 chunk
@@ -67,56 +62,58 @@ namespace GBX.NET.Engines.Game
                 CompressedSize = rw.Int32(CompressedSize);
                 Data = rw.Bytes(Data, CompressedSize);
 
-                #if DEBUG
+#if DEBUG
 
-                using var ms = new MemoryStream(Data);
-                using var zlib = new InflaterInputStream(ms);
-                using var gbxr = new GameBoxReader(zlib);
-
-                var classID = gbxr.ReadInt32(); // CSceneVehicleCar
-                if (classID != -1)
+                using (var ms = new MemoryStream(Data))
+                using (var zlib = new InflaterInputStream(ms))
+                using (var gbxr = new GameBoxReader(zlib))
                 {
-                    var bSkipList2 = gbxr.ReadBoolean();
-                    gbxr.ReadInt32();
-                    var samplePeriod = gbxr.ReadInt32();
-                    gbxr.ReadInt32();
-
-                    var size = gbxr.ReadInt32();
-                    var sampleData = gbxr.ReadBytes(size);
-
-                    var numSamples = gbxr.ReadInt32();
-                    if (numSamples > 0)
+                    var classID = gbxr.ReadInt32(); // CSceneVehicleCar
+                    if (classID != -1)
                     {
-                        var firstSampleOffset = gbxr.ReadInt32();
-                        if (numSamples > 1)
+                        var bSkipList2 = gbxr.ReadBoolean();
+                        gbxr.ReadInt32();
+                        var samplePeriod = gbxr.ReadInt32();
+                        gbxr.ReadInt32();
+
+                        var size = gbxr.ReadInt32();
+                        var sampleData = gbxr.ReadBytes(size);
+
+                        var numSamples = gbxr.ReadInt32();
+                        if (numSamples > 0)
                         {
-                            var sizePerSample = gbxr.ReadInt32();
-                            if (sizePerSample == -1)
+                            var firstSampleOffset = gbxr.ReadInt32();
+                            if (numSamples > 1)
                             {
-                                var sampleSizes = gbxr.ReadArray<int>(numSamples - 1);
+                                var sizePerSample = gbxr.ReadInt32();
+                                if (sizePerSample == -1)
+                                {
+                                    var sampleSizes = gbxr.ReadArray<int>(numSamples - 1);
+                                }
                             }
                         }
-                    }
 
-                    if (!bSkipList2)
-                    {
-                        var num = gbxr.ReadInt32();
-                        var sampleTimes = gbxr.ReadArray<int>(num);
-                    }
+                        if (!bSkipList2)
+                        {
+                            var num = gbxr.ReadInt32();
+                            var sampleTimes = gbxr.ReadArray<int>(num);
+                        }
 
-                    using var msSampleData = new MemoryStream(sampleData);
-                    using var gbxrSampleData = new GameBoxReader(msSampleData);
-
-                    for (var i = 0; i < numSamples; i++)
-                    {
-                        var pos = gbxrSampleData.ReadVec3();
-                        var angle = gbxrSampleData.ReadInt16();
-                        var axisHeading = gbxrSampleData.ReadInt16();
-                        var axisPitch = gbxrSampleData.ReadInt16();
-                        var speed = MathF.Exp(gbxrSampleData.ReadInt16() / 1000);
-                        var velocityHeading = gbxrSampleData.ReadByte();
-                        var velocityPitch = gbxrSampleData.ReadByte();
-                        gbxrSampleData.ReadArray<short>(12);
+                        using (var msSampleData = new MemoryStream(sampleData))
+                        using (var gbxrSampleData = new GameBoxReader(msSampleData))
+                        {
+                            for (var i = 0; i < numSamples; i++)
+                            {
+                                var pos = gbxrSampleData.ReadVec3();
+                                var angle = gbxrSampleData.ReadInt16();
+                                var axisHeading = gbxrSampleData.ReadInt16();
+                                var axisPitch = gbxrSampleData.ReadInt16();
+                                var speed = (float)Math.Exp(gbxrSampleData.ReadInt16() / 1000);
+                                var velocityHeading = gbxrSampleData.ReadByte();
+                                var velocityPitch = gbxrSampleData.ReadByte();
+                                gbxrSampleData.ReadArray<short>(12);
+                            }
+                        }
                     }
                 }
 

@@ -10,11 +10,6 @@ namespace GBX.NET.Engines.Game
         public float Start { get; set; }
         public float End { get; set; }
 
-        public CGameCtnMediaBlockFxCameraMap(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x03139000)]
         public class Chunk03139000 : Chunk<CGameCtnMediaBlockFxCameraMap>
         {

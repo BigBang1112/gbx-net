@@ -10,11 +10,6 @@ namespace GBX.NET.Engines.Game
     {
         public Key[] Keys { get; set; }
 
-        public CGameCtnMediaBlockDOF(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x03126002)]
         public class Chunk03126002 : Chunk<CGameCtnMediaBlockDOF>
         {

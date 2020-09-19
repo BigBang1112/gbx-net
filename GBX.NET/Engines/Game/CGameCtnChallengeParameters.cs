@@ -51,11 +51,6 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        public CGameCtnChallengeParameters(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-            
-        }
-
         #region Chunks
 
         #region 0x000 chunk

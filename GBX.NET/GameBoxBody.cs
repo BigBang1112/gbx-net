@@ -11,7 +11,6 @@ namespace GBX.NET
     {
         public int? CompressedSize { get; }
         public int UncompressedSize { get; }
-        public ChunkList Chunks { get; set; } = new ChunkList();
         public byte[] Rest { get; }
         public bool Aborting { get; private set; }
 
@@ -28,16 +27,16 @@ namespace GBX.NET
             CompressedSize = compressedSize;
             UncompressedSize = uncompressedSize;
 
-            using var s = new MemoryStream(data);
-            using var gbxr = new GameBoxReader(s, this);
-            gbx.MainNode = (T)Node.Parse(this, mainNodeID, gbxr);
-            Debug.WriteLine("Amount read: " + (s.Position / (float)s.Length).ToString("P"));
+            using (var s = new MemoryStream(data))
+            using (var gbxr = new GameBoxReader(s, this))
+            {
+                gbx.MainNode = Node.Parse<T>(this, gbxr, mainNodeID);
+                Debug.WriteLine("Amount read: " + (s.Position / (float)s.Length).ToString("P"));
 
-            byte[] restBuffer = new byte[s.Length - s.Position];
-            gbxr.Read(restBuffer, 0, restBuffer.Length);
-            Rest = restBuffer;
-
-            Chunks.Node = gbx.MainNode;
+                byte[] restBuffer = new byte[s.Length - s.Position];
+                gbxr.Read(restBuffer, 0, restBuffer.Length);
+                Rest = restBuffer;
+            }
         }
 
         public static GameBoxBody<T> DecompressAndConstruct(GameBox<T> gbx, uint mainNodeID, byte[] data, int compressedSize, int uncompressedSize)
@@ -54,17 +53,18 @@ namespace GBX.NET
 
         public void Write(GameBoxWriter w, ClassIDRemap remap)
         {
-            if(GBX.Header.Result.BodyCompression == 'C')
+            if(GBX.BodyCompression == 'C')
             {
-                using var msBody = new MemoryStream();
-                using var gbxwBody = new GameBoxWriter(msBody, this);
+                using (var msBody = new MemoryStream())
+                using (var gbxwBody = new GameBoxWriter(msBody, this))
+                {
+                    GBX.MainNode.Write(gbxwBody, remap);
+                    MiniLZO.Compress(msBody.ToArray(), out byte[] output);
 
-                GBX.MainNode.Write(gbxwBody, remap);
-                MiniLZO.Compress(msBody.ToArray(), out byte[] output);
-
-                w.Write((int)msBody.Length); // Uncompressed
-                w.Write(output.Length); // Compressed
-                w.Write(output, 0, output.Length); // Compressed body data
+                    w.Write((int)msBody.Length); // Uncompressed
+                    w.Write(output.Length); // Compressed
+                    w.Write(output, 0, output.Length); // Compressed body data
+                }
             }
             else
                 GBX.MainNode.Write(w);
@@ -80,7 +80,7 @@ namespace GBX.NET
 
         public new TChunk CreateChunk<TChunk>(byte[] data) where TChunk : Chunk<T>
         {
-            return Chunks.Create<TChunk>(data);
+            return GBX.MainNode.Chunks.Create<TChunk>(data);
         }
 
         public new TChunk CreateChunk<TChunk>() where TChunk : Chunk<T>
@@ -90,19 +90,19 @@ namespace GBX.NET
 
         public void InsertChunk(Chunk<T> chunk)
         {
-            Chunks.Add(chunk);
+            GBX.MainNode.Chunks.Add(chunk);
         }
 
         public new void DiscoverChunk<TChunk>() where TChunk : SkippableChunk<T>
         {
-            foreach (var chunk in Chunks)
+            foreach (var chunk in GBX.MainNode.Chunks)
                 if (chunk is TChunk c)
                     c.Discover();
         }
 
         public new void DiscoverChunks<TChunk1, TChunk2>() where TChunk1 : SkippableChunk<T> where TChunk2 : SkippableChunk<T>
         {
-            foreach (var chunk in Chunks)
+            foreach (var chunk in GBX.MainNode.Chunks)
             {
                 if (chunk is TChunk1 c1)
                     c1.Discover();
@@ -116,7 +116,7 @@ namespace GBX.NET
             where TChunk2 : SkippableChunk<T>
             where TChunk3 : SkippableChunk<T>
         {
-            foreach (var chunk in Chunks)
+            foreach (var chunk in GBX.MainNode.Chunks)
             {
                 if (chunk is TChunk1 c1)
                     c1.Discover();
@@ -133,7 +133,7 @@ namespace GBX.NET
             where TChunk3 : SkippableChunk<T>
             where TChunk4 : SkippableChunk<T>
         {
-            foreach (var chunk in Chunks)
+            foreach (var chunk in GBX.MainNode.Chunks)
             {
                 if (chunk is TChunk1 c1)
                     c1.Discover();
@@ -153,7 +153,7 @@ namespace GBX.NET
             where TChunk4 : SkippableChunk<T>
             where TChunk5 : SkippableChunk<T>
         {
-            foreach (var chunk in Chunks)
+            foreach (var chunk in GBX.MainNode.Chunks)
             {
                 if (chunk is TChunk1 c1)
                     c1.Discover();
@@ -176,7 +176,7 @@ namespace GBX.NET
             where TChunk5 : SkippableChunk<T>
             where TChunk6 : SkippableChunk<T>
         {
-            foreach (var chunk in Chunks)
+            foreach (var chunk in GBX.MainNode.Chunks)
             {
                 if (chunk is TChunk1 c1)
                     c1.Discover();
@@ -195,14 +195,14 @@ namespace GBX.NET
 
         public new void DiscoverAllChunks()
         {
-            foreach (var chunk in Chunks)
+            foreach (var chunk in GBX.MainNode.Chunks)
                 if (chunk is SkippableChunk<T> s)
                     s.Discover();
         }
 
         public new TChunk GetChunk<TChunk>() where TChunk : Chunk<T>
         {
-            foreach (var chunk in Chunks)
+            foreach (var chunk in GBX.MainNode.Chunks)
             {
                 if (chunk is TChunk t)
                 {
@@ -221,12 +221,12 @@ namespace GBX.NET
 
         public void RemoveAllChunks()
         {
-            Chunks.Clear();
+            GBX.MainNode.Chunks.Clear();
         }
 
         public new bool RemoveChunk<TChunk>() where TChunk : Chunk<T>
         {
-            return Chunks.Remove<TChunk>();
+            return GBX.MainNode.Chunks.Remove<TChunk>();
         }
     }
 

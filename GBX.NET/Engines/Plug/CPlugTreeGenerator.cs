@@ -7,11 +7,6 @@ namespace GBX.NET.Engines.Plug
     [Node(0x09051000)]
     public class CPlugTreeGenerator : CPlug
     {
-        public CPlugTreeGenerator(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x09051000)]
         public class Chunk09051000 : Chunk<CPlugTreeGenerator>
         {

@@ -11,11 +11,6 @@ namespace GBX.NET.Engines.Game
         public string OnlineLogin { get; set; }
         public string OnlineSupportKey { get; set; }
 
-        public CGamePlayerProfile(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         #region Chunks
 
         #region 0x000 chunk

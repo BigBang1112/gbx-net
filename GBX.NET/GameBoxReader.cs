@@ -12,6 +12,7 @@ namespace GBX.NET
     public class GameBoxReader : BinaryReader
     {
         public ILookbackable Lookbackable { get; }
+        public Chunk Chunk { get; internal set; }
 
         public GameBoxReader(Stream input) : base(input, Encoding.UTF8, true)
         {
@@ -84,12 +85,15 @@ namespace GBX.NET
             }
             else if ((index & 0x3FFF) == 0x3FFF)
             {
-                return (index >> 30) switch
+                switch(index >> 30)
                 {
-                    2 => new LookbackString("Unassigned", lookbackable),
-                    3 => new LookbackString("", lookbackable),
-                    _ => throw new Exception(),
-                };
+                    case 2:
+                        return new LookbackString("Unassigned", lookbackable);
+                    case 3:
+                        return new LookbackString("", lookbackable);
+                    default:
+                        throw new Exception();
+                }
             }
             else if (index >> 30 == 0)
             {
@@ -123,51 +127,14 @@ namespace GBX.NET
             return ReadMeta(Lookbackable);
         }
 
-        public Node ReadNodeRef(GameBoxBody body)
+        public T ReadNodeRef<T>(GameBoxBody body) where T : Node
         {
             var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
             if (index >= 0 && body.AuxilaryNodes.ElementAtOrDefault(index) == null) // If index is 0 or bigger and the node wasn't read yet
             {
-                var classID = ReadUInt32();
-                Debug.WriteLine("Node ref class: " + classID.ToString("x8"));
-
-                Node node = Node.Parse(body, classID, this);
-
-                if (index >= body.AuxilaryNodes.Count)
-                    body.AuxilaryNodes.Add(node);
-                else
-                    body.AuxilaryNodes.Insert(index, node);
-            }
-
-            if (index < 0) // If aux node index is below 0 then there's not much to solve
-                return null;
-            var nod = body.AuxilaryNodes.ElementAtOrDefault(index); // Tries to get the available node from index
-            if (nod == null) // But sometimes it indexes the node reference that is further in the expected indexes
-                return body.AuxilaryNodes.Last(); // So it grabs the last one instead, needs to be further tested
-            else // If the node is presented at the index, then it's simple
-                return nod;
-        }
-
-        public Node ReadNodeRef()
-        {
-            return ReadNodeRef((GameBoxBody)Lookbackable);
-        }
-
-        public T ReadNodeRef<T>(bool hasInheritance, GameBoxBody body) where T : Node
-        {
-            var index = ReadInt32() - 1; // GBX seems to start the index at 1
-
-            if (index >= 0 && body.AuxilaryNodes.ElementAtOrDefault(index) == null) // If index is 0 or bigger and the node wasn't read yet
-            {
-                var classID = ReadUInt32();
-                Debug.WriteLine("Node ref class: " + classID.ToString("x8"));
-
-                Node node;
-                if (hasInheritance)
-                    node = Node.Parse(body, classID, this, true);
-                else
-                    node = Node.Parse<T>(body, this, true);
+                T node = Node.Parse<T>(body, this);
+                node.ParentChunk = Chunk;
 
                 if (index >= body.AuxilaryNodes.Count)
                     body.AuxilaryNodes.Add(node);
@@ -184,14 +151,19 @@ namespace GBX.NET
                 return nod;
         }
 
-        public T ReadNodeRef<T>(bool hasInheritance) where T : Node
-        {
-            return ReadNodeRef<T>(hasInheritance, (GameBoxBody)Lookbackable);
-        }
-
         public T ReadNodeRef<T>() where T : Node
         {
-            return ReadNodeRef<T>(false);
+            return ReadNodeRef<T>((GameBoxBody)Lookbackable);
+        }
+
+        public Node ReadNodeRef(GameBoxBody body)
+        {
+            return ReadNodeRef<Node>(body);
+        }
+
+        public Node ReadNodeRef()
+        {
+            return ReadNodeRef<Node>((GameBoxBody)Lookbackable);
         }
 
         public FileRef ReadFileRef()
@@ -242,16 +214,22 @@ namespace GBX.NET
             return result;
         }
 
-        public Vector2 ReadVec2()
+        public Vec2 ReadVec2()
         {
             var floats = ReadArray<float>(2);
-            return new Vector2(floats[0], floats[1]);
+            return new Vec2(floats[0], floats[1]);
         }
 
-        public Vector3 ReadVec3()
+        public Vec3 ReadVec3()
         {
             var floats = ReadArray<float>(3);
-            return new Vector3(floats[0], floats[1], floats[2]);
+            return new Vec3(floats[0], floats[1], floats[2]);
+        }
+
+        public Vec4 ReadVec4()
+        {
+            var floats = ReadArray<float>(4);
+            return new Vec4(floats[0], floats[1], floats[2], floats[3]);
         }
 
         public Int3 ReadInt3()
@@ -283,6 +261,55 @@ namespace GBX.NET
         public byte[] ReadTillFacade()
         {
             return ReadTill(0xFACADE01);
+        }
+
+        public byte[] ReadToEnd()
+        {
+            return ReadBytes((int)(BaseStream.Length - BaseStream.Position));
+        }
+
+        public string ReadStringTillFacade()
+        {
+            return Encoding.UTF8.GetString(ReadTillFacade());
+        }
+
+        public T[] ReadArrayTillFacade<T>()
+        {
+            var bytes = ReadTillFacade();
+
+            var array = new T[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T)))];
+            Buffer.BlockCopy(bytes, 0, array, 0, bytes.Length);
+
+            return array;
+        }
+
+        public (T1[], T2[]) ReadArrayTillFacade<T1, T2>()
+        {
+            var bytes = ReadTillFacade();
+
+            var array = new T1[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T1)))];
+            Buffer.BlockCopy(bytes, 0, array, 0, bytes.Length);
+
+            var array2 = new T2[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T2)))];
+            Buffer.BlockCopy(bytes, 0, array2, 0, bytes.Length);
+
+            return (array, array2);
+        }
+
+        public (T1[], T2[], T3[]) ReadArrayTillFacade<T1, T2, T3>()
+        {
+            var bytes = ReadTillFacade();
+
+            var array = new T1[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T1)))];
+            Buffer.BlockCopy(bytes, 0, array, 0, bytes.Length);
+
+            var array2 = new T2[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T2)))];
+            Buffer.BlockCopy(bytes, 0, array2, 0, bytes.Length);
+
+            var array3 = new T3[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T3)))];
+            Buffer.BlockCopy(bytes, 0, array3, 0, bytes.Length);
+
+            return (array, array2, array3);
         }
 
         public uint PeekUInt32()

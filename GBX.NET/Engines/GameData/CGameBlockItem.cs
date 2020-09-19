@@ -11,11 +11,6 @@ namespace GBX.NET.Engines.GameData
         public string ArchetypeBlockInfoId { get; set; }
         public CPlugCrystal[] Crystals { get; set; }
 
-        public CGameBlockItem(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
-
         [Chunk(0x2E025000)]
         public class Chunk2E025000 : Chunk<CGameBlockItem>
         {

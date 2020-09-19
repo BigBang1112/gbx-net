@@ -35,7 +35,7 @@ namespace GBX.NET.Engines.GameData
         public Node[] NadeoSkinFids { get; set; }
         public Node[] Cameras { get; set; }
         public Node RaceInterfaceFid { get; set; }
-        public Vector3 GroundPoint { get; set; }
+        public Vec3 GroundPoint { get; set; }
         public float PainterGroundMargin { get; set; }
         public float OrbitalCenterHeightFromGround { get; set; }
         public float OrbitalRadiusBase { get; set; }
@@ -47,11 +47,6 @@ namespace GBX.NET.Engines.GameData
         public Node VisModelStatic { get; set; }
         public Node Block { get; set; }
         public CGameItemPlacementParam ItemPlacement { get; set; }
-
-        public CGameItemModel(ILookbackable lookbackable, uint classID) : base(lookbackable, classID)
-        {
-
-        }
 
         [Chunk(0x2E002000)]
         public class Chunk2E002000 : HeaderChunk<CGameItemModel>

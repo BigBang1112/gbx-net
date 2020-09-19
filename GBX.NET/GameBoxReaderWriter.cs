@@ -56,14 +56,16 @@ namespace GBX.NET
         {
             if (Reader != null)
             {
-                using var w = new GameBoxWriter(stream, Reader.Lookbackable);
-                w.Write(Reader.ReadArray<T>(count));
-                w.Flush();
+                using (var w = new GameBoxWriter(stream, Reader.Lookbackable))
+                {
+                    w.Write(Reader.ReadArray<T>(count));
+                    w.Flush();
+                }
             }
             else if (Writer != null)
             {
-                using var r = new GameBoxReader(stream, Writer.Lookbackable);
-                Writer.Write(r.ReadArray<T>(count));
+                using (var r = new GameBoxReader(stream, Writer.Lookbackable))
+                    Writer.Write(r.ReadArray<T>(count));
             }
         }
 
@@ -90,14 +92,16 @@ namespace GBX.NET
         {
             if (Reader != null)
             {
-                using var w = new GameBoxWriter(stream, Reader.Lookbackable);
-                w.Write(Reader.ReadBoolean());
-                w.Flush();
+                using (var w = new GameBoxWriter(stream, Reader.Lookbackable))
+                {
+                    w.Write(Reader.ReadBoolean());
+                    w.Flush();
+                }
             }
             else if (Writer != null)
             {
-                using var r = new GameBoxReader(stream, Writer.Lookbackable);
-                Writer.Write(r.ReadBoolean());
+                using (var r = new GameBoxReader(stream, Writer.Lookbackable))
+                    Writer.Write(r.ReadBoolean());
             }
         }
 
@@ -112,14 +116,16 @@ namespace GBX.NET
         {
             if (Reader != null)
             {
-                using var w = new GameBoxWriter(stream, Reader.Lookbackable);
-                w.Write(Reader.ReadByte());
-                w.Flush();
+                using (var w = new GameBoxWriter(stream, Reader.Lookbackable))
+                {
+                    w.Write(Reader.ReadByte());
+                    w.Flush();
+                }
             }
             else if (Writer != null)
             {
-                using var r = new GameBoxReader(stream, Writer.Lookbackable);
-                Writer.Write(r.ReadByte());
+                using (var r = new GameBoxReader(stream, Writer.Lookbackable))
+                    Writer.Write(r.ReadByte());
             }
         }
 
@@ -152,14 +158,16 @@ namespace GBX.NET
         {
             if (Reader != null)
             {
-                using var w = new GameBoxWriter(stream, Reader.Lookbackable);
-                w.Write(Reader.ReadBytes(count));
-                w.Flush();
+                using (var w = new GameBoxWriter(stream, Reader.Lookbackable))
+                {
+                    w.Write(Reader.ReadBytes(count));
+                    w.Flush();
+                }
             }
             else if (Writer != null)
             {
-                using var r = new GameBoxReader(stream, Writer.Lookbackable);
-                Writer.Write(r.ReadBytes(count));
+                using (var r = new GameBoxReader(stream, Writer.Lookbackable))
+                    Writer.Write(r.ReadBytes(count));
             }
         }
 
@@ -174,14 +182,16 @@ namespace GBX.NET
         {
             if (Reader != null)
             {
-                using var w = new GameBoxWriter(stream, Reader.Lookbackable);
-                w.Write(Reader.ReadFileRef());
-                w.Flush();
+                using (var w = new GameBoxWriter(stream, Reader.Lookbackable))
+                {
+                    w.Write(Reader.ReadFileRef());
+                    w.Flush();
+                }
             }
             else if (Writer != null)
             {
-                using var r = new GameBoxReader(stream, Writer.Lookbackable);
-                Writer.Write(r.ReadFileRef());
+                using (var r = new GameBoxReader(stream, Writer.Lookbackable))
+                    Writer.Write(r.ReadFileRef());
             }
         }
 
@@ -196,14 +206,16 @@ namespace GBX.NET
         {
             if (Reader != null)
             {
-                using var w = new GameBoxWriter(stream, Reader.Lookbackable);
-                w.Write(Reader.ReadInt16());
-                w.Flush();
+                using (var w = new GameBoxWriter(stream, Reader.Lookbackable))
+                {
+                    w.Write(Reader.ReadInt16());
+                    w.Flush();
+                }
             }
             else if (Writer != null)
             {
-                using var r = new GameBoxReader(stream, Writer.Lookbackable);
-                Writer.Write(r.ReadInt16());
+                using (var r = new GameBoxReader(stream, Writer.Lookbackable))
+                    Writer.Write(r.ReadInt16());
             }
         }
 
@@ -218,14 +230,16 @@ namespace GBX.NET
         {
             if (Reader != null)
             {
-                using var w = new GameBoxWriter(stream, Reader.Lookbackable);
-                w.Write(Reader.ReadInt32());
-                w.Flush();
+                using (var w = new GameBoxWriter(stream, Reader.Lookbackable))
+                {
+                    w.Write(Reader.ReadInt32());
+                    w.Flush();
+                }
             }
             else if (Writer != null)
             {
-                using var r = new GameBoxReader(stream, Writer.Lookbackable);
-                Writer.Write(r.ReadInt32());
+                using (var r = new GameBoxReader(stream, Writer.Lookbackable))
+                    Writer.Write(r.ReadInt32());
             }
         }
 
@@ -240,14 +254,16 @@ namespace GBX.NET
         {
             if (Reader != null)
             {
-                using var w = new GameBoxWriter(stream, Reader.Lookbackable);
-                w.Write(Reader.ReadInt64());
-                w.Flush();
+                using (var w = new GameBoxWriter(stream, Reader.Lookbackable))
+                {
+                    w.Write(Reader.ReadInt64());
+                    w.Flush();
+                }
             }
             else if (Writer != null)
             {
-                using var r = new GameBoxReader(stream, Writer.Lookbackable);
-                Writer.Write(r.ReadInt64());
+                using (var r = new GameBoxReader(stream, Writer.Lookbackable))
+                    Writer.Write(r.ReadInt64());
             }
         }
 
@@ -269,14 +285,16 @@ namespace GBX.NET
         {
             if (Reader != null)
             {
-                using var w = new GameBoxWriter(stream, Reader.Lookbackable);
-                w.Write(Reader.ReadUInt32());
-                w.Flush();
+                using (var w = new GameBoxWriter(stream, Reader.Lookbackable))
+                {
+                    w.Write(Reader.ReadUInt32());
+                    w.Flush();
+                }
             }
             else if (Writer != null)
             {
-                using var r = new GameBoxReader(stream, Writer.Lookbackable);
-                Writer.Write(r.ReadUInt32());
+                using (var r = new GameBoxReader(stream, Writer.Lookbackable))
+                    Writer.Write(r.ReadUInt32());
             }
         }
 
@@ -319,14 +337,16 @@ namespace GBX.NET
         {
             if (Reader != null)
             {
-                using var w = new GameBoxWriter(stream, Reader.Lookbackable);
-                w.Write((string)Reader.ReadLookbackString(lookbackable));
-                w.Flush();
+                using (var w = new GameBoxWriter(stream, Reader.Lookbackable))
+                {
+                    w.Write((string)Reader.ReadLookbackString(lookbackable));
+                    w.Flush();
+                }
             }
             else if (Writer != null)
             {
-                using var r = new GameBoxReader(stream, Writer.Lookbackable);
-                Writer.Write(new LookbackString(r.ReadString(), lookbackable));
+                using (var r = new GameBoxReader(stream, Writer.Lookbackable))
+                    Writer.Write(new LookbackString(r.ReadString(), lookbackable));
             }
         }
 
@@ -369,14 +389,16 @@ namespace GBX.NET
         {
             if (Reader != null)
             {
-                using var w = new GameBoxWriter(stream, body);
-                w.Write(Reader.ReadNodeRef(), body);
-                w.Flush();
+                using (var w = new GameBoxWriter(stream, body))
+                {
+                    w.Write(Reader.ReadNodeRef(), body);
+                    w.Flush();
+                }
             }
             else if (Writer != null)
             {
-                using var r = new GameBoxReader(stream, body);
-                Writer.Write(r.ReadNodeRef(), body);
+                using (var r = new GameBoxReader(stream, body))
+                    Writer.Write(r.ReadNodeRef(), body);
             }
         }
 
@@ -387,23 +409,18 @@ namespace GBX.NET
             else throw new Exception();
         }
 
-        public T NodeRef<T>(Node variable, bool hasInheritance, GameBoxBody body) where T : Node
+        public T NodeRef<T>(Node variable, GameBoxBody body) where T : Node
         {
-            if (Reader != null) return Reader.ReadNodeRef<T>(hasInheritance, body);
+            if (Reader != null) return Reader.ReadNodeRef<T>(body);
             else if (Writer != null) Writer.Write(variable, body);
             return (T)variable;
         }
 
-        public T NodeRef<T>(Node variable, bool hasInheritance) where T : Node
-        {
-            if (Reader != null) return NodeRef<T>(variable, hasInheritance, (GameBoxBody)Reader.Lookbackable);
-            else if (Writer != null) return NodeRef<T>(variable, hasInheritance, (GameBoxBody)Writer.Lookbackable);
-            else throw new Exception();
-        }
-
         public T NodeRef<T>(Node variable) where T : Node
         {
-            return NodeRef<T>(variable, false);
+            if (Reader != null) return NodeRef<T>(variable, (GameBoxBody)Reader.Lookbackable);
+            else if (Writer != null) return NodeRef<T>(variable, (GameBoxBody)Writer.Lookbackable);
+            else throw new Exception();
         }
 
         public float Single(float variable)
@@ -417,14 +434,16 @@ namespace GBX.NET
         {
             if (Reader != null)
             {
-                using var w = new GameBoxWriter(stream, Reader.Lookbackable);
-                w.Write(Reader.ReadSingle());
-                w.Flush();
+                using (var w = new GameBoxWriter(stream, Reader.Lookbackable))
+                {
+                    w.Write(Reader.ReadSingle());
+                    w.Flush();
+                }
             }
             else if (Writer != null)
             {
-                using var r = new GameBoxReader(stream, Writer.Lookbackable);
-                Writer.Write(r.ReadSingle());
+                using (var r = new GameBoxReader(stream, Writer.Lookbackable))
+                    Writer.Write(r.ReadSingle());
             }
         }
 
@@ -444,25 +463,27 @@ namespace GBX.NET
         {
             if (Reader != null)
             {
-                using var w = new GameBoxWriter(stream, Reader.Lookbackable);
-                w.Write(Reader.ReadString());
-                w.Flush();
+                using (var w = new GameBoxWriter(stream, Reader.Lookbackable))
+                {
+                    w.Write(Reader.ReadString());
+                    w.Flush();
+                }
             }
             else if (Writer != null)
             {
-                using var r = new GameBoxReader(stream, Writer.Lookbackable);
-                Writer.Write(r.ReadString());
+                using (var r = new GameBoxReader(stream, Writer.Lookbackable))
+                    Writer.Write(r.ReadString());
             }
         }
 
-        public Vector2 Vec2(Vector2 variable)
+        public Vec2 Vec2(Vec2 variable)
         {
             if (Reader != null) return Reader.ReadVec2();
             else if (Writer != null) Writer.Write(variable);
             return variable;
         }
 
-        public Vector3 Vec3(Vector3 variable)
+        public Vec3 Vec3(Vec3 variable)
         {
             if (Reader != null) return Reader.ReadVec3();
             else if (Writer != null) Writer.Write(variable);
@@ -473,14 +494,16 @@ namespace GBX.NET
         {
             if (Reader != null)
             {
-                using var w = new GameBoxWriter(stream, Reader.Lookbackable);
-                w.Write(Reader.ReadVec3());
-                w.Flush();
+                using (var w = new GameBoxWriter(stream, Reader.Lookbackable))
+                {
+                    w.Write(Reader.ReadVec3());
+                    w.Flush();
+                }
             }
             else if (Writer != null)
             {
-                using var r = new GameBoxReader(stream, Writer.Lookbackable);
-                Writer.Write(r.ReadVec3());
+                using (var r = new GameBoxReader(stream, Writer.Lookbackable))
+                    Writer.Write(r.ReadVec3());
             }
         }
 

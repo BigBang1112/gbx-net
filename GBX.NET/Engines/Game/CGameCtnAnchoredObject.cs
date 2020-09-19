@@ -13,11 +13,11 @@ namespace GBX.NET.Engines.Game
     {
         public Meta ItemModel { get; set; }
 
-        public Vector3? PitchYawRoll { get; set; }
+        public Vec3? PitchYawRoll { get; set; }
 
         public Byte3 BlockUnitCoord { get; set; }
 
-        public Vector3? AbsolutePositionInMap { get; set; }
+        public Vec3? AbsolutePositionInMap { get; set; }
 
         public CGameWaypointSpecialProperty WaypointSpecialProperty { get; set; }
 
@@ -25,27 +25,12 @@ namespace GBX.NET.Engines.Game
 
         public float Scale { get; set; } = 1;
 
-        public Vector3 PivotPosition { get; set; }
+        public Vec3 PivotPosition { get; set; }
 
         public int Variant
         {
             get => (Flags >> 8) & 15;
             set => Flags = (short)((Flags & 0xF0FF) | ((value & 15) << 8));
-        }
-
-        public CGameCtnAnchoredObject(ILookbackable lookbackable) : base(lookbackable)
-        {
-            
-        }
-
-        public CGameCtnAnchoredObject(ILookbackable lookbackable, uint classId) : base(lookbackable, classId)
-        {
-
-        }
-
-        public CGameCtnAnchoredObject(Chunk chunk) : base(chunk)
-        {
-
         }
 
         public override string ToString()
@@ -66,8 +51,8 @@ namespace GBX.NET.Engines.Game
             public int Version { get; set; } = 7;
             public int Unknown1 { get; set; } = -1;
 
-            public Vector3 Unknown3 { get; set; }
-            public Vector3 Unknown4 { get; set; }
+            public Vec3 Unknown3 { get; set; }
+            public Vec3 Unknown4 { get; set; }
 
             public override void Read(CGameCtnAnchoredObject n, GameBoxReader r, GameBoxWriter unknownW)
             {
@@ -79,7 +64,7 @@ namespace GBX.NET.Engines.Game
                 n.AbsolutePositionInMap = r.ReadVec3();
                 var specialWaypoint = r.ReadInt32();
                 if(specialWaypoint != -1)
-                    n.WaypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(Node.Body, r, true);
+                    n.WaypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(Node.Body, r);
                 n.Flags = r.ReadInt16();
                 n.PivotPosition = r.ReadVec3();
                 n.Scale = r.ReadSingle();

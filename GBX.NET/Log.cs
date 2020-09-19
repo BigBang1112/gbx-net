@@ -21,7 +21,9 @@ namespace GBX.NET
 
         public static bool Start(string fileName)
         {
-            return AlternativeLogs.TryAdd(fileName, new StringWriter());
+            if (AlternativeLogs.ContainsKey(fileName)) return false;
+            AlternativeLogs[fileName] = new StringWriter();
+            return true;
         }
 
         public static void End(string fileName)

@@ -1,18 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <Description>A completely open source GBX file interaction library for .NET.</Description>
     <Authors>BigBang1112</Authors>
     <Company>BigBang1112</Company>
     <PackageLicenseExpression></PackageLicenseExpression>
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Copyright />
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk, x86</PackageTags>
     <RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
+    <PackageReleaseNotes>Makes library compatible with .NET Standard 2.0, hugely improves reading speed.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

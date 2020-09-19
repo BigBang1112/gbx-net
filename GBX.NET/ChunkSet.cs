@@ -7,17 +7,17 @@ using System.Runtime.Serialization;
 
 namespace GBX.NET
 {
-    public class ChunkList : SortedSet<Chunk>
+    public class ChunkSet : SortedSet<Chunk>
     {
         [IgnoreDataMember]
         public Node Node { get; set; }
 
-        public ChunkList() : base()
+        public ChunkSet() : base()
         {
 
         }
 
-        public ChunkList(IEnumerable<Chunk> collection) : base(collection)
+        public ChunkSet(IEnumerable<Chunk> collection) : base(collection)
         {
 
         }
