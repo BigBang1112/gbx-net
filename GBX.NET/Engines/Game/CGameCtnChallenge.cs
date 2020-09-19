@@ -1312,7 +1312,7 @@ namespace GBX.NET.Engines.Game
                 {
                     using (var ms = new MemoryStream())
                     {
-                        if (rw.Mode == GameBoxReaderWriterMode.Write)
+                        if (rw.Mode == GameBoxReaderWriterMode.Write && Thumbnail != null)
                         {
                             Thumbnail.Result.RotateFlip(RotateFlipType.Rotate180FlipX);
                             ExportThumbnail(ms, ImageFormat.Jpeg);
