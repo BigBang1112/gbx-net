@@ -5,10 +5,10 @@
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/BigBang1112/gbx-net?style=for-the-badge)](#)
 [![GitHub](https://img.shields.io/github/license/BigBang1112/gbx-net?style=for-the-badge)](https://github.com/BigBang1112/gbx-net/blob/master/LICENSE)
 
-GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software framework. This file type can be in many of the Nadeo games - TrackMania, ShootMania, Virtual Skipper...
+GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software framework. This file type can be seen in many of the Nadeo games like TrackMania, ShootMania or Virtual Skipper.
 
-- Can recognize **entire GBX files**, however **can't read all possible files**. GBX file is basically a serialized class from the GameBox engine, and all of these classes must be known to read. This is where you can help contributing to the project, by exploring new chunks. How to do it will be documented soon.
-- Can write GBX files which can be read by the parser, however this does not apply to all readable GBXs.
+- GBX.NET can recognize **entire GBX files**, however **can't read all of the possible files**. GBX file is basically a serialized class from the GameBox engine, and all of these classes must be known to read. This is where you can help contributing to the project, by exploring new chunks. How to do it will be documented soon.
+- GBX.NET can write GBX files which can be read by the parser, however this may not apply to all readable GBXs.
 - All versions of GBX are supported: ranging from TM1.0 to TM®.
 - Reading PAK file isn't currently supported.
 
@@ -35,7 +35,8 @@ The library is also set to x86 assembly due to LZO compression problems in x64. 
 To parse a GBX with a known type:
 
 ```cs
-var gbx = GameBox.Parse<CGameCtnChallenge>("MyMap.Map.Gbx"); // Node data is available in gbx.MainNode
+var gbx = GameBox.Parse<CGameCtnChallenge>("MyMap.Map.Gbx");
+// Node data is available in gbx.MainNode
 ```
 
 To parse a GBX with an unknown type:
