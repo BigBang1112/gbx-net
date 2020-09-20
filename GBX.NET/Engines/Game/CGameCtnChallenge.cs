@@ -232,9 +232,9 @@ namespace GBX.NET.Engines.Game
 
         public Meta Decoration { get; set; }
 
-        public string Collection
+        public Collection Collection
         {
-            get => Decoration?.Collection ?? MapInfo?.Collection;
+            get => (Decoration?.Collection ?? MapInfo?.Collection).GetValueOrDefault();
             set
             {
                 if (Decoration != null)

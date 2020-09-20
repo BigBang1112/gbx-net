@@ -3,7 +3,7 @@
     public class Meta
     {
         public string ID { get; set; }
-        public string Collection { get; set; }
+        public Collection Collection { get; set; }
         public string Author { get; set; }
 
         public Meta()
@@ -16,7 +16,7 @@
             ID = id;
         }
 
-        public Meta(string id, string collection, string author)
+        public Meta(string id, Collection collection, string author)
         {
             ID = id;
             Collection = collection;
