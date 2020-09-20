@@ -11,6 +11,13 @@ namespace GBX.NET.Engines.Game
     [Node(0x0305B000)]
     public class CGameCtnChallengeParameters : Node
     {
+        #region Fields
+
+        private string mapType;
+        private string mapStyle;
+
+        #endregion
+
         #region Properties
 
         /// <summary>
@@ -43,9 +50,25 @@ namespace GBX.NET.Engines.Game
         /// </summary>
         public TimeSpan? TimeLimit { get; set; }
 
-        public string MapType { get; set; }
+        public string MapType
+        {
+            get
+            {
+                DiscoverChunk<Chunk0305B00E>();
+                return mapType;
+            }
+            set => mapType = value;
+        }
 
-        public string MapStyle { get; set; }
+        public string MapStyle
+        {
+            get
+            {
+                DiscoverChunk<Chunk0305B00E>();
+                return mapStyle;
+            }
+            set => mapStyle = value;
+        }
 
         public string[] Tips { get; } = new string[4];
 
@@ -294,8 +317,8 @@ namespace GBX.NET.Engines.Game
 
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
             {
-                n.MapType = rw.String(n.MapType);
-                n.MapStyle = rw.String(n.MapStyle);
+                n.mapType = rw.String(n.mapType);
+                n.mapStyle = rw.String(n.mapStyle);
                 Unknown1 = rw.Int32(Unknown1);
             }
         }
