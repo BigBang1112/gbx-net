@@ -2,6 +2,7 @@
 using GBX.NET.Engines.Hms;
 using GBX.NET.Engines.Script;
 using ICSharpCode.SharpZipLib.Checksum;
+using ICSharpCode.SharpZipLib.Zip;
 using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
 using System;
 using System.Collections.Generic;
@@ -173,6 +174,8 @@ namespace GBX.NET.Engines.Game
         private string objectiveTextSilver;
         private string objectiveTextBronze;
         private string buildVersion;
+        private MemoryStream embedStream;
+        private ZipFile embedZip;
 
         #endregion
 
@@ -535,6 +538,17 @@ namespace GBX.NET.Engines.Game
             set => objectiveTextBronze = value;
         }
 
+        public Dictionary<string, GameBox> Embeds => null;
+
+        public ZipFile EmbedZip
+        {
+            get
+            {
+                DiscoverChunk<Chunk03043054>();
+                return embedZip;
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -754,6 +768,12 @@ namespace GBX.NET.Engines.Game
                     trigger.Coords = trigger.Coords.Select(x => x + offset).ToArray();
                 }
             }
+        }
+
+        public void ExportEmbedZip(string fileName)
+        {
+            DiscoverChunk<Chunk03043054>();
+            File.WriteAllBytes(fileName, embedStream.ToArray());
         }
 
         #endregion
@@ -2260,15 +2280,12 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x048 skippable chunk
+        #region 0x048 skippable chunk (baked blocks)
 
-        [Chunk(0x03043048)]
+        [Chunk(0x03043048, "baked blocks")]
         public class Chunk03043048 : SkippableChunk<CGameCtnChallenge>
         {
-            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
-            {
-                
-            }
+            
         }
 
         #endregion
@@ -2345,6 +2362,53 @@ namespace GBX.NET.Engines.Game
 
                 n.TitleID = rw.LookbackString(n.TitleID);
                 n.BuildVersion = rw.String(n.BuildVersion);
+            }
+        }
+
+        #endregion
+
+        #region 0x054 skippable chunk (embeds)
+
+        /// <summary>
+        /// CGameCtnChallenge 0x054 skippable chunk (embeds)
+        /// </summary>
+        [Chunk(0x03043054, "embeds")]
+        public class Chunk03043054 : SkippableChunk<CGameCtnChallenge>, ILookbackable
+        {
+            int? ILookbackable.LookbackVersion { get; set; }
+            List<string> ILookbackable.LookbackStrings { get; set; } = new List<string>();
+            bool ILookbackable.LookbackWritten { get; set; }
+
+            public int Version { get; set; }
+            public Meta[] Embeds { get; set; }
+            public string[] Textures { get; set; }
+
+            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
+            {
+                Version = r.ReadInt32();
+                unknownW.Write(r.ReadInt32());
+                var size = r.ReadInt32();
+                Embeds = r.ReadArray(i => r.ReadMeta());
+                n.embedStream = new MemoryStream(r.ReadBytes());
+                n.embedZip = new ZipFile(n.embedStream);
+
+                Textures = r.ReadArray(i => r.ReadString());
+            }
+
+            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
+            {
+                w.Write(Version);
+                w.Write(unknownR.ReadInt32());
+
+                using(var ms = new MemoryStream())
+                {
+                    w.Write(Embeds, x => w.Write(x));
+                    w.Write(n.embedStream.ToArray());
+                    w.Write(Textures, x => w.Write(x));
+
+                    w.Write((int)ms.Length);
+                    w.Write(ms.ToArray());
+                }
             }
         }
 
