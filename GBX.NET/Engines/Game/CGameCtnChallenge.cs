@@ -1929,9 +1929,6 @@ namespace GBX.NET.Engines.Game
         public class Chunk03043027 : Chunk<CGameCtnChallenge>
         {
             public bool ArchiveGmCamVal { get; set; }
-            public Vec3? Vec1 { get; set; }
-            public Vec3? Vec2 { get; set; }
-            public Vec3? Vec3 { get; set; }
 
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
@@ -1945,8 +1942,8 @@ namespace GBX.NET.Engines.Game
                     rw.Vec3(Unknown);
                     rw.Vec3(Unknown);
 
-                    rw.Vec3(Unknown);
-                    rw.Single(Unknown);
+                    n.ThumbnailPosition = rw.Vec3(n.ThumbnailPosition.GetValueOrDefault());
+                    n.ThumbnailFOV = rw.Single(n.ThumbnailFOV.GetValueOrDefault());
                     rw.Single(Unknown);
                     rw.Single(Unknown);
                 }
