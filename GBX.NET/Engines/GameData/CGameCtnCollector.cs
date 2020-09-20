@@ -16,7 +16,7 @@ namespace GBX.NET.Engines.GameData
         public string SkinFile { get; set; }
         public string PageName { get; set; }
         public Node IconFid { get; set; }
-        public Meta Decoration { get; set; }
+        public Meta Meta { get; set; }
         public string CollectorName { get; set; }
         public string Description { get; set; }
         public bool IconUseAutoRender { get; set; }
@@ -98,16 +98,47 @@ namespace GBX.NET.Engines.GameData
 
         #endregion
 
-        #region 0x006 chunk
+        #region 0x006 header chunk
 
         [Chunk(0x2E001006)]
-        public class Chunk2E001006 : HeaderChunk<CGameCtnCollector>
+        public class Chunk2E001006H : HeaderChunk<CGameCtnCollector>
         {
             public long FileTime { get; set; }
 
             public override void ReadWrite(GameBoxReaderWriter rw)
             {
                 FileTime = rw.Int64(FileTime);
+            }
+        }
+
+        #endregion
+
+        #region 0x006 body chunk
+
+        [Chunk(0x2E001006)]
+        public class Chunk2E001006B : Chunk<CGameCtnCollector>
+        {
+            public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
+            }
+        }
+
+        #endregion
+
+        #region 0x007 chunk
+
+        [Chunk(0x2E001007)]
+        public class Chunk2E001007 : Chunk<CGameCtnCollector>
+        {
+            public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
             }
         }
 
@@ -146,6 +177,19 @@ namespace GBX.NET.Engines.GameData
 
         #endregion
 
+        #region 0x00A chunk
+
+        [Chunk(0x2E00100A)]
+        public class Chunk2E00100A : Chunk<CGameCtnCollector>
+        {
+            public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
+            {
+                rw.NodeRef(Unknown);
+            }
+        }
+
+        #endregion
+
         #region 0x00B chunk
 
         [Chunk(0x2E00100B)]
@@ -153,7 +197,7 @@ namespace GBX.NET.Engines.GameData
         {
             public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
             {
-                n.Decoration = rw.Meta(n.Decoration);
+                n.Meta = rw.Meta(n.Meta);
             }
         }
 
