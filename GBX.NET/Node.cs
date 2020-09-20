@@ -71,6 +71,7 @@ namespace GBX.NET
         public static Dictionary<uint, Type> AvailableClasses { get; } = new Dictionary<uint, Type>();
         public static Dictionary<Type, List<uint>> AvailableInheritanceClasses { get; } = new Dictionary<Type, List<uint>>();
         public static Dictionary<Type, Dictionary<uint, Type>> AvailableChunkClasses { get; } = new Dictionary<Type, Dictionary<uint, Type>>();
+        public static Dictionary<Type, Dictionary<uint, Type>> AvailableHeaderChunkClasses { get; } = new Dictionary<Type, Dictionary<uint, Type>>();
 
         public Node()
         {
@@ -460,6 +461,9 @@ namespace GBX.NET
 
                 var chunkType = typeof(Chunk<>).MakeGenericType(nodeType);
                 var skippableChunkType = typeof(SkippableChunk<>).MakeGenericType(nodeType);
+                var headerChunkType = typeof(HeaderChunk<>).MakeGenericType(nodeType);
+
+                var availableHeaderChunkClasses = new Dictionary<uint, Type>();
 
                 if (!AvailableChunkClasses.TryGetValue(nodeType, out Dictionary<uint, Type> availableChunkClasses))
                 {
@@ -467,15 +471,24 @@ namespace GBX.NET
                     {
                         var isChunk = x.IsClass
                         && x.Namespace.StartsWith("GBX.NET.Engines")
-                        && (x.BaseType == chunkType || x.BaseType == skippableChunkType);
+                        && (x.BaseType == chunkType || x.BaseType == skippableChunkType || x.BaseType == headerChunkType);
                         if (!isChunk) return false;
 
                         var chunkAttribute = x.GetCustomAttribute<ChunkAttribute>();
                         if (chunkAttribute == null) throw new Exception($"Chunk {x.FullName} doesn't have a ChunkAttribute.");
 
-                        var attributesMet = chunkAttribute.ClassID == nodeID;
-                        return isChunk && attributesMet;
-                    }).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ChunkID);
+                        if (chunkAttribute.ClassID == nodeID)
+                        {
+                            if (x.BaseType == headerChunkType)
+                            {
+                                availableHeaderChunkClasses.Add(chunkAttribute.ID, x);
+                                return false;
+                            }
+
+                            return true;
+                        }
+                        return false;
+                    }).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ID);
 
                     foreach (var cls in inheritanceClasses)
                     {
@@ -485,15 +498,20 @@ namespace GBX.NET
 
                         var inheritChunkType = typeof(Chunk<>).MakeGenericType(availableInheritanceClass);
                         var inheritSkippableChunkType = typeof(SkippableChunk<>).MakeGenericType(availableInheritanceClass);
+                        var inheritHeaderChunkType = typeof(HeaderChunk<>).MakeGenericType(availableInheritanceClass);
 
                         foreach (var chunkT in availableInheritanceClass.GetNestedTypes().Where(x => x.IsClass
-                            && x.Namespace.StartsWith("GBX.NET.Engines") && (x.BaseType == inheritChunkType || x.BaseType == inheritSkippableChunkType)
-                            && (x.GetCustomAttribute<ChunkAttribute>().ClassID == cls)).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ChunkID))
+                            && x.Namespace.StartsWith("GBX.NET.Engines") && (x.BaseType == inheritChunkType || x.BaseType == inheritSkippableChunkType || x.BaseType == inheritHeaderChunkType)
+                            && (x.GetCustomAttribute<ChunkAttribute>().ClassID == cls)).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ID + (x.BaseType == inheritHeaderChunkType ? "H" : "B")))
                         {
-                            availableChunkClasses[chunkT.Key + cls] = chunkT.Value;
+                            if(chunkT.Key.EndsWith("H"))
+                                availableHeaderChunkClasses[uint.Parse(chunkT.Key.Remove(chunkT.Key.Length - 1))] = chunkT.Value;
+                            else
+                                availableChunkClasses[uint.Parse(chunkT.Key.Remove(chunkT.Key.Length - 1))] = chunkT.Value;
                         }
                     }
                     AvailableChunkClasses.Add(nodeType, availableChunkClasses);
+                    AvailableHeaderChunkClasses.Add(nodeType, availableHeaderChunkClasses);
                 }
             }
 
