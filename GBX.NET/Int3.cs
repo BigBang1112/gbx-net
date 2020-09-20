@@ -28,14 +28,17 @@ namespace GBX.NET
         public static Int3 operator +(Int3 a, Int3 b) => new Int3(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
         public static Int3 operator +(Int3 a, Int2 b) => new Int3(a.X + b.X, a.Y + b.Y, a.Z);
         public static Int3 operator +(Int3 a, int b) => new Int3(a.X + b, a.Y + b, a.Z + b);
+        public static Vec3 operator +(Int3 a, float b) => new Vec3(a.X + b, a.Y + b, a.Z + b);
 
         public static Int3 operator -(Int3 a, Int3 b) => new Int3(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
         public static Int3 operator -(Int3 a, Int2 b) => new Int3(a.X - b.X, a.Y - b.Y, a.Z);
         public static Int3 operator -(Int3 a, int b) => new Int3(a.X - b, a.Y - b, a.Z - b);
+        public static Vec3 operator -(Int3 a, float b) => new Vec3(a.X - b, a.Y - b, a.Z - b);
 
         public static Int3 operator *(Int3 a, Int3 b) => new Int3(a.X * b.X, a.Y * b.Y, a.Z * b.Z);
         public static Int3 operator *(Int3 a, Int2 b) => new Int3(a.X * b.X, a.Y * b.Y, a.Z);
         public static Int3 operator *(Int3 a, int b) => new Int3(a.X * b, a.Y * b, a.Z * b);
+        public static Vec3 operator *(Int3 a, float b) => new Vec3(a.X * b, a.Y * b, a.Z * b);
 
         public static Int3 operator ^(Int3 a, Int3 b) => new Int3(a.X ^ b.X, a.Y ^ b.Y, a.Z ^ b.Z);
         public static Int3 operator ^(Int3 a, Int2 b) => new Int3(a.X ^ b.X, a.Y ^ b.Y, a.Z);
