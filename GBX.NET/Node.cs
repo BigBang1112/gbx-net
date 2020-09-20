@@ -156,8 +156,10 @@ namespace GBX.NET
 
                 Type chunkClass = null;
 
-                var reflected = ((Chunk.Remap(chunkID) & 0xFFFFF000) == node.ID || AvailableInheritanceClasses[type].Contains(Chunk.Remap(chunkID) & 0xFFFFF000))
-                    && (AvailableChunkClasses[type].TryGetValue(chunkID, out chunkClass) || AvailableChunkClasses[type].TryGetValue(chunkID & 0xFFF, out chunkClass));
+                var chunkRemapped = Chunk.Remap(chunkID);
+
+                var reflected = ((chunkRemapped & 0xFFFFF000) == node.ID || AvailableInheritanceClasses[type].Contains(chunkRemapped & 0xFFFFF000))
+                    && (AvailableChunkClasses[type].TryGetValue(chunkRemapped, out chunkClass) || AvailableChunkClasses[type].TryGetValue(chunkID & 0xFFF, out chunkClass));
 
                 var skippable = reflected && chunkClass.BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>);
 
