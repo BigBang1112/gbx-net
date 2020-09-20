@@ -11,7 +11,6 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Numerics;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
@@ -166,7 +165,7 @@ namespace GBX.NET.Engines.Game
         private Vec3? thumbnailPitchYawRoll;
         private float? thumbnailFOV;
         private List<CGameCtnAnchoredObject> items;
-        private CScriptTraitsMetadata metadataTraits;
+        private CScriptTraitsMetadata scriptMetadata;
         private Task<CHmsLightMapCache> lightmapCache;
         private Task<CGameCtnZoneGenealogy[]> genealogies;
         private string objectiveTextAuthor;
@@ -175,6 +174,7 @@ namespace GBX.NET.Engines.Game
         private string objectiveTextBronze;
         private string buildVersion;
         private MemoryStream embedStream;
+        private IReadOnlyCollection<Meta> embeds;
         private ZipFile embedZip;
 
         #endregion
@@ -332,7 +332,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// List of puzzle pieces.
         /// </summary>
-        public CGameCtnCollectorList CollectorList { get; set; }
+        public CGameCtnCollectorList BlockStock { get; set; }
 
         /// <summary>
         /// All checkpoints and their map coordinates. Used by older Trackmania.
@@ -468,7 +468,7 @@ namespace GBX.NET.Engines.Game
             set => lightmapCache = value;
         }
 
-        public List<CGameCtnAnchoredObject> Items
+        public List<CGameCtnAnchoredObject> AnchoredObjects
         {
             get
             {
@@ -488,14 +488,14 @@ namespace GBX.NET.Engines.Game
             set => genealogies = value;
         }
 
-        public CScriptTraitsMetadata MetadataTraits
+        public CScriptTraitsMetadata ScriptMetadata
         {
             get
             {
                 DiscoverChunk<Chunk03043044>();
-                return metadataTraits;
+                return scriptMetadata;
             }
-            set => metadataTraits = value;
+            set => scriptMetadata = value;
         }
 
         public string ObjectiveTextAuthor
@@ -538,7 +538,14 @@ namespace GBX.NET.Engines.Game
             set => objectiveTextBronze = value;
         }
 
-        public Dictionary<string, GameBox> Embeds => null;
+        public IReadOnlyCollection<Meta> Embeds
+        {
+            get
+            {
+                DiscoverChunk<Chunk03043054>();
+                return embeds;
+            }
+        }
 
         public ZipFile EmbedZip
         {
@@ -591,7 +598,7 @@ namespace GBX.NET.Engines.Game
             it.Chunks = new ChunkSet();
             it.CreateChunk<CGameCtnAnchoredObject.Chunk03101002>();
             it.CreateChunk<CGameCtnAnchoredObject.Chunk03101004>();
-            Items.Add(it);
+            AnchoredObjects.Add(it);
         }
 
         public FreeBlock PlaceFreeBlock(string name, Vec3 position, Vec3 pitchYawRoll)
@@ -1543,7 +1550,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                n.CollectorList = rw.NodeRef<CGameCtnCollectorList>(n.CollectorList);
+                n.BlockStock = rw.NodeRef<CGameCtnCollectorList>(n.BlockStock);
                 n.ChallengeParameters = rw.NodeRef<CGameCtnChallengeParameters>(n.ChallengeParameters);
                 n.Kind = (TrackKind)rw.Int32((int)(n.Kind ?? TrackKind.InProgress));
             }
@@ -2127,7 +2134,7 @@ namespace GBX.NET.Engines.Game
                     var size = r.ReadInt32();
                     Unknown2 = r.ReadInt32(); // 10
 
-                    n.Items = ParseArray<CGameCtnAnchoredObject>(r).ToList();
+                    n.AnchoredObjects = ParseArray<CGameCtnAnchoredObject>(r).ToList();
                     Unknown3 = r.ReadInt32(); // 0
                 }
             }
@@ -2252,7 +2259,7 @@ namespace GBX.NET.Engines.Game
 
             public override void OnLoad()
             {
-                Node.MetadataTraits = new CScriptTraitsMetadata();
+                Node.ScriptMetadata = new CScriptTraitsMetadata();
             }
 
             public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
@@ -2260,7 +2267,7 @@ namespace GBX.NET.Engines.Game
                 Version = r.ReadInt32();
                 var size = r.ReadInt32();
 
-                n.MetadataTraits.Read(r);
+                n.ScriptMetadata.Read(r);
             }
 
             public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
@@ -2270,7 +2277,7 @@ namespace GBX.NET.Engines.Game
                 using (var ms = new MemoryStream())
                 {
                     using (var wm = new GameBoxWriter(ms))
-                        n.MetadataTraits.Write(wm);
+                        n.ScriptMetadata.Write(wm);
 
                     w.Write((int)ms.Length);
                     w.Write(ms.ToArray(), 0, (int)ms.Length);
@@ -2380,7 +2387,6 @@ namespace GBX.NET.Engines.Game
             bool ILookbackable.LookbackWritten { get; set; }
 
             public int Version { get; set; }
-            public Meta[] Embeds { get; set; }
             public string[] Textures { get; set; }
 
             public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
@@ -2388,7 +2394,7 @@ namespace GBX.NET.Engines.Game
                 Version = r.ReadInt32();
                 unknownW.Write(r.ReadInt32());
                 var size = r.ReadInt32();
-                Embeds = r.ReadArray(i => r.ReadMeta());
+                n.embeds = r.ReadArray(i => r.ReadMeta());
                 n.embedStream = new MemoryStream(r.ReadBytes());
                 n.embedZip = new ZipFile(n.embedStream);
 
@@ -2402,7 +2408,7 @@ namespace GBX.NET.Engines.Game
 
                 using(var ms = new MemoryStream())
                 {
-                    w.Write(Embeds, x => w.Write(x));
+                    w.Write(n.embeds.ToArray(), x => w.Write(x));
                     w.Write(n.embedStream.ToArray());
                     w.Write(Textures, x => w.Write(x));
 

@@ -446,7 +446,7 @@ namespace IslandConverter
             gbx.CreateBodyChunk<CGameCtnChallenge.Chunk03043044>();
             map = gbx.MainNode; // Due to current solution this must be presented
 
-            map.MetadataTraits.Declare("MapVehicle", carTranslations[beforeCar]);
+            map.ScriptMetadata.Declare("MapVehicle", carTranslations[beforeCar]);
 
             if (gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043002>().Type == CGameCtnChallenge.TrackType.Stunts)
             {
@@ -466,20 +466,20 @@ namespace IslandConverter
                 var mapStyle = $"{authorScore}|{goldScore}|{silverScore}|{bronzeScore}";
                 challParams.MapStyle = mapStyle;
 
-                map.MetadataTraits.Declare("MapTimeLimit", timeLimit);
-                map.MetadataTraits.Declare("ObjectiveAuthor", authorScore);
-                map.MetadataTraits.Declare("ObjectiveGold", goldScore);
-                map.MetadataTraits.Declare("ObjectiveSilver", silverScore);
-                map.MetadataTraits.Declare("ObjectiveBronze", bronzeScore);
+                map.ScriptMetadata.Declare("MapTimeLimit", timeLimit);
+                map.ScriptMetadata.Declare("ObjectiveAuthor", authorScore);
+                map.ScriptMetadata.Declare("ObjectiveGold", goldScore);
+                map.ScriptMetadata.Declare("ObjectiveSilver", silverScore);
+                map.ScriptMetadata.Declare("ObjectiveBronze", bronzeScore);
 
-                map.MetadataTraits.Declare("GameMode", "Stunts");
+                map.ScriptMetadata.Declare("GameMode", "Stunts");
             }
             else
-                map.MetadataTraits.Declare("GameMode", "Race");
+                map.ScriptMetadata.Declare("GameMode", "Race");
 
-            map.MetadataTraits.Declare("MadeByConverter", true);
-            map.MetadataTraits.Declare("RequiresOpenPlanet", size == MapSize.X45WithSmallBorder);
-            map.MetadataTraits.Declare("OriginalAuthorLogin", map.AuthorLogin);
+            map.ScriptMetadata.Declare("MadeByConverter", true);
+            map.ScriptMetadata.Declare("RequiresOpenPlanet", size == MapSize.X45WithSmallBorder);
+            map.ScriptMetadata.Declare("OriginalAuthorLogin", map.AuthorLogin);
 
             switch (size)
             {
