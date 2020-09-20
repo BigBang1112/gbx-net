@@ -98,7 +98,7 @@ namespace GBX.NET
             else if (index >> 30 == 0)
             {
                 if (LookbackString.CollectionIDs.TryGetValue((int)index, out string val))
-                    return new LookbackString(val, lookbackable);
+                    return new LookbackString(index.ToString(), lookbackable);
                 else
                     return new LookbackString("???", lookbackable);
             }
