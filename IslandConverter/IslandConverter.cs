@@ -58,7 +58,7 @@ namespace IslandConverter
             return gbx;
         }
 
-        internal static Int3 DefineMapRange(Block[] blocks, out Int3? minCoord)
+        internal static Int3 DefineMapRange(CGameCtnBlock[] blocks, out Int3? minCoord)
         {
             minCoord = default;
             Int3? maxCoord = default;
@@ -94,11 +94,11 @@ namespace IslandConverter
             return mapRange;
         }
 
-        internal static List<Block> CreateWaterBlocks(Int3 mapSize, List<Block> islandBlocks, byte yOffset)
+        internal static List<CGameCtnBlock> CreateWaterBlocks(Int3 mapSize, List<CGameCtnBlock> islandBlocks, byte yOffset)
         {
             var islandBlockDictionary = islandBlocks.Where(x => x.Name == "IslandGrass" || x.Name == "IslandHills6").ToDictionary(x => new Int3(x.Coord.X, 0, x.Coord.Z));
 
-            var blocks = new List<Block>();
+            var blocks = new List<CGameCtnBlock>();
 
             for (byte x = 1; x <= mapSize.X; x++)
             {
@@ -148,18 +148,18 @@ namespace IslandConverter
                             flag = 135173;
                         }
 
-                        blocks.Add(new Block("StadiumPool2", dir, (x, yOffset, z), flag, null, null, null));
+                        blocks.Add(new CGameCtnBlock("StadiumPool2", dir, (x, yOffset, z), flag, null, null, null));
                     }
-                    else if (islandBlockDictionary.TryGetValue(new Int3(Convert.ToInt32(Math.Floor(x / 2f) - 1), 0, Convert.ToInt32(Math.Floor(z / 2f) - 1)), out Block bl))
+                    else if (islandBlockDictionary.TryGetValue(new Int3(Convert.ToInt32(Math.Floor(x / 2f) - 1), 0, Convert.ToInt32(Math.Floor(z / 2f) - 1)), out CGameCtnBlock bl))
                     {
-                        blocks.Add(new Block("RemoveGrass.Block.Gbx_CustomBlock", Direction.North, (x, yOffset, z), 135168, null, null, null));
+                        blocks.Add(new CGameCtnBlock("RemoveGrass.Block.Gbx_CustomBlock", Direction.North, (x, yOffset, z), 135168, null, null, null));
                     }
                     else
                     {
-                        blocks.Add(new Block("StadiumWater2", Direction.North, (x, yOffset, z), 135168, null, null, null));
+                        blocks.Add(new CGameCtnBlock("StadiumWater2", Direction.North, (x, yOffset, z), 135168, null, null, null));
                     }
 
-                    blocks.Add(new Block("Unassigned1", Direction.East, (0, 0, 0), -1, null, null, null));
+                    blocks.Add(new CGameCtnBlock("Unassigned1", Direction.East, (0, 0, 0), -1, null, null, null));
                 }
             }
 
@@ -298,7 +298,7 @@ namespace IslandConverter
 
             Log.Write("All additional terrain blocks removed!");
 
-            bool RemoveGroundBlocks(Block block, Block block2, BlockConversion variantGround, int[] unit)
+            bool RemoveGroundBlocks(CGameCtnBlock block, CGameCtnBlock block2, BlockConversion variantGround, int[] unit)
             {
                 if (unit.Length < 3)
                     throw new FormatException();
@@ -497,7 +497,7 @@ namespace IslandConverter
             }
 
             var placed = 0;
-            var faultyBlocks = new List<Block>();
+            var faultyBlocks = new List<CGameCtnBlock>();
 
             Log.Write("Starting the conversion!");
 

@@ -13,7 +13,7 @@ namespace GBX.NET.Engines.Game
     [Node(0x0310D000)]
     public class CGameCtnMacroBlockInfo : CGameCtnCollector
     {
-        public Block[] Blocks { get; set; }
+        public CGameCtnBlock[] Blocks { get; set; }
 
         public Item[] Items { get; set; }
 
@@ -72,7 +72,7 @@ namespace GBX.NET.Engines.Game
                     if (ver >= 4)
                         r.ReadNodeRef();
 
-                    var block = new Block() { Meta = meta, Coord = coord.GetValueOrDefault(), Direction = dir.GetValueOrDefault(), Flags = flags };
+                    var block = new CGameCtnBlock() { BlockInfo = meta, Coord = coord.GetValueOrDefault(), Direction = dir.GetValueOrDefault(), Flags = flags };
 
                     if (position.HasValue && pitchYawRoll.HasValue)
                     {

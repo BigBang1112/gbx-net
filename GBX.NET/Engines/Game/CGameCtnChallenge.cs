@@ -375,12 +375,10 @@ namespace GBX.NET.Engines.Game
 
         public bool? NeedUnlock { get; set; }
 
-        public CGameCtnBlock[] OldBlocks { get; set; }
-
         /// <summary>
         /// Array of all blocks on the map.
         /// </summary>
-        public List<Block> Blocks { get; set; }
+        public List<CGameCtnBlock> Blocks { get; set; }
 
         public int NbBlocks
         {
@@ -603,7 +601,7 @@ namespace GBX.NET.Engines.Game
 
         public FreeBlock PlaceFreeBlock(string name, Vec3 position, Vec3 pitchYawRoll)
         {
-            var block = new Block(name, Direction.North, (0, 0, 0), 0x20000000, null, null, null);
+            var block = new CGameCtnBlock(name, Direction.North, (0, 0, 0), 0x20000000, null, null, null);
             var freeBlock = new FreeBlock(block)
             {
                 Position = position,
@@ -1530,9 +1528,9 @@ namespace GBX.NET.Engines.Game
                 n.MapInfo = rw.Meta(n.MapInfo);
                 n.Size = rw.Int3(n.Size.GetValueOrDefault());
                 Unknown1 = rw.Int32(Unknown1);
-                n.OldBlocks = rw.Array(n.OldBlocks,
+                n.Blocks = rw.Array(n.Blocks.ToArray(),
                     i => rw.Reader.ReadNodeRef<CGameCtnBlock>(),
-                    x => rw.Writer.Write(x));
+                    x => rw.Writer.Write(x)).ToList();
                 Unknown2 = rw.Int32(Unknown2);
                 Unknown3 = rw.Meta(Unknown3);
             }
@@ -1732,7 +1730,7 @@ namespace GBX.NET.Engines.Game
 
                 var nbBlocks = r.ReadInt32(); // It's maybe slower but better for the program to determine the count from the list
 
-                List<Block> blocks = new List<Block>();
+                List<CGameCtnBlock> blocks = new List<CGameCtnBlock>();
 
                 while ((r.PeekUInt32() & 0xC0000000) > 0)
                 {
@@ -1748,7 +1746,7 @@ namespace GBX.NET.Engines.Game
 
                     if (flags == -1)
                     {
-                        blocks.Add(new Block(blockName, dir, (Int3)coord, flags, null, null, null));
+                        blocks.Add(new CGameCtnBlock(blockName, dir, (Int3)coord, flags, null, null, null));
                         continue;
                     }
 
@@ -1776,7 +1774,7 @@ namespace GBX.NET.Engines.Game
 
                     }
 
-                    blocks.Add(new Block(blockName, dir, (Int3)coord, flags, author, skin, parameters));
+                    blocks.Add(new CGameCtnBlock(blockName, dir, (Int3)coord, flags, author, skin, parameters));
                 }
 
                 n.Blocks = blocks;
