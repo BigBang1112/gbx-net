@@ -130,14 +130,15 @@ namespace GBX.NET.Engines.Game
             {
                 var unknown = r.ReadArray(i =>
                 {
-                    r.ReadInt32();
-                    r.ReadArray(j => r.ReadMeta());
+                    return new object[]
+                    {
+                        r.ReadInt32(),
+                        r.ReadArray(j => r.ReadMeta()),
 
-                    r.ReadInt32();
-                    r.ReadInt32();
-                    r.ReadInt32();
-
-                    return new object();
+                        r.ReadInt32(),
+                        r.ReadInt32(),
+                        r.ReadInt32()
+                    };
                 });
             }
         }
