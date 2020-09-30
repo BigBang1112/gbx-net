@@ -47,7 +47,7 @@ namespace GBX.NET
                 {
                     var keys = line.Split(' ');
                     if (keys.Length >= 2)
-                        CollectionIDs[Convert.ToInt32(keys[0])] = keys[0];
+                        CollectionIDs[Convert.ToInt32(keys[0])] = keys[1];
                 }
             }
 

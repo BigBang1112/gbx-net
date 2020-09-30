@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -41,7 +42,7 @@ namespace GBX.NET
 
                             var chunks = new Chunk[numHeaderChunks];
 
-                            var chunkList = new Dictionary<uint, (int, bool)>();
+                            var chunkList = new Dictionary<uint, (int Size, bool IsHeavy)>();
 
                             for (var i = 0; i < numHeaderChunks; i++)
                             {
@@ -58,21 +59,27 @@ namespace GBX.NET
 
                             foreach (var c in chunkList)
                             {
-                                if (c.Value.Item2)
-                                    Log.Write($"| 0x{c.Key:x8} | {c.Value.Item1} B (Heavy)");
+                                if (c.Value.IsHeavy)
+                                    Log.Write($"| 0x{c.Key:x8} | {c.Value.Size} B (Heavy)");
                                 else
-                                    Log.Write($"| 0x{c.Key:x8} | {c.Value.Item1} B");
+                                    Log.Write($"| 0x{c.Key:x8} | {c.Value.Size} B");
                             }
 
                             int counter = 0;
                             foreach (var chunk in chunkList)
                             {
                                 var chunkId = Chunk.Remap(chunk.Key);
+                                var nodeId = chunkId & 0xFFFFF000;
 
-                                Node.AvailableClasses.TryGetValue(chunkId & 0xFFFFF000, out Type nodeType);
-                                Node.AvailableHeaderChunkClasses.TryGetValue(nodeType, out Dictionary<uint, Type> chunkTypes);
+                                if (!Node.AvailableClasses.TryGetValue(nodeId, out Type nodeType))
+                                    Log.Write($"Node ID 0x{nodeId:x8} is not implemented. This occurs only in the header therefore it's not a fatal problem. ({Node.Names.Where(x => x.Key == nodeId).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
 
-                                var d = r.ReadBytes(chunk.Value.Item1);
+                                var chunkTypes = new Dictionary<uint, Type>();
+
+                                if(nodeType != null)
+                                    Node.AvailableHeaderChunkClasses.TryGetValue(nodeType, out chunkTypes);
+
+                                var d = r.ReadBytes(chunk.Value.Size);
 
                                 if (chunkTypes.TryGetValue(chunkId, out Type type))
                                 {
@@ -99,10 +106,12 @@ namespace GBX.NET
                                         ((ISkippableChunk)chunks[counter]).Discovered = true;
                                     }
 
-                                    ((IHeaderChunk)chunks[counter]).IsHeavy = chunk.Value.Item2;
+                                    ((IHeaderChunk)chunks[counter]).IsHeavy = chunk.Value.IsHeavy;
                                 }
-                                else
+                                else if (nodeType != null)
                                     chunks[counter] = (Chunk)Activator.CreateInstance(typeof(HeaderChunk<>).MakeGenericType(nodeType), GBX.MainNode, chunkId, d);
+                                else
+                                    chunks[counter] = new HeaderChunk(chunkId, d) { IsHeavy = chunk.Value.IsHeavy };
 
                                 counter++;
                             }
@@ -156,9 +165,7 @@ namespace GBX.NET
 
                                 var pos = userData.Position;
                                 if (((ISkippableChunk)chunk).Discovered)
-                                {
                                     ((IHeaderChunk)chunk).ReadWrite(gbxrw);
-                                }
                                 else
                                     ((ISkippableChunk)chunk).Write(gbxw);
 

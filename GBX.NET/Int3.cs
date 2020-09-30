@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace GBX.NET
 {
@@ -28,14 +29,17 @@ namespace GBX.NET
         public static Int3 operator +(Int3 a, Int3 b) => new Int3(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
         public static Int3 operator +(Int3 a, Int2 b) => new Int3(a.X + b.X, a.Y + b.Y, a.Z);
         public static Int3 operator +(Int3 a, int b) => new Int3(a.X + b, a.Y + b, a.Z + b);
+        public static Vec3 operator +(Int3 a, float b) => new Vec3(a.X + b, a.Y + b, a.Z + b);
 
         public static Int3 operator -(Int3 a, Int3 b) => new Int3(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
         public static Int3 operator -(Int3 a, Int2 b) => new Int3(a.X - b.X, a.Y - b.Y, a.Z);
         public static Int3 operator -(Int3 a, int b) => new Int3(a.X - b, a.Y - b, a.Z - b);
+        public static Vec3 operator -(Int3 a, float b) => new Vec3(a.X - b, a.Y - b, a.Z - b);
 
         public static Int3 operator *(Int3 a, Int3 b) => new Int3(a.X * b.X, a.Y * b.Y, a.Z * b.Z);
         public static Int3 operator *(Int3 a, Int2 b) => new Int3(a.X * b.X, a.Y * b.Y, a.Z);
         public static Int3 operator *(Int3 a, int b) => new Int3(a.X * b, a.Y * b, a.Z * b);
+        public static Vec3 operator *(Int3 a, float b) => new Vec3(a.X * b, a.Y * b, a.Z * b);
 
         public static Int3 operator ^(Int3 a, Int3 b) => new Int3(a.X ^ b.X, a.Y ^ b.Y, a.Z ^ b.Z);
         public static Int3 operator ^(Int3 a, Int2 b) => new Int3(a.X ^ b.X, a.Y ^ b.Y, a.Z);
@@ -46,6 +50,7 @@ namespace GBX.NET
 
         public static explicit operator Int3(Byte3 a) => new Int3(a.X, a.Y, a.Z);
         public static explicit operator Int3(Int2 a) => new Int3(a.X, 0, a.Y);
+        public static explicit operator Int3(int[] a) => a == null ? new Int3() : a.Length >= 3 ? new Int3(a[0], a[1], a[2]) : throw new Exception();
         public static explicit operator Int3(Direction a)
         {
             switch (a)
