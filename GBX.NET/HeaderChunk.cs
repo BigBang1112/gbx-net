@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Text;
 
 namespace GBX.NET
@@ -62,5 +64,47 @@ namespace GBX.NET
         {
             throw new NotImplementedException($"Header chunk 0x{ID & 0xFFF:x3} doesn't support Write.");
         }
+    }
+
+    public sealed class HeaderChunk : Chunk, ISkippableChunk, IHeaderChunk
+    {
+        readonly uint id;
+
+        public bool Discovered
+        {
+            get => false;
+            set => throw new NotSupportedException("Cannot discover an unknown header chunk.");
+        }
+
+        public MemoryStream Stream { get; set; }
+        public Node Node { get => throw new NotSupportedException(); set => throw new NotSupportedException(); }
+
+        public int Progress
+        {
+            get => 0;
+            set => throw new NotSupportedException("Cannot progress reading of an unknown header chunk.");
+        }
+
+        public bool IsHeavy { get; set; }
+
+        public HeaderChunk(uint id, byte[] data)
+        {
+            this.id = id;
+            Stream = new MemoryStream(data);
+        }
+
+        public override uint ID => id;
+
+        public void Discover() => throw new NotSupportedException("Cannot discover an unknown header chunk.");
+
+        public void ReadWrite(Node n, GameBoxReaderWriter rw) => ReadWrite(rw);
+
+        public void ReadWrite(GameBoxReaderWriter rw)
+        {
+            if (rw.Writer != null)
+                Write(rw.Writer);
+        }
+
+        public void Write(GameBoxWriter w) => w.Write(Stream.ToArray(), 0, (int)Stream.Length);
     }
 }
