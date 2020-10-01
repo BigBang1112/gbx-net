@@ -4,6 +4,9 @@ using System.Text;
 
 namespace GBX.NET
 {
+    /// <summary>
+    /// Cardinal directions.
+    /// </summary>
     public enum Direction
     {
         /// <summary>

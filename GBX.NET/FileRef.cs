@@ -48,6 +48,10 @@
             LocatorUrl = locatorUrl;
         }
 
+        /// <summary>
+        /// Converts the file reference to a string using the <see cref="FilePath"/>.
+        /// </summary>
+        /// <returns>Returns <see cref="FilePath"/>.</returns>
         public override string ToString()
         {
             return FilePath;
