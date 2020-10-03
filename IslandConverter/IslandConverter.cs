@@ -205,10 +205,10 @@ namespace IslandConverter
             map.ModPackDesc = new FileRef(3, Convert.FromBase64String("AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="), @"Skins\Stadium\Mod\IslandTM2U.zip", "");
 
             Bitmap thumbnail;
-            if (gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail == null)
+            if (gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail == null)
                 thumbnail = new Bitmap(512, 512);
             else
-                thumbnail = new Bitmap(gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail.Result, 512, 512);
+                thumbnail = new Bitmap(gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail.Result, 512, 512);
 
             using (var g = Graphics.FromImage(thumbnail))
             {
@@ -217,7 +217,7 @@ namespace IslandConverter
                     g.DrawImage(Resources.OverlayOpenplanet, 0, 0);
             }
 
-            gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail = Task.FromResult(thumbnail);
+            gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail = Task.FromResult(thumbnail);
 
             map.GetChunk<CGameCtnChallenge.Chunk0304301F>().Version = 6;
 
@@ -440,7 +440,7 @@ namespace IslandConverter
                 gbx.MainNode.OffsetMediaTrackerCameras(new Vec3(64, -6 - offsetHeight, 64) + xzCameraOffset);
             }
 
-            var chunk003 = gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043003>();
+            var chunk003 = gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043003>();
             chunk003.Version = 6;
 
             gbx.CreateBodyChunk<CGameCtnChallenge.Chunk03043044>();
@@ -448,9 +448,9 @@ namespace IslandConverter
 
             map.ScriptMetadata.Declare("MapVehicle", carTranslations[beforeCar]);
 
-            if (gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043002>().Type == CGameCtnChallenge.TrackType.Stunts)
+            if (gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043002>().Type == CGameCtnChallenge.TrackType.Stunts)
             {
-                gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043002>().Type = CGameCtnChallenge.TrackType.Script;
+                gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043002>().Type = CGameCtnChallenge.TrackType.Script;
 
                 var challParams = map.ChallengeParameters;
 
