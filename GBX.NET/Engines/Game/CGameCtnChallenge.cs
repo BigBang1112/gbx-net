@@ -2401,11 +2401,12 @@ namespace GBX.NET.Engines.Game
                 w.Write(Version);
                 w.Write(unknownR.ReadInt32());
 
-                using(var ms = new MemoryStream())
+                using (var ms = new MemoryStream())
+                using (var gbxw = new GameBoxWriter(ms))
                 {
-                    w.Write(n.embeds.ToArray(), x => w.Write(x));
-                    w.Write(n.embedStream.ToArray());
-                    w.Write(Textures, x => w.Write(x));
+                    gbxw.Write(n.embeds.ToArray(), x => w.Write(x));
+                    gbxw.Write(n.embedStream.ToArray());
+                    gbxw.Write(Textures, x => w.Write(x));
 
                     w.Write((int)ms.Length);
                     w.Write(ms.ToArray());
