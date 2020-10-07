@@ -13,6 +13,7 @@ namespace GBX.NET.Engines.Game
         public CGamePodiumInfo PodiumInfo { get; set; }
         public CGamePodiumInfo IntroInfo { get; set; }
         public bool IconAutoUseGround { get; set; }
+        public bool NoRespawn { get; set; }
 
         [Chunk(0x0304E005)]
         public class Chunk0304E005 : Chunk<CGameCtnBlockInfo>
@@ -84,7 +85,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                n.NoRespawn = rw.Boolean(n.NoRespawn);
             }
         }
 
@@ -123,7 +124,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Boolean(Unknown);
             }
         }
 
