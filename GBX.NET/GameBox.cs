@@ -120,6 +120,16 @@ namespace GBX.NET
             var parameters = new GameBoxHeaderParameters(this);
             if (!parameters.Read(reader)) return false; // Should already throw an exception
 
+#if DEBUG
+
+            Log.Write("Working out the header chunks...");
+
+            headerTask = Task.FromResult((GameBoxHeader)new GameBoxHeader<T>(this, parameters.UserData));
+
+#endif
+
+#if RELEASE
+
             Log.Write("Working out the header chunks in the background...");
 
             headerTask = Task.Run(() => (GameBoxHeader)new GameBoxHeader<T>(this, parameters.UserData));
@@ -130,6 +140,8 @@ namespace GBX.NET
                 else
                     Log.Write("Header chunks parsed with exceptions.", ConsoleColor.Red);
             });
+
+#endif
 
             return true;
         }
@@ -255,6 +267,16 @@ namespace GBX.NET
             var parameters = new GameBoxHeaderParameters(this);
             if (!parameters.Read(reader)) return false;
 
+#if DEBUG
+
+            Log.Write("Working out the header chunks...");
+
+            headerTask = Task.FromResult(new GameBoxHeader(this, parameters.UserData));
+
+#endif
+
+#if RELEASE
+
             Log.Write("Working out the header chunks in the background...");
 
             headerTask = Task.Run(() => new GameBoxHeader(this, parameters.UserData));
@@ -265,6 +287,8 @@ namespace GBX.NET
                 else
                     Log.Write("Header chunks parsed with exceptions.");
             });
+
+#endif
 
             return true;
         }
