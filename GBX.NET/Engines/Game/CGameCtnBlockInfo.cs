@@ -7,6 +7,12 @@ namespace GBX.NET.Engines.Game
     public class CGameCtnBlockInfo : CGameCtnCollector
     {
         public string Name { get; set; }
+        public CGameCtnBlockInfoVariantGround VariantGround { get; set; }
+        public CGameCtnBlockInfoVariantAir VariantAir { get; set; }
+        public CGameWaypointSpecialProperty Waypoint { get; set; }
+        public CGamePodiumInfo PodiumInfo { get; set; }
+        public CGamePodiumInfo IntroInfo { get; set; }
+        public bool IconAutoUseGround { get; set; }
 
         [Chunk(0x0304E005)]
         public class Chunk0304E005 : Chunk<CGameCtnBlockInfo>
@@ -87,7 +93,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                n.IconAutoUseGround = rw.Boolean(n.IconAutoUseGround);
             }
         }
 
@@ -124,15 +130,24 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0304E020)]
         public class Chunk0304E020 : Chunk<CGameCtnBlockInfo>
         {
+            public int Version { get; set; }
+
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
+                Version = rw.Int32(Version);
+                n.Waypoint = rw.Reader.ReadNodeRef<CGameWaypointSpecialProperty>();
+                n.PodiumInfo = rw.NodeRef<CGamePodiumInfo>(n.PodiumInfo);
+                n.IntroInfo = rw.NodeRef<CGamePodiumInfo>(n.IntroInfo);
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
-                var waypoint = rw.Reader.ReadNodeRef<CGameWaypointSpecialProperty>();
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.String(Unknown);
+
+                if (Version >= 7)
+                {
+                    rw.Int32(Unknown);
+                    n.VariantGround = Parse<CGameCtnBlockInfoVariantGround>(rw.Reader, 0x0315C000);
+                    n.VariantAir = Parse<CGameCtnBlockInfoVariantAir>(rw.Reader, 0x0315D000);
+                }
             }
         }
 
@@ -141,8 +156,8 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                var variantGround = Parse<CGameCtnBlockInfoVariantGround>(rw.Reader, 0x0315C000);
-                var variantAir = Parse<CGameCtnBlockInfoVariantAir>(rw.Reader, 0x0315D000);
+                n.VariantGround = Parse<CGameCtnBlockInfoVariantGround>(rw.Reader, 0x0315C000);
+                n.VariantAir = Parse<CGameCtnBlockInfoVariantAir>(rw.Reader, 0x0315D000);
             }
         }
     }

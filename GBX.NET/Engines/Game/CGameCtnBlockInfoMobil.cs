@@ -17,9 +17,11 @@
         [Chunk(0x03122003)]
         public class Chunk03122003 : Chunk<CGameCtnBlockInfoMobil>
         {
+            public int Version { get; set; }
+
             public override void ReadWrite(CGameCtnBlockInfoMobil n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                Version = rw.Int32(Version);
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
@@ -30,6 +32,13 @@
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
+
+                if (Version >= 14)
+                {
+                    rw.Int32(Unknown);
+                    rw.Int32(Unknown);
+                    rw.Int32(Unknown);
+                }
             }
         }
 
