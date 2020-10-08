@@ -48,7 +48,7 @@ namespace GBX.NET
                     return value;
                 return ID.ToString();
             }
-            return Name;
+            return Name ?? "";
         }
 
         /// <summary>
