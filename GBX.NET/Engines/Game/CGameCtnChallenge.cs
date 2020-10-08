@@ -7,6 +7,7 @@ using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -164,7 +165,7 @@ namespace GBX.NET.Engines.Game
         private Vec3? thumbnailPosition;
         private Vec3? thumbnailPitchYawRoll;
         private float? thumbnailFOV;
-        private List<CGameCtnAnchoredObject> items;
+        private List<CGameCtnAnchoredObject> anchoredObjects;
         private CScriptTraitsMetadata scriptMetadata;
         private Task<CHmsLightMapCache> lightmapCache;
         private Task<CGameCtnZoneGenealogy[]> genealogies;
@@ -471,9 +472,9 @@ namespace GBX.NET.Engines.Game
             get
             {
                 DiscoverChunk<Chunk03043040>();
-                return items;
+                return anchoredObjects;
             }
-            set => items = value;
+            set => anchoredObjects = value;
         }
 
         public Task<CGameCtnZoneGenealogy[]> Genealogies
@@ -2116,7 +2117,7 @@ namespace GBX.NET.Engines.Game
 
             public override void OnLoad()
             {
-                Node.items = new List<CGameCtnAnchoredObject>();
+                Node.anchoredObjects = new List<CGameCtnAnchoredObject>();
             }
 
             public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
@@ -2146,9 +2147,9 @@ namespace GBX.NET.Engines.Game
                     using (var wr = new GameBoxWriter(itemMs, w.Lookbackable))
                     {
                         wr.Write(Unknown2);
-                        wr.Write(n.items.Count);
+                        wr.Write(n.anchoredObjects.Count);
 
-                        foreach (var item in n.items)
+                        foreach (var item in n.anchoredObjects)
                         {
                             wr.Write(item.ID);
                             item.Write(wr);
@@ -2529,20 +2530,5 @@ namespace GBX.NET.Engines.Game
         #endregion
 
         #endregion
-
-        #region Other classes
-
-        public class Dependency
-        {
-            public string File { get; }
-            public string Url { get; }
-
-            public Dependency(string file, string url)
-            {
-                File = file;
-                Url = url;
-            }
-        }
-    #endregion
     }
 }
