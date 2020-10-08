@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -7,16 +8,24 @@ using System.Text;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03078000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaTrack : Node
     {
+        /// <summary>
+        /// Name of the track.
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// List of blocks.
+        /// </summary>
         public List<CGameCtnMediaBlock> Blocks { get; set; }
 
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() => Name;
+
+        #region Chunks
+
+        #region 0x001 chunk
 
         [Chunk(0x03078001)]
         public class Chunk03078001 : Chunk<CGameCtnMediaTrack>
@@ -35,6 +44,10 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x002 chunk
+
         [Chunk(0x03078002)]
         public class Chunk03078002 : Chunk<CGameCtnMediaTrack>
         {
@@ -46,6 +59,10 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #region 0x003 chunk
+
         [Chunk(0x03078003)]
         public class Chunk03078003 : Chunk<CGameCtnMediaTrack>
         {
@@ -54,6 +71,10 @@ namespace GBX.NET.Engines.Game
                 rw.Int32(Unknown); // 0
             }
         }
+
+        #endregion
+
+        #region 0x004 chunk
 
         /// <summary>
         /// CGameCtnMediaTrack 0x004 chunk. This chunk should be removed in the new versions of ManiaPlanet.
@@ -69,6 +90,10 @@ namespace GBX.NET.Engines.Game
                 // There is sometimes a second int
             }
         }
+
+        #endregion
+
+        #region 0x005 chunk
 
         [Chunk(0x03078005)]
         public class Chunk03078005 : Chunk<CGameCtnMediaTrack>
@@ -90,5 +115,23 @@ namespace GBX.NET.Engines.Game
                 Unknown5 = rw.Single(Unknown5);
             }
         }
+
+        #endregion
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnMediaTrack node;
+
+            public string Name => node.Name;
+            public List<CGameCtnMediaBlock> Blocks => node.Blocks;
+
+            public DebugView(CGameCtnMediaTrack node) => this.node = node;
+        }
+
+        #endregion
     }
 }

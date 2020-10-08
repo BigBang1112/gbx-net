@@ -7,6 +7,7 @@ using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -23,6 +24,7 @@ namespace GBX.NET.Engines.Game
     /// </summary>
     /// <remarks>A map. Known extensions: .Challenge.Gbx, .Map.Gbx</remarks>
     [Node(0x03043000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnChallenge : Node
     {
         #region Enums
@@ -164,7 +166,7 @@ namespace GBX.NET.Engines.Game
         private Vec3? thumbnailPosition;
         private Vec3? thumbnailPitchYawRoll;
         private float? thumbnailFOV;
-        private List<CGameCtnAnchoredObject> items;
+        private List<CGameCtnAnchoredObject> anchoredObjects;
         private CScriptTraitsMetadata scriptMetadata;
         private Task<CHmsLightMapCache> lightmapCache;
         private Task<CGameCtnZoneGenealogy[]> genealogies;
@@ -471,9 +473,9 @@ namespace GBX.NET.Engines.Game
             get
             {
                 DiscoverChunk<Chunk03043040>();
-                return items;
+                return anchoredObjects;
             }
-            set => items = value;
+            set => anchoredObjects = value;
         }
 
         public Task<CGameCtnZoneGenealogy[]> Genealogies
@@ -2116,7 +2118,7 @@ namespace GBX.NET.Engines.Game
 
             public override void OnLoad()
             {
-                Node.items = new List<CGameCtnAnchoredObject>();
+                Node.anchoredObjects = new List<CGameCtnAnchoredObject>();
             }
 
             public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
@@ -2146,9 +2148,9 @@ namespace GBX.NET.Engines.Game
                     using (var wr = new GameBoxWriter(itemMs, w.Lookbackable))
                     {
                         wr.Write(Unknown2);
-                        wr.Write(n.items.Count);
+                        wr.Write(n.anchoredObjects.Count);
 
-                        foreach (var item in n.items)
+                        foreach (var item in n.anchoredObjects)
                         {
                             wr.Write(item.ID);
                             item.Write(wr);
@@ -2530,19 +2532,65 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region Other classes
+        #region Debug view
 
-        public class Dependency
+        private class DebugView
         {
-            public string File { get; }
-            public string Url { get; }
+            private readonly CGameCtnChallenge node;
 
-            public Dependency(string file, string url)
-            {
-                File = file;
-                Url = url;
-            }
+            public bool? TMObjective_IsLapRace => node.TMObjective_IsLapRace;
+            public int? TMObjective_NbLaps => node.TMObjective_NbLaps;
+            public Meta MapInfo => node.MapInfo;
+            public string MapUid => node.MapUid;
+            public string AuthorLogin => node.AuthorLogin;
+            public string MapName => node.MapName;
+            public TrackKind? Kind => node.Kind;
+            public string Password => node.Password;
+            public Meta Decoration => node.Decoration;
+            public Collection Collection => node.Collection;
+            public Vec2? MapOrigin => node.MapOrigin;
+            public Vec2? MapTarget => node.MapTarget;
+            public string TitleID => node.TitleID;
+            public string BuildVersion => node.BuildVersion;
+            public string Comments => node.Comments;
+            public int? AuthorVersion => node.AuthorVersion;
+            public string AuthorNickname => node.AuthorNickname;
+            public string AuthorZone => node.AuthorZone;
+            public string AuthorExtraInfo => node.AuthorExtraInfo;
+            public Meta Vehicle => node.Vehicle;
+            public CGameCtnChallengeParameters ChallengeParameters => node.ChallengeParameters;
+            public CGameCtnCollectorList BlockStock => node.BlockStock;
+            public Int3[] Checkpoints => node.Checkpoints;
+            public FileRef ModPackDesc => node.ModPackDesc;
+            public PlayMode? Mode => node.Mode;
+            public Int3? Size => node.Size;
+            public bool? NeedUnlock => node.NeedUnlock;
+            public List<CGameCtnBlock> Blocks => node.Blocks;
+            public int NbBlocks => node.NbBlocks;
+            public CGameCtnMediaClip ClipIntro => node.ClipIntro;
+            public CGameCtnMediaClipGroup ClipGroupInGame => node.ClipGroupInGame;
+            public CGameCtnMediaClipGroup ClipGroupEndRace => node.ClipGroupEndRace;
+            public CGameCtnMediaClip ClipAmbiance => node.ClipAmbiance;
+            public FileRef CustomMusicPackDesc => node.CustomMusicPackDesc;
+            public byte[] HashedPassword => node.HashedPassword;
+            public uint? CRC32 => node.CRC32;
+            public Vec3? ThumbnailPosition => node.ThumbnailPosition;
+            public Vec3? ThumbnailPitchYawRoll => node.ThumbnailPitchYawRoll;
+            public float? ThumbnailFOV => node.ThumbnailFOV;
+            public Task<CHmsLightMapCache> LightmapCache => node.LightmapCache;
+            public List<CGameCtnAnchoredObject> AnchoredObjects => node.AnchoredObjects;
+            public Task<CGameCtnZoneGenealogy[]> Genealogies => node.Genealogies;
+            public CScriptTraitsMetadata ScriptMetadata => node.ScriptMetadata;
+            public string ObjectiveTextAuthor => node.ObjectiveTextAuthor;
+            public string ObjectiveTextGold => node.ObjectiveTextGold;
+            public string ObjectiveTextSilver => node.ObjectiveTextSilver;
+            public string ObjectiveTextBronze => node.ObjectiveTextBronze;
+            public IReadOnlyCollection<Meta> Embeds => node.Embeds;
+            public ZipFile EmbedZip => node.EmbedZip;
+
+            public DebugView(CGameCtnChallenge node) => this.node = node;
         }
-    #endregion
+
+        #endregion
     }
 }
