@@ -14,17 +14,16 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// Name of the clip. This property is <see cref="null"/> if the clip is an intro, ambiance or podium.
         /// </summary>
+        [NodeMember]
         public string Name { get; set; }
 
         /// <summary>
         /// List of MediaTracker tracks.
         /// </summary>
+        [NodeMember]
         public List<CGameCtnMediaTrack> Tracks { get; set; }
 
-        public override string ToString()
-        {
-            return string.IsNullOrEmpty(Name) ? "Unnamed clip" : Name;
-        }
+        public override string ToString() => string.IsNullOrEmpty(Name) ? "Unnamed clip" : Name;
 
         #region Chunks
 

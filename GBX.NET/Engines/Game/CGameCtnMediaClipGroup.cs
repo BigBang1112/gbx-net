@@ -17,11 +17,13 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// An array of MediaTracker clips.
         /// </summary>
+        [NodeMember]
         public CGameCtnMediaClip[] Clips { get; set; }
 
         /// <summary>
         /// An array of triggers, indexes the same as <see cref="Clips"/>.
         /// </summary>
+        [NodeMember]
         public Trigger[] Triggers { get; set; }
 
         #endregion

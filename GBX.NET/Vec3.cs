@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Diagnostics;
+using System.Runtime.Serialization;
 
 namespace GBX.NET
 {
@@ -9,6 +10,7 @@ namespace GBX.NET
         public float Z { get; }
 
         [IgnoreDataMember]
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         public Vec3 XZ => new Vec3(X, 0, Z);
 
         public Vec3(float x, float y, float z)

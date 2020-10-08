@@ -1,22 +1,29 @@
-﻿namespace GBX.NET
+﻿using System;
+using System.Diagnostics;
+
+namespace GBX.NET
 {
     /// <summary>
     /// A file reference used for locating media.
     /// </summary>
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class FileRef
     {
         /// <summary>
         /// Version of the file reference.
         /// </summary>
         public byte Version { get; }
+
         /// <summary>
         /// File checksum.
         /// </summary>
         public byte[] Checksum { get; set; }
+
         /// <summary>
         /// File relative to user folder (or Skins folder if <c><see cref="Version"/> &lt;= <see cref="1"/></c>).
         /// </summary>
         public string FilePath { get; set; }
+
         /// <summary>
         /// Url of the locator.
         /// </summary>
@@ -60,6 +67,18 @@
         public static byte[] DefaultChecksum
         {
             get => new byte[] { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        }
+
+        private class DebugView
+        {
+            private readonly FileRef fileRef;
+
+            public byte Version => fileRef.Version;
+            public string Checksum => Convert.ToBase64String(fileRef.Checksum);
+            public string FilePath => fileRef.FilePath;
+            public string LocatorUrl => fileRef.LocatorUrl;
+
+            public DebugView(FileRef fileRef) => this.fileRef = fileRef;
         }
     }
 }

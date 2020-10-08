@@ -1,6 +1,7 @@
 ﻿using GBX.NET.Engines.Plug;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Numerics;
@@ -12,6 +13,7 @@ namespace GBX.NET.Engines.Game
     /// Ghost (0x03092000)
     /// </summary>
     [Node(0x03092000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnGhost : CGameGhost
     {
         #region Fields
@@ -31,6 +33,7 @@ namespace GBX.NET.Engines.Game
 
         #region Properties
 
+        [NodeMember]
         public Meta PlayerModel
         {
             get
@@ -41,6 +44,7 @@ namespace GBX.NET.Engines.Game
             set => playerModel = value;
         }
 
+        [NodeMember]
         public FileRef[] SkinPackDescs
         {
             get
@@ -51,6 +55,7 @@ namespace GBX.NET.Engines.Game
             set => skinPackDescs = value;
         }
 
+        [NodeMember]
         public string GhostNickname
         {
             get
@@ -61,6 +66,7 @@ namespace GBX.NET.Engines.Game
             set => ghostNickname = value;
         }
 
+        [NodeMember]
         public string GhostAvatarName
         {
             get
@@ -71,6 +77,7 @@ namespace GBX.NET.Engines.Game
             set => ghostAvatarName = value;
         }
 
+        [NodeMember]
         public string RecordingContext
         {
             get
@@ -81,6 +88,7 @@ namespace GBX.NET.Engines.Game
             set => recordingContext = value;
         }
 
+        [NodeMember]
         public TimeSpan? RaceTime
         {
             get
@@ -91,6 +99,7 @@ namespace GBX.NET.Engines.Game
             set => raceTime = value;
         }
 
+        [NodeMember]
         public int? Respawns
         {
             get
@@ -101,6 +110,7 @@ namespace GBX.NET.Engines.Game
             set => respawns = value;
         }
 
+        [NodeMember]
         public Vec3? LightTrailColor
         {
             get
@@ -111,6 +121,7 @@ namespace GBX.NET.Engines.Game
             set => lightTrailColor = value;
         }
 
+        [NodeMember]
         public int? StuntScore
         {
             get
@@ -121,6 +132,7 @@ namespace GBX.NET.Engines.Game
             set => stuntScore = value;
         }
 
+        [NodeMember]
         public TimeSpan[] Checkpoints
         {
             get
@@ -131,21 +143,46 @@ namespace GBX.NET.Engines.Game
             set => checkpoints = value;
         }
 
+        [NodeMember]
         public string GhostLogin { get; set; }
+
+        [NodeMember]
         public Meta Vehicle { get; set; }
+
+        [NodeMember]
         public string Skin { get; set; }
+
+        [NodeMember]
         public string UID { get; set; }
 
+        [NodeMember]
         public int EventsDuration { get; set; }
+
+        [NodeMember]
         public string[] ControlNames { get; set; }
+
+        [NodeMember]
         public ControlEntry[] ControlEntries { get; set; } = new ControlEntry[0];
+
+        [NodeMember]
         public string GameVersion { get; set; }
+
+        [NodeMember]
         public int ExeChecksum { get; set; }
+
+        [NodeMember]
         public int OSKind { get; set; }
+
+        [NodeMember]
         public int CPUKind { get; set; }
+
+        [NodeMember]
         public string RaceSettingsXML { get; set; }
 
+        [NodeMember]
         public CPlugEntRecordData RecordData { get; set; }
+
+        [NodeMember]
         public string GhostTrigram { get; set; }
 
         #endregion
@@ -591,11 +628,51 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Other classes
+
         public class ControlEntry
         {
             public int Time { get; set; }
             public byte Index { get; set; }
             public bool Enabled { get; set; }
         }
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnGhost node;
+
+            public Meta PlayerModel => node.PlayerModel;
+            public FileRef[] SkinPackDescs => node.SkinPackDescs;
+            public string GhostNickname => node.GhostNickname;
+            public string GhostAvatarName => node.GhostAvatarName;
+            public string RecordingContext => node.RecordingContext;
+            public TimeSpan? RaceTime => node.RaceTime;
+            public int? Respawns => node.Respawns;
+            public Vec3? LightTrailColor => node.LightTrailColor;
+            public int? StuntScore => node.StuntScore;
+            public TimeSpan[] Checkpoints => node.Checkpoints;
+            public string GhostLogin => node.GhostLogin;
+            public Meta Vehicle => node.Vehicle;
+            public string Skin => node.Skin;
+            public string UID => node.UID;
+            public int EventsDuration => node.EventsDuration;
+            public string[] ControlNames => node.ControlNames;
+            public ControlEntry[] ControlEntries => node.ControlEntries;
+            public string GameVersion => node.GameVersion;
+            public int ExeChecksum => node.ExeChecksum;
+            public int OSKind => node.OSKind;
+            public int CPUKind => node.CPUKind;
+            public string RaceSettingsXML => node.RaceSettingsXML;
+            public CPlugEntRecordData RecordData => node.RecordData;
+            public string GhostTrigram => node.GhostTrigram;
+
+            public DebugView(CGameCtnGhost node) => this.node = node;
+        }
+
+        #endregion
     }
 }

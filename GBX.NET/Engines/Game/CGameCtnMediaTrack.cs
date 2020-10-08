@@ -14,11 +14,13 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// Name of the track.
         /// </summary>
+        [NodeMember]
         public string Name { get; set; }
 
         /// <summary>
         /// List of blocks.
         /// </summary>
+        [NodeMember]
         public List<CGameCtnMediaBlock> Blocks { get; set; }
 
         public override string ToString() => Name;
