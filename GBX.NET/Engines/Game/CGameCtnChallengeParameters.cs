@@ -50,6 +50,8 @@ namespace GBX.NET.Engines.Game
         /// </summary>
         public TimeSpan? TimeLimit { get; set; }
 
+        public CGameCtnGhost RaceValidateGhost { get; set; }
+
         public string MapType
         {
             get
@@ -299,7 +301,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                n.RaceValidateGhost = rw.NodeRef<CGameCtnGhost>(n.RaceValidateGhost);
             }
         }
 

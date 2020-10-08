@@ -60,9 +60,9 @@ namespace GBX.NET
                             foreach (var c in chunkList)
                             {
                                 if (c.Value.IsHeavy)
-                                    Log.Write($"| 0x{c.Key:x8} | {c.Value.Size} B (Heavy)");
+                                    Log.Write($"| 0x{c.Key:X8} | {c.Value.Size} B (Heavy)");
                                 else
-                                    Log.Write($"| 0x{c.Key:x8} | {c.Value.Size} B");
+                                    Log.Write($"| 0x{c.Key:X8} | {c.Value.Size} B");
                             }
 
                             int counter = 0;
@@ -72,7 +72,7 @@ namespace GBX.NET
                                 var nodeId = chunkId & 0xFFFFF000;
 
                                 if (!Node.AvailableClasses.TryGetValue(nodeId, out Type nodeType))
-                                    Log.Write($"Node ID 0x{nodeId:x8} is not implemented. This occurs only in the header therefore it's not a fatal problem. ({Node.Names.Where(x => x.Key == nodeId).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
+                                    Log.Write($"Node ID 0x{nodeId:X8} is not implemented. This occurs only in the header therefore it's not a fatal problem. ({Node.Names.Where(x => x.Key == nodeId).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
 
                                 var chunkTypes = new Dictionary<uint, Type>();
 
