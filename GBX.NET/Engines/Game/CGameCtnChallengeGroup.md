@@ -10,7 +10,7 @@
 ```cs
 void Read(GameBoxReader r)
 {
-	string default = r.ReadString();
+    string default = r.ReadString();
 }
 ```
 
@@ -19,13 +19,13 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-	int version = r.ReadInt32();
+    int version = r.ReadInt32();
 
-	int numMaps = r.ReadInt32();
-	for(var i = 0; i < numMaps; i++)
-	{
-		Meta mapInfo = r.ReadMeta();
-		string filePath = r.ReadString();
-	}
+    int numMaps = r.ReadInt32();
+    for(var i = 0; i < numMaps; i++)
+    {
+        Meta mapInfo = r.ReadMeta();
+        string filePath = r.ReadString();
+    }
 }
 ```

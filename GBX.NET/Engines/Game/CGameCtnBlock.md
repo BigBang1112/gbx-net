@@ -9,7 +9,7 @@
 ```cs
 void Read(GameBoxReader r)
 {
-	Meta blockInfo = r.ReadMeta();
+    Meta blockInfo = r.ReadMeta();
     Direction dir = (Direction)r.ReadByte();
     Byte3 coord = r.Byte3();
     int flags = r.Int32();
@@ -21,9 +21,9 @@ void Read(GameBoxReader r)
 ```cs
 public enum Direction : byte
 {
-	North,
-	East,
-	South,
-	West 
+    North,
+    East,
+    South,
+    West 
 }
 ```
