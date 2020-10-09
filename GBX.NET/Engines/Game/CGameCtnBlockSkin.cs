@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
@@ -9,15 +10,27 @@ namespace GBX.NET.Engines.Game
     /// Skin for a block (0x03059000)
     /// </summary>
     [Node(0x03059000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnBlockSkin : Node
     {
+        #region Properties
+
+        [NodeMember]
         public string Text { get; set; }
 
+        [NodeMember]
         public FileRef PackDesc { get; set; } = new FileRef();
 
+        [NodeMember]
         public FileRef ParentPackDesc { get; set; } = new FileRef();
 
+        /// <summary>
+        /// Second skin for the skinnable block. Available in TM®.
+        /// </summary>
+        [NodeMember]
         public FileRef SecondaryPackDesc { get; set; }
+
+        #endregion
 
         #region Chunks
 
@@ -93,6 +106,22 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnBlockSkin node;
+
+            public string Text => node.Text;
+            public FileRef PackDesc => node.PackDesc;
+            public FileRef ParentPackDesc => node.ParentPackDesc;
+            public FileRef SecondaryPackDesc => node.SecondaryPackDesc;
+
+            public DebugView(CGameCtnBlockSkin node) => this.node = node;
+        }
 
         #endregion
     }

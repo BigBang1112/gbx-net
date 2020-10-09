@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace GBX.NET.Engines.Game
@@ -8,10 +9,18 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - Color grading
     /// </summary>
     [Node(0x03186000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock
     {
+        #region Properties
+
+        [NodeMember]
         public FileRef Image { get; set; }
+
+        [NodeMember]
         public Key[] Keys { get; set; }
+
+        #endregion
 
         #region Chunks
 
@@ -62,5 +71,19 @@ namespace GBX.NET.Engines.Game
         {
             public float Intensity { get; set; }
         }
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnMediaBlockColorGrading node;
+
+            public FileRef Image => node.Image;
+            public Key[] Keys => node.Keys;
+
+            public DebugView(CGameCtnMediaBlockColorGrading node) => this.node = node;
+        }
+
+        #endregion
     }
 }

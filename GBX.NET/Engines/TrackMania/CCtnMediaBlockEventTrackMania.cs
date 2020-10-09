@@ -8,6 +8,8 @@ namespace GBX.NET.Engines.TrackMania
     [Node(0x2407F000)]
     public class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
     {
+        #region Enums
+
         public enum EStuntFigure
         {
             None,
@@ -50,9 +52,24 @@ namespace GBX.NET.Engines.TrackMania
             Reset
         }
 
+        #endregion
+
+        #region Properties
+
+        [NodeMember]
         public float Start { get; set; }
+
+        [NodeMember]
         public float End { get; set; }
+
+        [NodeMember]
         public Stunt[] Stunts { get; set; }
+
+        #endregion
+
+        #region Chunks
+
+        #region 0x000 chunk
 
         [Chunk(0x2407F000)]
         public class Chunk2407F000 : Chunk<CCtnMediaBlockEventTrackMania>
@@ -96,6 +113,10 @@ namespace GBX.NET.Engines.TrackMania
             }
         }
 
+        #endregion
+
+        #region 0x003 chunk
+
         [Chunk(0x2407F003)]
         public class Chunk2407F003 : Chunk<CCtnMediaBlockEventTrackMania>
         {
@@ -104,6 +125,12 @@ namespace GBX.NET.Engines.TrackMania
                 r.ReadTillFacade();
             }
         }
+
+        #endregion
+
+        #endregion
+
+        #region Other classes
 
         public class Stunt
         {
@@ -125,5 +152,22 @@ namespace GBX.NET.Engines.TrackMania
                     $"{(Angle > 0 ? Angle + "° " : "")}({(Figure == EStuntFigure.TimePenalty ? "-" : "+")}{Score} = {TotalScore})";
             }
         }
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CCtnMediaBlockEventTrackMania node;
+
+            public float Start => node.Start;
+            public float End => node.End;
+            public Stunt[] Stunts => node.Stunts;
+
+            public DebugView(CCtnMediaBlockEventTrackMania node) => this.node = node;
+        }
+
+        #endregion
     }
 }

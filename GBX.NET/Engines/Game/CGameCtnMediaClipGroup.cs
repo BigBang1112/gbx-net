@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,28 @@ using System.Text;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x0307A000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaClipGroup : Node
     {
+        #region Properties
+
+        /// <summary>
+        /// An array of MediaTracker clips.
+        /// </summary>
+        [NodeMember]
         public CGameCtnMediaClip[] Clips { get; set; }
 
+        /// <summary>
+        /// An array of triggers, indexes the same as <see cref="Clips"/>.
+        /// </summary>
+        [NodeMember]
         public Trigger[] Triggers { get; set; }
+
+        #endregion
+
+        #region Chunks
+
+        #region 0x002 chunk
 
         [Chunk(0x0307A002)]
         public class Chunk0307A002 : Chunk<CGameCtnMediaClipGroup>
@@ -53,6 +71,10 @@ namespace GBX.NET.Engines.Game
                 });
             }
         }
+
+        #endregion
+
+        #region 0x003 chunk
 
         [Chunk(0x0307A003)]
         public class Chunk0307A003 : Chunk<CGameCtnMediaClipGroup>
@@ -105,6 +127,12 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #endregion
+
+        #region Other classes
+
         public class Trigger
         {
             public Int3[] Coords { get; set; }
@@ -115,5 +143,21 @@ namespace GBX.NET.Engines.Game
             public int? Unknown5 { get; set; }
             public int? Unknown6 { get; set; }
         }
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnMediaClipGroup node;
+
+            public CGameCtnMediaClip[] Clips => node.Clips;
+            public Trigger[] Triggers => node.Triggers;
+
+            public DebugView(CGameCtnMediaClipGroup node) => this.node = node;
+        }
+
+        #endregion
     }
 }

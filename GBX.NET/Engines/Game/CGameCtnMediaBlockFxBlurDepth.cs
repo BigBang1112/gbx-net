@@ -1,14 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03081000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx
     {
+        #region Properties
+
+        [NodeMember]
         public Key[] Keys { get; set; }
+
+        #endregion
+
+        #region Chunks
+
+        #region 0x001 chunk
 
         [Chunk(0x03081001)]
         public class Chunk03081001 : Chunk<CGameCtnMediaBlockFxBlurDepth>
@@ -39,11 +50,32 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #endregion
+
+        #region Other classes
+
         public class Key : MediaBlockKey
         {
             public float LensSize { get; set; }
             public bool ForceFocus { get; set; }
             public float FocusZ { get; set; }
         }
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnMediaBlockFxBlurDepth node;
+
+            public Key[] Keys => node.Keys;
+
+            public DebugView(CGameCtnMediaBlockFxBlurDepth node) => this.node = node;
+        }
+
+        #endregion
     }
 }

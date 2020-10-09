@@ -1,13 +1,21 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System.Diagnostics;
+
+namespace GBX.NET.Engines.Game
 {
     /// <summary>
     /// Puzzle piece list (0x0301B000)
     /// </summary>
     /// <remarks>A list of puzzle pieces.</remarks>
     [Node(0x0301B000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnCollectorList : Node
     {
+        #region Properties
+
+        [NodeMember]
         public Collector[] CollectorStock { get; set; }
+
+        #endregion
 
         #region Chunks
 
@@ -39,10 +47,27 @@
 
         #endregion
 
+        #region Other classes
+
         public class Collector
         {
             public Meta Meta { get; set; }
             public int Count { get; set; }
         }
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnCollectorList node;
+
+            public Collector[] CollectorStock => node.CollectorStock;
+
+            public DebugView(CGameCtnCollectorList node) => this.node = node;
+        }
+
+        #endregion
     }
 }

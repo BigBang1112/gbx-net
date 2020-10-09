@@ -24,6 +24,7 @@ namespace GBX.NET.Engines.Game
     /// </summary>
     /// <remarks>A map. Known extensions: .Challenge.Gbx, .Map.Gbx</remarks>
     [Node(0x03043000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnChallenge : Node
     {
         #region Enums
@@ -182,6 +183,7 @@ namespace GBX.NET.Engines.Game
 
         #region Properties
 
+        [NodeMember]
         public bool? TMObjective_IsLapRace
         {
             get
@@ -195,6 +197,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// Number of laps.
         /// </summary>
+        [NodeMember]
         public int? TMObjective_NbLaps
         {
             get
@@ -205,22 +208,28 @@ namespace GBX.NET.Engines.Game
             set => nbLaps = value;
         }
 
+        [NodeMember]
         public Meta MapInfo { get; set; }
 
+        [NodeMember]
         public string MapUid => MapInfo?.ID;
 
+        [NodeMember]
         public string AuthorLogin { get; set; }
 
+        [NodeMember]
         public string MapName { get; set; }
 
         /// <summary>
         /// The track's intended use.
         /// </summary>
+        [NodeMember]
         public TrackKind? Kind { get; set; }
 
         /// <summary>
         /// Password of the map used by older tracks.
         /// </summary>
+        [NodeMember]
         public string Password
         {
             get
@@ -231,8 +240,10 @@ namespace GBX.NET.Engines.Game
             set => password = value;
         }
 
+        [NodeMember]
         public Meta Decoration { get; set; }
 
+        [NodeMember]
         public Collection Collection
         {
             get => (Decoration?.Collection ?? MapInfo?.Collection).GetValueOrDefault();
@@ -248,16 +259,19 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// Origin of the map.
         /// </summary>
+        [NodeMember]
         public Vec2? MapOrigin { get; set; }
 
         /// <summary>
         /// Target of the map.
         /// </summary>
+        [NodeMember]
         public Vec2? MapTarget { get; set; }
 
         /// <summary>
         /// Title pack the map was built in.
         /// </summary>
+        [NodeMember]
         public string TitleID
         {
             get
@@ -268,6 +282,7 @@ namespace GBX.NET.Engines.Game
             set => titleID = value;
         }
 
+        [NodeMember]
         public string BuildVersion
         {
             get
@@ -278,8 +293,10 @@ namespace GBX.NET.Engines.Game
             set => buildVersion = value;
         }
 
+        [NodeMember]
         public string Comments { get; set; }
 
+        [NodeMember]
         public int? AuthorVersion
         {
             get
@@ -290,6 +307,7 @@ namespace GBX.NET.Engines.Game
             set => authorVersion = value;
         }
 
+        [NodeMember]
         public string AuthorNickname
         {
             get
@@ -300,6 +318,7 @@ namespace GBX.NET.Engines.Game
             set => authorNickname = value;
         }
 
+        [NodeMember]
         public string AuthorZone
         {
             get
@@ -310,6 +329,7 @@ namespace GBX.NET.Engines.Game
             set => authorZone = value;
         }
 
+        [NodeMember]
         public string AuthorExtraInfo
         {
             get
@@ -323,21 +343,25 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// Vehicle metadata info.
         /// </summary>
+        [NodeMember]
         public Meta Vehicle { get; set; }
 
         /// <summary>
         /// Map parameters.
         /// </summary>
+        [NodeMember]
         public CGameCtnChallengeParameters ChallengeParameters { get; set; }
 
         /// <summary>
         /// List of puzzle pieces.
         /// </summary>
+        [NodeMember]
         public CGameCtnCollectorList BlockStock { get; set; }
 
         /// <summary>
         /// All checkpoints and their map coordinates. Used by older Trackmania.
         /// </summary>
+        [NodeMember]
         public Int3[] Checkpoints
         {
             get
@@ -348,6 +372,7 @@ namespace GBX.NET.Engines.Game
             set => checkpoints = value;
         }
 
+        [NodeMember]
         public FileRef ModPackDesc
         {
             get
@@ -362,6 +387,7 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        [NodeMember]
         public PlayMode? Mode
         {
             get
@@ -372,32 +398,43 @@ namespace GBX.NET.Engines.Game
             set => mode = value;
         }
 
+        [NodeMember]
         public Int3? Size { get; set; }
 
+        [NodeMember]
         public bool? NeedUnlock { get; set; }
 
         /// <summary>
         /// Array of all blocks on the map.
         /// </summary>
+        [NodeMember]
         public List<CGameCtnBlock> Blocks { get; set; }
 
+        [NodeMember]
         public int NbBlocks
         {
             get => Blocks.Where(x => x.Flags != -1).Count();
         }
 
+        [NodeMember]
         public ReadOnlyCollection<FreeBlock> FreeBlocks => GetChunk<Chunk0304305F>()?.FreeBlocks;
 
+        [NodeMember]
         public CGameCtnMediaClip ClipIntro { get; set; }
 
+        [NodeMember]
         public CGameCtnMediaClipGroup ClipGroupInGame { get; set; }
 
+        [NodeMember]
         public CGameCtnMediaClipGroup ClipGroupEndRace { get; set; }
 
+        [NodeMember]
         public CGameCtnMediaClip ClipAmbiance { get; set; }
 
+        [NodeMember]
         public FileRef CustomMusicPackDesc { get; set; }
 
+        [NodeMember]
         public byte[] HashedPassword
         {
             get
@@ -408,6 +445,7 @@ namespace GBX.NET.Engines.Game
             set => hashedPassword = value;
         }
 
+        [NodeMember]
         public uint? CRC32
         {
             get
@@ -421,6 +459,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// Position of the thumnail camera.
         /// </summary>
+        [NodeMember]
         public Vec3? ThumbnailPosition
         {
             get
@@ -434,6 +473,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// Pitch, yaw and roll of the thumbnail camera in radians.
         /// </summary>
+        [NodeMember]
         public Vec3? ThumbnailPitchYawRoll
         {
             get
@@ -447,6 +487,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// Thumbnail camera FOV.
         /// </summary>
+        [NodeMember]
         public float? ThumbnailFOV
         {
             get
@@ -457,6 +498,7 @@ namespace GBX.NET.Engines.Game
             set => thumbnailFOV = value;
         }
 
+        [NodeMember]
         public Task<CHmsLightMapCache> LightmapCache
         {
             get
@@ -467,6 +509,7 @@ namespace GBX.NET.Engines.Game
             set => lightmapCache = value;
         }
 
+        [NodeMember]
         public List<CGameCtnAnchoredObject> AnchoredObjects
         {
             get
@@ -477,6 +520,7 @@ namespace GBX.NET.Engines.Game
             set => anchoredObjects = value;
         }
 
+        [NodeMember]
         public Task<CGameCtnZoneGenealogy[]> Genealogies
         {
             get
@@ -487,6 +531,7 @@ namespace GBX.NET.Engines.Game
             set => genealogies = value;
         }
 
+        [NodeMember]
         public CScriptTraitsMetadata ScriptMetadata
         {
             get
@@ -497,6 +542,7 @@ namespace GBX.NET.Engines.Game
             set => scriptMetadata = value;
         }
 
+        [NodeMember]
         public string ObjectiveTextAuthor
         {
             get
@@ -507,6 +553,7 @@ namespace GBX.NET.Engines.Game
             set => objectiveTextAuthor = value;
         }
 
+        [NodeMember]
         public string ObjectiveTextGold
         {
             get
@@ -517,6 +564,7 @@ namespace GBX.NET.Engines.Game
             set => objectiveTextGold = value;
         }
 
+        [NodeMember]
         public string ObjectiveTextSilver
         {
             get
@@ -527,6 +575,7 @@ namespace GBX.NET.Engines.Game
             set => objectiveTextSilver = value;
         }
 
+        [NodeMember]
         public string ObjectiveTextBronze
         {
             get
@@ -537,6 +586,7 @@ namespace GBX.NET.Engines.Game
             set => objectiveTextBronze = value;
         }
 
+        [NodeMember]
         public IReadOnlyCollection<Meta> Embeds
         {
             get
@@ -546,6 +596,7 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        [NodeMember]
         public ZipFile EmbedZip
         {
             get
@@ -2528,6 +2579,67 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnChallenge node;
+
+            public bool? TMObjective_IsLapRace => node.TMObjective_IsLapRace;
+            public int? TMObjective_NbLaps => node.TMObjective_NbLaps;
+            public Meta MapInfo => node.MapInfo;
+            public string MapUid => node.MapUid;
+            public string AuthorLogin => node.AuthorLogin;
+            public string MapName => node.MapName;
+            public TrackKind? Kind => node.Kind;
+            public string Password => node.Password;
+            public Meta Decoration => node.Decoration;
+            public Collection Collection => node.Collection;
+            public Vec2? MapOrigin => node.MapOrigin;
+            public Vec2? MapTarget => node.MapTarget;
+            public string TitleID => node.TitleID;
+            public string BuildVersion => node.BuildVersion;
+            public string Comments => node.Comments;
+            public int? AuthorVersion => node.AuthorVersion;
+            public string AuthorNickname => node.AuthorNickname;
+            public string AuthorZone => node.AuthorZone;
+            public string AuthorExtraInfo => node.AuthorExtraInfo;
+            public Meta Vehicle => node.Vehicle;
+            public CGameCtnChallengeParameters ChallengeParameters => node.ChallengeParameters;
+            public CGameCtnCollectorList BlockStock => node.BlockStock;
+            public Int3[] Checkpoints => node.Checkpoints;
+            public FileRef ModPackDesc => node.ModPackDesc;
+            public PlayMode? Mode => node.Mode;
+            public Int3? Size => node.Size;
+            public bool? NeedUnlock => node.NeedUnlock;
+            public List<CGameCtnBlock> Blocks => node.Blocks;
+            public int NbBlocks => node.NbBlocks;
+            public CGameCtnMediaClip ClipIntro => node.ClipIntro;
+            public CGameCtnMediaClipGroup ClipGroupInGame => node.ClipGroupInGame;
+            public CGameCtnMediaClipGroup ClipGroupEndRace => node.ClipGroupEndRace;
+            public CGameCtnMediaClip ClipAmbiance => node.ClipAmbiance;
+            public FileRef CustomMusicPackDesc => node.CustomMusicPackDesc;
+            public string HashedPassword => Convert.ToBase64String(node.HashedPassword);
+            public uint? CRC32 => node.CRC32;
+            public Vec3? ThumbnailPosition => node.ThumbnailPosition;
+            public Vec3? ThumbnailPitchYawRoll => node.ThumbnailPitchYawRoll;
+            public float? ThumbnailFOV => node.ThumbnailFOV;
+            public Task<CHmsLightMapCache> LightmapCache => node.LightmapCache;
+            public List<CGameCtnAnchoredObject> AnchoredObjects => node.AnchoredObjects;
+            public Task<CGameCtnZoneGenealogy[]> Genealogies => node.Genealogies;
+            public CScriptTraitsMetadata ScriptMetadata => node.ScriptMetadata;
+            public string ObjectiveTextAuthor => node.ObjectiveTextAuthor;
+            public string ObjectiveTextGold => node.ObjectiveTextGold;
+            public string ObjectiveTextSilver => node.ObjectiveTextSilver;
+            public string ObjectiveTextBronze => node.ObjectiveTextBronze;
+            public IReadOnlyCollection<Meta> Embeds => node.Embeds;
+            public ZipFile EmbedZip => node.EmbedZip;
+
+            public DebugView(CGameCtnChallenge node) => this.node = node;
+        }
 
         #endregion
     }

@@ -1,14 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03139000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock
     {
+        #region Properties
+
+        [NodeMember]
         public float Start { get; set; }
+
+        [NodeMember]
         public float End { get; set; }
+
+        #endregion
+
+        #region Chunks
+
+        #region 0x000 chunk
 
         [Chunk(0x03139000)]
         public class Chunk03139000 : Chunk<CGameCtnMediaBlockFxCameraMap>
@@ -19,6 +32,10 @@ namespace GBX.NET.Engines.Game
                 n.End = rw.Single(n.End);
             }
         }
+
+        #endregion
+
+        #region 0x001 chunk
 
         [Chunk(0x03139001)]
         public class Chunk03139001 : Chunk<CGameCtnMediaBlockFxCameraMap>
@@ -47,5 +64,23 @@ namespace GBX.NET.Engines.Game
                 rw.FileRef(Unknown);
             }
         }
+
+        #endregion
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnMediaBlockFxCameraMap node;
+
+            public float Start => node.Start;
+            public float End => node.End;
+
+            public DebugView(CGameCtnMediaBlockFxCameraMap node) => this.node = node;
+        }
+
+        #endregion
     }
 }

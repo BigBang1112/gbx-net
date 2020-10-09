@@ -10,21 +10,45 @@ using System.Diagnostics;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03093000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnReplayRecord : Node
     {
+        #region Properties
+
+        [NodeMember]
         public Task<GameBox<CGameCtnChallenge>> Track { get; set; }
 
+        [NodeMember]
         public int? AuthorVersion { get; set; }
+
+        [NodeMember]
         public string AuthorLogin { get; set; }
+
+        [NodeMember]
         public string AuthorNickname { get; set; }
+
+        [NodeMember]
         public string AuthorZone { get; set; }
+
+        [NodeMember]
         public string AuthorExtraInfo { get; set; }
 
+        [NodeMember]
         public CGameCtnGhost[] Ghosts { get; set; }
+
+        [NodeMember]
         public long[] Extras { get; set; }
+
+        [NodeMember]
         public CGameCtnMediaClip Clip { get; set; }
+
+        [NodeMember]
         public CPlugEntRecordData RecordData { get; set; }
+
+        [NodeMember]
         public CCtnMediaBlockEventTrackMania Events { get; set; }
+
+        #endregion
 
         #region Chunks
 
@@ -326,6 +350,29 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnReplayRecord node;
+
+            public Task<GameBox<CGameCtnChallenge>> Track => node.Track;
+            public int? AuthorVersion => node.AuthorVersion;
+            public string AuthorLogin => node.AuthorLogin;
+            public string AuthorNickname => node.AuthorNickname;
+            public string AuthorZone => node.AuthorZone;
+            public string AuthorExtraInfo => node.AuthorExtraInfo;
+            public CGameCtnGhost[] Ghosts => node.Ghosts;
+            public long[] Extras => node.Extras;
+            public CGameCtnMediaClip Clip => node.Clip;
+            public CPlugEntRecordData RecordData => node.RecordData;
+            public CCtnMediaBlockEventTrackMania Events => node.Events;
+
+            public DebugView(CGameCtnReplayRecord node) => this.node = node;
+        }
 
         #endregion
     }

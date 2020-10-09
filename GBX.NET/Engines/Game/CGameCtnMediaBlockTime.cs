@@ -1,9 +1,21 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System.Diagnostics;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x03085000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockTime : CGameCtnMediaBlock
     {
+        #region Properties
+
+        [NodeMember]
         public Key[] Keys { get; set; }
+
+        #endregion
+
+        #region Chunks
+
+        #region 0x000 chunk
 
         [Chunk(0x03085000)]
         public class Chunk03085000 : Chunk<CGameCtnMediaBlockTime>
@@ -25,10 +37,31 @@
             }
         }
 
+        #endregion
+
+        #endregion
+
+        #region Other classes
+
         public class Key : MediaBlockKey
         {
             public float TimeValue { get; set; }
             public float Tangent { get; set; }
         }
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnMediaBlockTime node;
+
+            public Key[] Keys => node.Keys;
+
+            public DebugView(CGameCtnMediaBlockTime node) => this.node = node;
+        }
+
+        #endregion
     }
 }

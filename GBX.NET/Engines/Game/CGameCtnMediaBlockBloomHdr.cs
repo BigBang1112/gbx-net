@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace GBX.NET.Engines.Game
@@ -8,9 +9,15 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - Bloom HDR (0x03128000)
     /// </summary>
     [Node(0x03128000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock
     {
+        #region Properties
+
+        [NodeMember]
         public Key[] Keys { get; set; }
+
+        #endregion
 
         #region Chunks
 
@@ -45,11 +52,28 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Other classes
+
         public class Key : MediaBlockKey
         {
             public float Intensity { get; set; }
             public float StreaksIntensity { get; set; }
             public float StreaksAttenuation { get; set; }
         }
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnMediaBlockBloomHdr node;
+
+            public Key[] Keys => node.Keys;
+
+            public DebugView(CGameCtnMediaBlockBloomHdr node) => this.node = node;
+        }
+
+        #endregion
     }
 }
