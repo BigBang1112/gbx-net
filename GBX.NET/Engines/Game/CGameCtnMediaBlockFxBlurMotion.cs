@@ -1,16 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03082000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur
     {
+        #region Properties
+
+        [NodeMember]
         public float? Start { get; set; }
 
+        [NodeMember]
         public float? End { get; set; }
+
+        #endregion
 
         #region Chunks
 
@@ -27,6 +35,20 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnMediaBlockFxBlurMotion node;
+
+            public float? Start => node.Start;
+            public float? End => node.End;
+
+            public DebugView(CGameCtnMediaBlockFxBlurMotion node) => this.node = node;
+        }
 
         #endregion
     }

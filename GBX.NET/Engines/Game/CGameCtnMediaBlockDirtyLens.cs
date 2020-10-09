@@ -1,9 +1,21 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System.Diagnostics;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x03165000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock
     {
+        #region Properties
+
+        [NodeMember]
         public Key[] Keys { get; set; }
+
+        #endregion
+
+        #region Chunks
+
+        #region 0x000 chunk
 
         [Chunk(0x03165000)]
         public class Chunk03165000 : Chunk<CGameCtnMediaBlockDirtyLens>
@@ -38,10 +50,31 @@
                 });
             }
         }
-    }
 
-    public class Key : MediaBlockKey
-    {
-        public float Intensity { get; set; }
+        #endregion
+
+        #endregion
+
+        #region Other classes
+
+        public class Key : MediaBlockKey
+        {
+            public float Intensity { get; set; }
+        }
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnMediaBlockDirtyLens node;
+
+            public Key[] Keys => node.Keys;
+
+            public DebugView(CGameCtnMediaBlockDirtyLens node) => this.node = node;
+        }
+
+        #endregion
     }
 }

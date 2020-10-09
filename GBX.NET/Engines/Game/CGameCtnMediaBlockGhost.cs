@@ -86,10 +86,14 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Other classes
+
         public class Key : MediaBlockKey
         {
             public float Unknown { get; set; }
         }
+
+        #endregion
 
         #region Debug view
 

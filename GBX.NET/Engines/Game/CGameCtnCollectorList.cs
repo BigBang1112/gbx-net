@@ -12,6 +12,7 @@ namespace GBX.NET.Engines.Game
     {
         #region Properties
 
+        [NodeMember]
         public Collector[] CollectorStock { get; set; }
 
         #endregion

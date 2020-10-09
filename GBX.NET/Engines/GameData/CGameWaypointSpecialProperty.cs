@@ -77,10 +77,7 @@ namespace GBX.NET.Engines.GameData
             public string Tag => node.Tag;
             public int Order => node.Order;
 
-            public DebugView(CGameWaypointSpecialProperty node)
-            {
-                this.node = node;
-            }
+            public DebugView(CGameWaypointSpecialProperty node) => this.node = node;
         }
 
         #endregion

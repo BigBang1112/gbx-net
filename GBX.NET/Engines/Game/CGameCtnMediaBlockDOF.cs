@@ -1,14 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.Diagnostics;
 
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03126000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockDOF : CGameCtnMediaBlock
     {
+        #region Properties
+
+        [NodeMember]
         public Key[] Keys { get; set; }
+
+        #endregion
+
+        #region Chunks
+
+        #region 0x002 chunk
 
         [Chunk(0x03126002)]
         public class Chunk03126002 : Chunk<CGameCtnMediaBlockDOF>
@@ -50,6 +57,12 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #endregion
+
+        #region Other classes
+
         public class Key : MediaBlockKey
         {
             public float ZFocus { get; set; }
@@ -57,5 +70,20 @@ namespace GBX.NET.Engines.Game
 
             public object[] Unknown { get; set; }
         }
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnMediaBlockDOF node;
+
+            public Key[] Keys => node.Keys;
+
+            public DebugView(CGameCtnMediaBlockDOF node) => this.node = node;
+        }
+
+        #endregion
     }
 }

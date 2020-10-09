@@ -645,6 +645,8 @@ namespace GBX.NET.Engines.Game
         {
             private readonly CGameCtnGhost node;
 
+            public bool IsReplaying => node.IsReplaying;
+
             public Meta PlayerModel => node.PlayerModel;
             public FileRef[] SkinPackDescs => node.SkinPackDescs;
             public string GhostNickname => node.GhostNickname;

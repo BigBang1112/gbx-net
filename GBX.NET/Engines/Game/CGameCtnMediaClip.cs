@@ -11,6 +11,8 @@ namespace GBX.NET.Engines.Game
     [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaClip : Node
     {
+        #region Properties
+
         /// <summary>
         /// Name of the clip. This property is <see cref="null"/> if the clip is an intro, ambiance or podium.
         /// </summary>
@@ -23,7 +25,13 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public List<CGameCtnMediaTrack> Tracks { get; set; }
 
+        #endregion
+
+        #region Methods
+
         public override string ToString() => string.IsNullOrEmpty(Name) ? "Unnamed clip" : Name;
+
+        #endregion
 
         #region Chunks
 

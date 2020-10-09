@@ -7,14 +7,28 @@ namespace GBX.NET.Engines.Game
     [Node(0x0311D000)]
     public class CGameCtnZoneGenealogy : Node
     {
+        #region Properties
+
+        [NodeMember]
         public string[] Zones { get; set; }
+
+        [NodeMember]
         public int BaseHeight { get; set; }
+
+        [NodeMember]
         public string CurrentZone { get; set; }
 
-        public override string ToString()
-        {
-            return string.Join(" ", Zones);
-        }
+        #endregion
+
+        #region Methods
+
+        public override string ToString() => string.Join(" ", Zones);
+
+        #endregion
+
+        #region Chunks
+
+        #region 0x002 chunk
 
         [Chunk(0x0311D002)]
         public class Chunk0311D002 : Chunk<CGameCtnZoneGenealogy>
@@ -29,5 +43,24 @@ namespace GBX.NET.Engines.Game
                 n.CurrentZone = rw.LookbackString(n.CurrentZone);
             }
         }
+
+        #endregion
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnZoneGenealogy node;
+
+            public string[] Zones => node.Zones;
+            public int BaseHeight => node.BaseHeight;
+            public string CurrentZone => node.CurrentZone;
+
+            public DebugView(CGameCtnZoneGenealogy node) => this.node = node;
+        }
+
+        #endregion
     }
 }

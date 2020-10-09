@@ -11,6 +11,8 @@ namespace GBX.NET.Engines.Game
     [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaTrack : Node
     {
+        #region Properties
+
         /// <summary>
         /// Name of the track.
         /// </summary>
@@ -23,7 +25,13 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public List<CGameCtnMediaBlock> Blocks { get; set; }
 
+        #endregion
+
+        #region Methods
+
         public override string ToString() => Name;
+
+        #endregion
 
         #region Chunks
 

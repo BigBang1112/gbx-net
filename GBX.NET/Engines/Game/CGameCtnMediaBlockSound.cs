@@ -1,16 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
     [Node(0x030A7000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockSound : CGameCtnMediaBlock
     {
+        #region Properties
+
+        [NodeMember]
         public FileRef Sound { get; set; }
 
+        [NodeMember]
         public Key[] Keys { get; set; }
+
+        #endregion
 
         #region Chunks
 
@@ -102,9 +110,27 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Other classes
+
         public class Key : MediaBlockKey
         {
             public float[] Unknown { get; set; }
         }
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnMediaBlockSound node;
+
+            public FileRef Sound => node.Sound;
+            public Key[] Keys => node.Keys;
+
+            public DebugView(CGameCtnMediaBlockSound node) => this.node = node;
+        }
+
+        #endregion
     }
 }
