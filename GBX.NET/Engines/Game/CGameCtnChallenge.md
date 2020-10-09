@@ -1299,7 +1299,6 @@ void Read(GameBoxReader r)
         {
             Vec3 snapPointPosition = r.ReadVec3();
             Vec3 snapPointPitchYawRoll = r.ReadVec3();
-		}
 	}
 }
 ```
