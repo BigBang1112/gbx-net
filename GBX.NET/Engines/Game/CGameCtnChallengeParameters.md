@@ -12,7 +12,7 @@
 - [0x007](#0x007)
 - [0x008 (stunts)](#0x008-stunts)
 - [0x00A - skippable](#0x00A---skippable)
-- [0x00D](#0x00D)
+- [0x00D (race validate ghost)](#0x00D-race-validate-ghost)
 - [0x00E - skippable (map type)](#0x00E---skippable-map-type)
 
 ### 0x000
@@ -223,20 +223,14 @@ void Read(GameBoxReader r)
 }
 ```
 
-### 0x00D
+### 0x00D (race validate ghost)
 
 ```cs
 void Read(GameBoxReader r)
 {
-    int a = r.ReadInt32();
+    CGameCtnGhost raceValidateGhost = r.ReadNodeRef<CGameCtnGhost>();
 }
 ```
-
-#### Unknown variables
-
-| Variable | ~ | ~ | ~ | ~ | ~
-| --- | --- | --- | --- | --- | ---
-| int a | ~ | ~ | ~ | ~ | ~
 
 ### 0x00E - skippable (map type)
 

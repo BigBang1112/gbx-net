@@ -1257,8 +1257,8 @@ void Read(GameBoxReader r)
     int version = r.ReadInt32();
 
     List<Vec3> vectors = new List<Vec3>();
-    while (r.BaseStream.Position < r.BaseStream.Length)
-        vectors.Add(new Vec3(r.ReadSingle(), r.ReadSingle(), r.ReadSingle()));
+    while (r.BaseStream.Position < r.BaseStream.Length) // read the skippable chunk to the end basically
+        vectors.Add(r.ReadVec3());
 }
 ```
 
@@ -1282,3 +1282,24 @@ To understand the vectors, the amount of them is undefined in this chunk. The st
 You can't tell the amount of free blocks without the chunk 0x01F (because of the snap points). Free block in the block flags is defined by the bit 29. If the bit is set, the block is a free block. Free blocks also have a coordinate (0, 0, 0).
 
 You also can't tell the amount of free blocks without knowing the amount of snap points the block model has. It is unsure where this information is available, but probably in the CGameCtnBlockInfo nodes which are available in the PAK files.
+
+Therefore, to read the chunk with a known `CGameCtnBlock` and `CGameCtnBlockInfo`:
+
+```cs
+void Read(GameBoxReader r)
+{
+    int version = r.ReadInt32();
+
+    foreach (var block in Blocks.Where(x => x.IsFree))
+    {
+        Vec3 absolutePositionInMap = r.ReadVec3();
+        Vec3 pitchYawRoll = r.ReadVec3();
+
+        foreach (var snapPoint in block.BlockInfo.SnapPoints)
+        {
+            Vec3 snapPointPosition = r.ReadVec3();
+            Vec3 snapPointPitchYawRoll = r.ReadVec3();
+		}
+	}
+}
+```
