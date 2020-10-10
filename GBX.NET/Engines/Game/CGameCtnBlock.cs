@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Engines.GameData;
+using System;
 using System.Diagnostics;
 
 namespace GBX.NET.Engines.Game
@@ -16,6 +17,13 @@ namespace GBX.NET.Engines.Game
         const int isGroundBit = 12;
         const int isGhostBit = 28;
         const int isFreeBit = 29;
+
+        #endregion
+
+        #region Fields
+
+        private Vec3 absolutePositionInMap;
+        private Vec3 pitchYawRoll;
 
         #endregion
 
@@ -87,12 +95,29 @@ namespace GBX.NET.Engines.Game
         }
 
         /// <summary>
-        /// If this block is a free block. Feature available since TM®. You can't set this property because of the strict ordering these blocks follow. Taken from flags.
+        /// If this block is a free block. Feature available since TM®. Set this property first before modifying free transformation.
         /// </summary>
         [NodeMember]
         public bool IsFree
         {
             get => Flags > -1 && (Flags & (1 << isFreeBit)) != 0;
+            set
+            {
+                if (value)
+                {
+                    Flags |= 1 << isFreeBit;
+                    absolutePositionInMap = Coord * (32, 8, 32);
+                    Coord = (0, 0, 0);
+                }
+                else
+                {
+                    Flags &= ~(1 << isGhostBit);
+                    absolutePositionInMap = Coord * (32, 8, 32);
+                    Coord = (Convert.ToInt32(absolutePositionInMap.X / 32),
+                        Convert.ToInt32(absolutePositionInMap.Y / 8),
+                        Convert.ToInt32(absolutePositionInMap.Z / 32));
+                }
+            }
         }
 
         /// <summary>
@@ -153,6 +178,38 @@ namespace GBX.NET.Engines.Game
             set => Variant = (int)(Flags & 0xFFFFFFF0) + (value & 15);
         }
 
+        [NodeMember]
+        public Vec3 AbsolutePositionInMap
+        {
+            get
+            {
+                if (IsFree)
+                    return absolutePositionInMap;
+                return Coord * (32, 8, 32);
+            }
+            set
+            {
+                if (IsFree)
+                    absolutePositionInMap = value;
+            }
+        }
+
+        [NodeMember]
+        public Vec3 PitchYawRoll
+        {
+            get
+            {
+                if (IsFree)
+                    return pitchYawRoll;
+                return ((int)Direction * (float)(Math.PI / 2), 0, 0);
+            }
+            set
+            {
+                if (IsFree)
+                    pitchYawRoll = value;
+            }
+        }
+
         #endregion
 
         public CGameCtnBlock()
@@ -176,10 +233,7 @@ namespace GBX.NET.Engines.Game
             Parameters = parameters;
         }
 
-        public override string ToString()
-        {
-            return $"{Name} {Coord}";
-        }
+        public override string ToString() => $"{Name} {Coord}";
 
         #region Chunks
 

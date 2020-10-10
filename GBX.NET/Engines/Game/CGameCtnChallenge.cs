@@ -417,9 +417,6 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public ReadOnlyCollection<FreeBlock> FreeBlocks => GetChunk<Chunk0304305F>()?.FreeBlocks;
-
-        [NodeMember]
         public CGameCtnMediaClip ClipIntro { get; set; }
 
         [NodeMember]
@@ -651,40 +648,18 @@ namespace GBX.NET.Engines.Game
             AnchoredObjects.Add(it);
         }
 
-        public FreeBlock PlaceFreeBlock(string name, Vec3 position, Vec3 pitchYawRoll)
+        public CGameCtnBlock PlaceFreeBlock(string name, Vec3 position, Vec3 pitchYawRoll)
         {
-            var block = new CGameCtnBlock(name, Direction.North, (0, 0, 0), 0x20000000, null, null, null);
-            var freeBlock = new FreeBlock(block)
+            var block = new CGameCtnBlock(name, Direction.North, (0, 0, 0), 0)
             {
-                Position = position,
+                IsFree = true,
+                AbsolutePositionInMap = position,
                 PitchYawRoll = pitchYawRoll
             };
 
             Blocks.Add(block);
 
-            var freeBlockChunk = CreateChunk<Chunk0304305F>();
-            freeBlockChunk.Vectors.Add(position);
-            freeBlockChunk.Vectors.Add(pitchYawRoll);
-
-            var freeBlockList = Resources.FreeBlock.Split('\n');
-            var freeBlockSnapCount = freeBlockList.FirstOrDefault(x => x.StartsWith(name + ":"));
-
-            if (freeBlockSnapCount != null)
-            {
-                if (int.TryParse(freeBlockSnapCount.Split(':')[1], out int v))
-                {
-                    if (v > 0)
-                    {
-                        throw new NotImplementedException("Cannot place a free block with snaps.");
-                    }
-                }
-                else
-                    throw new Exception("Wrong amount of snaps format.");
-            }
-            else
-                throw new Exception("Cannot place a free block with an unknown amount of snaps.");
-
-            return freeBlock;
+            return block;
         }
 
         /// <summary>
@@ -2522,6 +2497,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x05F skippable chunk (free blocks) [TM®️]
         /// </summary>
         [Chunk(0x0304305F, "free blocks")]
+        [IgnoreChunk]
         public class Chunk0304305F : SkippableChunk<CGameCtnChallenge>
         {
             public int Version { get; set; }
@@ -2530,36 +2506,6 @@ namespace GBX.NET.Engines.Game
             /// List of vectors that can't be directly figured out without information from <see cref="Chunk01F"/>.
             /// </summary>
             public List<Vec3> Vectors { get; set; } = new List<Vec3>();
-
-            [IgnoreDataMember]
-            public ReadOnlyCollection<FreeBlock> FreeBlocks
-            {
-                get
-                {
-                    List<FreeBlock> freeBlocks = new List<FreeBlock>();
-
-                    var enumerator = Vectors.GetEnumerator();
-
-                    foreach(var b in Node.Blocks.Where(x => x.IsFree))
-                    {
-                        enumerator.MoveNext();
-                        var position = enumerator.Current;
-
-                        enumerator.MoveNext();
-                        var pitchYawRoll = enumerator.Current;
-
-                        var fb = new FreeBlock(b)
-                        {
-                            Position = position,
-                            PitchYawRoll = pitchYawRoll
-                        };
-
-                        freeBlocks.Add(fb);
-                    }
-
-                    return new ReadOnlyCollection<FreeBlock>(freeBlocks);
-                }
-            }
 
             public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
             {
