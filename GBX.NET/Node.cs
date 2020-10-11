@@ -135,15 +135,22 @@ namespace GBX.NET
 
             uint? previousChunk = null;
 
-            while (true)
+            while (r.BaseStream.Position < r.BaseStream.Length)
             {
+                if (r.BaseStream.Position + 4 >= r.BaseStream.Length)
+                {
+                    Debug.WriteLine($"Unexpected end of the stream: {r.BaseStream.Position}/{r.BaseStream.Length}");
+                    var bytes = r.ReadBytes((int)(r.BaseStream.Length - r.BaseStream.Position));
+                    break;
+                }
+
                 var chunkID = r.ReadUInt32();
 
                 if (chunkID == 0xFACADE01) // no more chunks
                 {
                     break;
                 }
-                else if(chunkID == 0)
+                else if (chunkID == 0)
                 {
                     // weird case after ending node reference
                 }
@@ -172,7 +179,7 @@ namespace GBX.NET
                     {
                         if (chunkID != 0 && !reflected)
                         {
-                            Debug.WriteLine($"Wrong chunk format or unskippable chunk: 0x{chunkID:x8} ({Names.Where(x => x.Key == Chunk.Remap(chunkID&0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})"); // Read till facade
+                            Debug.WriteLine($"Wrong chunk format or unskippable chunk: 0x{chunkID:x8} ({Names.Where(x => x.Key == Chunk.Remap(chunkID & 0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})"); // Read till facade
                             node.FaultyChunk = chunkID;
 
                             if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
@@ -196,7 +203,7 @@ namespace GBX.NET
                     }
 
                     Debug.WriteLine("Skippable chunk: " + chunkID.ToString("x"));
-                    
+
                     var chunkDataSize = r.ReadInt32();
                     Debug.WriteLine("Chunk size: " + chunkDataSize);
                     var chunkData = new byte[chunkDataSize];
