@@ -190,13 +190,13 @@ namespace GBX.NET
                 Write(-1);
             else
             {
-                if (body.AuxilaryNodes.Contains(node))
+                if (body.AuxilaryNodes.ContainsValue(node))
                 {
-                    Write(body.AuxilaryNodes.FindIndex(x => x.Equals(node)));
+                    Write(body.AuxilaryNodes.FirstOrDefault(x => x.Equals(node)).Key);
                 }
                 else
                 {
-                    body.AuxilaryNodes.Add(node);
+                    body.AuxilaryNodes[body.AuxilaryNodes.Count] = node;
                     Write(body.AuxilaryNodes.Count);
                     Write(node.ID);
                     node.Write(this, body.GBX.Game);

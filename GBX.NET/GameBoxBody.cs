@@ -233,7 +233,7 @@ namespace GBX.NET
     public class GameBoxBody : GameBoxPart
     {
         [IgnoreDataMember]
-        public List<Node> AuxilaryNodes { get; } = new List<Node>();
+        public SortedDictionary<int, Node> AuxilaryNodes { get; } = new SortedDictionary<int, Node>();
 
         public GameBoxBody(GameBox gbx) : base(gbx)
         {

@@ -131,7 +131,7 @@ namespace GBX.NET
         {
             var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
-            if (index >= 0 && body.AuxilaryNodes.ElementAtOrDefault(index) == null) // If index is 0 or bigger and the node wasn't read yet
+            if (index >= 0 && !body.AuxilaryNodes.ContainsKey(index)) // If index is 0 or bigger and the node wasn't read yet
             {
                 var before = BaseStream.Position;
 
@@ -140,9 +140,9 @@ namespace GBX.NET
                     T node = Node.Parse<T>(this);
 
                     if (index >= body.AuxilaryNodes.Count)
-                        body.AuxilaryNodes.Add(node);
+                        body.AuxilaryNodes[index] = node;
                     else
-                        body.AuxilaryNodes.Insert(index, node);
+                        body.AuxilaryNodes[index] = node;
                 }
                 catch
                 {
@@ -152,9 +152,10 @@ namespace GBX.NET
 
             if (index < 0) // If aux node index is below 0 then there's not much to solve
                 return null;
-            var nod = (T)body.AuxilaryNodes.ElementAtOrDefault(index); // Tries to get the available node from index
+            body.AuxilaryNodes.TryGetValue(index, out Node n); // Tries to get the available node from index
+            T nod = n as T;
             if (nod == null) // But sometimes it indexes the node reference that is further in the expected indexes
-                return (T)body.AuxilaryNodes.Last(); // So it grabs the last one instead, needs to be further tested
+                return (T)body.AuxilaryNodes.Last().Value; // So it grabs the last one instead, needs to be further tested
             else // If the node is presented at the index, then it's simple
                 return nod;
         }
