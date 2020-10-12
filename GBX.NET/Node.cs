@@ -137,7 +137,7 @@ namespace GBX.NET
 
             while (r.BaseStream.Position < r.BaseStream.Length)
             {
-                if (r.BaseStream.Position + 4 >= r.BaseStream.Length)
+                if (r.BaseStream.Position + 4 > r.BaseStream.Length)
                 {
                     Debug.WriteLine($"Unexpected end of the stream: {r.BaseStream.Position}/{r.BaseStream.Length}");
                     var bytes = r.ReadBytes((int)(r.BaseStream.Length - r.BaseStream.Position));
