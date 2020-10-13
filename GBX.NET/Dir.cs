@@ -4,8 +4,16 @@ using System.Text;
 
 namespace GBX.NET
 {
+    /// <summary>
+    /// A direction-related feature set.
+    /// </summary>
     public static class Dir
     {
+        /// <summary>
+        /// Gets the next clockwise direction.
+        /// </summary>
+        /// <param name="d">Direction to reference.</param>
+        /// <returns>Returns the next clockwise direction.</returns>
         public static Direction Clockwise(Direction d)
         {
             switch (d)
@@ -22,7 +30,12 @@ namespace GBX.NET
                     throw new Exception();
             }
         }
-
+    
+        /// <summary>
+        /// Gets the next counter clockwise direction.
+        /// </summary>
+        /// <param name="d">Direction to reference.</param>
+        /// <returns>Returns the next counter clockwise direction.</returns>
         public static Direction CounterClockwise(Direction d)
         {
             switch (d)

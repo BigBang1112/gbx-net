@@ -1,16 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E009000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameWaypointSpecialProperty : Node
     {
+        #region Properties
+
+        [NodeMember]
         public int? Spawn { get; set; }
+
+        [NodeMember]
         public string Tag { get; set; }
+
+        [NodeMember]
         public int Order { get; set; }
+
+        #endregion
 
         #region Chunks
 
@@ -53,6 +64,21 @@ namespace GBX.NET.Engines.GameData
         }
 
         #endregion
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameWaypointSpecialProperty node;
+
+            public int? Spawn => node.Spawn;
+            public string Tag => node.Tag;
+            public int Order => node.Order;
+
+            public DebugView(CGameWaypointSpecialProperty node) => this.node = node;
+        }
 
         #endregion
     }

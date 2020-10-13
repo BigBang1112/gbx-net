@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.Serialization;
 
 namespace GBX.NET
@@ -10,6 +11,7 @@ namespace GBX.NET
         public int Z { get; }
 
         [IgnoreDataMember]
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         public Int3 XZ => new Int3(X, 0, Z);
 
         public Int3(int x, int y, int z)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
@@ -9,8 +10,11 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - Camera ingame
     /// </summary>
     [Node(0x03084000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera
     {
+        #region Enums
+
         public enum EGameCam : int
         {
             Behind,
@@ -30,12 +34,29 @@ namespace GBX.NET.Engines.Game
             External_2
         }
 
+        #endregion
+
+        #region Properties
+
+        [NodeMember]
         public float Start { get; set; }
+
+        [NodeMember]
         public float End { get; set; } = 3;
+
+        [NodeMember]
         public EGameCam? Type { get; set; }
+
+        [NodeMember]
         public EGameCam2? Type2 { get; set; }
+
+        [NodeMember]
         public int Target { get; set; } = -1;
+
+        [NodeMember]
         public string GameCam { get; set; }
+
+        #endregion
 
         #region Chunks
 
@@ -120,6 +141,24 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnMediaBlockCameraGame node;
+
+            public float Start => node.Start;
+            public float End => node.End;
+            public EGameCam? Type => node.Type;
+            public EGameCam2? Type2 => node.Type2;
+            public int Target => node.Target;
+            public string GameCam => node.GameCam;
+
+            public DebugView(CGameCtnMediaBlockCameraGame node) => this.node = node;
+        }
 
         #endregion
     }

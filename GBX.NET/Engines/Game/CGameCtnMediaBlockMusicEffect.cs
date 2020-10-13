@@ -1,14 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
     [Node(0x030A6000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock
     {
+        #region Properties
+
+        [NodeMember]
         public Key[] Keys { get; set; }
+
+        #endregion
+
+        #region Chunks
+
+        #region 0x000 chunk
 
         [Chunk(0x030A6000)]
         public class Chunk030A6000 : Chunk<CGameCtnMediaBlockMusicEffect>
@@ -33,6 +44,10 @@ namespace GBX.NET.Engines.Game
                 });
             }
         }
+
+        #endregion
+
+        #region 0x001 chunk
 
         [Chunk(0x030A6001)]
         public class Chunk030A6001 : Chunk<CGameCtnMediaBlockMusicEffect>
@@ -61,10 +76,31 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #endregion
+
+        #region Other classes
+
         public class Key : MediaBlockKey
         {
             public float MusicVolume { get; set; }
             public float SoundVolume { get; set; }
         }
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnMediaBlockMusicEffect node;
+
+            public Key[] Keys => node.Keys;
+
+            public DebugView(CGameCtnMediaBlockMusicEffect node) => this.node = node;
+        }
+
+        #endregion
     }
 }

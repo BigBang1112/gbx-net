@@ -12,8 +12,15 @@ namespace GBX.NET.Engines.Game
     [Node(0x0308F000)]
     public class CGameCtnChallengeGroup : Node
     {
+        #region Properties
+
+        [NodeMember]
         public string Default { get; set; }
+
+        [NodeMember]
         public MapInfo[] MapInfos { get; set; }
+
+        #endregion
 
         #region Chunks
 
@@ -64,6 +71,8 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Other classes
+
         public class MapInfo
         {
             public Meta Metadata { get; set; }
@@ -74,5 +83,21 @@ namespace GBX.NET.Engines.Game
                 return Path.GetFileName(FilePath);
             }
         }
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnChallengeGroup node;
+
+            public string Default => node.Default;
+            public MapInfo[] MapInfos => node.MapInfos;
+
+            public DebugView(CGameCtnChallengeGroup node) => this.node = node;
+        }
+
+        #endregion
     }
 }

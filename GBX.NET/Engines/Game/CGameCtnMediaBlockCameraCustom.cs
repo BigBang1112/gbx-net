@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Numerics;
@@ -11,9 +12,15 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block (0x030A2000)
     /// </summary>
     [Node(0x030A2000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera
     {
+        #region Properties
+
+        [NodeMember]
         public List<Key> Keys { get; set; } = new List<Key>();
+
+        #endregion
 
         #region Chunks
 
@@ -259,6 +266,8 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Other classes
+
         public class Key : MediaBlockKey
         {
             public Vec3 Position { get; set; }
@@ -278,5 +287,20 @@ namespace GBX.NET.Engines.Game
 
             public object[] Unknown { get; set; }
         }
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnMediaBlockCameraCustom node;
+
+            public List<Key> Keys => node.Keys;
+
+            public DebugView(CGameCtnMediaBlockCameraCustom node) => this.node = node;
+        }
+
+        #endregion
     }
 }

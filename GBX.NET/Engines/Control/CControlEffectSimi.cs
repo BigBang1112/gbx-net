@@ -1,10 +1,25 @@
-﻿namespace GBX.NET.Engines.Control
+﻿using System.Diagnostics;
+
+namespace GBX.NET.Engines.Control
 {
     [Node(0x07010000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CControlEffectSimi : Node
     {
+        #region Properties
+
+        [NodeMember]
         public Key[] Keys { get; set; }
 
+        #endregion
+
+        #region Chunks
+
+        #region 0x004 chunk
+
+        /// <summary>
+        /// CControlEffectSimi 0x004 chunk
+        /// </summary>
         [Chunk(0x07010004)]
         public class Chunk004 : Chunk<CControlEffectSimi>
         {
@@ -56,6 +71,13 @@
             }
         }
 
+        #endregion
+
+        #region 0x005 chunk
+
+        /// <summary>
+        /// CControlEffectSimi 0x005 chunk
+        /// </summary>
         [Chunk(0x07010005)]
         public class Chunk005 : Chunk<CControlEffectSimi>
         {
@@ -103,6 +125,12 @@
             }
         }
 
+        #endregion
+
+        #endregion
+
+        #region Other classes
+
         public class Key
         {
             public float Time { get; set; }
@@ -118,5 +146,20 @@
             public float Depth { get; set; }
             public float[] Unknown { get; set; }
         }
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CControlEffectSimi node;
+
+            public Key[] Keys => node.Keys;
+
+            public DebugView(CControlEffectSimi node) => this.node = node;
+        }
+
+        #endregion
     }
 }

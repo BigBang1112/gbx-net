@@ -115,7 +115,7 @@ namespace GBX.NET
             if (classID == uint.MaxValue) return null;
 
             if (!AvailableClasses.TryGetValue(classID.Value, out Type type))
-                throw new NotImplementedException($"Node ID 0x{classID.Value:x8} is not implemented. ({Names.Where(x => x.Key == Chunk.Remap(classID.Value)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
+                throw new NotImplementedException($"Node ID 0x{classID.Value:X8} is not implemented. ({Names.Where(x => x.Key == Chunk.Remap(classID.Value)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
 
             T node = (T)Activator.CreateInstance(type);
 
@@ -157,9 +157,9 @@ namespace GBX.NET
                 else
                 {
                     if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
-                        Log.Write($"[{node.ClassName}] 0x{chunkID:x8} ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})");
+                        Log.Write($"[{node.ClassName}] 0x{chunkID:X8} ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})");
                     else
-                        Log.Write($"~ [{node.ClassName}] 0x{chunkID:x8} ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})");
+                        Log.Write($"~ [{node.ClassName}] 0x{chunkID:X8} ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})");
                 }
 
                 Type chunkClass = null;
@@ -179,13 +179,13 @@ namespace GBX.NET
                     {
                         if (chunkID != 0 && !reflected)
                         {
-                            Debug.WriteLine($"Wrong chunk format or unskippable chunk: 0x{chunkID:x8} ({Names.Where(x => x.Key == Chunk.Remap(chunkID & 0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})"); // Read till facade
+                            Debug.WriteLine($"Wrong chunk format or unskippable chunk: 0x{chunkID:X8} ({Names.Where(x => x.Key == Chunk.Remap(chunkID & 0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})"); // Read till facade
                             node.FaultyChunk = chunkID;
 
                             if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
-                                Log.Write($"[{node.ClassName}] 0x{chunkID:x8} ERROR (wrong chunk format or unknown unskippable chunk)", ConsoleColor.Red);
+                                Log.Write($"[{node.ClassName}] 0x{chunkID:X8} ERROR (wrong chunk format or unknown unskippable chunk)", ConsoleColor.Red);
                             else
-                                Log.Write($"~ [{node.ClassName}] 0x{chunkID:x8} ERROR (wrong chunk format or unknown unskippable chunk)", ConsoleColor.Red);
+                                Log.Write($"~ [{node.ClassName}] 0x{chunkID:X8} ERROR (wrong chunk format or unknown unskippable chunk)", ConsoleColor.Red);
 
                             var buffer = BitConverter.GetBytes(chunkID);
                             using (var restMs = new MemoryStream(ushort.MaxValue))
@@ -202,7 +202,7 @@ namespace GBX.NET
                         break;
                     }
 
-                    Debug.WriteLine("Skippable chunk: " + chunkID.ToString("x"));
+                    Debug.WriteLine("Skippable chunk: " + chunkID.ToString("X"));
 
                     var chunkDataSize = r.ReadInt32();
                     Debug.WriteLine("Chunk size: " + chunkDataSize);
@@ -237,14 +237,14 @@ namespace GBX.NET
                     }
                     else
                     {
-                        Debug.WriteLine("Unknown skippable chunk: " + chunkID.ToString("x"));
+                        Debug.WriteLine("Unknown skippable chunk: " + chunkID.ToString("X"));
                         chunks.Add((Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkID, chunkData));
                     }
                 }
 
                 if (reflected && !skippable)
                 {
-                    Debug.WriteLine("Unskippable chunk: " + chunkID.ToString("x8"));
+                    Debug.WriteLine("Unskippable chunk: " + chunkID.ToString("X8"));
 
                     if (skippable) // Does it ever happen?
                     {

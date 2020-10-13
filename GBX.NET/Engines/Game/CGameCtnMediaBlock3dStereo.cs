@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace GBX.NET.Engines.Game
@@ -8,9 +9,15 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - 3D stereo (0x03024000)
     /// </summary>
     [Node(0x03024000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock
     {
+        #region Properties
+
+        [NodeMember]
         public Key[] Keys { get; set; }
+
+        #endregion
 
         #region Chunks
 
@@ -43,10 +50,27 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Other classes
+
         public class Key : MediaBlockKey
         {
             public float UpToMax { get; set; }
             public float ScreenDist { get; set; }
         }
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnMediaBlock3dStereo node;
+
+            public Key[] Keys => node.Keys;
+
+            public DebugView(CGameCtnMediaBlock3dStereo node) => this.node = node;
+        }
+
+        #endregion
     }
 }
