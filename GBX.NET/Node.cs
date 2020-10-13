@@ -275,7 +275,15 @@ namespace GBX.NET
                     var posBefore = r.BaseStream.Position;
 
                     GameBoxReaderWriter gbxrw = new GameBoxReaderWriter(r);
-                    chunk.ReadWrite(node, gbxrw);
+
+                    try
+                    {
+                        chunk.ReadWrite(node, gbxrw);
+                    }
+                    catch (EndOfStreamException)
+                    {
+                        Debug.WriteLine($"Unexpected end of the stream while reading the chunk.");
+                    }
 
                     chunk.Progress = (int)(r.BaseStream.Position - posBefore);
 
