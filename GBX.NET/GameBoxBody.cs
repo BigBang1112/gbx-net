@@ -31,6 +31,7 @@ namespace GBX.NET
             using (var gbxr = new GameBoxReader(s, this))
             {
                 gbx.MainNode = Node.Parse<T>(gbxr, mainNodeID);
+
                 Debug.WriteLine("Amount read: " + (s.Position / (float)s.Length).ToString("P"));
 
                 byte[] restBuffer = new byte[s.Length - s.Position];
