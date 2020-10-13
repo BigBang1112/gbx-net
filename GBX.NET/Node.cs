@@ -135,154 +135,162 @@ namespace GBX.NET
 
             uint? previousChunk = null;
 
-            while (true)
+            while (r.BaseStream.Position < r.BaseStream.Length)
             {
-                try
+                if (r.BaseStream.Position + 4 > r.BaseStream.Length)
                 {
-                    var chunkID = r.ReadUInt32();
+                    Debug.WriteLine($"Unexpected end of the stream: {r.BaseStream.Position}/{r.BaseStream.Length}");
+                    var bytes = r.ReadBytes((int)(r.BaseStream.Length - r.BaseStream.Position));
+                    break;
+                }
 
-                    if (chunkID == 0xFACADE01) // no more chunks
+                var chunkID = r.ReadUInt32();
+
+                if (chunkID == 0xFACADE01) // no more chunks
+                {
+                    break;
+                }
+                else if (chunkID == 0)
+                {
+                    // weird case after ending node reference
+                }
+                else
+                {
+                    if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
+                        Log.Write($"[{node.ClassName}] 0x{chunkID:X8} ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})");
+                    else
+                        Log.Write($"~ [{node.ClassName}] 0x{chunkID:X8} ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})");
+                }
+
+                Type chunkClass = null;
+
+                var chunkRemapped = Chunk.Remap(chunkID);
+
+                var reflected = ((chunkRemapped & 0xFFFFF000) == node.ID || AvailableInheritanceClasses[type].Contains(chunkRemapped & 0xFFFFF000))
+                    && (AvailableChunkClasses[type].TryGetValue(chunkRemapped, out chunkClass) || AvailableChunkClasses[type].TryGetValue(chunkID & 0xFFF, out chunkClass));
+
+                var skippable = reflected && chunkClass.BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>);
+
+                if (!reflected || skippable)
+                {
+                    var skip = r.ReadUInt32();
+
+                    if (skip != 0x534B4950)
                     {
+                        if (chunkID != 0 && !reflected)
+                        {
+                            Debug.WriteLine($"Wrong chunk format or unskippable chunk: 0x{chunkID:X8} ({Names.Where(x => x.Key == Chunk.Remap(chunkID & 0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})"); // Read till facade
+                            node.FaultyChunk = chunkID;
+
+                            if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
+                                Log.Write($"[{node.ClassName}] 0x{chunkID:X8} ERROR (wrong chunk format or unknown unskippable chunk)", ConsoleColor.Red);
+                            else
+                                Log.Write($"~ [{node.ClassName}] 0x{chunkID:X8} ERROR (wrong chunk format or unknown unskippable chunk)", ConsoleColor.Red);
+
+                            var buffer = BitConverter.GetBytes(chunkID);
+                            using (var restMs = new MemoryStream(ushort.MaxValue))
+                            {
+                                restMs.Write(buffer, 0, buffer.Length);
+
+                                while (r.PeekUInt32() != 0xFACADE01)
+                                    restMs.WriteByte(r.ReadByte());
+
+                                node.Rest = restMs.ToArray();
+                            }
+                            Debug.WriteLine("FACADE found.");
+                        }
                         break;
                     }
-                    else if (chunkID == 0)
+
+                    Debug.WriteLine("Skippable chunk: " + chunkID.ToString("X"));
+
+                    var chunkDataSize = r.ReadInt32();
+                    Debug.WriteLine("Chunk size: " + chunkDataSize);
+                    var chunkData = new byte[chunkDataSize];
+                    if (chunkDataSize > 0)
+                        r.Read(chunkData, 0, chunkDataSize);
+
+                    if (reflected && chunkClass.GetCustomAttribute<IgnoreChunkAttribute>() == null)
                     {
-                        // weird case after ending node reference
-                    }
-                    else
-                    {
-                        if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
-                            Log.Write($"[{node.ClassName}] 0x{chunkID:X8} ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})");
-                        else
-                            Log.Write($"~ [{node.ClassName}] 0x{chunkID:X8} ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})");
-                    }
-
-                    Type chunkClass = null;
-
-                    var chunkRemapped = Chunk.Remap(chunkID);
-
-                    var reflected = ((chunkRemapped & 0xFFFFF000) == node.ID || AvailableInheritanceClasses[type].Contains(chunkRemapped & 0xFFFFF000))
-                        && (AvailableChunkClasses[type].TryGetValue(chunkRemapped, out chunkClass) || AvailableChunkClasses[type].TryGetValue(chunkID & 0xFFF, out chunkClass));
-
-                    var skippable = reflected && chunkClass.BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>);
-
-                    if (!reflected || skippable)
-                    {
-                        var skip = r.ReadUInt32();
-
-                        if (skip != 0x534B4950)
-                        {
-                            if (chunkID != 0 && !reflected)
-                            {
-                                Debug.WriteLine($"Wrong chunk format or unskippable chunk: 0x{chunkID:X8} ({Names.Where(x => x.Key == Chunk.Remap(chunkID & 0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})"); // Read till facade
-                                node.FaultyChunk = chunkID;
-
-                                if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
-                                    Log.Write($"[{node.ClassName}] 0x{chunkID:X8} ERROR (wrong chunk format or unknown unskippable chunk)", ConsoleColor.Red);
-                                else
-                                    Log.Write($"~ [{node.ClassName}] 0x{chunkID:X8} ERROR (wrong chunk format or unknown unskippable chunk)", ConsoleColor.Red);
-
-                                var buffer = BitConverter.GetBytes(chunkID);
-                                using (var restMs = new MemoryStream(ushort.MaxValue))
-                                {
-                                    restMs.Write(buffer, 0, buffer.Length);
-
-                                    while (r.PeekUInt32() != 0xFACADE01)
-                                        restMs.WriteByte(r.ReadByte());
-
-                                    node.Rest = restMs.ToArray();
-                                }
-                                Debug.WriteLine("FACADE found.");
-                            }
-                            break;
-                        }
-
-                        Debug.WriteLine("Skippable chunk: " + chunkID.ToString("X"));
-
-                        var chunkDataSize = r.ReadInt32();
-                        Debug.WriteLine("Chunk size: " + chunkDataSize);
-                        var chunkData = new byte[chunkDataSize];
-                        if (chunkDataSize > 0)
-                            r.Read(chunkData, 0, chunkDataSize);
-
-                        if (reflected && chunkClass.GetCustomAttribute<IgnoreChunkAttribute>() == null)
-                        {
-                            ISkippableChunk c;
-
-                            var constructor = chunkClass.GetConstructors().First();
-                            var constructorParams = constructor.GetParameters();
-                            if (constructorParams.Length == 0)
-                            {
-                                c = (ISkippableChunk)constructor.Invoke(new object[0]);
-                                c.Node = node;
-                                c.Part = body;
-                                c.Stream = new MemoryStream(chunkData, 0, chunkData.Length, false);
-                                if (chunkData == null || chunkData.Length == 0)
-                                    c.Discovered = true;
-                                c.OnLoad();
-                            }
-                            else if (constructorParams.Length == 2)
-                                c = (ISkippableChunk)constructor.Invoke(new object[] { node, chunkData });
-                            else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
-
-                            chunks.Add((Chunk)c);
-
-                            if (chunkClass.GetCustomAttribute<ChunkAttribute>().ProcessSync)
-                                c.Discover();
-                        }
-                        else
-                        {
-                            Debug.WriteLine("Unknown skippable chunk: " + chunkID.ToString("X"));
-                            chunks.Add((Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkID, chunkData));
-                        }
-                    }
-
-                    if (reflected && !skippable)
-                    {
-                        Debug.WriteLine("Unskippable chunk: " + chunkID.ToString("X8"));
-
-                        if (skippable) // Does it ever happen?
-                        {
-                            var skip = r.ReadUInt32();
-                            var chunkDataSize = r.ReadInt32();
-                        }
-
-                        IChunk chunk;
+                        ISkippableChunk c;
 
                         var constructor = chunkClass.GetConstructors().First();
                         var constructorParams = constructor.GetParameters();
                         if (constructorParams.Length == 0)
                         {
-                            chunk = (IChunk)constructor.Invoke(new object[0]);
-                            chunk.Node = node;
+                            c = (ISkippableChunk)constructor.Invoke(new object[0]);
+                            c.Node = node;
+                            c.Part = body;
+                            c.Stream = new MemoryStream(chunkData, 0, chunkData.Length, false);
+                            if (chunkData == null || chunkData.Length == 0)
+                                c.Discovered = true;
+                            c.OnLoad();
                         }
-                        else if (constructorParams.Length == 1)
-                            chunk = (IChunk)constructor.Invoke(new object[] { node });
+                        else if (constructorParams.Length == 2)
+                            c = (ISkippableChunk)constructor.Invoke(new object[] { node, chunkData });
                         else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
 
-                        chunk.Part = body;
-                        chunk.OnLoad();
+                        chunks.Add((Chunk)c);
 
-                        chunks.Add((Chunk)chunk);
+                        if (chunkClass.GetCustomAttribute<ChunkAttribute>().ProcessSync)
+                            c.Discover();
+                    }
+                    else
+                    {
+                        Debug.WriteLine("Unknown skippable chunk: " + chunkID.ToString("X"));
+                        chunks.Add((Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkID, chunkData));
+                    }
+                }
 
-                        r.Chunk = (Chunk)chunk; // Set chunk temporarily for reading
+                if (reflected && !skippable)
+                {
+                    Debug.WriteLine("Unskippable chunk: " + chunkID.ToString("X8"));
 
-                        var posBefore = r.BaseStream.Position;
-
-                        GameBoxReaderWriter gbxrw = new GameBoxReaderWriter(r);
-                        chunk.ReadWrite(node, gbxrw);
-
-                        chunk.Progress = (int)(r.BaseStream.Position - posBefore);
-
-                        r.Chunk = null;
+                    if (skippable) // Does it ever happen?
+                    {
+                        var skip = r.ReadUInt32();
+                        var chunkDataSize = r.ReadInt32();
                     }
 
-                    previousChunk = chunkID;
+                    IChunk chunk;
+
+                    var constructor = chunkClass.GetConstructors().First();
+                    var constructorParams = constructor.GetParameters();
+                    if (constructorParams.Length == 0)
+                    {
+                        chunk = (IChunk)constructor.Invoke(new object[0]);
+                        chunk.Node = node;
+                    }
+                    else if (constructorParams.Length == 1)
+                        chunk = (IChunk)constructor.Invoke(new object[] { node });
+                    else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
+
+                    chunk.Part = body;
+                    chunk.OnLoad();
+
+                    chunks.Add((Chunk)chunk);
+
+                    r.Chunk = (Chunk)chunk; // Set chunk temporarily for reading
+
+                    var posBefore = r.BaseStream.Position;
+
+                    GameBoxReaderWriter gbxrw = new GameBoxReaderWriter(r);
+
+                    try
+                    {
+                        chunk.ReadWrite(node, gbxrw);
+                    }
+                    catch (EndOfStreamException)
+                    {
+                        Debug.WriteLine($"Unexpected end of the stream while reading the chunk.");
+                    }
+
+                    chunk.Progress = (int)(r.BaseStream.Position - posBefore);
+
+                    r.Chunk = null;
                 }
-                catch (EndOfStreamException)
-                {
-                    break;
-                }
+
+                previousChunk = chunkID;
             }
 
             if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
