@@ -6,19 +6,35 @@ namespace GBX.NET.Engines.Game
     [Node(0x0304E000)]
     public class CGameCtnBlockInfo : CGameCtnCollector
     {
+        public enum EWayPointType
+        {
+            Start,
+            Finish,
+            Checkpoint,
+            None,
+            StartFinish,
+            Dispenser
+        }
+
         public string Name { get; set; }
-        public CGameCtnBlockInfoVariantGround VariantGround { get; set; }
-        public CGameCtnBlockInfoVariantAir VariantAir { get; set; }
-        public CGameWaypointSpecialProperty Waypoint { get; set; }
+        public CGameCtnBlockInfoVariantGround VariantBaseGround { get; set; }
+        public CGameCtnBlockInfoVariantAir VariantBaseAir { get; set; }
+        public CGameCtnBlockInfoVariantGround[] AdditionalVariantsGround { get; set; }
+        public CGameCtnBlockInfoVariantAir[] AdditionalVariantsAir { get; set; }
+        public Node CharPhySpecialProperty { get; set; }
+        public Node CharPhySpecialPropertyCustomizable { get; set; }
         public CGamePodiumInfo PodiumInfo { get; set; }
         public CGamePodiumInfo IntroInfo { get; set; }
         public bool IconAutoUseGround { get; set; }
         public bool NoRespawn { get; set; }
+        public EWayPointType WayPointType { get; set; }
+        public string SymmetricalBlockInfoId { get; set; }
+        public Direction Dir { get; set; }
 
         [Chunk(0x0304E005)]
         public class Chunk0304E005 : Chunk<CGameCtnBlockInfo>
         {
-            public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw) // WIP
             {
                 n.Name = rw.LookbackString(n.Name);
                 rw.Int32(Unknown);
@@ -136,19 +152,39 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                n.Waypoint = rw.Reader.ReadNodeRef<CGameWaypointSpecialProperty>();
-                n.PodiumInfo = rw.NodeRef<CGamePodiumInfo>(n.PodiumInfo);
-                n.IntroInfo = rw.NodeRef<CGamePodiumInfo>(n.IntroInfo);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.String(Unknown);
+                n.CharPhySpecialProperty = rw.NodeRef(n.CharPhySpecialProperty);
 
-                if (Version >= 7)
+                if (Version < 7)
                 {
-                    rw.Int32(Unknown);
-                    n.VariantGround = Parse<CGameCtnBlockInfoVariantGround>(rw.Reader, 0x0315C000);
-                    n.VariantAir = Parse<CGameCtnBlockInfoVariantAir>(rw.Reader, 0x0315D000);
+
                 }
+
+                if (Version >= 2)
+                {
+                    n.PodiumInfo = rw.NodeRef<CGamePodiumInfo>(n.PodiumInfo);
+
+                    if (Version >= 3)
+                    {
+                        n.IntroInfo = rw.NodeRef<CGamePodiumInfo>(n.IntroInfo);
+
+                        if (Version >= 4)
+                        {
+                            rw.Int32(Unknown);
+
+                            if (Version == 5)
+                                rw.Boolean(Unknown);
+
+                            if (Version >= 8)
+                            {
+                                rw.Boolean(Unknown);
+                                rw.String(Unknown); // MatModifier
+                                rw.String(Unknown); // Grass
+                            }
+                        }
+                    }
+                }
+
+                
             }
         }
 
@@ -157,8 +193,104 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                n.VariantGround = Parse<CGameCtnBlockInfoVariantGround>(rw.Reader, 0x0315C000);
-                n.VariantAir = Parse<CGameCtnBlockInfoVariantAir>(rw.Reader, 0x0315D000);
+                n.VariantBaseGround = Parse<CGameCtnBlockInfoVariantGround>(rw.Reader, 0x0315C000);
+                n.VariantBaseAir = Parse<CGameCtnBlockInfoVariantAir>(rw.Reader, 0x0315D000);
+            }
+        }
+
+        [Chunk(0x0304E026)]
+        public class Chunk0304E026 : Chunk<CGameCtnBlockInfo>
+        {
+            public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
+            {
+                n.WayPointType = (EWayPointType)rw.Int32((int)n.WayPointType);
+            }
+        }
+
+        [Chunk(0x0304E027)]
+        public class Chunk0304E027 : Chunk<CGameCtnBlockInfo>
+        {
+            public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
+                n.AdditionalVariantsGround = rw.Array(n.AdditionalVariantsGround,
+                    i => rw.Reader.ReadNodeRef<CGameCtnBlockInfoVariantGround>(),
+                    x => rw.Writer.Write(x));
+            }
+        }
+
+        [Chunk(0x0304E028)]
+        public class Chunk0304E028 : Chunk<CGameCtnBlockInfo>
+        {
+            public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
+            {
+                n.SymmetricalBlockInfoId = rw.LookbackString(n.SymmetricalBlockInfoId);
+                n.Dir = (Direction)rw.Int32((int)n.Dir);
+            }
+        }
+
+        [Chunk(0x0304E029)]
+        public class Chunk0304E029 : Chunk<CGameCtnBlockInfo>
+        {
+            public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
+            }
+        }
+
+        [Chunk(0x0304E02A)]
+        public class Chunk0304E02A : Chunk<CGameCtnBlockInfo>
+        {
+            public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+                rw.Array<float>(Unknown, 24);
+            }
+        }
+
+        [Chunk(0x0304E02B)]
+        public class Chunk0304E02B : Chunk<CGameCtnBlockInfo>
+        {
+            public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+            }
+        }
+
+        [Chunk(0x0304E02C)]
+        public class Chunk0304E02C : Chunk<CGameCtnBlockInfo>
+        {
+            public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
+                n.AdditionalVariantsAir = rw.Array(n.AdditionalVariantsAir,
+                    i => rw.Reader.ReadNodeRef<CGameCtnBlockInfoVariantAir>(),
+                    x => rw.Writer.Write(x));
+            }
+        }
+
+        [Chunk(0x0304E02F)]
+        public class Chunk0304E02F : Chunk<CGameCtnBlockInfo>
+        {
+            public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
+                rw.Byte(Unknown);
+                rw.Int16(Unknown);
+            }
+        }
+
+        [Chunk(0x0304E031)]
+        public class Chunk0304E031 : Chunk<CGameCtnBlockInfo>
+        {
+            public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
             }
         }
     }

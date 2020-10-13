@@ -4,8 +4,12 @@
     public class CGameCtnBlockInfoVariant : Node
     {
         public string Name { get; set; }
-        public CGameCtnBlockInfoMobil Mobil { get; set; }
+        public CGameCtnBlockInfoMobil[] Mobils { get; set; }
         public CGameCtnBlockUnitInfo[] BlockUnitInfos { get; set; }
+        public bool HasManualSymmetryH { get; set; }
+        public float SpawnTransX { get; set; }
+        public float SpawnTransY { get; set; }
+        public float SpawnTransZ { get; set; }
 
         [Chunk(0x0315B002)]
         public class Chunk0315B002 : Chunk<CGameCtnBlockInfoVariant>
@@ -46,14 +50,14 @@
             {
                 Version = rw.Int32(Version);
                 rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                n.Mobil = Parse<CGameCtnBlockInfoMobil>(rw.Reader);
+                n.Mobils = rw.Array(n.Mobils,
+                    i => rw.Reader.ReadNodeRef<CGameCtnBlockInfoMobil>(),
+                    x => rw.Writer.Write(x));
 
                 if(Version >= 2)
                 {
-                    rw.NodeRef(Unknown);
-                    rw.NodeRef(Unknown);
+                    rw.Int32(Unknown);
+                    rw.Int32(Unknown);
                 }
             }
         }
@@ -81,6 +85,12 @@
                 {
                     rw.Int32(Unknown);
                     rw.Int32(Unknown);
+
+                    if(Version >= 11)
+                    {
+                        rw.Int32(Unknown);
+                        rw.Int32(Unknown);
+                    }
                 }
             }
         }
@@ -98,9 +108,12 @@
         [Chunk(0x0315B008)]
         public class Chunk0315B008 : Chunk<CGameCtnBlockInfoVariant>
         {
+            public int Version { get; set; }
+
             public override void ReadWrite(CGameCtnBlockInfoVariant n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                Version = rw.Int32(Version);
+                var hsdh = rw.Reader.PeekUInt32();
                 n.BlockUnitInfos = rw.Array(n.BlockUnitInfos,
                     i => rw.Reader.ReadNodeRef<CGameCtnBlockUnitInfo>(),
                     x => rw.Writer.Write(x));
@@ -109,11 +122,12 @@
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
+                rw.Vec3(Unknown);
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                n.Name = rw.LookbackString(n.Name);
+                if (Version >= 2)
+                    rw.Int32(Unknown);
+                rw.String(Unknown);
             }
         }
 
@@ -123,7 +137,7 @@
             public override void ReadWrite(CGameCtnBlockInfoVariant n, GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Reader.ReadArray(i => rw.Reader.ReadArray<int>(5));
                 rw.Int32(Unknown);
             }
         }

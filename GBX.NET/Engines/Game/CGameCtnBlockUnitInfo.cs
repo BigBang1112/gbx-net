@@ -5,6 +5,9 @@
     {
         public Int3 OffsetE { get; set; }
         public CGameCtnBlockInfoClip[] Clips { get; set; }
+        public string TerrainModifierId { get; set; }
+
+        public override string ToString() => OffsetE.ToString();
 
         [Chunk(0x03036000)]
         public class Chunk03036000 : Chunk<CGameCtnBlockUnitInfo>
@@ -60,7 +63,7 @@
         {
             public override void ReadWrite(CGameCtnBlockUnitInfo n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                n.TerrainModifierId = rw.LookbackString(n.TerrainModifierId);
             }
         }
 
@@ -86,6 +89,26 @@
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
+            }
+        }
+
+        [Chunk(0x0303600C)]
+        public class Chunk0303600C : Chunk<CGameCtnBlockUnitInfo>
+        {
+            public byte[] UnknownData { get; set; }
+
+            public override void ReadWrite(CGameCtnBlockUnitInfo n, GameBoxReaderWriter rw)
+            {
+                /*rw.Int32(Unknown);
+                rw.Int16(Unknown);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);*/
+
+                UnknownData = rw.Reader.ReadTillFacade();
             }
         }
     }
