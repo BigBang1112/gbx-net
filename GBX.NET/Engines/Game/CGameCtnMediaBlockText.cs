@@ -1,16 +1,25 @@
 ﻿using GBX.NET.Engines.Control;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
     [Node(0x030A8000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockText : CGameCtnMediaBlock
     {
+        #region Properties
+
+        [NodeMember]
         public string Text { get; set; }
+
+        [NodeMember]
         public CControlEffectSimi Simi { get; set; }
+
+        #endregion
 
         #region Chunks
 
@@ -42,6 +51,20 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnMediaBlockText node;
+
+            public string Text => node.Text;
+            public CControlEffectSimi Simi => node.Simi;
+
+            public DebugView(CGameCtnMediaBlockText node) => this.node = node;
+        }
 
         #endregion
     }

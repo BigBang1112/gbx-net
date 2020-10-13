@@ -14,7 +14,7 @@ namespace GBX.NET
         /// Stream of unknown bytes
         /// </summary>
         [IgnoreDataMember]
-        public MemoryStream Unknown { get; } = new MemoryStream();
+        public UnknownStream Unknown { get; } = new UnknownStream();
 
         /// <summary>
         /// A virtual property usable to parse unknown data from the <see cref="Unknown"/> stream.

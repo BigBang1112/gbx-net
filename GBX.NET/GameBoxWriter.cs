@@ -157,8 +157,8 @@ namespace GBX.NET
                 Write(0xFFFFFFFF);
             else if (l.LookbackStrings.Contains(value))
                 Write(value.Index + 1 + 0x40000000);
-            else if (LookbackString.CollectionIDs.ContainsValue(value))
-                Write(LookbackString.CollectionIDs.FirstOrDefault(x => x.Value == value).Key);
+            else if (int.TryParse(value, out int cID) && LookbackString.CollectionIDs.ContainsKey(cID))
+                Write(cID);
             else
             {
                 Write(0x40000000);
@@ -175,7 +175,7 @@ namespace GBX.NET
         public void Write(Meta meta, ILookbackable lookbackable)
         {
             Write(new LookbackString(meta.ID, lookbackable));
-            Write(new LookbackString(meta.Collection, lookbackable));
+            Write(meta.Collection.ToLookbackString(lookbackable));
             Write(new LookbackString(meta.Author, lookbackable));
         }
 
@@ -190,13 +190,13 @@ namespace GBX.NET
                 Write(-1);
             else
             {
-                if (body.AuxilaryNodes.Contains(node))
+                if (body.AuxilaryNodes.ContainsValue(node))
                 {
-                    Write(body.AuxilaryNodes.FindIndex(x => x.Equals(node)));
+                    Write(body.AuxilaryNodes.FirstOrDefault(x => x.Equals(node)).Key);
                 }
                 else
                 {
-                    body.AuxilaryNodes.Add(node);
+                    body.AuxilaryNodes[body.AuxilaryNodes.Count] = node;
                     Write(body.AuxilaryNodes.Count);
                     Write(node.ID);
                     node.Write(this, body.GBX.Game);

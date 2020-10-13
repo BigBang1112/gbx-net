@@ -98,7 +98,7 @@ namespace GBX.NET
             else if (index >> 30 == 0)
             {
                 if (LookbackString.CollectionIDs.TryGetValue((int)index, out string val))
-                    return new LookbackString(val, lookbackable);
+                    return new LookbackString(index.ToString(), lookbackable);
                 else
                     return new LookbackString("???", lookbackable);
             }
@@ -131,22 +131,15 @@ namespace GBX.NET
         {
             var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
-            if (index >= 0 && body.AuxilaryNodes.ElementAtOrDefault(index) == null) // If index is 0 or bigger and the node wasn't read yet
-            {
-                T node = Node.Parse<T>(body, this);
-                node.ParentChunk = Chunk;
-
-                if (index >= body.AuxilaryNodes.Count)
-                    body.AuxilaryNodes.Add(node);
-                else
-                    body.AuxilaryNodes.Insert(index, node);
-            }
+            if (index >= 0 && !body.AuxilaryNodes.ContainsKey(index)) // If index is 0 or bigger and the node wasn't read yet
+                body.AuxilaryNodes[index] = Node.Parse<T>(this);
 
             if (index < 0) // If aux node index is below 0 then there's not much to solve
                 return null;
-            var nod = (T)body.AuxilaryNodes.ElementAtOrDefault(index); // Tries to get the available node from index
+            body.AuxilaryNodes.TryGetValue(index, out Node n); // Tries to get the available node from index
+            T nod = n as T;
             if (nod == null) // But sometimes it indexes the node reference that is further in the expected indexes
-                return (T)body.AuxilaryNodes.Last(); // So it grabs the last one instead, needs to be further tested
+                return (T)body.AuxilaryNodes.Last().Value; // So it grabs the last one instead, needs to be further tested
             else // If the node is presented at the index, then it's simple
                 return nod;
         }

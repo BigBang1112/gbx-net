@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -34,43 +35,6 @@ namespace GBX.NET
                 {
                     if (userData != null && userData.Length > 0)
                     {
-                        var headerChunkBaseType = typeof(HeaderChunk<>).MakeGenericType(availableClass);
-
-                        var availableChunkClasses = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
-                        && x.Namespace.StartsWith("GBX.NET.Engines") && x.BaseType == headerChunkBaseType
-                        && x.GetCustomAttribute<ChunkAttribute>().ClassID == modernID).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ID);
-
-                        var inheritanceClasses = new List<uint>();
-                        if (GetBaseType(availableClass) == typeof(Node))
-                            inheritanceClasses = GetInheritance(availableClass);
-
-                        List<uint> GetInheritance(Type t)
-                        {
-                            List<uint> classes = new List<uint>();
-
-                            Type cur = t.BaseType;
-
-                            while (cur != typeof(Node))
-                            {
-                                classes.Add(cur.GetCustomAttribute<NodeAttribute>().ID);
-                                cur = cur.BaseType;
-                            }
-
-                            return classes;
-                        }
-
-                        foreach (var cls in inheritanceClasses)
-                        {
-                            var availableInheritanceClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
-                               && x.Namespace.StartsWith("GBX.NET.Engines") && (GetBaseType(x) == typeof(Node))
-                               && (x.GetCustomAttribute<NodeAttribute>().ID == cls)).FirstOrDefault();
-
-                            foreach (var chunkType in availableInheritanceClass.GetNestedTypes().Where(x => x.IsClass
-                                && x.Namespace.StartsWith("GBX.NET.Engines") && x.BaseType == typeof(Chunk)
-                                && (x.GetCustomAttribute<ChunkAttribute>().ClassID == cls)).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ChunkID))
-                                availableChunkClasses[chunkType.Key + cls] = chunkType.Value;
-                        }
-
                         using (var ms = new MemoryStream(userData))
                         using (var r = new GameBoxReader(ms, this))
                         {
@@ -78,7 +42,7 @@ namespace GBX.NET
 
                             var chunks = new Chunk[numHeaderChunks];
 
-                            var chunkList = new Dictionary<uint, (int, bool)>();
+                            var chunkList = new Dictionary<uint, (int Size, bool IsHeavy)>();
 
                             for (var i = 0; i < numHeaderChunks; i++)
                             {
@@ -95,22 +59,29 @@ namespace GBX.NET
 
                             foreach (var c in chunkList)
                             {
-                                if (c.Value.Item2)
-                                    Log.Write($"| 0x{c.Key:x8} | {c.Value.Item1} B (Heavy)");
+                                if (c.Value.IsHeavy)
+                                    Log.Write($"| 0x{c.Key:X8} | {c.Value.Size} B (Heavy)");
                                 else
-                                    Log.Write($"| 0x{c.Key:x8} | {c.Value.Item1} B");
+                                    Log.Write($"| 0x{c.Key:X8} | {c.Value.Size} B");
                             }
 
                             int counter = 0;
                             foreach (var chunk in chunkList)
                             {
-                                var chunkId = chunk.Key;
-                                if (Node.Mappings.TryGetValue(chunk.Key & 0xFFFFF000, out uint remapped))
-                                    chunkId = remapped + (chunkId & 0xFFF);
+                                var chunkId = Chunk.Remap(chunk.Key);
+                                var nodeId = chunkId & 0xFFFFF000;
 
-                                var d = r.ReadBytes(chunk.Value.Item1);
+                                if (!Node.AvailableClasses.TryGetValue(nodeId, out Type nodeType))
+                                    Log.Write($"Node ID 0x{nodeId:X8} is not implemented. This occurs only in the header therefore it's not a fatal problem. ({Node.Names.Where(x => x.Key == nodeId).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
 
-                                if (availableChunkClasses.TryGetValue(chunkId, out Type type))
+                                var chunkTypes = new Dictionary<uint, Type>();
+
+                                if(nodeType != null)
+                                    Node.AvailableHeaderChunkClasses.TryGetValue(nodeType, out chunkTypes);
+
+                                var d = r.ReadBytes(chunk.Value.Size);
+
+                                if (chunkTypes.TryGetValue(chunkId, out Type type))
                                 {
                                     var constructor = type.GetConstructors().First();
                                     var constructorParams = constructor.GetParameters();
@@ -135,10 +106,12 @@ namespace GBX.NET
                                         ((ISkippableChunk)chunks[counter]).Discovered = true;
                                     }
 
-                                    ((IHeaderChunk)chunks[counter]).IsHeavy = chunk.Value.Item2;
+                                    ((IHeaderChunk)chunks[counter]).IsHeavy = chunk.Value.IsHeavy;
                                 }
+                                else if (nodeType != null)
+                                    chunks[counter] = (Chunk)Activator.CreateInstance(typeof(HeaderChunk<>).MakeGenericType(nodeType), GBX.MainNode, chunkId, d);
                                 else
-                                    chunks[counter] = new HeaderChunk<T>(GBX.MainNode, chunkId, d);
+                                    chunks[counter] = new HeaderChunk(chunkId, d) { IsHeavy = chunk.Value.IsHeavy };
 
                                 counter++;
                             }
@@ -173,44 +146,49 @@ namespace GBX.NET
 
                 if (GBX.Version >= 6)
                 {
-                    using (var userData = new MemoryStream())
-                    using (var gbxw = new GameBoxWriter(userData, this))
+                    if (Chunks == null)
                     {
-                        var gbxrw = new GameBoxReaderWriter(gbxw);
-
-                        Dictionary<uint, int> lengths = new Dictionary<uint, int>();
-
-                        foreach (var chunk in Chunks)
+                        w.Write(0);
+                    }
+                    else
+                    {
+                        using (var userData = new MemoryStream())
+                        using (var gbxw = new GameBoxWriter(userData, this))
                         {
-                            chunk.Unknown.Position = 0;
+                            var gbxrw = new GameBoxReaderWriter(gbxw);
 
-                            var pos = userData.Position;
-                            if (((ISkippableChunk)chunk).Discovered)
+                            Dictionary<uint, int> lengths = new Dictionary<uint, int>();
+
+                            foreach (var chunk in Chunks)
                             {
-                                ((IHeaderChunk)chunk).ReadWrite(gbxrw);
+                                chunk.Unknown.Position = 0;
+
+                                var pos = userData.Position;
+                                if (((ISkippableChunk)chunk).Discovered)
+                                    ((IHeaderChunk)chunk).ReadWrite(gbxrw);
+                                else
+                                    ((ISkippableChunk)chunk).Write(gbxw);
+
+                                lengths[chunk.ID] = (int)(userData.Position - pos);
                             }
-                            else
-                                ((ISkippableChunk)chunk).Write(gbxw);
 
-                            lengths[chunk.ID] = (int)(userData.Position - pos);
+                            // Actual data size plus the class id (4 bytes) and each length (4 bytes) plus the number of chunks integer
+                            w.Write((int)userData.Length + Chunks.Count * 8 + 4);
+
+                            // Write number of header chunks integer
+                            w.Write(Chunks.Count);
+
+                            foreach (Chunk chunk in Chunks)
+                            {
+                                w.Write(Chunk.Remap(chunk.ID, remap));
+                                var length = lengths[chunk.ID];
+                                if (((IHeaderChunk)chunk).IsHeavy)
+                                    length |= 1 << 31;
+                                w.Write(length);
+                            }
+
+                            w.Write(userData.ToArray(), 0, (int)userData.Length);
                         }
-
-                        // Actual data size plus the class id (4 bytes) and each length (4 bytes) plus the number of chunks integer
-                        w.Write((int)userData.Length + Chunks.Count * 8 + 4);
-
-                        // Write number of header chunks integer
-                        w.Write(Chunks.Count);
-
-                        foreach (Chunk chunk in Chunks)
-                        {
-                            w.Write(Chunk.Remap(chunk.ID, remap));
-                            var length = lengths[chunk.ID];
-                            if (((IHeaderChunk)chunk).IsHeavy)
-                                length |= 1 << 31;
-                            w.Write(length);
-                        }
-
-                        w.Write(userData.ToArray(), 0, (int)userData.Length);
                     }
                 }
 
@@ -223,29 +201,29 @@ namespace GBX.NET
             Write(w, numNodes, ClassIDRemap.Latest);
         }
 
-        public new TChunk CreateChunk<TChunk>(byte[] data) where TChunk : HeaderChunk<T>
+        public new TChunk CreateChunk<TChunk>(byte[] data) where TChunk : Chunk
         {
             return Chunks.Create<TChunk>(data);
         }
 
-        public new TChunk CreateChunk<TChunk>() where TChunk : HeaderChunk<T>
+        public new TChunk CreateChunk<TChunk>() where TChunk : Chunk
         {
             return CreateChunk<TChunk>(new byte[0]);
         }
 
-        public void InsertChunk(HeaderChunk<T> chunk)
+        public void InsertChunk(IHeaderChunk chunk)
         {
-            Chunks.Add(chunk);
+            Chunks.Add((Chunk)chunk);
         }
 
-        public new void DiscoverChunk<TChunk>() where TChunk : HeaderChunk<T>
+        public new void DiscoverChunk<TChunk>() where TChunk : IHeaderChunk
         {
             foreach (var chunk in Chunks)
                 if (chunk is TChunk c)
                     c.Discover();
         }
 
-        public new void DiscoverChunks<TChunk1, TChunk2>() where TChunk1 : HeaderChunk<T> where TChunk2 : HeaderChunk<T>
+        public new void DiscoverChunks<TChunk1, TChunk2>() where TChunk1 : IHeaderChunk where TChunk2 : IHeaderChunk
         {
             foreach (var chunk in Chunks)
             {
@@ -257,9 +235,9 @@ namespace GBX.NET
         }
 
         public new void DiscoverChunks<TChunk1, TChunk2, TChunk3>()
-            where TChunk1 : HeaderChunk<T>
-            where TChunk2 : HeaderChunk<T>
-            where TChunk3 : HeaderChunk<T>
+            where TChunk1 : IHeaderChunk
+            where TChunk2 : IHeaderChunk
+            where TChunk3 : IHeaderChunk
         {
             foreach (var chunk in Chunks)
             {
@@ -273,10 +251,10 @@ namespace GBX.NET
         }
 
         public new void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4>()
-            where TChunk1 : HeaderChunk<T>
-            where TChunk2 : HeaderChunk<T>
-            where TChunk3 : HeaderChunk<T>
-            where TChunk4 : HeaderChunk<T>
+            where TChunk1 : IHeaderChunk
+            where TChunk2 : IHeaderChunk
+            where TChunk3 : IHeaderChunk
+            where TChunk4 : IHeaderChunk
         {
             foreach (var chunk in Chunks)
             {
@@ -292,11 +270,11 @@ namespace GBX.NET
         }
 
         public new void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5>()
-            where TChunk1 : HeaderChunk<T>
-            where TChunk2 : HeaderChunk<T>
-            where TChunk3 : HeaderChunk<T>
-            where TChunk4 : HeaderChunk<T>
-            where TChunk5 : HeaderChunk<T>
+            where TChunk1 : IHeaderChunk
+            where TChunk2 : IHeaderChunk
+            where TChunk3 : IHeaderChunk
+            where TChunk4 : IHeaderChunk
+            where TChunk5 : IHeaderChunk
         {
             foreach (var chunk in Chunks)
             {
@@ -314,12 +292,12 @@ namespace GBX.NET
         }
 
         public new void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5, TChunk6>()
-            where TChunk1 : HeaderChunk<T>
-            where TChunk2 : HeaderChunk<T>
-            where TChunk3 : HeaderChunk<T>
-            where TChunk4 : HeaderChunk<T>
-            where TChunk5 : HeaderChunk<T>
-            where TChunk6 : HeaderChunk<T>
+            where TChunk1 : IHeaderChunk
+            where TChunk2 : IHeaderChunk
+            where TChunk3 : IHeaderChunk
+            where TChunk4 : IHeaderChunk
+            where TChunk5 : IHeaderChunk
+            where TChunk6 : IHeaderChunk
         {
             foreach (var chunk in Chunks)
             {
@@ -341,11 +319,11 @@ namespace GBX.NET
         public new void DiscoverAllChunks()
         {
             foreach (var chunk in Chunks)
-                if (chunk is HeaderChunk<T> s)
+                if (chunk is IHeaderChunk s)
                     s.Discover();
         }
 
-        public new TChunk GetChunk<TChunk>() where TChunk : HeaderChunk<T>
+        public new TChunk GetChunk<TChunk>() where TChunk : IHeaderChunk
         {
             foreach (var chunk in Chunks)
             {
@@ -358,10 +336,10 @@ namespace GBX.NET
             return default;
         }
 
-        public new bool TryGetChunk<TChunk>(out TChunk chunk) where TChunk : HeaderChunk<T>
+        public new bool TryGetChunk<TChunk>(out TChunk chunk) where TChunk : IHeaderChunk
         {
             chunk = GetChunk<TChunk>();
-            return chunk != default;
+            return chunk != null;
         }
 
         public void RemoveAllChunks()
@@ -369,7 +347,7 @@ namespace GBX.NET
             Chunks.Clear();
         }
 
-        public new bool RemoveChunk<TChunk>() where TChunk : HeaderChunk<T>
+        public new bool RemoveChunk<TChunk>() where TChunk : Chunk
         {
             return Chunks.Remove<TChunk>();
         }

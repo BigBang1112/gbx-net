@@ -46,7 +46,7 @@ namespace GBX.NET
                 }
 
                 GBX.ClassID = r.ReadUInt32();
-                Log.Write($"- Class ID: 0x{GBX.ClassID:x8}");
+                Log.Write($"- Class ID: 0x{GBX.ClassID:X8}");
 
                 if (GBX.Version >= 6)
                 {

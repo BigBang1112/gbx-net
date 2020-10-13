@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using System.Text.RegularExpressions;
 
-namespace IslandConverter
+namespace GBX.NET
 {
     public static class Formatter
     {
@@ -11,11 +9,8 @@ namespace IslandConverter
         {
             StringBuilder b = new StringBuilder(str);
 
-            foreach (var f in
-                new string[] { "$w", "$o", "$n", "$s", "$i", "$z", "$W", "$O", "$N", "$S", "$I", "$Z", "$g", "$t", "$<", "$>" })
-            {
+            foreach (var f in new string[] { "$w", "$o", "$n", "$s", "$i", "$z", "$W", "$O", "$N", "$S", "$I", "$Z", "$g", "$t", "$<", "$>" })
                 b.Replace(f, null);
-            }
 
             var final = Regex.Replace(b.ToString(), "$(l|h)[.*?](.*?)$(l|h)", "$2", RegexOptions.IgnoreCase);
             final = Regex.Replace(final, "$(l|h)[.*?]", "", RegexOptions.IgnoreCase);

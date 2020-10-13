@@ -58,7 +58,7 @@ namespace IslandConverter
             return gbx;
         }
 
-        internal static Int3 DefineMapRange(Block[] blocks, out Int3? minCoord)
+        internal static Int3 DefineMapRange(CGameCtnBlock[] blocks, out Int3? minCoord)
         {
             minCoord = default;
             Int3? maxCoord = default;
@@ -94,11 +94,11 @@ namespace IslandConverter
             return mapRange;
         }
 
-        internal static List<Block> CreateWaterBlocks(Int3 mapSize, List<Block> islandBlocks, byte yOffset)
+        internal static List<CGameCtnBlock> CreateWaterBlocks(Int3 mapSize, List<CGameCtnBlock> islandBlocks, byte yOffset)
         {
             var islandBlockDictionary = islandBlocks.Where(x => x.Name == "IslandGrass" || x.Name == "IslandHills6").ToDictionary(x => new Int3(x.Coord.X, 0, x.Coord.Z));
 
-            var blocks = new List<Block>();
+            var blocks = new List<CGameCtnBlock>();
 
             for (byte x = 1; x <= mapSize.X; x++)
             {
@@ -148,18 +148,18 @@ namespace IslandConverter
                             flag = 135173;
                         }
 
-                        blocks.Add(new Block("StadiumPool2", dir, (x, yOffset, z), flag, null, null, null));
+                        blocks.Add(new CGameCtnBlock("StadiumPool2", dir, (x, yOffset, z), flag, null, null, null));
                     }
-                    else if (islandBlockDictionary.TryGetValue(new Int3(Convert.ToInt32(Math.Floor(x / 2f) - 1), 0, Convert.ToInt32(Math.Floor(z / 2f) - 1)), out Block bl))
+                    else if (islandBlockDictionary.TryGetValue(new Int3(Convert.ToInt32(Math.Floor(x / 2f) - 1), 0, Convert.ToInt32(Math.Floor(z / 2f) - 1)), out CGameCtnBlock bl))
                     {
-                        blocks.Add(new Block("RemoveGrass.Block.Gbx_CustomBlock", Direction.North, (x, yOffset, z), 135168, null, null, null));
+                        blocks.Add(new CGameCtnBlock("RemoveGrass.Block.Gbx_CustomBlock", Direction.North, (x, yOffset, z), 135168, null, null, null));
                     }
                     else
                     {
-                        blocks.Add(new Block("StadiumWater2", Direction.North, (x, yOffset, z), 135168, null, null, null));
+                        blocks.Add(new CGameCtnBlock("StadiumWater2", Direction.North, (x, yOffset, z), 135168, null, null, null));
                     }
 
-                    blocks.Add(new Block("Unassigned1", Direction.East, (0, 0, 0), -1, null, null, null));
+                    blocks.Add(new CGameCtnBlock("Unassigned1", Direction.East, (0, 0, 0), -1, null, null, null));
                 }
             }
 
@@ -205,10 +205,10 @@ namespace IslandConverter
             map.ModPackDesc = new FileRef(3, Convert.FromBase64String("AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="), @"Skins\Stadium\Mod\IslandTM2U.zip", "");
 
             Bitmap thumbnail;
-            if (gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail == null)
+            if (gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail == null)
                 thumbnail = new Bitmap(512, 512);
             else
-                thumbnail = new Bitmap(gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail.Result, 512, 512);
+                thumbnail = new Bitmap(gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail.Result, 512, 512);
 
             using (var g = Graphics.FromImage(thumbnail))
             {
@@ -217,7 +217,7 @@ namespace IslandConverter
                     g.DrawImage(Resources.OverlayOpenplanet, 0, 0);
             }
 
-            gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail = Task.FromResult(thumbnail);
+            gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail = Task.FromResult(thumbnail);
 
             map.GetChunk<CGameCtnChallenge.Chunk0304301F>().Version = 6;
 
@@ -298,7 +298,7 @@ namespace IslandConverter
 
             Log.Write("All additional terrain blocks removed!");
 
-            bool RemoveGroundBlocks(Block block, Block block2, BlockConversion variantGround, int[] unit)
+            bool RemoveGroundBlocks(CGameCtnBlock block, CGameCtnBlock block2, BlockConversion variantGround, int[] unit)
             {
                 if (unit.Length < 3)
                     throw new FormatException();
@@ -440,17 +440,17 @@ namespace IslandConverter
                 gbx.MainNode.OffsetMediaTrackerCameras(new Vec3(64, -6 - offsetHeight, 64) + xzCameraOffset);
             }
 
-            var chunk003 = gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043003>();
+            var chunk003 = gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043003>();
             chunk003.Version = 6;
 
             gbx.CreateBodyChunk<CGameCtnChallenge.Chunk03043044>();
             map = gbx.MainNode; // Due to current solution this must be presented
 
-            map.MetadataTraits.Declare("MapVehicle", carTranslations[beforeCar]);
+            map.ScriptMetadata.Declare("MapVehicle", carTranslations[beforeCar]);
 
-            if (gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043002>().Type == CGameCtnChallenge.TrackType.Stunts)
+            if (gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043002>().Type == CGameCtnChallenge.TrackType.Stunts)
             {
-                gbx.Header.Result.GetChunk<CGameCtnChallenge.Chunk03043002>().Type = CGameCtnChallenge.TrackType.Script;
+                gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043002>().Type = CGameCtnChallenge.TrackType.Script;
 
                 var challParams = map.ChallengeParameters;
 
@@ -466,20 +466,20 @@ namespace IslandConverter
                 var mapStyle = $"{authorScore}|{goldScore}|{silverScore}|{bronzeScore}";
                 challParams.MapStyle = mapStyle;
 
-                map.MetadataTraits.Declare("MapTimeLimit", timeLimit);
-                map.MetadataTraits.Declare("ObjectiveAuthor", authorScore);
-                map.MetadataTraits.Declare("ObjectiveGold", goldScore);
-                map.MetadataTraits.Declare("ObjectiveSilver", silverScore);
-                map.MetadataTraits.Declare("ObjectiveBronze", bronzeScore);
+                map.ScriptMetadata.Declare("MapTimeLimit", timeLimit);
+                map.ScriptMetadata.Declare("ObjectiveAuthor", authorScore);
+                map.ScriptMetadata.Declare("ObjectiveGold", goldScore);
+                map.ScriptMetadata.Declare("ObjectiveSilver", silverScore);
+                map.ScriptMetadata.Declare("ObjectiveBronze", bronzeScore);
 
-                map.MetadataTraits.Declare("GameMode", "Stunts");
+                map.ScriptMetadata.Declare("GameMode", "Stunts");
             }
             else
-                map.MetadataTraits.Declare("GameMode", "Race");
+                map.ScriptMetadata.Declare("GameMode", "Race");
 
-            map.MetadataTraits.Declare("MadeByConverter", true);
-            map.MetadataTraits.Declare("RequiresOpenPlanet", size == MapSize.X45WithSmallBorder);
-            map.MetadataTraits.Declare("OriginalAuthorLogin", map.AuthorLogin);
+            map.ScriptMetadata.Declare("MadeByConverter", true);
+            map.ScriptMetadata.Declare("RequiresOpenPlanet", size == MapSize.X45WithSmallBorder);
+            map.ScriptMetadata.Declare("OriginalAuthorLogin", map.AuthorLogin);
 
             switch (size)
             {
@@ -497,7 +497,7 @@ namespace IslandConverter
             }
 
             var placed = 0;
-            var faultyBlocks = new List<Block>();
+            var faultyBlocks = new List<CGameCtnBlock>();
 
             Log.Write("Starting the conversion!");
 

@@ -1,13 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03127000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock
     {
+        #region Properties
+
+        [NodeMember]
         public Key[] Keys { get; set; }
+
+        #endregion
+
+        #region Chunks
+
+        #region 0x004 chunk
 
         [Chunk(0x03127004)]
         public class Chunk03127004 : Chunk<CGameCtnMediaBlockToneMapping>
@@ -36,6 +47,12 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #endregion
+
+        #region Other classes
+
         public class Key : MediaBlockKey
         {
             public float Exposure { get; set; }
@@ -43,5 +60,20 @@ namespace GBX.NET.Engines.Game
             public float LightTrailScale { get; set; }
             public int Unknown { get; set; }
         }
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnMediaBlockToneMapping node;
+
+            public Key[] Keys => node.Keys;
+
+            public DebugView(CGameCtnMediaBlockToneMapping node) => this.node = node;
+        }
+
+        #endregion
     }
 }

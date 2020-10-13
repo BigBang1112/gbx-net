@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -7,16 +8,30 @@ using System.Text;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03079000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaClip : Node
     {
+        #region Properties
+
+        /// <summary>
+        /// Name of the clip. This property is <see cref="null"/> if the clip is an intro, ambiance or podium.
+        /// </summary>
+        [NodeMember]
         public string Name { get; set; }
 
+        /// <summary>
+        /// List of MediaTracker tracks.
+        /// </summary>
+        [NodeMember]
         public List<CGameCtnMediaTrack> Tracks { get; set; }
 
-        public override string ToString()
-        {
-            return string.IsNullOrEmpty(Name) ? "Unnamed clip" : Name;
-        }
+        #endregion
+
+        #region Methods
+
+        public override string ToString() => string.IsNullOrEmpty(Name) ? "Unnamed clip" : Name;
+
+        #endregion
 
         #region Chunks
 
@@ -147,6 +162,20 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnMediaClip node;
+
+            public string Name => node.Name;
+            public List<CGameCtnMediaTrack> Tracks => node.Tracks;
+
+            public DebugView(CGameCtnMediaClip node) => this.node = node;
+        }
 
         #endregion
     }

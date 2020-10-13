@@ -7,53 +7,105 @@ using System.Threading.Tasks;
 
 namespace GBX.NET
 {
+    /// <summary>
+    /// A known serialized GameBox node with additional attributes. This class can represent deserialized .Gbx file.
+    /// </summary>
+    /// <typeparam name="T">The main node of the GBX.</typeparam>
     public class GameBox<T> : GameBox where T : Node
     {
-        public new Task<GameBoxHeader<T>> Header { get; private set; }
+        /// <summary>
+        /// Header part, typically storing metadata for quickest access.
+        /// </summary>
+        public new GameBoxHeader<T> Header => headerTask?.Result as GameBoxHeader<T>;
+
+        /// <summary>
+        /// Body part, storing information about the node that realistically affects the game.
+        /// </summary>
         public GameBoxBody<T> Body { get; private set; }
 
+        /// <summary>
+        /// Node containing data taken from the body part.
+        /// </summary>
         public T MainNode { get; internal set; }
 
+        /// <summary>
+        /// Constructs an empty GameBox object.
+        /// </summary>
         public GameBox()
         {
             Game = ClassIDRemap.ManiaPlanet;
         }
 
-        public TChunk CreateHeaderChunk<TChunk>() where TChunk : HeaderChunk<T>
+        /// <summary>
+        /// Creates a header chunk based on the attributes from <typeparamref name="TChunk"/>.
+        /// </summary>
+        /// <typeparam name="TChunk">A chunk type compatible with <see cref="IHeaderChunk"/>.</typeparam>
+        /// <returns>A newly created chunk.</returns>
+        public TChunk CreateHeaderChunk<TChunk>() where TChunk : Chunk, IHeaderChunk
         {
-            return Header.Result.Chunks.Create<TChunk>();
+            return Header.Chunks.Create<TChunk>();
         }
 
+        /// <summary>
+        /// Removes all header chunks.
+        /// </summary>
         public void RemoveAllHeaderChunks()
         {
-            Header.Result.Chunks.Clear();
+            Header.Chunks.Clear();
         }
 
-        public bool RemoveHeaderChunk<TChunk>() where TChunk : HeaderChunk<T>
+        /// <summary>
+        /// Removes a header chunk based on the attributes from <typeparamref name="TChunk"/>.
+        /// </summary>
+        /// <typeparam name="TChunk">A chunk type compatible with <see cref="IHeaderChunk"/>.</typeparam>
+        /// <returns>True, if the chunk was removed, otherwise false.</returns>
+        public bool RemoveHeaderChunk<TChunk>() where TChunk : Chunk, IHeaderChunk
         {
-            return Header.Result.Chunks.RemoveWhere(x => x.ID == typeof(TChunk).GetCustomAttribute<ChunkAttribute>().ID) > 0;
+            return Header.Chunks.RemoveWhere(x => x.ID == typeof(TChunk).GetCustomAttribute<ChunkAttribute>().ID) > 0;
         }
 
-        public TChunk CreateBodyChunk<TChunk>(byte[] data) where TChunk : Chunk<T>
+        /// <summary>
+        /// Creates a body chunk based on the attributes from <typeparamref name="TChunk"/>.
+        /// </summary>
+        /// <typeparam name="TChunk">A chunk type that isn't a header chunk.</typeparam>
+        /// <param name="data">If the chunk is <see cref="ISkippableChunk"/>, the bytes to initiate the chunks with, unparsed. If it's not a skippable chunk, data is parsed immediately.</param>
+        /// <returns>A newly created chunk.</returns>
+        public TChunk CreateBodyChunk<TChunk>(byte[] data) where TChunk : Chunk
         {
             return MainNode.Chunks.Create<TChunk>(data);
         }
 
-        public TChunk CreateBodyChunk<TChunk>() where TChunk : Chunk<T>
+        /// <summary>
+        /// Creates a body chunk based on the attributes from <typeparamref name="TChunk"/> with no inner data provided.
+        /// </summary>
+        /// <typeparam name="TChunk">A chunk type that isn't a header chunk.</typeparam>
+        /// <returns>A newly created chunk.</returns>
+        public TChunk CreateBodyChunk<TChunk>() where TChunk : Chunk
         {
             return CreateBodyChunk<TChunk>(new byte[0]);
         }
 
+        /// <summary>
+        /// Removes all body chunks.
+        /// </summary>
         public void RemoveAllBodyChunks()
         {
             MainNode.Chunks.Clear();
         }
 
-        public bool RemoveBodyChunk<TChunk>() where TChunk : Chunk<T>
+        /// <summary>
+        /// Removes a body chunk based on the attributes from <typeparamref name="TChunk"/>.
+        /// </summary>
+        /// <typeparam name="TChunk">A chunk type that isn't a header chunk.</typeparam>
+        /// <returns>True, if the chunk was removed, otherwise false.</returns>
+        public bool RemoveBodyChunk<TChunk>() where TChunk : Chunk
         {
             return MainNode.Chunks.Remove<TChunk>();
         }
 
+        /// <summary>
+        /// Discover all skippable BODY chunks.
+        /// </summary>
         public void DiscoverAllChunks()
         {
             //foreach (var chunk in Header.Result.Chunks.Values)
@@ -63,15 +115,25 @@ namespace GBX.NET
                     s.Discover();
         }
 
-        public override bool ReadHeader(GameBoxReader reader)
+        protected override bool ReadHeader(GameBoxReader reader)
         {
             var parameters = new GameBoxHeaderParameters(this);
             if (!parameters.Read(reader)) return false; // Should already throw an exception
 
+#if DEBUG
+
+            Log.Write("Working out the header chunks...");
+
+            headerTask = Task.FromResult((GameBoxHeader)new GameBoxHeader<T>(this, parameters.UserData));
+
+#endif
+
+#if RELEASE
+
             Log.Write("Working out the header chunks in the background...");
 
-            Header = Task.Run(() => new GameBoxHeader<T>(this, parameters.UserData));
-            Header.ContinueWith(x =>
+            headerTask = Task.Run(() => (GameBoxHeader)new GameBoxHeader<T>(this, parameters.UserData));
+            headerTask.ContinueWith(x =>
             {
                 if (x.Exception == null)
                     Log.Write("Header chunks parsed without any exceptions.", ConsoleColor.Green);
@@ -79,10 +141,12 @@ namespace GBX.NET
                     Log.Write("Header chunks parsed with exceptions.", ConsoleColor.Red);
             });
 
+#endif
+
             return true;
         }
 
-        public override bool Read(GameBoxReader reader)
+        protected override bool Read(GameBoxReader reader)
         {
             // Header
 
@@ -126,9 +190,9 @@ namespace GBX.NET
 
         public void Write(GameBoxWriter w, ClassIDRemap remap)
         {
-            (Header.Result as ILookbackable).LookbackWritten = false;
-            (Header.Result as ILookbackable).LookbackStrings.Clear();
-            Header.Result.Write(w, Body.AuxilaryNodes.Count + 1, remap);
+            (Header as ILookbackable).LookbackWritten = false;
+            (Header as ILookbackable).LookbackStrings.Clear();
+            Header.Write(w, Body.AuxilaryNodes.Count + 1, remap);
 
             if (RefTable == null)
                 w.Write(0);
@@ -147,6 +211,11 @@ namespace GBX.NET
             Write(w, ClassIDRemap.Latest);
         }
 
+        /// <summary>
+        /// Saves the serialized GameBox on a disk.
+        /// </summary>
+        /// <param name="fileName">Relative or absolute file path.</param>
+        /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
         public void Save(string fileName, ClassIDRemap remap)
         {
             using (var ms = new MemoryStream())
@@ -158,14 +227,20 @@ namespace GBX.NET
             }
         }
 
+        /// <inheritdoc cref="Save(string, ClassIDRemap)"/>
         public void Save(string fileName)
         {
             Save(fileName, ClassIDRemap.Latest);
         }
     }
 
+    /// <summary>
+    /// An unknown serialized GameBox node with additional attributes. This class can represent deserialized .Gbx file.
+    /// </summary>
     public class GameBox : IGameBox
     {
+        protected Task<GameBoxHeader> headerTask;
+
         public ClassIDRemap Game { get; set; }
 
         public short Version { get; set; }
@@ -176,20 +251,36 @@ namespace GBX.NET
         public uint? ClassID { get; internal set; }
         public int? NumNodes { get; internal set; }
 
-        public Task<GameBoxHeader> Header { get; private set; }
+        /// <summary>
+        /// Header part, typically storing metadata for quickest access.
+        /// </summary>
+        public GameBoxHeader Header => headerTask?.Result;
+        /// <summary>
+        /// Reference table, referencing other GBX.
+        /// </summary>
         public GameBoxRefTable RefTable { get; private set; }
 
         public string FileName { get; set; }
 
-        public virtual bool ReadHeader(GameBoxReader reader)
+        protected virtual bool ReadHeader(GameBoxReader reader)
         {
             var parameters = new GameBoxHeaderParameters(this);
             if (!parameters.Read(reader)) return false;
 
+#if DEBUG
+
+            Log.Write("Working out the header chunks...");
+
+            headerTask = Task.FromResult(new GameBoxHeader(this, parameters.UserData));
+
+#endif
+
+#if RELEASE
+
             Log.Write("Working out the header chunks in the background...");
 
-            Header = Task.Run(() => new GameBoxHeader(this, parameters.UserData));
-            Header.ContinueWith(x =>
+            headerTask = Task.Run(() => new GameBoxHeader(this, parameters.UserData));
+            headerTask.ContinueWith(x =>
             {
                 if (x.Exception == null)
                     Log.Write("Header chunks parsed without any exceptions.");
@@ -197,10 +288,12 @@ namespace GBX.NET
                     Log.Write("Header chunks parsed with exceptions.");
             });
 
+#endif
+
             return true;
         }
 
-        public bool ReadRefTable(GameBoxReader reader)
+        protected bool ReadRefTable(GameBoxReader reader)
         {
             var numExternalNodes = reader.ReadInt32();
 
@@ -264,7 +357,7 @@ namespace GBX.NET
             return true;
         }
 
-        public virtual bool Read(GameBoxReader reader)
+        protected virtual bool Read(GameBoxReader reader)
         {
             return ReadHeader(reader) && ReadRefTable(reader);
         }
@@ -305,15 +398,26 @@ namespace GBX.NET
             return Load(fileName);
         }
 
+        /// <summary>
+        /// Easily parses a GBX file.
+        /// </summary>
+        /// <typeparam name="T">A known type of the GBX file. Unmatching type will throw an exception.</typeparam>
+        /// <param name="fileName">Relative or absolute file path.</param>
+        /// <returns>A GameBox with specified main node type.</returns>
+        /// <exception cref="InvalidCastException"/>
+        /// <example>
+        /// var gbx = GameBox.Parse<CGameCtnChallenge>("MyMap.Map.Gbx");
+        /// // Node data is available in gbx.MainNode
+        /// </example>
         public static GameBox<T> Parse<T>(string fileName) where T : Node
         {
             GameBox<T> gbx = new GameBox<T>();
+            gbx.FileName = fileName;
+
             using (var fs = File.OpenRead(fileName))
-            {
-                gbx.FileName = fileName;
                 if (!gbx.Read(fs))
                     return null;
-            }
+
             return gbx;
         }
 
@@ -352,6 +456,23 @@ namespace GBX.NET
                 return ReadClassID(fs);
         }
 
+        /// <summary>
+        /// Easily parses a GBX file.
+        /// </summary>
+        /// <param name="fileName">Relative or absolute file path.</param>
+        /// <returns>A GameBox with either basic information only  (if unknown), or also with specified main node type (available using an explicit <see cref="GameBox{T}"/> cast.</returns>
+        /// <example>
+        /// var gbx = GameBox.Parse("MyMap.Map.Gbx");
+        /// 
+        /// if (gbx is GameBox<CGameCtnChallenge> gbxMap)
+        /// {
+        ///     // Node data is available in gbxMap.MainNode
+        /// }
+        /// else if (gbx is GameBox<CGameCtnReplayRecord> gbxReplay)
+        /// {
+        ///     // Node data is available in gbxReplay.MainNode
+        /// }
+        /// </example>
         public static GameBox Parse(string fileName)
         {
             using (var fs = File.OpenRead(fileName))
@@ -374,7 +495,7 @@ namespace GBX.NET
                     if (availableClass == null)
                         gbx = new GameBox();
                     else
-                        gbx = (GameBox)Activator.CreateInstance(typeof(GameBox<>).MakeGenericType(availableClass));
+                        gbx = (GameBox)Activator.CreateInstance(typeof(GameBox<>).MakeGenericType(availableClass), true);
 
                     fs.Seek(0, SeekOrigin.Begin);
 

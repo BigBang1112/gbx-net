@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
@@ -8,45 +9,81 @@ namespace GBX.NET.Engines.Game
     /// <summary>
     /// Map parameters (0x0305B000)
     /// </summary>
+    [DebuggerTypeProxy(typeof(DebugView))]
     [Node(0x0305B000)]
     public class CGameCtnChallengeParameters : Node
     {
+        #region Fields
+
+        private string mapType;
+        private string mapStyle;
+
+        #endregion
+
         #region Properties
 
         /// <summary>
         /// Time of the bronze medal.
         /// </summary>
+        [NodeMember]
         public TimeSpan? BronzeTime { get; set; }
 
         /// <summary>
         /// Time of the silver medal.
         /// </summary>
+        [NodeMember]
         public TimeSpan? SilverTime { get; set; }
 
         /// <summary>
         /// Time of the gold medal.
         /// </summary>
+        [NodeMember]
         public TimeSpan? GoldTime { get; set; }
 
         /// <summary>
         /// Time of the author medal.
         /// </summary>
+        [NodeMember]
         public TimeSpan? AuthorTime { get; set; }
 
         /// <summary>
         /// Usually author time or stunt score.
         /// </summary>
+        [NodeMember]
         public int? AuthorScore { get; set; }
 
         /// <summary>
         /// Stunt time limit.
         /// </summary>
+        [NodeMember]
         public TimeSpan? TimeLimit { get; set; }
 
-        public string MapType { get; set; }
+        [NodeMember]
+        public CGameCtnGhost RaceValidateGhost { get; set; }
 
-        public string MapStyle { get; set; }
+        [NodeMember]
+        public string MapType
+        {
+            get
+            {
+                DiscoverChunk<Chunk0305B00E>();
+                return mapType;
+            }
+            set => mapType = value;
+        }
 
+        [NodeMember]
+        public string MapStyle
+        {
+            get
+            {
+                DiscoverChunk<Chunk0305B00E>();
+                return mapStyle;
+            }
+            set => mapStyle = value;
+        }
+
+        [NodeMember]
         public string[] Tips { get; } = new string[4];
 
         #endregion
@@ -266,17 +303,17 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x00D chunk
+        #region 0x00D chunk (race validate ghost)
 
         /// <summary>
-        /// CGameCtnChallengeParameters 0x00D chunk
+        /// CGameCtnChallengeParameters 0x00D chunk (race validate ghost)
         /// </summary>
         [Chunk(0x0305B00D)]
         public class Chunk0305B00D : Chunk<CGameCtnChallengeParameters>
         {
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                n.RaceValidateGhost = rw.NodeRef<CGameCtnGhost>(n.RaceValidateGhost);
             }
         }
 
@@ -294,13 +331,35 @@ namespace GBX.NET.Engines.Game
 
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
             {
-                n.MapType = rw.String(n.MapType);
-                n.MapStyle = rw.String(n.MapStyle);
+                n.mapType = rw.String(n.mapType);
+                n.mapStyle = rw.String(n.mapStyle);
                 Unknown1 = rw.Int32(Unknown1);
             }
         }
 
         #endregion
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnChallengeParameters node;
+
+            public TimeSpan? BronzeTime => node.BronzeTime;
+            public TimeSpan? SilverTime => node.SilverTime;
+            public TimeSpan? GoldTime => node.GoldTime;
+            public TimeSpan? AuthorTime => node.AuthorTime;
+            public int? AuthorScore => node.AuthorScore;
+            public TimeSpan? TimeLimit => node.TimeLimit;
+            public CGameCtnGhost RaceValidateGhost => node.RaceValidateGhost;
+            public string MapType => node.MapType;
+            public string MapStyle => node.MapStyle;
+            public string[] Tips => node.Tips;
+
+            public DebugView(CGameCtnChallengeParameters node) => this.node = node;
+        }
 
         #endregion
     }

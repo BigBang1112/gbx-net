@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -10,9 +11,15 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - Camera shake
     /// </summary>
     [Node(0x030A4000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCameraEffect
     {
+        #region Properties
+
+        [NodeMember]
         public Key[] Keys { get; set; }
+
+        #endregion
 
         #region Chunks
 
@@ -45,10 +52,27 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Other classes
+
         public class Key : MediaBlockKey
         {
             public float Intensity { get; set; }
             public float Speed { get; set; }
         }
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private CGameCtnMediaBlockCameraEffectShake node;
+
+            public Key[] Keys => node.Keys;
+
+            public DebugView(CGameCtnMediaBlockCameraEffectShake node) => this.node = node;
+        }
+
+        #endregion
     }
 }
