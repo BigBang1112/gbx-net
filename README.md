@@ -53,3 +53,8 @@ else if (gbx is GameBox<CGameCtnReplayRecord> gbxReplay)
     // Node data is available in gbxReplay.MainNode
 }
 ```
+
+## Alternative GBX parsers
+
+- [gbx.js](https://github.com/ThaumicTom/gbx.js) (GBX header parser for clientside JavaScript)
+- [ManiaPlanetSharp](https://github.com/stefan-baumann/ManiaPlanetSharp) (C# toolkit for accessing ManiaPlanet data, including GBX parser used by ManiaExchange)
