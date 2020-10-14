@@ -425,7 +425,8 @@ namespace GBX.NET
         {
             uint? classID = null;
 
-            reader.ReadString("GBX".Length);
+            if (reader.ReadString("GBX".Length) != "GBX") // If the file doesn't have GBX magic
+                return null;
 
             var version = reader.ReadInt16(); // Version
 
