@@ -16,7 +16,7 @@ namespace GBX.NET.Engines.Game
             Dispenser
         }
 
-        public string Name { get; set; }
+        public string BlockName { get; set; }
         public CGameCtnBlockInfoVariantGround VariantBaseGround { get; set; }
         public CGameCtnBlockInfoVariantAir VariantBaseAir { get; set; }
         public CGameCtnBlockInfoVariantGround[] AdditionalVariantsGround { get; set; }
@@ -36,7 +36,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw) // WIP
             {
-                n.Name = rw.LookbackString(n.Name);
+                n.BlockName = rw.LookbackString(n.BlockName);
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);

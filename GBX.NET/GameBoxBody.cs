@@ -30,7 +30,7 @@ namespace GBX.NET
             using (var s = new MemoryStream(data))
             using (var gbxr = new GameBoxReader(s, this))
             {
-                gbx.MainNode = Node.Parse<T>(gbxr, mainNodeID);
+                gbx.MainNode = Node.Parse(gbxr, mainNodeID, gbx.MainNode);
 
                 Debug.WriteLine("Amount read: " + (s.Position / (float)s.Length).ToString("P"));
 

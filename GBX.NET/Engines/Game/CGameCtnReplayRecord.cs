@@ -16,7 +16,22 @@ namespace GBX.NET.Engines.Game
         #region Properties
 
         [NodeMember]
-        public Task<GameBox<CGameCtnChallenge>> Track { get; set; }
+        public Meta MapInfo { get; set; }
+
+        [NodeMember]
+        public TimeSpan Time { get; set; }
+
+        [NodeMember]
+        public string Nickname { get; set; }
+
+        [NodeMember]
+        public string DriverLogin { get; set; }
+
+        [NodeMember]
+        public string TitleID { get; set; }
+
+        [NodeMember]
+        public string XML { get; set; }
 
         [NodeMember]
         public int? AuthorVersion { get; set; }
@@ -32,6 +47,9 @@ namespace GBX.NET.Engines.Game
 
         [NodeMember]
         public string AuthorExtraInfo { get; set; }
+
+        [NodeMember]
+        public Task<GameBox<CGameCtnChallenge>> Challenge { get; set; }
 
         [NodeMember]
         public CGameCtnGhost[] Ghosts { get; set; }
@@ -52,37 +70,33 @@ namespace GBX.NET.Engines.Game
 
         #region Chunks
 
-        #region 0x000 chunk (basic)
+        #region 0x000 header chunk (basic)
 
         [Chunk(0x03093000, "basic")]
         public class Chunk03093000 : HeaderChunk<CGameCtnReplayRecord>
         {
             public int Version { get; set; }
-            public Meta MapInfo { get; set; }
-            public TimeSpan Time { get; set; }
-            public string Nickname { get; set; }
-            public string DriverLogin { get; set; }
-            public byte Unknown1 { get; set; }
-            public string TitleUID { get; set; }
 
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public byte U01 { get; set; }
+
+            public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
 
                 if(Version >= 2)
                 {
-                    MapInfo = r.ReadMeta();
-                    Time = TimeSpan.FromMilliseconds(r.ReadInt32());
-                    Nickname = r.ReadString();
+                    n.MapInfo = r.ReadMeta();
+                    n.Time = TimeSpan.FromMilliseconds(r.ReadInt32());
+                    n.Nickname = r.ReadString();
 
                     if (Version >= 6)
                     {
-                        DriverLogin = r.ReadString();
+                        n.DriverLogin = r.ReadString();
 
                         if (Version >= 8)
                         {
-                            Unknown1 = r.ReadByte();
-                            TitleUID = r.ReadLookbackString();
+                            U01 = r.ReadByte();
+                            n.TitleID = r.ReadLookbackString();
                         }
                     }
                 }
@@ -91,22 +105,22 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x001 chunk (xml)
+        #region 0x001 header chunk (xml)
 
         [Chunk(0x03093001, "xml")]
         public class Chunk03093001 : HeaderChunk<CGameCtnReplayRecord>
         {
             public string XML { get; set; }
 
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                XML = r.ReadString();
+                n.XML = r.ReadString();
             }
         }
 
         #endregion
 
-        #region 0x002 chunk (author)
+        #region 0x002 header chunk (author)
 
         [Chunk(0x03093002, "author")]
         public class Chunk03093002H : HeaderChunk<CGameCtnReplayRecord>
@@ -118,14 +132,14 @@ namespace GBX.NET.Engines.Game
             public string AuthorZone { get; set; }
             public string AuthorExtraInfo { get; set; }
 
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
-                AuthorVersion = r.ReadInt32();
-                AuthorLogin = r.ReadString();
-                AuthorNickname = r.ReadString();
-                AuthorZone = r.ReadString();
-                AuthorExtraInfo = r.ReadString();
+                n.AuthorVersion = r.ReadInt32();
+                n.AuthorLogin = r.ReadString();
+                n.AuthorNickname = r.ReadString();
+                n.AuthorZone = r.ReadString();
+                n.AuthorExtraInfo = r.ReadString();
             }
         }
 
@@ -146,7 +160,7 @@ namespace GBX.NET.Engines.Game
                 {
                     var trackGbx = r.ReadBytes(size);
 
-                    n.Track = Task.Run(() =>
+                    n.Challenge = Task.Run(() =>
                     {
                         using (var ms = new MemoryStream(trackGbx))
                         {
@@ -156,7 +170,7 @@ namespace GBX.NET.Engines.Game
                         }
                     });
 
-                    n.Track.ContinueWith(x =>
+                    n.Challenge.ContinueWith(x =>
                     {
 #if DEBUG
                         if (x.IsFaulted)
@@ -180,7 +194,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                var gsdgs = r.ReadArray<int>(2);
+                r.ReadArray<int>(2);
                 var controlNames = r.ReadArray(i =>
                 {
                     r.ReadInt32();
@@ -359,12 +373,19 @@ namespace GBX.NET.Engines.Game
         {
             private readonly CGameCtnReplayRecord node;
 
-            public Task<GameBox<CGameCtnChallenge>> Track => node.Track;
+            public Meta MapInfo => node.MapInfo;
+            public TimeSpan Time => node.Time;
+            public string Nickname => node.Nickname;
+            public string DriverLogin => node.DriverLogin;
+            public string TitleID => node.TitleID;
+            public string XML => node.XML;
             public int? AuthorVersion => node.AuthorVersion;
             public string AuthorLogin => node.AuthorLogin;
             public string AuthorNickname => node.AuthorNickname;
             public string AuthorZone => node.AuthorZone;
             public string AuthorExtraInfo => node.AuthorExtraInfo;
+
+            public Task<GameBox<CGameCtnChallenge>> Challenge => node.Challenge;
             public CGameCtnGhost[] Ghosts => node.Ghosts;
             public long[] Extras => node.Extras;
             public CGameCtnMediaClip Clip => node.Clip;

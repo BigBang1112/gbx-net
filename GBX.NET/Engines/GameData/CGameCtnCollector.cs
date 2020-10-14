@@ -13,46 +13,85 @@ namespace GBX.NET.Engines.GameData
     [Node(0x2E001000)]
     public class CGameCtnCollector : Node
     {
-        public string SkinFile { get; set; }
+        #region Properties
+
+        [NodeMember]
+        public Meta Metadata { get; set; }
+
+        [NodeMember]
         public string PageName { get; set; }
+
+        [NodeMember]
+        public short CatalogPosition { get; set; }
+
+        [NodeMember]
+        public string Name { get; set; }
+
+        [NodeMember]
+        public Task<Bitmap> Icon { get; set; }
+
+        [NodeMember]
+        public string SkinFile { get; set; }
+
+        [NodeMember]
         public Node IconFid { get; set; }
-        public Meta Meta { get; set; }
+
+        [NodeMember]
         public string CollectorName { get; set; }
+
+        [NodeMember]
         public string Description { get; set; }
+
+        [NodeMember]
         public bool IconUseAutoRender { get; set; }
+
+        [NodeMember]
         public int IconQuarterRotationY { get; set; }
+
+        #endregion
+
+        #region Methods
+
+        public void ExportIcon(Stream stream, ImageFormat format)
+        {
+            Icon.Result.Save(stream, format);
+        }
+
+        public void ExportIcon(string fileName, ImageFormat format)
+        {
+            Icon.Result.Save(fileName, format);
+        }
+
+        #endregion
 
         #region Chunks
 
-        #region 0x003 chunk
+        #region 0x003 header chunk
 
         [Chunk(0x2E001003)]
         public class Chunk2E001003 : HeaderChunk<CGameCtnCollector>
         {
-            public Meta Metadata { get; set; }
             public int Version { get; set; }
-            public string PageName { get; set; }
-            public short CatalogPosition { get; set; }
-            public string Name { get; set; }
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
             {
-                Metadata = rw.Meta(Metadata);
+                n.Metadata = rw.Meta(n.Metadata);
                 Version = rw.Int32(Version);
-                PageName = rw.String(PageName);
+                n.PageName = rw.String(n.PageName);
 
-                if (Version == 5) rw.LookbackString(Unknown);
-                if (Version >= 4) rw.LookbackString(Unknown);
+                if (Version == 5)
+                    rw.Int32(Unknown);
+                if (Version >= 4)
+                    rw.Int32(Unknown);
 
                 if (Version >= 3)
                 {
                     rw.Int32(Unknown);
-
-                    CatalogPosition = rw.Int16(CatalogPosition);
+                    n.CatalogPosition = rw.Int16(n.CatalogPosition);
                 }
 
                 if (Version >= 7)
-                    Name = rw.String(Name);
+                    n.Name = rw.String(n.Name);
 
                 // prodState
             }
@@ -60,21 +99,19 @@ namespace GBX.NET.Engines.GameData
 
         #endregion
 
-        #region 0x004 chunk
+        #region 0x004 header chunk
 
         [Chunk(0x2E001004)]
         public class Chunk2E001004 : HeaderChunk<CGameCtnCollector>
         {
-            public Task<Bitmap> Icon { get; set; }
-
-            public override void Read(GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnCollector n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 var width = r.ReadInt16();
                 var height = r.ReadInt16();
 
                 var iconData = r.ReadBytes(width * height * 4);
 
-                Icon = Task.Run(() =>
+                n.Icon = Task.Run(() =>
                 {
                     var bitmap = new Bitmap(width, height);
                     var bitmapData = bitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format32bppPArgb);
@@ -83,16 +120,6 @@ namespace GBX.NET.Engines.GameData
                     bitmap.RotateFlip(RotateFlipType.RotateNoneFlipY);
                     return bitmap;
                 });
-            }
-
-            public void ExportIcon(Stream stream, ImageFormat format)
-            {
-                Icon.Result.Save(stream, format);
-            }
-
-            public void ExportIcon(string fileName, ImageFormat format)
-            {
-                Icon.Result.Save(fileName, format);
             }
         }
 
@@ -105,7 +132,7 @@ namespace GBX.NET.Engines.GameData
         {
             public long FileTime { get; set; }
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
             {
                 FileTime = rw.Int64(FileTime);
             }
@@ -197,7 +224,7 @@ namespace GBX.NET.Engines.GameData
         {
             public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
             {
-                n.Meta = rw.Meta(n.Meta);
+                n.Metadata = rw.Meta(n.Metadata);
             }
         }
 

@@ -16,7 +16,11 @@ namespace GBX.NET
         /// <summary>
         /// Header part, typically storing metadata for quickest access.
         /// </summary>
-        public new GameBoxHeader<T> Header => headerTask?.Result as GameBoxHeader<T>;
+        public new GameBoxHeader<T> Header
+        {
+            get => base.Header as GameBoxHeader<T>;
+            set => base.Header = value;
+        }
 
         /// <summary>
         /// Body part, storing information about the node that realistically affects the game.
@@ -120,28 +124,20 @@ namespace GBX.NET
             var parameters = new GameBoxHeaderParameters(this);
             if (!parameters.Read(reader)) return false; // Should already throw an exception
 
-#if DEBUG
+            MainNode = Activator.CreateInstance<T>();
 
             Log.Write("Working out the header chunks...");
 
-            headerTask = Task.FromResult((GameBoxHeader)new GameBoxHeader<T>(this, parameters.UserData));
-
-#endif
-
-#if RELEASE
-
-            Log.Write("Working out the header chunks in the background...");
-
-            headerTask = Task.Run(() => (GameBoxHeader)new GameBoxHeader<T>(this, parameters.UserData));
-            headerTask.ContinueWith(x =>
+            try
             {
-                if (x.Exception == null)
-                    Log.Write("Header chunks parsed without any exceptions.", ConsoleColor.Green);
-                else
-                    Log.Write("Header chunks parsed with exceptions.", ConsoleColor.Red);
-            });
-
-#endif
+                Header = new GameBoxHeader<T>(this, parameters.UserData);
+                Log.Write("Header chunks parsed without any exceptions.", ConsoleColor.Green);
+            }
+            catch (Exception e)
+            {
+                Log.Write("Header chunks parsed with exceptions.", ConsoleColor.Red);
+                Log.Write(e.ToString(), ConsoleColor.Red);
+            }
 
             return true;
         }
@@ -239,8 +235,6 @@ namespace GBX.NET
     /// </summary>
     public class GameBox : IGameBox
     {
-        protected Task<GameBoxHeader> headerTask;
-
         public ClassIDRemap Game { get; set; }
 
         public short Version { get; set; }
@@ -254,7 +248,7 @@ namespace GBX.NET
         /// <summary>
         /// Header part, typically storing metadata for quickest access.
         /// </summary>
-        public GameBoxHeader Header => headerTask?.Result;
+        public GameBoxHeader Header { get; set; }
         /// <summary>
         /// Reference table, referencing other GBX.
         /// </summary>
@@ -267,28 +261,18 @@ namespace GBX.NET
             var parameters = new GameBoxHeaderParameters(this);
             if (!parameters.Read(reader)) return false;
 
-#if DEBUG
-
             Log.Write("Working out the header chunks...");
 
-            headerTask = Task.FromResult(new GameBoxHeader(this, parameters.UserData));
-
-#endif
-
-#if RELEASE
-
-            Log.Write("Working out the header chunks in the background...");
-
-            headerTask = Task.Run(() => new GameBoxHeader(this, parameters.UserData));
-            headerTask.ContinueWith(x =>
+            try
             {
-                if (x.Exception == null)
-                    Log.Write("Header chunks parsed without any exceptions.");
-                else
-                    Log.Write("Header chunks parsed with exceptions.");
-            });
-
-#endif
+                Header = new GameBoxHeader(this, parameters.UserData);
+                Log.Write("Header chunks parsed without any exceptions.", ConsoleColor.Green);
+            }
+            catch (Exception e)
+            {
+                Log.Write("Header chunks parsed with exceptions.", ConsoleColor.Red);
+                Log.Write(e.ToString(), ConsoleColor.Red);
+            }
 
             return true;
         }
@@ -411,8 +395,7 @@ namespace GBX.NET
         /// </example>
         public static GameBox<T> Parse<T>(string fileName) where T : Node
         {
-            GameBox<T> gbx = new GameBox<T>();
-            gbx.FileName = fileName;
+            GameBox<T> gbx = new GameBox<T> { FileName = fileName };
 
             using (var fs = File.OpenRead(fileName))
                 if (!gbx.Read(fs))

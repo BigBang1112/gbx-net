@@ -105,11 +105,11 @@ namespace IslandConverter
 
                                 item.Name = mapUid;
 
-                                if (gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail == null)
+                                if (gbx.MainNode.Thumbnail == null)
                                     item.ImageKey = "";
                                 else
                                 {
-                                    lvMaps.LargeImageList.Images.Add(mapUid, gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail.Result);
+                                    lvMaps.LargeImageList.Images.Add(mapUid, gbx.MainNode.Thumbnail.Result);
                                     item.ImageKey = mapUid;
                                 }
 
@@ -263,7 +263,7 @@ namespace IslandConverter
                         lGoldM.Text = "Gold: " + (map.ChallengeParameters.GoldTime.HasValue ? map.ChallengeParameters.GoldTime.Value.ToString("m':'ss':'fff") : "None");
                         lSilverM.Text = "Silver: " + (map.ChallengeParameters.SilverTime.HasValue ? map.ChallengeParameters.SilverTime.Value.ToString("m':'ss':'fff") : "None");
                         lBronzeM.Text = "Bronze: " + (map.ChallengeParameters.BronzeTime.HasValue ? map.ChallengeParameters.BronzeTime.Value.ToString("m':'ss':'fff") : "None");
-                        lMapType.Text = "Map type: " + (gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043002>().Type.HasValue ? gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043002>().Type.Value.ToString() : "Unknown");
+                        lMapType.Text = "Map type: " + gbx.MainNode.Type.ToString();
 
                         blockRange = IslandConverter.DefineMapRange(map.Blocks.ToArray(), out minCoord);
 
@@ -286,7 +286,7 @@ namespace IslandConverter
 
                         lBlockRange.Text = "Block range: " + blockRange;
 
-                        pbThumbnail.Image = gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail.Result;
+                        pbThumbnail.Image = gbx.MainNode.Thumbnail.Result;
                     }
                 }
             }

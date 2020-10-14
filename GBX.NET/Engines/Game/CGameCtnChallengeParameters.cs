@@ -50,13 +50,13 @@ namespace GBX.NET.Engines.Game
         /// Usually author time or stunt score.
         /// </summary>
         [NodeMember]
-        public int? AuthorScore { get; set; }
+        public int AuthorScore { get; set; }
 
         /// <summary>
         /// Stunt time limit.
         /// </summary>
         [NodeMember]
-        public TimeSpan? TimeLimit { get; set; }
+        public TimeSpan TimeLimit { get; set; } = TimeSpan.FromMinutes(1);
 
         [NodeMember]
         public CGameCtnGhost RaceValidateGhost { get; set; }
@@ -271,8 +271,8 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
             {
-                n.TimeLimit = TimeSpan.FromMilliseconds(rw.Int32(Convert.ToInt32(n.TimeLimit?.TotalMilliseconds ?? TimeSpan.FromMinutes(1).TotalMilliseconds)));
-                n.AuthorScore = rw.Int32(n.AuthorScore.GetValueOrDefault());
+                n.TimeLimit = TimeSpan.FromMilliseconds(rw.Int32(Convert.ToInt32(n.TimeLimit.TotalMilliseconds)));
+                n.AuthorScore = rw.Int32(n.AuthorScore);
             }
         }
 
@@ -286,18 +286,18 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0305B00A, "medals")]
         public class Chunk0305B00A : SkippableChunk<CGameCtnChallengeParameters>
         {
-            public int Unknown1 { get; set; }
+            public int U01 { get; set; }
 
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
             {
-                Unknown1 = rw.Int32(Unknown1);
+                U01 = rw.Int32(U01);
 
                 n.BronzeTime = rw.TimeSpan32(n.BronzeTime);
                 n.SilverTime = rw.TimeSpan32(n.SilverTime);
                 n.GoldTime = rw.TimeSpan32(n.GoldTime);
                 n.AuthorTime = rw.TimeSpan32(n.AuthorTime);
-                n.TimeLimit = TimeSpan.FromMilliseconds(rw.Int32(Convert.ToInt32(n.TimeLimit?.TotalMilliseconds ?? TimeSpan.FromMinutes(1).TotalMilliseconds)));
-                n.AuthorScore = rw.Int32(n.AuthorScore.GetValueOrDefault());
+                n.TimeLimit = TimeSpan.FromMilliseconds(rw.Int32(Convert.ToInt32(n.TimeLimit.TotalMilliseconds)));
+                n.AuthorScore = rw.Int32(n.AuthorScore);
             }
         }
 
@@ -327,13 +327,13 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0305B00E, "map type")]
         public class Chunk0305B00E : SkippableChunk<CGameCtnChallengeParameters>
         {
-            public int Unknown1 { get; set; }
+            public int U01 { get; set; }
 
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
             {
                 n.mapType = rw.String(n.mapType);
                 n.mapStyle = rw.String(n.mapStyle);
-                Unknown1 = rw.Int32(Unknown1);
+                U01 = rw.Int32(U01);
             }
         }
 

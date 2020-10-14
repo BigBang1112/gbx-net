@@ -103,7 +103,7 @@ namespace GBX.NET
             return array;
         }
 
-        public static T Parse<T>(GameBoxReader r, uint? classID = null) where T : Node
+        public static T Parse<T>(GameBoxReader r, uint? classID = null, T node = null) where T : Node
         {
             var readNodeStart = DateTime.Now;
 
@@ -117,7 +117,8 @@ namespace GBX.NET
             if (!AvailableClasses.TryGetValue(classID.Value, out Type type))
                 throw new NotImplementedException($"Node ID 0x{classID.Value:X8} is not implemented. ({Names.Where(x => x.Key == Chunk.Remap(classID.Value)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
 
-            T node = (T)Activator.CreateInstance(type);
+            if (node == null)
+                node = (T)Activator.CreateInstance(type);
 
             GameBoxBody body;
 
@@ -128,10 +129,8 @@ namespace GBX.NET
 
             node.Body = body;
 
-            var chunks = new ChunkSet
-            {
-                Node = node
-            };
+            var chunks = new ChunkSet { Node = node };
+            node.Chunks = chunks;
 
             uint? previousChunk = null;
 
@@ -297,8 +296,6 @@ namespace GBX.NET
                 Log.Write($"[{node.ClassName}] DONE! ({(DateTime.Now - readNodeStart).TotalMilliseconds}ms)", ConsoleColor.Green);
             else
                 Log.Write($"~ [{node.ClassName}] DONE! ({(DateTime.Now - readNodeStart).TotalMilliseconds}ms)", ConsoleColor.Green);
-
-            node.Chunks = chunks;
 
             return node;
         }

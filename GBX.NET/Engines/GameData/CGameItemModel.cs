@@ -9,7 +9,7 @@ namespace GBX.NET.Engines.GameData
     [Node(0x2E002000)]
     public class CGameItemModel : CGameCtnCollector
     {
-        public enum ItemType : int
+        public enum EItemType : int
         {
             Undefined = 0,
             /// <summary>
@@ -32,6 +32,7 @@ namespace GBX.NET.Engines.GameData
             EntitySpawner = 12
         }
 
+        public EItemType ItemType { get; set; }
         public Node[] NadeoSkinFids { get; set; }
         public Node[] Cameras { get; set; }
         public Node RaceInterfaceFid { get; set; }
@@ -41,7 +42,6 @@ namespace GBX.NET.Engines.GameData
         public float OrbitalRadiusBase { get; set; }
         public float OrbitalPreviewAngle { get; set; }
         public Node BaseAttributes { get; set; }
-        public ItemType ItemObjectType { get; set; }
         public Node PhyModel { get; set; }
         public Node VisModel { get; set; }
         public Node VisModelStatic { get; set; }
@@ -51,11 +51,9 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E002000)]
         public class Chunk2E002000 : HeaderChunk<CGameItemModel>
         {
-            public ItemType Type { get; set; }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
             {
-                Type = (ItemType)rw.Int32((int)Type);
+                n.ItemType = (EItemType)rw.Int32((int)n.ItemType);
             }
         }
 
@@ -116,7 +114,7 @@ namespace GBX.NET.Engines.GameData
         {
             public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
             {
-                n.ItemObjectType = (ItemType)rw.Int32((int)n.ItemObjectType);
+                n.ItemType = (EItemType)rw.Int32((int)n.ItemType);
             }
         }
 
