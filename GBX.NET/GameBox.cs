@@ -406,7 +406,7 @@ namespace GBX.NET
         /// <returns>A GameBox with specified main node type.</returns>
         /// <exception cref="InvalidCastException"/>
         /// <example>
-        /// var gbx = GameBox.Parse<CGameCtnChallenge>("MyMap.Map.Gbx");
+        /// var gbx = GameBox.Parse&lt;CGameCtnChallenge&gt;("MyMap.Map.Gbx");
         /// // Node data is available in gbx.MainNode
         /// </example>
         public static GameBox<T> Parse<T>(string fileName) where T : Node
@@ -461,15 +461,15 @@ namespace GBX.NET
         /// Easily parses a GBX file.
         /// </summary>
         /// <param name="fileName">Relative or absolute file path.</param>
-        /// <returns>A GameBox with either basic information only  (if unknown), or also with specified main node type (available using an explicit <see cref="GameBox{T}"/> cast.</returns>
+        /// <returns>A GameBox with either basic information only  (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
         /// <example>
         /// var gbx = GameBox.Parse("MyMap.Map.Gbx");
         /// 
-        /// if (gbx is GameBox<CGameCtnChallenge> gbxMap)
+        /// if (gbx is GameBox&lt;CGameCtnChallenge&gt; gbxMap)
         /// {
         ///     // Node data is available in gbxMap.MainNode
         /// }
-        /// else if (gbx is GameBox<CGameCtnReplayRecord> gbxReplay)
+        /// else if (gbx is GameBox&lt;CGameCtnReplayRecord&gt; gbxReplay)
         /// {
         ///     // Node data is available in gbxReplay.MainNode
         /// }
