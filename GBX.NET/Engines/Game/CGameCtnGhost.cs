@@ -245,7 +245,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.RaceTime = TimeSpan.FromMilliseconds(rw.Int32(Convert.ToInt32(n.raceTime.GetValueOrDefault().TotalMilliseconds)));
+                n.RaceTime = rw.TimeSpan32(n.RaceTime);
             }
         }
 
