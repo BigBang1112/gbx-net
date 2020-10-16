@@ -172,10 +172,14 @@ namespace GBX.NET.Engines.Game
         /// Variant of the block. Taken from flags.
         /// </summary>
         [NodeMember]
-        public int Variant
+        public byte? Variant
         {
-            get => Flags > -1 ? Flags & 15 : -1;
-            set => Variant = (int)(Flags & 0xFFFFFFF0) + (value & 15);
+            get => Flags > -1 ? (byte?)(Flags & 15) : null;
+            set
+            {
+                if (value.HasValue)
+                    Flags = (int)(Flags & 0xFFFFFFF0) + (value.Value & 15);
+            }
         }
 
         [NodeMember]
@@ -276,7 +280,7 @@ namespace GBX.NET.Engines.Game
             public bool Bit21 => node.Bit21;
             public bool Bit17 => node.Bit17;
             public bool IsClip => node.IsClip;
-            public int Variant => node.Variant;
+            public byte? Variant => node.Variant;
 
             public DebugView(CGameCtnBlock node) => this.node = node;
         }
