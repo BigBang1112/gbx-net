@@ -12,11 +12,22 @@ GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software 
 - All versions of GBX are supported: ranging from TM1.0 to TM®.
 - Reading PAK file isn't currently supported.
 
+| Extension | Node | Can read | Can write
+| --- | --- | --- | ---
+| Map.Gbx | [CGameCtnChallenge](GBX.NET/Engines/Game/CGameCtnChallenge.cs) | Yes | Yes
+| Replay.Gbx | [CGameCtnReplayRecord](GBX.NET/Engines/Game/CGameCtnReplayRecord.cs) | Yes | No
+| Ghost.Gbx | [CGameCtnGhost](GBX.NET/Engines/Game/CGameCtnGhost.cs) | Yes | Yes
+| Clip.Gbx | [CGameCtnMediaClip](GBX.NET/Engines/Game/CGameCtnMediaClip.cs) | Yes | Yes
+| EDClassic.Gbx | [CGameCtnBlockInfoClassic](GBX.NET/Engines/Game/CGameCtnBlockInfoClassic.cs) | Yes | No
+| Campaign.Gbx | [CGameCtnCampaign](GBX.NET/Engines/Game/CGameCtnCampaign.cs) | Yes | Yes
+| Block.Gbx | [CGameItemModel](GBX.NET/Engines/GameData/CGameItemModel.cs) | Yes | No
+| Item.Gbx | [CGameItemModel](GBX.NET/Engines/GameData/CGameItemModel.cs) | Soon | No
+
 ## Compatibility
 
 GBX.NET is compatible with **.NET Standard 2.0** since version 0.2.0. Earlier versions are built on .NET Standard 2.1.
 
-The library is also set to x86 assembly due to LZO compression problems in x64. It is unsure whenever this will be resolved.
+The library is also set to **x86 assembly** due to LZO compression problems in x64. It is unsure whenever this will be resolved.
 
 ## Dependencies
 
