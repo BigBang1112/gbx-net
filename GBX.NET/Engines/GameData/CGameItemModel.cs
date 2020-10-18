@@ -45,7 +45,7 @@ namespace GBX.NET.Engines.GameData
         public Node PhyModel { get; set; }
         public Node VisModel { get; set; }
         public Node VisModelStatic { get; set; }
-        public Node Block { get; set; }
+        public Node EntityModel { get; set; }
         public CGameItemPlacementParam ItemPlacement { get; set; }
 
         [Chunk(0x2E002000)]
@@ -138,7 +138,7 @@ namespace GBX.NET.Engines.GameData
                     {
                         rw.Int32(Unknown);
                         rw.Int32(Unknown);
-                        n.Block = rw.NodeRef<CGameBlockItem>(n.Block);
+                        n.EntityModel = rw.NodeRef(n.EntityModel);
                         if(Version >= 13)
                             Unknown1 = rw.NodeRef(Unknown1);
                     }
