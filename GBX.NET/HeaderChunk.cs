@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Text;
 
 namespace GBX.NET
@@ -38,6 +39,12 @@ namespace GBX.NET
                 var unknownR = new GameBoxReader(Unknown, rw.Writer.Lookbackable);
                 Write(n, rw.Writer, unknownR);
             }
+        }
+
+        public override string ToString()
+        {
+            var desc = GetType().GetCustomAttribute<ChunkAttribute>().Description;
+            return $"{typeof(T).Name} header chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}";
         }
     }
 
@@ -81,5 +88,10 @@ namespace GBX.NET
         }
 
         public void Write(GameBoxWriter w) => w.Write(Stream.ToArray(), 0, (int)Stream.Length);
+
+        public override string ToString()
+        {
+            return $"Header chunk 0x{ID:X8}";
+        }
     }
 }

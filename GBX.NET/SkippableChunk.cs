@@ -83,5 +83,13 @@ namespace GBX.NET
         {
             w.Write(Stream.ToArray(), 0, (int)Stream.Length);
         }
+
+        public override string ToString()
+        {
+            if(GetType().GetCustomAttribute<ChunkAttribute>() == null)
+                return $"{typeof(T).Name} unknown skippable chunk 0x{ID:X8}";
+            var desc = GetType().GetCustomAttribute<ChunkAttribute>().Description;
+            return $"{typeof(T).Name} skippable chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}";
+        }
     }
 }
