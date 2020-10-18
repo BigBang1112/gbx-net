@@ -186,20 +186,26 @@ namespace GBX.NET
 
         public void Write(GameBoxWriter w, ClassIDRemap remap)
         {
-            (Header as ILookbackable).LookbackWritten = false;
-            (Header as ILookbackable).LookbackStrings.Clear();
-            Header.Write(w, Body.AuxilaryNodes.Count + 1, remap);
+            using (MemoryStream ms = new MemoryStream())
+            using (GameBoxWriter bodyW = new GameBoxWriter(ms))
+            {
+                (Body as ILookbackable).LookbackWritten = false;
+                (Body as ILookbackable).LookbackStrings.Clear();
+                Body.AuxilaryNodes.Clear();
 
-            if (RefTable == null)
-                w.Write(0);
-            else
-                RefTable.Write(w);
+                Body.Write(bodyW, remap);
 
-            (Body as ILookbackable).LookbackWritten = false;
-            (Body as ILookbackable).LookbackStrings.Clear();
-            Body.AuxilaryNodes.Clear();
+                (Header as ILookbackable).LookbackWritten = false;
+                (Header as ILookbackable).LookbackStrings.Clear();
+                Header.Write(w, Body.AuxilaryNodes.Count + 1, remap);
 
-            Body.Write(w, remap);
+                if (RefTable == null)
+                    w.Write(0);
+                else
+                    RefTable.Write(w);
+
+                w.Write(ms.ToArray(), 0, (int)ms.Length);
+            }
         }
 
         public void Write(GameBoxWriter w)
