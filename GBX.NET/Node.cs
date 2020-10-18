@@ -545,6 +545,11 @@ namespace GBX.NET
             return Chunks.Remove<T>();
         }
 
+        public bool RemoveChunk(uint chunkID)
+        {
+            return Chunks.Remove(chunkID);
+        }
+
         public bool TryGetChunk<T>(out T chunk) where T : Chunk
         {
             return Chunks.TryGet(out chunk);
