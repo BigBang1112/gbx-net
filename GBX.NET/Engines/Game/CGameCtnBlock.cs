@@ -1,6 +1,8 @@
 ﻿using GBX.NET.Engines.GameData;
 using System;
+using System.Collections;
 using System.Diagnostics;
+using System.Linq;
 
 namespace GBX.NET.Engines.Game
 {
@@ -270,7 +272,7 @@ namespace GBX.NET.Engines.Game
             public Meta BlockInfo => node.BlockInfo;
             public Direction Direction => node.Direction;
             public Int3 Coord => node.Coord;
-            public int Flags => node.Flags;
+            public FlagsInt Flags => new FlagsInt(node.Flags);
             public string Author => node.Author;
             public CGameCtnBlockSkin Skin => node.Skin;
             public CGameWaypointSpecialProperty Parameters => node.Parameters;
@@ -283,6 +285,13 @@ namespace GBX.NET.Engines.Game
             public byte? Variant => node.Variant;
 
             public DebugView(CGameCtnBlock node) => this.node = node;
+
+            public class FlagsInt
+            {
+                private readonly int value;
+                public FlagsInt(int flags) => value = flags;
+                public override string ToString() => Convert.ToString(value, 2).PadLeft(32, '0');
+            }
         }
 
         #endregion
