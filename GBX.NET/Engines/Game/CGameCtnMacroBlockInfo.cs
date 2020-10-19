@@ -1,6 +1,7 @@
 ﻿using GBX.NET.Engines.GameData;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -15,7 +16,7 @@ namespace GBX.NET.Engines.Game
     {
         public CGameCtnBlock[] Blocks { get; set; }
 
-        public Item[] Items { get; set; }
+        public CGameCtnAnchoredObject[] AnchoredObjects { get; set; }
 
         public List<FreeBlock> FreeBlocks { get; set; } = new List<FreeBlock>();
 
@@ -67,10 +68,10 @@ namespace GBX.NET.Engines.Game
                     }
 
                     if (ver >= 3)
-                        r.ReadNodeRef();
+                        Debug.Assert(r.ReadNodeRef() == null);
 
                     if (ver >= 4)
-                        r.ReadNodeRef();
+                        Debug.Assert(r.ReadNodeRef() == null);
 
                     var block = new CGameCtnBlock() { BlockInfo = meta, Coord = coord.GetValueOrDefault(), Direction = dir.GetValueOrDefault(), Flags = flags };
 
@@ -100,7 +101,7 @@ namespace GBX.NET.Engines.Game
                 var unknown = r.ReadArray(i =>
                 {
                     var version = r.ReadInt32();
-                    r.ReadNodeRef();
+                    Debug.Assert(r.ReadNodeRef() == null);
 
                     if(version == 0)
                     {
@@ -194,15 +195,15 @@ namespace GBX.NET.Engines.Game
             {
                 Version = r.ReadInt32();
 
-                n.Items = r.ReadArray(i =>
+                n.AnchoredObjects = r.ReadArray(i =>
                 {
                     var v = r.ReadInt32();
 
-                    var meta = r.ReadMeta();
+                    var itemModel = r.ReadMeta();
 
-                    Vec3? pitchYawRoll = null;
-                    Vec3? pivotPosition = null;
-                    float? scale = null;
+                    Vec3 pitchYawRoll = default;
+                    Vec3 pivotPosition = default;
+                    float scale = 1;
 
                     if (v < 3)
                     {
@@ -219,7 +220,7 @@ namespace GBX.NET.Engines.Game
                     }
 
                     var blockCoord = r.ReadInt3();
-                    r.ReadLookbackString();
+                    var lookback = r.ReadLookbackString();
                     var pos = r.ReadVec3();
 
                     if (v < 5)
@@ -237,12 +238,12 @@ namespace GBX.NET.Engines.Game
                     if (v >= 10)
                         r.ReadArray<int>(3); // 0 1 -1
 
-                    return new Item()
+                    return new CGameCtnAnchoredObject()
                     {
-                        Meta = meta,
+                        ItemModel = itemModel,
                         PitchYawRoll = pitchYawRoll,
-                        BlockCoord = blockCoord,
-                        Position = pos,
+                        BlockUnitCoord = (Byte3)blockCoord,
+                        AbsolutePositionInMap = pos,
                         PivotPosition = pivotPosition,
                         Scale = scale,
                     };
