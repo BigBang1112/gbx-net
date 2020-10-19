@@ -69,7 +69,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk0305B00E>();
                 return mapType;
             }
-            set => mapType = value;
+            set
+            {
+                DiscoverChunk<Chunk0305B00E>();
+                mapType = value;
+            }
         }
 
         [NodeMember]
@@ -80,7 +84,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk0305B00E>();
                 return mapStyle;
             }
-            set => mapStyle = value;
+            set
+            {
+                DiscoverChunk<Chunk0305B00E>();
+                mapStyle = value;
+            }
         }
 
         [NodeMember]
