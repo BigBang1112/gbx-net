@@ -21,7 +21,8 @@ GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software 
 | EDClassic.Gbx | [CGameCtnBlockInfoClassic](GBX.NET/Engines/Game/CGameCtnBlockInfoClassic.cs) | Yes | No
 | Campaign.Gbx | [CGameCtnCampaign](GBX.NET/Engines/Game/CGameCtnCampaign.cs) | Yes | Yes
 | Block.Gbx | [CGameItemModel](GBX.NET/Engines/GameData/CGameItemModel.cs) | Yes | No
-| Item.Gbx | [CGameItemModel](GBX.NET/Engines/GameData/CGameItemModel.cs) | Soon | No
+| Macroblock.Gbx | [CGameCtnMacroBlockInfo](GBX.NET/Engines/GameData/CGameCtnMacroBlockInfo.cs) | Yes | No
+| Item.Gbx | [CGameItemModel](GBX.NET/Engines/GameData/CGameItemModel.cs) | Only header | No
 
 ## Compatibility
 
