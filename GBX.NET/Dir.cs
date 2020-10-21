@@ -52,5 +52,10 @@ namespace GBX.NET
                     throw new Exception();
             }
         }
+
+        public static Direction Add(Direction a, Direction b)
+        {
+            return (Direction)(((int)a + (int)b) % 4);
+        }
     }
 }
