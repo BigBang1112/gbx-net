@@ -918,6 +918,7 @@ namespace GBX.NET.Engines.Game
             RemoveChunk<Chunk03043029>();
         }
 
+        [Obsolete]
         public void PlaceItem(Meta itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Byte3 blockUnitCoord, Vec3 offsetPivot, int variant = 0)
         {
             CreateChunk<Chunk03043040>();
@@ -935,6 +936,24 @@ namespace GBX.NET.Engines.Game
             it.CreateChunk<CGameCtnAnchoredObject.Chunk03101002>();
             it.CreateChunk<CGameCtnAnchoredObject.Chunk03101004>();
             AnchoredObjects.Add(it);
+        }
+
+        public void PlaceAnchoredObject(Meta itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Vec3 offsetPivot = default, int variant = 0)
+        {
+            CreateChunk<Chunk03043040>();
+
+            var anchoredObject = new CGameCtnAnchoredObject()
+            {
+                ItemModel = itemModel,
+                AbsolutePositionInMap = absolutePosition,
+                PitchYawRoll = pitchYawRoll,
+                PivotPosition = offsetPivot,
+                Variant = variant
+            };
+
+            anchoredObject.CreateChunk<CGameCtnAnchoredObject.Chunk03101002>();
+            anchoredObject.CreateChunk<CGameCtnAnchoredObject.Chunk03101004>();
+            AnchoredObjects.Add(anchoredObject);
         }
 
         public CGameCtnBlock PlaceFreeBlock(string name, Vec3 position, Vec3 pitchYawRoll)
@@ -1095,6 +1114,69 @@ namespace GBX.NET.Engines.Game
         {
             DiscoverChunk<Chunk03043054>();
             File.WriteAllBytes(fileName, embedStream.ToArray());
+        }
+
+        public void PlaceMacroblock(CGameCtnMacroBlockInfo macroblock, Int3 coord, Direction dir)
+        {
+            var macroRad = (int)dir * (Math.PI / 2); // Rotation of the macroblock in radians needed for the formula to determine individual coords
+            var allCoords = macroblock.Blocks.Select(x => x.Coord); // Creates an enumerable of macroblock block coords
+
+            var min = new Int3(allCoords.Select(x => x.X).Min(), allCoords.Select(x => x.Y).Min(), allCoords.Select(x => x.Z).Min());
+            var max = new Int3(allCoords.Select(x => x.X).Max(), allCoords.Select(x => x.Y).Max(), allCoords.Select(x => x.Z).Max());
+            // Calculates the minimum and maximum coord, used to determine size and center of the macroblock
+
+            var size = max - min + (1, 1, 1);
+            var center = (min + max) * .5f;
+
+            var newCoords = new Int3[macroblock.Blocks.Length]; // Array used to store new rotated block positions
+
+            for (var i = 0; i < newCoords.Length; i++)
+            {
+                var block = macroblock.Blocks[i];
+
+                var offsetX = Convert.ToInt32(Math.Cos(macroRad) * (block.Coord.X - center.X) - Math.Sin(macroRad) * (block.Coord.Z - center.Z) + center.X);
+                var offsetZ = Convert.ToInt32(Math.Sin(macroRad) * (block.Coord.X - center.X) + Math.Cos(macroRad) * (block.Coord.Z - center.Z) + center.Z);
+                // Calculates the new XZ positions using "rotation around another point" formula
+                
+                newCoords[i] = new Int3(offsetX, block.Coord.Y, offsetZ); // Applies the result to the array, Y isn't affected
+            }
+
+            var newMin = new Int3(newCoords.Select(x => x.X).Min(), newCoords.Select(x => x.Y).Min(), newCoords.Select(x => x.Z).Min());
+            // Calculates the new minimum coord of the rotated coordinates
+            // This value will be always (0, 0, 0) on 1:1 macroblock size ratios, on other size ratios, this will vary
+            // Macroblock placement behaviour in ManiaPlanet works by rotating around the center, and moving the blocks to the zero relative coord as a group
+
+            for (var i = 0; i < newCoords.Length; i++)
+            {
+                var block = macroblock.Blocks[i];
+                var newRelativeCoord = newCoords[i] - newMin; // Use the newly rotated coordinates, and substract the shift the rotation made to the entire macroblock
+                
+                Blocks.Add(
+                    new CGameCtnBlock(
+                        block.Name,
+                        Dir.Add(block.Direction, dir),
+                        coord + newRelativeCoord,
+                        block.Flags,
+                        block.Author,
+                        block.Skin,
+                        block.WaypointSpecialProperty
+                        )
+                    );
+            }
+
+            foreach(var item in macroblock.AnchoredObjects)
+            {
+                var itemRadians = (float)((int)dir * Math.PI / 2);
+                var centerFromCoord = new Vec3(16, 0, 16);
+
+                var offsetPos = new Vec3((float)(Math.Cos(itemRadians) * (item.AbsolutePositionInMap.X - centerFromCoord.X) -
+                        Math.Sin(itemRadians) * (item.AbsolutePositionInMap.Z - centerFromCoord.Z) + centerFromCoord.X),
+                        item.AbsolutePositionInMap.Y, // not supported yet
+                        (float)(Math.Sin(itemRadians) * (item.AbsolutePositionInMap.X - centerFromCoord.X) +
+                        Math.Cos(itemRadians) * (item.AbsolutePositionInMap.Z - centerFromCoord.Z) + centerFromCoord.Z));
+
+                PlaceAnchoredObject(item.ItemModel, offsetPos + coord * (32, 8, 32) + (0, 8, 0), item.PitchYawRoll + (-itemRadians, 0f, 0f));
+            }
         }
 
         #endregion
@@ -1807,7 +1889,7 @@ namespace GBX.NET.Engines.Game
 
                     if (flags == -1)
                     {
-                        blocks.Add(new CGameCtnBlock(blockName, dir, (Int3)coord, flags, null, null, null));
+                        blocks.Add(new CGameCtnBlock(blockName, dir, (Int3)coord - (1, 1, 1), flags, null, null, null));
                         continue;
                     }
 
@@ -1835,7 +1917,7 @@ namespace GBX.NET.Engines.Game
 
                     }
 
-                    blocks.Add(new CGameCtnBlock(blockName, dir, (Int3)coord, flags, author, skin, parameters));
+                    blocks.Add(new CGameCtnBlock(blockName, dir, (Int3)coord - (1, 1, 1), flags, author, skin, parameters));
                 }
 
                 n.Blocks = blocks;
@@ -1858,7 +1940,7 @@ namespace GBX.NET.Engines.Game
                 {
                     w.WriteLookbackString(x.Name);
                     w.Write((byte)x.Direction);
-                    w.Write((Byte3)x.Coord);
+                    w.Write((Byte3)(x.Coord + (1, 1, 1)));
 
                     if (Version == null)
                         w.Write((short)x.Flags);
@@ -1874,7 +1956,7 @@ namespace GBX.NET.Engines.Game
                         }
 
                         if ((x.Flags & 0x100000) != 0)
-                            w.Write(x.Parameters);
+                            w.Write(x.WaypointSpecialProperty);
                     }
                 }
             }
