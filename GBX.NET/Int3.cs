@@ -50,6 +50,7 @@ namespace GBX.NET
         public static implicit operator Int3((int X, int Y, int Z) v) => new Int3(v.X, v.Y, v.Z);
         public static implicit operator (int X, int Y, int Z)(Int3 v) => (v.X, v.Y, v.Z);
 
+        public static explicit operator Int3(Vec3 a) => new Int3(Convert.ToInt32(a.X), Convert.ToInt32(a.Y), Convert.ToInt32(a.Z));
         public static explicit operator Int3(Byte3 a) => new Int3(a.X, a.Y, a.Z);
         public static explicit operator Int3(Int2 a) => new Int3(a.X, 0, a.Y);
         public static explicit operator Int3(int[] a) => a == null ? new Int3() : a.Length >= 3 ? new Int3(a[0], a[1], a[2]) : throw new Exception();
