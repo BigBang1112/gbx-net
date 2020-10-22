@@ -1,4 +1,5 @@
-﻿using GBX.NET.Engines.GameData;
+﻿using GBX.NET.BlockInfo;
+using GBX.NET.Engines.GameData;
 using GBX.NET.Engines.Hms;
 using GBX.NET.Engines.Script;
 using ICSharpCode.SharpZipLib.Checksum;
@@ -1133,12 +1134,42 @@ namespace GBX.NET.Engines.Game
             for (var i = 0; i < newCoords.Length; i++)
             {
                 var block = macroblock.Blocks[i];
+                var blockCoord = (Vec3)block.Coord;
 
-                var offsetX = Convert.ToInt32(Math.Cos(macroRad) * (block.Coord.X - center.X) - Math.Sin(macroRad) * (block.Coord.Z - center.Z) + center.X);
-                var offsetZ = Convert.ToInt32(Math.Sin(macroRad) * (block.Coord.X - center.X) + Math.Cos(macroRad) * (block.Coord.Z - center.Z) + center.Z);
+                var blockCenter = new Vec3();
+                // Temporary center variable whose rule is to properly position blocks over size of 1x1
+
+                if (BlockInfoManager.BlockModels.TryGetValue(block.Name, out BlockModel model)) // Get quick block information if available
+                {
+                    BlockUnit[] blockUnits;
+                    if (block.IsGround)
+                        blockUnits = model.Ground;
+                    else
+                        blockUnits = model.Air;
+                    // Use the block units from what the block actually pretends to be placed on
+
+                    if (blockUnits.Length > 1) // Optimization for blocks that are simple 1x1 size
+                    {
+                        var blockAllCoords = Array.ConvertAll(blockUnits.Select(x => x.Coord).ToArray(), x => (Int3)x); // Gets the coords in Int3 type
+                        
+                        var blockMax = new Int3(blockAllCoords.Select(x => x.X).Max(), blockAllCoords.Select(x => x.Y).Max(), blockAllCoords.Select(x => x.Z).Max());
+                        // Calculates only the maximum, due to all macroblocks having a natural minimum of (0, 0, 0)
+                        
+                        blockCenter = blockMax * .5f;
+                        blockCoord += (blockCenter.X, 0, blockCenter.Z);
+                        // Makes the block pretend that it has a centered coordinates for the whole macroblock rotation
+                    }
+                }
+
+                var offsetX = Math.Cos(macroRad) * (blockCoord.X - center.X) - Math.Sin(macroRad) * (blockCoord.Z - center.Z) + center.X;
+                var offsetZ = Math.Sin(macroRad) * (blockCoord.X - center.X) + Math.Cos(macroRad) * (blockCoord.Z - center.Z) + center.Z;
                 // Calculates the new XZ positions using "rotation around another point" formula
-                
-                newCoords[i] = new Int3(offsetX, block.Coord.Y, offsetZ); // Applies the result to the array, Y isn't affected
+
+                offsetX -= blockCenter.X;
+                offsetZ -= blockCenter.Z;
+                // If the center is different than 0 0 (the block coordinates pretended to be in the middle), fix the coord back to its normal coordination
+
+                newCoords[i] = new Int3(Convert.ToInt32(offsetX), block.Coord.Y, Convert.ToInt32(offsetZ)); // Applies the result to the array, Y isn't affected
             }
 
             var newMin = new Int3(newCoords.Select(x => x.X).Min(), newCoords.Select(x => x.Y).Min(), newCoords.Select(x => x.Z).Min());
@@ -1164,10 +1195,12 @@ namespace GBX.NET.Engines.Game
                     );
             }
 
-            foreach(var item in macroblock.AnchoredObjects)
+            var blockSize = Collection.GetBlockSize();
+
+            foreach (var item in macroblock.AnchoredObjects)
             {
                 var itemRadians = (float)((int)dir * Math.PI / 2);
-                var centerFromCoord = new Vec3(16, 0, 16);
+                var centerFromCoord = center * blockSize + blockSize * new Vec3(0.5f, 0f, 0.5f);
 
                 var offsetPos = new Vec3((float)(Math.Cos(itemRadians) * (item.AbsolutePositionInMap.X - centerFromCoord.X) -
                         Math.Sin(itemRadians) * (item.AbsolutePositionInMap.Z - centerFromCoord.Z) + centerFromCoord.X),
@@ -1175,7 +1208,7 @@ namespace GBX.NET.Engines.Game
                         (float)(Math.Sin(itemRadians) * (item.AbsolutePositionInMap.X - centerFromCoord.X) +
                         Math.Cos(itemRadians) * (item.AbsolutePositionInMap.Z - centerFromCoord.Z) + centerFromCoord.Z));
 
-                PlaceAnchoredObject(item.ItemModel, offsetPos + coord * (32, 8, 32) + (0, 8, 0), item.PitchYawRoll + (-itemRadians, 0f, 0f));
+                PlaceAnchoredObject(item.ItemModel, offsetPos + coord * blockSize + (0, blockSize.Y, 0), item.PitchYawRoll + (-itemRadians, 0f, 0f));
             }
         }
 
