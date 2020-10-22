@@ -447,7 +447,7 @@ namespace GBX.NET
             startTimestamp = DateTime.Now;
 
             foreach (var nodeType in Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
-                   && x.Namespace.StartsWith("GBX.NET.Engines") && GetBaseType(x) == typeof(Node)))
+                   && x.Namespace != null && x.Namespace.StartsWith("GBX.NET.Engines") && GetBaseType(x) == typeof(Node)))
             {
                 var nodeID = nodeType.GetCustomAttribute<NodeAttribute>().ID;
 
