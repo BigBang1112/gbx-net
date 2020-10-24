@@ -1129,7 +1129,7 @@ namespace GBX.NET.Engines.Game
             var size = max - min + (1, 1, 1);
             var center = (min + max) * .5f;
 
-            var newCoords = new Int3[macroblock.Blocks.Length]; // Array used to store new rotated block positions
+            var newCoords = new Vec3[macroblock.Blocks.Length]; // Array used to store new rotated block positions
 
             for (var i = 0; i < newCoords.Length; i++)
             {
@@ -1169,10 +1169,10 @@ namespace GBX.NET.Engines.Game
                 offsetZ -= blockCenter.Z;
                 // If the center is different than 0 0 (the block coordinates pretended to be in the middle), fix the coord back to its normal coordination
 
-                newCoords[i] = new Int3(Convert.ToInt32(offsetX), block.Coord.Y, Convert.ToInt32(offsetZ)); // Applies the result to the array, Y isn't affected
+                newCoords[i] = new Vec3((float)offsetX, block.Coord.Y, (float)offsetZ); // Applies the result to the array, Y isn't affected
             }
 
-            var newMin = new Int3(newCoords.Select(x => x.X).Min(), newCoords.Select(x => x.Y).Min(), newCoords.Select(x => x.Z).Min());
+            var newMin = new Vec3(newCoords.Select(x => x.X).Min(), newCoords.Select(x => x.Y).Min(), newCoords.Select(x => x.Z).Min());
             // Calculates the new minimum coord of the rotated coordinates
             // This value will be always (0, 0, 0) on 1:1 macroblock size ratios, on other size ratios, this will vary
             // Macroblock placement behaviour in ManiaPlanet works by rotating around the center, and moving the blocks to the zero relative coord as a group
@@ -1186,7 +1186,7 @@ namespace GBX.NET.Engines.Game
                     new CGameCtnBlock(
                         block.Name,
                         Dir.Add(block.Direction, dir),
-                        coord + newRelativeCoord,
+                        coord + (Int3)newRelativeCoord,
                         block.Flags,
                         block.Author,
                         block.Skin,
