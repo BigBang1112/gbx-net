@@ -388,6 +388,18 @@ namespace GBX.NET
             return Load(fileName);
         }
 
+        public static GameBox<T> ParseHeader<T>(string fileName) where T : Node
+        {
+            GameBox<T> gbx = new GameBox<T> { FileName = fileName };
+
+            using (var fs = File.OpenRead(fileName))
+            using (var r = new GameBoxReader(fs))
+                if (!gbx.ReadHeader(r))
+                    return null;
+
+            return gbx;
+        }
+
         /// <summary>
         /// Easily parses a GBX file.
         /// </summary>
