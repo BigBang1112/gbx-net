@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace GBX.NET
 {
@@ -34,6 +35,24 @@ namespace GBX.NET
         {
             ID = collectionID;
             Name = null;
+        }
+
+        public Int3 GetBlockSize()
+        {
+            switch (ToString())
+            {
+                case "Desert": return (32, 16, 32);
+                case "Snow": return (32, 16, 32);
+                case "Rally": return (32, 16, 32);
+                case "Island": return (64, 8, 64);
+                case "Bay": return (32, 8, 32);
+                case "Coast": return (16, 8, 16);
+                case "Valley": return (32, 8, 32);
+                case "Stadium": return (32, 8, 32);
+                case "Canyon": return (64, 16, 64);
+                case "Lagoon": return (32, 8, 32);
+                default: throw new Exception();
+            }
         }
 
         /// <summary>

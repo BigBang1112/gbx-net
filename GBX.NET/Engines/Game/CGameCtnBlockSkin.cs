@@ -28,7 +28,7 @@ namespace GBX.NET.Engines.Game
         /// Second skin for the skinnable block. Available in TM®.
         /// </summary>
         [NodeMember]
-        public FileRef SecondaryPackDesc { get; set; }
+        public FileRef SecondaryPackDesc { get; set; } = new FileRef();
 
         #endregion
 

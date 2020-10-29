@@ -22,6 +22,11 @@ namespace GBX.NET
 
         }
 
+        public bool Remove(uint chunkID)
+        {
+            return RemoveWhere(x => x.ID == chunkID) > 0;
+        }
+
         public bool Remove<T>() where T : Chunk
         {
             return RemoveWhere(x => x.ID == typeof(T).GetCustomAttribute<ChunkAttribute>().ID) > 0;

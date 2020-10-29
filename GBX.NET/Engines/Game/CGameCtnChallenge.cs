@@ -1,4 +1,5 @@
-﻿using GBX.NET.Engines.GameData;
+﻿using GBX.NET.BlockInfo;
+using GBX.NET.Engines.GameData;
 using GBX.NET.Engines.Hms;
 using GBX.NET.Engines.Script;
 using ICSharpCode.SharpZipLib.Checksum;
@@ -12,6 +13,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
@@ -74,6 +76,14 @@ namespace GBX.NET.Engines.Game
             Crazy,
             Shortcut,
             Stunts
+        }
+
+        public enum EditorMode : int
+        {
+            Advanced,
+            Simple,
+            AdvancedWithGhostBlocks,
+            SimpleWithGhostBlocks
         }
 
         /// <summary>
@@ -150,11 +160,18 @@ namespace GBX.NET.Engines.Game
 
         #region Fields
 
-        private bool? isLapRace;
-        private int? nbLaps;
+        private TimeSpan? bronzeTime; // Only used if ChallengeParameters is null
+        private TimeSpan? silverTime; // Only used if ChallengeParameters is null
+        private TimeSpan? goldTime; // Only used if ChallengeParameters is null
+        private TimeSpan? authorTime; // Only used if ChallengeParameters is null
+        private int authorScore;
+        private bool isLapRace;
+        private int nbLaps = 3;
         private string password;
+        private string mapType;
+        private string mapStyle;
         private string titleID;
-        private int? authorVersion;
+        private int authorVersion;
         private string authorNickname;
         private string authorZone;
         private string authorExtraInfo;
@@ -183,8 +200,132 @@ namespace GBX.NET.Engines.Game
 
         #region Properties
 
+        /// <summary>
+        /// Time of the bronze medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+        /// </summary>
         [NodeMember]
-        public bool? TMObjective_IsLapRace
+        public TimeSpan? TMObjective_BronzeTime
+        {
+            get
+            {
+                if (ChallengeParameters != null)
+                    return ChallengeParameters.BronzeTime;
+                return bronzeTime;
+            }
+            set
+            {
+                if (ChallengeParameters != null)
+                    ChallengeParameters.BronzeTime = value;
+                bronzeTime = value;
+            }
+        }
+
+        /// <summary>
+        /// Time of the silver medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+        /// </summary>
+        [NodeMember]
+        public TimeSpan? TMObjective_SilverTime
+        {
+            get
+            {
+                if (ChallengeParameters != null)
+                    return ChallengeParameters.SilverTime;
+                return silverTime;
+            }
+            set
+            {
+                if (ChallengeParameters != null)
+                    ChallengeParameters.SilverTime = value;
+                silverTime = value;
+            }
+        }
+
+        /// <summary>
+        /// Time of the gold medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+        /// </summary>
+        [NodeMember]
+        public TimeSpan? TMObjective_GoldTime
+        {
+            get
+            {
+                if (ChallengeParameters != null)
+                    return ChallengeParameters.GoldTime;
+                return goldTime;
+            }
+            set
+            {
+                if (ChallengeParameters != null)
+                    ChallengeParameters.GoldTime = value;
+                goldTime = value;
+            }
+        }
+
+        /// <summary>
+        /// Time of the author medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+        /// </summary>
+        [NodeMember]
+        public TimeSpan? TMObjective_AuthorTime
+        {
+            get
+            {
+                if (ChallengeParameters != null)
+                    return ChallengeParameters.AuthorTime;
+                return authorTime;
+            }
+            set
+            {
+                if (ChallengeParameters != null)
+                    ChallengeParameters.AuthorTime = value;
+                authorTime = value;
+            }
+        }
+
+        [NodeMember]
+        public int Cost { get; set; }
+
+        /// <summary>
+        /// Map type in which the track was validated in.
+        /// </summary>
+        [NodeMember]
+        public TrackType Type { get; set; }
+
+        /// <summary>
+        /// Usually author time or stunt score. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+        /// </summary>
+        [NodeMember]
+        public int AuthorScore
+        {
+            get
+            {
+                if (ChallengeParameters != null)
+                    return ChallengeParameters.AuthorScore;
+                return authorScore;
+            }
+            set
+            {
+                if (ChallengeParameters != null)
+                    ChallengeParameters.AuthorScore = value;
+                authorScore = value;
+            }
+        }
+
+        [NodeMember]
+        public EditorMode Editor { get; set; }
+
+        /// <summary>
+        /// If the track was made using the simple editor.
+        /// </summary>
+        [NodeMember]
+        public bool CreatedWithSimpleEditor => Editor == (EditorMode.Simple | EditorMode.SimpleWithGhostBlocks);
+
+        /// <summary>
+        /// If the track uses ghost blocks.
+        /// </summary>
+        [NodeMember]
+        public bool HasGhostBlocks => Editor == (EditorMode.AdvancedWithGhostBlocks | EditorMode.SimpleWithGhostBlocks);
+
+        [NodeMember]
+        public bool TMObjective_IsLapRace
         {
             get
             {
@@ -198,7 +339,7 @@ namespace GBX.NET.Engines.Game
         /// Number of laps.
         /// </summary>
         [NodeMember]
-        public int? TMObjective_NbLaps
+        public int TMObjective_NbLaps
         {
             get
             {
@@ -207,6 +348,12 @@ namespace GBX.NET.Engines.Game
             }
             set => nbLaps = value;
         }
+
+        /// <summary>
+        /// Number of checkpoints.
+        /// </summary>
+        [NodeMember]
+        public int NbCheckpoints { get; set; }
 
         [NodeMember]
         public Meta MapInfo { get; set; }
@@ -224,7 +371,7 @@ namespace GBX.NET.Engines.Game
         /// The track's intended use.
         /// </summary>
         [NodeMember]
-        public TrackKind? Kind { get; set; }
+        public TrackKind Kind { get; set; } = TrackKind.InProgress;
 
         /// <summary>
         /// Password of the map used by older tracks.
@@ -242,6 +389,68 @@ namespace GBX.NET.Engines.Game
 
         [NodeMember]
         public Meta Decoration { get; set; }
+
+        /// <summary>
+        /// Name of the map type script.
+        /// </summary>
+        [NodeMember]
+        public string MapType
+        {
+            get
+            {
+                if (ChallengeParameters != null)
+                    return ChallengeParameters.MapType;
+                return mapType;
+            }
+            set
+            {
+                if (ChallengeParameters != null)
+                    ChallengeParameters.MapType = value;
+                mapType = value;
+            }
+        }
+
+        /// <summary>
+        /// Style of the map (Fullspeed, LOL, Tech), usually unused and defined by user.
+        /// </summary>
+        [NodeMember]
+        public string MapStyle
+        {
+            get
+            {
+                if (ChallengeParameters != null)
+                    return ChallengeParameters.MapStyle;
+                return mapStyle;
+            }
+            set
+            {
+                if (ChallengeParameters != null)
+                    ChallengeParameters.MapStyle = value;
+                mapStyle = value;
+            }
+        }
+
+        [NodeMember]
+        public ulong? LightmapCacheUID { get; set; }
+
+        /// <summary>
+        /// Version of the lightmap calculation.
+        /// </summary>
+        [NodeMember]
+        public byte? LightmapVersion { get; set; }
+
+        /// <summary>
+        /// XML track information and dependencies.
+        /// </summary>
+        [NodeMember]
+        public string XML { get; set; }
+
+        /// <summary>
+        /// Thumbnail bitmap.
+        /// </summary>
+        [NodeMember]
+        [IgnoreDataMember]
+        public Task<Bitmap> Thumbnail { get; set; }
 
         [NodeMember]
         public Collection Collection
@@ -297,7 +506,7 @@ namespace GBX.NET.Engines.Game
         public string Comments { get; set; }
 
         [NodeMember]
-        public int? AuthorVersion
+        public int AuthorVersion
         {
             get
             {
@@ -344,19 +553,19 @@ namespace GBX.NET.Engines.Game
         /// Vehicle metadata info.
         /// </summary>
         [NodeMember]
-        public Meta Vehicle { get; set; }
+        public Meta PlayerModel { get; set; }
 
         /// <summary>
         /// Map parameters.
         /// </summary>
         [NodeMember]
-        public CGameCtnChallengeParameters ChallengeParameters { get; set; }
+        public CGameCtnChallengeParameters ChallengeParameters { get; private set; }
 
         /// <summary>
         /// List of puzzle pieces.
         /// </summary>
         [NodeMember]
-        public CGameCtnCollectorList BlockStock { get; set; }
+        public CGameCtnCollectorList BlockStock { get; private set; }
 
         /// <summary>
         /// All checkpoints and their map coordinates. Used by older Trackmania.
@@ -608,6 +817,88 @@ namespace GBX.NET.Engines.Game
         #region Methods
 
         /// <summary>
+        /// Exports the map's thumbnail.
+        /// </summary>
+        /// <param name="stream">Stream to export to.</param>
+        /// <param name="format">Image format to use.</param>
+        public void ExportThumbnail(Stream stream, ImageFormat format)
+        {
+            if (Thumbnail == null) return;
+
+            if (format == ImageFormat.Jpeg)
+            {
+                var encoding = new EncoderParameters(1);
+                encoding.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 90L);
+                var encoder = ImageCodecInfo.GetImageDecoders().Where(x => x.FormatID == ImageFormat.Jpeg.Guid).First();
+
+                Thumbnail.Result.Save(stream, encoder, encoding);
+            }
+            else
+                Thumbnail.Result.Save(stream, format);
+        }
+
+        /// <summary>
+        /// Exports the map's thumbnail.
+        /// </summary>
+        /// <param name="fileName">File to export to.</param>
+        /// <param name="format">Image format to use.</param>
+        public void ExportThumbnail(string fileName, ImageFormat format)
+        {
+            if (Thumbnail == null) return;
+
+            if (format == ImageFormat.Jpeg)
+            {
+                var encoding = new EncoderParameters(1);
+                encoding.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 90L);
+                var encoder = ImageCodecInfo.GetImageDecoders().Where(x => x.FormatID == ImageFormat.Jpeg.Guid).First();
+
+                Thumbnail.Result.Save(fileName, encoder, encoding);
+            }
+            else
+                Thumbnail.Result.Save(fileName, format);
+        }
+
+        /// <summary>
+        /// Asynchronously imports (and replaces) a thumbnail to use for the map.
+        /// </summary>
+        /// <param name="stream">Stream to import from.</param>
+        /// <returns>A task that processes the thumbnail.</returns>
+        public Task<Bitmap> ImportThumbnailAsync(Stream stream)
+        {
+            Thumbnail = Task.Run(() => new Bitmap(stream));
+            return Thumbnail;
+        }
+
+        /// <summary>
+        /// Asynchronously imports (and replaces) a thumbnail to use for the map.
+        /// </summary>
+        /// <param name="fileName">File to import from.</param>
+        /// <returns>A task that processes the thumbnail.</returns>
+        public Task<Bitmap> ImportThumbnailAsync(string fileName)
+        {
+            Thumbnail = Task.Run(() => new Bitmap(fileName));
+            return Thumbnail;
+        }
+
+        /// <summary>
+        /// Imports (and replaces) a thumbnail to use for the map.
+        /// </summary>
+        /// <param name="stream">Stream to import from.</param>
+        public void ImportThumbnail(Stream stream)
+        {
+            ImportThumbnailAsync(stream).Wait();
+        }
+
+        /// <summary>
+        /// Imports (and replaces) a thumbnail to use for the map.
+        /// </summary>
+        /// <param name="fileName">File to import from.</param>
+        public void ImportThumbnail(string fileName)
+        {
+            ImportThumbnailAsync(fileName).Wait();
+        }
+
+        /// <summary>
         /// Sets a new map password.
         /// </summary>
         /// <param name="password">Password that will be hashed.</param>
@@ -629,6 +920,7 @@ namespace GBX.NET.Engines.Game
             RemoveChunk<Chunk03043029>();
         }
 
+        [Obsolete]
         public void PlaceItem(Meta itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Byte3 blockUnitCoord, Vec3 offsetPivot, int variant = 0)
         {
             CreateChunk<Chunk03043040>();
@@ -648,18 +940,44 @@ namespace GBX.NET.Engines.Game
             AnchoredObjects.Add(it);
         }
 
-        public CGameCtnBlock PlaceFreeBlock(string name, Vec3 position, Vec3 pitchYawRoll)
+        public void PlaceAnchoredObject(Meta itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Vec3 offsetPivot = default, int variant = 0)
         {
-            var block = new CGameCtnBlock(name, Direction.North, (0, 0, 0), 0)
+            CreateChunk<Chunk03043040>();
+
+            var anchoredObject = new CGameCtnAnchoredObject()
+            {
+                ItemModel = itemModel,
+                AbsolutePositionInMap = absolutePosition,
+                PitchYawRoll = pitchYawRoll,
+                PivotPosition = offsetPivot,
+                Variant = variant
+            };
+
+            anchoredObject.CreateChunk<CGameCtnAnchoredObject.Chunk03101002>();
+            anchoredObject.CreateChunk<CGameCtnAnchoredObject.Chunk03101004>();
+            AnchoredObjects.Add(anchoredObject);
+        }
+
+        public CGameCtnBlock PlaceFreeBlock(string name, Vec3 position, Vec3 pitchYawRoll, CGameCtnBlockSkin skin)
+        {
+            CreateChunk<Chunk0304305F>();
+
+            var block = new CGameCtnBlock(name, Direction.North, (-1, -1, -1), 0)
             {
                 IsFree = true,
                 AbsolutePositionInMap = position,
-                PitchYawRoll = pitchYawRoll
+                PitchYawRoll = pitchYawRoll,
+                Skin = skin
             };
 
             Blocks.Add(block);
 
             return block;
+        }
+
+        public CGameCtnBlock PlaceFreeBlock(string name, Vec3 position, Vec3 pitchYawRoll)
+        {
+            return PlaceFreeBlock(name, position, pitchYawRoll, null);
         }
 
         /// <summary>
@@ -808,14 +1126,118 @@ namespace GBX.NET.Engines.Game
             File.WriteAllBytes(fileName, embedStream.ToArray());
         }
 
+        public void PlaceMacroblock(CGameCtnMacroBlockInfo macroblock, Int3 coord, Direction dir)
+        {
+            var macroRad = (int)dir * (Math.PI / 2); // Rotation of the macroblock in radians needed for the formula to determine individual coords
+            var macroBlocks = macroblock.Blocks.Where(x => !x.IsFree).ToArray();
+            var allCoords = macroBlocks.Select(x => x.Coord); // Creates an enumerable of macroblock block coords
+
+            var min = new Int3(allCoords.Select(x => x.X).Min(), allCoords.Select(x => x.Y).Min(), allCoords.Select(x => x.Z).Min());
+            var max = new Int3(allCoords.Select(x => x.X).Max(), allCoords.Select(x => x.Y).Max(), allCoords.Select(x => x.Z).Max());
+            // Calculates the minimum and maximum coord, used to determine size and center of the macroblock
+
+            var size = max - min + (1, 1, 1);
+            var center = (min + max) * .5f;
+
+            var newCoords = new Vec3[macroBlocks.Length]; // Array used to store new rotated block positions
+
+            for (var i = 0; i < newCoords.Length; i++)
+            {
+                var block = macroBlocks[i];
+                var blockCoord = (Vec3)block.Coord;
+
+                var blockCenter = new Vec3();
+                // Temporary center variable whose rule is to properly position blocks over size of 1x1
+
+                if (BlockInfoManager.BlockModels.TryGetValue(block.Name, out BlockModel model)) // Get quick block information if available
+                {
+                    BlockUnit[] blockUnits;
+                    if (block.IsGround)
+                        blockUnits = model.Ground;
+                    else
+                        blockUnits = model.Air;
+                    // Use the block units from what the block actually pretends to be placed on
+
+                    if (blockUnits.Length > 1) // Optimization for blocks that are simple 1x1 size
+                    {
+                        var blockAllCoords = Array.ConvertAll(blockUnits.Select(x => x.Coord).ToArray(), x => (Int3)x); // Gets the coords in Int3 type
+                        
+                        var blockMax = new Int3(blockAllCoords.Select(x => x.X).Max(), blockAllCoords.Select(x => x.Y).Max(), blockAllCoords.Select(x => x.Z).Max());
+                        // Calculates only the maximum, due to all macroblocks having a natural minimum of (0, 0, 0)
+                        
+                        blockCenter = blockMax * .5f;
+                        blockCoord += (blockCenter.X, 0, blockCenter.Z);
+                        // Makes the block pretend that it has a centered coordinates for the whole macroblock rotation
+                    }
+                }
+
+                var offsetX = Math.Cos(macroRad) * (blockCoord.X - center.X) - Math.Sin(macroRad) * (blockCoord.Z - center.Z) + center.X;
+                var offsetZ = Math.Sin(macroRad) * (blockCoord.X - center.X) + Math.Cos(macroRad) * (blockCoord.Z - center.Z) + center.Z;
+                // Calculates the new XZ positions using "rotation around another point" formula
+
+                offsetX -= blockCenter.X;
+                offsetZ -= blockCenter.Z;
+                // If the center is different than 0 0 (the block coordinates pretended to be in the middle), fix the coord back to its normal coordination
+
+                newCoords[i] = new Vec3((float)offsetX, block.Coord.Y, (float)offsetZ); // Applies the result to the array, Y isn't affected
+            }
+
+            var newMin = new Vec3(newCoords.Select(x => x.X).Min(), newCoords.Select(x => x.Y).Min(), newCoords.Select(x => x.Z).Min());
+            // Calculates the new minimum coord of the rotated coordinates
+            // This value will be always (0, 0, 0) on 1:1 macroblock size ratios, on other size ratios, this will vary
+            // Macroblock placement behaviour in ManiaPlanet works by rotating around the center, and moving the blocks to the zero relative coord as a group
+
+            for (var i = 0; i < newCoords.Length; i++)
+            {
+                var block = macroBlocks[i];
+                var newRelativeCoord = newCoords[i] - newMin; // Use the newly rotated coordinates, and substract the shift the rotation made to the entire macroblock
+
+                var b = new CGameCtnBlock(
+                    block.Name,
+                    Dir.Add(block.Direction, dir),
+                    coord + (Int3)newRelativeCoord,
+                    block.Flags,
+                    block.Author,
+                    block.Skin,
+                    block.WaypointSpecialProperty
+                );
+
+                if (b.Coord.Y == 0)
+                    b.IsGround = true;
+
+                Blocks.Add(b);
+            }
+
+            var blockSize = Collection.GetBlockSize();
+
+            foreach (var item in macroblock.AnchoredObjects)
+            {
+                var itemRadians = (float)((int)dir * Math.PI / 2);
+                var centerFromCoord = center * blockSize + blockSize * new Vec3(0.5f, 0f, 0.5f);
+
+                var offsetPos = new Vec3((float)(Math.Cos(itemRadians) * (item.AbsolutePositionInMap.X - centerFromCoord.X) -
+                        Math.Sin(itemRadians) * (item.AbsolutePositionInMap.Z - centerFromCoord.Z) + centerFromCoord.X),
+                        item.AbsolutePositionInMap.Y, // not supported yet
+                        (float)(Math.Sin(itemRadians) * (item.AbsolutePositionInMap.X - centerFromCoord.X) +
+                        Math.Cos(itemRadians) * (item.AbsolutePositionInMap.Z - centerFromCoord.Z) + centerFromCoord.Z));
+
+                PlaceAnchoredObject(item.ItemModel, offsetPos + coord * blockSize + (0, blockSize.Y, 0), item.PitchYawRoll + (-itemRadians, 0f, 0f));
+            }
+
+            foreach(var freeBlock in macroblock.Blocks.Where(x => x.IsFree))
+            {
+                //PlaceFreeBlock(freeBlock.Name, (coord + (0, 1, 0)) * Collection.GetBlockSize() + freeBlock.AbsolutePositionInMap, freeBlock.PitchYawRoll);
+            }
+        }
+
         #endregion
 
         #region Chunks
 
-        #region 0x001 chunk (Virtual Skipper)
+        #region 0x001 header chunk (Virtual Skipper)
 
         /// <summary>
-        /// CGameCtnChallenge 0x001 chunk (Virtual Skipper)
+        /// CGameCtnChallenge 0x001 header chunk (Virtual Skipper)
         /// </summary>
         [Chunk(0x03043001, "Virtual Skipper")]
         public class Chunk03043001 : HeaderChunk<CGameCtnChallenge>
@@ -875,7 +1297,7 @@ namespace GBX.NET.Engines.Game
 
             public bool StartSailUp { get; set; }
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 Version = rw.Byte(Version);
 
@@ -971,10 +1393,10 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x002 chunk (map info)
+        #region 0x002 header chunk (map info)
 
         /// <summary>
-        /// CGameCtnChallenge 0x002 chunk (map info)
+        /// CGameCtnChallenge 0x002 header chunk (map info)
         /// </summary>
         [Chunk(0x03043002, "map info")]
         public class Chunk03043002 : HeaderChunk<CGameCtnChallenge>
@@ -983,84 +1405,6 @@ namespace GBX.NET.Engines.Game
             /// Version of the chunk.
             /// </summary>
             public byte Version { get; set; }
-
-            /// <summary>
-            /// Basic map information. <see cref="Meta.ID"/> is map UID, <see cref="Meta.Author"/> is the map author login. Can be <see cref="null"/> if <c><see cref="Version"/> &gt; <see cref="2"/></c>.
-            /// </summary>
-            public Meta MapInfo { get; set; }
-
-            /// <summary>
-            /// Formatted name of the map. Can be empty if <c><see cref="Version"/> &gt; <see cref="2"/></c>.
-            /// </summary>
-            public string MapName { get; set; }
-
-            /// <summary>
-            /// Time of the bronze medal. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="1"/></c>.
-            /// </summary>
-            public TimeSpan? BronzeTime { get; set; }
-
-            /// <summary>
-            /// Time of the silver medal. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="1"/></c>.
-            /// </summary>
-            public TimeSpan? SilverTime { get; set; }
-
-            /// <summary>
-            /// Time of the gold medal. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="1"/></c>.
-            /// </summary>
-            public TimeSpan? GoldTime { get; set; }
-
-            /// <summary>
-            /// Time of the author medal. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="1"/></c>.
-            /// </summary>
-            public TimeSpan? AuthorTime { get; set; }
-
-            /// <summary>
-            /// Display cost (or coppers) of the track. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="4"/></c>.
-            /// </summary>
-            public int? Cost { get; set; }
-
-            /// <summary>
-            /// If the track has multiple laps. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="5"/></c>.
-            /// </summary>
-            public bool? IsMultilap { get; set; }
-
-            /// <summary>
-            /// Map type in which the track was validated in. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="7"/></c>.
-            /// </summary>
-            public TrackType? Type { get; set; }
-
-            /// <summary>
-            /// Usually author time or stunt score. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="10"/></c>.
-            /// </summary>
-            public int? AuthorScore { get; set; }
-
-            public int? EditorMode { get; set; }
-
-            /// <summary>
-            /// If the track was made using the simple editor. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="11"/></c>.
-            /// </summary>
-            public bool? CreatedWithSimpleEditor
-            {
-                get => (EditorMode & (1 << 0)) != 0;
-                set
-                {
-                    if (value.GetValueOrDefault()) EditorMode |= 1 << 0;
-                    else EditorMode &= ~(1 << 0);
-                }
-            }
-
-            /// <summary>
-            /// If the track uses ghost blocks. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="11"/></c>.
-            /// </summary>
-            public bool? HasGhostBlocks
-            {
-                get => (EditorMode & (1 << 1)) != 0;
-                set
-                {
-                    if (value.GetValueOrDefault()) EditorMode |= 1 << 1;
-                    else EditorMode &= ~(1 << 1);
-                }
-            }
 
             /// <summary>
             /// Number of checkpoints on the map. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="13"/></c>.
@@ -1072,69 +1416,69 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public int? NbLaps { get; set; }
 
-            public bool Unknown1 { get; set; }
-            public byte Unknown2 { get; set; }
-            public int Unknown3 { get; set; }
-            public int Unknown4 { get; set; }
-            public int Unknown5 { get; set; }
+            public bool U01 { get; set; }
+            public byte U02 { get; set; }
+            public int U03 { get; set; }
+            public int U04 { get; set; }
+            public int U05 { get; set; }
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 Version = rw.Byte(Version);
 
                 if (Version < 3)
                 {
-                    MapInfo = rw.Meta(MapInfo);
-                    MapName = rw.String(MapName);
+                    n.MapInfo = rw.Meta(n.MapInfo);
+                    n.MapName = rw.String(n.MapName);
                 }
 
-                Unknown1 = rw.Boolean(Unknown1);
+                U01 = rw.Boolean(U01);
 
                 if (Version >= 1)
                 {
-                    BronzeTime = rw.TimeSpan32(BronzeTime);
-                    SilverTime = rw.TimeSpan32(SilverTime);
-                    GoldTime = rw.TimeSpan32(GoldTime);
-                    AuthorTime = rw.TimeSpan32(AuthorTime);
+                    n.TMObjective_BronzeTime = rw.TimeSpan32(n.TMObjective_BronzeTime);
+                    n.TMObjective_SilverTime = rw.TimeSpan32(n.TMObjective_SilverTime);
+                    n.TMObjective_GoldTime = rw.TimeSpan32(n.TMObjective_GoldTime);
+                    n.TMObjective_AuthorTime = rw.TimeSpan32(n.TMObjective_AuthorTime);
 
                     if (Version == 2)
-                        Unknown2 = rw.Byte(Unknown2);
+                        U02 = rw.Byte(U02);
 
                     if (Version >= 4)
                     {
-                        Cost = rw.Int32(Cost.GetValueOrDefault());
+                        n.Cost = rw.Int32(n.Cost);
 
                         if (Version >= 5)
                         {
-                            IsMultilap = rw.Boolean(IsMultilap.GetValueOrDefault());
+                            n.TMObjective_IsLapRace = rw.Boolean(n.TMObjective_IsLapRace);
 
                             if (Version == 6)
-                                Unknown3 = rw.Int32(Unknown3);
+                                U03 = rw.Int32(U03);
 
                             if (Version >= 7)
                             {
-                                Type = (TrackType)rw.Int32((int)Type.GetValueOrDefault());
+                                n.Type = (TrackType)rw.Int32((int)n.Type);
 
                                 if (Version >= 9)
                                 {
-                                    Unknown4 = rw.Int32(Unknown4);
+                                    U04 = rw.Int32(U04);
 
                                     if (Version >= 10)
                                     {
-                                        AuthorScore = rw.Int32(AuthorScore.GetValueOrDefault());
+                                        n.AuthorScore = rw.Int32(n.AuthorScore);
 
                                         if (Version >= 11)
                                         {
-                                            EditorMode = rw.Int32(EditorMode.GetValueOrDefault());
+                                            n.Editor = (EditorMode)rw.Int32((int)n.Editor);
 
                                             if (Version >= 12)
                                             {
-                                                Unknown5 = rw.Int32(Unknown5);
+                                                U05 = rw.Int32(U05);
 
                                                 if (Version >= 13)
                                                 {
-                                                    NbCheckpoints = rw.Int32(NbCheckpoints.GetValueOrDefault());
-                                                    NbLaps = rw.Int32(NbLaps.GetValueOrDefault());
+                                                    n.NbCheckpoints = rw.Int32(n.NbCheckpoints);
+                                                    n.TMObjective_NbLaps = rw.Int32(n.TMObjective_NbLaps);
                                                 }
                                             }
                                         }
@@ -1149,10 +1493,10 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x003 chunk (common)
+        #region 0x003 header chunk (common)
 
         /// <summary>
-        /// CGameCtnChallenge 0x003 chunk (common)
+        /// CGameCtnChallenge 0x003 header chunk (common)
         /// </summary>
         [Chunk(0x03043003, "common")]
         public class Chunk03043003 : HeaderChunk<CGameCtnChallenge>
@@ -1163,95 +1507,35 @@ namespace GBX.NET.Engines.Game
             public byte Version { get; set; }
 
             /// <summary>
-            /// Basic map information. <see cref="Meta.ID"/> is map UID, <see cref="Meta.Author"/> is the map author login.
-            /// </summary>
-            public Meta MapInfo { get; set; }
-
-            /// <summary>
-            /// Formatted name of the map.
-            /// </summary>
-            public string MapName { get; set; }
-
-            /// <summary>
-            /// The track's intended use.
-            /// </summary>
-            public TrackKind Kind { get; set; }
-
-            /// <summary>
             /// If the track is locked (used by Virtual Skipper to lock the map parameters). Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="1"/></c>.
             /// </summary>
             public bool? Locked { get; set; }
 
-            /// <summary>
-            /// Password of the map used by older tracks.
-            /// </summary>
-            public string Password { get; set; }
+            public int U01 { get; set; }
 
-            /// <summary>
-            /// Information about the used map decoration. <see cref="Meta.ID"/> is the map base ID, <see cref="Meta.Author"/> is the author of the map base.
-            /// </summary>
-            public Meta Decoration { get; set; }
-
-            /// <summary>
-            /// Origin of the map. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="3"/></c>.
-            /// </summary>
-            public Vec2? MapOrigin { get; set; }
-
-            /// <summary>
-            /// Target of the map. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="4"/></c>.
-            /// </summary>
-            public Vec2? MapTarget { get; set; }
-
-            /// <summary>
-            /// Name of the map type script.
-            /// </summary>
-            public string MapType { get; set; }
-
-            /// <summary>
-            /// Style of the map (Fullspeed, LOL, Tech), usually unused and defined by user.
-            /// </summary>
-            public string MapStyle { get; set; }
-
-            /// <summary>
-            /// Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="8"/></c>.
-            /// </summary>
-            public ulong? LightmapCacheUID { get; set; }
-
-            /// <summary>
-            /// Version of the lightmap calculation. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="9"/></c>.
-            /// </summary>
-            public byte? LightmapVersion { get; set; }
-
-            /// <summary>
-            /// Title pack the map was built in. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="11"/></c>.
-            /// </summary>
-            public string TitleUID { get; set; }
-
-            public int Unknown1 { get; set; }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 Version = rw.Byte(Version);
-                MapInfo = rw.Meta(MapInfo);
-                MapName = rw.String(MapName);
-                Kind = (TrackKind)rw.Byte((byte)Kind);
+                n.MapInfo = rw.Meta(n.MapInfo);
+                n.MapName = rw.String(n.MapName);
+                n.Kind = (TrackKind)rw.Byte((byte)n.Kind);
 
                 if (Version >= 1)
                 {
                     Locked = rw.UInt32(Convert.ToUInt32(Locked.GetValueOrDefault())) == 1;
-                    Password = rw.String(Password);
+                    n.Password = rw.String(n.Password);
 
                     if (Version >= 2)
                     {
-                        Decoration = rw.Meta(Decoration);
+                        n.Decoration = rw.Meta(n.Decoration);
 
                         if (Version >= 3)
                         {
-                            MapOrigin = rw.Vec2(MapOrigin.GetValueOrDefault());
+                            n.MapOrigin = rw.Vec2(n.MapOrigin.GetValueOrDefault());
 
                             if (Version >= 4)
                             {
-                                MapTarget = rw.Vec2(MapTarget.GetValueOrDefault());
+                                n.MapTarget = rw.Vec2(n.MapTarget.GetValueOrDefault());
 
                                 if (Version >= 5)
                                 {
@@ -1259,22 +1543,22 @@ namespace GBX.NET.Engines.Game
 
                                     if (Version >= 6)
                                     {
-                                        MapType = rw.String(MapType);
-                                        MapStyle = rw.String(MapStyle);
+                                        n.MapType = rw.String(n.MapType);
+                                        n.MapStyle = rw.String(n.MapStyle);
 
                                         if (Version <= 8)
-                                            Unknown1 = rw.Int32(Unknown1);
+                                            U01 = rw.Int32(U01);
 
                                         if (Version >= 8)
                                         {
-                                            LightmapCacheUID = rw.UInt64(LightmapCacheUID.GetValueOrDefault());
+                                            n.LightmapCacheUID = rw.UInt64(n.LightmapCacheUID.GetValueOrDefault());
 
                                             if (Version >= 9)
                                             {
-                                                LightmapVersion = rw.Byte(LightmapVersion.GetValueOrDefault());
+                                                n.LightmapVersion = rw.Byte(n.LightmapVersion.GetValueOrDefault());
 
                                                 if (Version >= 11)
-                                                    TitleUID = rw.LookbackString(TitleUID);
+                                                    n.TitleID = rw.LookbackString(n.TitleID);
                                             }
                                         }
                                     }
@@ -1288,10 +1572,10 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x004 chunk (version)
+        #region 0x004 header chunk (version)
 
         /// <summary>
-        /// CGameCtnChallenge 0x004 chunk (version)
+        /// CGameCtnChallenge 0x004 header chunk (version)
         /// </summary>
         [Chunk(0x03043004, "version")]
         public class Chunk03043004 : HeaderChunk<CGameCtnChallenge>
@@ -1301,7 +1585,7 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public int Version { get; set; }
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
             }
@@ -1309,31 +1593,26 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x005 chunk (xml)
+        #region 0x005 header chunk (xml)
 
         /// <summary>
-        /// CGameCtnChallenge 0x005 chunk (xml)
+        /// CGameCtnChallenge 0x005 header chunk (xml)
         /// </summary>
         [Chunk(0x03043005, "xml")]
         public class Chunk03043005 : HeaderChunk<CGameCtnChallenge>
         {
-            /// <summary>
-            /// XML track information and dependencies.
-            /// </summary>
-            public string XML { get; set; }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                XML = rw.String(XML);
+                n.XML = rw.String(n.XML);
             }
         }
 
         #endregion
 
-        #region 0x007 chunk (thumbnail)
+        #region 0x007 header chunk (thumbnail)
 
         /// <summary>
-        /// CGameCtnChallenge 0x007 chunk (thumbnail)
+        /// CGameCtnChallenge 0x007 header chunk (thumbnail)
         /// </summary>
         [Chunk(0x03043007, "thumbnail")]
         public class Chunk03043007 : HeaderChunk<CGameCtnChallenge>
@@ -1343,20 +1622,9 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public int Version { get; set; }
 
-            /// <summary>
-            /// Thumbnail bitmap.
-            /// </summary>
-            [IgnoreDataMember]
-            public Task<Bitmap> Thumbnail { get; set; }
-
             MemoryStream msT;
 
-            /// <summary>
-            /// Comments of the map.
-            /// </summary>
-            public string Comments { get; set; }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
 
@@ -1364,10 +1632,10 @@ namespace GBX.NET.Engines.Game
                 {
                     using (var ms = new MemoryStream())
                     {
-                        if (rw.Mode == GameBoxReaderWriterMode.Write && Thumbnail != null)
+                        if (rw.Mode == GameBoxReaderWriterMode.Write && n.Thumbnail != null)
                         {
-                            Thumbnail.Result.RotateFlip(RotateFlipType.Rotate180FlipX);
-                            ExportThumbnail(ms, ImageFormat.Jpeg);
+                            n.Thumbnail.Result.RotateFlip(RotateFlipType.Rotate180FlipX);
+                            n.ExportThumbnail(ms, ImageFormat.Jpeg);
                         }
 
                         var thumbnailSize = rw.Int32((int)ms.Length);
@@ -1375,12 +1643,12 @@ namespace GBX.NET.Engines.Game
                         var thumbnailData = rw.Bytes(ms.ToArray(), thumbnailSize);
                         rw.Bytes(Encoding.UTF8.GetBytes("</Thumbnail.jpg>"), "</Thumbnail.jpg>".Length);
                         rw.Bytes(Encoding.UTF8.GetBytes("<Comments>"), "<Comments>".Length);
-                        Comments = rw.String(Comments);
+                        n.Comments = rw.String(n.Comments);
                         rw.Bytes(Encoding.UTF8.GetBytes("</Comments>"), "</Comments>".Length);
 
                         if (rw.Mode == GameBoxReaderWriterMode.Read && thumbnailData.Length > 0)
                         {
-                            Thumbnail = Task.Run(() =>
+                            n.Thumbnail = Task.Run(() =>
                             {
                                 msT = new MemoryStream(thumbnailData);
                                 var bitmap = (Bitmap)Image.FromStream(msT);
@@ -1391,96 +1659,14 @@ namespace GBX.NET.Engines.Game
                     }
                 }
             }
-
-            /// <summary>
-            /// Exports the map's thumbnail.
-            /// </summary>
-            /// <param name="stream">Stream to export to.</param>
-            /// <param name="format">Image format to use.</param>
-            public void ExportThumbnail(Stream stream, ImageFormat format)
-            {
-                if (Thumbnail == null) return;
-
-                if (format == ImageFormat.Jpeg)
-                {
-                    var encoding = new EncoderParameters(1);
-                    encoding.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 90L);
-                    var encoder = ImageCodecInfo.GetImageDecoders().Where(x => x.FormatID == ImageFormat.Jpeg.Guid).First();
-
-                    Thumbnail.Result.Save(stream, encoder, encoding);
-                }
-                else
-                    Thumbnail.Result.Save(stream, format);
-            }
-
-            /// <summary>
-            /// Exports the map's thumbnail.
-            /// </summary>
-            /// <param name="fileName">File to export to.</param>
-            /// <param name="format">Image format to use.</param>
-            public void ExportThumbnail(string fileName, ImageFormat format)
-            {
-                if (Thumbnail == null) return;
-
-                if (format == ImageFormat.Jpeg)
-                {
-                    var encoding = new EncoderParameters(1);
-                    encoding.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 90L);
-                    var encoder = ImageCodecInfo.GetImageDecoders().Where(x => x.FormatID == ImageFormat.Jpeg.Guid).First();
-
-                    Thumbnail.Result.Save(fileName, encoder, encoding);
-                }
-                else
-                    Thumbnail.Result.Save(fileName, format);
-            }
-
-            /// <summary>
-            /// Asynchronously imports (and replaces) a thumbnail to use for the map.
-            /// </summary>
-            /// <param name="stream">Stream to import from.</param>
-            /// <returns>A task that processes the thumbnail.</returns>
-            public Task<Bitmap> ImportThumbnailAsync(Stream stream)
-            {
-                Thumbnail = Task.Run(() => new Bitmap(stream));
-                return Thumbnail;
-            }
-
-            /// <summary>
-            /// Asynchronously imports (and replaces) a thumbnail to use for the map.
-            /// </summary>
-            /// <param name="fileName">File to import from.</param>
-            /// <returns>A task that processes the thumbnail.</returns>
-            public Task<Bitmap> ImportThumbnailAsync(string fileName)
-            {
-                Thumbnail = Task.Run(() => new Bitmap(fileName));
-                return Thumbnail;
-            }
-
-            /// <summary>
-            /// Imports (and replaces) a thumbnail to use for the map.
-            /// </summary>
-            /// <param name="stream">Stream to import from.</param>
-            public void ImportThumbnail(Stream stream)
-            {
-                ImportThumbnailAsync(stream).Wait();
-            }
-
-            /// <summary>
-            /// Imports (and replaces) a thumbnail to use for the map.
-            /// </summary>
-            /// <param name="fileName">File to import from.</param>
-            public void ImportThumbnail(string fileName)
-            {
-                ImportThumbnailAsync(fileName).Wait();
-            }
         }
 
         #endregion
 
-        #region 0x008 chunk (author)
+        #region 0x008 header chunk (author)
 
         /// <summary>
-        /// CGameCtnChallenge 0x008 chunk (author)
+        /// CGameCtnChallenge 0x008 header chunk (author)
         /// </summary>
         [Chunk(0x03043008, "author")]
         public class Chunk03043008 : HeaderChunk<CGameCtnChallenge>
@@ -1490,33 +1676,14 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public int Version { get; set; }
 
-            public int AuthorVersion { get; set; }
-
-            /// <summary>
-            /// Map author login.
-            /// </summary>
-            public string AuthorLogin { get; set; }
-
-            /// <summary>
-            /// Map author formatted nickname.
-            /// </summary>
-            public string AuthorNickname { get; set; }
-
-            /// <summary>
-            /// Map author zone.
-            /// </summary>
-            public string AuthorZone { get; set; }
-
-            public string AuthorExtraInfo { get; set; }
-
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                AuthorVersion = rw.Int32(AuthorVersion);
-                AuthorLogin = rw.String(AuthorLogin);
-                AuthorNickname = rw.String(AuthorNickname);
-                AuthorZone = rw.String(AuthorZone);
-                AuthorExtraInfo = rw.String(AuthorExtraInfo);
+                n.AuthorVersion = rw.Int32(n.AuthorVersion);
+                n.AuthorLogin = rw.String(n.AuthorLogin);
+                n.AuthorNickname = rw.String(n.AuthorNickname);
+                n.AuthorZone = rw.String(n.AuthorZone);
+                n.AuthorExtraInfo = rw.String(n.AuthorExtraInfo);
             }
         }
 
@@ -1532,7 +1699,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                n.Vehicle = rw.Meta(n.Vehicle);
+                n.PlayerModel = rw.Meta(n.PlayerModel);
             }
         }
 
@@ -1577,7 +1744,7 @@ namespace GBX.NET.Engines.Game
             {
                 n.BlockStock = rw.NodeRef<CGameCtnCollectorList>(n.BlockStock);
                 n.ChallengeParameters = rw.NodeRef<CGameCtnChallengeParameters>(n.ChallengeParameters);
-                n.Kind = (TrackKind)rw.Int32((int)(n.Kind ?? TrackKind.InProgress));
+                n.Kind = (TrackKind)rw.Int32((int)n.Kind);
             }
         }
 
@@ -1681,8 +1848,8 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                n.TMObjective_IsLapRace = rw.Boolean(n.TMObjective_IsLapRace.GetValueOrDefault());
-                n.TMObjective_NbLaps = rw.Int32(n.TMObjective_NbLaps.GetValueOrDefault());
+                n.TMObjective_IsLapRace = rw.Boolean(n.TMObjective_IsLapRace);
+                n.TMObjective_NbLaps = rw.Int32(n.TMObjective_NbLaps);
             }
         }
 
@@ -1773,7 +1940,7 @@ namespace GBX.NET.Engines.Game
 
                     if (flags == -1)
                     {
-                        blocks.Add(new CGameCtnBlock(blockName, dir, (Int3)coord, flags, null, null, null));
+                        blocks.Add(new CGameCtnBlock(blockName, dir, (Int3)coord - (1, 1, 1), flags, null, null, null));
                         continue;
                     }
 
@@ -1801,7 +1968,7 @@ namespace GBX.NET.Engines.Game
 
                     }
 
-                    blocks.Add(new CGameCtnBlock(blockName, dir, (Int3)coord, flags, author, skin, parameters));
+                    blocks.Add(new CGameCtnBlock(blockName, dir, (Int3)coord - (1, 1, 1), flags, author, skin, parameters));
                 }
 
                 n.Blocks = blocks;
@@ -1818,13 +1985,36 @@ namespace GBX.NET.Engines.Game
                 if (!is013)
                     w.Write(Version.GetValueOrDefault());
 
+
+                // Remove all free blocks with clips
+                for(int i = 0; i < n.Blocks.Count; i++)
+                {
+                    var x = n.Blocks[i];
+                    var skip = false;
+
+                    if (x.IsFree)
+                        if (BlockInfoManager.BlockModels != null
+                            && BlockInfoManager.BlockModels.TryGetValue(x.Name, out BlockModel m))
+                            foreach (var unit in m.Air)
+                                if (unit.Clips != null)
+                                    foreach (var clip in unit.Clips)
+                                        if (!string.IsNullOrEmpty(clip))
+                                            skip = true;
+
+                    if (skip)
+                        n.Blocks[i].IsFree = false;
+                }
+
+                n.Blocks.RemoveAll(x => !x.IsFree && x.Coord == (-1, -1, -1));
+                //
+
                 w.Write(n.NbBlocks);
 
                 foreach (var x in n.Blocks)
                 {
                     w.WriteLookbackString(x.Name);
                     w.Write((byte)x.Direction);
-                    w.Write((Byte3)x.Coord);
+                    w.Write((Byte3)(x.Coord + (1, 1, 1)));
 
                     if (Version == null)
                         w.Write((short)x.Flags);
@@ -1840,7 +2030,7 @@ namespace GBX.NET.Engines.Game
                         }
 
                         if ((x.Flags & 0x100000) != 0)
-                            w.Write(x.Parameters);
+                            w.Write(x.WaypointSpecialProperty);
                     }
                 }
             }
@@ -2208,7 +2398,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                n.AuthorVersion = rw.Int32(n.AuthorVersion.GetValueOrDefault());
+                n.AuthorVersion = rw.Int32(n.AuthorVersion);
                 n.AuthorLogin = rw.String(n.AuthorLogin);
                 n.AuthorNickname = rw.String(n.AuthorNickname);
                 n.AuthorZone = rw.String(n.AuthorZone);
@@ -2497,30 +2687,54 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x05F skippable chunk (free blocks) [TM®️]
         /// </summary>
         [Chunk(0x0304305F, "free blocks")]
-        [IgnoreChunk]
         public class Chunk0304305F : SkippableChunk<CGameCtnChallenge>
         {
             public int Version { get; set; }
 
-            /// <summary>
-            /// List of vectors that can't be directly figured out without information from <see cref="Chunk01F"/>.
-            /// </summary>
-            public List<Vec3> Vectors { get; set; } = new List<Vec3>();
-
-            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                Version = r.ReadInt32();
+                Version = rw.Int32(Version);
 
-                Vectors.Clear();
-                while (r.BaseStream.Position < r.BaseStream.Length)
-                    Vectors.Add(new Vec3(r.ReadSingle(), r.ReadSingle(), r.ReadSingle()));
-            }
+                //var gsdgs = rw.Reader.ReadArray<float>(15);
 
-            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
-            {
-                w.Write(Version);
-                foreach (var v in Vectors)
-                    w.Write(v);
+                foreach (var block in n.Blocks)
+                {
+                    if (block.IsFree)
+                    {
+                        block.AbsolutePositionInMap = rw.Vec3(block.AbsolutePositionInMap);
+                        block.PitchYawRoll = rw.Vec3(block.PitchYawRoll);
+
+                        if (BlockInfoManager.BlockModels != null)
+                        {
+                            if (BlockInfoManager.BlockModels.TryGetValue(block.Name, out BlockModel model))
+                            {
+                                foreach (var unit in model.Air)
+                                {
+                                    if (unit.Clips != null)
+                                    {
+                                        for (var i = 0; i < unit.Clips.Length; i++)
+                                        {
+                                            if (!string.IsNullOrEmpty(unit.Clips[i]))
+                                            {
+                                                if (rw.Mode == GameBoxReaderWriterMode.Read)
+                                                {
+                                                    rw.Reader.ReadVec3();
+                                                    rw.Reader.ReadVec3();
+                                                }
+                                                else if (rw.Mode == GameBoxReaderWriterMode.Write)
+                                                {
+                                                    var dir = (Direction)i;
+                                                    rw.Writer.Write(new Vec3());
+                                                    rw.Writer.Write(new Vec3());
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -2534,26 +2748,43 @@ namespace GBX.NET.Engines.Game
         {
             private readonly CGameCtnChallenge node;
 
-            public bool? TMObjective_IsLapRace => node.TMObjective_IsLapRace;
-            public int? TMObjective_NbLaps => node.TMObjective_NbLaps;
+            public TimeSpan? TMObjective_BronzeTime => node.TMObjective_BronzeTime;
+            public TimeSpan? TMObjective_SilverTime => node.TMObjective_SilverTime;
+            public TimeSpan? TMObjective_GoldTime => node.TMObjective_GoldTime;
+            public TimeSpan? TMObjective_AuthorTime => node.TMObjective_AuthorTime;
+            public int Cost => node.Cost;
+            public TrackType Type => node.Type;
+            public int AuthorScore => node.AuthorScore;
+            public EditorMode Editor => node.Editor;
+            public bool CreatedWithSimpleEditor => node.CreatedWithSimpleEditor;
+            public bool HasGhostBlocks => node.HasGhostBlocks;
+            public bool TMObjective_IsLapRace => node.TMObjective_IsLapRace;
+            public int TMObjective_NbLaps => node.TMObjective_NbLaps;
+            public int NbCheckpoints => node.NbCheckpoints;
             public Meta MapInfo => node.MapInfo;
             public string MapUid => node.MapUid;
             public string AuthorLogin => node.AuthorLogin;
             public string MapName => node.MapName;
-            public TrackKind? Kind => node.Kind;
+            public TrackKind Kind => node.Kind;
             public string Password => node.Password;
             public Meta Decoration => node.Decoration;
+            public string MapType => node.MapType;
+            public string MapStyle => node.MapStyle;
+            public ulong? LightmapCacheUID => node.LightmapCacheUID;
+            public byte? LightmapVersion => node.LightmapVersion;
+            public string XML => node.XML;
+            public Task<Bitmap> Thumbnail => node.Thumbnail;
             public Collection Collection => node.Collection;
             public Vec2? MapOrigin => node.MapOrigin;
             public Vec2? MapTarget => node.MapTarget;
             public string TitleID => node.TitleID;
             public string BuildVersion => node.BuildVersion;
             public string Comments => node.Comments;
-            public int? AuthorVersion => node.AuthorVersion;
+            public int AuthorVersion => node.AuthorVersion;
             public string AuthorNickname => node.AuthorNickname;
             public string AuthorZone => node.AuthorZone;
             public string AuthorExtraInfo => node.AuthorExtraInfo;
-            public Meta Vehicle => node.Vehicle;
+            public Meta PlayerModel => node.PlayerModel;
             public CGameCtnChallengeParameters ChallengeParameters => node.ChallengeParameters;
             public CGameCtnCollectorList BlockStock => node.BlockStock;
             public Int3[] Checkpoints => node.Checkpoints;

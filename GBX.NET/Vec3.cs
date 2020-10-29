@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Runtime.Serialization;
 
 namespace GBX.NET
@@ -55,5 +56,6 @@ namespace GBX.NET
 
         public static explicit operator Vec3(Byte3 a) => new Vec3(a.X, a.Y, a.Z);
         public static explicit operator Vec3(Int2 a) => new Vec3(a.X, 0, a.Y);
+        public static explicit operator Vec3(float[] a) => a == null ? new Vec3() : a.Length >= 3 ? new Vec3(a[0], a[1], a[2]) : throw new Exception();
     }
 }

@@ -25,19 +25,19 @@ namespace GBX.NET.Engines.Game
         /// Pitch, yaw and roll of the item in radians.
         /// </summary>
         [NodeMember]
-        public Vec3? PitchYawRoll { get; set; }
+        public Vec3 PitchYawRoll { get; set; }
 
         /// <summary>
         /// Block coordinates that the item is approximately located in. It doesn't have to be provided most of the time.
         /// </summary>
         [NodeMember]
-        public Byte3? BlockUnitCoord { get; set; }
+        public Byte3 BlockUnitCoord { get; set; }
 
         /// <summary>
         /// The X, Y and Z position in the real world space of the item.
         /// </summary>
         [NodeMember]
-        public Vec3? AbsolutePositionInMap { get; set; }
+        public Vec3 AbsolutePositionInMap { get; set; }
 
         /// <summary>
         /// If the item is a waypoint, contains inner waypoint info, otherwise <see cref="null"/>.
@@ -98,10 +98,10 @@ namespace GBX.NET.Engines.Game
             /// Version of the chunk. For the lastst TM2 version, version 7 the latest, in TM®, the latest known version is 8.
             /// </summary>
             public int Version { get; set; } = 7;
-            public int Unknown1 { get; set; } = -1;
+            public int U01 { get; set; } = -1;
 
-            public Vec3 Unknown3 { get; set; }
-            public Vec3 Unknown4 { get; set; }
+            public Vec3 U02 { get; set; }
+            public Vec3 U03 { get; set; }
 
             public override void Read(CGameCtnAnchoredObject n, GameBoxReader r, GameBoxWriter unknownW)
             {
@@ -109,7 +109,7 @@ namespace GBX.NET.Engines.Game
                 n.ItemModel = r.ReadMeta();
                 n.PitchYawRoll = r.ReadVec3();
                 n.BlockUnitCoord = r.ReadByte3();
-                Unknown1 = r.ReadInt32();
+                U01 = r.ReadInt32();
                 n.AbsolutePositionInMap = r.ReadVec3();
                 n.WaypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(r);
                 n.Flags = r.ReadInt16();
@@ -118,8 +118,8 @@ namespace GBX.NET.Engines.Game
 
                 if(Version >= 8) // TM 2020
                 {
-                    Unknown3 = r.ReadVec3();
-                    Unknown4 = r.ReadVec3();
+                    U02 = r.ReadVec3();
+                    U03 = r.ReadVec3();
                 }
             }
 
@@ -127,10 +127,10 @@ namespace GBX.NET.Engines.Game
             {
                 w.Write(Version);
                 w.Write(n.ItemModel);
-                w.Write(n.PitchYawRoll.GetValueOrDefault());
-                w.Write(n.BlockUnitCoord.GetValueOrDefault());
-                w.Write(Unknown1);
-                w.Write(n.AbsolutePositionInMap.GetValueOrDefault());
+                w.Write(n.PitchYawRoll);
+                w.Write(n.BlockUnitCoord);
+                w.Write(U01);
+                w.Write(n.AbsolutePositionInMap);
 
                 if (n.WaypointSpecialProperty == null)
                     w.Write(-1);
@@ -146,8 +146,8 @@ namespace GBX.NET.Engines.Game
 
                 if (Version >= 8) // TM 2020
                 {
-                    w.Write(Unknown3);
-                    w.Write(Unknown4);
+                    w.Write(U02);
+                    w.Write(U03);
                 }
             }
         }
@@ -162,13 +162,13 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03101004)]
         public class Chunk03101004 : SkippableChunk<CGameCtnAnchoredObject>
         {
-            public int Unknown1 { get; set; } = 0;
-            public int Unknown2 { get; set; } = -1;
+            public int U01 { get; set; } = 0;
+            public int U02 { get; set; } = -1;
 
             public override void ReadWrite(CGameCtnAnchoredObject n, GameBoxReaderWriter rw)
             {
-                Unknown1 = rw.Int32(Unknown1);
-                Unknown2 = rw.Int32(Unknown2);
+                U01 = rw.Int32(U01);
+                U02 = rw.Int32(U02);
             }
         }
 

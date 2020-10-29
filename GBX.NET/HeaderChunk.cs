@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Text;
 
 namespace GBX.NET
@@ -25,44 +26,25 @@ namespace GBX.NET
 
         }
 
-        public virtual void ReadWrite(GameBoxReaderWriter rw)
+        public override void ReadWrite(T n, GameBoxReaderWriter rw)
         {
             if (rw.Reader != null)
             {
                 var unknownW = new GameBoxWriter(Unknown, rw.Reader.Lookbackable);
-                Read(rw.Reader, unknownW);
+                Read(n, rw.Reader, unknownW);
             }
 
             if (rw.Writer != null)
             {
                 var unknownR = new GameBoxReader(Unknown, rw.Writer.Lookbackable);
-                Write(rw.Writer, unknownR);
+                Write(n, rw.Writer, unknownR);
             }
         }
 
-        public override void ReadWrite(T n, GameBoxReaderWriter rw)
+        public override string ToString()
         {
-            ReadWrite(rw);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="r"></param>
-        /// <param name="unknownW">Writer of the <see cref="Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
-        public virtual void Read(GameBoxReader r, GameBoxWriter unknownW)
-        {
-            throw new NotImplementedException($"Header chunk 0x{ID & 0xFFF:x3} doesn't support Read.");
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="w"></param>
-        /// <param name="unknownR">Reader of the <see cref="Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
-        public virtual void Write(GameBoxWriter w, GameBoxReader unknownR)
-        {
-            throw new NotImplementedException($"Header chunk 0x{ID & 0xFFF:x3} doesn't support Write.");
+            var desc = GetType().GetCustomAttribute<ChunkAttribute>().Description;
+            return $"{typeof(T).Name} header chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}";
         }
     }
 
@@ -106,5 +88,10 @@ namespace GBX.NET
         }
 
         public void Write(GameBoxWriter w) => w.Write(Stream.ToArray(), 0, (int)Stream.Length);
+
+        public override string ToString()
+        {
+            return $"Header chunk 0x{ID:X8}";
+        }
     }
 }

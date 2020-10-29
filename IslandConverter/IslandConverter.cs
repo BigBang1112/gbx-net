@@ -198,17 +198,17 @@ namespace IslandConverter
 
             var chunk00D = map.GetChunk<CGameCtnChallenge.Chunk0304300D>();
 
-            var beforeCar = map.Vehicle.ID;
-            map.Vehicle = new Meta("IslandCar.Item.Gbx", "Stadium", "adamkooo");
+            var beforeCar = map.PlayerModel.ID;
+            map.PlayerModel = new Meta("IslandCar.Item.Gbx", "Stadium", "adamkooo");
 
             Log.Write("Applying texture mod...");
             map.ModPackDesc = new FileRef(3, Convert.FromBase64String("AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="), @"Skins\Stadium\Mod\IslandTM2U.zip", "");
 
             Bitmap thumbnail;
-            if (gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail == null)
+            if (gbx.MainNode.Thumbnail == null)
                 thumbnail = new Bitmap(512, 512);
             else
-                thumbnail = new Bitmap(gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail.Result, 512, 512);
+                thumbnail = new Bitmap(gbx.MainNode.Thumbnail.Result, 512, 512);
 
             using (var g = Graphics.FromImage(thumbnail))
             {
@@ -217,7 +217,7 @@ namespace IslandConverter
                     g.DrawImage(Resources.OverlayOpenplanet, 0, 0);
             }
 
-            gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043007>().Thumbnail = Task.FromResult(thumbnail);
+            gbx.MainNode.Thumbnail = Task.FromResult(thumbnail);
 
             map.GetChunk<CGameCtnChallenge.Chunk0304301F>().Version = 6;
 
@@ -448,20 +448,20 @@ namespace IslandConverter
 
             map.ScriptMetadata.Declare("MapVehicle", carTranslations[beforeCar]);
 
-            if (gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043002>().Type == CGameCtnChallenge.TrackType.Stunts)
+            if (gbx.MainNode.Type == CGameCtnChallenge.TrackType.Stunts)
             {
-                gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043002>().Type = CGameCtnChallenge.TrackType.Script;
+                gbx.MainNode.Type = CGameCtnChallenge.TrackType.Script;
 
                 var challParams = map.ChallengeParameters;
 
                 var chunk00E = challParams.CreateChunk<CGameCtnChallengeParameters.Chunk0305B00E>();
                 challParams.MapType = "Stunts";
 
-                var authorScore = challParams.AuthorScore.GetValueOrDefault();
+                var authorScore = challParams.AuthorScore;
                 var goldScore = challParams.GoldTime.GetValueOrDefault().ToMilliseconds();
                 var silverScore = challParams.SilverTime.GetValueOrDefault().ToMilliseconds();
                 var bronzeScore = challParams.BronzeTime.GetValueOrDefault().ToMilliseconds();
-                var timeLimit = challParams.TimeLimit.GetValueOrDefault().ToMilliseconds();
+                var timeLimit = challParams.TimeLimit.ToMilliseconds();
 
                 var mapStyle = $"{authorScore}|{goldScore}|{silverScore}|{bronzeScore}";
                 challParams.MapStyle = mapStyle;

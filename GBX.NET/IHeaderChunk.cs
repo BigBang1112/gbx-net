@@ -3,7 +3,5 @@
     public interface IHeaderChunk : ISkippableChunk
     {
         bool IsHeavy { get; set; }
-
-        void ReadWrite(GameBoxReaderWriter rw);
     }
 }

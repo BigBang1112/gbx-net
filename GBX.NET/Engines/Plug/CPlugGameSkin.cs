@@ -13,7 +13,7 @@ namespace GBX.NET.Engines.Plug
             public byte Version { get; set; }
             public string SkinDirectory { get; set; }
 
-            public override void ReadWrite(GameBoxReaderWriter rw)
+            public override void ReadWrite(CPlugGameSkin n, GameBoxReaderWriter rw)
             {
                 Version = rw.Byte(Version);
                 SkinDirectory = rw.String(SkinDirectory);

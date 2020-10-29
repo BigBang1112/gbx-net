@@ -266,7 +266,7 @@ namespace IslandConverter
                         Console.WriteLine($" - Silver: {map.ChallengeParameters.SilverTime}");
                         Console.WriteLine($" - Bronze: {map.ChallengeParameters.BronzeTime}");
 
-                        Console.WriteLine($"- Map type: {gbx.Body.GetChunk<CGameCtnChallenge.Chunk03043002>().Type}");
+                        Console.WriteLine($"- Map type: {gbx.MainNode.Type}");
 
                         Console.Write($"- Block range: ");
 

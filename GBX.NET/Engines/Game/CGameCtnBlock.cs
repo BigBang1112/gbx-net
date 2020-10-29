@@ -1,6 +1,8 @@
 ﻿using GBX.NET.Engines.GameData;
 using System;
+using System.Collections;
 using System.Diagnostics;
+using System.Linq;
 
 namespace GBX.NET.Engines.Game
 {
@@ -15,6 +17,8 @@ namespace GBX.NET.Engines.Game
         #region Constants
 
         const int isGroundBit = 12;
+        const int isSkinnableBit = 15;
+        const int isWaypointBit = 20;
         const int isGhostBit = 28;
         const int isFreeBit = 29;
 
@@ -22,6 +26,8 @@ namespace GBX.NET.Engines.Game
 
         #region Fields
 
+        private CGameCtnBlockSkin skin;
+        private CGameWaypointSpecialProperty waypoint;
         private Vec3 absolutePositionInMap;
         private Vec3 pitchYawRoll;
 
@@ -69,19 +75,51 @@ namespace GBX.NET.Engines.Game
         /// Author of the block, usually of a custom one made in Mesh Modeller.
         /// </summary>
         [NodeMember]
-        public string Author { get; }
+        public string Author { get; set; }
 
         /// <summary>
         /// Used skin on the block.
         /// </summary>
         [NodeMember]
-        public CGameCtnBlockSkin Skin { get; }
+        public CGameCtnBlockSkin Skin
+        {
+            get => skin;
+            set
+            {
+                if(value == null)
+                {
+                    Flags &= ~(1 << isSkinnableBit);
+                    skin = null;
+                }
+                else
+                {
+                    Flags |= 1 << isSkinnableBit;
+                    skin = value;
+                }
+            }
+        }
 
         /// <summary>
         /// Additional block parameters.
         /// </summary>
         [NodeMember]
-        public CGameWaypointSpecialProperty Parameters { get; }
+        public CGameWaypointSpecialProperty WaypointSpecialProperty
+        {
+            get => waypoint;
+            set
+            {
+                if (value == null)
+                {
+                    Flags &= ~(1 << isWaypointBit);
+                    waypoint = null;
+                }
+                else
+                {
+                    Flags |= 1 << isWaypointBit;
+                    waypoint = value;
+                }
+            }
+        }
 
         [NodeMember]
         public bool IsGhost
@@ -107,11 +145,11 @@ namespace GBX.NET.Engines.Game
                 {
                     Flags |= 1 << isFreeBit;
                     absolutePositionInMap = Coord * (32, 8, 32);
-                    Coord = (0, 0, 0);
+                    Coord = (-1, -1, -1);
                 }
                 else
                 {
-                    Flags &= ~(1 << isGhostBit);
+                    Flags &= ~(1 << isFreeBit);
                     absolutePositionInMap = Coord * (32, 8, 32);
                     Coord = (Convert.ToInt32(absolutePositionInMap.X / 32),
                         Convert.ToInt32(absolutePositionInMap.Y / 8),
@@ -172,10 +210,14 @@ namespace GBX.NET.Engines.Game
         /// Variant of the block. Taken from flags.
         /// </summary>
         [NodeMember]
-        public int Variant
+        public byte? Variant
         {
-            get => Flags > -1 ? Flags & 15 : -1;
-            set => Variant = (int)(Flags & 0xFFFFFFF0) + (value & 15);
+            get => Flags > -1 ? (byte?)(Flags & 15) : null;
+            set
+            {
+                if (value.HasValue)
+                    Flags = (int)(Flags & 0xFFFFFFF0) + (value.Value & 15);
+            }
         }
 
         [NodeMember]
@@ -222,7 +264,7 @@ namespace GBX.NET.Engines.Game
 
         }
 
-        public CGameCtnBlock(string name, Direction direction, Int3 coord, int flags, string author, CGameCtnBlockSkin skin, CGameWaypointSpecialProperty parameters)
+        public CGameCtnBlock(string name, Direction direction, Int3 coord, int flags, string author, CGameCtnBlockSkin skin, CGameWaypointSpecialProperty waypointSpecialProperty)
         {
             Name = name;
             Direction = direction;
@@ -230,7 +272,7 @@ namespace GBX.NET.Engines.Game
             Flags = flags;
             Author = author;
             Skin = skin;
-            Parameters = parameters;
+            WaypointSpecialProperty = waypointSpecialProperty;
         }
 
         public override string ToString() => $"{Name} {Coord}";
@@ -266,19 +308,29 @@ namespace GBX.NET.Engines.Game
             public Meta BlockInfo => node.BlockInfo;
             public Direction Direction => node.Direction;
             public Int3 Coord => node.Coord;
-            public int Flags => node.Flags;
+            public FlagsInt Flags => new FlagsInt(node.Flags);
             public string Author => node.Author;
             public CGameCtnBlockSkin Skin => node.Skin;
-            public CGameWaypointSpecialProperty Parameters => node.Parameters;
+            public CGameWaypointSpecialProperty WaypointSpecialProperty => node.WaypointSpecialProperty;
             public bool IsGhost => node.IsGhost;
             public bool IsFree => node.IsFree;
             public bool IsGround => node.IsGround;
             public bool Bit21 => node.Bit21;
             public bool Bit17 => node.Bit17;
             public bool IsClip => node.IsClip;
-            public int Variant => node.Variant;
+            public byte? Variant => node.Variant;
+
+            public Vec3 AbsolutePositionInMap => node.AbsolutePositionInMap;
+            public Vec3 PitchYawRoll => node.PitchYawRoll;
 
             public DebugView(CGameCtnBlock node) => this.node = node;
+
+            public class FlagsInt
+            {
+                private readonly int value;
+                public FlagsInt(int flags) => value = flags;
+                public override string ToString() => Convert.ToString(value, 2).PadLeft(32, '0');
+            }
         }
 
         #endregion

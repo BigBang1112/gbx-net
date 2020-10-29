@@ -21,17 +21,7 @@ namespace GBX.NET
         {
             if (gbx.Version >= 3)
             {
-                var classID = gbx.ClassID.GetValueOrDefault();
-
-                var modernID = classID;
-                if (Node.Mappings.TryGetValue(classID, out uint newerClassID))
-                    modernID = newerClassID;
-
-                var availableClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
-                    && x.Namespace.StartsWith("GBX.NET.Engines") && GetBaseType(x) == typeof(Node)
-                    && x.GetCustomAttribute<NodeAttribute>().ID == modernID).FirstOrDefault();
-
-                if (gbx.Version == 6)
+                if (gbx.Version >= 6)
                 {
                     if (userData != null && userData.Length > 0)
                     {
@@ -102,7 +92,8 @@ namespace GBX.NET
                                     using (var msChunk = new MemoryStream(d))
                                     using (var rChunk = new GameBoxReader(msChunk, this))
                                     {
-                                        ((IHeaderChunk)chunks[counter]).ReadWrite(new GameBoxReaderWriter(rChunk));
+                                        var rw = new GameBoxReaderWriter(rChunk);
+                                        ((IHeaderChunk)chunks[counter]).ReadWrite(gbx.MainNode, rw);
                                         ((ISkippableChunk)chunks[counter]).Discovered = true;
                                     }
 
@@ -165,7 +156,7 @@ namespace GBX.NET
 
                                 var pos = userData.Position;
                                 if (((ISkippableChunk)chunk).Discovered)
-                                    ((IHeaderChunk)chunk).ReadWrite(gbxrw);
+                                    ((IChunk)chunk).ReadWrite(GBX.MainNode, gbxrw);
                                 else
                                     ((ISkippableChunk)chunk).Write(gbxw);
 

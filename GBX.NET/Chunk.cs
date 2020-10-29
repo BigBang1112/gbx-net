@@ -54,6 +54,11 @@ namespace GBX.NET
             return Equals(obj as Chunk);
         }
 
+        public override string ToString()
+        {
+            return $"Chunk 0x{ID:X8}";
+        }
+
         public bool Equals(Chunk chunk) => chunk != null && chunk.ID == ID;
 
         public static uint Remap(uint chunkID, ClassIDRemap remap = ClassIDRemap.Latest)
@@ -193,6 +198,12 @@ namespace GBX.NET
                 ReadWrite(Node, rw);
                 return ms.ToArray();
             }
+        }
+
+        public override string ToString()
+        {
+            var desc = GetType().GetCustomAttribute<ChunkAttribute>().Description;
+            return $"{typeof(T).Name} chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}";
         }
     }
 }
