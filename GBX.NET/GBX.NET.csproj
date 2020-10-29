@@ -14,17 +14,7 @@
     <PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk, x86</PackageTags>
     <RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
     <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
-    <PackageReleaseNotes>Tons of changes, major ones:
-- CGameCtnBlockInfoClassic (EDClassic.Gbx) parsing added
-- Introduced embed reading in CGameCtnChallenge
-- Merged Block.cs with CGameCtnBlock.cs
-- Added RaceValidateGhost to CGameCtnChallengeParameters
-- Added more implicit operators to data types used in GBX
-- Added a new Collection class to distinguish types of collection storage in Meta.
-- Slightly simplified header access (full system will be coming soon)
-- Improved node debug views using DebuggerTypeProxy
-- Enhanced the documentation
-</PackageReleaseNotes>
+    <PackageReleaseNotes>Move header values back to Node (thubnails, icons, metadata)</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
