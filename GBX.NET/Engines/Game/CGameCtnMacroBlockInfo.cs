@@ -18,8 +18,6 @@ namespace GBX.NET.Engines.Game
 
         public CGameCtnAnchoredObject[] AnchoredObjects { get; set; }
 
-        public List<FreeBlock> FreeBlocks { get; set; } = new List<FreeBlock>();
-
         #region Chunks
 
         #region 0x000 chunk (blocks)
@@ -73,12 +71,27 @@ namespace GBX.NET.Engines.Game
                     if (ver >= 4)
                         Debug.Assert(r.ReadNodeRef() == null);
 
-                    var block = new CGameCtnBlock() { BlockInfo = meta, Coord = coord.GetValueOrDefault(), Direction = dir.GetValueOrDefault(), Flags = flags };
+                    var correctFlags = flags & 15;
 
-                    if (position.HasValue && pitchYawRoll.HasValue)
+                    if ((flags & 0x20000) != 0) // Fixes inner pillars of some blocks
+                        correctFlags |= 0x400000;
+
+                    if ((flags & 0x10000) != 0) // Fixes ghost blocks
+                        correctFlags |= 0x10000000;
+
+                    var block = new CGameCtnBlock()
                     {
-                        n.FreeBlocks.Add(new FreeBlock(block) { Position = position.Value, PitchYawRoll = pitchYawRoll.Value });
-                        return null;
+                        BlockInfo = meta,
+                        Coord = coord.GetValueOrDefault(),
+                        Direction = dir.GetValueOrDefault(),
+                        Flags = correctFlags
+                    };
+
+                    if ((flags & (1 << 26)) != 0)
+                    {
+                        block.IsFree = true;
+                        block.AbsolutePositionInMap += position.GetValueOrDefault();
+                        block.PitchYawRoll += pitchYawRoll.GetValueOrDefault();
                     }
 
                     return block;
@@ -249,7 +262,12 @@ namespace GBX.NET.Engines.Game
                     };
                 });
 
-                r.ReadInt32();
+                var num = r.ReadInt32();
+                if (num == 1)
+                {
+                    r.ReadInt32();
+                    r.ReadInt32();
+                }
             }
         }
 
