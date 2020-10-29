@@ -13,6 +13,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
@@ -957,18 +958,26 @@ namespace GBX.NET.Engines.Game
             AnchoredObjects.Add(anchoredObject);
         }
 
-        public CGameCtnBlock PlaceFreeBlock(string name, Vec3 position, Vec3 pitchYawRoll)
+        public CGameCtnBlock PlaceFreeBlock(string name, Vec3 position, Vec3 pitchYawRoll, CGameCtnBlockSkin skin)
         {
-            var block = new CGameCtnBlock(name, Direction.North, (0, 0, 0), 0)
+            CreateChunk<Chunk0304305F>();
+
+            var block = new CGameCtnBlock(name, Direction.North, (-1, -1, -1), 0)
             {
                 IsFree = true,
                 AbsolutePositionInMap = position,
-                PitchYawRoll = pitchYawRoll
+                PitchYawRoll = pitchYawRoll,
+                Skin = skin
             };
 
             Blocks.Add(block);
 
             return block;
+        }
+
+        public CGameCtnBlock PlaceFreeBlock(string name, Vec3 position, Vec3 pitchYawRoll)
+        {
+            return PlaceFreeBlock(name, position, pitchYawRoll, null);
         }
 
         /// <summary>
@@ -1120,7 +1129,8 @@ namespace GBX.NET.Engines.Game
         public void PlaceMacroblock(CGameCtnMacroBlockInfo macroblock, Int3 coord, Direction dir)
         {
             var macroRad = (int)dir * (Math.PI / 2); // Rotation of the macroblock in radians needed for the formula to determine individual coords
-            var allCoords = macroblock.Blocks.Select(x => x.Coord); // Creates an enumerable of macroblock block coords
+            var macroBlocks = macroblock.Blocks.Where(x => !x.IsFree).ToArray();
+            var allCoords = macroBlocks.Select(x => x.Coord); // Creates an enumerable of macroblock block coords
 
             var min = new Int3(allCoords.Select(x => x.X).Min(), allCoords.Select(x => x.Y).Min(), allCoords.Select(x => x.Z).Min());
             var max = new Int3(allCoords.Select(x => x.X).Max(), allCoords.Select(x => x.Y).Max(), allCoords.Select(x => x.Z).Max());
@@ -1129,11 +1139,11 @@ namespace GBX.NET.Engines.Game
             var size = max - min + (1, 1, 1);
             var center = (min + max) * .5f;
 
-            var newCoords = new Vec3[macroblock.Blocks.Length]; // Array used to store new rotated block positions
+            var newCoords = new Vec3[macroBlocks.Length]; // Array used to store new rotated block positions
 
             for (var i = 0; i < newCoords.Length; i++)
             {
-                var block = macroblock.Blocks[i];
+                var block = macroBlocks[i];
                 var blockCoord = (Vec3)block.Coord;
 
                 var blockCenter = new Vec3();
@@ -1179,20 +1189,23 @@ namespace GBX.NET.Engines.Game
 
             for (var i = 0; i < newCoords.Length; i++)
             {
-                var block = macroblock.Blocks[i];
+                var block = macroBlocks[i];
                 var newRelativeCoord = newCoords[i] - newMin; // Use the newly rotated coordinates, and substract the shift the rotation made to the entire macroblock
-                
-                Blocks.Add(
-                    new CGameCtnBlock(
-                        block.Name,
-                        Dir.Add(block.Direction, dir),
-                        coord + (Int3)newRelativeCoord,
-                        block.Flags,
-                        block.Author,
-                        block.Skin,
-                        block.WaypointSpecialProperty
-                        )
-                    );
+
+                var b = new CGameCtnBlock(
+                    block.Name,
+                    Dir.Add(block.Direction, dir),
+                    coord + (Int3)newRelativeCoord,
+                    block.Flags,
+                    block.Author,
+                    block.Skin,
+                    block.WaypointSpecialProperty
+                );
+
+                if (b.Coord.Y == 0)
+                    b.IsGround = true;
+
+                Blocks.Add(b);
             }
 
             var blockSize = Collection.GetBlockSize();
@@ -1209,6 +1222,11 @@ namespace GBX.NET.Engines.Game
                         Math.Cos(itemRadians) * (item.AbsolutePositionInMap.Z - centerFromCoord.Z) + centerFromCoord.Z));
 
                 PlaceAnchoredObject(item.ItemModel, offsetPos + coord * blockSize + (0, blockSize.Y, 0), item.PitchYawRoll + (-itemRadians, 0f, 0f));
+            }
+
+            foreach(var freeBlock in macroblock.Blocks.Where(x => x.IsFree))
+            {
+                //PlaceFreeBlock(freeBlock.Name, (coord + (0, 1, 0)) * Collection.GetBlockSize() + freeBlock.AbsolutePositionInMap, freeBlock.PitchYawRoll);
             }
         }
 
@@ -1967,6 +1985,29 @@ namespace GBX.NET.Engines.Game
                 if (!is013)
                     w.Write(Version.GetValueOrDefault());
 
+
+                // Remove all free blocks with clips
+                for(int i = 0; i < n.Blocks.Count; i++)
+                {
+                    var x = n.Blocks[i];
+                    var skip = false;
+
+                    if (x.IsFree)
+                        if (BlockInfoManager.BlockModels != null
+                            && BlockInfoManager.BlockModels.TryGetValue(x.Name, out BlockModel m))
+                            foreach (var unit in m.Air)
+                                if (unit.Clips != null)
+                                    foreach (var clip in unit.Clips)
+                                        if (!string.IsNullOrEmpty(clip))
+                                            skip = true;
+
+                    if (skip)
+                        n.Blocks[i].IsFree = false;
+                }
+
+                n.Blocks.RemoveAll(x => !x.IsFree && x.Coord == (-1, -1, -1));
+                //
+
                 w.Write(n.NbBlocks);
 
                 foreach (var x in n.Blocks)
@@ -2646,30 +2687,54 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x05F skippable chunk (free blocks) [TM®️]
         /// </summary>
         [Chunk(0x0304305F, "free blocks")]
-        [IgnoreChunk]
         public class Chunk0304305F : SkippableChunk<CGameCtnChallenge>
         {
             public int Version { get; set; }
 
-            /// <summary>
-            /// List of vectors that can't be directly figured out without information from <see cref="Chunk01F"/>.
-            /// </summary>
-            public List<Vec3> Vectors { get; set; } = new List<Vec3>();
-
-            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                Version = r.ReadInt32();
+                Version = rw.Int32(Version);
 
-                Vectors.Clear();
-                while (r.BaseStream.Position < r.BaseStream.Length)
-                    Vectors.Add(new Vec3(r.ReadSingle(), r.ReadSingle(), r.ReadSingle()));
-            }
+                //var gsdgs = rw.Reader.ReadArray<float>(15);
 
-            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
-            {
-                w.Write(Version);
-                foreach (var v in Vectors)
-                    w.Write(v);
+                foreach (var block in n.Blocks)
+                {
+                    if (block.IsFree)
+                    {
+                        block.AbsolutePositionInMap = rw.Vec3(block.AbsolutePositionInMap);
+                        block.PitchYawRoll = rw.Vec3(block.PitchYawRoll);
+
+                        if (BlockInfoManager.BlockModels != null)
+                        {
+                            if (BlockInfoManager.BlockModels.TryGetValue(block.Name, out BlockModel model))
+                            {
+                                foreach (var unit in model.Air)
+                                {
+                                    if (unit.Clips != null)
+                                    {
+                                        for (var i = 0; i < unit.Clips.Length; i++)
+                                        {
+                                            if (!string.IsNullOrEmpty(unit.Clips[i]))
+                                            {
+                                                if (rw.Mode == GameBoxReaderWriterMode.Read)
+                                                {
+                                                    rw.Reader.ReadVec3();
+                                                    rw.Reader.ReadVec3();
+                                                }
+                                                else if (rw.Mode == GameBoxReaderWriterMode.Write)
+                                                {
+                                                    var dir = (Direction)i;
+                                                    rw.Writer.Write(new Vec3());
+                                                    rw.Writer.Write(new Vec3());
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
 
