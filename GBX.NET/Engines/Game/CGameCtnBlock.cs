@@ -145,11 +145,11 @@ namespace GBX.NET.Engines.Game
                 {
                     Flags |= 1 << isFreeBit;
                     absolutePositionInMap = Coord * (32, 8, 32);
-                    Coord = (0, 0, 0);
+                    Coord = (-1, -1, -1);
                 }
                 else
                 {
-                    Flags &= ~(1 << isGhostBit);
+                    Flags &= ~(1 << isFreeBit);
                     absolutePositionInMap = Coord * (32, 8, 32);
                     Coord = (Convert.ToInt32(absolutePositionInMap.X / 32),
                         Convert.ToInt32(absolutePositionInMap.Y / 8),
@@ -319,6 +319,9 @@ namespace GBX.NET.Engines.Game
             public bool Bit17 => node.Bit17;
             public bool IsClip => node.IsClip;
             public byte? Variant => node.Variant;
+
+            public Vec3 AbsolutePositionInMap => node.AbsolutePositionInMap;
+            public Vec3 PitchYawRoll => node.PitchYawRoll;
 
             public DebugView(CGameCtnBlock node) => this.node = node;
 
