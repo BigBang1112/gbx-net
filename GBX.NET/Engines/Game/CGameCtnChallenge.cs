@@ -626,6 +626,9 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
+        public CGameCtnBlock[] BakedBlocks { get; set; }
+
+        [NodeMember]
         public CGameCtnMediaClip ClipIntro { get; set; }
 
         [NodeMember]
@@ -2504,7 +2507,31 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03043048, "baked blocks")]
         public class Chunk03043048 : SkippableChunk<CGameCtnChallenge>
         {
-            
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+
+                n.BakedBlocks = rw.Array(n.BakedBlocks, i =>
+                {
+                    return new CGameCtnBlock(
+                        rw.Reader.ReadLookbackString(), 
+                        (Direction)rw.Reader.ReadByte(), 
+                        (Int3)rw.Reader.ReadByte3(),
+                        rw.Reader.ReadInt32()
+                    );
+                },
+                x =>
+                {
+                    rw.Writer.WriteLookbackString(x.Name);
+                    rw.Writer.Write((byte)x.Direction);
+                    rw.Writer.Write((Byte3)x.Coord);
+                    rw.Writer.Write(x.Flags);
+                });
+
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+            }
         }
 
         #endregion
@@ -2794,6 +2821,7 @@ namespace GBX.NET.Engines.Game
             public bool? NeedUnlock => node.NeedUnlock;
             public List<CGameCtnBlock> Blocks => node.Blocks;
             public int NbBlocks => node.NbBlocks;
+            public CGameCtnBlock[] BakedBlocks => node.BakedBlocks;
             public CGameCtnMediaClip ClipIntro => node.ClipIntro;
             public CGameCtnMediaClipGroup ClipGroupInGame => node.ClipGroupInGame;
             public CGameCtnMediaClipGroup ClipGroupEndRace => node.ClipGroupEndRace;
