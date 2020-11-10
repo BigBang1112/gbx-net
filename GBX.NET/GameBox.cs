@@ -119,7 +119,7 @@ namespace GBX.NET
                     s.Discover();
         }
 
-        protected override bool ReadHeader(GameBoxReader reader)
+        public override bool ReadHeader(GameBoxReader reader)
         {
             var parameters = new GameBoxHeaderParameters(this);
             if (!parameters.Read(reader)) return false; // Should already throw an exception
@@ -262,7 +262,7 @@ namespace GBX.NET
 
         public string FileName { get; set; }
 
-        protected virtual bool ReadHeader(GameBoxReader reader)
+        public virtual bool ReadHeader(GameBoxReader reader)
         {
             var parameters = new GameBoxHeaderParameters(this);
             if (!parameters.Read(reader)) return false;
@@ -388,16 +388,80 @@ namespace GBX.NET
             return Load(fileName);
         }
 
-        public static GameBox<T> ParseHeader<T>(string fileName) where T : Node
+        public static GameBox ParseHeader(string fileName)
         {
-            GameBox<T> gbx = new GameBox<T> { FileName = fileName };
-
             using (var fs = File.OpenRead(fileName))
-            using (var r = new GameBoxReader(fs))
+            {
+                var gbx = ParseHeader(fs);
+                gbx.FileName = fileName;
+                return gbx;
+            }
+        }
+
+        public static GameBox ParseHeader(Stream stream)
+        {
+            using (var r = new GameBoxReader(stream))
+                return ParseHeader(r);
+        }
+
+        public static GameBox ParseHeader(GameBoxReader reader)
+        {
+            var classID = ReadClassID(reader);
+
+            if (classID.HasValue)
+            {
+                var modernID = classID.GetValueOrDefault();
+                if (Node.Mappings.TryGetValue(classID.GetValueOrDefault(), out uint newerClassID))
+                    modernID = newerClassID;
+
+                Debug.WriteLine("Parse: " + modernID.ToString("x8"));
+
+                Node.AvailableClasses.TryGetValue(modernID, out Type availableClass);
+
+                GameBox gbx;
+
+                if (availableClass == null)
+                    gbx = new GameBox();
+                else
+                    gbx = (GameBox)Activator.CreateInstance(typeof(GameBox<>).MakeGenericType(availableClass), true);
+
+                reader.BaseStream.Seek(0, SeekOrigin.Begin);
+
+                if (gbx.ReadHeader(reader))
+                    return gbx;
+            }
+
+            Type GetBaseType(Type t)
+            {
+                if (t == null)
+                    return null;
+                if (t.BaseType == typeof(Node))
+                    return t.BaseType;
+                return GetBaseType(t.BaseType);
+            }
+
+            return null;
+        }
+
+        public static GameBox<T> ParseHeader<T>(Stream stream) where T : Node
+        {
+            GameBox<T> gbx = new GameBox<T>();
+
+            using (var r = new GameBoxReader(stream))
                 if (!gbx.ReadHeader(r))
                     return null;
 
             return gbx;
+        }
+
+        public static GameBox<T> ParseHeader<T>(string fileName) where T : Node
+        {
+            using (var fs = File.OpenRead(fileName))
+            {
+                var gbx = ParseHeader<T>(fs);
+                gbx.FileName = fileName;
+                return gbx;
+            }
         }
 
         /// <summary>
