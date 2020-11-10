@@ -2,6 +2,7 @@
 using GBX.NET.Engines.GameData;
 using GBX.NET.Engines.Hms;
 using GBX.NET.Engines.Script;
+using GBX.NET.ZIP;
 using ICSharpCode.SharpZipLib.Checksum;
 using ICSharpCode.SharpZipLib.Zip;
 using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
@@ -192,9 +193,8 @@ namespace GBX.NET.Engines.Game
         private string objectiveTextSilver;
         private string objectiveTextBronze;
         private string buildVersion;
-        private MemoryStream embedStream;
-        private IReadOnlyCollection<Meta> embeds;
-        private ZipFile embedZip;
+        private Dictionary<string, byte[]> embeds;
+        private byte[] originalEmbedZip;
 
         #endregion
 
@@ -796,22 +796,12 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public IReadOnlyCollection<Meta> Embeds
+        public Dictionary<string, byte[]> Embeds
         {
             get
             {
                 DiscoverChunk<Chunk03043054>();
                 return embeds;
-            }
-        }
-
-        [NodeMember]
-        public ZipFile EmbedZip
-        {
-            get
-            {
-                DiscoverChunk<Chunk03043054>();
-                return embedZip;
             }
         }
 
@@ -1123,10 +1113,101 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        public void ExportEmbedZip(string fileName)
+        public IEnumerable<GameBox> GetEmbeddedObjects()
+        {
+            foreach(var embed in Embeds)
+            {
+                using (var ms = new MemoryStream(embed.Value))
+                {
+                    var gbx = GameBox.ParseHeader(ms);
+                    gbx.FileName = embed.Key;
+                    yield return gbx;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Extracts embed ZIP file based on the data in <see cref="Embeds"/>. File metadata is simplified and the timestamp of extraction is used for all files. Stream must have permission to read.
+        /// </summary>
+        /// <param name="stream">Stream to write the ZIP data to.</param>
+        public void ExtractEmbedZip(Stream stream)
         {
             DiscoverChunk<Chunk03043054>();
-            File.WriteAllBytes(fileName, embedStream.ToArray());
+
+            using (var zip = ZipFile.Create(stream))
+            {
+                zip.BeginUpdate();
+
+                zip.SetComment("This ZIP file containing embedded items was constructed with GBX.NET library by BigBang1112.");
+
+                foreach (var embed in Embeds)
+                {
+                    var msEmbed = new MemoryStream(embed.Value);
+                    CustomStaticDataSource sds = new CustomStaticDataSource();
+                    sds.SetStream(msEmbed);
+                    zip.Add(sds, embed.Key);
+                }
+
+                zip.CommitUpdate();
+            }
+        }
+
+        /// <summary>
+        /// Extracts embed ZIP file based on the data in <see cref="Embeds"/>. File metadata is simplified and the timestamp of extraction is used for all files.
+        /// </summary>
+        /// <param name="fileName">New file to write the ZIP data to.</param>
+        public void ExtractEmbedZip(string fileName)
+        {
+            using (var fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))
+                ExtractEmbedZip(fs); // ExtractEmbedZip(Stream stream) required Stream to be readable as well
+        }
+
+        /// <summary>
+        /// Extracts embed ZIP file straight from the parsed map including original timestamps and other file metadata.
+        /// </summary>
+        /// <param name="stream">Stream to write the ZIP data to.</param>
+        /// <returns>True if the map included embed ZIP previously, otherwise false.</returns>
+        public bool ExtractOriginalEmbedZip(Stream stream)
+        {
+            DiscoverChunk<Chunk03043054>();
+            if (originalEmbedZip.Length == 0) return false;
+
+            using (var ms = new MemoryStream(originalEmbedZip))
+                ms.CopyTo(stream);
+            return true;
+        }
+
+        /// <summary>
+        /// Extracts embed ZIP file straight from the parsed map including original timestamps and other file metadata.
+        /// </summary>
+        /// <param name="fileName">New file to write the ZIP data to.</param>
+        /// <returns>True if the map included embed ZIP previously, otherwise false.</returns>
+        public bool ExtractOriginalEmbedZip(string fileName)
+        {
+            DiscoverChunk<Chunk03043054>();
+            if (originalEmbedZip.Length == 0) return false;
+
+            File.WriteAllBytes(fileName, originalEmbedZip);
+            return true;
+        }
+
+        /// <summary>
+        /// Import a file to embed in the map by keeping the file name but relocating it in the embed ZIP.
+        /// </summary>
+        /// <param name="fileOnDisk">File to embed located on the disk.</param>
+        /// <param name="relativePath">Relative directory where the embed should be represented in the game, usually starts with <c>"Items/..."</c>, <c>"Blocks/..."</c> or <c>"Materials/..."</c>.</param>
+        public void ImportFileToEmbed(string fileOnDisk, string relativeDirectory)
+        {
+            Embeds[relativeDirectory + "/" + Path.GetFileName(fileOnDisk)] = File.ReadAllBytes(fileOnDisk);
+        }
+
+        /// <summary>
+        /// Embed objects from directories represented like from the user data directory.
+        /// </summary>
+        /// <param name="directoryOnDisk">Directory with folders <c>"Items/..."</c>, <c>"Blocks/..."</c> or <c>"Materials/..."</c>.</param>
+        public void ImportUserDataToEmbed(string directoryOnDisk)
+        {
+            throw new NotImplementedException();
         }
 
         public void PlaceMacroblock(CGameCtnMacroBlockInfo macroblock, Int3 coord, Direction dir)
@@ -2625,17 +2706,37 @@ namespace GBX.NET.Engines.Game
             List<string> ILookbackable.LookbackStrings { get; set; } = new List<string>();
             bool ILookbackable.LookbackWritten { get; set; }
 
-            public int Version { get; set; }
+            public int Version { get; set; } = 1;
+            public int U01 { get; set; }
             public string[] Textures { get; set; }
 
             public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
-                unknownW.Write(r.ReadInt32());
+                U01 = r.ReadInt32();
                 var size = r.ReadInt32();
-                n.embeds = r.ReadArray(i => r.ReadMeta());
-                n.embedStream = new MemoryStream(r.ReadBytes());
-                n.embedZip = new ZipFile(n.embedStream);
+
+                var embedded = r.ReadArray(i => r.ReadMeta());
+
+                n.originalEmbedZip = r.ReadBytes();
+                if (n.originalEmbedZip.Length > 0)
+                {
+                    n.embeds = new Dictionary<string, byte[]>();
+
+                    using (var ms = new MemoryStream(n.originalEmbedZip))
+                    using (var zip = new ZipFile(ms))
+                    {
+                        foreach (ZipEntry entry in zip)
+                        {
+                            using (var entryStream = zip.GetInputStream(entry))
+                            using (var entryDataStream = new MemoryStream())
+                            {
+                                entryStream.CopyTo(entryDataStream);
+                                n.embeds[entry.Name] = entryDataStream.ToArray();
+                            }
+                        }
+                    }
+                }
 
                 Textures = r.ReadArray(i => r.ReadString());
             }
@@ -2643,14 +2744,24 @@ namespace GBX.NET.Engines.Game
             public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
             {
                 w.Write(Version);
-                w.Write(unknownR.ReadInt32());
+                w.Write(U01);
 
                 using (var ms = new MemoryStream())
-                using (var gbxw = new GameBoxWriter(ms))
+                using (var writer = new GameBoxWriter(ms, this))
                 {
-                    gbxw.Write(n.embeds.ToArray(), x => w.Write(x));
-                    gbxw.Write(n.embedStream.ToArray());
-                    gbxw.Write(Textures, x => w.Write(x));
+                    List<Meta> embedded = new List<Meta>();
+                    foreach(var embed in n.GetEmbeddedObjects())
+                        if(embed is GameBox<CGameItemModel> gbxItem)
+                            embedded.Add(gbxItem.MainNode.Metadata);
+                    writer.Write(embedded.ToArray(), x => writer.Write(x));
+
+                    using (var zipStream = new MemoryStream())
+                    {
+                        n.ExtractEmbedZip(zipStream);
+                        writer.Write(zipStream.ToArray(), 0, (int)zipStream.Length);
+                    }
+
+                    writer.Write(Textures, x => w.Write(x));
 
                     w.Write((int)ms.Length);
                     w.Write(ms.ToArray());
@@ -2840,8 +2951,7 @@ namespace GBX.NET.Engines.Game
             public string ObjectiveTextGold => node.ObjectiveTextGold;
             public string ObjectiveTextSilver => node.ObjectiveTextSilver;
             public string ObjectiveTextBronze => node.ObjectiveTextBronze;
-            public IReadOnlyCollection<Meta> Embeds => node.Embeds;
-            public ZipFile EmbedZip => node.EmbedZip;
+            public Dictionary<string, byte[]> Embeds => node.Embeds;
 
             public DebugView(CGameCtnChallenge node) => this.node = node;
         }
