@@ -457,7 +457,20 @@ namespace GBX.NET
 
             startTimestamp = DateTime.Now;
 
-            foreach (var nodeType in Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
+            var assemb = Assembly.GetExecutingAssembly();
+
+            IEnumerable<Type> types;
+            try
+            {
+                types = assemb.GetTypes();
+            }
+            catch (ReflectionTypeLoadException e)
+            {
+                types = e.Types;
+            }
+            types = types.Where(t => t != null);
+
+            foreach (var nodeType in types.Where(x => x.IsClass
                    && x.Namespace != null && x.Namespace.StartsWith("GBX.NET.Engines") && GetBaseType(x) == typeof(Node)))
             {
                 var nodeID = nodeType.GetCustomAttribute<NodeAttribute>().ID;
@@ -515,7 +528,7 @@ namespace GBX.NET
 
                     foreach (var cls in inheritanceClasses)
                     {
-                        var availableInheritanceClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
+                        var availableInheritanceClass = types.Where(x => x.IsClass
                            && x.Namespace.StartsWith("GBX.NET.Engines") && (GetBaseType(x) == typeof(Node))
                            && (x.GetCustomAttribute<NodeAttribute>().ID == cls)).FirstOrDefault();
 
