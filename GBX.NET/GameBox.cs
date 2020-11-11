@@ -15,7 +15,14 @@ namespace GBX.NET
         Body
     }
 
-    public delegate void GameBoxReadProgress(GameBoxReadProgressStage stage, float progress, GameBox gbx);
+    /// <summary>
+    /// Delegate used for reporting GBX read progress.
+    /// </summary>
+    /// <param name="stage">Reading stage of GBX.</param>
+    /// <param name="progress">Progress in percentage of each stage.</param>
+    /// <param name="gbx">Gradually updated GBX object.</param>
+    /// <param name="chunk">Chunk that has been currently read. This parameter is null in <see cref="GameBoxReadProgressStage.Header"/> and <see cref="GameBoxReadProgressStage.RefTable"/> stages.</param>
+    public delegate void GameBoxReadProgress(GameBoxReadProgressStage stage, float progress, GameBox gbx, Chunk chunk = null);
 
     /// <summary>
     /// A known serialized GameBox node with additional attributes. This class can represent deserialized .Gbx file.
@@ -152,8 +159,6 @@ namespace GBX.NET
                 Log.Write(e.ToString(), ConsoleColor.Red);
             }
 
-            progress?.Invoke(GameBoxReadProgressStage.HeaderUserData, 1, this);
-
             return true;
         }
 
@@ -184,13 +189,13 @@ namespace GBX.NET
 
                     var data = reader.ReadBytes(compressedSize);
                     Body = new GameBoxBody<T>(this);
-                    Body.Read(data, uncompressedSize);
+                    Body.Read(data, uncompressedSize, progress);
 
                     break;
                 case 'U':
                     var uncompressedData = reader.ReadToEnd();
                     Body = new GameBoxBody<T>(this);
-                    Body.Read(uncompressedData);
+                    Body.Read(uncompressedData, progress);
 
                     break;
                 default:

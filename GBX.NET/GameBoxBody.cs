@@ -28,12 +28,12 @@ namespace GBX.NET
             
         }
 
-        public void Read(byte[] data)
+        public void Read(byte[] data, GameBoxReadProgress progress = null)
         {
             using (var s = new MemoryStream(data))
             using (var gbxr = new GameBoxReader(s, this))
             {
-                GBX.MainNode = Node.Parse(gbxr, GBX.ClassID.Value, GBX.MainNode); // TODO: understand the third parameter
+                GBX.MainNode = Node.Parse(gbxr, GBX.ClassID.Value, GBX, progress);
 
                 Debug.WriteLine("Amount read: " + (s.Position / (float)s.Length).ToString("P"));
 
@@ -43,11 +43,11 @@ namespace GBX.NET
             }
         }
 
-        public void Read(byte[] data, int uncompressedSize)
+        public void Read(byte[] data, int uncompressedSize, GameBoxReadProgress progress = null)
         {
             byte[] buffer = new byte[uncompressedSize];
             MiniLZO.Decompress(data, buffer);
-            Read(buffer);
+            Read(buffer, progress);
         }
 
         public void Write(GameBoxWriter w)

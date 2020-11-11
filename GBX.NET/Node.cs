@@ -103,7 +103,7 @@ namespace GBX.NET
             return array;
         }
 
-        public static T Parse<T>(GameBoxReader r, uint? classID = null, T node = null) where T : Node
+        public static T Parse<T>(GameBoxReader r, uint? classID = null, GameBox<T> gbx = null, GameBoxReadProgress progress = null) where T : Node
         {
             var readNodeStart = DateTime.Now;
 
@@ -117,8 +117,11 @@ namespace GBX.NET
             if (!AvailableClasses.TryGetValue(classID.Value, out Type type))
                 throw new NotImplementedException($"Node ID 0x{classID.Value:X8} is not implemented. ({Names.Where(x => x.Key == Chunk.Remap(classID.Value)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
 
-            if (node == null)
+            T node = null;
+            if (gbx == null)
                 node = (T)Activator.CreateInstance(type);
+            else
+                node = gbx.MainNode;
 
             IGameBoxBody body;
 
@@ -162,6 +165,7 @@ namespace GBX.NET
                 }
 
                 Type chunkClass = null;
+                Chunk chunk = null;
 
                 var chunkRemapped = Chunk.Remap(chunkID);
 
@@ -233,11 +237,14 @@ namespace GBX.NET
 
                         if (chunkClass.GetCustomAttribute<ChunkAttribute>().ProcessSync)
                             c.Discover();
+
+                        chunk = (Chunk)c;
                     }
                     else
                     {
                         Debug.WriteLine("Unknown skippable chunk: " + chunkID.ToString("X"));
-                        chunks.Add((Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkID, chunkData));
+                        chunk = (Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkID, chunkData);
+                        chunks.Add(chunk);
                     }
                 }
 
@@ -251,25 +258,25 @@ namespace GBX.NET
                         var chunkDataSize = r.ReadInt32();
                     }
 
-                    IChunk chunk;
+                    IChunk c;
 
                     var constructor = chunkClass.GetConstructors().First();
                     var constructorParams = constructor.GetParameters();
                     if (constructorParams.Length == 0)
                     {
-                        chunk = (IChunk)constructor.Invoke(new object[0]);
-                        chunk.Node = node;
+                        c = (IChunk)constructor.Invoke(new object[0]);
+                        c.Node = node;
                     }
                     else if (constructorParams.Length == 1)
-                        chunk = (IChunk)constructor.Invoke(new object[] { node });
+                        c = (IChunk)constructor.Invoke(new object[] { node });
                     else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
 
-                    chunk.Part = (GameBoxPart)body;
-                    chunk.OnLoad();
+                    c.Part = (GameBoxPart)body;
+                    c.OnLoad();
 
-                    chunks.Add((Chunk)chunk);
+                    chunks.Add((Chunk)c);
 
-                    r.Chunk = (Chunk)chunk; // Set chunk temporarily for reading
+                    r.Chunk = (Chunk)c; // Set chunk temporarily for reading
 
                     var posBefore = r.BaseStream.Position;
 
@@ -277,17 +284,21 @@ namespace GBX.NET
 
                     try
                     {
-                        chunk.ReadWrite(node, gbxrw);
+                        c.ReadWrite(node, gbxrw);
                     }
                     catch (EndOfStreamException)
                     {
                         Debug.WriteLine($"Unexpected end of the stream while reading the chunk.");
                     }
 
-                    chunk.Progress = (int)(r.BaseStream.Position - posBefore);
+                    c.Progress = (int)(r.BaseStream.Position - posBefore);
 
                     r.Chunk = null;
+
+                    chunk = (Chunk)c;
                 }
+
+                progress?.Invoke(GameBoxReadProgressStage.Body, (float)r.BaseStream.Position / r.BaseStream.Length, gbx, chunk);
 
                 previousChunk = chunkID;
             }
