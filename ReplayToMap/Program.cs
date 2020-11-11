@@ -18,8 +18,8 @@ namespace ReplayToMap
 
             if (gbx is GameBox<CGameCtnReplayRecord> gbxReplay)
             {
-                var track = gbxReplay.MainNode.Track.Result;
-                track.Save(Formatter.Deformat(track.MainNode.MapName + ".Map.Gbx"));
+                var map = gbxReplay.MainNode.Challenge.Result;
+                map.Save(Formatter.Deformat(map.MainNode.MapName + ".Map.Gbx"));
             }
         }
 
