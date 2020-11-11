@@ -323,11 +323,18 @@ namespace GBX.NET
 
         public void Write(GameBoxWriter w, ClassIDRemap remap)
         {
+            var writeNodeStart = DateTime.Now;
+
             int counter = 0;
-            
+
             foreach (Chunk chunk in Chunks)
             {
-                counter += 1;
+                counter++;
+
+                if (Body != null && Body.GBX.ClassID.HasValue && Remap(Body.GBX.ClassID.Value) == ID)
+                    Log.Write($"[{ClassName}] 0x{chunk.ID:X8} ({(float)counter / Chunks.Count:0.00%})");
+                else
+                    Log.Write($"~ [{ClassName}] 0x{chunk.ID:X8} ({(float)counter / Chunks.Count:0.00%})");
 
                 ((IChunk)chunk).Node = this;
                 chunk.Unknown.Position = 0;
@@ -383,6 +390,11 @@ namespace GBX.NET
                     }
                 }
             }
+
+            if (Body != null && Body.GBX.ClassID.HasValue && Remap(Body.GBX.ClassID.Value) == ID)
+                Log.Write($"[{ClassName}] DONE! ({(DateTime.Now - writeNodeStart).TotalMilliseconds}ms)", ConsoleColor.Green);
+            else
+                Log.Write($"~ [{ClassName}] DONE! ({(DateTime.Now - writeNodeStart).TotalMilliseconds}ms)", ConsoleColor.Green);
 
             w.Write(0xFACADE01);
         }

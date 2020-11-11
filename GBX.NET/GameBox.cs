@@ -216,11 +216,17 @@ namespace GBX.NET
                 (Body as ILookbackable).LookbackStrings.Clear();
                 Body.AuxilaryNodes.Clear();
 
-                Body.Write(bodyW, remap);
+                Log.Write("Writing the body...");
+
+                Body.Write(bodyW, remap); // Body is written first so that the aux node count is determined properly
+
+                Log.Write("Writing the header...");
 
                 (Header as ILookbackable).LookbackWritten = false;
                 (Header as ILookbackable).LookbackStrings.Clear();
                 Header.Write(w, Body.AuxilaryNodes.Count + 1, remap);
+
+                Log.Write("Writing the reference table...");
 
                 if (RefTable == null)
                     w.Write(0);
@@ -250,6 +256,8 @@ namespace GBX.NET
                 ms.Position = 0;
                 File.WriteAllBytes(fileName, ms.ToArray());
             }
+
+            Log.Write($"GBX file {fileName} saved.");
         }
 
         /// <inheritdoc cref="Save(string, ClassIDRemap)"/>
