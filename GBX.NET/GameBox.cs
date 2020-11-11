@@ -183,12 +183,15 @@ namespace GBX.NET
                     var compressedSize = reader.ReadInt32();
 
                     var data = reader.ReadBytes(compressedSize);
+                    Body = new GameBoxBody<T>(this);
+                    Body.Read(data, uncompressedSize);
 
-                    Body = GameBoxBody<T>.DecompressAndConstruct(this, ClassID.GetValueOrDefault(), data, compressedSize, uncompressedSize);
                     break;
                 case 'U':
                     var uncompressedData = reader.ReadToEnd();
-                    Body = new GameBoxBody<T>(this, ClassID.GetValueOrDefault(), uncompressedData, null, uncompressedData.Length);
+                    Body = new GameBoxBody<T>(this);
+                    Body.Read(uncompressedData);
+
                     break;
                 default:
                     return false;

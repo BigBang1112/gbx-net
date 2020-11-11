@@ -9,9 +9,7 @@ namespace GBX.NET
 {
     public class GameBoxBody<T> : GameBoxPart, IGameBoxBody where T : Node
     {
-        public int? CompressedSize { get; }
-        public int UncompressedSize { get; }
-        public byte[] Rest { get; }
+        public byte[] Rest { get; set; }
         public bool Aborting { get; private set; }
 
         [IgnoreDataMember]
@@ -25,15 +23,17 @@ namespace GBX.NET
         /// <param name="data">UNCOMPRESSED</param>
         /// <param name="compressedSize"></param>
         /// <param name="uncompressedSize"></param>
-        public GameBoxBody(GameBox<T> gbx, uint mainNodeID, byte[] data, int? compressedSize, int uncompressedSize) : base(gbx)
+        public GameBoxBody(GameBox<T> gbx) : base(gbx)
         {
-            CompressedSize = compressedSize;
-            UncompressedSize = uncompressedSize;
+            
+        }
 
+        public void Read(byte[] data)
+        {
             using (var s = new MemoryStream(data))
             using (var gbxr = new GameBoxReader(s, this))
             {
-                gbx.MainNode = Node.Parse(gbxr, mainNodeID, gbx.MainNode);
+                GBX.MainNode = Node.Parse(gbxr, GBX.ClassID.Value, GBX.MainNode); // TODO: understand the third parameter
 
                 Debug.WriteLine("Amount read: " + (s.Position / (float)s.Length).ToString("P"));
 
@@ -43,11 +43,11 @@ namespace GBX.NET
             }
         }
 
-        public static GameBoxBody<T> DecompressAndConstruct(GameBox<T> gbx, uint mainNodeID, byte[] data, int compressedSize, int uncompressedSize)
+        public void Read(byte[] data, int uncompressedSize)
         {
             byte[] buffer = new byte[uncompressedSize];
             MiniLZO.Decompress(data, buffer);
-            return new GameBoxBody<T>(gbx, mainNodeID, buffer, compressedSize, uncompressedSize);
+            Read(buffer);
         }
 
         public void Write(GameBoxWriter w)
