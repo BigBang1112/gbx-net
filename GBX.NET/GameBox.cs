@@ -456,7 +456,7 @@ namespace GBX.NET
 
                 reader.BaseStream.Seek(0, SeekOrigin.Begin);
 
-                if (gbx.ReadHeader(reader, progress))
+                if (gbx.ReadHeader(reader, progress) && gbx.ReadRefTable(reader, progress))
                     return gbx;
             }
 
@@ -477,10 +477,10 @@ namespace GBX.NET
             GameBox<T> gbx = new GameBox<T>();
 
             using (var r = new GameBoxReader(stream))
-                if (!gbx.ReadHeader(r, progress))
-                    return null;
+                if (gbx.ReadHeader(r, progress) && gbx.ReadRefTable(r, progress))
+                    return gbx;
 
-            return gbx;
+            return null;
         }
 
         public static GameBox<T> ParseHeader<T>(string fileName, GameBoxReadProgress progress = null) where T : Node
