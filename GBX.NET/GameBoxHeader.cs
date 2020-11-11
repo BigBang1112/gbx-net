@@ -111,7 +111,7 @@ namespace GBX.NET
 
                                 Chunks.Add(chunk);
 
-                                progress?.Invoke(GameBoxReadProgressStage.HeaderUserData, r.BaseStream.Position / (float)r.BaseStream.Length, GBX);
+                                progress?.Invoke(GameBoxReadProgressStage.HeaderUserData, r.BaseStream.Position / (float)r.BaseStream.Length, GBX, chunk);
                             }
                         }
                     }
