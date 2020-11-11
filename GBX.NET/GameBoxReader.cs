@@ -127,7 +127,7 @@ namespace GBX.NET
             return ReadMeta(Lookbackable);
         }
 
-        public T ReadNodeRef<T>(GameBoxBody body) where T : Node
+        public T ReadNodeRef<T>(IGameBoxBody body) where T : Node
         {
             var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
@@ -146,17 +146,17 @@ namespace GBX.NET
 
         public T ReadNodeRef<T>() where T : Node
         {
-            return ReadNodeRef<T>((GameBoxBody)Lookbackable);
+            return ReadNodeRef<T>((IGameBoxBody)Lookbackable);
         }
 
-        public Node ReadNodeRef(GameBoxBody body)
+        public Node ReadNodeRef(IGameBoxBody body)
         {
             return ReadNodeRef<Node>(body);
         }
 
         public Node ReadNodeRef()
         {
-            return ReadNodeRef<Node>((GameBoxBody)Lookbackable);
+            return ReadNodeRef<Node>((IGameBoxBody)Lookbackable);
         }
 
         public FileRef ReadFileRef()

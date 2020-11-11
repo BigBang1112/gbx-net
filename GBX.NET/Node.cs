@@ -14,7 +14,7 @@ namespace GBX.NET
         public static Dictionary<uint, uint> Mappings { get; } // key: older, value: newer
 
         [IgnoreDataMember]
-        public GameBoxBody Body { get; set; }
+        public IGameBoxBody Body { get; set; }
         [IgnoreDataMember]
         public GameBox GBX => Body?.GBX;
 
@@ -120,12 +120,12 @@ namespace GBX.NET
             if (node == null)
                 node = (T)Activator.CreateInstance(type);
 
-            GameBoxBody body;
+            IGameBoxBody body;
 
             if (r.Lookbackable is Chunk ch)
-                body = (GameBoxBody)ch.Part;
+                body = (IGameBoxBody)ch.Part;
             else
-                body = (GameBoxBody)r.Lookbackable;
+                body = (IGameBoxBody)r.Lookbackable;
 
             node.Body = body;
 
@@ -219,7 +219,7 @@ namespace GBX.NET
                         {
                             c = (ISkippableChunk)constructor.Invoke(new object[0]);
                             c.Node = node;
-                            c.Part = body;
+                            c.Part = (GameBoxPart)body;
                             c.Stream = new MemoryStream(chunkData, 0, chunkData.Length, false);
                             if (chunkData == null || chunkData.Length == 0)
                                 c.Discovered = true;
@@ -264,7 +264,7 @@ namespace GBX.NET
                         chunk = (IChunk)constructor.Invoke(new object[] { node });
                     else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
 
-                    chunk.Part = body;
+                    chunk.Part = (GameBoxPart)body;
                     chunk.OnLoad();
 
                     chunks.Add((Chunk)chunk);

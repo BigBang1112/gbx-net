@@ -184,7 +184,7 @@ namespace GBX.NET
             Write(meta, Lookbackable);
         }
 
-        public void Write(Node node, GameBoxBody body)
+        public void Write(Node node, IGameBoxBody body)
         {
             if (node == null)
                 Write(-1);
@@ -206,7 +206,7 @@ namespace GBX.NET
 
         public void Write(Node node)
         {
-            Write(node, (GameBoxBody)Lookbackable);
+            Write(node, (IGameBoxBody)Lookbackable);
         }
     }
 }

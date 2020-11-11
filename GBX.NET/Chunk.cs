@@ -107,7 +107,7 @@ namespace GBX.NET
         }
 
         public bool IsHeader => Lookbackable is GameBoxHeader;
-        public bool IsBody => Lookbackable is GameBoxBody;
+        public bool IsBody => Lookbackable is IGameBoxBody;
 
         [IgnoreDataMember]
         public override ILookbackable Lookbackable

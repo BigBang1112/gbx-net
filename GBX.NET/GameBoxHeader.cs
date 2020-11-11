@@ -363,69 +363,69 @@ namespace GBX.NET
             UserData = userData;
         }
 
-        public override T CreateChunk<T>(byte[] data)
+        public TChunk CreateChunk<TChunk>(byte[] data)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
-        public override T CreateChunk<T>()
+        public TChunk CreateChunk<TChunk>()
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
-        public override void InsertChunk(Chunk chunk)
+        public void InsertChunk(Chunk chunk)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
-        public override void DiscoverChunk<TChunk>()
+        public void DiscoverChunk<TChunk>()
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
-        public override void DiscoverChunks<TChunk1, TChunk2>()
+        public void DiscoverChunks<TChunk1, TChunk2>()
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
-        public override void DiscoverChunks<TChunk1, TChunk2, TChunk3>()
+        public void DiscoverChunks<TChunk1, TChunk2, TChunk3>()
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
-        public override void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4>()
+        public void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4>()
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
-        public override void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5>()
+        public void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5>()
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
-        public override void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5, TChunk6>()
+        public void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5, TChunk6>()
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
-        public override void DiscoverAllChunks()
+        public void DiscoverAllChunks()
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
-        public override T GetChunk<T>()
+        public T GetChunk<T>()
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
-        public override bool TryGetChunk<T>(out T chunk)
+        public bool TryGetChunk<T>(out T chunk)
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
 
-        public override bool RemoveChunk<T>()
+        public bool RemoveChunk<T>()
         {
-            throw new NotImplementedException();
+            throw new NotSupportedException();
         }
     }
 }
