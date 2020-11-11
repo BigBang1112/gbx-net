@@ -618,11 +618,13 @@ namespace GBX.NET
             return id;
         }
 
+        [Obsolete]
         public static T FromGBX<T>(GameBox<T> loadedGbx) where T : Node
         {
             return loadedGbx.MainNode;
         }
 
+        [Obsolete]
         public static T FromGBX<T>(string gbxFile) where T : Node
         {
             using (var fs = File.OpenRead(gbxFile))
@@ -636,7 +638,7 @@ namespace GBX.NET
                 else
                     gbx = (GameBox)Activator.CreateInstance(type);
 
-                if (gbx.Read(fs))
+                if (gbx.Read(fs, null))
                     return FromGBX((GameBox<T>)gbx);
                 return default;
             }

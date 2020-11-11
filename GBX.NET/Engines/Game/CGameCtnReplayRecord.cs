@@ -163,11 +163,7 @@ namespace GBX.NET.Engines.Game
                     n.Challenge = Task.Run(() =>
                     {
                         using (var ms = new MemoryStream(trackGbx))
-                        {
-                            var gbx = new GameBox<CGameCtnChallenge>();
-                            gbx.Read(ms);
-                            return gbx;
-                        }
+                            return GameBox.Parse<CGameCtnChallenge>(ms);
                     });
 
                     n.Challenge.ContinueWith(x =>
