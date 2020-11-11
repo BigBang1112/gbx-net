@@ -325,7 +325,7 @@ namespace GBX.NET
         {
             int counter = 0;
             
-            foreach (dynamic chunk in Chunks)
+            foreach (Chunk chunk in Chunks)
             {
                 counter += 1;
 
@@ -360,7 +360,7 @@ namespace GBX.NET
                         if (chunk is ISkippableChunk s && !s.Discovered)
                             s.Write(msW);
                         else
-                            chunk.ReadWrite((dynamic)this, rw);
+                            ((IChunk)chunk).ReadWrite(this, rw);
 
                         w.Write(Chunk.Remap(chunk.ID, remap));
 
