@@ -6,7 +6,7 @@
     <Authors>BigBang1112</Authors>
     <Company>BigBang1112</Company>
     <PackageLicenseExpression></PackageLicenseExpression>
-    <Version>0.4.0</Version>
+    <Version>0.5.0</Version>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Copyright />
@@ -14,7 +14,7 @@
     <PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk, x86</PackageTags>
     <RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
     <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
-    <PackageReleaseNotes>Move header values back to Node (thubnails, icons, metadata)</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -60,7 +60,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="SharpZipLib.NETStandard" Version="1.0.7" />
     <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
   </ItemGroup>
