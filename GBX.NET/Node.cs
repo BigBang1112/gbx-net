@@ -603,10 +603,7 @@ namespace GBX.NET
 
         public void DiscoverChunks<T1, T2, T3>() where T1 : ISkippableChunk where T2 : ISkippableChunk where T3 : ISkippableChunk
         {
-            if (Chunks != null)
-                Chunks.Discover<T1, T2, T3>();
-            else
-                ((dynamic)Body).DiscoverChunks<T1, T2, T3>();
+            Chunks.Discover<T1, T2, T3>();
         }
 
         public void DiscoverChunks<T1, T2, T3, T4>()
@@ -641,10 +638,7 @@ namespace GBX.NET
 
         public void DiscoverAllChunks()
         {
-            if (Chunks != null)
-                Chunks.DiscoverAll();
-            else
-                ((dynamic)Body).DiscoverAllChunks();
+            Chunks.DiscoverAll();
         }
 
         public static uint Remap(uint id)

@@ -131,9 +131,7 @@ namespace GBX.NET
         {
             //foreach (var chunk in Header.Result.Chunks.Values)
             //    chunk.Discover();
-            foreach (var chunk in MainNode.Chunks)
-                if(chunk is ISkippableChunk s)
-                    s.Discover();
+            MainNode.DiscoverAllChunks();
         }
 
         public override bool ReadHeader(GameBoxReader reader, GameBoxReadProgress progress)
