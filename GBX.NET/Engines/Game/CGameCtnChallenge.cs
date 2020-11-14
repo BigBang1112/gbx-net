@@ -1297,13 +1297,9 @@ namespace GBX.NET.Engines.Game
             foreach (var item in macroblock.AnchoredObjects)
             {
                 var itemRadians = (float)((int)dir * Math.PI / 2);
-                var centerFromCoord = center * blockSize + blockSize * new Vec3(0.5f, 0f, 0.5f);
-
-                var offsetPos = new Vec3((float)(Math.Cos(itemRadians) * (item.AbsolutePositionInMap.X - centerFromCoord.X) -
-                        Math.Sin(itemRadians) * (item.AbsolutePositionInMap.Z - centerFromCoord.Z) + centerFromCoord.X),
-                        item.AbsolutePositionInMap.Y, // not supported yet
-                        (float)(Math.Sin(itemRadians) * (item.AbsolutePositionInMap.X - centerFromCoord.X) +
-                        Math.Cos(itemRadians) * (item.AbsolutePositionInMap.Z - centerFromCoord.Z) + centerFromCoord.Z));
+                var blockCenterVec = size * blockSize * new Vec3(0.5f, 0f, 0.5f);
+                var offsetPos = AdditionalMath.RotateAroundCenter(item.AbsolutePositionInMap, blockCenterVec, itemRadians);
+                offsetPos -= newMin * blockSize;
 
                 PlaceAnchoredObject(item.ItemModel, offsetPos + coord * blockSize + (0, blockSize.Y, 0), item.PitchYawRoll + (-itemRadians, 0f, 0f));
             }
