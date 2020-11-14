@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET
 {
-    public struct Vec4
+    public struct Vec4 : IVec
     {
         public float X { get; }
         public float Y { get; }
@@ -21,14 +21,14 @@
 
         public static bool operator ==(Vec4 a, Vec4 b) => a.X == b.X && a.Y == b.Y && a.Z == b.Z && a.W == b.W;
         public static bool operator !=(Vec4 a, Vec4 b) => !(a.X == b.X && a.Y == b.Y && a.Z == b.Z && a.W == b.W);
-
         public static Vec4 operator +(Vec4 a, Vec4 b) => new Vec4(a.X + b.X, a.Y + b.Y, a.Z + b.Z, a.W + b.W);
-
         public static Vec4 operator -(Vec4 a) => new Vec4(-a.X, -a.Y, -a.Z, -a.W);
-
         public static Vec4 operator *(Vec4 a, Vec4 b) => new Vec4(a.X * b.X, a.Y * b.Y, a.Z * b.Z, a.W * a.W);
 
         public static implicit operator Vec4((float X, float Y, float Z, float W) v) => new Vec4(v.X, v.Y, v.Z, v.W);
         public static implicit operator (float X, float Y, float Z, float W)(Vec4 v) => (v.X, v.Y, v.Z, v.W);
+
+        public static explicit operator Vec4(Vec2 a) => new Vec4(a.X, a.Y, 0, 0);
+        public static explicit operator Vec4(Vec3 a) => new Vec4(a.X, a.Y, a.Z, 0);
     }
 }

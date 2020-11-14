@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 
 namespace GBX.NET
 {
-    public struct Vec3
+    public struct Vec3 : IVec
     {
         public float X { get; }
         public float Y { get; }
@@ -56,6 +56,8 @@ namespace GBX.NET
 
         public static explicit operator Vec3(Byte3 a) => new Vec3(a.X, a.Y, a.Z);
         public static explicit operator Vec3(Int2 a) => new Vec3(a.X, 0, a.Y);
+        public static explicit operator Vec3(Vec2 a) => new Vec3(a.X, a.Y, 0);
+        public static explicit operator Vec3(Vec4 a) => new Vec3(a.X, a.Y, a.Z);
         public static explicit operator Vec3(float[] a) => a == null ? new Vec3() : a.Length >= 3 ? new Vec3(a[0], a[1], a[2]) : throw new Exception();
     }
 }
