@@ -193,7 +193,7 @@ namespace GBX.NET.Engines.Game
         private string objectiveTextSilver;
         private string objectiveTextBronze;
         private string buildVersion;
-        private Dictionary<string, byte[]> embeds;
+        private Dictionary<string, byte[]> embeds = new Dictionary<string, byte[]>();
         private byte[] originalEmbedZip;
 
         #endregion
@@ -2717,8 +2717,6 @@ namespace GBX.NET.Engines.Game
                 n.originalEmbedZip = r.ReadBytes();
                 if (n.originalEmbedZip.Length > 0)
                 {
-                    n.embeds = new Dictionary<string, byte[]>();
-
                     using (var ms = new MemoryStream(n.originalEmbedZip))
                     using (var zip = new ZipFile(ms))
                     {
@@ -2748,7 +2746,9 @@ namespace GBX.NET.Engines.Game
                     List<Meta> embedded = new List<Meta>();
                     foreach(var embed in n.GetEmbeddedObjects())
                         if(embed is GameBox<CGameItemModel> gbxItem)
-                            embedded.Add(gbxItem.MainNode.Metadata);
+                            embedded.Add(new Meta(Path.GetFileName(gbxItem.FileName), 
+                                gbxItem.MainNode.Metadata.Collection, 
+                                gbxItem.MainNode.Metadata.Author));
                     writer.Write(embedded.ToArray(), x => writer.Write(x));
 
                     using (var zipStream = new MemoryStream())
