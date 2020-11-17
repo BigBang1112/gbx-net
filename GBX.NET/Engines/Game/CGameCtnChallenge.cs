@@ -1132,11 +1132,11 @@ namespace GBX.NET.Engines.Game
         {
             DiscoverChunk<Chunk03043054>();
 
-            using(var zip = new ZipArchive(stream, ZipArchiveMode.Create))
+            using(var zip = new ZipArchive(stream, ZipArchiveMode.Create, true))
             {
                 foreach (var embed in Embeds)
                 {
-                    var entry = zip.CreateEntry(embed.Key);
+                    var entry = zip.CreateEntry(embed.Key.Replace('\\', '/'));
                     using(var s = entry.Open())
                         s.Write(embed.Value, 0, embed.Value.Length);
                 }
@@ -2735,16 +2735,36 @@ namespace GBX.NET.Engines.Game
                 using (var writer = new GameBoxWriter(ms, this))
                 {
                     List<Meta> embedded = new List<Meta>();
-                    foreach(var embed in n.GetEmbeddedObjects())
-                        if(embed is GameBox<CGameItemModel> gbxItem)
-                            embedded.Add(new Meta(Path.GetFileName(gbxItem.FileName), 
-                                gbxItem.MainNode.Metadata.Collection, 
+
+                    foreach (var embed in n.GetEmbeddedObjects())
+                    {
+                        if (embed is GameBox<CGameItemModel> gbxItem)
+                        {
+                            var id = gbxItem.FileName;
+                            var dirs = gbxItem.FileName.Split('/', '\\');
+                            for(var i = 0; i < dirs.Length; i++)
+                            {
+                                var dir = dirs[dirs.Length - 1 - i];
+                                if (dir == "Items"
+                                ||  dir == "Blocks")
+                                {
+                                    id = string.Join("\\", dirs, dirs.Length - i, i);
+                                    break;
+                                }
+                            }
+
+                            embedded.Add(new Meta(id,
+                                gbxItem.MainNode.Metadata.Collection,
                                 gbxItem.MainNode.Metadata.Author));
+                        }
+                    }
+
                     writer.Write(embedded.ToArray(), x => writer.Write(x));
 
                     using (var zipStream = new MemoryStream())
                     {
                         n.ExtractEmbedZip(zipStream);
+                        writer.Write((int)zipStream.Length);
                         writer.Write(zipStream.ToArray(), 0, (int)zipStream.Length);
                     }
 
