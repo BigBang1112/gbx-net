@@ -1,7 +1,7 @@
-﻿using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Text;
 
 namespace GBX.NET.Engines.Game
@@ -65,7 +65,7 @@ namespace GBX.NET.Engines.Game
 #if DEBUG
 
                 using (var ms = new MemoryStream(Data))
-                using (var zlib = new InflaterInputStream(ms))
+                using (var zlib = new DeflateStream(ms, CompressionMode.Decompress))
                 using (var gbxr = new GameBoxReader(zlib))
                 {
                     var classID = gbxr.ReadInt32(); // CSceneVehicleCar

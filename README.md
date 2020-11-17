@@ -33,11 +33,14 @@ The library is also set to **x86 assembly** due to LZO compression problems in x
 ## Dependencies
 
 ### GBX.NET
+
 - 0.0.1+
-  - SharpZipLib.NETStandard
   - System.Drawing.Common
-- 0.1.0 - 0.4.1
-  - Microsoft.CSharp
+
+#### Obsolete
+
+- 0.0.1 - 0.4.1: SharpZipLib.NETStandard
+- 0.1.0 - 0.4.1: Microsoft.CSharp
 
 ### GBX.NET.Json
 - Newtonsoft.Json

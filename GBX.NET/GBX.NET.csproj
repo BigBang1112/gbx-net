@@ -60,7 +60,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="SharpZipLib.NETStandard" Version="1.0.7" />
     <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
   </ItemGroup>
 
