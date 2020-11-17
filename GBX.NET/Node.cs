@@ -46,7 +46,7 @@ namespace GBX.NET
             {
                 if (Names.TryGetValue(ModernID, out string name))
                     return name;
-                return GetType().FullName.Substring("GBX.NET.Engines".Length+1).Replace(".", "::");
+                return GetType().FullName.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::");
             }
         }
 
@@ -57,8 +57,8 @@ namespace GBX.NET
             {
                 var chunkTypes = GetType().GetNestedTypes().Where(x => x.BaseType == typeof(Chunk)).ToArray();
                 var array = new uint[chunkTypes.Length];
-                
-                for(var i = 0; i < array.Length; i++)
+
+                for (var i = 0; i < array.Length; i++)
                 {
                     var att = chunkTypes[i].GetCustomAttribute<ChunkAttribute>();
                     array[i] = att.ClassID + att.ChunkID;
@@ -81,6 +81,17 @@ namespace GBX.NET
         public Node(uint classID)
         {
             ID = classID;
+        }
+
+        public Node(params Chunk[] chunks) : this()
+        {
+            foreach (var chunk in chunks)
+            {
+                GetType()
+                    .GetMethod("CreateChunk")
+                    .MakeGenericMethod(chunk.GetType())
+                    .Invoke(this, new object[0]);
+            }
         }
 
         static Type GetBaseType(Type t)
