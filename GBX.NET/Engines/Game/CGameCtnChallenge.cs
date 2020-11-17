@@ -2,10 +2,7 @@
 using GBX.NET.Engines.GameData;
 using GBX.NET.Engines.Hms;
 using GBX.NET.Engines.Script;
-using GBX.NET.ZIP;
-using ICSharpCode.SharpZipLib.Checksum;
-using ICSharpCode.SharpZipLib.Zip;
-using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,6 +10,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Runtime.Serialization;
@@ -900,9 +898,9 @@ namespace GBX.NET.Engines.Game
             var md5 = MD5.Create();
             HashedPassword = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
 
-            Crc32 crc32 = new Crc32();
-            crc32.Update(Encoding.ASCII.GetBytes("0x" + BitConverter.ToInt16(HashedPassword, 0).ToString() + "???" + MapUid));
-            CRC32 = Convert.ToUInt32(crc32.Value);
+            //Crc32 crc32 = new Crc32();
+            //crc32.Update(Encoding.ASCII.GetBytes("0x" + BitConverter.ToInt16(HashedPassword, 0).ToString() + "???" + MapUid));
+            //CRC32 = Convert.ToUInt32(crc32.Value);
         }
 
         /// <summary>
@@ -1134,21 +1132,14 @@ namespace GBX.NET.Engines.Game
         {
             DiscoverChunk<Chunk03043054>();
 
-            using (var zip = ZipFile.Create(stream))
+            using(var zip = new ZipArchive(stream, ZipArchiveMode.Create))
             {
-                zip.BeginUpdate();
-
-                zip.SetComment("This ZIP file containing embedded items was constructed with GBX.NET library by BigBang1112.");
-
                 foreach (var embed in Embeds)
                 {
-                    var msEmbed = new MemoryStream(embed.Value);
-                    CustomStaticDataSource sds = new CustomStaticDataSource();
-                    sds.SetStream(msEmbed);
-                    zip.Add(sds, embed.Key);
+                    var entry = zip.CreateEntry(embed.Key);
+                    using(var s = entry.Open())
+                        s.Write(embed.Value, 0, embed.Value.Length);
                 }
-
-                zip.CommitUpdate();
             }
         }
 
@@ -2382,8 +2373,8 @@ namespace GBX.NET.Engines.Game
                         n.LightmapCache = Task.Run(() =>
                         {
                             using (var ms = new MemoryStream(data))
-                            using (var zlib = new InflaterInputStream(ms))
-                            using (var gbxr = new GameBoxReader(zlib))
+                            using (var deflate = new DeflateStream(ms, CompressionMode.Decompress))
+                            using (var gbxr = new GameBoxReader(deflate))
                                 return Parse<CHmsLightMapCache>(gbxr);
                         });
                     }
@@ -2718,11 +2709,11 @@ namespace GBX.NET.Engines.Game
                 if (n.originalEmbedZip.Length > 0)
                 {
                     using (var ms = new MemoryStream(n.originalEmbedZip))
-                    using (var zip = new ZipFile(ms))
+                    using (var zip = new ZipArchive(ms))
                     {
-                        foreach (ZipEntry entry in zip)
+                        foreach (ZipArchiveEntry entry in zip.Entries)
                         {
-                            using (var entryStream = zip.GetInputStream(entry))
+                            using (var entryStream = entry.Open())
                             using (var entryDataStream = new MemoryStream())
                             {
                                 entryStream.CopyTo(entryDataStream);
