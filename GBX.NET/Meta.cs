@@ -30,7 +30,7 @@
         public static bool operator ==(Meta a, Meta b) => a?.ID == b?.ID && a?.Collection == b?.Collection && a?.Author == b?.Author;
         public static bool operator !=(Meta a, Meta b) => !(a?.ID == b?.ID && a?.Collection == b?.Collection && a?.Author == b?.Author);
 
-        public static implicit operator Meta((string ID, string Collection, string Author) v) => new Meta(v.ID, v.Collection, v.Author);
-        public static implicit operator (string ID, string Collection, string Author)(Meta v) => (v.ID, v.Collection, v.Author);
+        public static implicit operator Meta((string ID, Collection Collection, string Author) v) => new Meta(v.ID, v.Collection, v.Author);
+        public static implicit operator (string ID, Collection Collection, string Author)(Meta v) => (v.ID, v.Collection, v.Author);
     }
 }
