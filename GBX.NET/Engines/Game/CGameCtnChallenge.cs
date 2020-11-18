@@ -911,6 +911,38 @@ namespace GBX.NET.Engines.Game
             RemoveChunk<Chunk03043029>();
         }
 
+        /// <summary>
+        /// Gets the first available block at this position.
+        /// </summary>
+        /// <param name="pos">Position of the block.</param>
+        /// <returns>Returns the first available block.</returns>
+        public CGameCtnBlock GetBlock(Int3 pos) => Blocks.FirstOrDefault(x => x.Coord == pos);
+
+        /// <summary>
+        /// Gets the first available block at this position.
+        /// </summary>
+        /// <param name="x">X position of the block.</param>
+        /// <param name="y">Y position of the block.</param>
+        /// <param name="z">Z position of the block.</param>
+        /// <returns>Returns the first available block.</returns>
+        public CGameCtnBlock GetBlock(int x, int y, int z) => GetBlock((x, y, z));
+
+        /// <summary>
+        /// Gets all available blocks at this position.
+        /// </summary>
+        /// <param name="pos">Position of the block.</param>
+        /// <returns>Returns the first available block.</returns>
+        public IEnumerable<CGameCtnBlock> GetBlocks(Int3 pos) => Blocks.Where(x => x.Coord == pos);
+
+        /// <summary>
+        /// Gets all available block at this position.
+        /// </summary>
+        /// <param name="x">X position of the block.</param>
+        /// <param name="y">Y position of the block.</param>
+        /// <param name="z">Z position of the block.</param>
+        /// <returns>Returns the first available block.</returns>
+        public IEnumerable<CGameCtnBlock> GetBlocks(int x, int y, int z) => GetBlocks((x, y, z));
+
         [Obsolete]
         public void PlaceItem(Meta itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Byte3 blockUnitCoord, Vec3 offsetPivot, int variant = 0)
         {
@@ -953,7 +985,7 @@ namespace GBX.NET.Engines.Game
         {
             CreateChunk<Chunk0304305F>();
 
-            var block = new CGameCtnBlock(name, Direction.North, (-1, -1, -1), 0)
+            var block = new CGameCtnBlock(name, Direction.North, (-1, -1, -1))
             {
                 IsFree = true,
                 AbsolutePositionInMap = position,
