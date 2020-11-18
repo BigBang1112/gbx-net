@@ -418,7 +418,7 @@ namespace GBX.NET
             }
         }
 
-        public Node NodeRef(Node variable, GameBoxBody body)
+        public Node NodeRef(Node variable, IGameBoxBody body)
         {
             if (Reader != null) return Reader.ReadNodeRef(body);
             else if (Writer != null) Writer.Write(variable, body);
@@ -427,33 +427,33 @@ namespace GBX.NET
 
         public Node NodeRef(Node variable)
         {
-            if (Reader != null) return NodeRef(variable, (GameBoxBody)Reader.Lookbackable);
-            else if (Writer != null) return NodeRef(variable, (GameBoxBody)Writer.Lookbackable);
+            if (Reader != null) return NodeRef(variable, (IGameBoxBody)Reader.Lookbackable);
+            else if (Writer != null) return NodeRef(variable, (IGameBoxBody)Writer.Lookbackable);
             throw new Exception();
         }
 
-        public void NodeRef(UnknownStream stream, GameBoxBody body)
+        public void NodeRef(UnknownStream stream, IGameBoxBody body)
         {
             if (Reader != null)
             {
-                using (var w = new GameBoxWriter(stream, body))
+                using (var w = new GameBoxWriter(stream, (ILookbackable)body))
                     w.Write(Reader.ReadNodeRef(), body);
             }
             else if (Writer != null)
             {
-                using (var r = new GameBoxReader(stream, body))
+                using (var r = new GameBoxReader(stream, (ILookbackable)body))
                     Writer.Write(r.ReadNodeRef(), body);
             }
         }
 
         public void NodeRef(UnknownStream stream)
         {
-            if (Reader != null) NodeRef(stream, (GameBoxBody)Reader.Lookbackable);
-            else if (Writer != null) NodeRef(stream, (GameBoxBody)Writer.Lookbackable);
+            if (Reader != null) NodeRef(stream, (IGameBoxBody)Reader.Lookbackable);
+            else if (Writer != null) NodeRef(stream, (IGameBoxBody)Writer.Lookbackable);
             else throw new Exception();
         }
 
-        public T NodeRef<T>(Node variable, GameBoxBody body) where T : Node
+        public T NodeRef<T>(Node variable, IGameBoxBody body) where T : Node
         {
             if (Reader != null) return Reader.ReadNodeRef<T>(body);
             else if (Writer != null) Writer.Write(variable, body);
@@ -462,8 +462,8 @@ namespace GBX.NET
 
         public T NodeRef<T>(Node variable) where T : Node
         {
-            if (Reader != null) return NodeRef<T>(variable, (GameBoxBody)Reader.Lookbackable);
-            else if (Writer != null) return NodeRef<T>(variable, (GameBoxBody)Writer.Lookbackable);
+            if (Reader != null) return NodeRef<T>(variable, (IGameBoxBody)Reader.Lookbackable);
+            else if (Writer != null) return NodeRef<T>(variable, (IGameBoxBody)Writer.Lookbackable);
             else throw new Exception();
         }
 

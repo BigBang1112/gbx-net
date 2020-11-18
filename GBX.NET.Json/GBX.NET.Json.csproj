@@ -6,7 +6,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>A wrapper for better JSON serialization of GBX, useful for comparing data.</Description>
-    <PackageLicenseFile>License.txt</PackageLicenseFile>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
     <RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
     <PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk, x86</PackageTags>
@@ -28,6 +28,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

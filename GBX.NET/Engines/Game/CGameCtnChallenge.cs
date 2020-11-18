@@ -2,9 +2,7 @@
 using GBX.NET.Engines.GameData;
 using GBX.NET.Engines.Hms;
 using GBX.NET.Engines.Script;
-using ICSharpCode.SharpZipLib.Checksum;
-using ICSharpCode.SharpZipLib.Zip;
-using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,6 +10,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Runtime.Serialization;
@@ -192,9 +191,8 @@ namespace GBX.NET.Engines.Game
         private string objectiveTextSilver;
         private string objectiveTextBronze;
         private string buildVersion;
-        private MemoryStream embedStream;
-        private IReadOnlyCollection<Meta> embeds;
-        private ZipFile embedZip;
+        private Dictionary<string, byte[]> embeds = new Dictionary<string, byte[]>();
+        private byte[] originalEmbedZip;
 
         #endregion
 
@@ -626,6 +624,9 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
+        public CGameCtnBlock[] BakedBlocks { get; set; }
+
+        [NodeMember]
         public CGameCtnMediaClip ClipIntro { get; set; }
 
         [NodeMember]
@@ -793,22 +794,12 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public IReadOnlyCollection<Meta> Embeds
+        public Dictionary<string, byte[]> Embeds
         {
             get
             {
                 DiscoverChunk<Chunk03043054>();
                 return embeds;
-            }
-        }
-
-        [NodeMember]
-        public ZipFile EmbedZip
-        {
-            get
-            {
-                DiscoverChunk<Chunk03043054>();
-                return embedZip;
             }
         }
 
@@ -907,9 +898,9 @@ namespace GBX.NET.Engines.Game
             var md5 = MD5.Create();
             HashedPassword = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
 
-            Crc32 crc32 = new Crc32();
-            crc32.Update(Encoding.ASCII.GetBytes("0x" + BitConverter.ToInt16(HashedPassword, 0).ToString() + "???" + MapUid));
-            CRC32 = Convert.ToUInt32(crc32.Value);
+            //Crc32 crc32 = new Crc32();
+            //crc32.Update(Encoding.ASCII.GetBytes("0x" + BitConverter.ToInt16(HashedPassword, 0).ToString() + "???" + MapUid));
+            //CRC32 = Convert.ToUInt32(crc32.Value);
         }
 
         /// <summary>
@@ -919,6 +910,38 @@ namespace GBX.NET.Engines.Game
         {
             RemoveChunk<Chunk03043029>();
         }
+
+        /// <summary>
+        /// Gets the first available block at this position.
+        /// </summary>
+        /// <param name="pos">Position of the block.</param>
+        /// <returns>Returns the first available block.</returns>
+        public CGameCtnBlock GetBlock(Int3 pos) => Blocks.FirstOrDefault(x => x.Coord == pos);
+
+        /// <summary>
+        /// Gets the first available block at this position.
+        /// </summary>
+        /// <param name="x">X position of the block.</param>
+        /// <param name="y">Y position of the block.</param>
+        /// <param name="z">Z position of the block.</param>
+        /// <returns>Returns the first available block.</returns>
+        public CGameCtnBlock GetBlock(int x, int y, int z) => GetBlock((x, y, z));
+
+        /// <summary>
+        /// Gets all available blocks at this position.
+        /// </summary>
+        /// <param name="pos">Position of the block.</param>
+        /// <returns>Returns the first available block.</returns>
+        public IEnumerable<CGameCtnBlock> GetBlocks(Int3 pos) => Blocks.Where(x => x.Coord == pos);
+
+        /// <summary>
+        /// Gets all available block at this position.
+        /// </summary>
+        /// <param name="x">X position of the block.</param>
+        /// <param name="y">Y position of the block.</param>
+        /// <param name="z">Z position of the block.</param>
+        /// <returns>Returns the first available block.</returns>
+        public IEnumerable<CGameCtnBlock> GetBlocks(int x, int y, int z) => GetBlocks((x, y, z));
 
         [Obsolete]
         public void PlaceItem(Meta itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Byte3 blockUnitCoord, Vec3 offsetPivot, int variant = 0)
@@ -962,7 +985,7 @@ namespace GBX.NET.Engines.Game
         {
             CreateChunk<Chunk0304305F>();
 
-            var block = new CGameCtnBlock(name, Direction.North, (-1, -1, -1), 0)
+            var block = new CGameCtnBlock(name, Direction.North, (-1, -1, -1))
             {
                 IsFree = true,
                 AbsolutePositionInMap = position,
@@ -1120,10 +1143,173 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        public void ExportEmbedZip(string fileName)
+        public IEnumerable<GameBox> GetEmbeddedObjects()
+        {
+            foreach(var embed in Embeds)
+            {
+                using (var ms = new MemoryStream(embed.Value))
+                {
+                    var gbx = GameBox.ParseHeader(ms);
+                    gbx.FileName = embed.Key;
+                    yield return gbx;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Extracts embed ZIP file based on the data in <see cref="Embeds"/>. File metadata is simplified and the timestamp of extraction is used for all files. Stream must have permission to read.
+        /// </summary>
+        /// <param name="stream">Stream to write the ZIP data to.</param>
+        public void ExtractEmbedZip(Stream stream)
+        {
+            using (var zip = new ZipArchive(stream, ZipArchiveMode.Create, true))
+            {
+                foreach (var embed in Embeds)
+                {
+                    var entry = zip.CreateEntry(embed.Key.Replace('\\', '/'));
+                    using (var s = entry.Open())
+                        s.Write(embed.Value, 0, embed.Value.Length);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Extracts embed ZIP file based on the data in <see cref="Embeds"/>. File metadata is simplified and the timestamp of extraction is used for all files.
+        /// </summary>
+        /// <param name="fileName">New file to write the ZIP data to.</param>
+        public void ExtractEmbedZip(string fileName)
+        {
+            using (var fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None))
+                ExtractEmbedZip(fs); // ExtractEmbedZip(Stream stream) required Stream to be readable as well
+        }
+
+        /// <summary>
+        /// Extracts embed ZIP file straight from the parsed map including original timestamps and other file metadata.
+        /// </summary>
+        /// <param name="stream">Stream to write the ZIP data to.</param>
+        /// <returns>True if the map included embed ZIP previously, otherwise false.</returns>
+        public bool ExtractOriginalEmbedZip(Stream stream)
         {
             DiscoverChunk<Chunk03043054>();
-            File.WriteAllBytes(fileName, embedStream.ToArray());
+            if (originalEmbedZip.Length == 0) return false;
+
+            using (var ms = new MemoryStream(originalEmbedZip))
+                ms.CopyTo(stream);
+            return true;
+        }
+
+        /// <summary>
+        /// Extracts embed ZIP file straight from the parsed map including original timestamps and other file metadata.
+        /// </summary>
+        /// <param name="fileName">New file to write the ZIP data to.</param>
+        /// <returns>True if the map included embed ZIP previously, otherwise false.</returns>
+        public bool ExtractOriginalEmbedZip(string fileName)
+        {
+            DiscoverChunk<Chunk03043054>();
+            if (originalEmbedZip.Length == 0) return false;
+
+            File.WriteAllBytes(fileName, originalEmbedZip);
+            return true;
+        }
+
+        /// <inheritdoc cref="ImportFileToEmbed(string, string)"/>
+        /// <param name="keepIcon">Keep the icon (chunk 0x2E001004) of the embedded GBX. Increases total unneeded embed size.</param>
+        public void ImportFileToEmbed(string fileOnDisk, string relativeDirectory, bool keepIcon)
+        {
+            var data = File.ReadAllBytes(fileOnDisk);
+
+            if (!keepIcon)
+            {
+                using (var gbxOutms = new MemoryStream())
+                using (var gbxOutw = new GameBoxWriter(gbxOutms))
+                using (var gbxms = new MemoryStream())
+                using (var gbxr = new GameBoxReader(gbxms))
+                {
+                    gbxms.Write(data, 0, data.Length);
+                    gbxms.Position = 0;
+
+                    if (gbxr.ReadString(3) == "GBX")
+                    {
+                        var basic = gbxr.ReadBytes(6); // gbx basic
+
+                        var classID = gbxr.ReadUInt32();
+
+                        var userDataPos = gbxms.Position;
+
+                        var userData = gbxr.ReadBytes();
+
+                        using (var msNewUserData = new MemoryStream())
+                        using (var wNewUserData = new GameBoxWriter(msNewUserData))
+                        using (var msUserData = new MemoryStream(userData))
+                        using (var rUserData = new GameBoxReader(msUserData))
+                        {
+                            var headers = rUserData.ReadArray(i => (
+                                chunkID: rUserData.ReadUInt32(), 
+                                size: (int)(rUserData.ReadInt32() & ~0x80000000))
+                            );
+
+                            var contains004 = false;
+                            foreach (var (chunkID, size) in headers)
+                            {
+                                if (chunkID == 0x2E001004)
+                                {
+                                    wNewUserData.Write(headers.Length - 1);
+                                    contains004 = true;
+                                }
+                            }
+                            if (!contains004) wNewUserData.Write(headers.Length);
+
+                            foreach (var (chunkID, size) in headers)
+                            {
+                                if (chunkID != 0x2E001004)
+                                {
+                                    wNewUserData.Write(chunkID);
+                                    wNewUserData.Write(size);
+                                }
+                            }
+
+                            foreach(var (chunkID, size) in headers)
+                            {
+                                var chunkData = rUserData.ReadBytes(size);
+
+                                if (chunkID != 0x2E001004)
+                                    wNewUserData.Write(chunkData);
+                            }
+
+                            gbxOutw.Write("GBX", StringLengthPrefix.None);
+                            gbxOutw.Write(basic, 0, basic.Length);
+                            gbxOutw.Write(classID);
+                            gbxOutw.Write((int)msNewUserData.Length);
+                            gbxOutw.Write(msNewUserData.ToArray(), 0, (int)msNewUserData.Length);
+                        }
+
+                        gbxms.CopyTo(gbxOutms);
+                    }
+
+                    data = gbxOutms.ToArray();
+                }
+            }
+
+            Embeds[relativeDirectory + "/" + Path.GetFileName(fileOnDisk)] = data;
+        }
+
+        /// <summary>
+        /// Import a file to embed in the map by keeping the file name but relocating it in the embed ZIP.
+        /// </summary>
+        /// <param name="fileOnDisk">File to embed located on the disk.</param>
+        /// <param name="relativeDirectory">Relative directory where the embed should be represented in the game, usually starts with <c>"Items/..."</c>, <c>"Blocks/..."</c> or <c>"Materials/..."</c>.</param>
+        public void ImportFileToEmbed(string fileOnDisk, string relativeDirectory)
+        {
+            ImportFileToEmbed(fileOnDisk, relativeDirectory, false);
+        }
+
+        /// <summary>
+        /// Embed objects from directories represented like from the user data directory.
+        /// </summary>
+        /// <param name="directoryOnDisk">Directory with folders <c>"Items/..."</c>, <c>"Blocks/..."</c> or <c>"Materials/..."</c>.</param>
+        public void ImportUserDataToEmbed(string directoryOnDisk)
+        {
+            throw new NotImplementedException();
         }
 
         public void PlaceMacroblock(CGameCtnMacroBlockInfo macroblock, Int3 coord, Direction dir)
@@ -1213,13 +1399,9 @@ namespace GBX.NET.Engines.Game
             foreach (var item in macroblock.AnchoredObjects)
             {
                 var itemRadians = (float)((int)dir * Math.PI / 2);
-                var centerFromCoord = center * blockSize + blockSize * new Vec3(0.5f, 0f, 0.5f);
-
-                var offsetPos = new Vec3((float)(Math.Cos(itemRadians) * (item.AbsolutePositionInMap.X - centerFromCoord.X) -
-                        Math.Sin(itemRadians) * (item.AbsolutePositionInMap.Z - centerFromCoord.Z) + centerFromCoord.X),
-                        item.AbsolutePositionInMap.Y, // not supported yet
-                        (float)(Math.Sin(itemRadians) * (item.AbsolutePositionInMap.X - centerFromCoord.X) +
-                        Math.Cos(itemRadians) * (item.AbsolutePositionInMap.Z - centerFromCoord.Z) + centerFromCoord.Z));
+                var blockCenterVec = size * blockSize * new Vec3(0.5f, 0f, 0.5f);
+                var offsetPos = AdditionalMath.RotateAroundCenter(item.AbsolutePositionInMap, blockCenterVec, itemRadians);
+                offsetPos -= newMin * blockSize;
 
                 PlaceAnchoredObject(item.ItemModel, offsetPos + coord * blockSize + (0, blockSize.Y, 0), item.PitchYawRoll + (-itemRadians, 0f, 0f));
             }
@@ -2302,8 +2484,8 @@ namespace GBX.NET.Engines.Game
                         n.LightmapCache = Task.Run(() =>
                         {
                             using (var ms = new MemoryStream(data))
-                            using (var zlib = new InflaterInputStream(ms))
-                            using (var gbxr = new GameBoxReader(zlib))
+                            using (var deflate = new DeflateStream(ms, CompressionMode.Decompress))
+                            using (var gbxr = new GameBoxReader(deflate))
                                 return Parse<CHmsLightMapCache>(gbxr);
                         });
                     }
@@ -2504,7 +2686,31 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03043048, "baked blocks")]
         public class Chunk03043048 : SkippableChunk<CGameCtnChallenge>
         {
-            
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+
+                n.BakedBlocks = rw.Array(n.BakedBlocks, i =>
+                {
+                    return new CGameCtnBlock(
+                        rw.Reader.ReadLookbackString(), 
+                        (Direction)rw.Reader.ReadByte(), 
+                        (Int3)rw.Reader.ReadByte3(),
+                        rw.Reader.ReadInt32()
+                    );
+                },
+                x =>
+                {
+                    rw.Writer.WriteLookbackString(x.Name);
+                    rw.Writer.Write((byte)x.Direction);
+                    rw.Writer.Write((Byte3)x.Coord);
+                    rw.Writer.Write(x.Flags);
+                });
+
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+            }
         }
 
         #endregion
@@ -2598,17 +2804,35 @@ namespace GBX.NET.Engines.Game
             List<string> ILookbackable.LookbackStrings { get; set; } = new List<string>();
             bool ILookbackable.LookbackWritten { get; set; }
 
-            public int Version { get; set; }
+            public int Version { get; set; } = 1;
+            public int U01 { get; set; }
             public string[] Textures { get; set; }
 
             public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
-                unknownW.Write(r.ReadInt32());
+                U01 = r.ReadInt32();
                 var size = r.ReadInt32();
-                n.embeds = r.ReadArray(i => r.ReadMeta());
-                n.embedStream = new MemoryStream(r.ReadBytes());
-                n.embedZip = new ZipFile(n.embedStream);
+
+                var embedded = r.ReadArray(i => r.ReadMeta());
+
+                n.originalEmbedZip = r.ReadBytes();
+                if (n.originalEmbedZip.Length > 0)
+                {
+                    using (var ms = new MemoryStream(n.originalEmbedZip))
+                    using (var zip = new ZipArchive(ms))
+                    {
+                        foreach (ZipArchiveEntry entry in zip.Entries)
+                        {
+                            using (var entryStream = entry.Open())
+                            using (var entryDataStream = new MemoryStream())
+                            {
+                                entryStream.CopyTo(entryDataStream);
+                                n.embeds[entry.Name] = entryDataStream.ToArray();
+                            }
+                        }
+                    }
+                }
 
                 Textures = r.ReadArray(i => r.ReadString());
             }
@@ -2616,14 +2840,46 @@ namespace GBX.NET.Engines.Game
             public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
             {
                 w.Write(Version);
-                w.Write(unknownR.ReadInt32());
+                w.Write(U01);
 
                 using (var ms = new MemoryStream())
-                using (var gbxw = new GameBoxWriter(ms))
+                using (var writer = new GameBoxWriter(ms, this))
                 {
-                    gbxw.Write(n.embeds.ToArray(), x => w.Write(x));
-                    gbxw.Write(n.embedStream.ToArray());
-                    gbxw.Write(Textures, x => w.Write(x));
+                    List<Meta> embedded = new List<Meta>();
+
+                    foreach (var embed in n.GetEmbeddedObjects())
+                    {
+                        if (embed is GameBox<CGameItemModel> gbxItem)
+                        {
+                            var id = gbxItem.FileName;
+                            var dirs = gbxItem.FileName.Split('/', '\\');
+                            for(var i = 0; i < dirs.Length; i++)
+                            {
+                                var dir = dirs[dirs.Length - 1 - i];
+                                if (dir == "Items"
+                                ||  dir == "Blocks")
+                                {
+                                    id = string.Join("\\", dirs, dirs.Length - i, i);
+                                    break;
+                                }
+                            }
+
+                            embedded.Add(new Meta(id,
+                                gbxItem.MainNode.Metadata.Collection,
+                                gbxItem.MainNode.Metadata.Author));
+                        }
+                    }
+
+                    writer.Write(embedded.ToArray(), x => writer.Write(x));
+
+                    using (var zipStream = new MemoryStream())
+                    {
+                        n.ExtractEmbedZip(zipStream);
+                        writer.Write((int)zipStream.Length);
+                        writer.Write(zipStream.ToArray(), 0, (int)zipStream.Length);
+                    }
+
+                    writer.Write(Textures, x => w.Write(x));
 
                     w.Write((int)ms.Length);
                     w.Write(ms.ToArray());
@@ -2794,6 +3050,7 @@ namespace GBX.NET.Engines.Game
             public bool? NeedUnlock => node.NeedUnlock;
             public List<CGameCtnBlock> Blocks => node.Blocks;
             public int NbBlocks => node.NbBlocks;
+            public CGameCtnBlock[] BakedBlocks => node.BakedBlocks;
             public CGameCtnMediaClip ClipIntro => node.ClipIntro;
             public CGameCtnMediaClipGroup ClipGroupInGame => node.ClipGroupInGame;
             public CGameCtnMediaClipGroup ClipGroupEndRace => node.ClipGroupEndRace;
@@ -2812,8 +3069,7 @@ namespace GBX.NET.Engines.Game
             public string ObjectiveTextGold => node.ObjectiveTextGold;
             public string ObjectiveTextSilver => node.ObjectiveTextSilver;
             public string ObjectiveTextBronze => node.ObjectiveTextBronze;
-            public IReadOnlyCollection<Meta> Embeds => node.Embeds;
-            public ZipFile EmbedZip => node.EmbedZip;
+            public Dictionary<string, byte[]> Embeds => node.Embeds;
 
             public DebugView(CGameCtnChallenge node) => this.node = node;
         }

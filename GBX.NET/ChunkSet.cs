@@ -40,25 +40,31 @@ namespace GBX.NET
             if (c != null)
                 return (T)c;
 
-            dynamic chunk;
-            if (typeof(T).BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>))
+            T chunk = (T)Activator.CreateInstance(typeof(T));
+            if (chunk is ISkippableChunk s)
             {
-                chunk = (T)Activator.CreateInstance(typeof(T));
-                chunk.Stream = new MemoryStream(data, 0, data.Length, false);
-                chunk.Node = (dynamic)Node;
+                s.Stream = new MemoryStream(data, 0, data.Length, false);
+                s.Node = Node;
                 if (data == null || data.Length == 0)
-                    chunk.Discovered = true;
+                    s.Discovered = true;
 
                 chunk.OnLoad();
             }
             else
             {
-                chunk = (T)Activator.CreateInstance(typeof(T));
-                chunk.Node = (dynamic)Node;
-                if (data.Length > 0) chunk.FromData(data);
+                ((IChunk)chunk).Node = Node;
+                if (data.Length > 0)
+                {
+                    using (var ms = new MemoryStream(data))
+                    using (var r = new GameBoxReader(ms))
+                    {
+                        var rw = new GameBoxReaderWriter(r);
+                        ((IChunk)chunk).ReadWrite(Node, rw);
+                    }
+                }
             }
 
-            chunk.Part = Node?.Body;
+            chunk.Part = (GameBoxPart)Node?.Body;
 
             if (chunk is ILookbackable l) l.LookbackVersion = 3;
             Add(chunk);

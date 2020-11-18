@@ -1,7 +1,6 @@
 ﻿
 using GBX.NET;
 using GBX.NET.Engines.Game;
-using ICSharpCode.SharpZipLib.Zip;
 using System;
 using System.IO;
 using System.Linq;
@@ -20,7 +19,7 @@ namespace EmbedExtractor
             var gbx = GameBox.Parse(fileName);
 
             if (gbx is GameBox<CGameCtnChallenge> gbxMap)
-                gbxMap.MainNode.ExportEmbedZip(gbxMap.FileName + ".zip");
+                gbxMap.MainNode.ExtractOriginalEmbedZip(gbxMap.FileName + ".zip");
         }
 
         private static void Log_OnLogEvent(string text, ConsoleColor color)

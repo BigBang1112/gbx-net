@@ -14,7 +14,7 @@ namespace GBX.NET
         public static Dictionary<uint, uint> Mappings { get; } // key: older, value: newer
 
         [IgnoreDataMember]
-        public GameBoxBody Body { get; set; }
+        public IGameBoxBody Body { get; set; }
         [IgnoreDataMember]
         public GameBox GBX => Body?.GBX;
 
@@ -46,7 +46,7 @@ namespace GBX.NET
             {
                 if (Names.TryGetValue(ModernID, out string name))
                     return name;
-                return GetType().FullName.Substring("GBX.NET.Engines".Length+1).Replace(".", "::");
+                return GetType().FullName.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::");
             }
         }
 
@@ -57,8 +57,8 @@ namespace GBX.NET
             {
                 var chunkTypes = GetType().GetNestedTypes().Where(x => x.BaseType == typeof(Chunk)).ToArray();
                 var array = new uint[chunkTypes.Length];
-                
-                for(var i = 0; i < array.Length; i++)
+
+                for (var i = 0; i < array.Length; i++)
                 {
                     var att = chunkTypes[i].GetCustomAttribute<ChunkAttribute>();
                     array[i] = att.ClassID + att.ChunkID;
@@ -83,6 +83,17 @@ namespace GBX.NET
             ID = classID;
         }
 
+        public Node(params Chunk[] chunks) : this()
+        {
+            foreach (var chunk in chunks)
+            {
+                GetType()
+                    .GetMethod("CreateChunk")
+                    .MakeGenericMethod(chunk.GetType())
+                    .Invoke(this, new object[0]);
+            }
+        }
+
         static Type GetBaseType(Type t)
         {
             if (t == null)
@@ -103,7 +114,7 @@ namespace GBX.NET
             return array;
         }
 
-        public static T Parse<T>(GameBoxReader r, uint? classID = null, T node = null) where T : Node
+        public static T Parse<T>(GameBoxReader r, uint? classID = null, GameBox<T> gbx = null, GameBoxReadProgress progress = null) where T : Node
         {
             var readNodeStart = DateTime.Now;
 
@@ -117,15 +128,18 @@ namespace GBX.NET
             if (!AvailableClasses.TryGetValue(classID.Value, out Type type))
                 throw new NotImplementedException($"Node ID 0x{classID.Value:X8} is not implemented. ({Names.Where(x => x.Key == Chunk.Remap(classID.Value)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
 
-            if (node == null)
+            T node = null;
+            if (gbx == null)
                 node = (T)Activator.CreateInstance(type);
+            else
+                node = gbx.MainNode;
 
-            GameBoxBody body;
+            IGameBoxBody body;
 
             if (r.Lookbackable is Chunk ch)
-                body = (GameBoxBody)ch.Part;
+                body = (IGameBoxBody)ch.Part;
             else
-                body = (GameBoxBody)r.Lookbackable;
+                body = (IGameBoxBody)r.Lookbackable;
 
             node.Body = body;
 
@@ -162,6 +176,7 @@ namespace GBX.NET
                 }
 
                 Type chunkClass = null;
+                Chunk chunk = null;
 
                 var chunkRemapped = Chunk.Remap(chunkID);
 
@@ -219,7 +234,7 @@ namespace GBX.NET
                         {
                             c = (ISkippableChunk)constructor.Invoke(new object[0]);
                             c.Node = node;
-                            c.Part = body;
+                            c.Part = (GameBoxPart)body;
                             c.Stream = new MemoryStream(chunkData, 0, chunkData.Length, false);
                             if (chunkData == null || chunkData.Length == 0)
                                 c.Discovered = true;
@@ -233,11 +248,14 @@ namespace GBX.NET
 
                         if (chunkClass.GetCustomAttribute<ChunkAttribute>().ProcessSync)
                             c.Discover();
+
+                        chunk = (Chunk)c;
                     }
                     else
                     {
                         Debug.WriteLine("Unknown skippable chunk: " + chunkID.ToString("X"));
-                        chunks.Add((Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkID, chunkData));
+                        chunk = (Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkID, chunkData);
+                        chunks.Add(chunk);
                     }
                 }
 
@@ -251,25 +269,25 @@ namespace GBX.NET
                         var chunkDataSize = r.ReadInt32();
                     }
 
-                    IChunk chunk;
+                    IChunk c;
 
                     var constructor = chunkClass.GetConstructors().First();
                     var constructorParams = constructor.GetParameters();
                     if (constructorParams.Length == 0)
                     {
-                        chunk = (IChunk)constructor.Invoke(new object[0]);
-                        chunk.Node = node;
+                        c = (IChunk)constructor.Invoke(new object[0]);
+                        c.Node = node;
                     }
                     else if (constructorParams.Length == 1)
-                        chunk = (IChunk)constructor.Invoke(new object[] { node });
+                        c = (IChunk)constructor.Invoke(new object[] { node });
                     else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
 
-                    chunk.Part = body;
-                    chunk.OnLoad();
+                    c.Part = (GameBoxPart)body;
+                    c.OnLoad();
 
-                    chunks.Add((Chunk)chunk);
+                    chunks.Add((Chunk)c);
 
-                    r.Chunk = (Chunk)chunk; // Set chunk temporarily for reading
+                    r.Chunk = (Chunk)c; // Set chunk temporarily for reading
 
                     var posBefore = r.BaseStream.Position;
 
@@ -277,17 +295,21 @@ namespace GBX.NET
 
                     try
                     {
-                        chunk.ReadWrite(node, gbxrw);
+                        c.ReadWrite(node, gbxrw);
                     }
                     catch (EndOfStreamException)
                     {
                         Debug.WriteLine($"Unexpected end of the stream while reading the chunk.");
                     }
 
-                    chunk.Progress = (int)(r.BaseStream.Position - posBefore);
+                    c.Progress = (int)(r.BaseStream.Position - posBefore);
 
                     r.Chunk = null;
+
+                    chunk = (Chunk)c;
                 }
+
+                progress?.Invoke(GameBoxReadProgressStage.Body, (float)r.BaseStream.Position / r.BaseStream.Length, gbx, chunk);
 
                 previousChunk = chunkID;
             }
@@ -312,11 +334,18 @@ namespace GBX.NET
 
         public void Write(GameBoxWriter w, ClassIDRemap remap)
         {
+            var writeNodeStart = DateTime.Now;
+
             int counter = 0;
-            
-            foreach (dynamic chunk in Chunks)
+
+            foreach (Chunk chunk in Chunks)
             {
-                counter += 1;
+                counter++;
+
+                if (Body != null && Body.GBX.ClassID.HasValue && Remap(Body.GBX.ClassID.Value) == ID)
+                    Log.Write($"[{ClassName}] 0x{chunk.ID:X8} ({(float)counter / Chunks.Count:0.00%})");
+                else
+                    Log.Write($"~ [{ClassName}] 0x{chunk.ID:X8} ({(float)counter / Chunks.Count:0.00%})");
 
                 ((IChunk)chunk).Node = this;
                 chunk.Unknown.Position = 0;
@@ -349,7 +378,7 @@ namespace GBX.NET
                         if (chunk is ISkippableChunk s && !s.Discovered)
                             s.Write(msW);
                         else
-                            chunk.ReadWrite((dynamic)this, rw);
+                            ((IChunk)chunk).ReadWrite(this, rw);
 
                         w.Write(Chunk.Remap(chunk.ID, remap));
 
@@ -372,6 +401,11 @@ namespace GBX.NET
                     }
                 }
             }
+
+            if (Body != null && Body.GBX.ClassID.HasValue && Remap(Body.GBX.ClassID.Value) == ID)
+                Log.Write($"[{ClassName}] DONE! ({(DateTime.Now - writeNodeStart).TotalMilliseconds}ms)", ConsoleColor.Green);
+            else
+                Log.Write($"~ [{ClassName}] DONE! ({(DateTime.Now - writeNodeStart).TotalMilliseconds}ms)", ConsoleColor.Green);
 
             w.Write(0xFACADE01);
         }
@@ -446,7 +480,20 @@ namespace GBX.NET
 
             startTimestamp = DateTime.Now;
 
-            foreach (var nodeType in Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
+            var assemb = Assembly.GetExecutingAssembly();
+
+            IEnumerable<Type> types;
+            try
+            {
+                types = assemb.GetTypes();
+            }
+            catch (ReflectionTypeLoadException e)
+            {
+                types = e.Types;
+            }
+            types = types.Where(t => t != null);
+
+            foreach (var nodeType in types.Where(x => x.IsClass
                    && x.Namespace != null && x.Namespace.StartsWith("GBX.NET.Engines") && GetBaseType(x) == typeof(Node)))
             {
                 var nodeID = nodeType.GetCustomAttribute<NodeAttribute>().ID;
@@ -504,7 +551,7 @@ namespace GBX.NET
 
                     foreach (var cls in inheritanceClasses)
                     {
-                        var availableInheritanceClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
+                        var availableInheritanceClass = types.Where(x => x.IsClass
                            && x.Namespace.StartsWith("GBX.NET.Engines") && (GetBaseType(x) == typeof(Node))
                            && (x.GetCustomAttribute<NodeAttribute>().ID == cls)).FirstOrDefault();
 
@@ -567,10 +614,7 @@ namespace GBX.NET
 
         public void DiscoverChunks<T1, T2, T3>() where T1 : ISkippableChunk where T2 : ISkippableChunk where T3 : ISkippableChunk
         {
-            if (Chunks != null)
-                Chunks.Discover<T1, T2, T3>();
-            else
-                ((dynamic)Body).DiscoverChunks<T1, T2, T3>();
+            Chunks.Discover<T1, T2, T3>();
         }
 
         public void DiscoverChunks<T1, T2, T3, T4>()
@@ -605,10 +649,7 @@ namespace GBX.NET
 
         public void DiscoverAllChunks()
         {
-            if (Chunks != null)
-                Chunks.DiscoverAll();
-            else
-                ((dynamic)Body).DiscoverAllChunks();
+            Chunks.DiscoverAll();
         }
 
         public static uint Remap(uint id)
@@ -618,11 +659,13 @@ namespace GBX.NET
             return id;
         }
 
+        [Obsolete]
         public static T FromGBX<T>(GameBox<T> loadedGbx) where T : Node
         {
             return loadedGbx.MainNode;
         }
 
+        [Obsolete]
         public static T FromGBX<T>(string gbxFile) where T : Node
         {
             using (var fs = File.OpenRead(gbxFile))
@@ -636,7 +679,7 @@ namespace GBX.NET
                 else
                     gbx = (GameBox)Activator.CreateInstance(type);
 
-                if (gbx.Read(fs))
+                if (gbx.Read(fs, null))
                     return FromGBX((GameBox<T>)gbx);
                 return default;
             }

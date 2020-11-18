@@ -259,6 +259,11 @@ namespace GBX.NET.Engines.Game
 
         }
 
+        public CGameCtnBlock(string name, Direction direction, Int3 coord) : this(name, direction, coord, 0)
+        {
+
+        }
+
         public CGameCtnBlock(string name, Direction direction, Int3 coord, int flags) : this(name, direction, coord, flags, null, null, null)
         {
 
