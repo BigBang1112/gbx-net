@@ -265,7 +265,7 @@ namespace IslandConverter
                         {
                             if (conversion != null)
                             {
-                                var variant = conversion.ElementAtOrDefault(block.Variant);
+                                var variant = conversion.ElementAtOrDefault(block.Variant.Value);
                                 if (variant != null)
                                 {
                                     if (variant.Ground != null)
@@ -509,7 +509,7 @@ namespace IslandConverter
                 {
                     if (conversion != null)
                     {
-                        var variant = conversion.ElementAtOrDefault(block.Variant);
+                        var variant = conversion.ElementAtOrDefault(block.Variant.Value);
 
                         if (variant != null)
                         {
