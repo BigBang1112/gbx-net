@@ -1130,14 +1130,12 @@ namespace GBX.NET.Engines.Game
         /// <param name="stream">Stream to write the ZIP data to.</param>
         public void ExtractEmbedZip(Stream stream)
         {
-            DiscoverChunk<Chunk03043054>();
-
-            using(var zip = new ZipArchive(stream, ZipArchiveMode.Create, true))
+            using (var zip = new ZipArchive(stream, ZipArchiveMode.Create, true))
             {
                 foreach (var embed in Embeds)
                 {
                     var entry = zip.CreateEntry(embed.Key.Replace('\\', '/'));
-                    using(var s = entry.Open())
+                    using (var s = entry.Open())
                         s.Write(embed.Value, 0, embed.Value.Length);
                 }
             }
@@ -1182,14 +1180,95 @@ namespace GBX.NET.Engines.Game
             return true;
         }
 
+        /// <inheritdoc cref="ImportFileToEmbed(string, string)"/>
+        /// <param name="keepIcon">Keep the icon (chunk 0x2E001004) of the embedded GBX. Increases total unneeded embed size.</param>
+        public void ImportFileToEmbed(string fileOnDisk, string relativeDirectory, bool keepIcon)
+        {
+            var data = File.ReadAllBytes(fileOnDisk);
+
+            if (!keepIcon)
+            {
+                using (var gbxOutms = new MemoryStream())
+                using (var gbxOutw = new GameBoxWriter(gbxOutms))
+                using (var gbxms = new MemoryStream())
+                using (var gbxr = new GameBoxReader(gbxms))
+                {
+                    gbxms.Write(data, 0, data.Length);
+                    gbxms.Position = 0;
+
+                    if (gbxr.ReadString(3) == "GBX")
+                    {
+                        var basic = gbxr.ReadBytes(6); // gbx basic
+
+                        var classID = gbxr.ReadUInt32();
+
+                        var userDataPos = gbxms.Position;
+
+                        var userData = gbxr.ReadBytes();
+
+                        using (var msNewUserData = new MemoryStream())
+                        using (var wNewUserData = new GameBoxWriter(msNewUserData))
+                        using (var msUserData = new MemoryStream(userData))
+                        using (var rUserData = new GameBoxReader(msUserData))
+                        {
+                            var headers = rUserData.ReadArray(i => (
+                                chunkID: rUserData.ReadUInt32(), 
+                                size: (int)(rUserData.ReadInt32() & ~0x80000000))
+                            );
+
+                            var contains004 = false;
+                            foreach (var (chunkID, size) in headers)
+                            {
+                                if (chunkID == 0x2E001004)
+                                {
+                                    wNewUserData.Write(headers.Length - 1);
+                                    contains004 = true;
+                                }
+                            }
+                            if (!contains004) wNewUserData.Write(headers.Length);
+
+                            foreach (var (chunkID, size) in headers)
+                            {
+                                if (chunkID != 0x2E001004)
+                                {
+                                    wNewUserData.Write(chunkID);
+                                    wNewUserData.Write(size);
+                                }
+                            }
+
+                            foreach(var (chunkID, size) in headers)
+                            {
+                                var chunkData = rUserData.ReadBytes(size);
+
+                                if (chunkID != 0x2E001004)
+                                    wNewUserData.Write(chunkData);
+                            }
+
+                            gbxOutw.Write("GBX", StringLengthPrefix.None);
+                            gbxOutw.Write(basic, 0, basic.Length);
+                            gbxOutw.Write(classID);
+                            gbxOutw.Write((int)msNewUserData.Length);
+                            gbxOutw.Write(msNewUserData.ToArray(), 0, (int)msNewUserData.Length);
+                        }
+
+                        gbxms.CopyTo(gbxOutms);
+                    }
+
+                    data = gbxOutms.ToArray();
+                }
+            }
+
+            Embeds[relativeDirectory + "/" + Path.GetFileName(fileOnDisk)] = data;
+        }
+
         /// <summary>
         /// Import a file to embed in the map by keeping the file name but relocating it in the embed ZIP.
         /// </summary>
         /// <param name="fileOnDisk">File to embed located on the disk.</param>
-        /// <param name="relativePath">Relative directory where the embed should be represented in the game, usually starts with <c>"Items/..."</c>, <c>"Blocks/..."</c> or <c>"Materials/..."</c>.</param>
+        /// <param name="relativeDirectory">Relative directory where the embed should be represented in the game, usually starts with <c>"Items/..."</c>, <c>"Blocks/..."</c> or <c>"Materials/..."</c>.</param>
         public void ImportFileToEmbed(string fileOnDisk, string relativeDirectory)
         {
-            Embeds[relativeDirectory + "/" + Path.GetFileName(fileOnDisk)] = File.ReadAllBytes(fileOnDisk);
+            ImportFileToEmbed(fileOnDisk, relativeDirectory, false);
         }
 
         /// <summary>
