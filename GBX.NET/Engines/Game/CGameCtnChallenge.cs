@@ -1904,7 +1904,7 @@ namespace GBX.NET.Engines.Game
                 n.MapInfo = rw.Meta(n.MapInfo);
                 n.Size = rw.Int3(n.Size.GetValueOrDefault());
                 Unknown1 = rw.Int32(Unknown1);
-                n.Blocks = rw.Array(n.Blocks.ToArray(),
+                n.Blocks = rw.Array(n.Blocks?.ToArray(),
                     i => rw.Reader.ReadNodeRef<CGameCtnBlock>(),
                     x => rw.Writer.Write(x)).ToList();
                 Unknown2 = rw.Int32(Unknown2);
