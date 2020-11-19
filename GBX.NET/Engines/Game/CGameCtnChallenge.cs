@@ -380,6 +380,9 @@ namespace GBX.NET.Engines.Game
             {
                 DiscoverChunk<Chunk03043042>();
                 authorLogin = value;
+
+                if(MapInfo != null)
+                    MapInfo.Author = value;
             }
         }
 
