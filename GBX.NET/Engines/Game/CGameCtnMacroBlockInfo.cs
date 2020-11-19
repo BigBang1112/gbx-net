@@ -65,11 +65,15 @@ namespace GBX.NET.Engines.Game
                         }
                     }
 
+                    var gsdgsd = r.ReadArray<int>(6);
+
                     if (ver >= 3)
-                        Debug.Assert(r.ReadNodeRef() == null);
+                        if (r.ReadNodeRef() == null)
+                            throw new NotImplementedException();
 
                     if (ver >= 4)
-                        Debug.Assert(r.ReadNodeRef() == null);
+                        if (r.ReadNodeRef() == null)
+                            throw new NotImplementedException();
 
                     var correctFlags = flags & 15;
 
