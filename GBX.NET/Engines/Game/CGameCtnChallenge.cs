@@ -171,6 +171,7 @@ namespace GBX.NET.Engines.Game
         private string mapStyle;
         private string titleID;
         private int authorVersion;
+        private string authorLogin;
         private string authorNickname;
         private string authorZone;
         private string authorExtraInfo;
@@ -330,7 +331,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03043018>();
                 return isLapRace;
             }
-            set => isLapRace = value;
+            set
+            {
+                DiscoverChunk<Chunk03043018>();
+                isLapRace = value;
+            }
         }
 
         /// <summary>
@@ -344,7 +349,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03043018>();
                 return nbLaps;
             }
-            set => nbLaps = value;
+            set
+            {
+                DiscoverChunk<Chunk03043018>();
+                nbLaps = value;
+            }
         }
 
         /// <summary>
@@ -360,7 +369,19 @@ namespace GBX.NET.Engines.Game
         public string MapUid => MapInfo?.ID;
 
         [NodeMember]
-        public string AuthorLogin { get; set; }
+        public string AuthorLogin
+        {
+            get
+            {
+                DiscoverChunk<Chunk03043042>();
+                return authorLogin;
+            }
+            set
+            {
+                DiscoverChunk<Chunk03043042>();
+                authorLogin = value;
+            }
+        }
 
         [NodeMember]
         public string MapName { get; set; }
@@ -382,7 +403,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03043014>();
                 return password;
             }
-            set => password = value;
+            set
+            {
+                DiscoverChunk<Chunk03043014>();
+                password = value;
+            }
         }
 
         [NodeMember]
@@ -486,7 +511,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03043051>();
                 return titleID;
             }
-            set => titleID = value;
+            set
+            {
+                DiscoverChunk<Chunk03043051>();
+                titleID = value;
+            }
         }
 
         [NodeMember]
@@ -497,7 +526,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03043051>();
                 return buildVersion;
             }
-            set => buildVersion = value;
+            set
+            {
+                DiscoverChunk<Chunk03043051>();
+                buildVersion = value;
+            }
         }
 
         [NodeMember]
@@ -511,7 +544,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03043042>();
                 return authorVersion;
             }
-            set => authorVersion = value;
+            set
+            {
+                DiscoverChunk<Chunk03043042>();
+                authorVersion = value;
+            }
         }
 
         [NodeMember]
@@ -576,7 +613,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03043017>();
                 return checkpoints;
             }
-            set => checkpoints = value;
+            set
+            {
+                DiscoverChunk<Chunk03043017>();
+                checkpoints = value;
+            }
         }
 
         [NodeMember]
@@ -602,7 +643,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk0304301C>();
                 return mode;
             }
-            set => mode = value;
+            set
+            {
+                DiscoverChunk<Chunk0304301C>();
+                mode = value;
+            }
         }
 
         [NodeMember]
@@ -649,7 +694,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03043029>();
                 return hashedPassword;
             }
-            set => hashedPassword = value;
+            set
+            {
+                DiscoverChunk<Chunk03043029>();
+                hashedPassword = value;
+            }
         }
 
         [NodeMember]
@@ -660,7 +709,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03043029>();
                 return crc32;
             }
-            set => crc32 = value;
+            set
+            {
+                DiscoverChunk<Chunk03043029>();
+                crc32 = value;
+            }
         }
 
         /// <summary>
@@ -674,7 +727,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03043036>();
                 return thumbnailPosition;
             }
-            set => thumbnailPosition = value;
+            set
+            {
+                DiscoverChunk<Chunk03043036>();
+                thumbnailPosition = value;
+            }
         }
 
         /// <summary>
@@ -688,7 +745,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03043036>();
                 return thumbnailPitchYawRoll;
             }
-            set => thumbnailPitchYawRoll = value;
+            set
+            {
+                DiscoverChunk<Chunk03043036>();
+                thumbnailPitchYawRoll = value;
+            }
         }
 
         /// <summary>
@@ -702,7 +763,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03043036>();
                 return thumbnailFOV;
             }
-            set => thumbnailFOV = value;
+            set
+            {
+                DiscoverChunk<Chunk03043036>();
+                thumbnailFOV = value;
+            }
         }
 
         [NodeMember]
@@ -713,7 +778,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk0304303D>();
                 return lightmapCache;
             }
-            set => lightmapCache = value;
+            set
+            {
+                DiscoverChunk<Chunk0304303D>();
+                lightmapCache = value;
+            }
         }
 
         [NodeMember]
@@ -724,7 +793,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03043040>();
                 return anchoredObjects;
             }
-            set => anchoredObjects = value;
+            set
+            {
+                DiscoverChunk<Chunk03043040>();
+                anchoredObjects = value;
+            }
         }
 
         [NodeMember]
@@ -735,7 +808,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03043043>();
                 return genealogies;
             }
-            set => genealogies = value;
+            set
+            {
+                DiscoverChunk<Chunk03043043>();
+                genealogies = value;
+            }
         }
 
         [NodeMember]
@@ -746,7 +823,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03043044>();
                 return scriptMetadata;
             }
-            set => scriptMetadata = value;
+            set
+            {
+                DiscoverChunk<Chunk03043044>();
+                scriptMetadata = value;
+            }
         }
 
         [NodeMember]
@@ -757,7 +838,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk0304304B>();
                 return objectiveTextAuthor;
             }
-            set => objectiveTextAuthor = value;
+            set
+            {
+                DiscoverChunk<Chunk0304304B>();
+                objectiveTextAuthor = value;
+            }
         }
 
         [NodeMember]
@@ -768,7 +853,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk0304304B>();
                 return objectiveTextGold;
             }
-            set => objectiveTextGold = value;
+            set
+            {
+                DiscoverChunk<Chunk0304304B>();
+                objectiveTextGold = value;
+            }
         }
 
         [NodeMember]
@@ -779,7 +868,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk0304304B>();
                 return objectiveTextSilver;
             }
-            set => objectiveTextSilver = value;
+            set
+            {
+                DiscoverChunk<Chunk0304304B>();
+                objectiveTextSilver = value;
+            }
         }
 
         [NodeMember]
@@ -790,7 +883,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk0304304B>();
                 return objectiveTextBronze;
             }
-            set => objectiveTextBronze = value;
+            set
+            {
+                DiscoverChunk<Chunk0304304B>();
+                objectiveTextBronze = value;
+            }
         }
 
         [NodeMember]
@@ -1588,16 +1685,6 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public byte Version { get; set; }
 
-            /// <summary>
-            /// Number of checkpoints on the map. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="13"/></c>.
-            /// </summary>
-            public int? NbCheckpoints { get; set; }
-
-            /// <summary>
-            /// Number of laps. Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="13"/></c>.
-            /// </summary>
-            public int? NbLaps { get; set; }
-
             public bool U01 { get; set; }
             public byte U02 { get; set; }
             public int U03 { get; set; }
@@ -1632,7 +1719,7 @@ namespace GBX.NET.Engines.Game
 
                         if (Version >= 5)
                         {
-                            n.TMObjective_IsLapRace = rw.Boolean(n.TMObjective_IsLapRace);
+                            n.isLapRace = rw.Boolean(n.isLapRace);
 
                             if (Version == 6)
                                 U03 = rw.Int32(U03);
@@ -1861,11 +1948,11 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                n.AuthorVersion = rw.Int32(n.AuthorVersion);
-                n.AuthorLogin = rw.String(n.AuthorLogin);
-                n.AuthorNickname = rw.String(n.AuthorNickname);
-                n.AuthorZone = rw.String(n.AuthorZone);
-                n.AuthorExtraInfo = rw.String(n.AuthorExtraInfo);
+                n.authorVersion = rw.Int32(n.authorVersion);
+                n.authorLogin = rw.String(n.authorLogin);
+                n.authorNickname = rw.String(n.authorNickname);
+                n.authorZone = rw.String(n.authorZone);
+                n.authorExtraInfo = rw.String(n.authorExtraInfo);
             }
         }
 
@@ -1982,7 +2069,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
-                n.Password = rw.String(n.Password);
+                n.password = rw.String(n.password);
             }
         }
 
@@ -2014,7 +2101,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                n.Checkpoints = rw.Array(n.Checkpoints, i => rw.Reader.ReadInt3(), x => rw.Writer.Write(x));
+                n.checkpoints = rw.Array(n.checkpoints, i => rw.Reader.ReadInt3(), x => rw.Writer.Write(x));
             }
         }
 
@@ -2030,8 +2117,8 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                n.TMObjective_IsLapRace = rw.Boolean(n.TMObjective_IsLapRace);
-                n.TMObjective_NbLaps = rw.Int32(n.TMObjective_NbLaps);
+                n.isLapRace = rw.Boolean(n.isLapRace);
+                n.nbLaps = rw.Int32(n.nbLaps);
             }
         }
 
@@ -2047,7 +2134,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                n.ModPackDesc = rw.FileRef(n.ModPackDesc);
+                n.modPackDesc = rw.FileRef(n.modPackDesc);
             }
         }
 
@@ -2063,7 +2150,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                n.Mode = (PlayMode)rw.Int32((int)n.Mode.GetValueOrDefault());
+                n.mode = (PlayMode)rw.Int32((int)n.mode.GetValueOrDefault());
             }
         }
 
@@ -2384,8 +2471,8 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                n.HashedPassword = rw.Bytes(n.HashedPassword, 16);
-                n.CRC32 = rw.UInt32(n.CRC32.GetValueOrDefault());
+                n.hashedPassword = rw.Bytes(n.hashedPassword, 16);
+                n.crc32 = rw.UInt32(n.crc32.GetValueOrDefault());
             }
         }
 
@@ -2417,9 +2504,9 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                n.ThumbnailPosition = rw.Vec3(n.ThumbnailPosition.GetValueOrDefault());
-                n.ThumbnailPitchYawRoll = rw.Vec3(n.ThumbnailPitchYawRoll.GetValueOrDefault());
-                n.ThumbnailFOV = rw.Single(n.ThumbnailFOV.GetValueOrDefault());
+                n.thumbnailPosition = rw.Vec3(n.thumbnailPosition.GetValueOrDefault());
+                n.thumbnailPitchYawRoll = rw.Vec3(n.thumbnailPitchYawRoll.GetValueOrDefault());
+                n.thumbnailFOV = rw.Single(n.thumbnailFOV.GetValueOrDefault());
 
                 rw.Bytes(Unknown, 31);
             }
@@ -2481,7 +2568,7 @@ namespace GBX.NET.Engines.Game
                         var compressedSize = r.ReadInt32();
                         var data = r.ReadBytes(compressedSize);
 
-                        n.LightmapCache = Task.Run(() =>
+                        n.lightmapCache = Task.Run(() =>
                         {
                             using (var ms = new MemoryStream(data))
                             using (var deflate = new DeflateStream(ms, CompressionMode.Decompress))
@@ -2528,7 +2615,7 @@ namespace GBX.NET.Engines.Game
                     var size = r.ReadInt32();
                     Unknown2 = r.ReadInt32(); // 10
 
-                    n.AnchoredObjects = ParseArray<CGameCtnAnchoredObject>(r).ToList();
+                    n.anchoredObjects = ParseArray<CGameCtnAnchoredObject>(r).ToList();
                     Unknown3 = r.ReadInt32(); // 0
                 }
             }
@@ -2580,22 +2667,22 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                n.AuthorVersion = rw.Int32(n.AuthorVersion);
-                n.AuthorLogin = rw.String(n.AuthorLogin);
-                n.AuthorNickname = rw.String(n.AuthorNickname);
-                n.AuthorZone = rw.String(n.AuthorZone);
-                n.AuthorExtraInfo = rw.String(n.AuthorExtraInfo);
+                n.authorVersion = rw.Int32(n.authorVersion);
+                n.authorLogin = rw.String(n.authorLogin);
+                n.authorNickname = rw.String(n.authorNickname);
+                n.authorZone = rw.String(n.authorZone);
+                n.authorExtraInfo = rw.String(n.authorExtraInfo);
             }
         }
 
         #endregion
 
-        #region 0x043 skippable chunk
+        #region 0x043 skippable chunk (genealogies)
 
         /// <summary>
-        /// CGameCtnChallenge 0x043 skippable chunk
+        /// CGameCtnChallenge 0x043 skippable chunk (generalogies)
         /// </summary>
-        [Chunk(0x03043043)]
+        [Chunk(0x03043043, "generalogies")]
         public class Chunk03043043 : SkippableChunk<CGameCtnChallenge>, ILookbackable
         {
             int? ILookbackable.LookbackVersion { get; set; }
@@ -2611,7 +2698,7 @@ namespace GBX.NET.Engines.Game
                 var sizeOfNodeWithClassID = r.ReadInt32();
                 Data = r.ReadBytes(sizeOfNodeWithClassID);
 
-                n.Genealogies = Task.Run(() =>
+                n.genealogies = Task.Run(() =>
                 {
                     using (var ms = new MemoryStream(Data))
                     using (var r2 = new GameBoxReader(ms, this))
@@ -2627,7 +2714,7 @@ namespace GBX.NET.Engines.Game
                 using (var w2 = new GameBoxWriter(ms))
                 {
 
-                    w2.Write(n.Genealogies.Result, x =>
+                    w2.Write(n.genealogies.Result, x =>
                     {
                         w2.Write(0x0311D000);
                         x.Write(w2);
@@ -2653,7 +2740,7 @@ namespace GBX.NET.Engines.Game
 
             public override void OnLoad()
             {
-                Node.ScriptMetadata = new CScriptTraitsMetadata();
+                Node.scriptMetadata = new CScriptTraitsMetadata();
             }
 
             public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
@@ -2661,7 +2748,7 @@ namespace GBX.NET.Engines.Game
                 Version = r.ReadInt32();
                 var size = r.ReadInt32();
 
-                n.ScriptMetadata.Read(r);
+                n.scriptMetadata.Read(r);
             }
 
             public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
@@ -2671,7 +2758,7 @@ namespace GBX.NET.Engines.Game
                 using (var ms = new MemoryStream())
                 {
                     using (var wm = new GameBoxWriter(ms))
-                        n.ScriptMetadata.Write(wm);
+                        n.scriptMetadata.Write(wm);
 
                     w.Write((int)ms.Length);
                     w.Write(ms.ToArray(), 0, (int)ms.Length);
@@ -2762,10 +2849,10 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                n.ObjectiveTextAuthor = rw.String(n.ObjectiveTextAuthor);
-                n.ObjectiveTextGold = rw.String(n.ObjectiveTextGold);
-                n.ObjectiveTextSilver = rw.String(n.ObjectiveTextSilver);
-                n.ObjectiveTextBronze = rw.String(n.ObjectiveTextBronze);
+                n.objectiveTextAuthor = rw.String(n.objectiveTextAuthor);
+                n.objectiveTextGold = rw.String(n.objectiveTextGold);
+                n.objectiveTextSilver = rw.String(n.objectiveTextSilver);
+                n.objectiveTextBronze = rw.String(n.objectiveTextBronze);
             }
         }
 
@@ -2785,8 +2872,8 @@ namespace GBX.NET.Engines.Game
             {
                 Version = rw.Int32(Version);
 
-                n.TitleID = rw.LookbackString(n.TitleID);
-                n.BuildVersion = rw.String(n.BuildVersion);
+                n.titleID = rw.LookbackString(n.titleID);
+                n.buildVersion = rw.String(n.buildVersion);
             }
         }
 
