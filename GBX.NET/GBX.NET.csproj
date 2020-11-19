@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
     <Description>A completely open source GBX file interaction library for .NET.</Description>
     <Authors>BigBang1112</Authors>
     <Company>BigBang1112</Company>
     <PackageLicenseExpression></PackageLicenseExpression>
-    <Version>0.5.0</Version>
+    <Version>0.5.1</Version>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Copyright />
@@ -14,23 +14,9 @@
     <PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk, x86</PackageTags>
     <RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
     <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
-    <PackageReleaseNotes>Added embed management support</PackageReleaseNotes>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>false</Optimize>
-    <DocumentationFile></DocumentationFile>
-    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
-    <PlatformTarget>x86</PlatformTarget>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DefineConstants>TRACE</DefineConstants>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Optimize>false</Optimize>
-    <PlatformTarget>x86</PlatformTarget>
+    <PackageReleaseNotes>.NET Framework 4.5 support, macroblock fix, only-set member fixes</PackageReleaseNotes>
+	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	<PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
@@ -57,10 +43,6 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -95,6 +77,21 @@
     <None Update="LICENSE.txt">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
+	  <PackageReference Include="System.IO.Compression">
+	  	  <Version>4.3.0</Version>
+	  </PackageReference>
+	  <PackageReference Include="System.ValueTuple">
+		  <Version>4.5.0</Version>
+	  </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+	  <PackageReference Include="System.Drawing.Common">
+		  <Version>4.7.0</Version>
+	  </PackageReference>
   </ItemGroup>
 
 </Project>
