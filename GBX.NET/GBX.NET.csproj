@@ -6,7 +6,7 @@
     <Authors>BigBang1112</Authors>
     <Company>BigBang1112</Company>
     <PackageLicenseExpression></PackageLicenseExpression>
-    <Version>0.5.0</Version>
+    <Version>0.5.1</Version>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Copyright />
@@ -14,7 +14,7 @@
     <PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk, x86</PackageTags>
     <RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
     <PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
-    <PackageReleaseNotes>Added embed management support</PackageReleaseNotes>
+    <PackageReleaseNotes>.NET Framework 4.5 support, macroblock fix, only-set member fixes</PackageReleaseNotes>
 	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	<PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
