@@ -65,8 +65,6 @@ namespace GBX.NET.Engines.Game
                         }
                     }
 
-                    var gsdgsd = r.ReadArray<int>(6);
-
                     if (ver >= 3)
                         if (r.ReadNodeRef() != null)
                             throw new NotImplementedException();
@@ -118,7 +116,8 @@ namespace GBX.NET.Engines.Game
                 var unknown = r.ReadArray(i =>
                 {
                     var version = r.ReadInt32();
-                    Debug.Assert(r.ReadNodeRef() == null);
+                    if(r.ReadNodeRef() != null)
+                        throw new NotImplementedException();
 
                     if(version == 0)
                     {
