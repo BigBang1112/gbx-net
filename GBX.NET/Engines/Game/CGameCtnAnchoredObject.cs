@@ -154,7 +154,7 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x004 chunk
+        #region 0x004 skippable chunk
 
         /// <summary>
         /// CGameCtnAnchoredObject 0x004 skippable chunk

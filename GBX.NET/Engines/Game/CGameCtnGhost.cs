@@ -41,7 +41,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03092000>();
                 return playerModel;
             }
-            set => playerModel = value;
+            set
+            {
+                DiscoverChunk<Chunk03092000>();
+                playerModel = value;
+            }
         }
 
         [NodeMember]
@@ -52,7 +56,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunks<Chunk03092000, Chunk03092017>();
                 return skinPackDescs;
             }
-            set => skinPackDescs = value;
+            set
+            {
+                DiscoverChunks<Chunk03092000, Chunk03092017>();
+                skinPackDescs = value;
+            }
         }
 
         [NodeMember]
@@ -63,7 +71,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunks<Chunk03092000, Chunk03092017>();
                 return ghostNickname;
             }
-            set => ghostNickname = value;
+            set
+            {
+                DiscoverChunks<Chunk03092000, Chunk03092017>();
+                ghostNickname = value;
+            }
         }
 
         [NodeMember]
@@ -74,7 +86,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunks<Chunk03092000, Chunk03092017>();
                 return ghostAvatarName;
             }
-            set => ghostAvatarName = value;
+            set
+            {
+                DiscoverChunks<Chunk03092000, Chunk03092017>();
+                ghostAvatarName = value;
+            }
         }
 
         [NodeMember]
@@ -85,7 +101,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03092000>();
                 return recordingContext;
             }
-            set => recordingContext = value;
+            set
+            {
+                DiscoverChunk<Chunk03092000>();
+                recordingContext = value;
+            }
         }
 
         [NodeMember]
@@ -96,7 +116,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03092005>();
                 return raceTime;
             }
-            set => raceTime = value;
+            set
+            {
+                DiscoverChunk<Chunk03092005>();
+                raceTime = value;
+            }
         }
 
         [NodeMember]
@@ -107,7 +131,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03092008>();
                 return respawns;
             }
-            set => respawns = value;
+            set
+            {
+                DiscoverChunk<Chunk03092008>();
+                respawns = value;
+            }
         }
 
         [NodeMember]
@@ -118,7 +146,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03092009>();
                 return lightTrailColor;
             }
-            set => lightTrailColor = value;
+            set
+            {
+                DiscoverChunk<Chunk03092009>();
+                lightTrailColor = value;
+            }
         }
 
         [NodeMember]
@@ -129,7 +161,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk0309200A>();
                 return stuntScore;
             }
-            set => stuntScore = value;
+            set
+            {
+                DiscoverChunk<Chunk0309200A>();
+                stuntScore = value;
+            }
         }
 
         [NodeMember]
@@ -140,7 +176,11 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk0309200B>();
                 return checkpoints;
             }
-            set => checkpoints = value;
+            set
+            {
+                DiscoverChunk<Chunk0309200B>();
+                checkpoints = value;
+            }
         }
 
         [NodeMember]
@@ -202,9 +242,9 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                n.PlayerModel = rw.Meta(n.playerModel);
+                n.playerModel = rw.Meta(n.playerModel);
                 rw.Vec3(Unknown); // unknown
-                n.SkinPackDescs = rw.Array(n.skinPackDescs,
+                n.skinPackDescs = rw.Array(n.skinPackDescs,
                     i => rw.Reader.ReadFileRef(),
                     x => rw.Writer.Write(x));
                 rw.Int32(Unknown); // unknown
@@ -245,7 +285,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.RaceTime = rw.TimeSpan32(n.RaceTime);
+                n.raceTime = rw.TimeSpan32(n.raceTime);
             }
         }
 
@@ -280,7 +320,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.Respawns = rw.Int32(n.respawns.GetValueOrDefault());
+                n.respawns = rw.Int32(n.respawns.GetValueOrDefault());
             }
         }
 
@@ -296,7 +336,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.LightTrailColor = rw.Vec3(n.lightTrailColor.GetValueOrDefault());
+                n.lightTrailColor = rw.Vec3(n.lightTrailColor.GetValueOrDefault());
             }
         }
 
@@ -312,7 +352,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.StuntScore = rw.Int32(n.stuntScore.GetValueOrDefault());
+                n.stuntScore = rw.Int32(n.stuntScore.GetValueOrDefault());
             }
         }
 
@@ -328,7 +368,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.Checkpoints = rw.Array(n.checkpoints,
+                n.checkpoints = rw.Array(n.checkpoints,
                     i => TimeSpan.FromMilliseconds(rw.Reader.ReadInt64()),
                     x => rw.Writer.Write(Convert.ToInt64(x.TotalMilliseconds)));
             }
@@ -517,9 +557,9 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.SkinPackDescs = rw.Array(n.SkinPackDescs, i => rw.Reader.ReadFileRef(), x => rw.Writer.Write(x));
-                n.GhostNickname = rw.String(n.GhostNickname);
-                n.GhostAvatarName = rw.String(n.GhostAvatarName);
+                n.skinPackDescs = rw.Array(n.skinPackDescs, i => rw.Reader.ReadFileRef(), x => rw.Writer.Write(x));
+                n.ghostNickname = rw.String(n.ghostNickname);
+                n.ghostAvatarName = rw.String(n.ghostAvatarName);
             }
         }
 
