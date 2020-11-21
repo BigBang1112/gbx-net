@@ -295,8 +295,8 @@ namespace GBX.NET.Engines.Game
             Coord = coord;
             Flags = flags;
             Author = author;
-            Skin = skin;
-            WaypointSpecialProperty = waypointSpecialProperty;
+            this.skin = skin;
+            waypoint = waypointSpecialProperty;
         }
 
         #endregion
