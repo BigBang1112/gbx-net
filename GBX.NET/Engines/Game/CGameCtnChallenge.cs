@@ -2686,6 +2686,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x043 skippable chunk (generalogies)
         /// </summary>
         [Chunk(0x03043043, "generalogies")]
+        [IgnoreChunk]
         public class Chunk03043043 : SkippableChunk<CGameCtnChallenge>, ILookbackable
         {
             int? ILookbackable.LookbackVersion { get; set; }
