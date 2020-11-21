@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
-    <Version>0.1.1</Version>
+    <Version>0.1.2</Version>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>A wrapper for better JSON serialization of GBX, useful for comparing data.</Description>
@@ -11,7 +11,7 @@
     <RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
     <PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk, x86</PackageTags>
     <Authors>BigBang1112</Authors>
-    <PackageReleaseNotes>Compatiblity change to .NET Standard 2.0</PackageReleaseNotes>
+    <PackageReleaseNotes>Compatiblity change to .NET Framework 4.5</PackageReleaseNotes>
 	<PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
 
@@ -27,6 +27,12 @@
     <None Include="LICENSE.txt">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
