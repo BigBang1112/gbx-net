@@ -68,6 +68,9 @@ namespace GBX.NET.Engines.Game
                 using (var zlib = new DeflateStream(ms, CompressionMode.Decompress))
                 using (var gbxr = new GameBoxReader(zlib))
                 {
+                    var magic = new byte[2];
+                    ms.Read(magic, 0, 2); // Needed for DeflateStream to work
+
                     var classID = gbxr.ReadInt32(); // CSceneVehicleCar
                     if (classID != -1)
                     {

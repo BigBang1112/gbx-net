@@ -2576,7 +2576,12 @@ namespace GBX.NET.Engines.Game
                             using (var ms = new MemoryStream(data))
                             using (var deflate = new DeflateStream(ms, CompressionMode.Decompress))
                             using (var gbxr = new GameBoxReader(deflate))
+                            {
+                                var magic = new byte[2];
+                                ms.Read(magic, 0, 2); // Needed for DeflateStream to work
+
                                 return Parse<CHmsLightMapCache>(gbxr);
+                            }
                         });
                     }
                 }
