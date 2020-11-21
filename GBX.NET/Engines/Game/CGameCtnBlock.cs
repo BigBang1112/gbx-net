@@ -86,15 +86,18 @@ namespace GBX.NET.Engines.Game
             get => skin;
             set
             {
-                if(value == null)
+                if (Flags != -1)
                 {
-                    Flags &= ~(1 << isSkinnableBit);
-                    skin = null;
-                }
-                else
-                {
-                    Flags |= 1 << isSkinnableBit;
-                    skin = value;
+                    if (value == null)
+                    {
+                        Flags &= ~(1 << isSkinnableBit);
+                        skin = null;
+                    }
+                    else
+                    {
+                        Flags |= 1 << isSkinnableBit;
+                        skin = value;
+                    }
                 }
             }
         }
@@ -108,15 +111,18 @@ namespace GBX.NET.Engines.Game
             get => waypoint;
             set
             {
-                if (value == null)
+                if (Flags != -1)
                 {
-                    Flags &= ~(1 << isWaypointBit);
-                    waypoint = null;
-                }
-                else
-                {
-                    Flags |= 1 << isWaypointBit;
-                    waypoint = value;
+                    if (value == null)
+                    {
+                        Flags &= ~(1 << isWaypointBit);
+                        waypoint = null;
+                    }
+                    else
+                    {
+                        Flags |= 1 << isWaypointBit;
+                        waypoint = value;
+                    }
                 }
             }
         }
@@ -303,6 +309,8 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #endregion
+
         #region Debug view
 
         private class DebugView
@@ -332,13 +340,11 @@ namespace GBX.NET.Engines.Game
 
             public class FlagsInt
             {
-                private readonly int value;
-                public FlagsInt(int flags) => value = flags;
+                private readonly uint value;
+                public FlagsInt(int flags) => value = (uint)flags;
                 public override string ToString() => Convert.ToString(value, 2).PadLeft(32, '0');
             }
         }
-
-        #endregion
 
         #endregion
     }
