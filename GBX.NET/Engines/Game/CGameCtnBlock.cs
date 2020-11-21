@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.Serialization;
 
 namespace GBX.NET.Engines.Game
 {
@@ -265,6 +266,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// A type of block that seperates other blocks in ManiaPlanet. The game can sometimes crash if it isn't provided in the map file, especially in ManiaPlanet (not Trackmania®). One theory is that this block determines what blocks should be undone by Undo.
         /// </summary>
+        [IgnoreDataMember]
         public static CGameCtnBlock Unassigned1 => new CGameCtnBlock("Unassigned1", Direction.East, (-1, -1, -1), -1);
 
         #endregion
