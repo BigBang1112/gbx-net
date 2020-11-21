@@ -2277,7 +2277,7 @@ namespace GBX.NET.Engines.Game
                         n.Blocks[i].IsFree = false;
                 }
 
-                n.Blocks.RemoveAll(x => !x.IsFree && x.Coord == (-1, -1, -1));
+                n.Blocks.RemoveAll(x => !x.IsFree && x.Coord == (-1, -1, -1) && x.Flags != -1);
                 //
 
                 w.Write(n.NbBlocks);

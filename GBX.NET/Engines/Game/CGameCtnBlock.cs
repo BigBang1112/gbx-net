@@ -260,6 +260,17 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Static properties
+
+        /// <summary>
+        /// A type of block that seperates other blocks in ManiaPlanet. The game can sometimes crash if it isn't provided in the map file, especially in ManiaPlanet (not Trackmania®). One theory is that this block determines what blocks should be undone by Undo.
+        /// </summary>
+        public static CGameCtnBlock Unassigned1 => new CGameCtnBlock("Unassigned1", Direction.East, (-1, -1, -1), -1);
+
+        #endregion
+
+        #region Constructors
+
         public CGameCtnBlock()
         {
 
@@ -286,7 +297,13 @@ namespace GBX.NET.Engines.Game
             WaypointSpecialProperty = waypointSpecialProperty;
         }
 
+        #endregion
+
+        #region Methods
+
         public override string ToString() => $"{Name} {Coord}";
+
+        #endregion
 
         #region Chunks
 
