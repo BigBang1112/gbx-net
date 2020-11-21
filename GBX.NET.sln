@@ -7,11 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBX.NET", "GBX.NET\GBX.NET.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IslandConverter", "IslandConverter\IslandConverter.csproj", "{CF0A4D76-FC7F-4274-8B0E-6063F79367F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmbedExtractor", "EmbedExtractor\EmbedExtractor.csproj", "{EE188DBC-F1F2-4711-969A-EB9816FA40F1}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GBX.NET.Json", "GBX.NET.Json\GBX.NET.Json.csproj", "{58913DAC-3F4B-408D-A0E9-3080401431E0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReplayToMap", "ReplayToMap\ReplayToMap.csproj", "{ED337E5D-AC6B-475C-B17C-B33952639FCB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3489EC85-665E-43FC-9D25-A939E498EE1A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{C2F85CC4-B870-4C4D-B681-2E268F8C7F54}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmbedExtractor", "Samples\EmbedExtractor\EmbedExtractor.csproj", "{9D21E271-F3E1-40E5-8441-563EF71C626E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReplayToMap", "Samples\ReplayToMap\ReplayToMap.csproj", "{9E0C3C59-4ECA-4E39-BF67-B0E42B091B33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,21 +31,25 @@ Global
 		{CF0A4D76-FC7F-4274-8B0E-6063F79367F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF0A4D76-FC7F-4274-8B0E-6063F79367F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF0A4D76-FC7F-4274-8B0E-6063F79367F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EE188DBC-F1F2-4711-969A-EB9816FA40F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE188DBC-F1F2-4711-969A-EB9816FA40F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE188DBC-F1F2-4711-969A-EB9816FA40F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EE188DBC-F1F2-4711-969A-EB9816FA40F1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{58913DAC-3F4B-408D-A0E9-3080401431E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{58913DAC-3F4B-408D-A0E9-3080401431E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58913DAC-3F4B-408D-A0E9-3080401431E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58913DAC-3F4B-408D-A0E9-3080401431E0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ED337E5D-AC6B-475C-B17C-B33952639FCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ED337E5D-AC6B-475C-B17C-B33952639FCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ED337E5D-AC6B-475C-B17C-B33952639FCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ED337E5D-AC6B-475C-B17C-B33952639FCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D21E271-F3E1-40E5-8441-563EF71C626E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D21E271-F3E1-40E5-8441-563EF71C626E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D21E271-F3E1-40E5-8441-563EF71C626E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D21E271-F3E1-40E5-8441-563EF71C626E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E0C3C59-4ECA-4E39-BF67-B0E42B091B33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E0C3C59-4ECA-4E39-BF67-B0E42B091B33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E0C3C59-4ECA-4E39-BF67-B0E42B091B33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E0C3C59-4ECA-4E39-BF67-B0E42B091B33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9D21E271-F3E1-40E5-8441-563EF71C626E} = {C2F85CC4-B870-4C4D-B681-2E268F8C7F54}
+		{9E0C3C59-4ECA-4E39-BF67-B0E42B091B33} = {C2F85CC4-B870-4C4D-B681-2E268F8C7F54}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1345F8B9-81BD-4394-B810-43D109A5A33A}

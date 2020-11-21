@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />
+    <ProjectReference Include="..\..\GBX.NET\GBX.NET.csproj" />
   </ItemGroup>
 
 </Project>
