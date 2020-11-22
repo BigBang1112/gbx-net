@@ -46,7 +46,7 @@ namespace GBX.NET.Engines.Game
             set
             {
                 if (BlockInfo == null)
-                    BlockInfo = new Meta(value, "", "");
+                    BlockInfo = new Meta(value);
                 else BlockInfo.ID = value;
             }
         }
