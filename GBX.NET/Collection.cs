@@ -82,7 +82,7 @@ namespace GBX.NET
             return new LookbackString(Name, lookbackable);
         }
 
-        public static implicit operator Collection(string a) => string.IsNullOrEmpty(a) ? new Collection() : new Collection(LookbackString.CollectionIDs.FirstOrDefault(x => x.Value == a).Key);
+        public static implicit operator Collection(string a) => new Collection(a);
         public static implicit operator Collection(LookbackString a)
         {
             if (string.IsNullOrEmpty(a))
