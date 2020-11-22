@@ -150,7 +150,7 @@ namespace IslandConverter
 
                         blocks.Add(new CGameCtnBlock("StadiumPool2", dir, (x, yOffset, z), flag, null, null, null));
                     }
-                    else if (islandBlockDictionary.TryGetValue(new Int3(Convert.ToInt32(Math.Floor(x / 2f) - 1), 0, Convert.ToInt32(Math.Floor(z / 2f) - 1)), out CGameCtnBlock bl))
+                    else if (islandBlockDictionary.TryGetValue(new Int3(Convert.ToInt32(Math.Floor((x+1) / 2f) - 2), 0, Convert.ToInt32(Math.Floor((z+1) / 2f) - 2)), out CGameCtnBlock bl))
                     {
                         blocks.Add(new CGameCtnBlock("RemoveGrass.Block.Gbx_CustomBlock", Direction.North, (x, yOffset, z), 135168, null, null, null));
                     }
@@ -568,7 +568,7 @@ namespace IslandConverter
 
                                     var meta = new Meta("Island\\" + itemModelSplit[0], itemModelSplit.Length > 1 ? new Collection(itemModelSplit[1]) : 10003, itemModelSplit.Length > 2 ? itemModelSplit[2] : "adamkooo");
 
-                                    Vec3 offsetAbsolutePosition = new Vec3(block.Coord.X * 64 + 96, block.Coord.Y * 8 - offsetHeight, block.Coord.Z * 64 + 96);
+                                    Vec3 offsetAbsolutePosition = new Vec3((block.Coord.X+1) * 64 + 96, (block.Coord.Y+1) * 8 - offsetHeight, (block.Coord.Z+1) * 64 + 96);
                                     if (conv.OffsetAbsolutePosition != null)
                                     {
                                         if (conv.OffsetAbsolutePosition.Length >= 3)
