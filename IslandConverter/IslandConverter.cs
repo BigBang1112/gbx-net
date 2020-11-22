@@ -94,56 +94,56 @@ namespace IslandConverter
             return mapRange;
         }
 
-        internal static List<CGameCtnBlock> CreateWaterBlocks(Int3 mapSize, List<CGameCtnBlock> islandBlocks, byte yOffset)
+        internal static List<CGameCtnBlock> CreateWaterBlocks(Int3 mapSize, List<CGameCtnBlock> islandBlocks, int yOffset)
         {
             var islandBlockDictionary = islandBlocks.Where(x => x.Name == "IslandGrass" || x.Name == "IslandHills6").ToDictionary(x => new Int3(x.Coord.X, 0, x.Coord.Z));
 
             var blocks = new List<CGameCtnBlock>();
 
-            for (byte x = 1; x <= mapSize.X; x++)
+            for (byte x = 0; x < mapSize.X; x++)
             {
-                for (byte z = 1; z <= mapSize.Z; z++)
+                for (byte z = 0; z < mapSize.Z; z++)
                 {
-                    if (x == 1 || z == 1 || x == mapSize.X || z == mapSize.Z)
+                    if (x == 0 || z == 0 || x == mapSize.X || z == mapSize.Z)
                     {
                         var flag = 135168;
                         var dir = Direction.North;
 
-                        if (x == 1 && z == 1)
+                        if (x == 0 && z == 0)
                         {
                             flag = 135177;
                             dir = Direction.East;
                         }
-                        else if (x == 1 && z == mapSize.Z)
+                        else if (x == 0 && z == mapSize.Z - 1)
                         {
                             flag = 135177;
                         }
-                        else if (x == mapSize.X && z == 1)
+                        else if (x == mapSize.X && z == 0)
                         {
                             flag = 135177;
                             dir = Direction.South;
                         }
-                        else if (x == mapSize.X && z == mapSize.Z)
+                        else if (x == mapSize.X - 1 && z == mapSize.Z - 1)
                         {
                             flag = 135177;
                             dir = Direction.West;
                         }
-                        else if (x == 1)
+                        else if (x == 0)
                         {
                             flag = 135173;
                             dir = Direction.East;
                         }
-                        else if (z == 1)
+                        else if (z == 0)
                         {
                             flag = 135173;
                             dir = Direction.South;
                         }
-                        else if (x == mapSize.X)
+                        else if (x == mapSize.X - 1)
                         {
                             flag = 135173;
                             dir = Direction.West;
                         }
-                        else if (z == mapSize.Z)
+                        else if (z == mapSize.Z - 1)
                         {
                             flag = 135173;
                         }
@@ -350,7 +350,7 @@ namespace IslandConverter
 
                     Log.Write("Adding the pool...");
 
-                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), blocks.ToList(), 1);
+                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), blocks.ToList(), -1);
 
                     map.Size = (
                         map.Size.GetValueOrDefault().X + 2,
@@ -373,14 +373,14 @@ namespace IslandConverter
 
                     Log.Write("Adding the pool...");
 
-                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), blocks.ToList(), 0);
+                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), blocks.ToList(), -1);
 
                     break;
                 case MapSize.X45WithSmallBorder:
                     Log.Write("Adding the pool...");
 
                     map.Size = (92, 255, 92);
-                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), map.Blocks, 1);
+                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), map.Blocks, 0);
 
                     map.Size = (
                         map.Size.GetValueOrDefault().X + 2,
