@@ -485,11 +485,11 @@ namespace IslandConverter
             {
                 case MapSize.X32WithBigBorder:
                     Log.Write("Placing the background item...");
-                    gbx.MainNode.PlaceAnchoredObject(("Island\\8Terrain\\7BackGround\\Background.Item.gbx", "10003", "adamkooo"), new Vec3(), new Vec3(), new Vec3(1024, 9, 1024));
+                    gbx.MainNode.PlaceAnchoredObject(("Island\\8Terrain\\7BackGround\\Background.Item.gbx", 10003, "adamkooo"), new Vec3(), new Vec3(), new Vec3(1024, 9, 1024));
                     break;
                 case MapSize.X45WithSmallBorder:
                     Log.Write("Placing the background item...");
-                    gbx.MainNode.PlaceAnchoredObject(("Island\\8Terrain\\6BigBackground\\Background_45x45.Item.gbx", "10003", "adamkooo"), new Vec3(), new Vec3(), new Vec3(1504, 17, 1504));
+                    gbx.MainNode.PlaceAnchoredObject(("Island\\8Terrain\\6BigBackground\\Background_45x45.Item.gbx", 10003, "adamkooo"), new Vec3(), new Vec3(), new Vec3(1504, 17, 1504));
                     break;
                 default:
                     Log.Write($"Island background is not supported for {size}.", ConsoleColor.Yellow);
@@ -566,7 +566,7 @@ namespace IslandConverter
                                     var itemModel = conv.ItemModel[modelToChoose];
                                     var itemModelSplit = itemModel.Split(' ');
 
-                                    var meta = new Meta("Island\\" + itemModelSplit[0], itemModelSplit.Length > 1 ? itemModelSplit[1] : "10003", itemModelSplit.Length > 2 ? itemModelSplit[2] : "adamkooo");
+                                    var meta = new Meta("Island\\" + itemModelSplit[0], itemModelSplit.Length > 1 ? new Collection(itemModelSplit[1]) : 10003, itemModelSplit.Length > 2 ? itemModelSplit[2] : "adamkooo");
 
                                     Vec3 offsetAbsolutePosition = new Vec3(block.Coord.X * 64 + 96, block.Coord.Y * 8 - offsetHeight, block.Coord.Z * 64 + 96);
                                     if (conv.OffsetAbsolutePosition != null)
