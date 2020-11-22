@@ -666,10 +666,7 @@ namespace GBX.NET.Engines.Game
         public List<CGameCtnBlock> Blocks { get; set; }
 
         [NodeMember]
-        public int NbBlocks
-        {
-            get => Blocks.Where(x => x.Flags != -1).Count();
-        }
+        public int NbBlocks => Blocks?.Where(x => x.Flags != -1).Count() ?? 0;
 
         [NodeMember]
         public CGameCtnBlock[] BakedBlocks { get; set; }
@@ -3152,7 +3149,7 @@ namespace GBX.NET.Engines.Game
             public CGameCtnMediaClipGroup ClipGroupEndRace => node.ClipGroupEndRace;
             public CGameCtnMediaClip ClipAmbiance => node.ClipAmbiance;
             public FileRef CustomMusicPackDesc => node.CustomMusicPackDesc;
-            public string HashedPassword => Convert.ToBase64String(node.HashedPassword);
+            public string HashedPassword => Convert.ToBase64String(node.HashedPassword ?? new byte[0]);
             public uint? CRC32 => node.CRC32;
             public Vec3? ThumbnailPosition => node.ThumbnailPosition;
             public Vec3? ThumbnailPitchYawRoll => node.ThumbnailPitchYawRoll;
