@@ -16,15 +16,6 @@ namespace GBX.NET
     }
 
     /// <summary>
-    /// Delegate used for reporting GBX read progress.
-    /// </summary>
-    /// <param name="stage">Reading stage of GBX.</param>
-    /// <param name="progress">Progress in percentage of each stage.</param>
-    /// <param name="gbx">Gradually updated GBX object.</param>
-    /// <param name="chunk">Chunk that has been currently read. This parameter is null in <see cref="GameBoxReadProgressStage.Header"/> and <see cref="GameBoxReadProgressStage.RefTable"/> stages.</param>
-    public delegate void GameBoxReadProgress(GameBoxReadProgressStage stage, float progress, GameBox gbx, Chunk chunk = null);
-
-    /// <summary>
     /// A known serialized GameBox node with additional attributes. This class can represent deserialized .Gbx file.
     /// </summary>
     /// <typeparam name="T">The main node of the GBX.</typeparam>
@@ -134,12 +125,12 @@ namespace GBX.NET
             MainNode.DiscoverAllChunks();
         }
 
-        public override bool ReadHeader(GameBoxReader reader, GameBoxReadProgress progress)
+        public override bool ReadHeader(GameBoxReader reader, IProgress<GameBoxReadProgress> progress)
         {
             var parameters = new GameBoxHeaderParameters(this);
             if (!parameters.Read(reader)) return false; // Should already throw an exception
 
-            progress?.Invoke(GameBoxReadProgressStage.Header, 1, this);
+            progress?.Report(new GameBoxReadProgress(GameBoxReadProgressStage.Header, 1, this));
 
             MainNode = Activator.CreateInstance<T>();
 
@@ -160,7 +151,7 @@ namespace GBX.NET
             return true;
         }
 
-        protected override bool Read(GameBoxReader reader, GameBoxReadProgress progress)
+        protected override bool Read(GameBoxReader reader, IProgress<GameBoxReadProgress> progress)
         {
             // Header
 
@@ -291,12 +282,12 @@ namespace GBX.NET
 
         public string FileName { get; set; }
 
-        public virtual bool ReadHeader(GameBoxReader reader, GameBoxReadProgress progress)
+        public virtual bool ReadHeader(GameBoxReader reader, IProgress<GameBoxReadProgress> progress)
         {
             var parameters = new GameBoxHeaderParameters(this);
             if (!parameters.Read(reader)) return false;
 
-            progress?.Invoke(GameBoxReadProgressStage.Header, 1, this);
+            progress?.Report(new GameBoxReadProgress(GameBoxReadProgressStage.Header, 1, this));
 
             Log.Write("Working out the header chunks...");
 
@@ -311,12 +302,12 @@ namespace GBX.NET
                 Log.Write(e.ToString(), ConsoleColor.Red);
             }
 
-            progress?.Invoke(GameBoxReadProgressStage.HeaderUserData, 1, this);
+            progress?.Report(new GameBoxReadProgress(GameBoxReadProgressStage.HeaderUserData, 1, this));
 
             return true;
         }
 
-        protected bool ReadRefTable(GameBoxReader reader, GameBoxReadProgress progress)
+        protected bool ReadRefTable(GameBoxReader reader, IProgress<GameBoxReadProgress> progress)
         {
             var numExternalNodes = reader.ReadInt32();
 
@@ -377,17 +368,17 @@ namespace GBX.NET
             else
                 Log.Write("No external nodes found, reference table completed.", ConsoleColor.Green);
 
-            progress?.Invoke(GameBoxReadProgressStage.RefTable, 1, this);
+            progress?.Report(new GameBoxReadProgress(GameBoxReadProgressStage.RefTable, 1, this));
 
             return true;
         }
 
-        protected virtual bool Read(GameBoxReader reader, GameBoxReadProgress progress)
+        protected virtual bool Read(GameBoxReader reader, IProgress<GameBoxReadProgress> progress)
         {
             return ReadHeader(reader, progress) && ReadRefTable(reader, progress);
         }
 
-        public bool Read(Stream stream, GameBoxReadProgress progress)
+        public bool Read(Stream stream, IProgress<GameBoxReadProgress> progress)
         {
             using (GameBoxReader reader = new GameBoxReader(stream))
                 return Read(reader, progress);
@@ -423,7 +414,7 @@ namespace GBX.NET
             return Load(fileName);
         }
 
-        public static GameBox ParseHeader(string fileName, GameBoxReadProgress progress = null)
+        public static GameBox ParseHeader(string fileName, IProgress<GameBoxReadProgress> progress = null)
         {
             using (var fs = File.OpenRead(fileName))
             {
@@ -433,13 +424,13 @@ namespace GBX.NET
             }
         }
 
-        public static GameBox ParseHeader(Stream stream, GameBoxReadProgress progress = null)
+        public static GameBox ParseHeader(Stream stream, IProgress<GameBoxReadProgress> progress = null)
         {
             using (var r = new GameBoxReader(stream))
                 return ParseHeader(r, progress);
         }
 
-        public static GameBox ParseHeader(GameBoxReader reader, GameBoxReadProgress progress = null)
+        public static GameBox ParseHeader(GameBoxReader reader, IProgress<GameBoxReadProgress> progress = null)
         {
             var classID = ReadClassID(reader);
 
@@ -478,7 +469,7 @@ namespace GBX.NET
             return null;
         }
 
-        public static GameBox<T> ParseHeader<T>(Stream stream, GameBoxReadProgress progress = null) where T : Node
+        public static GameBox<T> ParseHeader<T>(Stream stream, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
             GameBox<T> gbx = new GameBox<T>();
 
@@ -489,7 +480,7 @@ namespace GBX.NET
             return null;
         }
 
-        public static GameBox<T> ParseHeader<T>(string fileName, GameBoxReadProgress progress = null) where T : Node
+        public static GameBox<T> ParseHeader<T>(string fileName, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
             using (var fs = File.OpenRead(fileName))
             {
@@ -506,7 +497,7 @@ namespace GBX.NET
         /// <param name="stream">Stream to read GBX format from.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with specified main node type.</returns>
-        public static GameBox<T> Parse<T>(Stream stream, GameBoxReadProgress progress = null) where T : Node
+        public static GameBox<T> Parse<T>(Stream stream, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
             GameBox<T> gbx = new GameBox<T>();
             if (gbx.Read(stream, progress))
@@ -526,7 +517,7 @@ namespace GBX.NET
         /// var gbx = GameBox.Parse&lt;CGameCtnChallenge&gt;("MyMap.Map.Gbx");
         /// // Node data is available in gbx.MainNode
         /// </example>
-        public static GameBox<T> Parse<T>(string fileName, GameBoxReadProgress progress = null) where T : Node
+        public static GameBox<T> Parse<T>(string fileName, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
             using (var fs = File.OpenRead(fileName))
             {
@@ -591,7 +582,7 @@ namespace GBX.NET
         ///     // Node data is available in gbxReplay.MainNode
         /// }
         /// </example>
-        public static GameBox Parse(string fileName, GameBoxReadProgress progress = null)
+        public static GameBox Parse(string fileName, IProgress<GameBoxReadProgress> progress = null)
         {
             using (var fs = File.OpenRead(fileName))
             {
@@ -609,7 +600,7 @@ namespace GBX.NET
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <exception cref="NotSupportedException"/>
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
-        public static GameBox Parse(Stream stream, GameBoxReadProgress progress = null)
+        public static GameBox Parse(Stream stream, IProgress<GameBoxReadProgress> progress = null)
         {
             using (var r = new GameBoxReader(stream))
             {

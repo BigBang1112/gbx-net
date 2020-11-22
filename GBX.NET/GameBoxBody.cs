@@ -28,7 +28,7 @@ namespace GBX.NET
             
         }
 
-        public void Read(byte[] data, GameBoxReadProgress progress = null)
+        public void Read(byte[] data, IProgress<GameBoxReadProgress> progress = null)
         {
             using (var s = new MemoryStream(data))
             using (var gbxr = new GameBoxReader(s, this))
@@ -43,7 +43,7 @@ namespace GBX.NET
             }
         }
 
-        public void Read(byte[] data, int uncompressedSize, GameBoxReadProgress progress = null)
+        public void Read(byte[] data, int uncompressedSize, IProgress<GameBoxReadProgress> progress = null)
         {
             byte[] buffer = new byte[uncompressedSize];
             MiniLZO.Decompress(data, buffer);

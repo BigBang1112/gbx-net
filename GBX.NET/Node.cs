@@ -114,7 +114,7 @@ namespace GBX.NET
             return array;
         }
 
-        public static T Parse<T>(GameBoxReader r, uint? classID = null, GameBox<T> gbx = null, GameBoxReadProgress progress = null) where T : Node
+        public static T Parse<T>(GameBoxReader r, uint? classID = null, GameBox<T> gbx = null, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
             var readNodeStart = DateTime.Now;
 
@@ -309,7 +309,7 @@ namespace GBX.NET
                     chunk = (Chunk)c;
                 }
 
-                progress?.Invoke(GameBoxReadProgressStage.Body, (float)r.BaseStream.Position / r.BaseStream.Length, gbx, chunk);
+                progress?.Report(new GameBoxReadProgress(GameBoxReadProgressStage.Body, (float)r.BaseStream.Position / r.BaseStream.Length, gbx, chunk));
 
                 previousChunk = chunkID;
             }

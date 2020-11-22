@@ -22,7 +22,7 @@ namespace GBX.NET
             
         }
 
-        public void Read(GameBoxReadProgress progress)
+        public void Read(IProgress<GameBoxReadProgress> progress)
         {
             if (GBX.Version >= 3)
             {
@@ -111,7 +111,11 @@ namespace GBX.NET
 
                                 Chunks.Add(chunk);
 
-                                progress?.Invoke(GameBoxReadProgressStage.HeaderUserData, r.BaseStream.Position / (float)r.BaseStream.Length, GBX, chunk);
+                                progress?.Report(new GameBoxReadProgress(
+                                    GameBoxReadProgressStage.HeaderUserData, 
+                                    r.BaseStream.Position / (float)r.BaseStream.Length, 
+                                    GBX, 
+                                    chunk));
                             }
                         }
                     }
