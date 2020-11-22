@@ -485,11 +485,11 @@ namespace IslandConverter
             {
                 case MapSize.X32WithBigBorder:
                     Log.Write("Placing the background item...");
-                    gbx.MainNode.PlaceItem(("Island\\8Terrain\\7BackGround\\Background.Item.gbx", "10003", "adamkooo"), new Vec3(), new Vec3(), new Byte3(), new Vec3(1024, 9, 1024));
+                    gbx.MainNode.PlaceAnchoredObject(("Island\\8Terrain\\7BackGround\\Background.Item.gbx", "10003", "adamkooo"), new Vec3(), new Vec3(), new Vec3(1024, 9, 1024));
                     break;
                 case MapSize.X45WithSmallBorder:
                     Log.Write("Placing the background item...");
-                    gbx.MainNode.PlaceItem(("Island\\8Terrain\\6BigBackground\\Background_45x45.Item.gbx", "10003", "adamkooo"), new Vec3(), new Vec3(), new Byte3(), new Vec3(1504, 17, 1504));
+                    gbx.MainNode.PlaceAnchoredObject(("Island\\8Terrain\\6BigBackground\\Background_45x45.Item.gbx", "10003", "adamkooo"), new Vec3(), new Vec3(), new Vec3(1504, 17, 1504));
                     break;
                 default:
                     Log.Write($"Island background is not supported for {size}.", ConsoleColor.Yellow);
@@ -638,7 +638,7 @@ namespace IslandConverter
                                             throw new FormatException($"Wrong format of OffsetPitchYawRoll: {block.Name} -> index {block.Variant} -> [{string.Join(", ", conv.OffsetPitchYawRoll)}]");
                                     }
 
-                                    gbx.MainNode.PlaceItem(meta, offsetAbsolutePosition, offsetPitchYawRoll, (0, 0, 0), offsetPivot);
+                                    gbx.MainNode.PlaceAnchoredObject(meta, offsetAbsolutePosition, offsetPitchYawRoll, offsetPivot);
 
                                     Vec3 skinPosOffset = default;
                                     if (conv.SkinPositionOffset != null)
@@ -650,9 +650,9 @@ namespace IslandConverter
                                         if (skinInfo.TryGetValue(conv.SkinSignSet, out Dictionary<string, string> skinDic))
                                         {
                                             if (skinDic.TryGetValue(block.Skin.PackDesc.FilePath, out string itemFile))
-                                                gbx.MainNode.PlaceItem(new Meta("Island\\" + itemFile, "10003", "adamkooo"),
+                                                gbx.MainNode.PlaceAnchoredObject(new Meta("Island\\" + itemFile, "10003", "adamkooo"),
                                                     offsetAbsolutePosition + skinPosOffset,
-                                                    offsetPitchYawRoll + new Vec3(-conv.SkinDirectionOffset % 4 * 90f / 180 * (float)Math.PI, 0, 0), (0, 0, 0), offsetPivot);
+                                                    offsetPitchYawRoll + new Vec3(-conv.SkinDirectionOffset % 4 * 90f / 180 * (float)Math.PI, 0, 0), offsetPivot);
                                             else
                                             {
                                                 Log.Write($"Could not find item alternative for {block.Skin.PackDesc.FilePath}. Default sign will be used instead.", ConsoleColor.DarkYellow);
