@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Numerics;
 using System.Text;
 
@@ -179,9 +180,7 @@ namespace GBX.NET.Engines.Game
                     var fov = r.ReadSingle();
                     var zIndex = r.ReadSingle();
 
-                    var a = r.ReadArray<int>(7);
-                    var b = r.ReadArray<float>(5);
-                    var c = r.ReadArray<int>(2);
+                    var unknown = r.ReadArray<int>(14);
 
                     return new Key()
                     {
@@ -189,8 +188,25 @@ namespace GBX.NET.Engines.Game
                         Position = position,
                         PitchYawRoll = pitchYawRoll,
                         FOV = fov,
-                        ZIndex = zIndex
+                        ZIndex = zIndex,
+                        Unknown = unknown.Cast<object>().ToArray()
                     };
+                });
+            }
+
+            public override void Write(CGameCtnMediaBlockCameraPath n, GameBoxWriter w, GameBoxReader unknownR)
+            {
+                w.Write(Version);
+
+                w.Write(n.Keys, x =>
+                {
+                    w.Write(x.Time);
+                    w.Write(x.Position);
+                    w.Write(x.PitchYawRoll);
+                    w.Write(x.FOV);
+                    w.Write(x.ZIndex.GetValueOrDefault());
+                    for(var i = 0; i < 14; i++)
+                        w.Write((int)x.Unknown[i]);
                 });
             }
         }
