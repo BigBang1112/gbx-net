@@ -366,7 +366,15 @@ namespace GBX.NET.Engines.Game
         public Meta MapInfo { get; set; }
 
         [NodeMember]
-        public string MapUid => MapInfo?.ID;
+        public string MapUid
+        {
+            get => MapInfo?.ID;
+            set
+            {
+                if (MapInfo != null)
+                    MapInfo.ID = value;
+            }
+        }
 
         [NodeMember]
         public string AuthorLogin
@@ -381,7 +389,7 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03043042>();
                 authorLogin = value;
 
-                if(MapInfo != null)
+                if (MapInfo != null)
                     MapInfo.Author = value;
             }
         }
@@ -1500,7 +1508,12 @@ namespace GBX.NET.Engines.Game
                 var offsetPos = AdditionalMath.RotateAroundCenter(item.AbsolutePositionInMap, blockCenterVec, itemRadians);
                 offsetPos -= newMin * blockSize;
 
-                PlaceAnchoredObject(item.ItemModel, offsetPos + coord * blockSize + (0, blockSize.Y, 0), item.PitchYawRoll + (-itemRadians, 0f, 0f));
+                Int3 offsetCollection = (0, blockSize.Y, 0);
+
+                if (GetChunk<Chunk0304301F>().Version <= 1)
+                    offsetCollection += (32, 0, 32);
+
+                PlaceAnchoredObject(item.ItemModel, offsetPos + coord * blockSize + offsetCollection, item.PitchYawRoll + (-itemRadians, 0f, 0f));
             }
 
             foreach(var freeBlock in macroblock.Blocks.Where(x => x.IsFree))
