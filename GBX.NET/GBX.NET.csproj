@@ -6,7 +6,7 @@
 		<Authors>BigBang1112</Authors>
 		<Company>BigBang1112</Company>
 		<PackageLicenseExpression></PackageLicenseExpression>
-		<Version>0.5.3</Version>
+		<Version>0.5.4</Version>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Copyright />
@@ -14,7 +14,7 @@
 		<PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk, x86</PackageTags>
 		<RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
-		<PackageReleaseNotes>Fix Unassigned1 writing, fix deflate stream reading</PackageReleaseNotes>
+		<PackageReleaseNotes>Fix macroblock item placement</PackageReleaseNotes>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<PlatformTarget>x86</PlatformTarget>
 	</PropertyGroup>
