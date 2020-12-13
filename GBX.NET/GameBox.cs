@@ -132,6 +132,13 @@ namespace GBX.NET
 
             progress?.Report(new GameBoxReadProgress(GameBoxReadProgressStage.Header, 1, this));
 
+            if (ClassID != typeof(T).GetCustomAttribute<NodeAttribute>().ID)
+            {
+                if (!Node.Names.TryGetValue(ClassID.Value, out string name))
+                    name = "unknown class";
+                throw new InvalidCastException($"GBX with ID 0x{ClassID:X8} ({name}) can't be casted to GameBox<{typeof(T).Name}>.");
+            }
+
             MainNode = Activator.CreateInstance<T>();
 
             Log.Write("Working out the header chunks...");
