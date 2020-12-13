@@ -382,6 +382,10 @@ namespace GBX.NET.Engines.Game
             get
             {
                 DiscoverChunk<Chunk03043042>();
+
+                if (authorLogin == null && MapInfo != null)
+                    return MapInfo.Author;
+
                 return authorLogin;
             }
             set
