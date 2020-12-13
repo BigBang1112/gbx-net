@@ -295,7 +295,10 @@ namespace GBX.NET
 
                     try
                     {
-                        c.ReadWrite(node, gbxrw);
+                        if (chunkClass.GetCustomAttribute<IgnoreChunkAttribute>() == null)
+                            c.ReadWrite(node, gbxrw);
+                        else
+                            throw new Exception($"Chunk 0x{chunkID & 0xFFF:x3} from class {node.ClassName} is known but its content is unknown to read.");
                     }
                     catch (EndOfStreamException)
                     {
