@@ -19,6 +19,7 @@ namespace PasswordCracker
 
             if (gbx is GameBox<CGameCtnChallenge> gbxMap)
             {
+                gbxMap.MainNode.Password = null;
                 gbxMap.MainNode.CrackPassword();
                 gbxMap.Save(Path.GetFileName(fileName));
             }
