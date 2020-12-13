@@ -1174,8 +1174,8 @@ namespace GBX.NET.Engines.Game
             {
                 var chunk001 = node.GetChunk<CGameCtnMediaTrack.Chunk03078001>();
 
-                // Chunk 0x004 has to be removed so that ManiaPlanet accepts the entire map.
-                node.RemoveChunk<CGameCtnMediaTrack.Chunk03078004>();
+                // Chunks 0x002 and 0x004 have to be replaced with 0x005 so that ManiaPlanet accepts the map
+                node.TransferMediaTrackTo005();
 
                 node.Blocks.RemoveAll(x => x is CGameCtnMediaBlockGhost); // Some ghosts can crash the game
                 node.Blocks.RemoveAll(x => x is CGameCtnMediaBlockTriangles); // 2D triangles can't be written atm

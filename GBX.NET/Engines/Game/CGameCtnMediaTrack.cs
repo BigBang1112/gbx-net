@@ -25,11 +25,40 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public List<CGameCtnMediaBlock> Blocks { get; set; }
 
+        /// <summary>
+        /// If the track should keep playing the last block after it ends.
+        /// </summary>
+        public bool IsKeepPlaying { get; set; } = true;
+
+        public bool IsCycling { get; set; }
+
         #endregion
 
         #region Methods
 
         public override string ToString() => Name;
+
+        /// <summary>
+        /// Transfers the MediaTracker track properties from either <see cref="Chunk03078002"/> (ESWC) or <see cref="Chunk03078004"/> (TMF)
+        /// to <see cref="Chunk03078005"/> (ManiaPlanet and Trackmania®). If those chunks aren't presented, no action is performed.
+        /// <see cref="Chunk03078003"/> is additionally removed for undiscovered safety of the chunk.
+        /// </summary>
+        /// <returns>True if any of the chunks were transfered.</returns>
+        public bool TransferMediaTrackTo005()
+        {
+            var chunk002 = GetChunk<Chunk03078002>();
+            var chunk004 = GetChunk<Chunk03078004>();
+
+            if (chunk002 == null && chunk004 == null) return false;
+
+            CreateChunk<Chunk03078005>();
+
+            RemoveChunk<Chunk03078002>();
+            RemoveChunk<Chunk03078003>(); // Removed atm for safety. TODO: inspect this chunk
+            RemoveChunk<Chunk03078004>();
+
+            return true;
+        }
 
         #endregion
 
@@ -58,14 +87,16 @@ namespace GBX.NET.Engines.Game
 
         #region 0x002 chunk
 
+        /// <summary>
+        /// CGameCtnMediaTrack 0x002 chunk. Represents <see cref="IsKeepPlaying"/> for ESWC tracks. This chunk should be removed or transfered
+        /// to <see cref="Chunk03078005"/> in the new versions of ManiaPlanet with <see cref="TransferMediaTrackTo005"/>.
+        /// </summary>
         [Chunk(0x03078002)]
         public class Chunk03078002 : Chunk<CGameCtnMediaTrack>
         {
-            public bool Unknown1 { get; set; }
-
             public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
-                Unknown1 = rw.Boolean(Unknown1); // 1
+                n.IsKeepPlaying = rw.Boolean(n.IsKeepPlaying);
             }
         }
 
@@ -76,9 +107,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03078003)]
         public class Chunk03078003 : Chunk<CGameCtnMediaTrack>
         {
+            public int U01 { get; set; }
+
             public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown); // 0
+                U01 = rw.Int32(U01); // 0
             }
         }
 
@@ -87,17 +120,15 @@ namespace GBX.NET.Engines.Game
         #region 0x004 chunk
 
         /// <summary>
-        /// CGameCtnMediaTrack 0x004 chunk. This chunk should be removed in the new versions of ManiaPlanet.
+        /// CGameCtnMediaTrack 0x004 chunk. Represents <see cref="IsKeepPlaying"/> for TMF tracks. This chunk should be removed or transfered
+        /// to <see cref="Chunk03078005"/> in the new versions of ManiaPlanet with <see cref="TransferMediaTrackTo005"/>.
         /// </summary>
         [Chunk(0x03078004)]
         public class Chunk03078004 : Chunk<CGameCtnMediaTrack>
         {
-            public int Unknown1 { get; set; }
-
             public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
-                Unknown1 = rw.Int32(Unknown1);
-                // There is sometimes a second int
+                n.IsKeepPlaying = rw.Boolean(n.IsKeepPlaying);
             }
         }
 
@@ -109,20 +140,18 @@ namespace GBX.NET.Engines.Game
         public class Chunk03078005 : Chunk<CGameCtnMediaTrack>
         {
             public int Version { get; set; } = 1;
-            public int Unknown1 { get; set; }
-            public int Unknown2 { get; set; }
-            public int Unknown3 { get; set; }
-            public float Unknown4 { get; set; } = -1;
-            public float Unknown5 { get; set; } = -1;
+            public int U02 { get; set; }
+            public float U04 { get; set; } = -1;
+            public float U05 { get; set; } = -1;
 
             public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                Unknown1 = rw.Int32(Unknown1);
-                Unknown2 = rw.Int32(Unknown2);
-                Unknown3 = rw.Int32(Unknown3);
-                Unknown4 = rw.Single(Unknown4);
-                Unknown5 = rw.Single(Unknown5);
+                n.IsKeepPlaying = rw.Boolean(n.IsKeepPlaying);
+                U02 = rw.Int32(U02);
+                n.IsCycling = rw.Boolean(n.IsCycling);
+                U04 = rw.Single(U04);
+                U05 = rw.Single(U05);
             }
         }
 
@@ -138,6 +167,8 @@ namespace GBX.NET.Engines.Game
 
             public string Name => node.Name;
             public List<CGameCtnMediaBlock> Blocks => node.Blocks;
+            public bool IsKeepPlaying => node.IsKeepPlaying;
+            public bool IsCycling => node.IsCycling;
 
             public DebugView(CGameCtnMediaTrack node) => this.node = node;
         }
