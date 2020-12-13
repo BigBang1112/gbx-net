@@ -74,7 +74,7 @@ namespace GBX.NET
             private readonly FileRef fileRef;
 
             public byte Version => fileRef.Version;
-            public string Checksum => Convert.ToBase64String(fileRef.Checksum);
+            public string Checksum => Convert.ToBase64String(fileRef.Checksum ?? new byte[0]);
             public string FilePath => fileRef.FilePath;
             public string LocatorUrl => fileRef.LocatorUrl;
 
