@@ -573,6 +573,21 @@ namespace GBX.NET
             }
             return variable;
         }
+        
+        public void TillFacade(UnknownStream stream)
+        {
+            if (Reader != null)
+            {
+                using (var w = new GameBoxWriter(stream, Reader.Lookbackable))
+                    w.Write(Reader.ReadTillFacade());
+            }
+            else if (Writer != null)
+            {
+                var buffer = new byte[stream.Length - stream.Position];
+                stream.Read(buffer, 0, buffer.Length);
+                Writer.WriteBytes(buffer);
+            }
+        }
     }
 
     public enum GameBoxReaderWriterMode

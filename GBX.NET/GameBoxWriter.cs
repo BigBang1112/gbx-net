@@ -208,5 +208,10 @@ namespace GBX.NET
         {
             Write(node, (IGameBoxBody)Lookbackable);
         }
+
+        public void WriteBytes(byte[] bytes)
+        {
+            Write(bytes, 0, bytes.Length);
+        }
     }
 }
