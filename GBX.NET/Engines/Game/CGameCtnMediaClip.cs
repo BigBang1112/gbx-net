@@ -14,7 +14,7 @@ namespace GBX.NET.Engines.Game
         #region Properties
 
         /// <summary>
-        /// Name of the clip. This property is <see cref="null"/> if the clip is an intro, ambiance or podium.
+        /// Name of the clip. This property is null if the clip is an intro, ambiance or podium.
         /// </summary>
         [NodeMember]
         public string Name { get; set; }

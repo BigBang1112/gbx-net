@@ -67,7 +67,7 @@ namespace GBX.NET.Engines.Game
         public Int3 Coord { get; set; }
 
         /// <summary>
-        /// Flags of the block. If the chunk version is <see cref="null"/>, this value can be presented as <see cref="short"/>.
+        /// Flags of the block. If the chunk version is null, this value can be presented as <see cref="short"/>.
         /// </summary>
         [NodeMember]
         public int Flags { get; set; }

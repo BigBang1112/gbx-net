@@ -1114,10 +1114,10 @@ namespace GBX.NET.Engines.Game
         }
 
         /// <summary>
-        /// Transfers the MediaTracker from <see cref="Chunk021"/> (up to TMUF) to <see cref="Chunk049"/> (ManiaPlanet and Trackmania®). If <see cref="Chunk049"/> is already presented, no action is performed.
+        /// Transfers the MediaTracker from <see cref="Chunk03043021"/> (up to TMUF) to <see cref="Chunk03043049"/> (ManiaPlanet and Trackmania®). If <see cref="Chunk03043049"/> is already presented, no action is performed.
         /// </summary>
         /// <param name="upsaleTriggerCoord">Defines how many times the same coord should repeat.</param>
-        /// <returns>Returns <see cref="true"/> if any action was performed, otherwise <see cref="false"/>.</returns>
+        /// <returns>Returns true if any action was performed, otherwise false.</returns>
         public bool TransferMediaTrackerTo049(int upsaleTriggerCoord = 3)
         {
             var chunk021 = GetChunk<Chunk03043021>();
@@ -1322,7 +1322,8 @@ namespace GBX.NET.Engines.Game
             return true;
         }
 
-        /// <inheritdoc cref="ImportFileToEmbed(string, string)"/>
+        /// <param name="fileOnDisk">File to embed located on the disk.</param>
+        /// <param name="relativeDirectory">Relative directory where the embed should be represented in the game, usually starts with <c>"Items/..."</c>, <c>"Blocks/..."</c> or <c>"Materials/..."</c>.</param>
         /// <param name="keepIcon">Keep the icon (chunk 0x2E001004) of the embedded GBX. Increases total unneeded embed size.</param>
         public void ImportFileToEmbed(string fileOnDisk, string relativeDirectory, bool keepIcon)
         {
@@ -1794,7 +1795,7 @@ namespace GBX.NET.Engines.Game
             public byte Version { get; set; }
 
             /// <summary>
-            /// If the track is locked (used by Virtual Skipper to lock the map parameters). Can be <see cref="null"/> if <c><see cref="Version"/> &lt; <see cref="1"/></c>.
+            /// If the track is locked (used by Virtual Skipper to lock the map parameters). Can be null if <c><see cref="Version"/> &lt; 1</c>.
             /// </summary>
             public bool? Locked { get; set; }
 

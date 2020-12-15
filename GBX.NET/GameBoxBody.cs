@@ -18,11 +18,9 @@ namespace GBX.NET
         public new GameBox<T> GBX => (GameBox<T>)base.GBX;
 
         /// <summary>
-        /// Body with uncompressed data with compression parameters
+        /// Body with uncompressed data with compression parameters.
         /// </summary>
-        /// <param name="data">UNCOMPRESSED</param>
-        /// <param name="compressedSize"></param>
-        /// <param name="uncompressedSize"></param>
+        /// <param name="gbx">Owner of the GBX body.</param>
         public GameBoxBody(GameBox<T> gbx) : base(gbx)
         {
             
