@@ -46,6 +46,8 @@ namespace GBX.NET
                 }
 
                 GBX.ClassID = r.ReadUInt32();
+                if (Node.Mappings.TryGetValue(GBX.ClassID.Value, out uint newerClassID))
+                    GBX.ClassID = newerClassID;
                 Log.Write($"- Class ID: 0x{GBX.ClassID:X8}");
 
                 if (GBX.Version >= 6)

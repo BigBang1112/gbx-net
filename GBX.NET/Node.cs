@@ -295,7 +295,19 @@ namespace GBX.NET
 
                     try
                     {
-                        c.ReadWrite(node, gbxrw);
+                        if (chunkClass.GetCustomAttribute<IgnoreChunkAttribute>() == null)
+                        {
+                            if(chunkClass.GetCustomAttribute<AutoReadWriteChunkAttribute>() == null)
+                                c.ReadWrite(node, gbxrw);
+                            else
+                            {
+                                var unknown = new GameBoxWriter(((Chunk)c).Unknown, r.Lookbackable);
+                                var unknownData = r.ReadTillFacade();
+                                unknown.Write(unknownData, 0, unknownData.Length);
+                            }
+                        }
+                        else
+                            throw new Exception($"Chunk 0x{chunkID & 0xFFF:x3} from class {node.ClassName} is known but its content is unknown to read.");
                     }
                     catch (EndOfStreamException)
                     {
@@ -377,8 +389,10 @@ namespace GBX.NET
                     {
                         if (chunk is ISkippableChunk s && !s.Discovered)
                             s.Write(msW);
-                        else
+                        else if (chunk.GetType().GetCustomAttribute<AutoReadWriteChunkAttribute>() == null)
                             ((IChunk)chunk).ReadWrite(this, rw);
+                        else
+                            msW.Write(chunk.Unknown.ToArray(), 0, (int)chunk.Unknown.Length);
 
                         w.Write(Chunk.Remap(chunk.ID, remap));
 

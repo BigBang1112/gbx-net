@@ -9,11 +9,11 @@ namespace GBX.NET
     public struct Collection
     {
         /// <summary>
-        /// Represents an ID defined kind of collection. If set, the ID is converted to its proper name from the <see cref="Resources.CollectionID"/> list using the <see cref="ToString"/> method. Always available if <see cref="Name"/> is <see cref="null"/>.
+        /// Represents an ID defined kind of collection. If set, the ID is converted to its proper name from the <see cref="Resources.CollectionID"/> list using the <see cref="ToString"/> method. Always available if <see cref="Name"/> is null.
         /// </summary>
         public int? ID { get; }
         /// <summary>
-        /// Represents a name defined kind of collection. If set, collection is stored as a regular <see cref="LookbackString"/> in GBX. Always avaliable if <see cref="ID"/> is <see cref="null"/>.
+        /// Represents a name defined kind of collection. If set, collection is stored as a regular <see cref="LookbackString"/> in GBX. Always avaliable if <see cref="ID"/> is null.
         /// </summary>
         public string Name { get; }
 

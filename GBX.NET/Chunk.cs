@@ -144,8 +144,9 @@ namespace GBX.NET
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="n"></param>
         /// <param name="r"></param>
-        /// <param name="unknownW">Writer of the <see cref="Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
+        /// <param name="unknownW">Writer of the <see cref="Chunk.Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
         public virtual void Read(T n, GameBoxReader r, GameBoxWriter unknownW)
         {
             throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support Read.");
@@ -154,8 +155,9 @@ namespace GBX.NET
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="n"></param>
         /// <param name="w"></param>
-        /// <param name="unknownR">Reader of the <see cref="Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
+        /// <param name="unknownR">Reader of the <see cref="Chunk.Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
         public virtual void Write(T n, GameBoxWriter w, GameBoxReader unknownR)
         {
             throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support Write.");

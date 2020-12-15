@@ -385,6 +385,7 @@
   114 CGameCtnMacroDecals
   14C CGameCtnBlockInfoTransition
   199 CGameCtnMediaBlockFog
+  29F CGameCtnMediaBlockEntity
 04 Graphic
   001 GxLight
   002 GxLightBall
