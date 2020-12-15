@@ -1179,8 +1179,6 @@ namespace GBX.NET.Engines.Game
                 node.TransferMediaTrackTo005();
 
                 node.Blocks.RemoveAll(x => x is CGameCtnMediaBlockGhost); // Some ghosts can crash the game
-                node.Blocks.RemoveAll(x => x is CGameCtnMediaBlockTriangles); // 2D triangles can't be written atm
-                node.Blocks.RemoveAll(x => x is CGameCtnMediaBlockFxColors); // FX colors can't be written atm
             }
 
             return true;
