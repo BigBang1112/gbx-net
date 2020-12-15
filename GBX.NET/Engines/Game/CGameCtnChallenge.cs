@@ -1017,6 +1017,7 @@ namespace GBX.NET.Engines.Game
         /// </summary>
         public void CrackPassword()
         {
+            Password = null;
             RemoveChunk<Chunk03043029>();
         }
 
