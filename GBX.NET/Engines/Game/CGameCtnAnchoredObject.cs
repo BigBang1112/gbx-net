@@ -40,7 +40,7 @@ namespace GBX.NET.Engines.Game
         public Vec3 AbsolutePositionInMap { get; set; }
 
         /// <summary>
-        /// If the item is a waypoint, contains inner waypoint info, otherwise <see cref="null"/>.
+        /// If the item is a waypoint, contains inner waypoint info, otherwise null.
         /// </summary>
         [NodeMember]
         public CGameWaypointSpecialProperty WaypointSpecialProperty { get; set; }
