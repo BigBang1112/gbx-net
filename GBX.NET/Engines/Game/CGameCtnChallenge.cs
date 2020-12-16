@@ -1179,6 +1179,10 @@ namespace GBX.NET.Engines.Game
                 node.TransferMediaTrackTo005();
 
                 node.Blocks.RemoveAll(x => x is CGameCtnMediaBlockGhost); // Some ghosts can crash the game
+
+                node.Blocks.RemoveAll(x => x is CGameCtnMediaBlockFxBloom);
+                // FX Bloom is no longer supported and was remade into FxBloomHdr
+                // TODO: convert to fx bloom hdr effectively
             }
 
             return true;
