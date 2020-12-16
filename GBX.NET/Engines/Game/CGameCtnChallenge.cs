@@ -696,6 +696,9 @@ namespace GBX.NET.Engines.Game
         public CGameCtnMediaClip ClipAmbiance { get; set; }
 
         [NodeMember]
+        public CGameCtnMediaClip ClipPodium { get; set; }
+
+        [NodeMember]
         public FileRef CustomMusicPackDesc { get; set; }
 
         [NodeMember]
@@ -1194,9 +1197,7 @@ namespace GBX.NET.Engines.Game
             OffsetCamerasInClipGroup(ClipGroupInGame);
             OffsetCamerasInClipGroup(ClipGroupEndRace);
             OffsetCamerasInClip(ClipAmbiance);
-
-            if (TryGetChunk(out Chunk03043049 c049))
-                OffsetCamerasInClip(c049.ClipPodium);
+            OffsetCamerasInClip(ClipPodium);
 
             void OffsetCamerasInClipGroup(CGameCtnMediaClipGroup group)
             {
@@ -2839,8 +2840,6 @@ namespace GBX.NET.Engines.Game
         {
             public int Version { get; set; } = 2;
 
-            public CGameCtnMediaClip ClipPodium { get; set; }
-
             public int Unknown1 { get; set; } = 3;
             public int Unknown2 { get; set; } = 1;
             public int Unknown3 { get; set; } = 3;
@@ -2849,7 +2848,7 @@ namespace GBX.NET.Engines.Game
             {
                 Version = rw.Int32(Version);
                 n.ClipIntro = rw.NodeRef<CGameCtnMediaClip>(n.ClipIntro);
-                ClipPodium = rw.NodeRef<CGameCtnMediaClip>(ClipPodium); //
+                n.ClipPodium = rw.NodeRef<CGameCtnMediaClip>(n.ClipPodium);
                 n.ClipGroupInGame = rw.NodeRef<CGameCtnMediaClipGroup>(n.ClipGroupInGame);
                 n.ClipGroupEndRace = rw.NodeRef<CGameCtnMediaClipGroup>(n.ClipGroupEndRace);
 
