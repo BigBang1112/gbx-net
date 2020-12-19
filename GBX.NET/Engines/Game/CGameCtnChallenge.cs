@@ -1148,15 +1148,17 @@ namespace GBX.NET.Engines.Game
 
             void ConvertMediaClipGroup(CGameCtnMediaClipGroup node)
             {
-                foreach(var trigger in node.Triggers)
+                foreach(var clip in node.Clips)
                 {
+                    var trigger = clip.Item2;
+
                     var coords = trigger.Coords.ToList();
 
                     for (var i = 0; i < trigger.Coords.Length; i++)
                     {
                         coords[i] = coords[i] * (upsaleTriggerCoord, 1, upsaleTriggerCoord);
 
-                        for(var x = 0; x < upsaleTriggerCoord; x++)
+                        for (var x = 0; x < upsaleTriggerCoord; x++)
                         {
                             for (var z = 0; z < upsaleTriggerCoord; z++)
                             {
@@ -1166,11 +1168,8 @@ namespace GBX.NET.Engines.Game
                     }
 
                     trigger.Coords = coords.ToArray();
-                }
 
-                foreach(var clip in node.Clips)
-                {
-                    ConvertMediaClip(clip);
+                    ConvertMediaClip(clip.Item1);
                 }
             }
 
@@ -1204,7 +1203,7 @@ namespace GBX.NET.Engines.Game
                 if (group == null) return;
 
                 foreach (var clip in group.Clips)
-                    OffsetCamerasInClip(clip);
+                    OffsetCamerasInClip(clip.Item1);
             }
 
             void OffsetCamerasInClip(CGameCtnMediaClip clip)
@@ -1249,8 +1248,9 @@ namespace GBX.NET.Engines.Game
             {
                 if (group == null) return;
 
-                foreach(var trigger in group.Triggers)
+                foreach(var clip in group.Clips)
                 {
+                    var trigger = clip.Item2;
                     trigger.Coords = trigger.Coords.Select(x => x + offset).ToArray();
                 }
             }
