@@ -25,6 +25,12 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public List<CGameCtnMediaTrack> Tracks { get; set; }
 
+        [NodeMember]
+        public bool StopWhenRespawn { get; set; }
+
+        [NodeMember]
+        public bool StopWhenLeave { get; set; }
+
         #endregion
 
         #region Methods
@@ -133,17 +139,15 @@ namespace GBX.NET.Engines.Game
         {
             public int Version { get; set; } = 10;
 
-            public int Unknown1 { get; set; }
-            public int Unknown2 { get; set; }
-            public int Unknown3 { get; set; }
-            public int Unknown4 { get; set; }
-            public int Unknown5 { get; set; }
-            public float Unknown6 { get; set; } = 0.2f;
-            public int Unknown7 { get; set; } = -1;
+            public int U01 { get; set; }
+            public int U03 { get; set; }
+            public int U05 { get; set; }
+            public float U06 { get; set; } = 0.2f;
+            public int U07 { get; set; } = -1;
 
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
-                Unknown1 = rw.Int32(Unknown1);
+                U01 = rw.Int32(U01);
                 Version = rw.Int32(Version);
 
                 n.Tracks = rw.Array(n.Tracks?.ToArray(),
@@ -152,12 +156,12 @@ namespace GBX.NET.Engines.Game
 
                 n.Name = rw.String(n.Name);
 
-                Unknown2 = rw.Int32(Unknown2);
-                Unknown3 = rw.Int32(Unknown3);
-                Unknown4 = rw.Int32(Unknown4);
-                Unknown5 = rw.Int32(Unknown5);
-                Unknown6 = rw.Single(Unknown6);
-                Unknown7 = rw.Int32(Unknown7); // -1
+                n.StopWhenLeave = rw.Boolean(n.StopWhenLeave);
+                U03 = rw.Int32(U03);
+                n.StopWhenRespawn = rw.Boolean(n.StopWhenRespawn);
+                U05 = rw.Int32(U05);
+                U06 = rw.Single(U06);
+                U07 = rw.Int32(U07); // -1
             }
         }
 
@@ -173,6 +177,8 @@ namespace GBX.NET.Engines.Game
 
             public string Name => node.Name;
             public List<CGameCtnMediaTrack> Tracks => node.Tracks;
+            public bool StopWhenRespawn => node.StopWhenRespawn;
+            public bool StopWhenLeave => node.StopWhenLeave;
 
             public DebugView(CGameCtnMediaClip node) => this.node = node;
         }
