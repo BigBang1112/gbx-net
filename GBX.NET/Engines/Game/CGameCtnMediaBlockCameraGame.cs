@@ -45,10 +45,10 @@ namespace GBX.NET.Engines.Game
         public float End { get; set; } = 3;
 
         [NodeMember]
-        public EGameCam? Type { get; set; }
+        public EGameCam? GameCam1 { get; set; }
 
         [NodeMember]
-        public EGameCam2? Type2 { get; set; }
+        public EGameCam2? GameCam2 { get; set; }
 
         [NodeMember]
         public int Target { get; set; } = -1;
@@ -90,7 +90,7 @@ namespace GBX.NET.Engines.Game
             {
                 n.Start = rw.Single(n.Start);
                 n.End = rw.Single(n.End);
-                n.Type = (EGameCam)rw.Int32((int)n.Type.GetValueOrDefault());
+                n.GameCam1 = (EGameCam)rw.Int32((int)n.GameCam1.GetValueOrDefault());
                 n.Target = rw.Int32(n.Target);
             }
         }
@@ -124,19 +124,16 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03084007)]
         public class Chunk03084007 : Chunk<CGameCtnMediaBlockCameraGame>
         {
+            public int Version { get; set; }
+
             public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
             {
-                n.Type2 = (EGameCam2)rw.Int32((int)n.Type.GetValueOrDefault());
+                Version = rw.Int32(Version);
                 n.Start = rw.Single(n.Start);
                 n.End = rw.Single(n.End);
+                n.GameCam2 = (EGameCam2)rw.Int32((int)n.GameCam2.GetValueOrDefault());
 
-                // not right
-
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Array<float>(Unknown, 6);
-                rw.Array<float>(Unknown, 5);
-                rw.Array<uint>(Unknown, 5);
+                rw.Array<int>(Unknown, 17); // Helicopter camera transfrom?
             }
         }
 
@@ -152,8 +149,8 @@ namespace GBX.NET.Engines.Game
 
             public float Start => node.Start;
             public float End => node.End;
-            public EGameCam? Type => node.Type;
-            public EGameCam2? Type2 => node.Type2;
+            public EGameCam? GameCam1 => node.GameCam1;
+            public EGameCam2? GameCam2 => node.GameCam2;
             public int Target => node.Target;
             public string GameCam => node.GameCam;
 
