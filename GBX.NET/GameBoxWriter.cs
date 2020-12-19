@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Numerics;
@@ -92,6 +93,40 @@ namespace GBX.NET
 
                 for (var i = 0; i < array.Length; i++)
                     forLoop.Invoke(array[i]);
+            }
+        }
+
+        public void Write<T>(List<T> list, Action<T> forLoop)
+        {
+            if (list == null)
+            {
+                Write(0);
+            }
+            else
+            {
+                Write(list.Count);
+
+                for (var i = 0; i < list.Count; i++)
+                    forLoop.Invoke(list[i]);
+            }
+        }
+
+        public void Write<T>(IEnumerable<T> enumerable, Action<T> forLoop)
+        {
+            if (enumerable == null)
+            {
+                Write(0);
+            }
+            else
+            {
+                var count = enumerable.Count();
+
+                Write(count);
+
+                IEnumerator<T> enumerator = enumerable.GetEnumerator();
+
+                while (enumerator.MoveNext())
+                    forLoop.Invoke(enumerator.Current);
             }
         }
 
