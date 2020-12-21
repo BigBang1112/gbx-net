@@ -4,6 +4,9 @@ using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
+    /// <summary>
+    /// MediaTracker Bloom block for TMUF and older games (0x03083000). This node causes "Couldn't load map" in ManiaPlanet.
+    /// </summary>
     [Node(0x03083000)]
     public class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx
     {
@@ -18,6 +21,9 @@ namespace GBX.NET.Engines.Game
 
         #region 0x001 chunk
 
+        /// <summary>
+        /// CGameCtnMediaBlockFxBloom 0x001 chunk
+        /// </summary>
         [Chunk(0x03083001)]
         public class Chunk03083001 : Chunk<CGameCtnMediaBlockFxBloom>
         {

@@ -179,7 +179,6 @@ namespace GBX.NET.Engines.Game
             /// <summary>
             /// Constructs a new 0x030A2006 chunk with version 3.
             /// </summary>
-            /// <param name="node"></param>
             public Chunk030A2006() : this(3)
             {
                 

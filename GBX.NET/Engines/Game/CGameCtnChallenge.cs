@@ -696,6 +696,9 @@ namespace GBX.NET.Engines.Game
         public CGameCtnMediaClip ClipAmbiance { get; set; }
 
         [NodeMember]
+        public CGameCtnMediaClip ClipPodium { get; set; }
+
+        [NodeMember]
         public FileRef CustomMusicPackDesc { get; set; }
 
         [NodeMember]
@@ -1145,15 +1148,17 @@ namespace GBX.NET.Engines.Game
 
             void ConvertMediaClipGroup(CGameCtnMediaClipGroup node)
             {
-                foreach(var trigger in node.Triggers)
+                foreach(var clip in node.Clips)
                 {
+                    var trigger = clip.Item2;
+
                     var coords = trigger.Coords.ToList();
 
                     for (var i = 0; i < trigger.Coords.Length; i++)
                     {
                         coords[i] = coords[i] * (upsaleTriggerCoord, 1, upsaleTriggerCoord);
 
-                        for(var x = 0; x < upsaleTriggerCoord; x++)
+                        for (var x = 0; x < upsaleTriggerCoord; x++)
                         {
                             for (var z = 0; z < upsaleTriggerCoord; z++)
                             {
@@ -1163,11 +1168,8 @@ namespace GBX.NET.Engines.Game
                     }
 
                     trigger.Coords = coords.ToArray();
-                }
 
-                foreach(var clip in node.Clips)
-                {
-                    ConvertMediaClip(clip);
+                    ConvertMediaClip(clip.Item1);
                 }
             }
 
@@ -1179,8 +1181,10 @@ namespace GBX.NET.Engines.Game
                 node.TransferMediaTrackTo005();
 
                 node.Blocks.RemoveAll(x => x is CGameCtnMediaBlockGhost); // Some ghosts can crash the game
-                node.Blocks.RemoveAll(x => x is CGameCtnMediaBlockTriangles); // 2D triangles can't be written atm
-                node.Blocks.RemoveAll(x => x is CGameCtnMediaBlockFxColors); // FX colors can't be written atm
+
+                node.Blocks.RemoveAll(x => x is CGameCtnMediaBlockFxBloom);
+                // FX Bloom is no longer supported and was remade into FxBloomHdr
+                // TODO: convert to fx bloom hdr effectively
             }
 
             return true;
@@ -1192,16 +1196,14 @@ namespace GBX.NET.Engines.Game
             OffsetCamerasInClipGroup(ClipGroupInGame);
             OffsetCamerasInClipGroup(ClipGroupEndRace);
             OffsetCamerasInClip(ClipAmbiance);
-
-            if (TryGetChunk(out Chunk03043049 c049))
-                OffsetCamerasInClip(c049.ClipPodium);
+            OffsetCamerasInClip(ClipPodium);
 
             void OffsetCamerasInClipGroup(CGameCtnMediaClipGroup group)
             {
                 if (group == null) return;
 
                 foreach (var clip in group.Clips)
-                    OffsetCamerasInClip(clip);
+                    OffsetCamerasInClip(clip.Item1);
             }
 
             void OffsetCamerasInClip(CGameCtnMediaClip clip)
@@ -1246,8 +1248,9 @@ namespace GBX.NET.Engines.Game
             {
                 if (group == null) return;
 
-                foreach(var trigger in group.Triggers)
+                foreach(var clip in group.Clips)
                 {
+                    var trigger = clip.Item2;
                     trigger.Coords = trigger.Coords.Select(x => x + offset).ToArray();
                 }
             }
@@ -2837,8 +2840,6 @@ namespace GBX.NET.Engines.Game
         {
             public int Version { get; set; } = 2;
 
-            public CGameCtnMediaClip ClipPodium { get; set; }
-
             public int Unknown1 { get; set; } = 3;
             public int Unknown2 { get; set; } = 1;
             public int Unknown3 { get; set; } = 3;
@@ -2847,7 +2848,7 @@ namespace GBX.NET.Engines.Game
             {
                 Version = rw.Int32(Version);
                 n.ClipIntro = rw.NodeRef<CGameCtnMediaClip>(n.ClipIntro);
-                ClipPodium = rw.NodeRef<CGameCtnMediaClip>(ClipPodium); //
+                n.ClipPodium = rw.NodeRef<CGameCtnMediaClip>(n.ClipPodium);
                 n.ClipGroupInGame = rw.NodeRef<CGameCtnMediaClipGroup>(n.ClipGroupInGame);
                 n.ClipGroupEndRace = rw.NodeRef<CGameCtnMediaClipGroup>(n.ClipGroupEndRace);
 

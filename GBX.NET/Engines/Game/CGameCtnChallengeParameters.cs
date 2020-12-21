@@ -235,10 +235,10 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x006 chunk
+        #region 0x006 chunk (items)
 
         /// <summary>
-        /// CGameCtnChallengeParameters 0x006 chunk (items)
+        /// CGameCtnChallengeParameters 0x006 chunk (items). This chunk causes "Couldn't load map" in ManiaPlanet.
         /// </summary>
         [Chunk(0x0305B006, "items")]
         public class Chunk0305B006 : Chunk<CGameCtnChallengeParameters>
