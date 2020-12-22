@@ -86,7 +86,7 @@ namespace GBX.NET.Engines.Game
                 {
                     var trigger = x.Item2;
 
-                    w.Write(trigger.Coords);
+                    w.Write(trigger.Coords, y => w.Write(y));
                     w.Write(trigger.U01);
                     w.Write(trigger.U02);
                     w.Write(trigger.U03);
@@ -151,7 +151,7 @@ namespace GBX.NET.Engines.Game
                     w.Write(trigger.U04);
                     w.Write((int)trigger.Condition);
                     w.Write(trigger.ConditionValue);
-                    w.Write(trigger.Coords);
+                    w.Write(trigger.Coords, y => w.Write(y));
                 });
             }
         }
