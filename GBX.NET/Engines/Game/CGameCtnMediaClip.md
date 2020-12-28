@@ -21,7 +21,7 @@ void Read (GameBoxReader r)
     for (var i = 0; i < numTracks; i++)
         CGameCtnMediaTrack track = r.ReadNodeRef<CGameCtnMediaTrack>();
 
-	string name = r.ReadString();
+    string name = r.ReadString();
 }
 ```
 
@@ -30,7 +30,7 @@ void Read (GameBoxReader r)
 ```cs
 void Read (GameBoxReader r)
 {
-    object u01 = r.ReadNodeRef();
+    Node u01 = r.ReadNodeRef();
 }
 ```
 
@@ -45,7 +45,7 @@ void Read (GameBoxReader r)
     for (var i = 0; i < numTracks; i++)
         CGameCtnMediaTrack track = r.ReadNodeRef<CGameCtnMediaTrack>();
 
-	string name = r.ReadString();
+    string name = r.ReadString();
 }
 ```
 
@@ -82,19 +82,19 @@ void Read (GameBoxReader r)
 void Read (GameBoxReader r)
 {
     int u01 = r.ReadInt32();
-	int version = r.ReadInt32();
+    int version = r.ReadInt32();
 
     int numTracks = r.ReadInt32();
     for (var i = 0; i < numTracks; i++)
         CGameCtnMediaTrack track = r.ReadNodeRef<CGameCtnMediaTrack>();
 
-	string name = r.ReadString();
+    string name = r.ReadString();
 
-	int u02 = r.ReadInt32();
-	int u03 = r.ReadInt32();
-	int u04 = r.ReadInt32();
-	int u05 = r.ReadInt32();
-	float u06 = r.ReadSingle();
-	int u07 = r.ReadInt32(); // -1
+    bool stopWhenLeave = r.ReadBoolean();
+    int u03 = r.ReadInt32();
+    bool stopWhenRespawn = r.ReadBoolean();
+    int u05 = r.ReadInt32();
+    float u06 = r.ReadSingle();
+    int u07 = r.ReadInt32(); // -1
 }
 ```
