@@ -10,7 +10,7 @@
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Copyright />
-		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk, x86</PackageTags>
 		<RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
@@ -19,34 +19,8 @@
 		<PlatformTarget>x86</PlatformTarget>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NoWarn>1591</NoWarn>
+		<Platforms>x86</Platforms>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<Compile Remove="Engines\GameData\CGameObjectPhyModel.cs" />
-		<Compile Remove="Engines\GameData\CGameObjectVisModel.cs" />
-		<Compile Remove="Engines\Plug\CPlugDataTape.cs" />
-		<Compile Remove="Engines\Plug\CPlugSurface.cs" />
-		<Compile Remove="Engines\Plug\CPlugVehicleCarPhyShape.cs" />
-		<Compile Remove="Engines\Plug\CPlugVehiclePhyModel.cs" />
-		<Compile Remove="Engines\Plug\CPlugVehicleVisModel.cs" />
-		<Compile Remove="NadeoPak.cs" />
-		<Compile Remove="NodeRef.cs" />
-		<Compile Remove="StreamExtensions.cs" />
-		<Compile Remove="Unclear.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<None Include="Engines\Plug\CPlugDataTape.cs" />
-		<None Include="Engines\Plug\CPlugSurface.cs" />
-		<None Include="Engines\Plug\CPlugVehicleCarPhyShape.cs" />
-		<None Include="Engines\Plug\CPlugVehiclePhyModel.cs" />
-		<None Include="Engines\Plug\CPlugVehicleVisModel.cs" />
-		<None Include="LICENSE.txt">
-			<Pack>True</Pack>
-			<PackagePath></PackagePath>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
 
 	<ItemGroup>
 		<Compile Update="Resources.Designer.cs">
@@ -54,9 +28,7 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Resources.resx</DependentUpon>
 		</Compile>
-	</ItemGroup>
-
-	<ItemGroup>
+		
 		<EmbeddedResource Update="Resources.resx">
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -89,6 +61,13 @@
 		<PackageReference Include="System.Drawing.Common">
 			<Version>4.7.0</Version>
 		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="LICENSE">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
+	  </None>
 	</ItemGroup>
 
 </Project>

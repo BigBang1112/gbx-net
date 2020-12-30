@@ -1,13 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-	<PlatformTarget>x86</PlatformTarget>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<PlatformTarget>x86</PlatformTarget>
+		<Platforms>x86</Platforms>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\GBX.NET\GBX.NET.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="..\..\LICENSE">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+
+		<ProjectReference Include="..\..\GBX.NET\GBX.NET.csproj" />
+	</ItemGroup>
 
 </Project>
