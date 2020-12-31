@@ -14,13 +14,13 @@
 void Read (GameBoxReader r)
 {
     string name = r.ReadString();
-	int u01 = r.ReadInt32();
+    int u01 = r.ReadInt32();
 
     int numBlocks = r.ReadInt32();
     for (var i = 0; i < numBlocks; i++)
         CGameCtnMediaBlock block = r.ReadNodeRef<CGameCtnMediaBlock>();
 
-	int u02 = r.ReadInt32();
+    int u02 = r.ReadInt32();
 }
 ```
 

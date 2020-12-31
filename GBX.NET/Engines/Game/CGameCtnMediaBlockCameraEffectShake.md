@@ -11,13 +11,13 @@
 ```cs
 void Read(GameBoxReader r)
 {
-	int numKeys = r.ReadInt32();
+    int numKeys = r.ReadInt32();
 
-	for (var i = 0; i < numKeys; i++)
-	{
-		var time = r.ReadSingle();
+    for (var i = 0; i < numKeys; i++)
+    {
+        var time = r.ReadSingle();
         var intensity = r.ReadSingle();
         var speed = r.ReadSingle();
-	}
+    }
 }
 ```

@@ -24,23 +24,23 @@ void Read (GameBoxReader r)
 {
     int version = r.ReadInt32();
 
-	if (version >= 2)
-	{
-		Meta mapInfo = r.ReadMeta();
-		int time = r.ReadInt32();
-		string nickname = r.ReadString();
+    if (version >= 2)
+    {
+        Meta mapInfo = r.ReadMeta();
+        int time = r.ReadInt32();
+        string nickname = r.ReadString();
 
-		if (version >= 6)
-		{
-			string driverLogin = r.ReadString();
+        if (version >= 6)
+        {
+            string driverLogin = r.ReadString();
 
-			if (version >= 8)
-			{
-				byte u01 = r.ReadByte();
-				LookbackString titleID = r.ReadLookbackString();
-			}
-		}
-	}
+            if (version >= 8)
+            {
+                byte u01 = r.ReadByte();
+                LookbackString titleID = r.ReadLookbackString();
+            }
+        }
+    }
 }
 ```
 
@@ -58,12 +58,12 @@ void Read (GameBoxReader r)
 ```cs
 void Read (GameBoxReader r)
 {
-	int version = r.ReadInt32();
-	int authorVersion = r.ReadInt32();
-	string authorLogin = r.ReadString();
-	string authorNickname = r.ReadString();
-	string authorZone = r.ReadString();
-	string authorExtraInfo = r.ReadString();
+    int version = r.ReadInt32();
+    int authorVersion = r.ReadInt32();
+    string authorLogin = r.ReadString();
+    string authorNickname = r.ReadString();
+    string authorZone = r.ReadString();
+    string authorExtraInfo = r.ReadString();
 }
 ```
 
@@ -73,7 +73,7 @@ void Read (GameBoxReader r)
 void Read (GameBoxReader r)
 {
     int trackSize = r.ReadInt32();
-	byte[] trackGbx = r.ReadBytes(trackSize);
+    byte[] trackGbx = r.ReadBytes(trackSize);
 }
 ```
 
@@ -85,23 +85,23 @@ void Read (GameBoxReader r)
     int u01 = r.ReadInt32();
     int u02 = r.ReadInt32();
 
-	int numControlNames = r.ReadInt32();
-	for (var i = 0; i < numControlNames; i++)
-	{
-		r.ReadInt32();
-		r.ReadInt32();
-		string controlName = r.ReadString();
-	}
+    int numControlNames = r.ReadInt32();
+    for (var i = 0; i < numControlNames; i++)
+    {
+        r.ReadInt32();
+        r.ReadInt32();
+        string controlName = r.ReadString();
+    }
 
-	var numControlEntries = r.ReadInt32() - 1;
-	for (var i = 0; i < numControlEntries; i++)
-	{
-		r.ReadInt32();
-		r.ReadInt32();
-		r.ReadInt32();
-	}
+    var numControlEntries = r.ReadInt32() - 1;
+    for (var i = 0; i < numControlEntries; i++)
+    {
+        r.ReadInt32();
+        r.ReadInt32();
+        r.ReadInt32();
+    }
 
-	r.ReadInt32();
+    r.ReadInt32();
 }
 ```
 
@@ -110,15 +110,15 @@ void Read (GameBoxReader r)
 ```cs
 void Read (GameBoxReader r)
 {
-	int u01 = r.ReadInt32();
-	int u02 = r.ReadInt32();
+    int u01 = r.ReadInt32();
+    int u02 = r.ReadInt32();
 
-	int numGhosts = r.ReadInt32();
-	for (var i = 0; i < numGhosts; i++)
-		CGameCtnGhost ghost = r.ReadNodeRef<CGameCtnGhost>();
+    int numGhosts = r.ReadInt32();
+    for (var i = 0; i < numGhosts; i++)
+        CGameCtnGhost ghost = r.ReadNodeRef<CGameCtnGhost>();
 
-	int u03 = r.ReadInt32();
-	int u04 = r.ReadInt32();
+    int u03 = r.ReadInt32();
+    int u04 = r.ReadInt32();
 }
 ```
 
@@ -137,24 +137,24 @@ void Read (GameBoxReader r)
 void Read (GameBoxReader r)
 {
     var u01 = r.ReadInt32();
-	if (u01 != 0)
-	{
-		int u02 = r.ReadInt32();
-		
-		int numControlNames = r.ReadInt32();
-		for (var i = 0; i < numControlNames; i++)
-			LookbackString controlName = r.ReadLookbackString();
+    if (u01 != 0)
+    {
+        int u02 = r.ReadInt32();
+        
+        int numControlNames = r.ReadInt32();
+        for (var i = 0; i < numControlNames; i++)
+            LookbackString controlName = r.ReadLookbackString();
 
-		int num = r.ReadInt32();
-		int u03 = r.ReadInt32();
+        int num = r.ReadInt32();
+        int u03 = r.ReadInt32();
 
-		for (var i = 0; i < num; i++)
-		{
-			r.ReadInt32();
-			r.ReadInt32();
-			r.ReadByte();
-		}
-	}
+        for (var i = 0; i < num; i++)
+        {
+            r.ReadInt32();
+            r.ReadInt32();
+            r.ReadByte();
+        }
+    }
 }
 ```
 
@@ -182,15 +182,15 @@ void Read (GameBoxReader r)
 {
     int version = r.ReadInt32();
 
-	int numGhosts = r.ReadInt32();
-	for (var i = 0; i < numGhosts; i++)
-		CGameCtnGhost ghost = r.ReadNodeRef<CGameCtnGhost>();
+    int numGhosts = r.ReadInt32();
+    for (var i = 0; i < numGhosts; i++)
+        CGameCtnGhost ghost = r.ReadNodeRef<CGameCtnGhost>();
 
-	int u01 = r.ReadInt32();
+    int u01 = r.ReadInt32();
 
-	int num = r.ReadInt32();
-	for (var i = 0; i < num; i++)
-		long extra = r.ReadInt64();
+    int num = r.ReadInt32();
+    for (var i = 0; i < num; i++)
+        long extra = r.ReadInt64();
 }
 ```
 
@@ -209,7 +209,7 @@ void Read (GameBoxReader r)
 void Read (GameBoxReader r)
 {
     int u01 = r.ReadInt32();
-	int u02 = r.ReadInt32();
-	CPlugEntRecordData recordData = r.ReadNodeRef<CPlugEntRecordData>();
+    int u02 = r.ReadInt32();
+    CPlugEntRecordData recordData = r.ReadNodeRef<CPlugEntRecordData>();
 }
 ```

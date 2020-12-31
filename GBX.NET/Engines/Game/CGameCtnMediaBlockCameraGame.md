@@ -27,8 +27,8 @@ void Read (GameBoxReader r)
 {
     float start = r.ReadSingle();
     float end = r.ReadSingle();
-	int type = r.ReadInt32();
-	int target = r.ReadInt32();
+    int type = r.ReadInt32();
+    int target = r.ReadInt32();
 }
 ```
 
@@ -39,8 +39,8 @@ void Read (GameBoxReader r)
 {
     float start = r.ReadSingle();
     float end = r.ReadSingle();
-	LookbackString gameCam = r.ReadLookbackString();
-	int target = r.ReadInt32();
+    LookbackString gameCam = r.ReadLookbackString();
+    int target = r.ReadInt32();
 }
 ```
 

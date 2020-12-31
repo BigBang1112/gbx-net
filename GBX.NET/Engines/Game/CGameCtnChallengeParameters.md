@@ -8,7 +8,7 @@
 - [0x003](#0x003)
 - [0x004](#0x004)
 - [0x005](#0x005)
-- [0x006](#0x006)
+- [0x006 (items)](#0x006-items)
 - [0x007](#0x007)
 - [0x008 (stunts)](#0x008-stunts)
 - [0x00A - skippable](#0x00A---skippable)
@@ -20,16 +20,16 @@
 ```cs
 void Read(GameBoxReader r)
 {
-    int a = r.ReadInt32();
-    int b = r.ReadInt32();
-    int c = r.ReadInt32();
-    int d = r.ReadInt32();
+    int u01 = r.ReadInt32();
+    int u02 = r.ReadInt32();
+    int u03 = r.ReadInt32();
+    int u04 = r.ReadInt32();
 
-    int e = r.ReadInt32();
-    int f = r.ReadInt32();
-    int g = r.ReadInt32();
+    int u05 = r.ReadInt32();
+    int u06 = r.ReadInt32();
+    int u07 = r.ReadInt32();
 
-    int h = r.ReadInt32();
+    int u08 = r.ReadInt32();
 }
 ```
 
@@ -37,14 +37,14 @@ void Read(GameBoxReader r)
 
 | Variable | ~ | ~ | ~ | ~ | ~
 | --- | --- | --- | --- | --- | --- 
-| int a | ~ | ~ | ~ | ~ | ~
-| int b | ~ | ~ | ~ | ~ | ~
-| int c | ~ | ~ | ~ | ~ | ~
-| int d | ~ | ~ | ~ | ~ | ~
-| int e | ~ | ~ | ~ | ~ | ~
-| int f | ~ | ~ | ~ | ~ | ~
-| int g | ~ | ~ | ~ | ~ | ~
-| int h | ~ | ~ | ~ | ~ | ~
+| int u01 | ~ | ~ | ~ | ~ | ~
+| int u02 | ~ | ~ | ~ | ~ | ~
+| int u03 | ~ | ~ | ~ | ~ | ~
+| int u04 | ~ | ~ | ~ | ~ | ~
+| int u05 | ~ | ~ | ~ | ~ | ~
+| int u06 | ~ | ~ | ~ | ~ | ~
+| int u07 | ~ | ~ | ~ | ~ | ~
+| int u08 | ~ | ~ | ~ | ~ | ~
 
 ### 0x001
 
@@ -63,24 +63,24 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-    int a = r.ReadInt32();
-    int b = r.ReadInt32();
-    int c = r.ReadInt32();
+    int u01 = r.ReadInt32();
+    int u02 = r.ReadInt32();
+    int u03 = r.ReadInt32();
 
-    float d = r.ReadSingle();
-    float e = r.ReadSingle();
-    float f = r.ReadSingle();
+    float u04 = r.ReadSingle();
+    float u05 = r.ReadSingle();
+    float u06 = r.ReadSingle();
 
-    int g = r.ReadInt32();
-    int h = r.ReadInt32();
-    int i = r.ReadInt32();
-    int j = r.ReadInt32();
-    int k = r.ReadInt32();
-    int l = r.ReadInt32();
-    int m = r.ReadInt32();
-    int n = r.ReadInt32();
-    int o = r.ReadInt32();
-    int p = r.ReadInt32();
+    int u07 = r.ReadInt32();
+    int u08 = r.ReadInt32();
+    int u09 = r.ReadInt32();
+    int u10 = r.ReadInt32();
+    int u11 = r.ReadInt32();
+    int u12 = r.ReadInt32();
+    int u13 = r.ReadInt32();
+    int u14 = r.ReadInt32();
+    int u15 = r.ReadInt32();
+    int u16 = r.ReadInt32();
 }
 ```
 
@@ -88,36 +88,36 @@ void Read(GameBoxReader r)
 
 | Variable | ~ | ~ | ~ | ~ | ~
 | --- | --- | --- | --- | --- | --- 
-| int a | ~ | ~ | ~ | ~ | ~
-| int b | ~ | ~ | ~ | ~ | ~
-| int c | ~ | ~ | ~ | ~ | ~
-| float d | ~ | ~ | ~ | ~ | ~
-| float e | ~ | ~ | ~ | ~ | ~
-| float f | ~ | ~ | ~ | ~ | ~
-| int g | ~ | ~ | ~ | ~ | ~
-| int h | ~ | ~ | ~ | ~ | ~
-| int i | ~ | ~ | ~ | ~ | ~
-| int j | ~ | ~ | ~ | ~ | ~
-| int k | ~ | ~ | ~ | ~ | ~
-| int l | ~ | ~ | ~ | ~ | ~
-| int m | ~ | ~ | ~ | ~ | ~
-| int n | ~ | ~ | ~ | ~ | ~
-| int o | ~ | ~ | ~ | ~ | ~
-| int p | ~ | ~ | ~ | ~ | ~
+| int u01 | ~ | ~ | ~ | ~ | ~
+| int u02 | ~ | ~ | ~ | ~ | ~
+| int u03 | ~ | ~ | ~ | ~ | ~
+| float u04 | ~ | ~ | ~ | ~ | ~
+| float u05 | ~ | ~ | ~ | ~ | ~
+| float u06 | ~ | ~ | ~ | ~ | ~
+| int u07 | ~ | ~ | ~ | ~ | ~
+| int u08 | ~ | ~ | ~ | ~ | ~
+| int u09 | ~ | ~ | ~ | ~ | ~
+| int u10 | ~ | ~ | ~ | ~ | ~
+| int u11 | ~ | ~ | ~ | ~ | ~
+| int u12 | ~ | ~ | ~ | ~ | ~
+| int u13 | ~ | ~ | ~ | ~ | ~
+| int u14 | ~ | ~ | ~ | ~ | ~
+| int u15 | ~ | ~ | ~ | ~ | ~
+| int u16 | ~ | ~ | ~ | ~ | ~
 
 ### 0x003
 
 ```cs
 void Read(GameBoxReader r)
 {
-    int a = r.ReadInt32();
-    float b = r.ReadSingle();
+    int u01 = r.ReadInt32();
+    float u02 = r.ReadSingle();
 
-    int c = r.ReadInt32();
-    int d = r.ReadInt32();
-    int e = r.ReadInt32();
+    int u03 = r.ReadInt32();
+    int u04 = r.ReadInt32();
+    int u05 = r.ReadInt32();
 
-    int f = r.ReadInt32();
+    int u06 = r.ReadInt32();
 }
 ```
 
@@ -125,12 +125,12 @@ void Read(GameBoxReader r)
 
 | Variable | ~ | ~ | ~ | ~ | ~
 | --- | --- | --- | --- | --- | ---
-| int a | ~ | ~ | ~ | ~ | ~
-| float b | ~ | ~ | ~ | ~ | ~
-| int c | ~ | ~ | ~ | ~ | ~
-| int d | ~ | ~ | ~ | ~ | ~
-| int e | ~ | ~ | ~ | ~ | ~
-| int f | ~ | ~ | ~ | ~ | ~
+| int u01 | ~ | ~ | ~ | ~ | ~
+| float u02 | ~ | ~ | ~ | ~ | ~
+| int u03 | ~ | ~ | ~ | ~ | ~
+| int u04 | ~ | ~ | ~ | ~ | ~
+| int u05 | ~ | ~ | ~ | ~ | ~
+| int u06 | ~ | ~ | ~ | ~ | ~
 
 ### 0x004
 
@@ -142,7 +142,7 @@ void Read(GameBoxReader r)
     int goldTime = r.ReadInt32();
     int authorTime = r.ReadInt32();
 
-    int a = r.ReadInt32();
+    int u01 = r.ReadInt32();
 }
 ```
 
@@ -150,16 +150,16 @@ void Read(GameBoxReader r)
 
 | Variable | ~ | ~ | ~ | ~ | ~
 | --- | --- | --- | --- | --- | ---
-| int a | ~ | ~ | ~ | ~ | ~
+| int u01 | ~ | ~ | ~ | ~ | ~
 
 ### 0x005
 
 ```cs
 void Read(GameBoxReader r)
 {
-    int a = r.ReadInt32();
-    int b = r.ReadInt32();
-    int c = r.ReadInt32();
+    int u01 = r.ReadInt32();
+    int u02 = r.ReadInt32();
+    int u03 = r.ReadInt32();
 }
 ```
 
@@ -167,11 +167,13 @@ void Read(GameBoxReader r)
 
 | Variable | ~ | ~ | ~ | ~ | ~
 | --- | --- | --- | --- | --- | ---
-| int a | ~ | ~ | ~ | ~ | ~
-| int b | ~ | ~ | ~ | ~ | ~
-| int c | ~ | ~ | ~ | ~ | ~
+| int u01 | ~ | ~ | ~ | ~ | ~
+| int u02 | ~ | ~ | ~ | ~ | ~
+| int u03 | ~ | ~ | ~ | ~ | ~
 
-### 0x006
+### 0x006 (items)
+
+This chunk causes "Couldn't load map" in ManiaPlanet.
 
 ```cs
 void Read(GameBoxReader r)
@@ -187,7 +189,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-    uint a = r.ReadUInt32();
+    uint u01 = r.ReadUInt32();
 }
 ```
 
@@ -195,7 +197,7 @@ void Read(GameBoxReader r)
 
 | Variable | ~ | ~ | ~ | ~ | ~
 | --- | --- | --- | --- | --- | ---
-| uint a | ~ | ~ | ~ | ~ | ~
+| uint u01 | ~ | ~ | ~ | ~ | ~
 
 ### 0x008 (stunts)
 
@@ -212,7 +214,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-    int a = r.ReadInt32();
+    int u01 = r.ReadInt32();
 
     int bronzeTime = r.ReadInt32();
     int silverTime = r.ReadInt32();
@@ -239,7 +241,7 @@ void Read(GameBoxReader r)
 {
     string mapType = r.ReadString();
     string mapStyle = r.ReadString();
-    int a = r.ReadInt32();
+    int u01 = r.ReadInt32();
 }
 ```
 
@@ -247,4 +249,4 @@ void Read(GameBoxReader r)
 
 | Variable | ~ | ~ | ~ | ~ | ~
 | --- | --- | --- | --- | --- | ---
-| int a | ~ | ~ | ~ | ~ | ~
+| int u01 | ~ | ~ | ~ | ~ | ~

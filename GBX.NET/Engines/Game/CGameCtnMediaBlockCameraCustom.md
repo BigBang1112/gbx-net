@@ -18,16 +18,16 @@ void Read(GameBoxReader r)
     for(var i = 0; i < numKeys; i++)
     {
         float time = r.ReadSingle();
-        int a = r.ReadInt32();
-        int b = r.ReadInt32();
-        int c = r.ReadInt32();
+        int u01 = r.ReadInt32();
+        int u02 = r.ReadInt32();
+        int u03 = r.ReadInt32();
         Vec3 position = r.ReadVec3();
         Vec3 pitchYawRoll = r.ReadVec3(); // in radians
         float fov = r.ReadSingle();
-        var d = r.ReadInt32();
-        var e = r.ReadInt32();
-        var f = r.ReadInt32();
-        var g = r.ReadInt32();
+        int u04 = r.ReadInt32();
+        int u05 = r.ReadInt32();
+        int u06 = r.ReadInt32();
+        int u07 = r.ReadInt32();
         Vec3 targetPosition = r.ReadVec3();
         Vec3 leftTangent = r.ReadVec3();
         Vec3 rightTangent = r.ReadVec3();
@@ -45,15 +45,15 @@ void Read(GameBoxReader r)
     for(var i = 0; i < numKeys; i++)
     {
         float time = r.ReadSingle();
-        int a = r.ReadInt32();
-        int b = r.ReadInt32();
-        int c = r.ReadInt32();
+        int u01 = r.ReadInt32();
+        int u02 = r.ReadInt32();
+        int u03 = r.ReadInt32();
         Vec3 position = r.ReadVec3();
         Vec3 pitchYawRoll = r.ReadVec3(); // in radians
         float fov = r.ReadSingle();
-        int d = r.ReadInt32();
+        int u04 = r.ReadInt32();
         int anchor = r.ReadInt32();
-        int e = r.ReadInt32();
+        int u05 = r.ReadInt32();
         int target = r.ReadInt32();
         Vec3 targetPosition = r.ReadVec3();
         Vec3 leftTangent = r.ReadVec3();
@@ -73,7 +73,7 @@ void Read(GameBoxReader r)
     for(var i = 0; i < numKeys; i++)
     {
         float time = r.ReadSingle();
-        int a = r.ReadInt32();
+        int u01 = r.ReadInt32();
         int anchorRot = r.ReadInt32();
         int anchor = r.ReadInt32();
         int anchorVis = r.ReadInt32();
@@ -81,14 +81,14 @@ void Read(GameBoxReader r)
         Vec3 position = r.ReadVec3();
         Vec3 pitchYawRoll = r.ReadVec3(); // in radians
         float fov = r.ReadSingle();
-        int b = r.ReadInt32();
-        int c = r.ReadInt32();
-        int d = r.ReadInt32();
+        int u02 = r.ReadInt32();
+        int u03 = r.ReadInt32();
+        int u04 = r.ReadInt32();
         float zIndex = r.ReadSingle();
         Vec3 leftTangent = r.ReadVec3();
-        float e = r.ReadArray<float>(8);
+        float u05 = r.ReadArray<float>(8);
         Vec3 rightTangent = r.ReadVec3();
-        float f = r.ReadArray<float>(8);
+        float u06 = r.ReadArray<float>(8);
     }
 }
 ```

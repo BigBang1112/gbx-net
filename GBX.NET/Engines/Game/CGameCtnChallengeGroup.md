@@ -2,10 +2,10 @@
 
 ## Chunks
 
-- [0x002](#0x002)
-- [0x00B](#0x00B)
+- [0x002 (default)](#0x002-default)
+- [0x00B (map infos)](#0x00B-map-infos)
 
-### 0x002
+### 0x002 (default)
 
 ```cs
 void Read(GameBoxReader r)
@@ -14,7 +14,7 @@ void Read(GameBoxReader r)
 }
 ```
 
-### 0x00B
+### 0x00B (map infos)
 
 ```cs
 void Read(GameBoxReader r)

@@ -1996,12 +1996,12 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x00F chunk (old block data)
+        #region 0x00F chunk (TM1.0 block data)
 
         /// <summary>
-        /// CGameCtnChallenge 0x00F chunk (old block data)
+        /// CGameCtnChallenge 0x00F chunk (TM1.0 block data)
         /// </summary>
-        [Chunk(0x0304300F, "old block data")]
+        [Chunk(0x0304300F, "TM1.0 block data")]
         public class Chunk0304300F : Chunk<CGameCtnChallenge>
         {
             public int Unknown1 { get; set; }
@@ -2023,12 +2023,12 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x011 chunk
+        #region 0x011 chunk (parameters)
 
         /// <summary>
-        /// CGameCtnChallenge 0x011 chunk
+        /// CGameCtnChallenge 0x011 chunk (parameters)
         /// </summary>
-        [Chunk(0x03043011)]
+        [Chunk(0x03043011, "parameters")]
         public class Chunk03043011 : Chunk<CGameCtnChallenge>
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
@@ -2041,17 +2041,17 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x012 chunk
+        #region 0x012 chunk (TM1.0 map name)
 
         /// <summary>
-        /// CGameCtnChallenge 0x012 chunk
+        /// CGameCtnChallenge 0x012 chunk (TM1.0 map name)
         /// </summary>
-        [Chunk(0x03043012)]
+        [Chunk(0x03043012, "TM1.0 map name")]
         public class Chunk03043012 : Chunk<CGameCtnChallenge>
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.String(Unknown);
+                n.MapName = rw.String(n.MapName);
             }
         }
 
@@ -2329,12 +2329,12 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x021 chunk (old mediatracker)
+        #region 0x021 chunk (legacy mediatracker)
 
         /// <summary>
-        /// CGameCtnChallenge 0x021 chunk (old mediatracker)
+        /// CGameCtnChallenge 0x021 chunk (legacy mediatracker)
         /// </summary>
-        [Chunk(0x03043021, "old mediatracker")]
+        [Chunk(0x03043021, "legacy mediatracker")]
         public class Chunk03043021 : Chunk<CGameCtnChallenge>
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
