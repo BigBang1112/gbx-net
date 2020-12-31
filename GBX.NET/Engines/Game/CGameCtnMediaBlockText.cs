@@ -19,6 +19,9 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public CControlEffectSimi Simi { get; set; }
 
+        [NodeMember]
+        public Vec3 Color { get; set; }
+
         #endregion
 
         #region Chunks
@@ -44,9 +47,20 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaBlockText n, GameBoxReaderWriter rw)
             {
-                rw.Single(Unknown);
-                rw.Single(Unknown);
-                rw.Single(Unknown);
+                n.Color = rw.Vec3(n.Color);
+            }
+        }
+
+        #endregion
+
+        #region 0x003 chunk
+
+        [Chunk(0x030A8003)]
+        public class Chunk030A8003 : Chunk<CGameCtnMediaBlockText>
+        {
+            public override void ReadWrite(CGameCtnMediaBlockText n, GameBoxReaderWriter rw)
+            {
+                rw.Single(Unknown); // 0.2
             }
         }
 

@@ -56,6 +56,8 @@ namespace GBX.NET.Engines.Control
                     rw.Writer.Write(x.Opacity);
                     rw.Writer.Write(x.Depth);
                 });
+
+                rw.Int32(Unknown);
             }
         }
 
