@@ -40,7 +40,7 @@ The class behind every single map made in Trackmania.
 - [0x042 - skippable (author)](#0x042---skippable-author)
 - 0x043 - skippable
 - [0x044 - skippable (metadata)](0x044---skippable-metadata)
-- [0x048 - skippable (baked blocks)](0x044---skippable-baked-blocks)
+- [0x048 - skippable (baked blocks)](0x048---skippable-baked-blocks)
 - [0x049 (mediatracker)](0x049-mediatracker)
 - [0x04B - skippable (objectives)](#0x04B---skippable-objectives)
 - 0x050 - skippable
