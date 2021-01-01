@@ -6,13 +6,14 @@
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Description>A wrapper for better JSON serialization of GBX, useful for comparing data.</Description>
-		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
 		<PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk, x86</PackageTags>
 		<Authors>BigBang1112</Authors>
 		<PackageReleaseNotes>Compatiblity change to .NET Framework 4.5</PackageReleaseNotes>
 		<PlatformTarget>x86</PlatformTarget>
+		<Platforms>x86</Platforms>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -30,16 +31,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include="LICENSE.txt">
-			<Pack>True</Pack>
-			<PackagePath></PackagePath>
-		</None>
-	</ItemGroup>
-
-	<ItemGroup>
-		<None Update="LICENSE.txt">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
+	  <None Include="LICENSE">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
+	  </None>
 	</ItemGroup>
 
 </Project>

@@ -316,7 +316,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallengeParameters 0x00D chunk (race validate ghost)
         /// </summary>
-        [Chunk(0x0305B00D)]
+        [Chunk(0x0305B00D, "race validate ghost")]
         public class Chunk0305B00D : Chunk<CGameCtnChallengeParameters>
         {
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)

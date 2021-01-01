@@ -13,6 +13,8 @@ namespace GBX.NET.Engines.Game
     [Node(0x03090000)]
     public class CGameCtnCampaign : Node
     {
+        #region Properties
+
         public CGameCtnChallengeGroup[] MapGroups { get; set; }
 
         public string CampaignID { get; set; }
@@ -22,6 +24,8 @@ namespace GBX.NET.Engines.Game
         public string Name { get; set; }
         public int Type { get; set; }
         public int UnlockType { get; set; }
+
+        #endregion
 
         #region Chunks
 

@@ -15,13 +15,61 @@ namespace GBX.NET.Engines.Control
 
         #region Chunks
 
+        #region 0x002 chunk
+
+        [Chunk(0x07010002)]
+        public class Chunk07010002 : Chunk<CControlEffectSimi>
+        {
+            public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
+            {
+                n.Keys = rw.Array(n.Keys, i =>
+                {
+                    var time = rw.Reader.ReadSingle();
+                    var x = rw.Reader.ReadSingle();
+                    var y = rw.Reader.ReadSingle();
+                    var rot = rw.Reader.ReadSingle();
+                    var scaleX = rw.Reader.ReadSingle();
+                    var scaleY = rw.Reader.ReadSingle();
+                    var opacity = rw.Reader.ReadSingle();
+                    var depth = rw.Reader.ReadSingle();
+
+                    return new Key()
+                    {
+                        Time = time,
+                        X = x,
+                        Y = y,
+                        Rotation = rot,
+                        ScaleX = scaleX,
+                        ScaleY = scaleY,
+                        Opacity = opacity,
+                        Depth = depth
+                    };
+                },
+                x =>
+                {
+                    rw.Writer.Write(x.Time);
+                    rw.Writer.Write(x.X);
+                    rw.Writer.Write(x.Y);
+                    rw.Writer.Write(x.Rotation);
+                    rw.Writer.Write(x.ScaleX);
+                    rw.Writer.Write(x.ScaleY);
+                    rw.Writer.Write(x.Opacity);
+                    rw.Writer.Write(x.Depth);
+                });
+
+                rw.Int32(Unknown);
+            }
+        }
+
+        #endregion
+
         #region 0x004 chunk
 
         /// <summary>
         /// CControlEffectSimi 0x004 chunk
         /// </summary>
         [Chunk(0x07010004)]
-        public class Chunk004 : Chunk<CControlEffectSimi>
+        public class Chunk07010004 : Chunk<CControlEffectSimi>
         {
             public int Unknown1 { get; set; }
             public int Unknown2 { get; set; }
@@ -79,7 +127,7 @@ namespace GBX.NET.Engines.Control
         /// CControlEffectSimi 0x005 chunk
         /// </summary>
         [Chunk(0x07010005)]
-        public class Chunk005 : Chunk<CControlEffectSimi>
+        public class Chunk07010005 : Chunk<CControlEffectSimi>
         {
             public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
             {

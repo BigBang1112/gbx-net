@@ -14,23 +14,23 @@
 void Read (GameBoxReader r)
 {
     int numKeys = r.ReadInt32();
-	for (var i = 0; i < numKeys; i++)
-	{
-		var time = r.ReadSingle();
-		var position = r.ReadVec3();
-		var pitchYawRoll = r.ReadVec3(); // in radians
-		var fov = r.ReadSingle();
-		var anchorRot = r.ReadBoolean();
-		var anchor = r.ReadInt32();
-		var anchorVis = r.ReadBoolean();
-		var target = r.ReadInt32();
-		var targetPosition = r.ReadVec3();
-		var a = r.ReadSingle();
-		var b = r.ReadSingle();
-		var c = r.ReadSingle();
-		var d = r.ReadSingle();
-		var e = r.ReadSingle();
-	}
+    for (var i = 0; i < numKeys; i++)
+    {
+        float time = r.ReadSingle();
+        Vec3 position = r.ReadVec3();
+        Vec3 pitchYawRoll = r.ReadVec3(); // in radians
+        float fov = r.ReadSingle();
+        bool anchorRot = r.ReadBoolean();
+        int anchor = r.ReadInt32();
+        bool anchorVis = r.ReadBoolean();
+        int target = r.ReadInt32();
+        Vec3 targetPosition = r.ReadVec3();
+        float u01 = r.ReadSingle();
+        float u02 = r.ReadSingle();
+        float u03 = r.ReadSingle();
+        float u04 = r.ReadSingle();
+        float u05 = r.ReadSingle();
+    }
 }
 ```
 
@@ -40,23 +40,23 @@ void Read (GameBoxReader r)
 void Read (GameBoxReader r)
 {
     int numKeys = r.ReadInt32();
-	for (var i = 0; i < numKeys; i++)
-	{
-    	var time = r.ReadSingle();
-		var position = r.ReadVec3();
-		var pitchYawRoll = r.ReadVec3(); // in radians
-		var fov = r.ReadSingle();
-		var anchorRot = r.ReadBoolean();
-		var anchor = r.ReadInt32();
-		var anchorVis = r.ReadBoolean();
-		var target = r.ReadInt32();
-		var targetPosition = r.ReadVec3();
-		var a = r.ReadSingle();
-		var b = r.ReadSingle();
-		var c = r.ReadSingle();
-		var d = r.ReadSingle();
-		var e = r.ReadSingle();
-	}
+    for (var i = 0; i < numKeys; i++)
+    {
+        float time = r.ReadSingle();
+        Vec3 position = r.ReadVec3();
+        Vec3 pitchYawRoll = r.ReadVec3(); // in radians
+        float fov = r.ReadSingle();
+        bool anchorRot = r.ReadBoolean();
+        int anchor = r.ReadInt32();
+        bool anchorVis = r.ReadBoolean();
+        int target = r.ReadInt32();
+        Vec3 targetPosition = r.ReadVec3();
+        float u01 = r.ReadSingle();
+        float u02 = r.ReadSingle();
+        float u03 = r.ReadSingle();
+        float u04 = r.ReadSingle();
+        float u05 = r.ReadSingle();
+    }
 }
 ```
 
@@ -66,28 +66,28 @@ void Read (GameBoxReader r)
 void Read (GameBoxReader r)
 {
     int numKeys = r.ReadInt32();
-	for (var i = 0; i < numKeys; i++)
-	{
-    	var time = r.ReadSingle();
-		var position = r.ReadVec3();
-		var pitchYawRoll = r.ReadVec3(); // in radians
-		var fov = r.ReadSingle();
-		var zIndex = r.ReadSingle();
+    for (var i = 0; i < numKeys; i++)
+    {
+        float time = r.ReadSingle();
+        Vec3 position = r.ReadVec3();
+        Vec3 pitchYawRoll = r.ReadVec3(); // in radians
+        float fov = r.ReadSingle();
+        float zIndex = r.ReadSingle();
 
-		var a = r.ReadInt32();
-		var b = r.ReadInt32();
-		var c = r.ReadInt32();
-		var d = r.ReadInt32();
-		var e = r.ReadInt32();
-		var f = r.ReadInt32();
-		var g = r.ReadInt32();
-		var h = r.ReadInt32();
-		var i = r.ReadInt32();
-		var j = r.ReadInt32();
-		var k = r.ReadInt32();
-		var l = r.ReadInt32();
-		var m = r.ReadInt32();
-		var n = r.ReadInt32();
-	}
+        int u01 = r.ReadInt32();
+        int u02 = r.ReadInt32();
+        int u03 = r.ReadInt32();
+        int u04 = r.ReadInt32();
+        int u05 = r.ReadInt32();
+        int u06 = r.ReadInt32();
+        int u07 = r.ReadInt32();
+        int u08 = r.ReadInt32();
+        int u09 = r.ReadInt32();
+        int u10 = r.ReadInt32();
+        int u11 = r.ReadInt32();
+        int u12 = r.ReadInt32();
+        int u13 = r.ReadInt32();
+        int u14 = r.ReadInt32();
+    }
 }
 ```

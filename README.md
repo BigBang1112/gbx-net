@@ -71,6 +71,10 @@ else if (gbx is GameBox<CGameCtnReplayRecord> gbxReplay)
 }
 ```
 
+## License
+
+The source code files fall under [GNU General Public License v3.0](LICENSE). Information gathered from the project (chunk structure, parse examples, data structure, wiki information, markdown) is usable with [The Unlicense](https://unlicense.org/).
+
 ## Alternative GBX parsers
 
 - [gbx.js](https://github.com/ThaumicTom/gbx.js) (GBX header parser for clientside JavaScript)

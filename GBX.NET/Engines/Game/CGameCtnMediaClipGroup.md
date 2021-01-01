@@ -18,17 +18,17 @@ void Read (GameBoxReader r)
 
     int numTriggers = r.ReadInt32();
     for (var i = 0; i < numTriggers; i++)
-	{
-		int numCoords = r.ReadInt32();
-		for (var j = 0; j < numCoords; j++)
-		{
-			Int3 coord = r.ReadInt3();
-			int u01 = r.ReadInt32();
-			int u02 = r.ReadInt32();
-			int u03 = r.ReadInt32();
-			int u04 = r.ReadInt32();
-		}
-	}
+    {
+        int numCoords = r.ReadInt32();
+        for (var j = 0; j < numCoords; j++)
+        {
+            Int3 coord = r.ReadInt3();
+            int u01 = r.ReadInt32();
+            int u02 = r.ReadInt32();
+            int u03 = r.ReadInt32();
+            int u04 = r.ReadInt32();
+        }
+    }
 }
 ```
 
@@ -45,18 +45,18 @@ void Read (GameBoxReader r)
 
     int numTriggers = r.ReadInt32();
     for (var i = 0; i < numTriggers; i++)
-	{
-		int numCoords = r.ReadInt32();
-		for (var j = 0; j < numCoords; j++)
-		{
-			int u01 = r.ReadInt32();
-			int u02 = r.ReadInt32();
-			int u03 = r.ReadInt32();
-			int u04 = r.ReadInt32();
-			int u05 = r.ReadInt32();
-			int u06 = r.ReadInt32();
-			Int3 coord = r.ReadInt3();
-		}
-	}
+    {
+        int numCoords = r.ReadInt32();
+        for (var j = 0; j < numCoords; j++)
+        {
+            int u01 = r.ReadInt32();
+            int u02 = r.ReadInt32();
+            int u03 = r.ReadInt32();
+            int u04 = r.ReadInt32();
+            int u05 = r.ReadInt32();
+            int u06 = r.ReadInt32();
+            Int3 coord = r.ReadInt3();
+        }
+    }
 }
 ```
