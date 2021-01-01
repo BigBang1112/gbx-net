@@ -1,4 +1,4 @@
-﻿# CGameCtnMediaBlockCamera (0x030A2000)
+﻿# CGameCtnMediaBlockCameraCustom (0x030A2000)
 
 ### Inherits [CGameCtnMediaBlockCamera.md](CGameCtnMediaBlockCamera.md)
 
