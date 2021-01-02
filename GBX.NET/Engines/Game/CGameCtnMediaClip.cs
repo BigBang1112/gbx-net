@@ -132,6 +132,38 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region 0x00A chunk
+
+        /// <summary>
+        /// ManiaPlanet 3
+        /// </summary>
+        [Chunk(0x0307900A)]
+        public class Chunk0307900A : Chunk<CGameCtnMediaClip>
+        {
+            public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
+            }
+        }
+
+        #endregion
+
+        #region 0x00B chunk
+
+        /// <summary>
+        /// ManiaPlanet 3
+        /// </summary>
+        [Chunk(0x0307900B)]
+        public class Chunk0307900B : Chunk<CGameCtnMediaClip>
+        {
+            public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
+            }
+        }
+
+        #endregion
+
         #region 0x00D chunk
 
         [Chunk(0x0307900D)]
