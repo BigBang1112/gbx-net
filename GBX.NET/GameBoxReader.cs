@@ -243,6 +243,14 @@ namespace GBX.NET
             return (bytes[0], bytes[1], bytes[2]);
         }
 
+        public TimeSpan? ReadTimeSpan()
+        {
+            var time = ReadInt32();
+            if (time < 0)
+                return null;
+            return TimeSpan.FromMilliseconds(time);
+        }
+
         public byte[] ReadTill(uint uint32)
         {
             List<byte> bytes = new List<byte>();

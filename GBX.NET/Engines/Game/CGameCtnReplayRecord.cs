@@ -19,7 +19,7 @@ namespace GBX.NET.Engines.Game
         public Meta MapInfo { get; set; }
 
         [NodeMember]
-        public TimeSpan Time { get; set; }
+        public TimeSpan? Time { get; set; }
 
         [NodeMember]
         public string Nickname { get; set; }
@@ -86,7 +86,7 @@ namespace GBX.NET.Engines.Game
                 if(Version >= 2)
                 {
                     n.MapInfo = r.ReadMeta();
-                    n.Time = TimeSpan.FromMilliseconds(r.ReadInt32());
+                    n.Time = r.ReadTimeSpan();
                     n.Nickname = r.ReadString();
 
                     if (Version >= 6)
@@ -370,7 +370,7 @@ namespace GBX.NET.Engines.Game
             private readonly CGameCtnReplayRecord node;
 
             public Meta MapInfo => node.MapInfo;
-            public TimeSpan Time => node.Time;
+            public TimeSpan? Time => node.Time;
             public string Nickname => node.Nickname;
             public string DriverLogin => node.DriverLogin;
             public string TitleID => node.TitleID;

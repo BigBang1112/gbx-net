@@ -244,6 +244,13 @@ namespace GBX.NET
             Write(node, (IGameBoxBody)Lookbackable);
         }
 
+        public void Write(TimeSpan? timeSpan)
+        {
+            if (timeSpan.HasValue)
+                Write(Convert.ToInt32(timeSpan.Value.TotalMilliseconds));
+            else Write(-1);
+        }
+
         public void WriteBytes(byte[] bytes)
         {
             Write(bytes, 0, bytes.Length);

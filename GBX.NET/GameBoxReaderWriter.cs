@@ -558,19 +558,8 @@ namespace GBX.NET
 
         public TimeSpan? TimeSpan32(TimeSpan? variable)
         {
-            if (Reader != null)
-            {
-                var time = Reader.ReadInt32();
-                if (time < 0)
-                    return null;
-                return TimeSpan.FromMilliseconds(time);
-            }
-            else if (Writer != null)
-            {
-                if (variable != null && variable.HasValue)
-                    Writer.Write(Convert.ToInt32(variable.Value.TotalMilliseconds));
-                else Writer.Write(-1);
-            }
+            if (Reader != null) return Reader.ReadTimeSpan();
+            else if (Writer != null) Writer.Write(variable);
             return variable;
         }
         
