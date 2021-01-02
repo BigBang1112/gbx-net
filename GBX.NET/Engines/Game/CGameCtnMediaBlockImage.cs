@@ -37,6 +37,19 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region 0x001 chunk
+
+        [Chunk(0x030A5001)]
+        public class Chunk030A5001 : Chunk<CGameCtnMediaBlockImage>
+        {
+            public override void ReadWrite(CGameCtnMediaBlockImage n, GameBoxReaderWriter rw)
+            {
+                rw.Single(Unknown); // 0.2
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Debug view
