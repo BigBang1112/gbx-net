@@ -97,11 +97,15 @@ namespace GBX.NET.Engines.Game
                 n.IsLooping = rw.Boolean(n.IsLooping);
                 n.IsMusic = rw.Boolean(n.IsMusic);
 
-                if(Version >= 2) // ManiaPlanet
+                if(Version >= 1) // ManiaPlanet
                 {
                     n.StopWithClip = rw.Boolean(n.StopWithClip);
-                    n.AudioToSpeech = rw.Boolean(n.AudioToSpeech);
-                    n.AudioToSpeechTarget = rw.Int32(n.AudioToSpeechTarget);
+
+                    if (Version >= 2)
+                    {
+                        n.AudioToSpeech = rw.Boolean(n.AudioToSpeech);
+                        n.AudioToSpeechTarget = rw.Int32(n.AudioToSpeechTarget);
+                    }
                 }
             }
         }
