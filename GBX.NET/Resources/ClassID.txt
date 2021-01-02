@@ -383,6 +383,7 @@
   0EE CGameLadderScores
   10D CGameCtnMacroBlockInfo
   114 CGameCtnMacroDecals
+  129 CGameCtnMediaBlockTimeSpeed
   14C CGameCtnBlockInfoTransition
   199 CGameCtnMediaBlockFog
   29F CGameCtnMediaBlockEntity
