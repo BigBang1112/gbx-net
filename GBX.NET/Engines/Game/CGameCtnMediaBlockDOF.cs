@@ -15,44 +15,105 @@ namespace GBX.NET.Engines.Game
 
         #region Chunks
 
-        #region 0x002 chunk
+        #region 0x000 chunk
 
-        [Chunk(0x03126002)]
-        public class Chunk03126002 : Chunk<CGameCtnMediaBlockDOF>
+        [Chunk(0x03126000)]
+        public class Chunk03126000 : Chunk<CGameCtnMediaBlockDOF>
         {
-            public override void Read(CGameCtnMediaBlockDOF n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void ReadWrite(CGameCtnMediaBlockDOF n, GameBoxReaderWriter rw)
             {
-                n.Keys = r.ReadArray(i =>
+                n.Keys = rw.Array(n.Keys, (i, r) =>
                 {
                     var time = r.ReadSingle();
                     var zFocus = r.ReadSingle();
                     var lensSize = r.ReadSingle();
-                    var a = r.ReadInt32();
-                    var b = r.ReadInt32();
-                    var c = r.ReadInt32();
-                    var d = r.ReadInt32();
+
+                    return new Key()
+                    {
+                        Time = time,
+                        ZFocus = zFocus,
+                        LensSize = lensSize
+                    };
+                },
+                (x, w) =>
+                {
+                    w.Write(x.Time);
+                    w.Write(x.ZFocus);
+                    w.Write(x.LensSize);
+                });
+            }
+        }
+
+        #endregion
+
+        #region 0x001 chunk
+
+        [Chunk(0x03126001)]
+        public class Chunk03126001 : Chunk<CGameCtnMediaBlockDOF>
+        {
+            public override void ReadWrite(CGameCtnMediaBlockDOF n, GameBoxReaderWriter rw)
+            {
+                n.Keys = rw.Array(n.Keys, (i, r) =>
+                {
+                    var time = r.ReadSingle();
+                    var zFocus = r.ReadSingle();
+                    var lensSize = r.ReadSingle();
+                    var u01 = r.ReadInt32();
 
                     return new Key()
                     {
                         Time = time,
                         ZFocus = zFocus,
                         LensSize = lensSize,
-                        Unknown = new object[] { a, b, c, d }
+                        Unknown = new object[] { u01 }
                     };
-                });
-            }
-
-            public override void Write(CGameCtnMediaBlockDOF n, GameBoxWriter w, GameBoxReader unknownR)
-            {
-                w.Write(n.Keys, x =>
+                },
+                (x, w) =>
                 {
                     w.Write(x.Time);
                     w.Write(x.ZFocus);
                     w.Write(x.LensSize);
                     w.Write((int)x.Unknown[0]);
-                    w.Write((int)x.Unknown[1]);
-                    w.Write((int)x.Unknown[2]);
-                    w.Write((int)x.Unknown[3]);
+                });
+            }
+        }
+
+        #endregion
+
+        #region 0x002 chunk
+
+        [Chunk(0x03126002)]
+        public class Chunk03126002 : Chunk<CGameCtnMediaBlockDOF>
+        {
+            public override void ReadWrite(CGameCtnMediaBlockDOF n, GameBoxReaderWriter rw)
+            {
+                n.Keys = rw.Array(n.Keys, (i, r) =>
+                {
+                    var time = r.ReadSingle();
+                    var zFocus = r.ReadSingle();
+                    var lensSize = r.ReadSingle();
+                    var u01 = r.ReadInt32();
+                    var u02 = r.ReadSingle();
+                    var u03 = r.ReadSingle();
+                    var u04 = r.ReadSingle();
+
+                    return new Key()
+                    {
+                        Time = time,
+                        ZFocus = zFocus,
+                        LensSize = lensSize,
+                        Unknown = new object[] { u01, u02, u03, u04 }
+                    };
+                },
+                (x, w) =>
+                {
+                    w.Write(x.Time);
+                    w.Write(x.ZFocus);
+                    w.Write(x.LensSize);
+                    w.Write((int)x.Unknown[0]);
+                    w.Write((float)x.Unknown[1]);
+                    w.Write((float)x.Unknown[2]);
+                    w.Write((float)x.Unknown[3]);
                 });
             }
         }
