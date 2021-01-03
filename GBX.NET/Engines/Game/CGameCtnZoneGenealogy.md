@@ -21,8 +21,8 @@ void Read (GameBoxReader r)
 void Read (GameBoxReader r)
 {
     int numZoneIds = r.ReadInt32();
-	for (var i = 0; i < numZoneIds; i++)
-		string zoneId = r.ReadLookbackString();
+    for (var i = 0; i < numZoneIds; i++)
+        string zoneId = r.ReadLookbackString();
     int dir = r.ReadInt32();
     string currentZoneId = r.ReadLookbackString();
 }

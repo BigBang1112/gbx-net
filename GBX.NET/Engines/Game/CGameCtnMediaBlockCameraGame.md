@@ -27,8 +27,20 @@ void Read (GameBoxReader r)
 {
     float start = r.ReadSingle();
     float end = r.ReadSingle();
-    int type = r.ReadInt32();
+    EGameCam type = (EGameCam)r.ReadInt32();
     int target = r.ReadInt32();
+}
+```
+
+#### Enums
+
+```cs
+enum EGameCam : int
+{
+    Behind,
+    Close,
+    Internal,
+    Orbital
 }
 ```
 
@@ -49,6 +61,27 @@ void Read (GameBoxReader r)
 ```cs
 void Read (GameBoxReader r)
 {
-    
+    int version = r.ReadInt32();
+    float start = r.ReadSingle();
+    float end = r.ReadSingle();
+    EGameCam type = (EGameCam)r.ReadInt32();
+
+    // more unknown data with unknown length
+    // you can read this section just fine until you reach 0xFACADE01
+}
+```
+
+#### Enums
+
+```cs
+enum EGameCam : int
+{
+    Default,
+    Internal,
+    External,
+    Helico,
+    Free,
+    Spectator,
+    External_2
 }
 ```
