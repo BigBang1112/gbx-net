@@ -14,19 +14,31 @@ void Read(GameBoxReader r)
     Meta itemModel = r.ReadMeta();
     Vec3 pitchYawRoll = r.ReadVec3();
     Byte3 blockUnitCoord = r.ReadByte3();
-    int a = r.ReadInt32();
+    int u01 = r.ReadInt32();
     Vec3 absolutePositionInMap = r.ReadVec3();
     int specialWaypoint = r.ReadInt32();
     if(specialWaypoint != -1)
         CGameWaypointSpecialProperty waypointSpecialProperty = Parse<CGameWaypointSpecialProperty>();
-    short flags = r.ReadInt16();
-    Vec3 pivotPosition = r.ReadVec3();
-    float scale = r.ReadSingle();
 
-    if(version >= 8) // TM 2020
+    if (version >= 4)
     {
-        Vec3 b = r.ReadVec3();
-        Vec3 c = r.ReadVec3();
+        short flags = r.ReadInt16();
+
+        if (version >= 5)
+        {
+            Vec3 pivotPosition = r.ReadVec3();
+
+            if (version >= 6)
+            {
+                float scale = r.ReadSingle();
+
+                if (version >= 8) // TM 2020
+                {
+                    Vec3 u02 = r.ReadVec3();
+                    Vec3 u03 = r.ReadVec3();
+                }
+            }
+        }
     }
 }
 ```
