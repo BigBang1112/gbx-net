@@ -31,6 +31,9 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public bool StopWhenLeave { get; set; }
 
+        [NodeMember]
+        public int LocalPlayerClipEntIndex { get; set; }
+
         #endregion
 
         #region Methods
@@ -100,7 +103,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                n.LocalPlayerClipEntIndex = rw.Int32(n.LocalPlayerClipEntIndex);
             }
         }
 
@@ -126,7 +129,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.String(Unknown);
             }
         }
 
@@ -142,7 +145,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                n.StopWhenLeave = rw.Boolean(n.StopWhenLeave);
             }
         }
 
@@ -155,6 +158,19 @@ namespace GBX.NET.Engines.Game
         /// </summary>
         [Chunk(0x0307900B)]
         public class Chunk0307900B : Chunk<CGameCtnMediaClip>
+        {
+            public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
+            {
+                rw.Boolean(Unknown); // 99% StopWhenRespawn
+            }
+        }
+
+        #endregion
+
+        #region 0x00C chunk
+
+        [Chunk(0x0307900C)]
+        public class Chunk0307900C : Chunk<CGameCtnMediaClip>
         {
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
@@ -172,8 +188,8 @@ namespace GBX.NET.Engines.Game
             public int Version { get; set; } = 10;
 
             public int U01 { get; set; }
-            public int U03 { get; set; }
-            public int U05 { get; set; }
+            public bool U03 { get; set; }
+            public string U05 { get; set; }
             public float U06 { get; set; } = 0.2f;
             public int U07 { get; set; } = -1;
 
@@ -189,11 +205,11 @@ namespace GBX.NET.Engines.Game
                 n.Name = rw.String(n.Name);
 
                 n.StopWhenLeave = rw.Boolean(n.StopWhenLeave);
-                U03 = rw.Int32(U03);
+                U03 = rw.Boolean(U03);
                 n.StopWhenRespawn = rw.Boolean(n.StopWhenRespawn);
-                U05 = rw.Int32(U05);
+                U05 = rw.String(U05);
                 U06 = rw.Single(U06);
-                U07 = rw.Int32(U07); // -1
+                n.LocalPlayerClipEntIndex = rw.Int32(n.LocalPlayerClipEntIndex);
             }
         }
 

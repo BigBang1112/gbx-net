@@ -14,7 +14,7 @@ namespace GBX.NET.Engines.Game
         #region Properties
 
         [NodeMember]
-        public CControlEffectSimi Simi { get; set; }
+        public CControlEffectSimi Effect { get; set; }
 
         [NodeMember]
         public FileRef Image { get; set; }
@@ -30,7 +30,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaBlockImage n, GameBoxReaderWriter rw)
             {
-                n.Simi = rw.NodeRef<CControlEffectSimi>(n.Simi);
+                n.Effect = rw.NodeRef<CControlEffectSimi>(n.Effect);
                 n.Image = rw.FileRef(n.Image);
             }
         }
@@ -58,7 +58,7 @@ namespace GBX.NET.Engines.Game
         {
             private readonly CGameCtnMediaBlockImage node;
 
-            public CControlEffectSimi Simi => node.Simi;
+            public CControlEffectSimi Effect => node.Effect;
             public FileRef Image => node.Image;
 
             public DebugView(CGameCtnMediaBlockImage node) => this.node = node;

@@ -236,7 +236,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                r.ReadNodeRef();
+                n.Clip = r.ReadNodeRef<CGameCtnMediaClip>();
             }
         }
 
@@ -269,9 +269,9 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x00E chunk
+        #region 0x00E chunk (events)
 
-        [Chunk(0x0309300E)]
+        [Chunk(0x0309300E, "events")]
         public class Chunk0309300E : Chunk<CGameCtnReplayRecord>
         {
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)

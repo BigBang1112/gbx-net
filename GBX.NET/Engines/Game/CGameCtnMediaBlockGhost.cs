@@ -9,19 +9,19 @@ namespace GBX.NET.Engines.Game
         #region Properties
 
         [NodeMember]
-        public float? Start { get; set; }
+        public float Start { get; set; }
 
         [NodeMember]
-        public float? End { get; set; }
+        public float End { get; set; }
 
         [NodeMember]
         public Key[] Keys { get; set; }
 
         [NodeMember]
-        public CGameCtnGhost Ghost { get; set; }
+        public CGameCtnGhost GhostModel { get; set; }
 
         [NodeMember]
-        public float? Offset { get; set; }
+        public float StartOffset { get; set; }
 
         [NodeMember]
         public bool NoDamage { get; set; }
@@ -43,10 +43,10 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw)
             {
-                n.Start = rw.Single(n.Start.GetValueOrDefault());
-                n.End = rw.Single(n.End.GetValueOrDefault(3));
-                n.Ghost = rw.NodeRef<CGameCtnGhost>(n.Ghost);
-                n.Offset = rw.Single(n.Offset.GetValueOrDefault());
+                n.Start = rw.Single(n.Start);
+                n.End = rw.Single(n.End);
+                n.GhostModel = rw.NodeRef<CGameCtnGhost>(n.GhostModel);
+                n.StartOffset = rw.Single(n.StartOffset);
             }
         }
 
@@ -74,8 +74,8 @@ namespace GBX.NET.Engines.Game
                     rw.Writer.Write(x.Unknown);
                 });
 
-                n.Ghost = rw.NodeRef<CGameCtnGhost>(n.Ghost);
-                n.Offset = rw.Single(n.Offset.GetValueOrDefault());
+                n.GhostModel = rw.NodeRef<CGameCtnGhost>(n.GhostModel);
+                n.StartOffset = rw.Single(n.StartOffset);
                 n.NoDamage = rw.Boolean(n.NoDamage);
                 n.ForceLight = rw.Boolean(n.ForceLight);
                 n.ForceHue = rw.Boolean(n.ForceHue);
@@ -101,11 +101,11 @@ namespace GBX.NET.Engines.Game
         {
             private readonly CGameCtnMediaBlockGhost node;
 
-            public float? Start => node.Start;
-            public float? End => node.End;
+            public float Start => node.Start;
+            public float End => node.End;
             public Key[] Keys => node.Keys;
-            public CGameGhost Ghost => node.Ghost;
-            public float? Offset => node.Offset;
+            public CGameGhost GhostModel => node.GhostModel;
+            public float StartOffset => node.StartOffset;
             public bool NoDamage => node.NoDamage;
             public bool ForceLight => node.ForceLight;
             public bool ForceHue => node.ForceHue;
