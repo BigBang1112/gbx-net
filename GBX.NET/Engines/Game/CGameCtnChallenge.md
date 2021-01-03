@@ -156,7 +156,7 @@ void Read(GameBoxReader r)
 #### Enums
 
 ```cs
-public enum BoatName : byte
+enum BoatName : byte
 {
     Acc,
     Multi,
@@ -164,14 +164,14 @@ public enum BoatName : byte
     OffShore
 }
 
-public enum RaceMode : byte
+enum RaceMode : byte
 {
     FleetRace,
     MatchRace,
     TeamRace
 }
 
-public enum WindDirection : byte
+enum WindDirection : byte
 {
     North,
     NorthEast,
@@ -183,7 +183,7 @@ public enum WindDirection : byte
     NorthWest
 }
 
-public enum Weather : byte
+enum Weather : byte
 {
     Sunny,
     Cloudy,
@@ -191,7 +191,7 @@ public enum Weather : byte
     Stormy
 }
 
-public enum StartDelay : byte
+enum StartDelay : byte
 {
     Immediate,
     OneMin,
@@ -200,7 +200,7 @@ public enum StartDelay : byte
     EightMin
 }
 
-public enum AILevel : byte
+enum AILevel : byte
 {
     Easy,
     Intermediate,
@@ -368,7 +368,7 @@ void Read(GameBoxReader r)
 #### Enums
 
 ```cs
-public enum TrackKind : byte
+enum TrackKind : byte
 {
     EndMarker,
     Campaign,
@@ -487,7 +487,7 @@ void Read(GameBoxReader r)
 #### Enums
 
 ```cs
-public enum TrackKind : int
+enum TrackKind : int
 {
     EndMarker,
     Campaign,
@@ -588,7 +588,7 @@ void Read(GameBoxReader r)
 #### Enums
 
 ```cs
-public enum PlayMode : int
+enum PlayMode : int
 {
     Race,
     Platform,
@@ -648,7 +648,7 @@ void Read(GameBoxReader r)
 #### Enums
 
 ```cs
-public enum Direction : byte
+enum Direction : byte
 {
     North,
     East,
@@ -1095,7 +1095,7 @@ void Read(GameBoxReader r)
 #### Enums
 
 ```cs
-public enum ScriptType
+enum ScriptType
 {
     Void,
     Boolean,
