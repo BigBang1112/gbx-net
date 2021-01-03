@@ -5,9 +5,13 @@
 - [0x003](#0x003)
 - [0x004](#0x004)
 - [0x005](#0x005)
+- 0x006
 - [0x007](#0x007)
 - [0x008](#0x008)
 - [0x009](#0x009)
+- [0x00A](#0x00A)
+- [0x00B](#0x00B)
+- [0x00C](#0x00C)
 - [0x00D](#0x00d)
 
 ### 0x003
@@ -49,12 +53,16 @@ void Read (GameBoxReader r)
 }
 ```
 
+### 0x006
+
+Undiscovered.
+
 ### 0x007
 
 ```cs
 void Read (GameBoxReader r)
 {
-    int u01 = r.ReadInt32();
+    int localPlayerClipEntIndex = r.ReadInt32();
 }
 ```
 
@@ -63,11 +71,38 @@ void Read (GameBoxReader r)
 ```cs
 void Read (GameBoxReader r)
 {
-    float u01 = r.ReadSingle();
+    float u01 = r.ReadSingle(); // 0.2
 }
 ```
 
 ### 0x009
+
+```cs
+void Read (GameBoxReader r)
+{
+    string u01 = r.ReadString();
+}
+```
+
+### 0x00A
+
+```cs
+void Read (GameBoxReader r)
+{
+    bool stopWhenLeave = r.ReadBoolean();
+}
+```
+
+### 0x00B
+
+```cs
+void Read (GameBoxReader r)
+{
+    bool u01 = r.ReadBoolean(); // 99% StopWhenRespawn
+}
+```
+
+### 0x00C
 
 ```cs
 void Read (GameBoxReader r)
@@ -91,10 +126,10 @@ void Read (GameBoxReader r)
     string name = r.ReadString();
 
     bool stopWhenLeave = r.ReadBoolean();
-    int u03 = r.ReadInt32();
+    bool u03 = r.ReadBoolean();
     bool stopWhenRespawn = r.ReadBoolean();
-    int u05 = r.ReadInt32();
+    string u05 = r.ReadString();
     float u06 = r.ReadSingle();
-    int u07 = r.ReadInt32(); // -1
+    int localPlayerClipEntIndex = r.ReadInt32();
 }
 ```
