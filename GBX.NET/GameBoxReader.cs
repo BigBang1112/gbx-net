@@ -207,6 +207,17 @@ namespace GBX.NET
             return result;
         }
 
+        internal T[] ReadArray<T>(Func<int, GameBoxReader, T> forLoop)
+        {
+            var length = ReadInt32();
+            var result = new T[length];
+
+            for (var i = 0; i < length; i++)
+                result[i] = forLoop.Invoke(i, this);
+
+            return result;
+        }
+
         public Vec2 ReadVec2()
         {
             var floats = ReadArray<float>(2);

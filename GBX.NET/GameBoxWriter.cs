@@ -96,6 +96,21 @@ namespace GBX.NET
             }
         }
 
+        internal void Write<T>(T[] array, Action<T, GameBoxWriter> forLoop)
+        {
+            if (array == null)
+            {
+                Write(0);
+            }
+            else
+            {
+                Write(array.Length);
+
+                for (var i = 0; i < array.Length; i++)
+                    forLoop.Invoke(array[i], this);
+            }
+        }
+
         public void Write<T>(List<T> list, Action<T> forLoop)
         {
             if (list == null)

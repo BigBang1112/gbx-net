@@ -66,6 +66,13 @@ namespace GBX.NET
             return array;
         }
 
+        public T[] Array<T>(T[] array, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        {
+            if (Reader != null) return Reader.ReadArray(forLoopRead);
+            else if (Writer != null) Writer.Write(array, forLoopWrite);
+            return array;
+        }
+
         public bool Boolean(bool variable, bool asByte)
         {
             if (Reader != null) return Reader.ReadBoolean(asByte);
