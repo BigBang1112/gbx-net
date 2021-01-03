@@ -18,11 +18,13 @@ namespace GBX.NET.Engines.Game
         public float End { get; set; }
 
         [NodeMember]
-        public string Manialink { get; set; }
+        public string ManialinkURL { get; set; }
 
         #endregion
 
         #region Chunks
+
+        // 0x000 chunk
 
         #region 0x001 chunk
 
@@ -37,7 +39,7 @@ namespace GBX.NET.Engines.Game
 
                 n.Start = rw.Single(n.Start);
                 n.End = rw.Single(n.End);
-                n.Manialink = rw.String(n.Manialink);
+                n.ManialinkURL = rw.String(n.ManialinkURL);
             }
         }
 
@@ -53,7 +55,7 @@ namespace GBX.NET.Engines.Game
 
             public float Start => node.Start;
             public float End => node.End;
-            public string Manialink => node.Manialink;
+            public string Manialink => node.ManialinkURL;
 
             public DebugView(CGameCtnMediaBlockManialink node) => this.node = node;
         }
