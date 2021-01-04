@@ -61,6 +61,8 @@ namespace GBX.NET.Engines.Game
             public CControlEffectSimi Effect => node.Effect;
             public FileRef Image => node.Image;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaBlockImage node) => this.node = node;
         }
 

@@ -70,6 +70,8 @@ namespace GBX.NET.Engines.Game
             public bool AutoZoom => node.AutoZoom;
             public bool AutoFocus => node.AutoFocus;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaBlockCameraEffectInertialTracking node) => this.node = node;
         }
 

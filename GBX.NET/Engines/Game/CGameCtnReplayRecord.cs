@@ -217,13 +217,13 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                r.ReadInt32();
-                r.ReadInt32();
+                var u01 = r.ReadInt32();
+                var u02 = r.ReadInt32();
 
                 n.Ghosts = r.ReadArray(i => r.ReadNodeRef<CGameCtnGhost>());
 
-                r.ReadInt32();
-                r.ReadInt32();
+                var u03 = r.ReadInt32();
+                var u04 = r.ReadInt32();
             }
         }
 
@@ -400,6 +400,8 @@ namespace GBX.NET.Engines.Game
             public CGameCtnMediaClip Clip => node.Clip;
             public CPlugEntRecordData RecordData => node.RecordData;
             public CCtnMediaBlockEventTrackMania Events => node.Events;
+
+            public ChunkSet Chunks => node.Chunks;
 
             public DebugView(CGameCtnReplayRecord node) => this.node = node;
         }

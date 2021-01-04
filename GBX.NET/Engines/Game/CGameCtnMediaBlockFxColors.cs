@@ -1,13 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Diagnostics;
 
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03080000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx
     {
+        #region Properties
+
         public Key[] Keys { get; set; }
+
+        #endregion
+
+        #region Chunks
+
+        #region 0x003 chunk
 
         [Chunk(0x03080003)]
         public class Chunk03080003 : Chunk<CGameCtnMediaBlockFxColors>
@@ -77,6 +84,12 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        #endregion
+
+        #endregion
+
+        #region Other classes
+
         public class Key : MediaBlockKey
         {
             public float Intensity { get; set; }
@@ -104,5 +117,22 @@ namespace GBX.NET.Engines.Game
             public float FarU03 { get; set; }
             public float FarU04 { get; set; }
         }
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCtnMediaBlockFxColors node;
+
+            public Key[] Keys => node.Keys;
+
+            public ChunkSet Chunks => node.Chunks;
+
+            public DebugView(CGameCtnMediaBlockFxColors node) => this.node = node;
+        }
+
+        #endregion
     }
 }

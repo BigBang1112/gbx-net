@@ -228,6 +228,8 @@ namespace GBX.NET.Engines.Game
             public bool StopWhenRespawn => node.StopWhenRespawn;
             public bool StopWhenLeave => node.StopWhenLeave;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaClip node) => this.node = node;
         }
 

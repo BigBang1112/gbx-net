@@ -120,6 +120,8 @@ namespace GBX.NET.Engines.Game
             public FileRef ParentPackDesc => node.ParentPackDesc;
             public FileRef SecondaryPackDesc => node.SecondaryPackDesc;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnBlockSkin node) => this.node = node;
         }
 

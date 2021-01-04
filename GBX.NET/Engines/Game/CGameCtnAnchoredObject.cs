@@ -188,6 +188,8 @@ namespace GBX.NET.Engines.Game
             public Vec3 PivotPosition => node.PivotPosition;
             public int Variant => node.Variant;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnAnchoredObject node) => this.node = node;
         }
 

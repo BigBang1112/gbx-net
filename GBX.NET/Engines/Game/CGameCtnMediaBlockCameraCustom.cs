@@ -297,6 +297,8 @@ namespace GBX.NET.Engines.Game
 
             public List<Key> Keys => node.Keys;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaBlockCameraCustom node) => this.node = node;
         }
 

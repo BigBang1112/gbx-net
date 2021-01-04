@@ -63,6 +63,8 @@ namespace GBX.NET.Engines.Game
             public float End => node.End;
             public int Target => node.Target;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaBlockVehicleLight node) => this.node = node;
         }
 

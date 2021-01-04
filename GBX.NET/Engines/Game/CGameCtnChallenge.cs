@@ -3184,6 +3184,8 @@ namespace GBX.NET.Engines.Game
             public string ObjectiveTextBronze => node.ObjectiveTextBronze;
             public Dictionary<string, byte[]> Embeds => node.Embeds;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnChallenge node) => this.node = node;
         }
 

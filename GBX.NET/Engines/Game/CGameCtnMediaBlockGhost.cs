@@ -110,6 +110,8 @@ namespace GBX.NET.Engines.Game
             public bool ForceLight => node.ForceLight;
             public bool ForceHue => node.ForceHue;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaBlockGhost node) => this.node = node;
         }
 

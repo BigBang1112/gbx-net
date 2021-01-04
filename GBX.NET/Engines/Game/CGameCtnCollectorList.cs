@@ -65,6 +65,8 @@ namespace GBX.NET.Engines.Game
 
             public Collector[] CollectorStock => node.CollectorStock;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnCollectorList node) => this.node = node;
         }
 

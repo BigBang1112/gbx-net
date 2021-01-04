@@ -170,6 +170,8 @@ namespace GBX.NET.Engines.Game
             public bool IsKeepPlaying => node.IsKeepPlaying;
             public bool IsCycling => node.IsCycling;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaTrack node) => this.node = node;
         }
 

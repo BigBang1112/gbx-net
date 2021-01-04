@@ -704,7 +704,7 @@ namespace GBX.NET.Engines.Game
             private readonly CGameCtnGhost node;
 
             public bool IsReplaying => node.IsReplaying;
-            public CGameGhostData Data => node.Data.Result;
+            public CGameGhostData Data => node.Data?.Result;
 
             public Meta PlayerModel => node.PlayerModel;
             public FileRef[] SkinPackDescs => node.SkinPackDescs;
@@ -730,6 +730,8 @@ namespace GBX.NET.Engines.Game
             public string RaceSettingsXML => node.RaceSettingsXML;
             public CPlugEntRecordData RecordData => node.RecordData;
             public string GhostTrigram => node.GhostTrigram;
+
+            public ChunkSet Chunks => node.Chunks;
 
             public DebugView(CGameCtnGhost node) => this.node = node;
         }

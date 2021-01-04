@@ -95,6 +95,8 @@ namespace GBX.NET.Engines.Game
             public string Default => node.Default;
             public MapInfo[] MapInfos => node.MapInfos;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnChallengeGroup node) => this.node = node;
         }
 

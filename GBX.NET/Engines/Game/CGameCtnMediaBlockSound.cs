@@ -177,6 +177,8 @@ namespace GBX.NET.Engines.Game
             public int AudioToSpeechTarget => node.AudioToSpeechTarget;
             public Key[] Keys => node.Keys;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaBlockSound node) => this.node = node;
         }
 

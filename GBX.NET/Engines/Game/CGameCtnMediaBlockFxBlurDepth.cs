@@ -73,6 +73,8 @@ namespace GBX.NET.Engines.Game
 
             public Key[] Keys => node.Keys;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaBlockFxBlurDepth node) => this.node = node;
         }
 

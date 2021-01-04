@@ -98,6 +98,8 @@ namespace GBX.NET.Engines.Game
 
             public Key[] Keys => node.Keys;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaBlockMusicEffect node) => this.node = node;
         }
 

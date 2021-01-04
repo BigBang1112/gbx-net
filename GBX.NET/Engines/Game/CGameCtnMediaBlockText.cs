@@ -77,6 +77,8 @@ namespace GBX.NET.Engines.Game
             public string Text => node.Text;
             public CControlEffectSimi Effect => node.Effect;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaBlockText node) => this.node = node;
         }
 

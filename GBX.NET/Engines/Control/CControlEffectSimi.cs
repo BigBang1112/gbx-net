@@ -237,6 +237,8 @@ namespace GBX.NET.Engines.Control
             public bool IsContinousEffect => node.IsContinousEffect;
             public bool IsInterpolated => node.IsInterpolated;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CControlEffectSimi node) => this.node = node;
         }
 

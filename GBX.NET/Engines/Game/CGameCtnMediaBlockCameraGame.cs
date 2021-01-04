@@ -154,6 +154,8 @@ namespace GBX.NET.Engines.Game
             public int Target => node.Target;
             public string GameCam => node.GameCam;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaBlockCameraGame node) => this.node = node;
         }
 

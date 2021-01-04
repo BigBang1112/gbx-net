@@ -1,11 +1,13 @@
 ﻿using GBX.NET.Engines.Game;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace GBX.NET.Engines.TrackMania
 {
     [Node(0x2407F000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
     {
         #region Enums
@@ -164,6 +166,8 @@ namespace GBX.NET.Engines.TrackMania
             public float Start => node.Start;
             public float End => node.End;
             public Stunt[] Stunts => node.Stunts;
+
+            public ChunkSet Chunks => node.Chunks;
 
             public DebugView(CCtnMediaBlockEventTrackMania node) => this.node = node;
         }

@@ -57,6 +57,8 @@ namespace GBX.NET.Engines.Game
             public float End => node.End;
             public string Manialink => node.ManialinkURL;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaBlockManialink node) => this.node = node;
         }
 

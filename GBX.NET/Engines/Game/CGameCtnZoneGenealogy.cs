@@ -74,6 +74,8 @@ namespace GBX.NET.Engines.Game
             public Direction Dir => node.Dir;
             public int CurrentIndex => node.CurrentIndex;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnZoneGenealogy node) => this.node = node;
         }
 

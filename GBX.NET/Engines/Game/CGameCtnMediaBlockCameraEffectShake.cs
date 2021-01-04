@@ -70,6 +70,8 @@ namespace GBX.NET.Engines.Game
 
             public Key[] Keys => node.Keys;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaBlockCameraEffectShake node) => this.node = node;
         }
 

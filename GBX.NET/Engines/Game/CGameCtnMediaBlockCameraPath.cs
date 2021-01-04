@@ -249,6 +249,8 @@ namespace GBX.NET.Engines.Game
 
             public Key[] Keys => node.Keys;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaBlockCameraPath node) => this.node = node;
         }
 
