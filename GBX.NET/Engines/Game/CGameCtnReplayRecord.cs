@@ -229,6 +229,19 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region 0x005 chunk
+
+        [Chunk(0x03093005)]
+        public class Chunk03093005 : Chunk<CGameCtnReplayRecord>
+        {
+            public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
+            {
+                r.ReadInt32();
+            }
+        }
+
+        #endregion
+
         #region 0x00C chunk
 
         [Chunk(0x0309300C)]
