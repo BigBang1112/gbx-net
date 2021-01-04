@@ -73,7 +73,7 @@ namespace GBX.NET.Engines.Game
                     {
                         var ghostData = new CGameGhostData();
                         using (var ms = new MemoryStream(Data))
-                            ghostData.Read(ms);
+                            ghostData.Read(ms, true);
                         return ghostData;
                     });
                 }
