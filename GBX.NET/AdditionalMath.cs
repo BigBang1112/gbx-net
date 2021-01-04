@@ -21,6 +21,16 @@ namespace GBX.NET
             return ( ToRadians(pitchYawRoll.X), ToRadians(pitchYawRoll.Y), ToRadians(pitchYawRoll.Z) );
         }
 
+        public static float ToDegrees(float radians)
+        {
+            return (float)(radians / Math.PI * 180);
+        }
+
+        public static Vec3 ToDegrees(Vec3 pitchYawRoll)
+        {
+            return ( ToDegrees(pitchYawRoll.X), ToDegrees(pitchYawRoll.Y), ToDegrees(pitchYawRoll.Z) );
+        }
+
         public static Vec3 RotateAroundCenter(Vec3 point, Vec3 center, float radians)
         {
             return (
