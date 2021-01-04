@@ -2363,6 +2363,23 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region 0x023 chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x023 chunk
+        /// </summary>
+        [Chunk(0x03043023)]
+        public class Chunk03043023 : Chunk<CGameCtnChallenge>
+        {
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
+                rw.Int32(Unknown);
+            }
+        }
+
+        #endregion
+
         #region 0x024 chunk (music)
 
         /// <summary>

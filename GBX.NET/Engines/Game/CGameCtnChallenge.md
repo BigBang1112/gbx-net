@@ -24,6 +24,7 @@ The class behind every single map made in Trackmania.
 - [0x01F (block data)](#0x01F-block-data)
 - [0x021 (legacy mediatracker)](#0x021-legacy-mediatracker)
 - [0x022](#0x022)
+- [0x023](#0x023)
 - [0x024 (music)](#0x024-music)
 - [0x025](#0x025)
 - [0x026](#0x026)
@@ -682,6 +683,23 @@ void Read(GameBoxReader r)
 | Variable | ~ | ~ | ~ | ~ | ~
 | --- | --- | --- | --- | --- | --- 
 | bool u01 | ~ | ~ | ~ | ~ | ~
+
+### 0x023
+
+```cs
+void Read(GameBoxReader r)
+{
+    int u01 = r.ReadInt32();
+    int u02 = r.ReadInt32();
+}
+```
+
+#### Unknown variables
+
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| int u01 | ~ | ~ | ~ | ~ | ~
+| int u01 | ~ | ~ | ~ | ~ | ~
 
 ### 0x024 (music)
 
