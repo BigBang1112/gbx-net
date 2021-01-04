@@ -96,6 +96,21 @@ namespace GBX.NET
             }
         }
 
+        internal void Write<T>(T[] array, Action<T, GameBoxWriter> forLoop)
+        {
+            if (array == null)
+            {
+                Write(0);
+            }
+            else
+            {
+                Write(array.Length);
+
+                for (var i = 0; i < array.Length; i++)
+                    forLoop.Invoke(array[i], this);
+            }
+        }
+
         public void Write<T>(List<T> list, Action<T> forLoop)
         {
             if (list == null)
@@ -242,6 +257,13 @@ namespace GBX.NET
         public void Write(Node node)
         {
             Write(node, (IGameBoxBody)Lookbackable);
+        }
+
+        public void Write(TimeSpan? timeSpan)
+        {
+            if (timeSpan.HasValue)
+                Write(Convert.ToInt32(timeSpan.Value.TotalMilliseconds));
+            else Write(-1);
         }
 
         public void WriteBytes(byte[] bytes)

@@ -66,6 +66,13 @@ namespace GBX.NET
             return array;
         }
 
+        public T[] Array<T>(T[] array, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        {
+            if (Reader != null) return Reader.ReadArray(forLoopRead);
+            else if (Writer != null) Writer.Write(array, forLoopWrite);
+            return array;
+        }
+
         public bool Boolean(bool variable, bool asByte)
         {
             if (Reader != null) return Reader.ReadBoolean(asByte);
@@ -558,19 +565,8 @@ namespace GBX.NET
 
         public TimeSpan? TimeSpan32(TimeSpan? variable)
         {
-            if (Reader != null)
-            {
-                var time = Reader.ReadInt32();
-                if (time < 0)
-                    return null;
-                return TimeSpan.FromMilliseconds(time);
-            }
-            else if (Writer != null)
-            {
-                if (variable != null && variable.HasValue)
-                    Writer.Write(Convert.ToInt32(variable.Value.TotalMilliseconds));
-                else Writer.Write(-1);
-            }
+            if (Reader != null) return Reader.ReadTimeSpan();
+            else if (Writer != null) Writer.Write(variable);
             return variable;
         }
         

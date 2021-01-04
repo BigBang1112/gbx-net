@@ -31,6 +31,9 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public bool StopWhenLeave { get; set; }
 
+        [NodeMember]
+        public int LocalPlayerClipEntIndex { get; set; }
+
         #endregion
 
         #region Methods
@@ -40,6 +43,27 @@ namespace GBX.NET.Engines.Game
         #endregion
 
         #region Chunks
+
+        #region 0x002 chunk
+
+        [Chunk(0x03079002)]
+        public class Chunk03079002 : Chunk<CGameCtnMediaClip>
+        {
+            public int Version { get; set; }
+
+            public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
+            {
+                Version = rw.Int32(Version);
+                n.Tracks = rw.Array(n.Tracks?.ToArray(),
+                    (i, r) => r.ReadNodeRef<CGameCtnMediaTrack>(),
+                    (x, w) => w.Write(x))?.ToList();
+
+                n.Name = rw.String(n.Name);
+                rw.Int32(Unknown);
+            }
+        }
+
+        #endregion
 
         #region 0x003 chunk
 
@@ -52,8 +76,8 @@ namespace GBX.NET.Engines.Game
             {
                 Version = rw.Int32(Version);
                 n.Tracks = rw.Array(n.Tracks?.ToArray(),
-                    i => rw.Reader.ReadNodeRef<CGameCtnMediaTrack>(),
-                    x => rw.Writer.Write(x))?.ToList();
+                    (i, r) => r.ReadNodeRef<CGameCtnMediaTrack>(),
+                    (x, w) => w.Write(x))?.ToList();
                 n.Name = rw.String(n.Name);
             }
         }
@@ -84,8 +108,8 @@ namespace GBX.NET.Engines.Game
             {
                 Version = rw.Int32(Version);
                 n.Tracks = rw.Array(n.Tracks?.ToArray(),
-                    i => rw.Reader.ReadNodeRef<CGameCtnMediaTrack>(),
-                    x => rw.Writer.Write(x))?.ToList();
+                    (i, r) => r.ReadNodeRef<CGameCtnMediaTrack>(),
+                    (x, w) => w.Write(x))?.ToList();
 
                 n.Name = rw.String(n.Name);
             }
@@ -100,7 +124,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                n.LocalPlayerClipEntIndex = rw.Int32(n.LocalPlayerClipEntIndex);
             }
         }
 
@@ -126,6 +150,51 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
+                rw.String(Unknown);
+            }
+        }
+
+        #endregion
+
+        #region 0x00A chunk
+
+        /// <summary>
+        /// ManiaPlanet 3
+        /// </summary>
+        [Chunk(0x0307900A)]
+        public class Chunk0307900A : Chunk<CGameCtnMediaClip>
+        {
+            public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
+            {
+                n.StopWhenLeave = rw.Boolean(n.StopWhenLeave);
+            }
+        }
+
+        #endregion
+
+        #region 0x00B chunk
+
+        /// <summary>
+        /// ManiaPlanet 3
+        /// </summary>
+        [Chunk(0x0307900B)]
+        public class Chunk0307900B : Chunk<CGameCtnMediaClip>
+        {
+            public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
+            {
+                rw.Boolean(Unknown); // 99% StopWhenRespawn
+            }
+        }
+
+        #endregion
+
+        #region 0x00C chunk
+
+        [Chunk(0x0307900C)]
+        public class Chunk0307900C : Chunk<CGameCtnMediaClip>
+        {
+            public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
+            {
                 rw.Int32(Unknown);
             }
         }
@@ -140,8 +209,8 @@ namespace GBX.NET.Engines.Game
             public int Version { get; set; } = 10;
 
             public int U01 { get; set; }
-            public int U03 { get; set; }
-            public int U05 { get; set; }
+            public bool U03 { get; set; }
+            public string U05 { get; set; }
             public float U06 { get; set; } = 0.2f;
             public int U07 { get; set; } = -1;
 
@@ -151,17 +220,17 @@ namespace GBX.NET.Engines.Game
                 Version = rw.Int32(Version);
 
                 n.Tracks = rw.Array(n.Tracks?.ToArray(),
-                    i => rw.Reader.ReadNodeRef<CGameCtnMediaTrack>(),
-                    x => rw.Writer.Write(x))?.ToList();
+                    (i, r) => r.ReadNodeRef<CGameCtnMediaTrack>(),
+                    (x, w) => w.Write(x))?.ToList();
 
                 n.Name = rw.String(n.Name);
 
                 n.StopWhenLeave = rw.Boolean(n.StopWhenLeave);
-                U03 = rw.Int32(U03);
+                U03 = rw.Boolean(U03);
                 n.StopWhenRespawn = rw.Boolean(n.StopWhenRespawn);
-                U05 = rw.Int32(U05);
+                U05 = rw.String(U05);
                 U06 = rw.Single(U06);
-                U07 = rw.Int32(U07); // -1
+                n.LocalPlayerClipEntIndex = rw.Int32(n.LocalPlayerClipEntIndex);
             }
         }
 
@@ -179,6 +248,8 @@ namespace GBX.NET.Engines.Game
             public List<CGameCtnMediaTrack> Tracks => node.Tracks;
             public bool StopWhenRespawn => node.StopWhenRespawn;
             public bool StopWhenLeave => node.StopWhenLeave;
+
+            public ChunkSet Chunks => node.Chunks;
 
             public DebugView(CGameCtnMediaClip node) => this.node = node;
         }

@@ -71,6 +71,8 @@ namespace GBX.NET.Engines.Game
 
             public Key[] Keys => node.Keys;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaBlockToneMapping node) => this.node = node;
         }
 

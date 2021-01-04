@@ -366,6 +366,8 @@ namespace GBX.NET.Engines.Game
             public string MapStyle => node.MapStyle;
             public string[] Tips => node.Tips;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnChallengeParameters node) => this.node = node;
         }
 

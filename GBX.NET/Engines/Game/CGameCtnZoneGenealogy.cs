@@ -10,37 +10,52 @@ namespace GBX.NET.Engines.Game
         #region Properties
 
         [NodeMember]
-        public string[] Zones { get; set; }
+        public string[] ZoneIds { get; set; }
 
         [NodeMember]
-        public int BaseHeight { get; set; }
+        public string CurrentZoneId { get; set; }
 
         [NodeMember]
-        public string CurrentZone { get; set; }
+        public Direction Dir { get; set; }
+
+        [NodeMember]
+        public int CurrentIndex { get; set; }
 
         #endregion
 
         #region Methods
 
-        public override string ToString() => string.Join(" ", Zones);
+        public override string ToString() => string.Join(" ", ZoneIds);
 
         #endregion
 
         #region Chunks
+
+        #region 0x001 chunk
+
+        [Chunk(0x0311D001)]
+        public class Chunk0311D001 : Chunk<CGameCtnZoneGenealogy>
+        {
+            public override void ReadWrite(CGameCtnZoneGenealogy n, GameBoxReaderWriter rw)
+            {
+                n.CurrentIndex = rw.Int32(n.CurrentIndex);
+                n.Dir = (Direction)rw.Int32((int)n.Dir);
+            }
+        }
+
+        #endregion
 
         #region 0x002 chunk
 
         [Chunk(0x0311D002)]
         public class Chunk0311D002 : Chunk<CGameCtnZoneGenealogy>
         {
-            public int Unknown1 { get; set; }
-
             public override void ReadWrite(CGameCtnZoneGenealogy n, GameBoxReaderWriter rw)
             {
-                n.Zones = rw.Array(n.Zones, i => rw.Reader.ReadLookbackString(), x => rw.Writer.WriteLookbackString(x));
-                n.BaseHeight = rw.Int32(n.BaseHeight); // 9
-                Unknown1 = rw.Int32(Unknown1);
-                n.CurrentZone = rw.LookbackString(n.CurrentZone);
+                n.ZoneIds = rw.Array(n.ZoneIds, i => rw.Reader.ReadLookbackString(), x => rw.Writer.WriteLookbackString(x));
+                n.CurrentIndex = rw.Int32(n.CurrentIndex); // 9
+                n.Dir = (Direction)rw.Int32((int)n.Dir);
+                n.CurrentZoneId = rw.LookbackString(n.CurrentZoneId);
             }
         }
 
@@ -54,9 +69,12 @@ namespace GBX.NET.Engines.Game
         {
             private readonly CGameCtnZoneGenealogy node;
 
-            public string[] Zones => node.Zones;
-            public int BaseHeight => node.BaseHeight;
-            public string CurrentZone => node.CurrentZone;
+            public string[] ZoneIds => node.ZoneIds;
+            public string CurrentZoneId => node.CurrentZoneId;
+            public Direction Dir => node.Dir;
+            public int CurrentIndex => node.CurrentIndex;
+
+            public ChunkSet Chunks => node.Chunks;
 
             public DebugView(CGameCtnZoneGenealogy node) => this.node = node;
         }

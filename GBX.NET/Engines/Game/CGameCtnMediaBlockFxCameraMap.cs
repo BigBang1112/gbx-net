@@ -78,6 +78,8 @@ namespace GBX.NET.Engines.Game
             public float Start => node.Start;
             public float End => node.End;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaBlockFxCameraMap node) => this.node = node;
         }
 

@@ -133,7 +133,7 @@ namespace GBX.NET.Engines.Game
                 n.End = rw.Single(n.End);
                 n.GameCam2 = (EGameCam2)rw.Int32((int)n.GameCam2.GetValueOrDefault());
 
-                rw.Array<int>(Unknown, 17); // Helicopter camera transfrom?
+                rw.TillFacade(Unknown); // Helicopter camera transfrom? 17 ints, sometimes 19
             }
         }
 
@@ -153,6 +153,8 @@ namespace GBX.NET.Engines.Game
             public EGameCam2? GameCam2 => node.GameCam2;
             public int Target => node.Target;
             public string GameCam => node.GameCam;
+
+            public ChunkSet Chunks => node.Chunks;
 
             public DebugView(CGameCtnMediaBlockCameraGame node) => this.node = node;
         }

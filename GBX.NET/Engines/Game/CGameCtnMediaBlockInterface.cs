@@ -60,6 +60,8 @@ namespace GBX.NET.Engines.Game
             public bool ShowInterface => node.ShowInterface;
             public string Manialink => node.Manialink;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaBlockInterface node) => this.node = node;
         }
 

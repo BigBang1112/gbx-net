@@ -116,7 +116,8 @@ namespace GBX.NET
 
         public static T Parse<T>(GameBoxReader r, uint? classID = null, GameBox<T> gbx = null, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
-            var readNodeStart = DateTime.Now;
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
 
             if (classID == null)
                 classID = r.ReadUInt32();
@@ -184,7 +185,7 @@ namespace GBX.NET
                     && (AvailableChunkClasses[type].TryGetValue(chunkRemapped, out chunkClass) || AvailableChunkClasses[type].TryGetValue(chunkID & 0xFFF, out chunkClass));
 
                 var skippable = reflected && chunkClass.BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>);
-
+                
                 if (!reflected || skippable)
                 {
                     var skip = r.ReadUInt32();
@@ -326,10 +327,12 @@ namespace GBX.NET
                 previousChunk = chunkID;
             }
 
+            stopwatch.Stop();
+
             if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
-                Log.Write($"[{node.ClassName}] DONE! ({(DateTime.Now - readNodeStart).TotalMilliseconds}ms)", ConsoleColor.Green);
+                Log.Write($"[{node.ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)", ConsoleColor.Green);
             else
-                Log.Write($"~ [{node.ClassName}] DONE! ({(DateTime.Now - readNodeStart).TotalMilliseconds}ms)", ConsoleColor.Green);
+                Log.Write($"~ [{node.ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)", ConsoleColor.Green);
 
             return node;
         }
@@ -346,7 +349,8 @@ namespace GBX.NET
 
         public void Write(GameBoxWriter w, ClassIDRemap remap)
         {
-            var writeNodeStart = DateTime.Now;
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
 
             int counter = 0;
 
@@ -416,12 +420,14 @@ namespace GBX.NET
                 }
             }
 
-            if (Body != null && Body.GBX.ClassID.HasValue && Remap(Body.GBX.ClassID.Value) == ID)
-                Log.Write($"[{ClassName}] DONE! ({(DateTime.Now - writeNodeStart).TotalMilliseconds}ms)", ConsoleColor.Green);
-            else
-                Log.Write($"~ [{ClassName}] DONE! ({(DateTime.Now - writeNodeStart).TotalMilliseconds}ms)", ConsoleColor.Green);
-
             w.Write(0xFACADE01);
+
+            stopwatch.Stop();
+
+            if (Body != null && Body.GBX.ClassID.HasValue && Remap(Body.GBX.ClassID.Value) == ID)
+                Log.Write($"[{ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)", ConsoleColor.Green);
+            else
+                Log.Write($"~ [{ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)", ConsoleColor.Green);
         }
 
         static Node()

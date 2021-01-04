@@ -355,6 +355,8 @@ namespace GBX.NET.Engines.Game
             public Vec3 AbsolutePositionInMap => node.AbsolutePositionInMap;
             public Vec3 PitchYawRoll => node.PitchYawRoll;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnBlock node) => this.node = node;
 
             public class FlagsInt

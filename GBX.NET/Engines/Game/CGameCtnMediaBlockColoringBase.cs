@@ -82,6 +82,8 @@ namespace GBX.NET.Engines.Game
             public Key[] Keys => node.Keys;
             public int BaseIndex => node.BaseIndex;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaBlockColoringBase node) => this.node = node;
         }
 

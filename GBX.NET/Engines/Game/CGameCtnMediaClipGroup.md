@@ -2,8 +2,30 @@
 
 ## Chunks
 
+- [0x001](#0x001)
 - [0x002](#0x002)
 - [0x003](#0x003)
+
+### 0x001
+
+```cs
+void Read (GameBoxReader r)
+{
+    int version = r.ReadInt32();
+
+    int numClips = r.ReadInt32();
+    for (var i = 0; i < numClips; i++)
+        CGameCtnMediaClip clip = r.ReadNodeRef<CGameCtnMediaClip>();
+
+    int numTriggers = r.ReadInt32();
+    for (var i = 0; i < numTriggers; i++)
+    {
+        int numCoords = r.ReadInt32();
+        for (var j = 0; j < numCoords; j++)
+            Int3 coord = r.ReadInt3();
+    }
+}
+```
 
 ### 0x002
 

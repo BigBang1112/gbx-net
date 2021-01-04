@@ -16,6 +16,24 @@ namespace GBX.NET.Engines.Game
         public FileRef Sound { get; set; }
 
         [NodeMember]
+        public bool IsMusic { get; set; }
+
+        [NodeMember]
+        public bool IsLooping { get; set; }
+
+        [NodeMember]
+        public int PlayCount { get; set; }
+
+        [NodeMember]
+        public bool StopWithClip { get; set; }
+
+        [NodeMember]
+        public bool AudioToSpeech { get; set; }
+
+        [NodeMember]
+        public int AudioToSpeechTarget { get; set; }
+
+        [NodeMember]
         public Key[] Keys { get; set; }
 
         #endregion
@@ -33,19 +51,18 @@ namespace GBX.NET.Engines.Game
 
                 n.Keys = rw.Array(n.Keys, i =>
                 {
-                    var time = rw.Reader.ReadSingle();
-                    var unknown = rw.Reader.ReadArray<float>(2);
-
                     return new Key()
                     {
-                        Time = time,
-                        Unknown = unknown
+                        Time = rw.Reader.ReadSingle(),
+                        Volume = rw.Reader.ReadSingle(),
+                        Pan = rw.Reader.ReadSingle()
                     };
                 },
                 x =>
                 {
                     rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.Unknown);
+                    rw.Writer.Write(x.Volume);
+                    rw.Writer.Write(x.Pan);
                 });
             }
         }
@@ -59,7 +76,8 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaBlockSound n, GameBoxReaderWriter rw)
             {
-                rw.Array<int>(Unknown, 2);
+                n.PlayCount = rw.Int32(n.PlayCount);
+                n.IsLooping = rw.Boolean(n.IsLooping);
             }
         }
 
@@ -70,9 +88,25 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x030A7003)]
         public class Chunk030A7003 : Chunk<CGameCtnMediaBlockSound>
         {
+            public int Version { get; set; }
+
             public override void ReadWrite(CGameCtnMediaBlockSound n, GameBoxReaderWriter rw)
             {
-                rw.Array<int>(Unknown, 7);
+                Version = rw.Int32(Version);
+                n.PlayCount = rw.Int32(n.PlayCount);
+                n.IsLooping = rw.Boolean(n.IsLooping);
+                n.IsMusic = rw.Boolean(n.IsMusic);
+
+                if(Version >= 1) // ManiaPlanet
+                {
+                    n.StopWithClip = rw.Boolean(n.StopWithClip);
+
+                    if (Version >= 2)
+                    {
+                        n.AudioToSpeech = rw.Boolean(n.AudioToSpeech);
+                        n.AudioToSpeechTarget = rw.Int32(n.AudioToSpeechTarget);
+                    }
+                }
             }
         }
 
@@ -90,18 +124,24 @@ namespace GBX.NET.Engines.Game
                 n.Keys = rw.Array(n.Keys, i =>
                 {
                     var time = rw.Reader.ReadSingle();
-                    var unknown = rw.Reader.ReadArray<float>(5);
+                    var volume = rw.Reader.ReadSingle();
+                    var unknown = rw.Reader.ReadSingle();
+                    var position = rw.Reader.ReadVec3();
 
                     return new Key()
                     {
                         Time = time,
-                        Unknown = unknown
+                        Volume = volume,
+                        Unknown = unknown,
+                        Position = position
                     };
                 },
                 x =>
                 {
                     rw.Writer.Write(x.Time);
+                    rw.Writer.Write(x.Volume);
                     rw.Writer.Write(x.Unknown);
+                    rw.Writer.Write(x.Position);
                 });
             }
         }
@@ -114,7 +154,10 @@ namespace GBX.NET.Engines.Game
 
         public class Key : MediaBlockKey
         {
-            public float[] Unknown { get; set; }
+            public float Volume { get; set; }
+            public float Pan { get; set; }
+            public float Unknown { get; set; }
+            public Vec3 Position { get; set; }
         }
 
         #endregion
@@ -126,7 +169,15 @@ namespace GBX.NET.Engines.Game
             private readonly CGameCtnMediaBlockSound node;
 
             public FileRef Sound => node.Sound;
+            public bool IsMusic => node.IsMusic;
+            public bool IsLooping => node.IsLooping;
+            public int PlayCount => node.PlayCount;
+            public bool StopWithClip => node.StopWithClip;
+            public bool AudioToSpeech => node.AudioToSpeech;
+            public int AudioToSpeechTarget => node.AudioToSpeechTarget;
             public Key[] Keys => node.Keys;
+
+            public ChunkSet Chunks => node.Chunks;
 
             public DebugView(CGameCtnMediaBlockSound node) => this.node = node;
         }

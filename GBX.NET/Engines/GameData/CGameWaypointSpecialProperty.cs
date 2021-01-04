@@ -77,6 +77,8 @@ namespace GBX.NET.Engines.GameData
             public string Tag => node.Tag;
             public int Order => node.Order;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameWaypointSpecialProperty node) => this.node = node;
         }
 

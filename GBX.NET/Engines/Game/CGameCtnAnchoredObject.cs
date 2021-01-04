@@ -103,51 +103,47 @@ namespace GBX.NET.Engines.Game
             public Vec3 U02 { get; set; }
             public Vec3 U03 { get; set; }
 
-            public override void Read(CGameCtnAnchoredObject n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void ReadWrite(CGameCtnAnchoredObject n, GameBoxReaderWriter rw)
             {
-                Version = r.ReadInt32();
-                n.ItemModel = r.ReadMeta();
-                n.PitchYawRoll = r.ReadVec3();
-                n.BlockUnitCoord = r.ReadByte3();
-                U01 = r.ReadInt32();
-                n.AbsolutePositionInMap = r.ReadVec3();
-                n.WaypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(r);
-                n.Flags = r.ReadInt16();
-                n.PivotPosition = r.ReadVec3();
-                n.Scale = r.ReadSingle();
+                Version = rw.Int32(Version);
+                n.ItemModel = rw.Meta(n.ItemModel);
+                n.PitchYawRoll = rw.Vec3(n.PitchYawRoll);
+                n.BlockUnitCoord = rw.Byte3(n.BlockUnitCoord);
+                U01 = rw.Int32(U01);
+                n.AbsolutePositionInMap = rw.Vec3(n.AbsolutePositionInMap);
 
-                if(Version >= 8) // TM 2020
+                if(rw.Mode == GameBoxReaderWriterMode.Read)
+                    n.WaypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(rw.Reader);
+                else if(rw.Mode == GameBoxReaderWriterMode.Write)
                 {
-                    U02 = r.ReadVec3();
-                    U03 = r.ReadVec3();
-                }
-            }
-
-            public override void Write(CGameCtnAnchoredObject n, GameBoxWriter w, GameBoxReader unknownR)
-            {
-                w.Write(Version);
-                w.Write(n.ItemModel);
-                w.Write(n.PitchYawRoll);
-                w.Write(n.BlockUnitCoord);
-                w.Write(U01);
-                w.Write(n.AbsolutePositionInMap);
-
-                if (n.WaypointSpecialProperty == null)
-                    w.Write(-1);
-                else
-                {
-                    w.Write(n.WaypointSpecialProperty.ID);
-                    n.WaypointSpecialProperty.Write(w);
+                    if (n.WaypointSpecialProperty == null)
+                        rw.Writer.Write(-1);
+                    else
+                    {
+                        rw.Writer.Write(n.WaypointSpecialProperty.ID);
+                        n.WaypointSpecialProperty.Write(rw.Writer);
+                    }
                 }
 
-                w.Write(n.Flags);
-                w.Write(n.PivotPosition);
-                w.Write(n.Scale);
-
-                if (Version >= 8) // TM 2020
+                if (Version >= 4)
                 {
-                    w.Write(U02);
-                    w.Write(U03);
+                    n.Flags = rw.Int16(n.Flags);
+
+                    if (Version >= 5)
+                    {
+                        n.PivotPosition = rw.Vec3(n.PivotPosition);
+
+                        if (Version >= 6)
+                        {
+                            n.Scale = rw.Single(n.Scale);
+
+                            if (Version >= 8) // TM 2020
+                            {
+                                U02 = rw.Vec3(U02);
+                                U03 = rw.Vec3(U03);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -191,6 +187,8 @@ namespace GBX.NET.Engines.Game
             public float Scale => node.Scale;
             public Vec3 PivotPosition => node.PivotPosition;
             public int Variant => node.Variant;
+
+            public ChunkSet Chunks => node.Chunks;
 
             public DebugView(CGameCtnAnchoredObject node) => this.node = node;
         }

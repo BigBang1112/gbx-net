@@ -19,7 +19,7 @@ namespace GBX.NET.Engines.Game
         public Meta MapInfo { get; set; }
 
         [NodeMember]
-        public TimeSpan Time { get; set; }
+        public TimeSpan? Time { get; set; }
 
         [NodeMember]
         public string Nickname { get; set; }
@@ -86,7 +86,7 @@ namespace GBX.NET.Engines.Game
                 if(Version >= 2)
                 {
                     n.MapInfo = r.ReadMeta();
-                    n.Time = TimeSpan.FromMilliseconds(r.ReadInt32());
+                    n.Time = r.ReadTimeSpan();
                     n.Nickname = r.ReadString();
 
                     if (Version >= 6)
@@ -217,13 +217,26 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                r.ReadInt32();
-                r.ReadInt32();
+                var u01 = r.ReadInt32();
+                var u02 = r.ReadInt32();
 
                 n.Ghosts = r.ReadArray(i => r.ReadNodeRef<CGameCtnGhost>());
 
-                r.ReadInt32();
-                r.ReadInt32();
+                var u03 = r.ReadInt32(); // millisecond length of something (usually record time + 0.5s)
+                var u04 = r.ReadInt32();
+            }
+        }
+
+        #endregion
+
+        #region 0x005 chunk
+
+        [Chunk(0x03093005)]
+        public class Chunk03093005 : Chunk<CGameCtnReplayRecord>
+        {
+            public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
+            {
+                var u01 = r.ReadInt32();
             }
         }
 
@@ -236,7 +249,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                r.ReadNodeRef();
+                n.Clip = r.ReadNodeRef<CGameCtnMediaClip>();
             }
         }
 
@@ -269,9 +282,9 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x00E chunk
+        #region 0x00E chunk (events)
 
-        [Chunk(0x0309300E)]
+        [Chunk(0x0309300E, "events")]
         public class Chunk0309300E : Chunk<CGameCtnReplayRecord>
         {
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
@@ -370,7 +383,7 @@ namespace GBX.NET.Engines.Game
             private readonly CGameCtnReplayRecord node;
 
             public Meta MapInfo => node.MapInfo;
-            public TimeSpan Time => node.Time;
+            public TimeSpan? Time => node.Time;
             public string Nickname => node.Nickname;
             public string DriverLogin => node.DriverLogin;
             public string TitleID => node.TitleID;
@@ -387,6 +400,8 @@ namespace GBX.NET.Engines.Game
             public CGameCtnMediaClip Clip => node.Clip;
             public CPlugEntRecordData RecordData => node.RecordData;
             public CCtnMediaBlockEventTrackMania Events => node.Events;
+
+            public ChunkSet Chunks => node.Chunks;
 
             public DebugView(CGameCtnReplayRecord node) => this.node = node;
         }

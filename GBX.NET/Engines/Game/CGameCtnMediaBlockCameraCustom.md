@@ -4,9 +4,39 @@
 
 ## Chunks
 
+- [0x001](#0x001)
 - [0x002](#0x002)
 - [0x005](#0x005)
 - [0x006](#0x006)
+
+### 0x001
+
+```cs
+void Read(GameBoxReader r)
+{
+    int numKeys = r.ReadInt32();
+
+    for (var i = 0; i < numKeys; i++)
+    {
+        float time = r.ReadSingle();
+        int u01 = r.ReadInt32(); // 1
+        int u02 = r.ReadInt32(); // 0
+        int u03 = r.ReadInt32(); // 0
+        Vec3 position = r.ReadVec3();
+        Vec3 pitchYawRoll = r.ReadVec3(); // in radians
+        float fov = r.ReadSingle();
+        int u04 = r.ReadInt32(); // 0
+        int u05 = r.ReadInt32(); // -1
+        int u06 = r.ReadInt32(); // 1
+        int u07 = r.ReadInt32(); // -1
+        float u08 = r.ReadSingle();
+        float u09 = r.ReadSingle();
+        float u10 = r.ReadSingle();
+        float u11 = r.ReadSingle();
+        float u12 = r.ReadSingle();
+    }
+}
+```
 
 ### 0x002
 
@@ -15,7 +45,7 @@ void Read(GameBoxReader r)
 {
     int numKeys = r.ReadInt32();
 
-    for(var i = 0; i < numKeys; i++)
+    for (var i = 0; i < numKeys; i++)
     {
         float time = r.ReadSingle();
         int u01 = r.ReadInt32();
@@ -42,7 +72,7 @@ void Read(GameBoxReader r)
 {
     int numKeys = r.ReadInt32();
     
-    for(var i = 0; i < numKeys; i++)
+    for (var i = 0; i < numKeys; i++)
     {
         float time = r.ReadSingle();
         int u01 = r.ReadInt32();
@@ -70,7 +100,7 @@ void Read(GameBoxReader r)
     int version = r.ReadInt32();
     int numKeys = r.ReadInt32();
     
-    for(var i = 0; i < numKeys; i++)
+    for (var i = 0; i < numKeys; i++)
     {
         float time = r.ReadSingle();
         int u01 = r.ReadInt32();

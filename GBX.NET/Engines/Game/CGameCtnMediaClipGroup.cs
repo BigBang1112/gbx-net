@@ -42,6 +42,46 @@ namespace GBX.NET.Engines.Game
 
         #region Chunks
 
+        #region 0x001 chunk
+
+        [Chunk(0x0307A001)]
+        public class Chunk0307A001 : Chunk<CGameCtnMediaClipGroup>
+        {
+            public int Version { get; set; }
+
+            public override void Read(CGameCtnMediaClipGroup n, GameBoxReader r, GameBoxWriter unknownW)
+            {
+                Version = r.ReadInt32();
+
+                var clips = r.ReadArray(i => r.ReadNodeRef<CGameCtnMediaClip>());
+
+                var triggers = r.ReadArray(i =>
+                {
+                    return new Trigger()
+                    {
+                        Coords = r.ReadArray(j => r.ReadInt3())
+                    };
+                });
+
+                n.Clips = clips.Select((clip, index) =>
+                    Tuple.Create(clip, triggers[index])
+                ).ToList();
+            }
+
+            public override void Write(CGameCtnMediaClipGroup n, GameBoxWriter w, GameBoxReader unknownR)
+            {
+                w.Write(Version);
+
+                w.Write(n.Clips, x => w.Write(x.Item1));
+                w.Write(n.Clips, x =>
+                {
+                    w.Write(x.Item2.Coords, y => w.Write(y));
+                });
+            }
+        }
+
+        #endregion
+
         #region 0x002 chunk
 
         [Chunk(0x0307A002)]

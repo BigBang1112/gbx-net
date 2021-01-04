@@ -207,6 +207,17 @@ namespace GBX.NET
             return result;
         }
 
+        internal T[] ReadArray<T>(Func<int, GameBoxReader, T> forLoop)
+        {
+            var length = ReadInt32();
+            var result = new T[length];
+
+            for (var i = 0; i < length; i++)
+                result[i] = forLoop.Invoke(i, this);
+
+            return result;
+        }
+
         public Vec2 ReadVec2()
         {
             var floats = ReadArray<float>(2);
@@ -241,6 +252,14 @@ namespace GBX.NET
         {
             var bytes = ReadBytes(3);
             return (bytes[0], bytes[1], bytes[2]);
+        }
+
+        public TimeSpan? ReadTimeSpan()
+        {
+            var time = ReadInt32();
+            if (time < 0)
+                return null;
+            return TimeSpan.FromMilliseconds(time);
         }
 
         public byte[] ReadTill(uint uint32)

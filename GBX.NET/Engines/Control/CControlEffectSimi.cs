@@ -11,6 +11,18 @@ namespace GBX.NET.Engines.Control
         [NodeMember]
         public Key[] Keys { get; set; }
 
+        [NodeMember]
+        public bool Centered { get; set; }
+
+        [NodeMember]
+        public int ColorBlendMode { get; set; }
+
+        [NodeMember]
+        public bool IsContinousEffect { get; set; }
+
+        [NodeMember]
+        public bool IsInterpolated { get; set; }
+
         #endregion
 
         #region Chunks
@@ -22,16 +34,16 @@ namespace GBX.NET.Engines.Control
         {
             public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, i =>
+                n.Keys = rw.Array(n.Keys, (i, r) =>
                 {
-                    var time = rw.Reader.ReadSingle();
-                    var x = rw.Reader.ReadSingle();
-                    var y = rw.Reader.ReadSingle();
-                    var rot = rw.Reader.ReadSingle();
-                    var scaleX = rw.Reader.ReadSingle();
-                    var scaleY = rw.Reader.ReadSingle();
-                    var opacity = rw.Reader.ReadSingle();
-                    var depth = rw.Reader.ReadSingle();
+                    var time = r.ReadSingle();
+                    var x = r.ReadSingle();
+                    var y = r.ReadSingle();
+                    var rot = r.ReadSingle();
+                    var scaleX = r.ReadSingle();
+                    var scaleY = r.ReadSingle();
+                    var opacity = r.ReadSingle();
+                    var depth = r.ReadSingle();
 
                     return new Key()
                     {
@@ -45,19 +57,19 @@ namespace GBX.NET.Engines.Control
                         Depth = depth
                     };
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.X);
-                    rw.Writer.Write(x.Y);
-                    rw.Writer.Write(x.Rotation);
-                    rw.Writer.Write(x.ScaleX);
-                    rw.Writer.Write(x.ScaleY);
-                    rw.Writer.Write(x.Opacity);
-                    rw.Writer.Write(x.Depth);
+                    w.Write(x.Time);
+                    w.Write(x.X);
+                    w.Write(x.Y);
+                    w.Write(x.Rotation);
+                    w.Write(x.ScaleX);
+                    w.Write(x.ScaleY);
+                    w.Write(x.Opacity);
+                    w.Write(x.Depth);
                 });
 
-                rw.Int32(Unknown);
+                n.Centered = rw.Boolean(n.Centered);
             }
         }
 
@@ -71,23 +83,22 @@ namespace GBX.NET.Engines.Control
         [Chunk(0x07010004)]
         public class Chunk07010004 : Chunk<CControlEffectSimi>
         {
-            public int Unknown1 { get; set; }
-            public int Unknown2 { get; set; }
-            public int Unknown3 { get; set; }
-
             public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, i =>
+                n.Keys = rw.Array(n.Keys, (i, r) =>
                 {
-                    var time = rw.Reader.ReadSingle();
-                    var x = rw.Reader.ReadSingle();
-                    var y = rw.Reader.ReadSingle();
-                    var rot = rw.Reader.ReadSingle();
-                    var scaleX = rw.Reader.ReadSingle();
-                    var scaleY = rw.Reader.ReadSingle();
-                    var opacity = rw.Reader.ReadSingle();
-                    var depth = rw.Reader.ReadSingle();
-                    var unknown = rw.Reader.ReadArray<float>(4);
+                    var time = r.ReadSingle();
+                    var x = r.ReadSingle();
+                    var y = r.ReadSingle();
+                    var rot = r.ReadSingle();
+                    var scaleX = r.ReadSingle();
+                    var scaleY = r.ReadSingle();
+                    var opacity = r.ReadSingle();
+                    var depth = r.ReadSingle();
+                    var u01 = r.ReadSingle();
+                    var isContinousEffect = r.ReadSingle();
+                    var u02 = r.ReadSingle();
+                    var u03 = r.ReadSingle();
 
                     return new Key()
                     {
@@ -99,23 +110,29 @@ namespace GBX.NET.Engines.Control
                         ScaleY = scaleY,
                         Opacity = opacity,
                         Depth = depth,
-                        Unknown = unknown
+                        IsContinuousEffect = isContinousEffect,
+                        Unknown = new float[] { u01, u02, u03 }
                     };
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.X);
-                    rw.Writer.Write(x.Y);
-                    rw.Writer.Write(x.Rotation);
-                    rw.Writer.Write(x.ScaleX);
-                    rw.Writer.Write(x.ScaleY);
-                    rw.Writer.Write(x.Opacity);
-                    rw.Writer.Write(x.Depth);
-                    rw.Writer.Write(x.Unknown);
+                    w.Write(x.Time);
+                    w.Write(x.X);
+                    w.Write(x.Y);
+                    w.Write(x.Rotation);
+                    w.Write(x.ScaleX);
+                    w.Write(x.ScaleY);
+                    w.Write(x.Opacity);
+                    w.Write(x.Depth);
+                    w.Write(x.Unknown[0]);
+                    w.Write(x.IsContinuousEffect);
+                    w.Write(x.Unknown[1]);
+                    w.Write(x.Unknown[2]);
                 });
 
-                rw.Array<int>(Unknown, 3); // 3
+                n.Centered = rw.Boolean(n.Centered);
+                n.ColorBlendMode = rw.Int32(n.ColorBlendMode);
+                n.IsContinousEffect = rw.Boolean(n.IsContinousEffect);
             }
         }
 
@@ -131,17 +148,20 @@ namespace GBX.NET.Engines.Control
         {
             public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, i =>
+                n.Keys = rw.Array(n.Keys, (i, r) =>
                 {
-                    var time = rw.Reader.ReadSingle();
-                    var x = rw.Reader.ReadSingle();
-                    var y = rw.Reader.ReadSingle();
-                    var rot = rw.Reader.ReadSingle();
-                    var scaleX = rw.Reader.ReadSingle();
-                    var scaleY = rw.Reader.ReadSingle();
-                    var opacity = rw.Reader.ReadSingle();
-                    var depth = rw.Reader.ReadSingle();
-                    var unknown = rw.Reader.ReadArray<float>(4);
+                    var time = r.ReadSingle();
+                    var x = r.ReadSingle();
+                    var y = r.ReadSingle();
+                    var rot = r.ReadSingle();
+                    var scaleX = r.ReadSingle();
+                    var scaleY = r.ReadSingle();
+                    var opacity = r.ReadSingle();
+                    var depth = r.ReadSingle();
+                    var u01 = r.ReadSingle();
+                    var isContinousEffect = r.ReadSingle();
+                    var u02 = r.ReadSingle();
+                    var u03 = r.ReadSingle();
 
                     return new Key()
                     {
@@ -153,23 +173,30 @@ namespace GBX.NET.Engines.Control
                         ScaleY = scaleY,
                         Opacity = opacity,
                         Depth = depth,
-                        Unknown = unknown
+                        IsContinuousEffect = isContinousEffect,
+                        Unknown = new float[] { u01, u02, u03 }
                     };
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.X);
-                    rw.Writer.Write(x.Y);
-                    rw.Writer.Write(x.Rotation);
-                    rw.Writer.Write(x.ScaleX);
-                    rw.Writer.Write(x.ScaleY);
-                    rw.Writer.Write(x.Opacity);
-                    rw.Writer.Write(x.Depth);
-                    rw.Writer.Write(x.Unknown);
+                    w.Write(x.Time);
+                    w.Write(x.X);
+                    w.Write(x.Y);
+                    w.Write(x.Rotation);
+                    w.Write(x.ScaleX);
+                    w.Write(x.ScaleY);
+                    w.Write(x.Opacity);
+                    w.Write(x.Depth);
+                    w.Write(x.Unknown[0]);
+                    w.Write(x.IsContinuousEffect);
+                    w.Write(x.Unknown[1]);
+                    w.Write(x.Unknown[2]);
                 });
 
-                rw.Array<int>(Unknown, 4); // 4
+                n.Centered = rw.Boolean(n.Centered);
+                n.ColorBlendMode = rw.Int32(n.ColorBlendMode);
+                n.IsContinousEffect = rw.Boolean(n.IsContinousEffect);
+                n.IsInterpolated = rw.Boolean(n.IsInterpolated);
             }
         }
 
@@ -192,7 +219,8 @@ namespace GBX.NET.Engines.Control
             public float ScaleY { get; set; }
             public float Opacity { get; set; }
             public float Depth { get; set; }
-            public float[] Unknown { get; set; }
+            public float IsContinuousEffect { get; set; }
+            public float[] Unknown { get; set; } = new float[] { 0, 0, 0 };
         }
 
         #endregion
@@ -204,6 +232,12 @@ namespace GBX.NET.Engines.Control
             private readonly CControlEffectSimi node;
 
             public Key[] Keys => node.Keys;
+            public bool Centered => node.Centered;
+            public int ColorBlendMode => node.ColorBlendMode;
+            public bool IsContinousEffect => node.IsContinousEffect;
+            public bool IsInterpolated => node.IsInterpolated;
+
+            public ChunkSet Chunks => node.Chunks;
 
             public DebugView(CControlEffectSimi node) => this.node = node;
         }

@@ -74,6 +74,8 @@ namespace GBX.NET.Engines.Game
             public Key[] Keys => node.Keys;
             public Vec3 Color => node.Color;
 
+            public ChunkSet Chunks => node.Chunks;
+
             public DebugView(CGameCtnMediaBlockTransitionFade node) => this.node = node;
         }
 

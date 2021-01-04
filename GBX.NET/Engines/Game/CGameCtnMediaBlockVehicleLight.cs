@@ -38,9 +38,9 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x001 chunk
+        #region 0x001 chunk (target)
 
-        [Chunk(0x03133001)]
+        [Chunk(0x03133001, "target")]
         public class Chunk03133001 : Chunk<CGameCtnMediaBlockVehicleLight>
         {
             public override void ReadWrite(CGameCtnMediaBlockVehicleLight n, GameBoxReaderWriter rw)
@@ -62,6 +62,8 @@ namespace GBX.NET.Engines.Game
             public float Start => node.Start;
             public float End => node.End;
             public int Target => node.Target;
+
+            public ChunkSet Chunks => node.Chunks;
 
             public DebugView(CGameCtnMediaBlockVehicleLight node) => this.node = node;
         }
