@@ -275,6 +275,24 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region 0x003 chunk
+
+        /// <summary>
+        /// CGameCtnGhost 0x003 chunk
+        /// </summary>
+        [Chunk(0x03092003)]
+        public class Chunk03092003 : Chunk<CGameCtnGhost>
+        {
+            public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
+            {
+                n.Vehicle = rw.Meta(n.Vehicle);
+                n.Skin = rw.String(n.Skin);
+                n.GhostLogin = rw.String(n.GhostLogin);
+            }
+        }
+
+        #endregion
+
         #region 0x005 skippable chunk (race time)
 
         /// <summary>
@@ -369,8 +387,8 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 n.checkpoints = rw.Array(n.checkpoints,
-                    i => TimeSpan.FromMilliseconds(rw.Reader.ReadInt64()),
-                    x => rw.Writer.Write(Convert.ToInt64(x.TotalMilliseconds)));
+                    (i, r) => TimeSpan.FromMilliseconds(r.ReadInt64()),
+                    (x, w) => w.Write(Convert.ToInt64(x.TotalMilliseconds)));
             }
         }
 
@@ -686,6 +704,7 @@ namespace GBX.NET.Engines.Game
             private readonly CGameCtnGhost node;
 
             public bool IsReplaying => node.IsReplaying;
+            public CGameGhostData Data => node.Data.Result;
 
             public Meta PlayerModel => node.PlayerModel;
             public FileRef[] SkinPackDescs => node.SkinPackDescs;
