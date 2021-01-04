@@ -44,6 +44,27 @@ namespace GBX.NET.Engines.Game
 
         #region Chunks
 
+        #region 0x002 chunk
+
+        [Chunk(0x03079002)]
+        public class Chunk03079002 : Chunk<CGameCtnMediaClip>
+        {
+            public int Version { get; set; }
+
+            public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
+            {
+                Version = rw.Int32(Version);
+                n.Tracks = rw.Array(n.Tracks?.ToArray(),
+                    (i, r) => r.ReadNodeRef<CGameCtnMediaTrack>(),
+                    (x, w) => w.Write(x))?.ToList();
+
+                n.Name = rw.String(n.Name);
+                rw.Int32(Unknown);
+            }
+        }
+
+        #endregion
+
         #region 0x003 chunk
 
         [Chunk(0x03079003)]
@@ -55,8 +76,8 @@ namespace GBX.NET.Engines.Game
             {
                 Version = rw.Int32(Version);
                 n.Tracks = rw.Array(n.Tracks?.ToArray(),
-                    i => rw.Reader.ReadNodeRef<CGameCtnMediaTrack>(),
-                    x => rw.Writer.Write(x))?.ToList();
+                    (i, r) => r.ReadNodeRef<CGameCtnMediaTrack>(),
+                    (x, w) => w.Write(x))?.ToList();
                 n.Name = rw.String(n.Name);
             }
         }
@@ -87,8 +108,8 @@ namespace GBX.NET.Engines.Game
             {
                 Version = rw.Int32(Version);
                 n.Tracks = rw.Array(n.Tracks?.ToArray(),
-                    i => rw.Reader.ReadNodeRef<CGameCtnMediaTrack>(),
-                    x => rw.Writer.Write(x))?.ToList();
+                    (i, r) => r.ReadNodeRef<CGameCtnMediaTrack>(),
+                    (x, w) => w.Write(x))?.ToList();
 
                 n.Name = rw.String(n.Name);
             }
@@ -199,8 +220,8 @@ namespace GBX.NET.Engines.Game
                 Version = rw.Int32(Version);
 
                 n.Tracks = rw.Array(n.Tracks?.ToArray(),
-                    i => rw.Reader.ReadNodeRef<CGameCtnMediaTrack>(),
-                    x => rw.Writer.Write(x))?.ToList();
+                    (i, r) => r.ReadNodeRef<CGameCtnMediaTrack>(),
+                    (x, w) => w.Write(x))?.ToList();
 
                 n.Name = rw.String(n.Name);
 
