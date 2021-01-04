@@ -30,6 +30,7 @@ namespace GBX.NET.Engines.Game
             {
                 Data = rw.Bytes(Data);
                 Samples = rw.Array(Samples);
+
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);

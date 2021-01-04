@@ -222,7 +222,7 @@ namespace GBX.NET.Engines.Game
 
                 n.Ghosts = r.ReadArray(i => r.ReadNodeRef<CGameCtnGhost>());
 
-                var u03 = r.ReadInt32();
+                var u03 = r.ReadInt32(); // millisecond length of something (usually record time + 0.5s)
                 var u04 = r.ReadInt32();
             }
         }
@@ -236,7 +236,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                r.ReadInt32();
+                var u01 = r.ReadInt32();
             }
         }
 
