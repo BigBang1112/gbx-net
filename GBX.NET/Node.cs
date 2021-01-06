@@ -194,7 +194,6 @@ namespace GBX.NET
                     {
                         if (chunkID != 0 && !reflected)
                         {
-                            Debug.WriteLine($"Wrong chunk format or unskippable chunk: 0x{chunkID:X8} ({Names.Where(x => x.Key == Chunk.Remap(chunkID & 0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})"); // Read till facade
                             node.FaultyChunk = chunkID;
 
                             if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
@@ -202,7 +201,13 @@ namespace GBX.NET
                             else
                                 Log.Write($"~ [{node.ClassName}] 0x{chunkID:X8} ERROR (wrong chunk format or unknown unskippable chunk)", ConsoleColor.Red);
 
-                            var buffer = BitConverter.GetBytes(chunkID);
+                            throw new Exception($"Wrong chunk format or unskippable chunk: 0x{chunkID:X8} (" +
+                                $"{Names.Where(x => x.Key == Chunk.Remap(chunkID & 0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})" +
+                                $"\nPrevious chunk: 0x{previousChunk ?? 0:X8}");
+
+                            /* Usually breaks in the current state and causes confusion
+                             * 
+                             * var buffer = BitConverter.GetBytes(chunkID);
                             using (var restMs = new MemoryStream(ushort.MaxValue))
                             {
                                 restMs.Write(buffer, 0, buffer.Length);
@@ -212,7 +217,7 @@ namespace GBX.NET
 
                                 node.Rest = restMs.ToArray();
                             }
-                            Debug.WriteLine("FACADE found.");
+                            Debug.WriteLine("FACADE found.");*/
                         }
                         break;
                     }
