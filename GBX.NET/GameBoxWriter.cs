@@ -222,16 +222,16 @@ namespace GBX.NET
             Write(new LookbackString(value, Lookbackable));
         }
 
-        public void Write(Meta meta, ILookbackable lookbackable)
+        public void Write(Ident ident, ILookbackable lookbackable)
         {
-            Write(new LookbackString(meta.ID, lookbackable));
-            Write(meta.Collection.ToLookbackString(lookbackable));
-            Write(new LookbackString(meta.Author, lookbackable));
+            Write(new LookbackString(ident.ID, lookbackable));
+            Write(ident.Collection.ToLookbackString(lookbackable));
+            Write(new LookbackString(ident.Author, lookbackable));
         }
 
-        public void Write(Meta meta)
+        public void Write(Ident ident)
         {
-            Write(meta, Lookbackable);
+            Write(ident, Lookbackable);
         }
 
         public void Write(Node node, IGameBoxBody body)

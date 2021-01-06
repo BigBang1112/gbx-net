@@ -199,7 +199,7 @@ namespace IslandConverter
             var chunk00D = map.GetChunk<CGameCtnChallenge.Chunk0304300D>();
 
             var beforeCar = map.PlayerModel.ID;
-            map.PlayerModel = new Meta("IslandCar.Item.Gbx", "Stadium", "adamkooo");
+            map.PlayerModel = new Ident("IslandCar.Item.Gbx", "Stadium", "adamkooo");
 
             Log.Write("Applying texture mod...");
             map.ModPackDesc = new FileRef(3, Convert.FromBase64String("AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="), @"Skins\Stadium\Mod\IslandTM2U.zip", "");
@@ -566,7 +566,7 @@ namespace IslandConverter
                                     var itemModel = conv.ItemModel[modelToChoose];
                                     var itemModelSplit = itemModel.Split(' ');
 
-                                    var meta = new Meta("Island\\" + itemModelSplit[0], itemModelSplit.Length > 1 ? new Collection(itemModelSplit[1]) : 10003, itemModelSplit.Length > 2 ? itemModelSplit[2] : "adamkooo");
+                                    var meta = new Ident("Island\\" + itemModelSplit[0], itemModelSplit.Length > 1 ? new Collection(itemModelSplit[1]) : 10003, itemModelSplit.Length > 2 ? itemModelSplit[2] : "adamkooo");
 
                                     Vec3 offsetAbsolutePosition = new Vec3((block.Coord.X+1) * 64 + 96, (block.Coord.Y+1) * 8 - offsetHeight, (block.Coord.Z+1) * 64 + 96);
                                     if (conv.OffsetAbsolutePosition != null)
@@ -650,7 +650,7 @@ namespace IslandConverter
                                         if (skinInfo.TryGetValue(conv.SkinSignSet, out Dictionary<string, string> skinDic))
                                         {
                                             if (skinDic.TryGetValue(block.Skin.PackDesc.FilePath, out string itemFile))
-                                                gbx.MainNode.PlaceAnchoredObject(new Meta("Island\\" + itemFile, "10003", "adamkooo"),
+                                                gbx.MainNode.PlaceAnchoredObject(new Ident("Island\\" + itemFile, "10003", "adamkooo"),
                                                     offsetAbsolutePosition + skinPosOffset,
                                                     offsetPitchYawRoll + new Vec3(-conv.SkinDirectionOffset % 4 * 90f / 180 * (float)Math.PI, 0, 0), offsetPivot);
                                             else

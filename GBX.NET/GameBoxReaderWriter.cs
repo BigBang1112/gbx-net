@@ -397,31 +397,31 @@ namespace GBX.NET
             else throw new Exception();
         }
 
-        public Meta Meta(Meta variable, ILookbackable lookbackable)
+        public Ident Ident(Ident variable, ILookbackable lookbackable)
         {
-            if (Reader != null) return Reader.ReadMeta(lookbackable);
+            if (Reader != null) return Reader.ReadIdent(lookbackable);
             else if (Writer != null) Writer.Write(variable, lookbackable);
             return variable;
         }
 
-        public Meta Meta(Meta variable)
+        public Ident Ident(Ident variable)
         {
-            if (Reader != null) return Meta(variable, Reader.Lookbackable);
-            else if (Writer != null) return Meta(variable, Writer.Lookbackable);
+            if (Reader != null) return Ident(variable, Reader.Lookbackable);
+            else if (Writer != null) return Ident(variable, Writer.Lookbackable);
             throw new Exception();
         }
 
-        public void Meta(UnknownStream stream)
+        public void Ident(UnknownStream stream)
         {
             if (Reader != null)
             {
                 using (var w = new GameBoxWriter(stream, Reader.Lookbackable))
-                    w.Write(Reader.ReadMeta());
+                    w.Write(Reader.ReadIdent());
             }
             else if (Writer != null)
             {
                 using (var r = new GameBoxReader(stream, Writer.Lookbackable))
-                    Writer.Write(r.ReadMeta());
+                    Writer.Write(r.ReadIdent());
             }
         }
 

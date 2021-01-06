@@ -66,7 +66,7 @@ void Read(GameBoxReader r)
 
     if (version < 1)
     {
-        Meta mapInfo = r.ReadMeta();
+        Ident mapInfo = r.ReadIdent();
         string mapName = r.ReadString();
     }
 
@@ -233,7 +233,7 @@ void Read(GameBoxReader r)
 
     if (version < 3)
     {
-        Meta mapInfo = r.ReadMeta();
+        Ident mapInfo = r.ReadIdent();
         string mapName = r.ReadString();
     }
 
@@ -312,7 +312,7 @@ void Read(GameBoxReader r)
 void Read(GameBoxReader r)
 {
     byte version = r.ReadByte();
-    Meta mapInfo = r.ReadMeta();
+    Ident mapInfo = r.ReadIdent();
     string mapName = r.ReadString();
     TrackKind kind = (TrackKind)r.ReadByte();
 
@@ -323,7 +323,7 @@ void Read(GameBoxReader r)
 
         if (version >= 2)
         {
-            Meta decoration = r.ReadMeta();
+            Ident decoration = r.ReadIdent();
 
             if (version >= 3)
             {
@@ -452,7 +452,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-    Meta vehicle = r.ReadMeta();
+    Ident vehicle = r.ReadIdent();
 }
 ```
 
@@ -461,7 +461,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-    Meta mapInfo = r.ReadMeta();
+    Ident mapInfo = r.ReadIdent();
     Int3 size = r.ReadInt3();
     int u01 = r.ReadInt32();
 
@@ -470,7 +470,7 @@ void Read(GameBoxReader r)
         CGameCtnBlock block = r.ReadNodeRef<CGameCtnBlock>();
 
     int u02 = r.ReadInt32();
-    int u03 = r.ReadMeta();
+    int u03 = r.ReadIdent();
 }
 ```
 
@@ -605,9 +605,9 @@ public enum PlayMode : int
 ```cs
 void Read(GameBoxReader r)
 {
-    Meta mapInfo = r.ReadMeta();
+    Ident mapInfo = r.ReadIdent();
     string mapName = r.ReadString();
-    Meta decoration = r.ReadMeta();
+    Ident decoration = r.ReadIdent();
     Int3 size = r.ReadInt3();
     bool needUnlock = r.ReadBoolean();
 
@@ -952,7 +952,7 @@ void Read(GameBoxReader r)
 {
     int unknown = r.ReadInt32();
     int size = r.ReadInt32();
-    uint classID = r.ReadUInt32(); // CScriptTraitsMetadata
+    uint classID = r.ReadUInt32(); // CScriptTraitsIdentdata
     int version = r.ReadInt32();
 
     byte typeCount = r.ReadByte();

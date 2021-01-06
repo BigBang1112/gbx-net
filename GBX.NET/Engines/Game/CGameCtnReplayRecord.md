@@ -26,7 +26,7 @@ void Read (GameBoxReader r)
 
     if (version >= 2)
     {
-        Meta mapInfo = r.ReadMeta();
+        Ident mapInfo = r.ReadIdent();
         int time = r.ReadInt32();
         string nickname = r.ReadString();
 

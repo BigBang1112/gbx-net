@@ -11,7 +11,7 @@ namespace GBX.NET.Engines.Game
         public string DisplayName { get; set; }
         public string CollectionIcon { get; set; }
         public string BlockInfoFlat { get; set; }
-        public Meta Vehicle { get; set; }
+        public Ident Vehicle { get; set; }
         public string LoadingScreen { get; set; }
 
         #region Chunks
@@ -38,7 +38,7 @@ namespace GBX.NET.Engines.Game
                 n.CollectionIcon = r.ReadString();
                 _ = r.ReadArray<int>(2);
                 n.BlockInfoFlat = r.ReadLookbackString(this);
-                n.Vehicle = r.ReadMeta(this);
+                n.Vehicle = r.ReadIdent(this);
                 _ = r.ReadInt32();
                 _ = r.ReadArray<float>(4);
                 n.LoadingScreen = r.ReadString();
@@ -93,7 +93,7 @@ namespace GBX.NET.Engines.Game
                 _ = r.ReadArray(x => r.ReadInt32());
                 _ = r.ReadInt32();
                 _ = r.ReadArray<float>(3);
-                n.Vehicle = r.ReadMeta();
+                n.Vehicle = r.ReadIdent();
             }
         }
 
@@ -189,7 +189,7 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnCollection n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 _ = r.ReadInt32();
-                _ = r.ReadMeta();
+                _ = r.ReadIdent();
                 _ = r.ReadInt32();
                 _ = r.ReadInt32();
             }

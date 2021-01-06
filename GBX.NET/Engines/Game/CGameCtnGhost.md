@@ -30,7 +30,7 @@
 void Read(GameBoxReader r)
 {
     int version = r.ReadInt32();
-    Meta model = r.ReadMeta();
+    Ident model = r.ReadIdent();
     Vec3 a = r.ReadVec3();
 
     int numSkinFiles = r.ReadInt32();
@@ -199,7 +199,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-    Meta a = r.ReadMeta();
+    Ident a = r.ReadIdent();
 }
 ```
 

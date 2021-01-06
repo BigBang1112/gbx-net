@@ -363,7 +363,7 @@ namespace GBX.NET.Engines.Game
         public int NbCheckpoints { get; set; }
 
         [NodeMember]
-        public Meta MapInfo { get; set; }
+        public Ident MapInfo { get; set; }
 
         [NodeMember]
         public string MapUid
@@ -426,7 +426,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public Meta Decoration { get; set; }
+        public Ident Decoration { get; set; }
 
         /// <summary>
         /// Name of the map type script.
@@ -603,7 +603,7 @@ namespace GBX.NET.Engines.Game
         /// Vehicle metadata info.
         /// </summary>
         [NodeMember]
-        public Meta PlayerModel { get; set; }
+        public Ident PlayerModel { get; set; }
 
         /// <summary>
         /// Map parameters.
@@ -1057,7 +1057,7 @@ namespace GBX.NET.Engines.Game
         public IEnumerable<CGameCtnBlock> GetBlocks(int x, int y, int z) => GetBlocks((x, y, z));
 
         [Obsolete]
-        public void PlaceItem(Meta itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Byte3 blockUnitCoord, Vec3 offsetPivot, int variant = 0)
+        public void PlaceItem(Ident itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Byte3 blockUnitCoord, Vec3 offsetPivot, int variant = 0)
         {
             CreateChunk<Chunk03043040>();
 
@@ -1076,7 +1076,7 @@ namespace GBX.NET.Engines.Game
             AnchoredObjects.Add(it);
         }
 
-        public void PlaceAnchoredObject(Meta itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Vec3 offsetPivot = default, int variant = 0)
+        public void PlaceAnchoredObject(Ident itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Vec3 offsetPivot = default, int variant = 0)
         {
             CreateChunk<Chunk03043040>();
 
@@ -1548,7 +1548,7 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public byte Version { get; set; }
 
-            public Meta MapInfo { get; set; }
+            public Ident MapInfo { get; set; }
 
             public string MapName { get; set; }
 
@@ -1604,7 +1604,7 @@ namespace GBX.NET.Engines.Game
 
                 if (Version < 1)
                 {
-                    MapInfo = rw.Meta(MapInfo);
+                    MapInfo = rw.Ident(MapInfo);
                     MapName = rw.String(MapName);
                 }
 
@@ -1719,7 +1719,7 @@ namespace GBX.NET.Engines.Game
 
                 if (Version < 3)
                 {
-                    n.MapInfo = rw.Meta(n.MapInfo);
+                    n.MapInfo = rw.Ident(n.MapInfo);
                     n.MapName = rw.String(n.MapName);
                 }
 
@@ -1807,7 +1807,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 Version = rw.Byte(Version);
-                n.MapInfo = rw.Meta(n.MapInfo);
+                n.MapInfo = rw.Ident(n.MapInfo);
                 n.MapName = rw.String(n.MapName);
                 n.Kind = (TrackKind)rw.Byte((byte)n.Kind);
 
@@ -1818,7 +1818,7 @@ namespace GBX.NET.Engines.Game
 
                     if (Version >= 2)
                     {
-                        n.Decoration = rw.Meta(n.Decoration);
+                        n.Decoration = rw.Ident(n.Decoration);
 
                         if (Version >= 3)
                         {
@@ -1990,7 +1990,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                n.PlayerModel = rw.Meta(n.PlayerModel);
+                n.PlayerModel = rw.Ident(n.PlayerModel);
             }
         }
 
@@ -2006,18 +2006,18 @@ namespace GBX.NET.Engines.Game
         {
             public int Unknown1 { get; set; }
             public int Unknown2 { get; set; }
-            public Meta Unknown3 { get; set; }
+            public Ident Unknown3 { get; set; }
 
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                n.MapInfo = rw.Meta(n.MapInfo);
+                n.MapInfo = rw.Ident(n.MapInfo);
                 n.Size = rw.Int3(n.Size.GetValueOrDefault());
                 Unknown1 = rw.Int32(Unknown1);
                 n.Blocks = rw.Array(n.Blocks?.ToArray(),
                     i => rw.Reader.ReadNodeRef<CGameCtnBlock>(),
                     x => rw.Writer.Write(x)).ToList();
                 Unknown2 = rw.Int32(Unknown2);
-                Unknown3 = rw.Meta(Unknown3);
+                Unknown3 = rw.Ident(Unknown3);
             }
         }
 
@@ -2204,9 +2204,9 @@ namespace GBX.NET.Engines.Game
 
             public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                n.MapInfo = r.ReadMeta();
+                n.MapInfo = r.ReadIdent();
                 n.MapName = r.ReadString();
-                n.Decoration = r.ReadMeta();
+                n.Decoration = r.ReadIdent();
                 n.Size = r.ReadInt3();
                 NeedUnlock = r.ReadBoolean();
 
@@ -2944,7 +2944,7 @@ namespace GBX.NET.Engines.Game
                 U01 = r.ReadInt32();
                 var size = r.ReadInt32();
 
-                var embedded = r.ReadArray(i => r.ReadMeta());
+                var embedded = r.ReadArray(i => r.ReadIdent());
 
                 n.originalEmbedZip = r.ReadBytes();
                 if (n.originalEmbedZip.Length > 0)
@@ -2975,7 +2975,7 @@ namespace GBX.NET.Engines.Game
                 using (var ms = new MemoryStream())
                 using (var writer = new GameBoxWriter(ms, this))
                 {
-                    List<Meta> embedded = new List<Meta>();
+                    List<Ident> embedded = new List<Ident>();
 
                     foreach (var embed in n.GetEmbeddedObjects())
                     {
@@ -2994,9 +2994,9 @@ namespace GBX.NET.Engines.Game
                                 }
                             }
 
-                            embedded.Add(new Meta(id,
-                                gbxItem.MainNode.Metadata.Collection,
-                                gbxItem.MainNode.Metadata.Author));
+                            embedded.Add(new Ident(id,
+                                gbxItem.MainNode.Ident.Collection,
+                                gbxItem.MainNode.Ident.Author));
                         }
                     }
 
@@ -3147,13 +3147,13 @@ namespace GBX.NET.Engines.Game
             public bool TMObjective_IsLapRace => node.TMObjective_IsLapRace;
             public int TMObjective_NbLaps => node.TMObjective_NbLaps;
             public int NbCheckpoints => node.NbCheckpoints;
-            public Meta MapInfo => node.MapInfo;
+            public Ident MapInfo => node.MapInfo;
             public string MapUid => node.MapUid;
             public string AuthorLogin => node.AuthorLogin;
             public string MapName => node.MapName;
             public TrackKind Kind => node.Kind;
             public string Password => node.Password;
-            public Meta Decoration => node.Decoration;
+            public Ident Decoration => node.Decoration;
             public string MapType => node.MapType;
             public string MapStyle => node.MapStyle;
             public ulong? LightmapCacheUID => node.LightmapCacheUID;
@@ -3170,7 +3170,7 @@ namespace GBX.NET.Engines.Game
             public string AuthorNickname => node.AuthorNickname;
             public string AuthorZone => node.AuthorZone;
             public string AuthorExtraInfo => node.AuthorExtraInfo;
-            public Meta PlayerModel => node.PlayerModel;
+            public Ident PlayerModel => node.PlayerModel;
             public CGameCtnChallengeParameters ChallengeParameters => node.ChallengeParameters;
             public CGameCtnCollectorList BlockStock => node.BlockStock;
             public Int3[] Checkpoints => node.Checkpoints;

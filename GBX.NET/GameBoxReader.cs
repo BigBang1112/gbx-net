@@ -113,18 +113,18 @@ namespace GBX.NET
             return ReadLookbackString(Lookbackable);
         }
 
-        public Meta ReadMeta(ILookbackable lookbackable)
+        public Ident ReadIdent(ILookbackable lookbackable)
         {
             var id = ReadLookbackString(lookbackable);
             var collection = ReadLookbackString(lookbackable);
             var author = ReadLookbackString(lookbackable);
 
-            return new Meta(id, collection, author);
+            return new Ident(id, collection, author);
         }
 
-        public Meta ReadMeta()
+        public Ident ReadIdent()
         {
-            return ReadMeta(Lookbackable);
+            return ReadIdent(Lookbackable);
         }
 
         public T ReadNodeRef<T>(IGameBoxBody body) where T : Node

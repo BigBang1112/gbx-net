@@ -16,7 +16,7 @@ namespace GBX.NET.Engines.Game
         #region Properties
 
         [NodeMember]
-        public Meta MapInfo { get; set; }
+        public Ident MapInfo { get; set; }
 
         [NodeMember]
         public TimeSpan? Time { get; set; }
@@ -85,7 +85,7 @@ namespace GBX.NET.Engines.Game
 
                 if(Version >= 2)
                 {
-                    n.MapInfo = r.ReadMeta();
+                    n.MapInfo = r.ReadIdent();
                     n.Time = r.ReadTimeSpan();
                     n.Nickname = r.ReadString();
 
@@ -382,7 +382,7 @@ namespace GBX.NET.Engines.Game
         {
             private readonly CGameCtnReplayRecord node;
 
-            public Meta MapInfo => node.MapInfo;
+            public Ident MapInfo => node.MapInfo;
             public TimeSpan? Time => node.Time;
             public string Nickname => node.Nickname;
             public string DriverLogin => node.DriverLogin;

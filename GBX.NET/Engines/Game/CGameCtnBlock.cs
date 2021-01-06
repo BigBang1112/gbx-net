@@ -46,13 +46,13 @@ namespace GBX.NET.Engines.Game
             set
             {
                 if (BlockInfo == null)
-                    BlockInfo = new Meta(value);
+                    BlockInfo = new Ident(value);
                 else BlockInfo.ID = value;
             }
         }
 
         [NodeMember]
-        public Meta BlockInfo { get; set; }
+        public Ident BlockInfo { get; set; }
 
         /// <summary>
         /// Facing direction of the block.
@@ -319,7 +319,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlock n, GameBoxReaderWriter rw)
             {
-                n.BlockInfo = rw.Meta(n.BlockInfo);
+                n.BlockInfo = rw.Ident(n.BlockInfo);
                 n.Direction = (Direction)rw.Byte((byte)n.Direction);
                 n.Coord = (Int3)rw.Byte3((Byte3)n.Coord);
                 n.Flags = rw.Int32(n.Flags);
@@ -337,7 +337,7 @@ namespace GBX.NET.Engines.Game
             private readonly CGameCtnBlock node;
 
             public string Name => node.Name;
-            public Meta BlockInfo => node.BlockInfo;
+            public Ident BlockInfo => node.BlockInfo;
             public Direction Direction => node.Direction;
             public Int3 Coord => node.Coord;
             public FlagsInt Flags => new FlagsInt(node.Flags);

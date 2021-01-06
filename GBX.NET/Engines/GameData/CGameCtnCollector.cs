@@ -16,7 +16,7 @@ namespace GBX.NET.Engines.GameData
         #region Properties
 
         [NodeMember]
-        public Meta Metadata { get; set; }
+        public Ident Ident { get; set; }
 
         [NodeMember]
         public string PageName { get; set; }
@@ -75,7 +75,7 @@ namespace GBX.NET.Engines.GameData
 
             public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
             {
-                n.Metadata = rw.Meta(n.Metadata);
+                n.Ident = rw.Ident(n.Ident);
                 Version = rw.Int32(Version);
                 n.PageName = rw.String(n.PageName);
 
@@ -224,7 +224,7 @@ namespace GBX.NET.Engines.GameData
         {
             public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
             {
-                n.Metadata = rw.Meta(n.Metadata);
+                n.Ident = rw.Ident(n.Ident);
             }
         }
 
