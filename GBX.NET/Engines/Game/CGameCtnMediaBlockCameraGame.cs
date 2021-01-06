@@ -119,7 +119,7 @@ namespace GBX.NET.Engines.Game
         #region 0x005 chunk
 
         /// <summary>
-        /// CGameCtnMediaBlockCameraGame 0x007 chunk
+        /// CGameCtnMediaBlockCameraGame 0x005 chunk
         /// </summary>
         [Chunk(0x03084005)]
         public class Chunk03084005 : Chunk<CGameCtnMediaBlockCameraGame>
