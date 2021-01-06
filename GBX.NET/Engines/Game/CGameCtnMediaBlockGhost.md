@@ -25,12 +25,20 @@ void Read (GameBoxReader r)
 void Read (GameBoxReader r)
 {
     int version = r.ReadInt32();
-
-    int numKeys = r.ReadInt32();
-    for (var i = 0; i < numKeys; i++)
+    
+    if (version >= 3)
     {
-        float time = r.ReadSingle();
-        float u01 = r.ReadSingle();
+        int numKeys = r.ReadInt32();
+        for (var i = 0; i < numKeys; i++)
+        {
+            float time = r.ReadSingle();
+            float u01 = r.ReadSingle();
+        }
+    }
+    else
+    {
+        float start = r.ReadSingle();
+        float end = r.ReadSingle();
     }
 
     CGameCtnGhost ghostModel = r.ReadNodeRef<CGameCtnGhost>();
