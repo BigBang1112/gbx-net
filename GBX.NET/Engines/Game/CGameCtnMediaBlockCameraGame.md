@@ -39,7 +39,7 @@ void Read (GameBoxReader r)
 {
     float start = r.ReadSingle();
     float end = r.ReadSingle();
-    LookbackString gameCam = r.ReadLookbackString();
+    Id gameCam = r.ReadId();
     int target = r.ReadInt32();
 }
 ```

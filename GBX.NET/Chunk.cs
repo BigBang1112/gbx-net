@@ -188,8 +188,8 @@ namespace GBX.NET
 
             if (this is ILookbackable l)
             {
-                l.LookbackWritten = false;
-                l.LookbackStrings.Clear();
+                l.IdWritten = false;
+                l.IdStrings.Clear();
                 lookbackable = l;
             }
 

@@ -82,10 +82,10 @@ void Read(GameBoxReader r)
         BoatName boatName = (BoatName)r.ReadByte();
 
     if (version >= 9)
-        LookbackString boat = r.ReadLookbackString();
+        Id boat = r.ReadId();
 
     if (version >= 12)
-        LookbackString boatAuthor = r.ReadLookbackString();
+        Id boatAuthor = r.ReadId();
 
     RaceMode raceMode = (RaceMode)r.ReadByte();
     byte u05 = r.ReadByte();
@@ -354,7 +354,7 @@ void Read(GameBoxReader r)
                                     byte lightmapVersion = r.ReadByte();
 
                                     if (version >= 11)
-                                        LookbackString titleUID = r.ReadLookbackString();
+                                        Id titleUID = r.ReadId();
                                 }
                             }
                         }
@@ -618,7 +618,7 @@ void Read(GameBoxReader r)
 
     while ((r.PeekUInt32() & 0xC0000000) > 0)
     {
-        LookbackString blockName = r.ReadLookbackString();
+        Id blockName = r.ReadId();
         Direction dir = (Direction)r.ReadByte();
         Byte3 coord = r.ReadByte3();
         int flags = 0;
@@ -636,7 +636,7 @@ void Read(GameBoxReader r)
 
         if ((flags & 0x8000) != 0) // custom block
         {
-            LookbackString author = r.ReadLookbackString();
+            Id author = r.ReadId();
             CGameCtnBlockSkin skin = r.ReadNodeRef<CGameCtnBlockSkin>();
         }
 
@@ -1145,7 +1145,7 @@ void Read(GameBoxReader r)
     int numBakedBlocks = r.ReadInt32();
     for (var i = 0; i < numBakedBlocks; i++)
     {
-        LookbackString blockName = r.ReadLookbackString();
+        Id blockName = r.ReadId();
         Direction dir = (Direction)r.ReadByte();
         Byte3 coord = r.ReadByte3();
         int flags = r.ReadInt32();
@@ -1218,7 +1218,7 @@ Undiscovered.
 void Read(GameBoxReader r)
 {
     int version = r.ReadInt32();
-    string titleID = r.ReadLookbackString();
+    string titleID = r.ReadId();
     string buildVersion = r.ReadString();
 }
 ```

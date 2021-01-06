@@ -208,8 +208,8 @@ namespace GBX.NET
             using (MemoryStream ms = new MemoryStream())
             using (GameBoxWriter bodyW = new GameBoxWriter(ms))
             {
-                (Body as ILookbackable).LookbackWritten = false;
-                (Body as ILookbackable).LookbackStrings.Clear();
+                (Body as ILookbackable).IdWritten = false;
+                (Body as ILookbackable).IdStrings.Clear();
                 Body.AuxilaryNodes.Clear();
 
                 Log.Write("Writing the body...");
@@ -218,8 +218,8 @@ namespace GBX.NET
 
                 Log.Write("Writing the header...");
 
-                (Header as ILookbackable).LookbackWritten = false;
-                (Header as ILookbackable).LookbackStrings.Clear();
+                (Header as ILookbackable).IdWritten = false;
+                (Header as ILookbackable).IdStrings.Clear();
                 Header.Write(w, Body.AuxilaryNodes.Count + 1, remap);
 
                 Log.Write("Writing the reference table...");

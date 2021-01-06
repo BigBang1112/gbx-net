@@ -36,7 +36,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw) // WIP
             {
-                n.BlockName = rw.LookbackString(n.BlockName);
+                n.BlockName = rw.Id(n.BlockName);
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
@@ -224,7 +224,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                n.SymmetricalBlockInfoId = rw.LookbackString(n.SymmetricalBlockInfoId);
+                n.SymmetricalBlockInfoId = rw.Id(n.SymmetricalBlockInfoId);
                 n.Dir = (Direction)rw.Int32((int)n.Dir);
             }
         }

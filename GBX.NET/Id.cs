@@ -5,25 +5,25 @@ using System.IO;
 
 namespace GBX.NET
 {
-    public class LookbackString
+    public class Id
     {
         public ILookbackable Owner { get; }
         public string String { get; set; }
 
         public int Index
         {
-            get => Owner.LookbackStrings.IndexOf(String);
+            get => Owner.IdStrings.IndexOf(String);
         }
 
         public static Dictionary<int, string> CollectionIDs { get; }
 
-        public LookbackString(string str, ILookbackable lookbackable)
+        public Id(string str, ILookbackable lookbackable)
         {
             Owner = lookbackable;
             String = str;
         }
 
-        public static implicit operator string(LookbackString s)
+        public static implicit operator string(Id s)
         {
             if (s == null) return "";
             return s.ToString();
@@ -34,7 +34,7 @@ namespace GBX.NET
             return String;
         }
 
-        static LookbackString()
+        static Id()
         {
             CollectionIDs = new Dictionary<int, string>();
 

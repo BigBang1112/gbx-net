@@ -1620,10 +1620,10 @@ namespace GBX.NET.Engines.Game
                     BoatName = (BoatName)rw.Byte((byte)BoatName);
 
                 if (Version >= 9)
-                    Boat = rw.LookbackString(Boat);
+                    Boat = rw.Id(Boat);
 
                 if (Version >= 12)
-                    BoatAuthor = rw.LookbackString(BoatAuthor);
+                    BoatAuthor = rw.Id(BoatAuthor);
 
                 RaceMode = (RaceMode)rw.Byte((byte)RaceMode);
                 rw.Byte(Unknown);
@@ -1849,7 +1849,7 @@ namespace GBX.NET.Engines.Game
                                                 n.LightmapVersion = rw.Byte(n.LightmapVersion.GetValueOrDefault());
 
                                                 if (Version >= 11)
-                                                    n.TitleID = rw.LookbackString(n.TitleID);
+                                                    n.TitleID = rw.Id(n.TitleID);
                                             }
                                         }
                                     }
@@ -2219,7 +2219,7 @@ namespace GBX.NET.Engines.Game
 
                 while ((r.PeekUInt32() & 0xC0000000) > 0)
                 {
-                    var blockName = r.ReadLookbackString();
+                    var blockName = r.ReadId();
                     var dir = (Direction)r.ReadByte();
                     var coord = r.ReadByte3();
                     var flags = -1;
@@ -2240,7 +2240,7 @@ namespace GBX.NET.Engines.Game
 
                     if ((flags & (1 << 15)) != 0) // custom block
                     {
-                        author = r.ReadLookbackString();
+                        author = r.ReadId();
                         skin = r.ReadNodeRef<CGameCtnBlockSkin>();
                     }
 
@@ -2303,7 +2303,7 @@ namespace GBX.NET.Engines.Game
 
                 foreach (var x in n.Blocks)
                 {
-                    w.WriteLookbackString(x.Name);
+                    w.WriteId(x.Name);
                     w.Write((byte)x.Direction);
                     w.Write((Byte3)(x.Coord + (1, 1, 1)));
 
@@ -2316,7 +2316,7 @@ namespace GBX.NET.Engines.Game
                     {
                         if ((x.Flags & 0x8000) != 0) // custom block
                         {
-                            w.WriteLookbackString(x.Author);
+                            w.WriteId(x.Author);
                             w.Write(x.Skin);
                         }
 
@@ -2634,9 +2634,9 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03043040, "items")]
         public class Chunk03043040 : SkippableChunk<CGameCtnChallenge>, ILookbackable
         {
-            int? ILookbackable.LookbackVersion { get; set; }
-            List<string> ILookbackable.LookbackStrings { get; set; } = new List<string>();
-            bool ILookbackable.LookbackWritten { get; set; }
+            int? ILookbackable.IdVersion { get; set; }
+            List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
+            bool ILookbackable.IdWritten { get; set; }
 
             public int Version { get; set; } = 4;
 
@@ -2730,9 +2730,9 @@ namespace GBX.NET.Engines.Game
         [IgnoreChunk]
         public class Chunk03043043 : SkippableChunk<CGameCtnChallenge>, ILookbackable
         {
-            int? ILookbackable.LookbackVersion { get; set; }
-            List<string> ILookbackable.LookbackStrings { get; set; } = new List<string>();
-            bool ILookbackable.LookbackWritten { get; set; }
+            int? ILookbackable.IdVersion { get; set; }
+            List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
+            bool ILookbackable.IdWritten { get; set; }
 
             public int Version { get; set; }
             public new byte[] Data { get; set; }
@@ -2826,7 +2826,7 @@ namespace GBX.NET.Engines.Game
                 n.BakedBlocks = rw.Array(n.BakedBlocks, i =>
                 {
                     return new CGameCtnBlock(
-                        rw.Reader.ReadLookbackString(), 
+                        rw.Reader.ReadId(), 
                         (Direction)rw.Reader.ReadByte(), 
                         (Int3)rw.Reader.ReadByte3(),
                         rw.Reader.ReadInt32()
@@ -2834,7 +2834,7 @@ namespace GBX.NET.Engines.Game
                 },
                 x =>
                 {
-                    rw.Writer.WriteLookbackString(x.Name);
+                    rw.Writer.WriteId(x.Name);
                     rw.Writer.Write((byte)x.Direction);
                     rw.Writer.Write((Byte3)x.Coord);
                     rw.Writer.Write(x.Flags);
@@ -2915,7 +2915,7 @@ namespace GBX.NET.Engines.Game
             {
                 Version = rw.Int32(Version);
 
-                n.titleID = rw.LookbackString(n.titleID);
+                n.titleID = rw.Id(n.titleID);
                 n.buildVersion = rw.String(n.buildVersion);
             }
         }
@@ -2930,9 +2930,9 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03043054, "embeds")]
         public class Chunk03043054 : SkippableChunk<CGameCtnChallenge>, ILookbackable
         {
-            int? ILookbackable.LookbackVersion { get; set; }
-            List<string> ILookbackable.LookbackStrings { get; set; } = new List<string>();
-            bool ILookbackable.LookbackWritten { get; set; }
+            int? ILookbackable.IdVersion { get; set; }
+            List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
+            bool ILookbackable.IdWritten { get; set; }
 
             public int Version { get; set; } = 1;
             public int U01 { get; set; }

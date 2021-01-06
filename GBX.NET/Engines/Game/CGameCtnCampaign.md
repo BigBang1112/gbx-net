@@ -31,7 +31,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-    LookbackString campaignID = r.ReadLookbackString();
+    Id campaignID = r.ReadId();
 }
 ```
 

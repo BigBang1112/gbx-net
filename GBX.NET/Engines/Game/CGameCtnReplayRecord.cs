@@ -96,7 +96,7 @@ namespace GBX.NET.Engines.Game
                         if (Version >= 8)
                         {
                             U01 = r.ReadByte();
-                            n.TitleID = r.ReadLookbackString();
+                            n.TitleID = r.ReadId();
                         }
                     }
                 }
@@ -267,7 +267,7 @@ namespace GBX.NET.Engines.Game
                 {
                     r.ReadInt32();
 
-                    var controlNames = r.ReadArray<string>(i => r.ReadLookbackString());
+                    var controlNames = r.ReadArray<string>(i => r.ReadId());
 
                     var num = r.ReadInt32();
                     r.ReadInt32();

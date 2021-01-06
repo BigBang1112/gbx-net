@@ -70,54 +70,54 @@ namespace GBX.NET
             else return ReadBoolean();
         }
 
-        public LookbackString ReadLookbackString(ILookbackable lookbackable)
+        public Id ReadId(ILookbackable lookbackable)
         {
-            if (!lookbackable.LookbackVersion.HasValue)
-                lookbackable.LookbackVersion = ReadInt32();
+            if (!lookbackable.IdVersion.HasValue)
+                lookbackable.IdVersion = ReadInt32();
 
             var index = ReadUInt32();
 
             if ((index & 0x3FFF) == 0 && (index >> 30 == 1 || index >> 30 == 2))
             {
                 var str = ReadString();
-                lookbackable.LookbackStrings.Add(str);
-                return new LookbackString(str, lookbackable);
+                lookbackable.IdStrings.Add(str);
+                return new Id(str, lookbackable);
             }
             else if ((index & 0x3FFF) == 0x3FFF)
             {
                 switch(index >> 30)
                 {
                     case 2:
-                        return new LookbackString("Unassigned", lookbackable);
+                        return new Id("Unassigned", lookbackable);
                     case 3:
-                        return new LookbackString("", lookbackable);
+                        return new Id("", lookbackable);
                     default:
                         throw new Exception();
                 }
             }
             else if (index >> 30 == 0)
             {
-                if (LookbackString.CollectionIDs.TryGetValue((int)index, out string val))
-                    return new LookbackString(index.ToString(), lookbackable);
+                if (Id.CollectionIDs.TryGetValue((int)index, out string val))
+                    return new Id(index.ToString(), lookbackable);
                 else
-                    return new LookbackString("???", lookbackable);
+                    return new Id("???", lookbackable);
             }
-            else if (lookbackable.LookbackStrings.Count > (index & 0x3FFF) - 1)
-                return new LookbackString(lookbackable.LookbackStrings[(int)(index & 0x3FFF) - 1], lookbackable);
+            else if (lookbackable.IdStrings.Count > (index & 0x3FFF) - 1)
+                return new Id(lookbackable.IdStrings[(int)(index & 0x3FFF) - 1], lookbackable);
             else
-                return new LookbackString("", lookbackable);
+                return new Id("", lookbackable);
         }
 
-        public LookbackString ReadLookbackString()
+        public Id ReadId()
         {
-            return ReadLookbackString(Lookbackable);
+            return ReadId(Lookbackable);
         }
 
         public Ident ReadIdent(ILookbackable lookbackable)
         {
-            var id = ReadLookbackString(lookbackable);
-            var collection = ReadLookbackString(lookbackable);
-            var author = ReadLookbackString(lookbackable);
+            var id = ReadId(lookbackable);
+            var collection = ReadId(lookbackable);
+            var author = ReadId(lookbackable);
 
             return new Ident(id, collection, author);
         }

@@ -109,7 +109,7 @@ namespace GBX.NET.Engines.Game
             {
                 n.Start = rw.Single(n.Start);
                 n.End = rw.Single(n.End);
-                n.GameCam = rw.LookbackString(n.GameCam);
+                n.GameCam = rw.Id(n.GameCam);
                 n.Target = rw.Int32(n.Target);
             }
         }

@@ -362,38 +362,38 @@ namespace GBX.NET
             }
         }
 
-        public string LookbackString(string variable, ILookbackable lookbackable)
+        public string Id(string variable, ILookbackable lookbackable)
         {
-            if (Reader != null) return Reader.ReadLookbackString(lookbackable);
-            else if (Writer != null) Writer.Write(new LookbackString(variable, lookbackable));
+            if (Reader != null) return Reader.ReadId(lookbackable);
+            else if (Writer != null) Writer.Write(new Id(variable, lookbackable));
             return variable;
         }
 
-        public string LookbackString(string variable)
+        public string Id(string variable)
         {
-            if (Reader != null) return LookbackString(variable, Reader.Lookbackable);
-            else if (Writer != null) return LookbackString(variable, Writer.Lookbackable);
+            if (Reader != null) return Id(variable, Reader.Lookbackable);
+            else if (Writer != null) return Id(variable, Writer.Lookbackable);
             throw new Exception();
         }
 
-        public void LookbackString(UnknownStream stream, ILookbackable lookbackable)
+        public void Id(UnknownStream stream, ILookbackable lookbackable)
         {
             if (Reader != null)
             {
                 using (var w = new GameBoxWriter(stream, Reader.Lookbackable))
-                    w.Write((string)Reader.ReadLookbackString(lookbackable));
+                    w.Write((string)Reader.ReadId(lookbackable));
             }
             else if (Writer != null)
             {
                 using (var r = new GameBoxReader(stream, Writer.Lookbackable))
-                    Writer.Write(new LookbackString(r.ReadString(), lookbackable));
+                    Writer.Write(new Id(r.ReadString(), lookbackable));
             }
         }
 
-        public void LookbackString(UnknownStream stream)
+        public void Id(UnknownStream stream)
         {
-            if (Reader != null) LookbackString(stream, Reader.Lookbackable);
-            else if (Writer != null) LookbackString(stream, Writer.Lookbackable);
+            if (Reader != null) Id(stream, Reader.Lookbackable);
+            else if (Writer != null) Id(stream, Writer.Lookbackable);
             else throw new Exception();
         }
 

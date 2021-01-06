@@ -236,7 +236,7 @@ namespace GBX.NET.Engines.Game
                     }
 
                     var blockCoord = r.ReadInt3();
-                    var lookback = r.ReadLookbackString();
+                    var lookback = r.ReadId();
                     var pos = r.ReadVec3();
 
                     if (v < 5)

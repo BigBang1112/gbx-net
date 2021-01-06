@@ -189,44 +189,44 @@ namespace GBX.NET
                 Write(fileRef.LocatorUrl);
         }
 
-        public void Write(LookbackString value)
+        public void Write(Id value)
         {
             var l = value.Owner;
 
-            if (!l.LookbackWritten)
+            if (!l.IdWritten)
             {
-                if (l.LookbackVersion.HasValue)
-                    Write(l.LookbackVersion.Value);
+                if (l.IdVersion.HasValue)
+                    Write(l.IdVersion.Value);
                 else Write(3);
-                l.LookbackWritten = true;
+                l.IdWritten = true;
             }
 
             if (value == "Unassigned")
                 Write(0xBFFFFFFF);
             else if (value == "")
                 Write(0xFFFFFFFF);
-            else if (l.LookbackStrings.Contains(value))
+            else if (l.IdStrings.Contains(value))
                 Write(value.Index + 1 + 0x40000000);
-            else if (int.TryParse(value, out int cID) && LookbackString.CollectionIDs.ContainsKey(cID))
+            else if (int.TryParse(value, out int cID) && Id.CollectionIDs.ContainsKey(cID))
                 Write(cID);
             else
             {
                 Write(0x40000000);
                 Write(value.ToString());
-                l.LookbackStrings.Add(value);
+                l.IdStrings.Add(value);
             }
         }
 
-        public void WriteLookbackString(string value)
+        public void WriteId(string value)
         {
-            Write(new LookbackString(value, Lookbackable));
+            Write(new Id(value, Lookbackable));
         }
 
         public void Write(Ident ident, ILookbackable lookbackable)
         {
-            Write(new LookbackString(ident.ID, lookbackable));
-            Write(ident.Collection.ToLookbackString(lookbackable));
-            Write(new LookbackString(ident.Author, lookbackable));
+            Write(new Id(ident.ID, lookbackable));
+            Write(ident.Collection.ToId(lookbackable));
+            Write(new Id(ident.Author, lookbackable));
         }
 
         public void Write(Ident ident)

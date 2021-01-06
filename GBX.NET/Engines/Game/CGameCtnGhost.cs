@@ -444,7 +444,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.UID = rw.LookbackString(n.UID);
+                n.UID = rw.Id(n.UID);
             }
         }
 
@@ -476,7 +476,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.LookbackString(Unknown);
+                rw.Id(Unknown);
             }
         }
 
@@ -559,7 +559,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.Vehicle = new Ident(rw.LookbackString(n.Vehicle?.ID));
+                n.Vehicle = new Ident(rw.Id(n.Vehicle?.ID));
             }
         }
 
@@ -620,7 +620,7 @@ namespace GBX.NET.Engines.Game
                 if (n.EventsDuration > 0)
                 {
                     Unknown1 = rw.UInt32(Unknown1);
-                    n.ControlNames = rw.Array(n.ControlNames, i => rw.Reader.ReadLookbackString(), x => rw.Writer.WriteLookbackString(x));
+                    n.ControlNames = rw.Array(n.ControlNames, i => rw.Reader.ReadId(), x => rw.Writer.WriteId(x));
 
                     var numEntries = rw.Int32(n.ControlEntries.Length);
 

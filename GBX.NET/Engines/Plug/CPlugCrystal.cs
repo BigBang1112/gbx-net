@@ -57,7 +57,7 @@ namespace GBX.NET.Engines.Plug
                     var uA = rw.Reader.ReadInt32();
                     var uB = rw.Reader.ReadInt32();
                     var uC = rw.Reader.ReadInt32();
-                    var layerId = rw.Reader.ReadLookbackString();
+                    var layerId = rw.Reader.ReadId();
                     var layerName = rw.Reader.ReadString();
                     var uD = rw.Reader.ReadInt32();
                     var uE = rw.Reader.ReadInt32();

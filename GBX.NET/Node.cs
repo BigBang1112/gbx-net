@@ -370,8 +370,8 @@ namespace GBX.NET
 
                 if (chunk is ILookbackable l)
                 {
-                    l.LookbackWritten = false;
-                    l.LookbackStrings.Clear();
+                    l.IdWritten = false;
+                    l.IdStrings.Clear();
 
                     lb = l;
                 }

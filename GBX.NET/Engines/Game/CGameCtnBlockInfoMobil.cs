@@ -89,7 +89,7 @@ namespace GBX.NET.Engines.Game
                     var u01 = rw.Reader.ReadInt32();
                     var u02 = rw.Reader.ReadInt32();
                     var u03 = rw.Reader.ReadInt32();
-                    var socketID = rw.Reader.ReadLookbackString();
+                    var socketID = rw.Reader.ReadId();
                     var model = rw.Reader.ReadNodeRef<CGameObjectModel>();
 
                     return new CGameCtnBlockInfoMobilLink(socketID, model);

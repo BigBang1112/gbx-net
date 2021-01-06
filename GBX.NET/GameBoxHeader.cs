@@ -9,9 +9,9 @@ namespace GBX.NET
 {
     public class GameBoxHeader<T> : GameBoxHeader, ILookbackable where T : Node
     {
-        int? ILookbackable.LookbackVersion { get; set; }
-        List<string> ILookbackable.LookbackStrings { get; set; } = new List<string>();
-        bool ILookbackable.LookbackWritten { get; set; }
+        int? ILookbackable.IdVersion { get; set; }
+        List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
+        bool ILookbackable.IdWritten { get; set; }
 
         public new GameBox<T> GBX => (GameBox<T>)base.GBX;
 
@@ -356,9 +356,9 @@ namespace GBX.NET
 
     public class GameBoxHeader : GameBoxPart, ILookbackable
     {
-        int? ILookbackable.LookbackVersion { get; set; }
-        List<string> ILookbackable.LookbackStrings { get; set; } = new List<string>();
-        bool ILookbackable.LookbackWritten { get; set; }
+        int? ILookbackable.IdVersion { get; set; }
+        List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
+        bool ILookbackable.IdWritten { get; set; }
 
         public byte[] UserData { get; set; }
 

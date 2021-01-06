@@ -20,7 +20,7 @@ namespace GBX.NET.Engines.GameData
             public override void ReadWrite(CGameBlockItem n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                n.ArchetypeBlockInfoId = rw.LookbackString(n.ArchetypeBlockInfoId);
+                n.ArchetypeBlockInfoId = rw.Id(n.ArchetypeBlockInfoId);
                 Unknown1 = rw.Int32(Unknown1);
                 n.Crystals = rw.Array(n.Crystals, i =>
                 {

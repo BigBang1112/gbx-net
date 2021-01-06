@@ -198,7 +198,7 @@ namespace GBX.NET.Engines.GameData
                 if (hasIconFid)
                     n.IconFid = rw.NodeRef(n.IconFid);
 
-                rw.LookbackString(Unknown);
+                rw.Id(Unknown);
             }
         }
 

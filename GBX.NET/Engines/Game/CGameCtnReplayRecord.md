@@ -37,7 +37,7 @@ void Read (GameBoxReader r)
             if (version >= 8)
             {
                 byte u01 = r.ReadByte();
-                LookbackString titleID = r.ReadLookbackString();
+                Id titleID = r.ReadId();
             }
         }
     }
@@ -143,7 +143,7 @@ void Read (GameBoxReader r)
         
         int numControlNames = r.ReadInt32();
         for (var i = 0; i < numControlNames; i++)
-            LookbackString controlName = r.ReadLookbackString();
+            Id controlName = r.ReadId();
 
         int num = r.ReadInt32();
         int u03 = r.ReadInt32();
