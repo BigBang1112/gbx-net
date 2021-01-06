@@ -63,16 +63,24 @@ namespace GBX.NET.Engines.Game
             {
                 Version = rw.Int32(Version);
 
-                n.Keys = rw.Array(n.Keys, i => new Key()
+                if (Version >= 3)
                 {
-                    Time = rw.Reader.ReadSingle(),
-                    Unknown = rw.Reader.ReadSingle()
-                },
-                x =>
+                    n.Keys = rw.Array(n.Keys, i => new Key()
+                    {
+                        Time = rw.Reader.ReadSingle(),
+                        Unknown = rw.Reader.ReadSingle()
+                    },
+                    x =>
+                    {
+                        rw.Writer.Write(x.Time);
+                        rw.Writer.Write(x.Unknown);
+                    });
+                }
+                else
                 {
-                    rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.Unknown);
-                });
+                    n.Start = rw.Single(n.Start);
+                    n.End = rw.Single(n.End);
+                }
 
                 n.GhostModel = rw.NodeRef<CGameCtnGhost>(n.GhostModel);
                 n.StartOffset = rw.Single(n.StartOffset);
