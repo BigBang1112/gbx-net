@@ -203,7 +203,8 @@ namespace GBX.NET
 
                             throw new Exception($"Wrong chunk format or unskippable chunk: 0x{chunkID:X8} (" +
                                 $"{Names.Where(x => x.Key == Chunk.Remap(chunkID & 0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})" +
-                                $"\nPrevious chunk: 0x{previousChunk ?? 0:X8}");
+                                $"\nPrevious chunk: 0x{previousChunk ?? 0:X8} (" +
+                                $"{(previousChunk.HasValue ? (Names.Where(x => x.Key == Chunk.Remap(previousChunk.Value & 0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class") : "not a class")})");
 
                             /* Usually breaks in the current state and causes confusion
                              * 
