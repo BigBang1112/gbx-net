@@ -21,6 +21,35 @@ namespace GBX.NET.Engines.Game
 
         #region Chunks
 
+        #region 0x001 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockBloomHdr 0x001 chunk
+        /// </summary>
+        [Chunk(0x03128001)]
+        public class Chunk03128001 : Chunk<CGameCtnMediaBlockBloomHdr>
+        {
+            public override void ReadWrite(CGameCtnMediaBlockBloomHdr n, GameBoxReaderWriter rw)
+            {
+                n.Keys = rw.Array(n.Keys, i => new Key()
+                {
+                    Time = rw.Reader.ReadSingle(),
+                    Intensity = rw.Reader.ReadSingle(),
+                    StreaksIntensity = rw.Reader.ReadSingle(),
+                    StreaksAttenuation = rw.Reader.ReadSingle()
+                },
+                x =>
+                {
+                    rw.Writer.Write(x.Time);
+                    rw.Writer.Write(x.Intensity);
+                    rw.Writer.Write(x.StreaksIntensity);
+                    rw.Writer.Write(x.StreaksAttenuation);
+                });
+            }
+        }
+
+        #endregion
+
         #region 0x002 chunk
 
         /// <summary>
