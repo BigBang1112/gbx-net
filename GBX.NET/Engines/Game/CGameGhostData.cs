@@ -157,7 +157,7 @@ namespace GBX.NET.Engines.Game
                                     Timestamp = timestamp,
                                     Position = pos,
                                     Rotation = quaternion,
-                                    Speed = speed,
+                                    Speed = speed * 3.6f,
                                     Velocity = velocityVector,
                                     Unknown = unknownData
                                 };
