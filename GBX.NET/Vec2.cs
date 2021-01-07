@@ -1,4 +1,6 @@
-﻿namespace GBX.NET
+﻿using System;
+
+namespace GBX.NET
 {
     public struct Vec2 : IVec
     {
@@ -10,6 +12,9 @@
             X = x;
             Y = y;
         }
+
+        public float GetMagnitude() => (float)Math.Sqrt(X * X + Y * Y);
+        public float GetSqrMagnitude() => X * X + Y * Y;
 
         public override string ToString() => $"({X}, {Y})";
         public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode();
