@@ -34,17 +34,17 @@ namespace GBX.NET.Engines.Game
                 if (magic[0] != 0x78)
                     throw new Exception("Data isn't compressed with Deflate ZLIB");
 
-                if (Enumerable.SequenceEqual(magic, new byte[] { 0x78, 0x01 }))
+                if (magic[1] == 0x01)
                 {
                     Compression = CompressionLevel.NoCompression;
                     Debug.WriteLine("Deflate ZLIB - No compression");
                 }
-                else if (Enumerable.SequenceEqual(magic, new byte[] { 0x78, 0x9C }))
+                else if (magic[1] == 0x9C)
                 {
                     Compression = CompressionLevel.DefaultCompression;
                     Debug.WriteLine("Deflate ZLIB - Default compression");
                 }
-                else if (Enumerable.SequenceEqual(magic, new byte[] { 0x78, 0xDA }))
+                else if (magic[1] == 0xDA)
                 {
                     Compression = CompressionLevel.BestCompression;
                     Debug.WriteLine("Deflate ZLIB - Best compression");
