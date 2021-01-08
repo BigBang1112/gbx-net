@@ -25,6 +25,7 @@ namespace GBX.NET.Engines.Game
         {
             public byte[] Data { get; set; }
             public int[] Samples { get; set; }
+            public int SamplePeriod { get; set; }
 
             public override void ReadWrite(CGameGhost n, GameBoxReaderWriter rw)
             {
@@ -32,9 +33,19 @@ namespace GBX.NET.Engines.Game
                 Samples = rw.Array(Samples);
 
                 rw.Int32(Unknown);
+                rw.Boolean(Unknown);
+                SamplePeriod = rw.Int32(SamplePeriod);
                 rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+
+                n.Data = Task.Run(() =>
+                {
+                    var ghostData = new CGameGhostData();
+                    using (var ms = new MemoryStream(Data))
+                    {
+                        ghostData.ReadSamples(ms, Samples.Length, SamplePeriod, 56);
+                    }
+                    return ghostData;
+                });
             }
         }
 
