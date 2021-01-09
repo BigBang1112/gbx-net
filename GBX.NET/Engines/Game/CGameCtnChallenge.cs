@@ -191,6 +191,7 @@ namespace GBX.NET.Engines.Game
         private string objectiveTextGold;
         private string objectiveTextSilver;
         private string objectiveTextBronze;
+        private List<(Int3 start, Int3 end)> offzones;
         private string buildVersion;
         private Dictionary<string, byte[]> embeds = new Dictionary<string, byte[]>();
         private byte[] originalEmbedZip;
@@ -902,6 +903,21 @@ namespace GBX.NET.Engines.Game
             {
                 DiscoverChunk<Chunk0304304B>();
                 objectiveTextBronze = value;
+            }
+        }
+
+        [NodeMember]
+        public List<(Int3 start, Int3 end)> Offzones
+        {
+            get
+            {
+                DiscoverChunk<Chunk03043050>();
+                return offzones;
+            }
+            set
+            {
+                DiscoverChunk<Chunk03043050>();
+                offzones = value;
             }
         }
 
@@ -2901,6 +2917,38 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region 0x050 skippable chunk (offzones)
+
+        /// <summary>
+        /// CGameCtnChallenge 0x050 skippable chunk (offzones)
+        /// </summary>
+        [Chunk(0x03043050, "offzones")]
+        public class Chunk03043050 : SkippableChunk<CGameCtnChallenge>
+        {
+            public int U01 { get; set; }
+            public int U02 { get; set; } = 3;
+            public int U03 { get; set; } = 1;
+            public int U04 { get; set; } = 3;
+
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+            {
+                U01 = rw.Int32(U01);
+                U02 = rw.Int32(U02);
+                U03 = rw.Int32(U03);
+                U04 = rw.Int32(U04);
+
+                n.offzones = rw.Array(n.offzones?.ToArray(),
+                    (i, r) => (r.ReadInt3(), r.ReadInt3()),
+                    (x, w) =>
+                    {
+                        w.Write(x.Item1);
+                        w.Write(x.Item2);
+                    })?.ToList();
+            }
+        }
+
+        #endregion
+
         #region 0x051 skippable chunk (title info)
 
         /// <summary>
@@ -3199,6 +3247,7 @@ namespace GBX.NET.Engines.Game
             public string ObjectiveTextGold => node.ObjectiveTextGold;
             public string ObjectiveTextSilver => node.ObjectiveTextSilver;
             public string ObjectiveTextBronze => node.ObjectiveTextBronze;
+            public List<(Int3, Int3)> Offzones => node.Offzones;
             public Dictionary<string, byte[]> Embeds => node.Embeds;
 
             public ChunkSet Chunks => node.Chunks;
