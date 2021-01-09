@@ -193,6 +193,7 @@ namespace GBX.NET.Engines.Game
         private string objectiveTextBronze;
         private List<(Int3 start, Int3 end)> offzones;
         private string buildVersion;
+        private List<CGameScriptMapBotPath> botPaths;
         private Dictionary<string, byte[]> embeds = new Dictionary<string, byte[]>();
         private byte[] originalEmbedZip;
 
@@ -918,6 +919,21 @@ namespace GBX.NET.Engines.Game
             {
                 DiscoverChunk<Chunk03043050>();
                 offzones = value;
+            }
+        }
+
+        [NodeMember]
+        public List<CGameScriptMapBotPath> BotPaths
+        {
+            get
+            {
+                DiscoverChunk<Chunk03043053>();
+                return botPaths;
+            }
+            set
+            {
+                DiscoverChunk<Chunk03043053>();
+                botPaths = value;
             }
         }
 
@@ -2970,6 +2986,45 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region 0x053 skippable chunk (bot paths)
+
+        /// <summary>
+        /// CGameCtnChallenge 0x053 skippable chunk (bot paths)
+        /// </summary>
+        [Chunk(0x03043053, "bot paths")]
+        public class Chunk03043053 : SkippableChunk<CGameCtnChallenge>
+        {
+            public int Version { get; set; }
+
+            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
+            {
+                Version = r.ReadInt32();
+                n.BotPaths = r.ReadArray(i => new CGameScriptMapBotPath()
+                {
+                    Clan = r.ReadInt32(),
+                    Path = r.ReadArray(j => r.ReadVec3()).ToList(),
+                    IsFlying = r.ReadBoolean(),
+                    WaypointSpecialProperty = r.ReadNodeRef<CGameWaypointSpecialProperty>(),
+                    IsAutonomous = r.ReadBoolean()
+                }).ToList();
+            }
+
+            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
+            {
+                w.Write(Version);
+                w.Write(n.BotPaths, x =>
+                {
+                    w.Write(x.Clan);
+                    w.Write(x.Path, y => w.Write(y));
+                    w.Write(x.IsFlying);
+                    w.Write(x.WaypointSpecialProperty);
+                    w.Write(x.IsAutonomous);
+                });
+            }
+        }
+
+        #endregion
+
         #region 0x054 skippable chunk (embeds)
 
         /// <summary>
@@ -3248,6 +3303,7 @@ namespace GBX.NET.Engines.Game
             public string ObjectiveTextSilver => node.ObjectiveTextSilver;
             public string ObjectiveTextBronze => node.ObjectiveTextBronze;
             public List<(Int3, Int3)> Offzones => node.Offzones;
+            public List<CGameScriptMapBotPath> BotPaths => node.BotPaths;
             public Dictionary<string, byte[]> Embeds => node.Embeds;
 
             public ChunkSet Chunks => node.Chunks;
