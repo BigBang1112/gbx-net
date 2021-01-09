@@ -196,6 +196,9 @@ namespace GBX.NET.Engines.Game
         private List<CGameScriptMapBotPath> botPaths;
         private Dictionary<string, byte[]> embeds = new Dictionary<string, byte[]>();
         private byte[] originalEmbedZip;
+        private TimeSpan? dayTime;
+        private bool dynamicDaylight;
+        private TimeSpan? dayDuration;
 
         #endregion
 
@@ -944,6 +947,51 @@ namespace GBX.NET.Engines.Game
             {
                 DiscoverChunk<Chunk03043054>();
                 return embeds;
+            }
+        }
+
+        [NodeMember]
+        public TimeSpan? DayTime
+        {
+            get
+            {
+                DiscoverChunk<Chunk03043056>();
+                return dayTime;
+            }
+            set
+            {
+                DiscoverChunk<Chunk03043056>();
+                dayTime = value;
+            }
+        }
+
+        [NodeMember]
+        public bool DynamicDaylight
+        {
+            get
+            {
+                DiscoverChunk<Chunk03043056>();
+                return dynamicDaylight;
+            }
+            set
+            {
+                DiscoverChunk<Chunk03043056>();
+                dynamicDaylight = value;
+            }
+        }
+
+        [NodeMember]
+        public TimeSpan? DayDuration
+        {
+            get
+            {
+                DiscoverChunk<Chunk03043056>();
+                return dayDuration;
+            }
+            set
+            {
+                DiscoverChunk<Chunk03043056>();
+                dayDuration = value;
             }
         }
 
@@ -3122,6 +3170,41 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region 0x056 skippable chunk (light settings)
+
+        /// <summary>
+        /// CGameCtnChallenge 0x056 skippable chunk (light settings)
+        /// </summary>
+        [Chunk(0x03043056, "light settings")]
+        public class Chunk03043056 : SkippableChunk<CGameCtnChallenge>
+        {
+            public int Version { get; set; } = 3;
+            public int U01 { get; set; }
+            public int U02 { get; set; }
+
+            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
+            {
+                Version = r.ReadInt32();
+                U01 = r.ReadInt32();
+                n.dayTime = TimeSpan.FromSeconds(r.ReadInt32() / (double)ushort.MaxValue * new TimeSpan(23, 59, 59).TotalSeconds);
+                U02 = r.ReadInt32();
+                n.dynamicDaylight = r.ReadBoolean();
+                n.dayDuration = r.ReadTimeSpan();
+            }
+
+            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
+            {
+                w.Write(Version);
+                w.Write(U01);
+                w.Write(Convert.ToInt32(n.dayTime.GetValueOrDefault().TotalSeconds / new TimeSpan(23, 59, 59).TotalSeconds * ushort.MaxValue));
+                w.Write(U02);
+                w.Write(n.dynamicDaylight);
+                w.Write(n.dayDuration);
+            }
+        }
+
+        #endregion
+
         #region 0x059 skippable chunk
 
         /// <summary>
@@ -3305,6 +3388,9 @@ namespace GBX.NET.Engines.Game
             public List<(Int3, Int3)> Offzones => node.Offzones;
             public List<CGameScriptMapBotPath> BotPaths => node.BotPaths;
             public Dictionary<string, byte[]> Embeds => node.Embeds;
+            public TimeSpan? DayTime => node.DayTime;
+            public bool DynamicDaylight => node.DynamicDaylight;
+            public TimeSpan? DayDuration => node.DayDuration;
 
             public ChunkSet Chunks => node.Chunks;
 
