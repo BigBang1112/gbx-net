@@ -3047,7 +3047,7 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
-                n.BotPaths = r.ReadArray(i => new CGameScriptMapBotPath()
+                n.botPaths = r.ReadArray(i => new CGameScriptMapBotPath()
                 {
                     Clan = r.ReadInt32(),
                     Path = r.ReadArray(j => r.ReadVec3()).ToList(),
@@ -3060,7 +3060,7 @@ namespace GBX.NET.Engines.Game
             public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
             {
                 w.Write(Version);
-                w.Write(n.BotPaths, x =>
+                w.Write(n.botPaths, x =>
                 {
                     w.Write(x.Clan);
                     w.Write(x.Path, y => w.Write(y));
