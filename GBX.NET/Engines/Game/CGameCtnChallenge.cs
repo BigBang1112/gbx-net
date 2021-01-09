@@ -3221,7 +3221,11 @@ namespace GBX.NET.Engines.Game
             {
                 Version = r.ReadInt32();
                 U01 = r.ReadInt32();
-                n.dayTime = TimeSpan.FromSeconds(r.ReadInt32() / (double)ushort.MaxValue * new TimeSpan(23, 59, 59).TotalSeconds);
+
+                var dayTime = r.ReadInt32();
+                if (dayTime != -1)
+                    n.dayTime = TimeSpan.FromSeconds(r.ReadInt32() / (double)ushort.MaxValue * new TimeSpan(23, 59, 59).TotalSeconds);
+
                 U02 = r.ReadInt32();
                 n.dynamicDaylight = r.ReadBoolean();
                 n.dayDuration = r.ReadTimeSpan();
@@ -3231,7 +3235,12 @@ namespace GBX.NET.Engines.Game
             {
                 w.Write(Version);
                 w.Write(U01);
-                w.Write(Convert.ToInt32(n.dayTime.GetValueOrDefault().TotalSeconds / new TimeSpan(23, 59, 59).TotalSeconds * ushort.MaxValue));
+
+                if (n.dayTime.HasValue)
+                    w.Write(Convert.ToInt32(n.dayTime.Value.TotalSeconds / new TimeSpan(23, 59, 59).TotalSeconds * ushort.MaxValue));
+                else
+                    w.Write(-1);
+
                 w.Write(U02);
                 w.Write(n.dynamicDaylight);
                 w.Write(n.dayDuration);
