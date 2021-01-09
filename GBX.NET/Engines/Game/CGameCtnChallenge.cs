@@ -193,6 +193,7 @@ namespace GBX.NET.Engines.Game
         private string objectiveTextBronze;
         private List<(Int3 start, Int3 end)> offzones;
         private string buildVersion;
+        private int decoBaseHeightOffset;
         private List<CGameScriptMapBotPath> botPaths;
         private Dictionary<string, byte[]> embeds = new Dictionary<string, byte[]>();
         private byte[] originalEmbedZip;
@@ -922,6 +923,21 @@ namespace GBX.NET.Engines.Game
             {
                 DiscoverChunk<Chunk03043050>();
                 offzones = value;
+            }
+        }
+
+        [NodeMember]
+        public int DecoBaseHeightOffset
+        {
+            get
+            {
+                DiscoverChunk<Chunk03043052>();
+                return decoBaseHeightOffset;
+            }
+            set
+            {
+                DiscoverChunk<Chunk03043052>();
+                decoBaseHeightOffset = value;
             }
         }
 
@@ -3034,6 +3050,25 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region 0x052 skippable chunk (deco height)
+
+        /// <summary>
+        /// CGameCtnChallenge 0x052 skippable chunk (deco height)
+        /// </summary>
+        [Chunk(0x03043052, "deco height")]
+        public class Chunk03043052 : SkippableChunk<CGameCtnChallenge>
+        {
+            public int Version { get; set; }
+
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+            {
+                Version = rw.Int32(Version);
+                n.decoBaseHeightOffset = rw.Int32(n.decoBaseHeightOffset);
+            }
+        }
+
+        #endregion
+
         #region 0x053 skippable chunk (bot paths)
 
         /// <summary>
@@ -3386,6 +3421,7 @@ namespace GBX.NET.Engines.Game
             public string ObjectiveTextSilver => node.ObjectiveTextSilver;
             public string ObjectiveTextBronze => node.ObjectiveTextBronze;
             public List<(Int3, Int3)> Offzones => node.Offzones;
+            public int DecoBaseHeightOffset => node.DecoBaseHeightOffset;
             public List<CGameScriptMapBotPath> BotPaths => node.BotPaths;
             public Dictionary<string, byte[]> Embeds => node.Embeds;
             public TimeSpan? DayTime => node.DayTime;
