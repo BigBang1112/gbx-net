@@ -253,21 +253,27 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E020000)]
         public class Chunk2E020000 : SkippableChunk<CGameItemPlacementParam>
         {
-            public int Version { get; set; }
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CGameItemPlacementParam n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                n.Flags = rw.Int16(n.Flags);
-                n.Cube_Center = rw.Vec3(n.Cube_Center);
-                n.Cube_Size = rw.Single(n.Cube_Size);
-                n.GridSnap_HStep = rw.Single(n.GridSnap_HStep);
-                n.GridSnap_VStep = rw.Single(n.GridSnap_VStep);
-                n.GridSnap_HOffset = rw.Single(n.GridSnap_HOffset);
-                n.GridSnap_VOffset = rw.Single(n.GridSnap_VOffset);
-                n.FlyStep = rw.Single(n.FlyStep);
-                n.FlyOffset = rw.Single(n.FlyOffset);
-                n.PivotSnap_Distance = rw.Single(n.PivotSnap_Distance);
+                rw.Int32(ref version);
+                rw.Int16(ref n.flags);
+                rw.Vec3(ref n.cube_Center);
+                rw.Single(ref n.cube_Size);
+                rw.Single(ref n.gridSnap_HStep);
+                rw.Single(ref n.gridSnap_VStep);
+                rw.Single(ref n.gridSnap_HOffset);
+                rw.Single(ref n.gridSnap_VOffset);
+                rw.Single(ref n.flyStep);
+                rw.Single(ref n.flyOffset);
+                rw.Single(ref n.pivotSnap_Distance);
             }
         }
 
@@ -281,14 +287,20 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E020001, "pivot positions")]
         public class Chunk2E020001 : SkippableChunk<CGameItemPlacementParam>
         {
-            public int U01 { get; set; }
+            private int u01;
+
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
 
             public override void ReadWrite(CGameItemPlacementParam n, GameBoxReaderWriter rw)
             {
-                n.PivotPositions = rw.Array(n.PivotPositions,
+                rw.Array(ref n.pivotPositions,
                     (i, r) => r.ReadVec3(),
                     (x, w) => w.Write(x));
-                U01 = rw.Int32(U01);
+                rw.Int32(ref u01);
             }
         }
 
