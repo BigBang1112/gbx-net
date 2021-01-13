@@ -10,6 +10,8 @@ namespace GBX.NET.Engines.Plug
     [Node(0x09003000)]
     public class CPlugCrystal : CPlugTreeGenerator
     {
+        #region Enums
+
         public enum ELayerType
         {
             Geometry,
@@ -29,19 +31,45 @@ namespace GBX.NET.Engines.Plug
             SpawnPosition
         }
 
-        public CPlugMaterialUserInst[] Materials { get; set; }
+        #endregion
+
+        #region Fields
+
+        private CPlugMaterialUserInst[] materials;
+
+        #endregion
+
+        #region Properties
+
+        [NodeMember]
+        public CPlugMaterialUserInst[] Materials
+        {
+            get => materials;
+            set => materials = value;
+        }
+
+        [NodeMember]
         public Layer[] Layers { get; set; }
 
-        [Chunk(0x09003003)]
+        #endregion
+
+        #region Chunks
+
+        #region 0x003 chunk
+
+        /// <summary>
+        /// CPlugCrystal 0x003 chunk (materials)
+        /// </summary>
+        [Chunk(0x09003003, "materials")]
         public class Chunk09003003 : Chunk<CPlugCrystal>
         {
             public int Version { get; set; }
 
-            public override void ReadWrite(CPlugCrystal n, GameBoxReaderWriter rw)
+            public override void Read(CPlugCrystal n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                Version = rw.Int32(Version);
+                Version = r.ReadInt32();
 
-                n.Materials = rw.Array(n.Materials, (i, r) =>
+                n.materials = r.ReadArray(i =>
                 {
                     var name = r.ReadString();
                     if (name.Length == 0)  // If the material file exists (name != ""), it references the file instead
@@ -50,22 +78,31 @@ namespace GBX.NET.Engines.Plug
                         return material;
                     }
                     return null;
-                },
-                (x, w) =>
-                {
-                    w.Write(0); //
-                    w.Write(x);
                 });
             }
         }
 
+        #endregion
+
+        #region 0x004 skippable chunk
+
+        /// <summary>
+        /// CPlugCrystal 0x004 skippable chunk
+        /// </summary>
         [Chunk(0x09003004)]
         public class Chunk09003004 : SkippableChunk<CPlugCrystal>
         {
             
         }
 
-        [Chunk(0x09003005)]
+        #endregion
+
+        #region 0x005 chunk (layers)
+
+        /// <summary>
+        /// CPlugCrystal 0x005 chunk (layers)
+        /// </summary>
+        [Chunk(0x09003005, "layers")]
         public class Chunk09003005 : Chunk<CPlugCrystal>
         {
             public int Version { get; set; }
@@ -169,6 +206,13 @@ namespace GBX.NET.Engines.Plug
             }
         }
 
+        #endregion
+
+        #region 0x006 chunk
+
+        /// <summary>
+        /// CPlugCrystal 0x006 chunk
+        /// </summary>
         [Chunk(0x09003006)]
         public class Chunk09003006 : Chunk<CPlugCrystal>
         {
@@ -182,6 +226,13 @@ namespace GBX.NET.Engines.Plug
             }
         }
 
+        #endregion
+
+        #region 0x007 chunk
+
+        /// <summary>
+        /// CPlugCrystal 0x007 chunk
+        /// </summary>
         [Chunk(0x09003007)]
         public class Chunk09003007 : Chunk<CPlugCrystal>
         {
@@ -199,9 +250,19 @@ namespace GBX.NET.Engines.Plug
             }
         }
 
-        public class GeometryLayer : Layer
+        #endregion
+
+        #endregion
+
+        #region Other classes
+
+        public abstract class Layer
         {
             public ELayerType LayerType { get; set; }
+        }
+
+        public class GeometryLayer : Layer
+        {
             public string LayerID { get; set; }
             public string LayerName { get; set; }
             public Vec3[] Verticies { get; set; }
@@ -209,11 +270,6 @@ namespace GBX.NET.Engines.Plug
             public UVMap[] UVs { get; set; }
             public Group[] Groups { get; set; }
             public object[] Unknown { get; set; }
-        }
-
-        public class Layer
-        {
-
         }
 
         public class Group
@@ -239,5 +295,7 @@ namespace GBX.NET.Engines.Plug
                 return $"({string.Join(" ", Inds)}) ({string.Join(" ", XY)})";
             }
         }
+
+        #endregion
     }
 }
