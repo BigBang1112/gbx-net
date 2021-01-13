@@ -131,7 +131,7 @@ namespace GBX.NET
         {
             var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
-            if (index >= 0 && !body.AuxilaryNodes.ContainsKey(index)) // If index is 0 or bigger and the node wasn't read yet
+            if (index >= 0 && (!body.AuxilaryNodes.ContainsKey(index) || body.AuxilaryNodes[index] == null)) // If index is 0 or bigger and the node wasn't read yet, or is null
                 body.AuxilaryNodes[index] = Node.Parse<T>(this);
 
             if (index < 0) // If aux node index is below 0 then there's not much to solve
