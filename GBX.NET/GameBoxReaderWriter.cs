@@ -93,6 +93,16 @@ namespace GBX.NET
             array = Array(array, forLoopRead, forLoopWrite);
         }
 
+        public T[] ArrayNode<T>(T[] array) where T : Node
+        {
+            return Array(array, i => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
+        }
+
+        public void ArrayNode<T>(ref T[] array) where T : Node
+        {
+            array = Array(array, i => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
+        }
+
         public bool Boolean(bool variable, bool asByte)
         {
             if (Reader != null) return Reader.ReadBoolean(asByte);
@@ -733,6 +743,11 @@ namespace GBX.NET
         public void TimeSpan32(ref TimeSpan? variable)
         {
             variable = TimeSpan32(variable);
+        }
+
+        public void EnumInt32<T>(ref T variable) where T : Enum
+        {
+            variable = (T)(object)Int32((int)(object)variable);
         }
 
         public void TillFacade(UnknownStream stream)
