@@ -73,7 +73,15 @@ namespace GBX.NET
         public Id ReadId(ILookbackable lookbackable)
         {
             if (!lookbackable.IdVersion.HasValue)
+            {
                 lookbackable.IdVersion = ReadInt32();
+
+                if (lookbackable.IdVersion > 10) // Edge-case scenario where Id doesn't have a version for whatever reason (can be multiple)
+                {
+                    lookbackable.IdVersion = 3;
+                    BaseStream.Position -= 4;
+                }
+            }
 
             var index = ReadUInt32();
 
