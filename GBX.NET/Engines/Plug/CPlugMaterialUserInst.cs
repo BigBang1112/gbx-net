@@ -9,6 +9,11 @@ namespace GBX.NET.Engines.Plug
     {
         public string MaterialFile { get; set; }
 
+        public override string ToString()
+        {
+            return MaterialFile;
+        }
+
         [Chunk(0x090FD000)]
         public class Chunk090FD000 : Chunk<CPlugMaterialUserInst>
         {
