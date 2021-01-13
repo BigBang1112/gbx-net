@@ -145,6 +145,17 @@ namespace GBX.NET
             }
         }
 
+        public void Write<TValue>(Dictionary<int, TValue> dictionary) where TValue : Node
+        {
+            Write(dictionary.Count);
+
+            foreach(var pair in dictionary)
+            {
+                Write(pair.Key);
+                Write(pair.Value);
+            }
+        }
+
         public void Write(Vec2 value)
         {
             Write(new float[] { value.X, value.Y });

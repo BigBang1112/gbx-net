@@ -103,6 +103,18 @@ namespace GBX.NET
             array = Array(array, i => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
         }
 
+        public Dictionary<int, TValue> DictionaryNode<TValue>(Dictionary<int, TValue> dictionary) where TValue : Node
+        {
+            if (Reader != null) return Reader.ReadDictionaryNode<TValue>();
+            else if (Writer != null) Writer.Write(dictionary);
+            return dictionary;
+        }
+
+        public void DictionaryNode<TValue>(ref Dictionary<int, TValue> dictionary) where TValue : Node
+        {
+            dictionary = DictionaryNode(dictionary);
+        }
+
         public bool Boolean(bool variable, bool asByte)
         {
             if (Reader != null) return Reader.ReadBoolean(asByte);

@@ -218,6 +218,23 @@ namespace GBX.NET
             return result;
         }
 
+        public Dictionary<int, TValue> ReadDictionaryNode<TValue>() where TValue : Node
+        {
+            var dictionary = new Dictionary<int, TValue>();
+
+            var length = ReadInt32();
+
+            for (var i = 0; i < length; i++)
+            {
+                var key = ReadInt32();
+                var value = ReadNodeRef<TValue>();
+
+                dictionary.Add(key, value);
+            }
+
+            return dictionary;
+        }
+
         public Vec2 ReadVec2()
         {
             var floats = ReadArray<float>(2);
