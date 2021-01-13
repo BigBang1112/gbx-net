@@ -10,6 +10,25 @@ namespace GBX.NET.Engines.Plug
     [Node(0x09003000)]
     public class CPlugCrystal : CPlugTreeGenerator
     {
+        public enum ELayerType
+        {
+            Geometry,
+            Smooth,
+            Translation,
+            Rotation,
+            Scale,
+            Mirror,
+            U07,
+            U08,
+            Subdivide,
+            Chaos,
+            U11,
+            U12,
+            Cubes,
+            Trigger,
+            SpawnPosition
+        }
+
         public CPlugMaterialUserInst[] Materials { get; set; }
         public Layer[] Layers { get; set; }
 
@@ -22,17 +41,20 @@ namespace GBX.NET.Engines.Plug
             {
                 Version = rw.Int32(Version);
 
-                n.Materials = rw.Array(n.Materials, i =>
+                n.Materials = rw.Array(n.Materials, (i, r) =>
                 {
-                    var name = rw.Reader.ReadString();
-                    if(name == "") // If the material file exists (name != ""), it references the file instead
-                        return rw.Reader.ReadNodeRef<CPlugMaterialUserInst>();
+                    var name = r.ReadString();
+                    if (name.Length == 0)  // If the material file exists (name != ""), it references the file instead
+                    {
+                        var material = r.ReadNodeRef<CPlugMaterialUserInst>();
+                        return material;
+                    }
                     return null;
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(0); //
-                    rw.Writer.Write(x);
+                    w.Write(0); //
+                    w.Write(x);
                 });
             }
         }
@@ -48,112 +70,102 @@ namespace GBX.NET.Engines.Plug
         {
             public int Version { get; set; }
 
-            public override void ReadWrite(CPlugCrystal n, GameBoxReaderWriter rw)
+            public override void Read(CPlugCrystal n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                Version = rw.Int32(Version);
+                Version = r.ReadInt32();
 
-                n.Layers = rw.Array(n.Layers, i =>
+                n.Layers = r.ReadArray(i =>
                 {
-                    var uA = rw.Reader.ReadInt32();
-                    var uB = rw.Reader.ReadInt32();
-                    var uC = rw.Reader.ReadInt32();
-                    var layerId = rw.Reader.ReadId();
-                    var layerName = rw.Reader.ReadString();
-                    var uD = rw.Reader.ReadInt32();
-                    var uE = rw.Reader.ReadInt32();
-                    var uF = rw.Reader.ReadInt32();
-                    var uG = rw.Reader.ReadInt32();
-                    var uH = rw.Reader.ReadInt32();
-                    var uI = rw.Reader.ReadInt32();
-                    var uJ = rw.Reader.ReadSingle();
-                    var uK = rw.Reader.ReadInt32();
-                    var uL = rw.Reader.ReadSingle();
-                    var uM = rw.Reader.ReadInt32();
-                    var uN = rw.Reader.ReadSingle();
-                    var uO = rw.Reader.ReadInt32();
+                    var type = (ELayerType)r.ReadInt32();
+                    var u01 = r.ReadInt32(); // 2
+                    var u02 = r.ReadInt32();
+                    var layerId = r.ReadId(); // Layer0
+                    var layerName = r.ReadString();
+                    var u03 = r.ReadInt32(); // 1
+                    var u04 = r.ReadInt32(); // 1
+                    var u05 = r.ReadInt32(); // 32
+                    var u06 = r.ReadInt32(); // 4
+                    var u07 = r.ReadInt32(); // 3
+                    var u08 = r.ReadInt32(); // 4
+                    var u09 = r.ReadSingle(); // 64
+                    var u10 = r.ReadInt32(); // 2
+                    var u11 = r.ReadSingle(); // 128
+                    var u12 = r.ReadInt32(); // 1
+                    var u13 = r.ReadSingle(); // 192
+                    var u14 = r.ReadInt32(); // 0
 
-                    var num = rw.Reader.ReadInt32();
-                    var unknownArray = new object[num];
-
-                    for (var j = 0; j < num; j++)
+                    var groups = r.ReadArray(j => new Group()
                     {
-                        var unknownValues = new object[6];
+                        U01 = r.ReadInt32(),
+                        U02 = r.ReadInt32(),
+                        U03 = r.ReadInt32(),
+                        Name = r.ReadString(),
+                        U04 = r.ReadInt32(),
+                        U05 = r.ReadArray<int>()
+                    });
 
-                        unknownValues[0] = rw.Reader.ReadInt32();
-                        unknownValues[1] = rw.Reader.ReadInt32();
-                        unknownValues[2] = rw.Reader.ReadInt32();
-                        unknownValues[3] = rw.Reader.ReadString();
-                        unknownValues[4] = rw.Reader.ReadInt32();
+                    var u15 = r.ReadInt32();
+                    var verticies = r.ReadArray(j => r.ReadVec3());
+                    var indicies = r.ReadArray(j => r.ReadInt2());
 
-                        var count = rw.Reader.ReadInt32();
-                        unknownValues[5] = new int[count];
-
-                        for (var k = 0; k < count; k++)
-                            ((int[])unknownValues[5])[k] = rw.Reader.ReadInt32();
-
-                        unknownArray[j] = unknownValues;
-                    }
-
-                    var uP = rw.Reader.ReadInt32();
-                    var verticies = rw.Reader.ReadArray(j => rw.Reader.ReadVec3());
-                    var indicies = rw.Reader.ReadArray(j => rw.Reader.ReadInt2());
-
-                    var uvmaps = rw.Reader.ReadArray(j =>
+                    var uvmaps = r.ReadArray(j =>
                     {
-                        var uvVerticies = rw.Reader.ReadInt32();
-                        var inds = rw.Reader.ReadArray<int>(uvVerticies);
+                        var uvVerticies = r.ReadInt32();
+                        var inds = r.ReadArray<int>(uvVerticies);
                         var xy = new Vec2[uvVerticies];
                         for (var k = 0; k < uvVerticies; k++)
-                            xy[k] = rw.Reader.ReadVec2();
-                        var one = rw.Reader.ReadInt32();
-                        var two = rw.Reader.ReadInt32();
+                            xy[k] = r.ReadVec2();
+                        var materialIndex = r.ReadInt32();
+                        var groupIndex = r.ReadInt32();
 
                         return new UVMap()
                         {
                             VertCount = uvVerticies,
                             Inds = inds,
                             XY = xy,
-                            Unknown1 = one,
-                            Unknown2 = two
+                            Material = n.Materials[materialIndex],
+                            Group = groups[groupIndex]
                         };
                     });
 
-                    var uQ = rw.Reader.ReadInt32();
-                    var numUVs = rw.Reader.ReadInt32();
-                    var numIndicies = rw.Reader.ReadInt32();
-                    var numVerts = rw.Reader.ReadInt32();
-                    var empty = rw.Reader.ReadArray<int>(numUVs + numIndicies + numVerts);
+                    var u16 = r.ReadInt32();
+                    var numUVs = r.ReadInt32();
+                    var numIndicies = r.ReadInt32();
+                    var numVerts = r.ReadInt32();
+                    var empty = r.ReadArray<int>(numUVs + numIndicies + numVerts);
 
                     if (numUVs + numIndicies + numVerts == 0)
                     {
-                        numUVs = rw.Reader.ReadInt32();
-                        numIndicies = rw.Reader.ReadInt32();
-                        numVerts = rw.Reader.ReadInt32();
+                        numUVs = r.ReadInt32();
+                        numIndicies = r.ReadInt32();
+                        numVerts = r.ReadInt32();
 
-                        empty = rw.Reader.ReadArray<int>(numUVs + numIndicies + numVerts);
+                        empty = r.ReadArray<int>(numUVs + numIndicies + numVerts);
                     }
 
-                    var uR = rw.Reader.ReadInt32();
-                    var unknownNum = rw.Reader.ReadInt32();
-                    var counter = rw.Reader.ReadArray<int>(unknownNum);
+                    var u17 = r.ReadInt32();
+                    var numGroups2 = r.ReadInt32();
+                    var counter = r.ReadArray<int>(numGroups2);
 
-                    var uS = rw.Reader.ReadInt32();
-                    var uT = rw.Reader.ReadInt32();
+                    var u18 = r.ReadInt32(); // 1
+                    var u19 = r.ReadInt32(); // 1
 
-                    return new Layer()
+                    return new GeometryLayer()
                     {
+                        LayerType = type,
                         LayerID = layerId,
                         LayerName = layerName,
                         Verticies = verticies,
                         Indicies = indicies,
                         UVs = uvmaps,
+                        Groups = groups,
                         Unknown = new object[]
                         {
-                            uA, uB, uC, uD, uE, uF, uG, uH, uI, uJ, uK, uL, uM, uN, uO,
-                            unknownArray, uP, uQ, numUVs, numIndicies, numVerts, empty, uR, counter, uS, uT
+                            u01, u02, u03, u04, u05, u06, u07, u08, u09, u10, u11, u12, u13, u14,
+                            u15, u16, numUVs, numIndicies, numVerts, empty, u17, counter, u18, u19
                         }
                     };
-                }, x => { });
+                });
             }
         }
 
@@ -166,7 +178,7 @@ namespace GBX.NET.Engines.Plug
             public override void ReadWrite(CPlugCrystal n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                Vectors = rw.Array(Vectors, i => rw.Reader.ReadVec2(), x => rw.Writer.Write(x));
+                Vectors = rw.Array(Vectors, (i, r) => r.ReadVec2(), (x, w) => w.Write(x));
             }
         }
 
@@ -183,18 +195,35 @@ namespace GBX.NET.Engines.Plug
                 rw.Int32(Unknown);
                 rw.Single(Unknown);
                 rw.Single(Unknown);
-                Numbers = rw.Array(Numbers, i => rw.Reader.ReadInt32(), x => rw.Writer.Write(x));
+                Numbers = rw.Array(Numbers, (i, r) => r.ReadInt32(), (x, w) => w.Write(x));
             }
         }
 
-        public class Layer
+        public class GeometryLayer : Layer
         {
+            public ELayerType LayerType { get; set; }
             public string LayerID { get; set; }
             public string LayerName { get; set; }
             public Vec3[] Verticies { get; set; }
             public Int2[] Indicies { get; set; }
             public UVMap[] UVs { get; set; }
+            public Group[] Groups { get; set; }
             public object[] Unknown { get; set; }
+        }
+
+        public class Layer
+        {
+
+        }
+
+        public class Group
+        {
+            public string Name { get; set; }
+            public int U01 { get; set; }
+            public int U02 { get; set; }
+            public int U03 { get; set; }
+            public int U04 { get; set; }
+            public int[] U05 { get; set; }
         }
 
         public class UVMap
@@ -202,8 +231,8 @@ namespace GBX.NET.Engines.Plug
             public int VertCount { get; set; }
             public int[] Inds { get; set; }
             public Vec2[] XY { get; set; }
-            public int Unknown1 { get; set; }
-            public int Unknown2 { get; set; }
+            public CPlugMaterialUserInst Material { get; set; }
+            public object Group { get; set; }
 
             public override string ToString()
             {
