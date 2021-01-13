@@ -34,6 +34,11 @@ namespace GBX.NET
             return array;
         }
 
+        public void Array<T>(ref T[] array, int count)
+        {
+            array = Array(array, count);
+        }
+
         public T[] Array<T>(T[] array)
         {
             if (Reader != null) return Reader.ReadArray<T>();
@@ -43,6 +48,11 @@ namespace GBX.NET
                 Writer.Write(array);
             }
             return array;
+        }
+
+        public void Array<T>(ref T[] array)
+        {
+            array = Array(array);
         }
 
         public void Array<T>(UnknownStream stream, int count)
@@ -66,11 +76,21 @@ namespace GBX.NET
             return array;
         }
 
+        public void Array<T>(ref T[] array, Func<int, T> forLoopRead, Action<T> forLoopWrite)
+        {
+            array = Array(array, forLoopRead, forLoopWrite);
+        }
+
         public T[] Array<T>(T[] array, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
         {
             if (Reader != null) return Reader.ReadArray(forLoopRead);
             else if (Writer != null) Writer.Write(array, forLoopWrite);
             return array;
+        }
+
+        public void Array<T>(ref T[] array, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        {
+            array = Array(array, forLoopRead, forLoopWrite);
         }
 
         public bool Boolean(bool variable, bool asByte)
@@ -80,9 +100,19 @@ namespace GBX.NET
             return variable;
         }
 
+        public void Boolean(ref bool variable, bool asByte)
+        {
+            variable = Boolean(variable, asByte);
+        }
+
         public bool Boolean(bool variable)
         {
             return Boolean(variable, false);
+        }
+
+        public void Boolean(ref bool variable)
+        {
+            variable = Boolean(variable);
         }
 
         public void Boolean(UnknownStream stream)
@@ -106,6 +136,11 @@ namespace GBX.NET
             return variable;
         }
 
+        public void Byte(ref byte variable)
+        {
+            variable = Byte(variable);
+        }
+
         public void Byte(UnknownStream stream)
         {
             if (Reader != null)
@@ -125,6 +160,11 @@ namespace GBX.NET
             if (Reader != null) return Reader.ReadByte3();
             else if (Writer != null) Writer.Write(variable);
             return variable;
+        }
+
+        public void Byte3(ref Byte3 variable)
+        {
+            variable = Byte3(variable);
         }
 
         public void Byte3(UnknownStream stream)
@@ -148,6 +188,11 @@ namespace GBX.NET
             return variable;
         }
 
+        public void Bytes(ref byte[] variable, int count)
+        {
+            variable = Bytes(variable, count);
+        }
+
         public byte[] Bytes(byte[] variable)
         {
             if (Reader != null) return Reader.ReadBytes();
@@ -157,6 +202,11 @@ namespace GBX.NET
                 Writer.Write(variable);
             }
             return variable;
+        }
+
+        public void Bytes(ref byte[] variable)
+        {
+            variable = Bytes(variable);
         }
 
         public void Bytes(UnknownStream stream, int count)
@@ -180,6 +230,11 @@ namespace GBX.NET
             return variable;
         }
 
+        public void FileRef(ref FileRef variable)
+        {
+            variable = FileRef(variable);
+        }
+
         public void FileRef(UnknownStream stream)
         {
             if (Reader != null)
@@ -199,6 +254,11 @@ namespace GBX.NET
             if (Reader != null) return Reader.ReadInt16();
             else if (Writer != null) Writer.Write(variable);
             return variable;
+        }
+
+        public void Int16(ref short variable)
+        {
+            variable = Int16(variable);
         }
 
         public void Int16(UnknownStream stream)
@@ -222,6 +282,11 @@ namespace GBX.NET
             return variable;
         }
 
+        public void Int32(ref int variable)
+        {
+            variable = Int32(variable);
+        }
+
         public void Int32(UnknownStream stream)
         {
             if (Reader != null)
@@ -241,6 +306,11 @@ namespace GBX.NET
             if (Reader != null) return Reader.ReadInt64();
             else if (Writer != null) Writer.Write(variable);
             return variable;
+        }
+
+        public void Int64(ref long variable)
+        {
+            variable = Int64(variable);
         }
 
         public void Int64(UnknownStream stream)
@@ -264,6 +334,11 @@ namespace GBX.NET
             return variable;
         }
 
+        public void UInt16(ref ushort variable)
+        {
+            variable = UInt16(variable);
+        }
+
         public void UInt16(UnknownStream stream)
         {
             if (Reader != null)
@@ -283,6 +358,11 @@ namespace GBX.NET
             if (Reader != null) return Reader.ReadUInt32();
             else if (Writer != null) Writer.Write(variable);
             return variable;
+        }
+
+        public void UInt32(ref uint variable)
+        {
+            variable = UInt32(variable);
         }
 
         public void UInt32(UnknownStream stream)
@@ -306,6 +386,11 @@ namespace GBX.NET
             return variable;
         }
 
+        public void UInt64(ref ulong variable)
+        {
+            variable = UInt64(variable);
+        }
+
         public void UInt64(UnknownStream stream)
         {
             if (Reader != null)
@@ -325,6 +410,11 @@ namespace GBX.NET
             if (Reader != null) return Reader.ReadInt2();
             else if (Writer != null) Writer.Write(variable);
             return variable;
+        }
+
+        public void Int2(ref Int2 variable)
+        {
+            variable = Int2(variable);
         }
 
         public void Int2(UnknownStream stream)
@@ -348,6 +438,11 @@ namespace GBX.NET
             return variable;
         }
 
+        public void Int3(ref Int3 variable)
+        {
+            variable = Int3(variable);
+        }
+
         public void Int3(UnknownStream stream)
         {
             if (Reader != null)
@@ -369,11 +464,21 @@ namespace GBX.NET
             return variable;
         }
 
+        public void Id(ref string variable, ILookbackable lookbackable)
+        {
+            variable = Id(variable, lookbackable);
+        }
+
         public string Id(string variable)
         {
             if (Reader != null) return Id(variable, Reader.Lookbackable);
             else if (Writer != null) return Id(variable, Writer.Lookbackable);
             throw new Exception();
+        }
+
+        public void Id(ref string variable)
+        {
+            variable = Id(variable);
         }
 
         public void Id(UnknownStream stream, ILookbackable lookbackable)
@@ -404,11 +509,21 @@ namespace GBX.NET
             return variable;
         }
 
+        public void Ident(ref Ident variable, ILookbackable lookbackable)
+        {
+            variable = Ident(variable, lookbackable);
+        }
+
         public Ident Ident(Ident variable)
         {
             if (Reader != null) return Ident(variable, Reader.Lookbackable);
             else if (Writer != null) return Ident(variable, Writer.Lookbackable);
             throw new Exception();
+        }
+
+        public void Ident(ref Ident variable)
+        {
+            variable = Ident(variable);
         }
 
         public void Ident(UnknownStream stream)
@@ -432,11 +547,21 @@ namespace GBX.NET
             return variable;
         }
 
+        public void NodeRef(ref Node variable, IGameBoxBody body)
+        {
+            variable = NodeRef(variable, body);
+        }
+
         public Node NodeRef(Node variable)
         {
             if (Reader != null) return NodeRef(variable, (IGameBoxBody)Reader.Lookbackable);
             else if (Writer != null) return NodeRef(variable, (IGameBoxBody)Writer.Lookbackable);
             throw new Exception();
+        }
+
+        public void NodeRef(ref Node variable)
+        {
+            variable = NodeRef(variable);
         }
 
         public void NodeRef(UnknownStream stream, IGameBoxBody body)
@@ -460,18 +585,28 @@ namespace GBX.NET
             else throw new Exception();
         }
 
-        public T NodeRef<T>(Node variable, IGameBoxBody body) where T : Node
+        public T NodeRef<T>(T variable, IGameBoxBody body) where T : Node
         {
             if (Reader != null) return Reader.ReadNodeRef<T>(body);
             else if (Writer != null) Writer.Write(variable, body);
             return (T)variable;
         }
 
-        public T NodeRef<T>(Node variable) where T : Node
+        public void NodeRef<T>(ref T variable, IGameBoxBody body) where T : Node
         {
-            if (Reader != null) return NodeRef<T>(variable, (IGameBoxBody)Reader.Lookbackable);
-            else if (Writer != null) return NodeRef<T>(variable, (IGameBoxBody)Writer.Lookbackable);
+            variable = NodeRef(variable, body);
+        }
+
+        public T NodeRef<T>(T variable) where T : Node
+        {
+            if (Reader != null) return NodeRef(variable, (IGameBoxBody)Reader.Lookbackable);
+            else if (Writer != null) return NodeRef(variable, (IGameBoxBody)Writer.Lookbackable);
             else throw new Exception();
+        }
+
+        public void NodeRef<T>(ref T variable) where T : Node
+        {
+            variable = NodeRef(variable);
         }
 
         public float Single(float variable)
@@ -479,6 +614,11 @@ namespace GBX.NET
             if (Reader != null) return Reader.ReadSingle();
             else if (Writer != null) Writer.Write(variable);
             return variable;
+        }
+
+        public void Single(ref float variable)
+        {
+            variable = Single(variable);
         }
 
         public void Single(UnknownStream stream)
@@ -502,9 +642,19 @@ namespace GBX.NET
             return variable;
         }
 
+        public void String(ref string variable, StringLengthPrefix readPrefix)
+        {
+            variable = String(variable, readPrefix);
+        }
+
         public string String(string variable)
         {
             return String(variable, StringLengthPrefix.Int32);
+        }
+
+        public void String(ref string variable)
+        {
+            variable = String(variable);
         }
 
         public void String(UnknownStream stream)
@@ -528,6 +678,11 @@ namespace GBX.NET
             return variable;
         }
 
+        public void Vec2(ref Vec2 variable)
+        {
+            variable = Vec2(variable);
+        }
+
         public void Vec2(UnknownStream stream)
         {
             if (Reader != null)
@@ -547,6 +702,11 @@ namespace GBX.NET
             if (Reader != null) return Reader.ReadVec3();
             else if (Writer != null) Writer.Write(variable);
             return variable;
+        }
+
+        public void Vec3(ref Vec3 variable)
+        {
+            variable = Vec3(variable);
         }
 
         public void Vec3(UnknownStream stream)
@@ -569,7 +729,12 @@ namespace GBX.NET
             else if (Writer != null) Writer.Write(variable);
             return variable;
         }
-        
+
+        public void TimeSpan32(ref TimeSpan? variable)
+        {
+            variable = TimeSpan32(variable);
+        }
+
         public void TillFacade(UnknownStream stream)
         {
             if (Reader != null)
