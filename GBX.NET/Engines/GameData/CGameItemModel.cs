@@ -1,4 +1,7 @@
-﻿using System.Diagnostics;
+﻿using GBX.NET.Engines.Plug;
+using System.Diagnostics;
+using System.Drawing;
+using System.Threading.Tasks;
 
 namespace GBX.NET.Engines.GameData
 {
@@ -45,11 +48,15 @@ namespace GBX.NET.Engines.GameData
         private float orbitalRadiusBase;
         private float orbitalPreviewAngle;
         private Node baseAttributes;
-        private Node phyModel;
-        private Node visModel;
-        private Node visModelStatic;
+        private string defaultWeaponName;
+        private CPlugVehiclePhyModelCustom phyModelCustom;
+        private Node visModelCustom;
+        private Node entityModelEdition;
         private Node entityModel;
+        private int defaultCam;
         private CGameItemPlacementParam itemPlacement;
+        private string archetypeRef;
+        private string iconFid;
 
         #endregion
 
@@ -126,29 +133,43 @@ namespace GBX.NET.Engines.GameData
         }
 
         [NodeMember]
-        public Node PhyModel
+        public string DefaultWeaponName
         {
-            get => phyModel;
-            set => phyModel = value;
+            get => defaultWeaponName;
+            set => defaultWeaponName = value;
         }
 
         [NodeMember]
-        public Node VisModel
+        public CPlugVehiclePhyModelCustom PhyModelCustom
         {
-            get => visModel;
-            set => visModel = value;
+            get => phyModelCustom;
+            set => phyModelCustom = value;
         }
 
         [NodeMember]
-        public Node VisModelStatic
+        public Node VisModelCustom
         {
-            get => visModelStatic;
-            set => visModelStatic = value;
+            get => visModelCustom;
+            set => visModelCustom = value;
+        }
+
+        [NodeMember]
+        public int DefaultCam
+        {
+            get => defaultCam;
+            set => defaultCam = value;
         }
 
         /// <summary>
         /// An entity object of the item model.
         /// </summary>
+        [NodeMember]
+        public Node EntityModelEdition
+        {
+            get => entityModelEdition;
+            set => entityModelEdition = value;
+        }
+
         [NodeMember]
         public Node EntityModel
         {
@@ -157,21 +178,21 @@ namespace GBX.NET.Engines.GameData
         }
 
         /// <summary>
-        /// An item model if <see cref="EntityModel"/> is <see cref="CGameCommonItemEntityModelEdition"/>, otherwise null.
+        /// An item model if <see cref="EntityModelEdition"/> is <see cref="CGameCommonItemEntityModelEdition"/>, otherwise null.
         /// </summary>
         public CGameCommonItemEntityModelEdition ItemModel
         {
-            get => EntityModel as CGameCommonItemEntityModelEdition;
-            set => EntityModel = value;
+            get => EntityModelEdition as CGameCommonItemEntityModelEdition;
+            set => EntityModelEdition = value;
         }
 
         /// <summary>
-        /// A block model if <see cref="EntityModel"/> is <see cref="CGameBlockItem"/>, otherwise null.
+        /// A block model if <see cref="EntityModelEdition"/> is <see cref="CGameBlockItem"/>, otherwise null.
         /// </summary>
         public CGameBlockItem BlockModel
         {
-            get => EntityModel as CGameBlockItem;
-            set => EntityModel = value;
+            get => EntityModelEdition as CGameBlockItem;
+            set => EntityModelEdition = value;
         }
 
         /// <summary>
@@ -182,6 +203,20 @@ namespace GBX.NET.Engines.GameData
         {
             get => itemPlacement;
             set => itemPlacement = value;
+        }
+
+        [NodeMember]
+        public string ArchetypeRef
+        {
+            get => archetypeRef;
+            set => archetypeRef = value;
+        }
+
+        [NodeMember]
+        public new string IconFid
+        {
+            get => iconFid;
+            set => iconFid = value;
         }
 
         #endregion
@@ -339,23 +374,49 @@ namespace GBX.NET.Engines.GameData
             public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
-                rw.NodeRef(ref n.phyModel);
-                rw.NodeRef(ref n.visModel);
 
-                if (version >= 1)
+                if(version == 1)
                 {
-                    rw.NodeRef(ref n.visModelStatic);
 
-                    if(version >= 12)
-                    {
-                        rw.Int32(Unknown);
-                        rw.Int32(Unknown);
-                        rw.NodeRef(ref n.entityModel); // CGameCommonItemEntityModelEdition, CGameBlockItem
-                        if(version >= 13)
-                            rw.NodeRef(ref u01);
-                    }
                 }
 
+                if (version >= 3)
+                {
+                    rw.Id(ref n.defaultWeaponName); // DefaultWeaponName
+
+                    if (version >= 4)
+                    {
+                        rw.NodeRef(ref n.phyModelCustom);
+
+                        if (version >= 5)
+                        {
+                            rw.NodeRef(ref n.visModelCustom);
+
+                            if (version >= 6)
+                            {
+                                rw.Int32(Unknown); // Actions
+
+                                if (version >= 7)
+                                {
+                                    rw.Int32(ref n.defaultCam);
+
+                                    if (version >= 8)
+                                    {
+                                        rw.NodeRef(ref n.entityModelEdition); // CGameCommonItemEntityModelEdition, CGameBlockItem
+
+                                        if (version >= 12)
+                                        {
+                                            rw.NodeRef(ref n.entityModel);
+
+                                            if (version >= 13)
+                                                rw.NodeRef(ref u01);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -418,11 +479,20 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E00201E)]
         public class Chunk2E00201E : Chunk<CGameItemModel>
         {
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
+
             public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32(ref version);
+                rw.String(ref n.archetypeRef);
+                if (n.archetypeRef.Length == 0)
+                    rw.Int32(Unknown);
                 rw.Int32(Unknown);
             }
         }
@@ -466,11 +536,21 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E002020)]
         public class Chunk2E002020 : Chunk<CGameItemModel>
         {
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
+
             public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Byte(Unknown);
+                rw.Int32(ref version);
+                rw.String(ref n.iconFid);
+
+                if (version >= 3)
+                    rw.Byte(Unknown);
             }
         }
 
@@ -542,13 +622,30 @@ namespace GBX.NET.Engines.GameData
             public float OrbitalRadiusBase => node.OrbitalRadiusBase;
             public float OrbitalPreviewAngle => node.OrbitalPreviewAngle;
             public Node BaseAttributes => node.BaseAttributes;
-            public Node PhyModel => node.PhyModel;
-            public Node VisModel => node.VisModel;
-            public Node VisModelStatic => node.VisModelStatic;
+            public string DefaultWeaponName => node.DefaultWeaponName;
+            public CPlugVehiclePhyModelCustom PhyModelCustom => node.PhyModelCustom;
+            public Node VisModelCustom => node.VisModelCustom;
+            public int DefaultCam => node.DefaultCam; 
+            public Node EntityModelEdition => node.EntityModelEdition;
             public Node EntityModel => node.EntityModel;
             public CGameCommonItemEntityModelEdition ItemModel => node.ItemModel;
             public CGameBlockItem BlockModel => node.BlockModel;
             public CGameItemPlacementParam ItemPlacement => node.ItemPlacement;
+
+            public Ident Ident => node.Ident;
+            public string PageName => node.PageName;
+            public int CatalogPosition => node.CatalogPosition;
+            public EProdState ProdState => node.ProdState;
+            public string Name => node.Name;
+            public Task<Bitmap> Icon => node.Icon;
+            public string IconFid => node.IconFid;
+            public string CollectorName => node.CollectorName;
+            public string Description => node.Description;
+            public bool IconUseAutoRender => node.IconUseAutoRender;
+            public int IconQuarterRotationY => node.IconQuarterRotationY;
+            public string SkinDirectory => node.SkinDirectory;
+            public bool IsInternal => node.IsInternal;
+            public bool IsAdvanced => node.IsAdvanced;
 
             public ChunkSet Chunks => node.Chunks;
 
