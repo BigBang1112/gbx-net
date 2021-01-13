@@ -757,6 +757,11 @@ namespace GBX.NET
             variable = TimeSpan32(variable);
         }
 
+        public void EnumByte<T>(ref T variable) where T : Enum
+        {
+            variable = (T)(object)Byte((byte)(object)variable);
+        }
+
         public void EnumInt32<T>(ref T variable) where T : Enum
         {
             variable = (T)(object)Int32((int)(object)variable);
