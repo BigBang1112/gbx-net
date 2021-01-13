@@ -76,7 +76,7 @@ namespace GBX.NET
             {
                 lookbackable.IdVersion = ReadInt32();
 
-                if (lookbackable.IdVersion > 10) // Edge-case scenario where Id doesn't have a version for whatever reason (can be multiple)
+                if ((lookbackable.IdVersion & 0xC0000000) > 10) // Edge-case scenario where Id doesn't have a version for whatever reason (can be multiple)
                 {
                     lookbackable.IdVersion = 3;
                     BaseStream.Position -= 4;
