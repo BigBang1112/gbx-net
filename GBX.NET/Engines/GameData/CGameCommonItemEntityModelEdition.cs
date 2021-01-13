@@ -1,11 +1,10 @@
 ﻿using GBX.NET.Engines.Plug;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Diagnostics;
 
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E026000)]
+    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCommonItemEntityModelEdition : Node
     {
         #region Enums
@@ -31,10 +30,32 @@ namespace GBX.NET.Engines.GameData
 
         #endregion
 
+        #region Fields
+
+        private EItemType itemType;
+        private CPlugCrystal meshCrystal;
+
+        #endregion
+
         #region Properties
 
-        public EItemType ItemType { get; set; }
-        public CPlugCrystal MeshCrystal { get; set; }
+        /// <summary>
+        /// Type of the item.
+        /// </summary>
+        public EItemType ItemType
+        {
+            get => itemType;
+            set => itemType = value;
+        }
+
+        /// <summary>
+        /// Mesh of the item model.
+        /// </summary>
+        public CPlugCrystal MeshCrystal
+        {
+            get => meshCrystal;
+            set => meshCrystal = value;
+        }
 
         #endregion
 
@@ -42,22 +63,47 @@ namespace GBX.NET.Engines.GameData
 
         #region 0x000 chunk
 
+        /// <summary>
+        /// CGameCommonItemEntityModelEdition 0x000 chunk
+        /// </summary>
         [Chunk(0x2E026000)]
         public class Chunk2E026000 : Chunk<CGameCommonItemEntityModelEdition>
         {
-            public int Version { get; set; }
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CGameCommonItemEntityModelEdition n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                n.ItemType = (EItemType)rw.Int32((int)n.ItemType);
-                n.MeshCrystal = rw.NodeRef<CPlugCrystal>(n.MeshCrystal);
+                rw.Int32(ref version);
+                rw.EnumInt32<EItemType>(ref n.itemType);
+                rw.NodeRef<CPlugCrystal>(ref n.meshCrystal);
                 rw.String(Unknown);
                 rw.Array<int>(Unknown, 32);
             }
         }
 
         #endregion
+
+        #endregion
+
+        #region Debug view
+
+        private class DebugView
+        {
+            private readonly CGameCommonItemEntityModelEdition node;
+
+            public EItemType ItemType => node.ItemType;
+            public CPlugCrystal MeshCrystal => node.MeshCrystal;
+
+            public ChunkSet Chunks => node.Chunks;
+
+            public DebugView(CGameCommonItemEntityModelEdition node) => this.node = node;
+        }
 
         #endregion
     }
