@@ -575,7 +575,7 @@ namespace GBX.NET
 
                     foreach (var cls in inheritanceClasses)
                     {
-                        var availableInheritanceClass = types.Where(x => x.IsClass
+                        var availableInheritanceClass = types.Where(x => x.IsClass && x.Namespace != null
                            && x.Namespace.StartsWith("GBX.NET.Engines") && (GetBaseType(x) == typeof(Node))
                            && (x.GetCustomAttribute<NodeAttribute>().ID == cls)).FirstOrDefault();
 
