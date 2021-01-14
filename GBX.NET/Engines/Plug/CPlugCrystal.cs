@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Numerics;
 using System.Text;
+using System.Threading;
 using System.Xml.Schema;
 
 namespace GBX.NET.Engines.Plug
@@ -50,6 +52,57 @@ namespace GBX.NET.Engines.Plug
 
         [NodeMember]
         public Layer[] Layers { get; set; }
+
+        #endregion
+
+        #region Methods
+
+        public void ToOBJ(Stream stream)
+        {
+            var previousCulture = Thread.CurrentThread.CurrentCulture;
+            Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+
+            using (var w = new StreamWriter(stream))
+            {
+                w.WriteLine("# Mesh data extracted from GBX with GBX.NET");
+                w.WriteLine();
+
+                foreach (GeometryLayer layer in Layers)
+                {
+                    w.WriteLine($"o {layer.LayerName}");
+
+                    w.WriteLine();
+
+                    foreach (var vertex in layer.Vertices)
+                    {
+                        w.WriteLine($"v {vertex.X} {vertex.Y} {vertex.Z}");
+                    }
+
+                    w.WriteLine();
+
+                    foreach (var group in layer.Faces.GroupBy(x => x.Group))
+                    {
+                        w.WriteLine();
+
+                        //w.WriteLine($"o {layer.LayerName}");
+
+                        var uvCounter = 0;
+                        foreach (var face in group)
+                        {
+                            foreach(var uv in face.UV)
+                            {
+                                uvCounter++;
+                                w.WriteLine($"vt {(uv.X+3)/6} {(uv.Y+3)/6}"); // doesnt properly work
+                            }
+
+                            w.WriteLine($"f {string.Join(" ", face.Indices.Select((x, i) => $"{x + 1}/{uvCounter - (face.UV.Length - i) + 1}"))}");
+                        }
+                    }
+                }
+            }
+
+            Thread.CurrentThread.CurrentCulture = previousCulture;
+        }
 
         #endregion
 
@@ -141,43 +194,54 @@ namespace GBX.NET.Engines.Plug
                         U05 = r.ReadArray<int>()
                     });
 
+                    Vec3[] vertices = null;
+                    Int2[] edges = null;
+                    Face[] faces = null;
+
                     var u15 = r.ReadInt32();
-                    var verticies = r.ReadArray(j => r.ReadVec3());
-                    var indicies = r.ReadArray(j => r.ReadInt2());
-
-                    var uvmaps = r.ReadArray(j =>
+                    if (u15 == 1)
                     {
-                        var uvVerticies = r.ReadInt32();
-                        var inds = r.ReadArray<int>(uvVerticies);
-                        var xy = new Vec2[uvVerticies];
-                        for (var k = 0; k < uvVerticies; k++)
-                            xy[k] = r.ReadVec2();
-                        var materialIndex = r.ReadInt32();
-                        var groupIndex = r.ReadInt32();
+                        vertices = r.ReadArray(j => r.ReadVec3());
+                        edges = r.ReadArray(j => r.ReadInt2());
 
-                        return new UVMap()
+                        faces = r.ReadArray(j =>
                         {
-                            VertCount = uvVerticies,
-                            Inds = inds,
-                            XY = xy,
-                            Material = n.Materials[materialIndex],
-                            Group = groups[groupIndex]
-                        };
-                    });
+                            var uvVertices = r.ReadInt32();
+                            var inds = r.ReadArray<int>(uvVertices);
+                            var uv = new Vec2[uvVertices];
+                            for (var k = 0; k < uvVertices; k++)
+                                uv[k] = r.ReadVec2();
+                            var materialIndex = r.ReadInt32();
+                            var groupIndex = r.ReadInt32();
+
+                            return new Face()
+                            {
+                                VertCount = uvVertices,
+                                Indices = inds,
+                                UV = uv,
+                                Material = n.Materials[materialIndex],
+                                Group = groups[groupIndex]
+                            };
+                        });
+                    }
+                    else
+                    {
+                        throw new NotSupportedException("Unsupported crystal.");
+                    }
 
                     var u16 = r.ReadInt32();
                     var numUVs = r.ReadInt32();
-                    var numIndicies = r.ReadInt32();
+                    var numEdges = r.ReadInt32();
                     var numVerts = r.ReadInt32();
-                    var empty = r.ReadArray<int>(numUVs + numIndicies + numVerts);
+                    var empty = r.ReadArray<int>(numUVs + numEdges + numVerts);
 
-                    if (numUVs + numIndicies + numVerts == 0)
+                    if (numUVs + numEdges + numVerts == 0)
                     {
                         numUVs = r.ReadInt32();
-                        numIndicies = r.ReadInt32();
+                        numEdges = r.ReadInt32();
                         numVerts = r.ReadInt32();
 
-                        empty = r.ReadArray<int>(numUVs + numIndicies + numVerts);
+                        empty = r.ReadArray<int>(numUVs + numEdges + numVerts);
                     }
 
                     var u17 = r.ReadInt32();
@@ -192,14 +256,14 @@ namespace GBX.NET.Engines.Plug
                         LayerType = type,
                         LayerID = layerId,
                         LayerName = layerName,
-                        Verticies = verticies,
-                        Indicies = indicies,
-                        UVs = uvmaps,
+                        Vertices = vertices,
+                        Edges = edges,
+                        Faces = faces,
                         Groups = groups,
                         Unknown = new object[]
                         {
                             u01, u02, u03, u04, u05, u06, u07, u08, u09, u10, u11, u12, u13, u14,
-                            u15, u16, numUVs, numIndicies, numVerts, empty, u17, counter, u18, u19
+                            u15, u16, numUVs, numEdges, numVerts, empty, u17, counter, u18, u19
                         }
                     };
                 });
@@ -265,9 +329,9 @@ namespace GBX.NET.Engines.Plug
         {
             public string LayerID { get; set; }
             public string LayerName { get; set; }
-            public Vec3[] Verticies { get; set; }
-            public Int2[] Indicies { get; set; }
-            public UVMap[] UVs { get; set; }
+            public Vec3[] Vertices { get; set; }
+            public Int2[] Edges { get; set; }
+            public Face[] Faces { get; set; }
             public Group[] Groups { get; set; }
             public object[] Unknown { get; set; }
         }
@@ -282,17 +346,17 @@ namespace GBX.NET.Engines.Plug
             public int[] U05 { get; set; }
         }
 
-        public class UVMap
+        public class Face
         {
             public int VertCount { get; set; }
-            public int[] Inds { get; set; }
-            public Vec2[] XY { get; set; }
+            public int[] Indices { get; set; }
+            public Vec2[] UV { get; set; }
             public CPlugMaterialUserInst Material { get; set; }
-            public object Group { get; set; }
+            public Group Group { get; set; }
 
             public override string ToString()
             {
-                return $"({string.Join(" ", Inds)}) ({string.Join(" ", XY)})";
+                return $"({string.Join(" ", Indices)}) ({string.Join(" ", UV)})";
             }
         }
 
