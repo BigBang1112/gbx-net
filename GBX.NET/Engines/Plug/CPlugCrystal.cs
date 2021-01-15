@@ -28,9 +28,15 @@ namespace GBX.NET.Engines.Plug
             Chaos,
             U11,
             U12,
-            Cubes,
+            Deformation,
+            U14,
             Trigger,
             SpawnPosition
+        }
+
+        public enum EAxis
+        {
+            X, Y, Z
         }
 
         #endregion
@@ -67,7 +73,7 @@ namespace GBX.NET.Engines.Plug
                 w.WriteLine("# Mesh data extracted from GBX with GBX.NET");
                 w.WriteLine();
 
-                foreach (GeometryLayer layer in Layers)
+                foreach (GeometryLayer layer in Layers.Where(x => x is GeometryLayer && x.IsEnabled))
                 {
                     w.WriteLine($"o {layer.LayerName}");
 
@@ -79,6 +85,18 @@ namespace GBX.NET.Engines.Plug
                     }
 
                     w.WriteLine();
+
+                    /*var uvCounter = 0;
+                    foreach (var face in layer.Faces)
+                    {
+                        foreach (var uv in face.UV)
+                        {
+                            uvCounter++;
+                            w.WriteLine($"vt {(uv.X + 3) / 6} {(uv.Y + 3) / 6}"); // doesnt properly work
+                        }
+
+                        w.WriteLine($"f {string.Join(" ", face.Indices.Select((x, i) => $"{x + 1}/{uvCounter - (face.UV.Length - i) + 1}"))}");
+                    }*/
 
                     foreach (var group in layer.Faces.GroupBy(x => x.Group))
                     {
@@ -164,108 +182,263 @@ namespace GBX.NET.Engines.Plug
             {
                 Version = r.ReadInt32();
 
-                n.Layers = r.ReadArray(i =>
+                n.Layers = r.ReadArray<Layer>(i =>
                 {
                     var type = (ELayerType)r.ReadInt32();
                     var u01 = r.ReadInt32(); // 2
                     var u02 = r.ReadInt32();
                     var layerId = r.ReadId(); // Layer0
                     var layerName = r.ReadString();
-                    var u03 = r.ReadInt32(); // 1
+                    var isEnabled = r.ReadBoolean();
+
                     var u04 = r.ReadInt32(); // 1
-                    var u05 = r.ReadInt32(); // 32
-                    var u06 = r.ReadInt32(); // 4
-                    var u07 = r.ReadInt32(); // 3
-                    var u08 = r.ReadInt32(); // 4
-                    var u09 = r.ReadSingle(); // 64
-                    var u10 = r.ReadInt32(); // 2
-                    var u11 = r.ReadSingle(); // 128
-                    var u12 = r.ReadInt32(); // 1
-                    var u13 = r.ReadSingle(); // 192
-                    var u14 = r.ReadInt32(); // 0
 
-                    var groups = r.ReadArray(j => new Group()
+                    if (type == ELayerType.Geometry || type == ELayerType.Trigger)
                     {
-                        U01 = r.ReadInt32(),
-                        U02 = r.ReadInt32(),
-                        U03 = r.ReadInt32(),
-                        Name = r.ReadString(),
-                        U04 = r.ReadInt32(),
-                        U05 = r.ReadArray<int>()
-                    });
+                        var u05 = r.ReadInt32(); // 32
+                        var u06 = r.ReadInt32(); // 4
+                        var u07 = r.ReadInt32(); // 3
+                        var u08 = r.ReadInt32(); // 4
+                        var u09 = r.ReadSingle(); // 64
+                        var u10 = r.ReadInt32(); // 2
+                        var u11 = r.ReadSingle(); // 128
+                        var u12 = r.ReadInt32(); // 1
+                        var u13 = r.ReadSingle(); // 192
+                        var u14 = r.ReadInt32(); // 0
 
-                    Vec3[] vertices = null;
-                    Int2[] edges = null;
-                    Face[] faces = null;
-
-                    var u15 = r.ReadInt32();
-                    if (u15 == 1)
-                    {
-                        vertices = r.ReadArray(j => r.ReadVec3());
-                        edges = r.ReadArray(j => r.ReadInt2());
-
-                        faces = r.ReadArray(j =>
+                        var groups = r.ReadArray(j => new Group()
                         {
-                            var uvVertices = r.ReadInt32();
-                            var inds = r.ReadArray<int>(uvVertices);
-                            var uv = new Vec2[uvVertices];
-                            for (var k = 0; k < uvVertices; k++)
-                                uv[k] = r.ReadVec2();
-                            var materialIndex = r.ReadInt32();
-                            var groupIndex = r.ReadInt32();
-
-                            return new Face()
-                            {
-                                VertCount = uvVertices,
-                                Indices = inds,
-                                UV = uv,
-                                Material = n.Materials[materialIndex],
-                                Group = groups[groupIndex]
-                            };
+                            U01 = r.ReadInt32(),
+                            U02 = r.ReadInt32(),
+                            U03 = r.ReadInt32(),
+                            Name = r.ReadString(),
+                            U04 = r.ReadInt32(),
+                            U05 = r.ReadArray<int>()
                         });
+
+                        Vec3[] vertices = null;
+                        Int2[] edges = null;
+                        Face[] faces = null;
+
+                        var u15 = r.ReadInt32();
+                        if (u15 == 1)
+                        {
+                            vertices = r.ReadArray(j => r.ReadVec3());
+                            edges = r.ReadArray(j => r.ReadInt2());
+
+                            faces = r.ReadArray(j =>
+                            {
+                                var uvVertices = r.ReadInt32();
+                                var inds = r.ReadArray<int>(uvVertices);
+                                var uv = new Vec2[uvVertices];
+                                for (var k = 0; k < uvVertices; k++)
+                                    uv[k] = r.ReadVec2();
+                                var materialIndex = r.ReadInt32();
+                                var groupIndex = r.ReadInt32();
+
+                                return new Face()
+                                {
+                                    VertCount = uvVertices,
+                                    Indices = inds,
+                                    UV = uv,
+                                    Material = n.Materials[materialIndex],
+                                    Group = groups[groupIndex]
+                                };
+                            });
+                        }
+                        else
+                        {
+                            throw new NotSupportedException("Unsupported crystal.");
+                        }
+
+                        var u16 = r.ReadInt32();
+                        var numUVs = r.ReadInt32();
+                        var numEdges = r.ReadInt32();
+                        var numVerts = r.ReadInt32();
+                        var empty = r.ReadArray<int>(numUVs + numEdges + numVerts);
+
+                        if (numUVs + numEdges + numVerts == 0)
+                        {
+                            numUVs = r.ReadInt32();
+                            numEdges = r.ReadInt32();
+                            numVerts = r.ReadInt32();
+
+                            empty = r.ReadArray<int>(numUVs + numEdges + numVerts);
+                        }
+
+                        var u17 = r.ReadInt32();
+                        var numGroups2 = r.ReadInt32();
+                        var counter = r.ReadArray<int>(numGroups2);
+
+                        var isVisible = false;
+                        var collidable = true;
+
+                        if (type == ELayerType.Geometry)
+                        {
+                            isVisible = r.ReadBoolean();
+                            collidable = r.ReadBoolean();
+                        }
+                        else
+                        {
+
+                        }
+
+                        return new GeometryLayer()
+                        {
+                            LayerID = layerId,
+                            LayerName = layerName,
+                            Vertices = vertices,
+                            Edges = edges,
+                            Faces = faces,
+                            Groups = groups,
+                            IsEnabled = isEnabled,
+                            IsVisible = isVisible,
+                            Collidable = collidable,
+                            Unknown = new object[]
+                            {
+                                u01, u02, u04, u05, u06, u07, u08, u09, u10, u11, u12, u13, u14,
+                                u15, u16, numUVs, numEdges, numVerts, empty, u17, counter
+                            }
+                        };
                     }
                     else
                     {
-                        throw new NotSupportedException("Unsupported crystal.");
-                    }
-
-                    var u16 = r.ReadInt32();
-                    var numUVs = r.ReadInt32();
-                    var numEdges = r.ReadInt32();
-                    var numVerts = r.ReadInt32();
-                    var empty = r.ReadArray<int>(numUVs + numEdges + numVerts);
-
-                    if (numUVs + numEdges + numVerts == 0)
-                    {
-                        numUVs = r.ReadInt32();
-                        numEdges = r.ReadInt32();
-                        numVerts = r.ReadInt32();
-
-                        empty = r.ReadArray<int>(numUVs + numEdges + numVerts);
-                    }
-
-                    var u17 = r.ReadInt32();
-                    var numGroups2 = r.ReadInt32();
-                    var counter = r.ReadArray<int>(numGroups2);
-
-                    var u18 = r.ReadInt32(); // 1
-                    var u19 = r.ReadInt32(); // 1
-
-                    return new GeometryLayer()
-                    {
-                        LayerType = type,
-                        LayerID = layerId,
-                        LayerName = layerName,
-                        Vertices = vertices,
-                        Edges = edges,
-                        Faces = faces,
-                        Groups = groups,
-                        Unknown = new object[]
+                        var mask = r.ReadArray(j =>
                         {
-                            u01, u02, u03, u04, u05, u06, u07, u08, u09, u10, u11, u12, u13, u14,
-                            u15, u16, numUVs, numEdges, numVerts, empty, u17, counter, u18, u19
+                            return new LayerMask()
+                            {
+                                GroupIndex = r.ReadInt32(),
+                                LayerId = r.ReadId()
+                            };
+                        });
+
+                        var mask_u01 = r.ReadInt32();
+
+                        if (type == ELayerType.Scale)
+                        {
+                            var scale = r.ReadVec3();
+                            var independently = r.ReadBoolean();
+
+                            return new ScaleLayer()
+                            {
+                                LayerID = layerId,
+                                LayerName = layerName,
+                                Mask = mask,
+                                Scale = scale,
+                                Independently = independently,
+                                Unknown = new object[] { mask_u01 }
+                            };
                         }
-                    };
+                        else if (type == ELayerType.SpawnPosition)
+                        {
+                            var position = r.ReadVec3();
+                            var horizontalAngle = r.ReadSingle();
+                            var verticalAngle = r.ReadSingle();
+
+                            return new SpawnPositionLayer()
+                            {
+                                LayerID = layerId,
+                                LayerName = layerName,
+                                Mask = mask,
+                                Position = position,
+                                HorizontalAngle = horizontalAngle,
+                                VerticalAngle = verticalAngle,
+                                Unknown = new object[] { mask_u01 }
+                            };
+                        }
+                        else if (type == ELayerType.Translation)
+                        {
+                            var translation = r.ReadVec3();
+
+                            return new TranslationLayer()
+                            {
+                                LayerID = layerId,
+                                LayerName = layerName,
+                                Mask = mask,
+                                Translation = translation,
+                                Unknown = new object[] { mask_u01 }
+                            };
+                        }
+                        else if (type == ELayerType.Rotation)
+                        {
+                            var rotation = r.ReadSingle(); // in radians
+                            var axis = (EAxis)r.ReadInt32();
+                            var independently = r.ReadBoolean();
+
+                            return new RotationLayer()
+                            {
+                                LayerID = layerId,
+                                LayerName = layerName,
+                                Mask = mask,
+                                Rotation = rotation,
+                                Axis = axis,
+                                Independently = independently
+                            };
+                        }
+                        else if (type == ELayerType.Mirror)
+                        {
+                            var axis = (EAxis)r.ReadInt32();
+                            var distance = r.ReadSingle();
+                            var independently = r.ReadBoolean();
+
+                            return new MirrorLayer()
+                            {
+                                LayerID = layerId,
+                                LayerName = layerName,
+                                Mask = mask,
+                                Distance = distance,
+                                Axis = axis,
+                                Independently = independently
+                            };
+                        }
+                        else if(type == ELayerType.Deformation)
+                        {
+                            // TODO: how deformation works
+                            throw new NotSupportedException("Deformation layer is not currently supported.");
+                        }
+                        else if (type == ELayerType.Chaos)
+                        {
+                            var minDistance = r.ReadSingle();
+                            var chaos_u01 = r.ReadSingle();
+                            var maxDistance = r.ReadSingle();
+
+                            return new ChaosLayer()
+                            {
+                                LayerID = layerId,
+                                LayerName = layerName,
+                                Mask = mask,
+                                MinDistance = minDistance,
+                                U01 = chaos_u01,
+                                MaxDistance = maxDistance,
+                            };
+                        }
+                        else if (type == ELayerType.Subdivide)
+                        {
+                            var subdivisions = r.ReadInt32(); // max 4
+
+                            return new SubdivideLayer()
+                            {
+                                LayerID = layerId,
+                                LayerName = layerName,
+                                Mask = mask,
+                                Subdivisions = subdivisions
+                            };
+                        }
+                        else if (type == ELayerType.Smooth)
+                        {
+                            var intensity = r.ReadInt32(); // max 4
+
+                            return new SmoothLayer()
+                            {
+                                LayerID = layerId,
+                                LayerName = layerName,
+                                Mask = mask,
+                                Intensity = intensity
+                            };
+                        }
+                        else
+                            throw new NotSupportedException($"Unknown or unsupported layer. ({type})");
+                    }
                 });
             }
         }
@@ -322,18 +495,79 @@ namespace GBX.NET.Engines.Plug
 
         public abstract class Layer
         {
-            public ELayerType LayerType { get; set; }
+            public string LayerID { get; set; }
+            public string LayerName { get; set; }
+            public bool IsEnabled { get; set; }
+            public object[] Unknown { get; set; }
+
+            public override string ToString() => LayerName;
         }
 
         public class GeometryLayer : Layer
         {
-            public string LayerID { get; set; }
-            public string LayerName { get; set; }
             public Vec3[] Vertices { get; set; }
             public Int2[] Edges { get; set; }
             public Face[] Faces { get; set; }
             public Group[] Groups { get; set; }
-            public object[] Unknown { get; set; }
+            public bool Collidable { get; set; }
+            public bool IsVisible { get; set; }
+        }
+
+        public class TranslationLayer : Layer
+        {
+            public LayerMask[] Mask { get; set; }
+            public Vec3 Translation { get; set; }
+        }
+
+        public class ScaleLayer : Layer
+        {
+            public LayerMask[] Mask { get; set; }
+            public Vec3 Scale { get; set; }
+            public bool Independently { get; set; }
+        }
+
+        public class RotationLayer : Layer
+        {
+            public LayerMask[] Mask { get; set; }
+            public float Rotation { get; set; } // in radians
+            public EAxis Axis { get; set; }
+            public bool Independently { get; set; }
+        }
+
+        public class MirrorLayer : Layer
+        {
+            public LayerMask[] Mask { get; set; }
+            public float Distance { get; set; }
+            public EAxis Axis { get; set; }
+            public bool Independently { get; set; }
+        }
+
+        public class SpawnPositionLayer : Layer
+        {
+            public LayerMask[] Mask { get; set; }
+            public Vec3 Position { get; set; }
+            public float HorizontalAngle { get; set; }
+            public float VerticalAngle { get; set; }
+        }
+
+        public class ChaosLayer : Layer
+        {
+            public LayerMask[] Mask { get; set; }
+            public float MinDistance { get; set; }
+            public float MaxDistance { get; set; }
+            public float U01 { get; set; }
+        }
+
+        public class SubdivideLayer : Layer
+        {
+            public LayerMask[] Mask { get; set; }
+            public int Subdivisions { get; set; }
+        }
+
+        public class SmoothLayer : Layer
+        {
+            public LayerMask[] Mask { get; set; }
+            public float Intensity { get; set; }
         }
 
         public class Group
@@ -344,6 +578,8 @@ namespace GBX.NET.Engines.Plug
             public int U03 { get; set; }
             public int U04 { get; set; }
             public int[] U05 { get; set; }
+
+            public override string ToString() => Name;
         }
 
         public class Face
@@ -358,6 +594,12 @@ namespace GBX.NET.Engines.Plug
             {
                 return $"({string.Join(" ", Indices)}) ({string.Join(" ", UV)})";
             }
+        }
+
+        public class LayerMask
+        {
+            public string LayerId { get; set; }
+            public int GroupIndex { get; set; }
         }
 
         #endregion
