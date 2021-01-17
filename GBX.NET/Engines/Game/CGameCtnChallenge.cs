@@ -2911,6 +2911,9 @@ namespace GBX.NET.Engines.Game
 
         #region 0x048 skippable chunk (baked blocks)
 
+        /// <summary>
+        /// CGameCtnChallenge 0x048 skippable chunk (baked blocks)
+        /// </summary>
         [Chunk(0x03043048, "baked blocks")]
         public class Chunk03043048 : SkippableChunk<CGameCtnChallenge>
         {
@@ -3224,7 +3227,7 @@ namespace GBX.NET.Engines.Game
 
                 var dayTime = r.ReadInt32();
                 if (dayTime != -1)
-                    n.dayTime = TimeSpan.FromSeconds(r.ReadInt32() / (double)ushort.MaxValue * new TimeSpan(23, 59, 59).TotalSeconds);
+                    n.dayTime = TimeSpan.FromSeconds(dayTime / (double)ushort.MaxValue * new TimeSpan(23, 59, 59).TotalSeconds);
 
                 U02 = r.ReadInt32();
                 n.dynamicDaylight = r.ReadBoolean();
