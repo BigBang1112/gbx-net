@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Numerics;
 using System.Text;
 
@@ -103,6 +104,86 @@ namespace GBX.NET
             array = Array(array, i => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
         }
 
+        public IEnumerable<T> Enumerable<T>(IEnumerable<T> enumerable) where T : Node
+        {
+            return Array(enumerable?.ToArray());
+        }
+
+        public void Enumerable<T>(ref IEnumerable<T> enumerable) where T : Node
+        {
+            enumerable = Enumerable(enumerable);
+        }
+
+        public IEnumerable<T> Enumerable<T>(IEnumerable<T> enumerable, Func<int, T> forLoopRead, Action<T> forLoopWrite)
+        {
+            return Array(enumerable?.ToArray(), forLoopRead, forLoopWrite);
+        }
+
+        public void Enumerable<T>(ref IEnumerable<T> enumerable, Func<int, T> forLoopRead, Action<T> forLoopWrite)
+        {
+            enumerable = Enumerable(enumerable, forLoopRead, forLoopWrite);
+        }
+
+        public IEnumerable<T> Enumerable<T>(IEnumerable<T> enumerable, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        {
+            return Array(enumerable?.ToArray(), forLoopRead, forLoopWrite);
+        }
+
+        public void Enumerable<T>(ref IEnumerable<T> enumerable, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        {
+            enumerable = Enumerable(enumerable, forLoopRead, forLoopWrite);
+        }
+
+        public IEnumerable<T> EnumerableNode<T>(IEnumerable<T> enumerable) where T : Node
+        {
+            return Enumerable(enumerable, i => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
+        }
+
+        public void EnumerableNode<T>(ref IEnumerable<T> enumerable) where T : Node
+        {
+            enumerable = Enumerable(enumerable, i => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
+        }
+
+        public List<T> List<T>(List<T> list) where T : Node
+        {
+            return Enumerable(list).ToList();
+        }
+
+        public void List<T>(ref List<T> list) where T : Node
+        {
+            list = List(list);
+        }
+
+        public List<T> List<T>(List<T> list, Func<int, T> forLoopRead, Action<T> forLoopWrite)
+        {
+            return Enumerable(list, forLoopRead, forLoopWrite).ToList();
+        }
+
+        public void List<T>(ref List<T> list, Func<int, T> forLoopRead, Action<T> forLoopWrite)
+        {
+            list = List(list, forLoopRead, forLoopWrite);
+        }
+
+        public List<T> List<T>(List<T> list, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        {
+            return Enumerable(list, forLoopRead, forLoopWrite).ToList();
+        }
+
+        public void List<T>(ref List<T> list, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        {
+            list = List(list, forLoopRead, forLoopWrite);
+        }
+
+        public List<T> ListNode<T>(List<T> list) where T : Node
+        {
+            return List(list, i => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
+        }
+
+        public void ListNode<T>(ref List<T> list) where T : Node
+        {
+            list = List(list, i => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
+        }
+
         public Dictionary<int, TValue> DictionaryNode<TValue>(Dictionary<int, TValue> dictionary) where TValue : Node
         {
             if (Reader != null) return Reader.ReadDictionaryNode<TValue>();
@@ -127,6 +208,11 @@ namespace GBX.NET
             variable = Boolean(variable, asByte);
         }
 
+        public void Boolean(ref bool? variable, bool asByte)
+        {
+            variable = Boolean(variable.GetValueOrDefault(), asByte);
+        }
+
         public bool Boolean(bool variable)
         {
             return Boolean(variable, false);
@@ -135,6 +221,11 @@ namespace GBX.NET
         public void Boolean(ref bool variable)
         {
             variable = Boolean(variable);
+        }
+
+        public void Boolean(ref bool? variable)
+        {
+            variable = Boolean(variable.GetValueOrDefault());
         }
 
         public void Boolean(UnknownStream stream)
@@ -163,6 +254,11 @@ namespace GBX.NET
             variable = Byte(variable);
         }
 
+        public void Byte(ref byte? variable)
+        {
+            variable = Byte(variable.GetValueOrDefault());
+        }
+
         public void Byte(UnknownStream stream)
         {
             if (Reader != null)
@@ -187,6 +283,11 @@ namespace GBX.NET
         public void Byte3(ref Byte3 variable)
         {
             variable = Byte3(variable);
+        }
+
+        public void Byte3(ref Byte3? variable)
+        {
+            variable = Byte3(variable.GetValueOrDefault());
         }
 
         public void Byte3(UnknownStream stream)
@@ -283,6 +384,11 @@ namespace GBX.NET
             variable = Int16(variable);
         }
 
+        public void Int16(ref short? variable)
+        {
+            variable = Int16(variable.GetValueOrDefault());
+        }
+
         public void Int16(UnknownStream stream)
         {
             if (Reader != null)
@@ -307,6 +413,11 @@ namespace GBX.NET
         public void Int32(ref int variable)
         {
             variable = Int32(variable);
+        }
+
+        public void Int32(ref int? variable)
+        {
+            variable = Int32(variable.GetValueOrDefault());
         }
 
         public void Int32(UnknownStream stream)
@@ -335,6 +446,11 @@ namespace GBX.NET
             variable = Int64(variable);
         }
 
+        public void Int64(ref long? variable)
+        {
+            variable = Int64(variable.GetValueOrDefault());
+        }
+
         public void Int64(UnknownStream stream)
         {
             if (Reader != null)
@@ -359,6 +475,11 @@ namespace GBX.NET
         public void UInt16(ref ushort variable)
         {
             variable = UInt16(variable);
+        }
+
+        public void UInt16(ref ushort? variable)
+        {
+            variable = UInt16(variable.GetValueOrDefault());
         }
 
         public void UInt16(UnknownStream stream)
@@ -387,6 +508,11 @@ namespace GBX.NET
             variable = UInt32(variable);
         }
 
+        public void UInt32(ref uint? variable)
+        {
+            variable = UInt32(variable.GetValueOrDefault());
+        }
+
         public void UInt32(UnknownStream stream)
         {
             if (Reader != null)
@@ -411,6 +537,11 @@ namespace GBX.NET
         public void UInt64(ref ulong variable)
         {
             variable = UInt64(variable);
+        }
+
+        public void UInt64(ref ulong? variable)
+        {
+            variable = UInt64(variable.GetValueOrDefault());
         }
 
         public void UInt64(UnknownStream stream)
@@ -439,6 +570,11 @@ namespace GBX.NET
             variable = Int2(variable);
         }
 
+        public void Int2(ref Int2? variable)
+        {
+            variable = Int2(variable.GetValueOrDefault());
+        }
+
         public void Int2(UnknownStream stream)
         {
             if (Reader != null)
@@ -463,6 +599,11 @@ namespace GBX.NET
         public void Int3(ref Int3 variable)
         {
             variable = Int3(variable);
+        }
+
+        public void Int3(ref Int3? variable)
+        {
+            variable = Int3(variable.GetValueOrDefault());
         }
 
         public void Int3(UnknownStream stream)
@@ -611,7 +752,7 @@ namespace GBX.NET
         {
             if (Reader != null) return Reader.ReadNodeRef<T>(body);
             else if (Writer != null) Writer.Write(variable, body);
-            return (T)variable;
+            return variable;
         }
 
         public void NodeRef<T>(ref T variable, IGameBoxBody body) where T : Node
@@ -641,6 +782,11 @@ namespace GBX.NET
         public void Single(ref float variable)
         {
             variable = Single(variable);
+        }
+
+        public void Single(ref float? variable)
+        {
+            variable = Single(variable.GetValueOrDefault());
         }
 
         public void Single(UnknownStream stream)
@@ -705,6 +851,11 @@ namespace GBX.NET
             variable = Vec2(variable);
         }
 
+        public void Vec2(ref Vec2? variable)
+        {
+            variable = Vec2(variable.GetValueOrDefault());
+        }
+
         public void Vec2(UnknownStream stream)
         {
             if (Reader != null)
@@ -729,6 +880,11 @@ namespace GBX.NET
         public void Vec3(ref Vec3 variable)
         {
             variable = Vec3(variable);
+        }
+
+        public void Vec3(ref Vec3? variable)
+        {
+            variable = Vec3(variable.GetValueOrDefault());
         }
 
         public void Vec3(UnknownStream stream)
@@ -757,14 +913,24 @@ namespace GBX.NET
             variable = TimeSpan32(variable);
         }
 
-        public void EnumByte<T>(ref T variable) where T : Enum
+        public void EnumByte<T>(ref T variable) where T : struct, Enum
         {
             variable = (T)(object)Byte((byte)(object)variable);
         }
 
-        public void EnumInt32<T>(ref T variable) where T : Enum
+        public void EnumInt32<T>(ref T variable) where T : struct, Enum
         {
             variable = (T)(object)Int32((int)(object)variable);
+        }
+
+        public void EnumByte<T>(ref T? variable) where T : struct, Enum
+        {
+            variable = (T)(object)Byte((variable as object as byte?).GetValueOrDefault());
+        }
+
+        public void EnumInt32<T>(ref T? variable) where T : struct, Enum
+        {
+            variable = (T)(object)Int32((variable as object as int?).GetValueOrDefault());
         }
 
         public void TillFacade(UnknownStream stream)
