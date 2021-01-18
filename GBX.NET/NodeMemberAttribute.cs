@@ -4,7 +4,9 @@ using System.Text;
 
 namespace GBX.NET
 {
+    [AttributeUsage(AttributeTargets.Property)]
     public class NodeMemberAttribute : Attribute
     {
+        
     }
 }
