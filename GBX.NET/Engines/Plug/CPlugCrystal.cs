@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Numerics;
-using System.Text;
 using System.Threading;
-using System.Xml.Schema;
 
 namespace GBX.NET.Engines.Plug
 {
@@ -29,7 +25,7 @@ namespace GBX.NET.Engines.Plug
             U11,
             U12,
             Deformation,
-            U14,
+            Cubes,
             Trigger,
             SpawnPosition
         }
@@ -300,6 +296,10 @@ namespace GBX.NET.Engines.Plug
                                 u15, u16, numUVs, numEdges, numVerts, empty, u17, counter
                             }
                         };
+                    }
+                    else if (type == ELayerType.Cubes)
+                    {
+                        throw new NotSupportedException("Cubes layer is not currently supported.");
                     }
                     else
                     {
