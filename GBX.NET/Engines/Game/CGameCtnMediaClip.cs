@@ -25,9 +25,15 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public List<CGameCtnMediaTrack> Tracks { get; set; }
 
+        /// <summary>
+        /// Stop the clip when player respawns.
+        /// </summary>
         [NodeMember]
         public bool StopWhenRespawn { get; set; }
 
+        /// <summary>
+        /// Stop the clip when player leaves the trigger.
+        /// </summary>
         [NodeMember]
         public bool StopWhenLeave { get; set; }
 
@@ -54,10 +60,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                n.Tracks = rw.Array(n.Tracks?.ToArray(),
-                    (i, r) => r.ReadNodeRef<CGameCtnMediaTrack>(),
-                    (x, w) => w.Write(x))?.ToList();
-
+                n.Tracks = rw.ListNode(n.Tracks);
                 n.Name = rw.String(n.Name);
                 rw.Int32(Unknown);
             }
@@ -75,9 +78,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                n.Tracks = rw.Array(n.Tracks?.ToArray(),
-                    (i, r) => r.ReadNodeRef<CGameCtnMediaTrack>(),
-                    (x, w) => w.Write(x))?.ToList();
+                n.Tracks = rw.ListNode(n.Tracks);
                 n.Name = rw.String(n.Name);
             }
         }
@@ -107,9 +108,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                n.Tracks = rw.Array(n.Tracks?.ToArray(),
-                    (i, r) => r.ReadNodeRef<CGameCtnMediaTrack>(),
-                    (x, w) => w.Write(x))?.ToList();
+                n.Tracks = rw.List(n.Tracks);
 
                 n.Name = rw.String(n.Name);
             }
@@ -219,9 +218,7 @@ namespace GBX.NET.Engines.Game
                 U01 = rw.Int32(U01);
                 Version = rw.Int32(Version);
 
-                n.Tracks = rw.Array(n.Tracks?.ToArray(),
-                    (i, r) => r.ReadNodeRef<CGameCtnMediaTrack>(),
-                    (x, w) => w.Write(x))?.ToList();
+                n.Tracks = rw.ListNode(n.Tracks);
 
                 n.Name = rw.String(n.Name);
 
