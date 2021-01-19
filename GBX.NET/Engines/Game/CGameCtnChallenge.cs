@@ -3158,10 +3158,8 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03043049, "mediatracker")]
         public class Chunk03043049 : Chunk<CGameCtnChallenge>
         {
-            private int version;
-            private int u01 = 3;
-            private int u02 = 1;
-            private int u03 = 3;
+            private int version = 2;
+            private Int3 triggerSize = (3, 1, 3);
 
             /// <summary>
             /// Version of the chunk.
@@ -3172,22 +3170,13 @@ namespace GBX.NET.Engines.Game
                 set => version = value;
             }
 
-            public int U01
+            /// <summary>
+            /// Trigger size per coord.
+            /// </summary>
+            public Int3 TriggerSize
             {
-                get => u01;
-                set => u01 = value;
-            }
-
-            public int U02
-            {
-                get => u02;
-                set => u02 = value;
-            }
-
-            public int U03
-            {
-                get => u03;
-                set => u03 = value;
+                get => triggerSize;
+                set => triggerSize = value;
             }
 
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
@@ -3201,10 +3190,7 @@ namespace GBX.NET.Engines.Game
                 if (version >= 2)
                 {
                     rw.NodeRef<CGameCtnMediaClip>(ref n.clipAmbiance);
-
-                    rw.Int32(ref u01);
-                    rw.Int32(ref u02);
-                    rw.Int32(ref u03);
+                    rw.Int3(ref triggerSize);
                 }
             }
         }
