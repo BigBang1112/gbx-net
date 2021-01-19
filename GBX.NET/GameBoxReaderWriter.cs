@@ -915,17 +915,12 @@ namespace GBX.NET
 
         public void EnumByte<T>(ref T variable) where T : struct, Enum
         {
-            variable = (T)(object)Byte((byte)(object)variable);
+            variable = (T)(object)Convert.ToInt32(Byte((byte)Convert.ToInt32(variable)));
         }
 
         public void EnumInt32<T>(ref T variable) where T : struct, Enum
         {
             variable = (T)(object)Int32((int)(object)variable);
-        }
-
-        public void EnumByte<T>(ref T? variable) where T : struct, Enum
-        {
-            variable = (T)(object)Byte((variable as object as byte?).GetValueOrDefault());
         }
 
         public void EnumInt32<T>(ref T? variable) where T : struct, Enum

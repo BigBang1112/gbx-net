@@ -32,7 +32,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// The map's intended use.
         /// </summary>
-        public enum MapKind : int
+        public enum MapKind
         {
             EndMarker,
             Campaign,
@@ -67,7 +67,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [Flags]
-        public enum EditorMode : int
+        public enum EditorMode
         {
             Advanced,
             Simple,
