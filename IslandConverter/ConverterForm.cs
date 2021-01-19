@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using YamlDotNet.Serialization;
@@ -368,23 +369,13 @@ namespace IslandConverter
                 {
                     Enabled = true;
 
-                    Invoke(new Action(() =>
-                    {
-                        foreach (var map in maps)
-                        {
-                            var mapUid = map.MainNode.MapUid;
-                            Maps.Remove(mapUid);
-                            foreach(ListViewItem item in lvMaps.Items)
-                            {
-                                if(item.Name == mapUid)
-                                {
-                                    lvMaps.Items.Remove(item);
-                                    break;
-                                }
-                            }
-                        }
-                        UpdateSelectedMap();
-                    }));
+                    foreach (var map in maps)
+                        lvMaps.Items.RemoveByKey(map.MainNode.MapUid);
+
+                    var mapUids = maps.Select(y => y.MainNode.MapUid);
+                    Maps = Maps.Where(y => !mapUids.Contains(y.Key)).ToDictionary(y => y.Key, y => y.Value);
+
+                    UpdateSelectedMap();
 
                     Process.Start("explorer.exe", Environment.CurrentDirectory + "\\output\\");
                 }));
@@ -448,9 +439,11 @@ namespace IslandConverter
 
         private void AddAMapToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Challenge GBX (*.Challenge.Gbx)|*.Gbx|Any GBX (*.Gbx)|*.Gbx|All files (*.*)|*.*";
-            ofd.Multiselect = true;
+            OpenFileDialog ofd = new OpenFileDialog
+            {
+                Filter = "Challenge GBX (*.Challenge.Gbx)|*.Challenge.Gbx|Any GBX (*.Gbx)|*.Gbx|All files (*.*)|*.*",
+                Multiselect = true
+            };
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
