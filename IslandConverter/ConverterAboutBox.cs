@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
@@ -20,6 +21,12 @@ namespace IslandConverter
             var version = assembly.GetName().Version;
 
             lProgramName.Text = "Island Converter " + version;
+
+            var refAssemblies = assembly.GetReferencedAssemblies();
+            var gbxnetAssembly = refAssemblies.First(x => x.Name == "GBX.NET");
+            var gbxnetVersion = gbxnetAssembly.Version;
+
+            lGBXNETversion.Text = "GBX.NET " + gbxnetVersion;
         }
 
         public void OpenWeb(string url)
