@@ -266,7 +266,7 @@ namespace IslandConverter
                         Console.WriteLine($" - Silver: {map.ChallengeParameters.SilverTime}");
                         Console.WriteLine($" - Bronze: {map.ChallengeParameters.BronzeTime}");
 
-                        Console.WriteLine($"- Map type: {gbx.MainNode.Type}");
+                        Console.WriteLine($"- Map type: {gbx.MainNode.Mode}");
 
                         Console.Write($"- Block range: ");
 
