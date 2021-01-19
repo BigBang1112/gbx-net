@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using YamlDotNet.Serialization;
@@ -18,6 +19,8 @@ namespace IslandConverter
         public List<string> MapsLoading { get; set; }
 
         Random random = new Random();
+        StringBuilder logBuilder = new StringBuilder();
+        Timer logTimer = new Timer();
 
         public ConverterForm()
         {
@@ -36,6 +39,25 @@ namespace IslandConverter
             addAMapToolStripMenuItem.Click += AddAMapToolStripMenuItem_Click;
             toolStripMenuItem2.Click += AboutToolStripMenuItem_Click;
             tsmiChangeManiaPlanetUserdataLocation.Click += TsmiChangeManiaPlanetUserdataLocation_Click;
+
+            logTimer.Interval = 50;
+            logTimer.Tick += LogTimer_Tick;
+            logTimer.Start();
+        }
+
+        private static object lockObject = new object();
+        private void LogTimer_Tick(object sender, EventArgs e)
+        {
+            lock (lockObject)
+            {
+                if (logBuilder.Length > 0)
+                {
+                    lbLog.Items.AddRange(logBuilder.ToString().Split('\n'));
+                    lbLog.SelectedIndex = lbLog.Items.Count - 1;
+
+                    logBuilder.Clear();
+                }
+            }
         }
 
         private void TsmiChangeManiaPlanetUserdataLocation_Click(object sender, EventArgs e)
@@ -50,11 +72,10 @@ namespace IslandConverter
 
         private void Log_OnLogEvent(string text, ConsoleColor color)
         {
-            Invoke(new Action(() =>
+            lock (lockObject)
             {
-                lbLog.Items.Add(text);
-                lbLog.SelectedIndex = lbLog.Items.Count - 1;
-            }));
+                logBuilder.AppendLine(text);
+            }
         }
 
         private void ShowHideMapPreviewToolStripMenuItem_Click(object sender, EventArgs e)
@@ -74,34 +95,43 @@ namespace IslandConverter
 
         void LoadMaps(params string[] fileNames)
         {
+            var items = new Dictionary<string, ListViewItem>();
+
             foreach (string f in fileNames)
             {
-                var item = lvMaps.Items.Add(Path.GetFileName(f), "Loading");
+                items[f] = lvMaps.Items.Add(Path.GetFileName(f), "Loading");
+            }
 
-                MapsLoading.Add(f);
-                bConvertAll.Enabled = false;
-                bConvertSelected.Enabled = false;
+            bConvertAll.Enabled = false;
+            bConvertSelected.Enabled = false;
 
-                Task.Run(() =>
+            Task.Run(() =>
+            {
+                foreach (string f in fileNames)
                 {
+                    MapsLoading.Add(f);
+
+                    var containsMap = false;
                     try
                     {
                         var gbx = IslandConverter.LoadGBX(f, out TimeSpan? completionTime);
 
                         if (gbx != null)
                         {
-                            var containsMap = true;
+                            containsMap = false;
+
+                            var map = gbx.MainNode;
+                            var mapUid = map.MapUid;
+
+                            if (Maps.ContainsKey(mapUid))
+                                containsMap = true;
+
+                            if (!Maps.ContainsKey(mapUid))
+                                Maps.Add(mapUid, gbx);
 
                             Invoke(new Action(() =>
                             {
-                                var map = gbx.MainNode;
-                                var mapUid = map.MapUid;
-
-                                if (Maps.ContainsKey(mapUid))
-                                    containsMap = false;
-
-                                if(!Maps.ContainsKey(mapUid))
-                                    Maps.Add(mapUid, gbx);
+                                ListViewItem item = items[f];
 
                                 item.Name = mapUid;
 
@@ -115,10 +145,8 @@ namespace IslandConverter
 
                                 item.Text = Formatter.Deformat(map.MapName);
                             }));
-
-                            return containsMap;
                         }
-                        else return false;
+                        else containsMap = true;
                     }
                     catch (Exception e)
                     {
@@ -126,22 +154,24 @@ namespace IslandConverter
                         MessageBox.Show(e.ToString(), "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                    return false;
-                }).ContinueWith(successful =>
-                {
                     Invoke(new Action(() =>
                     {
-                        MapsLoading.RemoveAll(x => x == f);
+                        ListViewItem item = items[f];
 
                         UpdateSelectedMap();
-                        if (!successful.Result)
+                        if (containsMap)
                             item.Remove();
-
-                        if (MapsLoading.Count == 0 && Maps.Count > 0)
-                            bConvertAll.Enabled = true;
                     }));
-                });
-            }
+
+                    MapsLoading.RemoveAll(x => x == f);
+                }
+
+                Invoke(new Action(() =>
+                {
+                    if (MapsLoading.Count == 0 && Maps.Count > 0)
+                        bConvertAll.Enabled = true;
+                }));
+            });
         }
 
         private void LvMaps_DragDrop(object sender, DragEventArgs e)
@@ -263,7 +293,7 @@ namespace IslandConverter
                         lGoldM.Text = "Gold: " + (map.ChallengeParameters.GoldTime.HasValue ? map.ChallengeParameters.GoldTime.Value.ToString("m':'ss':'fff") : "None");
                         lSilverM.Text = "Silver: " + (map.ChallengeParameters.SilverTime.HasValue ? map.ChallengeParameters.SilverTime.Value.ToString("m':'ss':'fff") : "None");
                         lBronzeM.Text = "Bronze: " + (map.ChallengeParameters.BronzeTime.HasValue ? map.ChallengeParameters.BronzeTime.Value.ToString("m':'ss':'fff") : "None");
-                        lMapType.Text = "Map type: " + gbx.MainNode.Type.ToString();
+                        lMapType.Text = "Map type: " + gbx.MainNode.Mode.ToString();
 
                         blockRange = IslandConverter.DefineMapRange(map.Blocks.ToArray(), out minCoord);
 
