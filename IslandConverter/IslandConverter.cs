@@ -100,11 +100,11 @@ namespace IslandConverter
 
             var blocks = new List<CGameCtnBlock>();
 
-            for (byte x = 0; x < mapSize.X; x++)
+            for (int x = 0; x < mapSize.X; x++)
             {
-                for (byte z = 0; z < mapSize.Z; z++)
+                for (int z = 0; z < mapSize.Z; z++)
                 {
-                    if (x == 0 || z == 0 || x == mapSize.X || z == mapSize.Z)
+                    if (x == 0 || z == 0 || x == mapSize.X-1 || z == mapSize.Z-1)
                     {
                         var flag = 135168;
                         var dir = Direction.North;
@@ -118,7 +118,7 @@ namespace IslandConverter
                         {
                             flag = 135177;
                         }
-                        else if (x == mapSize.X && z == 0)
+                        else if (x == mapSize.X - 1 && z == 0)
                         {
                             flag = 135177;
                             dir = Direction.South;
@@ -334,9 +334,9 @@ namespace IslandConverter
 
             Int3 offset = new Int3(32, 32, 32) - mapRange;
             offset = new Int3(
-                Convert.ToInt32(offset.X / 2f) - 1,
+                Convert.ToInt32(offset.X / 2f) - 2,
                 0,
-                Convert.ToInt32(offset.Z / 2f) - 1);
+                Convert.ToInt32(offset.Z / 2f) - 2);
 
             switch (size)
             {
