@@ -169,10 +169,11 @@ namespace GBX.NET
                 }
                 else
                 {
-                    if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
-                        Log.Write($"[{node.ClassName}] 0x{chunkID:X8} ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})");
+                    var logChunk = $"[{node.ClassName}] 0x{chunkID:X8} ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})";
+                    if (node.Body?.GBX.ClassID.HasValue == true && Remap(node.Body.GBX.ClassID.Value) == node.ID)
+                        Log.Write(logChunk);
                     else
-                        Log.Write($"~ [{node.ClassName}] 0x{chunkID:X8} ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})");
+                        Log.Write($"~ {logChunk}");
                 }
 
                 Type chunkClass = null;
@@ -195,10 +196,11 @@ namespace GBX.NET
                         {
                             node.FaultyChunk = chunkID;
 
-                            if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
-                                Log.Write($"[{node.ClassName}] 0x{chunkID:X8} ERROR (wrong chunk format or unknown unskippable chunk)", ConsoleColor.Red);
+                            var logChunkError = $"[{node.ClassName}] 0x{chunkID:X8} ERROR (wrong chunk format or unknown unskippable chunk)";
+                            if (node.Body?.GBX.ClassID.HasValue == true && Remap(node.Body.GBX.ClassID.Value) == node.ID)
+                                Log.Write(logChunkError, ConsoleColor.Red);
                             else
-                                Log.Write($"~ [{node.ClassName}] 0x{chunkID:X8} ERROR (wrong chunk format or unknown unskippable chunk)", ConsoleColor.Red);
+                                Log.Write($"~ {logChunkError}", ConsoleColor.Red);
 
                             throw new Exception($"Wrong chunk format or unskippable chunk: 0x{chunkID:X8} (" +
                                 $"{Names.Where(x => x.Key == Chunk.Remap(chunkID & 0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})" +
@@ -334,10 +336,11 @@ namespace GBX.NET
 
             stopwatch.Stop();
 
-            if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
-                Log.Write($"[{node.ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)", ConsoleColor.Green);
+            var logNodeCompletion = $"[{node.ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)";
+            if (node.Body?.GBX.ClassID.HasValue == true && Remap(node.Body.GBX.ClassID.Value) == node.ID)
+                Log.Write(logNodeCompletion, ConsoleColor.Green);
             else
-                Log.Write($"~ [{node.ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)", ConsoleColor.Green);
+                Log.Write($"~ {logNodeCompletion}", ConsoleColor.Green);
 
             return node;
         }
@@ -363,7 +366,7 @@ namespace GBX.NET
                 counter++;
 
                 var logChunk = $"[{ClassName}] 0x{chunk.ID:X8} ({(float)counter / Chunks.Count:0.00%})";
-                if (Body == null || !Body.GBX.ClassID.HasValue || Remap(Body.GBX.ClassID.Value) != ID)
+                if (Body?.GBX.ClassID.HasValue == true && Remap(Body.GBX.ClassID.Value) == ID)
                     Log.Write(logChunk);
                 else
                     Log.Write($"~ {logChunk}");
@@ -434,9 +437,10 @@ namespace GBX.NET
             stopwatch.Stop();
 
             var logNodeCompletion = $"[{ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)";
-            if (Body == null || !Body.GBX.ClassID.HasValue || Remap(Body.GBX.ClassID.Value) != ID)
-                logNodeCompletion = $"~ {logNodeCompletion}";
-            Log.Write(logNodeCompletion, ConsoleColor.Green);
+            if (Body?.GBX.ClassID.HasValue == true && Remap(Body.GBX.ClassID.Value) == ID)
+                Log.Write(logNodeCompletion, ConsoleColor.Green);
+            else
+                Log.Write($"~ {logNodeCompletion}", ConsoleColor.Green);
         }
 
         static Node()
