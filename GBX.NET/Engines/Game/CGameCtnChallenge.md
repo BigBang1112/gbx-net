@@ -4,13 +4,13 @@ The class behind every single map made in Trackmania.
 
 ## Chunks
 
-- [0x001 (Virtual Skipper)](#0x001-virtual-skipper)
-- [0x002 (map info)](#0x002-map-info)
-- [0x003 (common)](#0x003-common)
-- [0x004 (version)](#0x004-version)
-- [0x005 (XML)](#0x005-xml)
-- [0x007 (thumbnail)](#0x007-thumbnail)
-- [0x008 (author)](#0x008-author)
+- [0x001 - header chunk (Virtual Skipper)](#0x001---header-chunk-virtual-skipper)
+- [0x002 - header chunk (map info)](#0x002---header-chunk-map-info)
+- [0x003 - header chunk (common)](#0x003---header-chunk-common)
+- [0x004 - header chunk (version)](#0x004---header-chunk-version)
+- [0x005 - header chunk (XML)](#0x005---header-chunk-xml)
+- [0x007 - header chunk (thumbnail)](#0x007---header-chunk-thumbnail)
+- [0x008 - header chunk (author)](#0x008---header-chunk-author)
 - [0x00D (vehicle)](#0x00D-vehicle)
 - [0x00F (TM1.0 block data)](#0x00F-tm1.0-block-data)
 - [0x011 (parameters)](#0x011-parameters)
@@ -57,7 +57,7 @@ The class behind every single map made in Trackmania.
 - 0x05A - skippable [TM2020]
 - [0x05F - skippable (free blocks) [TM2020]](#0x05F---skippable-free-blocks-tm2020)
 
-### 0x001 (Virtual Skipper)
+### 0x001 - header chunk (Virtual Skipper)
 
 ```cs
 void Read(GameBoxReader r)
@@ -157,7 +157,7 @@ void Read(GameBoxReader r)
 #### Enums
 
 ```cs
-public enum BoatName : byte
+enum BoatName : byte
 {
     Acc,
     Multi,
@@ -165,14 +165,14 @@ public enum BoatName : byte
     OffShore
 }
 
-public enum RaceMode : byte
+enum RaceMode : byte
 {
     FleetRace,
     MatchRace,
     TeamRace
 }
 
-public enum WindDirection : byte
+enum WindDirection : byte
 {
     North,
     NorthEast,
@@ -184,7 +184,7 @@ public enum WindDirection : byte
     NorthWest
 }
 
-public enum Weather : byte
+enum Weather : byte
 {
     Sunny,
     Cloudy,
@@ -192,7 +192,7 @@ public enum Weather : byte
     Stormy
 }
 
-public enum StartDelay : byte
+enum StartDelay : byte
 {
     Immediate,
     OneMin,
@@ -201,7 +201,7 @@ public enum StartDelay : byte
     EightMin
 }
 
-public enum AILevel : byte
+enum AILevel : byte
 {
     Easy,
     Intermediate,
@@ -224,7 +224,7 @@ public enum AILevel : byte
 | bool u08 | ~ | ~ | ~ | ~ | ~
 | string u09 | ~ | ~ | ~ | ~ | ~
 
-### 0x002 (map info)
+### 0x002 - header chunk (map info)
 
 ```cs
 void Read(GameBoxReader r)
@@ -306,7 +306,7 @@ void Read(GameBoxReader r)
 | int u04 | ~ | ~ | ~ | ~ | ~
 | int u05 | ~ | ~ | ~ | ~ | ~
 
-### 0x003 (common)
+### 0x003 - header chunk (common)
 
 ```cs
 void Read(GameBoxReader r)
@@ -369,7 +369,7 @@ void Read(GameBoxReader r)
 #### Enums
 
 ```cs
-public enum TrackKind : byte
+enum TrackKind : byte
 {
     EndMarker,
     Campaign,
@@ -394,7 +394,7 @@ public enum TrackKind : byte
 | byte[] u01 | ~ | ~ | ~ | ~ | ~
 | bool u02 | ~ | ~ | ~ | ~ | ~
 
-### 0x004 (version)
+### 0x004 - header chunk (version)
 
 ```cs
 void Read(GameBoxReader r)
@@ -403,7 +403,7 @@ void Read(GameBoxReader r)
 }
 ```
 
-### 0x005 (XML)
+### 0x005 - header chunk (XML)
 
 ```cs
 void Read(GameBoxReader r)
@@ -413,7 +413,7 @@ void Read(GameBoxReader r)
 
 ```
 
-### 0x007 (thumbnail)
+### 0x007 - header chunk (thumbnail)
 
 ```cs
 void Read(GameBoxReader r)
@@ -433,7 +433,7 @@ void Read(GameBoxReader r)
 }
 ```
 
-### 0x008 (author)
+### 0x008 - header chunk (author)
 
 ```cs
 void Read(GameBoxReader r)
@@ -488,7 +488,7 @@ void Read(GameBoxReader r)
 #### Enums
 
 ```cs
-public enum TrackKind : int
+enum TrackKind : int
 {
     EndMarker,
     Campaign,
@@ -589,7 +589,7 @@ void Read(GameBoxReader r)
 #### Enums
 
 ```cs
-public enum PlayMode : int
+enum PlayMode : int
 {
     Race,
     Platform,
@@ -649,7 +649,7 @@ void Read(GameBoxReader r)
 #### Enums
 
 ```cs
-public enum Direction : byte
+enum Direction : byte
 {
     North,
     East,
@@ -1113,7 +1113,7 @@ void Read(GameBoxReader r)
 #### Enums
 
 ```cs
-public enum ScriptType
+enum ScriptType
 {
     Void,
     Boolean,
