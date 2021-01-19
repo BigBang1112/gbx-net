@@ -205,10 +205,10 @@ namespace IslandConverter
             map.ModPackDesc = new FileRef(3, Convert.FromBase64String("AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="), @"Skins\Stadium\Mod\IslandTM2U.zip", "");
 
             Bitmap thumbnail;
-            if (gbx.MainNode.Thumbnail == null)
+            if (map.Thumbnail == null)
                 thumbnail = new Bitmap(512, 512);
             else
-                thumbnail = new Bitmap(gbx.MainNode.Thumbnail.Result, 512, 512);
+                thumbnail = new Bitmap(map.Thumbnail.Result, 512, 512);
 
             using (var g = Graphics.FromImage(thumbnail))
             {
@@ -217,7 +217,7 @@ namespace IslandConverter
                     g.DrawImage(Resources.OverlayOpenplanet, 0, 0);
             }
 
-            gbx.MainNode.Thumbnail = Task.FromResult(thumbnail);
+            map.Thumbnail = Task.FromResult(thumbnail);
 
             map.GetChunk<CGameCtnChallenge.Chunk0304301F>().Version = 6;
 
@@ -417,8 +417,8 @@ namespace IslandConverter
                 gbx.RemoveBodyChunk<CGameCtnChallenge.Chunk03043021>();
             }
             else
-            { 
-                gbx.MainNode.TransferMediaTrackerTo049(6);
+            {
+                map.TransferMediaTrackerTo049(6);
 
                 var xzCameraOffset = new Vec3();
                 var xzTriggerOffset = new Int3();
@@ -435,22 +435,21 @@ namespace IslandConverter
                         xzTriggerOffset += (0, 1, 0);
                 }
 
-                gbx.MainNode.OffsetMediaTrackerTriggers(xzTriggerOffset);
+                map.OffsetMediaTrackerTriggers(xzTriggerOffset);
 
-                gbx.MainNode.OffsetMediaTrackerCameras(new Vec3(64, -6 - offsetHeight, 64) + xzCameraOffset);
+                map.OffsetMediaTrackerCameras(new Vec3(64, -6 - offsetHeight, 64) + xzCameraOffset);
             }
 
             var chunk003 = gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043003>();
             chunk003.Version = 6;
 
             gbx.CreateBodyChunk<CGameCtnChallenge.Chunk03043044>();
-            map = gbx.MainNode; // Due to current solution this must be presented
 
             map.ScriptMetadata.Declare("MapVehicle", carTranslations[beforeCar]);
 
-            if (gbx.MainNode.Type == CGameCtnChallenge.TrackType.Stunts)
+            if (map.Mode == CGameCtnChallenge.PlayMode.Stunts)
             {
-                gbx.MainNode.Type = CGameCtnChallenge.TrackType.Script;
+                map.Mode = CGameCtnChallenge.PlayMode.Script;
 
                 var challParams = map.ChallengeParameters;
 
@@ -485,11 +484,11 @@ namespace IslandConverter
             {
                 case MapSize.X32WithBigBorder:
                     Log.Write("Placing the background item...");
-                    gbx.MainNode.PlaceAnchoredObject(("Island\\8Terrain\\7BackGround\\Background.Item.gbx", 10003, "adamkooo"), new Vec3(), new Vec3(), new Vec3(1024, 9, 1024));
+                    map.PlaceAnchoredObject(("Island\\8Terrain\\7BackGround\\Background.Item.gbx", 10003, "adamkooo"), new Vec3(), new Vec3(), new Vec3(1024, 9, 1024));
                     break;
                 case MapSize.X45WithSmallBorder:
                     Log.Write("Placing the background item...");
-                    gbx.MainNode.PlaceAnchoredObject(("Island\\8Terrain\\6BigBackground\\Background_45x45.Item.gbx", 10003, "adamkooo"), new Vec3(), new Vec3(), new Vec3(1504, 17, 1504));
+                    map.PlaceAnchoredObject(("Island\\8Terrain\\6BigBackground\\Background_45x45.Item.gbx", 10003, "adamkooo"), new Vec3(), new Vec3(), new Vec3(1504, 17, 1504));
                     break;
                 default:
                     Log.Write($"Island background is not supported for {size}.", ConsoleColor.Yellow);
@@ -638,7 +637,7 @@ namespace IslandConverter
                                             throw new FormatException($"Wrong format of OffsetPitchYawRoll: {block.Name} -> index {block.Variant} -> [{string.Join(", ", conv.OffsetPitchYawRoll)}]");
                                     }
 
-                                    gbx.MainNode.PlaceAnchoredObject(meta, offsetAbsolutePosition, offsetPitchYawRoll, offsetPivot);
+                                    map.PlaceAnchoredObject(meta, offsetAbsolutePosition, offsetPitchYawRoll, offsetPivot);
 
                                     Vec3 skinPosOffset = default;
                                     if (conv.SkinPositionOffset != null)
@@ -650,7 +649,7 @@ namespace IslandConverter
                                         if (skinInfo.TryGetValue(conv.SkinSignSet, out Dictionary<string, string> skinDic))
                                         {
                                             if (skinDic.TryGetValue(block.Skin.PackDesc.FilePath, out string itemFile))
-                                                gbx.MainNode.PlaceAnchoredObject(new Ident("Island\\" + itemFile, "10003", "adamkooo"),
+                                                map.PlaceAnchoredObject(new Ident("Island\\" + itemFile, "10003", "adamkooo"),
                                                     offsetAbsolutePosition + skinPosOffset,
                                                     offsetPitchYawRoll + new Vec3(-conv.SkinDirectionOffset % 4 * 90f / 180 * (float)Math.PI, 0, 0), offsetPivot);
                                             else
