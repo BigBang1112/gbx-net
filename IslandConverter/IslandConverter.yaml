@@ -262,7 +262,7 @@ IslandHighWaySupportPillar:
     OffsetDirection: 1
   Ground:
     ItemModel:
-    - 7Road\8Slopes\2RoadHighJump\_Pillar\RoadHighJumpPillarBase.Item.gbx
+    - 7Road\8Slopes\2RoadHighJump\_Pillar\RoadHighJumpPillarBaseSmall.Item.gbx
     OffsetAbsolutePosition: [0, -8, 0]
     OffsetDirection: 1
     OffsetYFromTerrain: 1
@@ -1234,16 +1234,6 @@ IslandSeaSignsAdvert:
   OffsetDirection: 2
   SkinSignSet: Advert
 
-IslandSignsAdvertSupport:
-- Ground:
-    ItemModel:
-    - 2Deco\5Signs\Main\9SignMainGround.Item.gbx
-    OffsetAbsolutePosition: [0, -8, 0]
-    OffsetDirection: 2
-    OffsetYFromTerrain: 1
-    SkinPositionOffset: [0, 4, 0]
-    SkinSignSet: Advert
-
 IslandClubMarina:
 - Ground:
     ItemModel:
@@ -2000,17 +1990,6 @@ IslandSpaceAntenne1:
     ItemModel:
     - 2Deco\3Space\5SatelliteB\SatelliteB.Item.gbx
     OffsetAbsolutePosition: [0, -8, 0]
-    OffsetYFromTerrain: 1
-
-IslandSpaceLaunch3:
-- Ground:
-    ItemModels:
-    - ItemModel:
-      - 2Deco\3Space\8RocketB\RocketBBase.Item.gbx
-      OffsetAbsolutePosition: [0, -8, 0]
-    - ItemModel:
-      - 2Deco\3Space\8RocketB\RocketBTop.Item.gbx
-      OffsetAbsolutePosition: [0, 8, 0]
     OffsetYFromTerrain: 1
 
 IslandHighWayHoleCenter:
