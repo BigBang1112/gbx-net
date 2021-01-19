@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Numerics;
@@ -11,6 +12,7 @@ namespace GBX.NET
     public class GameBoxWriter : BinaryWriter
     {
         public ILookbackable Lookbackable { get; }
+        public Chunk Chunk { get; internal set; }
 
         public GameBoxWriter(Stream output) : base(output, Encoding.UTF8, true)
         {
@@ -20,6 +22,12 @@ namespace GBX.NET
         public GameBoxWriter(Stream input, ILookbackable lookbackable) : this(input)
         {
             Lookbackable = lookbackable;
+        }
+
+        public GameBoxWriter(Stream input, GameBoxWriter reference) : this(input)
+        {
+            Lookbackable = reference.Lookbackable;
+            Chunk = reference.Chunk;
         }
 
         public void Write(string value, StringLengthPrefix lengthPrefix)
@@ -280,6 +288,41 @@ namespace GBX.NET
         public void WriteBytes(byte[] bytes)
         {
             Write(bytes, 0, bytes.Length);
+        }
+
+        /// <summary>
+        /// Writes the node array that are presented directly and not as a node reference.
+        /// </summary>
+        /// <typeparam name="T">Type of the node.</typeparam>
+        /// <param name="nodes">Node array.</param>
+        public void WriteNodes<T>(IEnumerable<T> nodes) where T : Node
+        {
+            var watch = Stopwatch.StartNew();
+
+            var count = nodes.Count();
+
+            var nodeType = typeof(T);
+
+            Write(count);
+
+            var counter = 0;
+
+            foreach (var node in nodes)
+            {
+                Write(node.ID);
+                node.Write(this);
+
+                string logProgress = $"[{nodeType.FullName.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::")}] {counter + 1}/{count} ({watch.Elapsed.TotalMilliseconds}ms)";
+                if (Chunk.Part == null || !Chunk.Part.GBX.ClassID.HasValue || Node.Remap(Chunk.Part.GBX.ClassID.Value) != node.ID)
+                    logProgress = "~ " + logProgress;
+
+                Log.Write(logProgress, ConsoleColor.Magenta);
+
+                if (counter != count - 1)
+                    Log.Push(node.Chunks.Count + 2);
+
+                counter += 1;
+            }
         }
     }
 }

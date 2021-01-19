@@ -362,10 +362,11 @@ namespace GBX.NET
             {
                 counter++;
 
-                if (Body != null && Body.GBX.ClassID.HasValue && Remap(Body.GBX.ClassID.Value) == ID)
-                    Log.Write($"[{ClassName}] 0x{chunk.ID:X8} ({(float)counter / Chunks.Count:0.00%})");
+                var logChunk = $"[{ClassName}] 0x{chunk.ID:X8} ({(float)counter / Chunks.Count:0.00%})";
+                if (Body == null || !Body.GBX.ClassID.HasValue || Remap(Body.GBX.ClassID.Value) != ID)
+                    Log.Write(logChunk);
                 else
-                    Log.Write($"~ [{ClassName}] 0x{chunk.ID:X8} ({(float)counter / Chunks.Count:0.00%})");
+                    Log.Write($"~ {logChunk}");
 
                 ((IChunk)chunk).Node = this;
                 chunk.Unknown.Position = 0;
@@ -392,6 +393,8 @@ namespace GBX.NET
                 using (var msW = new GameBoxWriter(ms, lb))
                 {
                     var rw = new GameBoxReaderWriter(msW);
+
+                    msW.Chunk = chunk;
 
                     try
                     {
@@ -421,6 +424,8 @@ namespace GBX.NET
                         }
                         else throw e; // Unskippable chunk must have a Write implementation
                     }
+
+                    msW.Chunk = null;
                 }
             }
 
@@ -428,10 +433,10 @@ namespace GBX.NET
 
             stopwatch.Stop();
 
-            if (Body != null && Body.GBX.ClassID.HasValue && Remap(Body.GBX.ClassID.Value) == ID)
-                Log.Write($"[{ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)", ConsoleColor.Green);
-            else
-                Log.Write($"~ [{ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)", ConsoleColor.Green);
+            var logNodeCompletion = $"[{ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)";
+            if (Body == null || !Body.GBX.ClassID.HasValue || Remap(Body.GBX.ClassID.Value) != ID)
+                logNodeCompletion = $"~ {logNodeCompletion}";
+            Log.Write(logNodeCompletion, ConsoleColor.Green);
         }
 
         static Node()
