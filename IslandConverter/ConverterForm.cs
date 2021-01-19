@@ -449,7 +449,7 @@ namespace IslandConverter
         private void AddAMapToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "GBX (*.Gbx)|*.Gbx|All files (*.*)|*.*";
+            ofd.Filter = "Challenge GBX (*.Challenge.Gbx)|*.Gbx|Any GBX (*.Gbx)|*.Gbx|All files (*.*)|*.*";
             ofd.Multiselect = true;
 
             if (ofd.ShowDialog() == DialogResult.OK)
