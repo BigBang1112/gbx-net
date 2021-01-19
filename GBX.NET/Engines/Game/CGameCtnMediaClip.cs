@@ -108,7 +108,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                n.Tracks = rw.List(n.Tracks);
+                n.Tracks = rw.ListNode<CGameCtnMediaTrack>(n.Tracks);
 
                 n.Name = rw.String(n.Name);
             }
@@ -218,7 +218,7 @@ namespace GBX.NET.Engines.Game
                 U01 = rw.Int32(U01);
                 Version = rw.Int32(Version);
 
-                n.Tracks = rw.ListNode(n.Tracks);
+                n.Tracks = rw.ListNode<CGameCtnMediaTrack>(n.Tracks);
 
                 n.Name = rw.String(n.Name);
 
