@@ -2966,16 +2966,10 @@ namespace GBX.NET.Engines.Game
                     w.Write(u01);
 
                     using (var itemMs = new MemoryStream())
-                    using (var wr = new GameBoxWriter(itemMs, w.Lookbackable))
+                    using (var wr = new GameBoxWriter(itemMs, w))
                     {
                         wr.Write(u02);
-                        wr.Write(n.anchoredObjects.Count);
-
-                        foreach (var item in n.anchoredObjects)
-                        {
-                            wr.Write(item.ID);
-                            item.Write(wr);
-                        }
+                        wr.WriteNodes(n.anchoredObjects);
 
                         wr.Write(u03);
 
