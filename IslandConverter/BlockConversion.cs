@@ -20,5 +20,6 @@
         public string SkinSignSet { get; set; }
         public float[] CenterFromCoord { get; set; }
         public string[][] Clip { get; set; }
+        public bool KeepWater { get; set; }
     }
 }

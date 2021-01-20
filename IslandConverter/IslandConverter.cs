@@ -94,9 +94,21 @@ namespace IslandConverter
             return mapRange;
         }
 
-        internal static List<CGameCtnBlock> CreateWaterBlocks(Int3 mapSize, List<CGameCtnBlock> islandBlocks, int yOffset)
+        internal static List<CGameCtnBlock> CreateWaterBlocks(Int3 mapSize, List<CGameCtnBlock> islandBlocks, int yOffset, Dictionary<string, BlockConversion[]> conversionInfo, int xzOffset)
         {
-            var islandBlockDictionary = islandBlocks.Where(x => x.Name == "IslandGrass" || x.Name == "IslandHills6").ToDictionary(x => new Int3(x.Coord.X, 0, x.Coord.Z));
+            var islandBlockDictionary = islandBlocks.GroupBy(
+                x => new Int3(x.Coord.X, 0, x.Coord.Z))
+                .Where(x => x.Count(y =>
+                {
+                    if (conversionInfo.TryGetValue(y.Name, out BlockConversion[] c)
+                    && c.Length > y.Variant
+                    && c[y.Variant.Value] != null
+                    && c[y.Variant.Value].KeepWater)
+                        return false;
+                    else if (y.IsGround)
+                        return true;
+                    return false;
+                }) > 0).ToDictionary(x => x.Key, x => x.First());
 
             var blocks = new List<CGameCtnBlock>();
 
@@ -104,7 +116,7 @@ namespace IslandConverter
             {
                 for (int z = 0; z < mapSize.Z; z++)
                 {
-                    if (x == 0 || z == 0 || x == mapSize.X-1 || z == mapSize.Z-1)
+                    if (x == 0 || z == 0 || x == mapSize.X - 1 || z == mapSize.Z - 1)
                     {
                         var flag = 135168;
                         var dir = Direction.North;
@@ -150,7 +162,7 @@ namespace IslandConverter
 
                         blocks.Add(new CGameCtnBlock("StadiumPool2", dir, (x, yOffset, z), flag, null, null, null));
                     }
-                    else if (islandBlockDictionary.TryGetValue(new Int3(Convert.ToInt32(Math.Floor((x+1) / 2f) - 2), 0, Convert.ToInt32(Math.Floor((z+1) / 2f) - 2)), out CGameCtnBlock bl))
+                    else if (islandBlockDictionary.TryGetValue(new Int3(Convert.ToInt32(Math.Floor((x + xzOffset) / 2f) - 2), 0, Convert.ToInt32(Math.Floor((z + xzOffset) / 2f) - 2)), out CGameCtnBlock bl))
                     {
                         blocks.Add(new CGameCtnBlock("RemoveGrass.Block.Gbx_CustomBlock", Direction.North, (x, yOffset, z), 135168, null, null, null));
                     }
@@ -316,11 +328,6 @@ namespace IslandConverter
                 Convert.ToInt32(Math.Sin(radians) * (unit[0] - centerFromCoord.X) +
                 Math.Cos(radians) * (unit[2] - centerFromCoord.Z) + centerFromCoord.Z));
 
-                if (block.Name == "IslandHills6DecoRock" && block2.Name == "IslandHills6")
-                {
-
-                }
-
                 if (block.Coord + unit2 - new Int3(0, variantGround.OffsetYFromTerrain.GetValueOrDefault(), 0) == block2.Coord)
                 {
                     Log.Write($"Removing {block2.Name} away from {block.Name} to avoid Z-fighting.");
@@ -350,7 +357,7 @@ namespace IslandConverter
 
                     Log.Write("Adding the pool...");
 
-                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), blocks.ToList(), -1);
+                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), blocks.ToList(), -1, conversionInfo, 0);
 
                     map.Size = (
                         map.Size.GetValueOrDefault().X + 2,
@@ -373,14 +380,14 @@ namespace IslandConverter
 
                     Log.Write("Adding the pool...");
 
-                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), blocks.ToList(), -1);
+                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), blocks.ToList(), -1, conversionInfo, 0);
 
                     break;
                 case MapSize.X45WithSmallBorder:
                     Log.Write("Adding the pool...");
 
                     map.Size = (92, 255, 92);
-                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), map.Blocks, 0);
+                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), map.Blocks, 0, conversionInfo, 1);
 
                     map.Size = (
                         map.Size.GetValueOrDefault().X + 2,
@@ -429,8 +436,8 @@ namespace IslandConverter
                 }
                 else
                 {
-                    xzCameraOffset = new Vec3(offset.X * 64 - 128, offset.Y * 64, offset.Z * 64 - 192);
-                    xzTriggerOffset = (6 + offset.X * 6, -3, 6 + offset.X * 6);
+                    xzCameraOffset = new Vec3((offset.X - minCoord.X) * 64, 0, (offset.Z - minCoord.Z) * 64);
+                    xzTriggerOffset = new Int3((offset.X - minCoord.X + 1) * 6, -3, (offset.Z - minCoord.Z + 1) * 6);
                     if (size == MapSize.X31WithSmallBorder)
                         xzTriggerOffset += (0, 1, 0);
                 }
