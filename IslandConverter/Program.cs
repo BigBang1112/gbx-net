@@ -25,6 +25,12 @@ namespace IslandConverter
         [DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
         static extern bool FreeConsole();
 
+        [DllImport("kernel32.dll")]
+        static extern IntPtr GetConsoleWindow();
+
+        [DllImport("user32.dll")]
+        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
         [STAThread]
         static void Main(string[] args)
         {
@@ -47,7 +53,7 @@ namespace IslandConverter
 
                 Thread.Sleep(500);
 
-                FreeConsole();
+                ShowWindow(GetConsoleWindow(), 0);
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
@@ -57,7 +63,10 @@ namespace IslandConverter
             }
             else
             {
+                ShowWindow(GetConsoleWindow(), 5);
+
                 Log.OnLogEvent += LogConsoleMode;
+                Log.OnPushEvent += PushConsoleMode;
 
                 Console.Title = $"Island Converter {version}";
 
@@ -355,6 +364,18 @@ namespace IslandConverter
             Console.ForegroundColor = color;
             Console.WriteLine(text);
             Console.ResetColor();
+        }
+
+        private static void PushConsoleMode(int amount)
+        {
+            for (var i = 0; i < amount; i++)
+            {
+                int currentLineCursor = Console.CursorTop;
+                Console.SetCursorPosition(0, Console.CursorTop);
+                Console.Write(new string(' ', Console.WindowWidth));
+                Console.SetCursorPosition(0, currentLineCursor);
+                Console.CursorTop--;
+            }
         }
     }
 }
