@@ -5,7 +5,7 @@
 		<Description>A completely open source GBX file interaction library for .NET.</Description>
 		<Authors>BigBang1112</Authors>
 		<PackageLicenseExpression></PackageLicenseExpression>
-		<Version>0.8.0-rc</Version>
+		<Version>0.8.0-rc2</Version>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Copyright />
@@ -13,7 +13,7 @@
 		<PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk, x86</PackageTags>
 		<RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
-		<PackageReleaseNotes>CPlugCrystal update with ToOBJ, Added more chunks, ghost data fixes, renames, another parse method</PackageReleaseNotes>
+		<PackageReleaseNotes>Fix parse of CGameCtnMediaClip 0x005, added TriggerSize to CGameCtnChallenge 0x049</PackageReleaseNotes>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<PlatformTarget>x86</PlatformTarget>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
