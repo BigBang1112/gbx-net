@@ -359,6 +359,8 @@ namespace IslandConverter
 
                     map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), blvcks31.ToList(), -1, conversionInfo, 0);
 
+                    offsetHeight = 20;
+
                     map.Size = (
                         map.Size.GetValueOrDefault().X + 2,
                         map.Size.GetValueOrDefault().Y,
