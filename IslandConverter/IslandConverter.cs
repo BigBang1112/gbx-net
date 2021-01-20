@@ -164,11 +164,11 @@ namespace IslandConverter
                     }
                     else if (islandBlockDictionary.TryGetValue(new Int3(Convert.ToInt32(Math.Floor((x + xzOffset) / 2f) - 2), 0, Convert.ToInt32(Math.Floor((z + xzOffset) / 2f) - 2)), out CGameCtnBlock bl))
                     {
-                        blocks.Add(new CGameCtnBlock("RemoveGrass.Block.Gbx_CustomBlock", Direction.North, (x, yOffset, z), 135168, null, null, null));
+                        blocks.Add(new CGameCtnBlock("RemoveGrass.Block.Gbx_CustomBlock", Direction.North, (x, 0, z), 135168, null, null, null));
                     }
                     else
                     {
-                        blocks.Add(new CGameCtnBlock("StadiumWater2", Direction.North, (x, yOffset, z), 135168, null, null, null));
+                        blocks.Add(new CGameCtnBlock("StadiumWater", Direction.North, (x, yOffset+1, z), 135168, null, null, null));
                     }
 
                     blocks.Add(CGameCtnBlock.Unassigned1);
@@ -236,7 +236,6 @@ namespace IslandConverter
             if (size == MapSize.X32WithBigBorder)
             {
                 Log.Write("Importing chunk 0x03043043 for water on ground...");
-                var chunk = gbx.CreateBodyChunk<CGameCtnChallenge.Chunk03043043>(File.ReadAllBytes("0x03043043.dat"));
             }
 
             Log.Write("Cracking the map password if presented...");
