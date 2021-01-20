@@ -353,6 +353,7 @@ namespace IslandConverter
                     {
                         var map = gbx.MainNode;
 
+                        blockRange = IslandConverter.DefineMapRange(map.Blocks.ToArray(), out minCoord);
                         IslandConverter.ConvertToTM2Island(gbx, null, gbx.FileName, "output", size, blockRange, minCoord.GetValueOrDefault(), random, cutoff, ignoreMediaTracker);
                     }
                 }
