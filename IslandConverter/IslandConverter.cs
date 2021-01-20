@@ -351,12 +351,13 @@ namespace IslandConverter
 
                     map.Size = (62, 64, 62);
 
-                    foreach (var b in blocks)
+                    var blvcks31 = map.Blocks.ToArray();
+                    foreach (var b in blvcks31)
                         b.Coord += offset - minCoord.XZ;
 
                     Log.Write("Adding the pool...");
 
-                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), blocks.ToList(), -1, conversionInfo, 0);
+                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), blvcks31.ToList(), -1, conversionInfo, 0);
 
                     map.Size = (
                         map.Size.GetValueOrDefault().X + 2,
@@ -374,12 +375,13 @@ namespace IslandConverter
 
                     map.Size = (64, 64, 64);
 
-                    foreach (var b in blocks)
+                    var blvcks32 = map.Blocks.ToArray();
+                    foreach (var b in blvcks32)
                         b.Coord += offset - minCoord.XZ;
 
                     Log.Write("Adding the pool...");
 
-                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), blocks.ToList(), -1, conversionInfo, 0);
+                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), blvcks32.ToList(), -1, conversionInfo, 0);
 
                     break;
                 case MapSize.X45WithSmallBorder:
