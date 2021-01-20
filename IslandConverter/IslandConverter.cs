@@ -105,7 +105,7 @@ namespace IslandConverter
                     && c[y.Variant.Value] != null
                     && c[y.Variant.Value].KeepWater)
                         return false;
-                    else if (y.IsGround)
+                    else if (y.IsGround && !y.IsClip)
                         return true;
                     return false;
                 }) > 0).ToDictionary(x => x.Key, x => x.First());
