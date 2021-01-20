@@ -50,6 +50,8 @@ removemt - Will ignore the MediaTracker transfering and removes all MediaTracker
 
 noask - Program will not ask about converting the file. Standalone argument.
 
+out - Will specify the output folder
+
 You can also run the program in console wizard mode like this:
   IslandConverter.exe -console
 or
