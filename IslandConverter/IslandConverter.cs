@@ -168,7 +168,10 @@ namespace IslandConverter
                     }
                     else
                     {
-                        blocks.Add(new CGameCtnBlock("StadiumWater", Direction.North, (x, yOffset+1, z), 135168, null, null, null));
+                        if(yOffset == 0)
+                            blocks.Add(new CGameCtnBlock("StadiumWater2", Direction.North, (x, 0, z), 135168, null, null, null));
+                        else
+                            blocks.Add(new CGameCtnBlock("StadiumWater", Direction.North, (x, 1, z), 135168, null, null, null));
                     }
 
                     blocks.Add(CGameCtnBlock.Unassigned1);
