@@ -455,13 +455,11 @@ namespace IslandConverter
 
             map.ScriptMetadata.Declare("MapVehicle", carTranslations[beforeCar]);
 
+            var challParams = map.ChallengeParameters;
+            challParams.CreateChunk<CGameCtnChallengeParameters.Chunk0305B00E>();
+
             if (map.Mode == CGameCtnChallenge.PlayMode.Stunts)
             {
-                map.Mode = CGameCtnChallenge.PlayMode.Script;
-
-                var challParams = map.ChallengeParameters;
-
-                var chunk00E = challParams.CreateChunk<CGameCtnChallengeParameters.Chunk0305B00E>();
                 challParams.MapType = "Stunts";
 
                 var authorScore = challParams.AuthorScore;
@@ -482,7 +480,12 @@ namespace IslandConverter
                 map.ScriptMetadata.Declare("GameMode", "Stunts");
             }
             else
+            {
+                challParams.MapType = "Race";
                 map.ScriptMetadata.Declare("GameMode", "Race");
+            }
+
+            map.Mode = CGameCtnChallenge.PlayMode.Script;
 
             map.ScriptMetadata.Declare("MadeByConverter", true);
             map.ScriptMetadata.Declare("RequiresOpenPlanet", size == MapSize.X45WithSmallBorder);
