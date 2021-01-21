@@ -689,7 +689,7 @@ namespace GBX.NET
                 Debug.WriteLine("GetGameBoxType: " + modernID.ToString("x8"));
 
                 var availableClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
-                        && x.Namespace.StartsWith("GBX.NET.Engines") && GetBaseType(x) == typeof(Node)
+                        && x.Namespace?.StartsWith("GBX.NET.Engines") == true && GetBaseType(x) == typeof(Node)
                         && x.GetCustomAttribute<NodeAttribute>().ID == modernID).FirstOrDefault();
 
                 if (availableClass == null) return null;
