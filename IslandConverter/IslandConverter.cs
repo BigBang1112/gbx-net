@@ -236,11 +236,6 @@ namespace IslandConverter
 
             map.GetChunk<CGameCtnChallenge.Chunk0304301F>().Version = 6;
 
-            if (size == MapSize.X32WithBigBorder)
-            {
-                Log.Write("Importing chunk 0x03043043 for water on ground...");
-            }
-
             Log.Write("Cracking the map password if presented...");
             map.CrackPassword();
 
@@ -567,13 +562,7 @@ namespace IslandConverter
                             {
                                 if (conv.ItemModel.Length > 0 && !string.IsNullOrEmpty(conv.ItemModel[0]))
                                 {
-                                    var modelToChoose = 0;
-                                    if (conv.Clip != null)
-                                    {
-
-                                    }
-                                    else
-                                        modelToChoose = randomizer.Next(0, conv.ItemModel.Length);
+                                    var modelToChoose = randomizer.Next(0, conv.ItemModel.Length);
 
                                     var itemModel = conv.ItemModel[modelToChoose];
                                     var itemModelSplit = itemModel.Split(' ');
@@ -661,13 +650,19 @@ namespace IslandConverter
                                     {
                                         if (skinInfo.TryGetValue(conv.SkinSignSet, out Dictionary<string, string> skinDic))
                                         {
-                                            if (skinDic.TryGetValue(block.Skin.PackDesc.FilePath, out string itemFile))
+                                            if (skinDic.TryGetValue(block.Skin.PackDesc.FilePath, out string itemFile)
+                                                || (block.Skin.PackDesc.Version < 2 && skinDic.TryGetValue("Skins\\" + block.Skin.PackDesc.FilePath, out itemFile)))
+                                            {
                                                 map.PlaceAnchoredObject(new Ident("Island\\" + itemFile, "10003", "adamkooo"),
                                                     offsetAbsolutePosition + skinPosOffset,
                                                     offsetPitchYawRoll + new Vec3(-conv.SkinDirectionOffset % 4 * 90f / 180 * (float)Math.PI, 0, 0), offsetPivot);
+                                            }
                                             else
                                             {
-                                                Log.Write($"Could not find item alternative for {block.Skin.PackDesc.FilePath}. Default sign will be used instead.", ConsoleColor.DarkYellow);
+                                                if (!string.IsNullOrEmpty(itemFile))
+                                                {
+                                                    Log.Write($"Could not find item alternative for {block.Skin.PackDesc.FilePath}. Default sign will be used instead.", ConsoleColor.DarkYellow);
+                                                }
                                             }
                                         }
                                     }
