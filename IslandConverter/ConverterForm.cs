@@ -294,7 +294,7 @@ namespace IslandConverter
                         lGoldM.Text = "Gold: " + (map.ChallengeParameters.GoldTime.HasValue ? map.ChallengeParameters.GoldTime.Value.ToString("m':'ss':'fff") : "None");
                         lSilverM.Text = "Silver: " + (map.ChallengeParameters.SilverTime.HasValue ? map.ChallengeParameters.SilverTime.Value.ToString("m':'ss':'fff") : "None");
                         lBronzeM.Text = "Bronze: " + (map.ChallengeParameters.BronzeTime.HasValue ? map.ChallengeParameters.BronzeTime.Value.ToString("m':'ss':'fff") : "None");
-                        lMapType.Text = "Map type: " + gbx.MainNode.Mode.ToString();
+                        lMapType.Text = "Map type: " + map.Mode.ToString();
 
                         blockRange = IslandConverter.DefineMapRange(map.Blocks.ToArray(), out minCoord);
 
@@ -317,7 +317,8 @@ namespace IslandConverter
 
                         lBlockRange.Text = "Block range: " + blockRange;
 
-                        pbThumbnail.Image = gbx.MainNode.Thumbnail.Result;
+                        if(map.Thumbnail != null)
+                            pbThumbnail.Image = map.Thumbnail.Result;
                     }
                 }
             }
