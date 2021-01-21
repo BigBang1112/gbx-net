@@ -933,6 +933,15 @@ IslandSpaceLaunch1:
     ItemModel:
     - 2Deco\3Space\9RocketA\RocketATop.Item.gbx
     OffsetAbsolutePosition: [0, -8, 0]
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 2Deco\3Space\9RocketA\RocketABase.Item.gbx
+      OffsetYFromTerrain: 1
+      OffsetAbsolutePosition: [0, -8, 0]
+    - ItemModel:
+      - 2Deco\3Space\9RocketA\RocketATop.Item.gbx
+      OffsetAbsolutePosition: [0, 16, 0]
 
 IslandSpaceLaunch1Pillar:
 - Air:
@@ -1563,8 +1572,14 @@ IslandPlatformBasePillar:
   KeepWater: true
 
 IslandSeaWayStraightPillar:
-- ItemModel:
-  - 5RoadThin\9Basic\8RoadThinPillar\7PillarBlock.Item.gbx
+- Air:
+    ItemModel:
+    - 5RoadThin\9Basic\8RoadThinPillar\7PillarBlock.Item.gbx
+    OffsetAbsolutePosition: [0, -8, 0]
+  Ground:
+    ItemModel:
+    - 5RoadThin\9Basic\8RoadThinPillar\8PillarBase.Item.gbx
+    OffsetAbsolutePosition: [0, -16, 0]
   KeepWater: true
 
 IslandTunnelCircularExitRamp:
@@ -1658,6 +1673,10 @@ IslandSeaWayToCroisette:
 - Air:
     ItemModel:
     - 1Transitions\3Road2ToRoadThin\Air\Road2ToRoadThin.Item.gbx
+    OffsetAbsolutePosition: [0, -8, 0]
+  Ground:
+    ItemModel:
+    - 1Transitions\3Road2ToRoadThin\Coast\Road2GroundToRoadThin.Item.gbx
     OffsetAbsolutePosition: [0, -8, 0]
   KeepWater: true
 
@@ -1793,19 +1812,60 @@ IslandSeaWayBiSlopeStart:
     - ~
     - ~
     - OffsetAbsolutePosition: [0, 0, 64]
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 5RoadThin\8Slopes\6RoadThinUp2\RoadThinUp2.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+      OffsetDirection: 2
+      Directions:
+      - OffsetAbsolutePosition: [64, 0, 0]
+      - ~
+      - ~
+      - OffsetAbsolutePosition: [0, 0, 64]
+    - ItemModel:
+      - 5RoadThin\8Slopes\7RoadThinUpPillar\8RoadThinUp2PillarTop.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+      OffsetDirection: 2
+      Directions:
+      - OffsetAbsolutePosition: [64, 0, 0]
+      - ~
+      - ~
+      - OffsetAbsolutePosition: [0, 0, 64]
+    - ItemModel:
+      - 5RoadThin\9Basic\8RoadThinPillar\8PillarBase.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
+    - ItemModel:
+      - 5RoadThin\9Basic\8RoadThinPillar\8PillarBase.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
+      Directions:
+      - OffsetAbsolutePosition: [64, 0, 0]
+      - ~
+      - ~
+      - OffsetAbsolutePosition: [0, 0, 64]
   KeepWater: true
 
 IslandSeaWayBiSlopeEnd:
 - Air:
-    ItemModel:
-    - 5RoadThin\8Slopes\5RoadThinUp3\RoadThinUp3.Item.gbx
-    OffsetAbsolutePosition: [0, -8, 0]
-    OffsetDirection: 2
-    Directions:
-    - OffsetAbsolutePosition: [64, 0, 0]
-    - ~
-    - ~
-    - OffsetAbsolutePosition: [0, 0, 64]
+    ItemModels:
+    - ItemModel:
+      - 5RoadThin\8Slopes\5RoadThinUp3\RoadThinUp3.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+      OffsetDirection: 2
+      Directions:
+      - OffsetAbsolutePosition: [64, 0, 0]
+      - ~
+      - ~
+      - OffsetAbsolutePosition: [0, 0, 64]
+    - ItemModel:
+      - 5RoadThin\8Slopes\7RoadThinUpPillar\7RoadThinUp3PillarTop.Item.gbx
+      OffsetDirection: 2
+      OffsetAbsolutePosition: [0, -8, 0]
+      Directions:
+      - OffsetAbsolutePosition: [64, 0, 0]
+      - ~
+      - ~
+      - OffsetAbsolutePosition: [0, 0, 64]
   Ground:
     ItemModels:
     - ItemModel:
@@ -1818,9 +1878,38 @@ IslandSeaWayBiSlopeEnd:
       - ~
       - OffsetAbsolutePosition: [0, 0, 64]
     - ItemModel:
-      - 5RoadThin\8Slopes\7RoadThinUpPillar\6RoadThinUpCPillarTop.Item.gbx
+      - 5RoadThin\8Slopes\7RoadThinUpPillar\7RoadThinUp3PillarTop.Item.gbx
       OffsetDirection: 2
       OffsetAbsolutePosition: [0, -8, 0]
+      Directions:
+      - OffsetAbsolutePosition: [64, 0, 0]
+      - ~
+      - ~
+      - OffsetAbsolutePosition: [0, 0, 64]
+  KeepWater: true
+
+IslandSeaWayBiSlopePillar:
+- Air:
+    ItemModels:
+    - ItemModel:
+      - 5RoadThin\9Basic\8RoadThinPillar\7PillarBlock.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+    - ItemModel:
+      - 5RoadThin\9Basic\8RoadThinPillar\7PillarBlock.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+      Directions:
+      - OffsetAbsolutePosition: [64, 0, 0]
+      - ~
+      - ~
+      - OffsetAbsolutePosition: [0, 0, 64]
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 5RoadThin\9Basic\8RoadThinPillar\8PillarBase.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
+    - ItemModel:
+      - 5RoadThin\9Basic\8RoadThinPillar\8PillarBase.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
       Directions:
       - OffsetAbsolutePosition: [64, 0, 0]
       - ~
@@ -1852,17 +1941,29 @@ IslandTunnelExitBiSlopeEnd:
     - Units:
       - [0, 0, 0]
       - [0, 0, 1]
+      Clip:
+        ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
+        OffsetCoord: [2, 0, 0]
     - OffsetPivot: [-64, 0, 0]
       Units:
       - [0, 0, 0]
       - [0, 0, -1]
+      Clip:
+        ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
+        OffsetCoord: [2, 0, 0]
     - OffsetPivot: [-64, 0, 0]
       Units:
       - [0, 0, 0]
       - [0, 0, -1]
+      Clip:
+        ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
+        OffsetCoord: [2, 0, 0]
     - Units:
       - [0, 0, 0]
       - [0, 0, 1]
+      Clip:
+        ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
+        OffsetCoord: [2, 0, 0]
 
 IslandTunnelBiSlope2End:
 - ItemModel:
@@ -1885,6 +1986,12 @@ IslandTunnelBiSlope2Start2:
 IslandTunnelSlope2:
 - ItemModel:
   - 3Tunnels\7Slopes\7UpC\TunnelUpC.Item.gbx
+  OffsetAbsolutePosition: [0, -8, 0]
+  OffsetPivot: [0, 0.5, 0]
+
+IslandTunnelSlope2Base:
+- ItemModel:
+  - 3Tunnels\7Slopes\9UpA\TunnelUp.Item.gbx
   OffsetAbsolutePosition: [0, -8, 0]
   OffsetPivot: [0, 0.5, 0]
 
@@ -3487,6 +3594,12 @@ IslandCroisetteCheckpoint:
     ItemModel:
     - 4Road2\9Basic\7Road2CP\Air\Road2CP.Item.gbx
     OffsetAbsolutePosition: [0, -8, 0]
+    OffsetDirection: 2
+  Ground:
+    ItemModel:
+    - 4Road2\9Basic\7Road2CP\Ground\Road2CPGround.Item.gbx
+    OffsetAbsolutePosition: [0, -8, 0]
+    OffsetYFromTerrain: 1
     OffsetDirection: 2
 
 IslandTunnelSlope2HoleBase:
