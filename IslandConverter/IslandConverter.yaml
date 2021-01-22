@@ -2051,6 +2051,8 @@ IslandTunnelGTCurve3:
   Directions:
   - OffsetPivot: [-128, 0, 128]
   - OffsetPivot: [-128, 0, 0]
+  - ~
+  - OffsetPivot: [0, 0, 128]
 
 IslandPlatformLoopGT4CornerStart:
 - ItemModel:
@@ -2623,8 +2625,9 @@ IslandTunnelCircular:
   OffsetAbsolutePosition: [0, -8, 0]
   OffsetDirection: 1
 - ItemModel:
-  - 3Tunnels\6Tunnel2\9Tunnel2\4Tunnel2Cross.Item.gbx
+  - 3Tunnels\6Tunnel2\9Tunnel2\4Tunnel2Cross2.Item.gbx
   OffsetAbsolutePosition: [0, -8, 0]
+  OffsetDirection: 1
 - ItemModel:
   - 3Tunnels\6Tunnel2\9Tunnel2\5Tunnel2Cross.Item.gbx
   OffsetAbsolutePosition: [0, -8, 0]
@@ -3090,7 +3093,7 @@ IslandHighWayGTBranchLeft:
     Directions:
     - OffsetAbsolutePosition: [64, 0, 64]
     - ~
-    - ~
+    - OffsetAbsolutePosition: [64, 0, 0]
     - OffsetAbsolutePosition: [0, 0, 64]
   Ground:
     ItemModel:
