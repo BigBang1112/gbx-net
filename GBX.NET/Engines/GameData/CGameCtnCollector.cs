@@ -13,7 +13,7 @@ namespace GBX.NET.Engines.GameData
     {
         #region Enums
 
-        public enum EProdState : byte
+        public enum EProdState
         {
             Aborted,
             GameBox,
