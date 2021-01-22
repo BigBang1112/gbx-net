@@ -479,6 +479,33 @@ namespace IslandConverter
 
                 map.ScriptMetadata.Declare("GameMode", "Stunts");
             }
+            else if (map.Mode == CGameCtnChallenge.PlayMode.Platform)
+            {
+                challParams.MapType = "Platform";
+
+                var authorScore = challParams.AuthorScore;
+                var goldScore = challParams.GoldTime.GetValueOrDefault(TimeSpan.FromMilliseconds(0)).ToMilliseconds();
+                var silverScore = challParams.SilverTime.GetValueOrDefault(TimeSpan.FromMilliseconds(3)).ToMilliseconds();
+                var bronzeScore = challParams.BronzeTime.GetValueOrDefault(TimeSpan.FromMilliseconds(10)).ToMilliseconds();
+
+                var mapStyle = $"{authorScore}|{goldScore}|{silverScore}|{bronzeScore}";
+                challParams.MapStyle = mapStyle;
+
+                map.ScriptMetadata.Declare("ObjectiveAuthor", authorScore);
+                map.ScriptMetadata.Declare("ObjectiveGold", goldScore);
+                map.ScriptMetadata.Declare("ObjectiveSilver", silverScore);
+                map.ScriptMetadata.Declare("ObjectiveBronze", bronzeScore);
+
+                map.ScriptMetadata.Declare("GameMode", "Platform");
+
+                if (challParams.AuthorTime.HasValue)
+                {
+                    var authorTime = challParams.AuthorTime.Value.TotalMilliseconds;
+                    challParams.GoldTime = TimeSpan.FromMilliseconds(authorTime * 1.1);
+                    challParams.SilverTime = TimeSpan.FromMilliseconds(authorTime * 1.2);
+                    challParams.BronzeTime = TimeSpan.FromMilliseconds(authorTime * 1.5);
+                }
+            }
             else
             {
                 challParams.MapType = "Race";
