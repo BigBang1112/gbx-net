@@ -243,8 +243,11 @@ namespace IslandConverter
 
             var blocks = map.Blocks.ToArray();
 
+            var clips = blocks.Where(x => x.IsClip).ToDictionary(x => x.Coord);
+
             Dictionary<string, BlockConversion[]> conversionInfo;
             Dictionary<string, Dictionary<string, string>> skinInfo;
+            Dictionary<string, ClipProperties> clipProperties;
 
             Log.Write("Reading IslandConverter.yaml...");
 
@@ -260,6 +263,14 @@ namespace IslandConverter
             {
                 Deserializer yaml = new Deserializer();
                 skinInfo = yaml.Deserialize<Dictionary<string, Dictionary<string, string>>>(r);
+            }
+
+            Log.Write("Reading IslandConverterClips.yaml...");
+
+            using (var r = new StreamReader("IslandConverterClips.yaml"))
+            {
+                Deserializer yaml = new Deserializer();
+                clipProperties = yaml.Deserialize<Dictionary<string, ClipProperties>>(r);
             }
 
             Log.Write("Preparing to remove additional terrain blocks to avoid Z-fighting...");
@@ -636,27 +647,6 @@ namespace IslandConverter
                                     if (conv.InverseDirection.GetValueOrDefault() == true)
                                         dir = 3 - dir;
 
-                                    if (conv.Directions != null)
-                                    {
-                                        for (var i = 0; i < conv.Directions.Length; i++)
-                                        {
-                                            var direction = conv.Directions[i];
-                                            if (direction != null)
-                                            {
-                                                if (i == dir && direction.OffsetAbsolutePosition != null && direction.OffsetAbsolutePosition.Length >= 3)
-                                                    offsetAbsolutePosition += new Vec3(
-                                                        direction.OffsetAbsolutePosition[0],
-                                                        direction.OffsetAbsolutePosition[1],
-                                                        direction.OffsetAbsolutePosition[2]);
-                                                if (i == dir && direction.OffsetPivot != null && direction.OffsetPivot.Length >= 3)
-                                                    offsetPivot += new Vec3(
-                                                        direction.OffsetPivot[0],
-                                                        direction.OffsetPivot[1],
-                                                        direction.OffsetPivot[2]);
-                                            }
-                                        }
-                                    }
-
                                     Vec3 offsetPitchYawRoll = new Vec3(dir * 90f / 180 * (float)Math.PI, 0, 0);
                                     if (conv.OffsetPitchYawRoll != null)
                                     {
@@ -667,6 +657,85 @@ namespace IslandConverter
                                                 conv.OffsetPitchYawRoll[2] / 180 * (float)Math.PI);
                                         else if (conv.OffsetPitchYawRoll.Length != 0)
                                             throw new FormatException($"Wrong format of OffsetPitchYawRoll: {block.Name} -> index {block.Variant} -> [{string.Join(", ", conv.OffsetPitchYawRoll)}]");
+                                    }
+
+                                    if (conv.Clip != null)
+                                        DoClip(conv.Clip, false);
+
+                                    if (conv.Clips != null)
+                                        foreach (var clip in conv.Clips)
+                                            if (clip != null)
+                                                DoClip(clip, false);
+
+                                    void DoClip(BlockConversionClip clip, bool isDirections)
+                                    {
+                                        var clipOffsetCoord = (Int3)clip.OffsetCoord;
+
+                                        if (clips.TryGetValue(block.Coord + clipOffsetCoord, out CGameCtnBlock clipBlock))
+                                        {
+                                            var itemModelClip = clip.ItemModel;
+                                            var itemModelClipSplit = itemModelClip.Split(' ');
+
+                                            var metaClip = new Ident("Island\\" + itemModelClipSplit[0],
+                                                itemModelClipSplit.Length > 1 ? new Collection(itemModelClipSplit[1]) : 10003,
+                                                itemModelClipSplit.Length > 2 ? itemModelClipSplit[2] : "adamkooo");
+
+                                            var clipOffsetPivot = default(Vec3);
+
+                                            if (clipProperties.TryGetValue(itemModelClipSplit[0], out ClipProperties properties))
+                                            {
+                                                clipOffsetPivot = (Vec3)properties.OffsetPivot;
+                                            }
+
+                                            var clipOffset = clipOffsetCoord;
+
+                                            var offsetDir = (dir + clip.OffsetDirection) % 4;
+
+                                            var rads = (float)(offsetDir * Math.PI / 2);
+
+                                            if (!isDirections)
+                                            {
+
+                                                clipOffset = (Convert.ToInt32(Math.Cos(rads) * clipOffset.X -
+                                                Math.Sin(rads) * clipOffset.Z),
+                                                clipOffset.Y, // not supported yet
+                                                Convert.ToInt32(Math.Sin(rads) * clipOffset.X +
+                                                Math.Cos(rads) * clipOffset.Z));
+                                            }
+
+                                            map.PlaceAnchoredObject(metaClip, offsetAbsolutePosition - clipOffset * new Vec3(64, 8, 64), offsetPitchYawRoll + (rads, 0, 0), clipOffsetPivot);
+                                        }
+                                    }
+
+                                    
+
+                                    if (conv.Directions != null)
+                                    {
+                                        if (conv.Directions.Length > dir)
+                                        {
+                                            var direction = conv.Directions[dir];
+                                            if (direction != null)
+                                            {
+                                                if (direction.OffsetAbsolutePosition != null && direction.OffsetAbsolutePosition.Length >= 3)
+                                                    offsetAbsolutePosition += new Vec3(
+                                                        direction.OffsetAbsolutePosition[0],
+                                                        direction.OffsetAbsolutePosition[1],
+                                                        direction.OffsetAbsolutePosition[2]);
+                                                if (direction.OffsetPivot != null && direction.OffsetPivot.Length >= 3)
+                                                    offsetPivot += new Vec3(
+                                                        direction.OffsetPivot[0],
+                                                        direction.OffsetPivot[1],
+                                                        direction.OffsetPivot[2]);
+
+                                                if (direction.Clip != null)
+                                                    DoClip(direction.Clip, true);
+
+                                                if (direction.Clips != null)
+                                                    foreach (var clip in direction.Clips)
+                                                        if (clip != null)
+                                                            DoClip(clip, true);
+                                            }
+                                        }
                                     }
 
                                     map.PlaceAnchoredObject(meta, offsetAbsolutePosition, offsetPitchYawRoll, offsetPivot);

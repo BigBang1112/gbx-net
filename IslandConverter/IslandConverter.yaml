@@ -73,6 +73,9 @@ IslandHighWayStartLine:
     OffsetAbsolutePosition: [0, -8, 0]
     OffsetYFromTerrain: 1
     OffsetPivot: [0, 0, -16]
+    Clip:
+      ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
+      OffsetCoord: [0, 0, 1]
 
 IslandHighWayStartFinishLine:
 - Air:
@@ -410,6 +413,10 @@ IslandHighWayFinish:
     OffsetDirection: 3
     OffsetYFromTerrain: 1
     OffsetPivot: [0, 0, -16]
+    Clip:
+      ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
+      OffsetCoord: [0, 0, -1]
+      OffsetDirection: 2
 
 IslandAirportRoad:
 - Ground:
