@@ -558,24 +558,54 @@ IslandBeachTrees:
   KeepWater: true
 
 IslandPlatformTurbo2:
-- ItemModel:
-  - 6Platform\5Turbos\8Red\9TurboR\PlatformTurbo.Item.gbx
-  OffsetAbsolutePosition: [0, -4, 0]
-  OffsetDirection: 3
+- Air:
+    ItemModel:
+    - 6Platform\5Turbos\8Red\9TurboR\PlatformTurbo.Item.gbx
+    OffsetAbsolutePosition: [0, -4, 0]
+    OffsetDirection: 3
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 6Platform\5Turbos\8Red\9TurboR\PlatformTurbo.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
+    - ItemModel:
+      - 6Platform\2Pillars\9PlatformUniversal\PlatformPillarWater.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
   KeepWater: true
 
 IslandPlatformCheckpoint:
-- ItemModel:
-  - 6Platform\9Basic\6PlatformCP\PlatformCP.Item.gbx
-  OffsetAbsolutePosition: [0, -4, 0]
-  OffsetDirection: 2
+- Air:
+    ItemModel:
+    - 6Platform\9Basic\6PlatformCP\PlatformCP.Item.gbx
+    OffsetAbsolutePosition: [0, -4, 0]
+    OffsetDirection: 2
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 6Platform\9Basic\6PlatformCP\PlatformCP.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 2
+    - ItemModel:
+      - 6Platform\2Pillars\9PlatformUniversal\PlatformPillarWater.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
   KeepWater: true
 
 IslandPlatformFinishLine:
-- ItemModel:
-  - 6Platform\9Basic\3PlatformFinish\PlatformFinish.Item.gbx
-  OffsetAbsolutePosition: [0, -4, 0]
-  OffsetDirection: 1
+- Air:
+    ItemModel:
+    - 6Platform\9Basic\3PlatformFinish\PlatformFinish.Item.gbx
+    OffsetAbsolutePosition: [0, -4, 0]
+    OffsetDirection: 1
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 6Platform\9Basic\3PlatformFinish\PlatformFinish.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 1
+    - ItemModel:
+      - 6Platform\2Pillars\9PlatformUniversal\PlatformPillarWater.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
   KeepWater: true
 
 IslandSeaWayToPlatform:
@@ -584,22 +614,52 @@ IslandSeaWayToPlatform:
   KeepWater: true
 
 IslandSeaWayCheckpoint:
-- ItemModel:
-  - 5RoadThin\9Basic\7RoadThinCP\RoadThinCP.Item.gbx
-  OffsetAbsolutePosition: [0, -8, 0]
-  OffsetDirection: 2
+- Air:
+    ItemModel:
+    - 5RoadThin\9Basic\7RoadThinCP\RoadThinCP.Item.gbx
+    OffsetAbsolutePosition: [0, -8, 0]
+    OffsetDirection: 2
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 5RoadThin\9Basic\7RoadThinCP\RoadThinCP.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+      OffsetDirection: 2
+    - ItemModel:
+      - 5RoadThin\9Basic\8RoadThinPillar\9PillarWater.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
   KeepWater: true
 
 IslandSeaWayGTCurve2:
-- ItemModel:
-  - 5RoadThin\7Turns\9RoadThinTurn2\Air\RoadThinTurn2.Item.gbx
-  OffsetAbsolutePosition: [0, -8, 0]
-  OffsetDirection: 2
-  Directions:
-  - OffsetAbsolutePosition: [64, 0, 0]
-  - ~
-  - OffsetAbsolutePosition: [0, 0, 64]
-  - OffsetAbsolutePosition: [64, 0, 64]
+- Air:
+    ItemModel:
+    - 5RoadThin\7Turns\9RoadThinTurn2\Air\RoadThinTurn2.Item.gbx
+    OffsetAbsolutePosition: [0, -8, 0]
+    OffsetDirection: 2
+    Directions:
+    - OffsetAbsolutePosition: [64, 0, 0]
+    - ~
+    - OffsetAbsolutePosition: [0, 0, 64]
+    - OffsetAbsolutePosition: [64, 0, 64]
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 5RoadThin\7Turns\9RoadThinTurn2\Air\RoadThinTurn2.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+      OffsetDirection: 2
+      Directions:
+      - OffsetAbsolutePosition: [64, 0, 0]
+      - ~
+      - OffsetAbsolutePosition: [0, 0, 64]
+      - OffsetAbsolutePosition: [64, 0, 64]
+    - ItemModel:
+      - 5RoadThin\7Turns\5RoadThinTurnPillars\9Turn2Pillars\8RoadThinTurn2PillarBase.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+      Directions:
+      - ~
+      - OffsetAbsolutePosition: [0, 0, 64]
+      - OffsetAbsolutePosition: [64, 0, 64]
+      - OffsetAbsolutePosition: [64, 0, 0]
   KeepWater: true
 
 IslandPlatformRoad:
@@ -1201,14 +1261,14 @@ IslandHighWayTiltTransition:
       - [0, 0, 1]
     - Units:
       - [0, 0, 0]
-      - [-1, 0, 0]
+      - [0, 0, -1]
     - Units:
       - [0, 0, 0]
-      - [-1, 0, 0]
+      - [0, 0, -1]
     - OffsetPivot: [64, 0, 0]
       Units:
       - [0, 0, 0]
-      - [-1, 0, 0]
+      - [0, 0, 1]
 
 IslandHighWayTiltTransitionMirror:
 - Air:
@@ -1227,12 +1287,19 @@ IslandHighWayTiltTransitionMirror:
     OffsetYFromTerrain: 1
     Directions:
     - OffsetPivot: [64, 0, 0]
-    - ~
-    - ~
+      Units:
+      - [0, 0, 0]
+      - [0, 0, 1]
+    - Units:
+      - [0, 0, 0]
+      - [0, 0, -1]
+    - Units:
+      - [0, 0, 0]
+      - [0, 0, -1]
     - OffsetPivot: [64, 0, 0]
-    Units:
-    - [0, 0, 0]
-    - [0, 0, 1]
+      Units:
+      - [0, 0, 0]
+      - [0, 0, 1]
 
 IslandHighWayTiltGTCurve3:
 - Air:
@@ -1441,10 +1508,20 @@ IslandSeaSigns:
   KeepWater: true
 
 IslandPlatformTurbo:
-- ItemModel:
-  - 6Platform\5Turbos\9Yellow\9TurboY\PlatformTurbo.Item.gbx
-  OffsetAbsolutePosition: [0, -4, 0]
-  OffsetDirection: 3
+- Air:
+    ItemModel:
+    - 6Platform\5Turbos\9Yellow\9TurboY\PlatformTurbo.Item.gbx
+    OffsetAbsolutePosition: [0, -4, 0]
+    OffsetDirection: 3
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 6Platform\5Turbos\9Yellow\9TurboY\PlatformTurbo.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
+    - ItemModel:
+      - 6Platform\2Pillars\9PlatformUniversal\PlatformPillarWater.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
   KeepWater: true
 
 IslandPlatformTurboRoulette:
@@ -1618,14 +1695,24 @@ IslandSeaWayStraightPillar:
     OffsetAbsolutePosition: [0, -16, 0]
   KeepWater: true
 
-IslandTunnelCircularExitRamp:
+IslandTunnelCircularExitRamp: # why is this air variant Nadeo
 - Air:
     ItemModel:
     - 3Tunnels\9Transitions\3TransitionTunel2Ground2\TransitionTunel2Ground2.Item.gbx
     OffsetAbsolutePosition: [0, -8, 0]
     OffsetYFromTerrain: -5
-    Units:
-    - [0, 0, 1]
+    Units: ~
+    Directions:
+    - Units:
+      - [0, 0, 1]
+    - OffsetAbsolutePosition: [0, 0, 64]
+      Units:
+      - [0, 0, 0]
+    - OffsetAbsolutePosition: [64, 0, 0]
+      Units:
+      - [0, 0, 0]
+    - Units:
+      - [0, 0, 1]
 
 IslandSeaWay:
 - ItemModel:
@@ -1799,8 +1886,8 @@ IslandSeaWayGTCurve3:
       OffsetAbsolutePosition: [0, -8, 0]
       Directions:
       - ~
-      - ~
-      - ~
+      - OffsetAbsolutePosition: [0, 0, 128]
+      - OffsetAbsolutePosition: [128, 0, 128]
       - OffsetAbsolutePosition: [128, 0, 0]
   KeepWater: true
 
@@ -1881,8 +1968,8 @@ IslandSeaWayBiSlopeStart:
       OffsetAbsolutePosition: [0, -16, 0]
       Directions:
       - OffsetAbsolutePosition: [64, 0, 0]
-      - ~
-      - ~
+      - OffsetAbsolutePosition: [0, 0, 64]
+      - OffsetAbsolutePosition: [64, 0, 0]
       - OffsetAbsolutePosition: [0, 0, 64]
   KeepWater: true
 
@@ -1899,7 +1986,7 @@ IslandSeaWayBiSlopeEnd:
       - ~
       - OffsetAbsolutePosition: [0, 0, 64]
     - ItemModel:
-      - 5RoadThin\8Slopes\7RoadThinUpPillar\7RoadThinUp3PillarTop.Item.gbx
+      - 5RoadThin\8Slopes\7RoadThinUpPillar\6RoadThinUpCPillarTop.Item.gbx
       OffsetDirection: 2
       OffsetAbsolutePosition: [0, -8, 0]
       Directions:
@@ -1919,13 +2006,24 @@ IslandSeaWayBiSlopeEnd:
       - ~
       - OffsetAbsolutePosition: [0, 0, 64]
     - ItemModel:
-      - 5RoadThin\8Slopes\7RoadThinUpPillar\7RoadThinUp3PillarTop.Item.gbx
+      - 5RoadThin\8Slopes\7RoadThinUpPillar\6RoadThinUpCPillarTop.Item.gbx
       OffsetDirection: 2
       OffsetAbsolutePosition: [0, -8, 0]
       Directions:
       - OffsetAbsolutePosition: [64, 0, 0]
       - ~
       - ~
+      - OffsetAbsolutePosition: [0, 0, 64]
+    - ItemModel:
+      - 5RoadThin\9Basic\8RoadThinPillar\8PillarBase.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
+    - ItemModel:
+      - 5RoadThin\9Basic\8RoadThinPillar\8PillarBase.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
+      Directions:
+      - OffsetAbsolutePosition: [64, 0, 0]
+      - OffsetAbsolutePosition: [0, 0, 64]
+      - OffsetAbsolutePosition: [64, 0, 0]
       - OffsetAbsolutePosition: [0, 0, 64]
   KeepWater: true
 
@@ -2108,10 +2206,35 @@ IslandTunnelTurbo:
   OffsetPivot: [0, 0.5, 0]
 
 IslandPlatformStartLine:
-- ItemModel:
-  - 6Platform\9Basic\7PlatformStart\PlatformStart.Item.gbx
-  OffsetAbsolutePosition: [0, -4, 0]
-  OffsetDirection: 3
+- Air:
+    ItemModel:
+    - 6Platform\9Basic\7PlatformStart\PlatformStart.Item.gbx
+    OffsetAbsolutePosition: [0, -4, 0]
+    OffsetDirection: 3
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 6Platform\9Basic\7PlatformStart\PlatformStart.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
+    - ItemModel:
+      - 6Platform\2Pillars\9PlatformUniversal\PlatformPillarWater.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+  KeepWater: true
+
+IslandPlatformStartFinishLine:
+- Air:
+    ItemModel:
+    - 6Platform\9Basic\4PlatformMulti\PlatformMulti.Item.gbx
+    OffsetAbsolutePosition: [0, -4, 0]
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 6Platform\9Basic\4PlatformMulti\PlatformMulti.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+    - ItemModel:
+      - 6Platform\2Pillars\9PlatformUniversal\PlatformPillarWater.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
   KeepWater: true
 
 IslandPlatformToSlope2:
@@ -2129,59 +2252,145 @@ IslandPlatformToSlope2Mirror:
   KeepWater: true
 
 IslandPlatformSlope2TurboLeft:
-- ItemModel:
-  - 6Platform\5Turbos\9Yellow\5TurboYRight\PlatformRightTurbo.Item.gbx
-  OffsetAbsolutePosition: [0, -4, 0]
-  OffsetDirection: 3
+- Air:
+    ItemModel:
+    - 6Platform\5Turbos\9Yellow\5TurboYRight\PlatformRightTurbo.Item.gbx
+    OffsetAbsolutePosition: [0, -4, 0]
+    OffsetDirection: 3
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 6Platform\5Turbos\9Yellow\5TurboYRight\PlatformRightTurbo.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
+    - ItemModel:
+      - 6Platform\8Slopes\1PlatformUpPillars\PlatformUpWater.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
+      OffsetDirection: 1
   KeepWater: true
 
 IslandPlatformSlope2TurboRight:
-- ItemModel:
-  - 6Platform\5Turbos\9Yellow\6TurboYLeft\PlatformLeftTurbo.Item.gbx
-  OffsetAbsolutePosition: [0, -4, 0]
-  OffsetDirection: 3
+- Air:
+    ItemModel:
+    - 6Platform\5Turbos\9Yellow\6TurboYLeft\PlatformLeftTurbo.Item.gbx
+    OffsetAbsolutePosition: [0, -4, 0]
+    OffsetDirection: 3
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 6Platform\5Turbos\9Yellow\6TurboYLeft\PlatformLeftTurbo.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
+    - ItemModel:
+      - 6Platform\8Slopes\1PlatformUpPillars\PlatformUpWater.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
+      OffsetDirection: 3
   KeepWater: true
 
 IslandPlatformSlope2Turbo2Left:
-- ItemModel:
-  - 6Platform\5Turbos\8Red\5TurboRRight\PlatformRightTurbo.Item.gbx
-  OffsetAbsolutePosition: [0, -4, 0]
-  OffsetDirection: 3
+- Air:
+    ItemModel:
+    - 6Platform\5Turbos\8Red\5TurboRRight\PlatformRightTurbo.Item.gbx
+    OffsetAbsolutePosition: [0, -4, 0]
+    OffsetDirection: 3
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 6Platform\5Turbos\8Red\5TurboRRight\PlatformRightTurbo.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
+    - ItemModel:
+      - 6Platform\8Slopes\1PlatformUpPillars\PlatformUpWater.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
+      OffsetDirection: 1
   KeepWater: true
 
 IslandPlatformSlope2Turbo2Right:
-- ItemModel:
-  - 6Platform\5Turbos\8Red\6TurboRLeft\PlatformLeftTurbo.Item.gbx
-  OffsetAbsolutePosition: [0, -4, 0]
-  OffsetDirection: 3
+- Air:
+    ItemModel:
+    - 6Platform\5Turbos\8Red\6TurboRLeft\PlatformLeftTurbo.Item.gbx
+    OffsetAbsolutePosition: [0, -4, 0]
+    OffsetDirection: 3
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 6Platform\5Turbos\8Red\6TurboRLeft\PlatformLeftTurbo.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
+    - ItemModel:
+      - 6Platform\8Slopes\1PlatformUpPillars\PlatformUpWater.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
+      OffsetDirection: 3
   KeepWater: true
 
 IslandPlatformSlope2Turbo2Up:
-- ItemModel:
-  - 6Platform\5Turbos\8Red\8TurboRUp\PlatformUpTurbo.Item.gbx
-  OffsetAbsolutePosition: [0, -4, 0]
-  OffsetDirection: 3
+- Air:
+    ItemModel:
+    - 6Platform\5Turbos\8Red\8TurboRUp\PlatformUpTurbo.Item.gbx
+    OffsetAbsolutePosition: [0, -4, 0]
+    OffsetDirection: 3
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 6Platform\5Turbos\8Red\8TurboRUp\PlatformUpTurbo.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
+    - ItemModel:
+      - 6Platform\8Slopes\1PlatformUpPillars\PlatformUpWater.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
   KeepWater: true
 
 IslandPlatformSlope2Turbo2Down:
-- ItemModel:
-  - 6Platform\5Turbos\8Red\7TurboRDown\PlatformDownTurbo.Item.gbx
-  OffsetAbsolutePosition: [0, -4, 0]
-  OffsetDirection: 3
+- Air:
+    ItemModel:
+    - 6Platform\5Turbos\8Red\7TurboRDown\PlatformDownTurbo.Item.gbx
+    OffsetAbsolutePosition: [0, -4, 0]
+    OffsetDirection: 3
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 6Platform\5Turbos\8Red\7TurboRDown\PlatformDownTurbo.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
+    - ItemModel:
+      - 6Platform\8Slopes\1PlatformUpPillars\PlatformUpWater.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
+      OffsetDirection: 2
   KeepWater: true
 
 IslandPlatformSlope2TurboDown:
-- ItemModel:
-  - 6Platform\5Turbos\9Yellow\7TurboYDown\PlatformDownTurbo.Item.gbx
-  OffsetAbsolutePosition: [0, -4, 0]
-  OffsetDirection: 3
+- Air:
+    ItemModel:
+    - 6Platform\5Turbos\9Yellow\7TurboYDown\PlatformDownTurbo.Item.gbx
+    OffsetAbsolutePosition: [0, -4, 0]
+    OffsetDirection: 3
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 6Platform\5Turbos\9Yellow\7TurboYDown\PlatformDownTurbo.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
+    - ItemModel:
+      - 6Platform\8Slopes\1PlatformUpPillars\PlatformUpWater.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
+      OffsetDirection: 2
   KeepWater: true
 
 IslandPlatformBiSlope2Start:
-- ItemModel:
-  - 6Platform\8Slopes\5PlatformUp2\PlatformUp2.Item.gbx
-  OffsetAbsolutePosition: [0, -4, 0]
-  OffsetDirection: 2
+- Air:
+    ItemModel:
+    - 6Platform\8Slopes\5PlatformUp2\PlatformUp2.Item.gbx
+    OffsetAbsolutePosition: [0, -4, 0]
+    OffsetDirection: 2
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 6Platform\8Slopes\5PlatformUp2\PlatformUp2.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 2
+    - ItemModel:
+      - 6Platform\8Slopes\1PlatformUpPillars\PlatformUpWater.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
   KeepWater: true
 
 IslandPlatformBiSlope2End:
@@ -2298,6 +2507,9 @@ IslandSeaWaySlope:
     - ItemModel:
       - 5RoadThin\8Slopes\7RoadThinUpPillar\9RoadUpUniPillarTop.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
+    - ItemModel:
+      - 5RoadThin\9Basic\8RoadThinPillar\8PillarBase.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
   KeepWater: true
 
 IslandSeaWaySlopeBase:
@@ -2310,9 +2522,16 @@ IslandSeaWaySlopeBase:
       - 5RoadThin\8Slopes\7RoadThinUpPillar\9RoadUpUniPillarTop.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
   Ground:
-    ItemModel:
-    - 5RoadThin\8Slopes\9RoadThinUp\RoadThinUpA.Item.gbx
-    OffsetAbsolutePosition: [0, -8, 0]
+    ItemModels:
+    - ItemModel:
+      - 5RoadThin\8Slopes\9RoadThinUp\RoadThinUpA.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+    - ItemModel:
+      - 5RoadThin\8Slopes\7RoadThinUpPillar\9RoadUpUniPillarTop.Item.gbx
+      OffsetAbsolutePosition: [0, -8, 0]
+    - ItemModel:
+      - 5RoadThin\9Basic\8RoadThinPillar\8PillarBase.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
   KeepWater: true
 
 IslandSpaceLaunch3:
@@ -2670,10 +2889,20 @@ IslandFloodLight:
   OffsetAbsolutePosition: [0, -16, 0]
 
 IslandPlatformSlope2TurboUp:
-- ItemModel:
-  - 6Platform\5Turbos\9Yellow\8TurboYUp\PlatformUpTurbo.Item.gbx
-  OffsetDirection: 3
-  OffsetAbsolutePosition: [0, -4, 0]
+- Air:
+    ItemModel:
+    - 6Platform\5Turbos\9Yellow\8TurboYUp\PlatformUpTurbo.Item.gbx
+    OffsetAbsolutePosition: [0, -4, 0]
+    OffsetDirection: 3
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 6Platform\5Turbos\9Yellow\8TurboYUp\PlatformUpTurbo.Item.gbx
+      OffsetAbsolutePosition: [0, -4, 0]
+      OffsetDirection: 3
+    - ItemModel:
+      - 6Platform\8Slopes\1PlatformUpPillars\PlatformUpWater.Item.gbx
+      OffsetAbsolutePosition: [0, -16, 0]
   KeepWater: true
 
 IslandHighWayAdvertisement:
@@ -3234,6 +3463,16 @@ IslandPlatformCheckpointSlopeRight:
     - 6Platform\8Slopes\7PlatformUpCP\PlatformUpCPA.Item.gbx
     OffsetDirection: 3
     OffsetAbsolutePosition: [0, -4, 0]
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 6Platform\8Slopes\7PlatformUpCP\PlatformUpCPA.Item.gbx
+      OffsetDirection: 3
+      OffsetAbsolutePosition: [0, -4, 0]
+    - ItemModel:
+      - 6Platform\8Slopes\1PlatformUpPillars\PlatformUpWater.Item.gbx
+      OffsetDirection: 3
+      OffsetAbsolutePosition: [0, -16, 0]
   KeepWater: true
 
 IslandPlatformCheckpointSlopeLeft:
@@ -3242,6 +3481,16 @@ IslandPlatformCheckpointSlopeLeft:
     - 6Platform\8Slopes\6PlatformUpCPMirrored\PlatformUpCPB.Item.gbx
     OffsetDirection: 1
     OffsetAbsolutePosition: [0, -4, 0]
+  Ground:
+    ItemModels:
+    - ItemModel:
+      - 6Platform\8Slopes\6PlatformUpCPMirrored\PlatformUpCPB.Item.gbx
+      OffsetDirection: 1
+      OffsetAbsolutePosition: [0, -4, 0]
+    - ItemModel:
+      - 6Platform\8Slopes\1PlatformUpPillars\PlatformUpWater.Item.gbx
+      OffsetDirection: 1
+      OffsetAbsolutePosition: [0, -16, 0]
   KeepWater: true
 
 IslandJettyBeachR:
@@ -3296,6 +3545,17 @@ IslandCroisetteSlalomJump:
   Ground:
     ItemModel:
     - 4Road2\7Extra\8Road2Jump1B\Ground\Road2Jump1GroundB.Item.gbx
+    OffsetAbsolutePosition: [0, -8, 0]
+    OffsetYFromTerrain: 1
+
+IslandCroisetteSlalomJumpMirror:
+- Air:
+    ItemModel:
+    - 4Road2\7Extra\9Road2Jump1A\Air\Road2Jump1A.Item.gbx
+    OffsetAbsolutePosition: [0, -8, 0]
+  Ground:
+    ItemModel:
+    - 4Road2\7Extra\9Road2Jump1A\Ground\Road2Jump1GroundA.Item.gbx
     OffsetAbsolutePosition: [0, -8, 0]
     OffsetYFromTerrain: 1
 
@@ -3386,6 +3646,43 @@ IslandRoadWallTransitionTiltStraightLeft:
     Directions:
     - ~
     - OffsetAbsolutePosition: [0, 0, 64]
+    - OffsetAbsolutePosition: [64, 0, 0]
+
+IslandRoadWallTransitionTiltStraightRight:
+- Air:
+    ItemModel:
+    - 7Road\4Vertical\4RoadVerticalToRoadTilt\RoadVerticalToRoadTiltA.Item.gbx
+    OffsetAbsolutePosition: [0, 16, 0]
+    OffsetDirection: 2
+    Directions:
+    - OffsetAbsolutePosition: [64, 0, 0]
+    - OffsetAbsolutePosition: ~
+    - OffsetAbsolutePosition: ~
+    - OffsetAbsolutePosition: [0, 0, 64]
+
+IslandRoadWallGTCurve1SlopeRight:
+- Air:
+    ItemModel:
+    - 7Road\4Vertical\2RoadVerticalUpTurn\RoadVerticalUpTurnA.Item.gbx
+    OffsetDirection: 3
+    OffsetAbsolutePosition: [0, 16, 0]
+    Directions:
+    - OffsetAbsolutePosition: [64, 0, 64]
+    - OffsetAbsolutePosition: [64, 0, 0]
+    - ~
+    - OffsetAbsolutePosition: [0, 0, 64]
+
+IslandRoadWallGTCurve1SlopeLeft:
+- Air:
+    ItemModel:
+    - 7Road\4Vertical\1RoadVerticalUpTurnMirrored\RoadVerticalUpTurnB.Item.gbx
+    OffsetDirection: 2
+    OffsetAbsolutePosition: [0, 16, 0]
+    Directions:
+    - OffsetAbsolutePosition: [64, 0, 0]
+    - ~
+    - OffsetAbsolutePosition: [0, 0, 64]
+    - OffsetAbsolutePosition: [64, 0, 64]
 
 IslandRoadWallGTCurve1:
 - Air:
@@ -3435,7 +3732,7 @@ IslandHighWayTiltGTCurve2:
     Directions:
     - OffsetAbsolutePosition: [64, 0, 0]
     - ~
-    - ~
+    - OffsetAbsolutePosition: [0, 0, 64]
     - OffsetAbsolutePosition: [64, 0, 64]
   Ground:
     ItemModel:
@@ -3444,10 +3741,28 @@ IslandHighWayTiltGTCurve2:
     OffsetYFromTerrain: 1
     OffsetPivot: [-32, -8, 32]
     Directions:
-    - Units:
+    - OffsetAbsolutePosition: [64, 0, 0]
+      Units:
       - [0, 0, 0]
       - [-1, 0, 0]
       - [-1, 0, -1]
+      - [0, 0, -1]
+    - Units:
+      - [0, 0, 0]
+      - [-1, 0, 0]
+      - [-1, 0, 1]
+      - [0, 0, 1]
+    - OffsetAbsolutePosition: [0, 0, 64]
+      Units:
+      - [0, 0, 0]
+      - [1, 0, 0]
+      - [1, 0, 1]
+      - [0, 0, 1]
+    - OffsetAbsolutePosition: [64, 0, 64]
+      Units:
+      - [0, 0, 0]
+      - [1, 0, 0]
+      - [1, 0, -1]
       - [0, 0, -1]
 
 IslandSpaceLaunch2Pillar:
@@ -3507,11 +3822,10 @@ IslandSeaWayTurbo2:
   KeepWater: true
 
 IslandSeaWayHole:
-- Air:
-    ItemModel:
-    - 5RoadThin\9Basic\3RoadThinHole\RoadThinHole.Item.gbx
-    OffsetDirection: 1
-    OffsetAbsolutePosition: [0, -8, 0]
+- ItemModel:
+  - 5RoadThin\9Basic\3RoadThinHole\RoadThinHole.Item.gbx
+  OffsetDirection: 1
+  OffsetAbsolutePosition: [0, -8, 0]
   KeepWater: true
 
 IslandTunnelCorner:
@@ -3611,12 +3925,24 @@ IslandHighWayTriRamp:
     - 7Road\8Slopes\4Road3Jumps\Air\Road3Jumps.Item.gbx
     OffsetAbsolutePosition: [0, -8, 0]
     OffsetDirection: 3
+  Ground:
+    ItemModel:
+    - 7Road\8Slopes\4Road3Jumps\Ground\Road3JumpsGround.Item.gbx
+    OffsetAbsolutePosition: [0, -8, 0]
+    OffsetYFromTerrain: 1
+    OffsetDirection: 3
 
 IslandHighWayRamp:
 - Air:
     ItemModel:
     - 7Road\8Slopes\3Road4Jumps\Air\Road4Jumps.Item.gbx
     OffsetAbsolutePosition: [0, -8, 0]
+    OffsetDirection: 2
+  Ground:
+    ItemModel:
+    - 7Road\8Slopes\3Road4Jumps\Ground\Road4JumpsGround.Item.gbx
+    OffsetAbsolutePosition: [0, -8, 0]
+    OffsetYFromTerrain: 1
     OffsetDirection: 2
 
 IslandCroisettePillar:
@@ -3634,7 +3960,12 @@ IslandCroisettePillar:
     OffsetAbsolutePosition: [0, -8, 0]
 
 IslandHighWayTiltCorner:
-- Ground:
+- Air:
+    ItemModel:
+    - 7Road\5Tilted\8RoadTiltTurn\Air\RoadTiltTurn.Item.gbx
+    OffsetDirection: 2
+    OffsetAbsolutePosition: [0, -8, 0]
+  Ground:
     ItemModel:
     - 7Road\5Tilted\8RoadTiltTurn\Ground\RoadTiltGroundTurn.Item.gbx
     OffsetDirection: 2
