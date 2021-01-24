@@ -160,7 +160,10 @@ namespace IslandConverter
                             flag = 135173;
                         }
 
-                        blocks.Add(new CGameCtnBlock("StadiumPool2", dir, (x, yOffset, z), flag, null, null, null));
+                        if (yOffset == 0)
+                            blocks.Add(new CGameCtnBlock("StadiumPool2", dir, (x, 0, z), flag, null, null, null));
+                        else
+                            blocks.Add(new CGameCtnBlock("StadiumPool", dir, (x, 0, z), flag, null, null, null));
                     }
                     else if (islandBlockDictionary.TryGetValue(new Int3(Convert.ToInt32(Math.Floor((x + xzOffset) / 2f) - 2), 0, Convert.ToInt32(Math.Floor((z + xzOffset) / 2f) - 2)), out CGameCtnBlock bl))
                     {
@@ -171,7 +174,7 @@ namespace IslandConverter
                         if(yOffset == 0)
                             blocks.Add(new CGameCtnBlock("StadiumWater2", Direction.North, (x, 0, z), 135168, null, null, null));
                         else
-                            blocks.Add(new CGameCtnBlock("StadiumWater", Direction.North, (x, 1, z), 135168, null, null, null));
+                            blocks.Add(new CGameCtnBlock("StadiumWater", Direction.North, (x, 0, z), 135168, null, null, null));
                     }
 
                     blocks.Add(CGameCtnBlock.Unassigned1);
