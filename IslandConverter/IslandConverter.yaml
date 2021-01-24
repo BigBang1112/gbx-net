@@ -257,12 +257,15 @@ IslandHighWayPillar:
     OffsetYFromTerrain: 1
 - Air:
     ItemModel:
-    - ~
+    - 7Road\9Basic\8ExtraPillars\7RoadTurnPillar\8RoadTurnPillarBlock.Item.gbx
     OffsetAbsolutePosition: [0, -8, 0]
+    OffsetDirection: 1
   Ground:
     ItemModel:
-    - ~
+    - 7Road\9Basic\8ExtraPillars\7RoadTurnPillar\9RoadTurnPillarGround.Item.gbx
     OffsetAbsolutePosition: [0, -8, 0]
+    OffsetDirection: 1
+    OffsetYFromTerrain: 1
 - Air:
     ItemModel:
     - 7Road\9Basic\8ExtraPillars\9RoadBlockPillar\8RoadBlockPillarBlock.Item.gbx
