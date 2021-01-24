@@ -23,5 +23,6 @@
 
         public BlockConversionClip Clip { get; set; }
         public BlockConversionClip[] Clips { get; set; }
+        public int ClipOffsetY { get; set; }
     }
 }

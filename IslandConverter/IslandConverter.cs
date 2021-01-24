@@ -578,7 +578,7 @@ namespace IslandConverter
                                     {
                                         foreach (var item in variant.Ground.ItemModels)
                                             if (item != null)
-                                                DoConversion(item, true);
+                                                DoConversion(item, true, variant.Ground.ItemModels.First() == item ? variant.Ground : null);
                                     }
                                     else if (variant.Ground != null)
                                         DoConversion(variant.Ground, true);
@@ -594,7 +594,7 @@ namespace IslandConverter
                                     {
                                         foreach (var item in variant.Air.ItemModels)
                                             if (item != null)
-                                                DoConversion(item, false);
+                                                DoConversion(item, false, variant.Air.ItemModels.First() == item ? variant.Air : null);
                                     }
                                     else if (variant.Air != null)
                                         DoConversion(variant.Air, false);
@@ -608,8 +608,11 @@ namespace IslandConverter
                             else
                                 DoConversion(variant);
 
-                            void DoConversion(BlockConversion conv, bool? isItemGround = null)
+                            void DoConversion(BlockConversion conv, bool? isItemGround = null, BlockConversion clipConversion = null)
                             {
+                                if (clipConversion == null)
+                                    clipConversion = conv;
+
                                 if (conv.ItemModel.Length > 0 && !string.IsNullOrEmpty(conv.ItemModel[0]))
                                 {
                                     var modelToChoose = randomizer.Next(0, conv.ItemModel.Length);
@@ -670,24 +673,24 @@ namespace IslandConverter
 
                                     var placedClips = 0;
 
-                                    if (conv.Clip != null)
-                                        if (DoClip(conv.Clip, false))
+                                    if (clipConversion.Clip != null)
+                                        if (DoClip(clipConversion.Clip, false, clipConversion.ClipOffsetY))
                                             placedClips++;
 
-                                    if (conv.Clips != null)
-                                        foreach (var clip in conv.Clips)
+                                    if (clipConversion.Clips != null)
+                                        foreach (var clip in clipConversion.Clips)
                                             if (clip != null)
-                                                if(DoClip(clip, false))
+                                                if(DoClip(clip, false, clipConversion.ClipOffsetY))
                                                     placedClips++;
 
-                                    bool DoClip(BlockConversionClip clip, bool isDirections)
+                                    bool DoClip(BlockConversionClip clip, bool isDirections, int clipOffsetY)
                                     {
                                         var clipOffsetCoord = (Int3)clip.OffsetCoord;
                                         var rads = (float)((int)block.Direction * Math.PI / 2);
 
                                         clipOffsetCoord = (Int3)AdditionalMath.RotateAroundCenter(clipOffsetCoord, (0, 0, 0), rads);
 
-                                        if (clips.TryGetValue(block.Coord + clipOffsetCoord, out CGameCtnBlock clipBlock))
+                                        if (clips.TryGetValue(block.Coord + clipOffsetCoord + (0, clipOffsetY, 0), out CGameCtnBlock clipBlock))
                                         {
                                             var itemModelClip = clip.ItemModel;
                                             var itemModelClipSplit = itemModelClip.Split(' ');
@@ -698,7 +701,7 @@ namespace IslandConverter
                                             var clipOffsetPivot = default(Vec3);
                                             var clipOffsetDirection = 0;
 
-                                            if (clipProperties.TryGetValue(itemModelClipSplit[0], out ClipProperties properties))
+                                            if (clipProperties.TryGetValue(itemModelClipSplit[0], out ClipProperties properties) && properties != null)
                                             {
                                                 clipOffsetPivot = (Vec3)properties.OffsetPivot;
                                                 clipOffsetDirection = properties.OffsetDirection;
@@ -712,7 +715,7 @@ namespace IslandConverter
                                                 itemModelClipSplit.Length > 1 ? new Collection(itemModelClipSplit[1]) : 10003,
                                                 itemModelClipSplit.Length > 2 ? itemModelClipSplit[2] : "adamkooo");
 
-                                            map.PlaceAnchoredObject(metaClip, offsetAbsolutePosition + clipOffsetCoord * new Vec3(64, 8, 64), (-rads + radsLocal, 0, 0), clipOffsetPivot);
+                                            map.PlaceAnchoredObject(metaClip, offsetAbsolutePosition + clipOffsetCoord * new Vec3(64, 8, 64) + (Vec3)clip.OffsetPosition, (-rads + radsLocal, 0, 0), clipOffsetPivot);
                                             
                                             return true;
                                         }
@@ -739,13 +742,13 @@ namespace IslandConverter
                                                         direction.OffsetPivot[2]);
 
                                                 if (direction.Clip != null)
-                                                    if (DoClip(direction.Clip, true))
+                                                    if (DoClip(direction.Clip, true, direction.ClipOffsetY))
                                                         placedClips++;
 
                                                 if (direction.Clips != null)
                                                     foreach (var clip in direction.Clips)
                                                         if (clip != null)
-                                                            if(DoClip(clip, true))
+                                                            if(DoClip(clip, true, direction.ClipOffsetY))
                                                                 placedClips++;
                                             }
                                         }
