@@ -246,8 +246,6 @@ namespace IslandConverter
 
             var blocks = map.Blocks.ToArray();
 
-            var clips = blocks.Where(x => x.IsClip).ToDictionary(x => x.Coord);
-
             Dictionary<string, BlockConversion[]> conversionInfo;
             Dictionary<string, Dictionary<string, string>> skinInfo;
             Dictionary<string, ClipProperties> clipProperties;
@@ -365,6 +363,8 @@ namespace IslandConverter
                 0,
                 Convert.ToInt32(offset.Z / 2f) - 2);
 
+            var newBlvcks = map.Blocks.ToArray();
+
             switch (size)
             {
                 case MapSize.X31WithSmallBorder:
@@ -372,13 +372,12 @@ namespace IslandConverter
 
                     map.Size = (62, 64, 62);
 
-                    var blvcks31 = map.Blocks.ToArray();
-                    foreach (var b in blvcks31)
+                    foreach (var b in newBlvcks)
                         b.Coord += offset - minCoord.XZ;
 
                     Log.Write("Adding the pool...");
 
-                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), blvcks31.ToList(), -1, conversionInfo, 0);
+                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), newBlvcks.ToList(), -1, conversionInfo, 0);
 
                     offsetHeight = 20;
 
@@ -398,13 +397,12 @@ namespace IslandConverter
 
                     map.Size = (64, 64, 64);
 
-                    var blvcks32 = map.Blocks.ToArray();
-                    foreach (var b in blvcks32)
+                    foreach (var b in newBlvcks)
                         b.Coord += offset - minCoord.XZ;
 
                     Log.Write("Adding the pool...");
 
-                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), blvcks32.ToList(), -1, conversionInfo, 0);
+                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), newBlvcks.ToList(), -1, conversionInfo, 0);
 
                     break;
                 case MapSize.X45WithSmallBorder:
@@ -422,6 +420,8 @@ namespace IslandConverter
                         b.Coord = new Int3(b.Coord.X + 1, b.Coord.Y, b.Coord.Z + 1);
                     break;
             }
+
+            var clips = newBlvcks.Where(x => x.IsClip).ToDictionary(x => x.Coord);
 
             if (cutoff)
             {
