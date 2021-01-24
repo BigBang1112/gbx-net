@@ -304,8 +304,17 @@ namespace IslandConverter
                                     }
                                     else if (variant.Air != null && variant.Air.OffsetYFromTerrain != null)
                                     {
-                                        foreach (var unit in variant.Air.Units)
-                                            if (!RemoveGroundBlocks(block, x, variant.Air, unit)) return false;
+                                        if (variant.Air.Directions != null)
+                                        {
+                                            var direction = variant.Air.Directions.ElementAtOrDefault((int)block.Direction);
+                                            if (direction != null)
+                                                foreach (var unit in direction.Units)
+                                                    if (!RemoveGroundBlocks(block, x, variant.Air, unit)) return false;
+                                        }
+
+                                        if (variant.Air.Units != null)
+                                            foreach (var unit in variant.Air.Units)
+                                                if (!RemoveGroundBlocks(block, x, variant.Air, unit)) return false;
                                     }
                                 }
                             }
@@ -706,8 +715,6 @@ namespace IslandConverter
                                             map.PlaceAnchoredObject(metaClip, offsetAbsolutePosition - clipOffset * new Vec3(64, 8, 64), offsetPitchYawRoll + (rads, 0, 0), clipOffsetPivot);
                                         }
                                     }
-
-                                    
 
                                     if (conv.Directions != null)
                                     {
