@@ -1,2 +1,5 @@
 ﻿7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx:
   OffsetPivot: [0, 2, 0]
+7Road\2Clips\9Road\Air\RoadClip.Item.gbx:
+  OffsetPivot: [-64, 2, 0]
+  OffsetDirection: 3

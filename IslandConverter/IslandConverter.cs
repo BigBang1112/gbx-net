@@ -668,52 +668,56 @@ namespace IslandConverter
                                             throw new FormatException($"Wrong format of OffsetPitchYawRoll: {block.Name} -> index {block.Variant} -> [{string.Join(", ", conv.OffsetPitchYawRoll)}]");
                                     }
 
+                                    var placedClips = 0;
+
                                     if (conv.Clip != null)
-                                        DoClip(conv.Clip, false);
+                                        if (DoClip(conv.Clip, false))
+                                            placedClips++;
 
                                     if (conv.Clips != null)
                                         foreach (var clip in conv.Clips)
                                             if (clip != null)
-                                                DoClip(clip, false);
+                                                if(DoClip(clip, false))
+                                                    placedClips++;
 
-                                    void DoClip(BlockConversionClip clip, bool isDirections)
+                                    bool DoClip(BlockConversionClip clip, bool isDirections)
                                     {
                                         var clipOffsetCoord = (Int3)clip.OffsetCoord;
+                                        var rads = (float)((int)block.Direction * Math.PI / 2);
+
+                                        clipOffsetCoord = (Int3)AdditionalMath.RotateAroundCenter(clipOffsetCoord, (0, 0, 0), rads);
 
                                         if (clips.TryGetValue(block.Coord + clipOffsetCoord, out CGameCtnBlock clipBlock))
                                         {
                                             var itemModelClip = clip.ItemModel;
                                             var itemModelClipSplit = itemModelClip.Split(' ');
 
-                                            var metaClip = new Ident("Island\\" + itemModelClipSplit[0],
-                                                itemModelClipSplit.Length > 1 ? new Collection(itemModelClipSplit[1]) : 10003,
-                                                itemModelClipSplit.Length > 2 ? itemModelClipSplit[2] : "adamkooo");
+                                            if (clipOffsetCoord.Y > 0 && block.IsGround)
+                                                clipOffsetCoord -= (0, 1, 0);
 
                                             var clipOffsetPivot = default(Vec3);
+                                            var clipOffsetDirection = 0;
 
                                             if (clipProperties.TryGetValue(itemModelClipSplit[0], out ClipProperties properties))
                                             {
                                                 clipOffsetPivot = (Vec3)properties.OffsetPivot;
+                                                clipOffsetDirection = properties.OffsetDirection;
                                             }
 
-                                            var clipOffset = clipOffsetCoord;
+                                            var radsLocal = (float)((clipOffsetDirection + clip.OffsetDirection) % 4 * Math.PI / 2);
 
-                                            var offsetDir = (dir + clip.OffsetDirection) % 4;
+                                            //var offsetDir = ((int)block.Direction + clip.OffsetDirection) % 4;
 
-                                            var rads = (float)(offsetDir * Math.PI / 2);
+                                            var metaClip = new Ident("Island\\" + itemModelClipSplit[0],
+                                                itemModelClipSplit.Length > 1 ? new Collection(itemModelClipSplit[1]) : 10003,
+                                                itemModelClipSplit.Length > 2 ? itemModelClipSplit[2] : "adamkooo");
 
-                                            if (!isDirections)
-                                            {
-
-                                                clipOffset = (Convert.ToInt32(Math.Cos(rads) * clipOffset.X -
-                                                Math.Sin(rads) * clipOffset.Z),
-                                                clipOffset.Y, // not supported yet
-                                                Convert.ToInt32(Math.Sin(rads) * clipOffset.X +
-                                                Math.Cos(rads) * clipOffset.Z));
-                                            }
-
-                                            map.PlaceAnchoredObject(metaClip, offsetAbsolutePosition - clipOffset * new Vec3(64, 8, 64), offsetPitchYawRoll + (rads, 0, 0), clipOffsetPivot);
+                                            map.PlaceAnchoredObject(metaClip, offsetAbsolutePosition + clipOffsetCoord * new Vec3(64, 8, 64), (-rads + radsLocal, 0, 0), clipOffsetPivot);
+                                            
+                                            return true;
                                         }
+
+                                        return false;
                                     }
 
                                     if (conv.Directions != null)
@@ -735,12 +739,14 @@ namespace IslandConverter
                                                         direction.OffsetPivot[2]);
 
                                                 if (direction.Clip != null)
-                                                    DoClip(direction.Clip, true);
+                                                    if (DoClip(direction.Clip, true))
+                                                        placedClips++;
 
                                                 if (direction.Clips != null)
                                                     foreach (var clip in direction.Clips)
                                                         if (clip != null)
-                                                            DoClip(clip, true);
+                                                            if(DoClip(clip, true))
+                                                                placedClips++;
                                             }
                                         }
                                     }
@@ -773,7 +779,7 @@ namespace IslandConverter
                                         }
                                     }
 
-                                    Log.Write($"{block.Name} ({(block.IsGround ? "Ground" : "Air")}) -> {meta.ID} ({(isItemGround.HasValue ? (isItemGround.Value ? "Ground" : "Air") : "Undefined")})");
+                                    Log.Write($"{block.Name} ({(block.IsGround ? "Ground" : "Air")}) -> {meta.ID} ({(isItemGround.HasValue ? (isItemGround.Value ? "Ground" : "Air") : "Undefined")}) {(placedClips > 0 ? $"+ {placedClips} clips" : "")}");
 
                                     placed++;
                                 }

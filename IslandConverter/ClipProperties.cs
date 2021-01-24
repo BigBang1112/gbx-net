@@ -9,5 +9,6 @@ namespace IslandConverter
     public class ClipProperties
     {
         public float[] OffsetPivot { get; set; }
+        public int OffsetDirection { get; set; }
     }
 }

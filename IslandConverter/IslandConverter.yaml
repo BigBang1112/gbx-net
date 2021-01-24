@@ -66,6 +66,9 @@ IslandHighWayStartLine:
     - 7Road\9Basic\7Start\Air\RoadStart.Item.gbx
     OffsetDirection: 2
     OffsetAbsolutePosition: [0, -16, 0]
+    Clip:
+      ItemModel: 7Road\2Clips\9Road\Air\RoadClip.Item.gbx
+      OffsetCoord: [0, 0, 1]
   Ground:
     ItemModel:
     - 7Road\9Basic\7Start\Ground\RoadGroundStart.Item.gbx
@@ -83,13 +86,24 @@ IslandHighWayStartFinishLine:
     - 7Road\9Basic\5Multilap\Air\RoadMultiLap.Item.gbx
     OffsetDirection: 2
     OffsetAbsolutePosition: [0, -16, 0]
+    Clips:
+    - ItemModel: 7Road\2Clips\9Road\Air\RoadClip.Item.gbx
+      OffsetCoord: [0, 0, 1]
+    - ItemModel: 7Road\2Clips\9Road\Air\RoadClip.Item.gbx
+      OffsetCoord: [0, 0, -1]
+      OffsetDirection: 2
   Ground:
     ItemModel:
     - 7Road\9Basic\5Multilap\Ground\RoadGroundMultiLap.Item.gbx
     OffsetDirection: 2
     OffsetAbsolutePosition: [0, -8, 0]
     OffsetYFromTerrain: 1
-    OffsetPivot: [0, 0, 0]
+    Clips:
+    - ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
+      OffsetCoord: [0, 0, 1]
+    - ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
+      OffsetCoord: [0, 0, -1]
+      OffsetDirection: 2
 
 IslandHighWayTurbo:
 - Air:
@@ -97,12 +111,24 @@ IslandHighWayTurbo:
     - 7Road\9Basic\3Turbo\Air\RoadTurbo.Item.gbx
     OffsetDirection: 3
     OffsetAbsolutePosition: [0, -16, 0]
+    Clips:
+    - ItemModel: 7Road\2Clips\9Road\Air\RoadClip.Item.gbx
+      OffsetCoord: [0, 0, 1]
+    - ItemModel: 7Road\2Clips\9Road\Air\RoadClip.Item.gbx
+      OffsetCoord: [0, 0, -1]
+      OffsetDirection: 2
   Ground:
     ItemModel:
     - 7Road\9Basic\3Turbo\Ground\RoadGroundTurbo.Item.gbx
     OffsetDirection: 3
     OffsetAbsolutePosition: [0, -8, 0]
     OffsetYFromTerrain: 1
+    Clips:
+    - ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
+      OffsetCoord: [0, 0, 1]
+    - ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
+      OffsetCoord: [0, 0, -1]
+      OffsetDirection: 2
 
 IslandHighWayTurboRoulette:
 - Air:
@@ -110,12 +136,24 @@ IslandHighWayTurboRoulette:
     - 7Road\9Basic\3Turbo\Air\RoadTurbo.Item.gbx
     OffsetDirection: 3
     OffsetAbsolutePosition: [0, -16, 0]
+    Clips:
+    - ItemModel: 7Road\2Clips\9Road\Air\RoadClip.Item.gbx
+      OffsetCoord: [0, 0, 1]
+    - ItemModel: 7Road\2Clips\9Road\Air\RoadClip.Item.gbx
+      OffsetCoord: [0, 0, -1]
+      OffsetDirection: 2
   Ground:
     ItemModel:
     - 7Road\9Basic\3Turbo\Ground\RoadGroundTurbo.Item.gbx
     OffsetDirection: 3
     OffsetAbsolutePosition: [0, -8, 0]
     OffsetYFromTerrain: 1
+    Clips:
+    - ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
+      OffsetCoord: [0, 0, 1]
+    - ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
+      OffsetCoord: [0, 0, -1]
+      OffsetDirection: 2
 
 IslandHighWayTurbo2:
 - Air:
@@ -123,12 +161,24 @@ IslandHighWayTurbo2:
     - 7Road\9Basic\2Turbo2\Air\RoadTurbo2.Item.gbx
     OffsetDirection: 3
     OffsetAbsolutePosition: [0, -16, 0]
+    Clips:
+    - ItemModel: 7Road\2Clips\9Road\Air\RoadClip.Item.gbx
+      OffsetCoord: [0, 0, 1]
+    - ItemModel: 7Road\2Clips\9Road\Air\RoadClip.Item.gbx
+      OffsetCoord: [0, 0, -1]
+      OffsetDirection: 2
   Ground:
     ItemModel:
     - 7Road\9Basic\2Turbo2\Ground\RoadGroundTurbo2.Item.gbx
     OffsetDirection: 3
     OffsetAbsolutePosition: [0, -8, 0]
     OffsetYFromTerrain: 1
+    Clips:
+    - ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
+      OffsetCoord: [0, 0, 1]
+    - ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
+      OffsetCoord: [0, 0, -1]
+      OffsetDirection: 2
 
 IslandHighWay:
 - Air:
@@ -334,12 +384,24 @@ IslandHighWayCheckpoint:
     - 7Road\9Basic\6CheckPoint\Air\RoadCP.Item.gbx
     OffsetAbsolutePosition: [0, -16, 0]
     OffsetDirection: 2
+    Clips:
+    - ItemModel: 7Road\2Clips\9Road\Air\RoadClip.Item.gbx
+      OffsetCoord: [0, 0, 1]
+    - ItemModel: 7Road\2Clips\9Road\Air\RoadClip.Item.gbx
+      OffsetCoord: [0, 0, -1]
+      OffsetDirection: 2
   Ground:
     ItemModel:
     - 7Road\9Basic\6CheckPoint\Ground\RoadGroundCP.Item.gbx
     OffsetAbsolutePosition: [0, -8, 0]
     OffsetDirection: 2
     OffsetYFromTerrain: 1
+    Clips:
+    - ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
+      OffsetCoord: [0, 0, 1]
+    - ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
+      OffsetCoord: [0, 0, -1]
+      OffsetDirection: 2
 
 IslandHighWayGTCurve2:
 - Air:
@@ -409,6 +471,10 @@ IslandHighWayFinish:
     ItemModel:
     - 7Road\9Basic\4Finish\Air\RoadFinish.Item.gbx
     OffsetAbsolutePosition: [0, -16, 0]
+    Clip:
+      ItemModel: 7Road\2Clips\9Road\Air\RoadClip.Item.gbx
+      OffsetCoord: [0, 0, -1]
+      OffsetDirection: 2
   Ground:
     ItemModel:
     - 7Road\9Basic\4Finish\Ground\RoadGroundFinish.Item.gbx
@@ -2083,29 +2149,17 @@ IslandTunnelExitBiSlopeEnd:
     - Units:
       - [0, 0, 0]
       - [0, 0, 1]
-      Clip:
-        ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
-        OffsetCoord: [2, 0, 0]
     - OffsetPivot: [-64, 0, 0]
       Units:
       - [0, 0, 0]
       - [0, 0, -1]
-      Clip:
-        ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
-        OffsetCoord: [2, 0, 0]
     - OffsetPivot: [-64, 0, 0]
       Units:
       - [0, 0, 0]
       - [0, 0, -1]
-      Clip:
-        ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
-        OffsetCoord: [2, 0, 0]
     - Units:
       - [0, 0, 0]
       - [0, 0, 1]
-      Clip:
-        ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
-        OffsetCoord: [2, 0, 0]
 
 IslandTunnelBiSlope2End:
 - ItemModel:
@@ -2719,11 +2773,23 @@ IslandHighWaySlopeBase:
     ItemModel:
     - 7Road\8Slopes\9RoadUpA\Air\RoadUp.Item.gbx
     OffsetAbsolutePosition: [0, -16, 0]
+    Clips:
+    - ItemModel: 7Road\2Clips\9Road\Air\RoadClip.Item.gbx
+      OffsetCoord: [0, 1, 1]
+    - ItemModel: 7Road\2Clips\9Road\Air\RoadClip.Item.gbx
+      OffsetCoord: [0, 0, -1]
+      OffsetDirection: 2
   Ground:
     ItemModel:
     - 7Road\8Slopes\9RoadUpA\Ground\RoadGoundUp.Item.gbx
     OffsetAbsolutePosition: [0, -8, 0]
     OffsetYFromTerrain: 1
+    Clips:
+    - ItemModel: 7Road\2Clips\9Road\Air\RoadClip.Item.gbx
+      OffsetCoord: [0, 1, 1]
+    - ItemModel: 7Road\2Clips\9Road\Ground\RoadGroundClip.Item.gbx
+      OffsetCoord: [0, 0, -1]
+      OffsetDirection: 2
 
 IslandSigns:
 - ItemModel:
