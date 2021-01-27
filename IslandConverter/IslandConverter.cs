@@ -299,6 +299,14 @@ namespace IslandConverter
                                                     if (!RemoveGroundBlocks(block, x, variant.Ground, unit)) return false;
                                         }
 
+                                        if(variant.Ground.ItemModels?.ElementAtOrDefault(0) != null)
+                                        {
+                                            var direction = variant.Ground.ItemModels[0].Directions?.ElementAtOrDefault((int)block.Direction);
+                                            if (direction != null)
+                                                foreach (var unit in direction.Units)
+                                                    if (!RemoveGroundBlocks(block, x, variant.Ground, unit)) return false;
+                                        }
+
                                         if (variant.Ground.Units != null)
                                             foreach (var unit in variant.Ground.Units)
                                                 if (!RemoveGroundBlocks(block, x, variant.Ground, unit)) return false;
@@ -691,7 +699,16 @@ namespace IslandConverter
                                         var clipOffsetCoord = (Int3)clip.OffsetCoord;
                                         var rads = (float)((int)block.Direction * Math.PI / 2);
 
-                                        clipOffsetCoord = (Int3)AdditionalMath.RotateAroundCenter(clipOffsetCoord, (0, 0, 0), rads);
+                                        if (!isDirections)
+                                        {
+                                            Vec3 centerFromCoord = default;
+                                            if (clip.CenterFromCoord != null)
+                                                centerFromCoord = (Vec3)clip.CenterFromCoord;
+                                            if (variant.CenterFromCoord != null)
+                                                centerFromCoord = (Vec3)variant.CenterFromCoord;
+
+                                            clipOffsetCoord = (Int3)AdditionalMath.RotateAroundCenter(clipOffsetCoord, centerFromCoord, rads);
+                                        }
 
                                         if (clips.TryGetValue(block.Coord + clipOffsetCoord + (0, clipOffsetY, 0), out CGameCtnBlock clipBlock))
                                         {

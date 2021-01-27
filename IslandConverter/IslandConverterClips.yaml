@@ -19,3 +19,7 @@
   OffsetDirection: 3
 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx:
   OffsetPivot: [0, -2, -64]
+7Road\2Clips\8RoadTilt\Ground\RoadGroundTiltClip.Item.gbx:
+  OffsetPivot: [0, 2, 0]
+7Road\2Clips\8RoadTilt\Air\RoadTiltClip.Item.gbx:
+  OffsetPivot: [0, 2, 0]
