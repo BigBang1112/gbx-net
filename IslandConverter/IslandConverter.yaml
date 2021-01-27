@@ -2497,9 +2497,35 @@ IslandSeaWayBiSlopeStart:
       OffsetDirection: 2
       Directions:
       - OffsetAbsolutePosition: [64, 0, 0]
-      - ~
-      - ~
+        Clips:
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [-1, 1, 0]
+          OffsetPosition: [-64, 0, 0]
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [2, 0, 0]
+          OffsetPosition: [-64, 0, 0]
+          OffsetDirection: 2
+      - Clips:
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [0, 0, -1]
+          OffsetDirection: 2
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [0, 1, 2]
+      - Clips:
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [-1, 0, 0]
+          OffsetDirection: 2
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [2, 1, 0]
       - OffsetAbsolutePosition: [0, 0, 64]
+        Clips:
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [0, 1, -1]
+          OffsetPosition: [0, 0, -64]
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [0, 0, 2]
+          OffsetPosition: [0, 0, -64]
+          OffsetDirection: 2
     - ItemModel:
       - 5RoadThin\8Slopes\7RoadThinUpPillar\8RoadThinUp2PillarTop.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
@@ -2517,9 +2543,37 @@ IslandSeaWayBiSlopeStart:
       OffsetDirection: 2
       Directions:
       - OffsetAbsolutePosition: [64, 0, 0]
-      - ~
-      - ~
+        Clips:
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [-1, 1, 0]
+          OffsetPosition: [-64, 8, 0]
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [2, 0, 0]
+          OffsetPosition: [-64, 0, 0]
+          OffsetDirection: 2
+      - Clips:
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [0, 0, -1]
+          OffsetDirection: 2
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [0, 1, 2]
+          OffsetPosition: [0, 8, 0]
+      - Clips:
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [-1, 0, 0]
+          OffsetDirection: 2
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [2, 1, 0]
+          OffsetPosition: [0, 8, 0]
       - OffsetAbsolutePosition: [0, 0, 64]
+        Clips:
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [0, 1, -1]
+          OffsetPosition: [0, 8, -64]
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [0, 0, 2]
+          OffsetPosition: [0, 0, -64]
+          OffsetDirection: 2
     - ItemModel:
       - 5RoadThin\8Slopes\7RoadThinUpPillar\8RoadThinUp2PillarTop.Item.gbx
       OffsetAbsolutePosition: [0, -8, 0]
@@ -2551,9 +2605,35 @@ IslandSeaWayBiSlopeEnd:
       OffsetDirection: 2
       Directions:
       - OffsetAbsolutePosition: [64, 0, 0]
-      - ~
-      - ~
+        Clips:
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [-1, 1, 0]
+          OffsetPosition: [-64, 0, 0]
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [2, 0, 0]
+          OffsetPosition: [-64, 0, 0]
+          OffsetDirection: 2
+      - Clips:
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [0, 0, -1]
+          OffsetDirection: 2
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [0, 1, 2]
+      - Clips:
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [-1, 0, 0]
+          OffsetDirection: 2
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [2, 1, 0]
       - OffsetAbsolutePosition: [0, 0, 64]
+        Clips:
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [0, 1, -1]
+          OffsetPosition: [0, 0, -64]
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [0, 0, 2]
+          OffsetPosition: [0, 0, -64]
+          OffsetDirection: 2
     - ItemModel:
       - 5RoadThin\8Slopes\7RoadThinUpPillar\6RoadThinUpCPillarTop.Item.gbx
       OffsetDirection: 2
@@ -2571,9 +2651,37 @@ IslandSeaWayBiSlopeEnd:
       OffsetDirection: 2
       Directions:
       - OffsetAbsolutePosition: [64, 0, 0]
-      - ~
-      - ~
+        Clips:
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [-1, 1, 0]
+          OffsetPosition: [-64, 8, 0]
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [2, 0, 0]
+          OffsetPosition: [-64, 0, 0]
+          OffsetDirection: 2
+      - Clips:
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [0, 0, -1]
+          OffsetDirection: 2
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [0, 1, 2]
+          OffsetPosition: [0, 8, 0]
+      - Clips:
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [-1, 0, 0]
+          OffsetDirection: 2
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [2, 1, 0]
+          OffsetPosition: [0, 8, 0]
       - OffsetAbsolutePosition: [0, 0, 64]
+        Clips:
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [0, 1, -1]
+          OffsetPosition: [0, 8, -64]
+        - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+          OffsetCoord: [0, 0, 2]
+          OffsetPosition: [0, 0, -64]
+          OffsetDirection: 2
     - ItemModel:
       - 5RoadThin\8Slopes\7RoadThinUpPillar\6RoadThinUpCPillarTop.Item.gbx
       OffsetDirection: 2
@@ -5202,25 +5310,44 @@ IslandPlatformSlope:
 
 IslandRoadWallTransitionTiltStraightLeft:
 - Air:
-    ItemModel:
-    - 7Road\4Vertical\3RoadVerticalToRoadTiltMirrored\RoadVerticalToRoadTiltB.Item.gbx
-    OffsetAbsolutePosition: [0, 16, 0]
-    Directions:
-    - ~
-    - OffsetAbsolutePosition: [0, 0, 64]
-    - OffsetAbsolutePosition: [64, 0, 0]
+    ItemModels:
+    - ItemModel:
+      - 7Road\4Vertical\3RoadVerticalToRoadTiltMirrored\RoadVerticalToRoadTiltB.Item.gbx
+      OffsetAbsolutePosition: [0, 16, 0]
+      Directions:
+      - ~
+      - OffsetAbsolutePosition: [0, 0, 64]
+      - OffsetAbsolutePosition: [64, 0, 0]
+    - ItemModel:
+      - 7Road\2Clips\8RoadTilt\Air\RoadTiltClip.Item.gbx
+      OffsetDirection: 2
+      OffsetAbsolutePosition: [0, 16, 0]
+      Directions:
+      - OffsetAbsolutePosition: [-64, 0, 0]
+      - OffsetAbsolutePosition: [0, 0, 128]
+      - OffsetAbsolutePosition: [128, 0, 0]
+      - OffsetAbsolutePosition: [0, 0, -64]
 
 IslandRoadWallTransitionTiltStraightRight:
 - Air:
-    ItemModel:
-    - 7Road\4Vertical\4RoadVerticalToRoadTilt\RoadVerticalToRoadTiltA.Item.gbx
-    OffsetAbsolutePosition: [0, 16, 0]
-    OffsetDirection: 2
-    Directions:
-    - OffsetAbsolutePosition: [64, 0, 0]
-    - OffsetAbsolutePosition: ~
-    - OffsetAbsolutePosition: ~
-    - OffsetAbsolutePosition: [0, 0, 64]
+    ItemModels:
+    - ItemModel:
+      - 7Road\4Vertical\4RoadVerticalToRoadTilt\RoadVerticalToRoadTiltA.Item.gbx
+      OffsetAbsolutePosition: [0, 16, 0]
+      OffsetDirection: 2
+      Directions:
+      - OffsetAbsolutePosition: [64, 0, 0]
+      - OffsetAbsolutePosition: ~
+      - OffsetAbsolutePosition: ~
+      - OffsetAbsolutePosition: [0, 0, 64]
+    - ItemModel:
+      - 7Road\2Clips\8RoadTilt\Air\RoadTiltClip.Item.gbx
+      OffsetAbsolutePosition: [0, 16, 0]
+      Directions:
+      - OffsetAbsolutePosition: [64, 0, 0]
+      - OffsetAbsolutePosition: [0, 0, 0]
+      - OffsetAbsolutePosition: [0, 0, 0]
+      - OffsetAbsolutePosition: [0, 0, 64]
 
 IslandRoadWallGTCurve1SlopeRight:
 - Air:
@@ -5266,24 +5393,45 @@ IslandRoadWallStraight:
 
 IslandRoadWallTransitionTiltRight:
 - Air:
-    ItemModel:
-    - 7Road\4Vertical\5RoadVerticalToRoadTurnMirrored\RoadVerticalToRoadTurnB.Item.gbx
-    OffsetDirection: 2
-    OffsetAbsolutePosition: [0, 16, 0]
-    Directions:
-    - OffsetAbsolutePosition: [64, 0, 64]
-    - OffsetAbsolutePosition: [64, 0, 0]
-    - ~
-    - OffsetAbsolutePosition: [0, 0, 64]
+    ItemModels:
+    - ItemModel:
+      - 7Road\4Vertical\5RoadVerticalToRoadTurnMirrored\RoadVerticalToRoadTurnB.Item.gbx
+      OffsetDirection: 2
+      OffsetAbsolutePosition: [0, 16, 0]
+      Directions:
+      - OffsetAbsolutePosition: [64, 0, 64]
+      - OffsetAbsolutePosition: [64, 0, 0]
+      - ~
+      - OffsetAbsolutePosition: [0, 0, 64]
+    - ItemModel:
+      - 7Road\2Clips\8RoadTilt\Air\RoadTiltClip.Item.gbx
+      OffsetDirection: 1
+      OffsetAbsolutePosition: [0, 16, 0]
+      Directions:
+      - OffsetAbsolutePosition: [64, 0, 0]
+      - OffsetAbsolutePosition: [0, 0, 0]
+      - OffsetAbsolutePosition: [0, 0, 64]
+      - OffsetAbsolutePosition: [64, 0, 64]
 
 IslandRoadWallTransitionTiltLeft:
 - Air:
-    ItemModel:
-    - 7Road\4Vertical\6RoadVerticalToRoadTurn\RoadVerticalToRoadTurnA.Item.gbx
-    OffsetAbsolutePosition: [0, 16, 0]
-    Directions:
-    - OffsetAbsolutePosition: [0, 0, 64]
-    - OffsetAbsolutePosition: [64, 0, 64]
+    ItemModels:
+    - ItemModel:
+      - 7Road\4Vertical\6RoadVerticalToRoadTurn\RoadVerticalToRoadTurnA.Item.gbx
+      OffsetAbsolutePosition: [0, 16, 0]
+      Directions:
+      - OffsetAbsolutePosition: [0, 0, 64]
+      - OffsetAbsolutePosition: [64, 0, 64]
+      - OffsetAbsolutePosition: [64, 0, 0]
+    - ItemModel:
+      - 7Road\2Clips\8RoadTilt\Air\RoadTiltClip.Item.gbx
+      OffsetDirection: 1
+      OffsetAbsolutePosition: [0, 16, 0]
+      Directions:
+      - OffsetAbsolutePosition: [-64, 0, 0]
+      - OffsetAbsolutePosition: [0, 0, 128]
+      - OffsetAbsolutePosition: [128, 0, 64]
+      - OffsetAbsolutePosition: [64, 0, -64]
 
 IslandHighWayTiltGTCurve2:
 - Air:
@@ -5878,9 +6026,41 @@ IslandSeaWayScrew360Mirror:
   OffsetAbsolutePosition: [0, -72, 0]
   Directions:
   - OffsetAbsolutePosition: [128, 0, 64]
+    Clips:
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [2, 0, 0]
+      OffsetPosition: [-128, 64, -64]
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [1, 8, 0]
+      OffsetPosition: [-128, 64, -64]
+      OffsetDirection: 2
   - OffsetAbsolutePosition: [64, 0, 64]
+    Clips:
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [0, 0, 1]
+      OffsetPosition: [-64, 64, -64]
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [0, 8, 2]
+      OffsetPosition: [-64, 64, -64]
+      OffsetDirection: 2
   - OffsetAbsolutePosition: [64, 0, 64]
+    Clips:
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [1, 0, 2]
+      OffsetPosition: [-64, 64, -64]
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [2, 8, 2]
+      OffsetPosition: [-64, 64, -64]
+      OffsetDirection: 2
   - OffsetAbsolutePosition: [64, 0, 128]
+    Clips:
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [2, 0, 2]
+      OffsetPosition: [-64, 64, -128]
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [2, 8, 1]
+      OffsetPosition: [-64, 64, -128]
+      OffsetDirection: 2
   KeepWater: true
 
 IslandTunnelCircularSlopeBaseCorner:
@@ -5915,9 +6095,68 @@ IslandSeaWayBigSlopeXCrossBase:
   OffsetAbsolutePosition: [0, -56, 0]
   Directions:
   - OffsetAbsolutePosition: [192, 0, 128]
+    Clips:
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [-1, 0, 0]
+      OffsetPosition: [-192, 48, -128]
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [-1, 0, 2]
+      OffsetPosition: [-192, 48, -128]
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [4, 12, 0]
+      OffsetPosition: [-192, 48, -128]
+      OffsetDirection: 2
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [4, 12, 2]
+      OffsetPosition: [-192, 48, -128]
+      OffsetDirection: 2
   - OffsetAbsolutePosition: [128, 0, 0]
-  - ~
+    Clips:
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [0, 12, -1]
+      OffsetPosition: [-128, 48, 0]
+      OffsetDirection: 2
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [2, 12, -1]
+      OffsetPosition: [-128, 48, 0]
+      OffsetDirection: 2
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [0, 0, 4]
+      OffsetPosition: [-128, 48, 0]
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [2, 0, 4]
+      OffsetPosition: [-128, 48, 0]
+  - Clips:
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [-1, 12, 0]
+      OffsetPosition: [0, 48, 0]
+      OffsetDirection: 2
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [-1, 12, 2]
+      OffsetPosition: [0, 48, 0]
+      OffsetDirection: 2
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [4, 0, 0]
+      OffsetPosition: [0, 48, 0]
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [4, 0, 2]
+      OffsetPosition: [0, 48, 0]
   - OffsetAbsolutePosition: [0, 0, 192]
+    Clips:
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [0, 0, -1]
+      OffsetPosition: [0, 48, -192]
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [2, 0, -1]
+      OffsetPosition: [0, 48, -192]
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [0, 12, 4]
+      OffsetPosition: [0, 48, -192]
+      OffsetDirection: 2
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [2, 12, 4]
+      OffsetPosition: [0, 48, -192]
+      OffsetDirection: 2
   KeepWater: true
 
 IslandSeaWayScrew360:
@@ -5926,9 +6165,41 @@ IslandSeaWayScrew360:
   OffsetAbsolutePosition: [0, -72, 0]
   Directions:
   - OffsetAbsolutePosition: [128, 0, 64]
+    Clips:
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [2, 0, 2]
+      OffsetPosition: [-128, 64, -64]
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [1, 8, 2]
+      OffsetPosition: [-128, 64, -64]
+      OffsetDirection: 2
   - OffsetAbsolutePosition: [64, 0, 64]
+    Clips:
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [2, 0, 1]
+      OffsetPosition: [-64, 64, -64]
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [2, 8, 2]
+      OffsetPosition: [-64, 64, -64]
+      OffsetDirection: 2
   - OffsetAbsolutePosition: [64, 0, 64]
+    Clips:
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [1, 0, 0]
+      OffsetPosition: [-64, 64, -64]
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [2, 8, 0]
+      OffsetPosition: [-64, 64, -64]
+      OffsetDirection: 2
   - OffsetAbsolutePosition: [64, 0, 128]
+    Clips:
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [0, 0, 2]
+      OffsetPosition: [-64, 64, -128]
+    - ItemModel: 5RoadThin\5Clips\RoadThinUniversal\RoadThinClip.Item.gbx
+      OffsetCoord: [0, 8, 1]
+      OffsetPosition: [-64, 64, -128]
+      OffsetDirection: 2
   KeepWater: true
 
 IslandRoadWallCorner:
