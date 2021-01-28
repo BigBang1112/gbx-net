@@ -4141,9 +4141,35 @@ IslandPlatformBiSlopeStart:
     OffsetDirection: 2
     Directions:
     - OffsetAbsolutePosition: [64, 0, 0]
-    - ~
-    - ~
+      Clips:
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetPosition: [-64, 0, 0]
+        OffsetCoord: [-1, 1, 0]
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [2, 0, 0]
+        OffsetPosition: [-64, 0, 0]
+        OffsetDirection: 2
+    - Clips:
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [0, 1, 2]
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [0, 0, -1]
+        OffsetDirection: 2
+    - Clips:
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [-1, 0, 0]
+        OffsetDirection: 2
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [2, 1, 0]
     - OffsetAbsolutePosition: [0, 0, 64]
+      Clips:
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [0, 1, -1]
+        OffsetPosition: [0, 0, -64]
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [0, 0, 2]
+        OffsetPosition: [0, 0, -64]
+        OffsetDirection: 2
   Ground:
     ItemModel:
     - 6Platform\3HalfSlopes\7HalfUp2\Water\PlatformHalfUP2Water.Item.gbx
@@ -4151,9 +4177,37 @@ IslandPlatformBiSlopeStart:
     OffsetDirection: 2
     Directions:
     - OffsetAbsolutePosition: [64, 0, 0]
-    - ~
-    - ~
+      Clips:
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetPosition: [-64, 8, 0]
+        OffsetCoord: [-1, 1, 0]
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [2, 0, 0]
+        OffsetPosition: [-64, 0, 0]
+        OffsetDirection: 2
+    - Clips:
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [0, 1, 2]
+        OffsetPosition: [0, 8, 0]
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [0, 0, -1]
+        OffsetDirection: 2
+    - Clips:
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [-1, 0, 0]
+        OffsetDirection: 2
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [2, 1, 0]
+        OffsetPosition: [0, 8, 0]
     - OffsetAbsolutePosition: [0, 0, 64]
+      Clips:
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [0, 1, -1]
+        OffsetPosition: [0, 8, -64]
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [0, 0, 2]
+        OffsetPosition: [0, 0, -64]
+        OffsetDirection: 2
   KeepWater: true
 
 IslandPlatformBiSlopeEnd:
@@ -4164,9 +4218,35 @@ IslandPlatformBiSlopeEnd:
     OffsetDirection: 2
     Directions:
     - OffsetAbsolutePosition: [64, 0, 0]
-    - ~
-    - ~
+      Clips:
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetPosition: [-64, 0, 0]
+        OffsetCoord: [-1, 1, 0]
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [2, 0, 0]
+        OffsetPosition: [-64, 0, 0]
+        OffsetDirection: 2
+    - Clips:
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [0, 1, 2]
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [0, 0, -1]
+        OffsetDirection: 2
+    - Clips:
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [-1, 0, 0]
+        OffsetDirection: 2
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [2, 1, 0]
     - OffsetAbsolutePosition: [0, 0, 64]
+      Clips:
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [0, 1, -1]
+        OffsetPosition: [0, 0, -64]
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [0, 0, 2]
+        OffsetPosition: [0, 0, -64]
+        OffsetDirection: 2
   Ground:
     ItemModel:
     - 6Platform\3HalfSlopes\8HalfUpC\Water\HalfUpCWater.Item.gbx
@@ -4174,9 +4254,37 @@ IslandPlatformBiSlopeEnd:
     OffsetDirection: 2
     Directions:
     - OffsetAbsolutePosition: [64, 0, 0]
-    - ~
-    - ~
+      Clips:
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetPosition: [-64, 8, 0]
+        OffsetCoord: [-1, 1, 0]
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [2, 0, 0]
+        OffsetPosition: [-64, 0, 0]
+        OffsetDirection: 2
+    - Clips:
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [0, 1, 2]
+        OffsetPosition: [0, 8, 0]
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [0, 0, -1]
+        OffsetDirection: 2
+    - Clips:
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [-1, 0, 0]
+        OffsetDirection: 2
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [2, 1, 0]
+        OffsetPosition: [0, 8, 0]
     - OffsetAbsolutePosition: [0, 0, 64]
+      Clips:
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [0, 1, -1]
+        OffsetPosition: [0, 8, -64]
+      - ItemModel: 6Platform\1Clips\UniPlatformClip\PlatformClip.Item.gbx
+        OffsetCoord: [0, 0, 2]
+        OffsetPosition: [0, 0, -64]
+        OffsetDirection: 2
   KeepWater: true
 
 IslandSeaWaySupport:
