@@ -23,3 +23,9 @@
   OffsetPivot: [0, 2, 0]
 7Road\2Clips\8RoadTilt\Air\RoadTiltClip.Item.gbx:
   OffsetPivot: [0, 2, 0]
+7Road\2Clips\7RoadVertical\Air\RoadVerticalClip.Item.gbx:
+  OffsetPivot: [-64, 2, 0]
+  OffsetDirection: 1
+7Road\2Clips\7RoadVertical\Air\RoadVerticalClipB.Item.gbx:
+  OffsetPivot: [64, 2, 0]
+  OffsetDirection: 1

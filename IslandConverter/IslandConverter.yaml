@@ -5315,9 +5315,26 @@ IslandRoadWallTransitionTiltStraightLeft:
       - 7Road\4Vertical\3RoadVerticalToRoadTiltMirrored\RoadVerticalToRoadTiltB.Item.gbx
       OffsetAbsolutePosition: [0, 16, 0]
       Directions:
-      - ~
+      - Clip:
+          ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClipB.Item.gbx
+          OffsetCoord: [-1, 0, 0]
+          OffsetDirection: 2
       - OffsetAbsolutePosition: [0, 0, 64]
+        Clip:
+          ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClipB.Item.gbx
+          OffsetCoord: [0, 0, 2]
+          OffsetPosition: [0, 0, -64]
+          OffsetDirection: 2
       - OffsetAbsolutePosition: [64, 0, 0]
+        Clip:
+          ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClipB.Item.gbx
+          OffsetCoord: [2, 0, 0]
+          OffsetPosition: [-64, 0, 0]
+          OffsetDirection: 2
+      - Clip:
+          ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClipB.Item.gbx
+          OffsetCoord: [0, 0, -1]
+          OffsetDirection: 2
     - ItemModel:
       - 7Road\2Clips\8RoadTilt\Air\RoadTiltClip.Item.gbx
       OffsetDirection: 2
@@ -5337,9 +5354,25 @@ IslandRoadWallTransitionTiltStraightRight:
       OffsetDirection: 2
       Directions:
       - OffsetAbsolutePosition: [64, 0, 0]
-      - OffsetAbsolutePosition: ~
-      - OffsetAbsolutePosition: ~
+        Clip:
+          ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClip.Item.gbx
+          OffsetCoord: [-1, 0, 0]
+          OffsetPosition: [-64, 0, 0]
+          OffsetDirection: 3
+      - Clip:
+          ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClip.Item.gbx
+          OffsetCoord: [0, 0, 2]
+          OffsetDirection: 3
+      - Clip:
+          ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClip.Item.gbx
+          OffsetCoord: [2, 0, 0]
+          OffsetDirection: 3
       - OffsetAbsolutePosition: [0, 0, 64]
+        Clip:
+          ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClip.Item.gbx
+          OffsetCoord: [0, 0, -1]
+          OffsetPosition: [0, 0, -64]
+          OffsetDirection: 3
     - ItemModel:
       - 7Road\2Clips\8RoadTilt\Air\RoadTiltClip.Item.gbx
       OffsetAbsolutePosition: [0, 16, 0]
@@ -5360,6 +5393,14 @@ IslandRoadWallGTCurve1SlopeRight:
     - OffsetAbsolutePosition: [64, 0, 0]
     - ~
     - OffsetAbsolutePosition: [0, 0, 64]
+    Clips:
+    - ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClipB.Item.gbx
+      OffsetCoord: [0, 4, -1]
+      OffsetDirection: 2
+    - ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClip.Item.gbx
+      OffsetCoord: [2, 0, 1]
+      OffsetDirection: 3
+  CenterFromCoord: [0.5, 0, 0.5]
 
 IslandRoadWallGTCurve1SlopeLeft:
 - Air:
@@ -5372,6 +5413,14 @@ IslandRoadWallGTCurve1SlopeLeft:
     - ~
     - OffsetAbsolutePosition: [0, 0, 64]
     - OffsetAbsolutePosition: [64, 0, 64]
+    Clips:
+    - ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClipB.Item.gbx
+      OffsetCoord: [0, 0, -1]
+      OffsetDirection: 2
+    - ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClip.Item.gbx
+      OffsetCoord: [2, 4, 1]
+      OffsetDirection: 3
+  CenterFromCoord: [0.5, 0, 0.5]
 
 IslandRoadWallGTCurve1:
 - Air:
@@ -5383,6 +5432,13 @@ IslandRoadWallGTCurve1:
     - OffsetAbsolutePosition: [0, 0, 64]
     - OffsetAbsolutePosition: [64, 0, 64]
     - OffsetAbsolutePosition: [64, 0, 0]
+    Clips:
+    - ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClip.Item.gbx
+      OffsetCoord: [1, 0, -1]
+    - ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClipB.Item.gbx
+      OffsetCoord: [-1, 0, 1]
+      OffsetDirection: 3
+  CenterFromCoord: [0.5, 0, 0.5]
     
 IslandRoadWallStraight:
 - Air:
@@ -5390,6 +5446,12 @@ IslandRoadWallStraight:
     - 7Road\4Vertical\9RoadVertical\RoadVertical.Item.gbx
     OffsetDirection: 2
     OffsetAbsolutePosition: [0, 16, 0]
+    Clips:
+    - ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClip.Item.gbx
+      OffsetCoord: [0, 0, -1]
+    - ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClipB.Item.gbx
+      OffsetCoord: [0, 0, 1]
+
 
 IslandRoadWallTransitionTiltRight:
 - Air:
@@ -5412,6 +5474,10 @@ IslandRoadWallTransitionTiltRight:
       - OffsetAbsolutePosition: [0, 0, 0]
       - OffsetAbsolutePosition: [0, 0, 64]
       - OffsetAbsolutePosition: [64, 0, 64]
+    Clip:
+      ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClip.Item.gbx
+      OffsetCoord: [1, 0, -1]
+  CenterFromCoord: [0.5, 0, 0.5]
 
 IslandRoadWallTransitionTiltLeft:
 - Air:
@@ -5432,6 +5498,11 @@ IslandRoadWallTransitionTiltLeft:
       - OffsetAbsolutePosition: [0, 0, 128]
       - OffsetAbsolutePosition: [128, 0, 64]
       - OffsetAbsolutePosition: [64, 0, -64]
+    Clip:
+      ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClipB.Item.gbx
+      OffsetCoord: [0, 0, -1]
+      OffsetDirection: 2
+  CenterFromCoord: [0.5, 0, 0.5]
 
 IslandHighWayTiltGTCurve2:
 - Air:
@@ -6207,6 +6278,12 @@ IslandRoadWallCorner:
   - 7Road\4Vertical\8RoadVerticalTurn\RoadVerticalTurn.Item.gbx
   OffsetDirection: 3
   OffsetAbsolutePosition: [0, 16, 0]
+  Clips:
+  - ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClip.Item.gbx
+    OffsetCoord: [0, 0, -1]
+  - ItemModel: 7Road\2Clips\7RoadVertical\Air\RoadVerticalClipB.Item.gbx
+    OffsetCoord: [-1, 0, 0]
+    OffsetDirection: 3
 
 IslandCroisetteCheckpoint:
 - Air:
