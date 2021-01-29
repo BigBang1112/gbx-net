@@ -21,6 +21,9 @@ namespace GBX.NET
             Z = z;
         }
 
+        public float GetMagnitude() => (float)Math.Sqrt(X * X + Y * Y + Z * Z);
+        public float GetSqrMagnitude() => X * X + Y * Y + Z * Z;
+
         public override string ToString() => $"({X}, {Y}, {Z})";
         public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
         public override bool Equals(object obj) => obj is Vec3 a && a == this;

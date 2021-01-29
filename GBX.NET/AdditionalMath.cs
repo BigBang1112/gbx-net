@@ -39,5 +39,10 @@ namespace GBX.NET
                 (float)(Math.Sin(radians) * (point.X - center.X) + Math.Cos(radians) * (point.Z - center.Z) + center.Z)
             );
         }
+
+        public static float Lerp(float a, float b, float t)
+        {
+            return a + t * (b - a);
+        }
     }
 }

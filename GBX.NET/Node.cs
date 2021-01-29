@@ -116,8 +116,7 @@ namespace GBX.NET
 
         public static T Parse<T>(GameBoxReader r, uint? classID = null, GameBox<T> gbx = null, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
+            var stopwatch = Stopwatch.StartNew();
 
             if (classID == null)
                 classID = r.ReadUInt32();
@@ -170,10 +169,11 @@ namespace GBX.NET
                 }
                 else
                 {
-                    if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
-                        Log.Write($"[{node.ClassName}] 0x{chunkID:X8} ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})");
+                    var logChunk = $"[{node.ClassName}] 0x{chunkID:X8} ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})";
+                    if (node.Body?.GBX.ClassID.HasValue == true && Remap(node.Body.GBX.ClassID.Value) == node.ID)
+                        Log.Write(logChunk);
                     else
-                        Log.Write($"~ [{node.ClassName}] 0x{chunkID:X8} ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})");
+                        Log.Write($"~ {logChunk}");
                 }
 
                 Type chunkClass = null;
@@ -194,15 +194,22 @@ namespace GBX.NET
                     {
                         if (chunkID != 0 && !reflected)
                         {
-                            Debug.WriteLine($"Wrong chunk format or unskippable chunk: 0x{chunkID:X8} ({Names.Where(x => x.Key == Chunk.Remap(chunkID & 0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})"); // Read till facade
                             node.FaultyChunk = chunkID;
 
-                            if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
-                                Log.Write($"[{node.ClassName}] 0x{chunkID:X8} ERROR (wrong chunk format or unknown unskippable chunk)", ConsoleColor.Red);
+                            var logChunkError = $"[{node.ClassName}] 0x{chunkID:X8} ERROR (wrong chunk format or unknown unskippable chunk)";
+                            if (node.Body?.GBX.ClassID.HasValue == true && Remap(node.Body.GBX.ClassID.Value) == node.ID)
+                                Log.Write(logChunkError, ConsoleColor.Red);
                             else
-                                Log.Write($"~ [{node.ClassName}] 0x{chunkID:X8} ERROR (wrong chunk format or unknown unskippable chunk)", ConsoleColor.Red);
+                                Log.Write($"~ {logChunkError}", ConsoleColor.Red);
 
-                            var buffer = BitConverter.GetBytes(chunkID);
+                            throw new Exception($"Wrong chunk format or unskippable chunk: 0x{chunkID:X8} (" +
+                                $"{Names.Where(x => x.Key == Chunk.Remap(chunkID & 0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})" +
+                                $"\nPrevious chunk: 0x{previousChunk ?? 0:X8} (" +
+                                $"{(previousChunk.HasValue ? (Names.Where(x => x.Key == Chunk.Remap(previousChunk.Value & 0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class") : "not a class")})");
+
+                            /* Usually breaks in the current state and causes confusion
+                             * 
+                             * var buffer = BitConverter.GetBytes(chunkID);
                             using (var restMs = new MemoryStream(ushort.MaxValue))
                             {
                                 restMs.Write(buffer, 0, buffer.Length);
@@ -212,7 +219,7 @@ namespace GBX.NET
 
                                 node.Rest = restMs.ToArray();
                             }
-                            Debug.WriteLine("FACADE found.");
+                            Debug.WriteLine("FACADE found.");*/
                         }
                         break;
                     }
@@ -329,10 +336,11 @@ namespace GBX.NET
 
             stopwatch.Stop();
 
-            if (node.Body != null && node.Body.GBX.ClassID.HasValue && Remap(node.Body.GBX.ClassID.Value) == node.ID)
-                Log.Write($"[{node.ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)", ConsoleColor.Green);
+            var logNodeCompletion = $"[{node.ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)";
+            if (node.Body?.GBX.ClassID.HasValue == true && Remap(node.Body.GBX.ClassID.Value) == node.ID)
+                Log.Write(logNodeCompletion, ConsoleColor.Green);
             else
-                Log.Write($"~ [{node.ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)", ConsoleColor.Green);
+                Log.Write($"~ {logNodeCompletion}", ConsoleColor.Green);
 
             return node;
         }
@@ -349,8 +357,7 @@ namespace GBX.NET
 
         public void Write(GameBoxWriter w, ClassIDRemap remap)
         {
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
+            var stopwatch = Stopwatch.StartNew();
 
             int counter = 0;
 
@@ -358,10 +365,11 @@ namespace GBX.NET
             {
                 counter++;
 
-                if (Body != null && Body.GBX.ClassID.HasValue && Remap(Body.GBX.ClassID.Value) == ID)
-                    Log.Write($"[{ClassName}] 0x{chunk.ID:X8} ({(float)counter / Chunks.Count:0.00%})");
+                var logChunk = $"[{ClassName}] 0x{chunk.ID:X8} ({(float)counter / Chunks.Count:0.00%})";
+                if (Body?.GBX.ClassID.HasValue == true && Remap(Body.GBX.ClassID.Value) == ID)
+                    Log.Write(logChunk);
                 else
-                    Log.Write($"~ [{ClassName}] 0x{chunk.ID:X8} ({(float)counter / Chunks.Count:0.00%})");
+                    Log.Write($"~ {logChunk}");
 
                 ((IChunk)chunk).Node = this;
                 chunk.Unknown.Position = 0;
@@ -370,8 +378,8 @@ namespace GBX.NET
 
                 if (chunk is ILookbackable l)
                 {
-                    l.LookbackWritten = false;
-                    l.LookbackStrings.Clear();
+                    l.IdWritten = false;
+                    l.IdStrings.Clear();
 
                     lb = l;
                 }
@@ -388,6 +396,8 @@ namespace GBX.NET
                 using (var msW = new GameBoxWriter(ms, lb))
                 {
                     var rw = new GameBoxReaderWriter(msW);
+
+                    msW.Chunk = chunk;
 
                     try
                     {
@@ -417,6 +427,8 @@ namespace GBX.NET
                         }
                         else throw e; // Unskippable chunk must have a Write implementation
                     }
+
+                    msW.Chunk = null;
                 }
             }
 
@@ -424,10 +436,11 @@ namespace GBX.NET
 
             stopwatch.Stop();
 
-            if (Body != null && Body.GBX.ClassID.HasValue && Remap(Body.GBX.ClassID.Value) == ID)
-                Log.Write($"[{ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)", ConsoleColor.Green);
+            var logNodeCompletion = $"[{ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)";
+            if (Body?.GBX.ClassID.HasValue == true && Remap(Body.GBX.ClassID.Value) == ID)
+                Log.Write(logNodeCompletion, ConsoleColor.Green);
             else
-                Log.Write($"~ [{ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)", ConsoleColor.Green);
+                Log.Write($"~ {logNodeCompletion}", ConsoleColor.Green);
         }
 
         static Node()
@@ -571,7 +584,7 @@ namespace GBX.NET
 
                     foreach (var cls in inheritanceClasses)
                     {
-                        var availableInheritanceClass = types.Where(x => x.IsClass
+                        var availableInheritanceClass = types.Where(x => x.IsClass && x.Namespace != null
                            && x.Namespace.StartsWith("GBX.NET.Engines") && (GetBaseType(x) == typeof(Node))
                            && (x.GetCustomAttribute<NodeAttribute>().ID == cls)).FirstOrDefault();
 

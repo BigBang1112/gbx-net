@@ -7,8 +7,10 @@ namespace GBX.NET
     public static class Log
     {
         public delegate void OnLog(string text, ConsoleColor color);
+        public delegate void OnPush(int amount);
 
         public static event OnLog OnLogEvent;
+        public static event OnPush OnPushEvent;
 
         public static StringWriter MainLog { get; }
         public static Dictionary<string, StringWriter> AlternativeLogs { get; }
@@ -48,6 +50,16 @@ namespace GBX.NET
         public static void Write()
         {
             Write("");
+        }
+
+        public static void Push(int amount)
+        {
+            OnPushEvent?.Invoke(amount);
+        }
+
+        public static void Push()
+        {
+            Push(1);
         }
     }
 }

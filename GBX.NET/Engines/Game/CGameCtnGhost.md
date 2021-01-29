@@ -30,7 +30,7 @@
 void Read(GameBoxReader r)
 {
     int version = r.ReadInt32();
-    Meta model = r.ReadMeta();
+    Ident model = r.ReadIdent();
     Vec3 a = r.ReadVec3();
 
     int numSkinFiles = r.ReadInt32();
@@ -119,7 +119,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-    LookbackString uid = r.ReadLookbackString();
+    Id uid = r.ReadId();
 }
 ```
 
@@ -137,7 +137,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-    LookbackString a = r.ReadLookbackString();
+    Id u01 = r.ReadId();
 }
 ```
 
@@ -176,7 +176,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-    LookbackString vehicle = r.ReadLookbackString();
+    Id vehicle = r.ReadId();
 }
 ```
 
@@ -199,7 +199,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-    Meta a = r.ReadMeta();
+    Ident a = r.ReadIdent();
 }
 ```
 
@@ -216,7 +216,7 @@ void Read(GameBoxReader r)
 
         int numControlNames = r.ReadInt32();
         for (var i = 0; i < numControlNames; i++)
-            LookbackString controlName = r.ReadLookbackString();
+            Id controlName = r.ReadId();
 
         int numEntries = r.ReadInt32();
 
@@ -266,7 +266,7 @@ void Read(GameBoxReader r)
 
     int numActions = r.ReadInt32();
     for(var i = 0; i < numActions; i++)
-        LookbackString action = r.ReadLookbackString();
+        Id action = r.ReadId();
     
     int d = r.ReadInt32();
 

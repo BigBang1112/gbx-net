@@ -56,7 +56,7 @@ namespace GBX.NET.Engines.Game
 
                 n.MapInfos = rw.Array(n.MapInfos, i => new MapInfo()
                 {
-                    Metadata = rw.Reader.ReadMeta(),
+                    Metadata = rw.Reader.ReadIdent(),
                     FilePath = rw.Reader.ReadString()
                 },
                 x =>
@@ -75,7 +75,7 @@ namespace GBX.NET.Engines.Game
 
         public class MapInfo
         {
-            public Meta Metadata { get; set; }
+            public Ident Metadata { get; set; }
             public string FilePath { get; set; }
 
             public override string ToString()

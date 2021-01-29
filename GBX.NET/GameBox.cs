@@ -208,8 +208,8 @@ namespace GBX.NET
             using (MemoryStream ms = new MemoryStream())
             using (GameBoxWriter bodyW = new GameBoxWriter(ms))
             {
-                (Body as ILookbackable).LookbackWritten = false;
-                (Body as ILookbackable).LookbackStrings.Clear();
+                (Body as ILookbackable).IdWritten = false;
+                (Body as ILookbackable).IdStrings.Clear();
                 Body.AuxilaryNodes.Clear();
 
                 Log.Write("Writing the body...");
@@ -218,8 +218,8 @@ namespace GBX.NET
 
                 Log.Write("Writing the header...");
 
-                (Header as ILookbackable).LookbackWritten = false;
-                (Header as ILookbackable).LookbackStrings.Clear();
+                (Header as ILookbackable).IdWritten = false;
+                (Header as ILookbackable).IdStrings.Clear();
                 Header.Write(w, Body.AuxilaryNodes.Count + 1, remap);
 
                 Log.Write("Writing the reference table...");
@@ -239,24 +239,45 @@ namespace GBX.NET
         }
 
         /// <summary>
+        /// Saves the serialized GameBox to a stream.
+        /// </summary>
+        /// <param name="stream">Any kind of stream that supports writing.</param>
+        /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
+        public void Save(Stream stream, ClassIDRemap remap)
+        {
+            if (IntPtr.Size == 8)
+                throw new NotSupportedException("Saving GBX is not supported with x64 platform target, due to LZO compression bug. Please force your platform target to x86.");
+
+            using (var w = new GameBoxWriter(stream))
+                Write(w, remap);
+        }
+
+        /// <summary>
+        /// Saves the serialized GameBox to a stream.
+        /// </summary>
+        /// <param name="stream">Any kind of stream that supports writing.</param>
+        public void Save(Stream stream)
+        {
+            Save(stream, ClassIDRemap.Latest);
+        }
+
+        /// <summary>
         /// Saves the serialized GameBox on a disk.
         /// </summary>
         /// <param name="fileName">Relative or absolute file path.</param>
         /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
         public void Save(string fileName, ClassIDRemap remap)
         {
-            using (var ms = new MemoryStream())
-            using (var w = new GameBoxWriter(ms))
-            {
-                Write(w, remap);
-                ms.Position = 0;
-                File.WriteAllBytes(fileName, ms.ToArray());
-            }
+            using (var fs = File.OpenWrite(fileName))
+                Save(fs, remap);
 
             Log.Write($"GBX file {fileName} saved.");
         }
 
-        /// <inheritdoc cref="Save(string, ClassIDRemap)"/>
+        /// <summary>
+        /// Saves the serialized GameBox on a disk.
+        /// </summary>
+        /// <param name="fileName">Relative or absolute file path.</param>
         public void Save(string fileName)
         {
             Save(fileName, ClassIDRemap.Latest);
@@ -668,7 +689,7 @@ namespace GBX.NET
                 Debug.WriteLine("GetGameBoxType: " + modernID.ToString("x8"));
 
                 var availableClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
-                        && x.Namespace.StartsWith("GBX.NET.Engines") && GetBaseType(x) == typeof(Node)
+                        && x.Namespace?.StartsWith("GBX.NET.Engines") == true && GetBaseType(x) == typeof(Node)
                         && x.GetCustomAttribute<NodeAttribute>().ID == modernID).FirstOrDefault();
 
                 if (availableClass == null) return null;

@@ -70,68 +70,76 @@ namespace GBX.NET
             else return ReadBoolean();
         }
 
-        public LookbackString ReadLookbackString(ILookbackable lookbackable)
+        public Id ReadId(ILookbackable lookbackable)
         {
-            if (!lookbackable.LookbackVersion.HasValue)
-                lookbackable.LookbackVersion = ReadInt32();
+            if (!lookbackable.IdVersion.HasValue)
+            {
+                lookbackable.IdVersion = ReadInt32();
+
+                if ((lookbackable.IdVersion & 0xC0000000) > 10) // Edge-case scenario where Id doesn't have a version for whatever reason (can be multiple)
+                {
+                    lookbackable.IdVersion = 3;
+                    BaseStream.Position -= 4;
+                }
+            }
 
             var index = ReadUInt32();
 
             if ((index & 0x3FFF) == 0 && (index >> 30 == 1 || index >> 30 == 2))
             {
                 var str = ReadString();
-                lookbackable.LookbackStrings.Add(str);
-                return new LookbackString(str, lookbackable);
+                lookbackable.IdStrings.Add(str);
+                return new Id(str, lookbackable);
             }
             else if ((index & 0x3FFF) == 0x3FFF)
             {
                 switch(index >> 30)
                 {
                     case 2:
-                        return new LookbackString("Unassigned", lookbackable);
+                        return new Id("Unassigned", lookbackable);
                     case 3:
-                        return new LookbackString("", lookbackable);
+                        return new Id("", lookbackable);
                     default:
                         throw new Exception();
                 }
             }
             else if (index >> 30 == 0)
             {
-                if (LookbackString.CollectionIDs.TryGetValue((int)index, out string val))
-                    return new LookbackString(index.ToString(), lookbackable);
+                if (Id.CollectionIDs.TryGetValue((int)index, out string val))
+                    return new Id(index.ToString(), lookbackable);
                 else
-                    return new LookbackString("???", lookbackable);
+                    return new Id("???", lookbackable);
             }
-            else if (lookbackable.LookbackStrings.Count > (index & 0x3FFF) - 1)
-                return new LookbackString(lookbackable.LookbackStrings[(int)(index & 0x3FFF) - 1], lookbackable);
+            else if (lookbackable.IdStrings.Count > (index & 0x3FFF) - 1)
+                return new Id(lookbackable.IdStrings[(int)(index & 0x3FFF) - 1], lookbackable);
             else
-                return new LookbackString("", lookbackable);
+                return new Id("", lookbackable);
         }
 
-        public LookbackString ReadLookbackString()
+        public Id ReadId()
         {
-            return ReadLookbackString(Lookbackable);
+            return ReadId(Lookbackable);
         }
 
-        public Meta ReadMeta(ILookbackable lookbackable)
+        public Ident ReadIdent(ILookbackable lookbackable)
         {
-            var id = ReadLookbackString(lookbackable);
-            var collection = ReadLookbackString(lookbackable);
-            var author = ReadLookbackString(lookbackable);
+            var id = ReadId(lookbackable);
+            var collection = ReadId(lookbackable);
+            var author = ReadId(lookbackable);
 
-            return new Meta(id, collection, author);
+            return new Ident(id, collection, author);
         }
 
-        public Meta ReadMeta()
+        public Ident ReadIdent()
         {
-            return ReadMeta(Lookbackable);
+            return ReadIdent(Lookbackable);
         }
 
         public T ReadNodeRef<T>(IGameBoxBody body) where T : Node
         {
             var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
-            if (index >= 0 && !body.AuxilaryNodes.ContainsKey(index)) // If index is 0 or bigger and the node wasn't read yet
+            if (index >= 0 && (!body.AuxilaryNodes.ContainsKey(index) || body.AuxilaryNodes[index] == null)) // If index is 0 or bigger and the node wasn't read yet, or is null
                 body.AuxilaryNodes[index] = Node.Parse<T>(this);
 
             if (index < 0) // If aux node index is below 0 then there's not much to solve
@@ -216,6 +224,23 @@ namespace GBX.NET
                 result[i] = forLoop.Invoke(i, this);
 
             return result;
+        }
+
+        public Dictionary<int, TValue> ReadDictionaryNode<TValue>() where TValue : Node
+        {
+            var dictionary = new Dictionary<int, TValue>();
+
+            var length = ReadInt32();
+
+            for (var i = 0; i < length; i++)
+            {
+                var key = ReadInt32();
+                var value = ReadNodeRef<TValue>();
+
+                dictionary.Add(key, value);
+            }
+
+            return dictionary;
         }
 
         public Vec2 ReadVec2()

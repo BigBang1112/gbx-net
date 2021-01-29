@@ -51,7 +51,7 @@ namespace GBX.NET.Engines.Game
         public EGameCam2? GameCam2 { get; set; }
 
         [NodeMember]
-        public int Target { get; set; } = -1;
+        public int ClipEntId { get; set; } = -1;
 
         [NodeMember]
         public string GameCam { get; set; }
@@ -91,7 +91,7 @@ namespace GBX.NET.Engines.Game
                 n.Start = rw.Single(n.Start);
                 n.End = rw.Single(n.End);
                 n.GameCam1 = (EGameCam)rw.Int32((int)n.GameCam1.GetValueOrDefault());
-                n.Target = rw.Int32(n.Target);
+                n.ClipEntId = rw.Int32(n.ClipEntId);
             }
         }
 
@@ -109,8 +109,30 @@ namespace GBX.NET.Engines.Game
             {
                 n.Start = rw.Single(n.Start);
                 n.End = rw.Single(n.End);
-                n.GameCam = rw.LookbackString(n.GameCam);
-                n.Target = rw.Int32(n.Target);
+                n.GameCam = rw.Id(n.GameCam);
+                n.ClipEntId = rw.Int32(n.ClipEntId);
+            }
+        }
+
+        #endregion
+
+        #region 0x005 chunk
+
+        /// <summary>
+        /// CGameCtnMediaBlockCameraGame 0x005 chunk
+        /// </summary>
+        [Chunk(0x03084005)]
+        public class Chunk03084005 : Chunk<CGameCtnMediaBlockCameraGame>
+        {
+            public int Version { get; set; }
+
+            public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
+            {
+                n.Start = rw.Single(n.Start);
+                n.End = rw.Single(n.End);
+                n.GameCam = rw.Id(n.GameCam);
+
+                rw.TillFacade(Unknown); // Helicopter camera transform? 17 ints, sometimes 19
             }
         }
 
@@ -133,7 +155,7 @@ namespace GBX.NET.Engines.Game
                 n.End = rw.Single(n.End);
                 n.GameCam2 = (EGameCam2)rw.Int32((int)n.GameCam2.GetValueOrDefault());
 
-                rw.TillFacade(Unknown); // Helicopter camera transfrom? 17 ints, sometimes 19
+                rw.TillFacade(Unknown); // Helicopter camera transform? 17 ints, sometimes 19
             }
         }
 
@@ -151,7 +173,7 @@ namespace GBX.NET.Engines.Game
             public float End => node.End;
             public EGameCam? GameCam1 => node.GameCam1;
             public EGameCam2? GameCam2 => node.GameCam2;
-            public int Target => node.Target;
+            public int ClipEntId => node.ClipEntId;
             public string GameCam => node.GameCam;
 
             public ChunkSet Chunks => node.Chunks;

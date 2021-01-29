@@ -16,7 +16,7 @@ namespace GBX.NET.Engines.Game
         #region Properties
 
         [NodeMember]
-        public Meta MapInfo { get; set; }
+        public Ident MapInfo { get; set; }
 
         [NodeMember]
         public TimeSpan? Time { get; set; }
@@ -85,7 +85,7 @@ namespace GBX.NET.Engines.Game
 
                 if(Version >= 2)
                 {
-                    n.MapInfo = r.ReadMeta();
+                    n.MapInfo = r.ReadIdent();
                     n.Time = r.ReadTimeSpan();
                     n.Nickname = r.ReadString();
 
@@ -96,7 +96,7 @@ namespace GBX.NET.Engines.Game
                         if (Version >= 8)
                         {
                             U01 = r.ReadByte();
-                            n.TitleID = r.ReadLookbackString();
+                            n.TitleID = r.ReadId();
                         }
                     }
                 }
@@ -190,21 +190,25 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                r.ReadArray<int>(2);
-                var controlNames = r.ReadArray(i =>
+                var v = r.ReadInt32();
+                if (v != 0)
                 {
                     r.ReadInt32();
+                    var controlNames = r.ReadArray(i =>
+                    {
+                        r.ReadInt32();
+                        r.ReadInt32();
+                        return r.ReadString();
+                    });
+
+                    var numControlEntries = r.ReadInt32() - 1;
+                    var controlEntries = new (int, int, int)[numControlEntries];
+
+                    for (var i = 0; i < numControlEntries; i++)
+                        controlEntries[i] = (r.ReadInt32(), r.ReadInt32(), r.ReadInt32());
+
                     r.ReadInt32();
-                    return r.ReadString();
-                });
-
-                var numControlEntries = r.ReadInt32() - 1;
-                var controlEntries = new (int, int, int)[numControlEntries];
-
-                for (var i = 0; i < numControlEntries; i++)
-                    controlEntries[i] = (r.ReadInt32(), r.ReadInt32(), r.ReadInt32());
-
-                r.ReadInt32();
+                }
             }
         }
 
@@ -267,7 +271,7 @@ namespace GBX.NET.Engines.Game
                 {
                     r.ReadInt32();
 
-                    var controlNames = r.ReadArray<string>(i => r.ReadLookbackString());
+                    var controlNames = r.ReadArray<string>(i => r.ReadId());
 
                     var num = r.ReadInt32();
                     r.ReadInt32();
@@ -382,7 +386,7 @@ namespace GBX.NET.Engines.Game
         {
             private readonly CGameCtnReplayRecord node;
 
-            public Meta MapInfo => node.MapInfo;
+            public Ident MapInfo => node.MapInfo;
             public TimeSpan? Time => node.Time;
             public string Nickname => node.Nickname;
             public string DriverLogin => node.DriverLogin;

@@ -19,7 +19,7 @@ namespace GBX.NET.Engines.Game
         /// Name of the item with collection and author
         /// </summary>
         [NodeMember]
-        public Meta ItemModel { get; set; }
+        public Ident ItemModel { get; set; }
 
         /// <summary>
         /// Pitch, yaw and roll of the item in radians.
@@ -106,7 +106,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnAnchoredObject n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                n.ItemModel = rw.Meta(n.ItemModel);
+                n.ItemModel = rw.Ident(n.ItemModel);
                 n.PitchYawRoll = rw.Vec3(n.PitchYawRoll);
                 n.BlockUnitCoord = rw.Byte3(n.BlockUnitCoord);
                 U01 = rw.Int32(U01);
@@ -178,7 +178,7 @@ namespace GBX.NET.Engines.Game
         {
             private readonly CGameCtnAnchoredObject node;
 
-            public Meta ItemModel => node.ItemModel;
+            public Ident ItemModel => node.ItemModel;
             public Vec3? PitchYawRoll => node.PitchYawRoll;
             public Byte3? BlockUnitCoord => node.BlockUnitCoord;
             public Vec3? AbsolutePositionInMap => node.AbsolutePositionInMap;

@@ -52,10 +52,10 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnZoneGenealogy n, GameBoxReaderWriter rw)
             {
-                n.ZoneIds = rw.Array(n.ZoneIds, i => rw.Reader.ReadLookbackString(), x => rw.Writer.WriteLookbackString(x));
+                n.ZoneIds = rw.Array(n.ZoneIds, i => rw.Reader.ReadId(), x => rw.Writer.WriteId(x));
                 n.CurrentIndex = rw.Int32(n.CurrentIndex); // 9
                 n.Dir = (Direction)rw.Int32((int)n.Dir);
-                n.CurrentZoneId = rw.LookbackString(n.CurrentZoneId);
+                n.CurrentZoneId = rw.Id(n.CurrentZoneId);
             }
         }
 

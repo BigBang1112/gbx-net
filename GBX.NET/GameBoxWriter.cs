@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Numerics;
@@ -11,6 +12,7 @@ namespace GBX.NET
     public class GameBoxWriter : BinaryWriter
     {
         public ILookbackable Lookbackable { get; }
+        public Chunk Chunk { get; internal set; }
 
         public GameBoxWriter(Stream output) : base(output, Encoding.UTF8, true)
         {
@@ -20,6 +22,12 @@ namespace GBX.NET
         public GameBoxWriter(Stream input, ILookbackable lookbackable) : this(input)
         {
             Lookbackable = lookbackable;
+        }
+
+        public GameBoxWriter(Stream input, GameBoxWriter reference) : this(input)
+        {
+            Lookbackable = reference.Lookbackable;
+            Chunk = reference.Chunk;
         }
 
         public void Write(string value, StringLengthPrefix lengthPrefix)
@@ -145,6 +153,17 @@ namespace GBX.NET
             }
         }
 
+        public void Write<TValue>(Dictionary<int, TValue> dictionary) where TValue : Node
+        {
+            Write(dictionary.Count);
+
+            foreach(var pair in dictionary)
+            {
+                Write(pair.Key);
+                Write(pair.Value);
+            }
+        }
+
         public void Write(Vec2 value)
         {
             Write(new float[] { value.X, value.Y });
@@ -189,49 +208,49 @@ namespace GBX.NET
                 Write(fileRef.LocatorUrl);
         }
 
-        public void Write(LookbackString value)
+        public void Write(Id value)
         {
             var l = value.Owner;
 
-            if (!l.LookbackWritten)
+            if (!l.IdWritten)
             {
-                if (l.LookbackVersion.HasValue)
-                    Write(l.LookbackVersion.Value);
+                if (l.IdVersion.HasValue)
+                    Write(l.IdVersion.Value);
                 else Write(3);
-                l.LookbackWritten = true;
+                l.IdWritten = true;
             }
 
             if (value == "Unassigned")
                 Write(0xBFFFFFFF);
             else if (value == "")
                 Write(0xFFFFFFFF);
-            else if (l.LookbackStrings.Contains(value))
+            else if (l.IdStrings.Contains(value))
                 Write(value.Index + 1 + 0x40000000);
-            else if (int.TryParse(value, out int cID) && LookbackString.CollectionIDs.ContainsKey(cID))
+            else if (int.TryParse(value, out int cID) && Id.CollectionIDs.ContainsKey(cID))
                 Write(cID);
             else
             {
                 Write(0x40000000);
                 Write(value.ToString());
-                l.LookbackStrings.Add(value);
+                l.IdStrings.Add(value);
             }
         }
 
-        public void WriteLookbackString(string value)
+        public void WriteId(string value)
         {
-            Write(new LookbackString(value, Lookbackable));
+            Write(new Id(value, Lookbackable));
         }
 
-        public void Write(Meta meta, ILookbackable lookbackable)
+        public void Write(Ident ident, ILookbackable lookbackable)
         {
-            Write(new LookbackString(meta.ID, lookbackable));
-            Write(meta.Collection.ToLookbackString(lookbackable));
-            Write(new LookbackString(meta.Author, lookbackable));
+            Write(new Id(ident.ID, lookbackable));
+            Write(ident.Collection.ToId(lookbackable));
+            Write(new Id(ident.Author, lookbackable));
         }
 
-        public void Write(Meta meta)
+        public void Write(Ident ident)
         {
-            Write(meta, Lookbackable);
+            Write(ident, Lookbackable);
         }
 
         public void Write(Node node, IGameBoxBody body)
@@ -269,6 +288,41 @@ namespace GBX.NET
         public void WriteBytes(byte[] bytes)
         {
             Write(bytes, 0, bytes.Length);
+        }
+
+        /// <summary>
+        /// Writes the node array that are presented directly and not as a node reference.
+        /// </summary>
+        /// <typeparam name="T">Type of the node.</typeparam>
+        /// <param name="nodes">Node array.</param>
+        public void WriteNodes<T>(IEnumerable<T> nodes) where T : Node
+        {
+            var watch = Stopwatch.StartNew();
+
+            var count = nodes.Count();
+
+            var nodeType = typeof(T);
+
+            Write(count);
+
+            var counter = 0;
+
+            foreach (var node in nodes)
+            {
+                Write(node.ID);
+                node.Write(this);
+
+                string logProgress = $"[{nodeType.FullName.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::")}] {counter + 1}/{count} ({watch.Elapsed.TotalMilliseconds}ms)";
+                if (Chunk.Part == null || !Chunk.Part.GBX.ClassID.HasValue || Node.Remap(Chunk.Part.GBX.ClassID.Value) != node.ID)
+                    logProgress = "~ " + logProgress;
+
+                Log.Write(logProgress, ConsoleColor.Magenta);
+
+                if (counter != count - 1)
+                    Log.Push(node.Chunks.Count + 2);
+
+                counter += 1;
+            }
         }
     }
 }

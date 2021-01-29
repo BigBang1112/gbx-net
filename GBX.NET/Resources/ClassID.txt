@@ -383,6 +383,7 @@
   0EE CGameLadderScores
   10D CGameCtnMacroBlockInfo
   114 CGameCtnMacroDecals
+  128 CGameCtnMediaBlockBloomHdr
   129 CGameCtnMediaBlockTimeSpeed
   14C CGameCtnBlockInfoTransition
   166 CGameCtnMediaBlockCameraEffectInertialTracking
@@ -729,6 +730,7 @@
   0EA CPlugVehiclePhyModel
   0F4 CPlugGameSkin
   108 CPlugFileWebM
+  11E CPlugVehiclePhyModelCustom
   11F CPlugEntRecordData
 0A Scene
   000 CSceneEngine

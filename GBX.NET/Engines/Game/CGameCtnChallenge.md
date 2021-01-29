@@ -44,13 +44,13 @@ The class behind every single map made in Trackmania.
 - [0x048 - skippable (baked blocks)](#0x048---skippable-baked-blocks)
 - [0x049 (mediatracker)](#0x049-mediatracker)
 - [0x04B - skippable (objectives)](#0x04B---skippable-objectives)
-- 0x050 - skippable
+- [0x050 - skippable (offzones)](#0x050---skippable-offzones)
 - [0x051 - skippable (title info)](#0x051---skippable-title-info)
-- 0x052 - skippable
-- 0x053 - skippable
-- 0x054 - skippable
+- [0x052 - skippable (deco height)](#0x052---skippable-deco-height)
+- [0x053 - skippable (bot paths)](#0x053---skippable-bot-paths)
+- [0x054 - skippable (embeds)](#0x054---skippable-embeds)
 - 0x055 - skippable
-- 0x056 - skippable
+- [0x056 - skippable (light settings)](#0x056---skippable-light-settings)
 - 0x057 - skippable
 - 0x058 - skippable
 - [0x059 - skippable](#0x059---skippable)
@@ -66,7 +66,7 @@ void Read(GameBoxReader r)
 
     if (version < 1)
     {
-        Meta mapInfo = r.ReadMeta();
+        Ident mapInfo = r.ReadIdent();
         string mapName = r.ReadString();
     }
 
@@ -82,10 +82,10 @@ void Read(GameBoxReader r)
         BoatName boatName = (BoatName)r.ReadByte();
 
     if (version >= 9)
-        LookbackString boat = r.ReadLookbackString();
+        Id boat = r.ReadId();
 
     if (version >= 12)
-        LookbackString boatAuthor = r.ReadLookbackString();
+        Id boatAuthor = r.ReadId();
 
     RaceMode raceMode = (RaceMode)r.ReadByte();
     byte u05 = r.ReadByte();
@@ -233,7 +233,7 @@ void Read(GameBoxReader r)
 
     if (version < 3)
     {
-        Meta mapInfo = r.ReadMeta();
+        Ident mapInfo = r.ReadIdent();
         string mapName = r.ReadString();
     }
 
@@ -312,7 +312,7 @@ void Read(GameBoxReader r)
 void Read(GameBoxReader r)
 {
     byte version = r.ReadByte();
-    Meta mapInfo = r.ReadMeta();
+    Ident mapInfo = r.ReadIdent();
     string mapName = r.ReadString();
     TrackKind kind = (TrackKind)r.ReadByte();
 
@@ -323,7 +323,7 @@ void Read(GameBoxReader r)
 
         if (version >= 2)
         {
-            Meta decoration = r.ReadMeta();
+            Ident decoration = r.ReadIdent();
 
             if (version >= 3)
             {
@@ -354,7 +354,7 @@ void Read(GameBoxReader r)
                                     byte lightmapVersion = r.ReadByte();
 
                                     if (version >= 11)
-                                        LookbackString titleUID = r.ReadLookbackString();
+                                        Id titleUID = r.ReadId();
                                 }
                             }
                         }
@@ -452,7 +452,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-    Meta vehicle = r.ReadMeta();
+    Ident vehicle = r.ReadIdent();
 }
 ```
 
@@ -461,7 +461,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-    Meta mapInfo = r.ReadMeta();
+    Ident mapInfo = r.ReadIdent();
     Int3 size = r.ReadInt3();
     int u01 = r.ReadInt32();
 
@@ -470,7 +470,7 @@ void Read(GameBoxReader r)
         CGameCtnBlock block = r.ReadNodeRef<CGameCtnBlock>();
 
     int u02 = r.ReadInt32();
-    int u03 = r.ReadMeta();
+    int u03 = r.ReadIdent();
 }
 ```
 
@@ -605,9 +605,9 @@ enum PlayMode : int
 ```cs
 void Read(GameBoxReader r)
 {
-    Meta mapInfo = r.ReadMeta();
+    Ident mapInfo = r.ReadIdent();
     string mapName = r.ReadString();
-    Meta decoration = r.ReadMeta();
+    Ident decoration = r.ReadIdent();
     Int3 size = r.ReadInt3();
     bool needUnlock = r.ReadBoolean();
 
@@ -618,7 +618,7 @@ void Read(GameBoxReader r)
 
     while ((r.PeekUInt32() & 0xC0000000) > 0)
     {
-        LookbackString blockName = r.ReadLookbackString();
+        Id blockName = r.ReadId();
         Direction dir = (Direction)r.ReadByte();
         Byte3 coord = r.ReadByte3();
         int flags = 0;
@@ -636,7 +636,7 @@ void Read(GameBoxReader r)
 
         if ((flags & 0x8000) != 0) // custom block
         {
-            LookbackString author = r.ReadLookbackString();
+            Id author = r.ReadId();
             CGameCtnBlockSkin skin = r.ReadNodeRef<CGameCtnBlockSkin>();
         }
 
@@ -952,7 +952,7 @@ void Read(GameBoxReader r)
 {
     int unknown = r.ReadInt32();
     int size = r.ReadInt32();
-    uint classID = r.ReadUInt32(); // CScriptTraitsMetadata
+    uint classID = r.ReadUInt32(); // CScriptTraitsIdentdata
     int version = r.ReadInt32();
 
     byte typeCount = r.ReadByte();
@@ -1145,7 +1145,7 @@ void Read(GameBoxReader r)
     int numBakedBlocks = r.ReadInt32();
     for (var i = 0; i < numBakedBlocks; i++)
     {
-        LookbackString blockName = r.ReadLookbackString();
+        Id blockName = r.ReadId();
         Direction dir = (Direction)r.ReadByte();
         Byte3 coord = r.ReadByte3();
         int flags = r.ReadInt32();
@@ -1177,7 +1177,7 @@ void Read(GameBoxReader r)
     CGameCtnMediaClipGroup clipGroupInGame = r.ReadNodeRef<CGameCtnMediaClipGroup>();
     CGameCtnMediaClipGroup clipGroupEndRace = r.ReadNodeRef<CGameCtnMediaClipGroup>();
 
-    if(version >= 2)
+    if (version >= 2)
     {
         CGameCtnMediaClip clipAmbiance = r.ReadNodeRef<CGameCtnMediaClip>();
 
@@ -1208,9 +1208,26 @@ void Read(GameBoxReader r)
 }
 ```
 
-### 0x050 - skippable
+### 0x050 - skippable (offzones)
 
-Undiscovered.
+Offzones are presented as boxes with two defined coordinates (start coord and end coord) forming a big 3D box to save bytes.
+
+```cs
+void Read(GameBoxReader r)
+{
+    int u01 = r.ReadInt32();
+    int u02 = r.ReadInt32();
+    int u03 = r.ReadInt32();
+    int u04 = r.ReadInt32();
+
+    int numOffzones = r.ReadInt32();
+    for (var i = 0; i < numOffzones; i++)
+    {
+        Int3 startCoord = r.ReadInt3();
+        Int3 endCoord = r.ReadInt3();
+    }
+}
+```
 
 ### 0x051 - skippable (title info)
 
@@ -1218,30 +1235,97 @@ Undiscovered.
 void Read(GameBoxReader r)
 {
     int version = r.ReadInt32();
-    string titleID = r.ReadLookbackString();
+    string titleID = r.ReadId();
     string buildVersion = r.ReadString();
 }
 ```
 
-### 0x052 - skippable
+### 0x052 - skippable (deco height)
 
-Undiscovered.
+```cs
+void Read(GameBoxReader r)
+{
+    int version = r.ReadInt32();
+    int decoBaseHeightOffset = r.ReadInt32();
+}
+```
 
-### 0x053 - skippable
+### 0x053 - skippable (bot paths)
 
-Undiscovered.
+Bot paths used (or usable) by Shootmania.
 
-### 0x054 - skippable
+```cs
+void Read(GameBoxReader r)
+{
+    int version = r.ReadInt32();
 
-Undiscovered.
+    int numBotPaths = r.ReadInt32();
+    for (var i = 0; i < numBotPaths; i++)
+    {
+        int clan = r.ReadInt32();
+
+        int numPoints = r.ReadInt32(); // Forms a path
+        for (var j = 0; j < numPoints; j++)
+            Vec3 point = r.ReadVec3();
+
+        bool isFlying = r.ReadBoolean();
+        CGameWaypointSpecialProperty waypointSpecialProperty = r.ReadNodeRef<CGameWaypointSpecialProperty>();
+        bool isAutonomous = r.ReadBoolean(); // Not tested
+    }
+}
+```
+
+### 0x054 - skippable (embeds)
+
+The chunk behind item embedding. It also references a list of used textures, but **the textures itself aren't possible to embed**.
+
+ZIP contains DEFLATE compressed item, block, and material GBX files with their relative path from the user data folder. The data can be extracted to a file data stream with a zip file extension and it will be recognized by any file archiver.
+
+Embedded ZIP generated by the game doesn't include item icons. It is being removed to save bytes.
+
+Older chunk versions can exist but haven't been discovered or proved yet. This structure works as it should for ManiaPlanet 4.1 and Trackmania®.
+
+```cs
+void Read(GameBoxReader r)
+{
+    int version = r.ReadInt32();
+    int u01 = r.ReadInt32();
+    int size = r.ReadInt32();
+
+    int numEmbeddedItems = r.ReadInt32();
+    for (var i = 0; i < numEmbeddedItems; i++)
+        Ident embeddedItem = r.ReadIdent();
+
+    int zipSize = r.ReadInt32();
+    byte[] zip = r.ReadBytes(zipSize); // Classic ZIP archive
+
+    int numTextures = r.ReadInt32();
+    for (var i = 0; i < numTextures; i++)
+        string texture = r.ReadString();
+}
+```
 
 ### 0x055 - skippable
 
 Undiscovered.
 
-### 0x056 - skippable
+### 0x056 - skippable (light settings)
 
-Undiscovered.
+Dynamic lighting settings and exact map time provided since ManiaPlanet 4. This feature doesn't work and was partially removed from Trackmania®, causing the day time being always -1 and a day duration defaulting to 5 minutes.
+
+Day time is an Int32 (or UInt16 with another undiscovered value) ranging from 0 to 65535, where 0 is 0:00:00 (hh:mm:ss) and 65535 is 23:59:59. This value can be also -1 representing that day time isn't supported.
+
+```cs
+void Read(GameBoxReader r)
+{
+    int version = r.ReadInt32();
+    int u01 = r.ReadInt32();
+    int dayTime = r.ReadInt32(); // 0..65535 = 0:00:00..23:59:59, -1: not supported
+    int u02 = r.ReadInt32();
+    bool dynamicDaylight = r.ReadBoolean(); // if the map will use dynamic lighting
+    int dayDuration = r.ReadInt32(); // in milliseconds
+}
+```
 
 ### 0x057 - skippable
 
@@ -1264,7 +1348,7 @@ void Read(GameBoxReader r)
     {
         bool u02 = r.ReadBoolean();
 
-        if (Version >= 3)
+        if (version >= 3)
         {
             float u03 = r.ReadSingle();
             float u04 = r.ReadSingle();

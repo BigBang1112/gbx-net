@@ -60,7 +60,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnCampaign n, GameBoxReaderWriter rw)
             {
-                n.CampaignID = rw.LookbackString(n.CampaignID);
+                n.CampaignID = rw.Id(n.CampaignID);
             }
         }
 

@@ -11,7 +11,7 @@
 void Read(GameBoxReader r)
 {
     int version = r.ReadInt32();
-    Meta itemModel = r.ReadMeta();
+    Ident itemModel = r.ReadIdent();
     Vec3 pitchYawRoll = r.ReadVec3();
     Byte3 blockUnitCoord = r.ReadByte3();
     int u01 = r.ReadInt32();

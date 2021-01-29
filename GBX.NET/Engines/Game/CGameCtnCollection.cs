@@ -11,7 +11,7 @@ namespace GBX.NET.Engines.Game
         public string DisplayName { get; set; }
         public string CollectionIcon { get; set; }
         public string BlockInfoFlat { get; set; }
-        public Meta Vehicle { get; set; }
+        public Ident Vehicle { get; set; }
         public string LoadingScreen { get; set; }
 
         #region Chunks
@@ -21,9 +21,9 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03033001)]
         public class Chunk03033001 : Chunk<CGameCtnCollection>, ILookbackable
         {
-            int? ILookbackable.LookbackVersion { get; set; } = 3;
-            List<string> ILookbackable.LookbackStrings { get; set; } = new List<string>();
-            bool ILookbackable.LookbackWritten { get; set; }
+            int? ILookbackable.IdVersion { get; set; } = 3;
+            List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
+            bool ILookbackable.IdWritten { get; set; }
 
             public int Version { get; set; }
 
@@ -37,8 +37,8 @@ namespace GBX.NET.Engines.Game
                 _ = r.ReadInt32();
                 n.CollectionIcon = r.ReadString();
                 _ = r.ReadArray<int>(2);
-                n.BlockInfoFlat = r.ReadLookbackString(this);
-                n.Vehicle = r.ReadMeta(this);
+                n.BlockInfoFlat = r.ReadId(this);
+                n.Vehicle = r.ReadIdent(this);
                 _ = r.ReadInt32();
                 _ = r.ReadArray<float>(4);
                 n.LoadingScreen = r.ReadString();
@@ -88,12 +88,12 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnCollection n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                _ = r.ReadLookbackString();
+                _ = r.ReadId();
                 _ = r.ReadInt32();
                 _ = r.ReadArray(x => r.ReadInt32());
                 _ = r.ReadInt32();
                 _ = r.ReadArray<float>(3);
-                n.Vehicle = r.ReadMeta();
+                n.Vehicle = r.ReadIdent();
             }
         }
 
@@ -189,7 +189,7 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnCollection n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 _ = r.ReadInt32();
-                _ = r.ReadMeta();
+                _ = r.ReadIdent();
                 _ = r.ReadInt32();
                 _ = r.ReadInt32();
             }
@@ -352,7 +352,7 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnCollection n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 _ = r.ReadInt32();
-                _ = r.ReadArray(i => r.ReadLookbackString());
+                _ = r.ReadArray(i => r.ReadId());
             }
         }
 

@@ -38,7 +38,7 @@ namespace GBX.NET.Engines.Game
                     Vec3? pitchYawRoll = null;
 
                     var ver = r.ReadInt32();
-                    var meta = r.ReadMeta();
+                    var ident = r.ReadIdent();
                     int flags = 0;
 
                     if(ver >= 2)
@@ -83,7 +83,7 @@ namespace GBX.NET.Engines.Game
 
                     var block = new CGameCtnBlock()
                     {
-                        BlockInfo = meta,
+                        BlockInfo = ident,
                         Coord = coord.GetValueOrDefault(),
                         Direction = dir.GetValueOrDefault(),
                         Flags = correctFlags
@@ -150,7 +150,7 @@ namespace GBX.NET.Engines.Game
                     return new object[]
                     {
                         r.ReadInt32(),
-                        r.ReadArray(j => r.ReadMeta()),
+                        r.ReadArray(j => r.ReadIdent()),
 
                         r.ReadInt32(),
                         r.ReadInt32(),
@@ -215,7 +215,7 @@ namespace GBX.NET.Engines.Game
                 {
                     var v = r.ReadInt32();
 
-                    var itemModel = r.ReadMeta();
+                    var itemModel = r.ReadIdent();
 
                     Vec3 pitchYawRoll = default;
                     Vec3 pivotPosition = default;
@@ -236,7 +236,7 @@ namespace GBX.NET.Engines.Game
                     }
 
                     var blockCoord = r.ReadInt3();
-                    var lookback = r.ReadLookbackString();
+                    var lookback = r.ReadId();
                     var pos = r.ReadVec3();
 
                     if (v < 5)

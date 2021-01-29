@@ -94,17 +94,29 @@ namespace IslandConverter
             return mapRange;
         }
 
-        internal static List<CGameCtnBlock> CreateWaterBlocks(Int3 mapSize, List<CGameCtnBlock> islandBlocks, int yOffset)
+        internal static List<CGameCtnBlock> CreateWaterBlocks(Int3 mapSize, List<CGameCtnBlock> islandBlocks, int yOffset, Dictionary<string, BlockConversion[]> conversionInfo, int xzOffset)
         {
-            var islandBlockDictionary = islandBlocks.Where(x => x.Name == "IslandGrass" || x.Name == "IslandHills6").ToDictionary(x => new Int3(x.Coord.X, 0, x.Coord.Z));
+            var islandBlockDictionary = islandBlocks.GroupBy(
+                x => new Int3(x.Coord.X, 0, x.Coord.Z))
+                .Where(x => x.Count(y =>
+                {
+                    if (conversionInfo.TryGetValue(y.Name, out BlockConversion[] c)
+                    && c.Length > y.Variant
+                    && c[y.Variant.Value] != null
+                    && c[y.Variant.Value].KeepWater)
+                        return false;
+                    else if (y.IsGround && !y.IsClip)
+                        return true;
+                    return false;
+                }) > 0).ToDictionary(x => x.Key, x => x.First());
 
             var blocks = new List<CGameCtnBlock>();
 
-            for (byte x = 0; x < mapSize.X; x++)
+            for (int x = 0; x < mapSize.X; x++)
             {
-                for (byte z = 0; z < mapSize.Z; z++)
+                for (int z = 0; z < mapSize.Z; z++)
                 {
-                    if (x == 0 || z == 0 || x == mapSize.X || z == mapSize.Z)
+                    if (x == 0 || z == 0 || x == mapSize.X - 1 || z == mapSize.Z - 1)
                     {
                         var flag = 135168;
                         var dir = Direction.North;
@@ -118,7 +130,7 @@ namespace IslandConverter
                         {
                             flag = 135177;
                         }
-                        else if (x == mapSize.X && z == 0)
+                        else if (x == mapSize.X - 1 && z == 0)
                         {
                             flag = 135177;
                             dir = Direction.South;
@@ -148,15 +160,21 @@ namespace IslandConverter
                             flag = 135173;
                         }
 
-                        blocks.Add(new CGameCtnBlock("StadiumPool2", dir, (x, yOffset, z), flag, null, null, null));
+                        if (yOffset == 0)
+                            blocks.Add(new CGameCtnBlock("StadiumPool2", dir, (x, 0, z), flag, null, null, null));
+                        else
+                            blocks.Add(new CGameCtnBlock("StadiumPool", dir, (x, 0, z), flag, null, null, null));
                     }
-                    else if (islandBlockDictionary.TryGetValue(new Int3(Convert.ToInt32(Math.Floor((x+1) / 2f) - 2), 0, Convert.ToInt32(Math.Floor((z+1) / 2f) - 2)), out CGameCtnBlock bl))
+                    else if (islandBlockDictionary.TryGetValue(new Int3(Convert.ToInt32(Math.Floor((x + xzOffset) / 2f) - 2), 0, Convert.ToInt32(Math.Floor((z + xzOffset) / 2f) - 2)), out CGameCtnBlock bl))
                     {
-                        blocks.Add(new CGameCtnBlock("RemoveGrass.Block.Gbx_CustomBlock", Direction.North, (x, yOffset, z), 135168, null, null, null));
+                        blocks.Add(new CGameCtnBlock("RemoveGrass.Block.Gbx_CustomBlock", Direction.North, (x, 0, z), 135168, null, null, null));
                     }
                     else
                     {
-                        blocks.Add(new CGameCtnBlock("StadiumWater2", Direction.North, (x, yOffset, z), 135168, null, null, null));
+                        if(yOffset == 0)
+                            blocks.Add(new CGameCtnBlock("StadiumWater2", Direction.North, (x, 0, z), 135168, null, null, null));
+                        else
+                            blocks.Add(new CGameCtnBlock("StadiumWater", Direction.North, (x, 0, z), 135168, null, null, null));
                     }
 
                     blocks.Add(CGameCtnBlock.Unassigned1);
@@ -199,16 +217,16 @@ namespace IslandConverter
             var chunk00D = map.GetChunk<CGameCtnChallenge.Chunk0304300D>();
 
             var beforeCar = map.PlayerModel.ID;
-            map.PlayerModel = new Meta("IslandCar.Item.Gbx", "Stadium", "adamkooo");
+            map.PlayerModel = new Ident("IslandCar.Item.Gbx", "Stadium", "adamkooo");
 
             Log.Write("Applying texture mod...");
             map.ModPackDesc = new FileRef(3, Convert.FromBase64String("AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="), @"Skins\Stadium\Mod\IslandTM2U.zip", "");
 
             Bitmap thumbnail;
-            if (gbx.MainNode.Thumbnail == null)
+            if (map.Thumbnail == null)
                 thumbnail = new Bitmap(512, 512);
             else
-                thumbnail = new Bitmap(gbx.MainNode.Thumbnail.Result, 512, 512);
+                thumbnail = new Bitmap(map.Thumbnail.Result, 512, 512);
 
             using (var g = Graphics.FromImage(thumbnail))
             {
@@ -217,15 +235,9 @@ namespace IslandConverter
                     g.DrawImage(Resources.OverlayOpenplanet, 0, 0);
             }
 
-            gbx.MainNode.Thumbnail = Task.FromResult(thumbnail);
+            map.Thumbnail = Task.FromResult(thumbnail);
 
             map.GetChunk<CGameCtnChallenge.Chunk0304301F>().Version = 6;
-
-            if (size == MapSize.X32WithBigBorder)
-            {
-                Log.Write("Importing chunk 0x03043043 for water on ground...");
-                var chunk = gbx.CreateBodyChunk<CGameCtnChallenge.Chunk03043043>(File.ReadAllBytes("0x03043043.dat"));
-            }
 
             Log.Write("Cracking the map password if presented...");
             map.CrackPassword();
@@ -236,6 +248,7 @@ namespace IslandConverter
 
             Dictionary<string, BlockConversion[]> conversionInfo;
             Dictionary<string, Dictionary<string, string>> skinInfo;
+            Dictionary<string, ClipProperties> clipProperties;
 
             Log.Write("Reading IslandConverter.yaml...");
 
@@ -251,6 +264,14 @@ namespace IslandConverter
             {
                 Deserializer yaml = new Deserializer();
                 skinInfo = yaml.Deserialize<Dictionary<string, Dictionary<string, string>>>(r);
+            }
+
+            Log.Write("Reading IslandConverterClips.yaml...");
+
+            using (var r = new StreamReader("IslandConverterClips.yaml"))
+            {
+                Deserializer yaml = new Deserializer();
+                clipProperties = yaml.Deserialize<Dictionary<string, ClipProperties>>(r);
             }
 
             Log.Write("Preparing to remove additional terrain blocks to avoid Z-fighting...");
@@ -278,14 +299,31 @@ namespace IslandConverter
                                                     if (!RemoveGroundBlocks(block, x, variant.Ground, unit)) return false;
                                         }
 
+                                        if(variant.Ground.ItemModels?.ElementAtOrDefault(0) != null)
+                                        {
+                                            var direction = variant.Ground.ItemModels[0].Directions?.ElementAtOrDefault((int)block.Direction);
+                                            if (direction != null)
+                                                foreach (var unit in direction.Units)
+                                                    if (!RemoveGroundBlocks(block, x, variant.Ground, unit)) return false;
+                                        }
+
                                         if (variant.Ground.Units != null)
                                             foreach (var unit in variant.Ground.Units)
                                                 if (!RemoveGroundBlocks(block, x, variant.Ground, unit)) return false;
                                     }
                                     else if (variant.Air != null && variant.Air.OffsetYFromTerrain != null)
                                     {
-                                        foreach (var unit in variant.Air.Units)
-                                            if (!RemoveGroundBlocks(block, x, variant.Air, unit)) return false;
+                                        if (variant.Air.Directions != null)
+                                        {
+                                            var direction = variant.Air.Directions.ElementAtOrDefault((int)block.Direction);
+                                            if (direction != null)
+                                                foreach (var unit in direction.Units)
+                                                    if (!RemoveGroundBlocks(block, x, variant.Air, unit)) return false;
+                                        }
+
+                                        if (variant.Air.Units != null)
+                                            foreach (var unit in variant.Air.Units)
+                                                if (!RemoveGroundBlocks(block, x, variant.Air, unit)) return false;
                                     }
                                 }
                             }
@@ -316,11 +354,6 @@ namespace IslandConverter
                 Convert.ToInt32(Math.Sin(radians) * (unit[0] - centerFromCoord.X) +
                 Math.Cos(radians) * (unit[2] - centerFromCoord.Z) + centerFromCoord.Z));
 
-                if (block.Name == "IslandHills6DecoRock" && block2.Name == "IslandHills6")
-                {
-
-                }
-
                 if (block.Coord + unit2 - new Int3(0, variantGround.OffsetYFromTerrain.GetValueOrDefault(), 0) == block2.Coord)
                 {
                     Log.Write($"Removing {block2.Name} away from {block.Name} to avoid Z-fighting.");
@@ -334,9 +367,11 @@ namespace IslandConverter
 
             Int3 offset = new Int3(32, 32, 32) - mapRange;
             offset = new Int3(
-                Convert.ToInt32(offset.X / 2f) - 1,
+                Convert.ToInt32(offset.X / 2f) - 2,
                 0,
-                Convert.ToInt32(offset.Z / 2f) - 1);
+                Convert.ToInt32(offset.Z / 2f) - 2);
+
+            var newBlvcks = map.Blocks.ToArray();
 
             switch (size)
             {
@@ -345,12 +380,14 @@ namespace IslandConverter
 
                     map.Size = (62, 64, 62);
 
-                    foreach (var b in blocks)
+                    foreach (var b in newBlvcks)
                         b.Coord += offset - minCoord.XZ;
 
                     Log.Write("Adding the pool...");
 
-                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), blocks.ToList(), -1);
+                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), newBlvcks.ToList(), -1, conversionInfo, 0);
+
+                    offsetHeight = 20;
 
                     map.Size = (
                         map.Size.GetValueOrDefault().X + 2,
@@ -368,19 +405,19 @@ namespace IslandConverter
 
                     map.Size = (64, 64, 64);
 
-                    foreach (var b in blocks)
+                    foreach (var b in newBlvcks)
                         b.Coord += offset - minCoord.XZ;
 
                     Log.Write("Adding the pool...");
 
-                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), blocks.ToList(), -1);
+                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), newBlvcks.ToList(), -1, conversionInfo, 0);
 
                     break;
                 case MapSize.X45WithSmallBorder:
                     Log.Write("Adding the pool...");
 
                     map.Size = (92, 255, 92);
-                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), map.Blocks, 0);
+                    map.Blocks = CreateWaterBlocks(map.Size.GetValueOrDefault(), map.Blocks, 0, conversionInfo, 1);
 
                     map.Size = (
                         map.Size.GetValueOrDefault().X + 2,
@@ -391,6 +428,8 @@ namespace IslandConverter
                         b.Coord = new Int3(b.Coord.X + 1, b.Coord.Y, b.Coord.Z + 1);
                     break;
             }
+
+            var clips = newBlvcks.Where(x => x.IsClip).ToDictionary(x => x.Coord);
 
             if (cutoff)
             {
@@ -417,8 +456,8 @@ namespace IslandConverter
                 gbx.RemoveBodyChunk<CGameCtnChallenge.Chunk03043021>();
             }
             else
-            { 
-                gbx.MainNode.TransferMediaTrackerTo049(6);
+            {
+                map.TransferMediaTrackerTo049(6);
 
                 var xzCameraOffset = new Vec3();
                 var xzTriggerOffset = new Int3();
@@ -429,32 +468,29 @@ namespace IslandConverter
                 }
                 else
                 {
-                    xzCameraOffset = new Vec3(offset.X * 64 - 128, offset.Y * 64, offset.Z * 64 - 192);
-                    xzTriggerOffset = (6 + offset.X * 6, -3, 6 + offset.X * 6);
+                    xzCameraOffset = new Vec3((offset.X - minCoord.X) * 64, 0, (offset.Z - minCoord.Z) * 64);
+                    xzTriggerOffset = new Int3((offset.X - minCoord.X + 1) * 6, -3, (offset.Z - minCoord.Z + 1) * 6);
                     if (size == MapSize.X31WithSmallBorder)
                         xzTriggerOffset += (0, 1, 0);
                 }
 
-                gbx.MainNode.OffsetMediaTrackerTriggers(xzTriggerOffset);
+                map.OffsetMediaTrackerTriggers(xzTriggerOffset);
 
-                gbx.MainNode.OffsetMediaTrackerCameras(new Vec3(64, -6 - offsetHeight, 64) + xzCameraOffset);
+                map.OffsetMediaTrackerCameras(new Vec3(64, -6 - offsetHeight, 64) + xzCameraOffset);
             }
 
             var chunk003 = gbx.Header.GetChunk<CGameCtnChallenge.Chunk03043003>();
             chunk003.Version = 6;
 
             gbx.CreateBodyChunk<CGameCtnChallenge.Chunk03043044>();
-            map = gbx.MainNode; // Due to current solution this must be presented
 
             map.ScriptMetadata.Declare("MapVehicle", carTranslations[beforeCar]);
 
-            if (gbx.MainNode.Type == CGameCtnChallenge.TrackType.Stunts)
+            var challParams = map.ChallengeParameters;
+            challParams.CreateChunk<CGameCtnChallengeParameters.Chunk0305B00E>();
+
+            if (map.Mode == CGameCtnChallenge.PlayMode.Stunts)
             {
-                gbx.MainNode.Type = CGameCtnChallenge.TrackType.Script;
-
-                var challParams = map.ChallengeParameters;
-
-                var chunk00E = challParams.CreateChunk<CGameCtnChallengeParameters.Chunk0305B00E>();
                 challParams.MapType = "Stunts";
 
                 var authorScore = challParams.AuthorScore;
@@ -474,8 +510,40 @@ namespace IslandConverter
 
                 map.ScriptMetadata.Declare("GameMode", "Stunts");
             }
+            else if (map.Mode == CGameCtnChallenge.PlayMode.Platform)
+            {
+                challParams.MapType = "Platform";
+
+                var authorScore = challParams.AuthorScore;
+                var goldScore = challParams.GoldTime.GetValueOrDefault(TimeSpan.FromMilliseconds(0)).ToMilliseconds();
+                var silverScore = challParams.SilverTime.GetValueOrDefault(TimeSpan.FromMilliseconds(3)).ToMilliseconds();
+                var bronzeScore = challParams.BronzeTime.GetValueOrDefault(TimeSpan.FromMilliseconds(10)).ToMilliseconds();
+
+                var mapStyle = $"{authorScore}|{goldScore}|{silverScore}|{bronzeScore}";
+                challParams.MapStyle = mapStyle;
+
+                map.ScriptMetadata.Declare("ObjectiveAuthor", authorScore);
+                map.ScriptMetadata.Declare("ObjectiveGold", goldScore);
+                map.ScriptMetadata.Declare("ObjectiveSilver", silverScore);
+                map.ScriptMetadata.Declare("ObjectiveBronze", bronzeScore);
+
+                map.ScriptMetadata.Declare("GameMode", "Platform");
+
+                if (challParams.AuthorTime.HasValue)
+                {
+                    var authorTime = challParams.AuthorTime.Value.TotalMilliseconds;
+                    challParams.GoldTime = TimeSpan.FromMilliseconds(authorTime * 1.1);
+                    challParams.SilverTime = TimeSpan.FromMilliseconds(authorTime * 1.2);
+                    challParams.BronzeTime = TimeSpan.FromMilliseconds(authorTime * 1.5);
+                }
+            }
             else
+            {
+                challParams.MapType = "Race";
                 map.ScriptMetadata.Declare("GameMode", "Race");
+            }
+
+            map.Mode = CGameCtnChallenge.PlayMode.Script;
 
             map.ScriptMetadata.Declare("MadeByConverter", true);
             map.ScriptMetadata.Declare("RequiresOpenPlanet", size == MapSize.X45WithSmallBorder);
@@ -485,11 +553,11 @@ namespace IslandConverter
             {
                 case MapSize.X32WithBigBorder:
                     Log.Write("Placing the background item...");
-                    gbx.MainNode.PlaceAnchoredObject(("Island\\8Terrain\\7BackGround\\Background.Item.gbx", 10003, "adamkooo"), new Vec3(), new Vec3(), new Vec3(1024, 9, 1024));
+                    map.PlaceAnchoredObject(("Island\\8Terrain\\7BackGround\\Background.Item.gbx", 10003, "adamkooo"), new Vec3(), new Vec3(), new Vec3(1024, 9, 1024));
                     break;
                 case MapSize.X45WithSmallBorder:
                     Log.Write("Placing the background item...");
-                    gbx.MainNode.PlaceAnchoredObject(("Island\\8Terrain\\6BigBackground\\Background_45x45.Item.gbx", 10003, "adamkooo"), new Vec3(), new Vec3(), new Vec3(1504, 17, 1504));
+                    map.PlaceAnchoredObject(("Island\\8Terrain\\6BigBackground\\Background_45x45.Item.gbx", 10003, "adamkooo"), new Vec3(), new Vec3(), new Vec3(1504, 17, 1504));
                     break;
                 default:
                     Log.Write($"Island background is not supported for {size}.", ConsoleColor.Yellow);
@@ -521,7 +589,7 @@ namespace IslandConverter
                                     {
                                         foreach (var item in variant.Ground.ItemModels)
                                             if (item != null)
-                                                DoConversion(item, true);
+                                                DoConversion(item, true, variant.Ground.ItemModels.First() == item ? variant.Ground : null);
                                     }
                                     else if (variant.Ground != null)
                                         DoConversion(variant.Ground, true);
@@ -537,7 +605,7 @@ namespace IslandConverter
                                     {
                                         foreach (var item in variant.Air.ItemModels)
                                             if (item != null)
-                                                DoConversion(item, false);
+                                                DoConversion(item, false, variant.Air.ItemModels.First() == item ? variant.Air : null);
                                     }
                                     else if (variant.Air != null)
                                         DoConversion(variant.Air, false);
@@ -551,22 +619,19 @@ namespace IslandConverter
                             else
                                 DoConversion(variant);
 
-                            void DoConversion(BlockConversion conv, bool? isItemGround = null)
+                            void DoConversion(BlockConversion conv, bool? isItemGround = null, BlockConversion clipConversion = null)
                             {
+                                if (clipConversion == null)
+                                    clipConversion = conv;
+
                                 if (conv.ItemModel.Length > 0 && !string.IsNullOrEmpty(conv.ItemModel[0]))
                                 {
-                                    var modelToChoose = 0;
-                                    if (conv.Clip != null)
-                                    {
-
-                                    }
-                                    else
-                                        modelToChoose = randomizer.Next(0, conv.ItemModel.Length);
+                                    var modelToChoose = randomizer.Next(0, conv.ItemModel.Length);
 
                                     var itemModel = conv.ItemModel[modelToChoose];
                                     var itemModelSplit = itemModel.Split(' ');
 
-                                    var meta = new Meta("Island\\" + itemModelSplit[0], itemModelSplit.Length > 1 ? new Collection(itemModelSplit[1]) : 10003, itemModelSplit.Length > 2 ? itemModelSplit[2] : "adamkooo");
+                                    var meta = new Ident("Island\\" + itemModelSplit[0], itemModelSplit.Length > 1 ? new Collection(itemModelSplit[1]) : 10003, itemModelSplit.Length > 2 ? itemModelSplit[2] : "adamkooo");
 
                                     Vec3 offsetAbsolutePosition = new Vec3((block.Coord.X+1) * 64 + 96, (block.Coord.Y+1) * 8 - offsetHeight, (block.Coord.Z+1) * 64 + 96);
                                     if (conv.OffsetAbsolutePosition != null)
@@ -605,27 +670,6 @@ namespace IslandConverter
                                     if (conv.InverseDirection.GetValueOrDefault() == true)
                                         dir = 3 - dir;
 
-                                    if (conv.Directions != null)
-                                    {
-                                        for (var i = 0; i < conv.Directions.Length; i++)
-                                        {
-                                            var direction = conv.Directions[i];
-                                            if (direction != null)
-                                            {
-                                                if (i == dir && direction.OffsetAbsolutePosition != null && direction.OffsetAbsolutePosition.Length >= 3)
-                                                    offsetAbsolutePosition += new Vec3(
-                                                        direction.OffsetAbsolutePosition[0],
-                                                        direction.OffsetAbsolutePosition[1],
-                                                        direction.OffsetAbsolutePosition[2]);
-                                                if (i == dir && direction.OffsetPivot != null && direction.OffsetPivot.Length >= 3)
-                                                    offsetPivot += new Vec3(
-                                                        direction.OffsetPivot[0],
-                                                        direction.OffsetPivot[1],
-                                                        direction.OffsetPivot[2]);
-                                            }
-                                        }
-                                    }
-
                                     Vec3 offsetPitchYawRoll = new Vec3(dir * 90f / 180 * (float)Math.PI, 0, 0);
                                     if (conv.OffsetPitchYawRoll != null)
                                     {
@@ -638,7 +682,99 @@ namespace IslandConverter
                                             throw new FormatException($"Wrong format of OffsetPitchYawRoll: {block.Name} -> index {block.Variant} -> [{string.Join(", ", conv.OffsetPitchYawRoll)}]");
                                     }
 
-                                    gbx.MainNode.PlaceAnchoredObject(meta, offsetAbsolutePosition, offsetPitchYawRoll, offsetPivot);
+                                    var placedClips = 0;
+
+                                    if (clipConversion.Clip != null)
+                                        if (DoClip(clipConversion.Clip, false, clipConversion.ClipOffsetY))
+                                            placedClips++;
+
+                                    if (clipConversion.Clips != null)
+                                        foreach (var clip in clipConversion.Clips)
+                                            if (clip != null)
+                                                if(DoClip(clip, false, clipConversion.ClipOffsetY))
+                                                    placedClips++;
+
+                                    bool DoClip(BlockConversionClip clip, bool isDirections, int clipOffsetY)
+                                    {
+                                        var clipOffsetCoord = (Int3)clip.OffsetCoord;
+                                        var rads = (float)((int)block.Direction * Math.PI / 2);
+
+                                        if (!isDirections)
+                                        {
+                                            Vec3 centerFromCoord = default;
+                                            if (clip.CenterFromCoord != null)
+                                                centerFromCoord = (Vec3)clip.CenterFromCoord;
+                                            if (variant.CenterFromCoord != null)
+                                                centerFromCoord = (Vec3)variant.CenterFromCoord;
+
+                                            clipOffsetCoord = (Int3)AdditionalMath.RotateAroundCenter(clipOffsetCoord, centerFromCoord, rads);
+                                        }
+
+                                        if (clips.TryGetValue(block.Coord + clipOffsetCoord + (0, clipOffsetY, 0), out CGameCtnBlock clipBlock))
+                                        {
+                                            var itemModelClip = clip.ItemModel;
+                                            var itemModelClipSplit = itemModelClip.Split(' ');
+
+                                            if (clipOffsetCoord.Y > 0 && block.IsGround)
+                                                clipOffsetCoord -= (0, 1, 0);
+
+                                            var clipOffsetPivot = default(Vec3);
+                                            var clipOffsetDirection = 0;
+
+                                            if (clipProperties.TryGetValue(itemModelClipSplit[0], out ClipProperties properties) && properties != null)
+                                            {
+                                                clipOffsetPivot = (Vec3)properties.OffsetPivot;
+                                                clipOffsetDirection = properties.OffsetDirection;
+                                            }
+
+                                            var radsLocal = (float)((clipOffsetDirection + clip.OffsetDirection) % 4 * Math.PI / 2);
+
+                                            //var offsetDir = ((int)block.Direction + clip.OffsetDirection) % 4;
+
+                                            var metaClip = new Ident("Island\\" + itemModelClipSplit[0],
+                                                itemModelClipSplit.Length > 1 ? new Collection(itemModelClipSplit[1]) : 10003,
+                                                itemModelClipSplit.Length > 2 ? itemModelClipSplit[2] : "adamkooo");
+
+                                            map.PlaceAnchoredObject(metaClip, offsetAbsolutePosition + clipOffsetCoord * new Vec3(64, 8, 64) + (Vec3)clip.OffsetPosition, (-rads + radsLocal, 0, 0), clipOffsetPivot);
+                                            
+                                            return true;
+                                        }
+
+                                        return false;
+                                    }
+
+                                    if (conv.Directions != null)
+                                    {
+                                        if (conv.Directions.Length > dir)
+                                        {
+                                            var direction = conv.Directions[dir];
+                                            if (direction != null)
+                                            {
+                                                if (direction.OffsetAbsolutePosition != null && direction.OffsetAbsolutePosition.Length >= 3)
+                                                    offsetAbsolutePosition += new Vec3(
+                                                        direction.OffsetAbsolutePosition[0],
+                                                        direction.OffsetAbsolutePosition[1],
+                                                        direction.OffsetAbsolutePosition[2]);
+                                                if (direction.OffsetPivot != null && direction.OffsetPivot.Length >= 3)
+                                                    offsetPivot += new Vec3(
+                                                        direction.OffsetPivot[0],
+                                                        direction.OffsetPivot[1],
+                                                        direction.OffsetPivot[2]);
+
+                                                if (direction.Clip != null)
+                                                    if (DoClip(direction.Clip, true, direction.ClipOffsetY))
+                                                        placedClips++;
+
+                                                if (direction.Clips != null)
+                                                    foreach (var clip in direction.Clips)
+                                                        if (clip != null)
+                                                            if(DoClip(clip, true, direction.ClipOffsetY))
+                                                                placedClips++;
+                                            }
+                                        }
+                                    }
+
+                                    map.PlaceAnchoredObject(meta, offsetAbsolutePosition, offsetPitchYawRoll, offsetPivot);
 
                                     Vec3 skinPosOffset = default;
                                     if (conv.SkinPositionOffset != null)
@@ -649,18 +785,24 @@ namespace IslandConverter
                                     {
                                         if (skinInfo.TryGetValue(conv.SkinSignSet, out Dictionary<string, string> skinDic))
                                         {
-                                            if (skinDic.TryGetValue(block.Skin.PackDesc.FilePath, out string itemFile))
-                                                gbx.MainNode.PlaceAnchoredObject(new Meta("Island\\" + itemFile, "10003", "adamkooo"),
+                                            if (skinDic.TryGetValue(block.Skin.PackDesc.FilePath, out string itemFile)
+                                                || (block.Skin.PackDesc.Version < 2 && skinDic.TryGetValue("Skins\\" + block.Skin.PackDesc.FilePath, out itemFile)))
+                                            {
+                                                map.PlaceAnchoredObject(new Ident("Island\\" + itemFile, "10003", "adamkooo"),
                                                     offsetAbsolutePosition + skinPosOffset,
                                                     offsetPitchYawRoll + new Vec3(-conv.SkinDirectionOffset % 4 * 90f / 180 * (float)Math.PI, 0, 0), offsetPivot);
+                                            }
                                             else
                                             {
-                                                Log.Write($"Could not find item alternative for {block.Skin.PackDesc.FilePath}. Default sign will be used instead.", ConsoleColor.DarkYellow);
+                                                if (!string.IsNullOrEmpty(itemFile))
+                                                {
+                                                    Log.Write($"Could not find item alternative for {block.Skin.PackDesc.FilePath}. Default sign will be used instead.", ConsoleColor.DarkYellow);
+                                                }
                                             }
                                         }
                                     }
 
-                                    Log.Write($"{block.Name} ({(block.IsGround ? "Ground" : "Air")}) -> {meta.ID} ({(isItemGround.HasValue ? (isItemGround.Value ? "Ground" : "Air") : "Undefined")})");
+                                    Log.Write($"{block.Name} ({(block.IsGround ? "Ground" : "Air")}) -> {meta.ID} ({(isItemGround.HasValue ? (isItemGround.Value ? "Ground" : "Air") : "Undefined")}) {(placedClips > 0 ? $"+ {placedClips} clips" : "")}");
 
                                     placed++;
                                 }

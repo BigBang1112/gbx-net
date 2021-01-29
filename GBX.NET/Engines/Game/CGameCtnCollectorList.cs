@@ -32,12 +32,12 @@ namespace GBX.NET.Engines.Game
                 n.CollectorStock = rw.Array(n.CollectorStock,
                 i => new Collector()
                 {
-                    Meta = rw.Reader.ReadMeta(),
+                    Ident = rw.Reader.ReadIdent(),
                     Count = rw.Reader.ReadInt32()
                 },
                 x =>
                 {
-                    rw.Writer.Write(x.Meta);
+                    rw.Writer.Write(x.Ident);
                     rw.Writer.Write(x.Count);
                 });
             }
@@ -51,7 +51,7 @@ namespace GBX.NET.Engines.Game
 
         public class Collector
         {
-            public Meta Meta { get; set; }
+            public Ident Ident { get; set; }
             public int Count { get; set; }
         }
 

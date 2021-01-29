@@ -24,7 +24,7 @@ void Read(GameBoxReader r)
     int numMaps = r.ReadInt32();
     for(var i = 0; i < numMaps; i++)
     {
-        Meta mapInfo = r.ReadMeta();
+        Ident mapInfo = r.ReadIdent();
         string filePath = r.ReadString();
     }
 }

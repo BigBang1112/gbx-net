@@ -9,7 +9,7 @@
 ```cs
 void Read(GameBoxReader r)
 {
-    Meta blockInfo = r.ReadMeta();
+    Ident blockInfo = r.ReadIdent();
     Direction dir = (Direction)r.ReadByte();
     Byte3 coord = r.Byte3();
     int flags = r.Int32();

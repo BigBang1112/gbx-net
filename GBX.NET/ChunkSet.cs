@@ -66,7 +66,7 @@ namespace GBX.NET
 
             chunk.Part = (GameBoxPart)Node?.Body;
 
-            if (chunk is ILookbackable l) l.LookbackVersion = 3;
+            if (chunk is ILookbackable l) l.IdVersion = 3;
             Add(chunk);
             return chunk;
         }

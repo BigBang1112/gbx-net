@@ -19,6 +19,10 @@
         public int SkinDirectionOffset { get; set; }
         public string SkinSignSet { get; set; }
         public float[] CenterFromCoord { get; set; }
-        public string[][] Clip { get; set; }
+        public bool KeepWater { get; set; }
+
+        public BlockConversionClip Clip { get; set; }
+        public BlockConversionClip[] Clips { get; set; }
+        public int ClipOffsetY { get; set; }
     }
 }

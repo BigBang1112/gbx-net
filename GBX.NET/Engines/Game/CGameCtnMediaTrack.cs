@@ -11,26 +11,53 @@ namespace GBX.NET.Engines.Game
     [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaTrack : Node
     {
+        #region Fields
+
+        private string name;
+        private List<CGameCtnMediaBlock> blocks;
+        private bool isKeepPlaying = true;
+        private bool isCycling;
+
+        #endregion
+
         #region Properties
 
         /// <summary>
         /// Name of the track.
         /// </summary>
         [NodeMember]
-        public string Name { get; set; }
+        public string Name
+        {
+            get => name;
+            set => name = value;
+        }
 
         /// <summary>
         /// List of blocks.
         /// </summary>
         [NodeMember]
-        public List<CGameCtnMediaBlock> Blocks { get; set; }
+        public List<CGameCtnMediaBlock> Blocks
+        {
+            get => blocks;
+            set => blocks = value;
+        }
 
         /// <summary>
         /// If the track should keep playing the last block after it ends.
         /// </summary>
-        public bool IsKeepPlaying { get; set; } = true;
+        [NodeMember]
+        public bool IsKeepPlaying
+        {
+            get => isKeepPlaying;
+            set => isKeepPlaying = value;
+        }
 
-        public bool IsCycling { get; set; }
+        [NodeMember]
+        public bool IsCycling
+        {
+            get => isCycling;
+            set => isCycling = value;
+        }
 
         #endregion
 
@@ -69,17 +96,27 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03078001)]
         public class Chunk03078001 : Chunk<CGameCtnMediaTrack>
         {
-            public int Unknown1 { get; set; }
-            public int Unknown2 { get; set; }
+            private int u01;
+            private int u02;
+
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public int U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
 
             public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
-                n.Name = rw.String(n.Name);
-                Unknown1 = rw.Int32(Unknown1); // 10, probably version
-                n.Blocks = rw.Array(n.Blocks?.ToArray(),
-                    i => rw.Reader.ReadNodeRef<CGameCtnMediaBlock>(),
-                    x => rw.Writer.Write(x))?.ToList();
-                Unknown2 = rw.Int32(Unknown2);
+                rw.String(ref n.name);
+                rw.Int32(ref u01); // 10, probably version
+                rw.ListNode<CGameCtnMediaBlock>(ref n.blocks);
+                rw.Int32(ref u02);
             }
         }
 
@@ -96,7 +133,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
-                n.IsKeepPlaying = rw.Boolean(n.IsKeepPlaying);
+                rw.Boolean(ref n.isKeepPlaying);
             }
         }
 
@@ -107,11 +144,17 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03078003)]
         public class Chunk03078003 : Chunk<CGameCtnMediaTrack>
         {
-            public int U01 { get; set; }
+            private int u01;
+
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
 
             public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
-                U01 = rw.Int32(U01); // 0
+                rw.Int32(ref u01); // 0
             }
         }
 
@@ -128,7 +171,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
-                n.IsKeepPlaying = rw.Boolean(n.IsKeepPlaying);
+                rw.Boolean(ref n.isKeepPlaying);
             }
         }
 
@@ -139,19 +182,43 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03078005)]
         public class Chunk03078005 : Chunk<CGameCtnMediaTrack>
         {
-            public int Version { get; set; } = 1;
-            public int U02 { get; set; }
-            public float U04 { get; set; } = -1;
-            public float U05 { get; set; } = -1;
+            private int version = 1;
+            private int u02;
+            private float u04 = -1;
+            private float u05 = -1;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
+
+            public int U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
+
+            public float U04
+            {
+                get => u04;
+                set => u04 = value;
+            }
+
+            public float U05
+            {
+                get => u05;
+                set => u05 = value;
+            }
 
             public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                n.IsKeepPlaying = rw.Boolean(n.IsKeepPlaying);
-                U02 = rw.Int32(U02);
-                n.IsCycling = rw.Boolean(n.IsCycling);
-                U04 = rw.Single(U04);
-                U05 = rw.Single(U05);
+                rw.Int32(ref version);
+                rw.Boolean(ref n.isKeepPlaying);
+                rw.Int32(ref u02);
+                rw.Boolean(ref n.isCycling);
+                rw.Single(ref u04);
+                rw.Single(ref u05);
             }
         }
 

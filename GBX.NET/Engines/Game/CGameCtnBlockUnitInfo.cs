@@ -31,7 +31,7 @@
         {
             public override void ReadWrite(CGameCtnBlockUnitInfo n, GameBoxReaderWriter rw)
             {
-                rw.LookbackString(Unknown); // Desert, Grass
+                rw.Id(Unknown); // Desert, Grass
                 rw.Single(Unknown);
                 rw.Single(Unknown);
             }
@@ -63,7 +63,7 @@
         {
             public override void ReadWrite(CGameCtnBlockUnitInfo n, GameBoxReaderWriter rw)
             {
-                n.TerrainModifierId = rw.LookbackString(n.TerrainModifierId);
+                n.TerrainModifierId = rw.Id(n.TerrainModifierId);
             }
         }
 

@@ -13,7 +13,7 @@ namespace GBX.NET
         /// </summary>
         public int? ID { get; }
         /// <summary>
-        /// Represents a name defined kind of collection. If set, collection is stored as a regular <see cref="LookbackString"/> in GBX. Always avaliable if <see cref="ID"/> is null.
+        /// Represents a name defined kind of collection. If set, collection is stored as a regular <see cref="Id"/> in GBX. Always avaliable if <see cref="ID"/> is null.
         /// </summary>
         public string Name { get; }
 
@@ -63,7 +63,7 @@ namespace GBX.NET
         {
             if (ID.HasValue)
             {
-                if (LookbackString.CollectionIDs.TryGetValue(ID.Value, out string value))
+                if (Id.CollectionIDs.TryGetValue(ID.Value, out string value))
                     return value;
                 return ID.ToString();
             }
@@ -74,16 +74,16 @@ namespace GBX.NET
         /// Converts the collection to a GBX-ready format.
         /// </summary>
         /// <param name="lookbackable">A lookbackable to look for existing strings from.</param>
-        /// <returns>Returns a ready-to-use <see cref="LookbackString"/>.</returns>
-        public LookbackString ToLookbackString(ILookbackable lookbackable)
+        /// <returns>Returns a ready-to-use <see cref="Id"/>.</returns>
+        public Id ToId(ILookbackable lookbackable)
         {
             if (ID.HasValue)
-                return new LookbackString(ID.ToString(), lookbackable);
-            return new LookbackString(Name, lookbackable);
+                return new Id(ID.ToString(), lookbackable);
+            return new Id(Name, lookbackable);
         }
 
         public static implicit operator Collection(string a) => new Collection(a);
-        public static implicit operator Collection(LookbackString a)
+        public static implicit operator Collection(Id a)
         {
             if (string.IsNullOrEmpty(a))
                 return new Collection();

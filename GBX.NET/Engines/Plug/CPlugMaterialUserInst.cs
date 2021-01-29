@@ -9,6 +9,11 @@ namespace GBX.NET.Engines.Plug
     {
         public string MaterialFile { get; set; }
 
+        public override string ToString()
+        {
+            return MaterialFile;
+        }
+
         [Chunk(0x090FD000)]
         public class Chunk090FD000 : Chunk<CPlugMaterialUserInst>
         {
@@ -30,7 +35,7 @@ namespace GBX.NET.Engines.Plug
                 Unknown3 = rw.Int32(Unknown3);
                 Unknown4 = rw.Byte(Unknown4);
                 if (Version < 9)
-                    n.MaterialFile = rw.LookbackString(n.MaterialFile);
+                    n.MaterialFile = rw.Id(n.MaterialFile);
                 if (Version >= 9)
                 {
                     if(Version >= 10)

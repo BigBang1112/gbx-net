@@ -178,9 +178,20 @@ namespace GBX.NET.Engines.Game
                     var position = r.ReadVec3();
                     var pitchYawRoll = r.ReadVec3(); // in radians
                     var fov = r.ReadSingle();
-                    var zIndex = r.ReadSingle();
 
-                    var unknown = r.ReadArray<int>(14);
+                    float? nearZ = null;
+                    if (Version >= 3)
+                        nearZ = r.ReadSingle();
+                    var anchorRot = r.ReadBoolean();
+                    var anchor = r.ReadInt32();
+                    var anchorVis = r.ReadBoolean();
+                    var target = r.ReadInt32();
+                    var targetPosition = r.ReadVec3();
+
+                    var unknown = r.ReadArray<float>(5).Cast<object>().ToList();
+
+                    if(Version >= 4)
+                        unknown.AddRange(r.ReadArray<int>(2).Cast<object>());
 
                     return new Key()
                     {
@@ -188,7 +199,12 @@ namespace GBX.NET.Engines.Game
                         Position = position,
                         PitchYawRoll = pitchYawRoll,
                         FOV = fov,
-                        ZIndex = zIndex,
+                        NearZ = nearZ,
+                        AnchorRot = anchorRot,
+                        Anchor = anchor,
+                        AnchorVis = anchorVis,
+                        Target = target,
+                        TargetPosition = targetPosition,
                         Unknown = unknown.Cast<object>().ToArray()
                     };
                 });
@@ -204,9 +220,25 @@ namespace GBX.NET.Engines.Game
                     w.Write(x.Position);
                     w.Write(x.PitchYawRoll);
                     w.Write(x.FOV);
-                    w.Write(x.ZIndex.GetValueOrDefault());
-                    for(var i = 0; i < 14; i++)
-                        w.Write((int)x.Unknown[i]);
+                    if (Version >= 3)
+                        w.Write(x.NearZ.GetValueOrDefault());
+                    w.Write(x.AnchorRot);
+                    w.Write(x.Anchor);
+                    w.Write(x.AnchorVis);
+                    w.Write(x.Target);
+                    w.Write(x.TargetPosition);
+
+                    w.Write((float)x.Unknown[0]);
+                    w.Write((float)x.Unknown[1]);
+                    w.Write((float)x.Unknown[2]);
+                    w.Write((float)x.Unknown[3]);
+                    w.Write((float)x.Unknown[4]);
+
+                    if (Version >= 4)
+                    {
+                        w.Write((int)x.Unknown[5]);
+                        w.Write((int)x.Unknown[6]);
+                    }
                 });
             }
         }
@@ -230,7 +262,7 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public Vec3 PitchYawRoll { get; set; }
             public float FOV { get; set; }
-            public float? ZIndex { get; set; }
+            public float? NearZ { get; set; }
 
             public Vec3 TargetPosition { get; set; }
             public Vec3 LeftTangent { get; set; }

@@ -3,12 +3,12 @@
 namespace GBX.NET
 {
     /// <summary>
-    /// Supports lookback string management on its own
+    /// Supports <see cref="Id"/> (lookback string) management on its own.
     /// </summary>
     public interface ILookbackable
     {
-        int? LookbackVersion { get; set; }
-        List<string> LookbackStrings { get; set; }
-        bool LookbackWritten { get; set; }
+        int? IdVersion { get; set; }
+        List<string> IdStrings { get; set; }
+        bool IdWritten { get; set; }
     }
 }

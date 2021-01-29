@@ -18,7 +18,7 @@ namespace GBX.NET.Engines.Game
     {
         #region Fields
 
-        private Meta playerModel;
+        private Ident playerModel;
         private FileRef[] skinPackDescs;
         private string ghostNickname;
         private string ghostAvatarName;
@@ -34,7 +34,7 @@ namespace GBX.NET.Engines.Game
         #region Properties
 
         [NodeMember]
-        public Meta PlayerModel
+        public Ident PlayerModel
         {
             get
             {
@@ -187,7 +187,7 @@ namespace GBX.NET.Engines.Game
         public string GhostLogin { get; set; }
 
         [NodeMember]
-        public Meta Vehicle { get; set; }
+        public Ident Vehicle { get; set; }
 
         [NodeMember]
         public string Skin { get; set; }
@@ -242,7 +242,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                n.playerModel = rw.Meta(n.playerModel);
+                n.playerModel = rw.Ident(n.playerModel);
                 rw.Vec3(Unknown); // unknown
                 n.skinPackDescs = rw.Array(n.skinPackDescs,
                     i => rw.Reader.ReadFileRef(),
@@ -285,7 +285,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.Vehicle = rw.Meta(n.Vehicle);
+                n.Vehicle = rw.Ident(n.Vehicle);
                 n.Skin = rw.String(n.Skin);
                 n.GhostLogin = rw.String(n.GhostLogin);
             }
@@ -319,7 +319,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.Vehicle = rw.Meta(n.Vehicle);
+                n.Vehicle = rw.Ident(n.Vehicle);
                 n.Skin = rw.String(n.Skin);
                 rw.Int32(Unknown);
                 rw.String(Unknown);
@@ -420,7 +420,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.Vehicle = rw.Meta(n.Vehicle);
+                n.Vehicle = rw.Ident(n.Vehicle);
                 n.Skin = rw.Reader.ReadString();
 
                 rw.Int32(Unknown);
@@ -444,7 +444,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.UID = rw.LookbackString(n.UID);
+                n.UID = rw.Id(n.UID);
             }
         }
 
@@ -476,7 +476,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.LookbackString(Unknown);
+                rw.Id(Unknown);
             }
         }
 
@@ -559,7 +559,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.Vehicle = new Meta(rw.LookbackString(n.Vehicle?.ID));
+                n.Vehicle = new Ident(rw.Id(n.Vehicle?.ID));
             }
         }
 
@@ -591,11 +591,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03092018)]
         public class Chunk03092018 : Chunk<CGameCtnGhost>
         {
-            public Meta Unknown1 { get; set; }
+            public Ident Unknown1 { get; set; }
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                Unknown1 = rw.Meta(Unknown1);
+                Unknown1 = rw.Ident(Unknown1);
             }
         }
 
@@ -620,7 +620,7 @@ namespace GBX.NET.Engines.Game
                 if (n.EventsDuration > 0)
                 {
                     Unknown1 = rw.UInt32(Unknown1);
-                    n.ControlNames = rw.Array(n.ControlNames, i => rw.Reader.ReadLookbackString(), x => rw.Writer.WriteLookbackString(x));
+                    n.ControlNames = rw.Array(n.ControlNames, i => rw.Reader.ReadId(), x => rw.Writer.WriteId(x));
 
                     var numEntries = rw.Int32(n.ControlEntries.Length);
 
@@ -706,7 +706,7 @@ namespace GBX.NET.Engines.Game
             public bool IsReplaying => node.IsReplaying;
             public CGameGhostData Data => node.Data?.Result;
 
-            public Meta PlayerModel => node.PlayerModel;
+            public Ident PlayerModel => node.PlayerModel;
             public FileRef[] SkinPackDescs => node.SkinPackDescs;
             public string GhostNickname => node.GhostNickname;
             public string GhostAvatarName => node.GhostAvatarName;
@@ -717,7 +717,7 @@ namespace GBX.NET.Engines.Game
             public int? StuntScore => node.StuntScore;
             public TimeSpan[] Checkpoints => node.Checkpoints;
             public string GhostLogin => node.GhostLogin;
-            public Meta Vehicle => node.Vehicle;
+            public Ident Vehicle => node.Vehicle;
             public string Skin => node.Skin;
             public string UID => node.UID;
             public int EventsDuration => node.EventsDuration;
