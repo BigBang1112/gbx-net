@@ -919,7 +919,7 @@ void Read(GameBoxReader r)
 {
     int version = r.ReadInt32();
 
-    if (Version != 0)
+    if (version != 0)
     {
         int a = r.ReadInt32();
         int size = r.ReadInt32();
