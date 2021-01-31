@@ -289,6 +289,8 @@ namespace GBX.NET
     /// </summary>
     public class GameBox : IGameBox
     {
+        public const string Magic = "GBX";
+
         public ClassIDRemap Game { get; set; }
 
         public short Version { get; set; }
@@ -560,7 +562,7 @@ namespace GBX.NET
         {
             uint? classID = null;
 
-            if (reader.ReadString("GBX".Length) != "GBX") // If the file doesn't have GBX magic
+            if (reader.ReadString(Magic.Length) != Magic) // If the file doesn't have GBX magic
                 return null;
 
             var version = reader.ReadInt16(); // Version
