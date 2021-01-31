@@ -2410,6 +2410,38 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region 0x01A chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x01A chunk
+        /// </summary>
+        [Chunk(0x0304301A)]
+        public class Chunk0304301A : Chunk<CGameCtnChallenge>
+        {
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+            {
+                rw.NodeRef(Unknown);
+            }
+        }
+
+        #endregion
+
+        #region 0x01B chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x01B chunk
+        /// </summary>
+        [Chunk(0x0304301B)]
+        public class Chunk0304301B : Chunk<CGameCtnChallenge>
+        {
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(Unknown);
+            }
+        }
+
+        #endregion
+
         #region 0x01C skippable chunk (play mode)
 
         /// <summary>
@@ -2421,6 +2453,22 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 n.mode = (PlayMode)rw.Int32((int)n.mode.GetValueOrDefault());
+            }
+        }
+
+        #endregion
+
+        #region 0x01D chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x01D chunk
+        /// </summary>
+        [Chunk(0x0304301D)]
+        public class Chunk0304301D : Chunk<CGameCtnChallenge>
+        {
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+            {
+                rw.NodeRef(Unknown);
             }
         }
 
@@ -2478,7 +2526,7 @@ namespace GBX.NET.Engines.Game
                     var flags = -1;
 
                     if (Version == null)
-                        flags = r.ReadInt16();
+                        flags = r.ReadUInt16();
                     else if (Version > 0)
                         flags = r.ReadInt32();
 
