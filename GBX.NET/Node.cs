@@ -691,31 +691,5 @@ namespace GBX.NET
                 return newerClassID;
             return id;
         }
-
-        [Obsolete]
-        public static T FromGBX<T>(GameBox<T> loadedGbx) where T : Node
-        {
-            return loadedGbx.MainNode;
-        }
-
-        [Obsolete]
-        public static T FromGBX<T>(string gbxFile) where T : Node
-        {
-            using (var fs = File.OpenRead(gbxFile))
-            {
-                var type = GameBox.GetGameBoxType(fs);
-                fs.Seek(0, SeekOrigin.Begin);
-
-                GameBox gbx;
-                if (type == null)
-                    gbx = new GameBox();
-                else
-                    gbx = (GameBox)Activator.CreateInstance(type);
-
-                if (gbx.Read(fs, null))
-                    return FromGBX((GameBox<T>)gbx);
-                return default;
-            }
-        }
     }
 }
