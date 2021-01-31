@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.ExceptionServices;
 using System.Threading.Tasks;
 
 namespace GBX.NET
@@ -636,10 +637,21 @@ namespace GBX.NET
                 if (gbx == null) return null;
 
                 var gbxType = gbx.GetType();
+
                 if(gbxType.GetGenericTypeDefinition() == typeof(GameBox<>))
                 {
                     var readBodyMethod = gbxType.GetMethod("ReadBody");
-                    readBodyMethod.Invoke(gbx, new object[] { r, progress });
+
+                    try
+                    {
+                        readBodyMethod.Invoke(gbx, new object[] { r, progress });
+                    }
+                    catch (TargetInvocationException e)
+                    {
+                        Log.Write("\nException while parsing the body of GBX!", ConsoleColor.Red);
+                        Log.Write(e.InnerException.ToString());
+                        ExceptionDispatchInfo.Capture(e.InnerException).Throw();
+                    }
                 }
 
                 return gbx;
