@@ -2466,7 +2466,9 @@ namespace GBX.NET.Engines.Game
 
                 var nbBlocks = r.ReadInt32(); // It's maybe slower but better for the program to determine the count from the list
 
-                List<CGameCtnBlock> blocks = new List<CGameCtnBlock>();
+                n.blocks = new List<CGameCtnBlock>();
+
+                var blockCounter = 0;
 
                 while ((r.PeekUInt32() & 0xC0000000) > 0)
                 {
@@ -2482,7 +2484,7 @@ namespace GBX.NET.Engines.Game
 
                     if (flags == -1)
                     {
-                        blocks.Add(new CGameCtnBlock(blockName, dir, (Int3)coord - (1, 1, 1), flags, null, null, null));
+                        n.blocks.Add(new CGameCtnBlock(blockName, dir, (Int3)coord - (1, 1, 1), flags, null, null, null));
                         continue;
                     }
 
@@ -2510,10 +2512,12 @@ namespace GBX.NET.Engines.Game
 
                     }
 
-                    blocks.Add(new CGameCtnBlock(blockName, dir, (Int3)coord - (1, 1, 1), flags, author, skin, parameters));
+                    n.blocks.Add(new CGameCtnBlock(blockName, dir, (Int3)coord - (1, 1, 1), flags, author, skin, parameters));
+
+                    blockCounter++;
                 }
 
-                n.Blocks = blocks;
+                Debug.Assert(blockCounter == nbBlocks);
             }
 
             public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
