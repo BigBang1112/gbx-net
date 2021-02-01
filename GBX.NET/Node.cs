@@ -118,12 +118,12 @@ namespace GBX.NET
         {
             var stopwatch = Stopwatch.StartNew();
 
-            if (classID == null)
+            if (!classID.HasValue)
                 classID = r.ReadUInt32();
-            if (Mappings.TryGetValue(classID.Value, out uint newerClassID))
-                classID = newerClassID;
 
             if (classID == uint.MaxValue) return null;
+
+            classID = Remap(classID.Value);
 
             if (!AvailableClasses.TryGetValue(classID.Value, out Type type))
                 throw new NotImplementedException($"Node ID 0x{classID.Value:X8} is not implemented. ({Names.Where(x => x.Key == Chunk.Remap(classID.Value)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
