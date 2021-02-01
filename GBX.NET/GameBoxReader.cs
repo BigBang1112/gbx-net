@@ -79,7 +79,11 @@ namespace GBX.NET
                 if ((lookbackable.IdVersion & 0xC0000000) > 10) // Edge-case scenario where Id doesn't have a version for whatever reason (can be multiple)
                 {
                     lookbackable.IdVersion = 3;
-                    BaseStream.Position -= 4;
+
+                    if (BaseStream.CanSeek)
+                        BaseStream.Seek(-4, SeekOrigin.Current);
+                    else
+                        throw new NotSupportedException("GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.");
                 }
             }
 
