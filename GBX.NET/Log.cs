@@ -12,12 +12,12 @@ namespace GBX.NET
         public static event OnLog OnLogEvent;
         public static event OnPush OnPushEvent;
 
-        public static StringWriter MainLog { get; }
+        public static List<string> MainLog { get; }
         public static Dictionary<string, StringWriter> AlternativeLogs { get; }
 
         static Log()
         {
-            MainLog = new StringWriter();
+            MainLog = new List<string>();
             AlternativeLogs = new Dictionary<string, StringWriter>();
         }
 
@@ -39,7 +39,7 @@ namespace GBX.NET
 
         public static void Write(string text, ConsoleColor color = ConsoleColor.White)
         {
-            MainLog.WriteLine(text);
+            MainLog.Add(text);
 
             foreach (var log in AlternativeLogs)
                 log.Value.WriteLine(text);
