@@ -370,9 +370,10 @@ namespace IslandConverter
         {
             for (var i = 0; i < amount; i++)
             {
-                int currentLineCursor = Console.CursorTop;
-                Console.SetCursorPosition(0, Console.CursorTop);
-                Console.Write(new string(' ', Console.WindowWidth));
+                var line = Log.MainLog[Log.MainLog.Count - 1 - i];
+                var currentLineCursor = Console.CursorTop;
+                Console.SetCursorPosition(line.Length, Console.CursorTop);
+                Console.Write(new string(' ', Console.WindowWidth - line.Length));
                 Console.SetCursorPosition(0, currentLineCursor);
                 Console.CursorTop--;
             }
