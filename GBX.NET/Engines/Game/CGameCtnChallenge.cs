@@ -3277,9 +3277,7 @@ namespace GBX.NET.Engines.Game
         public class Chunk03043050 : SkippableChunk<CGameCtnChallenge>
         {
             private int version;
-            private int u01 = 3;
-            private int u02 = 1;
-            private int u03 = 3;
+            private Vec3 triggerSize = (3, 1, 3);
 
             /// <summary>
             /// Version of the chunk.
@@ -3290,30 +3288,16 @@ namespace GBX.NET.Engines.Game
                 set => version = value;
             }
 
-            public int U01
+            public Vec3 TriggerSize
             {
-                get => u01;
-                set => u01 = value;
-            }
-
-            public int U02
-            {
-                get => u02;
-                set => u02 = value;
-            }
-
-            public int U03
-            {
-                get => u03;
-                set => u03 = value;
+                get => triggerSize;
+                set => triggerSize = value;
             }
 
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
-                rw.Int32(ref u01);
-                rw.Int32(ref u02);
-                rw.Int32(ref u03);
+                rw.Vec3(ref triggerSize);
 
                 rw.List(ref n.offzones,
                     (i, r) => (r.ReadInt3(), r.ReadInt3()),
