@@ -2522,8 +2522,11 @@ namespace GBX.NET.Engines.Game
                 {
                     var blockName = r.ReadId();
                     var dir = (Direction)r.ReadByte();
-                    var coord = r.ReadByte3();
+                    var coord = (Int3)r.ReadByte3();
                     var flags = -1;
+
+                    if (Version >= 6)
+                        coord -= (1, 1, 1);
 
                     if (Version == null)
                         flags = r.ReadUInt16();
@@ -2532,7 +2535,7 @@ namespace GBX.NET.Engines.Game
 
                     if (flags == -1)
                     {
-                        n.blocks.Add(new CGameCtnBlock(blockName, dir, (Int3)coord - (1, 1, 1), flags, null, null, null));
+                        n.blocks.Add(new CGameCtnBlock(blockName, dir, coord, flags, null, null, null));
                         continue;
                     }
 
@@ -2560,7 +2563,7 @@ namespace GBX.NET.Engines.Game
 
                     }
 
-                    n.blocks.Add(new CGameCtnBlock(blockName, dir, (Int3)coord - (1, 1, 1), flags, author, skin, parameters));
+                    n.blocks.Add(new CGameCtnBlock(blockName, dir, coord, flags, author, skin, parameters));
 
                     blockCounter++;
                 }
@@ -2578,7 +2581,6 @@ namespace GBX.NET.Engines.Game
 
                 if (!is013)
                     w.Write(Version.GetValueOrDefault());
-
 
                 // Remove all free blocks with clips
                 for(int i = 0; i < n.Blocks.Count; i++)
@@ -2608,7 +2610,11 @@ namespace GBX.NET.Engines.Game
                 {
                     w.WriteId(x.Name);
                     w.Write((byte)x.Direction);
-                    w.Write((Byte3)(x.Coord + (1, 1, 1)));
+
+                    var coord = x.Coord;
+                    if (Version >= 6)
+                        coord += (1, 1, 1);
+                    w.Write((Byte3)coord);
 
                     if (Version == null)
                         w.Write((short)x.Flags);
