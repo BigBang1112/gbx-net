@@ -12,9 +12,24 @@ namespace GBX.NET.Engines.Game
     [Node(0x0303F000)]
     public class CGameGhost : Node
     {
+        private Action<Task<CGameGhostData>> dataExceptionHandle;
+
         public bool IsReplaying { get; set; }
 
         public Task<CGameGhostData> Data { get; set; }
+
+        public CGameGhost()
+        {
+            dataExceptionHandle = task =>
+            {
+                if (task.IsFaulted)
+                {
+                    Log.Write($"\nExceptions while reading ghost data: ({task.Exception.InnerExceptions.Count})", ConsoleColor.Yellow);
+                    foreach (var ex in task.Exception.InnerExceptions)
+                        Log.Write(ex.ToString());
+                }
+            };
+        }
 
         #region Chunks
 
@@ -46,6 +61,8 @@ namespace GBX.NET.Engines.Game
                     }
                     return ghostData;
                 });
+
+                n.Data.ContinueWith(n.dataExceptionHandle);
             }
         }
 
@@ -88,6 +105,8 @@ namespace GBX.NET.Engines.Game
                             ghostData.Read(ms, true);
                         return ghostData;
                     });
+
+                    n.Data.ContinueWith(n.dataExceptionHandle);
                 }
             }
         }

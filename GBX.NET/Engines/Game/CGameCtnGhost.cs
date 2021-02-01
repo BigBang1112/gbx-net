@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace GBX.NET.Engines.Game
 {
@@ -704,7 +705,7 @@ namespace GBX.NET.Engines.Game
             private readonly CGameCtnGhost node;
 
             public bool IsReplaying => node.IsReplaying;
-            public CGameGhostData Data => node.Data?.Result;
+            public Task<CGameGhostData> Data => node.Data;
 
             public Ident PlayerModel => node.PlayerModel;
             public FileRef[] SkinPackDescs => node.SkinPackDescs;
