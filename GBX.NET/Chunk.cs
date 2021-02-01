@@ -16,15 +16,6 @@ namespace GBX.NET
         [IgnoreDataMember]
         public UnknownStream Unknown { get; } = new UnknownStream();
 
-        /// <summary>
-        /// A virtual property usable to parse unknown data from the <see cref="Unknown"/> stream.
-        /// </summary>
-        [IgnoreDataMember]
-        public virtual object[] UnknownValues
-        {
-            get => throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} doesn't support UnknownValues.");
-        }
-
         [IgnoreDataMember]
         public virtual ILookbackable Lookbackable
         {
@@ -81,11 +72,6 @@ namespace GBX.NET
             }
         }
 
-        public virtual GameBoxReader OpenUnknownStream()
-        {
-            return new GameBoxReader(Unknown, null);
-        }
-
         public virtual void OnLoad() { }
 
         public int CompareTo(Chunk other)
@@ -120,12 +106,6 @@ namespace GBX.NET
             }
         }
 
-        [IgnoreDataMember]
-        public override object[] UnknownValues
-        {
-            get => throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support UnknownValues.");
-        }
-
         public Chunk()
         {
             
@@ -134,11 +114,6 @@ namespace GBX.NET
         public Chunk(T node)
         {
             Node = node;
-        }
-
-        public override GameBoxReader OpenUnknownStream()
-        {
-            return new GameBoxReader(Unknown, Lookbackable);
         }
 
         /// <summary>
