@@ -638,7 +638,7 @@ namespace GBX.NET
 
                 var gbxType = gbx.GetType();
 
-                if(gbxType.GetGenericTypeDefinition() == typeof(GameBox<>))
+                if(gbxType.IsGenericType && gbxType.GetGenericTypeDefinition() == typeof(GameBox<>))
                 {
                     var readBodyMethod = gbxType.GetMethod("ReadBody");
 
