@@ -27,6 +27,7 @@ namespace GBX.NET
 
         public uint ID { get; }
         public uint? FaultyChunk { get; private set; }
+        [Obsolete]
         public byte[] Rest { get; private set; }
         public bool Unknown { get; internal set; }
 

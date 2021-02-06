@@ -4,6 +4,7 @@ using System.Text;
 
 namespace GBX.NET
 {
+    [AttributeUsage(AttributeTargets.Class)]
     public class IgnoreChunkAttribute : Attribute
     {
     }
