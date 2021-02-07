@@ -675,6 +675,15 @@ namespace GBX.NET
         public void DiscoverAllChunks()
         {
             Chunks.DiscoverAll();
+
+            foreach (var nodeProperty in GetType().GetProperties())
+            {
+                if (nodeProperty.PropertyType.IsSubclassOf(typeof(Node)))
+                {
+                    var node = (Node)nodeProperty.GetValue(this);
+                    node?.DiscoverAllChunks();
+                }
+            }
         }
 
         public static uint Remap(uint id)
