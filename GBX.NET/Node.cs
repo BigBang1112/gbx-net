@@ -95,15 +95,6 @@ namespace GBX.NET
             }
         }
 
-        static Type GetBaseType(Type t)
-        {
-            if (t == null)
-                return null;
-            if (t.BaseType == typeof(Node))
-                return t.BaseType;
-            return GetBaseType(t.BaseType);
-        }
-
         public static T[] ParseArray<T>(GameBoxReader r) where T : Node
         {
             var count = r.ReadInt32();
@@ -528,7 +519,7 @@ namespace GBX.NET
             types = types.Where(t => t != null);
 
             foreach (var nodeType in types.Where(x => x.IsClass
-                   && x.Namespace != null && x.Namespace.StartsWith("GBX.NET.Engines") && GetBaseType(x) == typeof(Node)))
+                   && x.Namespace != null && x.Namespace.StartsWith("GBX.NET.Engines") && x.IsSubclassOf(typeof(Node))))
             {
                 var nodeID = nodeType.GetCustomAttribute<NodeAttribute>().ID;
 
@@ -586,7 +577,7 @@ namespace GBX.NET
                     foreach (var cls in inheritanceClasses)
                     {
                         var availableInheritanceClass = types.Where(x => x.IsClass && x.Namespace != null
-                           && x.Namespace.StartsWith("GBX.NET.Engines") && (GetBaseType(x) == typeof(Node))
+                           && x.Namespace.StartsWith("GBX.NET.Engines") && x.IsSubclassOf(typeof(Node))
                            && (x.GetCustomAttribute<NodeAttribute>().ID == cls)).FirstOrDefault();
 
                         var inheritChunkType = typeof(Chunk<>).MakeGenericType(availableInheritanceClass);
