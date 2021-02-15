@@ -226,6 +226,9 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public string GhostTrigram { get; set; }
 
+        [NodeMember]
+        public string GhostZone { get; set; }
+
         #endregion
 
         #region Chunks
@@ -267,8 +270,14 @@ namespace GBX.NET.Engines.Game
                         n.RecordData = rw.NodeRef<CPlugEntRecordData>(n.RecordData);
                         rw.Boolean(Unknown);
                         rw.Int32(Unknown);
+
                         if (Version >= 6)
+                        {
                             n.GhostTrigram = rw.String(n.GhostTrigram);
+
+                            if (Version >= 7)
+                                n.GhostZone = rw.String(n.GhostZone);
+                        }
                     }
                 }
             }
