@@ -216,10 +216,7 @@ namespace GBX.NET
                         break;
                     }
 
-                    Debug.WriteLine("Skippable chunk: " + chunkID.ToString("X"));
-
                     var chunkDataSize = r.ReadInt32();
-                    Debug.WriteLine("Chunk size: " + chunkDataSize);
                     var chunkData = new byte[chunkDataSize];
                     if (chunkDataSize > 0)
                         r.Read(chunkData, 0, chunkDataSize);
@@ -261,8 +258,6 @@ namespace GBX.NET
 
                 if (reflected && !skippable)
                 {
-                    Debug.WriteLine("Unskippable chunk: " + chunkID.ToString("X8"));
-
                     if (skippable) // Does it ever happen?
                     {
                         var skip = r.ReadUInt32();
@@ -672,6 +667,10 @@ namespace GBX.NET
             Chunks.Discover<T1, T2, T3, T4, T5, T6>();
         }
 
+        /// <summary>
+        /// Discovers all chunks in the node.
+        /// </summary>
+        /// <exception cref="AggregateException"/>
         public void DiscoverAllChunks()
         {
             Chunks.DiscoverAll();
