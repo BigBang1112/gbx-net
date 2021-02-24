@@ -28,36 +28,12 @@ namespace GBX.NET.Engines.Game
         {
             if (compressed)
             {
-                var magic = new byte[2];
-                stream.Read(magic, 0, 2); // Needed for DeflateStream to work
-
-                if (magic[0] != 0x78)
-                    throw new Exception("Data isn't compressed with Deflate ZLIB");
-
-                if (magic[1] == 0x01)
+                using (var zlib = new CompressedStream(stream, CompressionMode.Decompress))
                 {
-                    Compression = CompressionLevel.NoCompression;
-                    Debug.WriteLine("Deflate ZLIB - No compression");
+                    Compression = zlib.Compression;
+                    using (var r = new GameBoxReader(zlib))
+                        Read(r);
                 }
-                else if (magic[1] == 0x9C)
-                {
-                    Compression = CompressionLevel.DefaultCompression;
-                    Debug.WriteLine("Deflate ZLIB - Default compression");
-                }
-                else if (magic[1] == 0xDA)
-                {
-                    Compression = CompressionLevel.BestCompression;
-                    Debug.WriteLine("Deflate ZLIB - Best compression");
-                }
-                else
-                {
-                    Compression = CompressionLevel.UnknownCompression;
-                    Debug.WriteLine("Deflate ZLIB - Unknown compression");
-                }
-
-                using (var zlib = new DeflateStream(stream, CompressionMode.Decompress))
-                using (var r = new GameBoxReader(zlib))
-                    Read(r);
             }
             else
             {

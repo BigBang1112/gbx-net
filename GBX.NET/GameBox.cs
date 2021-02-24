@@ -123,8 +123,9 @@ namespace GBX.NET
         }
 
         /// <summary>
-        /// Discover all skippable BODY chunks.
+        /// Discovers all chunks in the GBX.
         /// </summary>
+        /// <exception cref="AggregateException"/>
         public void DiscoverAllChunks()
         {
             MainNode.DiscoverAllChunks();
