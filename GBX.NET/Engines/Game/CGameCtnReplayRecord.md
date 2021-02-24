@@ -15,6 +15,7 @@
 - [0x011](#0x011)
 - [0x014](#0x014)
 - [0x015](#0x015)
+- [0x018 - skippable (author)](0x018---skippable-author)
 - [0x024](#0x024)
 
 ### 0x000 - header chunk (basic)
@@ -200,6 +201,20 @@ void Read (GameBoxReader r)
 void Read (GameBoxReader r)
 {
     CGameCtnMediaClip clip = r.ReadNodeRef<CGameCtnMediaClip>();
+}
+```
+
+### 0x018 - skippable (author)
+
+```cs
+void Read (GameBoxReader r)
+{
+    Id titleID = r.ReadId();
+    int authorVersion = r.ReadInt32();
+    string authorLogin = r.ReadString();
+    string authorNickname = r.ReadString();
+    string authorZone = r.ReadString();
+    string authorExtraInfo = r.ReadString();
 }
 ```
 

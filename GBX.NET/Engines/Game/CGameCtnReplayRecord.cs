@@ -13,6 +13,17 @@ namespace GBX.NET.Engines.Game
     [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnReplayRecord : Node
     {
+        #region Fields
+
+        private string titleID;
+        private int authorVersion;
+        private string authorLogin;
+        private string authorNickname;
+        private string authorZone;
+        private string authorExtraInfo;
+
+        #endregion
+
         #region Properties
 
         [NodeMember]
@@ -28,25 +39,97 @@ namespace GBX.NET.Engines.Game
         public string DriverLogin { get; set; }
 
         [NodeMember]
-        public string TitleID { get; set; }
+        public string TitleID
+        {
+            get
+            {
+                DiscoverChunk<Chunk03093018>();
+                return titleID;
+            }
+            set
+            {
+                DiscoverChunk<Chunk03093018>();
+                titleID = value;
+            }
+        }
 
         [NodeMember]
         public string XML { get; set; }
 
         [NodeMember]
-        public int? AuthorVersion { get; set; }
+        public int AuthorVersion
+        {
+            get
+            {
+                DiscoverChunk<Chunk03093018>();
+                return authorVersion;
+            }
+            set
+            {
+                DiscoverChunk<Chunk03093018>();
+                authorVersion = value;
+            }
+        }
 
         [NodeMember]
-        public string AuthorLogin { get; set; }
+        public string AuthorLogin
+        {
+            get
+            {
+                DiscoverChunk<Chunk03093018>();
+                return authorLogin;
+            }
+            set
+            {
+                DiscoverChunk<Chunk03093018>();
+                authorLogin = value;
+            }
+        }
 
         [NodeMember]
-        public string AuthorNickname { get; set; }
+        public string AuthorNickname
+        {
+            get
+            {
+                DiscoverChunk<Chunk03093018>();
+                return authorNickname;
+            }
+            set
+            {
+                DiscoverChunk<Chunk03093018>();
+                authorNickname = value;
+            }
+        }
 
         [NodeMember]
-        public string AuthorZone { get; set; }
+        public string AuthorZone
+        {
+            get
+            {
+                DiscoverChunk<Chunk03093018>();
+                return authorZone;
+            }
+            set
+            {
+                DiscoverChunk<Chunk03093018>();
+                authorZone = value;
+            }
+        }
 
         [NodeMember]
-        public string AuthorExtraInfo { get; set; }
+        public string AuthorExtraInfo
+        {
+            get
+            {
+                DiscoverChunk<Chunk03093018>();
+                return authorExtraInfo;
+            }
+            set
+            {
+                DiscoverChunk<Chunk03093018>();
+                authorExtraInfo = value;
+            }
+        }
 
         [NodeMember]
         public Task<GameBox<CGameCtnChallenge>> Challenge { get; set; }
@@ -355,6 +438,40 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 n.Clip = r.ReadNodeRef<CGameCtnMediaClip>();
+            }
+        }
+
+        #endregion
+
+        #region 0x018 chunk
+
+        [Chunk(0x03093018, "author")]
+        public class Chunk03093018 : SkippableChunk<CGameCtnReplayRecord>
+        {
+            public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
+            {
+                n.titleID = r.ReadId();
+                n.authorVersion = r.ReadInt32();
+                n.authorLogin = r.ReadString();
+                n.authorNickname = r.ReadString();
+                n.authorZone = r.ReadString();
+                n.authorExtraInfo = r.ReadString();
+            }
+        }
+
+        #endregion
+
+        #region 0x01C chunk
+
+        [Chunk(0x0309301C)]
+        public class Chunk0309301C : SkippableChunk<CGameCtnReplayRecord>
+        {
+            public int Version { get; set; }
+
+            public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
+            {
+                Version = r.ReadInt32();
+                r.ReadString();
             }
         }
 
