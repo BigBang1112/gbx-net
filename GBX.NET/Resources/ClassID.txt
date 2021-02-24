@@ -338,7 +338,7 @@
   0C0 CGameControlCardNetOnlineNews
   0C1 CGameControlCardLadderRanking
   0C2 CGameControlCardMessage
-  0C3 CGameCalendar
+  0C3 CGameActionFxVis
   0C4 CGameCalendarEvent
   0C5 CGameControlCardCalendar
   0C6 CGameControlCardCalendarEvent
@@ -388,7 +388,12 @@
   14C CGameCtnBlockInfoTransition
   166 CGameCtnMediaBlockCameraEffectInertialTracking
   199 CGameCtnMediaBlockFog
+  282 CGameShield
+  291 CGameTurretVis
   29F CGameCtnMediaBlockEntity
+  2AC CGameObjectVis
+  2CB CGameArenaPlayer
+  2E3 CGameSlotVis
 04 Graphic
   001 GxLight
   002 GxLightBall
@@ -755,6 +760,8 @@
   015
   016 CSceneToyCharacterDesc
   017 CScenePickerManager
+  018 CSceneVehicleVis
+  019 CSceneCharVis
   01D CPlugBitmapRenderScene3d
   01E CSceneSoundManager
   01F CSceneMessageHandler
@@ -821,6 +828,10 @@
   07E CSceneFxOccZCmp
   080
   090 CSceneToyTrain
+  0A4 CSceneBulletVis
+  0AB CSceneWagonVis
+  0AE CSceneGunVis
+  0B6 CSceneTrafficPhy
   100 CSceneToyBoat
   101 CSceneToySea
   104 CSceneToyStem
@@ -1054,3 +1065,9 @@
   026 CGameCommonItemEntityModelEdition
   027 CGameCommonItemEntityModel
   028 CGameCustomBlockModel
+2F Meta
+  05E SConstructionVis
+  05F SPropVis
+  062 SSceneDestructibleVisGroupState
+  065 SSceneRopeVisEnt
+  06E SSceneDestructibleVisState
