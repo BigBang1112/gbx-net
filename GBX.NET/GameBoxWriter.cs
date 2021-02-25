@@ -205,7 +205,7 @@ namespace GBX.NET
             Write(fileRef.FilePath);
 
             if ((fileRef.FilePath.Length > 0 && fileRef.Version >= 1) || fileRef.Version >= 3)
-                Write(fileRef.LocatorUrl);
+                Write(fileRef.LocatorUrl.ToString());
         }
 
         public void Write(Id value)
