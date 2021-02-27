@@ -92,7 +92,7 @@ namespace GBX.NET
             set => Node = (T)value;
         }
 
-        public bool IsHeader => Lookbackable is GameBoxHeader;
+        public bool IsHeader => Lookbackable is GameBoxHeader<T>;
         public bool IsBody => Lookbackable is IGameBoxBody;
 
         [IgnoreDataMember]

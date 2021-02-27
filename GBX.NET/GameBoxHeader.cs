@@ -7,30 +7,30 @@ using System.Reflection;
 
 namespace GBX.NET
 {
-    public class GameBoxHeader<T> : GameBoxHeader, ILookbackable where T : Node
+    public class GameBoxHeader<T> : GameBoxPart, ILookbackable where T : Node
     {
+        private GameBox<T> gbx => (GameBox<T>)GBX;
+
         int? ILookbackable.IdVersion { get; set; }
         List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
         bool ILookbackable.IdWritten { get; set; }
 
-        public new GameBox<T> GBX => (GameBox<T>)base.GBX;
-
         public ChunkSet Chunks { get; set; }
 
-        public GameBoxHeader(GameBox<T> gbx, byte[] userData) : base(gbx, userData)
+        public GameBoxHeader(GameBox<T> gbx) : base(gbx)
         {
             
         }
 
-        public void Read(IProgress<GameBoxReadProgress> progress)
+        public void Read(byte[] userData, IProgress<GameBoxReadProgress> progress)
         {
             if (GBX.Version >= 3)
             {
                 if (GBX.Version >= 6)
                 {
-                    if (UserData != null && UserData.Length > 0)
+                    if (userData != null && userData.Length > 0)
                     {
-                        using (var ms = new MemoryStream(UserData))
+                        using (var ms = new MemoryStream(userData))
                         using (var r = new GameBoxReader(ms, this))
                         {
                             var numHeaderChunks = r.ReadInt32();
@@ -83,7 +83,7 @@ namespace GBX.NET
                                     if (constructorParams.Length == 0)
                                     {
                                         ISkippableChunk headerChunk = (ISkippableChunk)constructor.Invoke(new object[0]);
-                                        headerChunk.Node = GBX.MainNode;
+                                        headerChunk.Node = gbx.MainNode;
                                         headerChunk.Part = this;
                                         headerChunk.Stream = new MemoryStream(d, 0, d.Length, false);
                                         if (d == null || d.Length == 0)
@@ -91,21 +91,21 @@ namespace GBX.NET
                                         chunk = (Chunk)headerChunk;
                                     }
                                     else if (constructorParams.Length == 2)
-                                        chunk = (HeaderChunk<T>)constructor.Invoke(new object[] { GBX.MainNode, d });
+                                        chunk = (HeaderChunk<T>)constructor.Invoke(new object[] { gbx.MainNode, d });
                                     else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
 
                                     using (var msChunk = new MemoryStream(d))
                                     using (var rChunk = new GameBoxReader(msChunk, this))
                                     {
                                         var rw = new GameBoxReaderWriter(rChunk);
-                                        ((IHeaderChunk)chunk).ReadWrite(GBX.MainNode, rw);
+                                        ((IHeaderChunk)chunk).ReadWrite(gbx.MainNode, rw);
                                         ((ISkippableChunk)chunk).Discovered = true;
                                     }
 
                                     ((IHeaderChunk)chunk).IsHeavy = chunkInfo.Value.IsHeavy;
                                 }
                                 else if (nodeType != null)
-                                    chunk = (Chunk)Activator.CreateInstance(typeof(HeaderChunk<>).MakeGenericType(nodeType), GBX.MainNode, chunkId, d);
+                                    chunk = (Chunk)Activator.CreateInstance(typeof(HeaderChunk<>).MakeGenericType(nodeType), gbx.MainNode, chunkId, d);
                                 else
                                     chunk = new HeaderChunk(chunkId, d) { IsHeavy = chunkInfo.Value.IsHeavy };
 
@@ -166,7 +166,7 @@ namespace GBX.NET
 
                                 var pos = userData.Position;
                                 if (((ISkippableChunk)chunk).Discovered)
-                                    ((IChunk)chunk).ReadWrite(GBX.MainNode, gbxrw);
+                                    ((IChunk)chunk).ReadWrite(gbx.MainNode, gbxrw);
                                 else
                                     ((ISkippableChunk)chunk).Write(gbxw);
 
@@ -202,12 +202,12 @@ namespace GBX.NET
             Write(w, numNodes, ClassIDRemap.Latest);
         }
 
-        public new TChunk CreateChunk<TChunk>(byte[] data) where TChunk : Chunk
+        public TChunk CreateChunk<TChunk>(byte[] data) where TChunk : Chunk
         {
             return Chunks.Create<TChunk>(data);
         }
 
-        public new TChunk CreateChunk<TChunk>() where TChunk : Chunk
+        public TChunk CreateChunk<TChunk>() where TChunk : Chunk
         {
             return CreateChunk<TChunk>(new byte[0]);
         }
@@ -217,14 +217,14 @@ namespace GBX.NET
             Chunks.Add((Chunk)chunk);
         }
 
-        public new void DiscoverChunk<TChunk>() where TChunk : IHeaderChunk
+        public void DiscoverChunk<TChunk>() where TChunk : IHeaderChunk
         {
             foreach (var chunk in Chunks)
                 if (chunk is TChunk c)
                     c.Discover();
         }
 
-        public new void DiscoverChunks<TChunk1, TChunk2>() where TChunk1 : IHeaderChunk where TChunk2 : IHeaderChunk
+        public void DiscoverChunks<TChunk1, TChunk2>() where TChunk1 : IHeaderChunk where TChunk2 : IHeaderChunk
         {
             foreach (var chunk in Chunks)
             {
@@ -235,7 +235,7 @@ namespace GBX.NET
             }
         }
 
-        public new void DiscoverChunks<TChunk1, TChunk2, TChunk3>()
+        public void DiscoverChunks<TChunk1, TChunk2, TChunk3>()
             where TChunk1 : IHeaderChunk
             where TChunk2 : IHeaderChunk
             where TChunk3 : IHeaderChunk
@@ -251,7 +251,7 @@ namespace GBX.NET
             }
         }
 
-        public new void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4>()
+        public void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4>()
             where TChunk1 : IHeaderChunk
             where TChunk2 : IHeaderChunk
             where TChunk3 : IHeaderChunk
@@ -270,7 +270,7 @@ namespace GBX.NET
             }
         }
 
-        public new void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5>()
+        public void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5>()
             where TChunk1 : IHeaderChunk
             where TChunk2 : IHeaderChunk
             where TChunk3 : IHeaderChunk
@@ -292,7 +292,7 @@ namespace GBX.NET
             }
         }
 
-        public new void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5, TChunk6>()
+        public void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5, TChunk6>()
             where TChunk1 : IHeaderChunk
             where TChunk2 : IHeaderChunk
             where TChunk3 : IHeaderChunk
@@ -317,14 +317,14 @@ namespace GBX.NET
             }
         }
 
-        public new void DiscoverAllChunks()
+        public void DiscoverAllChunks()
         {
             foreach (var chunk in Chunks)
                 if (chunk is IHeaderChunk s)
                     s.Discover();
         }
 
-        public new TChunk GetChunk<TChunk>() where TChunk : IHeaderChunk
+        public TChunk GetChunk<TChunk>() where TChunk : IHeaderChunk
         {
             foreach (var chunk in Chunks)
             {
@@ -337,7 +337,7 @@ namespace GBX.NET
             return default;
         }
 
-        public new bool TryGetChunk<TChunk>(out TChunk chunk) where TChunk : IHeaderChunk
+        public bool TryGetChunk<TChunk>(out TChunk chunk) where TChunk : IHeaderChunk
         {
             chunk = GetChunk<TChunk>();
             return chunk != null;
@@ -348,88 +348,9 @@ namespace GBX.NET
             Chunks.Clear();
         }
 
-        public new bool RemoveChunk<TChunk>() where TChunk : Chunk
+        public bool RemoveChunk<TChunk>() where TChunk : Chunk
         {
             return Chunks.Remove<TChunk>();
-        }
-    }
-
-    public class GameBoxHeader : GameBoxPart, ILookbackable
-    {
-        int? ILookbackable.IdVersion { get; set; }
-        List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
-        bool ILookbackable.IdWritten { get; set; }
-
-        public byte[] UserData { get; set; }
-
-        public GameBoxHeader(GameBox gbx, byte[] userData) : base(gbx)
-        {
-            UserData = userData;
-        }
-
-        public TChunk CreateChunk<TChunk>(byte[] data)
-        {
-            throw new NotSupportedException();
-        }
-
-        public TChunk CreateChunk<TChunk>()
-        {
-            throw new NotSupportedException();
-        }
-
-        public void InsertChunk(Chunk chunk)
-        {
-            throw new NotSupportedException();
-        }
-
-        public void DiscoverChunk<TChunk>()
-        {
-            throw new NotSupportedException();
-        }
-
-        public void DiscoverChunks<TChunk1, TChunk2>()
-        {
-            throw new NotSupportedException();
-        }
-
-        public void DiscoverChunks<TChunk1, TChunk2, TChunk3>()
-        {
-            throw new NotSupportedException();
-        }
-
-        public void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4>()
-        {
-            throw new NotSupportedException();
-        }
-
-        public void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5>()
-        {
-            throw new NotSupportedException();
-        }
-
-        public void DiscoverChunks<TChunk1, TChunk2, TChunk3, TChunk4, TChunk5, TChunk6>()
-        {
-            throw new NotSupportedException();
-        }
-
-        public void DiscoverAllChunks()
-        {
-            throw new NotSupportedException();
-        }
-
-        public T GetChunk<T>()
-        {
-            throw new NotSupportedException();
-        }
-
-        public bool TryGetChunk<T>(out T chunk)
-        {
-            throw new NotSupportedException();
-        }
-
-        public bool RemoveChunk<T>()
-        {
-            throw new NotSupportedException();
         }
     }
 }

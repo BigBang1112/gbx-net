@@ -26,16 +26,12 @@ namespace GBX.NET
         /// <summary>
         /// Header part, typically storing metadata for quickest access.
         /// </summary>
-        public new GameBoxHeader<T> Header
-        {
-            get => base.Header as GameBoxHeader<T>;
-            set => base.Header = value;
-        }
+        public GameBoxHeader<T> Header { get; }
 
         /// <summary>
         /// Body part, storing information about the node that realistically affects the game.
         /// </summary>
-        public GameBoxBody<T> Body { get; private set; }
+        public GameBoxBody<T> Body { get; }
 
         /// <summary>
         /// Node containing data taken from the body part.
@@ -45,14 +41,27 @@ namespace GBX.NET
         /// <summary>
         /// Constructs an empty GameBox object.
         /// </summary>
-        public GameBox() : base()
+        public GameBox()
         {
-            Game = ClassIDRemap.ManiaPlanet;
+            Header = new GameBoxHeader<T>(this);
+            Body = new GameBoxBody<T>(this);
         }
 
         public GameBox(GameBoxHeaderInfo headerInfo) : base(headerInfo)
         {
-            Game = ClassIDRemap.ManiaPlanet;
+            Header = new GameBoxHeader<T>(this);
+            Body = new GameBoxBody<T>(this);
+        }
+
+        /// <summary>
+        /// Create a GameBox object based on an existing node. Useful for saving nodes to GBX files.
+        /// </summary>
+        /// <param name="node"></param>
+        public GameBox(T node)
+        {
+            Header = new GameBoxHeader<T>(this);
+            Body = new GameBoxBody<T>(this);
+            MainNode = node;
         }
 
         /// <summary>
@@ -146,8 +155,7 @@ namespace GBX.NET
 
             try
             {
-                Header = new GameBoxHeader<T>(this, UserData);
-                Header.Read(progress);
+                Header.Read(UserData, progress);
                 Log.Write("Header chunks parsed without any exceptions.", ConsoleColor.Green);
             }
             catch (Exception e)
@@ -172,13 +180,11 @@ namespace GBX.NET
                     var compressedSize = reader.ReadInt32();
 
                     var data = reader.ReadBytes(compressedSize);
-                    Body = new GameBoxBody<T>(this);
                     Body.Read(data, uncompressedSize, progress);
 
                     break;
                 case 'U':
                     var uncompressedData = reader.ReadToEnd();
-                    Body = new GameBoxBody<T>(this);
                     Body.Read(uncompressedData, progress);
 
                     break;
@@ -280,7 +286,7 @@ namespace GBX.NET
     {
         public const string Magic = "GBX";
 
-        public ClassIDRemap Game { get; set; }
+        public ClassIDRemap Game { get; set; } = ClassIDRemap.ManiaPlanet;
 
         public GameBoxHeaderInfo HeaderInfo { get; }
 
@@ -333,10 +339,6 @@ namespace GBX.NET
         }
 
         /// <summary>
-        /// Header part, typically storing metadata for quickest access.
-        /// </summary>
-        public GameBoxHeader Header { get; set; }
-        /// <summary>
         /// Reference table, referencing other GBX.
         /// </summary>
         public GameBoxRefTable RefTable { get; private set; }
@@ -364,22 +366,7 @@ namespace GBX.NET
 
         public virtual bool ProcessHeader(IProgress<GameBoxReadProgress> progress)
         {
-            Log.Write("Processing the header chunks...");
-
-            try
-            {
-                Header = new GameBoxHeader(this, UserData);
-                Log.Write("Header chunks parsed without any exceptions.", ConsoleColor.Green);
-            }
-            catch (Exception e)
-            {
-                Log.Write("Header chunks parsed with exceptions.", ConsoleColor.Red);
-                Log.Write(e.ToString(), ConsoleColor.Red);
-            }
-
-            progress?.Report(new GameBoxReadProgress(GameBoxReadProgressStage.HeaderUserData, 1, this));
-
-            return true;
+            return true; // There are no header chunks to proccess in an unknown GBX
         }
 
         protected bool ReadRefTable(GameBoxReader reader, IProgress<GameBoxReadProgress> progress)
