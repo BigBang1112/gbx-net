@@ -72,6 +72,7 @@ namespace GBX.NET
             Header = new GameBoxHeader<T>(this);
             Body = new GameBoxBody<T>(this);
             MainNode = node;
+            ClassID = node.ID;
         }
 
         /// <summary>
