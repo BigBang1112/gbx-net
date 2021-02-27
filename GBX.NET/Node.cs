@@ -685,6 +685,25 @@ namespace GBX.NET
             }
         }
 
+        /// <summary>
+        /// Makes a <see cref="GameBox"/> from this node. NOTE: Non-generic <see cref="GameBox"/> doesn't have a Save method.
+        /// </summary>
+        /// <param name="headerInfo"></param>
+        /// <returns></returns>
+        public GameBox ToGBX(GameBoxHeaderInfo headerInfo)
+        {
+            return (GameBox)Activator.CreateInstance(typeof(GameBox<>).MakeGenericType(GetType()), this, headerInfo);
+        }
+
+        /// <summary>
+        /// Makes a <see cref="GameBox"/> from this node. NOTE: Non-generic <see cref="GameBox"/> doesn't have a Save method. You can explicitly cast it to <see cref="GameBox{T}"/> depending on the <see cref="Node"/>.
+        /// </summary>
+        /// <returns></returns>
+        public GameBox ToGBX()
+        {
+            return (GameBox)Activator.CreateInstance(typeof(GameBox<>).MakeGenericType(GetType()), this);
+        }
+
         public static uint Remap(uint id)
         {
             if (Mappings.TryGetValue(id, out uint newerClassID))

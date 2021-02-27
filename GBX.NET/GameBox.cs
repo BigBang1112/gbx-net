@@ -57,7 +57,17 @@ namespace GBX.NET
         /// Create a GameBox object based on an existing node. Useful for saving nodes to GBX files.
         /// </summary>
         /// <param name="node"></param>
-        public GameBox(T node)
+        public GameBox(T node) : this(node, null)
+        {
+            
+        }
+
+        /// <summary>
+        /// Create a GameBox object based on an existing node. Useful for saving nodes to GBX files.
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="headerInfo"></param>
+        public GameBox(T node, GameBoxHeaderInfo headerInfo) : base(headerInfo)
         {
             Header = new GameBoxHeader<T>(this);
             Body = new GameBoxBody<T>(this);
@@ -345,14 +355,17 @@ namespace GBX.NET
 
         public string FileName { get; set; }
 
-        public GameBox()
+        public GameBox() : this(null)
         {
-            HeaderInfo = new GameBoxHeaderInfo();
+            
         }
 
         public GameBox(GameBoxHeaderInfo headerInfo)
         {
-            HeaderInfo = headerInfo;
+            if (headerInfo == null)
+                HeaderInfo = new GameBoxHeaderInfo();
+            else
+                HeaderInfo = headerInfo;
         }
 
         public bool ReadHeader(GameBoxReader reader, IProgress<GameBoxReadProgress> progress)
