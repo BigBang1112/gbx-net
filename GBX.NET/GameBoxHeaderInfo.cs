@@ -15,7 +15,7 @@ namespace GBX.NET
 
         public bool Read(GameBoxReader reader)
         {
-            if (reader.ReadString(GameBox.Magic.Length) == GameBox.Magic)
+            if (reader.HasMagic(GameBox.Magic))
                 Log.Write("GBX recognized!", ConsoleColor.Green);
             else
             {

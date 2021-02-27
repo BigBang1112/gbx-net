@@ -359,5 +359,10 @@ namespace GBX.NET
             BaseStream.Position -= sizeof(uint);
             return result;
         }
+
+        public bool HasMagic(string magic)
+        {
+            return ReadString(magic.Length) == magic;
+        }
     }
 }
