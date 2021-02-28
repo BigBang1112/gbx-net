@@ -26,84 +26,89 @@ namespace GBX.NET.Engines.Plug
                 CompressedSize = r.ReadInt32();
                 Data = r.ReadBytes(CompressedSize);
 
-                using (var ms = new MemoryStream(Data))
-                using (var cs = new CompressedStream(ms, System.IO.Compression.CompressionMode.Decompress))
-                using (var gbxr = new GameBoxReader(cs))
+                // ... WIP ...
+
+                Task.Run(() =>
                 {
-                    var u01 = gbxr.ReadInt32();
-                    var numSamples = gbxr.ReadInt32();
-                    var objects = gbxr.ReadArray<object>(i =>
+                    using (var ms = new MemoryStream(Data))
+                    using (var cs = new CompressedStream(ms, System.IO.Compression.CompressionMode.Decompress))
+                    using (var gbxr = new GameBoxReader(cs))
                     {
-                        var nodeId = gbxr.ReadUInt32();
-                        Names.TryGetValue(nodeId, out string nodeName);
-
-                        return new
+                        var u01 = gbxr.ReadInt32();
+                        var numSamples = gbxr.ReadInt32();
+                        var objects = gbxr.ReadArray<object>(i =>
                         {
-                            id = nodeId,
-                            name = nodeName,
-                            rest = gbxr.ReadArray<int>(5)
-                        };
-                    });
+                            var nodeId = gbxr.ReadUInt32();
+                            Names.TryGetValue(nodeId, out string nodeName);
 
-                    if (Version >= 2)
-                    {
-                        var objcts2 = gbxr.ReadArray<object>(i =>
-                        {
-                            var u02 = gbxr.ReadInt32();
-                            var u03 = gbxr.ReadInt32();
-
-                            uint? clas = null;
-                            string clasName = null;
-                            if (Version >= 4)
+                            return new
                             {
-                                clas = gbxr.ReadUInt32();
-                                Names.TryGetValue(clas.Value, out clasName);
-                            }
-
-                            return new object[]
-                            {
-                                u02,
-                                u03,
-                                clas,
-                                clasName
+                                id = nodeId,
+                                name = nodeName,
+                                rest = gbxr.ReadArray<int>(5)
                             };
                         });
-                    }
-                    //var gsdg = new MemoryStream();
-                    //cs.CopyTo(gsdg);
-                    var bye = gbxr.ReadByte();
-                    var gdsgdsg = gbxr.ReadArray<int>(4);
-                    if(Version >= 6)
-                    {
-                        //var wtf = gbxr.ReadUInt32();
-                        // close
-                    }
-                    var byfase = gbxr.ReadByte();
-                    var bywhafase = gbxr.ReadByte();
-                    if(Version >= 2)
-                    {
-                        var fasbywhafase = gbxr.ReadByte();
-                        var gdgassgdasgasgasgsg = gbxr.ReadArray<int>(3);
-                        var fafsafassbywhafase = gbxr.ReadByte();
 
-                        if (Version >= 3)
+                        if (Version >= 2)
                         {
-                            var byfagsagsse = gbxr.ReadByte();
-
-                            if (Version == 7)
+                            var objcts2 = gbxr.ReadArray<object>(i =>
                             {
+                                var u02 = gbxr.ReadInt32();
+                                var u03 = gbxr.ReadInt32();
 
-                            }
+                                uint? clas = null;
+                                string clasName = null;
+                                if (Version >= 4)
+                                {
+                                    clas = gbxr.ReadUInt32();
+                                    Names.TryGetValue(clas.Value, out clasName);
+                                }
 
-                            if(Version >= 8)
+                                return new object[]
+                                {
+                                    u02,
+                                    u03,
+                                    clas,
+                                    clasName
+                                };
+                            });
+                        }
+                        
+                        var u04 = gbxr.ReadByte();
+                        var u05 = gbxr.ReadArray<int>(4);
+
+                        if (Version >= 6)
+                        {
+                            //var u06 = gbxr.ReadUInt32();
+                        }
+
+                        var u07 = gbxr.ReadByte();
+                        var u08 = gbxr.ReadByte();
+                        if (Version >= 2)
+                        {
+                            var u09 = gbxr.ReadByte();
+                            var u10 = gbxr.ReadArray<int>(3);
+                            var u11 = gbxr.ReadByte();
+
+                            if (Version >= 3)
                             {
-                                var gdsgfsadagdsg = gbxr.ReadInt32();
+                                var u12 = gbxr.ReadByte();
+
+                                if (Version == 7)
+                                {
+
+                                }
+
+                                if (Version >= 8)
+                                {
+                                    var u13 = gbxr.ReadInt32();
+                                }
                             }
                         }
+
+                        var u14 = gbxr.ReadArray<int>(5);
                     }
-                    
-                    var gdsggsadsg = gbxr.ReadArray<int>(5);
-                }
+                });
             }
 
             public override void Write(CPlugEntRecordData n, GameBoxWriter w, GameBoxReader unknownR)
