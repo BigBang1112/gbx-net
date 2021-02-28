@@ -1,3 +1,5 @@
+#pragma warning disable CS1587
+
 /**
  * ManagedLZO.MiniLZO
  * 
@@ -7,7 +9,7 @@
  * @note Uses unsafe/fixed pointer contexts internally
  * @liscence Bound by same liscence as minilzo as below, see file COPYING
  */
- 
+
 /* Based on minilzo.c -- mini subset of the LZO real-time data compression library
 
    This file is part of the LZO real-time data compression library.
@@ -48,6 +50,8 @@
  *   the full LZO package can be found at
  *   http://www.oberhumer.com/opensource/lzo/
  */
+
+#pragma warning restore CS1587
 
 using System;
 using System.Collections.Generic;
