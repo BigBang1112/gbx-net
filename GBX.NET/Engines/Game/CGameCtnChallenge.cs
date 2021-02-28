@@ -169,7 +169,7 @@ namespace GBX.NET.Engines.Game
         private byte? lightmapVersion;
         private string xml;
         private string comments;
-        private Task<Bitmap> thumbnail;
+        private byte[] thumbnail;
         private Vec2? mapOrigin;
         private Vec2? mapTarget;
         private string mapStyle;
@@ -544,11 +544,10 @@ namespace GBX.NET.Engines.Game
         }
 
         /// <summary>
-        /// Thumbnail bitmap.
+        /// Thumbnail JPEG data.
         /// </summary>
         [NodeMember]
-        [IgnoreDataMember]
-        public Task<Bitmap> Thumbnail
+        public byte[] Thumbnail
         {
             get => thumbnail;
             set => thumbnail = value;
@@ -1133,85 +1132,24 @@ namespace GBX.NET.Engines.Game
         #region Methods
 
         /// <summary>
-        /// Exports the map's thumbnail.
+        /// Exports the map's JPEG thumbnail.
         /// </summary>
         /// <param name="stream">Stream to export to.</param>
-        /// <param name="format">Image format to use.</param>
-        public void ExportThumbnail(Stream stream, ImageFormat format)
+        public void ExportThumbnail(Stream stream)
         {
-            if (Thumbnail == null) return;
-
-            if (format == ImageFormat.Jpeg)
-            {
-                var encoding = new EncoderParameters(1);
-                encoding.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 90L);
-                var encoder = ImageCodecInfo.GetImageDecoders().Where(x => x.FormatID == ImageFormat.Jpeg.Guid).First();
-
-                Thumbnail.Result.Save(stream, encoder, encoding);
-            }
-            else
-                Thumbnail.Result.Save(stream, format);
+            if (thumbnail == null) return;
+            stream.Write(thumbnail, 0, thumbnail.Length);
         }
 
         /// <summary>
-        /// Exports the map's thumbnail.
+        /// Exports the map's JPEG thumbnail.
         /// </summary>
         /// <param name="fileName">File to export to.</param>
-        /// <param name="format">Image format to use.</param>
-        public void ExportThumbnail(string fileName, ImageFormat format)
+        public void ExportThumbnail(string fileName)
         {
-            if (Thumbnail == null) return;
-
-            if (format == ImageFormat.Jpeg)
-            {
-                var encoding = new EncoderParameters(1);
-                encoding.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 90L);
-                var encoder = ImageCodecInfo.GetImageDecoders().Where(x => x.FormatID == ImageFormat.Jpeg.Guid).First();
-
-                Thumbnail.Result.Save(fileName, encoder, encoding);
-            }
-            else
-                Thumbnail.Result.Save(fileName, format);
-        }
-
-        /// <summary>
-        /// Asynchronously imports (and replaces) a thumbnail to use for the map.
-        /// </summary>
-        /// <param name="stream">Stream to import from.</param>
-        /// <returns>A task that processes the thumbnail.</returns>
-        public Task<Bitmap> ImportThumbnailAsync(Stream stream)
-        {
-            Thumbnail = Task.Run(() => new Bitmap(stream));
-            return Thumbnail;
-        }
-
-        /// <summary>
-        /// Asynchronously imports (and replaces) a thumbnail to use for the map.
-        /// </summary>
-        /// <param name="fileName">File to import from.</param>
-        /// <returns>A task that processes the thumbnail.</returns>
-        public Task<Bitmap> ImportThumbnailAsync(string fileName)
-        {
-            Thumbnail = Task.Run(() => new Bitmap(fileName));
-            return Thumbnail;
-        }
-
-        /// <summary>
-        /// Imports (and replaces) a thumbnail to use for the map.
-        /// </summary>
-        /// <param name="stream">Stream to import from.</param>
-        public void ImportThumbnail(Stream stream)
-        {
-            ImportThumbnailAsync(stream).Wait();
-        }
-
-        /// <summary>
-        /// Imports (and replaces) a thumbnail to use for the map.
-        /// </summary>
-        /// <param name="fileName">File to import from.</param>
-        public void ImportThumbnail(string fileName)
-        {
-            ImportThumbnailAsync(fileName).Wait();
+            if (thumbnail == null) return;
+            using (var fs = File.OpenWrite(fileName))
+                ExportThumbnail(fs);
         }
 
         /// <summary>
@@ -2163,35 +2101,15 @@ namespace GBX.NET.Engines.Game
 
                 if (version != 0)
                 {
-                    using (var ms = new MemoryStream())
-                    {
-                        if (rw.Mode == GameBoxReaderWriterMode.Write && n.Thumbnail != null)
-                        {
-                            n.thumbnail.Result.RotateFlip(RotateFlipType.Rotate180FlipX);
-                            n.ExportThumbnail(ms, ImageFormat.Jpeg);
-                        }
+                    var thumbnailSize = rw.Int32(n.thumbnail?.Length ?? 0);
 
-                        var thumbnailSize = rw.Int32((int)ms.Length);
+                    rw.Bytes(Encoding.UTF8.GetBytes("<Thumbnail.jpg>"), "<Thumbnail.jpg>".Length); // Because the string is purely ASCII anyway, Length is usable
+                    rw.Bytes(ref n.thumbnail, thumbnailSize);
+                    rw.Bytes(Encoding.UTF8.GetBytes("</Thumbnail.jpg>"), "</Thumbnail.jpg>".Length);
 
-                        rw.Bytes(Encoding.UTF8.GetBytes("<Thumbnail.jpg>"), "<Thumbnail.jpg>".Length); // Because the string is purely ASCII anyway, Length is usable
-                        var thumbnailData = rw.Bytes(ms.ToArray(), thumbnailSize);
-                        rw.Bytes(Encoding.UTF8.GetBytes("</Thumbnail.jpg>"), "</Thumbnail.jpg>".Length);
-
-                        rw.Bytes(Encoding.UTF8.GetBytes("<Comments>"), "<Comments>".Length);
-                        rw.String(ref n.comments);
-                        rw.Bytes(Encoding.UTF8.GetBytes("</Comments>"), "</Comments>".Length);
-
-                        if (rw.Mode == GameBoxReaderWriterMode.Read && thumbnailData.Length > 0)
-                        {
-                            n.thumbnail = Task.Run(() =>
-                            {
-                                msT = new MemoryStream(thumbnailData);
-                                var bitmap = (Bitmap)Image.FromStream(msT);
-                                bitmap.RotateFlip(RotateFlipType.Rotate180FlipX);
-                                return bitmap;
-                            });
-                        }
-                    }
+                    rw.Bytes(Encoding.UTF8.GetBytes("<Comments>"), "<Comments>".Length);
+                    rw.String(ref n.comments);
+                    rw.Bytes(Encoding.UTF8.GetBytes("</Comments>"), "</Comments>".Length);
                 }
             }
         }
