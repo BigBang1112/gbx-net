@@ -329,19 +329,53 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03092000, true, "basic")]
         public class Chunk03092000 : SkippableChunk<CGameCtnGhost>
         {
-            public int Version { get; set; }
+            private int version;
+            private Vec3 u01;
+            private int u02;
+            private bool u03;
+            private int[] u04;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
+
+            public Vec3 U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public int U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
+
+            public bool U03
+            {
+                get => u03;
+                set => u03 = value;
+            }
+
+            public int[] U04
+            {
+                get => u04;
+                set => u04 = value;
+            }
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                n.playerModel = rw.Ident(n.playerModel);
-                rw.Vec3(Unknown); // unknown
+                rw.Int32(ref version);
+                rw.Ident(ref n.playerModel);
+                rw.Vec3(ref u01);
                 n.skinPackDescs = rw.Array(n.skinPackDescs,
                     i => rw.Reader.ReadFileRef(),
                     x => rw.Writer.Write(x));
-                rw.Int32(Unknown); // unknown
-                n.GhostNickname = rw.String(n.ghostNickname);
-                n.GhostAvatarName = rw.String(n.ghostAvatarName);
+                rw.Int32(ref u02);
+                rw.String(ref n.ghostNickname);
+                rw.String(ref n.ghostAvatarName);
 
                 if (Version >= 2)
                 {
@@ -349,22 +383,25 @@ namespace GBX.NET.Engines.Game
 
                     if(Version < 5)
                     {
-
+                        // TODO
                     }
 
-                    if (Version >= 5)
+                    if (Version >= 4)
                     {
-                        rw.Int32(Unknown);
-                        n.RecordData = rw.NodeRef<CPlugEntRecordData>(n.RecordData);
-                        rw.Boolean(Unknown);
-                        rw.Int32(Unknown);
+                        rw.Boolean(ref u03);
 
-                        if (Version >= 6)
+                        if (Version >= 5)
                         {
-                            n.GhostTrigram = rw.String(n.GhostTrigram);
+                            n.RecordData = rw.NodeRef<CPlugEntRecordData>(n.RecordData);
+                            rw.Array(ref u04);
 
-                            if (Version >= 7)
-                                n.GhostZone = rw.String(n.GhostZone);
+                            if (Version >= 6)
+                            {
+                                n.GhostTrigram = rw.String(n.GhostTrigram);
+
+                                if (Version >= 7)
+                                    n.GhostZone = rw.String(n.GhostZone);
+                            }
                         }
                     }
                 }
