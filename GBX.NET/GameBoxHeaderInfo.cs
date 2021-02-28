@@ -10,8 +10,8 @@ namespace GBX.NET
         public char? BodyCompression { get; set; } = 'C';
         public char? UnknownByte { get; set; } = 'R';
         public uint? ClassID { get; internal set; }
-        public byte[] UserData { get; internal set; } = new byte[0];
-        public int NumNodes { get; set; }
+        public byte[] UserData { get; private set; } = new byte[0];
+        public int NumNodes { get; private set; }
 
         public bool Read(GameBoxReader reader)
         {

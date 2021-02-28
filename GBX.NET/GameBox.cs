@@ -338,13 +338,11 @@ namespace GBX.NET
         public byte[] UserData
         {
             get => HeaderInfo.UserData;
-            internal set => HeaderInfo.UserData = value;
         }
 
         public int NumNodes
         {
             get => HeaderInfo.NumNodes;
-            internal set => HeaderInfo.NumNodes = value;
         }
 
         /// <summary>
