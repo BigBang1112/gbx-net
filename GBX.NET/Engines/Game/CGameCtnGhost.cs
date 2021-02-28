@@ -811,7 +811,7 @@ namespace GBX.NET.Engines.Game
 
                     for (var i = 0; i < numEntries; i++)
                     {
-                        var time = r.ReadInt32();
+                        var time = TimeSpan.FromMilliseconds(r.ReadInt32() - 100000);
                         var controlNameIndex = r.ReadByte();
                         var data = r.ReadUInt32();
 
@@ -846,7 +846,7 @@ namespace GBX.NET.Engines.Game
                     {
                         foreach (var entry in n.ControlEntries)
                         {
-                            w.Write(entry.Time);
+                            w.Write(Convert.ToInt32(entry.Time.TotalMilliseconds + 100000));
                             w.Write((byte)controlNames.IndexOf(entry.Name));
                             w.Write(entry.Data);
                         }
@@ -1002,7 +1002,7 @@ namespace GBX.NET.Engines.Game
 
                     for (var i = 0; i < numEntries; i++)
                     {
-                        var time = r.ReadInt32();
+                        var time = TimeSpan.FromMilliseconds(r.ReadInt32() - 100000);
                         var controlNameIndex = r.ReadByte();
                         var data = r.ReadUInt32();
 
@@ -1037,7 +1037,7 @@ namespace GBX.NET.Engines.Game
                     {
                         foreach (var entry in n.ControlEntries)
                         {
-                            w.Write(entry.Time);
+                            w.Write(Convert.ToInt32(entry.Time.TotalMilliseconds + 100000));
                             w.Write((byte)controlNames.IndexOf(entry.Name));
                             w.Write(entry.Data);
                         }
@@ -1080,12 +1080,12 @@ namespace GBX.NET.Engines.Game
         public class ControlEntry
         {
             public string Name { get; set; }
-            public int Time { get; set; }
+            public TimeSpan Time { get; set; }
             public uint Data { get; set; }
 
             public override string ToString()
             {
-                return $"{Time} {Name} {Convert.ToString(Data, 2)}";
+                return $"{Time:mm':'ss':'fff} {Name} {Convert.ToString(Data, 2)}";
             }
         }
 
