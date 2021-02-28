@@ -4,7 +4,6 @@ using System.Diagnostics;
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E026000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCommonItemEntityModelEdition : Node
     {
         #region Enums
@@ -88,22 +87,6 @@ namespace GBX.NET.Engines.GameData
         }
 
         #endregion
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCommonItemEntityModelEdition node;
-
-            public EItemType ItemType => node.ItemType;
-            public CPlugCrystal MeshCrystal => node.MeshCrystal;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCommonItemEntityModelEdition node) => this.node = node;
-        }
 
         #endregion
     }

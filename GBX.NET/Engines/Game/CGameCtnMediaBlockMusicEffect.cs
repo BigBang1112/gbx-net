@@ -7,7 +7,6 @@ using System.Text;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x030A6000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock
     {
         #region Properties
@@ -86,21 +85,6 @@ namespace GBX.NET.Engines.Game
         {
             public float MusicVolume { get; set; }
             public float SoundVolume { get; set; }
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaBlockMusicEffect node;
-
-            public Key[] Keys => node.Keys;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockMusicEffect node) => this.node = node;
         }
 
         #endregion

@@ -10,7 +10,6 @@ using System.Diagnostics;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03093000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnReplayRecord : Node
     {
         #region Fields
@@ -494,38 +493,6 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnReplayRecord node;
-
-            public Ident MapInfo => node.MapInfo;
-            public TimeSpan? Time => node.Time;
-            public string Nickname => node.Nickname;
-            public string DriverLogin => node.DriverLogin;
-            public string TitleID => node.TitleID;
-            public string XML => node.XML;
-            public int? AuthorVersion => node.AuthorVersion;
-            public string AuthorLogin => node.AuthorLogin;
-            public string AuthorNickname => node.AuthorNickname;
-            public string AuthorZone => node.AuthorZone;
-            public string AuthorExtraInfo => node.AuthorExtraInfo;
-
-            public Task<GameBox<CGameCtnChallenge>> Challenge => node.Challenge;
-            public CGameCtnGhost[] Ghosts => node.Ghosts;
-            public long[] Extras => node.Extras;
-            public CGameCtnMediaClip Clip => node.Clip;
-            public CPlugEntRecordData RecordData => node.RecordData;
-            public CCtnMediaBlockEventTrackMania Events => node.Events;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnReplayRecord node) => this.node = node;
-        }
 
         #endregion
     }

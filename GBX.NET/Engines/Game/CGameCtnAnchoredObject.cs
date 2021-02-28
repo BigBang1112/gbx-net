@@ -10,7 +10,6 @@ namespace GBX.NET.Engines.Game
     /// </summary>
     /// <remarks>An item placed on a map.</remarks>
     [Node(0x03101000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnAnchoredObject : Node
     {
         #region Fields
@@ -245,30 +244,6 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnAnchoredObject node;
-
-            public Ident ItemModel => node.ItemModel;
-            public Vec3? PitchYawRoll => node.PitchYawRoll;
-            public Byte3? BlockUnitCoord => node.BlockUnitCoord;
-            public string AnchorTreeId => node.AnchorTreeId;
-            public Vec3? AbsolutePositionInMap => node.AbsolutePositionInMap;
-            public CGameWaypointSpecialProperty WaypointSpecialProperty => node.WaypointSpecialProperty;
-            public short Flags => node.Flags;
-            public float Scale => node.Scale;
-            public Vec3 PivotPosition => node.PivotPosition;
-            public int Variant => node.Variant;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnAnchoredObject node) => this.node = node;
-        }
 
         #endregion
     }

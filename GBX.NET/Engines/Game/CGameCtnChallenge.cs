@@ -24,7 +24,7 @@ namespace GBX.NET.Engines.Game
     /// Map (0x03043000)
     /// </summary>
     /// <remarks>A map. Known extensions: .Challenge.Gbx, .Map.Gbx</remarks>
-    [Node(0x03043000), DebuggerTypeProxy(typeof(DebugView))]
+    [Node(0x03043000)]
     public class CGameCtnChallenge : Node
     {
         #region Enums
@@ -3689,91 +3689,6 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnChallenge node;
-
-            public TimeSpan? TMObjective_BronzeTime => node.TMObjective_BronzeTime;
-            public TimeSpan? TMObjective_SilverTime => node.TMObjective_SilverTime;
-            public TimeSpan? TMObjective_GoldTime => node.TMObjective_GoldTime;
-            public TimeSpan? TMObjective_AuthorTime => node.TMObjective_AuthorTime;
-            public int Cost => node.Cost;
-            public int AuthorScore => node.AuthorScore;
-            public EditorMode Editor => node.Editor;
-            public bool CreatedWithSimpleEditor => node.CreatedWithSimpleEditor;
-            public bool HasGhostBlocks => node.HasGhostBlocks;
-            public bool TMObjective_IsLapRace => node.TMObjective_IsLapRace;
-            public int TMObjective_NbLaps => node.TMObjective_NbLaps;
-            public int? NbCheckpoints => node.NbCheckpoints;
-            public Ident MapInfo => node.MapInfo;
-            public string MapUid => node.MapUid;
-            public string AuthorLogin => node.AuthorLogin;
-            public string MapName => node.MapName;
-            public MapKind Kind => node.Kind;
-            public string Password => node.Password;
-            public Ident Decoration => node.Decoration;
-            public string MapType => node.MapType;
-            public string MapStyle => node.MapStyle;
-            public ulong? LightmapCacheUID => node.LightmapCacheUID;
-            public byte? LightmapVersion => node.LightmapVersion;
-            public string XML => node.XML;
-            public Task<Bitmap> Thumbnail => node.Thumbnail;
-            public Collection Collection => node.Collection;
-            public Vec2? MapOrigin => node.MapOrigin;
-            public Vec2? MapTarget => node.MapTarget;
-            public string TitleID => node.TitleID;
-            public string BuildVersion => node.BuildVersion;
-            public string Comments => node.Comments;
-            public int AuthorVersion => node.AuthorVersion;
-            public string AuthorNickname => node.AuthorNickname;
-            public string AuthorZone => node.AuthorZone;
-            public string AuthorExtraInfo => node.AuthorExtraInfo;
-            public Ident PlayerModel => node.PlayerModel;
-            public CGameCtnChallengeParameters ChallengeParameters => node.ChallengeParameters;
-            public CGameCtnCollectorList BlockStock => node.BlockStock;
-            public Int3[] Checkpoints => node.Checkpoints;
-            public FileRef ModPackDesc => node.ModPackDesc;
-            public PlayMode? Mode => node.Mode;
-            public Int3? Size => node.Size;
-            public bool? NeedUnlock => node.NeedUnlock;
-            public List<CGameCtnBlock> Blocks => node.Blocks;
-            public int NbBlocks => node.NbBlocks;
-            public CGameCtnBlock[] BakedBlocks => node.BakedBlocks;
-            public CGameCtnMediaClip ClipIntro => node.ClipIntro;
-            public CGameCtnMediaClipGroup ClipGroupInGame => node.ClipGroupInGame;
-            public CGameCtnMediaClipGroup ClipGroupEndRace => node.ClipGroupEndRace;
-            public CGameCtnMediaClip ClipAmbiance => node.ClipAmbiance;
-            public FileRef CustomMusicPackDesc => node.CustomMusicPackDesc;
-            public string HashedPassword => Convert.ToBase64String(node.HashedPassword ?? new byte[0]);
-            public uint? CRC32 => node.CRC32;
-            public Vec3? ThumbnailPosition => node.ThumbnailPosition;
-            public Vec3? ThumbnailPitchYawRoll => node.ThumbnailPitchYawRoll;
-            public float? ThumbnailFOV => node.ThumbnailFOV;
-            public Task<CHmsLightMapCache> LightmapCache => node.LightmapCache;
-            public List<CGameCtnAnchoredObject> AnchoredObjects => node.AnchoredObjects;
-            public Task<CGameCtnZoneGenealogy[]> Genealogies => node.Genealogies;
-            public CScriptTraitsMetadata ScriptMetadata => node.ScriptMetadata;
-            public string ObjectiveTextAuthor => node.ObjectiveTextAuthor;
-            public string ObjectiveTextGold => node.ObjectiveTextGold;
-            public string ObjectiveTextSilver => node.ObjectiveTextSilver;
-            public string ObjectiveTextBronze => node.ObjectiveTextBronze;
-            public List<(Int3, Int3)> Offzones => node.Offzones;
-            public int DecoBaseHeightOffset => node.DecoBaseHeightOffset;
-            public List<CGameScriptMapBotPath> BotPaths => node.BotPaths;
-            public Dictionary<string, byte[]> Embeds => node.Embeds;
-            public TimeSpan? DayTime => node.DayTime;
-            public bool DynamicDaylight => node.DynamicDaylight;
-            public TimeSpan? DayDuration => node.DayDuration;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnChallenge node) => this.node = node;
-        }
 
         #endregion
     }

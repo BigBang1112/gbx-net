@@ -8,7 +8,6 @@ using System.Text;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x030A8000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockText : CGameCtnMediaBlock
     {
         #region Properties
@@ -65,22 +64,6 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaBlockText node;
-
-            public string Text => node.Text;
-            public CControlEffectSimi Effect => node.Effect;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockText node) => this.node = node;
-        }
 
         #endregion
     }

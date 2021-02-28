@@ -12,7 +12,6 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block (0x030A2000)
     /// </summary>
     [Node(0x030A2000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera
     {
         #region Properties
@@ -353,21 +352,6 @@ namespace GBX.NET.Engines.Game
             public bool AnchorRot { get; set; }
 
             public object[] Unknown { get; set; }
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaBlockCameraCustom node;
-
-            public List<Key> Keys => node.Keys;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockCameraCustom node) => this.node = node;
         }
 
         #endregion

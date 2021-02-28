@@ -64,20 +64,5 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaBlockFxBloom node;
-
-            public Key[] Keys => node.Keys;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockFxBloom node) => this.node = node;
-        }
-
-        #endregion
     }
 }

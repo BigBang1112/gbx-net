@@ -9,7 +9,6 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - Camera effect inetrial tracking
     /// </summary>
     [Node(0x03166000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMediaBlockCameraEffect
     {
         #region Properties
@@ -55,25 +54,6 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private CGameCtnMediaBlockCameraEffectInertialTracking node;
-
-            public float Start => node.Start;
-            public float End => node.End;
-            public bool Tracking => node.Tracking;
-            public bool AutoZoom => node.AutoZoom;
-            public bool AutoFocus => node.AutoFocus;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockCameraEffectInertialTracking node) => this.node = node;
-        }
 
         #endregion
     }

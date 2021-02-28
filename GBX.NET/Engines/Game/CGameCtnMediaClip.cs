@@ -8,7 +8,6 @@ using System.Text;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03079000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaClip : Node
     {
         #region Properties
@@ -232,24 +231,6 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaClip node;
-
-            public string Name => node.Name;
-            public List<CGameCtnMediaTrack> Tracks => node.Tracks;
-            public bool StopWhenRespawn => node.StopWhenRespawn;
-            public bool StopWhenLeave => node.StopWhenLeave;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaClip node) => this.node = node;
-        }
 
         #endregion
     }

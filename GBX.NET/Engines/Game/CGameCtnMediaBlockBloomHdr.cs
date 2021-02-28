@@ -9,7 +9,6 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - Bloom HDR (0x03128000)
     /// </summary>
     [Node(0x03128000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock
     {
         #region Properties
@@ -88,21 +87,6 @@ namespace GBX.NET.Engines.Game
             public float Intensity { get; set; }
             public float StreaksIntensity { get; set; }
             public float StreaksAttenuation { get; set; }
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaBlockBloomHdr node;
-
-            public Key[] Keys => node.Keys;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockBloomHdr node) => this.node = node;
         }
 
         #endregion

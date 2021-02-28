@@ -10,7 +10,6 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - Camera ingame
     /// </summary>
     [Node(0x03084000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera
     {
         #region Enums
@@ -160,26 +159,6 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaBlockCameraGame node;
-
-            public float Start => node.Start;
-            public float End => node.End;
-            public EGameCam? GameCam1 => node.GameCam1;
-            public EGameCam2? GameCam2 => node.GameCam2;
-            public int ClipEntId => node.ClipEntId;
-            public string GameCam => node.GameCam;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockCameraGame node) => this.node = node;
-        }
 
         #endregion
     }

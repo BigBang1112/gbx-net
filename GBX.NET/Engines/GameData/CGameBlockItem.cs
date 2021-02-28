@@ -5,7 +5,6 @@ using GBX.NET.Engines.Plug;
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E025000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameBlockItem : Node
     {
         #region Fields
@@ -69,23 +68,6 @@ namespace GBX.NET.Engines.GameData
         }
 
         #endregion
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameBlockItem node;
-
-            public string ArchetypeBlockInfoId => node.ArchetypeBlockInfoId;
-            public string ArchetypeBlockInfoCollectionId => node.ArchetypeBlockInfoCollectionId;
-            public Dictionary<int, CPlugCrystal> CustomizedVariants => node.CustomizedVariants;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameBlockItem node) => this.node = node;
-        }
 
         #endregion
     }

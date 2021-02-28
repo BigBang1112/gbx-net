@@ -3,7 +3,6 @@
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03080000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx
     {
         #region Properties
@@ -116,21 +115,6 @@ namespace GBX.NET.Engines.Game
             public float FarU02 { get; set; }
             public float FarU03 { get; set; }
             public float FarU04 { get; set; }
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaBlockFxColors node;
-
-            public Key[] Keys => node.Keys;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockFxColors node) => this.node = node;
         }
 
         #endregion

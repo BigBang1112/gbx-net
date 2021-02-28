@@ -6,7 +6,6 @@ using System.Text;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x0316D000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock
     {
         #region Properties
@@ -54,21 +53,6 @@ namespace GBX.NET.Engines.Game
         public class Key : MediaBlockKey
         {
             public float CaptureWeight { get; set; }
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaBlockFxCameraBlend node;
-
-            public Key[] Keys => node.Keys;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockFxCameraBlend node) => this.node = node;
         }
 
         #endregion

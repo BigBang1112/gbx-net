@@ -7,7 +7,6 @@ using System.Text;
 namespace GBX.NET.Engines.TrackMania
 {
     [Node(0x2407F000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
     {
         #region Enums
@@ -153,23 +152,6 @@ namespace GBX.NET.Engines.TrackMania
                 return $"[{Time}] {(Combo > 1 ? Combo + "x " : "")}{(Combo > 0 ? "Chained " : "")}{Figure} " +
                     $"{(Angle > 0 ? Angle + "° " : "")}({(Figure == EStuntFigure.TimePenalty ? "-" : "+")}{Score} = {TotalScore})";
             }
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CCtnMediaBlockEventTrackMania node;
-
-            public float Start => node.Start;
-            public float End => node.End;
-            public Stunt[] Stunts => node.Stunts;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CCtnMediaBlockEventTrackMania node) => this.node = node;
         }
 
         #endregion

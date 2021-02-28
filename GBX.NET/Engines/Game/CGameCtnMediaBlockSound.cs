@@ -7,7 +7,6 @@ using System.Text;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x030A7000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockSound : CGameCtnMediaBlock
     {
         #region Properties
@@ -158,28 +157,6 @@ namespace GBX.NET.Engines.Game
             public float Pan { get; set; }
             public float Unknown { get; set; }
             public Vec3 Position { get; set; }
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaBlockSound node;
-
-            public FileRef Sound => node.Sound;
-            public bool IsMusic => node.IsMusic;
-            public bool IsLooping => node.IsLooping;
-            public int PlayCount => node.PlayCount;
-            public bool StopWithClip => node.StopWithClip;
-            public bool AudioToSpeech => node.AudioToSpeech;
-            public int AudioToSpeechTarget => node.AudioToSpeechTarget;
-            public Key[] Keys => node.Keys;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockSound node) => this.node = node;
         }
 
         #endregion

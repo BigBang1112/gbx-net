@@ -12,7 +12,6 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - Camera path
     /// </summary>
     [Node(0x030A1000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera
     {
         #region Properties
@@ -269,21 +268,6 @@ namespace GBX.NET.Engines.Game
             public Vec3 RightTangent { get; set; }
 
             public object[] Unknown { get; set; }
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaBlockCameraPath node;
-
-            public Key[] Keys => node.Keys;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockCameraPath node) => this.node = node;
         }
 
         #endregion

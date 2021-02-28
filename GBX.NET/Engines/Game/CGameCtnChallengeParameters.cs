@@ -9,7 +9,6 @@ namespace GBX.NET.Engines.Game
     /// <summary>
     /// Map parameters (0x0305B000)
     /// </summary>
-    [DebuggerTypeProxy(typeof(DebugView))]
     [Node(0x0305B000)]
     public class CGameCtnChallengeParameters : Node
     {
@@ -346,30 +345,6 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnChallengeParameters node;
-
-            public TimeSpan? BronzeTime => node.BronzeTime;
-            public TimeSpan? SilverTime => node.SilverTime;
-            public TimeSpan? GoldTime => node.GoldTime;
-            public TimeSpan? AuthorTime => node.AuthorTime;
-            public int? AuthorScore => node.AuthorScore;
-            public TimeSpan? TimeLimit => node.TimeLimit;
-            public CGameCtnGhost RaceValidateGhost => node.RaceValidateGhost;
-            public string MapType => node.MapType;
-            public string MapStyle => node.MapStyle;
-            public string[] Tips => node.Tips;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnChallengeParameters node) => this.node = node;
-        }
 
         #endregion
     }

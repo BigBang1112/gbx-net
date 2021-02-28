@@ -3,7 +3,6 @@
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E020000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameItemPlacementParam : Node
     {
         #region Constants
@@ -305,35 +304,6 @@ namespace GBX.NET.Engines.GameData
         }
 
         #endregion
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameItemPlacementParam node;
-
-            public short Flags => node.Flags;
-            public bool YawOnly => node.YawOnly;
-            public bool NotOnObject => node.NotOnObject;
-            public bool AutoRotation => node.AutoRotation;
-            public bool SwitchPivotManually => node.SwitchPivotManually;
-            public Vec3 Cube_Center => node.Cube_Center;
-            public float Cube_Size => node.Cube_Size;
-            public float GridSnap_HStep => node.GridSnap_HStep;
-            public float GridSnap_VStep => node.GridSnap_VStep;
-            public float GridSnap_HOffset => node.GridSnap_HOffset;
-            public float GridSnap_VOffset => node.GridSnap_VOffset;
-            public float FlyStep => node.FlyStep;
-            public float FlyOffset => node.FlyOffset;
-            public float PivotSnap_Distance => node.PivotSnap_Distance;
-            public Vec3[] PivotPositions => node.PivotPositions;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameItemPlacementParam node) => this.node = node;
-        }
 
         #endregion
     }

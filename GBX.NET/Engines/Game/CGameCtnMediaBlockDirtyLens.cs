@@ -3,7 +3,6 @@
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03165000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock
     {
         #region Properties
@@ -60,21 +59,6 @@ namespace GBX.NET.Engines.Game
         public class Key : MediaBlockKey
         {
             public float Intensity { get; set; }
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaBlockDirtyLens node;
-
-            public Key[] Keys => node.Keys;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockDirtyLens node) => this.node = node;
         }
 
         #endregion

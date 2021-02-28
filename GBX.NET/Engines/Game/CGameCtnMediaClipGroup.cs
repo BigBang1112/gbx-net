@@ -9,7 +9,6 @@ using System.Text;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x0307A000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaClipGroup : Node
     {
         #region Enums
@@ -211,19 +210,6 @@ namespace GBX.NET.Engines.Game
             public int U04 { get; set; }
             public ECondition Condition { get; set; }
             public float ConditionValue { get; set; }
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaClipGroup node;
-
-            public List<Tuple<CGameCtnMediaClip, Trigger>> Clips => node.Clips;
-
-            public DebugView(CGameCtnMediaClipGroup node) => this.node = node;
         }
 
         #endregion

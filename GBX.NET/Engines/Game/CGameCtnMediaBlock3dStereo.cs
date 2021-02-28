@@ -9,7 +9,6 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - 3D stereo (0x03024000)
     /// </summary>
     [Node(0x03024000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock
     {
         #region Properties
@@ -56,21 +55,6 @@ namespace GBX.NET.Engines.Game
         {
             public float UpToMax { get; set; }
             public float ScreenDist { get; set; }
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaBlock3dStereo node;
-
-            public Key[] Keys => node.Keys;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlock3dStereo node) => this.node = node;
         }
 
         #endregion

@@ -3,7 +3,6 @@
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03126000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockDOF : CGameCtnMediaBlock
     {
         #region Properties
@@ -130,21 +129,6 @@ namespace GBX.NET.Engines.Game
             public float LensSize { get; set; }
 
             public object[] Unknown { get; set; }
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaBlockDOF node;
-
-            public Key[] Keys => node.Keys;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockDOF node) => this.node = node;
         }
 
         #endregion
