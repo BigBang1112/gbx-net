@@ -9,8 +9,6 @@ namespace GBX.NET
 {
     public class GameBoxHeader<T> : GameBoxPart, ILookbackable where T : Node
     {
-        private GameBox<T> gbx => (GameBox<T>)GBX;
-
         int? ILookbackable.IdVersion { get; set; }
         List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
         bool ILookbackable.IdWritten { get; set; }
@@ -24,117 +22,107 @@ namespace GBX.NET
 
         public void Read(byte[] userData, IProgress<GameBoxReadProgress> progress)
         {
-            if (GBX.Version >= 3)
+            var gbx = (GameBox<T>)GBX;
+
+            if (gbx.Version >= 6)
             {
-                if (GBX.Version >= 6)
+                if (userData != null && userData.Length > 0)
                 {
-                    if (userData != null && userData.Length > 0)
+                    using (var ms = new MemoryStream(userData))
+                    using (var r = new GameBoxReader(ms, this))
                     {
-                        using (var ms = new MemoryStream(userData))
-                        using (var r = new GameBoxReader(ms, this))
+                        var numHeaderChunks = r.ReadInt32();
+
+                        Chunks = new ChunkSet();
+
+                        var chunkList = new Dictionary<uint, (int Size, bool IsHeavy)>();
+
+                        for (var i = 0; i < numHeaderChunks; i++)
                         {
-                            var numHeaderChunks = r.ReadInt32();
+                            var chunkID = r.ReadUInt32();
+                            var chunkSize = r.ReadUInt32();
 
-                            Chunks = new ChunkSet();
+                            var chId = chunkID & 0xFFF;
+                            var clId = chunkID & 0xFFFFF000;
 
-                            var chunkList = new Dictionary<uint, (int Size, bool IsHeavy)>();
+                            chunkList[clId + chId] = ((int)(chunkSize & ~0x80000000), (chunkSize & (1 << 31)) != 0);
+                        }
 
-                            for (var i = 0; i < numHeaderChunks; i++)
+                        Log.Write("Header data chunk list:");
+
+                        foreach (var c in chunkList)
+                        {
+                            if (c.Value.IsHeavy)
+                                Log.Write($"| 0x{c.Key:X8} | {c.Value.Size} B (Heavy)");
+                            else
+                                Log.Write($"| 0x{c.Key:X8} | {c.Value.Size} B");
+                        }
+
+                        foreach (var chunkInfo in chunkList)
+                        {
+                            var chunkId = Chunk.Remap(chunkInfo.Key);
+                            var nodeId = chunkId & 0xFFFFF000;
+
+                            if (!Node.AvailableClasses.TryGetValue(nodeId, out Type nodeType))
+                                Log.Write($"Node ID 0x{nodeId:X8} is not implemented. This occurs only in the header therefore it's not a fatal problem. ({Node.Names.Where(x => x.Key == nodeId).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
+
+                            var chunkTypes = new Dictionary<uint, Type>();
+
+                            if (nodeType != null)
+                                Node.AvailableHeaderChunkClasses.TryGetValue(nodeType, out chunkTypes);
+
+                            var d = r.ReadBytes(chunkInfo.Value.Size);
+                            Chunk chunk = null;
+
+                            if (chunkTypes.TryGetValue(chunkId, out Type type))
                             {
-                                var chunkID = r.ReadUInt32();
-                                var chunkSize = r.ReadUInt32();
-
-                                var chId = chunkID & 0xFFF;
-                                var clId = chunkID & 0xFFFFF000;
-
-                                chunkList[clId + chId] = ((int)(chunkSize & ~0x80000000), (chunkSize & (1 << 31)) != 0);
-                            }
-
-                            Log.Write("Header data chunk list:");
-
-                            foreach (var c in chunkList)
-                            {
-                                if (c.Value.IsHeavy)
-                                    Log.Write($"| 0x{c.Key:X8} | {c.Value.Size} B (Heavy)");
-                                else
-                                    Log.Write($"| 0x{c.Key:X8} | {c.Value.Size} B");
-                            }
-
-                            foreach (var chunkInfo in chunkList)
-                            {
-                                var chunkId = Chunk.Remap(chunkInfo.Key);
-                                var nodeId = chunkId & 0xFFFFF000;
-
-                                if (!Node.AvailableClasses.TryGetValue(nodeId, out Type nodeType))
-                                    Log.Write($"Node ID 0x{nodeId:X8} is not implemented. This occurs only in the header therefore it's not a fatal problem. ({Node.Names.Where(x => x.Key == nodeId).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
-
-                                var chunkTypes = new Dictionary<uint, Type>();
-
-                                if (nodeType != null)
-                                    Node.AvailableHeaderChunkClasses.TryGetValue(nodeType, out chunkTypes);
-
-                                var d = r.ReadBytes(chunkInfo.Value.Size);
-                                Chunk chunk = null;
-
-                                if (chunkTypes.TryGetValue(chunkId, out Type type))
+                                var constructor = type.GetConstructors().First();
+                                var constructorParams = constructor.GetParameters();
+                                if (constructorParams.Length == 0)
                                 {
-                                    var constructor = type.GetConstructors().First();
-                                    var constructorParams = constructor.GetParameters();
-                                    if (constructorParams.Length == 0)
-                                    {
-                                        ISkippableChunk headerChunk = (ISkippableChunk)constructor.Invoke(new object[0]);
-                                        headerChunk.Node = gbx.MainNode;
-                                        headerChunk.Part = this;
-                                        headerChunk.Stream = new MemoryStream(d, 0, d.Length, false);
-                                        if (d == null || d.Length == 0)
-                                            headerChunk.Discovered = true;
-                                        chunk = (Chunk)headerChunk;
-                                    }
-                                    else if (constructorParams.Length == 2)
-                                        chunk = (HeaderChunk<T>)constructor.Invoke(new object[] { gbx.MainNode, d });
-                                    else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
-
-                                    using (var msChunk = new MemoryStream(d))
-                                    using (var rChunk = new GameBoxReader(msChunk, this))
-                                    {
-                                        var rw = new GameBoxReaderWriter(rChunk);
-                                        ((IHeaderChunk)chunk).ReadWrite(gbx.MainNode, rw);
-                                        ((ISkippableChunk)chunk).Discovered = true;
-                                    }
-
-                                    ((IHeaderChunk)chunk).IsHeavy = chunkInfo.Value.IsHeavy;
+                                    ISkippableChunk headerChunk = (ISkippableChunk)constructor.Invoke(new object[0]);
+                                    headerChunk.Node = gbx.MainNode;
+                                    headerChunk.Part = this;
+                                    headerChunk.Stream = new MemoryStream(d, 0, d.Length, false);
+                                    if (d == null || d.Length == 0)
+                                        headerChunk.Discovered = true;
+                                    chunk = (Chunk)headerChunk;
                                 }
-                                else if (nodeType != null)
-                                    chunk = (Chunk)Activator.CreateInstance(typeof(HeaderChunk<>).MakeGenericType(nodeType), gbx.MainNode, chunkId, d);
-                                else
-                                    chunk = new HeaderChunk(chunkId, d) { IsHeavy = chunkInfo.Value.IsHeavy };
+                                else if (constructorParams.Length == 2)
+                                    chunk = (HeaderChunk<T>)constructor.Invoke(new object[] { gbx.MainNode, d });
+                                else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
 
-                                Chunks.Add(chunk);
+                                using (var msChunk = new MemoryStream(d))
+                                using (var rChunk = new GameBoxReader(msChunk, this))
+                                {
+                                    var rw = new GameBoxReaderWriter(rChunk);
+                                    ((IHeaderChunk)chunk).ReadWrite(gbx.MainNode, rw);
+                                    ((ISkippableChunk)chunk).Discovered = true;
+                                }
 
-                                progress?.Report(new GameBoxReadProgress(
-                                    GameBoxReadProgressStage.HeaderUserData, 
-                                    r.BaseStream.Position / (float)r.BaseStream.Length, 
-                                    GBX, 
-                                    chunk));
+                                ((IHeaderChunk)chunk).IsHeavy = chunkInfo.Value.IsHeavy;
                             }
+                            else if (nodeType != null)
+                                chunk = (Chunk)Activator.CreateInstance(typeof(HeaderChunk<>).MakeGenericType(nodeType), gbx.MainNode, chunkId, d);
+                            else
+                                chunk = new HeaderChunk(chunkId, d) { IsHeavy = chunkInfo.Value.IsHeavy };
+
+                            Chunks.Add(chunk);
+
+                            progress?.Report(new GameBoxReadProgress(
+                                GameBoxReadProgressStage.HeaderUserData, 
+                                r.BaseStream.Position / (float)r.BaseStream.Length, 
+                                gbx, 
+                                chunk));
                         }
                     }
                 }
             }
         }
 
-        Type GetBaseType(Type t)
-        {
-            if (t == null)
-                return null;
-            if (t.BaseType == typeof(Node))
-                return t.BaseType;
-            return GetBaseType(t.BaseType);
-        }
-
         public void Write(GameBoxWriter w, int numNodes, ClassIDRemap remap)
         {
-            w.Write("GBX", StringLengthPrefix.None);
+            w.Write(GameBox.Magic, StringLengthPrefix.None);
             w.Write(GBX.Version);
 
             if (GBX.Version >= 3)
@@ -166,7 +154,7 @@ namespace GBX.NET
 
                                 var pos = userData.Position;
                                 if (((ISkippableChunk)chunk).Discovered)
-                                    ((IChunk)chunk).ReadWrite(gbx.MainNode, gbxrw);
+                                    ((IChunk)chunk).ReadWrite(((GameBox<T>)GBX).MainNode, gbxrw);
                                 else
                                     ((ISkippableChunk)chunk).Write(gbxw);
 
