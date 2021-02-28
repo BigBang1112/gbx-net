@@ -14,7 +14,6 @@ namespace GBX.NET.Engines.Game
     /// Ghost (0x03092000)
     /// </summary>
     [Node(0x03092000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnGhost : CGameGhost
     {
         #region Fields
@@ -24,6 +23,9 @@ namespace GBX.NET.Engines.Game
         private string ghostNickname;
         private string ghostAvatarName;
         private string recordingContext;
+        private CPlugEntRecordData recordData;
+        private string ghostTrigram;
+        private string ghostZone;
         private TimeSpan? raceTime;
         private int? respawns;
         private Vec3? lightTrailColor;
@@ -36,6 +38,8 @@ namespace GBX.NET.Engines.Game
         private int validate_OsKind;
         private int validate_CpuKind;
         private string validate_RaceSettings;
+        private string validate_ChallengeUid;
+        private string validate_TitleId;
 
         #endregion
 
@@ -308,14 +312,38 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        [NodeMember]
-        public CPlugEntRecordData RecordData { get; set; }
+        public string Validate_ChallengeUid
+        {
+            get => validate_ChallengeUid;
+            set => validate_ChallengeUid = value;
+        }
+
+        public string Validate_TitleId
+        {
+            get => validate_TitleId;
+            set => validate_TitleId = value;
+        }
 
         [NodeMember]
-        public string GhostTrigram { get; set; }
+        public CPlugEntRecordData RecordData
+        {
+            get => recordData;
+            set => recordData = value;
+        }
 
         [NodeMember]
-        public string GhostZone { get; set; }
+        public string GhostTrigram
+        {
+            get => ghostTrigram;
+            set => ghostTrigram = value;
+        }
+
+        [NodeMember]
+        public string GhostZone
+        {
+            get => ghostZone;
+            set => ghostZone = value;
+        }
 
         #endregion
 
@@ -370,7 +398,7 @@ namespace GBX.NET.Engines.Game
                 rw.Int32(ref version);
                 rw.Ident(ref n.playerModel);
                 rw.Vec3(ref u01);
-                n.skinPackDescs = rw.Array(n.skinPackDescs,
+                rw.Array(ref n.skinPackDescs,
                     i => rw.Reader.ReadFileRef(),
                     x => rw.Writer.Write(x));
                 rw.Int32(ref u02);
@@ -392,15 +420,15 @@ namespace GBX.NET.Engines.Game
 
                         if (Version >= 5)
                         {
-                            n.RecordData = rw.NodeRef<CPlugEntRecordData>(n.RecordData);
+                            rw.NodeRef<CPlugEntRecordData>(ref n.recordData);
                             rw.Array(ref u04);
 
                             if (Version >= 6)
                             {
-                                n.GhostTrigram = rw.String(n.GhostTrigram);
+                                rw.String(ref n.ghostTrigram);
 
                                 if (Version >= 7)
-                                    n.GhostZone = rw.String(n.GhostZone);
+                                    rw.String(ref n.ghostZone);
                             }
                         }
                     }
@@ -423,6 +451,8 @@ namespace GBX.NET.Engines.Game
                 n.Vehicle = rw.Ident(n.Vehicle);
                 n.Skin = rw.String(n.Skin);
                 n.GhostLogin = rw.String(n.GhostLogin);
+
+                // TODO: Solve naming
             }
         }
 
@@ -611,7 +641,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.Id(Unknown);
+                rw.Id(ref n.validate_ChallengeUid);
             }
         }
 
@@ -748,7 +778,6 @@ namespace GBX.NET.Engines.Game
 
             public uint U01 { get; set; }
             public int U02 { get; set; }
-            public int U03 { get; set; }
 
             public Chunk03092019()
             {
@@ -764,7 +793,8 @@ namespace GBX.NET.Engines.Game
             {
                 n.EventsDuration = rw.Int32(n.EventsDuration);
 
-                if (n.EventsDuration == 0 && !is025) return; 
+                if (n.EventsDuration == 0 && !is025) return;
+                if (rw.Reader.BaseStream.Length == 8) return;
 
                 U01 = rw.UInt32(U01);
 
@@ -857,10 +887,83 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x01C chunk
+        #region 0x023 skippable chunk
 
         /// <summary>
-        /// CGameCtnGhost 0x025 chunk (validation)
+        /// CGameCtnGhost 0x023 skippable chunk
+        /// </summary>
+        [Chunk(0x03092023), IgnoreChunk]
+        public class Chunk03092023 : SkippableChunk<CGameCtnGhost>
+        {
+            private int version;
+            private string u01;
+            private int u02;
+            private string u03;
+            private int u04;
+            private int u05;
+            private string u06;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
+
+            public string U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public int U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
+
+            public string U03
+            {
+                get => u03;
+                set => u03 = value;
+            }
+
+            public int U04
+            {
+                get => u04;
+                set => u04 = value;
+            }
+
+            public int U05
+            {
+                get => u05;
+                set => u05 = value;
+            }
+
+            public string U06
+            {
+                get => u06;
+                set => u06 = value;
+            }
+
+            public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(ref version);
+                rw.String(ref u01);
+                rw.Int32(ref u02);
+                rw.String(ref u03);
+                rw.Int32(ref u04);
+                rw.Int32(ref u05);
+
+                // ...
+            }
+        }
+
+        #endregion
+
+        #region 0x025 skippable chunk (validation)
+
+        /// <summary>
+        /// CGameCtnGhost 0x025 skippable chunk (validation)
         /// </summary>
         [Chunk(0x03092025, "validation")]
         public class Chunk03092025 : SkippableChunk<CGameCtnGhost>
@@ -873,18 +976,98 @@ namespace GBX.NET.Engines.Game
                 set => version = value;
             }
 
-            public Chunk03092019 Chunk019 { get; }
-
-            public Chunk03092025()
-            {
-                Chunk019 = new Chunk03092019(this);
-            }
+            public uint U01 { get; set; }
+            public int U02 { get; set; }
+            public bool U03 { get; set; }
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
-                Chunk019.ReadWrite(n, rw);
-                rw.Boolean(Unknown);
+                n.EventsDuration = rw.Int32(n.EventsDuration);
+
+                if (n.EventsDuration == 0) return;
+
+                U01 = rw.UInt32(U01);
+
+                if (rw.Mode == GameBoxReaderWriterMode.Read)
+                {
+                    var r = rw.Reader;
+
+                    var controlNames = r.ReadArray(i => r.ReadId());
+
+                    var numEntries = r.ReadInt32();
+                    r.ReadInt32();
+
+                    n.ControlEntries = new ControlEntry[numEntries];
+
+                    for (var i = 0; i < numEntries; i++)
+                    {
+                        var time = r.ReadInt32();
+                        var controlNameIndex = r.ReadByte();
+                        var data = r.ReadUInt32();
+
+                        n.ControlEntries[i] = new ControlEntry()
+                        {
+                            Name = controlNames[controlNameIndex],
+                            Time = time,
+                            Data = data
+                        };
+                    }
+                }
+                else if (rw.Mode == GameBoxReaderWriterMode.Write)
+                {
+                    var w = rw.Writer;
+
+                    var controlNames = new List<string>();
+
+                    if (n.ControlEntries != null)
+                    {
+                        foreach (var entry in n.ControlEntries)
+                            if (!controlNames.Contains(entry.Name))
+                                controlNames.Add(entry.Name);
+                    }
+
+                    foreach (var name in controlNames)
+                        w.WriteId(name);
+
+                    w.Write(n.ControlEntries?.Length ?? 0);
+                    w.Write(0);
+
+                    if (n.ControlEntries != null)
+                    {
+                        foreach (var entry in n.ControlEntries)
+                        {
+                            w.Write(entry.Time);
+                            w.Write((byte)controlNames.IndexOf(entry.Name));
+                            w.Write(entry.Data);
+                        }
+                    }
+                }
+
+                rw.String(ref n.validate_ExeVersion);
+                rw.UInt32(ref n.validate_ExeChecksum);
+                rw.Int32(ref n.validate_OsKind);
+                rw.Int32(ref n.validate_CpuKind);
+                rw.String(ref n.validate_RaceSettings);
+                U02 = rw.Int32(U02);
+                U03 = rw.Boolean(U03);
+            }
+        }
+
+        #endregion
+
+        #region 0x028 skippable chunk (title id)
+
+        /// <summary>
+        /// CGameCtnGhost 0x028 skippable chunk (title id)
+        /// </summary>
+        [Chunk(0x03092028, "title id")]
+        public class Chunk03092028 : SkippableChunk<CGameCtnGhost>
+        {
+            public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
+            {
+                if (n.EventsDuration != 0)
+                    rw.String(ref n.validate_TitleId);
             }
         }
 
@@ -904,46 +1087,6 @@ namespace GBX.NET.Engines.Game
             {
                 return $"{Time} {Name} {Convert.ToString(Data, 2)}";
             }
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnGhost node;
-
-            public bool IsReplaying => node.IsReplaying;
-            public Task<CGameGhostData> Data => node.Data;
-
-            public Ident PlayerModel => node.PlayerModel;
-            public FileRef[] SkinPackDescs => node.SkinPackDescs;
-            public string GhostNickname => node.GhostNickname;
-            public string GhostAvatarName => node.GhostAvatarName;
-            public string RecordingContext => node.RecordingContext;
-            public TimeSpan? RaceTime => node.RaceTime;
-            public int? Respawns => node.Respawns;
-            public Vec3? LightTrailColor => node.LightTrailColor;
-            public int? StuntScore => node.StuntScore;
-            public TimeSpan[] Checkpoints => node.Checkpoints;
-            public string GhostLogin => node.GhostLogin;
-            public Ident Vehicle => node.Vehicle;
-            public string Skin => node.Skin;
-            public string UID => node.UID;
-            public int EventsDuration => node.EventsDuration;
-            public ControlEntry[] ControlEntries => node.ControlEntries;
-            public string Validate_ExeVersion => node.Validate_ExeVersion;
-            public uint Validate_ExeChecksum => node.Validate_ExeChecksum;
-            public int Validate_OsKind => node.Validate_OsKind;
-            public int Validate_CpuKind => node.Validate_CpuKind;
-            public string Validate_RaceSettings => node.Validate_RaceSettings;
-            public CPlugEntRecordData RecordData => node.RecordData;
-            public string GhostTrigram => node.GhostTrigram;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnGhost node) => this.node = node;
         }
 
         #endregion
