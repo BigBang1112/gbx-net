@@ -57,22 +57,20 @@ namespace GBX.NET
         /// Create a GameBox object based on an existing node. Useful for saving nodes to GBX files.
         /// </summary>
         /// <param name="node"></param>
-        public GameBox(T node) : this(node, null)
+        /// <param name="headerInfo"></param>
+        public GameBox(T node, GameBoxHeaderInfo headerInfo) : this(headerInfo)
         {
-            
+            MainNode = node;
+            ClassID = node.ID;
         }
 
         /// <summary>
         /// Create a GameBox object based on an existing node. Useful for saving nodes to GBX files.
         /// </summary>
         /// <param name="node"></param>
-        /// <param name="headerInfo"></param>
-        public GameBox(T node, GameBoxHeaderInfo headerInfo) : base(headerInfo)
+        public GameBox(T node) : this(node, null)
         {
-            Header = new GameBoxHeader<T>(this);
-            Body = new GameBoxBody<T>(this);
-            MainNode = node;
-            ClassID = node.ID;
+            
         }
 
         /// <summary>
@@ -245,21 +243,21 @@ namespace GBX.NET
         }
 
         /// <summary>
-        /// Saves the serialized GameBox to a stream.
+        /// Saves the serialized <see cref="GameBox{T}"/> to a stream.
         /// </summary>
         /// <param name="stream">Any kind of stream that supports writing.</param>
         /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
         public void Save(Stream stream, ClassIDRemap remap)
         {
             if (IntPtr.Size == 8)
-                throw new NotSupportedException("Saving GBX is not supported with x64 platform target, due to LZO compression bug. Please force your platform target to x86.");
+                throw new NotSupportedException("Saving GBX is not supported with x64 platform target, due to LZO implementation. Please force your platform target to x86.");
 
             using (var w = new GameBoxWriter(stream))
                 Write(w, remap);
         }
 
         /// <summary>
-        /// Saves the serialized GameBox to a stream.
+        /// Saves the serialized <see cref="GameBox{T}"/> to a stream.
         /// </summary>
         /// <param name="stream">Any kind of stream that supports writing.</param>
         public void Save(Stream stream)
@@ -268,7 +266,7 @@ namespace GBX.NET
         }
 
         /// <summary>
-        /// Saves the serialized GameBox on a disk.
+        /// Saves the serialized <see cref="GameBox{T}"/> on a disk.
         /// </summary>
         /// <param name="fileName">Relative or absolute file path.</param>
         /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
@@ -281,7 +279,7 @@ namespace GBX.NET
         }
 
         /// <summary>
-        /// Saves the serialized GameBox on a disk.
+        /// Saves the serialized <see cref="GameBox{T}"/> on a disk.
         /// </summary>
         /// <param name="fileName">Relative or absolute file path.</param>
         public void Save(string fileName)

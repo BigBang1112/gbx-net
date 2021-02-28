@@ -696,7 +696,7 @@ namespace GBX.NET
         }
 
         /// <summary>
-        /// Makes a <see cref="GameBox"/> from this node. NOTE: Non-generic <see cref="GameBox"/> doesn't have a Save method. You can explicitly cast it to <see cref="GameBox{T}"/> depending on the <see cref="Node"/>.
+        /// Makes a <see cref="GameBox"/> from this node. You can explicitly cast it to <see cref="GameBox{T}"/> depending on the <see cref="Node"/>. NOTE: Non-generic <see cref="GameBox"/> doesn't have a Save method.
         /// </summary>
         /// <returns></returns>
         public GameBox ToGBX()

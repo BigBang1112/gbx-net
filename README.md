@@ -30,7 +30,7 @@ GBX.NET is compatible with **.NET Standard 2.0** since version 0.2.0. Earlier ve
 
 Since version 0.5.2, the library is also compatible with **.NET Framework 4.5**.
 
-The library is also set to **x86 assembly** due to LZO compression problems in x64. It is unsure whenever this will be resolved.
+The library is **not able to save GBX files in 64bit environment** due to the LZO compression implementation. To be able to save your GBX, set your platform target to **x86**.
 
 ## Techniques
 
