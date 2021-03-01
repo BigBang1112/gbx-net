@@ -48,7 +48,6 @@
 		<Folder Include="Engines\Audio\" />
 		<Folder Include="Engines\Function\" />
 		<Folder Include="Engines\Graphic\" />
-		<Folder Include="Engines\Input\" />
 		<Folder Include="Engines\Motion\" />
 		<Folder Include="Engines\Net\" />
 		<Folder Include="Engines\VirtualSkipper\" />
