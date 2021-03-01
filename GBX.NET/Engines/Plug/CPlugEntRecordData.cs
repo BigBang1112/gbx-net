@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,7 +32,7 @@ namespace GBX.NET.Engines.Plug
                 Task.Run(() =>
                 {
                     using (var ms = new MemoryStream(Data))
-                    using (var cs = new CompressedStream(ms, System.IO.Compression.CompressionMode.Decompress))
+                    using (var cs = new CompressedStream(ms, CompressionMode.Decompress))
                     using (var gbxr = new GameBoxReader(cs))
                     {
                         var u01 = gbxr.ReadInt32();
