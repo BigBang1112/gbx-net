@@ -251,7 +251,7 @@ namespace GBX.NET
                     else
                     {
                         Debug.WriteLine("Unknown skippable chunk: " + chunkID.ToString("X"));
-                        chunk = (Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkID, chunkData);
+                        chunk = (Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkRemapped, chunkData);
                         chunks.Add(chunk);
                     }
                 }
