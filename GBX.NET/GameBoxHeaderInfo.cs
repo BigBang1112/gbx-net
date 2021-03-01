@@ -31,6 +31,8 @@ namespace GBX.NET
                 ByteFormat = (char)reader.ReadByte();
                 Log.Write($"- Byte format: {ByteFormat}");
 
+                if (ByteFormat == 'T') throw new NotSupportedException("Text-formatted GBX files are not supported.");
+
                 RefTableCompression = (char)reader.ReadByte();
                 Log.Write($"- Ref. table compression: {RefTableCompression}");
 
