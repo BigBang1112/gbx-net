@@ -10,6 +10,7 @@ GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software 
 - GBX.NET can recognize **entire GBX files**, however **can't read all of the possible files**. GBX file is basically a serialized class from the GameBox engine, and all of these classes must be known to read. This is where you can help contributing to the project, by [exploring new chunks](https://github.com/BigBang1112/gbx-net/wiki/How-to-discover-nodes-and-chunks) (available very soon).
 - GBX.NET can write GBX files which can be read by the parser, however this may not apply to all readable GBXs.
 - All versions of GBX are supported: ranging from TM1.0 to TM®.
+- Reading text-formatted GBX is not currently supported.
 - Reading PAK file isn't currently supported.
 
 | Extension | Node | Can read | Can write
@@ -23,6 +24,7 @@ GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software 
 | Block.Gbx | [CGameItemModel](GBX.NET/Engines/GameData/CGameItemModel.cs) | Yes | No
 | Macroblock.Gbx | [CGameCtnMacroBlockInfo](GBX.NET/Engines/Game/CGameCtnMacroBlockInfo.cs) | Yes | No
 | Item.Gbx | [CGameItemModel](GBX.NET/Engines/GameData/CGameItemModel.cs) | Yes | No
+| SystemConfig.Gbx | [CSystemConfig](GBX.NET/Engines/System/CSystemConfig.cs) | Yes | Yes
 
 ## Compatibility
 

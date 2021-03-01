@@ -51,6 +51,24 @@ namespace GBX.NET.Engines.System
         private bool fileTransferEnableUnknownTypeDownload;
         private bool fileTransferEnableUnknownTypeUpload;
         private bool fileTransferEnableUnknownTypeLocators;
+        private bool networkTestInternetConnection;
+        private string networkLastUsedMSAddress;
+        private string networkLastUsedMSPath;
+        private bool networkUseProxy;
+        private int networkServerPort;
+        private int networkP2PServerPort;
+        private int networkClientPort;
+        private int networkServerBroadcastLength;
+        private bool networkForceUseLocalAddress;
+        private string networkForceServerAddress;
+        private int networkDownload;
+        private int networkUpload;
+        private bool networkUseNatUPnP;
+        private int tmCarQuality;
+        private int playerShadow;
+        private int tmOpponents;
+        private int tmMaxOpponents;
+        private int tmBackgroundQuality;
 
         #endregion
 
@@ -186,12 +204,12 @@ namespace GBX.NET.Engines.System
         {
             get
             {
-                DiscoverChunk<Chunk0B00504A>();
+                DiscoverChunks<Chunk0B00503D, Chunk0B00504A>();
                 return isIgnorePlayerSkins;
             }
             set
             {
-                DiscoverChunk<Chunk0B00504A>();
+                DiscoverChunks<Chunk0B00503D, Chunk0B00504A>();
                 isIgnorePlayerSkins = value;
             }
         }
@@ -200,12 +218,12 @@ namespace GBX.NET.Engines.System
         {
             get
             {
-                DiscoverChunk<Chunk0B00504A>();
+                DiscoverChunks<Chunk0B00503D, Chunk0B00504A>();
                 return isSkipRollingDemo;
             }
             set
             {
-                DiscoverChunk<Chunk0B00504A>();
+                DiscoverChunks<Chunk0B00503D, Chunk0B00504A>();
                 isSkipRollingDemo = value;
             }
         }
@@ -644,6 +662,258 @@ namespace GBX.NET.Engines.System
             }
         }
 
+        public bool NetworkTestInternetConnection
+        {
+            get
+            {
+                DiscoverChunks<Chunk0B005035, Chunk0B005043, Chunk0B005044>();
+                return networkTestInternetConnection;
+            }
+            set
+            {
+                DiscoverChunks<Chunk0B005035, Chunk0B005043, Chunk0B005044>();
+                networkTestInternetConnection = value;
+            }
+        }
+
+        public string NetworkLastUsedMSAddress
+        {
+            get
+            {
+                DiscoverChunks<Chunk0B005043, Chunk0B005044>();
+                return networkLastUsedMSAddress;
+            }
+            set
+            {
+                DiscoverChunks<Chunk0B005043, Chunk0B005044>();
+                networkLastUsedMSAddress = value;
+            }
+        }
+
+        public string NetworkLastUsedMSPath
+        {
+            get
+            {
+                DiscoverChunks<Chunk0B005043, Chunk0B005044>();
+                return networkLastUsedMSPath;
+            }
+            set
+            {
+                DiscoverChunks<Chunk0B005043, Chunk0B005044>();
+                networkLastUsedMSPath = value;
+            }
+        }
+
+        public bool NetworkUseProxy
+        {
+            get
+            {
+                DiscoverChunk<Chunk0B005039>();
+                return networkUseProxy;
+            }
+            set
+            {
+                DiscoverChunk<Chunk0B005039>();
+                networkUseProxy = value;
+            }
+        }
+
+        public int NetworkServerPort
+        {
+            get
+            {
+                DiscoverChunk<Chunk0B005039>();
+                return networkServerPort;
+            }
+            set
+            {
+                DiscoverChunk<Chunk0B005039>();
+                networkServerPort = value;
+            }
+        }
+
+        public int NetworkP2PServerPort
+        {
+            get
+            {
+                DiscoverChunk<Chunk0B005039>();
+                return networkP2PServerPort;
+            }
+            set
+            {
+                DiscoverChunk<Chunk0B005039>();
+                networkP2PServerPort = value;
+            }
+        }
+
+        public int NetworkClientPort
+        {
+            get
+            {
+                DiscoverChunk<Chunk0B005039>();
+                return networkClientPort;
+            }
+            set
+            {
+                DiscoverChunk<Chunk0B005039>();
+                networkClientPort = value;
+            }
+        }
+
+        public int NetworkServerBroadcastLength
+        {
+            get
+            {
+                DiscoverChunk<Chunk0B005039>();
+                return networkServerBroadcastLength;
+            }
+            set
+            {
+                DiscoverChunk<Chunk0B005039>();
+                networkServerBroadcastLength = value;
+            }
+        }
+
+        public bool NetworkForceUseLocalAddress
+        {
+            get
+            {
+                DiscoverChunk<Chunk0B005039>();
+                return networkForceUseLocalAddress;
+            }
+            set
+            {
+                DiscoverChunk<Chunk0B005039>();
+                networkForceUseLocalAddress = value;
+            }
+        }
+
+        public string NetworkForceServerAddress
+        {
+            get
+            {
+                DiscoverChunk<Chunk0B005039>();
+                return networkForceServerAddress;
+            }
+            set
+            {
+                DiscoverChunk<Chunk0B005039>();
+                networkForceServerAddress = value;
+            }
+        }
+
+        public int NetworkDownload
+        {
+            get
+            {
+                DiscoverChunk<Chunk0B005039>();
+                return networkDownload;
+            }
+            set
+            {
+                DiscoverChunk<Chunk0B005039>();
+                networkDownload = value;
+            }
+        }
+
+        public int NetworkUpload
+        {
+            get
+            {
+                DiscoverChunk<Chunk0B005039>();
+                return networkUpload;
+            }
+            set
+            {
+                DiscoverChunk<Chunk0B005039>();
+                networkUpload = value;
+            }
+        }
+
+        public bool NetworkUseNatUPnP
+        {
+            get
+            {
+                DiscoverChunk<Chunk0B005039>();
+                return networkUseNatUPnP;
+            }
+            set
+            {
+                DiscoverChunk<Chunk0B005039>();
+                networkUseNatUPnP = value;
+            }
+        }
+
+        public int TmCarQuality
+        {
+            get
+            {
+                DiscoverChunks<Chunk0B005034, Chunk0B005052>();
+                return tmCarQuality;
+            }
+            set
+            {
+                DiscoverChunks<Chunk0B005034, Chunk0B005052>();
+                tmCarQuality = value;
+            }
+        }
+
+        public int PlayerShadow
+        {
+            get
+            {
+                DiscoverChunk<Chunk0B005052>();
+                return playerShadow;
+            }
+            set
+            {
+                DiscoverChunk<Chunk0B005052>();
+                playerShadow = value;
+            }
+        }
+
+        public int TmOpponents
+        {
+            get
+            {
+                DiscoverChunks<Chunk0B005034, Chunk0B005052>();
+                return tmOpponents;
+            }
+            set
+            {
+                DiscoverChunks<Chunk0B005034, Chunk0B005052>();
+                tmOpponents = value;
+            }
+        }
+
+        public int TmMaxOpponents
+        {
+            get
+            {
+                DiscoverChunks<Chunk0B005034, Chunk0B005052>();
+                return tmMaxOpponents;
+            }
+            set
+            {
+                DiscoverChunks<Chunk0B005034, Chunk0B005052>();
+                tmMaxOpponents = value;
+            }
+        }
+
+        public int TmBackgroundQuality
+        {
+            get
+            {
+                DiscoverChunk<Chunk0B005034>();
+                return tmBackgroundQuality;
+            }
+            set
+            {
+                DiscoverChunk<Chunk0B005034>();
+                tmBackgroundQuality = value;
+            }
+        }
+
         #endregion
 
         #region Chunks
@@ -668,6 +938,172 @@ namespace GBX.NET.Engines.System
             }
         }
 
+        [Chunk(0x0B005034)]
+        public class Chunk0B005034 : SkippableChunk<CSystemConfig>
+        {
+            private int u01;
+            private int u02;
+            private bool u03;
+
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public int U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
+
+            public bool U03
+            {
+                get => u03;
+                set => u03 = value;
+            }
+
+            public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(ref n.tmCarQuality);
+                rw.Int32(ref u01);
+                rw.Int32(ref u02);
+                rw.Int32(ref n.tmOpponents);
+                rw.Int32(ref n.tmMaxOpponents);
+                rw.Boolean(ref u03);
+                rw.Int32(ref n.tmBackgroundQuality);
+            }
+        }
+
+        [Chunk(0x0B005035)]
+        public class Chunk0B005035 : SkippableChunk<CSystemConfig>
+        {
+            private bool u01;
+
+            public bool U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
+            {
+                rw.Boolean(ref u01);
+                rw.Boolean(ref n.networkTestInternetConnection);
+            }
+        }
+
+        [Chunk(0x0B005039)]
+        public class Chunk0B005039 : SkippableChunk<CSystemConfig>
+        {
+            private string u01;
+            private string u02;
+
+            public string U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public string U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
+
+            public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
+            {
+                rw.Boolean(ref n.networkUseProxy);
+                rw.String(ref u01);
+                rw.String(ref u02);
+                rw.Int32(ref n.networkServerPort);
+                rw.Int32(ref n.networkP2PServerPort);
+                rw.Int32(ref n.networkClientPort);
+                rw.Int32(ref n.networkServerBroadcastLength);
+                rw.Boolean(ref n.networkForceUseLocalAddress);
+                rw.String(ref n.networkForceServerAddress);
+                rw.Int32(ref n.networkDownload);
+                rw.Int32(ref n.networkUpload);
+                rw.Boolean(ref n.networkUseNatUPnP);
+            }
+        }
+
+        [Chunk(0x0B00503D)]
+        public class Chunk0B00503D : SkippableChunk<CSystemConfig>
+        {
+            private int u01;
+
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
+            {
+                rw.Boolean(ref n.isIgnorePlayerSkins);
+                rw.Boolean(ref n.isSkipRollingDemo);
+                rw.Int32(ref u01);
+            }
+        }
+
+        [Chunk(0x0B005041)]
+        public class Chunk0B005041 : SkippableChunk<CSystemConfig>
+        {
+            private string u01;
+
+            public string U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
+            {
+                rw.String(ref u01);
+            }
+        }
+
+        [Chunk(0x0B005043)]
+        public class Chunk0B005043 : SkippableChunk<CSystemConfig>
+        {
+            private bool u01;
+
+            public bool U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
+            {
+                rw.Boolean(ref u01);
+                rw.Boolean(ref n.networkTestInternetConnection);
+                rw.String(ref n.networkLastUsedMSAddress);
+                rw.String(ref n.networkLastUsedMSPath);
+            }
+        }
+
+        [Chunk(0x0B005044)]
+        public class Chunk0B005044 : SkippableChunk<CSystemConfig>
+        {
+            private int[] u01;
+
+            public int[] U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
+            {
+                rw.Boolean(ref n.networkTestInternetConnection);
+                rw.String(ref n.networkLastUsedMSAddress);
+                rw.String(ref n.networkLastUsedMSPath);
+                rw.Array(ref u01);
+            }
+        }
+
         [Chunk(0x0B005045)]
         public class Chunk0B005045 : SkippableChunk<CSystemConfig>
         {
@@ -677,6 +1113,23 @@ namespace GBX.NET.Engines.System
                 rw.Boolean(ref n.inputsFreezeUnusedAxes);
                 rw.Boolean(ref n.inputsEnableRumble);
                 rw.Boolean(ref n.inputsCaptureKeyboard);
+            }
+        }
+
+        [Chunk(0x0B005047)]
+        public class Chunk0B005047 : SkippableChunk<CSystemConfig>
+        {
+            private bool u01;
+
+            public bool U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
+            {
+                rw.Boolean(ref u01);
             }
         }
 
@@ -705,19 +1158,120 @@ namespace GBX.NET.Engines.System
         [Chunk(0x0B00504F)]
         public class Chunk0B00504F : SkippableChunk<CSystemConfig>
         {
+            private int u01;
+            private int u02;
+            private int u03;
+            private bool u04;
+
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public int U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
+
+            public int U03
+            {
+                get => u03;
+                set => u03 = value;
+            }
+
+            public bool U04
+            {
+                get => u04;
+                set => u04 = value;
+            }
+
             public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
             {
                 rw.Boolean(ref n.audioEnabled);
                 rw.Single(ref n.audioSoundVolume);
                 rw.Single(ref n.audioMusicVolume);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32(ref u01);
+                rw.Int32(ref u02);
+                rw.Int32(ref u03);
                 rw.Boolean(ref n.audioAllowEFX);
                 rw.Boolean(ref n.audioDisableDoppler);
-                rw.Boolean(Unknown);
+                rw.Boolean(ref u04);
                 rw.Int32(ref n.audioGlobalQuality);
                 rw.String(ref n.audioDevice_Oal);
+            }
+        }
+
+        [Chunk(0x0B005050)]
+        public class Chunk0B005050 : SkippableChunk<CSystemConfig>
+        {
+            private bool u01;
+
+            public bool U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
+            {
+                rw.Boolean(ref u01);
+            }
+        }
+
+        [Chunk(0x0B005051)]
+        public class Chunk0B005051 : SkippableChunk<CSystemConfig>
+        {
+            private string u01;
+
+            public string U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
+            {
+                rw.String(ref u01);
+            }
+        }
+
+        [Chunk(0x0B005052)]
+        public class Chunk0B005052 : SkippableChunk<CSystemConfig>
+        {
+            private int u01;
+            private int u02;
+
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public int U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
+
+            public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(ref n.tmCarQuality);
+                rw.Int32(ref u01);
+                rw.Int32(ref n.playerShadow);
+                rw.Int32(ref u02);
+                rw.Int32(ref n.tmOpponents);
+                rw.Int32(ref n.tmMaxOpponents);
+            }
+        }
+
+        [Chunk(0x0B005053)]
+        public class Chunk0B005053 : SkippableChunk<CSystemConfig>
+        {
+            public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
+            {
+                rw.Boolean(ref n.audioSoundHdr);
             }
         }
 
