@@ -38,6 +38,12 @@ namespace GBX.NET
         public static Vec3 operator +(Vec3 a, int b) => new Vec3(a.X + b, a.Y + b, a.Z + b);
         public static Vec3 operator +(Vec3 a, float b) => new Vec3(a.X + b, a.Y + b, a.Z + b);
 
+        public static Vec3 operator +(Int3 a, Vec3 b) => b + a;
+        public static Vec3 operator +(Vec2 a, Vec3 b) => b + a;
+        public static Vec3 operator +(Int2 a, Vec3 b) => b + a;
+        public static Vec3 operator +(int a, Vec3 b) => b + a;
+        public static Vec3 operator +(float a, Vec3 b) => b + a;
+
         public static Vec3 operator -(Vec3 a) => new Vec3(-a.X, -a.Y, -a.Z);
         public static Vec3 operator -(Vec3 a, Vec3 b) => new Vec3(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
         public static Vec3 operator -(Vec3 a, Int3 b) => new Vec3(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
@@ -52,6 +58,12 @@ namespace GBX.NET
         public static Vec3 operator *(Vec3 a, Int2 b) => new Vec3(a.X * b.X, a.Y * b.Y, a.Z);
         public static Vec3 operator *(Vec3 a, int b) => new Vec3(a.X * b, a.Y * b, a.Z * b);
         public static Vec3 operator *(Vec3 a, float b) => new Vec3(a.X * b, a.Y * b, a.Z * b);
+
+        public static Vec3 operator *(Int3 a, Vec3 b) => b * a;
+        public static Vec3 operator *(Vec2 a, Vec3 b) => b * a;
+        public static Vec3 operator *(Int2 a, Vec3 b) => b * a;
+        public static Vec3 operator *(int a, Vec3 b) => b * a;
+        public static Vec3 operator *(float a, Vec3 b) => b * a;
 
         public static implicit operator Vec3(Int3 a) => new Vec3(a.X, a.Y, a.Z);
         public static implicit operator Vec3((float X, float Y, float Z) v) => new Vec3(v.X, v.Y, v.Z);

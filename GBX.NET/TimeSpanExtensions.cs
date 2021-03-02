@@ -10,5 +10,19 @@ namespace GBX.NET
 		{
 			return Convert.ToInt32(timeSpan.TotalMilliseconds);
 		}
+
+		/// <summary>
+		/// Converts the value of the current <see cref="TimeSpan"/> to a Trackmania familiar time format.
+		/// </summary>
+		/// <param name="timeSpan">TimeSpan</param>
+		/// <returns></returns>
+		public static string ToStringTM(this TimeSpan timeSpan)
+		{
+			if (timeSpan.TotalDays >= 1)
+				return timeSpan.ToString("d':'hh':'mm':'ss'.'fff");
+			if (timeSpan.TotalHours >= 1)
+				return timeSpan.ToString("h':'mm':'ss'.'fff");
+			return timeSpan.ToString("mm':'ss'.'fff");
+		}
 	}
 }

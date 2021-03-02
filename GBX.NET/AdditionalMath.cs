@@ -44,5 +44,20 @@ namespace GBX.NET
         {
             return a + t * (b - a);
         }
+
+        public static Vec2 Lerp(Vec2 a, Vec2 b, float t)
+        {
+            return a + t * (b - a);
+        }
+
+        public static Vec3 Lerp(Vec3 a, Vec3 b, float t)
+        {
+            return a + t * (b - a);
+        }
+
+        public static Quaternion Lerp(Quaternion a, Quaternion b, float t)
+        {
+            return a + t * (b - a);
+        }
     }
 }

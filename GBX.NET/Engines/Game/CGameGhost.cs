@@ -54,11 +54,16 @@ namespace GBX.NET.Engines.Game
 
                 n.Data = Task.Run(() =>
                 {
-                    var ghostData = new CGameGhostData();
+                    var ghostData = new CGameGhostData
+                    {
+                        SamplePeriod = TimeSpan.FromMilliseconds(SamplePeriod)
+                    };
+
                     using (var ms = new MemoryStream(Data))
                     {
-                        ghostData.ReadSamples(ms, Samples.Length, SamplePeriod, 56);
+                        ghostData.ReadSamples(ms, Samples.Length, 56);
                     }
+
                     return ghostData;
                 });
 

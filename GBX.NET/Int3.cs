@@ -33,6 +33,10 @@ namespace GBX.NET
         public static Int3 operator +(Int3 a, int b) => new Int3(a.X + b, a.Y + b, a.Z + b);
         public static Vec3 operator +(Int3 a, float b) => new Vec3(a.X + b, a.Y + b, a.Z + b);
 
+        public static Int3 operator +(Int2 a, Int3 b) => b + a;
+        public static Int3 operator +(int a, Int3 b) => b + a;
+        public static Vec3 operator +(float a, Int3 b) => b + a;
+
         public static Int3 operator -(Int3 a, Int3 b) => new Int3(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
         public static Int3 operator -(Int3 a, Int2 b) => new Int3(a.X - b.X, a.Y - b.Y, a.Z);
         public static Int3 operator -(Int3 a, int b) => new Int3(a.X - b, a.Y - b, a.Z - b);
@@ -43,9 +47,16 @@ namespace GBX.NET
         public static Int3 operator *(Int3 a, int b) => new Int3(a.X * b, a.Y * b, a.Z * b);
         public static Vec3 operator *(Int3 a, float b) => new Vec3(a.X * b, a.Y * b, a.Z * b);
 
+        public static Int3 operator *(Int2 a, Int3 b) => b * a;
+        public static Int3 operator *(int a, Int3 b) => b * a;
+        public static Vec3 operator *(float a, Int3 b) => b * a;
+
         public static Int3 operator ^(Int3 a, Int3 b) => new Int3(a.X ^ b.X, a.Y ^ b.Y, a.Z ^ b.Z);
         public static Int3 operator ^(Int3 a, Int2 b) => new Int3(a.X ^ b.X, a.Y ^ b.Y, a.Z);
-        public static Int3 operator ^(Int3 a, int b) => new Int3(a.X ^ b, a.Y ^ b, a.Z^ b);
+        public static Int3 operator ^(Int3 a, int b) => new Int3(a.X ^ b, a.Y ^ b, a.Z ^ b);
+
+        public static Int3 operator ^(Int2 a, Int3 b) => b ^ a;
+        public static Int3 operator ^(int a, Int3 b) => b ^ a;
 
         public static implicit operator Int3((int X, int Y, int Z) v) => new Int3(v.X, v.Y, v.Z);
         public static implicit operator (int X, int Y, int Z)(Int3 v) => (v.X, v.Y, v.Z);
