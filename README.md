@@ -149,7 +149,7 @@ foreach (CGameCtnGhost ghost in replay.Ghosts)
 Make the code cleaner by **aliasing** the `MainNode` from the parsed `GameBox<T>`:
 
 ```cs
-var gbx = GameBox.Parse("MyMap.Map.Gbx");
+var gbx = GameBox.Parse<CGameCtnChallenge>("MyMap.Map.Gbx");
 CGameCtnChallenge map = gbx.MainNode; // Like this
 
 var bronzeTime = gbx.MainNode.BronzeTime; // WRONG !!!

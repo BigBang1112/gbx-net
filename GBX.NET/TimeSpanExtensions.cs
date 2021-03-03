@@ -18,11 +18,15 @@ namespace GBX.NET
 		/// <returns></returns>
 		public static string ToStringTM(this TimeSpan timeSpan)
 		{
+			char? minus = null;
+			if (timeSpan.Ticks < 0)
+				minus = '-';
+
 			if (timeSpan.TotalDays >= 1)
-				return timeSpan.ToString("d':'hh':'mm':'ss'.'fff");
+				return minus + timeSpan.ToString("d':'hh':'mm':'ss'.'fff");
 			if (timeSpan.TotalHours >= 1)
-				return timeSpan.ToString("h':'mm':'ss'.'fff");
-			return timeSpan.ToString("mm':'ss'.'fff");
+				return minus + timeSpan.ToString("h':'mm':'ss'.'fff");
+			return minus + timeSpan.ToString("m':'ss'.'fff");
 		}
 	}
 }

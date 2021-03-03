@@ -794,7 +794,6 @@ namespace GBX.NET.Engines.Game
                 n.EventsDuration = rw.Int32(n.EventsDuration);
 
                 if (n.EventsDuration == 0 && !is025) return;
-                if (rw.Reader.BaseStream.Length == 8) return;
 
                 U01 = rw.UInt32(U01);
 
@@ -815,12 +814,20 @@ namespace GBX.NET.Engines.Game
                         var controlNameIndex = r.ReadByte();
                         var data = r.ReadUInt32();
 
-                        n.ControlEntries[i] = new ControlEntry()
+                        var name = controlNames[controlNameIndex];
+
+                        switch (name)
                         {
-                            Name = controlNames[controlNameIndex],
-                            Time = time,
-                            Data = data
-                        };
+                            case "Steer":
+                            case "Gas":
+                            case "AccelerateReal":
+                            case "BrakeReal":
+                                n.ControlEntries[i] = new ControlEntryAnalog() { Name = name, Time = time, Data = data };
+                                break;
+                            default:
+                                n.ControlEntries[i] = new ControlEntry() { Name = name, Time = time, Data = data };
+                                break;
+                        }
                     }
                 }
                 else if (rw.Mode == GameBoxReaderWriterMode.Write)
@@ -980,76 +987,17 @@ namespace GBX.NET.Engines.Game
             public int U02 { get; set; }
             public bool U03 { get; set; }
 
+            private readonly Chunk03092019 chunk019;
+
+            public Chunk03092025()
+            {
+                chunk019 = new Chunk03092019(this);
+            }
+
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
-                n.EventsDuration = rw.Int32(n.EventsDuration);
-
-                if (n.EventsDuration == 0) return;
-
-                U01 = rw.UInt32(U01);
-
-                if (rw.Mode == GameBoxReaderWriterMode.Read)
-                {
-                    var r = rw.Reader;
-
-                    var controlNames = r.ReadArray(i => r.ReadId());
-
-                    var numEntries = r.ReadInt32();
-                    r.ReadInt32();
-
-                    n.ControlEntries = new ControlEntry[numEntries];
-
-                    for (var i = 0; i < numEntries; i++)
-                    {
-                        var time = TimeSpan.FromMilliseconds(r.ReadInt32() - 100000);
-                        var controlNameIndex = r.ReadByte();
-                        var data = r.ReadUInt32();
-
-                        n.ControlEntries[i] = new ControlEntry()
-                        {
-                            Name = controlNames[controlNameIndex],
-                            Time = time,
-                            Data = data
-                        };
-                    }
-                }
-                else if (rw.Mode == GameBoxReaderWriterMode.Write)
-                {
-                    var w = rw.Writer;
-
-                    var controlNames = new List<string>();
-
-                    if (n.ControlEntries != null)
-                    {
-                        foreach (var entry in n.ControlEntries)
-                            if (!controlNames.Contains(entry.Name))
-                                controlNames.Add(entry.Name);
-                    }
-
-                    foreach (var name in controlNames)
-                        w.WriteId(name);
-
-                    w.Write(n.ControlEntries?.Length ?? 0);
-                    w.Write(0);
-
-                    if (n.ControlEntries != null)
-                    {
-                        foreach (var entry in n.ControlEntries)
-                        {
-                            w.Write(Convert.ToInt32(entry.Time.TotalMilliseconds + 100000));
-                            w.Write((byte)controlNames.IndexOf(entry.Name));
-                            w.Write(entry.Data);
-                        }
-                    }
-                }
-
-                rw.String(ref n.validate_ExeVersion);
-                rw.UInt32(ref n.validate_ExeChecksum);
-                rw.Int32(ref n.validate_OsKind);
-                rw.Int32(ref n.validate_CpuKind);
-                rw.String(ref n.validate_RaceSettings);
-                U02 = rw.Int32(U02);
+                chunk019.ReadWrite(n, rw);
                 U03 = rw.Boolean(U03);
             }
         }
@@ -1082,10 +1030,34 @@ namespace GBX.NET.Engines.Game
             public string Name { get; set; }
             public TimeSpan Time { get; set; }
             public uint Data { get; set; }
+            public bool IsEnabled => Data != 0;
 
             public override string ToString()
             {
-                return $"{Time:mm':'ss':'fff} {Name} {Convert.ToString(Data, 2)}";
+                return $"[{Time.ToStringTM()}] {Name}: {((Data == 128 || Data == 0) ? IsEnabled.ToString() : Data.ToString())}";
+            }
+        }
+
+        /// <summary>
+        /// A control entry with an additional <see cref="float"/> value.
+        /// </summary>
+        public class ControlEntryAnalog : ControlEntry
+        {
+            public float Value
+            {
+                get
+                {
+                    if (((Data >> 16) & 0xFF) == 0xFF) // Left steer
+                        return (Data & 0xFFFF) / (float)ushort.MaxValue - 1;
+                    if ((Data >> 16) == 1) // Full right steer
+                        return 1;
+                    return (Data & 0xFFFF) / (float)ushort.MaxValue;
+                }
+            }
+
+            public override string ToString()
+            {
+                return $"[{Time.ToStringTM()}] {Name}: {Value}";
             }
         }
 
