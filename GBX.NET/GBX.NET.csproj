@@ -5,7 +5,7 @@
 		<Description>A completely open source GBX file interaction library for .NET.</Description>
 		<Authors>BigBang1112</Authors>
 		<PackageLicenseExpression></PackageLicenseExpression>
-		<Version>0.9.0-rc</Version>
+		<Version>0.10.0</Version>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Copyright />
