@@ -85,21 +85,5 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnChallengeGroup node;
-
-            public string Default => node.Default;
-            public MapInfo[] MapInfos => node.MapInfos;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnChallengeGroup node) => this.node = node;
-        }
-
-        #endregion
     }
 }

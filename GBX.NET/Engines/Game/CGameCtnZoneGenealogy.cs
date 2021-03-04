@@ -62,23 +62,5 @@ namespace GBX.NET.Engines.Game
         #endregion
 
         #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnZoneGenealogy node;
-
-            public string[] ZoneIds => node.ZoneIds;
-            public string CurrentZoneId => node.CurrentZoneId;
-            public Direction Dir => node.Dir;
-            public int CurrentIndex => node.CurrentIndex;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnZoneGenealogy node) => this.node = node;
-        }
-
-        #endregion
     }
 }

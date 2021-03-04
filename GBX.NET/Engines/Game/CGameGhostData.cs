@@ -1,22 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Specialized;
 
 namespace GBX.NET.Engines.Game
 {
     public class CGameGhostData
     {
-        public Sample[] Samples { get; set; }
+        private TimeSpan samplePeriod;
+
+        /// <summary>
+        /// How much time is between each sample.
+        /// </summary>
+        public TimeSpan SamplePeriod
+        {
+            get => samplePeriod;
+            set
+            {
+                samplePeriod = value;
+
+                if (Samples != null)
+                    foreach (var sample in Samples)
+                        sample.UpdateTimestamp();
+            }
+        }
+
+        public ObservableCollection<Sample> Samples { get; private set; }
         public CompressionLevel Compression { get; set; }
 
         public CGameGhostData()
         {
+            
+        }
 
+        private void Samples_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.OldItems != null)
+                foreach (Sample sample in e.OldItems)
+                    sample.AssignTo(null);
+
+            if (e.NewStartingIndex != Samples.Count - 1)
+                foreach (var sample in Samples.Skip(e.NewStartingIndex))
+                    sample.AssignTo(this);
         }
 
         /// <summary>
@@ -28,36 +57,12 @@ namespace GBX.NET.Engines.Game
         {
             if (compressed)
             {
-                var magic = new byte[2];
-                stream.Read(magic, 0, 2); // Needed for DeflateStream to work
-
-                if (magic[0] != 0x78)
-                    throw new Exception("Data isn't compressed with Deflate ZLIB");
-
-                if (magic[1] == 0x01)
+                using (var zlib = new CompressedStream(stream, CompressionMode.Decompress))
                 {
-                    Compression = CompressionLevel.NoCompression;
-                    Debug.WriteLine("Deflate ZLIB - No compression");
+                    Compression = zlib.Compression;
+                    using (var r = new GameBoxReader(zlib))
+                        Read(r);
                 }
-                else if (magic[1] == 0x9C)
-                {
-                    Compression = CompressionLevel.DefaultCompression;
-                    Debug.WriteLine("Deflate ZLIB - Default compression");
-                }
-                else if (magic[1] == 0xDA)
-                {
-                    Compression = CompressionLevel.BestCompression;
-                    Debug.WriteLine("Deflate ZLIB - Best compression");
-                }
-                else
-                {
-                    Compression = CompressionLevel.UnknownCompression;
-                    Debug.WriteLine("Deflate ZLIB - Unknown compression");
-                }
-
-                using (var zlib = new DeflateStream(stream, CompressionMode.Decompress))
-                using (var r = new GameBoxReader(zlib))
-                    Read(r);
             }
             else
             {
@@ -87,7 +92,7 @@ namespace GBX.NET.Engines.Game
             {
                 var bSkipList2 = r.ReadBoolean();
                 var u01 = r.ReadInt32();
-                var samplePeriod = r.ReadInt32();
+                SamplePeriod = TimeSpan.FromMilliseconds(r.ReadInt32());
                 var u02 = r.ReadInt32();
 
                 var size = r.ReadInt32();
@@ -116,32 +121,34 @@ namespace GBX.NET.Engines.Game
                     var sampleTimes = r.ReadArray<int>(num);
                 }
 
-                Samples = new Sample[numSamples];
-
                 if (numSamples > 0)
                 {
                     if (sizePerSample.HasValue)
                     {
                         using (var mssd = new MemoryStream(sampleData))
                         {
-                            ReadSamples(mssd, numSamples, samplePeriod, sizePerSample.Value);
+                            ReadSamples(mssd, numSamples, sizePerSample.Value);
                         }
                     }
+                }
+                else
+                {
+                    Samples = new ObservableCollection<Sample>();
+                    Samples.CollectionChanged += Samples_CollectionChanged;
                 }
             }
         }
 
-        public void ReadSamples(MemoryStream ms, int numSamples, int samplePeriod, int sizePerSample)
+        public void ReadSamples(MemoryStream ms, int numSamples, int sizePerSample)
         {
-            Samples = new Sample[numSamples];
+            Samples = new ObservableCollection<Sample>();
+            Samples.CollectionChanged += Samples_CollectionChanged;
 
             using (var sr = new GameBoxReader(ms))
             {
                 for (var i = 0; i < numSamples; i++)
                 {
                     var sampleProgress = ms.Position;
-
-                    var timestamp = TimeSpan.FromMilliseconds(samplePeriod * i);
 
                     var pos = sr.ReadVec3();
                     var angle = sr.ReadUInt16() / (double)ushort.MaxValue * Math.PI;
@@ -164,22 +171,66 @@ namespace GBX.NET.Engines.Game
                     var unknownData = sr.ReadBytes(
                         sizePerSample - (int)(ms.Position - sampleProgress));
 
-                    Samples[i] = new Sample()
+                    var sample = new Sample()
                     {
-                        Timestamp = timestamp,
                         Position = pos,
                         Rotation = quaternion,
                         Speed = speed * 3.6f,
                         Velocity = velocityVector,
                         Unknown = unknownData
                     };
+
+                    Samples.Add(sample);
+
+                    sample.AssignTo(this);
                 }
             }
         }
 
+        /// <summary>
+        /// Linearly interpolates <see cref="Sample.Position"/>, <see cref="Sample.Rotation"/> (<see cref="Sample.PitchYawRoll"/>),
+        /// <see cref="Sample.Speed"/> and <see cref="Sample.Velocity"/> between two samples. Unknown data is taken from sample A.
+        /// </summary>
+        /// <param name="timestamp">Any timestamp between the range of samples.</param>
+        /// <returns>A new instance of <see cref="Sample"/> that has been linearly interpolated (<see cref="Sample.Timestamp"/> will be null)
+        /// or a reference to an existing sample if <paramref name="timestamp"/> matches an existing sample timestamp.
+        /// Also returns null if there are no samples, or if <paramref name="timestamp"/> is outside of the sample range,
+        /// or <see cref="SamplePeriod"/> is lower or equal to 0.</returns>
+        public Sample GetSampleLerp(TimeSpan timestamp)
+        {
+            if (Samples?.Count > 0 && samplePeriod.Ticks > 0)
+            {
+                var sampleKey = timestamp.TotalMilliseconds / samplePeriod.TotalMilliseconds;
+                var a = Samples.ElementAtOrDefault((int)Math.Floor(sampleKey)); // Sample A
+                var b = Samples.ElementAtOrDefault((int)Math.Ceiling(sampleKey)); // Sample B
+
+                if (a == null) // Timestamp is outside of the range
+                    return null;
+
+                if (b == null || a == b) // There's no second sample to interpolate with
+                    return a;
+
+                var t = (float)(sampleKey - Math.Floor(sampleKey));
+
+                return new Sample()
+                {
+                    Position = AdditionalMath.Lerp(a.Position, b.Position, t),
+                    Rotation = AdditionalMath.Lerp(a.Rotation, b.Rotation, t),
+                    Speed = AdditionalMath.Lerp(a.Speed, b.Speed, t),
+                    Velocity = AdditionalMath.Lerp(a.Velocity, b.Velocity, t),
+                    Unknown = a.Unknown
+                };
+            }
+
+            return null;
+        }
+
         public class Sample
         {
-            public TimeSpan Timestamp { get; set; }
+            private CGameGhostData owner;
+
+            public TimeSpan? Timestamp { get; private set; }
+
             public Vec3 Position { get; set; }
             public Quaternion Rotation { get; set; }
             public Vec3 PitchYawRoll => Rotation.ToPitchYawRoll();
@@ -187,7 +238,30 @@ namespace GBX.NET.Engines.Game
             public Vec3 Velocity { get; set; }
             public byte[] Unknown { get; set; }
 
-            public override string ToString() => $"Sample: {Timestamp:mm':'ss'.'fff} {Position}";
+            internal void AssignTo(CGameGhostData ghostData)
+            {
+                owner = ghostData;
+
+                if (owner == null || owner.samplePeriod == null || owner.samplePeriod.TotalMilliseconds <= 0)
+                {
+                    Timestamp = null;
+                    return;
+                }
+
+                UpdateTimestamp();
+            }
+
+            internal void UpdateTimestamp()
+            {
+                Timestamp = TimeSpan.FromMilliseconds(owner.samplePeriod.TotalMilliseconds * owner.Samples.IndexOf(this));
+            }
+
+            public override string ToString()
+            {
+                if (Timestamp.HasValue)
+                    return $"Sample: {Timestamp.Value.ToStringTM()} {Position}";
+                return $"Sample: {Position}";
+            }
         }
     }
 }

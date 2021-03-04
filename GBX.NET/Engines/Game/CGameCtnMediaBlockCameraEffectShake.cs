@@ -11,7 +11,6 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - Camera shake
     /// </summary>
     [Node(0x030A4000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCameraEffect
     {
         #region Properties
@@ -58,21 +57,6 @@ namespace GBX.NET.Engines.Game
         {
             public float Intensity { get; set; }
             public float Speed { get; set; }
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private CGameCtnMediaBlockCameraEffectShake node;
-
-            public Key[] Keys => node.Keys;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockCameraEffectShake node) => this.node = node;
         }
 
         #endregion

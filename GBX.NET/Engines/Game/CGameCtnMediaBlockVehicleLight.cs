@@ -6,7 +6,6 @@ using System.Text;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03133000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock
     {
         #region Properties
@@ -50,23 +49,6 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaBlockVehicleLight node;
-
-            public float Start => node.Start;
-            public float End => node.End;
-            public int Target => node.Target;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockVehicleLight node) => this.node = node;
-        }
 
         #endregion
     }

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E002000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameItemModel : CGameCtnCollector
     {
         #region Enums
@@ -603,54 +602,6 @@ namespace GBX.NET.Engines.GameData
         }
 
         #endregion
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameItemModel node;
-
-            public EItemType ItemType => node.ItemType;
-            public Node[] NadeoSkinFids => node.NadeoSkinFids;
-            public Node[] Cameras => node.Cameras;
-            public Node RaceInterfaceFid => node.RaceInterfaceFid;
-            public Vec3 GroundPoint => node.GroundPoint;
-            public float PainterGroundMargin => node.PainterGroundMargin;
-            public float OrbitalCenterHeightFromGround => node.OrbitalCenterHeightFromGround;
-            public float OrbitalRadiusBase => node.OrbitalRadiusBase;
-            public float OrbitalPreviewAngle => node.OrbitalPreviewAngle;
-            public Node BaseAttributes => node.BaseAttributes;
-            public string DefaultWeaponName => node.DefaultWeaponName;
-            public CPlugVehiclePhyModelCustom PhyModelCustom => node.PhyModelCustom;
-            public Node VisModelCustom => node.VisModelCustom;
-            public int DefaultCam => node.DefaultCam; 
-            public Node EntityModelEdition => node.EntityModelEdition;
-            public Node EntityModel => node.EntityModel;
-            public CGameCommonItemEntityModelEdition ItemModel => node.ItemModel;
-            public CGameBlockItem BlockModel => node.BlockModel;
-            public CGameItemPlacementParam ItemPlacement => node.ItemPlacement;
-
-            public Ident Ident => node.Ident;
-            public string PageName => node.PageName;
-            public int CatalogPosition => node.CatalogPosition;
-            public EProdState ProdState => node.ProdState;
-            public string Name => node.Name;
-            public Task<Bitmap> Icon => node.Icon;
-            public string IconFid => node.IconFid;
-            public string CollectorName => node.CollectorName;
-            public string Description => node.Description;
-            public bool IconUseAutoRender => node.IconUseAutoRender;
-            public int IconQuarterRotationY => node.IconQuarterRotationY;
-            public string SkinDirectory => node.SkinDirectory;
-            public bool IsInternal => node.IsInternal;
-            public bool IsAdvanced => node.IsAdvanced;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameItemModel node) => this.node = node;
-        }
 
         #endregion
     }

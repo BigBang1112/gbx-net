@@ -14,7 +14,7 @@ void Read(GameBoxReader r)
     Ident itemModel = r.ReadIdent();
     Vec3 pitchYawRoll = r.ReadVec3();
     Byte3 blockUnitCoord = r.ReadByte3();
-    int u01 = r.ReadInt32();
+    Id anchorTreeId = r.ReadId();
     Vec3 absolutePositionInMap = r.ReadVec3();
     int specialWaypoint = r.ReadInt32();
     if(specialWaypoint != -1)

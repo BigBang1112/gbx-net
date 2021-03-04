@@ -20,39 +20,51 @@
 - [0x015 (vehicle)](#0x015-vehicle)
 - [0x017 - skippable](#0x017---skippable)
 - [0x018](#0x018)
-- [0x019](#0x019-ghost-core)
+- [0x019](#0x019-validation)
 - [0x01C](#0x01C)
-- [0x025 - skippable](#0x025---skippable)
+- [0x025 - skippable (validation)](#0x025---skippable-validation)
 
 ### 0x000 - skippable (basic)
 
 ```cs
-void Read(GameBoxReader r)
+void Read (GameBoxReader r)
 {
     int version = r.ReadInt32();
     Ident model = r.ReadIdent();
-    Vec3 a = r.ReadVec3();
+    Vec3 u01 = r.ReadVec3();
 
     int numSkinFiles = r.ReadInt32();
     for(var i = 0; i < numSkinFiles; i++)
         FileRef skinFile = r.ReadFileRef();
     
-    int b = r.ReadInt32();
+    int u02 = r.ReadInt32();
     string ghostNickname = r.ReadString();
     string ghostAvatarFile = r.ReadString();
     
     if (version >= 2)
     {
         string recordingContext = r.ReadString();
-
-        if (version >= 5)
+        
+        if (version >= 4)
         {
-            int c = r.ReadInt32();
-            CPlugEntRecordData recordData = r.ReadNodeRef<CPlugEntRecordData>();
-            bool d = r.ReadBoolean();
-            int e = r.ReadInt32();
-            if (version >= 6)
-                string ghostTrigram = r.ReadString();
+            bool u03 = r.ReadBoolean();
+
+            if (version >= 5)
+            {
+                CPlugEntRecordData recordData = r.ReadNodeRef<CPlugEntRecordData>();
+
+                int num = r.ReadInt32();
+                for (var i = 0; i < num; i++)
+                    int u04 = r.ReadInt32();
+
+                if (version >= 6)
+                {
+                    string ghostTrigram = r.ReadString();
+
+                    if (version >= 7)
+                        string hostZone = r.ReadString();
+                }
+            }
         }
     }
 }
@@ -61,7 +73,7 @@ void Read(GameBoxReader r)
 ### 0x005 - skippable (race time)
 
 ```cs
-void Read(GameBoxReader r)
+void Read (GameBoxReader r)
 {
     int raceTime = r.ReadInt32();
 }
@@ -70,7 +82,7 @@ void Read(GameBoxReader r)
 ### 0x008 - skippable (respawns)
 
 ```cs
-void Read(GameBoxReader r)
+void Read (GameBoxReader r)
 {
     int respawns = r.ReadInt32();
 }
@@ -79,7 +91,7 @@ void Read(GameBoxReader r)
 ### 0x009 - skippable (light trail color)
 
 ```cs
-void Read(GameBoxReader r)
+void Read (GameBoxReader r)
 {
     int lightTrailColor = r.ReadVec3();
 }
@@ -88,7 +100,7 @@ void Read(GameBoxReader r)
 ### 0x00A - skippable (stunt score)
 
 ```cs
-void Read(GameBoxReader r)
+void Read (GameBoxReader r)
 {
     int stuntScore = r.ReadInt32();
 }
@@ -97,7 +109,7 @@ void Read(GameBoxReader r)
 ### 0x00B - skippable (checkpoint times)
 
 ```cs
-void Read(GameBoxReader r)
+void Read (GameBoxReader r)
 {
     int numCheckpoints = r.ReadInt32();
     for(var i = 0; i < numCheckpoints; i++)
@@ -108,7 +120,7 @@ void Read(GameBoxReader r)
 ### 0x00C
 
 ```cs
-void Read(GameBoxReader r)
+void Read (GameBoxReader r)
 {
     int a = r.ReadInt32();
 }
@@ -117,7 +129,7 @@ void Read(GameBoxReader r)
 ### 0x00E
 
 ```cs
-void Read(GameBoxReader r)
+void Read (GameBoxReader r)
 {
     Id uid = r.ReadId();
 }
@@ -126,7 +138,7 @@ void Read(GameBoxReader r)
 ### 0x00F (ghost login)
 
 ```cs
-void Read(GameBoxReader r)
+void Read (GameBoxReader r)
 {
     string ghostLogin = r.ReadString();
 }
@@ -135,7 +147,7 @@ void Read(GameBoxReader r)
 ### 0x010
 
 ```cs
-void Read(GameBoxReader r)
+void Read (GameBoxReader r)
 {
     Id u01 = r.ReadId();
 }
@@ -144,7 +156,7 @@ void Read(GameBoxReader r)
 ### 0x012
 
 ```cs
-void Read(GameBoxReader r)
+void Read (GameBoxReader r)
 {
     int a = r.ReadInt32();
     long b = r.ReadInt64();
@@ -155,7 +167,7 @@ void Read(GameBoxReader r)
 ### 0x013 - skippable
 
 ```cs
-void Read(GameBoxReader r)
+void Read (GameBoxReader r)
 {
     int a = r.ReadInt32();
     int b = r.ReadInt32();
@@ -165,7 +177,7 @@ void Read(GameBoxReader r)
 ### 0x014 - skippable
 
 ```cs
-void Read(GameBoxReader r)
+void Read (GameBoxReader r)
 {
     int a = r.ReadInt32();
 }
@@ -174,7 +186,7 @@ void Read(GameBoxReader r)
 ### 0x015 (vehicle)
 
 ```cs
-void Read(GameBoxReader r)
+void Read (GameBoxReader r)
 {
     Id vehicle = r.ReadId();
 }
@@ -183,7 +195,7 @@ void Read(GameBoxReader r)
 ### 0x017 - skippable
 
 ```cs
-void Read(GameBoxReader r)
+void Read (GameBoxReader r)
 {
     int numSkinPackDescs = r.ReadInt32();
     for(var i = 0; i < numSkinPackDescs; i++)
@@ -197,22 +209,22 @@ void Read(GameBoxReader r)
 ### 0x018
 
 ```cs
-void Read(GameBoxReader r)
+void Read (GameBoxReader r)
 {
     Ident a = r.ReadIdent();
 }
 ```
 
-### 0x019 (ghost core)
+### 0x019 (validation)
 
 ```cs
-void Read(GameBoxReader r)
+void Read (GameBoxReader r)
 {
     int eventsDuration = r.ReadInt32();
 
     if (eventsDuration > 0)
     {
-        uint a = r.ReadUInt32();
+        uint u01 = r.ReadUInt32();
 
         int numControlNames = r.ReadInt32();
         for (var i = 0; i < numControlNames; i++)
@@ -220,21 +232,21 @@ void Read(GameBoxReader r)
 
         int numEntries = r.ReadInt32();
 
-        int b = r.ReadInt32();
+        int u02 = r.ReadInt32();
 
         for (var i = 0; i < numEntries; i++)
         {
             int time = r.ReadInt32();
             byte controlNameIndex = r.ReadByte();
-            bool enabled = r.ReadBoolean();
+            uint data = r.ReadUInt32();
         }
 
-        string gameVersion = r.ReadString();
-        int exeChecksum = r.ReadInt32();
-        int OSKind = r.ReadInt32();
-        int CPUKind = r.ReadInt32();
-        string raceSettingsXML = r.ReadString();
-        int c = r.ReadInt32();
+        string validate_ExeVersion = r.ReadString();
+        int validate_ExeChecksum = r.ReadInt32();
+        int validate_OsKind = r.ReadInt32();
+        int validate_CpuKind = r.ReadInt32();
+        string validate_RaceSettings = r.ReadString();
+        int u03 = r.ReadInt32();
     }
 }
 ```
@@ -242,7 +254,7 @@ void Read(GameBoxReader r)
 ### 0x01C
 
 ```cs
-void Read(GameBoxReader r)
+void Read (GameBoxReader r)
 {
     int a = r.ReadInt32();
     int b = r.ReadInt32();
@@ -255,21 +267,37 @@ void Read(GameBoxReader r)
 }
 ```
 
-### 0x025 - skippable
+### 0x025 - skippable (validation)
 
 ```cs
-void Read(GameBoxReader r)
+void Read (GameBoxReader r)
 {
-    int a = r.ReadInt32();
-    int b = r.ReadInt32();
-    int c = r.ReadInt32();
+    int version = r.ReadInt32();
+    int eventsDuration = r.ReadInt32();
 
-    int numActions = r.ReadInt32();
-    for(var i = 0; i < numActions; i++)
-        Id action = r.ReadId();
-    
-    int d = r.ReadInt32();
+    uint u01 = r.ReadUInt32();
 
-    // ...
+    int numControlNames = r.ReadInt32();
+    for (var i = 0; i < numControlNames; i++)
+        Id controlName = r.ReadId();
+
+    int numEntries = r.ReadInt32();
+
+    int u02 = r.ReadInt32();
+
+    for (var i = 0; i < numEntries; i++)
+    {
+        int time = r.ReadInt32();
+        byte controlNameIndex = r.ReadByte();
+        uint data = r.ReadUInt32();
+    }
+
+    string validate_ExeVersion = r.ReadString();
+    int validate_ExeChecksum = r.ReadInt32();
+    int validate_OsKind = r.ReadInt32();
+    int validate_CpuKind = r.ReadInt32();
+    string validate_RaceSettings = r.ReadString();
+    int u03 = r.ReadInt32();
+    bool u04 = r.ReadBoolean();
 }
 ```

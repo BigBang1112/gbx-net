@@ -3,7 +3,6 @@
 namespace GBX.NET.Engines.Plug
 {
     [Node(0x0911E000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CPlugVehiclePhyModelCustom : Node
     {
         #region Fields
@@ -67,23 +66,6 @@ namespace GBX.NET.Engines.Plug
         }
 
         #endregion
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CPlugVehiclePhyModelCustom node;
-
-            public float AccelCoef => node.AccelCoef;
-            public float ControlCoef => node.ControlCoef;
-            public float GravityCoef => node.GravityCoef;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CPlugVehiclePhyModelCustom node) => this.node = node;
-        }
 
         #endregion
     }

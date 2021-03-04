@@ -21,14 +21,20 @@
         public static Int2 operator +(Int2 a, Int2 b) => new Int2(a.X + b.X, a.Y + b.Y);
         public static Int2 operator +(Int2 a, int b) => new Int2(a.X + b, a.Y + b);
 
+        public static Int2 operator +(int a, Int2 b) => b + a;
+
         public static Int2 operator -(Int2 a, Int2 b) => new Int2(a.X - b.X, a.Y - b.Y);
         public static Int2 operator -(Int2 a, int b) => new Int2(a.X - b, a.Y - b);
 
         public static Int2 operator *(Int2 a, Int2 b) => new Int2(a.X * b.X, a.Y * b.Y);
         public static Int2 operator *(Int2 a, int b) => new Int2(a.X * b, a.Y * b);
 
+        public static Int2 operator *(int a, Int2 b) => b * a;
+
         public static Int2 operator ^(Int2 a, Int2 b) => new Int2(a.X ^ b.X, a.Y ^ b.Y);
         public static Int2 operator ^(Int2 a, int b) => new Int2(a.X ^ b, a.Y ^ b);
+
+        public static Int2 operator ^(int a, Int2 b) => b ^ a;
 
         public static implicit operator Int2((int X, int Y) v) => new Int2(v.X, v.Y);
         public static implicit operator (int X, int Y)(Int2 v) => (v.X, v.Y);

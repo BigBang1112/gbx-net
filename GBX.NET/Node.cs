@@ -27,6 +27,7 @@ namespace GBX.NET
 
         public uint ID { get; }
         public uint? FaultyChunk { get; private set; }
+        [Obsolete]
         public byte[] Rest { get; private set; }
         public bool Unknown { get; internal set; }
 
@@ -94,15 +95,6 @@ namespace GBX.NET
             }
         }
 
-        static Type GetBaseType(Type t)
-        {
-            if (t == null)
-                return null;
-            if (t.BaseType == typeof(Node))
-                return t.BaseType;
-            return GetBaseType(t.BaseType);
-        }
-
         public static T[] ParseArray<T>(GameBoxReader r) where T : Node
         {
             var count = r.ReadInt32();
@@ -118,12 +110,12 @@ namespace GBX.NET
         {
             var stopwatch = Stopwatch.StartNew();
 
-            if (classID == null)
+            if (!classID.HasValue)
                 classID = r.ReadUInt32();
-            if (Mappings.TryGetValue(classID.Value, out uint newerClassID))
-                classID = newerClassID;
 
             if (classID == uint.MaxValue) return null;
+
+            classID = Remap(classID.Value);
 
             if (!AvailableClasses.TryGetValue(classID.Value, out Type type))
                 throw new NotImplementedException($"Node ID 0x{classID.Value:X8} is not implemented. ({Names.Where(x => x.Key == Chunk.Remap(classID.Value)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
@@ -224,10 +216,7 @@ namespace GBX.NET
                         break;
                     }
 
-                    Debug.WriteLine("Skippable chunk: " + chunkID.ToString("X"));
-
                     var chunkDataSize = r.ReadInt32();
-                    Debug.WriteLine("Chunk size: " + chunkDataSize);
                     var chunkData = new byte[chunkDataSize];
                     if (chunkDataSize > 0)
                         r.Read(chunkData, 0, chunkDataSize);
@@ -262,15 +251,13 @@ namespace GBX.NET
                     else
                     {
                         Debug.WriteLine("Unknown skippable chunk: " + chunkID.ToString("X"));
-                        chunk = (Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkID, chunkData);
+                        chunk = (Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkRemapped, chunkData);
                         chunks.Add(chunk);
                     }
                 }
 
                 if (reflected && !skippable)
                 {
-                    Debug.WriteLine("Unskippable chunk: " + chunkID.ToString("X8"));
-
                     if (skippable) // Does it ever happen?
                     {
                         var skip = r.ReadUInt32();
@@ -527,7 +514,7 @@ namespace GBX.NET
             types = types.Where(t => t != null);
 
             foreach (var nodeType in types.Where(x => x.IsClass
-                   && x.Namespace != null && x.Namespace.StartsWith("GBX.NET.Engines") && GetBaseType(x) == typeof(Node)))
+                   && x.Namespace != null && x.Namespace.StartsWith("GBX.NET.Engines") && x.IsSubclassOf(typeof(Node))))
             {
                 var nodeID = nodeType.GetCustomAttribute<NodeAttribute>().ID;
 
@@ -585,7 +572,7 @@ namespace GBX.NET
                     foreach (var cls in inheritanceClasses)
                     {
                         var availableInheritanceClass = types.Where(x => x.IsClass && x.Namespace != null
-                           && x.Namespace.StartsWith("GBX.NET.Engines") && (GetBaseType(x) == typeof(Node))
+                           && x.Namespace.StartsWith("GBX.NET.Engines") && x.IsSubclassOf(typeof(Node))
                            && (x.GetCustomAttribute<NodeAttribute>().ID == cls)).FirstOrDefault();
 
                         var inheritChunkType = typeof(Chunk<>).MakeGenericType(availableInheritanceClass);
@@ -680,9 +667,41 @@ namespace GBX.NET
             Chunks.Discover<T1, T2, T3, T4, T5, T6>();
         }
 
+        /// <summary>
+        /// Discovers all chunks in the node.
+        /// </summary>
+        /// <exception cref="AggregateException"/>
         public void DiscoverAllChunks()
         {
             Chunks.DiscoverAll();
+
+            foreach (var nodeProperty in GetType().GetProperties())
+            {
+                if (nodeProperty.PropertyType.IsSubclassOf(typeof(Node)))
+                {
+                    var node = (Node)nodeProperty.GetValue(this);
+                    node?.DiscoverAllChunks();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Makes a <see cref="GameBox"/> from this node. NOTE: Non-generic <see cref="GameBox"/> doesn't have a Save method.
+        /// </summary>
+        /// <param name="headerInfo"></param>
+        /// <returns></returns>
+        public GameBox ToGBX(GameBoxHeaderInfo headerInfo)
+        {
+            return (GameBox)Activator.CreateInstance(typeof(GameBox<>).MakeGenericType(GetType()), this, headerInfo);
+        }
+
+        /// <summary>
+        /// Makes a <see cref="GameBox"/> from this node. You can explicitly cast it to <see cref="GameBox{T}"/> depending on the <see cref="Node"/>. NOTE: Non-generic <see cref="GameBox"/> doesn't have a Save method.
+        /// </summary>
+        /// <returns></returns>
+        public GameBox ToGBX()
+        {
+            return (GameBox)Activator.CreateInstance(typeof(GameBox<>).MakeGenericType(GetType()), this);
         }
 
         public static uint Remap(uint id)
@@ -690,32 +709,6 @@ namespace GBX.NET
             if (Mappings.TryGetValue(id, out uint newerClassID))
                 return newerClassID;
             return id;
-        }
-
-        [Obsolete]
-        public static T FromGBX<T>(GameBox<T> loadedGbx) where T : Node
-        {
-            return loadedGbx.MainNode;
-        }
-
-        [Obsolete]
-        public static T FromGBX<T>(string gbxFile) where T : Node
-        {
-            using (var fs = File.OpenRead(gbxFile))
-            {
-                var type = GameBox.GetGameBoxType(fs);
-                fs.Seek(0, SeekOrigin.Begin);
-
-                GameBox gbx;
-                if (type == null)
-                    gbx = new GameBox();
-                else
-                    gbx = (GameBox)Activator.CreateInstance(type);
-
-                if (gbx.Read(fs, null))
-                    return FromGBX((GameBox<T>)gbx);
-                return default;
-            }
         }
     }
 }

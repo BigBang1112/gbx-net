@@ -20,7 +20,10 @@ The class behind every single map made in Trackmania.
 - [0x016 - skippable](#0x016---skippable)
 - [0x017 - skippable (checkpoints)](#0x017---skippable-checkpoints)
 - [0x019 - skippable (mod)](#0x019---skippable-mod)
+- [0x01A](#0x01A)
+- [0x01B](#0x01B)
 - [0x01C - skippable (play mode)](#0x01C---skippable-play-mode)
+- [0x01D](#0x01D)
 - [0x01F (block data)](#0x01F-block-data)
 - [0x021 (legacy mediatracker)](#0x021-legacy-mediatracker)
 - [0x022](#0x022)
@@ -577,12 +580,39 @@ void Read(GameBoxReader r)
 }
 ```
 
+### 0x01A
+
+```cs
+void Read(GameBoxReader r)
+{
+    Node u01 = r.ReadNodeRef(); // -1
+}
+```
+
+### 0x01B
+
+```cs
+void Read(GameBoxReader r)
+{
+    int u01 = r.ReadInt32(); // 0
+}
+```
+
 ### 0x01C - skippable (play mode)
 
 ```cs
 void Read(GameBoxReader r)
 {
     PlayMode playMode = (PlayMode)r.ReadInt32();
+}
+```
+
+### 0x01D
+
+```cs
+void Read(GameBoxReader r)
+{
+    Node u01 = r.ReadNodeRef(); // -1
 }
 ```
 
@@ -725,7 +755,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-    NodeRef clipGlobal = r.ReadNodeRef();
+    Node clipGlobal = r.ReadNodeRef();
 }
 ```
 
@@ -889,7 +919,7 @@ void Read(GameBoxReader r)
 {
     int version = r.ReadInt32();
 
-    if (Version != 0)
+    if (version != 0)
     {
         int a = r.ReadInt32();
         int size = r.ReadInt32();

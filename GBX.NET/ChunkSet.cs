@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Linq;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Threading.Tasks;
 
 namespace GBX.NET
 {
@@ -175,11 +176,17 @@ namespace GBX.NET
             }
         }
 
+        /// <summary>
+        /// Discovers all chunks in the chunk set.
+        /// </summary>
+        /// <exception cref="AggregateException"/>
         public void DiscoverAll()
         {
-            foreach (var chunk in this)
+            Parallel.ForEach(this, chunk =>
+            {
                 if (chunk is ISkippableChunk s)
                     s.Discover();
+            });
         }
     }
 }

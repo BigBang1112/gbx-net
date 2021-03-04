@@ -27,7 +27,7 @@ namespace GBX.NET
         /// <summary>
         /// Url of the locator.
         /// </summary>
-        public string LocatorUrl { get; set; }
+        public Uri LocatorUrl { get; set; }
 
         /// <summary>
         /// Empty file reference version 3.
@@ -37,7 +37,7 @@ namespace GBX.NET
             Version = 3;
             Checksum = new byte[32];
             FilePath = "";
-            LocatorUrl = "";
+            LocatorUrl = null;
         }
 
         /// <summary>
@@ -48,6 +48,23 @@ namespace GBX.NET
         /// <param name="filePath">If <c><paramref name="version"/> &gt; 1</c>, relative to user folder, else relative to Skins folder.</param>
         /// <param name="locatorUrl">Url of the locator.</param>
         public FileRef(byte version, byte[] checksum, string filePath, string locatorUrl)
+        {
+            Version = version;
+            Checksum = checksum;
+            FilePath = filePath;
+
+            Uri.TryCreate(locatorUrl, UriKind.Absolute, out Uri uri);
+            LocatorUrl = uri;
+        }
+
+        /// <summary>
+        /// File reference.
+        /// </summary>
+        /// <param name="version">Version of the file reference.</param>
+        /// <param name="checksum">File checksum, should be null if <c><paramref name="version"/> &lt; 3</c>.</param>
+        /// <param name="filePath">If <c><paramref name="version"/> &gt; 1</c>, relative to user folder, else relative to Skins folder.</param>
+        /// <param name="locatorUrl"><see cref="Uri"/> of the locator.</param>
+        public FileRef(byte version, byte[] checksum, string filePath, Uri locatorUrl)
         {
             Version = version;
             Checksum = checksum;
@@ -76,7 +93,7 @@ namespace GBX.NET
             public byte Version => fileRef.Version;
             public string Checksum => Convert.ToBase64String(fileRef.Checksum ?? new byte[0]);
             public string FilePath => fileRef.FilePath;
-            public string LocatorUrl => fileRef.LocatorUrl;
+            public Uri LocatorUrl => fileRef.LocatorUrl;
 
             public DebugView(FileRef fileRef) => this.fileRef = fileRef;
         }

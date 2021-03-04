@@ -7,7 +7,6 @@ using System.Text;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03081000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx
     {
         #region Properties
@@ -61,21 +60,6 @@ namespace GBX.NET.Engines.Game
             public float LensSize { get; set; }
             public bool ForceFocus { get; set; }
             public float FocusZ { get; set; }
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaBlockFxBlurDepth node;
-
-            public Key[] Keys => node.Keys;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockFxBlurDepth node) => this.node = node;
         }
 
         #endregion

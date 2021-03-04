@@ -3,7 +3,6 @@
 namespace GBX.NET.Engines.Game
 {
     [Node(0x030E5000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockGhost : CGameCtnMediaBlock
     {
         #region Properties
@@ -99,28 +98,6 @@ namespace GBX.NET.Engines.Game
         public class Key : MediaBlockKey
         {
             public float Unknown { get; set; }
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaBlockGhost node;
-
-            public float Start => node.Start;
-            public float End => node.End;
-            public Key[] Keys => node.Keys;
-            public CGameGhost GhostModel => node.GhostModel;
-            public float StartOffset => node.StartOffset;
-            public bool NoDamage => node.NoDamage;
-            public bool ForceLight => node.ForceLight;
-            public bool ForceHue => node.ForceHue;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockGhost node) => this.node = node;
         }
 
         #endregion

@@ -9,7 +9,6 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - Camera effect script
     /// </summary>
     [Node(0x03161000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCameraEffect
     {
         #region Properties
@@ -76,22 +75,6 @@ namespace GBX.NET.Engines.Game
             public float A { get; set; }
             public float B { get; set; }
             public float C { get; set; }
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private CGameCtnMediaBlockCameraEffectScript node;
-
-            public string Script => node.Script;
-            public Key[] Keys => node.Keys;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockCameraEffectScript node) => this.node = node;
         }
 
         #endregion

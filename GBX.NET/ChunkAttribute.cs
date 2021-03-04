@@ -2,6 +2,7 @@
 
 namespace GBX.NET
 {
+    [AttributeUsage(AttributeTargets.Class)]
     public class ChunkAttribute : Attribute
     {
         public uint ID { get; }

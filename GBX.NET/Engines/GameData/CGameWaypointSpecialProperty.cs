@@ -7,7 +7,6 @@ using System.Text;
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E009000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameWaypointSpecialProperty : Node
     {
         #region Properties
@@ -64,23 +63,6 @@ namespace GBX.NET.Engines.GameData
         }
 
         #endregion
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameWaypointSpecialProperty node;
-
-            public int? Spawn => node.Spawn;
-            public string Tag => node.Tag;
-            public int Order => node.Order;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameWaypointSpecialProperty node) => this.node = node;
-        }
 
         #endregion
     }

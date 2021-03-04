@@ -10,7 +10,6 @@ namespace GBX.NET.Engines.Game
     /// Skin for a block (0x03059000)
     /// </summary>
     [Node(0x03059000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnBlockSkin : Node
     {
         #region Properties
@@ -106,24 +105,6 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnBlockSkin node;
-
-            public string Text => node.Text;
-            public FileRef PackDesc => node.PackDesc;
-            public FileRef ParentPackDesc => node.ParentPackDesc;
-            public FileRef SecondaryPackDesc => node.SecondaryPackDesc;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnBlockSkin node) => this.node = node;
-        }
 
         #endregion
     }

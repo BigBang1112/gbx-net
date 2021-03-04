@@ -9,7 +9,6 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - Color grading
     /// </summary>
     [Node(0x03186000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock
     {
         #region Properties
@@ -67,23 +66,11 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Other classes
+
         public class Key : MediaBlockKey
         {
             public float Intensity { get; set; }
-        }
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaBlockColorGrading node;
-
-            public FileRef Image => node.Image;
-            public Key[] Keys => node.Keys;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockColorGrading node) => this.node = node;
         }
 
         #endregion

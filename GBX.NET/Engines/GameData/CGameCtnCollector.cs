@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E001000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnCollector : Node
     {
         #region Enums
@@ -465,34 +464,6 @@ namespace GBX.NET.Engines.GameData
         }
 
         #endregion
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnCollector node;
-
-            public Ident Ident => node.Ident;
-            public string PageName => node.PageName;
-            public int CatalogPosition => node.CatalogPosition;
-            public EProdState ProdState => node.ProdState;
-            public string Name => node.Name;
-            public Task<Bitmap> Icon => node.Icon;
-            public Node IconFid => node.IconFid;
-            public string CollectorName => node.CollectorName;
-            public string Description => node.Description;
-            public bool IconUseAutoRender => node.IconUseAutoRender;
-            public int IconQuarterRotationY => node.IconQuarterRotationY;
-            public string SkinDirectory => node.SkinDirectory;
-            public bool IsInternal => node.IsInternal;
-            public bool IsAdvanced => node.IsAdvanced;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnCollector node) => this.node = node;
-        }
 
         #endregion
     }

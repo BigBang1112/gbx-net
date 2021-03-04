@@ -12,7 +12,6 @@ namespace GBX.NET.Engines.Game
     /// </summary>
     /// <remarks>A block placed on a map.</remarks>
     [Node(0x03057000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnBlock : Node
     {
         #region Constants
@@ -327,45 +326,6 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnBlock node;
-
-            public string Name => node.Name;
-            public Ident BlockInfo => node.BlockInfo;
-            public Direction Direction => node.Direction;
-            public Int3 Coord => node.Coord;
-            public FlagsInt Flags => new FlagsInt(node.Flags);
-            public string Author => node.Author;
-            public CGameCtnBlockSkin Skin => node.Skin;
-            public CGameWaypointSpecialProperty WaypointSpecialProperty => node.WaypointSpecialProperty;
-            public bool IsGhost => node.IsGhost;
-            public bool IsFree => node.IsFree;
-            public bool IsGround => node.IsGround;
-            public bool Bit21 => node.Bit21;
-            public bool Bit17 => node.Bit17;
-            public bool IsClip => node.IsClip;
-            public byte? Variant => node.Variant;
-
-            public Vec3 AbsolutePositionInMap => node.AbsolutePositionInMap;
-            public Vec3 PitchYawRoll => node.PitchYawRoll;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnBlock node) => this.node = node;
-
-            public class FlagsInt
-            {
-                private readonly uint value;
-                public FlagsInt(int flags) => value = (uint)flags;
-                public override string ToString() => Convert.ToString(value, 2).PadLeft(32, '0');
-            }
-        }
 
         #endregion
     }

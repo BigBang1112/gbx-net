@@ -3,7 +3,6 @@
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03085000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockTime : CGameCtnMediaBlock
     {
         #region Properties
@@ -47,21 +46,6 @@ namespace GBX.NET.Engines.Game
         {
             public float TimeValue { get; set; }
             public float Tangent { get; set; }
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaBlockTime node;
-
-            public Key[] Keys => node.Keys;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockTime node) => this.node = node;
         }
 
         #endregion

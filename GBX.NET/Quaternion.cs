@@ -38,6 +38,14 @@ namespace GBX.NET
         public static bool operator ==(Quaternion a, Quaternion b) => a.X == b.X && a.Y == b.Y && a.Z == b.Z && a.W == b.W;
         public static bool operator !=(Quaternion a, Quaternion b) => !(a.X == b.X && a.Y == b.Y && a.Z == b.Z && a.W == b.W);
 
+        public static Quaternion operator +(Quaternion a, Quaternion b) => new Quaternion(a.X + b.X, a.Y + b.Y, a.Z + b.Z, a.W + b.W);
+        public static Quaternion operator -(Quaternion a) => new Quaternion(-a.X, -a.Y, -a.Z, -a.W);
+        public static Quaternion operator -(Quaternion a, Quaternion b) => new Quaternion(a.X - b.X, a.Y - b.Y, a.Z - b.Z, a.W - b.W);
+        public static Quaternion operator *(Quaternion a, Quaternion b) => new Quaternion(a.X * b.X, a.Y * b.Y, a.Z * b.Z, a.W * a.W);
+        public static Quaternion operator *(Quaternion a, float b) => new Quaternion(a.X * b, a.Y * b, a.Z * b, a.W * b);
+
+        public static Quaternion operator *(float a, Quaternion b) => b * a;
+
         public static implicit operator Quaternion((float X, float Y, float Z, float W) v) => new Quaternion(v.X, v.Y, v.Z, v.W);
         public static implicit operator (float X, float Y, float Z, float W)(Quaternion v) => (v.X, v.Y, v.Z, v.W);
     }

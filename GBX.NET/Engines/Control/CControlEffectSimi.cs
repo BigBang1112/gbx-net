@@ -3,7 +3,6 @@
 namespace GBX.NET.Engines.Control
 {
     [Node(0x07010000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CControlEffectSimi : Node
     {
         #region Properties
@@ -221,25 +220,6 @@ namespace GBX.NET.Engines.Control
             public float Depth { get; set; }
             public float IsContinuousEffect { get; set; }
             public float[] Unknown { get; set; } = new float[] { 0, 0, 0 };
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CControlEffectSimi node;
-
-            public Key[] Keys => node.Keys;
-            public bool Centered => node.Centered;
-            public int ColorBlendMode => node.ColorBlendMode;
-            public bool IsContinousEffect => node.IsContinousEffect;
-            public bool IsInterpolated => node.IsInterpolated;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CControlEffectSimi node) => this.node = node;
         }
 
         #endregion

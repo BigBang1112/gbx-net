@@ -7,7 +7,6 @@ using System.Text;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03199000)]
-    [DebuggerTypeProxy(typeof(DebugView))]
     public class CGameCtnMediaBlockFog : CGameCtnMediaBlock
     {
         #region Properties
@@ -108,21 +107,6 @@ namespace GBX.NET.Engines.Game
             public Vec3? Color { get; set; }
             public float? CloudsOpacity { get; set; }
             public float? CloudsSpeed { get; set; }
-        }
-
-        #endregion
-
-        #region Debug view
-
-        private class DebugView
-        {
-            private readonly CGameCtnMediaBlockFog node;
-
-            public Key[] Keys => node.Keys;
-
-            public ChunkSet Chunks => node.Chunks;
-
-            public DebugView(CGameCtnMediaBlockFog node) => this.node = node;
         }
 
         #endregion
