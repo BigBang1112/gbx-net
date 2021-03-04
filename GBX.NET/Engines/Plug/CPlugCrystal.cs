@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Globalization;
 
 namespace GBX.NET.Engines.Plug
 {
@@ -62,7 +63,7 @@ namespace GBX.NET.Engines.Plug
         public void ToOBJ(Stream stream)
         {
             var previousCulture = Thread.CurrentThread.CurrentCulture;
-            Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
             using (var w = new StreamWriter(stream))
             {
