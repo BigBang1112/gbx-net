@@ -5,7 +5,7 @@
 		<Description>Open-source GBX format parser library with writing possibilities for .NET.</Description>
 		<Authors>BigBang1112</Authors>
 		<PackageLicenseExpression></PackageLicenseExpression>
-		<Version>0.9.0</Version>
+		<Version>0.9.0.1</Version>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Copyright />
