@@ -40,6 +40,7 @@ namespace GBX.NET.Engines.Game
         private string validate_RaceSettings;
         private string validate_ChallengeUid;
         private string validate_TitleId;
+        private bool hasBadges;
 
         #endregion
 
@@ -345,6 +346,13 @@ namespace GBX.NET.Engines.Game
             set => ghostZone = value;
         }
 
+        [NodeMember]
+        public bool HasBadges
+        {
+            get => hasBadges;
+            set => hasBadges = value;
+        }
+
         #endregion
 
         #region Chunks
@@ -359,9 +367,12 @@ namespace GBX.NET.Engines.Game
         {
             private int version;
             private Vec3 u01;
-            private int u02;
             private bool u03;
             private int[] u04;
+            private int u05;
+            private Vec3 u06;
+            private (string value, string key)[] u07;
+            private string[] u08;
 
             public int Version
             {
@@ -373,12 +384,6 @@ namespace GBX.NET.Engines.Game
             {
                 get => u01;
                 set => u01 = value;
-            }
-
-            public int U02
-            {
-                get => u02;
-                set => u02 = value;
             }
 
             public bool U03
@@ -393,15 +398,55 @@ namespace GBX.NET.Engines.Game
                 set => u04 = value;
             }
 
+            public int U05
+            {
+                get => u05;
+                set => u05 = value;
+            }
+
+            public Vec3 U06
+            {
+                get => u06;
+                set => u06 = value;
+            }
+
+            public (string value, string key)[] U07
+            {
+                get => u07;
+                set => u07 = value;
+            }
+
+            public string[] U08
+            {
+                get => u08;
+                set => u08 = value;
+            }
+
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
                 rw.Ident(ref n.playerModel);
                 rw.Vec3(ref u01);
                 rw.Array(ref n.skinPackDescs,
-                    i => rw.Reader.ReadFileRef(),
-                    x => rw.Writer.Write(x));
-                rw.Int32(ref u02);
+                    (i, r) => r.ReadFileRef(),
+                    (x, w) => w.Write(x));
+                rw.Boolean(ref n.hasBadges);
+
+                if (n.hasBadges)
+                {
+                    rw.Int32(ref u05);
+                    rw.Vec3(ref u06);
+                    rw.Array(ref u07,
+                        (i, r) => (r.ReadString(), r.ReadString()),
+                        (x, w) => {
+                            w.Write(x.Item1);
+                            w.Write(x.Item2);
+                        });
+                    rw.Array(ref u08,
+                        (i, r) => r.ReadString(),
+                        (x, w) => w.Write(x));
+                }
+
                 rw.String(ref n.ghostNickname);
                 rw.String(ref n.ghostAvatarName);
 
