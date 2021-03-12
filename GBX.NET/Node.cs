@@ -679,7 +679,7 @@ namespace GBX.NET
             {
                 if (nodeProperty.PropertyType.IsSubclassOf(typeof(Node)))
                 {
-                    var node = (Node)nodeProperty.GetValue(this);
+                    var node = nodeProperty.GetValue(this) as Node;
                     node?.DiscoverAllChunks();
                 }
             }
