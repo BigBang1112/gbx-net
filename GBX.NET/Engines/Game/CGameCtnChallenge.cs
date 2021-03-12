@@ -777,8 +777,16 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public CGameCtnBlock[] BakedBlocks
         {
-            get => bakedBlocks;
-            set => bakedBlocks = value;
+            get
+            {
+                DiscoverChunk<Chunk03043048>();
+                return bakedBlocks;
+            }
+            set
+            {
+                DiscoverChunk<Chunk03043048>();
+                bakedBlocks = value;
+            }
         }
 
         [NodeMember]
