@@ -153,17 +153,6 @@ namespace GBX.NET
             }
         }
 
-        public void Write<TValue>(Dictionary<int, TValue> dictionary) where TValue : Node
-        {
-            Write(dictionary.Count);
-
-            foreach(var pair in dictionary)
-            {
-                Write(pair.Key);
-                Write(pair.Value);
-            }
-        }
-
         public void Write(Vec2 value)
         {
             Write(new float[] { value.X, value.Y });
@@ -285,6 +274,17 @@ namespace GBX.NET
             else Write(-1);
         }
 
+        public void Write<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
+        {
+            Write(dictionary.Count);
+
+            foreach (var pair in dictionary)
+            {
+                WriteAny(pair.Key);
+                WriteAny(pair.Value);
+            }
+        }
+
         public void WriteBytes(byte[] bytes)
         {
             Write(bytes, 0, bytes.Length);
@@ -323,6 +323,47 @@ namespace GBX.NET
 
                 counter += 1;
             }
+        }
+
+        public void WriteNodeDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary) where TValue : Node
+        {
+            Write(dictionary.Count);
+
+            foreach (var pair in dictionary)
+            {
+                WriteAny(pair.Key);
+                Write(pair.Value);
+            }
+        }
+
+        /// <summary>
+        /// Writes any kind of value. Prefer using specified methods for better performance. Supported types are <see cref="byte"/>, <see cref="short"/>, <see cref="int"/>,
+        /// <see cref="long"/>, <see cref="float"/>, <see cref="bool"/>, <see cref="string"/>, <see cref="sbyte"/>, <see cref="ushort"/>,
+        /// <see cref="uint"/>, <see cref="ulong"/>, <see cref="Byte3"/>, <see cref="Vec2"/>, <see cref="Vec3"/>,
+        /// <see cref="Vec4"/>, <see cref="Int3"/>, <see cref="Id"/> and <see cref="Ident"/>.
+        /// </summary>
+        /// <param name="any"></param>
+        private void WriteAny(object any)
+        {
+            if (any is byte byteValue) Write(byteValue);
+            else if (any is short shortValue) Write(shortValue);
+            else if (any is int intValue) Write(intValue);
+            else if (any is long longValue) Write(longValue);
+            else if (any is float floatValue) Write(floatValue);
+            else if (any is string stringValue) Write(stringValue);
+            else if (any is sbyte sbyteValue) Write(sbyteValue);
+            else if (any is ushort ushortValue) Write(ushortValue);
+            else if (any is uint uintValue) Write(uintValue);
+            else if (any is ulong ulongValue) Write(ulongValue);
+            else if (any is Byte3 byte3Value) Write(byte3Value);
+            else if (any is Vec2 vec2Value) Write(vec2Value);
+            else if (any is Vec3 vec3Value) Write(vec3Value);
+            else if (any is Vec4 vec4Value) Write(vec4Value);
+            else if (any is Int2 int2Value) Write(int2Value);
+            else if (any is Int3 int3Value) Write(int3Value);
+            else if (any is Id idValue) Write(idValue);
+            else if (any is Ident identValue) Write(identValue);
+            else throw new NotSupportedException($"{any.GetType()} is not supported for Read<T>.");
         }
     }
 }

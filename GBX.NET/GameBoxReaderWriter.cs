@@ -184,16 +184,28 @@ namespace GBX.NET
             list = List(list, i => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
         }
 
-        public Dictionary<int, TValue> DictionaryNode<TValue>(Dictionary<int, TValue> dictionary) where TValue : Node
+        public Dictionary<TKey, TValue> Dictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
         {
-            if (Reader != null) return Reader.ReadDictionaryNode<TValue>();
+            if (Reader != null) return Reader.ReadDictionary<TKey, TValue>();
             else if (Writer != null) Writer.Write(dictionary);
             return dictionary;
         }
 
-        public void DictionaryNode<TValue>(ref Dictionary<int, TValue> dictionary) where TValue : Node
+        public void Dictionary<TKey, TValue>(ref Dictionary<TKey, TValue> dictionary)
         {
-            dictionary = DictionaryNode(dictionary);
+            dictionary = Dictionary(dictionary);
+        }
+
+        public Dictionary<TKey, TValue> NodeDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary) where TValue : Node
+        {
+            if (Reader != null) return Reader.ReadNodeDictionary<TKey, TValue>();
+            else if (Writer != null) Writer.WriteNodeDictionary(dictionary);
+            return dictionary;
+        }
+
+        public void NodeDictionary<TKey, TValue>(ref Dictionary<TKey, TValue> dictionary) where TValue : Node
+        {
+            dictionary = NodeDictionary(dictionary);
         }
 
         public bool Boolean(bool variable, bool asByte)

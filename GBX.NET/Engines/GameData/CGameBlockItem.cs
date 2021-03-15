@@ -63,7 +63,7 @@ namespace GBX.NET.Engines.GameData
                 rw.Int32(ref version);
                 rw.Id(ref n.archetypeBlockInfoId);
                 rw.Id(ref n.archetypeBlockInfoCollectionId);
-                rw.DictionaryNode(ref n.customizedVariants);
+                rw.NodeDictionary(ref n.customizedVariants);
             }
         }
 

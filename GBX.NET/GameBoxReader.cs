@@ -230,15 +230,44 @@ namespace GBX.NET
             return result;
         }
 
-        public Dictionary<int, TValue> ReadDictionaryNode<TValue>() where TValue : Node
+        /// <summary>
+        /// Reads values in a dictionary kind (first key, then value). For node dictionaries, use the <see cref="ReadDictionaryNode{TKey, TValue}"/> method for better performance.
+        /// </summary>
+        /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>.</typeparam>
+        /// <typeparam name="TValue">One of the supported types of <see cref="Read{T}"/>.</typeparam>
+        /// <returns></returns>
+        public Dictionary<TKey, TValue> ReadDictionary<TKey, TValue>()
         {
-            var dictionary = new Dictionary<int, TValue>();
+            var dictionary = new Dictionary<TKey, TValue>();
 
             var length = ReadInt32();
 
             for (var i = 0; i < length; i++)
             {
-                var key = ReadInt32();
+                var key = Read<TKey>();
+                var value = Read<TValue>();
+
+                dictionary.Add(key, value);
+            }
+
+            return dictionary;
+        }
+
+        /// <summary>
+        /// Reads nodes in a dictionary kind (first key, then value).
+        /// </summary>
+        /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>.</typeparam>
+        /// <typeparam name="TValue">A node that is presented as node reference.</typeparam>
+        /// <returns></returns>
+        public Dictionary<TKey, TValue> ReadNodeDictionary<TKey, TValue>() where TValue : Node
+        {
+            var dictionary = new Dictionary<TKey, TValue>();
+
+            var length = ReadInt32();
+
+            for (var i = 0; i < length; i++)
+            {
+                var key = Read<TKey>();
                 var value = ReadNodeRef<TValue>();
 
                 dictionary.Add(key, value);
@@ -363,6 +392,61 @@ namespace GBX.NET
         public bool HasMagic(string magic)
         {
             return ReadString(magic.Length) == magic;
+        }
+
+        /// <summary>
+        /// A generic read method of parameterless types for the cost of performance loss. Prefer using the pre-defined data read methods.
+        /// </summary>
+        /// <typeparam name="T">Type of the variable to read. Supported types are <see cref="byte"/>, <see cref="short"/>, <see cref="int"/>,
+        /// <see cref="long"/>, <see cref="float"/>, <see cref="bool"/>, <see cref="string"/>, <see cref="sbyte"/>, <see cref="ushort"/>,
+        /// <see cref="uint"/>, <see cref="ulong"/>, <see cref="Byte3"/>, <see cref="Vec2"/>, <see cref="Vec3"/>,
+        /// <see cref="Vec4"/>, <see cref="Int3"/>, <see cref="Id"/> and <see cref="Ident"/>.</typeparam>
+        /// <returns></returns>
+        private T Read<T>()
+        {
+            switch (typeof(T))
+            {
+                case Type byteType when byteType == typeof(byte):
+                    return (T)Convert.ChangeType(ReadByte(), typeof(T));
+                case Type shortType when shortType == typeof(short):
+                    return (T)Convert.ChangeType(ReadInt16(), typeof(T));
+                case Type intType when intType == typeof(int):
+                    return (T)Convert.ChangeType(ReadInt32(), typeof(T));
+                case Type longType when longType == typeof(long):
+                    return (T)Convert.ChangeType(ReadInt64(), typeof(T));
+                case Type floatType when floatType == typeof(float):
+                    return (T)Convert.ChangeType(ReadSingle(), typeof(T));
+                case Type boolType when boolType == typeof(bool):
+                    return (T)Convert.ChangeType(ReadBoolean(), typeof(T));
+                case Type stringType when stringType == typeof(string):
+                    return (T)Convert.ChangeType(ReadString(), typeof(T));
+                case Type sbyteType when sbyteType == typeof(sbyte):
+                    return (T)Convert.ChangeType(ReadSByte(), typeof(T));
+                case Type ushortType when ushortType == typeof(ushort):
+                    return (T)Convert.ChangeType(ReadUInt16(), typeof(T));
+                case Type uintType when uintType == typeof(uint):
+                    return (T)Convert.ChangeType(ReadUInt32(), typeof(T));
+                case Type ulongType when ulongType == typeof(ulong):
+                    return (T)Convert.ChangeType(ReadUInt64(), typeof(T));
+                case Type byte3Type when byte3Type == typeof(Byte3):
+                    return (T)Convert.ChangeType(ReadByte3(), typeof(T));
+                case Type vec2Type when vec2Type == typeof(Vec2):
+                    return (T)Convert.ChangeType(ReadVec2(), typeof(T));
+                case Type vec3Type when vec3Type == typeof(Vec3):
+                    return (T)Convert.ChangeType(ReadVec3(), typeof(T));
+                case Type vec4Type when vec4Type == typeof(Vec4):
+                    return (T)Convert.ChangeType(ReadVec4(), typeof(T));
+                case Type int2Type when int2Type == typeof(Int2):
+                    return (T)Convert.ChangeType(ReadInt2(), typeof(T));
+                case Type int3Type when int3Type == typeof(Int3):
+                    return (T)Convert.ChangeType(ReadInt3(), typeof(T));
+                case Type idType when idType == typeof(Id):
+                    return (T)Convert.ChangeType(ReadId(), typeof(T));
+                case Type identType when identType == typeof(Ident):
+                    return (T)Convert.ChangeType(ReadIdent(), typeof(T));
+                default:
+                    throw new NotSupportedException($"{typeof(T)} is not supported for Read<T>.");
+            }
         }
     }
 }
