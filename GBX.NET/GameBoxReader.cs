@@ -11,7 +11,7 @@ namespace GBX.NET
 {
     public class GameBoxReader : BinaryReader
     {
-        public ILookbackable Lookbackable { get; }
+        public ILookbackable Lookbackable { get; internal set; }
         public Chunk Chunk { get; internal set; }
 
         public GameBoxReader(Stream input) : base(input, Encoding.UTF8, true)
@@ -231,7 +231,7 @@ namespace GBX.NET
         }
 
         /// <summary>
-        /// Reads values in a dictionary kind (first key, then value). For node dictionaries, use the <see cref="ReadDictionaryNode{TKey, TValue}"/> method for better performance.
+        /// Reads values in a dictionary kind (first key, then value). For node dictionaries, use the <see cref="ReadNodeDictionary{TKey, TValue}"/> method for better performance.
         /// </summary>
         /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>.</typeparam>
         /// <typeparam name="TValue">One of the supported types of <see cref="Read{T}"/>.</typeparam>

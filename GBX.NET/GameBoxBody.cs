@@ -28,17 +28,27 @@ namespace GBX.NET
 
         public void Read(byte[] data, IProgress<GameBoxReadProgress> progress = null)
         {
-            using (var s = new MemoryStream(data))
-            using (var gbxr = new GameBoxReader(s, this))
-            {
-                GBX.MainNode = Node.Parse(gbxr, GBX.ClassID.Value, GBX, progress);
+            using (var ms = new MemoryStream(data))
+                Read(ms, progress);
+        }
 
-                Debug.WriteLine("Amount read: " + (s.Position / (float)s.Length).ToString("P"));
+        public void Read(Stream stream, IProgress<GameBoxReadProgress> progress = null)
+        {
+            using (var gbxr = new GameBoxReader(stream, this))
+                Read(gbxr, progress);
+        }
 
-                byte[] restBuffer = new byte[s.Length - s.Position];
-                gbxr.Read(restBuffer, 0, restBuffer.Length);
-                Rest = restBuffer;
-            }
+        public void Read(GameBoxReader reader, IProgress<GameBoxReadProgress> progress = null)
+        {
+            var s = reader.BaseStream;
+
+            GBX.MainNode = Node.Parse(reader, GBX.ClassID.Value, GBX, progress);
+
+            Debug.WriteLine("Amount read: " + (s.Position / (float)s.Length).ToString("P"));
+
+            byte[] restBuffer = new byte[s.Length - s.Position];
+            reader.Read(restBuffer, 0, restBuffer.Length);
+            Rest = restBuffer;
         }
 
         public void Read(byte[] data, int uncompressedSize, IProgress<GameBoxReadProgress> progress = null)

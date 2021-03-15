@@ -178,7 +178,7 @@ namespace GBX.NET
             return true;
         }
 
-        public bool ReadBody(GameBoxReader reader, IProgress<GameBoxReadProgress> progress)
+        internal bool ReadBody(GameBoxReader reader, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress)
         {
             Log.Write("Reading the body...");
 
@@ -193,9 +193,15 @@ namespace GBX.NET
 
                     break;
                 case 'U':
-                    var uncompressedData = reader.ReadToEnd();
-                    Body.Read(uncompressedData, progress);
-
+                    if (readUncompressedBodyDirectly)
+                    {
+                        Body.Read(reader, progress);
+                    }
+                    else
+                    {
+                        var uncompressedData = reader.ReadToEnd();
+                        Body.Read(uncompressedData, progress);
+                    }
                     break;
                 default:
                     Log.Write("Body can't be read!", ConsoleColor.Red);
@@ -516,19 +522,54 @@ namespace GBX.NET
         /// </summary>
         /// <typeparam name="T">A known type of the GBX file. Unmatching type will throw an exception.</typeparam>
         /// <param name="stream">Stream to read GBX format from.</param>
+        /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
+        /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with specified main node type.</returns>
-        public static GameBox<T> Parse<T>(Stream stream, IProgress<GameBoxReadProgress> progress = null) where T : Node
+        public static GameBox<T> Parse<T>(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
             var gbx = ParseHeader<T>(stream, progress);
 
-            using(var r = new GameBoxReader(stream))
+            using (var r = new GameBoxReader(stream))
             {
-                if (gbx.ReadBody(r, progress))
+                if (gbx.ReadBody(r, readUncompressedBodyDirectly, progress))
                     return gbx;
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Easily parses GBX format.
+        /// </summary>
+        /// <typeparam name="T">A known type of the GBX file. Unmatching type will throw an exception.</typeparam>
+        /// <param name="stream">Stream to read GBX format from.</param>
+        /// <param name="progress">Callback that reports any read progress.</param>
+        /// <returns>A GameBox with specified main node type.</returns>
+        public static GameBox<T> Parse<T>(Stream stream, IProgress<GameBoxReadProgress> progress = null) where T : Node
+        {
+            return Parse<T>(stream, false, progress);
+        }
+
+        /// <summary>
+        /// Easily parses a GBX file.
+        /// </summary>
+        /// <typeparam name="T">A known type of the GBX file. Unmatching type will throw an exception.</typeparam>
+        /// <param name="fileName">Relative or absolute file path.</param>
+        /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
+        /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
+        /// <param name="progress">Callback that reports any read progress.</param>
+        /// <returns>A GameBox with specified main node type.</returns>
+        /// <exception cref="InvalidCastException"/>
+        public static GameBox<T> Parse<T>(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null) where T : Node
+        {
+            using (var fs = File.OpenRead(fileName))
+            {
+                var gbx = Parse<T>(fs, readUncompressedBodyDirectly, progress);
+                if (gbx == null) return null;
+                gbx.FileName = fileName;
+                return gbx;
+            }
         }
 
         /// <summary>
@@ -545,13 +586,7 @@ namespace GBX.NET
         /// </example>
         public static GameBox<T> Parse<T>(string fileName, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
-            using (var fs = File.OpenRead(fileName))
-            {
-                var gbx = Parse<T>(fs, progress);
-                if (gbx == null) return null;
-                gbx.FileName = fileName;
-                return gbx;
-            }
+            return Parse<T>(fileName, false, progress);
         }
 
         public static uint? ReadClassID(GameBoxReader reader)
@@ -594,6 +629,25 @@ namespace GBX.NET
         /// Easily parses a GBX file.
         /// </summary>
         /// <param name="fileName">Relative or absolute file path.</param>
+        /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
+        /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
+        /// <param name="progress">Callback that reports any read progress.</param>
+        /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
+        public static GameBox Parse(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null)
+        {
+            using (var fs = File.OpenRead(fileName))
+            {
+                var gbx = Parse(fs, readUncompressedBodyDirectly, progress);
+                if (gbx == null) return null;
+                gbx.FileName = fileName;
+                return gbx;
+            }
+        }
+
+        /// <summary>
+        /// Easily parses a GBX file.
+        /// </summary>
+        /// <param name="fileName">Relative or absolute file path.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
         /// <example>
@@ -610,11 +664,47 @@ namespace GBX.NET
         /// </example>
         public static GameBox Parse(string fileName, IProgress<GameBoxReadProgress> progress = null)
         {
-            using (var fs = File.OpenRead(fileName))
+            return Parse(fileName, false, progress);
+        }
+
+        /// <summary>
+        /// Easily parses GBX format.
+        /// </summary>
+        /// <param name="stream">Stream to read GBX format from.</param>
+        /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
+        /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
+        /// <param name="progress">Callback that reports any read progress.</param>
+        /// <exception cref="NotSupportedException"/>
+        /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
+        public static GameBox Parse(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null)
+        {
+            using (var r = new GameBoxReader(stream))
             {
-                var gbx = Parse(fs, progress);
+                var gbx = ParseHeader(r, progress);
+
                 if (gbx == null) return null;
-                gbx.FileName = fileName;
+
+                var gbxType = gbx.GetType();
+
+                if(gbxType.IsGenericType && gbxType.GetGenericTypeDefinition() == typeof(GameBox<>))
+                {
+                    var bodyProperty = gbxType.GetProperty("Body");
+                    var readBodyMethod = gbxType.GetMethod("ReadBody", BindingFlags.Instance | BindingFlags.NonPublic);
+
+                    r.Lookbackable = (ILookbackable)bodyProperty.GetValue(gbx);
+
+                    try
+                    {
+                        readBodyMethod.Invoke(gbx, new object[] { r, readUncompressedBodyDirectly, progress });
+                    }
+                    catch (TargetInvocationException e)
+                    {
+                        Log.Write("\nException while parsing the body of GBX!", ConsoleColor.Red);
+                        Log.Write(e.InnerException.ToString());
+                        ExceptionDispatchInfo.Capture(e.InnerException).Throw();
+                    }
+                }
+
                 return gbx;
             }
         }
@@ -628,32 +718,7 @@ namespace GBX.NET
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
         public static GameBox Parse(Stream stream, IProgress<GameBoxReadProgress> progress = null)
         {
-            using (var r = new GameBoxReader(stream))
-            {
-                var gbx = ParseHeader(r, progress);
-
-                if (gbx == null) return null;
-
-                var gbxType = gbx.GetType();
-
-                if(gbxType.IsGenericType && gbxType.GetGenericTypeDefinition() == typeof(GameBox<>))
-                {
-                    var readBodyMethod = gbxType.GetMethod("ReadBody");
-
-                    try
-                    {
-                        readBodyMethod.Invoke(gbx, new object[] { r, progress });
-                    }
-                    catch (TargetInvocationException e)
-                    {
-                        Log.Write("\nException while parsing the body of GBX!", ConsoleColor.Red);
-                        Log.Write(e.InnerException.ToString());
-                        ExceptionDispatchInfo.Capture(e.InnerException).Throw();
-                    }
-                }
-
-                return gbx;
-            }
+            return Parse(stream, false, progress);
         }
 
         public static Type GetGameBoxType(Stream stream)
