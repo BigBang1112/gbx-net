@@ -17,25 +17,24 @@ namespace GBX.NET
             if (magic[0] != 0x78)
                 throw new Exception("Data isn't compressed with Deflate ZLIB");
 
-            if (magic[1] == 0x01)
+            switch (magic[1])
             {
-                Compression = CompressionLevel.NoCompression;
-                Debug.WriteLine("Deflate ZLIB - No compression");
-            }
-            else if (magic[1] == 0x9C)
-            {
-                Compression = CompressionLevel.DefaultCompression;
-                Debug.WriteLine("Deflate ZLIB - Default compression");
-            }
-            else if (magic[1] == 0xDA)
-            {
-                Compression = CompressionLevel.BestCompression;
-                Debug.WriteLine("Deflate ZLIB - Best compression");
-            }
-            else
-            {
-                Compression = CompressionLevel.UnknownCompression;
-                Debug.WriteLine("Deflate ZLIB - Unknown compression");
+                case 0x01:
+                    Compression = CompressionLevel.NoCompression;
+                    Debug.WriteLine("Deflate ZLIB - No compression");
+                    break;
+                case 0x9C:
+                    Compression = CompressionLevel.DefaultCompression;
+                    Debug.WriteLine("Deflate ZLIB - Default compression");
+                    break;
+                case 0xDA:
+                    Compression = CompressionLevel.BestCompression;
+                    Debug.WriteLine("Deflate ZLIB - Best compression");
+                    break;
+                default:
+                    Compression = CompressionLevel.UnknownCompression;
+                    Debug.WriteLine("Deflate ZLIB - Unknown compression");
+                    break;
             }
         }
     }
