@@ -36,7 +36,7 @@ namespace GBX.NET.Engines.Plug
                     using (var gbxr = new GameBoxReader(cs))
                     {
                         var u01 = gbxr.ReadInt32();
-                        var numSamples = gbxr.ReadInt32();
+                        var ghostLength = gbxr.ReadInt32(); // milliseconds
                         var objects = gbxr.ReadArray<object>(i =>
                         {
                             var nodeId = gbxr.ReadUInt32();
@@ -76,38 +76,100 @@ namespace GBX.NET.Engines.Plug
                         }
                         
                         var u04 = gbxr.ReadByte();
-                        var u05 = gbxr.ReadArray<int>(4);
-
-                        if (Version >= 6)
+                        while (u04 != 0)
                         {
-                            //var u06 = gbxr.ReadUInt32();
-                        }
+                            var u05 = gbxr.ReadInt32();
+                            var u06 = gbxr.ReadInt32();
+                            var u07 = gbxr.ReadInt32();
+                            var ghostLengthFinish = gbxr.ReadInt32(); // ms
 
-                        var u07 = gbxr.ReadByte();
-                        var u08 = gbxr.ReadByte();
-                        if (Version >= 2)
-                        {
-                            var u09 = gbxr.ReadByte();
-                            var u10 = gbxr.ReadArray<int>(3);
-                            var u11 = gbxr.ReadByte();
-
-                            if (Version >= 3)
+                            if (Version < 6)
                             {
-                                var u12 = gbxr.ReadByte();
+                                // temp_79f24995b2b->field_0x28 = temp_79f24995b2b->field_0xc
+                            }
+                            else
+                            {
+                                var u08 = gbxr.ReadInt32();
+                            }
 
-                                if (Version == 7)
+                            var u09 = gbxr.ReadByte();
+                            while (u09 != 0)
+                            {
+                                var u10 = gbxr.ReadInt32();
+                                var u11 = gbxr.ReadInt32();
+                                var u12 = gbxr.ReadInt32(); // Archive DoNat32 + DoData
+                                u09 = gbxr.ReadByte();
+                            }
+
+                            u04 = gbxr.ReadByte(); // Probably
+                            if (Version >= 2)
+                            {
+                                var u14 = gbxr.ReadByte();
+                                while (u14 != 0)
                                 {
-
-                                }
-
-                                if (Version >= 8)
-                                {
-                                    var u13 = gbxr.ReadInt32();
+                                    var u15 = gbxr.ReadInt32();
+                                    var u16 = gbxr.ReadInt32();
+                                    var u17 = gbxr.ReadInt32();
+                                    u14 = gbxr.ReadByte();
                                 }
                             }
                         }
 
-                        var u14 = gbxr.ReadArray<int>(5);
+                        if (Version >= 3)
+                        {
+                            var u18 = gbxr.ReadByte();
+                            while (u18 != 0)
+                            {
+                                var u19 = gbxr.ReadInt32();
+                                var u20 = gbxr.ReadInt32();
+                                var u21 = gbxr.ReadInt32();
+                                u18 = gbxr.ReadByte();
+                            }
+
+                            if (Version == 7)
+                            {
+                                var u22 = gbxr.ReadByte();
+                                while (u22 != 0)
+                                {
+                                    var u23 = gbxr.ReadInt32();
+                                    var u24 = gbxr.ReadInt32();
+                                    u22 = gbxr.ReadByte();
+                                }
+                            }
+
+                            if (Version >= 8)
+                            {
+                                var u23 = gbxr.ReadInt32();
+
+                                if (Version == 8)
+                                {
+                                    var u24 = gbxr.ReadByte();
+                                    while (u24 != 0)
+                                    {
+                                        var u25 = gbxr.ReadInt32();
+                                        var u26 = gbxr.ReadInt32();
+                                        u24 = gbxr.ReadByte();
+                                    }
+                                }
+                                else
+                                {
+                                    var u27 = gbxr.ReadByte();
+                                    while (u27 != 0)
+                                    {
+                                        var u28 = gbxr.ReadInt32();
+                                        var u29 = gbxr.ReadInt32();
+                                        var u30 = gbxr.ReadInt32();
+                                        var wat = gbxr.ReadInt32();
+                                        u27 = gbxr.ReadByte();
+                                    }
+
+                                    if (Version >= 10)
+                                    {
+                                        var period = gbxr.ReadInt32();
+                                    }
+                                }
+                            }
+                        }
                     }
                 });
             }

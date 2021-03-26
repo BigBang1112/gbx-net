@@ -454,7 +454,7 @@ namespace GBX.NET.Engines.Game
                 {
                     n.RecordingContext = rw.String(n.recordingContext);
 
-                    if(Version < 5)
+                    if (Version < 5)
                     {
                         // TODO
                     }
