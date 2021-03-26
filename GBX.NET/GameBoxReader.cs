@@ -210,7 +210,11 @@ namespace GBX.NET
         /// <returns>An array of <typeparamref name="T"/>.</returns>
         public T[] ReadArray<T>(Func<int, T> forLoop)
         {
-            var length = ReadInt32();
+            return ReadArray(ReadInt32(), forLoop);
+        }
+
+        public T[] ReadArray<T>(int length, Func<int, T> forLoop)
+        {
             var result = new T[length];
 
             for (var i = 0; i < length; i++)
@@ -219,15 +223,19 @@ namespace GBX.NET
             return result;
         }
 
-        internal T[] ReadArray<T>(Func<int, GameBoxReader, T> forLoop)
+        internal T[] ReadArray<T>(int length, Func<int, GameBoxReader, T> forLoop)
         {
-            var length = ReadInt32();
             var result = new T[length];
 
             for (var i = 0; i < length; i++)
                 result[i] = forLoop.Invoke(i, this);
 
             return result;
+        }
+
+        internal T[] ReadArray<T>(Func<int, GameBoxReader, T> forLoop)
+        {
+            return ReadArray(ReadInt32(), forLoop);
         }
 
         /// <summary>
