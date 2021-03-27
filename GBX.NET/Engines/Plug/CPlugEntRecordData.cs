@@ -6,12 +6,15 @@ using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace GBX.NET.Engines.Plug
 {
     [Node(0x0911F000)]
     public class CPlugEntRecordData : Node
     {
+        public ObservableCollection<GBX.NET.Sample> Samples { get; private set; }
+
         [Chunk(0x0911F000)]
         public class Chunk000 : Chunk<CPlugEntRecordData>
         {
@@ -26,6 +29,8 @@ namespace GBX.NET.Engines.Plug
                 UncompressedSize = r.ReadInt32();
                 CompressedSize = r.ReadInt32();
                 Data = r.ReadBytes(CompressedSize);
+
+                n.Samples = new ObservableCollection<Sample>();
 
                 // ... WIP ...
 
@@ -82,7 +87,7 @@ namespace GBX.NET.Engines.Plug
                                 };
                             });
                         }
-                        
+
                         var u04 = gbxr.ReadByte();
                         while (u04 != 0)
                         {
@@ -103,8 +108,17 @@ namespace GBX.NET.Engines.Plug
                             // Reads byte on every loop until the byte is 0, should be 1 otherwise
                             for (byte x; (x = gbxr.ReadByte()) != 0;)
                             {
-                                var u10 = gbxr.ReadInt32();
+                                var timestamp = gbxr.ReadInt32();
                                 var u12 = gbxr.ReadBytes(); // MwBuffer
+
+                                // There's bound to be a better way to detect this buffer
+                                // but the size is unique enough for now.
+                                if (u12.Length == 162)
+                                {
+                                    var sample = ReadSample(u12);
+                                    sample.Timestamp = TimeSpan.FromMilliseconds(timestamp);
+                                    n.Samples.Add(sample);
+                                }
                             }
 
                             u04 = gbxr.ReadByte();
@@ -179,6 +193,44 @@ namespace GBX.NET.Engines.Plug
                 w.Write(UncompressedSize);
                 w.Write(CompressedSize);
                 w.Write(Data, 0, Data.Length);
+            }
+
+            private Sample ReadSample(byte[] u12)
+            {
+                using (var bufMs = new MemoryStream(u12))
+                using (var bufR = new GameBoxReader(bufMs))
+                {
+                    bufMs.Seek(47, SeekOrigin.Begin); // vec3 starts at offset 47
+
+                    var pos = bufR.ReadVec3();
+                    var angle = bufR.ReadUInt16() / (double)ushort.MaxValue * Math.PI;
+                    var axisHeading = bufR.ReadInt16() / (double)short.MaxValue * Math.PI;
+                    var axisPitch = bufR.ReadInt16() / (double)short.MaxValue * Math.PI / 2;
+                    var speed = (float)Math.Exp(bufR.ReadInt16() / 1000.0);
+                    var velocityHeading = bufR.ReadSByte() / (double)sbyte.MaxValue * Math.PI;
+                    var velocityPitch = bufR.ReadSByte() / (double)sbyte.MaxValue * Math.PI / 2;
+
+                    var axis = new Vec3((float)(Math.Sin(angle) * Math.Cos(axisPitch) * Math.Cos(axisHeading)),
+                        (float)(Math.Sin(angle) * Math.Cos(axisPitch) * Math.Sin(axisHeading)),
+                        (float)(Math.Sin(angle) * Math.Sin(axisPitch)));
+
+                    var quaternion = new Quaternion(axis, (float)Math.Cos(angle));
+
+                    var velocityVector = new Vec3((float)(speed * Math.Cos(velocityPitch) * Math.Cos(velocityHeading)),
+                        (float)(speed * Math.Cos(velocityPitch) * Math.Sin(velocityHeading)),
+                        (float)(speed * Math.Sin(velocityPitch)));
+
+                    var unknownData = bufR.ReadBytes(4);
+
+                    return new Sample()
+                    {
+                        Position = pos,
+                        Rotation = quaternion,
+                        Speed = speed * 3.6f,
+                        Velocity = velocityVector,
+                        Unknown = unknownData
+                    };
+                }
             }
         }
     }
