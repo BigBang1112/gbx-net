@@ -13,7 +13,7 @@ namespace GBX.NET.Engines.Plug
     [Node(0x0911F000)]
     public class CPlugEntRecordData : Node
     {
-        public ObservableCollection<GBX.NET.Sample> Samples { get; private set; }
+        public ObservableCollection<Sample> Samples { get; private set; }
 
         [Chunk(0x0911F000)]
         public class Chunk000 : Chunk<CPlugEntRecordData>
@@ -91,7 +91,7 @@ namespace GBX.NET.Engines.Plug
                         var u04 = gbxr.ReadByte();
                         while (u04 != 0)
                         {
-                            var u05 = gbxr.ReadInt32();
+                            var bufferType = gbxr.ReadInt32();
                             var u06 = gbxr.ReadInt32();
                             var u07 = gbxr.ReadInt32();
                             var ghostLengthFinish = gbxr.ReadInt32(); // ms
@@ -111,13 +111,19 @@ namespace GBX.NET.Engines.Plug
                                 var timestamp = gbxr.ReadInt32();
                                 var u12 = gbxr.ReadBytes(); // MwBuffer
 
-                                // There's bound to be a better way to detect this buffer
-                                // but the size is unique enough for now.
-                                if (u12.Length == 162)
+                                switch (bufferType)
                                 {
-                                    var sample = ReadSample(u12);
-                                    sample.Timestamp = TimeSpan.FromMilliseconds(timestamp);
-                                    n.Samples.Add(sample);
+                                    case 4:
+                                        var sample = ReadSample(u12);
+                                        sample.Timestamp = TimeSpan.FromMilliseconds(timestamp);
+                                        n.Samples.Add(sample);
+                                        break;
+                                    case 10:
+
+                                        break;
+                                    default:
+
+                                        break;
                                 }
                             }
 
@@ -200,7 +206,7 @@ namespace GBX.NET.Engines.Plug
                 using (var bufMs = new MemoryStream(u12))
                 using (var bufR = new GameBoxReader(bufMs))
                 {
-                    bufMs.Seek(47, SeekOrigin.Begin); // vec3 starts at offset 47
+                    var unknownData = bufR.ReadBytes(47);
 
                     var pos = bufR.ReadVec3();
                     var angle = bufR.ReadUInt16() / (double)ushort.MaxValue * Math.PI;
@@ -220,7 +226,7 @@ namespace GBX.NET.Engines.Plug
                         (float)(speed * Math.Cos(velocityPitch) * Math.Sin(velocityHeading)),
                         (float)(speed * Math.Sin(velocityPitch)));
 
-                    var unknownData = bufR.ReadBytes(4);
+                    var unknownData2 = bufR.ReadBytes(4);
 
                     return new Sample()
                     {
