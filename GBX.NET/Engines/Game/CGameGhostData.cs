@@ -154,7 +154,7 @@ namespace GBX.NET.Engines.Game
                     var angle = sr.ReadUInt16() / (double)ushort.MaxValue * Math.PI;
                     var axisHeading = sr.ReadInt16() / (double)short.MaxValue * Math.PI;
                     var axisPitch = sr.ReadInt16() / (double)short.MaxValue * Math.PI / 2;
-                    var speed = (float)Math.Exp(sr.ReadInt16() / 1000f);
+                    var speed = (float)Math.Exp(sr.ReadInt16() / 1000.0);
                     var velocityHeading = sr.ReadSByte() / (double)sbyte.MaxValue * Math.PI;
                     var velocityPitch = sr.ReadSByte() / (double)sbyte.MaxValue * Math.PI / 2;
 

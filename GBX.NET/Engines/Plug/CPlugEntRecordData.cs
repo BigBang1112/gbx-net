@@ -206,7 +206,7 @@ namespace GBX.NET.Engines.Plug
                     var angle = bufR.ReadUInt16() / (double)ushort.MaxValue * Math.PI;
                     var axisHeading = bufR.ReadInt16() / (double)short.MaxValue * Math.PI;
                     var axisPitch = bufR.ReadInt16() / (double)short.MaxValue * Math.PI / 2;
-                    var speed = (float)Math.Exp(bufR.ReadInt16() / 1000f);
+                    var speed = (float)Math.Exp(bufR.ReadInt16() / 1000.0);
                     var velocityHeading = bufR.ReadSByte() / (double)sbyte.MaxValue * Math.PI;
                     var velocityPitch = bufR.ReadSByte() / (double)sbyte.MaxValue * Math.PI / 2;
 
