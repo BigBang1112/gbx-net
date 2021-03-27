@@ -42,11 +42,19 @@ namespace GBX.NET.Engines.Plug
                             var nodeId = gbxr.ReadUInt32();
                             Names.TryGetValue(nodeId, out string nodeName);
 
+                            var obj_u01 = gbxr.ReadInt32();
+                            var obj_u02 = gbxr.ReadInt32();
+                            var obj_u03 = gbxr.ReadInt32();
+                            var obj_mwbuffer = gbxr.ReadBytes();
+                            var obj_u05 = gbxr.ReadInt32();
+
                             return new
                             {
                                 id = nodeId,
                                 name = nodeName,
-                                rest = gbxr.ReadArray<int>(5)
+                                rest = new object[] {
+                                    obj_u01, obj_u02, obj_u03, obj_mwbuffer, obj_u05
+                                }
                             };
                         });
 
@@ -92,48 +100,41 @@ namespace GBX.NET.Engines.Plug
                                 var u08 = gbxr.ReadInt32();
                             }
 
-                            var u09 = gbxr.ReadByte();
-                            while (u09 != 0)
+                            // Reads byte on every loop until the byte is 0, should be 1 otherwise
+                            for (byte x; (x = gbxr.ReadByte()) != 0;)
                             {
                                 var u10 = gbxr.ReadInt32();
-                                var u11 = gbxr.ReadInt32();
-                                var u12 = gbxr.ReadInt32(); // Archive DoNat32 + DoData
-                                u09 = gbxr.ReadByte();
+                                var u12 = gbxr.ReadBytes(); // MwBuffer
                             }
 
-                            u04 = gbxr.ReadByte(); // Probably
+                            u04 = gbxr.ReadByte();
+
                             if (Version >= 2)
                             {
-                                var u14 = gbxr.ReadByte();
-                                while (u14 != 0)
+                                for (byte x; (x = gbxr.ReadByte()) != 0;)
                                 {
                                     var u15 = gbxr.ReadInt32();
                                     var u16 = gbxr.ReadInt32();
-                                    var u17 = gbxr.ReadInt32();
-                                    u14 = gbxr.ReadByte();
+                                    var u17 = gbxr.ReadBytes(); // MwBuffer
                                 }
                             }
                         }
 
                         if (Version >= 3)
                         {
-                            var u18 = gbxr.ReadByte();
-                            while (u18 != 0)
+                            for (byte x; (x = gbxr.ReadByte()) != 0;)
                             {
                                 var u19 = gbxr.ReadInt32();
                                 var u20 = gbxr.ReadInt32();
-                                var u21 = gbxr.ReadInt32();
-                                u18 = gbxr.ReadByte();
+                                var u21 = gbxr.ReadBytes(); // MwBuffer
                             }
 
                             if (Version == 7)
                             {
-                                var u22 = gbxr.ReadByte();
-                                while (u22 != 0)
+                                for (byte x; (x = gbxr.ReadByte()) != 0;)
                                 {
                                     var u23 = gbxr.ReadInt32();
-                                    var u24 = gbxr.ReadInt32();
-                                    u22 = gbxr.ReadByte();
+                                    var u24 = gbxr.ReadBytes(); // MwBuffer
                                 }
                             }
 
@@ -141,31 +142,29 @@ namespace GBX.NET.Engines.Plug
                             {
                                 var u23 = gbxr.ReadInt32();
 
-                                if (Version == 8)
+                                if (u23 != 0)
                                 {
-                                    var u24 = gbxr.ReadByte();
-                                    while (u24 != 0)
+                                    if (Version == 8)
                                     {
-                                        var u25 = gbxr.ReadInt32();
-                                        var u26 = gbxr.ReadInt32();
-                                        u24 = gbxr.ReadByte();
+                                        for (byte x; (x = gbxr.ReadByte()) != 0;)
+                                        {
+                                            var u25 = gbxr.ReadInt32();
+                                            var u26 = gbxr.ReadBytes(); // MwBuffer
+                                        }
                                     }
-                                }
-                                else
-                                {
-                                    var u27 = gbxr.ReadByte();
-                                    while (u27 != 0)
+                                    else
                                     {
-                                        var u28 = gbxr.ReadInt32();
-                                        var u29 = gbxr.ReadInt32();
-                                        var u30 = gbxr.ReadInt32();
-                                        var wat = gbxr.ReadInt32();
-                                        u27 = gbxr.ReadByte();
-                                    }
+                                        for (byte x; (x = gbxr.ReadByte()) != 0;)
+                                        {
+                                            var u28 = gbxr.ReadInt32();
+                                            var u29 = gbxr.ReadBytes(); // MwBuffer
+                                            var u30 = gbxr.ReadBytes(); // MwBuffer
+                                        }
 
-                                    if (Version >= 10)
-                                    {
-                                        var period = gbxr.ReadInt32();
+                                        if (Version >= 10)
+                                        {
+                                            var period = gbxr.ReadInt32();
+                                        }
                                     }
                                 }
                             }
