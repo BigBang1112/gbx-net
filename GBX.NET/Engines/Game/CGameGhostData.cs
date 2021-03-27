@@ -29,18 +29,18 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        public ObservableCollection<Sample> Samples { get; private set; }
+        public ObservableCollection<CGameGhostDataSample> Samples { get; private set; }
         public CompressionLevel Compression { get; set; }
 
         public CGameGhostData()
         {
-            
+
         }
 
         private void Samples_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.OldItems != null)
-                foreach (Sample sample in e.OldItems)
+                foreach (CGameGhostDataSample sample in e.OldItems)
                     sample.AssignTo(null);
 
             if (e.NewStartingIndex != Samples.Count - 1)
@@ -133,7 +133,7 @@ namespace GBX.NET.Engines.Game
                 }
                 else
                 {
-                    Samples = new ObservableCollection<Sample>();
+                    Samples = new ObservableCollection<CGameGhostDataSample>();
                     Samples.CollectionChanged += Samples_CollectionChanged;
                 }
             }
@@ -141,7 +141,7 @@ namespace GBX.NET.Engines.Game
 
         public void ReadSamples(MemoryStream ms, int numSamples, int sizePerSample)
         {
-            Samples = new ObservableCollection<Sample>();
+            Samples = new ObservableCollection<CGameGhostDataSample>();
             Samples.CollectionChanged += Samples_CollectionChanged;
 
             using (var sr = new GameBoxReader(ms))
@@ -171,7 +171,7 @@ namespace GBX.NET.Engines.Game
                     var unknownData = sr.ReadBytes(
                         sizePerSample - (int)(ms.Position - sampleProgress));
 
-                    var sample = new Sample()
+                    var sample = new CGameGhostDataSample()
                     {
                         Position = pos,
                         Rotation = quaternion,
@@ -225,18 +225,9 @@ namespace GBX.NET.Engines.Game
             return null;
         }
 
-        public class Sample
+        public class CGameGhostDataSample : Sample
         {
             private CGameGhostData owner;
-
-            public TimeSpan? Timestamp { get; private set; }
-
-            public Vec3 Position { get; set; }
-            public Quaternion Rotation { get; set; }
-            public Vec3 PitchYawRoll => Rotation.ToPitchYawRoll();
-            public float Speed { get; set; }
-            public Vec3 Velocity { get; set; }
-            public byte[] Unknown { get; set; }
 
             internal void AssignTo(CGameGhostData ghostData)
             {
