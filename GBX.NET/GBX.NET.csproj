@@ -5,7 +5,7 @@
 		<Description>Open-source GBX format parser library with writing possibilities for .NET.</Description>
 		<Authors>BigBang1112</Authors>
 		<PackageLicenseExpression></PackageLicenseExpression>
-		<Version>0.10.0</Version>
+		<Version>1.0.0</Version>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Copyright />
@@ -13,7 +13,7 @@
 		<PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk</PackageTags>
 		<RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
-		<PackageReleaseNotes>64bit support for reading, parse support for streams that don't seek, linear interpolation of samples, analog input data</PackageReleaseNotes>
+		<PackageReleaseNotes></PackageReleaseNotes>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
