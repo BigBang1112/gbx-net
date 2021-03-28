@@ -140,9 +140,9 @@ namespace GBX.NET
 
             uint? previousChunk = null;
 
-            while (r.BaseStream.Position < r.BaseStream.Length)
+            while (!r.BaseStream.CanSeek || r.BaseStream.Position < r.BaseStream.Length)
             {
-                if (r.BaseStream.Position + 4 > r.BaseStream.Length)
+                if (r.BaseStream.CanSeek && r.BaseStream.Position + 4 > r.BaseStream.Length)
                 {
                     Debug.WriteLine($"Unexpected end of the stream: {r.BaseStream.Position}/{r.BaseStream.Length}");
                     var bytes = r.ReadBytes((int)(r.BaseStream.Length - r.BaseStream.Position));
@@ -161,7 +161,10 @@ namespace GBX.NET
                 }
                 else
                 {
-                    var logChunk = $"[{node.ClassName}] 0x{chunkID:X8} ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})";
+                    var logChunk = $"[{node.ClassName}] 0x{chunkID:X8}";
+                    if (r.BaseStream.CanSeek)
+                        logChunk += $" ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})";
+
                     if (node.Body?.GBX.ClassID.HasValue == true && Remap(node.Body.GBX.ClassID.Value) == node.ID)
                         Log.Write(logChunk);
                     else
