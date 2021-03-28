@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -77,7 +76,7 @@ namespace GBX.NET.Engines.GameData
         }
 
         [NodeMember]
-        public Task<Bitmap> Icon { get; set; }
+        public Color[,] Icon { get; set; }
 
         [NodeMember]
         public Node IconFid { get; set; }
@@ -129,20 +128,6 @@ namespace GBX.NET.Engines.GameData
         {
             get => isAdvanced;
             set => isAdvanced = value;
-        }
-
-        #endregion
-
-        #region Methods
-
-        public void ExportIcon(Stream stream, ImageFormat format)
-        {
-            Icon.Result.Save(stream, format);
-        }
-
-        public void ExportIcon(string fileName, ImageFormat format)
-        {
-            Icon.Result.Save(fileName, format);
         }
 
         #endregion
@@ -206,15 +191,22 @@ namespace GBX.NET.Engines.GameData
 
                 var iconData = r.ReadBytes(width * height * 4);
 
-                n.Icon = Task.Run(() =>
+                n.Icon = new Color[width, height];
+
+                for (var y = 0; y < height; y++)
                 {
-                    var bitmap = new Bitmap(width, height);
-                    var bitmapData = bitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format32bppPArgb);
-                    Marshal.Copy(iconData, 0, bitmapData.Scan0, iconData.Length);
-                    bitmap.UnlockBits(bitmapData);
-                    bitmap.RotateFlip(RotateFlipType.RotateNoneFlipY);
-                    return bitmap;
-                });
+                    for (var x = 0; x < width; x++)
+                    {
+                        var pos = (y + 1) * (x + 1) * 4 - 1;
+
+                        var red = iconData[pos];
+                        var green = iconData[pos + 1];
+                        var blue = iconData[pos + 2];
+                        var alpha = iconData[pos + 3];
+
+                        n.Icon[x, y] = Color.FromArgb(alpha, red, green, blue);
+                    }
+                }
             }
         }
 
