@@ -202,6 +202,7 @@ namespace GBX.NET.Engines.Game
         private float? thumbnailFOV;
         private List<CGameCtnAnchoredObject> anchoredObjects;
         private CScriptTraitsMetadata scriptMetadata;
+        private List<List<byte[]>> lightmapFrames;
         private Task<CHmsLightMapCache> lightmapCache;
         private Task<CGameCtnZoneGenealogy[]> genealogies;
         private string objectiveTextAuthor;
@@ -912,6 +913,20 @@ namespace GBX.NET.Engines.Game
             {
                 DiscoverChunk<Chunk03043036>();
                 thumbnailFOV = value;
+            }
+        }
+
+        public List<List<byte[]>> LightmapFrames
+        {
+            get
+            {
+                DiscoverChunk<Chunk0304303D>();
+                return lightmapFrames;
+            }
+            set
+            {
+                DiscoverChunk<Chunk0304303D>();
+                lightmapFrames = value;
             }
         }
 
@@ -2800,10 +2815,10 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x03D skippable chunk (lightmaps)
         /// </summary>
-        [IgnoreChunk]
         [Chunk(0x0304303D, "lightmaps")]
         public class Chunk0304303D : SkippableChunk<CGameCtnChallenge>
         {
+            private bool u01;
             private int version = 4;
 
             /// <summary>
@@ -2817,42 +2832,45 @@ namespace GBX.NET.Engines.Game
 
             public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                unknownW.Write(r.ReadBoolean());
+                u01 = r.ReadBoolean();
                 version = r.ReadInt32();
 
-                int frames = 1;
                 if (version >= 5)
-                    frames = r.ReadInt32();
+                {
+                    var frameCount = r.ReadInt32();
+                    n.lightmapFrames = new List<List<byte[]>>(frameCount);
+
+                    for (var i = 0; i < frameCount; i++)
+                        n.lightmapFrames.Add(new List<byte[]>());
+                }
+                else
+                {
+                    n.lightmapFrames = new List<List<byte[]>>
+                    {
+                        new List<byte[]>()
+                    };
+                }
 
                 if (version >= 2)
                 {
-                    int size = 0;
-
-                    for (var i = 0; i < frames; i++)
+                    for (var i = 0; i < n.lightmapFrames.Count; i++)
                     {
-                        size = r.ReadInt32();
-                        var image = r.ReadBytes(size);
+                        var frame = n.lightmapFrames[i];
+
+                        frame.Add(r.ReadBytes());
 
                         if (version >= 3)
                         {
-                            var size1 = r.ReadInt32();
-                            if (size1 > 0)
-                            {
-                                var image1 = r.ReadBytes(size1);
-                            }
+                            frame.Add(r.ReadBytes());
                         }
 
                         if (version >= 6)
                         {
-                            var size2 = r.ReadInt32();
-                            if (size2 > 0)
-                            {
-                                var image2 = r.ReadBytes(size2);
-                            }
+                            frame.Add(r.ReadBytes());
                         }
                     }
 
-                    if (size != 0)
+                    if (n.lightmapFrames.Any(x => x.Any(y => y.Length > 0)))
                     {
                         var uncompressedSize = r.ReadInt32();
                         var compressedSize = r.ReadInt32();
@@ -2861,13 +2879,10 @@ namespace GBX.NET.Engines.Game
                         n.lightmapCache = Task.Run(() =>
                         {
                             using (var ms = new MemoryStream(data))
-                            using (var deflate = new DeflateStream(ms, CompressionMode.Decompress))
+                            using (var deflate = new CompressedStream(ms, CompressionMode.Decompress))
                             using (var gbxr = new GameBoxReader(deflate))
                             {
-                                var magic = new byte[2];
-                                ms.Read(magic, 0, 2); // Needed for DeflateStream to work
-
-                                return Parse<CHmsLightMapCache>(gbxr);
+                                return Parse<CHmsLightMapCache>(gbxr, 0x06022000);
                             }
                         });
                     }
