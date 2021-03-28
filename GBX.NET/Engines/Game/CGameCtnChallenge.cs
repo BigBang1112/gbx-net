@@ -945,6 +945,9 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
+        public bool HasLightmaps => lightmapFrames.Count > 0;
+
+        [NodeMember]
         public List<CGameCtnAnchoredObject> AnchoredObjects
         {
             get
@@ -2819,6 +2822,12 @@ namespace GBX.NET.Engines.Game
         {
             private bool u01;
             private int version = 4;
+
+            public bool U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
 
             /// <summary>
             /// Version of the chunk.
