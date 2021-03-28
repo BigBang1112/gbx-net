@@ -2115,8 +2115,6 @@ namespace GBX.NET.Engines.Game
                 set => version = value;
             }
 
-            MemoryStream msT;
-
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
