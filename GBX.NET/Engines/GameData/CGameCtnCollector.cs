@@ -189,7 +189,7 @@ namespace GBX.NET.Engines.GameData
                 var width = r.ReadInt16();
                 var height = r.ReadInt16();
 
-                var iconData = r.ReadBytes(width * height * 4);
+                var iconData = r.ReadArray<int>(width * height);
 
                 n.Icon = new Color[width, height];
 
@@ -197,14 +197,24 @@ namespace GBX.NET.Engines.GameData
                 {
                     for (var x = 0; x < width; x++)
                     {
-                        var pos = (y + 1) * (x + 1) * 4 - 1;
+                        n.Icon[width - 1 - x, height - 1 - y] = Color.FromArgb(iconData[y * width + x]);
+                    }
+                }
+            }
 
-                        var red = iconData[pos];
-                        var green = iconData[pos + 1];
-                        var blue = iconData[pos + 2];
-                        var alpha = iconData[pos + 3];
+            public override void Write(CGameCtnCollector n, GameBoxWriter w, GameBoxReader unknownR)
+            {
+                var width = (short)n.Icon.GetLength(0);
+                var height = (short)n.Icon.GetLength(1);
 
-                        n.Icon[x, y] = Color.FromArgb(alpha, red, green, blue);
+                w.Write(width);
+                w.Write(height);
+
+                for (var y = 0; y < height; y++)
+                {
+                    for (var x = 0; x < width; x++)
+                    {
+                        w.Write(n.Icon[width - 1 - x, height - 1 - y].ToArgb());
                     }
                 }
             }
