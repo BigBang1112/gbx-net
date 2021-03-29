@@ -18,6 +18,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\GBX.NET.Imaging\GBX.NET.Imaging.csproj" />
 		<ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />
 	</ItemGroup>
 
