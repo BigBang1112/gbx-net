@@ -1154,7 +1154,7 @@ namespace GBX.NET.Engines.Game
         #region Methods
 
         /// <summary>
-        /// Exports the map's JPEG thumbnail.
+        /// Exports the map's thumbnail as JPEG.
         /// </summary>
         /// <param name="stream">Stream to export to.</param>
         public void ExportThumbnail(Stream stream)
@@ -1164,7 +1164,7 @@ namespace GBX.NET.Engines.Game
         }
 
         /// <summary>
-        /// Exports the map's JPEG thumbnail.
+        /// Exports the map's thumbnail as JPEG.
         /// </summary>
         /// <param name="fileName">File to export to.</param>
         public void ExportThumbnail(string fileName)
