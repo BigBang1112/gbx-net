@@ -1,4 +1,5 @@
 ﻿using GBX.NET;
+using GBX.NET.Imaging;
 using GBX.NET.Engines.Game;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
@@ -140,7 +141,7 @@ namespace IslandConverter
                                     item.ImageKey = "";
                                 else
                                 {
-                                    lvMaps.LargeImageList.Images.Add(mapUid, gbx.MainNode.Thumbnail.Result);
+                                    lvMaps.LargeImageList.Images.Add(mapUid, gbx.MainNode.GetThumbnailBitmap());
                                     item.ImageKey = mapUid;
                                 }
 
@@ -318,7 +319,7 @@ namespace IslandConverter
                         lBlockRange.Text = "Block range: " + blockRange;
 
                         if(map.Thumbnail != null)
-                            pbThumbnail.Image = map.Thumbnail.Result;
+                            pbThumbnail.Image = map.GetThumbnailBitmap();
                     }
                 }
             }

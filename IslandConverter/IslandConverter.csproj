@@ -3,11 +3,10 @@
 		<OutputType>Exe</OutputType>
 		<TargetFrameworks>net452</TargetFrameworks>
 		<Version>1.0.0</Version>
-		<PackageLicenseExpression></PackageLicenseExpression>
+		<PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
 		<Authors>BigBang1112</Authors>
 		<Product>Island Converter</Product>
 		<ApplicationIcon>icon.ico</ApplicationIcon>
-		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<RepositoryUrl>https://github.com/BigBang1112/gbx-net/IslandConverter</RepositoryUrl>
 		<PlatformTarget>x86</PlatformTarget>
 		<Platforms>x86</Platforms>
@@ -19,9 +18,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="..\GBX.NET\LICENSE">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
+		<ProjectReference Include="..\GBX.NET.Imaging\GBX.NET.Imaging.csproj" />
 		<ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />
 	</ItemGroup>
 

@@ -9,6 +9,9 @@ using System.Text;
 
 namespace GBX.NET
 {
+    /// <summary>
+    /// Reads data types from GameBox serialization.
+    /// </summary>
     public class GameBoxReader : BinaryReader
     {
         public ILookbackable Lookbackable { get; internal set; }

@@ -20,7 +20,7 @@ namespace GBX.NET
     /// <summary>
     /// A known serialized GameBox node with additional attributes. This class can represent deserialized .Gbx file.
     /// </summary>
-    /// <typeparam name="T">The main node of the GBX.</typeparam>
+    /// <typeparam name="T">The main node of the GBX. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
     public class GameBox<T> : GameBox where T : Node
     {
         /// <summary>
@@ -149,7 +149,7 @@ namespace GBX.NET
             MainNode.DiscoverAllChunks();
         }
 
-        public override bool ProcessHeader(IProgress<GameBoxReadProgress> progress)
+        protected override bool ProcessHeader(IProgress<GameBoxReadProgress> progress)
         {
             if (ClassID != typeof(T).GetCustomAttribute<NodeAttribute>().ID)
             {
@@ -213,7 +213,7 @@ namespace GBX.NET
             return true;
         }
 
-        public void Write(GameBoxWriter w, ClassIDRemap remap)
+        internal void Write(GameBoxWriter w, ClassIDRemap remap)
         {
             using (MemoryStream ms = new MemoryStream())
             using (GameBoxWriter bodyW = new GameBoxWriter(ms))
@@ -243,7 +243,7 @@ namespace GBX.NET
             }
         }
 
-        public void Write(GameBoxWriter w)
+        internal void Write(GameBoxWriter w)
         {
             Write(w, ClassIDRemap.Latest);
         }
@@ -371,7 +371,7 @@ namespace GBX.NET
                 HeaderInfo = headerInfo;
         }
 
-        public bool ReadHeader(GameBoxReader reader, IProgress<GameBoxReadProgress> progress)
+        internal bool ReadHeader(GameBoxReader reader, IProgress<GameBoxReadProgress> progress)
         {
             var success = HeaderInfo.Read(reader);
 
@@ -380,7 +380,7 @@ namespace GBX.NET
             return success;
         }
 
-        public virtual bool ProcessHeader(IProgress<GameBoxReadProgress> progress)
+        protected virtual bool ProcessHeader(IProgress<GameBoxReadProgress> progress)
         {
             return true; // There are no header chunks to proccess in an unknown GBX
         }
@@ -451,7 +451,7 @@ namespace GBX.NET
             return true;
         }
 
-        public static GameBox ParseHeader(GameBoxReader reader, IProgress<GameBoxReadProgress> progress = null)
+        private static GameBox ParseHeader(GameBoxReader reader, IProgress<GameBoxReadProgress> progress = null)
         {
             var headerInfo = new GameBoxHeaderInfo();
             headerInfo.Read(reader);
@@ -479,13 +479,24 @@ namespace GBX.NET
 
             return null;
         }
-
+        /// <summary>
+        /// Parses only the header of the GBX.
+        /// </summary>
+        /// <param name="stream">Stream to read GBX format from.</param>
+        /// <param name="progress">Callback that reports any read progress.</param>
+        /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
         public static GameBox ParseHeader(Stream stream, IProgress<GameBoxReadProgress> progress = null)
         {
             using (var r = new GameBoxReader(stream))
                 return ParseHeader(r, progress);
         }
 
+        /// <summary>
+        /// Parses only the header of the GBX.
+        /// </summary>
+        /// <param name="fileName">Relative or absolute file path.</param>
+        /// <param name="progress">Callback that reports any read progress.</param>
+        /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
         public static GameBox ParseHeader(string fileName, IProgress<GameBoxReadProgress> progress = null)
         {
             using (var fs = File.OpenRead(fileName))
@@ -496,6 +507,14 @@ namespace GBX.NET
             }
         }
 
+        /// <summary>
+        /// Parses only the header of the GBX.
+        /// </summary>
+        /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an exception. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
+        /// <param name="stream">Stream to read GBX format from.</param>
+        /// <param name="progress">Callback that reports any read progress.</param>
+        /// <returns>A GameBox with specified main node type.</returns>
+        /// <exception cref="InvalidCastException"/>
         public static GameBox<T> ParseHeader<T>(Stream stream, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
             GameBox<T> gbx = new GameBox<T>();
@@ -507,6 +526,14 @@ namespace GBX.NET
             return null;
         }
 
+        /// <summary>
+        /// Parses only the header of the GBX.
+        /// </summary>
+        /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an exception. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
+        /// <param name="fileName">Relative or absolute file path.</param>
+        /// <param name="progress">Callback that reports any read progress.</param>
+        /// <returns>A GameBox with specified main node type.</returns>
+        /// <exception cref="InvalidCastException"/>
         public static GameBox<T> ParseHeader<T>(string fileName, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
             using (var fs = File.OpenRead(fileName))
@@ -520,12 +547,13 @@ namespace GBX.NET
         /// <summary>
         /// Easily parses GBX format.
         /// </summary>
-        /// <typeparam name="T">A known type of the GBX file. Unmatching type will throw an exception.</typeparam>
+        /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an exception. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
         /// <param name="stream">Stream to read GBX format from.</param>
         /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
         /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with specified main node type.</returns>
+        /// <exception cref="InvalidCastException"/>
         public static GameBox<T> Parse<T>(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
             var gbx = ParseHeader<T>(stream, progress);
@@ -542,10 +570,11 @@ namespace GBX.NET
         /// <summary>
         /// Easily parses GBX format.
         /// </summary>
-        /// <typeparam name="T">A known type of the GBX file. Unmatching type will throw an exception.</typeparam>
+        /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an exception. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
         /// <param name="stream">Stream to read GBX format from.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with specified main node type.</returns>
+        /// <exception cref="InvalidCastException"/>
         public static GameBox<T> Parse<T>(Stream stream, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
             return Parse<T>(stream, false, progress);
@@ -554,7 +583,7 @@ namespace GBX.NET
         /// <summary>
         /// Easily parses a GBX file.
         /// </summary>
-        /// <typeparam name="T">A known type of the GBX file. Unmatching type will throw an exception.</typeparam>
+        /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an exception. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
         /// <param name="fileName">Relative or absolute file path.</param>
         /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
         /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
@@ -575,7 +604,7 @@ namespace GBX.NET
         /// <summary>
         /// Easily parses a GBX file.
         /// </summary>
-        /// <typeparam name="T">A known type of the GBX file. Unmatching type will throw an exception.</typeparam>
+        /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an exception. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
         /// <param name="fileName">Relative or absolute file path.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with specified main node type.</returns>
@@ -587,42 +616,6 @@ namespace GBX.NET
         public static GameBox<T> Parse<T>(string fileName, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
             return Parse<T>(fileName, false, progress);
-        }
-
-        public static uint? ReadClassID(GameBoxReader reader)
-        {
-            uint? classID = null;
-
-            if (reader.ReadString(Magic.Length) != Magic) // If the file doesn't have GBX magic
-                return null;
-
-            var version = reader.ReadInt16(); // Version
-
-            if (version >= 3)
-            {
-                reader.ReadByte();
-                reader.ReadByte();
-                reader.ReadByte();
-
-                if (version >= 4)
-                    reader.ReadByte();
-
-                classID = reader.ReadUInt32();
-            }
-
-            return classID;
-        }
-
-        public static uint? ReadClassID(Stream stream)
-        {
-            using (GameBoxReader r = new GameBoxReader(stream))
-                return ReadClassID(r);
-        }
-
-        public static uint? ReadClassID(string fileName)
-        {
-            using (var fs = File.OpenRead(fileName))
-                return ReadClassID(fs);
         }
 
         /// <summary>
@@ -686,7 +679,7 @@ namespace GBX.NET
 
                 var gbxType = gbx.GetType();
 
-                if(gbxType.IsGenericType && gbxType.GetGenericTypeDefinition() == typeof(GameBox<>))
+                if (gbxType.IsGenericType && gbxType.GetGenericTypeDefinition() == typeof(GameBox<>))
                 {
                     var bodyProperty = gbxType.GetProperty("Body");
                     var readBodyMethod = gbxType.GetMethod("ReadBody", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -721,15 +714,77 @@ namespace GBX.NET
             return Parse(stream, false, progress);
         }
 
-        public static Type GetGameBoxType(Stream stream)
+        private static uint? ReadNodeID(GameBoxReader reader)
         {
-            using (var r = new GameBoxReader(stream))
-                return GetGameBoxType(r);
+            uint? classID = null;
+
+            if (reader.ReadString(Magic.Length) != Magic) // If the file doesn't have GBX magic
+                return null;
+
+            var version = reader.ReadInt16(); // Version
+
+            if (version >= 3)
+            {
+                reader.ReadByte();
+                reader.ReadByte();
+                reader.ReadByte();
+
+                if (version >= 4)
+                    reader.ReadByte();
+
+                classID = reader.ReadUInt32();
+            }
+
+            return classID;
         }
 
-        public static Type GetGameBoxType(GameBoxReader reader)
+        /// <summary>
+        /// Reads the GBX node ID the quickest possible way.
+        /// </summary>
+        /// <param name="stream">Stream to read from.</param>
+        /// <returns>ID of the main node presented in GBX. Null if not a GBX stream.</returns>
+        public static uint? ReadNodeID(Stream stream)
         {
-            var classID = ReadClassID(reader);
+            using (GameBoxReader r = new GameBoxReader(stream))
+                return ReadNodeID(r);
+        }
+
+        /// <summary>
+        /// Reads the GBX node ID the quickest possible way.
+        /// </summary>
+        /// <param name="fileName">File to read from.</param>
+        /// <returns>ID of the main node presented in GBX. Null if not a GBX stream.</returns>
+        public static uint? ReadNodeID(string fileName)
+        {
+            using (var fs = File.OpenRead(fileName))
+                return ReadNodeID(fs);
+        }
+
+        /// <summary>
+        /// Reads the type of the main node from GBX file.
+        /// </summary>
+        /// <param name="fileName">File to read from.</param>
+        /// <returns>Type of the main node.</returns>
+        public static Type ReadNodeType(string fileName)
+        {
+            using (var fs = File.OpenRead(fileName))
+                return ReadNodeType(fs);
+        }
+
+        /// <summary>
+        /// Reads the type of the main node from GBX stream.
+        /// </summary>
+        /// <param name="stream">Stream to read from.</param>
+        /// <returns>Type of the main node.</returns>
+        public static Type ReadNodeType(Stream stream)
+        {
+            using (var r = new GameBoxReader(stream))
+                return ReadNodeType(r);
+        }
+
+        private static Type ReadNodeType(GameBoxReader reader)
+        {
+            var classID = ReadNodeID(reader);
 
             if (classID.HasValue)
             {
