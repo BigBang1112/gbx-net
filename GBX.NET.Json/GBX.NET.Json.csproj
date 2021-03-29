@@ -13,6 +13,9 @@
 		<Authors>BigBang1112</Authors>
 		<PackageReleaseNotes>Compatiblity change to .NET Framework 4.5</PackageReleaseNotes>
 		<Platforms>AnyCPU;x64;x86</Platforms>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+		<NoWarn>1591</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>

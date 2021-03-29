@@ -7,6 +7,9 @@ using GBX.NET.Engines.Game;
 
 namespace GBX.NET.Imaging
 {
+    /// <summary>
+    /// Imaging extensions for <see cref="CGameCtnChallenge"/>.
+    /// </summary>
     public static class CGameCtnChallengeExtensions
     {
         /// <summary>

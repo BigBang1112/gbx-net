@@ -8,6 +8,9 @@ using GBX.NET.Engines.GameData;
 
 namespace GBX.NET.Imaging
 {
+    /// <summary>
+    /// Imaging extensions for <see cref="CGameCtnCollector"/>.
+    /// </summary>
     public static class CGameCtnCollectorExtensions
     {
         /// <summary>
