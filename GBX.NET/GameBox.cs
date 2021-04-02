@@ -467,7 +467,7 @@ namespace GBX.NET
                     var gbxType = typeof(GameBox<>).MakeGenericType(availableClass);
                     gbx = (GameBox)Activator.CreateInstance(gbxType, headerInfo);
 
-                    var processHeaderMethod = gbxType.GetMethod(nameof(ProcessHeader));
+                    var processHeaderMethod = gbxType.GetMethod(nameof(ProcessHeader), BindingFlags.Instance | BindingFlags.NonPublic);
                     processHeaderMethod.Invoke(gbx, new object[] { progress });
                 }
                 else
