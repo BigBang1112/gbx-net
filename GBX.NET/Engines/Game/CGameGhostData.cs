@@ -146,7 +146,7 @@ namespace GBX.NET.Engines.Game
             {
                 for (var i = 0; i < numSamples; i++)
                 {
-                    CGameGhostDataSample sample;
+                    CGameGhostDataSample sample = new CGameGhostDataSample();
 
                     var sampleProgress = (int)ms.Position;
 
@@ -172,13 +172,11 @@ namespace GBX.NET.Engines.Game
                         case 0x0A02B000: // CSceneVehicleCar
                             var transform02B = r.ReadTransform();
 
-                            sample = new CGameGhostDataSample()
-                            {
-                                Position = transform02B.position,
-                                Rotation = transform02B.rotation,
-                                Speed = transform02B.speed * 3.6f,
-                                Velocity = transform02B.velocity
-                            };
+                            sample.Position = transform02B.position;
+                            sample.Rotation = transform02B.rotation;
+                            sample.Speed = transform02B.speed * 3.6f;
+                            sample.Velocity = transform02B.velocity;
+
                             break;
                         case 0x0A401000: // CSceneMobilCharVis
                             var bufferType = r.ReadByte();
@@ -191,19 +189,15 @@ namespace GBX.NET.Engines.Game
 
                                     var transform401 = r.ReadTransform();
 
-                                    sample = new CGameGhostDataSample()
-                                    {
-                                        Position = transform401.position,
-                                        Rotation = transform401.rotation,
-                                        Speed = transform401.speed * 3.6f,
-                                        Velocity = transform401.velocity
-                                    };
+                                    sample.Position = transform401.position;
+                                    sample.Rotation = transform401.rotation;
+                                    sample.Speed = transform401.speed * 3.6f;
+                                    sample.Velocity = transform401.velocity;
+
                                     break;
                                 case 1:
-                                    sample = new CGameGhostDataSample();
                                     break;
                                 default:
-                                    sample = new CGameGhostDataSample();
                                     break;
                             }
 
@@ -211,10 +205,7 @@ namespace GBX.NET.Engines.Game
 
                             break;
                         default:
-                            sample = new CGameGhostDataSample()
-                            {
-                                BufferType = 255
-                            };
+                            sample.BufferType = null;
                             break;
                     }
 
@@ -222,7 +213,7 @@ namespace GBX.NET.Engines.Game
 
                     if (sizePerSample != -1) // If the sample size is constant
                     {
-                        var moreUnknownData = unknownData = r.ReadBytes(sizePerSample - sampleProgress);
+                        var moreUnknownData = r.ReadBytes(sizePerSample - sampleProgress);
                         Buffer.BlockCopy(moreUnknownData, 0, unknownData, sampleProgress, moreUnknownData.Length);
                     }
                     else if (sizesPerSample != null) // If sample sizes are different

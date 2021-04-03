@@ -13,7 +13,7 @@ namespace GBX.NET.Engines.Plug
     [Node(0x0911F000)]
     public class CPlugEntRecordData : Node
     {
-        public ObservableCollection<Sample> Samples { get; private set; }
+        public Task<ObservableCollection<Sample>> Samples { get; private set; }
 
         [Chunk(0x0911F000)]
         public class Chunk000 : Chunk<CPlugEntRecordData>
@@ -30,12 +30,10 @@ namespace GBX.NET.Engines.Plug
                 CompressedSize = r.ReadInt32();
                 Data = r.ReadBytes(CompressedSize);
 
-                n.Samples = new ObservableCollection<Sample>();
-
-                // ... WIP ...
-
-                Task.Run(() =>
+                n.Samples = Task.Run(() =>
                 {
+                    var samples = new ObservableCollection<Sample>();
+
                     using (var ms = new MemoryStream(Data))
                     using (var cs = new CompressedStream(ms, CompressionMode.Decompress))
                     using (var gbxr = new GameBoxReader(cs))
@@ -111,21 +109,70 @@ namespace GBX.NET.Engines.Plug
                             for (byte x; (x = gbxr.ReadByte()) != 0;)
                             {
                                 var timestamp = gbxr.ReadInt32();
-                                var u12 = gbxr.ReadBytes(); // MwBuffer
+                                var buffer = gbxr.ReadBytes(); // MwBuffer
 
-                                switch (bufferType)
+                                if (buffer.Length > 0)
                                 {
-                                    case 4:
-                                        var sample = ReadSample(u12);
-                                        sample.Timestamp = TimeSpan.FromMilliseconds(timestamp);
-                                        n.Samples.Add(sample);
-                                        break;
-                                    case 10:
+                                    var unknownData = new byte[buffer.Length];
 
-                                        break;
-                                    default:
+                                    using (var bufMs = new MemoryStream(buffer))
+                                    using (var bufR = new GameBoxReader(bufMs))
+                                    {
+                                        var sampleProgress = (int)bufMs.Position;
 
-                                        break;
+                                        Sample sample = new Sample()
+                                        {
+                                            BufferType = (byte)bufferType
+                                        };
+
+                                        switch (bufferType)
+                                        {
+                                            case 0:
+                                                break;
+                                            case 2:
+                                                var buf2unknownData = bufR.ReadBytes(5);
+                                                Buffer.BlockCopy(buf2unknownData, 0, unknownData, 0, buf2unknownData.Length);
+
+                                                var buf2transform = bufR.ReadTransform();
+
+                                                sample.Timestamp = TimeSpan.FromMilliseconds(timestamp);
+                                                sample.Position = buf2transform.position;
+                                                sample.Rotation = buf2transform.rotation;
+                                                sample.Speed = buf2transform.speed * 3.6f;
+                                                sample.Velocity = buf2transform.velocity;
+
+                                                break;
+                                            case 4:
+                                                var buf4unknownData = bufR.ReadBytes(47);
+                                                Buffer.BlockCopy(buf4unknownData, 0, unknownData, 0, buf4unknownData.Length);
+
+                                                var buf4transform = bufR.ReadTransform();
+
+                                                var buf4unknownData2 = bufR.ReadBytes(4);
+
+                                                sample.Timestamp = TimeSpan.FromMilliseconds(timestamp);
+                                                sample.Position = buf4transform.position;
+                                                sample.Rotation = buf4transform.rotation;
+                                                sample.Speed = buf4transform.speed * 3.6f;
+                                                sample.Velocity = buf4transform.velocity;
+                                                sample.Unknown = buf4unknownData;
+
+                                                break;
+                                            case 10:
+                                                break;
+                                            default:
+                                                break;
+                                        }
+
+                                        sampleProgress = (int)(bufMs.Position - sampleProgress);
+
+                                        var moreUnknownData = bufR.ReadBytes((int)bufMs.Length - sampleProgress);
+                                        Buffer.BlockCopy(moreUnknownData, 0, unknownData, sampleProgress, moreUnknownData.Length);
+
+                                        sample.Unknown = unknownData;
+
+                                        samples.Add(sample);
+                                    }
                                 }
                             }
 
@@ -192,6 +239,8 @@ namespace GBX.NET.Engines.Plug
                             }
                         }
                     }
+
+                    return samples;
                 });
             }
 
@@ -201,28 +250,6 @@ namespace GBX.NET.Engines.Plug
                 w.Write(UncompressedSize);
                 w.Write(CompressedSize);
                 w.Write(Data, 0, Data.Length);
-            }
-
-            private Sample ReadSample(byte[] u12)
-            {
-                using (var bufMs = new MemoryStream(u12))
-                using (var bufR = new GameBoxReader(bufMs))
-                {
-                    var unknownData = bufR.ReadBytes(47);
-
-                    var transform = bufR.ReadTransform();
-
-                    var unknownData2 = bufR.ReadBytes(4);
-
-                    return new Sample()
-                    {
-                        Position = transform.position,
-                        Rotation = transform.rotation,
-                        Speed = transform.speed * 3.6f,
-                        Velocity = transform.velocity,
-                        Unknown = unknownData
-                    };
-                }
             }
         }
     }

@@ -13,7 +13,7 @@ namespace GBX.NET
     {
         public TimeSpan? Timestamp { get; internal set; }
 
-        public byte BufferType { get; set; }
+        public byte? BufferType { get; set; }
         public Vec3 Position { get; set; }
         public Quaternion Rotation { get; set; }
         public Vec3 PitchYawRoll => Rotation.ToPitchYawRoll();
@@ -23,14 +23,14 @@ namespace GBX.NET
 
         public override string ToString()
         {
-            if (BufferType == 0)
+            if (BufferType == 0 || BufferType == 2)
             {
                 if (Timestamp.HasValue)
                     return $"Sample: {Timestamp.Value.ToStringTM()} {Position}";
                 return $"Sample: {Position}";
             }
 
-            return $"Sample: {BufferType}";
+            return $"Sample: {BufferType.ToString() ?? "unknown"}";
         }
     }
 }
