@@ -211,7 +211,10 @@ namespace GBX.NET.Engines.Game
 
                             break;
                         default:
-                            sample = null;
+                            sample = new CGameGhostDataSample()
+                            {
+                                BufferType = 255
+                            };
                             break;
                     }
 
