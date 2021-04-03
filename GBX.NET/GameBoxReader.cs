@@ -331,6 +331,29 @@ namespace GBX.NET
             return TimeSpan.FromMilliseconds(time);
         }
 
+        public (Vec3 position, Quaternion rotation, float speed, Vec3 velocity) ReadTransform()
+        {
+            var pos = ReadVec3();
+            var angle = ReadUInt16() / (double)ushort.MaxValue * Math.PI;
+            var axisHeading = ReadInt16() / (double)short.MaxValue * Math.PI;
+            var axisPitch = ReadInt16() / (double)short.MaxValue * Math.PI / 2;
+            var speed = (float)Math.Exp(ReadInt16() / 1000.0);
+            var velocityHeading = ReadSByte() / (double)sbyte.MaxValue * Math.PI;
+            var velocityPitch = ReadSByte() / (double)sbyte.MaxValue * Math.PI / 2;
+
+            var axis = new Vec3((float)(Math.Sin(angle) * Math.Cos(axisPitch) * Math.Cos(axisHeading)),
+                (float)(Math.Sin(angle) * Math.Cos(axisPitch) * Math.Sin(axisHeading)),
+                (float)(Math.Sin(angle) * Math.Sin(axisPitch)));
+
+            var quaternion = new Quaternion(axis, (float)Math.Cos(angle));
+
+            var velocity = new Vec3((float)(speed * Math.Cos(velocityPitch) * Math.Cos(velocityHeading)),
+                (float)(speed * Math.Cos(velocityPitch) * Math.Sin(velocityHeading)),
+                (float)(speed * Math.Sin(velocityPitch)));
+
+            return (pos, quaternion, speed, velocity);
+        }
+
         public byte[] ReadTill(uint uint32)
         {
             List<byte> bytes = new List<byte>();
