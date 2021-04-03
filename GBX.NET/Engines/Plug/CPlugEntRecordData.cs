@@ -57,9 +57,11 @@ namespace GBX.NET.Engines.Plug
                             {
                                 id = nodeId,
                                 name = nodeName,
-                                rest = new object[] {
-                                    obj_u01, obj_u02, obj_u03, obj_mwbuffer, obj_u05
-                                }
+                                u01 = obj_u01,
+                                u02 = obj_u02,
+                                u03 = obj_u03,
+                                mwbuffer = obj_mwbuffer,
+                                u05 = obj_u05
                             };
                         });
 
@@ -208,32 +210,16 @@ namespace GBX.NET.Engines.Plug
                 {
                     var unknownData = bufR.ReadBytes(47);
 
-                    var pos = bufR.ReadVec3();
-                    var angle = bufR.ReadUInt16() / (double)ushort.MaxValue * Math.PI;
-                    var axisHeading = bufR.ReadInt16() / (double)short.MaxValue * Math.PI;
-                    var axisPitch = bufR.ReadInt16() / (double)short.MaxValue * Math.PI / 2;
-                    var speed = (float)Math.Exp(bufR.ReadInt16() / 1000.0);
-                    var velocityHeading = bufR.ReadSByte() / (double)sbyte.MaxValue * Math.PI;
-                    var velocityPitch = bufR.ReadSByte() / (double)sbyte.MaxValue * Math.PI / 2;
-
-                    var axis = new Vec3((float)(Math.Sin(angle) * Math.Cos(axisPitch) * Math.Cos(axisHeading)),
-                        (float)(Math.Sin(angle) * Math.Cos(axisPitch) * Math.Sin(axisHeading)),
-                        (float)(Math.Sin(angle) * Math.Sin(axisPitch)));
-
-                    var quaternion = new Quaternion(axis, (float)Math.Cos(angle));
-
-                    var velocityVector = new Vec3((float)(speed * Math.Cos(velocityPitch) * Math.Cos(velocityHeading)),
-                        (float)(speed * Math.Cos(velocityPitch) * Math.Sin(velocityHeading)),
-                        (float)(speed * Math.Sin(velocityPitch)));
+                    var transform = bufR.ReadTransform();
 
                     var unknownData2 = bufR.ReadBytes(4);
 
                     return new Sample()
                     {
-                        Position = pos,
-                        Rotation = quaternion,
-                        Speed = speed * 3.6f,
-                        Velocity = velocityVector,
+                        Position = transform.position,
+                        Rotation = transform.rotation,
+                        Speed = transform.speed * 3.6f,
+                        Velocity = transform.velocity,
                         Unknown = unknownData
                     };
                 }
