@@ -50,18 +50,18 @@ namespace GBX.NET.Engines.Plug
                             var obj_u01 = gbxr.ReadInt32();
                             var obj_u02 = gbxr.ReadInt32();
                             var obj_u03 = gbxr.ReadInt32();
-                            var obj_mwbuffer = gbxr.ReadBytes();
+                            var mwbuffer = gbxr.ReadBytes();
                             var obj_u05 = gbxr.ReadInt32();
 
                             return new
                             {
-                                id = nodeId,
-                                name = nodeName,
-                                u01 = obj_u01,
-                                u02 = obj_u02,
-                                u03 = obj_u03,
-                                mwbuffer = obj_mwbuffer,
-                                u05 = obj_u05
+                                nodeId,
+                                nodeName,
+                                obj_u01,
+                                obj_u02,
+                                obj_u03,
+                                mwbuffer,
+                                obj_u05
                             };
                         });
 
@@ -80,7 +80,7 @@ namespace GBX.NET.Engines.Plug
                                     Names.TryGetValue(clas.Value, out clasName);
                                 }
 
-                                return new object[]
+                                return new
                                 {
                                     u02,
                                     u03,
