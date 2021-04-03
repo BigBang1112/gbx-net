@@ -133,7 +133,7 @@ namespace GBX.NET.Engines.Plug
                                                 var buf2unknownData = bufR.ReadBytes(5);
                                                 Buffer.BlockCopy(buf2unknownData, 0, unknownData, 0, buf2unknownData.Length);
 
-                                                var buf2transform = bufR.ReadTransform();
+                                                var buf2transform = bufR.ReadTransform(); // Only position matches
 
                                                 sample.Timestamp = TimeSpan.FromMilliseconds(timestamp);
                                                 sample.Position = buf2transform.position;
@@ -182,9 +182,9 @@ namespace GBX.NET.Engines.Plug
                             {
                                 for (byte x; (x = gbxr.ReadByte()) != 0;)
                                 {
-                                    var u15 = gbxr.ReadInt32();
-                                    var u16 = gbxr.ReadInt32();
-                                    var u17 = gbxr.ReadBytes(); // MwBuffer
+                                    var type = gbxr.ReadInt32();
+                                    var timestamp = gbxr.ReadInt32();
+                                    var buffer = gbxr.ReadBytes(); // MwBuffer
                                 }
                             }
                         }
