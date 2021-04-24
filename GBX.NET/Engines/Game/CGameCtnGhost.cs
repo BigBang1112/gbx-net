@@ -1079,7 +1079,7 @@ namespace GBX.NET.Engines.Game
 
             public override string ToString()
             {
-                return $"[{Time.ToStringTM()}] {Name}: {((Data == 128 || Data == 0) ? IsEnabled.ToString() : Data.ToString())}";
+                return $"[{Time.ToStringTM()}] {Name}: {((Data == 128 || Data == 1 || Data == 0) ? IsEnabled.ToString() : Data.ToString())}";
             }
         }
 
