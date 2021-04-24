@@ -1,19 +1,27 @@
-#pragma warning disable CS1587
+#pragma warning disable CS0164
 
-/**
- * ManagedLZO.MiniLZO
- * 
- * Minimalistic reimplementation of minilzo in C#
- * 
- * @author Shane Eric Bryldt, Copyright (C) 2006, All Rights Reserved
- * @note Uses unsafe/fixed pointer contexts internally
- * @liscence Bound by same liscence as minilzo as below, see file COPYING
- */
+#region Copyright notice
 
-/* Based on minilzo.c -- mini subset of the LZO real-time data compression library
+/* C# port of the crude minilzo source version 2.06 by Frank Razenberg
+ 
+  Beware, you should never want to see C# code like this. You were warned.
+  I simply ran the MSVC preprocessor on the original source, changed the datatypes 
+  to their C# counterpart and fixed changed some control flow stuff to amend for
+  the different goto semantics between C and C#.
+
+  Original copyright notice is included below.
+*/
+
+/* minilzo.c -- mini subset of the LZO real-time data compression library
 
    This file is part of the LZO real-time data compression library.
 
+   Copyright (C) 2011 Markus Franz Xaver Johannes Oberhumer
+   Copyright (C) 2010 Markus Franz Xaver Johannes Oberhumer
+   Copyright (C) 2009 Markus Franz Xaver Johannes Oberhumer
+   Copyright (C) 2008 Markus Franz Xaver Johannes Oberhumer
+   Copyright (C) 2007 Markus Franz Xaver Johannes Oberhumer
+   Copyright (C) 2006 Markus Franz Xaver Johannes Oberhumer
    Copyright (C) 2005 Markus Franz Xaver Johannes Oberhumer
    Copyright (C) 2004 Markus Franz Xaver Johannes Oberhumer
    Copyright (C) 2003 Markus Franz Xaver Johannes Oberhumer
@@ -27,8 +35,9 @@
    All Rights Reserved.
 
    The LZO library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU General Public License,
-   version 2, as published by the Free Software Foundation.
+   modify it under the terms of the GNU General Public License as
+   published by the Free Software Foundation; either version 2 of
+   the License, or (at your option) any later version.
 
    The LZO library is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -51,553 +60,448 @@
  *   http://www.oberhumer.com/opensource/lzo/
  */
 
-#pragma warning restore CS1587
+#endregion
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
-
-namespace ManagedLZO
+namespace LZO
 {
-    internal static class MiniLZO
-    {
-        private const uint M2_MAX_LEN = 8;
-        private const uint M3_MAX_LEN = 33;
-        private const uint M4_MAX_LEN = 9;
-        private const byte M3_MARKER = 32;
-        private const byte M4_MARKER = 16;
-        private const uint M1_MAX_OFFSET = 0x0400;
-        private const uint M2_MAX_OFFSET = 0x0800;
-        private const uint M3_MAX_OFFSET = 0x4000;
-        private const uint M4_MAX_OFFSET = 0xbfff;
-        private const byte BITS = 14;
-        private const uint D_MASK = (1 << BITS) - 1;
-        private const uint DICT_SIZE = 65536 + 3;
+	using System;
 
-        public unsafe static void Compress(byte[] src, out byte[] dst)
-        {
-            uint tmp;
-            uint dstlen = (uint)(src.Length + (src.Length / 16) + 64 + 3);
-            dst = new byte[dstlen];
-            if (src.Length <= M2_MAX_LEN + 5)
-            {
-                tmp = (uint)src.Length;
-                dstlen = 0;
-            }
-            else
-            {
-                byte[] workmem = new byte[DICT_SIZE];
-                fixed (byte* work = workmem, input = src, output = dst)
-                {
-                    byte** dict = (byte**)work;
-                    byte* in_end = input + src.Length;
-                    byte* ip_end = input + src.Length - M2_MAX_LEN - 5;
-                    byte* ii = input;
-                    byte* ip = input + 4;
-                    byte* op = output;
-                    bool literal = false;
-                    bool match = false;
-                    uint offset;
-                    uint length;
-                    uint index;
-                    byte* pos;
+	public static class MiniLZO
+	{
 
-                    for (; ; )
-                    {
-                        offset = 0;
-                        index = D_INDEX1(ip);
-                        pos = ip - (ip - dict[index]);
-                        if (pos < input || (offset = (uint)(ip - pos)) <= 0 || offset > M4_MAX_OFFSET)
-                            literal = true;
-                        else if (offset <= M2_MAX_OFFSET || pos[3] == ip[3])
-                        {
-                        }
-                        else
-                        {
-                            index = D_INDEX2(index);
-                            pos = ip - (ip - dict[index]);
-                            if (pos < input || (offset = (uint)(ip - pos)) <= 0 || offset > M4_MAX_OFFSET)
-                                literal = true;
-                            else if (offset <= M2_MAX_OFFSET || pos[3] == ip[3])
-                            {
-                            }
-                            else
-                                literal = true;
-                        }
+		unsafe static uint lzo1x_1_compress_core(byte* @in, uint in_len, byte* @out, ref uint out_len, uint ti, void* wrkmem)
+		{
+			byte* ip;
+			byte* op;
+			byte* in_end = @in + in_len;
+			byte* ip_end = @in + in_len - 20;
+			byte* ii;
+			ushort* dict = (ushort*)wrkmem;
+			op = @out;
+			ip = @in;
+			ii = ip;
+			ip += ti < 4 ? 4 - ti : 0;
 
-                        if (!literal)
-                        {
-                            if (*((ushort*)pos) == *((ushort*)ip) && pos[2] == ip[2])
-                                match = true;
-                        }
+			byte* m_pos;
+			uint m_off;
+			uint m_len;
 
-                        literal = false;
-                        if (!match)
-                        {
-                            dict[index] = ip;
-                            ++ip;
-                            if (ip >= ip_end)
-                                break;
-                            continue;
-                        }
-                        match = false;
-                        dict[index] = ip;
-                        if (ip - ii > 0)
-                        {
-                            uint t = (uint)(ip - ii);
-                            if (t <= 3)
-                            {
-                                Debug.Assert(op - 2 > output);
-                                op[-2] |= (byte)(t);
-                            }
-                            else if (t <= 18)
-                                *op++ = (byte)(t - 3);
-                            else
-                            {
-                                uint tt = t - 18;
-                                *op++ = 0;
-                                while (tt > 255)
-                                {
-                                    tt -= 255;
-                                    *op++ = 0;
-                                }
-                                Debug.Assert(tt > 0);
-                                *op++ = (byte)(tt);
-                            }
-                            do
-                            {
-                                *op++ = *ii++;
-                            } while (--t > 0);
-                        }
-                        Debug.Assert(ii == ip);
-                        ip += 3;
-                        if (pos[3] != *ip++ || pos[4] != *ip++ || pos[5] != *ip++
-                        || pos[6] != *ip++ || pos[7] != *ip++ || pos[8] != *ip++)
-                        {
-                            --ip;
-                            length = (uint)(ip - ii);
-                            Debug.Assert(length >= 3);
-                            Debug.Assert(length <= M2_MAX_LEN);
-                            if (offset <= M2_MAX_OFFSET)
-                            {
-                                --offset;
-                                *op++ = (byte)(((length - 1) << 5) | ((offset & 7) << 2));
-                                *op++ = (byte)(offset >> 3);
-                            }
-                            else if (offset <= M3_MAX_OFFSET)
-                            {
-                                --offset;
-                                *op++ = (byte)(M3_MARKER | (length - 2));
-                                *op++ = (byte)((offset & 63) << 2);
-                                *op++ = (byte)(offset >> 6);
-                            }
-                            else
-                            {
-                                offset -= 0x4000;
-                                Debug.Assert(offset > 0);
-                                Debug.Assert(offset <= 0x7FFF);
-                                *op++ = (byte)(M4_MARKER | ((offset & 0x4000) >> 11) | (length - 2));
-                                *op++ = (byte)((offset & 63) << 2);
-                                *op++ = (byte)(offset >> 6);
-                            }
-                        }
-                        else
-                        {
-                            byte* m = pos + M2_MAX_LEN + 1;
-                            while (ip < in_end && *m == *ip)
-                            {
-                                ++m;
-                                ++ip;
-                            }
-                            length = (uint)(ip - ii);
-                            Debug.Assert(length > M2_MAX_LEN);
-                            if (offset <= M3_MAX_OFFSET)
-                            {
-                                --offset;
-                                if (length <= 33)
-                                    *op++ = (byte)(M3_MARKER | (length - 2));
-                                else
-                                {
-                                    length -= 33;
-                                    *op++ = M3_MARKER | 0;
-                                    while (length > 255)
-                                    {
-                                        length -= 255;
-                                        *op++ = 0;
-                                    }
-                                    Debug.Assert(length > 0);
-                                    *op++ = (byte)(length);
-                                }
-                            }
-                            else
-                            {
-                                offset -= 0x4000;
-                                Debug.Assert(offset > 0);
-                                Debug.Assert(offset <= 0x7FFF);
-                                if (length <= M4_MAX_LEN)
-                                    *op++ = (byte)(M4_MARKER | ((offset & 0x4000) >> 11) | (length - 2));
-                                else
-                                {
-                                    length -= M4_MAX_LEN;
-                                    *op++ = (byte)(M4_MARKER | ((offset & 0x4000) >> 11));
-                                    while (length > 255)
-                                    {
-                                        length -= 255;
-                                        *op++ = 0;
-                                    }
-                                    Debug.Assert(length > 0);
-                                    *op++ = (byte)(length);
-                                }
-                            }
-                            *op++ = (byte)((offset & 63) << 2);
-                            *op++ = (byte)(offset >> 6);
-                        }
-                        ii = ip;
-                        if (ip >= ip_end)
-                            break;
-                    }
-                    dstlen = (uint)(op - output);
-                    tmp = (uint)(in_end - ii);
-                }
-            }
-            if (tmp > 0)
-            {
-                uint ii = (uint)src.Length - tmp;
-                if (dstlen == 0 && tmp <= 238)
-                {
-                    dst[dstlen++] = (byte)(17 + tmp);
-                }
-                else if (tmp <= 3)
-                {
-                    dst[dstlen - 2] |= (byte)(tmp);
-                }
-                else if (tmp <= 18)
-                {
-                    dst[dstlen++] = (byte)(tmp - 3);
-                }
-                else
-                {
-                    uint tt = tmp - 18;
-                    dst[dstlen++] = 0;
-                    while (tt > 255)
-                    {
-                        tt -= 255;
-                        dst[dstlen++] = 0;
-                    }
-                    Debug.Assert(tt > 0);
-                    dst[dstlen++] = (byte)(tt);
-                }
-                do
-                {
-                    dst[dstlen++] = src[ii++];
-                } while (--tmp > 0);
-            }
-            dst[dstlen++] = M4_MARKER | 1;
-            dst[dstlen++] = 0;
-            dst[dstlen++] = 0;
+			for (; ; )
+			{
 
-            if (dst.Length != dstlen)
-            {
-                byte[] final = new byte[dstlen];
-                Buffer.BlockCopy(dst, 0, final, 0, (int)dstlen);
-                dst = final;
-            }
-        }
-        public unsafe static void Decompress(byte[] src, byte[] dst)
-        {
-            uint t = 0;
-            fixed (byte* input = src, output = dst)
-            {
-                byte* pos = null;
-                byte* ip_end = input + src.Length;
-                byte* op_end = output + dst.Length;
-                byte* ip = input;
-                byte* op = output;
-                bool match = false;
-                bool match_next = false;
-                bool match_done = false;
-                bool copy_match = false;
-                bool first_literal_run = false;
-                bool eof_found = false;
+				uint dv;
+				uint dindex;
+			literal:
+				ip += 1 + ((ip - ii) >> 5);
+			next:
+				if (ip >= ip_end)
+					break;
+				dv = (*(uint*)(void*)(ip));
+				dindex = ((uint)(((((((uint)((0x1824429d) * (dv)))) >> (32 - 14))) & (((1u << (14)) - 1) >> (0))) << (0)));
+				m_pos = @in + dict[dindex];
+				dict[dindex] = ((ushort)((uint)((ip) - (@in))));
+				if (dv != (*(uint*)(void*)(m_pos)))
+					goto literal;
 
-                if (*ip > 17)
-                {
-                    t = (uint)(*ip++ - 17);
-                    if (t < 4)
-                        match_next = true;
-                    else
-                    {
-                        Debug.Assert(t > 0);
-                        if ((op_end - op) < t)
-                            throw new OverflowException("Output Overrun");
-                        if ((ip_end - ip) < t + 1)
-                            throw new OverflowException("Input Overrun");
-                        do
-                        {
-                            *op++ = *ip++;
-                        } while (--t > 0);
-                        first_literal_run = true;
-                    }
-                }
-                while (!eof_found && ip < ip_end)
-                {
-                    if (!match_next && !first_literal_run)
-                    {
-                        t = *ip++;
-                        if (t >= 16)
-                            match = true;
-                        else
-                        {
-                            if (t == 0)
-                            {
-                                if ((ip_end - ip) < 1)
-                                    throw new OverflowException("Input Overrun");
-                                while (*ip == 0)
-                                {
-                                    t += 255;
-                                    ++ip;
-                                    if ((ip_end - ip) < 1)
-                                        throw new OverflowException("Input Overrun");
-                                }
-                                t += (uint)(15 + *ip++);
-                            }
-                            Debug.Assert(t > 0);
-                            if ((op_end - op) < t + 3)
-                                throw new OverflowException("Output Overrun");
-                            if ((ip_end - ip) < t + 4)
-                                throw new OverflowException("Input Overrun");
-                            for (int x = 0; x < 4; ++x, ++op, ++ip)
-                                *op = *ip;
-                            if (--t > 0)
-                            {
-                                if (t >= 4)
-                                {
-                                    do
-                                    {
-                                        for (int x = 0; x < 4; ++x, ++op, ++ip)
-                                            *op = *ip;
-                                        t -= 4;
-                                    } while (t >= 4);
-                                    if (t > 0)
-                                    {
-                                        do
-                                        {
-                                            *op++ = *ip++;
-                                        } while (--t > 0);
-                                    }
-                                }
-                                else
-                                {
-                                    do
-                                    {
-                                        *op++ = *ip++;
-                                    } while (--t > 0);
-                                }
-                            }
-                        }
-                    }
-                    if (!match && !match_next)
-                    {
-                        first_literal_run = false;
+				ii -= ti; ti = 0;
+				{
+					uint t = ((uint)((ip) - (ii)));
+					if (t != 0)
+					{
+						if (t <= 3)
+						{
+							op[-2] |= ((byte)(t));
+							*(uint*)(op) = *(uint*)(ii);
+							op += t;
+						}
+						else if (t <= 16)
+						{
+							*op++ = ((byte)(t - 3));
+							*(uint*)(op) = *(uint*)(ii);
+							*(uint*)(op + 4) = *(uint*)(ii + 4);
+							*(uint*)(op + 8) = *(uint*)(ii + 8);
+							*(uint*)(op + 12) = *(uint*)(ii + 12);
+							op += t;
+						}
+						else
+						{
+							if (t <= 18)
+								*op++ = ((byte)(t - 3));
+							else
+							{
+								uint tt = t - 18;
+								*op++ = 0;
+								while (tt > 255)
+								{
+									tt -= 255;
+									*(byte*)op++ = 0;
+								}
 
-                        t = *ip++;
-                        if (t >= 16)
-                            match = true;
-                        else
-                        {
-                            pos = op - (1 + M2_MAX_OFFSET);
-                            pos -= t >> 2;
-                            pos -= *ip++ << 2;
-                            if (pos < output || pos >= op)
-                                throw new OverflowException("Lookbehind Overrun");
-                            if ((op_end - op) < 3)
-                                throw new OverflowException("Output Overrun");
-                            *op++ = *pos++;
-                            *op++ = *pos++;
-                            *op++ = *pos++;
-                            match_done = true;
-                        }
-                    }
-                    match = false;
-                    do
-                    {
-                        if (t >= 64)
-                        {
-                            pos = op - 1;
-                            pos -= (t >> 2) & 7;
-                            pos -= *ip++ << 3;
-                            t = (t >> 5) - 1;
-                            if (pos < output || pos >= op)
-                                throw new OverflowException("Lookbehind Overrun");
-                            if ((op_end - op) < t + 2)
-                                throw new OverflowException("Output Overrun");
-                            copy_match = true;
-                        }
-                        else if (t >= 32)
-                        {
-                            t &= 31;
-                            if (t == 0)
-                            {
-                                if ((ip_end - ip) < 1)
-                                    throw new OverflowException("Input Overrun");
-                                while (*ip == 0)
-                                {
-                                    t += 255;
-                                    ++ip;
-                                    if ((ip_end - ip) < 1)
-                                        throw new OverflowException("Input Overrun");
-                                }
-                                t += (uint)(31 + *ip++);
-                            }
-                            pos = op - 1;
-                            pos -= (*(ushort*)ip) >> 2;
-                            ip += 2;
-                        }
-                        else if (t >= 16)
-                        {
-                            pos = op;
-                            pos -= (t & 8) << 11;
+								*op++ = ((byte)(tt));
+							}
+							do
+							{
+								*(uint*)(op) = *(uint*)(ii);
+								*(uint*)(op + 4) = *(uint*)(ii + 4);
+								*(uint*)(op + 8) = *(uint*)(ii + 8);
+								*(uint*)(op + 12) = *(uint*)(ii + 12);
+								op += 16; ii += 16; t -= 16;
+							} while (t >= 16); if (t > 0) { do *op++ = *ii++; while (--t > 0); }
+						}
+					}
+				}
+				m_len = 4;
+				{
+					uint v;
+					v = (*(uint*)(void*)(ip + m_len)) ^ (*(uint*)(void*)(m_pos + m_len));
+					if (v == 0)
+					{
+						do
+						{
+							m_len += 4;
+							v = (*(uint*)(void*)(ip + m_len)) ^ (*(uint*)(void*)(m_pos + m_len));
+							if (ip + m_len >= ip_end)
+								goto m_len_done;
+						} while (v == 0);
+					}
+					m_len += (uint)lzo_bitops_ctz32(v) / 8;
+				}
+			m_len_done:
+				m_off = ((uint)((ip) - (m_pos)));
+				ip += m_len;
+				ii = ip;
+				if (m_len <= 8 && m_off <= 0x0800)
+				{
+					m_off -= 1;
+					*op++ = ((byte)(((m_len - 1) << 5) | ((m_off & 7) << 2)));
+					*op++ = ((byte)(m_off >> 3));
+				}
+				else if (m_off <= 0x4000)
+				{
+					m_off -= 1;
+					if (m_len <= 33)
+						*op++ = ((byte)(32 | (m_len - 2)));
+					else
+					{
+						m_len -= 33;
+						*op++ = 32 | 0;
+						while (m_len > 255)
+						{
+							m_len -= 255;
+							*(byte*)op++ = 0;
+						}
+						*op++ = ((byte)(m_len));
+					}
+					*op++ = ((byte)(m_off << 2));
+					*op++ = ((byte)(m_off >> 6));
+				}
+				else
+				{
+					m_off -= 0x4000;
+					if (m_len <= 9)
+						*op++ = ((byte)(16 | ((m_off >> 11) & 8) | (m_len - 2)));
+					else
+					{
+						m_len -= 9;
+						*op++ = ((byte)(16 | ((m_off >> 11) & 8)));
+						while (m_len > 255)
+						{
+							m_len -= 255;
+							*(byte*)op++ = 0;
+						}
+						*op++ = ((byte)(m_len));
+					}
+					*op++ = ((byte)(m_off << 2));
+					*op++ = ((byte)(m_off >> 6));
+				}
+				goto next;
+			}
+			out_len = ((uint)((op) - (@out)));
+			return ((uint)((in_end) - (ii - ti)));
+		}
 
-                            t &= 7;
-                            if (t == 0)
-                            {
-                                if ((ip_end - ip) < 1)
-                                    throw new OverflowException("Input Overrun");
-                                while (*ip == 0)
-                                {
-                                    t += 255;
-                                    ++ip;
-                                    if ((ip_end - ip) < 1)
-                                        throw new OverflowException("Input Overrun");
-                                }
-                                t += (uint)(7 + *ip++);
-                            }
-                            pos -= (*(ushort*)ip) >> 2;
-                            ip += 2;
-                            if (pos == op)
-                                eof_found = true;
-                            else
-                                pos -= 0x4000;
-                        }
-                        else
-                        {
-                            pos = op - 1;
-                            pos -= t >> 2;
-                            pos -= *ip++ << 2;
-                            if (pos < output || pos >= op)
-                                throw new OverflowException("Lookbehind Overrun");
-                            if ((op_end - op) < 2)
-                                throw new OverflowException("Output Overrun");
-                            *op++ = *pos++;
-                            *op++ = *pos++;
-                            match_done = true;
-                        }
-                        if (!eof_found && !match_done && !copy_match)
-                        {
-                            if (pos < output || pos >= op)
-                                throw new OverflowException("Lookbehind Overrun");
-                            Debug.Assert(t > 0);
-                            if ((op_end - op) < t + 2)
-                                throw new OverflowException("Output Overrun");
-                        }
-                        if (!eof_found && t >= 2 * 4 - 2 && (op - pos) >= 4 && !match_done && !copy_match)
-                        {
-                            for (int x = 0; x < 4; ++x, ++op, ++pos)
-                                *op = *pos;
-                            t -= 2;
-                            do
-                            {
-                                for (int x = 0; x < 4; ++x, ++op, ++pos)
-                                    *op = *pos;
-                                t -= 4;
+		static int[] MultiplyDeBruijnBitPosition = {
+			  0, 1, 28, 2, 29, 14, 24, 3, 30, 22, 20, 15, 25, 17, 4, 8,
+			  31, 27, 13, 23, 21, 19, 16, 7, 26, 12, 18, 6, 11, 5, 10, 9
+			};
+		private static int lzo_bitops_ctz32(uint v)
+		{
+			return MultiplyDeBruijnBitPosition[((uint)((v & -v) * 0x077CB531U)) >> 27];
+		}
 
-                            } while (t >= 4);
-                            if (t > 0)
-                            {
-                                do
-                                {
-                                    *op++ = *pos++;
-                                } while (--t > 0);
-                            }
-                        }
-                        else if(!eof_found && !match_done)
-                        {
-                            copy_match = false;
+		unsafe static int lzo1x_1_compress(byte* @in, uint in_len, byte* @out, ref uint out_len, byte* wrkmem)
+		{
+			byte* ip = @in;
+			byte* op = @out;
+			uint l = in_len;
+			uint t = 0;
+			while (l > 20)
+			{
+				uint ll = l;
+				ulong ll_end;
+				ll = ((ll) <= (49152) ? (ll) : (49152));
+				ll_end = (ulong)ip + ll;
+				if ((ll_end + ((t + ll) >> 5)) <= ll_end || (byte*)(ll_end + ((t + ll) >> 5)) <= ip + ll)
+					break;
 
-                            *op++ = *pos++;
-                            *op++ = *pos++;
-                            do
-                            {
-                                *op++ = *pos++;
-                            } while (--t > 0);
-                        }
+				for (int i = 0; i < (1 << 14) * sizeof(ushort); i++)
+					wrkmem[i] = 0;
+				t = lzo1x_1_compress_core(ip, ll, op, ref out_len, t, wrkmem);
+				ip += ll;
+				op += out_len;
+				l -= ll;
+			}
+			t += l;
+			if (t > 0)
+			{
+				byte* ii = @in + in_len - t;
+				if (op == @out && t <= 238)
+					*op++ = ((byte)(17 + t));
+				else if (t <= 3)
+					op[-2] |= ((byte)(t));
+				else if (t <= 18)
+					*op++ = ((byte)(t - 3));
+				else
+				{
+					uint tt = t - 18;
+					*op++ = 0;
+					while (tt > 255)
+					{
+						tt -= 255;
+						*(byte*)op++ = 0;
+					}
 
-                        if (!eof_found && !match_next)
-                        {
-                            match_done = false;
+					*op++ = ((byte)(tt));
+				}
+				do *op++ = *ii++; while (--t > 0);
+			}
+			*op++ = 16 | 1;
+			*op++ = 0;
+			*op++ = 0;
+			out_len = ((uint)((op) - (@out)));
+			return 0;
+		}
 
-                            t = (uint)(ip[-2] & 3);
-                            if (t == 0)
-                                break;
-                        }
-                        if (!eof_found)
-                        {
-                            match_next = false;
-                            Debug.Assert(t > 0);
-                            Debug.Assert(t < 4);
-                            if ((op_end - op) < t)
-                                throw new OverflowException("Output Overrun");
-                            if ((ip_end - ip) < t + 1)
-                                throw new OverflowException("Input Overrun");
-                            *op++ = *ip++;
-                            if (t > 1)
-                            {
-                                *op++ = *ip++;
-                                if (t > 2)
-                                    *op++ = *ip++;
-                            }
-                            t = *ip++;
-                        }
-                    } while (!eof_found && ip < ip_end);
-                }
-                if (!eof_found)
-                    throw new OverflowException("EOF Marker Not Found");
-                else
-                {
-                    Debug.Assert(t == 1);
-                    if (ip > ip_end)
-                        throw new OverflowException("Input Overrun");
-                    else if (ip < ip_end)
-                        throw new OverflowException("Input Not Consumed");
-                }
-            }
-        }
+		public unsafe static int lzo1x_decompress(byte* @in, uint in_len, byte* @out, ref uint out_len, void* wrkmem)
+		{
+			byte* op;
+			byte* ip;
+			uint t;
+			byte* m_pos;
+			byte* ip_end = @in + in_len;
+			out_len = 0;
+			op = @out;
+			ip = @in;
+			bool gt_first_literal_run = false;
+			bool gt_match_done = false;
+			if (*ip > 17)
+			{
+				t = (uint)(*ip++ - 17);
+				if (t < 4)
+				{
+					match_next(ref op, ref ip, ref t);
+				}
+				else
+				{
+					do *op++ = *ip++; while (--t > 0);
+					gt_first_literal_run = true;
+				}
+			}
+			while (true)
+			{
+				if (gt_first_literal_run)
+				{
+					gt_first_literal_run = false;
+					goto first_literal_run;
+				}
 
-        private unsafe static uint D_INDEX1(byte * input)
-        {
-            return D_MS(D_MUL(0x21, D_X3(input, 5, 5, 6)) >> 5, 0);
-        }
-        private static uint D_INDEX2(uint idx)
-        {
-            return (idx & (D_MASK & 0x7FF)) ^ (((D_MASK >> 1) + 1) | 0x1F);
-        }
-        private static uint D_MS(uint v, byte s)
-        {
-            return (v & (D_MASK >> s)) << s;
-        }
-        private static uint D_MUL(uint a, uint b)
-        {
-            return a * b;
-        }
-        private unsafe static uint D_X2(byte* input, byte s1, byte s2)
-        {
-            return (uint)((((input[2] << s2) ^ input[1]) << s1) ^ input[0]);
-        }
-        private unsafe static uint D_X3(byte* input, byte s1, byte s2, byte s3)
-        {
-            return (D_X2(input + 1, s2, s3) << s1) ^ input[0];
-        }
-    }
+				t = *ip++;
+				if (t >= 16)
+					goto match;
+				if (t == 0)
+				{
+					while (*ip == 0)
+					{
+						t += 255;
+						ip++;
+					}
+					t += (uint)(15 + *ip++);
+				}
+				*(uint*)op = *(uint*)ip;
+				op += 4; ip += 4;
+				if (--t > 0)
+				{
+					if (t >= 4)
+					{
+						do
+						{
+							*(uint*)op = *(uint*)ip;
+							op += 4; ip += 4; t -= 4;
+						} while (t >= 4);
+						if (t > 0) do *op++ = *ip++; while (--t > 0);
+					}
+					else
+						do *op++ = *ip++; while (--t > 0);
+				}
+			first_literal_run:
+				t = *ip++;
+				if (t >= 16)
+					goto match;
+				m_pos = op - (1 + 0x0800);
+				m_pos -= t >> 2;
+				m_pos -= *ip++ << 2;
+
+				*op++ = *m_pos++; *op++ = *m_pos++; *op++ = *m_pos;
+				gt_match_done = true;
+
+			match:
+				do
+				{
+					if (gt_match_done)
+					{
+						gt_match_done = false;
+						goto match_done;
+						;
+					}
+					if (t >= 64)
+					{
+						m_pos = op - 1;
+						m_pos -= (t >> 2) & 7;
+						m_pos -= *ip++ << 3;
+						t = (t >> 5) - 1;
+
+						copy_match(ref op, ref m_pos, ref t);
+						goto match_done;
+					}
+					else if (t >= 32)
+					{
+						t &= 31;
+						if (t == 0)
+						{
+							while (*ip == 0)
+							{
+								t += 255;
+								ip++;
+							}
+							t += (uint)(31 + *ip++);
+						}
+						m_pos = op - 1;
+						m_pos -= (*(ushort*)(void*)(ip)) >> 2;
+						ip += 2;
+					}
+					else if (t >= 16)
+					{
+						m_pos = op;
+						m_pos -= (t & 8) << 11;
+						t &= 7;
+						if (t == 0)
+						{
+							while (*ip == 0)
+							{
+								t += 255;
+								ip++;
+							}
+							t += (uint)(7 + *ip++);
+						}
+						m_pos -= (*(ushort*)ip) >> 2;
+						ip += 2;
+						if (m_pos == op)
+							goto eof_found;
+						m_pos -= 0x4000;
+					}
+					else
+					{
+						m_pos = op - 1;
+						m_pos -= t >> 2;
+						m_pos -= *ip++ << 2;
+						*op++ = *m_pos++; *op++ = *m_pos;
+						goto match_done;
+					}
+
+					if (t >= 2 * 4 - (3 - 1) && (op - m_pos) >= 4)
+					{
+						*(uint*)op = *(uint*)m_pos;
+						op += 4; m_pos += 4; t -= 4 - (3 - 1);
+						do
+						{
+							*(uint*)op = *(uint*)m_pos;
+							op += 4; m_pos += 4; t -= 4;
+						} while (t >= 4);
+						if (t > 0) do *op++ = *m_pos++; while (--t > 0);
+					}
+					else
+					{
+					copy_match:
+						*op++ = *m_pos++; *op++ = *m_pos++;
+						do *op++ = *m_pos++; while (--t > 0);
+					}
+				match_done:
+					t = (uint)(ip[-2] & 3);
+					if (t == 0)
+						break;
+					match_next:
+					*op++ = *ip++;
+					if (t > 1) { *op++ = *ip++; if (t > 2) { *op++ = *ip++; } }
+					t = *ip++;
+				} while (true);
+			}
+		eof_found:
+
+			out_len = ((uint)((op) - (@out)));
+			return (ip == ip_end ? 0 :
+				   (ip < ip_end ? (-8) : (-4)));
+		}
+
+		private static unsafe void match_next(ref byte* op, ref byte* ip, ref uint t)
+		{
+			do *op++ = *ip++; while (--t > 0);
+			t = *ip++;
+		}
+
+		private static unsafe void copy_match(ref byte* op, ref byte* m_pos, ref uint t)
+		{
+			*op++ = *m_pos++; *op++ = *m_pos++;
+			do *op++ = *m_pos++; while (--t > 0);
+		}
+
+
+
+		public static unsafe byte[] Decompress(byte[] @in, byte[] @out)
+		{
+			uint out_len = 0;
+			fixed (byte* @pIn = @in, wrkmem = new byte[IntPtr.Size * 16384], pOut = @out)
+			{
+				lzo1x_decompress(pIn, (uint)@in.Length, @pOut, ref @out_len, wrkmem);
+			}
+			return @out;
+		}
+
+		public static unsafe void Decompress(byte* r, uint size_in, byte* w, ref uint size_out)
+		{
+			fixed (byte* wrkmem = new byte[IntPtr.Size * 16384])
+			{
+				lzo1x_decompress(r, size_in, w, ref size_out, wrkmem);
+			}
+		}
+
+		public static unsafe byte[] Compress(byte[] input)
+		{
+			byte[] @out = new byte[input.Length + (input.Length / 16) + 64 + 3];
+			uint out_len = 0;
+			fixed (byte* @pIn = input, wrkmem = new byte[IntPtr.Size * 16384], pOut = @out)
+			{
+				lzo1x_1_compress(pIn, (uint)input.Length, @pOut, ref @out_len, wrkmem);
+			}
+			Array.Resize(ref @out, (int)out_len);
+			return @out;
+		}
+
+		public static unsafe void Compress(byte* r, uint size_in, byte* w, ref uint size_out)
+		{
+			fixed (byte* wrkmem = new byte[IntPtr.Size * 16384])
+			{
+				lzo1x_1_compress(r, size_in, w, ref size_out, wrkmem);
+			}
+		}
+	}
 }

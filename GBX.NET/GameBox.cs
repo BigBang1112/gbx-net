@@ -255,9 +255,6 @@ namespace GBX.NET
         /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
         public void Save(Stream stream, ClassIDRemap remap)
         {
-            if (IntPtr.Size == 8)
-                throw new NotSupportedException("Saving GBX is not supported with x64 platform target, due to LZO implementation. Please force your platform target to x86.");
-
             using (var w = new GameBoxWriter(stream))
                 Write(w, remap);
         }

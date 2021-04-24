@@ -2509,7 +2509,7 @@ namespace GBX.NET.Engines.Game
                     blockCounter++;
                 }
 
-                Debug.Assert(blockCounter == nbBlocks);
+                // Debug.Assert(blockCounter == nbBlocks);
             }
 
             public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)

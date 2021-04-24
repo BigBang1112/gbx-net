@@ -1,9 +1,9 @@
-﻿using ManagedLZO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization;
+using LZO;
 
 namespace GBX.NET
 {
@@ -71,7 +71,7 @@ namespace GBX.NET
                 using (var gbxwBody = new GameBoxWriter(msBody, this))
                 {
                     GBX.MainNode.Write(gbxwBody, remap);
-                    MiniLZO.Compress(msBody.ToArray(), out byte[] output);
+                    var output = MiniLZO.Compress(msBody.ToArray());
 
                     w.Write((int)msBody.Length); // Uncompressed
                     w.Write(output.Length); // Compressed
