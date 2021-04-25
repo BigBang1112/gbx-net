@@ -14,8 +14,8 @@ namespace GBX.NET
 		/// <summary>
 		/// Converts the value of the current <see cref="TimeSpan"/> to a Trackmania familiar time format.
 		/// </summary>
-		/// <param name="timeSpan">TimeSpan</param>
-		/// <returns></returns>
+		/// <param name="timeSpan">A TimeSpan.</param>
+		/// <returns>A string representation of Trackmania time format.</returns>
 		public static string ToStringTM(this TimeSpan timeSpan)
 		{
 			char? minus = null;
@@ -27,6 +27,29 @@ namespace GBX.NET
 			if (timeSpan.TotalHours >= 1)
 				return minus + timeSpan.ToString("h':'mm':'ss'.'fff");
 			return minus + timeSpan.ToString("m':'ss'.'fff");
+		}
+
+		/// <summary>
+		/// Converts the value of the current <see cref="TimeSpan"/> to a Trackmania familiar time format. If the value is null, <paramref name="nullString"/> will be used.
+		/// </summary>
+		/// <param name="timeSpan">A TimeSpan.</param>
+		/// <param name="nullString">A string to use if <paramref name="timeSpan"/> is null.</param>
+		/// <returns>A string representation of Trackmania time format.</returns>
+		public static string ToStringTM(this TimeSpan? timeSpan, string nullString)
+		{
+			if (timeSpan.HasValue)
+				return ToStringTM(timeSpan.Value);
+			return nullString;
+		}
+
+		/// <summary>
+		/// Converts the value of the current <see cref="TimeSpan"/> to a Trackmania familiar time format. If the value is null, -:--.--- will be used
+		/// </summary>
+		/// <param name="timeSpan">A TimeSpan.</param>
+		/// <returns>A string representation of Trackmania time format.</returns>
+		public static string ToStringTM(this TimeSpan? timeSpan)
+		{
+			return ToStringTM(timeSpan, "-:--.---");
 		}
 	}
 }
