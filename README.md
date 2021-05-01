@@ -140,13 +140,13 @@ if (gbx is GameBox<CGameCtnChallenge> gbxMap)
 {
     // Do changes with CGameCtnChallenge
 
-    gbxMap.Save();
+    gbxMap.Save("MyMap.Map.Gbx"); // Can be also a new file
 }
-else if (gbx is GameBox<CGameCtnReplayRecord> gbxReplay)
+else if (gbx is GameBox<CGameCtnGhost> gbxGhost)
 {
-    // Do changes with CGameCtnReplayRecord
+    // Do changes with CGameCtnGhost
 
-    gbxReplay.Save();
+    gbxGhost.Save("MyGhost.Ghost.Gbx"); // Can be also a new file
 }
 
 gbx.Save(); // will throw an error
