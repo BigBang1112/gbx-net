@@ -131,7 +131,29 @@ else if (gbx is GameBox<CGameCtnReplayRecord> gbxReplay)
 }
 ```
 
-To save a `Node` to a GBX file:
+To save changes of the parsed GBX file:
+
+```cs
+var gbx = GameBox.Parse("MyMap.Map.Gbx");
+
+if (gbx is GameBox<CGameCtnChallenge> gbxMap)
+{
+    // Do changes with CGameCtnChallenge
+
+    gbxMap.Save();
+}
+else if (gbx is GameBox<CGameCtnReplayRecord> gbxReplay)
+{
+    // Do changes with CGameCtnReplayRecord
+
+    gbxReplay.Save();
+}
+
+gbx.Save(); // will throw an error
+// GameBox with unspecified/unknown type can't be currently written back
+```
+
+To save any supported `Node` to a GBX file:
 
 ```cs
 var gbxReplay = GameBox.Parse<CGameCtnReplayRecord>("MyReplay.Replay.Gbx");
