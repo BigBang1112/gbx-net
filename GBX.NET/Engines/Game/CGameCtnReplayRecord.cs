@@ -148,6 +148,12 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public CCtnMediaBlockEventTrackMania Events { get; set; }
 
+        [NodeMember]
+        public int EventsDuration { get; set; }
+
+        [NodeMember]
+        public ControlEntry[] ControlEntries { get; set; }
+
         #endregion
 
         #region Chunks
@@ -296,9 +302,9 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x004 chunk
+        #region 0x004 chunk (ghosts)
 
-        [Chunk(0x03093004)]
+        [Chunk(0x03093004, "ghosts")]
         public class Chunk03093004 : Chunk<CGameCtnReplayRecord>
         {
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
@@ -328,9 +334,9 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x00C chunk
+        #region 0x00C chunk (clip)
 
-        [Chunk(0x0309300C)]
+        [Chunk(0x0309300C, "clip")]
         public class Chunk0309300C : Chunk<CGameCtnReplayRecord>
         {
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
@@ -341,27 +347,50 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x00D chunk
+        #region 0x00D chunk (validation)
 
-        [Chunk(0x0309300D)]
+        [Chunk(0x0309300D, "validation")]
         public class Chunk0309300D : Chunk<CGameCtnReplayRecord>
         {
+            public int U01 { get; set; }
+            public int U02 { get; set; }
+
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                var unknown = r.ReadInt32();
-                if (unknown != 0)
+                n.EventsDuration = r.ReadInt32();
+
+                if (n.EventsDuration != 0)
                 {
-                    r.ReadInt32();
+                    U01 = r.ReadInt32();
 
-                    var controlNames = r.ReadArray<string>(i => r.ReadId());
+                    var controlNames = r.ReadArray(i => r.ReadId());
 
-                    var num = r.ReadInt32();
-                    r.ReadInt32();
+                    var numEntries = r.ReadInt32();
+                    U02 = r.ReadInt32();
 
-                    var array = new (int time, int index, byte enabled)[num];
+                    n.ControlEntries = new ControlEntry[numEntries];
 
-                    for (var i = 0; i < num; i++)
-                        array[i] = (r.ReadInt32(), r.ReadInt32(), r.ReadByte());
+                    for (var i = 0; i < numEntries; i++)
+                    {
+                        var time = TimeSpan.FromMilliseconds(r.ReadInt32() - 100000);
+                        var controlNameIndex = r.ReadByte();
+                        var data = r.ReadUInt32();
+
+                        var name = controlNames[controlNameIndex];
+
+                        switch (name)
+                        {
+                            case "Steer":
+                            case "Gas":
+                            case "AccelerateReal":
+                            case "BrakeReal":
+                                n.ControlEntries[i] = new ControlEntryAnalog() { Name = name, Time = time, Data = data };
+                                break;
+                            default:
+                                n.ControlEntries[i] = new ControlEntry() { Name = name, Time = time, Data = data };
+                                break;
+                        }
+                    }
                 }
             }
         }

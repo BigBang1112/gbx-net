@@ -43,7 +43,7 @@ namespace GBX.NET
 		}
 
 		/// <summary>
-		/// Converts the value of the current <see cref="TimeSpan"/> to a Trackmania familiar time format. If the value is null, -:--.--- will be used
+		/// Converts the value of the current <see cref="TimeSpan"/> to a Trackmania familiar time format. If the value is null, -:--.--- will be used.
 		/// </summary>
 		/// <param name="timeSpan">A TimeSpan.</param>
 		/// <returns>A string representation of Trackmania time format.</returns>

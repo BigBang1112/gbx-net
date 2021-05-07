@@ -824,6 +824,7 @@ namespace GBX.NET.Engines.Game
 
             public uint U01 { get; set; }
             public int U02 { get; set; }
+            public int U03 { get; set; }
 
             public Chunk03092019()
             {
@@ -850,7 +851,7 @@ namespace GBX.NET.Engines.Game
                     var controlNames = r.ReadArray(i => r.ReadId());
 
                     var numEntries = r.ReadInt32();
-                    r.ReadInt32();
+                    U03 = r.ReadInt32();
 
                     n.ControlEntries = new ControlEntry[numEntries];
 
@@ -893,7 +894,7 @@ namespace GBX.NET.Engines.Game
                         w.WriteId(name);
 
                     w.Write(n.ControlEntries?.Length ?? 0);
-                    w.Write(0);
+                    w.Write(U03);
 
                     if (n.ControlEntries != null)
                     {
@@ -1100,42 +1101,6 @@ namespace GBX.NET.Engines.Game
             public override string ToString()
             {
                 return $"{Time.ToStringTM()} ({StuntsScore})";
-            }
-        }
-
-        public class ControlEntry
-        {
-            public string Name { get; set; }
-            public TimeSpan Time { get; set; }
-            public uint Data { get; set; }
-            public bool IsEnabled => Data != 0;
-
-            public override string ToString()
-            {
-                return $"[{Time.ToStringTM()}] {Name}: {((Data == 128 || Data == 1 || Data == 0) ? IsEnabled.ToString() : Data.ToString())}";
-            }
-        }
-
-        /// <summary>
-        /// A control entry with an additional <see cref="float"/> value.
-        /// </summary>
-        public class ControlEntryAnalog : ControlEntry
-        {
-            public float Value
-            {
-                get
-                {
-                    if (((Data >> 16) & 0xFF) == 0xFF) // Left steer
-                        return (Data & 0xFFFF) / (float)ushort.MaxValue - 1;
-                    if ((Data >> 16) == 1) // Full right steer
-                        return 1;
-                    return (Data & 0xFFFF) / (float)ushort.MaxValue;
-                }
-            }
-
-            public override string ToString()
-            {
-                return $"[{Time.ToStringTM()}] {Name}: {Value}";
             }
         }
 
