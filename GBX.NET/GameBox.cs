@@ -390,26 +390,26 @@ namespace GBX.NET
             {
                 var ancestorLevel = reader.ReadInt32();
 
-                GameBoxRefTableFolder rootFolder = new GameBoxRefTableFolder("Root");
+                GameBoxRefTable.Folder rootFolder = new GameBoxRefTable.Folder("Root");
 
                 var numSubFolders = reader.ReadInt32();
                 ReadRefTableFolders(numSubFolders, ref rootFolder);
 
-                void ReadRefTableFolders(int n, ref GameBoxRefTableFolder folder)
+                void ReadRefTableFolders(int n, ref GameBoxRefTable.Folder folder)
                 {
                     for (var i = 0; i < n; i++)
                     {
                         var name = reader.ReadString();
                         var numSubSubFolders = reader.ReadInt32();
 
-                        var f = new GameBoxRefTableFolder(name, folder);
+                        var f = new GameBoxRefTable.Folder(name, folder);
                         folder.Folders.Add(f);
 
                         ReadRefTableFolders(numSubSubFolders, ref f);
                     }
                 }
 
-                var externalNodes = new ExternalNode[numExternalNodes];
+                var externalNodes = new GameBoxRefTable.ExternalNode[numExternalNodes];
 
                 for (var i = 0; i < numExternalNodes; i++)
                 {
@@ -433,7 +433,7 @@ namespace GBX.NET
                     if ((flags & 4) == 0)
                         folderIndex = reader.ReadInt32();
 
-                    var extNode = new ExternalNode(flags, fileName, resourceIndex, nodeIndex, useFile, folderIndex);
+                    var extNode = new GameBoxRefTable.ExternalNode(flags, fileName, resourceIndex, nodeIndex, useFile, folderIndex);
                     externalNodes[i] = extNode;
                 }
 
