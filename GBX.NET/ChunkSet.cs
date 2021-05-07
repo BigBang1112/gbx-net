@@ -179,14 +179,11 @@ namespace GBX.NET
         /// <summary>
         /// Discovers all chunks in the chunk set.
         /// </summary>
-        /// <exception cref="AggregateException"/>
         public void DiscoverAll()
         {
-            Parallel.ForEach(this, chunk =>
-            {
+            foreach (var chunk in this)
                 if (chunk is ISkippableChunk s)
                     s.Discover();
-            });
         }
     }
 }
