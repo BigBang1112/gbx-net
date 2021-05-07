@@ -16,7 +16,7 @@ namespace GBX.NET.Engines.Game
 
         public bool IsReplaying { get; set; }
 
-        public Task<CGameGhostData> Data { get; set; }
+        public Task<CGameGhostData> SampleData { get; set; }
 
         public CGameGhost()
         {
@@ -52,7 +52,7 @@ namespace GBX.NET.Engines.Game
                 SamplePeriod = rw.Int32(SamplePeriod);
                 rw.Int32(Unknown);
 
-                n.Data = Task.Run(() =>
+                n.SampleData = Task.Run(() =>
                 {
                     var ghostData = new CGameGhostData
                     {
@@ -67,7 +67,7 @@ namespace GBX.NET.Engines.Game
                     return ghostData;
                 });
 
-                n.Data.ContinueWith(n.dataExceptionHandle);
+                n.SampleData.ContinueWith(n.dataExceptionHandle);
             }
         }
 
@@ -103,7 +103,7 @@ namespace GBX.NET.Engines.Game
 
                 if (rw.Mode == GameBoxReaderWriterMode.Read)
                 {
-                    n.Data = Task.Run(() =>
+                    n.SampleData = Task.Run(() =>
                     {
                         var ghostData = new CGameGhostData();
                         using (var ms = new MemoryStream(Data))
@@ -111,7 +111,7 @@ namespace GBX.NET.Engines.Game
                         return ghostData;
                     });
 
-                    n.Data.ContinueWith(n.dataExceptionHandle);
+                    n.SampleData.ContinueWith(n.dataExceptionHandle);
                 }
             }
         }
