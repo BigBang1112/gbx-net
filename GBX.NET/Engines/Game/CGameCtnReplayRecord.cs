@@ -152,6 +152,9 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public int EventsDuration { get; private set; }
 
+        /// <summary>
+        /// Inputs (keyboard, pad, wheel) of the replay from TM1.0, TMO, Sunrise and ESWC. For inputs stored in TMU, TMUF and TM2: see <see cref="CGameCtnGhost.ControlEntries"/> in <see cref="Ghosts"/>. TM2020 and Shootmania don't have inputs available at all in replays and ghosts.
+        /// </summary>
         [NodeMember]
         public ControlEntry[] ControlEntries { get; private set; }
 
@@ -176,7 +179,7 @@ namespace GBX.NET.Engines.Game
 
         #region 0x000 header chunk (basic)
 
-[Chunk(0x03093000, "basic")]
+        [Chunk(0x03093000, "basic")]
         public class Chunk03093000 : HeaderChunk<CGameCtnReplayRecord>
         {
             public int Version { get; private set; }
@@ -291,26 +294,52 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03093003)]
         public class Chunk03093003 : Chunk<CGameCtnReplayRecord>
         {
+            public int U01 { get; private set; }
+            public int U02 { get; private set; }
+
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                var v = r.ReadInt32();
-                if (v != 0)
+                n.EventsDuration = r.ReadInt32();
+                if (n.EventsDuration != 0)
                 {
-                    r.ReadInt32();
+                    U01 = r.ReadInt32();
+
+                    // All control names available in the game
                     var controlNames = r.ReadArray(i =>
                     {
+                        // Maybe bindings
+                        r.ReadInt32(); 
                         r.ReadInt32();
-                        r.ReadInt32();
-                        return r.ReadString();
+
+                        return r.ReadString(); // Key name
                     });
 
-                    var numControlEntries = r.ReadInt32() - 1;
-                    var controlEntries = new (int, int, int)[numControlEntries];
+                    var numEntries = r.ReadInt32() - 1;
 
-                    for (var i = 0; i < numControlEntries; i++)
-                        controlEntries[i] = (r.ReadInt32(), r.ReadInt32(), r.ReadInt32());
+                    n.ControlEntries = new ControlEntry[numEntries];
 
-                    r.ReadInt32();
+                    for (var i = 0; i < numEntries; i++)
+                    {
+                        var time = TimeSpan.FromMilliseconds(r.ReadInt32() - 10000);
+                        var controlNameIndex = r.ReadInt32();
+                        var data = r.ReadUInt32();
+
+                        var name = controlNames[controlNameIndex];
+
+                        switch (name)
+                        {
+                            case "Steer (analog)": // Data is bugged
+                                n.ControlEntries[i] = new ControlEntryAnalog() { Name = name, Time = time, Data = data };
+                                break;
+                            default:
+                                n.ControlEntries[i] = new ControlEntry() { Name = name, Time = time, Data = data };
+                                break;
+                        }
+                    }
+
+                    Array.Reverse(n.ControlEntries); // Inputs are originally reversed
+
+                    U02 = r.ReadInt32();
                 }
             }
         }
