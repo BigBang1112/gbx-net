@@ -20,6 +20,7 @@ namespace GBX.NET.Engines.Game
         private string authorNickname;
         private string authorZone;
         private string authorExtraInfo;
+        private string game;
 
         #endregion
 
@@ -154,13 +155,28 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public ControlEntry[] ControlEntries { get; private set; }
 
+        [NodeMember]
+        public string Game
+        {
+            get
+            {
+                DiscoverChunk<Chunk03093008>();
+                return game;
+            }
+            private set
+            {
+                DiscoverChunk<Chunk03093008>();
+                game = value;
+            }
+        }
+
         #endregion
 
         #region Chunks
 
         #region 0x000 header chunk (basic)
 
-        [Chunk(0x03093000, "basic")]
+[Chunk(0x03093000, "basic")]
         public class Chunk03093000 : HeaderChunk<CGameCtnReplayRecord>
         {
             public int Version { get; private set; }
@@ -325,9 +341,42 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03093005)]
         public class Chunk03093005 : Chunk<CGameCtnReplayRecord>
         {
+            public int U01 { get; private set; }
+
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                var u01 = r.ReadInt32();
+                U01 = r.ReadInt32();
+            }
+        }
+
+        #endregion
+
+        #region 0x007 skippable chunk
+
+        [Chunk(0x03093007)]
+        public class Chunk03093007 : SkippableChunk<CGameCtnReplayRecord>
+        {
+            public int U01 { get; private set; }
+
+            public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
+            {
+                U01 = r.ReadInt32();
+            }
+        }
+
+        #endregion
+
+        #region 0x008 skippable chunk (game)
+
+        [Chunk(0x03093008, "game")]
+        public class Chunk03093008 : SkippableChunk<CGameCtnReplayRecord>
+        {
+            public int U01 { get; private set; }
+
+            public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
+            {
+                n.Game = r.ReadString();
+                U01 = r.ReadInt32();
             }
         }
 
@@ -470,7 +519,7 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x018 chunk
+        #region 0x018 skippable chunk
 
         [Chunk(0x03093018, "author")]
         public class Chunk03093018 : SkippableChunk<CGameCtnReplayRecord>
@@ -488,7 +537,7 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x01C chunk
+        #region 0x01C skippable chunk
 
         [Chunk(0x0309301C)]
         public class Chunk0309301C : SkippableChunk<CGameCtnReplayRecord>
