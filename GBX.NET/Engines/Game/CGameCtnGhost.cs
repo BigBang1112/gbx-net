@@ -30,7 +30,7 @@ namespace GBX.NET.Engines.Game
         private int? respawns;
         private Vec3? lightTrailColor;
         private int? stuntScore;
-        private TimeSpan[] checkpoints;
+        private Checkpoint[] checkpoints;
         private int eventsDuration;
         private ControlEntry[] controlEntries;
         private string validate_ExeVersion;
@@ -182,7 +182,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public TimeSpan[] Checkpoints
+        public Checkpoint[] Checkpoints
         {
             get
             {
@@ -596,9 +596,10 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.checkpoints = rw.Array(n.checkpoints,
-                    (i, r) => TimeSpan.FromMilliseconds(r.ReadInt64()),
-                    (x, w) => w.Write(Convert.ToInt64(x.TotalMilliseconds)));
+                rw.Array(ref n.checkpoints,
+                    (i, r) => new Checkpoint(TimeSpan.FromMilliseconds(r.ReadInt32()), r.ReadInt32()),
+                    (x, w) => { w.Write(x.Time); w.Write(x.StuntsScore); }
+                );
             }
         }
 
@@ -1069,6 +1070,38 @@ namespace GBX.NET.Engines.Game
         #endregion
 
         #region Other classes
+
+        /// <summary>
+        /// Checkpoint timestamp driven by the ghost.
+        /// </summary>
+        public struct Checkpoint
+        {
+            /// <summary>
+            /// Time of the checkpoint.
+            /// </summary>
+            public TimeSpan Time { get; set; }
+
+            /// <summary>
+            /// Amount of stunt points when reaching this checkpoint. This is very often always 0 in TM2 replay.
+            /// </summary>
+            public int StuntsScore { get; set; }
+
+            public Checkpoint(TimeSpan time, int stuntsScore)
+            {
+                Time = time;
+                StuntsScore = stuntsScore;
+            }
+
+            public Checkpoint(TimeSpan time) : this(time, 0)
+            {
+
+            }
+
+            public override string ToString()
+            {
+                return $"{Time.ToStringTM()} ({StuntsScore})";
+            }
+        }
 
         public class ControlEntry
         {
