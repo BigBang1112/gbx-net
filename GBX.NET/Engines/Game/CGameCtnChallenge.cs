@@ -945,7 +945,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public bool HasLightmaps => lightmapFrames.Count > 0;
+        public bool HasLightmaps => lightmapFrames?.Count > 0;
 
         [NodeMember]
         public List<CGameCtnAnchoredObject> AnchoredObjects
