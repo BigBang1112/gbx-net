@@ -426,7 +426,7 @@ namespace GBX.NET.Engines.Game
             {
                 rw.Int32(ref version);
                 rw.Ident(ref n.playerModel);
-                rw.Vec3(ref u01);
+                rw.Vec3(ref n.lightTrailColor);
                 rw.Array(ref n.skinPackDescs,
                     (i, r) => r.ReadFileRef(),
                     (x, w) => w.Write(x));
