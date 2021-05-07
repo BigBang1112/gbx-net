@@ -23,7 +23,7 @@ namespace GBX.NET
 
         public override string ToString()
         {
-            if (BufferType == 0 || BufferType == 2 || BufferType == 4)
+            if (!BufferType.HasValue || BufferType == 0 || BufferType == 2 || BufferType == 4)
             {
                 if (Timestamp.HasValue)
                     return $"Sample: {Timestamp.Value.ToStringTM()} {Position}";
