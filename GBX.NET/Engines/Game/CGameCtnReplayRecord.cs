@@ -322,9 +322,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03093004, "ghosts")]
         public class Chunk03093004 : Chunk<CGameCtnReplayRecord>
         {
+            public int Version { get; private set; }
+
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                var u01 = r.ReadInt32();
+                Version = r.ReadInt32();
                 var u02 = r.ReadInt32();
 
                 n.Ghosts = r.ReadArray(i => r.ReadNodeRef<CGameCtnGhost>());
