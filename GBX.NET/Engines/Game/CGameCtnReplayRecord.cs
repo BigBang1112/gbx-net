@@ -26,16 +26,16 @@ namespace GBX.NET.Engines.Game
         #region Properties
 
         [NodeMember]
-        public Ident MapInfo { get; set; }
+        public Ident MapInfo { get; private set; }
 
         [NodeMember]
-        public TimeSpan? Time { get; set; }
+        public TimeSpan? Time { get; private set; }
 
         [NodeMember]
-        public string Nickname { get; set; }
+        public string Nickname { get; private set; }
 
         [NodeMember]
-        public string DriverLogin { get; set; }
+        public string DriverLogin { get; private set; }
 
         [NodeMember]
         public string TitleID
@@ -45,7 +45,7 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03093018>();
                 return titleID;
             }
-            set
+            private set
             {
                 DiscoverChunk<Chunk03093018>();
                 titleID = value;
@@ -53,7 +53,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public string XML { get; set; }
+        public string XML { get; private set; }
 
         [NodeMember]
         public int AuthorVersion
@@ -63,7 +63,7 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03093018>();
                 return authorVersion;
             }
-            set
+            private set
             {
                 DiscoverChunk<Chunk03093018>();
                 authorVersion = value;
@@ -78,7 +78,7 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03093018>();
                 return authorLogin;
             }
-            set
+            private set
             {
                 DiscoverChunk<Chunk03093018>();
                 authorLogin = value;
@@ -93,7 +93,7 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03093018>();
                 return authorNickname;
             }
-            set
+            private set
             {
                 DiscoverChunk<Chunk03093018>();
                 authorNickname = value;
@@ -108,7 +108,7 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03093018>();
                 return authorZone;
             }
-            set
+            private set
             {
                 DiscoverChunk<Chunk03093018>();
                 authorZone = value;
@@ -123,7 +123,7 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03093018>();
                 return authorExtraInfo;
             }
-            set
+            private set
             {
                 DiscoverChunk<Chunk03093018>();
                 authorExtraInfo = value;
@@ -131,28 +131,28 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public Task<GameBox<CGameCtnChallenge>> Challenge { get; set; }
+        public Task<GameBox<CGameCtnChallenge>> Challenge { get; private set; }
 
         [NodeMember]
-        public CGameCtnGhost[] Ghosts { get; set; }
+        public CGameCtnGhost[] Ghosts { get; private set; }
 
         [NodeMember]
-        public long[] Extras { get; set; }
+        public long[] Extras { get; private set; }
 
         [NodeMember]
-        public CGameCtnMediaClip Clip { get; set; }
+        public CGameCtnMediaClip Clip { get; private set; }
 
         [NodeMember]
-        public CPlugEntRecordData RecordData { get; set; }
+        public CPlugEntRecordData RecordData { get; private set; }
 
         [NodeMember]
-        public CCtnMediaBlockEventTrackMania Events { get; set; }
+        public CCtnMediaBlockEventTrackMania Events { get; private set; }
 
         [NodeMember]
-        public int EventsDuration { get; set; }
+        public int EventsDuration { get; private set; }
 
         [NodeMember]
-        public ControlEntry[] ControlEntries { get; set; }
+        public ControlEntry[] ControlEntries { get; private set; }
 
         #endregion
 
@@ -163,9 +163,8 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03093000, "basic")]
         public class Chunk03093000 : HeaderChunk<CGameCtnReplayRecord>
         {
-            public int Version { get; set; }
-
-            public byte U01 { get; set; }
+            public int Version { get; private set; }
+            public byte U01 { get; private set; }
 
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
@@ -238,7 +237,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03093002, "track")]
         public class Chunk03093002B : Chunk<CGameCtnReplayRecord>
         {
-            public int Version { get; set; }
+            public int Version { get; private set; }
 
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
@@ -352,8 +351,8 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0309300D, "validation")]
         public class Chunk0309300D : Chunk<CGameCtnReplayRecord>
         {
-            public int U01 { get; set; }
-            public int U02 { get; set; }
+            public int U01 { get; private set; }
+            public int U02 { get; private set; }
 
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
@@ -439,28 +438,28 @@ namespace GBX.NET.Engines.Game
 
         // 0x013 skippable chunk
 
-        #region 0x014 chunk
+        #region 0x014 chunk (ghosts)
 
-        [Chunk(0x03093014)]
+        [Chunk(0x03093014, "ghosts")]
         public class Chunk03093014 : Chunk<CGameCtnReplayRecord>
         {
-            public int Version { get; set; }
-            public int Unknown1 { get; set; }
+            public int Version { get; private set; }
+            public int U01 { get; private set; }
 
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
                 n.Ghosts = r.ReadArray(i => r.ReadNodeRef<CGameCtnGhost>());
-                Unknown1 = r.ReadInt32();
+                U01 = r.ReadInt32();
                 n.Extras = r.ReadArray(i => r.ReadInt64());
             }
         }
 
         #endregion
 
-        #region 0x015 chunk
+        #region 0x015 chunk (clip)
 
-        [Chunk(0x03093015)]
+        [Chunk(0x03093015, "clip")]
         public class Chunk03093015 : Chunk<CGameCtnReplayRecord>
         {
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
@@ -494,7 +493,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0309301C)]
         public class Chunk0309301C : SkippableChunk<CGameCtnReplayRecord>
         {
-            public int Version { get; set; }
+            public int Version { get; private set; }
 
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
@@ -510,13 +509,13 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03093024)]
         public class Chunk03093024 : Chunk<CGameCtnReplayRecord>
         {
-            public int Unknown1 { get; set; }
-            public int Unknown2 { get; set; }
+            public int U01 { get; private set; }
+            public int U02 { get; private set; }
 
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                Unknown1 = r.ReadInt32();
-                Unknown2 = r.ReadInt32();
+                U01 = r.ReadInt32();
+                U02 = r.ReadInt32();
                 n.RecordData = r.ReadNodeRef<CPlugEntRecordData>();
             }
         }
