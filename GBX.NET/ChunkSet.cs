@@ -185,5 +185,24 @@ namespace GBX.NET
                 if (chunk is ISkippableChunk s)
                     s.Discover();
         }
+
+        /// <summary>
+        /// Discovers all chunks in the chunk set in parallel, if <paramref name="parallel"/> is true.
+        /// </summary>
+        public void DiscoverAll(bool parallel)
+        {
+            if (parallel)
+            {
+                Parallel.ForEach(this, chunk =>
+                {
+                    if (chunk is ISkippableChunk s)
+                        s.Discover();
+                });
+            }
+            else
+            {
+                DiscoverAll();
+            }
+        }
     }
 }
