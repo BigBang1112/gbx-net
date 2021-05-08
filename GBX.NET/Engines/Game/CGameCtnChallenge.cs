@@ -762,7 +762,7 @@ namespace GBX.NET.Engines.Game
         }
 
         /// <summary>
-        /// Array of all blocks on the map.
+        /// List of all blocks on the map.
         /// </summary>
         [NodeMember]
         public List<CGameCtnBlock> Blocks
