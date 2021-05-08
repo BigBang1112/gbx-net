@@ -289,6 +289,12 @@ namespace GBX.NET
         {
             Save(fileName, ClassIDRemap.Latest);
         }
+
+        /// <summary>
+        /// Implicitly casts <see cref="GameBox{T}"/> to its <see cref="GameBox{T}.MainNode"/>.
+        /// </summary>
+        /// <param name="gbx"></param>
+        public static implicit operator T(GameBox<T> gbx) => gbx.MainNode;
     }
 
     /// <summary>
