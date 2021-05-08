@@ -30,7 +30,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                n.Blocks = r.ReadArray(i =>
+                n.Blocks = r.ReadArray(() =>
                 {
                     Int3? coord = null;
                     Direction? dir = null;
@@ -113,7 +113,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                var unknown = r.ReadArray(i =>
+                var unknown = r.ReadArray(() =>
                 {
                     var version = r.ReadInt32();
                     if(r.ReadNodeRef() != null)
@@ -145,12 +145,12 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                var unknown = r.ReadArray(i =>
+                var unknown = r.ReadArray(() =>
                 {
                     return new object[]
                     {
                         r.ReadInt32(),
-                        r.ReadArray(j => r.ReadIdent()),
+                        r.ReadArray(() => r.ReadIdent()),
 
                         r.ReadInt32(),
                         r.ReadInt32(),
@@ -190,7 +190,7 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 var version = r.ReadInt32();
-                var nodrefs = r.ReadArray(i => r.ReadNodeRef());
+                var nodrefs = r.ReadArray(() => r.ReadNodeRef());
                 r.ReadArray<int>(2);
             }
         }
@@ -211,7 +211,7 @@ namespace GBX.NET.Engines.Game
             {
                 Version = r.ReadInt32();
 
-                n.AnchoredObjects = r.ReadArray(i =>
+                n.AnchoredObjects = r.ReadArray(() =>
                 {
                     var v = r.ReadInt32();
 

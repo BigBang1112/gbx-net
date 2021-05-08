@@ -136,7 +136,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
             {
-                var cars = rw.Reader.ReadArray(i => rw.Reader.ReadId());
+                var cars = rw.Reader.ReadArray(() => rw.Reader.ReadId());
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
@@ -154,14 +154,11 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGamePlayerProfile n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                var skins = r.ReadArray<object>(i =>
+                var skins = r.ReadArray(() => new Skin
                 {
-                    return new Skin
-                    {
-                        PlayerModel = r.ReadIdent(),
-                        SkinFile = r.ReadString(),
-                        Checksum = r.ReadUInt32()
-                    };
+                    PlayerModel = r.ReadIdent(),
+                    SkinFile = r.ReadString(),
+                    Checksum = r.ReadUInt32()
                 });
             }
         }

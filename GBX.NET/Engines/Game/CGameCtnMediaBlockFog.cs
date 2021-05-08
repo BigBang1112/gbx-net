@@ -28,7 +28,7 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnMediaBlockFog n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
-                n.Keys = r.ReadArray(i =>
+                n.Keys = r.ReadArray(() =>
                 {
                     var time = r.ReadSingle();
                     var intensity = r.ReadSingle();

@@ -44,8 +44,8 @@ namespace GBX.NET.Engines.Game
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
-                rw.Reader.ReadArray(i => rw.Reader.ReadNodeRef<CGameCtnBlockUnitInfo>());
-                rw.Reader.ReadArray(i => rw.Reader.ReadNodeRef<CGameCtnBlockUnitInfo>());
+                rw.Reader.ReadArray(r => r.ReadNodeRef<CGameCtnBlockUnitInfo>());
+                rw.Reader.ReadArray(r => r.ReadNodeRef<CGameCtnBlockUnitInfo>());
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
                 rw.Reader.ReadNodeRef<CSceneMobil>();

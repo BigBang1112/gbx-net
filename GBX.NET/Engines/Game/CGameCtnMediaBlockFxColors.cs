@@ -20,7 +20,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnMediaBlockFxColors n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                n.Keys = r.ReadArray(i => new Key()
+                n.Keys = r.ReadArray(() => new Key()
                 {
                     Time = r.ReadSingle(),
                     Intensity = r.ReadSingle(),

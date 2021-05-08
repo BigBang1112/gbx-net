@@ -33,7 +33,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnMediaBlockCameraCustom n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                n.Keys = r.ReadArray(i =>
+                n.Keys = r.ReadArray(() =>
                 {
                     var time = r.ReadSingle();
                     var u01 = r.ReadInt32(); // 1
@@ -101,7 +101,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnMediaBlockCameraCustom n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                n.Keys = r.ReadArray(i =>
+                n.Keys = r.ReadArray(() =>
                 {
                     var time = r.ReadSingle();
                     var a = r.ReadInt32(); // 1
@@ -172,7 +172,7 @@ namespace GBX.NET.Engines.Game
 
             public override void Read(CGameCtnMediaBlockCameraCustom n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                n.Keys = r.ReadArray(i =>
+                n.Keys = r.ReadArray(() =>
                 {
                     var time = r.ReadSingle();
                     var a = r.ReadInt32(); // 1
@@ -259,7 +259,7 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnMediaBlockCameraCustom n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
-                n.Keys = r.ReadArray(i =>
+                n.Keys = r.ReadArray(() =>
                 {
                     var time = r.ReadSingle();
                     var a = r.ReadInt32(); // 1

@@ -25,7 +25,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnMediaBlockFxBlurDepth n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                n.Keys = r.ReadArray(i =>
+                n.Keys = r.ReadArray(() =>
                 {
                     return new Key()
                     {

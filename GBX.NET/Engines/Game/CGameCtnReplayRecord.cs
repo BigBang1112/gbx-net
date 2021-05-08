@@ -305,13 +305,13 @@ namespace GBX.NET.Engines.Game
                     U01 = r.ReadInt32();
 
                     // All control names available in the game
-                    var controlNames = r.ReadArray(i =>
+                    var controlNames = r.ReadArray(() =>
                     {
                         // Maybe bindings
                         r.ReadInt32(); 
                         r.ReadInt32();
 
-                        return r.ReadString(); // Key name
+                        return r.ReadString(); // Input name
                     });
 
                     var numEntries = r.ReadInt32() - 1;
@@ -358,7 +358,7 @@ namespace GBX.NET.Engines.Game
                 Version = r.ReadInt32();
                 var u02 = r.ReadInt32();
 
-                n.Ghosts = r.ReadArray(i => r.ReadNodeRef<CGameCtnGhost>());
+                n.Ghosts = r.ReadArray(() => r.ReadNodeRef<CGameCtnGhost>());
 
                 var u03 = r.ReadInt32(); // millisecond length of something (usually record time + 0.5s)
                 var u04 = r.ReadInt32();
@@ -442,7 +442,7 @@ namespace GBX.NET.Engines.Game
                 {
                     U01 = r.ReadInt32();
 
-                    var controlNames = r.ReadArray(i => r.ReadId());
+                    var controlNames = r.ReadArray(() => r.ReadId());
 
                     var numEntries = r.ReadInt32();
                     U02 = r.ReadInt32();
@@ -529,9 +529,9 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
-                n.Ghosts = r.ReadArray(i => r.ReadNodeRef<CGameCtnGhost>());
+                n.Ghosts = r.ReadArray(() => r.ReadNodeRef<CGameCtnGhost>());
                 U01 = r.ReadInt32();
-                n.Extras = r.ReadArray(i => r.ReadInt64());
+                n.Extras = r.ReadArray(() => r.ReadInt64());
             }
         }
 

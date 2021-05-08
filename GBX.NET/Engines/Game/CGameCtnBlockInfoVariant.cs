@@ -137,7 +137,7 @@
             public override void ReadWrite(CGameCtnBlockInfoVariant n, GameBoxReaderWriter rw)
             {
                 rw.Int32(Unknown);
-                rw.Reader.ReadArray(i => rw.Reader.ReadArray<int>(5));
+                rw.Reader.ReadArray(r => r.ReadArray<int>(5));
                 rw.Int32(Unknown);
             }
         }

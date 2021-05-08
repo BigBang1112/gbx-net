@@ -27,6 +27,10 @@ namespace GBX.NET
             Lookbackable = lookbackable;
         }
 
+        /// <summary>
+        /// First reads an <see cref="int"/> representing the length, then reads the sequence of bytes.
+        /// </summary>
+        /// <returns>A byte array.</returns>
         public byte[] ReadBytes()
         {
             return ReadBytes(ReadInt32());
@@ -61,7 +65,7 @@ namespace GBX.NET
         /// <summary>
         /// Reads the next <see cref="int"/> from the current stream, casts it as <see cref="bool"/> and advances the current position of the stream by 4 bytes.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A boolean.</returns>
         public override bool ReadBoolean()
         {
             return Convert.ToBoolean(ReadInt32());
@@ -192,30 +196,37 @@ namespace GBX.NET
             return new FileRef(version, checksum, filePath, locatorUrl);
         }
 
-        public T[] ReadArray<T>(int count)
+        /// <summary>
+        /// Reads an array of primitive types (only some are supported) with <paramref name="length"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the array.</typeparam>
+        /// <param name="length">Length of the array.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public T[] ReadArray<T>(int length)
         {
-            var buffer = ReadBytes(count * Marshal.SizeOf(default(T)));
-            var array = new T[count];
+            var buffer = ReadBytes(length * Marshal.SizeOf(default(T)));
+            var array = new T[length];
             Buffer.BlockCopy(buffer, 0, array, 0, buffer.Length);
             return array;
         }
 
+        /// <summary>
+        /// First reads an <see cref="int"/> representing the length, then reads an array of primitive types (only some are supported) with this length.
+        /// </summary>
+        /// <typeparam name="T">Type of the array.</typeparam>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
         public T[] ReadArray<T>()
         {
             return ReadArray<T>(ReadInt32());
         }
 
         /// <summary>
-        /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>.
+        /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">Type of the array.</typeparam>
-        /// <param name="forLoop">Each element.</param>
+        /// <param name="length">Length of the array.</param>
+        /// <param name="forLoop">Each element with an index parameter.</param>
         /// <returns>An array of <typeparamref name="T"/>.</returns>
-        public T[] ReadArray<T>(Func<int, T> forLoop)
-        {
-            return ReadArray(ReadInt32(), forLoop);
-        }
-
         public T[] ReadArray<T>(int length, Func<int, T> forLoop)
         {
             var result = new T[length];
@@ -226,7 +237,53 @@ namespace GBX.NET
             return result;
         }
 
-        internal T[] ReadArray<T>(int length, Func<int, GameBoxReader, T> forLoop)
+        /// <summary>
+        /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the array.</typeparam>
+        /// <param name="forLoop">Each element with an index parameter.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public T[] ReadArray<T>(Func<int, T> forLoop)
+        {
+            return ReadArray(ReadInt32(), forLoop);
+        }
+
+        /// <summary>
+        /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the array.</typeparam>
+        /// <param name="length">Length of the array.</param>
+        /// <param name="forLoop">Each element.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public T[] ReadArray<T>(int length, Func<T> forLoop)
+        {
+            var result = new T[length];
+
+            for (var i = 0; i < length; i++)
+                result[i] = forLoop.Invoke();
+
+            return result;
+        }
+
+        /// <summary>
+        /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the array.</typeparam>
+        /// <param name="forLoop">Each element.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public T[] ReadArray<T>(Func<T> forLoop)
+        {
+            return ReadArray(ReadInt32(), forLoop);
+        }
+
+        /// <summary>
+        /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the array.</typeparam>
+        /// <param name="length">Length of the array.</param>
+        /// <param name="forLoop">Each element with an index parameter and this reader.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public T[] ReadArray<T>(int length, Func<int, GameBoxReader, T> forLoop)
         {
             var result = new T[length];
 
@@ -236,7 +293,41 @@ namespace GBX.NET
             return result;
         }
 
-        internal T[] ReadArray<T>(Func<int, GameBoxReader, T> forLoop)
+        /// <summary>
+        /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the array.</typeparam>
+        /// <param name="forLoop">Each element with an index parameter and this reader.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public T[] ReadArray<T>(Func<int, GameBoxReader, T> forLoop)
+        {
+            return ReadArray(ReadInt32(), forLoop);
+        }
+
+        /// <summary>
+        /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the array.</typeparam>
+        /// <param name="length">Length of the array.</param>
+        /// <param name="forLoop">Each element with this reader.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public T[] ReadArray<T>(int length, Func<GameBoxReader, T> forLoop)
+        {
+            var result = new T[length];
+
+            for (var i = 0; i < length; i++)
+                result[i] = forLoop.Invoke(this);
+
+            return result;
+        }
+
+        /// <summary>
+        /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the array.</typeparam>
+        /// <param name="forLoop">Each element with this reader.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public T[] ReadArray<T>(Func<GameBoxReader, T> forLoop)
         {
             return ReadArray(ReadInt32(), forLoop);
         }
@@ -246,7 +337,7 @@ namespace GBX.NET
         /// </summary>
         /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>.</typeparam>
         /// <typeparam name="TValue">One of the supported types of <see cref="Read{T}"/>.</typeparam>
-        /// <returns></returns>
+        /// <returns>A dictionary.</returns>
         public Dictionary<TKey, TValue> ReadDictionary<TKey, TValue>()
         {
             var dictionary = new Dictionary<TKey, TValue>();
@@ -269,7 +360,7 @@ namespace GBX.NET
         /// </summary>
         /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>.</typeparam>
         /// <typeparam name="TValue">A node that is presented as node reference.</typeparam>
-        /// <returns></returns>
+        /// <returns>A dictionary.</returns>
         public Dictionary<TKey, TValue> ReadNodeDictionary<TKey, TValue>() where TValue : Node
         {
             var dictionary = new Dictionary<TKey, TValue>();

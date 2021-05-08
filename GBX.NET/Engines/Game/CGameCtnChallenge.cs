@@ -1252,6 +1252,14 @@ namespace GBX.NET.Engines.Game
             AnchoredObjects.Add(it);
         }
 
+        /// <summary>
+        /// Places an item on a map.
+        /// </summary>
+        /// <param name="itemModel">An item model identification (name, collection and author). Only the name is required.</param>
+        /// <param name="absolutePosition">Absolute position in the map.</param>
+        /// <param name="pitchYawRoll">Rotation of the item in pitch, yaw, and roll format.</param>
+        /// <param name="offsetPivot">Pivot location of the item (relative position of the point the item will rotate around).</param>
+        /// <param name="variant">An item variant (trees from TM2020 have different variants).</param>
         public void PlaceAnchoredObject(Ident itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Vec3 offsetPivot = default, int variant = 0)
         {
             CreateChunk<Chunk03043040>();
@@ -1270,14 +1278,22 @@ namespace GBX.NET.Engines.Game
             AnchoredObjects.Add(anchoredObject);
         }
 
-        public CGameCtnBlock PlaceFreeBlock(string name, Vec3 position, Vec3 pitchYawRoll, CGameCtnBlockSkin skin)
+        /// <summary>
+        /// FREE BLOCKS ARE CURRENTLY ALWAYS REMOVED FROM MAPS AFTER SAVING. Place a free block on a map. The placed block SHOULDN'T HAVE CLIPS, otherwise the map can break.
+        /// </summary>
+        /// <param name="name">Name of the block to place.</param>
+        /// <param name="absolutePosition">Absolute position of the free block.</param>
+        /// <param name="pitchYawRoll">Rotation of the free block in pitch, yaw, and roll format.</param>
+        /// <param name="skin">Skin to use on the free block.</param>
+        /// <returns>A newly placed block.</returns>
+        public CGameCtnBlock PlaceFreeBlock(string name, Vec3 absolutePosition, Vec3 pitchYawRoll, CGameCtnBlockSkin skin = null)
         {
             CreateChunk<Chunk0304305F>();
 
             var block = new CGameCtnBlock(name, Direction.North, (-1, -1, -1))
             {
                 IsFree = true,
-                AbsolutePositionInMap = position,
+                AbsolutePositionInMap = absolutePosition,
                 PitchYawRoll = pitchYawRoll,
                 Skin = skin
             };
@@ -1285,11 +1301,6 @@ namespace GBX.NET.Engines.Game
             Blocks.Add(block);
 
             return block;
-        }
-
-        public CGameCtnBlock PlaceFreeBlock(string name, Vec3 position, Vec3 pitchYawRoll)
-        {
-            return PlaceFreeBlock(name, position, pitchYawRoll, null);
         }
 
         /// <summary>
@@ -1366,6 +1377,10 @@ namespace GBX.NET.Engines.Game
             return true;
         }
 
+        /// <summary>
+        /// Offsets all MediaTracker camera positions by <paramref name="offset"/>.
+        /// </summary>
+        /// <param name="offset">Amount of units to offset the cameras.</param>
         public void OffsetMediaTrackerCameras(Vec3 offset)
         {
             OffsetCamerasInClip(ClipIntro);
@@ -1415,6 +1430,10 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Offsets all MediaTracker triggers by <paramref name="offset"/>.
+        /// </summary>
+        /// <param name="offset">Amount of units to offset the triggers.</param>
         public void OffsetMediaTrackerTriggers(Int3 offset)
         {
             OffsetTriggers(ClipGroupInGame);
@@ -1432,6 +1451,10 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Enumerates through all of the embedded objects and yields their header data through the <see cref="GameBox"/> object.
+        /// </summary>
+        /// <returns>An enumerable of <see cref="GameBox"/> objects with header data only.</returns>
         public IEnumerable<GameBox> GetEmbeddedObjects()
         {
             foreach(var embed in Embeds)
@@ -1501,6 +1524,9 @@ namespace GBX.NET.Engines.Game
             return true;
         }
 
+        /// <summary>
+        /// Import a file to embed in the map by keeping the file name but relocating it in the embed ZIP.
+        /// </summary>
         /// <param name="fileOnDisk">File to embed located on the disk.</param>
         /// <param name="relativeDirectory">Relative directory where the embed should be represented in the game, usually starts with <c>"Items/..."</c>, <c>"Blocks/..."</c> or <c>"Materials/..."</c>.</param>
         /// <param name="keepIcon">Keep the icon (chunk 0x2E001004) of the embedded GBX. Increases total unneeded embed size.</param>
@@ -1533,9 +1559,9 @@ namespace GBX.NET.Engines.Game
                         using (var msUserData = new MemoryStream(userData))
                         using (var rUserData = new GameBoxReader(msUserData))
                         {
-                            var headers = rUserData.ReadArray(i => (
-                                chunkID: rUserData.ReadUInt32(), 
-                                size: (int)(rUserData.ReadInt32() & ~0x80000000))
+                            var headers = rUserData.ReadArray(r => (
+                                chunkID: r.ReadUInt32(), 
+                                size: (int)(r.ReadInt32() & ~0x80000000))
                             );
 
                             var contains004 = false;
@@ -1602,6 +1628,12 @@ namespace GBX.NET.Engines.Game
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Place a macroblock instance on the map.
+        /// </summary>
+        /// <param name="macroblock">Macroblock template to place.</param>
+        /// <param name="coord">Position on the map to place the macroblock on. Root coordinate of the macroblock is considered.</param>
+        /// <param name="dir">Direction of the placed macroblock.</param>
         public void PlaceMacroblock(CGameCtnMacroBlockInfo macroblock, Int3 coord, Direction dir)
         {
             var macroRad = (int)dir * (Math.PI / 2); // Rotation of the macroblock in radians needed for the formula to determine individual coords
@@ -3330,28 +3362,30 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03043053, "bot paths")]
         public class Chunk03043053 : SkippableChunk<CGameCtnChallenge>
         {
+            private int version;
+
             /// <summary>
             /// Version of the chunk.
             /// </summary>
-            public int Version { get; set; }
-
-            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
+            public int Version
             {
-                Version = r.ReadInt32();
-                n.botPaths = r.ReadArray(i => new BotPath()
+                get => version;
+                set => version = value;
+            }
+
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(ref version);
+
+                rw.List(ref n.botPaths, r => new BotPath()
                 {
                     Clan = r.ReadInt32(),
-                    Path = r.ReadArray(j => r.ReadVec3()).ToList(),
+                    Path = r.ReadArray(() => r.ReadVec3()).ToList(),
                     IsFlying = r.ReadBoolean(),
                     WaypointSpecialProperty = r.ReadNodeRef<CGameWaypointSpecialProperty>(),
                     IsAutonomous = r.ReadBoolean()
-                }).ToList();
-            }
-
-            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
-            {
-                w.Write(Version);
-                w.Write(n.botPaths, x =>
+                },
+                (x, w) =>
                 {
                     w.Write(x.Clan);
                     w.Write(x.Path, y => w.Write(y));
@@ -3389,7 +3423,7 @@ namespace GBX.NET.Engines.Game
                 U01 = r.ReadInt32();
                 var size = r.ReadInt32();
 
-                var embedded = r.ReadArray(i => r.ReadIdent());
+                var embedded = r.ReadArray(() => r.ReadIdent());
 
                 n.originalEmbedZip = r.ReadBytes();
                 if (n.originalEmbedZip.Length > 0)
@@ -3409,7 +3443,7 @@ namespace GBX.NET.Engines.Game
                     }
                 }
 
-                Textures = r.ReadArray(i => r.ReadString());
+                Textures = r.ReadArray(() => r.ReadString());
             }
 
             public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)

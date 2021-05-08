@@ -137,7 +137,7 @@ namespace GBX.NET.Engines.Plug
             {
                 Version = r.ReadInt32();
 
-                n.materials = r.ReadArray(i =>
+                n.materials = r.ReadArray(() =>
                 {
                     var name = r.ReadString();
                     if (name.Length == 0)  // If the material file exists (name != ""), it references the file instead
@@ -179,7 +179,7 @@ namespace GBX.NET.Engines.Plug
             {
                 Version = r.ReadInt32();
 
-                n.Layers = r.ReadArray<Layer>(i =>
+                n.Layers = r.ReadArray<Layer>(() =>
                 {
                     var type = (ELayerType)r.ReadInt32();
                     var u01 = r.ReadInt32(); // 2
@@ -203,7 +203,7 @@ namespace GBX.NET.Engines.Plug
                         var u13 = r.ReadSingle(); // 192
                         var u14 = r.ReadInt32(); // 0
 
-                        var groups = r.ReadArray(j => new Group()
+                        var groups = r.ReadArray(() => new Group()
                         {
                             U01 = r.ReadInt32(),
                             U02 = r.ReadInt32(),
@@ -220,10 +220,10 @@ namespace GBX.NET.Engines.Plug
                         var u15 = r.ReadInt32();
                         if (u15 == 1)
                         {
-                            vertices = r.ReadArray(j => r.ReadVec3());
-                            edges = r.ReadArray(j => r.ReadInt2());
+                            vertices = r.ReadArray(() => r.ReadVec3());
+                            edges = r.ReadArray(() => r.ReadInt2());
 
-                            faces = r.ReadArray(j =>
+                            faces = r.ReadArray(() =>
                             {
                                 var uvVertices = r.ReadInt32();
                                 var inds = r.ReadArray<int>(uvVertices);
@@ -304,7 +304,7 @@ namespace GBX.NET.Engines.Plug
                     }
                     else
                     {
-                        var mask = r.ReadArray(j =>
+                        var mask = r.ReadArray(() =>
                         {
                             return new LayerMask()
                             {

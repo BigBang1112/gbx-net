@@ -39,7 +39,7 @@ namespace GBX.NET.Engines.Input
             public override void Read(CInputBindingsConfig n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 n.Devices = new ReadOnlyCollection<string>(
-                    r.ReadArray(i => r.ReadId()).Select(x => x.ToString()).ToList()
+                    r.ReadArray(() => r.ReadId()).Select(x => x.ToString()).ToList()
                 );
             }
         }

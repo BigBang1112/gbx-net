@@ -8,11 +8,24 @@ using System.Text;
 
 namespace GBX.NET
 {
+    /// <summary>
+    /// Provides single-method reading and writing by wrapping <see cref="GameBoxReader"/> and <see cref="GameBoxWriter"/> depending on the mode.
+    /// </summary>
     public class GameBoxReaderWriter
     {
+        /// <summary>
+        /// Reader component of the reader-writer. This will be null if <see cref="Mode"/> is <see cref="GameBoxReaderWriterMode.Write"/>.
+        /// </summary>
         public GameBoxReader Reader { get; }
+
+        /// <summary>
+        /// Writer component of the reader-writer. This will be null if <see cref="Mode"/> is <see cref="GameBoxReaderWriterMode.Read"/>.
+        /// </summary>
         public GameBoxWriter Writer { get; }
 
+        /// <summary>
+        /// Mode of the reader-writer.
+        /// </summary>
         public GameBoxReaderWriterMode Mode
         {
             get
@@ -25,7 +38,16 @@ namespace GBX.NET
             }
         }
 
+        /// <summary>
+        /// Constructs a reader-writer in a reader mode.
+        /// </summary>
+        /// <param name="reader">Reader to use.</param>
         public GameBoxReaderWriter(GameBoxReader reader) => Reader = reader;
+
+        /// <summary>
+        /// Constructs a reader-writer in a writer mode.
+        /// </summary>
+        /// <param name="writer">Writer to use.</param>
         public GameBoxReaderWriter(GameBoxWriter writer) => Writer = writer;
 
         public T[] Array<T>(T[] array, int count)
@@ -94,14 +116,38 @@ namespace GBX.NET
             array = Array(array, forLoopRead, forLoopWrite);
         }
 
+        public T[] Array<T>(T[] array, Func<T> forLoopRead, Action<T> forLoopWrite)
+        {
+            if (Reader != null) return Reader.ReadArray(forLoopRead);
+            else if (Writer != null) Writer.Write(array, forLoopWrite);
+            return array;
+        }
+
+        public void Array<T>(ref T[] array, Func<T> forLoopRead, Action<T> forLoopWrite)
+        {
+            array = Array(array, forLoopRead, forLoopWrite);
+        }
+
+        public T[] Array<T>(T[] array, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        {
+            if (Reader != null) return Reader.ReadArray(forLoopRead);
+            else if (Writer != null) Writer.Write(array, forLoopWrite);
+            return array;
+        }
+
+        public void Array<T>(ref T[] array, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        {
+            array = Array(array, forLoopRead, forLoopWrite);
+        }
+
         public T[] ArrayNode<T>(T[] array) where T : Node
         {
-            return Array(array, i => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
+            return Array(array, () => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
         }
 
         public void ArrayNode<T>(ref T[] array) where T : Node
         {
-            array = Array(array, i => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
+            array = Array(array, () => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
         }
 
         public IEnumerable<T> Enumerable<T>(IEnumerable<T> enumerable) where T : Node
@@ -134,14 +180,34 @@ namespace GBX.NET
             enumerable = Enumerable(enumerable, forLoopRead, forLoopWrite);
         }
 
+        public IEnumerable<T> Enumerable<T>(IEnumerable<T> enumerable, Func<T> forLoopRead, Action<T> forLoopWrite)
+        {
+            return Array(enumerable?.ToArray(), forLoopRead, forLoopWrite);
+        }
+
+        public void Enumerable<T>(ref IEnumerable<T> enumerable, Func<T> forLoopRead, Action<T> forLoopWrite)
+        {
+            enumerable = Enumerable(enumerable, forLoopRead, forLoopWrite);
+        }
+
+        public IEnumerable<T> Enumerable<T>(IEnumerable<T> enumerable, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        {
+            return Array(enumerable?.ToArray(), forLoopRead, forLoopWrite);
+        }
+
+        public void Enumerable<T>(ref IEnumerable<T> enumerable, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        {
+            enumerable = Enumerable(enumerable, forLoopRead, forLoopWrite);
+        }
+
         public IEnumerable<T> EnumerableNode<T>(IEnumerable<T> enumerable) where T : Node
         {
-            return Enumerable(enumerable, i => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
+            return Enumerable(enumerable, () => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
         }
 
         public void EnumerableNode<T>(ref IEnumerable<T> enumerable) where T : Node
         {
-            enumerable = Enumerable(enumerable, i => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
+            enumerable = Enumerable(enumerable, () => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
         }
 
         public List<T> List<T>(List<T> list) where T : Node
@@ -174,14 +240,34 @@ namespace GBX.NET
             list = List(list, forLoopRead, forLoopWrite);
         }
 
+        public List<T> List<T>(List<T> list, Func<T> forLoopRead, Action<T> forLoopWrite)
+        {
+            return Enumerable(list, forLoopRead, forLoopWrite).ToList();
+        }
+
+        public void List<T>(ref List<T> list, Func<T> forLoopRead, Action<T> forLoopWrite)
+        {
+            list = List(list, forLoopRead, forLoopWrite);
+        }
+
+        public List<T> List<T>(List<T> list, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        {
+            return Enumerable(list, forLoopRead, forLoopWrite).ToList();
+        }
+
+        public void List<T>(ref List<T> list, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        {
+            list = List(list, forLoopRead, forLoopWrite);
+        }
+
         public List<T> ListNode<T>(List<T> list) where T : Node
         {
-            return List(list, i => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
+            return List(list, () => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
         }
 
         public void ListNode<T>(ref List<T> list) where T : Node
         {
-            list = List(list, i => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
+            list = List(list, () => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
         }
 
         public Dictionary<TKey, TValue> Dictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
@@ -956,6 +1042,9 @@ namespace GBX.NET
         }
     }
 
+    /// <summary>
+    /// Reader-writer mode.
+    /// </summary>
     public enum GameBoxReaderWriterMode
     {
         Read,

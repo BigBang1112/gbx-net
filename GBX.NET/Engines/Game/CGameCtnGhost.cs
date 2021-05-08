@@ -733,7 +733,7 @@ namespace GBX.NET.Engines.Game
                 {
                     var r = rw.Reader;
 
-                    var controlNames = r.ReadArray(i => r.ReadId());
+                    var controlNames = r.ReadArray(() => r.ReadId());
 
                     var numEntries = r.ReadInt32();
                     U02 = r.ReadInt32();

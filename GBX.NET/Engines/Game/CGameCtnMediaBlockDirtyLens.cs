@@ -25,16 +25,10 @@ namespace GBX.NET.Engines.Game
             {
                 Version = r.ReadInt32();
 
-                n.Keys = r.ReadArray(i =>
+                n.Keys = r.ReadArray(() => new Key()
                 {
-                    var time = r.ReadSingle();
-                    var intensity = r.ReadSingle();
-
-                    return new Key()
-                    {
-                        Time = time,
-                        Intensity = intensity
-                    };
+                    Time = r.ReadSingle(),
+                    Intensity = r.ReadSingle()
                 });
             }
 

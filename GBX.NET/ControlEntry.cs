@@ -5,7 +5,7 @@ using System.Text;
 namespace GBX.NET
 {
     /// <summary>
-    /// Input from an input device
+    /// Input from an input device.
     /// </summary>
     public class ControlEntry
     {

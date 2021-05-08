@@ -40,32 +40,26 @@ namespace GBX.NET.Engines.Plug
                     {
                         var u01 = gbxr.ReadInt32();
                         var ghostLength = gbxr.ReadInt32(); // milliseconds
-                        var objects = gbxr.ReadArray<object>(i =>
+                        var objects = gbxr.ReadArray<object>(() =>
                         {
                             var nodeId = gbxr.ReadUInt32();
                             Names.TryGetValue(nodeId, out string nodeName);
-
-                            var obj_u01 = gbxr.ReadInt32();
-                            var obj_u02 = gbxr.ReadInt32();
-                            var obj_u03 = gbxr.ReadInt32();
-                            var mwbuffer = gbxr.ReadBytes();
-                            var obj_u05 = gbxr.ReadInt32();
 
                             return new
                             {
                                 nodeId,
                                 nodeName,
-                                obj_u01,
-                                obj_u02,
-                                obj_u03,
-                                mwbuffer,
-                                obj_u05
+                                obj_u01 = gbxr.ReadInt32(),
+                                obj_u02 = gbxr.ReadInt32(),
+                                obj_u03 = gbxr.ReadInt32(),
+                                mwbuffer = gbxr.ReadInt32(),
+                                obj_u05 = gbxr.ReadInt32()
                             };
                         });
 
                         if (Version >= 2)
                         {
-                            var objcts2 = gbxr.ReadArray<object>(i =>
+                            var objcts2 = gbxr.ReadArray<object>(() =>
                             {
                                 var u02 = gbxr.ReadInt32();
                                 var u03 = gbxr.ReadInt32();
