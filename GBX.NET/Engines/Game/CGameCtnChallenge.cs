@@ -211,7 +211,7 @@ namespace GBX.NET.Engines.Game
         private List<(Int3 start, Int3 end)> offzones;
         private string buildVersion;
         private int decoBaseHeightOffset;
-        private List<CGameScriptMapBotPath> botPaths;
+        private List<BotPath> botPaths;
         private Dictionary<string, byte[]> embeds = new Dictionary<string, byte[]>();
         private byte[] originalEmbedZip;
         private TimeSpan? dayTime;
@@ -1083,7 +1083,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public List<CGameScriptMapBotPath> BotPaths
+        public List<BotPath> BotPaths
         {
             get
             {
@@ -3338,7 +3338,7 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
-                n.botPaths = r.ReadArray(i => new CGameScriptMapBotPath()
+                n.botPaths = r.ReadArray(i => new BotPath()
                 {
                     Clan = r.ReadInt32(),
                     Path = r.ReadArray(j => r.ReadVec3()).ToList(),
@@ -3636,6 +3636,19 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
+
+        #endregion
+
+        #region Other classes
+
+        public class BotPath
+        {
+            public int Clan { get; set; }
+            public List<Vec3> Path { get; set; }
+            public bool IsFlying { get; set; }
+            public CGameWaypointSpecialProperty WaypointSpecialProperty { get; set; }
+            public bool IsAutonomous { get; set; }
+        }
 
         #endregion
     }
