@@ -71,8 +71,8 @@ namespace GBX.NET.Engines.Game
                     rw.Byte(Unknown);
                     rw.Vec3(Unknown);
                     n.RoadChunks = rw.Array(n.RoadChunks,
-                        i => rw.Reader.ReadNodeRef<CPlugRoadChunk>(),
-                        x => rw.Writer.Write(x));
+                        r => r.ReadNodeRef<CPlugRoadChunk>(),
+                        (x, w) => w.Write(x));
                 }
             }
         }

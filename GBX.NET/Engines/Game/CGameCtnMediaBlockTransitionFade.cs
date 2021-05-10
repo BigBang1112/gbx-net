@@ -10,13 +10,28 @@ namespace GBX.NET.Engines.Game
     [Node(0x030AB000)]
     public class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlock
     {
+        #region Fields
+
+        private Key[] keys;
+        private Vec3 color;
+
+        #endregion
+
         #region Properties
 
         [NodeMember]
-        public Key[] Keys { get; set; }
+        public Key[] Keys
+        {
+            get => keys;
+            set => keys = value;
+        }
 
         [NodeMember]
-        public Vec3 Color { get; set; }
+        public Vec3 Color
+        {
+            get => color;
+            set => color = value;
+        }
 
         #endregion
 
@@ -29,24 +44,18 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaBlockTransitionFade n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, i =>
+                n.Keys = rw.Array(n.Keys, r => new Key()
                 {
-                    var time = rw.Reader.ReadSingle();
-                    var opacity = rw.Reader.ReadSingle();
-
-                    return new Key()
-                    {
-                        Time = time,
-                        Opacity = opacity
-                    };
+                    Time = r.ReadSingle(),
+                    Opacity = r.ReadSingle()
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.Opacity);
+                    w.Write(x.Time);
+                    w.Write(x.Opacity);
                 });
 
-                n.Color = rw.Vec3(n.Color);
+                rw.Vec3(ref n.color);
                 rw.Single(Unknown);
             }
         }

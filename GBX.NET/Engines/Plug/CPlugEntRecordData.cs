@@ -40,35 +40,35 @@ namespace GBX.NET.Engines.Plug
                     {
                         var u01 = gbxr.ReadInt32();
                         var ghostLength = gbxr.ReadInt32(); // milliseconds
-                        var objects = gbxr.ReadArray<object>(() =>
+                        var objects = gbxr.ReadArray<object>(r1 =>
                         {
-                            var nodeId = gbxr.ReadUInt32();
+                            var nodeId = r1.ReadUInt32();
                             Names.TryGetValue(nodeId, out string nodeName);
 
                             return new
                             {
                                 nodeId,
                                 nodeName,
-                                obj_u01 = gbxr.ReadInt32(),
-                                obj_u02 = gbxr.ReadInt32(),
-                                obj_u03 = gbxr.ReadInt32(),
-                                mwbuffer = gbxr.ReadInt32(),
-                                obj_u05 = gbxr.ReadInt32()
+                                obj_u01 = r1.ReadInt32(),
+                                obj_u02 = r1.ReadInt32(),
+                                obj_u03 = r1.ReadInt32(),
+                                mwbuffer = r1.ReadInt32(),
+                                obj_u05 = r1.ReadInt32()
                             };
                         });
 
                         if (Version >= 2)
                         {
-                            var objcts2 = gbxr.ReadArray<object>(() =>
+                            var objcts2 = gbxr.ReadArray<object>(r1 =>
                             {
-                                var u02 = gbxr.ReadInt32();
-                                var u03 = gbxr.ReadInt32();
+                                var u02 = r1.ReadInt32();
+                                var u03 = r1.ReadInt32();
 
                                 uint? clas = null;
                                 string clasName = null;
                                 if (Version >= 4)
                                 {
-                                    clas = gbxr.ReadUInt32();
+                                    clas = r1.ReadUInt32();
                                     Names.TryGetValue(clas.Value, out clasName);
                                 }
 

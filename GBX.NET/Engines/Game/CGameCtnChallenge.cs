@@ -1306,9 +1306,9 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// Transfers the MediaTracker from <see cref="Chunk03043021"/> (up to TMUF) to <see cref="Chunk03043049"/> (ManiaPlanet and Trackmania®). If <see cref="Chunk03043049"/> is already presented, no action is performed.
         /// </summary>
-        /// <param name="upsaleTriggerCoord">Defines how many times the same coord should repeat.</param>
+        /// <param name="upscaleTriggerCoord">Defines how many times the same coord should repeat.</param>
         /// <returns>Returns true if any action was performed, otherwise false.</returns>
-        public bool TransferMediaTrackerTo049(int upsaleTriggerCoord = 3)
+        public bool TransferMediaTrackerTo049(int upscaleTriggerCoord = 3)
         {
             var chunk021 = GetChunk<Chunk03043021>();
             var chunk049 = CreateChunk<Chunk03043049>();
@@ -1319,10 +1319,10 @@ namespace GBX.NET.Engines.Game
                 ConvertMediaClip(ClipIntro);
 
             if (ClipGroupInGame != null)
-                ConvertMediaClipGroup(ClipGroupInGame);
+                ConvertMediaClipGroup(ClipGroupInGame, upscaleTriggerCoord);
 
             if (ClipGroupEndRace != null)
-                ConvertMediaClipGroup(ClipGroupEndRace);
+                ConvertMediaClipGroup(ClipGroupEndRace, upscaleTriggerCoord);
 
             RemoveChunk<Chunk03043021>();
 
@@ -1333,7 +1333,7 @@ namespace GBX.NET.Engines.Game
                         ConvertMediaTrack(track);
             }
 
-            void ConvertMediaClipGroup(CGameCtnMediaClipGroup node)
+            void ConvertMediaClipGroup(CGameCtnMediaClipGroup node, int upscTriggerCoord)
             {
                 foreach(var clip in node.Clips)
                 {
@@ -1343,11 +1343,11 @@ namespace GBX.NET.Engines.Game
 
                     for (var i = 0; i < trigger.Coords.Length; i++)
                     {
-                        coords[i] = coords[i] * (upsaleTriggerCoord, 1, upsaleTriggerCoord);
+                        coords[i] = coords[i] * (upscTriggerCoord, 1, upscTriggerCoord);
 
-                        for (var x = 0; x < upsaleTriggerCoord; x++)
+                        for (var x = 0; x < upscTriggerCoord; x++)
                         {
-                            for (var z = 0; z < upsaleTriggerCoord; z++)
+                            for (var z = 0; z < upscTriggerCoord; z++)
                             {
                                 coords.Add(coords[i] + new Int3(x, 0, z));
                             }
@@ -2344,7 +2344,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.Array(ref n.checkpoints, i => rw.Reader.ReadInt3(), x => rw.Writer.Write(x));
+                rw.Array(ref n.checkpoints, r => r.ReadInt3(), (x, w) => w.Write(x));
             }
         }
 
@@ -3090,10 +3090,9 @@ namespace GBX.NET.Engines.Game
                 w.Write(Version);
 
                 using (var ms = new MemoryStream())
-                using (var w2 = new GameBoxWriter(ms))
+                using (var w1 = new GameBoxWriter(ms))
                 {
-
-                    w2.Write(n.genealogies.Result, x =>
+                    w1.Write(n.genealogies.Result, (x, w2) =>
                     {
                         w2.Write(0x0311D000);
                         x.Write(w2);
@@ -3163,21 +3162,18 @@ namespace GBX.NET.Engines.Game
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
 
-                n.BakedBlocks = rw.Array(n.BakedBlocks, i =>
+                n.BakedBlocks = rw.Array(n.BakedBlocks, r => new CGameCtnBlock(
+                    name: r.ReadId(),
+                    direction: (Direction)r.ReadByte(),
+                    coord: (Int3)r.ReadByte3(),
+                    flags: r.ReadInt32()
+                ),
+                (x, w) =>
                 {
-                    return new CGameCtnBlock(
-                        rw.Reader.ReadId(), 
-                        (Direction)rw.Reader.ReadByte(), 
-                        (Int3)rw.Reader.ReadByte3(),
-                        rw.Reader.ReadInt32()
-                    );
-                },
-                x =>
-                {
-                    rw.Writer.WriteId(x.Name);
-                    rw.Writer.Write((byte)x.Direction);
-                    rw.Writer.Write((Byte3)x.Coord);
-                    rw.Writer.Write(x.Flags);
+                    w.WriteId(x.Name);
+                    w.Write((byte)x.Direction);
+                    w.Write((Byte3)x.Coord);
+                    w.Write(x.Flags);
                 });
 
                 rw.Int32(Unknown);
@@ -3380,7 +3376,7 @@ namespace GBX.NET.Engines.Game
                 rw.List(ref n.botPaths, r => new BotPath()
                 {
                     Clan = r.ReadInt32(),
-                    Path = r.ReadArray(() => r.ReadVec3()).ToList(),
+                    Path = r.ReadArray(r1 => r1.ReadVec3()).ToList(),
                     IsFlying = r.ReadBoolean(),
                     WaypointSpecialProperty = r.ReadNodeRef<CGameWaypointSpecialProperty>(),
                     IsAutonomous = r.ReadBoolean()
@@ -3388,7 +3384,7 @@ namespace GBX.NET.Engines.Game
                 (x, w) =>
                 {
                     w.Write(x.Clan);
-                    w.Write(x.Path, y => w.Write(y));
+                    w.Write(x.Path, (y, w1) => w1.Write(y));
                     w.Write(x.IsFlying);
                     w.Write(x.WaypointSpecialProperty);
                     w.Write(x.IsAutonomous);
@@ -3423,7 +3419,7 @@ namespace GBX.NET.Engines.Game
                 U01 = r.ReadInt32();
                 var size = r.ReadInt32();
 
-                var embedded = r.ReadArray(() => r.ReadIdent());
+                var embedded = r.ReadArray(r1 => r1.ReadIdent());
 
                 n.originalEmbedZip = r.ReadBytes();
                 if (n.originalEmbedZip.Length > 0)
@@ -3443,7 +3439,7 @@ namespace GBX.NET.Engines.Game
                     }
                 }
 
-                Textures = r.ReadArray(() => r.ReadString());
+                Textures = r.ReadArray(r1 => r1.ReadString());
             }
 
             public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
@@ -3479,7 +3475,7 @@ namespace GBX.NET.Engines.Game
                         }
                     }
 
-                    writer.Write(embedded.ToArray(), x => writer.Write(x));
+                    writer.Write(embedded.ToArray(), (x, w1) => w1.Write(x));
 
                     using (var zipStream = new MemoryStream())
                     {
@@ -3488,7 +3484,7 @@ namespace GBX.NET.Engines.Game
                         writer.Write(zipStream.ToArray(), 0, (int)zipStream.Length);
                     }
 
-                    writer.Write(Textures, x => w.Write(x));
+                    writer.Write(Textures, (x, w1) => w1.Write(x));
 
                     w.Write((int)ms.Length);
                     w.Write(ms.ToArray());

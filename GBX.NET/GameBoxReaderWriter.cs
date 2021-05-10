@@ -142,12 +142,12 @@ namespace GBX.NET
 
         public T[] ArrayNode<T>(T[] array) where T : Node
         {
-            return Array(array, () => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
+            return Array(array, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
 
         public void ArrayNode<T>(ref T[] array) where T : Node
         {
-            array = Array(array, () => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
+            array = Array(array, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
 
         public IEnumerable<T> Enumerable<T>(IEnumerable<T> enumerable) where T : Node
@@ -202,12 +202,12 @@ namespace GBX.NET
 
         public IEnumerable<T> EnumerableNode<T>(IEnumerable<T> enumerable) where T : Node
         {
-            return Enumerable(enumerable, () => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
+            return Enumerable(enumerable, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
 
         public void EnumerableNode<T>(ref IEnumerable<T> enumerable) where T : Node
         {
-            enumerable = Enumerable(enumerable, () => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
+            enumerable = Enumerable(enumerable, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
 
         public List<T> List<T>(List<T> list) where T : Node
@@ -262,12 +262,12 @@ namespace GBX.NET
 
         public List<T> ListNode<T>(List<T> list) where T : Node
         {
-            return List(list, () => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
+            return List(list, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
 
         public void ListNode<T>(ref List<T> list) where T : Node
         {
-            list = List(list, () => Reader.ReadNodeRef<T>(), x => Writer.Write(x));
+            list = List(list, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
 
         public Dictionary<TKey, TValue> Dictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary)

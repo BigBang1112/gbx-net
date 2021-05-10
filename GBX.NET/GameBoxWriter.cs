@@ -137,6 +137,21 @@ namespace GBX.NET
             }
         }
 
+        public void Write<T>(List<T> list, Action<T, GameBoxWriter> forLoop)
+        {
+            if (list == null)
+            {
+                Write(0);
+            }
+            else
+            {
+                Write(list.Count);
+
+                for (var i = 0; i < list.Count; i++)
+                    forLoop.Invoke(list[i], this);
+            }
+        }
+
         public void Write<T>(IEnumerable<T> enumerable, Action<T> forLoop)
         {
             if (enumerable == null)

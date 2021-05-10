@@ -33,24 +33,24 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnMediaBlockCameraCustom n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                n.Keys = r.ReadArray(() =>
+                n.Keys = r.ReadArray(r1 =>
                 {
-                    var time = r.ReadSingle();
-                    var u01 = r.ReadInt32(); // 1
-                    var u02 = r.ReadInt32(); // 0
-                    var u03 = r.ReadInt32(); // 0
-                    var position = r.ReadVec3();
-                    var pitchYawRoll = r.ReadVec3(); // in radians
-                    var fov = r.ReadSingle();
-                    var u04 = r.ReadInt32(); // 0
-                    var u05 = r.ReadInt32(); // -1
-                    var u06 = r.ReadInt32(); // 1
-                    var u07 = r.ReadInt32(); // -1
-                    var u08 = r.ReadSingle();
-                    var u09 = r.ReadSingle();
-                    var u10 = r.ReadSingle();
-                    var u11 = r.ReadSingle();
-                    var u12 = r.ReadSingle();
+                    var time = r1.ReadSingle();
+                    var u01 = r1.ReadInt32(); // 1
+                    var u02 = r1.ReadInt32(); // 0
+                    var u03 = r1.ReadInt32(); // 0
+                    var position = r1.ReadVec3();
+                    var pitchYawRoll = r1.ReadVec3(); // in radians
+                    var fov = r1.ReadSingle();
+                    var u04 = r1.ReadInt32(); // 0
+                    var u05 = r1.ReadInt32(); // -1
+                    var u06 = r1.ReadInt32(); // 1
+                    var u07 = r1.ReadInt32(); // -1
+                    var u08 = r1.ReadSingle();
+                    var u09 = r1.ReadSingle();
+                    var u10 = r1.ReadSingle();
+                    var u11 = r1.ReadSingle();
+                    var u12 = r1.ReadSingle();
 
                     return new Key()
                     {
@@ -69,22 +69,22 @@ namespace GBX.NET.Engines.Game
 
             public override void Write(CGameCtnMediaBlockCameraCustom n, GameBoxWriter w, GameBoxReader unknownR)
             {
-                w.Write(n.Keys?.ToArray(), x =>
+                w.Write(n.Keys?.ToArray(), (x, w1) =>
                 {
-                    w.Write(x.Time);
-                    w.Write((int)x.Unknown.ElementAtOrDefault(0));
-                    w.Write((int)x.Unknown.ElementAtOrDefault(1));
-                    w.Write((int)x.Unknown.ElementAtOrDefault(2));
-                    w.Write(x.Position);
-                    w.Write(x.PitchYawRoll);
-                    w.Write(x.FOV);
-                    w.Write((int)x.Unknown.ElementAtOrDefault(3));
-                    w.Write((int)x.Unknown.ElementAtOrDefault(4));
-                    w.Write((int)x.Unknown.ElementAtOrDefault(5));
-                    w.Write((int)x.Unknown.ElementAtOrDefault(6));
-                    w.Write(x.TargetPosition.GetValueOrDefault());
-                    w.Write(x.LeftTangent);
-                    w.Write(x.RightTangent);
+                    w1.Write(x.Time);
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(0));
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(1));
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(2));
+                    w1.Write(x.Position);
+                    w1.Write(x.PitchYawRoll);
+                    w1.Write(x.FOV);
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(3));
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(4));
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(5));
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(6));
+                    w1.Write(x.TargetPosition.GetValueOrDefault());
+                    w1.Write(x.LeftTangent);
+                    w1.Write(x.RightTangent);
                 });
             }
         }
@@ -101,22 +101,22 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnMediaBlockCameraCustom n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                n.Keys = r.ReadArray(() =>
+                n.Keys = r.ReadArray(r1 =>
                 {
-                    var time = r.ReadSingle();
-                    var a = r.ReadInt32(); // 1
-                    var b = r.ReadInt32(); // 0
-                    var c = r.ReadInt32(); // 0
-                    var position = r.ReadVec3();
-                    var pitchYawRoll = r.ReadVec3(); // in radians
-                    var fov = r.ReadSingle();
-                    var d = r.ReadInt32(); // 0
-                    var e = r.ReadInt32(); // -1
-                    var f = r.ReadInt32(); // 1
-                    var g = r.ReadInt32(); // -1
-                    var targetPosition = r.ReadVec3();
-                    var leftTangent = r.ReadVec3();
-                    var rightTangent = r.ReadVec3();
+                    var time = r1.ReadSingle();
+                    var a = r1.ReadInt32(); // 1
+                    var b = r1.ReadInt32(); // 0
+                    var c = r1.ReadInt32(); // 0
+                    var position = r1.ReadVec3();
+                    var pitchYawRoll = r1.ReadVec3(); // in radians
+                    var fov = r1.ReadSingle();
+                    var d = r1.ReadInt32(); // 0
+                    var e = r1.ReadInt32(); // -1
+                    var f = r1.ReadInt32(); // 1
+                    var g = r1.ReadInt32(); // -1
+                    var targetPosition = r1.ReadVec3();
+                    var leftTangent = r1.ReadVec3();
+                    var rightTangent = r1.ReadVec3();
 
                     return new Key()
                     {
@@ -138,22 +138,22 @@ namespace GBX.NET.Engines.Game
 
             public override void Write(CGameCtnMediaBlockCameraCustom n, GameBoxWriter w, GameBoxReader unknownR)
             {
-                w.Write(n.Keys?.ToArray(), x =>
+                w.Write(n.Keys?.ToArray(), (x, w1) =>
                 {
-                    w.Write(x.Time);
-                    w.Write((int)x.Unknown.ElementAtOrDefault(0));
-                    w.Write((int)x.Unknown.ElementAtOrDefault(1));
-                    w.Write((int)x.Unknown.ElementAtOrDefault(2));
-                    w.Write(x.Position);
-                    w.Write(x.PitchYawRoll);
-                    w.Write(x.FOV);
-                    w.Write((int)x.Unknown.ElementAtOrDefault(3));
-                    w.Write((int)x.Unknown.ElementAtOrDefault(4));
-                    w.Write((int)x.Unknown.ElementAtOrDefault(5));
-                    w.Write((int)x.Unknown.ElementAtOrDefault(6));
-                    w.Write(x.TargetPosition.GetValueOrDefault());
-                    w.Write(x.LeftTangent);
-                    w.Write(x.RightTangent);
+                    w1.Write(x.Time);
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(0));
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(1));
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(2));
+                    w1.Write(x.Position);
+                    w1.Write(x.PitchYawRoll);
+                    w1.Write(x.FOV);
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(3));
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(4));
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(5));
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(6));
+                    w1.Write(x.TargetPosition.GetValueOrDefault());
+                    w1.Write(x.LeftTangent);
+                    w1.Write(x.RightTangent);
                 });
             }
         }
@@ -172,22 +172,22 @@ namespace GBX.NET.Engines.Game
 
             public override void Read(CGameCtnMediaBlockCameraCustom n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                n.Keys = r.ReadArray(() =>
+                n.Keys = r.ReadArray(r1 =>
                 {
-                    var time = r.ReadSingle();
-                    var a = r.ReadInt32(); // 1
-                    var b = r.ReadInt32(); // 0
-                    var c = r.ReadInt32(); // 0
-                    var position = r.ReadVec3();
-                    var pitchYawRoll = r.ReadVec3(); // in radians
-                    var fov = r.ReadSingle();
-                    var d = r.ReadInt32(); // 0
-                    var anchor = r.ReadInt32(); // -1 if not set, 0 for local player
-                    var f = r.ReadInt32(); // 1
-                    var target = r.ReadInt32(); // -1 if not set, 0 for local player
-                    var targetPosition = r.ReadVec3();
-                    var leftTangent = r.ReadVec3();
-                    var rightTangent = r.ReadVec3();
+                    var time = r1.ReadSingle();
+                    var a = r1.ReadInt32(); // 1
+                    var b = r1.ReadInt32(); // 0
+                    var c = r1.ReadInt32(); // 0
+                    var position = r1.ReadVec3();
+                    var pitchYawRoll = r1.ReadVec3(); // in radians
+                    var fov = r1.ReadSingle();
+                    var d = r1.ReadInt32(); // 0
+                    var anchor = r1.ReadInt32(); // -1 if not set, 0 for local player
+                    var f = r1.ReadInt32(); // 1
+                    var target = r1.ReadInt32(); // -1 if not set, 0 for local player
+                    var targetPosition = r1.ReadVec3();
+                    var leftTangent = r1.ReadVec3();
+                    var rightTangent = r1.ReadVec3();
 
                     return new Key()
                     {
@@ -211,22 +211,22 @@ namespace GBX.NET.Engines.Game
 
             public override void Write(CGameCtnMediaBlockCameraCustom n, GameBoxWriter w, GameBoxReader unknownR)
             {
-                w.Write(n.Keys.ToArray(), x =>
+                w.Write(n.Keys.ToArray(), (x, w1) =>
                 {
-                    w.Write(x.Time);
-                    w.Write((int)x.Unknown.ElementAtOrDefault(0));
-                    w.Write((int)x.Unknown.ElementAtOrDefault(1));
-                    w.Write((int)x.Unknown.ElementAtOrDefault(2));
-                    w.Write(x.Position);
-                    w.Write(x.PitchYawRoll);
-                    w.Write(x.FOV);
-                    w.Write((int)x.Unknown.ElementAtOrDefault(3));
-                    w.Write(x.Anchor);
-                    w.Write((int)x.Unknown.ElementAtOrDefault(4));
-                    w.Write(x.Target);
-                    w.Write(x.TargetPosition.GetValueOrDefault());
-                    w.Write(x.LeftTangent);
-                    w.Write(x.RightTangent);
+                    w1.Write(x.Time);
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(0));
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(1));
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(2));
+                    w1.Write(x.Position);
+                    w1.Write(x.PitchYawRoll);
+                    w1.Write(x.FOV);
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(3));
+                    w1.Write(x.Anchor);
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(4));
+                    w1.Write(x.Target);
+                    w1.Write(x.TargetPosition.GetValueOrDefault());
+                    w1.Write(x.LeftTangent);
+                    w1.Write(x.RightTangent);
                 });
             }
         }
@@ -259,25 +259,25 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnMediaBlockCameraCustom n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
-                n.Keys = r.ReadArray(() =>
+                n.Keys = r.ReadArray(r1 =>
                 {
-                    var time = r.ReadSingle();
-                    var a = r.ReadInt32(); // 1
-                    var anchorRot = r.ReadBoolean(); // 0
-                    var anchor = r.ReadInt32(); // -1 if not set, 0 for local player
-                    var anchorVis = r.ReadBoolean(); // 1
-                    var target = r.ReadInt32(); // -1
-                    var position = r.ReadVec3();
-                    var pitchYawRoll = r.ReadVec3(); // in radians
-                    var fov = r.ReadSingle();
-                    var f = r.ReadInt32(); // 0
-                    var g = r.ReadInt32(); // 0
-                    var h = r.ReadInt32(); // 0
-                    var zIndex = r.ReadSingle();
-                    var leftTangent = r.ReadVec3();
-                    var ii = r.ReadArray<float>(8);
-                    var rightTangent = r.ReadVec3();
-                    var j = r.ReadArray<float>(8);
+                    var time = r1.ReadSingle();
+                    var a = r1.ReadInt32(); // 1
+                    var anchorRot = r1.ReadBoolean(); // 0
+                    var anchor = r1.ReadInt32(); // -1 if not set, 0 for local player
+                    var anchorVis = r1.ReadBoolean(); // 1
+                    var target = r1.ReadInt32(); // -1
+                    var position = r1.ReadVec3();
+                    var pitchYawRoll = r1.ReadVec3(); // in radians
+                    var fov = r1.ReadSingle();
+                    var f = r1.ReadInt32(); // 0
+                    var g = r1.ReadInt32(); // 0
+                    var h = r1.ReadInt32(); // 0
+                    var zIndex = r1.ReadSingle();
+                    var leftTangent = r1.ReadVec3();
+                    var ii = r1.ReadArray<float>(8);
+                    var rightTangent = r1.ReadVec3();
+                    var j = r1.ReadArray<float>(8);
 
                     return new Key()
                     {
@@ -305,25 +305,25 @@ namespace GBX.NET.Engines.Game
             {
                 w.Write(Version);
 
-                w.Write(n.Keys?.ToArray(), x =>
+                w.Write(n.Keys?.ToArray(), (x, w1) =>
                 {
-                    w.Write(x.Time);
-                    w.Write((int)x.Unknown.ElementAtOrDefault(0));
-                    w.Write(x.AnchorRot);
-                    w.Write(x.Anchor);
-                    w.Write(x.AnchorVis);
-                    w.Write(x.Target);
-                    w.Write(x.Position);
-                    w.Write(x.PitchYawRoll);
-                    w.Write(x.FOV);
-                    w.Write((int)x.Unknown.ElementAtOrDefault(1));
-                    w.Write((int)x.Unknown.ElementAtOrDefault(2));
-                    w.Write((int)x.Unknown.ElementAtOrDefault(3));
-                    w.Write(x.ZIndex.GetValueOrDefault());
-                    w.Write(x.LeftTangent);
-                    w.Write((float[])x.Unknown.ElementAtOrDefault(4));
-                    w.Write(x.RightTangent);
-                    w.Write((float[])x.Unknown.ElementAtOrDefault(5));
+                    w1.Write(x.Time);
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(0));
+                    w1.Write(x.AnchorRot);
+                    w1.Write(x.Anchor);
+                    w1.Write(x.AnchorVis);
+                    w1.Write(x.Target);
+                    w1.Write(x.Position);
+                    w1.Write(x.PitchYawRoll);
+                    w1.Write(x.FOV);
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(1));
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(2));
+                    w1.Write((int)x.Unknown.ElementAtOrDefault(3));
+                    w1.Write(x.ZIndex.GetValueOrDefault());
+                    w1.Write(x.LeftTangent);
+                    w1.Write((float[])x.Unknown.ElementAtOrDefault(4));
+                    w1.Write(x.RightTangent);
+                    w1.Write((float[])x.Unknown.ElementAtOrDefault(5));
                 });
             }
         }

@@ -21,17 +21,17 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaBlockTime n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, i => new Key()
+                n.Keys = rw.Array(n.Keys, r => new Key()
                 {
-                    Time = rw.Reader.ReadSingle(),
-                    TimeValue = rw.Reader.ReadSingle(),
-                    Tangent = rw.Reader.ReadSingle()
+                    Time = r.ReadSingle(),
+                    TimeValue = r.ReadSingle(),
+                    Tangent = r.ReadSingle()
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.TimeValue);
-                    rw.Writer.Write(x.Tangent);
+                    w.Write(x.Time);
+                    w.Write(x.TimeValue);
+                    w.Write(x.Tangent);
                 });
             }
         }

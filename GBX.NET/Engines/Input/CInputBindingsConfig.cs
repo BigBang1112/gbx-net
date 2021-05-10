@@ -17,17 +17,17 @@ namespace GBX.NET.Engines.Input
             public override void Read(CInputBindingsConfig n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 var race = r.ReadString();
-                n.Bindings = r.ReadArray<Binding>(i =>
+                n.Bindings = r.ReadArray<Binding>((i, r1) =>
                 {
-                    if (i == 0) r.ReadInt32();
+                    if (i == 0) r1.ReadInt32();
 
                     return new Binding
                     {
-                        KeyCode = r.ReadInt32(),
-                        DeviceGuid = r.ReadId(),
-                        U01 = r.ReadInt32(),
-                        U02 = r.ReadInt32(),
-                        Action = r.ReadString()
+                        KeyCode = r1.ReadInt32(),
+                        DeviceGuid = r1.ReadId(),
+                        U01 = r1.ReadInt32(),
+                        U02 = r1.ReadInt32(),
+                        Action = r1.ReadString()
                     };
                 }).ToList();
             }
@@ -39,7 +39,7 @@ namespace GBX.NET.Engines.Input
             public override void Read(CInputBindingsConfig n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 n.Devices = new ReadOnlyCollection<string>(
-                    r.ReadArray(() => r.ReadId()).Select(x => x.ToString()).ToList()
+                    r.ReadArray(r1 => r1.ReadId()).Select(x => x.ToString()).ToList()
                 );
             }
         }

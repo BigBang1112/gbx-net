@@ -28,12 +28,12 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnMediaBlockFog n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 Version = r.ReadInt32();
-                n.Keys = r.ReadArray(() =>
+                n.Keys = r.ReadArray(r1 =>
                 {
-                    var time = r.ReadSingle();
-                    var intensity = r.ReadSingle();
-                    var skyIntensity = r.ReadSingle();
-                    var distance = r.ReadSingle();
+                    var time = r1.ReadSingle();
+                    var intensity = r1.ReadSingle();
+                    var skyIntensity = r1.ReadSingle();
+                    var distance = r1.ReadSingle();
 
                     float? coefficient = null;
                     Vec3? color = null;
@@ -42,13 +42,13 @@ namespace GBX.NET.Engines.Game
 
                     if (Version >= 1)
                     {
-                        coefficient = r.ReadSingle();
-                        color = r.ReadVec3();
+                        coefficient = r1.ReadSingle();
+                        color = r1.ReadVec3();
 
                         if (Version >= 2)
                         {
-                            cloudsOpacity = r.ReadSingle();
-                            cloudsSpeed = r.ReadSingle();
+                            cloudsOpacity = r1.ReadSingle();
+                            cloudsSpeed = r1.ReadSingle();
                         }
                     }
 
@@ -70,22 +70,22 @@ namespace GBX.NET.Engines.Game
             {
                 w.Write(Version);
 
-                w.Write(n.Keys, x =>
+                w.Write(n.Keys, (x, w1) =>
                 {
-                    w.Write(x.Time);
-                    w.Write(x.Intensity);
-                    w.Write(x.SkyIntensity);
-                    w.Write(x.Distance);
+                    w1.Write(x.Time);
+                    w1.Write(x.Intensity);
+                    w1.Write(x.SkyIntensity);
+                    w1.Write(x.Distance);
 
                     if (Version >= 1)
                     {
-                        w.Write(x.Coefficient.GetValueOrDefault(1));
-                        w.Write(x.Coefficient.GetValueOrDefault());
+                        w1.Write(x.Coefficient.GetValueOrDefault(1));
+                        w1.Write(x.Coefficient.GetValueOrDefault());
 
                         if (Version >= 2)
                         {
-                            w.Write(x.CloudsOpacity.GetValueOrDefault(1));
-                            w.Write(x.CloudsSpeed.GetValueOrDefault(1));
+                            w1.Write(x.CloudsOpacity.GetValueOrDefault(1));
+                            w1.Write(x.CloudsSpeed.GetValueOrDefault(1));
                         }
                     }
                 });

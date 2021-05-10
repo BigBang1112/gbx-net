@@ -90,7 +90,7 @@ namespace GBX.NET.Engines.Game
             {
                 _ = r.ReadId();
                 _ = r.ReadInt32();
-                _ = r.ReadArray(() => r.ReadInt32());
+                _ = r.ReadArray(r1 => r1.ReadInt32());
                 _ = r.ReadInt32();
                 _ = r.ReadArray<float>(3);
                 n.Vehicle = r.ReadIdent();
@@ -352,7 +352,7 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnCollection n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 _ = r.ReadInt32();
-                _ = r.ReadArray(() => r.ReadId());
+                _ = r.ReadArray(r1 => r1.ReadId());
             }
         }
 

@@ -137,12 +137,12 @@ namespace GBX.NET.Engines.Plug
             {
                 Version = r.ReadInt32();
 
-                n.materials = r.ReadArray(() =>
+                n.materials = r.ReadArray(r1 =>
                 {
-                    var name = r.ReadString();
+                    var name = r1.ReadString();
                     if (name.Length == 0)  // If the material file exists (name != ""), it references the file instead
                     {
-                        var material = r.ReadNodeRef<CPlugMaterialUserInst>();
+                        var material = r1.ReadNodeRef<CPlugMaterialUserInst>();
                         return material;
                     }
                     return null;
@@ -179,59 +179,59 @@ namespace GBX.NET.Engines.Plug
             {
                 Version = r.ReadInt32();
 
-                n.Layers = r.ReadArray<Layer>(() =>
+                n.Layers = r.ReadArray<Layer>(r1 =>
                 {
-                    var type = (ELayerType)r.ReadInt32();
-                    var u01 = r.ReadInt32(); // 2
-                    var u02 = r.ReadInt32();
-                    var layerId = r.ReadId(); // Layer0
-                    var layerName = r.ReadString();
-                    var isEnabled = r.ReadBoolean();
+                    var type = (ELayerType)r1.ReadInt32();
+                    var u01 = r1.ReadInt32(); // 2
+                    var u02 = r1.ReadInt32();
+                    var layerId = r1.ReadId(); // Layer0
+                    var layerName = r1.ReadString();
+                    var isEnabled = r1.ReadBoolean();
 
-                    var u04 = r.ReadInt32(); // 1
+                    var u04 = r1.ReadInt32(); // 1
 
                     if (type == ELayerType.Geometry || type == ELayerType.Trigger)
                     {
-                        var u05 = r.ReadInt32(); // 32
-                        var u06 = r.ReadInt32(); // 4
-                        var u07 = r.ReadInt32(); // 3
-                        var u08 = r.ReadInt32(); // 4
-                        var u09 = r.ReadSingle(); // 64
-                        var u10 = r.ReadInt32(); // 2
-                        var u11 = r.ReadSingle(); // 128
-                        var u12 = r.ReadInt32(); // 1
-                        var u13 = r.ReadSingle(); // 192
-                        var u14 = r.ReadInt32(); // 0
+                        var u05 = r1.ReadInt32(); // 32
+                        var u06 = r1.ReadInt32(); // 4
+                        var u07 = r1.ReadInt32(); // 3
+                        var u08 = r1.ReadInt32(); // 4
+                        var u09 = r1.ReadSingle(); // 64
+                        var u10 = r1.ReadInt32(); // 2
+                        var u11 = r1.ReadSingle(); // 128
+                        var u12 = r1.ReadInt32(); // 1
+                        var u13 = r1.ReadSingle(); // 192
+                        var u14 = r1.ReadInt32(); // 0
 
-                        var groups = r.ReadArray(() => new Group()
+                        var groups = r1.ReadArray(r2 => new Group()
                         {
-                            U01 = r.ReadInt32(),
-                            U02 = r.ReadInt32(),
-                            U03 = r.ReadInt32(),
-                            Name = r.ReadString(),
-                            U04 = r.ReadInt32(),
-                            U05 = r.ReadArray<int>()
+                            U01 = r2.ReadInt32(),
+                            U02 = r2.ReadInt32(),
+                            U03 = r2.ReadInt32(),
+                            Name = r2.ReadString(),
+                            U04 = r2.ReadInt32(),
+                            U05 = r2.ReadArray<int>()
                         });
 
                         Vec3[] vertices = null;
                         Int2[] edges = null;
                         Face[] faces = null;
 
-                        var u15 = r.ReadInt32();
+                        var u15 = r1.ReadInt32();
                         if (u15 == 1)
                         {
-                            vertices = r.ReadArray(() => r.ReadVec3());
-                            edges = r.ReadArray(() => r.ReadInt2());
+                            vertices = r1.ReadArray(r2 => r2.ReadVec3());
+                            edges = r1.ReadArray(r2 => r2.ReadInt2());
 
-                            faces = r.ReadArray(() =>
+                            faces = r1.ReadArray(r2 =>
                             {
-                                var uvVertices = r.ReadInt32();
-                                var inds = r.ReadArray<int>(uvVertices);
+                                var uvVertices = r2.ReadInt32();
+                                var inds = r2.ReadArray<int>(uvVertices);
                                 var uv = new Vec2[uvVertices];
                                 for (var k = 0; k < uvVertices; k++)
-                                    uv[k] = r.ReadVec2();
-                                var materialIndex = r.ReadInt32();
-                                var groupIndex = r.ReadInt32();
+                                    uv[k] = r2.ReadVec2();
+                                var materialIndex = r2.ReadInt32();
+                                var groupIndex = r2.ReadInt32();
 
                                 return new Face()
                                 {
@@ -248,32 +248,32 @@ namespace GBX.NET.Engines.Plug
                             throw new NotSupportedException("Unsupported crystal.");
                         }
 
-                        var u16 = r.ReadInt32();
-                        var numUVs = r.ReadInt32();
-                        var numEdges = r.ReadInt32();
-                        var numVerts = r.ReadInt32();
-                        var empty = r.ReadArray<int>(numUVs + numEdges + numVerts);
+                        var u16 = r1.ReadInt32();
+                        var numUVs = r1.ReadInt32();
+                        var numEdges = r1.ReadInt32();
+                        var numVerts = r1.ReadInt32();
+                        var empty = r1.ReadArray<int>(numUVs + numEdges + numVerts);
 
                         if (numUVs + numEdges + numVerts == 0)
                         {
-                            numUVs = r.ReadInt32();
-                            numEdges = r.ReadInt32();
-                            numVerts = r.ReadInt32();
+                            numUVs = r1.ReadInt32();
+                            numEdges = r1.ReadInt32();
+                            numVerts = r1.ReadInt32();
 
-                            empty = r.ReadArray<int>(numUVs + numEdges + numVerts);
+                            empty = r1.ReadArray<int>(numUVs + numEdges + numVerts);
                         }
 
-                        var u17 = r.ReadInt32();
-                        var numGroups2 = r.ReadInt32();
-                        var counter = r.ReadArray<int>(numGroups2);
+                        var u17 = r1.ReadInt32();
+                        var numGroups2 = r1.ReadInt32();
+                        var counter = r1.ReadArray<int>(numGroups2);
 
                         var isVisible = false;
                         var collidable = true;
 
                         if (type == ELayerType.Geometry)
                         {
-                            isVisible = r.ReadBoolean();
-                            collidable = r.ReadBoolean();
+                            isVisible = r1.ReadBoolean();
+                            collidable = r1.ReadBoolean();
                         }
                         else
                         {
@@ -304,21 +304,18 @@ namespace GBX.NET.Engines.Plug
                     }
                     else
                     {
-                        var mask = r.ReadArray(() =>
+                        var mask = r1.ReadArray(r2 => new LayerMask()
                         {
-                            return new LayerMask()
-                            {
-                                GroupIndex = r.ReadInt32(),
-                                LayerId = r.ReadId()
-                            };
+                            GroupIndex = r2.ReadInt32(),
+                            LayerId = r2.ReadId()
                         });
 
-                        var mask_u01 = r.ReadInt32();
+                        var mask_u01 = r1.ReadInt32();
 
                         if (type == ELayerType.Scale)
                         {
-                            var scale = r.ReadVec3();
-                            var independently = r.ReadBoolean();
+                            var scale = r1.ReadVec3();
+                            var independently = r1.ReadBoolean();
 
                             return new ScaleLayer()
                             {
@@ -332,9 +329,9 @@ namespace GBX.NET.Engines.Plug
                         }
                         else if (type == ELayerType.SpawnPosition)
                         {
-                            var position = r.ReadVec3();
-                            var horizontalAngle = r.ReadSingle();
-                            var verticalAngle = r.ReadSingle();
+                            var position = r1.ReadVec3();
+                            var horizontalAngle = r1.ReadSingle();
+                            var verticalAngle = r1.ReadSingle();
 
                             return new SpawnPositionLayer()
                             {
@@ -349,7 +346,7 @@ namespace GBX.NET.Engines.Plug
                         }
                         else if (type == ELayerType.Translation)
                         {
-                            var translation = r.ReadVec3();
+                            var translation = r1.ReadVec3();
 
                             return new TranslationLayer()
                             {
@@ -362,9 +359,9 @@ namespace GBX.NET.Engines.Plug
                         }
                         else if (type == ELayerType.Rotation)
                         {
-                            var rotation = r.ReadSingle(); // in radians
-                            var axis = (EAxis)r.ReadInt32();
-                            var independently = r.ReadBoolean();
+                            var rotation = r1.ReadSingle(); // in radians
+                            var axis = (EAxis)r1.ReadInt32();
+                            var independently = r1.ReadBoolean();
 
                             return new RotationLayer()
                             {
@@ -378,9 +375,9 @@ namespace GBX.NET.Engines.Plug
                         }
                         else if (type == ELayerType.Mirror)
                         {
-                            var axis = (EAxis)r.ReadInt32();
-                            var distance = r.ReadSingle();
-                            var independently = r.ReadBoolean();
+                            var axis = (EAxis)r1.ReadInt32();
+                            var distance = r1.ReadSingle();
+                            var independently = r1.ReadBoolean();
 
                             return new MirrorLayer()
                             {
@@ -399,9 +396,9 @@ namespace GBX.NET.Engines.Plug
                         }
                         else if (type == ELayerType.Chaos)
                         {
-                            var minDistance = r.ReadSingle();
-                            var chaos_u01 = r.ReadSingle();
-                            var maxDistance = r.ReadSingle();
+                            var minDistance = r1.ReadSingle();
+                            var chaos_u01 = r1.ReadSingle();
+                            var maxDistance = r1.ReadSingle();
 
                             return new ChaosLayer()
                             {
@@ -415,7 +412,7 @@ namespace GBX.NET.Engines.Plug
                         }
                         else if (type == ELayerType.Subdivide)
                         {
-                            var subdivisions = r.ReadInt32(); // max 4
+                            var subdivisions = r1.ReadInt32(); // max 4
 
                             return new SubdivideLayer()
                             {
@@ -427,7 +424,7 @@ namespace GBX.NET.Engines.Plug
                         }
                         else if (type == ELayerType.Smooth)
                         {
-                            var intensity = r.ReadInt32(); // max 4
+                            var intensity = r1.ReadInt32(); // max 4
 
                             return new SmoothLayer()
                             {

@@ -733,7 +733,7 @@ namespace GBX.NET.Engines.Game
                 {
                     var r = rw.Reader;
 
-                    var controlNames = r.ReadArray(() => r.ReadId());
+                    var controlNames = r.ReadArray(r1 => r1.ReadId());
 
                     var numEntries = r.ReadInt32();
                     U02 = r.ReadInt32();
@@ -879,7 +879,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.skinPackDescs = rw.Array(n.skinPackDescs, i => rw.Reader.ReadFileRef(), x => rw.Writer.Write(x));
+                n.skinPackDescs = rw.Array(n.skinPackDescs, r => r.ReadFileRef(), (x, w) => w.Write(x));
                 n.ghostNickname = rw.String(n.ghostNickname);
                 n.ghostAvatarName = rw.String(n.ghostAvatarName);
             }

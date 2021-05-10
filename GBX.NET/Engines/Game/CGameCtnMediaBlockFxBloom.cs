@@ -29,24 +29,24 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnMediaBlockFxBloom n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                n.Keys = r.ReadArray(() =>
+                n.Keys = r.ReadArray(r1 =>
                 {
                     return new Key()
                     {
-                        Time = r.ReadSingle(),
-                        Intensity = r.ReadSingle(),
-                        Sensitivity = r.ReadSingle()
+                        Time = r1.ReadSingle(),
+                        Intensity = r1.ReadSingle(),
+                        Sensitivity = r1.ReadSingle()
                     };
                 });
             }
 
             public override void Write(CGameCtnMediaBlockFxBloom n, GameBoxWriter w, GameBoxReader unknownR)
             {
-                w.Write(n.Keys, x =>
+                w.Write(n.Keys, (x, w1) =>
                 {
-                    w.Write(x.Time);
-                    w.Write(x.Intensity);
-                    w.Write(x.Sensitivity);
+                    w1.Write(x.Time);
+                    w1.Write(x.Intensity);
+                    w1.Write(x.Sensitivity);
                 });
             }
         }

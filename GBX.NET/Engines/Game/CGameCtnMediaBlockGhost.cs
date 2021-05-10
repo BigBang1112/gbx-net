@@ -64,15 +64,15 @@ namespace GBX.NET.Engines.Game
 
                 if (Version >= 3)
                 {
-                    n.Keys = rw.Array(n.Keys, i => new Key()
+                    n.Keys = rw.Array(n.Keys, r => new Key()
                     {
-                        Time = rw.Reader.ReadSingle(),
-                        Unknown = rw.Reader.ReadSingle()
+                        Time = r.ReadSingle(),
+                        Unknown = r.ReadSingle()
                     },
-                    x =>
+                    (x, w) =>
                     {
-                        rw.Writer.Write(x.Time);
-                        rw.Writer.Write(x.Unknown);
+                        w.Write(x.Time);
+                        w.Write(x.Unknown);
                     });
                 }
                 else

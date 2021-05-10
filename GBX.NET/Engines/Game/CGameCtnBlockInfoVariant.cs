@@ -51,8 +51,8 @@
                 Version = rw.Int32(Version);
                 rw.Int32(Unknown);
                 n.Mobils = rw.Array(n.Mobils,
-                    i => rw.Reader.ReadNodeRef<CGameCtnBlockInfoMobil>(),
-                    x => rw.Writer.Write(x));
+                    r => r.ReadNodeRef<CGameCtnBlockInfoMobil>(),
+                    (x, w) => w.Write(x));
 
                 if(Version >= 2)
                 {
@@ -115,8 +115,8 @@
                 Version = rw.Int32(Version);
                 var hsdh = rw.Reader.PeekUInt32();
                 n.BlockUnitInfos = rw.Array(n.BlockUnitInfos,
-                    i => rw.Reader.ReadNodeRef<CGameCtnBlockUnitInfo>(),
-                    x => rw.Writer.Write(x));
+                    r => r.ReadNodeRef<CGameCtnBlockUnitInfo>(),
+                    (x, w) => w.Write(x));
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);

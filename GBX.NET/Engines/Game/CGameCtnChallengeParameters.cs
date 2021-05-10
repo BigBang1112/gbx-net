@@ -246,7 +246,7 @@ namespace GBX.NET.Engines.Game
 
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
             {
-                Items = rw.Array(Items, i => rw.Reader.ReadUInt32(), x => rw.Writer.Write(x));
+                Items = rw.Array(Items, r => r.ReadUInt32(), (x, w) => w.Write(x));
             }
         }
 
