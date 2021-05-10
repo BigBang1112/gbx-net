@@ -30,6 +30,7 @@ namespace GBX.NET
         public uint? FaultyChunk { get; private set; }
         [Obsolete]
         public byte[] Rest { get; private set; }
+        [Obsolete]
         public bool Unknown { get; internal set; }
 
         [Obsolete]
@@ -47,7 +48,7 @@ namespace GBX.NET
         {
             get
             {
-                if (Names.TryGetValue(ModernID, out string name))
+                if (Names.TryGetValue(ID, out string name))
                     return name;
                 return GetType().FullName.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::");
             }
@@ -191,8 +192,6 @@ namespace GBX.NET
                     {
                         if (chunkID != 0 && !reflected)
                         {
-                            node.FaultyChunk = chunkID;
-
                             var logChunkError = $"[{node.ClassName}] 0x{chunkID:X8} ERROR (wrong chunk format or unknown unskippable chunk)";
                             if (node.Body?.GBX.ClassID.HasValue == true && Remap(node.Body.GBX.ClassID.Value) == node.ID)
                                 Log.Write(logChunkError, ConsoleColor.Red);
