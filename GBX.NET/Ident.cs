@@ -35,5 +35,6 @@
 
         public static implicit operator Ident((string ID, Collection Collection, string Author) v) => new Ident(v.ID, v.Collection, v.Author);
         public static implicit operator (string ID, Collection Collection, string Author)(Ident v) => (v.ID, v.Collection, v.Author);
+        public static implicit operator Ident(string v) => new Ident(v, new Collection(null), null);
     }
 }
