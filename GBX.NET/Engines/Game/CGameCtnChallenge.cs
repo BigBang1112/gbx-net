@@ -1232,26 +1232,6 @@ namespace GBX.NET.Engines.Game
         /// <returns>Returns the first available block.</returns>
         public IEnumerable<CGameCtnBlock> GetBlocks(int x, int y, int z) => GetBlocks((x, y, z));
 
-        [Obsolete]
-        public void PlaceItem(Ident itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Byte3 blockUnitCoord, Vec3 offsetPivot, int variant = 0)
-        {
-            CreateChunk<Chunk03043040>();
-
-            var it = new CGameCtnAnchoredObject()
-            {
-                ItemModel = itemModel,
-                AbsolutePositionInMap = absolutePosition,
-                PitchYawRoll = pitchYawRoll,
-                BlockUnitCoord = blockUnitCoord,
-                PivotPosition = offsetPivot,
-                Variant = variant
-            };
-            it.Chunks = new ChunkSet();
-            it.CreateChunk<CGameCtnAnchoredObject.Chunk03101002>();
-            it.CreateChunk<CGameCtnAnchoredObject.Chunk03101004>();
-            AnchoredObjects.Add(it);
-        }
-
         /// <summary>
         /// Places an item on a map.
         /// </summary>
