@@ -26,11 +26,13 @@ namespace GBX.NET
         public Chunk ParentChunk { get; set; }
 
         public uint ID { get; }
+        [Obsolete]
         public uint? FaultyChunk { get; private set; }
         [Obsolete]
         public byte[] Rest { get; private set; }
         public bool Unknown { get; internal set; }
 
+        [Obsolete]
         public uint ModernID
         {
             get

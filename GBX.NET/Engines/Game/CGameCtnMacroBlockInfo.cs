@@ -83,7 +83,7 @@ namespace GBX.NET.Engines.Game
 
                     var block = new CGameCtnBlock()
                     {
-                        BlockInfo = ident,
+                        BlockModel = ident,
                         Coord = coord.GetValueOrDefault(),
                         Direction = dir.GetValueOrDefault(),
                         Flags = correctFlags

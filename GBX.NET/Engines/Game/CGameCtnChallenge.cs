@@ -1184,7 +1184,7 @@ namespace GBX.NET.Engines.Game
         public void NewPassword(string password)
         {
             var md5 = MD5.Create();
-            HashedPassword = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
+            hashedPassword = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
 
             //Crc32 crc32 = new Crc32();
             //crc32.Update(Encoding.ASCII.GetBytes("0x" + BitConverter.ToInt16(HashedPassword, 0).ToString() + "???" + MapUid));
@@ -1196,46 +1196,100 @@ namespace GBX.NET.Engines.Game
         /// </summary>
         public void CrackPassword()
         {
-            Password = null;
+            password = null;
             RemoveChunk<Chunk03043029>();
         }
 
         /// <summary>
-        /// Gets the first available block at this position.
+        /// Gets the first block at this position.
         /// </summary>
         /// <param name="pos">Position of the block.</param>
-        /// <returns>Returns the first available block.</returns>
-        public CGameCtnBlock GetBlock(Int3 pos) => Blocks.FirstOrDefault(x => x.Coord == pos);
+        /// <returns>The first available block.</returns>
+        public CGameCtnBlock GetBlock(Int3 pos) => blocks.FirstOrDefault(x => x.Coord == pos);
 
         /// <summary>
-        /// Gets the first available block at this position.
+        /// Gets the first block at this position.
         /// </summary>
-        /// <param name="x">X position of the block.</param>
-        /// <param name="y">Y position of the block.</param>
-        /// <param name="z">Z position of the block.</param>
-        /// <returns>Returns the first available block.</returns>
+        /// <param name="x">X position.</param>
+        /// <param name="y">Y position.</param>
+        /// <param name="z">Z position.</param>
+        /// <returns>The first available block.</returns>
         public CGameCtnBlock GetBlock(int x, int y, int z) => GetBlock((x, y, z));
 
         /// <summary>
-        /// Gets all available blocks at this position.
+        /// Retrieves blocks at this position.
         /// </summary>
         /// <param name="pos">Position of the block.</param>
-        /// <returns>Returns the first available block.</returns>
-        public IEnumerable<CGameCtnBlock> GetBlocks(Int3 pos) => Blocks.Where(x => x.Coord == pos);
+        /// <returns>An enumerable of blocks.</returns>
+        public IEnumerable<CGameCtnBlock> GetBlocks(Int3 pos) => blocks.Where(x => x.Coord == pos);
 
         /// <summary>
-        /// Gets all available block at this position.
+        /// Retrieves blocks at this position.
         /// </summary>
-        /// <param name="x">X position of the block.</param>
-        /// <param name="y">Y position of the block.</param>
-        /// <param name="z">Z position of the block.</param>
-        /// <returns>Returns the first available block.</returns>
+        /// <param name="x">X position.</param>
+        /// <param name="y">Y position.</param>
+        /// <param name="z">Z position.</param>
+        /// <returns>An enumerable of blocks.</returns>
         public IEnumerable<CGameCtnBlock> GetBlocks(int x, int y, int z) => GetBlocks((x, y, z));
+
+        /// <summary>
+        /// Retrieves ghost blocks on the map.
+        /// </summary>
+        /// <returns>An enumerable of ghost blocks.</returns>
+        public IEnumerable<CGameCtnBlock> GetGhostBlocks() => blocks.Where(x => x.IsGhost);
+
+        /// <summary>
+        /// Places a block in the map.
+        /// </summary>
+        /// <param name="blockModel">Block model name to place. Only the name is required, so using <see cref="string"/> works too.</param>
+        /// <param name="coord">Position on the map. Should be always under <see cref="Size"/>, otherwise an overflow can happen.</param>
+        /// <param name="dir">Facing direction of the block.</param>
+        /// <returns>A placed block.</returns>
+        public CGameCtnBlock PlaceBlock(Ident blockModel, Int3 coord, Direction dir)
+        {
+            var block = new CGameCtnBlock()
+            {
+                BlockModel = blockModel,
+                Coord = coord,
+                Direction = dir
+            };
+
+            block.CreateChunk<CGameCtnBlock.Chunk03057002>();
+
+            blocks.Add(block);
+
+            return block;
+        }
+
+        /// <summary>
+        /// Removes all the blocks from the map that match the conditions defined by the specified predicate.
+        /// </summary>
+        /// <param name="match">The <see cref="Predicate{T}"/> delegate that defines the conditions of the elements to remove.</param>
+        public void RemoveAllBlocks(Predicate<CGameCtnBlock> match)
+        {
+            blocks.RemoveAll(match);
+        }
+
+        /// <summary>
+        /// Removes all the blocks from the map.
+        /// </summary>
+        public void RemoveAllBlocks()
+        {
+            ClearBlocks();
+        }
+
+        /// <summary>
+        /// Clears all the blocks from the map.
+        /// </summary>
+        public void ClearBlocks()
+        {
+            blocks.Clear();
+        }
 
         /// <summary>
         /// Places an item on a map.
         /// </summary>
-        /// <param name="itemModel">An item model identification (name, collection and author). Only the name is required.</param>
+        /// <param name="itemModel">An item model identification (name, collection and author). Only the name is required, so using <see cref="string"/> works too.</param>
         /// <param name="absolutePosition">Absolute position in the map.</param>
         /// <param name="pitchYawRoll">Rotation of the item in pitch, yaw, and roll format.</param>
         /// <param name="offsetPivot">Pivot location of the item (relative position of the point the item will rotate around).</param>

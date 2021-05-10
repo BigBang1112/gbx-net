@@ -16,16 +16,20 @@ namespace GBX.NET.Engines.Game
     {
         #region Constants
 
-        const int isGroundBit = 12;
-        const int isSkinnableBit = 15;
-        const int isWaypointBit = 20;
-        const int isGhostBit = 28;
-        const int isFreeBit = 29;
+        private const int isGroundBit = 12;
+        private const int isSkinnableBit = 15;
+        private const int isWaypointBit = 20;
+        private const int isGhostBit = 28;
+        private const int isFreeBit = 29;
 
         #endregion
 
         #region Fields
 
+        private Ident blockModel;
+        private Direction direction;
+        private Int3 coord;
+        private int flags;
         private CGameCtnBlockSkin skin;
         private CGameWaypointSpecialProperty waypoint;
         private Vec3 absolutePositionInMap;
@@ -41,35 +45,51 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public string Name
         {
-            get => BlockInfo.ID;
+            get => BlockModel.ID;
             set
             {
-                if (BlockInfo == null)
-                    BlockInfo = new Ident(value);
-                else BlockInfo.ID = value;
+                if (BlockModel == null)
+                    BlockModel = new Ident(value);
+                else BlockModel.ID = value;
             }
         }
 
         [NodeMember]
-        public Ident BlockInfo { get; set; }
+        public Ident BlockModel
+        {
+            get => blockModel;
+            set => blockModel = value;
+        }
 
         /// <summary>
         /// Facing direction of the block.
         /// </summary>
         [NodeMember]
-        public Direction Direction { get; set; }
+        public Direction Direction
+        {
+            get => direction;
+            set => direction = value;
+        }
 
         /// <summary>
         /// Position of the block on the map in block coordination. This value get's explicitly converted to <see cref="Byte3"/> in the serialized form. Values below 0 or above 255 should be avoided.
         /// </summary>
         [NodeMember]
-        public Int3 Coord { get; set; }
+        public Int3 Coord
+        {
+            get => coord;
+            set => coord = value;
+        }
 
         /// <summary>
         /// Flags of the block. If the chunk version is null, this value can be presented as <see cref="short"/>.
         /// </summary>
         [NodeMember]
-        public int Flags { get; set; }
+        public int Flags
+        {
+            get => flags;
+            set => flags = value;
+        }
 
         /// <summary>
         /// Author of the block, usually of a custom one made in Mesh Modeller.
@@ -318,10 +338,10 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlock n, GameBoxReaderWriter rw)
             {
-                n.BlockInfo = rw.Ident(n.BlockInfo);
-                n.Direction = (Direction)rw.Byte((byte)n.Direction);
-                n.Coord = (Int3)rw.Byte3((Byte3)n.Coord);
-                n.Flags = rw.Int32(n.Flags);
+                rw.Ident(ref n.blockModel);
+                rw.EnumByte<Direction>(ref n.direction);
+                n.coord = (Int3)rw.Byte3((Byte3)n.coord);
+                rw.Int32(ref n.flags);
             }
         }
 
