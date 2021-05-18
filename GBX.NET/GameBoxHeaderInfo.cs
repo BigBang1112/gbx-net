@@ -9,7 +9,7 @@ namespace GBX.NET
         public char? RefTableCompression { get; set; } = 'U';
         public char? BodyCompression { get; set; } = 'C';
         public char? UnknownByte { get; set; } = 'R';
-        public uint? ClassID { get; internal set; }
+        public uint? ID { get; internal set; }
         public byte[] UserData { get; private set; } = new byte[0];
         public int NumNodes { get; private set; }
 
@@ -45,8 +45,8 @@ namespace GBX.NET
                     Log.Write($"- Unknown byte: {UnknownByte}");
                 }
 
-                ClassID = Node.Remap(reader.ReadUInt32());
-                Log.Write($"- Class ID: 0x{ClassID:X8}");
+                ID = Node.Remap(reader.ReadUInt32());
+                Log.Write($"- Class ID: 0x{ID:X8}");
 
                 if (Version >= 6)
                 {

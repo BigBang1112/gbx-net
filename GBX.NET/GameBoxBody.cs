@@ -42,7 +42,7 @@ namespace GBX.NET
         {
             var s = reader.BaseStream;
 
-            GBX.MainNode = Node.Parse(reader, GBX.ClassID.Value, GBX, progress);
+            GBX.MainNode = Node.Parse(reader, GBX.ID.Value, GBX, progress);
 
             Debug.WriteLine("Amount read: " + (s.Position / (float)s.Length).ToString("P"));
 
@@ -60,10 +60,10 @@ namespace GBX.NET
 
         public void Write(GameBoxWriter w)
         {
-            Write(w, ClassIDRemap.Latest);
+            Write(w, IDRemap.Latest);
         }
 
-        public void Write(GameBoxWriter w, ClassIDRemap remap)
+        public void Write(GameBoxWriter w, IDRemap remap)
         {
             if(GBX.Header.BodyCompression == 'C')
             {

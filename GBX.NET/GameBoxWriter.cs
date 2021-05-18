@@ -275,7 +275,7 @@ namespace GBX.NET
                     body.AuxilaryNodes[body.AuxilaryNodes.Count] = node;
                     Write(body.AuxilaryNodes.Count);
                     Write(node.ID);
-                    node.Write(this, body.GBX.Game);
+                    node.Write(this, body.GBX.Remap);
                 }
             }
         }
@@ -331,7 +331,7 @@ namespace GBX.NET
                 node.Write(this);
 
                 string logProgress = $"[{nodeType.FullName.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::")}] {counter + 1}/{count} ({watch.Elapsed.TotalMilliseconds}ms)";
-                if (Chunk.Part == null || !Chunk.Part.GBX.ClassID.HasValue || Node.Remap(Chunk.Part.GBX.ClassID.Value) != node.ID)
+                if (Chunk.Part == null || !Chunk.Part.GBX.ID.HasValue || Node.Remap(Chunk.Part.GBX.ID.Value) != node.ID)
                     logProgress = "~ " + logProgress;
 
                 Log.Write(logProgress, ConsoleColor.Magenta);

@@ -168,7 +168,7 @@ namespace GBX.NET
                     if (r.BaseStream.CanSeek)
                         logChunk += $" ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})";
 
-                    if (node.Body?.GBX.ClassID.HasValue == true && Remap(node.Body.GBX.ClassID.Value) == node.ID)
+                    if (node.Body?.GBX.ID.HasValue == true && Remap(node.Body.GBX.ID.Value) == node.ID)
                         Log.Write(logChunk);
                     else
                         Log.Write($"~ {logChunk}");
@@ -193,7 +193,7 @@ namespace GBX.NET
                         if (chunkID != 0 && !reflected)
                         {
                             var logChunkError = $"[{node.ClassName}] 0x{chunkID:X8} ERROR (wrong chunk format or unknown unskippable chunk)";
-                            if (node.Body?.GBX.ClassID.HasValue == true && Remap(node.Body.GBX.ClassID.Value) == node.ID)
+                            if (node.Body?.GBX.ID.HasValue == true && Remap(node.Body.GBX.ID.Value) == node.ID)
                                 Log.Write(logChunkError, ConsoleColor.Red);
                             else
                                 Log.Write($"~ {logChunkError}", ConsoleColor.Red);
@@ -328,7 +328,7 @@ namespace GBX.NET
             stopwatch.Stop();
 
             var logNodeCompletion = $"[{node.ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)";
-            if (node.Body?.GBX.ClassID.HasValue == true && Remap(node.Body.GBX.ClassID.Value) == node.ID)
+            if (node.Body?.GBX.ID.HasValue == true && Remap(node.Body.GBX.ID.Value) == node.ID)
                 Log.Write(logNodeCompletion, ConsoleColor.Green);
             else
                 Log.Write($"~ {logNodeCompletion}", ConsoleColor.Green);
@@ -343,10 +343,10 @@ namespace GBX.NET
 
         public void Write(GameBoxWriter w)
         {
-            Write(w, ClassIDRemap.Latest);
+            Write(w, IDRemap.Latest);
         }
 
-        public void Write(GameBoxWriter w, ClassIDRemap remap)
+        public void Write(GameBoxWriter w, IDRemap remap)
         {
             var stopwatch = Stopwatch.StartNew();
 
@@ -357,7 +357,7 @@ namespace GBX.NET
                 counter++;
 
                 var logChunk = $"[{ClassName}] 0x{chunk.ID:X8} ({(float)counter / Chunks.Count:0.00%})";
-                if (Body?.GBX.ClassID.HasValue == true && Remap(Body.GBX.ClassID.Value) == ID)
+                if (Body?.GBX.ID.HasValue == true && Remap(Body.GBX.ID.Value) == ID)
                     Log.Write(logChunk);
                 else
                     Log.Write($"~ {logChunk}");
@@ -428,7 +428,7 @@ namespace GBX.NET
             stopwatch.Stop();
 
             var logNodeCompletion = $"[{ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)";
-            if (Body?.GBX.ClassID.HasValue == true && Remap(Body.GBX.ClassID.Value) == ID)
+            if (Body?.GBX.ID.HasValue == true && Remap(Body.GBX.ID.Value) == ID)
                 Log.Write(logNodeCompletion, ConsoleColor.Green);
             else
                 Log.Write($"~ {logNodeCompletion}", ConsoleColor.Green);

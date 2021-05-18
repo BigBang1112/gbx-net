@@ -52,18 +52,18 @@ namespace GBX.NET
 
         public bool Equals(Chunk chunk) => chunk != null && chunk.ID == ID;
 
-        public static uint Remap(uint chunkID, ClassIDRemap remap = ClassIDRemap.Latest)
+        public static uint Remap(uint chunkID, IDRemap remap = IDRemap.Latest)
         {
             var classPart = chunkID & 0xFFFFF000;
             var chunkPart = chunkID & 0xFFF;
 
             switch(remap)
             {
-                case ClassIDRemap.ManiaPlanet:
+                case IDRemap.Latest:
                     if (Node.Mappings.TryGetValue(classPart, out uint newID))
                         return newID + chunkPart;
                     return chunkID;
-                case ClassIDRemap.TrackMania:
+                case IDRemap.TrackMania2006:
                     if (classPart == 0x03078000) // Not ideal solution
                         return 0x24061000 + chunkPart;
                     return Node.Mappings.LastOrDefault(x => x.Value == classPart).Key + chunkPart;

@@ -61,7 +61,7 @@ namespace GBX.NET
         public GameBox(T node, GameBoxHeaderInfo headerInfo) : this(headerInfo)
         {
             MainNode = node;
-            ClassID = node.ID;
+            ID = node.ID;
         }
 
         /// <summary>
@@ -151,11 +151,11 @@ namespace GBX.NET
 
         protected override bool ProcessHeader(IProgress<GameBoxReadProgress> progress)
         {
-            if (ClassID != typeof(T).GetCustomAttribute<NodeAttribute>().ID)
+            if (ID != typeof(T).GetCustomAttribute<NodeAttribute>().ID)
             {
-                if (!Node.Names.TryGetValue(ClassID.Value, out string name))
+                if (!Node.Names.TryGetValue(ID.Value, out string name))
                     name = "unknown class";
-                throw new InvalidCastException($"GBX with ID 0x{ClassID:X8} ({name}) can't be casted to GameBox<{typeof(T).Name}>.");
+                throw new InvalidCastException($"GBX with ID 0x{ID:X8} ({name}) can't be casted to GameBox<{typeof(T).Name}>.");
             }
 
             MainNode = Activator.CreateInstance<T>();
@@ -213,7 +213,7 @@ namespace GBX.NET
             return true;
         }
 
-        internal void Write(GameBoxWriter w, ClassIDRemap remap)
+        internal void Write(GameBoxWriter w, IDRemap remap)
         {
             using (MemoryStream ms = new MemoryStream())
             using (GameBoxWriter bodyW = new GameBoxWriter(ms))
@@ -245,7 +245,7 @@ namespace GBX.NET
 
         internal void Write(GameBoxWriter w)
         {
-            Write(w, ClassIDRemap.Latest);
+            Write(w, IDRemap.Latest);
         }
 
         /// <summary>
@@ -253,7 +253,7 @@ namespace GBX.NET
         /// </summary>
         /// <param name="stream">Any kind of stream that supports writing.</param>
         /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
-        public void Save(Stream stream, ClassIDRemap remap)
+        public void Save(Stream stream, IDRemap remap)
         {
             using (var w = new GameBoxWriter(stream))
                 Write(w, remap);
@@ -265,7 +265,7 @@ namespace GBX.NET
         /// <param name="stream">Any kind of stream that supports writing.</param>
         public void Save(Stream stream)
         {
-            Save(stream, ClassIDRemap.Latest);
+            Save(stream, IDRemap.Latest);
         }
 
         /// <summary>
@@ -273,7 +273,7 @@ namespace GBX.NET
         /// </summary>
         /// <param name="fileName">Relative or absolute file path.</param>
         /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
-        public void Save(string fileName, ClassIDRemap remap)
+        public void Save(string fileName, IDRemap remap)
         {
             using (var fs = File.OpenWrite(fileName))
                 Save(fs, remap);
@@ -287,7 +287,7 @@ namespace GBX.NET
         /// <param name="fileName">Relative or absolute file path.</param>
         public void Save(string fileName)
         {
-            Save(fileName, ClassIDRemap.Latest);
+            Save(fileName, IDRemap.Latest);
         }
 
         /// <summary>
@@ -300,18 +300,21 @@ namespace GBX.NET
     /// <summary>
     /// An unknown serialized GameBox node with additional attributes. This class can represent deserialized .Gbx file.
     /// </summary>
-    public class GameBox : IGameBox
+    public class GameBox
     {
         public const string Magic = "GBX";
 
-        public ClassIDRemap Game { get; set; } = ClassIDRemap.ManiaPlanet;
+        /// <summary>
+        /// Tells the library to save this GBX with correct IDs related to the game version.
+        /// </summary>
+        public IDRemap Remap { get; set; }
 
         public GameBoxHeaderInfo Header { get; }
 
-        public uint? ClassID
+        public uint? ID
         {
-            get => Header.ClassID;
-            internal set => Header.ClassID = value;
+            get => Header.ID;
+            internal set => Header.ID = value;
         }
 
         /// <summary>
@@ -441,11 +444,11 @@ namespace GBX.NET
 
             progress?.Report(new GameBoxReadProgress(headerInfo));
 
-            if (headerInfo.ClassID.HasValue)
+            if (headerInfo.ID.HasValue)
             {
                 GameBox gbx;
 
-                if (Node.AvailableClasses.TryGetValue(headerInfo.ClassID.Value, out Type availableClass))
+                if (Node.AvailableClasses.TryGetValue(headerInfo.ID.Value, out Type availableClass))
                 {
                     var gbxType = typeof(GameBox<>).MakeGenericType(availableClass);
                     gbx = (GameBox)Activator.CreateInstance(gbxType, headerInfo);

@@ -7,12 +7,8 @@ using System.Reflection;
 
 namespace GBX.NET
 {
-    public class GameBoxHeader<T> : GameBoxPart, ILookbackable where T : Node
+    public class GameBoxHeader<T> : GameBoxPart where T : Node
     {
-        int? ILookbackable.IdVersion { get; set; }
-        List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
-        bool ILookbackable.IdWritten { get; set; }
-
         public ChunkSet Chunks { get; set; }
 
         public short Version
@@ -45,10 +41,10 @@ namespace GBX.NET
             set => GBX.Header.UnknownByte = value;
         }
 
-        public uint? ClassID
+        public uint? ID
         {
-            get => GBX.Header.ClassID;
-            internal set => GBX.Header.ClassID = value;
+            get => GBX.Header.ID;
+            internal set => GBX.Header.ID = value;
         }
 
         public byte[] UserData
@@ -166,7 +162,7 @@ namespace GBX.NET
             }
         }
 
-        public void Write(GameBoxWriter w, int numNodes, ClassIDRemap remap)
+        public void Write(GameBoxWriter w, int numNodes, IDRemap remap)
         {
             w.Write(GameBox.Magic, StringLengthPrefix.None);
             w.Write(Version);
@@ -177,7 +173,7 @@ namespace GBX.NET
                 w.Write((byte)RefTableCompression.GetValueOrDefault());
                 w.Write((byte)BodyCompression.GetValueOrDefault());
                 if (Version >= 4) w.Write((byte)UnknownByte.GetValueOrDefault());
-                w.Write(GBX.ClassID.GetValueOrDefault());
+                w.Write(GBX.ID.GetValueOrDefault());
 
                 if (Version >= 6)
                 {
@@ -233,7 +229,7 @@ namespace GBX.NET
 
         public void Write(GameBoxWriter w, int numNodes)
         {
-            Write(w, numNodes, ClassIDRemap.Latest);
+            Write(w, numNodes, IDRemap.Latest);
         }
 
         public TChunk CreateChunk<TChunk>(byte[] data) where TChunk : Chunk
