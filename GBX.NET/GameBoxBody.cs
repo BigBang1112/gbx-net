@@ -40,15 +40,15 @@ namespace GBX.NET
 
         public void Read(GameBoxReader reader, IProgress<GameBoxReadProgress> progress = null)
         {
-            var s = reader.BaseStream;
-
             GBX.MainNode = Node.Parse(reader, GBX.ID.Value, GBX, progress);
 
-            Debug.WriteLine("Amount read: " + (s.Position / (float)s.Length).ToString("P"));
-
-            byte[] restBuffer = new byte[s.Length - s.Position];
-            reader.Read(restBuffer, 0, restBuffer.Length);
-            Rest = restBuffer;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                var s = reader.BaseStream;
+                s.CopyTo(ms);
+                Rest = ms.ToArray();
+                Debug.WriteLine("Amount read: " + (s.Position / (float)(s.Position + Rest.Length)).ToString("P"));
+            }
         }
 
         public void Read(byte[] data, int uncompressedSize, IProgress<GameBoxReadProgress> progress = null)
