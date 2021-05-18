@@ -374,6 +374,26 @@ namespace GBX.NET
                 HeaderInfo = headerInfo;
         }
 
+        /// <summary>
+        /// Tries to get the <see cref="Node"/> of this GBX.
+        /// </summary>
+        /// <typeparam name="T">Type of the <see cref="Node"/> to look for.</typeparam>
+        /// <param name="node">A node that is being extracted from this <see cref="GameBox"/> object. Null if unsuccessful.</param>
+        /// <returns>True if the type of this <see cref="GameBox"/> is <see cref="GameBox{T}"/> and <typeparamref name="T"/> matches. Otherwise false.</returns>
+        public bool TryNode<T>(out T node) where T : Node
+        {
+            var property = GetType().GetProperty("MainNode");
+
+            if (property != null && property.PropertyType == typeof(T))
+            {
+                node = (T)property.GetValue(this);
+                return true;
+            }
+
+            node = null;
+            return false;
+        }
+
         internal bool ReadHeader(GameBoxReader reader, IProgress<GameBoxReadProgress> progress)
         {
             var success = HeaderInfo.Read(reader);

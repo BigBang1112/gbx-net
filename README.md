@@ -116,18 +116,37 @@ var gbx = GameBox.Parse<CGameCtnChallenge>("MyMap.Map.Gbx");
 // Node data is available in gbx.MainNode
 ```
 
-To parse a GBX with an unknown type:
+To parse a GBX with an unknown type (method 1):
 
 ```cs
 var gbx = GameBox.Parse("MyMap.Map.Gbx");
 
 if (gbx is GameBox<CGameCtnChallenge> gbxMap)
 {
-    // Node data is available in gbxMap.MainNode
+    var map = gbxMap.MainNode;
+    
+    // Node data is available in map
 }
 else if (gbx is GameBox<CGameCtnReplayRecord> gbxReplay)
 {
-    // Node data is available in gbxReplay.MainNode
+    var replay = gbxReplay.MainNode;
+    
+    // Node data is available in replay
+}
+```
+
+To parse a GBX with an unknown type (method 2):
+
+```cs
+var gbx = GameBox.Parse("MyMap.Map.Gbx");
+
+if (gbx.TryNode(out CGameCtnChallenge map))
+{
+    // Node data is available in map
+}
+else if (gbx.TryNode(out CGameCtnReplayRecord replay))
+{
+    // Node data is available in replay
 }
 ```
 
@@ -172,7 +191,7 @@ Make the code cleaner by **aliasing** the `MainNode` from the parsed `GameBox<T>
 
 ```cs
 var gbx = GameBox.Parse<CGameCtnChallenge>("MyMap.Map.Gbx");
-CGameCtnChallenge map = gbx.MainNode; // Like this
+var map = gbx.MainNode; // Like this
 
 var bronzeTime = gbx.MainNode.BronzeTime; // WRONG !!!
 var silverTime = map.SilverTime; // Correct
