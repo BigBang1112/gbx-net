@@ -33,17 +33,9 @@ namespace GBX.NET
         [Obsolete]
         public bool Unknown { get; internal set; }
 
-        [Obsolete]
-        public uint ModernID
-        {
-            get
-            {
-                if (Mappings.TryGetValue(ID, out uint newerClassID))
-                    return newerClassID;
-                return ID;
-            }
-        }
-
+        /// <summary>
+        /// Name of the class. The format is <c>Engine::Class</c>.
+        /// </summary>
         public string ClassName
         {
             get

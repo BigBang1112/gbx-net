@@ -1578,7 +1578,7 @@ namespace GBX.NET.Engines.Game
                     gbxms.Write(data, 0, data.Length);
                     gbxms.Position = 0;
 
-                    if (gbxr.ReadString(3) == "GBX")
+                    if (gbxr.HasMagic(GameBox.Magic))
                     {
                         var basic = gbxr.ReadBytes(6); // gbx basic
 
