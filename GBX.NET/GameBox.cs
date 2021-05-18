@@ -704,7 +704,7 @@ namespace GBX.NET
         {
             uint? classID = null;
 
-            if (reader.ReadString(Magic.Length) != Magic) // If the file doesn't have GBX magic
+            if (!reader.HasMagic(Magic)) // If the file doesn't have GBX magic
                 return null;
 
             var version = reader.ReadInt16(); // Version

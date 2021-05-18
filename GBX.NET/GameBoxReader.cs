@@ -30,12 +30,26 @@ namespace GBX.NET
         /// <summary>
         /// First reads an <see cref="int"/> representing the length, then reads the sequence of bytes.
         /// </summary>
+        /// <exception cref="ArgumentException"/>
+        /// <exception cref="IOException"/>
+        /// <exception cref="ObjectDisposedException"/>
+        /// <exception cref="ArgumentOutOfRangeException"/>
         /// <returns>A byte array.</returns>
         public byte[] ReadBytes()
         {
             return ReadBytes(ReadInt32());
         }
 
+        /// <summary>
+        /// Reads a <see cref="string"/> from the current stream with one of the prefix reading methods.
+        /// </summary>
+        /// <param name="readPrefix">The method to read the prefix.</param>
+        /// <exception cref="EndOfStreamException"/>
+        /// <exception cref="ObjectDisposedException"/>
+        /// <exception cref="IOException"/>
+        /// <exception cref="ArgumentException"/>
+        /// <exception cref="ArgumentOutOfRangeException"/>
+        /// <returns>The string being read.</returns>
         public string ReadString(StringLengthPrefix readPrefix)
         {
             int length;
@@ -44,22 +58,36 @@ namespace GBX.NET
             else if (readPrefix == StringLengthPrefix.Int32)
                 length = ReadInt32();
             else
-                throw new Exception("Can't read string without knowing its length.");
-            return Encoding.UTF8.GetString(ReadBytes(length));
+                throw new ArgumentException("Can't read string without knowing its length.");
+            return ReadString(length);
         }
 
         /// <summary>
-        /// Reads a string from the current stream. The string is prefixed with the length, encoded as <see cref="int"/>.
+        /// Reads a <see cref="string"/> from the current stream. The string is prefixed with the length, encoded as <see cref="int"/>.
         /// </summary>
-        /// <returns></returns>
+        /// <exception cref="EndOfStreamException"/>
+        /// <exception cref="ObjectDisposedException"/>
+        /// <exception cref="IOException"/>
+        /// <exception cref="ArgumentException"/>
+        /// <exception cref="ArgumentOutOfRangeException"/>
+        /// <returns>The string being read.</returns>
         public override string ReadString()
         {
             return ReadString(StringLengthPrefix.Int32);
         }
 
+        /// <summary>
+        /// Reads a <see cref="string"/> from the current stream using the <paramref name="length"/> parameter.
+        /// </summary>
+        /// <param name="length">Length of the bytes to read.</param>
+        /// <exception cref="EndOfStreamException"/>
+        /// <exception cref="ObjectDisposedException"/>
+        /// <exception cref="IOException"/>
+        /// <exception cref="ArgumentOutOfRangeException"/>
+        /// <returns>The string being read.</returns>
         public string ReadString(int length)
         {
-            return new string(ReadChars(length));
+            return Encoding.UTF8.GetString(ReadBytes(length));
         }
 
         /// <summary>
@@ -71,6 +99,14 @@ namespace GBX.NET
             return Convert.ToBoolean(ReadInt32());
         }
 
+        /// <summary>
+        /// If <paramref name="asByte"/> is true, reads the next <see cref="byte"/> from the current stream and casts it as <see cref="bool"/>. Otherwise <see cref="ReadBoolean()"/> is called.
+        /// </summary>
+        /// <param name="asByte">Read the boolean as <see cref="byte"/> or <see cref="int"/>.</param>
+        /// <exception cref="EndOfStreamException"/>
+        /// <exception cref="ObjectDisposedException"/>
+        /// <exception cref="IOException"/>
+        /// <returns>A boolean.</returns>
         public bool ReadBoolean(bool asByte)
         {
             if (asByte) return base.ReadBoolean();
