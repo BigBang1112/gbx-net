@@ -26,7 +26,7 @@ namespace GBX.NET
         /// <summary>
         /// Header part, typically storing metadata for quickest access.
         /// </summary>
-        public GameBoxHeader<T> Header { get; }
+        public new GameBoxHeader<T> Header { get; }
 
         /// <summary>
         /// Body part, storing information about the node that realistically affects the game.
@@ -164,7 +164,7 @@ namespace GBX.NET
 
             try
             {
-                Header.Read(UserData, progress);
+                Header.Read(Header.UserData, progress);
                 Log.Write("Header chunks parsed without any exceptions.", ConsoleColor.Green);
             }
             catch (Exception e)
@@ -182,7 +182,7 @@ namespace GBX.NET
         {
             Log.Write("Reading the body...");
 
-            switch (BodyCompression)
+            switch (Header.BodyCompression)
             {
                 case 'C':
                     var uncompressedSize = reader.ReadInt32();
@@ -306,52 +306,12 @@ namespace GBX.NET
 
         public ClassIDRemap Game { get; set; } = ClassIDRemap.ManiaPlanet;
 
-        public GameBoxHeaderInfo HeaderInfo { get; }
-
-        public short Version
-        {
-            get => HeaderInfo.Version;
-            set => HeaderInfo.Version = value;
-        }
-
-        public char? ByteFormat
-        {
-            get => HeaderInfo.ByteFormat;
-            set => HeaderInfo.ByteFormat = value;
-        }
-            
-        public char? RefTableCompression
-        {
-            get => HeaderInfo.RefTableCompression;
-            set => HeaderInfo.RefTableCompression = value;
-        }
-
-        public char? BodyCompression
-        {
-            get => HeaderInfo.BodyCompression;
-            set => HeaderInfo.BodyCompression = value;
-        }
-
-        public char? UnknownByte
-        {
-            get => HeaderInfo.UnknownByte;
-            set => HeaderInfo.UnknownByte = value;
-        }
+        public GameBoxHeaderInfo Header { get; }
 
         public uint? ClassID
         {
-            get => HeaderInfo.ClassID;
-            internal set => HeaderInfo.ClassID = value;
-        }
-
-        public byte[] UserData
-        {
-            get => HeaderInfo.UserData;
-        }
-
-        public int NumNodes
-        {
-            get => HeaderInfo.NumNodes;
+            get => Header.ClassID;
+            internal set => Header.ClassID = value;
         }
 
         /// <summary>
@@ -369,9 +329,9 @@ namespace GBX.NET
         public GameBox(GameBoxHeaderInfo headerInfo)
         {
             if (headerInfo == null)
-                HeaderInfo = new GameBoxHeaderInfo();
+                Header = new GameBoxHeaderInfo();
             else
-                HeaderInfo = headerInfo;
+                Header = headerInfo;
         }
 
         /// <summary>
@@ -396,7 +356,7 @@ namespace GBX.NET
 
         internal bool ReadHeader(GameBoxReader reader, IProgress<GameBoxReadProgress> progress)
         {
-            var success = HeaderInfo.Read(reader);
+            var success = Header.Read(reader);
 
             progress?.Report(new GameBoxReadProgress(GameBoxReadProgressStage.Header, 1, this));
 
@@ -453,7 +413,7 @@ namespace GBX.NET
 
                     var nodeIndex = reader.ReadInt32();
 
-                    if (Version >= 5)
+                    if (Header.Version >= 5)
                         useFile = reader.ReadBoolean();
 
                     if ((flags & 4) == 0)

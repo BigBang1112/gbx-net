@@ -15,6 +15,52 @@ namespace GBX.NET
 
         public ChunkSet Chunks { get; set; }
 
+        public short Version
+        {
+            get => GBX.Header.Version;
+            set => GBX.Header.Version = value;
+        }
+
+        public char? ByteFormat
+        {
+            get => GBX.Header.ByteFormat;
+            set => GBX.Header.ByteFormat = value;
+        }
+
+        public char? RefTableCompression
+        {
+            get => GBX.Header.RefTableCompression;
+            set => GBX.Header.RefTableCompression = value;
+        }
+
+        public char? BodyCompression
+        {
+            get => GBX.Header.BodyCompression;
+            set => GBX.Header.BodyCompression = value;
+        }
+
+        public char? UnknownByte
+        {
+            get => GBX.Header.UnknownByte;
+            set => GBX.Header.UnknownByte = value;
+        }
+
+        public uint? ClassID
+        {
+            get => GBX.Header.ClassID;
+            internal set => GBX.Header.ClassID = value;
+        }
+
+        public byte[] UserData
+        {
+            get => GBX.Header.UserData;
+        }
+
+        public int NumNodes
+        {
+            get => GBX.Header.NumNodes;
+        }
+
         public GameBoxHeader(GameBox<T> gbx) : base(gbx)
         {
             
@@ -24,7 +70,7 @@ namespace GBX.NET
         {
             var gbx = (GameBox<T>)GBX;
 
-            if (gbx.Version >= 6)
+            if (Version >= 6)
             {
                 if (userData != null && userData.Length > 0)
                 {
@@ -123,17 +169,17 @@ namespace GBX.NET
         public void Write(GameBoxWriter w, int numNodes, ClassIDRemap remap)
         {
             w.Write(GameBox.Magic, StringLengthPrefix.None);
-            w.Write(GBX.Version);
+            w.Write(Version);
 
-            if (GBX.Version >= 3)
+            if (Version >= 3)
             {
-                w.Write((byte)GBX.ByteFormat.GetValueOrDefault());
-                w.Write((byte)GBX.RefTableCompression.GetValueOrDefault());
-                w.Write((byte)GBX.BodyCompression.GetValueOrDefault());
-                if (GBX.Version >= 4) w.Write((byte)GBX.UnknownByte.GetValueOrDefault());
+                w.Write((byte)ByteFormat.GetValueOrDefault());
+                w.Write((byte)RefTableCompression.GetValueOrDefault());
+                w.Write((byte)BodyCompression.GetValueOrDefault());
+                if (Version >= 4) w.Write((byte)UnknownByte.GetValueOrDefault());
                 w.Write(GBX.ClassID.GetValueOrDefault());
 
-                if (GBX.Version >= 6)
+                if (Version >= 6)
                 {
                     if (Chunks == null)
                     {

@@ -25,9 +25,9 @@ namespace GBX.NET
         /// </summary>
         public Chunk Chunk { get; }
 
-        public GameBoxHeaderInfo HeaderInfo
+        public GameBoxHeaderInfo Header
         {
-            get => headerInfo ?? GBX?.HeaderInfo;
+            get => headerInfo ?? GBX?.Header;
         }
 
         public GameBoxReadProgress()
