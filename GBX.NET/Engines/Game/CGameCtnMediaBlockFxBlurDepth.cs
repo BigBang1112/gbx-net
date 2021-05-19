@@ -52,7 +52,7 @@ namespace GBX.NET.Engines.Game
 
         #region Other classes
 
-        public class Key : MediaBlockKey
+        public new class Key : CGameCtnMediaBlock.Key
         {
             public float LensSize { get; set; }
             public bool ForceFocus { get; set; }

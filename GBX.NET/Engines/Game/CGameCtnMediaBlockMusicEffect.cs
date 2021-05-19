@@ -81,7 +81,7 @@ namespace GBX.NET.Engines.Game
 
         #region Other classes
 
-        public class Key : MediaBlockKey
+        public new class Key : CGameCtnMediaBlock.Key
         {
             public float MusicVolume { get; set; }
             public float SoundVolume { get; set; }

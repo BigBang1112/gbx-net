@@ -248,7 +248,7 @@ namespace GBX.NET.Engines.Game
 
         #region Other classes
 
-        public class Key : MediaBlockKey
+        public new class Key : CGameCtnMediaBlock.Key
         {
             public int Anchor { get; set; }
             public bool AnchorVis { get; set; }
