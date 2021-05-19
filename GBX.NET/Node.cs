@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 
 namespace GBX.NET
 {
-    public class Node
+    public abstract class Node
     {
         public static Dictionary<uint, string> Names { get; }
         public static Dictionary<uint, uint> Mappings { get; } // key: older, value: newer
@@ -69,17 +69,17 @@ namespace GBX.NET
         public static Dictionary<Type, Dictionary<uint, Type>> AvailableChunkClasses { get; } = new Dictionary<Type, Dictionary<uint, Type>>();
         public static Dictionary<Type, Dictionary<uint, Type>> AvailableHeaderChunkClasses { get; } = new Dictionary<Type, Dictionary<uint, Type>>();
 
-        public Node()
+        protected Node()
         {
             ID = GetType().GetCustomAttribute<NodeAttribute>().ID;
         }
 
-        public Node(uint classID)
+        protected Node(uint classID)
         {
             ID = classID;
         }
 
-        public Node(params Chunk[] chunks) : this()
+        protected Node(params Chunk[] chunks) : this()
         {
             foreach (var chunk in chunks)
             {
