@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Runtime.Serialization;
 using LZO;
 
@@ -9,6 +10,10 @@ namespace GBX.NET
 {
     public class GameBoxBody<T> : GameBoxPart, IGameBoxBody where T : Node
     {
+        private bool checkedForLzo;
+        private MethodInfo methodLzoCompress;
+        private MethodInfo methodLzoDecompress;
+
         public byte[] Rest { get; set; }
         public bool Aborting { get; private set; }
 
@@ -54,7 +59,11 @@ namespace GBX.NET
         public void Read(byte[] data, int uncompressedSize, IProgress<GameBoxReadProgress> progress = null)
         {
             byte[] buffer = new byte[uncompressedSize];
-            MiniLZO.Decompress(data, buffer);
+
+            CheckForLZO();
+
+            methodLzoDecompress.Invoke(null, new object[] { data, buffer });
+
             Read(buffer, progress);
         }
 
@@ -71,6 +80,7 @@ namespace GBX.NET
                 using (var gbxwBody = new GameBoxWriter(msBody, this))
                 {
                     GBX.MainNode.Write(gbxwBody, remap);
+                    CheckForLZO();
                     var output = MiniLZO.Compress(msBody.ToArray());
 
                     w.Write((int)msBody.Length); // Uncompressed
@@ -239,6 +249,46 @@ namespace GBX.NET
         public bool RemoveChunk<TChunk>() where TChunk : Chunk<T>
         {
             return GBX.MainNode.Chunks.Remove<TChunk>();
+        }
+
+        private void CheckForLZO()
+        {
+            if (checkedForLzo) return;
+
+            var references = Assembly.GetEntryAssembly().GetReferencedAssemblies();
+
+            var lzoFound = false;
+
+            foreach (var reference in references)
+            {
+                lzoFound = CheckForLZO(Assembly.Load(reference));
+                if (lzoFound) break;
+            }
+
+            if (!lzoFound)
+                throw new MissingLzoException();
+
+            checkedForLzo = true;
+        }
+
+        private bool CheckForLZO(Assembly assembly)
+        {
+            var type = assembly.GetType("MiniLZO", false);
+
+            if (type == null)
+            {
+                return false;
+            }
+            else
+            {
+                methodLzoCompress = type.GetMethod("Compress");
+                methodLzoDecompress = type.GetMethod("Decompress");
+
+                if (methodLzoCompress == null || methodLzoDecompress == null)
+                    return false;
+
+                return true;
+            }
         }
     }
 }

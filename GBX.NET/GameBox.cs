@@ -539,7 +539,9 @@ namespace GBX.NET
         /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with specified main node type.</returns>
+        /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
+        /// <exception cref="NotSupportedException"/>
         public static GameBox<T> Parse<T>(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
             var gbx = ParseHeader<T>(stream, progress);
@@ -560,7 +562,9 @@ namespace GBX.NET
         /// <param name="stream">Stream to read GBX format from.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with specified main node type.</returns>
+        /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
+        /// <exception cref="NotSupportedException"/>
         public static GameBox<T> Parse<T>(Stream stream, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
             return Parse<T>(stream, false, progress);
@@ -575,7 +579,9 @@ namespace GBX.NET
         /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with specified main node type.</returns>
+        /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
+        /// <exception cref="NotSupportedException"/>
         public static GameBox<T> Parse<T>(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
             using (var fs = File.OpenRead(fileName))
@@ -594,7 +600,9 @@ namespace GBX.NET
         /// <param name="fileName">Relative or absolute file path.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with specified main node type.</returns>
+        /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
+        /// <exception cref="NotSupportedException"/>
         /// <example>
         /// var gbx = GameBox.Parse&lt;CGameCtnChallenge&gt;("MyMap.Map.Gbx");
         /// // Node data is available in gbx.MainNode
@@ -611,6 +619,8 @@ namespace GBX.NET
         /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
         /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
         /// <param name="progress">Callback that reports any read progress.</param>
+        /// <exception cref="MissingLzoException"/>
+        /// <exception cref="NotSupportedException"/>
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
         public static GameBox Parse(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null)
         {
@@ -628,6 +638,8 @@ namespace GBX.NET
         /// </summary>
         /// <param name="fileName">Relative or absolute file path.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
+        /// <exception cref="MissingLzoException"/>
+        /// <exception cref="NotSupportedException"/>
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
         /// <example>
         /// var gbx = GameBox.Parse("MyMap.Map.Gbx");
@@ -653,6 +665,7 @@ namespace GBX.NET
         /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
         /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
         /// <param name="progress">Callback that reports any read progress.</param>
+        /// <exception cref="MissingLzoException"/>
         /// <exception cref="NotSupportedException"/>
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
         public static GameBox Parse(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null)
@@ -693,6 +706,7 @@ namespace GBX.NET
         /// </summary>
         /// <param name="stream">Stream to read GBX format from.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
+        /// <exception cref="MissingLzoException"/>
         /// <exception cref="NotSupportedException"/>
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
         public static GameBox Parse(Stream stream, IProgress<GameBoxReadProgress> progress = null)
