@@ -212,7 +212,7 @@ namespace GBX.NET.Engines.Game
         private string buildVersion;
         private int decoBaseHeightOffset;
         private List<BotPath> botPaths;
-        private Dictionary<string, byte[]> embeds = new Dictionary<string, byte[]>();
+        private readonly Dictionary<string, byte[]> embeds = new Dictionary<string, byte[]>();
         private byte[] originalEmbedZip;
         private TimeSpan? dayTime;
         private bool dynamicDaylight;
