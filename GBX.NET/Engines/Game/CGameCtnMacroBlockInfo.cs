@@ -1,10 +1,7 @@
-﻿using GBX.NET.Engines.GameData;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System;
 using System.Linq;
-using System.Numerics;
-using System.Text;
+
+using GBX.NET.Engines.GameData;
 
 namespace GBX.NET.Engines.Game
 {

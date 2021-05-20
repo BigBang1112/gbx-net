@@ -1,5 +1,6 @@
-﻿using GBX.NET.Engines.MwFoundations;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Game
 {
