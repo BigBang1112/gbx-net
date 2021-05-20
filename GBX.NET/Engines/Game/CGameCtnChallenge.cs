@@ -1,21 +1,16 @@
-﻿using GBX.NET.BlockInfo;
-using GBX.NET.Engines.GameData;
-using GBX.NET.Engines.Hms;
-using GBX.NET.Engines.Script;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Net.NetworkInformation;
-using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+
+using GBX.NET.BlockInfo;
+using GBX.NET.Engines.GameData;
+using GBX.NET.Engines.Hms;
+using GBX.NET.Engines.Script;
 
 namespace GBX.NET.Engines.Game
 {
@@ -24,7 +19,7 @@ namespace GBX.NET.Engines.Game
     /// </summary>
     /// <remarks>A map. Known extensions: .Challenge.Gbx, .Map.Gbx</remarks>
     [Node(0x03043000)]
-    public class CGameCtnChallenge : Node
+    public class CGameCtnChallenge : Node, CGameCtnChallenge.IHeader
     {
         #region Enums
 
@@ -65,13 +60,15 @@ namespace GBX.NET.Engines.Game
             Script
         }
 
+        /// <summary>
+        /// In which editor settings this map was made.
+        /// </summary>
         [Flags]
         public enum EditorMode
         {
             Advanced,
             Simple,
-            AdvancedWithGhostBlocks,
-            SimpleWithGhostBlocks
+            HasGhostBlocks
         }
 
         /// <summary>
@@ -223,9 +220,14 @@ namespace GBX.NET.Engines.Game
         #region Properties
 
         /// <summary>
+        /// Shows members that are available from the GBX header (reading the body is not required).
+        /// </summary>
+        public IHeader Header => this;
+
+        /// <summary>
         /// Time of the bronze medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
         /// </summary>
-        [NodeMember] // TODO: localize
+        [NodeMember]
         public TimeSpan? TMObjective_BronzeTime
         {
             get
@@ -313,7 +315,7 @@ namespace GBX.NET.Engines.Game
         }
 
         /// <summary>
-        /// Usually author time or stunt score. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+        /// Usually author time or stunts score. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
         /// </summary>
         [NodeMember]
         public int AuthorScore
@@ -332,6 +334,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// In which editor settings the map was made.
+        /// </summary>
         [NodeMember]
         public EditorMode Editor
         {
@@ -343,14 +348,17 @@ namespace GBX.NET.Engines.Game
         /// If the map was made using the simple editor.
         /// </summary>
         [NodeMember]
-        public bool CreatedWithSimpleEditor => Editor == (EditorMode.Simple | EditorMode.SimpleWithGhostBlocks);
+        public bool CreatedWithSimpleEditor => (Editor & EditorMode.Simple) != 0;
 
         /// <summary>
         /// If the map uses ghost blocks.
         /// </summary>
         [NodeMember]
-        public bool HasGhostBlocks => Editor == (EditorMode.AdvancedWithGhostBlocks | EditorMode.SimpleWithGhostBlocks);
+        public bool HasGhostBlocks => (Editor & EditorMode.HasGhostBlocks) != 0;
 
+        /// <summary>
+        /// If the map is a multilap.
+        /// </summary>
         [NodeMember]
         public bool TMObjective_IsLapRace
         {
@@ -394,6 +402,9 @@ namespace GBX.NET.Engines.Game
             set => nbCheckpoints = value;
         }
 
+        /// <summary>
+        /// Map UID, environment, and author login.
+        /// </summary>
         [NodeMember]
         public Ident MapInfo
         {
@@ -401,6 +412,9 @@ namespace GBX.NET.Engines.Game
             set => mapInfo = value;
         }
 
+        /// <summary>
+        /// The map's UID.
+        /// </summary>
         [NodeMember]
         public string MapUid
         {
@@ -412,6 +426,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Login of the map author.
+        /// </summary>
         [NodeMember]
         public string AuthorLogin
         {
@@ -434,6 +451,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// The map's name.
+        /// </summary>
         [NodeMember]
         public string MapName
         {
@@ -469,6 +489,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// The map's decoration (time of the day or scenery)
+        /// </summary>
         [NodeMember]
         public Ident Decoration
         {
@@ -516,6 +539,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// UID of the lightmap data stored in cache.
+        /// </summary>
         [NodeMember]
         public ulong? LightmapCacheUID
         {
@@ -553,6 +579,9 @@ namespace GBX.NET.Engines.Game
             set => thumbnail = value;
         }
 
+        /// <summary>
+        /// The map's environment.
+        /// </summary>
         [NodeMember]
         public Collection Collection
         {
@@ -604,6 +633,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Executable (game's) build version the map was built in.
+        /// </summary>
         [NodeMember]
         public string BuildVersion
         {
@@ -619,6 +651,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// The map's author comments.
+        /// </summary>
         [NodeMember]
         public string Comments
         {
@@ -641,6 +676,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Nickname of the map author.
+        /// </summary>
         [NodeMember]
         public string AuthorNickname
         {
@@ -652,6 +690,9 @@ namespace GBX.NET.Engines.Game
             set => authorNickname = value;
         }
 
+        /// <summary>
+        /// Zone of the map author.
+        /// </summary>
         [NodeMember]
         public string AuthorZone
         {
@@ -675,7 +716,7 @@ namespace GBX.NET.Engines.Game
         }
 
         /// <summary>
-        /// Vehicle metadata info.
+        /// The car's name, environment and author used on the map.
         /// </summary>
         [NodeMember]
         public Ident PlayerModel
@@ -691,13 +732,13 @@ namespace GBX.NET.Engines.Game
         public CGameCtnChallengeParameters ChallengeParameters => challengeParameters;
 
         /// <summary>
-        /// List of puzzle pieces.
+        /// List of available puzzle pieces.
         /// </summary>
         [NodeMember]
         public CGameCtnCollectorList BlockStock => blockStock;
 
         /// <summary>
-        /// All checkpoints and their map coordinates. Used by older Trackmania.
+        /// All checkpoints and their map coordinates. Used by TMUF and older games.
         /// </summary>
         [NodeMember]
         public Int3[] Checkpoints
@@ -714,6 +755,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Reference to the mod (texture/resource pack) used on the map.
+        /// </summary>
         [NodeMember]
         public FileRef ModPackDesc
         {
@@ -747,6 +791,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Size of the map in block coordinates.
+        /// </summary>
         [NodeMember]
         public Int3? Size
         {
@@ -771,8 +818,11 @@ namespace GBX.NET.Engines.Game
             set => blocks = value;
         }
 
+        /// <summary>
+        /// Number of actual blocks on the map (doesn't include Unassigned1 and other blocks with <see cref="CGameCtnBlock.Flags"/> equal to -1).
+        /// </summary>
         [NodeMember]
-        public int NbBlocks => Blocks?.Where(x => x.Flags != -1).Count() ?? 0;
+        public int NbBlocks => Blocks?.Count(x => x.Flags != -1) ?? 0;
 
         [NodeMember]
         public CGameCtnBlock[] BakedBlocks
@@ -789,6 +839,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// MediaTracker intro.
+        /// </summary>
         [NodeMember]
         public CGameCtnMediaClip ClipIntro
         {
@@ -796,6 +849,9 @@ namespace GBX.NET.Engines.Game
             set => clipIntro = value;
         }
 
+        /// <summary>
+        /// MediaTracker ingame.
+        /// </summary>
         [NodeMember]
         public CGameCtnMediaClipGroup ClipGroupInGame
         {
@@ -803,6 +859,9 @@ namespace GBX.NET.Engines.Game
             set => clipGroupInGame = value;
         }
 
+        /// <summary>
+        /// MediaTracker end race.
+        /// </summary>
         [NodeMember]
         public CGameCtnMediaClipGroup ClipGroupEndRace
         {
@@ -810,6 +869,9 @@ namespace GBX.NET.Engines.Game
             set => clipGroupEndRace = value;
         }
 
+        /// <summary>
+        /// MediaTracker ambiance.
+        /// </summary>
         [NodeMember]
         public CGameCtnMediaClip ClipAmbiance
         {
@@ -817,6 +879,9 @@ namespace GBX.NET.Engines.Game
             set => clipAmbiance = value;
         }
 
+        /// <summary>
+        /// MediaTracker podium.
+        /// </summary>
         [NodeMember]
         public CGameCtnMediaClip ClipPodium
         {
@@ -824,6 +889,9 @@ namespace GBX.NET.Engines.Game
             set => clipPodium = value;
         }
 
+        /// <summary>
+        /// Reference to the custom music used on the map.
+        /// </summary>
         [NodeMember]
         public FileRef CustomMusicPackDesc
         {
@@ -831,6 +899,9 @@ namespace GBX.NET.Engines.Game
             set => customMusicPackDesc = value;
         }
 
+        /// <summary>
+        /// Hashed password of the map, if it's password protected.
+        /// </summary>
         [NodeMember]
         public byte[] HashedPassword
         {
@@ -846,6 +917,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// CRC32 of the map.
+        /// </summary>
         [NodeMember]
         public uint? CRC32
         {
@@ -862,7 +936,7 @@ namespace GBX.NET.Engines.Game
         }
 
         /// <summary>
-        /// Position of the thumnail camera.
+        /// Position of the thumbnail camera.
         /// </summary>
         [NodeMember]
         public Vec3? ThumbnailPosition
@@ -915,6 +989,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// List of all the available lightmap frames. Each frame can contain up to 3 different variants in either JPEG or WEBP format.
+        /// </summary>
         public List<List<byte[]>> LightmapFrames
         {
             get
@@ -929,6 +1006,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Lightmap cache information.
+        /// </summary>
         [NodeMember]
         public Task<CHmsLightMapCache> LightmapCache
         {
@@ -944,9 +1024,15 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// If the map has at least 1 lightmap frame.
+        /// </summary>
         [NodeMember]
         public bool HasLightmaps => lightmapFrames?.Count > 0;
 
+        /// <summary>
+        /// List of all items and objects placed on the map.
+        /// </summary>
         [NodeMember]
         public List<CGameCtnAnchoredObject> AnchoredObjects
         {
@@ -977,6 +1063,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Metadata written into the map.
+        /// </summary>
         [NodeMember]
         public CScriptTraitsMetadata ScriptMetadata
         {
@@ -1052,6 +1141,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// List of offzones defined on the map, constructed with cubes made from start-to-end coordinates.
+        /// </summary>
         [NodeMember]
         public List<(Int3 start, Int3 end)> Offzones
         {
@@ -1067,6 +1159,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Minimum Y value of <see cref="Blocks"/>.
+        /// </summary>
         [NodeMember]
         public int DecoBaseHeightOffset
         {
@@ -1082,6 +1177,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Bot paths defined on the (Shootmania) map.
+        /// </summary>
         [NodeMember]
         public List<BotPath> BotPaths
         {
@@ -1097,6 +1195,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Embedded objects in the map. Key defines a relative path. Value is the actual embedded data, usually in GBX format.
+        /// </summary>
         [NodeMember]
         public Dictionary<string, byte[]> Embeds
         {
@@ -1107,6 +1208,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Exact time of the day in the map. Available since ManiaPlanet 4.
+        /// </summary>
         [NodeMember]
         public TimeSpan? DayTime
         {
@@ -1122,6 +1226,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// If the map uses dynamic daylight cycle. Available since ManiaPlanet 4.
+        /// </summary>
         [NodeMember]
         public bool DynamicDaylight
         {
@@ -1137,6 +1244,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Duration of the day defined in real time. Available since ManiaPlanet 4.
+        /// </summary>
         [NodeMember]
         public TimeSpan? DayDuration
         {
@@ -3700,6 +3810,180 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
+
+        #endregion
+
+        #region Header interface
+
+        public interface IHeader : INodeHeader
+        {
+            /// <summary>
+            /// Time of the bronze medal.
+            /// </summary>
+            TimeSpan? TMObjective_BronzeTime { get; set; }
+
+            /// <summary>
+            /// Time of the silver medal.
+            /// </summary>
+            TimeSpan? TMObjective_SilverTime { get; set; }
+
+            /// <summary>
+            /// Time of the gold medal.
+            /// </summary>
+            TimeSpan? TMObjective_GoldTime { get; set; }
+
+            /// <summary>
+            /// Time of the author medal.
+            /// </summary>
+            TimeSpan? TMObjective_AuthorTime { get; set; }
+
+            /// <summary>
+            /// Display cost of the track (or copper cost) explaining the performance of the map.
+            /// </summary>
+            int Cost { get; set; }
+
+            /// <summary>
+            /// Usually author time or stunts score.
+            /// </summary>
+            int AuthorScore { get; set; }
+
+            /// <summary>
+            /// In which editor settings the map was made.
+            /// </summary>
+            EditorMode Editor { get; set; }
+
+            /// <summary>
+            /// If the map was made using the simple editor.
+            /// </summary>
+            bool CreatedWithSimpleEditor { get; }
+
+            /// <summary>
+            /// If the map uses ghost blocks.
+            /// </summary>
+            bool HasGhostBlocks { get; }
+
+            /// <summary>
+            /// Map type in which the track was validated in.
+            /// </summary>
+            PlayMode? Mode { get; set; }
+
+            /// <summary>
+            /// If the map is a multilap.
+            /// </summary>
+            bool TMObjective_IsLapRace { get; set; }
+
+            /// <summary>
+            /// Number of laps.
+            /// </summary>
+            int TMObjective_NbLaps { get; set; }
+
+            /// <summary>
+            /// Number of checkpoints.
+            /// </summary>
+            int? NbCheckpoints { get; set; }
+
+            /// <summary>
+            /// Map UID, environment, and author login.
+            /// </summary>
+            Ident MapInfo { get; set; }
+
+            /// <summary>
+            /// The map's environment.
+            /// </summary>
+            Collection Collection { get; set; }
+
+            /// <summary>
+            /// The map's UID.
+            /// </summary>
+            string MapUid { get; set; }
+
+            /// <summary>
+            /// Login of the map author.
+            /// </summary>
+            string AuthorLogin { get; set; }
+
+            /// <summary>
+            /// Nickname of the map author.
+            /// </summary>
+            string AuthorNickname { get; set; }
+
+            /// <summary>
+            /// Zone of the map author.
+            /// </summary>
+            string AuthorZone { get; set; }
+
+            string AuthorExtraInfo { get; set; }
+
+            /// <summary>
+            /// The map's name.
+            /// </summary>
+            string MapName { get; set; }
+
+            /// <summary>
+            /// The map's intended use.
+            /// </summary>
+            MapKind Kind { get; set; }
+
+            /// <summary>
+            /// Password of the map used by older maps.
+            /// </summary>
+            string Password { get; set; }
+
+            /// <summary>
+            /// The map's decoration (time of the day or scenery)
+            /// </summary>
+            Ident Decoration { get; set; }
+
+            /// <summary>
+            /// Target of the map.
+            /// </summary>
+            Vec2? MapTarget { get; set; }
+
+            /// <summary>
+            /// Origin of the map.
+            /// </summary>
+            Vec2? MapOrigin { get; set; }
+
+            /// <summary>
+            /// Name of the map type script.
+            /// </summary>
+            string MapType { get; set; }
+
+            /// <summary>
+            /// Style of the map (Fullspeed, LOL, Tech), usually unused and defined by user.
+            /// </summary>
+            string MapStyle { get; set; }
+
+            /// <summary>
+            /// UID of the lightmap data stored in cache.
+            /// </summary>
+            ulong? LightmapCacheUID { get; set; }
+
+            /// <summary>
+            /// Version of the lightmap calculation.
+            /// </summary>
+            byte? LightmapVersion { get; set; }
+
+            /// <summary>
+            /// Title pack the map was built in.
+            /// </summary>
+            string TitleID { get; set; }
+
+            /// <summary>
+            /// XML track information and dependencies.
+            /// </summary>
+            string XML { get; set; }
+
+            /// <summary>
+            /// The map's author comments.
+            /// </summary>
+            string Comments { get; set; }
+
+            /// <summary>
+            /// Thumbnail JPEG data.
+            /// </summary>
+            byte[] Thumbnail { get; set; }
+        }
 
         #endregion
 
