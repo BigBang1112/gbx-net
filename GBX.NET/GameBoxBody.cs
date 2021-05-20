@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
-using LZO;
 
 namespace GBX.NET
 {
@@ -80,8 +80,10 @@ namespace GBX.NET
                 using (var gbxwBody = new GameBoxWriter(msBody, this))
                 {
                     GBX.MainNode.Write(gbxwBody, remap);
+
                     CheckForLZO();
-                    var output = MiniLZO.Compress(msBody.ToArray());
+                    
+                    var output = (byte[])methodLzoCompress.Invoke(null, new object[] { msBody.ToArray() });
 
                     w.Write((int)msBody.Length); // Uncompressed
                     w.Write(output.Length); // Compressed
@@ -255,13 +257,34 @@ namespace GBX.NET
         {
             if (checkedForLzo) return;
 
-            var references = Assembly.GetEntryAssembly().GetReferencedAssemblies();
-
             var lzoFound = false;
 
-            foreach (var reference in references)
+            foreach (var dllFile in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll"))
             {
-                lzoFound = CheckForLZO(Assembly.Load(reference));
+                var assemblyMetadata = Assembly.ReflectionOnlyLoadFrom(dllFile);
+
+                try
+                {
+                    var attributes = assemblyMetadata.GetCustomAttributesData();
+
+                    foreach (var attribute in attributes)
+                    {
+                        if (attribute.ConstructorArguments.Count == 2)
+                        {
+                            if (attribute.ConstructorArguments[0].Value is string sK && sK == "LZOforGBX.NET"
+                                && attribute.ConstructorArguments[1].Value is string sV && sV == "true")
+                            {
+                                lzoFound = CheckForLZO(Assembly.Load(assemblyMetadata.GetName()));
+                                if (lzoFound) break;
+                            }
+                        }
+                    }
+                }
+                catch (FileLoadException)
+                {
+
+                }
+
                 if (lzoFound) break;
             }
 
@@ -273,7 +296,7 @@ namespace GBX.NET
 
         private bool CheckForLZO(Assembly assembly)
         {
-            var type = assembly.GetType("MiniLZO", false);
+            var type = assembly.GetTypes().FirstOrDefault(x => x.Name == "MiniLZO");
 
             if (type == null)
             {
@@ -281,8 +304,8 @@ namespace GBX.NET
             }
             else
             {
-                methodLzoCompress = type.GetMethod("Compress");
-                methodLzoDecompress = type.GetMethod("Decompress");
+                methodLzoCompress = type.GetMethod("Compress", new Type[] { typeof(byte[]) });
+                methodLzoDecompress = type.GetMethod("Decompress", new Type[] { typeof(byte[]), typeof(byte[]) });
 
                 if (methodLzoCompress == null || methodLzoDecompress == null)
                     return false;
