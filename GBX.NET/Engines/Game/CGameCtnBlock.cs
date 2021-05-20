@@ -1,9 +1,7 @@
-﻿using GBX.NET.Engines.GameData;
-using System;
-using System.Collections;
-using System.Diagnostics;
-using System.Linq;
+﻿using System;
 using System.Runtime.Serialization;
+
+using GBX.NET.Engines.GameData;
 
 namespace GBX.NET.Engines.Game
 {

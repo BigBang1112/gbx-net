@@ -1,8 +1,4 @@
 ﻿using GBX.NET.Engines.Input;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
 namespace GBX.NET.Engines.Game
 {

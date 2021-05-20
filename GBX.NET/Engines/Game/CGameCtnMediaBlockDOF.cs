@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace GBX.NET.Engines.Game
+﻿namespace GBX.NET.Engines.Game
 {
     [Node(0x03126000)]
     public class CGameCtnMediaBlockDOF : CGameCtnMediaBlock

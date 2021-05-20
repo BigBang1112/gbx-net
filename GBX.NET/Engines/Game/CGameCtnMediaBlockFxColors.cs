@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace GBX.NET.Engines.Game
+﻿namespace GBX.NET.Engines.Game
 {
     [Node(0x03080000)]
     public class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx
