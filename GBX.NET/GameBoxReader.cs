@@ -192,11 +192,12 @@ namespace GBX.NET
             if (index < 0) // If aux node index is below 0 then there's not much to solve
                 return null;
             body.AuxilaryNodes.TryGetValue(index, out Node n); // Tries to get the available node from index
-            T nod = n as T;
-            if (nod == null) // But sometimes it indexes the node reference that is further in the expected indexes
-                return (T)body.AuxilaryNodes.Last().Value; // So it grabs the last one instead, needs to be further tested
-            else // If the node is presented at the index, then it's simple
+            
+            if (n is T nod) // If the node is presented at the index, then it's simple
                 return nod;
+
+            // But sometimes it indexes the node reference that is further in the expected indexes
+            return (T)body.AuxilaryNodes.Last().Value; // So it grabs the last one instead, needs to be further tested
         }
 
         public T ReadNodeRef<T>() where T : Node
