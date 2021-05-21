@@ -168,12 +168,12 @@ namespace GBX.NET.Engines.Game
                     switch (NodeID)
                     {
                         case 0x0A02B000: // CSceneVehicleCar
-                            var transform02B = r.ReadTransform();
+                            var (position, rotation, speed, velocity) = r.ReadTransform();
 
-                            sample.Position = transform02B.position;
-                            sample.Rotation = transform02B.rotation;
-                            sample.Speed = transform02B.speed * 3.6f;
-                            sample.Velocity = transform02B.velocity;
+                            sample.Position = position;
+                            sample.Rotation = rotation;
+                            sample.Speed = speed * 3.6f;
+                            sample.Velocity = velocity;
 
                             break;
                         case 0x0A401000: // CSceneMobilCharVis

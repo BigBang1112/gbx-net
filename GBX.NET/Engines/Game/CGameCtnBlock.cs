@@ -48,7 +48,7 @@ namespace GBX.NET.Engines.Game
             {
                 if (BlockModel == null)
                     BlockModel = new Ident(value);
-                else BlockModel.ID = value;
+                else BlockModel = new Ident(value, BlockModel.Collection, BlockModel.Author);
             }
         }
 

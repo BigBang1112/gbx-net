@@ -418,11 +418,10 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public string MapUid
         {
-            get => MapInfo?.ID;
+            get => mapInfo.ID;
             set
             {
-                if (MapInfo != null)
-                    MapInfo.ID = value;
+                mapInfo = new Ident(value, mapInfo.Collection, mapInfo.Author);
             }
         }
 
@@ -436,8 +435,8 @@ namespace GBX.NET.Engines.Game
             {
                 DiscoverChunk<Chunk03043042>();
 
-                if (authorLogin == null && MapInfo != null)
-                    return MapInfo.Author;
+                if (authorLogin == null)
+                    return mapInfo.Author;
 
                 return authorLogin;
             }
@@ -446,8 +445,7 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03043042>();
                 authorLogin = value;
 
-                if (MapInfo != null)
-                    MapInfo.Author = value;
+                mapInfo = new Ident(value, mapInfo.Collection, mapInfo.Author);
             }
         }
 
@@ -585,14 +583,8 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public Collection Collection
         {
-            get => (Decoration?.Collection ?? MapInfo?.Collection).GetValueOrDefault();
-            set
-            {
-                if (Decoration != null)
-                    Decoration.Collection = value;
-                if (MapInfo != null)
-                    MapInfo.Collection = value;
-            }
+            get => mapInfo.Collection;
+            set => mapInfo = new Ident(mapInfo.ID, value, mapInfo.Author);
         }
 
         /// <summary>
@@ -1351,7 +1343,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// Places a block in the map.
         /// </summary>
-        /// <param name="blockModel">Block model name to place. Only the name is required, so using <see cref="string"/> works too.</param>
+        /// <param name="blockModel">Block model name to place. Only the name is required, so using <see cref="Ident(string)"/> works too. Full <see cref="Ident"/> can be seen in TM1.0.</param>
         /// <param name="coord">Position on the map. Should be always under <see cref="Size"/>, otherwise an overflow can happen.</param>
         /// <param name="dir">Facing direction of the block.</param>
         /// <returns>A placed block.</returns>
@@ -1369,6 +1361,18 @@ namespace GBX.NET.Engines.Game
             blocks.Add(block);
 
             return block;
+        }
+
+        /// <summary>
+        /// Places a block in the map.
+        /// </summary>
+        /// <param name="blockModel">Block model name to place.</param>
+        /// <param name="coord">Position on the map. Should be always under <see cref="Size"/>, otherwise an overflow can happen.</param>
+        /// <param name="dir">Facing direction of the block.</param>
+        /// <returns>A placed block.</returns>
+        public CGameCtnBlock PlaceBlock(string blockModel, Int3 coord, Direction dir)
+        {
+            return PlaceBlock(new Ident(blockModel), coord, dir);
         }
 
         /// <summary>
@@ -1399,12 +1403,13 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// Places an item on a map.
         /// </summary>
-        /// <param name="itemModel">An item model identification (name, collection and author). Only the name is required, so using <see cref="string"/> works too.</param>
+        /// <param name="itemModel">An item model identification (name, collection and author). Only the name is required, so using <see cref="Ident(string)"/> works too.</param>
         /// <param name="absolutePosition">Absolute position in the map.</param>
         /// <param name="pitchYawRoll">Rotation of the item in pitch, yaw, and roll format.</param>
         /// <param name="offsetPivot">Pivot location of the item (relative position of the point the item will rotate around).</param>
         /// <param name="variant">An item variant (trees from TM2020 have different variants).</param>
-        public void PlaceAnchoredObject(Ident itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Vec3 offsetPivot = default, int variant = 0)
+        /// <returns>Placed item.</returns>
+        public CGameCtnAnchoredObject PlaceAnchoredObject(Ident itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Vec3 offsetPivot = default, int variant = 0)
         {
             CreateChunk<Chunk03043040>();
 
@@ -1420,6 +1425,22 @@ namespace GBX.NET.Engines.Game
             anchoredObject.CreateChunk<CGameCtnAnchoredObject.Chunk03101002>();
             anchoredObject.CreateChunk<CGameCtnAnchoredObject.Chunk03101004>();
             AnchoredObjects.Add(anchoredObject);
+
+            return anchoredObject;
+        }
+
+        /// <summary>
+        /// Places an item on a map.
+        /// </summary>
+        /// <param name="itemModel">An item model identification (name).</param>
+        /// <param name="absolutePosition">Absolute position in the map.</param>
+        /// <param name="pitchYawRoll">Rotation of the item in pitch, yaw, and roll format.</param>
+        /// <param name="offsetPivot">Pivot location of the item (relative position of the point the item will rotate around).</param>
+        /// <param name="variant">An item variant (trees from TM2020 have different variants).</param>
+        /// <returns>Placed item.</returns>
+        public CGameCtnAnchoredObject PlaceAnchoredObject(string itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Vec3 offsetPivot = default, int variant = 0)
+        {
+            return PlaceAnchoredObject(new Ident(itemModel), absolutePosition, pitchYawRoll, offsetPivot, variant);
         }
 
         /// <summary>
@@ -2620,10 +2641,10 @@ namespace GBX.NET.Engines.Game
 
             public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                n.MapInfo = r.ReadIdent();
-                n.MapName = r.ReadString();
-                n.Decoration = r.ReadIdent();
-                n.Size = r.ReadInt3();
+                n.mapInfo = r.ReadIdent();
+                n.mapName = r.ReadString();
+                n.decoration = r.ReadIdent();
+                n.size = r.ReadInt3();
                 NeedUnlock = r.ReadBoolean();
 
                 if (!is013)
@@ -2690,19 +2711,19 @@ namespace GBX.NET.Engines.Game
 
             public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
             {
-                w.Write(n.MapInfo);
-                w.Write(n.MapName);
-                w.Write(n.Decoration);
-                w.Write(n.Size.GetValueOrDefault());
+                w.Write(n.mapInfo);
+                w.Write(n.mapName);
+                w.Write(n.decoration);
+                w.Write(n.size.GetValueOrDefault());
                 w.Write(NeedUnlock);
 
                 if (!is013)
                     w.Write(Version.GetValueOrDefault());
 
                 // Remove all free blocks with clips
-                for(int i = 0; i < n.Blocks.Count; i++)
+                for(int i = 0; i < n.blocks.Count; i++)
                 {
-                    var x = n.Blocks[i];
+                    var x = n.blocks[i];
                     var skip = false;
 
                     if (x.IsFree)
@@ -2715,15 +2736,15 @@ namespace GBX.NET.Engines.Game
                                             skip = true;
 
                     if (skip)
-                        n.Blocks[i].IsFree = false;
+                        n.blocks[i].IsFree = false;
                 }
 
-                n.Blocks.RemoveAll(x => !x.IsFree && x.Coord == (-1, -1, -1) && x.Flags != -1);
+                n.blocks.RemoveAll(x => !x.IsFree && x.Coord == (-1, -1, -1) && x.Flags != -1);
                 //
 
                 w.Write(n.NbBlocks);
 
-                foreach (var x in n.Blocks)
+                foreach (var x in n.blocks)
                 {
                     w.WriteId(x.Name);
                     w.Write((byte)x.Direction);

@@ -858,7 +858,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.PlayerModel = new Ident(rw.Id(n.PlayerModel?.ID));
+                n.playerModel = new Ident(rw.Id(n.playerModel.ID));
             }
         }
 
