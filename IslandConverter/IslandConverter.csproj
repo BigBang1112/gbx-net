@@ -3,9 +3,9 @@
 		<OutputType>Exe</OutputType>
 		<TargetFrameworks>net452</TargetFrameworks>
 		<Version>1.0.0</Version>
-		<PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
 		<Authors>BigBang1112</Authors>
 		<Product>Island Converter</Product>
+		<AssemblyTitle>Island Converter</AssemblyTitle>
 		<ApplicationIcon>icon.ico</ApplicationIcon>
 		<RepositoryUrl>https://github.com/BigBang1112/gbx-net/IslandConverter</RepositoryUrl>
 		<PlatformTarget>x86</PlatformTarget>
@@ -49,6 +49,9 @@
 		</None>
 		<None Update="IslandConverterSkin.yaml">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="LICENSE.GPL-3.0-or-later.md">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Update="README.txt">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

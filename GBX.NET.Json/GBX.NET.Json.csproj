@@ -1,18 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
-		<Version>0.1.2</Version>
-		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Product>GBX.NET.Imaging</Product>
+		<AssemblyName>GBX.NET.Imaging</AssemblyName>
+		<AssemblyTitle>GBX.NET.Imaging</AssemblyTitle>
+		<Authors>Petr Pivoňka (BigBang1112)</Authors>
 		<Description>A wrapper for better JSON serialization of GBX, useful for comparing data.</Description>
-		<PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+
+		<Version>0.1.2</Version>
+		<PackageReleaseNotes>Compatiblity change to .NET Framework 4.5</PackageReleaseNotes>
+
+		<TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+		<Platforms>AnyCPU;x64;x86</Platforms>
+
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk, json</PackageTags>
+
+		<RepositoryType>git</RepositoryType>
 		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
-		<PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk</PackageTags>
-		<Authors>BigBang1112</Authors>
-		<PackageReleaseNotes>Compatiblity change to .NET Framework 4.5</PackageReleaseNotes>
-		<Platforms>AnyCPU;x64;x86</Platforms>
+
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
 		<NoWarn>1591</NoWarn>

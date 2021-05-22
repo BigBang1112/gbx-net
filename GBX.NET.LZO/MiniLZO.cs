@@ -1,4 +1,5 @@
 #pragma warning disable CS0164
+#pragma warning disable IDE1006
 
 #region Copyright notice
 
