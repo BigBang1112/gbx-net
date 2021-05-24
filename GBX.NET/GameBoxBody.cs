@@ -261,7 +261,21 @@ namespace GBX.NET
 
             foreach (var dllFile in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll"))
             {
-                var assemblyMetadata = Assembly.ReflectionOnlyLoadFrom(dllFile);
+                Assembly assemblyMetadata = null;
+                var platformSupported = false;
+
+                try
+                {
+                    assemblyMetadata = Assembly.ReflectionOnlyLoadFrom(dllFile);
+                    platformSupported = true;
+                }
+                catch (PlatformNotSupportedException)
+                {
+                    Log.Write("Running on a platform not supporting ReflectionOnlyLoadFrom, using LoadFrom instead...");
+                }
+
+                if (!platformSupported)
+                    assemblyMetadata = Assembly.LoadFrom(dllFile);
 
                 try
                 {
