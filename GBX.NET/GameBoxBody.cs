@@ -258,24 +258,30 @@ namespace GBX.NET
             if (checkedForLzo) return;
 
             var lzoFound = false;
+            bool? platformSupported = null;
 
             foreach (var dllFile in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll"))
             {
                 Assembly assemblyMetadata = null;
-                var platformSupported = false;
 
-                try
+                if (!platformSupported.HasValue || platformSupported == true)
                 {
-                    assemblyMetadata = Assembly.ReflectionOnlyLoadFrom(dllFile);
-                    platformSupported = true;
-                }
-                catch (PlatformNotSupportedException)
-                {
-                    Log.Write("Running on a platform not supporting ReflectionOnlyLoadFrom, using LoadFrom instead...");
+                    try
+                    {
+                        assemblyMetadata = Assembly.ReflectionOnlyLoadFrom(dllFile);
+                        platformSupported = true;
+                    }
+                    catch (PlatformNotSupportedException)
+                    {
+                        Log.Write("Running on a platform not supporting ReflectionOnlyLoadFrom, using LoadFrom instead...");
+                    }
                 }
 
-                if (!platformSupported)
+                if (!platformSupported.HasValue || platformSupported == false)
+                {
                     assemblyMetadata = Assembly.LoadFrom(dllFile);
+                    platformSupported = false;
+                }
 
                 try
                 {
