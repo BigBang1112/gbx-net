@@ -2,21 +2,17 @@
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using System.Runtime.Serialization;
 
 namespace GBX.NET
 {
     public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
     {
-        readonly uint chunkID;
+        private readonly uint chunkID;
 
         public override uint ID => chunkID;
-        [IgnoreDataMember]
-        public MemoryStream Stream { get; set; }
 
-        public int Length => (int)Stream.Length;
         public bool Discovered { get; set; }
-        public byte[] Data => Stream.ToArray();
+        public byte[] Data { get; set; }
 
         public SkippableChunk()
         {
@@ -26,7 +22,8 @@ namespace GBX.NET
         public SkippableChunk(T node, uint id, byte[] data) : base(node)
         {
             chunkID = id;
-            Stream = new MemoryStream(data, 0, data.Length, false);
+
+            Data = data;
 
             if (data == null || data.Length == 0)
                 Discovered = true;
@@ -35,7 +32,8 @@ namespace GBX.NET
         public SkippableChunk(T node, byte[] data) : base(node)
         {
             chunkID = GetType().GetCustomAttribute<ChunkAttribute>().ID;
-            Stream = new MemoryStream(data, 0, data.Length, false);
+
+            Data = data;
 
             if (data == null || data.Length == 0)
                 Discovered = true;
@@ -46,7 +44,8 @@ namespace GBX.NET
             if (Discovered) return;
             Discovered = true;
 
-            using (var gbxr = new GameBoxReader(Stream, Lookbackable))
+            using (var ms = new MemoryStream(Data))
+            using (var gbxr = new GameBoxReader(ms, Lookbackable))
             {
                 gbxr.Chunk = this;
 
@@ -69,19 +68,19 @@ namespace GBX.NET
                         Debug.WriteLine(e.Message);
                     }
                 }
-            }
 
-            Progress = (int)Stream.Position;
+                Progress = (int)ms.Position;
+            }
         }
 
         public override void Write(T n, GameBoxWriter w, GameBoxReader unknownR)
         {
-            w.Write(Stream.ToArray(), 0, (int)Stream.Length);
+            w.WriteBytes(Data);
         }
 
         public void Write(GameBoxWriter w)
         {
-            w.Write(Stream.ToArray(), 0, (int)Stream.Length);
+            w.WriteBytes(Data);
         }
 
         public override string ToString()

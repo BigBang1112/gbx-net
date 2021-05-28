@@ -58,7 +58,7 @@ namespace GBX.NET
             set => throw new NotSupportedException("Cannot discover an unknown header chunk.");
         }
 
-        public MemoryStream Stream { get; set; }
+        public byte[] Data { get; set; }
         public Node Node { get => throw new NotSupportedException(); set => throw new NotSupportedException(); }
 
         public int Progress
@@ -72,7 +72,7 @@ namespace GBX.NET
         public HeaderChunk(uint id, byte[] data)
         {
             this.id = id;
-            Stream = new MemoryStream(data);
+            Data = data;
         }
 
         public override uint ID => id;
@@ -87,7 +87,7 @@ namespace GBX.NET
                 Write(rw.Writer);
         }
 
-        public void Write(GameBoxWriter w) => w.Write(Stream.ToArray(), 0, (int)Stream.Length);
+        public void Write(GameBoxWriter w) => w.WriteBytes(Data);
 
         public override string ToString()
         {

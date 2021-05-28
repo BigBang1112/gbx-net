@@ -125,7 +125,7 @@ namespace GBX.NET
                                     ISkippableChunk headerChunk = (ISkippableChunk)constructor.Invoke(new object[0]);
                                     headerChunk.Node = gbx.MainNode;
                                     headerChunk.Part = this;
-                                    headerChunk.Stream = new MemoryStream(d, 0, d.Length, false);
+                                    headerChunk.Data = d;
                                     if (d == null || d.Length == 0)
                                         headerChunk.Discovered = true;
                                     chunk = (Chunk)headerChunk;

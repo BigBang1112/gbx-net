@@ -228,7 +228,7 @@ namespace GBX.NET
                             c = (ISkippableChunk)constructor.Invoke(new object[0]);
                             c.Node = node;
                             c.Part = (GameBoxPart)body;
-                            c.Stream = new MemoryStream(chunkData, 0, chunkData.Length, false);
+                            c.Data = chunkData;
                             if (chunkData == null || chunkData.Length == 0)
                                 c.Discovered = true;
                             c.OnLoad();
@@ -386,7 +386,7 @@ namespace GBX.NET
                     {
                         if (chunk is ISkippableChunk s && !s.Discovered)
                             s.Write(msW);
-                        else if (chunk.GetType().GetCustomAttribute<AutoReadWriteChunkAttribute>() == null)
+                        else if (!Attribute.IsDefined(chunk.GetType(), typeof(AutoReadWriteChunkAttribute)))
                             ((IChunk)chunk).ReadWrite(this, rw);
                         else
                             msW.Write(chunk.Unknown.ToArray(), 0, (int)chunk.Unknown.Length);
