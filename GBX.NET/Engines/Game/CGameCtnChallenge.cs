@@ -3056,10 +3056,8 @@ namespace GBX.NET.Engines.Game
 
                 if (version >= 2)
                 {
-                    for (var i = 0; i < n.lightmapFrames.Count; i++)
+                    foreach (var frame in n.lightmapFrames)
                     {
-                        var frame = n.lightmapFrames[i];
-
                         frame.Add(r.ReadBytes());
 
                         if (version >= 3)
@@ -3088,6 +3086,60 @@ namespace GBX.NET.Engines.Game
                                 return Parse<CHmsLightMapCache>(gbxr, 0x06022000);
                             }
                         });
+                    }
+                }
+            }
+
+            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
+            {
+                w.Write(u01);
+                w.Write(version);
+
+                if (version >= 5)
+                {
+                    w.Write(n.lightmapFrames.Count);
+                }
+
+                if (version >= 2)
+                {
+                    foreach (var frame in n.lightmapFrames)
+                    {
+                        w.Write(frame[0].Length);
+                        w.WriteBytes(frame[0]);
+
+                        if (version >= 3)
+                        {
+                            w.Write(frame[1].Length);
+                            w.WriteBytes(frame[1]);
+                        }
+
+                        if (version >= 6)
+                        {
+                            w.Write(frame[2].Length);
+                            w.WriteBytes(frame[2]);
+                        }
+                    }
+
+                    if (n.lightmapFrames.Any(x => x.Any(y => y.Length > 0)))
+                    {
+                        using (var ms = new MemoryStream())
+                        using (var gbxw = new GameBoxWriter(ms))
+                        {
+                            n.lightmapCache.Result.Write(gbxw);
+
+                            w.Write((int)ms.Length);
+
+                            ms.Seek(0, SeekOrigin.Begin);
+
+                            using (var msCompressed = new MemoryStream())
+                            using (var deflate = new CompressedStream(msCompressed, CompressionMode.Compress))
+                            {
+                                ms.CopyTo(deflate);
+
+                                w.Write((int)msCompressed.Length);
+                                w.WriteBytes(msCompressed.ToArray());
+                            }
+                        }
                     }
                 }
             }
