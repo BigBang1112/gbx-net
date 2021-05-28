@@ -30,11 +30,9 @@ GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software 
 
 ## Compatibility
 
-GBX.NET is compatible with **.NET Standard 2.0** since version 0.2.0. Earlier versions are built on .NET Standard 2.1.
-
-Since version 0.5.2, the library is also compatible with **.NET Framework 4.5**.
-
-The library supports **saving GBX files in 64bit environment** since 0.10.0. In the older versions, to be able to save your GBX, set your platform target to **x86**.
+- GBX.NET is compatible with **.NET Standard 2.0** since version 0.2.0. Earlier versions are built on .NET Standard 2.1.
+- Since version 0.5.2, the library is also compatible with **.NET Framework 4.5**.
+- The library supports **saving GBX files in 64bit environment** since 0.10.0. In the older versions, to be able to save your GBX, set your platform target to **x86**.
 
 ## Techniques
 
