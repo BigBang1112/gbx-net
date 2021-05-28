@@ -718,9 +718,9 @@ namespace GBX.NET.Engines.Game
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.EventsDuration = rw.Int32(n.EventsDuration);
+                rw.Int32(ref n.eventsDuration);
 
-                if (n.EventsDuration == 0 && !Is025) return;
+                if (n.eventsDuration == 0 && Is025) return;
 
                 U01 = rw.UInt32(U01);
 
@@ -914,19 +914,23 @@ namespace GBX.NET.Engines.Game
 
             public int U01 { get; set; }
 
-            public Chunk03092019()
+            public Chunk03092019(Chunk03092025 chunk025)
             {
+                Is025 = chunk025 is Chunk03092025;
                 Chunk011 = new Chunk03092011(this);
             }
 
-            public Chunk03092019(Chunk03092025 chunk025) : this()
+            public Chunk03092019() : this(null)
             {
-                Is025 = chunk025 is Chunk03092025;
+
             }
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 Chunk011.ReadWrite(n, rw);
+
+                if (n.eventsDuration == 0 && Is025) return;
+
                 U01 = rw.Int32(U01);
             }
         }
@@ -1058,6 +1062,9 @@ namespace GBX.NET.Engines.Game
             {
                 rw.Int32(ref version);
                 Chunk019.ReadWrite(n, rw);
+
+                if (n.eventsDuration == 0) return;
+
                 U01 = rw.Boolean(U01);
             }
         }
