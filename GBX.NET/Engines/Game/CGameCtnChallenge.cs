@@ -3017,6 +3017,7 @@ namespace GBX.NET.Engines.Game
         {
             private bool u01;
             private int version = 4;
+            private byte[] cacheData;
 
             public bool U01
             {
@@ -3031,6 +3032,12 @@ namespace GBX.NET.Engines.Game
             {
                 get => version;
                 set => version = value;
+            }
+
+            public byte[] CacheData
+            {
+                get => cacheData;
+                set => cacheData = value;
             }
 
             public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
@@ -3083,7 +3090,15 @@ namespace GBX.NET.Engines.Game
                             using (var deflate = new CompressedStream(ms, CompressionMode.Decompress))
                             using (var gbxr = new GameBoxReader(deflate))
                             {
-                                return Parse<CHmsLightMapCache>(gbxr, 0x06022000);
+                                var cacheNode = Parse<CHmsLightMapCache>(gbxr, 0x06022000);
+
+                                using (var msOut = new MemoryStream())
+                                {
+                                    deflate.CopyTo(msOut);
+                                    CacheData = msOut.ToArray();
+                                }
+
+                                return cacheNode;
                             }
                         });
                     }
@@ -3126,6 +3141,7 @@ namespace GBX.NET.Engines.Game
                         using (var gbxw = new GameBoxWriter(ms))
                         {
                             n.lightmapCache.Result.Write(gbxw);
+                            gbxw.WriteBytes(CacheData);
 
                             w.Write((int)ms.Length);
 
