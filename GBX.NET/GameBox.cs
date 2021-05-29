@@ -9,14 +9,6 @@ using System.Runtime.ExceptionServices;
 
 namespace GBX.NET
 {
-    public enum GameBoxReadProgressStage
-    {
-        Header,
-        HeaderUserData,
-        RefTable,
-        Body
-    }
-
     /// <summary>
     /// A known serialized GameBox node with additional attributes. This class can represent deserialized .Gbx file.
     /// </summary>
@@ -24,7 +16,7 @@ namespace GBX.NET
     public class GameBox<T> : GameBox where T : Node
     {
         /// <summary>
-        /// Header part, typically storing metadata for quickest access.
+        /// Header part specialized for <typeparamref name="T"/>, typically storing metadata for quickest access.
         /// </summary>
         public new GameBoxHeader<T> Header { get; }
 
@@ -34,12 +26,12 @@ namespace GBX.NET
         public GameBoxBody<T> Body { get; }
 
         /// <summary>
-        /// Node containing data taken from the body part.
+        /// Deserialized node from GBX.
         /// </summary>
         public T MainNode { get; internal set; }
 
         /// <summary>
-        /// Constructs an empty GameBox object.
+        /// Creates an empty GameBox object version 6.
         /// </summary>
         public GameBox()
         {
@@ -47,10 +39,37 @@ namespace GBX.NET
             Body = new GameBoxBody<T>(this);
         }
 
+        /// <summary>
+        /// Creates an empty GameBox object based on defined <see cref="GameBoxHeaderInfo"/>.
+        /// </summary>
+        /// <param name="headerInfo">Header info to use.</param>
         public GameBox(GameBoxHeaderInfo headerInfo) : base(headerInfo)
         {
             Header = new GameBoxHeader<T>(this);
             Body = new GameBoxBody<T>(this);
+        }
+
+        /// <summary>
+        /// Creates a GameBox object based on an existing node. Useful for saving nodes to GBX files.
+        /// </summary>
+        /// <param name="node">Node to wrap.</param>
+        /// <param name="headerInfo">Header info to use.</param>
+        public GameBox(T node, GameBoxHeaderInfo headerInfo) : this(headerInfo)
+        {
+            // It needs to be sure that the Body and Part are assigned to the correct GameBox body
+            AssignBodyToNode(Body, node);
+
+            MainNode = node;
+            ID = node.ID;
+        }
+
+        /// <summary>
+        /// Create a GameBox object based on an existing node. Useful for saving nodes to GBX files.
+        /// </summary>
+        /// <param name="node">Node to wrap.</param>
+        public GameBox(T node) : this(node, null)
+        {
+
         }
 
         private void AssignBodyToNode()
@@ -87,29 +106,6 @@ namespace GBX.NET
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Create a GameBox object based on an existing node. Useful for saving nodes to GBX files.
-        /// </summary>
-        /// <param name="node"></param>
-        /// <param name="headerInfo"></param>
-        public GameBox(T node, GameBoxHeaderInfo headerInfo) : this(headerInfo)
-        {
-            // It needs to be sure that the Body and Part are assigned to the correct GameBox body
-            AssignBodyToNode(Body, node);
-
-            MainNode = node;
-            ID = node.ID;
-        }
-
-        /// <summary>
-        /// Create a GameBox object based on an existing node. Useful for saving nodes to GBX files.
-        /// </summary>
-        /// <param name="node"></param>
-        public GameBox(T node) : this(node, null)
-        {
-            
         }
 
         /// <summary>
@@ -333,6 +329,23 @@ namespace GBX.NET
         }
 
         /// <summary>
+        /// Saves the serialized <see cref="GameBox{T}"/> on the defined <see cref="GameBox.FileName"/>.
+        /// </summary>
+        /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
+        public void Save(IDRemap remap)
+        {
+            Save(FileName, remap);
+        }
+
+        /// <summary>
+        /// Saves the serialized <see cref="GameBox{T}"/> on the defined <see cref="GameBox.FileName"/>.
+        /// </summary>
+        public void Save()
+        {
+            Save(FileName, IDRemap.Latest);
+        }
+
+        /// <summary>
         /// Implicitly casts <see cref="GameBox{T}"/> to its <see cref="GameBox{T}.MainNode"/>.
         /// </summary>
         /// <param name="gbx"></param>
@@ -351,8 +364,14 @@ namespace GBX.NET
         /// </summary>
         public IDRemap Remap { get; set; }
 
+        /// <summary>
+        /// Header part containing generic GameBox values.
+        /// </summary>
         public GameBoxHeaderInfo Header { get; }
 
+        /// <summary>
+        /// ID of the node.
+        /// </summary>
         public uint? ID
         {
             get => Header.ID;
@@ -364,13 +383,23 @@ namespace GBX.NET
         /// </summary>
         public GameBoxRefTable RefTable { get; private set; }
 
+        /// <summary>
+        /// File path of the GameBox.
+        /// </summary>
         public string FileName { get; set; }
 
+        /// <summary>
+        /// Creates an empty GameBox object version 6.
+        /// </summary>
         public GameBox() : this(null)
         {
             
         }
 
+        /// <summary>
+        /// Creates an empty GameBox object based on defined <see cref="GameBoxHeaderInfo"/>.
+        /// </summary>
+        /// <param name="headerInfo">Header info to use.</param>
         public GameBox(GameBoxHeaderInfo headerInfo)
         {
             if (headerInfo == null)
@@ -507,6 +536,7 @@ namespace GBX.NET
 
             return null;
         }
+
         /// <summary>
         /// Parses only the header of the GBX.
         /// </summary>
