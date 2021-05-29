@@ -36,7 +36,7 @@ namespace GBX.NET
         /// <summary>
         /// Node containing data taken from the body part.
         /// </summary>
-        public T MainNode { get; set; }
+        public T MainNode { get; internal set; }
 
         /// <summary>
         /// Constructs an empty GameBox object.
@@ -53,6 +53,42 @@ namespace GBX.NET
             Body = new GameBoxBody<T>(this);
         }
 
+        private void AssignBodyToNode()
+        {
+            AssignBodyToNode(Body, MainNode);
+        }
+
+        private void AssignBodyToNode(GameBoxBody<T> body, Node n)
+        {
+            n.Body = body; // Assign the GBX body to this body
+            foreach (var chunk in n.Chunks)
+                chunk.Part = body; // Assign each chunk to this body
+
+            var type = n.GetType();
+
+            foreach (var prop in type.GetProperties()) // Go through all properties of a node
+            {
+                if (Attribute.IsDefined(prop, typeof(NodeMemberAttribute))) // Check only NodeMember attributes
+                {
+                    if (prop.PropertyType.IsSubclassOf(typeof(Node))) // If the property is Node
+                    {
+                        AssignBodyToNode(body, (Node)prop.GetValue(n)); // Recurse through the node
+                    }
+                    else if (typeof(IEnumerable).IsAssignableFrom(prop.PropertyType)) // If the property is a list of something
+                    {
+                        // If the list has a generic argument of anu kind of Node
+                        if (Array.Find(prop.PropertyType.GetGenericArguments(), x => x.IsSubclassOf(typeof(Node))) != null)
+                        {
+                            // Go through each Node and recurse
+                            var enumerable = (IEnumerable)prop.GetValue(n);
+                            foreach (var e in enumerable)
+                                AssignBodyToNode(body, (Node)e);
+                        }
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// Create a GameBox object based on an existing node. Useful for saving nodes to GBX files.
         /// </summary>
@@ -61,38 +97,7 @@ namespace GBX.NET
         public GameBox(T node, GameBoxHeaderInfo headerInfo) : this(headerInfo)
         {
             // It needs to be sure that the Body and Part are assigned to the correct GameBox body
-            RecurseMembers(Body, node);
-
-            void RecurseMembers(GameBoxBody<T> body, Node n)
-            {
-                n.Body = body; // Assign the GBX body to this body
-                foreach (var chunk in n.Chunks)
-                    chunk.Part = body; // Assign each chunk to this body
-
-                var type = n.GetType();
-
-                foreach (var prop in type.GetProperties()) // Go through all properties of a node
-                {
-                    if (Attribute.IsDefined(prop, typeof(NodeMemberAttribute))) // Check only NodeMember attributes
-                    {
-                        if (prop.PropertyType.IsSubclassOf(typeof(Node))) // If the property is Node
-                        {
-                            RecurseMembers(body, (Node)prop.GetValue(n)); // Recurse through the node
-                        }
-                        else if(typeof(IEnumerable).IsAssignableFrom(prop.PropertyType)) // If the property is a list of something
-                        {
-                            // If the list has a generic argument of anu kind of Node
-                            if (Array.Find(prop.PropertyType.GetGenericArguments(), x => x.IsSubclassOf(typeof(Node))) != null)
-                            {
-                                // Go through each Node and recurse
-                                var enumerable = (IEnumerable)prop.GetValue(n);
-                                foreach (var e in enumerable)
-                                    RecurseMembers(body, (Node)e);
-                            }
-                        }
-                    }
-                }
-            }
+            AssignBodyToNode(Body, node);
 
             MainNode = node;
             ID = node.ID;
@@ -249,6 +254,9 @@ namespace GBX.NET
 
         internal void Write(GameBoxWriter w, IDRemap remap)
         {
+            // It needs to be sure that the Body and Part are assigned to the correct GameBox body
+            AssignBodyToNode();
+
             using (MemoryStream ms = new MemoryStream())
             using (GameBoxWriter bodyW = new GameBoxWriter(ms))
             {
