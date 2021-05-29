@@ -46,24 +46,6 @@ namespace GBX.NET
             }
         }
 
-        [IgnoreDataMember]
-        public uint[] ChunkIDs
-        {
-            get
-            {
-                var chunkTypes = GetType().GetNestedTypes().Where(x => x.BaseType == typeof(Chunk)).ToArray();
-                var array = new uint[chunkTypes.Length];
-
-                for (var i = 0; i < array.Length; i++)
-                {
-                    var att = chunkTypes[i].GetCustomAttribute<ChunkAttribute>();
-                    array[i] = att.ClassID + att.ChunkID;
-                }
-
-                return array;
-            }
-        }
-
         public static Dictionary<uint, Type> AvailableClasses { get; } = new Dictionary<uint, Type>();
         public static Dictionary<Type, List<uint>> AvailableInheritanceClasses { get; } = new Dictionary<Type, List<uint>>();
         public static Dictionary<Type, Dictionary<uint, Type>> AvailableChunkClasses { get; } = new Dictionary<Type, Dictionary<uint, Type>>();
