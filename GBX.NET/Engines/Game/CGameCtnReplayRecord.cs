@@ -382,7 +382,7 @@ namespace GBX.NET.Engines.Game
                         switch (name)
                         {
                             case "Steer (analog)": // Data is bugged
-                                n.controlEntries[i] = new ControlEntryAnalog() { Name = name, Time = time, Data = data };
+                                n.controlEntries[i] = new ControlEntryAnalog(true) { Name = name, Time = time, Data = data };
                                 break;
                             default:
                                 n.controlEntries[i] = new ControlEntry() { Name = name, Time = time, Data = data };
