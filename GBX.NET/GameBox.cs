@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.ExceptionServices;
-using System.Threading.Tasks;
 
 namespace GBX.NET
 {
@@ -60,6 +60,40 @@ namespace GBX.NET
         /// <param name="headerInfo"></param>
         public GameBox(T node, GameBoxHeaderInfo headerInfo) : this(headerInfo)
         {
+            // It needs to be sure that the Body and Part are assigned to the correct GameBox body
+            RecurseMembers(Body, node);
+
+            void RecurseMembers(GameBoxBody<T> body, Node n)
+            {
+                n.Body = body; // Assign the GBX body to this body
+                foreach (var chunk in n.Chunks)
+                    chunk.Part = body; // Assign each chunk to this body
+
+                var type = n.GetType();
+
+                foreach (var prop in type.GetProperties()) // Go through all properties of a node
+                {
+                    if (Attribute.IsDefined(prop, typeof(NodeMemberAttribute))) // Check only NodeMember attributes
+                    {
+                        if (prop.PropertyType.IsSubclassOf(typeof(Node))) // If the property is Node
+                        {
+                            RecurseMembers(body, (Node)prop.GetValue(n)); // Recurse through the node
+                        }
+                        else if(typeof(IEnumerable).IsAssignableFrom(prop.PropertyType)) // If the property is a list of something
+                        {
+                            // If the list has a generic argument of anu kind of Node
+                            if (Array.Find(prop.PropertyType.GetGenericArguments(), x => x.IsSubclassOf(typeof(Node))) != null)
+                            {
+                                // Go through each Node and recurse
+                                var enumerable = (IEnumerable)prop.GetValue(n);
+                                foreach (var e in enumerable)
+                                    RecurseMembers(body, (Node)e);
+                            }
+                        }
+                    }
+                }
+            }
+
             MainNode = node;
             ID = node.ID;
         }
