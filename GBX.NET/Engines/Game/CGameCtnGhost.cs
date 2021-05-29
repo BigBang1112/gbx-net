@@ -205,6 +205,9 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public string UID { get; set; }
 
+        /// <summary>
+        /// Duration of events in the ghost (range of detected inputs). This can be 0 if the ghost was driven in editor.
+        /// </summary>
         [NodeMember]
         public int EventsDuration
         {
@@ -221,7 +224,7 @@ namespace GBX.NET.Engines.Game
         }
 
         /// <summary>
-        /// Inputs (keyboard, pad, wheel) of the ghost from TMU, TMUF and TM2. For inputs stored in TM1.0, TMO, Sunrise and ESWC: see <see cref="CGameCtnReplayRecord.ControlEntries"/>. TM2020 and Shootmania don't have inputs available at all in replays and ghosts.
+        /// Inputs (keyboard, pad, wheel) of the ghost from TMU, TMUF and TM2. For inputs stored in TM1.0, TMO, Sunrise and ESWC: see <see cref="CGameCtnReplayRecord.ControlEntries"/>. TM2020 and Shootmania inputs aren't available in replays and ghosts. Can be null if <see cref="EventsDuration"/> is 0, which happens when you save the replay in editor.
         /// </summary>
         [NodeMember]
         public ControlEntry[] ControlEntries

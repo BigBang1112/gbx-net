@@ -206,13 +206,13 @@ namespace GBX.NET.Engines.Game
         public CCtnMediaBlockEventTrackMania Events => events;
 
         /// <summary>
-        /// Duration of events in the replay (range of detected inputs).
+        /// Duration of events in the replay (range of detected inputs). This can be 0 if the replay was driven in editor.
         /// </summary>
         [NodeMember]
         public int EventsDuration => eventsDuration;
 
         /// <summary>
-        /// Inputs (keyboard, pad, wheel) of the replay from TM1.0, TMO, Sunrise and ESWC. For inputs stored in TMU, TMUF and TM2: see <see cref="CGameCtnGhost.ControlEntries"/> in <see cref="Ghosts"/>. TM2020 and Shootmania don't have inputs available at all in replays and ghosts.
+        /// Inputs (keyboard, pad, wheel) of the replay from TM1.0, TMO, Sunrise and ESWC. For inputs stored in TMU, TMUF and TM2: see <see cref="CGameCtnGhost.ControlEntries"/> in <see cref="Ghosts"/>. TM2020 and Shootmania inputs aren't available in replays and ghosts. Can be null if <see cref="EventsDuration"/> is 0, which happens when you save the replay in editor.
         /// </summary>
         [NodeMember]
         public ControlEntry[] ControlEntries => controlEntries;
