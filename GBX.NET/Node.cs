@@ -97,7 +97,7 @@ namespace GBX.NET
             if (!AvailableClasses.TryGetValue(classID.Value, out Type type))
                 throw new NotImplementedException($"Node ID 0x{classID.Value:X8} is not implemented. ({Names.Where(x => x.Key == Chunk.Remap(classID.Value)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
 
-            T node = null;
+            T node;
             if (gbx == null)
                 node = (T)Activator.CreateInstance(type);
             else
