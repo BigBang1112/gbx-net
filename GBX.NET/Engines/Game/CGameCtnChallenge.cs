@@ -209,7 +209,7 @@ namespace GBX.NET.Engines.Game
         private string buildVersion;
         private int decoBaseHeightOffset;
         private List<BotPath> botPaths;
-        private readonly Dictionary<string, byte[]> embeds = new Dictionary<string, byte[]>();
+        private readonly Dictionary<string, byte[]> embeddedObjects = new Dictionary<string, byte[]>();
         private byte[] originalEmbedZip;
         private TimeSpan? dayTime;
         private bool dynamicDaylight;
@@ -1191,12 +1191,12 @@ namespace GBX.NET.Engines.Game
         /// Embedded objects in the map. Key defines a relative path. Value is the actual embedded data, usually in GBX format.
         /// </summary>
         [NodeMember]
-        public Dictionary<string, byte[]> Embeds
+        public Dictionary<string, byte[]> EmbeddedObjects
         {
             get
             {
                 DiscoverChunk<Chunk03043054>();
-                return embeds;
+                return embeddedObjects;
             }
         }
 
@@ -1622,7 +1622,7 @@ namespace GBX.NET.Engines.Game
         /// <returns>An enumerable of <see cref="GameBox"/> objects with header data only.</returns>
         public IEnumerable<GameBox> GetEmbeddedObjects()
         {
-            foreach(var embed in Embeds)
+            foreach(var embed in EmbeddedObjects)
             {
                 using (var ms = new MemoryStream(embed.Value))
                 {
@@ -1634,14 +1634,14 @@ namespace GBX.NET.Engines.Game
         }
 
         /// <summary>
-        /// Extracts embed ZIP file based on the data in <see cref="Embeds"/>. File metadata is simplified and the timestamp of extraction is used for all files. Stream must have permission to read.
+        /// Extracts embed ZIP file based on the data in <see cref="EmbeddedObjects"/>. File metadata is simplified and the timestamp of extraction is used for all files. Stream must have permission to read.
         /// </summary>
         /// <param name="stream">Stream to write the ZIP data to.</param>
         public void ExtractEmbedZip(Stream stream)
         {
             using (var zip = new ZipArchive(stream, ZipArchiveMode.Create, true))
             {
-                foreach (var embed in Embeds)
+                foreach (var embed in EmbeddedObjects)
                 {
                     var entry = zip.CreateEntry(embed.Key.Replace('\\', '/'));
                     using (var s = entry.Open())
@@ -1651,7 +1651,7 @@ namespace GBX.NET.Engines.Game
         }
 
         /// <summary>
-        /// Extracts embed ZIP file based on the data in <see cref="Embeds"/>. File metadata is simplified and the timestamp of extraction is used for all files.
+        /// Extracts embed ZIP file based on the data in <see cref="EmbeddedObjects"/>. File metadata is simplified and the timestamp of extraction is used for all files.
         /// </summary>
         /// <param name="fileName">New file to write the ZIP data to.</param>
         public void ExtractEmbedZip(string fileName)
@@ -1771,7 +1771,7 @@ namespace GBX.NET.Engines.Game
                 }
             }
 
-            Embeds[relativeDirectory + "/" + Path.GetFileName(fileOnDisk)] = data;
+            EmbeddedObjects[relativeDirectory + "/" + Path.GetFileName(fileOnDisk)] = data;
         }
 
         /// <summary>
@@ -3639,12 +3639,12 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x054 skippable chunk (embeds)
+        #region 0x054 skippable chunk (embedded objects)
 
         /// <summary>
-        /// CGameCtnChallenge 0x054 skippable chunk (embeds)
+        /// CGameCtnChallenge 0x054 skippable chunk (embedded objects)
         /// </summary>
-        [Chunk(0x03043054, "embeds")]
+        [Chunk(0x03043054, "embedded objects")]
         public class Chunk03043054 : SkippableChunk<CGameCtnChallenge>, ILookbackable
         {
             int? ILookbackable.IdVersion { get; set; }
@@ -3678,7 +3678,7 @@ namespace GBX.NET.Engines.Game
                             using (var entryDataStream = new MemoryStream())
                             {
                                 entryStream.CopyTo(entryDataStream);
-                                n.embeds[entry.Name] = entryDataStream.ToArray();
+                                n.embeddedObjects[entry.Name] = entryDataStream.ToArray();
                             }
                         }
                     }

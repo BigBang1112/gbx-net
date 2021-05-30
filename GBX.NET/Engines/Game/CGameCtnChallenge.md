@@ -51,7 +51,7 @@ The class behind every single map made in Trackmania.
 - [0x051 - skippable (title info)](#0x051---skippable-title-info)
 - [0x052 - skippable (deco height)](#0x052---skippable-deco-height)
 - [0x053 - skippable (bot paths)](#0x053---skippable-bot-paths)
-- [0x054 - skippable (embeds)](#0x054---skippable-embeds)
+- [0x054 - skippable (embedded objects)](#0x054---skippable-embedded-objects)
 - 0x055 - skippable
 - [0x056 - skippable (light settings)](#0x056---skippable-light-settings)
 - 0x057 - skippable
@@ -1382,7 +1382,7 @@ void Read(GameBoxReader r)
 }
 ```
 
-### 0x054 - skippable (embeds)
+### 0x054 - skippable (embedded objects)
 
 The chunk behind item embedding. It also references a list of used textures, but **the textures itself aren't possible to embed**.
 
