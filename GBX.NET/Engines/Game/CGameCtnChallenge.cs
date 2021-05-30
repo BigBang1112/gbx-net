@@ -166,8 +166,8 @@ namespace GBX.NET.Engines.Game
         private string xml;
         private string comments;
         private byte[] thumbnail;
-        private Vec2? mapOrigin;
-        private Vec2? mapTarget;
+        private Vec2? mapCoordOrigin;
+        private Vec2? mapCoordTarget;
         private string mapStyle;
         private string titleID;
         private int authorVersion;
@@ -591,20 +591,20 @@ namespace GBX.NET.Engines.Game
         /// Origin of the map.
         /// </summary>
         [NodeMember]
-        public Vec2? MapOrigin
+        public Vec2? MapCoordOrigin
         {
-            get => mapOrigin;
-            set => mapOrigin = value;
+            get => mapCoordOrigin;
+            set => mapCoordOrigin = value;
         }
 
         /// <summary>
         /// Target of the map.
         /// </summary>
         [NodeMember]
-        public Vec2? MapTarget
+        public Vec2? MapCoordTarget
         {
-            get => mapTarget;
-            set => mapTarget = value;
+            get => mapCoordTarget;
+            set => mapCoordTarget = value;
         }
 
         /// <summary>
@@ -2120,7 +2120,7 @@ namespace GBX.NET.Engines.Game
 
                         if (version >= 5)
                         {
-                            n.isLapRace = rw.Boolean(n.isLapRace);
+                            rw.Boolean(ref n.isLapRace);
 
                             if (version == 6)
                                 rw.Int32(ref u03);
@@ -2212,11 +2212,11 @@ namespace GBX.NET.Engines.Game
 
                         if (version >= 3)
                         {
-                            rw.Vec2(ref n.mapOrigin);
+                            rw.Vec2(ref n.mapCoordOrigin);
 
                             if (version >= 4)
                             {
-                                rw.Vec2(ref n.mapTarget);
+                                rw.Vec2(ref n.mapCoordTarget);
 
                                 if (version >= 5)
                                 {
@@ -2392,18 +2392,22 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0304300F, "TM1.0 block data")]
         public class Chunk0304300F : Chunk<CGameCtnChallenge>
         {
-            private int u01;
-            private int u02;
-            private Ident u03;
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 rw.Ident(ref n.mapInfo);
                 rw.Int3(ref n.size);
-                rw.Int32(ref u01);
+                rw.Int32(ref version);
                 rw.ListNode<CGameCtnBlock>(ref n.blocks);
-                rw.Int32(ref u02);
-                rw.Ident(ref u03);
+                rw.Boolean(ref n.needUnlock);
+                rw.Ident(ref n.decoration);
             }
         }
 
@@ -2804,24 +2808,24 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.Boolean(Unknown);
+                rw.Int32(Unknown);
             }
         }
 
         #endregion
 
-        #region 0x023 chunk
+        #region 0x023 chunk (map origin)
 
         /// <summary>
-        /// CGameCtnChallenge 0x023 chunk
+        /// CGameCtnChallenge 0x023 chunk (map origin)
         /// </summary>
-        [Chunk(0x03043023)]
+        [Chunk(0x03043023, "map origin")]
         public class Chunk03043023 : Chunk<CGameCtnChallenge>
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Vec2(ref n.mapCoordOrigin);
+                n.mapCoordTarget = n.mapCoordOrigin;
             }
         }
 
@@ -2850,29 +2854,29 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x025 chunk
+        #region 0x025 chunk (map origin and target)
 
         /// <summary>
-        /// CGameCtnChallenge 0x025 chunk
+        /// CGameCtnChallenge 0x025 chunk (map origin and target)
         /// </summary>
-        [Chunk(0x03043025)]
+        [Chunk(0x03043025, "map origin and target")]
         public class Chunk03043025 : Chunk<CGameCtnChallenge>
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.Vec2(ref n.mapOrigin);
-                rw.Vec2(ref n.mapTarget);
+                rw.Vec2(ref n.mapCoordOrigin);
+                rw.Vec2(ref n.mapCoordTarget);
             }
         }
 
         #endregion
 
-        #region 0x026 chunk
+        #region 0x026 chunk (clip global)
 
         /// <summary>
-        /// CGameCtnChallenge 0x026 chunk
+        /// CGameCtnChallenge 0x026 chunk (clip global)
         /// </summary>
-        [Chunk(0x03043026)]
+        [Chunk(0x03043026, "clip global")]
         public class Chunk03043026 : Chunk<CGameCtnChallenge>
         {
             private Node clipGlobal;
@@ -3390,9 +3394,17 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03043048, "baked blocks")]
         public class Chunk03043048 : SkippableChunk<CGameCtnChallenge>
         {
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
+
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32(ref version);
                 rw.Int32(Unknown);
 
                 n.BakedBlocks = rw.Array(n.BakedBlocks, r => new CGameCtnBlock(
@@ -4026,12 +4038,12 @@ namespace GBX.NET.Engines.Game
             /// <summary>
             /// Target of the map.
             /// </summary>
-            Vec2? MapTarget { get; set; }
+            Vec2? MapCoordTarget { get; set; }
 
             /// <summary>
             /// Origin of the map.
             /// </summary>
-            Vec2? MapOrigin { get; set; }
+            Vec2? MapCoordOrigin { get; set; }
 
             /// <summary>
             /// Name of the map type script.
