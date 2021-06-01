@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<Product>GBX.NET</Product>
@@ -14,7 +14,6 @@
 		
 		<TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
 		<Platforms>AnyCPU;x64;x86</Platforms>
-		
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk</PackageTags>
