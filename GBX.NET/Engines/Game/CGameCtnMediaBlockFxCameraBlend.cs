@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-
-namespace GBX.NET.Engines.Game
+﻿namespace GBX.NET.Engines.Game
 {
     [Node(0x0316D000)]
     public class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock
@@ -50,7 +45,7 @@ namespace GBX.NET.Engines.Game
 
         #region Other classes
 
-        public class Key : MediaBlockKey
+        public new class Key : CGameCtnMediaBlock.Key
         {
             public float CaptureWeight { get; set; }
         }

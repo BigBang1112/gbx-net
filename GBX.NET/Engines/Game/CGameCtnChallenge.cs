@@ -1,22 +1,16 @@
-﻿using GBX.NET.BlockInfo;
-using GBX.NET.Engines.GameData;
-using GBX.NET.Engines.Hms;
-using GBX.NET.Engines.Script;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Net.NetworkInformation;
-using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+
+using GBX.NET.BlockInfo;
+using GBX.NET.Engines.GameData;
+using GBX.NET.Engines.Hms;
+using GBX.NET.Engines.Script;
 
 namespace GBX.NET.Engines.Game
 {
@@ -25,7 +19,7 @@ namespace GBX.NET.Engines.Game
     /// </summary>
     /// <remarks>A map. Known extensions: .Challenge.Gbx, .Map.Gbx</remarks>
     [Node(0x03043000)]
-    public class CGameCtnChallenge : Node
+    public class CGameCtnChallenge : Node, CGameCtnChallenge.IHeader
     {
         #region Enums
 
@@ -66,13 +60,15 @@ namespace GBX.NET.Engines.Game
             Script
         }
 
+        /// <summary>
+        /// In which editor settings this map was made.
+        /// </summary>
         [Flags]
         public enum EditorMode
         {
             Advanced,
             Simple,
-            AdvancedWithGhostBlocks,
-            SimpleWithGhostBlocks
+            HasGhostBlocks
         }
 
         /// <summary>
@@ -169,9 +165,9 @@ namespace GBX.NET.Engines.Game
         private byte? lightmapVersion;
         private string xml;
         private string comments;
-        private Task<Bitmap> thumbnail;
-        private Vec2? mapOrigin;
-        private Vec2? mapTarget;
+        private byte[] thumbnail;
+        private Vec2? mapCoordOrigin;
+        private Vec2? mapCoordTarget;
         private string mapStyle;
         private string titleID;
         private int authorVersion;
@@ -202,6 +198,7 @@ namespace GBX.NET.Engines.Game
         private float? thumbnailFOV;
         private List<CGameCtnAnchoredObject> anchoredObjects;
         private CScriptTraitsMetadata scriptMetadata;
+        private List<List<byte[]>> lightmapFrames;
         private Task<CHmsLightMapCache> lightmapCache;
         private Task<CGameCtnZoneGenealogy[]> genealogies;
         private string objectiveTextAuthor;
@@ -211,8 +208,8 @@ namespace GBX.NET.Engines.Game
         private List<(Int3 start, Int3 end)> offzones;
         private string buildVersion;
         private int decoBaseHeightOffset;
-        private List<CGameScriptMapBotPath> botPaths;
-        private Dictionary<string, byte[]> embeds = new Dictionary<string, byte[]>();
+        private List<BotPath> botPaths;
+        private readonly Dictionary<string, byte[]> embeddedObjects = new Dictionary<string, byte[]>();
         private byte[] originalEmbedZip;
         private TimeSpan? dayTime;
         private bool dynamicDaylight;
@@ -223,9 +220,14 @@ namespace GBX.NET.Engines.Game
         #region Properties
 
         /// <summary>
+        /// Shows members that are available from the GBX header (reading the body is not required).
+        /// </summary>
+        public IHeader Header => this;
+
+        /// <summary>
         /// Time of the bronze medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
         /// </summary>
-        [NodeMember] // TODO: localize
+        [NodeMember]
         public TimeSpan? TMObjective_BronzeTime
         {
             get
@@ -313,7 +315,7 @@ namespace GBX.NET.Engines.Game
         }
 
         /// <summary>
-        /// Usually author time or stunt score. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
+        /// Usually author time or stunts score. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
         /// </summary>
         [NodeMember]
         public int AuthorScore
@@ -332,6 +334,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// In which editor settings the map was made.
+        /// </summary>
         [NodeMember]
         public EditorMode Editor
         {
@@ -343,14 +348,17 @@ namespace GBX.NET.Engines.Game
         /// If the map was made using the simple editor.
         /// </summary>
         [NodeMember]
-        public bool CreatedWithSimpleEditor => Editor == (EditorMode.Simple | EditorMode.SimpleWithGhostBlocks);
+        public bool CreatedWithSimpleEditor => (Editor & EditorMode.Simple) != 0;
 
         /// <summary>
         /// If the map uses ghost blocks.
         /// </summary>
         [NodeMember]
-        public bool HasGhostBlocks => Editor == (EditorMode.AdvancedWithGhostBlocks | EditorMode.SimpleWithGhostBlocks);
+        public bool HasGhostBlocks => (Editor & EditorMode.HasGhostBlocks) != 0;
 
+        /// <summary>
+        /// If the map is a multilap.
+        /// </summary>
         [NodeMember]
         public bool TMObjective_IsLapRace
         {
@@ -394,6 +402,9 @@ namespace GBX.NET.Engines.Game
             set => nbCheckpoints = value;
         }
 
+        /// <summary>
+        /// Map UID, environment, and author login.
+        /// </summary>
         [NodeMember]
         public Ident MapInfo
         {
@@ -401,17 +412,22 @@ namespace GBX.NET.Engines.Game
             set => mapInfo = value;
         }
 
+        /// <summary>
+        /// The map's UID.
+        /// </summary>
         [NodeMember]
         public string MapUid
         {
-            get => MapInfo?.ID;
+            get => mapInfo.ID;
             set
             {
-                if (MapInfo != null)
-                    MapInfo.ID = value;
+                mapInfo = new Ident(value, mapInfo.Collection, mapInfo.Author);
             }
         }
 
+        /// <summary>
+        /// Login of the map author.
+        /// </summary>
         [NodeMember]
         public string AuthorLogin
         {
@@ -419,8 +435,8 @@ namespace GBX.NET.Engines.Game
             {
                 DiscoverChunk<Chunk03043042>();
 
-                if (authorLogin == null && MapInfo != null)
-                    return MapInfo.Author;
+                if (authorLogin == null)
+                    return mapInfo.Author;
 
                 return authorLogin;
             }
@@ -429,11 +445,13 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03043042>();
                 authorLogin = value;
 
-                if (MapInfo != null)
-                    MapInfo.Author = value;
+                mapInfo = new Ident(value, mapInfo.Collection, mapInfo.Author);
             }
         }
 
+        /// <summary>
+        /// The map's name.
+        /// </summary>
         [NodeMember]
         public string MapName
         {
@@ -469,6 +487,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// The map's decoration (time of the day or scenery)
+        /// </summary>
         [NodeMember]
         public Ident Decoration
         {
@@ -516,6 +537,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// UID of the lightmap data stored in cache.
+        /// </summary>
         [NodeMember]
         public ulong? LightmapCacheUID
         {
@@ -544,47 +568,43 @@ namespace GBX.NET.Engines.Game
         }
 
         /// <summary>
-        /// Thumbnail bitmap.
+        /// Thumbnail JPEG data.
         /// </summary>
         [NodeMember]
-        [IgnoreDataMember]
-        public Task<Bitmap> Thumbnail
+        public byte[] Thumbnail
         {
             get => thumbnail;
             set => thumbnail = value;
         }
 
+        /// <summary>
+        /// The map's environment.
+        /// </summary>
         [NodeMember]
         public Collection Collection
         {
-            get => (Decoration?.Collection ?? MapInfo?.Collection).GetValueOrDefault();
-            set
-            {
-                if (Decoration != null)
-                    Decoration.Collection = value;
-                if (MapInfo != null)
-                    MapInfo.Collection = value;
-            }
+            get => mapInfo.Collection;
+            set => mapInfo = new Ident(mapInfo.ID, value, mapInfo.Author);
         }
 
         /// <summary>
         /// Origin of the map.
         /// </summary>
         [NodeMember]
-        public Vec2? MapOrigin
+        public Vec2? MapCoordOrigin
         {
-            get => mapOrigin;
-            set => mapOrigin = value;
+            get => mapCoordOrigin;
+            set => mapCoordOrigin = value;
         }
 
         /// <summary>
         /// Target of the map.
         /// </summary>
         [NodeMember]
-        public Vec2? MapTarget
+        public Vec2? MapCoordTarget
         {
-            get => mapTarget;
-            set => mapTarget = value;
+            get => mapCoordTarget;
+            set => mapCoordTarget = value;
         }
 
         /// <summary>
@@ -605,6 +625,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Executable (game's) build version the map was built in.
+        /// </summary>
         [NodeMember]
         public string BuildVersion
         {
@@ -620,6 +643,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// The map's author comments.
+        /// </summary>
         [NodeMember]
         public string Comments
         {
@@ -642,6 +668,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Nickname of the map author.
+        /// </summary>
         [NodeMember]
         public string AuthorNickname
         {
@@ -653,6 +682,9 @@ namespace GBX.NET.Engines.Game
             set => authorNickname = value;
         }
 
+        /// <summary>
+        /// Zone of the map author.
+        /// </summary>
         [NodeMember]
         public string AuthorZone
         {
@@ -676,7 +708,7 @@ namespace GBX.NET.Engines.Game
         }
 
         /// <summary>
-        /// Vehicle metadata info.
+        /// The car's name, environment and author used on the map.
         /// </summary>
         [NodeMember]
         public Ident PlayerModel
@@ -692,13 +724,13 @@ namespace GBX.NET.Engines.Game
         public CGameCtnChallengeParameters ChallengeParameters => challengeParameters;
 
         /// <summary>
-        /// List of puzzle pieces.
+        /// List of available puzzle pieces.
         /// </summary>
         [NodeMember]
         public CGameCtnCollectorList BlockStock => blockStock;
 
         /// <summary>
-        /// All checkpoints and their map coordinates. Used by older Trackmania.
+        /// All checkpoints and their map coordinates. Used by TMUF and older games.
         /// </summary>
         [NodeMember]
         public Int3[] Checkpoints
@@ -715,6 +747,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Reference to the mod (texture/resource pack) used on the map.
+        /// </summary>
         [NodeMember]
         public FileRef ModPackDesc
         {
@@ -748,6 +783,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Size of the map in block coordinates.
+        /// </summary>
         [NodeMember]
         public Int3? Size
         {
@@ -763,7 +801,7 @@ namespace GBX.NET.Engines.Game
         }
 
         /// <summary>
-        /// Array of all blocks on the map.
+        /// List of all blocks on the map.
         /// </summary>
         [NodeMember]
         public List<CGameCtnBlock> Blocks
@@ -772,16 +810,30 @@ namespace GBX.NET.Engines.Game
             set => blocks = value;
         }
 
+        /// <summary>
+        /// Number of actual blocks on the map (doesn't include Unassigned1 and other blocks with <see cref="CGameCtnBlock.Flags"/> equal to -1).
+        /// </summary>
         [NodeMember]
-        public int NbBlocks => Blocks?.Where(x => x.Flags != -1).Count() ?? 0;
+        public int NbBlocks => Blocks?.Count(x => x.Flags != -1) ?? 0;
 
         [NodeMember]
         public CGameCtnBlock[] BakedBlocks
         {
-            get => bakedBlocks;
-            set => bakedBlocks = value;
+            get
+            {
+                DiscoverChunk<Chunk03043048>();
+                return bakedBlocks;
+            }
+            set
+            {
+                DiscoverChunk<Chunk03043048>();
+                bakedBlocks = value;
+            }
         }
 
+        /// <summary>
+        /// MediaTracker intro.
+        /// </summary>
         [NodeMember]
         public CGameCtnMediaClip ClipIntro
         {
@@ -789,6 +841,9 @@ namespace GBX.NET.Engines.Game
             set => clipIntro = value;
         }
 
+        /// <summary>
+        /// MediaTracker ingame.
+        /// </summary>
         [NodeMember]
         public CGameCtnMediaClipGroup ClipGroupInGame
         {
@@ -796,6 +851,9 @@ namespace GBX.NET.Engines.Game
             set => clipGroupInGame = value;
         }
 
+        /// <summary>
+        /// MediaTracker end race.
+        /// </summary>
         [NodeMember]
         public CGameCtnMediaClipGroup ClipGroupEndRace
         {
@@ -803,6 +861,9 @@ namespace GBX.NET.Engines.Game
             set => clipGroupEndRace = value;
         }
 
+        /// <summary>
+        /// MediaTracker ambiance.
+        /// </summary>
         [NodeMember]
         public CGameCtnMediaClip ClipAmbiance
         {
@@ -810,6 +871,9 @@ namespace GBX.NET.Engines.Game
             set => clipAmbiance = value;
         }
 
+        /// <summary>
+        /// MediaTracker podium.
+        /// </summary>
         [NodeMember]
         public CGameCtnMediaClip ClipPodium
         {
@@ -817,6 +881,9 @@ namespace GBX.NET.Engines.Game
             set => clipPodium = value;
         }
 
+        /// <summary>
+        /// Reference to the custom music used on the map.
+        /// </summary>
         [NodeMember]
         public FileRef CustomMusicPackDesc
         {
@@ -824,6 +891,9 @@ namespace GBX.NET.Engines.Game
             set => customMusicPackDesc = value;
         }
 
+        /// <summary>
+        /// Hashed password of the map, if it's password protected.
+        /// </summary>
         [NodeMember]
         public byte[] HashedPassword
         {
@@ -839,6 +909,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// CRC32 of the map.
+        /// </summary>
         [NodeMember]
         public uint? CRC32
         {
@@ -855,7 +928,7 @@ namespace GBX.NET.Engines.Game
         }
 
         /// <summary>
-        /// Position of the thumnail camera.
+        /// Position of the thumbnail camera.
         /// </summary>
         [NodeMember]
         public Vec3? ThumbnailPosition
@@ -908,6 +981,26 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// List of all the available lightmap frames. Each frame can contain up to 3 different variants in either JPEG or WEBP format.
+        /// </summary>
+        public List<List<byte[]>> LightmapFrames
+        {
+            get
+            {
+                DiscoverChunk<Chunk0304303D>();
+                return lightmapFrames;
+            }
+            set
+            {
+                DiscoverChunk<Chunk0304303D>();
+                lightmapFrames = value;
+            }
+        }
+
+        /// <summary>
+        /// Lightmap cache information.
+        /// </summary>
         [NodeMember]
         public Task<CHmsLightMapCache> LightmapCache
         {
@@ -923,6 +1016,15 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// If the map has at least 1 lightmap frame.
+        /// </summary>
+        [NodeMember]
+        public bool HasLightmaps => lightmapFrames?.Count > 0;
+
+        /// <summary>
+        /// List of all items and objects placed on the map.
+        /// </summary>
         [NodeMember]
         public List<CGameCtnAnchoredObject> AnchoredObjects
         {
@@ -953,6 +1055,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Metadata written into the map.
+        /// </summary>
         [NodeMember]
         public CScriptTraitsMetadata ScriptMetadata
         {
@@ -1028,6 +1133,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// List of offzones defined on the map, constructed with cubes made from start-to-end coordinates.
+        /// </summary>
         [NodeMember]
         public List<(Int3 start, Int3 end)> Offzones
         {
@@ -1043,6 +1151,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Minimum Y value of <see cref="Blocks"/>.
+        /// </summary>
         [NodeMember]
         public int DecoBaseHeightOffset
         {
@@ -1058,8 +1169,11 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Bot paths defined on the (Shootmania) map.
+        /// </summary>
         [NodeMember]
-        public List<CGameScriptMapBotPath> BotPaths
+        public List<BotPath> BotPaths
         {
             get
             {
@@ -1073,16 +1187,22 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Embedded objects in the map. Key defines a relative path. Value is the actual embedded data, usually in GBX format.
+        /// </summary>
         [NodeMember]
-        public Dictionary<string, byte[]> Embeds
+        public Dictionary<string, byte[]> EmbeddedObjects
         {
             get
             {
                 DiscoverChunk<Chunk03043054>();
-                return embeds;
+                return embeddedObjects;
             }
         }
 
+        /// <summary>
+        /// Exact time of the day in the map. Available since ManiaPlanet 4.
+        /// </summary>
         [NodeMember]
         public TimeSpan? DayTime
         {
@@ -1098,6 +1218,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// If the map uses dynamic daylight cycle. Available since ManiaPlanet 4.
+        /// </summary>
         [NodeMember]
         public bool DynamicDaylight
         {
@@ -1113,6 +1236,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Duration of the day defined in real time. Available since ManiaPlanet 4.
+        /// </summary>
         [NodeMember]
         public TimeSpan? DayDuration
         {
@@ -1133,85 +1259,24 @@ namespace GBX.NET.Engines.Game
         #region Methods
 
         /// <summary>
-        /// Exports the map's thumbnail.
+        /// Exports the map's thumbnail as JPEG.
         /// </summary>
         /// <param name="stream">Stream to export to.</param>
-        /// <param name="format">Image format to use.</param>
-        public void ExportThumbnail(Stream stream, ImageFormat format)
+        public void ExportThumbnail(Stream stream)
         {
-            if (Thumbnail == null) return;
-
-            if (format == ImageFormat.Jpeg)
-            {
-                var encoding = new EncoderParameters(1);
-                encoding.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 90L);
-                var encoder = ImageCodecInfo.GetImageDecoders().Where(x => x.FormatID == ImageFormat.Jpeg.Guid).First();
-
-                Thumbnail.Result.Save(stream, encoder, encoding);
-            }
-            else
-                Thumbnail.Result.Save(stream, format);
+            if (thumbnail == null) return;
+            stream.Write(thumbnail, 0, thumbnail.Length);
         }
 
         /// <summary>
-        /// Exports the map's thumbnail.
+        /// Exports the map's thumbnail as JPEG.
         /// </summary>
         /// <param name="fileName">File to export to.</param>
-        /// <param name="format">Image format to use.</param>
-        public void ExportThumbnail(string fileName, ImageFormat format)
+        public void ExportThumbnail(string fileName)
         {
-            if (Thumbnail == null) return;
-
-            if (format == ImageFormat.Jpeg)
-            {
-                var encoding = new EncoderParameters(1);
-                encoding.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 90L);
-                var encoder = ImageCodecInfo.GetImageDecoders().Where(x => x.FormatID == ImageFormat.Jpeg.Guid).First();
-
-                Thumbnail.Result.Save(fileName, encoder, encoding);
-            }
-            else
-                Thumbnail.Result.Save(fileName, format);
-        }
-
-        /// <summary>
-        /// Asynchronously imports (and replaces) a thumbnail to use for the map.
-        /// </summary>
-        /// <param name="stream">Stream to import from.</param>
-        /// <returns>A task that processes the thumbnail.</returns>
-        public Task<Bitmap> ImportThumbnailAsync(Stream stream)
-        {
-            Thumbnail = Task.Run(() => new Bitmap(stream));
-            return Thumbnail;
-        }
-
-        /// <summary>
-        /// Asynchronously imports (and replaces) a thumbnail to use for the map.
-        /// </summary>
-        /// <param name="fileName">File to import from.</param>
-        /// <returns>A task that processes the thumbnail.</returns>
-        public Task<Bitmap> ImportThumbnailAsync(string fileName)
-        {
-            Thumbnail = Task.Run(() => new Bitmap(fileName));
-            return Thumbnail;
-        }
-
-        /// <summary>
-        /// Imports (and replaces) a thumbnail to use for the map.
-        /// </summary>
-        /// <param name="stream">Stream to import from.</param>
-        public void ImportThumbnail(Stream stream)
-        {
-            ImportThumbnailAsync(stream).Wait();
-        }
-
-        /// <summary>
-        /// Imports (and replaces) a thumbnail to use for the map.
-        /// </summary>
-        /// <param name="fileName">File to import from.</param>
-        public void ImportThumbnail(string fileName)
-        {
-            ImportThumbnailAsync(fileName).Wait();
+            if (thumbnail == null) return;
+            using (var fs = File.OpenWrite(fileName))
+                ExportThumbnail(fs);
         }
 
         /// <summary>
@@ -1221,7 +1286,7 @@ namespace GBX.NET.Engines.Game
         public void NewPassword(string password)
         {
             var md5 = MD5.Create();
-            HashedPassword = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
+            hashedPassword = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
 
             //Crc32 crc32 = new Crc32();
             //crc32.Update(Encoding.ASCII.GetBytes("0x" + BitConverter.ToInt16(HashedPassword, 0).ToString() + "???" + MapUid));
@@ -1233,63 +1298,118 @@ namespace GBX.NET.Engines.Game
         /// </summary>
         public void CrackPassword()
         {
-            Password = null;
+            password = null;
             RemoveChunk<Chunk03043029>();
         }
 
         /// <summary>
-        /// Gets the first available block at this position.
+        /// Gets the first block at this position.
         /// </summary>
         /// <param name="pos">Position of the block.</param>
-        /// <returns>Returns the first available block.</returns>
-        public CGameCtnBlock GetBlock(Int3 pos) => Blocks.FirstOrDefault(x => x.Coord == pos);
+        /// <returns>The first available block.</returns>
+        public CGameCtnBlock GetBlock(Int3 pos) => blocks.FirstOrDefault(x => x.Coord == pos);
 
         /// <summary>
-        /// Gets the first available block at this position.
+        /// Gets the first block at this position.
         /// </summary>
-        /// <param name="x">X position of the block.</param>
-        /// <param name="y">Y position of the block.</param>
-        /// <param name="z">Z position of the block.</param>
-        /// <returns>Returns the first available block.</returns>
+        /// <param name="x">X position.</param>
+        /// <param name="y">Y position.</param>
+        /// <param name="z">Z position.</param>
+        /// <returns>The first available block.</returns>
         public CGameCtnBlock GetBlock(int x, int y, int z) => GetBlock((x, y, z));
 
         /// <summary>
-        /// Gets all available blocks at this position.
+        /// Retrieves blocks at this position.
         /// </summary>
         /// <param name="pos">Position of the block.</param>
-        /// <returns>Returns the first available block.</returns>
-        public IEnumerable<CGameCtnBlock> GetBlocks(Int3 pos) => Blocks.Where(x => x.Coord == pos);
+        /// <returns>An enumerable of blocks.</returns>
+        public IEnumerable<CGameCtnBlock> GetBlocks(Int3 pos) => blocks.Where(x => x.Coord == pos);
 
         /// <summary>
-        /// Gets all available block at this position.
+        /// Retrieves blocks at this position.
         /// </summary>
-        /// <param name="x">X position of the block.</param>
-        /// <param name="y">Y position of the block.</param>
-        /// <param name="z">Z position of the block.</param>
-        /// <returns>Returns the first available block.</returns>
+        /// <param name="x">X position.</param>
+        /// <param name="y">Y position.</param>
+        /// <param name="z">Z position.</param>
+        /// <returns>An enumerable of blocks.</returns>
         public IEnumerable<CGameCtnBlock> GetBlocks(int x, int y, int z) => GetBlocks((x, y, z));
 
-        [Obsolete]
-        public void PlaceItem(Ident itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Byte3 blockUnitCoord, Vec3 offsetPivot, int variant = 0)
-        {
-            CreateChunk<Chunk03043040>();
+        /// <summary>
+        /// Retrieves ghost blocks on the map.
+        /// </summary>
+        /// <returns>An enumerable of ghost blocks.</returns>
+        public IEnumerable<CGameCtnBlock> GetGhostBlocks() => blocks.Where(x => x.IsGhost);
 
-            var it = new CGameCtnAnchoredObject()
+        /// <summary>
+        /// Places a block in the map.
+        /// </summary>
+        /// <param name="blockModel">Block model name to place. Only the name is required, so using <see cref="Ident(string)"/> works too. Full <see cref="Ident"/> can be seen in TM1.0.</param>
+        /// <param name="coord">Position on the map. Should be always under <see cref="Size"/>, otherwise an overflow can happen.</param>
+        /// <param name="dir">Facing direction of the block.</param>
+        /// <returns>A placed block.</returns>
+        public CGameCtnBlock PlaceBlock(Ident blockModel, Int3 coord, Direction dir)
+        {
+            var block = new CGameCtnBlock()
             {
-                ItemModel = itemModel,
-                AbsolutePositionInMap = absolutePosition,
-                PitchYawRoll = pitchYawRoll,
-                BlockUnitCoord = blockUnitCoord,
-                PivotPosition = offsetPivot,
-                Variant = variant
+                BlockModel = blockModel,
+                Coord = coord,
+                Direction = dir
             };
-            it.Chunks = new ChunkSet();
-            it.CreateChunk<CGameCtnAnchoredObject.Chunk03101002>();
-            it.CreateChunk<CGameCtnAnchoredObject.Chunk03101004>();
-            AnchoredObjects.Add(it);
+
+            block.CreateChunk<CGameCtnBlock.Chunk03057002>();
+
+            blocks.Add(block);
+
+            return block;
         }
 
-        public void PlaceAnchoredObject(Ident itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Vec3 offsetPivot = default, int variant = 0)
+        /// <summary>
+        /// Places a block in the map.
+        /// </summary>
+        /// <param name="blockModel">Block model name to place.</param>
+        /// <param name="coord">Position on the map. Should be always under <see cref="Size"/>, otherwise an overflow can happen.</param>
+        /// <param name="dir">Facing direction of the block.</param>
+        /// <returns>A placed block.</returns>
+        public CGameCtnBlock PlaceBlock(string blockModel, Int3 coord, Direction dir)
+        {
+            return PlaceBlock(new Ident(blockModel), coord, dir);
+        }
+
+        /// <summary>
+        /// Removes all the blocks from the map that match the conditions defined by the specified predicate.
+        /// </summary>
+        /// <param name="match">The <see cref="Predicate{T}"/> delegate that defines the conditions of the elements to remove.</param>
+        public void RemoveAllBlocks(Predicate<CGameCtnBlock> match)
+        {
+            blocks.RemoveAll(match);
+        }
+
+        /// <summary>
+        /// Removes all the blocks from the map.
+        /// </summary>
+        public void RemoveAllBlocks()
+        {
+            ClearBlocks();
+        }
+
+        /// <summary>
+        /// Clears all the blocks from the map.
+        /// </summary>
+        public void ClearBlocks()
+        {
+            blocks.Clear();
+        }
+
+        /// <summary>
+        /// Places an item on a map.
+        /// </summary>
+        /// <param name="itemModel">An item model identification (name, collection and author). Only the name is required, so using <see cref="Ident(string)"/> works too.</param>
+        /// <param name="absolutePosition">Absolute position in the map.</param>
+        /// <param name="pitchYawRoll">Rotation of the item in pitch, yaw, and roll format.</param>
+        /// <param name="offsetPivot">Pivot location of the item (relative position of the point the item will rotate around).</param>
+        /// <param name="variant">An item variant (trees from TM2020 have different variants).</param>
+        /// <returns>Placed item.</returns>
+        public CGameCtnAnchoredObject PlaceAnchoredObject(Ident itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Vec3 offsetPivot = default, int variant = 0)
         {
             CreateChunk<Chunk03043040>();
 
@@ -1305,16 +1425,40 @@ namespace GBX.NET.Engines.Game
             anchoredObject.CreateChunk<CGameCtnAnchoredObject.Chunk03101002>();
             anchoredObject.CreateChunk<CGameCtnAnchoredObject.Chunk03101004>();
             AnchoredObjects.Add(anchoredObject);
+
+            return anchoredObject;
         }
 
-        public CGameCtnBlock PlaceFreeBlock(string name, Vec3 position, Vec3 pitchYawRoll, CGameCtnBlockSkin skin)
+        /// <summary>
+        /// Places an item on a map.
+        /// </summary>
+        /// <param name="itemModel">An item model identification (name).</param>
+        /// <param name="absolutePosition">Absolute position in the map.</param>
+        /// <param name="pitchYawRoll">Rotation of the item in pitch, yaw, and roll format.</param>
+        /// <param name="offsetPivot">Pivot location of the item (relative position of the point the item will rotate around).</param>
+        /// <param name="variant">An item variant (trees from TM2020 have different variants).</param>
+        /// <returns>Placed item.</returns>
+        public CGameCtnAnchoredObject PlaceAnchoredObject(string itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Vec3 offsetPivot = default, int variant = 0)
+        {
+            return PlaceAnchoredObject(new Ident(itemModel), absolutePosition, pitchYawRoll, offsetPivot, variant);
+        }
+
+        /// <summary>
+        /// FREE BLOCKS ARE CURRENTLY ALWAYS REMOVED FROM MAPS AFTER SAVING. Place a free block on a map. The placed block SHOULDN'T HAVE CLIPS, otherwise the map can break.
+        /// </summary>
+        /// <param name="name">Name of the block to place.</param>
+        /// <param name="absolutePosition">Absolute position of the free block.</param>
+        /// <param name="pitchYawRoll">Rotation of the free block in pitch, yaw, and roll format.</param>
+        /// <param name="skin">Skin to use on the free block.</param>
+        /// <returns>A newly placed block.</returns>
+        public CGameCtnBlock PlaceFreeBlock(string name, Vec3 absolutePosition, Vec3 pitchYawRoll, CGameCtnBlockSkin skin = null)
         {
             CreateChunk<Chunk0304305F>();
 
             var block = new CGameCtnBlock(name, Direction.North, (-1, -1, -1))
             {
                 IsFree = true,
-                AbsolutePositionInMap = position,
+                AbsolutePositionInMap = absolutePosition,
                 PitchYawRoll = pitchYawRoll,
                 Skin = skin
             };
@@ -1324,17 +1468,12 @@ namespace GBX.NET.Engines.Game
             return block;
         }
 
-        public CGameCtnBlock PlaceFreeBlock(string name, Vec3 position, Vec3 pitchYawRoll)
-        {
-            return PlaceFreeBlock(name, position, pitchYawRoll, null);
-        }
-
         /// <summary>
         /// Transfers the MediaTracker from <see cref="Chunk03043021"/> (up to TMUF) to <see cref="Chunk03043049"/> (ManiaPlanet and Trackmania®). If <see cref="Chunk03043049"/> is already presented, no action is performed.
         /// </summary>
-        /// <param name="upsaleTriggerCoord">Defines how many times the same coord should repeat.</param>
+        /// <param name="upscaleTriggerCoord">Defines how many times the same coord should repeat.</param>
         /// <returns>Returns true if any action was performed, otherwise false.</returns>
-        public bool TransferMediaTrackerTo049(int upsaleTriggerCoord = 3)
+        public bool TransferMediaTrackerTo049(int upscaleTriggerCoord = 3)
         {
             var chunk021 = GetChunk<Chunk03043021>();
             var chunk049 = CreateChunk<Chunk03043049>();
@@ -1345,10 +1484,10 @@ namespace GBX.NET.Engines.Game
                 ConvertMediaClip(ClipIntro);
 
             if (ClipGroupInGame != null)
-                ConvertMediaClipGroup(ClipGroupInGame);
+                ConvertMediaClipGroup(ClipGroupInGame, upscaleTriggerCoord);
 
             if (ClipGroupEndRace != null)
-                ConvertMediaClipGroup(ClipGroupEndRace);
+                ConvertMediaClipGroup(ClipGroupEndRace, upscaleTriggerCoord);
 
             RemoveChunk<Chunk03043021>();
 
@@ -1359,7 +1498,7 @@ namespace GBX.NET.Engines.Game
                         ConvertMediaTrack(track);
             }
 
-            void ConvertMediaClipGroup(CGameCtnMediaClipGroup node)
+            void ConvertMediaClipGroup(CGameCtnMediaClipGroup node, int upscTriggerCoord)
             {
                 foreach(var clip in node.Clips)
                 {
@@ -1369,11 +1508,11 @@ namespace GBX.NET.Engines.Game
 
                     for (var i = 0; i < trigger.Coords.Length; i++)
                     {
-                        coords[i] = coords[i] * (upsaleTriggerCoord, 1, upsaleTriggerCoord);
+                        coords[i] = coords[i] * (upscTriggerCoord, 1, upscTriggerCoord);
 
-                        for (var x = 0; x < upsaleTriggerCoord; x++)
+                        for (var x = 0; x < upscTriggerCoord; x++)
                         {
-                            for (var z = 0; z < upsaleTriggerCoord; z++)
+                            for (var z = 0; z < upscTriggerCoord; z++)
                             {
                                 coords.Add(coords[i] + new Int3(x, 0, z));
                             }
@@ -1403,6 +1542,10 @@ namespace GBX.NET.Engines.Game
             return true;
         }
 
+        /// <summary>
+        /// Offsets all MediaTracker camera positions by <paramref name="offset"/>.
+        /// </summary>
+        /// <param name="offset">Amount of units to offset the cameras.</param>
         public void OffsetMediaTrackerCameras(Vec3 offset)
         {
             OffsetCamerasInClip(ClipIntro);
@@ -1452,6 +1595,10 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Offsets all MediaTracker triggers by <paramref name="offset"/>.
+        /// </summary>
+        /// <param name="offset">Amount of units to offset the triggers.</param>
         public void OffsetMediaTrackerTriggers(Int3 offset)
         {
             OffsetTriggers(ClipGroupInGame);
@@ -1469,9 +1616,13 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Enumerates through all of the embedded objects and yields their header data through the <see cref="GameBox"/> object.
+        /// </summary>
+        /// <returns>An enumerable of <see cref="GameBox"/> objects with header data only.</returns>
         public IEnumerable<GameBox> GetEmbeddedObjects()
         {
-            foreach(var embed in Embeds)
+            foreach(var embed in EmbeddedObjects)
             {
                 using (var ms = new MemoryStream(embed.Value))
                 {
@@ -1483,14 +1634,14 @@ namespace GBX.NET.Engines.Game
         }
 
         /// <summary>
-        /// Extracts embed ZIP file based on the data in <see cref="Embeds"/>. File metadata is simplified and the timestamp of extraction is used for all files. Stream must have permission to read.
+        /// Extracts embed ZIP file based on the data in <see cref="EmbeddedObjects"/>. File metadata is simplified and the timestamp of extraction is used for all files. Stream must have permission to read.
         /// </summary>
         /// <param name="stream">Stream to write the ZIP data to.</param>
         public void ExtractEmbedZip(Stream stream)
         {
             using (var zip = new ZipArchive(stream, ZipArchiveMode.Create, true))
             {
-                foreach (var embed in Embeds)
+                foreach (var embed in EmbeddedObjects)
                 {
                     var entry = zip.CreateEntry(embed.Key.Replace('\\', '/'));
                     using (var s = entry.Open())
@@ -1500,7 +1651,7 @@ namespace GBX.NET.Engines.Game
         }
 
         /// <summary>
-        /// Extracts embed ZIP file based on the data in <see cref="Embeds"/>. File metadata is simplified and the timestamp of extraction is used for all files.
+        /// Extracts embed ZIP file based on the data in <see cref="EmbeddedObjects"/>. File metadata is simplified and the timestamp of extraction is used for all files.
         /// </summary>
         /// <param name="fileName">New file to write the ZIP data to.</param>
         public void ExtractEmbedZip(string fileName)
@@ -1538,6 +1689,9 @@ namespace GBX.NET.Engines.Game
             return true;
         }
 
+        /// <summary>
+        /// Import a file to embed in the map by keeping the file name but relocating it in the embed ZIP.
+        /// </summary>
         /// <param name="fileOnDisk">File to embed located on the disk.</param>
         /// <param name="relativeDirectory">Relative directory where the embed should be represented in the game, usually starts with <c>"Items/..."</c>, <c>"Blocks/..."</c> or <c>"Materials/..."</c>.</param>
         /// <param name="keepIcon">Keep the icon (chunk 0x2E001004) of the embedded GBX. Increases total unneeded embed size.</param>
@@ -1555,7 +1709,7 @@ namespace GBX.NET.Engines.Game
                     gbxms.Write(data, 0, data.Length);
                     gbxms.Position = 0;
 
-                    if (gbxr.ReadString(3) == "GBX")
+                    if (gbxr.HasMagic(GameBox.Magic))
                     {
                         var basic = gbxr.ReadBytes(6); // gbx basic
 
@@ -1570,9 +1724,9 @@ namespace GBX.NET.Engines.Game
                         using (var msUserData = new MemoryStream(userData))
                         using (var rUserData = new GameBoxReader(msUserData))
                         {
-                            var headers = rUserData.ReadArray(i => (
-                                chunkID: rUserData.ReadUInt32(), 
-                                size: (int)(rUserData.ReadInt32() & ~0x80000000))
+                            var headers = rUserData.ReadArray(r => (
+                                chunkID: r.ReadUInt32(), 
+                                size: (int)(r.ReadInt32() & ~0x80000000))
                             );
 
                             var contains004 = false;
@@ -1617,7 +1771,7 @@ namespace GBX.NET.Engines.Game
                 }
             }
 
-            Embeds[relativeDirectory + "/" + Path.GetFileName(fileOnDisk)] = data;
+            EmbeddedObjects[relativeDirectory + "/" + Path.GetFileName(fileOnDisk)] = data;
         }
 
         /// <summary>
@@ -1639,6 +1793,12 @@ namespace GBX.NET.Engines.Game
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Place a macroblock instance on the map.
+        /// </summary>
+        /// <param name="macroblock">Macroblock template to place.</param>
+        /// <param name="coord">Position on the map to place the macroblock on. Root coordinate of the macroblock is considered.</param>
+        /// <param name="dir">Direction of the placed macroblock.</param>
         public void PlaceMacroblock(CGameCtnMacroBlockInfo macroblock, Int3 coord, Direction dir)
         {
             var macroRad = (int)dir * (Math.PI / 2); // Rotation of the macroblock in radians needed for the formula to determine individual coords
@@ -1960,7 +2120,7 @@ namespace GBX.NET.Engines.Game
 
                         if (version >= 5)
                         {
-                            n.isLapRace = rw.Boolean(n.isLapRace);
+                            rw.Boolean(ref n.isLapRace);
 
                             if (version == 6)
                                 rw.Int32(ref u03);
@@ -2052,11 +2212,11 @@ namespace GBX.NET.Engines.Game
 
                         if (version >= 3)
                         {
-                            rw.Vec2(ref n.mapOrigin);
+                            rw.Vec2(ref n.mapCoordOrigin);
 
                             if (version >= 4)
                             {
-                                rw.Vec2(ref n.mapTarget);
+                                rw.Vec2(ref n.mapCoordTarget);
 
                                 if (version >= 5)
                                 {
@@ -2155,43 +2315,21 @@ namespace GBX.NET.Engines.Game
                 set => version = value;
             }
 
-            MemoryStream msT;
-
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
 
                 if (version != 0)
                 {
-                    using (var ms = new MemoryStream())
-                    {
-                        if (rw.Mode == GameBoxReaderWriterMode.Write && n.Thumbnail != null)
-                        {
-                            n.thumbnail.Result.RotateFlip(RotateFlipType.Rotate180FlipX);
-                            n.ExportThumbnail(ms, ImageFormat.Jpeg);
-                        }
+                    var thumbnailSize = rw.Int32(n.thumbnail?.Length ?? 0);
 
-                        var thumbnailSize = rw.Int32((int)ms.Length);
+                    rw.Bytes(Encoding.UTF8.GetBytes("<Thumbnail.jpg>"), "<Thumbnail.jpg>".Length); // Because the string is purely ASCII anyway, Length is usable
+                    rw.Bytes(ref n.thumbnail, thumbnailSize);
+                    rw.Bytes(Encoding.UTF8.GetBytes("</Thumbnail.jpg>"), "</Thumbnail.jpg>".Length);
 
-                        rw.Bytes(Encoding.UTF8.GetBytes("<Thumbnail.jpg>"), "<Thumbnail.jpg>".Length); // Because the string is purely ASCII anyway, Length is usable
-                        var thumbnailData = rw.Bytes(ms.ToArray(), thumbnailSize);
-                        rw.Bytes(Encoding.UTF8.GetBytes("</Thumbnail.jpg>"), "</Thumbnail.jpg>".Length);
-
-                        rw.Bytes(Encoding.UTF8.GetBytes("<Comments>"), "<Comments>".Length);
-                        rw.String(ref n.comments);
-                        rw.Bytes(Encoding.UTF8.GetBytes("</Comments>"), "</Comments>".Length);
-
-                        if (rw.Mode == GameBoxReaderWriterMode.Read && thumbnailData.Length > 0)
-                        {
-                            n.thumbnail = Task.Run(() =>
-                            {
-                                msT = new MemoryStream(thumbnailData);
-                                var bitmap = (Bitmap)Image.FromStream(msT);
-                                bitmap.RotateFlip(RotateFlipType.Rotate180FlipX);
-                                return bitmap;
-                            });
-                        }
-                    }
+                    rw.Bytes(Encoding.UTF8.GetBytes("<Comments>"), "<Comments>".Length);
+                    rw.String(ref n.comments);
+                    rw.Bytes(Encoding.UTF8.GetBytes("</Comments>"), "</Comments>".Length);
                 }
             }
         }
@@ -2254,18 +2392,22 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0304300F, "TM1.0 block data")]
         public class Chunk0304300F : Chunk<CGameCtnChallenge>
         {
-            private int u01;
-            private int u02;
-            private Ident u03;
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 rw.Ident(ref n.mapInfo);
                 rw.Int3(ref n.size);
-                rw.Int32(ref u01);
+                rw.Int32(ref version);
                 rw.ListNode<CGameCtnBlock>(ref n.blocks);
-                rw.Int32(ref u02);
-                rw.Ident(ref u03);
+                rw.Boolean(ref n.needUnlock);
+                rw.Ident(ref n.decoration);
             }
         }
 
@@ -2371,7 +2513,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.Array(ref n.checkpoints, i => rw.Reader.ReadInt3(), x => rw.Writer.Write(x));
+                rw.Array(ref n.checkpoints, r => r.ReadInt3(), (x, w) => w.Write(x));
             }
         }
 
@@ -2503,10 +2645,10 @@ namespace GBX.NET.Engines.Game
 
             public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                n.MapInfo = r.ReadIdent();
-                n.MapName = r.ReadString();
-                n.Decoration = r.ReadIdent();
-                n.Size = r.ReadInt3();
+                n.mapInfo = r.ReadIdent();
+                n.mapName = r.ReadString();
+                n.decoration = r.ReadIdent();
+                n.size = r.ReadInt3();
                 NeedUnlock = r.ReadBoolean();
 
                 if (!is013)
@@ -2568,24 +2710,24 @@ namespace GBX.NET.Engines.Game
                     blockCounter++;
                 }
 
-                Debug.Assert(blockCounter == nbBlocks);
+                // Debug.Assert(blockCounter == nbBlocks);
             }
 
             public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
             {
-                w.Write(n.MapInfo);
-                w.Write(n.MapName);
-                w.Write(n.Decoration);
-                w.Write(n.Size.GetValueOrDefault());
+                w.Write(n.mapInfo);
+                w.Write(n.mapName);
+                w.Write(n.decoration);
+                w.Write(n.size.GetValueOrDefault());
                 w.Write(NeedUnlock);
 
                 if (!is013)
                     w.Write(Version.GetValueOrDefault());
 
                 // Remove all free blocks with clips
-                for(int i = 0; i < n.Blocks.Count; i++)
+                for(int i = 0; i < n.blocks.Count; i++)
                 {
-                    var x = n.Blocks[i];
+                    var x = n.blocks[i];
                     var skip = false;
 
                     if (x.IsFree)
@@ -2598,15 +2740,15 @@ namespace GBX.NET.Engines.Game
                                             skip = true;
 
                     if (skip)
-                        n.Blocks[i].IsFree = false;
+                        n.blocks[i].IsFree = false;
                 }
 
-                n.Blocks.RemoveAll(x => !x.IsFree && x.Coord == (-1, -1, -1) && x.Flags != -1);
+                n.blocks.RemoveAll(x => !x.IsFree && x.Coord == (-1, -1, -1) && x.Flags != -1);
                 //
 
                 w.Write(n.NbBlocks);
 
-                foreach (var x in n.Blocks)
+                foreach (var x in n.blocks)
                 {
                     w.WriteId(x.Name);
                     w.Write((byte)x.Direction);
@@ -2666,24 +2808,24 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.Boolean(Unknown);
+                rw.Int32(Unknown);
             }
         }
 
         #endregion
 
-        #region 0x023 chunk
+        #region 0x023 chunk (map origin)
 
         /// <summary>
-        /// CGameCtnChallenge 0x023 chunk
+        /// CGameCtnChallenge 0x023 chunk (map origin)
         /// </summary>
-        [Chunk(0x03043023)]
+        [Chunk(0x03043023, "map origin")]
         public class Chunk03043023 : Chunk<CGameCtnChallenge>
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Vec2(ref n.mapCoordOrigin);
+                n.mapCoordTarget = n.mapCoordOrigin;
             }
         }
 
@@ -2712,29 +2854,29 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x025 chunk
+        #region 0x025 chunk (map origin and target)
 
         /// <summary>
-        /// CGameCtnChallenge 0x025 chunk
+        /// CGameCtnChallenge 0x025 chunk (map origin and target)
         /// </summary>
-        [Chunk(0x03043025)]
+        [Chunk(0x03043025, "map origin and target")]
         public class Chunk03043025 : Chunk<CGameCtnChallenge>
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.Vec2(ref n.mapOrigin);
-                rw.Vec2(ref n.mapTarget);
+                rw.Vec2(ref n.mapCoordOrigin);
+                rw.Vec2(ref n.mapCoordTarget);
             }
         }
 
         #endregion
 
-        #region 0x026 chunk
+        #region 0x026 chunk (clip global)
 
         /// <summary>
-        /// CGameCtnChallenge 0x026 chunk
+        /// CGameCtnChallenge 0x026 chunk (clip global)
         /// </summary>
-        [Chunk(0x03043026)]
+        [Chunk(0x03043026, "clip global")]
         public class Chunk03043026 : Chunk<CGameCtnChallenge>
         {
             private Node clipGlobal;
@@ -2874,11 +3016,18 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x03D skippable chunk (lightmaps)
         /// </summary>
-        [IgnoreChunk]
         [Chunk(0x0304303D, "lightmaps")]
         public class Chunk0304303D : SkippableChunk<CGameCtnChallenge>
         {
+            private bool u01;
             private int version = 4;
+            private byte[] cacheData;
+
+            public bool U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
 
             /// <summary>
             /// Version of the chunk.
@@ -2889,44 +3038,51 @@ namespace GBX.NET.Engines.Game
                 set => version = value;
             }
 
+            public byte[] CacheData
+            {
+                get => cacheData;
+                set => cacheData = value;
+            }
+
             public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                unknownW.Write(r.ReadBoolean());
+                u01 = r.ReadBoolean();
                 version = r.ReadInt32();
 
-                int frames = 1;
                 if (version >= 5)
-                    frames = r.ReadInt32();
+                {
+                    var frameCount = r.ReadInt32();
+                    n.lightmapFrames = new List<List<byte[]>>(frameCount);
+
+                    for (var i = 0; i < frameCount; i++)
+                        n.lightmapFrames.Add(new List<byte[]>());
+                }
+                else
+                {
+                    n.lightmapFrames = new List<List<byte[]>>
+                    {
+                        new List<byte[]>()
+                    };
+                }
 
                 if (version >= 2)
                 {
-                    int size = 0;
-
-                    for (var i = 0; i < frames; i++)
+                    foreach (var frame in n.lightmapFrames)
                     {
-                        size = r.ReadInt32();
-                        var image = r.ReadBytes(size);
+                        frame.Add(r.ReadBytes());
 
                         if (version >= 3)
                         {
-                            var size1 = r.ReadInt32();
-                            if (size1 > 0)
-                            {
-                                var image1 = r.ReadBytes(size1);
-                            }
+                            frame.Add(r.ReadBytes());
                         }
 
                         if (version >= 6)
                         {
-                            var size2 = r.ReadInt32();
-                            if (size2 > 0)
-                            {
-                                var image2 = r.ReadBytes(size2);
-                            }
+                            frame.Add(r.ReadBytes());
                         }
                     }
 
-                    if (size != 0)
+                    if (n.lightmapFrames.Any(x => x.Any(y => y.Length > 0)))
                     {
                         var uncompressedSize = r.ReadInt32();
                         var compressedSize = r.ReadInt32();
@@ -2935,15 +3091,75 @@ namespace GBX.NET.Engines.Game
                         n.lightmapCache = Task.Run(() =>
                         {
                             using (var ms = new MemoryStream(data))
-                            using (var deflate = new DeflateStream(ms, CompressionMode.Decompress))
+                            using (var deflate = new CompressedStream(ms, CompressionMode.Decompress))
                             using (var gbxr = new GameBoxReader(deflate))
                             {
-                                var magic = new byte[2];
-                                ms.Read(magic, 0, 2); // Needed for DeflateStream to work
+                                var cacheNode = Parse<CHmsLightMapCache>(gbxr, 0x06022000);
 
-                                return Parse<CHmsLightMapCache>(gbxr);
+                                using (var msOut = new MemoryStream())
+                                {
+                                    deflate.CopyTo(msOut);
+                                    CacheData = msOut.ToArray();
+                                }
+
+                                return cacheNode;
                             }
                         });
+                    }
+                }
+            }
+
+            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
+            {
+                w.Write(u01);
+                w.Write(version);
+
+                if (version >= 5)
+                {
+                    w.Write(n.lightmapFrames.Count);
+                }
+
+                if (version >= 2)
+                {
+                    foreach (var frame in n.lightmapFrames)
+                    {
+                        w.Write(frame[0].Length);
+                        w.WriteBytes(frame[0]);
+
+                        if (version >= 3)
+                        {
+                            w.Write(frame[1].Length);
+                            w.WriteBytes(frame[1]);
+                        }
+
+                        if (version >= 6)
+                        {
+                            w.Write(frame[2].Length);
+                            w.WriteBytes(frame[2]);
+                        }
+                    }
+
+                    if (n.lightmapFrames.Any(x => x.Any(y => y.Length > 0)))
+                    {
+                        using (var ms = new MemoryStream())
+                        using (var gbxw = new GameBoxWriter(ms))
+                        {
+                            n.lightmapCache.Result.Write(gbxw);
+                            gbxw.WriteBytes(CacheData);
+
+                            w.Write((int)ms.Length);
+
+                            ms.Seek(0, SeekOrigin.Begin);
+
+                            using (var msCompressed = new MemoryStream())
+                            using (var deflate = new CompressedStream(msCompressed, CompressionMode.Compress))
+                            {
+                                ms.CopyTo(deflate);
+
+                                w.Write((int)msCompressed.Length);
+                                w.WriteBytes(msCompressed.ToArray());
+                            }
+                        }
                     }
                 }
             }
@@ -3111,10 +3327,9 @@ namespace GBX.NET.Engines.Game
                 w.Write(Version);
 
                 using (var ms = new MemoryStream())
-                using (var w2 = new GameBoxWriter(ms))
+                using (var w1 = new GameBoxWriter(ms))
                 {
-
-                    w2.Write(n.genealogies.Result, x =>
+                    w1.Write(n.genealogies.Result, (x, w2) =>
                     {
                         w2.Write(0x0311D000);
                         x.Write(w2);
@@ -3179,26 +3394,31 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03043048, "baked blocks")]
         public class Chunk03043048 : SkippableChunk<CGameCtnChallenge>
         {
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
+
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32(ref version);
                 rw.Int32(Unknown);
 
-                n.BakedBlocks = rw.Array(n.BakedBlocks, i =>
+                n.BakedBlocks = rw.Array(n.BakedBlocks, r => new CGameCtnBlock(
+                    name: r.ReadId(),
+                    direction: (Direction)r.ReadByte(),
+                    coord: (Int3)r.ReadByte3(),
+                    flags: r.ReadInt32()
+                ),
+                (x, w) =>
                 {
-                    return new CGameCtnBlock(
-                        rw.Reader.ReadId(), 
-                        (Direction)rw.Reader.ReadByte(), 
-                        (Int3)rw.Reader.ReadByte3(),
-                        rw.Reader.ReadInt32()
-                    );
-                },
-                x =>
-                {
-                    rw.Writer.WriteId(x.Name);
-                    rw.Writer.Write((byte)x.Direction);
-                    rw.Writer.Write((Byte3)x.Coord);
-                    rw.Writer.Write(x.Flags);
+                    w.WriteId(x.Name);
+                    w.Write((byte)x.Direction);
+                    w.Write((Byte3)x.Coord);
+                    w.Write(x.Flags);
                 });
 
                 rw.Int32(Unknown);
@@ -3383,31 +3603,33 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03043053, "bot paths")]
         public class Chunk03043053 : SkippableChunk<CGameCtnChallenge>
         {
+            private int version;
+
             /// <summary>
             /// Version of the chunk.
             /// </summary>
-            public int Version { get; set; }
-
-            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
+            public int Version
             {
-                Version = r.ReadInt32();
-                n.botPaths = r.ReadArray(i => new CGameScriptMapBotPath()
+                get => version;
+                set => version = value;
+            }
+
+            public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+            {
+                rw.Int32(ref version);
+
+                rw.List(ref n.botPaths, r => new BotPath()
                 {
                     Clan = r.ReadInt32(),
-                    Path = r.ReadArray(j => r.ReadVec3()).ToList(),
+                    Path = r.ReadArray(r1 => r1.ReadVec3()).ToList(),
                     IsFlying = r.ReadBoolean(),
                     WaypointSpecialProperty = r.ReadNodeRef<CGameWaypointSpecialProperty>(),
                     IsAutonomous = r.ReadBoolean()
-                }).ToList();
-            }
-
-            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
-            {
-                w.Write(Version);
-                w.Write(n.botPaths, x =>
+                },
+                (x, w) =>
                 {
                     w.Write(x.Clan);
-                    w.Write(x.Path, y => w.Write(y));
+                    w.Write(x.Path, (y, w1) => w1.Write(y));
                     w.Write(x.IsFlying);
                     w.Write(x.WaypointSpecialProperty);
                     w.Write(x.IsAutonomous);
@@ -3417,12 +3639,12 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x054 skippable chunk (embeds)
+        #region 0x054 skippable chunk (embedded objects)
 
         /// <summary>
-        /// CGameCtnChallenge 0x054 skippable chunk (embeds)
+        /// CGameCtnChallenge 0x054 skippable chunk (embedded objects)
         /// </summary>
-        [Chunk(0x03043054, "embeds")]
+        [Chunk(0x03043054, "embedded objects")]
         public class Chunk03043054 : SkippableChunk<CGameCtnChallenge>, ILookbackable
         {
             int? ILookbackable.IdVersion { get; set; }
@@ -3442,7 +3664,7 @@ namespace GBX.NET.Engines.Game
                 U01 = r.ReadInt32();
                 var size = r.ReadInt32();
 
-                var embedded = r.ReadArray(i => r.ReadIdent());
+                var embedded = r.ReadArray(r1 => r1.ReadIdent());
 
                 n.originalEmbedZip = r.ReadBytes();
                 if (n.originalEmbedZip.Length > 0)
@@ -3456,13 +3678,13 @@ namespace GBX.NET.Engines.Game
                             using (var entryDataStream = new MemoryStream())
                             {
                                 entryStream.CopyTo(entryDataStream);
-                                n.embeds[entry.Name] = entryDataStream.ToArray();
+                                n.embeddedObjects[entry.Name] = entryDataStream.ToArray();
                             }
                         }
                     }
                 }
 
-                Textures = r.ReadArray(i => r.ReadString());
+                Textures = r.ReadArray(r1 => r1.ReadString());
             }
 
             public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
@@ -3498,7 +3720,7 @@ namespace GBX.NET.Engines.Game
                         }
                     }
 
-                    writer.Write(embedded.ToArray(), x => writer.Write(x));
+                    writer.Write(embedded.ToArray(), (x, w1) => w1.Write(x));
 
                     using (var zipStream = new MemoryStream())
                     {
@@ -3507,7 +3729,7 @@ namespace GBX.NET.Engines.Game
                         writer.Write(zipStream.ToArray(), 0, (int)zipStream.Length);
                     }
 
-                    writer.Write(Textures, x => w.Write(x));
+                    writer.Write(Textures, (x, w1) => w1.Write(x));
 
                     w.Write((int)ms.Length);
                     w.Write(ms.ToArray());
@@ -3689,6 +3911,193 @@ namespace GBX.NET.Engines.Game
         }
 
         #endregion
+
+        #endregion
+
+        #region Header interface
+
+        public interface IHeader : INodeHeader
+        {
+            /// <summary>
+            /// Time of the bronze medal.
+            /// </summary>
+            TimeSpan? TMObjective_BronzeTime { get; set; }
+
+            /// <summary>
+            /// Time of the silver medal.
+            /// </summary>
+            TimeSpan? TMObjective_SilverTime { get; set; }
+
+            /// <summary>
+            /// Time of the gold medal.
+            /// </summary>
+            TimeSpan? TMObjective_GoldTime { get; set; }
+
+            /// <summary>
+            /// Time of the author medal.
+            /// </summary>
+            TimeSpan? TMObjective_AuthorTime { get; set; }
+
+            /// <summary>
+            /// Display cost of the track (or copper cost) explaining the performance of the map.
+            /// </summary>
+            int Cost { get; set; }
+
+            /// <summary>
+            /// Usually author time or stunts score.
+            /// </summary>
+            int AuthorScore { get; set; }
+
+            /// <summary>
+            /// In which editor settings the map was made.
+            /// </summary>
+            EditorMode Editor { get; set; }
+
+            /// <summary>
+            /// If the map was made using the simple editor.
+            /// </summary>
+            bool CreatedWithSimpleEditor { get; }
+
+            /// <summary>
+            /// If the map uses ghost blocks.
+            /// </summary>
+            bool HasGhostBlocks { get; }
+
+            /// <summary>
+            /// Map type in which the track was validated in.
+            /// </summary>
+            PlayMode? Mode { get; set; }
+
+            /// <summary>
+            /// If the map is a multilap.
+            /// </summary>
+            bool TMObjective_IsLapRace { get; set; }
+
+            /// <summary>
+            /// Number of laps.
+            /// </summary>
+            int TMObjective_NbLaps { get; set; }
+
+            /// <summary>
+            /// Number of checkpoints.
+            /// </summary>
+            int? NbCheckpoints { get; set; }
+
+            /// <summary>
+            /// Map UID, environment, and author login.
+            /// </summary>
+            Ident MapInfo { get; set; }
+
+            /// <summary>
+            /// The map's environment.
+            /// </summary>
+            Collection Collection { get; set; }
+
+            /// <summary>
+            /// The map's UID.
+            /// </summary>
+            string MapUid { get; set; }
+
+            /// <summary>
+            /// Login of the map author.
+            /// </summary>
+            string AuthorLogin { get; set; }
+
+            /// <summary>
+            /// Nickname of the map author.
+            /// </summary>
+            string AuthorNickname { get; set; }
+
+            /// <summary>
+            /// Zone of the map author.
+            /// </summary>
+            string AuthorZone { get; set; }
+
+            string AuthorExtraInfo { get; set; }
+
+            /// <summary>
+            /// The map's name.
+            /// </summary>
+            string MapName { get; set; }
+
+            /// <summary>
+            /// The map's intended use.
+            /// </summary>
+            MapKind Kind { get; set; }
+
+            /// <summary>
+            /// Password of the map used by older maps.
+            /// </summary>
+            string Password { get; set; }
+
+            /// <summary>
+            /// The map's decoration (time of the day or scenery)
+            /// </summary>
+            Ident Decoration { get; set; }
+
+            /// <summary>
+            /// Target of the map.
+            /// </summary>
+            Vec2? MapCoordTarget { get; set; }
+
+            /// <summary>
+            /// Origin of the map.
+            /// </summary>
+            Vec2? MapCoordOrigin { get; set; }
+
+            /// <summary>
+            /// Name of the map type script.
+            /// </summary>
+            string MapType { get; set; }
+
+            /// <summary>
+            /// Style of the map (Fullspeed, LOL, Tech), usually unused and defined by user.
+            /// </summary>
+            string MapStyle { get; set; }
+
+            /// <summary>
+            /// UID of the lightmap data stored in cache.
+            /// </summary>
+            ulong? LightmapCacheUID { get; set; }
+
+            /// <summary>
+            /// Version of the lightmap calculation.
+            /// </summary>
+            byte? LightmapVersion { get; set; }
+
+            /// <summary>
+            /// Title pack the map was built in.
+            /// </summary>
+            string TitleID { get; set; }
+
+            /// <summary>
+            /// XML track information and dependencies.
+            /// </summary>
+            string XML { get; set; }
+
+            /// <summary>
+            /// The map's author comments.
+            /// </summary>
+            string Comments { get; set; }
+
+            /// <summary>
+            /// Thumbnail JPEG data.
+            /// </summary>
+            byte[] Thumbnail { get; set; }
+        }
+
+        #endregion
+
+        #region Other classes
+
+        public class BotPath
+        {
+            public int Clan { get; set; }
+            public List<Vec3> Path { get; set; }
+            public bool IsFlying { get; set; }
+            public CGameWaypointSpecialProperty WaypointSpecialProperty { get; set; }
+            public bool IsAutonomous { get; set; }
+        }
 
         #endregion
     }

@@ -42,9 +42,10 @@ namespace GBX.NET
                 return (T)c;
 
             T chunk = (T)Activator.CreateInstance(typeof(T));
+
             if (chunk is ISkippableChunk s)
             {
-                s.Stream = new MemoryStream(data, 0, data.Length, false);
+                s.Data = data;
                 s.Node = Node;
                 if (data == null || data.Length == 0)
                     s.Discovered = true;
@@ -179,14 +180,30 @@ namespace GBX.NET
         /// <summary>
         /// Discovers all chunks in the chunk set.
         /// </summary>
-        /// <exception cref="AggregateException"/>
         public void DiscoverAll()
         {
-            Parallel.ForEach(this, chunk =>
-            {
+            foreach (var chunk in this)
                 if (chunk is ISkippableChunk s)
                     s.Discover();
-            });
+        }
+
+        /// <summary>
+        /// Discovers all chunks in the chunk set in parallel, if <paramref name="parallel"/> is true.
+        /// </summary>
+        public void DiscoverAll(bool parallel)
+        {
+            if (parallel)
+            {
+                Parallel.ForEach(this, chunk =>
+                {
+                    if (chunk is ISkippableChunk s)
+                        s.Discover();
+                });
+            }
+            else
+            {
+                DiscoverAll();
+            }
         }
     }
 }

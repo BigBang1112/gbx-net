@@ -9,9 +9,12 @@ using System.Text;
 
 namespace GBX.NET
 {
+    /// <summary>
+    /// Reads data types from GameBox serialization.
+    /// </summary>
     public class GameBoxReader : BinaryReader
     {
-        public ILookbackable Lookbackable { get; }
+        public ILookbackable Lookbackable { get; internal set; }
         public Chunk Chunk { get; internal set; }
 
         public GameBoxReader(Stream input) : base(input, Encoding.UTF8, true)
@@ -24,11 +27,29 @@ namespace GBX.NET
             Lookbackable = lookbackable;
         }
 
+        /// <summary>
+        /// First reads an <see cref="int"/> representing the length, then reads the sequence of bytes.
+        /// </summary>
+        /// <exception cref="ArgumentException"/>
+        /// <exception cref="IOException"/>
+        /// <exception cref="ObjectDisposedException"/>
+        /// <exception cref="ArgumentOutOfRangeException"/>
+        /// <returns>A byte array.</returns>
         public byte[] ReadBytes()
         {
             return ReadBytes(ReadInt32());
         }
 
+        /// <summary>
+        /// Reads a <see cref="string"/> from the current stream with one of the prefix reading methods.
+        /// </summary>
+        /// <param name="readPrefix">The method to read the prefix.</param>
+        /// <exception cref="EndOfStreamException"/>
+        /// <exception cref="ObjectDisposedException"/>
+        /// <exception cref="IOException"/>
+        /// <exception cref="ArgumentException"/>
+        /// <exception cref="ArgumentOutOfRangeException"/>
+        /// <returns>The string being read.</returns>
         public string ReadString(StringLengthPrefix readPrefix)
         {
             int length;
@@ -37,33 +58,55 @@ namespace GBX.NET
             else if (readPrefix == StringLengthPrefix.Int32)
                 length = ReadInt32();
             else
-                throw new Exception("Can't read string without knowing its length.");
-            return Encoding.UTF8.GetString(ReadBytes(length));
+                throw new ArgumentException("Can't read string without knowing its length.");
+            return ReadString(length);
         }
 
         /// <summary>
-        /// Reads a string from the current stream. The string is prefixed with the length, encoded as <see cref="int"/>.
+        /// Reads a <see cref="string"/> from the current stream. The string is prefixed with the length, encoded as <see cref="int"/>.
         /// </summary>
-        /// <returns></returns>
+        /// <exception cref="EndOfStreamException"/>
+        /// <exception cref="ObjectDisposedException"/>
+        /// <exception cref="IOException"/>
+        /// <exception cref="ArgumentException"/>
+        /// <exception cref="ArgumentOutOfRangeException"/>
+        /// <returns>The string being read.</returns>
         public override string ReadString()
         {
             return ReadString(StringLengthPrefix.Int32);
         }
 
+        /// <summary>
+        /// Reads a <see cref="string"/> from the current stream using the <paramref name="length"/> parameter.
+        /// </summary>
+        /// <param name="length">Length of the bytes to read.</param>
+        /// <exception cref="EndOfStreamException"/>
+        /// <exception cref="ObjectDisposedException"/>
+        /// <exception cref="IOException"/>
+        /// <exception cref="ArgumentOutOfRangeException"/>
+        /// <returns>The string being read.</returns>
         public string ReadString(int length)
         {
-            return new string(ReadChars(length));
+            return Encoding.UTF8.GetString(ReadBytes(length));
         }
 
         /// <summary>
         /// Reads the next <see cref="int"/> from the current stream, casts it as <see cref="bool"/> and advances the current position of the stream by 4 bytes.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A boolean.</returns>
         public override bool ReadBoolean()
         {
             return Convert.ToBoolean(ReadInt32());
         }
 
+        /// <summary>
+        /// If <paramref name="asByte"/> is true, reads the next <see cref="byte"/> from the current stream and casts it as <see cref="bool"/>. Otherwise <see cref="ReadBoolean()"/> is called.
+        /// </summary>
+        /// <param name="asByte">Read the boolean as <see cref="byte"/> or <see cref="int"/>.</param>
+        /// <exception cref="EndOfStreamException"/>
+        /// <exception cref="ObjectDisposedException"/>
+        /// <exception cref="IOException"/>
+        /// <returns>A boolean.</returns>
         public bool ReadBoolean(bool asByte)
         {
             if (asByte) return base.ReadBoolean();
@@ -149,11 +192,12 @@ namespace GBX.NET
             if (index < 0) // If aux node index is below 0 then there's not much to solve
                 return null;
             body.AuxilaryNodes.TryGetValue(index, out Node n); // Tries to get the available node from index
-            T nod = n as T;
-            if (nod == null) // But sometimes it indexes the node reference that is further in the expected indexes
-                return (T)body.AuxilaryNodes.Last().Value; // So it grabs the last one instead, needs to be further tested
-            else // If the node is presented at the index, then it's simple
+            
+            if (n is T nod) // If the node is presented at the index, then it's simple
                 return nod;
+
+            // But sometimes it indexes the node reference that is further in the expected indexes
+            return (T)body.AuxilaryNodes.Last().Value; // So it grabs the last one instead, needs to be further tested
         }
 
         public T ReadNodeRef<T>() where T : Node
@@ -189,28 +233,39 @@ namespace GBX.NET
             return new FileRef(version, checksum, filePath, locatorUrl);
         }
 
-        public T[] ReadArray<T>(int count)
+        /// <summary>
+        /// Reads an array of primitive types (only some are supported) with <paramref name="length"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the array.</typeparam>
+        /// <param name="length">Length of the array.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public T[] ReadArray<T>(int length)
         {
-            var buffer = ReadBytes(count * Marshal.SizeOf(default(T)));
-            var array = new T[count];
+            var buffer = ReadBytes(length * Marshal.SizeOf(default(T)));
+            var array = new T[length];
             Buffer.BlockCopy(buffer, 0, array, 0, buffer.Length);
             return array;
         }
 
+        /// <summary>
+        /// First reads an <see cref="int"/> representing the length, then reads an array of primitive types (only some are supported) with this length.
+        /// </summary>
+        /// <typeparam name="T">Type of the array.</typeparam>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
         public T[] ReadArray<T>()
         {
             return ReadArray<T>(ReadInt32());
         }
 
         /// <summary>
-        /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>.
+        /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">Type of the array.</typeparam>
-        /// <param name="forLoop">Each element.</param>
+        /// <param name="length">Length of the array.</param>
+        /// <param name="forLoop">Each element with an index parameter.</param>
         /// <returns>An array of <typeparamref name="T"/>.</returns>
-        public T[] ReadArray<T>(Func<int, T> forLoop)
+        public T[] ReadArray<T>(int length, Func<int, T> forLoop)
         {
-            var length = ReadInt32();
             var result = new T[length];
 
             for (var i = 0; i < length; i++)
@@ -219,9 +274,54 @@ namespace GBX.NET
             return result;
         }
 
-        internal T[] ReadArray<T>(Func<int, GameBoxReader, T> forLoop)
+        /// <summary>
+        /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the array.</typeparam>
+        /// <param name="forLoop">Each element with an index parameter.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public T[] ReadArray<T>(Func<int, T> forLoop)
         {
-            var length = ReadInt32();
+            return ReadArray(ReadInt32(), forLoop);
+        }
+
+        /// <summary>
+        /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the array.</typeparam>
+        /// <param name="length">Length of the array.</param>
+        /// <param name="forLoop">Each element.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public T[] ReadArray<T>(int length, Func<T> forLoop)
+        {
+            var result = new T[length];
+
+            for (var i = 0; i < length; i++)
+                result[i] = forLoop.Invoke();
+
+            return result;
+        }
+
+        /// <summary>
+        /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the array.</typeparam>
+        /// <param name="forLoop">Each element.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public T[] ReadArray<T>(Func<T> forLoop)
+        {
+            return ReadArray(ReadInt32(), forLoop);
+        }
+
+        /// <summary>
+        /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the array.</typeparam>
+        /// <param name="length">Length of the array.</param>
+        /// <param name="forLoop">Each element with an index parameter and this reader.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public T[] ReadArray<T>(int length, Func<int, GameBoxReader, T> forLoop)
+        {
             var result = new T[length];
 
             for (var i = 0; i < length; i++)
@@ -230,15 +330,83 @@ namespace GBX.NET
             return result;
         }
 
-        public Dictionary<int, TValue> ReadDictionaryNode<TValue>() where TValue : Node
+        /// <summary>
+        /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the array.</typeparam>
+        /// <param name="forLoop">Each element with an index parameter and this reader.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public T[] ReadArray<T>(Func<int, GameBoxReader, T> forLoop)
         {
-            var dictionary = new Dictionary<int, TValue>();
+            return ReadArray(ReadInt32(), forLoop);
+        }
+
+        /// <summary>
+        /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the array.</typeparam>
+        /// <param name="length">Length of the array.</param>
+        /// <param name="forLoop">Each element with this reader.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public T[] ReadArray<T>(int length, Func<GameBoxReader, T> forLoop)
+        {
+            var result = new T[length];
+
+            for (var i = 0; i < length; i++)
+                result[i] = forLoop.Invoke(this);
+
+            return result;
+        }
+
+        /// <summary>
+        /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">Type of the array.</typeparam>
+        /// <param name="forLoop">Each element with this reader.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public T[] ReadArray<T>(Func<GameBoxReader, T> forLoop)
+        {
+            return ReadArray(ReadInt32(), forLoop);
+        }
+
+        /// <summary>
+        /// Reads values in a dictionary kind (first key, then value). For node dictionaries, use the <see cref="ReadNodeDictionary{TKey, TValue}"/> method for better performance.
+        /// </summary>
+        /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>.</typeparam>
+        /// <typeparam name="TValue">One of the supported types of <see cref="Read{T}"/>.</typeparam>
+        /// <returns>A dictionary.</returns>
+        public Dictionary<TKey, TValue> ReadDictionary<TKey, TValue>()
+        {
+            var dictionary = new Dictionary<TKey, TValue>();
 
             var length = ReadInt32();
 
             for (var i = 0; i < length; i++)
             {
-                var key = ReadInt32();
+                var key = Read<TKey>();
+                var value = Read<TValue>();
+
+                dictionary.Add(key, value);
+            }
+
+            return dictionary;
+        }
+
+        /// <summary>
+        /// Reads nodes in a dictionary kind (first key, then value).
+        /// </summary>
+        /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>.</typeparam>
+        /// <typeparam name="TValue">A node that is presented as node reference.</typeparam>
+        /// <returns>A dictionary.</returns>
+        public Dictionary<TKey, TValue> ReadNodeDictionary<TKey, TValue>() where TValue : Node
+        {
+            var dictionary = new Dictionary<TKey, TValue>();
+
+            var length = ReadInt32();
+
+            for (var i = 0; i < length; i++)
+            {
+                var key = Read<TKey>();
                 var value = ReadNodeRef<TValue>();
 
                 dictionary.Add(key, value);
@@ -289,6 +457,29 @@ namespace GBX.NET
             if (time < 0)
                 return null;
             return TimeSpan.FromMilliseconds(time);
+        }
+
+        public (Vec3 position, Quaternion rotation, float speed, Vec3 velocity) ReadTransform()
+        {
+            var pos = ReadVec3();
+            var angle = ReadUInt16() / (double)ushort.MaxValue * Math.PI;
+            var axisHeading = ReadInt16() / (double)short.MaxValue * Math.PI;
+            var axisPitch = ReadInt16() / (double)short.MaxValue * Math.PI / 2;
+            var speed = (float)Math.Exp(ReadInt16() / 1000.0);
+            var velocityHeading = ReadSByte() / (double)sbyte.MaxValue * Math.PI;
+            var velocityPitch = ReadSByte() / (double)sbyte.MaxValue * Math.PI / 2;
+
+            var axis = new Vec3((float)(Math.Sin(angle) * Math.Cos(axisPitch) * Math.Cos(axisHeading)),
+                (float)(Math.Sin(angle) * Math.Cos(axisPitch) * Math.Sin(axisHeading)),
+                (float)(Math.Sin(angle) * Math.Sin(axisPitch)));
+
+            var quaternion = new Quaternion(axis, (float)Math.Cos(angle));
+
+            var velocity = new Vec3((float)(speed * Math.Cos(velocityPitch) * Math.Cos(velocityHeading)),
+                (float)(speed * Math.Cos(velocityPitch) * Math.Sin(velocityHeading)),
+                (float)(speed * Math.Sin(velocityPitch)));
+
+            return (pos, quaternion, speed, velocity);
         }
 
         public byte[] ReadTill(uint uint32)
@@ -363,6 +554,61 @@ namespace GBX.NET
         public bool HasMagic(string magic)
         {
             return ReadString(magic.Length) == magic;
+        }
+
+        /// <summary>
+        /// A generic read method of parameterless types for the cost of performance loss. Prefer using the pre-defined data read methods.
+        /// </summary>
+        /// <typeparam name="T">Type of the variable to read. Supported types are <see cref="byte"/>, <see cref="short"/>, <see cref="int"/>,
+        /// <see cref="long"/>, <see cref="float"/>, <see cref="bool"/>, <see cref="string"/>, <see cref="sbyte"/>, <see cref="ushort"/>,
+        /// <see cref="uint"/>, <see cref="ulong"/>, <see cref="Byte3"/>, <see cref="Vec2"/>, <see cref="Vec3"/>,
+        /// <see cref="Vec4"/>, <see cref="Int3"/>, <see cref="Id"/> and <see cref="Ident"/>.</typeparam>
+        /// <returns></returns>
+        private T Read<T>()
+        {
+            switch (typeof(T))
+            {
+                case Type byteType when byteType == typeof(byte):
+                    return (T)Convert.ChangeType(ReadByte(), typeof(T));
+                case Type shortType when shortType == typeof(short):
+                    return (T)Convert.ChangeType(ReadInt16(), typeof(T));
+                case Type intType when intType == typeof(int):
+                    return (T)Convert.ChangeType(ReadInt32(), typeof(T));
+                case Type longType when longType == typeof(long):
+                    return (T)Convert.ChangeType(ReadInt64(), typeof(T));
+                case Type floatType when floatType == typeof(float):
+                    return (T)Convert.ChangeType(ReadSingle(), typeof(T));
+                case Type boolType when boolType == typeof(bool):
+                    return (T)Convert.ChangeType(ReadBoolean(), typeof(T));
+                case Type stringType when stringType == typeof(string):
+                    return (T)Convert.ChangeType(ReadString(), typeof(T));
+                case Type sbyteType when sbyteType == typeof(sbyte):
+                    return (T)Convert.ChangeType(ReadSByte(), typeof(T));
+                case Type ushortType when ushortType == typeof(ushort):
+                    return (T)Convert.ChangeType(ReadUInt16(), typeof(T));
+                case Type uintType when uintType == typeof(uint):
+                    return (T)Convert.ChangeType(ReadUInt32(), typeof(T));
+                case Type ulongType when ulongType == typeof(ulong):
+                    return (T)Convert.ChangeType(ReadUInt64(), typeof(T));
+                case Type byte3Type when byte3Type == typeof(Byte3):
+                    return (T)Convert.ChangeType(ReadByte3(), typeof(T));
+                case Type vec2Type when vec2Type == typeof(Vec2):
+                    return (T)Convert.ChangeType(ReadVec2(), typeof(T));
+                case Type vec3Type when vec3Type == typeof(Vec3):
+                    return (T)Convert.ChangeType(ReadVec3(), typeof(T));
+                case Type vec4Type when vec4Type == typeof(Vec4):
+                    return (T)Convert.ChangeType(ReadVec4(), typeof(T));
+                case Type int2Type when int2Type == typeof(Int2):
+                    return (T)Convert.ChangeType(ReadInt2(), typeof(T));
+                case Type int3Type when int3Type == typeof(Int3):
+                    return (T)Convert.ChangeType(ReadInt3(), typeof(T));
+                case Type idType when idType == typeof(Id):
+                    return (T)Convert.ChangeType(ReadId(), typeof(T));
+                case Type identType when identType == typeof(Ident):
+                    return (T)Convert.ChangeType(ReadIdent(), typeof(T));
+                default:
+                    throw new NotSupportedException($"{typeof(T)} is not supported for Read<T>.");
+            }
         }
     }
 }

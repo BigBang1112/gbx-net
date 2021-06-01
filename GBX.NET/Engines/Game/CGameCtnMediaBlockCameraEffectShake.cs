@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Security.Cryptography;
-using System.Text;
-
-namespace GBX.NET.Engines.Game
+﻿namespace GBX.NET.Engines.Game
 {
     /// <summary>
     /// MediaTracker block - Camera shake
@@ -53,7 +46,7 @@ namespace GBX.NET.Engines.Game
 
         #region Other classes
 
-        public class Key : MediaBlockKey
+        public new class Key : CGameCtnMediaBlock.Key
         {
             public float Intensity { get; set; }
             public float Speed { get; set; }

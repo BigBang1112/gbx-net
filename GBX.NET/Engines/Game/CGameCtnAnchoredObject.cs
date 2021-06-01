@@ -1,7 +1,4 @@
 ﻿using GBX.NET.Engines.GameData;
-using System.Diagnostics;
-using System.Numerics;
-using System.Runtime.Serialization;
 
 namespace GBX.NET.Engines.Game
 {

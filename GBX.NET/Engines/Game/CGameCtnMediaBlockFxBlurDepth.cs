@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
-
-namespace GBX.NET.Engines.Game
+﻿namespace GBX.NET.Engines.Game
 {
     [Node(0x03081000)]
     public class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx
@@ -25,26 +19,23 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnMediaBlockFxBlurDepth n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                n.Keys = r.ReadArray(i =>
+                n.Keys = r.ReadArray(r1 => new Key()
                 {
-                    return new Key()
-                    {
-                        Time = r.ReadSingle(),
-                        LensSize = r.ReadSingle(),
-                        ForceFocus = r.ReadBoolean(),
-                        FocusZ = r.ReadSingle(),
-                    };
+                    Time = r1.ReadSingle(),
+                    LensSize = r1.ReadSingle(),
+                    ForceFocus = r1.ReadBoolean(),
+                    FocusZ = r1.ReadSingle(),
                 });
             }
 
             public override void Write(CGameCtnMediaBlockFxBlurDepth n, GameBoxWriter w, GameBoxReader unknownR)
             {
-                w.Write(n.Keys, x =>
+                w.Write(n.Keys, (x, w1) =>
                 {
-                    w.Write(x.Time);
-                    w.Write(x.LensSize);
-                    w.Write(x.ForceFocus);
-                    w.Write(x.FocusZ);
+                    w1.Write(x.Time);
+                    w1.Write(x.LensSize);
+                    w1.Write(x.ForceFocus);
+                    w1.Write(x.FocusZ);
                 });
             }
         }
@@ -55,7 +46,7 @@ namespace GBX.NET.Engines.Game
 
         #region Other classes
 
-        public class Key : MediaBlockKey
+        public new class Key : CGameCtnMediaBlock.Key
         {
             public float LensSize { get; set; }
             public bool ForceFocus { get; set; }

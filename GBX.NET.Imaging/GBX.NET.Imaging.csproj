@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<Product>GBX.NET.Imaging</Product>
+		<AssemblyName>GBX.NET.Imaging</AssemblyName>
+		<AssemblyTitle>GBX.NET.Imaging</AssemblyTitle>
+		<Authors>Petr Pivoňka (BigBang1112)</Authors>
+		<Description>A wrapper for handling images inside GBX files.</Description>
+		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		
+		<Version>1.0.0</Version>
+		<PackageReleaseNotes></PackageReleaseNotes>
+
+		<TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+		<Platforms>AnyCPU;x64;x86</Platforms>
+		
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk, image, imaging</PackageTags>
+		
+		<RepositoryType>git</RepositoryType>
+		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
+		
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+		<NoWarn>1591</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+		<PackageReference Include="System.Drawing.Common">
+			<Version>5.0.2</Version>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />
+	</ItemGroup>
+
+</Project>

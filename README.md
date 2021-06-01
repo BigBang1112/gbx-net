@@ -1,36 +1,38 @@
 ![GBX.NET](logo_outline.png)
 
+GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software framework. This file type can be seen in many of the Nadeo games like TrackMania, ShootMania or Virtual Skipper.
+
 [![Nuget](https://img.shields.io/nuget/v/GBX.NET?style=for-the-badge)](https://www.nuget.org/packages/GBX.NET/)
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/BigBang1112/gbx-net?include_prereleases&style=for-the-badge)](https://github.com/BigBang1112/gbx-net/releases)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/BigBang1112/gbx-net?style=for-the-badge)](#)
-[![GitHub](https://img.shields.io/github/license/BigBang1112/gbx-net?style=for-the-badge)](https://github.com/BigBang1112/gbx-net/blob/master/LICENSE)
-
-GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software framework. This file type can be seen in many of the Nadeo games like TrackMania, ShootMania or Virtual Skipper.
 
 - GBX.NET can recognize **entire GBX files**, however **can't read all of the possible files**. GBX file is basically a serialized class from the GameBox engine, and all of these classes must be known to read. This is where you can help contributing to the project, by [exploring new chunks](https://github.com/BigBang1112/gbx-net/wiki/How-to-discover-nodes-and-chunks) (available very soon).
 - GBX.NET can write GBX files which can be read by the parser, however this may not apply to all readable GBXs.
 - All versions of GBX are supported: ranging from TM1.0 to TM®.
-- Reading PAK file isn't currently supported.
+- **GBX.NET 0.10.0+ is separated into MIT and GPL3.0, see [License](#License)**.
+- Reading text-formatted GBX is not currently supported.
+- Reading PAK files isn't currently supported.
 
 | Extension | Node | Can read | Can write
 | --- | --- | --- | ---
 | Map.Gbx | [CGameCtnChallenge](GBX.NET/Engines/Game/CGameCtnChallenge.cs) | Yes | Yes
-| Replay.Gbx | [CGameCtnReplayRecord](GBX.NET/Engines/Game/CGameCtnReplayRecord.cs) | Yes | No
-| Ghost.Gbx | [CGameCtnGhost](GBX.NET/Engines/Game/CGameCtnGhost.cs) | Yes | Yes
+| Replay.Gbx | [CGameCtnReplayRecord](GBX.NET/Engines/Game/CGameCtnReplayRecord.cs) | Yes | **No\***
+| Ghost.Gbx | [CGameCtnGhost](GBX.NET/Engines/Game/CGameCtnGhost.cs) | Yes | **Yes**
 | Clip.Gbx | [CGameCtnMediaClip](GBX.NET/Engines/Game/CGameCtnMediaClip.cs) | Yes | Yes
 | EDClassic.Gbx | [CGameCtnBlockInfoClassic](GBX.NET/Engines/Game/CGameCtnBlockInfoClassic.cs) | Yes | No
 | Campaign.Gbx | [CGameCtnCampaign](GBX.NET/Engines/Game/CGameCtnCampaign.cs) | Yes | Yes
 | Block.Gbx | [CGameItemModel](GBX.NET/Engines/GameData/CGameItemModel.cs) | Yes | No
 | Macroblock.Gbx | [CGameCtnMacroBlockInfo](GBX.NET/Engines/Game/CGameCtnMacroBlockInfo.cs) | Yes | No
 | Item.Gbx | [CGameItemModel](GBX.NET/Engines/GameData/CGameItemModel.cs) | Yes | No
+| SystemConfig.Gbx | [CSystemConfig](GBX.NET/Engines/System/CSystemConfig.cs) | Yes | Yes
+
+\* Consider extracting `CGameCtnGhost` from `CGameCtnReplayRecord` and save it as `.Ghost.Gbx`, which you can then import in MediaTracker.
 
 ## Compatibility
 
-GBX.NET is compatible with **.NET Standard 2.0** since version 0.2.0. Earlier versions are built on .NET Standard 2.1.
-
-Since version 0.5.2, the library is also compatible with **.NET Framework 4.5**.
-
-The library is **not able to save GBX files in 64bit environment** due to the LZO compression implementation. To be able to save your GBX, set your platform target to **x86**.
+- GBX.NET is compatible with **.NET Standard 2.0** since version 0.2.0. Earlier versions are built on .NET Standard 2.1.
+- Since version 0.5.2, the library is also compatible with **.NET Framework 4.5**.
+- The library supports **saving GBX files in 64bit environment** since 0.10.0. In the older versions, to be able to save your GBX, set your platform target to **x86**.
 
 ## Techniques
 
@@ -94,13 +96,12 @@ Maps were selected from all kinds of Trackmania official campaigns picked by the
 
 ### GBX.NET
 
-- 0.0.1+
-  - System.Drawing.Common
-
-#### Obsolete
-
 - 0.0.1 - 0.4.1: SharpZipLib.NETStandard
 - 0.1.0 - 0.4.1: Microsoft.CSharp
+- 0.0.1 - 0.9.0: System.Drawing.Common
+
+### GBX.NET.Imaging
+- System.Drawing.Common
 
 ### GBX.NET.Json
 - Newtonsoft.Json
@@ -114,22 +115,63 @@ var gbx = GameBox.Parse<CGameCtnChallenge>("MyMap.Map.Gbx");
 // Node data is available in gbx.MainNode
 ```
 
-To parse a GBX with an unknown type:
+To parse a GBX with an unknown type (method 1):
 
 ```cs
 var gbx = GameBox.Parse("MyMap.Map.Gbx");
 
 if (gbx is GameBox<CGameCtnChallenge> gbxMap)
 {
-    // Node data is available in gbxMap.MainNode
+    var map = gbxMap.MainNode;
+    
+    // Node data is available in map
 }
 else if (gbx is GameBox<CGameCtnReplayRecord> gbxReplay)
 {
-    // Node data is available in gbxReplay.MainNode
+    var replay = gbxReplay.MainNode;
+    
+    // Node data is available in replay
 }
 ```
 
-To save a `Node` to a GBX file:
+To parse a GBX with an unknown type (method 2):
+
+```cs
+var gbx = GameBox.Parse("MyMap.Map.Gbx");
+
+if (gbx.TryNode(out CGameCtnChallenge map))
+{
+    // Node data is available in map
+}
+else if (gbx.TryNode(out CGameCtnReplayRecord replay))
+{
+    // Node data is available in replay
+}
+```
+
+To save changes of the parsed GBX file:
+
+```cs
+var gbx = GameBox.Parse("MyMap.Map.Gbx");
+
+if (gbx is GameBox<CGameCtnChallenge> gbxMap)
+{
+    // Do changes with CGameCtnChallenge
+
+    gbxMap.Save("MyMap.Map.Gbx"); // Can be also a new file
+}
+else if (gbx is GameBox<CGameCtnGhost> gbxGhost)
+{
+    // Do changes with CGameCtnGhost
+
+    gbxGhost.Save("MyGhost.Ghost.Gbx"); // Can be also a new file
+}
+
+gbx.Save(); // will throw an error
+// GameBox with unspecified/unknown type can't be currently written back
+```
+
+To save any supported `Node` to a GBX file:
 
 ```cs
 var gbxReplay = GameBox.Parse<CGameCtnReplayRecord>("MyReplay.Replay.Gbx");
@@ -148,7 +190,7 @@ Make the code cleaner by **aliasing** the `MainNode` from the parsed `GameBox<T>
 
 ```cs
 var gbx = GameBox.Parse<CGameCtnChallenge>("MyMap.Map.Gbx");
-CGameCtnChallenge map = gbx.MainNode; // Like this
+var map = gbx.MainNode; // Like this
 
 var bronzeTime = gbx.MainNode.BronzeTime; // WRONG !!!
 var silverTime = map.SilverTime; // Correct
@@ -156,11 +198,18 @@ var silverTime = map.SilverTime; // Correct
 
 ## License
 
-The source code files fall under [GNU General Public License v3.0](LICENSE). Information gathered from the project (chunk structure, parse examples, data structure, wiki information, markdown) is usable with [The Unlicense](https://unlicense.org/).
+- **The sub-library GBX.NET.LZO is licensed with [GNU General Public License v3.0](GBX.NET.LZO/LICENSE.GPL-3.0-or-later.md). If you're going to use this library, please license your work under GPL-3.0-or-later.** This applies to Island Converter as well which will be soon moved to a different repository.
+- **Everything in the Samples folder is also licensed with [GNU General Public License v3.0](Samples/LICENSE.GPL-3.0-or-later.md).**
+- The libraries GBX.NET, GBX.NET.Imaging, GBX.NET.Json, GBX.NET.Localization and the project DocGenerator **are licensed with MIT** and you can use them much more permissively.
+- Information gathered from the project (chunk structure, parse examples, data structure, wiki information, markdown) is usable with [The Unlicense](https://unlicense.org/).
+- Font of the logo is called [Raleway](https://fonts.google.com/specimen/Raleway) licensed under [SIL Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL). You can use the logo as a part of your media.
 
-Font of the logo is called [Raleway](https://fonts.google.com/specimen/Raleway) licensed under [SIL Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL). You can use the logo as a part of your media.
+### Conclusion
+
+Your work doesn't have to fall under the GNU GPL license if you're interested in either reading the header data only, or reading certain uncompressed GBX files (usually the internal ones inside PAK files). If you're looking to read the content of a **compressed GBX body** (applies to maps, replays and other user generated content), you **have to license your work with GNU GPL v3.0 or later**.
 
 ## Alternative GBX parsers
 
-- [gbx.js](https://github.com/ThaumicTom/gbx.js) (GBX header parser for clientside JavaScript)
-- [ManiaPlanetSharp](https://github.com/stefan-baumann/ManiaPlanetSharp) (C# toolkit for accessing ManiaPlanet data, including GBX parser used by ManiaExchange)
+- [gbx.js](https://github.com/ThaumicTom/gbx.js) by ThaumicTom (GBX header parser for clientside JavaScript)
+- [ManiaPlanetSharp](https://github.com/stefan-baumann/ManiaPlanetSharp) by Solux (C# toolkit for accessing ManiaPlanet data, including GBX parser used by ManiaExchange)
+- [pygbx](https://github.com/donadigo/pygbx) by Donadigo (GBX parser for Python)

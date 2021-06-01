@@ -25,16 +25,10 @@ namespace GBX.NET.Engines.Game
             {
                 Version = r.ReadInt32();
 
-                n.Keys = r.ReadArray(i =>
+                n.Keys = r.ReadArray(r1 => new Key()
                 {
-                    var time = r.ReadSingle();
-                    var intensity = r.ReadSingle();
-
-                    return new Key()
-                    {
-                        Time = time,
-                        Intensity = intensity
-                    };
+                    Time = r1.ReadSingle(),
+                    Intensity = r1.ReadSingle()
                 });
             }
 
@@ -42,10 +36,10 @@ namespace GBX.NET.Engines.Game
             {
                 w.Write(Version);
 
-                w.Write(n.Keys, x =>
+                w.Write(n.Keys, (x, w1) =>
                 {
-                    w.Write(x.Time);
-                    w.Write(x.Intensity);
+                    w1.Write(x.Time);
+                    w1.Write(x.Intensity);
                 });
             }
         }
@@ -56,7 +50,7 @@ namespace GBX.NET.Engines.Game
 
         #region Other classes
 
-        public class Key : MediaBlockKey
+        public new class Key : CGameCtnMediaBlock.Key
         {
             public float Intensity { get; set; }
         }

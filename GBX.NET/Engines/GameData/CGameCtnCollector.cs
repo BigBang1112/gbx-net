@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -77,7 +76,7 @@ namespace GBX.NET.Engines.GameData
         }
 
         [NodeMember]
-        public Task<Bitmap> Icon { get; set; }
+        public Color[,] Icon { get; set; }
 
         [NodeMember]
         public Node IconFid { get; set; }
@@ -129,20 +128,6 @@ namespace GBX.NET.Engines.GameData
         {
             get => isAdvanced;
             set => isAdvanced = value;
-        }
-
-        #endregion
-
-        #region Methods
-
-        public void ExportIcon(Stream stream, ImageFormat format)
-        {
-            Icon.Result.Save(stream, format);
-        }
-
-        public void ExportIcon(string fileName, ImageFormat format)
-        {
-            Icon.Result.Save(fileName, format);
         }
 
         #endregion
@@ -204,17 +189,34 @@ namespace GBX.NET.Engines.GameData
                 var width = r.ReadInt16();
                 var height = r.ReadInt16();
 
-                var iconData = r.ReadBytes(width * height * 4);
+                var iconData = r.ReadArray<int>(width * height);
 
-                n.Icon = Task.Run(() =>
+                n.Icon = new Color[width, height];
+
+                for (var y = 0; y < height; y++)
                 {
-                    var bitmap = new Bitmap(width, height);
-                    var bitmapData = bitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format32bppPArgb);
-                    Marshal.Copy(iconData, 0, bitmapData.Scan0, iconData.Length);
-                    bitmap.UnlockBits(bitmapData);
-                    bitmap.RotateFlip(RotateFlipType.RotateNoneFlipY);
-                    return bitmap;
-                });
+                    for (var x = 0; x < width; x++)
+                    {
+                        n.Icon[width - 1 - x, height - 1 - y] = Color.FromArgb(iconData[y * width + x]);
+                    }
+                }
+            }
+
+            public override void Write(CGameCtnCollector n, GameBoxWriter w, GameBoxReader unknownR)
+            {
+                var width = (short)n.Icon.GetLength(0);
+                var height = (short)n.Icon.GetLength(1);
+
+                w.Write(width);
+                w.Write(height);
+
+                for (var y = 0; y < height; y++)
+                {
+                    for (var x = 0; x < width; x++)
+                    {
+                        w.Write(n.Icon[width - 1 - x, height - 1 - y].ToArgb());
+                    }
+                }
             }
         }
 

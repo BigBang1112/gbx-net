@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-
-namespace GBX.NET.Engines.Game
+﻿namespace GBX.NET.Engines.Game
 {
     /// <summary>
     /// MediaTracker block - 3D stereo (0x03024000)
@@ -51,7 +46,7 @@ namespace GBX.NET.Engines.Game
 
         #region Other classes
 
-        public class Key : MediaBlockKey
+        public new class Key : CGameCtnMediaBlock.Key
         {
             public float UpToMax { get; set; }
             public float ScreenDist { get; set; }

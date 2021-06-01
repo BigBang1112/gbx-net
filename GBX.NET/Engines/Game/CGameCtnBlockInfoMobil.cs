@@ -71,8 +71,8 @@ namespace GBX.NET.Engines.Game
                     rw.Byte(Unknown);
                     rw.Vec3(Unknown);
                     n.RoadChunks = rw.Array(n.RoadChunks,
-                        i => rw.Reader.ReadNodeRef<CPlugRoadChunk>(),
-                        x => rw.Writer.Write(x));
+                        r => r.ReadNodeRef<CPlugRoadChunk>(),
+                        (x, w) => w.Write(x));
                 }
             }
         }
@@ -84,13 +84,13 @@ namespace GBX.NET.Engines.Game
             {
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
-                n.DynaLinks = rw.Reader.ReadArray(i =>
+                n.DynaLinks = rw.Reader.ReadArray(r =>
                 {
-                    var u01 = rw.Reader.ReadInt32();
-                    var u02 = rw.Reader.ReadInt32();
-                    var u03 = rw.Reader.ReadInt32();
-                    var socketID = rw.Reader.ReadId();
-                    var model = rw.Reader.ReadNodeRef<CGameObjectModel>();
+                    var u01 = r.ReadInt32();
+                    var u02 = r.ReadInt32();
+                    var u03 = r.ReadInt32();
+                    var socketID = r.ReadId();
+                    var model = r.ReadNodeRef<CGameObjectModel>();
 
                     return new CGameCtnBlockInfoMobilLink(socketID, model);
                 });

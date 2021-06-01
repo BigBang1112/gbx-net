@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-
-namespace GBX.NET.Engines.Game
+﻿namespace GBX.NET.Engines.Game
 {
     /// <summary>
     /// MediaTracker block - Camera base

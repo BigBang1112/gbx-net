@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GBX.NET.Engines.Game
+﻿namespace GBX.NET.Engines.Game
 {
     [Node(0x0311D000)]
     public class CGameCtnZoneGenealogy : Node
@@ -52,7 +48,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnZoneGenealogy n, GameBoxReaderWriter rw)
             {
-                n.ZoneIds = rw.Array(n.ZoneIds, i => rw.Reader.ReadId(), x => rw.Writer.WriteId(x));
+                n.ZoneIds = rw.Array(n.ZoneIds, r => r.ReadId(), (x, w) => w.WriteId(x));
                 n.CurrentIndex = rw.Int32(n.CurrentIndex); // 9
                 n.Dir = (Direction)rw.Int32((int)n.Dir);
                 n.CurrentZoneId = rw.Id(n.CurrentZoneId);

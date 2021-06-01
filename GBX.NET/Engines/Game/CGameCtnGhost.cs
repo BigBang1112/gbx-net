@@ -1,12 +1,7 @@
-﻿using GBX.NET.Engines.Plug;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
+
+using GBX.NET.Engines.Plug;
 
 namespace GBX.NET.Engines.Game
 {
@@ -30,7 +25,7 @@ namespace GBX.NET.Engines.Game
         private int? respawns;
         private Vec3? lightTrailColor;
         private int? stuntScore;
-        private TimeSpan[] checkpoints;
+        private Checkpoint[] checkpoints;
         private int eventsDuration;
         private ControlEntry[] controlEntries;
         private string validate_ExeVersion;
@@ -40,6 +35,8 @@ namespace GBX.NET.Engines.Game
         private string validate_RaceSettings;
         private string validate_ChallengeUid;
         private string validate_TitleId;
+        private bool hasBadges;
+        private string skin;
 
         #endregion
 
@@ -181,7 +178,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public TimeSpan[] Checkpoints
+        public Checkpoint[] Checkpoints
         {
             get
             {
@@ -199,14 +196,18 @@ namespace GBX.NET.Engines.Game
         public string GhostLogin { get; set; }
 
         [NodeMember]
-        public Ident Vehicle { get; set; }
-
-        [NodeMember]
-        public string Skin { get; set; }
+        public string Skin
+        {
+            get => skin;
+            set => skin = value;
+        }
 
         [NodeMember]
         public string UID { get; set; }
 
+        /// <summary>
+        /// Duration of events in the ghost (range of detected inputs). This can be 0 if the ghost was driven in editor.
+        /// </summary>
         [NodeMember]
         public int EventsDuration
         {
@@ -222,6 +223,9 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Inputs (keyboard, pad, wheel) of the ghost from TMU, TMUF and TM2. For inputs stored in TM1.0, TMO, Sunrise and ESWC: see <see cref="CGameCtnReplayRecord.ControlEntries"/>. TM2020 and Shootmania inputs aren't available in replays and ghosts. Can be null if <see cref="EventsDuration"/> is 0, which happens when you save the replay in editor.
+        /// </summary>
         [NodeMember]
         public ControlEntry[] ControlEntries
         {
@@ -345,6 +349,13 @@ namespace GBX.NET.Engines.Game
             set => ghostZone = value;
         }
 
+        [NodeMember]
+        public bool HasBadges
+        {
+            get => hasBadges;
+            set => hasBadges = value;
+        }
+
         #endregion
 
         #region Chunks
@@ -359,9 +370,12 @@ namespace GBX.NET.Engines.Game
         {
             private int version;
             private Vec3 u01;
-            private int u02;
             private bool u03;
             private int[] u04;
+            private int u05;
+            private Vec3 u06;
+            private (string value, string key)[] u07;
+            private string[] u08;
 
             public int Version
             {
@@ -373,12 +387,6 @@ namespace GBX.NET.Engines.Game
             {
                 get => u01;
                 set => u01 = value;
-            }
-
-            public int U02
-            {
-                get => u02;
-                set => u02 = value;
             }
 
             public bool U03
@@ -393,15 +401,55 @@ namespace GBX.NET.Engines.Game
                 set => u04 = value;
             }
 
+            public int U05
+            {
+                get => u05;
+                set => u05 = value;
+            }
+
+            public Vec3 U06
+            {
+                get => u06;
+                set => u06 = value;
+            }
+
+            public (string value, string key)[] U07
+            {
+                get => u07;
+                set => u07 = value;
+            }
+
+            public string[] U08
+            {
+                get => u08;
+                set => u08 = value;
+            }
+
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
                 rw.Ident(ref n.playerModel);
-                rw.Vec3(ref u01);
+                rw.Vec3(ref n.lightTrailColor);
                 rw.Array(ref n.skinPackDescs,
-                    i => rw.Reader.ReadFileRef(),
-                    x => rw.Writer.Write(x));
-                rw.Int32(ref u02);
+                    (i, r) => r.ReadFileRef(),
+                    (x, w) => w.Write(x));
+                rw.Boolean(ref n.hasBadges);
+
+                if (n.hasBadges)
+                {
+                    rw.Int32(ref u05);
+                    rw.Vec3(ref u06);
+                    rw.Array(ref u07,
+                        (i, r) => (r.ReadString(), r.ReadString()),
+                        (x, w) => {
+                            w.Write(x.Item1);
+                            w.Write(x.Item2);
+                        });
+                    rw.Array(ref u08,
+                        (i, r) => r.ReadString(),
+                        (x, w) => w.Write(x));
+                }
+
                 rw.String(ref n.ghostNickname);
                 rw.String(ref n.ghostAvatarName);
 
@@ -409,7 +457,7 @@ namespace GBX.NET.Engines.Game
                 {
                     n.RecordingContext = rw.String(n.recordingContext);
 
-                    if(Version < 5)
+                    if (Version < 5)
                     {
                         // TODO
                     }
@@ -448,7 +496,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.Vehicle = rw.Ident(n.Vehicle);
+                rw.Ident(ref n.playerModel);
                 n.Skin = rw.String(n.Skin);
                 n.GhostLogin = rw.String(n.GhostLogin);
 
@@ -484,7 +532,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.Vehicle = rw.Ident(n.Vehicle);
+                rw.Ident(ref n.playerModel);
                 n.Skin = rw.String(n.Skin);
                 rw.Int32(Unknown);
                 rw.String(Unknown);
@@ -551,9 +599,10 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.checkpoints = rw.Array(n.checkpoints,
-                    (i, r) => TimeSpan.FromMilliseconds(r.ReadInt64()),
-                    (x, w) => w.Write(Convert.ToInt64(x.TotalMilliseconds)));
+                rw.Array(ref n.checkpoints,
+                    (i, r) => new Checkpoint(TimeSpan.FromMilliseconds(r.ReadInt32()), r.ReadInt32()),
+                    (x, w) => { w.Write(x.Time); w.Write(x.StuntsScore); }
+                );
             }
         }
 
@@ -585,15 +634,15 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.Vehicle = rw.Ident(n.Vehicle);
-                n.Skin = rw.Reader.ReadString();
+                rw.Ident(ref n.playerModel);
+                rw.String(ref n.skin);
 
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
                 rw.Int32(Unknown);
 
-                rw.String(Unknown);
+                rw.String(ref n.ghostNickname);
             }
         }
 
@@ -634,9 +683,9 @@ namespace GBX.NET.Engines.Game
         #region 0x010 chunk
 
         /// <summary>
-        /// CGameCtnGhost 0x010 chunk
+        /// CGameCtnGhost 0x010 chunk (validation map UID)
         /// </summary>
-        [Chunk(0x03092010)]
+        [Chunk(0x03092010, "validation map UID")]
         public class Chunk03092010 : Chunk<CGameCtnGhost>
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
@@ -647,17 +696,105 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x011 chunk
+        #region 0x011 chunk (validation TMU)
 
         /// <summary>
-        /// CGameCtnGhost 0x011 chunk
+        /// CGameCtnGhost 0x011 chunk (validation TMU)
         /// </summary>
-        [Chunk(0x03092011)]
+        [Chunk(0x03092011, "validation TMU")]
         public class Chunk03092011 : Chunk<CGameCtnGhost>
         {
+            internal bool Is025 { get; }
+
+            public uint U01 { get; set; }
+            public int U02 { get; set; }
+
+            public Chunk03092011()
+            {
+
+            }
+
+            public Chunk03092011(Chunk03092019 chunk019)
+            {
+                Is025 = chunk019.Is025;
+            }
+
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32(ref n.eventsDuration);
+
+                if (n.eventsDuration == 0 && Is025) return;
+
+                U01 = rw.UInt32(U01);
+
+                if (rw.Mode == GameBoxReaderWriterMode.Read)
+                {
+                    var r = rw.Reader;
+
+                    var controlNames = r.ReadArray(r1 => r1.ReadId());
+
+                    var numEntries = r.ReadInt32();
+                    U02 = r.ReadInt32();
+
+                    n.ControlEntries = new ControlEntry[numEntries];
+
+                    for (var i = 0; i < numEntries; i++)
+                    {
+                        var time = TimeSpan.FromMilliseconds(r.ReadInt32() - 100000);
+                        var controlNameIndex = r.ReadByte();
+                        var data = r.ReadUInt32();
+
+                        var name = controlNames[controlNameIndex];
+
+                        switch (name)
+                        {
+                            case "Steer":
+                            case "Gas":
+                            case "AccelerateReal":
+                            case "BrakeReal":
+                                n.ControlEntries[i] = new ControlEntryAnalog() { Name = name, Time = time, Data = data };
+                                break;
+                            default:
+                                n.ControlEntries[i] = new ControlEntry() { Name = name, Time = time, Data = data };
+                                break;
+                        }
+                    }
+                }
+                else if (rw.Mode == GameBoxReaderWriterMode.Write)
+                {
+                    var w = rw.Writer;
+
+                    var controlNames = new List<string>();
+
+                    if (n.ControlEntries != null)
+                    {
+                        foreach (var entry in n.ControlEntries)
+                            if (!controlNames.Contains(entry.Name))
+                                controlNames.Add(entry.Name);
+                    }
+
+                    foreach (var name in controlNames)
+                        w.WriteId(name);
+
+                    w.Write(n.ControlEntries?.Length ?? 0);
+                    w.Write(U02);
+
+                    if (n.ControlEntries != null)
+                    {
+                        foreach (var entry in n.ControlEntries)
+                        {
+                            w.Write(Convert.ToInt32(entry.Time.TotalMilliseconds + 100000));
+                            w.Write((byte)controlNames.IndexOf(entry.Name));
+                            w.Write(entry.Data);
+                        }
+                    }
+                }
+
+                rw.String(ref n.validate_ExeVersion);
+                rw.UInt32(ref n.validate_ExeChecksum);
+                rw.Int32(ref n.validate_OsKind);
+                rw.Int32(ref n.validate_CpuKind);
+                rw.String(ref n.validate_RaceSettings);
             }
         }
 
@@ -724,7 +861,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.Vehicle = new Ident(rw.Id(n.Vehicle?.ID));
+                n.playerModel = new Ident(rw.Id(n.playerModel.ID));
             }
         }
 
@@ -735,12 +872,12 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnGhost 0x017 skippable chunk (ghost metadata)
         /// </summary>
-        [Chunk(0x03092017)]
+        [Chunk(0x03092017, "ghost metadata")]
         public class Chunk03092017 : SkippableChunk<CGameCtnGhost>
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.skinPackDescs = rw.Array(n.skinPackDescs, i => rw.Reader.ReadFileRef(), x => rw.Writer.Write(x));
+                n.skinPackDescs = rw.Array(n.skinPackDescs, r => r.ReadFileRef(), (x, w) => w.Write(x));
                 n.ghostNickname = rw.String(n.ghostNickname);
                 n.ghostAvatarName = rw.String(n.ghostAvatarName);
             }
@@ -766,106 +903,38 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x019 chunk (core)
+        #region 0x019 chunk (validation TMUF)
 
         /// <summary>
-        /// CGameCtnGhost 0x019 chunk (validation)
+        /// CGameCtnGhost 0x019 chunk (validation TMUF)
         /// </summary>
-        [Chunk(0x03092019, "validation")]
+        [Chunk(0x03092019, "validation TMUF")]
         public class Chunk03092019 : Chunk<CGameCtnGhost>
         {
-            readonly bool is025;
+            internal bool Is025 { get; }
 
-            public uint U01 { get; set; }
-            public int U02 { get; set; }
+            public Chunk03092011 Chunk011 { get; }
 
-            public Chunk03092019()
-            {
-
-            }
+            public int U01 { get; set; }
 
             public Chunk03092019(Chunk03092025 chunk025)
             {
-                is025 = chunk025 is Chunk03092025;
+                Is025 = chunk025 is Chunk03092025;
+                Chunk011 = new Chunk03092011(this);
+            }
+
+            public Chunk03092019() : this(null)
+            {
+
             }
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.EventsDuration = rw.Int32(n.EventsDuration);
+                Chunk011.ReadWrite(n, rw);
 
-                if (n.EventsDuration == 0 && !is025) return;
+                if (n.eventsDuration == 0 && Is025) return;
 
-                U01 = rw.UInt32(U01);
-
-                if (rw.Mode == GameBoxReaderWriterMode.Read)
-                {
-                    var r = rw.Reader;
-
-                    var controlNames = r.ReadArray(i => r.ReadId());
-
-                    var numEntries = r.ReadInt32();
-                    r.ReadInt32();
-
-                    n.ControlEntries = new ControlEntry[numEntries];
-
-                    for (var i = 0; i < numEntries; i++)
-                    {
-                        var time = TimeSpan.FromMilliseconds(r.ReadInt32() - 100000);
-                        var controlNameIndex = r.ReadByte();
-                        var data = r.ReadUInt32();
-
-                        var name = controlNames[controlNameIndex];
-
-                        switch (name)
-                        {
-                            case "Steer":
-                            case "Gas":
-                            case "AccelerateReal":
-                            case "BrakeReal":
-                                n.ControlEntries[i] = new ControlEntryAnalog() { Name = name, Time = time, Data = data };
-                                break;
-                            default:
-                                n.ControlEntries[i] = new ControlEntry() { Name = name, Time = time, Data = data };
-                                break;
-                        }
-                    }
-                }
-                else if (rw.Mode == GameBoxReaderWriterMode.Write)
-                {
-                    var w = rw.Writer;
-
-                    var controlNames = new List<string>();
-
-                    if (n.ControlEntries != null)
-                    {
-                        foreach (var entry in n.ControlEntries)
-                            if (!controlNames.Contains(entry.Name))
-                                controlNames.Add(entry.Name);
-                    }
-
-                    foreach (var name in controlNames)
-                        w.WriteId(name);
-
-                    w.Write(n.ControlEntries?.Length ?? 0);
-                    w.Write(0);
-
-                    if (n.ControlEntries != null)
-                    {
-                        foreach (var entry in n.ControlEntries)
-                        {
-                            w.Write(Convert.ToInt32(entry.Time.TotalMilliseconds + 100000));
-                            w.Write((byte)controlNames.IndexOf(entry.Name));
-                            w.Write(entry.Data);
-                        }
-                    }
-                }
-
-                rw.String(ref n.validate_ExeVersion);
-                rw.UInt32(ref n.validate_ExeChecksum);
-                rw.Int32(ref n.validate_OsKind);
-                rw.Int32(ref n.validate_CpuKind);
-                rw.String(ref n.validate_RaceSettings);
-                U02 = rw.Int32(U02);
+                U01 = rw.Int32(U01);
             }
         }
 
@@ -967,12 +1036,12 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x025 skippable chunk (validation)
+        #region 0x025 skippable chunk (validation TM2)
 
         /// <summary>
-        /// CGameCtnGhost 0x025 skippable chunk (validation)
+        /// CGameCtnGhost 0x025 skippable chunk (validation TM2)
         /// </summary>
-        [Chunk(0x03092025, "validation")]
+        [Chunk(0x03092025, "validation TM2")]
         public class Chunk03092025 : SkippableChunk<CGameCtnGhost>
         {
             private int version;
@@ -983,22 +1052,23 @@ namespace GBX.NET.Engines.Game
                 set => version = value;
             }
 
-            public uint U01 { get; set; }
-            public int U02 { get; set; }
-            public bool U03 { get; set; }
+            public Chunk03092019 Chunk019 { get; }
 
-            private readonly Chunk03092019 chunk019;
+            public bool U01 { get; set; }
 
             public Chunk03092025()
             {
-                chunk019 = new Chunk03092019(this);
+                Chunk019 = new Chunk03092019(this);
             }
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
-                chunk019.ReadWrite(n, rw);
-                U03 = rw.Boolean(U03);
+                Chunk019.ReadWrite(n, rw);
+
+                if (n.eventsDuration == 0) return;
+
+                U01 = rw.Boolean(U01);
             }
         }
 
@@ -1025,39 +1095,35 @@ namespace GBX.NET.Engines.Game
 
         #region Other classes
 
-        public class ControlEntry
-        {
-            public string Name { get; set; }
-            public TimeSpan Time { get; set; }
-            public uint Data { get; set; }
-            public bool IsEnabled => Data != 0;
-
-            public override string ToString()
-            {
-                return $"[{Time.ToStringTM()}] {Name}: {((Data == 128 || Data == 0) ? IsEnabled.ToString() : Data.ToString())}";
-            }
-        }
-
         /// <summary>
-        /// A control entry with an additional <see cref="float"/> value.
+        /// Checkpoint timestamp driven by the ghost.
         /// </summary>
-        public class ControlEntryAnalog : ControlEntry
+        public struct Checkpoint
         {
-            public float Value
+            /// <summary>
+            /// Time of the checkpoint.
+            /// </summary>
+            public TimeSpan Time { get; set; }
+
+            /// <summary>
+            /// Amount of stunt points when reaching this checkpoint. This is very often always 0 in TM2 replay.
+            /// </summary>
+            public int StuntsScore { get; set; }
+
+            public Checkpoint(TimeSpan time, int stuntsScore)
             {
-                get
-                {
-                    if (((Data >> 16) & 0xFF) == 0xFF) // Left steer
-                        return (Data & 0xFFFF) / (float)ushort.MaxValue - 1;
-                    if ((Data >> 16) == 1) // Full right steer
-                        return 1;
-                    return (Data & 0xFFFF) / (float)ushort.MaxValue;
-                }
+                Time = time;
+                StuntsScore = stuntsScore;
+            }
+
+            public Checkpoint(TimeSpan time) : this(time, 0)
+            {
+
             }
 
             public override string ToString()
             {
-                return $"[{Time.ToStringTM()}] {Name}: {Value}";
+                return $"{Time.ToStringTM()} ({StuntsScore})";
             }
         }
 

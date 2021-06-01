@@ -1,10 +1,7 @@
-﻿using GBX.NET.Engines.GameData;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System;
 using System.Linq;
-using System.Numerics;
-using System.Text;
+
+using GBX.NET.Engines.GameData;
 
 namespace GBX.NET.Engines.Game
 {
@@ -30,15 +27,15 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                n.Blocks = r.ReadArray(i =>
+                n.Blocks = r.ReadArray(r1 =>
                 {
                     Int3? coord = null;
                     Direction? dir = null;
                     Vec3? position = null;
                     Vec3? pitchYawRoll = null;
 
-                    var ver = r.ReadInt32();
-                    var ident = r.ReadIdent();
+                    var ver = r1.ReadInt32();
+                    var ident = r1.ReadIdent();
                     int flags = 0;
 
                     if(ver >= 2)
@@ -48,29 +45,29 @@ namespace GBX.NET.Engines.Game
 
                         }
 
-                        flags = r.ReadInt32();
+                        flags = r1.ReadInt32();
 
                         if (ver >= 4)
                         {
                             if ((flags & (1 << 26)) != 0) // free block
                             {
-                                position = r.ReadVec3();
-                                pitchYawRoll = r.ReadVec3();
+                                position = r1.ReadVec3();
+                                pitchYawRoll = r1.ReadVec3();
                             }
                             else
                             {
-                                coord = (Int3)r.ReadByte3();
-                                dir = (Direction)r.ReadByte();
+                                coord = (Int3)r1.ReadByte3();
+                                dir = (Direction)r1.ReadByte();
                             }
                         }
                     }
 
                     if (ver >= 3)
-                        if (r.ReadNodeRef() != null)
+                        if (r1.ReadNodeRef() != null)
                             throw new NotImplementedException();
 
                     if (ver >= 4)
-                        if (r.ReadNodeRef() != null)
+                        if (r1.ReadNodeRef() != null)
                             throw new NotImplementedException();
 
                     var correctFlags = flags & 15;
@@ -83,7 +80,7 @@ namespace GBX.NET.Engines.Game
 
                     var block = new CGameCtnBlock()
                     {
-                        BlockInfo = ident,
+                        BlockModel = ident,
                         Coord = coord.GetValueOrDefault(),
                         Direction = dir.GetValueOrDefault(),
                         Flags = correctFlags
@@ -113,20 +110,20 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                var unknown = r.ReadArray(i =>
+                var unknown = r.ReadArray(r1 =>
                 {
-                    var version = r.ReadInt32();
-                    if(r.ReadNodeRef() != null)
+                    var version = r1.ReadInt32();
+                    if(r1.ReadNodeRef() != null)
                         throw new NotImplementedException();
 
-                    if(version == 0)
+                    if (version == 0)
                     {
-                        r.ReadInt32();
-                        r.ReadInt32();
-                        r.ReadInt32();
+                        r1.ReadInt32();
+                        r1.ReadInt32();
+                        r1.ReadInt32();
                     }
 
-                    r.ReadInt32();
+                    r1.ReadInt32();
 
                     return new object();
                 });
@@ -145,16 +142,16 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                var unknown = r.ReadArray(i =>
+                var unknown = r.ReadArray(r1 =>
                 {
                     return new object[]
                     {
-                        r.ReadInt32(),
-                        r.ReadArray(j => r.ReadIdent()),
+                        r1.ReadInt32(),
+                        r1.ReadArray(r2 => r2.ReadIdent()),
 
-                        r.ReadInt32(),
-                        r.ReadInt32(),
-                        r.ReadInt32()
+                        r1.ReadInt32(),
+                        r1.ReadInt32(),
+                        r1.ReadInt32()
                     };
                 });
             }
@@ -190,7 +187,7 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 var version = r.ReadInt32();
-                var nodrefs = r.ReadArray(i => r.ReadNodeRef());
+                var nodrefs = r.ReadArray(r1 => r1.ReadNodeRef());
                 r.ReadArray<int>(2);
             }
         }
@@ -211,11 +208,11 @@ namespace GBX.NET.Engines.Game
             {
                 Version = r.ReadInt32();
 
-                n.AnchoredObjects = r.ReadArray(i =>
+                n.AnchoredObjects = r.ReadArray(r1 =>
                 {
-                    var v = r.ReadInt32();
+                    var v = r1.ReadInt32();
 
-                    var itemModel = r.ReadIdent();
+                    var itemModel = r1.ReadIdent();
 
                     Vec3 pitchYawRoll = default;
                     Vec3 pivotPosition = default;
@@ -223,36 +220,36 @@ namespace GBX.NET.Engines.Game
 
                     if (v < 3)
                     {
-                        var quarterY = r.ReadByte();
+                        var quarterY = r1.ReadByte();
 
                         if (v != 0)
                         {
-                            var additionalDir = r.ReadByte();
+                            var additionalDir = r1.ReadByte();
                         }
                     }
                     else
                     {
-                        pitchYawRoll = r.ReadVec3();
+                        pitchYawRoll = r1.ReadVec3();
                     }
 
-                    var blockCoord = r.ReadInt3();
-                    var lookback = r.ReadId();
-                    var pos = r.ReadVec3();
+                    var blockCoord = r1.ReadInt3();
+                    var lookback = r1.ReadId();
+                    var pos = r1.ReadVec3();
 
                     if (v < 5)
-                        r.ReadInt32();
+                        r1.ReadInt32();
                     if (v < 6)
-                        r.ReadInt32();
+                        r1.ReadInt32();
                     if (v >= 6)
-                        r.ReadInt16(); // 0
+                        r1.ReadInt16(); // 0
                     if (v >= 7)
-                        pivotPosition = r.ReadVec3();
+                        pivotPosition = r1.ReadVec3();
                     if (v >= 8)
-                        r.ReadNodeRef(); // probably waypoint
+                        r1.ReadNodeRef(); // probably waypoint
                     if (v >= 9)
-                        scale = r.ReadSingle(); // 1
+                        scale = r1.ReadSingle(); // 1
                     if (v >= 10)
-                        r.ReadArray<int>(3); // 0 1 -1
+                        r1.ReadArray<int>(3); // 0 1 -1
 
                     return new CGameCtnAnchoredObject()
                     {

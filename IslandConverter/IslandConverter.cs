@@ -1,8 +1,10 @@
 ﻿using GBX.NET;
+using GBX.NET.Imaging;
 using GBX.NET.Engines.Game;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Numerics;
@@ -23,7 +25,7 @@ namespace IslandConverter
 
             bool isMap = false;
             using (var fs = File.OpenRead(fileName))
-                isMap = GameBox.GetGameBoxType(fs) == typeof(GameBox<CGameCtnChallenge>);
+                isMap = GameBox.ReadNodeType(fs) == typeof(GameBox<CGameCtnChallenge>);
 
             Log.Write();
 
@@ -194,7 +196,7 @@ namespace IslandConverter
             var map = gbx.MainNode;
 
             Log.Write("Converting decoration...");
-            map.Decoration.ID = "64x64" + map.Decoration.ID.TrimEnd();
+            map.Decoration = new Ident("64x64" + map.Decoration.ID.TrimEnd(), map.Decoration.Collection, map.Decoration.Author);
 
             Log.Write("Converting environment...");
             map.Collection = "Stadium";
@@ -226,7 +228,7 @@ namespace IslandConverter
             if (map.Thumbnail == null)
                 thumbnail = new Bitmap(512, 512);
             else
-                thumbnail = new Bitmap(map.Thumbnail.Result, 512, 512);
+                thumbnail = new Bitmap(map.GetThumbnailBitmap(), 512, 512);
 
             using (var g = Graphics.FromImage(thumbnail))
             {
@@ -235,7 +237,11 @@ namespace IslandConverter
                     g.DrawImage(Resources.OverlayOpenplanet, 0, 0);
             }
 
-            map.Thumbnail = Task.FromResult(thumbnail);
+            using (var ms = new MemoryStream())
+            {
+                thumbnail.Save(ms, ImageFormat.Jpeg);
+                map.Thumbnail = ms.ToArray();
+            }
 
             map.GetChunk<CGameCtnChallenge.Chunk0304301F>().Version = 6;
 

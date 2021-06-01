@@ -1030,6 +1030,8 @@
   0D2 CGameControlCameraFollowAboveWater
   0D3 CTrackManiaEditorSimple
   0D4 CTrackManiaControlScores2
+2D ShootMania
+  001 SSmPlayerVis
 2E GameData
   000 CGameDataEngine
   001 CGameCtnCollector

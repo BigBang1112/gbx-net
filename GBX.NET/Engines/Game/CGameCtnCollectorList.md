@@ -11,7 +11,7 @@ void Read(GameBoxReader r)
 {
     int numCollectors = r.ReadInt32();
 
-    for(var i = 0; i < num; i++)
+    for (var i = 0; i < num; i++)
         Ident collector = r.ReadIdent();
 }
 ```

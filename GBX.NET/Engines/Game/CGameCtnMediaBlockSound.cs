@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
-
-namespace GBX.NET.Engines.Game
+﻿namespace GBX.NET.Engines.Game
 {
     [Node(0x030A7000)]
     public class CGameCtnMediaBlockSound : CGameCtnMediaBlock
@@ -48,20 +42,17 @@ namespace GBX.NET.Engines.Game
             {
                 n.Sound = rw.FileRef(n.Sound);
 
-                n.Keys = rw.Array(n.Keys, i =>
+                n.Keys = rw.Array(n.Keys, r => new Key()
                 {
-                    return new Key()
-                    {
-                        Time = rw.Reader.ReadSingle(),
-                        Volume = rw.Reader.ReadSingle(),
-                        Pan = rw.Reader.ReadSingle()
-                    };
+                    Time = r.ReadSingle(),
+                    Volume = r.ReadSingle(),
+                    Pan = r.ReadSingle()
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.Volume);
-                    rw.Writer.Write(x.Pan);
+                    w.Write(x.Time);
+                    w.Write(x.Volume);
+                    w.Write(x.Pan);
                 });
             }
         }
@@ -120,27 +111,19 @@ namespace GBX.NET.Engines.Game
             {
                 n.Sound = rw.FileRef(n.Sound);
                 rw.Int32(Unknown); // 1
-                n.Keys = rw.Array(n.Keys, i =>
+                n.Keys = rw.Array(n.Keys, r => new Key()
                 {
-                    var time = rw.Reader.ReadSingle();
-                    var volume = rw.Reader.ReadSingle();
-                    var unknown = rw.Reader.ReadSingle();
-                    var position = rw.Reader.ReadVec3();
-
-                    return new Key()
-                    {
-                        Time = time,
-                        Volume = volume,
-                        Unknown = unknown,
-                        Position = position
-                    };
+                    Time = r.ReadSingle(),
+                    Volume = r.ReadSingle(),
+                    Unknown = r.ReadSingle(),
+                    Position = r.ReadVec3()
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.Volume);
-                    rw.Writer.Write(x.Unknown);
-                    rw.Writer.Write(x.Position);
+                    w.Write(x.Time);
+                    w.Write(x.Volume);
+                    w.Write(x.Unknown);
+                    w.Write(x.Position);
                 });
             }
         }
@@ -151,7 +134,7 @@ namespace GBX.NET.Engines.Game
 
         #region Other classes
 
-        public class Key : MediaBlockKey
+        public new class Key : CGameCtnMediaBlock.Key
         {
             public float Volume { get; set; }
             public float Pan { get; set; }

@@ -1,8 +1,9 @@
-﻿using GBX.NET.Engines.GameData;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+
+using GBX.NET.Engines.GameData;
 
 namespace GBX.NET.Engines.Game
 {

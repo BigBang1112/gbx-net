@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -29,18 +27,19 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        public ObservableCollection<Sample> Samples { get; private set; }
+        public ObservableCollection<CGameGhostDataSample> Samples { get; private set; }
         public CompressionLevel Compression { get; set; }
+        public uint NodeID { get; set; }
 
         public CGameGhostData()
         {
-            
+
         }
 
         private void Samples_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.OldItems != null)
-                foreach (Sample sample in e.OldItems)
+                foreach (CGameGhostDataSample sample in e.OldItems)
                     sample.AssignTo(null);
 
             if (e.NewStartingIndex != Samples.Count - 1)
@@ -87,18 +86,18 @@ namespace GBX.NET.Engines.Game
         /// <param name="r">Reader.</param>
         public void Read(GameBoxReader r)
         {
-            var classID = r.ReadInt32(); // CSceneVehicleCar
-            if (classID != -1)
+            NodeID = r.ReadUInt32(); // CSceneVehicleCar or CSceneMobilCharVis
+            if (NodeID != uint.MaxValue)
             {
                 var bSkipList2 = r.ReadBoolean();
                 var u01 = r.ReadInt32();
                 SamplePeriod = TimeSpan.FromMilliseconds(r.ReadInt32());
                 var u02 = r.ReadInt32();
 
-                var size = r.ReadInt32();
-                var sampleData = r.ReadBytes(size);
+                var sampleData = r.ReadBytes();
 
-                int? sizePerSample = null;
+                int sizePerSample = -1;
+                int[] sampleSizes = null;
 
                 var numSamples = r.ReadInt32();
                 if (numSamples > 0)
@@ -109,76 +108,120 @@ namespace GBX.NET.Engines.Game
                         sizePerSample = r.ReadInt32();
                         if (sizePerSample == -1)
                         {
-                            var sampleSizes = r.ReadArray<int>(numSamples - 1);
-                            throw new NotSupportedException("Ghosts with different sample sizes aren't supported.");
+                            sampleSizes = r.ReadArray<int>(numSamples - 1);
                         }
                     }
                 }
 
+                int[] sampleTimes = null;
+
                 if (!bSkipList2)
                 {
-                    var num = r.ReadInt32();
-                    var sampleTimes = r.ReadArray<int>(num);
+                    sampleTimes = r.ReadArray<int>();
                 }
 
                 if (numSamples > 0)
                 {
-                    if (sizePerSample.HasValue)
+                    using (var mssd = new MemoryStream(sampleData))
                     {
-                        using (var mssd = new MemoryStream(sampleData))
-                        {
-                            ReadSamples(mssd, numSamples, sizePerSample.Value);
-                        }
+                        ReadSamples(mssd, numSamples, sizePerSample, sampleSizes, sampleTimes);
                     }
                 }
                 else
                 {
-                    Samples = new ObservableCollection<Sample>();
+                    Samples = new ObservableCollection<CGameGhostDataSample>();
                     Samples.CollectionChanged += Samples_CollectionChanged;
                 }
             }
         }
 
-        public void ReadSamples(MemoryStream ms, int numSamples, int sizePerSample)
+        public void ReadSamples(MemoryStream ms, int numSamples, int sizePerSample, int[] sizesPerSample = null, int[] sampleTimes = null)
         {
-            Samples = new ObservableCollection<Sample>();
+            Samples = new ObservableCollection<CGameGhostDataSample>();
             Samples.CollectionChanged += Samples_CollectionChanged;
 
-            using (var sr = new GameBoxReader(ms))
+            using (var r = new GameBoxReader(ms))
             {
                 for (var i = 0; i < numSamples; i++)
                 {
-                    var sampleProgress = ms.Position;
+                    CGameGhostDataSample sample = new CGameGhostDataSample();
 
-                    var pos = sr.ReadVec3();
-                    var angle = sr.ReadUInt16() / (double)ushort.MaxValue * Math.PI;
-                    var axisHeading = sr.ReadInt16() / (double)short.MaxValue * Math.PI;
-                    var axisPitch = sr.ReadInt16() / (double)short.MaxValue * Math.PI / 2;
-                    var speed = (float)Math.Exp(sr.ReadInt16() / 1000f);
-                    var velocityHeading = sr.ReadSByte() / (double)sbyte.MaxValue * Math.PI;
-                    var velocityPitch = sr.ReadSByte() / (double)sbyte.MaxValue * Math.PI / 2;
+                    var sampleProgress = (int)ms.Position;
 
-                    var axis = new Vec3((float)(Math.Sin(angle) * Math.Cos(axisPitch) * Math.Cos(axisHeading)),
-                        (float)(Math.Sin(angle) * Math.Cos(axisPitch) * Math.Sin(axisHeading)),
-                        (float)(Math.Sin(angle) * Math.Sin(axisPitch)));
-
-                    var quaternion = new Quaternion(axis, (float)Math.Cos(angle));
-
-                    var velocityVector = new Vec3((float)(speed * Math.Cos(velocityPitch) * Math.Cos(velocityHeading)),
-                        (float)(speed * Math.Cos(velocityPitch) * Math.Sin(velocityHeading)),
-                        (float)(speed * Math.Sin(velocityPitch)));
-
-                    var unknownData = sr.ReadBytes(
-                        sizePerSample - (int)(ms.Position - sampleProgress));
-
-                    var sample = new Sample()
+                    byte[] unknownData;
+                    if (sizePerSample != -1)
+                        unknownData = new byte[ms.Length / sizePerSample];
+                    else if (sizesPerSample != null)
                     {
-                        Position = pos,
-                        Rotation = quaternion,
-                        Speed = speed * 3.6f,
-                        Velocity = velocityVector,
-                        Unknown = unknownData
-                    };
+                        if (i == numSamples - 1) // Last sample size not included
+                            unknownData = new byte[(int)(ms.Length - ms.Position)];
+                        else
+                            unknownData = new byte[sizesPerSample[i]];
+                    }
+                    else throw new Exception();
+
+                    int? time = null;
+
+                    if (sampleTimes != null)
+                        time = sampleTimes[i];
+
+                    switch (NodeID)
+                    {
+                        case 0x0A02B000: // CSceneVehicleCar
+                            var (position, rotation, speed, velocity) = r.ReadTransform();
+
+                            sample.Position = position;
+                            sample.Rotation = rotation;
+                            sample.Speed = speed * 3.6f;
+                            sample.Velocity = velocity;
+
+                            break;
+                        case 0x0A401000: // CSceneMobilCharVis
+                            var bufferType = r.ReadByte();
+
+                            switch (bufferType)
+                            {
+                                case 0:
+                                    var unknownData401 = r.ReadBytes(14);
+                                    Buffer.BlockCopy(unknownData401, 0, unknownData, 0, unknownData401.Length);
+
+                                    var transform401 = r.ReadTransform();
+
+                                    sample.Position = transform401.position;
+                                    sample.Rotation = transform401.rotation;
+                                    sample.Speed = transform401.speed * 3.6f;
+                                    sample.Velocity = transform401.velocity;
+
+                                    break;
+                                case 1:
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                            sample.BufferType = bufferType;
+
+                            break;
+                        default:
+                            sample.BufferType = null;
+                            break;
+                    }
+
+                    sampleProgress = (int)(ms.Position - sampleProgress);
+
+                    if (sizePerSample != -1) // If the sample size is constant
+                    {
+                        var moreUnknownData = r.ReadBytes(sizePerSample - sampleProgress);
+                        Buffer.BlockCopy(moreUnknownData, 0, unknownData, sampleProgress, moreUnknownData.Length);
+                    }
+                    else if (sizesPerSample != null) // If sample sizes are different
+                    {
+                        var moreUnknownData = r.ReadBytes(unknownData.Length - sampleProgress);
+                        Buffer.BlockCopy(moreUnknownData, 0, unknownData, sampleProgress, moreUnknownData.Length);
+                    }
+                    else throw new Exception();
+
+                    sample.Unknown = unknownData;
 
                     Samples.Add(sample);
 
@@ -225,18 +268,9 @@ namespace GBX.NET.Engines.Game
             return null;
         }
 
-        public class Sample
+        public class CGameGhostDataSample : Sample
         {
             private CGameGhostData owner;
-
-            public TimeSpan? Timestamp { get; private set; }
-
-            public Vec3 Position { get; set; }
-            public Quaternion Rotation { get; set; }
-            public Vec3 PitchYawRoll => Rotation.ToPitchYawRoll();
-            public float Speed { get; set; }
-            public Vec3 Velocity { get; set; }
-            public byte[] Unknown { get; set; }
 
             internal void AssignTo(CGameGhostData ghostData)
             {
@@ -254,13 +288,6 @@ namespace GBX.NET.Engines.Game
             internal void UpdateTimestamp()
             {
                 Timestamp = TimeSpan.FromMilliseconds(owner.samplePeriod.TotalMilliseconds * owner.Samples.IndexOf(this));
-            }
-
-            public override string ToString()
-            {
-                if (Timestamp.HasValue)
-                    return $"Sample: {Timestamp.Value.ToStringTM()} {Position}";
-                return $"Sample: {Position}";
             }
         }
     }

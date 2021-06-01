@@ -1,7 +1,4 @@
 ﻿using GBX.NET.Engines.GameData;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GBX.NET.Engines.Game
 {

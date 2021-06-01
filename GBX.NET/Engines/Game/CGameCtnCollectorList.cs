@@ -52,6 +52,11 @@ namespace GBX.NET.Engines.Game
         {
             public Ident Ident { get; set; }
             public int Count { get; set; }
+
+            public override string ToString()
+            {
+                return $"{Count} {Ident.ID}";
+            }
         }
 
         #endregion

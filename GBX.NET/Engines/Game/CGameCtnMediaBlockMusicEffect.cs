@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
-
-namespace GBX.NET.Engines.Game
+﻿namespace GBX.NET.Engines.Game
 {
     [Node(0x030A6000)]
     public class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock
@@ -81,7 +75,7 @@ namespace GBX.NET.Engines.Game
 
         #region Other classes
 
-        public class Key : MediaBlockKey
+        public new class Key : CGameCtnMediaBlock.Key
         {
             public float MusicVolume { get; set; }
             public float SoundVolume { get; set; }

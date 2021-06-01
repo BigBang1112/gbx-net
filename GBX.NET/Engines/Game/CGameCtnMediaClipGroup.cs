@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace GBX.NET.Engines.Game
 {
@@ -52,14 +48,11 @@ namespace GBX.NET.Engines.Game
             {
                 Version = r.ReadInt32();
 
-                var clips = r.ReadArray(i => r.ReadNodeRef<CGameCtnMediaClip>());
+                var clips = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnMediaClip>());
 
-                var triggers = r.ReadArray(i =>
+                var triggers = r.ReadArray(r1 => new Trigger()
                 {
-                    return new Trigger()
-                    {
-                        Coords = r.ReadArray(j => r.ReadInt3())
-                    };
+                    Coords = r1.ReadArray(r2 => r2.ReadInt3())
                 });
 
                 n.Clips = clips.Select((clip, index) =>
@@ -71,10 +64,10 @@ namespace GBX.NET.Engines.Game
             {
                 w.Write(Version);
 
-                w.Write(n.Clips, x => w.Write(x.Item1));
-                w.Write(n.Clips, x =>
+                w.Write(n.Clips, (x, w1) => w1.Write(x.Item1));
+                w.Write(n.Clips, (x, w1) =>
                 {
-                    w.Write(x.Item2.Coords, y => w.Write(y));
+                    w1.Write(x.Item2.Coords, (y, w2) => w2.Write(y));
                 });
             }
         }
@@ -92,23 +85,14 @@ namespace GBX.NET.Engines.Game
             {
                 Version = r.ReadInt32();
 
-                var clips = r.ReadArray(i => r.ReadNodeRef<CGameCtnMediaClip>());
-                var triggers = r.ReadArray(i =>
+                var clips = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnMediaClip>());
+                var triggers = r.ReadArray(r1 => new Trigger()
                 {
-                    var coords = r.ReadArray(j => r.ReadInt3());
-                    var u01 = r.ReadInt32();
-                    var u02 = r.ReadInt32();
-                    var u03 = r.ReadInt32();
-                    var u04 = r.ReadInt32();
-
-                    return new Trigger()
-                    {
-                        Coords = coords,
-                        U01 = u01,
-                        U02 = u02,
-                        U03 = u03,
-                        U04 = u04
-                    };
+                    Coords = r1.ReadArray(r2 => r2.ReadInt3()),
+                    U01 = r1.ReadInt32(),
+                    U02 = r1.ReadInt32(),
+                    U03 = r1.ReadInt32(),
+                    U04 = r1.ReadInt32()
                 });
 
                 n.Clips = clips.Select((clip, index) =>
@@ -120,16 +104,16 @@ namespace GBX.NET.Engines.Game
             {
                 w.Write(Version);
 
-                w.Write(n.Clips, x => w.Write(x.Item1));
-                w.Write(n.Clips, x =>
+                w.Write(n.Clips, (x, w1) => w1.Write(x.Item1));
+                w.Write(n.Clips, (x, w1) =>
                 {
                     var trigger = x.Item2;
 
-                    w.Write(trigger.Coords, y => w.Write(y));
-                    w.Write(trigger.U01);
-                    w.Write(trigger.U02);
-                    w.Write(trigger.U03);
-                    w.Write(trigger.U04);
+                    w1.Write(trigger.Coords, (y, w2) => w2.Write(y));
+                    w1.Write(trigger.U01);
+                    w1.Write(trigger.U02);
+                    w1.Write(trigger.U03);
+                    w1.Write(trigger.U04);
                 });
             }
         }
@@ -147,16 +131,16 @@ namespace GBX.NET.Engines.Game
             {
                 Version = r.ReadInt32();
 
-                var clips = r.ReadArray(i => r.ReadNodeRef<CGameCtnMediaClip>());
-                var triggers = r.ReadArray(i =>
+                var clips = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnMediaClip>());
+                var triggers = r.ReadArray(r1 =>
                 {
-                    var u01 = r.ReadInt32();
-                    var u02 = r.ReadInt32();
-                    var u03 = r.ReadInt32();
-                    var u04 = r.ReadInt32();
-                    var condition = (ECondition)r.ReadInt32();
-                    var conditionValue = r.ReadSingle();
-                    var coords = r.ReadArray(j => r.ReadInt3());
+                    var u01 = r1.ReadInt32();
+                    var u02 = r1.ReadInt32();
+                    var u03 = r1.ReadInt32();
+                    var u04 = r1.ReadInt32();
+                    var condition = (ECondition)r1.ReadInt32();
+                    var conditionValue = r1.ReadSingle();
+                    var coords = r1.ReadArray(r2 => r2.ReadInt3());
 
                     return new Trigger()
                     {
@@ -179,18 +163,18 @@ namespace GBX.NET.Engines.Game
             {
                 w.Write(Version);
 
-                w.Write(n.Clips, x => w.Write(x.Item1));
-                w.Write(n.Clips, x =>
+                w.Write(n.Clips, (x, w1) => w1.Write(x.Item1));
+                w.Write(n.Clips, (x, w1) =>
                 {
                     var trigger = x.Item2;
 
-                    w.Write(trigger.U01);
-                    w.Write(trigger.U02);
-                    w.Write(trigger.U03);
-                    w.Write(trigger.U04);
-                    w.Write((int)trigger.Condition);
-                    w.Write(trigger.ConditionValue);
-                    w.Write(trigger.Coords, y => w.Write(y));
+                    w1.Write(trigger.U01);
+                    w1.Write(trigger.U02);
+                    w1.Write(trigger.U03);
+                    w1.Write(trigger.U04);
+                    w1.Write((int)trigger.Condition);
+                    w1.Write(trigger.ConditionValue);
+                    w1.Write(trigger.Coords, (y, w2) => w2.Write(y));
                 });
             }
         }

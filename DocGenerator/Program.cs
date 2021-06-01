@@ -59,7 +59,7 @@ namespace DocGenerator
                                 w.WriteLine("### " + linkName);
                                 w.WriteLine();
                                 w.WriteLine("```cs");
-                                w.WriteLine("void Read (GameBoxReader r)");
+                                w.WriteLine("void Read(GameBoxReader r)");
                                 w.WriteLine("{");
                                 w.WriteLine("    ");
                                 w.WriteLine("}");

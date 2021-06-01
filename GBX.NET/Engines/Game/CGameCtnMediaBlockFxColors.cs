@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace GBX.NET.Engines.Game
+﻿namespace GBX.NET.Engines.Game
 {
     [Node(0x03080000)]
     public class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx
@@ -20,65 +18,65 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnMediaBlockFxColors n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                n.Keys = r.ReadArray(i => new Key()
+                n.Keys = r.ReadArray(r1 => new Key()
                 {
-                    Time = r.ReadSingle(),
-                    Intensity = r.ReadSingle(),
-                    BlendZ = r.ReadSingle(),
-                    Distance = r.ReadSingle(),
-                    FarDistance = r.ReadSingle(),
-                    Inverse = r.ReadSingle(),
-                    Hue = r.ReadSingle(),
-                    Saturation = r.ReadSingle(), // from center
-                    Brightness = r.ReadSingle(), // from center
-                    Contrast = r.ReadSingle(), // from center
-                    RGB = r.ReadVec3(),
-                    U01 = r.ReadSingle(),
-                    U02 = r.ReadSingle(),
-                    U03 = r.ReadSingle(),
-                    U04 = r.ReadSingle(),
-                    FarInverse = r.ReadSingle(),
-                    FarHue = r.ReadSingle(),
-                    FarSaturation = r.ReadSingle(), // from center
-                    FarBrightness = r.ReadSingle(), // from center
-                    FarContrast = r.ReadSingle(), // from center
-                    FarRGB = r.ReadVec3(),
-                    FarU01 = r.ReadSingle(),
-                    FarU02 = r.ReadSingle(),
-                    FarU03 = r.ReadSingle(),
-                    FarU04 = r.ReadSingle()
+                    Time = r1.ReadSingle(),
+                    Intensity = r1.ReadSingle(),
+                    BlendZ = r1.ReadSingle(),
+                    Distance = r1.ReadSingle(),
+                    FarDistance = r1.ReadSingle(),
+                    Inverse = r1.ReadSingle(),
+                    Hue = r1.ReadSingle(),
+                    Saturation = r1.ReadSingle(), // from center
+                    Brightness = r1.ReadSingle(), // from center
+                    Contrast = r1.ReadSingle(), // from center
+                    RGB = r1.ReadVec3(),
+                    U01 = r1.ReadSingle(),
+                    U02 = r1.ReadSingle(),
+                    U03 = r1.ReadSingle(),
+                    U04 = r1.ReadSingle(),
+                    FarInverse = r1.ReadSingle(),
+                    FarHue = r1.ReadSingle(),
+                    FarSaturation = r1.ReadSingle(), // from center
+                    FarBrightness = r1.ReadSingle(), // from center
+                    FarContrast = r1.ReadSingle(), // from center
+                    FarRGB = r1.ReadVec3(),
+                    FarU01 = r1.ReadSingle(),
+                    FarU02 = r1.ReadSingle(),
+                    FarU03 = r1.ReadSingle(),
+                    FarU04 = r1.ReadSingle()
                 });
             }
 
             public override void Write(CGameCtnMediaBlockFxColors n, GameBoxWriter w, GameBoxReader unknownR)
             {
-                w.Write(n.Keys, x =>
+                w.Write(n.Keys, (x, w1) =>
                 {
-                    w.Write(x.Time);
-                    w.Write(x.Intensity);
-                    w.Write(x.BlendZ);
-                    w.Write(x.Distance);
-                    w.Write(x.FarDistance);
-                    w.Write(x.Inverse);
-                    w.Write(x.Hue);
-                    w.Write(x.Saturation);
-                    w.Write(x.Brightness);
-                    w.Write(x.Contrast);
-                    w.Write(x.RGB);
-                    w.Write(x.U01);
-                    w.Write(x.U02);
-                    w.Write(x.U03);
-                    w.Write(x.U04);
-                    w.Write(x.FarInverse);
-                    w.Write(x.FarHue);
-                    w.Write(x.FarSaturation);
-                    w.Write(x.FarBrightness);
-                    w.Write(x.FarContrast);
-                    w.Write(x.FarRGB);
-                    w.Write(x.FarU01);
-                    w.Write(x.FarU02);
-                    w.Write(x.FarU03);
-                    w.Write(x.FarU04);
+                    w1.Write(x.Time);
+                    w1.Write(x.Intensity);
+                    w1.Write(x.BlendZ);
+                    w1.Write(x.Distance);
+                    w1.Write(x.FarDistance);
+                    w1.Write(x.Inverse);
+                    w1.Write(x.Hue);
+                    w1.Write(x.Saturation);
+                    w1.Write(x.Brightness);
+                    w1.Write(x.Contrast);
+                    w1.Write(x.RGB);
+                    w1.Write(x.U01);
+                    w1.Write(x.U02);
+                    w1.Write(x.U03);
+                    w1.Write(x.U04);
+                    w1.Write(x.FarInverse);
+                    w1.Write(x.FarHue);
+                    w1.Write(x.FarSaturation);
+                    w1.Write(x.FarBrightness);
+                    w1.Write(x.FarContrast);
+                    w1.Write(x.FarRGB);
+                    w1.Write(x.FarU01);
+                    w1.Write(x.FarU02);
+                    w1.Write(x.FarU03);
+                    w1.Write(x.FarU04);
                 });
             }
         }
@@ -89,7 +87,7 @@ namespace GBX.NET.Engines.Game
 
         #region Other classes
 
-        public class Key : MediaBlockKey
+        public new class Key : CGameCtnMediaBlock.Key
         {
             public float Intensity { get; set; }
             public float BlendZ { get; set; }

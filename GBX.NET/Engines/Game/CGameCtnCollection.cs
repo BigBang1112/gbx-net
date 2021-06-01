@@ -1,5 +1,6 @@
-﻿using GBX.NET.Engines.MwFoundations;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Game
 {
@@ -90,7 +91,7 @@ namespace GBX.NET.Engines.Game
             {
                 _ = r.ReadId();
                 _ = r.ReadInt32();
-                _ = r.ReadArray(x => r.ReadInt32());
+                _ = r.ReadArray(r1 => r1.ReadInt32());
                 _ = r.ReadInt32();
                 _ = r.ReadArray<float>(3);
                 n.Vehicle = r.ReadIdent();
@@ -352,7 +353,7 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnCollection n, GameBoxReader r, GameBoxWriter unknownW)
             {
                 _ = r.ReadInt32();
-                _ = r.ReadArray(i => r.ReadId());
+                _ = r.ReadArray(r1 => r1.ReadId());
             }
         }
 

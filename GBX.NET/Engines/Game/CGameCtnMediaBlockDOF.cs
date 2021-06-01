@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace GBX.NET.Engines.Game
+﻿namespace GBX.NET.Engines.Game
 {
     [Node(0x03126000)]
     public class CGameCtnMediaBlockDOF : CGameCtnMediaBlock
@@ -123,7 +121,7 @@ namespace GBX.NET.Engines.Game
 
         #region Other classes
 
-        public class Key : MediaBlockKey
+        public new class Key : CGameCtnMediaBlock.Key
         {
             public float ZFocus { get; set; }
             public float LensSize { get; set; }

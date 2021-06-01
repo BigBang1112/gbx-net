@@ -37,7 +37,26 @@ void Read (GameBoxReader r)
     for(var i = 0; i < numSkinFiles; i++)
         FileRef skinFile = r.ReadFileRef();
     
-    int u02 = r.ReadInt32();
+    bool hasBadges = r.ReadBoolean();
+    if (hasBadges)
+    {
+        int u05 = r.ReadInt32();
+        Vec3 u06 = r.ReadVec3();
+
+        int numBadges = r.ReadInt32();
+        for (var i = 0; i < numBadges; i++)
+        {
+            string badgeValue = r.ReadString();
+            string badgeKey = r.ReadString();
+        }
+
+        int numBadges2 = r.ReadInt32();
+        for (var i = 0; i < numBadges2; i++)
+        {
+            string badge = r.ReadString();
+        }
+    }
+
     string ghostNickname = r.ReadString();
     string ghostAvatarFile = r.ReadString();
     

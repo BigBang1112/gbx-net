@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
-
-namespace GBX.NET.Engines.Game
+﻿namespace GBX.NET.Engines.Game
 {
     /// <summary>
     /// Skin for a block (0x03059000)
@@ -27,7 +21,7 @@ namespace GBX.NET.Engines.Game
         /// Second skin for the skinnable block. Available in TM®.
         /// </summary>
         [NodeMember]
-        public FileRef SecondaryPackDesc { get; set; } = new FileRef();
+        public FileRef ForegroundPackDesc { get; set; } = new FileRef();
 
         #endregion
 
@@ -100,7 +94,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnBlockSkin n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                n.SecondaryPackDesc = rw.FileRef(n.SecondaryPackDesc);
+                n.ForegroundPackDesc = rw.FileRef(n.ForegroundPackDesc);
             }
         }
 
