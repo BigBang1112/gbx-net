@@ -10,11 +10,10 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		
 		<Version>0.10.0</Version>
-		<PackageReleaseNotes></PackageReleaseNotes>
+		<PackageReleaseNotes>LZO transfered to GBX.NET.LZO library with 64bit saving, TM2020 ghost data, member renames, wider input support.</PackageReleaseNotes>
 		
 		<TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
 		<Platforms>AnyCPU;x64;x86</Platforms>
-		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk</PackageTags>
 		

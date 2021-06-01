@@ -8,6 +8,7 @@
 		<Description>An LZO compression plugin for GBX.NET to allow reading of compressed GBX bodies.</Description>
 		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
 		<PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 
 		<Version>1.0.0</Version>
 		<PackageReleaseNotes></PackageReleaseNotes>
