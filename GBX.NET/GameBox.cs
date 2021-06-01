@@ -1,22 +1,14 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.ExceptionServices;
-using System.Threading.Tasks;
 
 namespace GBX.NET
 {
-    public enum GameBoxReadProgressStage
-    {
-        Header,
-        HeaderUserData,
-        RefTable,
-        Body
-    }
-
     /// <summary>
     /// A known serialized GameBox node with additional attributes. This class can represent deserialized .Gbx file.
     /// </summary>
@@ -24,7 +16,7 @@ namespace GBX.NET
     public class GameBox<T> : GameBox where T : Node
     {
         /// <summary>
-        /// Header part, typically storing metadata for quickest access.
+        /// Header part specialized for <typeparamref name="T"/>, typically storing metadata for quickest access.
         /// </summary>
         public new GameBoxHeader<T> Header { get; }
 
@@ -34,12 +26,12 @@ namespace GBX.NET
         public GameBoxBody<T> Body { get; }
 
         /// <summary>
-        /// Node containing data taken from the body part.
+        /// Deserialized node from GBX.
         /// </summary>
-        public T MainNode { get; set; }
+        public T MainNode { get; internal set; }
 
         /// <summary>
-        /// Constructs an empty GameBox object.
+        /// Creates an empty GameBox object version 6.
         /// </summary>
         public GameBox()
         {
@@ -47,6 +39,10 @@ namespace GBX.NET
             Body = new GameBoxBody<T>(this);
         }
 
+        /// <summary>
+        /// Creates an empty GameBox object based on defined <see cref="GameBoxHeaderInfo"/>.
+        /// </summary>
+        /// <param name="headerInfo">Header info to use.</param>
         public GameBox(GameBoxHeaderInfo headerInfo) : base(headerInfo)
         {
             Header = new GameBoxHeader<T>(this);
@@ -54,12 +50,15 @@ namespace GBX.NET
         }
 
         /// <summary>
-        /// Create a GameBox object based on an existing node. Useful for saving nodes to GBX files.
+        /// Creates a GameBox object based on an existing node. Useful for saving nodes to GBX files.
         /// </summary>
-        /// <param name="node"></param>
-        /// <param name="headerInfo"></param>
+        /// <param name="node">Node to wrap.</param>
+        /// <param name="headerInfo">Header info to use.</param>
         public GameBox(T node, GameBoxHeaderInfo headerInfo) : this(headerInfo)
         {
+            // It needs to be sure that the Body and Part are assigned to the correct GameBox body
+            AssignBodyToNode(Body, node);
+
             MainNode = node;
             ID = node.ID;
         }
@@ -67,10 +66,46 @@ namespace GBX.NET
         /// <summary>
         /// Create a GameBox object based on an existing node. Useful for saving nodes to GBX files.
         /// </summary>
-        /// <param name="node"></param>
+        /// <param name="node">Node to wrap.</param>
         public GameBox(T node) : this(node, null)
         {
-            
+
+        }
+
+        private void AssignBodyToNode()
+        {
+            AssignBodyToNode(Body, MainNode);
+        }
+
+        private void AssignBodyToNode(GameBoxBody<T> body, Node n)
+        {
+            n.Body = body; // Assign the GBX body to this body
+            foreach (var chunk in n.Chunks)
+                chunk.Part = body; // Assign each chunk to this body
+
+            var type = n.GetType();
+
+            foreach (var prop in type.GetProperties()) // Go through all properties of a node
+            {
+                if (Attribute.IsDefined(prop, typeof(NodeMemberAttribute))) // Check only NodeMember attributes
+                {
+                    if (prop.PropertyType.IsSubclassOf(typeof(Node))) // If the property is Node
+                    {
+                        AssignBodyToNode(body, (Node)prop.GetValue(n)); // Recurse through the node
+                    }
+                    else if (typeof(IEnumerable).IsAssignableFrom(prop.PropertyType)) // If the property is a list of something
+                    {
+                        // If the list has a generic argument of anu kind of Node
+                        if (Array.Find(prop.PropertyType.GetGenericArguments(), x => x.IsSubclassOf(typeof(Node))) != null)
+                        {
+                            // Go through each Node and recurse
+                            var enumerable = (IEnumerable)prop.GetValue(n);
+                            foreach (var e in enumerable)
+                                AssignBodyToNode(body, (Node)e);
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -215,6 +250,9 @@ namespace GBX.NET
 
         internal void Write(GameBoxWriter w, IDRemap remap)
         {
+            // It needs to be sure that the Body and Part are assigned to the correct GameBox body
+            AssignBodyToNode();
+
             using (MemoryStream ms = new MemoryStream())
             using (GameBoxWriter bodyW = new GameBoxWriter(ms))
             {
@@ -291,6 +329,23 @@ namespace GBX.NET
         }
 
         /// <summary>
+        /// Saves the serialized <see cref="GameBox{T}"/> on the defined <see cref="GameBox.FileName"/>.
+        /// </summary>
+        /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
+        public void Save(IDRemap remap)
+        {
+            Save(FileName, remap);
+        }
+
+        /// <summary>
+        /// Saves the serialized <see cref="GameBox{T}"/> on the defined <see cref="GameBox.FileName"/>.
+        /// </summary>
+        public void Save()
+        {
+            Save(FileName, IDRemap.Latest);
+        }
+
+        /// <summary>
         /// Implicitly casts <see cref="GameBox{T}"/> to its <see cref="GameBox{T}.MainNode"/>.
         /// </summary>
         /// <param name="gbx"></param>
@@ -309,8 +364,14 @@ namespace GBX.NET
         /// </summary>
         public IDRemap Remap { get; set; }
 
+        /// <summary>
+        /// Header part containing generic GameBox values.
+        /// </summary>
         public GameBoxHeaderInfo Header { get; }
 
+        /// <summary>
+        /// ID of the node.
+        /// </summary>
         public uint? ID
         {
             get => Header.ID;
@@ -322,13 +383,23 @@ namespace GBX.NET
         /// </summary>
         public GameBoxRefTable RefTable { get; private set; }
 
+        /// <summary>
+        /// File path of the GameBox.
+        /// </summary>
         public string FileName { get; set; }
 
+        /// <summary>
+        /// Creates an empty GameBox object version 6.
+        /// </summary>
         public GameBox() : this(null)
         {
             
         }
 
+        /// <summary>
+        /// Creates an empty GameBox object based on defined <see cref="GameBoxHeaderInfo"/>.
+        /// </summary>
+        /// <param name="headerInfo">Header info to use.</param>
         public GameBox(GameBoxHeaderInfo headerInfo)
         {
             if (headerInfo == null)
@@ -465,6 +536,7 @@ namespace GBX.NET
 
             return null;
         }
+
         /// <summary>
         /// Parses only the header of the GBX.
         /// </summary>
@@ -539,7 +611,9 @@ namespace GBX.NET
         /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with specified main node type.</returns>
+        /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
+        /// <exception cref="NotSupportedException"/>
         public static GameBox<T> Parse<T>(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
             var gbx = ParseHeader<T>(stream, progress);
@@ -560,7 +634,9 @@ namespace GBX.NET
         /// <param name="stream">Stream to read GBX format from.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with specified main node type.</returns>
+        /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
+        /// <exception cref="NotSupportedException"/>
         public static GameBox<T> Parse<T>(Stream stream, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
             return Parse<T>(stream, false, progress);
@@ -575,7 +651,9 @@ namespace GBX.NET
         /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with specified main node type.</returns>
+        /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
+        /// <exception cref="NotSupportedException"/>
         public static GameBox<T> Parse<T>(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null) where T : Node
         {
             using (var fs = File.OpenRead(fileName))
@@ -594,7 +672,9 @@ namespace GBX.NET
         /// <param name="fileName">Relative or absolute file path.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with specified main node type.</returns>
+        /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
+        /// <exception cref="NotSupportedException"/>
         /// <example>
         /// var gbx = GameBox.Parse&lt;CGameCtnChallenge&gt;("MyMap.Map.Gbx");
         /// // Node data is available in gbx.MainNode
@@ -611,6 +691,8 @@ namespace GBX.NET
         /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
         /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
         /// <param name="progress">Callback that reports any read progress.</param>
+        /// <exception cref="MissingLzoException"/>
+        /// <exception cref="NotSupportedException"/>
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
         public static GameBox Parse(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null)
         {
@@ -628,6 +710,8 @@ namespace GBX.NET
         /// </summary>
         /// <param name="fileName">Relative or absolute file path.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
+        /// <exception cref="MissingLzoException"/>
+        /// <exception cref="NotSupportedException"/>
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
         /// <example>
         /// var gbx = GameBox.Parse("MyMap.Map.Gbx");
@@ -653,6 +737,7 @@ namespace GBX.NET
         /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
         /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
         /// <param name="progress">Callback that reports any read progress.</param>
+        /// <exception cref="MissingLzoException"/>
         /// <exception cref="NotSupportedException"/>
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
         public static GameBox Parse(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null)
@@ -693,6 +778,7 @@ namespace GBX.NET
         /// </summary>
         /// <param name="stream">Stream to read GBX format from.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
+        /// <exception cref="MissingLzoException"/>
         /// <exception cref="NotSupportedException"/>
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
         public static GameBox Parse(Stream stream, IProgress<GameBoxReadProgress> progress = null)

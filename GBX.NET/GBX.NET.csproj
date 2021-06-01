@@ -1,23 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+		<Product>GBX.NET</Product>
+		<AssemblyName>GBX.NET</AssemblyName>
+		<AssemblyTitle>GBX.NET</AssemblyTitle>
+		<Authors>Petr Pivoňka (BigBang1112)</Authors>
 		<Description>Open-source GBX format parser library with writing possibilities for .NET.</Description>
-		<Authors>BigBang1112</Authors>
-		<PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
-		<Version>1.0.0</Version>
+		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		
+		<Version>0.10.0</Version>
+		<PackageReleaseNotes></PackageReleaseNotes>
+		
+		<TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+		<Platforms>AnyCPU;x64;x86</Platforms>
+		
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Copyright />
 		<PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk</PackageTags>
+		
+		<RepositoryType>git</RepositoryType>
 		<RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
-		<PackageReleaseNotes></PackageReleaseNotes>
-		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
 		<NoWarn>1591</NoWarn>
-		<Platforms>AnyCPU;x64;x86</Platforms>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -26,25 +34,11 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Resources.resx</DependentUpon>
 		</Compile>
-		<Compile Update="Translations\NodeMember.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>NodeMember.resx</DependentUpon>
-		</Compile>
 
 		<EmbeddedResource Update="Resources.resx">
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
-
-		<EmbeddedResource Update="Translations\NodeMember.resx">
-			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>NodeMember.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
-
-		<Content Include="..\LICENSE">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,4 +1,5 @@
 #pragma warning disable CS0164
+#pragma warning disable IDE1006
 
 #region Copyright notice
 
@@ -62,10 +63,10 @@
 
 #endregion
 
-namespace LZO
-{
-	using System;
+using System;
 
+namespace GBX.NET.LZO
+{
 	public static class MiniLZO
 	{
 
@@ -282,7 +283,7 @@ namespace LZO
 			return 0;
 		}
 
-		public unsafe static int lzo1x_decompress(byte* @in, uint in_len, byte* @out, ref uint out_len, void* wrkmem)
+		private unsafe static int lzo1x_decompress(byte* @in, uint in_len, byte* @out, ref uint out_len, void* wrkmem)
 		{
 			byte* op;
 			byte* ip;

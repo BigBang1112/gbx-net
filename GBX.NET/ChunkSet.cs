@@ -42,9 +42,10 @@ namespace GBX.NET
                 return (T)c;
 
             T chunk = (T)Activator.CreateInstance(typeof(T));
+
             if (chunk is ISkippableChunk s)
             {
-                s.Stream = new MemoryStream(data, 0, data.Length, false);
+                s.Data = data;
                 s.Node = Node;
                 if (data == null || data.Length == 0)
                     s.Discovered = true;

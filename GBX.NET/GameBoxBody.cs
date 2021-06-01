@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
-using LZO;
 
 namespace GBX.NET
 {
     public class GameBoxBody<T> : GameBoxPart, IGameBoxBody where T : Node
     {
+        private bool checkedForLzo;
+        private MethodInfo methodLzoCompress;
+        private MethodInfo methodLzoDecompress;
+
         public byte[] Rest { get; set; }
         public bool Aborting { get; private set; }
 
@@ -54,7 +59,11 @@ namespace GBX.NET
         public void Read(byte[] data, int uncompressedSize, IProgress<GameBoxReadProgress> progress = null)
         {
             byte[] buffer = new byte[uncompressedSize];
-            MiniLZO.Decompress(data, buffer);
+
+            CheckForLZO();
+
+            methodLzoDecompress.Invoke(null, new object[] { data, buffer });
+
             Read(buffer, progress);
         }
 
@@ -71,7 +80,10 @@ namespace GBX.NET
                 using (var gbxwBody = new GameBoxWriter(msBody, this))
                 {
                     GBX.MainNode.Write(gbxwBody, remap);
-                    var output = MiniLZO.Compress(msBody.ToArray());
+
+                    CheckForLZO();
+                    
+                    var output = (byte[])methodLzoCompress.Invoke(null, new object[] { msBody.ToArray() });
 
                     w.Write((int)msBody.Length); // Uncompressed
                     w.Write(output.Length); // Compressed
@@ -239,6 +251,87 @@ namespace GBX.NET
         public bool RemoveChunk<TChunk>() where TChunk : Chunk<T>
         {
             return GBX.MainNode.Chunks.Remove<TChunk>();
+        }
+
+        private void CheckForLZO()
+        {
+            if (checkedForLzo) return;
+
+            var lzoFound = false;
+            bool? platformSupported = null;
+
+            foreach (var dllFile in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll"))
+            {
+                Assembly assemblyMetadata = null;
+
+                if (!platformSupported.HasValue || platformSupported == true)
+                {
+                    try
+                    {
+                        assemblyMetadata = Assembly.ReflectionOnlyLoadFrom(dllFile);
+                        platformSupported = true;
+                    }
+                    catch (PlatformNotSupportedException)
+                    {
+                        Log.Write("Running on a platform not supporting ReflectionOnlyLoadFrom, using LoadFrom instead...");
+                    }
+                }
+
+                if (!platformSupported.HasValue || platformSupported == false)
+                {
+                    assemblyMetadata = Assembly.LoadFrom(dllFile);
+                    platformSupported = false;
+                }
+
+                try
+                {
+                    var attributes = assemblyMetadata.GetCustomAttributesData();
+
+                    foreach (var attribute in attributes)
+                    {
+                        if (attribute.ConstructorArguments.Count == 2)
+                        {
+                            if (attribute.ConstructorArguments[0].Value is string sK && sK == "LZOforGBX.NET"
+                                && attribute.ConstructorArguments[1].Value is string sV && sV == "true")
+                            {
+                                lzoFound = CheckForLZO(Assembly.Load(assemblyMetadata.GetName()));
+                                if (lzoFound) break;
+                            }
+                        }
+                    }
+                }
+                catch (FileLoadException)
+                {
+
+                }
+
+                if (lzoFound) break;
+            }
+
+            if (!lzoFound)
+                throw new MissingLzoException();
+
+            checkedForLzo = true;
+        }
+
+        private bool CheckForLZO(Assembly assembly)
+        {
+            var type = assembly.GetTypes().FirstOrDefault(x => x.Name == "MiniLZO");
+
+            if (type == null)
+            {
+                return false;
+            }
+            else
+            {
+                methodLzoCompress = type.GetMethod("Compress", new Type[] { typeof(byte[]) });
+                methodLzoDecompress = type.GetMethod("Decompress", new Type[] { typeof(byte[]), typeof(byte[]) });
+
+                if (methodLzoCompress == null || methodLzoDecompress == null)
+                    return false;
+
+                return true;
+            }
         }
     }
 }

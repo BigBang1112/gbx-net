@@ -22,12 +22,12 @@ namespace GBX.NET
 
         }
 
-        public GameBoxWriter(Stream input, ILookbackable lookbackable) : this(input)
+        public GameBoxWriter(Stream output, ILookbackable lookbackable) : this(output)
         {
             Lookbackable = lookbackable;
         }
 
-        public GameBoxWriter(Stream input, GameBoxWriter reference) : this(input)
+        public GameBoxWriter(Stream output, GameBoxWriter reference) : this(output)
         {
             Lookbackable = reference.Lookbackable;
             Chunk = reference.Chunk;

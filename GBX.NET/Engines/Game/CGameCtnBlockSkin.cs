@@ -21,7 +21,7 @@
         /// Second skin for the skinnable block. Available in TM®.
         /// </summary>
         [NodeMember]
-        public FileRef SecondaryPackDesc { get; set; } = new FileRef();
+        public FileRef ForegroundPackDesc { get; set; } = new FileRef();
 
         #endregion
 
@@ -94,7 +94,7 @@
             public override void ReadWrite(CGameCtnBlockSkin n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                n.SecondaryPackDesc = rw.FileRef(n.SecondaryPackDesc);
+                n.ForegroundPackDesc = rw.FileRef(n.ForegroundPackDesc);
             }
         }
 

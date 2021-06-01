@@ -127,13 +127,13 @@ namespace GBX.NET.Engines.Plug
                                                 var buf2unknownData = bufR.ReadBytes(5);
                                                 Buffer.BlockCopy(buf2unknownData, 0, unknownData, 0, buf2unknownData.Length);
 
-                                                var buf2transform = bufR.ReadTransform(); // Only position matches
+                                                var (position, rotation, speed, velocity) = bufR.ReadTransform(); // Only position matches
 
                                                 sample.Timestamp = TimeSpan.FromMilliseconds(timestamp);
-                                                sample.Position = buf2transform.position;
-                                                sample.Rotation = buf2transform.rotation;
-                                                sample.Speed = buf2transform.speed * 3.6f;
-                                                sample.Velocity = buf2transform.velocity;
+                                                sample.Position = position;
+                                                sample.Rotation = rotation;
+                                                sample.Speed = speed * 3.6f;
+                                                sample.Velocity = velocity;
 
                                                 break;
                                             case 4:

@@ -196,7 +196,7 @@ namespace IslandConverter
             var map = gbx.MainNode;
 
             Log.Write("Converting decoration...");
-            map.Decoration.ID = "64x64" + map.Decoration.ID.TrimEnd();
+            map.Decoration = new Ident("64x64" + map.Decoration.ID.TrimEnd(), map.Decoration.Collection, map.Decoration.Author);
 
             Log.Write("Converting environment...");
             map.Collection = "Stadium";

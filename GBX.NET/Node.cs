@@ -46,24 +46,6 @@ namespace GBX.NET
             }
         }
 
-        [IgnoreDataMember]
-        public uint[] ChunkIDs
-        {
-            get
-            {
-                var chunkTypes = GetType().GetNestedTypes().Where(x => x.BaseType == typeof(Chunk)).ToArray();
-                var array = new uint[chunkTypes.Length];
-
-                for (var i = 0; i < array.Length; i++)
-                {
-                    var att = chunkTypes[i].GetCustomAttribute<ChunkAttribute>();
-                    array[i] = att.ClassID + att.ChunkID;
-                }
-
-                return array;
-            }
-        }
-
         public static Dictionary<uint, Type> AvailableClasses { get; } = new Dictionary<uint, Type>();
         public static Dictionary<Type, List<uint>> AvailableInheritanceClasses { get; } = new Dictionary<Type, List<uint>>();
         public static Dictionary<Type, Dictionary<uint, Type>> AvailableChunkClasses { get; } = new Dictionary<Type, Dictionary<uint, Type>>();
@@ -115,7 +97,7 @@ namespace GBX.NET
             if (!AvailableClasses.TryGetValue(classID.Value, out Type type))
                 throw new NotImplementedException($"Node ID 0x{classID.Value:X8} is not implemented. ({Names.Where(x => x.Key == Chunk.Remap(classID.Value)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
 
-            T node = null;
+            T node;
             if (gbx == null)
                 node = (T)Activator.CreateInstance(type);
             else
@@ -228,7 +210,7 @@ namespace GBX.NET
                             c = (ISkippableChunk)constructor.Invoke(new object[0]);
                             c.Node = node;
                             c.Part = (GameBoxPart)body;
-                            c.Stream = new MemoryStream(chunkData, 0, chunkData.Length, false);
+                            c.Data = chunkData;
                             if (chunkData == null || chunkData.Length == 0)
                                 c.Discovered = true;
                             c.OnLoad();
@@ -386,7 +368,7 @@ namespace GBX.NET
                     {
                         if (chunk is ISkippableChunk s && !s.Discovered)
                             s.Write(msW);
-                        else if (chunk.GetType().GetCustomAttribute<AutoReadWriteChunkAttribute>() == null)
+                        else if (!Attribute.IsDefined(chunk.GetType(), typeof(AutoReadWriteChunkAttribute)))
                             ((IChunk)chunk).ReadWrite(this, rw);
                         else
                             msW.Write(chunk.Unknown.ToArray(), 0, (int)chunk.Unknown.Length);

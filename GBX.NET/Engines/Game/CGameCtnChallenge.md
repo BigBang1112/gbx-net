@@ -12,9 +12,9 @@ The class behind every single map made in Trackmania.
 - [0x007 - header chunk (thumbnail)](#0x007---header-chunk-thumbnail)
 - [0x008 - header chunk (author)](#0x008---header-chunk-author)
 - [0x00D (vehicle)](#0x00D-vehicle)
-- [0x00F (TM1.0 block data)](#0x00F-tm1.0-block-data)
+- [0x00F (TM1.0 block data)](#0x00F-tm10-block-data)
 - [0x011 (parameters)](#0x011-parameters)
-- [0x012 (TM1.0 map name)](#0x012-tm1.0-map-name)
+- [0x012 (TM1.0 map name)](#0x012-tm10-map-name)
 - [0x013 (legacy block data)](#0x013-legacy-block-data)
 - [0x014 - skippable (legacy password)](#0x014---skippable-legacy-password)
 - [0x016 - skippable](#0x016---skippable)
@@ -27,10 +27,10 @@ The class behind every single map made in Trackmania.
 - [0x01F (block data)](#0x01F-block-data)
 - [0x021 (legacy mediatracker)](#0x021-legacy-mediatracker)
 - [0x022](#0x022)
-- [0x023](#0x023)
+- [0x023 (map origin)](#0x023-map-origin)
 - [0x024 (music)](#0x024-music)
-- [0x025](#0x025)
-- [0x026](#0x026)
+- [0x025 (map origin and target)](#0x025-map-origin-and-target)
+- [0x026 (clip global)](#0x026-clip-global)
 - [0x027](#0x027)
 - [0x028 (comments)](#0x028-comments)
 - [0x029 - skippable (password)](#0x029---skippable-password)
@@ -51,7 +51,7 @@ The class behind every single map made in Trackmania.
 - [0x051 - skippable (title info)](#0x051---skippable-title-info)
 - [0x052 - skippable (deco height)](#0x052---skippable-deco-height)
 - [0x053 - skippable (bot paths)](#0x053---skippable-bot-paths)
-- [0x054 - skippable (embeds)](#0x054---skippable-embeds)
+- [0x054 - skippable (embedded objects)](#0x054---skippable-embedded-objects)
 - 0x055 - skippable
 - [0x056 - skippable (light settings)](#0x056---skippable-light-settings)
 - 0x057 - skippable
@@ -258,7 +258,7 @@ void Read(GameBoxReader r)
 
             if (version >= 5)
             {
-                bool multilap = r.ReadBoolean();
+                bool isLapRace = r.ReadBoolean();
 
                 if (version == 6)
                     int u03 = r.ReadInt32();
@@ -455,7 +455,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-    Ident vehicle = r.ReadIdent();
+    Ident playerModel = r.ReadIdent();
 }
 ```
 
@@ -466,14 +466,17 @@ void Read(GameBoxReader r)
 {
     Ident mapInfo = r.ReadIdent();
     Int3 size = r.ReadInt3();
-    int u01 = r.ReadInt32();
 
+    int version = r.ReadInt32();
     int numBlocks = r.ReadInt32();
-    for (var i = 0; i < numBlocks; i++)
-        CGameCtnBlock block = r.ReadNodeRef<CGameCtnBlock>();
 
-    int u02 = r.ReadInt32();
-    int u03 = r.ReadIdent();
+    for (var i = 0; i < numBlocks; i++)
+    {
+        CGameCtnBlock block = r.ReadNodeRef<CGameCtnBlock>();
+    }
+
+    bool needUnlock = r.ReadBoolean();
+    Ident decoration = r.ReadIdent();
 }
 ```
 
@@ -523,7 +526,27 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-    Chunk0x01F.Read(r);
+    Ident mapInfo = r.ReadIdent();
+    string mapName = r.ReadString();
+    Ident decoration = r.ReadIdent();
+    Int3 size = r.ReadInt3();
+    bool needUnlock = r.ReadBoolean();
+
+    int numBlocks = r.ReadInt32();
+
+    for (int i = 0; i < numBlocks; i++)
+    {
+        Id blockName = r.ReadId();
+        Direction dir = (Direction)r.ReadByte();
+        Byte3 coord = r.ReadByte3();
+        short flags = r.ReadInt16();
+
+        if ((flags & 0x8000) != 0) // block with skin
+        {
+            Id author = r.ReadId();
+            CGameCtnBlockSkin skin = r.ReadNodeRef<CGameCtnBlockSkin>();
+        }
+    }
 }
 ```
 
@@ -543,12 +566,21 @@ void Read(GameBoxReader r)
 | --- | --- | --- | --- | --- | --- 
 | int u01 | ~ | ~ | ~ | ~ | ~
 
+### 0x015 (is lap race)
+
+```cs
+void Read(GameBoxReader r)
+{
+    bool isLapRace = r.ReadBoolean();
+}
+```
+
 ### 0x016 - skippable
 
 ```cs
 void Read(GameBoxReader r)
 {
-    int u01 = r.ReadInt32();
+    bool u01 = r.ReadInt32();
 }
 ```
 
@@ -556,7 +588,7 @@ void Read(GameBoxReader r)
 
 | Variable | ~ | ~ | ~ | ~ | ~
 | --- | --- | --- | --- | --- | ---
-| int u01 | ~ | ~ | ~ | ~ | ~
+| bool u01 | ~ | ~ | ~ | ~ | ~
 
 ### 0x017 - skippable (checkpoints)
 
@@ -566,8 +598,11 @@ Checkpoint positions in coords. Available up to TMUF.
 void Read(GameBoxReader r)
 {
     int numCheckpoints = r.ReadInt32();
-    for(var i = 0; i < numCheckpoints; i++)
+
+    for (var i = 0; i < numCheckpoints; i++)
+    {
         Int3 checkpointCoord = r.ReadInt3();
+    }
 }
 ```
 
@@ -582,6 +617,8 @@ void Read(GameBoxReader r)
 
 ### 0x01A
 
+This one is maybe related to some kind of replay record.
+
 ```cs
 void Read(GameBoxReader r)
 {
@@ -589,7 +626,13 @@ void Read(GameBoxReader r)
 }
 ```
 
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | ---
+| Node u01 | ~ | ~ | ~ | ~ | ~
+
 ### 0x01B
+
+According to RE, this one could crash the parse if it's not 0.
 
 ```cs
 void Read(GameBoxReader r)
@@ -598,21 +641,16 @@ void Read(GameBoxReader r)
 }
 ```
 
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | ---
+| int u01 | ~ | ~ | ~ | ~ | ~
+
 ### 0x01C - skippable (play mode)
 
 ```cs
 void Read(GameBoxReader r)
 {
     PlayMode playMode = (PlayMode)r.ReadInt32();
-}
-```
-
-### 0x01D
-
-```cs
-void Read(GameBoxReader r)
-{
-    Node u01 = r.ReadNodeRef(); // -1
 }
 ```
 
@@ -630,6 +668,21 @@ enum PlayMode : int
 }
 ```
 
+### 0x01D
+
+This one is maybe related to some kind of replay record.
+
+```cs
+void Read(GameBoxReader r)
+{
+    Node u01 = r.ReadNodeRef(); // -1
+}
+```
+
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | ---
+| Node u01 | ~ | ~ | ~ | ~ | ~
+
 ### 0x01F (block data)
 
 ```cs
@@ -641,9 +694,7 @@ void Read(GameBoxReader r)
     Int3 size = r.ReadInt3();
     bool needUnlock = r.ReadBoolean();
 
-    if ((chunk.ID & 0xFFF) != 0x013) // If this chunk is not 0x013
-        int version = r.ReadInt32();
-
+    int version = r.ReadInt32();
     int numBlocks = r.ReadInt32(); // Amount of blocks that aren't flag -1
 
     while ((r.PeekUInt32() & 0xC0000000) > 0)
@@ -651,27 +702,23 @@ void Read(GameBoxReader r)
         Id blockName = r.ReadId();
         Direction dir = (Direction)r.ReadByte();
         Byte3 coord = r.ReadByte3();
-        int flags = 0;
-
-        if (version == null)
-            flags = r.ReadInt16();
-        else if (version > 0)
-            flags = r.ReadInt32();
+        int flags = r.ReadInt32();
         
         if (flags == -1)
         {
-            i--;
             continue;
         }
 
-        if ((flags & 0x8000) != 0) // custom block
+        if ((flags & 0x8000) != 0) // block with skin
         {
             Id author = r.ReadId();
             CGameCtnBlockSkin skin = r.ReadNodeRef<CGameCtnBlockSkin>();
         }
 
-        if ((flags & 0x100000) != 0)
+        if ((flags & 0x100000) != 0) // TM2 waypoint
+        {
             CGameWaypointSpecialProperty parameters = r.ReadNodeRef<CGameWaypointSpecialProperty>();
+        }
     }
 }
 ```
@@ -704,7 +751,7 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-    bool u01 = r.ReadBoolean();
+    int u01 = r.ReadInt32();
 }
 ```
 
@@ -712,24 +759,17 @@ void Read(GameBoxReader r)
 
 | Variable | ~ | ~ | ~ | ~ | ~
 | --- | --- | --- | --- | --- | --- 
-| bool u01 | ~ | ~ | ~ | ~ | ~
+| int u01 | ~ | ~ | ~ | ~ | ~
 
-### 0x023
+### 0x023 (map origin)
 
 ```cs
 void Read(GameBoxReader r)
 {
-    int u01 = r.ReadInt32();
-    int u02 = r.ReadInt32();
+    Vec2 mapCoordOrigin = r.ReadVec2();
+    mapCoordTarget = mapCoordOrigin;
 }
 ```
-
-#### Unknown variables
-
-| Variable | ~ | ~ | ~ | ~ | ~
-| --- | --- | --- | --- | --- | --- 
-| int u01 | ~ | ~ | ~ | ~ | ~
-| int u01 | ~ | ~ | ~ | ~ | ~
 
 ### 0x024 (music)
 
@@ -740,7 +780,7 @@ void Read(GameBoxReader r)
 }
 ```
 
-### 0x025
+### 0x025 (map origin and target)
 
 ```cs
 void Read(GameBoxReader r)
@@ -750,7 +790,9 @@ void Read(GameBoxReader r)
 }
 ```
 
-### 0x026
+### 0x026 (clip global)
+
+This chunk hasn't been found in any investigated game version. We are looking for help.
 
 ```cs
 void Read(GameBoxReader r)
@@ -759,7 +801,13 @@ void Read(GameBoxReader r)
 }
 ```
 
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| Node clipGlobal | ~ | ~ | ~ | ~ | ~
+
 ### 0x027
+
+This chunk seems to be related to the TM1 map thumbnail position.
 
 ```cs
 void Read(GameBoxReader r)
@@ -798,10 +846,36 @@ void Read(GameBoxReader r)
 ```cs
 void Read(GameBoxReader r)
 {
-    Chunk0x027.Read(r);
+    bool archiveGmCamVal = r.ReadBoolean();
+
+    if (archiveGmCamVal)
+    {
+        byte u01 = r.ReadByte();
+        Vec3 u02 = r.ReadVec3();
+        Vec3 u03 = r.ReadVec3();
+        Vec3 u04 = r.ReadVec3();
+        Vec3 u05 = r.ReadVec3();
+        float u06 = r.ReadSingle();
+        float u07 = r.ReadSingle();
+        float u08 = r.ReadSingle();
+    }
+
     string comments = r.ReadString();
 }
 ```
+
+#### Unknown variables
+
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| byte u01 | ~ | ~ | ~ | ~ | ~
+| Vec3 u02 | ~ | ~ | ~ | ~ | ~
+| Vec3 u03 | ~ | ~ | ~ | ~ | ~
+| Vec3 u04 | ~ | ~ | ~ | ~ | ~
+| Vec3 u05 | ~ | ~ | ~ | ~ | ~
+| float u06 | ~ | ~ | ~ | ~ | ~
+| float u07 | ~ | ~ | ~ | ~ | ~
+| float u08 | ~ | ~ | ~ | ~ | ~
 
 ### 0x029 - skippable (password)
 
@@ -895,6 +969,8 @@ void Read(GameBoxReader r)
             using (var zlib = new InflaterInputStream(ms))
             using (var gbxr = new GameBoxReader(zlib))
                 CHmsLightMapCache lightmapCache = Parse(gbxr);
+
+            // + more data afterwards
         }
     }
 }
@@ -921,19 +997,27 @@ void Read(GameBoxReader r)
 
     if (version != 0)
     {
-        int a = r.ReadInt32();
+        int u01 = r.ReadInt32();
         int size = r.ReadInt32();
-        int b = r.ReadInt32();
+        int u02 = r.ReadInt32();
         
         int numItems = r.ReadInt32();
 
         for (var i = 0; i < numItems; i++)
             CGameCtnAnchoredObject item = Parse<CGameCtnAnchoredObject>(r);
 
-        int c = r.ReadInt32();
+        int u03 = r.ReadInt32();
     }
 }
 ```
+
+#### Unknown variables
+
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| int u01 | ~ | ~ | ~ | ~ | ~
+| int u02 | ~ | ~ | ~ | ~ | ~
+| int u03 | ~ | ~ | ~ | ~ | ~
 
 ### 0x042 - skippable (author)
 
@@ -1169,10 +1253,11 @@ enum ScriptType
 ```cs
 void Read(GameBoxReader r)
 {
+    int version = r.ReadInt32();
     int u01 = r.ReadInt32();
-    int u02 = r.ReadInt32();
 
     int numBakedBlocks = r.ReadInt32();
+
     for (var i = 0; i < numBakedBlocks; i++)
     {
         Id blockName = r.ReadId();
@@ -1181,8 +1266,8 @@ void Read(GameBoxReader r)
         int flags = r.ReadInt32();
     }
 
+    int u02 = r.ReadInt32();
     int u03 = r.ReadInt32();
-    int u04 = r.ReadInt32();
 }
 ```
 
@@ -1193,7 +1278,6 @@ void Read(GameBoxReader r)
 | int u01 | ~ | ~ | ~ | ~ | ~
 | int u02 | ~ | ~ | ~ | ~ | ~
 | int u03 | ~ | ~ | ~ | ~ | ~
-| int u04 | ~ | ~ | ~ | ~ | ~
 
 ### 0x049 (mediatracker)
 
@@ -1211,20 +1295,12 @@ void Read(GameBoxReader r)
     {
         CGameCtnMediaClip clipAmbiance = r.ReadNodeRef<CGameCtnMediaClip>();
 
-        int u01 = r.ReadInt32();
-        int u02 = r.ReadInt32();
-        int u03 = r.ReadInt32();
+        int triggerSizeX = r.ReadInt32();
+        int triggerSizeY = r.ReadInt32();
+        int triggerSizeZ = r.ReadInt32();
     }
 }
 ```
-
-#### Unknown variables
-
-| Variable | ~ | ~ | ~ | ~ | ~
-| --- | --- | --- | --- | --- | --- 
-| int u01 | ~ | ~ | ~ | ~ | ~
-| int u02 | ~ | ~ | ~ | ~ | ~
-| int u03 | ~ | ~ | ~ | ~ | ~
 
 ### 0x04B - skippable (objectives)
 
@@ -1245,12 +1321,13 @@ Offzones are presented as boxes with two defined coordinates (start coord and en
 ```cs
 void Read(GameBoxReader r)
 {
-    int u01 = r.ReadInt32();
-    int u02 = r.ReadInt32();
-    int u03 = r.ReadInt32();
-    int u04 = r.ReadInt32();
+    int version = r.ReadInt32();
+    int triggerSizeX = r.ReadInt32();
+    int triggerSizeY = r.ReadInt32();
+    int triggerSizeZ = r.ReadInt32();
 
     int numOffzones = r.ReadInt32();
+
     for (var i = 0; i < numOffzones; i++)
     {
         Int3 startCoord = r.ReadInt3();
@@ -1305,7 +1382,7 @@ void Read(GameBoxReader r)
 }
 ```
 
-### 0x054 - skippable (embeds)
+### 0x054 - skippable (embedded objects)
 
 The chunk behind item embedding. It also references a list of used textures, but **the textures itself aren't possible to embed**.
 
@@ -1335,6 +1412,12 @@ void Read(GameBoxReader r)
 }
 ```
 
+#### Unknown variables
+
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| int u01 | ~ | ~ | ~ | ~ | ~
+
 ### 0x055 - skippable
 
 Undiscovered.
@@ -1356,6 +1439,13 @@ void Read(GameBoxReader r)
     int dayDuration = r.ReadInt32(); // in milliseconds
 }
 ```
+
+#### Unknown variables
+
+| Variable | ~ | ~ | ~ | ~ | ~
+| --- | --- | --- | --- | --- | --- 
+| int u01 | ~ | ~ | ~ | ~ | ~
+| int u02 | ~ | ~ | ~ | ~ | ~
 
 ### 0x057 - skippable
 

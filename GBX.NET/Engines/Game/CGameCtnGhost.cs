@@ -205,6 +205,9 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public string UID { get; set; }
 
+        /// <summary>
+        /// Duration of events in the ghost (range of detected inputs). This can be 0 if the ghost was driven in editor.
+        /// </summary>
         [NodeMember]
         public int EventsDuration
         {
@@ -221,7 +224,7 @@ namespace GBX.NET.Engines.Game
         }
 
         /// <summary>
-        /// Inputs (keyboard, pad, wheel) of the ghost from TMU, TMUF and TM2. For inputs stored in TM1.0, TMO, Sunrise and ESWC: see <see cref="CGameCtnReplayRecord.ControlEntries"/>. TM2020 and Shootmania don't have inputs available at all in replays and ghosts.
+        /// Inputs (keyboard, pad, wheel) of the ghost from TMU, TMUF and TM2. For inputs stored in TM1.0, TMO, Sunrise and ESWC: see <see cref="CGameCtnReplayRecord.ControlEntries"/>. TM2020 and Shootmania inputs aren't available in replays and ghosts. Can be null if <see cref="EventsDuration"/> is 0, which happens when you save the replay in editor.
         /// </summary>
         [NodeMember]
         public ControlEntry[] ControlEntries
@@ -718,9 +721,9 @@ namespace GBX.NET.Engines.Game
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.EventsDuration = rw.Int32(n.EventsDuration);
+                rw.Int32(ref n.eventsDuration);
 
-                if (n.EventsDuration == 0 && !Is025) return;
+                if (n.eventsDuration == 0 && Is025) return;
 
                 U01 = rw.UInt32(U01);
 
@@ -858,7 +861,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.PlayerModel = new Ident(rw.Id(n.PlayerModel?.ID));
+                n.playerModel = new Ident(rw.Id(n.playerModel.ID));
             }
         }
 
@@ -914,19 +917,23 @@ namespace GBX.NET.Engines.Game
 
             public int U01 { get; set; }
 
-            public Chunk03092019()
+            public Chunk03092019(Chunk03092025 chunk025)
             {
+                Is025 = chunk025 is Chunk03092025;
                 Chunk011 = new Chunk03092011(this);
             }
 
-            public Chunk03092019(Chunk03092025 chunk025) : this()
+            public Chunk03092019() : this(null)
             {
-                Is025 = chunk025 is Chunk03092025;
+
             }
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 Chunk011.ReadWrite(n, rw);
+
+                if (n.eventsDuration == 0 && Is025) return;
+
                 U01 = rw.Int32(U01);
             }
         }
@@ -1058,6 +1065,9 @@ namespace GBX.NET.Engines.Game
             {
                 rw.Int32(ref version);
                 Chunk019.ReadWrite(n, rw);
+
+                if (n.eventsDuration == 0) return;
+
                 U01 = rw.Boolean(U01);
             }
         }
