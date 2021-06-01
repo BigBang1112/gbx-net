@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Product>GBX.NET.Imaging</Product>
-		<AssemblyName>GBX.NET.Imaging</AssemblyName>
-		<AssemblyTitle>GBX.NET.Imaging</AssemblyTitle>
+		<Product>GBX.NET.Json</Product>
+		<AssemblyName>GBX.NET.Json</AssemblyName>
+		<AssemblyTitle>GBX.NET.Json</AssemblyTitle>
 		<Authors>Petr Pivoňka (BigBang1112)</Authors>
 		<Description>A wrapper for better JSON serialization of GBX, useful for comparing data.</Description>
 		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 
-		<Version>0.1.2</Version>
+		<Version>0.1.3</Version>
 		<PackageReleaseNotes>Compatiblity change to .NET Framework 4.5</PackageReleaseNotes>
 
 		<TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
