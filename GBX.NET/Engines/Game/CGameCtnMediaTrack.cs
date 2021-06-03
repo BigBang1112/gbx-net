@@ -11,6 +11,7 @@ namespace GBX.NET.Engines.Game
         private List<CGameCtnMediaBlock> blocks;
         private bool isKeepPlaying = true;
         private bool isCycling;
+        private bool isReadOnly;
 
         #endregion
 
@@ -53,6 +54,13 @@ namespace GBX.NET.Engines.Game
             set => isCycling = value;
         }
 
+        [NodeMember]
+        public bool IsReadOnly
+        {
+            get => isReadOnly;
+            set => isReadOnly = value;
+        }
+
         #endregion
 
         #region Methods
@@ -90,8 +98,8 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03078001)]
         public class Chunk03078001 : Chunk<CGameCtnMediaTrack>
         {
-            private int u01;
-            private int u02;
+            private int u01 = 10;
+            private int u02 = -1;
 
             public int U01
             {
@@ -138,17 +146,9 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03078003)]
         public class Chunk03078003 : Chunk<CGameCtnMediaTrack>
         {
-            private int u01;
-
-            public int U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
-
             public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
-                rw.Int32(ref u01); // 0
+                rw.Boolean(ref n.isReadOnly);
             }
         }
 
@@ -209,7 +209,7 @@ namespace GBX.NET.Engines.Game
             {
                 rw.Int32(ref version);
                 rw.Boolean(ref n.isKeepPlaying);
-                rw.Int32(ref u02);
+                rw.Boolean(ref n.isReadOnly);
                 rw.Boolean(ref n.isCycling);
                 rw.Single(ref u04);
                 rw.Single(ref u05);
