@@ -203,21 +203,17 @@ namespace GBX.NET
                     {
                         ISkippableChunk c;
 
-                        var constructor = chunkClass.GetConstructors().First();
-                        var constructorParams = constructor.GetParameters();
-                        if (constructorParams.Length == 0)
-                        {
-                            c = (ISkippableChunk)constructor.Invoke(new object[0]);
-                            c.Node = node;
-                            c.Part = (GameBoxPart)body;
-                            c.Data = chunkData;
-                            if (chunkData == null || chunkData.Length == 0)
-                                c.Discovered = true;
-                            c.OnLoad();
-                        }
-                        else if (constructorParams.Length == 2)
-                            c = (ISkippableChunk)constructor.Invoke(new object[] { node, chunkData });
-                        else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
+                        var constructor = Array.Find(chunkClass.GetConstructors(), x => x.GetParameters().Length == 0);
+                        if(constructor == null)
+                            throw new ArgumentException($"{type.FullName} doesn't have a parameterless constructor.");
+
+                        c = (ISkippableChunk)constructor.Invoke(new object[0]);
+                        c.Node = node;
+                        c.Part = (GameBoxPart)body;
+                        c.Data = chunkData;
+                        if (chunkData == null || chunkData.Length == 0)
+                            c.Discovered = true;
+                        c.OnLoad();
 
                         chunks.Add((Chunk)c);
 
@@ -244,17 +240,13 @@ namespace GBX.NET
 
                     IChunk c;
 
-                    var constructor = chunkClass.GetConstructors().First();
-                    var constructorParams = constructor.GetParameters();
-                    if (constructorParams.Length == 0)
-                    {
-                        c = (IChunk)constructor.Invoke(new object[0]);
-                        c.Node = node;
-                    }
-                    else if (constructorParams.Length == 1)
-                        c = (IChunk)constructor.Invoke(new object[] { node });
-                    else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
+                    var constructor = Array.Find(chunkClass.GetConstructors(), x => x.GetParameters().Length == 0);
 
+                    if (constructor == null)
+                        throw new ArgumentException($"{type.FullName} doesn't have a parameterless constructor.");
+
+                    c = (IChunk)constructor.Invoke(new object[0]);
+                    c.Node = node;
                     c.Part = (GameBoxPart)body;
                     c.OnLoad();
 
