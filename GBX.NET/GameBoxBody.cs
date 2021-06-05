@@ -64,6 +64,8 @@ namespace GBX.NET
 
             methodLzoDecompress.Invoke(null, new object[] { data, buffer });
 
+            // File.WriteAllBytes("in.dat", buffer);
+
             Read(buffer, progress);
         }
 
@@ -82,8 +84,12 @@ namespace GBX.NET
                     GBX.MainNode.Write(gbxwBody, remap);
 
                     CheckForLZO();
-                    
-                    var output = (byte[])methodLzoCompress.Invoke(null, new object[] { msBody.ToArray() });
+
+                    var buffer = msBody.ToArray();
+
+                    // File.WriteAllBytes("out.dat", buffer);
+
+                    var output = (byte[])methodLzoCompress.Invoke(null, new object[] { buffer });
 
                     w.Write((int)msBody.Length); // Uncompressed
                     w.Write(output.Length); // Compressed

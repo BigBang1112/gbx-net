@@ -2457,9 +2457,9 @@ namespace GBX.NET.Engines.Game
         {
             public Chunk0304301F Chunk01F { get; }
 
-            public Chunk03043013(CGameCtnChallenge node) : base(node)
+            public Chunk03043013()
             {
-                Chunk01F = new Chunk0304301F(node, this);
+                Chunk01F = new Chunk0304301F(this);
             }
 
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
@@ -2633,12 +2633,12 @@ namespace GBX.NET.Engines.Game
 
             readonly bool is013;
 
-            public Chunk0304301F(CGameCtnChallenge node) : this(node, null)
+            public Chunk0304301F() : this(null)
             {
 
             }
 
-            public Chunk0304301F(CGameCtnChallenge node, Chunk chunk) : base(node)
+            public Chunk0304301F(Chunk chunk) : base()
             {
                 is013 = chunk is Chunk03043013;
             }

@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace GBX.NET.Engines.Control
 {
@@ -8,7 +9,7 @@ namespace GBX.NET.Engines.Control
         #region Properties
 
         [NodeMember]
-        public Key[] Keys { get; set; }
+        public List<Key> Keys { get; set; }
 
         [NodeMember]
         public bool Centered { get; set; }
@@ -33,7 +34,7 @@ namespace GBX.NET.Engines.Control
         {
             public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, (i, r) =>
+                n.Keys = rw.List(n.Keys, (i, r) =>
                 {
                     var time = r.ReadSingle();
                     var x = r.ReadSingle();
@@ -84,7 +85,7 @@ namespace GBX.NET.Engines.Control
         {
             public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, (i, r) =>
+                n.Keys = rw.List(n.Keys, (i, r) =>
                 {
                     var time = r.ReadSingle();
                     var x = r.ReadSingle();
@@ -147,7 +148,7 @@ namespace GBX.NET.Engines.Control
         {
             public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, (i, r) =>
+                n.Keys = rw.List(n.Keys, (i, r) =>
                 {
                     var time = r.ReadSingle();
                     var x = r.ReadSingle();
@@ -214,10 +215,10 @@ namespace GBX.NET.Engines.Control
             /// Rotation in radians
             /// </summary>
             public float Rotation { get; set; }
-            public float ScaleX { get; set; }
-            public float ScaleY { get; set; }
-            public float Opacity { get; set; }
-            public float Depth { get; set; }
+            public float ScaleX { get; set; } = 1;
+            public float ScaleY { get; set; } = 1;
+            public float Opacity { get; set; } = 1;
+            public float Depth { get; set; } = 0.5f;
             public float IsContinuousEffect { get; set; }
             public float[] Unknown { get; set; } = new float[] { 0, 0, 0 };
         }

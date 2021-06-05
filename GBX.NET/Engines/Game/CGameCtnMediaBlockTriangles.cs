@@ -31,8 +31,11 @@ namespace GBX.NET.Engines.Game
             get => vertices;
             set
             {
-                if (value.Length != vertices.Length)
+                if (vertices == null || value.Length != vertices.Length)
                 {
+                    if (vertices == null)
+                        vertices = value;
+
                     foreach (var key in keys)
                     {
                         var positions = key.Positions;
@@ -53,12 +56,15 @@ namespace GBX.NET.Engines.Game
             get => triangles;
             set
             {
-                foreach(var int3 in value)
+                if (vertices == null)
+                    return;
+
+                foreach (var int3 in value)
                 {
                     if (int3.X >= vertices.Length
                     || int3.Y >= vertices.Length
                     || int3.Z >= vertices.Length)
-                        throw new Exception();
+                        throw new Exception($"Index in {int3} is not available in vertices.");
                 }
 
                 triangles = value;

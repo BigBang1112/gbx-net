@@ -9,8 +9,8 @@
 		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		
-		<Version>0.10.0</Version>
-		<PackageReleaseNotes>LZO transfered to GBX.NET.LZO library with 64bit saving, TM2020 ghost data, member renames, wider input support.</PackageReleaseNotes>
+		<Version>0.10.1</Version>
+		<PackageReleaseNotes>Fixed triangle writing, added IsReadOnly to CGameCtnMediaTrack.</PackageReleaseNotes>
 		
 		<TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
 		<Platforms>AnyCPU;x64;x86</Platforms>

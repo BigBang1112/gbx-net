@@ -79,6 +79,8 @@ namespace GBX.NET
 
         private void AssignBodyToNode(GameBoxBody<T> body, Node n)
         {
+            if (n == null) return;
+
             n.Body = body; // Assign the GBX body to this body
             foreach (var chunk in n.Chunks)
                 chunk.Part = body; // Assign each chunk to this body

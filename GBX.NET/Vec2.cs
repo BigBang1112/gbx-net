@@ -53,5 +53,6 @@ namespace GBX.NET
 
         public static explicit operator Vec2(Vec3 a) => new Vec2(a.X, a.Y);
         public static explicit operator Vec2(Vec4 a) => new Vec2(a.X, a.Y);
+        public static explicit operator Vec2(float[] a) => a == null ? new Vec2() : a.Length >= 2 ? new Vec2(a[0], a[1]) : throw new Exception();
     }
 }

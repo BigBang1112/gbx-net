@@ -84,9 +84,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03079004)]
         public class Chunk03079004 : Chunk<CGameCtnMediaClip>
         {
+            public Node U01 { get; set; }
+
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
-                rw.NodeRef(Unknown);
+                rw.NodeRef(U01);
             }
         }
 
@@ -97,7 +99,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03079005)]
         public class Chunk03079005 : Chunk<CGameCtnMediaClip>
         {
-            public int Version { get; set; }
+            public int Version { get; set; } = 10;
 
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
