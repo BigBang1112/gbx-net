@@ -1,4 +1,6 @@
-﻿namespace GBX.NET
+﻿using System;
+
+namespace GBX.NET
 {
     public struct Vec4 : IVec
     {
@@ -30,5 +32,6 @@
 
         public static explicit operator Vec4(Vec2 a) => new Vec4(a.X, a.Y, 0, 0);
         public static explicit operator Vec4(Vec3 a) => new Vec4(a.X, a.Y, a.Z, 0);
+        public static explicit operator Vec4(float[] a) => a == null ? new Vec4() : a.Length >= 4 ? new Vec4(a[0], a[1], a[2], a[3]) : throw new Exception();
     }
 }
