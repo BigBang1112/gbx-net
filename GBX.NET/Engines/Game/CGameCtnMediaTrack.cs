@@ -163,9 +163,12 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03078004)]
         public class Chunk03078004 : Chunk<CGameCtnMediaTrack>
         {
+            public int U01 { get; set; }
+
             public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
                 rw.Boolean(ref n.isKeepPlaying);
+                U01 = rw.Int32(U01); /////////////////////
             }
         }
 
