@@ -9,8 +9,8 @@
 		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		
-		<Version>0.10.1</Version>
-		<PackageReleaseNotes>Fixed triangle writing, added IsReadOnly to CGameCtnMediaTrack.</PackageReleaseNotes>
+		<Version>0.10.2</Version>
+		<PackageReleaseNotes>Fixed exceptions</PackageReleaseNotes>
 		
 		<TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
 		<Platforms>AnyCPU;x64;x86</Platforms>
