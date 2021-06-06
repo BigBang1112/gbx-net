@@ -723,7 +723,7 @@ namespace GBX.NET.Engines.Game
             {
                 rw.Int32(ref n.eventsDuration);
 
-                if (n.eventsDuration == 0 && Is025) return;
+                if (n.eventsDuration == 0) return;
 
                 U01 = rw.UInt32(U01);
 
@@ -932,7 +932,7 @@ namespace GBX.NET.Engines.Game
             {
                 Chunk011.ReadWrite(n, rw);
 
-                if (n.eventsDuration == 0 && Is025) return;
+                if (n.eventsDuration == 0) return;
 
                 U01 = rw.Int32(U01);
             }
