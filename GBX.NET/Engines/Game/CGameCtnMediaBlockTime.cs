@@ -1,4 +1,7 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System;
+using System.IO;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x03085000)]
     public class CGameCtnMediaBlockTime : CGameCtnMediaBlock
@@ -7,6 +10,8 @@
 
         [NodeMember]
         public Key[] Keys { get; set; }
+
+        public bool IsTM2 { get; set; }
 
         #endregion
 
@@ -17,20 +22,60 @@
         [Chunk(0x03085000)]
         public class Chunk03085000 : Chunk<CGameCtnMediaBlockTime>
         {
-            public override void ReadWrite(CGameCtnMediaBlockTime n, GameBoxReaderWriter rw)
+            public override void Read(CGameCtnMediaBlockTime n, GameBoxReader r, GameBoxWriter unknownW)
             {
-                n.Keys = rw.Array(n.Keys, r => new Key()
+                if (!r.BaseStream.CanSeek)
+                    throw new NotSupportedException("Can't read CGameCtnMediaBlockTime in a stream that can't seek.");
+
+                var numKeys = r.ReadInt32();
+                var bytes = r.ReadBytes(sizeof(float) * 2 * numKeys);
+
+                if (r.PeekUInt32() == 0xFACADE01)
                 {
-                    Time = r.ReadSingle(),
-                    TimeValue = r.ReadSingle(),
-                    Tangent = r.ReadSingle()
-                },
-                (x, w) =>
+                    n.IsTM2 = true;
+
+                    r.BaseStream.Seek(-bytes.Length, SeekOrigin.Current);
+
+                    n.Keys = r.ReadArray(numKeys, r1 => new Key()
+                    {
+                        Time = r1.ReadSingle(),
+                        TimeValue = r1.ReadSingle()
+                    });
+                }
+                else
                 {
-                    w.Write(x.Time);
-                    w.Write(x.TimeValue);
-                    w.Write(x.Tangent);
-                });
+                    n.IsTM2 = false;
+
+                    r.BaseStream.Seek(-bytes.Length, SeekOrigin.Current);
+
+                    n.Keys = r.ReadArray(numKeys, r1 => new Key()
+                    {
+                        Time = r1.ReadSingle(),
+                        TimeValue = r1.ReadSingle(),
+                        Tangent = r1.ReadSingle()
+                    });
+                }
+            }
+
+            public override void Write(CGameCtnMediaBlockTime n, GameBoxWriter w, GameBoxReader unknownR)
+            {
+                if (n.IsTM2)
+                {
+                    w.Write(n.Keys, (x, w1) =>
+                    {
+                        w1.Write(x.Time);
+                        w1.Write(x.TimeValue);
+                    });
+                }
+                else
+                {
+                    w.Write(n.Keys, (x, w1) =>
+                    {
+                        w1.Write(x.Time);
+                        w1.Write(x.TimeValue);
+                        w1.Write(x.Tangent);
+                    });
+                }
             }
         }
 
