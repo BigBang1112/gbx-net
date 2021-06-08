@@ -50,10 +50,10 @@ namespace GBX.NET.Engines.MwFoundations
             }
         }
 
-        public static Dictionary<uint, Type> AvailableClasses { get; } = new Dictionary<uint, Type>();
-        public static Dictionary<Type, List<uint>> AvailableInheritanceClasses { get; } = new Dictionary<Type, List<uint>>();
-        public static Dictionary<Type, Dictionary<uint, Type>> AvailableChunkClasses { get; } = new Dictionary<Type, Dictionary<uint, Type>>();
-        public static Dictionary<Type, Dictionary<uint, Type>> AvailableHeaderChunkClasses { get; } = new Dictionary<Type, Dictionary<uint, Type>>();
+        public static Dictionary<uint, Type> AvailableClasses { get; }
+        public static Dictionary<Type, List<uint>> AvailableInheritanceClasses { get; }
+        public static Dictionary<Type, Dictionary<uint, Type>> AvailableChunkClasses { get; }
+        public static Dictionary<Type, Dictionary<uint, Type>> AvailableHeaderChunkClasses { get; }
 
         protected CMwNod()
         {
@@ -421,12 +421,9 @@ namespace GBX.NET.Engines.MwFoundations
                 Log.Write($"~ {logNodeCompletion}", ConsoleColor.Green);
         }
 
-        static CMwNod()
+        private static void DefineNames()
         {
-            Names = new Dictionary<uint, string>();
-            Mappings = new Dictionary<uint, uint>();
-
-            var startTimestamp = DateTime.Now;
+            var watch = Stopwatch.StartNew();
 
             using (StringReader reader = new StringReader(Resources.ClassID))
             {
@@ -464,9 +461,12 @@ namespace GBX.NET.Engines.MwFoundations
                 }
             }
 
-            Debug.WriteLine("Classes named in " + (DateTime.Now - startTimestamp).TotalMilliseconds + "ms");
+            Debug.WriteLine("Classes named in " + watch.Elapsed.TotalMilliseconds + "ms");
+        }
 
-            startTimestamp = DateTime.Now;
+        private static void DefineMappings()
+        {
+            var watch = Stopwatch.StartNew();
 
             using (StringReader reader = new StringReader(Resources.ClassIDMappings))
             {
@@ -487,9 +487,12 @@ namespace GBX.NET.Engines.MwFoundations
                 }
             }
 
-            Debug.WriteLine("Mappings defined in " + (DateTime.Now - startTimestamp).TotalMilliseconds + "ms");
+            Debug.WriteLine("Mappings defined in " + watch.Elapsed.TotalMilliseconds + "ms");
+        }
 
-            startTimestamp = DateTime.Now;
+        private static void DefineTypes()
+        {
+            var watch = Stopwatch.StartNew();
 
             var assembly = Assembly.GetExecutingAssembly();
 
@@ -590,7 +593,22 @@ namespace GBX.NET.Engines.MwFoundations
                 }
             }
 
-            Debug.WriteLine("Types defined in " + (DateTime.Now - startTimestamp).TotalMilliseconds + "ms");
+            Debug.WriteLine("Types defined in " + watch.Elapsed.TotalMilliseconds + "ms");
+        }
+
+        static CMwNod()
+        {
+            Names = new Dictionary<uint, string>();
+            Mappings = new Dictionary<uint, uint>();
+
+            AvailableClasses = new Dictionary<uint, Type>();
+            AvailableInheritanceClasses = new Dictionary<Type, List<uint>>();
+            AvailableChunkClasses = new Dictionary<Type, Dictionary<uint, Type>>();
+            AvailableHeaderChunkClasses = new Dictionary<Type, Dictionary<uint, Type>>();
+
+            DefineNames();
+            DefineMappings();
+            DefineTypes();
         }
 
         public T GetChunk<T>() where T : Chunk
