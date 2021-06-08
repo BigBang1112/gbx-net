@@ -65,6 +65,17 @@ namespace GBX.NET.Engines.MwFoundations
             ID = classID;
         }
 
+        protected CMwNod(params Chunk[] chunks) : this()
+        {
+            foreach (var chunk in chunks)
+            {
+                GetType()
+                    .GetMethod("CreateChunk")
+                    .MakeGenericMethod(chunk.GetType())
+                    .Invoke(this, new object[0]);
+            }
+        }
+
         #region Chunks
 
         #region 0x000 chunk (FolderDep)
@@ -81,17 +92,6 @@ namespace GBX.NET.Engines.MwFoundations
         #endregion
 
         #endregion
-
-        protected CMwNod(params Chunk[] chunks) : this()
-        {
-            foreach (var chunk in chunks)
-            {
-                GetType()
-                    .GetMethod("CreateChunk")
-                    .MakeGenericMethod(chunk.GetType())
-                    .Invoke(this, new object[0]);
-            }
-        }
 
         public static T[] ParseArray<T>(GameBoxReader r) where T : CMwNod
         {
@@ -491,97 +491,102 @@ namespace GBX.NET.Engines.MwFoundations
 
             startTimestamp = DateTime.Now;
 
-            var assemb = Assembly.GetExecutingAssembly();
+            var assembly = Assembly.GetExecutingAssembly();
 
             IEnumerable<Type> types;
+
             try
             {
-                types = assemb.GetTypes();
+                types = assembly.GetTypes();
             }
             catch (ReflectionTypeLoadException e)
             {
                 types = e.Types;
             }
-            types = types.Where(t => t != null);
 
-            foreach (var nodeType in types.Where(x => x.IsClass
-                   && x.Namespace != null && x.Namespace.StartsWith("GBX.NET.Engines") && x.IsSubclassOf(typeof(CMwNod))))
+            var engineRelatedTypes = types.Where(t =>
+                 t?.IsClass == true
+              && t.Namespace?.StartsWith("GBX.NET.Engines") == true);
+
+            var availableClassesByType = new Dictionary<Type, uint>();
+
+            foreach (var type in engineRelatedTypes)
             {
-                var nodeID = nodeType.GetCustomAttribute<NodeAttribute>().ID;
-
-                AvailableClasses.Add(nodeID, nodeType);
-
-                var inheritanceClasses = GetInheritance(nodeType);
-                AvailableInheritanceClasses[nodeType] = inheritanceClasses;
-
-                List<uint> GetInheritance(Type t)
+                if (type.IsSubclassOf(typeof(CMwNod)) || type == typeof(CMwNod)) // Engine types
                 {
-                    List<uint> classes = new List<uint>();
+                    var id = type.GetCustomAttribute<NodeAttribute>()?.ID;
 
-                    Type cur = t.BaseType;
-
-                    while (cur != typeof(object))
+                    if (id.HasValue)
                     {
-                        classes.Add(cur.GetCustomAttribute<NodeAttribute>().ID);
-                        cur = cur.BaseType;
+                        AvailableClasses.Add(id.Value, type);
+                        availableClassesByType.Add(type, id.Value);
                     }
+                    else
+                    {
+                        throw new Exception($"{type.Name} misses NodeAttribute.");
+                    }
+                }
+            }
 
-                    return classes;
+            var availableInheritanceTypes = new Dictionary<Type, List<Type>>();
+
+            foreach (var typePair in AvailableClasses)
+            {
+                var id = typePair.Key;
+                var type = typePair.Value;
+
+                List<uint> classes = new List<uint>();
+                List<Type> inheritedTypes = new List<Type>();
+
+                Type currentType = type.BaseType;
+
+                while (currentType != typeof(object))
+                {
+                    classes.Add(availableClassesByType[currentType]);
+                    inheritedTypes.Add(currentType);
+
+                    currentType = currentType.BaseType;
                 }
 
-                var chunkType = typeof(Chunk<>).MakeGenericType(nodeType);
-                var skippableChunkType = typeof(SkippableChunk<>).MakeGenericType(nodeType);
-                var headerChunkType = typeof(HeaderChunk<>).MakeGenericType(nodeType);
+                AvailableInheritanceClasses[type] = classes;
+                availableInheritanceTypes[type] = inheritedTypes;
 
+                var chunks = type.GetNestedTypes().Where(x => x.IsSubclassOf(typeof(Chunk)));
+
+                var availableChunkClasses = new Dictionary<uint, Type>();
                 var availableHeaderChunkClasses = new Dictionary<uint, Type>();
 
-                if (!AvailableChunkClasses.TryGetValue(nodeType, out Dictionary<uint, Type> availableChunkClasses))
+                foreach (var chunk in chunks)
                 {
-                    availableChunkClasses = nodeType.GetNestedTypes().Where(x =>
+                    var chunkAttribute = chunk.GetCustomAttribute<ChunkAttribute>();
+
+                    if (chunkAttribute == null)
+                        throw new Exception($"Chunk {chunk.FullName} doesn't have ChunkAttribute.");
+
+                    if (chunk.GetInterface(nameof(IHeaderChunk)) == null)
                     {
-                        var isChunk = x.IsClass
-                        && x.Namespace.StartsWith("GBX.NET.Engines")
-                        && (x.BaseType == chunkType || x.BaseType == skippableChunkType || x.BaseType == headerChunkType);
-                        if (!isChunk) return false;
-
-                        var chunkAttribute = x.GetCustomAttribute<ChunkAttribute>();
-                        if (chunkAttribute == null) throw new Exception($"Chunk {x.FullName} doesn't have a ChunkAttribute.");
-
-                        if (chunkAttribute.ClassID == nodeID)
-                        {
-                            if (x.BaseType == headerChunkType)
-                            {
-                                availableHeaderChunkClasses.Add(chunkAttribute.ID, x);
-                                return false;
-                            }
-
-                            return true;
-                        }
-                        return false;
-                    }).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ID);
-
-                    foreach (var cls in inheritanceClasses)
-                    {
-                        var availableInheritanceClass = types.Where(x => x.IsClass
-                           && x.Namespace?.StartsWith("GBX.NET.Engines") == true && (x.IsSubclassOf(typeof(CMwNod)) || x == typeof(CMwNod))
-                           && (x.GetCustomAttribute<NodeAttribute>().ID == cls)).FirstOrDefault();
-
-                        var inheritChunkType = typeof(Chunk<>).MakeGenericType(availableInheritanceClass);
-                        var inheritSkippableChunkType = typeof(SkippableChunk<>).MakeGenericType(availableInheritanceClass);
-                        var inheritHeaderChunkType = typeof(HeaderChunk<>).MakeGenericType(availableInheritanceClass);
-
-                        foreach (var chunkT in availableInheritanceClass.GetNestedTypes().Where(x => x.IsClass
-                            && x.Namespace?.StartsWith("GBX.NET.Engines") == true && (x.BaseType == inheritChunkType || x.BaseType == inheritSkippableChunkType || x.BaseType == inheritHeaderChunkType)
-                            && (x.GetCustomAttribute<ChunkAttribute>().ClassID == cls)).ToDictionary(x => x.GetCustomAttribute<ChunkAttribute>().ID + (x.BaseType == inheritHeaderChunkType ? "H" : "B")))
-                        {
-                            if(chunkT.Key.EndsWith("H"))
-                                availableHeaderChunkClasses[uint.Parse(chunkT.Key.Remove(chunkT.Key.Length - 1))] = chunkT.Value;
-                            else
-                                availableChunkClasses[uint.Parse(chunkT.Key.Remove(chunkT.Key.Length - 1))] = chunkT.Value;
-                        }
+                        availableChunkClasses.Add(chunkAttribute.ID, chunk);
                     }
-                    AvailableChunkClasses.Add(nodeType, availableChunkClasses);
-                    AvailableHeaderChunkClasses.Add(nodeType, availableHeaderChunkClasses);
+                    else
+                    {
+                        availableHeaderChunkClasses.Add(chunkAttribute.ID, chunk);
+                    }
+                }
+
+                AvailableChunkClasses.Add(type, availableChunkClasses);
+                AvailableHeaderChunkClasses.Add(type, availableHeaderChunkClasses);
+            }
+
+            foreach (var typePair in availableInheritanceTypes)
+            {
+                var mainType = typePair.Key;
+
+                foreach (var type in typePair.Value)
+                {
+                    foreach (var chunkType in AvailableChunkClasses[type])
+                    {
+                        AvailableChunkClasses[mainType][chunkType.Key] = chunkType.Value;
+                    }
                 }
             }
 
