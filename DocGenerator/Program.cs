@@ -37,7 +37,7 @@ namespace DocGenerator
 
                         var chunks = node.DeclaredNestedTypes.Where(x => x.GetCustomAttribute<ChunkAttribute>() != null);
 
-                        if (chunks.Count() > 0)
+                        if (chunks.Any())
                         {
                             w.WriteLine("## Chunks");
                             w.WriteLine();
@@ -46,7 +46,7 @@ namespace DocGenerator
                             {
                                 var att = chunk.GetCustomAttribute<ChunkAttribute>();
 
-                                var linkName = $"0x{att.ChunkID.ToString("x3").ToUpper()}{(chunk.BaseType.GetInterface("IHeaderChunk") == null ? (chunk.BaseType.GetInterface("ISkippableChunk") == null ? "" : " - skippable") : " - header chunk")}{(att.Description == null ? "" : $" ({att.Description})")}";
+                                var linkName = $"0x{att.GetChunkPart().ToString("x3").ToUpper()}{(chunk.BaseType.GetInterface("IHeaderChunk") == null ? (chunk.BaseType.GetInterface("ISkippableChunk") == null ? "" : " - skippable") : " - header chunk")}{(att.Description == null ? "" : $" ({att.Description})")}";
 
                                 w.WriteLine($"- [{linkName}](#{linkName.Replace(' ', '-').Replace("(", null).Replace(")", null).ToLower()})");
                             }
@@ -55,7 +55,7 @@ namespace DocGenerator
                             {
                                 var att = chunk.GetCustomAttribute<ChunkAttribute>();
 
-                                var linkName = $"0x{att.ChunkID.ToString("x3").ToUpper()}{(chunk.BaseType.GetInterface("IHeaderChunk") == null ? (chunk.BaseType.GetInterface("ISkippableChunk") == null ? "" : " - skippable") : " - header chunk")}{(att.Description == null ? "" : $" ({att.Description})")}";
+                                var linkName = $"0x{att.GetChunkPart().ToString("x3").ToUpper()}{(chunk.BaseType.GetInterface("IHeaderChunk") == null ? (chunk.BaseType.GetInterface("ISkippableChunk") == null ? "" : " - skippable") : " - header chunk")}{(att.Description == null ? "" : $" ({att.Description})")}";
 
                                 w.WriteLine();
                                 w.WriteLine("### " + linkName);
