@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
+
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET
 {
@@ -60,13 +61,13 @@ namespace GBX.NET
             switch(remap)
             {
                 case IDRemap.Latest:
-                    if (Node.Mappings.TryGetValue(classPart, out uint newID))
+                    if (CMwNod.Mappings.TryGetValue(classPart, out uint newID))
                         return newID + chunkPart;
                     return chunkID;
                 case IDRemap.TrackMania2006:
                     if (classPart == 0x03078000) // Not ideal solution
                         return 0x24061000 + chunkPart;
-                    return Node.Mappings.LastOrDefault(x => x.Value == classPart).Key + chunkPart;
+                    return CMwNod.Mappings.LastOrDefault(x => x.Value == classPart).Key + chunkPart;
                 default:
                     return chunkID;
             }
@@ -80,13 +81,13 @@ namespace GBX.NET
         }
     }
 
-    public abstract class Chunk<T> : Chunk, IChunk where T : Node
+    public abstract class Chunk<T> : Chunk, IChunk where T : CMwNod
     {
         [IgnoreDataMember]
         public T Node { get; internal set; }
         public int Progress { get; set; }
 
-        Node IChunk.Node
+        CMwNod IChunk.Node
         {
             get => Node;
             set => Node = (T)value;
@@ -155,7 +156,7 @@ namespace GBX.NET
             }
         }
 
-        void IChunk.ReadWrite(Node n, GameBoxReaderWriter rw) => ReadWrite((T)n, rw);
+        void IChunk.ReadWrite(CMwNod n, GameBoxReaderWriter rw) => ReadWrite((T)n, rw);
 
         public byte[] ToByteArray()
         {

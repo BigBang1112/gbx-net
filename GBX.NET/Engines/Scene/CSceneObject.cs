@@ -1,7 +1,9 @@
-﻿namespace GBX.NET.Engines.Scene
+﻿using GBX.NET.Engines.MwFoundations;
+
+namespace GBX.NET.Engines.Scene
 {
     [Node(0x0A005000)]
-    public class CSceneObject : Node
+    public class CSceneObject : CMwNod
     {
         [Chunk(0x0A005001)]
         public class Chunk0A005001 : Chunk<CSceneObject>

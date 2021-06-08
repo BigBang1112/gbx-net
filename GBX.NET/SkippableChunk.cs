@@ -3,9 +3,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
+using GBX.NET.Engines.MwFoundations;
+
 namespace GBX.NET
 {
-    public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
+    public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : CMwNod
     {
         private readonly uint chunkID;
 

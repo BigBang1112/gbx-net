@@ -1,7 +1,9 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using GBX.NET.Engines.MwFoundations;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x0311D000)]
-    public class CGameCtnZoneGenealogy : Node
+    public class CGameCtnZoneGenealogy : CMwNod
     {
         #region Properties
 

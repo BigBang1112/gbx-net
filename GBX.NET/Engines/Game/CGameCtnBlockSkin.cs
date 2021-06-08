@@ -1,10 +1,12 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using GBX.NET.Engines.MwFoundations;
+
+namespace GBX.NET.Engines.Game
 {
     /// <summary>
     /// Skin for a block (0x03059000)
     /// </summary>
     [Node(0x03059000)]
-    public class CGameCtnBlockSkin : Node
+    public class CGameCtnBlockSkin : CMwNod
     {
         #region Properties
 

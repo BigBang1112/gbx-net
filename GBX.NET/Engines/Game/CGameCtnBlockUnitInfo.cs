@@ -1,7 +1,9 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using GBX.NET.Engines.MwFoundations;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x03036000)]
-    public class CGameCtnBlockUnitInfo : Node
+    public class CGameCtnBlockUnitInfo : CMwNod
     {
         public Int3 OffsetE { get; set; }
         public CGameCtnBlockInfoClip[] Clips { get; set; }

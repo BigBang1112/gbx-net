@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Engines.GameData;
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Game
 {
@@ -7,7 +8,7 @@ namespace GBX.NET.Engines.Game
     /// </summary>
     /// <remarks>An item placed on a map.</remarks>
     [Node(0x03101000)]
-    public class CGameCtnAnchoredObject : Node
+    public class CGameCtnAnchoredObject : CMwNod
     {
         #region Fields
 

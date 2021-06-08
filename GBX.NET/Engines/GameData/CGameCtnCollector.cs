@@ -1,13 +1,10 @@
-﻿using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
+﻿using System.Drawing;
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E001000)]
-    public class CGameCtnCollector : Node
+    public class CGameCtnCollector : CMwNod
     {
         #region Enums
 
@@ -79,7 +76,7 @@ namespace GBX.NET.Engines.GameData
         public Color[,] Icon { get; set; }
 
         [NodeMember]
-        public Node IconFid { get; set; }
+        public CMwNod IconFid { get; set; }
 
         [NodeMember]
         public string CollectorName
@@ -406,7 +403,7 @@ namespace GBX.NET.Engines.GameData
         public class Chunk2E001010 : Chunk<CGameCtnCollector>
         {
             private int version;
-            private Node u01;
+            private CMwNod u01;
             private int u02;
 
             public int Version
@@ -415,7 +412,7 @@ namespace GBX.NET.Engines.GameData
                 set => version = value;
             }
 
-            public Node U01
+            public CMwNod U01
             {
                 get => u01;
                 set => u01 = value;

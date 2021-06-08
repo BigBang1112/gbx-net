@@ -29,7 +29,7 @@ namespace GBX.NET.Json
             return JsonConvert.SerializeObject(gbx, format ? Formatting.Indented : Formatting.None, settings);
         }
 
-        public static string ToJson(this Node node, bool format = true)
+        public static string ToJson(this CMwNod node, bool format = true)
         {
             return JsonConvert.SerializeObject(node, format ? Formatting.Indented : Formatting.None, settings);
         }

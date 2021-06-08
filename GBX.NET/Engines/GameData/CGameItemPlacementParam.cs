@@ -1,9 +1,9 @@
-﻿using System.Diagnostics;
+﻿using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E020000)]
-    public class CGameItemPlacementParam : Node
+    public class CGameItemPlacementParam : CMwNod
     {
         #region Constants
 

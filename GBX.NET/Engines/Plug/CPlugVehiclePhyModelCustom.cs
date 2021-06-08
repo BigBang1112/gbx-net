@@ -1,9 +1,9 @@
-﻿using System.Diagnostics;
+﻿using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Plug
 {
     [Node(0x0911E000)]
-    public class CPlugVehiclePhyModelCustom : Node
+    public class CPlugVehiclePhyModelCustom : CMwNod
     {
         #region Fields
 

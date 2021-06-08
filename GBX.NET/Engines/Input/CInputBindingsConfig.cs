@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Input
 {
     [Node(0x13006000)]
-    public class CInputBindingsConfig : Node
+    public class CInputBindingsConfig : CMwNod
     {
         public ReadOnlyCollection<string> Devices { get; private set; }
         public List<Binding> Bindings { get; private set; }

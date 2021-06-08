@@ -1,9 +1,10 @@
 ﻿using GBX.NET.Engines.Input;
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Game
 {
     [Node(0x0308C000)]
-    public class CGamePlayerProfile : Node
+    public class CGamePlayerProfile : CMwNod
     {
         private string description;
 

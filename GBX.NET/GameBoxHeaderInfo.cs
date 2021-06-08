@@ -1,5 +1,7 @@
 ﻿using System;
 
+using GBX.NET.Engines.MwFoundations;
+
 namespace GBX.NET
 {
     public class GameBoxHeaderInfo
@@ -45,7 +47,7 @@ namespace GBX.NET
                     Log.Write($"- Unknown byte: {UnknownByte}");
                 }
 
-                ID = Node.Remap(reader.ReadUInt32());
+                ID = CMwNod.Remap(reader.ReadUInt32());
                 Log.Write($"- Class ID: 0x{ID:X8}");
 
                 if (Version >= 6)

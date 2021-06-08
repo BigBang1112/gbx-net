@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
+
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET
 {
@@ -182,16 +182,16 @@ namespace GBX.NET
             return ReadIdent(Lookbackable);
         }
 
-        public T ReadNodeRef<T>(IGameBoxBody body) where T : Node
+        public T ReadNodeRef<T>(IGameBoxBody body) where T : CMwNod
         {
             var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
             if (index >= 0 && (!body.AuxilaryNodes.ContainsKey(index) || body.AuxilaryNodes[index] == null)) // If index is 0 or bigger and the node wasn't read yet, or is null
-                body.AuxilaryNodes[index] = Node.Parse<T>(this);
+                body.AuxilaryNodes[index] = CMwNod.Parse<T>(this);
 
             if (index < 0) // If aux node index is below 0 then there's not much to solve
                 return null;
-            body.AuxilaryNodes.TryGetValue(index, out Node n); // Tries to get the available node from index
+            body.AuxilaryNodes.TryGetValue(index, out CMwNod n); // Tries to get the available node from index
             
             if (n is T nod) // If the node is presented at the index, then it's simple
                 return nod;
@@ -200,19 +200,19 @@ namespace GBX.NET
             return (T)body.AuxilaryNodes.Last().Value; // So it grabs the last one instead, needs to be further tested
         }
 
-        public T ReadNodeRef<T>() where T : Node
+        public T ReadNodeRef<T>() where T : CMwNod
         {
             return ReadNodeRef<T>((IGameBoxBody)Lookbackable);
         }
 
-        public Node ReadNodeRef(IGameBoxBody body)
+        public CMwNod ReadNodeRef(IGameBoxBody body)
         {
-            return ReadNodeRef<Node>(body);
+            return ReadNodeRef<CMwNod>(body);
         }
 
-        public Node ReadNodeRef()
+        public CMwNod ReadNodeRef()
         {
-            return ReadNodeRef<Node>((IGameBoxBody)Lookbackable);
+            return ReadNodeRef<CMwNod>((IGameBoxBody)Lookbackable);
         }
 
         public FileRef ReadFileRef()
@@ -398,7 +398,7 @@ namespace GBX.NET
         /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>.</typeparam>
         /// <typeparam name="TValue">A node that is presented as node reference.</typeparam>
         /// <returns>A dictionary.</returns>
-        public Dictionary<TKey, TValue> ReadNodeDictionary<TKey, TValue>() where TValue : Node
+        public Dictionary<TKey, TValue> ReadNodeDictionary<TKey, TValue>() where TValue : CMwNod
         {
             var dictionary = new Dictionary<TKey, TValue>();
 

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Plug
 {
     [Node(0x090FD000)]
-    public class CPlugMaterialUserInst : Node
+    public class CPlugMaterialUserInst : CMwNod
     {
         public string MaterialFile { get; set; }
 
@@ -21,11 +19,11 @@ namespace GBX.NET.Engines.Plug
             /// Version 10: TM®, version 8/9: ManiaPlanet
             /// </summary>
             public int Version { get; set; }
-            public Node Unknown1 { get; set; }
-            public Node Unknown2 { get; set; }
+            public CMwNod Unknown1 { get; set; }
+            public CMwNod Unknown2 { get; set; }
             public int Unknown3 { get; set; }
             public byte Unknown4 { get; set; }
-            public Node Unknown5 { get; set; }
+            public CMwNod Unknown5 { get; set; }
 
             public override void ReadWrite(CPlugMaterialUserInst n, GameBoxReaderWriter rw)
             {
@@ -55,7 +53,7 @@ namespace GBX.NET.Engines.Plug
         public class Chunk090FD001 : Chunk<CPlugMaterialUserInst>
         {
             public int Version { get; set; }
-            public Node Unknown1 { get; set; }
+            public CMwNod Unknown1 { get; set; }
 
             public override void ReadWrite(CPlugMaterialUserInst n, GameBoxReaderWriter rw)
             {

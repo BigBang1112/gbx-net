@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
+
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET
 {
@@ -260,7 +261,7 @@ namespace GBX.NET
             Write(ident, Lookbackable);
         }
 
-        public void Write(Node node, IGameBoxBody body)
+        public void Write(CMwNod node, IGameBoxBody body)
         {
             if (node == null)
                 Write(-1);
@@ -280,7 +281,7 @@ namespace GBX.NET
             }
         }
 
-        public void Write(Node node)
+        public void Write(CMwNod node)
         {
             Write(node, (IGameBoxBody)Lookbackable);
         }
@@ -313,7 +314,7 @@ namespace GBX.NET
         /// </summary>
         /// <typeparam name="T">Type of the node.</typeparam>
         /// <param name="nodes">Node array.</param>
-        public void WriteNodes<T>(IEnumerable<T> nodes) where T : Node
+        public void WriteNodes<T>(IEnumerable<T> nodes) where T : CMwNod
         {
             var watch = Stopwatch.StartNew();
 
@@ -331,7 +332,7 @@ namespace GBX.NET
                 node.Write(this);
 
                 string logProgress = $"[{nodeType.FullName.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::")}] {counter + 1}/{count} ({watch.Elapsed.TotalMilliseconds}ms)";
-                if (Chunk.Part == null || !Chunk.Part.GBX.ID.HasValue || Node.Remap(Chunk.Part.GBX.ID.Value) != node.ID)
+                if (Chunk.Part == null || !Chunk.Part.GBX.ID.HasValue || CMwNod.Remap(Chunk.Part.GBX.ID.Value) != node.ID)
                     logProgress = "~ " + logProgress;
 
                 Log.Write(logProgress, ConsoleColor.Magenta);
@@ -343,7 +344,7 @@ namespace GBX.NET
             }
         }
 
-        public void WriteNodeDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary) where TValue : Node
+        public void WriteNodeDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary) where TValue : CMwNod
         {
             Write(dictionary.Count);
 

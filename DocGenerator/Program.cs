@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
+using GBX.NET.Engines.MwFoundations;
+
 namespace DocGenerator
 {
     class Program
@@ -27,7 +29,7 @@ namespace DocGenerator
                         w.WriteLine($"# {node.Name} (0x{nodAttribute.ID.ToString("x8").ToUpper()})");
                         w.WriteLine();
 
-                        if (node.BaseType != typeof(Node) && node.BaseType != typeof(object))
+                        if (node.BaseType != typeof(CMwNod) && node.BaseType != typeof(object))
                         {
                             w.WriteLine($"### Inherits [{node.BaseType.Name}]({node.BaseType.Name}.md)");
                             w.WriteLine();

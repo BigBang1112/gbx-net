@@ -1,8 +1,5 @@
 ﻿using GBX.NET.Engines.Game;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
 
 namespace GBX.NET.Engines.TrackMania
 {

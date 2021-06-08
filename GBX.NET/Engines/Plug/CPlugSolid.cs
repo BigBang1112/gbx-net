@@ -1,7 +1,9 @@
-﻿namespace GBX.NET.Engines.Plug
+﻿using GBX.NET.Engines.MwFoundations;
+
+namespace GBX.NET.Engines.Plug
 {
     [Node(0x09005000)]
-    public class CPlugSolid : Node
+    public class CPlugSolid : CMwNod
     {
     }
 }

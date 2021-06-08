@@ -2,12 +2,14 @@
 using System.IO;
 using System.Threading.Tasks;
 
+using GBX.NET.Engines.MwFoundations;
+
 namespace GBX.NET.Engines.Game
 {
     [Node(0x0303F000)]
-    public class CGameGhost : Node
+    public class CGameGhost : CMwNod
     {
-        private Action<Task<CGameGhostData>> dataExceptionHandle;
+        private readonly Action<Task<CGameGhostData>> dataExceptionHandle;
 
         public bool IsReplaying { get; set; }
 

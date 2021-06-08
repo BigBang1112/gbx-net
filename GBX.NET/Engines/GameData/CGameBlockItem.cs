@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
+
 using GBX.NET.Engines.Plug;
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E025000)]
-    public class CGameBlockItem : Node
+    public class CGameBlockItem : CMwNod
     {
         #region Fields
 

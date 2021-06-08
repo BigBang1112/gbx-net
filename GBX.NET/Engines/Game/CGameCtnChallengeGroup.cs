@@ -1,12 +1,14 @@
 ﻿using System.IO;
 
+using GBX.NET.Engines.MwFoundations;
+
 namespace GBX.NET.Engines.Game
 {
     /// <summary>
     /// Group of maps (0x0308F000)
     /// </summary>
     [Node(0x0308F000)]
-    public class CGameCtnChallengeGroup : Node
+    public class CGameCtnChallengeGroup : CMwNod
     {
         #region Properties
 

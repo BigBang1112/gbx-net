@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET
 {
     public interface IGameBoxBody
     {
         GameBox GBX { get; }
-        SortedDictionary<int, Node> AuxilaryNodes { get; }
+        SortedDictionary<int, CMwNod> AuxilaryNodes { get; }
     }
 }

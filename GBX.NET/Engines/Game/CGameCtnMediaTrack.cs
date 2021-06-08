@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 
+using GBX.NET.Engines.MwFoundations;
+
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03078000)]
-    public class CGameCtnMediaTrack : Node
+    public class CGameCtnMediaTrack : CMwNod
     {
         #region Fields
 

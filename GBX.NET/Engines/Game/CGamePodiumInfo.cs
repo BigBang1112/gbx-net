@@ -1,7 +1,9 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using GBX.NET.Engines.MwFoundations;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x03168000)]
-    public class CGamePodiumInfo : Node
+    public class CGamePodiumInfo : CMwNod
     {
         public int[] MediaClipFids { get; set; }
 

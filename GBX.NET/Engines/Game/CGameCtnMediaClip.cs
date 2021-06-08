@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03079000)]
-    public class CGameCtnMediaClip : Node
+    public class CGameCtnMediaClip : CMwNod
     {
         #region Properties
 
@@ -84,7 +85,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03079004)]
         public class Chunk03079004 : Chunk<CGameCtnMediaClip>
         {
-            public Node U01 { get; set; }
+            public CMwNod U01 { get; set; }
 
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {

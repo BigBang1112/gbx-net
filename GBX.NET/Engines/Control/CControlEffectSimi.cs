@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
+
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Control
 {
     [Node(0x07010000)]
-    public class CControlEffectSimi : Node
+    public class CControlEffectSimi : CMwNod
     {
         #region Properties
 

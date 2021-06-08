@@ -7,13 +7,15 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.ExceptionServices;
 
+using GBX.NET.Engines.MwFoundations;
+
 namespace GBX.NET
 {
     /// <summary>
     /// A known serialized GameBox node with additional attributes. This class can represent deserialized .Gbx file.
     /// </summary>
     /// <typeparam name="T">The main node of the GBX. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
-    public class GameBox<T> : GameBox where T : Node
+    public class GameBox<T> : GameBox where T : CMwNod
     {
         /// <summary>
         /// Header part specialized for <typeparamref name="T"/>, typically storing metadata for quickest access.
@@ -77,7 +79,7 @@ namespace GBX.NET
             AssignBodyToNode(Body, MainNode);
         }
 
-        private void AssignBodyToNode(GameBoxBody<T> body, Node n)
+        private void AssignBodyToNode(GameBoxBody<T> body, CMwNod n)
         {
             if (n == null) return;
 
@@ -91,19 +93,19 @@ namespace GBX.NET
             {
                 if (Attribute.IsDefined(prop, typeof(NodeMemberAttribute))) // Check only NodeMember attributes
                 {
-                    if (prop.PropertyType.IsSubclassOf(typeof(Node))) // If the property is Node
+                    if (prop.PropertyType.IsSubclassOf(typeof(CMwNod))) // If the property is Node
                     {
-                        AssignBodyToNode(body, (Node)prop.GetValue(n)); // Recurse through the node
+                        AssignBodyToNode(body, (CMwNod)prop.GetValue(n)); // Recurse through the node
                     }
                     else if (typeof(IEnumerable).IsAssignableFrom(prop.PropertyType)) // If the property is a list of something
                     {
                         // If the list has a generic argument of anu kind of Node
-                        if (Array.Find(prop.PropertyType.GetGenericArguments(), x => x.IsSubclassOf(typeof(Node))) != null)
+                        if (Array.Find(prop.PropertyType.GetGenericArguments(), x => x.IsSubclassOf(typeof(CMwNod))) != null)
                         {
                             // Go through each Node and recurse
                             var enumerable = (IEnumerable)prop.GetValue(n);
                             foreach (var e in enumerable)
-                                AssignBodyToNode(body, (Node)e);
+                                AssignBodyToNode(body, (CMwNod)e);
                         }
                     }
                 }
@@ -190,7 +192,7 @@ namespace GBX.NET
         {
             if (ID != typeof(T).GetCustomAttribute<NodeAttribute>().ID)
             {
-                if (!Node.Names.TryGetValue(ID.Value, out string name))
+                if (!CMwNod.Names.TryGetValue(ID.Value, out string name))
                     name = "unknown class";
                 throw new InvalidCastException($"GBX with ID 0x{ID:X8} ({name}) can't be casted to GameBox<{typeof(T).Name}>.");
             }
@@ -411,12 +413,12 @@ namespace GBX.NET
         }
 
         /// <summary>
-        /// Tries to get the <see cref="Node"/> of this GBX.
+        /// Tries to get the <see cref="CMwNod"/> of this GBX.
         /// </summary>
-        /// <typeparam name="T">Type of the <see cref="Node"/> to look for.</typeparam>
+        /// <typeparam name="T">Type of the <see cref="CMwNod"/> to look for.</typeparam>
         /// <param name="node">A node that is being extracted from this <see cref="GameBox"/> object. Null if unsuccessful.</param>
         /// <returns>True if the type of this <see cref="GameBox"/> is <see cref="GameBox{T}"/> and <typeparamref name="T"/> matches. Otherwise false.</returns>
-        public bool TryNode<T>(out T node) where T : Node
+        public bool TryNode<T>(out T node) where T : CMwNod
         {
             var property = GetType().GetProperty("MainNode");
 
@@ -521,7 +523,7 @@ namespace GBX.NET
             {
                 GameBox gbx;
 
-                if (Node.AvailableClasses.TryGetValue(headerInfo.ID.Value, out Type availableClass))
+                if (CMwNod.AvailableClasses.TryGetValue(headerInfo.ID.Value, out Type availableClass))
                 {
                     var gbxType = typeof(GameBox<>).MakeGenericType(availableClass);
                     gbx = (GameBox)Activator.CreateInstance(gbxType, headerInfo);
@@ -575,7 +577,7 @@ namespace GBX.NET
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with specified main node type.</returns>
         /// <exception cref="InvalidCastException"/>
-        public static GameBox<T> ParseHeader<T>(Stream stream, IProgress<GameBoxReadProgress> progress = null) where T : Node
+        public static GameBox<T> ParseHeader<T>(Stream stream, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
         {
             GameBox<T> gbx = new GameBox<T>();
 
@@ -594,7 +596,7 @@ namespace GBX.NET
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with specified main node type.</returns>
         /// <exception cref="InvalidCastException"/>
-        public static GameBox<T> ParseHeader<T>(string fileName, IProgress<GameBoxReadProgress> progress = null) where T : Node
+        public static GameBox<T> ParseHeader<T>(string fileName, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
         {
             using (var fs = File.OpenRead(fileName))
             {
@@ -616,7 +618,7 @@ namespace GBX.NET
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
         /// <exception cref="NotSupportedException"/>
-        public static GameBox<T> Parse<T>(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null) where T : Node
+        public static GameBox<T> Parse<T>(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
         {
             var gbx = ParseHeader<T>(stream, progress);
 
@@ -639,7 +641,7 @@ namespace GBX.NET
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
         /// <exception cref="NotSupportedException"/>
-        public static GameBox<T> Parse<T>(Stream stream, IProgress<GameBoxReadProgress> progress = null) where T : Node
+        public static GameBox<T> Parse<T>(Stream stream, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
         {
             return Parse<T>(stream, false, progress);
         }
@@ -656,7 +658,7 @@ namespace GBX.NET
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
         /// <exception cref="NotSupportedException"/>
-        public static GameBox<T> Parse<T>(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null) where T : Node
+        public static GameBox<T> Parse<T>(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
         {
             using (var fs = File.OpenRead(fileName))
             {
@@ -681,7 +683,7 @@ namespace GBX.NET
         /// var gbx = GameBox.Parse&lt;CGameCtnChallenge&gt;("MyMap.Map.Gbx");
         /// // Node data is available in gbx.MainNode
         /// </example>
-        public static GameBox<T> Parse<T>(string fileName, IProgress<GameBoxReadProgress> progress = null) where T : Node
+        public static GameBox<T> Parse<T>(string fileName, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
         {
             return Parse<T>(fileName, false, progress);
         }
@@ -863,13 +865,13 @@ namespace GBX.NET
             if (classID.HasValue)
             {
                 var modernID = classID.GetValueOrDefault();
-                if (Node.Mappings.TryGetValue(classID.GetValueOrDefault(), out uint newerClassID))
+                if (CMwNod.Mappings.TryGetValue(classID.GetValueOrDefault(), out uint newerClassID))
                     modernID = newerClassID;
 
                 Debug.WriteLine("GetGameBoxType: " + modernID.ToString("x8"));
 
                 var availableClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
-                        && x.Namespace?.StartsWith("GBX.NET.Engines") == true && x.IsSubclassOf(typeof(Node))
+                        && x.Namespace?.StartsWith("GBX.NET.Engines") == true && x.IsSubclassOf(typeof(CMwNod))
                         && x.GetCustomAttribute<NodeAttribute>().ID == modernID).FirstOrDefault();
 
                 if (availableClass == null) return null;

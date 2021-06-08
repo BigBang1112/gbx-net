@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Hms
 {
     [Node(0x06022000)]
-    public class CHmsLightMapCache : Node
+    public class CHmsLightMapCache : CMwNod
     {
         
     }

@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET
 {
     public interface IChunk
     {
-        Node Node { get; set; }
+        CMwNod Node { get; set; }
         GameBoxPart Part { get; set; }
         int Progress { get; set; }
         void OnLoad();
-        void ReadWrite(Node n, GameBoxReaderWriter rw);
+        void ReadWrite(CMwNod n, GameBoxReaderWriter rw);
     }
 }

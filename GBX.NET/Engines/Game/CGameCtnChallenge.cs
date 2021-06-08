@@ -11,6 +11,7 @@ using GBX.NET.BlockInfo;
 using GBX.NET.Engines.GameData;
 using GBX.NET.Engines.Hms;
 using GBX.NET.Engines.Script;
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Game
 {
@@ -19,7 +20,7 @@ namespace GBX.NET.Engines.Game
     /// </summary>
     /// <remarks>A map. Known extensions: .Challenge.Gbx, .Map.Gbx</remarks>
     [Node(0x03043000)]
-    public class CGameCtnChallenge : Node, CGameCtnChallenge.IHeader
+    public class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     {
         #region Enums
 
@@ -2879,9 +2880,9 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03043026, "clip global")]
         public class Chunk03043026 : Chunk<CGameCtnChallenge>
         {
-            private Node clipGlobal;
+            private CMwNod clipGlobal;
 
-            public Node ClipGlobal
+            public CMwNod ClipGlobal
             {
                 get => clipGlobal;
                 set => clipGlobal = value;

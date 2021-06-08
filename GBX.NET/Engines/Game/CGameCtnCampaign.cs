@@ -1,11 +1,13 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using GBX.NET.Engines.MwFoundations;
+
+namespace GBX.NET.Engines.Game
 {
     /// <summary>
     /// Campaign info (0x03090000)
     /// </summary>
     /// <remarks>Information about a campaign.</remarks>
     [Node(0x03090000)]
-    public class CGameCtnCampaign : Node
+    public class CGameCtnCampaign : CMwNod
     {
         #region Properties
 

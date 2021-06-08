@@ -1,17 +1,15 @@
-﻿using GBX.NET.Engines.Game;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Plug
 {
     [Node(0x0911F000)]
-    public class CPlugEntRecordData : Node
+    public class CPlugEntRecordData : CMwNod
     {
         public Task<ObservableCollection<Sample>> Samples { get; private set; }
 

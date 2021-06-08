@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Reflection;
-using System.Text;
+
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET
 {
-    public class HeaderChunk<T> : SkippableChunk<T>, IHeaderChunk where T : Node
+    public class HeaderChunk<T> : SkippableChunk<T>, IHeaderChunk where T : CMwNod
     {
         public bool IsHeavy { get; set; }
 
@@ -59,7 +57,7 @@ namespace GBX.NET
         }
 
         public byte[] Data { get; set; }
-        public Node Node { get => throw new NotSupportedException(); set => throw new NotSupportedException(); }
+        public CMwNod Node { get => throw new NotSupportedException(); set => throw new NotSupportedException(); }
 
         public int Progress
         {
@@ -79,7 +77,7 @@ namespace GBX.NET
 
         public void Discover() => throw new NotSupportedException("Cannot discover an unknown header chunk.");
 
-        public void ReadWrite(Node n, GameBoxReaderWriter rw) => ReadWrite(rw);
+        public void ReadWrite(CMwNod n, GameBoxReaderWriter rw) => ReadWrite(rw);
 
         public void ReadWrite(GameBoxReaderWriter rw)
         {

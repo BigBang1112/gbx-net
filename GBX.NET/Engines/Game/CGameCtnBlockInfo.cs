@@ -1,5 +1,6 @@
 ﻿using GBX.NET.Engines.GameData;
 using GBX.NET.Engines.Scene;
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Game
 {
@@ -21,8 +22,8 @@ namespace GBX.NET.Engines.Game
         public CGameCtnBlockInfoVariantAir VariantBaseAir { get; set; }
         public CGameCtnBlockInfoVariantGround[] AdditionalVariantsGround { get; set; }
         public CGameCtnBlockInfoVariantAir[] AdditionalVariantsAir { get; set; }
-        public Node CharPhySpecialProperty { get; set; }
-        public Node CharPhySpecialPropertyCustomizable { get; set; }
+        public CMwNod CharPhySpecialProperty { get; set; }
+        public CMwNod CharPhySpecialPropertyCustomizable { get; set; }
         public CGamePodiumInfo PodiumInfo { get; set; }
         public CGamePodiumInfo IntroInfo { get; set; }
         public bool IconAutoUseGround { get; set; }
@@ -88,7 +89,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0304E00E)]
         public class Chunk0304E00E : Chunk<CGameCtnBlockInfo>
         {
-            public Node[] Unknown1 { get; set; }
+            public CMwNod[] Unknown1 { get; set; }
 
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {

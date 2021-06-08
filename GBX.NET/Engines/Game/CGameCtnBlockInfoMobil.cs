@@ -1,10 +1,11 @@
 ﻿using GBX.NET.Engines.GameData;
 using GBX.NET.Engines.Plug;
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03122000)]
-    public class CGameCtnBlockInfoMobil : Node
+    public class CGameCtnBlockInfoMobil : CMwNod
     {
         public CPlugRoadChunk[] RoadChunks { get; set; }
         public CGameCtnBlockInfoMobilLink[] DynaLinks { get; set; }

@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Game
 {
@@ -7,7 +7,7 @@ namespace GBX.NET.Engines.Game
     /// </summary>
     /// <remarks>A list of puzzle pieces.</remarks>
     [Node(0x0301B000)]
-    public class CGameCtnCollectorList : Node
+    public class CGameCtnCollectorList : CMwNod
     {
         #region Properties
 

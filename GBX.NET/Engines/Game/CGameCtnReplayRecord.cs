@@ -5,11 +5,12 @@ using System.Diagnostics;
 
 using GBX.NET.Engines.TrackMania;
 using GBX.NET.Engines.Plug;
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03093000)]
-    public class CGameCtnReplayRecord : Node, CGameCtnReplayRecord.IHeader
+    public class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     {
         #region Fields
 

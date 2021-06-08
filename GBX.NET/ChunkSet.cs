@@ -6,12 +6,14 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
+using GBX.NET.Engines.MwFoundations;
+
 namespace GBX.NET
 {
     public class ChunkSet : SortedSet<Chunk>
     {
         [IgnoreDataMember]
-        public Node Node { get; set; }
+        public CMwNod Node { get; set; }
 
         public ChunkSet() : base()
         {

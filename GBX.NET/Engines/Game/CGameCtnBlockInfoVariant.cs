@@ -1,7 +1,9 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using GBX.NET.Engines.MwFoundations;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x0315B000)]
-    public class CGameCtnBlockInfoVariant : Node
+    public class CGameCtnBlockInfoVariant : CMwNod
     {
         public string Name { get; set; }
         public CGameCtnBlockInfoMobil[] Mobils { get; set; }

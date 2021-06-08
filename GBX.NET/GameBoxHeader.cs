@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
+
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET
 {
-    public class GameBoxHeader<T> : GameBoxPart where T : Node
+    public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
     {
         public ChunkSet Chunks { get; set; }
 
@@ -105,13 +105,13 @@ namespace GBX.NET
                             var chunkId = Chunk.Remap(chunkInfo.Key);
                             var nodeId = chunkId & 0xFFFFF000;
 
-                            if (!Node.AvailableClasses.TryGetValue(nodeId, out Type nodeType))
-                                Log.Write($"Node ID 0x{nodeId:X8} is not implemented. This occurs only in the header therefore it's not a fatal problem. ({Node.Names.Where(x => x.Key == nodeId).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
+                            if (!CMwNod.AvailableClasses.TryGetValue(nodeId, out Type nodeType))
+                                Log.Write($"Node ID 0x{nodeId:X8} is not implemented. This occurs only in the header therefore it's not a fatal problem. ({CMwNod.Names.Where(x => x.Key == nodeId).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
 
                             var chunkTypes = new Dictionary<uint, Type>();
 
                             if (nodeType != null)
-                                Node.AvailableHeaderChunkClasses.TryGetValue(nodeType, out chunkTypes);
+                                CMwNod.AvailableHeaderChunkClasses.TryGetValue(nodeType, out chunkTypes);
 
                             var d = r.ReadBytes(chunkInfo.Value.Size);
                             Chunk chunk = null;

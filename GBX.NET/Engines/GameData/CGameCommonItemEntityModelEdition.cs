@@ -1,10 +1,10 @@
 ﻿using GBX.NET.Engines.Plug;
-using System.Diagnostics;
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E026000)]
-    public class CGameCommonItemEntityModelEdition : Node
+    public class CGameCommonItemEntityModelEdition : CMwNod
     {
         #region Enums
 

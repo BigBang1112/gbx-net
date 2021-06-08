@@ -6,9 +6,11 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 
+using GBX.NET.Engines.MwFoundations;
+
 namespace GBX.NET
 {
-    public class GameBoxBody<T> : GameBoxPart, IGameBoxBody where T : Node
+    public class GameBoxBody<T> : GameBoxPart, IGameBoxBody where T : CMwNod
     {
         private bool checkedForLzo;
         private MethodInfo methodLzoCompress;
@@ -18,7 +20,7 @@ namespace GBX.NET
         public bool Aborting { get; private set; }
 
         [IgnoreDataMember]
-        public SortedDictionary<int, Node> AuxilaryNodes { get; } = new SortedDictionary<int, Node>();
+        public SortedDictionary<int, CMwNod> AuxilaryNodes { get; } = new SortedDictionary<int, CMwNod>();
 
         public new GameBox<T> GBX => (GameBox<T>)base.GBX;
 
@@ -45,7 +47,7 @@ namespace GBX.NET
 
         public void Read(GameBoxReader reader, IProgress<GameBoxReadProgress> progress = null)
         {
-            GBX.MainNode = Node.Parse(reader, GBX.ID.Value, GBX, progress);
+            GBX.MainNode = CMwNod.Parse(reader, GBX.ID.Value, GBX, progress);
 
             using (MemoryStream ms = new MemoryStream())
             {

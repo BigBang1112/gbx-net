@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.System
 {
     [Node(0x0B005000)]
-    public class CSystemConfig : Node
+    public class CSystemConfig : CMwNod
     {
         #region Fields
 

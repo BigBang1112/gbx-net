@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
+﻿using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E009000)]
-    public class CGameWaypointSpecialProperty : Node
+    public class CGameWaypointSpecialProperty : CMwNod
     {
         #region Properties
 

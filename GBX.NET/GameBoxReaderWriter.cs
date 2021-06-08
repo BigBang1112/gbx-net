@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Numerics;
-using System.Text;
+
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET
 {
@@ -140,22 +138,22 @@ namespace GBX.NET
             array = Array(array, forLoopRead, forLoopWrite);
         }
 
-        public T[] ArrayNode<T>(T[] array) where T : Node
+        public T[] ArrayNode<T>(T[] array) where T : CMwNod
         {
             return Array(array, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
 
-        public void ArrayNode<T>(ref T[] array) where T : Node
+        public void ArrayNode<T>(ref T[] array) where T : CMwNod
         {
             array = Array(array, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
 
-        public IEnumerable<T> Enumerable<T>(IEnumerable<T> enumerable) where T : Node
+        public IEnumerable<T> Enumerable<T>(IEnumerable<T> enumerable) where T : CMwNod
         {
             return Array(enumerable?.ToArray());
         }
 
-        public void Enumerable<T>(ref IEnumerable<T> enumerable) where T : Node
+        public void Enumerable<T>(ref IEnumerable<T> enumerable) where T : CMwNod
         {
             enumerable = Enumerable(enumerable);
         }
@@ -200,22 +198,22 @@ namespace GBX.NET
             enumerable = Enumerable(enumerable, forLoopRead, forLoopWrite);
         }
 
-        public IEnumerable<T> EnumerableNode<T>(IEnumerable<T> enumerable) where T : Node
+        public IEnumerable<T> EnumerableNode<T>(IEnumerable<T> enumerable) where T : CMwNod
         {
             return Enumerable(enumerable, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
 
-        public void EnumerableNode<T>(ref IEnumerable<T> enumerable) where T : Node
+        public void EnumerableNode<T>(ref IEnumerable<T> enumerable) where T : CMwNod
         {
             enumerable = Enumerable(enumerable, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
 
-        public List<T> List<T>(List<T> list) where T : Node
+        public List<T> List<T>(List<T> list) where T : CMwNod
         {
             return Enumerable(list).ToList();
         }
 
-        public void List<T>(ref List<T> list) where T : Node
+        public void List<T>(ref List<T> list) where T : CMwNod
         {
             list = List(list);
         }
@@ -260,12 +258,12 @@ namespace GBX.NET
             list = List(list, forLoopRead, forLoopWrite);
         }
 
-        public List<T> ListNode<T>(List<T> list) where T : Node
+        public List<T> ListNode<T>(List<T> list) where T : CMwNod
         {
             return List(list, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
 
-        public void ListNode<T>(ref List<T> list) where T : Node
+        public void ListNode<T>(ref List<T> list) where T : CMwNod
         {
             list = List(list, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
@@ -282,14 +280,14 @@ namespace GBX.NET
             dictionary = Dictionary(dictionary);
         }
 
-        public Dictionary<TKey, TValue> NodeDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary) where TValue : Node
+        public Dictionary<TKey, TValue> NodeDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary) where TValue : CMwNod
         {
             if (Reader != null) return Reader.ReadNodeDictionary<TKey, TValue>();
             else if (Writer != null) Writer.WriteNodeDictionary(dictionary);
             return dictionary;
         }
 
-        public void NodeDictionary<TKey, TValue>(ref Dictionary<TKey, TValue> dictionary) where TValue : Node
+        public void NodeDictionary<TKey, TValue>(ref Dictionary<TKey, TValue> dictionary) where TValue : CMwNod
         {
             dictionary = NodeDictionary(dictionary);
         }
@@ -801,26 +799,26 @@ namespace GBX.NET
             }
         }
 
-        public Node NodeRef(Node variable, IGameBoxBody body)
+        public CMwNod NodeRef(CMwNod variable, IGameBoxBody body)
         {
             if (Reader != null) return Reader.ReadNodeRef(body);
             else if (Writer != null) Writer.Write(variable, body);
             return variable;
         }
 
-        public void NodeRef(ref Node variable, IGameBoxBody body)
+        public void NodeRef(ref CMwNod variable, IGameBoxBody body)
         {
             variable = NodeRef(variable, body);
         }
 
-        public Node NodeRef(Node variable)
+        public CMwNod NodeRef(CMwNod variable)
         {
             if (Reader != null) return NodeRef(variable, (IGameBoxBody)Reader.Lookbackable);
             else if (Writer != null) return NodeRef(variable, (IGameBoxBody)Writer.Lookbackable);
             throw new Exception();
         }
 
-        public void NodeRef(ref Node variable)
+        public void NodeRef(ref CMwNod variable)
         {
             variable = NodeRef(variable);
         }
@@ -846,26 +844,26 @@ namespace GBX.NET
             else throw new Exception();
         }
 
-        public T NodeRef<T>(T variable, IGameBoxBody body) where T : Node
+        public T NodeRef<T>(T variable, IGameBoxBody body) where T : CMwNod
         {
             if (Reader != null) return Reader.ReadNodeRef<T>(body);
             else if (Writer != null) Writer.Write(variable, body);
             return variable;
         }
 
-        public void NodeRef<T>(ref T variable, IGameBoxBody body) where T : Node
+        public void NodeRef<T>(ref T variable, IGameBoxBody body) where T : CMwNod
         {
             variable = NodeRef(variable, body);
         }
 
-        public T NodeRef<T>(T variable) where T : Node
+        public T NodeRef<T>(T variable) where T : CMwNod
         {
             if (Reader != null) return NodeRef(variable, (IGameBoxBody)Reader.Lookbackable);
             else if (Writer != null) return NodeRef(variable, (IGameBoxBody)Writer.Lookbackable);
             else throw new Exception();
         }
 
-        public void NodeRef<T>(ref T variable) where T : Node
+        public void NodeRef<T>(ref T variable) where T : CMwNod
         {
             variable = NodeRef(variable);
         }
