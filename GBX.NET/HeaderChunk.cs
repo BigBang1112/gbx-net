@@ -51,13 +51,6 @@ namespace GBX.NET
         }
 
         public byte[] Data { get; set; }
-        public CMwNod Node { get => throw new NotSupportedException(); set => throw new NotSupportedException(); }
-
-        public int Progress
-        {
-            get => 0;
-            set => throw new NotSupportedException("Cannot progress reading of an unknown header chunk.");
-        }
 
         public bool IsHeavy { get; set; }
 
