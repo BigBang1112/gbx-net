@@ -3865,7 +3865,7 @@ namespace GBX.NET.Engines.Game
                                 }
                             }
 
-                            var item = gbxItem.MainNode;
+                            var item = gbxItem.Node;
 
                             embedded.Add(new Ident(id,
                                 item.Ident.Collection,

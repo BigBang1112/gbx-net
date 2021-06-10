@@ -34,10 +34,10 @@ namespace GBX.NET
         /// <summary>
         /// Deserialized node from GBX.
         /// </summary>
-        public new T MainNode
+        public new T Node
         {
-            get => (T)base.MainNode;
-            set => base.MainNode = value;
+            get => (T)base.Node;
+            set => base.Node = value;
         }
 
         /// <summary>
@@ -57,8 +57,8 @@ namespace GBX.NET
             Header = new GameBoxHeader<T>(this);
             Body = new GameBoxBody<T>(this);
 
-            MainNode = (T)Activator.CreateInstance(typeof(T)); // TODO: new T
-            MainNode.GBX = this;
+            Node = (T)Activator.CreateInstance(typeof(T)); // TODO: new T
+            Node.GBX = this;
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace GBX.NET
             // It needs to be sure that GBX is assigned correctly to every node
             AssignGBXToNode(this, node);
 
-            MainNode = node;
+            Node = node;
             ID = node.ID;
         }
 
@@ -86,7 +86,7 @@ namespace GBX.NET
 
         private void AssignGBXToNode()
         {
-            AssignGBXToNode(this, MainNode);
+            AssignGBXToNode(this, Node);
         }
 
         private void AssignGBXToNode(GameBox gbx, CMwNod n)
@@ -158,7 +158,7 @@ namespace GBX.NET
         /// <returns>A newly created chunk.</returns>
         public TChunk CreateBodyChunk<TChunk>(byte[] data) where TChunk : Chunk
         {
-            return MainNode.Chunks.Create<TChunk>(data);
+            return Node.Chunks.Create<TChunk>(data);
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace GBX.NET
         /// </summary>
         public void RemoveAllBodyChunks()
         {
-            MainNode.Chunks.Clear();
+            Node.Chunks.Clear();
         }
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace GBX.NET
         /// <returns>True, if the chunk was removed, otherwise false.</returns>
         public bool RemoveBodyChunk<TChunk>() where TChunk : Chunk
         {
-            return MainNode.Chunks.Remove<TChunk>();
+            return Node.Chunks.Remove<TChunk>();
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace GBX.NET
         /// <exception cref="AggregateException"/>
         public void DiscoverAllChunks()
         {
-            MainNode.DiscoverAllChunks();
+            Node.DiscoverAllChunks();
         }
 
         protected override bool ProcessHeader(IProgress<GameBoxReadProgress> progress)
@@ -358,10 +358,10 @@ namespace GBX.NET
         }
 
         /// <summary>
-        /// Implicitly casts <see cref="GameBox{T}"/> to its <see cref="GameBox{T}.MainNode"/>.
+        /// Implicitly casts <see cref="GameBox{T}"/> to its <see cref="GameBox{T}.Node"/>.
         /// </summary>
         /// <param name="gbx"></param>
-        public static implicit operator T(GameBox<T> gbx) => gbx.MainNode;
+        public static implicit operator T(GameBox<T> gbx) => gbx.Node;
     }
 
     /// <summary>
@@ -383,7 +383,7 @@ namespace GBX.NET
 
         public GameBoxBody Body { get; protected set; }
 
-        public CMwNod MainNode { get; internal set; }
+        public CMwNod Node { get; internal set; }
 
         /// <summary>
         /// ID of the node.
@@ -527,10 +527,10 @@ namespace GBX.NET
         }
 
         /// <summary>
-        /// Implicitly casts <see cref="GameBox"/> to its <see cref="MainNode"/>.
+        /// Implicitly casts <see cref="GameBox"/> to its <see cref="Node"/>.
         /// </summary>
         /// <param name="gbx"></param>
-        public static implicit operator CMwNod(GameBox gbx) => gbx.MainNode;
+        public static implicit operator CMwNod(GameBox gbx) => gbx.Node;
 
         private static GameBox ParseHeader(GameBoxReader reader, IProgress<GameBoxReadProgress> progress = null)
         {
@@ -800,7 +800,7 @@ namespace GBX.NET
         /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
         public static CMwNod ParseNodeHeader(Stream stream, IProgress<GameBoxReadProgress> progress = null)
         {
-            return ParseHeader(stream, progress).MainNode;
+            return ParseHeader(stream, progress).Node;
         }
 
         /// <summary>

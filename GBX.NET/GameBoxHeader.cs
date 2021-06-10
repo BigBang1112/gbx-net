@@ -123,7 +123,7 @@ namespace GBX.NET
                                 if (constructorParams.Length == 0)
                                 {
                                     Chunk headerChunk = (Chunk)constructor.Invoke(new object[0]);
-                                    headerChunk.Node = gbx.MainNode;
+                                    headerChunk.Node = gbx.Node;
                                     headerChunk.GBX = GBX;
                                     ((IHeaderChunk)headerChunk).Data = d;
                                     if (d == null || d.Length == 0)
@@ -131,21 +131,21 @@ namespace GBX.NET
                                     chunk = (Chunk)headerChunk;
                                 }
                                 else if (constructorParams.Length == 2)
-                                    chunk = (HeaderChunk<T>)constructor.Invoke(new object[] { gbx.MainNode, d });
+                                    chunk = (HeaderChunk<T>)constructor.Invoke(new object[] { gbx.Node, d });
                                 else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
 
                                 using (var msChunk = new MemoryStream(d))
                                 using (var rChunk = new GameBoxReader(msChunk, this))
                                 {
                                     var rw = new GameBoxReaderWriter(rChunk);
-                                    chunk.ReadWrite(gbx.MainNode, rw);
+                                    chunk.ReadWrite(gbx.Node, rw);
                                     ((ISkippableChunk)chunk).Discovered = true;
                                 }
 
                                 ((IHeaderChunk)chunk).IsHeavy = chunkInfo.Value.IsHeavy;
                             }
                             else if (nodeType != null)
-                                chunk = (Chunk)Activator.CreateInstance(typeof(HeaderChunk<>).MakeGenericType(nodeType), gbx.MainNode, chunkId, d);
+                                chunk = (Chunk)Activator.CreateInstance(typeof(HeaderChunk<>).MakeGenericType(nodeType), gbx.Node, chunkId, d);
                             else
                                 chunk = new HeaderChunk(chunkId, d) { IsHeavy = chunkInfo.Value.IsHeavy };
 
@@ -196,7 +196,7 @@ namespace GBX.NET
 
                                 var pos = userData.Position;
                                 if (((ISkippableChunk)chunk).Discovered)
-                                    chunk.ReadWrite(((GameBox<T>)GBX).MainNode, gbxrw);
+                                    chunk.ReadWrite(((GameBox<T>)GBX).Node, gbxrw);
                                 else
                                     ((ISkippableChunk)chunk).Write(gbxw);
 
