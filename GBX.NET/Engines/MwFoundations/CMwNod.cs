@@ -655,11 +655,11 @@ namespace GBX.NET.Engines.MwFoundations
         /// <summary>
         /// Makes a <see cref="GameBox"/> from this node. NOTE: Non-generic <see cref="GameBox"/> doesn't have a Save method.
         /// </summary>
-        /// <param name="header"></param>
+        /// <param name="headerInfo"></param>
         /// <returns></returns>
-        public GameBox ToGBX(GameBoxHeader header)
+        public GameBox ToGBX(GameBoxHeaderInfo headerInfo)
         {
-            return (GameBox)Activator.CreateInstance(typeof(GameBox<>).MakeGenericType(GetType()), this, header);
+            return (GameBox)Activator.CreateInstance(typeof(GameBox<>).MakeGenericType(GetType()), this, headerInfo);
         }
 
         /// <summary>

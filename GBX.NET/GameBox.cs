@@ -39,17 +39,16 @@ namespace GBX.NET
         /// <summary>
         /// Creates an empty GameBox object version 6.
         /// </summary>
-        public GameBox() : base(typeof(T).GetCustomAttribute<NodeAttribute>().ID)
+        public GameBox() : this(new GameBoxHeaderInfo(typeof(T).GetCustomAttribute<NodeAttribute>().ID))
         {
-            Header = new GameBoxHeader<T>(this);
-            Body = new GameBoxBody<T>(this);
+            
         }
 
         /// <summary>
-        /// Creates an empty GameBox object based on defined <see cref="GameBoxHeader"/>.
+        /// Creates an empty GameBox object based on defined <see cref="GameBoxHeaderInfo"/>.
         /// </summary>
         /// <param name="header">Header info to use.</param>
-        public GameBox(GameBoxHeader header) : base(header)
+        public GameBox(GameBoxHeaderInfo header) : base(header)
         {
             Header = new GameBoxHeader<T>(this);
             Body = new GameBoxBody<T>(this);
@@ -62,8 +61,8 @@ namespace GBX.NET
         /// Creates a GameBox object based on an existing node. Useful for saving nodes to GBX files.
         /// </summary>
         /// <param name="node">Node to wrap.</param>
-        /// <param name="header">Header info to use.</param>
-        public GameBox(T node, GameBoxHeader header) : this(header)
+        /// <param name="headerInfo">Header info to use.</param>
+        public GameBox(T node, GameBoxHeaderInfo headerInfo) : this(headerInfo)
         {
             // It needs to be sure that GBX is assigned correctly to every node
             AssignGBXToNode(this, node);
@@ -376,7 +375,7 @@ namespace GBX.NET
         /// <summary>
         /// Header part containing generic GameBox values.
         /// </summary>
-        public GameBoxHeader Header { get; }
+        public GameBoxHeaderInfo Header { get; }
 
         public GameBoxBody Body { get; protected set; }
 
@@ -404,16 +403,16 @@ namespace GBX.NET
         /// </summary>
         public GameBox(uint id)
         {
-            Header = new GameBoxHeader(this, id);
+            Header = new GameBoxHeaderInfo(id);
         }
 
         /// <summary>
-        /// Creates an empty GameBox object based on defined <see cref="GameBoxHeader"/>.
+        /// Creates an empty GameBox object based on defined <see cref="GameBoxHeaderInfo"/>.
         /// </summary>
-        /// <param name="header">Header info to use.</param>
-        public GameBox(GameBoxHeader header)
+        /// <param name="headerInfo">Header info to use.</param>
+        public GameBox(GameBoxHeaderInfo headerInfo)
         {
-            Header = header ?? throw new ArgumentNullException(nameof(header));
+            Header = headerInfo ?? throw new ArgumentNullException(nameof(headerInfo));
         }
 
         /// <summary>
@@ -523,7 +522,7 @@ namespace GBX.NET
 
         private static GameBox ParseHeader(GameBoxReader reader, IProgress<GameBoxReadProgress> progress = null)
         {
-            var header = new GameBoxHeader(reader);
+            var header = new GameBoxHeaderInfo(reader);
 
             progress?.Report(new GameBoxReadProgress(header));
 

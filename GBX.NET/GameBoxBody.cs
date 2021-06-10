@@ -10,7 +10,7 @@ using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET
 {
-    public class GameBoxBody : GameBoxPart
+    public abstract class GameBoxBody : GameBoxPart
     {
         [IgnoreDataMember]
         public SortedDictionary<int, CMwNod> AuxilaryNodes { get; }
