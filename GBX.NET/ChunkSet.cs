@@ -44,31 +44,26 @@ namespace GBX.NET
                 return (T)c;
 
             T chunk = (T)Activator.CreateInstance(typeof(T));
+            chunk.Node = Node;
+            chunk.GBX = Node.GBX;
 
             if (chunk is ISkippableChunk s)
             {
                 s.Data = data;
-                s.Node = Node;
                 if (data == null || data.Length == 0)
                     s.Discovered = true;
 
                 chunk.OnLoad();
             }
-            else
+            else if (data.Length > 0)
             {
-                ((IChunk)chunk).Node = Node;
-                if (data.Length > 0)
+                using (var ms = new MemoryStream(data))
+                using (var r = new GameBoxReader(ms))
                 {
-                    using (var ms = new MemoryStream(data))
-                    using (var r = new GameBoxReader(ms))
-                    {
-                        var rw = new GameBoxReaderWriter(r);
-                        ((IChunk)chunk).ReadWrite(Node, rw);
-                    }
+                    var rw = new GameBoxReaderWriter(r);
+                    chunk.ReadWrite(Node, rw);
                 }
             }
-
-            chunk.Part = (GameBoxPart)Node?.Body;
 
             if (chunk is ILookbackable l) l.IdVersion = 3;
             Add(chunk);

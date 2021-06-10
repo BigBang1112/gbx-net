@@ -21,7 +21,7 @@ namespace GBX.NET.Engines.Plug
             public int UncompressedSize { get; private set; }
             public byte[] Data { get; private set; }
 
-            public override void Read(CPlugEntRecordData n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CPlugEntRecordData n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
                 UncompressedSize = r.ReadInt32();
@@ -236,7 +236,7 @@ namespace GBX.NET.Engines.Plug
                 });
             }
 
-            public override void Write(CPlugEntRecordData n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CPlugEntRecordData n, GameBoxWriter w)
             {
                 w.Write(Version);
                 w.Write(UncompressedSize);

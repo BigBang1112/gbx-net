@@ -6,13 +6,44 @@
     [Node(0x03161000)]
     public class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCameraEffect
     {
+        #region Fields
+
+        private string script;
+        private Key[] keys;
+        private float? start;
+        private float? end;
+
+        #endregion
+
         #region Properties
 
         [NodeMember]
-        public string Script { get; set; }
+        public string Script
+        {
+            get => script;
+            set => script = value;
+        }
 
         [NodeMember]
-        public Key[] Keys { get; set; }
+        public Key[] Keys
+        {
+            get => keys;
+            set => keys = value;
+        }
+
+        [NodeMember]
+        public float? Start
+        {
+            get => start;
+            set => start = value;
+        }
+
+        [NodeMember]
+        public float? End
+        {
+            get => end;
+            set => end = value;
+        }
 
         #endregion
 
@@ -33,10 +64,10 @@
                 Version = rw.Int32(Version);
                 n.Script = rw.String(n.Script);
 
-                if(Version == 0) // Unverified
+                if (Version == 0) // Unverified
                 {
-                    rw.Single(Unknown);
-                    rw.Single(Unknown);
+                    rw.Single(ref n.start);
+                    rw.Single(ref n.end);
                 }
 
                 n.Keys = rw.Array(n.Keys, i =>

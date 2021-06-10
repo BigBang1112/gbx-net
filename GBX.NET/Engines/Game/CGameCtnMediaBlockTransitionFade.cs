@@ -35,6 +35,8 @@
         [Chunk(0x030AB000)]
         public class Chunk030AB000 : Chunk<CGameCtnMediaBlockTransitionFade>
         {
+            public float U01;
+
             public override void ReadWrite(CGameCtnMediaBlockTransitionFade n, GameBoxReaderWriter rw)
             {
                 n.Keys = rw.Array(n.Keys, r => new Key()
@@ -49,7 +51,7 @@
                 });
 
                 rw.Vec3(ref n.color);
-                rw.Single(Unknown);
+                rw.Single(ref U01);
             }
         }
 

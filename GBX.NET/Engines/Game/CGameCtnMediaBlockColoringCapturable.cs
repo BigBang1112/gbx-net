@@ -23,26 +23,28 @@
         [Chunk(0x0316C000)]
         public class Chunk0316C000 : Chunk<CGameCtnMediaBlockColoringCapturable>
         {
+            public int U01;
+
             public int Version { get; set; }
 
             public override void ReadWrite(CGameCtnMediaBlockColoringCapturable n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
 
-                n.Keys = rw.Array(n.Keys, i => new Key()
+                n.Keys = rw.Array(n.Keys, r => new Key()
                 {
-                    Time = rw.Reader.ReadSingle(),
-                    Hue = rw.Reader.ReadSingle(),
-                    Gauge = rw.Reader.ReadSingle(),
-                    Emblem = rw.Reader.ReadInt32()
+                    Time = r.ReadSingle(),
+                    Hue = r.ReadSingle(),
+                    Gauge = r.ReadSingle(),
+                    Emblem = r.ReadInt32()
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.Hue);
-                    rw.Writer.Write(x.Gauge);
-                    rw.Writer.Write(x.Emblem);
+                    w.Write(x.Time);
+                    w.Write(x.Hue);
+                    w.Write(x.Gauge);
+                    w.Write(x.Emblem);
                 });
             }
         }

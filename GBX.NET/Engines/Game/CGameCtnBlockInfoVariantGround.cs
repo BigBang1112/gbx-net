@@ -12,13 +12,13 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfoVariantGround n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32();
+                rw.Int32();
                 n.AutoTerrains = rw.Array(n.AutoTerrains,
                     i => rw.Reader.ReadNodeRef<CGameCtnAutoTerrain>(),
                     x => rw.Writer.Write(x));
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32();
+                rw.Int32();
             }
         }
     }

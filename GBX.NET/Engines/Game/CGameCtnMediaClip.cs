@@ -50,6 +50,8 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03079002)]
         public class Chunk03079002 : Chunk<CGameCtnMediaClip>
         {
+            public int U01;
+
             public int Version { get; set; }
 
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
@@ -57,7 +59,7 @@ namespace GBX.NET.Engines.Game
                 Version = rw.Int32(Version);
                 n.Tracks = rw.ListNode(n.Tracks);
                 n.Name = rw.String(n.Name);
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
             }
         }
 
@@ -131,9 +133,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03079008)]
         public class Chunk03079008 : Chunk<CGameCtnMediaClip>
         {
+            public float U01;
+
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
-                rw.Single(Unknown); // 0.2
+                rw.Single(ref U01); // 0.2
             }
         }
 
@@ -144,9 +148,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03079009)]
         public class Chunk03079009 : Chunk<CGameCtnMediaClip>
         {
+            public string U01;
+
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
-                rw.String(Unknown);
+                rw.String(ref U01);
             }
         }
 
@@ -176,9 +182,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0307900B)]
         public class Chunk0307900B : Chunk<CGameCtnMediaClip>
         {
+            public bool U01;
+
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
-                rw.Boolean(Unknown); // 99% StopWhenRespawn
+                rw.Boolean(ref U01); // 99% StopWhenRespawn
             }
         }
 
@@ -189,9 +197,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0307900C)]
         public class Chunk0307900C : Chunk<CGameCtnMediaClip>
         {
+            public int U01;
+
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
             }
         }
 

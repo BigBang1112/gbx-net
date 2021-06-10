@@ -25,7 +25,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x030A1000)]
         public class Chunk030A1000 : Chunk<CGameCtnMediaBlockCameraPath>
         {
-            public override void Read(CGameCtnMediaBlockCameraPath n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaBlockCameraPath n, GameBoxReader r)
             {
                 n.Keys = r.ReadArray(r1 =>
                 {
@@ -60,7 +60,7 @@ namespace GBX.NET.Engines.Game
                 });
             }
 
-            public override void Write(CGameCtnMediaBlockCameraPath n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaBlockCameraPath n, GameBoxWriter w)
             {
                 w.Write(n.Keys, (x, w1) =>
                 {
@@ -92,7 +92,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x030A1002)]
         public class Chunk030A1002 : Chunk<CGameCtnMediaBlockCameraPath>
         {
-            public override void Read(CGameCtnMediaBlockCameraPath n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaBlockCameraPath n, GameBoxReader r)
             {
                 n.Keys = r.ReadArray(r1 =>
                 {
@@ -127,7 +127,7 @@ namespace GBX.NET.Engines.Game
                 });
             }
 
-            public override void Write(CGameCtnMediaBlockCameraPath n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaBlockCameraPath n, GameBoxWriter w)
             {
                 w.Write(n.Keys, (x, w1) =>
                 {
@@ -161,7 +161,7 @@ namespace GBX.NET.Engines.Game
         {
             public int Version { get; set; }
 
-            public override void Read(CGameCtnMediaBlockCameraPath n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaBlockCameraPath n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
 
@@ -203,7 +203,7 @@ namespace GBX.NET.Engines.Game
                 });
             }
 
-            public override void Write(CGameCtnMediaBlockCameraPath n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaBlockCameraPath n, GameBoxWriter w)
             {
                 w.Write(Version);
 

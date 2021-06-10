@@ -23,7 +23,7 @@
         [Chunk(0x03083001)]
         public class Chunk03083001 : Chunk<CGameCtnMediaBlockFxBloom>
         {
-            public override void Read(CGameCtnMediaBlockFxBloom n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaBlockFxBloom n, GameBoxReader r)
             {
                 n.Keys = r.ReadArray(r1 =>
                 {
@@ -36,7 +36,7 @@
                 });
             }
 
-            public override void Write(CGameCtnMediaBlockFxBloom n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaBlockFxBloom n, GameBoxWriter w)
             {
                 w.Write(n.Keys, (x, w1) =>
                 {

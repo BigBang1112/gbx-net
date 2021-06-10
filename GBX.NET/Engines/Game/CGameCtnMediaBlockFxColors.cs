@@ -16,7 +16,7 @@
         [Chunk(0x03080003)]
         public class Chunk03080003 : Chunk<CGameCtnMediaBlockFxColors>
         {
-            public override void Read(CGameCtnMediaBlockFxColors n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaBlockFxColors n, GameBoxReader r)
             {
                 n.Keys = r.ReadArray(r1 => new Key()
                 {
@@ -48,7 +48,7 @@
                 });
             }
 
-            public override void Write(CGameCtnMediaBlockFxColors n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaBlockFxColors n, GameBoxWriter w)
             {
                 w.Write(n.Keys, (x, w1) =>
                 {

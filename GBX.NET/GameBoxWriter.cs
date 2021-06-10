@@ -15,8 +15,18 @@ namespace GBX.NET
     /// </summary>
     public class GameBoxWriter : BinaryWriter
     {
+        public GameBoxBody Body { get; }
         public ILookbackable Lookbackable { get; }
-        public Chunk Chunk { get; internal set; }
+
+        public GameBox GBX
+        {
+            get
+            {
+                if (Body != null)
+                    return Body.GBX;
+                return Lookbackable.GBX;
+            }
+        }
 
         public GameBoxWriter(Stream output) : base(output, Encoding.UTF8, true)
         {
@@ -26,12 +36,9 @@ namespace GBX.NET
         public GameBoxWriter(Stream output, ILookbackable lookbackable) : this(output)
         {
             Lookbackable = lookbackable;
-        }
 
-        public GameBoxWriter(Stream output, GameBoxWriter reference) : this(output)
-        {
-            Lookbackable = reference.Lookbackable;
-            Chunk = reference.Chunk;
+            if (lookbackable is GameBoxBody b)
+                Body = b;
         }
 
         public void Write(string value, StringLengthPrefix lengthPrefix)
@@ -261,7 +268,7 @@ namespace GBX.NET
             Write(ident, Lookbackable);
         }
 
-        public void Write(CMwNod node, IGameBoxBody body)
+        public void Write(CMwNod node, GameBoxBody body)
         {
             if (node == null)
                 Write(-1);
@@ -283,7 +290,7 @@ namespace GBX.NET
 
         public void Write(CMwNod node)
         {
-            Write(node, (IGameBoxBody)Lookbackable);
+            Write(node, Body);
         }
 
         public void Write(TimeSpan? timeSpan)
@@ -332,7 +339,7 @@ namespace GBX.NET
                 node.Write(this);
 
                 string logProgress = $"[{nodeType.FullName.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::")}] {counter + 1}/{count} ({watch.Elapsed.TotalMilliseconds}ms)";
-                if (Chunk.Part == null || !Chunk.Part.GBX.ID.HasValue || CMwNod.Remap(Chunk.Part.GBX.ID.Value) != node.ID)
+                if (GBX == null || !GBX.ID.HasValue || CMwNod.Remap(GBX.ID.Value) != node.ID)
                     logProgress = "~ " + logProgress;
 
                 Log.Write(logProgress, ConsoleColor.Magenta);

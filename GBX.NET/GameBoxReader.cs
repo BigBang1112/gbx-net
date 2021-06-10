@@ -14,8 +14,18 @@ namespace GBX.NET
     /// </summary>
     public class GameBoxReader : BinaryReader
     {
-        public ILookbackable Lookbackable { get; internal set; }
-        public Chunk Chunk { get; internal set; }
+        public GameBoxBody Body { get; }
+        public ILookbackable Lookbackable { get; }
+
+        public GameBox GBX
+        {
+            get
+            {
+                if (Body != null)
+                    return Body.GBX;
+                return Lookbackable.GBX;
+            }
+        }
 
         public GameBoxReader(Stream input) : base(input, Encoding.UTF8, true)
         {
@@ -25,6 +35,9 @@ namespace GBX.NET
         public GameBoxReader(Stream input, ILookbackable lookbackable) : this(input)
         {
             Lookbackable = lookbackable;
+
+            if (lookbackable is GameBoxBody b)
+                Body = b;
         }
 
         /// <summary>
@@ -182,7 +195,7 @@ namespace GBX.NET
             return ReadIdent(Lookbackable);
         }
 
-        public T ReadNodeRef<T>(IGameBoxBody body) where T : CMwNod
+        public T ReadNodeRef<T>(GameBoxBody body) where T : CMwNod
         {
             var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
@@ -202,17 +215,17 @@ namespace GBX.NET
 
         public T ReadNodeRef<T>() where T : CMwNod
         {
-            return ReadNodeRef<T>((IGameBoxBody)Lookbackable);
+            return ReadNodeRef<T>(Body);
         }
 
-        public CMwNod ReadNodeRef(IGameBoxBody body)
+        public CMwNod ReadNodeRef(GameBoxBody body)
         {
             return ReadNodeRef<CMwNod>(body);
         }
 
         public CMwNod ReadNodeRef()
         {
-            return ReadNodeRef<CMwNod>((IGameBoxBody)Lookbackable);
+            return ReadNodeRef<CMwNod>(Body);
         }
 
         public FileRef ReadFileRef()
@@ -482,7 +495,7 @@ namespace GBX.NET
             return (pos, quaternion, speed, velocity);
         }
 
-        public byte[] ReadTill(uint uint32)
+        public byte[] ReadUntil(uint uint32)
         {
             List<byte> bytes = new List<byte>();
             while (PeekUInt32() != uint32)
@@ -490,9 +503,9 @@ namespace GBX.NET
             return bytes.ToArray();
         }
 
-        public byte[] ReadTillFacade()
+        public byte[] ReadUntilFacade()
         {
-            return ReadTill(0xFACADE01);
+            return ReadUntil(0xFACADE01);
         }
 
         public byte[] ReadToEnd()
@@ -500,14 +513,14 @@ namespace GBX.NET
             return ReadBytes((int)(BaseStream.Length - BaseStream.Position));
         }
 
-        public string ReadStringTillFacade()
+        public string ReadStringUntilFacade()
         {
-            return Encoding.UTF8.GetString(ReadTillFacade());
+            return Encoding.UTF8.GetString(ReadUntilFacade());
         }
 
-        public T[] ReadArrayTillFacade<T>()
+        public T[] ReadArrayUntilFacade<T>()
         {
-            var bytes = ReadTillFacade();
+            var bytes = ReadUntilFacade();
 
             var array = new T[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T)))];
             Buffer.BlockCopy(bytes, 0, array, 0, bytes.Length);
@@ -515,9 +528,9 @@ namespace GBX.NET
             return array;
         }
 
-        public (T1[], T2[]) ReadArrayTillFacade<T1, T2>()
+        public (T1[], T2[]) ReadArrayUntilFacade<T1, T2>()
         {
-            var bytes = ReadTillFacade();
+            var bytes = ReadUntilFacade();
 
             var array = new T1[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T1)))];
             Buffer.BlockCopy(bytes, 0, array, 0, bytes.Length);
@@ -528,9 +541,9 @@ namespace GBX.NET
             return (array, array2);
         }
 
-        public (T1[], T2[], T3[]) ReadArrayTillFacade<T1, T2, T3>()
+        public (T1[], T2[], T3[]) ReadArrayUntilFacade<T1, T2, T3>()
         {
-            var bytes = ReadTillFacade();
+            var bytes = ReadUntilFacade();
 
             var array = new T1[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T1)))];
             Buffer.BlockCopy(bytes, 0, array, 0, bytes.Length);

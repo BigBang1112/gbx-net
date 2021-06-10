@@ -19,7 +19,7 @@
         {
             public int Version { get; set; }
 
-            public override void Read(CGameCtnMediaBlockFog n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaBlockFog n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
                 n.Keys = r.ReadArray(r1 =>
@@ -60,7 +60,7 @@
                 });
             }
 
-            public override void Write(CGameCtnMediaBlockFog n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaBlockFog n, GameBoxWriter w)
             {
                 w.Write(Version);
 

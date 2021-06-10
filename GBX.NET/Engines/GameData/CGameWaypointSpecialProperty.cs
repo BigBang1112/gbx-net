@@ -51,10 +51,25 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E009001)]
         public class Chunk2E009001 : SkippableChunk<CGameWaypointSpecialProperty>
         {
+            private int u01;
+            private int u02;
+
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public int U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
+
             public override void ReadWrite(CGameWaypointSpecialProperty n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32(ref u01);
+                rw.Int32(ref u02);
             }
         }
 

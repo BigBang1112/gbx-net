@@ -10,15 +10,13 @@ using System.Runtime.Serialization;
 namespace GBX.NET.Engines.MwFoundations
 {
     [Node(0x01001000)]
-    public abstract class CMwNod
+    public class CMwNod
     {
         public static Dictionary<uint, string> Names { get; }
         public static Dictionary<uint, uint> Mappings { get; } // key: older, value: newer
 
         [IgnoreDataMember]
-        public IGameBoxBody Body { get; set; }
-        [IgnoreDataMember]
-        public GameBox GBX => Body?.GBX;
+        public GameBox GBX { get; internal set; }
 
         public ChunkSet Chunks { get; internal set; } = new ChunkSet();
 
@@ -55,14 +53,9 @@ namespace GBX.NET.Engines.MwFoundations
         public static Dictionary<Type, Dictionary<uint, Type>> AvailableChunkClasses { get; }
         public static Dictionary<Type, Dictionary<uint, Type>> AvailableHeaderChunkClasses { get; }
 
-        protected CMwNod()
+        internal CMwNod()
         {
             ID = GetType().GetCustomAttribute<NodeAttribute>().ID;
-        }
-
-        protected CMwNod(uint classID)
-        {
-            ID = classID;
         }
 
         protected CMwNod(params Chunk[] chunks) : this()
@@ -76,23 +69,6 @@ namespace GBX.NET.Engines.MwFoundations
             }
         }
 
-        #region Chunks
-
-        #region 0x000 chunk (FolderDep)
-
-        [Chunk(0x01001000)]
-        public class Chunk01001000 : Chunk<CMwNod>
-        {
-            public override void ReadWrite(CMwNod n, GameBoxReaderWriter rw)
-            {
-                n.Dependencies = rw.Array(n.Dependencies, i => rw.Reader.ReadString(), x => rw.Writer.Write(x));
-            }
-        }
-
-        #endregion
-
-        #endregion
-
         public static T[] ParseArray<T>(GameBoxReader r) where T : CMwNod
         {
             var count = r.ReadInt32();
@@ -104,10 +80,8 @@ namespace GBX.NET.Engines.MwFoundations
             return array;
         }
 
-        public static T Parse<T>(GameBoxReader r, uint? classID = null, GameBox<T> gbx = null, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
+        public static T Parse<T>(GameBoxReader r, uint? classID = null, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
         {
-            var stopwatch = Stopwatch.StartNew();
-
             if (!classID.HasValue)
                 classID = r.ReadUInt32();
 
@@ -118,20 +92,20 @@ namespace GBX.NET.Engines.MwFoundations
             if (!AvailableClasses.TryGetValue(classID.Value, out Type type))
                 throw new NotImplementedException($"Node ID 0x{classID.Value:X8} is not implemented. ({Names.Where(x => x.Key == Chunk.Remap(classID.Value)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
 
-            T node;
-            if (gbx == null)
-                node = (T)Activator.CreateInstance(type);
-            else
-                node = gbx.MainNode;
+            var node = (T)Activator.CreateInstance(type);
 
-            IGameBoxBody body;
+            Parse(node, r, progress);
 
-            if (r.Lookbackable is Chunk ch)
-                body = (IGameBoxBody)ch.Part;
-            else
-                body = (IGameBoxBody)r.Lookbackable;
+            return node;
+        }
 
-            node.Body = body;
+        public static void Parse<T>(T node, GameBoxReader r, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
+        {
+            var stopwatch = Stopwatch.StartNew();
+
+            node.GBX = r.GBX;
+
+            var type = node.GetType();
 
             var chunks = new ChunkSet { Node = node };
             node.Chunks = chunks;
@@ -153,32 +127,30 @@ namespace GBX.NET.Engines.MwFoundations
                 {
                     break;
                 }
-                else if (chunkID == 0)
-                {
-                    // weird case after ending node reference
-                }
                 else
                 {
                     var logChunk = $"[{node.ClassName}] 0x{chunkID:X8}";
                     if (r.BaseStream.CanSeek)
                         logChunk += $" ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})";
 
-                    if (node.Body?.GBX.ID.HasValue == true && Remap(node.Body.GBX.ID.Value) == node.ID)
+                    if (node.GBX?.ID.HasValue == true && Remap(node.GBX.ID.Value) == node.ID)
                         Log.Write(logChunk);
                     else
                         Log.Write($"~ {logChunk}");
                 }
 
-                Type chunkClass = null;
-                Chunk chunk = null;
+                Chunk chunk;
 
                 var chunkRemapped = Chunk.Remap(chunkID);
+
+                Type chunkClass = null;
 
                 var reflected = ((chunkRemapped & 0xFFFFF000) == node.ID || AvailableInheritanceClasses[type].Contains(chunkRemapped & 0xFFFFF000))
                     && (AvailableChunkClasses[type].TryGetValue(chunkRemapped, out chunkClass) || AvailableChunkClasses[type].TryGetValue(chunkID & 0xFFF, out chunkClass));
 
                 var skippable = reflected && chunkClass.BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>);
                 
+                // Unknown or skippable chunk
                 if (!reflected || skippable)
                 {
                     var skip = r.ReadUInt32();
@@ -188,7 +160,7 @@ namespace GBX.NET.Engines.MwFoundations
                         if (chunkID != 0 && !reflected)
                         {
                             var logChunkError = $"[{node.ClassName}] 0x{chunkID:X8} ERROR (wrong chunk format or unknown unskippable chunk)";
-                            if (node.Body?.GBX.ID.HasValue == true && Remap(node.Body.GBX.ID.Value) == node.ID)
+                            if (node.GBX?.ID.HasValue == true && Remap(node.GBX.ID.Value) == node.ID)
                                 Log.Write(logChunkError, ConsoleColor.Red);
                             else
                                 Log.Write($"~ {logChunkError}", ConsoleColor.Red);
@@ -222,26 +194,24 @@ namespace GBX.NET.Engines.MwFoundations
 
                     if (reflected && chunkClass.GetCustomAttribute<IgnoreChunkAttribute>() == null)
                     {
-                        ISkippableChunk c;
-
                         var constructor = Array.Find(chunkClass.GetConstructors(), x => x.GetParameters().Length == 0);
                         if(constructor == null)
                             throw new ArgumentException($"{type.FullName} doesn't have a parameterless constructor.");
 
-                        c = (ISkippableChunk)constructor.Invoke(new object[0]);
+                        var c = (Chunk)constructor.Invoke(new object[0]);
                         c.Node = node;
-                        c.Part = (GameBoxPart)body;
-                        c.Data = chunkData;
+                        c.GBX = node.GBX;
+                        ((ISkippableChunk)c).Data = chunkData;
                         if (chunkData == null || chunkData.Length == 0)
-                            c.Discovered = true;
+                            ((ISkippableChunk)c).Discovered = true;
                         c.OnLoad();
 
-                        chunks.Add((Chunk)c);
+                        chunks.Add(c);
 
                         if (chunkClass.GetCustomAttribute<ChunkAttribute>().ProcessSync)
-                            c.Discover();
+                            ((ISkippableChunk)c).Discover();
 
-                        chunk = (Chunk)c;
+                        chunk = c;
                     }
                     else
                     {
@@ -250,45 +220,48 @@ namespace GBX.NET.Engines.MwFoundations
                         chunks.Add(chunk);
                     }
                 }
-
-                if (reflected && !skippable)
+                else // Known or unskippable chunk
                 {
-                    if (skippable) // Does it ever happen?
-                    {
-                        var skip = r.ReadUInt32();
-                        var chunkDataSize = r.ReadInt32();
-                    }
-
-                    IChunk c;
-
                     var constructor = Array.Find(chunkClass.GetConstructors(), x => x.GetParameters().Length == 0);
 
                     if (constructor == null)
                         throw new ArgumentException($"{type.FullName} doesn't have a parameterless constructor.");
 
-                    c = (IChunk)constructor.Invoke(new object[0]);
+                    var c = (Chunk)constructor.Invoke(new object[0]);
                     c.Node = node;
-                    c.Part = (GameBoxPart)body;
+                    c.GBX = node.GBX;
                     c.OnLoad();
 
-                    chunks.Add((Chunk)c);
+                    chunks.Add(c);
 
-                    r.Chunk = (Chunk)c; // Set chunk temporarily for reading
+                    //r.Chunk = (Chunk)c; // Set chunk temporarily for reading
 
                     var posBefore = r.BaseStream.Position;
 
                     GameBoxReaderWriter gbxrw = new GameBoxReaderWriter(r);
 
+                    var attributes = chunkClass.GetCustomAttributes();
+                    var ignoreChunkAttribute = default(IgnoreChunkAttribute);
+                    var autoReadWriteChunkAttribute = default(AutoReadWriteChunkAttribute);
+
+                    foreach (var att in attributes)
+                    {
+                        if (att is IgnoreChunkAttribute ignoreChunkAtt)
+                            ignoreChunkAttribute = ignoreChunkAtt;
+                        if (att is AutoReadWriteChunkAttribute autoReadWriteChunkAtt)
+                            autoReadWriteChunkAttribute = autoReadWriteChunkAtt;
+                    }
+
                     try
                     {
-                        if (chunkClass.GetCustomAttribute<IgnoreChunkAttribute>() == null)
+                        if (ignoreChunkAttribute == null)
                         {
-                            if(chunkClass.GetCustomAttribute<AutoReadWriteChunkAttribute>() == null)
+                            if(autoReadWriteChunkAttribute == null)
                                 c.ReadWrite(node, gbxrw);
                             else
                             {
                                 var unknown = new GameBoxWriter(((Chunk)c).Unknown, r.Lookbackable);
-                                var unknownData = r.ReadTillFacade();
+                                var unknownData = r.ReadUntilFacade();
                                 unknown.Write(unknownData, 0, unknownData.Length);
                             }
                         }
@@ -302,12 +275,10 @@ namespace GBX.NET.Engines.MwFoundations
 
                     c.Progress = (int)(r.BaseStream.Position - posBefore);
 
-                    r.Chunk = null;
-
-                    chunk = (Chunk)c;
+                    chunk = c;
                 }
 
-                progress?.Report(new GameBoxReadProgress(GameBoxReadProgressStage.Body, (float)r.BaseStream.Position / r.BaseStream.Length, gbx, chunk));
+                progress?.Report(new GameBoxReadProgress(GameBoxReadProgressStage.Body, (float)r.BaseStream.Position / r.BaseStream.Length, node.GBX, chunk));
 
                 previousChunk = chunkID;
             }
@@ -315,12 +286,10 @@ namespace GBX.NET.Engines.MwFoundations
             stopwatch.Stop();
 
             var logNodeCompletion = $"[{node.ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)";
-            if (node.Body?.GBX.ID.HasValue == true && Remap(node.Body.GBX.ID.Value) == node.ID)
+            if (node.GBX.ID.HasValue == true && Remap(node.GBX.ID.Value) == node.ID)
                 Log.Write(logNodeCompletion, ConsoleColor.Green);
             else
                 Log.Write($"~ {logNodeCompletion}", ConsoleColor.Green);
-
-            return node;
         }
 
         public void Read(GameBoxReader r)
@@ -344,45 +313,31 @@ namespace GBX.NET.Engines.MwFoundations
                 counter++;
 
                 var logChunk = $"[{ClassName}] 0x{chunk.ID:X8} ({(float)counter / Chunks.Count:0.00%})";
-                if (Body?.GBX.ID.HasValue == true && Remap(Body.GBX.ID.Value) == ID)
+                if (GBX.ID.HasValue == true && Remap(GBX.ID.Value) == ID)
                     Log.Write(logChunk);
                 else
                     Log.Write($"~ {logChunk}");
 
-                ((IChunk)chunk).Node = this;
+                chunk.Node = this;
                 chunk.Unknown.Position = 0;
-
-                ILookbackable lb = chunk.Lookbackable;
 
                 if (chunk is ILookbackable l)
                 {
                     l.IdWritten = false;
                     l.IdStrings.Clear();
-
-                    lb = l;
-                }
-
-                if (lb == null)
-                {
-                    if(ParentChunk is ILookbackable l2)
-                        lb = l2;
-                    else
-                        lb = w.Lookbackable;
                 }
 
                 using (var ms = new MemoryStream())
-                using (var msW = new GameBoxWriter(ms, lb))
+                using (var msW = new GameBoxWriter(ms, chunk as ILookbackable ?? GBX.Body))
                 {
                     var rw = new GameBoxReaderWriter(msW);
-
-                    msW.Chunk = chunk;
 
                     try
                     {
                         if (chunk is ISkippableChunk s && !s.Discovered)
                             s.Write(msW);
                         else if (!Attribute.IsDefined(chunk.GetType(), typeof(AutoReadWriteChunkAttribute)))
-                            ((IChunk)chunk).ReadWrite(this, rw);
+                            chunk.ReadWrite(this, rw);
                         else
                             msW.Write(chunk.Unknown.ToArray(), 0, (int)chunk.Unknown.Length);
 
@@ -405,8 +360,6 @@ namespace GBX.NET.Engines.MwFoundations
                         }
                         else throw e; // Unskippable chunk must have a Write implementation
                     }
-
-                    msW.Chunk = null;
                 }
             }
 
@@ -415,7 +368,7 @@ namespace GBX.NET.Engines.MwFoundations
             stopwatch.Stop();
 
             var logNodeCompletion = $"[{ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)";
-            if (Body?.GBX.ID.HasValue == true && Remap(Body.GBX.ID.Value) == ID)
+            if (GBX.ID.HasValue == true && Remap(GBX.ID.Value) == ID)
                 Log.Write(logNodeCompletion, ConsoleColor.Green);
             else
                 Log.Write($"~ {logNodeCompletion}", ConsoleColor.Green);
@@ -702,11 +655,11 @@ namespace GBX.NET.Engines.MwFoundations
         /// <summary>
         /// Makes a <see cref="GameBox"/> from this node. NOTE: Non-generic <see cref="GameBox"/> doesn't have a Save method.
         /// </summary>
-        /// <param name="headerInfo"></param>
+        /// <param name="header"></param>
         /// <returns></returns>
-        public GameBox ToGBX(GameBoxHeaderInfo headerInfo)
+        public GameBox ToGBX(GameBoxHeader header)
         {
-            return (GameBox)Activator.CreateInstance(typeof(GameBox<>).MakeGenericType(GetType()), this, headerInfo);
+            return (GameBox)Activator.CreateInstance(typeof(GameBox<>).MakeGenericType(GetType()), this, header);
         }
 
         /// <summary>

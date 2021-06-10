@@ -110,7 +110,7 @@ namespace GBX.NET.Engines.Game
             public int U05 { get; set; }
             public long U06 { get; set; }
 
-            public override void Read(CGameCtnMediaBlockTriangles n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaBlockTriangles n, GameBoxReader r)
             {
                 n.keys = r.ReadArray(r1 => new Key(n)
                 {
@@ -141,7 +141,7 @@ namespace GBX.NET.Engines.Game
                 U06 = r.ReadInt64();
             }
 
-            public override void Write(CGameCtnMediaBlockTriangles n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaBlockTriangles n, GameBoxWriter w)
             {
                 w.Write(n.keys, (x, w1) => w1.Write(x.Time));
                 w.Write(n.keys.Count);

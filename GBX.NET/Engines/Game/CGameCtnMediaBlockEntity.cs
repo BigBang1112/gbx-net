@@ -17,7 +17,7 @@ namespace GBX.NET.Engines.Game
                 Version = rw.Int32(Version);
                 n.RecordData = rw.NodeRef<CPlugEntRecordData>(n.RecordData);
 
-                rw.TillFacade(Unknown);
+                rw.UntilFacade(Unknown);
             }
         }
     }

@@ -14,7 +14,7 @@ namespace GBX.NET.Engines.Plug
             public override void ReadWrite(CPlugRoadChunk n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                UnknownData = rw.Reader.ReadTillFacade();
+                UnknownData = rw.Reader.ReadUntilFacade();
             }
         }
     }

@@ -15,21 +15,14 @@ namespace GBX.NET
         /// Stream of unknown bytes
         /// </summary>
         [IgnoreDataMember]
-        public UnknownStream Unknown { get; } = new UnknownStream();
+        public MemoryStream Unknown { get; } = new MemoryStream();
 
         [IgnoreDataMember]
-        public virtual ILookbackable Lookbackable
-        {
-            get
-            {
-                if (this is ILookbackable l)
-                    return l;
-                return Part;
-            }
-        }
+        public GameBox GBX { get; set; }
 
-        [IgnoreDataMember]
-        public GameBoxPart Part { get; set; }
+        public CMwNod Node { get; internal set; }
+
+        public int Progress { get; set; }
 
         public Chunk()
         {
@@ -75,37 +68,27 @@ namespace GBX.NET
 
         public virtual void OnLoad() { }
 
+        public abstract void Read(CMwNod n, GameBoxReader r);
+        public abstract void Write(CMwNod n, GameBoxWriter w);
+        public abstract void ReadWrite(CMwNod n, GameBoxReaderWriter rw);
+
         public int CompareTo(Chunk other)
         {
             return ID.CompareTo(other.ID);
         }
     }
 
-    public abstract class Chunk<T> : Chunk, IChunk where T : CMwNod
+    public abstract class Chunk<T> : Chunk where T : CMwNod
     {
         [IgnoreDataMember]
-        public T Node { get; internal set; }
-        public int Progress { get; set; }
-
-        CMwNod IChunk.Node
+        public new T Node
         {
-            get => Node;
-            set => Node = (T)value;
+            get => (T)base.Node;
+            internal set => base.Node = value;
         }
 
-        public bool IsHeader => Lookbackable is GameBoxHeader<T>;
-        public bool IsBody => Lookbackable is IGameBoxBody;
-
-        [IgnoreDataMember]
-        public override ILookbackable Lookbackable
-        {
-            get
-            {
-                if (Node?.ParentChunk is ILookbackable l)
-                    return l;
-                return base.Lookbackable;
-            }
-        }
+        public bool IsHeader => this is IHeaderChunk;
+        public bool IsBody => !IsHeader;
 
         public Chunk()
         {
@@ -117,24 +100,27 @@ namespace GBX.NET
             Node = node;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="n"></param>
-        /// <param name="r"></param>
-        /// <param name="unknownW">Writer of the <see cref="Chunk.Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
-        public virtual void Read(T n, GameBoxReader r, GameBoxWriter unknownW)
+        public override void Read(CMwNod n, GameBoxReader r)
+        {
+            Read((T)n, r);
+        }
+
+        public override void Write(CMwNod n, GameBoxWriter w)
+        {
+            Write((T)n, w);
+        }
+
+        public override void ReadWrite(CMwNod n, GameBoxReaderWriter rw)
+        {
+            ReadWrite((T)n, rw);
+        }
+
+        public virtual void Read(T n, GameBoxReader r)
         {
             throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support Read.");
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="n"></param>
-        /// <param name="w"></param>
-        /// <param name="unknownR">Reader of the <see cref="Chunk.Unknown"/> stream. This parameter mustn't be used inside loops - it can cause writing order problems whenever the loop changes!</param>
-        public virtual void Write(T n, GameBoxWriter w, GameBoxReader unknownR)
+        public virtual void Write(T n, GameBoxWriter w)
         {
             throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support Write.");
         }
@@ -142,35 +128,35 @@ namespace GBX.NET
         public virtual void ReadWrite(T n, GameBoxReaderWriter rw)
         {
             if (rw.Reader != null)
-            {
-                var unknownW = new GameBoxWriter(Unknown, rw.Reader.Lookbackable);
-                if (n == null) Read(null, rw.Reader, unknownW);
-                else Read(n, rw.Reader, unknownW);
-            }
-
-            if (rw.Writer != null)
-            {
-                var unknownR = new GameBoxReader(Unknown, rw.Writer.Lookbackable);
-                if (n == null) Write(null, rw.Writer, unknownR);
-                else Write(n, rw.Writer, unknownR);
-            }
+                Read(n, rw.Reader);
+            else if (rw.Writer != null)
+                Write(n, rw.Writer);
         }
 
-        void IChunk.ReadWrite(CMwNod n, GameBoxReaderWriter rw) => ReadWrite((T)n, rw);
+        protected GameBoxReader CreateReader(Stream input)
+        {
+            if (this is ILookbackable l)
+                return new GameBoxReader(input, l);
+            return new GameBoxReader(input, GBX.Body);
+        }
+
+        protected GameBoxWriter CreateWriter(Stream input)
+        {
+            if (this is ILookbackable l)
+                return new GameBoxWriter(input, l);
+            return new GameBoxWriter(input, GBX.Body);
+        }
 
         public byte[] ToByteArray()
         {
-            var lookbackable = Lookbackable;
-
             if (this is ILookbackable l)
             {
                 l.IdWritten = false;
                 l.IdStrings.Clear();
-                lookbackable = l;
             }
 
             using (var ms = new MemoryStream())
-            using (var w = new GameBoxWriter(ms, lookbackable))
+            using (var w = CreateWriter(ms))
             {
                 var rw = new GameBoxReaderWriter(w);
                 ReadWrite(Node, rw);

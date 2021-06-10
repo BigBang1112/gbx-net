@@ -21,7 +21,7 @@ namespace GBX.NET.Engines.Game
         {
             public int Version { get; set; }
 
-            public override void Read(CGameCtnMediaBlockDirtyLens n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaBlockDirtyLens n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
 
@@ -32,7 +32,7 @@ namespace GBX.NET.Engines.Game
                 });
             }
 
-            public override void Write(CGameCtnMediaBlockDirtyLens n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaBlockDirtyLens n, GameBoxWriter w)
             {
                 w.Write(Version);
 

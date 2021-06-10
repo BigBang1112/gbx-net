@@ -7,57 +7,92 @@ using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET
 {
-    public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
+    public class GameBoxHeader : GameBoxPart
+    {
+        public short Version { get; set; }
+        public char? ByteFormat { get; set; }
+        public char? RefTableCompression { get; set; }
+        public char? BodyCompression { get; set; }
+        public char? UnknownByte { get; set; }
+        public uint? ID { get; internal set; }
+        public byte[] UserData { get; private set; }
+        public int NumNodes { get; private set; }
+
+        public GameBoxHeader(GameBoxReader reader) : base(null)
+        {
+            Read(reader);
+        }
+
+        public GameBoxHeader(GameBox gbx, uint id) : base(gbx)
+        {
+            Version = 6;
+            ByteFormat = 'B';
+            RefTableCompression = 'U';
+            BodyCompression = 'C';
+            UnknownByte = 'R';
+            ID = id;
+            UserData = new byte[0];
+        }
+
+        public bool Read(GameBoxReader reader)
+        {
+            if (reader.HasMagic(GameBox.Magic))
+                Log.Write("GBX recognized!", ConsoleColor.Green);
+            else
+            {
+                Log.Write("GBX magic missing! Corrupted file or not a GBX file.", ConsoleColor.Red);
+                return false;
+            }
+
+            Version = reader.ReadInt16();
+            Log.Write($"- Version: {Version}");
+
+            if (Version >= 3)
+            {
+                ByteFormat = (char)reader.ReadByte();
+                Log.Write($"- Byte format: {ByteFormat}");
+
+                if (ByteFormat == 'T') throw new NotSupportedException("Text-formatted GBX files are not supported.");
+
+                RefTableCompression = (char)reader.ReadByte();
+                Log.Write($"- Ref. table compression: {RefTableCompression}");
+
+                BodyCompression = (char)reader.ReadByte();
+                Log.Write($"- Body compression: {BodyCompression}");
+
+                if (Version >= 4)
+                {
+                    UnknownByte = (char)reader.ReadByte();
+                    Log.Write($"- Unknown byte: {UnknownByte}");
+                }
+
+                ID = CMwNod.Remap(reader.ReadUInt32());
+                Log.Write($"- Class ID: 0x{ID:X8}");
+
+                if (Version >= 6)
+                {
+                    var userDataSize = reader.ReadInt32();
+                    Log.Write($"- User data size: {userDataSize / 1024f} kB");
+
+                    if (userDataSize > 0)
+                        UserData = reader.ReadBytes(userDataSize);
+                }
+
+                NumNodes = reader.ReadInt32();
+                Log.Write($"- Number of nodes: {NumNodes}");
+            }
+
+            Log.Write("Header completed!", ConsoleColor.Green);
+
+            return true;
+        }
+    }
+
+    public class GameBoxHeader<T> : GameBoxHeader where T : CMwNod
     {
         public ChunkSet Chunks { get; set; }
 
-        public short Version
-        {
-            get => GBX.Header.Version;
-            set => GBX.Header.Version = value;
-        }
-
-        public char? ByteFormat
-        {
-            get => GBX.Header.ByteFormat;
-            set => GBX.Header.ByteFormat = value;
-        }
-
-        public char? RefTableCompression
-        {
-            get => GBX.Header.RefTableCompression;
-            set => GBX.Header.RefTableCompression = value;
-        }
-
-        public char? BodyCompression
-        {
-            get => GBX.Header.BodyCompression;
-            set => GBX.Header.BodyCompression = value;
-        }
-
-        public char? UnknownByte
-        {
-            get => GBX.Header.UnknownByte;
-            set => GBX.Header.UnknownByte = value;
-        }
-
-        public uint? ID
-        {
-            get => GBX.Header.ID;
-            internal set => GBX.Header.ID = value;
-        }
-
-        public byte[] UserData
-        {
-            get => GBX.Header.UserData;
-        }
-
-        public int NumNodes
-        {
-            get => GBX.Header.NumNodes;
-        }
-
-        public GameBoxHeader(GameBox<T> gbx) : base(gbx)
+        public GameBoxHeader(GameBox<T> gbx) : base(gbx, gbx.ID.Value)
         {
             
         }
@@ -122,12 +157,12 @@ namespace GBX.NET
                                 var constructorParams = constructor.GetParameters();
                                 if (constructorParams.Length == 0)
                                 {
-                                    ISkippableChunk headerChunk = (ISkippableChunk)constructor.Invoke(new object[0]);
+                                    Chunk headerChunk = (Chunk)constructor.Invoke(new object[0]);
                                     headerChunk.Node = gbx.MainNode;
-                                    headerChunk.Part = this;
-                                    headerChunk.Data = d;
+                                    headerChunk.GBX = GBX;
+                                    ((IHeaderChunk)headerChunk).Data = d;
                                     if (d == null || d.Length == 0)
-                                        headerChunk.Discovered = true;
+                                        ((IHeaderChunk)headerChunk).Discovered = true;
                                     chunk = (Chunk)headerChunk;
                                 }
                                 else if (constructorParams.Length == 2)
@@ -138,7 +173,7 @@ namespace GBX.NET
                                 using (var rChunk = new GameBoxReader(msChunk, this))
                                 {
                                     var rw = new GameBoxReaderWriter(rChunk);
-                                    ((IHeaderChunk)chunk).ReadWrite(gbx.MainNode, rw);
+                                    chunk.ReadWrite(gbx.MainNode, rw);
                                     ((ISkippableChunk)chunk).Discovered = true;
                                 }
 
@@ -196,7 +231,7 @@ namespace GBX.NET
 
                                 var pos = userData.Position;
                                 if (((ISkippableChunk)chunk).Discovered)
-                                    ((IChunk)chunk).ReadWrite(((GameBox<T>)GBX).MainNode, gbxrw);
+                                    chunk.ReadWrite(((GameBox<T>)GBX).MainNode, gbxrw);
                                 else
                                     ((ISkippableChunk)chunk).Write(gbxw);
 

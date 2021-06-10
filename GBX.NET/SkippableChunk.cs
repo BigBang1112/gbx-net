@@ -47,10 +47,8 @@ namespace GBX.NET
             Discovered = true;
 
             using (var ms = new MemoryStream(Data))
-            using (var gbxr = new GameBoxReader(ms, Lookbackable))
+            using (var gbxr = CreateReader(ms))
             {
-                gbxr.Chunk = this;
-
                 GameBoxReaderWriter gbxrw = new GameBoxReaderWriter(gbxr);
 
                 try
@@ -59,11 +57,11 @@ namespace GBX.NET
                 }
                 catch (NotImplementedException)
                 {
-                    var unknownGbxw = new GameBoxWriter(Unknown, Lookbackable);
+                    var unknownGbxw = CreateWriter(Unknown);
 
                     try
                     {
-                        Read(Node, gbxr, unknownGbxw);
+                        Read(Node, gbxr);
                     }
                     catch (NotImplementedException e)
                     {
@@ -75,7 +73,7 @@ namespace GBX.NET
             }
         }
 
-        public override void Write(T n, GameBoxWriter w, GameBoxReader unknownR)
+        public override void Write(T n, GameBoxWriter w)
         {
             w.WriteBytes(Data);
         }

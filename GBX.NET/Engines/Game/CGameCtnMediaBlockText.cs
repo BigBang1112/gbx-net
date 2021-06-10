@@ -52,9 +52,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x030A8003)]
         public class Chunk030A8003 : Chunk<CGameCtnMediaBlockText>
         {
+            public float U01;
+
             public override void ReadWrite(CGameCtnMediaBlockText n, GameBoxReaderWriter rw)
             {
-                rw.Single(Unknown); // 0.2
+                rw.Single(ref U01); // 0.2
             }
         }
 

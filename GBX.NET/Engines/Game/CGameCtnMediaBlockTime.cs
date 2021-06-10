@@ -22,7 +22,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03085000)]
         public class Chunk03085000 : Chunk<CGameCtnMediaBlockTime>
         {
-            public override void Read(CGameCtnMediaBlockTime n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaBlockTime n, GameBoxReader r)
             {
                 if (!r.BaseStream.CanSeek)
                     throw new NotSupportedException("Can't read CGameCtnMediaBlockTime in a stream that can't seek.");
@@ -57,7 +57,7 @@ namespace GBX.NET.Engines.Game
                 }
             }
 
-            public override void Write(CGameCtnMediaBlockTime n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaBlockTime n, GameBoxWriter w)
             {
                 if (n.IsTM2)
                 {

@@ -6,7 +6,7 @@ namespace GBX.NET
 {
     public class GameBoxReadProgress
     {
-        private GameBoxHeaderInfo headerInfo;
+        private GameBoxHeader header;
 
         /// <summary>
         /// Reading stage of GBX.
@@ -25,9 +25,9 @@ namespace GBX.NET
         /// </summary>
         public Chunk Chunk { get; }
 
-        public GameBoxHeaderInfo Header
+        public GameBoxHeader Header
         {
-            get => headerInfo ?? GBX?.Header;
+            get => header ?? GBX?.Header;
         }
 
         public GameBoxReadProgress()
@@ -35,11 +35,12 @@ namespace GBX.NET
 
         }
 
-        public GameBoxReadProgress(GameBoxHeaderInfo headerInfo)
+        public GameBoxReadProgress(GameBoxHeader header)
         {
+            this.header = header;
+
             Stage = GameBoxReadProgressStage.Header;
             Percentage = 1;
-            this.headerInfo = headerInfo;
         }
 
         public GameBoxReadProgress(GameBoxReadProgressStage stage, float percentage, GameBox gbx)

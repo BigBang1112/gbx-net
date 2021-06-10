@@ -530,12 +530,27 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03092006)]
         public class Chunk03092006 : Chunk<CGameCtnGhost>
         {
+            private int u01;
+            private string u02;
+
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public string U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
+
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 rw.Ident(ref n.playerModel);
                 n.Skin = rw.String(n.Skin);
-                rw.Int32(Unknown);
-                rw.String(Unknown);
+                rw.Int32(ref u01);
+                rw.String(ref u02);
             }
         }
 
@@ -616,9 +631,17 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0309200C)]
         public class Chunk0309200C : Chunk<CGameCtnGhost>
         {
+            private int u01;
+
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32(ref u01);
             }
         }
 
@@ -632,15 +655,44 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0309200D)]
         public class Chunk0309200D : Chunk<CGameCtnGhost>
         {
+            private int u01;
+            private int u02;
+            private int u03;
+            private int u04;
+
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public int U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
+
+            public int U03
+            {
+                get => u03;
+                set => u03 = value;
+            }
+
+            public int U04
+            {
+                get => u04;
+                set => u04 = value;
+            }
+
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 rw.Ident(ref n.playerModel);
                 rw.String(ref n.skin);
 
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32(ref u01);
+                rw.Int32(ref u02);
+                rw.Int32(ref u03);
+                rw.Int32(ref u04);
 
                 rw.String(ref n.ghostNickname);
             }
@@ -808,11 +860,33 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03092012)]
         public class Chunk03092012 : Chunk<CGameCtnGhost>
         {
+            private int u01;
+            private long u02;
+            private long u03;
+
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public long U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
+
+            public long U03
+            {
+                get => u03;
+                set => u03 = value;
+            }
+
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int64(Unknown);
-                rw.Int64(Unknown);
+                rw.Int32(ref u01);
+                rw.Int64(ref u02);
+                rw.Int64(ref u03);
             }
         }
 
@@ -826,10 +900,25 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03092013)]
         public class Chunk03092013 : SkippableChunk<CGameCtnGhost>
         {
+            private int u01;
+            private int u02;
+
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public int U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
+
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32(ref u01);
+                rw.Int32(ref u02);
             }
         }
 
@@ -843,9 +932,17 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03092014)]
         public class Chunk03092014 : SkippableChunk<CGameCtnGhost>
         {
+            private int u01;
+
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32(ref u01);
             }
         }
 
@@ -948,16 +1045,73 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0309201C)]
         public class Chunk0309201C : Chunk<CGameCtnGhost>
         {
+            private int u01;
+            private int u02;
+            private int u03;
+            private int u04;
+            private int u05;
+            private int u06;
+            private int u07;
+            private int u08;
+
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public int U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
+
+            public int U03
+            {
+                get => u03;
+                set => u03 = value;
+            }
+
+            public int U04
+            {
+                get => u04;
+                set => u04 = value;
+            }
+
+            public int U05
+            {
+                get => u05;
+                set => u05 = value;
+            }
+
+            public int U06
+            {
+                get => u06;
+                set => u06 = value;
+            }
+
+            public int U07
+            {
+                get => u07;
+                set => u07 = value;
+            }
+
+            public int U08
+            {
+                get => u08;
+                set => u08 = value;
+            }
+
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32(ref u01);
+                rw.Int32(ref u02);
+                rw.Int32(ref u03);
+                rw.Int32(ref u04);
+                rw.Int32(ref u05);
+                rw.Int32(ref u06);
+                rw.Int32(ref u07);
+                rw.Int32(ref u08);
             }
         }
 

@@ -10,7 +10,18 @@ using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET
 {
-    public class GameBoxBody<T> : GameBoxPart, IGameBoxBody where T : CMwNod
+    public class GameBoxBody : GameBoxPart
+    {
+        [IgnoreDataMember]
+        public SortedDictionary<int, CMwNod> AuxilaryNodes { get; }
+
+        public GameBoxBody(GameBox gbx) : base(gbx)
+        {
+            AuxilaryNodes = new SortedDictionary<int, CMwNod>();
+        }
+    }
+
+    public class GameBoxBody<T> : GameBoxBody where T : CMwNod
     {
         private bool checkedForLzo;
         private MethodInfo methodLzoCompress;
@@ -18,9 +29,6 @@ namespace GBX.NET
 
         public byte[] Rest { get; set; }
         public bool Aborting { get; private set; }
-
-        [IgnoreDataMember]
-        public SortedDictionary<int, CMwNod> AuxilaryNodes { get; } = new SortedDictionary<int, CMwNod>();
 
         public new GameBox<T> GBX => (GameBox<T>)base.GBX;
 
@@ -47,7 +55,7 @@ namespace GBX.NET
 
         public void Read(GameBoxReader reader, IProgress<GameBoxReadProgress> progress = null)
         {
-            GBX.MainNode = CMwNod.Parse(reader, GBX.ID.Value, GBX, progress);
+            CMwNod.Parse(GBX.MainNode, reader, progress);
 
             using (MemoryStream ms = new MemoryStream())
             {

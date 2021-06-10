@@ -13,11 +13,15 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03122002)]
         public class Chunk03122002 : Chunk<CGameCtnBlockInfoMobil>
         {
+            public int U01;
+            public int U02;
+            public int U03;
+
             public override void ReadWrite(CGameCtnBlockInfoMobil n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
+                rw.Int32(ref U02);
+                rw.Int32(ref U03);
             }
         }
 
@@ -30,47 +34,47 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnBlockInfoMobil n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                rw.Byte(Unknown);
+                rw.Byte();
                 var num = rw.Reader.ReadInt32();
                 
-                if(num == 16777216) // TODO: figure out why
+                if (num == 16777216) // TODO: figure out why
                 {
-                    rw.Single(Unknown);
-                    rw.Single(Unknown);
+                    rw.Single();
+                    rw.Single();
 
-                    rw.Single(Unknown);
-                    rw.Single(Unknown);
+                    rw.Single();
+                    rw.Single();
 
-                    rw.Single(Unknown);
-                    rw.Single(Unknown);
+                    rw.Single();
+                    rw.Single();
                 }
 
                 if (Version >= 20)
                 {
-                    rw.Int32(Unknown);
-                    rw.Int32(Unknown);
+                    rw.Int32();
+                    rw.Int32();
                 }
 
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
 
                 if (Version >= 20)
                 {
-                    rw.Int32(Unknown);
-                    rw.Int32(Unknown);
-                    rw.Int32(Unknown); // 3
+                    rw.Int32();
+                    rw.Int32();
+                    rw.Int32(); // 3
 
-                    rw.Int32(Unknown);
-                    rw.Int32(Unknown);
-                    rw.Int32(Unknown);
-                    rw.Int32(Unknown);
-                    rw.Byte(Unknown);
-                    rw.Vec3(Unknown);
+                    rw.Int32();
+                    rw.Int32();
+                    rw.Int32();
+                    rw.Int32();
+                    rw.Byte();
+                    rw.Vec3();
                     n.RoadChunks = rw.Array(n.RoadChunks,
                         r => r.ReadNodeRef<CPlugRoadChunk>(),
                         (x, w) => w.Write(x));
@@ -81,10 +85,13 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03122004)]
         public class Chunk03122004 : Chunk<CGameCtnBlockInfoMobil>
         {
+            public int U01;
+            public int U02;
+
             public override void ReadWrite(CGameCtnBlockInfoMobil n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
+                rw.Int32(ref U02);
                 n.DynaLinks = rw.Reader.ReadArray(r =>
                 {
                     var u01 = r.ReadInt32();
