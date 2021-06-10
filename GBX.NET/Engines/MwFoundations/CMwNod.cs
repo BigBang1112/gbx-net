@@ -671,6 +671,52 @@ namespace GBX.NET.Engines.MwFoundations
             return (GameBox)Activator.CreateInstance(typeof(GameBox<>).MakeGenericType(GetType()), this);
         }
 
+        private void Save(Type[] types, object[] parameters)
+        {
+            var type = GetType();
+            var gbxType = GBX.GetType();
+            var gbxOfType = typeof(GameBox<>).MakeGenericType(type);
+
+            GameBox gbx;
+
+            if (gbxOfType == gbxType)
+                gbx = GBX;
+            else
+                gbx = (GameBox)Activator.CreateInstance(gbxOfType, this);
+
+            _ = gbxOfType.GetMethod("Save", types).Invoke(gbx, parameters);
+        }
+
+        public void Save()
+        {
+            Save(new Type[0], new object[0]);
+        }
+
+        public void Save(IDRemap remap)
+        {
+            Save(new Type[] { typeof(IDRemap) }, new object[] { remap });
+        }
+
+        public void Save(string fileName)
+        {
+            Save(new Type[] { typeof(string) }, new object[] { fileName });
+        }
+
+        public void Save(string fileName, IDRemap remap)
+        {
+            Save(new Type[] { typeof(string), typeof(IDRemap) }, new object[] { fileName, remap });
+        }
+
+        public void Save(Stream stream)
+        {
+            Save(new Type[] { typeof(Stream) }, new object[] { stream });
+        }
+
+        public void Save(Stream stream, IDRemap remap)
+        {
+            Save(new Type[] { typeof(Stream), typeof(IDRemap) }, new object[] { stream, remap });
+        }
+
         public static uint Remap(uint id)
         {
             if (Mappings.TryGetValue(id, out uint newerClassID))

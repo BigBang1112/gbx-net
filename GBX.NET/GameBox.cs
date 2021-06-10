@@ -114,8 +114,12 @@ namespace GBX.NET
                         {
                             // Go through each Node and recurse
                             var enumerable = (IEnumerable)prop.GetValue(n);
-                            foreach (var e in enumerable)
-                                AssignGBXToNode(gbx, (CMwNod)e);
+
+                            if (enumerable != null)
+                            {
+                                foreach (var e in enumerable)
+                                    AssignGBXToNode(gbx, (CMwNod)e);
+                            }
                         }
                     }
                 }
