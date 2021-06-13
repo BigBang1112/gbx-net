@@ -21,6 +21,7 @@ namespace GBX.NET.Engines.Game
         private short flags;
         private float scale = 1;
         private Vec3 pivotPosition;
+        private string skin;
 
         #endregion
 
@@ -129,6 +130,13 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public DifficultyColor? Color { get; set; }
 
+        [NodeMember]
+        public string Skin
+        {
+            get => skin;
+            set => skin = value;
+        }
+
         #endregion
 
         #region Methods
@@ -152,6 +160,9 @@ namespace GBX.NET.Engines.Game
         {
             public Vec3 U01;
             public Vec3 U02;
+            private byte[] U03;
+            private int[] U04;
+            private Vec3 U05;
 
             private int version = 7;
 
@@ -202,6 +213,14 @@ namespace GBX.NET.Engines.Game
                             {
                                 rw.Vec3(ref U01);
                                 rw.Vec3(ref U02);
+
+                                if((n.flags & 0x4) == 0x4)
+                                {
+                                    rw.Bytes(ref U03, 9);
+                                    rw.String(ref n.skin);
+                                    rw.Array<int>(ref U04, 4);
+                                    rw.Vec3(ref U05);
+                                }
                             }
                         }
                     }

@@ -3339,9 +3339,9 @@ namespace GBX.NET.Engines.Game
         public class Chunk03043040 : SkippableChunk<CGameCtnChallenge>, ILookbackable
         {
             private int version = 4;
-            private int u01;
-            private int u02 = 10;
-            private int u03;
+            private int U01;
+            private int U02 = 10;
+            private byte[] U03;
 
             int? ILookbackable.IdVersion { get; set; }
             List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
@@ -3356,24 +3356,6 @@ namespace GBX.NET.Engines.Game
                 set => version = value;
             }
 
-            public int U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
-
-            public int U02
-            {
-                get => u02;
-                set => u02 = value;
-            }
-
-            public int U03
-            {
-                get => u03;
-                set => u03 = value;
-            }
-
             public override void OnLoad()
             {
                 Node.anchoredObjects = new List<CGameCtnAnchoredObject>();
@@ -3385,12 +3367,13 @@ namespace GBX.NET.Engines.Game
 
                 if (version != 0)
                 {
-                    u01 = r.ReadInt32();
+                    U01 = r.ReadInt32();
                     var size = r.ReadInt32();
-                    u02 = r.ReadInt32(); // 10
+                    U02 = r.ReadInt32(); // 10
 
                     n.anchoredObjects = ParseArray<CGameCtnAnchoredObject>(r).ToList();
-                    u03 = r.ReadInt32(); // 0
+
+                    U03 = r.ReadToEnd();
                 }
             }
 
@@ -3398,17 +3381,17 @@ namespace GBX.NET.Engines.Game
             {
                 w.Write(Version);
 
-                if(version != 0)
+                if (version != 0)
                 {
-                    w.Write(u01);
+                    w.Write(U01);
 
                     using (var itemMs = new MemoryStream())
-                    using (var wr = new GameBoxWriter(itemMs, this))
+                    using (var wr = CreateWriter(itemMs))
                     {
-                        wr.Write(u02);
+                        wr.Write(U02);
                         wr.WriteNodes(n.anchoredObjects);
 
-                        wr.Write(u03);
+                        wr.WriteBytes(U03);
 
                         w.Write((int)itemMs.Length);
                         w.Write(itemMs.ToArray(), 0, (int)itemMs.Length);
