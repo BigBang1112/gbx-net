@@ -192,8 +192,10 @@ namespace GBX.NET.Engines.MwFoundations
                     if (chunkDataSize > 0)
                         r.Read(chunkData, 0, chunkDataSize);
 
-                    if (reflected && chunkClass.GetCustomAttribute<IgnoreChunkAttribute>() == null)
+                    if (reflected)
                     {
+                        var ignoreChunkAttribute = chunkClass.GetCustomAttribute<IgnoreChunkAttribute>();
+
                         var constructor = Array.Find(chunkClass.GetConstructors(), x => x.GetParameters().Length == 0);
                         if(constructor == null)
                             throw new ArgumentException($"{type.FullName} doesn't have a parameterless constructor.");
@@ -204,12 +206,15 @@ namespace GBX.NET.Engines.MwFoundations
                         ((ISkippableChunk)c).Data = chunkData;
                         if (chunkData == null || chunkData.Length == 0)
                             ((ISkippableChunk)c).Discovered = true;
-                        c.OnLoad();
-
                         chunks.Add(c);
 
-                        if (chunkClass.GetCustomAttribute<ChunkAttribute>().ProcessSync)
-                            ((ISkippableChunk)c).Discover();
+                        if (ignoreChunkAttribute != null)
+                        {
+                            c.OnLoad();
+
+                            if (chunkClass.GetCustomAttribute<ChunkAttribute>().ProcessSync)
+                                ((ISkippableChunk)c).Discover();
+                        }
 
                         chunk = c;
                     }
@@ -217,6 +222,7 @@ namespace GBX.NET.Engines.MwFoundations
                     {
                         Debug.WriteLine("Unknown skippable chunk: " + chunkID.ToString("X"));
                         chunk = (Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkRemapped, chunkData);
+                        chunk.GBX = node.GBX;
                         chunks.Add(chunk);
                     }
                 }
@@ -229,7 +235,7 @@ namespace GBX.NET.Engines.MwFoundations
 
                     var c = (Chunk)constructor.Invoke(new object[0]);
                     c.Node = node;
-                    c.GBX = node.GBX;
+
                     c.OnLoad();
 
                     chunks.Add(c);
@@ -260,7 +266,7 @@ namespace GBX.NET.Engines.MwFoundations
                                 c.ReadWrite(node, gbxrw);
                             else
                             {
-                                var unknown = new GameBoxWriter(((Chunk)c).Unknown, r.Lookbackable);
+                                var unknown = new GameBoxWriter(c.Unknown, r.Lookbackable);
                                 var unknownData = r.ReadUntilFacade();
                                 unknown.Write(unknownData, 0, unknownData.Length);
                             }

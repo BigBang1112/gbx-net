@@ -85,10 +85,15 @@ namespace GBX.NET
 
         public override string ToString()
         {
-            if(GetType().GetCustomAttribute<ChunkAttribute>() == null)
+            var chunkType = GetType();
+            var chunkAttribute = chunkType.GetCustomAttribute<ChunkAttribute>();
+            var ignoreChunkAttribute = chunkType.GetCustomAttribute<IgnoreChunkAttribute>();
+
+            if (chunkAttribute == null)
                 return $"{typeof(T).Name} unknown skippable chunk 0x{ID:X8}";
-            var desc = GetType().GetCustomAttribute<ChunkAttribute>().Description;
-            return $"{typeof(T).Name} skippable chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}";
+            var desc = chunkAttribute.Description;
+
+            return $"{typeof(T).Name} skippable chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(ignoreChunkAttribute == null ? "" : " (ignored)")}";
         }
     }
 }
