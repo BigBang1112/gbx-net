@@ -13,6 +13,16 @@ namespace GBX.NET.Engines.Game
     [Node(0x03057000)]
     public class CGameCtnBlock : CMwNod
     {
+        public enum EColor : byte
+        {
+            Default,
+            White,
+            Green,
+            Blue,
+            Red,
+            Black
+        }
+
         #region Constants
 
         private const int isGroundBit = 12;
@@ -276,6 +286,12 @@ namespace GBX.NET.Engines.Game
                     pitchYawRoll = value;
             }
         }
+
+        /// <summary>
+        /// Color of the block. Available since TM® Royal update.
+        /// </summary>
+        [NodeMember]
+        public EColor? Color { get; set; }
 
         #endregion
 
