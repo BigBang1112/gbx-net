@@ -4259,7 +4259,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x062 skippable chunk (block color) [TM®️]
         /// </summary>
-        [Chunk(0x03043062, true, "block color"), IgnoreChunk]
+        [Chunk(0x03043062, true, "block color")]
         public class Chunk03043062 : SkippableChunk<CGameCtnChallenge>, IVersionable
         {
             public int Version { get; set; }
