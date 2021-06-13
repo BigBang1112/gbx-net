@@ -3519,16 +3519,12 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             public int Version { get; set; }
 
-            public override void OnLoad()
-            {
-                Node.scriptMetadata = new CScriptTraitsMetadata();
-            }
-
             public override void Read(CGameCtnChallenge n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
                 var size = r.ReadInt32();
 
+                n.scriptMetadata = new CScriptTraitsMetadata();
                 n.scriptMetadata.Read(r);
             }
 

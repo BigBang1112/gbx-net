@@ -93,7 +93,7 @@ namespace GBX.NET
                 return $"{typeof(T).Name} unknown skippable chunk 0x{ID:X8}";
             var desc = chunkAttribute.Description;
 
-            return $"{typeof(T).Name} skippable chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(ignoreChunkAttribute == null ? "" : " (ignored)")}";
+            return $"{typeof(T).Name} skippable chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(ignoreChunkAttribute == null ? "" : " [ignored]")}";
         }
     }
 }
