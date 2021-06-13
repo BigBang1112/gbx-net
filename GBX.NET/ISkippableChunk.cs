@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GBX.NET
 {
-    public interface ISkippableChunk : IChunk
+    public interface ISkippableChunk
     {
         bool Discovered { get; set; }
         byte[] Data { get; set; }

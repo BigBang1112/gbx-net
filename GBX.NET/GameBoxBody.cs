@@ -10,7 +10,18 @@ using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET
 {
-    public class GameBoxBody<T> : GameBoxPart, IGameBoxBody where T : CMwNod
+    public abstract class GameBoxBody : GameBoxPart
+    {
+        [IgnoreDataMember]
+        public SortedDictionary<int, CMwNod> AuxilaryNodes { get; }
+
+        public GameBoxBody(GameBox gbx) : base(gbx)
+        {
+            AuxilaryNodes = new SortedDictionary<int, CMwNod>();
+        }
+    }
+
+    public class GameBoxBody<T> : GameBoxBody where T : CMwNod
     {
         private bool checkedForLzo;
         private MethodInfo methodLzoCompress;
@@ -18,9 +29,6 @@ namespace GBX.NET
 
         public byte[] Rest { get; set; }
         public bool Aborting { get; private set; }
-
-        [IgnoreDataMember]
-        public SortedDictionary<int, CMwNod> AuxilaryNodes { get; } = new SortedDictionary<int, CMwNod>();
 
         public new GameBox<T> GBX => (GameBox<T>)base.GBX;
 
@@ -47,7 +55,7 @@ namespace GBX.NET
 
         public void Read(GameBoxReader reader, IProgress<GameBoxReadProgress> progress = null)
         {
-            GBX.MainNode = CMwNod.Parse(reader, GBX.ID.Value, GBX, progress);
+            CMwNod.Parse(GBX.Node, reader, progress);
 
             using (MemoryStream ms = new MemoryStream())
             {
@@ -83,7 +91,7 @@ namespace GBX.NET
                 using (var msBody = new MemoryStream())
                 using (var gbxwBody = new GameBoxWriter(msBody, this))
                 {
-                    GBX.MainNode.Write(gbxwBody, remap);
+                    GBX.Node.Write(gbxwBody, remap);
 
                     CheckForLZO();
 
@@ -99,7 +107,7 @@ namespace GBX.NET
                 }
             }
             else
-                GBX.MainNode.Write(w);
+                GBX.Node.Write(w);
 
             // ...
         }
@@ -112,7 +120,7 @@ namespace GBX.NET
 
         public TChunk CreateChunk<TChunk>(byte[] data) where TChunk : Chunk<T>
         {
-            return GBX.MainNode.Chunks.Create<TChunk>(data);
+            return GBX.Node.Chunks.Create<TChunk>(data);
         }
 
         public TChunk CreateChunk<TChunk>() where TChunk : Chunk<T>
@@ -122,19 +130,19 @@ namespace GBX.NET
 
         public void InsertChunk(Chunk<T> chunk)
         {
-            GBX.MainNode.Chunks.Add(chunk);
+            GBX.Node.Chunks.Add(chunk);
         }
 
         public void DiscoverChunk<TChunk>() where TChunk : SkippableChunk<T>
         {
-            foreach (var chunk in GBX.MainNode.Chunks)
+            foreach (var chunk in GBX.Node.Chunks)
                 if (chunk is TChunk c)
                     c.Discover();
         }
 
         public void DiscoverChunks<TChunk1, TChunk2>() where TChunk1 : SkippableChunk<T> where TChunk2 : SkippableChunk<T>
         {
-            foreach (var chunk in GBX.MainNode.Chunks)
+            foreach (var chunk in GBX.Node.Chunks)
             {
                 if (chunk is TChunk1 c1)
                     c1.Discover();
@@ -148,7 +156,7 @@ namespace GBX.NET
             where TChunk2 : SkippableChunk<T>
             where TChunk3 : SkippableChunk<T>
         {
-            foreach (var chunk in GBX.MainNode.Chunks)
+            foreach (var chunk in GBX.Node.Chunks)
             {
                 if (chunk is TChunk1 c1)
                     c1.Discover();
@@ -165,7 +173,7 @@ namespace GBX.NET
             where TChunk3 : SkippableChunk<T>
             where TChunk4 : SkippableChunk<T>
         {
-            foreach (var chunk in GBX.MainNode.Chunks)
+            foreach (var chunk in GBX.Node.Chunks)
             {
                 if (chunk is TChunk1 c1)
                     c1.Discover();
@@ -185,7 +193,7 @@ namespace GBX.NET
             where TChunk4 : SkippableChunk<T>
             where TChunk5 : SkippableChunk<T>
         {
-            foreach (var chunk in GBX.MainNode.Chunks)
+            foreach (var chunk in GBX.Node.Chunks)
             {
                 if (chunk is TChunk1 c1)
                     c1.Discover();
@@ -208,7 +216,7 @@ namespace GBX.NET
             where TChunk5 : SkippableChunk<T>
             where TChunk6 : SkippableChunk<T>
         {
-            foreach (var chunk in GBX.MainNode.Chunks)
+            foreach (var chunk in GBX.Node.Chunks)
             {
                 if (chunk is TChunk1 c1)
                     c1.Discover();
@@ -227,14 +235,14 @@ namespace GBX.NET
 
         public void DiscoverAllChunks()
         {
-            foreach (var chunk in GBX.MainNode.Chunks)
+            foreach (var chunk in GBX.Node.Chunks)
                 if (chunk is SkippableChunk<T> s)
                     s.Discover();
         }
 
         public TChunk GetChunk<TChunk>() where TChunk : Chunk<T>
         {
-            foreach (var chunk in GBX.MainNode.Chunks)
+            foreach (var chunk in GBX.Node.Chunks)
             {
                 if (chunk is TChunk t)
                 {
@@ -253,12 +261,12 @@ namespace GBX.NET
 
         public void RemoveAllChunks()
         {
-            GBX.MainNode.Chunks.Clear();
+            GBX.Node.Chunks.Clear();
         }
 
         public bool RemoveChunk<TChunk>() where TChunk : Chunk<T>
         {
-            return GBX.MainNode.Chunks.Remove<TChunk>();
+            return GBX.Node.Chunks.Remove<TChunk>();
         }
 
         private void CheckForLZO()

@@ -28,16 +28,15 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnCollectorList n, GameBoxReaderWriter rw)
             {
-                n.CollectorStock = rw.Array(n.CollectorStock,
-                i => new Collector()
+                n.CollectorStock = rw.Array(n.CollectorStock, r => new Collector()
                 {
-                    Ident = rw.Reader.ReadIdent(),
-                    Count = rw.Reader.ReadInt32()
+                    Ident = r.ReadIdent(),
+                    Count = r.ReadInt32()
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Ident);
-                    rw.Writer.Write(x.Count);
+                    w.Write(x.Ident);
+                    w.Write(x.Count);
                 });
             }
         }

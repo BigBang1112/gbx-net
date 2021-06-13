@@ -354,7 +354,8 @@ namespace GBX.NET.Engines.GameData
         public class Chunk2E002019 : Chunk<CGameItemModel>
         {
             private int version;
-            private CMwNod u01;
+            private int u01;
+            private CMwNod u02;
 
             public int Version
             {
@@ -362,10 +363,16 @@ namespace GBX.NET.Engines.GameData
                 set => version = value;
             }
 
-            public CMwNod U01
+            public int U01
             {
                 get => u01;
                 set => u01 = value;
+            }
+
+            public CMwNod U02
+            {
+                get => u02;
+                set => u02 = value;
             }
 
             public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
@@ -391,7 +398,7 @@ namespace GBX.NET.Engines.GameData
 
                             if (version >= 6)
                             {
-                                rw.Int32(Unknown); // Actions
+                                rw.Int32(ref u01); // Actions
 
                                 if (version >= 7)
                                 {
@@ -406,7 +413,7 @@ namespace GBX.NET.Engines.GameData
                                             rw.NodeRef(ref n.entityModel);
 
                                             if (version >= 13)
-                                                rw.NodeRef(ref u01);
+                                                rw.NodeRef(ref u02);
                                         }
                                     }
                                 }
@@ -477,6 +484,8 @@ namespace GBX.NET.Engines.GameData
         public class Chunk2E00201E : Chunk<CGameItemModel>
         {
             private int version;
+            private int u01;
+            private int u02;
 
             public int Version
             {
@@ -484,13 +493,25 @@ namespace GBX.NET.Engines.GameData
                 set => version = value;
             }
 
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public int U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
+
             public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
                 rw.String(ref n.archetypeRef);
                 if (n.archetypeRef.Length == 0)
-                    rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                    rw.Int32(ref u01);
+                rw.Int32(ref u02);
             }
         }
 
@@ -505,6 +526,9 @@ namespace GBX.NET.Engines.GameData
         public class Chunk2E00201F : Chunk<CGameItemModel>
         {
             private int version;
+            private int u01;
+            private int u02;
+            private int u03;
 
             public int Version
             {
@@ -512,14 +536,32 @@ namespace GBX.NET.Engines.GameData
                 set => version = value;
             }
 
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public int U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
+
+            public int U03
+            {
+                get => u03;
+                set => u03 = value;
+            }
+
             public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32(ref u01);
+                rw.Int32(ref u02);
 
-                if(version >= 10)
-                    rw.Int32(Unknown);
+                if (version >= 10)
+                    rw.Int32(ref u03);
             }
         }
 
@@ -534,11 +576,18 @@ namespace GBX.NET.Engines.GameData
         public class Chunk2E002020 : Chunk<CGameItemModel>
         {
             private int version;
+            private byte u01;
 
             public int Version
             {
                 get => version;
                 set => version = value;
+            }
+
+            public byte U01
+            {
+                get => u01;
+                set => u01 = value;
             }
 
             public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
@@ -547,7 +596,7 @@ namespace GBX.NET.Engines.GameData
                 rw.String(ref n.iconFid);
 
                 if (version >= 3)
-                    rw.Byte(Unknown);
+                    rw.Byte(ref u01);
             }
         }
 
@@ -561,10 +610,25 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E002021)]
         public class Chunk2E002021 : Chunk<CGameItemModel>
         {
+            private int u01;
+            private int u02;
+
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public int U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
+
             public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32(ref u01);
+                rw.Int32(ref u02);
             }
         }
 
@@ -578,11 +642,33 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E002023)]
         public class Chunk2E002023 : Chunk<CGameItemModel>
         {
+            private byte u01;
+            private int u02;
+            private int u03;
+
+            public byte U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public int U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
+
+            public int U03
+            {
+                get => u03;
+                set => u03 = value;
+            }
+
             public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
             {
-                rw.Byte(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Byte(ref u01);
+                rw.Int32(ref u02);
+                rw.Int32(ref u03);
             }
         }
 

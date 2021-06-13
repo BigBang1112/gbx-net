@@ -15,7 +15,7 @@ namespace GBX.NET.Engines.Input
         [Chunk(0x13006000)]
         public class Chunk13006000 : Chunk<CInputBindingsConfig>
         {
-            public override void Read(CInputBindingsConfig n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CInputBindingsConfig n, GameBoxReader r)
             {
                 var race = r.ReadString();
                 n.Bindings = r.ReadArray<Binding>((i, r1) =>
@@ -37,7 +37,7 @@ namespace GBX.NET.Engines.Input
         [Chunk(0x13006001)]
         public class Chunk13006001 : Chunk<CInputBindingsConfig>
         {
-            public override void Read(CInputBindingsConfig n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CInputBindingsConfig n, GameBoxReader r)
             {
                 n.Devices = new ReadOnlyCollection<string>(
                     r.ReadArray(r1 => r1.ReadId()).Select(x => x.ToString()).ToList()

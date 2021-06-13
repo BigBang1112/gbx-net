@@ -107,10 +107,12 @@
         [Chunk(0x030A7004)]
         public class Chunk030A7004 : Chunk<CGameCtnMediaBlockSound>
         {
+            public int U01;
+
             public override void ReadWrite(CGameCtnMediaBlockSound n, GameBoxReaderWriter rw)
             {
                 n.Sound = rw.FileRef(n.Sound);
-                rw.Int32(Unknown); // 1
+                rw.Int32(ref U01); // 1
                 n.Keys = rw.Array(n.Keys, r => new Key()
                 {
                     Time = r.ReadSingle(),

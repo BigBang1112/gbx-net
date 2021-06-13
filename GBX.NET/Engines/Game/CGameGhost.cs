@@ -35,6 +35,10 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0303F003)]
         public class Chunk0303F003 : Chunk<CGameGhost>
         {
+            public int U01;
+            public bool U02;
+            public int U03;
+
             public byte[] Data { get; set; }
             public int[] Samples { get; set; }
             public int SamplePeriod { get; set; }
@@ -44,10 +48,10 @@ namespace GBX.NET.Engines.Game
                 Data = rw.Bytes(Data);
                 Samples = rw.Array(Samples);
 
-                rw.Int32(Unknown);
-                rw.Boolean(Unknown);
+                rw.Int32(ref U01);
+                rw.Boolean(ref U02);
                 SamplePeriod = rw.Int32(SamplePeriod);
-                rw.Int32(Unknown);
+                rw.Int32(ref U03);
 
                 n.SampleData = Task.Run(() =>
                 {

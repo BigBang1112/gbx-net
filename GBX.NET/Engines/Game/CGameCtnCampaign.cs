@@ -70,10 +70,13 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03090009)]
         public class Chunk03090009 : SkippableChunk<CGameCtnCampaign>
         {
+            public byte U01;
+            public int U02;
+
             public override void ReadWrite(CGameCtnCampaign n, GameBoxReaderWriter rw)
             {
-                rw.Byte(Unknown);
-                rw.Int32(Unknown);
+                rw.Byte(ref U01);
+                rw.Int32(ref U02);
             }
         }
 
@@ -103,9 +106,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0309000D)]
         public class Chunk0309000D : Chunk<CGameCtnCampaign>
         {
+            public int U01;
+
             public override void ReadWrite(CGameCtnCampaign n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
             }
         }
 
@@ -119,9 +124,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0309000E)]
         public class Chunk0309000E : Chunk<CGameCtnCampaign>
         {
+            public int U01;
+
             public override void ReadWrite(CGameCtnCampaign n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
             }
         }
 
@@ -154,10 +161,13 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03090010)]
         public class Chunk03090010 : Chunk<CGameCtnCampaign>
         {
+            public int U01;
+            public int U02;
+
             public override void ReadWrite(CGameCtnCampaign n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
+                rw.Int32(ref U02);
             }
         }
 

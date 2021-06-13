@@ -277,6 +277,12 @@ namespace GBX.NET.Engines.Game
             }
         }
 
+        /// <summary>
+        /// Color of the block. Available since TM® Royal update.
+        /// </summary>
+        [NodeMember]
+        public DifficultyColor? Color { get; set; }
+
         #endregion
 
         #region Static properties

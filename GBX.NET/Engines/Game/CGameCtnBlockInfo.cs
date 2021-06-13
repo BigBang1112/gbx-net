@@ -38,24 +38,24 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw) // WIP
             {
                 n.BlockName = rw.Id(n.BlockName);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
                 rw.Reader.ReadArray(r => r.ReadNodeRef<CGameCtnBlockUnitInfo>());
                 rw.Reader.ReadArray(r => r.ReadNodeRef<CGameCtnBlockUnitInfo>());
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32();
+                rw.Int32();
                 rw.Reader.ReadNodeRef<CSceneMobil>();
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32();
+                rw.Int32();
                 rw.Reader.ReadNodeRef<CSceneMobil>();
-                rw.Byte(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Byte();
+                rw.Int32();
+                rw.Int32();
             }
         }
 
@@ -64,7 +64,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32();
             }
         }
 
@@ -73,7 +73,8 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                rw.Array<float>(Unknown, 24);
+                for (var i = 0; i < 24; i++)
+                    rw.Single();
             }
         }
 
@@ -82,18 +83,18 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32();
             }
         }
 
         [Chunk(0x0304E00E)]
         public class Chunk0304E00E : Chunk<CGameCtnBlockInfo>
         {
-            public CMwNod[] Unknown1 { get; set; }
+            public CMwNod[] U01;
 
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                Unknown1 = rw.Array(Unknown1, r => r.ReadNodeRef(), (x, w) => w.Write(x));
+                rw.Array(ref U01, r => r.ReadNodeRef(), (x, w) => w.Write(x));
             }
         }
 
@@ -120,19 +121,19 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Single(Unknown);
-                rw.Single(Unknown);
-                rw.Single(Unknown);
-                rw.Single(Unknown);
-                rw.Single(Unknown);
-                rw.Single(Unknown);
-                rw.Single(Unknown);
-                rw.Single(Unknown);
-                rw.Single(Unknown);
-                rw.Single(Unknown);
-                rw.Single(Unknown);
-                rw.Single(Unknown);
+                rw.Int32();
+                rw.Single();
+                rw.Single();
+                rw.Single();
+                rw.Single();
+                rw.Single();
+                rw.Single();
+                rw.Single();
+                rw.Single();
+                rw.Single();
+                rw.Single();
+                rw.Single();
+                rw.Single();
             }
         }
 
@@ -141,12 +142,12 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                rw.Boolean(Unknown);
+                rw.Boolean();
             }
         }
 
         [Chunk(0x0304E020)]
-        public class Chunk0304E020 : Chunk<CGameCtnBlockInfo>
+        public class Chunk0304E020 : Chunk<CGameCtnBlockInfo>, IVersionable
         {
             public int Version { get; set; }
 
@@ -170,16 +171,16 @@ namespace GBX.NET.Engines.Game
 
                         if (Version >= 4)
                         {
-                            rw.Int32(Unknown);
+                            rw.Int32();
 
                             if (Version == 5)
-                                rw.Boolean(Unknown);
+                                rw.Boolean();
 
                             if (Version >= 8)
                             {
-                                rw.Boolean(Unknown);
-                                rw.String(Unknown); // MatModifier
-                                rw.String(Unknown); // Grass
+                                rw.Boolean();
+                                rw.String(); // MatModifier
+                                rw.String(); // Grass
                             }
                         }
                     }
@@ -213,7 +214,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32();
                 n.AdditionalVariantsGround = rw.Array(n.AdditionalVariantsGround,
                     r => r.ReadNodeRef<CGameCtnBlockInfoVariantGround>(),
                     (x, w) => w.Write(x));
@@ -235,7 +236,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32();
             }
         }
 
@@ -244,10 +245,11 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Array<float>(Unknown, 24);
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                for (var i = 0; i < 24; i++)
+                    rw.Single();
             }
         }
 
@@ -256,8 +258,8 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32();
+                rw.Int32();
             }
         }
 
@@ -266,7 +268,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32();
                 n.AdditionalVariantsAir = rw.Array(n.AdditionalVariantsAir,
                     r => r.ReadNodeRef<CGameCtnBlockInfoVariantAir>(),
                     (x, w) => w.Write(x));
@@ -278,9 +280,9 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Byte(Unknown);
-                rw.Int16(Unknown);
+                rw.Int32();
+                rw.Byte();
+                rw.Int16();
             }
         }
 
@@ -289,9 +291,9 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
             }
         }
     }

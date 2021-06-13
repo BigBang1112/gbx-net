@@ -154,13 +154,13 @@ namespace GBX.NET.Engines.GameData
                 rw.String(ref n.pageName);
 
                 if (version == 5)
-                    rw.Int32(Unknown);
+                    rw.Int32();
                 if (version >= 4)
-                    rw.Int32(Unknown);
+                    rw.Int32();
 
                 if (version >= 3)
                 {
-                    rw.Int32(Unknown);
+                    rw.Int32();
                     n.CatalogPosition = rw.Int16((short)n.CatalogPosition);
                 }
 
@@ -181,7 +181,7 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E001004, "icon")]
         public class Chunk2E001004 : HeaderChunk<CGameCtnCollector>
         {
-            public override void Read(CGameCtnCollector n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnCollector n, GameBoxReader r)
             {
                 var width = r.ReadInt16();
                 var height = r.ReadInt16();
@@ -199,7 +199,7 @@ namespace GBX.NET.Engines.GameData
                 }
             }
 
-            public override void Write(CGameCtnCollector n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnCollector n, GameBoxWriter w)
             {
                 var width = (short)n.Icon.GetLength(0);
                 var height = (short)n.Icon.GetLength(1);
@@ -247,7 +247,7 @@ namespace GBX.NET.Engines.GameData
         {
             public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32();
             }
         }
 
@@ -263,12 +263,12 @@ namespace GBX.NET.Engines.GameData
         {
             public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
             }
         }
 
@@ -282,9 +282,11 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E001008)]
         public class Chunk2E001008 : Chunk<CGameCtnCollector>
         {
+            public byte U01;
+
             public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
             {
-                rw.Byte(Unknown); // 0
+                rw.Byte(ref U01); // 0
                 rw.String(ref n.skinDirectory);
             }
         }
@@ -299,6 +301,8 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E001009)]
         public class Chunk2E001009 : Chunk<CGameCtnCollector>
         {
+            public string U01;
+
             public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
             {
                 rw.String(ref n.pageName);
@@ -307,7 +311,7 @@ namespace GBX.NET.Engines.GameData
                 if (hasIconFid)
                     n.IconFid = rw.NodeRef(n.IconFid);
 
-                rw.Id(Unknown);
+                rw.Id(ref U01);
             }
         }
 
@@ -321,9 +325,17 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E00100A)]
         public class Chunk2E00100A : Chunk<CGameCtnCollector>
         {
+            private CMwNod u01;
+
+            public CMwNod U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
             public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
             {
-                rw.NodeRef(Unknown);
+                rw.NodeRef(ref u01);
             }
         }
 

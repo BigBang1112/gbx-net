@@ -133,7 +133,7 @@ namespace GBX.NET.Engines.Plug
         {
             public int Version { get; set; }
 
-            public override void Read(CPlugCrystal n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CPlugCrystal n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
 
@@ -175,7 +175,7 @@ namespace GBX.NET.Engines.Plug
         {
             public int Version { get; set; }
 
-            public override void Read(CPlugCrystal n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CPlugCrystal n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
 
@@ -474,13 +474,18 @@ namespace GBX.NET.Engines.Plug
             public int Version { get; set; }
             public int[] Numbers { get; set; }
 
+            public int U01 { get; set; }
+            public int U02 { get; set; }
+            public float U03 { get; set; }
+            public float U04 { get; set; }
+
             public override void ReadWrite(CPlugCrystal n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Single(Unknown);
-                rw.Single(Unknown);
+                U01 = rw.Int32(U01);
+                U02 = rw.Int32(U02);
+                U03 = rw.Single(U03);
+                U04 = rw.Single(U04);
                 Numbers = rw.Array(Numbers, (i, r) => r.ReadInt32(), (x, w) => w.Write(x));
             }
         }

@@ -61,11 +61,13 @@
         [Chunk(0x03084000)]
         public class Chunk03084000 : Chunk<CGameCtnMediaBlockCameraGame>
         {
+            public int U01;
+
             public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
             {
                 n.Start = rw.Single(n.Start);
                 n.End = rw.Single(n.End);
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
             }
         }
 
@@ -125,7 +127,7 @@
                 n.End = rw.Single(n.End);
                 n.GameCam = rw.Id(n.GameCam);
 
-                rw.TillFacade(Unknown); // Helicopter camera transform? 17 ints, sometimes 19
+                rw.UntilFacade(Unknown); // Helicopter camera transform? 17 ints, sometimes 19
             }
         }
 
@@ -148,7 +150,7 @@
                 n.End = rw.Single(n.End);
                 n.GameCam2 = (EGameCam2)rw.Int32((int)n.GameCam2.GetValueOrDefault());
 
-                rw.TillFacade(Unknown); // Helicopter camera transform? 17 ints, sometimes 19
+                rw.UntilFacade(Unknown); // Helicopter camera transform? 17 ints, sometimes 19
             }
         }
 

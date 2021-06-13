@@ -26,12 +26,14 @@
         [Chunk(0x03172000)]
         public class Chunk03172000 : Chunk<CGameCtnMediaBlockColoringBase>
         {
+            public int U01;
+
             public int Version { get; set; }
 
             public override void ReadWrite(CGameCtnMediaBlockColoringBase n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
 
                 n.Keys = rw.Array(n.Keys, i => new Key()
                 {

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 using GBX.NET.Engines.MwFoundations;
 
@@ -6,14 +9,30 @@ namespace GBX.NET
 {
     public class GameBoxHeaderInfo
     {
-        public short Version { get; set; } = 6;
-        public char? ByteFormat { get; set; } = 'B';
-        public char? RefTableCompression { get; set; } = 'U';
-        public char? BodyCompression { get; set; } = 'C';
-        public char? UnknownByte { get; set; } = 'R';
+        public short Version { get; set; }
+        public char? ByteFormat { get; set; }
+        public char? RefTableCompression { get; set; }
+        public char? BodyCompression { get; set; }
+        public char? UnknownByte { get; set; }
         public uint? ID { get; internal set; }
-        public byte[] UserData { get; private set; } = new byte[0];
-        public int NumNodes { get; private set; }
+        public byte[] UserData { get; protected set; }
+        public int NumNodes { get; protected set; }
+
+        public GameBoxHeaderInfo(uint id)
+        {
+            Version = 6;
+            ByteFormat = 'B';
+            RefTableCompression = 'U';
+            BodyCompression = 'C';
+            UnknownByte = 'R';
+            ID = id;
+            UserData = new byte[0];
+        }
+
+        public GameBoxHeaderInfo(GameBoxReader reader)
+        {
+            Read(reader);
+        }
 
         public bool Read(GameBoxReader reader)
         {

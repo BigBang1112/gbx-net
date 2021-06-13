@@ -46,7 +46,7 @@ namespace GBX.NET.Engines.Game
         {
             public int Version { get; set; }
 
-            public override void Read(CGameCtnMediaClipGroup n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaClipGroup n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
 
@@ -62,7 +62,7 @@ namespace GBX.NET.Engines.Game
                 ).ToList();
             }
 
-            public override void Write(CGameCtnMediaClipGroup n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaClipGroup n, GameBoxWriter w)
             {
                 w.Write(Version);
 
@@ -83,7 +83,7 @@ namespace GBX.NET.Engines.Game
         {
             public int Version { get; set; }
 
-            public override void Read(CGameCtnMediaClipGroup n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaClipGroup n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
 
@@ -102,7 +102,7 @@ namespace GBX.NET.Engines.Game
                 ).ToList();
             }
 
-            public override void Write(CGameCtnMediaClipGroup n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaClipGroup n, GameBoxWriter w)
             {
                 w.Write(Version);
 
@@ -129,7 +129,7 @@ namespace GBX.NET.Engines.Game
         {
             public int Version { get; set; } = 10;
 
-            public override void Read(CGameCtnMediaClipGroup n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaClipGroup n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
 
@@ -161,7 +161,7 @@ namespace GBX.NET.Engines.Game
                 ).ToList();
             }
 
-            public override void Write(CGameCtnMediaClipGroup n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaClipGroup n, GameBoxWriter w)
             {
                 w.Write(Version);
 

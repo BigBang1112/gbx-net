@@ -116,12 +116,10 @@ namespace GBX.NET.Engines.TrackMania
         #region 0x003 chunk
 
         [Chunk(0x2407F003)]
+        [AutoReadWriteChunk]
         public class Chunk2407F003 : Chunk<CCtnMediaBlockEventTrackMania>
         {
-            public override void Read(CCtnMediaBlockEventTrackMania n, GameBoxReader r, GameBoxWriter unknownW)
-            {
-                r.ReadTillFacade();
-            }
+            
         }
 
         #endregion

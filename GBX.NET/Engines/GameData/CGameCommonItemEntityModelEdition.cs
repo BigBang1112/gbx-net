@@ -69,6 +69,7 @@ namespace GBX.NET.Engines.GameData
         public class Chunk2E026000 : Chunk<CGameCommonItemEntityModelEdition>
         {
             private int version;
+            private string u01;
 
             public int Version
             {
@@ -76,13 +77,21 @@ namespace GBX.NET.Engines.GameData
                 set => version = value;
             }
 
+            public string U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
             public override void ReadWrite(CGameCommonItemEntityModelEdition n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
                 rw.EnumInt32<EItemType>(ref n.itemType);
                 rw.NodeRef<CPlugCrystal>(ref n.meshCrystal);
-                rw.String(Unknown);
-                rw.Array<int>(Unknown, 32);
+                rw.String(ref u01);
+
+                for (var i = 0; i < 32; i++)
+                    rw.Int32();
             }
         }
 
