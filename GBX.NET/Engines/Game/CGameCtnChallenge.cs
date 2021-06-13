@@ -3097,18 +3097,25 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0304302A)]
         public class Chunk0304302A : Chunk<CGameCtnChallenge>
         {
-            private bool u01;
-
-            public bool U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
+            private bool U01;
 
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.Boolean(ref u01);
+                rw.Boolean(ref U01);
             }
+        }
+
+        #endregion
+
+        #region 0x034 skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x034 skippable chunk
+        /// </summary>
+        [Chunk(0x03043034), IgnoreChunk]
+        public class Chunk03043034 : SkippableChunk<CGameCtnChallenge>
+        {
+            
         }
 
         #endregion
@@ -3137,6 +3144,19 @@ namespace GBX.NET.Engines.Game
 
                 rw.Bytes(ref u01, 31);
             }
+        }
+
+        #endregion
+
+        #region 0x038 skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x038 skippable chunk
+        /// </summary>
+        [Chunk(0x03043038), IgnoreChunk]
+        public class Chunk03043038 : SkippableChunk<CGameCtnChallenge>
+        {
+
         }
 
         #endregion
@@ -3293,6 +3313,19 @@ namespace GBX.NET.Engines.Game
                     }
                 }
             }
+        }
+
+        #endregion
+
+        #region 0x03E skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x03E skippable chunk
+        /// </summary>
+        [Chunk(0x0304303E), IgnoreChunk]
+        public class Chunk0304303E : SkippableChunk<CGameCtnChallenge>
+        {
+
         }
 
         #endregion
@@ -3645,6 +3678,19 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region 0x04F skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x04F skippable chunk
+        /// </summary>
+        [Chunk(0x0304304F), IgnoreChunk]
+        public class Chunk0304304F : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
         #region 0x050 skippable chunk (offzones)
 
         /// <summary>
@@ -3892,6 +3938,19 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region 0x055 skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x055 skippable chunk
+        /// </summary>
+        [Chunk(0x03043055), IgnoreChunk]
+        public class Chunk03043055 : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
         #region 0x056 skippable chunk (light settings)
 
         /// <summary>
@@ -3936,6 +3995,19 @@ namespace GBX.NET.Engines.Game
                 w.Write(n.dynamicDaylight);
                 w.Write(n.dayDuration);
             }
+        }
+
+        #endregion
+
+        #region 0x057 skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x057 skippable chunk
+        /// </summary>
+        [Chunk(0x03043057), IgnoreChunk]
+        public class Chunk03043057 : SkippableChunk<CGameCtnChallenge>
+        {
+
         }
 
         #endregion
@@ -4040,6 +4112,58 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region 0x05B skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x05B skippable chunk
+        /// </summary>
+        [Chunk(0x0304305B), IgnoreChunk]
+        public class Chunk0304305B : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
+        #region 0x05C skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x05C skippable chunk
+        /// </summary>
+        [Chunk(0x0304305C), IgnoreChunk]
+        public class Chunk0304305C : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
+        #region 0x05D skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x05D skippable chunk
+        /// </summary>
+        [Chunk(0x0304305D), IgnoreChunk]
+        public class Chunk0304305D : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
+        #region 0x05E skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x05E skippable chunk
+        /// </summary>
+        [Chunk(0x0304305E), IgnoreChunk]
+        public class Chunk0304305E : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
         #region 0x05F skippable chunk (free blocks) [TM®️]
 
         /// <summary>
@@ -4104,6 +4228,84 @@ namespace GBX.NET.Engines.Game
                     }
                 }
             }
+        }
+
+        #endregion
+
+        #region 0x060 skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x060 skippable chunk
+        /// </summary>
+        [Chunk(0x03043060), IgnoreChunk]
+        public class Chunk03043060 : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
+        #region 0x061 skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x061 skippable chunk
+        /// </summary>
+        [Chunk(0x03043061), IgnoreChunk]
+        public class Chunk03043061 : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
+        #region 0x062 skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x062 skippable chunk
+        /// </summary>
+        [Chunk(0x03043062), IgnoreChunk]
+        public class Chunk03043062 : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
+        #region 0x063 skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x063 skippable chunk
+        /// </summary>
+        [Chunk(0x03043063), IgnoreChunk]
+        public class Chunk03043063 : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
+        #region 0x064 skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x064 skippable chunk
+        /// </summary>
+        [Chunk(0x03043064), IgnoreChunk]
+        public class Chunk03043064 : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
+        #region 0x065 skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x065 skippable chunk
+        /// </summary>
+        [Chunk(0x03043065), IgnoreChunk]
+        public class Chunk03043065 : SkippableChunk<CGameCtnChallenge>
+        {
+
         }
 
         #endregion
