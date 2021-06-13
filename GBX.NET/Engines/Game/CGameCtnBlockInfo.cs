@@ -90,11 +90,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0304E00E)]
         public class Chunk0304E00E : Chunk<CGameCtnBlockInfo>
         {
-            public CMwNod[] Unknown1 { get; set; }
+            public CMwNod[] U01;
 
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                Unknown1 = rw.Array(Unknown1, r => r.ReadNodeRef(), (x, w) => w.Write(x));
+                rw.Array(ref U01, r => r.ReadNodeRef(), (x, w) => w.Write(x));
             }
         }
 
@@ -147,7 +147,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [Chunk(0x0304E020)]
-        public class Chunk0304E020 : Chunk<CGameCtnBlockInfo>
+        public class Chunk0304E020 : Chunk<CGameCtnBlockInfo>, IVersionable
         {
             public int Version { get; set; }
 

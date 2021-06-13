@@ -92,6 +92,7 @@ namespace GBX.NET.Engines.Game
             {
                 rw.Int32(ref U01);
                 rw.Int32(ref U02);
+
                 n.DynaLinks = rw.Reader.ReadArray(r =>
                 {
                     var u01 = r.ReadInt32();

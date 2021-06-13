@@ -518,25 +518,13 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0315B00C)]
         public class Chunk0315B00C : Chunk<CGameCtnBlockInfoVariant>
         {
-            private int u01;
-            private int u02;
-
-            public int U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
-
-            public int U02
-            {
-                get => u02;
-                set => u02 = value;
-            }
+            public int U01;
+            public int U02;
 
             public override void ReadWrite(CGameCtnBlockInfoVariant n, GameBoxReaderWriter rw)
             {
-                rw.Int32(ref u01);
-                rw.Int32(ref u02);
+                rw.Int32(ref U01);
+                rw.Int32(ref U02);
             }
         }
     }
