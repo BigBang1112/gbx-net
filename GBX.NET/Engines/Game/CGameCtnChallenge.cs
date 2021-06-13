@@ -4228,10 +4228,10 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x060 skippable chunk
+        #region 0x060 skippable chunk [TM®️]
 
         /// <summary>
-        /// CGameCtnChallenge 0x060 skippable chunk
+        /// CGameCtnChallenge 0x060 skippable chunk [TM®️]
         /// </summary>
         [Chunk(0x03043060), IgnoreChunk]
         public class Chunk03043060 : SkippableChunk<CGameCtnChallenge>
@@ -4241,10 +4241,10 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x061 skippable chunk
+        #region 0x061 skippable chunk [TM®️]
 
         /// <summary>
-        /// CGameCtnChallenge 0x061 skippable chunk
+        /// CGameCtnChallenge 0x061 skippable chunk [TM®️]
         /// </summary>
         [Chunk(0x03043061), IgnoreChunk]
         public class Chunk03043061 : SkippableChunk<CGameCtnChallenge>
@@ -4254,23 +4254,53 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x062 skippable chunk
+        #region 0x062 skippable chunk (block color) [TM®️]
 
         /// <summary>
-        /// CGameCtnChallenge 0x062 skippable chunk
+        /// CGameCtnChallenge 0x062 skippable chunk (block color) [TM®️]
         /// </summary>
-        [Chunk(0x03043062), IgnoreChunk]
-        public class Chunk03043062 : SkippableChunk<CGameCtnChallenge>
+        [Chunk(0x03043062, true, "block color"), IgnoreChunk]
+        public class Chunk03043062 : SkippableChunk<CGameCtnChallenge>, IVersionable
         {
+            public int Version { get; set; }
 
+            public override void Read(CGameCtnChallenge n, GameBoxReader r)
+            {
+                Version = r.ReadInt32();
+
+                foreach (var block in n.blocks)
+                {
+                    block.Color = (CGameCtnBlock.EColor)r.ReadByte();
+                }
+
+                foreach (var block in n.BakedBlocks)
+                {
+                    block.Color = (CGameCtnBlock.EColor)r.ReadByte();
+                }
+            }
+
+            public override void Write(CGameCtnChallenge n, GameBoxWriter w)
+            {
+                w.Write(Version);
+
+                foreach (var block in n.blocks)
+                {
+                    w.Write((byte)block.Color.GetValueOrDefault());
+                }
+
+                foreach (var block in n.BakedBlocks)
+                {
+                    w.Write((byte)block.Color.GetValueOrDefault());
+                }
+            }
         }
 
         #endregion
 
-        #region 0x063 skippable chunk
+        #region 0x063 skippable chunk [TM®️]
 
         /// <summary>
-        /// CGameCtnChallenge 0x063 skippable chunk
+        /// CGameCtnChallenge 0x063 skippable chunk [TM®️]
         /// </summary>
         [Chunk(0x03043063), IgnoreChunk]
         public class Chunk03043063 : SkippableChunk<CGameCtnChallenge>
@@ -4280,10 +4310,10 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x064 skippable chunk
+        #region 0x064 skippable chunk [TM®️]
 
         /// <summary>
-        /// CGameCtnChallenge 0x064 skippable chunk
+        /// CGameCtnChallenge 0x064 skippable chunk [TM®️]
         /// </summary>
         [Chunk(0x03043064), IgnoreChunk]
         public class Chunk03043064 : SkippableChunk<CGameCtnChallenge>
@@ -4293,10 +4323,10 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
-        #region 0x065 skippable chunk
+        #region 0x065 skippable chunk [TM®️]
 
         /// <summary>
-        /// CGameCtnChallenge 0x065 skippable chunk
+        /// CGameCtnChallenge 0x065 skippable chunk [TM®️]
         /// </summary>
         [Chunk(0x03043065), IgnoreChunk]
         public class Chunk03043065 : SkippableChunk<CGameCtnChallenge>
