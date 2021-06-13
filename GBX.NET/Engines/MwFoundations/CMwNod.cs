@@ -208,7 +208,7 @@ namespace GBX.NET.Engines.MwFoundations
                             ((ISkippableChunk)c).Discovered = true;
                         chunks.Add(c);
 
-                        if (ignoreChunkAttribute != null)
+                        if (ignoreChunkAttribute == null)
                         {
                             c.OnLoad();
 
