@@ -4274,12 +4274,17 @@ namespace GBX.NET.Engines.Game
 
                 foreach (var block in n.blocks)
                 {
-                    block.Color = (CGameCtnBlock.EColor)r.ReadByte();
+                    block.Color = (DifficultyColor)r.ReadByte();
                 }
 
                 foreach (var block in n.BakedBlocks)
                 {
-                    block.Color = (CGameCtnBlock.EColor)r.ReadByte();
+                    block.Color = (DifficultyColor)r.ReadByte();
+                }
+
+                foreach (var item in n.AnchoredObjects)
+                {
+                    item.Color = (DifficultyColor)r.ReadByte();
                 }
             }
 
@@ -4295,6 +4300,11 @@ namespace GBX.NET.Engines.Game
                 foreach (var block in n.BakedBlocks)
                 {
                     w.Write((byte)block.Color.GetValueOrDefault());
+                }
+
+                foreach (var item in n.AnchoredObjects)
+                {
+                    w.Write((byte)item.Color.GetValueOrDefault());
                 }
             }
         }

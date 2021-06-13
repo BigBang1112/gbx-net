@@ -123,6 +123,12 @@ namespace GBX.NET.Engines.Game
             set => flags = (short)((flags & 0xF0FF) | ((value & 15) << 8));
         }
 
+        /// <summary>
+        /// Color of the item. Available since TM® Royal update.
+        /// </summary>
+        [NodeMember]
+        public DifficultyColor? Color { get; set; }
+
         #endregion
 
         #region Methods
