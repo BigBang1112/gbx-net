@@ -334,7 +334,7 @@ namespace GBX.NET.Engines.MwFoundations
                 }
 
                 using (var ms = new MemoryStream())
-                using (var msW = new GameBoxWriter(ms, chunk as ILookbackable ?? GBX.Body))
+                using (var msW = new GameBoxWriter(ms, w.Lookbackable))
                 {
                     var rw = new GameBoxReaderWriter(msW);
 

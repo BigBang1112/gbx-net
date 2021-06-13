@@ -237,7 +237,7 @@ namespace GBX.NET
 
             if (value == "Unassigned")
                 Write(0xBFFFFFFF);
-            else if (value == "")
+            else if (string.IsNullOrEmpty(value))
                 Write(0xFFFFFFFF);
             else if (l.IdStrings.Contains(value))
                 Write(value.Index + 1 + 0x40000000);

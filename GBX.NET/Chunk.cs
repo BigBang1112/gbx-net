@@ -46,6 +46,20 @@ namespace GBX.NET
 
         public bool Equals(Chunk chunk) => chunk != null && chunk.ID == ID;
 
+        protected internal GameBoxReader CreateReader(Stream input)
+        {
+            if (this is ILookbackable l)
+                return new GameBoxReader(input, l);
+            return new GameBoxReader(input, GBX.Body);
+        }
+
+        protected internal GameBoxWriter CreateWriter(Stream input)
+        {
+            if (this is ILookbackable l)
+                return new GameBoxWriter(input, l);
+            return new GameBoxWriter(input, GBX.Body);
+        }
+
         public static uint Remap(uint chunkID, IDRemap remap = IDRemap.Latest)
         {
             var classPart = chunkID & 0xFFFFF000;
@@ -131,20 +145,6 @@ namespace GBX.NET
                 Read(n, rw.Reader);
             else if (rw.Writer != null)
                 Write(n, rw.Writer);
-        }
-
-        protected GameBoxReader CreateReader(Stream input)
-        {
-            if (this is ILookbackable l)
-                return new GameBoxReader(input, l);
-            return new GameBoxReader(input, GBX.Body);
-        }
-
-        protected GameBoxWriter CreateWriter(Stream input)
-        {
-            if (this is ILookbackable l)
-                return new GameBoxWriter(input, l);
-            return new GameBoxWriter(input, GBX.Body);
         }
 
         public byte[] ToByteArray()
