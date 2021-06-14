@@ -69,6 +69,11 @@ namespace GBX.NET
                     }
                 }
 
+                if (ms.Position != ms.Length)
+                {
+                    Debug.WriteLine($"Skippable chunk not fully parsed! ({ms.Position}/{ms.Length}) - {ToString()}");
+                }
+
                 Progress = (int)ms.Position;
             }
         }
