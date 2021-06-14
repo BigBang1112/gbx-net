@@ -333,6 +333,21 @@ namespace GBX.NET
             variable = Byte(variable.GetValueOrDefault());
         }
 
+        public int Byte(int variable)
+        {
+            return Byte((byte)variable);
+        }
+
+        public void Byte(ref int variable)
+        {
+            variable = Byte(variable);
+        }
+
+        public void Byte(ref int? variable)
+        {
+            variable = Byte(variable.GetValueOrDefault());
+        }
+
         public void Byte()
         {
             _ = Byte(default);
