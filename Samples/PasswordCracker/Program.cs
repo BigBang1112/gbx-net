@@ -23,8 +23,6 @@ namespace PasswordCracker
 
                 var savePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.GetFileName(fileName));
                 map.Save(savePath);
-
-                var gdsg = GameBox.ParseNode(savePath);
             }
         }
 

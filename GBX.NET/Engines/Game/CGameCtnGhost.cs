@@ -825,6 +825,7 @@ namespace GBX.NET.Engines.Game
                                 controlNames.Add(entry.Name);
                     }
 
+                    w.Write(controlNames.Count);
                     foreach (var name in controlNames)
                         w.WriteId(name);
 
