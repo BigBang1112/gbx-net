@@ -165,10 +165,7 @@ namespace GBX.NET
             }
             else if (index >> 30 == 0)
             {
-                if (Id.CollectionIDs.TryGetValue((int)index, out string val))
-                    return new Id(index.ToString(), lookbackable);
-                else
-                    return new Id("???", lookbackable);
+                return new Id(index.ToString(), lookbackable);
             }
             else if (lookbackable.IdStrings.Count > (index & 0x3FFF) - 1)
                 return new Id(lookbackable.IdStrings[(int)(index & 0x3FFF) - 1], lookbackable);

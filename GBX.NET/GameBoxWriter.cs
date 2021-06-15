@@ -241,7 +241,7 @@ namespace GBX.NET
                 Write(0xFFFFFFFF);
             else if (l.IdStrings.Contains(value))
                 Write(value.Index + 1 + 0x40000000);
-            else if (int.TryParse(value, out int cID) && Id.CollectionIDs.ContainsKey(cID))
+            else if (int.TryParse(value, out int cID))
                 Write(cID);
             else
             {
