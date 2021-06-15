@@ -812,6 +812,16 @@ namespace GBX.NET
             variable = TimeSpan32(variable);
         }
 
+        public TimeSpan TimeSpan32(TimeSpan variable, TimeSpan def)
+        {
+            return TimeSpan32(new TimeSpan?(variable)).GetValueOrDefault(def);
+        }
+
+        public void TimeSpan32(ref TimeSpan variable, TimeSpan def)
+        {
+            variable = TimeSpan32(variable, def);
+        }
+
         public void TimeSpan32()
         {
             _ = TimeSpan32(default);

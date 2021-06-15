@@ -10,13 +10,28 @@ namespace GBX.NET.Engines.Game
     [Node(0x0308F000)]
     public class CGameCtnChallengeGroup : CMwNod
     {
+        #region Fields
+
+        private string _default;
+        private MapInfo[] mapInfos;
+
+        #endregion
+
         #region Properties
 
         [NodeMember]
-        public string Default { get; set; }
+        public string Default
+        {
+            get => _default;
+            set => _default = value;
+        }
 
         [NodeMember]
-        public MapInfo[] MapInfos { get; set; }
+        public MapInfo[] MapInfos
+        {
+            get => mapInfos;
+            set => mapInfos = value;
+        }
 
         #endregion
 
@@ -32,7 +47,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallengeGroup n, GameBoxReaderWriter rw)
             {
-                n.Default = rw.String(n.Default);
+                rw.String(ref n._default);
             }
         }
 
@@ -44,15 +59,21 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallengeGroup 0x00B chunk (map infos)
         /// </summary>
         [Chunk(0x0308F00B, "map infos")]
-        public class Chunk0308F00B : Chunk<CGameCtnChallengeGroup>
+        public class Chunk0308F00B : Chunk<CGameCtnChallengeGroup>, IVersionable
         {
-            public int Version { get; set; }
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CGameCtnChallengeGroup n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
+                rw.Int32(ref version);
 
-                n.MapInfos = rw.Array(n.MapInfos, i => new MapInfo()
+                rw.Array(ref n.mapInfos, i => new MapInfo()
                 {
                     Metadata = rw.Reader.ReadIdent(),
                     FilePath = rw.Reader.ReadString()

@@ -14,7 +14,7 @@ namespace GBX.NET.Engines.Plug
         public Task<ObservableCollection<Sample>> Samples { get; private set; }
 
         [Chunk(0x0911F000)]
-        public class Chunk000 : Chunk<CPlugEntRecordData>
+        public class Chunk000 : Chunk<CPlugEntRecordData>, IVersionable
         {
             public int Version { get; set; }
             public int CompressedSize { get; private set; }

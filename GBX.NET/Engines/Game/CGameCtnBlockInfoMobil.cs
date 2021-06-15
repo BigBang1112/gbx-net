@@ -27,7 +27,7 @@ namespace GBX.NET.Engines.Game
 
 
         [Chunk(0x03122003)]
-        public class Chunk03122003 : Chunk<CGameCtnBlockInfoMobil>
+        public class Chunk03122003 : Chunk<CGameCtnBlockInfoMobil>, IVersionable
         {
             public int Version { get; set; }
 

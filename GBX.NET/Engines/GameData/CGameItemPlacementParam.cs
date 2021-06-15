@@ -250,7 +250,7 @@ namespace GBX.NET.Engines.GameData
         /// CGameItemPlacementParam 0x000 skippable chunk
         /// </summary>
         [Chunk(0x2E020000)]
-        public class Chunk2E020000 : SkippableChunk<CGameItemPlacementParam>
+        public class Chunk2E020000 : SkippableChunk<CGameItemPlacementParam>, IVersionable
         {
             private int version;
 
@@ -286,20 +286,14 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E020001, "pivot positions")]
         public class Chunk2E020001 : SkippableChunk<CGameItemPlacementParam>
         {
-            private int u01;
-
-            public int U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
+            public int U01;
 
             public override void ReadWrite(CGameItemPlacementParam n, GameBoxReaderWriter rw)
             {
                 rw.Array(ref n.pivotPositions,
                     (i, r) => r.ReadVec3(),
                     (x, w) => w.Write(x));
-                rw.Int32(ref u01);
+                rw.Int32(ref U01);
             }
         }
 

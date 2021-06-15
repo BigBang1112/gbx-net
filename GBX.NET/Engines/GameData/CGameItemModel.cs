@@ -573,21 +573,16 @@ namespace GBX.NET.Engines.GameData
         /// CGameItemModel 0x020 chunk
         /// </summary>
         [Chunk(0x2E002020)]
-        public class Chunk2E002020 : Chunk<CGameItemModel>
+        public class Chunk2E002020 : Chunk<CGameItemModel>, IVersionable
         {
             private int version;
-            private byte u01;
+
+            public byte U01;
 
             public int Version
             {
                 get => version;
                 set => version = value;
-            }
-
-            public byte U01
-            {
-                get => u01;
-                set => u01 = value;
             }
 
             public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
@@ -596,7 +591,7 @@ namespace GBX.NET.Engines.GameData
                 rw.String(ref n.iconFid);
 
                 if (version >= 3)
-                    rw.Byte(ref u01);
+                    rw.Byte(ref U01);
             }
         }
 
@@ -610,25 +605,13 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E002021)]
         public class Chunk2E002021 : Chunk<CGameItemModel>
         {
-            private int u01;
-            private int u02;
-
-            public int U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
-
-            public int U02
-            {
-                get => u02;
-                set => u02 = value;
-            }
+            public int U01;
+            public int U02;
 
             public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
             {
-                rw.Int32(ref u01);
-                rw.Int32(ref u02);
+                rw.Int32(ref U01);
+                rw.Int32(ref U02);
             }
         }
 
@@ -642,33 +625,15 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E002023)]
         public class Chunk2E002023 : Chunk<CGameItemModel>
         {
-            private byte u01;
-            private int u02;
-            private int u03;
-
-            public byte U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
-
-            public int U02
-            {
-                get => u02;
-                set => u02 = value;
-            }
-
-            public int U03
-            {
-                get => u03;
-                set => u03 = value;
-            }
+            public byte U01;
+            public int U02;
+            public int U03;
 
             public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
             {
-                rw.Byte(ref u01);
-                rw.Int32(ref u02);
-                rw.Int32(ref u03);
+                rw.Byte(ref U01);
+                rw.Int32(ref U02);
+                rw.Int32(ref U03);
             }
         }
 

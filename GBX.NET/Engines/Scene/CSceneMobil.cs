@@ -8,17 +8,11 @@ namespace GBX.NET.Engines.Scene
         [Chunk(0x0A011003)]
         public class Chunk0A011003 : Chunk<CSceneMobil>
         {
-            private int u01;
-
-            public int U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
+            public int U01;
 
             public override void ReadWrite(CSceneMobil n, GameBoxReaderWriter rw)
             {
-                rw.Int32(ref u01);
+                rw.Int32(ref U01);
             }
         }
 

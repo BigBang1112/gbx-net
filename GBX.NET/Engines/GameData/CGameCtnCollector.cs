@@ -32,6 +32,7 @@ namespace GBX.NET.Engines.GameData
         private string collectorName;
         private bool isInternal;
         private bool isAdvanced;
+        private long fileTime;
 
         #endregion
 
@@ -127,6 +128,13 @@ namespace GBX.NET.Engines.GameData
             set => isAdvanced = value;
         }
 
+        [NodeMember]
+        public long FileTime
+        {
+            get => fileTime;
+            set => fileTime = value;
+        }
+
         #endregion
 
         #region Chunks
@@ -137,7 +145,7 @@ namespace GBX.NET.Engines.GameData
         /// CGameCtnCollector 0x003 header chunk
         /// </summary>
         [Chunk(0x2E001003)]
-        public class Chunk2E001003 : HeaderChunk<CGameCtnCollector>
+        public class Chunk2E001003 : HeaderChunk<CGameCtnCollector>, IVersionable
         {
             private int version;
 
@@ -227,11 +235,9 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E001006, "file time")]
         public class Chunk2E001006H : HeaderChunk<CGameCtnCollector>
         {
-            public long FileTime { get; set; }
-
             public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
             {
-                FileTime = rw.Int64(FileTime);
+                rw.Int64(ref n.fileTime);
             }
         }
 
@@ -325,17 +331,11 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E00100A)]
         public class Chunk2E00100A : Chunk<CGameCtnCollector>
         {
-            private CMwNod u01;
-
-            public CMwNod U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
+            public string U01;
 
             public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
             {
-                rw.NodeRef(ref u01);
+                rw.Id(ref U01);
             }
         }
 
@@ -412,11 +412,12 @@ namespace GBX.NET.Engines.GameData
         /// CGameCtnCollector 0x010 chunk
         /// </summary>
         [Chunk(0x2E001010)]
-        public class Chunk2E001010 : Chunk<CGameCtnCollector>
+        public class Chunk2E001010 : Chunk<CGameCtnCollector>, IVersionable
         {
             private int version;
-            private CMwNod u01;
-            private int u02;
+
+            public CMwNod U01;
+            public int U02;
 
             public int Version
             {
@@ -424,25 +425,13 @@ namespace GBX.NET.Engines.GameData
                 set => version = value;
             }
 
-            public CMwNod U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
-
-            public int U02
-            {
-                get => u02;
-                set => u02 = value;
-            }
-
             public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version); // 2
-                rw.NodeRef(ref u01); // -1
+                rw.NodeRef(ref U01); // -1
                 rw.String(ref n.skinDirectory);
-                if(n.skinDirectory.Length == 0)
-                    rw.Int32(ref u02); // -1
+                if (n.skinDirectory.Length == 0)
+                    rw.Int32(ref U02); // -1
             }
         }
 
@@ -454,7 +443,7 @@ namespace GBX.NET.Engines.GameData
         /// CGameCtnCollector 0x011 chunk
         /// </summary>
         [Chunk(0x2E001011)]
-        public class Chunk2E001011 : Chunk<CGameCtnCollector>
+        public class Chunk2E001011 : Chunk<CGameCtnCollector>, IVersionable
         {
             private int version;
 

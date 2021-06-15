@@ -9,17 +9,86 @@ namespace GBX.NET.Engines.Game
     [Node(0x03090000)]
     public class CGameCtnCampaign : CMwNod
     {
+        #region Fields
+
+        private CGameCtnChallengeGroup[] mapGroups;
+        private string campaignID;
+        private int index;
+        private string name;
+        private int type;
+        private int unlockType;
+
+        #endregion
+
         #region Properties
 
-        public CGameCtnChallengeGroup[] MapGroups { get; set; }
+        public CGameCtnChallengeGroup[] MapGroups
+        {
+            get => mapGroups;
+            set => mapGroups = value;
+        }
 
-        public string CampaignID { get; set; }
+        public string CampaignID
+        {
+            get => campaignID;
+            set => campaignID = value;
+        }
 
-        public int Index { get; set; }
+        public int Index
+        {
+            get
+            {
+                DiscoverChunk<Chunk0309000A>();
+                return index;
+            }
+            set
+            {
+                DiscoverChunk<Chunk0309000A>();
+                index = value;
+            }
+        }
 
-        public string Name { get; set; }
-        public int Type { get; set; }
-        public int UnlockType { get; set; }
+        public string Name
+        {
+            get
+            {
+                DiscoverChunk<Chunk0309000F>();
+                return name;
+            }
+            set
+            {
+                DiscoverChunk<Chunk0309000F>();
+                name = value;
+            }
+        }
+
+        public int Type
+        {
+            get
+            {
+                DiscoverChunk<Chunk0309000F>();
+                return type;
+            }
+            set
+            {
+                DiscoverChunk<Chunk0309000F>();
+                type = value;
+            }
+        }
+
+        public int UnlockType
+        {
+            get
+            {
+                DiscoverChunk<Chunk0309000F>();
+                return unlockType;
+            }
+            set
+            {
+                DiscoverChunk<Chunk0309000F>();
+                unlockType = value;
+            }
+        }
 
         #endregion
 
@@ -31,16 +100,20 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnCampaign 0x000 chunk (map groups)
         /// </summary>
         [Chunk(0x03090000, "map groups")]
-        public class Chunk03090000 : Chunk<CGameCtnCampaign>
+        public class Chunk03090000 : Chunk<CGameCtnCampaign>, IVersionable
         {
-            public int Version { get; set; }
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CGameCtnCampaign n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                n.MapGroups = rw.Array(n.MapGroups,
-                    i => rw.Reader.ReadNodeRef<CGameCtnChallengeGroup>(),
-                    x => rw.Writer.Write(x));
+                rw.Int32(ref version);
+                rw.ArrayNode(ref n.mapGroups);
             }
         }
 
@@ -56,7 +129,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnCampaign n, GameBoxReaderWriter rw)
             {
-                n.CampaignID = rw.Id(n.CampaignID);
+                rw.Id(ref n.campaignID);
             }
         }
 
@@ -92,7 +165,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnCampaign n, GameBoxReaderWriter rw)
             {
-                n.Index = rw.Int32(n.Index);
+                rw.Int32(ref n.index);
             }
         }
 
@@ -136,7 +209,6 @@ namespace GBX.NET.Engines.Game
 
         #region 0x00F skippable chunk (name)
 
-
         /// <summary>
         /// CGameCtnCampaign 0x00F skippable chunk (name)
         /// </summary>
@@ -145,9 +217,9 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnCampaign n, GameBoxReaderWriter rw)
             {
-                n.Name = rw.String(n.Name);
-                n.Type = rw.Int32(n.Type);
-                n.UnlockType = rw.Int32(n.UnlockType);
+                rw.String(ref n.name);
+                rw.Int32(ref n.type);
+                rw.Int32(ref n.unlockType);
             }
         }
 

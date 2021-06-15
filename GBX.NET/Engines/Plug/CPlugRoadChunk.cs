@@ -6,7 +6,7 @@ namespace GBX.NET.Engines.Plug
     public class CPlugRoadChunk : CMwNod
     {
         [Chunk(0x09128000)]
-        public class Chunk09128000 : Chunk<CPlugRoadChunk>
+        public class Chunk09128000 : Chunk<CPlugRoadChunk>, IVersionable
         {
             public int Version { get; set; }
             public byte[] UnknownData { get; set; }

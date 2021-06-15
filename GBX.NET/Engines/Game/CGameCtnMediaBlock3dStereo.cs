@@ -6,10 +6,20 @@
     [Node(0x03024000)]
     public class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock
     {
+        #region Fields
+
+        private Key[] keys;
+
+        #endregion
+
         #region Properties
 
         [NodeMember]
-        public Key[] Keys { get; set; }
+        public Key[] Keys
+        {
+            get => keys;
+            set => keys = value;
+        }
 
         #endregion
 
@@ -25,17 +35,17 @@
         {
             public override void ReadWrite(CGameCtnMediaBlock3dStereo n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, i => new Key()
+                rw.Array(ref n.keys, r => new Key()
                 {
-                    Time = rw.Reader.ReadSingle(),
-                    UpToMax = rw.Reader.ReadSingle(),
-                    ScreenDist = rw.Reader.ReadSingle()
+                    Time = r.ReadSingle(),
+                    UpToMax = r.ReadSingle(),
+                    ScreenDist = r.ReadSingle()
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.UpToMax);
-                    rw.Writer.Write(x.ScreenDist);
+                    w.Write(x.Time);
+                    w.Write(x.UpToMax);
+                    w.Write(x.ScreenDist);
                 });
             }
         }

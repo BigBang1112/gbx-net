@@ -46,7 +46,7 @@ namespace GBX.NET.Engines.Plug
         /// CPlugVehiclePhyModelCustom 0x000 chunk
         /// </summary>
         [Chunk(0x0911E000)]
-        public class Chunk0911E000 : Chunk<CPlugVehiclePhyModelCustom>
+        public class Chunk0911E000 : Chunk<CPlugVehiclePhyModelCustom>, IVersionable
         {
             private int version;
 

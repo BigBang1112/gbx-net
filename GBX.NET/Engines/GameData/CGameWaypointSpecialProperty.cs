@@ -5,16 +5,36 @@ namespace GBX.NET.Engines.GameData
     [Node(0x2E009000)]
     public class CGameWaypointSpecialProperty : CMwNod
     {
+        #region Fields
+
+        private int? spawn;
+        private string tag;
+        private int order;
+
+        #endregion
+
         #region Properties
 
         [NodeMember]
-        public int? Spawn { get; set; }
+        public int? Spawn
+        {
+            get => spawn;
+            set => spawn = value;
+        }
 
         [NodeMember]
-        public string Tag { get; set; }
+        public string Tag
+        {
+            get => tag;
+            set => tag = value;
+        }
 
         [NodeMember]
-        public int Order { get; set; }
+        public int Order
+        {
+            get => order;
+            set => order = value;
+        }
 
         #endregion
 
@@ -23,23 +43,29 @@ namespace GBX.NET.Engines.GameData
         #region 0x000 chunk
 
         [Chunk(0x2E009000)]
-        public class Chunk2E009000 : Chunk<CGameWaypointSpecialProperty>
+        public class Chunk2E009000 : Chunk<CGameWaypointSpecialProperty>, IVersionable
         {
-            public int Version { get; set; }
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CGameWaypointSpecialProperty n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
+                rw.Int32(ref version);
 
-                if (Version == 1)
+                if (version == 1)
                 {
-                    n.Spawn = rw.Int32(n.Spawn.GetValueOrDefault());
-                    n.Order = rw.Int32(n.Order);
+                    rw.Int32(ref n.spawn);
+                    rw.Int32(ref n.order);
                 }
-                else if (Version == 2)
+                else if (version == 2)
                 {
-                    n.Tag = rw.String(n.Tag);
-                    n.Order = rw.Int32(n.Order);
+                    rw.String(ref n.tag);
+                    rw.Int32(ref n.order);
                 }
             }
         }
@@ -51,25 +77,13 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E009001)]
         public class Chunk2E009001 : SkippableChunk<CGameWaypointSpecialProperty>
         {
-            private int u01;
-            private int u02;
-
-            public int U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
-
-            public int U02
-            {
-                get => u02;
-                set => u02 = value;
-            }
+            public int U01;
+            public int U02;
 
             public override void ReadWrite(CGameWaypointSpecialProperty n, GameBoxReaderWriter rw)
             {
-                rw.Int32(ref u01);
-                rw.Int32(ref u02);
+                rw.Int32(ref U01);
+                rw.Int32(ref U02);
             }
         }
 

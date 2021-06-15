@@ -9,10 +9,20 @@ namespace GBX.NET.Engines.Game
     [Node(0x0301B000)]
     public class CGameCtnCollectorList : CMwNod
     {
+        #region Fields
+
+        private Collector[] collectorStock;
+
+        #endregion
+
         #region Properties
 
         [NodeMember]
-        public Collector[] CollectorStock { get; set; }
+        public Collector[] CollectorStock
+        {
+            get => collectorStock;
+            set => collectorStock = value;
+        }
 
         #endregion
 
@@ -28,7 +38,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnCollectorList n, GameBoxReaderWriter rw)
             {
-                n.CollectorStock = rw.Array(n.CollectorStock, r => new Collector()
+                rw.Array(ref n.collectorStock, r => new Collector()
                 {
                     Ident = r.ReadIdent(),
                     Count = r.ReadInt32()

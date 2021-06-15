@@ -5,7 +5,13 @@ namespace GBX.NET.Engines.Plug
     [Node(0x090FD000)]
     public class CPlugMaterialUserInst : CMwNod
     {
-        public string MaterialFile { get; set; }
+        private string materialFile;
+
+        public string MaterialFile
+        {
+            get => materialFile;
+            set => materialFile = value;
+        }
 
         public override string ToString()
         {
@@ -13,52 +19,66 @@ namespace GBX.NET.Engines.Plug
         }
 
         [Chunk(0x090FD000)]
-        public class Chunk090FD000 : Chunk<CPlugMaterialUserInst>
+        public class Chunk090FD000 : Chunk<CPlugMaterialUserInst>, IVersionable
         {
+            private int version;
+
+            public CMwNod U01;
+            public CMwNod U02;
+            public int U03;
+            public byte U04;
+            public CMwNod U05;
+
             /// <summary>
             /// Version 10: TM®, version 8/9: ManiaPlanet
             /// </summary>
-            public int Version { get; set; }
-            public CMwNod U01 { get; set; }
-            public CMwNod U02 { get; set; }
-            public int U03 { get; set; }
-            public byte U04 { get; set; }
-            public CMwNod U05 { get; set; }
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CPlugMaterialUserInst n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                U01 = rw.NodeRef(U01);
-                U02 = rw.NodeRef(U02);
-                U03 = rw.Int32(U03);
-                U04 = rw.Byte(U04);
+                rw.Int32(ref version);
+                rw.NodeRef(ref U01);
+                rw.NodeRef(ref U02);
+                rw.Int32(ref U03);
+                rw.Byte(ref U04);
                 if (Version < 9)
-                    n.MaterialFile = rw.Id(n.MaterialFile);
+                    rw.Id(ref n.materialFile);
                 if (Version >= 9)
                 {
                     if(Version >= 10)
                         rw.Byte();
-                    n.MaterialFile = rw.String(n.MaterialFile);
+                    rw.String(ref n.materialFile);
                 }
                 rw.Int32();
                 rw.Int32();
                 rw.Int32();
                 rw.Int32();
                 rw.Int32();
-                U05 = rw.NodeRef(U05);
+                rw.NodeRef(ref U05);
             }
         }
 
         [Chunk(0x090FD001)]
-        public class Chunk090FD001 : Chunk<CPlugMaterialUserInst>
+        public class Chunk090FD001 : Chunk<CPlugMaterialUserInst>, IVersionable
         {
-            public int Version { get; set; }
-            public CMwNod Unknown1 { get; set; }
+            private int version;
+
+            public CMwNod U01;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CPlugMaterialUserInst n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                Unknown1 = rw.NodeRef(Unknown1);
+                rw.Int32(ref version);
+                rw.NodeRef(ref U01);
                 rw.Int32();
                 rw.Int32();
                 rw.Single();

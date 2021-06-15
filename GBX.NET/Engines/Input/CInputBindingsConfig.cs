@@ -47,10 +47,11 @@ namespace GBX.NET.Engines.Input
 
         public class Binding
         {
+            public int U01;
+            public int U02;
+
             public int KeyCode { get; set; }
             public string DeviceGuid { get; set; }
-            public int U01 { get; set; }
-            public int U02 { get; set; }
             public string Action { get; set; }
 
             public override string ToString()

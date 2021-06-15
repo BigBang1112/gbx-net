@@ -6,34 +6,64 @@ namespace GBX.NET.Engines.Game
     [Node(0x03079000)]
     public class CGameCtnMediaClip : CMwNod
     {
+        #region Fields
+
+        private string name;
+        private List<CGameCtnMediaTrack> tracks;
+        private bool stopWhenRespawn;
+        private bool stopWhenLeave;
+        private int localPlayerClipEntIndex;
+
+        #endregion
+
         #region Properties
 
         /// <summary>
         /// Name of the clip. This property is null if the clip is an intro, ambiance or podium.
         /// </summary>
         [NodeMember]
-        public string Name { get; set; }
+        public string Name
+        {
+            get => name;
+            set => name = value;
+        }
 
         /// <summary>
         /// List of MediaTracker tracks.
         /// </summary>
         [NodeMember]
-        public List<CGameCtnMediaTrack> Tracks { get; set; }
+        public List<CGameCtnMediaTrack> Tracks
+        {
+            get => tracks;
+            set => tracks = value;
+        }
 
         /// <summary>
         /// Stop the clip when player respawns.
         /// </summary>
         [NodeMember]
-        public bool StopWhenRespawn { get; set; }
+        public bool StopWhenRespawn
+        {
+            get => stopWhenRespawn;
+            set => stopWhenRespawn = value;
+        }
 
         /// <summary>
         /// Stop the clip when player leaves the trigger.
         /// </summary>
         [NodeMember]
-        public bool StopWhenLeave { get; set; }
+        public bool StopWhenLeave
+        {
+            get => stopWhenLeave;
+            set => stopWhenLeave = value;
+        }
 
         [NodeMember]
-        public int LocalPlayerClipEntIndex { get; set; }
+        public int LocalPlayerClipEntIndex
+        {
+            get => localPlayerClipEntIndex;
+            set => localPlayerClipEntIndex = value;
+        }
 
         #endregion
 
@@ -48,17 +78,23 @@ namespace GBX.NET.Engines.Game
         #region 0x002 chunk
 
         [Chunk(0x03079002)]
-        public class Chunk03079002 : Chunk<CGameCtnMediaClip>
+        public class Chunk03079002 : Chunk<CGameCtnMediaClip>, IVersionable
         {
+            private int version;
+
             public int U01;
 
-            public int Version { get; set; }
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                n.Tracks = rw.ListNode(n.Tracks);
-                n.Name = rw.String(n.Name);
+                rw.Int32(ref version);
+                rw.ListNode(ref n.tracks);
+                rw.String(ref n.name);
                 rw.Int32(ref U01);
             }
         }
@@ -70,13 +106,20 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03079003)]
         public class Chunk03079003 : Chunk<CGameCtnMediaClip>
         {
-            public int Version { get; set; }
+            private int tracksVersion;
+
+            public int TracksVersion
+            {
+                get => tracksVersion;
+                set => tracksVersion = value;
+            }
 
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                n.Tracks = rw.ListNode(n.Tracks);
-                n.Name = rw.String(n.Name);
+                rw.Int32(ref tracksVersion);
+                rw.ListNode(ref n.tracks);
+
+                rw.String(ref n.name);
             }
         }
 
@@ -87,11 +130,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03079004)]
         public class Chunk03079004 : Chunk<CGameCtnMediaClip>
         {
-            public CMwNod U01 { get; set; }
+            public CMwNod U01;
 
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
-                rw.NodeRef(U01);
+                rw.NodeRef(ref U01);
             }
         }
 
@@ -102,14 +145,19 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03079005)]
         public class Chunk03079005 : Chunk<CGameCtnMediaClip>
         {
-            public int Version { get; set; } = 10;
+            private int tracksVersion = 10;
+
+            public int TracksVersion
+            {
+                get => tracksVersion;
+                set => tracksVersion = value;
+            }
 
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                n.Tracks = rw.ListNode<CGameCtnMediaTrack>(n.Tracks);
-
-                n.Name = rw.String(n.Name);
+                rw.Int32(ref tracksVersion);
+                rw.ListNode<CGameCtnMediaTrack>(ref n.tracks);
+                rw.String(ref n.name);
             }
         }
 
@@ -122,7 +170,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
-                n.LocalPlayerClipEntIndex = rw.Int32(n.LocalPlayerClipEntIndex);
+                rw.Int32(ref n.localPlayerClipEntIndex);
             }
         }
 
@@ -168,7 +216,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
-                n.StopWhenLeave = rw.Boolean(n.StopWhenLeave);
+                rw.Boolean(ref n.stopWhenLeave);
             }
         }
 
@@ -210,31 +258,44 @@ namespace GBX.NET.Engines.Game
         #region 0x00D chunk
 
         [Chunk(0x0307900D)]
-        public class Chunk0307900D : Chunk<CGameCtnMediaClip>
+        public class Chunk0307900D : Chunk<CGameCtnMediaClip>, IVersionable
         {
-            public int Version { get; set; } = 10;
+            private int version;
+            private int tracksVersion = 10;
 
-            public int U01 { get; set; }
-            public bool U03 { get; set; }
-            public string U05 { get; set; }
-            public float U06 { get; set; } = 0.2f;
-            public int U07 { get; set; } = -1;
+            public int U01;
+            public bool U03;
+            public string U05;
+            public float U06 = 0.2f;
+            public int U07 = -1;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
+
+            public int TracksVersion
+            {
+                get => tracksVersion;
+                set => tracksVersion = value;
+            }
 
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
-                U01 = rw.Int32(U01);
-                Version = rw.Int32(Version);
+                rw.Int32(ref version);
 
-                n.Tracks = rw.ListNode<CGameCtnMediaTrack>(n.Tracks);
+                rw.Int32(ref tracksVersion);
+                rw.ListNode<CGameCtnMediaTrack>(ref n.tracks);
 
-                n.Name = rw.String(n.Name);
+                rw.String(ref n.name);
 
-                n.StopWhenLeave = rw.Boolean(n.StopWhenLeave);
-                U03 = rw.Boolean(U03);
-                n.StopWhenRespawn = rw.Boolean(n.StopWhenRespawn);
-                U05 = rw.String(U05);
-                U06 = rw.Single(U06);
-                n.LocalPlayerClipEntIndex = rw.Int32(n.LocalPlayerClipEntIndex);
+                rw.Boolean(ref n.stopWhenLeave);
+                rw.Boolean(ref U03);
+                rw.Boolean(ref n.stopWhenRespawn);
+                rw.String(ref U05);
+                rw.Single(ref U06);
+                rw.Int32(ref n.localPlayerClipEntIndex);
             }
         }
 

@@ -16,11 +16,13 @@ namespace GBX.NET.Engines.Game
         private Ident playerModel;
         private FileRef[] skinPackDescs;
         private string ghostNickname;
+        private string ghostLogin;
         private string ghostAvatarName;
         private string recordingContext;
         private CPlugEntRecordData recordData;
         private string ghostTrigram;
         private string ghostZone;
+        private string ghostUid;
         private TimeSpan? raceTime;
         private int? respawns;
         private Vec3? lightTrailColor;
@@ -36,7 +38,7 @@ namespace GBX.NET.Engines.Game
         private string validate_ChallengeUid;
         private string validate_TitleId;
         private bool hasBadges;
-        private string skin;
+        private string skinFile;
 
         #endregion
 
@@ -193,17 +195,25 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public string GhostLogin { get; set; }
-
-        [NodeMember]
-        public string Skin
+        public string GhostLogin
         {
-            get => skin;
-            set => skin = value;
+            get => ghostLogin;
+            set => ghostLogin = value;
         }
 
         [NodeMember]
-        public string UID { get; set; }
+        public string SkinFile
+        {
+            get => skinFile;
+            set => skinFile = value;
+        }
+
+        [NodeMember]
+        public string GhostUid
+        {
+            get => ghostUid;
+            set => ghostUid = value;
+        }
 
         /// <summary>
         /// Duration of events in the ghost (range of detected inputs). This can be 0 if the ghost was driven in editor.
@@ -366,63 +376,22 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnGhost 0x000 skippable chunk (basic)
         /// </summary>
         [Chunk(0x03092000, true, "basic")]
-        public class Chunk03092000 : SkippableChunk<CGameCtnGhost>
+        public class Chunk03092000 : SkippableChunk<CGameCtnGhost>, IVersionable
         {
             private int version;
-            private Vec3 u01;
-            private bool u03;
-            private int[] u04;
-            private int u05;
-            private Vec3 u06;
-            private (string value, string key)[] u07;
-            private string[] u08;
+
+            public Vec3 U01;
+            public bool U03;
+            public int[] U04;
+            public int U05;
+            public Vec3 U06;
+            public (string value, string key)[] U07;
+            public string[] U08;
 
             public int Version
             {
                 get => version;
                 set => version = value;
-            }
-
-            public Vec3 U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
-
-            public bool U03
-            {
-                get => u03;
-                set => u03 = value;
-            }
-
-            public int[] U04
-            {
-                get => u04;
-                set => u04 = value;
-            }
-
-            public int U05
-            {
-                get => u05;
-                set => u05 = value;
-            }
-
-            public Vec3 U06
-            {
-                get => u06;
-                set => u06 = value;
-            }
-
-            public (string value, string key)[] U07
-            {
-                get => u07;
-                set => u07 = value;
-            }
-
-            public string[] U08
-            {
-                get => u08;
-                set => u08 = value;
             }
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
@@ -437,15 +406,15 @@ namespace GBX.NET.Engines.Game
 
                 if (n.hasBadges)
                 {
-                    rw.Int32(ref u05);
-                    rw.Vec3(ref u06);
-                    rw.Array(ref u07,
+                    rw.Int32(ref U05);
+                    rw.Vec3(ref U06);
+                    rw.Array(ref U07,
                         (i, r) => (r.ReadString(), r.ReadString()),
                         (x, w) => {
                             w.Write(x.Item1);
                             w.Write(x.Item2);
                         });
-                    rw.Array(ref u08,
+                    rw.Array(ref U08,
                         (i, r) => r.ReadString(),
                         (x, w) => w.Write(x));
                 }
@@ -464,12 +433,12 @@ namespace GBX.NET.Engines.Game
 
                     if (Version >= 4)
                     {
-                        rw.Boolean(ref u03);
+                        rw.Boolean(ref U03);
 
                         if (Version >= 5)
                         {
                             rw.NodeRef<CPlugEntRecordData>(ref n.recordData);
-                            rw.Array(ref u04);
+                            rw.Array(ref U04);
 
                             if (Version >= 6)
                             {
@@ -497,10 +466,8 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 rw.Ident(ref n.playerModel);
-                n.Skin = rw.String(n.Skin);
-                n.GhostLogin = rw.String(n.GhostLogin);
-
-                // TODO: Solve naming
+                rw.String(ref n.skinFile);
+                rw.String(ref n.ghostNickname);
             }
         }
 
@@ -530,27 +497,14 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03092006)]
         public class Chunk03092006 : Chunk<CGameCtnGhost>
         {
-            private int u01;
-            private string u02;
-
-            public int U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
-
-            public string U02
-            {
-                get => u02;
-                set => u02 = value;
-            }
+            public int U01;
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 rw.Ident(ref n.playerModel);
-                n.Skin = rw.String(n.Skin);
-                rw.Int32(ref u01);
-                rw.String(ref u02);
+                rw.String(ref n.skinFile);
+                rw.Int32(ref U01);
+                rw.String(ref n.ghostNickname);
             }
         }
 
@@ -566,7 +520,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.respawns = rw.Int32(n.respawns.GetValueOrDefault());
+                rw.Int32(ref n.respawns);
             }
         }
 
@@ -582,7 +536,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.lightTrailColor = rw.Vec3(n.lightTrailColor.GetValueOrDefault());
+                rw.Vec3(ref n.lightTrailColor);
             }
         }
 
@@ -598,7 +552,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.stuntScore = rw.Int32(n.stuntScore.GetValueOrDefault());
+                rw.Int32(ref n.stuntScore);
             }
         }
 
@@ -631,17 +585,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0309200C)]
         public class Chunk0309200C : Chunk<CGameCtnGhost>
         {
-            private int u01;
-
-            public int U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
+            public int U01;
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.Int32(ref u01);
+                rw.Int32(ref U01);
             }
         }
 
@@ -655,44 +603,20 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0309200D)]
         public class Chunk0309200D : Chunk<CGameCtnGhost>
         {
-            private int u01;
-            private int u02;
-            private int u03;
-            private int u04;
-
-            public int U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
-
-            public int U02
-            {
-                get => u02;
-                set => u02 = value;
-            }
-
-            public int U03
-            {
-                get => u03;
-                set => u03 = value;
-            }
-
-            public int U04
-            {
-                get => u04;
-                set => u04 = value;
-            }
+            public int U01;
+            public int U02;
+            public int U03;
+            public int U04;
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 rw.Ident(ref n.playerModel);
-                rw.String(ref n.skin);
+                rw.String(ref n.skinFile);
 
-                rw.Int32(ref u01);
-                rw.Int32(ref u02);
-                rw.Int32(ref u03);
-                rw.Int32(ref u04);
+                rw.Int32(ref U01);
+                rw.Int32(ref U02);
+                rw.Int32(ref U03);
+                rw.Int32(ref U04);
 
                 rw.String(ref n.ghostNickname);
             }
@@ -710,7 +634,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.UID = rw.Id(n.UID);
+                rw.Id(ref n.ghostUid); // TODO: check writing
             }
         }
 
@@ -726,7 +650,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.GhostLogin = rw.String(n.GhostLogin);
+                rw.String(ref n.ghostLogin);
             }
         }
 
@@ -758,8 +682,8 @@ namespace GBX.NET.Engines.Game
         {
             internal bool Is025 { get; }
 
-            public uint U01 { get; set; }
-            public int U02 { get; set; }
+            public uint U01;
+            public int U02;
 
             public Chunk03092011()
             {
@@ -777,7 +701,7 @@ namespace GBX.NET.Engines.Game
 
                 if (n.eventsDuration == 0) return;
 
-                U01 = rw.UInt32(U01);
+                rw.UInt32(ref U01);
 
                 if (rw.Mode == GameBoxReaderWriterMode.Read)
                 {
@@ -825,9 +749,8 @@ namespace GBX.NET.Engines.Game
                                 controlNames.Add(entry.Name);
                     }
 
-                    w.Write(controlNames.Count);
-                    foreach (var name in controlNames)
-                        w.WriteId(name);
+                    w.Write(controlNames,
+                        (x, w1) => w1.WriteId(x));
 
                     w.Write(n.ControlEntries?.Length ?? 0);
                     w.Write(U02);
@@ -861,33 +784,15 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03092012)]
         public class Chunk03092012 : Chunk<CGameCtnGhost>
         {
-            private int u01;
-            private long u02;
-            private long u03;
-
-            public int U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
-
-            public long U02
-            {
-                get => u02;
-                set => u02 = value;
-            }
-
-            public long U03
-            {
-                get => u03;
-                set => u03 = value;
-            }
+            public int U01;
+            public long U02;
+            public long U03;
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.Int32(ref u01);
-                rw.Int64(ref u02);
-                rw.Int64(ref u03);
+                rw.Int32(ref U01);
+                rw.Int64(ref U02);
+                rw.Int64(ref U03);
             }
         }
 
@@ -901,25 +806,13 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03092013)]
         public class Chunk03092013 : SkippableChunk<CGameCtnGhost>
         {
-            private int u01;
-            private int u02;
-
-            public int U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
-
-            public int U02
-            {
-                get => u02;
-                set => u02 = value;
-            }
+            public int U01;
+            public int U02;
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.Int32(ref u01);
-                rw.Int32(ref u02);
+                rw.Int32(ref U01);
+                rw.Int32(ref U02);
             }
         }
 
@@ -933,17 +826,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03092014)]
         public class Chunk03092014 : SkippableChunk<CGameCtnGhost>
         {
-            private int u01;
-
-            public int U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
+            public int U01;
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.Int32(ref u01);
+                rw.Int32(ref U01);
             }
         }
 
@@ -975,9 +862,11 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.skinPackDescs = rw.Array(n.skinPackDescs, r => r.ReadFileRef(), (x, w) => w.Write(x));
-                n.ghostNickname = rw.String(n.ghostNickname);
-                n.ghostAvatarName = rw.String(n.ghostAvatarName);
+                rw.Array(ref n.skinPackDescs,
+                    r => r.ReadFileRef(),
+                    (x, w) => w.Write(x));
+                rw.String(ref n.ghostNickname);
+                rw.String(ref n.ghostAvatarName);
             }
         }
 
@@ -991,11 +880,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03092018)]
         public class Chunk03092018 : Chunk<CGameCtnGhost>
         {
-            public Ident Unknown1 { get; set; }
+            public Ident U01;
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                Unknown1 = rw.Ident(Unknown1);
+                rw.Ident(ref U01);
             }
         }
 
@@ -1013,7 +902,7 @@ namespace GBX.NET.Engines.Game
 
             public Chunk03092011 Chunk011 { get; }
 
-            public int U01 { get; set; }
+            public int U01;
 
             public Chunk03092019(Chunk03092025 chunk025)
             {
@@ -1032,7 +921,7 @@ namespace GBX.NET.Engines.Game
 
                 if (n.eventsDuration == 0) return;
 
-                U01 = rw.Int32(U01);
+                rw.Int32(ref U01);
             }
         }
 
@@ -1046,73 +935,25 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0309201C)]
         public class Chunk0309201C : Chunk<CGameCtnGhost>
         {
-            private int u01;
-            private int u02;
-            private int u03;
-            private int u04;
-            private int u05;
-            private int u06;
-            private int u07;
-            private int u08;
-
-            public int U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
-
-            public int U02
-            {
-                get => u02;
-                set => u02 = value;
-            }
-
-            public int U03
-            {
-                get => u03;
-                set => u03 = value;
-            }
-
-            public int U04
-            {
-                get => u04;
-                set => u04 = value;
-            }
-
-            public int U05
-            {
-                get => u05;
-                set => u05 = value;
-            }
-
-            public int U06
-            {
-                get => u06;
-                set => u06 = value;
-            }
-
-            public int U07
-            {
-                get => u07;
-                set => u07 = value;
-            }
-
-            public int U08
-            {
-                get => u08;
-                set => u08 = value;
-            }
+            public int U01;
+            public int U02;
+            public int U03;
+            public int U04;
+            public int U05;
+            public int U06;
+            public int U07;
+            public int U08;
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.Int32(ref u01);
-                rw.Int32(ref u02);
-                rw.Int32(ref u03);
-                rw.Int32(ref u04);
-                rw.Int32(ref u05);
-                rw.Int32(ref u06);
-                rw.Int32(ref u07);
-                rw.Int32(ref u08);
+                rw.Int32(ref U01);
+                rw.Int32(ref U02);
+                rw.Int32(ref U03);
+                rw.Int32(ref U04);
+                rw.Int32(ref U05);
+                rw.Int32(ref U06);
+                rw.Int32(ref U07);
+                rw.Int32(ref U08);
             }
         }
 
@@ -1124,15 +965,16 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnGhost 0x023 skippable chunk
         /// </summary>
         [Chunk(0x03092023), IgnoreChunk]
-        public class Chunk03092023 : SkippableChunk<CGameCtnGhost>
+        public class Chunk03092023 : SkippableChunk<CGameCtnGhost>, IVersionable
         {
             private int version;
-            private string u01;
-            private int u02;
-            private string u03;
-            private int u04;
-            private int u05;
-            private string u06;
+
+            public string U01;
+            public int U02;
+            public string U03;
+            public int U04;
+            public int U05;
+            public string U06;
 
             public int Version
             {
@@ -1140,50 +982,14 @@ namespace GBX.NET.Engines.Game
                 set => version = value;
             }
 
-            public string U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
-
-            public int U02
-            {
-                get => u02;
-                set => u02 = value;
-            }
-
-            public string U03
-            {
-                get => u03;
-                set => u03 = value;
-            }
-
-            public int U04
-            {
-                get => u04;
-                set => u04 = value;
-            }
-
-            public int U05
-            {
-                get => u05;
-                set => u05 = value;
-            }
-
-            public string U06
-            {
-                get => u06;
-                set => u06 = value;
-            }
-
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
-                rw.String(ref u01);
-                rw.Int32(ref u02);
-                rw.String(ref u03);
-                rw.Int32(ref u04);
-                rw.Int32(ref u05);
+                rw.String(ref U01);
+                rw.Int32(ref U02);
+                rw.String(ref U03);
+                rw.Int32(ref U04);
+                rw.Int32(ref U05);
 
                 // ...
             }
@@ -1197,9 +1003,11 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnGhost 0x025 skippable chunk (validation TM2)
         /// </summary>
         [Chunk(0x03092025, "validation TM2")]
-        public class Chunk03092025 : SkippableChunk<CGameCtnGhost>
+        public class Chunk03092025 : SkippableChunk<CGameCtnGhost>, IVersionable
         {
             private int version;
+
+            public bool U01;
 
             public int Version
             {
@@ -1208,8 +1016,6 @@ namespace GBX.NET.Engines.Game
             }
 
             public Chunk03092019 Chunk019 { get; }
-
-            public bool U01 { get; set; }
 
             public Chunk03092025()
             {
@@ -1223,7 +1029,7 @@ namespace GBX.NET.Engines.Game
 
                 if (n.eventsDuration == 0) return;
 
-                U01 = rw.Boolean(U01);
+                rw.Boolean(ref U01);
             }
         }
 
@@ -1261,7 +1067,7 @@ namespace GBX.NET.Engines.Game
             public TimeSpan Time { get; set; }
 
             /// <summary>
-            /// Amount of stunt points when reaching this checkpoint. This is very often always 0 in TM2 replay.
+            /// Amount of stunt points when reaching this checkpoint. This is very often 0 in TM2 replay.
             /// </summary>
             public int StuntsScore { get; set; }
 
