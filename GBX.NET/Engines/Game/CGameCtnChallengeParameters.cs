@@ -12,51 +12,95 @@ namespace GBX.NET.Engines.Game
     {
         #region Fields
 
+        private string tip;
+        private TimeSpan? bronzeTime;
+        private TimeSpan? silverTime;
+        private TimeSpan? goldTime;
+        private TimeSpan? authorTime;
+        private int authorScore;
+        private TimeSpan timeLimit = TimeSpan.FromMinutes(1);
+        private CGameCtnGhost raceValidateGhost;
         private string mapType;
         private string mapStyle;
+        private bool isValidatedForScriptModes;
 
         #endregion
 
         #region Properties
 
+        [NodeMember]
+        public string Tip
+        {
+            get => tip;
+            set => tip = value;
+        }
+
         /// <summary>
         /// Time of the bronze medal.
         /// </summary>
         [NodeMember]
-        public TimeSpan? BronzeTime { get; set; }
+        public TimeSpan? BronzeTime
+        {
+            get => bronzeTime;
+            set => bronzeTime = value;
+        }
 
         /// <summary>
         /// Time of the silver medal.
         /// </summary>
         [NodeMember]
-        public TimeSpan? SilverTime { get; set; }
+        public TimeSpan? SilverTime
+        {
+            get => silverTime;
+            set => silverTime = value;
+        }
 
         /// <summary>
         /// Time of the gold medal.
         /// </summary>
         [NodeMember]
-        public TimeSpan? GoldTime { get; set; }
+        public TimeSpan? GoldTime
+        {
+            get => goldTime;
+            set => goldTime = value;
+        }
 
         /// <summary>
         /// Time of the author medal.
         /// </summary>
         [NodeMember]
-        public TimeSpan? AuthorTime { get; set; }
+        public TimeSpan? AuthorTime
+        {
+            get => authorTime;
+            set => authorTime = value;
+        }
 
         /// <summary>
         /// Usually author time or stunt score.
         /// </summary>
         [NodeMember]
-        public int AuthorScore { get; set; }
+        public int AuthorScore
+        {
+            get => authorScore;
+            set => authorScore = value;
+        }
 
         /// <summary>
         /// Stunt time limit.
         /// </summary>
         [NodeMember]
-        public TimeSpan TimeLimit { get; set; } = TimeSpan.FromMinutes(1);
+        public TimeSpan TimeLimit
+        {
+            get => timeLimit;
+            set => timeLimit = value;
+        }
 
         [NodeMember]
-        public CGameCtnGhost RaceValidateGhost { get; set; }
+        public CGameCtnGhost RaceValidateGhost
+        {
+            get => raceValidateGhost;
+            set => raceValidateGhost = value;
+        }
 
         [NodeMember]
         public string MapType
@@ -89,7 +133,19 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public string[] Tips { get; } = new string[4];
+        public bool IsValidatedForScriptModes
+        {
+            get
+            {
+                DiscoverChunk<Chunk0305B00E>();
+                return isValidatedForScriptModes;
+            }
+            set
+            {
+                DiscoverChunk<Chunk0305B00E>();
+                isValidatedForScriptModes = value;
+            }
+        }
 
         #endregion
 
@@ -139,8 +195,8 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
             {
-                for(var i = 0; i < 4; i++)
-                    n.Tips[i] = rw.String(n.Tips[i]);
+                for (var i = 0; i < 4; i++)
+                    rw.String(ref n.tip);
             }
         }
 
@@ -238,10 +294,10 @@ namespace GBX.NET.Engines.Game
 
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
             {
-                n.BronzeTime = rw.TimeSpan32(n.BronzeTime);
-                n.SilverTime = rw.TimeSpan32(n.SilverTime);
-                n.GoldTime = rw.TimeSpan32(n.GoldTime);
-                n.AuthorTime = rw.TimeSpan32(n.AuthorTime);
+                rw.TimeSpan32(ref n.bronzeTime);
+                rw.TimeSpan32(ref n.silverTime);
+                rw.TimeSpan32(ref n.goldTime);
+                rw.TimeSpan32(ref n.authorTime);
 
                 rw.UInt32(ref U01);
             }
@@ -279,11 +335,13 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0305B006, "items")]
         public class Chunk0305B006 : Chunk<CGameCtnChallengeParameters>
         {
-            public uint[] Items { get; set; }
+            public uint[] U01;
 
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
             {
-                Items = rw.Array(Items, r => r.ReadUInt32(), (x, w) => w.Write(x));
+                rw.Array(ref U01,
+                    r => r.ReadUInt32(),
+                    (x, w) => w.Write(x));
             }
         }
 
@@ -317,8 +375,8 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
             {
-                n.TimeLimit = TimeSpan.FromMilliseconds(rw.Int32(Convert.ToInt32(n.TimeLimit.TotalMilliseconds)));
-                n.AuthorScore = rw.Int32(n.AuthorScore);
+                rw.TimeSpan32(ref n.timeLimit, def: TimeSpan.FromMinutes(1));
+                rw.Int32(ref n.authorScore);
             }
         }
 
@@ -332,18 +390,16 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0305B00A, "medals")]
         public class Chunk0305B00A : SkippableChunk<CGameCtnChallengeParameters>
         {
-            public int U01 { get; set; }
-
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
             {
-                U01 = rw.Int32(U01);
+                rw.String(ref n.tip);
 
-                n.BronzeTime = rw.TimeSpan32(n.BronzeTime);
-                n.SilverTime = rw.TimeSpan32(n.SilverTime);
-                n.GoldTime = rw.TimeSpan32(n.GoldTime);
-                n.AuthorTime = rw.TimeSpan32(n.AuthorTime);
-                n.TimeLimit = TimeSpan.FromMilliseconds(rw.Int32(Convert.ToInt32(n.TimeLimit.TotalMilliseconds)));
-                n.AuthorScore = rw.Int32(n.AuthorScore);
+                rw.TimeSpan32(ref n.bronzeTime);
+                rw.TimeSpan32(ref n.silverTime);
+                rw.TimeSpan32(ref n.goldTime);
+                rw.TimeSpan32(ref n.authorTime);
+                rw.TimeSpan32(ref n.timeLimit, def: TimeSpan.FromMinutes(1));
+                rw.Int32(ref n.authorScore);
             }
         }
 
@@ -359,7 +415,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
             {
-                n.RaceValidateGhost = rw.NodeRef<CGameCtnGhost>(n.RaceValidateGhost);
+                rw.NodeRef<CGameCtnGhost>(ref n.raceValidateGhost);
             }
         }
 
@@ -373,13 +429,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0305B00E, "map type")]
         public class Chunk0305B00E : SkippableChunk<CGameCtnChallengeParameters>
         {
-            public int U01 { get; set; }
-
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
             {
-                n.mapType = rw.String(n.mapType);
-                n.mapStyle = rw.String(n.mapStyle);
-                U01 = rw.Int32(U01);
+                rw.String(ref n.mapType);
+                rw.String(ref n.mapStyle);
+                rw.Boolean(ref n.isValidatedForScriptModes);
             }
         }
 
