@@ -1,21 +1,33 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace GBX.NET.Engines.Game
 {
     /// <summary>
     /// MediaTracker block - Camera effect script
     /// </summary>
     [Node(0x03161000)]
-    public class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCameraEffect
+    public class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCameraEffect,
+        CGameCtnMediaBlock.IHasKeys,
+        CGameCtnMediaBlock.IHasTwoKeys
     {
         #region Fields
 
         private string script;
-        private Key[] keys;
-        private float? start;
-        private float? end;
+        private IList<Key> keys = new List<Key>();
+        private TimeSpan start;
+        private TimeSpan end = TimeSpan.FromSeconds(3);
 
         #endregion
 
         #region Properties
+
+        IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+        {
+            get => keys.Cast<CGameCtnMediaBlock.Key>();
+            set => keys = value.Cast<Key>().ToList();
+        }
 
         [NodeMember]
         public string Script
@@ -25,21 +37,21 @@
         }
 
         [NodeMember]
-        public Key[] Keys
+        public IList<Key> Keys
         {
             get => keys;
             set => keys = value;
         }
 
         [NodeMember]
-        public float? Start
+        public TimeSpan Start
         {
             get => start;
             set => start = value;
         }
 
         [NodeMember]
-        public float? End
+        public TimeSpan End
         {
             get => end;
             set => end = value;
@@ -55,37 +67,40 @@
         /// CGameCtnMediaBlockCameraEffectScript 0x000 chunk
         /// </summary>
         [Chunk(0x03161000)]
-        public class Chunk03161000 : Chunk<CGameCtnMediaBlockCameraEffectScript>
+        public class Chunk03161000 : Chunk<CGameCtnMediaBlockCameraEffectScript>, IVersionable
         {
-            public int Version { get; set; }
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CGameCtnMediaBlockCameraEffectScript n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                n.Script = rw.String(n.Script);
+                rw.Int32(ref version);
+                rw.String(ref n.script);
 
-                if (Version == 0) // Unverified
+                if (version == 0) // Unverified
                 {
-                    rw.Single(ref n.start);
-                    rw.Single(ref n.end);
+                    rw.Single_s(ref n.start);
+                    rw.Single_s(ref n.end);
                 }
 
-                n.Keys = rw.Array(n.Keys, i =>
+                rw.List(ref n.keys, r => new Key()
                 {
-                    return new Key()
-                    {
-                        Time = rw.Reader.ReadSingle(),
-                        A = rw.Reader.ReadSingle(),
-                        B = rw.Reader.ReadSingle(),
-                        C = rw.Reader.ReadSingle()
-                    };
+                    Time = r.ReadSingle_s(),
+                    A = r.ReadSingle(),
+                    B = r.ReadSingle(),
+                    C = r.ReadSingle()
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.A);
-                    rw.Writer.Write(x.B);
-                    rw.Writer.Write(x.C);
+                    w.WriteSingle_s(x.Time);
+                    w.Write(x.A);
+                    w.Write(x.B);
+                    w.Write(x.C);
                 });
             }
         }

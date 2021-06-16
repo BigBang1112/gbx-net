@@ -6,11 +6,11 @@ using System.Linq;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03029000)]
-    public class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock
+    public class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
         #region Fields
 
-        private List<Key> keys = new List<Key>();
+        private IList<Key> keys = new List<Key>();
         private Vec4[] vertices;
         private Int3[] triangles;
 
@@ -18,8 +18,14 @@ namespace GBX.NET.Engines.Game
 
         #region Properties
 
+        IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+        {
+            get => Keys.Cast<CGameCtnMediaBlock.Key>();
+            set => Keys = value.Cast<Key>().ToList();
+        }
+
         [NodeMember]
-        public List<Key> Keys
+        public IList<Key> Keys
         {
             get => keys;
             set => keys = value;
@@ -103,19 +109,19 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03029001)]
         public class Chunk03029001 : Chunk<CGameCtnMediaBlockTriangles>
         {
-            public int U01 { get; set; }
-            public int U02 { get; set; }
-            public int U03 { get; set; }
-            public float U04 { get; set; }
-            public int U05 { get; set; }
-            public long U06 { get; set; }
+            public int U01;
+            public int U02;
+            public int U03;
+            public float U04;
+            public int U05;
+            public long U06;
 
             public override void Read(CGameCtnMediaBlockTriangles n, GameBoxReader r)
             {
-                n.keys = r.ReadArray(r1 => new Key(n)
+                n.keys = r.ReadList(r1 => new Key(n)
                 {
-                    Time = r1.ReadSingle()
-                }).ToList();
+                    Time = r1.ReadSingle_s()
+                });
                 
                 var numKeys = r.ReadInt32();
                 var numVerts = r.ReadInt32();
@@ -143,7 +149,7 @@ namespace GBX.NET.Engines.Game
 
             public override void Write(CGameCtnMediaBlockTriangles n, GameBoxWriter w)
             {
-                w.Write(n.keys, (x, w1) => w1.Write(x.Time));
+                w.Write(n.keys, (x, w1) => w1.WriteSingle_s(x.Time));
                 w.Write(n.keys.Count);
                 w.Write(n.vertices.Length);
 

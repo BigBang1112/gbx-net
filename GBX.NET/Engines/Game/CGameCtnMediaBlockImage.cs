@@ -1,17 +1,40 @@
 ﻿using GBX.NET.Engines.Control;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GBX.NET.Engines.Game
 {
     [Node(0x030A5000)]
-    public class CGameCtnMediaBlockImage : CGameCtnMediaBlock
+    public class CGameCtnMediaBlockImage : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
+        #region Fields
+
+        private CControlEffectSimi effect = new CControlEffectSimi();
+        private FileRef image;
+
+        #endregion
+
         #region Properties
 
-        [NodeMember]
-        public CControlEffectSimi Effect { get; set; }
+        IEnumerable<Key> IHasKeys.Keys
+        {
+            get => Effect.Keys.Cast<Key>();
+            set => Effect.Keys = value.Cast<CControlEffectSimi.Key>().ToList();
+        }
 
         [NodeMember]
-        public FileRef Image { get; set; }
+        public CControlEffectSimi Effect
+        {
+            get => effect;
+            set => effect = value;
+        }
+
+        [NodeMember]
+        public FileRef Image
+        {
+            get => image;
+            set => image = value;
+        }
 
         #endregion
 
@@ -24,8 +47,8 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaBlockImage n, GameBoxReaderWriter rw)
             {
-                n.Effect = rw.NodeRef<CControlEffectSimi>(n.Effect);
-                n.Image = rw.FileRef(n.Image);
+                rw.NodeRef<CControlEffectSimi>(ref n.effect);
+                rw.FileRef(ref n.image);
             }
         }
 

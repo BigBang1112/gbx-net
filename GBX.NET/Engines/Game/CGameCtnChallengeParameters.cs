@@ -294,10 +294,10 @@ namespace GBX.NET.Engines.Game
 
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
             {
-                rw.TimeSpan32(ref n.bronzeTime);
-                rw.TimeSpan32(ref n.silverTime);
-                rw.TimeSpan32(ref n.goldTime);
-                rw.TimeSpan32(ref n.authorTime);
+                rw.Int32_msn(ref n.bronzeTime);
+                rw.Int32_msn(ref n.silverTime);
+                rw.Int32_msn(ref n.goldTime);
+                rw.Int32_msn(ref n.authorTime);
 
                 rw.UInt32(ref U01);
             }
@@ -375,7 +375,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
             {
-                rw.TimeSpan32(ref n.timeLimit, def: TimeSpan.FromMinutes(1));
+                rw.Int32_ms(ref n.timeLimit);
                 rw.Int32(ref n.authorScore);
             }
         }
@@ -394,11 +394,11 @@ namespace GBX.NET.Engines.Game
             {
                 rw.String(ref n.tip);
 
-                rw.TimeSpan32(ref n.bronzeTime);
-                rw.TimeSpan32(ref n.silverTime);
-                rw.TimeSpan32(ref n.goldTime);
-                rw.TimeSpan32(ref n.authorTime);
-                rw.TimeSpan32(ref n.timeLimit, def: TimeSpan.FromMinutes(1));
+                rw.Int32_msn(ref n.bronzeTime);
+                rw.Int32_msn(ref n.silverTime);
+                rw.Int32_msn(ref n.goldTime);
+                rw.Int32_msn(ref n.authorTime);
+                rw.Int32_ms(ref n.timeLimit);
                 rw.Int32(ref n.authorScore);
             }
         }

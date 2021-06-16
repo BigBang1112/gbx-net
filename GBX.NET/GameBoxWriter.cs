@@ -87,11 +87,11 @@ namespace GBX.NET
             Write(value, false);
         }
 
-        public void Write<T>(T[] array)
+        public void Write<T>(T[] array) where T : struct
         {
             var bytes = new byte[array.Length * Marshal.SizeOf(default(T))];
             Buffer.BlockCopy(array, 0, bytes, 0, bytes.Length);
-            Write(bytes, 0, bytes.Length);
+            WriteBytes(bytes);
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace GBX.NET
             }
         }
 
-        public void Write<T>(List<T> list, Action<T> forLoop)
+        public void Write<T>(IList<T> list, Action<T> forLoop)
         {
             if (list == null)
             {
@@ -145,7 +145,7 @@ namespace GBX.NET
             }
         }
 
-        public void Write<T>(List<T> list, Action<T, GameBoxWriter> forLoop)
+        public void Write<T>(IList<T> list, Action<T, GameBoxWriter> forLoop)
         {
             if (list == null)
             {
@@ -293,13 +293,6 @@ namespace GBX.NET
             Write(node, Body);
         }
 
-        public void Write(TimeSpan? timeSpan)
-        {
-            if (timeSpan.HasValue)
-                Write(Convert.ToInt32(timeSpan.Value.TotalMilliseconds));
-            else Write(-1);
-        }
-
         public void Write<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
         {
             Write(dictionary.Count);
@@ -309,6 +302,58 @@ namespace GBX.NET
                 WriteAny(pair.Key);
                 WriteAny(pair.Value);
             }
+        }
+
+        public void WriteInt32_s(TimeSpan variable)
+        {
+            Write(Convert.ToInt32(variable.TotalSeconds));
+        }
+
+        public void WriteInt32_ms(TimeSpan variable)
+        {
+            Write(Convert.ToInt32(variable.TotalMilliseconds));
+        }
+
+        public void WriteInt32_sn(TimeSpan? variable)
+        {
+            if (variable.HasValue)
+                Write(Convert.ToInt32(variable.Value.TotalSeconds));
+            else
+                Write(-1);
+        }
+
+        public void WriteInt32_msn(TimeSpan? variable)
+        {
+            if (variable.HasValue)
+                Write(Convert.ToInt32(variable.Value.TotalMilliseconds));
+            else
+                Write(-1);
+        }
+
+        public void WriteSingle_s(TimeSpan variable)
+        {
+            Write((float)variable.TotalSeconds);
+        }
+
+        public void WriteSingle_ms(TimeSpan variable)
+        {
+            Write((float)variable.TotalMilliseconds);
+        }
+
+        public void WriteSingle_sn(TimeSpan? variable)
+        {
+            if (variable.HasValue)
+                Write((float)variable.Value.TotalSeconds);
+            else
+                Write(-1);
+        }
+
+        public void WriteSingle_msn(TimeSpan? variable)
+        {
+            if (variable.HasValue)
+                Write((float)variable.Value.TotalMilliseconds);
+            else
+                Write(-1);
         }
 
         public void WriteBytes(byte[] bytes)

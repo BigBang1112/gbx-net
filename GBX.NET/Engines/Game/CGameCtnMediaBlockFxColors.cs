@@ -1,11 +1,31 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x03080000)]
-    public class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx
+    public class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
     {
+        #region Fields
+
+        private IList<Key> keys = new List<Key>();
+
+        #endregion
+
         #region Properties
 
-        public Key[] Keys { get; set; }
+        IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+        {
+            get => keys.Cast<CGameCtnMediaBlock.Key>();
+            set => keys = value.Cast<Key>().ToList();
+        }
+
+        [NodeMember]
+        public IList<Key> Keys
+        {
+            get => keys;
+            set => keys = value;
+        }
 
         #endregion
 
@@ -18,9 +38,9 @@
         {
             public override void Read(CGameCtnMediaBlockFxColors n, GameBoxReader r)
             {
-                n.Keys = r.ReadArray(r1 => new Key()
+                n.keys = r.ReadList(r1 => new Key()
                 {
-                    Time = r1.ReadSingle(),
+                    Time = r1.ReadSingle_s(),
                     Intensity = r1.ReadSingle(),
                     BlendZ = r1.ReadSingle(),
                     Distance = r1.ReadSingle(),
@@ -50,9 +70,9 @@
 
             public override void Write(CGameCtnMediaBlockFxColors n, GameBoxWriter w)
             {
-                w.Write(n.Keys, (x, w1) =>
+                w.Write(n.keys, (x, w1) =>
                 {
-                    w1.Write(x.Time);
+                    w1.WriteSingle_s(x.Time);
                     w1.Write(x.Intensity);
                     w1.Write(x.BlendZ);
                     w1.Write(x.Distance);

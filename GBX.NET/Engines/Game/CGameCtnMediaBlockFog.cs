@@ -1,12 +1,31 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x03199000)]
-    public class CGameCtnMediaBlockFog : CGameCtnMediaBlock
+    public class CGameCtnMediaBlockFog : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
+        #region Fields
+
+        private IList<Key> keys = new List<Key>();
+
+        #endregion
+
         #region Properties
 
+        IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+        {
+            get => keys.Cast<CGameCtnMediaBlock.Key>();
+            set => keys = value.Cast<Key>().ToList();
+        }
+
         [NodeMember]
-        public Key[] Keys { get; set; }
+        public IList<Key> Keys
+        {
+            get => keys;
+            set => keys = value;
+        }
 
         #endregion
 
@@ -15,16 +34,16 @@
         #region 0x000 chunk
 
         [Chunk(0x03199000)]
-        public class Chunk03199000 : Chunk<CGameCtnMediaBlockFog>
+        public class Chunk03199000 : Chunk<CGameCtnMediaBlockFog>, IVersionable
         {
             public int Version { get; set; }
 
             public override void Read(CGameCtnMediaBlockFog n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
-                n.Keys = r.ReadArray(r1 =>
+                n.keys = r.ReadList(r1 =>
                 {
-                    var time = r1.ReadSingle();
+                    var time = r1.ReadSingle_s();
                     var intensity = r1.ReadSingle();
                     var skyIntensity = r1.ReadSingle();
                     var distance = r1.ReadSingle();
@@ -66,7 +85,7 @@
 
                 w.Write(n.Keys, (x, w1) =>
                 {
-                    w1.Write(x.Time);
+                    w1.WriteSingle_s(x.Time);
                     w1.Write(x.Intensity);
                     w1.Write(x.SkyIntensity);
                     w1.Write(x.Distance);

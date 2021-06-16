@@ -1,12 +1,31 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x03126000)]
-    public class CGameCtnMediaBlockDOF : CGameCtnMediaBlock
+    public class CGameCtnMediaBlockDOF : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
+        #region Fields
+
+        private IList<Key> keys = new List<Key>();
+
+        #endregion
+
         #region Properties
 
+        IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+        {
+            get => keys.Cast<CGameCtnMediaBlock.Key>();
+            set => keys = value.Cast<Key>().ToList();
+        }
+
         [NodeMember]
-        public Key[] Keys { get; set; }
+        public IList<Key> Keys
+        {
+            get => keys;
+            set => keys = value;
+        }
 
         #endregion
 
@@ -19,22 +38,15 @@
         {
             public override void ReadWrite(CGameCtnMediaBlockDOF n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, (i, r) =>
+                rw.List(ref n.keys, r => new Key()
                 {
-                    var time = r.ReadSingle();
-                    var zFocus = r.ReadSingle();
-                    var lensSize = r.ReadSingle();
-
-                    return new Key()
-                    {
-                        Time = time,
-                        ZFocus = zFocus,
-                        LensSize = lensSize
-                    };
+                    Time = r.ReadSingle_s(),
+                    ZFocus = r.ReadSingle(),
+                    LensSize = r.ReadSingle()
                 },
                 (x, w) =>
                 {
-                    w.Write(x.Time);
+                    w.WriteSingle_s(x.Time);
                     w.Write(x.ZFocus);
                     w.Write(x.LensSize);
                 });
@@ -50,27 +62,19 @@
         {
             public override void ReadWrite(CGameCtnMediaBlockDOF n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, (i, r) =>
+                rw.List(ref n.keys, r => new Key()
                 {
-                    var time = r.ReadSingle();
-                    var zFocus = r.ReadSingle();
-                    var lensSize = r.ReadSingle();
-                    var u01 = r.ReadInt32();
-
-                    return new Key()
-                    {
-                        Time = time,
-                        ZFocus = zFocus,
-                        LensSize = lensSize,
-                        Unknown = new object[] { u01 }
-                    };
+                    Time = r.ReadSingle_s(),
+                    ZFocus = r.ReadSingle(),
+                    LensSize = r.ReadSingle(),
+                    U01 = r.ReadInt32()
                 },
                 (x, w) =>
                 {
-                    w.Write(x.Time);
+                    w.WriteSingle_s(x.Time);
                     w.Write(x.ZFocus);
                     w.Write(x.LensSize);
-                    w.Write((int)x.Unknown[0]);
+                    w.Write(x.U01.GetValueOrDefault());
                 });
             }
         }
@@ -84,33 +88,25 @@
         {
             public override void ReadWrite(CGameCtnMediaBlockDOF n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, (i, r) =>
+                rw.List(ref n.keys, r => new Key()
                 {
-                    var time = r.ReadSingle();
-                    var zFocus = r.ReadSingle();
-                    var lensSize = r.ReadSingle();
-                    var u01 = r.ReadInt32();
-                    var u02 = r.ReadSingle();
-                    var u03 = r.ReadSingle();
-                    var u04 = r.ReadSingle();
-
-                    return new Key()
-                    {
-                        Time = time,
-                        ZFocus = zFocus,
-                        LensSize = lensSize,
-                        Unknown = new object[] { u01, u02, u03, u04 }
-                    };
+                    Time = r.ReadSingle_s(),
+                    ZFocus = r.ReadSingle(),
+                    LensSize = r.ReadSingle(),
+                    U01 = r.ReadInt32(),
+                    U02 = r.ReadSingle(),
+                    U03 = r.ReadSingle(),
+                    U04 = r.ReadSingle()
                 },
                 (x, w) =>
                 {
-                    w.Write(x.Time);
+                    w.WriteSingle_s(x.Time);
                     w.Write(x.ZFocus);
                     w.Write(x.LensSize);
-                    w.Write((int)x.Unknown[0]);
-                    w.Write((float)x.Unknown[1]);
-                    w.Write((float)x.Unknown[2]);
-                    w.Write((float)x.Unknown[3]);
+                    w.Write(x.U01.GetValueOrDefault());
+                    w.Write(x.U02.GetValueOrDefault());
+                    w.Write(x.U03.GetValueOrDefault());
+                    w.Write(x.U04.GetValueOrDefault());
                 });
             }
         }
@@ -126,7 +122,10 @@
             public float ZFocus { get; set; }
             public float LensSize { get; set; }
 
-            public object[] Unknown { get; set; }
+            public int? U01;
+            public float? U02;
+            public float? U03;
+            public float? U04;
         }
 
         #endregion

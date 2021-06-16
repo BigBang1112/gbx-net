@@ -183,7 +183,7 @@ namespace GBX.NET.Engines.Game
         private FileRef modPackDesc;
         private Int3? size;
         private bool? needUnlock;
-        private List<CGameCtnBlock> blocks;
+        private IList<CGameCtnBlock> blocks;
         private CGameCtnBlock[] bakedBlocks;
         private CGameCtnMediaClip clipIntro;
         private CGameCtnMediaClipGroup clipGroupInGame;
@@ -197,7 +197,7 @@ namespace GBX.NET.Engines.Game
         private Vec3? thumbnailPosition;
         private Vec3? thumbnailPitchYawRoll;
         private float? thumbnailFOV;
-        private List<CGameCtnAnchoredObject> anchoredObjects;
+        private IList<CGameCtnAnchoredObject> anchoredObjects;
         private CScriptTraitsMetadata scriptMetadata;
         private List<List<byte[]>> lightmapFrames;
         private Task<CHmsLightMapCache> lightmapCache;
@@ -206,10 +206,10 @@ namespace GBX.NET.Engines.Game
         private string objectiveTextGold;
         private string objectiveTextSilver;
         private string objectiveTextBronze;
-        private List<(Int3 start, Int3 end)> offzones;
+        private IList<(Int3 start, Int3 end)> offzones;
         private string buildVersion;
         private int decoBaseHeightOffset;
-        private List<BotPath> botPaths;
+        private IList<BotPath> botPaths;
         private readonly Dictionary<string, byte[]> embeddedObjects = new Dictionary<string, byte[]>();
         private byte[] originalEmbedZip;
         private TimeSpan? dayTime;
@@ -805,7 +805,7 @@ namespace GBX.NET.Engines.Game
         /// List of all blocks on the map.
         /// </summary>
         [NodeMember]
-        public List<CGameCtnBlock> Blocks
+        public IList<CGameCtnBlock> Blocks
         {
             get => blocks;
             set => blocks = value;
@@ -1027,7 +1027,7 @@ namespace GBX.NET.Engines.Game
         /// List of all items and objects placed on the map.
         /// </summary>
         [NodeMember]
-        public List<CGameCtnAnchoredObject> AnchoredObjects
+        public IList<CGameCtnAnchoredObject> AnchoredObjects
         {
             get
             {
@@ -1138,7 +1138,7 @@ namespace GBX.NET.Engines.Game
         /// List of offzones defined on the map, constructed with cubes made from start-to-end coordinates.
         /// </summary>
         [NodeMember]
-        public List<(Int3 start, Int3 end)> Offzones
+        public IList<(Int3 start, Int3 end)> Offzones
         {
             get
             {
@@ -1174,7 +1174,7 @@ namespace GBX.NET.Engines.Game
         /// Bot paths defined on the (Shootmania) map.
         /// </summary>
         [NodeMember]
-        public List<BotPath> BotPaths
+        public IList<BotPath> BotPaths
         {
             get
             {
@@ -2117,10 +2117,10 @@ namespace GBX.NET.Engines.Game
 
                 if (version >= 1)
                 {
-                    rw.TimeSpan32(ref n.bronzeTime);
-                    rw.TimeSpan32(ref n.silverTime);
-                    rw.TimeSpan32(ref n.goldTime);
-                    rw.TimeSpan32(ref n.authorTime);
+                    rw.Int32_msn(ref n.bronzeTime);
+                    rw.Int32_msn(ref n.silverTime);
+                    rw.Int32_msn(ref n.goldTime);
+                    rw.Int32_msn(ref n.authorTime);
 
                     if (version == 2)
                         rw.Byte(ref U02);
@@ -3842,7 +3842,7 @@ namespace GBX.NET.Engines.Game
 
                 U02 = r.ReadInt32();
                 n.dynamicDaylight = r.ReadBoolean();
-                n.dayDuration = r.ReadTimeSpan();
+                n.dayDuration = r.ReadInt32_msn();
             }
 
             public override void Write(CGameCtnChallenge n, GameBoxWriter w)
@@ -3857,7 +3857,7 @@ namespace GBX.NET.Engines.Game
 
                 w.Write(U02);
                 w.Write(n.dynamicDaylight);
-                w.Write(n.dayDuration);
+                w.WriteInt32_msn(n.dayDuration);
             }
         }
 

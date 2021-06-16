@@ -253,7 +253,7 @@ namespace GBX.NET.Engines.Game
                 if (Version >= 2)
                 {
                     n.mapInfo = r.ReadIdent();
-                    n.time = r.ReadTimeSpan();
+                    n.time = r.ReadInt32_msn();
                     n.playerNickname = r.ReadString();
 
                     if (Version >= 6)

@@ -1,15 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03085000)]
-    public class CGameCtnMediaBlockTime : CGameCtnMediaBlock
+    public class CGameCtnMediaBlockTime : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
         #region Properties
 
+        IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+        {
+            get => Keys.Cast<CGameCtnMediaBlock.Key>();
+            set => Keys = value.Cast<Key>().ToList();
+        }
+
         [NodeMember]
-        public Key[] Keys { get; set; }
+        public IList<Key> Keys { get; set; } = new List<Key>();
 
         public bool IsTM2 { get; set; }
 
@@ -36,9 +44,9 @@ namespace GBX.NET.Engines.Game
 
                     r.BaseStream.Seek(-bytes.Length, SeekOrigin.Current);
 
-                    n.Keys = r.ReadArray(numKeys, r1 => new Key()
+                    n.Keys = r.ReadList(numKeys, r1 => new Key()
                     {
-                        Time = r1.ReadSingle(),
+                        Time = r1.ReadSingle_s(),
                         TimeValue = r1.ReadSingle()
                     });
                 }
@@ -48,9 +56,9 @@ namespace GBX.NET.Engines.Game
 
                     r.BaseStream.Seek(-bytes.Length, SeekOrigin.Current);
 
-                    n.Keys = r.ReadArray(numKeys, r1 => new Key()
+                    n.Keys = r.ReadList(numKeys, r1 => new Key()
                     {
-                        Time = r1.ReadSingle(),
+                        Time = r1.ReadSingle_s(),
                         TimeValue = r1.ReadSingle(),
                         Tangent = r1.ReadSingle()
                     });
@@ -63,7 +71,7 @@ namespace GBX.NET.Engines.Game
                 {
                     w.Write(n.Keys, (x, w1) =>
                     {
-                        w1.Write(x.Time);
+                        w1.WriteSingle_s(x.Time);
                         w1.Write(x.TimeValue);
                     });
                 }
@@ -71,7 +79,7 @@ namespace GBX.NET.Engines.Game
                 {
                     w.Write(n.Keys, (x, w1) =>
                     {
-                        w1.Write(x.Time);
+                        w1.WriteSingle_s(x.Time);
                         w1.Write(x.TimeValue);
                         w1.Write(x.Tangent);
                     });

@@ -483,7 +483,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.raceTime = rw.TimeSpan32(n.raceTime);
+                rw.Int32_msn(ref n.raceTime);
             }
         }
 
@@ -569,8 +569,8 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 rw.Array(ref n.checkpoints,
-                    (i, r) => new Checkpoint(TimeSpan.FromMilliseconds(r.ReadInt32()), r.ReadInt32()),
-                    (x, w) => { w.Write(x.Time); w.Write(x.StuntsScore); }
+                    (i, r) => new Checkpoint(r.ReadInt32_ms(), r.ReadInt32()),
+                    (x, w) => { w.WriteInt32_ms(x.Time); w.Write(x.StuntsScore); }
                 );
             }
         }

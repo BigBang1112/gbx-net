@@ -1,10 +1,12 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System;
+
+namespace GBX.NET.Engines.Game
 {
     /// <summary>
     /// MediaTracker block - Camera ingame
     /// </summary>
     [Node(0x03084000)]
-    public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera
+    public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasTwoKeys
     {
         #region Enums
 
@@ -29,25 +31,60 @@
 
         #endregion
 
+        #region Fields
+
+        public TimeSpan start;
+        public TimeSpan end = TimeSpan.FromSeconds(3);
+        public EGameCam? gameCam1;
+        public EGameCam2? gameCam2;
+        public int clipEntId = -1;
+        public string gameCam;
+
+        #endregion
+
         #region Properties
 
         [NodeMember]
-        public float Start { get; set; }
+        public TimeSpan Start
+        {
+            get => start;
+            set => start = value;
+        }
 
         [NodeMember]
-        public float End { get; set; } = 3;
+        public TimeSpan End
+        {
+            get => end;
+            set => end = value;
+        }
 
         [NodeMember]
-        public EGameCam? GameCam1 { get; set; }
+        public EGameCam? GameCam1
+        {
+            get => gameCam1;
+            set => gameCam1 = value;
+        }
 
         [NodeMember]
-        public EGameCam2? GameCam2 { get; set; }
+        public EGameCam2? GameCam2
+        {
+            get => gameCam2;
+            set => gameCam2 = value;
+        }
 
         [NodeMember]
-        public int ClipEntId { get; set; } = -1;
+        public int ClipEntId
+        {
+            get => clipEntId;
+            set => clipEntId = value;
+        }
 
         [NodeMember]
-        public string GameCam { get; set; }
+        public string GameCam
+        {
+            get => gameCam;
+            set => gameCam = value;
+        }
 
         #endregion
 
@@ -65,8 +102,8 @@
 
             public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
             {
-                n.Start = rw.Single(n.Start);
-                n.End = rw.Single(n.End);
+                rw.Single_s(ref n.start);
+                rw.Single_s(ref n.end);
                 rw.Int32(ref U01);
             }
         }
@@ -83,10 +120,10 @@
         {
             public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
             {
-                n.Start = rw.Single(n.Start);
-                n.End = rw.Single(n.End);
-                n.GameCam1 = (EGameCam)rw.Int32((int)n.GameCam1.GetValueOrDefault());
-                n.ClipEntId = rw.Int32(n.ClipEntId);
+                rw.Single_s(ref n.start);
+                rw.Single_s(ref n.end);
+                rw.EnumInt32<EGameCam>(ref n.gameCam1);
+                rw.Int32(ref n.clipEntId);
             }
         }
 
@@ -102,10 +139,10 @@
         {
             public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
             {
-                n.Start = rw.Single(n.Start);
-                n.End = rw.Single(n.End);
-                n.GameCam = rw.Id(n.GameCam);
-                n.ClipEntId = rw.Int32(n.ClipEntId);
+                rw.Single_s(ref n.start);
+                rw.Single_s(ref n.end);
+                rw.Id(ref n.gameCam);
+                rw.Int32(ref n.clipEntId);
             }
         }
 
@@ -123,9 +160,9 @@
 
             public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
             {
-                n.Start = rw.Single(n.Start);
-                n.End = rw.Single(n.End);
-                n.GameCam = rw.Id(n.GameCam);
+                rw.Single_s(ref n.start);
+                rw.Single_s(ref n.end);
+                rw.Id(ref n.gameCam);
 
                 rw.UntilFacade(Unknown); // Helicopter camera transform? 17 ints, sometimes 19
             }
@@ -139,16 +176,22 @@
         /// CGameCtnMediaBlockCameraGame 0x007 chunk
         /// </summary>
         [Chunk(0x03084007)]
-        public class Chunk03084007 : Chunk<CGameCtnMediaBlockCameraGame>
+        public class Chunk03084007 : Chunk<CGameCtnMediaBlockCameraGame>, IVersionable
         {
-            public int Version { get; set; }
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                n.Start = rw.Single(n.Start);
-                n.End = rw.Single(n.End);
-                n.GameCam2 = (EGameCam2)rw.Int32((int)n.GameCam2.GetValueOrDefault());
+                rw.Int32(ref version);
+                rw.Single_s(ref n.start);
+                rw.Single_s(ref n.end);
+                rw.EnumInt32<EGameCam2>(ref n.gameCam2);
 
                 rw.UntilFacade(Unknown); // Helicopter camera transform? 17 ints, sometimes 19
             }

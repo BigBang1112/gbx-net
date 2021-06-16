@@ -1,4 +1,6 @@
 ﻿using GBX.NET.Engines.MwFoundations;
+using System;
+using System.Collections.Generic;
 
 namespace GBX.NET.Engines.Game
 {
@@ -10,7 +12,7 @@ namespace GBX.NET.Engines.Game
     {
         public abstract class Key
         {
-            public float Time { get; set; }
+            public TimeSpan Time { get; set; }
 
             protected Key()
             {
@@ -19,8 +21,19 @@ namespace GBX.NET.Engines.Game
 
             protected Key(GameBoxReader r)
             {
-                Time = r.ReadSingle();
+                Time = r.ReadSingle_s();
             }
+        }
+
+        public interface IHasTwoKeys
+        {
+            TimeSpan Start { get; set; }
+            TimeSpan End { get; set; }
+        }
+
+        public interface IHasKeys
+        {
+            IEnumerable<Key> Keys { get; set; }
         }
     }
 }

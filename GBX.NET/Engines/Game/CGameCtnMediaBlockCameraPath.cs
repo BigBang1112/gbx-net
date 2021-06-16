@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace GBX.NET.Engines.Game
 {
@@ -6,12 +7,28 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - Camera path
     /// </summary>
     [Node(0x030A1000)]
-    public class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera
+    public class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasKeys
     {
+        #region Fields
+
+        private IList<Key> keys = new List<Key>();
+
+        #endregion
+
         #region Properties
 
+        IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+        {
+            get => keys.Cast<CGameCtnMediaBlock.Key>();
+            set => keys = value.Cast<Key>().ToList();
+        }
+
         [NodeMember]
-        public Key[] Keys { get; set; }
+        public IList<Key> Keys
+        {
+            get => keys;
+            set => keys = value;
+        }
 
         #endregion
 
@@ -27,44 +44,30 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnMediaBlockCameraPath n, GameBoxReader r)
             {
-                n.Keys = r.ReadArray(r1 =>
+                n.keys = r.ReadList(r1 => new Key()
                 {
-                    var time = r1.ReadSingle();
-                    var position = r1.ReadVec3();
-                    var pitchYawRoll = r1.ReadVec3(); // in radians
-                    var fov = r1.ReadSingle();
-                    var anchorRot = r1.ReadBoolean();
-                    var anchor = r1.ReadInt32();
-                    var anchorVis = r1.ReadBoolean();
-                    var target = r1.ReadInt32();
-                    var targetPosition = r1.ReadVec3();
-                    var a = r1.ReadSingle(); // 1
-                    var b = r1.ReadSingle(); // -0.48
-                    var c = r1.ReadSingle(); // 0
-                    var d = r1.ReadSingle(); // 0
-                    var e = r1.ReadSingle();
-
-                    return new Key()
-                    {
-                        Time = time,
-                        Position = position,
-                        PitchYawRoll = pitchYawRoll,
-                        FOV = fov,
-                        AnchorRot = anchorRot,
-                        Anchor = anchor,
-                        AnchorVis = anchorVis,
-                        Target = target,
-                        TargetPosition = targetPosition,
-                        Unknown = new object[] { a, b, c, d, e }
-                    };
+                    Time = r1.ReadSingle_s(),
+                    Position = r1.ReadVec3(),
+                    PitchYawRoll = r1.ReadVec3(), // in radians
+                    FOV = r1.ReadSingle(),
+                    AnchorRot = r1.ReadBoolean(),
+                    Anchor = r1.ReadInt32(),
+                    AnchorVis = r1.ReadBoolean(),
+                    Target = r1.ReadInt32(),
+                    TargetPosition = r1.ReadVec3(),
+                    U01 = r1.ReadSingle(), // 1
+                    U02 = r1.ReadSingle(), // -0.48
+                    U03 = r1.ReadSingle(), // 0
+                    U04 = r1.ReadSingle(), // 0
+                    U05 = r1.ReadSingle()
                 });
             }
 
             public override void Write(CGameCtnMediaBlockCameraPath n, GameBoxWriter w)
             {
-                w.Write(n.Keys, (x, w1) =>
+                w.Write(n.keys, (x, w1) =>
                 {
-                    w1.Write(x.Time);
+                    w1.WriteSingle_s(x.Time);
                     w1.Write(x.Position);
                     w1.Write(x.PitchYawRoll);
                     w1.Write(x.FOV);
@@ -73,11 +76,11 @@ namespace GBX.NET.Engines.Game
                     w1.Write(x.AnchorVis);
                     w1.Write(x.Target);
                     w1.Write(x.TargetPosition);
-                    w1.Write((float)x.Unknown[0]);
-                    w1.Write((float)x.Unknown[1]);
-                    w1.Write((float)x.Unknown[2]);
-                    w1.Write((float)x.Unknown[3]);
-                    w1.Write((float)x.Unknown[4]);
+                    w1.Write(x.U01);
+                    w1.Write(x.U02);
+                    w1.Write(x.U03);
+                    w1.Write(x.U04);
+                    w1.Write(x.U05);
                 });
             }
         }
@@ -94,44 +97,30 @@ namespace GBX.NET.Engines.Game
         {
             public override void Read(CGameCtnMediaBlockCameraPath n, GameBoxReader r)
             {
-                n.Keys = r.ReadArray(r1 =>
+                n.keys = r.ReadList(r1 => new Key()
                 {
-                    var time = r1.ReadSingle();
-                    var position = r1.ReadVec3();
-                    var pitchYawRoll = r1.ReadVec3(); // in radians
-                    var fov = r1.ReadSingle();
-                    var anchorRot = r1.ReadBoolean();
-                    var anchor = r1.ReadInt32();
-                    var anchorVis = r1.ReadBoolean();
-                    var target = r1.ReadInt32();
-                    var targetPosition = r1.ReadVec3();
-                    var a = r1.ReadSingle(); // 1
-                    var b = r1.ReadSingle(); // -0.48
-                    var c = r1.ReadSingle(); // 0
-                    var d = r1.ReadSingle(); // 0
-                    var e = r1.ReadSingle();
-
-                    return new Key()
-                    {
-                        Time = time,
-                        Position = position,
-                        PitchYawRoll = pitchYawRoll,
-                        FOV = fov,
-                        AnchorRot = anchorRot,
-                        Anchor = anchor,
-                        AnchorVis = anchorVis,
-                        Target = target,
-                        TargetPosition = targetPosition,
-                        Unknown = new object[] { a, b, c, d, e }
-                    };
+                    Time = r1.ReadSingle_s(),
+                    Position = r1.ReadVec3(),
+                    PitchYawRoll = r1.ReadVec3(), // in radians
+                    FOV = r1.ReadSingle(),
+                    AnchorRot = r1.ReadBoolean(),
+                    Anchor = r1.ReadInt32(),
+                    AnchorVis = r1.ReadBoolean(),
+                    Target = r1.ReadInt32(),
+                    TargetPosition = r1.ReadVec3(),
+                    U01 = r1.ReadSingle(), // 1
+                    U02 = r1.ReadSingle(), // -0.48
+                    U03 = r1.ReadSingle(), // 0
+                    U04 = r1.ReadSingle(), // 0
+                    U05 = r1.ReadSingle()
                 });
             }
 
             public override void Write(CGameCtnMediaBlockCameraPath n, GameBoxWriter w)
             {
-                w.Write(n.Keys, (x, w1) =>
+                w.Write(n.keys, (x, w1) =>
                 {
-                    w1.Write(x.Time);
+                    w1.WriteSingle_s(x.Time);
                     w1.Write(x.Position);
                     w1.Write(x.PitchYawRoll);
                     w1.Write(x.FOV);
@@ -140,11 +129,11 @@ namespace GBX.NET.Engines.Game
                     w1.Write(x.AnchorVis);
                     w1.Write(x.Target);
                     w1.Write(x.TargetPosition);
-                    w1.Write((float)x.Unknown[0]);
-                    w1.Write((float)x.Unknown[1]);
-                    w1.Write((float)x.Unknown[2]);
-                    w1.Write((float)x.Unknown[3]);
-                    w1.Write((float)x.Unknown[4]);
+                    w1.Write(x.U01);
+                    w1.Write(x.U02);
+                    w1.Write(x.U03);
+                    w1.Write(x.U04);
+                    w1.Write(x.U05);
                 });
             }
         }
@@ -157,7 +146,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnMediaBlockCameraPath 0x003 chunk
         /// </summary>
         [Chunk(0x030A1003)]
-        public class Chunk030A1003 : Chunk<CGameCtnMediaBlockCameraPath>
+        public class Chunk030A1003 : Chunk<CGameCtnMediaBlockCameraPath>, IVersionable
         {
             public int Version { get; set; }
 
@@ -165,26 +154,37 @@ namespace GBX.NET.Engines.Game
             {
                 Version = r.ReadInt32();
 
-                n.Keys = r.ReadArray(r1 =>
+                n.keys = r.ReadList(r1 =>
                 {
-                    var time = r1.ReadSingle();
+                    var time = r1.ReadSingle_s();
                     var position = r1.ReadVec3();
                     var pitchYawRoll = r1.ReadVec3(); // in radians
                     var fov = r1.ReadSingle();
 
-                    float? nearZ = null;
+                    var nearZ = default(float?);
                     if (Version >= 3)
                         nearZ = r1.ReadSingle();
+
                     var anchorRot = r1.ReadBoolean();
                     var anchor = r1.ReadInt32();
                     var anchorVis = r1.ReadBoolean();
                     var target = r1.ReadInt32();
                     var targetPosition = r1.ReadVec3();
 
-                    var unknown = r1.ReadArray<float>(5).Cast<object>().ToList();
+                    var u01 = r1.ReadSingle();
+                    var u02 = r1.ReadSingle();
+                    var u03 = r1.ReadSingle();
+                    var u04 = r1.ReadSingle();
+                    var u05 = r1.ReadSingle();
+
+                    var u06 = default(int?);
+                    var u07 = default(int?);
 
                     if (Version >= 4)
-                        unknown.AddRange(r1.ReadArray<int>(2).Cast<object>());
+                    {
+                        u06 = r1.ReadInt32();
+                        u07 = r1.ReadInt32();
+                    }
 
                     return new Key()
                     {
@@ -198,7 +198,13 @@ namespace GBX.NET.Engines.Game
                         AnchorVis = anchorVis,
                         Target = target,
                         TargetPosition = targetPosition,
-                        Unknown = unknown.Cast<object>().ToArray()
+                        U01 = u01,
+                        U02 = u02,
+                        U03 = u03,
+                        U04 = u04,
+                        U05 = u05,
+                        U06 = u06,
+                        U07 = u07,
                     };
                 });
             }
@@ -207,30 +213,32 @@ namespace GBX.NET.Engines.Game
             {
                 w.Write(Version);
 
-                w.Write(n.Keys, (x, w1) =>
+                w.Write(n.keys, (x, w1) =>
                 {
-                    w1.Write(x.Time);
+                    w1.WriteSingle_s(x.Time);
                     w1.Write(x.Position);
                     w1.Write(x.PitchYawRoll);
                     w1.Write(x.FOV);
+
                     if (Version >= 3)
                         w1.Write(x.NearZ.GetValueOrDefault());
+
                     w1.Write(x.AnchorRot);
                     w1.Write(x.Anchor);
                     w1.Write(x.AnchorVis);
                     w1.Write(x.Target);
                     w1.Write(x.TargetPosition);
 
-                    w1.Write((float)x.Unknown[0]);
-                    w1.Write((float)x.Unknown[1]);
-                    w1.Write((float)x.Unknown[2]);
-                    w1.Write((float)x.Unknown[3]);
-                    w1.Write((float)x.Unknown[4]);
+                    w1.Write(x.U01);
+                    w1.Write(x.U02);
+                    w1.Write(x.U03);
+                    w1.Write(x.U04);
+                    w1.Write(x.U05);
 
                     if (Version >= 4)
                     {
-                        w1.Write((int)x.Unknown[5]);
-                        w1.Write((int)x.Unknown[6]);
+                        w1.Write(x.U06.GetValueOrDefault());
+                        w1.Write(x.U07.GetValueOrDefault());
                     }
                 });
             }
@@ -261,7 +269,13 @@ namespace GBX.NET.Engines.Game
             public Vec3 LeftTangent { get; set; }
             public Vec3 RightTangent { get; set; }
 
-            public object[] Unknown { get; set; }
+            public float U01;
+            public float U02;
+            public float U03;
+            public float U04;
+            public float U05;
+            public int? U06;
+            public int? U07;
         }
 
         #endregion

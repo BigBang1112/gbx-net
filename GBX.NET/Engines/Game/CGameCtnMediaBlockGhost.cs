@@ -1,33 +1,88 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x030E5000)]
-    public class CGameCtnMediaBlockGhost : CGameCtnMediaBlock
+    public class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys, CGameCtnMediaBlock.IHasKeys
     {
+        #region Fields
+
+        private TimeSpan start;
+        private TimeSpan end;
+        private IList<Key> keys = new List<Key>();
+        private CGameCtnGhost ghostModel;
+        private float startOffset;
+        private bool noDamage;
+        private bool forceLight;
+        private bool forceHue;
+
+        #endregion
+
         #region Properties
 
-        [NodeMember]
-        public float Start { get; set; }
+        IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+        {
+            get => keys.Cast<CGameCtnMediaBlock.Key>();
+            set => keys = value.Cast<Key>().ToList();
+        }
 
         [NodeMember]
-        public float End { get; set; }
+        public TimeSpan Start
+        {
+            get => start;
+            set => start = value;
+        }
 
         [NodeMember]
-        public Key[] Keys { get; set; }
+        public TimeSpan End
+        {
+            get => end;
+            set => end = value;
+        }
 
         [NodeMember]
-        public CGameCtnGhost GhostModel { get; set; }
+        public IList<Key> Keys
+        {
+            get => keys;
+            set => keys = value;
+        }
 
         [NodeMember]
-        public float StartOffset { get; set; }
+        public CGameCtnGhost GhostModel
+        {
+            get => ghostModel;
+            set => ghostModel = value;
+        }
 
         [NodeMember]
-        public bool NoDamage { get; set; }
+        public float StartOffset
+        {
+            get => startOffset;
+            set => startOffset = value;
+        }
 
         [NodeMember]
-        public bool ForceLight { get; set; }
+        public bool NoDamage
+        {
+            get => noDamage;
+            set => noDamage = value;
+        }
 
         [NodeMember]
-        public bool ForceHue { get; set; }
+        public bool ForceLight
+        {
+            get => forceLight;
+            set => forceLight = value;
+        }
+
+        [NodeMember]
+        public bool ForceHue
+        {
+            get => forceHue;
+            set => forceHue = value;
+        }
 
         #endregion
 
@@ -40,10 +95,10 @@
         {
             public override void ReadWrite(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw)
             {
-                n.Start = rw.Single(n.Start);
-                n.End = rw.Single(n.End);
-                n.GhostModel = rw.NodeRef<CGameCtnGhost>(n.GhostModel);
-                n.StartOffset = rw.Single(n.StartOffset);
+                rw.Single_s(ref n.start);
+                rw.Single_s(ref n.end);
+                rw.NodeRef<CGameCtnGhost>(ref n.ghostModel);
+                rw.Single(ref n.startOffset);
             }
         }
 
@@ -52,38 +107,44 @@
         #region 0x002 chunk
 
         [Chunk(0x030E5002)]
-        public class Chunk030E5002 : Chunk<CGameCtnMediaBlockGhost>
+        public class Chunk030E5002 : Chunk<CGameCtnMediaBlockGhost>, IVersionable
         {
-            public int Version { get; set; }
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
+                rw.Int32(ref version);
 
                 if (Version >= 3)
                 {
-                    n.Keys = rw.Array(n.Keys, r => new Key()
+                    rw.List(ref n.keys, r => new Key()
                     {
-                        Time = r.ReadSingle(),
+                        Time = r.ReadSingle_s(),
                         Unknown = r.ReadSingle()
                     },
                     (x, w) =>
                     {
-                        w.Write(x.Time);
+                        w.WriteSingle_s(x.Time);
                         w.Write(x.Unknown);
                     });
                 }
                 else
                 {
-                    n.Start = rw.Single(n.Start);
-                    n.End = rw.Single(n.End);
+                    rw.Single_s(ref n.start);
+                    rw.Single_s(ref n.end);
                 }
 
-                n.GhostModel = rw.NodeRef<CGameCtnGhost>(n.GhostModel);
-                n.StartOffset = rw.Single(n.StartOffset);
-                n.NoDamage = rw.Boolean(n.NoDamage);
-                n.ForceLight = rw.Boolean(n.ForceLight);
-                n.ForceHue = rw.Boolean(n.ForceHue);
+                rw.NodeRef<CGameCtnGhost>(ref n.ghostModel);
+                rw.Single(ref n.startOffset);
+                rw.Boolean(ref n.noDamage);
+                rw.Boolean(ref n.forceLight);
+                rw.Boolean(ref n.forceHue);
             }
         }
 

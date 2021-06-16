@@ -1,15 +1,34 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace GBX.NET.Engines.Game
 {
     /// <summary>
     /// MediaTracker Bloom block for TMUF and older games (0x03083000). This node causes "Couldn't load map" in ManiaPlanet.
     /// </summary>
     [Node(0x03083000)]
-    public class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx
+    public class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
     {
+        #region Fields
+
+        private IList<Key> keys = new List<Key>();
+
+        #endregion
+
         #region Properties
 
+        IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+        {
+            get => keys.Cast<CGameCtnMediaBlock.Key>();
+            set => keys = value.Cast<Key>().ToList();
+        }
+
         [NodeMember]
-        public Key[] Keys { get; set; }
+        public IList<Key> Keys
+        {
+            get => keys;
+            set => keys = value;
+        }
 
         #endregion
 
@@ -23,24 +42,17 @@
         [Chunk(0x03083001)]
         public class Chunk03083001 : Chunk<CGameCtnMediaBlockFxBloom>
         {
-            public override void Read(CGameCtnMediaBlockFxBloom n, GameBoxReader r)
+            public override void ReadWrite(CGameCtnMediaBlockFxBloom n, GameBoxReaderWriter rw)
             {
-                n.Keys = r.ReadArray(r1 =>
+                rw.List(ref n.keys, r1 => new Key()
                 {
-                    return new Key()
-                    {
-                        Time = r1.ReadSingle(),
-                        Intensity = r1.ReadSingle(),
-                        Sensitivity = r1.ReadSingle()
-                    };
-                });
-            }
-
-            public override void Write(CGameCtnMediaBlockFxBloom n, GameBoxWriter w)
-            {
-                w.Write(n.Keys, (x, w1) =>
+                    Time = r1.ReadSingle_s(),
+                    Intensity = r1.ReadSingle(),
+                    Sensitivity = r1.ReadSingle()
+                },
+                (x, w1) =>
                 {
-                    w1.Write(x.Time);
+                    w1.WriteSingle_s(x.Time);
                     w1.Write(x.Intensity);
                     w1.Write(x.Sensitivity);
                 });

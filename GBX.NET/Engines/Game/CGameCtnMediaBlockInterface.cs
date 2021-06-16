@@ -1,21 +1,48 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x03195000)]
-    public class CGameCtnMediaBlockInterface : CGameCtnMediaBlock
+    public class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
     {
+        #region Fields
+
+        private TimeSpan start;
+        private TimeSpan end = TimeSpan.FromSeconds(3);
+        private bool showInterface;
+        private string manialink;
+
+        #endregion
+
         #region Properties
 
         [NodeMember]
-        public float Start { get; set; }
+        public TimeSpan Start
+        {
+            get => start;
+            set => start = value;
+        }
 
         [NodeMember]
-        public float End { get; set; }
+        public TimeSpan End
+        {
+            get => end;
+            set => end = value;
+        }
 
         [NodeMember]
-        public bool ShowInterface { get; set; }
+        public bool ShowInterface
+        {
+            get => showInterface;
+            set => showInterface = value;
+        }
 
         [NodeMember]
-        public string Manialink { get; set; }
+        public string Manialink
+        {
+            get => manialink;
+            set => manialink = value;
+        }
 
         #endregion
 
@@ -24,18 +51,23 @@
         #region 0x000 chunk
 
         [Chunk(0x03195000)]
-        public class Chunk03195000 : Chunk<CGameCtnMediaBlockInterface>
+        public class Chunk03195000 : Chunk<CGameCtnMediaBlockInterface>, IVersionable
         {
-            public int Version { get; set; }
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CGameCtnMediaBlockInterface n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-
-                n.Start = rw.Single(n.Start);
-                n.End = rw.Single(n.End);
-                n.ShowInterface = rw.Boolean(n.ShowInterface);
-                n.Manialink = rw.String(n.Manialink);
+                rw.Int32(ref version);
+                rw.Single_s(ref n.start);
+                rw.Single_s(ref n.end);
+                rw.Boolean(ref n.showInterface);
+                rw.String(ref n.manialink);
             }
         }
 

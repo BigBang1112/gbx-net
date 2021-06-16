@@ -41,6 +41,98 @@ namespace GBX.NET
         }
 
         /// <summary>
+        /// Reads a 4-byte signed integer from the current stream and advances the current position of the stream by four bytes.
+        /// The integer is then presented as time in seconds.
+        /// </summary>
+        /// <returns>A TimeSpan converted from the integer.</returns>
+        public TimeSpan ReadInt32_s()
+        {
+            return TimeSpan.FromSeconds(ReadInt32());
+        }
+
+        /// <summary>
+        /// Reads a 4-byte signed integer from the current stream and advances the current position of the stream by four bytes.
+        /// The integer is then presented as time in milliseconds.
+        /// </summary>
+        /// <returns>A TimeSpan converted from the integer.</returns>
+        public TimeSpan ReadInt32_ms()
+        {
+            return TimeSpan.FromMilliseconds(ReadInt32());
+        }
+
+        /// <summary>
+        /// Reads a 4-byte signed integer from the current stream and advances the current position of the stream by four bytes.
+        /// The integer is then presented as time in seconds. If value is -1, a null is returned instead.
+        /// </summary>
+        /// <returns>A TimeSpan converted from the integer. Null if the read value is -1.</returns>
+        public TimeSpan? ReadInt32_sn()
+        {
+            var time = ReadInt32();
+            if (time < 0)
+                return null;
+            return TimeSpan.FromSeconds(time);
+        }
+
+        /// <summary>
+        /// Reads a 4-byte signed integer from the current stream and advances the current position of the stream by four bytes.
+        /// The integer is then presented as time in milliseconds. If value is -1, a null is returned instead.
+        /// </summary>
+        /// <returns>A TimeSpan converted from the integer. Null if the read value is -1.</returns>
+        public TimeSpan? ReadInt32_msn()
+        {
+            var time = ReadInt32();
+            if (time < 0)
+                return null;
+            return TimeSpan.FromMilliseconds(time);
+        }
+
+        /// <summary>
+        /// Reads a 4-byte floating point value from the current stream and advances the current position of the stream by four bytes.
+        /// The floating point value is then presented as time in seconds.
+        /// </summary>
+        /// <returns>A TimeSpan converted from the floating point value.</returns>
+        public TimeSpan ReadSingle_s()
+        {
+            return TimeSpan.FromSeconds(ReadSingle());
+        }
+
+        /// <summary>
+        /// Reads a 4-byte floating point value from the current stream and advances the current position of the stream by four bytes.
+        /// The floating point value is then presented as time in milliseconds.
+        /// </summary>
+        /// <returns>A TimeSpan converted from the floating point value.</returns>
+        public TimeSpan ReadSingle_ms()
+        {
+            return TimeSpan.FromMilliseconds(ReadSingle());
+        }
+
+        /// <summary>
+        /// Reads a 4-byte floating point value from the current stream and advances the current position of the stream by four bytes.
+        /// The floating point value is then presented as time in seconds. If value is -1, a null is returned instead.
+        /// </summary>
+        /// <returns>A TimeSpan converted from the floating point value. Null if the read value is -1.</returns>
+        public TimeSpan? ReadSingle_sn()
+        {
+            var time = ReadSingle();
+            if (time < 0)
+                return null;
+            return TimeSpan.FromSeconds(time);
+        }
+
+        /// <summary>
+        /// Reads a 4-byte floating point value from the current stream and advances the current position of the stream by four bytes.
+        /// The floating point value is then presented as time in milliseconds. If value is -1, a null is returned instead.
+        /// </summary>
+        /// <returns>A TimeSpan converted from the floating point value. Null if the read value is -1.</returns>
+        public TimeSpan? ReadSingle_msn()
+        {
+            var time = ReadSingle();
+            if (time < 0)
+                return null;
+            return TimeSpan.FromMilliseconds(time);
+        }
+
+        /// <summary>
         /// First reads an <see cref="int"/> representing the length, then reads the sequence of bytes.
         /// </summary>
         /// <exception cref="ArgumentException"/>
@@ -379,6 +471,66 @@ namespace GBX.NET
             return ReadArray(ReadInt32(), forLoop);
         }
 
+        public IList<T> ReadList<T>(int length, Func<int, T> forLoop)
+        {
+            var result = new List<T>(length);
+
+            for (var i = 0; i < length; i++)
+                result.Add(forLoop.Invoke(i));
+
+            return result;
+        }
+
+        public IList<T> ReadList<T>(Func<int, T> forLoop)
+        {
+            return ReadList(ReadInt32(), forLoop);
+        }
+
+        public IList<T> ReadList<T>(int length, Func<T> forLoop)
+        {
+            var result = new List<T>(length);
+
+            for (var i = 0; i < length; i++)
+                result.Add(forLoop.Invoke());
+
+            return result;
+        }
+
+        public IList<T> ReadList<T>(Func<T> forLoop)
+        {
+            return ReadList(ReadInt32(), forLoop);
+        }
+
+        public IList<T> ReadList<T>(int length, Func<int, GameBoxReader, T> forLoop)
+        {
+            var result = new List<T>(length);
+
+            for (var i = 0; i < length; i++)
+                result.Add(forLoop.Invoke(i, this));
+
+            return result;
+        }
+
+        public IList<T> ReadList<T>(Func<int, GameBoxReader, T> forLoop)
+        {
+            return ReadList(ReadInt32(), forLoop);
+        }
+
+        public IList<T> ReadList<T>(int length, Func<GameBoxReader, T> forLoop)
+        {
+            var result = new List<T>(length);
+
+            for (var i = 0; i < length; i++)
+                result.Add(forLoop.Invoke(this));
+
+            return result;
+        }
+
+        public IList<T> ReadList<T>(Func<GameBoxReader, T> forLoop)
+        {
+            return ReadList(ReadInt32(), forLoop);
+        }
+
         /// <summary>
         /// Reads values in a dictionary kind (first key, then value). For node dictionaries, use the <see cref="ReadNodeDictionary{TKey, TValue}"/> method for better performance.
         /// </summary>
@@ -459,14 +611,6 @@ namespace GBX.NET
         {
             var bytes = ReadBytes(3);
             return (bytes[0], bytes[1], bytes[2]);
-        }
-
-        public TimeSpan? ReadTimeSpan()
-        {
-            var time = ReadInt32();
-            if (time < 0)
-                return null;
-            return TimeSpan.FromMilliseconds(time);
         }
 
         public (Vec3 position, Quaternion rotation, float speed, Vec3 velocity) ReadTransform()

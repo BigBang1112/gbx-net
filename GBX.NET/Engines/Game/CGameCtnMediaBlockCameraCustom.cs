@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace GBX.NET.Engines.Game
 {
@@ -6,18 +7,24 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block (0x030A2000)
     /// </summary>
     [Node(0x030A2000)]
-    public class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera
+    public class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasKeys
     {
         #region Fields
 
-        private List<Key> keys = new List<Key>();
+        private IList<Key> keys = new List<Key>();
 
         #endregion
 
         #region Properties
 
+        IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+        {
+            get => keys.Cast<CGameCtnMediaBlock.Key>();
+            set => keys = value.Cast<Key>().ToList();
+        }
+
         [NodeMember]
-        public List<Key> Keys
+        public IList<Key> Keys
         {
             get => keys;
             set => keys = value;
@@ -39,7 +46,7 @@ namespace GBX.NET.Engines.Game
             {
                 rw.List(ref n.keys, r => new Key()
                 {
-                    Time = r.ReadSingle(),
+                    Time = r.ReadSingle_s(),
                     U00X01 = r.ReadInt32(), // 1
                     U00X02 = r.ReadInt32(), // 0
                     U00X03 = r.ReadInt32(), // 0
@@ -58,7 +65,7 @@ namespace GBX.NET.Engines.Game
                 },
                 (x, w) =>
                 {
-                    w.Write(x.Time);
+                    w.WriteSingle_s(x.Time);
                     w.Write(x.U00X01.GetValueOrDefault(1));
                     w.Write(x.U00X02.GetValueOrDefault());
                     w.Write(x.U00X03.GetValueOrDefault());
@@ -92,7 +99,7 @@ namespace GBX.NET.Engines.Game
             {
                 rw.List(ref n.keys, r => new Key()
                 {
-                    Time = r.ReadSingle(),
+                    Time = r.ReadSingle_s(),
                     U00X01 = r.ReadInt32(), // 1
                     U00X02 = r.ReadInt32(), // 0
                     U00X03 = r.ReadInt32(), // 0
@@ -109,7 +116,7 @@ namespace GBX.NET.Engines.Game
                 },
                 (x, w) =>
                 {
-                    w.Write(x.Time);
+                    w.WriteSingle_s(x.Time);
                     w.Write(x.U00X01.GetValueOrDefault(1));
                     w.Write(x.U00X02.GetValueOrDefault());
                     w.Write(x.U00X03.GetValueOrDefault());
@@ -141,7 +148,7 @@ namespace GBX.NET.Engines.Game
             {
                 rw.List(ref n.keys, r => new Key()
                 {
-                    Time = r.ReadSingle(),
+                    Time = r.ReadSingle_s(),
                     U00X01 = r.ReadInt32(), // 1
                     U00X02 = r.ReadInt32(), // 0
                     U00X03 = r.ReadInt32(), // 0
@@ -158,7 +165,7 @@ namespace GBX.NET.Engines.Game
                 },
                 (x, w) =>
                 {
-                    w.Write(x.Time);
+                    w.WriteSingle_s(x.Time);
                     w.Write(x.U00X01.GetValueOrDefault(1));
                     w.Write(x.U00X02.GetValueOrDefault());
                     w.Write(x.U00X03.GetValueOrDefault());
@@ -184,7 +191,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnMediaBlockCameraCustom 0x006 chunk (ManiaPlanet)
         /// </summary>
         [Chunk(0x030A2006, "ManiaPlanet")]
-        public class Chunk030A2006 : Chunk<CGameCtnMediaBlockCameraCustom>
+        public class Chunk030A2006 : Chunk<CGameCtnMediaBlockCameraCustom>, IVersionable
         {
             private int version = 3;
 
@@ -200,7 +207,7 @@ namespace GBX.NET.Engines.Game
 
                 rw.List(ref n.keys, r => new Key()
                 {
-                    Time = r.ReadSingle(),
+                    Time = r.ReadSingle_s(),
                     U00X01 = r.ReadInt32(), // 1
                     AnchorRot = r.ReadBoolean(),
                     Anchor = r.ReadInt32(), // -1 if not set, 0 for local player
@@ -234,7 +241,7 @@ namespace GBX.NET.Engines.Game
                 },
                 (x, w) =>
                 {
-                    w.Write(x.Time);
+                    w.WriteSingle_s(x.Time);
                     w.Write(x.U00X01.GetValueOrDefault());
                     w.Write(x.AnchorRot);
                     w.Write(x.Anchor);
@@ -292,35 +299,35 @@ namespace GBX.NET.Engines.Game
             public bool AnchorVis { get; set; }
             public bool AnchorRot { get; set; }
 
-            public int? U00X01 { get; set; }
-            public int? U00X02 { get; set; }
-            public int? U00X03 { get; set; }
-            public int? U00X04 { get; set; }
-            public int? U00X05 { get; set; }
-            public int? U00X06 { get; set; }
-            public int? U00X07 { get; set; }
-            public float? U00108 { get; set; }
-            public float? U00109 { get; set; }
-            public float? U00110 { get; set; }
-            public float? U00111 { get; set; }
-            public float? U00112 { get; set; }
+            public int? U00X01;
+            public int? U00X02;
+            public int? U00X03;
+            public int? U00X04;
+            public int? U00X05;
+            public int? U00X06;
+            public int? U00X07;
+            public float? U00108;
+            public float? U00109;
+            public float? U00110;
+            public float? U00111;
+            public float? U00112;
 
-            public float? U00605 { get; set; }
-            public float? U00606 { get; set; }
-            public float? U00607 { get; set; }
-            public float? U00608 { get; set; }
-            public float? U00609 { get; set; }
-            public float? U00610 { get; set; }
-            public float? U00611 { get; set; }
-            public float? U00612 { get; set; }
-            public float? U00613 { get; set; }
-            public float? U00614 { get; set; }
-            public float? U00615 { get; set; }
-            public float? U00616 { get; set; }
-            public float? U00617 { get; set; }
-            public float? U00618 { get; set; }
-            public float? U00619 { get; set; }
-            public float? U00620 { get; set; }
+            public float? U00605;
+            public float? U00606;
+            public float? U00607;
+            public float? U00608;
+            public float? U00609;
+            public float? U00610;
+            public float? U00611;
+            public float? U00612;
+            public float? U00613;
+            public float? U00614;
+            public float? U00615;
+            public float? U00616;
+            public float? U00617;
+            public float? U00618;
+            public float? U00619;
+            public float? U00620;
         }
 
         #endregion

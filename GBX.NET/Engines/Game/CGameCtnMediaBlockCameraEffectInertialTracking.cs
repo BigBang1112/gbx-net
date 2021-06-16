@@ -1,27 +1,59 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System;
+
+namespace GBX.NET.Engines.Game
 {
     /// <summary>
     /// MediaTracker block - Camera effect inetrial tracking
     /// </summary>
     [Node(0x03166000)]
-    public class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMediaBlockCameraEffect
+    public class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMediaBlockCameraEffect, CGameCtnMediaBlock.IHasTwoKeys
     {
+        #region Fields
+
+        private TimeSpan start;
+        private TimeSpan end = TimeSpan.FromSeconds(3);
+        private bool tracking;
+        private bool autoFocus;
+        private bool autoZoom;
+
+        #endregion
+
         #region Properties
 
         [NodeMember]
-        public float Start { get; set; }
+        public TimeSpan Start
+        {
+            get => start;
+            set => start = value;
+        }
 
         [NodeMember]
-        public float End { get; set; }
+        public TimeSpan End
+        {
+            get => end;
+            set => end = value;
+        }
 
         [NodeMember]
-        public bool Tracking { get; set; }
+        public bool Tracking
+        {
+            get => tracking;
+            set => tracking = value;
+        }
 
         [NodeMember]
-        public bool AutoFocus { get; set; }
+        public bool AutoFocus
+        {
+            get => autoFocus;
+            set => autoFocus = value;
+        }
 
         [NodeMember]
-        public bool AutoZoom { get; set; }
+        public bool AutoZoom
+        {
+            get => autoZoom;
+            set => autoZoom = value;
+        }
 
         #endregion
 
@@ -33,18 +65,24 @@
         /// CGameCtnMediaBlockCameraEffectInertialTracking 0x000 chunk
         /// </summary>
         [Chunk(0x03166000)]
-        public class Chunk03166000 : Chunk<CGameCtnMediaBlockCameraEffectInertialTracking>
+        public class Chunk03166000 : Chunk<CGameCtnMediaBlockCameraEffectInertialTracking>, IVersionable
         {
-            public int Version { get; set; }
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CGameCtnMediaBlockCameraEffectInertialTracking n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                n.Start = rw.Single(n.Start);
-                n.End = rw.Single(n.End);
-                n.Tracking = rw.Boolean(n.Tracking);
-                n.AutoZoom = rw.Boolean(n.AutoZoom);
-                n.AutoFocus = rw.Boolean(n.AutoFocus);
+                rw.Int32(ref version);
+                rw.Single_s(ref n.start);
+                rw.Single_s(ref n.end);
+                rw.Boolean(ref n.tracking);
+                rw.Boolean(ref n.autoZoom);
+                rw.Boolean(ref n.autoFocus);
             }
         }
 

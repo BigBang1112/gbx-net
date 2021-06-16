@@ -49,19 +49,19 @@ namespace GBX.NET
         /// <param name="writer">Writer to use.</param>
         public GameBoxReaderWriter(GameBoxWriter writer) => Writer = writer;
 
-        public T[] Array<T>(T[] array, int count)
+        public T[] Array<T>(T[] array, int count) where T : struct
         {
             if (Reader != null) return Reader.ReadArray<T>(count);
             else if (Writer != null) Writer.Write(array);
             return array;
         }
 
-        public void Array<T>(ref T[] array, int count)
+        public void Array<T>(ref T[] array, int count) where T : struct
         {
             array = Array(array, count);
         }
 
-        public T[] Array<T>(T[] array)
+        public T[] Array<T>(T[] array) where T : struct
         {
             if (Reader != null) return Reader.ReadArray<T>();
             else if (Writer != null)
@@ -72,7 +72,7 @@ namespace GBX.NET
             return array;
         }
 
-        public void Array<T>(ref T[] array)
+        public void Array<T>(ref T[] array) where T : struct
         {
             array = Array(array);
         }
@@ -135,12 +135,12 @@ namespace GBX.NET
             array = Array(array, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
 
-        public IEnumerable<T> Enumerable<T>(IEnumerable<T> enumerable) where T : CMwNod
+        public IEnumerable<T> Enumerable<T>(IEnumerable<T> enumerable) where T : struct
         {
             return Array(enumerable?.ToArray());
         }
 
-        public void Enumerable<T>(ref IEnumerable<T> enumerable) where T : CMwNod
+        public void Enumerable<T>(ref IEnumerable<T> enumerable) where T : struct
         {
             enumerable = Enumerable(enumerable);
         }
@@ -195,64 +195,76 @@ namespace GBX.NET
             enumerable = Enumerable(enumerable, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
 
-        public List<T> List<T>(List<T> list) where T : CMwNod
+        public IList<T> List<T>(IList<T> list) where T : struct
         {
-            return Enumerable(list).ToList();
+            return Array(list?.ToArray());
         }
 
-        public void List<T>(ref List<T> list) where T : CMwNod
+        public void List<T>(ref IList<T> list) where T : struct
         {
             list = List(list);
         }
 
-        public List<T> List<T>(List<T> list, Func<int, T> forLoopRead, Action<T> forLoopWrite)
+        public IList<T> List<T>(IList<T> list, Func<int, T> forLoopRead, Action<T> forLoopWrite)
         {
-            return Enumerable(list, forLoopRead, forLoopWrite).ToList();
+            if (Reader != null) return Reader.ReadList(forLoopRead);
+            else if (Writer != null) Writer.Write(list, forLoopWrite);
+            return list;
         }
 
-        public void List<T>(ref List<T> list, Func<int, T> forLoopRead, Action<T> forLoopWrite)
+        public void List<T>(ref IList<T> list, Func<int, T> forLoopRead, Action<T> forLoopWrite)
         {
             list = List(list, forLoopRead, forLoopWrite);
         }
 
-        public List<T> List<T>(List<T> list, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        public IList<T> List<T>(IList<T> list, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
         {
-            return Enumerable(list, forLoopRead, forLoopWrite).ToList();
+            if (Reader != null) return Reader.ReadList(forLoopRead);
+            else if (Writer != null) Writer.Write(list, forLoopWrite);
+            return list;
         }
 
-        public void List<T>(ref List<T> list, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        public void List<T>(ref IList<T> list, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
         {
             list = List(list, forLoopRead, forLoopWrite);
         }
 
-        public List<T> List<T>(List<T> list, Func<T> forLoopRead, Action<T> forLoopWrite)
+        public IList<T> List<T>(IList<T> list, Func<T> forLoopRead, Action<T> forLoopWrite)
         {
-            return Enumerable(list, forLoopRead, forLoopWrite).ToList();
+            if (Reader != null) return Reader.ReadList(forLoopRead);
+            else if (Writer != null) Writer.Write(list, forLoopWrite);
+            return list;
         }
 
-        public void List<T>(ref List<T> list, Func<T> forLoopRead, Action<T> forLoopWrite)
+        public void List<T>(ref IList<T> list, Func<T> forLoopRead, Action<T> forLoopWrite)
         {
             list = List(list, forLoopRead, forLoopWrite);
         }
 
-        public List<T> List<T>(List<T> list, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        public IList<T> List<T>(IList<T> list, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
         {
-            return Enumerable(list, forLoopRead, forLoopWrite).ToList();
+            if (Reader != null) return Reader.ReadList(forLoopRead);
+            else if (Writer != null) Writer.Write(list, forLoopWrite);
+            return list;
         }
 
-        public void List<T>(ref List<T> list, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        public void List<T>(ref IList<T> list, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
         {
             list = List(list, forLoopRead, forLoopWrite);
         }
 
-        public List<T> ListNode<T>(List<T> list) where T : CMwNod
+        public IList<T> ListNode<T>(IList<T> list) where T : CMwNod
         {
-            return List(list, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
+            return List(list,
+                r => r.ReadNodeRef<T>(),
+                (x, w) => w.Write(x));
         }
 
-        public void ListNode<T>(ref List<T> list) where T : CMwNod
+        public void ListNode<T>(ref IList<T> list) where T : CMwNod
         {
-            list = List(list, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
+            list = List(list,
+                r => r.ReadNodeRef<T>(),
+                (x, w) => w.Write(x));
         }
 
         public Dictionary<TKey, TValue> Dictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
@@ -462,6 +474,74 @@ namespace GBX.NET
         public void Int32()
         {
             _ = Int32(default);
+        }
+
+        public TimeSpan Int32_s(TimeSpan variable)
+        {
+            if (Reader != null) return Reader.ReadInt32_s();
+            else if (Writer != null) Writer.WriteInt32_s(variable);
+            return variable;
+        }
+
+        public void Int32_s(ref TimeSpan variable)
+        {
+            variable = Int32_s(variable);
+        }
+
+        public TimeSpan Int32_ms(TimeSpan variable)
+        {
+            if (Reader != null) return Reader.ReadInt32_ms();
+            else if (Writer != null) Writer.WriteInt32_ms(variable);
+            return variable;
+        }
+
+        public void Int32_ms(ref TimeSpan variable)
+        {
+            variable = Int32_ms(variable);
+        }
+
+        public TimeSpan? Int32_sn(TimeSpan? variable)
+        {
+            if (Reader != null) return Reader.ReadInt32_sn();
+            else if (Writer != null) Writer.WriteInt32_sn(variable);
+            return variable;
+        }
+
+        public void Int32_sn(ref TimeSpan? variable)
+        {
+            variable = Int32_sn(variable);
+        }
+
+        public TimeSpan? Int32_msn(TimeSpan? variable)
+        {
+            if (Reader != null) return Reader.ReadInt32_msn();
+            else if (Writer != null) Writer.WriteInt32_msn(variable);
+            return variable;
+        }
+
+        public void Int32_msn(ref TimeSpan? variable)
+        {
+            variable = Int32_msn(variable);
+        }
+
+        public void Int32_s()
+        {
+            _ = Int32_s(default);
+        }
+
+        public void Int32_ms()
+        {
+            _ = Int32_ms(default);
+        }
+
+        public void Int32_sn()
+        {
+            _ = Int32_sn(default);
+        }
+
+        public void Int32_msn()
+        {
+            _ = Int32_msn(default);
         }
 
         public long Int64(long variable)
@@ -729,6 +809,74 @@ namespace GBX.NET
             _ = Single(default);
         }
 
+        public TimeSpan Single_s(TimeSpan variable)
+        {
+            if (Reader != null) return Reader.ReadSingle_s();
+            else if (Writer != null) Writer.WriteSingle_s(variable);
+            return variable;
+        }
+
+        public void Single_s(ref TimeSpan variable)
+        {
+            variable = Single_s(variable);
+        }
+
+        public TimeSpan Single_ms(TimeSpan variable)
+        {
+            if (Reader != null) return Reader.ReadSingle_ms();
+            else if (Writer != null) Writer.WriteSingle_ms(variable);
+            return variable;
+        }
+
+        public void Single_ms(ref TimeSpan variable)
+        {
+            variable = Single_ms(variable);
+        }
+
+        public TimeSpan? Single_sn(TimeSpan? variable)
+        {
+            if (Reader != null) return Reader.ReadSingle_sn();
+            else if (Writer != null) Writer.WriteSingle_sn(variable);
+            return variable;
+        }
+
+        public void Single_sn(ref TimeSpan? variable)
+        {
+            variable = Single_sn(variable);
+        }
+
+        public TimeSpan? Single_msn(TimeSpan? variable)
+        {
+            if (Reader != null) return Reader.ReadSingle_msn();
+            else if (Writer != null) Writer.WriteSingle_msn(variable);
+            return variable;
+        }
+
+        public void Single_msn(ref TimeSpan? variable)
+        {
+            variable = Single_msn(variable);
+        }
+
+        public void Single_s()
+        {
+            _ = Single_s(default);
+        }
+
+        public void Single_ms()
+        {
+            _ = Single_ms(default);
+        }
+
+        public void Single_sn()
+        {
+            _ = Single_sn(default);
+        }
+
+        public void Single_msn()
+        {
+            _ = Single_msn(default);
+        }
+
         public string String(string variable, StringLengthPrefix readPrefix)
         {
             if (Reader != null) return Reader.ReadString(readPrefix);
@@ -798,33 +946,6 @@ namespace GBX.NET
         public void Vec3()
         {
             _ = Vec3(default);
-        }
-
-        public TimeSpan? TimeSpan32(TimeSpan? variable)
-        {
-            if (Reader != null) return Reader.ReadTimeSpan();
-            else if (Writer != null) Writer.Write(variable);
-            return variable;
-        }
-
-        public void TimeSpan32(ref TimeSpan? variable)
-        {
-            variable = TimeSpan32(variable);
-        }
-
-        public TimeSpan TimeSpan32(TimeSpan variable, TimeSpan def)
-        {
-            return TimeSpan32(new TimeSpan?(variable)).GetValueOrDefault(def);
-        }
-
-        public void TimeSpan32(ref TimeSpan variable, TimeSpan def)
-        {
-            variable = TimeSpan32(variable, def);
-        }
-
-        public void TimeSpan32()
-        {
-            _ = TimeSpan32(default);
         }
 
         public void EnumByte<T>(ref T variable) where T : struct, Enum

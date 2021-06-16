@@ -9,7 +9,7 @@ namespace GBX.NET.Engines.Game
         #region Fields
 
         private string name;
-        private List<CGameCtnMediaTrack> tracks;
+        private IList<CGameCtnMediaTrack> tracks;
         private bool stopWhenRespawn;
         private bool stopWhenLeave;
         private int localPlayerClipEntIndex;
@@ -32,7 +32,7 @@ namespace GBX.NET.Engines.Game
         /// List of MediaTracker tracks.
         /// </summary>
         [NodeMember]
-        public List<CGameCtnMediaTrack> Tracks
+        public IList<CGameCtnMediaTrack> Tracks
         {
             get => tracks;
             set => tracks = value;
