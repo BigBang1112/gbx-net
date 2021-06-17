@@ -9,7 +9,7 @@ using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Game
 {
-    [Node(0x03093000)]
+    [Node(0x03093000), WritingNotSupported]
     public class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     {
         #region Fields

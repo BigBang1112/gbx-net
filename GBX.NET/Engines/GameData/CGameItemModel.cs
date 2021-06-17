@@ -3,7 +3,7 @@ using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.GameData
 {
-    [Node(0x2E002000)]
+    [Node(0x2E002000), WritingNotSupported]
     public class CGameItemModel : CGameCtnCollector
     {
         #region Enums

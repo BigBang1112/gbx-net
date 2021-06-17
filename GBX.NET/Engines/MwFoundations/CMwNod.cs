@@ -304,6 +304,11 @@ namespace GBX.NET.Engines.MwFoundations
 
             int counter = 0;
 
+            var type = GetType();
+            var writingNotSupported = type.GetCustomAttribute<WritingNotSupportedAttribute>() != null;
+            if (writingNotSupported)
+                throw new NotSupportedException($"Writing of {type.Name} is not supported.");
+
             foreach (Chunk chunk in Chunks)
             {
                 counter++;
@@ -493,31 +498,37 @@ namespace GBX.NET.Engines.MwFoundations
             _ = gbxOfType.GetMethod("Save", types).Invoke(gbx, parameters);
         }
 
+        /// <exception cref="NotSupportedException"/>
         public void Save()
         {
             Save(new Type[0], new object[0]);
         }
 
+        /// <exception cref="NotSupportedException"/>
         public void Save(IDRemap remap)
         {
             Save(new Type[] { typeof(IDRemap) }, new object[] { remap });
         }
 
+        /// <exception cref="NotSupportedException"/>
         public void Save(string fileName)
         {
             Save(new Type[] { typeof(string) }, new object[] { fileName });
         }
 
+        /// <exception cref="NotSupportedException"/>
         public void Save(string fileName, IDRemap remap)
         {
             Save(new Type[] { typeof(string), typeof(IDRemap) }, new object[] { fileName, remap });
         }
 
+        /// <exception cref="NotSupportedException"/>
         public void Save(Stream stream)
         {
             Save(new Type[] { typeof(Stream) }, new object[] { stream });
         }
 
+        /// <exception cref="NotSupportedException"/>
         public void Save(Stream stream, IDRemap remap)
         {
             Save(new Type[] { typeof(Stream), typeof(IDRemap) }, new object[] { stream, remap });

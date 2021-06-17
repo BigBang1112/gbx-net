@@ -8,7 +8,7 @@ namespace GBX.NET.Engines.Game
     /// <summary>
     /// Macroblock (0x0310D000)
     /// </summary>
-    [Node(0x0310D000)]
+    [Node(0x0310D000), WritingNotSupported]
     public class CGameCtnMacroBlockInfo : CGameCtnCollector
     {
         public CGameCtnBlock[] Blocks { get; set; }
