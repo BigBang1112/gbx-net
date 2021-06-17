@@ -9,7 +9,7 @@ namespace GBX.NET.Engines.Game
         #region Fields
 
         private string name;
-        private IList<CGameCtnMediaTrack> tracks;
+        private IList<CGameCtnMediaTrack> tracks = new List<CGameCtnMediaTrack>();
         private bool stopWhenRespawn;
         private bool stopWhenLeave;
         private int localPlayerClipEntIndex;

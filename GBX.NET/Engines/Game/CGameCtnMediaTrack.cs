@@ -10,7 +10,7 @@ namespace GBX.NET.Engines.Game
         #region Fields
 
         private string name;
-        private IList<CGameCtnMediaBlock> blocks;
+        private IList<CGameCtnMediaBlock> blocks = new List<CGameCtnMediaBlock>();
         private bool isKeepPlaying = true;
         private bool isCycling;
         private bool isReadOnly;
