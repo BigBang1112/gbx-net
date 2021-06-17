@@ -41,7 +41,7 @@ namespace GBX.NET.Engines.Plug
                         var objects = gbxr.ReadArray<object>(r1 =>
                         {
                             var nodeId = r1.ReadUInt32();
-                            Names.TryGetValue(nodeId, out string nodeName);
+                            NodeCacheManager.Names.TryGetValue(nodeId, out string nodeName);
 
                             return new
                             {
@@ -67,7 +67,7 @@ namespace GBX.NET.Engines.Plug
                                 if (Version >= 4)
                                 {
                                     clas = r1.ReadUInt32();
-                                    Names.TryGetValue(clas.Value, out clasName);
+                                    NodeCacheManager.Names.TryGetValue(clas.Value, out clasName);
                                 }
 
                                 return new

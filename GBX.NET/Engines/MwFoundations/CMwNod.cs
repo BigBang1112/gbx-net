@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -12,9 +10,6 @@ namespace GBX.NET.Engines.MwFoundations
     [Node(0x01001000)]
     public class CMwNod
     {
-        public static Dictionary<uint, string> Names { get; }
-        public static Dictionary<uint, uint> Mappings { get; } // key: older, value: newer
-
         [IgnoreDataMember]
         public GameBox GBX { get; internal set; }
 
@@ -42,16 +37,11 @@ namespace GBX.NET.Engines.MwFoundations
         {
             get
             {
-                if (Names.TryGetValue(ID, out string name))
+                if (NodeCacheManager.Names.TryGetValue(ID, out string name))
                     return name;
                 return GetType().FullName.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::");
             }
         }
-
-        public static Dictionary<uint, Type> AvailableClasses { get; }
-        public static Dictionary<Type, List<uint>> AvailableInheritanceClasses { get; }
-        public static Dictionary<Type, Dictionary<uint, Type>> AvailableChunkClasses { get; }
-        public static Dictionary<Type, Dictionary<uint, Type>> AvailableHeaderChunkClasses { get; }
 
         internal CMwNod()
         {
@@ -89,8 +79,8 @@ namespace GBX.NET.Engines.MwFoundations
 
             classID = Remap(classID.Value);
 
-            if (!AvailableClasses.TryGetValue(classID.Value, out Type type))
-                throw new NotImplementedException($"Node ID 0x{classID.Value:X8} is not implemented. ({Names.Where(x => x.Key == Chunk.Remap(classID.Value)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
+            if (!NodeCacheManager.AvailableClasses.TryGetValue(classID.Value, out Type type))
+                throw new NotImplementedException($"Node ID 0x{classID.Value:X8} is not implemented. ({NodeCacheManager.Names.Where(x => x.Key == Chunk.Remap(classID.Value)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
 
             var node = (T)Activator.CreateInstance(type);
 
@@ -145,8 +135,8 @@ namespace GBX.NET.Engines.MwFoundations
 
                 Type chunkClass = null;
 
-                var reflected = ((chunkRemapped & 0xFFFFF000) == node.ID || AvailableInheritanceClasses[type].Contains(chunkRemapped & 0xFFFFF000))
-                    && (AvailableChunkClasses[type].TryGetValue(chunkRemapped, out chunkClass) || AvailableChunkClasses[type].TryGetValue(chunkID & 0xFFF, out chunkClass));
+                var reflected = ((chunkRemapped & 0xFFFFF000) == node.ID || NodeCacheManager.AvailableInheritanceClasses[type].Contains(chunkRemapped & 0xFFFFF000))
+                    && (NodeCacheManager.AvailableChunkClasses[type].TryGetValue(chunkRemapped, out chunkClass) || NodeCacheManager.AvailableChunkClasses[type].TryGetValue(chunkID & 0xFFF, out chunkClass));
 
                 var skippable = reflected && chunkClass.BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>);
                 
@@ -166,9 +156,9 @@ namespace GBX.NET.Engines.MwFoundations
                                 Log.Write($"~ {logChunkError}", ConsoleColor.Red);
 
                             throw new Exception($"Wrong chunk format or unskippable chunk: 0x{chunkID:X8} (" +
-                                $"{Names.Where(x => x.Key == Chunk.Remap(chunkID & 0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})" +
+                                $"{NodeCacheManager.Names.Where(x => x.Key == Chunk.Remap(chunkID & 0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})" +
                                 $"\nPrevious chunk: 0x{previousChunk ?? 0:X8} (" +
-                                $"{(previousChunk.HasValue ? (Names.Where(x => x.Key == Chunk.Remap(previousChunk.Value & 0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class") : "not a class")})");
+                                $"{(previousChunk.HasValue ? (NodeCacheManager.Names.Where(x => x.Key == Chunk.Remap(previousChunk.Value & 0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class") : "not a class")})");
 
                             /* Usually breaks in the current state and causes confusion
                              * 
@@ -380,196 +370,6 @@ namespace GBX.NET.Engines.MwFoundations
                 Log.Write($"~ {logNodeCompletion}", ConsoleColor.Green);
         }
 
-        private static void DefineNames()
-        {
-            var watch = Stopwatch.StartNew();
-
-            using (StringReader reader = new StringReader(Resources.ClassID))
-            {
-                var en = "";
-                var engineName = "";
-
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    var ch = "000";
-
-                    var className = "";
-
-                    if (line.StartsWith("  "))
-                    {
-                        var cl = line.Substring(2, 3);
-                        if (line.Length - 6 > 0) className = line.Substring(6);
-
-                        var classIDString = $"{en}{cl}{ch}";
-
-                        if (uint.TryParse(classIDString, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint classID))
-                        {
-                            Names[classID] = engineName + "::" + className;
-                        }
-                        else
-                        {
-                            Debug.WriteLine($"Invalid class ID {classIDString}, skipping");
-                        }
-                    }
-                    else
-                    {
-                        en = line.Substring(0, 2);
-                        if (line.Length - 3 > 0) engineName = line.Substring(3);
-                    }
-                }
-            }
-
-            Debug.WriteLine("Classes named in " + watch.Elapsed.TotalMilliseconds + "ms");
-        }
-
-        private static void DefineMappings()
-        {
-            var watch = Stopwatch.StartNew();
-
-            using (StringReader reader = new StringReader(Resources.ClassIDMappings))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    var valueKey = line.Split(new string[] { " -> " }, StringSplitOptions.None);
-                    if (valueKey.Length == 2)
-                    {
-                        if (uint.TryParse(valueKey[0], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint key)
-                        && uint.TryParse(valueKey[1], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint value))
-                        {
-                            if (Mappings.ContainsValue(key)) // Virtual Skipper solution
-                                Mappings[Mappings.FirstOrDefault(x => x.Value == key).Key] = value;
-                            Mappings[key] = value;
-                        }
-                    }
-                }
-            }
-
-            Debug.WriteLine("Mappings defined in " + watch.Elapsed.TotalMilliseconds + "ms");
-        }
-
-        private static void DefineTypes()
-        {
-            var watch = Stopwatch.StartNew();
-
-            var assembly = Assembly.GetExecutingAssembly();
-
-            IEnumerable<Type> types;
-
-            try
-            {
-                types = assembly.GetTypes();
-            }
-            catch (ReflectionTypeLoadException e)
-            {
-                types = e.Types;
-            }
-
-            var engineRelatedTypes = types.Where(t =>
-                 t?.IsClass == true
-              && t.Namespace?.StartsWith("GBX.NET.Engines") == true);
-
-            var availableClassesByType = new Dictionary<Type, uint>();
-
-            foreach (var type in engineRelatedTypes)
-            {
-                if (type.IsSubclassOf(typeof(CMwNod)) || type == typeof(CMwNod)) // Engine types
-                {
-                    var id = type.GetCustomAttribute<NodeAttribute>()?.ID;
-
-                    if (id.HasValue)
-                    {
-                        AvailableClasses.Add(id.Value, type);
-                        availableClassesByType.Add(type, id.Value);
-                    }
-                    else
-                    {
-                        throw new Exception($"{type.Name} misses NodeAttribute.");
-                    }
-                }
-            }
-
-            var availableInheritanceTypes = new Dictionary<Type, List<Type>>();
-
-            foreach (var typePair in AvailableClasses)
-            {
-                var id = typePair.Key;
-                var type = typePair.Value;
-
-                List<uint> classes = new List<uint>();
-                List<Type> inheritedTypes = new List<Type>();
-
-                Type currentType = type.BaseType;
-
-                while (currentType != typeof(object))
-                {
-                    classes.Add(availableClassesByType[currentType]);
-                    inheritedTypes.Add(currentType);
-
-                    currentType = currentType.BaseType;
-                }
-
-                AvailableInheritanceClasses[type] = classes;
-                availableInheritanceTypes[type] = inheritedTypes;
-
-                var chunks = type.GetNestedTypes().Where(x => x.IsSubclassOf(typeof(Chunk)));
-
-                var availableChunkClasses = new Dictionary<uint, Type>();
-                var availableHeaderChunkClasses = new Dictionary<uint, Type>();
-
-                foreach (var chunk in chunks)
-                {
-                    var chunkAttribute = chunk.GetCustomAttribute<ChunkAttribute>();
-
-                    if (chunkAttribute == null)
-                        throw new Exception($"Chunk {chunk.FullName} doesn't have ChunkAttribute.");
-
-                    if (chunk.GetInterface(nameof(IHeaderChunk)) == null)
-                    {
-                        availableChunkClasses.Add(chunkAttribute.ID, chunk);
-                    }
-                    else
-                    {
-                        availableHeaderChunkClasses.Add(chunkAttribute.ID, chunk);
-                    }
-                }
-
-                AvailableChunkClasses.Add(type, availableChunkClasses);
-                AvailableHeaderChunkClasses.Add(type, availableHeaderChunkClasses);
-            }
-
-            foreach (var typePair in availableInheritanceTypes)
-            {
-                var mainType = typePair.Key;
-
-                foreach (var type in typePair.Value)
-                {
-                    foreach (var chunkType in AvailableChunkClasses[type])
-                    {
-                        AvailableChunkClasses[mainType][chunkType.Key] = chunkType.Value;
-                    }
-                }
-            }
-
-            Debug.WriteLine("Types defined in " + watch.Elapsed.TotalMilliseconds + "ms");
-        }
-
-        static CMwNod()
-        {
-            Names = new Dictionary<uint, string>();
-            Mappings = new Dictionary<uint, uint>();
-
-            AvailableClasses = new Dictionary<uint, Type>();
-            AvailableInheritanceClasses = new Dictionary<Type, List<uint>>();
-            AvailableChunkClasses = new Dictionary<Type, Dictionary<uint, Type>>();
-            AvailableHeaderChunkClasses = new Dictionary<Type, Dictionary<uint, Type>>();
-
-            DefineNames();
-            DefineMappings();
-            DefineTypes();
-        }
-
         public T GetChunk<T>() where T : Chunk
         {
             return Chunks.Get<T>();
@@ -725,7 +525,7 @@ namespace GBX.NET.Engines.MwFoundations
 
         public static uint Remap(uint id)
         {
-            if (Mappings.TryGetValue(id, out uint newerClassID))
+            if (NodeCacheManager.Mappings.TryGetValue(id, out uint newerClassID))
                 return newerClassID;
             return id;
         }

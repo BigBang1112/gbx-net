@@ -206,7 +206,7 @@ namespace GBX.NET
         {
             if (ID != typeof(T).GetCustomAttribute<NodeAttribute>().ID)
             {
-                if (!CMwNod.Names.TryGetValue(ID.Value, out string name))
+                if (!NodeCacheManager.Names.TryGetValue(ID.Value, out string name))
                     name = "unknown class";
                 throw new InvalidCastException($"GBX with ID 0x{ID:X8} ({name}) can't be casted to GameBox<{typeof(T).Name}>.");
             }
@@ -546,7 +546,7 @@ namespace GBX.NET
             {
                 GameBox gbx;
 
-                if (CMwNod.AvailableClasses.TryGetValue(header.ID.Value, out Type availableClass))
+                if (NodeCacheManager.AvailableClasses.TryGetValue(header.ID.Value, out Type availableClass))
                 {
                     var gbxType = typeof(GameBox<>).MakeGenericType(availableClass);
                     gbx = (GameBox)Activator.CreateInstance(gbxType, header);
@@ -1039,7 +1039,7 @@ namespace GBX.NET
             if (classID.HasValue)
             {
                 var modernID = classID.GetValueOrDefault();
-                if (CMwNod.Mappings.TryGetValue(classID.GetValueOrDefault(), out uint newerClassID))
+                if (NodeCacheManager.Mappings.TryGetValue(classID.GetValueOrDefault(), out uint newerClassID))
                     modernID = newerClassID;
 
                 Debug.WriteLine("GetGameBoxType: " + modernID.ToString("x8"));

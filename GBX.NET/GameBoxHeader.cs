@@ -105,13 +105,13 @@ namespace GBX.NET
                             var chunkId = Chunk.Remap(chunkInfo.Key);
                             var nodeId = chunkId & 0xFFFFF000;
 
-                            if (!CMwNod.AvailableClasses.TryGetValue(nodeId, out Type nodeType))
-                                Log.Write($"Node ID 0x{nodeId:X8} is not implemented. This occurs only in the header therefore it's not a fatal problem. ({CMwNod.Names.Where(x => x.Key == nodeId).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
+                            if (!NodeCacheManager.AvailableClasses.TryGetValue(nodeId, out Type nodeType))
+                                Log.Write($"Node ID 0x{nodeId:X8} is not implemented. This occurs only in the header therefore it's not a fatal problem. ({NodeCacheManager.Names.Where(x => x.Key == nodeId).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
 
                             var chunkTypes = new Dictionary<uint, Type>();
 
                             if (nodeType != null)
-                                CMwNod.AvailableHeaderChunkClasses.TryGetValue(nodeType, out chunkTypes);
+                                NodeCacheManager.AvailableHeaderChunkClasses.TryGetValue(nodeType, out chunkTypes);
 
                             var d = r.ReadBytes(chunkInfo.Value.Size);
                             Chunk chunk = null;

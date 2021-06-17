@@ -68,13 +68,13 @@ namespace GBX.NET
             switch(remap)
             {
                 case IDRemap.Latest:
-                    if (CMwNod.Mappings.TryGetValue(classPart, out uint newID))
+                    if (NodeCacheManager.Mappings.TryGetValue(classPart, out uint newID))
                         return newID + chunkPart;
                     return chunkID;
                 case IDRemap.TrackMania2006:
                     if (classPart == 0x03078000) // Not ideal solution
                         return 0x24061000 + chunkPart;
-                    return CMwNod.Mappings.LastOrDefault(x => x.Value == classPart).Key + chunkPart;
+                    return NodeCacheManager.Mappings.LastOrDefault(x => x.Value == classPart).Key + chunkPart;
                 default:
                     return chunkID;
             }
