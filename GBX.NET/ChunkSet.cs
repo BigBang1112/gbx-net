@@ -45,7 +45,7 @@ namespace GBX.NET
 
             T chunk = (T)Activator.CreateInstance(typeof(T));
             chunk.Node = Node;
-            chunk.GBX = Node.GBX;
+            chunk.GBX = Node?.GBX;
 
             if (chunk is ISkippableChunk s)
             {

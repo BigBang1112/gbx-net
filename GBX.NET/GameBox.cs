@@ -79,7 +79,7 @@ namespace GBX.NET
         /// Create a GameBox object based on an existing node. Useful for saving nodes to GBX files.
         /// </summary>
         /// <param name="node">Node to wrap.</param>
-        public GameBox(T node) : this(node, null)
+        public GameBox(T node) : this(node, new GameBoxHeaderInfo(node.ID))
         {
 
         }

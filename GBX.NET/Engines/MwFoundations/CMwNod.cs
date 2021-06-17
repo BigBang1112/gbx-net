@@ -485,7 +485,7 @@ namespace GBX.NET.Engines.MwFoundations
         private void Save(Type[] types, object[] parameters)
         {
             var type = GetType();
-            var gbxType = GBX.GetType();
+            var gbxType = GBX?.GetType();
             var gbxOfType = typeof(GameBox<>).MakeGenericType(type);
 
             GameBox gbx;
