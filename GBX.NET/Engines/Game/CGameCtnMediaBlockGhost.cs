@@ -10,7 +10,7 @@ namespace GBX.NET.Engines.Game
         #region Fields
 
         private TimeSpan start;
-        private TimeSpan end;
+        private TimeSpan end = TimeSpan.FromSeconds(3);
         private IList<Key> keys = new List<Key>();
         private CGameCtnGhost ghostModel;
         private float startOffset;
