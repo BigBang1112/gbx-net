@@ -569,8 +569,8 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 rw.Array(ref n.checkpoints,
-                    (i, r) => new Checkpoint(r.ReadInt32_ms(), r.ReadInt32()),
-                    (x, w) => { w.WriteInt32_ms(x.Time); w.Write(x.StuntsScore); }
+                    (i, r) => new Checkpoint(r.ReadInt32_msn(), r.ReadInt32()),
+                    (x, w) => { w.WriteInt32_msn(x.Time); w.Write(x.StuntsScore); }
                 );
             }
         }
@@ -1064,20 +1064,20 @@ namespace GBX.NET.Engines.Game
             /// <summary>
             /// Time of the checkpoint.
             /// </summary>
-            public TimeSpan Time { get; set; }
+            public TimeSpan? Time { get; set; }
 
             /// <summary>
             /// Amount of stunt points when reaching this checkpoint. This is very often 0 in TM2 replay.
             /// </summary>
             public int StuntsScore { get; set; }
 
-            public Checkpoint(TimeSpan time, int stuntsScore)
+            public Checkpoint(TimeSpan? time, int stuntsScore)
             {
                 Time = time;
                 StuntsScore = stuntsScore;
             }
 
-            public Checkpoint(TimeSpan time) : this(time, 0)
+            public Checkpoint(TimeSpan? time) : this(time, 0)
             {
 
             }
