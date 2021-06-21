@@ -6,6 +6,7 @@ using System.Diagnostics;
 using GBX.NET.Engines.TrackMania;
 using GBX.NET.Engines.Plug;
 using GBX.NET.Engines.MwFoundations;
+using System.Collections.Generic;
 
 namespace GBX.NET.Engines.Game
 {
@@ -231,6 +232,26 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunks<Chunk03093008, Chunk0309300F>();
                 game = value;
             }
+        }
+
+        #endregion
+
+        #region Methods
+
+        public IEnumerable<CGameCtnGhost> GetGhosts()
+        {
+            if (ghosts != null)
+                foreach (var ghost in ghosts)
+                    if (ghost != null)
+                        yield return ghost;
+
+            if (clip != null)
+                foreach (var track in clip.Tracks)
+                    if (track != null)
+                        foreach (var block in track.Blocks)
+                            if (block is CGameCtnMediaBlockGhost ghostBlock)
+                                if (ghostBlock.GhostModel != null)
+                                    yield return ghostBlock.GhostModel;
         }
 
         #endregion
