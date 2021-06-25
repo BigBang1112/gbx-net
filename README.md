@@ -108,83 +108,76 @@ Maps were selected from all kinds of Trackmania official campaigns picked by the
 
 ## Usage
 
+**Since GBX.NET 0.11.0, the base of parsing has been simplified.**
+
 To parse a GBX with a known type:
 
 ```cs
-var gbx = GameBox.Parse<CGameCtnChallenge>("MyMap.Map.Gbx");
-// Node data is available in gbx.MainNode
+var map = GameBox.ParseNode<CGameCtnChallenge>("MyMap.Map.Gbx");
 ```
 
-To parse a GBX with an unknown type (method 1):
+To parse a GBX with an unknown type:
 
 ```cs
-var gbx = GameBox.Parse("MyMap.Map.Gbx");
+var node = GameBox.ParseNode("MyMap.Map.Gbx");
 
-if (gbx is GameBox<CGameCtnChallenge> gbxMap)
-{
-    var map = gbxMap.MainNode;
-    
-    // Node data is available in map
-}
-else if (gbx is GameBox<CGameCtnReplayRecord> gbxReplay)
-{
-    var replay = gbxReplay.MainNode;
-    
-    // Node data is available in replay
-}
-```
-
-To parse a GBX with an unknown type (method 2):
-
-```cs
-var gbx = GameBox.Parse("MyMap.Map.Gbx");
-
-if (gbx.TryNode(out CGameCtnChallenge map))
+if (node is CGameCtnChallenge map)
 {
     // Node data is available in map
 }
-else if (gbx.TryNode(out CGameCtnReplayRecord replay))
+else if (node is CGameCtnReplayRecord replay)
 {
     // Node data is available in replay
 }
+
+// C# 7+
+
+switch (node)
+{
+    case CGameCtnChallenge map:
+        // Node data is available in map
+        break;
+    case CGameCtnReplayRecord replay:
+        // Node data is available in replay
+        break;
+}
 ```
+
+To get GBX metadata or header chunks, use the `node.GBX` property.
 
 To save changes of the parsed GBX file:
 
 ```cs
-var gbx = GameBox.Parse("MyMap.Map.Gbx");
+var node = GameBox.ParseNode("MyMap.Map.Gbx");
 
-if (gbx is GameBox<CGameCtnChallenge> gbxMap)
+if (node is CGameCtnChallenge map)
 {
     // Do changes with CGameCtnChallenge
 
-    gbxMap.Save("MyMap.Map.Gbx"); // Can be also a new file
+    map.Save("MyMap.Map.Gbx");
 }
-else if (gbx is GameBox<CGameCtnGhost> gbxGhost)
+else if (node is CGameCtnGhost ghost)
 {
     // Do changes with CGameCtnGhost
 
-    gbxGhost.Save("MyGhost.Ghost.Gbx"); // Can be also a new file
+    ghost.Save("MyGhost.Ghost.Gbx");
 }
-
-gbx.Save(); // will throw an error
-// GameBox with unspecified/unknown type can't be currently written back
 ```
 
 To save any supported `Node` to a GBX file:
 
 ```cs
-var gbxReplay = GameBox.Parse<CGameCtnReplayRecord>("MyReplay.Replay.Gbx");
-CGameCtnReplayRecord replay = gbxReplay.MainNode;
+var replay = GameBox.ParseNode<CGameCtnReplayRecord>("MyReplay.Replay.Gbx");
 
 foreach (CGameCtnGhost ghost in replay.Ghosts)
 {
-    var gbxGhost = new GameBox<CGameCtnGhost>(ghost); // Create a GameBox<T> with the Node object
-    gbxGhost.Save("MyExtractedGhost.Ghost.Gbx"); // Save the new GameBox object to a GBX file
+    ghost.Save("MyExtractedGhost.Ghost.Gbx");
 }
 ```
 
 ## Conventions
+
+### This convention is no longer relevant in GBX.NET 0.11.0+ when using the ParseNode method.
 
 Make the code cleaner by **aliasing** the `MainNode` from the parsed `GameBox<T>`:
 
