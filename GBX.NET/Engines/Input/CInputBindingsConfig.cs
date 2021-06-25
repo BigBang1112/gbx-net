@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Input
 {
     [Node(0x13006000)]
-    public class CInputBindingsConfig : Node
+    public class CInputBindingsConfig : CMwNod
     {
         public ReadOnlyCollection<string> Devices { get; private set; }
         public List<Binding> Bindings { get; private set; }
@@ -14,7 +15,7 @@ namespace GBX.NET.Engines.Input
         [Chunk(0x13006000)]
         public class Chunk13006000 : Chunk<CInputBindingsConfig>
         {
-            public override void Read(CInputBindingsConfig n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CInputBindingsConfig n, GameBoxReader r)
             {
                 var race = r.ReadString();
                 n.Bindings = r.ReadArray<Binding>((i, r1) =>
@@ -36,7 +37,7 @@ namespace GBX.NET.Engines.Input
         [Chunk(0x13006001)]
         public class Chunk13006001 : Chunk<CInputBindingsConfig>
         {
-            public override void Read(CInputBindingsConfig n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CInputBindingsConfig n, GameBoxReader r)
             {
                 n.Devices = new ReadOnlyCollection<string>(
                     r.ReadArray(r1 => r1.ReadId()).Select(x => x.ToString()).ToList()
@@ -46,10 +47,11 @@ namespace GBX.NET.Engines.Input
 
         public class Binding
         {
+            public int U01;
+            public int U02;
+
             public int KeyCode { get; set; }
             public string DeviceGuid { get; set; }
-            public int U01 { get; set; }
-            public int U02 { get; set; }
             public string Action { get; set; }
 
             public override string ToString()

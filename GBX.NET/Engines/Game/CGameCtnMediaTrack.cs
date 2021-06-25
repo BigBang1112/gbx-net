@@ -1,14 +1,16 @@
 ﻿using System.Collections.Generic;
 
+using GBX.NET.Engines.MwFoundations;
+
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03078000)]
-    public class CGameCtnMediaTrack : Node
+    public class CGameCtnMediaTrack : CMwNod
     {
         #region Fields
 
         private string name;
-        private List<CGameCtnMediaBlock> blocks;
+        private IList<CGameCtnMediaBlock> blocks = new List<CGameCtnMediaBlock>();
         private bool isKeepPlaying = true;
         private bool isCycling;
         private bool isReadOnly;
@@ -31,7 +33,7 @@ namespace GBX.NET.Engines.Game
         /// List of blocks.
         /// </summary>
         [NodeMember]
-        public List<CGameCtnMediaBlock> Blocks
+        public IList<CGameCtnMediaBlock> Blocks
         {
             get => blocks;
             set => blocks = value;
@@ -98,27 +100,22 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03078001)]
         public class Chunk03078001 : Chunk<CGameCtnMediaTrack>
         {
-            private int u01 = 10;
-            private int u02 = -1;
+            private int tracksVersion = 10;
 
-            public int U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
+            public int U02 = -1;
 
-            public int U02
+            public int TracksVersion
             {
-                get => u02;
-                set => u02 = value;
+                get => tracksVersion;
+                set => tracksVersion = value;
             }
 
             public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
                 rw.String(ref n.name);
-                rw.Int32(ref u01); // 10, probably version
+                rw.Int32(ref tracksVersion);
                 rw.ListNode<CGameCtnMediaBlock>(ref n.blocks);
-                rw.Int32(ref u02);
+                rw.Int32(ref U02);
             }
         }
 
@@ -163,12 +160,12 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03078004)]
         public class Chunk03078004 : Chunk<CGameCtnMediaTrack>
         {
-            public int U01 { get; set; }
+            public int U01;
 
             public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
                 rw.Boolean(ref n.isKeepPlaying);
-                U01 = rw.Int32(U01); /////////////////////
+                rw.Int32(ref U01); /////////////////////
             }
         }
 
@@ -177,35 +174,17 @@ namespace GBX.NET.Engines.Game
         #region 0x005 chunk
 
         [Chunk(0x03078005)]
-        public class Chunk03078005 : Chunk<CGameCtnMediaTrack>
+        public class Chunk03078005 : Chunk<CGameCtnMediaTrack>, IVersionable
         {
             private int version = 1;
-            private int u02;
-            private float u04 = -1;
-            private float u05 = -1;
+
+            public float U04 = -1;
+            public float U05 = -1;
 
             public int Version
             {
                 get => version;
                 set => version = value;
-            }
-
-            public int U02
-            {
-                get => u02;
-                set => u02 = value;
-            }
-
-            public float U04
-            {
-                get => u04;
-                set => u04 = value;
-            }
-
-            public float U05
-            {
-                get => u05;
-                set => u05 = value;
             }
 
             public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
@@ -214,8 +193,12 @@ namespace GBX.NET.Engines.Game
                 rw.Boolean(ref n.isKeepPlaying);
                 rw.Boolean(ref n.isReadOnly);
                 rw.Boolean(ref n.isCycling);
-                rw.Single(ref u04);
-                rw.Single(ref u05);
+
+                if (version >= 1)
+                {
+                    rw.Single(ref U04);
+                    rw.Single(ref U05);
+                }
             }
         }
 

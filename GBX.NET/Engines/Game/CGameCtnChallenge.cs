@@ -11,6 +11,7 @@ using GBX.NET.BlockInfo;
 using GBX.NET.Engines.GameData;
 using GBX.NET.Engines.Hms;
 using GBX.NET.Engines.Script;
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Game
 {
@@ -19,7 +20,7 @@ namespace GBX.NET.Engines.Game
     /// </summary>
     /// <remarks>A map. Known extensions: .Challenge.Gbx, .Map.Gbx</remarks>
     [Node(0x03043000)]
-    public class CGameCtnChallenge : Node, CGameCtnChallenge.IHeader
+    public class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     {
         #region Enums
 
@@ -182,7 +183,7 @@ namespace GBX.NET.Engines.Game
         private FileRef modPackDesc;
         private Int3? size;
         private bool? needUnlock;
-        private List<CGameCtnBlock> blocks;
+        private IList<CGameCtnBlock> blocks;
         private CGameCtnBlock[] bakedBlocks;
         private CGameCtnMediaClip clipIntro;
         private CGameCtnMediaClipGroup clipGroupInGame;
@@ -196,7 +197,7 @@ namespace GBX.NET.Engines.Game
         private Vec3? thumbnailPosition;
         private Vec3? thumbnailPitchYawRoll;
         private float? thumbnailFOV;
-        private List<CGameCtnAnchoredObject> anchoredObjects;
+        private IList<CGameCtnAnchoredObject> anchoredObjects;
         private CScriptTraitsMetadata scriptMetadata;
         private List<List<byte[]>> lightmapFrames;
         private Task<CHmsLightMapCache> lightmapCache;
@@ -205,10 +206,10 @@ namespace GBX.NET.Engines.Game
         private string objectiveTextGold;
         private string objectiveTextSilver;
         private string objectiveTextBronze;
-        private List<(Int3 start, Int3 end)> offzones;
+        private IList<(Int3 start, Int3 end)> offzones;
         private string buildVersion;
         private int decoBaseHeightOffset;
-        private List<BotPath> botPaths;
+        private IList<BotPath> botPaths;
         private readonly Dictionary<string, byte[]> embeddedObjects = new Dictionary<string, byte[]>();
         private byte[] originalEmbedZip;
         private TimeSpan? dayTime;
@@ -804,7 +805,7 @@ namespace GBX.NET.Engines.Game
         /// List of all blocks on the map.
         /// </summary>
         [NodeMember]
-        public List<CGameCtnBlock> Blocks
+        public IList<CGameCtnBlock> Blocks
         {
             get => blocks;
             set => blocks = value;
@@ -1026,7 +1027,7 @@ namespace GBX.NET.Engines.Game
         /// List of all items and objects placed on the map.
         /// </summary>
         [NodeMember]
-        public List<CGameCtnAnchoredObject> AnchoredObjects
+        public IList<CGameCtnAnchoredObject> AnchoredObjects
         {
             get
             {
@@ -1137,7 +1138,7 @@ namespace GBX.NET.Engines.Game
         /// List of offzones defined on the map, constructed with cubes made from start-to-end coordinates.
         /// </summary>
         [NodeMember]
-        public List<(Int3 start, Int3 end)> Offzones
+        public IList<(Int3 start, Int3 end)> Offzones
         {
             get
             {
@@ -1173,7 +1174,7 @@ namespace GBX.NET.Engines.Game
         /// Bot paths defined on the (Shootmania) map.
         /// </summary>
         [NodeMember]
-        public List<BotPath> BotPaths
+        public IList<BotPath> BotPaths
         {
             get
             {
@@ -1914,12 +1915,12 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x001 header chunk (Virtual Skipper)
         /// </summary>
         [Chunk(0x03043001, "Virtual Skipper")]
-        public class Chunk03043001 : HeaderChunk<CGameCtnChallenge>
+        public class Chunk03043001 : HeaderChunk<CGameCtnChallenge>, IVersionable
         {
             /// <summary>
             /// Version of the chunk.
             /// </summary>
-            public byte Version { get; set; }
+            public int Version { get; set; }
 
             public Ident MapInfo { get; set; }
 
@@ -1971,6 +1972,16 @@ namespace GBX.NET.Engines.Game
 
             public bool StartSailUp { get; set; }
 
+            public bool U01 { get; set; }
+            public int U02 { get; set; }
+            public byte U03 { get; set; }
+            public byte U04 { get; set; }
+            public byte U05 { get; set; }
+            public byte U06 { get; set; }
+            public byte U07 { get; set; }
+            public bool U08 { get; set; }
+            public string U09 { get; set; }
+
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 Version = rw.Byte(Version);
@@ -1981,13 +1992,13 @@ namespace GBX.NET.Engines.Game
                     MapName = rw.String(MapName);
                 }
 
-                rw.Boolean(Unknown);
-                rw.Int32(Unknown);
+                U01 = rw.Boolean(U01);
+                U02 = rw.Int32(U02);
 
                 if (Version < 1)
-                    rw.Byte(Unknown);
+                    U03 = rw.Byte(U03);
 
-                rw.Byte(Unknown);
+                U04 = rw.Byte(U04);
 
                 if (Version < 9)
                     BoatName = (BoatName)rw.Byte((byte)BoatName);
@@ -1999,11 +2010,11 @@ namespace GBX.NET.Engines.Game
                     BoatAuthor = rw.Id(BoatAuthor);
 
                 RaceMode = (RaceMode)rw.Byte((byte)RaceMode);
-                rw.Byte(Unknown);
+                U05 = rw.Byte(U05);
                 WindDirection = (WindDirection)rw.Byte((byte)RaceMode);
                 WindStrength = rw.Byte(WindStrength);
                 Weather = (Weather)rw.Byte((byte)Weather);
-                rw.Byte(Unknown);
+                U06 = rw.Byte(U06);
                 StartDelay = (StartDelay)rw.Byte((byte)StartDelay);
                 StartTime = rw.Int32(StartTime);
 
@@ -2025,12 +2036,12 @@ namespace GBX.NET.Engines.Game
                             if (Version >= 5)
                             {
                                 WindShiftAngle = rw.Int32(WindShiftAngle);
-                                rw.Byte(Unknown);
+                                U07 = rw.Byte(U07);
 
                                 if (Version == 6 || Version == 7)
                                 {
-                                    rw.Boolean(Unknown);
-                                    rw.String(Unknown);
+                                    U08 = rw.Boolean(U08);
+                                    U09 = rw.String(U09);
                                 }
 
                                 if (Version >= 7)
@@ -2073,20 +2084,20 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x002 header chunk (map info)
         /// </summary>
         [Chunk(0x03043002, "map info")]
-        public class Chunk03043002 : HeaderChunk<CGameCtnChallenge>
+        public class Chunk03043002 : HeaderChunk<CGameCtnChallenge>, IVersionable
         {
-            private byte version;
+            private int version;
 
-            private bool u01;
-            private byte u02;
-            private int u03;
-            private int u04;
-            private int u05;
+            public bool U01;
+            public byte U02;
+            public int U03;
+            public int U04;
+            public int U05;
 
             /// <summary>
             /// Version of the chunk.
             /// </summary>
-            public byte Version
+            public int Version
             {
                 get => version;
                 set => version = value;
@@ -2102,17 +2113,17 @@ namespace GBX.NET.Engines.Game
                     rw.String(ref n.mapName);
                 }
 
-                rw.Boolean(ref u01);
+                rw.Boolean(ref U01);
 
                 if (version >= 1)
                 {
-                    rw.TimeSpan32(ref n.bronzeTime);
-                    rw.TimeSpan32(ref n.silverTime);
-                    rw.TimeSpan32(ref n.goldTime);
-                    rw.TimeSpan32(ref n.authorTime);
+                    rw.Int32_msn(ref n.bronzeTime);
+                    rw.Int32_msn(ref n.silverTime);
+                    rw.Int32_msn(ref n.goldTime);
+                    rw.Int32_msn(ref n.authorTime);
 
                     if (version == 2)
-                        rw.Byte(ref u02);
+                        rw.Byte(ref U02);
 
                     if (version >= 4)
                     {
@@ -2123,7 +2134,7 @@ namespace GBX.NET.Engines.Game
                             rw.Boolean(ref n.isLapRace);
 
                             if (version == 6)
-                                rw.Int32(ref u03);
+                                rw.Int32(ref U03);
 
                             if (version >= 7)
                             {
@@ -2131,7 +2142,7 @@ namespace GBX.NET.Engines.Game
 
                                 if (version >= 9)
                                 {
-                                    rw.Int32(ref u04);
+                                    rw.Int32(ref U04);
 
                                     if (version >= 10)
                                     {
@@ -2143,7 +2154,7 @@ namespace GBX.NET.Engines.Game
 
                                             if (version >= 12)
                                             {
-                                                rw.Int32(ref u05);
+                                                rw.Int32(ref U05);
 
                                                 if (version >= 13)
                                                 {
@@ -2169,17 +2180,18 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x003 header chunk (common)
         /// </summary>
         [Chunk(0x03043003, "common")]
-        public class Chunk03043003 : HeaderChunk<CGameCtnChallenge>
+        public class Chunk03043003 : HeaderChunk<CGameCtnChallenge>, IVersionable
         {
-            private byte version;
+            private int version;
             private bool? locked;
 
-            private int u01;
+            public byte[] U01 = new byte[16];
+            public int U02;
 
             /// <summary>
             /// Version of the chunk.
             /// </summary>
-            public byte Version
+            public int Version
             {
                 get => version;
                 set => version = value;
@@ -2220,7 +2232,7 @@ namespace GBX.NET.Engines.Game
 
                                 if (version >= 5)
                                 {
-                                    rw.Bytes(Unknown, 16);
+                                    rw.Bytes(ref U01, 16);
 
                                     if (version >= 6)
                                     {
@@ -2228,7 +2240,7 @@ namespace GBX.NET.Engines.Game
                                         rw.String(ref n.mapStyle);
 
                                         if (version <= 8)
-                                            rw.Int32(ref u01);
+                                            rw.Int32(ref U02);
 
                                         if (version >= 8)
                                         {
@@ -2259,7 +2271,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x004 header chunk (version)
         /// </summary>
         [Chunk(0x03043004, "version")]
-        public class Chunk03043004 : HeaderChunk<CGameCtnChallenge>
+        public class Chunk03043004 : HeaderChunk<CGameCtnChallenge>, IVersionable
         {
             private int version;
 
@@ -2302,7 +2314,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x007 header chunk (thumbnail)
         /// </summary>
         [Chunk(0x03043007, "thumbnail")]
-        public class Chunk03043007 : HeaderChunk<CGameCtnChallenge>
+        public class Chunk03043007 : HeaderChunk<CGameCtnChallenge>, IVersionable
         {
             private int version;
 
@@ -2342,7 +2354,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x008 header chunk (author)
         /// </summary>
         [Chunk(0x03043008, "author")]
-        public class Chunk03043008 : HeaderChunk<CGameCtnChallenge>
+        public class Chunk03043008 : HeaderChunk<CGameCtnChallenge>, IVersionable
         {
             private int version;
 
@@ -2390,7 +2402,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x00F chunk (TM1.0 block data)
         /// </summary>
         [Chunk(0x0304300F, "TM1.0 block data")]
-        public class Chunk0304300F : Chunk<CGameCtnChallenge>
+        public class Chunk0304300F : Chunk<CGameCtnChallenge>, IVersionable
         {
             private int version;
 
@@ -2478,9 +2490,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03043014, "legacy password")]
         public class Chunk03043014 : SkippableChunk<CGameCtnChallenge>
         {
+            public bool U01;
+
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Boolean(ref U01);
                 rw.String(ref n.password);
             }
         }
@@ -2495,9 +2509,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03043016)]
         public class Chunk03043016 : SkippableChunk<CGameCtnChallenge>
         {
+            public int U01;
+
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
             }
         }
 
@@ -2560,9 +2576,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0304301A)]
         public class Chunk0304301A : Chunk<CGameCtnChallenge>
         {
+            public CMwNod U01;
+
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.NodeRef(Unknown);
+                rw.NodeRef(ref U01);
             }
         }
 
@@ -2576,9 +2594,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0304301B)]
         public class Chunk0304301B : Chunk<CGameCtnChallenge>
         {
+            public int U01;
+
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
             }
         }
 
@@ -2594,7 +2614,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                n.mode = (PlayMode)rw.Int32((int)n.mode.GetValueOrDefault());
+                rw.EnumInt32<PlayMode>(ref n.mode);
             }
         }
 
@@ -2608,9 +2628,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0304301D)]
         public class Chunk0304301D : Chunk<CGameCtnChallenge>
         {
+            public CMwNod U01;
+
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.NodeRef(Unknown);
+                rw.NodeRef(ref U01);
             }
         }
 
@@ -2622,16 +2644,21 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x01F chunk (block data)
         /// </summary>
         [Chunk(0x0304301F, "block data")]
-        public class Chunk0304301F : Chunk<CGameCtnChallenge>
+        public class Chunk0304301F : Chunk<CGameCtnChallenge>, IVersionable
         {
+            private readonly bool is013;
+            private int? version;
+
             public bool NeedUnlock { get; set; }
 
             /// <summary>
-            /// Version of the chunk.
+            /// Version of the chunk. Can be -1 if it's used by <see cref="Chunk03043013"/>.
             /// </summary>
-            public int? Version { get; set; }
-
-            readonly bool is013;
+            public int Version
+            {
+                get => version.GetValueOrDefault(-1);
+                set => version = value;
+            }
 
             public Chunk0304301F() : this(null)
             {
@@ -2643,7 +2670,7 @@ namespace GBX.NET.Engines.Game
                 is013 = chunk is Chunk03043013;
             }
 
-            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnChallenge n, GameBoxReader r)
             {
                 n.mapInfo = r.ReadIdent();
                 n.mapName = r.ReadString();
@@ -2652,7 +2679,7 @@ namespace GBX.NET.Engines.Game
                 NeedUnlock = r.ReadBoolean();
 
                 if (!is013)
-                    Version = r.ReadInt32();
+                    version = r.ReadInt32();
 
                 var nbBlocks = r.ReadInt32(); // It's maybe slower but better for the program to determine the count from the list
 
@@ -2667,12 +2694,12 @@ namespace GBX.NET.Engines.Game
                     var coord = (Int3)r.ReadByte3();
                     var flags = -1;
 
-                    if (Version >= 6)
+                    if (version >= 6)
                         coord -= (1, 1, 1);
 
-                    if (Version == null)
+                    if (!version.HasValue)
                         flags = r.ReadUInt16();
-                    else if (Version > 0)
+                    else if (version > 0)
                         flags = r.ReadInt32();
 
                     if (flags == -1)
@@ -2713,7 +2740,7 @@ namespace GBX.NET.Engines.Game
                 // Debug.Assert(blockCounter == nbBlocks);
             }
 
-            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnChallenge n, GameBoxWriter w)
             {
                 w.Write(n.mapInfo);
                 w.Write(n.mapName);
@@ -2722,7 +2749,7 @@ namespace GBX.NET.Engines.Game
                 w.Write(NeedUnlock);
 
                 if (!is013)
-                    w.Write(Version.GetValueOrDefault());
+                    w.Write(version.GetValueOrDefault());
 
                 // Remove all free blocks with clips
                 for(int i = 0; i < n.blocks.Count; i++)
@@ -2754,13 +2781,13 @@ namespace GBX.NET.Engines.Game
                     w.Write((byte)x.Direction);
 
                     var coord = x.Coord;
-                    if (Version >= 6)
+                    if (version >= 6)
                         coord += (1, 1, 1);
                     w.Write((Byte3)coord);
 
-                    if (Version == null)
+                    if (!version.HasValue)
                         w.Write((short)x.Flags);
-                    else if (Version > 0)
+                    else if (version > 0)
                         w.Write(x.Flags);
 
                     if (x.Flags != -1)
@@ -2806,9 +2833,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03043022)]
         public class Chunk03043022 : Chunk<CGameCtnChallenge>
         {
+            public int U01;
+
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
             }
         }
 
@@ -2879,17 +2908,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03043026, "clip global")]
         public class Chunk03043026 : Chunk<CGameCtnChallenge>
         {
-            private Node clipGlobal;
-
-            public Node ClipGlobal
-            {
-                get => clipGlobal;
-                set => clipGlobal = value;
-            }
+            public CMwNod ClipGlobal;
 
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.NodeRef(ref clipGlobal);
+                rw.NodeRef(ref ClipGlobal);
             }
         }
 
@@ -2903,30 +2926,30 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03043027)]
         public class Chunk03043027 : Chunk<CGameCtnChallenge>
         {
-            private bool archiveGmCamVal;
-
-            public bool ArchiveGmCamVal
-            {
-                get => archiveGmCamVal;
-                set => archiveGmCamVal = value;
-            }
+            public bool ArchiveGmCamVal;
+            public byte U01;
+            public Vec3 U02;
+            public Vec3 U03;
+            public Vec3 U04;
+            public float U05;
+            public float U06;
 
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.Boolean(ref archiveGmCamVal);
+                rw.Boolean(ref ArchiveGmCamVal);
 
-                if(ArchiveGmCamVal)
+                if (ArchiveGmCamVal)
                 {
-                    rw.Byte(Unknown);
+                    rw.Byte(ref U01);
 
-                    rw.Vec3(Unknown);
-                    rw.Vec3(Unknown);
-                    rw.Vec3(Unknown);
+                    rw.Vec3(ref U02);
+                    rw.Vec3(ref U03);
+                    rw.Vec3(ref U04);
 
                     rw.Vec3(ref n.thumbnailPosition);
                     rw.Single(ref n.thumbnailFOV);
-                    rw.Single(Unknown);
-                    rw.Single(Unknown);
+                    rw.Single(ref U05);
+                    rw.Single(ref U06);
                 }
             }
         }
@@ -2950,7 +2973,6 @@ namespace GBX.NET.Engines.Game
 
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                Chunk027.Unknown.Position = 0;
                 Chunk027.ReadWrite(n, rw);
                 rw.String(ref n.comments);
             }
@@ -2983,10 +3005,25 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0304302A)]
         public class Chunk0304302A : Chunk<CGameCtnChallenge>
         {
+            public bool U01;
+
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.Boolean(Unknown);
+                rw.Boolean(ref U01);
             }
+        }
+
+        #endregion
+
+        #region 0x034 skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x034 skippable chunk
+        /// </summary>
+        [Chunk(0x03043034), IgnoreChunk]
+        public class Chunk03043034 : SkippableChunk<CGameCtnChallenge>
+        {
+            
         }
 
         #endregion
@@ -2999,14 +3036,29 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03043036, "realtime thumbnail")]
         public class Chunk03043036 : SkippableChunk<CGameCtnChallenge>
         {
+            public byte[] U01 = new byte[31];
+
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 rw.Vec3(ref n.thumbnailPosition);
                 rw.Vec3(ref n.thumbnailPitchYawRoll);
                 rw.Single(ref n.thumbnailFOV);
 
-                rw.Bytes(Unknown, 31);
+                rw.Bytes(ref U01, 31);
             }
+        }
+
+        #endregion
+
+        #region 0x038 skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x038 skippable chunk
+        /// </summary>
+        [Chunk(0x03043038), IgnoreChunk]
+        public class Chunk03043038 : SkippableChunk<CGameCtnChallenge>
+        {
+
         }
 
         #endregion
@@ -3017,17 +3069,12 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x03D skippable chunk (lightmaps)
         /// </summary>
         [Chunk(0x0304303D, "lightmaps")]
-        public class Chunk0304303D : SkippableChunk<CGameCtnChallenge>
+        public class Chunk0304303D : SkippableChunk<CGameCtnChallenge>, IVersionable
         {
-            private bool u01;
             private int version = 4;
             private byte[] cacheData;
 
-            public bool U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
+            public bool U01;
 
             /// <summary>
             /// Version of the chunk.
@@ -3044,9 +3091,9 @@ namespace GBX.NET.Engines.Game
                 set => cacheData = value;
             }
 
-            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnChallenge n, GameBoxReader r)
             {
-                u01 = r.ReadBoolean();
+                U01 = r.ReadBoolean();
                 version = r.ReadInt32();
 
                 if (version >= 5)
@@ -3109,9 +3156,9 @@ namespace GBX.NET.Engines.Game
                 }
             }
 
-            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnChallenge n, GameBoxWriter w)
             {
-                w.Write(u01);
+                w.Write(U01);
                 w.Write(version);
 
                 if (version >= 5)
@@ -3167,18 +3214,32 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region 0x03E skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x03E skippable chunk
+        /// </summary>
+        [Chunk(0x0304303E), IgnoreChunk]
+        public class Chunk0304303E : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
         #region 0x040 skippable chunk (items)
 
         /// <summary>
         /// CGameCtnChallenge 0x040 skippable chunk (items)
         /// </summary>
         [Chunk(0x03043040, "items")]
-        public class Chunk03043040 : SkippableChunk<CGameCtnChallenge>, ILookbackable
+        public class Chunk03043040 : SkippableChunk<CGameCtnChallenge>, IVersionable, ILookbackable
         {
             private int version = 4;
-            private int u01;
-            private int u02 = 10;
-            private int u03;
+
+            public int U01;
+            public int U02 = 10;
+            public byte[] U03;
 
             int? ILookbackable.IdVersion { get; set; }
             List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
@@ -3193,59 +3254,42 @@ namespace GBX.NET.Engines.Game
                 set => version = value;
             }
 
-            public int U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
-
-            public int U02
-            {
-                get => u02;
-                set => u02 = value;
-            }
-
-            public int U03
-            {
-                get => u03;
-                set => u03 = value;
-            }
-
             public override void OnLoad()
             {
                 Node.anchoredObjects = new List<CGameCtnAnchoredObject>();
             }
 
-            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnChallenge n, GameBoxReader r)
             {
                 version = r.ReadInt32();
 
                 if (version != 0)
                 {
-                    u01 = r.ReadInt32();
+                    U01 = r.ReadInt32();
                     var size = r.ReadInt32();
-                    u02 = r.ReadInt32(); // 10
+                    U02 = r.ReadInt32(); // 10
 
                     n.anchoredObjects = ParseArray<CGameCtnAnchoredObject>(r).ToList();
-                    u03 = r.ReadInt32(); // 0
+
+                    U03 = r.ReadToEnd();
                 }
             }
 
-            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnChallenge n, GameBoxWriter w)
             {
                 w.Write(Version);
 
-                if(version != 0)
+                if (version != 0)
                 {
-                    w.Write(u01);
+                    w.Write(U01);
 
                     using (var itemMs = new MemoryStream())
-                    using (var wr = new GameBoxWriter(itemMs, w))
+                    using (var wr = CreateWriter(itemMs))
                     {
-                        wr.Write(u02);
+                        wr.Write(U02);
                         wr.WriteNodes(n.anchoredObjects);
 
-                        wr.Write(u03);
+                        wr.WriteBytes(U03);
 
                         w.Write((int)itemMs.Length);
                         w.Write(itemMs.ToArray(), 0, (int)itemMs.Length);
@@ -3262,7 +3306,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x042 skippable chunk (author)
         /// </summary>
         [Chunk(0x03043042, "author")]
-        public class Chunk03043042 : SkippableChunk<CGameCtnChallenge>
+        public class Chunk03043042 : SkippableChunk<CGameCtnChallenge>, IVersionable
         {
             private int version = 4;
 
@@ -3293,9 +3337,8 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x043 skippable chunk (generalogies)
         /// </summary>
-        [Chunk(0x03043043, "generalogies")]
-        [IgnoreChunk]
-        public class Chunk03043043 : SkippableChunk<CGameCtnChallenge>, ILookbackable
+        [Chunk(0x03043043, "generalogies"), IgnoreChunk]
+        public class Chunk03043043 : SkippableChunk<CGameCtnChallenge>, IVersionable, ILookbackable
         {
             int? ILookbackable.IdVersion { get; set; }
             List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
@@ -3308,7 +3351,7 @@ namespace GBX.NET.Engines.Game
 
             public new byte[] Data { get; set; }
 
-            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnChallenge n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
                 var sizeOfNodeWithClassID = r.ReadInt32();
@@ -3322,7 +3365,7 @@ namespace GBX.NET.Engines.Game
                 });
             }
 
-            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnChallenge n, GameBoxWriter w)
             {
                 w.Write(Version);
 
@@ -3349,7 +3392,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x044 skippable chunk (metadata)
         /// </summary>
         [Chunk(0x03043044, "metadata")]
-        public class Chunk03043044 : SkippableChunk<CGameCtnChallenge>
+        public class Chunk03043044 : SkippableChunk<CGameCtnChallenge>, IVersionable
         {
             /// <summary>
             /// Version of the chunk.
@@ -3361,7 +3404,7 @@ namespace GBX.NET.Engines.Game
                 Node.scriptMetadata = new CScriptTraitsMetadata();
             }
 
-            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnChallenge n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
                 var size = r.ReadInt32();
@@ -3369,7 +3412,7 @@ namespace GBX.NET.Engines.Game
                 n.scriptMetadata.Read(r);
             }
 
-            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnChallenge n, GameBoxWriter w)
             {
                 w.Write(Version);
 
@@ -3392,9 +3435,13 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x048 skippable chunk (baked blocks)
         /// </summary>
         [Chunk(0x03043048, "baked blocks")]
-        public class Chunk03043048 : SkippableChunk<CGameCtnChallenge>
+        public class Chunk03043048 : SkippableChunk<CGameCtnChallenge>, IVersionable
         {
             private int version;
+
+            public int U01;
+            public int U02;
+            public int U03;
 
             public int Version
             {
@@ -3405,7 +3452,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
 
                 n.BakedBlocks = rw.Array(n.BakedBlocks, r => new CGameCtnBlock(
                     name: r.ReadId(),
@@ -3421,8 +3468,8 @@ namespace GBX.NET.Engines.Game
                     w.Write(x.Flags);
                 });
 
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32(ref U02);
+                rw.Int32(ref U03);
             }
         }
 
@@ -3434,7 +3481,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x049 chunk (mediatracker)
         /// </summary>
         [Chunk(0x03043049, "mediatracker")]
-        public class Chunk03043049 : Chunk<CGameCtnChallenge>
+        public class Chunk03043049 : Chunk<CGameCtnChallenge>, IVersionable
         {
             private int version = 2;
             private Int3 triggerSize = (3, 1, 3);
@@ -3494,13 +3541,26 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region 0x04F skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x04F skippable chunk
+        /// </summary>
+        [Chunk(0x0304304F), IgnoreChunk]
+        public class Chunk0304304F : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
         #region 0x050 skippable chunk (offzones)
 
         /// <summary>
         /// CGameCtnChallenge 0x050 skippable chunk (offzones)
         /// </summary>
         [Chunk(0x03043050, "offzones")]
-        public class Chunk03043050 : SkippableChunk<CGameCtnChallenge>
+        public class Chunk03043050 : SkippableChunk<CGameCtnChallenge>, IVersionable
         {
             private int version;
             private Vec3 triggerSize = (3, 1, 3);
@@ -3543,7 +3603,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x051 skippable chunk (title info)
         /// </summary>
         [Chunk(0x03043051, "title info")]
-        public class Chunk03043051 : SkippableChunk<CGameCtnChallenge>
+        public class Chunk03043051 : SkippableChunk<CGameCtnChallenge>, IVersionable
         {
             private int version;
 
@@ -3573,7 +3633,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x052 skippable chunk (deco height)
         /// </summary>
         [Chunk(0x03043052, "deco height")]
-        public class Chunk03043052 : SkippableChunk<CGameCtnChallenge>
+        public class Chunk03043052 : SkippableChunk<CGameCtnChallenge>, IVersionable
         {
             private int version;
 
@@ -3601,7 +3661,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x053 skippable chunk (bot paths)
         /// </summary>
         [Chunk(0x03043053, "bot paths")]
-        public class Chunk03043053 : SkippableChunk<CGameCtnChallenge>
+        public class Chunk03043053 : SkippableChunk<CGameCtnChallenge>, IVersionable
         {
             private int version;
 
@@ -3645,20 +3705,21 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x054 skippable chunk (embedded objects)
         /// </summary>
         [Chunk(0x03043054, "embedded objects")]
-        public class Chunk03043054 : SkippableChunk<CGameCtnChallenge>, ILookbackable
+        public class Chunk03043054 : SkippableChunk<CGameCtnChallenge>, IVersionable, ILookbackable
         {
             int? ILookbackable.IdVersion { get; set; }
             List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
             bool ILookbackable.IdWritten { get; set; }
 
+            public int U01;
+
             /// <summary>
             /// Version of the chunk.
             /// </summary>
             public int Version { get; set; } = 1;
-            public int U01 { get; set; }
             public string[] Textures { get; set; }
 
-            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnChallenge n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
                 U01 = r.ReadInt32();
@@ -3687,7 +3748,7 @@ namespace GBX.NET.Engines.Game
                 Textures = r.ReadArray(r1 => r1.ReadString());
             }
 
-            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnChallenge n, GameBoxWriter w)
             {
                 w.Write(Version);
                 w.Write(U01);
@@ -3702,8 +3763,8 @@ namespace GBX.NET.Engines.Game
                         if (embed is GameBox<CGameItemModel> gbxItem)
                         {
                             var id = gbxItem.FileName;
-                            var dirs = gbxItem.FileName.Split('/', '\\');
-                            for(var i = 0; i < dirs.Length; i++)
+                            var dirs = id.Split('/', '\\');
+                            for (var i = 0; i < dirs.Length; i++)
                             {
                                 var dir = dirs[dirs.Length - 1 - i];
                                 if (dir == "Items"
@@ -3714,9 +3775,11 @@ namespace GBX.NET.Engines.Game
                                 }
                             }
 
+                            var item = gbxItem.Node;
+
                             embedded.Add(new Ident(id,
-                                gbxItem.MainNode.Ident.Collection,
-                                gbxItem.MainNode.Ident.Author));
+                                item.Ident.Collection,
+                                item.Ident.Author));
                         }
                     }
 
@@ -3739,23 +3802,36 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region 0x055 skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x055 skippable chunk
+        /// </summary>
+        [Chunk(0x03043055), IgnoreChunk]
+        public class Chunk03043055 : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
         #region 0x056 skippable chunk (light settings)
 
         /// <summary>
         /// CGameCtnChallenge 0x056 skippable chunk (light settings)
         /// </summary>
         [Chunk(0x03043056, "light settings")]
-        public class Chunk03043056 : SkippableChunk<CGameCtnChallenge>
+        public class Chunk03043056 : SkippableChunk<CGameCtnChallenge>, IVersionable
         {
             /// <summary>
             /// Version of the chunk.
             /// </summary>
             public int Version { get; set; } = 3;
 
-            public int U01 { get; set; }
-            public int U02 { get; set; }
+            public int U01;
+            public int U02;
 
-            public override void Read(CGameCtnChallenge n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnChallenge n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
                 U01 = r.ReadInt32();
@@ -3766,10 +3842,10 @@ namespace GBX.NET.Engines.Game
 
                 U02 = r.ReadInt32();
                 n.dynamicDaylight = r.ReadBoolean();
-                n.dayDuration = r.ReadTimeSpan();
+                n.dayDuration = r.ReadInt32_msn();
             }
 
-            public override void Write(CGameCtnChallenge n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnChallenge n, GameBoxWriter w)
             {
                 w.Write(Version);
                 w.Write(U01);
@@ -3781,8 +3857,21 @@ namespace GBX.NET.Engines.Game
 
                 w.Write(U02);
                 w.Write(n.dynamicDaylight);
-                w.Write(n.dayDuration);
+                w.WriteInt32_msn(n.dayDuration);
             }
+        }
+
+        #endregion
+
+        #region 0x057 skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x057 skippable chunk
+        /// </summary>
+        [Chunk(0x03043057), IgnoreChunk]
+        public class Chunk03043057 : SkippableChunk<CGameCtnChallenge>
+        {
+
         }
 
         #endregion
@@ -3793,9 +3882,14 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x059 skippable chunk
         /// </summary>
         [Chunk(0x03043059)]
-        public class Chunk03043059 : SkippableChunk<CGameCtnChallenge>
+        public class Chunk03043059 : SkippableChunk<CGameCtnChallenge>, IVersionable
         {
             private int version;
+
+            public Vec3 U01;
+            public bool U02;
+            public float U03;
+            public float U04;
 
             /// <summary>
             /// Version of the chunk.
@@ -3810,16 +3904,16 @@ namespace GBX.NET.Engines.Game
             {
                 rw.Int32(ref version); // 3
 
-                rw.Vec3(Unknown);
+                rw.Vec3(ref U01);
 
                 if (version != 0)
                 {
-                    rw.Boolean(Unknown);
+                    rw.Boolean(ref U02);
 
                     if (version >= 3)
                     {
-                        rw.Single(Unknown);
-                        rw.Single(Unknown);
+                        rw.Single(ref U03);
+                        rw.Single(ref U04);
                     }
                 }
             }
@@ -3835,11 +3929,66 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0304305A)]
         public class Chunk0304305A : SkippableChunk<CGameCtnChallenge>
         {
+            public int U01;
+            public int U02;
+
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
+                rw.Int32(ref U02);
             }
+        }
+
+        #endregion
+
+        #region 0x05B skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x05B skippable chunk
+        /// </summary>
+        [Chunk(0x0304305B), IgnoreChunk]
+        public class Chunk0304305B : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
+        #region 0x05C skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x05C skippable chunk
+        /// </summary>
+        [Chunk(0x0304305C), IgnoreChunk]
+        public class Chunk0304305C : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
+        #region 0x05D skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x05D skippable chunk
+        /// </summary>
+        [Chunk(0x0304305D), IgnoreChunk]
+        public class Chunk0304305D : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
+        #region 0x05E skippable chunk
+
+        /// <summary>
+        /// CGameCtnChallenge 0x05E skippable chunk
+        /// </summary>
+        [Chunk(0x0304305E), IgnoreChunk]
+        public class Chunk0304305E : SkippableChunk<CGameCtnChallenge>
+        {
+
         }
 
         #endregion
@@ -3850,7 +3999,7 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnChallenge 0x05F skippable chunk (free blocks) [TM®️]
         /// </summary>
         [Chunk(0x0304305F, "free blocks")]
-        public class Chunk0304305F : SkippableChunk<CGameCtnChallenge>
+        public class Chunk0304305F : SkippableChunk<CGameCtnChallenge>, IVersionable
         {
             private int version;
 
@@ -3866,8 +4015,6 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
-
-                //var gsdgs = rw.Reader.ReadArray<float>(15);
 
                 foreach (var block in n.Blocks)
                 {
@@ -3908,6 +4055,124 @@ namespace GBX.NET.Engines.Game
                     }
                 }
             }
+        }
+
+        #endregion
+
+        #region 0x060 skippable chunk [TM®️]
+
+        /// <summary>
+        /// CGameCtnChallenge 0x060 skippable chunk [TM®️]
+        /// </summary>
+        [Chunk(0x03043060), IgnoreChunk]
+        public class Chunk03043060 : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
+        #region 0x061 skippable chunk [TM®️]
+
+        /// <summary>
+        /// CGameCtnChallenge 0x061 skippable chunk [TM®️]
+        /// </summary>
+        [Chunk(0x03043061), IgnoreChunk]
+        public class Chunk03043061 : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
+        #region 0x062 skippable chunk (block color) [TM®️]
+
+        /// <summary>
+        /// CGameCtnChallenge 0x062 skippable chunk (block color) [TM®️]
+        /// </summary>
+        [Chunk(0x03043062, true, "block color")]
+        public class Chunk03043062 : SkippableChunk<CGameCtnChallenge>, IVersionable
+        {
+            public int Version { get; set; }
+
+            public override void Read(CGameCtnChallenge n, GameBoxReader r)
+            {
+                Version = r.ReadInt32();
+
+                foreach (var block in n.blocks)
+                {
+                    block.Color = (DifficultyColor)r.ReadByte();
+                }
+
+                foreach (var block in n.BakedBlocks)
+                {
+                    block.Color = (DifficultyColor)r.ReadByte();
+                }
+
+                foreach (var item in n.AnchoredObjects)
+                {
+                    item.Color = (DifficultyColor)r.ReadByte();
+                }
+            }
+
+            public override void Write(CGameCtnChallenge n, GameBoxWriter w)
+            {
+                w.Write(Version);
+
+                foreach (var block in n.blocks)
+                {
+                    w.Write((byte)block.Color.GetValueOrDefault());
+                }
+
+                foreach (var block in n.BakedBlocks)
+                {
+                    w.Write((byte)block.Color.GetValueOrDefault());
+                }
+
+                foreach (var item in n.AnchoredObjects)
+                {
+                    w.Write((byte)item.Color.GetValueOrDefault());
+                }
+            }
+        }
+
+        #endregion
+
+        #region 0x063 skippable chunk [TM®️]
+
+        /// <summary>
+        /// CGameCtnChallenge 0x063 skippable chunk [TM®️]
+        /// </summary>
+        [Chunk(0x03043063), IgnoreChunk]
+        public class Chunk03043063 : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
+        #region 0x064 skippable chunk [TM®️]
+
+        /// <summary>
+        /// CGameCtnChallenge 0x064 skippable chunk [TM®️]
+        /// </summary>
+        [Chunk(0x03043064), IgnoreChunk]
+        public class Chunk03043064 : SkippableChunk<CGameCtnChallenge>
+        {
+
+        }
+
+        #endregion
+
+        #region 0x065 skippable chunk [TM®️]
+
+        /// <summary>
+        /// CGameCtnChallenge 0x065 skippable chunk [TM®️]
+        /// </summary>
+        [Chunk(0x03043065), IgnoreChunk]
+        public class Chunk03043065 : SkippableChunk<CGameCtnChallenge>
+        {
+
         }
 
         #endregion

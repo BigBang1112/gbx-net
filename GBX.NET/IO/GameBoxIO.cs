@@ -1,6 +1,8 @@
-﻿namespace GBX.NET.IO
+﻿using GBX.NET.Engines.MwFoundations;
+
+namespace GBX.NET.IO
 {
-    public abstract class GameBoxIO<T> : GameBoxIOCustom<T, GameBox<T>> where T : Node
+    public abstract class GameBoxIO<T> : GameBoxIOCustom<T, GameBox<T>> where T : CMwNod
     {
         public GameBoxIO(GameBox gbx) : base(gbx)
         {

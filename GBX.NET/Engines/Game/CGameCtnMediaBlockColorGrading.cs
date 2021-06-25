@@ -1,18 +1,42 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace GBX.NET.Engines.Game
 {
     /// <summary>
     /// MediaTracker block - Color grading
     /// </summary>
     [Node(0x03186000)]
-    public class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock
+    public class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
+        #region Fields
+
+        private FileRef image;
+        private IList<Key> keys = new List<Key>();
+
+        #endregion
+
         #region Properties
 
-        [NodeMember]
-        public FileRef Image { get; set; }
+        IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+        {
+            get => keys.Cast<CGameCtnMediaBlock.Key>();
+            set => keys = value.Cast<Key>().ToList();
+        }
 
         [NodeMember]
-        public Key[] Keys { get; set; }
+        public FileRef Image
+        {
+            get => image;
+            set => image = value;
+        }
+
+        [NodeMember]
+        public IList<Key> Keys
+        {
+            get => keys;
+            set => keys = value;
+        }
 
         #endregion
 
@@ -28,7 +52,7 @@
         {
             public override void ReadWrite(CGameCtnMediaBlockColorGrading n, GameBoxReaderWriter rw)
             {
-                n.Image = rw.FileRef(n.Image);
+                rw.FileRef(ref n.image);
             }
         }
 
@@ -44,15 +68,15 @@
         {
             public override void ReadWrite(CGameCtnMediaBlockColorGrading n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, i => new Key()
+                rw.List(ref n.keys, r => new Key()
                 {
-                    Time = rw.Reader.ReadSingle(),
-                    Intensity = rw.Reader.ReadSingle()
+                    Time = r.ReadSingle_s(),
+                    Intensity = r.ReadSingle()
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.Intensity);
+                    w.WriteSingle_s(x.Time);
+                    w.Write(x.Intensity);
                 });
             }
         }

@@ -1,12 +1,31 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x0316D000)]
-    public class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock
+    public class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
+        #region Fields
+
+        private IList<Key> keys = new List<Key>();
+
+        #endregion
+
         #region Properties
 
+        IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+        {
+            get => keys.Cast<CGameCtnMediaBlock.Key>();
+            set => keys = value.Cast<Key>().ToList();
+        }
+
         [NodeMember]
-        public Key[] Keys { get; set; }
+        public IList<Key> Keys
+        {
+            get => keys;
+            set => keys = value;
+        }
 
         #endregion
 
@@ -15,26 +34,29 @@
         #region 0x000 chunk
 
         [Chunk(0x0316D000)]
-        public class Chunk0316D000 : Chunk<CGameCtnMediaBlockFxCameraBlend>
+        public class Chunk0316D000 : Chunk<CGameCtnMediaBlockFxCameraBlend>, IVersionable
         {
-            public int Version { get; set; }
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CGameCtnMediaBlockFxCameraBlend n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
+                rw.Int32(ref version);
 
-                n.Keys = rw.Array(n.Keys, i =>
+                rw.List(ref n.keys, r => new Key()
                 {
-                    return new Key()
-                    {
-                        Time = rw.Reader.ReadSingle(),
-                        CaptureWeight = rw.Reader.ReadSingle()
-                    };
+                    Time = r.ReadSingle_s(),
+                    CaptureWeight = r.ReadSingle()
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.CaptureWeight);
+                    w.WriteSingle_s(x.Time);
+                    w.Write(x.CaptureWeight);
                 });
             }
         }

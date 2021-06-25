@@ -1,12 +1,31 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x03081000)]
-    public class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx
+    public class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
     {
+        #region Fields
+
+        private IList<Key> keys = new List<Key>();
+
+        #endregion
+
         #region Properties
 
+        IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+        {
+            get => keys.Cast<CGameCtnMediaBlock.Key>();
+            set => keys = value.Cast<Key>().ToList();
+        }
+
         [NodeMember]
-        public Key[] Keys { get; set; }
+        public IList<Key> Keys
+        {
+            get => keys;
+            set => keys = value;
+        }
 
         #endregion
 
@@ -17,22 +36,18 @@
         [Chunk(0x03081001)]
         public class Chunk03081001 : Chunk<CGameCtnMediaBlockFxBlurDepth>
         {
-            public override void Read(CGameCtnMediaBlockFxBlurDepth n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void ReadWrite(CGameCtnMediaBlockFxBlurDepth n, GameBoxReaderWriter rw)
             {
-                n.Keys = r.ReadArray(r1 => new Key()
+                rw.List(n.keys, r1 => new Key()
                 {
-                    Time = r1.ReadSingle(),
+                    Time = r1.ReadSingle_s(),
                     LensSize = r1.ReadSingle(),
                     ForceFocus = r1.ReadBoolean(),
                     FocusZ = r1.ReadSingle(),
-                });
-            }
-
-            public override void Write(CGameCtnMediaBlockFxBlurDepth n, GameBoxWriter w, GameBoxReader unknownR)
-            {
-                w.Write(n.Keys, (x, w1) =>
+                },
+                (x, w1) =>
                 {
-                    w1.Write(x.Time);
+                    w1.WriteSingle_s(x.Time);
                     w1.Write(x.LensSize);
                     w1.Write(x.ForceFocus);
                     w1.Write(x.FocusZ);

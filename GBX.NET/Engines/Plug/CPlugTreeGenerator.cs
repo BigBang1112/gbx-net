@@ -8,13 +8,19 @@ namespace GBX.NET.Engines.Plug
     public class CPlugTreeGenerator : CPlug
     {
         [Chunk(0x09051000)]
-        public class Chunk09051000 : Chunk<CPlugTreeGenerator>
+        public class Chunk09051000 : Chunk<CPlugTreeGenerator>, IVersionable
         {
-            public int Version { get; set; }
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CPlugTreeGenerator n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
+                rw.Int32(ref version);
             }
         }
     }

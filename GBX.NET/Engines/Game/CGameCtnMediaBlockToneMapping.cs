@@ -1,12 +1,31 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x03127000)]
-    public class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock
+    public class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
+        #region Fields
+
+        private IList<Key> keys = new List<Key>();
+
+        #endregion
+
         #region Properties
 
+        IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+        {
+            get => Keys.Cast<CGameCtnMediaBlock.Key>();
+            set => Keys = value.Cast<Key>().ToList();
+        }
+
         [NodeMember]
-        public Key[] Keys { get; set; }
+        public IList<Key> Keys
+        {
+            get => keys;
+            set => keys = value;
+        }
 
         #endregion
 
@@ -19,9 +38,9 @@
         {
             public override void ReadWrite(CGameCtnMediaBlockToneMapping n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, r => new Key()
+                rw.List(ref n.keys, r => new Key()
                 {
-                    Time = r.ReadSingle(),
+                    Time = r.ReadSingle_s(),
                     Exposure = r.ReadSingle(),
                     MaxHDR = r.ReadSingle(),
                     LightTrailScale = r.ReadSingle(),
@@ -29,7 +48,7 @@
                 },
                 (x, w) =>
                 {
-                    w.Write(x.Time);
+                    w.WriteSingle_s(x.Time);
                     w.Write(x.Exposure);
                     w.Write(x.MaxHDR);
                     w.Write(x.LightTrailScale);

@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Game
 {
@@ -7,12 +7,22 @@ namespace GBX.NET.Engines.Game
     /// </summary>
     /// <remarks>A list of puzzle pieces.</remarks>
     [Node(0x0301B000)]
-    public class CGameCtnCollectorList : Node
+    public class CGameCtnCollectorList : CMwNod
     {
+        #region Fields
+
+        private Collector[] collectorStock;
+
+        #endregion
+
         #region Properties
 
         [NodeMember]
-        public Collector[] CollectorStock { get; set; }
+        public Collector[] CollectorStock
+        {
+            get => collectorStock;
+            set => collectorStock = value;
+        }
 
         #endregion
 
@@ -28,16 +38,15 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnCollectorList n, GameBoxReaderWriter rw)
             {
-                n.CollectorStock = rw.Array(n.CollectorStock,
-                i => new Collector()
+                rw.Array(ref n.collectorStock, r => new Collector()
                 {
-                    Ident = rw.Reader.ReadIdent(),
-                    Count = rw.Reader.ReadInt32()
+                    Ident = r.ReadIdent(),
+                    Count = r.ReadInt32()
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Ident);
-                    rw.Writer.Write(x.Count);
+                    w.Write(x.Ident);
+                    w.Write(x.Count);
                 });
             }
         }

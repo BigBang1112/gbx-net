@@ -1,21 +1,48 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using GBX.NET.Engines.MwFoundations;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x0311D000)]
-    public class CGameCtnZoneGenealogy : Node
+    public class CGameCtnZoneGenealogy : CMwNod
     {
+        #region Fields
+
+        private string[] zoneIds;
+        private string currentZoneId;
+        private Direction dir;
+        private int currentIndex;
+
+        #endregion
+
         #region Properties
 
         [NodeMember]
-        public string[] ZoneIds { get; set; }
+        public string[] ZoneIds
+        {
+            get => zoneIds;
+            set => zoneIds = value;
+        }
 
         [NodeMember]
-        public string CurrentZoneId { get; set; }
+        public string CurrentZoneId
+        {
+            get => currentZoneId;
+            set => currentZoneId = value;
+        }
 
         [NodeMember]
-        public Direction Dir { get; set; }
+        public Direction Dir
+        {
+            get => dir;
+            set => dir = value;
+        }
 
         [NodeMember]
-        public int CurrentIndex { get; set; }
+        public int CurrentIndex
+        {
+            get => currentIndex;
+            set => currentIndex = value;
+        }
 
         #endregion
 
@@ -34,8 +61,8 @@
         {
             public override void ReadWrite(CGameCtnZoneGenealogy n, GameBoxReaderWriter rw)
             {
-                n.CurrentIndex = rw.Int32(n.CurrentIndex);
-                n.Dir = (Direction)rw.Int32((int)n.Dir);
+                rw.Int32(ref n.currentIndex);
+                rw.EnumInt32<Direction>(ref n.dir);
             }
         }
 
@@ -48,10 +75,12 @@
         {
             public override void ReadWrite(CGameCtnZoneGenealogy n, GameBoxReaderWriter rw)
             {
-                n.ZoneIds = rw.Array(n.ZoneIds, r => r.ReadId(), (x, w) => w.WriteId(x));
-                n.CurrentIndex = rw.Int32(n.CurrentIndex); // 9
-                n.Dir = (Direction)rw.Int32((int)n.Dir);
-                n.CurrentZoneId = rw.Id(n.CurrentZoneId);
+                rw.Array(ref n.zoneIds,
+                    r => r.ReadId(),
+                    (x, w) => w.WriteId(x));
+                rw.Int32(ref n.currentIndex); // 9
+                rw.EnumInt32<Direction>(ref n.dir);
+                rw.Id(ref n.currentZoneId);
             }
         }
 

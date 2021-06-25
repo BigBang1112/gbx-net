@@ -15,12 +15,14 @@ namespace PasswordCracker
 
             Log.OnLogEvent += Log_OnLogEvent;
 
-            var gbx = GameBox.Parse(fileName);
+            var node = GameBox.ParseNode(fileName);
 
-            if (gbx is GameBox<CGameCtnChallenge> gbxMap)
+            if (node is CGameCtnChallenge map)
             {
-                gbxMap.MainNode.CrackPassword();
-                gbxMap.Save(Path.GetFileName(fileName));
+                map.CrackPassword();
+
+                var savePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.GetFileName(fileName));
+                map.Save(savePath);
             }
         }
 

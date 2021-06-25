@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
+
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET
 {
@@ -14,8 +14,18 @@ namespace GBX.NET
     /// </summary>
     public class GameBoxReader : BinaryReader
     {
-        public ILookbackable Lookbackable { get; internal set; }
-        public Chunk Chunk { get; internal set; }
+        public GameBoxBody Body { get; }
+        public ILookbackable Lookbackable { get; }
+
+        public GameBox GBX
+        {
+            get
+            {
+                if (Body != null)
+                    return Body.GBX;
+                return Lookbackable.GBX;
+            }
+        }
 
         public GameBoxReader(Stream input) : base(input, Encoding.UTF8, true)
         {
@@ -25,6 +35,101 @@ namespace GBX.NET
         public GameBoxReader(Stream input, ILookbackable lookbackable) : this(input)
         {
             Lookbackable = lookbackable;
+
+            if (lookbackable is GameBoxBody b)
+                Body = b;
+        }
+
+        /// <summary>
+        /// Reads a 4-byte signed integer from the current stream and advances the current position of the stream by four bytes.
+        /// The integer is then presented as time in seconds.
+        /// </summary>
+        /// <returns>A TimeSpan converted from the integer.</returns>
+        public TimeSpan ReadInt32_s()
+        {
+            return TimeSpan.FromSeconds(ReadInt32());
+        }
+
+        /// <summary>
+        /// Reads a 4-byte signed integer from the current stream and advances the current position of the stream by four bytes.
+        /// The integer is then presented as time in milliseconds.
+        /// </summary>
+        /// <returns>A TimeSpan converted from the integer.</returns>
+        public TimeSpan ReadInt32_ms()
+        {
+            return TimeSpan.FromMilliseconds(ReadInt32());
+        }
+
+        /// <summary>
+        /// Reads a 4-byte signed integer from the current stream and advances the current position of the stream by four bytes.
+        /// The integer is then presented as time in seconds. If value is -1, a null is returned instead.
+        /// </summary>
+        /// <returns>A TimeSpan converted from the integer. Null if the read value is -1.</returns>
+        public TimeSpan? ReadInt32_sn()
+        {
+            var time = ReadInt32();
+            if (time < 0)
+                return null;
+            return TimeSpan.FromSeconds(time);
+        }
+
+        /// <summary>
+        /// Reads a 4-byte signed integer from the current stream and advances the current position of the stream by four bytes.
+        /// The integer is then presented as time in milliseconds. If value is -1, a null is returned instead.
+        /// </summary>
+        /// <returns>A TimeSpan converted from the integer. Null if the read value is -1.</returns>
+        public TimeSpan? ReadInt32_msn()
+        {
+            var time = ReadInt32();
+            if (time < 0)
+                return null;
+            return TimeSpan.FromMilliseconds(time);
+        }
+
+        /// <summary>
+        /// Reads a 4-byte floating point value from the current stream and advances the current position of the stream by four bytes.
+        /// The floating point value is then presented as time in seconds.
+        /// </summary>
+        /// <returns>A TimeSpan converted from the floating point value.</returns>
+        public TimeSpan ReadSingle_s()
+        {
+            return TimeSpan.FromSeconds(ReadSingle());
+        }
+
+        /// <summary>
+        /// Reads a 4-byte floating point value from the current stream and advances the current position of the stream by four bytes.
+        /// The floating point value is then presented as time in milliseconds.
+        /// </summary>
+        /// <returns>A TimeSpan converted from the floating point value.</returns>
+        public TimeSpan ReadSingle_ms()
+        {
+            return TimeSpan.FromMilliseconds(ReadSingle());
+        }
+
+        /// <summary>
+        /// Reads a 4-byte floating point value from the current stream and advances the current position of the stream by four bytes.
+        /// The floating point value is then presented as time in seconds. If value is -1, a null is returned instead.
+        /// </summary>
+        /// <returns>A TimeSpan converted from the floating point value. Null if the read value is -1.</returns>
+        public TimeSpan? ReadSingle_sn()
+        {
+            var time = ReadSingle();
+            if (time < 0)
+                return null;
+            return TimeSpan.FromSeconds(time);
+        }
+
+        /// <summary>
+        /// Reads a 4-byte floating point value from the current stream and advances the current position of the stream by four bytes.
+        /// The floating point value is then presented as time in milliseconds. If value is -1, a null is returned instead.
+        /// </summary>
+        /// <returns>A TimeSpan converted from the floating point value. Null if the read value is -1.</returns>
+        public TimeSpan? ReadSingle_msn()
+        {
+            var time = ReadSingle();
+            if (time < 0)
+                return null;
+            return TimeSpan.FromMilliseconds(time);
         }
 
         /// <summary>
@@ -152,10 +257,7 @@ namespace GBX.NET
             }
             else if (index >> 30 == 0)
             {
-                if (Id.CollectionIDs.TryGetValue((int)index, out string val))
-                    return new Id(index.ToString(), lookbackable);
-                else
-                    return new Id("???", lookbackable);
+                return new Id(index.ToString(), lookbackable);
             }
             else if (lookbackable.IdStrings.Count > (index & 0x3FFF) - 1)
                 return new Id(lookbackable.IdStrings[(int)(index & 0x3FFF) - 1], lookbackable);
@@ -182,16 +284,16 @@ namespace GBX.NET
             return ReadIdent(Lookbackable);
         }
 
-        public T ReadNodeRef<T>(IGameBoxBody body) where T : Node
+        public T ReadNodeRef<T>(GameBoxBody body) where T : CMwNod
         {
             var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
             if (index >= 0 && (!body.AuxilaryNodes.ContainsKey(index) || body.AuxilaryNodes[index] == null)) // If index is 0 or bigger and the node wasn't read yet, or is null
-                body.AuxilaryNodes[index] = Node.Parse<T>(this);
+                body.AuxilaryNodes[index] = CMwNod.Parse<T>(this);
 
             if (index < 0) // If aux node index is below 0 then there's not much to solve
                 return null;
-            body.AuxilaryNodes.TryGetValue(index, out Node n); // Tries to get the available node from index
+            body.AuxilaryNodes.TryGetValue(index, out CMwNod n); // Tries to get the available node from index
             
             if (n is T nod) // If the node is presented at the index, then it's simple
                 return nod;
@@ -200,19 +302,19 @@ namespace GBX.NET
             return (T)body.AuxilaryNodes.Last().Value; // So it grabs the last one instead, needs to be further tested
         }
 
-        public T ReadNodeRef<T>() where T : Node
+        public T ReadNodeRef<T>() where T : CMwNod
         {
-            return ReadNodeRef<T>((IGameBoxBody)Lookbackable);
+            return ReadNodeRef<T>(Body);
         }
 
-        public Node ReadNodeRef(IGameBoxBody body)
+        public CMwNod ReadNodeRef(GameBoxBody body)
         {
-            return ReadNodeRef<Node>(body);
+            return ReadNodeRef<CMwNod>(body);
         }
 
-        public Node ReadNodeRef()
+        public CMwNod ReadNodeRef()
         {
-            return ReadNodeRef<Node>((IGameBoxBody)Lookbackable);
+            return ReadNodeRef<CMwNod>(Body);
         }
 
         public FileRef ReadFileRef()
@@ -369,6 +471,66 @@ namespace GBX.NET
             return ReadArray(ReadInt32(), forLoop);
         }
 
+        public IList<T> ReadList<T>(int length, Func<int, T> forLoop)
+        {
+            var result = new List<T>(length);
+
+            for (var i = 0; i < length; i++)
+                result.Add(forLoop.Invoke(i));
+
+            return result;
+        }
+
+        public IList<T> ReadList<T>(Func<int, T> forLoop)
+        {
+            return ReadList(ReadInt32(), forLoop);
+        }
+
+        public IList<T> ReadList<T>(int length, Func<T> forLoop)
+        {
+            var result = new List<T>(length);
+
+            for (var i = 0; i < length; i++)
+                result.Add(forLoop.Invoke());
+
+            return result;
+        }
+
+        public IList<T> ReadList<T>(Func<T> forLoop)
+        {
+            return ReadList(ReadInt32(), forLoop);
+        }
+
+        public IList<T> ReadList<T>(int length, Func<int, GameBoxReader, T> forLoop)
+        {
+            var result = new List<T>(length);
+
+            for (var i = 0; i < length; i++)
+                result.Add(forLoop.Invoke(i, this));
+
+            return result;
+        }
+
+        public IList<T> ReadList<T>(Func<int, GameBoxReader, T> forLoop)
+        {
+            return ReadList(ReadInt32(), forLoop);
+        }
+
+        public IList<T> ReadList<T>(int length, Func<GameBoxReader, T> forLoop)
+        {
+            var result = new List<T>(length);
+
+            for (var i = 0; i < length; i++)
+                result.Add(forLoop.Invoke(this));
+
+            return result;
+        }
+
+        public IList<T> ReadList<T>(Func<GameBoxReader, T> forLoop)
+        {
+            return ReadList(ReadInt32(), forLoop);
+        }
+
         /// <summary>
         /// Reads values in a dictionary kind (first key, then value). For node dictionaries, use the <see cref="ReadNodeDictionary{TKey, TValue}"/> method for better performance.
         /// </summary>
@@ -398,7 +560,7 @@ namespace GBX.NET
         /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>.</typeparam>
         /// <typeparam name="TValue">A node that is presented as node reference.</typeparam>
         /// <returns>A dictionary.</returns>
-        public Dictionary<TKey, TValue> ReadNodeDictionary<TKey, TValue>() where TValue : Node
+        public Dictionary<TKey, TValue> ReadNodeDictionary<TKey, TValue>() where TValue : CMwNod
         {
             var dictionary = new Dictionary<TKey, TValue>();
 
@@ -451,14 +613,6 @@ namespace GBX.NET
             return (bytes[0], bytes[1], bytes[2]);
         }
 
-        public TimeSpan? ReadTimeSpan()
-        {
-            var time = ReadInt32();
-            if (time < 0)
-                return null;
-            return TimeSpan.FromMilliseconds(time);
-        }
-
         public (Vec3 position, Quaternion rotation, float speed, Vec3 velocity) ReadTransform()
         {
             var pos = ReadVec3();
@@ -482,7 +636,7 @@ namespace GBX.NET
             return (pos, quaternion, speed, velocity);
         }
 
-        public byte[] ReadTill(uint uint32)
+        public byte[] ReadUntil(uint uint32)
         {
             List<byte> bytes = new List<byte>();
             while (PeekUInt32() != uint32)
@@ -490,9 +644,9 @@ namespace GBX.NET
             return bytes.ToArray();
         }
 
-        public byte[] ReadTillFacade()
+        public byte[] ReadUntilFacade()
         {
-            return ReadTill(0xFACADE01);
+            return ReadUntil(0xFACADE01);
         }
 
         public byte[] ReadToEnd()
@@ -500,14 +654,14 @@ namespace GBX.NET
             return ReadBytes((int)(BaseStream.Length - BaseStream.Position));
         }
 
-        public string ReadStringTillFacade()
+        public string ReadStringUntilFacade()
         {
-            return Encoding.UTF8.GetString(ReadTillFacade());
+            return Encoding.UTF8.GetString(ReadUntilFacade());
         }
 
-        public T[] ReadArrayTillFacade<T>()
+        public T[] ReadArrayUntilFacade<T>()
         {
-            var bytes = ReadTillFacade();
+            var bytes = ReadUntilFacade();
 
             var array = new T[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T)))];
             Buffer.BlockCopy(bytes, 0, array, 0, bytes.Length);
@@ -515,9 +669,9 @@ namespace GBX.NET
             return array;
         }
 
-        public (T1[], T2[]) ReadArrayTillFacade<T1, T2>()
+        public (T1[], T2[]) ReadArrayUntilFacade<T1, T2>()
         {
-            var bytes = ReadTillFacade();
+            var bytes = ReadUntilFacade();
 
             var array = new T1[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T1)))];
             Buffer.BlockCopy(bytes, 0, array, 0, bytes.Length);
@@ -528,9 +682,9 @@ namespace GBX.NET
             return (array, array2);
         }
 
-        public (T1[], T2[], T3[]) ReadArrayTillFacade<T1, T2, T3>()
+        public (T1[], T2[], T3[]) ReadArrayUntilFacade<T1, T2, T3>()
         {
-            var bytes = ReadTillFacade();
+            var bytes = ReadUntilFacade();
 
             var array = new T1[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T1)))];
             Buffer.BlockCopy(bytes, 0, array, 0, bytes.Length);

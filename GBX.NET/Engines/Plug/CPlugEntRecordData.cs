@@ -1,29 +1,27 @@
-﻿using GBX.NET.Engines.Game;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Plug
 {
     [Node(0x0911F000)]
-    public class CPlugEntRecordData : Node
+    public class CPlugEntRecordData : CMwNod
     {
         public Task<ObservableCollection<Sample>> Samples { get; private set; }
 
         [Chunk(0x0911F000)]
-        public class Chunk000 : Chunk<CPlugEntRecordData>
+        public class Chunk000 : Chunk<CPlugEntRecordData>, IVersionable
         {
             public int Version { get; set; }
             public int CompressedSize { get; private set; }
             public int UncompressedSize { get; private set; }
             public byte[] Data { get; private set; }
 
-            public override void Read(CPlugEntRecordData n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CPlugEntRecordData n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
                 UncompressedSize = r.ReadInt32();
@@ -43,7 +41,7 @@ namespace GBX.NET.Engines.Plug
                         var objects = gbxr.ReadArray<object>(r1 =>
                         {
                             var nodeId = r1.ReadUInt32();
-                            Names.TryGetValue(nodeId, out string nodeName);
+                            NodeCacheManager.Names.TryGetValue(nodeId, out string nodeName);
 
                             return new
                             {
@@ -69,7 +67,7 @@ namespace GBX.NET.Engines.Plug
                                 if (Version >= 4)
                                 {
                                     clas = r1.ReadUInt32();
-                                    Names.TryGetValue(clas.Value, out clasName);
+                                    NodeCacheManager.Names.TryGetValue(clas.Value, out clasName);
                                 }
 
                                 return new
@@ -238,7 +236,7 @@ namespace GBX.NET.Engines.Plug
                 });
             }
 
-            public override void Write(CPlugEntRecordData n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CPlugEntRecordData n, GameBoxWriter w)
             {
                 w.Write(Version);
                 w.Write(UncompressedSize);

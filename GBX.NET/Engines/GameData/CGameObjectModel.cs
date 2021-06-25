@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E01D000)]
-    public class CGameObjectModel : Node
+    public class CGameObjectModel : CMwNod
     {
         public uint m_InventoryParams_InventoryOccupation { get; set; }
 
@@ -14,17 +12,17 @@ namespace GBX.NET.Engines.GameData
         {
             public override void ReadWrite(CGameObjectModel n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
                 n.m_InventoryParams_InventoryOccupation = rw.UInt32(n.m_InventoryParams_InventoryOccupation);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
             }
         }
     }

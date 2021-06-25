@@ -1,12 +1,31 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x030A6000)]
-    public class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock
+    public class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
+        #region Fields
+
+        private IList<Key> keys = new List<Key>();
+
+        #endregion
+
         #region Properties
 
+        IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+        {
+            get => keys.Cast<CGameCtnMediaBlock.Key>();
+            set => keys = value.Cast<Key>().ToList();
+        }
+
         [NodeMember]
-        public Key[] Keys { get; set; }
+        public IList<Key> Keys
+        {
+            get => keys;
+            set => keys = value;
+        }
 
         #endregion
 
@@ -19,21 +38,15 @@
         {
             public override void ReadWrite(CGameCtnMediaBlockMusicEffect n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, i =>
+                rw.List(ref n.keys, r => new Key()
                 {
-                    var time = rw.Reader.ReadSingle();
-                    var musicVol = rw.Reader.ReadSingle();
-
-                    return new Key()
-                    {
-                        Time = time,
-                        MusicVolume = musicVol
-                    };
+                    Time = r.ReadSingle_s(),
+                    MusicVolume = r.ReadSingle()
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.MusicVolume);
+                    w.WriteSingle_s(x.Time);
+                    w.Write(x.MusicVolume);
                 });
             }
         }
@@ -47,24 +60,17 @@
         {
             public override void ReadWrite(CGameCtnMediaBlockMusicEffect n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, i =>
+                rw.List(ref n.keys, r => new Key()
                 {
-                    var time = rw.Reader.ReadSingle();
-                    var musicVol = rw.Reader.ReadSingle();
-                    var soundVol = rw.Reader.ReadSingle();
-
-                    return new Key()
-                    {
-                        Time = time,
-                        MusicVolume = musicVol,
-                        SoundVolume = soundVol
-                    };
+                    Time = r.ReadSingle_s(),
+                    MusicVolume = r.ReadSingle(),
+                    SoundVolume = r.ReadSingle()
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.MusicVolume);
-                    rw.Writer.Write(x.SoundVolume);
+                    w.WriteSingle_s(x.Time);
+                    w.Write(x.MusicVolume);
+                    w.Write(x.SoundVolume);
                 });
             }
         }

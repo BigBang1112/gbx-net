@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.System
 {
     [Node(0x0B005000)]
-    public class CSystemConfig : Node
+    public class CSystemConfig : CMwNod
     {
         #region Fields
 
@@ -930,9 +928,17 @@ namespace GBX.NET.Engines.System
         [Chunk(0x0B00502B)]
         public class Chunk0B00502B : SkippableChunk<CSystemConfig>
         {
+            private int u01;
+
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
             public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32(ref u01);
                 rw.Boolean(ref n.advertising_DisabledByUser);
                 rw.Single(ref n.advertising_TunningCoef);
             }
@@ -1146,12 +1152,27 @@ namespace GBX.NET.Engines.System
         [Chunk(0x0B00504A)]
         public class Chunk0B00504A : SkippableChunk<CSystemConfig>
         {
+            private int u01;
+            private int u02;
+
+            public int U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public int U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
+
             public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
             {
                 rw.Boolean(ref n.isIgnorePlayerSkins);
                 rw.Boolean(ref n.isSkipRollingDemo);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32(ref u01);
+                rw.Int32(ref u02);
             }
         }
 
@@ -1278,14 +1299,36 @@ namespace GBX.NET.Engines.System
         [Chunk(0x0B005056)]
         public class Chunk0B005056 : SkippableChunk<CSystemConfig>
         {
+            private bool u01;
+            private int u02;
+            private bool u03;
+
+            public bool U01
+            {
+                get => u01;
+                set => u01 = value;
+            }
+
+            public int U02
+            {
+                get => u02;
+                set => u02 = value;
+            }
+
+            public bool U03
+            {
+                get => u03;
+                set => u03 = value;
+            }
+
             public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
             {
-                rw.Boolean(Unknown);
+                rw.Boolean(ref u01);
                 rw.Boolean(ref n.audioAllowHRTF);
                 rw.Int32(ref n.audioDontMuteWhenApplicationUnfocused);
-                rw.Int32(Unknown);
+                rw.Int32(ref u02);
                 rw.Boolean(ref n.audioSoundHdr);
-                rw.Boolean(Unknown);
+                rw.Boolean(ref u03);
             }
         }
 

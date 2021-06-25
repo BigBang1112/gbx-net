@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
+
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET
 {
@@ -14,8 +15,18 @@ namespace GBX.NET
     /// </summary>
     public class GameBoxWriter : BinaryWriter
     {
+        public GameBoxBody Body { get; }
         public ILookbackable Lookbackable { get; }
-        public Chunk Chunk { get; internal set; }
+
+        public GameBox GBX
+        {
+            get
+            {
+                if (Body != null)
+                    return Body.GBX;
+                return Lookbackable.GBX;
+            }
+        }
 
         public GameBoxWriter(Stream output) : base(output, Encoding.UTF8, true)
         {
@@ -25,12 +36,9 @@ namespace GBX.NET
         public GameBoxWriter(Stream output, ILookbackable lookbackable) : this(output)
         {
             Lookbackable = lookbackable;
-        }
 
-        public GameBoxWriter(Stream output, GameBoxWriter reference) : this(output)
-        {
-            Lookbackable = reference.Lookbackable;
-            Chunk = reference.Chunk;
+            if (lookbackable is GameBoxBody b)
+                Body = b;
         }
 
         public void Write(string value, StringLengthPrefix lengthPrefix)
@@ -79,11 +87,11 @@ namespace GBX.NET
             Write(value, false);
         }
 
-        public void Write<T>(T[] array)
+        public void Write<T>(T[] array) where T : struct
         {
             var bytes = new byte[array.Length * Marshal.SizeOf(default(T))];
             Buffer.BlockCopy(array, 0, bytes, 0, bytes.Length);
-            Write(bytes, 0, bytes.Length);
+            WriteBytes(bytes);
         }
 
         /// <summary>
@@ -122,7 +130,7 @@ namespace GBX.NET
             }
         }
 
-        public void Write<T>(List<T> list, Action<T> forLoop)
+        public void Write<T>(IList<T> list, Action<T> forLoop)
         {
             if (list == null)
             {
@@ -137,7 +145,7 @@ namespace GBX.NET
             }
         }
 
-        public void Write<T>(List<T> list, Action<T, GameBoxWriter> forLoop)
+        public void Write<T>(IList<T> list, Action<T, GameBoxWriter> forLoop)
         {
             if (list == null)
             {
@@ -229,11 +237,11 @@ namespace GBX.NET
 
             if (value == "Unassigned")
                 Write(0xBFFFFFFF);
-            else if (value == "")
+            else if (string.IsNullOrEmpty(value))
                 Write(0xFFFFFFFF);
             else if (l.IdStrings.Contains(value))
                 Write(value.Index + 1 + 0x40000000);
-            else if (int.TryParse(value, out int cID) && Id.CollectionIDs.ContainsKey(cID))
+            else if (int.TryParse(value, out int cID))
                 Write(cID);
             else
             {
@@ -260,7 +268,7 @@ namespace GBX.NET
             Write(ident, Lookbackable);
         }
 
-        public void Write(Node node, IGameBoxBody body)
+        public void Write(CMwNod node, GameBoxBody body)
         {
             if (node == null)
                 Write(-1);
@@ -280,16 +288,9 @@ namespace GBX.NET
             }
         }
 
-        public void Write(Node node)
+        public void Write(CMwNod node)
         {
-            Write(node, (IGameBoxBody)Lookbackable);
-        }
-
-        public void Write(TimeSpan? timeSpan)
-        {
-            if (timeSpan.HasValue)
-                Write(Convert.ToInt32(timeSpan.Value.TotalMilliseconds));
-            else Write(-1);
+            Write(node, Body);
         }
 
         public void Write<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
@@ -303,6 +304,58 @@ namespace GBX.NET
             }
         }
 
+        public void WriteInt32_s(TimeSpan variable)
+        {
+            Write(Convert.ToInt32(variable.TotalSeconds));
+        }
+
+        public void WriteInt32_ms(TimeSpan variable)
+        {
+            Write(Convert.ToInt32(variable.TotalMilliseconds));
+        }
+
+        public void WriteInt32_sn(TimeSpan? variable)
+        {
+            if (variable.HasValue)
+                Write(Convert.ToInt32(variable.Value.TotalSeconds));
+            else
+                Write(-1);
+        }
+
+        public void WriteInt32_msn(TimeSpan? variable)
+        {
+            if (variable.HasValue)
+                Write(Convert.ToInt32(variable.Value.TotalMilliseconds));
+            else
+                Write(-1);
+        }
+
+        public void WriteSingle_s(TimeSpan variable)
+        {
+            Write((float)variable.TotalSeconds);
+        }
+
+        public void WriteSingle_ms(TimeSpan variable)
+        {
+            Write((float)variable.TotalMilliseconds);
+        }
+
+        public void WriteSingle_sn(TimeSpan? variable)
+        {
+            if (variable.HasValue)
+                Write((float)variable.Value.TotalSeconds);
+            else
+                Write(-1);
+        }
+
+        public void WriteSingle_msn(TimeSpan? variable)
+        {
+            if (variable.HasValue)
+                Write((float)variable.Value.TotalMilliseconds);
+            else
+                Write(-1);
+        }
+
         public void WriteBytes(byte[] bytes)
         {
             Write(bytes, 0, bytes.Length);
@@ -313,7 +366,7 @@ namespace GBX.NET
         /// </summary>
         /// <typeparam name="T">Type of the node.</typeparam>
         /// <param name="nodes">Node array.</param>
-        public void WriteNodes<T>(IEnumerable<T> nodes) where T : Node
+        public void WriteNodes<T>(IEnumerable<T> nodes) where T : CMwNod
         {
             var watch = Stopwatch.StartNew();
 
@@ -331,7 +384,7 @@ namespace GBX.NET
                 node.Write(this);
 
                 string logProgress = $"[{nodeType.FullName.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::")}] {counter + 1}/{count} ({watch.Elapsed.TotalMilliseconds}ms)";
-                if (Chunk.Part == null || !Chunk.Part.GBX.ID.HasValue || Node.Remap(Chunk.Part.GBX.ID.Value) != node.ID)
+                if (GBX == null || !GBX.ID.HasValue || CMwNod.Remap(GBX.ID.Value) != node.ID)
                     logProgress = "~ " + logProgress;
 
                 Log.Write(logProgress, ConsoleColor.Magenta);
@@ -343,7 +396,7 @@ namespace GBX.NET
             }
         }
 
-        public void WriteNodeDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary) where TValue : Node
+        public void WriteNodeDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary) where TValue : CMwNod
         {
             Write(dictionary.Count);
 

@@ -8,7 +8,7 @@ namespace GBX.NET.Engines.Game
     /// <summary>
     /// Macroblock (0x0310D000)
     /// </summary>
-    [Node(0x0310D000)]
+    [Node(0x0310D000), WritingNotSupported]
     public class CGameCtnMacroBlockInfo : CGameCtnCollector
     {
         public CGameCtnBlock[] Blocks { get; set; }
@@ -25,7 +25,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0310D000, "blocks")]
         public class Chunk0310D000 : Chunk<CGameCtnMacroBlockInfo>
         {
-            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r)
             {
                 n.Blocks = r.ReadArray(r1 =>
                 {
@@ -108,7 +108,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0310D001)]
         public class Chunk0310D001 : Chunk<CGameCtnMacroBlockInfo>
         {
-            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r)
             {
                 var unknown = r.ReadArray(r1 =>
                 {
@@ -140,7 +140,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0310D002)]
         public class Chunk0310D002 : Chunk<CGameCtnMacroBlockInfo>
         {
-            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r)
             {
                 var unknown = r.ReadArray(r1 =>
                 {
@@ -167,7 +167,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0310D006)]
         public class Chunk0310D006 : Chunk<CGameCtnMacroBlockInfo>
         {
-            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r)
             {
                 var version = r.ReadInt32();
                 var arrayLength = r.ReadInt32();
@@ -184,7 +184,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0310D008)]
         public class Chunk0310D008 : Chunk<CGameCtnMacroBlockInfo>
         {
-            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r)
             {
                 var version = r.ReadInt32();
                 var nodrefs = r.ReadArray(r1 => r1.ReadNodeRef());
@@ -204,7 +204,7 @@ namespace GBX.NET.Engines.Game
         {
             public int Version { get; set; }
 
-            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
 
@@ -281,7 +281,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0310D00F)]
         public class Chunk0310D00F : Chunk<CGameCtnMacroBlockInfo>
         {
-            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r)
             {
                 var version = r.ReadInt32();
                 _ = r.ReadArray<int>(7);

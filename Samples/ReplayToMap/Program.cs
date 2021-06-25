@@ -14,12 +14,12 @@ namespace ReplayToMap
 
             Log.OnLogEvent += Log_OnLogEvent;
 
-            var gbx = GameBox.Parse(fileName);
+            var node = GameBox.ParseNode(fileName);
 
-            if (gbx is GameBox<CGameCtnReplayRecord> gbxReplay)
+            if (node is CGameCtnReplayRecord replay)
             {
-                var map = gbxReplay.MainNode.Challenge.Result;
-                map.Save(Formatter.Deformat(map.MainNode.MapName + ".Map.Gbx"));
+                var map = replay.Challenge.Result;
+                map.Save(Formatter.Deformat(map.MapName + ".Map.Gbx"));
             }
         }
 

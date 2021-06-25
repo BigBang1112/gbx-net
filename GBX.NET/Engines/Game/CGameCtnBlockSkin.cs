@@ -1,27 +1,54 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using GBX.NET.Engines.MwFoundations;
+
+namespace GBX.NET.Engines.Game
 {
     /// <summary>
     /// Skin for a block (0x03059000)
     /// </summary>
     [Node(0x03059000)]
-    public class CGameCtnBlockSkin : Node
+    public class CGameCtnBlockSkin : CMwNod
     {
+        #region Fields
+
+        private string text;
+        private FileRef packDesc = new FileRef();
+        private FileRef parentPackDesc = new FileRef();
+        private FileRef foregroundPackDesc = new FileRef();
+
+        #endregion
+
         #region Properties
 
         [NodeMember]
-        public string Text { get; set; }
+        public string Text
+        {
+            get => text;
+            set => text = value;
+        }
 
         [NodeMember]
-        public FileRef PackDesc { get; set; } = new FileRef();
+        public FileRef PackDesc
+        {
+            get => packDesc;
+            set => packDesc = value;
+        }
 
         [NodeMember]
-        public FileRef ParentPackDesc { get; set; } = new FileRef();
+        public FileRef ParentPackDesc
+        {
+            get => parentPackDesc;
+            set => parentPackDesc = value;
+        }
 
         /// <summary>
         /// Second skin for the skinnable block. Available in TM®.
         /// </summary>
         [NodeMember]
-        public FileRef ForegroundPackDesc { get; set; } = new FileRef();
+        public FileRef ForegroundPackDesc
+        {
+            get => foregroundPackDesc;
+            set => foregroundPackDesc = value;
+        }
 
         #endregion
 
@@ -35,12 +62,12 @@
         [Chunk(0x03059000)]
         public class Chunk03059000 : Chunk<CGameCtnBlockSkin>
         {
-            public string Ignored { get; set; }
+            public string U01;
 
             public override void ReadWrite(CGameCtnBlockSkin n, GameBoxReaderWriter rw)
             {
-                n.Text = rw.String(n.Text);
-                Ignored = rw.String(Ignored);
+                rw.String(ref n.text);
+                rw.String(ref U01);
             }
         }
 
@@ -56,8 +83,8 @@
         {
             public override void ReadWrite(CGameCtnBlockSkin n, GameBoxReaderWriter rw)
             {
-                n.Text = rw.String(n.Text);
-                n.PackDesc = rw.FileRef(n.PackDesc);
+                rw.String(ref n.text);
+                rw.FileRef(ref n.packDesc);
             }
         }
 
@@ -73,9 +100,9 @@
         {
             public override void ReadWrite(CGameCtnBlockSkin n, GameBoxReaderWriter rw)
             {
-                n.Text = rw.String(n.Text);
-                n.PackDesc = rw.FileRef(n.PackDesc);
-                n.ParentPackDesc = rw.FileRef(n.ParentPackDesc);
+                rw.String(ref n.text);
+                rw.FileRef(ref n.packDesc);
+                rw.FileRef(ref n.parentPackDesc);
             }
         }
 
@@ -87,14 +114,20 @@
         /// CGameCtnBlockSkin 0x003 chunk (secondary skin)
         /// </summary>
         [Chunk(0x03059003, "secondary skin")]
-        public class Chunk03059003 : Chunk<CGameCtnBlockSkin>
+        public class Chunk03059003 : Chunk<CGameCtnBlockSkin>, IVersionable
         {
-            public int Version { get; set; }
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CGameCtnBlockSkin n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                n.ForegroundPackDesc = rw.FileRef(n.ForegroundPackDesc);
+                rw.Int32(ref version);
+                rw.FileRef(ref n.foregroundPackDesc);
             }
         }
 

@@ -2,6 +2,7 @@
 using System.Runtime.Serialization;
 
 using GBX.NET.Engines.GameData;
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Game
 {
@@ -10,7 +11,7 @@ namespace GBX.NET.Engines.Game
     /// </summary>
     /// <remarks>A block placed on a map.</remarks>
     [Node(0x03057000)]
-    public class CGameCtnBlock : Node
+    public class CGameCtnBlock : CMwNod
     {
         #region Constants
 
@@ -275,6 +276,12 @@ namespace GBX.NET.Engines.Game
                     pitchYawRoll = value;
             }
         }
+
+        /// <summary>
+        /// Color of the block. Available since TM® Royal update.
+        /// </summary>
+        [NodeMember]
+        public DifficultyColor? Color { get; set; }
 
         #endregion
 

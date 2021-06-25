@@ -1,9 +1,10 @@
 ﻿using GBX.NET.Engines.Input;
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Game
 {
     [Node(0x0308C000)]
-    public class CGamePlayerProfile : Node
+    public class CGamePlayerProfile : CMwNod
     {
         private string description;
 
@@ -59,9 +60,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0308C008)]
         public class Chunk0308C008 : Chunk<CGamePlayerProfile>
         {
+            public int U01;
+
             public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
             }
         }
 
@@ -72,14 +75,21 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0308C009)]
         public class Chunk0308C009 : Chunk<CGamePlayerProfile>
         {
+            public int U01;
+            public int U02;
+            public int U03;
+            public int U04;
+            public int U05;
+            public int U06;
+
             public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
+                rw.Int32(ref U02);
+                rw.Int32(ref U03);
+                rw.Int32(ref U04);
+                rw.Int32(ref U05);
+                rw.Int32(ref U06);
             }
         }
 
@@ -90,10 +100,13 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0308C00A)]
         public class Chunk0308C00A : Chunk<CGamePlayerProfile>
         {
+            public int U01;
+            public int U02;
+
             public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
+                rw.Int32(ref U02);
             }
         }
 
@@ -104,9 +117,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0308C011)]
         public class Chunk0308C011 : Chunk<CGamePlayerProfile>
         {
+            public int U01;
+
             public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
             }
         }
 
@@ -117,9 +132,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0308C014)]
         public class Chunk0308C014 : Chunk<CGamePlayerProfile>
         {
+            public int U01;
+
             public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
             }
         }
 
@@ -130,14 +147,20 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0308C01B)]
         public class Chunk0308C01B : Chunk<CGamePlayerProfile>
         {
+            public int U01;
+            public int U02;
+            public int U03;
+            public int U04;
+            public int U05;
+
             public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
             {
                 var cars = rw.Reader.ReadArray(r => r.ReadId());
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
+                rw.Int32(ref U02);
+                rw.Int32(ref U03);
+                rw.Int32(ref U04);
+                rw.Int32(ref U05);
             }
         }
 
@@ -148,7 +171,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0308C01E)]
         public class Chunk0308C01E : Chunk<CGamePlayerProfile>
         {
-            public override void Read(CGamePlayerProfile n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGamePlayerProfile n, GameBoxReader r)
             {
                 var skins = r.ReadArray(r1 => new Skin
                 {
@@ -166,12 +189,14 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0308C01F)]
         public class Chunk0308C01F : Chunk<CGamePlayerProfile>
         {
+            public int U01;
+
             public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
             {
                 var profileName = rw.Reader.ReadString();
                 var displayProfileName = rw.Reader.ReadString();
                 var deviceGuid = rw.Reader.ReadId();
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
             }
         }
 
@@ -182,9 +207,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0308C023)]
         public class Chunk0308C023 : Chunk<CGamePlayerProfile>
         {
+            public int U01;
+
             public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
             }
         }
 

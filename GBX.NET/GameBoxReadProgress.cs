@@ -25,7 +25,7 @@ namespace GBX.NET
         /// </summary>
         public Chunk Chunk { get; }
 
-        public GameBoxHeaderInfo Header
+        public GameBoxHeaderInfo HeaderInfo
         {
             get => headerInfo ?? GBX?.Header;
         }
@@ -37,9 +37,10 @@ namespace GBX.NET
 
         public GameBoxReadProgress(GameBoxHeaderInfo headerInfo)
         {
+            this.headerInfo = headerInfo;
+
             Stage = GameBoxReadProgressStage.Header;
             Percentage = 1;
-            this.headerInfo = headerInfo;
         }
 
         public GameBoxReadProgress(GameBoxReadProgressStage stage, float percentage, GameBox gbx)

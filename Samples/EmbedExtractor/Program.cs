@@ -1,8 +1,6 @@
-﻿
-using GBX.NET;
+﻿using GBX.NET;
 using GBX.NET.Engines.Game;
 using System;
-using System.IO;
 using System.Linq;
 
 namespace EmbedExtractor
@@ -16,10 +14,10 @@ namespace EmbedExtractor
 
             Log.OnLogEvent += Log_OnLogEvent;
 
-            var gbx = GameBox.Parse(fileName);
+            var node = GameBox.ParseNode(fileName);
 
-            if (gbx is GameBox<CGameCtnChallenge> gbxMap)
-                gbxMap.MainNode.ExtractOriginalEmbedZip(gbxMap.FileName + ".zip");
+            if (node is CGameCtnChallenge map)
+                map.ExtractOriginalEmbedZip(map.GBX.FileName + ".zip");
         }
 
         private static void Log_OnLogEvent(string text, ConsoleColor color)

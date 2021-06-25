@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Plug
 {
     [Node(0x090F4000)]
-    public class CPlugGameSkin : Node
+    public class CPlugGameSkin : CMwNod
     {
         [Chunk(0x090F4000)]
-        public class Chunk090F4000 : HeaderChunk<CPlugGameSkin>
+        public class Chunk090F4000 : HeaderChunk<CPlugGameSkin>, IVersionable
         {
-            public byte Version { get; set; }
+            public int Version { get; set; }
             public string SkinDirectory { get; set; }
 
             public override void ReadWrite(CPlugGameSkin n, GameBoxReaderWriter rw)

@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Engines.GameData;
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Game
 {
@@ -7,7 +8,7 @@ namespace GBX.NET.Engines.Game
     /// </summary>
     /// <remarks>An item placed on a map.</remarks>
     [Node(0x03101000)]
-    public class CGameCtnAnchoredObject : Node
+    public class CGameCtnAnchoredObject : CMwNod
     {
         #region Fields
 
@@ -20,6 +21,7 @@ namespace GBX.NET.Engines.Game
         private short flags;
         private float scale = 1;
         private Vec3 pivotPosition;
+        private string skin;
 
         #endregion
 
@@ -122,6 +124,19 @@ namespace GBX.NET.Engines.Game
             set => flags = (short)((flags & 0xF0FF) | ((value & 15) << 8));
         }
 
+        /// <summary>
+        /// Color of the item. Available since TM® Royal update.
+        /// </summary>
+        [NodeMember]
+        public DifficultyColor? Color { get; set; }
+
+        [NodeMember]
+        public string Skin
+        {
+            get => skin;
+            set => skin = value;
+        }
+
         #endregion
 
         #region Methods
@@ -141,12 +156,15 @@ namespace GBX.NET.Engines.Game
         /// CGameCtnAnchoredObject 0x002 chunk
         /// </summary>
         [Chunk(0x03101002)]
-        public class Chunk03101002 : Chunk<CGameCtnAnchoredObject>
+        public class Chunk03101002 : Chunk<CGameCtnAnchoredObject>, IVersionable
         {
+            public Vec3 U01;
+            public Vec3 U02;
+            private byte[] U03;
+            private int[] U04;
+            private Vec3 U05;
+
             private int version = 7;
-            private int u01 = -1;
-            private Vec3 u02;
-            private Vec3 u03;
 
             /// <summary>
             /// Version of the chunk. For the lastst TM2 version, version 7 the latest, in TM®, the latest known version is 8.
@@ -155,24 +173,6 @@ namespace GBX.NET.Engines.Game
             {
                 get => version;
                 set => version = value;
-            }
-
-            public int U01
-            {
-                get => u01;
-                set => u01 = value;
-            }
-
-            public Vec3 U02
-            {
-                get => u02;
-                set => u02 = value;
-            }
-
-            public Vec3 U03
-            {
-                get => u03;
-                set => u03 = value;
             }
 
             public override void ReadWrite(CGameCtnAnchoredObject n, GameBoxReaderWriter rw)
@@ -211,8 +211,16 @@ namespace GBX.NET.Engines.Game
 
                             if (version >= 8) // TM 2020
                             {
-                                rw.Vec3(ref u02);
-                                rw.Vec3(ref u03);
+                                rw.Vec3(ref U01);
+                                rw.Vec3(ref U02);
+
+                                if((n.flags & 0x4) == 0x4)
+                                {
+                                    rw.Bytes(ref U03, 9);
+                                    rw.String(ref n.skin);
+                                    rw.Array<int>(ref U04, 4);
+                                    rw.Vec3(ref U05);
+                                }
                             }
                         }
                     }
@@ -230,14 +238,27 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03101004)]
         public class Chunk03101004 : SkippableChunk<CGameCtnAnchoredObject>
         {
-            public int U01 { get; set; } = 0;
-            public int U02 { get; set; } = -1;
+            public int U01 = 0;
+            public int U02 = -1;
 
             public override void ReadWrite(CGameCtnAnchoredObject n, GameBoxReaderWriter rw)
             {
-                U01 = rw.Int32(U01);
-                U02 = rw.Int32(U02);
+                rw.Int32(ref U01);
+                rw.Int32(ref U02);
             }
+        }
+
+        #endregion
+
+        #region 0x005 skippable chunk
+
+        /// <summary>
+        /// CGameCtnAnchoredObject 0x005 skippable chunk
+        /// </summary>
+        [Chunk(0x03101005), IgnoreChunk]
+        public class Chunk03101005 : SkippableChunk<CGameCtnAnchoredObject>
+        {
+            
         }
 
         #endregion

@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Reflection;
-using System.Text;
+
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET
 {
-    public class HeaderChunk<T> : SkippableChunk<T>, IHeaderChunk where T : Node
+    public class HeaderChunk<T> : SkippableChunk<T>, IHeaderChunk where T : CMwNod
     {
         public bool IsHeavy { get; set; }
 
@@ -29,16 +27,10 @@ namespace GBX.NET
         public override void ReadWrite(T n, GameBoxReaderWriter rw)
         {
             if (rw.Reader != null)
-            {
-                var unknownW = new GameBoxWriter(Unknown, rw.Reader.Lookbackable);
-                Read(n, rw.Reader, unknownW);
-            }
+                Read(n, rw.Reader);
 
             if (rw.Writer != null)
-            {
-                var unknownR = new GameBoxReader(Unknown, rw.Writer.Lookbackable);
-                Write(n, rw.Writer, unknownR);
-            }
+                Write(n, rw.Writer);
         }
 
         public override string ToString()
@@ -59,13 +51,6 @@ namespace GBX.NET
         }
 
         public byte[] Data { get; set; }
-        public Node Node { get => throw new NotSupportedException(); set => throw new NotSupportedException(); }
-
-        public int Progress
-        {
-            get => 0;
-            set => throw new NotSupportedException("Cannot progress reading of an unknown header chunk.");
-        }
 
         public bool IsHeavy { get; set; }
 
@@ -79,8 +64,6 @@ namespace GBX.NET
 
         public void Discover() => throw new NotSupportedException("Cannot discover an unknown header chunk.");
 
-        public void ReadWrite(Node n, GameBoxReaderWriter rw) => ReadWrite(rw);
-
         public void ReadWrite(GameBoxReaderWriter rw)
         {
             if (rw.Writer != null)
@@ -92,6 +75,21 @@ namespace GBX.NET
         public override string ToString()
         {
             return $"Header chunk 0x{ID:X8}";
+        }
+
+        public override void Read(CMwNod n, GameBoxReader r)
+        {
+            throw new NotSupportedException();
+        }
+
+        public override void Write(CMwNod n, GameBoxWriter w)
+        {
+            throw new NotSupportedException();
+        }
+
+        public override void ReadWrite(CMwNod n, GameBoxReaderWriter rw)
+        {
+            throw new NotSupportedException();
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿using GBX.NET.Engines.Plug;
-using System.Diagnostics;
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E026000)]
-    public class CGameCommonItemEntityModelEdition : Node
+    public class CGameCommonItemEntityModelEdition : CMwNod
     {
         #region Enums
 
@@ -66,9 +66,11 @@ namespace GBX.NET.Engines.GameData
         /// CGameCommonItemEntityModelEdition 0x000 chunk
         /// </summary>
         [Chunk(0x2E026000)]
-        public class Chunk2E026000 : Chunk<CGameCommonItemEntityModelEdition>
+        public class Chunk2E026000 : Chunk<CGameCommonItemEntityModelEdition>, IVersionable
         {
             private int version;
+
+            public string U01;
 
             public int Version
             {
@@ -81,8 +83,10 @@ namespace GBX.NET.Engines.GameData
                 rw.Int32(ref version);
                 rw.EnumInt32<EItemType>(ref n.itemType);
                 rw.NodeRef<CPlugCrystal>(ref n.meshCrystal);
-                rw.String(Unknown);
-                rw.Array<int>(Unknown, 32);
+                rw.String(ref U01);
+
+                for (var i = 0; i < 32; i++)
+                    rw.Int32();
             }
         }
 

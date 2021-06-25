@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GBX.NET.Engines.Plug
+﻿namespace GBX.NET.Engines.Plug
 {
     [Node(0x09079000)]
     public class CPlugMaterial : CPlug
@@ -10,9 +6,11 @@ namespace GBX.NET.Engines.Plug
         [Chunk(0x09079001)]
         public class Chunk09079001 : Chunk<CPlugMaterial>
         {
+            public int U01;
+
             public override void ReadWrite(CPlugMaterial n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
+                rw.Int32(ref U01);
             }
         }
 

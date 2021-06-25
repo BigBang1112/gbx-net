@@ -1,15 +1,34 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace GBX.NET.Engines.Game
 {
     /// <summary>
     /// MediaTracker block - 3D stereo (0x03024000)
     /// </summary>
     [Node(0x03024000)]
-    public class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock
+    public class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
+        #region Fields
+
+        private IList<Key> keys = new List<Key>();
+
+        #endregion
+
         #region Properties
 
+        IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+        {
+            get => keys.Cast<CGameCtnMediaBlock.Key>();
+            set => keys = value.Cast<Key>().ToList();
+        }
+
         [NodeMember]
-        public Key[] Keys { get; set; }
+        public IList<Key> Keys
+        {
+            get => keys;
+            set => keys = value;
+        }
 
         #endregion
 
@@ -25,17 +44,17 @@
         {
             public override void ReadWrite(CGameCtnMediaBlock3dStereo n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, i => new Key()
+                rw.List(ref n.keys, r => new Key()
                 {
-                    Time = rw.Reader.ReadSingle(),
-                    UpToMax = rw.Reader.ReadSingle(),
-                    ScreenDist = rw.Reader.ReadSingle()
+                    Time = r.ReadSingle_s(),
+                    UpToMax = r.ReadSingle(),
+                    ScreenDist = r.ReadSingle()
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.UpToMax);
-                    rw.Writer.Write(x.ScreenDist);
+                    w.WriteSingle_s(x.Time);
+                    w.Write(x.UpToMax);
+                    w.Write(x.ScreenDist);
                 });
             }
         }

@@ -1,14 +1,31 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03165000)]
-    public class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock
+    public class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
+        #region Fields
+
+        private IList<Key> keys = new List<Key>();
+
+        #endregion
+
         #region Properties
 
+        IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+        {
+            get => keys.Cast<CGameCtnMediaBlock.Key>();
+            set => keys = value.Cast<Key>().ToList();
+        }
+
         [NodeMember]
-        public Key[] Keys { get; set; }
+        public IList<Key> Keys
+        {
+            get => keys;
+            set => keys = value;
+        }
 
         #endregion
 
@@ -17,28 +34,28 @@ namespace GBX.NET.Engines.Game
         #region 0x000 chunk
 
         [Chunk(0x03165000)]
-        public class Chunk03165000 : Chunk<CGameCtnMediaBlockDirtyLens>
+        public class Chunk03165000 : Chunk<CGameCtnMediaBlockDirtyLens>, IVersionable
         {
             public int Version { get; set; }
 
-            public override void Read(CGameCtnMediaBlockDirtyLens n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaBlockDirtyLens n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
 
-                n.Keys = r.ReadArray(r1 => new Key()
+                n.keys = r.ReadArray(r1 => new Key()
                 {
-                    Time = r1.ReadSingle(),
+                    Time = r1.ReadSingle_s(),
                     Intensity = r1.ReadSingle()
                 });
             }
 
-            public override void Write(CGameCtnMediaBlockDirtyLens n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaBlockDirtyLens n, GameBoxWriter w)
             {
                 w.Write(Version);
 
-                w.Write(n.Keys, (x, w1) =>
+                w.Write(n.keys, (x, w1) =>
                 {
-                    w1.Write(x.Time);
+                    w1.WriteSingle_s(x.Time);
                     w1.Write(x.Intensity);
                 });
             }

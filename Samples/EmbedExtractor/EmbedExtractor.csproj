@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -10,7 +10,8 @@
 		<Content Include="..\LICENSE.GPL-3.0-or-later.md">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
-
+		
+		<ProjectReference Include="..\..\GBX.NET.LZO\GBX.NET.LZO.csproj" />
 		<ProjectReference Include="..\..\GBX.NET\GBX.NET.csproj" />
 	</ItemGroup>
 

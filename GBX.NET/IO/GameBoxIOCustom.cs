@@ -2,6 +2,7 @@
 using System.Linq;
 
 using GBX.NET.Engines.Game;
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.IO
 {
@@ -10,7 +11,7 @@ namespace GBX.NET.IO
     /// </summary>
     /// <typeparam name="TNode">A type of node to return as a result.</typeparam>
     /// <typeparam name="TResult"></typeparam>
-    public abstract class GameBoxIOCustom<TNode, TResult> where TNode : Node
+    public abstract class GameBoxIOCustom<TNode, TResult> where TNode : CMwNod
     {
         /// <summary>
         /// Input GBX.

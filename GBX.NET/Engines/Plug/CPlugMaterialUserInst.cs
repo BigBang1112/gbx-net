@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Plug
 {
     [Node(0x090FD000)]
-    public class CPlugMaterialUserInst : Node
+    public class CPlugMaterialUserInst : CMwNod
     {
-        public string MaterialFile { get; set; }
+        private string materialFile;
+
+        public string MaterialFile
+        {
+            get => materialFile;
+            set => materialFile = value;
+        }
 
         public override string ToString()
         {
@@ -15,57 +19,71 @@ namespace GBX.NET.Engines.Plug
         }
 
         [Chunk(0x090FD000)]
-        public class Chunk090FD000 : Chunk<CPlugMaterialUserInst>
+        public class Chunk090FD000 : Chunk<CPlugMaterialUserInst>, IVersionable
         {
+            private int version;
+
+            public CMwNod U01;
+            public CMwNod U02;
+            public int U03;
+            public byte U04;
+            public CMwNod U05;
+
             /// <summary>
             /// Version 10: TM®, version 8/9: ManiaPlanet
             /// </summary>
-            public int Version { get; set; }
-            public Node Unknown1 { get; set; }
-            public Node Unknown2 { get; set; }
-            public int Unknown3 { get; set; }
-            public byte Unknown4 { get; set; }
-            public Node Unknown5 { get; set; }
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CPlugMaterialUserInst n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                Unknown1 = rw.NodeRef(Unknown1);
-                Unknown2 = rw.NodeRef(Unknown2);
-                Unknown3 = rw.Int32(Unknown3);
-                Unknown4 = rw.Byte(Unknown4);
+                rw.Int32(ref version);
+                rw.NodeRef(ref U01);
+                rw.NodeRef(ref U02);
+                rw.Int32(ref U03);
+                rw.Byte(ref U04);
                 if (Version < 9)
-                    n.MaterialFile = rw.Id(n.MaterialFile);
+                    rw.Id(ref n.materialFile);
                 if (Version >= 9)
                 {
                     if(Version >= 10)
-                        rw.Byte(Unknown);
-                    n.MaterialFile = rw.String(n.MaterialFile);
+                        rw.Byte();
+                    rw.String(ref n.materialFile);
                 }
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                Unknown5 = rw.NodeRef(Unknown5);
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.NodeRef(ref U05);
             }
         }
 
         [Chunk(0x090FD001)]
-        public class Chunk090FD001 : Chunk<CPlugMaterialUserInst>
+        public class Chunk090FD001 : Chunk<CPlugMaterialUserInst>, IVersionable
         {
-            public int Version { get; set; }
-            public Node Unknown1 { get; set; }
+            private int version;
+
+            public CMwNod U01;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CPlugMaterialUserInst n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                Unknown1 = rw.NodeRef(Unknown1);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Single(Unknown);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32(ref version);
+                rw.NodeRef(ref U01);
+                rw.Int32();
+                rw.Int32();
+                rw.Single();
+                rw.Int32();
+                rw.Int32();
             }
         }
 
@@ -74,8 +92,8 @@ namespace GBX.NET.Engines.Plug
         {
             public override void ReadWrite(CPlugMaterialUserInst n, GameBoxReaderWriter rw)
             {
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
+                rw.Int32();
+                rw.Int32();
             }
         }
     }

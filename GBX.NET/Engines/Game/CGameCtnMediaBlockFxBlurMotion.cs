@@ -1,15 +1,32 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x03082000)]
-    public class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur
+    public class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur, CGameCtnMediaBlock.IHasTwoKeys
     {
+        #region Fields
+
+        public TimeSpan start;
+        public TimeSpan end = TimeSpan.FromSeconds(3);
+
+        #endregion
+
         #region Properties
 
         [NodeMember]
-        public float? Start { get; set; }
+        public TimeSpan Start
+        {
+            get => start;
+            set => start = value;
+        }
 
         [NodeMember]
-        public float? End { get; set; }
+        public TimeSpan End
+        {
+            get => end;
+            set => end = value;
+        }
 
         #endregion
 
@@ -22,8 +39,8 @@
         {
             public override void ReadWrite(CGameCtnMediaBlockFxBlurMotion n, GameBoxReaderWriter rw)
             {
-                n.Start = rw.Single(n.Start.GetValueOrDefault());
-                n.End = rw.Single(n.End.GetValueOrDefault(3));
+                rw.Single_s(ref n.start);
+                rw.Single_s(ref n.end);
             }
         }
 

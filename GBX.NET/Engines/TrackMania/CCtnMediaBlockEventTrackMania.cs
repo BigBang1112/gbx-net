@@ -1,8 +1,5 @@
 ﻿using GBX.NET.Engines.Game;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
 
 namespace GBX.NET.Engines.TrackMania
 {
@@ -55,16 +52,36 @@ namespace GBX.NET.Engines.TrackMania
 
         #endregion
 
+        #region Fields
+
+        private float start;
+        private float end;
+        private Stunt[] stunts;
+
+        #endregion
+
         #region Properties
 
         [NodeMember]
-        public float Start { get; set; }
+        public float Start
+        {
+            get => start;
+            set => start = value;
+        }
 
         [NodeMember]
-        public float End { get; set; }
+        public float End
+        {
+            get => end;
+            set => end = value;
+        }
 
         [NodeMember]
-        public Stunt[] Stunts { get; set; }
+        public Stunt[] Stunts
+        {
+            get => stunts;
+            set => stunts = value;
+        }
 
         #endregion
 
@@ -75,15 +92,15 @@ namespace GBX.NET.Engines.TrackMania
         [Chunk(0x2407F000)]
         public class Chunk2407F000 : Chunk<CCtnMediaBlockEventTrackMania>
         {
-            public int U01 { get; set; }
+            public int U01;
 
             public override void ReadWrite(CCtnMediaBlockEventTrackMania n, GameBoxReaderWriter rw)
             {
-                n.Start = rw.Single(n.Start);
-                n.End = rw.Single(n.End);
-                U01 = rw.Int32(U01);
+                rw.Single(ref n.start);
+                rw.Single(ref n.end);
+                rw.Int32(ref U01);
 
-                n.Stunts = rw.Array(n.Stunts, (i, r) => new Stunt()
+                rw.Array(ref n.stunts, (i, r) => new Stunt()
                 {
                     Time = TimeSpan.FromSeconds(r.ReadSingle()),
                     Figure = (EStuntFigure)r.ReadInt32(),
@@ -119,12 +136,10 @@ namespace GBX.NET.Engines.TrackMania
         #region 0x003 chunk
 
         [Chunk(0x2407F003)]
+        [AutoReadWriteChunk]
         public class Chunk2407F003 : Chunk<CCtnMediaBlockEventTrackMania>
         {
-            public override void Read(CCtnMediaBlockEventTrackMania n, GameBoxReader r, GameBoxWriter unknownW)
-            {
-                r.ReadTillFacade();
-            }
+            
         }
 
         #endregion

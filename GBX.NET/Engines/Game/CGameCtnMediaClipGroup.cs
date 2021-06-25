@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using GBX.NET.Engines.MwFoundations;
+
 namespace GBX.NET.Engines.Game
 {
     [Node(0x0307A000)]
-    public class CGameCtnMediaClipGroup : Node
+    public class CGameCtnMediaClipGroup : CMwNod
     {
         #region Enums
 
@@ -33,6 +35,8 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public List<Tuple<CGameCtnMediaClip, Trigger>> Clips { get; set; } = new List<Tuple<CGameCtnMediaClip, Trigger>>();
 
+        public int ClipsVersion { get; set; } = 10;
+
         #endregion
 
         #region Chunks
@@ -42,11 +46,9 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0307A001)]
         public class Chunk0307A001 : Chunk<CGameCtnMediaClipGroup>
         {
-            public int Version { get; set; }
-
-            public override void Read(CGameCtnMediaClipGroup n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaClipGroup n, GameBoxReader r)
             {
-                Version = r.ReadInt32();
+                n.ClipsVersion = r.ReadInt32();
 
                 var clips = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnMediaClip>());
 
@@ -60,9 +62,9 @@ namespace GBX.NET.Engines.Game
                 ).ToList();
             }
 
-            public override void Write(CGameCtnMediaClipGroup n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaClipGroup n, GameBoxWriter w)
             {
-                w.Write(Version);
+                w.Write(n.ClipsVersion);
 
                 w.Write(n.Clips, (x, w1) => w1.Write(x.Item1));
                 w.Write(n.Clips, (x, w1) =>
@@ -79,11 +81,9 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0307A002)]
         public class Chunk0307A002 : Chunk<CGameCtnMediaClipGroup>
         {
-            public int Version { get; set; }
-
-            public override void Read(CGameCtnMediaClipGroup n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaClipGroup n, GameBoxReader r)
             {
-                Version = r.ReadInt32();
+                n.ClipsVersion = r.ReadInt32();
 
                 var clips = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnMediaClip>());
                 var triggers = r.ReadArray(r1 => new Trigger()
@@ -100,9 +100,9 @@ namespace GBX.NET.Engines.Game
                 ).ToList();
             }
 
-            public override void Write(CGameCtnMediaClipGroup n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaClipGroup n, GameBoxWriter w)
             {
-                w.Write(Version);
+                w.Write(n.ClipsVersion);
 
                 w.Write(n.Clips, (x, w1) => w1.Write(x.Item1));
                 w.Write(n.Clips, (x, w1) =>
@@ -125,11 +125,9 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0307A003)]
         public class Chunk0307A003 : Chunk<CGameCtnMediaClipGroup>
         {
-            public int Version { get; set; } = 10;
-
-            public override void Read(CGameCtnMediaClipGroup n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CGameCtnMediaClipGroup n, GameBoxReader r)
             {
-                Version = r.ReadInt32();
+                n.ClipsVersion = r.ReadInt32();
 
                 var clips = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnMediaClip>());
                 var triggers = r.ReadArray(r1 =>
@@ -159,9 +157,9 @@ namespace GBX.NET.Engines.Game
                 ).ToList();
             }
 
-            public override void Write(CGameCtnMediaClipGroup n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CGameCtnMediaClipGroup n, GameBoxWriter w)
             {
-                w.Write(Version);
+                w.Write(n.ClipsVersion);
 
                 w.Write(n.Clips, (x, w1) => w1.Write(x.Item1));
                 w.Write(n.Clips, (x, w1) =>

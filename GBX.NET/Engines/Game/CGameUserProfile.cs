@@ -1,7 +1,9 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using GBX.NET.Engines.MwFoundations;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x031CC000)]
-    public class CGameUserProfile : Node
+    public class CGameUserProfile : CMwNod
     {
     }
 }

@@ -74,12 +74,12 @@ namespace GBX.NET.Engines.TrackMania
         [Chunk(0x24092000)]
         public class Chunk24092000 : Chunk<CCtnMediaBlockUiTMSimpleEvtsDisplay>
         {
-            public override void Read(CCtnMediaBlockUiTMSimpleEvtsDisplay n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CCtnMediaBlockUiTMSimpleEvtsDisplay n, GameBoxReader r)
             {
                 n.displayMode = (EDisplayMode)r.ReadInt32();
             }
 
-            public override void Write(CCtnMediaBlockUiTMSimpleEvtsDisplay n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CCtnMediaBlockUiTMSimpleEvtsDisplay n, GameBoxWriter w)
             {
                 if (n.displayMode == EDisplayMode.Always || n.displayMode == EDisplayMode.Never)
                     w.Write(true);
@@ -112,13 +112,13 @@ namespace GBX.NET.Engines.TrackMania
         [Chunk(0x24092002)]
         public class Chunk24092002 : Chunk<CCtnMediaBlockUiTMSimpleEvtsDisplay>
         {
-            public override void Read(CCtnMediaBlockUiTMSimpleEvtsDisplay n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CCtnMediaBlockUiTMSimpleEvtsDisplay n, GameBoxReader r)
             {
                 var displayMode = r.ReadBoolean();
                 if (displayMode) n.displayMode = EDisplayMode.Never;
             }
 
-            public override void Write(CCtnMediaBlockUiTMSimpleEvtsDisplay n, GameBoxWriter w, GameBoxReader unknownR)
+            public override void Write(CCtnMediaBlockUiTMSimpleEvtsDisplay n, GameBoxWriter w)
             {
                 if (n.displayMode == EDisplayMode.Never)
                     w.Write(true);

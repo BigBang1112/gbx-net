@@ -3,9 +3,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
+using GBX.NET.Engines.MwFoundations;
+
 namespace GBX.NET
 {
-    public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
+    public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : CMwNod
     {
         private readonly uint chunkID;
 
@@ -45,10 +47,8 @@ namespace GBX.NET
             Discovered = true;
 
             using (var ms = new MemoryStream(Data))
-            using (var gbxr = new GameBoxReader(ms, Lookbackable))
+            using (var gbxr = CreateReader(ms))
             {
-                gbxr.Chunk = this;
-
                 GameBoxReaderWriter gbxrw = new GameBoxReaderWriter(gbxr);
 
                 try
@@ -57,11 +57,11 @@ namespace GBX.NET
                 }
                 catch (NotImplementedException)
                 {
-                    var unknownGbxw = new GameBoxWriter(Unknown, Lookbackable);
+                    var unknownGbxw = CreateWriter(Unknown);
 
                     try
                     {
-                        Read(Node, gbxr, unknownGbxw);
+                        Read(Node, gbxr);
                     }
                     catch (NotImplementedException e)
                     {
@@ -69,11 +69,16 @@ namespace GBX.NET
                     }
                 }
 
+                if (ms.Position != ms.Length)
+                {
+                    Debug.WriteLine($"Skippable chunk not fully parsed! ({ms.Position}/{ms.Length}) - {ToString()}");
+                }
+
                 Progress = (int)ms.Position;
             }
         }
 
-        public override void Write(T n, GameBoxWriter w, GameBoxReader unknownR)
+        public override void Write(T n, GameBoxWriter w)
         {
             w.WriteBytes(Data);
         }
@@ -85,10 +90,15 @@ namespace GBX.NET
 
         public override string ToString()
         {
-            if(GetType().GetCustomAttribute<ChunkAttribute>() == null)
+            var chunkType = GetType();
+            var chunkAttribute = chunkType.GetCustomAttribute<ChunkAttribute>();
+            var ignoreChunkAttribute = chunkType.GetCustomAttribute<IgnoreChunkAttribute>();
+
+            if (chunkAttribute == null)
                 return $"{typeof(T).Name} unknown skippable chunk 0x{ID:X8}";
-            var desc = GetType().GetCustomAttribute<ChunkAttribute>().Description;
-            return $"{typeof(T).Name} skippable chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}";
+            var desc = chunkAttribute.Description;
+
+            return $"{typeof(T).Name} skippable chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(ignoreChunkAttribute == null ? "" : " [ignored]")}";
         }
     }
 }

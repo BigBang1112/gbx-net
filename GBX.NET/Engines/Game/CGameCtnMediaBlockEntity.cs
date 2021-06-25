@@ -5,19 +5,31 @@ namespace GBX.NET.Engines.Game
     [Node(0x0329F000)]
     public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
     {
-        public CPlugEntRecordData RecordData { get; set; }
+        private CPlugEntRecordData recordData;
+
+        public CPlugEntRecordData RecordData
+        {
+            get => recordData;
+            set => recordData = value;
+        }
 
         [Chunk(0x0329F000)]
-        public class Chunk0329F000 : Chunk<CGameCtnMediaBlockEntity>
+        public class Chunk0329F000 : Chunk<CGameCtnMediaBlockEntity>, IVersionable
         {
-            public int Version { get; set; }
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CGameCtnMediaBlockEntity n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                n.RecordData = rw.NodeRef<CPlugEntRecordData>(n.RecordData);
+                rw.Int32(ref version);
+                rw.NodeRef<CPlugEntRecordData>(ref n.recordData);
 
-                rw.TillFacade(Unknown);
+                rw.UntilFacade(Unknown);
             }
         }
     }

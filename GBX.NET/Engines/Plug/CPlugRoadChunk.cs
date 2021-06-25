@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Plug
 {
     [Node(0x09128000)]
-    public class CPlugRoadChunk : Node
+    public class CPlugRoadChunk : CMwNod
     {
         [Chunk(0x09128000)]
-        public class Chunk09128000 : Chunk<CPlugRoadChunk>
+        public class Chunk09128000 : Chunk<CPlugRoadChunk>, IVersionable
         {
             public int Version { get; set; }
             public byte[] UnknownData { get; set; }
@@ -16,7 +14,7 @@ namespace GBX.NET.Engines.Plug
             public override void ReadWrite(CPlugRoadChunk n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                UnknownData = rw.Reader.ReadTillFacade();
+                UnknownData = rw.Reader.ReadUntilFacade();
             }
         }
     }

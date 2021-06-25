@@ -1,15 +1,34 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace GBX.NET.Engines.Game
 {
     /// <summary>
     /// MediaTracker block - Bloom HDR (0x03128000)
     /// </summary>
     [Node(0x03128000)]
-    public class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock
+    public class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
+        #region Fields
+
+        private IList<Key> keys = new List<Key>();
+
+        #endregion
+
         #region Properties
 
+        IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+        {
+            get => keys.Cast<CGameCtnMediaBlock.Key>();
+            set => keys = value.Cast<Key>().ToList();
+        }
+
         [NodeMember]
-        public Key[] Keys { get; set; }
+        public IList<Key> Keys
+        {
+            get => keys;
+            set => keys = value;
+        }
 
         #endregion
 
@@ -25,19 +44,19 @@
         {
             public override void ReadWrite(CGameCtnMediaBlockBloomHdr n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, i => new Key()
+                rw.List(ref n.keys, r => new Key()
                 {
-                    Time = rw.Reader.ReadSingle(),
-                    Intensity = rw.Reader.ReadSingle(),
-                    StreaksIntensity = rw.Reader.ReadSingle(),
-                    StreaksAttenuation = rw.Reader.ReadSingle()
+                    Time = r.ReadSingle_s(),
+                    Intensity = r.ReadSingle(),
+                    StreaksIntensity = r.ReadSingle(),
+                    StreaksAttenuation = r.ReadSingle()
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.Intensity);
-                    rw.Writer.Write(x.StreaksIntensity);
-                    rw.Writer.Write(x.StreaksAttenuation);
+                    w.WriteSingle_s(x.Time);
+                    w.Write(x.Intensity);
+                    w.Write(x.StreaksIntensity);
+                    w.Write(x.StreaksAttenuation);
                 });
             }
         }
@@ -54,19 +73,19 @@
         {
             public override void ReadWrite(CGameCtnMediaBlockBloomHdr n, GameBoxReaderWriter rw)
             {
-                n.Keys = rw.Array(n.Keys, i => new Key()
+                rw.List(ref n.keys, r => new Key()
                 {
-                    Time = rw.Reader.ReadSingle(),
-                    Intensity = rw.Reader.ReadSingle(),
-                    StreaksIntensity = rw.Reader.ReadSingle(),
-                    StreaksAttenuation = rw.Reader.ReadSingle()
+                    Time = r.ReadSingle_s(),
+                    Intensity = r.ReadSingle(),
+                    StreaksIntensity = r.ReadSingle(),
+                    StreaksAttenuation = r.ReadSingle()
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.Intensity);
-                    rw.Writer.Write(x.StreaksIntensity);
-                    rw.Writer.Write(x.StreaksAttenuation);
+                    w.WriteSingle_s(x.Time);
+                    w.Write(x.Intensity);
+                    w.Write(x.StreaksIntensity);
+                    w.Write(x.StreaksAttenuation);
                 });
             }
         }

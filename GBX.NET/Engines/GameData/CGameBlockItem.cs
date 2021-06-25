@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
+
 using GBX.NET.Engines.Plug;
+using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E025000)]
-    public class CGameBlockItem : Node
+    public class CGameBlockItem : CMwNod
     {
         #region Fields
 
@@ -48,7 +49,7 @@ namespace GBX.NET.Engines.GameData
         /// CGameBlockItem 0x000 chunk
         /// </summary>
         [Chunk(0x2E025000)]
-        public class Chunk2E025000 : Chunk<CGameBlockItem>
+        public class Chunk2E025000 : Chunk<CGameBlockItem>, IVersionable
         {
             private int version;
 

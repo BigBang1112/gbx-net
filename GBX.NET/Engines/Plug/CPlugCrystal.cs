@@ -129,11 +129,11 @@ namespace GBX.NET.Engines.Plug
         /// CPlugCrystal 0x003 chunk (materials)
         /// </summary>
         [Chunk(0x09003003, "materials")]
-        public class Chunk09003003 : Chunk<CPlugCrystal>
+        public class Chunk09003003 : Chunk<CPlugCrystal>, IVersionable
         {
             public int Version { get; set; }
 
-            public override void Read(CPlugCrystal n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CPlugCrystal n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
 
@@ -157,7 +157,7 @@ namespace GBX.NET.Engines.Plug
         /// <summary>
         /// CPlugCrystal 0x004 skippable chunk
         /// </summary>
-        [Chunk(0x09003004)]
+        [Chunk(0x09003004), IgnoreChunk]
         public class Chunk09003004 : SkippableChunk<CPlugCrystal>
         {
             
@@ -171,11 +171,11 @@ namespace GBX.NET.Engines.Plug
         /// CPlugCrystal 0x005 chunk (layers)
         /// </summary>
         [Chunk(0x09003005, "layers")]
-        public class Chunk09003005 : Chunk<CPlugCrystal>
+        public class Chunk09003005 : Chunk<CPlugCrystal>, IVersionable
         {
             public int Version { get; set; }
 
-            public override void Read(CPlugCrystal n, GameBoxReader r, GameBoxWriter unknownW)
+            public override void Read(CPlugCrystal n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
 
@@ -449,15 +449,24 @@ namespace GBX.NET.Engines.Plug
         /// CPlugCrystal 0x006 chunk
         /// </summary>
         [Chunk(0x09003006)]
-        public class Chunk09003006 : Chunk<CPlugCrystal>
+        public class Chunk09003006 : Chunk<CPlugCrystal>, IVersionable
         {
-            public int Version { get; set; }
-            public Vec2[] Vectors { get; set; }
+            public Vec2[] U01;
+
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CPlugCrystal n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                Vectors = rw.Array(Vectors, (i, r) => r.ReadVec2(), (x, w) => w.Write(x));
+                rw.Int32(ref version);
+                rw.Array(ref U01,
+                    (i, r) => r.ReadVec2(),
+                    (x, w) => w.Write(x));
             }
         }
 
@@ -469,19 +478,30 @@ namespace GBX.NET.Engines.Plug
         /// CPlugCrystal 0x007 chunk
         /// </summary>
         [Chunk(0x09003007)]
-        public class Chunk09003007 : Chunk<CPlugCrystal>
+        public class Chunk09003007 : Chunk<CPlugCrystal>, IVersionable
         {
-            public int Version { get; set; }
-            public int[] Numbers { get; set; }
+            private int version;
+
+            public int U01;
+            public int U02;
+            public float U03;
+            public float U04;
+            public int[] U05;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CPlugCrystal n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                rw.Int32(Unknown);
-                rw.Int32(Unknown);
-                rw.Single(Unknown);
-                rw.Single(Unknown);
-                Numbers = rw.Array(Numbers, (i, r) => r.ReadInt32(), (x, w) => w.Write(x));
+                rw.Int32(ref version);
+                rw.Int32(ref U01);
+                rw.Int32(ref U02);
+                rw.Single(ref U03);
+                rw.Single(ref U04);
+                rw.Array(ref U05);
             }
         }
 

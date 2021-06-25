@@ -1,18 +1,42 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace GBX.NET.Engines.Game
 {
     /// <summary>
     /// MediaTracker block - Coloring base
     /// </summary>
     [Node(0x03172000)]
-    public class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock
+    public class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
+        #region Fields
+
+        private IList<Key> keys = new List<Key>();
+        private int baseIndex;
+
+        #endregion
+
         #region Properties
 
-        [NodeMember]
-        public Key[] Keys { get; set; }
+        IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+        {
+            get => keys.Cast<CGameCtnMediaBlock.Key>();
+            set => keys = value.Cast<Key>().ToList();
+        }
 
         [NodeMember]
-        public int BaseIndex { get; set; }
+        public IList<Key> Keys
+        {
+            get => keys;
+            set => keys = value;
+        }
+
+        [NodeMember]
+        public int BaseIndex
+        {
+            get => baseIndex;
+            set => baseIndex = value;
+        }
 
         #endregion
 
@@ -24,31 +48,39 @@
         /// CGameCtnMediaBlockColoringBase 0x000 chunk
         /// </summary>
         [Chunk(0x03172000)]
-        public class Chunk03172000 : Chunk<CGameCtnMediaBlockColoringBase>
+        public class Chunk03172000 : Chunk<CGameCtnMediaBlockColoringBase>, IVersionable
         {
-            public int Version { get; set; }
+            private int version;
+
+            public int U01;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CGameCtnMediaBlockColoringBase n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                rw.Int32(Unknown);
+                rw.Int32(ref version);
+                rw.Int32(ref U01);
 
-                n.Keys = rw.Array(n.Keys, i => new Key()
+                rw.List(ref n.keys, r => new Key()
                 {
-                    Time = rw.Reader.ReadSingle(),
-                    Hue = rw.Reader.ReadSingle(),
-                    Intensity = rw.Reader.ReadSingle(),
-                    Unknown = rw.Reader.ReadInt16()
+                    Time = r.ReadSingle_s(),
+                    Hue = r.ReadSingle(),
+                    Intensity = r.ReadSingle(),
+                    Unknown = r.ReadInt16()
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Time);
-                    rw.Writer.Write(x.Hue);
-                    rw.Writer.Write(x.Intensity);
-                    rw.Writer.Write(x.Unknown);
+                    w.WriteSingle_s(x.Time);
+                    w.Write(x.Hue);
+                    w.Write(x.Intensity);
+                    w.Write(x.Unknown);
                 });
                 
-                n.BaseIndex = rw.Int32(n.BaseIndex);
+                rw.Int32(ref n.baseIndex);
             }
         }
 
