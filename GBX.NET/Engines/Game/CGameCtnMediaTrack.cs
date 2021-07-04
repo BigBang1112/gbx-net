@@ -11,7 +11,7 @@ namespace GBX.NET.Engines.Game
 
         private string name;
         private IList<CGameCtnMediaBlock> blocks = new List<CGameCtnMediaBlock>();
-        private bool isKeepPlaying = true;
+        private bool isKeepPlaying;
         private bool isCycling;
         private bool isReadOnly;
 

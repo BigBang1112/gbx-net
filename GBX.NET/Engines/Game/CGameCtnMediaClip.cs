@@ -12,7 +12,7 @@ namespace GBX.NET.Engines.Game
         private IList<CGameCtnMediaTrack> tracks = new List<CGameCtnMediaTrack>();
         private bool stopWhenRespawn;
         private bool stopWhenLeave;
-        private int localPlayerClipEntIndex;
+        private int localPlayerClipEntIndex = -1;
 
         #endregion
 
