@@ -14,6 +14,7 @@ namespace GBX.NET
     {
         public static Dictionary<uint, string> Names { get; }
         public static Dictionary<uint, uint> Mappings { get; } // key: older, value: newer
+        public static Dictionary<uint, string> Extensions { get; }
 
         public static Dictionary<uint, Type> AvailableClasses { get; }
         public static Dictionary<Type, List<uint>> AvailableInheritanceClasses { get; }
@@ -24,6 +25,7 @@ namespace GBX.NET
         {
             Names = new Dictionary<uint, string>();
             Mappings = new Dictionary<uint, uint>();
+            Extensions = new Dictionary<uint, string>();
 
             AvailableClasses = new Dictionary<uint, Type>();
             AvailableInheritanceClasses = new Dictionary<Type, List<uint>>();
@@ -58,9 +60,20 @@ namespace GBX.NET
 
                         var classIDString = $"{en}{cl}{ch}";
 
+                        var extension = default(string);
+
+                        var classNameSplit = className.Split(' ');
+                        if (classNameSplit.Length > 1)
+                        {
+                            className = classNameSplit[0];
+                            extension = classNameSplit[1];
+                        }
+
                         if (uint.TryParse(classIDString, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint classID))
                         {
                             Names[classID] = engineName + "::" + className;
+                            if (extension != null)
+                                Extensions[classID] = extension;
                         }
                         else
                         {

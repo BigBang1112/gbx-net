@@ -607,7 +607,7 @@
   015 CPlugTreeVisualMip
   016 CPlugVisualStrip
   017 CPlugVisualVertexs
-  019 CPlugFilePack
+  019 CPlugFilePack .pak
   01A CPlugSound
   01B CPlugSoundMood
   01C CPlugMusic
@@ -615,9 +615,9 @@
   01E CPlugVisualIndexedTriangles
   020 CPlugFile
   021 CPlugBitmapRenderLightFromMap
-  022 CPlugFileJpg
-  023 CPlugFileTga
-  024 CPlugFileDds
+  022 CPlugFileJpg .jpg
+  023 CPlugFileTga .tga
+  024 CPlugFileDds .dds
   025 CPlugFileImg
   026 CPlugShaderApply
   027 CPlugVisualQuads
@@ -626,11 +626,11 @@
   02A CPlugVisualIndexedStrip
   02B CPlug
   02C CPlugVisual3D
-  02D CPlugFileFont
+  02D CPlugFileFont .fnt
   02F CPlugFileGen
   030 CPlugFileSnd
-  031 CPlugFileWav
-  032 CPlugFileAvi
+  031 CPlugFileWav .wav
+  032 CPlugFileAvi .avi
   035 CPlugFileFidContainer
   036 CPlugBitmapPacker
   037 CPlugMusicType
@@ -638,14 +638,14 @@
   03A CPlugMaterialCustom
   03B CPlugVisualGrid
   03C CPlugVisualPath
-  03D CPlugFilePng
+  03D CPlugFilePng .png
   03E CPlugBlendShapes
   03F CPlugTreeGenText
   040 CPlugFileGPU
-  041 CPlugFileText
-  042 CPlugFileVsh
+  041 CPlugFileText .txt
+  042 CPlugFileVsh .txt
   044 CPlugBitmapPack
-  045 CPlugFilePsh
+  045 CPlugFilePsh .txt
   046 CPlugBitmapPackElem
   047 CPlugBitmapAddress
   048 CPlugBitmapPackInput
@@ -659,16 +659,16 @@
   052 CPlugRessourceStrings
   053 CPlugGpuCompileCache
   054 CPlugFileTextScript
-  055 CPlugFileI18n
+  055 CPlugFileI18n .mo
   056 CPlugVertexStream
   057 CPlugIndexBuffer
   058 CPlugBitmapRenderHemisphere
-  05A CPlugFileOggVorbis
+  05A CPlugFileOggVorbis .ogg
   05B CPlugBitmapRenderPortal
   05C CPlugBitmapRenderPlaneR
   05D CPlugModelShell
   05E CPlugSoundSurface
-  05F CPlugFileBink
+  05F CPlugFileBink .bik
   060 CPlugFileVideo
   062 CPlugTreeLight
   064 CPlugSoundMulti
@@ -681,10 +681,10 @@
   06B CPlugTreeFrustum
   072 CPlugModelTree
   073 CPlugModelMesh
-  074 CPlugFileVHlsl
+  074 CPlugFileVHlsl .txt
   075 CPlugFileGPUV
   076 CPlugFileGPUP
-  077 CPlugFilePHlsl
+  077 CPlugFilePHlsl .txt
   079 CPlugMaterial
   07A CPlugMaterialFx
   07B CPlugMaterialFxFlags
@@ -695,7 +695,7 @@
   081 CPlugMaterialFxDynaBump
   082 CPlugMaterialFxDynaMobil
   083 CPlugMaterialFxGenUvProj
-  084 CPlugFileZip
+  084 CPlugFileZip .zip
   086 CPlugBitmapRender
   087 CPlugBitmapRenderWater
   088 CPlugBitmapRenderCubeMap
@@ -709,13 +709,13 @@
   091 CPlugBitmapRenderSub
   092 CPlugModel
   093 CPlugFileGpuFx
-  094 CPlugFileGpuFxD3d
+  094 CPlugFileGpuFxD3d .fx
   095 CPlugFileVso
   096 CPlugFilePso
   098 CPlugFileModel
-  099 CPlugFileModelObj
+  099 CPlugFileModelObj .obj
   09A CPlugTreeGenSolid
-  09B CPlugFileModel3ds
+  09B CPlugFileModel3ds .3ds
   09C CPlugModelLodMesh
   09D CPlugModelFur
   09E CPlugBitmapRenderOverlay
@@ -726,15 +726,15 @@
   0A3 CPlugDecoratorSolid
   0A4 CPlugModelFences
   0A6 CPlugFurWind
-  0AD CPlugFileExr
+  0AD CPlugFileExr .exr
   0B0 CPlugAnimFile
   0BB CPlugSolid2Model
   0CE CPlugDataTape
-  0DB CPlugFileWebP
+  0DB CPlugFileWebP .webp
   0E7 CPlugVehicleVisModel
   0EA CPlugVehiclePhyModel
   0F4 CPlugGameSkin
-  108 CPlugFileWebM
+  108 CPlugFileWebM .webm
   11E CPlugVehiclePhyModelCustom
   11F CPlugEntRecordData
 0A Scene
