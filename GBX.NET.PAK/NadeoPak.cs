@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GBX.NET.Engines.MwFoundations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -77,7 +78,7 @@ namespace GBX.NET.PAK
                 var parentFolderIndex = r.ReadInt32(); // index into folders; -1 if this is a root folder
                 var name = r.ReadString();
 
-                var folder = new NadeoPakFolder(name);
+                var folder = new NadeoPakFolder(name, parentFolderIndex == -1 ? null : folders[parentFolderIndex]);
 
                 if (parentFolderIndex == -1)
                 {
@@ -113,10 +114,10 @@ namespace GBX.NET.PAK
                 var uncompressedSize = r.ReadInt32();
                 var compressedSize = r.ReadInt32();
                 var offset = r.ReadInt32();
-                var classID = r.ReadUInt32(); // indicates the type of the file
+                var classID = CMwNod.Remap(r.ReadUInt32()); // indicates the type of the file
                 var flags = r.ReadUInt64();
 
-                var file = new NadeoPakFile(this, name, uncompressedSize, compressedSize, offset, classID, flags)
+                var file = new NadeoPakFile(this, folders[folderIndex], name, uncompressedSize, compressedSize, offset, classID, flags)
                 {
                     U01 = unknown
                 };

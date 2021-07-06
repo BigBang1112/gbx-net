@@ -23,6 +23,7 @@ namespace GBX.NET.PAK
         public int Offset { get; }
         public uint ClassID { get; }
         public ulong Flags { get; }
+        public NadeoPakFolder Folder { get; }
 
         public bool IsCompressed => (Flags & 0x7C) != 0;
 
@@ -41,9 +42,10 @@ namespace GBX.NET.PAK
         public GameBox GBX => GetGBX();
         public CMwNod Node => GetNode();
 
-        public NadeoPakFile(NadeoPak owner, string name, int uncompressedSize, int compressedSize, int offset, uint classID, ulong flags)
+        public NadeoPakFile(NadeoPak owner, NadeoPakFolder folder, string name, int uncompressedSize, int compressedSize, int offset, uint classID, ulong flags)
         {
             this.owner = owner;
+            Folder = folder;
             Name = name;
             UncompressedSize = uncompressedSize;
             CompressedSize = compressedSize;
@@ -54,9 +56,16 @@ namespace GBX.NET.PAK
 
         public string GetClassName()
         {
-            if (NodeCacheManager.Names.TryGetValue(CMwNod.Remap(ClassID), out string className))
+            if (NodeCacheManager.Names.TryGetValue(ClassID, out string className))
                 return className;
             return null;
+        }
+
+        public string GetClassNameWithoutNamespace()
+        {
+            var className = GetClassName();
+            if (className == null) return null;
+            return className.Split(new string[] { "::" }, StringSplitOptions.None)[1];
         }
 
         public override string ToString()
@@ -130,6 +139,35 @@ namespace GBX.NET.PAK
         {
             using (var ms = Open())
                 return GameBox.ParseNodeHeader(ms);
+        }
+
+        public string GetFullFileName()
+        {
+            if (Folder == null) return Name;
+
+            var currentParent = Folder;
+            var folders = new List<string>
+            {
+                Name
+            };
+
+            while (currentParent != null)
+            {
+                folders.Insert(0, currentParent.Name);
+                currentParent = currentParent.Parent;
+            }
+
+            return Path.Combine(folders.ToArray());
+        }
+
+        public string GetFullDirectoryName()
+        {
+            return Path.GetDirectoryName(GetFullFileName());
+        }
+
+        public string GetFileName()
+        {
+            return Path.GetFileName(Name);
         }
 
         public static byte[] StringToByteArray(string hex)
