@@ -52,9 +52,17 @@ namespace GBX.NET.PAK
             Flags = flags;
         }
 
-        public override string ToString()
+        public string GetClassName()
         {
             if (NodeCacheManager.Names.TryGetValue(CMwNod.Remap(ClassID), out string className))
+                return className;
+            return null;
+        }
+
+        public override string ToString()
+        {
+            var className = GetClassName();
+            if (className != null)
                 return $"{Name} ({className})";
             return Name;
         }
