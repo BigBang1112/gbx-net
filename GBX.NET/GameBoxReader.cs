@@ -288,7 +288,23 @@ namespace GBX.NET
         {
             var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
-            if (index >= 0 && (!body.AuxilaryNodes.ContainsKey(index) || body.AuxilaryNodes[index] == null)) // If index is 0 or bigger and the node wasn't read yet, or is null
+            var refTable = body.GBX.RefTable;
+            if (refTable != null) // First checks if reference table is used
+            {
+                var allFiles = refTable.GetAllFiles(); // Returns available external references
+                if(allFiles?.Length > 0) // If there's one
+                {
+                    // Tries to get the one with this node index
+                    var refTableNode = allFiles.FirstOrDefault(x => x.NodeIndex == index + 1);
+                    if (refTableNode != null)
+                        return null; // Temporary, resolve later
+
+                    // Else it's a nested object
+                }
+            }
+
+            // If index is 0 or bigger and the node wasn't read yet, or is null
+            if (index >= 0 && (!body.AuxilaryNodes.ContainsKey(index) || body.AuxilaryNodes[index] == null))
                 body.AuxilaryNodes[index] = CMwNod.Parse<T>(this);
 
             if (index < 0) // If aux node index is below 0 then there's not much to solve
