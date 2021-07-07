@@ -548,12 +548,12 @@ namespace GBX.NET
         }
 
         /// <summary>
-        /// Reads values in a dictionary kind (first key, then value). For node dictionaries, use the <see cref="ReadNodeDictionary{TKey, TValue}"/> method for better performance.
+        /// Reads values in a dictionary kind (first key, then value). For node dictionaries, use the <see cref="ReadDictionaryNode{TKey, TValue}"/> method for better performance.
         /// </summary>
         /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>.</typeparam>
         /// <typeparam name="TValue">One of the supported types of <see cref="Read{T}"/>.</typeparam>
         /// <returns>A dictionary.</returns>
-        public Dictionary<TKey, TValue> ReadDictionary<TKey, TValue>()
+        public IDictionary<TKey, TValue> ReadDictionary<TKey, TValue>()
         {
             var dictionary = new Dictionary<TKey, TValue>();
 
@@ -576,7 +576,7 @@ namespace GBX.NET
         /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>.</typeparam>
         /// <typeparam name="TValue">A node that is presented as node reference.</typeparam>
         /// <returns>A dictionary.</returns>
-        public Dictionary<TKey, TValue> ReadNodeDictionary<TKey, TValue>() where TValue : CMwNod
+        public IDictionary<TKey, TValue> ReadDictionaryNode<TKey, TValue>() where TValue : CMwNod
         {
             var dictionary = new Dictionary<TKey, TValue>();
 

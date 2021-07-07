@@ -267,28 +267,28 @@ namespace GBX.NET
                 (x, w) => w.Write(x));
         }
 
-        public Dictionary<TKey, TValue> Dictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
+        public IDictionary<TKey, TValue> Dictionary<TKey, TValue>(IDictionary<TKey, TValue> dictionary)
         {
             if (Reader != null) return Reader.ReadDictionary<TKey, TValue>();
             else if (Writer != null) Writer.Write(dictionary);
             return dictionary;
         }
 
-        public void Dictionary<TKey, TValue>(ref Dictionary<TKey, TValue> dictionary)
+        public void Dictionary<TKey, TValue>(ref IDictionary<TKey, TValue> dictionary)
         {
             dictionary = Dictionary(dictionary);
         }
 
-        public Dictionary<TKey, TValue> NodeDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary) where TValue : CMwNod
+        public IDictionary<TKey, TValue> DictionaryNode<TKey, TValue>(IDictionary<TKey, TValue> dictionary) where TValue : CMwNod
         {
-            if (Reader != null) return Reader.ReadNodeDictionary<TKey, TValue>();
-            else if (Writer != null) Writer.WriteNodeDictionary(dictionary);
+            if (Reader != null) return Reader.ReadDictionaryNode<TKey, TValue>();
+            else if (Writer != null) Writer.WriteDictionaryNode(dictionary);
             return dictionary;
         }
 
-        public void NodeDictionary<TKey, TValue>(ref Dictionary<TKey, TValue> dictionary) where TValue : CMwNod
+        public void DictionaryNode<TKey, TValue>(ref IDictionary<TKey, TValue> dictionary) where TValue : CMwNod
         {
-            dictionary = NodeDictionary(dictionary);
+            dictionary = DictionaryNode(dictionary);
         }
 
         public bool Boolean(bool variable, bool asByte)

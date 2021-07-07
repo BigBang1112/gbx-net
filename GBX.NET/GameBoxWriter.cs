@@ -293,7 +293,7 @@ namespace GBX.NET
             Write(node, Body);
         }
 
-        public void Write<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
+        public void Write<TKey, TValue>(IDictionary<TKey, TValue> dictionary)
         {
             Write(dictionary.Count);
 
@@ -396,7 +396,7 @@ namespace GBX.NET
             }
         }
 
-        public void WriteNodeDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary) where TValue : CMwNod
+        public void WriteDictionaryNode<TKey, TValue>(IDictionary<TKey, TValue> dictionary) where TValue : CMwNod
         {
             Write(dictionary.Count);
 
