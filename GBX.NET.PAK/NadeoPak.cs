@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 using System.Text;
 
 namespace GBX.NET.PAK
@@ -17,6 +18,7 @@ namespace GBX.NET.PAK
         public int Version { get; private set; }
         public int DataStart { get; private set; }
         public List<NadeoPakFolder> Folders { get; private set; }
+        public List<NadeoPakFile> Files { get; private set; }
 
         internal Stream Stream { get; private set; }
 
@@ -24,6 +26,7 @@ namespace GBX.NET.PAK
         {
             Key = key;
             Folders = new List<NadeoPakFolder>();
+            Files = new List<NadeoPakFile>();
         }
 
         internal void Read(Stream stream)
@@ -117,14 +120,19 @@ namespace GBX.NET.PAK
                 var classID = CMwNod.Remap(r.ReadUInt32()); // indicates the type of the file
                 var flags = r.ReadUInt64();
 
-                var file = new NadeoPakFile(this, folders[folderIndex], name, uncompressedSize, compressedSize, offset, classID, flags)
+                var folder = folders.ElementAtOrDefault(folderIndex);
+
+                var file = new NadeoPakFile(this, folder, name, uncompressedSize, compressedSize, offset, classID, flags)
                 {
                     U01 = unknown
                 };
 
                 files[i] = file;
 
-                folders[folderIndex].Files.Add(file);
+                if (folder == null)
+                    Files.Add(file);
+                else
+                    folder.Files.Add(file);
             }
 
             this.files = files;
