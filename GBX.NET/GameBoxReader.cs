@@ -721,6 +721,24 @@ namespace GBX.NET
             return result;
         }
 
+        public T[] PeekArray<T>(int length)
+        {
+            var array = ReadArray<T>(length);
+            BaseStream.Position -= length * Marshal.SizeOf(default(T));
+            return array;
+        }
+
+        public T[] PeekArray<T>(int length, Func<int, T> forLoop)
+        {
+            var beforePos = BaseStream.Position;
+
+            var array = ReadArray(length, forLoop);
+
+            BaseStream.Position = beforePos;
+
+            return array;
+        }
+
         public bool HasMagic(string magic)
         {
             return ReadString(magic.Length) == magic;
