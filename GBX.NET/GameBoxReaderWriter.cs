@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-
+using System.Numerics;
 using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET
@@ -630,6 +630,55 @@ namespace GBX.NET
         public void UInt64()
         {
             _ = UInt64(default);
+        }
+
+        public BigInteger Int128(BigInteger variable, int byteLength)
+        {
+            if (Reader != null) return Reader.ReadBigInt(byteLength);
+            else if (Writer != null) Writer.Write(variable);
+            return variable;
+        }
+
+        public BigInteger BigInt(BigInteger variable, int byteLength)
+        {
+            if (Reader != null) return Reader.ReadBigInt(byteLength);
+            else if (Writer != null) Writer.Write(variable);
+            return variable;
+        }
+
+        public void BigInt(ref BigInteger variable, int byteLength)
+        {
+            variable = BigInt(variable, byteLength);
+        }
+
+        public void BigInt(ref BigInteger? variable, int byteLength)
+        {
+            variable = BigInt(variable.GetValueOrDefault(), byteLength);
+        }
+
+        public void BigInt(int byteLength)
+        {
+            _ = BigInt(default, byteLength);
+        }
+
+        public BigInteger Int128(BigInteger variable)
+        {
+            return BigInt(variable, 16);
+        }
+
+        public void Int128(ref BigInteger variable)
+        {
+            BigInt(ref variable, 16);
+        }
+
+        public void Int128(ref BigInteger? variable)
+        {
+            BigInt(ref variable, 16);
+        }
+
+        public void Int128()
+        {
+            _ = Int128(default, 16);
         }
 
         public Int2 Int2(Int2 variable)

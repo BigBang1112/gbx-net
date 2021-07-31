@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -627,6 +628,12 @@ namespace GBX.NET
         {
             var bytes = ReadBytes(3);
             return (bytes[0], bytes[1], bytes[2]);
+        }
+
+        public BigInteger ReadBigInt(int byteLength)
+        {
+            var bytes = ReadBytes(byteLength);
+            return new BigInteger(bytes);
         }
 
         public (Vec3 position, Quaternion rotation, float speed, Vec3 velocity) ReadTransform()

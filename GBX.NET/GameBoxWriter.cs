@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -302,6 +303,11 @@ namespace GBX.NET
                 WriteAny(pair.Key);
                 WriteAny(pair.Value);
             }
+        }
+
+        public void Write(BigInteger bigInteger)
+        {
+            WriteBytes(bigInteger.ToByteArray());
         }
 
         public void WriteInt32_s(TimeSpan variable)
