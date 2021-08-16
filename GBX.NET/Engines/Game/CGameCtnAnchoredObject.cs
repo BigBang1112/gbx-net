@@ -21,7 +21,7 @@ namespace GBX.NET.Engines.Game
         private short flags;
         private float scale = 1;
         private Vec3 pivotPosition;
-        private string skin;
+        private FileRef skin;
 
         #endregion
 
@@ -131,7 +131,7 @@ namespace GBX.NET.Engines.Game
         public DifficultyColor? Color { get; set; }
 
         [NodeMember]
-        public string Skin
+        public FileRef Skin
         {
             get => skin;
             set => skin = value;
@@ -160,9 +160,6 @@ namespace GBX.NET.Engines.Game
         {
             public Vec3 U01;
             public Vec3 U02;
-            private byte[] U03;
-            private int[] U04;
-            private Vec3 U05;
 
             private int version = 7;
 
@@ -211,16 +208,13 @@ namespace GBX.NET.Engines.Game
 
                             if (version >= 8) // TM 2020
                             {
+                                if ((n.flags & 0x4) == 0x4)
+                                {
+                                    rw.FileRef(ref n.skin);
+                                }
+
                                 rw.Vec3(ref U01);
                                 rw.Vec3(ref U02);
-
-                                if((n.flags & 0x4) == 0x4)
-                                {
-                                    rw.Bytes(ref U03, 9);
-                                    rw.String(ref n.skin);
-                                    rw.Array<int>(ref U04, 4);
-                                    rw.Vec3(ref U05);
-                                }
                             }
                         }
                     }
