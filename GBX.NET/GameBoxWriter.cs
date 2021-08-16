@@ -283,7 +283,7 @@ namespace GBX.NET
                 {
                     body.AuxilaryNodes[body.AuxilaryNodes.Count] = node;
                     Write(body.AuxilaryNodes.Count);
-                    Write(node.ID);
+                    Write(Chunk.Remap(node.ID, body.GBX.Remap));
                     node.Write(this, body.GBX.Remap);
                 }
             }
@@ -305,7 +305,7 @@ namespace GBX.NET
             }
         }
 
-        public void Write(BigInteger bigInteger)
+        public void WriteBigInt(BigInteger bigInteger)
         {
             WriteBytes(bigInteger.ToByteArray());
         }

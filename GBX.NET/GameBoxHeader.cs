@@ -173,7 +173,7 @@ namespace GBX.NET
                 w.Write((byte)RefTableCompression.GetValueOrDefault());
                 w.Write((byte)BodyCompression.GetValueOrDefault());
                 if (Version >= 4) w.Write((byte)UnknownByte.GetValueOrDefault());
-                w.Write(GBX.ID.GetValueOrDefault());
+                w.Write(Chunk.Remap(GBX.ID.GetValueOrDefault(), remap));
 
                 if (Version >= 6)
                 {
