@@ -635,14 +635,14 @@ namespace GBX.NET
         public BigInteger Int128(BigInteger variable, int byteLength)
         {
             if (Reader != null) return Reader.ReadBigInt(byteLength);
-            else if (Writer != null) Writer.Write(variable);
+            else if (Writer != null) Writer.WriteBigInt(variable);
             return variable;
         }
 
         public BigInteger BigInt(BigInteger variable, int byteLength)
         {
             if (Reader != null) return Reader.ReadBigInt(byteLength);
-            else if (Writer != null) Writer.Write(variable);
+            else if (Writer != null) Writer.WriteBigInt(variable);
             return variable;
         }
 
