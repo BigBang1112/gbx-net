@@ -314,7 +314,7 @@ namespace GBX.NET.Engines.MwFoundations
                 counter++;
 
                 var logChunk = $"[{ClassName}] 0x{chunk.ID:X8} ({(float)counter / Chunks.Count:0.00%})";
-                if (GBX.ID.HasValue == true && Remap(GBX.ID.Value) == ID)
+                if (GBX.ID.HasValue == true && GBX.ID.Value == ID)
                     Log.Write(logChunk);
                 else
                     Log.Write($"~ {logChunk}");
@@ -369,7 +369,7 @@ namespace GBX.NET.Engines.MwFoundations
             stopwatch.Stop();
 
             var logNodeCompletion = $"[{ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)";
-            if (GBX.ID.HasValue == true && Remap(GBX.ID.Value) == ID)
+            if (GBX.ID.HasValue == true && GBX.ID.Value == ID)
                 Log.Write(logNodeCompletion, ConsoleColor.Green);
             else
                 Log.Write($"~ {logNodeCompletion}", ConsoleColor.Green);
