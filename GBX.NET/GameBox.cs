@@ -270,7 +270,7 @@ namespace GBX.NET
             AssignGBXToNode();
 
             using (MemoryStream ms = new MemoryStream())
-            using (GameBoxWriter bodyW = new GameBoxWriter(ms))
+            using (GameBoxWriter bodyW = new GameBoxWriter(ms, Body))
             {
                 (Body as ILookbackable).IdWritten = false;
                 (Body as ILookbackable).IdStrings.Clear();
