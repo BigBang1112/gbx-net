@@ -8,9 +8,9 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace GBX.NET.Tests
+namespace GBX.NET.Tests.Integration
 {
-    public class GameBoxRefTableIntegrationTests
+    public class GameBoxRefTableTests
     {
         private readonly JsonSerializerOptions jsonSeralizerOptions = new();
 
