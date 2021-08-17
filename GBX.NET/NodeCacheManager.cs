@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 
 using GBX.NET.Engines.MwFoundations;
@@ -21,7 +22,13 @@ namespace GBX.NET
         public static Dictionary<Type, Dictionary<uint, Type>> AvailableChunkClasses { get; }
         public static Dictionary<Type, Dictionary<uint, Type>> AvailableHeaderChunkClasses { get; }
 
+        public static Dictionary<Type, IEnumerable<Attribute>> AvailableClassAttributes { get; }
         public static Dictionary<Type, Dictionary<uint, IEnumerable<Attribute>>> AvailableChunkAttributes { get; }
+        public static Dictionary<Type, IEnumerable<Attribute>> AvailableChunkAttributesByType { get; }
+
+        public static Dictionary<uint, Func<CMwNod>> AvailableClassConstructors { get; }
+        public static Dictionary<Type, Dictionary<uint, Func<Chunk>>> AvailableChunkConstructors { get; }
+        public static Dictionary<Type, Dictionary<uint, Func<Chunk>>> AvailableHeaderChunkConstructors { get; }
 
         static NodeCacheManager()
         {
@@ -34,7 +41,13 @@ namespace GBX.NET
             AvailableChunkClasses = new Dictionary<Type, Dictionary<uint, Type>>();
             AvailableHeaderChunkClasses = new Dictionary<Type, Dictionary<uint, Type>>();
 
+            AvailableClassAttributes = new Dictionary<Type, IEnumerable<Attribute>>();
             AvailableChunkAttributes = new Dictionary<Type, Dictionary<uint, IEnumerable<Attribute>>>();
+            AvailableChunkAttributesByType = new Dictionary<Type, IEnumerable<Attribute>>();
+
+            AvailableClassConstructors = new Dictionary<uint, Func<CMwNod>>();
+            AvailableChunkConstructors = new Dictionary<Type, Dictionary<uint, Func<Chunk>>>();
+            AvailableHeaderChunkConstructors = new Dictionary<Type, Dictionary<uint, Func<Chunk>>>();
 
             DefineNames();
             DefineMappings();
@@ -224,7 +237,15 @@ namespace GBX.NET
                 }
             }
 
-            foreach (var classChunksPair in AvailableChunkClasses)
+            foreach (var idClassPair in AvailableClasses)
+            {
+                var id = idClassPair.Key;
+                var classType = idClassPair.Value;
+
+                AvailableClassAttributes.Add(classType, classType.GetCustomAttributes());
+            }
+
+            foreach (var classChunksPair in AvailableHeaderChunkClasses.Concat(AvailableChunkClasses))
             {
                 var attributeDictionary = new Dictionary<uint, IEnumerable<Attribute>>();
 
@@ -233,13 +254,59 @@ namespace GBX.NET
                     var id = chunkClassIdTypePair.Key;
                     var chunkClass = chunkClassIdTypePair.Value;
 
-                    attributeDictionary[id] = chunkClass.GetCustomAttributes();
+                    var attributes = chunkClass.GetCustomAttributes();
+
+                    attributeDictionary[id] = attributes;
+
+                    AvailableChunkAttributesByType[chunkClass] = attributes;
                 }
 
                 AvailableChunkAttributes[classChunksPair.Key] = attributeDictionary;
             }
 
+            foreach (var idClassPair in AvailableClasses)
+            {
+                var id = idClassPair.Key;
+                var classType = idClassPair.Value;
+
+                var newExp = Expression.New(classType);
+                var lambda = Expression.Lambda<Func<CMwNod>>(newExp);
+                var compiled = lambda.Compile();
+
+                AvailableClassConstructors.Add(id, compiled);
+            }
+
+            foreach (var classChunksPair in AvailableChunkClasses)
+            {
+                AvailableChunkConstructors[classChunksPair.Key] = GetChunkConstructors(classChunksPair);
+            }
+
+            foreach (var classChunksPair in AvailableHeaderChunkClasses)
+            {
+                AvailableHeaderChunkConstructors[classChunksPair.Key] = GetChunkConstructors(classChunksPair);
+            }
+
             Debug.WriteLine("Types defined in " + watch.Elapsed.TotalMilliseconds + "ms");
+        }
+
+        private static Dictionary<uint, Func<Chunk>> GetChunkConstructors(
+            KeyValuePair<Type, Dictionary<uint, Type>> classChunksPair)
+        {
+            var constructorDictionary = new Dictionary<uint, Func<Chunk>>();
+
+            foreach (var chunkClassIdTypePair in classChunksPair.Value)
+            {
+                var id = chunkClassIdTypePair.Key;
+                var chunkClass = chunkClassIdTypePair.Value;
+
+                var newExp = Expression.New(chunkClass);
+                var lambda = Expression.Lambda<Func<Chunk>>(newExp);
+                var compiled = lambda.Compile();
+
+                constructorDictionary.Add(id, compiled);
+            }
+
+            return constructorDictionary;
         }
     }
 }

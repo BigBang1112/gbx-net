@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 using GBX.NET.Engines.MwFoundations;
@@ -18,7 +19,8 @@ namespace GBX.NET
 
         public SkippableChunk()
         {
-            chunkID = GetType().GetCustomAttribute<ChunkAttribute>().ID;
+            chunkID = ((ChunkAttribute)NodeCacheManager.AvailableChunkAttributesByType[GetType()]
+                .FirstOrDefault(x => x is ChunkAttribute)).ID;
         }
 
         public SkippableChunk(T node, uint id, byte[] data) : base(node)
@@ -33,7 +35,8 @@ namespace GBX.NET
 
         public SkippableChunk(T node, byte[] data) : base(node)
         {
-            chunkID = GetType().GetCustomAttribute<ChunkAttribute>().ID;
+            chunkID = ((ChunkAttribute)NodeCacheManager.AvailableChunkAttributesByType[GetType()]
+                .FirstOrDefault(x => x is ChunkAttribute)).ID;
 
             Data = data;
 

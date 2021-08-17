@@ -47,7 +47,8 @@ namespace GBX.NET.Engines.MwFoundations
 
         internal CMwNod()
         {
-            ID = GetType().GetCustomAttribute<NodeAttribute>().ID;
+            ID = ((NodeAttribute)NodeCacheManager.AvailableClassAttributes[GetType()]
+                .FirstOrDefault(x => x is NodeAttribute)).ID;
         }
 
         protected CMwNod(params Chunk[] chunks) : this()
@@ -84,7 +85,9 @@ namespace GBX.NET.Engines.MwFoundations
             if (!NodeCacheManager.AvailableClasses.TryGetValue(classID.Value, out Type type))
                 throw new NotImplementedException($"Node ID 0x{classID.Value:X8} is not implemented. ({NodeCacheManager.Names.Where(x => x.Key == Chunk.Remap(classID.Value)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
 
-            var node = (T)Activator.CreateInstance(type);
+            NodeCacheManager.AvailableClassConstructors.TryGetValue(classID.Value, out Func<CMwNod> constructor);
+
+            var node = (T)constructor();
 
             Parse(node, r, progress);
 
@@ -169,7 +172,7 @@ namespace GBX.NET.Engines.MwFoundations
                             if (node.GBX?.ID.HasValue == true && Remap(node.GBX.ID.Value) == node.ID)
                                 Log.Write(logChunkError, ConsoleColor.Red);
                             else
-                                Log.Write($"~ {logChunkError}", ConsoleColor.Red);
+                                Log.Write("~ " + logChunkError, ConsoleColor.Red);
 
                             throw new Exception($"Wrong chunk format or unskippable chunk: 0x{chunkID:X8} (" +
                                 $"{NodeCacheManager.Names.Where(x => x.Key == Chunk.Remap(chunkID & 0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})" +
@@ -224,12 +227,10 @@ namespace GBX.NET.Engines.MwFoundations
                             throw new Exception();
                         }
 
-                        // Faster than caching
-                        var constructor = Array.Find(chunkClass.GetConstructors(), x => x.GetParameters().Length == 0);
-                        if (constructor == null)
-                            throw new ArgumentException($"{type.FullName} doesn't have a parameterless constructor.");
+                        NodeCacheManager.AvailableChunkConstructors[type].TryGetValue(chunkRemapped,
+                            out Func<Chunk> constructor);
 
-                        var c = (Chunk)constructor.Invoke(new object[0]);
+                        var c = constructor();
                         c.Node = node;
                         c.GBX = node.GBX;
                         ((ISkippableChunk)c).Data = chunkData;
@@ -258,11 +259,10 @@ namespace GBX.NET.Engines.MwFoundations
                 else // Known or unskippable chunk
                 {
                     // Faster than caching
-                    var constructor = Array.Find(chunkClass.GetConstructors(), x => x.GetParameters().Length == 0);
-                    if (constructor == null)
-                        throw new ArgumentException($"{type.FullName} doesn't have a parameterless constructor.");
+                    NodeCacheManager.AvailableChunkConstructors[type].TryGetValue(chunkRemapped,
+                        out Func<Chunk> constructor);
 
-                    var c = (Chunk)constructor.Invoke(new object[0]);
+                    var c = constructor();
                     c.Node = node;
 
                     c.OnLoad();

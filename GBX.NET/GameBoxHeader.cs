@@ -118,21 +118,16 @@ namespace GBX.NET
 
                             if (chunkTypes.TryGetValue(chunkId, out Type type))
                             {
-                                var constructor = type.GetConstructors().First();
-                                var constructorParams = constructor.GetParameters();
-                                if (constructorParams.Length == 0)
-                                {
-                                    Chunk headerChunk = (Chunk)constructor.Invoke(new object[0]);
-                                    headerChunk.Node = gbx.Node;
-                                    headerChunk.GBX = GBX;
-                                    ((IHeaderChunk)headerChunk).Data = d;
-                                    if (d == null || d.Length == 0)
-                                        ((IHeaderChunk)headerChunk).Discovered = true;
-                                    chunk = (Chunk)headerChunk;
-                                }
-                                else if (constructorParams.Length == 2)
-                                    chunk = (HeaderChunk<T>)constructor.Invoke(new object[] { gbx.Node, d });
-                                else throw new ArgumentException($"{type.FullName} has an invalid amount of parameters.");
+                                NodeCacheManager.AvailableHeaderChunkConstructors[nodeType].TryGetValue(chunkId,
+                                    out Func<Chunk> constructor);
+
+                                Chunk headerChunk = constructor();
+                                headerChunk.Node = gbx.Node;
+                                headerChunk.GBX = GBX;
+                                ((IHeaderChunk)headerChunk).Data = d;
+                                if (d == null || d.Length == 0)
+                                    ((IHeaderChunk)headerChunk).Discovered = true;
+                                chunk = (Chunk)headerChunk;
 
                                 using (var msChunk = new MemoryStream(d))
                                 using (var rChunk = new GameBoxReader(msChunk, this))

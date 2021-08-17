@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -10,7 +11,11 @@ namespace GBX.NET
 {
     public abstract class Chunk : IComparable<Chunk>
     {
-        public virtual uint ID => GetType().GetCustomAttribute<ChunkAttribute>().ID;
+        public virtual uint ID
+        {
+            get => ((ChunkAttribute)NodeCacheManager.AvailableChunkAttributesByType[GetType()]
+                .FirstOrDefault(x => x is ChunkAttribute)).ID;
+        }
         /// <summary>
         /// Stream of unknown bytes
         /// </summary>
@@ -26,7 +31,7 @@ namespace GBX.NET
 
         public Chunk()
         {
-
+            
         }
 
         public override int GetHashCode()
