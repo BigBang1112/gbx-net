@@ -17,22 +17,22 @@ namespace GBX.NET
             set => GBX.Header.Version = value;
         }
 
-        public char? ByteFormat
+        public GameBoxByteFormat ByteFormat
         {
             get => GBX.Header.ByteFormat;
             set => GBX.Header.ByteFormat = value;
         }
 
-        public char? RefTableCompression
+        public GameBoxCompression CompressionOfRefTable
         {
-            get => GBX.Header.RefTableCompression;
-            set => GBX.Header.RefTableCompression = value;
+            get => GBX.Header.CompressionOfRefTable;
+            set => GBX.Header.CompressionOfRefTable = value;
         }
 
-        public char? BodyCompression
+        public GameBoxCompression CompressionOfBody
         {
-            get => GBX.Header.BodyCompression;
-            set => GBX.Header.BodyCompression = value;
+            get => GBX.Header.CompressionOfBody;
+            set => GBX.Header.CompressionOfBody = value;
         }
 
         public char? UnknownByte
@@ -169,10 +169,15 @@ namespace GBX.NET
 
             if (Version >= 3)
             {
-                w.Write((byte)ByteFormat.GetValueOrDefault());
-                w.Write((byte)RefTableCompression.GetValueOrDefault());
-                w.Write((byte)BodyCompression.GetValueOrDefault());
-                if (Version >= 4) w.Write((byte)UnknownByte.GetValueOrDefault());
+                w.Write((byte)ByteFormat);
+                w.Write((byte)CompressionOfRefTable);
+                w.Write((byte)CompressionOfBody);
+
+                if (Version >= 4)
+                {
+                    w.Write((byte)UnknownByte.GetValueOrDefault());
+                }
+
                 w.Write(Chunk.Remap(GBX.ID.GetValueOrDefault(), remap));
 
                 if (Version >= 6)

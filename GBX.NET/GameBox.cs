@@ -233,9 +233,9 @@ namespace GBX.NET
         {
             Log.Write("Reading the body...");
 
-            switch (Header.BodyCompression)
+            switch (Header.CompressionOfBody)
             {
-                case 'C':
+                case GameBoxCompression.Compressed:
                     var uncompressedSize = reader.ReadInt32();
                     var compressedSize = reader.ReadInt32();
 
@@ -243,7 +243,7 @@ namespace GBX.NET
                     Body.Read(data, uncompressedSize, progress);
 
                     break;
-                case 'U':
+                case GameBoxCompression.Uncompressed:
                     if (readUncompressedBodyDirectly)
                     {
                         Body.Read(reader, progress);
