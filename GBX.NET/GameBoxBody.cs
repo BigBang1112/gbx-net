@@ -86,6 +86,8 @@ namespace GBX.NET
 
         public void Write(GameBoxWriter w, IDRemap remap)
         {
+            GBX.Remap = remap;
+
             if(GBX.Header.BodyCompression == 'C')
             {
                 using (var msBody = new MemoryStream())
