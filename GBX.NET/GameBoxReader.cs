@@ -293,7 +293,7 @@ namespace GBX.NET
             if (refTable != null) // First checks if reference table is used
             {
                 var allFiles = refTable.GetAllFiles(); // Returns available external references
-                if(allFiles?.Length > 0) // If there's one
+                if(allFiles.Count() > 0) // If there's one
                 {
                     // Tries to get the one with this node index
                     var refTableNode = allFiles.FirstOrDefault(x => x.NodeIndex == index + 1);
