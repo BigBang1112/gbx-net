@@ -21,6 +21,8 @@ namespace GBX.NET
         public static Dictionary<Type, Dictionary<uint, Type>> AvailableChunkClasses { get; }
         public static Dictionary<Type, Dictionary<uint, Type>> AvailableHeaderChunkClasses { get; }
 
+        public static Dictionary<Type, Dictionary<uint, IEnumerable<Attribute>>> AvailableChunkAttributes { get; }
+
         static NodeCacheManager()
         {
             Names = new Dictionary<uint, string>();
@@ -31,6 +33,8 @@ namespace GBX.NET
             AvailableInheritanceClasses = new Dictionary<Type, List<uint>>();
             AvailableChunkClasses = new Dictionary<Type, Dictionary<uint, Type>>();
             AvailableHeaderChunkClasses = new Dictionary<Type, Dictionary<uint, Type>>();
+
+            AvailableChunkAttributes = new Dictionary<Type, Dictionary<uint, IEnumerable<Attribute>>>();
 
             DefineNames();
             DefineMappings();
@@ -218,6 +222,21 @@ namespace GBX.NET
                         AvailableChunkClasses[mainType][chunkType.Key] = chunkType.Value;
                     }
                 }
+            }
+
+            foreach (var classChunksPair in AvailableChunkClasses)
+            {
+                var attributeDictionary = new Dictionary<uint, IEnumerable<Attribute>>();
+
+                foreach (var chunkClassIdTypePair in classChunksPair.Value)
+                {
+                    var id = chunkClassIdTypePair.Key;
+                    var chunkClass = chunkClassIdTypePair.Value;
+
+                    attributeDictionary[id] = chunkClass.GetCustomAttributes();
+                }
+
+                AvailableChunkAttributes[classChunksPair.Key] = attributeDictionary;
             }
 
             Debug.WriteLine("Types defined in " + watch.Elapsed.TotalMilliseconds + "ms");
