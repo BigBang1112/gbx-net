@@ -220,8 +220,10 @@ namespace GBX.NET
                     }
                 }
 
-                AvailableChunkClasses.Add(type, availableChunkClasses);
-                AvailableHeaderChunkClasses.Add(type, availableHeaderChunkClasses);
+                if (availableChunkClasses.Count > 0)
+                    AvailableChunkClasses.Add(type, availableChunkClasses);
+                if (availableHeaderChunkClasses.Count > 0)
+                    AvailableHeaderChunkClasses.Add(type, availableHeaderChunkClasses);
             }
 
             foreach (var typePair in availableInheritanceTypes)
@@ -230,9 +232,15 @@ namespace GBX.NET
 
                 foreach (var type in typePair.Value)
                 {
-                    foreach (var chunkType in AvailableChunkClasses[type])
+                    if (AvailableChunkClasses.ContainsKey(type))
                     {
-                        AvailableChunkClasses[mainType][chunkType.Key] = chunkType.Value;
+                        foreach (var chunkType in AvailableChunkClasses[type])
+                        {
+                            if (AvailableChunkClasses.ContainsKey(mainType))
+                            {
+                                AvailableChunkClasses[mainType][chunkType.Key] = chunkType.Value;
+                            }
+                        }
                     }
                 }
             }
@@ -278,12 +286,16 @@ namespace GBX.NET
 
             foreach (var classChunksPair in AvailableChunkClasses)
             {
-                AvailableChunkConstructors[classChunksPair.Key] = GetChunkConstructors(classChunksPair);
+                var constructors = GetChunkConstructors(classChunksPair);
+                if (constructors != null)
+                    AvailableChunkConstructors[classChunksPair.Key] = constructors;
             }
 
             foreach (var classChunksPair in AvailableHeaderChunkClasses)
             {
-                AvailableHeaderChunkConstructors[classChunksPair.Key] = GetChunkConstructors(classChunksPair);
+                var constructors = GetChunkConstructors(classChunksPair);
+                if (constructors != null)
+                    AvailableHeaderChunkConstructors[classChunksPair.Key] = constructors;
             }
 
             Debug.WriteLine("Types defined in " + watch.Elapsed.TotalMilliseconds + "ms");
@@ -292,6 +304,8 @@ namespace GBX.NET
         private static Dictionary<uint, Func<Chunk>> GetChunkConstructors(
             KeyValuePair<Type, Dictionary<uint, Type>> classChunksPair)
         {
+            if (classChunksPair.Value.Count == 0) return null;
+
             var constructorDictionary = new Dictionary<uint, Func<Chunk>>();
 
             foreach (var chunkClassIdTypePair in classChunksPair.Value)
