@@ -14,7 +14,7 @@ namespace GBX.NET
         public virtual uint ID
         {
             get => ((ChunkAttribute)NodeCacheManager.AvailableChunkAttributesByType[GetType()]
-                .FirstOrDefault(x => x is ChunkAttribute)).ID;
+                .First(x => x is ChunkAttribute)).ID;
         }
         /// <summary>
         /// Stream of unknown bytes

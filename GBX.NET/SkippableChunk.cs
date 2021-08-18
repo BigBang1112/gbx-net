@@ -20,7 +20,7 @@ namespace GBX.NET
         public SkippableChunk()
         {
             chunkID = ((ChunkAttribute)NodeCacheManager.AvailableChunkAttributesByType[GetType()]
-                .FirstOrDefault(x => x is ChunkAttribute)).ID;
+                .First(x => x is ChunkAttribute)).ID;
         }
 
         public SkippableChunk(T node, uint id, byte[] data) : base(node)
@@ -36,7 +36,7 @@ namespace GBX.NET
         public SkippableChunk(T node, byte[] data) : base(node)
         {
             chunkID = ((ChunkAttribute)NodeCacheManager.AvailableChunkAttributesByType[GetType()]
-                .FirstOrDefault(x => x is ChunkAttribute)).ID;
+                .First(x => x is ChunkAttribute)).ID;
 
             Data = data;
 

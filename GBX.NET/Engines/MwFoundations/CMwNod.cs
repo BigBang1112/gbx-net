@@ -48,7 +48,7 @@ namespace GBX.NET.Engines.MwFoundations
         internal CMwNod()
         {
             ID = ((NodeAttribute)NodeCacheManager.AvailableClassAttributes[GetType()]
-                .FirstOrDefault(x => x is NodeAttribute)).ID;
+                .First(x => x is NodeAttribute)).ID;
         }
 
         protected CMwNod(params Chunk[] chunks) : this()
@@ -128,7 +128,7 @@ namespace GBX.NET.Engines.MwFoundations
                     var logChunk = new StringBuilder('[');
                     logChunk.Append(node.ClassName);
                     logChunk.Append("] 0x");
-                    logChunk.Append(chunkID);
+                    logChunk.Append(chunkID.ToString("X8"));
 
                     if (r.BaseStream.CanSeek)
                     {
