@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using GBX.NET.Engines.MwFoundations;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.Linq;
