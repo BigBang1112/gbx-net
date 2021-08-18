@@ -22,6 +22,7 @@ namespace GBX.NET.Engines.Game
         private float scale = 1;
         private Vec3 pivotPosition;
         private FileRef skin;
+        private DifficultyColor? color;
 
         #endregion
 
@@ -128,7 +129,16 @@ namespace GBX.NET.Engines.Game
         /// Color of the item. Available since TM® Royal update.
         /// </summary>
         [NodeMember]
-        public DifficultyColor? Color { get; set; }
+        public DifficultyColor? Color
+        {
+            get
+            {
+                GBX.Node.DiscoverChunk<CGameCtnChallenge.Chunk03043062>();
+
+                return color;
+            }
+            set => color = value;
+        }
 
         [NodeMember]
         public FileRef Skin

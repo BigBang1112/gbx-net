@@ -33,6 +33,7 @@ namespace GBX.NET.Engines.Game
         private CGameWaypointSpecialProperty waypoint;
         private Vec3 absolutePositionInMap;
         private Vec3 pitchYawRoll;
+        private DifficultyColor? color;
 
         #endregion
 
@@ -281,7 +282,16 @@ namespace GBX.NET.Engines.Game
         /// Color of the block. Available since TM® Royal update.
         /// </summary>
         [NodeMember]
-        public DifficultyColor? Color { get; set; }
+        public DifficultyColor? Color
+        {
+            get
+            {
+                GBX.Node.DiscoverChunk<CGameCtnChallenge.Chunk03043062>();
+
+                return color;
+            }
+            set => color = value;
+        }
 
         #endregion
 
