@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GBX.NET.LZO\GBX.NET.LZO.csproj" />
     <ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />
   </ItemGroup>
 
@@ -32,6 +33,7 @@
 	<ItemGroup>
 	  <None Remove="Files\CCP#04 - ODYSSEY.Map.Gbx" />
 	  <None Remove="Files\IslandSeaWaySupport.TMEDRoad.Gbx" />
+	  <None Remove="Files\Summer 2021 - 25.Map.Gbx" />
 	</ItemGroup>
 
 </Project>

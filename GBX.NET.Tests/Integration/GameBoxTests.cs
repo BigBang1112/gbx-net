@@ -12,10 +12,10 @@ namespace GBX.NET.Tests.Integration
     {
         [Theory(DisplayName = "Parse/Save map without exceptions")]
         [InlineData("CCP#04 - ODYSSEY.Map.Gbx")]
+        [InlineData("Summer 2021 - 25.Map.Gbx")]
         public void ParseSaveMapWithoutExceptions(string fileName)
         {
             var node = GameBox.ParseNode(Path.Combine("Files", fileName));
-            node.GBX.Header.CompressionOfBody = GameBoxCompression.Uncompressed;
             using var ms = new MemoryStream();
             node.Save(ms);
         }
