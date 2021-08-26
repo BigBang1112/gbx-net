@@ -20,6 +20,7 @@ namespace GBX.NET.Engines.GameData
 
         #region Fields
 
+        private Ident author;
         private Ident ident;
         private string pageName;
         private int catalogPosition;
@@ -37,6 +38,13 @@ namespace GBX.NET.Engines.GameData
         #endregion
 
         #region Properties
+
+        [NodeMember]
+        public Ident Author
+        {
+            get => author;
+            set => author = value;
+        }
 
         [NodeMember]
         public Ident Ident
@@ -138,6 +146,22 @@ namespace GBX.NET.Engines.GameData
         #endregion
 
         #region Chunks
+
+        #region 0x002 chunk (author)
+
+        /// <summary>
+        /// CGameCtnCollector 0x002 chunk (author)
+        /// </summary>
+        [Chunk(0x2E001002, "author")]
+        public class Chunk2E001002 : Chunk<CGameCtnCollector>
+        {
+            public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
+            {
+                rw.Ident(ref n.author);
+            }
+        }
+
+        #endregion
 
         #region 0x003 header chunk
 

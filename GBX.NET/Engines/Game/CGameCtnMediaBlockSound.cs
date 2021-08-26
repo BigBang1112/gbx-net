@@ -8,14 +8,14 @@ namespace GBX.NET.Engines.Game
     {
         #region Fields
 
-        public FileRef sound;
-        public bool isMusic;
-        public bool isLooping;
-        public int playCount;
-        public bool stopWithClip;
-        public bool audioToSpeech;
-        public int audioToSpeechTarget;
-        public IList<Key> keys = new List<Key>();
+        private FileRef sound;
+        private bool isMusic;
+        private bool isLooping;
+        private int playCount = 1;
+        private bool stopWithClip;
+        private bool audioToSpeech;
+        private int audioToSpeechTarget;
+        private IList<Key> keys = new List<Key>();
 
         #endregion
 
@@ -130,25 +130,31 @@ namespace GBX.NET.Engines.Game
         #region 0x003 chunk
 
         [Chunk(0x030A7003)]
-        public class Chunk030A7003 : Chunk<CGameCtnMediaBlockSound>
+        public class Chunk030A7003 : Chunk<CGameCtnMediaBlockSound>, IVersionable
         {
-            public int Version { get; set; }
+            private int version;
+
+            public int Version
+            {
+                get => version;
+                set => version = value;
+            }
 
             public override void ReadWrite(CGameCtnMediaBlockSound n, GameBoxReaderWriter rw)
             {
-                Version = rw.Int32(Version);
-                n.PlayCount = rw.Int32(n.PlayCount);
-                n.IsLooping = rw.Boolean(n.IsLooping);
-                n.IsMusic = rw.Boolean(n.IsMusic);
+                rw.Int32(ref version);
+                rw.Int32(ref n.playCount);
+                rw.Boolean(ref n.isLooping);
+                rw.Boolean(ref n.isMusic);
 
-                if(Version >= 1) // ManiaPlanet
+                if (version >= 1) // ManiaPlanet
                 {
-                    n.StopWithClip = rw.Boolean(n.StopWithClip);
+                    rw.Boolean(ref n.stopWithClip);
 
-                    if (Version >= 2)
+                    if (version >= 2)
                     {
-                        n.AudioToSpeech = rw.Boolean(n.AudioToSpeech);
-                        n.AudioToSpeechTarget = rw.Int32(n.AudioToSpeechTarget);
+                        rw.Boolean(ref n.audioToSpeech);
+                        rw.Int32(ref n.audioToSpeechTarget);
                     }
                 }
             }
@@ -161,7 +167,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x030A7004)]
         public class Chunk030A7004 : Chunk<CGameCtnMediaBlockSound>
         {
-            public int U01;
+            public int U01 = 1;
 
             public override void ReadWrite(CGameCtnMediaBlockSound n, GameBoxReaderWriter rw)
             {

@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
+using System.Text;
 
 namespace GBX.NET.Engines.MwFoundations
 {
@@ -45,7 +47,8 @@ namespace GBX.NET.Engines.MwFoundations
 
         internal CMwNod()
         {
-            ID = GetType().GetCustomAttribute<NodeAttribute>().ID;
+            ID = ((NodeAttribute)NodeCacheManager.AvailableClassAttributes[GetType()]
+                .First(x => x is NodeAttribute)).ID;
         }
 
         protected CMwNod(params Chunk[] chunks) : this()
@@ -82,13 +85,16 @@ namespace GBX.NET.Engines.MwFoundations
             if (!NodeCacheManager.AvailableClasses.TryGetValue(classID.Value, out Type type))
                 throw new NotImplementedException($"Node ID 0x{classID.Value:X8} is not implemented. ({NodeCacheManager.Names.Where(x => x.Key == Chunk.Remap(classID.Value)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
 
-            var node = (T)Activator.CreateInstance(type);
+            NodeCacheManager.AvailableClassConstructors.TryGetValue(classID.Value, out Func<CMwNod> constructor);
+
+            var node = (T)constructor();
 
             Parse(node, r, progress);
 
             return node;
         }
 
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0071:Zjednodušit interpolaci", Justification = "<Čeká>")]
         public static void Parse<T>(T node, GameBoxReader r, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
         {
             var stopwatch = Stopwatch.StartNew();
@@ -106,7 +112,7 @@ namespace GBX.NET.Engines.MwFoundations
             {
                 if (r.BaseStream.CanSeek && r.BaseStream.Position + 4 > r.BaseStream.Length)
                 {
-                    Debug.WriteLine($"Unexpected end of the stream: {r.BaseStream.Position}/{r.BaseStream.Length}");
+                    Debug.WriteLine($"Unexpected end of the stream: {r.BaseStream.Position.ToString()}/{r.BaseStream.Length.ToString()}");
                     var bytes = r.ReadBytes((int)(r.BaseStream.Length - r.BaseStream.Position));
                     break;
                 }
@@ -119,14 +125,27 @@ namespace GBX.NET.Engines.MwFoundations
                 }
                 else
                 {
-                    var logChunk = $"[{node.ClassName}] 0x{chunkID:X8}";
+                    var logChunk = new StringBuilder('[');
+                    logChunk.Append(node.ClassName);
+                    logChunk.Append("] 0x");
+                    logChunk.Append(chunkID.ToString("X8"));
+
                     if (r.BaseStream.CanSeek)
-                        logChunk += $" ({(float)r.BaseStream.Position / r.BaseStream.Length:0.00%})";
+                    {
+                        logChunk.Append(" (");
+                        logChunk.Append(((float)r.BaseStream.Position / r.BaseStream.Length).ToString("0.00%"));
+                        logChunk.Append(')');
+                    }
 
                     if (node.GBX?.ID.HasValue == true && Remap(node.GBX.ID.Value) == node.ID)
-                        Log.Write(logChunk);
+                    {
+                        Log.Write(logChunk.ToString());
+                    }
                     else
-                        Log.Write($"~ {logChunk}");
+                    {
+                        logChunk.Insert(0, "~ ");
+                        Log.Write(logChunk.ToString());
+                    }
                 }
 
                 Chunk chunk;
@@ -149,11 +168,11 @@ namespace GBX.NET.Engines.MwFoundations
                     {
                         if (chunkID != 0 && !reflected)
                         {
-                            var logChunkError = $"[{node.ClassName}] 0x{chunkID:X8} ERROR (wrong chunk format or unknown unskippable chunk)";
+                            var logChunkError = $"[{node.ClassName}] 0x{chunkID.ToString("X8")} ERROR (wrong chunk format or unknown unskippable chunk)";
                             if (node.GBX?.ID.HasValue == true && Remap(node.GBX.ID.Value) == node.ID)
                                 Log.Write(logChunkError, ConsoleColor.Red);
                             else
-                                Log.Write($"~ {logChunkError}", ConsoleColor.Red);
+                                Log.Write("~ " + logChunkError, ConsoleColor.Red);
 
                             throw new Exception($"Wrong chunk format or unskippable chunk: 0x{chunkID:X8} (" +
                                 $"{NodeCacheManager.Names.Where(x => x.Key == Chunk.Remap(chunkID & 0xFFFFF000)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})" +
@@ -184,13 +203,34 @@ namespace GBX.NET.Engines.MwFoundations
 
                     if (reflected)
                     {
-                        var ignoreChunkAttribute = chunkClass.GetCustomAttribute<IgnoreChunkAttribute>();
+                        var attributesAvailable = NodeCacheManager.AvailableChunkAttributes[type].TryGetValue(
+                            chunkRemapped, out IEnumerable<Attribute> attributes);
 
-                        var constructor = Array.Find(chunkClass.GetConstructors(), x => x.GetParameters().Length == 0);
-                        if(constructor == null)
-                            throw new ArgumentException($"{type.FullName} doesn't have a parameterless constructor.");
+                        if (!attributesAvailable)
+                        {
+                            throw new Exception();
+                        }
 
-                        var c = (Chunk)constructor.Invoke(new object[0]);
+                        var ignoreChunkAttribute = default(IgnoreChunkAttribute);
+                        var chunkAttribute = default(ChunkAttribute);
+
+                        foreach (var att in attributes)
+                        {
+                            if (att is IgnoreChunkAttribute ignoreChunkAtt)
+                                ignoreChunkAttribute = ignoreChunkAtt;
+                            if (att is ChunkAttribute chunkAtt)
+                                chunkAttribute = chunkAtt;
+                        }
+
+                        if (chunkAttribute == null)
+                        {
+                            throw new Exception();
+                        }
+
+                        NodeCacheManager.AvailableChunkConstructors[type].TryGetValue(chunkRemapped,
+                            out Func<Chunk> constructor);
+
+                        var c = constructor();
                         c.Node = node;
                         c.GBX = node.GBX;
                         ((ISkippableChunk)c).Data = chunkData;
@@ -202,7 +242,7 @@ namespace GBX.NET.Engines.MwFoundations
                         {
                             c.OnLoad();
 
-                            if (chunkClass.GetCustomAttribute<ChunkAttribute>().ProcessSync)
+                            if (chunkAttribute.ProcessSync)
                                 ((ISkippableChunk)c).Discover();
                         }
 
@@ -218,12 +258,11 @@ namespace GBX.NET.Engines.MwFoundations
                 }
                 else // Known or unskippable chunk
                 {
-                    var constructor = Array.Find(chunkClass.GetConstructors(), x => x.GetParameters().Length == 0);
+                    // Faster than caching
+                    NodeCacheManager.AvailableChunkConstructors[type].TryGetValue(chunkRemapped,
+                        out Func<Chunk> constructor);
 
-                    if (constructor == null)
-                        throw new ArgumentException($"{type.FullName} doesn't have a parameterless constructor.");
-
-                    var c = (Chunk)constructor.Invoke(new object[0]);
+                    var c = constructor();
                     c.Node = node;
 
                     c.OnLoad();
@@ -236,7 +275,14 @@ namespace GBX.NET.Engines.MwFoundations
 
                     GameBoxReaderWriter gbxrw = new GameBoxReaderWriter(r);
 
-                    var attributes = chunkClass.GetCustomAttributes();
+                    var attributesAvailable = NodeCacheManager.AvailableChunkAttributes[type].TryGetValue(
+                        chunkRemapped, out IEnumerable<Attribute> attributes);
+
+                    if (!attributesAvailable)
+                    {
+                        throw new Exception();
+                    }
+
                     var ignoreChunkAttribute = default(IgnoreChunkAttribute);
                     var autoReadWriteChunkAttribute = default(AutoReadWriteChunkAttribute);
 
@@ -262,7 +308,7 @@ namespace GBX.NET.Engines.MwFoundations
                             }
                         }
                         else
-                            throw new Exception($"Chunk 0x{chunkID & 0xFFF:x3} from class {node.ClassName} is known but its content is unknown to read.");
+                            throw new Exception($"Chunk 0x{(chunkID & 0xFFF).ToString("x3")} from class {node.ClassName} is known but its content is unknown to read.");
                     }
                     catch (EndOfStreamException)
                     {
@@ -281,7 +327,7 @@ namespace GBX.NET.Engines.MwFoundations
 
             stopwatch.Stop();
 
-            var logNodeCompletion = $"[{node.ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)";
+            var logNodeCompletion = $"[{node.ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds.ToString()}ms)";
             if (node.GBX.ID.HasValue == true && Remap(node.GBX.ID.Value) == node.ID)
                 Log.Write(logNodeCompletion, ConsoleColor.Green);
             else
@@ -313,8 +359,8 @@ namespace GBX.NET.Engines.MwFoundations
             {
                 counter++;
 
-                var logChunk = $"[{ClassName}] 0x{chunk.ID:X8} ({(float)counter / Chunks.Count:0.00%})";
-                if (GBX.ID.HasValue == true && Remap(GBX.ID.Value) == ID)
+                var logChunk = $"[{ClassName}] 0x{chunk.ID.ToString("X8")} ({((float)counter / Chunks.Count).ToString("0.00%")})";
+                if (GBX.ID.HasValue == true && GBX.ID.Value == ID)
                     Log.Write(logChunk);
                 else
                     Log.Write($"~ {logChunk}");
@@ -369,7 +415,7 @@ namespace GBX.NET.Engines.MwFoundations
             stopwatch.Stop();
 
             var logNodeCompletion = $"[{ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)";
-            if (GBX.ID.HasValue == true && Remap(GBX.ID.Value) == ID)
+            if (GBX.ID.HasValue == true && GBX.ID.Value == ID)
                 Log.Write(logNodeCompletion, ConsoleColor.Green);
             else
                 Log.Write($"~ {logNodeCompletion}", ConsoleColor.Green);

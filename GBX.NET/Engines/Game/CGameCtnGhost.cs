@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Numerics;
 using GBX.NET.Engines.Plug;
 
 namespace GBX.NET.Engines.Game
@@ -784,15 +784,13 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03092012)]
         public class Chunk03092012 : Chunk<CGameCtnGhost>
         {
-            public int U01;
-            public long U02;
-            public long U03;
+            public uint U01;
+            public BigInteger U02;
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.Int32(ref U01);
-                rw.Int64(ref U02);
-                rw.Int64(ref U03);
+                rw.UInt32(ref U01);
+                rw.Int128(ref U02);
             }
         }
 

@@ -2732,7 +2732,10 @@ namespace GBX.NET.Engines.Game
 
                     }
 
-                    n.blocks.Add(new CGameCtnBlock(blockName, dir, coord, flags, author, skin, parameters));
+                    n.blocks.Add(new CGameCtnBlock(blockName, dir, coord, flags, author, skin, parameters)
+                    {
+                        GBX = n.GBX
+                    });
 
                     blockCounter++;
                 }
@@ -3459,7 +3462,7 @@ namespace GBX.NET.Engines.Game
                     direction: (Direction)r.ReadByte(),
                     coord: (Int3)r.ReadByte3(),
                     flags: r.ReadInt32()
-                ),
+                ) { GBX = n.GBX },
                 (x, w) =>
                 {
                     w.WriteId(x.Name);
@@ -4090,7 +4093,7 @@ namespace GBX.NET.Engines.Game
         /// <summary>
         /// CGameCtnChallenge 0x062 skippable chunk (block color) [TM®️]
         /// </summary>
-        [Chunk(0x03043062, true, "block color")]
+        [Chunk(0x03043062, "block color")]
         public class Chunk03043062 : SkippableChunk<CGameCtnChallenge>, IVersionable
         {
             public int Version { get; set; }

@@ -10,9 +10,9 @@ namespace GBX.NET
     public class GameBoxHeaderInfo
     {
         public short Version { get; set; }
-        public char? ByteFormat { get; set; }
-        public char? RefTableCompression { get; set; }
-        public char? BodyCompression { get; set; }
+        public GameBoxByteFormat ByteFormat { get; set; }
+        public GameBoxCompression CompressionOfRefTable { get; set; }
+        public GameBoxCompression CompressionOfBody { get; set; }
         public char? UnknownByte { get; set; }
         public uint? ID { get; internal set; }
         public byte[] UserData { get; protected set; }
@@ -21,9 +21,9 @@ namespace GBX.NET
         public GameBoxHeaderInfo(uint id)
         {
             Version = 6;
-            ByteFormat = 'B';
-            RefTableCompression = 'U';
-            BodyCompression = 'C';
+            ByteFormat = GameBoxByteFormat.Byte;
+            CompressionOfRefTable = GameBoxCompression.Uncompressed;
+            CompressionOfBody = GameBoxCompression.Compressed;
             UnknownByte = 'R';
             ID = id;
             UserData = new byte[0];
@@ -45,41 +45,42 @@ namespace GBX.NET
             }
 
             Version = reader.ReadInt16();
-            Log.Write($"- Version: {Version}");
+            Log.Write("- Version: " + Version.ToString());
 
             if (Version >= 3)
             {
-                ByteFormat = (char)reader.ReadByte();
-                Log.Write($"- Byte format: {ByteFormat}");
+                ByteFormat = (GameBoxByteFormat)reader.ReadByte();
+                Log.Write("- Byte format: " + ByteFormat.ToString());
 
-                if (ByteFormat == 'T') throw new NotSupportedException("Text-formatted GBX files are not supported.");
+                if (ByteFormat == GameBoxByteFormat.Text)
+                    throw new NotSupportedException("Text-formatted GBX files are not supported.");
 
-                RefTableCompression = (char)reader.ReadByte();
-                Log.Write($"- Ref. table compression: {RefTableCompression}");
+                CompressionOfRefTable = (GameBoxCompression)reader.ReadByte();
+                Log.Write("- Ref. table compression: " + CompressionOfRefTable.ToString());
 
-                BodyCompression = (char)reader.ReadByte();
-                Log.Write($"- Body compression: {BodyCompression}");
+                CompressionOfBody = (GameBoxCompression)reader.ReadByte();
+                Log.Write("- Body compression: " + CompressionOfBody.ToString());
 
                 if (Version >= 4)
                 {
                     UnknownByte = (char)reader.ReadByte();
-                    Log.Write($"- Unknown byte: {UnknownByte}");
+                    Log.Write("- Unknown byte: " + UnknownByte.ToString());
                 }
 
                 ID = CMwNod.Remap(reader.ReadUInt32());
-                Log.Write($"- Class ID: 0x{ID:X8}");
+                Log.Write("- Class ID: 0x" + ID.Value.ToString("X8"));
 
                 if (Version >= 6)
                 {
                     var userDataSize = reader.ReadInt32();
-                    Log.Write($"- User data size: {userDataSize / 1024f} kB");
+                    Log.Write($"- User data size: {(userDataSize / 1024f).ToString()} kB");
 
                     if (userDataSize > 0)
                         UserData = reader.ReadBytes(userDataSize);
                 }
 
                 NumNodes = reader.ReadInt32();
-                Log.Write($"- Number of nodes: {NumNodes}");
+                Log.Write("- Number of nodes: " + NumNodes.ToString());
             }
 
             Log.Write("Header completed!", ConsoleColor.Green);

@@ -233,9 +233,9 @@ namespace GBX.NET
         {
             Log.Write("Reading the body...");
 
-            switch (Header.BodyCompression)
+            switch (Header.CompressionOfBody)
             {
-                case 'C':
+                case GameBoxCompression.Compressed:
                     var uncompressedSize = reader.ReadInt32();
                     var compressedSize = reader.ReadInt32();
 
@@ -243,7 +243,7 @@ namespace GBX.NET
                     Body.Read(data, uncompressedSize, progress);
 
                     break;
-                case 'U':
+                case GameBoxCompression.Uncompressed:
                     if (readUncompressedBodyDirectly)
                     {
                         Body.Read(reader, progress);
@@ -270,7 +270,7 @@ namespace GBX.NET
             AssignGBXToNode();
 
             using (MemoryStream ms = new MemoryStream())
-            using (GameBoxWriter bodyW = new GameBoxWriter(ms))
+            using (GameBoxWriter bodyW = new GameBoxWriter(ms, Body))
             {
                 (Body as ILookbackable).IdWritten = false;
                 (Body as ILookbackable).IdStrings.Clear();
@@ -461,64 +461,8 @@ namespace GBX.NET
 
         protected bool ReadRefTable(GameBoxReader reader, IProgress<GameBoxReadProgress> progress)
         {
-            var numExternalNodes = reader.ReadInt32();
-
-            if (numExternalNodes > 0)
-            {
-                var ancestorLevel = reader.ReadInt32();
-
-                GameBoxRefTable.Folder rootFolder = new GameBoxRefTable.Folder("Root");
-
-                var numSubFolders = reader.ReadInt32();
-                ReadRefTableFolders(numSubFolders, ref rootFolder);
-
-                void ReadRefTableFolders(int n, ref GameBoxRefTable.Folder folder)
-                {
-                    for (var i = 0; i < n; i++)
-                    {
-                        var name = reader.ReadString();
-                        var numSubSubFolders = reader.ReadInt32();
-
-                        var f = new GameBoxRefTable.Folder(name, folder);
-                        folder.Folders.Add(f);
-
-                        ReadRefTableFolders(numSubSubFolders, ref f);
-                    }
-                }
-
-                var externalNodes = new GameBoxRefTable.ExternalNode[numExternalNodes];
-
-                for (var i = 0; i < numExternalNodes; i++)
-                {
-                    string fileName = null;
-                    int? resourceIndex = null;
-                    bool? useFile = null;
-                    int? folderIndex = null;
-
-                    var flags = reader.ReadInt32();
-
-                    if ((flags & 4) == 0)
-                        fileName = reader.ReadString();
-                    else
-                        resourceIndex = reader.ReadInt32();
-
-                    var nodeIndex = reader.ReadInt32();
-
-                    if (Header.Version >= 5)
-                        useFile = reader.ReadBoolean();
-
-                    if ((flags & 4) == 0)
-                        folderIndex = reader.ReadInt32();
-
-                    var extNode = new GameBoxRefTable.ExternalNode(flags, fileName, resourceIndex, nodeIndex, useFile, folderIndex);
-                    externalNodes[i] = extNode;
-                }
-
-                var refTable = new GameBoxRefTable(rootFolder, externalNodes);
-                RefTable = refTable;
-            }
-            else
-                Log.Write("No external nodes found, reference table completed.", ConsoleColor.Green);
+            RefTable = new GameBoxRefTable(Header);
+            RefTable.Read(reader);
 
             progress?.Report(new GameBoxReadProgress(GameBoxReadProgressStage.RefTable, 1, this));
 

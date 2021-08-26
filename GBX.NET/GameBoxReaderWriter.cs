@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-
+using System.Numerics;
 using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET
@@ -267,28 +267,28 @@ namespace GBX.NET
                 (x, w) => w.Write(x));
         }
 
-        public Dictionary<TKey, TValue> Dictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
+        public IDictionary<TKey, TValue> Dictionary<TKey, TValue>(IDictionary<TKey, TValue> dictionary)
         {
             if (Reader != null) return Reader.ReadDictionary<TKey, TValue>();
             else if (Writer != null) Writer.Write(dictionary);
             return dictionary;
         }
 
-        public void Dictionary<TKey, TValue>(ref Dictionary<TKey, TValue> dictionary)
+        public void Dictionary<TKey, TValue>(ref IDictionary<TKey, TValue> dictionary)
         {
             dictionary = Dictionary(dictionary);
         }
 
-        public Dictionary<TKey, TValue> NodeDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary) where TValue : CMwNod
+        public IDictionary<TKey, TValue> DictionaryNode<TKey, TValue>(IDictionary<TKey, TValue> dictionary) where TValue : CMwNod
         {
-            if (Reader != null) return Reader.ReadNodeDictionary<TKey, TValue>();
-            else if (Writer != null) Writer.WriteNodeDictionary(dictionary);
+            if (Reader != null) return Reader.ReadDictionaryNode<TKey, TValue>();
+            else if (Writer != null) Writer.WriteDictionaryNode(dictionary);
             return dictionary;
         }
 
-        public void NodeDictionary<TKey, TValue>(ref Dictionary<TKey, TValue> dictionary) where TValue : CMwNod
+        public void DictionaryNode<TKey, TValue>(ref IDictionary<TKey, TValue> dictionary) where TValue : CMwNod
         {
-            dictionary = NodeDictionary(dictionary);
+            dictionary = DictionaryNode(dictionary);
         }
 
         public bool Boolean(bool variable, bool asByte)
@@ -630,6 +630,55 @@ namespace GBX.NET
         public void UInt64()
         {
             _ = UInt64(default);
+        }
+
+        public BigInteger Int128(BigInteger variable, int byteLength)
+        {
+            if (Reader != null) return Reader.ReadBigInt(byteLength);
+            else if (Writer != null) Writer.WriteBigInt(variable);
+            return variable;
+        }
+
+        public BigInteger BigInt(BigInteger variable, int byteLength)
+        {
+            if (Reader != null) return Reader.ReadBigInt(byteLength);
+            else if (Writer != null) Writer.WriteBigInt(variable);
+            return variable;
+        }
+
+        public void BigInt(ref BigInteger variable, int byteLength)
+        {
+            variable = BigInt(variable, byteLength);
+        }
+
+        public void BigInt(ref BigInteger? variable, int byteLength)
+        {
+            variable = BigInt(variable.GetValueOrDefault(), byteLength);
+        }
+
+        public void BigInt(int byteLength)
+        {
+            _ = BigInt(default, byteLength);
+        }
+
+        public BigInteger Int128(BigInteger variable)
+        {
+            return BigInt(variable, 16);
+        }
+
+        public void Int128(ref BigInteger variable)
+        {
+            BigInt(ref variable, 16);
+        }
+
+        public void Int128(ref BigInteger? variable)
+        {
+            BigInt(ref variable, 16);
+        }
+
+        public void Int128()
+        {
+            _ = Int128(default, 16);
         }
 
         public Int2 Int2(Int2 variable)

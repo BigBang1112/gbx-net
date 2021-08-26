@@ -10,7 +10,7 @@ namespace GBX.NET.Engines.Game
     [Node(0x03077000)]
     public class CGameCtnMediaBlock : CMwNod
     {
-        public abstract class Key
+        public abstract class Key : ICloneable
         {
             public TimeSpan Time { get; set; }
 
@@ -22,6 +22,16 @@ namespace GBX.NET.Engines.Game
             protected Key(GameBoxReader r)
             {
                 Time = r.ReadSingle_s();
+            }
+
+            public Key Clone()
+            {
+                return Clone();
+            }
+
+            object ICloneable.Clone()
+            {
+                return MemberwiseClone();
             }
         }
 

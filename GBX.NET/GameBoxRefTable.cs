@@ -1,42 +1,157 @@
-﻿using System.Collections.Generic;
+﻿using GBX.NET.Extensions;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GBX.NET
 {
     public class GameBoxRefTable
     {
-        public Folder RootFolder { get; }
-        public ExternalNode[] ExternalNodes { get; }
+        public GameBoxHeaderInfo Header { get; }
 
-        public GameBoxRefTable(Folder rootFolder, params ExternalNode[] externalNodes)
+        /// <summary>
+        /// How many folder levels to go up in the .pak folder hierarchy to reach the base folder from which files will be referenced.
+        /// </summary>
+        public int AncestorLevel { get; private set; }
+        public IList<Folder> Folders { get; private set; }
+        public IList<File> Files { get; private set; }
+
+        public GameBoxRefTable(GameBoxHeaderInfo header)
         {
-            RootFolder = rootFolder;
-            ExternalNodes = externalNodes;
+            Header = header;
+
+            Folders = new List<Folder>();
+            Files = new List<File>();
         }
 
-        public void Write(GameBoxWriter w)
+        internal void Read(GameBoxReader reader)
         {
-            w.Write(ExternalNodes.Length);
-            w.Write(RootFolder.Folders.Count);
+            var numFiles = reader.ReadInt32(); // With this, number of files value can be optimized
 
-            // ...
-        }
-
-        public class ControlEntry
-        {
-            public int Time { get; }
-            public byte ControlNameIndex { get; }
-            public bool Enable { get; }
-
-            public ControlEntry(int time, byte controlNameIndex, bool enable)
+            if (numFiles <= 0)
             {
-                Time = time;
-                ControlNameIndex = controlNameIndex;
-                Enable = enable;
+                Log.Write("No external nodes found, reference table completed.", ConsoleColor.Green);
+                return;
+            }
+
+            AncestorLevel = reader.ReadInt32();
+            var numFolders = reader.ReadInt32();
+
+            var allFolders = new List<Folder>();
+
+            Folders = ReadRefTableFolders(numFolders);
+
+            Folder[] ReadRefTableFolders(int n)
+            {
+                var folders = new Folder[n];
+
+                for (var i = 0; i < n; i++)
+                {
+                    var name = reader.ReadString();
+                    var numSubFolders = reader.ReadInt32();
+
+                    var folder = new Folder(name);
+                    allFolders.Add(folder);
+                    foreach (var subFolder in ReadRefTableFolders(numSubFolders))
+                        folder.Folders.Add(subFolder);
+
+                    folders[i] = folder;
+                }
+
+                return folders;
+            }
+
+            Files = new List<File>();
+
+            for (var i = 0; i < numFiles; i++)
+            {
+                string fileName = null;
+                int? resourceIndex = null;
+                bool? useFile = null;
+                int? folderIndex = null;
+
+                var flags = reader.ReadInt32();
+
+                if ((flags & 4) == 0)
+                    fileName = reader.ReadString();
+                else
+                    resourceIndex = reader.ReadInt32();
+
+                var nodeIndex = reader.ReadInt32();
+
+                if (Header.Version >= 5)
+                    useFile = reader.ReadBoolean();
+
+                if ((flags & 4) == 0)
+                    folderIndex = reader.ReadInt32();
+
+                var file = new File(flags, fileName, resourceIndex, nodeIndex, useFile, folderIndex);
+
+                if (folderIndex.HasValue)
+                {
+                    if (folderIndex.Value - 1 < 0)
+                        Files.Add(file);
+                    else
+                        allFolders[folderIndex.Value - 1].Files.Add(file);
+                }
             }
         }
 
-        public class ExternalNode
+        internal void Write(GameBoxWriter w)
+        {
+            var allFiles = GetAllFiles();
+            var numFiles = allFiles.Count();
+
+            w.Write(numFiles);
+
+            if (numFiles <= 0)
+            {
+                return;
+            }
+
+            w.Write(AncestorLevel);
+            w.Write(Folders.Count);
+
+            WriteFolders(Folders);
+
+            void WriteFolders(IEnumerable<Folder> folders)
+            {
+                if (folders == null) return;
+
+                foreach (var folder in folders)
+                {
+                    w.Write(folder.Name);
+                    w.Write(folder.Folders.Count);
+
+                    WriteFolders(folder.Folders);
+                }
+            }
+
+            foreach (var file in allFiles)
+            {
+                w.Write(file.Flags);
+
+                if ((file.Flags & 4) == 0)
+                    w.Write(file.FileName);
+                else
+                    w.Write(file.ResourceIndex.GetValueOrDefault());
+
+                w.Write(file.NodeIndex);
+
+                if (Header.Version >= 5)
+                    w.Write(file.UseFile.GetValueOrDefault());
+
+                if ((file.Flags & 4) == 0)
+                    w.Write(file.FolderIndex.GetValueOrDefault());
+            }
+        }
+
+        public IEnumerable<File> GetAllFiles()
+        {
+            return Folders.Flatten(x => x.Folders).SelectMany(x => x.Files);
+        }
+
+        public class File
         {
             public int Flags { get; }
             public string FileName { get; }
@@ -45,7 +160,7 @@ namespace GBX.NET
             public bool? UseFile { get; }
             public int? FolderIndex { get; }
 
-            public ExternalNode(int flags, string fileName, int? resourceIndex, int nodeIndex, bool? useFile, int? folderIndex)
+            public File(int flags, string fileName, int? resourceIndex, int nodeIndex, bool? useFile, int? folderIndex)
             {
                 Flags = flags;
                 FileName = fileName;
@@ -54,29 +169,29 @@ namespace GBX.NET
                 UseFile = useFile;
                 FolderIndex = folderIndex;
             }
+
+            public override string ToString()
+            {
+                return FileName;
+            }
         }
 
         public class Folder
         {
             public string Name { get; }
-            public Folder Parent { get; }
-            public List<Folder> Folders { get; }
+            public IList<Folder> Folders { get; }
+            public IList<File> Files { get; }
 
-            public Folder(string name, Folder parent, params Folder[] folders)
+            public Folder(string name)
             {
                 Name = name;
-                Parent = parent;
-                Folders = folders.ToList();
+                Folders = new List<Folder>();
+                Files = new List<File>();
             }
 
-            public Folder(string name, Folder parent) : this(name, parent, new Folder[0])
+            public override string ToString()
             {
-
-            }
-
-            public Folder(string name) : this(name, null)
-            {
-
+                return Name;
             }
         }
     }

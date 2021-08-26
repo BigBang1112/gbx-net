@@ -12,7 +12,7 @@ namespace GBX.NET.Engines.GameData
 
         private string archetypeBlockInfoId;
         private string archetypeBlockInfoCollectionId;
-        private Dictionary<int, CPlugCrystal> customizedVariants;
+        private IDictionary<int, CPlugCrystal> customizedVariants;
 
         #endregion
 
@@ -33,7 +33,7 @@ namespace GBX.NET.Engines.GameData
         }
 
         [NodeMember]
-        public Dictionary<int, CPlugCrystal> CustomizedVariants
+        public IDictionary<int, CPlugCrystal> CustomizedVariants
         {
             get => customizedVariants;
             set => customizedVariants = value;
@@ -64,7 +64,7 @@ namespace GBX.NET.Engines.GameData
                 rw.Int32(ref version);
                 rw.Id(ref n.archetypeBlockInfoId);
                 rw.Id(ref n.archetypeBlockInfoCollectionId);
-                rw.NodeDictionary(ref n.customizedVariants);
+                rw.DictionaryNode(ref n.customizedVariants);
             }
         }
 

@@ -9,8 +9,8 @@
 		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		
-		<Version>0.11.0</Version>
-		<PackageReleaseNotes>Rewrite to prefer ParseNode over Parse.</PackageReleaseNotes>
+		<Version>0.12.0</Version>
+		<PackageReleaseNotes>Boost the parse time by almost 3 times.</PackageReleaseNotes>
 		
 		<TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
 		<Platforms>AnyCPU;x64;x86</Platforms>

@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<Product>GBX.NET.PAK</Product>
+		<AssemblyName>GBX.NET.PAK</AssemblyName>
+		<AssemblyTitle>GBX.NET.PAK</AssemblyTitle>
+		<Authors>Petr Pivoňka (BigBang1112)</Authors>
+		<Description>A PAK file parser using the GBX.NET features.</Description>
+		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
+		<PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		
+		<Version>1.0.0</Version>
+		<PackageReleaseNotes></PackageReleaseNotes>
+		
+		<TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+		<Platforms>AnyCPU;x64;x86</Platforms>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageTags>gbx, trackmania, maniaplanet, gamebox, net, pak, encryption</PackageTags>
+
+		<RepositoryType>git</RepositoryType>
+		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
+		
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+		<NoWarn>1591</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Update="LICENSE.GPL-3.0-or-later.md">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		
+		<ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />
+	</ItemGroup>
+
+</Project>

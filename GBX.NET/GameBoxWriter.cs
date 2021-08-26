@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -282,7 +283,7 @@ namespace GBX.NET
                 {
                     body.AuxilaryNodes[body.AuxilaryNodes.Count] = node;
                     Write(body.AuxilaryNodes.Count);
-                    Write(node.ID);
+                    Write(Chunk.Remap(node.ID, body.GBX.Remap));
                     node.Write(this, body.GBX.Remap);
                 }
             }
@@ -293,7 +294,7 @@ namespace GBX.NET
             Write(node, Body);
         }
 
-        public void Write<TKey, TValue>(Dictionary<TKey, TValue> dictionary)
+        public void Write<TKey, TValue>(IDictionary<TKey, TValue> dictionary)
         {
             Write(dictionary.Count);
 
@@ -302,6 +303,11 @@ namespace GBX.NET
                 WriteAny(pair.Key);
                 WriteAny(pair.Value);
             }
+        }
+
+        public void WriteBigInt(BigInteger bigInteger)
+        {
+            WriteBytes(bigInteger.ToByteArray());
         }
 
         public void WriteInt32_s(TimeSpan variable)
@@ -396,7 +402,7 @@ namespace GBX.NET
             }
         }
 
-        public void WriteNodeDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary) where TValue : CMwNod
+        public void WriteDictionaryNode<TKey, TValue>(IDictionary<TKey, TValue> dictionary) where TValue : CMwNod
         {
             Write(dictionary.Count);
 

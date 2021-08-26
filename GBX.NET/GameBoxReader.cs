@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -288,7 +289,23 @@ namespace GBX.NET
         {
             var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
-            if (index >= 0 && (!body.AuxilaryNodes.ContainsKey(index) || body.AuxilaryNodes[index] == null)) // If index is 0 or bigger and the node wasn't read yet, or is null
+            var refTable = body.GBX.RefTable;
+            if (refTable != null) // First checks if reference table is used
+            {
+                var allFiles = refTable.GetAllFiles(); // Returns available external references
+                if(allFiles.Count() > 0) // If there's one
+                {
+                    // Tries to get the one with this node index
+                    var refTableNode = allFiles.FirstOrDefault(x => x.NodeIndex == index + 1);
+                    if (refTableNode != null)
+                        return null; // Temporary, resolve later
+
+                    // Else it's a nested object
+                }
+            }
+
+            // If index is 0 or bigger and the node wasn't read yet, or is null
+            if (index >= 0 && (!body.AuxilaryNodes.ContainsKey(index) || body.AuxilaryNodes[index] == null))
                 body.AuxilaryNodes[index] = CMwNod.Parse<T>(this);
 
             if (index < 0) // If aux node index is below 0 then there's not much to solve
@@ -532,12 +549,12 @@ namespace GBX.NET
         }
 
         /// <summary>
-        /// Reads values in a dictionary kind (first key, then value). For node dictionaries, use the <see cref="ReadNodeDictionary{TKey, TValue}"/> method for better performance.
+        /// Reads values in a dictionary kind (first key, then value). For node dictionaries, use the <see cref="ReadDictionaryNode{TKey, TValue}"/> method for better performance.
         /// </summary>
         /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>.</typeparam>
         /// <typeparam name="TValue">One of the supported types of <see cref="Read{T}"/>.</typeparam>
         /// <returns>A dictionary.</returns>
-        public Dictionary<TKey, TValue> ReadDictionary<TKey, TValue>()
+        public IDictionary<TKey, TValue> ReadDictionary<TKey, TValue>()
         {
             var dictionary = new Dictionary<TKey, TValue>();
 
@@ -560,7 +577,7 @@ namespace GBX.NET
         /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>.</typeparam>
         /// <typeparam name="TValue">A node that is presented as node reference.</typeparam>
         /// <returns>A dictionary.</returns>
-        public Dictionary<TKey, TValue> ReadNodeDictionary<TKey, TValue>() where TValue : CMwNod
+        public IDictionary<TKey, TValue> ReadDictionaryNode<TKey, TValue>() where TValue : CMwNod
         {
             var dictionary = new Dictionary<TKey, TValue>();
 
@@ -611,6 +628,12 @@ namespace GBX.NET
         {
             var bytes = ReadBytes(3);
             return (bytes[0], bytes[1], bytes[2]);
+        }
+
+        public BigInteger ReadBigInt(int byteLength)
+        {
+            var bytes = ReadBytes(byteLength);
+            return new BigInteger(bytes);
         }
 
         public (Vec3 position, Quaternion rotation, float speed, Vec3 velocity) ReadTransform()
@@ -703,6 +726,24 @@ namespace GBX.NET
             var result = ReadUInt32();
             BaseStream.Position -= sizeof(uint);
             return result;
+        }
+
+        public T[] PeekArray<T>(int length)
+        {
+            var array = ReadArray<T>(length);
+            BaseStream.Position -= length * Marshal.SizeOf(default(T));
+            return array;
+        }
+
+        public T[] PeekArray<T>(int length, Func<int, T> forLoop)
+        {
+            var beforePos = BaseStream.Position;
+
+            var array = ReadArray(length, forLoop);
+
+            BaseStream.Position = beforePos;
+
+            return array;
         }
 
         public bool HasMagic(string magic)
