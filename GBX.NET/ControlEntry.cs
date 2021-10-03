@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TmEssentials;
 
 namespace GBX.NET
 {
@@ -16,7 +17,7 @@ namespace GBX.NET
 
         public override string ToString()
         {
-            return $"[{Time.ToStringTM()}] {Name}: {((Data == 128 || Data == 1 || Data == 0) ? IsEnabled.ToString() : Data.ToString())}";
+            return $"[{Time.ToTmString()}] {Name}: {((Data == 128 || Data == 1 || Data == 0) ? IsEnabled.ToString() : Data.ToString())}";
         }
     }
 }

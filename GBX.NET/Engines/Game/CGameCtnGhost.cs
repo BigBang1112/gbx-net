@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Numerics;
 using GBX.NET.Engines.Plug;
+using TmEssentials;
 
 namespace GBX.NET.Engines.Game
 {
@@ -1082,7 +1083,7 @@ namespace GBX.NET.Engines.Game
 
             public override string ToString()
             {
-                return $"{Time.ToStringTM()} ({StuntsScore})";
+                return $"{Time.ToTmString()} ({StuntsScore})";
             }
         }
 

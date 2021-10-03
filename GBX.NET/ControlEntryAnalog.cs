@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TmEssentials;
 
 namespace GBX.NET
 {
@@ -40,7 +41,7 @@ namespace GBX.NET
 
         public override string ToString()
         {
-            return $"[{Time.ToStringTM()}] {Name}: {Value}";
+            return $"[{Time.ToTmString()}] {Name}: {Value}";
         }
     }
 }

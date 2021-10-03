@@ -1,4 +1,5 @@
 using System;
+using TmEssentials;
 
 namespace GBX.NET
 {
@@ -19,7 +20,7 @@ namespace GBX.NET
             if (!BufferType.HasValue || BufferType == 0 || BufferType == 2 || BufferType == 4)
             {
                 if (Timestamp.HasValue)
-                    return $"Sample: {Timestamp.Value.ToStringTM()} {Position}";
+                    return $"Sample: {Timestamp.Value.ToTmString()} {Position}";
                 return $"Sample: {Position}";
             }
 

@@ -59,4 +59,8 @@
 		</PackageReference>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="TmEssentials" Version="2.0.0" />
+	</ItemGroup>
+
 </Project>
