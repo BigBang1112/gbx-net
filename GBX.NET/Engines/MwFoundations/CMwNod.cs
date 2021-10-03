@@ -303,7 +303,7 @@ namespace GBX.NET.Engines.MwFoundations
                             else
                             {
                                 var unknown = new GameBoxWriter(c.Unknown, r.Lookbackable);
-                                var unknownData = r.ReadUntilFacade();
+                                var unknownData = r.ReadUntilFacade().ToArray();
                                 unknown.Write(unknownData, 0, unknownData.Length);
                             }
                         }

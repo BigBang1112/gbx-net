@@ -17,24 +17,24 @@ namespace GBX.NET.Engines.Game
 
         private Ident mapInfo;
         private TimeSpan? time;
-        private string playerNickname;
-        private string playerLogin;
-        private string titleID;
-        private string xml;
+        private string? playerNickname;
+        private string? playerLogin;
+        private string? titleID;
+        private string? xml;
         private int authorVersion;
-        private string authorLogin;
-        private string authorNickname;
-        private string authorZone;
-        private string authorExtraInfo;
-        private Task<CGameCtnChallenge> challenge;
-        private CGameCtnGhost[] ghosts;
-        private long[] extras;
-        private CGameCtnMediaClip clip;
-        private CPlugEntRecordData recordData;
-        private CCtnMediaBlockEventTrackMania events;
+        private string? authorLogin;
+        private string? authorNickname;
+        private string? authorZone;
+        private string? authorExtraInfo;
+        private Task<CGameCtnChallenge>? challenge;
+        private CGameCtnGhost[] ghosts = new CGameCtnGhost[0];
+        private long[]? extras;
+        private CGameCtnMediaClip? clip;
+        private CPlugEntRecordData? recordData;
+        private CCtnMediaBlockEventTrackMania? events;
         private int eventsDuration;
-        private ControlEntry[] controlEntries;
-        private string game;
+        private ControlEntry[]? controlEntries;
+        private string? game;
 
         #endregion
 
@@ -61,19 +61,19 @@ namespace GBX.NET.Engines.Game
         /// Nickname of the record owner.
         /// </summary>
         [NodeMember]
-        public string PlayerNickname => playerNickname;
+        public string? PlayerNickname => playerNickname;
 
         /// <summary>
         /// Login of the record owner.
         /// </summary>
         [NodeMember]
-        public string PlayerLogin => playerLogin;
+        public string? PlayerLogin => playerLogin;
 
         /// <summary>
         /// Title pack the replay orients in.
         /// </summary>
         [NodeMember]
-        public string TitleID
+        public string? TitleID
         {
             get
             {
@@ -91,7 +91,7 @@ namespace GBX.NET.Engines.Game
         /// XML replay information.
         /// </summary>
         [NodeMember]
-        public string XML => xml;
+        public string? XML => xml;
 
         [NodeMember]
         public int AuthorVersion
@@ -112,7 +112,7 @@ namespace GBX.NET.Engines.Game
         /// Login of the replay creator.
         /// </summary>
         [NodeMember]
-        public string AuthorLogin
+        public string? AuthorLogin
         {
             get
             {
@@ -130,7 +130,7 @@ namespace GBX.NET.Engines.Game
         /// Nickname of the replay creator.
         /// </summary>
         [NodeMember]
-        public string AuthorNickname
+        public string? AuthorNickname
         {
             get
             {
@@ -148,7 +148,7 @@ namespace GBX.NET.Engines.Game
         /// Zone of the replay creator.
         /// </summary>
         [NodeMember]
-        public string AuthorZone
+        public string? AuthorZone
         {
             get
             {
@@ -163,7 +163,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public string AuthorExtraInfo
+        public string? AuthorExtraInfo
         {
             get
             {
@@ -181,7 +181,7 @@ namespace GBX.NET.Engines.Game
         /// The map the replay orients in.
         /// </summary>
         [NodeMember]
-        public Task<CGameCtnChallenge> Challenge => challenge;
+        public Task<CGameCtnChallenge>? Challenge => challenge;
 
         /// <summary>
         /// Ghosts in the replay. NOTE: Some ghosts can be considered as <see cref="CGameCtnMediaBlockGhost"/>. See <see cref="Clip"/>.
@@ -190,22 +190,22 @@ namespace GBX.NET.Engines.Game
         public CGameCtnGhost[] Ghosts => ghosts;
 
         [NodeMember]
-        public long[] Extras => extras;
+        public long[]? Extras => extras;
 
         /// <summary>
         /// MediaTracker clip of the replay.
         /// </summary>
         [NodeMember]
-        public CGameCtnMediaClip Clip => clip;
+        public CGameCtnMediaClip? Clip => clip;
 
         [NodeMember]
-        public CPlugEntRecordData RecordData => recordData;
+        public CPlugEntRecordData? RecordData => recordData;
 
         /// <summary>
         /// Events occuring during the replay. Available in TMS and older games.
         /// </summary>
         [NodeMember]
-        public CCtnMediaBlockEventTrackMania Events => events;
+        public CCtnMediaBlockEventTrackMania? Events => events;
 
         /// <summary>
         /// Duration of events in the replay (range of detected inputs). This can be 0 if the replay was driven in editor.
@@ -217,10 +217,10 @@ namespace GBX.NET.Engines.Game
         /// Inputs (keyboard, pad, wheel) of the replay from TM1.0, TMO, Sunrise and ESWC. For inputs stored in TMU, TMUF, TMTurbo and TM2: see <see cref="CGameCtnGhost.ControlEntries"/> in <see cref="Ghosts"/>. TM2020 and Shootmania inputs aren't available in replays and ghosts. Can be null if <see cref="EventsDuration"/> is 0, which can happen when you save the replay in editor.
         /// </summary>
         [NodeMember]
-        public ControlEntry[] ControlEntries => controlEntries;
+        public ControlEntry[]? ControlEntries => controlEntries;
 
         [NodeMember]
-        public string Game
+        public string? Game
         {
             get
             {
@@ -240,17 +240,16 @@ namespace GBX.NET.Engines.Game
 
         public IEnumerable<CGameCtnGhost> GetGhosts()
         {
-            if (ghosts != null)
-                foreach (var ghost in ghosts)
-                    if (ghost != null)
-                        yield return ghost;
+            foreach (var ghost in ghosts)
+                if (ghost is not null)
+                    yield return ghost;
 
-            if (clip != null)
+            if (clip is not null)
                 foreach (var track in clip.Tracks)
-                    if (track != null)
+                    if (track is not null)
                         foreach (var block in track.Blocks)
                             if (block is CGameCtnMediaBlockGhost ghostBlock)
-                                if (ghostBlock.GhostModel != null)
+                                if (ghostBlock.GhostModel is not null)
                                     yield return ghostBlock.GhostModel;
         }
 
@@ -432,7 +431,7 @@ namespace GBX.NET.Engines.Game
                 Version = r.ReadInt32();
                 var u02 = r.ReadInt32();
 
-                n.ghosts = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnGhost>());
+                n.ghosts = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnGhost>()!);
 
                 var u03 = r.ReadInt32(); // millisecond length of something (usually record time + 0.5s)
                 var u04 = r.ReadInt32();
@@ -571,7 +570,7 @@ namespace GBX.NET.Engines.Game
             public int U01;
             public int U02;
             public int U03;
-            public string U04;
+            public string U04 = string.Empty;
 
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
             {
@@ -634,7 +633,7 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
-                n.ghosts = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnGhost>());
+                n.ghosts = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnGhost>()!);
                 U01 = r.ReadInt32();
                 n.extras = r.ReadArray(r1 => r1.ReadInt64());
             }
@@ -726,41 +725,41 @@ namespace GBX.NET.Engines.Game
             /// <summary>
             /// Nickname of the record owner.
             /// </summary>
-            string PlayerNickname { get; }
+            string? PlayerNickname { get; }
 
             /// <summary>
             /// Login of the record owner.
             /// </summary>
-            string PlayerLogin { get; }
+            string? PlayerLogin { get; }
 
             /// <summary>
             /// Title pack the replay orients in.
             /// </summary>
-            string TitleID { get; }
+            string? TitleID { get; }
 
             /// <summary>
             /// XML replay information.
             /// </summary>
-            string XML { get; }
+            string? XML { get; }
 
             int AuthorVersion { get; }
 
             /// <summary>
             /// Login of the replay creator.
             /// </summary>
-            string AuthorLogin { get; }
+            string? AuthorLogin { get; }
 
             /// <summary>
             /// Nickname of the replay creator.
             /// </summary>
-            string AuthorNickname { get; }
+            string? AuthorNickname { get; }
 
             /// <summary>
             /// Zone of the replay creator.
             /// </summary>
-            string AuthorZone { get; }
+            string? AuthorZone { get; }
             
-            string AuthorExtraInfo { get; }
+            string? AuthorExtraInfo { get; }
         }
 
         #endregion

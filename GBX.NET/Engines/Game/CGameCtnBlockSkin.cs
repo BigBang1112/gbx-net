@@ -10,7 +10,7 @@ namespace GBX.NET.Engines.Game
     {
         #region Fields
 
-        private string text;
+        private string? text;
         private FileRef packDesc = new FileRef();
         private FileRef parentPackDesc = new FileRef();
         private FileRef foregroundPackDesc = new FileRef();
@@ -20,7 +20,7 @@ namespace GBX.NET.Engines.Game
         #region Properties
 
         [NodeMember]
-        public string Text
+        public string? Text
         {
             get => text;
             set => text = value;
@@ -62,7 +62,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03059000)]
         public class Chunk03059000 : Chunk<CGameCtnBlockSkin>
         {
-            public string U01;
+            public string? U01;
 
             public override void ReadWrite(CGameCtnBlockSkin n, GameBoxReaderWriter rw)
             {

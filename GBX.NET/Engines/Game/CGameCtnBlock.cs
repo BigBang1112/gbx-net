@@ -29,8 +29,8 @@ namespace GBX.NET.Engines.Game
         private Direction direction;
         private Int3 coord;
         private int flags;
-        private CGameCtnBlockSkin skin;
-        private CGameWaypointSpecialProperty waypoint;
+        private CGameCtnBlockSkin? skin;
+        private CGameWaypointSpecialProperty? waypoint;
         private Vec3 absolutePositionInMap;
         private Vec3 pitchYawRoll;
         private DifficultyColor? color;
@@ -95,13 +95,13 @@ namespace GBX.NET.Engines.Game
         /// Author of the block, usually of a custom one made in Mesh Modeller.
         /// </summary>
         [NodeMember]
-        public string Author { get; set; }
+        public string? Author { get; set; } // TODO: Check behaviour
 
         /// <summary>
         /// Used skin on the block.
         /// </summary>
         [NodeMember]
-        public CGameCtnBlockSkin Skin
+        public CGameCtnBlockSkin? Skin
         {
             get => skin;
             set
@@ -126,7 +126,7 @@ namespace GBX.NET.Engines.Game
         /// Additional block parameters.
         /// </summary>
         [NodeMember]
-        public CGameWaypointSpecialProperty WaypointSpecialProperty
+        public CGameWaypointSpecialProperty? WaypointSpecialProperty
         {
             get => waypoint;
             set
@@ -322,7 +322,7 @@ namespace GBX.NET.Engines.Game
 
         }
 
-        public CGameCtnBlock(string name, Direction direction, Int3 coord, int flags, string author, CGameCtnBlockSkin skin, CGameWaypointSpecialProperty waypointSpecialProperty)
+        public CGameCtnBlock(string name, Direction direction, Int3 coord, int flags, string? author, CGameCtnBlockSkin? skin, CGameWaypointSpecialProperty? waypointSpecialProperty)
         {
             Name = name;
             Direction = direction;

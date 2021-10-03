@@ -17,17 +17,17 @@ namespace GBX.NET
         /// <summary>
         /// File checksum.
         /// </summary>
-        public byte[] Checksum { get; set; }
+        public byte[]? Checksum { get; set; }
 
         /// <summary>
         /// File relative to user folder (or Skins folder if <c><see cref="Version"/> &lt;= 1</c>).
         /// </summary>
-        public string FilePath { get; set; }
+        public string? FilePath { get; set; }
 
         /// <summary>
         /// Url of the locator.
         /// </summary>
-        public Uri LocatorUrl { get; set; }
+        public Uri? LocatorUrl { get; set; }
 
         /// <summary>
         /// Empty file reference version 3.
@@ -47,7 +47,7 @@ namespace GBX.NET
         /// <param name="checksum">File checksum, should be null if <c><paramref name="version"/> &lt; 3</c>.</param>
         /// <param name="filePath">If <c><paramref name="version"/> &gt; 1</c>, relative to user folder, else relative to Skins folder.</param>
         /// <param name="locatorUrl">Url of the locator.</param>
-        public FileRef(byte version, byte[] checksum, string filePath, string locatorUrl)
+        public FileRef(byte version, byte[]? checksum, string? filePath, string? locatorUrl)
         {
             Version = version;
             Checksum = checksum;
@@ -64,7 +64,7 @@ namespace GBX.NET
         /// <param name="checksum">File checksum, should be null if <c><paramref name="version"/> &lt; 3</c>.</param>
         /// <param name="filePath">If <c><paramref name="version"/> &gt; 1</c>, relative to user folder, else relative to Skins folder.</param>
         /// <param name="locatorUrl"><see cref="Uri"/> of the locator.</param>
-        public FileRef(byte version, byte[] checksum, string filePath, Uri locatorUrl)
+        public FileRef(byte version, byte[]? checksum, string? filePath, Uri? locatorUrl)
         {
             Version = version;
             Checksum = checksum;
@@ -78,7 +78,7 @@ namespace GBX.NET
         /// <returns>Returns <see cref="FilePath"/>.</returns>
         public override string ToString()
         {
-            return FilePath;
+            return FilePath ?? string.Empty;
         }
 
         public static byte[] DefaultChecksum
@@ -92,8 +92,8 @@ namespace GBX.NET
 
             public byte Version => fileRef.Version;
             public string Checksum => Convert.ToBase64String(fileRef.Checksum ?? new byte[0]);
-            public string FilePath => fileRef.FilePath;
-            public Uri LocatorUrl => fileRef.LocatorUrl;
+            public string? FilePath => fileRef.FilePath;
+            public Uri? LocatorUrl => fileRef.LocatorUrl;
 
             public DebugView(FileRef fileRef) => this.fileRef = fileRef;
         }

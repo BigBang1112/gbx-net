@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Engines.MwFoundations;
+using System.Linq;
 
 namespace GBX.NET.Engines.Plug
 {
@@ -14,7 +15,7 @@ namespace GBX.NET.Engines.Plug
             public override void ReadWrite(CPlugRoadChunk n, GameBoxReaderWriter rw)
             {
                 Version = rw.Int32(Version);
-                UnknownData = rw.Reader.ReadUntilFacade();
+                UnknownData = rw.Reader!.ReadUntilFacade().ToArray();
             }
         }
     }

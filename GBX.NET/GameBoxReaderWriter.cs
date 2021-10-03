@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Numerics;
 using GBX.NET.Engines.MwFoundations;
+using GBX.NET.Exceptions;
 
 namespace GBX.NET
 {
@@ -15,12 +16,12 @@ namespace GBX.NET
         /// <summary>
         /// Reader component of the reader-writer. This will be null if <see cref="Mode"/> is <see cref="GameBoxReaderWriterMode.Write"/>.
         /// </summary>
-        public GameBoxReader Reader { get; }
+        public GameBoxReader? Reader { get; }
 
         /// <summary>
         /// Writer component of the reader-writer. This will be null if <see cref="Mode"/> is <see cref="GameBoxReaderWriterMode.Read"/>.
         /// </summary>
-        public GameBoxWriter Writer { get; }
+        public GameBoxWriter? Writer { get; }
 
         /// <summary>
         /// Mode of the reader-writer.
@@ -29,11 +30,11 @@ namespace GBX.NET
         {
             get
             {
-                if (Reader != null)
+                if (Reader is not null)
                     return GameBoxReaderWriterMode.Read;
-                if (Writer != null)
+                if (Writer is not null)
                     return GameBoxReaderWriterMode.Write;
-                return default;
+                throw new ThisShouldNotHappenException();
             }
         }
 
@@ -49,63 +50,110 @@ namespace GBX.NET
         /// <param name="writer">Writer to use.</param>
         public GameBoxReaderWriter(GameBoxWriter writer) => Writer = writer;
 
-        public T[] Array<T>(T[] array, int count) where T : struct
+        public T[] Array<T>(T[]? array, int count) where T : struct
         {
-            if (Reader != null) return Reader.ReadArray<T>(count);
-            else if (Writer != null) Writer.Write(array);
-            return array;
+            if (Reader is not null) return Reader.ReadArray<T>(count);
+            if (Writer is not null)
+            {
+                array = CreateArrayIfNull(array);
+
+                Writer.Write(array);
+
+                return array;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
-        public void Array<T>(ref T[] array, int count) where T : struct
+        public void Array<T>(ref T[]? array, int count) where T : struct
         {
             array = Array(array, count);
         }
 
-        public T[] Array<T>(T[] array) where T : struct
+        public T[] Array<T>(T[]? array) where T : struct
         {
-            if (Reader != null) return Reader.ReadArray<T>();
-            else if (Writer != null)
+            if (Reader is not null) return Reader.ReadArray<T>();
+            if (Writer is not null)
             {
+                array = CreateArrayIfNull(array);
+
                 Writer.Write(array.Length);
                 Writer.Write(array);
+
+                return array;
             }
-            return array;
+
+            throw new ThisShouldNotHappenException();
         }
 
-        public void Array<T>(ref T[] array) where T : struct
+        public void Array<T>(ref T[]? array) where T : struct
         {
             array = Array(array);
         }
 
-        public T[] Array<T>(T[] array, Func<int, T> forLoopRead, Action<T> forLoopWrite)
+        /// <exception cref="EndOfStreamException"></exception>
+        /// <exception cref="ObjectDisposedException"></exception>
+        /// <exception cref="IOException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public T[] Array<T>(T[]? array, Func<int, T> forLoopRead, Action<T> forLoopWrite)
         {
-            if (Reader != null) return Reader.ReadArray(forLoopRead);
-            else if (Writer != null) Writer.Write(array, forLoopWrite);
-            return array;
+            if (Reader is not null) return Reader.ReadArray(forLoopRead);
+            if (Writer is not null)
+            {
+                array = CreateArrayIfNull(array);
+
+                Writer.Write(array, forLoopWrite);
+
+                return array;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
-        public void Array<T>(ref T[] array, Func<int, T> forLoopRead, Action<T> forLoopWrite)
+        /// <exception cref="EndOfStreamException"></exception>
+        /// <exception cref="ObjectDisposedException"></exception>
+        /// <exception cref="IOException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public void Array<T>(ref T[]? array, Func<int, T> forLoopRead, Action<T> forLoopWrite)
         {
             array = Array(array, forLoopRead, forLoopWrite);
         }
 
-        public T[] Array<T>(T[] array, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        public T[] Array<T>(T[]? array, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
         {
-            if (Reader != null) return Reader.ReadArray(forLoopRead);
-            else if (Writer != null) Writer.Write(array, forLoopWrite);
-            return array;
+            if (Reader is not null) return Reader.ReadArray(forLoopRead);
+            if (Writer is not null)
+            {
+                array = CreateArrayIfNull(array);
+
+                Writer.Write(array, forLoopWrite);
+
+                return array;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
-        public void Array<T>(ref T[] array, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        public void Array<T>(ref T[]? array, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
         {
             array = Array(array, forLoopRead, forLoopWrite);
         }
 
-        public T[] Array<T>(T[] array, Func<T> forLoopRead, Action<T> forLoopWrite)
+        public T[] Array<T>(T[]? array, Func<T> forLoopRead, Action<T> forLoopWrite)
         {
-            if (Reader != null) return Reader.ReadArray(forLoopRead);
-            else if (Writer != null) Writer.Write(array, forLoopWrite);
-            return array;
+            if (Reader is not null) return Reader.ReadArray(forLoopRead);
+            if (Writer is not null)
+            {
+                array = CreateArrayIfNull(array);
+
+                Writer.Write(array, forLoopWrite);
+
+                return array;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Array<T>(ref T[] array, Func<T> forLoopRead, Action<T> forLoopWrite)
@@ -113,84 +161,92 @@ namespace GBX.NET
             array = Array(array, forLoopRead, forLoopWrite);
         }
 
-        public T[] Array<T>(T[] array, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        public T[] Array<T>(T[]? array, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
         {
-            if (Reader != null) return Reader.ReadArray(forLoopRead);
-            else if (Writer != null) Writer.Write(array, forLoopWrite);
-            return array;
+            if (Reader is not null) return Reader.ReadArray(forLoopRead);
+            if (Writer is not null)
+            {
+                array = CreateArrayIfNull(array);
+
+                Writer.Write(array, forLoopWrite);
+
+                return array;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
-        public void Array<T>(ref T[] array, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        public void Array<T>(ref T[]? array, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
         {
             array = Array(array, forLoopRead, forLoopWrite);
         }
 
-        public T[] ArrayNode<T>(T[] array) where T : CMwNod
+        public T?[] ArrayNode<T>(T[]? array) where T : CMwNod
         {
             return Array(array, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
 
-        public void ArrayNode<T>(ref T[] array) where T : CMwNod
+        public void ArrayNode<T>(ref T?[]? array) where T : CMwNod
         {
             array = Array(array, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
 
-        public IEnumerable<T> Enumerable<T>(IEnumerable<T> enumerable) where T : struct
+        public IEnumerable<T> Enumerable<T>(IEnumerable<T>? enumerable) where T : struct
         {
             return Array(enumerable?.ToArray());
         }
 
-        public void Enumerable<T>(ref IEnumerable<T> enumerable) where T : struct
+        public void Enumerable<T>(ref IEnumerable<T>? enumerable) where T : struct
         {
             enumerable = Enumerable(enumerable);
         }
 
-        public IEnumerable<T> Enumerable<T>(IEnumerable<T> enumerable, Func<int, T> forLoopRead, Action<T> forLoopWrite)
+        public IEnumerable<T> Enumerable<T>(IEnumerable<T>? enumerable, Func<int, T> forLoopRead, Action<T> forLoopWrite)
         {
             return Array(enumerable?.ToArray(), forLoopRead, forLoopWrite);
         }
 
-        public void Enumerable<T>(ref IEnumerable<T> enumerable, Func<int, T> forLoopRead, Action<T> forLoopWrite)
+        public void Enumerable<T>(ref IEnumerable<T>? enumerable, Func<int, T> forLoopRead, Action<T> forLoopWrite)
         {
             enumerable = Enumerable(enumerable, forLoopRead, forLoopWrite);
         }
 
-        public IEnumerable<T> Enumerable<T>(IEnumerable<T> enumerable, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        public IEnumerable<T> Enumerable<T>(IEnumerable<T>? enumerable, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
         {
             return Array(enumerable?.ToArray(), forLoopRead, forLoopWrite);
         }
 
-        public void Enumerable<T>(ref IEnumerable<T> enumerable, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        public void Enumerable<T>(ref IEnumerable<T>? enumerable, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
         {
             enumerable = Enumerable(enumerable, forLoopRead, forLoopWrite);
         }
 
-        public IEnumerable<T> Enumerable<T>(IEnumerable<T> enumerable, Func<T> forLoopRead, Action<T> forLoopWrite)
+        public IEnumerable<T> Enumerable<T>(IEnumerable<T>? enumerable, Func<T> forLoopRead, Action<T> forLoopWrite)
         {
             return Array(enumerable?.ToArray(), forLoopRead, forLoopWrite);
         }
 
-        public void Enumerable<T>(ref IEnumerable<T> enumerable, Func<T> forLoopRead, Action<T> forLoopWrite)
+        public void Enumerable<T>(ref IEnumerable<T>? enumerable, Func<T> forLoopRead, Action<T> forLoopWrite)
         {
             enumerable = Enumerable(enumerable, forLoopRead, forLoopWrite);
         }
 
-        public IEnumerable<T> Enumerable<T>(IEnumerable<T> enumerable, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        public IEnumerable<T> Enumerable<T>(IEnumerable<T>? enumerable, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
         {
             return Array(enumerable?.ToArray(), forLoopRead, forLoopWrite);
         }
 
-        public void Enumerable<T>(ref IEnumerable<T> enumerable, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        public void Enumerable<T>(ref IEnumerable<T>? enumerable, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
         {
             enumerable = Enumerable(enumerable, forLoopRead, forLoopWrite);
         }
 
-        public IEnumerable<T> EnumerableNode<T>(IEnumerable<T> enumerable) where T : CMwNod
+        public IEnumerable<T?> EnumerableNode<T>(IEnumerable<T>? enumerable) where T : CMwNod
         {
             return Enumerable(enumerable, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
 
-        public void EnumerableNode<T>(ref IEnumerable<T> enumerable) where T : CMwNod
+        public void EnumerableNode<T>(ref IEnumerable<T?>? enumerable) where T : CMwNod
         {
             enumerable = Enumerable(enumerable, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
@@ -207,9 +263,14 @@ namespace GBX.NET
 
         public IList<T> List<T>(IList<T> list, Func<int, T> forLoopRead, Action<T> forLoopWrite)
         {
-            if (Reader != null) return Reader.ReadList(forLoopRead);
-            else if (Writer != null) Writer.Write(list, forLoopWrite);
-            return list;
+            if (Reader is not null) return Reader.ReadList(forLoopRead);
+            if (Writer is not null)
+            {
+                Writer.Write(list, forLoopWrite);
+                return list;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void List<T>(ref IList<T> list, Func<int, T> forLoopRead, Action<T> forLoopWrite)
@@ -219,9 +280,14 @@ namespace GBX.NET
 
         public IList<T> List<T>(IList<T> list, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
         {
-            if (Reader != null) return Reader.ReadList(forLoopRead);
-            else if (Writer != null) Writer.Write(list, forLoopWrite);
-            return list;
+            if (Reader is not null) return Reader.ReadList(forLoopRead);
+            if (Writer is not null)
+            {
+                Writer.Write(list, forLoopWrite);
+                return list;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void List<T>(ref IList<T> list, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
@@ -231,9 +297,14 @@ namespace GBX.NET
 
         public IList<T> List<T>(IList<T> list, Func<T> forLoopRead, Action<T> forLoopWrite)
         {
-            if (Reader != null) return Reader.ReadList(forLoopRead);
-            else if (Writer != null) Writer.Write(list, forLoopWrite);
-            return list;
+            if (Reader is not null) return Reader.ReadList(forLoopRead);
+            if (Writer is not null)
+            {
+                Writer.Write(list, forLoopWrite);
+                return list;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void List<T>(ref IList<T> list, Func<T> forLoopRead, Action<T> forLoopWrite)
@@ -243,9 +314,14 @@ namespace GBX.NET
 
         public IList<T> List<T>(IList<T> list, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
         {
-            if (Reader != null) return Reader.ReadList(forLoopRead);
-            else if (Writer != null) Writer.Write(list, forLoopWrite);
-            return list;
+            if (Reader is not null) return Reader.ReadList(forLoopRead);
+            if (Writer is not null)
+            {
+                Writer.Write(list, forLoopWrite);
+                return list;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void List<T>(ref IList<T> list, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
@@ -253,14 +329,14 @@ namespace GBX.NET
             list = List(list, forLoopRead, forLoopWrite);
         }
 
-        public IList<T> ListNode<T>(IList<T> list) where T : CMwNod
+        public IList<T?> ListNode<T>(IList<T?> list) where T : CMwNod
         {
             return List(list,
                 r => r.ReadNodeRef<T>(),
                 (x, w) => w.Write(x));
         }
 
-        public void ListNode<T>(ref IList<T> list) where T : CMwNod
+        public void ListNode<T>(ref IList<T?> list) where T : CMwNod
         {
             list = List(list,
                 r => r.ReadNodeRef<T>(),
@@ -269,9 +345,14 @@ namespace GBX.NET
 
         public IDictionary<TKey, TValue> Dictionary<TKey, TValue>(IDictionary<TKey, TValue> dictionary)
         {
-            if (Reader != null) return Reader.ReadDictionary<TKey, TValue>();
-            else if (Writer != null) Writer.Write(dictionary);
-            return dictionary;
+            if (Reader is not null) return Reader.ReadDictionary<TKey, TValue>();
+            if (Writer is not null)
+            {
+                Writer.Write(dictionary);
+                return dictionary;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Dictionary<TKey, TValue>(ref IDictionary<TKey, TValue> dictionary)
@@ -279,23 +360,33 @@ namespace GBX.NET
             dictionary = Dictionary(dictionary);
         }
 
-        public IDictionary<TKey, TValue> DictionaryNode<TKey, TValue>(IDictionary<TKey, TValue> dictionary) where TValue : CMwNod
+        public IDictionary<TKey, TValue?> DictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?> dictionary) where TValue : CMwNod
         {
-            if (Reader != null) return Reader.ReadDictionaryNode<TKey, TValue>();
-            else if (Writer != null) Writer.WriteDictionaryNode(dictionary);
-            return dictionary;
+            if (Reader is not null) return Reader.ReadDictionaryNode<TKey, TValue>();
+            if (Writer is not null)
+            {
+                Writer.WriteDictionaryNode(dictionary);
+                return dictionary;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
-        public void DictionaryNode<TKey, TValue>(ref IDictionary<TKey, TValue> dictionary) where TValue : CMwNod
+        public void DictionaryNode<TKey, TValue>(ref IDictionary<TKey, TValue?> dictionary) where TValue : CMwNod
         {
             dictionary = DictionaryNode(dictionary);
         }
 
         public bool Boolean(bool variable, bool asByte)
         {
-            if (Reader != null) return Reader.ReadBoolean(asByte);
-            else if (Writer != null) Writer.Write(variable, asByte);
-            return variable;
+            if (Reader is not null) return Reader.ReadBoolean(asByte);
+            if (Writer is not null)
+            {
+                Writer.Write(variable, asByte);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Boolean(ref bool variable, bool asByte)
@@ -330,9 +421,14 @@ namespace GBX.NET
 
         public byte Byte(byte variable)
         {
-            if (Reader != null) return Reader.ReadByte();
-            else if (Writer != null) Writer.Write(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadByte();
+            if (Writer is not null)
+            {
+                Writer.Write(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Byte(ref byte variable)
@@ -367,9 +463,14 @@ namespace GBX.NET
 
         public Byte3 Byte3(Byte3 variable)
         {
-            if (Reader != null) return Reader.ReadByte3();
-            else if (Writer != null) Writer.Write(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadByte3();
+            if (Writer is not null)
+            {
+                Writer.Write(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Byte3(ref Byte3 variable)
@@ -384,9 +485,14 @@ namespace GBX.NET
 
         public byte[] Bytes(byte[] variable, int count)
         {
-            if (Reader != null) return Reader.ReadBytes(count);
-            else if (Writer != null) Writer.Write(variable, 0, count);
-            return variable;
+            if (Reader is not null) return Reader.ReadBytes(count);
+            if (Writer is not null)
+            {
+                Writer.Write(variable, 0, count);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Bytes(ref byte[] variable, int count)
@@ -394,18 +500,23 @@ namespace GBX.NET
             variable = Bytes(variable, count);
         }
 
-        public byte[] Bytes(byte[] variable)
+        public byte[] Bytes(byte[]? variable)
         {
-            if (Reader != null) return Reader.ReadBytes();
-            else if (Writer != null)
+            if (Reader is not null) return Reader.ReadBytes();
+            if (Writer is not null)
             {
+                variable = CreateArrayIfNull(variable);
+
                 Writer.Write(variable.Length);
                 Writer.Write(variable);
+
+                return variable;
             }
-            return variable;
+
+            throw new ThisShouldNotHappenException();
         }
 
-        public void Bytes(ref byte[] variable)
+        public void Bytes(ref byte[]? variable)
         {
             variable = Bytes(variable);
         }
@@ -415,14 +526,21 @@ namespace GBX.NET
             _ = Bytes(default);
         }
 
-        public FileRef FileRef(FileRef variable)
+        public FileRef FileRef(FileRef? variable)
         {
-            if (Reader != null) return Reader.ReadFileRef();
-            else if (Writer != null) Writer.Write(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadFileRef();
+            if (Writer is not null)
+            {
+                if (variable is null)
+                    variable = new FileRef();
+                Writer.Write(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
-        public void FileRef(ref FileRef variable)
+        public void FileRef(ref FileRef? variable)
         {
             variable = FileRef(variable);
         }
@@ -434,9 +552,14 @@ namespace GBX.NET
 
         public short Int16(short variable)
         {
-            if (Reader != null) return Reader.ReadInt16();
-            else if (Writer != null) Writer.Write(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadInt16();
+            if (Writer is not null)
+            {
+                Writer.Write(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Int16(ref short variable)
@@ -456,9 +579,14 @@ namespace GBX.NET
 
         public int Int32(int variable)
         {
-            if (Reader != null) return Reader.ReadInt32();
-            else if (Writer != null) Writer.Write(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadInt32();
+            if (Writer is not null)
+            {
+                Writer.Write(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Int32(ref int variable)
@@ -478,9 +606,14 @@ namespace GBX.NET
 
         public TimeSpan Int32_s(TimeSpan variable)
         {
-            if (Reader != null) return Reader.ReadInt32_s();
-            else if (Writer != null) Writer.WriteInt32_s(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadInt32_s();
+            if (Writer is not null)
+            {
+                Writer.WriteInt32_s(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Int32_s(ref TimeSpan variable)
@@ -490,9 +623,14 @@ namespace GBX.NET
 
         public TimeSpan Int32_ms(TimeSpan variable)
         {
-            if (Reader != null) return Reader.ReadInt32_ms();
-            else if (Writer != null) Writer.WriteInt32_ms(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadInt32_ms();
+            if (Writer is not null)
+            {
+                Writer.WriteInt32_ms(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Int32_ms(ref TimeSpan variable)
@@ -502,9 +640,14 @@ namespace GBX.NET
 
         public TimeSpan? Int32_sn(TimeSpan? variable)
         {
-            if (Reader != null) return Reader.ReadInt32_sn();
-            else if (Writer != null) Writer.WriteInt32_sn(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadInt32_sn();
+            if (Writer is not null)
+            {
+                Writer.WriteInt32_sn(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Int32_sn(ref TimeSpan? variable)
@@ -514,9 +657,14 @@ namespace GBX.NET
 
         public TimeSpan? Int32_msn(TimeSpan? variable)
         {
-            if (Reader != null) return Reader.ReadInt32_msn();
-            else if (Writer != null) Writer.WriteInt32_msn(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadInt32_msn();
+            if (Writer is not null)
+            {
+                Writer.WriteInt32_msn(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Int32_msn(ref TimeSpan? variable)
@@ -546,9 +694,14 @@ namespace GBX.NET
 
         public long Int64(long variable)
         {
-            if (Reader != null) return Reader.ReadInt64();
-            else if (Writer != null) Writer.Write(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadInt64();
+            if (Writer is not null)
+            {
+                Writer.Write(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Int64(ref long variable)
@@ -568,9 +721,14 @@ namespace GBX.NET
 
         public ushort UInt16(ushort variable)
         {
-            if (Reader != null) return Reader.ReadUInt16();
-            else if (Writer != null) Writer.Write(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadUInt16();
+            if (Writer is not null)
+            {
+                Writer.Write(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void UInt16(ref ushort variable)
@@ -590,9 +748,14 @@ namespace GBX.NET
 
         public uint UInt32(uint variable)
         {
-            if (Reader != null) return Reader.ReadUInt32();
-            else if (Writer != null) Writer.Write(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadUInt32();
+            if (Writer is not null)
+            {
+                Writer.Write(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void UInt32(ref uint variable)
@@ -612,9 +775,14 @@ namespace GBX.NET
 
         public ulong UInt64(ulong variable)
         {
-            if (Reader != null) return Reader.ReadUInt64();
-            else if (Writer != null) Writer.Write(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadUInt64();
+            if (Writer is not null)
+            {
+                Writer.Write(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void UInt64(ref ulong variable)
@@ -634,16 +802,26 @@ namespace GBX.NET
 
         public BigInteger Int128(BigInteger variable, int byteLength)
         {
-            if (Reader != null) return Reader.ReadBigInt(byteLength);
-            else if (Writer != null) Writer.WriteBigInt(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadBigInt(byteLength);
+            if (Writer is not null)
+            {
+                Writer.WriteBigInt(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public BigInteger BigInt(BigInteger variable, int byteLength)
         {
-            if (Reader != null) return Reader.ReadBigInt(byteLength);
-            else if (Writer != null) Writer.WriteBigInt(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadBigInt(byteLength);
+            if (Writer is not null)
+            {
+                Writer.WriteBigInt(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void BigInt(ref BigInteger variable, int byteLength)
@@ -683,9 +861,14 @@ namespace GBX.NET
 
         public Int2 Int2(Int2 variable)
         {
-            if (Reader != null) return Reader.ReadInt2();
-            else if (Writer != null) Writer.Write(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadInt2();
+            if (Writer is not null)
+            {
+                Writer.Write(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Int2(ref Int2 variable)
@@ -705,9 +888,14 @@ namespace GBX.NET
 
         public Int3 Int3(Int3 variable)
         {
-            if (Reader != null) return Reader.ReadInt3();
-            else if (Writer != null) Writer.Write(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadInt3();
+            if (Writer is not null)
+            {
+                Writer.Write(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Int3(ref Int3 variable)
@@ -725,26 +913,48 @@ namespace GBX.NET
             _ = Int3(default);
         }
 
-        public string Id(string variable, ILookbackable lookbackable)
+        public string Id(string? variable, ILookbackable lookbackable)
         {
-            if (Reader != null) return Reader.ReadId(lookbackable);
-            else if (Writer != null) Writer.Write(new Id(variable, lookbackable));
-            return variable;
+            if (Reader is not null) return Reader.ReadId(lookbackable);
+            if (Writer is not null)
+            {
+                variable ??= string.Empty;
+
+                Writer.Write(new Id(variable, lookbackable));
+
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
-        public void Id(ref string variable, ILookbackable lookbackable)
+        public void Id(ref string? variable, ILookbackable lookbackable)
         {
             variable = Id(variable, lookbackable);
         }
 
-        public string Id(string variable)
+        public string Id(string? variable)
         {
-            if (Reader != null) return Id(variable, Reader.Lookbackable);
-            else if (Writer != null) return Id(variable, Writer.Lookbackable);
-            throw new Exception();
+            if (Reader is not null)
+            {
+                if (Reader.Lookbackable is null)
+                    throw new PropertyNullException(nameof(Reader.Lookbackable));
+
+                return Id(variable, Reader.Lookbackable);
+            }
+
+            if (Writer is not null)
+            {
+                if (Writer.Lookbackable is null)
+                    throw new PropertyNullException(nameof(Writer.Lookbackable));
+
+                return Id(variable, Writer.Lookbackable);
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
-        public void Id(ref string variable)
+        public void Id(ref string? variable)
         {
             variable = Id(variable);
         }
@@ -756,9 +966,14 @@ namespace GBX.NET
 
         public Ident Ident(Ident variable, ILookbackable lookbackable)
         {
-            if (Reader != null) return Reader.ReadIdent(lookbackable);
-            else if (Writer != null) Writer.Write(variable, lookbackable);
-            return variable;
+            if (Reader is not null) return Reader.ReadIdent(lookbackable);
+            if (Writer is not null)
+            {
+                Writer.Write(variable, lookbackable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Ident(ref Ident variable, ILookbackable lookbackable)
@@ -768,9 +983,23 @@ namespace GBX.NET
 
         public Ident Ident(Ident variable)
         {
-            if (Reader != null) return Ident(variable, Reader.Lookbackable);
-            else if (Writer != null) return Ident(variable, Writer.Lookbackable);
-            throw new Exception();
+            if (Reader is not null)
+            {
+                if (Reader.Lookbackable is null)
+                    throw new PropertyNullException(nameof(Reader.Lookbackable));
+
+                return Ident(variable, Reader.Lookbackable);
+            }
+
+            if (Writer is not null)
+            {
+                if (Writer.Lookbackable is null)
+                    throw new PropertyNullException(nameof(Writer.Lookbackable));
+
+                return Ident(variable, Writer.Lookbackable);
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Ident(ref Ident variable)
@@ -783,26 +1012,45 @@ namespace GBX.NET
             _ = Ident(default);
         }
 
-        public CMwNod NodeRef(CMwNod variable, GameBoxBody body)
+        public CMwNod? NodeRef(CMwNod? variable, GameBoxBody body)
         {
-            if (Reader != null) return Reader.ReadNodeRef(body);
-            else if (Writer != null) Writer.Write(variable, body);
-            return variable;
+            if (Reader is not null) return Reader.ReadNodeRef(body);
+            if (Writer is not null)
+            {
+                Writer.Write(variable, body);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
-        public void NodeRef(ref CMwNod variable, GameBoxBody body)
+        public void NodeRef(ref CMwNod? variable, GameBoxBody body)
         {
             variable = NodeRef(variable, body);
         }
 
-        public CMwNod NodeRef(CMwNod variable)
+        public CMwNod? NodeRef(CMwNod? variable)
         {
-            if (Reader != null) return NodeRef(variable, Reader.Body);
-            else if (Writer != null) return NodeRef(variable, Writer.Body);
-            throw new Exception();
+            if (Reader is not null)
+            {
+                if (Reader.Body is null)
+                    throw new PropertyNullException(nameof(Reader.Body));
+
+                return NodeRef(variable, Reader.Body);
+            }
+
+            if (Writer is not null)
+            {
+                if (Writer.Body is null)
+                    throw new PropertyNullException(nameof(Writer.Body));
+
+                return NodeRef(variable, Writer.Body);
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
-        public void NodeRef(ref CMwNod variable)
+        public void NodeRef(ref CMwNod? variable)
         {
             variable = NodeRef(variable);
         }
@@ -812,35 +1060,59 @@ namespace GBX.NET
             _ = NodeRef(default);
         }
 
-        public T NodeRef<T>(T variable, GameBoxBody body) where T : CMwNod
+        public T? NodeRef<T>(T? variable, GameBoxBody body) where T : CMwNod
         {
-            if (Reader != null) return Reader.ReadNodeRef<T>(body);
-            else if (Writer != null) Writer.Write(variable, body);
-            return variable;
+            if (Reader is not null) return Reader.ReadNodeRef<T>(body);
+            if (Writer is not null)
+            {
+                Writer.Write(variable, body);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
-        public void NodeRef<T>(ref T variable, GameBoxBody body) where T : CMwNod
+        public void NodeRef<T>(ref T? variable, GameBoxBody body) where T : CMwNod
         {
             variable = NodeRef(variable, body);
         }
 
-        public T NodeRef<T>(T variable) where T : CMwNod
+        public T? NodeRef<T>(T? variable) where T : CMwNod
         {
-            if (Reader != null) return NodeRef(variable, Reader.Body);
-            else if (Writer != null) return NodeRef(variable, Writer.Body);
-            else throw new Exception();
+            if (Reader is not null)
+            {
+                if (Reader.Body is null)
+                    throw new PropertyNullException(nameof(Reader.Body));
+
+                return NodeRef(variable, Reader.Body);
+            }
+
+            if (Writer is not null)
+            {
+                if (Writer.Body is null)
+                    throw new PropertyNullException(nameof(Writer.Body));
+
+                return NodeRef(variable, Writer.Body);
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
-        public void NodeRef<T>(ref T variable) where T : CMwNod
+        public void NodeRef<T>(ref T? variable) where T : CMwNod
         {
             variable = NodeRef(variable);
         }
 
         public float Single(float variable)
         {
-            if (Reader != null) return Reader.ReadSingle();
-            else if (Writer != null) Writer.Write(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadSingle();
+            if (Writer is not null)
+            {
+                Writer.Write(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Single(ref float variable)
@@ -860,9 +1132,14 @@ namespace GBX.NET
 
         public TimeSpan Single_s(TimeSpan variable)
         {
-            if (Reader != null) return Reader.ReadSingle_s();
-            else if (Writer != null) Writer.WriteSingle_s(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadSingle_s();
+            if (Writer is not null)
+            {
+                Writer.WriteSingle_s(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Single_s(ref TimeSpan variable)
@@ -872,9 +1149,14 @@ namespace GBX.NET
 
         public TimeSpan Single_ms(TimeSpan variable)
         {
-            if (Reader != null) return Reader.ReadSingle_ms();
-            else if (Writer != null) Writer.WriteSingle_ms(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadSingle_ms();
+            if (Writer is not null)
+            {
+                Writer.WriteSingle_ms(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Single_ms(ref TimeSpan variable)
@@ -884,9 +1166,14 @@ namespace GBX.NET
 
         public TimeSpan? Single_sn(TimeSpan? variable)
         {
-            if (Reader != null) return Reader.ReadSingle_sn();
-            else if (Writer != null) Writer.WriteSingle_sn(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadSingle_sn();
+            if (Writer is not null)
+            {
+                Writer.WriteSingle_sn(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Single_sn(ref TimeSpan? variable)
@@ -896,9 +1183,14 @@ namespace GBX.NET
 
         public TimeSpan? Single_msn(TimeSpan? variable)
         {
-            if (Reader != null) return Reader.ReadSingle_msn();
-            else if (Writer != null) Writer.WriteSingle_msn(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadSingle_msn();
+            if (Writer is not null)
+            {
+                Writer.WriteSingle_msn(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Single_msn(ref TimeSpan? variable)
@@ -926,24 +1218,32 @@ namespace GBX.NET
             _ = Single_msn(default);
         }
 
-        public string String(string variable, StringLengthPrefix readPrefix)
+        public string String(string? variable, StringLengthPrefix readPrefix)
         {
-            if (Reader != null) return Reader.ReadString(readPrefix);
-            else if (Writer != null) Writer.Write(variable, readPrefix);
-            return variable;
+            if (Reader is not null) return Reader.ReadString(readPrefix);
+            if (Writer is not null)
+            {
+                variable ??= string.Empty;
+
+                Writer.Write(variable, readPrefix);
+
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
-        public void String(ref string variable, StringLengthPrefix readPrefix)
+        public void String(ref string? variable, StringLengthPrefix readPrefix)
         {
             variable = String(variable, readPrefix);
         }
 
-        public string String(string variable)
+        public string String(string? variable)
         {
             return String(variable, StringLengthPrefix.Int32);
         }
 
-        public void String(ref string variable)
+        public void String(ref string? variable)
         {
             variable = String(variable);
         }
@@ -955,9 +1255,14 @@ namespace GBX.NET
 
         public Vec2 Vec2(Vec2 variable)
         {
-            if (Reader != null) return Reader.ReadVec2();
-            else if (Writer != null) Writer.Write(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadVec2();
+            if (Writer is not null)
+            {
+                Writer.Write(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Vec2(ref Vec2 variable)
@@ -977,9 +1282,14 @@ namespace GBX.NET
 
         public Vec3 Vec3(Vec3 variable)
         {
-            if (Reader != null) return Reader.ReadVec3();
-            else if (Writer != null) Writer.Write(variable);
-            return variable;
+            if (Reader is not null) return Reader.ReadVec3();
+            if (Writer is not null)
+            {
+                Writer.Write(variable);
+                return variable;
+            }
+
+            throw new ThisShouldNotHappenException();
         }
 
         public void Vec3(ref Vec3 variable)
@@ -1014,17 +1324,41 @@ namespace GBX.NET
 
         public void UntilFacade(MemoryStream stream)
         {
-            if (Reader != null)
+            if (Reader is not null)
             {
-                using (var w = new GameBoxWriter(stream, Reader.Lookbackable))
-                    w.Write(Reader.ReadUntilFacade());
+                if (Reader.Lookbackable is null)
+                    throw new PropertyNullException(nameof(Reader.Lookbackable));
+
+                using var w = new GameBoxWriter(stream, Reader.Lookbackable);
+                w.Write(Reader.ReadUntilFacade().ToArray());
+
+                return;
             }
-            else if (Writer != null)
+            
+            if (Writer is not null)
             {
                 var buffer = new byte[stream.Length - stream.Position];
                 stream.Read(buffer, 0, buffer.Length);
                 Writer.WriteBytes(buffer);
+
+                return;
             }
+
+            throw new ThisShouldNotHappenException();
+        }
+
+        private T[] CreateArrayIfNull<T>(T[]? array)
+        {
+            if (array is null)
+            {
+#if NETSTANDARD2_0_OR_GREATER
+                array = System.Array.Empty<T>();
+#else
+                    array = new T[0];
+#endif
+            }
+
+            return array;
         }
     }
 

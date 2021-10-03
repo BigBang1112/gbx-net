@@ -156,7 +156,7 @@ namespace GBX.NET.Engines.Game
         private bool isLapRace;
         private int nbLaps = 3;
         private Ident mapInfo;
-        private string mapName;
+        private string? mapName;
         private MapKind kind = MapKind.InProgress;
         private int? nbCheckpoints;
         private string password;

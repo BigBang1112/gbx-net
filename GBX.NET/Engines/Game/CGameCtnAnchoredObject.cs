@@ -15,13 +15,13 @@ namespace GBX.NET.Engines.Game
         private Ident itemModel;
         private Vec3 pitchYawRoll;
         private Byte3 blockUnitCoord;
-        private string anchorTreeId;
+        private string anchorTreeId = string.Empty;
         private Vec3 absolutePositionInMap;
-        private CGameWaypointSpecialProperty waypointSpecialProperty;
+        private CGameWaypointSpecialProperty? waypointSpecialProperty;
         private short flags;
         private float scale = 1;
         private Vec3 pivotPosition;
-        private FileRef skin;
+        private FileRef? skin;
         private DifficultyColor? color;
 
         #endregion
@@ -79,7 +79,7 @@ namespace GBX.NET.Engines.Game
         /// If the item is a waypoint, contains inner waypoint info, otherwise null.
         /// </summary>
         [NodeMember]
-        public CGameWaypointSpecialProperty WaypointSpecialProperty
+        public CGameWaypointSpecialProperty? WaypointSpecialProperty
         {
             get => waypointSpecialProperty;
             set => waypointSpecialProperty = value;
@@ -141,7 +141,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public FileRef Skin
+        public FileRef? Skin
         {
             get => skin;
             set => skin = value;
@@ -192,14 +192,14 @@ namespace GBX.NET.Engines.Game
                 rw.Vec3(ref n.absolutePositionInMap);
 
                 if(rw.Mode == GameBoxReaderWriterMode.Read)
-                    n.waypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(rw.Reader);
+                    n.waypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(rw.Reader!);
                 else if(rw.Mode == GameBoxReaderWriterMode.Write)
                 {
                     if (n.WaypointSpecialProperty == null)
-                        rw.Writer.Write(-1);
+                        rw.Writer!.Write(-1);
                     else
                     {
-                        rw.Writer.Write(n.WaypointSpecialProperty.ID);
+                        rw.Writer!.Write(n.WaypointSpecialProperty.ID);
                         n.WaypointSpecialProperty.Write(rw.Writer);
                     }
                 }

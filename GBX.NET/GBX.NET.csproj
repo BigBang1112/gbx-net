@@ -8,12 +8,15 @@
 		<Description>Open-source GBX format parser library with writing possibilities for .NET.</Description>
 		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Nullable>enable</Nullable>
 		
-		<Version>0.12.0</Version>
-		<PackageReleaseNotes>Boost the parse time by almost 3 times.</PackageReleaseNotes>
+		<Version>0.13.0</Version>
+		<PackageReleaseNotes></PackageReleaseNotes>
 		
-		<TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+		<TargetFrameworks>netstandard2.1;netstandard2.0;net45</TargetFrameworks>
+		<LangVersion>9.0</LangVersion>
 		<Platforms>AnyCPU;x64;x86</Platforms>
+		
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk</PackageTags>
 		
