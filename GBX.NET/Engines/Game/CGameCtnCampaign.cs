@@ -11,7 +11,7 @@ namespace GBX.NET.Engines.Game
     {
         #region Fields
 
-        private CGameCtnChallengeGroup[] mapGroups;
+        private CGameCtnChallengeGroup[] mapGroups = new CGameCtnChallengeGroup[0];
         private string campaignID;
         private int index;
         private string name;

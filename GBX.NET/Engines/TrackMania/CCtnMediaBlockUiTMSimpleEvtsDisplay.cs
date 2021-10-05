@@ -67,6 +67,15 @@ namespace GBX.NET.Engines.TrackMania
 
         #endregion
 
+        #region Constructors
+
+        private CCtnMediaBlockUiTMSimpleEvtsDisplay()
+        {
+
+        }
+
+        #endregion
+
         #region Chunks
 
         #region 0x000 chunk

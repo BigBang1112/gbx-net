@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Runtime.ExceptionServices;
 
 using GBX.NET.Engines.MwFoundations;
+using GBX.NET.Exceptions;
 
 namespace GBX.NET
 {
@@ -202,9 +203,9 @@ namespace GBX.NET
             Node.DiscoverAllChunks();
         }
 
-        protected override bool ProcessHeader(IProgress<GameBoxReadProgress> progress)
+        protected override bool ProcessHeader(IProgress<GameBoxReadProgress>? progress)
         {
-            if (ID != typeof(T).GetCustomAttribute<NodeAttribute>().ID)
+            if (ID.HasValue && ID != typeof(T).GetCustomAttribute<NodeAttribute>().ID)
             {
                 if (!NodeCacheManager.Names.TryGetValue(ID.Value, out string name))
                     name = "unknown class";
@@ -229,7 +230,7 @@ namespace GBX.NET
             return true;
         }
 
-        protected internal override bool ReadBody(GameBoxReader reader, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress)
+        protected internal override bool ReadBody(GameBoxReader reader, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress)
         {
             Log.Write("Reading the body...");
 
@@ -431,7 +432,7 @@ namespace GBX.NET
         /// <typeparam name="T">Type of the <see cref="CMwNod"/> to look for.</typeparam>
         /// <param name="node">A node that is being extracted from this <see cref="GameBox"/> object. Null if unsuccessful.</param>
         /// <returns>True if the type of this <see cref="GameBox"/> is <see cref="GameBox{T}"/> and <typeparamref name="T"/> matches. Otherwise false.</returns>
-        public bool TryNode<T>(out T node) where T : CMwNod
+        public bool TryNode<T>(out T? node) where T : CMwNod
         {
             var property = GetType().GetProperty("MainNode");
 
@@ -445,7 +446,7 @@ namespace GBX.NET
             return false;
         }
 
-        internal bool ReadHeader(GameBoxReader reader, IProgress<GameBoxReadProgress> progress)
+        internal bool ReadHeader(GameBoxReader reader, IProgress<GameBoxReadProgress>? progress)
         {
             var success = Header.Read(reader);
 
@@ -454,12 +455,12 @@ namespace GBX.NET
             return success;
         }
 
-        protected virtual bool ProcessHeader(IProgress<GameBoxReadProgress> progress)
+        protected virtual bool ProcessHeader(IProgress<GameBoxReadProgress>? progress)
         {
             return true; // There are no header chunks to proccess in an unknown GBX
         }
 
-        protected bool ReadRefTable(GameBoxReader reader, IProgress<GameBoxReadProgress> progress)
+        protected bool ReadRefTable(GameBoxReader reader, IProgress<GameBoxReadProgress>? progress)
         {
             RefTable = new GameBoxRefTable(Header);
             RefTable.Read(reader);
@@ -469,7 +470,7 @@ namespace GBX.NET
             return true;
         }
 
-        protected internal virtual bool ReadBody(GameBoxReader reader, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress)
+        protected internal virtual bool ReadBody(GameBoxReader reader, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress)
         {
             return false;
         }
@@ -480,7 +481,7 @@ namespace GBX.NET
         /// <param name="gbx"></param>
         public static implicit operator CMwNod(GameBox gbx) => gbx.Node;
 
-        private static GameBox ParseHeader(GameBoxReader reader, IProgress<GameBoxReadProgress> progress = null)
+        private static GameBox ParseHeader(GameBoxReader reader, IProgress<GameBoxReadProgress>? progress = null)
         {
             var header = new GameBoxHeaderInfo(reader);
 
@@ -496,7 +497,7 @@ namespace GBX.NET
                     gbx = (GameBox)Activator.CreateInstance(gbxType, header);
 
                     var processHeaderMethod = gbxType.GetMethod(nameof(ProcessHeader), BindingFlags.Instance | BindingFlags.NonPublic);
-                    processHeaderMethod.Invoke(gbx, new object[] { progress });
+                    processHeaderMethod.Invoke(gbx, new object?[] { progress });
                 }
                 else
                     gbx = new GameBox(header);
@@ -514,7 +515,7 @@ namespace GBX.NET
         /// <param name="stream">Stream to read GBX format from.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
-        public static GameBox ParseHeader(Stream stream, IProgress<GameBoxReadProgress> progress = null)
+        public static GameBox ParseHeader(Stream stream, IProgress<GameBoxReadProgress>? progress = null)
         {
             using (var r = new GameBoxReader(stream))
                 return ParseHeader(r, progress);
@@ -526,7 +527,7 @@ namespace GBX.NET
         /// <param name="fileName">Relative or absolute file path.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
-        public static GameBox ParseHeader(string fileName, IProgress<GameBoxReadProgress> progress = null)
+        public static GameBox ParseHeader(string fileName, IProgress<GameBoxReadProgress>? progress = null)
         {
             using (var fs = File.OpenRead(fileName))
             {
@@ -544,15 +545,17 @@ namespace GBX.NET
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with specified main node type.</returns>
         /// <exception cref="InvalidCastException"/>
-        public static GameBox<T> ParseHeader<T>(Stream stream, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
+        /// <exception cref="GameBoxParseException"/>
+        public static GameBox<T> ParseHeader<T>(Stream stream, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
         {
-            GameBox<T> gbx = new GameBox<T>();
+            var gbx = new GameBox<T>();
 
-            using (var r = new GameBoxReader(stream))
-                if (gbx.ReadHeader(r, progress) && gbx.ProcessHeader(progress) && gbx.ReadRefTable(r, progress))
-                    return gbx;
+            using var r = new GameBoxReader(stream);
 
-            return null;
+            if (gbx.ReadHeader(r, progress) && gbx.ProcessHeader(progress) && gbx.ReadRefTable(r, progress))
+                return gbx;
+
+            throw new GameBoxParseException();
         }
 
         /// <summary>
@@ -563,14 +566,13 @@ namespace GBX.NET
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with specified main node type.</returns>
         /// <exception cref="InvalidCastException"/>
-        public static GameBox<T> ParseHeader<T>(string fileName, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
+        /// <exception cref="GameBoxParseException"/>
+        public static GameBox<T> ParseHeader<T>(string fileName, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
         {
-            using (var fs = File.OpenRead(fileName))
-            {
-                var gbx = ParseHeader<T>(fs, progress);
-                gbx.FileName = fileName;
-                return gbx;
-            }
+            using var fs = File.OpenRead(fileName);
+            var gbx = ParseHeader<T>(fs, progress);
+            gbx.FileName = fileName;
+            return gbx;
         }
 
         /// <summary>
@@ -585,17 +587,17 @@ namespace GBX.NET
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
         /// <exception cref="NotSupportedException"/>
-        public static GameBox<T> Parse<T>(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
+        /// <exception cref="GameBoxParseException"/>
+        public static GameBox<T> Parse<T>(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
         {
             var gbx = ParseHeader<T>(stream, progress);
 
-            using (var r = new GameBoxReader(stream))
-            {
-                if (gbx.ReadBody(r, readUncompressedBodyDirectly, progress))
-                    return gbx;
-            }
+            using var r = new GameBoxReader(stream);
 
-            return null;
+            if (gbx.ReadBody(r, readUncompressedBodyDirectly, progress))
+                return gbx;
+
+            throw new GameBoxParseException();
         }
 
         /// <summary>
@@ -608,7 +610,8 @@ namespace GBX.NET
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
         /// <exception cref="NotSupportedException"/>
-        public static GameBox<T> Parse<T>(Stream stream, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
+        /// <exception cref="GameBoxParseException"/>
+        public static GameBox<T> Parse<T>(Stream stream, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
         {
             return Parse<T>(stream, false, progress);
         }
@@ -625,15 +628,14 @@ namespace GBX.NET
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
         /// <exception cref="NotSupportedException"/>
-        public static GameBox<T> Parse<T>(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
+        /// <exception cref="GameBoxParseException"/>
+        public static GameBox<T> Parse<T>(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
         {
-            using (var fs = File.OpenRead(fileName))
-            {
-                var gbx = Parse<T>(fs, readUncompressedBodyDirectly, progress);
-                if (gbx == null) return null;
-                gbx.FileName = fileName;
-                return gbx;
-            }
+            using var fs = File.OpenRead(fileName);
+            var gbx = Parse<T>(fs, readUncompressedBodyDirectly, progress);
+            if (gbx == null) throw new GameBoxParseException();
+            gbx.FileName = fileName;
+            return gbx;
         }
 
         /// <summary>
@@ -650,7 +652,7 @@ namespace GBX.NET
         /// var gbx = GameBox.Parse&lt;CGameCtnChallenge&gt;("MyMap.Map.Gbx");
         /// // Node data is available in gbx.MainNode
         /// </example>
-        public static GameBox<T> Parse<T>(string fileName, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
+        public static GameBox<T> Parse<T>(string fileName, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
         {
             return Parse<T>(fileName, false, progress);
         }
@@ -664,16 +666,15 @@ namespace GBX.NET
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="NotSupportedException"/>
+        /// <exception cref="GameBoxParseException"/>
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast).</returns>
-        public static GameBox Parse(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null)
+        public static GameBox Parse(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress = null)
         {
-            using (var fs = File.OpenRead(fileName))
-            {
-                var gbx = Parse(fs, readUncompressedBodyDirectly, progress);
-                if (gbx == null) return null;
-                gbx.FileName = fileName;
-                return gbx;
-            }
+            using var fs = File.OpenRead(fileName);
+            var gbx = Parse(fs, readUncompressedBodyDirectly, progress);
+            if (gbx == null) throw new GameBoxParseException();
+            gbx.FileName = fileName;
+            return gbx;
         }
 
         /// <summary>
@@ -683,6 +684,7 @@ namespace GBX.NET
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="NotSupportedException"/>
+        /// <exception cref="GameBoxParseException"/>
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast).</returns>
         /// <example>
         /// var gbx = GameBox.Parse("MyMap.Map.Gbx");
@@ -696,7 +698,7 @@ namespace GBX.NET
         ///     // Node data is available in gbxReplay.MainNode
         /// }
         /// </example>
-        public static GameBox Parse(string fileName, IProgress<GameBoxReadProgress> progress = null)
+        public static GameBox Parse(string fileName, IProgress<GameBoxReadProgress>? progress = null)
         {
             return Parse(fileName, false, progress);
         }
@@ -711,20 +713,18 @@ namespace GBX.NET
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="NotSupportedException"/>
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast).</returns>
-        public static GameBox Parse(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null)
+        public static GameBox Parse(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress = null)
         {
-            using (var rHeader = new GameBoxReader(stream))
-            {
-                var gbx = ParseHeader(rHeader, progress);
+            using var rHeader = new GameBoxReader(stream);
 
-                // Body resets Id (lookback string) list
-                using (var rBody = new GameBoxReader(stream, gbx.Body))
-                {
-                    gbx.ReadBody(rBody, readUncompressedBodyDirectly, progress);
-                }
+            var gbx = ParseHeader(rHeader, progress);
 
-                return gbx;
-            }
+            // Body resets Id (lookback string) list
+            using var rBody = new GameBoxReader(stream, gbx.Body);
+            
+            gbx.ReadBody(rBody, readUncompressedBodyDirectly, progress);
+
+            return gbx;
         }
 
         /// <summary>
@@ -735,7 +735,7 @@ namespace GBX.NET
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="NotSupportedException"/>
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast).</returns>
-        public static GameBox Parse(Stream stream, IProgress<GameBoxReadProgress> progress = null)
+        public static GameBox Parse(Stream stream, IProgress<GameBoxReadProgress>? progress = null)
         {
             return Parse(stream, false, progress);
         }
@@ -746,7 +746,7 @@ namespace GBX.NET
         /// <param name="stream">Stream to read GBX format from.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
-        public static CMwNod ParseNodeHeader(Stream stream, IProgress<GameBoxReadProgress> progress = null)
+        public static CMwNod ParseNodeHeader(Stream stream, IProgress<GameBoxReadProgress>? progress = null)
         {
             return ParseHeader(stream, progress).Node;
         }
@@ -757,7 +757,7 @@ namespace GBX.NET
         /// <param name="fileName">Relative or absolute file path.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
-        public static CMwNod ParseNodeHeader(string fileName, IProgress<GameBoxReadProgress> progress = null)
+        public static CMwNod ParseNodeHeader(string fileName, IProgress<GameBoxReadProgress>? progress = null)
         {
             return ParseHeader(fileName, progress);
         }
@@ -770,7 +770,7 @@ namespace GBX.NET
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A <see cref="CMwNod"/> casted to <typeparamref name="T"/>.</returns>
         /// <exception cref="InvalidCastException"/>
-        public static T ParseNodeHeader<T>(Stream stream, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
+        public static T ParseNodeHeader<T>(Stream stream, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
         {
             return ParseHeader<T>(stream, progress);
         }
@@ -783,7 +783,7 @@ namespace GBX.NET
         /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A <see cref="CMwNod"/> casted to <typeparamref name="T"/>.</returns>
         /// <exception cref="InvalidCastException"/>
-        public static T ParseNodeHeader<T>(string fileName, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
+        public static T ParseNodeHeader<T>(string fileName, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
         {
             return ParseHeader<T>(fileName, progress);
         }
@@ -800,7 +800,7 @@ namespace GBX.NET
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
         /// <exception cref="NotSupportedException"/>
-        public static T ParseNode<T>(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
+        public static T ParseNode<T>(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
         {
             return Parse<T>(stream, readUncompressedBodyDirectly, progress);
         }
@@ -815,7 +815,7 @@ namespace GBX.NET
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
         /// <exception cref="NotSupportedException"/>
-        public static T ParseNode<T>(Stream stream, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
+        public static T ParseNode<T>(Stream stream, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
         {
             return ParseNode<T>(stream, false, progress);
         }
@@ -832,7 +832,7 @@ namespace GBX.NET
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
         /// <exception cref="NotSupportedException"/>
-        public static T ParseNode<T>(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
+        public static T ParseNode<T>(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
         {
             return Parse<T>(fileName, readUncompressedBodyDirectly, progress);
         }
@@ -847,7 +847,7 @@ namespace GBX.NET
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
         /// <exception cref="NotSupportedException"/>
-        public static T ParseNode<T>(string fileName, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
+        public static T ParseNode<T>(string fileName, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
         {
             return ParseNode<T>(fileName, false, progress);
         }
@@ -862,7 +862,7 @@ namespace GBX.NET
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="NotSupportedException"/>
         /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
-        public static CMwNod ParseNode(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null)
+        public static CMwNod ParseNode(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress = null)
         {
             return Parse(fileName, readUncompressedBodyDirectly, progress);
         }
@@ -875,7 +875,7 @@ namespace GBX.NET
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="NotSupportedException"/>
         /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
-        public static CMwNod ParseNode(string fileName, IProgress<GameBoxReadProgress> progress = null)
+        public static CMwNod ParseNode(string fileName, IProgress<GameBoxReadProgress>? progress = null)
         {
             return ParseNode(fileName, false, progress);
         }
@@ -890,7 +890,7 @@ namespace GBX.NET
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="NotSupportedException"/>
         /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
-        public static CMwNod ParseNode(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress> progress = null)
+        public static CMwNod ParseNode(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress = null)
         {
             return Parse(stream, readUncompressedBodyDirectly, progress);
         }
@@ -903,7 +903,7 @@ namespace GBX.NET
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="NotSupportedException"/>
         /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
-        public static CMwNod ParseNode(Stream stream, IProgress<GameBoxReadProgress> progress = null)
+        public static CMwNod ParseNode(Stream stream, IProgress<GameBoxReadProgress>? progress = null)
         {
             return ParseNode(stream, false, progress);
         }
@@ -939,7 +939,7 @@ namespace GBX.NET
         /// <returns>ID of the main node presented in GBX. Null if not a GBX stream.</returns>
         public static uint? ReadNodeID(Stream stream)
         {
-            using (GameBoxReader r = new GameBoxReader(stream))
+            using (var r = new GameBoxReader(stream))
                 return ReadNodeID(r);
         }
 
@@ -959,7 +959,7 @@ namespace GBX.NET
         /// </summary>
         /// <param name="fileName">File to read from.</param>
         /// <returns>Type of the main node.</returns>
-        public static Type ReadNodeType(string fileName)
+        public static Type? ReadNodeType(string fileName)
         {
             using (var fs = File.OpenRead(fileName))
                 return ReadNodeType(fs);
@@ -970,13 +970,13 @@ namespace GBX.NET
         /// </summary>
         /// <param name="stream">Stream to read from.</param>
         /// <returns>Type of the main node.</returns>
-        public static Type ReadNodeType(Stream stream)
+        public static Type? ReadNodeType(Stream stream)
         {
             using (var r = new GameBoxReader(stream))
                 return ReadNodeType(r);
         }
 
-        private static Type ReadNodeType(GameBoxReader reader)
+        private static Type? ReadNodeType(GameBoxReader reader)
         {
             var classID = ReadNodeID(reader);
 

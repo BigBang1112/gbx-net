@@ -33,7 +33,7 @@ namespace GBX.NET.Engines.Game
         /// An array of MediaTracker clips.
         /// </summary>
         [NodeMember]
-        public List<Tuple<CGameCtnMediaClip, Trigger>> Clips { get; set; } = new List<Tuple<CGameCtnMediaClip, Trigger>>();
+        public List<Tuple<CGameCtnMediaClip?, Trigger>> Clips { get; set; } = new List<Tuple<CGameCtnMediaClip?, Trigger>>();
 
         public int ClipsVersion { get; set; } = 10;
 
@@ -185,7 +185,7 @@ namespace GBX.NET.Engines.Game
 
         public class Trigger
         {
-            public Int3[] Coords { get; set; }
+            public Int3[]? Coords { get; set; }
             public int U01 { get; set; }
             public int U02 { get; set; }
             public int U03 { get; set; }

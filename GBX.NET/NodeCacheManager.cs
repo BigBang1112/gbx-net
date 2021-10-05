@@ -8,6 +8,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 
 using GBX.NET.Engines.MwFoundations;
+using GBX.NET.Exceptions;
 
 namespace GBX.NET
 {
@@ -277,7 +278,12 @@ namespace GBX.NET
                 var id = idClassPair.Key;
                 var classType = idClassPair.Value;
 
-                var newExp = Expression.New(classType);
+                var privateConstructor = classType.GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new Type[0], null);
+
+                if (privateConstructor is null)
+                    throw new PrivateConstructorNotFoundException(classType);
+                
+                var newExp = Expression.New(privateConstructor);
                 var lambda = Expression.Lambda<Func<CMwNod>>(newExp);
                 var compiled = lambda.Compile();
 
@@ -301,7 +307,7 @@ namespace GBX.NET
             Debug.WriteLine("Types defined in " + watch.Elapsed.TotalMilliseconds + "ms");
         }
 
-        private static Dictionary<uint, Func<Chunk>> GetChunkConstructors(
+        private static Dictionary<uint, Func<Chunk>>? GetChunkConstructors(
             KeyValuePair<Type, Dictionary<uint, Type>> classChunksPair)
         {
             if (classChunksPair.Value.Count == 0) return null;

@@ -24,10 +24,10 @@ namespace GBX.NET
     public class GameBoxBody<T> : GameBoxBody where T : CMwNod
     {
         private bool checkedForLzo;
-        private MethodInfo methodLzoCompress;
-        private MethodInfo methodLzoDecompress;
+        private MethodInfo? methodLzoCompress;
+        private MethodInfo? methodLzoDecompress;
 
-        public byte[] Rest { get; set; }
+        public byte[]? Rest { get; set; }
         public bool Aborting { get; private set; }
 
         public new GameBox<T> GBX => (GameBox<T>)base.GBX;
@@ -41,38 +41,37 @@ namespace GBX.NET
             
         }
 
-        public void Read(byte[] data, IProgress<GameBoxReadProgress> progress = null)
+        public void Read(byte[] data, IProgress<GameBoxReadProgress>? progress = null)
         {
-            using (var ms = new MemoryStream(data))
-                Read(ms, progress);
+            using var ms = new MemoryStream(data);
+            Read(ms, progress);
         }
 
-        public void Read(Stream stream, IProgress<GameBoxReadProgress> progress = null)
+        public void Read(Stream stream, IProgress<GameBoxReadProgress>? progress = null)
         {
-            using (var gbxr = new GameBoxReader(stream, this))
-                Read(gbxr, progress);
+            using var gbxr = new GameBoxReader(stream, this);
+            Read(gbxr, progress);
         }
 
-        public void Read(GameBoxReader reader, IProgress<GameBoxReadProgress> progress = null)
+        public void Read(GameBoxReader reader, IProgress<GameBoxReadProgress>? progress = null)
         {
             CMwNod.Parse(GBX.Node, reader, progress);
 
-            using (MemoryStream ms = new MemoryStream())
-            {
-                var s = reader.BaseStream;
-                s.CopyTo(ms);
-                Rest = ms.ToArray();
-                Debug.WriteLine("Amount read: " + (s.Position / (float)(s.Position + Rest.Length)).ToString("P"));
-            }
+            using var ms = new MemoryStream();
+            var s = reader.BaseStream;
+            s.CopyTo(ms);
+            Rest = ms.ToArray();
+            Debug.WriteLine("Amount read: " + (s.Position / (float)(s.Position + Rest.Length)).ToString("P"));
         }
 
-        public void Read(byte[] data, int uncompressedSize, IProgress<GameBoxReadProgress> progress = null)
+        /// <exception cref="MissingLzoException"></exception>
+        public void Read(byte[] data, int uncompressedSize, IProgress<GameBoxReadProgress>? progress = null)
         {
             byte[] buffer = new byte[uncompressedSize];
 
             CheckForLZO();
 
-            methodLzoDecompress.Invoke(null, new object[] { data, buffer });
+            methodLzoDecompress!.Invoke(null, new object[] { data, buffer });
 
             // File.WriteAllBytes("in.dat", buffer);
 
@@ -84,6 +83,7 @@ namespace GBX.NET
             Write(w, IDRemap.Latest);
         }
 
+        /// <exception cref="MissingLzoException"></exception>
         public void Write(GameBoxWriter w, IDRemap remap)
         {
             GBX.Remap = remap;
@@ -101,7 +101,7 @@ namespace GBX.NET
 
                     // File.WriteAllBytes("out.dat", buffer);
 
-                    var output = (byte[])methodLzoCompress.Invoke(null, new object[] { buffer });
+                    var output = (byte[])methodLzoCompress!.Invoke(null, new object[] { buffer });
 
                     w.Write((int)msBody.Length); // Uncompressed
                     w.Write(output.Length); // Compressed
@@ -244,7 +244,7 @@ namespace GBX.NET
                     s.Discover();
         }
 
-        public TChunk GetChunk<TChunk>() where TChunk : Chunk<T>
+        public TChunk? GetChunk<TChunk>() where TChunk : Chunk<T>
         {
             foreach (var chunk in GBX.Node.Chunks)
             {
@@ -254,10 +254,11 @@ namespace GBX.NET
                     return t;
                 }
             }
+
             return default;
         }
 
-        public bool TryGetChunk<TChunk>(out TChunk chunk) where TChunk : Chunk<T>
+        public bool TryGetChunk<TChunk>(out TChunk? chunk) where TChunk : Chunk<T>
         {
             chunk = GetChunk<TChunk>();
             return chunk != default;
@@ -273,34 +274,26 @@ namespace GBX.NET
             return GBX.Node.Chunks.Remove<TChunk>();
         }
 
+        /// <exception cref="MissingLzoException"></exception>
         private void CheckForLZO()
         {
             if (checkedForLzo) return;
 
             var lzoFound = false;
-            bool? platformSupported = null;
 
             foreach (var dllFile in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll"))
             {
-                Assembly assemblyMetadata = null;
+                Assembly assemblyMetadata;
 
-                if (!platformSupported.HasValue || platformSupported == true)
+                try
                 {
-                    try
-                    {
-                        assemblyMetadata = Assembly.ReflectionOnlyLoadFrom(dllFile);
-                        platformSupported = true;
-                    }
-                    catch (PlatformNotSupportedException)
-                    {
-                        Log.Write("Running on a platform not supporting ReflectionOnlyLoadFrom, using LoadFrom instead...");
-                    }
+                    assemblyMetadata = Assembly.ReflectionOnlyLoadFrom(dllFile);
                 }
-
-                if (!platformSupported.HasValue || platformSupported == false)
+                catch (PlatformNotSupportedException)
                 {
+                    Log.Write("Running on a platform not supporting ReflectionOnlyLoadFrom, using LoadFrom instead...");
+                        
                     assemblyMetadata = Assembly.LoadFrom(dllFile);
-                    platformSupported = false;
                 }
 
                 try
@@ -338,20 +331,18 @@ namespace GBX.NET
         {
             var type = assembly.GetTypes().FirstOrDefault(x => x.Name == "MiniLZO");
 
-            if (type == null)
+            if (type is null)
             {
                 return false;
             }
-            else
-            {
-                methodLzoCompress = type.GetMethod("Compress", new Type[] { typeof(byte[]) });
-                methodLzoDecompress = type.GetMethod("Decompress", new Type[] { typeof(byte[]), typeof(byte[]) });
 
-                if (methodLzoCompress == null || methodLzoDecompress == null)
-                    return false;
+            methodLzoCompress = type.GetMethod("Compress", new Type[] { typeof(byte[]) });
+            methodLzoDecompress = type.GetMethod("Decompress", new Type[] { typeof(byte[]), typeof(byte[]) });
 
-                return true;
-            }
+            if (methodLzoCompress == null || methodLzoDecompress == null)
+                return false;
+
+            return true;
         }
     }
 }

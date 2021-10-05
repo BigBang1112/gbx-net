@@ -57,7 +57,7 @@ namespace GBX.NET
             {
                 array = CreateArrayIfNull(array);
 
-                Writer.Write(array);
+                Writer.Write<T>(array);
 
                 return array;
             }
@@ -156,7 +156,7 @@ namespace GBX.NET
             throw new ThisShouldNotHappenException();
         }
 
-        public void Array<T>(ref T[] array, Func<T> forLoopRead, Action<T> forLoopWrite)
+        public void Array<T>(ref T[]? array, Func<T> forLoopRead, Action<T> forLoopWrite)
         {
             array = Array(array, forLoopRead, forLoopWrite);
         }
@@ -181,7 +181,7 @@ namespace GBX.NET
             array = Array(array, forLoopRead, forLoopWrite);
         }
 
-        public T?[] ArrayNode<T>(T[]? array) where T : CMwNod
+        public T?[] ArrayNode<T>(T?[]? array) where T : CMwNod
         {
             return Array(array, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
@@ -241,7 +241,7 @@ namespace GBX.NET
             enumerable = Enumerable(enumerable, forLoopRead, forLoopWrite);
         }
 
-        public IEnumerable<T?> EnumerableNode<T>(IEnumerable<T>? enumerable) where T : CMwNod
+        public IEnumerable<T?> EnumerableNode<T>(IEnumerable<T?>? enumerable) where T : CMwNod
         {
             return Enumerable(enumerable, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
@@ -251,21 +251,22 @@ namespace GBX.NET
             enumerable = Enumerable(enumerable, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
 
-        public IList<T> List<T>(IList<T> list) where T : struct
+        public IList<T> List<T>(IList<T>? list) where T : struct
         {
             return Array(list?.ToArray());
         }
 
-        public void List<T>(ref IList<T> list) where T : struct
+        public void List<T>(ref IList<T>? list) where T : struct
         {
             list = List(list);
         }
 
-        public IList<T> List<T>(IList<T> list, Func<int, T> forLoopRead, Action<T> forLoopWrite)
+        public IList<T> List<T>(IList<T>? list, Func<int, T> forLoopRead, Action<T> forLoopWrite)
         {
             if (Reader is not null) return Reader.ReadList(forLoopRead);
             if (Writer is not null)
             {
+                if (list is null) list = new List<T>();
                 Writer.Write(list, forLoopWrite);
                 return list;
             }
@@ -273,16 +274,17 @@ namespace GBX.NET
             throw new ThisShouldNotHappenException();
         }
 
-        public void List<T>(ref IList<T> list, Func<int, T> forLoopRead, Action<T> forLoopWrite)
+        public void List<T>(ref IList<T>? list, Func<int, T> forLoopRead, Action<T> forLoopWrite)
         {
             list = List(list, forLoopRead, forLoopWrite);
         }
 
-        public IList<T> List<T>(IList<T> list, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        public IList<T> List<T>(IList<T>? list, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
         {
             if (Reader is not null) return Reader.ReadList(forLoopRead);
             if (Writer is not null)
             {
+                if (list is null) list = new List<T>();
                 Writer.Write(list, forLoopWrite);
                 return list;
             }
@@ -290,16 +292,17 @@ namespace GBX.NET
             throw new ThisShouldNotHappenException();
         }
 
-        public void List<T>(ref IList<T> list, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        public void List<T>(ref IList<T>? list, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
         {
             list = List(list, forLoopRead, forLoopWrite);
         }
 
-        public IList<T> List<T>(IList<T> list, Func<T> forLoopRead, Action<T> forLoopWrite)
+        public IList<T> List<T>(IList<T>? list, Func<T> forLoopRead, Action<T> forLoopWrite)
         {
             if (Reader is not null) return Reader.ReadList(forLoopRead);
             if (Writer is not null)
             {
+                if (list is null) list = new List<T>();
                 Writer.Write(list, forLoopWrite);
                 return list;
             }
@@ -307,16 +310,17 @@ namespace GBX.NET
             throw new ThisShouldNotHappenException();
         }
 
-        public void List<T>(ref IList<T> list, Func<T> forLoopRead, Action<T> forLoopWrite)
+        public void List<T>(ref IList<T>? list, Func<T> forLoopRead, Action<T> forLoopWrite)
         {
             list = List(list, forLoopRead, forLoopWrite);
         }
 
-        public IList<T> List<T>(IList<T> list, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        public IList<T> List<T>(IList<T>? list, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
         {
             if (Reader is not null) return Reader.ReadList(forLoopRead);
             if (Writer is not null)
             {
+                if (list is null) list = new List<T>();
                 Writer.Write(list, forLoopWrite);
                 return list;
             }
@@ -324,19 +328,19 @@ namespace GBX.NET
             throw new ThisShouldNotHappenException();
         }
 
-        public void List<T>(ref IList<T> list, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+        public void List<T>(ref IList<T>? list, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
         {
             list = List(list, forLoopRead, forLoopWrite);
         }
 
-        public IList<T?> ListNode<T>(IList<T?> list) where T : CMwNod
+        public IList<T?> ListNode<T>(IList<T?>? list) where T : CMwNod
         {
             return List(list,
                 r => r.ReadNodeRef<T>(),
                 (x, w) => w.Write(x));
         }
 
-        public void ListNode<T>(ref IList<T?> list) where T : CMwNod
+        public void ListNode<T>(ref IList<T?>? list) where T : CMwNod
         {
             list = List(list,
                 r => r.ReadNodeRef<T>(),
@@ -483,6 +487,7 @@ namespace GBX.NET
             variable = Byte3(variable.GetValueOrDefault());
         }
 
+        /// <exception cref="ArgumentNullException"></exception>
         public byte[] Bytes(byte[] variable, int count)
         {
             if (Reader is not null) return Reader.ReadBytes(count);
@@ -1005,6 +1010,11 @@ namespace GBX.NET
         public void Ident(ref Ident variable)
         {
             variable = Ident(variable);
+        }
+
+        public void Ident(ref Ident? variable)
+        {
+            variable = Ident(variable.GetValueOrDefault());
         }
 
         public void Ident()

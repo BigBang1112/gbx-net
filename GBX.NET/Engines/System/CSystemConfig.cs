@@ -7,7 +7,7 @@ namespace GBX.NET.Engines.System
     {
         #region Fields
 
-        private string desiredLanguageId;
+        private string? desiredLanguageId;
         private bool advertising_DisabledByUser;
         private float advertising_TunningCoef;
         private bool inputsAlternateMethod;
@@ -15,7 +15,7 @@ namespace GBX.NET.Engines.System
         private bool inputsEnableRumble;
         private bool inputsCaptureKeyboard;
         private bool gameProfileEnableMulti;
-        private string gameProfileName;
+        private string? gameProfileName;
         private bool isIgnorePlayerSkins;
         private bool isSkipRollingDemo;
         private bool audioEnabled;
@@ -24,7 +24,7 @@ namespace GBX.NET.Engines.System
         private bool audioAllowEFX;
         private bool audioDisableDoppler;
         private int audioGlobalQuality;
-        private string audioDevice_Oal;
+        private string? audioDevice_Oal;
         private bool audioAllowHRTF;
         private int audioDontMuteWhenApplicationUnfocused;
         private bool audioSoundHdr;
@@ -50,15 +50,15 @@ namespace GBX.NET.Engines.System
         private bool fileTransferEnableUnknownTypeUpload;
         private bool fileTransferEnableUnknownTypeLocators;
         private bool networkTestInternetConnection;
-        private string networkLastUsedMSAddress;
-        private string networkLastUsedMSPath;
+        private string? networkLastUsedMSAddress;
+        private string? networkLastUsedMSPath;
         private bool networkUseProxy;
         private int networkServerPort;
         private int networkP2PServerPort;
         private int networkClientPort;
         private int networkServerBroadcastLength;
         private bool networkForceUseLocalAddress;
-        private string networkForceServerAddress;
+        private string? networkForceServerAddress;
         private int networkDownload;
         private int networkUpload;
         private bool networkUseNatUPnP;
@@ -72,7 +72,7 @@ namespace GBX.NET.Engines.System
 
         #region Properties
 
-        public string DesiredLanguageId
+        public string? DesiredLanguageId
         {
             get
             {
@@ -184,7 +184,7 @@ namespace GBX.NET.Engines.System
             }
         }
 
-        public string GameProfileName
+        public string? GameProfileName
         {
             get
             {
@@ -310,7 +310,7 @@ namespace GBX.NET.Engines.System
             }
         }
 
-        public string AudioDevice_Oal
+        public string? AudioDevice_Oal
         {
             get
             {
@@ -674,7 +674,7 @@ namespace GBX.NET.Engines.System
             }
         }
 
-        public string NetworkLastUsedMSAddress
+        public string? NetworkLastUsedMSAddress
         {
             get
             {
@@ -688,7 +688,7 @@ namespace GBX.NET.Engines.System
             }
         }
 
-        public string NetworkLastUsedMSPath
+        public string? NetworkLastUsedMSPath
         {
             get
             {
@@ -786,7 +786,7 @@ namespace GBX.NET.Engines.System
             }
         }
 
-        public string NetworkForceServerAddress
+        public string? NetworkForceServerAddress
         {
             get
             {
@@ -914,6 +914,15 @@ namespace GBX.NET.Engines.System
 
         #endregion
 
+        #region Constructors
+
+        private CSystemConfig()
+        {
+
+        }
+
+        #endregion
+
         #region Chunks
 
         [Chunk(0x0B005008)]
@@ -1002,16 +1011,16 @@ namespace GBX.NET.Engines.System
         [Chunk(0x0B005039)]
         public class Chunk0B005039 : SkippableChunk<CSystemConfig>
         {
-            private string u01;
-            private string u02;
+            private string? u01;
+            private string? u02;
 
-            public string U01
+            public string? U01
             {
                 get => u01;
                 set => u01 = value;
             }
 
-            public string U02
+            public string? U02
             {
                 get => u02;
                 set => u02 = value;
@@ -1056,9 +1065,9 @@ namespace GBX.NET.Engines.System
         [Chunk(0x0B005041)]
         public class Chunk0B005041 : SkippableChunk<CSystemConfig>
         {
-            private string u01;
+            private string? u01;
 
-            public string U01
+            public string? U01
             {
                 get => u01;
                 set => u01 = value;
@@ -1093,9 +1102,9 @@ namespace GBX.NET.Engines.System
         [Chunk(0x0B005044)]
         public class Chunk0B005044 : SkippableChunk<CSystemConfig>
         {
-            private int[] u01;
+            private int[]? u01;
 
-            public int[] U01
+            public int[]? U01
             {
                 get => u01;
                 set => u01 = value;
@@ -1244,9 +1253,9 @@ namespace GBX.NET.Engines.System
         [Chunk(0x0B005051)]
         public class Chunk0B005051 : SkippableChunk<CSystemConfig>
         {
-            private string u01;
+            private string? u01;
 
-            public string U01
+            public string? U01
             {
                 get => u01;
                 set => u01 = value;

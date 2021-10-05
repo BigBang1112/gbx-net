@@ -188,19 +188,19 @@ namespace GBX.NET.Engines.Game
                 rw.Ident(ref n.itemModel);
                 rw.Vec3(ref n.pitchYawRoll);
                 rw.Byte3(ref n.blockUnitCoord);
-                rw.Id(ref n.anchorTreeId);
+                rw.Id(ref n.anchorTreeId!);
                 rw.Vec3(ref n.absolutePositionInMap);
 
-                if(rw.Mode == GameBoxReaderWriterMode.Read)
+                if (rw.Mode == GameBoxReaderWriterMode.Read)
                     n.waypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(rw.Reader!);
-                else if(rw.Mode == GameBoxReaderWriterMode.Write)
+                else if (rw.Mode == GameBoxReaderWriterMode.Write)
                 {
-                    if (n.WaypointSpecialProperty == null)
+                    if (n.waypointSpecialProperty is null)
                         rw.Writer!.Write(-1);
                     else
                     {
-                        rw.Writer!.Write(n.WaypointSpecialProperty.ID);
-                        n.WaypointSpecialProperty.Write(rw.Writer);
+                        rw.Writer!.Write(n.waypointSpecialProperty.ID);
+                        n.waypointSpecialProperty.Write(rw.Writer);
                     }
                 }
 

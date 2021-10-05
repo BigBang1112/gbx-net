@@ -85,6 +85,15 @@ namespace GBX.NET.Engines.TrackMania
 
         #endregion
 
+        #region Constructors
+
+        private CCtnMediaBlockEventTrackMania()
+        {
+            stunts = null!;
+        }
+
+        #endregion
+
         #region Chunks
 
         #region 0x000 chunk
@@ -100,7 +109,7 @@ namespace GBX.NET.Engines.TrackMania
                 rw.Single(ref n.end);
                 rw.Int32(ref U01);
 
-                rw.Array(ref n.stunts, (i, r) => new Stunt()
+                rw.Array(ref n.stunts!, (i, r) => new Stunt()
                 {
                     Time = TimeSpan.FromSeconds(r.ReadSingle()),
                     Figure = (EStuntFigure)r.ReadInt32(),

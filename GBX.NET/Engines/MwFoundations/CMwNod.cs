@@ -62,10 +62,10 @@ namespace GBX.NET.Engines.MwFoundations
             }
         }
 
-        public static T[] ParseArray<T>(GameBoxReader r) where T : CMwNod
+        public static T?[] ParseArray<T>(GameBoxReader r) where T : CMwNod
         {
             var count = r.ReadInt32();
-            var array = new T[count];
+            var array = new T?[count];
 
             for (var i = 0; i < count; i++)
                 array[i] = Parse<T>(r);
@@ -73,7 +73,7 @@ namespace GBX.NET.Engines.MwFoundations
             return array;
         }
 
-        public static T Parse<T>(GameBoxReader r, uint? classID = null, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
+        public static T? Parse<T>(GameBoxReader r, uint? classID = null, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
         {
             if (!classID.HasValue)
                 classID = r.ReadUInt32();
@@ -95,7 +95,7 @@ namespace GBX.NET.Engines.MwFoundations
         }
 
         [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0071:Zjednodušit interpolaci", Justification = "<Čeká>")]
-        public static void Parse<T>(T node, GameBoxReader r, IProgress<GameBoxReadProgress> progress = null) where T : CMwNod
+        public static void Parse<T>(T node, GameBoxReader r, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
         {
             var stopwatch = Stopwatch.StartNew();
 

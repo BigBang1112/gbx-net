@@ -150,18 +150,18 @@ namespace GBX.NET.Engines.Game
         private TimeSpan? silverTime; // Only used if ChallengeParameters is null
         private TimeSpan? goldTime; // Only used if ChallengeParameters is null
         private TimeSpan? authorTime; // Only used if ChallengeParameters is null
-        private int cost;
+        private int? cost;
         private EditorMode editor;
         private int authorScore;
         private bool isLapRace;
         private int nbLaps = 3;
         private Ident mapInfo;
-        private string? mapName;
+        private string mapName;
         private MapKind kind = MapKind.InProgress;
         private int? nbCheckpoints;
-        private string password;
-        private Ident decoration;
-        private string mapType;
+        private string? password;
+        private Ident? decoration;
+        private string? mapType;
         private ulong? lightmapCacheUID;
         private byte? lightmapVersion;
         private string xml;
@@ -169,8 +169,8 @@ namespace GBX.NET.Engines.Game
         private byte[] thumbnail;
         private Vec2? mapCoordOrigin;
         private Vec2? mapCoordTarget;
-        private string mapStyle;
-        private string titleID;
+        private string? mapStyle;
+        private string? titleID;
         private int authorVersion;
         private string authorLogin;
         private string authorNickname;
@@ -474,7 +474,7 @@ namespace GBX.NET.Engines.Game
         /// Password of the map used by older maps.
         /// </summary>
         [NodeMember]
-        public string Password
+        public string? Password
         {
             get
             {
@@ -492,7 +492,7 @@ namespace GBX.NET.Engines.Game
         /// The map's decoration (time of the day or scenery)
         /// </summary>
         [NodeMember]
-        public Ident Decoration
+        public Ident? Decoration
         {
             get => decoration;
             set => decoration = value;
@@ -2090,7 +2090,7 @@ namespace GBX.NET.Engines.Game
 
             public bool U01;
             public byte U02;
-            public int U03;
+            public int? U03;
             public int U04;
             public int U05;
 
@@ -2110,7 +2110,7 @@ namespace GBX.NET.Engines.Game
                 if (version < 3)
                 {
                     rw.Ident(ref n.mapInfo);
-                    rw.String(ref n.mapName);
+                    rw.String(ref n.mapName!);
                 }
 
                 rw.Boolean(ref U01);
@@ -2210,7 +2210,7 @@ namespace GBX.NET.Engines.Game
             {
                 rw.Byte(ref version);
                 rw.Ident(ref n.mapInfo);
-                rw.String(ref n.mapName);
+                rw.String(ref n.mapName!);
                 rw.EnumByte<MapKind>(ref n.kind);
 
                 if (version >= 1)

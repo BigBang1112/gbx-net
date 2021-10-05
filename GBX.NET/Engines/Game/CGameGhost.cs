@@ -17,7 +17,7 @@ namespace GBX.NET.Engines.Game
 
         private readonly Action<Task<Data>> dataExceptionHandle;
         private bool isReplaying;
-        private Task<Data> sampleData;
+        private Task<Data>? sampleData;
 
         #endregion
 
@@ -29,7 +29,7 @@ namespace GBX.NET.Engines.Game
             set => isReplaying = value;
         }
 
-        public Task<Data> SampleData
+        public Task<Data>? SampleData
         {
             get => sampleData;
             set => sampleData = value;
@@ -65,8 +65,8 @@ namespace GBX.NET.Engines.Game
             public bool U02;
             public int U03;
 
-            public byte[] Data { get; set; }
-            public int[] Samples { get; set; }
+            public byte[]? Data { get; set; }
+            public int[]? Samples { get; set; }
             public int SamplePeriod { get; set; }
 
             public override void ReadWrite(CGameGhost n, GameBoxReaderWriter rw)
@@ -122,7 +122,7 @@ namespace GBX.NET.Engines.Game
         {
             public int UncompressedSize { get; set; }
             public int CompressedSize { get; set; }
-            public byte[] Data { get; set; }
+            public byte[] Data { get; set; } = new byte[0];
 
             public override void ReadWrite(CGameGhost n, GameBoxReaderWriter rw)
             { 
@@ -193,7 +193,7 @@ namespace GBX.NET.Engines.Game
 
             public Data()
             {
-
+                Samples = new ObservableCollection<Sample>();
             }
 
             private void Samples_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -257,7 +257,7 @@ namespace GBX.NET.Engines.Game
                     var sampleData = r.ReadBytes();
 
                     int sizePerSample = -1;
-                    int[] sampleSizes = null;
+                    int[]? sampleSizes = null;
 
                     var numSamples = r.ReadInt32();
                     if (numSamples > 0)
@@ -273,7 +273,7 @@ namespace GBX.NET.Engines.Game
                         }
                     }
 
-                    int[] sampleTimes = null;
+                    int[]? sampleTimes = null;
 
                     if (!bSkipList2)
                     {
@@ -282,10 +282,8 @@ namespace GBX.NET.Engines.Game
 
                     if (numSamples > 0)
                     {
-                        using (var mssd = new MemoryStream(sampleData))
-                        {
-                            ReadSamples(mssd, numSamples, sizePerSample, sampleSizes, sampleTimes);
-                        }
+                        using var mssd = new MemoryStream(sampleData);
+                        ReadSamples(mssd, numSamples, sizePerSample, sampleSizes, sampleTimes);
                     }
                     else
                     {
@@ -295,7 +293,7 @@ namespace GBX.NET.Engines.Game
                 }
             }
 
-            public void ReadSamples(MemoryStream ms, int numSamples, int sizePerSample, int[] sizesPerSample = null, int[] sampleTimes = null)
+            public void ReadSamples(MemoryStream ms, int numSamples, int sizePerSample, int[]? sizesPerSample = null, int[]? sampleTimes = null)
             {
                 Samples = new ObservableCollection<Sample>();
                 Samples.CollectionChanged += Samples_CollectionChanged;
@@ -399,7 +397,7 @@ namespace GBX.NET.Engines.Game
             /// or a reference to an existing sample if <paramref name="timestamp"/> matches an existing sample timestamp.
             /// Also returns null if there are no samples, or if <paramref name="timestamp"/> is outside of the sample range,
             /// or <see cref="SamplePeriod"/> is lower or equal to 0.</returns>
-            public Sample GetSampleLerp(TimeSpan timestamp)
+            public Sample? GetSampleLerp(TimeSpan timestamp)
             {
                 if (Samples?.Count > 0 && samplePeriod.Ticks > 0)
                 {
@@ -430,9 +428,9 @@ namespace GBX.NET.Engines.Game
 
             public class Sample : NET.Sample
             {
-                private Data owner;
+                private Data? owner;
 
-                internal void AssignTo(Data ghostData)
+                internal void AssignTo(Data? ghostData)
                 {
                     owner = ghostData;
 
@@ -447,7 +445,8 @@ namespace GBX.NET.Engines.Game
 
                 internal void UpdateTimestamp()
                 {
-                    Timestamp = TimeSpan.FromMilliseconds(owner.samplePeriod.TotalMilliseconds * owner.Samples.IndexOf(this));
+                    if (owner is not null)
+                        Timestamp = TimeSpan.FromMilliseconds(owner.samplePeriod.TotalMilliseconds * owner.Samples.IndexOf(this));
                 }
             }
         }

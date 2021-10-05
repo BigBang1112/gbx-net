@@ -11,9 +11,9 @@ namespace GBX.NET.Engines.Game
         #region Fields
 
         private string? text;
-        private FileRef packDesc = new FileRef();
-        private FileRef parentPackDesc = new FileRef();
-        private FileRef foregroundPackDesc = new FileRef();
+        private FileRef packDesc;
+        private FileRef parentPackDesc;
+        private FileRef foregroundPackDesc;
 
         #endregion
 
@@ -48,6 +48,17 @@ namespace GBX.NET.Engines.Game
         {
             get => foregroundPackDesc;
             set => foregroundPackDesc = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnBlockSkin()
+        {
+            packDesc = null!;
+            parentPackDesc = null!;
+            foregroundPackDesc = null!;
         }
 
         #endregion

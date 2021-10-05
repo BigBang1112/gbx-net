@@ -17,20 +17,26 @@ namespace GBX.NET.Engines.Game
             Dispenser
         }
 
-        public string BlockName { get; set; }
-        public CGameCtnBlockInfoVariantGround VariantBaseGround { get; set; }
-        public CGameCtnBlockInfoVariantAir VariantBaseAir { get; set; }
-        public CGameCtnBlockInfoVariantGround[] AdditionalVariantsGround { get; set; }
-        public CGameCtnBlockInfoVariantAir[] AdditionalVariantsAir { get; set; }
-        public CMwNod CharPhySpecialProperty { get; set; }
-        public CMwNod CharPhySpecialPropertyCustomizable { get; set; }
-        public CGamePodiumInfo PodiumInfo { get; set; }
-        public CGamePodiumInfo IntroInfo { get; set; }
+        public string? BlockName { get; set; }
+        public CGameCtnBlockInfoVariantGround? VariantBaseGround { get; set; }
+        public CGameCtnBlockInfoVariantAir? VariantBaseAir { get; set; }
+        public CGameCtnBlockInfoVariantGround?[] AdditionalVariantsGround { get; set; }
+        public CGameCtnBlockInfoVariantAir?[] AdditionalVariantsAir { get; set; }
+        public CMwNod? CharPhySpecialProperty { get; set; }
+        public CMwNod? CharPhySpecialPropertyCustomizable { get; set; }
+        public CGamePodiumInfo? PodiumInfo { get; set; }
+        public CGamePodiumInfo? IntroInfo { get; set; }
         public bool IconAutoUseGround { get; set; }
         public bool NoRespawn { get; set; }
         public EWayPointType WayPointType { get; set; }
-        public string SymmetricalBlockInfoId { get; set; }
+        public string? SymmetricalBlockInfoId { get; set; }
         public Direction Dir { get; set; }
+
+        public CGameCtnBlockInfo()
+        {
+            AdditionalVariantsGround = new CGameCtnBlockInfoVariantGround[0];
+            AdditionalVariantsAir = new CGameCtnBlockInfoVariantAir[0];
+        }
 
         [Chunk(0x0304E005)]
         public class Chunk0304E005 : Chunk<CGameCtnBlockInfo>
@@ -49,7 +55,7 @@ namespace GBX.NET.Engines.Game
                 rw.Reader.ReadArray(r => r.ReadNodeRef<CGameCtnBlockUnitInfo>());
                 rw.Int32();
                 rw.Int32();
-                rw.Reader.ReadNodeRef<CSceneMobil>();
+                var wat = rw.Reader.ReadNodeRef<CSceneMobil>();
                 rw.Int32();
                 rw.Int32();
                 rw.Reader.ReadNodeRef<CSceneMobil>();
@@ -90,11 +96,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0304E00E)]
         public class Chunk0304E00E : Chunk<CGameCtnBlockInfo>
         {
-            public CMwNod[] U01;
+            public CMwNod?[]? U01;
 
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                rw.Array(ref U01, r => r.ReadNodeRef(), (x, w) => w.Write(x));
+                rw.ArrayNode(ref U01);
             }
         }
 
@@ -195,8 +201,11 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
-                n.VariantBaseGround = Parse<CGameCtnBlockInfoVariantGround>(rw.Reader, 0x0315C000);
-                n.VariantBaseAir = Parse<CGameCtnBlockInfoVariantAir>(rw.Reader, 0x0315D000);
+                if (rw.Mode == GameBoxReaderWriterMode.Read)
+                {
+                    n.VariantBaseGround = Parse<CGameCtnBlockInfoVariantGround>(rw.Reader!, 0x0315C000);
+                    n.VariantBaseAir = Parse<CGameCtnBlockInfoVariantAir>(rw.Reader!, 0x0315D000);
+                }
             }
         }
 

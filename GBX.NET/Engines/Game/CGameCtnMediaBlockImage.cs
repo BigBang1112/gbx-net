@@ -9,8 +9,8 @@ namespace GBX.NET.Engines.Game
     {
         #region Fields
 
-        private CControlEffectSimi effect = new CControlEffectSimi();
-        private FileRef image;
+        private CControlEffectSimi? effect = new(); // temp
+        private FileRef? image;
 
         #endregion
 
@@ -18,19 +18,23 @@ namespace GBX.NET.Engines.Game
 
         IEnumerable<Key> IHasKeys.Keys
         {
-            get => Effect.Keys.Cast<Key>();
-            set => Effect.Keys = value.Cast<CControlEffectSimi.Key>().ToList();
+            get => effect?.Keys.Cast<Key>() ?? Enumerable.Empty<Key>();
+            set
+            {
+                if (effect is not null)
+                    effect.Keys = value.Cast<CControlEffectSimi.Key>().ToList();
+            }
         }
 
         [NodeMember]
-        public CControlEffectSimi Effect
+        public CControlEffectSimi? Effect
         {
             get => effect;
             set => effect = value;
         }
 
         [NodeMember]
-        public FileRef Image
+        public FileRef? Image
         {
             get => image;
             set => image = value;

@@ -344,7 +344,7 @@ namespace GBX.NET
         /// <exception cref="PropertyNullException"></exception>
         /// <exception cref="IOException">An I/O error occurs.</exception>
         /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-        public void WriteId(string value)
+        public void WriteId(string? value)
         {
             if (Lookbackable is null)
                 throw new PropertyNullException(nameof(Lookbackable));

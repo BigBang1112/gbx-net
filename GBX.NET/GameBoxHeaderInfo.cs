@@ -31,18 +31,19 @@ namespace GBX.NET
 
         public GameBoxHeaderInfo(GameBoxReader reader)
         {
+            UserData = new byte[0];
             Read(reader);
         }
 
         public bool Read(GameBoxReader reader)
         {
-            if (reader.HasMagic(GameBox.Magic))
-                Log.Write("GBX recognized!", ConsoleColor.Green);
-            else
+            if (!reader.HasMagic(GameBox.Magic))
             {
                 Log.Write("GBX magic missing! Corrupted file or not a GBX file.", ConsoleColor.Red);
                 return false;
             }
+
+            Log.Write("GBX recognized!", ConsoleColor.Green);
 
             Version = reader.ReadInt16();
             Log.Write("- Version: " + Version.ToString());

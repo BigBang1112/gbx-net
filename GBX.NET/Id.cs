@@ -8,16 +8,16 @@ namespace GBX.NET
     public class Id
     {
         public ILookbackable Owner { get; }
-        public string String { get; set; }
+        public string? String { get; set; }
 
         public int Index
         {
-            get => Owner.IdStrings.IndexOf(String);
+            get => String is null ? -1 : Owner.IdStrings.IndexOf(String);
         }
 
         public static Dictionary<int, string> CollectionIDs { get; }
 
-        public Id(string str, ILookbackable lookbackable)
+        public Id(string? str, ILookbackable lookbackable)
         {
             Owner = lookbackable;
             String = str;
@@ -25,13 +25,13 @@ namespace GBX.NET
 
         public static implicit operator string(Id s)
         {
-            if (s == null) return "";
+            if (s is null) return "";
             return s.ToString();
         }
 
         public override string ToString()
         {
-            return String;
+            return String ?? string.Empty;
         }
 
         static Id()
@@ -40,15 +40,14 @@ namespace GBX.NET
 
             var startTimestamp = DateTime.Now;
 
-            using (StringReader reader = new StringReader(Resources.CollectionID))
+            using var reader = new StringReader(Resources.CollectionID);
+
+            string line;
+            while ((line = reader.ReadLine()) != null)
             {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    var keys = line.Split(' ');
-                    if (keys.Length >= 2)
-                        CollectionIDs[Convert.ToInt32(keys[0])] = keys[1];
-                }
+                var keys = line.Split(' ');
+                if (keys.Length >= 2)
+                    CollectionIDs[Convert.ToInt32(keys[0])] = keys[1];
             }
 
             Debug.WriteLine("Collection IDs named in " + (DateTime.Now - startTimestamp).TotalMilliseconds + "ms");

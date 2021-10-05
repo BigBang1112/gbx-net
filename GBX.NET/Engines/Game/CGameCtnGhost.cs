@@ -15,31 +15,31 @@ namespace GBX.NET.Engines.Game
         #region Fields
 
         private Ident playerModel;
-        private FileRef[] skinPackDescs;
-        private string ghostNickname;
-        private string ghostLogin;
-        private string ghostAvatarName;
-        private string recordingContext;
-        private CPlugEntRecordData recordData;
-        private string ghostTrigram;
-        private string ghostZone;
-        private string ghostUid;
+        private IList<FileRef>? skinPackDescs;
+        private string? ghostNickname;
+        private string? ghostLogin;
+        private string? ghostAvatarName;
+        private string? recordingContext;
+        private CPlugEntRecordData? recordData;
+        private string? ghostTrigram;
+        private string? ghostZone;
+        private string? ghostUid;
         private TimeSpan? raceTime;
         private int? respawns;
         private Vec3? lightTrailColor;
         private int? stuntScore;
-        private Checkpoint[] checkpoints;
+        private Checkpoint[]? checkpoints;
         private int eventsDuration;
-        private ControlEntry[] controlEntries;
-        private string validate_ExeVersion;
+        private ControlEntry[]? controlEntries;
+        private string? validate_ExeVersion;
         private uint validate_ExeChecksum;
         private int validate_OsKind;
         private int validate_CpuKind;
-        private string validate_RaceSettings;
-        private string validate_ChallengeUid;
-        private string validate_TitleId;
+        private string? validate_RaceSettings;
+        private string? validate_ChallengeUid;
+        private string? validate_TitleId;
         private bool hasBadges;
-        private string skinFile;
+        private string? skinFile;
 
         #endregion
 
@@ -61,7 +61,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public FileRef[] SkinPackDescs
+        public IList<FileRef>? SkinPackDescs
         {
             get
             {
@@ -76,7 +76,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public string GhostNickname
+        public string? GhostNickname
         {
             get
             {
@@ -91,7 +91,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public string GhostAvatarName
+        public string? GhostAvatarName
         {
             get
             {
@@ -106,7 +106,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public string RecordingContext
+        public string? RecordingContext
         {
             get
             {
@@ -181,7 +181,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public Checkpoint[] Checkpoints
+        public Checkpoint[]? Checkpoints
         {
             get
             {
@@ -196,21 +196,21 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public string GhostLogin
+        public string? GhostLogin
         {
             get => ghostLogin;
             set => ghostLogin = value;
         }
 
         [NodeMember]
-        public string SkinFile
+        public string? SkinFile
         {
             get => skinFile;
             set => skinFile = value;
         }
 
         [NodeMember]
-        public string GhostUid
+        public string? GhostUid
         {
             get => ghostUid;
             set => ghostUid = value;
@@ -238,7 +238,7 @@ namespace GBX.NET.Engines.Game
         /// Inputs (keyboard, pad, wheel) of the ghost from TMU, TMUF, TMTurbo and TM2. TMTurbo stores the keyboard inputs as <see cref="ControlEntryAnalog"/>. For inputs stored in TM1.0, TMO, Sunrise and ESWC: see <see cref="CGameCtnReplayRecord.ControlEntries"/>. TM2020 and Shootmania inputs aren't available in replays and ghosts. Can be null if <see cref="EventsDuration"/> is 0, which can happen when you save the replay in editor.
         /// </summary>
         [NodeMember]
-        public ControlEntry[] ControlEntries
+        public ControlEntry[]? ControlEntries
         {
             get
             {
@@ -253,7 +253,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public string Validate_ExeVersion
+        public string? Validate_ExeVersion
         {
             get
             {
@@ -313,7 +313,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public string Validate_RaceSettings
+        public string? Validate_RaceSettings
         {
             get
             {
@@ -327,34 +327,34 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        public string Validate_ChallengeUid
+        public string? Validate_ChallengeUid
         {
             get => validate_ChallengeUid;
             set => validate_ChallengeUid = value;
         }
 
-        public string Validate_TitleId
+        public string? Validate_TitleId
         {
             get => validate_TitleId;
             set => validate_TitleId = value;
         }
 
         [NodeMember]
-        public CPlugEntRecordData RecordData
+        public CPlugEntRecordData? RecordData
         {
             get => recordData;
             set => recordData = value;
         }
 
         [NodeMember]
-        public string GhostTrigram
+        public string? GhostTrigram
         {
             get => ghostTrigram;
             set => ghostTrigram = value;
         }
 
         [NodeMember]
-        public string GhostZone
+        public string? GhostZone
         {
             get => ghostZone;
             set => ghostZone = value;
@@ -366,6 +366,10 @@ namespace GBX.NET.Engines.Game
             get => hasBadges;
             set => hasBadges = value;
         }
+
+        #endregion
+
+        #region Constructors
 
         #endregion
 
@@ -383,11 +387,11 @@ namespace GBX.NET.Engines.Game
 
             public Vec3 U01;
             public bool U03;
-            public int[] U04;
+            public int[]? U04;
             public int U05;
             public Vec3 U06;
-            public (string value, string key)[] U07;
-            public string[] U08;
+            public (string value, string key)[]? U07;
+            public string[]? U08;
 
             public int Version
             {
@@ -400,7 +404,7 @@ namespace GBX.NET.Engines.Game
                 rw.Int32(ref version);
                 rw.Ident(ref n.playerModel);
                 rw.Vec3(ref n.lightTrailColor);
-                rw.Array(ref n.skinPackDescs,
+                rw.List(ref n.skinPackDescs,
                     (i, r) => r.ReadFileRef(),
                     (x, w) => w.Write(x));
                 rw.Boolean(ref n.hasBadges);
@@ -706,7 +710,7 @@ namespace GBX.NET.Engines.Game
 
                 if (rw.Mode == GameBoxReaderWriterMode.Read)
                 {
-                    var r = rw.Reader;
+                    var r = rw.Reader!;
 
                     var controlNames = r.ReadArray(r1 => r1.ReadId());
 
@@ -739,7 +743,7 @@ namespace GBX.NET.Engines.Game
                 }
                 else if (rw.Mode == GameBoxReaderWriterMode.Write)
                 {
-                    var w = rw.Writer;
+                    var w = rw.Writer!;
 
                     var controlNames = new List<string>();
 
@@ -861,7 +865,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.Array(ref n.skinPackDescs,
+                rw.List(ref n.skinPackDescs,
                     r => r.ReadFileRef(),
                     (x, w) => w.Write(x));
                 rw.String(ref n.ghostNickname);
@@ -903,7 +907,7 @@ namespace GBX.NET.Engines.Game
 
             public int U01;
 
-            public Chunk03092019(Chunk03092025 chunk025)
+            public Chunk03092019(Chunk03092025? chunk025)
             {
                 Is025 = chunk025 is Chunk03092025;
                 Chunk011 = new Chunk03092011(this);
@@ -968,12 +972,12 @@ namespace GBX.NET.Engines.Game
         {
             private int version;
 
-            public string U01;
+            public string? U01;
             public int U02;
-            public string U03;
+            public string? U03;
             public int U04;
             public int U05;
-            public string U06;
+            public string? U06;
 
             public int Version
             {
