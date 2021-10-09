@@ -73,6 +73,14 @@ namespace GBX.NET.Engines.MwFoundations
             return array;
         }
 
+        public static IEnumerable<T?> ParseEnumerable<T>(GameBoxReader r) where T : CMwNod
+        {
+            var count = r.ReadInt32();
+
+            for (var i = 0; i < count; i++)
+                yield return Parse<T>(r);
+        }
+
         public static T? Parse<T>(GameBoxReader r, uint? classID = null, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
         {
             if (!classID.HasValue)
@@ -125,7 +133,7 @@ namespace GBX.NET.Engines.MwFoundations
                 }
                 else
                 {
-                    var logChunk = new StringBuilder('[');
+                    var logChunk = new StringBuilder("[");
                     logChunk.Append(node.ClassName);
                     logChunk.Append("] 0x");
                     logChunk.Append(chunkID.ToString("X8"));
