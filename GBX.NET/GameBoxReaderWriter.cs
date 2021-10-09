@@ -398,9 +398,9 @@ namespace GBX.NET
             variable = Boolean(variable, asByte);
         }
 
-        public void Boolean(ref bool? variable, bool asByte)
+        public void Boolean(ref bool? variable, bool asByte, bool defaultValue = default)
         {
-            variable = Boolean(variable.GetValueOrDefault(), asByte);
+            variable = Boolean(variable.GetValueOrDefault(defaultValue), asByte);
         }
 
         public bool Boolean(bool variable)
@@ -413,9 +413,9 @@ namespace GBX.NET
             variable = Boolean(variable);
         }
 
-        public void Boolean(ref bool? variable)
+        public void Boolean(ref bool? variable, bool defaultValue = default)
         {
-            variable = Boolean(variable.GetValueOrDefault());
+            variable = Boolean(variable.GetValueOrDefault(defaultValue));
         }
 
         public void Boolean()
@@ -440,9 +440,9 @@ namespace GBX.NET
             variable = Byte(variable);
         }
 
-        public void Byte(ref byte? variable)
+        public void Byte(ref byte? variable, byte defaultValue = default)
         {
-            variable = Byte(variable.GetValueOrDefault());
+            variable = Byte(variable.GetValueOrDefault(defaultValue));
         }
 
         public int Byte(int variable)
@@ -455,9 +455,9 @@ namespace GBX.NET
             variable = Byte(variable);
         }
 
-        public void Byte(ref int? variable)
+        public void Byte(ref int? variable, int defaultValue = default)
         {
-            variable = Byte(variable.GetValueOrDefault());
+            variable = Byte(variable.GetValueOrDefault(defaultValue));
         }
 
         public void Byte()
@@ -482,9 +482,9 @@ namespace GBX.NET
             variable = Byte3(variable);
         }
 
-        public void Byte3(ref Byte3? variable)
+        public void Byte3(ref Byte3? variable, Byte3 defaultValue = default)
         {
-            variable = Byte3(variable.GetValueOrDefault());
+            variable = Byte3(variable.GetValueOrDefault(defaultValue));
         }
 
         /// <exception cref="ArgumentException"><paramref name="count"/> is negative.</exception>
@@ -578,9 +578,9 @@ namespace GBX.NET
             variable = Int16(variable);
         }
 
-        public void Int16(ref short? variable)
+        public void Int16(ref short? variable, short defaultValue = default)
         {
-            variable = Int16(variable.GetValueOrDefault());
+            variable = Int16(variable.GetValueOrDefault(defaultValue));
         }
 
         public void Int16()
@@ -605,14 +605,9 @@ namespace GBX.NET
             variable = Int32(variable);
         }
 
-        public void Int32(ref int? variable, int defaultValue)
+        public void Int32(ref int? variable, int defaultValue = default)
         {
             variable = Int32(variable.GetValueOrDefault(defaultValue));
-        }
-
-        public void Int32(ref int? variable)
-        {
-            Int32(ref variable, default);
         }
 
         public void Int32()
@@ -725,9 +720,9 @@ namespace GBX.NET
             variable = Int64(variable);
         }
 
-        public void Int64(ref long? variable)
+        public void Int64(ref long? variable, long defaultValue = default)
         {
-            variable = Int64(variable.GetValueOrDefault());
+            variable = Int64(variable.GetValueOrDefault(defaultValue));
         }
 
         public void Int64()
@@ -752,9 +747,9 @@ namespace GBX.NET
             variable = UInt16(variable);
         }
 
-        public void UInt16(ref ushort? variable)
+        public void UInt16(ref ushort? variable, ushort defaultValue = default)
         {
-            variable = UInt16(variable.GetValueOrDefault());
+            variable = UInt16(variable.GetValueOrDefault(defaultValue));
         }
 
         public void UInt16()
@@ -779,9 +774,9 @@ namespace GBX.NET
             variable = UInt32(variable);
         }
 
-        public void UInt32(ref uint? variable)
+        public void UInt32(ref uint? variable, uint defaultValue = default)
         {
-            variable = UInt32(variable.GetValueOrDefault());
+            variable = UInt32(variable.GetValueOrDefault(defaultValue));
         }
 
         public void UInt32()
@@ -806,9 +801,9 @@ namespace GBX.NET
             variable = UInt64(variable);
         }
 
-        public void UInt64(ref ulong? variable)
+        public void UInt64(ref ulong? variable, ulong defaultValue = default)
         {
-            variable = UInt64(variable.GetValueOrDefault());
+            variable = UInt64(variable.GetValueOrDefault(defaultValue));
         }
 
         public void UInt64()
@@ -845,9 +840,9 @@ namespace GBX.NET
             variable = BigInt(variable, byteLength);
         }
 
-        public void BigInt(ref BigInteger? variable, int byteLength)
+        public void BigInt(ref BigInteger? variable, int byteLength, BigInteger defaultValue = default)
         {
-            variable = BigInt(variable.GetValueOrDefault(), byteLength);
+            variable = BigInt(variable.GetValueOrDefault(defaultValue), byteLength);
         }
 
         public void BigInt(int byteLength)
@@ -892,9 +887,9 @@ namespace GBX.NET
             variable = Int2(variable);
         }
 
-        public void Int2(ref Int2? variable)
+        public void Int2(ref Int2? variable, Int2 defaultValue = default)
         {
-            variable = Int2(variable.GetValueOrDefault());
+            variable = Int2(variable.GetValueOrDefault(defaultValue));
         }
 
         public void Int2()
@@ -919,9 +914,9 @@ namespace GBX.NET
             variable = Int3(variable);
         }
 
-        public void Int3(ref Int3? variable)
+        public void Int3(ref Int3? variable, Int3 defaultValue = default)
         {
-            variable = Int3(variable.GetValueOrDefault());
+            variable = Int3(variable.GetValueOrDefault(defaultValue));
         }
 
         public void Int3()
@@ -1023,9 +1018,9 @@ namespace GBX.NET
             variable = Ident(variable);
         }
 
-        public void Ident(ref Ident? variable)
+        public void Ident(ref Ident? variable, Ident defaultValue = default)
         {
-            variable = Ident(variable.GetValueOrDefault());
+            variable = Ident(variable.GetValueOrDefault(defaultValue));
         }
 
         public void Ident()
@@ -1141,9 +1136,9 @@ namespace GBX.NET
             variable = Single(variable);
         }
 
-        public void Single(ref float? variable)
+        public void Single(ref float? variable, float defaultValue = default)
         {
-            variable = Single(variable.GetValueOrDefault());
+            variable = Single(variable.GetValueOrDefault(defaultValue));
         }
 
         public void Single()
@@ -1291,9 +1286,9 @@ namespace GBX.NET
             variable = Vec2(variable);
         }
 
-        public void Vec2(ref Vec2? variable)
+        public void Vec2(ref Vec2? variable, Vec2 defaultValue = default)
         {
-            variable = Vec2(variable.GetValueOrDefault());
+            variable = Vec2(variable.GetValueOrDefault(defaultValue));
         }
 
         public void Vec2()
@@ -1318,9 +1313,9 @@ namespace GBX.NET
             variable = Vec3(variable);
         }
 
-        public void Vec3(ref Vec3? variable)
+        public void Vec3(ref Vec3? variable, Vec3 defaultValue = default)
         {
-            variable = Vec3(variable.GetValueOrDefault());
+            variable = Vec3(variable.GetValueOrDefault(defaultValue));
         }
 
         public void Vec3()
