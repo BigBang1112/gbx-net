@@ -58,7 +58,7 @@ namespace GBX.NET
             Header = new GameBoxHeader<T>(this);
             Body = new GameBoxBody<T>(this);
 
-            Node = (T)Activator.CreateInstance(typeof(T)); // TODO: new T
+            Node = (T)Activator.CreateInstance(typeof(T), true);
             Node.GBX = this;
         }
 
