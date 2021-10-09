@@ -203,7 +203,7 @@ namespace GBX.NET.Engines.Game
         private CScriptTraitsMetadata? scriptMetadata;
         private List<List<byte[]>>? lightmapFrames;
         private Task<CHmsLightMapCache?>? lightmapCache;
-        private Task<CGameCtnZoneGenealogy[]>? genealogies;
+        private CGameCtnZoneGenealogy[]? genealogies;
         private string? objectiveTextAuthor;
         private string? objectiveTextGold;
         private string? objectiveTextSilver;
@@ -1052,7 +1052,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public Task<CGameCtnZoneGenealogy[]>? Genealogies
+        public CGameCtnZoneGenealogy[]? Genealogies
         {
             get
             {
@@ -3471,13 +3471,10 @@ namespace GBX.NET.Engines.Game
                 var sizeOfNodeWithClassID = r.ReadInt32();
                 Data = r.ReadBytes(sizeOfNodeWithClassID);
 
-                n.genealogies = Task.Run(() =>
-                {
-                    using var ms = new MemoryStream(Data);
-                    using var r2 = new GameBoxReader(ms, this);
+                using var ms = new MemoryStream(Data);
+                using var r2 = new GameBoxReader(ms, this);
 
-                    return ParseArray<CGameCtnZoneGenealogy>(r2); // TODO: Optimize
-                })!;
+                n.genealogies = ParseArray<CGameCtnZoneGenealogy>(r2)!;
             }
 
             public override void Write(CGameCtnChallenge n, GameBoxWriter w)
@@ -3487,7 +3484,7 @@ namespace GBX.NET.Engines.Game
                 using var ms = new MemoryStream();
                 using var w1 = new GameBoxWriter(ms);
 
-                w1.Write(n.genealogies?.Result, (x, w2) =>
+                w1.Write(n.genealogies, (x, w2) =>
                 {
                     w2.Write(0x0311D000);
                     x.Write(w2);
