@@ -539,14 +539,16 @@ namespace GBX.NET
         /// </summary>
         /// <typeparam name="T">Type of the node.</typeparam>
         /// <param name="nodes">Node array.</param>
-        /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="IOException">An I/O error occurs.</exception>
         /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
         /// <exception cref="OverflowException">There's more nodes than <see cref="int.MaxValue"/>.</exception>
-        public void WriteNodes<T>(IEnumerable<T> nodes) where T : CMwNod
+        public void WriteNodes<T>(IEnumerable<T>? nodes) where T : CMwNod
         {
             if (nodes is null)
-                throw new ArgumentNullException(nameof(nodes));
+            {
+                Write(0);
+                return;
+            }
 
             var watch = Stopwatch.StartNew();
 
@@ -580,10 +582,13 @@ namespace GBX.NET
         /// <exception cref="PropertyNullException"></exception>
         /// <exception cref="IOException">An I/O error occurs.</exception>
         /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-        public void WriteDictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?> dictionary) where TValue : CMwNod
+        public void WriteDictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary) where TValue : CMwNod
         {
             if (dictionary is null)
-                throw new ArgumentNullException(nameof(dictionary));
+            {
+                Write(0);
+                return;
+            }
 
             Write(dictionary.Count);
 

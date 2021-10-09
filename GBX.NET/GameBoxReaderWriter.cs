@@ -487,20 +487,26 @@ namespace GBX.NET
             variable = Byte3(variable.GetValueOrDefault());
         }
 
-        /// <exception cref="ArgumentNullException"></exception>
-        public byte[] Bytes(byte[] variable, int count)
+        /// <exception cref="ArgumentException"><paramref name="count"/> is negative.</exception>
+        public byte[] Bytes(byte[]? variable, int count)
         {
             if (Reader is not null) return Reader.ReadBytes(count);
             if (Writer is not null)
             {
+                if (count < 0)
+                    throw new ArgumentException("Count is negative", nameof(count));
+
+                variable ??= new byte[count];
+
                 Writer.Write(variable, 0, count);
+
                 return variable;
             }
 
             throw new ThisShouldNotHappenException();
         }
 
-        public void Bytes(ref byte[] variable, int count)
+        public void Bytes(ref byte[]? variable, int count)
         {
             variable = Bytes(variable, count);
         }
@@ -599,9 +605,14 @@ namespace GBX.NET
             variable = Int32(variable);
         }
 
+        public void Int32(ref int? variable, int defaultValue)
+        {
+            variable = Int32(variable.GetValueOrDefault(defaultValue));
+        }
+
         public void Int32(ref int? variable)
         {
-            variable = Int32(variable.GetValueOrDefault());
+            Int32(ref variable, default);
         }
 
         public void Int32()
