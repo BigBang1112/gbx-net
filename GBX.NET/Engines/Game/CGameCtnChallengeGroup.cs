@@ -12,22 +12,22 @@ namespace GBX.NET.Engines.Game
     {
         #region Fields
 
-        private string _default;
-        private MapInfo[] mapInfos;
+        private string? _default;
+        private MapInfo[]? mapInfos;
 
         #endregion
 
         #region Properties
 
         [NodeMember]
-        public string Default
+        public string? Default
         {
             get => _default;
             set => _default = value;
         }
 
         [NodeMember]
-        public MapInfo[] MapInfos
+        public MapInfo[]? MapInfos
         {
             get => mapInfos;
             set => mapInfos = value;
@@ -73,15 +73,15 @@ namespace GBX.NET.Engines.Game
             {
                 rw.Int32(ref version);
 
-                rw.Array(ref n.mapInfos, i => new MapInfo()
+                rw.Array(ref n.mapInfos, (i, r) => new MapInfo()
                 {
-                    Metadata = rw.Reader.ReadIdent(),
-                    FilePath = rw.Reader.ReadString()
+                    Metadata = r.ReadIdent(),
+                    FilePath = r.ReadString()
                 },
-                x =>
+                (x, w) =>
                 {
-                    rw.Writer.Write(x.Metadata);
-                    rw.Writer.Write(x.FilePath);
+                    w.Write(x.Metadata);
+                    w.Write(x.FilePath);
                 });
             }
         }
@@ -95,7 +95,7 @@ namespace GBX.NET.Engines.Game
         public class MapInfo
         {
             public Ident Metadata { get; set; }
-            public string FilePath { get; set; }
+            public string FilePath { get; set; } = string.Empty;
 
             public override string ToString()
             {
