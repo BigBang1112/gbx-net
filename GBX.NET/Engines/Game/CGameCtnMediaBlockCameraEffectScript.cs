@@ -15,9 +15,9 @@ namespace GBX.NET.Engines.Game
         #region Fields
 
         private string script;
-        private IList<Key> keys = new List<Key>();
-        private TimeSpan start;
-        private TimeSpan end = TimeSpan.FromSeconds(3);
+        private IList<Key>? keys;
+        private TimeSpan? start;
+        private TimeSpan? end;
 
         #endregion
 
@@ -25,8 +25,20 @@ namespace GBX.NET.Engines.Game
 
         IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
         {
-            get => keys.Cast<CGameCtnMediaBlock.Key>();
+            get => keys?.Cast<CGameCtnMediaBlock.Key>() ?? Enumerable.Empty<CGameCtnMediaBlock.Key>();
             set => keys = value.Cast<Key>().ToList();
+        }
+
+        TimeSpan IHasTwoKeys.Start
+        {
+            get => start.GetValueOrDefault();
+            set => start = value;
+        }
+
+        TimeSpan IHasTwoKeys.End
+        {
+            get => end.GetValueOrDefault(TimeSpan.FromSeconds(3));
+            set => end = value;
         }
 
         [NodeMember]
@@ -37,24 +49,33 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public IList<Key> Keys
+        public IList<Key>? Keys
         {
             get => keys;
             set => keys = value;
         }
 
         [NodeMember]
-        public TimeSpan Start
+        public TimeSpan? Start
         {
             get => start;
             set => start = value;
         }
 
         [NodeMember]
-        public TimeSpan End
+        public TimeSpan? End
         {
             get => end;
             set => end = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnMediaBlockCameraEffectScript()
+        {
+            script = null!;
         }
 
         #endregion
@@ -80,12 +101,14 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnMediaBlockCameraEffectScript n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
-                rw.String(ref n.script);
+                rw.String(ref n.script!);
 
                 if (version == 0) // Unverified
                 {
                     rw.Single_s(ref n.start);
-                    rw.Single_s(ref n.end);
+                    rw.Single_s(ref n.end, TimeSpan.FromSeconds(3));
+
+                    return;
                 }
 
                 rw.List(ref n.keys, r => new Key()
