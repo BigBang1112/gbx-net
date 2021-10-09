@@ -9,10 +9,20 @@ namespace GBX.NET.Engines.Game
         #region Fields
 
         private string name;
-        private IList<CGameCtnMediaTrack> tracks = new List<CGameCtnMediaTrack>();
+        private IList<CGameCtnMediaTrack> tracks;
         private bool stopWhenRespawn;
         private bool stopWhenLeave;
-        private int localPlayerClipEntIndex = -1;
+        private int? localPlayerClipEntIndex; // -1
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnMediaClip()
+        {
+            name = null!;
+            tracks = null!;
+        }
 
         #endregion
 
@@ -59,7 +69,7 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public int LocalPlayerClipEntIndex
+        public int? LocalPlayerClipEntIndex
         {
             get => localPlayerClipEntIndex;
             set => localPlayerClipEntIndex = value;
@@ -93,8 +103,8 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
-                rw.ListNode(ref n.tracks);
-                rw.String(ref n.name);
+                rw.ListNode(ref n.tracks!);
+                rw.String(ref n.name!);
                 rw.Int32(ref U01);
             }
         }
@@ -117,9 +127,9 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref tracksVersion);
-                rw.ListNode(ref n.tracks);
+                rw.ListNode(ref n.tracks!);
 
-                rw.String(ref n.name);
+                rw.String(ref n.name!);
             }
         }
 
@@ -130,7 +140,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03079004)]
         public class Chunk03079004 : Chunk<CGameCtnMediaClip>
         {
-            public CMwNod U01;
+            public CMwNod? U01;
 
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
@@ -156,8 +166,8 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref tracksVersion);
-                rw.ListNode<CGameCtnMediaTrack>(ref n.tracks);
-                rw.String(ref n.name);
+                rw.ListNode<CGameCtnMediaTrack>(ref n.tracks!);
+                rw.String(ref n.name!);
             }
         }
 
@@ -170,7 +180,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
-                rw.Int32(ref n.localPlayerClipEntIndex);
+                rw.Int32(ref n.localPlayerClipEntIndex, -1);
             }
         }
 
@@ -196,11 +206,11 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03079009)]
         public class Chunk03079009 : Chunk<CGameCtnMediaClip>
         {
-            public string U01;
+            public string U01 = string.Empty;
 
             public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
             {
-                rw.String(ref U01);
+                rw.String(ref U01!);
             }
         }
 
@@ -265,7 +275,7 @@ namespace GBX.NET.Engines.Game
 
             public int U01;
             public bool U03;
-            public string U05;
+            public string U05 = string.Empty;
             public float U06 = 0.2f;
             public int U07 = -1;
 
@@ -286,16 +296,16 @@ namespace GBX.NET.Engines.Game
                 rw.Int32(ref version);
 
                 rw.Int32(ref tracksVersion);
-                rw.ListNode<CGameCtnMediaTrack>(ref n.tracks);
+                rw.ListNode<CGameCtnMediaTrack>(ref n.tracks!);
 
-                rw.String(ref n.name);
+                rw.String(ref n.name!);
 
                 rw.Boolean(ref n.stopWhenLeave);
                 rw.Boolean(ref U03);
                 rw.Boolean(ref n.stopWhenRespawn);
-                rw.String(ref U05);
+                rw.String(ref U05!);
                 rw.Single(ref U06);
-                rw.Int32(ref n.localPlayerClipEntIndex);
+                rw.Int32(ref n.localPlayerClipEntIndex, -1);
             }
         }
 

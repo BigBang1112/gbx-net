@@ -33,7 +33,7 @@ namespace GBX.NET.Engines.Game
         /// An array of MediaTracker clips.
         /// </summary>
         [NodeMember]
-        public List<Tuple<CGameCtnMediaClip?, Trigger>> Clips { get; set; } = new List<Tuple<CGameCtnMediaClip?, Trigger>>();
+        public List<Tuple<CGameCtnMediaClip, Trigger>> Clips { get; set; } = new List<Tuple<CGameCtnMediaClip, Trigger>>();
 
         public int ClipsVersion { get; set; } = 10;
 
@@ -50,7 +50,7 @@ namespace GBX.NET.Engines.Game
             {
                 n.ClipsVersion = r.ReadInt32();
 
-                var clips = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnMediaClip>());
+                var clips = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnMediaClip>()!);
 
                 var triggers = r.ReadArray(r1 => new Trigger()
                 {
@@ -85,7 +85,7 @@ namespace GBX.NET.Engines.Game
             {
                 n.ClipsVersion = r.ReadInt32();
 
-                var clips = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnMediaClip>());
+                var clips = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnMediaClip>()!);
                 var triggers = r.ReadArray(r1 => new Trigger()
                 {
                     Coords = r1.ReadArray(r2 => r2.ReadInt3()),
@@ -129,7 +129,7 @@ namespace GBX.NET.Engines.Game
             {
                 n.ClipsVersion = r.ReadInt32();
 
-                var clips = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnMediaClip>());
+                var clips = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnMediaClip>()!);
                 var triggers = r.ReadArray(r1 =>
                 {
                     var u01 = r1.ReadInt32();
@@ -185,7 +185,7 @@ namespace GBX.NET.Engines.Game
 
         public class Trigger
         {
-            public Int3[]? Coords { get; set; }
+            public Int3[] Coords { get; set; } = new Int3[0];
             public int U01 { get; set; }
             public int U02 { get; set; }
             public int U03 { get; set; }
