@@ -1163,6 +1163,11 @@ namespace GBX.NET
             variable = Single_s(variable);
         }
 
+        public void Single_s(ref TimeSpan? variable, TimeSpan defaultValue = default)
+        {
+            variable = Single_s(variable.GetValueOrDefault(defaultValue));
+        }
+
         public TimeSpan Single_ms(TimeSpan variable)
         {
             if (Reader is not null) return Reader.ReadSingle_ms();
@@ -1178,6 +1183,11 @@ namespace GBX.NET
         public void Single_ms(ref TimeSpan variable)
         {
             variable = Single_ms(variable);
+        }
+
+        public void Single_ms(ref TimeSpan? variable, TimeSpan defaultValue = default)
+        {
+            variable = Single_ms(variable.GetValueOrDefault(defaultValue));
         }
 
         public TimeSpan? Single_sn(TimeSpan? variable)
