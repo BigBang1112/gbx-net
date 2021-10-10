@@ -5,7 +5,7 @@ using System.Text;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x0307D000)]
-    public sealed class CGameCtnMediaBlockUi : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
+    public class CGameCtnMediaBlockUi : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
     {
         #region Fields
 
@@ -34,7 +34,7 @@ namespace GBX.NET.Engines.Game
 
         #region Constructors
 
-        private CGameCtnMediaBlockUi()
+        protected CGameCtnMediaBlockUi()
         {
             
         }
