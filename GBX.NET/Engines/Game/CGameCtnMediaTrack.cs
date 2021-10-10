@@ -5,12 +5,12 @@ using GBX.NET.Engines.MwFoundations;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03078000)]
-    public class CGameCtnMediaTrack : CMwNod
+    public sealed class CGameCtnMediaTrack : CMwNod
     {
         #region Fields
 
         private string name;
-        private IList<CGameCtnMediaBlock> blocks = new List<CGameCtnMediaBlock>();
+        private IList<CGameCtnMediaBlock> blocks;
         private bool isKeepPlaying;
         private bool isCycling;
         private bool isReadOnly;
@@ -65,6 +65,16 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Constructors
+
+        private CGameCtnMediaTrack()
+        {
+            name = null!;
+            blocks = null!;
+        }
+
+        #endregion
+
         #region Methods
 
         public override string ToString() => Name;
@@ -112,9 +122,9 @@ namespace GBX.NET.Engines.Game
 
             public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
             {
-                rw.String(ref n.name);
+                rw.String(ref n.name!);
                 rw.Int32(ref tracksVersion);
-                rw.ListNode<CGameCtnMediaBlock>(ref n.blocks);
+                rw.ListNode<CGameCtnMediaBlock>(ref n.blocks!);
                 rw.Int32(ref U02);
             }
         }

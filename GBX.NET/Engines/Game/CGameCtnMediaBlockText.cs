@@ -5,10 +5,10 @@ using System.Linq;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x030A8000)]
-    public class CGameCtnMediaBlockText : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+    public sealed class CGameCtnMediaBlockText : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
         private string text;
-        private CControlEffectSimi effect = new CControlEffectSimi();
+        private CControlEffectSimi effect;
         private Vec3 color;
 
         #region Properties
@@ -42,6 +42,16 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Constructors
+
+        private CGameCtnMediaBlockText()
+        {
+            text = null!;
+            effect = null!;
+        }
+
+        #endregion
+
         #region Chunks
 
         #region 0x001 chunk (text)
@@ -51,8 +61,8 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaBlockText n, GameBoxReaderWriter rw)
             {
-                rw.String(ref n.text);
-                rw.NodeRef<CControlEffectSimi>(ref n.effect);
+                rw.String(ref n.text!);
+                rw.NodeRef<CControlEffectSimi>(ref n.effect!);
             }
         }
 
@@ -76,7 +86,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x030A8003)]
         public class Chunk030A8003 : Chunk<CGameCtnMediaBlockText>
         {
-            public float U01;
+            public float U01 = 0.2f;
 
             public override void ReadWrite(CGameCtnMediaBlockText n, GameBoxReaderWriter rw)
             {

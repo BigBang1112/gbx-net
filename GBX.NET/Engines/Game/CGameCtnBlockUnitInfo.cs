@@ -3,13 +3,18 @@
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03036000)]
-    public class CGameCtnBlockUnitInfo : CMwNod
+    public sealed class CGameCtnBlockUnitInfo : CMwNod
     {
         public Int3 OffsetE { get; set; }
-        public CGameCtnBlockInfoClip[] Clips { get; set; }
-        public string TerrainModifierId { get; set; }
+        public CGameCtnBlockInfoClip[]? Clips { get; set; }
+        public string? TerrainModifierId { get; set; }
 
         public override string ToString() => OffsetE.ToString();
+
+        private CGameCtnBlockUnitInfo()
+        {
+
+        }
 
         [Chunk(0x03036000)]
         public class Chunk03036000 : Chunk<CGameCtnBlockUnitInfo>

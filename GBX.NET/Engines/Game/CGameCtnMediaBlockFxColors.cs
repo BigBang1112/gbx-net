@@ -4,11 +4,11 @@ using System.Linq;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03080000)]
-    public class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
+    public sealed class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
     {
         #region Fields
 
-        private IList<Key> keys = new List<Key>();
+        private IList<Key> keys;
 
         #endregion
 
@@ -25,6 +25,15 @@ namespace GBX.NET.Engines.Game
         {
             get => keys;
             set => keys = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnMediaBlockFxColors()
+        {
+            keys = null!;
         }
 
         #endregion

@@ -10,6 +10,15 @@ namespace GBX.NET.Engines.Game
     [Node(0x03077000)]
     public class CGameCtnMediaBlock : CMwNod
     {
+        #region Constructors
+
+        protected CGameCtnMediaBlock()
+        {
+
+        }
+
+        #endregion
+
         public abstract class Key : ICloneable
         {
             public TimeSpan Time { get; set; }

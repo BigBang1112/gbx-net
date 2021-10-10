@@ -1,18 +1,29 @@
-﻿namespace GBX.NET.Engines.Game
+﻿using System;
+
+namespace GBX.NET.Engines.Game
 {
     [Node(0x03133000)]
-    public class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock
+    public sealed class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
     {
         #region Properties
 
         [NodeMember]
-        public float Start { get; set; }
+        public TimeSpan Start { get; set; }
 
         [NodeMember]
-        public float End { get; set; }
+        public TimeSpan End { get; set; } = TimeSpan.FromSeconds(3);
 
         [NodeMember]
         public int Target { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnMediaBlockVehicleLight()
+        {
+
+        }
 
         #endregion
 
@@ -25,8 +36,8 @@
         {
             public override void ReadWrite(CGameCtnMediaBlockVehicleLight n, GameBoxReaderWriter rw)
             {
-                n.Start = rw.Single(n.Start);
-                n.End = rw.Single(n.End);
+                n.Start = rw.Single_s(n.Start);
+                n.End = rw.Single_s(n.End);
             }
         }
 

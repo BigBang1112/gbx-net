@@ -4,11 +4,20 @@ using System.Linq;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03199000)]
-    public class CGameCtnMediaBlockFog : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+    public sealed class CGameCtnMediaBlockFog : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
         #region Fields
 
-        private IList<Key> keys = new List<Key>();
+        private IList<Key> keys;
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnMediaBlockFog()
+        {
+            keys = null!;
+        }
 
         #endregion
 
@@ -41,6 +50,7 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnMediaBlockFog n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
+
                 n.keys = r.ReadList(r1 =>
                 {
                     var time = r1.ReadSingle_s();

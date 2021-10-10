@@ -7,11 +7,11 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - Camera path
     /// </summary>
     [Node(0x030A1000)]
-    public class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasKeys
+    public sealed class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasKeys
     {
         #region Fields
 
-        private IList<Key> keys = new List<Key>();
+        private IList<Key> keys;
 
         #endregion
 
@@ -28,6 +28,15 @@ namespace GBX.NET.Engines.Game
         {
             get => keys;
             set => keys = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnMediaBlockCameraPath()
+        {
+            keys = null!;
         }
 
         #endregion

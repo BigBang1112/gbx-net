@@ -5,13 +5,13 @@ using System.Linq;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x030E5000)]
-    public class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys, CGameCtnMediaBlock.IHasKeys
+    public sealed class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys, CGameCtnMediaBlock.IHasKeys
     {
         #region Fields
 
-        private TimeSpan start;
-        private TimeSpan end = TimeSpan.FromSeconds(3);
-        private IList<Key> keys = new List<Key>();
+        private TimeSpan? start;
+        private TimeSpan? end;
+        private IList<Key>? keys;
         private CGameCtnGhost ghostModel;
         private float startOffset;
         private bool noDamage;
@@ -28,22 +28,34 @@ namespace GBX.NET.Engines.Game
             set => keys = value.Cast<Key>().ToList();
         }
 
+        TimeSpan IHasTwoKeys.Start
+        {
+            get => start.GetValueOrDefault();
+            set => start = value;
+        }
+
+        TimeSpan IHasTwoKeys.End
+        {
+            get => end.GetValueOrDefault(start.GetValueOrDefault() + TimeSpan.FromSeconds(3));
+            set => end = value;
+        }
+
         [NodeMember]
-        public TimeSpan Start
+        public TimeSpan? Start
         {
             get => start;
             set => start = value;
         }
 
         [NodeMember]
-        public TimeSpan End
+        public TimeSpan? End
         {
             get => end;
             set => end = value;
         }
 
         [NodeMember]
-        public IList<Key> Keys
+        public IList<Key>? Keys
         {
             get => keys;
             set => keys = value;
@@ -86,6 +98,15 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Constructors
+
+        private CGameCtnMediaBlockGhost()
+        {
+            ghostModel = null!;
+        }
+
+        #endregion
+
         #region Chunks
 
         #region 0x001 chunk
@@ -96,8 +117,8 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw)
             {
                 rw.Single_s(ref n.start);
-                rw.Single_s(ref n.end);
-                rw.NodeRef<CGameCtnGhost>(ref n.ghostModel);
+                rw.Single_s(ref n.end, n.start.GetValueOrDefault() + TimeSpan.FromSeconds(3));
+                rw.NodeRef<CGameCtnGhost>(ref n.ghostModel!);
                 rw.Single(ref n.startOffset);
             }
         }
@@ -137,10 +158,10 @@ namespace GBX.NET.Engines.Game
                 else
                 {
                     rw.Single_s(ref n.start);
-                    rw.Single_s(ref n.end);
+                    rw.Single_s(ref n.end, n.start.GetValueOrDefault() + TimeSpan.FromSeconds(3));
                 }
 
-                rw.NodeRef<CGameCtnGhost>(ref n.ghostModel);
+                rw.NodeRef<CGameCtnGhost>(ref n.ghostModel!);
                 rw.Single(ref n.startOffset);
                 rw.Boolean(ref n.noDamage);
                 rw.Boolean(ref n.forceLight);

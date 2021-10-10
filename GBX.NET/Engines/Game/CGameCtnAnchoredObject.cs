@@ -8,7 +8,7 @@ namespace GBX.NET.Engines.Game
     /// </summary>
     /// <remarks>An item placed on a map.</remarks>
     [Node(0x03101000)]
-    public class CGameCtnAnchoredObject : CMwNod
+    public sealed class CGameCtnAnchoredObject : CMwNod
     {
         #region Fields
 
@@ -145,6 +145,27 @@ namespace GBX.NET.Engines.Game
         {
             get => skin;
             set => skin = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnAnchoredObject()
+        {
+
+        }
+
+        internal CGameCtnAnchoredObject(Ident itemModel, Vec3 absolutePositionInMap, Vec3 pitchYawRoll,
+            Vec3 pivotPosition = default, int variant = 0, float scale = 1, Byte3 blockUnitCoord = default)
+        {
+            this.itemModel = itemModel;
+            this.absolutePositionInMap = absolutePositionInMap;
+            this.pitchYawRoll = pitchYawRoll;
+            this.pivotPosition = pivotPosition;
+            Variant = variant;
+            this.scale = scale;
+            this.blockUnitCoord = blockUnitCoord;
         }
 
         #endregion

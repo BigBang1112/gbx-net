@@ -7,12 +7,12 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - Color grading
     /// </summary>
     [Node(0x03186000)]
-    public class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+    public sealed class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
         #region Fields
 
         private FileRef image;
-        private IList<Key> keys = new List<Key>();
+        private IList<Key> keys;
 
         #endregion
 
@@ -40,6 +40,16 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Constructors
+
+        private CGameCtnMediaBlockColorGrading()
+        {
+            image = null!;
+            keys = null!;
+        }
+
+        #endregion
+
         #region Chunks
 
         #region 0x000 chunk
@@ -52,7 +62,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaBlockColorGrading n, GameBoxReaderWriter rw)
             {
-                rw.FileRef(ref n.image);
+                rw.FileRef(ref n.image!);
             }
         }
 
@@ -68,7 +78,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaBlockColorGrading n, GameBoxReaderWriter rw)
             {
-                rw.List(ref n.keys, r => new Key()
+                rw.List(ref n.keys!, r => new Key()
                 {
                     Time = r.ReadSingle_s(),
                     Intensity = r.ReadSingle()

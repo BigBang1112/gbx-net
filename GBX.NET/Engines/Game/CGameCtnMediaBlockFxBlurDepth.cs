@@ -4,7 +4,7 @@ using System.Linq;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03081000)]
-    public class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
+    public sealed class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
     {
         #region Fields
 

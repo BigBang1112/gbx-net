@@ -7,11 +7,11 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - Coloring base
     /// </summary>
     [Node(0x03172000)]
-    public class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+    public sealed class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
         #region Fields
 
-        private IList<Key> keys = new List<Key>();
+        private IList<Key> keys;
         private int baseIndex;
 
         #endregion
@@ -36,6 +36,15 @@ namespace GBX.NET.Engines.Game
         {
             get => baseIndex;
             set => baseIndex = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnMediaBlockColoringBase()
+        {
+            keys = null!;
         }
 
         #endregion
@@ -65,7 +74,7 @@ namespace GBX.NET.Engines.Game
                 rw.Int32(ref version);
                 rw.Int32(ref U01);
 
-                rw.List(ref n.keys, r => new Key()
+                rw.List(ref n.keys!, r => new Key()
                 {
                     Time = r.ReadSingle_s(),
                     Hue = r.ReadSingle(),

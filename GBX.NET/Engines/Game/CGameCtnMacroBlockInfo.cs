@@ -9,11 +9,20 @@ namespace GBX.NET.Engines.Game
     /// Macroblock (0x0310D000)
     /// </summary>
     [Node(0x0310D000), WritingNotSupported]
-    public class CGameCtnMacroBlockInfo : CGameCtnCollector
+    public sealed class CGameCtnMacroBlockInfo : CGameCtnCollector
     {
         public CGameCtnBlock[] Blocks { get; set; }
 
         public CGameCtnAnchoredObject[] AnchoredObjects { get; set; }
+
+        #region Constructors
+
+        private CGameCtnMacroBlockInfo()
+        {
+
+        }
+
+        #endregion
 
         #region Chunks
 
@@ -35,7 +44,7 @@ namespace GBX.NET.Engines.Game
                     Vec3? pitchYawRoll = null;
 
                     var ver = r1.ReadInt32();
-                    var ident = r1.ReadIdent();
+                    var blockModel = r1.ReadIdent();
                     int flags = 0;
 
                     if(ver >= 2)
@@ -78,13 +87,7 @@ namespace GBX.NET.Engines.Game
                     if ((flags & 0x10000) != 0) // Fixes ghost blocks
                         correctFlags |= 0x10000000;
 
-                    var block = new CGameCtnBlock()
-                    {
-                        BlockModel = ident,
-                        Coord = coord.GetValueOrDefault(),
-                        Direction = dir.GetValueOrDefault(),
-                        Flags = correctFlags
-                    };
+                    var block = new CGameCtnBlock(blockModel, dir.GetValueOrDefault(), coord.GetValueOrDefault(), correctFlags);
 
                     if ((flags & (1 << 26)) != 0)
                     {
@@ -251,15 +254,8 @@ namespace GBX.NET.Engines.Game
                     if (v >= 10)
                         r1.ReadArray<int>(3); // 0 1 -1
 
-                    return new CGameCtnAnchoredObject()
-                    {
-                        ItemModel = itemModel,
-                        PitchYawRoll = pitchYawRoll,
-                        BlockUnitCoord = (Byte3)blockCoord,
-                        AbsolutePositionInMap = pos,
-                        PivotPosition = pivotPosition,
-                        Scale = scale,
-                    };
+                    return new CGameCtnAnchoredObject(itemModel, pos, pitchYawRoll, pivotPosition,
+                        scale: scale, blockUnitCoord: (Byte3)blockCoord);
                 });
 
                 var num = r.ReadInt32();

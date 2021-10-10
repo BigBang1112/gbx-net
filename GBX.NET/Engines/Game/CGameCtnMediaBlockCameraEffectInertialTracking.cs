@@ -57,6 +57,15 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Constructors
+
+        private CGameCtnMediaBlockCameraEffectInertialTracking()
+        {
+
+        }
+
+        #endregion
+
         #region Chunks
 
         #region 0x000 chunk

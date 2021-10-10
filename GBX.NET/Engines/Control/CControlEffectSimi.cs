@@ -10,7 +10,7 @@ namespace GBX.NET.Engines.Control
     {
         #region Fields
 
-        private IList<Key> keys = new List<Key>();
+        private IList<Key> keys;
         private bool centered;
         private int colorBlendMode;
         private bool isContinousEffect;
@@ -63,6 +63,15 @@ namespace GBX.NET.Engines.Control
 
         #endregion
 
+        #region Constructors
+
+        private CControlEffectSimi()
+        {
+            keys = null!;
+        }
+
+        #endregion
+
         #region Chunks
 
         #region 0x002 chunk
@@ -72,7 +81,7 @@ namespace GBX.NET.Engines.Control
         {
             public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
             {
-                rw.List(ref n.keys, (i, r) => new Key()
+                rw.List(ref n.keys!, (i, r) => new Key()
                 {
                     Time = r.ReadSingle_s(),
                     X = r.ReadSingle(),
@@ -111,7 +120,7 @@ namespace GBX.NET.Engines.Control
         {
             public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
             {
-                rw.List(ref n.keys, r => new Key()
+                rw.List(ref n.keys!, r => new Key()
                 {
                     Time = r.ReadSingle_s(),
                     X = r.ReadSingle(),
@@ -160,7 +169,7 @@ namespace GBX.NET.Engines.Control
         {
             public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
             {
-                rw.List(ref n.keys, r => new Key()
+                rw.List(ref n.keys!, r => new Key()
                 {
                     Time = r.ReadSingle_s(),
                     X = r.ReadSingle(),

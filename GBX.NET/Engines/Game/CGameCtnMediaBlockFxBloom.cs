@@ -7,11 +7,20 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker Bloom block for TMUF and older games (0x03083000). This node causes "Couldn't load map" in ManiaPlanet.
     /// </summary>
     [Node(0x03083000)]
-    public class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
+    public sealed class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
     {
         #region Fields
 
-        private IList<Key> keys = new List<Key>();
+        private IList<Key> keys;
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnMediaBlockFxBloom()
+        {
+            keys = null!;
+        }
 
         #endregion
 
@@ -44,7 +53,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaBlockFxBloom n, GameBoxReaderWriter rw)
             {
-                rw.List(ref n.keys, r1 => new Key()
+                rw.List(ref n.keys!, r1 => new Key()
                 {
                     Time = r1.ReadSingle_s(),
                     Intensity = r1.ReadSingle(),

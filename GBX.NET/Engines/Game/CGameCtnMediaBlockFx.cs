@@ -3,6 +3,9 @@
     [Node(0x0307E000)]
     public class CGameCtnMediaBlockFx : CGameCtnMediaBlock
     {
-        
+        protected CGameCtnMediaBlockFx()
+        {
+
+        }
     }
 }

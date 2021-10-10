@@ -7,7 +7,7 @@ using GBX.NET.Engines.MwFoundations;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x0307A000)]
-    public class CGameCtnMediaClipGroup : CMwNod
+    public sealed class CGameCtnMediaClipGroup : CMwNod
     {
         #region Enums
 
@@ -33,9 +33,18 @@ namespace GBX.NET.Engines.Game
         /// An array of MediaTracker clips.
         /// </summary>
         [NodeMember]
-        public List<Tuple<CGameCtnMediaClip, Trigger>> Clips { get; set; } = new List<Tuple<CGameCtnMediaClip, Trigger>>();
+        public List<Tuple<CGameCtnMediaClip, Trigger>> Clips { get; set; }
 
         public int ClipsVersion { get; set; } = 10;
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnMediaClipGroup()
+        {
+            Clips = null!;
+        }
 
         #endregion
 

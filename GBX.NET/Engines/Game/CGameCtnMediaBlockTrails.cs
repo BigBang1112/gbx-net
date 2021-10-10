@@ -3,7 +3,7 @@
 namespace GBX.NET.Engines.Game
 {
     [Node(0x030A9000)]
-    public class CGameCtnMediaBlockTrails : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
+    public sealed class CGameCtnMediaBlockTrails : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
     {
         #region Fields
 
@@ -26,6 +26,15 @@ namespace GBX.NET.Engines.Game
         {
             get => end;
             set => end = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnMediaBlockTrails()
+        {
+            
         }
 
         #endregion

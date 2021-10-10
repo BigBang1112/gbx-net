@@ -8,7 +8,7 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - Camera effect script
     /// </summary>
     [Node(0x03161000)]
-    public class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCameraEffect,
+    public sealed class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCameraEffect,
         CGameCtnMediaBlock.IHasKeys,
         CGameCtnMediaBlock.IHasTwoKeys
     {
@@ -37,7 +37,7 @@ namespace GBX.NET.Engines.Game
 
         TimeSpan IHasTwoKeys.End
         {
-            get => end.GetValueOrDefault(TimeSpan.FromSeconds(3));
+            get => end.GetValueOrDefault(start.GetValueOrDefault() + TimeSpan.FromSeconds(3));
             set => end = value;
         }
 
@@ -106,7 +106,7 @@ namespace GBX.NET.Engines.Game
                 if (version == 0) // Unverified
                 {
                     rw.Single_s(ref n.start);
-                    rw.Single_s(ref n.end, TimeSpan.FromSeconds(3));
+                    rw.Single_s(ref n.end, n.start.GetValueOrDefault() + TimeSpan.FromSeconds(3));
 
                     return;
                 }

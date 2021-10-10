@@ -10,7 +10,7 @@ namespace GBX.NET.Engines.Game
     {
         #region Fields
 
-        private IList<Key> keys = new List<Key>();
+        private IList<Key> keys;
         private Vec4[] vertices;
         private Int3[] triangles;
 
@@ -75,6 +75,17 @@ namespace GBX.NET.Engines.Game
 
                 triangles = value;
             }
+        }
+
+        #endregion
+
+        #region Constructors
+
+        protected CGameCtnMediaBlockTriangles()
+        {
+            keys = null!;
+            vertices = null!;
+            triangles = null!;
         }
 
         #endregion

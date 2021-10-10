@@ -3,7 +3,7 @@
 namespace GBX.NET.Engines.Game
 {
     [Node(0x0329F000)]
-    public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
+    public sealed class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
     {
         private CPlugEntRecordData recordData;
 
@@ -11,6 +11,11 @@ namespace GBX.NET.Engines.Game
         {
             get => recordData;
             set => recordData = value;
+        }
+
+        private CGameCtnMediaBlockEntity()
+        {
+            recordData = null!;
         }
 
         [Chunk(0x0329F000)]
@@ -27,7 +32,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnMediaBlockEntity n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
-                rw.NodeRef<CPlugEntRecordData>(ref n.recordData);
+                rw.NodeRef<CPlugEntRecordData>(ref n.recordData!);
 
                 rw.UntilFacade(Unknown);
             }

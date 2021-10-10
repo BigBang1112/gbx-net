@@ -7,11 +7,11 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - Bloom HDR (0x03128000)
     /// </summary>
     [Node(0x03128000)]
-    public class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+    public sealed class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
         #region Fields
 
-        private IList<Key> keys = new List<Key>();
+        private IList<Key> keys;
 
         #endregion
 
@@ -32,6 +32,15 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Constructors
+
+        private CGameCtnMediaBlockBloomHdr()
+        {
+            keys = null!;
+        }
+
+        #endregion
+
         #region Chunks
 
         #region 0x001 chunk
@@ -44,7 +53,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaBlockBloomHdr n, GameBoxReaderWriter rw)
             {
-                rw.List(ref n.keys, r => new Key()
+                rw.List(ref n.keys!, r => new Key()
                 {
                     Time = r.ReadSingle_s(),
                     Intensity = r.ReadSingle(),
@@ -73,7 +82,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaBlockBloomHdr n, GameBoxReaderWriter rw)
             {
-                rw.List(ref n.keys, r => new Key()
+                rw.List(ref n.keys!, r => new Key()
                 {
                     Time = r.ReadSingle_s(),
                     Intensity = r.ReadSingle(),

@@ -7,7 +7,7 @@ namespace GBX.NET.Engines.Game
     /// </summary>
     /// <remarks>Information about a campaign.</remarks>
     [Node(0x03090000)]
-    public class CGameCtnCampaign : CMwNod
+    public sealed class CGameCtnCampaign : CMwNod
     {
         #region Fields
 
@@ -88,6 +88,15 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk0309000F>();
                 unlockType = value;
             }
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnCampaign()
+        {
+
         }
 
         #endregion

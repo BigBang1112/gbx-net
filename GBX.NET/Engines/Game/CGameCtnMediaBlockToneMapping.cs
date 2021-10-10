@@ -4,11 +4,11 @@ using System.Linq;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03127000)]
-    public class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+    public sealed class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
         #region Fields
 
-        private IList<Key> keys = new List<Key>();
+        private IList<Key> keys;
 
         #endregion
 
@@ -29,6 +29,15 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Constructors
+
+        private CGameCtnMediaBlockToneMapping()
+        {
+            keys = null!;
+        }
+
+        #endregion
+
         #region Chunks
 
         #region 0x004 chunk
@@ -38,7 +47,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaBlockToneMapping n, GameBoxReaderWriter rw)
             {
-                rw.List(ref n.keys, r => new Key()
+                rw.List(ref n.keys!, r => new Key()
                 {
                     Time = r.ReadSingle_s(),
                     Exposure = r.ReadSingle(),

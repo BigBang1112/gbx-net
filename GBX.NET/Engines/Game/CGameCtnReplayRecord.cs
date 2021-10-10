@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03093000), WritingNotSupported]
-    public class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
+    public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     {
         #region Fields
 
@@ -232,6 +232,15 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunks<Chunk03093008, Chunk0309300F>();
                 game = value;
             }
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnReplayRecord()
+        {
+            
         }
 
         #endregion

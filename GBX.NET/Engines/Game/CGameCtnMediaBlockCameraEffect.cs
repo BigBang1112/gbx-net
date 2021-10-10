@@ -6,6 +6,9 @@
     [Node(0x030A3000)]
     public class CGameCtnMediaBlockCameraEffect : CGameCtnMediaBlock
     {
-        
+        protected CGameCtnMediaBlockCameraEffect()
+        {
+
+        }
     }
 }

@@ -5,12 +5,12 @@ using System.Linq;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x030A5000)]
-    public class CGameCtnMediaBlockImage : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+    public sealed class CGameCtnMediaBlockImage : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
         #region Fields
 
-        private CControlEffectSimi? effect = new(); // temp
-        private FileRef? image;
+        private CControlEffectSimi effect;
+        private FileRef image;
 
         #endregion
 
@@ -27,17 +27,27 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public CControlEffectSimi? Effect
+        public CControlEffectSimi Effect
         {
             get => effect;
             set => effect = value;
         }
 
         [NodeMember]
-        public FileRef? Image
+        public FileRef Image
         {
             get => image;
             set => image = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnMediaBlockImage()
+        {
+            effect = null!;
+            image = null!;
         }
 
         #endregion
@@ -51,8 +61,8 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaBlockImage n, GameBoxReaderWriter rw)
             {
-                rw.NodeRef<CControlEffectSimi>(ref n.effect);
-                rw.FileRef(ref n.image);
+                rw.NodeRef<CControlEffectSimi>(ref n.effect!);
+                rw.FileRef(ref n.image!);
             }
         }
 
@@ -63,7 +73,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x030A5001)]
         public class Chunk030A5001 : Chunk<CGameCtnMediaBlockImage>
         {
-            public float U01;
+            public float U01 = 0.2f;
 
             public override void ReadWrite(CGameCtnMediaBlockImage n, GameBoxReaderWriter rw)
             {

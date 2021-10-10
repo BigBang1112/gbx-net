@@ -3,12 +3,12 @@
 namespace GBX.NET.Engines.Game
 {
     [Node(0x0311D000)]
-    public class CGameCtnZoneGenealogy : CMwNod
+    public sealed class CGameCtnZoneGenealogy : CMwNod
     {
         #region Fields
 
-        private string[] zoneIds;
-        private string currentZoneId;
+        private string[]? zoneIds;
+        private string? currentZoneId;
         private Direction dir;
         private int currentIndex;
 
@@ -17,14 +17,14 @@ namespace GBX.NET.Engines.Game
         #region Properties
 
         [NodeMember]
-        public string[] ZoneIds
+        public string[]? ZoneIds
         {
             get => zoneIds;
             set => zoneIds = value;
         }
 
         [NodeMember]
-        public string CurrentZoneId
+        public string? CurrentZoneId
         {
             get => currentZoneId;
             set => currentZoneId = value;
@@ -49,6 +49,15 @@ namespace GBX.NET.Engines.Game
         #region Methods
 
         public override string ToString() => string.Join(" ", ZoneIds);
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnZoneGenealogy()
+        {
+
+        }
 
         #endregion
 

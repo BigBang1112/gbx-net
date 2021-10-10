@@ -6,14 +6,14 @@ namespace GBX.NET.Engines.Game
     /// Skin for a block (0x03059000)
     /// </summary>
     [Node(0x03059000)]
-    public class CGameCtnBlockSkin : CMwNod
+    public sealed class CGameCtnBlockSkin : CMwNod
     {
         #region Fields
 
         private string? text;
-        private FileRef packDesc;
-        private FileRef parentPackDesc;
-        private FileRef foregroundPackDesc;
+        private FileRef? packDesc;
+        private FileRef? parentPackDesc;
+        private FileRef? foregroundPackDesc;
 
         #endregion
 
@@ -27,14 +27,14 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public FileRef PackDesc
+        public FileRef? PackDesc
         {
             get => packDesc;
             set => packDesc = value;
         }
 
         [NodeMember]
-        public FileRef ParentPackDesc
+        public FileRef? ParentPackDesc
         {
             get => parentPackDesc;
             set => parentPackDesc = value;
@@ -44,7 +44,7 @@ namespace GBX.NET.Engines.Game
         /// Second skin for the skinnable block. Available in TM®.
         /// </summary>
         [NodeMember]
-        public FileRef ForegroundPackDesc
+        public FileRef? ForegroundPackDesc
         {
             get => foregroundPackDesc;
             set => foregroundPackDesc = value;
@@ -56,9 +56,7 @@ namespace GBX.NET.Engines.Game
 
         private CGameCtnBlockSkin()
         {
-            packDesc = null!;
-            parentPackDesc = null!;
-            foregroundPackDesc = null!;
+            
         }
 
         #endregion

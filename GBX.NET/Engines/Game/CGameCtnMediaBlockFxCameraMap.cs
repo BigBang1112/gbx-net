@@ -3,7 +3,7 @@
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03139000)]
-    public class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
+    public sealed class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
     {
         #region Fields
 
@@ -26,6 +26,15 @@ namespace GBX.NET.Engines.Game
         {
             get => end;
             set => end = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnMediaBlockFxCameraMap()
+        {
+            
         }
 
         #endregion

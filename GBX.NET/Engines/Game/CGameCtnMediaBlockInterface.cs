@@ -3,7 +3,7 @@
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03195000)]
-    public class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
+    public sealed class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
     {
         #region Fields
 
@@ -46,6 +46,15 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Constructors
+
+        private CGameCtnMediaBlockInterface()
+        {
+            manialink = null!;
+        }
+
+        #endregion
+
         #region Chunks
 
         #region 0x000 chunk
@@ -67,7 +76,7 @@ namespace GBX.NET.Engines.Game
                 rw.Single_s(ref n.start);
                 rw.Single_s(ref n.end);
                 rw.Boolean(ref n.showInterface);
-                rw.String(ref n.manialink);
+                rw.String(ref n.manialink!);
             }
         }
 

@@ -39,7 +39,7 @@ namespace GBX.NET.Engines.Game
 
         #region Constructors
 
-        public CGameGhost()
+        protected CGameGhost()
         {
             dataExceptionHandle = task =>
             {

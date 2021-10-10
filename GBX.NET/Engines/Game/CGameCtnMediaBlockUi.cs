@@ -5,29 +5,38 @@ using System.Text;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x0307D000)]
-    public class CGameCtnMediaBlockUi : CGameCtnMediaBlock
+    public sealed class CGameCtnMediaBlockUi : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
     {
         #region Fields
 
-        private float start;
-        private float end = 3;
+        private TimeSpan start;
+        private TimeSpan end = TimeSpan.FromSeconds(3);
 
         #endregion
 
         #region Properties
 
         [NodeMember]
-        public float Start
+        public TimeSpan Start
         {
             get => start;
             set => start = value;
         }
 
         [NodeMember]
-        public float End
+        public TimeSpan End
         {
             get => end;
             set => end = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnMediaBlockUi()
+        {
+            
         }
 
         #endregion
@@ -41,8 +50,8 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaBlockUi n, GameBoxReaderWriter rw)
             {
-                rw.Single(ref n.start);
-                rw.Single(ref n.end);
+                rw.Single_s(ref n.start);
+                rw.Single_s(ref n.end);
             }
         }
 

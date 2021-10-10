@@ -3,7 +3,7 @@
 namespace GBX.NET.Engines.Game
 {
     [Node(0x0312A000)]
-    public class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
+    public sealed class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
     {
         #region Fields
 
@@ -38,6 +38,15 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Constructors
+
+        private CGameCtnMediaBlockManialink()
+        {
+            manialinkURL = null!;
+        }
+
+        #endregion
+
         #region Chunks
 
         // 0x000 chunk
@@ -60,7 +69,7 @@ namespace GBX.NET.Engines.Game
                 rw.Int32(ref version);
                 rw.Single_s(ref n.start);
                 rw.Single_s(ref n.end);
-                rw.String(ref n.manialinkURL);
+                rw.String(ref n.manialinkURL!);
             }
         }
 

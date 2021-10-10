@@ -10,7 +10,7 @@ namespace GBX.NET.Engines.Game
     /// Ghost (0x03092000)
     /// </summary>
     [Node(0x03092000)]
-    public class CGameCtnGhost : CGameGhost
+    public sealed class CGameCtnGhost : CGameGhost
     {
         #region Fields
 
@@ -370,6 +370,11 @@ namespace GBX.NET.Engines.Game
         #endregion
 
         #region Constructors
+
+        private CGameCtnGhost()
+        {
+
+        }
 
         #endregion
 

@@ -11,8 +11,17 @@ namespace GBX.NET.Engines.Game
     /// Decoration of a map (0x03038000)
     /// </summary>
     [Node(0x03038000)]
-    public class CGameCtnDecoration : CGameCtnCollector
+    public sealed class CGameCtnDecoration : CGameCtnCollector
     {
+        #region Constructors
+
+        private CGameCtnDecoration()
+        {
+
+        }
+
+        #endregion
+
         #region Chunks
 
         #region 0x011 chunk

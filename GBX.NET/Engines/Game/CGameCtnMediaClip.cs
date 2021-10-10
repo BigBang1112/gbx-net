@@ -4,7 +4,7 @@ using GBX.NET.Engines.MwFoundations;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03079000)]
-    public class CGameCtnMediaClip : CMwNod
+    public sealed class CGameCtnMediaClip : CMwNod
     {
         #region Fields
 

@@ -8,7 +8,7 @@ namespace GBX.NET.Engines.Game
     /// Group of maps (0x0308F000)
     /// </summary>
     [Node(0x0308F000)]
-    public class CGameCtnChallengeGroup : CMwNod
+    public sealed class CGameCtnChallengeGroup : CMwNod
     {
         #region Fields
 
@@ -31,6 +31,15 @@ namespace GBX.NET.Engines.Game
         {
             get => mapInfos;
             set => mapInfos = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnChallengeGroup()
+        {
+            
         }
 
         #endregion

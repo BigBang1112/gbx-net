@@ -22,7 +22,7 @@ namespace GBX.NET.Engines.Game
     /// </summary>
     /// <remarks>A map. Known extensions: .Challenge.Gbx, .Map.Gbx</remarks>
     [Node(0x03043000)]
-    public class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
+    public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     {
         #region Enums
 
@@ -1374,12 +1374,7 @@ namespace GBX.NET.Engines.Game
             if (Blocks is null)
                 throw new MemberNullException(nameof(Blocks));
 
-            var block = new CGameCtnBlock()
-            {
-                BlockModel = blockModel,
-                Coord = coord,
-                Direction = dir
-            };
+            var block = new CGameCtnBlock(blockModel.ID, dir, coord);
 
             block.CreateChunk<CGameCtnBlock.Chunk03057002>();
 
@@ -1454,14 +1449,7 @@ namespace GBX.NET.Engines.Game
 
             CreateChunk<Chunk03043040>();
 
-            var anchoredObject = new CGameCtnAnchoredObject()
-            {
-                ItemModel = itemModel,
-                AbsolutePositionInMap = absolutePosition,
-                PitchYawRoll = pitchYawRoll,
-                PivotPosition = offsetPivot,
-                Variant = variant
-            };
+            var anchoredObject = new CGameCtnAnchoredObject(itemModel, absolutePosition, pitchYawRoll, offsetPivot, variant);
 
             anchoredObject.CreateChunk<CGameCtnAnchoredObject.Chunk03101002>();
             anchoredObject.CreateChunk<CGameCtnAnchoredObject.Chunk03101004>();
@@ -1974,7 +1962,7 @@ namespace GBX.NET.Engines.Game
                     flags: block.Flags,
                     author: block.Author,
                     skin: block.Skin,
-                    waypointSpecialProperty: block.WaypointSpecialProperty
+                    waypoint: block.WaypointSpecialProperty
                 );
 
                 if (b.Coord.Y == 0)

@@ -5,13 +5,26 @@ namespace GBX.NET.Engines.Game
     [Node(0x0315B000)]
     public class CGameCtnBlockInfoVariant : CMwNod
     {
-        public string Name { get; set; }
-        public CGameCtnBlockInfoMobil[] Mobils { get; set; }
-        public CGameCtnBlockUnitInfo[] BlockUnitInfos { get; set; }
+        private CGameCtnBlockInfoMobil?[]? mobils;
+
+        public string? Name { get; set; }
+
+        public CGameCtnBlockInfoMobil?[]? Mobils
+        {
+            get => mobils;
+            set => mobils = value;
+        }
+
+        public CGameCtnBlockUnitInfo?[]? BlockUnitInfos { get; set; }
         public bool HasManualSymmetryH { get; set; }
         public float SpawnTransX { get; set; }
         public float SpawnTransY { get; set; }
         public float SpawnTransZ { get; set; }
+
+        protected CGameCtnBlockInfoVariant()
+        {
+
+        }
 
         [Chunk(0x0315B002)]
         public class Chunk0315B002 : Chunk<CGameCtnBlockInfoVariant>
@@ -71,9 +84,7 @@ namespace GBX.NET.Engines.Game
             {
                 rw.Int32(ref version);
                 rw.Int32(ref U01);
-                n.Mobils = rw.Array(n.Mobils,
-                    r => r.ReadNodeRef<CGameCtnBlockInfoMobil>(),
-                    (x, w) => w.Write(x));
+                rw.ArrayNode(ref n.mobils);
 
                 if (Version >= 2)
                 {
@@ -164,7 +175,7 @@ namespace GBX.NET.Engines.Game
             public int U07;
             public int U08;
             public int U09;
-            public string U10;
+            public string? U10;
 
             public int Version
             {
@@ -202,11 +213,11 @@ namespace GBX.NET.Engines.Game
             public int U01;
             public int U02;
 
-            public override void ReadWrite(CGameCtnBlockInfoVariant n, GameBoxReaderWriter rw)
+            public override void Read(CGameCtnBlockInfoVariant n, GameBoxReader r)
             {
-                rw.Int32(ref U01);
-                rw.Reader.ReadArray(r => r.ReadArray<int>(5));
-                rw.Int32(ref U02);
+                U01 = r.ReadInt32();
+                r.ReadArray(r => r.ReadArray<int>(5));
+                U02 = r.ReadInt32();
             }
         }
 

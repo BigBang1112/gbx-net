@@ -6,7 +6,7 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - Camera ingame
     /// </summary>
     [Node(0x03084000)]
-    public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasTwoKeys
+    public sealed class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasTwoKeys
     {
         #region Enums
 
@@ -38,7 +38,7 @@ namespace GBX.NET.Engines.Game
         public EGameCam? gameCam1;
         public EGameCam2? gameCam2;
         public int clipEntId = -1;
-        public string gameCam;
+        public string? gameCam;
 
         #endregion
 
@@ -80,10 +80,19 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public string GameCam
+        public string? GameCam
         {
             get => gameCam;
             set => gameCam = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnMediaBlockCameraGame()
+        {
+            
         }
 
         #endregion

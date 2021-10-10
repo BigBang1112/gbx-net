@@ -4,11 +4,11 @@ using System.Linq;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x0316D000)]
-    public class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+    public sealed class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
         #region Fields
 
-        private IList<Key> keys = new List<Key>();
+        private IList<Key> keys;
 
         #endregion
 
@@ -25,6 +25,15 @@ namespace GBX.NET.Engines.Game
         {
             get => keys;
             set => keys = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnMediaBlockFxCameraBlend()
+        {
+            keys = null!;
         }
 
         #endregion
@@ -48,7 +57,7 @@ namespace GBX.NET.Engines.Game
             {
                 rw.Int32(ref version);
 
-                rw.List(ref n.keys, r => new Key()
+                rw.List(ref n.keys!, r => new Key()
                 {
                     Time = r.ReadSingle_s(),
                     CaptureWeight = r.ReadSingle()

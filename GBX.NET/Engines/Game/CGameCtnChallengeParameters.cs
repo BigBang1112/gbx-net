@@ -8,7 +8,7 @@ namespace GBX.NET.Engines.Game
     /// Map parameters (0x0305B000)
     /// </summary>
     [Node(0x0305B000)]
-    public class CGameCtnChallengeParameters : CMwNod
+    public sealed class CGameCtnChallengeParameters : CMwNod
     {
         #region Fields
 

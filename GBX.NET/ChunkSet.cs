@@ -57,12 +57,11 @@ namespace GBX.NET
             }
             else if (data.Length > 0)
             {
-                using (var ms = new MemoryStream(data))
-                using (var r = new GameBoxReader(ms))
-                {
-                    var rw = new GameBoxReaderWriter(r);
-                    chunk.ReadWrite(Node, rw);
-                }
+                using var ms = new MemoryStream(data);
+                using var r = new GameBoxReader(ms);
+
+                var rw = new GameBoxReaderWriter(r);
+                chunk.ReadWrite(Node, rw);
             }
 
             if (chunk is ILookbackable l) l.IdVersion = 3;

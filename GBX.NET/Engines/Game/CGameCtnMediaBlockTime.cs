@@ -17,9 +17,18 @@ namespace GBX.NET.Engines.Game
         }
 
         [NodeMember]
-        public IList<Key> Keys { get; set; } = new List<Key>();
+        public IList<Key> Keys { get; set; }
 
         public bool IsTM2 { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        protected CGameCtnMediaBlockTime()
+        {
+            Keys = null!;
+        }
 
         #endregion
 

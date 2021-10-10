@@ -11,7 +11,7 @@ namespace GBX.NET.Engines.Game
     /// </summary>
     /// <remarks>A block placed on a map.</remarks>
     [Node(0x03057000)]
-    public class CGameCtnBlock : CMwNod
+    public sealed class CGameCtnBlock : CMwNod
     {
         #region Constants
 
@@ -295,6 +295,15 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Constructors
+
+        private CGameCtnBlock()
+        {
+
+        }
+
+        #endregion
+
         #region Static properties
 
         /// <summary>
@@ -307,11 +316,6 @@ namespace GBX.NET.Engines.Game
 
         #region Constructors
 
-        public CGameCtnBlock()
-        {
-
-        }
-
         public CGameCtnBlock(string name, Direction direction, Int3 coord) : this(name, direction, coord, 0)
         {
 
@@ -322,15 +326,23 @@ namespace GBX.NET.Engines.Game
 
         }
 
-        public CGameCtnBlock(string name, Direction direction, Int3 coord, int flags, string? author, CGameCtnBlockSkin? skin, CGameWaypointSpecialProperty? waypointSpecialProperty)
+        public CGameCtnBlock(Ident blockModel, Direction direction, Int3 coord, int flags)
+        {
+            this.blockModel = blockModel;
+            this.direction = direction;
+            this.coord = coord;
+            this.flags = flags;
+        }
+
+        public CGameCtnBlock(string name, Direction direction, Int3 coord, int flags, string? author, CGameCtnBlockSkin? skin, CGameWaypointSpecialProperty? waypoint)
         {
             Name = name;
-            Direction = direction;
-            Coord = coord;
-            Flags = flags;
+            this.direction = direction;
+            this.coord = coord;
+            this.flags = flags;
             Author = author;
             this.skin = skin;
-            waypoint = waypointSpecialProperty;
+            this.waypoint = waypoint;
         }
 
         #endregion

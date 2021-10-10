@@ -4,7 +4,7 @@ using System.Linq;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x030A7000)]
-    public class CGameCtnMediaBlockSound : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+    public sealed class CGameCtnMediaBlockSound : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
         #region Fields
 
@@ -15,7 +15,7 @@ namespace GBX.NET.Engines.Game
         private bool stopWithClip;
         private bool audioToSpeech;
         private int audioToSpeechTarget;
-        private IList<Key> keys = new List<Key>();
+        private IList<Key> keys;
 
         #endregion
 
@@ -85,6 +85,16 @@ namespace GBX.NET.Engines.Game
 
         #endregion
 
+        #region Constructors
+
+        private CGameCtnMediaBlockSound()
+        {
+            sound = null!;
+            keys = null!;
+        }
+
+        #endregion
+
         #region Chunks
 
         #region 0x001 chunk
@@ -94,9 +104,9 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnMediaBlockSound n, GameBoxReaderWriter rw)
             {
-                rw.FileRef(ref n.sound);
+                rw.FileRef(ref n.sound!);
 
-                rw.List(ref n.keys, r => new Key()
+                rw.List(ref n.keys!, r => new Key()
                 {
                     Time = r.ReadSingle_s(),
                     Volume = r.ReadSingle(),
@@ -171,10 +181,10 @@ namespace GBX.NET.Engines.Game
 
             public override void ReadWrite(CGameCtnMediaBlockSound n, GameBoxReaderWriter rw)
             {
-                rw.FileRef(ref n.sound);
+                rw.FileRef(ref n.sound!);
                 rw.Int32(ref U01); // 1
 
-                rw.List(ref n.keys, r => new Key()
+                rw.List(ref n.keys!, r => new Key()
                 {
                     Time = r.ReadSingle_s(),
                     Volume = r.ReadSingle(),

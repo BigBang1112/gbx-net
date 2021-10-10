@@ -7,11 +7,11 @@ namespace GBX.NET.Engines.Game
     /// MediaTracker block - Coloring capturable
     /// </summary>
     [Node(0x0316C000)]
-    public class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+    public sealed class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
         #region Fields
 
-        private IList<Key> keys = new List<Key>();
+        private IList<Key> keys;
 
         #endregion
 
@@ -28,6 +28,15 @@ namespace GBX.NET.Engines.Game
         {
             get => keys;
             set => keys = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnMediaBlockColoringCapturable()
+        {
+            keys = null!;
         }
 
         #endregion
@@ -57,7 +66,7 @@ namespace GBX.NET.Engines.Game
                 rw.Int32(ref version);
                 rw.Int32(ref U01);
 
-                rw.List(ref n.keys, r => new Key()
+                rw.List(ref n.keys!, r => new Key()
                 {
                     Time = r.ReadSingle_s(),
                     Hue = r.ReadSingle(),

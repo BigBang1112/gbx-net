@@ -5,7 +5,7 @@ using GBX.NET.Engines.MwFoundations;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03033000)]
-    public class CGameCtnCollection : CMwNod
+    public sealed class CGameCtnCollection : CMwNod
     {
         public byte CollectionID { get; set; }
         public byte CollectionPackMask { get; set; }
@@ -14,6 +14,15 @@ namespace GBX.NET.Engines.Game
         public string BlockInfoFlat { get; set; }
         public Ident Vehicle { get; set; }
         public string LoadingScreen { get; set; }
+
+        #region Constructors
+
+        private CGameCtnCollection()
+        {
+
+        }
+
+        #endregion
 
         #region Chunks
 

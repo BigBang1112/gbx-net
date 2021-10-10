@@ -7,7 +7,7 @@ namespace GBX.NET.Engines.Game
     /// </summary>
     /// <remarks>A list of puzzle pieces.</remarks>
     [Node(0x0301B000)]
-    public class CGameCtnCollectorList : CMwNod
+    public sealed class CGameCtnCollectorList : CMwNod
     {
         #region Fields
 
@@ -22,6 +22,15 @@ namespace GBX.NET.Engines.Game
         {
             get => collectorStock;
             set => collectorStock = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnCollectorList()
+        {
+
         }
 
         #endregion

@@ -4,11 +4,11 @@ using System.Linq;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03165000)]
-    public class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+    public sealed class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
     {
         #region Fields
 
-        private IList<Key> keys = new List<Key>();
+        private IList<Key> keys;
 
         #endregion
 
@@ -25,6 +25,15 @@ namespace GBX.NET.Engines.Game
         {
             get => keys;
             set => keys = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameCtnMediaBlockDirtyLens()
+        {
+            keys = null!;
         }
 
         #endregion

@@ -32,7 +32,7 @@ namespace GBX.NET.Engines.Game
         public string? SymmetricalBlockInfoId { get; set; }
         public Direction Dir { get; set; }
 
-        public CGameCtnBlockInfo()
+        protected CGameCtnBlockInfo()
         {
             AdditionalVariantsGround = new CGameCtnBlockInfoVariantGround[0];
             AdditionalVariantsAir = new CGameCtnBlockInfoVariantAir[0];
