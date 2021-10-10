@@ -3,7 +3,7 @@
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E020000)]
-    public class CGameItemPlacementParam : CMwNod
+    public sealed class CGameItemPlacementParam : CMwNod
     {
         #region Constants
 
@@ -26,7 +26,7 @@ namespace GBX.NET.Engines.GameData
         private float flyStep;
         private float flyOffset;
         private float pivotSnap_Distance;
-        private Vec3[] pivotPositions;
+        private Vec3[]? pivotPositions;
 
         #endregion
 
@@ -226,7 +226,7 @@ namespace GBX.NET.Engines.GameData
         }
 
         [NodeMember]
-        public Vec3[] PivotPositions
+        public Vec3[]? PivotPositions
         {
             get
             {
@@ -238,6 +238,15 @@ namespace GBX.NET.Engines.GameData
                 DiscoverChunk<Chunk2E020001>();
                 pivotPositions = value;
             }
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameItemPlacementParam()
+        {
+
         }
 
         #endregion

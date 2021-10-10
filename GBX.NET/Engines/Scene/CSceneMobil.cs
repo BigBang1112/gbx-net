@@ -5,7 +5,7 @@ using GBX.NET.Engines.Plug;
 namespace GBX.NET.Engines.Scene
 {
     [Node(0x0A011000)]
-    public class CSceneMobil : CSceneObject
+    public sealed class CSceneMobil : CSceneObject
     {
         private CHmsItem item;
 
@@ -13,6 +13,11 @@ namespace GBX.NET.Engines.Scene
         {
             get => item;
             set => item = value;
+        }
+
+        private CSceneMobil()
+        {
+
         }
 
         [Chunk(0x0A011003)]

@@ -4,8 +4,13 @@ using GBX.NET.Engines.MwFoundations;
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x03120000)]
-    public class CGameCtnAutoTerrain : CMwNod
+    public sealed class CGameCtnAutoTerrain : CMwNod
     {
+        private CGameCtnAutoTerrain()
+        {
+
+        }
+
         [Chunk(0x03120001)]
         public class Chunk03120001 : Chunk<CGameCtnAutoTerrain>
         {

@@ -3,12 +3,12 @@
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E009000)]
-    public class CGameWaypointSpecialProperty : CMwNod
+    public sealed class CGameWaypointSpecialProperty : CMwNod
     {
         #region Fields
 
         private int? spawn;
-        private string tag;
+        private string? tag;
         private int order;
 
         #endregion
@@ -23,7 +23,7 @@ namespace GBX.NET.Engines.GameData
         }
 
         [NodeMember]
-        public string Tag
+        public string? Tag
         {
             get => tag;
             set => tag = value;
@@ -34,6 +34,15 @@ namespace GBX.NET.Engines.GameData
         {
             get => order;
             set => order = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameWaypointSpecialProperty()
+        {
+
         }
 
         #endregion

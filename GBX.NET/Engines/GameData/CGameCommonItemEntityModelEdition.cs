@@ -4,7 +4,7 @@ using GBX.NET.Engines.MwFoundations;
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E026000)]
-    public class CGameCommonItemEntityModelEdition : CMwNod
+    public sealed class CGameCommonItemEntityModelEdition : CMwNod
     {
         #region Enums
 
@@ -58,6 +58,15 @@ namespace GBX.NET.Engines.GameData
 
         #endregion
 
+        #region Constructors
+
+        private CGameCommonItemEntityModelEdition()
+        {
+            meshCrystal = null!;
+        }
+
+        #endregion
+
         #region Chunks
 
         #region 0x000 chunk
@@ -70,7 +79,7 @@ namespace GBX.NET.Engines.GameData
         {
             private int version;
 
-            public string U01;
+            public string? U01;
 
             public int Version
             {
@@ -82,7 +91,7 @@ namespace GBX.NET.Engines.GameData
             {
                 rw.Int32(ref version);
                 rw.EnumInt32<EItemType>(ref n.itemType);
-                rw.NodeRef<CPlugCrystal>(ref n.meshCrystal);
+                rw.NodeRef<CPlugCrystal>(ref n.meshCrystal!);
                 rw.String(ref U01);
 
                 for (var i = 0; i < 32; i++)

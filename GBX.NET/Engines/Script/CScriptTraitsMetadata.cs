@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GBX.NET.Engines.Script
 {
-    public class CScriptTraitsMetadata
+    public sealed class CScriptTraitsMetadata
     {
         /// <summary>
         /// Type of the variable supported by ManiaScript.

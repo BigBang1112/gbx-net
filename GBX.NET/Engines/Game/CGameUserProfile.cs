@@ -3,7 +3,11 @@
 namespace GBX.NET.Engines.Game
 {
     [Node(0x031CC000)]
-    public class CGameUserProfile : CMwNod
+    public sealed class CGameUserProfile : CMwNod
     {
+        private CGameUserProfile()
+        {
+
+        }
     }
 }

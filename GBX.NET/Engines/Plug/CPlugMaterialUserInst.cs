@@ -3,7 +3,7 @@
 namespace GBX.NET.Engines.Plug
 {
     [Node(0x090FD000)]
-    public class CPlugMaterialUserInst : CMwNod
+    public sealed class CPlugMaterialUserInst : CMwNod
     {
         private string materialFile;
 
@@ -11,6 +11,11 @@ namespace GBX.NET.Engines.Plug
         {
             get => materialFile;
             set => materialFile = value;
+        }
+
+        private CPlugMaterialUserInst()
+        {
+
         }
 
         public override string ToString()

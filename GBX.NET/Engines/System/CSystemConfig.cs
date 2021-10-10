@@ -3,7 +3,7 @@
 namespace GBX.NET.Engines.System
 {
     [Node(0x0B005000)]
-    public class CSystemConfig : CMwNod
+    public sealed class CSystemConfig : CMwNod
     {
         #region Fields
 

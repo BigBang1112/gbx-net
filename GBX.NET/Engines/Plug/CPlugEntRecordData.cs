@@ -9,30 +9,36 @@ using GBX.NET.Engines.MwFoundations;
 namespace GBX.NET.Engines.Plug
 {
     [Node(0x0911F000)]
-    public class CPlugEntRecordData : CMwNod
+    public sealed class CPlugEntRecordData : CMwNod
     {
         public Task<ObservableCollection<Sample>> Samples { get; private set; }
 
-        [Chunk(0x0911F000)]
-        public class Chunk000 : Chunk<CPlugEntRecordData>, IVersionable
+        private CPlugEntRecordData()
         {
+            Samples = null!;
+        }
+
+        [Chunk(0x0911F000)]
+        public class Chunk0911F000 : Chunk<CPlugEntRecordData>, IVersionable
+        {
+            private byte[]? data;
+
             public int Version { get; set; }
             public int CompressedSize { get; private set; }
             public int UncompressedSize { get; private set; }
-            public byte[] Data { get; private set; }
 
             public override void Read(CPlugEntRecordData n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
                 UncompressedSize = r.ReadInt32();
                 CompressedSize = r.ReadInt32();
-                Data = r.ReadBytes(CompressedSize);
+                data = r.ReadBytes(CompressedSize);
 
                 n.Samples = Task.Run(() =>
                 {
                     var samples = new ObservableCollection<Sample>();
 
-                    using (var ms = new MemoryStream(Data))
+                    using (var ms = new MemoryStream(data))
                     using (var cs = new CompressedStream(ms, CompressionMode.Decompress))
                     using (var gbxr = new GameBoxReader(cs))
                     {
@@ -63,7 +69,7 @@ namespace GBX.NET.Engines.Plug
                                 var u03 = r1.ReadInt32();
 
                                 uint? clas = null;
-                                string clasName = null;
+                                string? clasName = null;
                                 if (Version >= 4)
                                 {
                                     clas = r1.ReadUInt32();
@@ -241,7 +247,7 @@ namespace GBX.NET.Engines.Plug
                 w.Write(Version);
                 w.Write(UncompressedSize);
                 w.Write(CompressedSize);
-                w.Write(Data, 0, Data.Length);
+                w.WriteBytes(data);
             }
         }
     }

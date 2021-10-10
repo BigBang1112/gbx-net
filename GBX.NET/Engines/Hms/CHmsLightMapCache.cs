@@ -3,8 +3,11 @@
 namespace GBX.NET.Engines.Hms
 {
     [Node(0x06022000)]
-    public class CHmsLightMapCache : CMwNod
+    public sealed class CHmsLightMapCache : CMwNod
     {
-        
+        private CHmsLightMapCache()
+        {
+
+        }
     }
 }

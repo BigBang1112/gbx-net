@@ -4,8 +4,13 @@ using System.Linq;
 namespace GBX.NET.Engines.Plug
 {
     [Node(0x09128000)]
-    public class CPlugRoadChunk : CMwNod
+    public sealed class CPlugRoadChunk : CMwNod
     {
+        private CPlugRoadChunk()
+        {
+
+        }
+
         [Chunk(0x09128000)]
         public class Chunk09128000 : Chunk<CPlugRoadChunk>, IVersionable
         {

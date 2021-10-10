@@ -82,10 +82,10 @@ namespace GBX.NET.Engines.GameData
         }
 
         [NodeMember]
-        public Color[,] Icon { get; set; }
+        public Color[,]? Icon { get; set; }
 
         [NodeMember]
-        public CMwNod IconFid { get; set; }
+        public CMwNod? IconFid { get; set; }
 
         [NodeMember]
         public string CollectorName
@@ -141,6 +141,15 @@ namespace GBX.NET.Engines.GameData
         {
             get => fileTime;
             set => fileTime = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        protected CGameCtnCollector()
+        {
+
         }
 
         #endregion

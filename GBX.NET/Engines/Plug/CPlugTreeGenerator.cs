@@ -7,6 +7,11 @@ namespace GBX.NET.Engines.Plug
     [Node(0x09051000)]
     public class CPlugTreeGenerator : CPlug
     {
+        protected CPlugTreeGenerator()
+        {
+
+        }
+
         [Chunk(0x09051000)]
         public class Chunk09051000 : Chunk<CPlugTreeGenerator>, IVersionable
         {

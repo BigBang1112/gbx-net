@@ -5,8 +5,13 @@ using System.Text;
 namespace GBX.NET.Engines.Plug
 {
     [Node(0x0903A000)]
-    public class CPlugMaterialCustom : CPlug
+    public sealed class CPlugMaterialCustom : CPlug
     {
+        private CPlugMaterialCustom()
+        {
+
+        }
+
         [Chunk(0x0903A004)]
         public class Chunk0903A004 : Chunk<CPlugMaterialCustom>
         {

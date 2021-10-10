@@ -3,7 +3,7 @@
 namespace GBX.NET.Engines.Game
 {
     [Node(0x03168000)]
-    public class CGamePodiumInfo : CMwNod
+    public sealed class CGamePodiumInfo : CMwNod
     {
         private int[] mediaClipFids;
 
@@ -11,6 +11,11 @@ namespace GBX.NET.Engines.Game
         {
             get => mediaClipFids;
             set => mediaClipFids = value;
+        }
+
+        private CGamePodiumInfo()
+        {
+            mediaClipFids = null!;
         }
 
         [Chunk(0x03168000)]
@@ -21,7 +26,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGamePodiumInfo n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref U01);
-                rw.Array(ref n.mediaClipFids);
+                rw.Array(ref n.mediaClipFids!);
             }
         }
     }

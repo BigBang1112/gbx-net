@@ -4,7 +4,7 @@ using GBX.NET.Engines.MwFoundations;
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E002000), WritingNotSupported]
-    public class CGameItemModel : CGameCtnCollector
+    public sealed class CGameItemModel : CGameCtnCollector
     {
         #region Enums
 
@@ -36,24 +36,24 @@ namespace GBX.NET.Engines.GameData
         #region Fields
 
         private EItemType itemType;
-        private CMwNod[] nadeoSkinFids;
-        private CMwNod[] cameras;
-        private CMwNod raceInterfaceFid;
+        private CMwNod?[]? nadeoSkinFids;
+        private CMwNod?[]? cameras;
+        private CMwNod? raceInterfaceFid;
         private Vec3 groundPoint;
         private float painterGroundMargin;
         private float orbitalCenterHeightFromGround;
         private float orbitalRadiusBase;
         private float orbitalPreviewAngle;
-        private CMwNod baseAttributes;
-        private string defaultWeaponName;
-        private CPlugVehiclePhyModelCustom phyModelCustom;
-        private CMwNod visModelCustom;
-        private CMwNod entityModelEdition;
-        private CMwNod entityModel;
-        private int defaultCam;
-        private CGameItemPlacementParam itemPlacement;
-        private string archetypeRef;
-        private string iconFid;
+        private CMwNod? baseAttributes;
+        private string? defaultWeaponName;
+        private CPlugVehiclePhyModelCustom? phyModelCustom;
+        private CMwNod? visModelCustom;
+        private CMwNod? entityModelEdition;
+        private CMwNod? entityModel;
+        private int? defaultCam;
+        private CGameItemPlacementParam? itemPlacement;
+        private string? archetypeRef;
+        private string? iconFid;
 
         #endregion
 
@@ -67,21 +67,21 @@ namespace GBX.NET.Engines.GameData
         }
 
         [NodeMember]
-        public CMwNod[] NadeoSkinFids
+        public CMwNod?[]? NadeoSkinFids
         {
             get => nadeoSkinFids;
             set => nadeoSkinFids = value;
         }
 
         [NodeMember]
-        public CMwNod[] Cameras
+        public CMwNod?[]? Cameras
         {
             get => cameras;
             set => cameras = value;
         }
 
         [NodeMember]
-        public CMwNod RaceInterfaceFid
+        public CMwNod? RaceInterfaceFid
         {
             get => raceInterfaceFid;
             set => raceInterfaceFid = value;
@@ -123,35 +123,35 @@ namespace GBX.NET.Engines.GameData
         }
 
         [NodeMember]
-        public CMwNod BaseAttributes
+        public CMwNod? BaseAttributes
         {
             get => baseAttributes;
             set => baseAttributes = value;
         }
 
         [NodeMember]
-        public string DefaultWeaponName
+        public string? DefaultWeaponName
         {
             get => defaultWeaponName;
             set => defaultWeaponName = value;
         }
 
         [NodeMember]
-        public CPlugVehiclePhyModelCustom PhyModelCustom
+        public CPlugVehiclePhyModelCustom? PhyModelCustom
         {
             get => phyModelCustom;
             set => phyModelCustom = value;
         }
 
         [NodeMember]
-        public CMwNod VisModelCustom
+        public CMwNod? VisModelCustom
         {
             get => visModelCustom;
             set => visModelCustom = value;
         }
 
         [NodeMember]
-        public int DefaultCam
+        public int? DefaultCam
         {
             get => defaultCam;
             set => defaultCam = value;
@@ -161,14 +161,14 @@ namespace GBX.NET.Engines.GameData
         /// An entity object of the item model.
         /// </summary>
         [NodeMember]
-        public CMwNod EntityModelEdition
+        public CMwNod? EntityModelEdition
         {
             get => entityModelEdition;
             set => entityModelEdition = value;
         }
 
         [NodeMember]
-        public CMwNod EntityModel
+        public CMwNod? EntityModel
         {
             get => entityModel;
             set => entityModel = value;
@@ -177,7 +177,7 @@ namespace GBX.NET.Engines.GameData
         /// <summary>
         /// An item model if <see cref="EntityModelEdition"/> is <see cref="CGameCommonItemEntityModelEdition"/>, otherwise null.
         /// </summary>
-        public CGameCommonItemEntityModelEdition ItemModel
+        public CGameCommonItemEntityModelEdition? ItemModel
         {
             get => EntityModelEdition as CGameCommonItemEntityModelEdition;
             set => EntityModelEdition = value;
@@ -186,7 +186,7 @@ namespace GBX.NET.Engines.GameData
         /// <summary>
         /// A block model if <see cref="EntityModelEdition"/> is <see cref="CGameBlockItem"/>, otherwise null.
         /// </summary>
-        public CGameBlockItem BlockModel
+        public CGameBlockItem? BlockModel
         {
             get => EntityModelEdition as CGameBlockItem;
             set => EntityModelEdition = value;
@@ -196,24 +196,33 @@ namespace GBX.NET.Engines.GameData
         /// Placement information when the item model is used in the editor.
         /// </summary>
         [NodeMember]
-        public CGameItemPlacementParam ItemPlacement
+        public CGameItemPlacementParam? ItemPlacement
         {
             get => itemPlacement;
             set => itemPlacement = value;
         }
 
         [NodeMember]
-        public string ArchetypeRef
+        public string? ArchetypeRef
         {
             get => archetypeRef;
             set => archetypeRef = value;
         }
 
         [NodeMember]
-        public new string IconFid
+        public new string? IconFid
         {
             get => iconFid;
             set => iconFid = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CGameItemModel()
+        {
+
         }
 
         #endregion
@@ -354,8 +363,8 @@ namespace GBX.NET.Engines.GameData
         public class Chunk2E002019 : Chunk<CGameItemModel>
         {
             private int version;
-            private int u01;
-            private CMwNod u02;
+            private int? u01;
+            private CMwNod? u02;
 
             public int Version
             {
@@ -363,13 +372,13 @@ namespace GBX.NET.Engines.GameData
                 set => version = value;
             }
 
-            public int U01
+            public int? U01
             {
                 get => u01;
                 set => u01 = value;
             }
 
-            public CMwNod U02
+            public CMwNod? U02
             {
                 get => u02;
                 set => u02 = value;
@@ -379,7 +388,7 @@ namespace GBX.NET.Engines.GameData
             {
                 rw.Int32(ref version);
 
-                if(version == 1)
+                if (version == 1)
                 {
 
                 }
@@ -434,9 +443,9 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E00201A)]
         public class Chunk2E00201A : Chunk<CGameItemModel>
         {
-            private CMwNod u01;
+            private CMwNod? u01;
 
-            public CMwNod U01
+            public CMwNod? U01
             {
                 get => u01;
                 set => u01 = value;
@@ -508,7 +517,7 @@ namespace GBX.NET.Engines.GameData
             public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
-                rw.String(ref n.archetypeRef);
+                rw.String(ref n.archetypeRef!);
                 if (n.archetypeRef.Length == 0)
                     rw.Int32(ref u01);
                 rw.Int32(ref u02);

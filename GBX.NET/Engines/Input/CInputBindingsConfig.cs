@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -7,10 +8,15 @@ using GBX.NET.Engines.MwFoundations;
 namespace GBX.NET.Engines.Input
 {
     [Node(0x13006000)]
-    public class CInputBindingsConfig : CMwNod
+    public sealed class CInputBindingsConfig : CMwNod
     {
         public ReadOnlyCollection<string> Devices { get; private set; }
-        public List<Binding> Bindings { get; private set; }
+        public IList<Binding> Bindings { get; private set; }
+
+        private CInputBindingsConfig()
+        {
+            
+        }
 
         [Chunk(0x13006000)]
         public class Chunk13006000 : Chunk<CInputBindingsConfig>
@@ -18,7 +24,7 @@ namespace GBX.NET.Engines.Input
             public override void Read(CInputBindingsConfig n, GameBoxReader r)
             {
                 var race = r.ReadString();
-                n.Bindings = r.ReadArray<Binding>((i, r1) =>
+                n.Bindings = r.ReadList<Binding>((i, r1) =>
                 {
                     if (i == 0) r1.ReadInt32();
 
@@ -30,7 +36,7 @@ namespace GBX.NET.Engines.Input
                         U02 = r1.ReadInt32(),
                         Action = r1.ReadString()
                     };
-                }).ToList();
+                });
             }
         }
 

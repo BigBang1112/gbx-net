@@ -3,9 +3,14 @@
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E01D000)]
-    public class CGameObjectModel : CMwNod
+    public sealed class CGameObjectModel : CMwNod
     {
         public uint m_InventoryParams_InventoryOccupation { get; set; }
+
+        private CGameObjectModel()
+        {
+
+        }
 
         [Chunk(0x2E01D000)]
         public class Chunk2E01D000 : Chunk<CGameObjectModel>

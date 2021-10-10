@@ -4,7 +4,7 @@ using GBX.NET.Engines.MwFoundations;
 namespace GBX.NET.Engines.Game
 {
     [Node(0x0308C000)]
-    public class CGamePlayerProfile : CMwNod
+    public sealed class CGamePlayerProfile : CMwNod
     {
         private string description;
 
@@ -25,6 +25,15 @@ namespace GBX.NET.Engines.Game
                 description = value;
             }
         }
+
+        #region Constructors
+
+        private CGamePlayerProfile()
+        {
+
+        }
+
+        #endregion
 
         #region Chunks
 

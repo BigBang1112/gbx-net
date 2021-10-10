@@ -7,7 +7,7 @@ using System.Globalization;
 namespace GBX.NET.Engines.Plug
 {
     [Node(0x09003000)]
-    public class CPlugCrystal : CPlugTreeGenerator
+    public sealed class CPlugCrystal : CPlugTreeGenerator
     {
         #region Enums
 
@@ -55,6 +55,15 @@ namespace GBX.NET.Engines.Plug
 
         [NodeMember]
         public Layer[] Layers { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        private CPlugCrystal()
+        {
+
+        }
 
         #endregion
 

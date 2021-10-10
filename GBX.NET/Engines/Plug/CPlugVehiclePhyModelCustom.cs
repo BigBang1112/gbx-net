@@ -3,7 +3,7 @@
 namespace GBX.NET.Engines.Plug
 {
     [Node(0x0911E000)]
-    public class CPlugVehiclePhyModelCustom : CMwNod
+    public sealed class CPlugVehiclePhyModelCustom : CMwNod
     {
         #region Fields
 
@@ -34,6 +34,15 @@ namespace GBX.NET.Engines.Plug
         {
             get => gravityCoef;
             set => gravityCoef = value;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        private CPlugVehiclePhyModelCustom()
+        {
+
         }
 
         #endregion

@@ -6,7 +6,7 @@ using GBX.NET.Engines.MwFoundations;
 namespace GBX.NET.Engines.GameData
 {
     [Node(0x2E025000)]
-    public class CGameBlockItem : CMwNod
+    public sealed class CGameBlockItem : CMwNod
     {
         #region Fields
 
@@ -41,6 +41,17 @@ namespace GBX.NET.Engines.GameData
 
         #endregion
 
+        #region Constructors
+
+        private CGameBlockItem()
+        {
+            archetypeBlockInfoId = null!;
+            archetypeBlockInfoCollectionId = null!;
+            customizedVariants = null!;
+        }
+
+        #endregion
+
         #region Chunks
 
         #region 0x000 chunk
@@ -62,9 +73,9 @@ namespace GBX.NET.Engines.GameData
             public override void ReadWrite(CGameBlockItem n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
-                rw.Id(ref n.archetypeBlockInfoId);
-                rw.Id(ref n.archetypeBlockInfoCollectionId);
-                rw.DictionaryNode(ref n.customizedVariants);
+                rw.Id(ref n.archetypeBlockInfoId!);
+                rw.Id(ref n.archetypeBlockInfoCollectionId!);
+                rw.DictionaryNode(ref n.customizedVariants!);
             }
         }
 

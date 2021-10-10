@@ -4,7 +4,7 @@ using System;
 namespace GBX.NET.Engines.TrackMania
 {
     [Node(0x2407F000)]
-    public class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
+    public sealed class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
     {
         #region Enums
 

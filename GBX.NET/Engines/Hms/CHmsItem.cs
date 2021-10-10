@@ -7,7 +7,7 @@ using System.Text;
 namespace GBX.NET.Engines.Hms
 {
     [Node(0x06003000)]
-    public class CHmsItem : CMwNod
+    public sealed class CHmsItem : CMwNod
     {
         private CPlugSolid solid;
 
@@ -17,12 +17,17 @@ namespace GBX.NET.Engines.Hms
             set => solid = value;
         }
 
+        private CHmsItem()
+        {
+            solid = null!;
+        }
+
         [Chunk(0x06003001)]
         public class Chunk06003001 : Chunk<CHmsItem>
         {
             public override void ReadWrite(CHmsItem n, GameBoxReaderWriter rw)
             {
-                rw.NodeRef<CPlugSolid>(ref n.solid);
+                rw.NodeRef<CPlugSolid>(ref n.solid!);
             }
         }
 

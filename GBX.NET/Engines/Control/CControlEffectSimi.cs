@@ -6,7 +6,7 @@ using GBX.NET.Engines.Game;
 namespace GBX.NET.Engines.Control
 {
     [Node(0x07010000)]
-    public class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHasKeys
+    public sealed class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHasKeys
     {
         #region Fields
 
