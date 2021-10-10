@@ -8,6 +8,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 
 using GBX.NET.Engines.MwFoundations;
+using GBX.NET.Engines.Plug;
 using GBX.NET.Exceptions;
 
 namespace GBX.NET
@@ -176,31 +177,35 @@ namespace GBX.NET
                 }
             }
 
-            var availableInheritanceTypes = new Dictionary<Type, List<Type>>();
-
             foreach (var typePair in AvailableClasses)
             {
                 var id = typePair.Key;
                 var type = typePair.Value;
 
                 List<uint> classes = new List<uint>();
-                List<Type> inheritedTypes = new List<Type>();
 
                 Type currentType = type.BaseType;
 
                 while (currentType != typeof(object))
                 {
                     classes.Add(availableClassesByType[currentType]);
-                    inheritedTypes.Add(currentType);
 
                     currentType = currentType.BaseType;
                 }
 
                 AvailableInheritanceClasses[type] = classes;
-                availableInheritanceTypes[type] = inheritedTypes;
 
                 var chunks = type.GetNestedTypes().Where(x => x.IsSubclassOf(typeof(Chunk)));
 
+                var baseType = type.BaseType;
+
+                while (baseType.IsSubclassOf(typeof(CMwNod)))
+                {
+                    chunks = chunks.Concat(baseType.GetNestedTypes().Where(x => x.IsSubclassOf(typeof(Chunk))));
+
+                    baseType = baseType.BaseType;
+                }
+                
                 var availableChunkClasses = new Dictionary<uint, Type>();
                 var availableHeaderChunkClasses = new Dictionary<uint, Type>();
 
@@ -225,25 +230,6 @@ namespace GBX.NET
                     AvailableChunkClasses.Add(type, availableChunkClasses);
                 if (availableHeaderChunkClasses.Count > 0)
                     AvailableHeaderChunkClasses.Add(type, availableHeaderChunkClasses);
-            }
-
-            foreach (var typePair in availableInheritanceTypes)
-            {
-                var mainType = typePair.Key;
-
-                foreach (var type in typePair.Value)
-                {
-                    if (AvailableChunkClasses.ContainsKey(type))
-                    {
-                        foreach (var chunkType in AvailableChunkClasses[type])
-                        {
-                            if (AvailableChunkClasses.ContainsKey(mainType))
-                            {
-                                AvailableChunkClasses[mainType][chunkType.Key] = chunkType.Value;
-                            }
-                        }
-                    }
-                }
             }
 
             foreach (var idClassPair in AvailableClasses)
