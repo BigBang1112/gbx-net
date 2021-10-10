@@ -523,13 +523,11 @@ namespace GBX.NET
             Write(-1);
         }
 
-        /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="IOException">An I/O error occurs.</exception>
         /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-        public void WriteBytes(byte[] bytes)
+        public void WriteBytes(byte[]? bytes)
         {
-            if (bytes is null)
-                throw new ArgumentNullException(nameof(bytes));
+            if (bytes is null) return;
 
             Write(bytes, 0, bytes.Length);
         }
