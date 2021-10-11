@@ -15,7 +15,7 @@ namespace GBX.NET.Engines.MwFoundations
         [IgnoreDataMember]
         public GameBox GBX { get; internal set; }
 
-        public ChunkSet Chunks { get; internal set; } = new ChunkSet();
+        public ChunkSet Chunks { get; }
 
         /// <summary>
         /// Chunk where the aux node appeared
@@ -49,6 +49,7 @@ namespace GBX.NET.Engines.MwFoundations
         {
             ID = ((NodeAttribute)NodeCacheManager.AvailableClassAttributes[GetType()]
                 .First(x => x is NodeAttribute)).ID;
+            Chunks = new ChunkSet(this);
         }
 
         protected CMwNod(params Chunk[] chunks) : this()
@@ -110,9 +111,6 @@ namespace GBX.NET.Engines.MwFoundations
             node.GBX = r.GBX;
 
             var type = node.GetType();
-
-            var chunks = new ChunkSet { Node = node };
-            node.Chunks = chunks;
 
             uint? previousChunk = null;
 
@@ -244,7 +242,7 @@ namespace GBX.NET.Engines.MwFoundations
                         ((ISkippableChunk)c).Data = chunkData;
                         if (chunkData == null || chunkData.Length == 0)
                             ((ISkippableChunk)c).Discovered = true;
-                        chunks.Add(c);
+                        node.Chunks.Add(c);
 
                         if (ignoreChunkAttribute == null)
                         {
@@ -261,7 +259,7 @@ namespace GBX.NET.Engines.MwFoundations
                         Debug.WriteLine("Unknown skippable chunk: " + chunkID.ToString("X"));
                         chunk = (Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkRemapped, chunkData);
                         chunk.GBX = node.GBX;
-                        chunks.Add(chunk);
+                        node.Chunks.Add(chunk);
                     }
                 }
                 else // Known or unskippable chunk
@@ -275,7 +273,7 @@ namespace GBX.NET.Engines.MwFoundations
 
                     c.OnLoad();
 
-                    chunks.Add(c);
+                    node.Chunks.Add(c);
 
                     //r.Chunk = (Chunk)c; // Set chunk temporarily for reading
 

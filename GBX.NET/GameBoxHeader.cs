@@ -59,7 +59,7 @@ namespace GBX.NET
 
         public GameBoxHeader(GameBox<T> gbx) : base(gbx)
         {
-            Chunks = new ChunkSet();
+            Chunks = new ChunkSet(gbx.Node);
         }
 
         public void Read(byte[] userData, IProgress<GameBoxReadProgress>? progress)

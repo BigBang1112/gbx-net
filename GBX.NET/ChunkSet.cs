@@ -15,14 +15,14 @@ namespace GBX.NET
         [IgnoreDataMember]
         public CMwNod Node { get; set; }
 
-        public ChunkSet() : base()
+        public ChunkSet(CMwNod node) : base()
         {
-
+            Node = node;
         }
 
-        public ChunkSet(IEnumerable<Chunk> collection) : base(collection)
+        public ChunkSet(CMwNod node, IEnumerable<Chunk> collection) : base(collection)
         {
-
+            Node = node;
         }
 
         public bool Remove(uint chunkID)
@@ -45,7 +45,7 @@ namespace GBX.NET
 
             T chunk = (T)Activator.CreateInstance(typeof(T));
             chunk.Node = Node;
-            chunk.GBX = Node?.GBX;
+            chunk.GBX = Node.GBX;
 
             if (chunk is ISkippableChunk s)
             {
@@ -74,7 +74,7 @@ namespace GBX.NET
             return Create<T>(new byte[0]);
         }
 
-        public T Get<T>() where T : Chunk
+        public T? Get<T>() where T : Chunk
         {
             foreach (var chunk in this)
             {
@@ -87,7 +87,7 @@ namespace GBX.NET
             return default;
         }
 
-        public bool TryGet<T>(out T chunk) where T : Chunk
+        public bool TryGet<T>(out T? chunk) where T : Chunk
         {
             chunk = Get<T>();
             return chunk != default;
