@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GBX.NET.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -13,24 +14,24 @@ namespace GBX.NET.Engines.MwFoundations
     public class CMwNod
     {
         [IgnoreDataMember]
-        public GameBox GBX { get; internal set; }
+        public GameBox? GBX { get; internal set; }
 
         public ChunkSet Chunks { get; }
 
         /// <summary>
         /// Chunk where the aux node appeared
         /// </summary>
-        public Chunk ParentChunk { get; set; }
+        public Chunk? ParentChunk { get; set; }
 
         public uint ID { get; }
         [Obsolete]
         public uint? FaultyChunk { get; private set; }
         [Obsolete]
-        public byte[] Rest { get; private set; }
+        public byte[]? Rest { get; private set; }
         [Obsolete]
         public bool Unknown { get; internal set; }
 
-        public string[] Dependencies { get; set; }
+        public string[]? Dependencies { get; set; }
 
         /// <summary>
         /// Name of the class. The format is <c>Engine::Class</c>.
@@ -143,7 +144,7 @@ namespace GBX.NET.Engines.MwFoundations
                         logChunk.Append(')');
                     }
 
-                    if (node.GBX?.ID.HasValue == true && Remap(node.GBX.ID.Value) == node.ID)
+                    if (node.GBX is not null && node.GBX.ID.HasValue == true && Remap(node.GBX.ID.Value) == node.ID)
                     {
                         Log.Write(logChunk.ToString());
                     }
@@ -158,10 +159,19 @@ namespace GBX.NET.Engines.MwFoundations
 
                 var chunkRemapped = Chunk.Remap(chunkID);
 
-                Type chunkClass = null;
+                Type? chunkClass = null;
 
-                var reflected = ((chunkRemapped & 0xFFFFF000) == node.ID || NodeCacheManager.AvailableInheritanceClasses[type].Contains(chunkRemapped & 0xFFFFF000))
-                    && (NodeCacheManager.AvailableChunkClasses[type].TryGetValue(chunkRemapped, out chunkClass) || NodeCacheManager.AvailableChunkClasses[type].TryGetValue(chunkID & 0xFFF, out chunkClass));
+                var reflected = (
+                       (chunkRemapped & 0xFFFFF000) == node.ID
+                    || NodeCacheManager.AvailableInheritanceClasses[type].Contains(chunkRemapped & 0xFFFFF000)
+                  )
+                  && (
+                       NodeCacheManager.AvailableChunkClasses[type].TryGetValue(chunkRemapped, out chunkClass)
+                    || NodeCacheManager.AvailableChunkClasses[type].TryGetValue(chunkID & 0xFFF, out chunkClass)
+                );
+
+                if (chunkClass is null)
+                    throw new ThisShouldNotHappenException();
 
                 var skippable = reflected && chunkClass.BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>);
                 
@@ -175,7 +185,7 @@ namespace GBX.NET.Engines.MwFoundations
                         if (chunkID != 0 && !reflected)
                         {
                             var logChunkError = $"[{node.ClassName}] 0x{chunkID.ToString("X8")} ERROR (wrong chunk format or unknown unskippable chunk)";
-                            if (node.GBX?.ID.HasValue == true && Remap(node.GBX.ID.Value) == node.ID)
+                            if (node.GBX is not null && node.GBX.ID.HasValue == true && Remap(node.GBX.ID.Value) == node.ID)
                                 Log.Write(logChunkError, ConsoleColor.Red);
                             else
                                 Log.Write("~ " + logChunkError, ConsoleColor.Red);
@@ -334,7 +344,7 @@ namespace GBX.NET.Engines.MwFoundations
             stopwatch.Stop();
 
             var logNodeCompletion = $"[{node.ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds.ToString()}ms)";
-            if (node.GBX.ID.HasValue == true && Remap(node.GBX.ID.Value) == node.ID)
+            if (node.GBX is not null && node.GBX.ID.HasValue == true && Remap(node.GBX.ID.Value) == node.ID)
                 Log.Write(logNodeCompletion, ConsoleColor.Green);
             else
                 Log.Write($"~ {logNodeCompletion}", ConsoleColor.Green);
@@ -366,7 +376,7 @@ namespace GBX.NET.Engines.MwFoundations
                 counter++;
 
                 var logChunk = $"[{ClassName}] 0x{chunk.ID.ToString("X8")} ({((float)counter / Chunks.Count).ToString("0.00%")})";
-                if (GBX.ID.HasValue == true && GBX.ID.Value == ID)
+                if (GBX is not null && GBX.ID.HasValue == true && GBX.ID.Value == ID)
                     Log.Write(logChunk);
                 else
                     Log.Write($"~ {logChunk}");
@@ -421,13 +431,13 @@ namespace GBX.NET.Engines.MwFoundations
             stopwatch.Stop();
 
             var logNodeCompletion = $"[{ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)";
-            if (GBX.ID.HasValue == true && GBX.ID.Value == ID)
+            if (GBX is not null && GBX.ID.HasValue == true && GBX.ID.Value == ID)
                 Log.Write(logNodeCompletion, ConsoleColor.Green);
             else
                 Log.Write($"~ {logNodeCompletion}", ConsoleColor.Green);
         }
 
-        public T GetChunk<T>() where T : Chunk
+        public T? GetChunk<T>() where T : Chunk
         {
             return Chunks.Get<T>();
         }
@@ -447,7 +457,7 @@ namespace GBX.NET.Engines.MwFoundations
             return Chunks.Remove(chunkID);
         }
 
-        public bool TryGetChunk<T>(out T chunk) where T : Chunk
+        public bool TryGetChunk<T>(out T? chunk) where T : Chunk
         {
             return Chunks.TryGet(out chunk);
         }
@@ -542,7 +552,7 @@ namespace GBX.NET.Engines.MwFoundations
 
             GameBox gbx;
 
-            if (gbxOfType == gbxType)
+            if (GBX is not null && gbxOfType == gbxType)
                 gbx = GBX;
             else
                 gbx = (GameBox)Activator.CreateInstance(gbxOfType, this);

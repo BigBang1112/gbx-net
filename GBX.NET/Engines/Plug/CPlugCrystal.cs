@@ -40,14 +40,14 @@ namespace GBX.NET.Engines.Plug
 
         #region Fields
 
-        private CPlugMaterialUserInst[] materials;
+        private CPlugMaterialUserInst?[] materials;
 
         #endregion
 
         #region Properties
 
         [NodeMember]
-        public CPlugMaterialUserInst[] Materials
+        public CPlugMaterialUserInst?[] Materials
         {
             get => materials;
             set => materials = value;
@@ -62,7 +62,8 @@ namespace GBX.NET.Engines.Plug
 
         private CPlugCrystal()
         {
-
+            materials = null!;
+            Layers = null!;
         }
 
         #endregion
@@ -85,9 +86,12 @@ namespace GBX.NET.Engines.Plug
 
                     w.WriteLine();
 
-                    foreach (var vertex in layer.Vertices)
+                    if (layer.Vertices is not null)
                     {
-                        w.WriteLine($"v {vertex.X} {vertex.Y} {vertex.Z}");
+                        foreach (var vertex in layer.Vertices)
+                        {
+                            w.WriteLine($"v {vertex.X} {vertex.Y} {vertex.Z}");
+                        }
                     }
 
                     w.WriteLine();
@@ -111,9 +115,12 @@ namespace GBX.NET.Engines.Plug
                         //w.WriteLine($"o {layer.LayerName}");
 
                         var uvCounter = 0;
+
                         foreach (var face in group)
                         {
-                            foreach(var uv in face.UV)
+                            if (face.UV is null) continue;
+
+                            foreach (var uv in face.UV)
                             {
                                 uvCounter++;
                                 w.WriteLine($"vt {(uv.X+3)/6} {(uv.Y+3)/6}"); // doesnt properly work
@@ -222,9 +229,9 @@ namespace GBX.NET.Engines.Plug
                             U05 = r2.ReadArray<int>()
                         });
 
-                        Vec3[] vertices = null;
-                        Int2[] edges = null;
-                        Face[] faces = null;
+                        Vec3[]? vertices = null;
+                        Int2[]? edges = null;
+                        Face[]? faces = null;
 
                         var u15 = r1.ReadInt32();
                         if (u15 == 1)
@@ -460,7 +467,7 @@ namespace GBX.NET.Engines.Plug
         [Chunk(0x09003006)]
         public class Chunk09003006 : Chunk<CPlugCrystal>, IVersionable
         {
-            public Vec2[] U01;
+            public Vec2[]? U01;
 
             private int version;
 
@@ -495,7 +502,7 @@ namespace GBX.NET.Engines.Plug
             public int U02;
             public float U03;
             public float U04;
-            public int[] U05;
+            public int[]? U05;
 
             public int Version
             {
@@ -522,40 +529,40 @@ namespace GBX.NET.Engines.Plug
 
         public abstract class Layer
         {
-            public string LayerID { get; set; }
-            public string LayerName { get; set; }
+            public string? LayerID { get; set; }
+            public string? LayerName { get; set; }
             public bool IsEnabled { get; set; }
-            public object[] Unknown { get; set; }
+            public object[]? Unknown { get; set; }
 
-            public override string ToString() => LayerName;
+            public override string ToString() => LayerName ?? string.Empty;
         }
 
         public class GeometryLayer : Layer
         {
-            public Vec3[] Vertices { get; set; }
-            public Int2[] Edges { get; set; }
-            public Face[] Faces { get; set; }
-            public Group[] Groups { get; set; }
+            public Vec3[]? Vertices { get; set; }
+            public Int2[]? Edges { get; set; }
+            public Face[]? Faces { get; set; }
+            public Group[]? Groups { get; set; }
             public bool Collidable { get; set; }
             public bool IsVisible { get; set; }
         }
 
         public class TranslationLayer : Layer
         {
-            public LayerMask[] Mask { get; set; }
+            public LayerMask[]? Mask { get; set; }
             public Vec3 Translation { get; set; }
         }
 
         public class ScaleLayer : Layer
         {
-            public LayerMask[] Mask { get; set; }
+            public LayerMask[]? Mask { get; set; }
             public Vec3 Scale { get; set; }
             public bool Independently { get; set; }
         }
 
         public class RotationLayer : Layer
         {
-            public LayerMask[] Mask { get; set; }
+            public LayerMask[]? Mask { get; set; }
             public float Rotation { get; set; } // in radians
             public EAxis Axis { get; set; }
             public bool Independently { get; set; }
@@ -563,7 +570,7 @@ namespace GBX.NET.Engines.Plug
 
         public class MirrorLayer : Layer
         {
-            public LayerMask[] Mask { get; set; }
+            public LayerMask[]? Mask { get; set; }
             public float Distance { get; set; }
             public EAxis Axis { get; set; }
             public bool Independently { get; set; }
@@ -571,7 +578,7 @@ namespace GBX.NET.Engines.Plug
 
         public class SpawnPositionLayer : Layer
         {
-            public LayerMask[] Mask { get; set; }
+            public LayerMask[]? Mask { get; set; }
             public Vec3 Position { get; set; }
             public float HorizontalAngle { get; set; }
             public float VerticalAngle { get; set; }
@@ -579,7 +586,7 @@ namespace GBX.NET.Engines.Plug
 
         public class ChaosLayer : Layer
         {
-            public LayerMask[] Mask { get; set; }
+            public LayerMask[]? Mask { get; set; }
             public float MinDistance { get; set; }
             public float MaxDistance { get; set; }
             public float U01 { get; set; }
@@ -587,13 +594,13 @@ namespace GBX.NET.Engines.Plug
 
         public class SubdivideLayer : Layer
         {
-            public LayerMask[] Mask { get; set; }
+            public LayerMask[]? Mask { get; set; }
             public int Subdivisions { get; set; }
         }
 
         public class SmoothLayer : Layer
         {
-            public LayerMask[] Mask { get; set; }
+            public LayerMask[]? Mask { get; set; }
             public float Intensity { get; set; }
         }
 
@@ -604,18 +611,23 @@ namespace GBX.NET.Engines.Plug
             public int U02 { get; set; }
             public int U03 { get; set; }
             public int U04 { get; set; }
-            public int[] U05 { get; set; }
+            public int[]? U05 { get; set; }
 
             public override string ToString() => Name;
+
+            public Group()
+            {
+                Name = null!;
+            }
         }
 
         public class Face
         {
             public int VertCount { get; set; }
-            public int[] Indices { get; set; }
-            public Vec2[] UV { get; set; }
-            public CPlugMaterialUserInst Material { get; set; }
-            public Group Group { get; set; }
+            public int[]? Indices { get; set; }
+            public Vec2[]? UV { get; set; }
+            public CPlugMaterialUserInst? Material { get; set; }
+            public Group? Group { get; set; }
 
             public override string ToString()
             {
@@ -625,7 +637,7 @@ namespace GBX.NET.Engines.Plug
 
         public class LayerMask
         {
-            public string LayerId { get; set; }
+            public string? LayerId { get; set; }
             public int GroupIndex { get; set; }
         }
 

@@ -23,7 +23,7 @@ namespace GBX.NET
         public MemoryStream Unknown { get; } = new MemoryStream();
 
         [IgnoreDataMember]
-        public GameBox GBX { get; set; }
+        public GameBox? GBX { get; set; }
 
         public CMwNod Node { get; internal set; }
 

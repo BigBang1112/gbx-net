@@ -35,7 +35,7 @@ namespace GBX.NET
 
         }
 
-        public GameBoxWriter(Stream output, ILookbackable lookbackable) : this(output)
+        public GameBoxWriter(Stream output, ILookbackable? lookbackable) : this(output)
         {
             Lookbackable = lookbackable;
 

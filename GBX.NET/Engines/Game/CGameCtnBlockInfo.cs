@@ -41,27 +41,27 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x0304E005)]
         public class Chunk0304E005 : Chunk<CGameCtnBlockInfo>
         {
-            public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw) // WIP
+            public override void Read(CGameCtnBlockInfo n, GameBoxReader r) // WIP
             {
-                n.BlockName = rw.Id(n.BlockName);
-                rw.Int32();
-                rw.Int32();
-                rw.Int32();
-                rw.Int32();
-                rw.Int32();
-                rw.Int32();
-                rw.Int32();
-                rw.Reader.ReadArray(r => r.ReadNodeRef<CGameCtnBlockUnitInfo>());
-                rw.Reader.ReadArray(r => r.ReadNodeRef<CGameCtnBlockUnitInfo>());
-                rw.Int32();
-                rw.Int32();
-                var wat = rw.Reader.ReadNodeRef<CSceneMobil>();
-                rw.Int32();
-                rw.Int32();
-                rw.Reader.ReadNodeRef<CSceneMobil>();
-                rw.Byte();
-                rw.Int32();
-                rw.Int32();
+                n.BlockName = r.ReadId();
+                r.ReadInt32();
+                r.ReadInt32();
+                r.ReadInt32();
+                r.ReadInt32();
+                r.ReadInt32();
+                r.ReadInt32();
+                r.ReadInt32();
+                r.ReadArray(r => r.ReadNodeRef<CGameCtnBlockUnitInfo>());
+                r.ReadArray(r => r.ReadNodeRef<CGameCtnBlockUnitInfo>());
+                r.ReadInt32();
+                r.ReadInt32();
+                r.ReadNodeRef<CSceneMobil>();
+                r.ReadInt32();
+                r.ReadInt32();
+                r.ReadNodeRef<CSceneMobil>();
+                r.ReadByte();
+                r.ReadInt32();
+                r.ReadInt32();
             }
         }
 

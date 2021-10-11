@@ -1982,9 +1982,11 @@ namespace GBX.NET.Engines.Game
 
                 Int3 offsetCollection = (0, blockSize.Y, 0);
 
-                if (GetChunk<Chunk0304301F>().Version <= 1)
-                    offsetCollection += (32, 0, 32);
-
+                if (TryGetChunk(out Chunk0304301F? chunk01F))
+                    if (chunk01F is not null)
+                        if (chunk01F.Version <= 1)
+                            offsetCollection += (32, 0, 32);
+                
                 PlaceAnchoredObject(item.ItemModel, offsetPos + coord * blockSize + offsetCollection, item.PitchYawRoll + (-itemRadians, 0f, 0f));
             }
 

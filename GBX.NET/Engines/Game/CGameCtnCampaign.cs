@@ -11,10 +11,10 @@ namespace GBX.NET.Engines.Game
     {
         #region Fields
 
-        private CGameCtnChallengeGroup[] mapGroups = new CGameCtnChallengeGroup[0];
-        private string campaignID;
+        private CGameCtnChallengeGroup[] mapGroups;
+        private string? campaignID;
         private int index;
-        private string name;
+        private string? name;
         private int type;
         private int unlockType;
 
@@ -28,7 +28,7 @@ namespace GBX.NET.Engines.Game
             set => mapGroups = value;
         }
 
-        public string CampaignID
+        public string? CampaignID
         {
             get => campaignID;
             set => campaignID = value;
@@ -48,7 +48,7 @@ namespace GBX.NET.Engines.Game
             }
         }
 
-        public string Name
+        public string? Name
         {
             get
             {
@@ -96,7 +96,7 @@ namespace GBX.NET.Engines.Game
 
         private CGameCtnCampaign()
         {
-
+            mapGroups = null!;
         }
 
         #endregion
@@ -122,7 +122,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnCampaign n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
-                rw.ArrayNode(ref n.mapGroups);
+                rw.ArrayNode(ref n.mapGroups!);
             }
         }
 

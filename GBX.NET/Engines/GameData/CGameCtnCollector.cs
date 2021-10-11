@@ -24,13 +24,13 @@ namespace GBX.NET.Engines.GameData
         private Ident ident;
         private string pageName;
         private int catalogPosition;
-        private string name;
-        private string description;
+        private string? name;
+        private string? description;
         private bool iconUseAutoRender;
         private int iconQuarterRotationY;
         private EProdState prodState;
-        private string skinDirectory;
-        private string collectorName;
+        private string? skinDirectory;
+        private string? collectorName;
         private bool isInternal;
         private bool isAdvanced;
         private long fileTime;
@@ -75,7 +75,7 @@ namespace GBX.NET.Engines.GameData
         }
 
         [NodeMember]
-        public string Name
+        public string? Name
         {
             get => name;
             set => name = value;
@@ -88,14 +88,14 @@ namespace GBX.NET.Engines.GameData
         public CMwNod? IconFid { get; set; }
 
         [NodeMember]
-        public string CollectorName
+        public string? CollectorName
         {
             get => collectorName;
             set => collectorName = value;
         }
 
         [NodeMember]
-        public string Description
+        public string? Description
         {
             get => description;
             set => description = value;
@@ -116,7 +116,7 @@ namespace GBX.NET.Engines.GameData
         }
 
         [NodeMember]
-        public string SkinDirectory
+        public string? SkinDirectory
         {
             get => skinDirectory;
             set => skinDirectory = value;
@@ -149,7 +149,7 @@ namespace GBX.NET.Engines.GameData
 
         protected CGameCtnCollector()
         {
-
+            pageName = null!;
         }
 
         #endregion
@@ -192,7 +192,7 @@ namespace GBX.NET.Engines.GameData
             {
                 rw.Ident(ref n.ident);
                 rw.Int32(ref version);
-                rw.String(ref n.pageName);
+                rw.String(ref n.pageName!);
 
                 if (version == 5)
                     rw.Int32();
@@ -242,19 +242,24 @@ namespace GBX.NET.Engines.GameData
 
             public override void Write(CGameCtnCollector n, GameBoxWriter w)
             {
-                var width = (short)n.Icon.GetLength(0);
-                var height = (short)n.Icon.GetLength(1);
+                var width = (short)(n.Icon?.GetLength(0) ?? 64);
+                var height = (short)(n.Icon?.GetLength(1) ?? 64);
 
                 w.Write(width);
                 w.Write(height);
 
-                for (var y = 0; y < height; y++)
+                if (n.Icon is null)
                 {
-                    for (var x = 0; x < width; x++)
-                    {
-                        w.Write(n.Icon[width - 1 - x, height - 1 - y].ToArgb());
-                    }
+                    for (var y = 0; y < height; y++)
+                        for (var x = 0; x < width; x++)
+                            w.Write(int.MaxValue);
+
+                    return;
                 }
+
+                for (var y = 0; y < height; y++)
+                    for (var x = 0; x < width; x++)
+                        w.Write(n.Icon[width - 1 - x, height - 1 - y].ToArgb());
             }
         }
 
@@ -340,11 +345,11 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E001009)]
         public class Chunk2E001009 : Chunk<CGameCtnCollector>
         {
-            public string U01;
+            public string? U01;
 
             public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
             {
-                rw.String(ref n.pageName);
+                rw.String(ref n.pageName!);
 
                 var hasIconFid = rw.Boolean(n.IconFid != null);
                 if (hasIconFid)
@@ -364,7 +369,7 @@ namespace GBX.NET.Engines.GameData
         [Chunk(0x2E00100A)]
         public class Chunk2E00100A : Chunk<CGameCtnCollector>
         {
-            public string U01;
+            public string? U01;
 
             public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
             {
@@ -449,7 +454,7 @@ namespace GBX.NET.Engines.GameData
         {
             private int version;
 
-            public CMwNod U01;
+            public CMwNod? U01;
             public int U02;
 
             public int Version
@@ -463,7 +468,7 @@ namespace GBX.NET.Engines.GameData
                 rw.Int32(ref version); // 2
                 rw.NodeRef(ref U01); // -1
                 rw.String(ref n.skinDirectory);
-                if (n.skinDirectory.Length == 0)
+                if (n.skinDirectory!.Length == 0)
                     rw.Int32(ref U02); // -1
             }
         }

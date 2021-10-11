@@ -6,13 +6,13 @@ namespace GBX.NET.Engines.Game
     [Node(0x0308C000)]
     public sealed class CGamePlayerProfile : CMwNod
     {
-        private string description;
+        private string? description;
 
-        public string OnlineLogin { get; set; }
-        public string OnlineSupportKey { get; set; }
-        public CInputBindingsConfig InputBindings { get; set; }
+        public string? OnlineLogin { get; set; }
+        public string? OnlineSupportKey { get; set; }
+        public CInputBindingsConfig? InputBindings { get; set; }
 
-        public string Description
+        public string? Description
         {
             get
             {
@@ -58,7 +58,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
             {
-                n.InputBindings = rw.Reader.ReadNodeRef<CInputBindingsConfig>();
+                n.InputBindings = rw.NodeRef<CInputBindingsConfig>(n.InputBindings);
             }
         }
 
@@ -164,7 +164,7 @@ namespace GBX.NET.Engines.Game
 
             public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
             {
-                var cars = rw.Reader.ReadArray(r => r.ReadId());
+                var cars = rw.Reader!.ReadArray(r => r.ReadId());
                 rw.Int32(ref U01);
                 rw.Int32(ref U02);
                 rw.Int32(ref U03);
@@ -202,9 +202,9 @@ namespace GBX.NET.Engines.Game
 
             public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
             {
-                var profileName = rw.Reader.ReadString();
-                var displayProfileName = rw.Reader.ReadString();
-                var deviceGuid = rw.Reader.ReadId();
+                var profileName = rw.Reader!.ReadString();
+                var displayProfileName = rw.Reader!.ReadString();
+                var deviceGuid = rw.Reader!.ReadId();
                 rw.Int32(ref U01);
             }
         }
@@ -246,8 +246,8 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
             {
-                var keyboardGuid = rw.Reader.ReadId();
-                var profileName = rw.Reader.ReadString();
+                var keyboardGuid = rw.Reader!.ReadId();
+                var profileName = rw.Reader!.ReadString();
             }
         }
 
@@ -258,7 +258,7 @@ namespace GBX.NET.Engines.Game
         public class Skin
         {
             public Ident PlayerModel { get; set; }
-            public string SkinFile { get; set; }
+            public string? SkinFile { get; set; }
             public uint Checksum { get; set; }
         }
     }
