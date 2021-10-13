@@ -732,18 +732,12 @@ namespace GBX.NET.Engines.Game
 
                         var name = controlNames[controlNameIndex];
 
-                        switch (name)
+                        n.ControlEntries[i] = (string)name switch
                         {
-                            case "Steer":
-                            case "Gas":
-                            case "AccelerateReal":
-                            case "BrakeReal":
-                                n.ControlEntries[i] = new ControlEntryAnalog() { Name = name, Time = time, Data = data };
-                                break;
-                            default:
-                                n.ControlEntries[i] = new ControlEntry() { Name = name, Time = time, Data = data };
-                                break;
-                        }
+                            "Steer" or "Gas" or "AccelerateReal" or "BrakeReal"
+                              => new ControlEntryAnalog(name) { Time = time, Data = data },
+                            _ => new ControlEntry(name) { Time = time, Data = data },
+                        };
                     }
                 }
                 else if (rw.Mode == GameBoxReaderWriterMode.Write)

@@ -170,10 +170,10 @@ namespace GBX.NET.Engines.MwFoundations
                     || NodeCacheManager.AvailableChunkClasses[type].TryGetValue(chunkID & 0xFFF, out chunkClass)
                 );
 
-                if (chunkClass is null)
+                if (reflected && chunkClass is null)
                     throw new ThisShouldNotHappenException();
 
-                var skippable = reflected && chunkClass.BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>);
+                var skippable = reflected && chunkClass!.BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>);
                 
                 // Unknown or skippable chunk
                 if (!reflected || skippable)

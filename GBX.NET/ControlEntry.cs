@@ -15,6 +15,11 @@ namespace GBX.NET
         public uint Data { get; set; }
         public bool IsEnabled => Data != 0;
 
+        public ControlEntry(string name)
+        {
+            Name = name;
+        }
+
         public override string ToString()
         {
             return $"[{Time.ToTmString()}] {Name}: {((Data == 128 || Data == 1 || Data == 0) ? IsEnabled.ToString() : Data.ToString())}";

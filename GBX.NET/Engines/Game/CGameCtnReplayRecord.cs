@@ -15,24 +15,24 @@ namespace GBX.NET.Engines.Game
     {
         #region Fields
 
-        private Ident mapInfo;
+        private Ident? mapInfo;
         private TimeSpan? time;
         private string? playerNickname;
         private string? playerLogin;
         private string? titleID;
         private string? xml;
-        private int authorVersion;
+        private int? authorVersion;
         private string? authorLogin;
         private string? authorNickname;
         private string? authorZone;
         private string? authorExtraInfo;
-        private Task<CGameCtnChallenge>? challenge;
-        private CGameCtnGhost[] ghosts = new CGameCtnGhost[0];
+        private Task<CGameCtnChallenge> challenge;
+        private CGameCtnGhost[] ghosts;
         private long[]? extras;
         private CGameCtnMediaClip? clip;
         private CPlugEntRecordData? recordData;
         private CCtnMediaBlockEventTrackMania? events;
-        private int eventsDuration;
+        private int? eventsDuration;
         private ControlEntry[]? controlEntries;
         private string? game;
 
@@ -49,7 +49,7 @@ namespace GBX.NET.Engines.Game
         /// Map UID, environment, and author login of the map the replay orients in.
         /// </summary>
         [NodeMember]
-        public Ident MapInfo => mapInfo;
+        public Ident? MapInfo => mapInfo;
 
         /// <summary>
         /// The record time.
@@ -80,11 +80,6 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03093018>();
                 return titleID;
             }
-            private set
-            {
-                DiscoverChunk<Chunk03093018>();
-                titleID = value;
-            }
         }
 
         /// <summary>
@@ -94,17 +89,12 @@ namespace GBX.NET.Engines.Game
         public string? XML => xml;
 
         [NodeMember]
-        public int AuthorVersion
+        public int? AuthorVersion
         {
             get
             {
                 DiscoverChunk<Chunk03093018>();
                 return authorVersion;
-            }
-            private set
-            {
-                DiscoverChunk<Chunk03093018>();
-                authorVersion = value;
             }
         }
 
@@ -119,11 +109,6 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03093018>();
                 return authorLogin;
             }
-            private set
-            {
-                DiscoverChunk<Chunk03093018>();
-                authorLogin = value;
-            }
         }
 
         /// <summary>
@@ -136,11 +121,6 @@ namespace GBX.NET.Engines.Game
             {
                 DiscoverChunk<Chunk03093018>();
                 return authorNickname;
-            }
-            private set
-            {
-                DiscoverChunk<Chunk03093018>();
-                authorNickname = value;
             }
         }
 
@@ -155,11 +135,6 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03093018>();
                 return authorZone;
             }
-            private set
-            {
-                DiscoverChunk<Chunk03093018>();
-                authorZone = value;
-            }
         }
 
         [NodeMember]
@@ -170,18 +145,13 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunk<Chunk03093018>();
                 return authorExtraInfo;
             }
-            private set
-            {
-                DiscoverChunk<Chunk03093018>();
-                authorExtraInfo = value;
-            }
         }
 
         /// <summary>
         /// The map the replay orients in.
         /// </summary>
         [NodeMember]
-        public Task<CGameCtnChallenge>? Challenge => challenge;
+        public Task<CGameCtnChallenge> Challenge => challenge;
 
         /// <summary>
         /// Ghosts in the replay. NOTE: Some ghosts can be considered as <see cref="CGameCtnMediaBlockGhost"/>. See <see cref="Clip"/>.
@@ -208,10 +178,10 @@ namespace GBX.NET.Engines.Game
         public CCtnMediaBlockEventTrackMania? Events => events;
 
         /// <summary>
-        /// Duration of events in the replay (range of detected inputs). This can be 0 if the replay was driven in editor.
+        /// Duration of events in the replay (range of detected inputs). This can be 0 if the replay was driven in editor and null if driven in TMU, TMUF, TMTurbo, TM2 and TM2020.
         /// </summary>
         [NodeMember]
-        public int EventsDuration => eventsDuration;
+        public int? EventsDuration => eventsDuration;
 
         /// <summary>
         /// Inputs (keyboard, pad, wheel) of the replay from TM1.0, TMO, Sunrise and ESWC. For inputs stored in TMU, TMUF, TMTurbo and TM2: see <see cref="CGameCtnGhost.ControlEntries"/> in <see cref="Ghosts"/>. TM2020 and Shootmania inputs aren't available in replays and ghosts. Can be null if <see cref="EventsDuration"/> is 0, which can happen when you save the replay in editor.
@@ -227,11 +197,6 @@ namespace GBX.NET.Engines.Game
                 DiscoverChunks<Chunk03093008, Chunk0309300F>();
                 return game;
             }
-            private set
-            {
-                DiscoverChunks<Chunk03093008, Chunk0309300F>();
-                game = value;
-            }
         }
 
         #endregion
@@ -240,7 +205,8 @@ namespace GBX.NET.Engines.Game
 
         private CGameCtnReplayRecord()
         {
-            
+            challenge = null!;
+            ghosts = null!;
         }
 
         #endregion
@@ -343,28 +309,28 @@ namespace GBX.NET.Engines.Game
             {
                 var size = r.ReadInt32();
 
-                if (size > 0)
+                if (size <= 0)
+                    throw new Exception();
+
+                var trackGbx = r.ReadBytes(size);
+
+                n.challenge = Task.Run(() =>
                 {
-                    var trackGbx = r.ReadBytes(size);
+                    using var ms = new MemoryStream(trackGbx);
+                    return GameBox.ParseNode<CGameCtnChallenge>(ms);
+                });
 
-                    n.challenge = Task.Run(() =>
-                    {
-                        using (var ms = new MemoryStream(trackGbx))
-                            return GameBox.ParseNode<CGameCtnChallenge>(ms);
-                    });
-
-                    n.challenge.ContinueWith(x =>
-                    {
 #if DEBUG
-                        if (x.IsFaulted)
-                        {
-                            var e = x.Exception.InnerException;
-                            Debug.WriteLine(e.Message);
-                            Debug.WriteLine(e.StackTrace);
-                        }
+                n.challenge.ContinueWith(x =>
+                {
+                    if (x.IsFaulted)
+                    {
+                        var e = x.Exception.InnerException;
+                        Debug.WriteLine(e.Message);
+                        Debug.WriteLine(e.StackTrace);
+                    }
+                });
 #endif
-                    });
-                }
             }
         }
 
@@ -408,15 +374,11 @@ namespace GBX.NET.Engines.Game
 
                         var name = controlNames[controlNameIndex];
 
-                        switch (name)
+                        n.controlEntries[i] = name switch
                         {
-                            case "Steer (analog)": // Data is bugged
-                                n.controlEntries[i] = new ControlEntryAnalog(true) { Name = name, Time = time, Data = data };
-                                break;
-                            default:
-                                n.controlEntries[i] = new ControlEntry() { Name = name, Time = time, Data = data };
-                                break;
-                        }
+                            "Steer (analog)" => new ControlEntryAnalog(name) { Time = time, Data = data }, // Data is bugged
+                            _ => new ControlEntry(name) { Time = time, Data = data },
+                        };
                     }
 
                     Array.Reverse(n.controlEntries); // Inputs are originally reversed
@@ -545,10 +507,10 @@ namespace GBX.NET.Engines.Game
                             case "Gas":
                             case "AccelerateReal":
                             case "BrakeReal":
-                                n.controlEntries[i] = new ControlEntryAnalog() { Name = name, Time = time, Data = data };
+                                n.controlEntries[i] = new ControlEntryAnalog(name) { Time = time, Data = data };
                                 break;
                             default:
-                                n.controlEntries[i] = new ControlEntry() { Name = name, Time = time, Data = data };
+                                n.controlEntries[i] = new ControlEntry(name) { Time = time, Data = data };
                                 break;
                         }
                     }
@@ -691,7 +653,7 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
             {
                 Version = r.ReadInt32();
-                r.ReadString();
+                r.ReadString(); // CampaignSolo
             }
         }
 
@@ -724,7 +686,7 @@ namespace GBX.NET.Engines.Game
             /// <summary>
             /// Map UID, environment, and author login of the map the replay orients in.
             /// </summary>
-            Ident MapInfo { get; }
+            Ident? MapInfo { get; }
 
             /// <summary>
             /// The record time.
@@ -751,7 +713,7 @@ namespace GBX.NET.Engines.Game
             /// </summary>
             string? XML { get; }
 
-            int AuthorVersion { get; }
+            int? AuthorVersion { get; }
 
             /// <summary>
             /// Login of the replay creator.

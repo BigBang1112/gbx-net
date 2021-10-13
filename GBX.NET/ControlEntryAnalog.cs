@@ -29,12 +29,12 @@ namespace GBX.NET
         /// </summary>
         public bool IsOldTM { get; }
 
-        public ControlEntryAnalog()
+        public ControlEntryAnalog(string name) : base(name)
         {
 
         }
 
-        public ControlEntryAnalog(bool isOldTm)
+        public ControlEntryAnalog(string name, bool isOldTm) : base(name)
         {
             IsOldTM = isOldTm;
         }
