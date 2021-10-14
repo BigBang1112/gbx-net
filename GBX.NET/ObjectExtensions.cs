@@ -62,9 +62,9 @@ namespace System
                 fieldInfo.SetValue(cloneObject, clonedFieldValue);
             }
         }
-        public static T? Copy<T>(this T original)
+        public static T? Copy<T>(this T original) where T : class
         {
-            return (T)Copy(original as object);
+            return Copy(original as object) as T;
         }
     }
 
