@@ -6,9 +6,9 @@ namespace GBX.NET.Engines.Plug
     [Node(0x09005000)]
     public sealed class CPlugSolid : CPlug
     {
-        private CPlugTree tree;
+        private CPlugTree? tree;
 
-        public CPlugTree Tree
+        public CPlugTree? Tree
         {
             get => tree;
             set => tree = value;
@@ -89,7 +89,7 @@ namespace GBX.NET.Engines.Plug
         [Chunk(0x09005010)]
         public class Chunk09005010 : Chunk<CPlugSolid>
         {
-            public CMwNod U01;
+            public CMwNod? U01;
 
             public override void ReadWrite(CPlugSolid n, GameBoxReaderWriter rw)
             {

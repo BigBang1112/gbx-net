@@ -76,7 +76,7 @@ namespace GBX.NET.Engines.Game
             public int U14;
             public int U15;
             public int U16;
-            public FileRef U17;
+            public FileRef? U17;
 
             public override void ReadWrite(CGameCtnMediaBlockFxCameraMap n, GameBoxReaderWriter rw)
             {

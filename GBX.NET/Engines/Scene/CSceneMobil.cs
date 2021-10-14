@@ -17,7 +17,7 @@ namespace GBX.NET.Engines.Scene
 
         private CSceneMobil()
         {
-
+            item = null!;
         }
 
         [Chunk(0x0A011003)]
@@ -36,7 +36,7 @@ namespace GBX.NET.Engines.Scene
         {
             public override void Read(CSceneMobil n, GameBoxReader r)
             {
-                n.item = Parse<CHmsItem>(r, 0x06003000);
+                n.item = Parse<CHmsItem>(r, 0x06003000)!;
                 var gds = r.ReadBytes(14);
                 var gdshsd = r.ReadInt32();
                 var str = r.ReadString();

@@ -15,7 +15,7 @@ namespace GBX.NET.Engines.Plug
         public class Chunk09128000 : Chunk<CPlugRoadChunk>, IVersionable
         {
             public int Version { get; set; }
-            public byte[] UnknownData { get; set; }
+            public byte[]? UnknownData { get; set; }
 
             public override void ReadWrite(CPlugRoadChunk n, GameBoxReaderWriter rw)
             {

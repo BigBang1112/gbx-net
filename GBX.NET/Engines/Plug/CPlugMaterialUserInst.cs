@@ -5,9 +5,9 @@ namespace GBX.NET.Engines.Plug
     [Node(0x090FD000)]
     public sealed class CPlugMaterialUserInst : CMwNod
     {
-        private string materialFile;
+        private string? materialFile;
 
-        public string MaterialFile
+        public string? MaterialFile
         {
             get => materialFile;
             set => materialFile = value;
@@ -20,7 +20,7 @@ namespace GBX.NET.Engines.Plug
 
         public override string ToString()
         {
-            return MaterialFile;
+            return MaterialFile ?? "";
         }
 
         [Chunk(0x090FD000)]
@@ -28,11 +28,11 @@ namespace GBX.NET.Engines.Plug
         {
             private int version;
 
-            public CMwNod U01;
-            public CMwNod U02;
+            public CMwNod? U01;
+            public CMwNod? U02;
             public int U03;
             public byte U04;
-            public CMwNod U05;
+            public CMwNod? U05;
 
             /// <summary>
             /// Version 10: TM®, version 8/9: ManiaPlanet
@@ -72,7 +72,7 @@ namespace GBX.NET.Engines.Plug
         {
             private int version;
 
-            public CMwNod U01;
+            public CMwNod? U01;
 
             public int Version
             {

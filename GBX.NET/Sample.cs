@@ -13,7 +13,7 @@ namespace GBX.NET
         public Vec3 PitchYawRoll => Rotation.ToPitchYawRoll();
         public float Speed { get; set; }
         public Vec3 Velocity { get; set; }
-        public byte[] Unknown { get; set; }
+        public byte[]? Unknown { get; set; }
 
         public override string ToString()
         {

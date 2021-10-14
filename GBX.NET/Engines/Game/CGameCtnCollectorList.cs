@@ -30,7 +30,7 @@ namespace GBX.NET.Engines.Game
 
         private CGameCtnCollectorList()
         {
-
+            collectorStock = null!;
         }
 
         #endregion
@@ -47,7 +47,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnCollectorList n, GameBoxReaderWriter rw)
             {
-                rw.Array(ref n.collectorStock, r => new Collector()
+                rw.Array(ref n.collectorStock!, r => new Collector()
                 {
                     Ident = r.ReadIdent(),
                     Count = r.ReadInt32()

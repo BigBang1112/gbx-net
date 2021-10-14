@@ -54,7 +54,7 @@ namespace GBX.NET
 
         public bool IsHeavy { get; set; }
 
-        public HeaderChunk(uint id, byte[] data)
+        public HeaderChunk(uint id, byte[] data) : base(null!)
         {
             this.id = id;
             Data = data;

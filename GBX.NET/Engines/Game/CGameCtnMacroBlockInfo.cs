@@ -11,9 +11,9 @@ namespace GBX.NET.Engines.Game
     [Node(0x0310D000), WritingNotSupported]
     public sealed class CGameCtnMacroBlockInfo : CGameCtnCollector
     {
-        public CGameCtnBlock[] Blocks { get; set; }
+        public CGameCtnBlock[]? Blocks { get; set; }
 
-        public CGameCtnAnchoredObject[] AnchoredObjects { get; set; }
+        public CGameCtnAnchoredObject[]? AnchoredObjects { get; set; }
 
         #region Constructors
 

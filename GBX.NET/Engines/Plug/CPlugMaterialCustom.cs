@@ -40,9 +40,9 @@ namespace GBX.NET.Engines.Plug
         public class Chunk0903A00C : Chunk<CPlugMaterialCustom>
         {
             public int U01;
-            public string U02;
+            public string? U02;
             public int U03;
-            public string U04;
+            public string? U04;
 
             public override void ReadWrite(CPlugMaterialCustom n, GameBoxReaderWriter rw)
             {

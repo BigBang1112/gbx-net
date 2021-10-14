@@ -9,11 +9,11 @@ namespace GBX.NET.Engines.Game
     {
         public byte CollectionID { get; set; }
         public byte CollectionPackMask { get; set; }
-        public string DisplayName { get; set; }
-        public string CollectionIcon { get; set; }
-        public string BlockInfoFlat { get; set; }
+        public string? DisplayName { get; set; }
+        public string? CollectionIcon { get; set; }
+        public string? BlockInfoFlat { get; set; }
         public Ident Vehicle { get; set; }
-        public string LoadingScreen { get; set; }
+        public string? LoadingScreen { get; set; }
 
         #region Constructors
 

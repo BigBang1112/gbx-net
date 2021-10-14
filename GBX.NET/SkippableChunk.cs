@@ -17,10 +17,11 @@ namespace GBX.NET
         public bool Discovered { get; set; }
         public byte[] Data { get; set; }
 
-        public SkippableChunk()
+        protected SkippableChunk()
         {
             chunkID = ((ChunkAttribute)NodeCacheManager.AvailableChunkAttributesByType[GetType()]
                 .First(x => x is ChunkAttribute)).ID;
+            Data = null!;
         }
 
         public SkippableChunk(T node, uint id, byte[] data) : base(node)

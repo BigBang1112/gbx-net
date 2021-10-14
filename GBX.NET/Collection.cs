@@ -15,7 +15,7 @@ namespace GBX.NET
         /// <summary>
         /// Represents a name defined kind of collection. If set, collection is stored as a regular <see cref="Id"/> in GBX. Always avaliable if <see cref="ID"/> is null.
         /// </summary>
-        public string Name { get; }
+        public string? Name { get; }
 
         /// <summary>
         /// Constructs a Collection struct from a name representation.
@@ -39,20 +39,20 @@ namespace GBX.NET
 
         public Int3 GetBlockSize()
         {
-            switch (ToString())
+            return (ToString()) switch
             {
-                case "Desert": return (32, 16, 32);
-                case "Snow": return (32, 16, 32);
-                case "Rally": return (32, 16, 32);
-                case "Island": return (64, 8, 64);
-                case "Bay": return (32, 8, 32);
-                case "Coast": return (16, 8, 16);
-                case "Valley": return (32, 8, 32);
-                case "Stadium": return (32, 8, 32);
-                case "Canyon": return (64, 16, 64);
-                case "Lagoon": return (32, 8, 32);
-                default: throw new Exception();
-            }
+                "Desert" => (32, 16, 32),
+                "Snow" => (32, 16, 32),
+                "Rally" => (32, 16, 32),
+                "Island" => (64, 8, 64),
+                "Bay" => (32, 8, 32),
+                "Coast" => (16, 8, 16),
+                "Valley" => (32, 8, 32),
+                "Stadium" => (32, 8, 32),
+                "Canyon" => (64, 16, 64),
+                "Lagoon" => (32, 8, 32),
+                _ => throw new Exception(),
+            };
         }
 
         /// <summary>

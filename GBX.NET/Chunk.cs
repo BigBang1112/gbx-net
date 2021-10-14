@@ -29,9 +29,9 @@ namespace GBX.NET
 
         public int Progress { get; set; }
 
-        public Chunk()
+        protected Chunk(CMwNod node)
         {
-            
+            Node = node;
         }
 
         public override int GetHashCode()
@@ -49,20 +49,20 @@ namespace GBX.NET
             return $"Chunk 0x{ID:X8}";
         }
 
-        public bool Equals(Chunk chunk) => chunk != null && chunk.ID == ID;
+        public bool Equals(Chunk? chunk) => chunk is not null && chunk.ID == ID;
 
         protected internal GameBoxReader CreateReader(Stream input)
         {
             if (this is ILookbackable l)
                 return new GameBoxReader(input, l);
-            return new GameBoxReader(input, GBX.Body);
+            return new GameBoxReader(input, GBX?.Body);
         }
 
         protected internal GameBoxWriter CreateWriter(Stream input)
         {
             if (this is ILookbackable l)
                 return new GameBoxWriter(input, l);
-            return new GameBoxWriter(input, GBX.Body);
+            return new GameBoxWriter(input, GBX?.Body);
         }
 
         public static uint Remap(uint chunkID, IDRemap remap = IDRemap.Latest)
@@ -114,14 +114,14 @@ namespace GBX.NET
         public bool IsHeader => this is IHeaderChunk;
         public bool IsBody => !IsHeader;
 
-        public Chunk()
+        protected Chunk() : base(null!)
         {
-            
+
         }
 
-        public Chunk(T node)
+        protected Chunk(T node) : base(node)
         {
-            Node = node;
+            
         }
 
         public override void Read(CMwNod n, GameBoxReader r)

@@ -34,7 +34,7 @@ namespace GBX.NET
 
         }
 
-        public GameBoxReader(Stream input, ILookbackable lookbackable) : this(input)
+        public GameBoxReader(Stream input, ILookbackable? lookbackable) : this(input)
         {
             Lookbackable = lookbackable;
 
@@ -385,7 +385,7 @@ namespace GBX.NET
 
             // If index is 0 or bigger and the node wasn't read yet, or is null
             if (index >= 0 && (!body.AuxilaryNodes.ContainsKey(index) || body.AuxilaryNodes[index] == null))
-                body.AuxilaryNodes[index] = CMwNod.Parse<T>(this);
+                body.AuxilaryNodes[index] = CMwNod.Parse<T>(this)!;
 
             if (index < 0) // If aux node index is below 0 then there's not much to solve
                 return null;

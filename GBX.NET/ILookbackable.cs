@@ -7,7 +7,7 @@ namespace GBX.NET
     /// </summary>
     public interface ILookbackable
     {
-        GameBox GBX { get; }
+        GameBox? GBX { get; }
 
         int? IdVersion { get; set; }
         List<string> IdStrings { get; set; }

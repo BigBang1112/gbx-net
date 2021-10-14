@@ -25,17 +25,8 @@ namespace GBX.NET
         /// Assigns an ID to a chunk.
         /// </summary>
         /// <param name="chunkID">Full ID of the chunk.</param>
-        public ChunkAttribute(uint chunkID) : this(chunkID, false)
-        {
-
-        }
-
-        /// <summary>
-        /// Assigns an ID to a chunk.
-        /// </summary>
-        /// <param name="chunkID">Full ID of the chunk.</param>
-        /// <param name="processSync">If the chunk should be read immediately after finding. You should always set this to true if the chunk is skippable (or in header) and contains a lookback string (or meta). This setting is ignored for unskippable chunks (those inheriting <see cref="Chunk{T}"/>).</param>
-        public ChunkAttribute(uint chunkID, bool processSync) : this(chunkID, processSync, null)
+        /// <param name="description">Very short description of the chunk.</param>
+        public ChunkAttribute(uint chunkID, string description = "") : this(chunkID, false, description)
         {
             
         }
@@ -44,19 +35,9 @@ namespace GBX.NET
         /// Assigns an ID to a chunk.
         /// </summary>
         /// <param name="chunkID">Full ID of the chunk.</param>
-        /// <param name="description">Very short description of the chunk.</param>
-        public ChunkAttribute(uint chunkID, string description) : this(chunkID, false, description)
-        {
-
-        }
-
-        /// <summary>
-        /// Assigns an ID to a chunk.
-        /// </summary>
-        /// <param name="chunkID">Full ID of the chunk.</param>
         /// <param name="processSync">If the chunk should be read immediately after finding. You should always set this to true if the chunk is skippable (or in header) and contains a lookback string (or meta). This setting is ignored for unskippable chunks (those inheriting <see cref="Chunk{T}"/>).</param>
         /// <param name="description">Very short description of the chunk.</param>
-        public ChunkAttribute(uint chunkID, bool processSync, string description)
+        public ChunkAttribute(uint chunkID, bool processSync, string description = "")
         {
             ID = chunkID;
             ProcessSync = processSync;

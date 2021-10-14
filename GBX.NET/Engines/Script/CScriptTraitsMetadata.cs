@@ -124,18 +124,12 @@ namespace GBX.NET.Engines.Script
             {
                 var varType = r.ReadByte();
 
-                switch ((ScriptType)varType)
+                types[i] = ((ScriptType)varType) switch
                 {
-                    case ScriptType.Array:
-                        types[i] = ReadScriptArray();
-                        break;
-                    case ScriptType.Struct:
-                        types[i] = ReadScriptStruct(out int defaultLength);
-                        break;
-                    default:
-                        types[i] = new ScriptVariable((ScriptType)varType);
-                        break;
-                }
+                    ScriptType.Array => ReadScriptArray(),
+                    ScriptType.Struct => ReadScriptStruct(out int defaultLength),
+                    _ => new ScriptVariable((ScriptType)varType),
+                };
             }
 
             var varCount = r.ReadByte();
@@ -306,7 +300,7 @@ namespace GBX.NET.Engines.Script
                         type.Value = r.ReadInt2();
                         break;
                     case ScriptType.Array:
-                        var array = type as ScriptArray;
+                        var array = (ScriptArray)type;
 
                         var numElements = r.ReadByte();
                         if (numElements > 0)
@@ -326,7 +320,7 @@ namespace GBX.NET.Engines.Script
                         }
                         break;
                     case ScriptType.Struct:
-                        var strc = type as ScriptStruct;
+                        var strc = (ScriptStruct)type;
                         for (var i = 0; i < strc.Members.Length; i++)
                             strc.Members[i] = ReadType(strc.Members[i]);
                         break;
@@ -349,7 +343,7 @@ namespace GBX.NET.Engines.Script
             for (var i = 0; i < Metadata.Count; i++)
             {
                 var type = Metadata[i].Clone();
-                type.Name = null;
+                type.Name = null!;
                 type.Clear();
 
                 bool exists = false;
@@ -372,7 +366,7 @@ namespace GBX.NET.Engines.Script
 
             w.Write((byte)listOfTypes.Count);
 
-            foreach(var t in listOfTypes)
+            foreach (var t in listOfTypes)
             {
                 w.Write((byte)t.Type);
                 if (t.Type == ScriptType.Array)
@@ -494,11 +488,11 @@ namespace GBX.NET.Engines.Script
                         w.Write((Int2)type.Value);
                         break;
                     case ScriptType.Array:
-                        var array = type as ScriptArray;
+                        var array = (ScriptArray)type;
 
                         w.Write((byte)array.Elements.Count);
 
-                        if(array.Elements.Count > 0)
+                        if (array.Elements.Count > 0)
                         {
                             if (array.Reference.Key.Type != ScriptType.Void)
                                 WriteType(array.Reference.Key);
@@ -508,7 +502,7 @@ namespace GBX.NET.Engines.Script
                         }
                         break;
                     case ScriptType.Struct:
-                        var strc = type as ScriptStruct;
+                        var strc = (ScriptStruct)type;
                         foreach (var m in strc.Members)
                             WriteType(m);
                         break;
@@ -529,12 +523,14 @@ namespace GBX.NET.Engines.Script
 
             public ScriptVariable(ScriptType type)
             {
+                Name = null!;
+                Value = null!;
                 Type = type;
             }
 
             public virtual ScriptVariable Clone()
             {
-                return this.Copy();
+                return this.Copy()!;
             }
 
             /// <summary>
@@ -589,7 +585,7 @@ namespace GBX.NET.Engines.Script
                         m.Clear();
                 }
                 else
-                    Value = null;
+                    Value = null!;
             }
 
             public override string ToString()
@@ -646,7 +642,8 @@ namespace GBX.NET.Engines.Script
 
             public ScriptStruct() : base(ScriptType.Struct)
             {
-
+                StructName = "";
+                Members = new ScriptVariable[0];
             }
 
             public override string ToString()

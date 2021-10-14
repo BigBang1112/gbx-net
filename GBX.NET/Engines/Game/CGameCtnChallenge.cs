@@ -1924,10 +1924,10 @@ namespace GBX.NET.Engines.Game
                     if (blockUnits.Length > 1) // Optimization for blocks that are simple 1x1 size
                     {
                         var blockAllCoords = Array.ConvertAll(blockUnits.Select(x => x.Coord).ToArray(), x => (Int3)x); // Gets the coords in Int3 type
-                        
+
                         var blockMax = new Int3(blockAllCoords.Select(x => x.X).Max(), blockAllCoords.Select(x => x.Y).Max(), blockAllCoords.Select(x => x.Z).Max());
                         // Calculates only the maximum, due to all macroblocks having a natural minimum of (0, 0, 0)
-                        
+
                         blockCenter = blockMax * .5f;
                         blockCoord += (blockCenter.X, 0, blockCenter.Z);
                         // Makes the block pretend that it has a centered coordinates for the whole macroblock rotation
@@ -1973,21 +1973,24 @@ namespace GBX.NET.Engines.Game
 
             var blockSize = Collection.GetBlockSize();
 
-            foreach (var item in macroblock.AnchoredObjects)
+            if (macroblock.AnchoredObjects is not null)
             {
-                var itemRadians = (float)((int)dir * Math.PI / 2);
-                var blockCenterVec = size * blockSize * new Vec3(0.5f, 0f, 0.5f);
-                var offsetPos = AdditionalMath.RotateAroundCenter(item.AbsolutePositionInMap, blockCenterVec, itemRadians);
-                offsetPos -= newMin * blockSize;
+                foreach (var item in macroblock.AnchoredObjects)
+                {
+                    var itemRadians = (float)((int)dir * Math.PI / 2);
+                    var blockCenterVec = size * blockSize * new Vec3(0.5f, 0f, 0.5f);
+                    var offsetPos = AdditionalMath.RotateAroundCenter(item.AbsolutePositionInMap, blockCenterVec, itemRadians);
+                    offsetPos -= newMin * blockSize;
 
-                Int3 offsetCollection = (0, blockSize.Y, 0);
+                    Int3 offsetCollection = (0, blockSize.Y, 0);
 
-                if (TryGetChunk(out Chunk0304301F? chunk01F))
-                    if (chunk01F is not null)
-                        if (chunk01F.Version <= 1)
-                            offsetCollection += (32, 0, 32);
-                
-                PlaceAnchoredObject(item.ItemModel, offsetPos + coord * blockSize + offsetCollection, item.PitchYawRoll + (-itemRadians, 0f, 0f));
+                    if (TryGetChunk(out Chunk0304301F? chunk01F))
+                        if (chunk01F is not null)
+                            if (chunk01F.Version <= 1)
+                                offsetCollection += (32, 0, 32);
+
+                    PlaceAnchoredObject(item.ItemModel, offsetPos + coord * blockSize + offsetCollection, item.PitchYawRoll + (-itemRadians, 0f, 0f));
+                }
             }
 
             foreach (var freeBlock in macroblock.Blocks.Where(x => x.IsFree))
@@ -3858,6 +3861,9 @@ namespace GBX.NET.Engines.Game
                 {
                     if (embed is GameBox<CGameItemModel> gbxItem)
                     {
+                        if (gbxItem.FileName is null)
+                            continue;
+
                         var id = gbxItem.FileName;
                         var dirs = id.Split('/', '\\');
                         for (var i = 0; i < dirs.Length; i++)

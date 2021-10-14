@@ -16,6 +16,7 @@ namespace GBX.NET
         public FreeBlock(CGameCtnBlock block)
         {
             Block = block;
+            SnapPoints = new Vec3[0];
         }
     }
 }

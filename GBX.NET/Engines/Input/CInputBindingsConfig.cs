@@ -15,7 +15,8 @@ namespace GBX.NET.Engines.Input
 
         private CInputBindingsConfig()
         {
-            
+            Devices = null!;
+            Bindings = null!;
         }
 
         [Chunk(0x13006000)]
@@ -57,12 +58,12 @@ namespace GBX.NET.Engines.Input
             public int U02;
 
             public int KeyCode { get; set; }
-            public string DeviceGuid { get; set; }
-            public string Action { get; set; }
+            public string? DeviceGuid { get; set; }
+            public string? Action { get; set; }
 
             public override string ToString()
             {
-                return $"[{DeviceGuid}] {Action}: {KeyCode}";
+                return $"[{DeviceGuid ?? "unknown"}] {Action ?? "unknown"}: {KeyCode}";
             }
         }
     }

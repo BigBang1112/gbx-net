@@ -16,7 +16,7 @@
             Author = author;
         }
 
-        public Ident(string id) : this(id, new Collection(), null)
+        public Ident(string id) : this(id, new Collection(), string.Empty)
         {
             
         }

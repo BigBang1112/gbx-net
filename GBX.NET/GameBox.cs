@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.ExceptionServices;
-
+using System.Security;
 using GBX.NET.Engines.MwFoundations;
 using GBX.NET.Exceptions;
 
@@ -26,9 +26,9 @@ namespace GBX.NET
         /// <summary>
         /// Body part, storing information about the node that realistically affects the game.
         /// </summary>
-        public new GameBoxBody<T> Body
+        public new GameBoxBody<T>? Body
         {
-            get => (GameBoxBody<T>)base.Body;
+            get => base.Body as GameBoxBody<T>;
             protected set => base.Body = value;
         }
 
@@ -53,7 +53,7 @@ namespace GBX.NET
         /// Creates an empty GameBox object based on defined <see cref="GameBoxHeaderInfo"/>.
         /// </summary>
         /// <param name="header">Header info to use.</param>
-        public GameBox(GameBoxHeaderInfo header) : base(header)
+        private GameBox(GameBoxHeaderInfo header) : base(header)
         {
             Header = new GameBoxHeader<T>(this);
             Body = new GameBoxBody<T>(this);
@@ -232,6 +232,9 @@ namespace GBX.NET
 
         protected internal override bool ReadBody(GameBoxReader reader, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress)
         {
+            if (Body is null)
+                return false;
+
             Log.Write("Reading the body...");
 
             switch (Header.CompressionOfBody)
@@ -267,35 +270,37 @@ namespace GBX.NET
 
         internal void Write(GameBoxWriter w, IDRemap remap)
         {
+            if (Body is null)
+                return;
+
             // It needs to be sure that the Body and Part are assigned to the correct GameBox body
             AssignGBXToNode();
 
-            using (MemoryStream ms = new MemoryStream())
-            using (GameBoxWriter bodyW = new GameBoxWriter(ms, Body))
-            {
-                (Body as ILookbackable).IdWritten = false;
-                (Body as ILookbackable).IdStrings.Clear();
-                Body.AuxilaryNodes.Clear();
+            using MemoryStream ms = new MemoryStream();
+            using GameBoxWriter bodyW = new GameBoxWriter(ms, Body);
 
-                Log.Write("Writing the body...");
+            (Body as ILookbackable).IdWritten = false;
+            (Body as ILookbackable).IdStrings.Clear();
+            Body.AuxilaryNodes.Clear();
 
-                Body.Write(bodyW, remap); // Body is written first so that the aux node count is determined properly
+            Log.Write("Writing the body...");
 
-                Log.Write("Writing the header...");
+            Body.Write(bodyW, remap); // Body is written first so that the aux node count is determined properly
 
-                (Header as ILookbackable).IdWritten = false;
-                (Header as ILookbackable).IdStrings.Clear();
-                Header.Write(w, Body.AuxilaryNodes.Count + 1, remap);
+            Log.Write("Writing the header...");
 
-                Log.Write("Writing the reference table...");
+            (Header as ILookbackable).IdWritten = false;
+            (Header as ILookbackable).IdStrings.Clear();
+            Header.Write(w, Body.AuxilaryNodes.Count + 1, remap);
 
-                if (RefTable == null)
-                    w.Write(0);
-                else
-                    RefTable.Write(w);
+            Log.Write("Writing the reference table...");
 
-                w.Write(ms.ToArray(), 0, (int)ms.Length);
-            }
+            if (RefTable == null)
+                w.Write(0);
+            else
+                RefTable.Write(w);
+
+            w.Write(ms.ToArray(), 0, (int)ms.Length);
         }
 
         internal void Write(GameBoxWriter w)
@@ -310,8 +315,8 @@ namespace GBX.NET
         /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
         public void Save(Stream stream, IDRemap remap)
         {
-            using (var w = new GameBoxWriter(stream))
-                Write(w, remap);
+            using var w = new GameBoxWriter(stream);
+            Write(w, remap);
         }
 
         /// <summary>
@@ -328,6 +333,12 @@ namespace GBX.NET
         /// </summary>
         /// <param name="fileName">Relative or absolute file path.</param>
         /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
+        /// <exception cref="ArgumentException"><paramref name="fileName"/> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by System.IO.Path.InvalidPathChars.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="fileName"/> is null.</exception>
+        /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.</exception>
+        /// <exception cref="DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive).</exception>
+        /// <exception cref="UnauthorizedAccessException"><paramref name="fileName"/> specified a file that is read-only. -or- <paramref name="fileName"/> specified a file that is hidden. -or- This operation is not supported on the current platform. -or- <paramref name="fileName"/> specified a directory. -or- The caller does not have the required permission.</exception>
+        /// <exception cref="NotSupportedException"><paramref name="fileName"/> is in an invalid format.</exception>
         public void Save(string fileName, IDRemap remap)
         {
             using (var fs = File.OpenWrite(fileName))
@@ -340,6 +351,12 @@ namespace GBX.NET
         /// Saves the serialized <see cref="GameBox{T}"/> on a disk.
         /// </summary>
         /// <param name="fileName">Relative or absolute file path.</param>
+        /// <exception cref="ArgumentException"><paramref name="fileName"/> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by System.IO.Path.InvalidPathChars.</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="fileName"/> is null.</exception>
+        /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.</exception>
+        /// <exception cref="DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive).</exception>
+        /// <exception cref="UnauthorizedAccessException"><paramref name="fileName"/> specified a file that is read-only. -or- <paramref name="fileName"/> specified a file that is hidden. -or- This operation is not supported on the current platform. -or- <paramref name="fileName"/> specified a directory. -or- The caller does not have the required permission.</exception>
+        /// <exception cref="NotSupportedException"><paramref name="fileName"/> is in an invalid format.</exception>
         public void Save(string fileName)
         {
             Save(fileName, IDRemap.Latest);
@@ -349,16 +366,36 @@ namespace GBX.NET
         /// Saves the serialized <see cref="GameBox{T}"/> on the defined <see cref="GameBox.FileName"/>.
         /// </summary>
         /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
+        /// <exception cref="PropertyNullException"></exception>
+        /// <exception cref="ArgumentException"><see cref="GameBox.FileName"/> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by System.IO.Path.InvalidPathChars.</exception>
+        /// <exception cref="ArgumentNullException"><see cref="GameBox.FileName"/> is null.</exception>
+        /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.</exception>
+        /// <exception cref="DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive).</exception>
+        /// <exception cref="UnauthorizedAccessException"><see cref="GameBox.FileName"/> specified a file that is read-only. -or- <see cref="GameBox.FileName"/> specified a file that is hidden. -or- This operation is not supported on the current platform. -or- <see cref="GameBox.FileName"/> specified a directory. -or- The caller does not have the required permission.</exception>
+        /// <exception cref="NotSupportedException"><see cref="GameBox.FileName"/> is in an invalid format.</exception>
         public void Save(IDRemap remap)
         {
+            if (FileName is null)
+                throw new PropertyNullException(nameof(FileName));
+
             Save(FileName, remap);
         }
 
         /// <summary>
         /// Saves the serialized <see cref="GameBox{T}"/> on the defined <see cref="GameBox.FileName"/>.
         /// </summary>
+        /// <exception cref="PropertyNullException"></exception>
+        /// <exception cref="ArgumentException"><see cref="GameBox.FileName"/> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by System.IO.Path.InvalidPathChars.</exception>
+        /// <exception cref="ArgumentNullException"><see cref="GameBox.FileName"/> is null.</exception>
+        /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.</exception>
+        /// <exception cref="DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive).</exception>
+        /// <exception cref="UnauthorizedAccessException"><see cref="GameBox.FileName"/> specified a file that is read-only. -or- <see cref="GameBox.FileName"/> specified a file that is hidden. -or- This operation is not supported on the current platform. -or- <see cref="GameBox.FileName"/> specified a directory. -or- The caller does not have the required permission.</exception>
+        /// <exception cref="NotSupportedException"><see cref="GameBox.FileName"/> is in an invalid format.</exception>
         public void Save()
         {
+            if (FileName is null)
+                throw new PropertyNullException(nameof(FileName));
+
             Save(FileName, IDRemap.Latest);
         }
 
@@ -386,7 +423,7 @@ namespace GBX.NET
         /// </summary>
         public GameBoxHeaderInfo Header { get; }
 
-        public GameBoxBody Body { get; protected set; }
+        public GameBoxBody? Body { get; protected set; }
 
         public CMwNod Node { get; internal set; }
 
@@ -402,28 +439,30 @@ namespace GBX.NET
         /// <summary>
         /// Reference table, referencing other GBX.
         /// </summary>
-        public GameBoxRefTable RefTable { get; private set; }
+        public GameBoxRefTable? RefTable { get; private set; }
 
         /// <summary>
         /// File path of the GameBox.
         /// </summary>
-        public string FileName { get; set; }
+        public string? FileName { get; set; }
 
         /// <summary>
         /// Creates an empty GameBox object version 6.
         /// </summary>
-        public GameBox(uint id)
+        private GameBox(uint id)
         {
             Header = new GameBoxHeaderInfo(id);
+            Node = null!;
         }
 
         /// <summary>
         /// Creates an empty GameBox object based on defined <see cref="GameBoxHeaderInfo"/>.
         /// </summary>
         /// <param name="headerInfo">Header info to use.</param>
-        public GameBox(GameBoxHeaderInfo headerInfo)
+        protected GameBox(GameBoxHeaderInfo headerInfo)
         {
             Header = headerInfo ?? throw new ArgumentNullException(nameof(headerInfo));
+            Node = null!;
         }
 
         /// <summary>
@@ -436,7 +475,7 @@ namespace GBX.NET
         {
             var property = GetType().GetProperty("MainNode");
 
-            if (property != null && property.PropertyType == typeof(T))
+            if (property?.PropertyType == typeof(T))
             {
                 node = (T)property.GetValue(this);
                 return true;
@@ -494,7 +533,7 @@ namespace GBX.NET
                 if (NodeCacheManager.AvailableClasses.TryGetValue(header.ID.Value, out Type availableClass))
                 {
                     var gbxType = typeof(GameBox<>).MakeGenericType(availableClass);
-                    gbx = (GameBox)Activator.CreateInstance(gbxType, header);
+                    gbx = (GameBox)Activator.CreateInstance(gbxType, BindingFlags.NonPublic | BindingFlags.Instance, null, new object[] { header }, null);
 
                     var processHeaderMethod = gbxType.GetMethod(nameof(ProcessHeader), BindingFlags.Instance | BindingFlags.NonPublic);
                     processHeaderMethod.Invoke(gbx, new object?[] { progress });
@@ -517,8 +556,8 @@ namespace GBX.NET
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
         public static GameBox ParseHeader(Stream stream, IProgress<GameBoxReadProgress>? progress = null)
         {
-            using (var r = new GameBoxReader(stream))
-                return ParseHeader(r, progress);
+            using var r = new GameBoxReader(stream);
+            return ParseHeader(r, progress);
         }
 
         /// <summary>
@@ -529,12 +568,10 @@ namespace GBX.NET
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
         public static GameBox ParseHeader(string fileName, IProgress<GameBoxReadProgress>? progress = null)
         {
-            using (var fs = File.OpenRead(fileName))
-            {
-                var gbx = ParseHeader(fs, progress);
-                gbx.FileName = fileName;
-                return gbx;
-            }
+            using var fs = File.OpenRead(fileName);
+            var gbx = ParseHeader(fs, progress);
+            gbx.FileName = fileName;
+            return gbx;
         }
 
         /// <summary>
@@ -939,8 +976,8 @@ namespace GBX.NET
         /// <returns>ID of the main node presented in GBX. Null if not a GBX stream.</returns>
         public static uint? ReadNodeID(Stream stream)
         {
-            using (var r = new GameBoxReader(stream))
-                return ReadNodeID(r);
+            using var r = new GameBoxReader(stream);
+            return ReadNodeID(r);
         }
 
         /// <summary>
@@ -950,8 +987,8 @@ namespace GBX.NET
         /// <returns>ID of the main node presented in GBX. Null if not a GBX stream.</returns>
         public static uint? ReadNodeID(string fileName)
         {
-            using (var fs = File.OpenRead(fileName))
-                return ReadNodeID(fs);
+            using var fs = File.OpenRead(fileName);
+            return ReadNodeID(fs);
         }
 
         /// <summary>
@@ -961,8 +998,8 @@ namespace GBX.NET
         /// <returns>Type of the main node.</returns>
         public static Type? ReadNodeType(string fileName)
         {
-            using (var fs = File.OpenRead(fileName))
-                return ReadNodeType(fs);
+            using var fs = File.OpenRead(fileName);
+            return ReadNodeType(fs);
         }
 
         /// <summary>
@@ -972,8 +1009,8 @@ namespace GBX.NET
         /// <returns>Type of the main node.</returns>
         public static Type? ReadNodeType(Stream stream)
         {
-            using (var r = new GameBoxReader(stream))
-                return ReadNodeType(r);
+            using var r = new GameBoxReader(stream);
+            return ReadNodeType(r);
         }
 
         private static Type? ReadNodeType(GameBoxReader reader)

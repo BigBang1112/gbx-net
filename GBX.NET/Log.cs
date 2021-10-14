@@ -9,8 +9,8 @@ namespace GBX.NET
         public delegate void OnLog(string text, ConsoleColor color);
         public delegate void OnPush(int amount);
 
-        public static event OnLog OnLogEvent;
-        public static event OnPush OnPushEvent;
+        public static event OnLog? OnLogEvent;
+        public static event OnPush? OnPushEvent;
 
         public static List<string> MainLog { get; }
         public static Dictionary<string, StringWriter> AlternativeLogs { get; }

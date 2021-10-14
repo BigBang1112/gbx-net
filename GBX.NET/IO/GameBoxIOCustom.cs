@@ -16,7 +16,7 @@ namespace GBX.NET.IO
         /// <summary>
         /// Input GBX.
         /// </summary>
-        protected GameBox InputGBX { get; private set; }
+        protected GameBox? InputGBX { get; private set; }
 
         /// <summary>
         /// Output GBX.
@@ -36,8 +36,11 @@ namespace GBX.NET.IO
             GBX = gbx;
         }
 
-        protected IEnumerable<CGameCtnGhost> ExtractGhosts(CGameCtnMediaClip clip)
+        protected IEnumerable<CGameCtnGhost> ExtractGhosts(CGameCtnMediaClip? clip)
         {
+            if (clip is null)
+                yield break;
+
             foreach (var track in clip.Tracks)
                 foreach (var block in track.Blocks)
                     if (block is CGameCtnMediaBlockGhost ghostBlock)
@@ -46,7 +49,7 @@ namespace GBX.NET.IO
 
         protected IEnumerable<CGameCtnGhost> ExtractGhosts(CGameCtnReplayRecord replay)
         {
-            if (replay.Ghosts != null)
+            if (replay.Ghosts.Length > 0)
                 return replay.Ghosts;
 
             return ExtractGhosts(replay.Clip);
