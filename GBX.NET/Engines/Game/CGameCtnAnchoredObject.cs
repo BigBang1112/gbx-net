@@ -133,7 +133,7 @@ namespace GBX.NET.Engines.Game
         {
             get
             {
-                GBX.Node.DiscoverChunk<CGameCtnChallenge.Chunk03043062>();
+                GBX?.Node.DiscoverChunk<CGameCtnChallenge.Chunk03043062>();
 
                 return color;
             }
