@@ -276,8 +276,8 @@ namespace GBX.NET
             // It needs to be sure that the Body and Part are assigned to the correct GameBox body
             AssignGBXToNode();
 
-            using MemoryStream ms = new MemoryStream();
-            using GameBoxWriter bodyW = new GameBoxWriter(ms, Body);
+            using var ms = new MemoryStream();
+            using var bodyW = new GameBoxWriter(ms, Body);
 
             (Body as ILookbackable).IdWritten = false;
             (Body as ILookbackable).IdStrings.Clear();

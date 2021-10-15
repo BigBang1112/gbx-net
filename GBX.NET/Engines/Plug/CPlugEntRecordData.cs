@@ -113,64 +113,63 @@ namespace GBX.NET.Engines.Plug
                                 {
                                     var unknownData = new byte[buffer.Length];
 
-                                    using (var bufMs = new MemoryStream(buffer))
-                                    using (var bufR = new GameBoxReader(bufMs))
+                                    using var bufMs = new MemoryStream(buffer);
+                                    using var bufR = new GameBoxReader(bufMs);
+
+                                    var sampleProgress = (int)bufMs.Position;
+
+                                    var sample = new Sample()
                                     {
-                                        var sampleProgress = (int)bufMs.Position;
+                                        BufferType = (byte)bufferType
+                                    };
 
-                                        Sample sample = new Sample()
-                                        {
-                                            BufferType = (byte)bufferType
-                                        };
+                                    switch (bufferType)
+                                    {
+                                        case 0:
+                                            break;
+                                        case 2:
+                                            var buf2unknownData = bufR.ReadBytes(5);
+                                            Buffer.BlockCopy(buf2unknownData, 0, unknownData, 0, buf2unknownData.Length);
 
-                                        switch (bufferType)
-                                        {
-                                            case 0:
-                                                break;
-                                            case 2:
-                                                var buf2unknownData = bufR.ReadBytes(5);
-                                                Buffer.BlockCopy(buf2unknownData, 0, unknownData, 0, buf2unknownData.Length);
+                                            var (position, rotation, speed, velocity) = bufR.ReadTransform(); // Only position matches
 
-                                                var (position, rotation, speed, velocity) = bufR.ReadTransform(); // Only position matches
+                                            sample.Timestamp = TimeSpan.FromMilliseconds(timestamp);
+                                            sample.Position = position;
+                                            sample.Rotation = rotation;
+                                            sample.Speed = speed * 3.6f;
+                                            sample.Velocity = velocity;
 
-                                                sample.Timestamp = TimeSpan.FromMilliseconds(timestamp);
-                                                sample.Position = position;
-                                                sample.Rotation = rotation;
-                                                sample.Speed = speed * 3.6f;
-                                                sample.Velocity = velocity;
+                                            break;
+                                        case 4:
+                                            var buf4unknownData = bufR.ReadBytes(47);
+                                            Buffer.BlockCopy(buf4unknownData, 0, unknownData, 0, buf4unknownData.Length);
 
-                                                break;
-                                            case 4:
-                                                var buf4unknownData = bufR.ReadBytes(47);
-                                                Buffer.BlockCopy(buf4unknownData, 0, unknownData, 0, buf4unknownData.Length);
+                                            var buf4transform = bufR.ReadTransform();
 
-                                                var buf4transform = bufR.ReadTransform();
+                                            var buf4unknownData2 = bufR.ReadBytes(4);
 
-                                                var buf4unknownData2 = bufR.ReadBytes(4);
+                                            sample.Timestamp = TimeSpan.FromMilliseconds(timestamp);
+                                            sample.Position = buf4transform.position;
+                                            sample.Rotation = buf4transform.rotation;
+                                            sample.Speed = buf4transform.speed * 3.6f;
+                                            sample.Velocity = buf4transform.velocity;
+                                            sample.Unknown = buf4unknownData;
 
-                                                sample.Timestamp = TimeSpan.FromMilliseconds(timestamp);
-                                                sample.Position = buf4transform.position;
-                                                sample.Rotation = buf4transform.rotation;
-                                                sample.Speed = buf4transform.speed * 3.6f;
-                                                sample.Velocity = buf4transform.velocity;
-                                                sample.Unknown = buf4unknownData;
-
-                                                break;
-                                            case 10:
-                                                break;
-                                            default:
-                                                break;
-                                        }
-
-                                        sampleProgress = (int)(bufMs.Position - sampleProgress);
-
-                                        var moreUnknownData = bufR.ReadBytes((int)bufMs.Length - sampleProgress);
-                                        Buffer.BlockCopy(moreUnknownData, 0, unknownData, sampleProgress, moreUnknownData.Length);
-
-                                        sample.Unknown = unknownData;
-
-                                        samples.Add(sample);
+                                            break;
+                                        case 10:
+                                            break;
+                                        default:
+                                            break;
                                     }
+
+                                    sampleProgress = (int)(bufMs.Position - sampleProgress);
+
+                                    var moreUnknownData = bufR.ReadBytes((int)bufMs.Length - sampleProgress);
+                                    Buffer.BlockCopy(moreUnknownData, 0, unknownData, sampleProgress, moreUnknownData.Length);
+
+                                    sample.Unknown = unknownData;
+
+                                    samples.Add(sample);
                                 }
                             }
 

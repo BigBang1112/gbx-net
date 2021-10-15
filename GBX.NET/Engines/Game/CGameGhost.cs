@@ -216,12 +216,13 @@ namespace GBX.NET.Engines.Game
             {
                 if (compressed)
                 {
-                    using (var zlib = new CompressedStream(stream, CompressionMode.Decompress))
-                    {
-                        Compression = zlib.Compression;
-                        using (var r = new GameBoxReader(zlib))
-                            Read(r);
-                    }
+                    using var zlib = new CompressedStream(stream, CompressionMode.Decompress);
+
+                    Compression = zlib.Compression;
+
+                    using var r = new GameBoxReader(zlib);
+
+                    Read(r);
                 }
                 else
                 {
@@ -236,8 +237,8 @@ namespace GBX.NET.Engines.Game
             /// <param name="stream">Stream to read from.</param>
             public void Read(Stream stream)
             {
-                using (var r = new GameBoxReader(stream))
-                    Read(r);
+                using var r = new GameBoxReader(stream);
+                Read(r);
             }
 
             /// <summary>
@@ -298,93 +299,92 @@ namespace GBX.NET.Engines.Game
                 Samples = new ObservableCollection<Sample>();
                 Samples.CollectionChanged += Samples_CollectionChanged;
 
-                using (var r = new GameBoxReader(ms))
+                using var r = new GameBoxReader(ms);
+
+                for (var i = 0; i < numSamples; i++)
                 {
-                    for (var i = 0; i < numSamples; i++)
+                    var sample = new Sample();
+
+                    var sampleProgress = (int)ms.Position;
+
+                    byte[] unknownData;
+                    if (sizePerSample != -1)
+                        unknownData = new byte[ms.Length / sizePerSample];
+                    else if (sizesPerSample != null)
                     {
-                        var sample = new Sample();
-
-                        var sampleProgress = (int)ms.Position;
-
-                        byte[] unknownData;
-                        if (sizePerSample != -1)
-                            unknownData = new byte[ms.Length / sizePerSample];
-                        else if (sizesPerSample != null)
-                        {
-                            if (i == numSamples - 1) // Last sample size not included
-                                unknownData = new byte[(int)(ms.Length - ms.Position)];
-                            else
-                                unknownData = new byte[sizesPerSample[i]];
-                        }
-                        else throw new Exception();
-
-                        int? time = null;
-
-                        if (sampleTimes != null)
-                            time = sampleTimes[i];
-
-                        switch (NodeID)
-                        {
-                            case 0x0A02B000: // CSceneVehicleCar
-                                var (position, rotation, speed, velocity) = r.ReadTransform();
-
-                                sample.Position = position;
-                                sample.Rotation = rotation;
-                                sample.Speed = speed * 3.6f;
-                                sample.Velocity = velocity;
-
-                                break;
-                            case 0x0A401000: // CSceneMobilCharVis
-                                var bufferType = r.ReadByte();
-
-                                switch (bufferType)
-                                {
-                                    case 0:
-                                        var unknownData401 = r.ReadBytes(14);
-                                        Buffer.BlockCopy(unknownData401, 0, unknownData, 0, unknownData401.Length);
-
-                                        var transform401 = r.ReadTransform();
-
-                                        sample.Position = transform401.position;
-                                        sample.Rotation = transform401.rotation;
-                                        sample.Speed = transform401.speed * 3.6f;
-                                        sample.Velocity = transform401.velocity;
-
-                                        break;
-                                    case 1:
-                                        break;
-                                    default:
-                                        break;
-                                }
-
-                                sample.BufferType = bufferType;
-
-                                break;
-                            default:
-                                sample.BufferType = null;
-                                break;
-                        }
-
-                        sampleProgress = (int)(ms.Position - sampleProgress);
-
-                        if (sizePerSample != -1) // If the sample size is constant
-                        {
-                            var moreUnknownData = r.ReadBytes(sizePerSample - sampleProgress);
-                            Buffer.BlockCopy(moreUnknownData, 0, unknownData, sampleProgress, moreUnknownData.Length);
-                        }
-                        else if (sizesPerSample != null) // If sample sizes are different
-                        {
-                            var moreUnknownData = r.ReadBytes(unknownData.Length - sampleProgress);
-                            Buffer.BlockCopy(moreUnknownData, 0, unknownData, sampleProgress, moreUnknownData.Length);
-                        }
-                        else throw new Exception();
-
-                        sample.Unknown = unknownData;
-
-                        Samples.Add(sample);
-
-                        sample.AssignTo(this);
+                        if (i == numSamples - 1) // Last sample size not included
+                            unknownData = new byte[(int)(ms.Length - ms.Position)];
+                        else
+                            unknownData = new byte[sizesPerSample[i]];
                     }
+                    else throw new Exception();
+
+                    int? time = null;
+
+                    if (sampleTimes != null)
+                        time = sampleTimes[i];
+
+                    switch (NodeID)
+                    {
+                        case 0x0A02B000: // CSceneVehicleCar
+                            var (position, rotation, speed, velocity) = r.ReadTransform();
+
+                            sample.Position = position;
+                            sample.Rotation = rotation;
+                            sample.Speed = speed * 3.6f;
+                            sample.Velocity = velocity;
+
+                            break;
+                        case 0x0A401000: // CSceneMobilCharVis
+                            var bufferType = r.ReadByte();
+
+                            switch (bufferType)
+                            {
+                                case 0:
+                                    var unknownData401 = r.ReadBytes(14);
+                                    Buffer.BlockCopy(unknownData401, 0, unknownData, 0, unknownData401.Length);
+
+                                    var transform401 = r.ReadTransform();
+
+                                    sample.Position = transform401.position;
+                                    sample.Rotation = transform401.rotation;
+                                    sample.Speed = transform401.speed * 3.6f;
+                                    sample.Velocity = transform401.velocity;
+
+                                    break;
+                                case 1:
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                            sample.BufferType = bufferType;
+
+                            break;
+                        default:
+                            sample.BufferType = null;
+                            break;
+                    }
+
+                    sampleProgress = (int)(ms.Position - sampleProgress);
+
+                    if (sizePerSample != -1) // If the sample size is constant
+                    {
+                        var moreUnknownData = r.ReadBytes(sizePerSample - sampleProgress);
+                        Buffer.BlockCopy(moreUnknownData, 0, unknownData, sampleProgress, moreUnknownData.Length);
+                    }
+                    else if (sizesPerSample != null) // If sample sizes are different
+                    {
+                        var moreUnknownData = r.ReadBytes(unknownData.Length - sampleProgress);
+                        Buffer.BlockCopy(moreUnknownData, 0, unknownData, sampleProgress, moreUnknownData.Length);
+                    }
+                    else throw new Exception();
+
+                    sample.Unknown = unknownData;
+
+                    Samples.Add(sample);
+
+                    sample.AssignTo(this);
                 }
             }
 

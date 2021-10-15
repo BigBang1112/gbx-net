@@ -289,7 +289,7 @@ namespace GBX.NET.Engines.MwFoundations
 
                     var posBefore = r.BaseStream.Position;
 
-                    GameBoxReaderWriter gbxrw = new GameBoxReaderWriter(r);
+                    var gbxrw = new GameBoxReaderWriter(r);
 
                     var attributesAvailable = NodeCacheManager.AvailableChunkAttributes[type].TryGetValue(
                         chunkRemapped, out IEnumerable<Attribute> attributes);
@@ -375,7 +375,7 @@ namespace GBX.NET.Engines.MwFoundations
             {
                 counter++;
 
-                var logChunk = $"[{ClassName}] 0x{chunk.ID.ToString("X8")} ({((float)counter / Chunks.Count).ToString("0.00%")})";
+                var logChunk = $"[{ClassName}] 0x{chunk.ID:X8} ({(float)counter / Chunks.Count:0.00%})";
                 if (GBX is not null && GBX.ID.HasValue == true && GBX.ID.Value == ID)
                     Log.Write(logChunk);
                 else
@@ -390,39 +390,37 @@ namespace GBX.NET.Engines.MwFoundations
                     l.IdStrings.Clear();
                 }
 
-                using (var ms = new MemoryStream())
-                using (var msW = new GameBoxWriter(ms, w.Lookbackable))
+                using var ms = new MemoryStream();
+                using var msW = new GameBoxWriter(ms, w.Lookbackable);
+                var rw = new GameBoxReaderWriter(msW);
+
+                try
                 {
-                    var rw = new GameBoxReaderWriter(msW);
+                    if (chunk is ISkippableChunk s && !s.Discovered)
+                        s.Write(msW);
+                    else if (!Attribute.IsDefined(chunk.GetType(), typeof(AutoReadWriteChunkAttribute)))
+                        chunk.ReadWrite(this, rw);
+                    else
+                        msW.Write(chunk.Unknown.ToArray(), 0, (int)chunk.Unknown.Length);
 
-                    try
+                    w.Write(Chunk.Remap(chunk.ID, remap));
+
+                    if (chunk is ISkippableChunk)
                     {
-                        if (chunk is ISkippableChunk s && !s.Discovered)
-                            s.Write(msW);
-                        else if (!Attribute.IsDefined(chunk.GetType(), typeof(AutoReadWriteChunkAttribute)))
-                            chunk.ReadWrite(this, rw);
-                        else
-                            msW.Write(chunk.Unknown.ToArray(), 0, (int)chunk.Unknown.Length);
-
-                        w.Write(Chunk.Remap(chunk.ID, remap));
-
-                        if (chunk is ISkippableChunk)
-                        {
-                            w.Write(0x534B4950);
-                            w.Write((int)ms.Length);
-                        }
-
-                        w.Write(ms.ToArray(), 0, (int)ms.Length);
+                        w.Write(0x534B4950);
+                        w.Write((int)ms.Length);
                     }
-                    catch (NotImplementedException e)
+
+                    w.Write(ms.ToArray(), 0, (int)ms.Length);
+                }
+                catch (NotImplementedException e)
+                {
+                    if (chunk is ISkippableChunk)
                     {
-                        if (chunk is ISkippableChunk)
-                        {
-                            Debug.WriteLine(e.Message);
-                            Debug.WriteLine("Ignoring the skippable chunk from writing.");
-                        }
-                        else throw e; // Unskippable chunk must have a Write implementation
+                        Debug.WriteLine(e.Message);
+                        Debug.WriteLine("Ignoring the skippable chunk from writing.");
                     }
+                    else throw e; // Unskippable chunk must have a Write implementation
                 }
             }
 

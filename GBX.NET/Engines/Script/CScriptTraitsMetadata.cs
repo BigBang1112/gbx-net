@@ -169,7 +169,7 @@ namespace GBX.NET.Engines.Script
                 else
                     valueVar = new ScriptVariable((ScriptType)arrayType);
 
-                ScriptArray array = new ScriptArray(new KeyValuePair<ScriptVariable, ScriptVariable>(indexVar, valueVar));
+                var array = new ScriptArray(new KeyValuePair<ScriptVariable, ScriptVariable>(indexVar, valueVar));
 
                 int counterArray = 0;
                 while (r.ReadByte() == 0)
@@ -620,7 +620,7 @@ namespace GBX.NET.Engines.Script
 
             public override string ToString()
             {
-                StringBuilder result = new StringBuilder(Reference.Value.ToString());
+                var result = new StringBuilder(Reference.Value.ToString());
                 if (Reference.Key is ScriptArray)
                     result.Append($"[{Reference.Key as ScriptArray}]");
                 else

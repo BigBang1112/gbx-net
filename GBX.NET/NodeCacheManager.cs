@@ -60,50 +60,49 @@ namespace GBX.NET
         {
             var watch = Stopwatch.StartNew();
 
-            using (StringReader reader = new StringReader(Resources.ClassID))
+            using var reader = new StringReader(Resources.ClassID);
+
+            var en = "";
+            var engineName = "";
+
+            string line;
+            while ((line = reader.ReadLine()) != null)
             {
-                var en = "";
-                var engineName = "";
+                var ch = "000";
 
-                string line;
-                while ((line = reader.ReadLine()) != null)
+                var className = "";
+
+                if (line.StartsWith("  "))
                 {
-                    var ch = "000";
+                    var cl = line.Substring(2, 3);
+                    if (line.Length - 6 > 0) className = line.Substring(6);
 
-                    var className = "";
+                    var classIDString = $"{en}{cl}{ch}";
 
-                    if (line.StartsWith("  "))
+                    var extension = default(string);
+
+                    var classNameSplit = className.Split(' ');
+                    if (classNameSplit.Length > 1)
                     {
-                        var cl = line.Substring(2, 3);
-                        if (line.Length - 6 > 0) className = line.Substring(6);
+                        className = classNameSplit[0];
+                        extension = classNameSplit[1];
+                    }
 
-                        var classIDString = $"{en}{cl}{ch}";
-
-                        var extension = default(string);
-
-                        var classNameSplit = className.Split(' ');
-                        if (classNameSplit.Length > 1)
-                        {
-                            className = classNameSplit[0];
-                            extension = classNameSplit[1];
-                        }
-
-                        if (uint.TryParse(classIDString, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint classID))
-                        {
-                            Names[classID] = engineName + "::" + className;
-                            if (extension != null)
-                                Extensions[classID] = extension;
-                        }
-                        else
-                        {
-                            Debug.WriteLine($"Invalid class ID {classIDString}, skipping");
-                        }
+                    if (uint.TryParse(classIDString, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint classID))
+                    {
+                        Names[classID] = engineName + "::" + className;
+                        if (extension != null)
+                            Extensions[classID] = extension;
                     }
                     else
                     {
-                        en = line.Substring(0, 2);
-                        if (line.Length - 3 > 0) engineName = line.Substring(3);
+                        Debug.WriteLine($"Invalid class ID {classIDString}, skipping");
                     }
+                }
+                else
+                {
+                    en = line.Substring(0, 2);
+                    if (line.Length - 3 > 0) engineName = line.Substring(3);
                 }
             }
 
@@ -114,21 +113,20 @@ namespace GBX.NET
         {
             var watch = Stopwatch.StartNew();
 
-            using (StringReader reader = new StringReader(Resources.ClassIDMappings))
+            using var reader = new StringReader(Resources.ClassIDMappings);
+
+            string line;
+            while ((line = reader.ReadLine()) != null)
             {
-                string line;
-                while ((line = reader.ReadLine()) != null)
+                var valueKey = line.Split(new string[] { " -> " }, StringSplitOptions.None);
+                if (valueKey.Length == 2)
                 {
-                    var valueKey = line.Split(new string[] { " -> " }, StringSplitOptions.None);
-                    if (valueKey.Length == 2)
+                    if (uint.TryParse(valueKey[0], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint key)
+                    && uint.TryParse(valueKey[1], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint value))
                     {
-                        if (uint.TryParse(valueKey[0], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint key)
-                        && uint.TryParse(valueKey[1], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint value))
-                        {
-                            if (Mappings.ContainsValue(key)) // Virtual Skipper solution
-                                Mappings[Mappings.FirstOrDefault(x => x.Value == key).Key] = value;
-                            Mappings[key] = value;
-                        }
+                        if (Mappings.ContainsValue(key)) // Virtual Skipper solution
+                            Mappings[Mappings.FirstOrDefault(x => x.Value == key).Key] = value;
+                        Mappings[key] = value;
                     }
                 }
             }
@@ -182,7 +180,7 @@ namespace GBX.NET
                 var id = typePair.Key;
                 var type = typePair.Value;
 
-                List<uint> classes = new List<uint>();
+                var classes = new List<uint>();
 
                 Type currentType = type.BaseType;
 

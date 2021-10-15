@@ -183,43 +183,42 @@ namespace GBX.NET
                     }
                     else
                     {
-                        using (var userData = new MemoryStream())
-                        using (var gbxw = new GameBoxWriter(userData, this))
+                        using var userData = new MemoryStream();
+                        using var gbxw = new GameBoxWriter(userData, this);
+
+                        var gbxrw = new GameBoxReaderWriter(gbxw);
+
+                        var lengths = new Dictionary<uint, int>();
+
+                        foreach (var chunk in Chunks)
                         {
-                            var gbxrw = new GameBoxReaderWriter(gbxw);
+                            chunk.Unknown.Position = 0;
 
-                            Dictionary<uint, int> lengths = new Dictionary<uint, int>();
+                            var pos = userData.Position;
+                            if (((ISkippableChunk)chunk).Discovered)
+                                chunk.ReadWrite(((GameBox<T>)GBX).Node, gbxrw);
+                            else
+                                ((ISkippableChunk)chunk).Write(gbxw);
 
-                            foreach (var chunk in Chunks)
-                            {
-                                chunk.Unknown.Position = 0;
-
-                                var pos = userData.Position;
-                                if (((ISkippableChunk)chunk).Discovered)
-                                    chunk.ReadWrite(((GameBox<T>)GBX).Node, gbxrw);
-                                else
-                                    ((ISkippableChunk)chunk).Write(gbxw);
-
-                                lengths[chunk.ID] = (int)(userData.Position - pos);
-                            }
-
-                            // Actual data size plus the class id (4 bytes) and each length (4 bytes) plus the number of chunks integer
-                            w.Write((int)userData.Length + Chunks.Count * 8 + 4);
-
-                            // Write number of header chunks integer
-                            w.Write(Chunks.Count);
-
-                            foreach (Chunk chunk in Chunks)
-                            {
-                                w.Write(Chunk.Remap(chunk.ID, remap));
-                                var length = lengths[chunk.ID];
-                                if (((IHeaderChunk)chunk).IsHeavy)
-                                    length |= 1 << 31;
-                                w.Write(length);
-                            }
-
-                            w.Write(userData.ToArray(), 0, (int)userData.Length);
+                            lengths[chunk.ID] = (int)(userData.Position - pos);
                         }
+
+                        // Actual data size plus the class id (4 bytes) and each length (4 bytes) plus the number of chunks integer
+                        w.Write((int)userData.Length + Chunks.Count * 8 + 4);
+
+                        // Write number of header chunks integer
+                        w.Write(Chunks.Count);
+
+                        foreach (Chunk chunk in Chunks)
+                        {
+                            w.Write(Chunk.Remap(chunk.ID, remap));
+                            var length = lengths[chunk.ID];
+                            if (((IHeaderChunk)chunk).IsHeavy)
+                                length |= 1 << 31;
+                            w.Write(length);
+                        }
+
+                        w.Write(userData.ToArray(), 0, (int)userData.Length);
                     }
                 }
 

@@ -5,7 +5,9 @@ namespace GBX.NET.Engines.GameData
     [Node(0x2E01D000)]
     public sealed class CGameObjectModel : CMwNod
     {
+#pragma warning disable IDE1006
         public uint m_InventoryParams_InventoryOccupation { get; set; }
+#pragma warning restore IDE1006
 
         private CGameObjectModel()
         {
