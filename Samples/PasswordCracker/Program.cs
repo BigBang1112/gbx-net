@@ -10,19 +10,19 @@ namespace PasswordCracker
     {
         static void Main(string[] args)
         {
-            var fileName = args.FirstOrDefault();
-            if (fileName == null) return;
-
             Log.OnLogEvent += Log_OnLogEvent;
 
-            var node = GameBox.ParseNode(fileName);
-
-            if (node is CGameCtnChallenge map)
+            foreach (var fileName in args)
             {
-                map.CrackPassword();
+                var node = GameBox.ParseNode(fileName);
 
-                var savePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.GetFileName(fileName));
-                map.Save(savePath);
+                if (node is CGameCtnChallenge map)
+                {
+                    map.CrackPassword();
+
+                    var savePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.GetFileName(fileName));
+                    map.Save(savePath);
+                }
             }
         }
 

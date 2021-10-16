@@ -362,5 +362,3 @@ MigrationBackup/
 FodyWeavers.xsd
   
 .vscode/*
-
-Tests/
