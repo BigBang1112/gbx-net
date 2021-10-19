@@ -10,6 +10,13 @@ namespace GBX.NET.Tests.Integration
 {
     public class GameBoxTests
     {
+        [Theory]
+        [InlineData("Fall 2021 - 16.Map.Gbx")]
+        public void ParseMap(string fileName)
+        {
+            var node = GameBox.ParseNode(Path.Combine("Files", fileName));
+        }
+
         [Theory(DisplayName = "Parse/Save map without exceptions")]
         [InlineData("CCP#04 - ODYSSEY.Map.Gbx")]
         [InlineData("Summer 2021 - 25.Map.Gbx")]
