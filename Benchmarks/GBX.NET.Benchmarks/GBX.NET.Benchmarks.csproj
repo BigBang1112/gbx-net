@@ -1,13 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net5.0</TargetFramework>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<Content Include="Maps\**">
@@ -16,12 +17,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Maps\CCP#04 - ODYSSEY.Map.Gbx" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\..\src\GBX.NET.LZO\GBX.NET.LZO.csproj" />
-	  <ProjectReference Include="..\..\src\GBX.NET\GBX.NET.csproj" />
+		<ProjectReference Include="..\..\src\GBX.NET.LZO\GBX.NET.LZO.csproj" />
+		<ProjectReference Include="..\..\src\GBX.NET\GBX.NET.csproj" />
 	</ItemGroup>
 
 </Project>
