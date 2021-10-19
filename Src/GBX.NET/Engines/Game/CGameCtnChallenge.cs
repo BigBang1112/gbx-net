@@ -2779,8 +2779,8 @@ namespace GBX.NET.Engines.Game
 
                 var nbBlocks = r.ReadInt32(); // It's maybe slower but better for the program to determine the count from the list
 
-                n.blocks = new List<CGameCtnBlock>();
-
+                n.blocks = new List<CGameCtnBlock>(nbBlocks);
+                
                 var blockCounter = 0;
 
                 while ((r.PeekUInt32() & 0xC0000000) > 0)

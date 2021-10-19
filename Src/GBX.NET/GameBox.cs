@@ -59,6 +59,7 @@ namespace GBX.NET
             Body = new GameBoxBody<T>(this);
 
             Node = (T)Activator.CreateInstance(typeof(T), true);
+            Node.SetIDAndChunks();
             Node.GBX = this;
         }
 

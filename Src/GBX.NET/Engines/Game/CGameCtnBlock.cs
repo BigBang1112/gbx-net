@@ -45,12 +45,12 @@ namespace GBX.NET.Engines.Game
         [NodeMember]
         public string Name
         {
-            get => BlockModel.ID;
+            get => blockModel.ID;
             set
             {
-                if (BlockModel == null)
-                    BlockModel = new Ident(value);
-                else BlockModel = new Ident(value, BlockModel.Collection, BlockModel.Author);
+                if (blockModel == null)
+                    blockModel = new Ident(value);
+                else blockModel = new Ident(value, blockModel.Collection, blockModel.Author);
             }
         }
 
