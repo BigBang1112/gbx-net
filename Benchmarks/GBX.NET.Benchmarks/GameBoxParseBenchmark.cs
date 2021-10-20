@@ -39,12 +39,24 @@ namespace GBX.NET.Benchmarks
         public void GlobalSetup()
         {
             stream = new MemoryStream(File.ReadAllBytes(Path.Combine(folder, FileName)));
+            OnGlobalSetup();
+        }
+
+        public virtual void OnGlobalSetup()
+        {
+            
         }
 
         [IterationSetup]
         public void IterationSetup()
         {
             stream.Seek(0, SeekOrigin.Begin);
+            OnIterationSetup();
+        }
+
+        public virtual void OnIterationSetup()
+        {
+
         }
 
         [GlobalCleanup]
