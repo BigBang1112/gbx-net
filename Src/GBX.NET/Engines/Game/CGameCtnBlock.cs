@@ -39,6 +39,8 @@ namespace GBX.NET.Engines.Game
 
         #region Properties
 
+        public override uint ID => 0x03057000;
+
         /// <summary>
         /// Name of the block.
         /// </summary>

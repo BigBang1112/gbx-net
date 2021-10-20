@@ -13,17 +13,26 @@ namespace GBX.NET.Engines.MwFoundations
     [Node(0x01001000)]
     public class CMwNod
     {
+        private ChunkSet? chunks;
+
         [IgnoreDataMember]
         public GameBox? GBX { get; internal set; }
 
-        public ChunkSet Chunks { get; private set; }
+        public ChunkSet Chunks
+        {
+            get
+            {
+                chunks ??= new ChunkSet(this);
+                return chunks;
+            }
+        }
 
         /// <summary>
         /// Chunk where the aux node appeared
         /// </summary>
         public Chunk? ParentChunk { get; set; }
 
-        public uint ID { get; private set; }
+        public virtual uint ID { get; private set; }
         [Obsolete]
         public uint? FaultyChunk { get; private set; }
         [Obsolete]
@@ -48,7 +57,7 @@ namespace GBX.NET.Engines.MwFoundations
 
         protected CMwNod()
         {
-            Chunks = null!;
+
         }
 
         protected CMwNod(params Chunk[] chunks) : this()
@@ -66,7 +75,7 @@ namespace GBX.NET.Engines.MwFoundations
         {
             ID = ((NodeAttribute)NodeCacheManager.AvailableClassAttributes[GetType()]
                 .First(x => x is NodeAttribute)).ID;
-            Chunks = new ChunkSet(this);
+            chunks = new ChunkSet(this);
         }
 
         public static T?[] ParseArray<T>(GameBoxReader r) where T : CMwNod

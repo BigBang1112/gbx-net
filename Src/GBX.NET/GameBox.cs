@@ -96,6 +96,7 @@ namespace GBX.NET
             if (n == null) return;
 
             n.GBX = gbx; // Assign the GBX body to this body
+
             foreach (var chunk in n.Chunks)
                 chunk.GBX = gbx; // Assign each chunk to this body
 
