@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GBX.NET.Engines.Game;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,10 +12,20 @@ namespace GBX.NET.Tests.Integration
     public class GameBoxTests
     {
         [Theory]
-        [InlineData("Fall 2021 - 16.Map.Gbx")]
+        [InlineData("E03 - Ultimate Nightmare.Map.Gbx")]
         public void ParseMap(string fileName)
         {
             var node = GameBox.ParseNode(Path.Combine("Files", fileName));
+            node.DiscoverChunk<CGameCtnChallenge.Chunk03043044>();
+        }
+
+        [Theory]
+        [InlineData("RaceF7.Challenge.Gbx")]
+        public void ParseSaveMap(string fileName)
+        {
+            var node = GameBox.ParseNode(Path.Combine("Files", fileName));
+            using var ms = new MemoryStream();
+            node.Save(ms);
         }
 
         [Theory(DisplayName = "Parse/Save map without exceptions")]
