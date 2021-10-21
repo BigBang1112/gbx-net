@@ -117,6 +117,8 @@ namespace GBX.NET.Engines.Script
 
             Version = r.ReadInt32();
 
+            if (Version < 3) return;
+
             var typeCount = r.ReadByte();
             var types = new ScriptVariable[typeCount];
 
@@ -124,10 +126,10 @@ namespace GBX.NET.Engines.Script
             {
                 var varType = r.ReadByte();
 
-                types[i] = ((ScriptType)varType) switch
+                types[i] = (ScriptType)varType switch
                 {
-                    ScriptType.Array => ReadScriptArray(),
-                    ScriptType.Struct => ReadScriptStruct(out int defaultLength),
+                    ScriptType.Array => ReadScriptArray(r),
+                    ScriptType.Struct => ReadScriptStruct(out int _, r),
                     _ => new ScriptVariable((ScriptType)varType),
                 };
             }
@@ -141,195 +143,194 @@ namespace GBX.NET.Engines.Script
                 var typeIndex = r.ReadByte();
 
                 var type = types[typeIndex];
-                metadata[i] = ReadType(type.Clone());
+                metadata[i] = ReadType(type.Clone(), r);
                 metadata[i].Name = metadataVarName;
             }
 
             Metadata = metadata.ToList();
 
             var facade = r.ReadUInt32();
+        }
 
-            ScriptArray ReadScriptArray()
+        private static ScriptArray ReadScriptArray(GameBoxReader r)
+        {
+            ScriptVariable indexVar;
+
+            var indexType = r.ReadByte(); // index
+            if ((ScriptType)indexType == ScriptType.Struct)
+                indexVar = ReadScriptStruct(out int _, r);
+            else
+                indexVar = new ScriptVariable((ScriptType)indexType);
+
+            var arrayType = r.ReadByte(); // value
+
+            var valueVar = (ScriptType)arrayType switch
             {
-                ScriptVariable indexVar;
+                ScriptType.Array => ReadScriptArray(r),
+                ScriptType.Struct => ReadScriptStruct(out int _, r),
+                _ => new ScriptVariable((ScriptType)arrayType),
+            };
 
-                var indexType = r.ReadByte(); // index
-                if ((ScriptType)indexType == ScriptType.Struct)
-                    indexVar = ReadScriptStruct(out int defaultLength);
-                else
-                    indexVar = new ScriptVariable((ScriptType)indexType);
+            var array = new ScriptArray(new KeyValuePair<ScriptVariable, ScriptVariable>(indexVar, valueVar));
 
-                ScriptVariable valueVar;
+            int counterArray = 0;
+            while (r.ReadByte() == 0)
+                counterArray++;
+            r.BaseStream.Position -= 1;
 
-                var arrayType = r.ReadByte(); // value
-                if ((ScriptType)arrayType == ScriptType.Array)
-                    valueVar = ReadScriptArray();
-                else if ((ScriptType)arrayType == ScriptType.Struct)
-                    valueVar = ReadScriptStruct(out int defaultLength);
-                else
-                    valueVar = new ScriptVariable((ScriptType)arrayType);
+            array.Unknown = counterArray;
 
-                var array = new ScriptArray(new KeyValuePair<ScriptVariable, ScriptVariable>(indexVar, valueVar));
+            return array;
+        }
 
-                int counterArray = 0;
-                while (r.ReadByte() == 0)
-                    counterArray++;
-                r.BaseStream.Position -= 1;
-
-                array.Unknown = counterArray;
-
-                return array;
-            }
-
-            ScriptStruct ReadScriptStruct(out int defaultLength)
+        private static ScriptVariable ReadType(ScriptVariable type, GameBoxReader r)
+        {
+            switch (type.Type)
             {
-                var strc = new ScriptStruct();
+                case ScriptType.Boolean:
+                    type.Value = Convert.ToBoolean(r.ReadBoolean(true));
+                    break;
+                case ScriptType.Integer:
+                    type.Value = r.ReadInt32();
+                    break;
+                case ScriptType.Real:
+                    type.Value = r.ReadSingle();
+                    break;
+                case ScriptType.Text:
+                    type.Value = r.ReadString(StringLengthPrefix.Byte);
+                    break;
+                case ScriptType.Vec2:
+                    type.Value = r.ReadVec2();
+                    break;
+                case ScriptType.Vec3:
+                    type.Value = r.ReadVec3();
+                    break;
+                case ScriptType.Int3:
+                    type.Value = r.ReadInt3();
+                    break;
+                case ScriptType.Int2:
+                    type.Value = r.ReadInt2();
+                    break;
+                case ScriptType.Array:
+                    var array = (ScriptArray)type;
 
-                var numMembers = r.ReadByte();
-                var structName = r.ReadString();
-
-                strc.StructName = structName;
-                strc.Members = new ScriptVariable[numMembers];
-
-                defaultLength = 0;
-
-                for (var i = 0; i < numMembers; i++)
-                {
-                    ScriptVariable member;
-
-                    var memberName = r.ReadString();
-                    var memberType = r.ReadByte();
-
-                    switch ((ScriptType)memberType)
+                    var numElements = r.ReadByte();
+                    if (numElements > 0)
                     {
-                        case ScriptType.Array:
-                            member = ReadScriptArray();
-                            break;
-                        case ScriptType.Struct:
-                            member = ReadScriptStruct(out int defLength);
-                            defaultLength += defLength;
-                            break;
-                        default:
-                            member = new ScriptVariable((ScriptType)memberType);
-                            break;
-                    }
-
-                    switch (member.Type)
-                    {
-                        case ScriptType.Integer:
-                            r.ReadInt32();
-                            defaultLength += 4;
-                            break;
-                        case ScriptType.Real:
-                            r.ReadSingle();
-                            defaultLength += 4;
-                            break;
-                        case ScriptType.Vec2:
-                            r.ReadVec2();
-                            defaultLength += 8;
-                            break;
-                        case ScriptType.Vec3:
-                            r.ReadVec3();
-                            defaultLength += 12;
-                            break;
-                        case ScriptType.Int3:
-                            r.ReadInt3();
-                            defaultLength += 12;
-                            break;
-                        case ScriptType.Int2:
-                            r.ReadInt2();
-                            defaultLength += 8;
-                            break;
-                        case ScriptType.Array:
-                            break;
-                        case ScriptType.Struct:
-                            break;
-                        default:
-                            r.ReadByte();
-                            defaultLength += 1;
-                            break;
-                    }
-
-                    member.Name = memberName;
-
-                    strc.Members[i] = member;
-                }
-
-                int counter = 0;
-                while (r.ReadByte() == 0)
-                    counter++;
-                r.BaseStream.Position -= 1;
-
-                //int counter = 0;
-                //while (r.ReadByte() == 0) counter++; // probably size of the struct in byte count?
-                //r.BaseStream.Position -= 1;
-                strc.Size = defaultLength + counter; //
-                strc.Unknown = counter;
-
-                //Progress += defaultLength;
-
-                return strc;
-            }
-
-            ScriptVariable ReadType(ScriptVariable type)
-            {
-                switch (type.Type)
-                {
-                    case ScriptType.Boolean:
-                        type.Value = Convert.ToBoolean(r.ReadBoolean(true));
-                        break;
-                    case ScriptType.Integer:
-                        type.Value = r.ReadInt32();
-                        break;
-                    case ScriptType.Real:
-                        type.Value = r.ReadSingle();
-                        break;
-                    case ScriptType.Text:
-                        type.Value = r.ReadString(StringLengthPrefix.Byte);
-                        break;
-                    case ScriptType.Vec2:
-                        type.Value = r.ReadVec2();
-                        break;
-                    case ScriptType.Vec3:
-                        type.Value = r.ReadVec3();
-                        break;
-                    case ScriptType.Int3:
-                        type.Value = r.ReadInt3();
-                        break;
-                    case ScriptType.Int2:
-                        type.Value = r.ReadInt2();
-                        break;
-                    case ScriptType.Array:
-                        var array = (ScriptArray)type;
-
-                        var numElements = r.ReadByte();
-                        if (numElements > 0)
+                        ScriptVariable key;
+                        if (array.Reference.Key.Type == ScriptType.Void)
                         {
-                            ScriptVariable key;
-                            if (array.Reference.Key.Type == ScriptType.Void)
-                            {
-                                for (var i = 0; i < numElements; i++)
-                                    array.Elements[new ScriptVariable(ScriptType.Void) { Value = i }] = ReadType(array.Reference.Value.Clone());
-                            }
-                            else
-                            {
-                                key = ReadType(array.Reference.Key.Clone());
-                                for (var i = 0; i < numElements; i++)
-                                    array.Elements[key] = ReadType(array.Reference.Value.Clone());
-                            }
+                            for (var i = 0; i < numElements; i++)
+                                array.Elements[new ScriptVariable(ScriptType.Void) { Value = i }] = ReadType(array.Reference.Value.Clone(), r);
                         }
+                        else
+                        {
+                            key = ReadType(array.Reference.Key.Clone(), r);
+                            for (var i = 0; i < numElements; i++)
+                                array.Elements[key] = ReadType(array.Reference.Value.Clone(), r);
+                        }
+                    }
+                    break;
+                case ScriptType.Struct:
+                    var strc = (ScriptStruct)type;
+                    for (var i = 0; i < strc.Members.Length; i++)
+                        strc.Members[i] = ReadType(strc.Members[i], r);
+                    break;
+                default:
+                    throw new Exception(type.Type.ToString());
+            }
+
+            return type;
+        }
+
+        private static ScriptStruct ReadScriptStruct(out int defaultLength, GameBoxReader r)
+        {
+            var strc = new ScriptStruct();
+
+            var numMembers = r.ReadByte();
+            var structName = r.ReadString();
+
+            strc.StructName = structName;
+            strc.Members = new ScriptVariable[numMembers];
+
+            defaultLength = 0;
+
+            for (var i = 0; i < numMembers; i++)
+            {
+                ScriptVariable member;
+
+                var memberName = r.ReadString();
+                var memberType = r.ReadByte();
+
+                switch ((ScriptType)memberType)
+                {
+                    case ScriptType.Array:
+                        member = ReadScriptArray(r);
                         break;
                     case ScriptType.Struct:
-                        var strc = (ScriptStruct)type;
-                        for (var i = 0; i < strc.Members.Length; i++)
-                            strc.Members[i] = ReadType(strc.Members[i]);
+                        member = ReadScriptStruct(out int defLength, r);
+                        defaultLength += defLength;
                         break;
                     default:
-                        throw new Exception(type.Type.ToString());
+                        member = new ScriptVariable((ScriptType)memberType);
+                        break;
                 }
 
-                return type;
+                switch (member.Type)
+                {
+                    case ScriptType.Integer:
+                        r.ReadInt32();
+                        defaultLength += 4;
+                        break;
+                    case ScriptType.Real:
+                        r.ReadSingle();
+                        defaultLength += 4;
+                        break;
+                    case ScriptType.Vec2:
+                        r.ReadVec2();
+                        defaultLength += 8;
+                        break;
+                    case ScriptType.Vec3:
+                        r.ReadVec3();
+                        defaultLength += 12;
+                        break;
+                    case ScriptType.Int3:
+                        r.ReadInt3();
+                        defaultLength += 12;
+                        break;
+                    case ScriptType.Int2:
+                        r.ReadInt2();
+                        defaultLength += 8;
+                        break;
+                    case ScriptType.Array:
+                        break;
+                    case ScriptType.Struct:
+                        break;
+                    default:
+                        r.ReadByte();
+                        defaultLength += 1;
+                        break;
+                }
+
+                member.Name = memberName;
+
+                strc.Members[i] = member;
             }
+
+            int counter = 0;
+            while (r.ReadByte() == 0)
+                counter++;
+            r.BaseStream.Position -= 1;
+
+            //int counter = 0;
+            //while (r.ReadByte() == 0) counter++; // probably size of the struct in byte count?
+            //r.BaseStream.Position -= 1;
+            strc.Size = defaultLength + counter; //
+            strc.Unknown = counter;
+
+            //Progress += defaultLength;
+
+            return strc;
         }
 
         public void Write(GameBoxWriter w)
