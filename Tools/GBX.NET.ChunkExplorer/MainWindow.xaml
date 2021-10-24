@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:GBX.NET.ChunkExplorer"
         xmlns:models="clr-namespace:GBX.NET.ChunkExplorer.Models"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="1000"
+        Title="MainWindow" Height="600" Width="1100"
         DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -42,7 +42,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <TreeView Margin="5 0 0 0" ItemsSource="{Binding MainNodes}">
+                <TreeView Margin="5 0 0 0" ItemsSource="{Binding MainNodes}" SelectedItemChanged="TreeView_SelectedItemChanged">
                     <TreeView.Resources>
 
                         <HierarchicalDataTemplate DataType="{x:Type models:MainNodeModel}" ItemsSource="{Binding AuxNodes}">
@@ -78,7 +78,19 @@
 
                     </TreeView.Resources>
                 </TreeView>
-                <ComboBox Grid.Row="1" Margin="5 5 0 0"/>
+                <ComboBox Grid.Row="1" Margin="5 5 0 0"
+                          ItemsSource="{Binding Chunks}"
+                          IsSynchronizedWithCurrentItem="True">
+                    <ComboBox.Style>
+                        <Style TargetType="ComboBox">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Chunks}" Value="{x:Null}">
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ComboBox.Style>
+                </ComboBox>
             </Grid>
         </Grid>
     </Grid>

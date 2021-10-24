@@ -29,6 +29,7 @@ namespace GBX.NET.ChunkExplorer
     {
         private Stream? stream;
         private ObservableCollection<MainNodeModel> mainNodes = new();
+        private ChunkSet? chunks;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -40,6 +41,19 @@ namespace GBX.NET.ChunkExplorer
                 if (value != mainNodes)
                 {
                     mainNodes = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public ChunkSet? Chunks
+        {
+            get => chunks;
+            set
+            {
+                if (value != chunks)
+                {
+                    chunks = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -75,6 +89,14 @@ namespace GBX.NET.ChunkExplorer
 
                 MainNodes.Add(nodeModel);
             }
+        }
+
+        private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (e.NewValue is not NodeModel nodeModel)
+                return;
+
+            Chunks = nodeModel.Chunks;
         }
     }
 }

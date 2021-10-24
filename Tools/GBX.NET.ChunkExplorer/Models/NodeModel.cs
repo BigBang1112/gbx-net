@@ -19,8 +19,8 @@ namespace GBX.NET.ChunkExplorer.Models
         {
             get
             {
-                if (AuxNodes.Any())
-                    return Brushes.CornflowerBlue;
+                if (Node is null && AuxNodes.Any())
+                    return Brushes.DarkOrange;
                 if (Node is null || Node.Chunks.Count == 0)
                     return Brushes.Gray;
                 if (HasNodeWithChunksInside)
