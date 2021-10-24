@@ -224,10 +224,8 @@ namespace GBX.NET
                     }
                 }
 
-                if (availableChunkClasses.Count > 0)
-                    AvailableChunkClasses.Add(type, availableChunkClasses);
-                if (availableHeaderChunkClasses.Count > 0)
-                    AvailableHeaderChunkClasses.Add(type, availableHeaderChunkClasses);
+                AvailableChunkClasses.Add(type, availableChunkClasses);
+                AvailableHeaderChunkClasses.Add(type, availableHeaderChunkClasses);
             }
 
             foreach (var idClassPair in AvailableClasses)
