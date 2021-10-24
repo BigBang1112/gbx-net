@@ -11,7 +11,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="Maps\**">
+		<Content Include="..\..\ExampleFiles\**">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
