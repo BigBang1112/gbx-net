@@ -36,7 +36,7 @@
                 <ColumnDefinition Width="600"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <control:HexEditor x:Name="HexEditor"/>
+            <control:HexEditor x:Name="HexEditor" Stream="{Binding CurrentStream}"/>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -80,7 +80,9 @@
                 </TreeView>
                 <ComboBox Grid.Row="1" Margin="5 5 0 0"
                           ItemsSource="{Binding Chunks}"
-                          IsSynchronizedWithCurrentItem="True">
+                          IsSynchronizedWithCurrentItem="True"
+                          x:Name="ComboBoxChunks"
+                          SelectionChanged="ComboBoxChunks_SelectionChanged">
                     <ComboBox.Style>
                         <Style TargetType="ComboBox">
                             <Style.Triggers>

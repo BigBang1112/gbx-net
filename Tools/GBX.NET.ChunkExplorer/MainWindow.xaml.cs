@@ -27,7 +27,8 @@ namespace GBX.NET.ChunkExplorer
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        private Stream? stream;
+        private Stream? fileStream;
+        private Stream? currentStream;
         private ObservableCollection<MainNodeModel> mainNodes = new();
         private ChunkSet? chunks;
 
@@ -59,6 +60,32 @@ namespace GBX.NET.ChunkExplorer
             }
         }
 
+        public Stream? FileStream
+        {
+            get => fileStream;
+            set
+            {
+                if (value != fileStream)
+                {
+                    fileStream = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public Stream? CurrentStream
+        {
+            get => currentStream;
+            set
+            {
+                if (value != currentStream)
+                {
+                    currentStream = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -78,11 +105,11 @@ namespace GBX.NET.ChunkExplorer
             
             if (ofd.ShowDialog() == true)
             {
-                stream = File.OpenRead(ofd.FileName);
+                fileStream = File.OpenRead(ofd.FileName);
 
                 var nodeModel = await Task.Run(() =>
                 {
-                    var node = GameBox.ParseNode(stream);
+                    var node = GameBox.ParseNode(fileStream);
                     node.GBX!.FileName = ofd.FileName;
                     return new MainNodeModel(node);
                 });
@@ -94,9 +121,23 @@ namespace GBX.NET.ChunkExplorer
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             if (e.NewValue is not NodeModel nodeModel)
+            {
+                CurrentStream = null;
                 return;
+            }
 
             Chunks = nodeModel.Chunks;
+        }
+
+        private void ComboBoxChunks_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count == 0 || e.AddedItems[0] is not Chunk chunk)
+            {
+                CurrentStream = null;
+                return;
+            }
+
+            CurrentStream = new MemoryStream(chunk.Debugger.RawData!);
         }
     }
 }
