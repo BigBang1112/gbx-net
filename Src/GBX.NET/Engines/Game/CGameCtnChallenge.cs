@@ -1296,8 +1296,8 @@ namespace GBX.NET.Engines.Game
         public void ExportThumbnail(string fileName)
         {
             if (thumbnail == null) return;
-            using (var fs = File.OpenWrite(fileName))
-                ExportThumbnail(fs);
+            using var fs = File.OpenWrite(fileName);
+            ExportThumbnail(fs);
         }
 
         /// <summary>
@@ -1538,7 +1538,7 @@ namespace GBX.NET.Engines.Game
 
                 foreach (var clip in node.Clips)
                 {
-                    var trigger = clip.Item2;
+                    var trigger = clip.Trigger;
 
                     var coords = trigger.Coords.ToList();
 
@@ -1557,7 +1557,7 @@ namespace GBX.NET.Engines.Game
 
                     trigger.Coords = coords.ToArray();
 
-                    ConvertMediaClip(clip.Item1);
+                    ConvertMediaClip(clip.Clip);
                 }
             }
 
@@ -1595,7 +1595,7 @@ namespace GBX.NET.Engines.Game
                 if (group is null) return;
 
                 foreach (var clip in group.Clips)
-                    OffsetCamerasInClip(clip.Item1);
+                    OffsetCamerasInClip(clip.Clip);
             }
 
             void OffsetCamerasInClip(CGameCtnMediaClip? clip)
@@ -1646,7 +1646,7 @@ namespace GBX.NET.Engines.Game
 
                 foreach (var clip in group.Clips)
                 {
-                    var trigger = clip.Item2;
+                    var trigger = clip.Trigger;
                     trigger.Coords = trigger.Coords.Select(x => x + offset).ToArray();
                 }
             }

@@ -33,7 +33,7 @@ namespace GBX.NET.Engines.Game
         /// An array of MediaTracker clips.
         /// </summary>
         [NodeMember]
-        public List<Tuple<CGameCtnMediaClip, Trigger>> Clips { get; set; }
+        public List<ClipTrigger> Clips { get; set; }
 
         public int ClipsVersion { get; set; } = 10;
 
@@ -67,7 +67,7 @@ namespace GBX.NET.Engines.Game
                 });
 
                 n.Clips = clips.Select((clip, index) =>
-                    Tuple.Create(clip, triggers[index])
+                    new ClipTrigger(clip, triggers[index])
                 ).ToList();
             }
 
@@ -75,10 +75,10 @@ namespace GBX.NET.Engines.Game
             {
                 w.Write(n.ClipsVersion);
 
-                w.Write(n.Clips, (x, w1) => w1.Write(x.Item1));
+                w.Write(n.Clips, (x, w1) => w1.Write(x.Clip));
                 w.Write(n.Clips, (x, w1) =>
                 {
-                    w1.Write(x.Item2.Coords, (y, w2) => w2.Write(y));
+                    w1.Write(x.Trigger.Coords, (y, w2) => w2.Write(y));
                 });
             }
         }
@@ -105,7 +105,7 @@ namespace GBX.NET.Engines.Game
                 });
 
                 n.Clips = clips.Select((clip, index) =>
-                    Tuple.Create(clip, triggers[index])
+                    new ClipTrigger(clip, triggers[index])
                 ).ToList();
             }
 
@@ -113,16 +113,14 @@ namespace GBX.NET.Engines.Game
             {
                 w.Write(n.ClipsVersion);
 
-                w.Write(n.Clips, (x, w1) => w1.Write(x.Item1));
+                w.Write(n.Clips, (x, w1) => w1.Write(x.Clip));
                 w.Write(n.Clips, (x, w1) =>
                 {
-                    var trigger = x.Item2;
-
-                    w1.Write(trigger.Coords, (y, w2) => w2.Write(y));
-                    w1.Write(trigger.U01);
-                    w1.Write(trigger.U02);
-                    w1.Write(trigger.U03);
-                    w1.Write(trigger.U04);
+                    w1.Write(x.Trigger.Coords, (y, w2) => w2.Write(y));
+                    w1.Write(x.Trigger.U01);
+                    w1.Write(x.Trigger.U02);
+                    w1.Write(x.Trigger.U03);
+                    w1.Write(x.Trigger.U04);
                 });
             }
         }
@@ -162,7 +160,7 @@ namespace GBX.NET.Engines.Game
                 });
 
                 n.Clips = clips.Select((clip, index) =>
-                    Tuple.Create(clip, triggers[index])
+                    new ClipTrigger(clip, triggers[index])
                 ).ToList();
             }
 
@@ -170,18 +168,16 @@ namespace GBX.NET.Engines.Game
             {
                 w.Write(n.ClipsVersion);
 
-                w.Write(n.Clips, (x, w1) => w1.Write(x.Item1));
+                w.Write(n.Clips, (x, w1) => w1.Write(x.Clip));
                 w.Write(n.Clips, (x, w1) =>
                 {
-                    var trigger = x.Item2;
-
-                    w1.Write(trigger.U01);
-                    w1.Write(trigger.U02);
-                    w1.Write(trigger.U03);
-                    w1.Write(trigger.U04);
-                    w1.Write((int)trigger.Condition);
-                    w1.Write(trigger.ConditionValue);
-                    w1.Write(trigger.Coords, (y, w2) => w2.Write(y));
+                    w1.Write(x.Trigger.U01);
+                    w1.Write(x.Trigger.U02);
+                    w1.Write(x.Trigger.U03);
+                    w1.Write(x.Trigger.U04);
+                    w1.Write((int)x.Trigger.Condition);
+                    w1.Write(x.Trigger.ConditionValue);
+                    w1.Write(x.Trigger.Coords, (y, w2) => w2.Write(y));
                 });
             }
         }
@@ -201,6 +197,18 @@ namespace GBX.NET.Engines.Game
             public int U04 { get; set; }
             public ECondition Condition { get; set; }
             public float ConditionValue { get; set; }
+        }
+
+        public class ClipTrigger
+        {
+            public CGameCtnMediaClip Clip { get; set; }
+            public Trigger Trigger { get; set; }
+
+            public ClipTrigger(CGameCtnMediaClip clip, Trigger trigger)
+            {
+                Clip = clip;
+                Trigger = trigger;
+            }
         }
 
         #endregion
