@@ -33,7 +33,7 @@ namespace GBX.NET.Engines.Game
         /// An array of MediaTracker clips.
         /// </summary>
         [NodeMember]
-        public List<ClipTrigger> Clips { get; set; }
+        public IList<ClipTrigger> Clips { get; set; }
 
         public int ClipsVersion { get; set; } = 10;
 
@@ -59,11 +59,11 @@ namespace GBX.NET.Engines.Game
             {
                 n.ClipsVersion = r.ReadInt32();
 
-                var clips = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnMediaClip>()!);
+                var clips = r.ReadArray(r => r.ReadNodeRef<CGameCtnMediaClip>()!);
 
-                var triggers = r.ReadArray(r1 => new Trigger()
+                var triggers = r.ReadArray(r => new Trigger()
                 {
-                    Coords = r1.ReadArray(r2 => r2.ReadInt3())
+                    Coords = r.ReadArray(r => r.ReadInt3())
                 });
 
                 n.Clips = clips.Select((clip, index) =>
@@ -75,10 +75,10 @@ namespace GBX.NET.Engines.Game
             {
                 w.Write(n.ClipsVersion);
 
-                w.Write(n.Clips, (x, w1) => w1.Write(x.Clip));
-                w.Write(n.Clips, (x, w1) =>
+                w.Write(n.Clips, (x, w) => w.Write(x.Clip));
+                w.Write(n.Clips, (x, w) =>
                 {
-                    w1.Write(x.Trigger.Coords, (y, w2) => w2.Write(y));
+                    w.Write(x.Trigger.Coords, (y, w) => w.Write(y));
                 });
             }
         }
