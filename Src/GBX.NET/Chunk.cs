@@ -4,18 +4,16 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
-
+using GBX.NET.Debugging;
 using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET
 {
     public abstract class Chunk : IComparable<Chunk>
     {
-        public virtual uint ID
-        {
-            get => ((ChunkAttribute)NodeCacheManager.AvailableChunkAttributesByType[GetType()]
-                .First(x => x is ChunkAttribute)).ID;
-        }
+        public virtual uint ID => ((ChunkAttribute)NodeCacheManager.AvailableChunkAttributesByType[GetType()]
+            .First(x => x is ChunkAttribute)).ID;
+
         /// <summary>
         /// Stream of unknown bytes
         /// </summary>
@@ -28,6 +26,10 @@ namespace GBX.NET
         public CMwNod Node { get; internal set; }
 
         public int Progress { get; set; }
+
+#if DEBUG
+        public ChunkDebugger Debugger { get; } = new();
+#endif
 
         protected Chunk(CMwNod node)
         {
@@ -49,20 +51,19 @@ namespace GBX.NET
             return $"Chunk 0x{ID:X8}";
         }
 
-        public bool Equals(Chunk? chunk) => chunk is not null && chunk.ID == ID;
+        public bool Equals(Chunk? chunk)
+        {
+            return chunk is not null && chunk.ID == ID;
+        }
 
         protected internal GameBoxReader CreateReader(Stream input)
         {
-            if (this is ILookbackable l)
-                return new GameBoxReader(input, l);
-            return new GameBoxReader(input, GBX?.Body);
+            return this is ILookbackable l ? new GameBoxReader(input, l) : new GameBoxReader(input, GBX?.Body);
         }
 
         protected internal GameBoxWriter CreateWriter(Stream input)
         {
-            if (this is ILookbackable l)
-                return new GameBoxWriter(input, l);
-            return new GameBoxWriter(input, GBX?.Body);
+            return this is ILookbackable l ? new GameBoxWriter(input, l) : new GameBoxWriter(input, GBX?.Body);
         }
 
         public static uint Remap(uint chunkID, IDRemap remap = IDRemap.Latest)
@@ -81,9 +82,9 @@ namespace GBX.NET
                     }
                 case IDRemap.TrackMania2006:
                     {
-                        if (classPart == 0x03078000) // Not ideal solution
-                            return 0x24061000 + chunkPart;
-                        return NodeCacheManager.Mappings.LastOrDefault(x => x.Value == classPart).Key + chunkPart;
+                        return classPart == 0x03078000 // Not ideal solution
+                            ? 0x24061000 + chunkPart
+                            : NodeCacheManager.Mappings.LastOrDefault(x => x.Value == classPart).Key + chunkPart;
                     }
                 default:
                     return chunkID;

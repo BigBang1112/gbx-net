@@ -5,13 +5,18 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
-
+using GBX.NET.Debugging;
 using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET
 {
     public abstract class GameBoxBody : GameBoxPart
     {
+
+#if DEBUG
+        public GameBoxBodyDebugger Debugger { get; } = new();
+#endif
+
         [IgnoreDataMember]
         public SortedDictionary<int, CMwNod> AuxilaryNodes { get; }
 
@@ -67,13 +72,16 @@ namespace GBX.NET
         /// <exception cref="MissingLzoException"></exception>
         public void Read(byte[] data, int uncompressedSize, IProgress<GameBoxReadProgress>? progress = null)
         {
-            byte[] buffer = new byte[uncompressedSize];
+            var buffer = new byte[uncompressedSize];
 
             CheckForLZO();
 
             methodLzoDecompress!.Invoke(null, new object[] { data, buffer });
 
-            // File.WriteAllBytes("in.dat", buffer);
+#if DEBUG
+            Debugger.CompressedData = data;
+            Debugger.UncompressedData = buffer;
+#endif
 
             Read(buffer, progress);
         }
