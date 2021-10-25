@@ -130,6 +130,10 @@ namespace GBX.NET
                                 ((IHeaderChunk)headerChunk).Discovered = true;
                             chunk = (Chunk)headerChunk;
 
+#if DEBUG
+                            chunk.Debugger.RawData = d;
+#endif
+
                             using (var msChunk = new MemoryStream(d))
                             using (var rChunk = new GameBoxReader(msChunk, this))
                             {
