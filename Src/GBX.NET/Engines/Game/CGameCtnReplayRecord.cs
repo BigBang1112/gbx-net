@@ -151,7 +151,7 @@ namespace GBX.NET.Engines.Game
         /// The map the replay orients in.
         /// </summary>
         [NodeMember]
-        public Task<CGameCtnChallenge> Challenge => challenge;
+        public CGameCtnChallenge Challenge => challenge.Result;
 
         /// <summary>
         /// Ghosts in the replay. NOTE: Some ghosts can be considered as <see cref="CGameCtnMediaBlockGhost"/>. See <see cref="Clip"/>.
@@ -226,6 +226,11 @@ namespace GBX.NET.Engines.Game
                             if (block is CGameCtnMediaBlockGhost ghostBlock)
                                 if (ghostBlock.GhostModel is not null)
                                     yield return ghostBlock.GhostModel;
+        }
+
+        public async Task<CGameCtnChallenge> GetChallengeAsync()
+        {
+            return await challenge;
         }
 
         #endregion
