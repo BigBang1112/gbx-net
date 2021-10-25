@@ -46,6 +46,7 @@ namespace GBX.NET.ChunkExplorer.Models
                     TypeName = ToGenericTypeString(prop.PropertyType),
                     Type = prop.PropertyType,
                     Name = prop.Name,
+                    IsCollection = true,
                     AuxNodes = propValues.Select((propValue, i) =>
                     {
                         var nod = propValue switch
@@ -80,6 +81,7 @@ namespace GBX.NET.ChunkExplorer.Models
                     TypeName = prop.PropertyType.Name,
                     Type = prop.PropertyType,
                     Name = prop.Name,
+                    IsCollection = true,
                     AuxNodes = propValues.Select((propValue, i) =>
                     {
                         var elementType = propValue.GetType();

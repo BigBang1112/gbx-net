@@ -141,6 +141,31 @@ namespace GBX.NET.ChunkExplorer
             }
 
             Chunks = nodeModel.Chunks;
+
+            if (Chunks is null)
+            {
+                CurrentStream = null;
+                return;
+            }
+
+            if (Chunks.Count > 0 && ComboBoxChunks.SelectedIndex == -1)
+            {
+                ComboBoxChunks.SelectedIndex = 0;
+            }
+
+            var index = ComboBoxChunks.SelectedIndex;
+
+            ComboBoxChunks.SelectedItem = null; // Nice
+            ComboBoxChunks.SelectedItem = Chunks.ElementAtOrDefault(index);
+
+            if (ComboBoxChunks.SelectedItem is not Chunk chunk)
+            {
+                CurrentStream = null;
+                return;
+            }
+
+            CurrentStream = new MemoryStream(chunk.Debugger.RawData!);
+            _ = TreeViewNodes.Focus();
         }
 
         private void ComboBoxChunks_SelectionChanged(object sender, SelectionChangedEventArgs e)

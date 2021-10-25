@@ -72,7 +72,7 @@
                                 </Border>
                                 <TextBlock Margin="5 0 0 0" Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center"/>
                                 <TextBlock Margin="5 0 0 0" Grid.Column="1" Text="{Binding Key}" VerticalAlignment="Center"/>
-                                <TextBlock Margin="0 0 5 0" Grid.Column="2" Foreground="Gray" VerticalAlignment="Center" Text="{Binding NullStringIfNull}"/>
+                                <TextBlock Margin="5 0 5 0" Grid.Column="2" Foreground="Gray" VerticalAlignment="Center" Text="{Binding Value}"/>
                             </Grid>
                         </HierarchicalDataTemplate>
 
@@ -80,7 +80,6 @@
                 </TreeView>
                 <ComboBox Grid.Row="1" Margin="5 5 0 0"
                           ItemsSource="{Binding Chunks}"
-                          IsSynchronizedWithCurrentItem="True"
                           x:Name="ComboBoxChunks"
                           SelectionChanged="ComboBoxChunks_SelectionChanged">
                     <ComboBox.Style>

@@ -13,8 +13,42 @@ namespace GBX.NET.ChunkExplorer.Models
         public string TypeName { get; set; } = string.Empty;
         public Type? Type { get; set; }
         public CMwNod? Node { get; set; }
-        public string NullStringIfNull => this is not ElementNodeModel && !AuxNodes.Any() && Node is null ? " null" : string.Empty;
+        public string Value
+        {
+            get
+            {
+                if (AuxNodes.Any()) // Has some form of node inside
+                {
+                    if (Node is null) // Is not a node - likely a list
+                    {
+                        var supportedCount = AuxNodes.Take(100).Count();
+
+                        if (supportedCount == 100)
+                        {
+                            return "(99+)";
+                        }
+
+                        return $"({supportedCount})";
+                    }                    
+
+                    return string.Empty;
+                }
+
+                if (IsCollection)
+                {
+                    return "(empty)";
+                }
+
+                if (Node is null) // Is a single node without any content inside
+                {
+                    return "null";
+                }
+
+                return string.Empty;
+            }
+        }
         public bool HasNodeWithChunksInside { get; set; }
+        public bool IsCollection { get; set; }
         public SolidColorBrush NodeBackgroundBrush
         {
             get
