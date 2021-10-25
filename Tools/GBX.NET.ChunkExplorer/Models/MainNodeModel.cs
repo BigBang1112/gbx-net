@@ -34,20 +34,27 @@ namespace GBX.NET.ChunkExplorer.Models
             var nodeCollectionProperties = allProperties.Where(prop =>
                 typeof(IEnumerable).IsAssignableFrom(prop.PropertyType)
                 && prop.PropertyType.IsGenericType
-                && prop.PropertyType.GenericTypeArguments.FirstOrDefault(x => x.IsSubclassOf(typeof(CMwNod))) != null);
+                && (prop.PropertyType.GenericTypeArguments.FirstOrDefault(x => x.IsSubclassOf(typeof(CMwNod))) != null
+                || prop.PropertyType.GenericTypeArguments.Contains(typeof(CGameCtnMediaClipGroup.ClipTrigger))));
 
             foreach (var prop in nodeCollectionProperties)
             {
-                var nods = (prop.GetValue(node) as IEnumerable)?.Cast<CMwNod>() ?? Enumerable.Empty<CMwNod>();
+                var propValues = (prop.GetValue(node) as IEnumerable)?.Cast<object>() ?? Enumerable.Empty<object>();
 
                 yield return new SingleNodeModel
                 {
                     TypeName = ToGenericTypeString(prop.PropertyType),
                     Type = prop.PropertyType,
                     Name = prop.Name,
-                    AuxNodes = nods.Select((nod, i) =>
+                    AuxNodes = propValues.Select((propValue, i) =>
                     {
-                        var elementType = nod.GetType();
+                        var nod = propValue switch
+                        {
+                            CGameCtnMediaClipGroup.ClipTrigger clipTrigger => clipTrigger.Clip,
+                            _ => propValue as CMwNod,
+                        };
+
+                        var elementType = nod is null ? propValue.GetType() : nod.GetType();
 
                         return new ElementNodeModel
                         {
@@ -66,16 +73,18 @@ namespace GBX.NET.ChunkExplorer.Models
 
             foreach (var prop in nodeArrayProperties)
             {
-                var nods = (prop.GetValue(node) as IEnumerable)?.Cast<CMwNod>() ?? Enumerable.Empty<CMwNod>();
+                var propValues = (prop.GetValue(node) as IEnumerable)?.Cast<object>() ?? Enumerable.Empty<object>();
 
                 yield return new SingleNodeModel
                 {
                     TypeName = prop.PropertyType.Name,
                     Type = prop.PropertyType,
                     Name = prop.Name,
-                    AuxNodes = nods.Select((nod, i) =>
+                    AuxNodes = propValues.Select((propValue, i) =>
                     {
-                        var elementType = nod.GetType();
+                        var elementType = propValue.GetType();
+
+                        var nod = propValue as CMwNod;
 
                         return new ElementNodeModel
                         {

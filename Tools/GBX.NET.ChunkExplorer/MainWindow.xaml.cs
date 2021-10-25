@@ -109,6 +109,7 @@ namespace GBX.NET.ChunkExplorer
                 try
                 {
                     var nodeModel = await Task.Run(() => ParseNode(ofd.FileName));
+
                     MainNodes.Add(nodeModel);
                 }
                 catch (Exception e)
