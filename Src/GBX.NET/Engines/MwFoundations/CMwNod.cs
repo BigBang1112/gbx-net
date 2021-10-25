@@ -290,6 +290,9 @@ namespace GBX.NET.Engines.MwFoundations
                         Debug.WriteLine("Unknown skippable chunk: " + chunkId.ToString("X"));
                         chunk = (Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkId, chunkData);
                         chunk.GBX = node.GBX;
+#if DEBUG
+                        chunk.Debugger.RawData = chunkData;
+#endif
                         node.Chunks.Add(chunk);
                     }
                 }
