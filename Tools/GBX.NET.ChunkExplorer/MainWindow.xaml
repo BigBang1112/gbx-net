@@ -42,7 +42,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <TreeView Margin="5 0 0 0" ItemsSource="{Binding MainNodes}" SelectedItemChanged="TreeView_SelectedItemChanged">
+                <TreeView x:Name="TreeViewNodes" Margin="5 0 0 0" ItemsSource="{Binding MainNodes}" SelectedItemChanged="TreeView_SelectedItemChanged">
                     <TreeView.Resources>
 
                         <HierarchicalDataTemplate DataType="{x:Type models:MainNodeModel}" ItemsSource="{Binding AuxNodes}">

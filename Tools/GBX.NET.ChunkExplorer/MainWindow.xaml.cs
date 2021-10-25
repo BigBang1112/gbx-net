@@ -1,4 +1,5 @@
-﻿using GBX.NET.ChunkExplorer.Models;
+﻿using GBX.NET.ChunkExplorer.Exceptions;
+using GBX.NET.ChunkExplorer.Models;
 using Mapster;
 using Microsoft.Win32;
 using System;
@@ -96,26 +97,38 @@ namespace GBX.NET.ChunkExplorer
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private async void ButtonOpenFile_Click(object sender, RoutedEventArgs e)
+        private async void ButtonOpenFile_Click(object sender, RoutedEventArgs eventArgs)
         {
             var ofd = new OpenFileDialog
             {
                 Filter = "GBX file|*.Gbx|All files|*.*"
             };
-            
+
             if (ofd.ShowDialog() == true)
             {
-                fileStream = File.OpenRead(ofd.FileName);
-
-                var nodeModel = await Task.Run(() =>
+                try
                 {
-                    var node = GameBox.ParseNode(fileStream);
-                    node.GBX!.FileName = ofd.FileName;
-                    return new MainNodeModel(node);
-                });
-
-                MainNodes.Add(nodeModel);
+                    var nodeModel = await Task.Run(() => ParseNode(ofd.FileName));
+                    MainNodes.Add(nodeModel);
+                }
+                catch (Exception e)
+                {
+                    _ = MessageBox.Show(e.ToString(), "Unhandled exception", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
+        }
+
+        private MainNodeModel ParseNode(string fileName)
+        {
+            fileStream = File.OpenRead(fileName);
+
+            var node = GameBox.ParseNode(fileStream);
+
+            if (node is null)
+                throw new NodeIsNullException();
+
+            node.GBX!.FileName = fileName;
+            return new MainNodeModel(node);
         }
 
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
@@ -131,13 +144,11 @@ namespace GBX.NET.ChunkExplorer
 
         private void ComboBoxChunks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.AddedItems.Count == 0 || e.AddedItems[0] is not Chunk chunk)
-            {
-                CurrentStream = null;
-                return;
-            }
+            CurrentStream = e.AddedItems.Count == 0 || e.AddedItems[0] is not Chunk chunk
+                ? default(Stream?)
+                : new MemoryStream(chunk.Debugger.RawData!);
 
-            CurrentStream = new MemoryStream(chunk.Debugger.RawData!);
+            _ = TreeViewNodes.Focus();
         }
     }
 }
