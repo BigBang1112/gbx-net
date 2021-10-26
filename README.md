@@ -52,45 +52,58 @@ The library speeds up parse time by ignoring unused skippable chunks with *disco
 
 Maps were selected from all kinds of Trackmania official campaigns picked by the biggest file size.
 
-- CPU: **AMD Ryzen 3700X** (AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD)
-- Parse time: Required time to parse the full GBX file without skippable chunks
-- Discover time: Required time to parse all of the skippable chunks
-- **Delay on the first parse: 108.56ms**
+```
+BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19043.1288 (21H1/May2021Update)
+AMD Ryzen 7 3700X, 1 CPU, 16 logical and 8 physical cores
+.NET SDK=6.0.100-rc.2.21505.57
+  [Host]     : .NET 5.0.11 (5.0.1121.47308), X64 RyuJIT  [AttachedDebugger]
+  Job-KUDPIY : .NET 5.0.11 (5.0.1121.47308), X64 RyuJIT
+```
 
-| Map name | File size | Parse time (avg) | Discover time (avg)
-| --- | --- | --- | ---
-| PuzzleF2 | 14.31 kB | 18.74 ms | 70.08 ms
-| Track6 | 10.44 kB | 14.72 ms | 1.06 ms
-| Track6 | 10.44 kB | 14.53 ms | 0.92 ms
-| RaceD1 | 9.43 kB | 13.58 ms | 0.87 ms
-| RaceF7 | 6.65 kB | 4.45 ms | 1.16 ms
-| DemoRaceB1 | 4.67 kB | 2.60 ms | 0.89 ms
-| Paradise Island | 10.45 kB | 13.76 ms | 1.90 ms
-| AirControl | 8.06 kB | 4.60 ms | 0.56 ms
-| TrialTime | 12.17 kB | 11.13 ms | 1.07 ms
-| LittleWalk | 12.97 kB | 7.93 ms | 0.85 ms
-| CleanLanding | 7.30 kB | 3.57 ms | 0.39 ms
-| TrialTime | 13.15 kB | 7.85 ms | 1.09 ms
-| DemoRace1 | 10.88 kB | 7.01 ms | 4.12 ms
-| StuntsD1 | 10.98 kB | 14.96 ms | 0.82 ms
-| DemoRace3 | 6.88 kB | 3.23 ms | 0.38 ms
-| Pro A-4 | 7.88 kB | 4.54 ms | 1.08 ms
-| SnowC5 | 25.68 kB | 4.54 ms | 0.41 ms
-| DesertE | 22.51 kB | 9.98 ms | 0.98 ms
-| E02-Endurance | 32.12 kB | 13.76 ms | 1.42 ms
-| StuntC1 | 27.49 kB | 16.19 ms | 0.94 ms
-| StarStadiumE | 78.32 kB | 12.83 ms | 1.08 ms
-| B10 | 585.46 kB | 66.31 ms | 224.22 ms
-| E03 - Ultimate Nightmare | 512.32 kB | 14.66 ms | Exception
-| E02 | 645.38 kB | 21.46 ms | 197.08 ms
-| E01 | 768.55 kB | 14.30 ms | 190.28 ms
-| BaseValley | 696.02 kB | 9.08 ms | 132.54 ms
-| B01 | 582.04 kB | 9.69 ms | 106.62 ms
-| D13 | 652.96 kB | 8.54 ms | 103.08 ms
-| 100 | 777.73 kB | 11.15 ms | 112.63 ms
-| VR_Stadium_007 | 631.45 kB | 5.03 ms | 146.11 ms
-| Summer 2020 - 11 | 1432.61 kB | 27.62 ms | 232.01 ms
-| ç§‹å­£ 2020 - 12 | 1610.14 kB | 21.89 ms | 349.09 ms
+| File name | Median [ms] |
+|----------------------------------------------------------------- |------------:|
+|                            6_TrackMania 2\MP4\BaseValley.Map.Gbx |   0.9666 ms |
+|             0_TrackMania\1.2.5 DemoSolo\DemoRaceB1.Challenge.Gbx |   1.1756 ms |
+|                       4_TrackMania United\2\snowC5.Challenge.Gbx |   1.3082 ms |
+|           2_TrackMania Original\1.5 Demo\DemoRace3.Challenge.Gbx |   1.3629 ms |
+|                  4_TrackMania United\2.0.8\DesertE.Challenge.Gbx |   1.4587 ms |
+|                          0_TrackMania\1.2.3\RaceF7.Challenge.Gbx |   1.4656 ms |
+|                 8_Trackmania 2020\Training\Training - 20.Map.Gbx |   1.6191 ms |
+|            1_TrackMania Sunrise\1.4.7\CleanLanding.Challenge.Gbx |   1.5643 ms |
+|                   8_Trackmania 2020\Training\è®­ç»ƒ - 20.Map.Gbx |   1.6690 ms |
+|              1_TrackMania Sunrise\1.4.5\AirControl.Challenge.Gbx |   1.7642 ms |
+|                 1_TrackMania Sunrise\1.5\TrialTime.Challenge.Gbx |   2.1397 ms |
+|            3_TrackMania Nations ESWC\1.7.5\Pro A-4.Challenge.Gbx |   2.1452 ms |
+|        1_TrackMania Sunrise\1.4.5 Nvidia\TrialTime.Challenge.Gbx |   2.1961 ms |
+|                     7_TrackMania Turbo\VR\VR_Stadium_007.Map.Gbx |   2.4427 ms |
+|            1_TrackMania Sunrise\1.5 Demo\DemoRace1.Challenge.Gbx |   2.5097 ms |
+|              1_TrackMania Sunrise\1.4.6\LittleWalk.Challenge.Gbx |   2.5488 ms |
+|                             6_TrackMania 2\MP4Valley\D13.Map.Gbx |   2.6246 ms |
+|                             6_TrackMania 2\MP4Lagoon\B01.Map.Gbx |   2.7828 ms |
+|                             6_TrackMania 2\MP3Valley\E01.Map.Gbx |   2.9125 ms |
+|      6_TrackMania 2\MP3Platform\E03 - Ultimate Nightmare.Map.Gbx |   3.0517 ms |
+|                              7_TrackMania Turbo\Solo\100.Map.Gbx |   3.2885 ms |
+|                            6_TrackMania 2\MP3Stadium\E02.Map.Gbx |   3.3485 ms |
+|                      8_Trackmania 2020\Royal\NoTechLogic.Map.Gbx |   3.3607 ms |
+| 5_TrackMania Forever\2.11.11 Nations\E02-Endurance.Challenge.Gbx |   3.3228 ms |
+|          5_TrackMania Forever\2.11.25\StarStadiumE.Challenge.Gbx |   3.6366 ms |
+|        5_TrackMania Forever\2.11.11 United\StuntC1.Challenge.Gbx |   3.9400 ms |
+|           1_TrackMania Sunrise\1.4\Paradise Island.Challenge.Gbx |   4.2577 ms |
+|           8_Trackmania 2020\20200701\å¤å­£èµ› 2020 - 11.Map.Gbx |   4.5801 ms |
+|              8_Trackmania 2020\20200701\Summer 2020 - 11.Map.Gbx |   4.5865 ms |
+|                             6_TrackMania 2\MP3Canyon\B10.Map.Gbx |   4.9148 ms |
+|              8_Trackmania 2020\20201001\ç§‹å­£ 2020 - 12.Map.Gbx |   4.8137 ms |
+|                8_Trackmania 2020\20201001\Fall 2020 - 12.Map.Gbx |   4.8658 ms |
+|                 2_TrackMania Original\1.5\StuntsD1.Challenge.Gbx |   4.8395 ms |
+|              8_Trackmania 2020\20210401\Spring 2021 - 23.Map.Gbx |   5.1093 ms |
+|                         0_TrackMania\1 Demo\Track6.Challenge.Gbx |   4.9339 ms |
+|                               Community\CCP#04 - ODYSSEY.Map.Gbx |   5.3195 ms |
+|                         0_TrackMania\1 Beta\Track6.Challenge.Gbx |   5.0107 ms |
+|                            0_TrackMania\1.1\RaceD1.Challenge.Gbx |   5.2825 ms |
+|              8_Trackmania 2020\20210101\Winter 2021 - 15.Map.Gbx |   5.4511 ms |
+|                            0_TrackMania\1\PuzzleF2.Challenge.Gbx |   5.8552 ms |
+|              8_Trackmania 2020\20210701\Summer 2021 - 25.Map.Gbx |   6.6836 ms |
+|                8_Trackmania 2020\20211001\Fall 2021 - 16.Map.Gbx |  15.9538 ms |
 
 ## Dependencies
 
@@ -179,13 +192,13 @@ foreach (CGameCtnGhost ghost in replay.Ghosts)
 
 ### This convention is no longer relevant in GBX.NET 0.11.0+ when using the ParseNode method.
 
-Make the code cleaner by **aliasing** the `MainNode` from the parsed `GameBox<T>`:
+Make the code cleaner by **aliasing** the `Node` from the parsed `GameBox<T>`:
 
 ```cs
 var gbx = GameBox.Parse<CGameCtnChallenge>("MyMap.Map.Gbx");
-var map = gbx.MainNode; // Like this
+var map = gbx.Node; // Like this
 
-var bronzeTime = gbx.MainNode.BronzeTime; // WRONG !!!
+var bronzeTime = gbx.Node.BronzeTime; // WRONG !!!
 var silverTime = map.SilverTime; // Correct
 ```
 
