@@ -164,15 +164,19 @@ namespace GBX.NET.ChunkExplorer
                 return;
             }
 
+#if DEBUG
             CurrentStream = new MemoryStream(chunk.Debugger.RawData!);
+#endif
             _ = TreeViewNodes.Focus();
         }
 
         private void ComboBoxChunks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+#if DEBUG
             CurrentStream = e.AddedItems.Count == 0 || e.AddedItems[0] is not Chunk chunk
                 ? default(Stream?)
                 : new MemoryStream(chunk.Debugger.RawData!);
+#endif
 
             _ = TreeViewNodes.Focus();
         }
