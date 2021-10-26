@@ -34,7 +34,7 @@ namespace GBX.NET.Benchmarks
                     .WithMaxParameterColumnWidth(100)
                 );
 
-            var results = BenchmarkRunner.Run(typeof(MapHeaderParseBenchmark), fileConfig);
+            var results = BenchmarkRunner.Run(typeof(MapParseBenchmark), fileConfig);
         }
     }
 }
