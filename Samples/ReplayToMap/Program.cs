@@ -18,7 +18,7 @@ namespace ReplayToMap
 
             if (node is CGameCtnReplayRecord replay)
             {
-                var map = replay.Challenge.Result;
+                var map = replay.Challenge;
                 map.Save(Formatter.Deformat(map.MapName + ".Map.Gbx"));
             }
         }
