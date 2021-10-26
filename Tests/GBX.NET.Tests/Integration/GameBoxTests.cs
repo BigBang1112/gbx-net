@@ -12,11 +12,10 @@ namespace GBX.NET.Tests.Integration
     public class GameBoxTests
     {
         [Theory]
-        [InlineData("E03 - Ultimate Nightmare.Map.Gbx")]
+        [InlineData("Summer 2021 - 25.Map.Gbx")]
         public void ParseMap(string fileName)
         {
             var node = GameBox.ParseNode(Path.Combine("Files", fileName));
-            node.DiscoverChunk<CGameCtnChallenge.Chunk03043044>();
         }
 
         [Theory]
