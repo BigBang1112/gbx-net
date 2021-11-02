@@ -9,7 +9,8 @@ namespace LocatorUrlConverter
 {
     class Program
     {
-        const string LocatorFile = "locator.yml";
+        static readonly string rootPath = Path.GetDirectoryName(typeof(Program).Assembly.Location) + "/";
+        static readonly string locatorFile = rootPath + "locator.yml";
 
         static void Main(string[] args)
         {
@@ -43,18 +44,18 @@ namespace LocatorUrlConverter
                 ProcessBlock(block, dictionary);
             }
 
-            Directory.CreateDirectory("output");
+            Directory.CreateDirectory(rootPath + "output");
 
-            node.Save("output/" + Path.GetFileName(map.GBX!.FileName));
+            node.Save(rootPath + "output/" + Path.GetFileName(map.GBX!.FileName));
         }
 
         private static Dictionary<string, string?> UpdateLocatorList(Dictionary<string, string?> newDictionary)
         {
             var dictionary = new Dictionary<string, string?>();
 
-            if (File.Exists(LocatorFile))
+            if (File.Exists(locatorFile))
             {
-                using var reader = new StreamReader(LocatorFile);
+                using var reader = new StreamReader(locatorFile);
                 dictionary = new YamlDotNet.Serialization.Deserializer().Deserialize<Dictionary<string, string?>>(reader) ?? new Dictionary<string, string?>();
             }
 
@@ -64,7 +65,7 @@ namespace LocatorUrlConverter
                     dictionary[pair.Key] = pair.Value;
             }
 
-            using var writer = new StreamWriter(LocatorFile);
+            using var writer = new StreamWriter(locatorFile);
             new YamlDotNet.Serialization.Serializer().Serialize(writer, dictionary);
 
             return dictionary;
