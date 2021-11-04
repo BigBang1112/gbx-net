@@ -607,7 +607,8 @@ namespace GBX.NET
 
         public void Int32(ref int? variable, int defaultValue = default)
         {
-            variable = Int32(variable.GetValueOrDefault(defaultValue));
+            if (Reader is not null) variable = Reader.ReadInt32();
+            if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
         }
 
         public void Int32()
@@ -1335,17 +1336,44 @@ namespace GBX.NET
 
         public void EnumByte<T>(ref T variable) where T : struct, Enum
         {
-            variable = (T)(object)Convert.ToInt32(Byte((byte)Convert.ToInt32(variable)));
+            var v = Mode == GameBoxReaderWriterMode.Write ? CastTo<byte>.From(variable) : default;
+
+            Byte(ref v);
+
+            if (Mode == GameBoxReaderWriterMode.Read)
+                variable = CastTo<T>.From(v);
         }
 
         public void EnumInt32<T>(ref T variable) where T : struct, Enum
         {
-            variable = (T)(object)Int32((int)(object)variable);
+            var v = Mode == GameBoxReaderWriterMode.Write ? CastTo<int>.From(variable) : default;
+
+            Int32(ref v);
+
+            if (Mode == GameBoxReaderWriterMode.Read)
+                variable = CastTo<T>.From(v);
         }
 
-        public void EnumInt32<T>(ref T? variable) where T : struct, Enum
+        public void EnumInt32<T>(ref T? variable, T defaultValue = default) where T : struct, Enum
         {
-            variable = (T)(object)Int32((variable as object as int?).GetValueOrDefault());
+            var v = Mode == GameBoxReaderWriterMode.Write ? CastTo<int?>.From(variable) : default;
+
+            if (Mode == GameBoxReaderWriterMode.Write)
+            {
+                if (defaultValue.Equals(default(T)))
+                {
+                    Int32(ref v);
+                    return;
+                }
+
+                Int32(ref v, CastTo<int>.From(defaultValue));
+            }
+
+            if (Mode == GameBoxReaderWriterMode.Read)
+            {
+                Int32(ref v);
+                variable = CastTo<T>.From(v);
+            }
         }
 
         public void UntilFacade(MemoryStream stream)
