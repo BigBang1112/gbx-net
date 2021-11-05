@@ -23,6 +23,8 @@ namespace GBX.NET.Tests.Integration
             var header = GameBox.ParseHeader(Path.Combine("Files", fileName));
             var refTable = header.RefTable;
 
+            if (refTable is null) throw new Exception();
+
             var expectedAncestorLevel = refTable.AncestorLevel;
             var expectedFiles = JsonSerializer.Serialize(refTable.Files, jsonSeralizerOptions);
             var expectedFolders = JsonSerializer.Serialize(refTable.Folders, jsonSeralizerOptions);

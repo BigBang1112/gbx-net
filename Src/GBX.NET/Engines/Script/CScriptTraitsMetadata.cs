@@ -188,7 +188,7 @@ namespace GBX.NET.Engines.Script
             switch (type.Type)
             {
                 case ScriptType.Boolean:
-                    type.Value = Convert.ToBoolean(r.ReadBoolean(true));
+                    type.Value = r.ReadBoolean(true);
                     break;
                 case ScriptType.Integer:
                     type.Value = r.ReadInt32();

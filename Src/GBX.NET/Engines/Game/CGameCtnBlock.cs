@@ -301,7 +301,7 @@ namespace GBX.NET.Engines.Game
 
         private CGameCtnBlock()
         {
-
+            blockModel = null!;
         }
 
         #endregion
@@ -338,7 +338,7 @@ namespace GBX.NET.Engines.Game
 
         public CGameCtnBlock(string name, Direction direction, Int3 coord, int flags, string? author, CGameCtnBlockSkin? skin, CGameWaypointSpecialProperty? waypoint)
         {
-            Name = name;
+            blockModel = new Ident(name);
             this.direction = direction;
             this.coord = coord;
             this.flags = flags;
@@ -367,7 +367,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnBlock n, GameBoxReaderWriter rw)
             {
-                rw.Ident(ref n.blockModel);
+                rw.Ident(ref n.blockModel!);
                 rw.EnumByte<Direction>(ref n.direction);
                 n.coord = (Int3)rw.Byte3((Byte3)n.coord);
                 rw.Int32(ref n.flags);

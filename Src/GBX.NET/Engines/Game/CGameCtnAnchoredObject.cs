@@ -153,7 +153,7 @@ namespace GBX.NET.Engines.Game
 
         private CGameCtnAnchoredObject()
         {
-
+            itemModel = null!;
         }
 
         internal CGameCtnAnchoredObject(Ident itemModel, Vec3 absolutePositionInMap, Vec3 pitchYawRoll,
@@ -206,7 +206,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnAnchoredObject n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
-                rw.Ident(ref n.itemModel);
+                rw.Ident(ref n.itemModel!);
                 rw.Vec3(ref n.pitchYawRoll);
                 rw.Byte3(ref n.blockUnitCoord);
                 rw.Id(ref n.anchorTreeId!);

@@ -12,7 +12,7 @@ namespace GBX.NET.Engines.Game
         public string? DisplayName { get; set; }
         public string? CollectionIcon { get; set; }
         public string? BlockInfoFlat { get; set; }
-        public Ident Vehicle { get; set; }
+        public Ident? Vehicle { get; set; }
         public string? LoadingScreen { get; set; }
 
         #region Constructors

@@ -257,7 +257,7 @@ namespace GBX.NET.Engines.Game
 
         public class Skin
         {
-            public Ident PlayerModel { get; set; }
+            public Ident PlayerModel { get; set; } = new Ident();
             public string? SkinFile { get; set; }
             public uint Checksum { get; set; }
         }

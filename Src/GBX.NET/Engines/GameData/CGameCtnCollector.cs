@@ -20,8 +20,8 @@ namespace GBX.NET.Engines.GameData
 
         #region Fields
 
-        private Ident author;
-        private Ident ident;
+        private Ident? author;
+        private Ident? ident;
         private string pageName;
         private int catalogPosition;
         private string? name;
@@ -40,14 +40,14 @@ namespace GBX.NET.Engines.GameData
         #region Properties
 
         [NodeMember]
-        public Ident Author
+        public Ident? Author
         {
             get => author;
             set => author = value;
         }
 
         [NodeMember]
-        public Ident Ident
+        public Ident? Ident
         {
             get => ident;
             set => ident = value;

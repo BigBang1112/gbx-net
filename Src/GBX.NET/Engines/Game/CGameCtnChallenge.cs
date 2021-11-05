@@ -1271,6 +1271,7 @@ namespace GBX.NET.Engines.Game
 
         private CGameCtnChallenge()
         {
+            mapInfo = null!;
             mapName = null!;
             authorLogin = null!;
         }
@@ -2084,7 +2085,7 @@ namespace GBX.NET.Engines.Game
 
                 if (version < 1)
                 {
-                    rw.Ident(ref n.mapInfo);
+                    rw.Ident(ref n.mapInfo!);
                     rw.String(ref n.mapName!);
                 }
 
@@ -2205,7 +2206,7 @@ namespace GBX.NET.Engines.Game
 
                 if (version < 3)
                 {
-                    rw.Ident(ref n.mapInfo);
+                    rw.Ident(ref n.mapInfo!);
                     rw.String(ref n.mapName!);
                 }
 
@@ -2305,7 +2306,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
                 rw.Byte(ref version);
-                rw.Ident(ref n.mapInfo);
+                rw.Ident(ref n.mapInfo!);
                 rw.String(ref n.mapName!);
                 rw.EnumByte<MapKind>(ref n.kind);
 
@@ -2510,7 +2511,7 @@ namespace GBX.NET.Engines.Game
 
             public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
             {
-                rw.Ident(ref n.mapInfo);
+                rw.Ident(ref n.mapInfo!);
                 rw.Int3(ref n.size);
                 rw.Int32(ref version);
                 rw.ListNode<CGameCtnBlock>(ref n.blocks!);
@@ -2843,7 +2844,7 @@ namespace GBX.NET.Engines.Game
             {
                 w.Write(n.mapInfo);
                 w.Write(n.mapName);
-                w.Write(n.decoration.GetValueOrDefault());
+                w.Write(n.decoration);
                 w.Write(n.size.GetValueOrDefault());
                 w.Write(NeedUnlock);
 
@@ -3880,8 +3881,8 @@ namespace GBX.NET.Engines.Game
                         var item = gbxItem.Node;
 
                         embedded.Add(new Ident(id,
-                            item.Ident.Collection,
-                            item.Ident.Author));
+                            item.Ident?.Collection ?? new Collection(),
+                            item.Ident?.Author ?? string.Empty));
                     }
                 }
 

@@ -224,9 +224,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
                 rw.Int32();
-                n.AdditionalVariantsGround = rw.Array(n.AdditionalVariantsGround,
-                    r => r.ReadNodeRef<CGameCtnBlockInfoVariantGround>(),
-                    (x, w) => w.Write(x));
+                n.AdditionalVariantsGround = rw.ArrayNode<CGameCtnBlockInfoVariantGround>(n.AdditionalVariantsGround)!;
             }
         }
 
@@ -278,9 +276,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
             {
                 rw.Int32();
-                n.AdditionalVariantsAir = rw.Array(n.AdditionalVariantsAir,
-                    r => r.ReadNodeRef<CGameCtnBlockInfoVariantAir>(),
-                    (x, w) => w.Write(x));
+                n.AdditionalVariantsAir = rw.ArrayNode<CGameCtnBlockInfoVariantAir>(n.AdditionalVariantsAir)!;
             }
         }
 

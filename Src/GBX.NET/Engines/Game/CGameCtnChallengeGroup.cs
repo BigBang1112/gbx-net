@@ -103,7 +103,7 @@ namespace GBX.NET.Engines.Game
 
         public class MapInfo
         {
-            public Ident Metadata { get; set; }
+            public Ident Metadata { get; set; } = new Ident();
             public string FilePath { get; set; } = string.Empty;
 
             public override string ToString()

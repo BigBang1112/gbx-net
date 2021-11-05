@@ -373,7 +373,7 @@ namespace GBX.NET.Engines.Game
 
         private CGameCtnGhost()
         {
-
+            playerModel = null!;
         }
 
         #endregion
@@ -407,7 +407,7 @@ namespace GBX.NET.Engines.Game
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
                 rw.Int32(ref version);
-                rw.Ident(ref n.playerModel);
+                rw.Ident(ref n.playerModel!);
                 rw.Vec3(ref n.lightTrailColor);
                 rw.List(ref n.skinPackDescs,
                     (i, r) => r.ReadFileRef(),
@@ -475,7 +475,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.Ident(ref n.playerModel);
+                rw.Ident(ref n.playerModel!);
                 rw.String(ref n.skinFile);
                 rw.String(ref n.ghostNickname);
             }
@@ -511,7 +511,7 @@ namespace GBX.NET.Engines.Game
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.Ident(ref n.playerModel);
+                rw.Ident(ref n.playerModel!);
                 rw.String(ref n.skinFile);
                 rw.Int32(ref U01);
                 rw.String(ref n.ghostNickname);
@@ -620,7 +620,7 @@ namespace GBX.NET.Engines.Game
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                rw.Ident(ref n.playerModel);
+                rw.Ident(ref n.playerModel!);
                 rw.String(ref n.skinFile);
 
                 rw.Int32(ref U01);
@@ -848,7 +848,7 @@ namespace GBX.NET.Engines.Game
         {
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.playerModel = new Ident(rw.Id(n.playerModel.ID));
+                n.playerModel = new Ident(rw.Id(n.playerModel.ID) ?? string.Empty);
             }
         }
 
@@ -882,7 +882,7 @@ namespace GBX.NET.Engines.Game
         [Chunk(0x03092018)]
         public class Chunk03092018 : Chunk<CGameCtnGhost>
         {
-            public Ident U01;
+            public Ident? U01;
 
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {

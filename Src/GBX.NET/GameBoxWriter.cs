@@ -106,11 +106,26 @@ namespace GBX.NET
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="IOException">An I/O error occurs.</exception>
         /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-        public void Write<T>(T[] array) where T : struct // TODO: Why is there no length prefix?
+        public void WriteArray<T>(T[]? array) where T : struct
+        {
+            if (array is null)
+            {
+                Write(0);
+                return;
+            }
+
+            Write(array.Length);
+            WriteArray_NoPrefix(array);
+        }
+
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="IOException">An I/O error occurs.</exception>
+        /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+        public void WriteArray_NoPrefix<T>(T[] array) where T : struct
         {
             if (array is null)
                 throw new ArgumentNullException(nameof(array));
-
+            
             var bytes = new byte[array.Length * Marshal.SizeOf(default(T))];
             Buffer.BlockCopy(array, 0, bytes, 0, bytes.Length);
             WriteBytes(bytes);
@@ -231,43 +246,53 @@ namespace GBX.NET
         /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
         public void Write(Vec2 value)
         {
-            Write(new float[] { value.X, value.Y });
+            Write(value.X);
+            Write(value.Y);
         }
 
         /// <exception cref="IOException">An I/O error occurs.</exception>
         /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
         public void Write(Vec3 value)
         {
-            Write(new float[] { value.X, value.Y, value.Z });
+            Write(value.X);
+            Write(value.Y);
+            Write(value.Z);
         }
 
         /// <exception cref="IOException">An I/O error occurs.</exception>
         /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
         public void Write(Vec4 value)
         {
-            Write(new float[] { value.X, value.Y, value.Z, value.W });
+            Write(value.X);
+            Write(value.Y);
+            Write(value.Z);
+            Write(value.W);
         }
 
         /// <exception cref="IOException">An I/O error occurs.</exception>
         /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
         public void Write(Int3 value)
         {
-            Write(new int[] { value.X, value.Y, value.Z });
+            Write(value.X);
+            Write(value.Y);
+            Write(value.Z);
         }
 
         /// <exception cref="IOException">An I/O error occurs.</exception>
         /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
         public void Write(Int2 value)
         {
-            Write(new int[] { value.X, value.Y });
+            Write(value.X);
+            Write(value.Y);
         }
 
         /// <exception cref="IOException">An I/O error occurs.</exception>
         /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
         public void Write(Byte3 value)
         {
-            var bytes = new byte[] { value.X, value.Y, value.Z };
-            WriteBytes(bytes);
+            Write(value.X);
+            Write(value.Y);
+            Write(value.Z);
         }
 
         /// <exception cref="ArgumentNullException"></exception>
@@ -354,17 +379,17 @@ namespace GBX.NET
 
         /// <exception cref="IOException">An I/O error occurs.</exception>
         /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-        public void Write(Ident ident, ILookbackable lookbackable)
+        public void Write(Ident? ident, ILookbackable lookbackable)
         {
-            Write(new Id(ident.ID, lookbackable));
-            Write(ident.Collection.ToId(lookbackable));
-            Write(new Id(ident.Author, lookbackable));
+            Write(new Id(ident?.ID, lookbackable));
+            Write(ident?.Collection.ToId(lookbackable) ?? new Id(null, lookbackable));
+            Write(new Id(ident?.Author, lookbackable));
         }
 
         /// <exception cref="PropertyNullException"></exception>
         /// <exception cref="IOException">An I/O error occurs.</exception>
         /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-        public void Write(Ident ident)
+        public void Write(Ident? ident)
         {
             if (Lookbackable is null)
                 throw new PropertyNullException(nameof(Lookbackable));
@@ -412,10 +437,13 @@ namespace GBX.NET
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="IOException">An I/O error occurs.</exception>
         /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-        public void Write<TKey, TValue>(IDictionary<TKey, TValue> dictionary)
+        public void Write<TKey, TValue>(IDictionary<TKey, TValue>? dictionary)
         {
             if (dictionary is null)
-                throw new ArgumentNullException(nameof(dictionary));
+            {
+                Write(0);
+                return;
+            }
 
             Write(dictionary.Count);
 

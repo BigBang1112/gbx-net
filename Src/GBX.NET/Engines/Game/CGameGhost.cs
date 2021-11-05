@@ -88,7 +88,7 @@ namespace GBX.NET.Engines.Game
 
                     using (var ms = new MemoryStream(Data))
                     {
-                        ghostData.ReadSamples(ms, Samples.Length, 56);
+                        ghostData.ReadSamples(ms, Samples?.Length ?? 0, 56);
                     }
 
                     return ghostData;
@@ -128,7 +128,7 @@ namespace GBX.NET.Engines.Game
             { 
                 UncompressedSize = rw.Int32(UncompressedSize);
                 CompressedSize = rw.Int32(CompressedSize);
-                Data = rw.Bytes(Data, CompressedSize);
+                Data = rw.Bytes(Data, CompressedSize)!;
 
                 if (rw.Mode == GameBoxReaderWriterMode.Read)
                 {
