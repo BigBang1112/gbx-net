@@ -56,6 +56,13 @@ namespace GBX.NET
             DefineTypes();
         }
 
+        internal static T GetNodeInstance<T>(uint classId) where T : CMwNod
+        {
+            if (AvailableClassConstructors.TryGetValue(classId, out Func<CMwNod> constructor))
+                return (T)constructor();
+            throw new NodeNotFoundException(classId);
+        }
+
         private static void DefineNames()
         {
             var watch = Stopwatch.StartNew();
