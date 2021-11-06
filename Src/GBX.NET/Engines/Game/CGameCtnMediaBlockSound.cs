@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using GBX.NET.Builders.Engines.Game;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GBX.NET.Engines.Game
@@ -93,6 +95,11 @@ namespace GBX.NET.Engines.Game
             keys = null!;
         }
 
+        public static CGameCtnMediaBlockSoundBuilder Create()
+        {
+            return new CGameCtnMediaBlockSoundBuilder();
+        }
+
         #endregion
 
         #region Chunks
@@ -157,11 +164,11 @@ namespace GBX.NET.Engines.Game
                 rw.Boolean(ref n.isLooping);
                 rw.Boolean(ref n.isMusic);
 
-                if (version >= 1) // ManiaPlanet
+                if (version >= 1) // ManiaPlanet 2-3?
                 {
                     rw.Boolean(ref n.stopWithClip);
 
-                    if (version >= 2)
+                    if (version >= 2) // ManiaPlanet 4
                     {
                         rw.Boolean(ref n.audioToSpeech);
                         rw.Int32(ref n.audioToSpeechTarget);

@@ -1,4 +1,5 @@
-﻿using GBX.NET.Engines.Control;
+﻿using GBX.NET.Builders.Engines.Game;
+using GBX.NET.Engines.Control;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -48,6 +49,11 @@ namespace GBX.NET.Engines.Game
         {
             text = null!;
             effect = null!;
+        }
+
+        public static CGameCtnMediaBlockTextBuilder Create()
+        {
+            return new CGameCtnMediaBlockTextBuilder();
         }
 
         #endregion

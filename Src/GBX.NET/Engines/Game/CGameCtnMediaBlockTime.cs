@@ -42,7 +42,7 @@ namespace GBX.NET.Engines.Game
             public override void Read(CGameCtnMediaBlockTime n, GameBoxReader r)
             {
                 if (!r.BaseStream.CanSeek)
-                    throw new NotSupportedException("Can't read CGameCtnMediaBlockTime in a stream that can't seek.");
+                    throw new NotSupportedException("Can't read CGameCtnMediaBlockTime in a stream that cannot seek.");
 
                 var numKeys = r.ReadInt32();
                 var bytes = r.ReadBytes(sizeof(float) * 2 * numKeys);
@@ -58,20 +58,20 @@ namespace GBX.NET.Engines.Game
                         Time = r1.ReadSingle_s(),
                         TimeValue = r1.ReadSingle()
                     });
+
+                    return;
                 }
-                else
+
+                n.IsTM2 = false;
+
+                r.BaseStream.Seek(-bytes.Length, SeekOrigin.Current);
+
+                n.Keys = r.ReadList(numKeys, r1 => new Key()
                 {
-                    n.IsTM2 = false;
-
-                    r.BaseStream.Seek(-bytes.Length, SeekOrigin.Current);
-
-                    n.Keys = r.ReadList(numKeys, r1 => new Key()
-                    {
-                        Time = r1.ReadSingle_s(),
-                        TimeValue = r1.ReadSingle(),
-                        Tangent = r1.ReadSingle()
-                    });
-                }
+                    Time = r1.ReadSingle_s(),
+                    TimeValue = r1.ReadSingle(),
+                    Tangent = r1.ReadSingle()
+                });
             }
 
             public override void Write(CGameCtnMediaBlockTime n, GameBoxWriter w)
@@ -83,16 +83,16 @@ namespace GBX.NET.Engines.Game
                         w1.WriteSingle_s(x.Time);
                         w1.Write(x.TimeValue);
                     });
+
+                    return;
                 }
-                else
+
+                w.Write(n.Keys, (x, w1) =>
                 {
-                    w.Write(n.Keys, (x, w1) =>
-                    {
-                        w1.WriteSingle_s(x.Time);
-                        w1.Write(x.TimeValue);
-                        w1.Write(x.Tangent);
-                    });
-                }
+                    w1.WriteSingle_s(x.Time);
+                    w1.Write(x.TimeValue);
+                    w1.Write(x.Tangent);
+                });
             }
         }
 

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+using GBX.NET.Builders.Engines.Game;
 using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Game
@@ -71,6 +71,11 @@ namespace GBX.NET.Engines.Game
         {
             name = null!;
             blocks = null!;
+        }
+
+        public static CGameCtnMediaTrackBuilder Create()
+        {
+            return new CGameCtnMediaTrackBuilder();
         }
 
         #endregion

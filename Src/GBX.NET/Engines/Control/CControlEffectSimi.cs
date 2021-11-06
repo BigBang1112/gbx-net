@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
+using GBX.NET.Builders.Engines.Game;
 using GBX.NET.Engines.Game;
 
 namespace GBX.NET.Engines.Control
@@ -68,6 +68,11 @@ namespace GBX.NET.Engines.Control
         private CControlEffectSimi()
         {
             keys = null!;
+        }
+
+        public static CControlEffectSimiBuilder Create()
+        {
+            return new CControlEffectSimiBuilder();
         }
 
         #endregion
