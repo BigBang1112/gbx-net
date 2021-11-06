@@ -78,7 +78,7 @@ namespace GBX.NET.Engines.MwFoundations
             chunks = new ChunkSet(this);
         }
 
-        public static T?[] ParseArray<T>(GameBoxReader r) where T : CMwNod
+        internal static T?[] ParseArray<T>(GameBoxReader r) where T : CMwNod
         {
             var count = r.ReadInt32();
             var array = new T?[count];
@@ -89,7 +89,7 @@ namespace GBX.NET.Engines.MwFoundations
             return array;
         }
 
-        public static IEnumerable<T?> ParseEnumerable<T>(GameBoxReader r) where T : CMwNod
+        internal static IEnumerable<T?> ParseEnumerable<T>(GameBoxReader r) where T : CMwNod
         {
             var count = r.ReadInt32();
 
@@ -97,7 +97,7 @@ namespace GBX.NET.Engines.MwFoundations
                 yield return Parse<T>(r);
         }
 
-        public static T? Parse<T>(GameBoxReader r, uint? classID = null, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
+        internal static T? Parse<T>(GameBoxReader r, uint? classID = null, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
         {
             if (!classID.HasValue)
                 classID = r.ReadUInt32();
@@ -120,7 +120,7 @@ namespace GBX.NET.Engines.MwFoundations
         }
 
         [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0071:Zjednodušit interpolaci", Justification = "<Čeká>")]
-        public static void Parse<T>(T node, GameBoxReader r, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
+        internal static void Parse<T>(T node, GameBoxReader r, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
         {
             var stopwatch = Stopwatch.StartNew();
 
@@ -632,7 +632,7 @@ namespace GBX.NET.Engines.MwFoundations
             Save(new Type[] { typeof(Stream), typeof(IDRemap) }, new object[] { stream, remap });
         }
 
-        public static uint Remap(uint id)
+        internal static uint Remap(uint id)
         {
             if (NodeCacheManager.Mappings.TryGetValue(id, out uint newerClassID))
                 return newerClassID;
