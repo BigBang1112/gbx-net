@@ -1,0 +1,98 @@
+﻿<Window x:Class="GBX.NET.ChunkExplorer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:control="clr-namespace:WpfHexaEditor;assembly=WPFHexaEditor"
+        xmlns:reflection="clr-namespace:System.Reflection;assembly=System.Runtime"
+        xmlns:local="clr-namespace:GBX.NET.ChunkExplorer"
+        xmlns:models="clr-namespace:GBX.NET.ChunkExplorer.Models"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1100"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="ButtonOpenFile" Content="Open GBX file..." Click="ButtonOpenFile_Click"/>
+            <TextBox Grid.Column="1" Margin="5 0 0 0" VerticalContentAlignment="Center" IsEnabled="False"/>
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="600"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <control:HexEditor x:Name="HexEditor" Stream="{Binding CurrentStream}"/>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <TreeView x:Name="TreeViewNodes" Margin="5 0 0 0" ItemsSource="{Binding MainNodes}" SelectedItemChanged="TreeView_SelectedItemChanged">
+                    <TreeView.Resources>
+
+                        <HierarchicalDataTemplate DataType="{x:Type models:MainNodeModel}" ItemsSource="{Binding AuxNodes}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding ShortFileName}" VerticalAlignment="Center" FontWeight="Bold"/>
+                                <Border Margin="5 0 0 0" Grid.Column="1" Background="CornflowerBlue" CornerRadius="2">
+                                    <TextBlock Margin="5 2" Text="{Binding Type.Name}" FontWeight="Bold" Foreground="White"/>
+                                </Border>
+                            </Grid>
+                        </HierarchicalDataTemplate>
+
+                        <HierarchicalDataTemplate DataType="{x:Type models:NodeModel}" ItemsSource="{Binding AuxNodes}">
+                            <Grid Margin="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="{Binding NodeBackgroundBrush}" CornerRadius="2">
+                                    <TextBlock Margin="5 2" Text="{Binding TypeName}" FontWeight="Bold" Foreground="White"/>
+                                </Border>
+                                <TextBlock Margin="5 0 0 0" Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center"/>
+                                <TextBlock Margin="5 0 0 0" Grid.Column="1" Text="{Binding Key}" VerticalAlignment="Center"/>
+                                <TextBlock Margin="5 0 5 0" Grid.Column="2" Foreground="Gray" VerticalAlignment="Center" Text="{Binding Value}"/>
+                            </Grid>
+                        </HierarchicalDataTemplate>
+
+                    </TreeView.Resources>
+                </TreeView>
+                <ComboBox Grid.Row="1" Margin="5 5 0 0"
+                          ItemsSource="{Binding Chunks}"
+                          x:Name="ComboBoxChunks"
+                          SelectionChanged="ComboBoxChunks_SelectionChanged">
+                    <ComboBox.Style>
+                        <Style TargetType="ComboBox">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Chunks}" Value="{x:Null}">
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ComboBox.Style>
+                </ComboBox>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
