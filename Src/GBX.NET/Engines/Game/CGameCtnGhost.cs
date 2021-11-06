@@ -841,14 +841,16 @@ namespace GBX.NET.Engines.Game
         #region 0x015 chunk (vehicle)
 
         /// <summary>
-        /// CGameCtnGhost 0x015 chunk (vehicle)
+        /// CGameCtnGhost 0x015 chunk
         /// </summary>
-        [Chunk(0x03092015, "vehicle")]
+        [Chunk(0x03092015)]
         public class Chunk03092015 : Chunk<CGameCtnGhost>
         {
+            public string? U01;
+
             public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
             {
-                n.playerModel = new Ident(rw.Id(n.playerModel.ID) ?? string.Empty);
+                rw.Id(ref U01);
             }
         }
 
