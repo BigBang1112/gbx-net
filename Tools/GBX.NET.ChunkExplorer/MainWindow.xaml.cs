@@ -121,7 +121,10 @@ namespace GBX.NET.ChunkExplorer
 
         private MainNodeModel ParseNode(string fileName)
         {
-            fileStream = File.OpenRead(fileName);
+            using var fs = File.OpenRead(fileName);
+            fileStream = new MemoryStream();
+            fs.CopyTo(fileStream);
+            fileStream.Position = 0;
 
             var node = GameBox.ParseNode(fileStream);
 
