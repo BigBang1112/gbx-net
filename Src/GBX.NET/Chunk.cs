@@ -178,7 +178,8 @@ namespace GBX.NET
         public override string ToString()
         {
             var desc = GetType().GetCustomAttribute<ChunkAttribute>().Description;
-            return $"{typeof(T).Name} chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}";
+            var version = (this as IVersionable)?.Version;
+            return $"{typeof(T).Name} chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")} {(version is null ? "" : $"[v{version}]")}";
         }
     }
 }

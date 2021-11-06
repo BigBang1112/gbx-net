@@ -101,8 +101,9 @@ namespace GBX.NET
             if (chunkAttribute == null)
                 return $"{typeof(T).Name} unknown skippable chunk 0x{ID:X8}";
             var desc = chunkAttribute.Description;
+            var version = (this as IVersionable)?.Version;
 
-            return $"{typeof(T).Name} skippable chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(ignoreChunkAttribute == null ? "" : " [ignored]")}";
+            return $"{typeof(T).Name} skippable chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(ignoreChunkAttribute == null ? "" : " [ignored]")} {(version is null ? "" : $"[v{version}]")}";
         }
     }
 }
