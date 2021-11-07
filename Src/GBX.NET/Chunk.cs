@@ -179,7 +179,7 @@ namespace GBX.NET
         {
             var desc = GetType().GetCustomAttribute<ChunkAttribute>().Description;
             var version = (this as IVersionable)?.Version;
-            return $"{typeof(T).Name} chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")} {(version is null ? "" : $"[v{version}]")}";
+            return $"{typeof(T).Name} chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(version is null ? "" : $" [v{version}]")}";
         }
     }
 }
