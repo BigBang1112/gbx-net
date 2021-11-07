@@ -53,20 +53,15 @@ namespace GBX.NET
         {
             stream.WriteByte(0x78);
 
-            switch (Compression)
+            byte compressionTypeByte = Compression switch
             {
-                case CompressionLevel.BestCompression:
-                    stream.WriteByte(0xDA);
-                    break;
-                case CompressionLevel.DefaultCompression:
-                    stream.WriteByte(0x9C);
-                    break;
-                case CompressionLevel.NoCompression:
-                    stream.WriteByte(0x01);
-                    break;
-                case CompressionLevel.UnknownCompression:
-                    throw new Exception("Unknown compression can't be written.");
-            }
+                CompressionLevel.BestCompression => 0xDA,
+                CompressionLevel.DefaultCompression => 0x9C,
+                CompressionLevel.NoCompression => 0x01,
+                _ => throw new Exception("Unknown compression can't be written."),
+            };
+
+            stream.WriteByte(compressionTypeByte);
         }
     }
 }
