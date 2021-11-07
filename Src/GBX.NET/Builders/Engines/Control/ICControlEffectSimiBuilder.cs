@@ -1,9 +1,9 @@
 ﻿using GBX.NET.Engines.Control;
 using System.Collections.Generic;
 
-namespace GBX.NET.Builders.Engines.Game
+namespace GBX.NET.Builders.Engines.Control
 {
-    public interface ICControlEffectSimiBuilder : IBuilder
+    public interface ICControlEffectSimiBuilder : IBuilder, ICControlEffectSimiBuilderFor
     {
         IList<CControlEffectSimi.Key>? Keys { get; set; }
 

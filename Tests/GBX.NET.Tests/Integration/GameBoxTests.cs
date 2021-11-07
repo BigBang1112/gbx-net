@@ -12,7 +12,7 @@ namespace GBX.NET.Tests.Integration
     public class GameBoxTests
     {
         [Theory]
-        [InlineData("Summer 2021 - 25.Map.Gbx")]
+        [InlineData("CCP#05 - Sarvy in Holidays.Map.Gbx")]
         public void ParseMap(string fileName)
         {
             var node = GameBox.ParseNode(Path.Combine("Files", fileName));

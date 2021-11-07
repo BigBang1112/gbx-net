@@ -2,7 +2,7 @@
 
 namespace GBX.NET.Builders.Engines.Game
 {
-    public interface ICGameCtnMediaBlockTextBuilder : IBuilder
+    public interface ICGameCtnMediaBlockTextBuilder : IBuilder, ICGameCtnMediaBlockTextBuilderFor
     {
         CControlEffectSimi? Effect { get; set; }
         string? Text { get; set; }

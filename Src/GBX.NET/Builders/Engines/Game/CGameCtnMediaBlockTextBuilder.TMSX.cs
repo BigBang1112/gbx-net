@@ -1,4 +1,5 @@
-﻿using GBX.NET.Engines.Game;
+﻿using GBX.NET.Engines.Control;
+using GBX.NET.Engines.Game;
 using System;
 
 namespace GBX.NET.Builders.Engines.Game
@@ -11,6 +12,7 @@ namespace GBX.NET.Builders.Engines.Game
 
             public override CGameCtnMediaBlockText Build()
             {
+                Node.Effect = BaseBuilder.Effect ?? CControlEffectSimi.Create().ForTMSX().Build();
                 Node.CreateChunk<CGameCtnMediaBlockText.Chunk030A8003>();
                 return Node;
             }

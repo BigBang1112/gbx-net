@@ -24,12 +24,23 @@ namespace GBX.NET.Builders.Engines.Game
         }
 
         public TMSX ForTMSX() => new(this, NewNode());
+        public TMU ForTMU() => new(this, NewNode());
         public TMUF ForTMUF() => new(this, NewNode());
         public TM2 ForTM2() => new(this, NewNode());
 
-        private CGameCtnMediaBlockText NewNode()
+        GameBuilder<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>
+            IBuilderForTMSX<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>.ForTMSX() => ForTMSX();
+        GameBuilder<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>
+            IBuilderForTMU<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>.ForTMU() => ForTMU();
+        GameBuilder<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>
+            IBuilderForTMUF<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>.ForTMUF() => ForTMUF();
+        GameBuilder<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>
+            IBuilderForTM2<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>.ForTM2() => ForTM2();
+
+        internal CGameCtnMediaBlockText NewNode()
         {
             var node = NodeCacheManager.GetNodeInstance<CGameCtnMediaBlockText>(0x030A8000);
+            node.Text = Text ?? string.Empty;
             node.CreateChunk<CGameCtnMediaBlockText.Chunk030A8001>();
             node.CreateChunk<CGameCtnMediaBlockText.Chunk030A8002>();
             return node;

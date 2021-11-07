@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GBX.NET.Builders.Engines.Game;
+using GBX.NET.Builders.Engines.Control;
 using GBX.NET.Engines.Game;
 
 namespace GBX.NET.Engines.Control
