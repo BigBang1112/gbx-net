@@ -315,90 +315,38 @@ namespace GBX.NET
         /// </summary>
         /// <param name="stream">Any kind of stream that supports writing.</param>
         /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
-        public void Save(Stream stream, IDRemap remap)
+        public void Save(Stream stream, IDRemap remap = default)
         {
             using var w = new GameBoxWriter(stream);
             Write(w, remap);
         }
 
         /// <summary>
-        /// Saves the serialized <see cref="GameBox{T}"/> to a stream.
-        /// </summary>
-        /// <param name="stream">Any kind of stream that supports writing.</param>
-        public void Save(Stream stream)
-        {
-            Save(stream, IDRemap.Latest);
-        }
-
-        /// <summary>
         /// Saves the serialized <see cref="GameBox{T}"/> on a disk.
         /// </summary>
-        /// <param name="fileName">Relative or absolute file path.</param>
+        /// <param name="fileName">Relative or absolute file path. Null will pick the <see cref="GameBox.FileName"/> value instead.</param>
         /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
+        /// <exception cref="PropertyNullException"></exception>
         /// <exception cref="ArgumentException"><paramref name="fileName"/> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by System.IO.Path.InvalidPathChars.</exception>
         /// <exception cref="ArgumentNullException"><paramref name="fileName"/> is null.</exception>
         /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.</exception>
         /// <exception cref="DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive).</exception>
         /// <exception cref="UnauthorizedAccessException"><paramref name="fileName"/> specified a file that is read-only. -or- <paramref name="fileName"/> specified a file that is hidden. -or- This operation is not supported on the current platform. -or- <paramref name="fileName"/> specified a directory. -or- The caller does not have the required permission.</exception>
         /// <exception cref="NotSupportedException"><paramref name="fileName"/> is in an invalid format.</exception>
-        public void Save(string fileName, IDRemap remap)
+        public void Save(string? fileName = default, IDRemap remap = default)
         {
+            if (fileName is null)
+            {
+                if (FileName is null)
+                    throw new PropertyNullException(nameof(FileName));
+
+                fileName = FileName;
+            }
+
             using (var fs = File.OpenWrite(fileName))
                 Save(fs, remap);
 
             Log.Write($"GBX file {fileName} saved.");
-        }
-
-        /// <summary>
-        /// Saves the serialized <see cref="GameBox{T}"/> on a disk.
-        /// </summary>
-        /// <param name="fileName">Relative or absolute file path.</param>
-        /// <exception cref="ArgumentException"><paramref name="fileName"/> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by System.IO.Path.InvalidPathChars.</exception>
-        /// <exception cref="ArgumentNullException"><paramref name="fileName"/> is null.</exception>
-        /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.</exception>
-        /// <exception cref="DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive).</exception>
-        /// <exception cref="UnauthorizedAccessException"><paramref name="fileName"/> specified a file that is read-only. -or- <paramref name="fileName"/> specified a file that is hidden. -or- This operation is not supported on the current platform. -or- <paramref name="fileName"/> specified a directory. -or- The caller does not have the required permission.</exception>
-        /// <exception cref="NotSupportedException"><paramref name="fileName"/> is in an invalid format.</exception>
-        public void Save(string fileName)
-        {
-            Save(fileName, IDRemap.Latest);
-        }
-
-        /// <summary>
-        /// Saves the serialized <see cref="GameBox{T}"/> on the defined <see cref="GameBox.FileName"/>.
-        /// </summary>
-        /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
-        /// <exception cref="PropertyNullException"></exception>
-        /// <exception cref="ArgumentException"><see cref="GameBox.FileName"/> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by System.IO.Path.InvalidPathChars.</exception>
-        /// <exception cref="ArgumentNullException"><see cref="GameBox.FileName"/> is null.</exception>
-        /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.</exception>
-        /// <exception cref="DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive).</exception>
-        /// <exception cref="UnauthorizedAccessException"><see cref="GameBox.FileName"/> specified a file that is read-only. -or- <see cref="GameBox.FileName"/> specified a file that is hidden. -or- This operation is not supported on the current platform. -or- <see cref="GameBox.FileName"/> specified a directory. -or- The caller does not have the required permission.</exception>
-        /// <exception cref="NotSupportedException"><see cref="GameBox.FileName"/> is in an invalid format.</exception>
-        public void Save(IDRemap remap)
-        {
-            if (FileName is null)
-                throw new PropertyNullException(nameof(FileName));
-
-            Save(FileName, remap);
-        }
-
-        /// <summary>
-        /// Saves the serialized <see cref="GameBox{T}"/> on the defined <see cref="GameBox.FileName"/>.
-        /// </summary>
-        /// <exception cref="PropertyNullException"></exception>
-        /// <exception cref="ArgumentException"><see cref="GameBox.FileName"/> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by System.IO.Path.InvalidPathChars.</exception>
-        /// <exception cref="ArgumentNullException"><see cref="GameBox.FileName"/> is null.</exception>
-        /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.</exception>
-        /// <exception cref="DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive).</exception>
-        /// <exception cref="UnauthorizedAccessException"><see cref="GameBox.FileName"/> specified a file that is read-only. -or- <see cref="GameBox.FileName"/> specified a file that is hidden. -or- This operation is not supported on the current platform. -or- <see cref="GameBox.FileName"/> specified a directory. -or- The caller does not have the required permission.</exception>
-        /// <exception cref="NotSupportedException"><see cref="GameBox.FileName"/> is in an invalid format.</exception>
-        public void Save()
-        {
-            if (FileName is null)
-                throw new PropertyNullException(nameof(FileName));
-
-            Save(FileName, IDRemap.Latest);
         }
 
         /// <summary>

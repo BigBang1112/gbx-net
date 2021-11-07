@@ -580,7 +580,7 @@ namespace GBX.NET.Engines.MwFoundations
             return (GameBox)Activator.CreateInstance(typeof(GameBox<>).MakeGenericType(GetType()), this);
         }
 
-        private void Save(Type[] types, object[] parameters)
+        private void Save(Type[] types, object?[] parameters)
         {
             var type = GetType();
             var gbxType = GBX?.GetType();
@@ -596,40 +596,26 @@ namespace GBX.NET.Engines.MwFoundations
             _ = gbxOfType.GetMethod("Save", types).Invoke(gbx, parameters);
         }
 
+        /// <summary>
+        /// Saves the serialized node on a disk in a GBX form.
+        /// </summary>
+        /// <param name="fileName">Relative or absolute file path. Null will pick the <see cref="GameBox.FileName"/> value from <see cref="GBX"/> object instead.</param>
+        /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
         /// <exception cref="NotSupportedException"/>
-        public void Save()
+        public void Save(string? fileName = default, IDRemap remap = default)
         {
-            Save(new Type[0], new object[0]);
+            Save(new Type[] { typeof(string), typeof(IDRemap) }, new object?[] { fileName, remap });
         }
 
+        /// <summary>
+        /// Saves the serialized node to a stream in a GBX form.
+        /// </summary>
+        /// <param name="stream">Any kind of stream that supports writing.</param>
+        /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
         /// <exception cref="NotSupportedException"/>
-        public void Save(IDRemap remap)
+        public void Save(Stream stream, IDRemap remap = default)
         {
-            Save(new Type[] { typeof(IDRemap) }, new object[] { remap });
-        }
-
-        /// <exception cref="NotSupportedException"/>
-        public void Save(string fileName)
-        {
-            Save(new Type[] { typeof(string) }, new object[] { fileName });
-        }
-
-        /// <exception cref="NotSupportedException"/>
-        public void Save(string fileName, IDRemap remap)
-        {
-            Save(new Type[] { typeof(string), typeof(IDRemap) }, new object[] { fileName, remap });
-        }
-
-        /// <exception cref="NotSupportedException"/>
-        public void Save(Stream stream)
-        {
-            Save(new Type[] { typeof(Stream) }, new object[] { stream });
-        }
-
-        /// <exception cref="NotSupportedException"/>
-        public void Save(Stream stream, IDRemap remap)
-        {
-            Save(new Type[] { typeof(Stream), typeof(IDRemap) }, new object[] { stream, remap });
+            Save(new Type[] { typeof(Stream), typeof(IDRemap) }, new object?[] { stream, remap });
         }
 
         internal static uint Remap(uint id)
