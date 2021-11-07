@@ -232,7 +232,7 @@ namespace GBX.NET
             return true;
         }
 
-        protected internal override bool ReadBody(GameBoxReader reader, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress)
+        protected internal override bool ReadBody(GameBoxReader reader, IProgress<GameBoxReadProgress>? progress, bool readUncompressedBodyDirectly)
         {
             if (Body is null)
                 return false;
@@ -459,7 +459,7 @@ namespace GBX.NET
             return true;
         }
 
-        protected internal virtual bool ReadBody(GameBoxReader reader, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress)
+        protected internal virtual bool ReadBody(GameBoxReader reader, IProgress<GameBoxReadProgress>? progress, bool readUncompressedBodyDirectly)
         {
             return false;
         }
@@ -567,98 +567,43 @@ namespace GBX.NET
         /// </summary>
         /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an exception. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
         /// <param name="stream">Stream to read GBX format from.</param>
+        /// <param name="progress">Callback that reports any read progress.</param>
         /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
         /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
-        /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with specified main node type.</returns>
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
         /// <exception cref="NotSupportedException"/>
         /// <exception cref="GameBoxParseException"/>
-        public static GameBox<T> Parse<T>(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
+        public static GameBox<T> Parse<T>(Stream stream, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false) where T : CMwNod
         {
             var gbx = ParseHeader<T>(stream, progress);
 
             using var r = new GameBoxReader(stream);
 
-            if (gbx.ReadBody(r, readUncompressedBodyDirectly, progress))
+            if (gbx.ReadBody(r, progress: progress, readUncompressedBodyDirectly: readUncompressedBodyDirectly))
                 return gbx;
 
             throw new GameBoxParseException();
         }
 
         /// <summary>
-        /// Easily parses GBX format.
-        /// </summary>
-        /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an exception. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
-        /// <param name="stream">Stream to read GBX format from.</param>
-        /// <param name="progress">Callback that reports any read progress.</param>
-        /// <returns>A GameBox with specified main node type.</returns>
-        /// <exception cref="MissingLzoException"/>
-        /// <exception cref="InvalidCastException"/>
-        /// <exception cref="NotSupportedException"/>
-        /// <exception cref="GameBoxParseException"/>
-        public static GameBox<T> Parse<T>(Stream stream, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
-        {
-            return Parse<T>(stream, false, progress);
-        }
-
-        /// <summary>
         /// Easily parses a GBX file.
         /// </summary>
         /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an exception. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
         /// <param name="fileName">Relative or absolute file path.</param>
+        /// <param name="progress">Callback that reports any read progress.</param>
         /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
         /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
-        /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A GameBox with specified main node type.</returns>
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
         /// <exception cref="NotSupportedException"/>
         /// <exception cref="GameBoxParseException"/>
-        public static GameBox<T> Parse<T>(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
+        public static GameBox<T> Parse<T>(string fileName, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false) where T : CMwNod
         {
             using var fs = File.OpenRead(fileName);
-            var gbx = Parse<T>(fs, readUncompressedBodyDirectly, progress);
-            if (gbx == null) throw new GameBoxParseException();
-            gbx.FileName = fileName;
-            return gbx;
-        }
-
-        /// <summary>
-        /// Easily parses a GBX file.
-        /// </summary>
-        /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an exception. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
-        /// <param name="fileName">Relative or absolute file path.</param>
-        /// <param name="progress">Callback that reports any read progress.</param>
-        /// <returns>A GameBox with specified main node type.</returns>
-        /// <exception cref="MissingLzoException"/>
-        /// <exception cref="InvalidCastException"/>
-        /// <exception cref="NotSupportedException"/>
-        /// <example>
-        /// var gbx = GameBox.Parse&lt;CGameCtnChallenge&gt;("MyMap.Map.Gbx");
-        /// // Node data is available in gbx.MainNode
-        /// </example>
-        public static GameBox<T> Parse<T>(string fileName, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
-        {
-            return Parse<T>(fileName, false, progress);
-        }
-
-        /// <summary>
-        /// Easily parses a GBX file.
-        /// </summary>
-        /// <param name="fileName">Relative or absolute file path.</param>
-        /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
-        /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
-        /// <param name="progress">Callback that reports any read progress.</param>
-        /// <exception cref="MissingLzoException"/>
-        /// <exception cref="NotSupportedException"/>
-        /// <exception cref="GameBoxParseException"/>
-        /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast).</returns>
-        public static GameBox Parse(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress = null)
-        {
-            using var fs = File.OpenRead(fileName);
-            var gbx = Parse(fs, readUncompressedBodyDirectly, progress);
+            var gbx = Parse<T>(fs, progress: progress, readUncompressedBodyDirectly: readUncompressedBodyDirectly);
             if (gbx == null) throw new GameBoxParseException();
             gbx.FileName = fileName;
             return gbx;
@@ -669,62 +614,43 @@ namespace GBX.NET
         /// </summary>
         /// <param name="fileName">Relative or absolute file path.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
+        /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
+        /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="NotSupportedException"/>
         /// <exception cref="GameBoxParseException"/>
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast).</returns>
-        /// <example>
-        /// var gbx = GameBox.Parse("MyMap.Map.Gbx");
-        /// 
-        /// if (gbx is GameBox&lt;CGameCtnChallenge&gt; gbxMap)
-        /// {
-        ///     // Node data is available in gbxMap.MainNode
-        /// }
-        /// else if (gbx is GameBox&lt;CGameCtnReplayRecord&gt; gbxReplay)
-        /// {
-        ///     // Node data is available in gbxReplay.MainNode
-        /// }
-        /// </example>
-        public static GameBox Parse(string fileName, IProgress<GameBoxReadProgress>? progress = null)
+        public static GameBox Parse(string fileName, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false)
         {
-            return Parse(fileName, false, progress);
+            using var fs = File.OpenRead(fileName);
+            var gbx = Parse(fs, progress: progress, readUncompressedBodyDirectly: readUncompressedBodyDirectly);
+            if (gbx == null) throw new GameBoxParseException();
+            gbx.FileName = fileName;
+            return gbx;
         }
 
         /// <summary>
         /// Easily parses GBX format.
         /// </summary>
         /// <param name="stream">Stream to read GBX format from.</param>
+        /// <param name="progress">Callback that reports any read progress.</param>
         /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
         /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
-        /// <param name="progress">Callback that reports any read progress.</param>
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="NotSupportedException"/>
         /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast).</returns>
-        public static GameBox Parse(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress = null)
+        public static GameBox Parse(Stream stream, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false)
         {
             using var rHeader = new GameBoxReader(stream);
 
-            var gbx = ParseHeader(rHeader, progress);
+            var gbx = ParseHeader(rHeader, progress: progress);
 
             // Body resets Id (lookback string) list
             using var rBody = new GameBoxReader(stream, gbx.Body);
             
-            gbx.ReadBody(rBody, readUncompressedBodyDirectly, progress);
+            gbx.ReadBody(rBody, progress: progress, readUncompressedBodyDirectly: readUncompressedBodyDirectly);
 
             return gbx;
-        }
-
-        /// <summary>
-        /// Easily parses GBX format.
-        /// </summary>
-        /// <param name="stream">Stream to read GBX format from.</param>
-        /// <param name="progress">Callback that reports any read progress.</param>
-        /// <exception cref="MissingLzoException"/>
-        /// <exception cref="NotSupportedException"/>
-        /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast).</returns>
-        public static GameBox Parse(Stream stream, IProgress<GameBoxReadProgress>? progress = null)
-        {
-            return Parse(stream, false, progress);
         }
 
         /// <summary>
@@ -735,7 +661,7 @@ namespace GBX.NET
         /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
         public static CMwNod ParseNodeHeader(Stream stream, IProgress<GameBoxReadProgress>? progress = null)
         {
-            return ParseHeader(stream, progress).Node;
+            return ParseHeader(stream, progress: progress).Node;
         }
 
         /// <summary>
@@ -746,7 +672,7 @@ namespace GBX.NET
         /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
         public static CMwNod ParseNodeHeader(string fileName, IProgress<GameBoxReadProgress>? progress = null)
         {
-            return ParseHeader(fileName, progress);
+            return ParseHeader(fileName, progress: progress);
         }
 
         /// <summary>
@@ -759,7 +685,7 @@ namespace GBX.NET
         /// <exception cref="InvalidCastException"/>
         public static T ParseNodeHeader<T>(Stream stream, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
         {
-            return ParseHeader<T>(stream, progress);
+            return ParseHeader<T>(stream, progress: progress);
         }
 
         /// <summary>
@@ -772,24 +698,7 @@ namespace GBX.NET
         /// <exception cref="InvalidCastException"/>
         public static T ParseNodeHeader<T>(string fileName, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
         {
-            return ParseHeader<T>(fileName, progress);
-        }
-
-        /// <summary>
-        /// Easily parses GBX format and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="CMwNod.GBX"/>.
-        /// </summary>
-        /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an exception. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
-        /// <param name="stream">Stream to read GBX format from.</param>
-        /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
-        /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
-        /// <param name="progress">Callback that reports any read progress.</param>
-        /// <returns>A <see cref="CMwNod"/> casted to <typeparamref name="T"/>.</returns>
-        /// <exception cref="MissingLzoException"/>
-        /// <exception cref="InvalidCastException"/>
-        /// <exception cref="NotSupportedException"/>
-        public static T ParseNode<T>(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
-        {
-            return Parse<T>(stream, readUncompressedBodyDirectly, progress);
+            return ParseHeader<T>(fileName, progress: progress);
         }
 
         /// <summary>
@@ -798,30 +707,15 @@ namespace GBX.NET
         /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an exception. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
         /// <param name="stream">Stream to read GBX format from.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
-        /// <returns>A <see cref="CMwNod"/> casted to <typeparamref name="T"/>.</returns>
-        /// <exception cref="MissingLzoException"/>
-        /// <exception cref="InvalidCastException"/>
-        /// <exception cref="NotSupportedException"/>
-        public static T ParseNode<T>(Stream stream, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
-        {
-            return ParseNode<T>(stream, false, progress);
-        }
-
-        /// <summary>
-        /// Easily parses a GBX file and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="CMwNod.GBX"/>.
-        /// </summary>
-        /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an exception. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
-        /// <param name="fileName">Relative or absolute file path.</param>
         /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
         /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
-        /// <param name="progress">Callback that reports any read progress.</param>
         /// <returns>A <see cref="CMwNod"/> casted to <typeparamref name="T"/>.</returns>
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
         /// <exception cref="NotSupportedException"/>
-        public static T ParseNode<T>(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
+        public static T ParseNode<T>(Stream stream, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false) where T : CMwNod
         {
-            return Parse<T>(fileName, readUncompressedBodyDirectly, progress);
+            return Parse<T>(stream, progress: progress, readUncompressedBodyDirectly: readUncompressedBodyDirectly);
         }
 
         /// <summary>
@@ -830,28 +724,15 @@ namespace GBX.NET
         /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an exception. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
         /// <param name="fileName">Relative or absolute file path.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
+        /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
+        /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
         /// <returns>A <see cref="CMwNod"/> casted to <typeparamref name="T"/>.</returns>
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="InvalidCastException"/>
         /// <exception cref="NotSupportedException"/>
-        public static T ParseNode<T>(string fileName, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
+        public static T ParseNode<T>(string fileName, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false) where T : CMwNod
         {
-            return ParseNode<T>(fileName, false, progress);
-        }
-
-        /// <summary>
-        /// Easily parses a GBX file and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="CMwNod.GBX"/>.
-        /// </summary>
-        /// <param name="fileName">Relative or absolute file path.</param>
-        /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
-        /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
-        /// <param name="progress">Callback that reports any read progress.</param>
-        /// <exception cref="MissingLzoException"/>
-        /// <exception cref="NotSupportedException"/>
-        /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
-        public static CMwNod ParseNode(string fileName, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress = null)
-        {
-            return Parse(fileName, readUncompressedBodyDirectly, progress);
+            return Parse<T>(fileName, progress: progress, readUncompressedBodyDirectly: readUncompressedBodyDirectly);
         }
 
         /// <summary>
@@ -859,27 +740,14 @@ namespace GBX.NET
         /// </summary>
         /// <param name="fileName">Relative or absolute file path.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
-        /// <exception cref="MissingLzoException"/>
-        /// <exception cref="NotSupportedException"/>
-        /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
-        public static CMwNod ParseNode(string fileName, IProgress<GameBoxReadProgress>? progress = null)
-        {
-            return ParseNode(fileName, false, progress);
-        }
-
-        /// <summary>
-        /// Easily parses GBX format and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="CMwNod.GBX"/>.
-        /// </summary>
-        /// <param name="stream">Stream to read GBX format from.</param>
         /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
         /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
-        /// <param name="progress">Callback that reports any read progress.</param>
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="NotSupportedException"/>
         /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
-        public static CMwNod ParseNode(Stream stream, bool readUncompressedBodyDirectly, IProgress<GameBoxReadProgress>? progress = null)
+        public static CMwNod ParseNode(string fileName, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false)
         {
-            return Parse(stream, readUncompressedBodyDirectly, progress);
+            return Parse(fileName, progress: progress, readUncompressedBodyDirectly: readUncompressedBodyDirectly);
         }
 
         /// <summary>
@@ -887,12 +755,14 @@ namespace GBX.NET
         /// </summary>
         /// <param name="stream">Stream to read GBX format from.</param>
         /// <param name="progress">Callback that reports any read progress.</param>
+        /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
+        /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
         /// <exception cref="MissingLzoException"/>
         /// <exception cref="NotSupportedException"/>
         /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
-        public static CMwNod ParseNode(Stream stream, IProgress<GameBoxReadProgress>? progress = null)
+        public static CMwNod ParseNode(Stream stream, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false)
         {
-            return ParseNode(stream, false, progress);
+            return Parse(stream, progress: progress, readUncompressedBodyDirectly: readUncompressedBodyDirectly);
         }
 
         private static uint? ReadNodeID(GameBoxReader reader)
