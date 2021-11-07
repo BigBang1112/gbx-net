@@ -12,14 +12,14 @@ namespace GBX.NET.Tests.Integration
     public class GameBoxTests
     {
         [Theory]
-        [InlineData("CCP#05 - Sarvy in Holidays.Map.Gbx")]
+        [InlineData("CCP#04 - ODYSSEY.Map.Gbx")]
         public void ParseMap(string fileName)
         {
             var node = GameBox.ParseNode(Path.Combine("Files", fileName));
         }
 
         [Theory]
-        [InlineData("RaceF7.Challenge.Gbx")]
+        [InlineData("CCP#04 - ODYSSEY.Map.Gbx")]
         public void ParseSaveMap(string fileName)
         {
             var node = GameBox.ParseNode(Path.Combine("Files", fileName));
