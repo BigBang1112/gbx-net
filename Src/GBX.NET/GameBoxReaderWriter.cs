@@ -39,13 +39,13 @@ namespace GBX.NET
         }
 
         /// <summary>
-        /// Constructs a reader-writer in a reader mode.
+        /// Constructs a reader-writer in reader mode.
         /// </summary>
         /// <param name="reader">Reader to use.</param>
         public GameBoxReaderWriter(GameBoxReader reader) => Reader = reader;
 
         /// <summary>
-        /// Constructs a reader-writer in a writer mode.
+        /// Constructs a reader-writer in writer mode.
         /// </summary>
         /// <param name="writer">Writer to use.</param>
         public GameBoxReaderWriter(GameBoxWriter writer) => Writer = writer;
@@ -805,26 +805,16 @@ namespace GBX.NET
             }
         }
 
-        public string? String(string? variable, StringLengthPrefix readPrefix)
+        public string? String(string? variable = default, StringLengthPrefix readPrefix = default)
         {
             if (Reader is not null) return Reader.ReadString(readPrefix);
             if (Writer is not null) Writer.Write(variable, readPrefix);
             return variable;
         }
 
-        public void String(ref string? variable, StringLengthPrefix readPrefix)
+        public void String(ref string? variable, StringLengthPrefix readPrefix = default)
         {
             variable = String(variable, readPrefix);
-        }
-
-        public string? String(string? variable = default)
-        {
-            return String(variable, StringLengthPrefix.Int32);
-        }
-
-        public void String(ref string? variable)
-        {
-            variable = String(variable);
         }
 
         /// <exception cref="ArgumentOutOfRangeException"><paramref name="count"/> is negative.</exception>
@@ -885,7 +875,7 @@ namespace GBX.NET
             array = Array(array, count);
         }
 
-        public T[]? Array<T>(T[]? array) where T : struct
+        public T[]? Array<T>(T[]? array = default) where T : struct
         {
             if (Reader is not null) return Reader.ReadArray<T>();
             if (Writer is not null) Writer.WriteArray(array);
@@ -947,7 +937,6 @@ namespace GBX.NET
         {
             if (Reader is not null) return Reader.ReadArray(forLoopRead);
             if (Writer is not null) Writer.Write(array, forLoopWrite);
-
             return array;
         }
 
@@ -956,7 +945,7 @@ namespace GBX.NET
             array = Array(array, forLoopRead, forLoopWrite);
         }
 
-        public T?[]? ArrayNode<T>(T?[]? array) where T : CMwNod
+        public T?[]? ArrayNode<T>(T?[]? array = default) where T : CMwNod
         {
             return Array(array, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
@@ -966,7 +955,7 @@ namespace GBX.NET
             array = Array(array, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
 
-        public IEnumerable<T>? Enumerable<T>(IEnumerable<T>? enumerable) where T : struct
+        public IEnumerable<T>? Enumerable<T>(IEnumerable<T>? enumerable = default) where T : struct
         {
             return Array(enumerable?.ToArray());
         }
@@ -1016,7 +1005,7 @@ namespace GBX.NET
             enumerable = Enumerable(enumerable, forLoopRead, forLoopWrite);
         }
 
-        public IEnumerable<T?>? EnumerableNode<T>(IEnumerable<T?>? enumerable) where T : CMwNod
+        public IEnumerable<T?>? EnumerableNode<T>(IEnumerable<T?>? enumerable = default) where T : CMwNod
         {
             return Enumerable(enumerable, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
@@ -1026,7 +1015,7 @@ namespace GBX.NET
             enumerable = Enumerable(enumerable, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
         }
 
-        public IList<T>? List<T>(IList<T>? list) where T : struct
+        public IList<T>? List<T>(IList<T>? list = default) where T : struct
         {
             return Array(list?.ToArray());
         }
@@ -1076,7 +1065,6 @@ namespace GBX.NET
         {
             if (Reader is not null) return Reader.ReadList(forLoopRead);
             if (Writer is not null) Writer.Write(list, forLoopWrite);
-
             return list;
         }
 
@@ -1085,7 +1073,7 @@ namespace GBX.NET
             list = List(list, forLoopRead, forLoopWrite);
         }
 
-        public IList<T?>? ListNode<T>(IList<T?>? list) where T : CMwNod
+        public IList<T?>? ListNode<T>(IList<T?>? list = default) where T : CMwNod
         {
             return List(list,
                 r => r.ReadNodeRef<T>(),
@@ -1099,7 +1087,7 @@ namespace GBX.NET
                 (x, w) => w.Write(x));
         }
 
-        public IDictionary<TKey, TValue>? Dictionary<TKey, TValue>(IDictionary<TKey, TValue>? dictionary)
+        public IDictionary<TKey, TValue>? Dictionary<TKey, TValue>(IDictionary<TKey, TValue>? dictionary = default)
         {
             if (Reader is not null) return Reader.ReadDictionary<TKey, TValue>();
             if (Writer is not null) Writer.Write(dictionary);
@@ -1111,7 +1099,7 @@ namespace GBX.NET
             dictionary = Dictionary(dictionary);
         }
 
-        public IDictionary<TKey, TValue?>? DictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary) where TValue : CMwNod
+        public IDictionary<TKey, TValue?>? DictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary = default) where TValue : CMwNod
         {
             if (Reader is not null) return Reader.ReadDictionaryNode<TKey, TValue>();
             if (Writer is not null) Writer.WriteDictionaryNode(dictionary);
@@ -1123,8 +1111,17 @@ namespace GBX.NET
             dictionary = DictionaryNode(dictionary);
         }
 
+        /// <exception cref="ArgumentNullException"><paramref name="stream"/> is null.</exception>
+        /// <exception cref="PropertyNullException"><see cref="GameBoxReader.Lookbackable"/> of <see cref="Reader"/> is null.</exception>
+        /// <exception cref="EndOfStreamException"></exception>
+        /// <exception cref="ObjectDisposedException"></exception>
+        /// <exception cref="IOException"></exception>
+        /// <exception cref="NotSupportedException"></exception>
         public void UntilFacade(MemoryStream stream)
         {
+            if (stream is null)
+                throw new ArgumentNullException(nameof(stream));
+
             if (Reader is not null)
             {
                 if (Reader.Lookbackable is null)
