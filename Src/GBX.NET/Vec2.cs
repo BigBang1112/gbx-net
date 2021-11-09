@@ -18,7 +18,7 @@ namespace GBX.NET
 
         public override string ToString() => $"({X}, {Y})";
         public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode();
-        public override bool Equals(object obj) => obj is Vec2 a && a == this;
+        public override bool Equals(object? obj) => obj is Vec2 a && a == this;
 
         public static bool operator ==(Vec2 a, Vec2 b) => a.X == b.X && a.Y == b.Y;
         public static bool operator !=(Vec2 a, Vec2 b) => !(a.X == b.X && a.Y == b.Y);

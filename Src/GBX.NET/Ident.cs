@@ -28,7 +28,7 @@
 
         public override string ToString() => $"(\"{ID}\", \"{Collection}\", \"{Author}\")";
         public override int GetHashCode() => ID.GetHashCode() ^ Collection.GetHashCode() ^ Author.GetHashCode();
-        public override bool Equals(object obj) => this is Ident m && this == m;
+        public override bool Equals(object? obj) => this is Ident m && this == m;
 
         public static bool operator ==(Ident? a, Ident? b) => a?.ID == b?.ID && a?.Collection == b?.Collection && a?.Author == b?.Author;
         public static bool operator !=(Ident? a, Ident? b) => !(a?.ID == b?.ID && a?.Collection == b?.Collection && a?.Author == b?.Author);

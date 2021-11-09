@@ -13,7 +13,7 @@
 
         public override string ToString() => $"({X}, {Y})";
         public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode();
-        public override bool Equals(object obj) => obj is Int2 a && a == this;
+        public override bool Equals(object? obj) => obj is Int2 a && a == this;
 
         public static bool operator ==(Int2 a, Int2 b) => a.X == b.X && a.Y == b.Y;
         public static bool operator !=(Int2 a, Int2 b) => !(a.X == b.X && a.Y == b.Y);

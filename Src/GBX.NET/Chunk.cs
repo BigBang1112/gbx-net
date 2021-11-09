@@ -41,7 +41,7 @@ namespace GBX.NET
             return (int)ID;
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             return Equals(obj as Chunk);
         }
@@ -97,9 +97,9 @@ namespace GBX.NET
         public abstract void Write(CMwNod n, GameBoxWriter w);
         public abstract void ReadWrite(CMwNod n, GameBoxReaderWriter rw);
 
-        public int CompareTo(Chunk other)
+        public int CompareTo(Chunk? other)
         {
-            return ID.CompareTo(other.ID);
+            return ID.CompareTo(other?.ID);
         }
     }
 
@@ -177,7 +177,7 @@ namespace GBX.NET
 
         public override string ToString()
         {
-            var desc = GetType().GetCustomAttribute<ChunkAttribute>().Description;
+            var desc = GetType().GetCustomAttribute<ChunkAttribute>()?.Description;
             var version = (this as IVersionable)?.Version;
             return $"{typeof(T).Name} chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(version is null ? "" : $" [v{version}]")}";
         }

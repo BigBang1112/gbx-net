@@ -389,7 +389,7 @@ namespace GBX.NET
 
             if (index < 0) // If aux node index is below 0 then there's not much to solve
                 return null;
-            body.AuxilaryNodes.TryGetValue(index, out CMwNod n); // Tries to get the available node from index
+            body.AuxilaryNodes.TryGetValue(index, out CMwNod? n); // Tries to get the available node from index
             
             if (n is T nod) // If the node is presented at the index, then it's simple
                 return nod;
@@ -791,7 +791,7 @@ namespace GBX.NET
         /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
         /// <exception cref="IOException">An I/O error occurs.</exception>
         /// <exception cref="ArgumentException"></exception>
-        public IDictionary<TKey, TValue> ReadDictionary<TKey, TValue>()
+        public IDictionary<TKey, TValue> ReadDictionary<TKey, TValue>() where TKey : notnull
         {
             var dictionary = new Dictionary<TKey, TValue>();
 
@@ -819,7 +819,7 @@ namespace GBX.NET
         /// <exception cref="IOException">An I/O error occurs.</exception>
         /// <exception cref="PropertyNullException"></exception>
         /// <exception cref="ArgumentException"></exception>
-        public IDictionary<TKey, TValue?> ReadDictionaryNode<TKey, TValue>() where TValue : CMwNod
+        public IDictionary<TKey, TValue?> ReadDictionaryNode<TKey, TValue>() where TKey : notnull where TValue : CMwNod
         {
             var dictionary = new Dictionary<TKey, TValue?>();
 

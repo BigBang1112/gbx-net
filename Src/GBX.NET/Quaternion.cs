@@ -33,7 +33,7 @@ namespace GBX.NET
 
         public override string ToString() => $"({X}, {Y}, {Z}, {W})";
         public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode() ^ W.GetHashCode();
-        public override bool Equals(object obj) => obj is Quaternion a && a == this;
+        public override bool Equals(object? obj) => obj is Quaternion a && a == this;
 
         public static bool operator ==(Quaternion a, Quaternion b) => a.X == b.X && a.Y == b.Y && a.Z == b.Z && a.W == b.W;
         public static bool operator !=(Quaternion a, Quaternion b) => !(a.X == b.X && a.Y == b.Y && a.Z == b.Z && a.W == b.W);

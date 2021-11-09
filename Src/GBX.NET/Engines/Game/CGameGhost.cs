@@ -45,8 +45,17 @@ namespace GBX.NET.Engines.Game
             {
                 if (task.IsFaulted)
                 {
-                    Log.Write($"\nExceptions while reading ghost data: ({task.Exception.InnerExceptions.Count})", ConsoleColor.Yellow);
-                    foreach (var ex in task.Exception.InnerExceptions)
+                    var exception = task.Exception;
+
+                    if (exception is null)
+                    {
+                        Log.Write("Ghost data faulted without an exception", ConsoleColor.Yellow);
+                        return;
+                    }
+
+                    Log.Write($"\nExceptions while reading ghost data: ({exception.InnerExceptions.Count})", ConsoleColor.Yellow);
+
+                    foreach (var ex in exception.InnerExceptions)
                         Log.Write(ex.ToString());
                 }
             };
@@ -65,13 +74,13 @@ namespace GBX.NET.Engines.Game
             public bool U02;
             public int U03;
 
-            public byte[]? Data { get; set; }
+            public byte[] Data { get; set; } = Array.Empty<byte>();
             public int[]? Samples { get; set; }
             public int SamplePeriod { get; set; }
 
             public override void ReadWrite(CGameGhost n, GameBoxReaderWriter rw)
             {
-                Data = rw.Bytes(Data);
+                Data = rw.Bytes(Data)!;
                 Samples = rw.Array(Samples);
 
                 rw.Int32(ref U01);
@@ -196,7 +205,7 @@ namespace GBX.NET.Engines.Game
                 Samples = new ObservableCollection<Sample>();
             }
 
-            private void Samples_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+            private void Samples_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
             {
                 if (e.OldItems != null)
                     foreach (Sample sample in e.OldItems)
@@ -434,7 +443,7 @@ namespace GBX.NET.Engines.Game
                 {
                     owner = ghostData;
 
-                    if (owner == null || owner.samplePeriod == null || owner.samplePeriod.TotalMilliseconds <= 0)
+                    if (owner == null || owner.samplePeriod.TotalMilliseconds <= 0)
                     {
                         Timestamp = null;
                         return;

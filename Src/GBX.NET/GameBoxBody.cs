@@ -109,7 +109,7 @@ namespace GBX.NET
 
                     // File.WriteAllBytes("out.dat", buffer);
 
-                    var output = (byte[])methodLzoCompress!.Invoke(null, new object[] { buffer });
+                    var output = (byte[])methodLzoCompress!.Invoke(null, new object[] { buffer })!;
 
                     w.Write((int)msBody.Length); // Uncompressed
                     w.Write(output.Length); // Compressed
@@ -291,18 +291,7 @@ namespace GBX.NET
 
             foreach (var dllFile in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll"))
             {
-                Assembly assemblyMetadata;
-
-                try
-                {
-                    assemblyMetadata = Assembly.ReflectionOnlyLoadFrom(dllFile);
-                }
-                catch (PlatformNotSupportedException)
-                {
-                    Log.Write("Running on a platform not supporting ReflectionOnlyLoadFrom, using LoadFrom instead...");
-                        
-                    assemblyMetadata = Assembly.LoadFrom(dllFile);
-                }
+                var assemblyMetadata = Assembly.LoadFrom(dllFile); // TODO: also support System.Reflection.Metadata
 
                 try
                 {

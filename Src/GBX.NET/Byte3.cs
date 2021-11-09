@@ -30,7 +30,7 @@ namespace GBX.NET
         /// <returns>Returns formatted <see cref="string"/>.</returns>
         public override string ToString() => $"({X}, {Y}, {Z})";
         public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
-        public override bool Equals(object obj) => obj is Byte3 a && a == this;
+        public override bool Equals(object? obj) => obj is Byte3 a && a == this;
 
         public static bool operator ==(Byte3 a, Byte3 b) => a.X == b.X && b.Y == b.Y && b.Z == b.Z;
         public static bool operator !=(Byte3 a, Byte3 b) => !(a.X == b.X && b.Y == b.Y && b.Z == b.Z);

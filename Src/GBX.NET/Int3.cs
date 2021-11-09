@@ -23,7 +23,7 @@ namespace GBX.NET
 
         public override string ToString() => $"({X}, {Y}, {Z})";
         public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
-        public override bool Equals(object obj) => obj is Int3 a && a == this;
+        public override bool Equals(object? obj) => obj is Int3 a && a == this;
 
         public static bool operator ==(Int3 a, Int3 b) => a.X == b.X && a.Y == b.Y && a.Z == b.Z;
         public static bool operator !=(Int3 a, Int3 b) => !(a.X == b.X && a.Y == b.Y && a.Z == b.Z);

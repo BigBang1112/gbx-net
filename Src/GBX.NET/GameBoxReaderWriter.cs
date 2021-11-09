@@ -837,7 +837,7 @@ namespace GBX.NET
         public void Bytes(ref byte[]? variable, int count)
         {
             if (Reader is not null) variable = Reader.ReadBytes(count);
-            if (Writer is not null) Writer.Write(variable, 0, count);
+            if (Writer is not null && variable is not null) Writer.Write(variable, 0, count);
         }
 
         public byte[]? Bytes(byte[]? variable = default)
@@ -866,7 +866,7 @@ namespace GBX.NET
         public T[]? Array<T>(T[]? array, int count) where T : struct
         {
             if (Reader is not null) return Reader.ReadArray<T>(count);
-            if (Writer is not null) Writer.WriteArray_NoPrefix(CreateArrayIfNull(array));
+            if (Writer is not null && array is not null) Writer.WriteArray_NoPrefix(array);
             return array;
         }
 
@@ -1087,26 +1087,26 @@ namespace GBX.NET
                 (x, w) => w.Write(x));
         }
 
-        public IDictionary<TKey, TValue>? Dictionary<TKey, TValue>(IDictionary<TKey, TValue>? dictionary = default)
+        public IDictionary<TKey, TValue>? Dictionary<TKey, TValue>(IDictionary<TKey, TValue>? dictionary = default) where TKey : notnull
         {
             if (Reader is not null) return Reader.ReadDictionary<TKey, TValue>();
             if (Writer is not null) Writer.Write(dictionary);
             return dictionary;
         }
 
-        public void Dictionary<TKey, TValue>(ref IDictionary<TKey, TValue>? dictionary)
+        public void Dictionary<TKey, TValue>(ref IDictionary<TKey, TValue>? dictionary) where TKey : notnull
         {
             dictionary = Dictionary(dictionary);
         }
 
-        public IDictionary<TKey, TValue?>? DictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary = default) where TValue : CMwNod
+        public IDictionary<TKey, TValue?>? DictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary = default) where TKey : notnull where TValue : CMwNod
         {
             if (Reader is not null) return Reader.ReadDictionaryNode<TKey, TValue>();
             if (Writer is not null) Writer.WriteDictionaryNode(dictionary);
             return dictionary;
         }
 
-        public void DictionaryNode<TKey, TValue>(ref IDictionary<TKey, TValue?>? dictionary) where TValue : CMwNod
+        public void DictionaryNode<TKey, TValue>(ref IDictionary<TKey, TValue?>? dictionary) where TKey : notnull where TValue : CMwNod
         {
             dictionary = DictionaryNode(dictionary);
         }
@@ -1143,20 +1143,6 @@ namespace GBX.NET
             }
 
             throw new ThisShouldNotHappenException();
-        }
-
-        private T[] CreateArrayIfNull<T>(T[]? array)
-        {
-            if (array is not null)
-                return array;
-
-#if NETSTANDARD2_0_OR_GREATER
-            array = System.Array.Empty<T>();
-#else
-            array = new T[0];
-#endif
-
-            return array;
         }
     }
 

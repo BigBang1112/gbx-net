@@ -1329,7 +1329,7 @@ namespace GBX.NET.Engines.Game
         /// </summary>
         /// <param name="pos">Position of the block.</param>
         /// <returns>The first available block.</returns>
-        public CGameCtnBlock GetBlock(Int3 pos) => blocks.FirstOrDefault(x => x.Coord == pos);
+        public CGameCtnBlock? GetBlock(Int3 pos) => blocks?.FirstOrDefault(x => x.Coord == pos);
 
         /// <summary>
         /// Gets the first block at this position.
@@ -1338,14 +1338,14 @@ namespace GBX.NET.Engines.Game
         /// <param name="y">Y position.</param>
         /// <param name="z">Z position.</param>
         /// <returns>The first available block.</returns>
-        public CGameCtnBlock GetBlock(int x, int y, int z) => GetBlock((x, y, z));
+        public CGameCtnBlock? GetBlock(int x, int y, int z) => GetBlock((x, y, z));
 
         /// <summary>
         /// Retrieves blocks at this position.
         /// </summary>
         /// <param name="pos">Position of the block.</param>
         /// <returns>An enumerable of blocks.</returns>
-        public IEnumerable<CGameCtnBlock> GetBlocks(Int3 pos) => blocks.Where(x => x.Coord == pos);
+        public IEnumerable<CGameCtnBlock> GetBlocks(Int3 pos) => blocks?.Where(x => x.Coord == pos) ?? Enumerable.Empty<CGameCtnBlock>();
 
         /// <summary>
         /// Retrieves blocks at this position.
@@ -1360,7 +1360,7 @@ namespace GBX.NET.Engines.Game
         /// Retrieves ghost blocks on the map.
         /// </summary>
         /// <returns>An enumerable of ghost blocks.</returns>
-        public IEnumerable<CGameCtnBlock> GetGhostBlocks() => blocks.Where(x => x.IsGhost);
+        public IEnumerable<CGameCtnBlock> GetGhostBlocks() => blocks?.Where(x => x.IsGhost) ?? Enumerable.Empty<CGameCtnBlock>();
 
         /// <summary>
         /// Places a block in the map.
@@ -1722,7 +1722,7 @@ namespace GBX.NET.Engines.Game
 
             DiscoverChunk<Chunk03043054>();
 
-            if (originalEmbedZip?.Length == 0) return false;
+            if (originalEmbedZip is null || originalEmbedZip.Length == 0) return false;
 
             using var ms = new MemoryStream(originalEmbedZip);
 
@@ -1747,7 +1747,7 @@ namespace GBX.NET.Engines.Game
         public bool ExtractOriginalEmbedZip(string fileName)
         {
             DiscoverChunk<Chunk03043054>();
-            if (originalEmbedZip?.Length == 0) return false;
+            if (originalEmbedZip is null || originalEmbedZip.Length == 0) return false;
 
             File.WriteAllBytes(fileName, originalEmbedZip);
             return true;
@@ -1892,6 +1892,9 @@ namespace GBX.NET.Engines.Game
             if (Blocks is null)
                 throw new MemberNullException(nameof(Blocks));
 
+            if (macroblock.Blocks is null)
+                return; // TODO: Support macroblock placing for item-only macroblocks (if they are possible)
+
             var macroRad = (int)dir * (Math.PI / 2); // Rotation of the macroblock in radians needed for the formula to determine individual coords
             var macroBlocks = macroblock.Blocks.Where(x => !x.IsFree).ToArray();
             var allCoords = macroBlocks.Select(x => x.Coord); // Creates an enumerable of macroblock block coords
@@ -1971,6 +1974,8 @@ namespace GBX.NET.Engines.Game
 
                 Blocks.Add(b);
             }
+
+
 
             var blockSize = Collection.GetBlockSize();
 
