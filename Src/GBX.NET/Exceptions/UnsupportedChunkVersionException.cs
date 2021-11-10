@@ -8,7 +8,7 @@ namespace GBX.NET.Exceptions
 {
     public class UnsupportedChunkVersionException : Exception
     {
-        public UnsupportedChunkVersionException(IVersionable chunk) : base($"Chunk version {chunk.Version} is not yet supported.")
+        public UnsupportedChunkVersionException(Chunk chunk, int version) : base($"Chunk version {version} is not yet supported.")
         {
         }
     }

@@ -2756,10 +2756,16 @@ namespace GBX.NET.Engines.Game
             /// <summary>
             /// Version of the chunk.
             /// </summary>
+            /// <exception cref="UnsupportedChunkVersionException"></exception>
             public int Version
             {
                 get => version;
-                set => version = value;
+                set
+                {
+                    if (version < 0 && version > 6)
+                        throw new UnsupportedChunkVersionException(this, version);
+                    version = value;
+                }
             }
 
             public Chunk0304301F() : this(null)
@@ -2783,6 +2789,9 @@ namespace GBX.NET.Engines.Game
                 if (!is013)
                     version = r.ReadInt32();
 
+                if (version > 6)
+                    throw new UnsupportedChunkVersionException(this, version);
+
                 var nbBlocks = r.ReadInt32(); // It's maybe slower but better for the program to determine the count from the list
 
                 n.blocks = new List<CGameCtnBlock>(nbBlocks);
@@ -2802,7 +2811,7 @@ namespace GBX.NET.Engines.Game
                     {
                           0 => r.ReadUInt16(),
                         > 0 => r.ReadInt32(),
-                          _ => throw new UnsupportedChunkVersionException(this),
+                          _ => throw new UnsupportedChunkVersionException(this, version),
                     };
 
                     if (flags == -1)
@@ -2900,7 +2909,7 @@ namespace GBX.NET.Engines.Game
                     {
                         case   0: w.Write((short)x.Flags); break;
                         case > 0: w.Write(x.Flags); break;
-                        default: throw new UnsupportedChunkVersionException(this);
+                        default: throw new UnsupportedChunkVersionException(this, version);
                     }
 
                     if (x.Flags != -1)
