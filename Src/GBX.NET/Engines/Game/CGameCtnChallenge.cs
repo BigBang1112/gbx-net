@@ -2749,16 +2749,16 @@ namespace GBX.NET.Engines.Game
         public class Chunk0304301F : Chunk<CGameCtnChallenge>, IVersionable
         {
             private readonly bool is013;
-            private int? version;
+            private int version;
 
             public bool NeedUnlock { get; set; }
 
             /// <summary>
-            /// Version of the chunk. Can be -1 if it's used by <see cref="Chunk03043013"/>.
+            /// Version of the chunk.
             /// </summary>
             public int Version
             {
-                get => version.GetValueOrDefault(-1);
+                get => version;
                 set => version = value;
             }
 
@@ -2794,15 +2794,16 @@ namespace GBX.NET.Engines.Game
                     var blockName = r.ReadId();
                     var dir = (Direction)r.ReadByte();
                     var coord = (Int3)r.ReadByte3();
-                    var flags = -1;
 
                     if (version >= 6)
                         coord -= (1, 0, 1);
 
-                    if (!version.HasValue)
-                        flags = r.ReadUInt16();
-                    else if (version > 0)
-                        flags = r.ReadInt32();
+                    var flags = version switch
+                    {
+                          0 => r.ReadUInt16(),
+                        > 0 => r.ReadInt32(),
+                          _ => throw new UnsupportedChunkVersionException(this),
+                    };
 
                     if (flags == -1)
                     {
@@ -2854,7 +2855,7 @@ namespace GBX.NET.Engines.Game
                 w.Write(NeedUnlock);
 
                 if (!is013)
-                    w.Write(version.GetValueOrDefault());
+                    w.Write(version);
 
                 // Remove all free blocks with clips
                 if (n.blocks is not null)
@@ -2865,8 +2866,7 @@ namespace GBX.NET.Engines.Game
                         var skip = false;
 
                         if (x.IsFree)
-                            if (BlockInfoManager.BlockModels != null
-                                && BlockInfoManager.BlockModels.TryGetValue(x.Name, out BlockModel m))
+                            if (BlockInfoManager.BlockModels?.TryGetValue(x.Name, out BlockModel m) == true)
                                 foreach (var unit in m.Air)
                                     if (unit.Clips != null)
                                         foreach (var clip in unit.Clips)
@@ -2896,10 +2896,12 @@ namespace GBX.NET.Engines.Game
                         coord += (1, 0, 1);
                     w.Write((Byte3)coord);
 
-                    if (!version.HasValue)
-                        w.Write((short)x.Flags);
-                    else if (version > 0)
-                        w.Write(x.Flags);
+                    switch (version)
+                    {
+                        case   0: w.Write((short)x.Flags); break;
+                        case > 0: w.Write(x.Flags); break;
+                        default: throw new UnsupportedChunkVersionException(this);
+                    }
 
                     if (x.Flags != -1)
                     {
