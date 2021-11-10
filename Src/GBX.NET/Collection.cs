@@ -61,13 +61,11 @@ namespace GBX.NET
         /// <returns>If collection is ID-represented, the ID is converted to <see cref="string"/> based from the <see cref="Resources.CollectionID"/> list. If it's name-represented, <see cref="Name"/> is returned instead.</returns>
         public override string ToString()
         {
-            if (ID.HasValue)
-            {
-                if (Id.CollectionIDs.TryGetValue(ID.Value, out string value))
-                    return value;
-                return ID.ToString();
-            }
-            return Name ?? "";
+            if (!ID.HasValue)
+                return Name ?? "";
+            if (Id.CollectionIDs.TryGetValue(ID.Value, out string? value))
+                return value;
+            return ID.Value.ToString();
         }
 
         /// <summary>
