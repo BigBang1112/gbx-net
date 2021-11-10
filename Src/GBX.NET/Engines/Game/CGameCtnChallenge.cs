@@ -2797,7 +2797,7 @@ namespace GBX.NET.Engines.Game
                     var flags = -1;
 
                     if (version >= 6)
-                        coord -= (1, 1, 1);
+                        coord -= (1, 0, 1);
 
                     if (!version.HasValue)
                         flags = r.ReadUInt16();
@@ -2806,7 +2806,7 @@ namespace GBX.NET.Engines.Game
 
                     if (flags == -1)
                     {
-                        n.blocks.Add(new CGameCtnBlock(blockName, dir, coord, flags, null, null, null));
+                        n.blocks.Add(new CGameCtnBlock(blockName, dir, coord: (-1, -1, -1), flags));
                         continue;
                     }
 
@@ -2892,8 +2892,8 @@ namespace GBX.NET.Engines.Game
                     w.Write((byte)x.Direction);
 
                     var coord = x.Coord;
-                    if (version >= 6)
-                        coord += (1, 1, 1);
+                    if (version >= 6 && x.Flags != -1)
+                        coord += (1, 0, 1);
                     w.Write((Byte3)coord);
 
                     if (!version.HasValue)
