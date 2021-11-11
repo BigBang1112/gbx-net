@@ -10,7 +10,7 @@ public class BlowfishCBCStream : Stream
 {
     private readonly Stream stream;
 
-    private Blowfish _blowfish;
+    private readonly Blowfish _blowfish;
     private ulong _iv;
     private ulong _ivXor;
     private byte[] _buffer;
