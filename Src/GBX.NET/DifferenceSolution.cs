@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GBX.NET
+namespace GBX.NET;
+
+public enum DifferenceSolution
 {
-    public enum DifferenceSolution
-    {
-        FirstChunk,
-        Average,
-        ExceptionIfDifferent,
-        Default = ExceptionIfDifferent
-    }
+    FirstChunk,
+    Average,
+    ExceptionIfDifferent,
+    Default = ExceptionIfDifferent
 }

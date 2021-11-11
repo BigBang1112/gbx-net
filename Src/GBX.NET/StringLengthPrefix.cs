@@ -1,9 +1,8 @@
-﻿namespace GBX.NET
+﻿namespace GBX.NET;
+
+public enum StringLengthPrefix
 {
-    public enum StringLengthPrefix
-    {
-        Int32,
-        Byte,
-        None
-    }
+    Int32,
+    Byte,
+    None
 }

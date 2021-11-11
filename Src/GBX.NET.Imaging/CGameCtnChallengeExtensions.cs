@@ -5,91 +5,87 @@ using System.IO;
 using System.Linq;
 using GBX.NET.Engines.Game;
 
-namespace GBX.NET.Imaging
+namespace GBX.NET.Imaging;
+
+/// <summary>
+/// Imaging extensions for <see cref="CGameCtnChallenge"/>.
+/// </summary>
+public static class CGameCtnChallengeExtensions
 {
     /// <summary>
-    /// Imaging extensions for <see cref="CGameCtnChallenge"/>.
+    /// Gets the map thumbnail as <see cref="Bitmap"/>.
     /// </summary>
-    public static class CGameCtnChallengeExtensions
+    /// <param name="node">CGameCtnChallenge</param>
+    /// <returns>Thumbnail as <see cref="Bitmap"/>.</returns>
+    public static Bitmap GetThumbnailBitmap(this CGameCtnChallenge node)
     {
-        /// <summary>
-        /// Gets the map thumbnail as <see cref="Bitmap"/>.
-        /// </summary>
-        /// <param name="node">CGameCtnChallenge</param>
-        /// <returns>Thumbnail as <see cref="Bitmap"/>.</returns>
-        public static Bitmap GetThumbnailBitmap(this CGameCtnChallenge node)
+        using var ms = new MemoryStream(node.Thumbnail);
+        var bitmap = (Bitmap)Image.FromStream(ms);
+        bitmap.RotateFlip(RotateFlipType.Rotate180FlipX);
+        return bitmap;
+    }
+
+    /// <summary>
+    /// Exports the map's thumbnail.
+    /// </summary>
+    /// <param name="node">CGameCtnChallenge</param>
+    /// <param name="stream">Stream to export to.</param>
+    /// <param name="format">Image format to use.</param>
+    public static void ExportThumbnail(this CGameCtnChallenge node, Stream stream, ImageFormat format)
+    {
+        if (node.Thumbnail == null) return;
+
+        var thumbnail = GetThumbnailBitmap(node);
+
+        if (format == ImageFormat.Jpeg)
         {
-            using (var ms = new MemoryStream(node.Thumbnail))
-            {
-                var bitmap = (Bitmap)Image.FromStream(ms);
-                bitmap.RotateFlip(RotateFlipType.Rotate180FlipX);
-                return bitmap;
-            }
+            var encoding = new EncoderParameters(1);
+            encoding.Param[0] = new EncoderParameter(Encoder.Quality, 90L);
+            var encoder = ImageCodecInfo.GetImageDecoders().Where(x => x.FormatID == ImageFormat.Jpeg.Guid).First();
+
+            thumbnail.Save(stream, encoder, encoding);
         }
+        else
+            thumbnail.Save(stream, format);
+    }
 
-        /// <summary>
-        /// Exports the map's thumbnail.
-        /// </summary>
-        /// <param name="node">CGameCtnChallenge</param>
-        /// <param name="stream">Stream to export to.</param>
-        /// <param name="format">Image format to use.</param>
-        public static void ExportThumbnail(this CGameCtnChallenge node, Stream stream, ImageFormat format)
-        {
-            if (node.Thumbnail == null) return;
+    /// <summary>
+    /// Exports the map's thumbnail.
+    /// </summary>
+    /// <param name="node">CGameCtnChallenge</param>
+    /// <param name="fileName">File to export to.</param>
+    /// <param name="format">Image format to use.</param>
+    public static void ExportThumbnail(this CGameCtnChallenge node, string fileName, ImageFormat format)
+    {
+        using var fs = File.OpenWrite(fileName);
+        ExportThumbnail(node, fs, format);
+    }
 
-            var thumbnail = GetThumbnailBitmap(node);
+    /// <summary>
+    /// Replaces a thumbnail (any popular image format) to use for the map.
+    /// </summary>
+    /// <param name="node">CGameCtnChallenge</param>
+    /// <param name="stream">Stream to import from.</param>
+    public static Bitmap ImportThumbnail(this CGameCtnChallenge node, Stream stream)
+    {
+        var bitmap = new Bitmap(stream);
 
-            if (format == ImageFormat.Jpeg)
-            {
-                var encoding = new EncoderParameters(1);
-                encoding.Param[0] = new EncoderParameter(Encoder.Quality, 90L);
-                var encoder = ImageCodecInfo.GetImageDecoders().Where(x => x.FormatID == ImageFormat.Jpeg.Guid).First();
+        using var ms = new MemoryStream();
 
-                thumbnail.Save(stream, encoder, encoding);
-            }
-            else
-                thumbnail.Save(stream, format);
-        }
+        ExportThumbnail(node, ms, ImageFormat.Jpeg);
+        node.Thumbnail = ms.ToArray();
 
-        /// <summary>
-        /// Exports the map's thumbnail.
-        /// </summary>
-        /// <param name="node">CGameCtnChallenge</param>
-        /// <param name="fileName">File to export to.</param>
-        /// <param name="format">Image format to use.</param>
-        public static void ExportThumbnail(this CGameCtnChallenge node, string fileName, ImageFormat format)
-        {
-            using (var fs = File.OpenWrite(fileName))
-                ExportThumbnail(node, fs, format);
-        }
+        return bitmap;
+    }
 
-        /// <summary>
-        /// Replaces a thumbnail (any popular image format) to use for the map.
-        /// </summary>
-        /// <param name="node">CGameCtnChallenge</param>
-        /// <param name="stream">Stream to import from.</param>
-        public static Bitmap ImportThumbnail(this CGameCtnChallenge node, Stream stream)
-        {
-            var bitmap = new Bitmap(stream);
-
-            using (var ms = new MemoryStream())
-            {
-                ExportThumbnail(node, ms, ImageFormat.Jpeg);
-                node.Thumbnail = ms.ToArray();
-            }
-
-            return bitmap;
-        }
-
-        /// <summary>
-        /// Replaces a thumbnail (any popular image format) to use for the map.
-        /// </summary>
-        /// <param name="node">CGameCtnChallenge</param>
-        /// <param name="fileName">File to import from.</param>
-        public static Bitmap ImportThumbnail(this CGameCtnChallenge node, string fileName)
-        {
-            using (var fs = File.OpenRead(fileName))
-                return ImportThumbnail(node, fs);
-        }
+    /// <summary>
+    /// Replaces a thumbnail (any popular image format) to use for the map.
+    /// </summary>
+    /// <param name="node">CGameCtnChallenge</param>
+    /// <param name="fileName">File to import from.</param>
+    public static Bitmap ImportThumbnail(this CGameCtnChallenge node, string fileName)
+    {
+        using var fs = File.OpenRead(fileName);
+        return ImportThumbnail(node, fs);
     }
 }

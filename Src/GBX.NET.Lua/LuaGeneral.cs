@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using Neo.IronLua;
 
-namespace GBX.NET.Lua
+namespace GBX.NET.Lua;
+
+public class LuaGeneral
 {
-    public class LuaGeneral
+    public LuaGeneral()
     {
-        public LuaGeneral()
-        {
-            using(var lua = new Neo.IronLua.Lua())
-            {
-                var env = lua.CreateEnvironment();
-            }
-        }
+        using var lua = new Neo.IronLua.Lua();
+        var env = lua.CreateEnvironment();
     }
 }

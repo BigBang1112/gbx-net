@@ -6,19 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GBX.NET.Benchmarks
+namespace GBX.NET.Benchmarks;
+
+public class MapParseBenchmark : GameBoxParseBenchmark<CGameCtnChallenge>
 {
-    public class MapParseBenchmark : GameBoxParseBenchmark<CGameCtnChallenge>
+    public MapParseBenchmark() : base(folder: "Maps")
     {
-        public MapParseBenchmark() : base(folder: "Maps")
-        {
 
-        }
+    }
 
-        [Benchmark]
-        public CGameCtnChallenge ParseMap()
-        {
-            return GameBox.ParseNode<CGameCtnChallenge>(stream);
-        }
+    [Benchmark]
+    public CGameCtnChallenge ParseMap()
+    {
+        return GameBox.ParseNode<CGameCtnChallenge>(stream);
     }
 }

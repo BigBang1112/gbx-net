@@ -6,73 +6,70 @@ using System.Reflection;
 
 using GBX.NET.Engines.MwFoundations;
 
-namespace DocGenerator
+namespace DocGenerator;
+
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
+        var assembly = Assembly.Load("GBX.NET");
+        var nodes = assembly.DefinedTypes.Where(x => x != null && x.Namespace != null && x.Namespace.StartsWith("GBX.NET.Engines") && !x.IsNested);
+
+        foreach (var node in nodes)
         {
-            var assembly = Assembly.Load("GBX.NET");
-            var nodes = assembly.DefinedTypes.Where(x => x != null && x.Namespace != null && x.Namespace.StartsWith("GBX.NET.Engines") && !x.IsNested);
+            var folder = "doc/" + node.Namespace["GBX.NET.Engines.".Length..].Replace('.', '/');
+            Directory.CreateDirectory(folder);
 
-            foreach (var node in nodes)
+            using var w = new StringWriter();
+            var nodAttribute = node.GetCustomAttribute<NodeAttribute>();
+
+            if (nodAttribute != null)
             {
-                var folder = "doc/" + node.Namespace["GBX.NET.Engines.".Length..].Replace('.', '/');
-                Directory.CreateDirectory(folder);
+                w.WriteLine($"# {node.Name} (0x{nodAttribute.ID.ToString("x8").ToUpper()})");
+                w.WriteLine();
 
-                using (StringWriter w = new StringWriter())
+                if (node.BaseType != typeof(CMwNod) && node.BaseType != typeof(object))
                 {
-                    var nodAttribute = node.GetCustomAttribute<NodeAttribute>();
+                    w.WriteLine($"### Inherits [{node.BaseType.Name}]({node.BaseType.Name}.md)");
+                    w.WriteLine();
+                }
 
-                    if (nodAttribute != null)
+                var chunks = node.DeclaredNestedTypes.Where(x => x.GetCustomAttribute<ChunkAttribute>() != null);
+
+                if (chunks.Any())
+                {
+                    w.WriteLine("## Chunks");
+                    w.WriteLine();
+
+                    foreach (var chunk in chunks)
                     {
-                        w.WriteLine($"# {node.Name} (0x{nodAttribute.ID.ToString("x8").ToUpper()})");
+                        var att = chunk.GetCustomAttribute<ChunkAttribute>();
+
+                        var linkName = $"0x{att.GetChunkPart().ToString("x3").ToUpper()}{(chunk.BaseType.GetInterface("IHeaderChunk") == null ? (chunk.BaseType.GetInterface("ISkippableChunk") == null ? "" : " - skippable") : " - header chunk")}{(att.Description == null ? "" : $" ({att.Description})")}";
+
+                        w.WriteLine($"- [{linkName}](#{linkName.Replace(' ', '-').Replace("(", null).Replace(")", null).ToLower()})");
+                    }
+
+                    foreach (var chunk in chunks)
+                    {
+                        var att = chunk.GetCustomAttribute<ChunkAttribute>();
+
+                        var linkName = $"0x{att.GetChunkPart().ToString("x3").ToUpper()}{(chunk.BaseType.GetInterface("IHeaderChunk") == null ? (chunk.BaseType.GetInterface("ISkippableChunk") == null ? "" : " - skippable") : " - header chunk")}{(att.Description == null ? "" : $" ({att.Description})")}";
+
                         w.WriteLine();
-
-                        if (node.BaseType != typeof(CMwNod) && node.BaseType != typeof(object))
-                        {
-                            w.WriteLine($"### Inherits [{node.BaseType.Name}]({node.BaseType.Name}.md)");
-                            w.WriteLine();
-                        }
-
-                        var chunks = node.DeclaredNestedTypes.Where(x => x.GetCustomAttribute<ChunkAttribute>() != null);
-
-                        if (chunks.Any())
-                        {
-                            w.WriteLine("## Chunks");
-                            w.WriteLine();
-
-                            foreach (var chunk in chunks)
-                            {
-                                var att = chunk.GetCustomAttribute<ChunkAttribute>();
-
-                                var linkName = $"0x{att.GetChunkPart().ToString("x3").ToUpper()}{(chunk.BaseType.GetInterface("IHeaderChunk") == null ? (chunk.BaseType.GetInterface("ISkippableChunk") == null ? "" : " - skippable") : " - header chunk")}{(att.Description == null ? "" : $" ({att.Description})")}";
-
-                                w.WriteLine($"- [{linkName}](#{linkName.Replace(' ', '-').Replace("(", null).Replace(")", null).ToLower()})");
-                            }
-
-                            foreach (var chunk in chunks)
-                            {
-                                var att = chunk.GetCustomAttribute<ChunkAttribute>();
-
-                                var linkName = $"0x{att.GetChunkPart().ToString("x3").ToUpper()}{(chunk.BaseType.GetInterface("IHeaderChunk") == null ? (chunk.BaseType.GetInterface("ISkippableChunk") == null ? "" : " - skippable") : " - header chunk")}{(att.Description == null ? "" : $" ({att.Description})")}";
-
-                                w.WriteLine();
-                                w.WriteLine("### " + linkName);
-                                w.WriteLine();
-                                w.WriteLine("```cs");
-                                w.WriteLine("void Read(GameBoxReader r)");
-                                w.WriteLine("{");
-                                w.WriteLine("    ");
-                                w.WriteLine("}");
-                                w.WriteLine("```");
-                            }
-                        }
-
-                        Console.WriteLine(w.ToString());
-                        File.WriteAllText($"{folder}/{node.Name}.md", w.ToString());
+                        w.WriteLine("### " + linkName);
+                        w.WriteLine();
+                        w.WriteLine("```cs");
+                        w.WriteLine("void Read(GameBoxReader r)");
+                        w.WriteLine("{");
+                        w.WriteLine("    ");
+                        w.WriteLine("}");
+                        w.WriteLine("```");
                     }
                 }
+
+                Console.WriteLine(w.ToString());
+                File.WriteAllText($"{folder}/{node.Name}.md", w.ToString());
             }
         }
     }

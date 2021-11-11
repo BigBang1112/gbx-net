@@ -3,10 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GBX.NET.Builders
+namespace GBX.NET.Builders;
+
+public interface IBuilderForTMU<TBuilder, TNode> where TBuilder : IBuilder where TNode : CMwNod
 {
-    public interface IBuilderForTMU<TBuilder, TNode> where TBuilder : IBuilder where TNode : CMwNod
-    {
-        GameBuilder<TBuilder, TNode> ForTMU();
-    }
+    GameBuilder<TBuilder, TNode> ForTMU();
 }

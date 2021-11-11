@@ -7,33 +7,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GBX.NET.Benchmarks
+namespace GBX.NET.Benchmarks;
+
+public class MapSaveBenchmark : GameBoxParseBenchmark<CGameCtnChallenge>
 {
-    public class MapSaveBenchmark : GameBoxParseBenchmark<CGameCtnChallenge>
+    private CGameCtnChallenge map;
+    private MemoryStream saveStream;
+
+    public MapSaveBenchmark() : base(folder: "Maps")
     {
-        private CGameCtnChallenge map;
-        private MemoryStream saveStream;
+        map = null!;
+        saveStream = null!;
+    }
 
-        public MapSaveBenchmark() : base(folder: "Maps")
-        {
-            map = null!;
-            saveStream = null!;
-        }
+    public override void OnGlobalSetup()
+    {
+        map = GameBox.ParseNode<CGameCtnChallenge>(stream);
+    }
 
-        public override void OnGlobalSetup()
-        {
-            map = GameBox.ParseNode<CGameCtnChallenge>(stream);
-        }
+    public override void OnIterationSetup()
+    {
+        saveStream = new MemoryStream();
+    }
 
-        public override void OnIterationSetup()
-        {
-            saveStream = new MemoryStream();
-        }
-
-        [Benchmark]
-        public void SaveMap()
-        {
-            map.Save(saveStream);
-        }
+    [Benchmark]
+    public void SaveMap()
+    {
+        map.Save(saveStream);
     }
 }
