@@ -92,7 +92,7 @@ public sealed class CGameCtnMacroBlockInfo : CGameCtnCollector
                 if ((flags & (1 << 26)) != 0)
                 {
                     block.IsFree = true;
-                    block.AbsolutePositionInMap += position.GetValueOrDefault();
+                    block.AbsolutePositionInMap = block.AbsolutePositionInMap.GetValueOrDefault() + position.GetValueOrDefault();
                     block.PitchYawRoll += pitchYawRoll.GetValueOrDefault();
                 }
 

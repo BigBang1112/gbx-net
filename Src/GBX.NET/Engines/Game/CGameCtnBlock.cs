@@ -248,19 +248,18 @@ public sealed class CGameCtnBlock : CMwNod
         }
     }
 
-    [Obsolete]
-    public Vec3 AbsolutePositionInMap
+    public Vec3? AbsolutePositionInMap
     {
         get
         {
             if (IsFree)
                 return absolutePositionInMap;
-            return Coord * (32, 8, 32);
+            return null;
         }
         set
         {
             if (IsFree)
-                absolutePositionInMap = value;
+                absolutePositionInMap = value.GetValueOrDefault();
         }
     }
 
