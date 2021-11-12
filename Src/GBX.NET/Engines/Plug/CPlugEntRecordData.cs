@@ -11,11 +11,21 @@ namespace GBX.NET.Engines.Plug;
 [Node(0x0911F000)]
 public sealed class CPlugEntRecordData : CMwNod
 {
-    public Task<ObservableCollection<Sample>> Samples { get; private set; }
+    private Task<ObservableCollection<Sample>> samples;
+
+    public ObservableCollection<Sample> Samples
+    {
+        get => samples.Result;
+    }
 
     private CPlugEntRecordData()
     {
-        Samples = null!;
+        samples = null!;
+    }
+
+    public async Task<ObservableCollection<Sample>> GetSamplesAsync()
+    {
+        return await samples;
     }
 
     [Chunk(0x0911F000)]
@@ -23,214 +33,225 @@ public sealed class CPlugEntRecordData : CMwNod
     {
         private byte[]? data;
 
-        public int Version { get; set; }
+        public int Version { get; set; } = 10;
         public int CompressedSize { get; private set; }
         public int UncompressedSize { get; private set; }
 
         public override void Read(CPlugEntRecordData n, GameBoxReader r)
         {
-            Version = r.ReadInt32();
+            Version = r.ReadInt32(); // 10
             UncompressedSize = r.ReadInt32();
             CompressedSize = r.ReadInt32();
             data = r.ReadBytes(CompressedSize);
 
-            n.Samples = Task.Run(() =>
+            n.samples = Task.Run(() =>
             {
                 var samples = new ObservableCollection<Sample>();
 
-                using (var ms = new MemoryStream(data))
-                using (var cs = new CompressedStream(ms, CompressionMode.Decompress))
-                using (var gbxr = new GameBoxReader(cs))
+                using var ms = new MemoryStream(data);
+                using var cs = new CompressedStream(ms, CompressionMode.Decompress);
+                using var r = new GameBoxReader(cs);
+
+                var u01 = r.ReadInt32();
+                var ghostLength = r.ReadInt32(); // milliseconds
+                var objects = r.ReadArray<object>(r =>
                 {
-                    var u01 = gbxr.ReadInt32();
-                    var ghostLength = gbxr.ReadInt32(); // milliseconds
-                        var objects = gbxr.ReadArray<object>(r1 =>
+                    var nodeId = r.ReadUInt32();
+                    NodeCacheManager.Names.TryGetValue(nodeId, out string? nodeName);
+
+                    return new
                     {
-                        var nodeId = r1.ReadUInt32();
-                        NodeCacheManager.Names.TryGetValue(nodeId, out string? nodeName);
+                        nodeId,
+                        nodeName,
+                        obj_u01 = r.ReadInt32(),
+                        obj_u02 = r.ReadInt32(),
+                        obj_u03 = r.ReadInt32(),
+                        mwbuffer = r.ReadInt32(),
+                        obj_u05 = r.ReadInt32()
+                    };
+                });
+
+                if (Version >= 2)
+                {
+                    var objcts2 = r.ReadArray<object>(r =>
+                    {
+                        var u02 = r.ReadInt32();
+                        var u03 = r.ReadInt32();
+
+                        uint? clas = null;
+                        string? clasName = null;
+
+                        if (Version >= 4)
+                        {
+                            clas = r.ReadUInt32();
+                            NodeCacheManager.Names.TryGetValue(clas.Value, out clasName);
+                        }
 
                         return new
                         {
-                            nodeId,
-                            nodeName,
-                            obj_u01 = r1.ReadInt32(),
-                            obj_u02 = r1.ReadInt32(),
-                            obj_u03 = r1.ReadInt32(),
-                            mwbuffer = r1.ReadInt32(),
-                            obj_u05 = r1.ReadInt32()
+                            u02,
+                            u03,
+                            clas,
+                            clasName
                         };
                     });
+                }
 
-                    if (Version >= 2)
+                var u04 = r.ReadByte();
+                while (u04 != 0)
+                {
+                    var bufferType = r.ReadInt32();
+                    var u06 = r.ReadInt32();
+                    var u07 = r.ReadInt32();
+                    var ghostLengthFinish = r.ReadInt32(); // ms
+
+                    if (Version < 6)
                     {
-                        var objcts2 = gbxr.ReadArray<object>(r1 =>
-                        {
-                            var u02 = r1.ReadInt32();
-                            var u03 = r1.ReadInt32();
-
-                            uint? clas = null;
-                            string? clasName = null;
-                            if (Version >= 4)
-                            {
-                                clas = r1.ReadUInt32();
-                                NodeCacheManager.Names.TryGetValue(clas.Value, out clasName);
-                            }
-
-                            return new
-                            {
-                                u02,
-                                u03,
-                                clas,
-                                clasName
-                            };
-                        });
+                        // temp_79f24995b2b->field_0x28 = temp_79f24995b2b->field_0xc
+                    }
+                    else
+                    {
+                        var u08 = r.ReadInt32();
                     }
 
-                    var u04 = gbxr.ReadByte();
-                    while (u04 != 0)
+                    // Reads byte on every loop until the byte is 0, should be 1 otherwise
+                    for (byte x; (x = r.ReadByte()) != 0;)
                     {
-                        var bufferType = gbxr.ReadInt32();
-                        var u06 = gbxr.ReadInt32();
-                        var u07 = gbxr.ReadInt32();
-                        var ghostLengthFinish = gbxr.ReadInt32(); // ms
+                        var timestamp = r.ReadInt32();
+                        var buffer = r.ReadBytes(); // MwBuffer
 
-                            if (Version < 6)
+                        if (buffer.Length > 0)
                         {
-                                // temp_79f24995b2b->field_0x28 = temp_79f24995b2b->field_0xc
-                            }
-                        else
-                        {
-                            var u08 = gbxr.ReadInt32();
-                        }
+                            using var bufferMs = new MemoryStream(buffer);
+                            using var bufferR = new GameBoxReader(bufferMs);
 
-                            // Reads byte on every loop until the byte is 0, should be 1 otherwise
-                            for (byte x; (x = gbxr.ReadByte()) != 0;)
-                        {
-                            var timestamp = gbxr.ReadInt32();
-                            var buffer = gbxr.ReadBytes(); // MwBuffer
+                            var sampleProgress = (int)bufferMs.Position;
 
-                                if (buffer.Length > 0)
+                            var sample = new Sample(buffer)
                             {
-                                var unknownData = new byte[buffer.Length];
+                                BufferType = (byte)bufferType
+                            };
 
-                                using var bufMs = new MemoryStream(buffer);
-                                using var bufR = new GameBoxReader(bufMs);
+                            switch (bufferType)
+                            {
+                                case 0:
+                                    break;
+                                case 2:
+                                    {
+                                        bufferMs.Position = 5;
 
-                                var sampleProgress = (int)bufMs.Position;
+                                        var (position, rotation, speed, velocity) = bufferR.ReadTransform(); // Only position matches
 
-                                var sample = new Sample()
-                                {
-                                    BufferType = (byte)bufferType
-                                };
-
-                                switch (bufferType)
-                                {
-                                    case 0:
-                                        break;
-                                    case 2:
-                                        var buf2unknownData = bufR.ReadBytes(5);
-                                        Buffer.BlockCopy(buf2unknownData, 0, unknownData, 0, buf2unknownData.Length);
-
-                                        var (position, rotation, speed, velocity) = bufR.ReadTransform(); // Only position matches
-
-                                            sample.Timestamp = TimeSpan.FromMilliseconds(timestamp);
+                                        sample.Timestamp = TimeSpan.FromMilliseconds(timestamp);
                                         sample.Position = position;
                                         sample.Rotation = rotation;
                                         sample.Speed = speed * 3.6f;
                                         sample.Velocity = velocity;
 
                                         break;
-                                    case 4:
-                                        var buf4unknownData = bufR.ReadBytes(47);
-                                        Buffer.BlockCopy(buf4unknownData, 0, unknownData, 0, buf4unknownData.Length);
+                                    }
+                                case 4:
+                                    {
+                                        bufferMs.Position = 5;
+                                        var gearByte = bufferR.ReadByte();
+                                        var gear = gearByte / 5f;
+                                        var rpmByte = bufferR.ReadByte();
+                                        var steer = ((rpmByte / 255f) - 0.5f) * 2;
 
-                                        var buf4transform = bufR.ReadTransform();
+                                        sample.Gear = gear;
+                                        sample.RPM = rpmByte;
+                                        sample.Steer = steer;
 
-                                        var buf4unknownData2 = bufR.ReadBytes(4);
+                                        bufferMs.Position = 15;
+                                        var u15 = bufferR.ReadByte();
+
+                                        bufferMs.Position = 18;
+                                        var brakeByte = bufferR.ReadByte();
+                                        var brake = brakeByte / 255f;
+                                        var gas = u15 / 255f + brake;
+
+                                        sample.Brake = brake;
+                                        sample.Gas = gas;
+
+                                        bufferMs.Position = 47;
+
+                                        var (position, rotation, speed, velocity) = bufferR.ReadTransform();
 
                                         sample.Timestamp = TimeSpan.FromMilliseconds(timestamp);
-                                        sample.Position = buf4transform.position;
-                                        sample.Rotation = buf4transform.rotation;
-                                        sample.Speed = buf4transform.speed * 3.6f;
-                                        sample.Velocity = buf4transform.velocity;
-                                        sample.Unknown = buf4unknownData;
+                                        sample.Position = position;
+                                        sample.Rotation = rotation;
+                                        sample.Speed = speed * 3.6f;
+                                        sample.Velocity = velocity;
 
                                         break;
-                                    case 10:
-                                        break;
-                                    default:
-                                        break;
-                                }
-
-                                sampleProgress = (int)(bufMs.Position - sampleProgress);
-
-                                var moreUnknownData = bufR.ReadBytes((int)bufMs.Length - sampleProgress);
-                                Buffer.BlockCopy(moreUnknownData, 0, unknownData, sampleProgress, moreUnknownData.Length);
-
-                                sample.Unknown = unknownData;
-
-                                samples.Add(sample);
+                                    }
+                                case 10:
+                                    break;
+                                default:
+                                    break;
                             }
-                        }
 
-                        u04 = gbxr.ReadByte();
-
-                        if (Version >= 2)
-                        {
-                            for (byte x; (x = gbxr.ReadByte()) != 0;)
-                            {
-                                var type = gbxr.ReadInt32();
-                                var timestamp = gbxr.ReadInt32();
-                                var buffer = gbxr.ReadBytes(); // MwBuffer
-                                }
+                            samples.Add(sample);
                         }
                     }
 
-                    if (Version >= 3)
+                    u04 = r.ReadByte();
+
+                    if (Version >= 2)
                     {
-                        for (byte x; (x = gbxr.ReadByte()) != 0;)
+                        for (byte x; (x = r.ReadByte()) != 0;)
                         {
-                            var u19 = gbxr.ReadInt32();
-                            var u20 = gbxr.ReadInt32();
-                            var u21 = gbxr.ReadBytes(); // MwBuffer
-                            }
-
-                        if (Version == 7)
-                        {
-                            for (byte x; (x = gbxr.ReadByte()) != 0;)
-                            {
-                                var u23 = gbxr.ReadInt32();
-                                var u24 = gbxr.ReadBytes(); // MwBuffer
-                                }
+                            var type = r.ReadInt32();
+                            var timestamp = r.ReadInt32();
+                            var buffer = r.ReadBytes(); // MwBuffer
                         }
+                    }
+                }
 
-                        if (Version >= 8)
+                if (Version >= 3)
+                {
+                    for (byte x; (x = r.ReadByte()) != 0;)
+                    {
+                        var u19 = r.ReadInt32();
+                        var u20 = r.ReadInt32();
+                        var u21 = r.ReadBytes(); // MwBuffer
+                    }
+
+                    if (Version == 7)
+                    {
+                        for (byte x; (x = r.ReadByte()) != 0;)
                         {
-                            var u23 = gbxr.ReadInt32();
+                            var u23 = r.ReadInt32();
+                            var u24 = r.ReadBytes(); // MwBuffer
+                        }
+                    }
 
-                            if (u23 != 0)
+                    if (Version >= 8)
+                    {
+                        var u23 = r.ReadInt32();
+
+                        if (u23 != 0)
+                        {
+                            if (Version == 8)
                             {
-                                if (Version == 8)
+                                for (byte x; (x = r.ReadByte()) != 0;)
                                 {
-                                    for (byte x; (x = gbxr.ReadByte()) != 0;)
-                                    {
-                                        var u25 = gbxr.ReadInt32();
-                                        var u26 = gbxr.ReadBytes(); // MwBuffer
-                                        }
+                                    var u25 = r.ReadInt32();
+                                    var u26 = r.ReadBytes(); // MwBuffer
                                 }
-                                else
+                            }
+                            else
+                            {
+                                for (byte x; (x = r.ReadByte()) != 0;)
                                 {
-                                    for (byte x; (x = gbxr.ReadByte()) != 0;)
-                                    {
-                                        var u28 = gbxr.ReadInt32();
-                                        var u29 = gbxr.ReadBytes(); // MwBuffer
-                                            var u30 = gbxr.ReadBytes(); // MwBuffer
-                                        }
+                                    var u28 = r.ReadInt32();
+                                    var u29 = r.ReadBytes(); // MwBuffer
+                                    var u30 = r.ReadBytes(); // MwBuffer
+                                }
 
-                                    if (Version >= 10)
-                                    {
-                                        var period = gbxr.ReadInt32();
-                                    }
+                                if (Version >= 10)
+                                {
+                                    var period = r.ReadInt32();
                                 }
                             }
                         }

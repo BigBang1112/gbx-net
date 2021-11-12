@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using GBX.NET.Engines.MwFoundations;
+using GBX.NET.Exceptions;
 
 namespace GBX.NET.Engines.Game;
 
@@ -29,10 +30,9 @@ public class CGameGhost : CMwNod
         set => isReplaying = value;
     }
 
-    public Task<Data>? SampleData
+    public Data? SampleData
     {
-        get => sampleData;
-        set => sampleData = value;
+        get => sampleData?.Result;
     }
 
     #endregion
@@ -63,6 +63,17 @@ public class CGameGhost : CMwNod
 
     #endregion
 
+    #region Methods
+
+    public async Task<Data?> GetSampleDataAsync()
+    {
+        if (sampleData is null)
+            return null;
+        return await sampleData;
+    }
+
+    #endregion
+
     #region Chunks
 
     #region 0x003 chunk
@@ -88,7 +99,7 @@ public class CGameGhost : CMwNod
             SamplePeriod = rw.Int32(SamplePeriod);
             rw.Int32(ref U03);
 
-            n.SampleData = Task.Run(() =>
+            n.sampleData = Task.Run(() =>
             {
                 var ghostData = new Data
                 {
@@ -103,7 +114,7 @@ public class CGameGhost : CMwNod
                 return ghostData;
             });
 
-            n.SampleData.ContinueWith(n.dataExceptionHandle);
+            n.sampleData.ContinueWith(n.dataExceptionHandle);
         }
     }
 
@@ -141,7 +152,7 @@ public class CGameGhost : CMwNod
 
             if (rw.Mode == GameBoxReaderWriterMode.Read)
             {
-                n.SampleData = Task.Run(() =>
+                n.sampleData = Task.Run(() =>
                 {
                     var ghostData = new Data();
                     using (var ms = new MemoryStream(Data))
@@ -149,7 +160,7 @@ public class CGameGhost : CMwNod
                     return ghostData;
                 });
 
-                n.SampleData.ContinueWith(n.dataExceptionHandle);
+                n.sampleData.ContinueWith(n.dataExceptionHandle);
             }
         }
     }
@@ -312,55 +323,50 @@ public class CGameGhost : CMwNod
 
             for (var i = 0; i < numSamples; i++)
             {
-                var sample = new Sample();
-
-                var sampleProgress = (int)ms.Position;
-
-                byte[] unknownData;
-                if (sizePerSample != -1)
-                    unknownData = new byte[ms.Length / sizePerSample];
-                else if (sizesPerSample != null)
+                var sampleData = sizePerSample switch
                 {
-                    if (i == numSamples - 1) // Last sample size not included
-                        unknownData = new byte[(int)(ms.Length - ms.Position)];
-                    else
-                        unknownData = new byte[sizesPerSample[i]];
-                }
-                else throw new Exception();
+                    -1 => GetSampleDataFromDifferentSizes(r, numSamples, sizesPerSample, i),
+                    _  => r.ReadBytes(sizePerSample)
+                };
 
-                int? time = null;
+                var sample = new Sample(sampleData);
 
-                if (sampleTimes != null)
-                    time = sampleTimes[i];
+                using var bufferMs = new MemoryStream(sampleData);
+                using var bufferR = new GameBoxReader(bufferMs);
+
+                var time = sampleTimes?[i];
 
                 switch (NodeID)
                 {
                     case 0x0A02B000: // CSceneVehicleCar
-                        var (position, rotation, speed, velocity) = r.ReadTransform();
+                        {
+                            var (position, rotation, speed, velocity) = bufferR.ReadTransform();
 
-                        sample.Position = position;
-                        sample.Rotation = rotation;
-                        sample.Speed = speed * 3.6f;
-                        sample.Velocity = velocity;
+                            sample.Position = position;
+                            sample.Rotation = rotation;
+                            sample.Speed = speed * 3.6f;
+                            sample.Velocity = velocity;
 
-                        break;
+                            break;
+                        }
                     case 0x0A401000: // CSceneMobilCharVis
                         var bufferType = r.ReadByte();
 
                         switch (bufferType)
                         {
                             case 0:
-                                var unknownData401 = r.ReadBytes(14);
-                                Buffer.BlockCopy(unknownData401, 0, unknownData, 0, unknownData401.Length);
+                                {
+                                    bufferMs.Position = 14;
 
-                                var transform401 = r.ReadTransform();
+                                    var (position, rotation, speed, velocity) = bufferR.ReadTransform();
 
-                                sample.Position = transform401.position;
-                                sample.Rotation = transform401.rotation;
-                                sample.Speed = transform401.speed * 3.6f;
-                                sample.Velocity = transform401.velocity;
+                                    sample.Position = position;
+                                    sample.Rotation = rotation;
+                                    sample.Speed = speed * 3.6f;
+                                    sample.Velocity = velocity;
 
-                                break;
+                                    break;
+                                }
                             case 1:
                                 break;
                             default:
@@ -375,26 +381,21 @@ public class CGameGhost : CMwNod
                         break;
                 }
 
-                sampleProgress = (int)(ms.Position - sampleProgress);
-
-                if (sizePerSample != -1) // If the sample size is constant
-                {
-                    var moreUnknownData = r.ReadBytes(sizePerSample - sampleProgress);
-                    Buffer.BlockCopy(moreUnknownData, 0, unknownData, sampleProgress, moreUnknownData.Length);
-                }
-                else if (sizesPerSample != null) // If sample sizes are different
-                {
-                    var moreUnknownData = r.ReadBytes(unknownData.Length - sampleProgress);
-                    Buffer.BlockCopy(moreUnknownData, 0, unknownData, sampleProgress, moreUnknownData.Length);
-                }
-                else throw new Exception();
-
-                sample.Unknown = unknownData;
-
                 Samples.Add(sample);
 
                 sample.AssignTo(this);
             }
+        }
+
+        private static byte[] GetSampleDataFromDifferentSizes(GameBoxReader reader, int numSamples, int[]? sizesPerSample, int i)
+        {
+            if (i == numSamples - 1) // Last sample size not included
+                return reader.ReadToEnd();
+
+            if (sizesPerSample is null)
+                throw new ThisShouldNotHappenException();
+
+            return reader.ReadBytes(sizesPerSample[i]);
         }
 
         /// <summary>
@@ -422,13 +423,12 @@ public class CGameGhost : CMwNod
 
                 var t = (float)(sampleKey - Math.Floor(sampleKey));
 
-                return new Sample()
+                return new Sample(a.Data)
                 {
                     Position = AdditionalMath.Lerp(a.Position, b.Position, t),
                     Rotation = AdditionalMath.Lerp(a.Rotation, b.Rotation, t),
                     Speed = AdditionalMath.Lerp(a.Speed, b.Speed, t),
-                    Velocity = AdditionalMath.Lerp(a.Velocity, b.Velocity, t),
-                    Unknown = a.Unknown
+                    Velocity = AdditionalMath.Lerp(a.Velocity, b.Velocity, t)
                 };
             }
 
@@ -438,6 +438,11 @@ public class CGameGhost : CMwNod
         public class Sample : NET.Sample
         {
             private Data? owner;
+
+            public Sample(byte[] data) : base(data)
+            {
+                
+            }
 
             internal void AssignTo(Data? ghostData)
             {

@@ -13,7 +13,18 @@ public class Sample
     public Vec3 PitchYawRoll => Rotation.ToPitchYawRoll();
     public float Speed { get; set; }
     public Vec3 Velocity { get; set; }
-    public byte[]? Unknown { get; set; }
+    public float? Gear { get; set; }
+    public byte? RPM { get; set; }
+    public float? Steer { get; set; }
+    public float? Brake { get; set; }
+    public float? Gas { get; set; }
+
+    public byte[] Data { get; set; }
+
+    public Sample(byte[] data)
+    {
+        Data = data;
+    }
 
     public override string ToString()
     {
