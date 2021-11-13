@@ -133,7 +133,7 @@ public sealed class CGameCtnAnchoredObject : CMwNod
     {
         get
         {
-            GBX?.Node.DiscoverChunk<CGameCtnChallenge.Chunk03043062>();
+            GBX?.Node?.DiscoverChunk<CGameCtnChallenge.Chunk03043062>();
 
             return color;
         }

@@ -37,7 +37,7 @@ public class GameBox<T> : GameBox where T : CMwNod
     /// </summary>
     public new T Node
     {
-        get => (T)base.Node;
+        get => (T)base.Node!;
         set => base.Node = value;
     }
 
@@ -373,7 +373,7 @@ public class GameBox
 
     public GameBoxBody? Body { get; protected set; }
 
-    public CMwNod Node { get; internal set; }
+    public CMwNod? Node { get; internal set; }
 
     /// <summary>
     /// ID of the node.
@@ -466,7 +466,7 @@ public class GameBox
     /// Implicitly casts <see cref="GameBox"/> to its <see cref="Node"/>.
     /// </summary>
     /// <param name="gbx"></param>
-    public static implicit operator CMwNod(GameBox gbx) => gbx.Node;
+    public static implicit operator CMwNod?(GameBox gbx) => gbx.Node;
 
     private static GameBox ParseHeader(GameBoxReader reader, IProgress<GameBoxReadProgress>? progress = null)
     {
@@ -657,7 +657,7 @@ public class GameBox
     /// <param name="stream">Stream to read GBX format from.</param>
     /// <param name="progress">Callback that reports any read progress.</param>
     /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
-    public static CMwNod ParseNodeHeader(Stream stream, IProgress<GameBoxReadProgress>? progress = null)
+    public static CMwNod? ParseNodeHeader(Stream stream, IProgress<GameBoxReadProgress>? progress = null)
     {
         return ParseHeader(stream, progress: progress).Node;
     }
@@ -668,7 +668,7 @@ public class GameBox
     /// <param name="fileName">Relative or absolute file path.</param>
     /// <param name="progress">Callback that reports any read progress.</param>
     /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
-    public static CMwNod ParseNodeHeader(string fileName, IProgress<GameBoxReadProgress>? progress = null)
+    public static CMwNod? ParseNodeHeader(string fileName, IProgress<GameBoxReadProgress>? progress = null)
     {
         return ParseHeader(fileName, progress: progress);
     }
@@ -743,7 +743,7 @@ public class GameBox
     /// <exception cref="MissingLzoException"/>
     /// <exception cref="NotSupportedException"/>
     /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
-    public static CMwNod ParseNode(string fileName, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false)
+    public static CMwNod? ParseNode(string fileName, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false)
     {
         return Parse(fileName, progress: progress, readUncompressedBodyDirectly: readUncompressedBodyDirectly);
     }
@@ -758,7 +758,7 @@ public class GameBox
     /// <exception cref="MissingLzoException"/>
     /// <exception cref="NotSupportedException"/>
     /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
-    public static CMwNod ParseNode(Stream stream, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false)
+    public static CMwNod? ParseNode(Stream stream, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false)
     {
         return Parse(stream, progress: progress, readUncompressedBodyDirectly: readUncompressedBodyDirectly);
     }

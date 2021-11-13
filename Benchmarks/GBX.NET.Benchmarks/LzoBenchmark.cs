@@ -24,7 +24,7 @@ public class LzoBenchmark
 
         MapCompressed.Seek(0, SeekOrigin.Begin);
 
-        var map = GameBox.ParseNode(MapCompressed);
+        var map = GameBox.ParseNode(MapCompressed)!;
         map.GBX!.Header.CompressionOfBody = GameBoxCompression.Uncompressed;
         map.Save(MapUncompressed);
 
@@ -36,13 +36,13 @@ public class LzoBenchmark
     public CMwNod ParseMapCompressed()
     {
         MapCompressed.Position = 0;
-        return GameBox.ParseNode(MapCompressed);
+        return GameBox.ParseNode(MapCompressed)!;
     }
 
     [Benchmark]
     public CMwNod ParseMapUncompressed()
     {
         MapUncompressed.Position = 0;
-        return GameBox.ParseNode(MapUncompressed);
+        return GameBox.ParseNode(MapUncompressed)!;
     }
 }
