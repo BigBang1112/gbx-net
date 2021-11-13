@@ -44,7 +44,7 @@ public class GameBox<T> : GameBox where T : CMwNod
     /// <summary>
     /// Creates an empty GameBox object version 6.
     /// </summary>
-    public GameBox() : this(new GameBoxHeaderInfo(typeof(T).GetCustomAttribute<NodeAttribute>()!.ID))
+    internal GameBox() : this(new GameBoxHeaderInfo(typeof(T).GetCustomAttribute<NodeAttribute>()!.ID))
     {
 
     }
@@ -68,22 +68,13 @@ public class GameBox<T> : GameBox where T : CMwNod
     /// </summary>
     /// <param name="node">Node to wrap.</param>
     /// <param name="headerInfo">Header info to use.</param>
-    public GameBox(T node, GameBoxHeaderInfo headerInfo) : this(headerInfo)
+    public GameBox(T node, GameBoxHeaderInfo? headerInfo = null) : this(headerInfo ?? new GameBoxHeaderInfo(node.ID))
     {
         // It needs to be sure that GBX is assigned correctly to every node
         AssignGBXToNode(this, node);
 
         Node = node;
         ID = node.ID;
-    }
-
-    /// <summary>
-    /// Create a GameBox object based on an existing node. Useful for saving nodes to GBX files.
-    /// </summary>
-    /// <param name="node">Node to wrap.</param>
-    public GameBox(T node) : this(node, new GameBoxHeaderInfo(node.ID))
-    {
-
     }
 
     private void AssignGBXToNode()
