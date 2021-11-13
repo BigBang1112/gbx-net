@@ -16,9 +16,9 @@ public class CGameGhost : CMwNod
 {
     #region Fields
 
-    private readonly Action<Task<Data>> dataExceptionHandle;
+    private readonly Action<Task<Data?>> dataExceptionHandle;
     private bool isReplaying;
-    private Task<Data>? sampleData;
+    private Task<Data?> sampleData;
 
     #endregion
 
@@ -32,7 +32,7 @@ public class CGameGhost : CMwNod
 
     public Data? SampleData
     {
-        get => sampleData?.Result;
+        get => sampleData.Result;
     }
 
     #endregion
@@ -41,6 +41,7 @@ public class CGameGhost : CMwNod
 
     protected CGameGhost()
     {
+        sampleData = null!;
         dataExceptionHandle = task =>
         {
             if (task.IsFaulted)
@@ -106,10 +107,12 @@ public class CGameGhost : CMwNod
                     SamplePeriod = TimeSpan.FromMilliseconds(SamplePeriod)
                 };
 
-                using (var ms = new MemoryStream(Data))
-                {
-                    ghostData.ReadSamples(ms, Samples?.Length ?? 0, 56);
-                }
+                using var ms = new MemoryStream(Data);
+
+                ghostData.ReadSamples(ms, numSamples: Samples?.Length ?? 0, sizePerSample: 56);
+
+                if (ghostData.NodeID == uint.MaxValue)
+                    return null;
 
                 return ghostData;
             });
@@ -155,8 +158,13 @@ public class CGameGhost : CMwNod
                 n.sampleData = Task.Run(() =>
                 {
                     var ghostData = new Data();
-                    using (var ms = new MemoryStream(Data))
-                        ghostData.Read(ms, true);
+
+                    using var ms = new MemoryStream(Data);
+                    ghostData.Read(ms, compressed: true);
+
+                    if (ghostData.NodeID == uint.MaxValue)
+                        return null;
+
                     return ghostData;
                 });
 
@@ -268,6 +276,7 @@ public class CGameGhost : CMwNod
         public void Read(GameBoxReader r)
         {
             NodeID = r.ReadUInt32(); // CSceneVehicleCar or CSceneMobilCharVis
+
             if (NodeID != uint.MaxValue)
             {
                 var bSkipList2 = r.ReadBoolean();
