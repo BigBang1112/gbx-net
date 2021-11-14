@@ -2756,14 +2756,14 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        /// <exception cref="UnsupportedChunkVersionException"></exception>
+        /// <exception cref="ChunkVersionNotSupportedException"></exception>
         public int Version
         {
             get => version;
             set
             {
                 if (version < 0 && version > 6)
-                    throw new UnsupportedChunkVersionException(this, version);
+                    throw new ChunkVersionNotSupportedException(this, version);
                 version = value;
             }
         }
@@ -2790,7 +2790,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 version = r.ReadInt32();
 
             if (version > 6)
-                throw new UnsupportedChunkVersionException(this, version);
+                throw new ChunkVersionNotSupportedException(this, version);
 
             var nbBlocks = r.ReadInt32(); // It's maybe slower but better for the program to determine the count from the list
 
@@ -2811,7 +2811,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 {
                     0 => r.ReadUInt16(),
                     > 0 => r.ReadInt32(),
-                    _ => throw new UnsupportedChunkVersionException(this, version),
+                    _ => throw new ChunkVersionNotSupportedException(this, version),
                 };
 
                 if (flags == -1)
@@ -2909,7 +2909,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 {
                     case 0: w.Write((short)x.Flags); break;
                     case > 0: w.Write(x.Flags); break;
-                    default: throw new UnsupportedChunkVersionException(this, version);
+                    default: throw new ChunkVersionNotSupportedException(this, version);
                 }
 
                 if (x.Flags != -1)

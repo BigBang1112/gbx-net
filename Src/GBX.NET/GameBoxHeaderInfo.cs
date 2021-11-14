@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 
 using GBX.NET.Engines.MwFoundations;
+using GBX.NET.Exceptions;
 
 namespace GBX.NET;
 
@@ -29,13 +30,15 @@ public class GameBoxHeaderInfo
         UserData = Array.Empty<byte>();
     }
 
+    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
     public GameBoxHeaderInfo(GameBoxReader reader)
     {
         UserData = Array.Empty<byte>();
         Read(reader);
     }
 
-    public bool Read(GameBoxReader reader)
+    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
+    internal bool Read(GameBoxReader reader)
     {
         if (!reader.HasMagic(GameBox.Magic))
         {
@@ -54,7 +57,7 @@ public class GameBoxHeaderInfo
             Log.Write("- Byte format: " + ByteFormat.ToString());
 
             if (ByteFormat == GameBoxByteFormat.Text)
-                throw new NotSupportedException("Text-formatted GBX files are not supported.");
+                throw new TextFormatNotSupportedException();
 
             CompressionOfRefTable = (GameBoxCompression)reader.ReadByte();
             Log.Write("- Ref. table compression: " + CompressionOfRefTable.ToString());
