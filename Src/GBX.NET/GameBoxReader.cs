@@ -1022,6 +1022,12 @@ public class GameBoxReader : BinaryReader
         return (array, array2, array3);
     }
 
+    public IEnumerable<byte> ReadBytesUntilNextChunk(uint classId)
+    {
+        while ((PeekUInt32() & classId) != classId)
+            yield return ReadByte();
+    }
+
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
