@@ -95,25 +95,25 @@ public class GameBox<T> : GameBox where T : CMwNod
 
         foreach (var prop in type.GetProperties()) // Go through all properties of a node
         {
-            if (Attribute.IsDefined(prop, typeof(NodeMemberAttribute))) // Check only NodeMember attributes
+            if (!Attribute.IsDefined(prop, typeof(NodeMemberAttribute))) // Check only NodeMember attributes
+                continue;
+
+            if (prop.PropertyType.IsSubclassOf(typeof(CMwNod))) // If the property is Node
             {
-                if (prop.PropertyType.IsSubclassOf(typeof(CMwNod))) // If the property is Node
-                {
-                    AssignGBXToNode(gbx, prop.GetValue(n) as CMwNod); // Recurse through the node
-                }
-                else if (typeof(IEnumerable).IsAssignableFrom(prop.PropertyType)) // If the property is a list of something
-                {
-                    // If the list has a generic argument of anu kind of Node
-                    if (Array.Find(prop.PropertyType.GetGenericArguments(), x => x.IsSubclassOf(typeof(CMwNod))) is not null)
-                    {
-                        // Go through each Node and recurse
-                        if (prop.GetValue(n) is IEnumerable enumerable)
-                        {
-                            foreach (var e in enumerable)
-                                AssignGBXToNode(gbx, (CMwNod)e);
-                        }
-                    }
-                }
+                AssignGBXToNode(gbx, prop.GetValue(n) as CMwNod); // Recurse through the node
+            }
+            else if (typeof(IEnumerable).IsAssignableFrom(prop.PropertyType)) // If the property is a list of something
+            {
+                // If the list has a generic argument of anu kind of Node
+                if (Array.Find(prop.PropertyType.GetGenericArguments(), x => x.IsSubclassOf(typeof(CMwNod))) is null)
+                    continue;
+
+                // Go through each Node and recurse
+                if (prop.GetValue(n) is not IEnumerable enumerable)
+                    continue;
+
+                foreach (var e in enumerable)
+                    AssignGBXToNode(gbx, (CMwNod)e);
             }
         }
     }
@@ -332,8 +332,9 @@ public class GameBox<T> : GameBox where T : CMwNod
             fileName = FileName;
         }
 
-        using (var fs = File.OpenWrite(fileName))
-            Save(fs, remap);
+        using var fs = File.OpenWrite(fileName);
+
+        Save(fs, remap);
 
         Log.Write($"GBX file {fileName} saved.");
     }
@@ -467,24 +468,24 @@ public class GameBox
 
         progress?.Report(new GameBoxReadProgress(header));
 
-        if (header.ID.HasValue)
+        if (!header.ID.HasValue)
+            return new GameBox(header);
+
+        GameBox gbx;
+
+        if (NodeCacheManager.AvailableClasses.TryGetValue(header.ID.Value, out Type? availableClass))
         {
-            GameBox gbx;
+            var gbxType = typeof(GameBox<>).MakeGenericType(availableClass);
+            gbx = (GameBox)Activator.CreateInstance(gbxType, BindingFlags.NonPublic | BindingFlags.Instance, null, new object[] { header }, null)!;
 
-            if (NodeCacheManager.AvailableClasses.TryGetValue(header.ID.Value, out Type? availableClass))
-            {
-                var gbxType = typeof(GameBox<>).MakeGenericType(availableClass);
-                gbx = (GameBox)Activator.CreateInstance(gbxType, BindingFlags.NonPublic | BindingFlags.Instance, null, new object[] { header }, null)!;
-
-                var processHeaderMethod = gbxType.GetMethod(nameof(ProcessHeader), BindingFlags.Instance | BindingFlags.NonPublic)!;
-                processHeaderMethod.Invoke(gbx, new object?[] { progress });
-            }
-            else
-                gbx = new GameBox(header);
-
-            if (gbx.ReadRefTable(reader, progress))
-                return gbx;
+            var processHeaderMethod = gbxType.GetMethod(nameof(ProcessHeader), BindingFlags.Instance | BindingFlags.NonPublic)!;
+            processHeaderMethod.Invoke(gbx, new object?[] { progress });
         }
+        else
+            gbx = new GameBox(header);
+
+        if (gbx.ReadRefTable(reader, progress))
+            return gbx;
 
         return new GameBox(header);
     }
@@ -783,17 +784,15 @@ public class GameBox
 
         var version = reader.ReadInt16(); // Version
 
-        if (version >= 3)
-        {
-            reader.ReadByte();
-            reader.ReadByte();
+        if (version < 3)
+            return classID;
+
+        reader.ReadBytes(3);
+
+        if (version >= 4)
             reader.ReadByte();
 
-            if (version >= 4)
-                reader.ReadByte();
-
-            classID = reader.ReadUInt32();
-        }
+        classID = reader.ReadUInt32();
 
         return classID;
     }
@@ -846,32 +845,34 @@ public class GameBox
     {
         var classID = ReadNodeID(reader);
 
-        if (classID.HasValue)
-        {
-            var modernID = classID.GetValueOrDefault();
-            if (NodeCacheManager.Mappings.TryGetValue(classID.GetValueOrDefault(), out uint newerClassID))
-                modernID = newerClassID;
+        if (!classID.HasValue)
+            return null;
 
-            Debug.WriteLine("GetGameBoxType: " + modernID.ToString("x8"));
+        var modernID = classID.GetValueOrDefault();
+        if (NodeCacheManager.Mappings.TryGetValue(classID.GetValueOrDefault(), out uint newerClassID))
+            modernID = newerClassID;
 
-            var availableClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
-                    && x.Namespace?.StartsWith("GBX.NET.Engines") == true && x.IsSubclassOf(typeof(CMwNod))
-                    && x.GetCustomAttribute<NodeAttribute>()?.ID == modernID).FirstOrDefault();
+        Debug.WriteLine("GetGameBoxType: " + modernID.ToString("x8"));
 
-            if (availableClass == null) return null;
+        var availableClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
+                && x.Namespace?.StartsWith("GBX.NET.Engines") == true && x.IsSubclassOf(typeof(CMwNod))
+                && x.GetCustomAttribute<NodeAttribute>()?.ID == modernID).FirstOrDefault();
 
-            return typeof(GameBox<>).MakeGenericType(availableClass);
-        }
+        if (availableClass is null)
+            return null;
 
-        return null;
+        return typeof(GameBox<>).MakeGenericType(availableClass);
     }
 
     /// <summary>
     /// Decompressed the body part of the GBX file, also setting the header parameter so that the outputted GBX file is compatible with the game. If the file is already detected decompressed, the input is just copied over to the output.
     /// </summary>
-    /// <param name="input">GBX file to decompress.</param>
-    /// <param name="output">Output GBX file in the decompressed form.</param>
-    /// <exception cref="VersionNotSupportedException"></exception>
+    /// <param name="input">GBX stream to decompress.</param>
+    /// <param name="output">Output GBX stream in the decompressed form.</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">One of the streams is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="VersionNotSupportedException">GBX files below version 3 are not supported.</exception>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
     public static void Decompress(Stream input, Stream output)
     {
@@ -943,18 +944,68 @@ public class GameBox
         w.WriteBytes(buffer);
     }
 
+    /// <summary>
+    /// Decompressed the body part of the GBX file, also setting the header parameter so that the outputted GBX file is compatible with the game. If the file is already detected decompressed, the input is just copied over to the output.
+    /// </summary>
+    /// <param name="inputFileName">GBX file to decompress.</param>
+    /// <param name="output">Output GBX stream in the decompressed form.</param>
+    /// <exception cref="ArgumentException"><paramref name="inputFileName"/> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="Path.InvalidPathChars"/>.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="inputFileName"/> is null.</exception>
+    /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.</exception>
+    /// <exception cref="DirectoryNotFoundException">The specified path is invalid, (for example, it is on an unmapped drive).</exception>
+    /// <exception cref="UnauthorizedAccessException"><paramref name="inputFileName"/> specified a directory. -or- The caller does not have the required permission.</exception>
+    /// <exception cref="FileNotFoundException">The file specified in path was not found.</exception>
+    /// <exception cref="NotSupportedException"><paramref name="inputFileName"/> is in an invalid format.</exception>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">One of the streams is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="VersionNotSupportedException">GBX files below version 3 are not supported.</exception>
+    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
     public static void Decompress(string inputFileName, Stream output)
     {
         using var fs = File.OpenRead(inputFileName);
         Decompress(fs, output);
     }
 
+    /// <summary>
+    /// Decompressed the body part of the GBX file, also setting the header parameter so that the outputted GBX file is compatible with the game. If the file is already detected decompressed, the input is just copied over to the output.
+    /// </summary>
+    /// <param name="input">GBX stream to decompress.</param>
+    /// <param name="outputFileName">Output GBX file in the decompressed form.</param>
+    /// <exception cref="ArgumentException"><paramref name="outputFileName"/> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="Path.InvalidPathChars"/>.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="outputFileName"/> is null.</exception>
+    /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.</exception>
+    /// <exception cref="DirectoryNotFoundException">The specified path is invalid, (for example, it is on an unmapped drive).</exception>
+    /// <exception cref="UnauthorizedAccessException">The caller does not have the required permission. -or- path specified a file that is read-only.</exception>
+    /// <exception cref="NotSupportedException"><paramref name="outputFileName"/> is in an invalid format.</exception>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">One of the streams is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="VersionNotSupportedException">GBX files below version 3 are not supported.</exception>
+    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
     public static void Decompress(Stream input, string outputFileName)
     {
         using var fs = File.Create(outputFileName);
         Decompress(input, fs);
     }
 
+    /// <summary>
+    /// Decompressed the body part of the GBX file, also setting the header parameter so that the outputted GBX file is compatible with the game. If the file is already detected decompressed, the input is just copied over to the output.
+    /// </summary>
+    /// <param name="inputFileName">GBX file to decompress.</param>
+    /// <param name="outputFileName">Output GBX file in the decompressed form.</param>
+    /// <exception cref="ArgumentException"><paramref name="inputFileName"/> or <paramref name="outputFileName"/> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="Path.InvalidPathChars"/>.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="inputFileName"/> or <paramref name="outputFileName"/> is null.</exception>
+    /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.</exception>
+    /// <exception cref="DirectoryNotFoundException">The specified path is invalid, (for example, it is on an unmapped drive).</exception>
+    /// <exception cref="UnauthorizedAccessException"><paramref name="inputFileName"/> or <paramref name="outputFileName"/> specified a directory. -or- The caller does not have the required permission.  -or- path specified a file that is read-only.</exception>
+    /// <exception cref="FileNotFoundException">The file specified in path was not found.</exception>
+    /// <exception cref="NotSupportedException"><paramref name="inputFileName"/> is in an invalid format.</exception>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">One of the streams is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="VersionNotSupportedException">GBX files below version 3 are not supported.</exception>
+    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
     public static void Decompress(string inputFileName, string outputFileName)
     {
         using var fsInput = File.OpenRead(inputFileName);

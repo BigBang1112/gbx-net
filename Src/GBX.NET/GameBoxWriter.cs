@@ -103,7 +103,6 @@ public class GameBoxWriter : BinaryWriter
         Write(value, false);
     }
 
-    /// <exception cref="ArgumentNullException"></exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void WriteArray<T>(T[]? array) where T : struct
@@ -118,7 +117,7 @@ public class GameBoxWriter : BinaryWriter
         WriteArray_NoPrefix(array);
     }
 
-    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="array"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void WriteArray_NoPrefix<T>(T[] array) where T : struct
@@ -137,7 +136,7 @@ public class GameBoxWriter : BinaryWriter
     /// <typeparam name="T">Type of the array.</typeparam>
     /// <param name="array">An array.</param>
     /// <param name="forLoop">Each element.</param>
-    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write<T>(T[]? array, Action<T> forLoop)
@@ -157,7 +156,7 @@ public class GameBoxWriter : BinaryWriter
             forLoop.Invoke(array[i]);
     }
 
-    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     internal void Write<T>(T[]? array, Action<T, GameBoxWriter> forLoop)
@@ -177,7 +176,7 @@ public class GameBoxWriter : BinaryWriter
             forLoop.Invoke(array[i], this);
     }
 
-    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write<T>(IList<T>? list, Action<T> forLoop)
@@ -197,7 +196,7 @@ public class GameBoxWriter : BinaryWriter
             forLoop.Invoke(list[i]);
     }
 
-    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write<T>(IList<T>? list, Action<T, GameBoxWriter> forLoop)
@@ -217,10 +216,10 @@ public class GameBoxWriter : BinaryWriter
             forLoop.Invoke(list[i], this);
     }
 
-    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="OverflowException"></exception>
+    /// <exception cref="OverflowException">The number of elements in source is larger than <see cref="int.MaxValue"/>.</exception>
     public void Write<T>(IEnumerable<T>? enumerable, Action<T> forLoop)
     {
         if (forLoop is null)
@@ -295,7 +294,7 @@ public class GameBoxWriter : BinaryWriter
         Write(value.Z);
     }
 
-    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="fileRef"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write(FileRef fileRef)
@@ -319,7 +318,7 @@ public class GameBoxWriter : BinaryWriter
         }
     }
 
-    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write(Id value)
@@ -366,7 +365,7 @@ public class GameBoxWriter : BinaryWriter
         l.IdStrings.Add(value);
     }
 
-    /// <exception cref="PropertyNullException"></exception>
+    /// <exception cref="PropertyNullException"><see cref="Lookbackable"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void WriteId(string? value)
@@ -386,7 +385,7 @@ public class GameBoxWriter : BinaryWriter
         Write(new Id(ident?.Author, lookbackable));
     }
 
-    /// <exception cref="PropertyNullException"></exception>
+    /// <exception cref="PropertyNullException"><see cref="Lookbackable"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write(Ident? ident)
@@ -397,7 +396,7 @@ public class GameBoxWriter : BinaryWriter
         Write(ident, Lookbackable);
     }
 
-    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write(CMwNod? node, GameBoxBody body)
@@ -423,7 +422,7 @@ public class GameBoxWriter : BinaryWriter
         node.Write(this, body.GBX.Remap);
     }
 
-    /// <exception cref="PropertyNullException"></exception>
+    /// <exception cref="PropertyNullException"><see cref="Body"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write(CMwNod? node)
@@ -434,7 +433,7 @@ public class GameBoxWriter : BinaryWriter
         Write(node, Body);
     }
 
-    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentNullException">Key or value in dictionary is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write<TKey, TValue>(IDictionary<TKey, TValue>? dictionary)
@@ -469,7 +468,7 @@ public class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="OverflowException"></exception>
+    /// <exception cref="OverflowException">Total seconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public void WriteInt32_s(TimeSpan variable)
     {
         Write(Convert.ToInt32(variable.TotalSeconds));
@@ -477,7 +476,7 @@ public class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="OverflowException"></exception>
+    /// <exception cref="OverflowException">Total milliseconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public void WriteInt32_ms(TimeSpan variable)
     {
         Write(Convert.ToInt32(variable.TotalMilliseconds));
@@ -485,7 +484,7 @@ public class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="OverflowException"></exception>
+    /// <exception cref="OverflowException">Total seconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public void WriteInt32_sn(TimeSpan? variable)
     {
         if (variable.HasValue)
@@ -499,7 +498,7 @@ public class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="OverflowException"></exception>
+    /// <exception cref="OverflowException">Total milliseconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public void WriteInt32_msn(TimeSpan? variable)
     {
         if (variable.HasValue)
@@ -604,8 +603,8 @@ public class GameBoxWriter : BinaryWriter
         }
     }
 
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="PropertyNullException"></exception>
+    /// <exception cref="ArgumentNullException">Key in dictionary is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="Body"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void WriteDictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary) where TValue : CMwNod
@@ -635,7 +634,7 @@ public class GameBoxWriter : BinaryWriter
     /// <see cref="Vec4"/>, <see cref="Int3"/>, <see cref="Id"/> and <see cref="Ident"/>.
     /// </summary>
     /// <param name="any">Any supported object.</param>
-    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="any"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     private void WriteAny(object any)

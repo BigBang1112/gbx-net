@@ -161,10 +161,10 @@ public class GameBoxReader : BinaryReader
     /// <summary>
     /// First reads an <see cref="int"/> representing the length, then reads the sequence of bytes.
     /// </summary>
-    /// <exception cref="ArgumentException"></exception>
+    /// <exception cref="ArgumentException">The number of decoded characters to read is greater than count. This can happen if a Unicode decoder returns fallback characters or a surrogate pair.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
     /// <returns>A byte array.</returns>
     public byte[] ReadBytes()
     {
@@ -179,8 +179,8 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentException"></exception>
-    /// <exception cref="StringLengthOutOfRangeException"></exception>
+    /// <exception cref="ArgumentException"><paramref name="readPrefix"/> is <see cref="StringLengthPrefix.None"/>.</exception>
+    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <returns>The string being read.</returns>
     public string ReadString(StringLengthPrefix readPrefix)
     {
@@ -203,7 +203,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="StringLengthOutOfRangeException"></exception>
+    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <returns>The string being read.</returns>
     public override string ReadString()
     {
@@ -217,7 +217,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
     /// <returns>The string being read.</returns>
     public string ReadString(int length)
     {
@@ -253,10 +253,10 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="NotSupportedException"></exception>
-    /// <exception cref="StringLengthOutOfRangeException"></exception>
-    /// <exception cref="CorruptedIdException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="lookbackable"/> is null.</exception>
+    /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
+    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
+    /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
     public Id ReadId(ILookbackable lookbackable)
     {
         if (lookbackable is null)
@@ -298,9 +298,7 @@ public class GameBoxReader : BinaryReader
         }
 
         if (index >> 30 == 0)
-        {
             return new Id(index.ToString(), lookbackable);
-        }
 
         if (lookbackable.IdStrings.Count > (index & 0x3FFF) - 1)
             return new Id(lookbackable.IdStrings[(int)(index & 0x3FFF) - 1], lookbackable);
@@ -311,10 +309,10 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="NotSupportedException"></exception>
-    /// <exception cref="StringLengthOutOfRangeException"></exception>
-    /// <exception cref="CorruptedIdException"></exception>
-    /// <exception cref="PropertyNullException"></exception>
+    /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
+    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
+    /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
+    /// <exception cref="PropertyNullException"><see cref="Lookbackable"/> is null.</exception>
     public Id ReadId()
     {
         if (Lookbackable is null)
@@ -326,10 +324,10 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="NotSupportedException"></exception>
-    /// <exception cref="StringLengthOutOfRangeException"></exception>
-    /// <exception cref="CorruptedIdException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="lookbackable"/> is null.</exception>
+    /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
+    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
+    /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
     public Ident ReadIdent(ILookbackable lookbackable)
     {
         if (lookbackable is null)
@@ -345,10 +343,10 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="NotSupportedException"></exception>
-    /// <exception cref="StringLengthOutOfRangeException"></exception>
-    /// <exception cref="CorruptedIdException"></exception>
-    /// <exception cref="PropertyNullException"></exception>
+    /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
+    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
+    /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
+    /// <exception cref="PropertyNullException"><see cref="Lookbackable"/> is null.</exception>
     public Ident ReadIdent()
     {
         if (Lookbackable is null)
@@ -360,7 +358,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
     public T? ReadNodeRef<T>(GameBoxBody body) where T : CMwNod
     {
         if (body is null)
@@ -389,6 +387,7 @@ public class GameBoxReader : BinaryReader
 
         if (index < 0) // If aux node index is below 0 then there's not much to solve
             return null;
+
         body.AuxilaryNodes.TryGetValue(index, out CMwNod? n); // Tries to get the available node from index
 
         if (n is T nod) // If the node is presented at the index, then it's simple
@@ -401,7 +400,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"></exception>
+    /// <exception cref="PropertyNullException"><see cref="Body"/> is null.</exception>
     public T? ReadNodeRef<T>() where T : CMwNod
     {
         if (Body is null)
@@ -413,7 +412,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
     public CMwNod? ReadNodeRef(GameBoxBody body)
     {
         if (body is null)
@@ -425,7 +424,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"></exception>
+    /// <exception cref="PropertyNullException"><see cref="Body"/> is null.</exception>
     public CMwNod? ReadNodeRef()
     {
         if (Body is null)
@@ -437,7 +436,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="StringLengthOutOfRangeException"></exception>
+    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     public FileRef ReadFileRef()
     {
         var version = ReadByte();
@@ -465,7 +464,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
     public T[] ReadArray<T>(int length) where T : struct
     {
         var buffer = ReadBytes(length * Marshal.SizeOf(default(T)));
@@ -482,7 +481,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
     public T[] ReadArray<T>() where T : struct
     {
         return ReadArray<T>(ReadInt32());
@@ -495,11 +494,9 @@ public class GameBoxReader : BinaryReader
     /// <param name="length">Length of the array.</param>
     /// <param name="forLoop">Each element with an index parameter.</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="ArgumentOutOfRangeException">Array length is lower than 0.</exception>
-#pragma warning disable CA1822
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
     public T[] ReadArray<T>(int length, Func<int, T> forLoop)
-#pragma warning restore CA1822
     {
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
@@ -525,7 +522,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Array length is lower than 0.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
     public T[] ReadArray<T>(Func<int, T> forLoop)
     {
         if (forLoop is null)
@@ -543,11 +540,9 @@ public class GameBoxReader : BinaryReader
     /// <param name="length">Length of the array.</param>
     /// <param name="forLoop">Each element.</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
-#pragma warning disable CA1822
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
     public T[] ReadArray<T>(int length, Func<T> forLoop)
-#pragma warning restore CA1822
     {
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
@@ -572,8 +567,8 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
     public T[] ReadArray<T>(Func<T> forLoop)
     {
         if (forLoop is null)
@@ -591,8 +586,8 @@ public class GameBoxReader : BinaryReader
     /// <param name="length">Length of the array.</param>
     /// <param name="forLoop">Each element with an index parameter and this reader.</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
     public T[] ReadArray<T>(int length, Func<int, GameBoxReader, T> forLoop)
     {
         if (forLoop is null)
@@ -618,8 +613,8 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
     public T[] ReadArray<T>(Func<int, GameBoxReader, T> forLoop)
     {
         if (forLoop is null)
@@ -637,8 +632,8 @@ public class GameBoxReader : BinaryReader
     /// <param name="length">Length of the array.</param>
     /// <param name="forLoop">Each element with this reader.</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
     public T[] ReadArray<T>(int length, Func<GameBoxReader, T> forLoop)
     {
         if (forLoop is null)
@@ -661,8 +656,8 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
     public T[] ReadArray<T>(Func<GameBoxReader, T> forLoop)
     {
         if (forLoop is null)
@@ -673,11 +668,9 @@ public class GameBoxReader : BinaryReader
         return ReadArray(length, forLoop);
     }
 
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
-#pragma warning disable CA1822
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
     public IList<T> ReadList<T>(int length, Func<int, T> forLoop)
-#pragma warning restore CA1822
     {
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
@@ -693,8 +686,8 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
     public IList<T> ReadList<T>(Func<int, T> forLoop)
     {
         if (forLoop is null)
@@ -703,11 +696,9 @@ public class GameBoxReader : BinaryReader
         return ReadList(ReadInt32(), forLoop);
     }
 
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
-#pragma warning disable CA1822
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
     public IList<T> ReadList<T>(int length, Func<T> forLoop)
-#pragma warning restore CA1822
     {
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
@@ -723,8 +714,8 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
     public IList<T> ReadList<T>(Func<T> forLoop)
     {
         if (forLoop is null)
@@ -733,8 +724,8 @@ public class GameBoxReader : BinaryReader
         return ReadList(ReadInt32(), forLoop);
     }
 
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
     public IList<T> ReadList<T>(int length, Func<int, GameBoxReader, T> forLoop)
     {
         if (forLoop is null)
@@ -751,8 +742,8 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
     public IList<T> ReadList<T>(Func<int, GameBoxReader, T> forLoop)
     {
         if (forLoop is null)
@@ -761,8 +752,8 @@ public class GameBoxReader : BinaryReader
         return ReadList(ReadInt32(), forLoop);
     }
 
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
     public IList<T> ReadList<T>(int length, Func<GameBoxReader, T> forLoop)
     {
         if (forLoop is null)
@@ -779,8 +770,8 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
     public IList<T> ReadList<T>(Func<GameBoxReader, T> forLoop)
     {
         if (forLoop is null)
@@ -798,7 +789,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentException"></exception>
+    /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
     public IDictionary<TKey, TValue> ReadDictionary<TKey, TValue>() where TKey : notnull
     {
         var dictionary = new Dictionary<TKey, TValue>();
@@ -825,8 +816,8 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"></exception>
-    /// <exception cref="ArgumentException"></exception>
+    /// <exception cref="PropertyNullException"><see cref="Body"/> is null.</exception>
+    /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
     public IDictionary<TKey, TValue?> ReadDictionaryNode<TKey, TValue>() where TKey : notnull where TValue : CMwNod
     {
         var dictionary = new Dictionary<TKey, TValue?>();
@@ -936,7 +927,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="NotSupportedException"></exception>
+    /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
     public IEnumerable<byte> ReadUntil(uint uint32)
     {
         while (PeekUInt32() != uint32)
@@ -946,7 +937,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="NotSupportedException"></exception>
+    /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
     public IEnumerable<byte> ReadUntilFacade()
     {
         return ReadUntil(0xFACADE01);
@@ -955,8 +946,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="NotSupportedException"></exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
     public byte[] ReadToEnd()
     {
         return ReadBytes((int)(BaseStream.Length - BaseStream.Position));
@@ -965,7 +955,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="NotSupportedException"></exception>
+    /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
     public string ReadStringUntilFacade()
     {
         return Encoding.UTF8.GetString(ReadUntilFacade().ToArray());
@@ -974,7 +964,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="NotSupportedException"></exception>
+    /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
     public T[] ReadArrayUntilFacade<T>()
     {
         var bytes = ReadUntilFacade().ToArray();
@@ -988,7 +978,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="NotSupportedException"></exception>
+    /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
     public (T1[], T2[]) ReadArrayUntilFacade<T1, T2>()
     {
         var bytes = ReadUntilFacade().ToArray();
@@ -1005,7 +995,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="NotSupportedException"></exception>
+    /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
     public (T1[], T2[], T3[]) ReadArrayUntilFacade<T1, T2, T3>()
     {
         var bytes = ReadUntilFacade().ToArray();
@@ -1022,6 +1012,9 @@ public class GameBoxReader : BinaryReader
         return (array, array2, array3);
     }
 
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
     public IEnumerable<byte> ReadBytesUntilNextChunk(uint classId)
     {
         while ((Chunk.Remap(PeekUInt32()) & classId) != classId)
@@ -1031,7 +1024,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="NotSupportedException"></exception>
+    /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
     public uint PeekUInt32()
     {
         var result = ReadUInt32();
@@ -1042,8 +1035,8 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="NotSupportedException"></exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
     public T[] PeekArray<T>(int length) where T : struct
     {
         var array = ReadArray<T>(length);
@@ -1054,9 +1047,9 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="NotSupportedException"></exception>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
-    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     public T[] PeekArray<T>(int length, Func<int, T> forLoop)
     {
         if (forLoop is null)
@@ -1074,7 +1067,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="ArgumentNullException"><paramref name="magic"/> is null.</exception>
     public bool HasMagic(string magic)
     {
         if (magic is null)
