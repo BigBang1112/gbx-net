@@ -1024,7 +1024,7 @@ public class GameBoxReader : BinaryReader
 
     public IEnumerable<byte> ReadBytesUntilNextChunk(uint classId)
     {
-        while ((PeekUInt32() & classId) != classId)
+        while ((Chunk.Remap(PeekUInt32()) & classId) != classId)
             yield return ReadByte();
     }
 
