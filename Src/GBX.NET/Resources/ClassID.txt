@@ -247,7 +247,7 @@
   05D CGameCtnZoneFlat
   05E CGameCtnZoneFrontier
   05F CGameCtnZoneTest
-  060 CGameCtnMediaVideoParams
+  060 CGameCtnMediaShootParams
   061 CGameCampaignsScoresManager
   062 CGameSkillScoreComputer
   063 CGameCampaignScores

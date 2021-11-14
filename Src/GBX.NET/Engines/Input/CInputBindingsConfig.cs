@@ -27,7 +27,7 @@ public sealed class CInputBindingsConfig : CMwNod
             var race = r.ReadString();
             n.Bindings = r.ReadList<Binding>((i, r1) =>
             {
-                if (i == 0) r1.ReadInt32();
+                //if (i == 0) r1.ReadInt32();
 
                 return new Binding
                 {
