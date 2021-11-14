@@ -73,6 +73,32 @@ public sealed class CGamePlayerProfile : CMwNod
 
     #endregion
 
+    #region 0x003 chunk
+
+    [Chunk(0x0308C003)]
+    public class Chunk0308C003 : Chunk<CGamePlayerProfile>
+    {
+        public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
+        {
+            var u01 = rw.Array<int>(count: 16);
+        }
+    }
+
+    #endregion
+
+    #region 0x004 chunk
+
+    [Chunk(0x0308C004)]
+    public class Chunk0308C004 : Chunk<CGamePlayerProfile>
+    {
+        public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
+        {
+            var u01 = rw.Array<int>();
+        }
+    }
+
+    #endregion
+
     #region 0x006 chunk
 
     [Chunk(0x0308C006)]
@@ -80,7 +106,28 @@ public sealed class CGamePlayerProfile : CMwNod
     {
         public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
         {
-            n.InputBindingsConfig = rw.NodeRef<CInputBindingsConfig>(n.InputBindingsConfig);
+            var array = rw.Array(null, r => new
+            {
+                u01 = r.ReadInt32(),
+                u02 = r.ReadByte(),
+                u03 = r.ReadString(),
+                u04 = r.ReadId(),
+                u05 = r.ReadId(),
+                u06 = r.ReadArray<int>()
+            }, (x, w) => { });
+        }
+    }
+
+    #endregion
+
+    #region 0x007 chunk
+
+    [Chunk(0x0308C007)]
+    public class Chunk0308C007 : Chunk<CGamePlayerProfile>
+    {
+        public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
+        {
+            rw.Int32();
         }
     }
 
@@ -533,6 +580,155 @@ public sealed class CGamePlayerProfile : CMwNod
         public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
         {
             var shootParams = rw.NodeRef<CGameCtnMediaShootParams>();
+        }
+    }
+
+    #endregion
+
+    #region 0x05F chunk
+
+    [Chunk(0x0308C05F)]
+    public class Chunk0308C05F : Chunk<CGamePlayerProfile>
+    {
+        public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
+        {
+            rw.Int32();
+        }
+    }
+
+    #endregion
+
+    #region 0x061 chunk
+
+    [Chunk(0x0308C061)]
+    public class Chunk0308C061 : Chunk<CGamePlayerProfile>
+    {
+        public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
+        {
+            var country = rw.String();
+        }
+    }
+
+    #endregion
+
+    #region 0x062 chunk
+
+    [Chunk(0x0308C062)]
+    public class Chunk0308C062 : Chunk<CGamePlayerProfile>
+    {
+        public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
+        {
+            var version = rw.Int32();
+            var nod = rw.NodeRef<CInputBindingsConfig>();
+        }
+    }
+
+    #endregion
+
+    #region 0x064 chunk
+
+    [Chunk(0x0308C064)]
+    public class Chunk0308C064 : Chunk<CGamePlayerProfile>
+    {
+        public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
+        {
+            rw.Int32();
+            rw.Int32();
+            rw.Int32();
+        }
+    }
+
+    #endregion
+
+    #region 0x065 chunk
+
+    [Chunk(0x0308C065)]
+    public class Chunk0308C065 : Chunk<CGamePlayerProfile>
+    {
+        public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
+        {
+            rw.Int32();
+        }
+    }
+
+    #endregion
+
+    #region 0x068 chunk
+
+    [Chunk(0x0308C068)]
+    public class Chunk0308C068 : Chunk<CGamePlayerProfile>
+    {
+        public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
+        {
+            var u01 = rw.Array(null, r => new
+            {
+                u01 = r.ReadId(),
+                u02 = r.ReadInt32()
+            }, (x, w) => { });
+        }
+    }
+
+    #endregion
+
+    #region 0x069 chunk
+
+    [Chunk(0x0308C069)]
+    public class Chunk0308C069 : Chunk<CGamePlayerProfile>
+    {
+        public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
+        {
+            var u01 = rw.Int32();
+            var description = rw.String();
+            var u02 = rw.Int32();
+            var u03 = rw.Int32();
+            var login = rw.String();
+            var u04 = rw.Int32();
+            var u05 = rw.Bytes(count: 26);
+            var hash = rw.String();
+            var u06 = rw.String();
+            var u07 = rw.Int32();
+            var u08 = rw.Int32();
+            var serverUrl = rw.String();
+            var u09 = rw.String();
+        }
+    }
+
+    #endregion
+
+    #region 0x06A chunk
+
+    [Chunk(0x0308C06A)]
+    public class Chunk0308C06A : Chunk<CGamePlayerProfile>
+    {
+        public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
+        {
+            rw.Int32();
+        }
+    }
+
+    #endregion
+
+    #region 0x06B chunk
+
+    [Chunk(0x0308C06B)]
+    public class Chunk0308C06B : Chunk<CGamePlayerProfile>
+    {
+        public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
+        {
+            rw.Int32();
+        }
+    }
+
+    #endregion
+
+    #region 0x06C chunk
+
+    [Chunk(0x0308C06C)]
+    public class Chunk0308C06C : Chunk<CGamePlayerProfile>
+    {
+        public override void ReadWrite(CGamePlayerProfile n, GameBoxReaderWriter rw)
+        {
+            rw.Int32();
         }
     }
 
