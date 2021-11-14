@@ -818,20 +818,40 @@ public class GameBoxReaderWriter
     }
 
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="count"/> is negative.</exception>
-    public byte[]? Bytes(byte[]? variable, int count)
+    public byte[]? Bytes(byte[]? variable = default, int? count = null)
     {
-        if (Reader is not null) return Reader.ReadBytes(count);
-        if (Writer is not null)
+        if (count is null)
         {
-            if (count < 0)
-                throw new ArgumentOutOfRangeException(nameof(count), "Count is negative");
+            if (Reader is not null) return Reader.ReadBytes();
+            if (Writer is not null)
+            {
+                if (variable is null)
+                {
+                    Writer.Write(0);
+                    return variable;
+                }
 
-            Writer.Write(variable ?? new byte[count], 0, count);
+                Writer.Write(variable.Length);
+                Writer.Write(variable);
+            }
 
             return variable;
         }
 
-        throw new ThisShouldNotHappenException();
+        var c = count.Value;
+
+        if (Reader is not null) return Reader.ReadBytes(c);
+        if (Writer is not null)
+        {
+            if (c < 0)
+                throw new ArgumentOutOfRangeException(nameof(count), "Count is negative");
+
+            Writer.Write(variable ?? new byte[c], 0, c);
+
+            return variable;
+        }
+
+        return variable;
     }
 
     public void Bytes(ref byte[]? variable, int count)
@@ -840,32 +860,21 @@ public class GameBoxReaderWriter
         if (Writer is not null && variable is not null) Writer.Write(variable, 0, count);
     }
 
-    public byte[]? Bytes(byte[]? variable = default)
-    {
-        if (Reader is not null) return Reader.ReadBytes();
-        if (Writer is not null)
-        {
-            if (variable is null)
-            {
-                Writer.Write(0);
-                return variable;
-            }
-
-            Writer.Write(variable.Length);
-            Writer.Write(variable);
-        }
-
-        return variable;
-    }
-
     public void Bytes(ref byte[]? variable)
     {
         variable = Bytes(variable);
     }
 
-    public T[]? Array<T>(T[]? array, int count) where T : struct
+    public T[]? Array<T>(T[]? array = default, int? count = null) where T : struct
     {
-        if (Reader is not null) return Reader.ReadArray<T>(count);
+        if (count is null)
+        {
+            if (Reader is not null) return Reader.ReadArray<T>();
+            if (Writer is not null) Writer.WriteArray(array);
+            return array;
+        }
+
+        if (Reader is not null) return Reader.ReadArray<T>(count.Value);
         if (Writer is not null && array is not null) Writer.WriteArray_NoPrefix(array);
         return array;
     }
@@ -873,13 +882,6 @@ public class GameBoxReaderWriter
     public void Array<T>(ref T[]? array, int count) where T : struct
     {
         array = Array(array, count);
-    }
-
-    public T[]? Array<T>(T[]? array = default) where T : struct
-    {
-        if (Reader is not null) return Reader.ReadArray<T>();
-        if (Writer is not null) Writer.WriteArray(array);
-        return array;
     }
 
     public void Array<T>(ref T[]? array) where T : struct
