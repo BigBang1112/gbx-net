@@ -22,4 +22,4 @@ var fileConfig = new ManualConfig()
         .WithMaxParameterColumnWidth(100)
     );
 
-var results = BenchmarkRunner.Run(typeof(MapParseBenchmark), fileConfig);
+var results = BenchmarkRunner.Run(typeof(MapParseBenchmark), fileConfig, args);
