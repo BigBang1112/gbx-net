@@ -817,6 +817,12 @@ public class GameBoxReaderWriter
         variable = String(variable, readPrefix);
     }
 
+    public void Uri(ref Uri? variable, StringLengthPrefix readPrefix = default)
+    {
+        if (Reader is not null) System.Uri.TryCreate(Reader.ReadString(readPrefix), UriKind.Absolute, out variable);
+        if (Writer is not null) Writer.Write(variable?.ToString(), readPrefix);
+    }
+
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="count"/> is negative.</exception>
     public byte[]? Bytes(byte[]? variable = default, int? count = null)
     {
