@@ -28,10 +28,6 @@ public abstract class GameBoxBody : GameBoxPart
 
 public class GameBoxBody<T> : GameBoxBody where T : CMwNod
 {
-    private bool checkedForLzo;
-    private MethodInfo? methodLzoCompress;
-    private MethodInfo? methodLzoDecompress;
-
     public byte[]? Rest { get; set; }
     public bool Aborting { get; private set; }
 
@@ -74,9 +70,7 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
     {
         var buffer = new byte[uncompressedSize];
 
-        CheckForLZO();
-
-        methodLzoDecompress!.Invoke(null, new object[] { data, buffer });
+        Lzo.Decompress(data, buffer);
 
 #if DEBUG
         Debugger.CompressedData = data;
@@ -103,13 +97,11 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
 
             GBX.Node.Write(gbxwBody, remap);
 
-            CheckForLZO();
-
             var buffer = msBody.ToArray();
 
             // File.WriteAllBytes("out.dat", buffer);
 
-            var output = (byte[])methodLzoCompress!.Invoke(null, new object[] { buffer })!;
+            var output = Lzo.Compress(buffer);
 
             w.Write((int)msBody.Length); // Uncompressed
             w.Write(output.Length); // Compressed
@@ -279,65 +271,5 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
     public bool RemoveChunk<TChunk>() where TChunk : Chunk<T>
     {
         return GBX.Node.Chunks.Remove<TChunk>();
-    }
-
-    /// <exception cref="MissingLzoException"></exception>
-    private void CheckForLZO()
-    {
-        if (checkedForLzo) return;
-
-        var lzoFound = false;
-
-        foreach (var dllFile in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll"))
-        {
-            var assemblyMetadata = Assembly.LoadFrom(dllFile); // TODO: also support System.Reflection.Metadata
-
-            try
-            {
-                var attributes = assemblyMetadata.GetCustomAttributesData();
-
-                foreach (var attribute in attributes)
-                {
-                    if (attribute.ConstructorArguments.Count == 2)
-                    {
-                        if (attribute.ConstructorArguments[0].Value is string sK && sK == "LZOforGBX.NET"
-                            && attribute.ConstructorArguments[1].Value is string sV && sV == "true")
-                        {
-                            lzoFound = CheckForLZO(Assembly.Load(assemblyMetadata.GetName()));
-                            if (lzoFound) break;
-                        }
-                    }
-                }
-            }
-            catch (FileLoadException)
-            {
-
-            }
-
-            if (lzoFound) break;
-        }
-
-        if (!lzoFound)
-            throw new MissingLzoException();
-
-        checkedForLzo = true;
-    }
-
-    private bool CheckForLZO(Assembly assembly)
-    {
-        var type = assembly.GetTypes().FirstOrDefault(x => x.Name == "MiniLZO");
-
-        if (type is null)
-        {
-            return false;
-        }
-
-        methodLzoCompress = type.GetMethod("Compress", new Type[] { typeof(byte[]) });
-        methodLzoDecompress = type.GetMethod("Decompress", new Type[] { typeof(byte[]), typeof(byte[]) });
-
-        if (methodLzoCompress == null || methodLzoDecompress == null)
-            return false;
-
-        return true;
     }
 }
