@@ -1293,7 +1293,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     public T[]? Array<T>(T[]? array = default, int? count = null) where T : struct
     {
         if (count is null)
@@ -1311,7 +1311,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     public void Array<T>(ref T[]? array, int count) where T : struct
     {
         array = Array(array, count);
@@ -1320,7 +1320,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     public void Array<T>(ref T[]? array) where T : struct
     {
         array = Array(array);
@@ -1330,7 +1330,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="forLoopRead"/> or <paramref name="forLoopWrite"/> is null.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Array length is lower than 0.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     public T[]? Array<T>(T[]? array, Func<int, T> forLoopRead, Action<T> forLoopWrite)
     {
         if (Reader is not null) return Reader.ReadArray(forLoopRead);
@@ -1342,7 +1342,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="forLoopRead"/> or <paramref name="forLoopWrite"/> is null.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Array length is lower than 0.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     public void Array<T>(ref T[]? array, Func<int, T> forLoopRead, Action<T> forLoopWrite)
     {
         array = Array(array, forLoopRead, forLoopWrite);
@@ -1352,7 +1352,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="forLoopRead"/> or <paramref name="forLoopWrite"/> is null.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Array length is lower than 0.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     public T[]? Array<T>(T[]? array, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
     {
         if (Reader is not null) return Reader.ReadArray(forLoopRead);
@@ -1364,7 +1364,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="forLoopRead"/> or <paramref name="forLoopWrite"/> is null.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Array length is lower than 0.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     public void Array<T>(ref T[]? array, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
     {
         array = Array(array, forLoopRead, forLoopWrite);
@@ -1374,7 +1374,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="forLoopRead"/> or <paramref name="forLoopWrite"/> is null.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Array length is lower than 0.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     public T[]? Array<T>(T[]? array, Func<T> forLoopRead, Action<T> forLoopWrite)
     {
         if (Reader is not null) return Reader.ReadArray(forLoopRead);
@@ -1386,7 +1386,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="forLoopRead"/> or <paramref name="forLoopWrite"/> is null.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Array length is lower than 0.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     public void Array<T>(ref T[]? array, Func<T> forLoopRead, Action<T> forLoopWrite)
     {
         array = Array(array, forLoopRead, forLoopWrite);
@@ -1396,7 +1396,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="forLoopRead"/> or <paramref name="forLoopWrite"/> is null.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Array length is lower than 0.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     public T[]? Array<T>(T[]? array, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
     {
         if (Reader is not null) return Reader.ReadArray(forLoopRead);
@@ -1408,17 +1408,27 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="forLoopRead"/> or <paramref name="forLoopWrite"/> is null.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Array length is lower than 0.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     public void Array<T>(ref T[]? array, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
     {
         array = Array(array, forLoopRead, forLoopWrite);
     }
 
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
+    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
     public T?[]? ArrayNode<T>(T?[]? array = default) where T : CMwNod
     {
         return Array(array, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
     }
 
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
+    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
     public void ArrayNode<T>(ref T?[]? array) where T : CMwNod
     {
         array = Array(array, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
@@ -1497,11 +1507,17 @@ public class GameBoxReaderWriter
         return Array(list?.ToArray());
     }
 
+
     public void List<T>(ref IList<T>? list) where T : struct
     {
         list = List(list);
     }
 
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoopRead"/> or <paramref name="forLoopWrite"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     public IList<T>? List<T>(IList<T>? list, Func<int, T> forLoopRead, Action<T> forLoopWrite)
     {
         if (Reader is not null) return Reader.ReadList(forLoopRead);
@@ -1509,11 +1525,21 @@ public class GameBoxReaderWriter
         return list;
     }
 
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoopRead"/> or <paramref name="forLoopWrite"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     public void List<T>(ref IList<T>? list, Func<int, T> forLoopRead, Action<T> forLoopWrite)
     {
         list = List(list, forLoopRead, forLoopWrite);
     }
 
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoopRead"/> or <paramref name="forLoopWrite"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     public IList<T>? List<T>(IList<T>? list, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
     {
         if (Reader is not null) return Reader.ReadList(forLoopRead);
@@ -1521,11 +1547,21 @@ public class GameBoxReaderWriter
         return list;
     }
 
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoopRead"/> or <paramref name="forLoopWrite"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     public void List<T>(ref IList<T>? list, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
     {
         list = List(list, forLoopRead, forLoopWrite);
     }
 
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoopRead"/> or <paramref name="forLoopWrite"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     public IList<T>? List<T>(IList<T>? list, Func<T> forLoopRead, Action<T> forLoopWrite)
     {
         if (Reader is not null) return Reader.ReadList(forLoopRead);
@@ -1533,11 +1569,21 @@ public class GameBoxReaderWriter
         return list;
     }
 
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoopRead"/> or <paramref name="forLoopWrite"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     public void List<T>(ref IList<T>? list, Func<T> forLoopRead, Action<T> forLoopWrite)
     {
         list = List(list, forLoopRead, forLoopWrite);
     }
 
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoopRead"/> or <paramref name="forLoopWrite"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     public IList<T>? List<T>(IList<T>? list, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
     {
         if (Reader is not null) return Reader.ReadList(forLoopRead);
@@ -1545,11 +1591,21 @@ public class GameBoxReaderWriter
         return list;
     }
 
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoopRead"/> or <paramref name="forLoopWrite"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     public void List<T>(ref IList<T>? list, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
     {
         list = List(list, forLoopRead, forLoopWrite);
     }
 
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
+    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
     public IList<T?>? ListNode<T>(IList<T?>? list = default) where T : CMwNod
     {
         return List(list,
@@ -1557,6 +1613,11 @@ public class GameBoxReaderWriter
             (x, w) => w.Write(x));
     }
 
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
+    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
     public void ListNode<T>(ref IList<T?>? list) where T : CMwNod
     {
         list = List(list,
@@ -1564,6 +1625,10 @@ public class GameBoxReaderWriter
             (x, w) => w.Write(x));
     }
 
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
     public IDictionary<TKey, TValue>? Dictionary<TKey, TValue>(IDictionary<TKey, TValue>? dictionary = default) where TKey : notnull
     {
         if (Reader is not null) return Reader.ReadDictionary<TKey, TValue>();
@@ -1571,11 +1636,20 @@ public class GameBoxReaderWriter
         return dictionary;
     }
 
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
     public void Dictionary<TKey, TValue>(ref IDictionary<TKey, TValue>? dictionary) where TKey : notnull
     {
         dictionary = Dictionary(dictionary);
     }
 
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
+    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
     public IDictionary<TKey, TValue?>? DictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary = default) where TKey : notnull where TValue : CMwNod
     {
         if (Reader is not null) return Reader.ReadDictionaryNode<TKey, TValue>();
@@ -1583,17 +1657,22 @@ public class GameBoxReaderWriter
         return dictionary;
     }
 
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
+    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
     public void DictionaryNode<TKey, TValue>(ref IDictionary<TKey, TValue?>? dictionary) where TKey : notnull where TValue : CMwNod
     {
         dictionary = DictionaryNode(dictionary);
     }
 
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="stream"/> is null.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReader.Lookbackable"/> of <see cref="Reader"/> is null.</exception>
-    /// <exception cref="EndOfStreamException"></exception>
-    /// <exception cref="ObjectDisposedException"></exception>
-    /// <exception cref="IOException"></exception>
-    /// <exception cref="NotSupportedException"></exception>
+    /// <exception cref="PropertyNullException">Lookbackable of <see cref="Reader"/> is null.</exception>
     public void UntilFacade(MemoryStream stream)
     {
         if (stream is null)
