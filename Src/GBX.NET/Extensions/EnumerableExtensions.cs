@@ -15,4 +15,14 @@ public static class EnumerableExtensions
             .Flatten(selector))
             .Concat(source);
     }
+
+    public static List<T> ToList<T>(this IEnumerable<T> source, int capacity)
+    {
+        var list = new List<T>(capacity);
+
+        foreach (var item in source)
+            list.Add(item);
+
+        return list;
+    }
 }

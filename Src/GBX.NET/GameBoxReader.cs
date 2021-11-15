@@ -8,6 +8,7 @@ using System.Text;
 
 using GBX.NET.Engines.MwFoundations;
 using GBX.NET.Exceptions;
+using GBX.NET.Extensions;
 
 namespace GBX.NET;
 
@@ -670,17 +671,13 @@ public class GameBoxReader : BinaryReader
 
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
-    public IList<T> ReadList<T>(int length, Func<int, T> forLoop)
+    public IEnumerable<T> ReadEnumerable<T>(int length, Func<int, T> forLoop)
     {
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
 
-        var result = new List<T>(length);
-
         for (var i = 0; i < length; i++)
-            result.Add(forLoop.Invoke(i));
-
-        return result;
+            yield return forLoop.Invoke(i);
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -688,27 +685,23 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
-    public IList<T> ReadList<T>(Func<int, T> forLoop)
+    public IEnumerable<T> ReadEnumerable<T>(Func<int, T> forLoop)
     {
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
 
-        return ReadList(ReadInt32(), forLoop);
+        return ReadEnumerable(ReadInt32(), forLoop);
     }
 
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
-    public IList<T> ReadList<T>(int length, Func<T> forLoop)
+    public IEnumerable<T> ReadEnumerable<T>(int length, Func<T> forLoop)
     {
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
 
-        var result = new List<T>(length);
-
         for (var i = 0; i < length; i++)
-            result.Add(forLoop.Invoke());
-
-        return result;
+            yield return forLoop.Invoke();
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -716,17 +709,17 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
-    public IList<T> ReadList<T>(Func<T> forLoop)
+    public IEnumerable<T> ReadEnumerable<T>(Func<T> forLoop)
     {
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
 
-        return ReadList(ReadInt32(), forLoop);
+        return ReadEnumerable(ReadInt32(), forLoop);
     }
 
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
-    public IList<T> ReadList<T>(int length, Func<int, GameBoxReader, T> forLoop)
+    public IEnumerable<T> ReadEnumerable<T>(int length, Func<int, GameBoxReader, T> forLoop)
     {
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
@@ -744,27 +737,97 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
-    public IList<T> ReadList<T>(Func<int, GameBoxReader, T> forLoop)
+    public IEnumerable<T> ReadEnumerable<T>(Func<int, GameBoxReader, T> forLoop)
     {
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
 
-        return ReadList(ReadInt32(), forLoop);
+        return ReadEnumerable(ReadInt32(), forLoop);
+    }
+
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
+    public IEnumerable<T> ReadEnumerable<T>(int length, Func<GameBoxReader, T> forLoop)
+    {
+        if (forLoop is null)
+            throw new ArgumentNullException(nameof(forLoop));
+
+        for (var i = 0; i < length; i++)
+            yield return forLoop.Invoke(this);
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
+    public IEnumerable<T> ReadEnumerable<T>(Func<GameBoxReader, T> forLoop)
+    {
+        if (forLoop is null)
+            throw new ArgumentNullException(nameof(forLoop));
+
+        return ReadEnumerable(ReadInt32(), forLoop);
+    }
+
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
+    public IList<T> ReadList<T>(int length, Func<int, T> forLoop)
+    {
+        return ReadEnumerable(length, forLoop).ToList(length);
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
+    public IList<T> ReadList<T>(Func<int, T> forLoop)
+    {
+        var length = ReadInt32();
+        return ReadList(length, forLoop);
+    }
+
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
+    public IList<T> ReadList<T>(int length, Func<T> forLoop)
+    {
+        return ReadEnumerable(length, forLoop).ToList(length);
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
+    public IList<T> ReadList<T>(Func<T> forLoop)
+    {
+        var length = ReadInt32();
+        return ReadList(length, forLoop);
+    }
+
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
+    public IList<T> ReadList<T>(int length, Func<int, GameBoxReader, T> forLoop)
+    {
+        return ReadEnumerable(length, forLoop).ToList(length);
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
+    public IList<T> ReadList<T>(Func<int, GameBoxReader, T> forLoop)
+    {
+        var length = ReadInt32();
+        return ReadList(length, forLoop);
     }
 
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
     public IList<T> ReadList<T>(int length, Func<GameBoxReader, T> forLoop)
     {
-        if (forLoop is null)
-            throw new ArgumentNullException(nameof(forLoop));
-
-        var result = new List<T>(length);
-
-        for (var i = 0; i < length; i++)
-            result.Add(forLoop.Invoke(this));
-
-        return result;
+        return ReadEnumerable(length, forLoop).ToList(length);
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -774,10 +837,8 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
     public IList<T> ReadList<T>(Func<GameBoxReader, T> forLoop)
     {
-        if (forLoop is null)
-            throw new ArgumentNullException(nameof(forLoop));
-
-        return ReadList(ReadInt32(), forLoop);
+        var length = ReadInt32();
+        return ReadList(length, forLoop);
     }
 
     /// <summary>
