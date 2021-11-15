@@ -17,7 +17,7 @@ public class CompressedStream : DeflateStream
                 WriteMagic(stream);
                 break;
             case CompressionMode.Decompress:
-                Compression = CompressedStream.ReadMagic(stream);
+                Compression = ReadMagic(stream);
                 break;
         }
     }
