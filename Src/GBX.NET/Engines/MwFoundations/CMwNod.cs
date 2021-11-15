@@ -33,12 +33,6 @@ public class CMwNod
     public Chunk? ParentChunk { get; set; }
 
     public virtual uint ID { get; private set; }
-    [Obsolete]
-    public uint? FaultyChunk { get; private set; }
-    [Obsolete]
-    public byte[]? Rest { get; private set; }
-    [Obsolete]
-    public bool Unknown { get; internal set; }
 
     public string[]? Dependencies { get; set; }
 

@@ -309,13 +309,8 @@ public class GameBoxWriter : BinaryWriter
 
         Write(fileRef.FilePath);
 
-        if (fileRef.FilePath is not null)
-        {
-            if ((fileRef.FilePath.Length > 0 && fileRef.Version >= 1) || fileRef.Version >= 3)
-            {
-                Write(fileRef.LocatorUrl?.ToString());
-            }
-        }
+        if (fileRef.FilePath is not null && ((fileRef.FilePath.Length > 0 && fileRef.Version >= 1) || fileRef.Version >= 3))
+            Write(fileRef.LocatorUrl?.ToString());
     }
 
     /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
