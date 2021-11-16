@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 
 using GBX.NET.Engines.MwFoundations;
+using GBX.NET.Attributes;
 
 namespace DocGenerator;
 

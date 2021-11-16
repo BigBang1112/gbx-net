@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GBX.NET;
+namespace GBX.NET.Attributes;
 
 [AttributeUsage(AttributeTargets.Property)]
 public class NodeMemberAttribute : Attribute

@@ -9,6 +9,7 @@
 		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
 		
 		<Version>0.14.0</Version>
 		<PackageReleaseNotes></PackageReleaseNotes>
@@ -28,6 +29,10 @@
 		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
 		<NoWarn>1591</NoWarn>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<Using Include="GBX.NET.Attributes" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<Compile Update="Resources.Designer.cs">
