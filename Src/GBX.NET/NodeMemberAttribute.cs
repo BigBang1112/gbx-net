@@ -1,10 +1,9 @@
 ﻿using System;
 
-namespace GBX.NET
+namespace GBX.NET;
+
+[AttributeUsage(AttributeTargets.Property)]
+public class NodeMemberAttribute : Attribute
 {
-    [AttributeUsage(AttributeTargets.Property)]
-    public class NodeMemberAttribute : Attribute
-    {
-        
-    }
+
 }

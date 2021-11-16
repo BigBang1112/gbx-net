@@ -1,12 +1,11 @@
-﻿namespace GBX.NET
+﻿namespace GBX.NET;
+
+public enum RoadConnection
 {
-    public enum RoadConnection
-    {
-        Base,
-        Deadend,
-        Corner,
-        Straight,
-        TShaped,
-        Cross
-    }
+    Base,
+    Deadend,
+    Corner,
+    Straight,
+    TShaped,
+    Cross
 }

@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GBX.NET.BlockInfo
+namespace GBX.NET.BlockInfo;
+
+public static class BlockInfoManager
 {
-    public static class BlockInfoManager
-    {
-        public static Dictionary<string, BlockModel> BlockModels { get; set; } = new Dictionary<string, BlockModel>();
-    }
+    public static Dictionary<string, BlockModel> BlockModels { get; set; } = new Dictionary<string, BlockModel>();
 }

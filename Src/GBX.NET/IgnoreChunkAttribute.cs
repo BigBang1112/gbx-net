@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GBX.NET
+namespace GBX.NET;
+
+[AttributeUsage(AttributeTargets.Class)]
+public class IgnoreChunkAttribute : Attribute
 {
-    [AttributeUsage(AttributeTargets.Class)]
-    public class IgnoreChunkAttribute : Attribute
-    {
-    }
 }

@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
 
-namespace GBX.NET
-{
-    /// <summary>
-    /// Supports <see cref="Id"/> (lookback string) management on its own.
-    /// </summary>
-    public interface ILookbackable
-    {
-        GameBox? GBX { get; }
+namespace GBX.NET;
 
-        int? IdVersion { get; set; }
-        List<string> IdStrings { get; set; }
-        bool IdWritten { get; set; }
-    }
+/// <summary>
+/// Supports <see cref="Id"/> (lookback string) management on its own.
+/// </summary>
+public interface ILookbackable
+{
+    GameBox? GBX { get; }
+
+    int? IdVersion { get; set; }
+    List<string> IdStrings { get; set; }
+    bool IdWritten { get; set; }
 }

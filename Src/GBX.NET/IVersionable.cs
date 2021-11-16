@@ -1,7 +1,6 @@
-﻿namespace GBX.NET
+﻿namespace GBX.NET;
+
+public interface IVersionable
 {
-    public interface IVersionable
-    {
-        int Version { get; set; }
-    }
+    int Version { get; set; }
 }

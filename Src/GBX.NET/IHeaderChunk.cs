@@ -1,7 +1,6 @@
-﻿namespace GBX.NET
+﻿namespace GBX.NET;
+
+public interface IHeaderChunk : ISkippableChunk
 {
-    public interface IHeaderChunk : ISkippableChunk
-    {
-        bool IsHeavy { get; set; }
-    }
+    bool IsHeavy { get; set; }
 }
