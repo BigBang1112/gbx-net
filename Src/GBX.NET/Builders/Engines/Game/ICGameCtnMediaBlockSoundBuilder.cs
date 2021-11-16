@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GBX.NET.Builders.Engines.Game;
 
-public interface ICGameCtnMediaBlockSoundBuilder : IBuilder
+public interface ICGameCtnMediaBlockSoundBuilder : IBuilder, ICGameCtnMediaBlockSoundBuilderFor
 {
     IList<CGameCtnMediaBlockSound.Key>? Keys { get; set; }
     FileRef? Sound { get; set; }

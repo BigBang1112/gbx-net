@@ -47,6 +47,15 @@ public partial class CGameCtnMediaBlockSoundBuilder : ICGameCtnMediaBlockSoundBu
     public TMUF ForTMUF() => new(this, NewNode());
     public TM2 ForTM2() => new(this, NewNode());
 
+    GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
+        IBuilderForTMSX<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>.ForTMSX() => ForTMSX();
+    GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
+        IBuilderForTMU<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>.ForTMU() => ForTMU();
+    GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
+        IBuilderForTMUF<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>.ForTMUF() => ForTMUF();
+    GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
+        IBuilderForTM2<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>.ForTM2() => ForTM2();
+
     internal CGameCtnMediaBlockSound NewNode()
     {
         var node = NodeCacheManager.GetNodeInstance<CGameCtnMediaBlockSound>(0x030A7000);
