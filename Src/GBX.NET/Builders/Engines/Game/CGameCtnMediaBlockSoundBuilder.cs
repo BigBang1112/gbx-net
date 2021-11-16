@@ -9,6 +9,8 @@ public partial class CGameCtnMediaBlockSoundBuilder : ICGameCtnMediaBlockSoundBu
 {
     public FileRef? Sound { get; set; }
     public IList<CGameCtnMediaBlockSound.Key>? Keys { get; set; }
+    public int PlayCount { get; set; }
+    public bool IsLooping { get; set; }
 
     public CGameCtnMediaBlockSoundBuilder WithSound(FileRef sound)
     {
@@ -28,12 +30,32 @@ public partial class CGameCtnMediaBlockSoundBuilder : ICGameCtnMediaBlockSoundBu
         return this;
     }
 
+    public CGameCtnMediaBlockSoundBuilder WithPlayCount(int playCount)
+    {
+        PlayCount = playCount;
+        return this;
+    }
+
+    public CGameCtnMediaBlockSoundBuilder WithLooping(bool loop)
+    {
+        IsLooping = loop;
+        return this;
+    }
+
     public TMSX ForTMSX() => new(this, NewNode());
+    public TMU ForTMU() => new(this, NewNode());
     public TMUF ForTMUF() => new(this, NewNode());
     public TM2 ForTM2() => new(this, NewNode());
 
-    private static CGameCtnMediaBlockSound NewNode()
+    internal CGameCtnMediaBlockSound NewNode()
     {
-        return NodeCacheManager.GetNodeInstance<CGameCtnMediaBlockSound>(0x030A7000);
+        var node = NodeCacheManager.GetNodeInstance<CGameCtnMediaBlockSound>(0x030A7000);
+
+        node.Sound = Sound ?? new FileRef();
+        node.Keys = Keys ?? new List<CGameCtnMediaBlockSound.Key>();
+        node.PlayCount = PlayCount;
+        node.IsLooping = IsLooping;
+
+        return node;
     }
 }
