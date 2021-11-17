@@ -46,6 +46,7 @@ public partial class CGameCtnMediaBlockSoundBuilder : ICGameCtnMediaBlockSoundBu
     public TMU ForTMU() => new(this, NewNode());
     public TMUF ForTMUF() => new(this, NewNode());
     public TM2 ForTM2() => new(this, NewNode());
+    public TM2020 ForTM2020() => new(this, NewNode());
 
     GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
         IBuilderForTMSX<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>.ForTMSX() => ForTMSX();
@@ -55,6 +56,8 @@ public partial class CGameCtnMediaBlockSoundBuilder : ICGameCtnMediaBlockSoundBu
         IBuilderForTMUF<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>.ForTMUF() => ForTMUF();
     GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
         IBuilderForTM2<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>.ForTM2() => ForTM2();
+    GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
+        IBuilderForTM2020<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>.ForTM2020() => ForTM2020();
 
     internal CGameCtnMediaBlockSound NewNode()
     {
