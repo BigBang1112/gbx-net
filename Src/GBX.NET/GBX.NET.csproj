@@ -31,6 +31,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Using Remove="System.Net.Http"/>
 		<Using Include="TmEssentials"/>
 		<Using Include="GBX.NET.Attributes"/>
 		<Using Include="GBX.NET.Exceptions"/>
