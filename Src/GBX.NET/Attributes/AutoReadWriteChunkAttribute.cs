@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GBX.NET.Attributes;
+﻿namespace GBX.NET.Attributes;
 
 /// <summary>
 /// Specifies an unskippable chunk that can't be managed properly to read with a method by reading and writing it based on peeking

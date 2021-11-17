@@ -1,9 +1,4 @@
-﻿using GBX.NET.Engines.GameData;
-using GBX.NET.Engines.Scene;
-using GBX.NET.Engines.MwFoundations;
-using System;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x0304E000), WritingNotSupported]
 public class CGameCtnBlockInfo : CGameCtnCollector

@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
 /// MediaTracker block - 3D stereo (0x03024000)

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Linq;
-
-using GBX.NET.Engines.GameData;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
 /// Macroblock (0x0310D000)

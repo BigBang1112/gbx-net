@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x03029000)]
 public class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys

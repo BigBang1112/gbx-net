@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GBX.NET;
+﻿namespace GBX.NET;
 
 public enum DifferenceSolution
 {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
 /// MediaTracker block - Camera effect inetrial tracking

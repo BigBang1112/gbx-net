@@ -1,6 +1,4 @@
-﻿using GBX.NET.Engines.Plug;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x0329F000)]
 public sealed class CGameCtnMediaBlockEntity : CGameCtnMediaBlock

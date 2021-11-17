@@ -1,7 +1,4 @@
-﻿using GBX.NET.Engines.GameData;
-using GBX.NET.Engines.MwFoundations;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
 /// Item on a map (0x03101000)

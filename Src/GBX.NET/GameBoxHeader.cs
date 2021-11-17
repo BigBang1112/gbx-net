@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-
-using GBX.NET.Engines.MwFoundations;
-using GBX.NET.Exceptions;
-
-namespace GBX.NET;
+﻿namespace GBX.NET;
 
 public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
 {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GBX.NET.Attributes;
+﻿namespace GBX.NET.Attributes;
 
 /// <summary>
 /// Attribute that assigns specific metadata to a chunk.

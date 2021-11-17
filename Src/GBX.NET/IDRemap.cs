@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GBX.NET;
+﻿namespace GBX.NET;
 
 /// <summary>
 /// Tells the library to save a GBX file with correct IDs related to the game version.

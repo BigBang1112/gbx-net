@@ -1,8 +1,4 @@
-﻿using System;
-using System.Runtime.Serialization;
-
-using GBX.NET.Engines.GameData;
-using GBX.NET.Engines.MwFoundations;
+﻿using System.Runtime.Serialization;
 
 namespace GBX.NET.Engines.Game;
 

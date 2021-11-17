@@ -1,6 +1,4 @@
-﻿using GBX.NET.Engines.Game;
-
-namespace GBX.NET.Engines.TrackMania;
+﻿namespace GBX.NET.Engines.TrackMania;
 
 [Node(0x24092000)]
 public sealed class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi

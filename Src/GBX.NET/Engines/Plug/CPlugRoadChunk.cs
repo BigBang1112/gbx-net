@@ -1,7 +1,4 @@
-﻿using GBX.NET.Engines.MwFoundations;
-using System.Linq;
-
-namespace GBX.NET.Engines.Plug;
+﻿namespace GBX.NET.Engines.Plug;
 
 [Node(0x09128000)]
 public sealed class CPlugRoadChunk : CMwNod

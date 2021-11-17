@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x03139000)]
 public sealed class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys

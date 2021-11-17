@@ -1,7 +1,4 @@
-﻿using GBX.NET.Engines.Plug;
-using GBX.NET.Engines.MwFoundations;
-
-namespace GBX.NET.Engines.GameData;
+﻿namespace GBX.NET.Engines.GameData;
 
 [Node(0x2E002000), WritingNotSupported]
 public sealed class CGameItemModel : CGameCtnCollector

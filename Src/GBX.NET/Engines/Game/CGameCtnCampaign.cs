@@ -1,6 +1,4 @@
-﻿using GBX.NET.Engines.MwFoundations;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
 /// Campaign info (0x03090000)

@@ -31,7 +31,20 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Using Include="GBX.NET.Attributes" />
+		<Using Include="TmEssentials"/>
+		<Using Include="GBX.NET.Attributes"/>
+		<Using Include="GBX.NET.Exceptions"/>
+		<Using Include="GBX.NET.Engines.Control"/>
+		<Using Include="GBX.NET.Engines.Game"/>
+		<Using Include="GBX.NET.Engines.GameData"/>
+		<Using Include="GBX.NET.Engines.Hms"/>
+		<Using Include="GBX.NET.Engines.Input"/>
+		<Using Include="GBX.NET.Engines.MwFoundations"/>
+		<Using Include="GBX.NET.Engines.Plug"/>
+		<Using Include="GBX.NET.Engines.Scene"/>
+		<Using Include="GBX.NET.Engines.Script"/>
+		<Using Include="GBX.NET.Engines.System"/>
+		<Using Include="GBX.NET.Engines.TrackMania"/>
 	</ItemGroup>
 
 	<ItemGroup>

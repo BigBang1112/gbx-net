@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace GBX.NET.Engines.Plug;
+﻿namespace GBX.NET.Engines.Plug;
 
 [Node(0x09006000)]
 public class CPlugVisual : CPlug

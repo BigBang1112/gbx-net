@@ -1,6 +1,4 @@
-﻿using GBX.NET.Engines.MwFoundations;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
 /// Skin for a block (0x03059000)

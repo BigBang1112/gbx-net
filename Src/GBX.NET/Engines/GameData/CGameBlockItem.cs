@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-
-using GBX.NET.Engines.Plug;
-using GBX.NET.Engines.MwFoundations;
-
-namespace GBX.NET.Engines.GameData;
+﻿namespace GBX.NET.Engines.GameData;
 
 [Node(0x2E025000)]
 public sealed class CGameBlockItem : CMwNod

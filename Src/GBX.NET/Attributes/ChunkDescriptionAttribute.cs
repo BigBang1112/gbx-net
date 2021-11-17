@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GBX.NET.Attributes;
+﻿namespace GBX.NET.Attributes;
 
 [Obsolete]
 public class ChunkDescriptionAttribute : Attribute

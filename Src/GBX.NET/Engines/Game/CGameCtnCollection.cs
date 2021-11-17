@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-
-using GBX.NET.Engines.MwFoundations;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x03033000)]
 public sealed class CGameCtnCollection : CMwNod

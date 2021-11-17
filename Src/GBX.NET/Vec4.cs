@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GBX.NET;
+﻿namespace GBX.NET;
 
 public struct Vec4 : IVec
 {

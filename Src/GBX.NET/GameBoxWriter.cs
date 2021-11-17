@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
-
-using GBX.NET.Engines.MwFoundations;
-using GBX.NET.Exceptions;
 
 namespace GBX.NET;
 

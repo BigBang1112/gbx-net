@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x03145000)]
 public sealed class CGameCtnMediaBlockShoot : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys

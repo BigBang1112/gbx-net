@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x03165000)]
 public sealed class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys

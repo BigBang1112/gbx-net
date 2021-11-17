@@ -1,9 +1,4 @@
-﻿using GBX.NET.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;

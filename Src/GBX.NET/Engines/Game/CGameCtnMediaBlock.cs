@@ -1,8 +1,4 @@
-﻿using GBX.NET.Engines.MwFoundations;
-using System;
-using System.Collections.Generic;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
 /// MediaTracker block (0x03077000)

@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Linq;
-using System.IO;
+﻿using System.Reflection;
 using System.Runtime.Serialization;
-using System.Threading.Tasks;
-
-using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET;
 

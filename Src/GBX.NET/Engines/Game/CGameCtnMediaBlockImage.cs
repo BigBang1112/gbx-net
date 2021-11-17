@@ -1,8 +1,4 @@
-﻿using GBX.NET.Engines.Control;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x030A5000)]
 public sealed class CGameCtnMediaBlockImage : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys

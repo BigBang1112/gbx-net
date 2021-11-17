@@ -1,8 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace GBX.NET.Engines.Plug;
 

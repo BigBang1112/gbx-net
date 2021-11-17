@@ -1,6 +1,4 @@
-﻿using GBX.NET.Engines.MwFoundations;
-
-namespace GBX.NET.Engines.Plug;
+﻿namespace GBX.NET.Engines.Plug;
 
 [Node(0x090FD000)]
 public sealed class CPlugMaterialUserInst : CMwNod

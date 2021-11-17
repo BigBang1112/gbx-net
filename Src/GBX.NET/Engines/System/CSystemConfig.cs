@@ -1,6 +1,4 @@
-﻿using GBX.NET.Engines.MwFoundations;
-
-namespace GBX.NET.Engines.System;
+﻿namespace GBX.NET.Engines.System;
 
 [Node(0x0B005000)]
 public sealed class CSystemConfig : CMwNod

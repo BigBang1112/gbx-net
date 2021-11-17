@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x03082000)]
 public sealed class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur, CGameCtnMediaBlock.IHasTwoKeys

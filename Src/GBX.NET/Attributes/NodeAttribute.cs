@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GBX.NET.Attributes;
+﻿namespace GBX.NET.Attributes;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class NodeAttribute : Attribute

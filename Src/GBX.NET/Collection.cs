@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-
-namespace GBX.NET;
+﻿namespace GBX.NET;
 
 /// <summary>
 /// A struct that can handle GameBox collection/environment values by either a name or a value.

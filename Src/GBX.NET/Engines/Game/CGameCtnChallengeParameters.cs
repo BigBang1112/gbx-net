@@ -1,8 +1,4 @@
-﻿using System;
-
-using GBX.NET.Engines.MwFoundations;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
 /// Map parameters (0x0305B000)

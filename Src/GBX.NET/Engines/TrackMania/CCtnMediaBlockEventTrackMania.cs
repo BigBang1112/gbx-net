@@ -1,7 +1,4 @@
-﻿using GBX.NET.Engines.Game;
-using System;
-
-namespace GBX.NET.Engines.TrackMania;
+﻿namespace GBX.NET.Engines.TrackMania;
 
 [Node(0x2407F000)]
 public sealed class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock

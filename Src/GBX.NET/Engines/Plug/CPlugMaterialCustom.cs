@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GBX.NET.Engines.Plug;
+﻿namespace GBX.NET.Engines.Plug;
 
 [Node(0x0903A000)]
 public sealed class CPlugMaterialCustom : CPlug

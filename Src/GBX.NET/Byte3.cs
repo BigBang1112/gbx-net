@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GBX.NET;
+﻿namespace GBX.NET;
 
 /// <summary>
 /// 3-dimensional byte coordination struct. Implicit <see cref="ValueTuple{T1, T2, T3}"/> is available.

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Numerics;
-using GBX.NET.Engines.Plug;
-using TmEssentials;
+﻿using System.Numerics;
 
 namespace GBX.NET.Engines.Game;
 

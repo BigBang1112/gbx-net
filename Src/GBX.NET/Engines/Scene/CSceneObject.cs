@@ -1,6 +1,4 @@
-﻿using GBX.NET.Engines.MwFoundations;
-
-namespace GBX.NET.Engines.Scene;
+﻿namespace GBX.NET.Engines.Scene;
 
 [Node(0x0A005000)]
 public class CSceneObject : CMwNod

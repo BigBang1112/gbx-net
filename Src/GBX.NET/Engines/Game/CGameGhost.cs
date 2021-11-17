@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.IO;
 using System.IO.Compression;
-using System.Linq;
-using System.Threading.Tasks;
-
-using GBX.NET.Engines.MwFoundations;
-using GBX.NET.Exceptions;
 
 namespace GBX.NET.Engines.Game;
 

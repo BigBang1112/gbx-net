@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GBX.NET.Exceptions;
+﻿namespace GBX.NET.Exceptions;
 
 /// <summary>
 /// The exception that is thrown when an internal property of GBX.NET is null when it shouldn't be.

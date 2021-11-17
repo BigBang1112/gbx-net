@@ -1,6 +1,4 @@
-﻿using GBX.NET.Engines.Control;
-
-namespace GBX.NET.Builders.Engines.Game;
+﻿namespace GBX.NET.Builders.Engines.Game;
 
 public interface ICGameCtnMediaBlockTextBuilder : IBuilder, ICGameCtnMediaBlockTextBuilderFor
 {

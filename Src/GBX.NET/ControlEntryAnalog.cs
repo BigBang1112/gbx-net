@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TmEssentials;
-
-namespace GBX.NET;
+﻿namespace GBX.NET;
 
 /// <summary>
 /// A control entry with an additional <see cref="float"/> value.

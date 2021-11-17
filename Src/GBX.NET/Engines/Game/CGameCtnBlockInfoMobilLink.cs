@@ -1,6 +1,4 @@
-﻿using GBX.NET.Engines.GameData;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 public class CGameCtnBlockInfoMobilLink
 {

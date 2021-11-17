@@ -1,6 +1,4 @@
-﻿using GBX.NET.Engines.Control;
-
-namespace GBX.NET.Builders.Engines.Control;
+﻿namespace GBX.NET.Builders.Engines.Control;
 
 public partial class CControlEffectSimiBuilder
 {

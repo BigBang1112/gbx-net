@@ -1,7 +1,4 @@
-﻿using GBX.NET.Engines.MwFoundations;
-using System.Collections.Generic;
-
-namespace GBX.NET.Engines.Plug;
+﻿namespace GBX.NET.Engines.Plug;
 
 [Node(0x09005000)]
 public sealed class CPlugSolid : CPlug

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace GBX.NET;
+﻿namespace GBX.NET;
 
 /// <summary>
 /// Supports <see cref="Id"/> (lookback string) management on its own.

@@ -1,6 +1,4 @@
-﻿using GBX.NET.Engines.MwFoundations;
-
-namespace GBX.NET.Engines.GameData;
+﻿namespace GBX.NET.Engines.GameData;
 
 [Node(0x2E020000)]
 public sealed class CGameItemPlacementParam : CMwNod

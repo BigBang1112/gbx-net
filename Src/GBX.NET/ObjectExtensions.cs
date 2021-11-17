@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.ArrayExtensions;
 using System.Reflection;
-using System.ArrayExtensions;
 
 namespace System
 {

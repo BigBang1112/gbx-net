@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using GBX.NET.BlockInfo;
 using System.IO.Compression;
-using System.Linq;
+using System.Security;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-
-using GBX.NET.BlockInfo;
-using GBX.NET.Engines.GameData;
-using GBX.NET.Engines.Hms;
-using GBX.NET.Engines.Script;
-using GBX.NET.Engines.MwFoundations;
-using GBX.NET.Exceptions;
-using System.Security;
 
 namespace GBX.NET.Engines.Game;
 

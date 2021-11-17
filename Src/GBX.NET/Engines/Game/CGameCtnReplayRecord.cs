@@ -1,12 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Threading.Tasks;
-using System.Diagnostics;
-
-using GBX.NET.Engines.TrackMania;
-using GBX.NET.Engines.Plug;
-using GBX.NET.Engines.MwFoundations;
-using System.Collections.Generic;
+﻿using System.Diagnostics;
 
 namespace GBX.NET.Engines.Game;
 

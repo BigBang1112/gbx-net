@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x03085000)]
 public class CGameCtnMediaBlockTime : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys

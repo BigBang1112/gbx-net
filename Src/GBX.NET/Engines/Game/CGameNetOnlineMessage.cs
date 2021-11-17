@@ -1,11 +1,4 @@
-﻿using GBX.NET.Engines.MwFoundations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x03028000), WritingNotSupported]
 public class CGameNetOnlineMessage : CMwNod

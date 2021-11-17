@@ -1,10 +1,5 @@
-﻿using System;
-using System.IO;
+﻿using System.Collections.ObjectModel;
 using System.IO.Compression;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
-
-using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.Plug;
 

@@ -1,9 +1,4 @@
-﻿using GBX.NET.Engines.MwFoundations;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GBX.NET.Exceptions;
+﻿namespace GBX.NET.Exceptions;
 
 public class IgnoredUnskippableChunkException : Exception
 {

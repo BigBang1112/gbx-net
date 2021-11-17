@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GBX.NET.Exceptions;
+﻿namespace GBX.NET.Exceptions;
 
 /// <summary>
 /// The exception that is thrown when a node member is null when it shouldn't be.

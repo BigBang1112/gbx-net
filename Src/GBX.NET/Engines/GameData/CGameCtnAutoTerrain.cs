@@ -1,7 +1,4 @@
-﻿using GBX.NET.Engines.Game;
-using GBX.NET.Engines.MwFoundations;
-
-namespace GBX.NET.Engines.GameData;
+﻿namespace GBX.NET.Engines.GameData;
 
 [Node(0x03120000)]
 public sealed class CGameCtnAutoTerrain : CMwNod

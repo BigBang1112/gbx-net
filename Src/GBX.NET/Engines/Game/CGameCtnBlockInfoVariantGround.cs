@@ -1,6 +1,4 @@
-﻿using GBX.NET.Engines.GameData;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x0315C000)]
 public sealed class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant

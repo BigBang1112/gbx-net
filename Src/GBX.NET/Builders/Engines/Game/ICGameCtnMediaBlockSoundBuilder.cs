@@ -1,7 +1,4 @@
-﻿using GBX.NET.Engines.Game;
-using System.Collections.Generic;
-
-namespace GBX.NET.Builders.Engines.Game;
+﻿namespace GBX.NET.Builders.Engines.Game;
 
 public interface ICGameCtnMediaBlockSoundBuilder : IBuilder, ICGameCtnMediaBlockSoundBuilderFor
 {

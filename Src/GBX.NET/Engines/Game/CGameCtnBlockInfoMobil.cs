@@ -1,8 +1,4 @@
-﻿using GBX.NET.Engines.GameData;
-using GBX.NET.Engines.Plug;
-using GBX.NET.Engines.MwFoundations;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x03122000)]
 public class CGameCtnBlockInfoMobil : CMwNod

@@ -1,10 +1,4 @@
-﻿using GBX.NET.Engines.Control;
-using GBX.NET.Engines.Game;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GBX.NET.Builders.Engines.Game;
+﻿namespace GBX.NET.Builders.Engines.Game;
 
 public partial class CGameCtnMediaBlockTextBuilder : ICGameCtnMediaBlockTextBuilder
 {

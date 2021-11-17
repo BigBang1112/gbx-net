@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using GBX.NET.Engines.MwFoundations;
 
 namespace GBX.NET.Engines.GameData;
 

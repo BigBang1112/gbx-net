@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace GBX.NET;
+﻿namespace GBX.NET;
 
 public static class ListExtensions
 {

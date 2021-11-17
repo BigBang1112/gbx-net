@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-
-namespace GBX.NET;
+﻿namespace GBX.NET;
 
 public static class Log
 {

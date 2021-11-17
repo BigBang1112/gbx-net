@@ -1,8 +1,4 @@
-﻿using GBX.NET.Engines.Hms;
-using GBX.NET.Engines.MwFoundations;
-using GBX.NET.Engines.Plug;
-
-namespace GBX.NET.Engines.Scene;
+﻿namespace GBX.NET.Engines.Scene;
 
 [Node(0x0A011000)]
 public sealed class CSceneMobil : CSceneObject

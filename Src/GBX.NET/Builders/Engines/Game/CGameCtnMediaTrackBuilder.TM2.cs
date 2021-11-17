@@ -1,6 +1,4 @@
-﻿using GBX.NET.Engines.Game;
-
-namespace GBX.NET.Builders.Engines.Game;
+﻿namespace GBX.NET.Builders.Engines.Game;
 
 public partial class CGameCtnMediaTrackBuilder
 {
