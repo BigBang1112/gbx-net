@@ -218,4 +218,60 @@ public class CGameCtnMediaBlockSoundBuilderTests
 
         Assert.Equal(expected, actual: builder.AudioToSpeechTarget);
     }
+
+    [Fact]
+    public void TM2020_Build_ShouldHaveSpecifics()
+    {
+        var node = new CGameCtnMediaBlockSoundBuilder()
+            .ForTM2020()
+            .WithMusic(true)
+            .WithAudioToSpeech(true)
+            .WithAudioToSpeechTarget(1)
+            .Build();
+
+        var chunk003 = node.GetChunk<CGameCtnMediaBlockSound.Chunk030A7003>();
+
+        Assert.Equal(expected: 2, actual: chunk003?.Version);
+        Assert.True(node.IsMusic);
+        Assert.True(node.AudioToSpeech);
+        Assert.Equal(expected: 1, actual: node.AudioToSpeechTarget);
+        Assert.NotNull(chunk003);
+        Assert.NotNull(node.GetChunk<CGameCtnMediaBlockSound.Chunk030A7004>());
+    }
+
+    [Fact]
+    public void TM2020_WithMusic_ShouldSetIsMusic()
+    {
+        var expected = true;
+
+        var builder = new CGameCtnMediaBlockSoundBuilder()
+            .ForTM2020()
+            .WithMusic(expected);
+
+        Assert.Equal(expected, actual: builder.IsMusic);
+    }
+
+    [Fact]
+    public void TM2020_WithAudioToSpeech_ShouldSetAudioToSpeech()
+    {
+        var expected = true;
+
+        var builder = new CGameCtnMediaBlockSoundBuilder()
+            .ForTM2020()
+            .WithAudioToSpeech(expected);
+
+        Assert.Equal(expected, actual: builder.AudioToSpeech);
+    }
+
+    [Fact]
+    public void TM2020_WithAudioToSpeechTarget_ShouldSetAudioToSpeechTarget()
+    {
+        var expected = 1;
+
+        var builder = new CGameCtnMediaBlockSoundBuilder()
+            .ForTM2020()
+            .WithAudioToSpeechTarget(expected);
+
+        Assert.Equal(expected, actual: builder.AudioToSpeechTarget);
+    }
 }
