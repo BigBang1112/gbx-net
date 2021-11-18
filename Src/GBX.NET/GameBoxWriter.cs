@@ -456,28 +456,25 @@ public class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="OverflowException">Total seconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public void WriteInt32_s(TimeSpan variable)
     {
-        Write(Convert.ToInt32(variable.TotalSeconds));
+        Write((int)variable.TotalSeconds);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="OverflowException">Total milliseconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public void WriteInt32_ms(TimeSpan variable)
     {
-        Write(Convert.ToInt32(variable.TotalMilliseconds));
+        Write((int)variable.TotalMilliseconds);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="OverflowException">Total seconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public void WriteInt32_sn(TimeSpan? variable)
     {
         if (variable.HasValue)
         {
-            Write(Convert.ToInt32(variable.Value.TotalSeconds));
+            Write((int)variable.Value.TotalSeconds);
             return;
         }
 
@@ -486,12 +483,11 @@ public class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="OverflowException">Total milliseconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public void WriteInt32_msn(TimeSpan? variable)
     {
         if (variable.HasValue)
         {
-            Write(Convert.ToInt32(variable.Value.TotalMilliseconds));
+            Write((int)variable.Value.TotalMilliseconds);
             return;
         }
 
