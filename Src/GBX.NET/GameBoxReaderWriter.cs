@@ -44,6 +44,12 @@ public class GameBoxReaderWriter
     /// <param name="writer">Writer to use.</param>
     public GameBoxReaderWriter(GameBoxWriter writer) => Writer = writer;
 
+    /// <summary>
+    /// Reads or writes a <see cref="bool"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <param name="asByte">If the <see cref="bool"/> is going to be read/written as 1 byte instead of 4.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -54,6 +60,13 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="bool"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <param name="asByte">If the <see cref="bool"/> is going to be read/written as 1 byte instead of 4.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -64,6 +77,11 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes a <see cref="bool"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <param name="asByte">If the <see cref="bool"/> is going to be read/written as 1 byte instead of 4.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -72,6 +90,12 @@ public class GameBoxReaderWriter
         variable = Boolean(variable, asByte);
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="bool"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <param name="asByte">If the <see cref="bool"/> is going to be read/written as 1 byte instead of 4.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -80,6 +104,11 @@ public class GameBoxReaderWriter
         variable = Boolean(variable, defaultValue, asByte);
     }
 
+    /// <summary>
+    /// Reads or writes a <see cref="byte"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -90,6 +119,12 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="byte"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -100,6 +135,10 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes a <see cref="byte"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -108,6 +147,11 @@ public class GameBoxReaderWriter
         variable = Byte(variable);
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="byte"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -116,6 +160,11 @@ public class GameBoxReaderWriter
         variable = Byte(variable, defaultValue);
     }
 
+    /// <summary>
+    /// Reads or writes a <see cref="byte"/> from casted <see cref="int"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -124,6 +173,12 @@ public class GameBoxReaderWriter
         return Byte((byte)variable);
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="byte"/> from casted nullable <see cref="int"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -132,6 +187,10 @@ public class GameBoxReaderWriter
         return Byte(variable.HasValue ? (byte)variable.Value : null, (byte)defaultValue);
     }
 
+    /// <summary>
+    /// Reads or writes a <see cref="byte"/> from casted <see cref="int"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -140,6 +199,11 @@ public class GameBoxReaderWriter
         variable = Byte(variable);
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="byte"/> from casted nullable <see cref="int"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -148,6 +212,11 @@ public class GameBoxReaderWriter
         variable = Byte(variable, defaultValue);
     }
 
+    /// <summary>
+    /// Reads or writes a <see cref="short"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -158,6 +227,12 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="short"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -168,6 +243,10 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes a <see cref="short"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -176,6 +255,11 @@ public class GameBoxReaderWriter
         variable = Int16(variable);
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="short"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -184,6 +268,11 @@ public class GameBoxReaderWriter
         variable = Int16(variable, defaultValue);
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="int"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -194,6 +283,12 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="int"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -204,6 +299,10 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -212,6 +311,11 @@ public class GameBoxReaderWriter
         variable = Int32(variable);
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="int"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -220,10 +324,15 @@ public class GameBoxReaderWriter
         variable = Int32(variable, defaultValue);
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of seconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="OverflowException">Total seconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public TimeSpan Int32_s(TimeSpan variable = default)
     {
         if (Reader is not null) return Reader.ReadInt32_s();
@@ -231,10 +340,16 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="int"/> as a nullable <see cref="TimeSpan"/> of seconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="OverflowException">Total seconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public TimeSpan? Int32_s(TimeSpan? variable, TimeSpan defaultValue = default)
     {
         if (Reader is not null) return Reader.ReadInt32_s();
@@ -242,28 +357,42 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of seconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="OverflowException">Total seconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public void Int32_s(ref TimeSpan variable)
     {
         variable = Int32_s(variable);
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="int"/> as a nullable <see cref="TimeSpan"/> of seconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="OverflowException">Total seconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public void Int32_s(ref TimeSpan? variable, TimeSpan defaultValue = default)
     {
         variable = Int32_s(variable, defaultValue);
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of milliseconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/>.</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="OverflowException">Total milliseconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public TimeSpan Int32_ms(TimeSpan variable = default)
     {
         if (Reader is not null) return Reader.ReadInt32_ms();
@@ -271,10 +400,16 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="int"/> as a nullable <see cref="TimeSpan"/> of milliseconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/>.</remarks>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="OverflowException">Total milliseconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public TimeSpan? Int32_ms(TimeSpan? variable, TimeSpan defaultValue = default)
     {
         if (Reader is not null) return Reader.ReadInt32_ms();
@@ -282,28 +417,42 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of milliseconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="OverflowException">Total milliseconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public void Int32_ms(ref TimeSpan variable)
     {
         variable = Int32_ms(variable);
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="int"/> as a nullable <see cref="TimeSpan"/> of milliseconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="OverflowException">Total milliseconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public void Int32_ms(ref TimeSpan? variable, TimeSpan defaultValue = default)
     {
         variable = Int32_ms(variable, defaultValue);
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of seconds. If the read value is -1, null is returned. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned. If the read value is -1, null is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="OverflowException">Total seconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public TimeSpan? Int32_sn(TimeSpan? variable = default)
     {
         if (Reader is not null) return Reader.ReadInt32_sn();
@@ -311,19 +460,28 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of seconds through reference. If the read value is -1, <paramref name="variable"/> is set to null. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="OverflowException">Total seconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public void Int32_sn(ref TimeSpan? variable)
     {
         variable = Int32_sn(variable);
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of milliseconds. If the read value is -1, null is returned. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned. If the read value is -1, null is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="OverflowException">Total milliseconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public TimeSpan? Int32_msn(TimeSpan? variable = default)
     {
         if (Reader is not null) return Reader.ReadInt32_msn();
@@ -331,15 +489,24 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of milliseconds through reference. If the read value is -1, <paramref name="variable"/> is set to null. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="OverflowException">Total milliseconds are greater than <see cref="int.MaxValue"/> or less than <see cref="int.MinValue"/>.</exception>
     public void Int32_msn(ref TimeSpan? variable)
     {
         variable = Int32_msn(variable);
     }
 
+    /// <summary>
+    /// Reads or writes a <see cref="long"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -350,6 +517,12 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="long"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -360,6 +533,10 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="long"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -368,6 +545,11 @@ public class GameBoxReaderWriter
         variable = Int64(variable);
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="int"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -376,6 +558,11 @@ public class GameBoxReaderWriter
         variable = Int64(variable, defaultValue);
     }
 
+    /// <summary>
+    /// Reads or writes a <see cref="ushort"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -386,6 +573,12 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="ushort"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -396,6 +589,10 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="ushort"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -404,6 +601,11 @@ public class GameBoxReaderWriter
         variable = UInt16(variable);
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="ushort"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -412,6 +614,11 @@ public class GameBoxReaderWriter
         variable = UInt16(variable, defaultValue);
     }
 
+    /// <summary>
+    /// Reads or writes a <see cref="uint"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -422,6 +629,12 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="uint"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -432,6 +645,10 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="uint"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -440,6 +657,11 @@ public class GameBoxReaderWriter
         variable = UInt32(variable);
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="uint"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -448,6 +670,11 @@ public class GameBoxReaderWriter
         variable = UInt32(variable, defaultValue);
     }
 
+    /// <summary>
+    /// Reads or writes a <see cref="ulong"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -458,6 +685,12 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="ulong"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -468,6 +701,10 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="ulong"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -476,6 +713,11 @@ public class GameBoxReaderWriter
         variable = UInt64(variable);
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="ulong"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -484,6 +726,11 @@ public class GameBoxReaderWriter
         variable = UInt64(variable, defaultValue);
     }
 
+    /// <summary>
+    /// Reads or writes a <see cref="float"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -494,14 +741,12 @@ public class GameBoxReaderWriter
         return variable;
     }
 
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Single(ref float variable)
-    {
-        variable = Single(variable);
-    }
-
+    /// <summary>
+    /// Reads or writes a nullable <see cref="float"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -512,6 +757,23 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="float"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void Single(ref float variable)
+    {
+        variable = Single(variable);
+    }
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="float"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -520,6 +782,12 @@ public class GameBoxReaderWriter
         variable = Single(variable, defaultValue);
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of seconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -530,6 +798,13 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="float"/> as a nullable <see cref="TimeSpan"/> of seconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -540,6 +815,11 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of seconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -548,6 +828,12 @@ public class GameBoxReaderWriter
         variable = Single_s(variable);
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="float"/> as a nullable <see cref="TimeSpan"/> of seconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -556,6 +842,12 @@ public class GameBoxReaderWriter
         variable = Single_s(variable, defaultValue);
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of milliseconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/>.</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -566,6 +858,13 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="float"/> as a nullable <see cref="TimeSpan"/> of milliseconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/>.</remarks>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -576,6 +875,11 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of milliseconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -584,6 +888,12 @@ public class GameBoxReaderWriter
         variable = Single_ms(variable);
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="float"/> as a nullable <see cref="TimeSpan"/> of milliseconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -592,6 +902,12 @@ public class GameBoxReaderWriter
         variable = Single_ms(variable, defaultValue);
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of seconds. If the read value is -1, null is returned. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned. If the read value is -1, null is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -602,6 +918,11 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of seconds through reference. If the read value is -1, <paramref name="variable"/> is set to null. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -610,6 +931,12 @@ public class GameBoxReaderWriter
         variable = Single_sn(variable);
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of milliseconds. If the read value is -1, null is returned. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned. If the read value is -1, null is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -620,6 +947,11 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of milliseconds through reference. If the read value is -1, <paramref name="variable"/> is set to null. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
