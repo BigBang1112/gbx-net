@@ -20,6 +20,7 @@ public class CGameCtnMediaBlockTextBuilderTests
         .WithKeys(GetSampleKeys())
         .ForTM2()
         .Build();
+    public static Vec3 GetSampleColor() => new(1, 0, 0);
 
     [Fact]
     public void WithText_ShouldSetText()
@@ -41,6 +42,17 @@ public class CGameCtnMediaBlockTextBuilderTests
              .WithEffect(expected);
 
         Assert.Equal(expected, actual: builder.Effect);
+    }
+
+    [Fact]
+    public void WithColor_ShouldSetColor()
+    {
+        var expected = GetSampleColor();
+
+        var builder = new CGameCtnMediaBlockTextBuilder()
+             .WithColor(expected);
+
+        Assert.Equal(expected, actual: builder.Color);
     }
 
     [Fact]
@@ -108,6 +120,16 @@ public class CGameCtnMediaBlockTextBuilderTests
     public void TM2_Build_ShouldHaveSpecifics()
     {
         var node = new CGameCtnMediaBlockTextBuilder().ForTM2().Build();
+
+        Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8001>());
+        Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8002>());
+        Assert.NotNull(node.Effect);
+    }
+
+    [Fact]
+    public void TM2020_Build_ShouldHaveSpecifics()
+    {
+        var node = new CGameCtnMediaBlockTextBuilder().ForTM2020().Build();
 
         Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8001>());
         Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8002>());

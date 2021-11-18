@@ -110,7 +110,7 @@ public sealed class CGameCtnMediaTrack : CMwNod
 
     #region 0x001 chunk
 
-    [Chunk(0x03078001)]
+    [Chunk(0x03078001, "main")]
     public class Chunk03078001 : Chunk<CGameCtnMediaTrack>
     {
         private int tracksVersion = 10;
@@ -140,7 +140,7 @@ public sealed class CGameCtnMediaTrack : CMwNod
     /// CGameCtnMediaTrack 0x002 chunk. Represents <see cref="IsKeepPlaying"/> for ESWC tracks. This chunk should be removed or transfered
     /// to <see cref="Chunk03078005"/> in the new versions of ManiaPlanet with <see cref="TransferMediaTrackTo005"/>.
     /// </summary>
-    [Chunk(0x03078002)]
+    [Chunk(0x03078002, "TMS/TMU IsKeepPlaying")]
     public class Chunk03078002 : Chunk<CGameCtnMediaTrack>
     {
         public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
@@ -153,7 +153,7 @@ public sealed class CGameCtnMediaTrack : CMwNod
 
     #region 0x003 chunk
 
-    [Chunk(0x03078003)]
+    [Chunk(0x03078003, "TMS/TMU IsReadOnly")]
     public class Chunk03078003 : Chunk<CGameCtnMediaTrack>
     {
         public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
@@ -170,7 +170,7 @@ public sealed class CGameCtnMediaTrack : CMwNod
     /// CGameCtnMediaTrack 0x004 chunk. Represents <see cref="IsKeepPlaying"/> for TMF tracks. This chunk should be removed or transfered
     /// to <see cref="Chunk03078005"/> in the new versions of ManiaPlanet with <see cref="TransferMediaTrackTo005"/>.
     /// </summary>
-    [Chunk(0x03078004)]
+    [Chunk(0x03078004, "TMUF parameters")]
     public class Chunk03078004 : Chunk<CGameCtnMediaTrack>
     {
         public int U01;
@@ -178,7 +178,7 @@ public sealed class CGameCtnMediaTrack : CMwNod
         public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
         {
             rw.Boolean(ref n.isKeepPlaying);
-            rw.Int32(ref U01); /////////////////////
+            rw.Int32(ref U01); // probably isReadOnly
         }
     }
 
@@ -186,7 +186,7 @@ public sealed class CGameCtnMediaTrack : CMwNod
 
     #region 0x005 chunk
 
-    [Chunk(0x03078005)]
+    [Chunk(0x03078005, "MP parameters")]
     public class Chunk03078005 : Chunk<CGameCtnMediaTrack>, IVersionable
     {
         private int version = 1;

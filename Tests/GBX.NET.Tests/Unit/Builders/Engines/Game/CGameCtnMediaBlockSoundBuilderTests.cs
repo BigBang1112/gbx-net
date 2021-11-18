@@ -68,14 +68,12 @@ public class CGameCtnMediaBlockSoundBuilderTests
     }
 
     [Fact]
-    public void WithLooping_ShouldSetLooping()
+    public void Loops_ShouldSetLooping()
     {
-        var expected = true;
-
         var builder = new CGameCtnMediaBlockSoundBuilder()
-             .WithLooping(expected);
+             .Loops();
 
-        Assert.Equal(expected, actual: builder.IsLooping);
+        Assert.True(builder.IsLooping);
     }
 
     [Fact]

@@ -11,5 +11,5 @@ public interface ICGameCtnMediaBlockSoundBuilder : IBuilder, ICGameCtnMediaBlock
     CGameCtnMediaBlockSoundBuilder WithKeys(params CGameCtnMediaBlockSound.Key[] keys);
     CGameCtnMediaBlockSoundBuilder WithSound(FileRef sound);
     CGameCtnMediaBlockSoundBuilder WithPlayCount(int playCount);
-    CGameCtnMediaBlockSoundBuilder WithLooping(bool loop);
+    CGameCtnMediaBlockSoundBuilder Loops();
 }

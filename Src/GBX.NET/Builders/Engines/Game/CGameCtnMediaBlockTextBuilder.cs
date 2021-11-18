@@ -4,6 +4,7 @@ public partial class CGameCtnMediaBlockTextBuilder : ICGameCtnMediaBlockTextBuil
 {
     public string? Text { get; set; }
     public CControlEffectSimi? Effect { get; set; }
+    public Vec3 Color { get; set; }
 
     public CGameCtnMediaBlockTextBuilder WithText(string text)
     {
@@ -17,10 +18,17 @@ public partial class CGameCtnMediaBlockTextBuilder : ICGameCtnMediaBlockTextBuil
         return this;
     }
 
+    public CGameCtnMediaBlockTextBuilder WithColor(Vec3 color)
+    {
+        Color = color;
+        return this;
+    }
+
     public TMSX ForTMSX() => new(this, NewNode());
     public TMU ForTMU() => new(this, NewNode());
     public TMUF ForTMUF() => new(this, NewNode());
     public TM2 ForTM2() => new(this, NewNode());
+    public TM2020 ForTM2020() => new(this, NewNode());
 
     GameBuilder<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>
         IBuilderForTMSX<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>.ForTMSX() => ForTMSX();
@@ -30,6 +38,8 @@ public partial class CGameCtnMediaBlockTextBuilder : ICGameCtnMediaBlockTextBuil
         IBuilderForTMUF<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>.ForTMUF() => ForTMUF();
     GameBuilder<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>
         IBuilderForTM2<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>.ForTM2() => ForTM2();
+    GameBuilder<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>
+        IBuilderForTM2020<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>.ForTM2020() => ForTM2020();
 
     internal CGameCtnMediaBlockText NewNode()
     {

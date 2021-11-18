@@ -31,9 +31,9 @@ public partial class CGameCtnMediaBlockSoundBuilder : ICGameCtnMediaBlockSoundBu
         return this;
     }
 
-    public CGameCtnMediaBlockSoundBuilder WithLooping(bool loop)
+    public CGameCtnMediaBlockSoundBuilder Loops()
     {
-        IsLooping = loop;
+        IsLooping = true;
         return this;
     }
 

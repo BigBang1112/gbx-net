@@ -118,4 +118,12 @@ public class CControlEffectSimiBuilderTests
 
         Assert.NotNull(node.GetChunk<CControlEffectSimi.Chunk07010005>());
     }
+
+    [Fact]
+    public void TM2020_Build_ShouldHaveSpecifics()
+    {
+        var node = new CControlEffectSimiBuilder().ForTM2020().Build();
+
+        Assert.NotNull(node.GetChunk<CControlEffectSimi.Chunk07010005>());
+    }
 }

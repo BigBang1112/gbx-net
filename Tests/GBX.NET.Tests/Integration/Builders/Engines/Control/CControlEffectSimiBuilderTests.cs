@@ -65,6 +65,7 @@ public class CControlEffectSimiBuilderTests
     [Fact] public void ForTMU_ParametersShouldMatch() => ForX_ParametersShouldMatch(x => x.ForTMU());
     [Fact] public void ForTMUF_ParametersShouldMatch() => ForX_ParametersShouldMatch(x => x.ForTMUF());
     [Fact] public void ForTM2_ParametersShouldMatch() => ForX_ParametersShouldMatch(x => x.ForTM2());
+    [Fact] public void ForTM2020_ParametersShouldMatch() => ForX_ParametersShouldMatch(x => x.ForTM2020());
 
     [Fact]
     public void ForTMSX_ChunksShouldMatch()
@@ -97,6 +98,15 @@ public class CControlEffectSimiBuilderTests
     public void ForTM2_ChunksShouldMatch()
     {
         ForX_ChunksShouldMatch(x => x.ForTM2(), node =>
+        {
+            Assert.NotNull(node.GetChunk<CControlEffectSimi.Chunk07010005>());
+        });
+    }
+
+    [Fact]
+    public void ForTM2020_ChunksShouldMatch()
+    {
+        ForX_ChunksShouldMatch(x => x.ForTM2020(), node =>
         {
             Assert.NotNull(node.GetChunk<CControlEffectSimi.Chunk07010005>());
         });

@@ -4,7 +4,8 @@ public interface ICControlEffectSimiBuilderFor :
     IBuilderForTMSX<ICControlEffectSimiBuilder, CControlEffectSimi>,
     IBuilderForTMU<ICControlEffectSimiBuilder, CControlEffectSimi>,
     IBuilderForTMUF<ICControlEffectSimiBuilder, CControlEffectSimi>,
-    IBuilderForTM2<ICControlEffectSimiBuilder, CControlEffectSimi>
+    IBuilderForTM2<ICControlEffectSimiBuilder, CControlEffectSimi>,
+    IBuilderForTM2020<ICControlEffectSimiBuilder, CControlEffectSimi>
 {
 
 }

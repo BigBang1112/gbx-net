@@ -42,7 +42,7 @@ public class CGameCtnMediaBlockSoundBuilderTests
             .WithSound(sound)
             .WithKeys(keys)
             .WithPlayCount(5)
-            .WithLooping(true);
+            .Loops();
         return func.Invoke(builder).Build();
     }
 
@@ -72,6 +72,7 @@ public class CGameCtnMediaBlockSoundBuilderTests
     [Fact] public void ForTMU_ParametersShouldMatch() => ForX_ParametersShouldMatch(x => x.ForTMU());
     [Fact] public void ForTMUF_ParametersShouldMatch() => ForX_ParametersShouldMatch(x => x.ForTMUF());
     [Fact] public void ForTM2_ParametersShouldMatch() => ForX_ParametersShouldMatch(x => x.ForTM2());
+    [Fact] public void ForTM2020_ParametersShouldMatch() => ForX_ParametersShouldMatch(x => x.ForTM2020());
 
     [Fact]
     public void ForTMSX_ChunksShouldMatch()
@@ -107,6 +108,16 @@ public class CGameCtnMediaBlockSoundBuilderTests
     public void ForTM2_ChunksShouldMatch()
     {
         ForX_ChunksShouldMatch(x => x.ForTM2(), node =>
+        {
+            Assert.NotNull(node.GetChunk<CGameCtnMediaBlockSound.Chunk030A7003>());
+            Assert.NotNull(node.GetChunk<CGameCtnMediaBlockSound.Chunk030A7004>());
+        });
+    }
+
+    [Fact]
+    public void ForTM2020_ChunksShouldMatch()
+    {
+        ForX_ChunksShouldMatch(x => x.ForTM2020(), node =>
         {
             Assert.NotNull(node.GetChunk<CGameCtnMediaBlockSound.Chunk030A7003>());
             Assert.NotNull(node.GetChunk<CGameCtnMediaBlockSound.Chunk030A7004>());

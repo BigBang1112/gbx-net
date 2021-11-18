@@ -13,7 +13,7 @@ using Xunit;
 
 namespace GBX.NET.Tests.Integration.Builders.Engines.Game;
 
-public class CGameCtnMediaBlockTextBuilderTests
+public class CGameCtnMediaTrackBuilderTests
 {
     public static string GetSampleText() => "Random Text";
     public static CControlEffectSimi.Key[] GetSampleKeys() => CControlEffectSimiBuilderTests.GetSampleKeys();
