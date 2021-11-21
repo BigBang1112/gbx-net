@@ -10,25 +10,27 @@ namespace GBX.NET;
 /// </summary>
 public class GameBoxReader : BinaryReader
 {
+    /// <summary>
+    /// Body used to store node references.
+    /// </summary>
     public GameBoxBody? Body { get; }
+
+    /// <summary>
+    /// An object to look into for the list of already read data.
+    /// </summary>
     public ILookbackable? Lookbackable { get; }
 
-    public GameBox? GBX
-    {
-        get
-        {
-            if (Body is not null)
-                return Body.GBX;
-            return Lookbackable?.GBX;
-        }
-    }
+    /// <summary>
+    /// <see cref="GameBox"/> object taken either from <see cref="Body"/> or <see cref="Lookbackable"/>.
+    /// </summary>
+    public GameBox? GBX => Body is not null ? Body.GBX : Lookbackable?.GBX;
 
-    public GameBoxReader(Stream input) : base(input, Encoding.UTF8, true)
-    {
-
-    }
-
-    public GameBoxReader(Stream input, ILookbackable? lookbackable) : this(input)
+    /// <summary>
+    /// Constructs a binary reader specialized for GBX.
+    /// </summary>
+    /// <param name="input">The input stream.</param>
+    /// <param name="lookbackable">An object to look into for the list of already read data. If null, <see cref="Id"/>, <see cref="Ident"/> or <see cref="CMwNod"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
+    public GameBoxReader(Stream input, ILookbackable? lookbackable = null) : base(input, Encoding.UTF8, true)
     {
         Lookbackable = lookbackable;
 
@@ -194,11 +196,11 @@ public class GameBoxReader : BinaryReader
     /// <summary>
     /// Reads a <see cref="string"/> from the current stream. The string is prefixed with the length, encoded as <see cref="int"/>.
     /// </summary>
+    /// <returns>The string being read.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
-    /// <returns>The string being read.</returns>
     public override string ReadString()
     {
         return ReadString(StringLengthPrefix.Int32);
@@ -208,11 +210,11 @@ public class GameBoxReader : BinaryReader
     /// Reads a <see cref="string"/> from the current stream using the <paramref name="length"/> parameter.
     /// </summary>
     /// <param name="length">Length of the bytes to read.</param>
+    /// <returns>The string being read.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
-    /// <returns>The string being read.</returns>
     public string ReadString(int length)
     {
         return Encoding.UTF8.GetString(ReadBytes(length));
@@ -234,16 +236,21 @@ public class GameBoxReader : BinaryReader
     /// If <paramref name="asByte"/> is true, reads the next <see cref="byte"/> from the current stream and casts it as <see cref="bool"/>. Otherwise <see cref="ReadBoolean()"/> is called.
     /// </summary>
     /// <param name="asByte">Read the boolean as <see cref="byte"/> or <see cref="int"/>.</param>
+    /// <returns>A boolean.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <returns>A boolean.</returns>
     public bool ReadBoolean(bool asByte)
     {
         if (asByte) return base.ReadBoolean();
         else return ReadBoolean();
     }
 
+    /// <summary>
+    /// First reads the <see cref="int"/> of the Id version, if not read yet, considering the information from <paramref name="lookbackable"/>. Then reads an <see cref="int"/> (index) that holds the flags of the representing <see cref="string"/>. If the first 30 bits are 0, a fresh <see cref="string"/> is also read.
+    /// </summary>
+    /// <param name="lookbackable">An object to look into for the list of already read data.</param>
+    /// <returns>An <see cref="Id"/> which can be implicitly casted to <see cref="string"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -300,6 +307,10 @@ public class GameBoxReader : BinaryReader
         return new Id("", lookbackable);
     }
 
+    /// <summary>
+    /// First reads the <see cref="int"/> of the Id version, if not read yet, considering the information from <see cref="Lookbackable"/>. Then reads an <see cref="int"/> (index) that holds the flags of the representing <see cref="string"/>. If the first 30 bits are 0, a fresh <see cref="string"/> is also read.
+    /// </summary>
+    /// <returns>An <see cref="Id"/> which can be implicitly casted to <see cref="string"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -315,6 +326,11 @@ public class GameBoxReader : BinaryReader
         return ReadId(Lookbackable);
     }
 
+    /// <summary>
+    /// Reads an <see cref="Id"/> using <see cref="ReadId(ILookbackable)"/> 3 times.
+    /// </summary>
+    /// <param name="lookbackable">An object to look into for the list of already read data.</param>
+    /// <returns>An <see cref="Ident"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -334,6 +350,10 @@ public class GameBoxReader : BinaryReader
         return new Ident(id, collection, author);
     }
 
+    /// <summary>
+    /// Reads an <see cref="Id"/> using <see cref="ReadId(ILookbackable)"/> 3 times.
+    /// </summary>
+    /// <returns>An <see cref="Ident"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -349,6 +369,12 @@ public class GameBoxReader : BinaryReader
         return ReadIdent(Lookbackable);
     }
 
+    /// <summary>
+    /// Reads an <see cref="int"/> containing the node reference index, then the node using the <see cref="CMwNod"/>'s Parse method. The index is also checked if it isn't a part of a reference table, which currently returns null.
+    /// </summary>
+    /// <typeparam name="T">Type of node.</typeparam>
+    /// <param name="body">Body used to store node references.</param>
+    /// <returns>A node, or null if the index is -1 or the node is from reference table.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -391,6 +417,11 @@ public class GameBoxReader : BinaryReader
         return (T)body.AuxilaryNodes.Last().Value; // So it grabs the last one instead, needs to be further tested
     }
 
+    /// <summary>
+    /// Reads an <see cref="int"/> containing the node reference index, then the node using the <see cref="CMwNod"/>'s Parse method. The index is also checked if it isn't a part of a reference table, which currently returns null.
+    /// </summary>
+    /// <typeparam name="T">Type of node.</typeparam>
+    /// <returns>A node, or null if the index is -1 or the node is from reference table.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -403,6 +434,11 @@ public class GameBoxReader : BinaryReader
         return ReadNodeRef<T>(Body);
     }
 
+    /// <summary>
+    /// Reads an <see cref="int"/> containing the node reference index, then the node using the <see cref="CMwNod"/>'s Parse method. The index is also checked if it isn't a part of a reference table, which currently returns null.
+    /// </summary>
+    /// <param name="body">Body used to store node references.</param>
+    /// <returns>A node, or null if the index is -1 or the node is from reference table.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -415,6 +451,10 @@ public class GameBoxReader : BinaryReader
         return ReadNodeRef<CMwNod>(body);
     }
 
+    /// <summary>
+    /// Reads an <see cref="int"/> containing the node reference index, then the node using the <see cref="CMwNod"/>'s Parse method. The index is also checked if it isn't a part of a reference table, which currently returns null.
+    /// </summary>
+    /// <returns>A node, or null if the index is -1 or the node is from reference table.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -427,6 +467,9 @@ public class GameBoxReader : BinaryReader
         return ReadNodeRef<CMwNod>(Body);
     }
 
+    /// <summary>
+    /// Reads the file reference data type - file path, checksum and locator URL.
+    /// </summary>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -478,7 +521,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
     public T[] ReadArray<T>() where T : struct
     {
-        return ReadArray<T>(ReadInt32());
+        return ReadArray<T>(length: ReadInt32());
     }
 
     /// <summary>
@@ -490,7 +533,7 @@ public class GameBoxReader : BinaryReader
     /// <returns>An array of <typeparamref name="T"/>.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
-    public T[] ReadArray<T>(int length, Func<int, T> forLoop)
+    public static T[] ReadArray<T>(int length, Func<int, T> forLoop)
     {
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
@@ -522,9 +565,7 @@ public class GameBoxReader : BinaryReader
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
 
-        var length = ReadInt32();
-
-        return ReadArray(length, forLoop);
+        return ReadArray(length: ReadInt32(), forLoop);
     }
 
     /// <summary>
@@ -536,7 +577,7 @@ public class GameBoxReader : BinaryReader
     /// <returns>An array of <typeparamref name="T"/>.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
-    public T[] ReadArray<T>(int length, Func<T> forLoop)
+    public static T[] ReadArray<T>(int length, Func<T> forLoop)
     {
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
@@ -568,9 +609,7 @@ public class GameBoxReader : BinaryReader
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
 
-        var length = ReadInt32();
-
-        return ReadArray(length, forLoop);
+        return ReadArray(length: ReadInt32(), forLoop);
     }
 
     /// <summary>
@@ -578,7 +617,7 @@ public class GameBoxReader : BinaryReader
     /// </summary>
     /// <typeparam name="T">Type of the array.</typeparam>
     /// <param name="length">Length of the array.</param>
-    /// <param name="forLoop">Each element with an index parameter and this reader.</param>
+    /// <param name="forLoop">Each element with an index parameter and this reader (to avoid closures).</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
@@ -602,7 +641,7 @@ public class GameBoxReader : BinaryReader
     /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>.
     /// </summary>
     /// <typeparam name="T">Type of the array.</typeparam>
-    /// <param name="forLoop">Each element with an index parameter and this reader.</param>
+    /// <param name="forLoop">Each element with an index parameter and this reader (to avoid closures).</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -614,9 +653,7 @@ public class GameBoxReader : BinaryReader
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
 
-        var length = ReadInt32();
-
-        return ReadArray(length, forLoop);
+        return ReadArray(length: ReadInt32(), forLoop);
     }
 
     /// <summary>
@@ -624,7 +661,7 @@ public class GameBoxReader : BinaryReader
     /// </summary>
     /// <typeparam name="T">Type of the array.</typeparam>
     /// <param name="length">Length of the array.</param>
-    /// <param name="forLoop">Each element with this reader.</param>
+    /// <param name="forLoop">Each element with this reader (to avoid closures).</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
@@ -645,7 +682,7 @@ public class GameBoxReader : BinaryReader
     /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>.
     /// </summary>
     /// <typeparam name="T">Type of the array.</typeparam>
-    /// <param name="forLoop">Each element with this reader.</param>
+    /// <param name="forLoop">Each element with this reader (to avoid closures).</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -657,38 +694,19 @@ public class GameBoxReader : BinaryReader
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
 
-        var length = ReadInt32();
-
-        return ReadArray(length, forLoop);
+        return ReadArray(length: ReadInt32(), forLoop);
     }
 
+    /// <summary>
+    /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>. Instead of array allocation, elements are yielded one by one.
+    /// </summary>
+    /// <typeparam name="T">Type of the enumerable.</typeparam>
+    /// <param name="length">Length of the enumerable.</param>
+    /// <param name="forLoop">Each element.</param>
+    /// <returns>Enumerable of <typeparamref name="T"/>.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
-    public IEnumerable<T> ReadEnumerable<T>(int length, Func<int, T> forLoop)
-    {
-        if (forLoop is null)
-            throw new ArgumentNullException(nameof(forLoop));
-
-        for (var i = 0; i < length; i++)
-            yield return forLoop.Invoke(i);
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
-    public IEnumerable<T> ReadEnumerable<T>(Func<int, T> forLoop)
-    {
-        if (forLoop is null)
-            throw new ArgumentNullException(nameof(forLoop));
-
-        return ReadEnumerable(ReadInt32(), forLoop);
-    }
-
-    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
-    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
-    public IEnumerable<T> ReadEnumerable<T>(int length, Func<T> forLoop)
+    public static IEnumerable<T> ReadEnumerable<T>(int length, Func<T> forLoop)
     {
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
@@ -697,6 +715,12 @@ public class GameBoxReader : BinaryReader
             yield return forLoop.Invoke();
     }
 
+    /// <summary>
+    /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>. Instead of array allocation, elements are yielded one by one.
+    /// </summary>
+    /// <typeparam name="T">Type of the enumerable.</typeparam>
+    /// <param name="forLoop">Each element.</param>
+    /// <returns>Enumerable of <typeparamref name="T"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -707,37 +731,17 @@ public class GameBoxReader : BinaryReader
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
 
-        return ReadEnumerable(ReadInt32(), forLoop);
+        foreach (var x in ReadEnumerable(length: ReadInt32(), forLoop))
+            yield return x;
     }
 
-    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
-    public IEnumerable<T> ReadEnumerable<T>(int length, Func<int, GameBoxReader, T> forLoop)
-    {
-        if (forLoop is null)
-            throw new ArgumentNullException(nameof(forLoop));
-
-        var result = new List<T>(length);
-
-        for (var i = 0; i < length; i++)
-            result.Add(forLoop.Invoke(i, this));
-
-        return result;
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
-    public IEnumerable<T> ReadEnumerable<T>(Func<int, GameBoxReader, T> forLoop)
-    {
-        if (forLoop is null)
-            throw new ArgumentNullException(nameof(forLoop));
-
-        return ReadEnumerable(ReadInt32(), forLoop);
-    }
-
+    /// <summary>
+    /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>. Instead of array allocation, elements are yielded one by one.
+    /// </summary>
+    /// <typeparam name="T">Type of the enumerable.</typeparam>
+    /// <param name="length">Length of the enumerable.</param>
+    /// <param name="forLoop">Each element with this reader (to avoid closures).</param>
+    /// <returns>Enumerable of <typeparamref name="T"/>.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
     public IEnumerable<T> ReadEnumerable<T>(int length, Func<GameBoxReader, T> forLoop)
@@ -749,6 +753,12 @@ public class GameBoxReader : BinaryReader
             yield return forLoop.Invoke(this);
     }
 
+    /// <summary>
+    /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>. Instead of array allocation, elements are yielded one by one.
+    /// </summary>
+    /// <typeparam name="T">Type of the enumerable.</typeparam>
+    /// <param name="forLoop">Each element with this reader (to avoid closures).</param>
+    /// <returns>Enumerable of <typeparamref name="T"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -759,85 +769,186 @@ public class GameBoxReader : BinaryReader
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
 
-        return ReadEnumerable(ReadInt32(), forLoop);
+        foreach (var x in ReadEnumerable(length: ReadInt32(), forLoop))
+            yield return x;
     }
 
+    /// <summary>
+    /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>. Instead of array allocation, elements are yielded one by one.
+    /// </summary>
+    /// <typeparam name="T">Type of the enumerable.</typeparam>
+    /// <param name="length">Length of the enumerable.</param>
+    /// <param name="forLoop">Each element with an index parameter.</param>
+    /// <returns>Enumerable of <typeparamref name="T"/>.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
-    public IList<T> ReadList<T>(int length, Func<int, T> forLoop)
+    public static IEnumerable<T> ReadEnumerable<T>(int length, Func<int, T> forLoop)
     {
-        return ReadEnumerable(length, forLoop).ToList(length);
+        if (forLoop is null)
+            throw new ArgumentNullException(nameof(forLoop));
+
+        for (var i = 0; i < length; i++)
+            yield return forLoop.Invoke(i);
     }
 
+    /// <summary>
+    /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>. Instead of array allocation, elements are yielded one by one.
+    /// </summary>
+    /// <typeparam name="T">Type of the enumerable.</typeparam>
+    /// <param name="forLoop">Each element with an index parameter.</param>
+    /// <returns>Enumerable of <typeparamref name="T"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
-    public IList<T> ReadList<T>(Func<int, T> forLoop)
+    public IEnumerable<T> ReadEnumerable<T>(Func<int, T> forLoop)
     {
-        var length = ReadInt32();
-        return ReadList(length, forLoop);
+        if (forLoop is null)
+            throw new ArgumentNullException(nameof(forLoop));
+
+        foreach (var x in ReadEnumerable(length: ReadInt32(), forLoop))
+            yield return x;
     }
 
+    /// <summary>
+    /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>. Instead of array allocation, elements are yielded one by one.
+    /// </summary>
+    /// <typeparam name="T">Type of the enumerable.</typeparam>
+    /// <param name="length">Length of the enumerable.</param>
+    /// <param name="forLoop">Each element with an index parameter and this reader (to avoid closures).</param>
+    /// <returns>Enumerable of <typeparamref name="T"/>.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
+    public IEnumerable<T> ReadEnumerable<T>(int length, Func<int, GameBoxReader, T> forLoop)
+    {
+        if (forLoop is null)
+            throw new ArgumentNullException(nameof(forLoop));
+
+        for (var i = 0; i < length; i++)
+            yield return forLoop.Invoke(i, this);
+    }
+
+    /// <summary>
+    /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>. Instead of array allocation, elements are yielded one by one.
+    /// </summary>
+    /// <typeparam name="T">Type of the enumerable.</typeparam>
+    /// <param name="forLoop">Each element with an index parameter and this reader (to avoid closures).</param>
+    /// <returns>Enumerable of <typeparamref name="T"/>.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
+    public IEnumerable<T> ReadEnumerable<T>(Func<int, GameBoxReader, T> forLoop)
+    {
+        if (forLoop is null)
+            throw new ArgumentNullException(nameof(forLoop));
+
+        foreach (var x in ReadEnumerable(length: ReadInt32(), forLoop))
+            yield return x;
+    }
+
+    /// <summary>
+    /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>. A list is allocated and elements are added via enumeration.
+    /// </summary>
+    /// <typeparam name="T">Type of the list.</typeparam>
+    /// <param name="length">Length of the list.</param>
+    /// <param name="forLoop">Each element.</param>
+    /// <returns>List of <typeparamref name="T"/>.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
-    public IList<T> ReadList<T>(int length, Func<T> forLoop)
-    {
-        return ReadEnumerable(length, forLoop).ToList(length);
-    }
+    public static IList<T> ReadList<T>(int length, Func<T> forLoop) => ReadEnumerable(length, forLoop).ToList(length);
 
+    /// <summary>
+    /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>. A list is allocated and elements are added via enumeration.
+    /// </summary>
+    /// <typeparam name="T">Type of the list.</typeparam>
+    /// <param name="forLoop">Each element.</param>
+    /// <returns>List of <typeparamref name="T"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
-    public IList<T> ReadList<T>(Func<T> forLoop)
-    {
-        var length = ReadInt32();
-        return ReadList(length, forLoop);
-    }
+    public IList<T> ReadList<T>(Func<T> forLoop) => ReadList(length: ReadInt32(), forLoop);
 
-    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
-    public IList<T> ReadList<T>(int length, Func<int, GameBoxReader, T> forLoop)
-    {
-        return ReadEnumerable(length, forLoop).ToList(length);
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
-    public IList<T> ReadList<T>(Func<int, GameBoxReader, T> forLoop)
-    {
-        var length = ReadInt32();
-        return ReadList(length, forLoop);
-    }
-
+    /// <summary>
+    /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>. A list is allocated and elements are added via enumeration.
+    /// </summary>
+    /// <typeparam name="T">Type of the list.</typeparam>
+    /// <param name="length">Length of the list.</param>
+    /// <param name="forLoop">Each element with this reader (to avoid closures).</param>
+    /// <returns>List of <typeparamref name="T"/>.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
-    public IList<T> ReadList<T>(int length, Func<GameBoxReader, T> forLoop)
-    {
-        return ReadEnumerable(length, forLoop).ToList(length);
-    }
+    public IList<T> ReadList<T>(int length, Func<GameBoxReader, T> forLoop) => ReadEnumerable(length, forLoop).ToList(length);
 
+    /// <summary>
+    /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>. A list is allocated and elements are added via enumeration.
+    /// </summary>
+    /// <typeparam name="T">Type of the list.</typeparam>
+    /// <param name="forLoop">Each element with this reader (to avoid closures).</param>
+    /// <returns>List of <typeparamref name="T"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
-    public IList<T> ReadList<T>(Func<GameBoxReader, T> forLoop)
-    {
-        var length = ReadInt32();
-        return ReadList(length, forLoop);
-    }
+    public IList<T> ReadList<T>(Func<GameBoxReader, T> forLoop) => ReadList(length: ReadInt32(), forLoop);
+
+    /// <summary>
+    /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>. A list is allocated and elements are added via enumeration.
+    /// </summary>
+    /// <typeparam name="T">Type of the list.</typeparam>
+    /// <param name="length">Length of the list.</param>
+    /// <param name="forLoop">Each element with an index parameter.</param>
+    /// <returns>List of <typeparamref name="T"/>.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
+    public static IList<T> ReadList<T>(int length, Func<int, T> forLoop) => ReadEnumerable(length, forLoop).ToList(length);
+
+    /// <summary>
+    /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>. A list is allocated and elements are added via enumeration.
+    /// </summary>
+    /// <typeparam name="T">Type of the list.</typeparam>
+    /// <param name="forLoop">Each element with an index parameter.</param>
+    /// <returns>List of <typeparamref name="T"/>.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
+    public IList<T> ReadList<T>(Func<int, T> forLoop) => ReadList(length: ReadInt32(), forLoop);
+
+    /// <summary>
+    /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>. A list is allocated and elements are added via enumeration.
+    /// </summary>
+    /// <typeparam name="T">Type of the list.</typeparam>
+    /// <param name="length">Length of the list.</param>
+    /// <param name="forLoop">Each element with an index parameter and this reader (to avoid closures).</param>
+    /// <returns>List of <typeparamref name="T"/>.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
+    public IList<T> ReadList<T>(int length, Func<int, GameBoxReader, T> forLoop) => ReadEnumerable(length, forLoop).ToList(length);
+
+    /// <summary>
+    /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>. A list is allocated and elements are added via enumeration.
+    /// </summary>
+    /// <typeparam name="T">Type of the list.</typeparam>
+    /// <param name="forLoop">Each element with an index parameter and this reader (to avoid closures).</param>
+    /// <returns>List of <typeparamref name="T"/>.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
+    public IList<T> ReadList<T>(Func<int, GameBoxReader, T> forLoop) => ReadList(length: ReadInt32(), forLoop);
 
     /// <summary>
     /// Reads values in a dictionary kind (first key, then value). For node dictionaries, use the <see cref="ReadDictionaryNode{TKey, TValue}"/> method for better performance.
     /// </summary>
-    /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>.</typeparam>
+    /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>. Mustn't be null.</typeparam>
     /// <typeparam name="TValue">One of the supported types of <see cref="Read{T}"/>.</typeparam>
     /// <returns>A dictionary.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -846,17 +957,12 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
     public IDictionary<TKey, TValue> ReadDictionary<TKey, TValue>() where TKey : notnull
     {
-        var dictionary = new Dictionary<TKey, TValue>();
-
         var length = ReadInt32();
 
-        for (var i = 0; i < length; i++)
-        {
-            var key = Read<TKey>();
-            var value = Read<TValue>();
+        var dictionary = new Dictionary<TKey, TValue>(length);
 
-            dictionary.Add(key, value);
-        }
+        for (var i = 0; i < length; i++)
+            dictionary.Add(key: Read<TKey>(), value: Read<TValue>());
 
         return dictionary;
     }
@@ -864,7 +970,7 @@ public class GameBoxReader : BinaryReader
     /// <summary>
     /// Reads nodes in a dictionary kind (first key, then value).
     /// </summary>
-    /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>.</typeparam>
+    /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>. Mustn't be null.</typeparam>
     /// <typeparam name="TValue">A node that is presented as node reference.</typeparam>
     /// <returns>A dictionary.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -874,90 +980,111 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
     public IDictionary<TKey, TValue?> ReadDictionaryNode<TKey, TValue>() where TKey : notnull where TValue : CMwNod
     {
-        var dictionary = new Dictionary<TKey, TValue?>();
-
         var length = ReadInt32();
 
-        for (var i = 0; i < length; i++)
-        {
-            var key = Read<TKey>();
-            var value = ReadNodeRef<TValue>();
+        var dictionary = new Dictionary<TKey, TValue?>(length);
 
-            dictionary.Add(key, value);
-        }
+        for (var i = 0; i < length; i++)
+            dictionary.Add(key: Read<TKey>(), value: ReadNodeRef<TValue>());
 
         return dictionary;
     }
 
+    /// <summary>
+    /// Reads 2 <see cref="float"/>s.
+    /// </summary>
+    /// <returns>A 2D vector.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public Vec2 ReadVec2()
-    {
-        var floats = ReadArray<float>(2);
-        return new Vec2(floats[0], floats[1]);
-    }
+    public Vec2 ReadVec2() => new(x: ReadSingle(), y: ReadSingle());
 
+    /// <summary>
+    /// Reads 3 <see cref="float"/>s.
+    /// </summary>
+    /// <returns>A 3D vector.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public Vec3 ReadVec3()
-    {
-        var floats = ReadArray<float>(3);
-        return new Vec3(floats[0], floats[1], floats[2]);
-    }
+    public Vec3 ReadVec3() => new(x: ReadSingle(), y: ReadSingle(), z: ReadSingle());
 
+    /// <summary>
+    /// Reads 4 <see cref="float"/>s.
+    /// </summary>
+    /// <returns>A 4D vector.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public Vec4 ReadVec4()
-    {
-        var floats = ReadArray<float>(4);
-        return new Vec4(floats[0], floats[1], floats[2], floats[3]);
-    }
+    public Vec4 ReadVec4() => new(x: ReadSingle(), y: ReadSingle(), z: ReadSingle(), w: ReadSingle());
 
+    /// <summary>
+    /// Reads 3 <see cref="int"/>s.
+    /// </summary>
+    /// <returns>A 3-int.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public Int3 ReadInt3()
-    {
-        var ints = ReadArray<int>(3);
-        return (ints[0], ints[1], ints[2]);
-    }
+    public Int3 ReadInt3() => new(x: ReadInt32(), y: ReadInt32(), z: ReadInt32());
 
+    /// <summary>
+    /// Reads 2 <see cref="int"/>s.
+    /// </summary>
+    /// <returns>A 2-int.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public Int2 ReadInt2()
-    {
-        var ints = ReadArray<int>(2);
-        return (ints[0], ints[1]);
-    }
+    public Int2 ReadInt2() => new(x: ReadInt32(), y: ReadInt32());
 
+    /// <summary>
+    /// Reads 3 <see cref="byte"/>s.
+    /// </summary>
+    /// <returns>A 3-byte.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public Byte3 ReadByte3()
-    {
-        var bytes = ReadBytes(3);
-        return (bytes[0], bytes[1], bytes[2]);
-    }
+    public Byte3 ReadByte3() => new(x: ReadByte(), y: ReadByte(), z: ReadByte());
 
+    /// <summary>
+    /// Reads a <paramref name="byteLength"/> amount of bytes and converts them into <see cref="BigInteger"/>.
+    /// </summary>
+    /// <returns>A big integer.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public BigInteger ReadBigInt(int byteLength)
-    {
-        var bytes = ReadBytes(byteLength);
-        return new BigInteger(bytes);
-    }
+    public BigInteger ReadBigInt(int byteLength) => new(ReadBytes(byteLength));
 
+    /// <summary>
+    /// Reads a common transform representation.
+    /// </summary>
+    /// <returns>3D position, quaternion rotation, speed, vector velocity.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public (Vec3 position, Quaternion rotation, float speed, Vec3 velocity) ReadTransform()
     {
         var pos = ReadVec3();
+        
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
+
+        var angle = ReadUInt16() / (float)ushort.MaxValue * MathF.PI;
+        var axisHeading = ReadInt16() / (float)short.MaxValue * MathF.PI;
+        var axisPitch = ReadInt16() / (float)short.MaxValue * MathF.PI / 2;
+        var speed = (float)Math.Exp(ReadInt16() / 1000.0);
+        var velocityHeading = ReadSByte() / (float)sbyte.MaxValue * MathF.PI;
+        var velocityPitch = ReadSByte() / (float)sbyte.MaxValue * MathF.PI / 2;
+
+        var axis = new Vec3((float)(MathF.Sin(angle) * MathF.Cos(axisPitch) * MathF.Cos(axisHeading)),
+            (float)(MathF.Sin(angle) * MathF.Cos(axisPitch) * MathF.Sin(axisHeading)),
+            (float)(MathF.Sin(angle) * MathF.Sin(axisPitch)));
+
+        var quaternion = new Quaternion(axis, MathF.Cos(angle));
+
+        var velocity = new Vec3((float)(speed * MathF.Cos(velocityPitch) * MathF.Cos(velocityHeading)),
+            (float)(speed * MathF.Cos(velocityPitch) * MathF.Sin(velocityHeading)),
+            (float)(speed * MathF.Sin(velocityPitch)));
+
+#else
+
         var angle = ReadUInt16() / (double)ushort.MaxValue * Math.PI;
         var axisHeading = ReadInt16() / (double)short.MaxValue * Math.PI;
         var axisPitch = ReadInt16() / (double)short.MaxValue * Math.PI / 2;
@@ -975,60 +1102,69 @@ public class GameBoxReader : BinaryReader
             (float)(speed * Math.Cos(velocityPitch) * Math.Sin(velocityHeading)),
             (float)(speed * Math.Sin(velocityPitch)));
 
+#endif
+
         return (pos, quaternion, speed, velocity);
     }
 
+    /// <summary>
+    /// Continues reading the stream until a specific <paramref name="value"/> is reached.
+    /// </summary>
+    /// <returns>Enumeration of bytes.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
-    public IEnumerable<byte> ReadUntil(uint uint32)
+    public IEnumerable<byte> ReadUntilUInt32(uint value)
     {
-        while (PeekUInt32() != uint32)
+        while (PeekUInt32() != value)
             yield return ReadByte();
     }
 
+    /// <summary>
+    /// Continues reading the stream until facade (<c>0xFACADE01</c>) is reached.
+    /// </summary>
+    /// <returns>Enumeration of bytes.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
-    public IEnumerable<byte> ReadUntilFacade()
-    {
-        return ReadUntil(0xFACADE01);
-    }
+    public IEnumerable<byte> ReadUntilFacade() => ReadUntilUInt32(0xFACADE01);
 
+    /// <summary>
+    /// Continues reading the stream until the end of the is reached. The stream must support seeking.
+    /// </summary>
+    /// <returns>Array of bytes.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
-    public byte[] ReadToEnd()
-    {
-        return ReadBytes((int)(BaseStream.Length - BaseStream.Position));
-    }
+    public byte[] ReadToEnd() => ReadBytes((int)(BaseStream.Length - BaseStream.Position));
 
+    /// <summary>
+    /// Continues reading the stream until facade (<c>0xFACADE01</c>) is reached and converts the result to string.
+    /// </summary>
+    /// <returns>A <see cref="string"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
-    public string ReadStringUntilFacade()
-    {
-        return Encoding.UTF8.GetString(ReadUntilFacade().ToArray());
-    }
+    public string ReadStringUntilFacade() => Encoding.UTF8.GetString(ReadUntilFacade().ToArray());
 
+    /// <summary>
+    /// Continues reading the stream until facade (<c>0xFACADE01</c>) is reached and the result is converted into an array of <typeparamref name="T"/>.
+    /// </summary>
+    /// <returns>An array of <typeparamref name="T"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
-    public T[] ReadArrayUntilFacade<T>()
-    {
-        var bytes = ReadUntilFacade().ToArray();
+    public T[] ReadArrayUntilFacade<T>() => CreateArrayForUntilFacade<T>(bytes: ReadUntilFacade().ToArray());
 
-        var array = new T[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T)))];
-        Buffer.BlockCopy(bytes, 0, array, 0, bytes.Length);
-
-        return array;
-    }
-
+    /// <summary>
+    /// Continues reading the stream until facade (<c>0xFACADE01</c>) is reached and the result is converted into an array of <typeparamref name="T1"/> and <typeparamref name="T2"/>.
+    /// </summary>
+    /// <returns>An tuple of arrays.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -1037,15 +1173,16 @@ public class GameBoxReader : BinaryReader
     {
         var bytes = ReadUntilFacade().ToArray();
 
-        var array = new T1[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T1)))];
-        Buffer.BlockCopy(bytes, 0, array, 0, bytes.Length);
-
-        var array2 = new T2[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T2)))];
-        Buffer.BlockCopy(bytes, 0, array2, 0, bytes.Length);
-
-        return (array, array2);
+        return (
+            CreateArrayForUntilFacade<T1>(bytes),
+            CreateArrayForUntilFacade<T2>(bytes)
+        );
     }
 
+    /// <summary>
+    /// Continues reading the stream until facade (<c>0xFACADE01</c>) is reached and the result is converted into an array of <typeparamref name="T1"/>, <typeparamref name="T2"/> and <typeparamref name="T3"/>.
+    /// </summary>
+    /// <returns>An tuple of arrays.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -1054,27 +1191,37 @@ public class GameBoxReader : BinaryReader
     {
         var bytes = ReadUntilFacade().ToArray();
 
-        var array = new T1[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T1)))];
-        Buffer.BlockCopy(bytes, 0, array, 0, bytes.Length);
-
-        var array2 = new T2[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T2)))];
-        Buffer.BlockCopy(bytes, 0, array2, 0, bytes.Length);
-
-        var array3 = new T3[(int)Math.Ceiling(bytes.Length / (float)Marshal.SizeOf(default(T3)))];
-        Buffer.BlockCopy(bytes, 0, array3, 0, bytes.Length);
-
-        return (array, array2, array3);
+        return (
+            CreateArrayForUntilFacade<T1>(bytes), 
+            CreateArrayForUntilFacade<T2>(bytes), 
+            CreateArrayForUntilFacade<T3>(bytes)
+        );
     }
 
+    private static T[] CreateArrayForUntilFacade<T>(byte[] bytes)
+    {
+        var array = new T[(int)Math.Ceiling(bytes.Length / (double)Marshal.SizeOf(default(T)))];
+        Buffer.BlockCopy(bytes, 0, array, 0, bytes.Length);
+        return array;
+    }
+
+    /// <summary>
+    /// Continues reading the stream until a specific chunk ID with the base <paramref name="classId"/> is reached, using remapping and masking.
+    /// </summary>
+    /// <returns>Enumeration of bytes.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public IEnumerable<byte> ReadBytesUntilNextChunk(uint classId)
+    public IEnumerable<byte> ReadUntilNextChunk(uint classId)
     {
         while ((Chunk.Remap(PeekUInt32()) & classId) != classId)
             yield return ReadByte();
     }
 
+    /// <summary>
+    /// Returns the next available <see cref="uint"/> but does not consume it.
+    /// </summary>
+    /// <returns>An <see cref="uint"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -1086,6 +1233,10 @@ public class GameBoxReader : BinaryReader
         return result;
     }
 
+    /// <summary>
+    /// Returns the upcoming array but does not consume it.
+    /// </summary>
+    /// <returns>An array of <typeparamref name="T"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -1098,6 +1249,12 @@ public class GameBoxReader : BinaryReader
         return array;
     }
 
+    /// <summary>
+    /// Returns the upcoming array but does not consume it.
+    /// </summary>
+    /// <param name="length">Length of the array.</param>
+    /// <param name="forLoop">Each element with an index parameter.</param>
+    /// <returns>An array of <typeparamref name="T"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -1118,6 +1275,10 @@ public class GameBoxReader : BinaryReader
         return array;
     }
 
+    /// <summary>
+    /// Compares the <paramref name="magic"/> with the string to be read, using its length.
+    /// </summary>
+    /// <returns>If the <see cref="string"/> inside the stream is equal to <paramref name="magic"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -1127,7 +1288,7 @@ public class GameBoxReader : BinaryReader
         if (magic is null)
             throw new ArgumentNullException(nameof(magic));
 
-        return ReadString(magic.Length) == magic;
+        return ReadString(Encoding.UTF8.GetByteCount(magic)) == magic;
     }
 
     /// <summary>
@@ -1141,30 +1302,28 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    private T Read<T>()
+    public T Read<T>() => typeof(T) switch
     {
-        return typeof(T) switch
-        {
-            Type byteType when byteType == typeof(byte) => (T)Convert.ChangeType(ReadByte(), typeof(T)),
-            Type shortType when shortType == typeof(short) => (T)Convert.ChangeType(ReadInt16(), typeof(T)),
-            Type intType when intType == typeof(int) => (T)Convert.ChangeType(ReadInt32(), typeof(T)),
-            Type longType when longType == typeof(long) => (T)Convert.ChangeType(ReadInt64(), typeof(T)),
-            Type floatType when floatType == typeof(float) => (T)Convert.ChangeType(ReadSingle(), typeof(T)),
-            Type boolType when boolType == typeof(bool) => (T)Convert.ChangeType(ReadBoolean(), typeof(T)),
-            Type stringType when stringType == typeof(string) => (T)Convert.ChangeType(ReadString(), typeof(T)),
-            Type sbyteType when sbyteType == typeof(sbyte) => (T)Convert.ChangeType(ReadSByte(), typeof(T)),
-            Type ushortType when ushortType == typeof(ushort) => (T)Convert.ChangeType(ReadUInt16(), typeof(T)),
-            Type uintType when uintType == typeof(uint) => (T)Convert.ChangeType(ReadUInt32(), typeof(T)),
-            Type ulongType when ulongType == typeof(ulong) => (T)Convert.ChangeType(ReadUInt64(), typeof(T)),
-            Type byte3Type when byte3Type == typeof(Byte3) => (T)Convert.ChangeType(ReadByte3(), typeof(T)),
-            Type vec2Type when vec2Type == typeof(Vec2) => (T)Convert.ChangeType(ReadVec2(), typeof(T)),
-            Type vec3Type when vec3Type == typeof(Vec3) => (T)Convert.ChangeType(ReadVec3(), typeof(T)),
-            Type vec4Type when vec4Type == typeof(Vec4) => (T)Convert.ChangeType(ReadVec4(), typeof(T)),
-            Type int2Type when int2Type == typeof(Int2) => (T)Convert.ChangeType(ReadInt2(), typeof(T)),
-            Type int3Type when int3Type == typeof(Int3) => (T)Convert.ChangeType(ReadInt3(), typeof(T)),
-            Type idType when idType == typeof(Id) => (T)Convert.ChangeType(ReadId(), typeof(T)),
-            Type identType when identType == typeof(Ident) => (T)Convert.ChangeType(ReadIdent(), typeof(T)),
-            _ => throw new NotSupportedException($"{typeof(T)} is not supported for Read<T>."),
-        };
-    }
+        Type byteType   when byteType   == typeof(byte)     => (T)Convert.ChangeType(ReadByte(), typeof(T)),
+        Type shortType  when shortType  == typeof(short)    => (T)Convert.ChangeType(ReadInt16(), typeof(T)),
+        Type intType    when intType    == typeof(int)      => (T)Convert.ChangeType(ReadInt32(), typeof(T)),
+        Type longType   when longType   == typeof(long)     => (T)Convert.ChangeType(ReadInt64(), typeof(T)),
+        Type floatType  when floatType  == typeof(float)    => (T)Convert.ChangeType(ReadSingle(), typeof(T)),
+        Type boolType   when boolType   == typeof(bool)     => (T)Convert.ChangeType(ReadBoolean(), typeof(T)),
+        Type stringType when stringType == typeof(string)   => (T)Convert.ChangeType(ReadString(), typeof(T)),
+        Type sbyteType  when sbyteType  == typeof(sbyte)    => (T)Convert.ChangeType(ReadSByte(), typeof(T)),
+        Type ushortType when ushortType == typeof(ushort)   => (T)Convert.ChangeType(ReadUInt16(), typeof(T)),
+        Type uintType   when uintType   == typeof(uint)     => (T)Convert.ChangeType(ReadUInt32(), typeof(T)),
+        Type ulongType  when ulongType  == typeof(ulong)    => (T)Convert.ChangeType(ReadUInt64(), typeof(T)),
+        Type byte3Type  when byte3Type  == typeof(Byte3)    => (T)Convert.ChangeType(ReadByte3(), typeof(T)),
+        Type vec2Type   when vec2Type   == typeof(Vec2)     => (T)Convert.ChangeType(ReadVec2(), typeof(T)),
+        Type vec3Type   when vec3Type   == typeof(Vec3)     => (T)Convert.ChangeType(ReadVec3(), typeof(T)),
+        Type vec4Type   when vec4Type   == typeof(Vec4)     => (T)Convert.ChangeType(ReadVec4(), typeof(T)),
+        Type int2Type   when int2Type   == typeof(Int2)     => (T)Convert.ChangeType(ReadInt2(), typeof(T)),
+        Type int3Type   when int3Type   == typeof(Int3)     => (T)Convert.ChangeType(ReadInt3(), typeof(T)),
+        Type idType     when idType     == typeof(Id)       => (T)Convert.ChangeType(ReadId(), typeof(T)),
+        Type identType  when identType  == typeof(Ident)    => (T)Convert.ChangeType(ReadIdent(), typeof(T)),
+
+        _ => throw new NotSupportedException($"{typeof(T)} is not supported for Read<T>."),
+    };
 }

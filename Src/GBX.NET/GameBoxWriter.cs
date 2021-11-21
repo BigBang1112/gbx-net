@@ -10,9 +10,19 @@ namespace GBX.NET;
 /// </summary>
 public class GameBoxWriter : BinaryWriter
 {
+    /// <summary>
+    /// Body used to store node references.
+    /// </summary>
     public GameBoxBody? Body { get; }
+
+    /// <summary>
+    /// An object to look into for the list of already written data.
+    /// </summary>
     public ILookbackable? Lookbackable { get; }
 
+    /// <summary>
+    /// <see cref="GameBox"/> object taken either from <see cref="Body"/> or <see cref="Lookbackable"/>.
+    /// </summary>
     public GameBox? GBX
     {
         get
@@ -23,12 +33,12 @@ public class GameBoxWriter : BinaryWriter
         }
     }
 
-    public GameBoxWriter(Stream output) : base(output, Encoding.UTF8, true)
-    {
-
-    }
-
-    public GameBoxWriter(Stream output, ILookbackable? lookbackable) : this(output)
+    /// <summary>
+    /// Constructs a binary writer specialized for GBX.
+    /// </summary>
+    /// <param name="output">The output stream.</param>
+    /// <param name="lookbackable">An object to look into for the list of already written data. If null, <see cref="Id"/>, <see cref="Ident"/> or <see cref="CMwNod"/> cannot be written properly and <see cref="PropertyNullException"/> can be thrown.</param>
+    public GameBoxWriter(Stream output, ILookbackable? lookbackable = null) : base(output, Encoding.UTF8, true)
     {
         Lookbackable = lookbackable;
 
@@ -65,16 +75,12 @@ public class GameBoxWriter : BinaryWriter
                 break;
         }
 
-        var bytes = Encoding.UTF8.GetBytes(value);
-        WriteBytes(bytes);
+        WriteBytes(bytes: Encoding.UTF8.GetBytes(value));
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public override void Write(string? value)
-    {
-        Write(value, StringLengthPrefix.Int32);
-    }
+    public override void Write(string? value) => Write(value, StringLengthPrefix.Int32);
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -91,10 +97,7 @@ public class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public override void Write(bool value)
-    {
-        Write(value, false);
-    }
+    public override void Write(bool value) => Write(value, false);
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -496,17 +499,11 @@ public class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteSingle_s(TimeSpan variable)
-    {
-        Write((float)variable.TotalSeconds);
-    }
+    public void WriteSingle_s(TimeSpan variable) => Write((float)variable.TotalSeconds);
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteSingle_ms(TimeSpan variable)
-    {
-        Write((float)variable.TotalMilliseconds);
-    }
+    public void WriteSingle_ms(TimeSpan variable) => Write((float)variable.TotalMilliseconds);
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -628,24 +625,25 @@ public class GameBoxWriter : BinaryWriter
 
         switch (any)
         {
-            case byte byteValue: Write(byteValue); break;
-            case short shortValue: Write(shortValue); break;
-            case int intValue: Write(intValue); break;
-            case long longValue: Write(longValue); break;
-            case float floatValue: Write(floatValue); break;
-            case string stringValue: Write(stringValue); break;
-            case sbyte sbyteValue: Write(sbyteValue); break;
-            case ushort ushortValue: Write(ushortValue); break;
-            case uint uintValue: Write(uintValue); break;
-            case ulong ulongValue: Write(ulongValue); break;
-            case Byte3 byte3Value: Write(byte3Value); break;
-            case Vec2 vec2Value: Write(vec2Value); break;
-            case Vec3 vec3Value: Write(vec3Value); break;
-            case Vec4 vec4Value: Write(vec4Value); break;
-            case Int2 int2Value: Write(int2Value); break;
-            case Int3 int3Value: Write(int3Value); break;
-            case Id idValue: Write(idValue); break;
-            case Ident identValue: Write(identValue); break;
+            case byte   byteValue:      Write(byteValue); break;
+            case short  shortValue:     Write(shortValue); break;
+            case int    intValue:       Write(intValue); break;
+            case long   longValue:      Write(longValue); break;
+            case float  floatValue:     Write(floatValue); break;
+            case string stringValue:    Write(stringValue); break;
+            case sbyte  sbyteValue:     Write(sbyteValue); break;
+            case ushort ushortValue:    Write(ushortValue); break;
+            case uint   uintValue:      Write(uintValue); break;
+            case ulong  ulongValue:     Write(ulongValue); break;
+            case Byte3  byte3Value:     Write(byte3Value); break;
+            case Vec2   vec2Value:      Write(vec2Value); break;
+            case Vec3   vec3Value:      Write(vec3Value); break;
+            case Vec4   vec4Value:      Write(vec4Value); break;
+            case Int2   int2Value:      Write(int2Value); break;
+            case Int3   int3Value:      Write(int3Value); break;
+            case Id     idValue:        Write(idValue); break;
+            case Ident  identValue:     Write(identValue); break;
+
             default: throw new NotSupportedException($"{any.GetType()} is not supported for Read<T>.");
         }
     }

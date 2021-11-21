@@ -1954,6 +1954,12 @@ public class GameBoxReaderWriter
 /// </summary>
 public enum GameBoxReaderWriterMode
 {
+    /// <summary>
+    /// Read mode.
+    /// </summary>
     Read,
+    /// <summary>
+    /// Write mode.
+    /// </summary>
     Write
 }
