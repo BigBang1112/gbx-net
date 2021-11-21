@@ -53,57 +53,56 @@ The library speeds up parse time by ignoring unused skippable chunks with *disco
 Maps were selected from all kinds of Trackmania official campaigns picked by the biggest file size.
 
 ```
-BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19043.1288 (21H1/May2021Update)
+BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19043.1348 (21H1/May2021Update)
 AMD Ryzen 7 3700X, 1 CPU, 16 logical and 8 physical cores
-.NET SDK=6.0.100-rc.2.21505.57
-  [Host]     : .NET 5.0.11 (5.0.1121.47308), X64 RyuJIT  [AttachedDebugger]
-  Job-KUDPIY : .NET 5.0.11 (5.0.1121.47308), X64 RyuJIT
+  [Host]     : .NET 6.0.0 (6.0.21.52210), X64 RyuJIT  [AttachedDebugger]
+  Job-QCSCDP : .NET 6.0.0 (6.0.21.52210), X64 RyuJIT
 ```
 
 | File name | Median [ms] |
 |----------------------------------------------------------------- |------------:|
-|                            6_TrackMania 2\MP4\BaseValley.Map.Gbx |   0.9666 ms |
-|             0_TrackMania\1.2.5 DemoSolo\DemoRaceB1.Challenge.Gbx |   1.1756 ms |
-|                       4_TrackMania United\2\snowC5.Challenge.Gbx |   1.3082 ms |
-|           2_TrackMania Original\1.5 Demo\DemoRace3.Challenge.Gbx |   1.3629 ms |
-|                  4_TrackMania United\2.0.8\DesertE.Challenge.Gbx |   1.4587 ms |
-|                          0_TrackMania\1.2.3\RaceF7.Challenge.Gbx |   1.4656 ms |
-|                 8_Trackmania 2020\Training\Training - 20.Map.Gbx |   1.6191 ms |
-|            1_TrackMania Sunrise\1.4.7\CleanLanding.Challenge.Gbx |   1.5643 ms |
-|                   8_Trackmania 2020\Training\è®­ç»ƒ - 20.Map.Gbx |   1.6690 ms |
-|              1_TrackMania Sunrise\1.4.5\AirControl.Challenge.Gbx |   1.7642 ms |
-|                 1_TrackMania Sunrise\1.5\TrialTime.Challenge.Gbx |   2.1397 ms |
-|            3_TrackMania Nations ESWC\1.7.5\Pro A-4.Challenge.Gbx |   2.1452 ms |
-|        1_TrackMania Sunrise\1.4.5 Nvidia\TrialTime.Challenge.Gbx |   2.1961 ms |
-|                     7_TrackMania Turbo\VR\VR_Stadium_007.Map.Gbx |   2.4427 ms |
-|            1_TrackMania Sunrise\1.5 Demo\DemoRace1.Challenge.Gbx |   2.5097 ms |
-|              1_TrackMania Sunrise\1.4.6\LittleWalk.Challenge.Gbx |   2.5488 ms |
-|                             6_TrackMania 2\MP4Valley\D13.Map.Gbx |   2.6246 ms |
-|                             6_TrackMania 2\MP4Lagoon\B01.Map.Gbx |   2.7828 ms |
-|                             6_TrackMania 2\MP3Valley\E01.Map.Gbx |   2.9125 ms |
-|      6_TrackMania 2\MP3Platform\E03 - Ultimate Nightmare.Map.Gbx |   3.0517 ms |
-|                              7_TrackMania Turbo\Solo\100.Map.Gbx |   3.2885 ms |
-|                            6_TrackMania 2\MP3Stadium\E02.Map.Gbx |   3.3485 ms |
-|                      8_Trackmania 2020\Royal\NoTechLogic.Map.Gbx |   3.3607 ms |
-| 5_TrackMania Forever\2.11.11 Nations\E02-Endurance.Challenge.Gbx |   3.3228 ms |
-|          5_TrackMania Forever\2.11.25\StarStadiumE.Challenge.Gbx |   3.6366 ms |
-|        5_TrackMania Forever\2.11.11 United\StuntC1.Challenge.Gbx |   3.9400 ms |
-|           1_TrackMania Sunrise\1.4\Paradise Island.Challenge.Gbx |   4.2577 ms |
-|           8_Trackmania 2020\20200701\å¤å­£èµ› 2020 - 11.Map.Gbx |   4.5801 ms |
-|              8_Trackmania 2020\20200701\Summer 2020 - 11.Map.Gbx |   4.5865 ms |
-|                             6_TrackMania 2\MP3Canyon\B10.Map.Gbx |   4.9148 ms |
-|              8_Trackmania 2020\20201001\ç§‹å­£ 2020 - 12.Map.Gbx |   4.8137 ms |
-|                8_Trackmania 2020\20201001\Fall 2020 - 12.Map.Gbx |   4.8658 ms |
-|                 2_TrackMania Original\1.5\StuntsD1.Challenge.Gbx |   4.8395 ms |
-|              8_Trackmania 2020\20210401\Spring 2021 - 23.Map.Gbx |   5.1093 ms |
-|                         0_TrackMania\1 Demo\Track6.Challenge.Gbx |   4.9339 ms |
-|                               Community\CCP#04 - ODYSSEY.Map.Gbx |   5.3195 ms |
-|                         0_TrackMania\1 Beta\Track6.Challenge.Gbx |   5.0107 ms |
-|                            0_TrackMania\1.1\RaceD1.Challenge.Gbx |   5.2825 ms |
-|              8_Trackmania 2020\20210101\Winter 2021 - 15.Map.Gbx |   5.4511 ms |
-|                            0_TrackMania\1\PuzzleF2.Challenge.Gbx |   5.8552 ms |
-|              8_Trackmania 2020\20210701\Summer 2021 - 25.Map.Gbx |   6.6836 ms |
-|                8_Trackmania 2020\20211001\Fall 2021 - 16.Map.Gbx |  15.9538 ms |
+|             0_TrackMania\1.2.5 DemoSolo\DemoRaceB1.Challenge.Gbx |   0.2655 ms |
+|                       4_TrackMania United\2\snowC5.Challenge.Gbx |   0.3346 ms |
+|            1_TrackMania Sunrise\1.4.7\CleanLanding.Challenge.Gbx |   0.3533 ms |
+|                          0_TrackMania\1.2.3\RaceF7.Challenge.Gbx |   0.3625 ms |
+|           2_TrackMania Original\1.5 Demo\DemoRace3.Challenge.Gbx |   0.3650 ms |
+|                  4_TrackMania United\2.0.8\DesertE.Challenge.Gbx |   0.4306 ms |
+|                   8_Trackmania 2020\Training\cR­ç»f - 20.Map.Gbx |   0.6456 ms |
+|                 8_Trackmania 2020\Training\Training - 20.Map.Gbx |   0.6863 ms |
+|              1_TrackMania Sunrise\1.4.5\AirControl.Challenge.Gbx |   0.7173 ms |
+|                            6_TrackMania 2\MP4\BaseValley.Map.Gbx |   0.8236 ms |
+|                 1_TrackMania Sunrise\1.5\TrialTime.Challenge.Gbx |   1.0711 ms |
+|            3_TrackMania Nations ESWC\1.7.5\Pro A-4.Challenge.Gbx |   1.0362 ms |
+|        1_TrackMania Sunrise\1.4.5 Nvidia\TrialTime.Challenge.Gbx |   1.0148 ms |
+|                     7_TrackMania Turbo\VR\VR_Stadium_007.Map.Gbx |   1.1537 ms |
+|                             6_TrackMania 2\MP4Valley\D13.Map.Gbx |   1.3145 ms |
+|            1_TrackMania Sunrise\1.5 Demo\DemoRace1.Challenge.Gbx |   1.3534 ms |
+|                             6_TrackMania 2\MP4Lagoon\B01.Map.Gbx |   1.6401 ms |
+|              1_TrackMania Sunrise\1.4.6\LittleWalk.Challenge.Gbx |   1.7067 ms |
+|      6_TrackMania 2\MP3Platform\E03 - Ultimate Nightmare.Map.Gbx |   1.8748 ms |
+|                             6_TrackMania 2\MP3Valley\E01.Map.Gbx |   1.9222 ms |
+|                              7_TrackMania Turbo\Solo\100.Map.Gbx |   1.9219 ms |
+|                            6_TrackMania 2\MP3Stadium\E02.Map.Gbx |   2.1972 ms |
+| 5_TrackMania Forever\2.11.11 Nations\E02-Endurance.Challenge.Gbx |   2.2746 ms |
+|                      8_Trackmania 2020\Royal\NoTechLogic.Map.Gbx |   2.3433 ms |
+|          5_TrackMania Forever\2.11.25\StarStadiumE.Challenge.Gbx |   2.6439 ms |
+|              8_Trackmania 2020\20200701\Summer 2020 - 11.Map.Gbx |   3.1039 ms |
+|           1_TrackMania Sunrise\1.4\Paradise Island.Challenge.Gbx |   3.1968 ms |
+|                             6_TrackMania 2\MP3Canyon\B10.Map.Gbx |   2.8478 ms |
+|              8_Trackmania 2020\20201001\ç§<a­L 2020 - 12.Map.Gbx |   3.5120 ms |
+|        5_TrackMania Forever\2.11.11 United\StuntC1.Challenge.Gbx |   3.5581 ms |
+|           8_Trackmania 2020\20200701\a¤?a­Lcu> 2020 - 11.Map.Gbx |   3.6620 ms |
+|                8_Trackmania 2020\20201001\Fall 2020 - 12.Map.Gbx |   3.7494 ms |
+|              8_Trackmania 2020\20210401\Spring 2021 - 23.Map.Gbx |   3.9715 ms |
+|                         0_TrackMania\1 Demo\Track6.Challenge.Gbx |   4.5466 ms |
+|                 2_TrackMania Original\1.5\StuntsD1.Challenge.Gbx |   4.3262 ms |
+|              8_Trackmania 2020\20210101\Winter 2021 - 15.Map.Gbx |   4.2236 ms |
+|                            0_TrackMania\1.1\RaceD1.Challenge.Gbx |   4.3978 ms |
+|                         0_TrackMania\1 Beta\Track6.Challenge.Gbx |   4.5578 ms |
+|                               Community\CCP#04 - ODYSSEY.Map.Gbx |   4.6079 ms |
+|                            0_TrackMania\1\PuzzleF2.Challenge.Gbx |   5.3316 ms |
+|              8_Trackmania 2020\20210701\Summer 2021 - 25.Map.Gbx |   5.7061 ms |
+|                8_Trackmania 2020\20211001\Fall 2021 - 16.Map.Gbx |  14.8491 ms |
 
 ## Dependencies
 
