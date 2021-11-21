@@ -26,20 +26,20 @@ GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software 
 | Item.Gbx | [CGameItemModel](GBX.NET/Engines/GameData/CGameItemModel.cs) | Yes | No
 | SystemConfig.Gbx | [CSystemConfig](GBX.NET/Engines/System/CSystemConfig.cs) | Yes | Yes
 
-\* Consider extracting `CGameCtnGhost` from `CGameCtnReplayRecord` and save it as `.Ghost.Gbx`, which you can then import in MediaTracker.
+\* Consider extracting `CGameCtnGhost` from `CGameCtnReplayRecord`, transfer it over to `CGameCtnMediaBlockGhost`, add it to `CGameCtnMediaClip`, and save it as `.Clip.Gbx`, which you can then import in MediaTracker.
 
 ## Compatibility
 
-- GBX.NET is compatible with **.NET Standard 2.0** since version 0.2.0. Earlier versions are built on .NET Standard 2.1.
-- Since version 0.5.2, the library is also compatible with **.NET Framework 4.5**.
+- GBX.NET is compatible down to **.NET Standard 2.0** and **.NET Framework 4.8**.
+- Current language version is 10 and you need Visual Studio 2022 to contribute to the project **(you don't need Visual Studio 2022 if you install it as NuGet package)**.
 - The library supports **saving GBX files in 64bit environment** since 0.10.0. In the older versions, to be able to save your GBX, set your platform target to **x86**.
 
 ## Techniques
 
 The library does node caching to speed up node parsing:
 
-- Currently, all nodes are cached when accessing the `Node` class for the first time, causing a slight (about 50 ms) delay which may go up with future library additions.
-- *Selective node caching* would cache only the most common nodes related to the parsed GBX. This feature is planned for the future.
+- Currently, all nodes are cached when accessing the `Node` class for the first time, causing a slight (up to 100 ms) delay which may go up with future library additions.
+- *Selective node caching* would cache only the nodes the developer is interested in. This feature is planned for the future.
 
 The library speeds up parse time by ignoring unused skippable chunks with *discover* feature:
 
@@ -203,7 +203,7 @@ var silverTime = map.SilverTime; // Correct
 
 ## License
 
-- **The sub-library GBX.NET.LZO is licensed with [GNU General Public License v3.0](GBX.NET.LZO/LICENSE.GPL-3.0-or-later.md). If you're going to use this library, please license your work under GPL-3.0-or-later.** This applies to Island Converter as well which will be soon moved to a different repository.
+- **The sub-library GBX.NET.LZO is licensed with [GNU General Public License v3.0](GBX.NET.LZO/LICENSE.GPL-3.0-or-later.md). If you're going to use this library, please license your work under GPL-3.0-or-later.**
 - **Everything in the Samples folder is also licensed with [GNU General Public License v3.0](Samples/LICENSE.GPL-3.0-or-later.md).**
 - The libraries GBX.NET, GBX.NET.Imaging, GBX.NET.Json, GBX.NET.Localization and the project DocGenerator **are licensed with MIT** and you can use them much more permissively.
 - Information gathered from the project (chunk structure, parse examples, data structure, wiki information, markdown) is usable with [The Unlicense](https://unlicense.org/).
