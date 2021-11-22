@@ -250,10 +250,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int16(ref short variable)
-    {
-        variable = Int16(variable);
-    }
+    public void Int16(ref short variable) => variable = Int16(variable);
 
     /// <summary>
     /// Reads or writes a nullable <see cref="short"/> through reference.
@@ -263,10 +260,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int16(ref short? variable, short defaultValue = default)
-    {
-        variable = Int16(variable, defaultValue);
-    }
+    public void Int16(ref short? variable, short defaultValue = default) => variable = Int16(variable, defaultValue);
 
     /// <summary>
     /// Reads or writes an <see cref="int"/>.
@@ -306,10 +300,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int32(ref int variable)
-    {
-        variable = Int32(variable);
-    }
+    public void Int32(ref int variable) => variable = Int32(variable);
 
     /// <summary>
     /// Reads or writes a nullable <see cref="int"/> through reference.
@@ -319,10 +310,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int32(ref int? variable, int defaultValue = default)
-    {
-        variable = Int32(variable, defaultValue);
-    }
+    public void Int32(ref int? variable, int defaultValue = default) => variable = Int32(variable, defaultValue);
 
     /// <summary>
     /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of seconds.
@@ -365,10 +353,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int32_s(ref TimeSpan variable)
-    {
-        variable = Int32_s(variable);
-    }
+    public void Int32_s(ref TimeSpan variable) => variable = Int32_s(variable);
 
     /// <summary>
     /// Reads or writes a nullable <see cref="int"/> as a nullable <see cref="TimeSpan"/> of seconds through reference.
@@ -379,10 +364,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int32_s(ref TimeSpan? variable, TimeSpan defaultValue = default)
-    {
-        variable = Int32_s(variable, defaultValue);
-    }
+    public void Int32_s(ref TimeSpan? variable, TimeSpan defaultValue = default) => variable = Int32_s(variable, defaultValue);
 
     /// <summary>
     /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of milliseconds.
@@ -425,10 +407,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int32_ms(ref TimeSpan variable)
-    {
-        variable = Int32_ms(variable);
-    }
+    public void Int32_ms(ref TimeSpan variable) => variable = Int32_ms(variable);
 
     /// <summary>
     /// Reads or writes a nullable <see cref="int"/> as a nullable <see cref="TimeSpan"/> of milliseconds through reference.
@@ -439,10 +418,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int32_ms(ref TimeSpan? variable, TimeSpan defaultValue = default)
-    {
-        variable = Int32_ms(variable, defaultValue);
-    }
+    public void Int32_ms(ref TimeSpan? variable, TimeSpan defaultValue = default) => variable = Int32_ms(variable, defaultValue);
 
     /// <summary>
     /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of seconds. If the read value is -1, null is returned. If the written <paramref name="variable"/> is null, -1 value is written.
@@ -468,10 +444,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int32_sn(ref TimeSpan? variable)
-    {
-        variable = Int32_sn(variable);
-    }
+    public void Int32_sn(ref TimeSpan? variable) => variable = Int32_sn(variable);
 
     /// <summary>
     /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of milliseconds. If the read value is -1, null is returned. If the written <paramref name="variable"/> is null, -1 value is written.
@@ -497,10 +470,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int32_msn(ref TimeSpan? variable)
-    {
-        variable = Int32_msn(variable);
-    }
+    public void Int32_msn(ref TimeSpan? variable) => variable = Int32_msn(variable);
 
     /// <summary>
     /// Reads or writes a <see cref="long"/>.
@@ -540,10 +510,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int64(ref long variable)
-    {
-        variable = Int64(variable);
-    }
+    public void Int64(ref long variable) => variable = Int64(variable);
 
     /// <summary>
     /// Reads or writes a nullable <see cref="int"/> through reference.
@@ -553,10 +520,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int64(ref long? variable, long defaultValue = default)
-    {
-        variable = Int64(variable, defaultValue);
-    }
+    public void Int64(ref long? variable, long defaultValue = default) => variable = Int64(variable, defaultValue);
 
     /// <summary>
     /// Reads or writes a <see cref="ushort"/>.
@@ -596,10 +560,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void UInt16(ref ushort variable)
-    {
-        variable = UInt16(variable);
-    }
+    public void UInt16(ref ushort variable) => variable = UInt16(variable);
 
     /// <summary>
     /// Reads or writes a nullable <see cref="ushort"/> through reference.
@@ -609,10 +570,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void UInt16(ref ushort? variable, ushort defaultValue = default)
-    {
-        variable = UInt16(variable, defaultValue);
-    }
+    public void UInt16(ref ushort? variable, ushort defaultValue = default) => variable = UInt16(variable, defaultValue);
 
     /// <summary>
     /// Reads or writes a <see cref="uint"/>.
@@ -652,10 +610,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void UInt32(ref uint variable)
-    {
-        variable = UInt32(variable);
-    }
+    public void UInt32(ref uint variable) => variable = UInt32(variable);
 
     /// <summary>
     /// Reads or writes a nullable <see cref="uint"/> through reference.
@@ -665,10 +620,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void UInt32(ref uint? variable, uint defaultValue = default)
-    {
-        variable = UInt32(variable, defaultValue);
-    }
+    public void UInt32(ref uint? variable, uint defaultValue = default) => variable = UInt32(variable, defaultValue);
 
     /// <summary>
     /// Reads or writes a <see cref="ulong"/>.
@@ -708,10 +660,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void UInt64(ref ulong variable)
-    {
-        variable = UInt64(variable);
-    }
+    public void UInt64(ref ulong variable) => variable = UInt64(variable);
 
     /// <summary>
     /// Reads or writes a nullable <see cref="ulong"/> through reference.
@@ -721,10 +670,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void UInt64(ref ulong? variable, ulong defaultValue = default)
-    {
-        variable = UInt64(variable, defaultValue);
-    }
+    public void UInt64(ref ulong? variable, ulong defaultValue = default) => variable = UInt64(variable, defaultValue);
 
     /// <summary>
     /// Reads or writes a <see cref="float"/>.
@@ -764,10 +710,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Single(ref float variable)
-    {
-        variable = Single(variable);
-    }
+    public void Single(ref float variable) => variable = Single(variable);
 
     /// <summary>
     /// Reads or writes a nullable <see cref="float"/> through reference.
@@ -777,10 +720,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Single(ref float? variable, float defaultValue = default)
-    {
-        variable = Single(variable, defaultValue);
-    }
+    public void Single(ref float? variable, float defaultValue = default) => variable = Single(variable, defaultValue);
 
     /// <summary>
     /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of seconds.
@@ -823,10 +763,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Single_s(ref TimeSpan variable)
-    {
-        variable = Single_s(variable);
-    }
+    public void Single_s(ref TimeSpan variable) => variable = Single_s(variable);
 
     /// <summary>
     /// Reads or writes a nullable <see cref="float"/> as a nullable <see cref="TimeSpan"/> of seconds through reference.
@@ -837,10 +774,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Single_s(ref TimeSpan? variable, TimeSpan defaultValue = default)
-    {
-        variable = Single_s(variable, defaultValue);
-    }
+    public void Single_s(ref TimeSpan? variable, TimeSpan defaultValue = default) => variable = Single_s(variable, defaultValue);
 
     /// <summary>
     /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of milliseconds.
@@ -883,10 +817,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Single_ms(ref TimeSpan variable)
-    {
-        variable = Single_ms(variable);
-    }
+    public void Single_ms(ref TimeSpan variable) => variable = Single_ms(variable);
 
     /// <summary>
     /// Reads or writes a nullable <see cref="float"/> as a nullable <see cref="TimeSpan"/> of milliseconds through reference.
@@ -897,10 +828,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Single_ms(ref TimeSpan? variable, TimeSpan defaultValue = default)
-    {
-        variable = Single_ms(variable, defaultValue);
-    }
+    public void Single_ms(ref TimeSpan? variable, TimeSpan defaultValue = default) => variable = Single_ms(variable, defaultValue);
 
     /// <summary>
     /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of seconds. If the read value is -1, null is returned. If the written <paramref name="variable"/> is null, -1 value is written.
@@ -926,10 +854,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Single_sn(ref TimeSpan? variable)
-    {
-        variable = Single_sn(variable);
-    }
+    public void Single_sn(ref TimeSpan? variable) => variable = Single_sn(variable);
 
     /// <summary>
     /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of milliseconds. If the read value is -1, null is returned. If the written <paramref name="variable"/> is null, -1 value is written.
@@ -955,10 +880,7 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Single_msn(ref TimeSpan? variable)
-    {
-        variable = Single_msn(variable);
-    }
+    public void Single_msn(ref TimeSpan? variable) => variable = Single_msn(variable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -983,58 +905,37 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void BigInt(ref BigInteger variable, int byteLength)
-    {
-        variable = BigInt(variable, byteLength);
-    }
+    public void BigInt(ref BigInteger variable, int byteLength) => variable = BigInt(variable, byteLength);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void BigInt(ref BigInteger? variable, int byteLength, BigInteger defaultValue = default)
-    {
-        variable = BigInt(variable, byteLength, defaultValue);
-    }
+    public void BigInt(ref BigInteger? variable, int byteLength, BigInteger defaultValue = default) => variable = BigInt(variable, byteLength, defaultValue);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public BigInteger BigInt(int byteLength)
-    {
-        return BigInt(default, byteLength);
-    }
+    public BigInteger BigInt(int byteLength) => BigInt(default, byteLength);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public BigInteger Int128(BigInteger variable = default)
-    {
-        return BigInt(variable, 16);
-    }
+    public BigInteger Int128(BigInteger variable = default) => BigInt(variable, 16);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public BigInteger? Int128(BigInteger? variable, BigInteger defaultValue = default)
-    {
-        return BigInt(variable, 16, defaultValue);
-    }
+    public BigInteger? Int128(BigInteger? variable, BigInteger defaultValue = default) => BigInt(variable, 16, defaultValue);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int128(ref BigInteger variable)
-    {
-        BigInt(ref variable, 16);
-    }
+    public void Int128(ref BigInteger variable) => BigInt(ref variable, 16);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int128(ref BigInteger? variable, BigInteger defaultValue = default)
-    {
-        BigInt(ref variable, 16, defaultValue);
-    }
+    public void Int128(ref BigInteger? variable, BigInteger defaultValue = default) => BigInt(ref variable, 16, defaultValue);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1059,18 +960,12 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int2(ref Int2 variable)
-    {
-        variable = Int2(variable);
-    }
+    public void Int2(ref Int2 variable) => variable = Int2(variable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int2(ref Int2? variable, Int2 defaultValue = default)
-    {
-        variable = Int2(variable, defaultValue);
-    }
+    public void Int2(ref Int2? variable, Int2 defaultValue = default) => variable = Int2(variable, defaultValue);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1095,18 +990,12 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int3(ref Int3 variable)
-    {
-        variable = Int3(variable);
-    }
+    public void Int3(ref Int3 variable) => variable = Int3(variable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int3(ref Int3? variable, Int3 defaultValue = default)
-    {
-        variable = Int3(variable, defaultValue);
-    }
+    public void Int3(ref Int3? variable, Int3 defaultValue = default) => variable = Int3(variable, defaultValue);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1131,18 +1020,12 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Byte3(ref Byte3 variable)
-    {
-        variable = Byte3(variable);
-    }
+    public void Byte3(ref Byte3 variable) => variable = Byte3(variable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Byte3(ref Byte3? variable, Byte3 defaultValue = default)
-    {
-        variable = Byte3(variable, defaultValue);
-    }
+    public void Byte3(ref Byte3? variable, Byte3 defaultValue = default) => variable = Byte3(variable, defaultValue);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1167,18 +1050,12 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Vec2(ref Vec2 variable)
-    {
-        variable = Vec2(variable);
-    }
+    public void Vec2(ref Vec2 variable) => variable = Vec2(variable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Vec2(ref Vec2? variable, Vec2 defaultValue = default)
-    {
-        variable = Vec2(variable, defaultValue);
-    }
+    public void Vec2(ref Vec2? variable, Vec2 defaultValue = default) => variable = Vec2(variable, defaultValue);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1203,18 +1080,12 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Vec3(ref Vec3 variable)
-    {
-        variable = Vec3(variable);
-    }
+    public void Vec3(ref Vec3 variable) => variable = Vec3(variable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Vec3(ref Vec3? variable, Vec3 defaultValue = default)
-    {
-        variable = Vec3(variable, defaultValue);
-    }
+    public void Vec3(ref Vec3? variable, Vec3 defaultValue = default) => variable = Vec3(variable, defaultValue);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1231,10 +1102,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
-    public void FileRef(ref FileRef? variable)
-    {
-        variable = FileRef(variable);
-    }
+    public void FileRef(ref FileRef? variable) => variable = FileRef(variable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1255,10 +1123,7 @@ public class GameBoxReaderWriter
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    public void Id(ref string? variable, ILookbackable lookbackable)
-    {
-        variable = Id(variable, lookbackable);
-    }
+    public void Id(ref string? variable, ILookbackable lookbackable) => variable = Id(variable, lookbackable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1295,10 +1160,7 @@ public class GameBoxReaderWriter
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
     /// <exception cref="PropertyNullException">Lookbackable of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void Id(ref string? variable)
-    {
-        variable = Id(variable);
-    }
+    public void Id(ref string? variable) => variable = Id(variable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1321,10 +1183,7 @@ public class GameBoxReaderWriter
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    public void Ident(ref Ident? variable, ILookbackable lookbackable)
-    {
-        variable = Ident(variable, lookbackable);
-    }
+    public void Ident(ref Ident? variable, ILookbackable lookbackable) => variable = Ident(variable, lookbackable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1361,10 +1220,7 @@ public class GameBoxReaderWriter
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
     /// <exception cref="PropertyNullException">Lookbackable of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void Ident(ref Ident? variable)
-    {
-        variable = Ident(variable);
-    }
+    public void Ident(ref Ident? variable) => variable = Ident(variable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1381,10 +1237,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public void NodeRef(ref CMwNod? variable, GameBoxBody body)
-    {
-        variable = NodeRef(variable, body);
-    }
+    public void NodeRef(ref CMwNod? variable, GameBoxBody body) => variable = NodeRef(variable, body);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1415,10 +1268,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void NodeRef(ref CMwNod? variable)
-    {
-        variable = NodeRef(variable);
-    }
+    public void NodeRef(ref CMwNod? variable) => variable = NodeRef(variable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1435,10 +1285,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public void NodeRef<T>(ref T? variable, GameBoxBody body) where T : CMwNod
-    {
-        variable = NodeRef(variable, body);
-    }
+    public void NodeRef<T>(ref T? variable, GameBoxBody body) where T : CMwNod => variable = NodeRef(variable, body);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1469,10 +1316,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void NodeRef<T>(ref T? variable) where T : CMwNod
-    {
-        variable = NodeRef(variable);
-    }
+    public void NodeRef<T>(ref T? variable) where T : CMwNod => variable = NodeRef(variable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1542,10 +1386,7 @@ public class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentException"><paramref name="readPrefix"/> is <see cref="StringLengthPrefix.None"/>.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
-    public void String(ref string? variable, StringLengthPrefix readPrefix = default)
-    {
-        variable = String(variable, readPrefix);
-    }
+    public void String(ref string? variable, StringLengthPrefix readPrefix = default) => variable = String(variable, readPrefix);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1611,10 +1452,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ArgumentException">The number of decoded characters to read is greater than count. This can happen if a Unicode decoder returns fallback characters or a surrogate pair.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Bytes(ref byte[]? variable)
-    {
-        variable = Bytes(variable);
-    }
+    public void Bytes(ref byte[]? variable) => variable = Bytes(variable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -1638,19 +1476,13 @@ public class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
-    public void Array<T>(ref T[]? array, int count) where T : struct
-    {
-        array = Array(array, count);
-    }
+    public void Array<T>(ref T[]? array, int count) where T : struct => array = Array(array, count);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
-    public void Array<T>(ref T[]? array) where T : struct
-    {
-        array = Array(array);
-    }
+    public void Array<T>(ref T[]? array) where T : struct => array = Array(array);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>

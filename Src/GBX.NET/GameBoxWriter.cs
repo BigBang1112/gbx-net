@@ -452,24 +452,15 @@ public class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteBigInt(BigInteger bigInteger)
-    {
-        WriteBytes(bigInteger.ToByteArray());
-    }
+    public void WriteBigInt(BigInteger bigInteger) => WriteBytes(bigInteger.ToByteArray());
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteInt32_s(TimeSpan variable)
-    {
-        Write((int)variable.TotalSeconds);
-    }
+    public void WriteInt32_s(TimeSpan variable) => Write((int)variable.TotalSeconds);
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteInt32_ms(TimeSpan variable)
-    {
-        Write((int)variable.TotalMilliseconds);
-    }
+    public void WriteInt32_ms(TimeSpan variable) => Write((int)variable.TotalMilliseconds);
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -625,24 +616,24 @@ public class GameBoxWriter : BinaryWriter
 
         switch (any)
         {
-            case byte   byteValue:      Write(byteValue); break;
-            case short  shortValue:     Write(shortValue); break;
-            case int    intValue:       Write(intValue); break;
-            case long   longValue:      Write(longValue); break;
-            case float  floatValue:     Write(floatValue); break;
-            case string stringValue:    Write(stringValue); break;
-            case sbyte  sbyteValue:     Write(sbyteValue); break;
-            case ushort ushortValue:    Write(ushortValue); break;
-            case uint   uintValue:      Write(uintValue); break;
-            case ulong  ulongValue:     Write(ulongValue); break;
-            case Byte3  byte3Value:     Write(byte3Value); break;
-            case Vec2   vec2Value:      Write(vec2Value); break;
-            case Vec3   vec3Value:      Write(vec3Value); break;
-            case Vec4   vec4Value:      Write(vec4Value); break;
-            case Int2   int2Value:      Write(int2Value); break;
-            case Int3   int3Value:      Write(int3Value); break;
-            case Id     idValue:        Write(idValue); break;
-            case Ident  identValue:     Write(identValue); break;
+            case byte   v: Write(v); break;
+            case short  v: Write(v); break;
+            case int    v: Write(v); break;
+            case long   v: Write(v); break;
+            case float  v: Write(v); break;
+            case string v: Write(v); break;
+            case sbyte  v: Write(v); break;
+            case ushort v: Write(v); break;
+            case uint   v: Write(v); break;
+            case ulong  v: Write(v); break;
+            case Byte3  v: Write(v); break;
+            case Vec2   v: Write(v); break;
+            case Vec3   v: Write(v); break;
+            case Vec4   v: Write(v); break;
+            case Int2   v: Write(v); break;
+            case Int3   v: Write(v); break;
+            case Id     v: Write(v); break;
+            case Ident  v: Write(v); break;
 
             default: throw new NotSupportedException($"{any.GetType()} is not supported for Read<T>.");
         }

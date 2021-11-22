@@ -46,10 +46,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan ReadInt32_s()
-    {
-        return TimeSpan.FromSeconds(ReadInt32());
-    }
+    public TimeSpan ReadInt32_s() => TimeSpan.FromSeconds(ReadInt32());
 
     /// <summary>
     /// Reads a 4-byte signed integer from the current stream and advances the current position of the stream by four bytes.
@@ -59,10 +56,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan ReadInt32_ms()
-    {
-        return TimeSpan.FromMilliseconds(ReadInt32());
-    }
+    public TimeSpan ReadInt32_ms() => TimeSpan.FromMilliseconds(ReadInt32());
 
     /// <summary>
     /// Reads a 4-byte signed integer from the current stream and advances the current position of the stream by four bytes.
@@ -104,10 +98,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan ReadSingle_s()
-    {
-        return TimeSpan.FromSeconds(ReadSingle());
-    }
+    public TimeSpan ReadSingle_s() => TimeSpan.FromSeconds(ReadSingle());
 
     /// <summary>
     /// Reads a 4-byte floating point value from the current stream and advances the current position of the stream by four bytes.
@@ -117,10 +108,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan ReadSingle_ms()
-    {
-        return TimeSpan.FromMilliseconds(ReadSingle());
-    }
+    public TimeSpan ReadSingle_ms() => TimeSpan.FromMilliseconds(ReadSingle());
 
     /// <summary>
     /// Reads a 4-byte floating point value from the current stream and advances the current position of the stream by four bytes.
@@ -162,11 +150,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
     /// <returns>A byte array.</returns>
-    public byte[] ReadBytes()
-    {
-        var length = ReadInt32();
-        return ReadBytes(length);
-    }
+    public byte[] ReadBytes() => ReadBytes(count: ReadInt32());
 
     /// <summary>
     /// Reads a <see cref="string"/> from the current stream with one of the prefix reading methods.
@@ -201,10 +185,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
-    public override string ReadString()
-    {
-        return ReadString(StringLengthPrefix.Int32);
-    }
+    public override string ReadString() => ReadString(readPrefix: StringLengthPrefix.Int32);
 
     /// <summary>
     /// Reads a <see cref="string"/> from the current stream using the <paramref name="length"/> parameter.
@@ -215,10 +196,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
-    public string ReadString(int length)
-    {
-        return Encoding.UTF8.GetString(ReadBytes(length));
-    }
+    public string ReadString(int length) => Encoding.UTF8.GetString(ReadBytes(length));
 
     /// <summary>
     /// Reads the next <see cref="int"/> from the current stream, casts it as <see cref="bool"/> and advances the current position of the stream by 4 bytes.
@@ -227,10 +205,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public override bool ReadBoolean()
-    {
-        return Convert.ToBoolean(ReadInt32());
-    }
+    public override bool ReadBoolean() => Convert.ToBoolean(ReadInt32());
 
     /// <summary>
     /// If <paramref name="asByte"/> is true, reads the next <see cref="byte"/> from the current stream and casts it as <see cref="bool"/>. Otherwise <see cref="ReadBoolean()"/> is called.
@@ -240,11 +215,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public bool ReadBoolean(bool asByte)
-    {
-        if (asByte) return base.ReadBoolean();
-        else return ReadBoolean();
-    }
+    public bool ReadBoolean(bool asByte) => asByte ? base.ReadBoolean() : ReadBoolean();
 
     /// <summary>
     /// First reads the <see cref="int"/> of the Id version, if not read yet, considering the information from <paramref name="lookbackable"/>. Then reads an <see cref="int"/> (index) that holds the flags of the representing <see cref="string"/>. If the first 30 bits are 0, a fresh <see cref="string"/> is also read.
@@ -519,10 +490,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
-    public T[] ReadArray<T>() where T : struct
-    {
-        return ReadArray<T>(length: ReadInt32());
-    }
+    public T[] ReadArray<T>() where T : struct => ReadArray<T>(length: ReadInt32());
 
     /// <summary>
     /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>.
