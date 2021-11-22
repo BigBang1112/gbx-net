@@ -11,7 +11,7 @@ GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software 
 - All versions of GBX are supported: ranging from TM1.0 to TM®.
 - **GBX.NET 0.10.0+ is separated into MIT and GPL3.0, see [License](#License)**.
 - Reading text-formatted GBX is not currently supported.
-- Reading PAK files isn't currently supported.
+- Reading PAK files is partially supported with **GBX.NET.PAK** sublibrary, but it applies only to PAKs from TMUF and below, and most of contents cannot be read or crashes during decryption.
 
 | Extension | Node | Can read | Can write
 | --- | --- | --- | ---
