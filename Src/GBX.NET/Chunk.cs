@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 
 namespace GBX.NET;
 
-public abstract class Chunk : IComparable<Chunk>
+public abstract class Chunk : IChunk, IComparable<Chunk>
 {
     public virtual uint ID => ((ChunkAttribute)NodeCacheManager.AvailableChunkAttributesByType[GetType()]
         .First(x => x is ChunkAttribute)).ID;
@@ -31,25 +31,13 @@ public abstract class Chunk : IComparable<Chunk>
         Node = node;
     }
 
-    public override int GetHashCode()
-    {
-        return (int)ID;
-    }
+    public override int GetHashCode() => (int)ID;
 
-    public override bool Equals(object? obj)
-    {
-        return Equals(obj as Chunk);
-    }
+    public override bool Equals(object? obj) => Equals(obj as Chunk);
 
-    public override string ToString()
-    {
-        return $"Chunk 0x{ID:X8}";
-    }
+    public override string ToString() => $"Chunk 0x{ID:X8}";
 
-    public bool Equals(Chunk? chunk)
-    {
-        return chunk is not null && chunk.ID == ID;
-    }
+    public bool Equals(Chunk? chunk) => chunk is not null && chunk.ID == ID;
 
     protected internal GameBoxReader CreateReader(Stream input)
     {
@@ -88,17 +76,28 @@ public abstract class Chunk : IComparable<Chunk>
 
     public virtual void OnLoad() { }
 
-    public abstract void Read(CMwNod n, GameBoxReader r);
-    public abstract void Write(CMwNod n, GameBoxWriter w);
-    public abstract void ReadWrite(CMwNod n, GameBoxReaderWriter rw);
-
     public int CompareTo(Chunk? other)
     {
         return ID.CompareTo(other?.ID);
     }
+
+    void IChunk.Read(CMwNod n, GameBoxReader r)
+    {
+        throw new NotSupportedException();
+    }
+
+    void IChunk.Write(CMwNod n, GameBoxWriter w)
+    {
+        throw new NotSupportedException();
+    }
+
+    void IChunk.ReadWrite(CMwNod n, GameBoxReaderWriter rw)
+    {
+        throw new NotSupportedException();
+    }
 }
 
-public abstract class Chunk<T> : Chunk where T : CMwNod
+public abstract class Chunk<T> : Chunk, IChunk where T : CMwNod
 {
     [IgnoreDataMember]
     public new T Node
@@ -120,17 +119,17 @@ public abstract class Chunk<T> : Chunk where T : CMwNod
 
     }
 
-    public override void Read(CMwNod n, GameBoxReader r)
+    void IChunk.Read(CMwNod n, GameBoxReader r)
     {
         Read((T)n, r);
     }
 
-    public override void Write(CMwNod n, GameBoxWriter w)
+    void IChunk.Write(CMwNod n, GameBoxWriter w)
     {
         Write((T)n, w);
     }
 
-    public override void ReadWrite(CMwNod n, GameBoxReaderWriter rw)
+    void IChunk.ReadWrite(CMwNod n, GameBoxReaderWriter rw)
     {
         ReadWrite((T)n, rw);
     }

@@ -137,7 +137,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
                             using var msChunk = new MemoryStream(d);
                             using var rChunk = new GameBoxReader(msChunk, this);
                             var rw = new GameBoxReaderWriter(rChunk);
-                            chunk.ReadWrite(gbx.Node, rw);
+                            ((IChunk)chunk).ReadWrite(gbx.Node, rw);
                             ((ISkippableChunk)chunk).Discovered = true;
                         }
 
@@ -199,7 +199,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
 
                         var pos = userData.Position;
                         if (((ISkippableChunk)chunk).Discovered)
-                            chunk.ReadWrite(((GameBox<T>)GBX).Node, gbxrw);
+                            ((IChunk)chunk).ReadWrite(((GameBox<T>)GBX).Node, gbxrw);
                         else
                             ((ISkippableChunk)chunk).Write(gbxw);
 

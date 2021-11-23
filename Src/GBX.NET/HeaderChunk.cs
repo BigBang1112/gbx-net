@@ -37,7 +37,7 @@ public class HeaderChunk<T> : SkippableChunk<T>, IHeaderChunk where T : CMwNod
     }
 }
 
-public sealed class HeaderChunk : Chunk, ISkippableChunk, IHeaderChunk
+public sealed class HeaderChunk : Chunk, IHeaderChunk
 {
     readonly uint id;
 
@@ -72,20 +72,5 @@ public sealed class HeaderChunk : Chunk, ISkippableChunk, IHeaderChunk
     public override string ToString()
     {
         return $"Header chunk 0x{ID:X8}";
-    }
-
-    public override void Read(CMwNod n, GameBoxReader r)
-    {
-        throw new NotSupportedException();
-    }
-
-    public override void Write(CMwNod n, GameBoxWriter w)
-    {
-        throw new NotSupportedException();
-    }
-
-    public override void ReadWrite(CMwNod n, GameBoxReaderWriter rw)
-    {
-        throw new NotSupportedException();
     }
 }

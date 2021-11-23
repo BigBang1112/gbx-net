@@ -344,7 +344,7 @@ public class CMwNod
 #endif
                     if (autoReadWriteChunkAttribute == null)
                     {
-                        c.ReadWrite(node, gbxrw);
+                        ((IChunk)c).ReadWrite(node, gbxrw);
                     }
                     else
                     {
@@ -435,7 +435,7 @@ public class CMwNod
                 if (chunk is ISkippableChunk s && !s.Discovered)
                     s.Write(msW);
                 else if (!Attribute.IsDefined(chunk.GetType(), typeof(AutoReadWriteChunkAttribute)))
-                    chunk.ReadWrite(this, rw);
+                    ((IChunk)chunk).ReadWrite(this, rw);
                 else
                     msW.Write(chunk.Unknown.ToArray(), 0, (int)chunk.Unknown.Length);
 

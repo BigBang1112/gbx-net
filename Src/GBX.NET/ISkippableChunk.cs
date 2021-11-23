@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET;
 
-public interface ISkippableChunk
+public interface ISkippableChunk : IChunk
 {
     bool Discovered { get; set; }
     byte[] Data { get; set; }
