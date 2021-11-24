@@ -1,16 +1,10 @@
 ﻿using BenchmarkDotNet.Attributes;
 using GBX.NET.Engines.MwFoundations;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GBX.NET.Benchmarks;
 
 [MemoryDiagnoser]
-public class LzoBenchmark
+public class LzoBenchmark : Benchmark
 {
     public MemoryStream MapCompressed { get; set; } = new();
     public MemoryStream MapUncompressed { get; set; } = new();

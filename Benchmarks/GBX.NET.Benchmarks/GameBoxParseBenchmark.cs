@@ -1,21 +1,13 @@
 ﻿using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Engines;
 using BenchmarkDotNet.Order;
-using GBX.NET.Engines.Game;
 using GBX.NET.Engines.MwFoundations;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GBX.NET.Benchmarks;
 
 [IterationCount(50)]
 [Orderer(SummaryOrderPolicy.FastestToSlowest)]
 [MarkdownExporterAttribute.GitHub]
-public partial class GameBoxParseBenchmark<T> where T : CMwNod
+public abstract class GameBoxParseBenchmark<T> : Benchmark where T : CMwNod
 {
     private readonly string folder;
 
