@@ -80,9 +80,6 @@ public class GameBox<T> : GameBox where T : CMwNod
 
         n.GBX = gbx; // Assign the GBX body to this body
 
-        foreach (var chunk in n.Chunks)
-            chunk.GBX = gbx; // Assign each chunk to this body
-
         var type = n.GetType();
 
         foreach (var prop in type.GetProperties()) // Go through all properties of a node
@@ -251,7 +248,7 @@ public class GameBox<T> : GameBox where T : CMwNod
         return true;
     }
 
-    internal void Write(GameBoxWriter w, IDRemap remap)
+    internal void Write(Stream stream, IDRemap remap)
     {
         if (Body is null)
             return;
@@ -272,23 +269,19 @@ public class GameBox<T> : GameBox where T : CMwNod
 
         Log.Write("Writing the header...");
 
+        using var headerW = new GameBoxWriter(stream, lookbackable: Header);
         (Header as ILookbackable).IdWritten = false;
         (Header as ILookbackable).IdStrings.Clear();
-        Header.Write(w, Body.AuxilaryNodes.Count + 1, remap);
+        Header.Write(headerW, Body.AuxilaryNodes.Count + 1, remap);
 
         Log.Write("Writing the reference table...");
 
         if (RefTable == null)
-            w.Write(0);
+            headerW.Write(0);
         else
-            RefTable.Write(w);
+            RefTable.Write(headerW);
 
-        w.Write(ms.ToArray(), 0, (int)ms.Length);
-    }
-
-    internal void Write(GameBoxWriter w)
-    {
-        Write(w, IDRemap.Latest);
+        headerW.Write(ms.ToArray(), 0, (int)ms.Length);
     }
 
     /// <summary>
@@ -298,8 +291,7 @@ public class GameBox<T> : GameBox where T : CMwNod
     /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
     public void Save(Stream stream, IDRemap remap = default)
     {
-        using var w = new GameBoxWriter(stream);
-        Write(w, remap);
+        Write(stream, remap);
     }
 
     /// <summary>

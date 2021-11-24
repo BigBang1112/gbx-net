@@ -15,9 +15,6 @@ public abstract class Chunk : IChunk, IComparable<Chunk>
     [IgnoreDataMember]
     public MemoryStream Unknown { get; } = new MemoryStream();
 
-    [IgnoreDataMember]
-    public GameBox? GBX { get; set; }
-
     public CMwNod Node { get; internal set; }
 
     public int Progress { get; set; }
@@ -41,12 +38,12 @@ public abstract class Chunk : IChunk, IComparable<Chunk>
 
     protected internal GameBoxReader CreateReader(Stream input)
     {
-        return this is ILookbackable l ? new GameBoxReader(input, l) : new GameBoxReader(input, GBX?.Body);
+        return new GameBoxReader(input, Node.GBX?.Body, this as ILookbackable);
     }
 
     protected internal GameBoxWriter CreateWriter(Stream input)
     {
-        return this is ILookbackable l ? new GameBoxWriter(input, l) : new GameBoxWriter(input, GBX?.Body);
+        return new GameBoxWriter(input, Node.GBX?.Body, this as ILookbackable);
     }
 
     public static uint Remap(uint chunkID, IDRemap remap = IDRemap.Latest)

@@ -21,21 +21,15 @@ public class GameBoxReader : BinaryReader
     public ILookbackable? Lookbackable { get; }
 
     /// <summary>
-    /// <see cref="GameBox"/> object taken either from <see cref="Body"/> or <see cref="Lookbackable"/>.
-    /// </summary>
-    public GameBox? GBX => Body is not null ? Body.GBX : Lookbackable?.GBX;
-
-    /// <summary>
     /// Constructs a binary reader specialized for GBX.
     /// </summary>
     /// <param name="input">The input stream.</param>
-    /// <param name="lookbackable">An object to look into for the list of already read data. If null, <see cref="Id"/>, <see cref="Ident"/> or <see cref="CMwNod"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
-    public GameBoxReader(Stream input, ILookbackable? lookbackable = null) : base(input, Encoding.UTF8, true)
+    /// <param name="body">Body used to store node references. If null, <see cref="CMwNod"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
+    /// <param name="lookbackable">A specified object to look into for the list of already read data. If null while <paramref name="body"/> is null, <see cref="Id"/> or <see cref="Ident"/> cannot be read and <see cref="PropertyNullException"/> can be thrown. If null while <paramref name="body"/> is not null, the body is used as <see cref="ILookbackable"/> instead.</param>
+    public GameBoxReader(Stream input, GameBoxBody? body = null, ILookbackable? lookbackable = null) : base(input, Encoding.UTF8, true)
     {
-        Lookbackable = lookbackable;
-
-        if (lookbackable is GameBoxBody b)
-            Body = b;
+        Body = body;
+        Lookbackable = lookbackable ?? body;
     }
 
     /// <summary>

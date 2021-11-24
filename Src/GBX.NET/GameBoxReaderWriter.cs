@@ -882,6 +882,12 @@ public class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public void Single_msn(ref TimeSpan? variable) => variable = Single_msn(variable);
 
+    /// <summary>
+    /// Reads or writes a <paramref name="byteLength"/> amount of bytes as a <see cref="BigInteger"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <param name="byteLength">Amount of bytes to use for reading/writing.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -892,6 +898,13 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes a <paramref name="byteLength"/> amount of bytes as a nullable <see cref="BigInteger"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="byteLength">Amount of bytes to use for reading/writing.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -902,20 +915,26 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes a <paramref name="byteLength"/> amount of bytes as a <see cref="BigInteger"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <param name="byteLength">Amount of bytes to use for reading/writing.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public void BigInt(ref BigInteger variable, int byteLength) => variable = BigInt(variable, byteLength);
 
+    /// <summary>
+    /// Reads or writes a <paramref name="byteLength"/> amount of bytes as a nullable <see cref="BigInteger"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="byteLength">Amount of bytes to use for reading/writing.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public void BigInt(ref BigInteger? variable, int byteLength, BigInteger defaultValue = default) => variable = BigInt(variable, byteLength, defaultValue);
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public BigInteger BigInt(int byteLength) => BigInt(default, byteLength);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1762,7 +1781,7 @@ public class GameBoxReaderWriter
             if (Reader.Lookbackable is null)
                 throw new PropertyNullException(nameof(Reader.Lookbackable));
 
-            using var w = new GameBoxWriter(stream, Reader.Lookbackable);
+            using var w = new GameBoxWriter(stream);
             w.Write(Reader.ReadUntilFacade().ToArray());
 
             return;

@@ -21,61 +21,35 @@ public class GameBoxWriter : BinaryWriter
     public ILookbackable? Lookbackable { get; }
 
     /// <summary>
-    /// <see cref="GameBox"/> object taken either from <see cref="Body"/> or <see cref="Lookbackable"/>.
-    /// </summary>
-    public GameBox? GBX
-    {
-        get
-        {
-            if (Body != null)
-                return Body.GBX;
-            return Lookbackable?.GBX;
-        }
-    }
-
-    /// <summary>
     /// Constructs a binary writer specialized for GBX.
     /// </summary>
     /// <param name="output">The output stream.</param>
-    /// <param name="lookbackable">An object to look into for the list of already written data. If null, <see cref="Id"/>, <see cref="Ident"/> or <see cref="CMwNod"/> cannot be written properly and <see cref="PropertyNullException"/> can be thrown.</param>
-    public GameBoxWriter(Stream output, ILookbackable? lookbackable = null) : base(output, Encoding.UTF8, true)
+    /// <param name="body">Body used to store node references. If null, <see cref="CMwNod"/> cannot be written and <see cref="PropertyNullException"/> can be thrown.</param>
+    /// <param name="lookbackable">A specified object to look into for the list of already written data. If null while <paramref name="body"/> is null, <see cref="Id"/> or <see cref="Ident"/> cannot be written and <see cref="PropertyNullException"/> can be thrown. If null while <paramref name="body"/> is not null, the body is used as <see cref="ILookbackable"/> instead.</param>
+    public GameBoxWriter(Stream output, GameBoxBody? body = null, ILookbackable? lookbackable = null) : base(output, Encoding.UTF8, true)
     {
-        Lookbackable = lookbackable;
-
-        if (lookbackable is GameBoxBody b)
-            Body = b;
+        Body = body;
+        Lookbackable = lookbackable ?? body;
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write(string? value, StringLengthPrefix lengthPrefix)
     {
-        if (value is null)
-        {
-            switch (lengthPrefix)
-            {
-                case StringLengthPrefix.Byte:
-                    Write((byte)0);
-                    break;
-                case StringLengthPrefix.Int32:
-                    Write(0);
-                    break;
-            }
-
-            return;
-        }
+        var length = value is null ? 0 : Encoding.UTF8.GetByteCount(value);
 
         switch (lengthPrefix)
         {
             case StringLengthPrefix.Byte:
-                Write((byte)Encoding.UTF8.GetByteCount(value));
+                Write((byte)length);
                 break;
             case StringLengthPrefix.Int32:
-                Write(Encoding.UTF8.GetByteCount(value));
+                Write(length);
                 break;
         }
 
-        WriteBytes(bytes: Encoding.UTF8.GetBytes(value));
+        if (value is not null)
+            WriteBytes(Encoding.UTF8.GetBytes(value));
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -563,7 +537,7 @@ public class GameBoxWriter : BinaryWriter
             node.Write(this);
 
             string logProgress = $"[{nodeType.FullName!.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::")}] {counter + 1}/{count} ({watch.Elapsed.TotalMilliseconds}ms)";
-            if (GBX == null || !GBX.ID.HasValue || CMwNod.Remap(GBX.ID.Value) != node.ID)
+            if (Body == null || !Body.GBX.ID.HasValue || CMwNod.Remap(Body.GBX.ID.Value) != node.ID)
                 logProgress = "~ " + logProgress;
 
             Log.Write(logProgress, ConsoleColor.Magenta);

@@ -3471,7 +3471,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             Data = r.ReadBytes(sizeOfNodeWithClassID);
 
             using var ms = new MemoryStream(Data);
-            using var r2 = new GameBoxReader(ms, this);
+            using var r2 = CreateReader(ms);
 
             n.genealogies = ParseArray<CGameCtnZoneGenealogy>(r2)!;
         }
@@ -3483,10 +3483,10 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             using var ms = new MemoryStream();
             using var w1 = new GameBoxWriter(ms);
 
-            w1.Write(n.genealogies, (x, w2) =>
+            w1.Write(n.genealogies, (x, w) =>
             {
-                w2.Write(0x0311D000);
-                x.Write(w2);
+                w.Write(0x0311D000);
+                x.Write(w);
             });
 
             w.Write((int)ms.Length);
@@ -3860,7 +3860,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             w.Write(U01);
 
             using var ms = new MemoryStream();
-            using var writer = new GameBoxWriter(ms, this);
+            using var writer = CreateWriter(ms);
 
             var embedded = new List<Ident>();
 

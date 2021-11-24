@@ -38,7 +38,6 @@ public class ChunkSet : SortedSet<Chunk>
 
         T chunk = (T)Activator.CreateInstance(typeof(T))!;
         chunk.Node = Node;
-        chunk.GBX = Node.GBX;
 
         if (chunk is ISkippableChunk s)
         {

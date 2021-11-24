@@ -116,7 +116,7 @@ public class CMwNod
     {
         var stopwatch = Stopwatch.StartNew();
 
-        node.GBX = r.GBX;
+        node.GBX = r.Body?.GBX;
 
         var type = node.GetType();
 
@@ -259,7 +259,6 @@ public class CMwNod
 
                     var c = constructor();
                     c.Node = node;
-                    c.GBX = node.GBX;
                     ((ISkippableChunk)c).Data = chunkData;
                     if (chunkData == null || chunkData.Length == 0)
                         ((ISkippableChunk)c).Discovered = true;
@@ -283,7 +282,6 @@ public class CMwNod
                 {
                     Debug.WriteLine("Unknown skippable chunk: " + chunkId.ToString("X"));
                     chunk = (Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkId, chunkData)!;
-                    chunk.GBX = node.GBX;
 #if DEBUG
                     chunk.Debugger.RawData = chunkData;
 #endif
@@ -348,9 +346,9 @@ public class CMwNod
                     }
                     else
                     {
-                        var unknown = new GameBoxWriter(c.Unknown, r.Lookbackable);
+                        var unknown = new GameBoxWriter(c.Unknown);
                         var unknownData = r.ReadUntilFacade().ToArray();
-                        unknown.Write(unknownData, 0, unknownData.Length);
+                        unknown.WriteBytes(unknownData);
                     }
 #if DEBUG
                     var chunkLength = (int)(r.BaseStream.Position - streamPos);
@@ -427,7 +425,7 @@ public class CMwNod
             }
 
             using var ms = new MemoryStream();
-            using var msW = new GameBoxWriter(ms, w.Lookbackable);
+            using var msW = new GameBoxWriter(ms, w.Body, w.Lookbackable);
             var rw = new GameBoxReaderWriter(msW);
 
             try
