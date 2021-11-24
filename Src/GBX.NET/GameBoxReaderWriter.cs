@@ -936,26 +936,51 @@ public class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public void BigInt(ref BigInteger? variable, int byteLength, BigInteger defaultValue = default) => variable = BigInt(variable, byteLength, defaultValue);
 
+    /// <summary>
+    /// Reads or writes a number with a size of 16 bytes as a <see cref="BigInteger"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public BigInteger Int128(BigInteger variable = default) => BigInt(variable, 16);
+    public BigInteger Int128(BigInteger variable = default) => BigInt(variable, byteLength: 16);
 
+    /// <summary>
+    /// Reads or writes a number with a size of 16 bytes as a nullable <see cref="BigInteger"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public BigInteger? Int128(BigInteger? variable, BigInteger defaultValue = default) => BigInt(variable, 16, defaultValue);
+    public BigInteger? Int128(BigInteger? variable, BigInteger defaultValue = default) => BigInt(variable, byteLength: 16, defaultValue);
 
+    /// <summary>
+    /// Reads or writes a number with a size of 16 bytes as a <see cref="BigInteger"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int128(ref BigInteger variable) => BigInt(ref variable, 16);
+    public void Int128(ref BigInteger variable) => BigInt(ref variable, byteLength: 16);
 
+    /// <summary>
+    /// Reads or writes a number with a size of 16 bytes as a nullable <see cref="BigInteger"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int128(ref BigInteger? variable, BigInteger defaultValue = default) => BigInt(ref variable, 16, defaultValue);
+    public void Int128(ref BigInteger? variable, BigInteger defaultValue = default) => BigInt(ref variable, byteLength: 16, defaultValue);
 
+    /// <summary>
+    /// Reads or writes a <see cref="NET.Int2"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -966,6 +991,12 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="NET.Int2"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -976,11 +1007,20 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="NET.Int2"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public void Int2(ref Int2 variable) => variable = Int2(variable);
 
+    /// <summary>
+    /// Reads or writes a nullable <see cref="NET.Int2"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>

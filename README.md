@@ -125,12 +125,18 @@ AMD Ryzen 7 3700X, 1 CPU, 16 logical and 8 physical cores
 To parse a GBX with a known type:
 
 ```cs
+using GBX.NET;
+using GBX.NET.Engines.Game;
+
 var map = GameBox.ParseNode<CGameCtnChallenge>("MyMap.Map.Gbx");
 ```
 
 To parse a GBX with an unknown type:
 
 ```cs
+using GBX.NET;
+using GBX.NET.Engines.Game;
+
 var node = GameBox.ParseNode("MyMap.Map.Gbx");
 
 if (node is CGameCtnChallenge map)
@@ -160,6 +166,9 @@ To get GBX metadata or header chunks, use the `node.GBX` property.
 To save changes of the parsed GBX file:
 
 ```cs
+using GBX.NET;
+using GBX.NET.Engines.Game;
+
 var node = GameBox.ParseNode("MyMap.Map.Gbx");
 
 if (node is CGameCtnChallenge map)
@@ -179,6 +188,9 @@ else if (node is CGameCtnGhost ghost)
 To save any supported `Node` to a GBX file:
 
 ```cs
+using GBX.NET;
+using GBX.NET.Engines.Game;
+
 var replay = GameBox.ParseNode<CGameCtnReplayRecord>("MyReplay.Replay.Gbx");
 
 foreach (CGameCtnGhost ghost in replay.Ghosts)
