@@ -2274,10 +2274,10 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public class Chunk03043003 : HeaderChunk<CGameCtnChallenge>, IVersionable
     {
         private int version;
-        private bool? locked;
 
         public byte[] U01 = new byte[16];
         public int U02;
+        public uint? U03;
 
         /// <summary>
         /// Version of the chunk.
@@ -2286,15 +2286,6 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             get => version;
             set => version = value;
-        }
-
-        /// <summary>
-        /// If the track is locked (used by Virtual Skipper to lock the map parameters). Can be null if <c><see cref="Version"/> &lt; 1</c>.
-        /// </summary>
-        public bool? Locked
-        {
-            get => locked;
-            set => locked = value;
         }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
@@ -2306,7 +2297,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             if (version >= 1)
             {
-                locked = rw.UInt32(Convert.ToUInt32(locked.GetValueOrDefault())) == 1;
+                rw.UInt32(ref U03); // 'Locked' but actually not
                 rw.String(ref n.password);
 
                 if (version >= 2)
@@ -2745,7 +2736,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        /// <exception cref="ChunkVersionNotSupportedException"></exception>
+        /// <exception cref="ChunkVersionNotSupportedException">Chunk version below 0 and above 6 isn't supported.</exception>
         public int Version
         {
             get => version;
