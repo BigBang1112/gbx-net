@@ -194,7 +194,7 @@ public sealed class CPlugEntRecordData : CMwNod
 
                     if (Version >= 2)
                     {
-                        for (byte x; (x = r.ReadByte()) != 0;)
+                        while (r.ReadByte() != 0)
                         {
                             var type = r.ReadInt32();
                             var timestamp = r.ReadInt32();
@@ -205,7 +205,7 @@ public sealed class CPlugEntRecordData : CMwNod
 
                 if (Version >= 3)
                 {
-                    for (byte x; (x = r.ReadByte()) != 0;)
+                    while (r.ReadByte() != 0)
                     {
                         var u19 = r.ReadInt32();
                         var u20 = r.ReadInt32();
@@ -214,7 +214,7 @@ public sealed class CPlugEntRecordData : CMwNod
 
                     if (Version == 7)
                     {
-                        for (byte x; (x = r.ReadByte()) != 0;)
+                        while (r.ReadByte() != 0)
                         {
                             var u23 = r.ReadInt32();
                             var u24 = r.ReadBytes(); // MwBuffer
@@ -229,7 +229,7 @@ public sealed class CPlugEntRecordData : CMwNod
                         {
                             if (Version == 8)
                             {
-                                for (byte x; (x = r.ReadByte()) != 0;)
+                                while (r.ReadByte() != 0)
                                 {
                                     var u25 = r.ReadInt32();
                                     var u26 = r.ReadBytes(); // MwBuffer
@@ -237,7 +237,7 @@ public sealed class CPlugEntRecordData : CMwNod
                             }
                             else
                             {
-                                for (byte x; (x = r.ReadByte()) != 0;)
+                                while (r.ReadByte() != 0)
                                 {
                                     var u28 = r.ReadInt32();
                                     var u29 = r.ReadBytes(); // MwBuffer
