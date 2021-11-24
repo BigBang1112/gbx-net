@@ -59,50 +59,50 @@ AMD Ryzen 7 3700X, 1 CPU, 16 logical and 8 physical cores
   Job-QCSCDP : .NET 6.0.0 (6.0.21.52210), X64 RyuJIT
 ```
 
-| File name | Read | Read header | Write | Discover
-| --- | --- | --- | --- | ---
-| 0_TrackMania\1.2.5 DemoSolo\DemoRaceB1 | 0,24 ms | 0,05 ms | 15,55 ms | 0,02 ms
-| 4_TrackMania United\2\snowC5 | 0,33 ms | 0,06 ms | 17,39 ms | 0,01 ms
-| 1_TrackMania Sunrise\1.4.7\CleanLanding | 0,35 ms | 0,06 ms | 22,24 ms | 0,02 ms
-| 0_TrackMania\1.2.3\RaceF7 | 0,39 ms | 0,04 ms | 26,53 ms | 0,02 ms
-| 2_TrackMania Original\1.5 Demo\DemoRace3 | 0,40 ms | 0,04 ms | 21,36 ms | 0,01 ms
-| 4_TrackMania United\2.0.8\DesertE | 0,40 ms | 0,06 ms | 28,52 ms | 0,02 ms
-| 8_Trackmania 2020\Training\cR­ç»f - 20 | 0,58 ms | 0,10 ms | 8,89 ms | 0,02 ms
-| 8_Trackmania 2020\Training\Training - 20 | 0,60 ms | 0,10 ms | 9,44 ms | 0,02 ms
-| 1_TrackMania Sunrise\1.4.5\AirControl | 0,71 ms | 0,06 ms | 16,76 ms | 0,02 ms
-| 6_TrackMania 2\MP4\BaseValley | 0,84 ms | 0,09 ms | 51,70 ms | 0,03 ms
-| 1_TrackMania Sunrise\1.4.5 Nvidia\TrialTime | 1,02 ms | 0,05 ms | 29,22 ms | 0,02 ms
-| 3_TrackMania Nations ESWC\1.7.5\Pro A-4 | 1,07 ms | 0,05 ms | 14,08 ms | 0,01 ms
-| 1_TrackMania Sunrise\1.5\TrialTime | 1,11 ms | 0,05 ms | 32,68 ms | 0,02 ms
-| 7_TrackMania Turbo\VR\VR_Stadium_007 | 1,16 ms | 0,08 ms | 20,48 ms | 0,02 ms
-| 1_TrackMania Sunrise\1.4.6\LittleWalk | 1,25 ms | 0,05 ms | 21,82 ms | 0,02 ms
-| 1_TrackMania Sunrise\1.5 Demo\DemoRace1 | 1,30 ms | 0,05 ms | 27,46 ms | 0,02 ms
-| 6_TrackMania 2\MP4Valley\D13 | 1,33 ms | 0,09 ms | 35,13 ms | 0,02 ms
-| 6_TrackMania 2\MP4Lagoon\B01 | 1,57 ms | 0,06 ms | 41,17 ms | 0,02 ms
-| 7_TrackMania Turbo\Solo\100 | 1,92 ms | 0,08 ms | 53,07 ms | 0,03 ms
-| 6_TrackMania 2\MP3Platform\E03 - Ultimate Nightmare | 1,97 ms | 0,10 ms | 64,17 ms | 0,02 ms
-| 6_TrackMania 2\MP3Valley\E01 | 2,01 ms | 0,10 ms | 63,66 ms | 0,02 ms
-| 6_TrackMania 2\MP3Stadium\E02 | 2,03 ms | 0,10 ms | 85,97 ms | 0,02 ms
-| 8_Trackmania 2020\Royal\NoTechLogic | 2,10 ms | 0,15 ms | 66,99 ms | 0,03 ms
-| 5_TrackMania Forever\2.11.11 Nations\E02-Endurance | 2,15 ms | 0,09 ms | 23,97 ms | 0,02 ms
-| 5_TrackMania Forever\2.11.25\StarStadiumE | 2,65 ms | 0,07 ms | 25,71 ms | 0,02 ms
-| 1_TrackMania Sunrise\1.4\Paradise Island | 2,87 ms | 0,04 ms | 28,37 ms | 0,02 ms
-| 5_TrackMania Forever\2.11.11 United\StuntC1 | 3,34 ms | 0,09 ms | 57,83 ms | 0,02 ms
-| 8_Trackmania 2020\20200701\a¤?a­Lcu> 2020 - 11 | 3,37 ms | 0,10 ms | 185,57 ms | 0,03 ms
-| 8_Trackmania 2020\20201001\ç§<a­L 2020 - 12 | 3,43 ms | 0,09 ms | 152,00 ms | 0,04 ms
-| 8_Trackmania 2020\20201001\Fall 2020 - 12 | 3,43 ms | 0,09 ms | 151,81 ms | 0,04 ms
-| 8_Trackmania 2020\20200701\Summer 2020 - 11 | 3,54 ms | 0,11 ms | 185,16 ms | 0,03 ms
-| 6_TrackMania 2\MP3Canyon\B10 | 3,87 ms | 0,07 ms | 24,26 ms | 0,02 ms
-| 2_TrackMania Original\1.5\StuntsD1 | 3,97 ms | 0,04 ms | 44,63 ms | 0,01 ms
-| Community\CCP#04 - ODYSSEY | 3,99 ms | 0,09 ms | 104,41 ms | 0,03 ms
-| 0_TrackMania\1 Demo\Track6 | 4,17 ms | 0,06 ms | 37,04 ms | 0,02 ms
-| 0_TrackMania\1 Beta\Track6 | 4,21 ms | 0,05 ms | 36,77 ms | 0,02 ms
-| 8_Trackmania 2020\20210401\Spring 2021 - 23 | 4,24 ms | 0,09 ms | 82,10 ms | 0,04 ms
-| 8_Trackmania 2020\20210101\Winter 2021 - 15 | 4,26 ms | 0,14 ms | 135,10 ms | 0,04 ms
-| 0_TrackMania\1.1\RaceD1 | 4,40 ms | 0,04 ms | 39,06 ms | 0,02 ms
-| 0_TrackMania\1\PuzzleF2 | 5,20 ms | 0,04 ms | 57,21 ms | 0,03 ms
-| 8_Trackmania 2020\20210701\Summer 2021 - 25 | 5,55 ms | 0,09 ms | 160,57 ms | 0,05 ms
-| 8_Trackmania 2020\20211001\Fall 2021 - 16 | 14,03 ms | 0,16 ms | 1204,03 ms | 0,06 ms
+| File name | Read | Read header | Write
+| --- | --- | --- | ---
+| 0_TrackMania\1.2.5 DemoSolo\DemoRaceB1 | 0,24 ms | 0,05 ms | 15,55 ms
+| 4_TrackMania United\2\snowC5 | 0,33 ms | 0,06 ms | 17,39 ms
+| 1_TrackMania Sunrise\1.4.7\CleanLanding | 0,35 ms | 0,06 ms | 22,24 ms
+| 0_TrackMania\1.2.3\RaceF7 | 0,39 ms | 0,04 ms | 26,53 ms
+| 2_TrackMania Original\1.5 Demo\DemoRace3 | 0,40 ms | 0,04 ms | 21,36 ms
+| 4_TrackMania United\2.0.8\DesertE | 0,40 ms | 0,06 ms | 28,52 ms
+| 8_Trackmania 2020\Training\cR­ç»f - 20 | 0,58 ms | 0,10 ms | 8,89 ms
+| 8_Trackmania 2020\Training\Training - 20 | 0,60 ms | 0,10 ms | 9,44 ms
+| 1_TrackMania Sunrise\1.4.5\AirControl | 0,71 ms | 0,06 ms | 16,76 ms
+| 6_TrackMania 2\MP4\BaseValley | 0,84 ms | 0,09 ms | 51,70 ms
+| 1_TrackMania Sunrise\1.4.5 Nvidia\TrialTime | 1,02 ms | 0,05 ms | 29,22 ms
+| 3_TrackMania Nations ESWC\1.7.5\Pro A-4 | 1,07 ms | 0,05 ms | 14,08 ms
+| 1_TrackMania Sunrise\1.5\TrialTime | 1,11 ms | 0,05 ms | 32,68 ms
+| 7_TrackMania Turbo\VR\VR_Stadium_007 | 1,16 ms | 0,08 ms | 20,48 ms
+| 1_TrackMania Sunrise\1.4.6\LittleWalk | 1,25 ms | 0,05 ms | 21,82 ms
+| 1_TrackMania Sunrise\1.5 Demo\DemoRace1 | 1,30 ms | 0,05 ms | 27,46 ms
+| 6_TrackMania 2\MP4Valley\D13 | 1,33 ms | 0,09 ms | 35,13 ms
+| 6_TrackMania 2\MP4Lagoon\B01 | 1,57 ms | 0,06 ms | 41,17 ms
+| 7_TrackMania Turbo\Solo\100 | 1,92 ms | 0,08 ms | 53,07 ms
+| 6_TrackMania 2\MP3Platform\E03 - Ultimate Nightmare | 1,97 ms | 0,10 ms | 64,17 ms
+| 6_TrackMania 2\MP3Valley\E01 | 2,01 ms | 0,10 ms | 63,66 ms
+| 6_TrackMania 2\MP3Stadium\E02 | 2,03 ms | 0,10 ms | 85,97 ms
+| 8_Trackmania 2020\Royal\NoTechLogic | 2,10 ms | 0,15 ms | 66,99 ms
+| 5_TrackMania Forever\2.11.11 Nations\E02-Endurance | 2,15 ms | 0,09 ms | 23,97 ms
+| 5_TrackMania Forever\2.11.25\StarStadiumE | 2,65 ms | 0,07 ms | 25,71 ms
+| 1_TrackMania Sunrise\1.4\Paradise Island | 2,87 ms | 0,04 ms | 28,37 ms
+| 5_TrackMania Forever\2.11.11 United\StuntC1 | 3,34 ms | 0,09 ms | 57,83 ms
+| 8_Trackmania 2020\20200701\a¤?a­Lcu> 2020 - 11 | 3,37 ms | 0,10 ms | 185,57 ms
+| 8_Trackmania 2020\20201001\ç§<a­L 2020 - 12 | 3,43 ms | 0,09 ms | 152,00 ms
+| 8_Trackmania 2020\20201001\Fall 2020 - 12 | 3,43 ms | 0,09 ms | 151,81 ms
+| 8_Trackmania 2020\20200701\Summer 2020 - 11 | 3,54 ms | 0,11 ms | 185,16 ms
+| 6_TrackMania 2\MP3Canyon\B10 | 3,87 ms | 0,07 ms | 24,26 ms
+| 2_TrackMania Original\1.5\StuntsD1 | 3,97 ms | 0,04 ms | 44,63 ms
+| Community\CCP#04 - ODYSSEY | 3,99 ms | 0,09 ms | 104,41 ms
+| 0_TrackMania\1 Demo\Track6 | 4,17 ms | 0,06 ms | 37,04 ms
+| 0_TrackMania\1 Beta\Track6 | 4,21 ms | 0,05 ms | 36,77 ms
+| 8_Trackmania 2020\20210401\Spring 2021 - 23 | 4,24 ms | 0,09 ms | 82,10 ms
+| 8_Trackmania 2020\20210101\Winter 2021 - 15 | 4,26 ms | 0,14 ms | 135,10 ms
+| 0_TrackMania\1.1\RaceD1 | 4,40 ms | 0,04 ms | 39,06 ms
+| 0_TrackMania\1\PuzzleF2 | 5,20 ms | 0,04 ms | 57,21 ms
+| 8_Trackmania 2020\20210701\Summer 2021 - 25 | 5,55 ms | 0,09 ms | 160,57 ms
+| 8_Trackmania 2020\20211001\Fall 2021 - 16 | 14,03 ms | 0,16 ms | 1204,03 ms
 
 ## Dependencies
 
