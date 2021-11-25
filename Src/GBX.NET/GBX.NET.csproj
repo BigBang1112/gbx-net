@@ -35,6 +35,7 @@
 		<Using Include="TmEssentials"/>
 		<Using Include="GBX.NET.Attributes"/>
 		<Using Include="GBX.NET.Exceptions"/>
+		<Using Include="GBX.NET.Extensions"/>
 		<Using Include="GBX.NET.Engines.Control"/>
 		<Using Include="GBX.NET.Engines.Game"/>
 		<Using Include="GBX.NET.Engines.GameData"/>

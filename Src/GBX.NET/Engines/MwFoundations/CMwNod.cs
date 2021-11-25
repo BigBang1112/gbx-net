@@ -78,12 +78,21 @@ public class CMwNod
         return array;
     }
 
-    internal static IEnumerable<T?> ParseEnumerable<T>(GameBoxReader r) where T : CMwNod
+    internal static IEnumerable<T?> ParseEnumerable<T>(GameBoxReader r, int count) where T : CMwNod
     {
-        var count = r.ReadInt32();
-
         for (var i = 0; i < count; i++)
             yield return Parse<T>(r);
+    }
+
+    internal static IEnumerable<T?> ParseEnumerable<T>(GameBoxReader r) where T : CMwNod
+    {
+        return ParseEnumerable<T>(r, count: r.ReadInt32());
+    }
+
+    internal static IList<T?> ParseList<T>(GameBoxReader r) where T : CMwNod
+    {
+        var count = r.ReadInt32();
+        return ParseEnumerable<T>(r, count).ToList(count);
     }
 
     internal static T? Parse<T>(GameBoxReader r, uint? classID = null, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod

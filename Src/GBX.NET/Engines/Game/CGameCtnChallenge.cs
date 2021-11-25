@@ -3373,8 +3373,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 var size = r.ReadInt32();
                 U02 = r.ReadInt32(); // 10
 
-                // TODO: Optimize
-                n.anchoredObjects = ParseArray<CGameCtnAnchoredObject>(r).ToList()!;
+                n.anchoredObjects = ParseList<CGameCtnAnchoredObject>(r)!;
 
                 U03 = r.ReadToEnd();
             }
@@ -3389,12 +3388,12 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 w.Write(U01);
 
                 using var itemMs = new MemoryStream();
-                using var wr = CreateWriter(itemMs);
+                using var itemW = CreateWriter(itemMs);
 
-                wr.Write(U02);
-                wr.WriteNodes(n.anchoredObjects);
+                itemW.Write(U02);
+                itemW.WriteNodes(n.anchoredObjects);
 
-                wr.WriteBytes(U03 ?? Array.Empty<byte>());
+                itemW.WriteBytes(U03);
 
                 w.Write((int)itemMs.Length);
                 w.WriteBytes(itemMs.ToArray());
