@@ -148,10 +148,15 @@ public sealed class CPlugEntRecordData : CMwNod
                                 case 4:
                                     {
                                         bufferMs.Position = 5;
+                                        var rpmByte = bufferR.ReadByte();
+
+                                        bufferMs.Position = 14;
+                                        var steerByte = bufferR.ReadByte();
+                                        var steer = ((steerByte / 255f) - 0.5f) * 2;
+
+                                        bufferMs.Position = 91;
                                         var gearByte = bufferR.ReadByte();
                                         var gear = gearByte / 5f;
-                                        var rpmByte = bufferR.ReadByte();
-                                        var steer = ((rpmByte / 255f) - 0.5f) * 2;
 
                                         sample.Gear = gear;
                                         sample.RPM = rpmByte;
