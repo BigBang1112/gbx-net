@@ -10,7 +10,7 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 
 		<Version>0.1.4</Version>
-		<PackageReleaseNotes>Compatiblity change to .NET Framework 4.5</PackageReleaseNotes>
+		<PackageReleaseNotes>Update to C# 10.</PackageReleaseNotes>
 
 		<TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;net48</TargetFrameworks>
 		<LangVersion>10</LangVersion>
