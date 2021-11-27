@@ -48,10 +48,22 @@ public static class NodeCacheManager
         DefineTypes();
     }
 
+    /// <summary>
+    /// Gets the cached private constructor of the node. The node can potentially have null values in non-nullable properties and fields.
+    /// </summary>
+    /// <typeparam name="T">Type of the node to instantiate.</typeparam>
+    /// <param name="classId">Class ID.</param>
+    /// <returns>The instantiated node.</returns>
+    /// <exception cref="NodeNotFoundException">Node has not been found in the cached list.</exception>
     internal static T GetNodeInstance<T>(uint classId) where T : CMwNod
     {
         if (AvailableClassConstructors.TryGetValue(classId, out Func<CMwNod>? constructor))
-            return (T)constructor();
+        {
+            var node = (T)constructor();
+            node.SetIDAndChunks();
+            return node;
+        }
+
         throw new NodeNotFoundException(classId);
     }
 
