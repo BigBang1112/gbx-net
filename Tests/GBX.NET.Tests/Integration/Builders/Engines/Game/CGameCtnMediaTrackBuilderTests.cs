@@ -3,7 +3,6 @@ using GBX.NET.Builders.Engines.Control;
 using GBX.NET.Builders.Engines.Game;
 using GBX.NET.Engines.Control;
 using GBX.NET.Engines.Game;
-using GBX.NET.Tests.Integration.Builders.Engines.Control;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,45 +14,37 @@ namespace GBX.NET.Tests.Integration.Builders.Engines.Game;
 
 public class CGameCtnMediaTrackBuilderTests
 {
-    public static string GetSampleText() => "Random Text";
-    public static CControlEffectSimi.Key[] GetSampleKeys() => CControlEffectSimiBuilderTests.GetSampleKeys();
-    public static CControlEffectSimi GetSampleEffect() => CControlEffectSimi.Create()
-        .WithKeys(GetSampleKeys())
-        .ForTM2()
-        .Build();
-    public static Vec3 GetSampleColor() => new(1, 0, 0);
+    public static string GetSampleName() => Unit.Builders.Engines.Game.CGameCtnMediaTrackBuilderTests.GetSampleName();
+    public static List<CGameCtnMediaBlock> GetSampleBlocksForTM2() => Unit.Builders.Engines.Game.CGameCtnMediaTrackBuilderTests.GetSampleBlocksForTMUF();
 
-    private static CGameCtnMediaBlockText BuildNode(Func<ICGameCtnMediaBlockTextBuilderFor,
-        GameBuilder<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>> func, string text, CControlEffectSimi effect, Vec3 color)
+    private static CGameCtnMediaTrack BuildNode(Func<ICGameCtnMediaTrackBuilderFor,
+        GameBuilder<ICGameCtnMediaTrackBuilder, CGameCtnMediaTrack>> func, string name, List<CGameCtnMediaBlock> blocks)
     {
-        var builder = new CGameCtnMediaBlockTextBuilder()
-            .WithText(text)
-            .WithEffect(effect)
-            .WithColor(color);
+        var builder = new CGameCtnMediaTrackBuilder()
+            .WithName(name)
+            .WithBlocks(blocks);
         return func.Invoke(builder).Build();
     }
 
-    private static void ForX_ParametersShouldMatch(Func<ICGameCtnMediaBlockTextBuilderFor,
-        GameBuilder<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>> func)
+    private static void ForX_ParametersShouldMatch(Func<ICGameCtnMediaTrackBuilderFor,
+        GameBuilder<ICGameCtnMediaTrackBuilder, CGameCtnMediaTrack>> func)
     {
-        var text = GetSampleText();
-        var effect = GetSampleEffect();
-        var color = GetSampleColor();
+        var name = GetSampleName();
+        var blocks = GetSampleBlocksForTM2();
 
-        var node = BuildNode(func, text, effect, color);
+        var node = BuildNode(func, name, blocks);
 
-        Assert.Equal(expected: text, actual: node.Text);
-        Assert.Equal(expected: effect, actual: node.Effect);
+        Assert.Equal(expected: name, actual: node.Name);
+        Assert.Equal(expected: blocks, actual: node.Blocks);
     }
 
-    private static void ForX_ChunksShouldMatch(Func<ICGameCtnMediaBlockTextBuilderFor,
-        GameBuilder<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>> func, Action<CGameCtnMediaBlockText> chunkAssert)
+    private static void ForX_ChunksShouldMatch(Func<ICGameCtnMediaTrackBuilderFor,
+        GameBuilder<ICGameCtnMediaTrackBuilder, CGameCtnMediaTrack>> func, Action<CGameCtnMediaTrack> chunkAssert)
     {
-        var text = GetSampleText();
-        var effect = GetSampleEffect();
-        var color = GetSampleColor();
+        var name = GetSampleName();
+        var blocks = GetSampleBlocksForTM2();
 
-        var node = BuildNode(func, text, effect, color);
+        var node = BuildNode(func, name, blocks);
         chunkAssert.Invoke(node);
     }
 
@@ -68,9 +59,9 @@ public class CGameCtnMediaTrackBuilderTests
     {
         ForX_ChunksShouldMatch(x => x.ForTMSX(), node =>
         {
-            Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8001>());
-            Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8002>());
-            Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8003>());
+            Assert.NotNull(node.GetChunk<CGameCtnMediaTrack.Chunk03078001>());
+            Assert.NotNull(node.GetChunk<CGameCtnMediaTrack.Chunk03078002>());
+            Assert.NotNull(node.GetChunk<CGameCtnMediaTrack.Chunk03078003>());
         });
     }
 
@@ -79,8 +70,9 @@ public class CGameCtnMediaTrackBuilderTests
     {
         ForX_ChunksShouldMatch(x => x.ForTMU(), node =>
         {
-            Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8001>());
-            Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8002>());
+            Assert.NotNull(node.GetChunk<CGameCtnMediaTrack.Chunk03078001>());
+            Assert.NotNull(node.GetChunk<CGameCtnMediaTrack.Chunk03078002>());
+            Assert.NotNull(node.GetChunk<CGameCtnMediaTrack.Chunk03078003>());
         });
     }
 
@@ -89,8 +81,8 @@ public class CGameCtnMediaTrackBuilderTests
     {
         ForX_ChunksShouldMatch(x => x.ForTMUF(), node =>
         {
-            Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8001>());
-            Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8002>());
+            Assert.NotNull(node.GetChunk<CGameCtnMediaTrack.Chunk03078001>());
+            Assert.NotNull(node.GetChunk<CGameCtnMediaTrack.Chunk03078004>());
         });
     }
 
@@ -99,8 +91,8 @@ public class CGameCtnMediaTrackBuilderTests
     {
         ForX_ChunksShouldMatch(x => x.ForTM2(), node =>
         {
-            Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8001>());
-            Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8002>());
+            Assert.NotNull(node.GetChunk<CGameCtnMediaTrack.Chunk03078001>());
+            Assert.NotNull(node.GetChunk<CGameCtnMediaTrack.Chunk03078005>());
         });
     }
 
@@ -109,8 +101,8 @@ public class CGameCtnMediaTrackBuilderTests
     {
         ForX_ChunksShouldMatch(x => x.ForTM2020(), node =>
         {
-            Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8001>());
-            Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8002>());
+            Assert.NotNull(node.GetChunk<CGameCtnMediaTrack.Chunk03078001>());
+            Assert.NotNull(node.GetChunk<CGameCtnMediaTrack.Chunk03078005>());
         });
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.Game;
+﻿using GBX.NET.Builders.Engines.Game;
+
+namespace GBX.NET.Engines.Game;
 
 [Node(0x03079000)]
 public sealed class CGameCtnMediaClip : CMwNod
@@ -20,6 +22,8 @@ public sealed class CGameCtnMediaClip : CMwNod
         name = null!;
         tracks = null!;
     }
+
+    public static CGameCtnMediaClipBuilder Create() => new();
 
     #endregion
 
@@ -113,7 +117,7 @@ public sealed class CGameCtnMediaClip : CMwNod
     [Chunk(0x03079003)]
     public class Chunk03079003 : Chunk<CGameCtnMediaClip>
     {
-        private int tracksVersion;
+        private int tracksVersion = 10;
 
         public int TracksVersion
         {

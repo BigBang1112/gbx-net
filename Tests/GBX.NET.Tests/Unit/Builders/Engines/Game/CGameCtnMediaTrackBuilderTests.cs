@@ -70,7 +70,7 @@ public class CGameCtnMediaTrackBuilderTests
     {
         var expected = NodeCacheManager.GetNodeInstance<CGameCtnMediaTrack>(0x03078000);
 
-        var actual = new CGameCtnMediaBlockTextBuilder().NewNode();
+        var actual = new CGameCtnMediaTrackBuilder().NewNode();
 
         Assert.Equal(expected.ID, actual.ID);
     }
@@ -149,7 +149,7 @@ public class CGameCtnMediaTrackBuilderTests
     [Fact]
     public void TM2020_Build_ShouldHaveSpecifics()
     {
-        var node = new CGameCtnMediaTrackBuilder().ForTM2()
+        var node = new CGameCtnMediaTrackBuilder().ForTM2020()
             .Cycles()
             .Build();
 

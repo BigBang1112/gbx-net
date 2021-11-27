@@ -71,10 +71,7 @@ public sealed class CGameCtnMediaTrack : CMwNod
         blocks = null!;
     }
 
-    public static CGameCtnMediaTrackBuilder Create()
-    {
-        return new CGameCtnMediaTrackBuilder();
-    }
+    public static CGameCtnMediaTrackBuilder Create() => new();
 
     #endregion
 

@@ -48,10 +48,7 @@ public sealed class CGameCtnMediaBlockText : CGameCtnMediaBlock, CGameCtnMediaBl
         effect = null!;
     }
 
-    public static CGameCtnMediaBlockTextBuilder Create()
-    {
-        return new CGameCtnMediaBlockTextBuilder();
-    }
+    public static CGameCtnMediaBlockTextBuilder Create() => new();
 
     #endregion
 

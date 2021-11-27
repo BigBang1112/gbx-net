@@ -92,10 +92,7 @@ public sealed class CGameCtnMediaBlockSound : CGameCtnMediaBlock, CGameCtnMediaB
         keys = null!;
     }
 
-    public static CGameCtnMediaBlockSoundBuilder Create()
-    {
-        return new CGameCtnMediaBlockSoundBuilder();
-    }
+    public static CGameCtnMediaBlockSoundBuilder Create() => new();
 
     #endregion
 
