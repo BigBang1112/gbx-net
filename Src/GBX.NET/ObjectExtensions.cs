@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System.ArrayExtensions;
 using System.Reflection;
-using System.ArrayExtensions;
 
 namespace System
 {
     internal static class ObjectExtensions
     {
-        private static readonly MethodInfo CloneMethod = typeof(object).GetMethod("MemberwiseClone", BindingFlags.NonPublic | BindingFlags.Instance);
+        private static readonly MethodInfo CloneMethod = typeof(object).GetMethod("MemberwiseClone", BindingFlags.NonPublic | BindingFlags.Instance)!;
 
         public static bool IsPrimitive(this Type type)
         {
@@ -25,10 +24,10 @@ namespace System
             if (IsPrimitive(typeToReflect)) return originalObject;
             if (visited.ContainsKey(originalObject)) return visited[originalObject];
             if (typeof(Delegate).IsAssignableFrom(typeToReflect)) return null;
-            var cloneObject = CloneMethod.Invoke(originalObject, null);
+            var cloneObject = CloneMethod.Invoke(originalObject, null)!;
             if (typeToReflect.IsArray)
             {
-                var arrayType = typeToReflect.GetElementType();
+                var arrayType = typeToReflect.GetElementType()!;
                 if (IsPrimitive(arrayType) == false)
                 {
                     Array clonedArray = (Array)cloneObject;
@@ -70,11 +69,12 @@ namespace System
 
     public class ReferenceEqualityComparer : EqualityComparer<Object>
     {
-        public override bool Equals(object x, object y)
+        public override bool Equals(object? x, object? y)
         {
             return ReferenceEquals(x, y);
         }
-        public override int GetHashCode(object obj)
+
+        public override int GetHashCode(object? obj)
         {
             if (obj == null) return 0;
             return obj.GetHashCode();

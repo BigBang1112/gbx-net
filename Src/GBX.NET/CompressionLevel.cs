@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace GBX.NET;
 
-namespace GBX.NET
+public enum CompressionLevel
 {
-    public enum CompressionLevel
-    {
-        NoCompression,
-        DefaultCompression,
-        BestCompression,
-        UnknownCompression
-    }
+    NoCompression,
+    DefaultCompression,
+    BestCompression,
+    UnknownCompression
 }

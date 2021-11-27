@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿namespace GBX.NET;
 
-namespace GBX.NET
+public interface ISkippableChunk : IChunk
 {
-    public interface ISkippableChunk
-    {
-        bool Discovered { get; set; }
-        byte[] Data { get; set; }
+    bool Discovered { get; set; }
+    byte[] Data { get; set; }
 
-        void Write(GameBoxWriter w);
-        void Discover();
-    }
+    void Write(GameBoxWriter w);
+    void Discover();
 }

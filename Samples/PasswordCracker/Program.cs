@@ -4,33 +4,32 @@ using System;
 using System.IO;
 using System.Linq;
 
-namespace PasswordCracker
+namespace PasswordCracker;
+
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
+        Log.OnLogEvent += Log_OnLogEvent;
+
+        foreach (var fileName in args)
         {
-            Log.OnLogEvent += Log_OnLogEvent;
+            var node = GameBox.ParseNode(fileName);
 
-            foreach (var fileName in args)
+            if (node is CGameCtnChallenge map)
             {
-                var node = GameBox.ParseNode(fileName);
+                map.CrackPassword();
 
-                if (node is CGameCtnChallenge map)
-                {
-                    map.CrackPassword();
-
-                    var savePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.GetFileName(fileName));
-                    map.Save(savePath);
-                }
+                var savePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.GetFileName(fileName));
+                map.Save(savePath);
             }
         }
+    }
 
-        private static void Log_OnLogEvent(string text, ConsoleColor color)
-        {
-            Console.ForegroundColor = color;
-            Console.WriteLine(text);
-            Console.ResetColor();
-        }
+    private static void Log_OnLogEvent(string text, ConsoleColor color)
+    {
+        Console.ForegroundColor = color;
+        Console.WriteLine(text);
+        Console.ResetColor();
     }
 }

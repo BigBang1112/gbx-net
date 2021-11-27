@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
+	  <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,7 +28,9 @@
 
 	<ItemGroup>
 	  <None Remove="Files\CCP#04 - ODYSSEY.Map.Gbx" />
+	  <None Remove="Files\Game_Over.Map.Gbx" />
 	  <None Remove="Files\IslandSeaWaySupport.TMEDRoad.Gbx" />
+	  <None Remove="Files\Mape.Map.Gbx" />
 	  <None Remove="Files\Summer 2021 - 25.Map.Gbx" />
 	</ItemGroup>
 

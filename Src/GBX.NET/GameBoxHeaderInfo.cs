@@ -1,92 +1,86 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿namespace GBX.NET;
 
-using GBX.NET.Engines.MwFoundations;
-
-namespace GBX.NET
+public class GameBoxHeaderInfo
 {
-    public class GameBoxHeaderInfo
+    public short Version { get; set; }
+    public GameBoxByteFormat ByteFormat { get; set; }
+    public GameBoxCompression CompressionOfRefTable { get; set; }
+    public GameBoxCompression CompressionOfBody { get; set; }
+    public char? UnknownByte { get; set; }
+    public uint? ID { get; internal set; }
+    public byte[] UserData { get; protected set; }
+    public int NumNodes { get; protected set; }
+
+    public GameBoxHeaderInfo(uint id)
     {
-        public short Version { get; set; }
-        public GameBoxByteFormat ByteFormat { get; set; }
-        public GameBoxCompression CompressionOfRefTable { get; set; }
-        public GameBoxCompression CompressionOfBody { get; set; }
-        public char? UnknownByte { get; set; }
-        public uint? ID { get; internal set; }
-        public byte[] UserData { get; protected set; }
-        public int NumNodes { get; protected set; }
+        Version = 6;
+        ByteFormat = GameBoxByteFormat.Byte;
+        CompressionOfRefTable = GameBoxCompression.Uncompressed;
+        CompressionOfBody = GameBoxCompression.Compressed;
+        UnknownByte = 'R';
+        ID = id;
+        UserData = Array.Empty<byte>();
+    }
 
-        public GameBoxHeaderInfo(uint id)
+    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
+    public GameBoxHeaderInfo(GameBoxReader reader)
+    {
+        UserData = Array.Empty<byte>();
+        Read(reader);
+    }
+
+    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
+    internal bool Read(GameBoxReader reader)
+    {
+        if (!reader.HasMagic(GameBox.Magic))
         {
-            Version = 6;
-            ByteFormat = GameBoxByteFormat.Byte;
-            CompressionOfRefTable = GameBoxCompression.Uncompressed;
-            CompressionOfBody = GameBoxCompression.Compressed;
-            UnknownByte = 'R';
-            ID = id;
-            UserData = new byte[0];
+            Log.Write("GBX magic missing! Corrupted file or not a GBX file.", ConsoleColor.Red);
+            return false;
         }
 
-        public GameBoxHeaderInfo(GameBoxReader reader)
-        {
-            UserData = new byte[0];
-            Read(reader);
-        }
+        Log.Write("GBX recognized!", ConsoleColor.Green);
 
-        public bool Read(GameBoxReader reader)
+        Version = reader.ReadInt16();
+        Log.Write("- Version: " + Version.ToString());
+
+        if (Version >= 3)
         {
-            if (!reader.HasMagic(GameBox.Magic))
+            ByteFormat = (GameBoxByteFormat)reader.ReadByte();
+            Log.Write("- Byte format: " + ByteFormat.ToString());
+
+            if (ByteFormat == GameBoxByteFormat.Text)
+                throw new TextFormatNotSupportedException();
+
+            CompressionOfRefTable = (GameBoxCompression)reader.ReadByte();
+            Log.Write("- Ref. table compression: " + CompressionOfRefTable.ToString());
+
+            CompressionOfBody = (GameBoxCompression)reader.ReadByte();
+            Log.Write("- Body compression: " + CompressionOfBody.ToString());
+
+            if (Version >= 4)
             {
-                Log.Write("GBX magic missing! Corrupted file or not a GBX file.", ConsoleColor.Red);
-                return false;
+                UnknownByte = (char)reader.ReadByte();
+                Log.Write("- Unknown byte: " + UnknownByte.ToString());
             }
 
-            Log.Write("GBX recognized!", ConsoleColor.Green);
+            ID = CMwNod.Remap(reader.ReadUInt32());
+            Log.Write("- Class ID: 0x" + ID.Value.ToString("X8"));
 
-            Version = reader.ReadInt16();
-            Log.Write("- Version: " + Version.ToString());
-
-            if (Version >= 3)
+            if (Version >= 6)
             {
-                ByteFormat = (GameBoxByteFormat)reader.ReadByte();
-                Log.Write("- Byte format: " + ByteFormat.ToString());
+                var userDataSize = reader.ReadInt32();
+                Log.Write($"- User data size: {(userDataSize / 1024f).ToString()} kB");
 
-                if (ByteFormat == GameBoxByteFormat.Text)
-                    throw new NotSupportedException("Text-formatted GBX files are not supported.");
-
-                CompressionOfRefTable = (GameBoxCompression)reader.ReadByte();
-                Log.Write("- Ref. table compression: " + CompressionOfRefTable.ToString());
-
-                CompressionOfBody = (GameBoxCompression)reader.ReadByte();
-                Log.Write("- Body compression: " + CompressionOfBody.ToString());
-
-                if (Version >= 4)
-                {
-                    UnknownByte = (char)reader.ReadByte();
-                    Log.Write("- Unknown byte: " + UnknownByte.ToString());
-                }
-
-                ID = CMwNod.Remap(reader.ReadUInt32());
-                Log.Write("- Class ID: 0x" + ID.Value.ToString("X8"));
-
-                if (Version >= 6)
-                {
-                    var userDataSize = reader.ReadInt32();
-                    Log.Write($"- User data size: {(userDataSize / 1024f).ToString()} kB");
-
-                    if (userDataSize > 0)
-                        UserData = reader.ReadBytes(userDataSize);
-                }
-
-                NumNodes = reader.ReadInt32();
-                Log.Write("- Number of nodes: " + NumNodes.ToString());
+                if (userDataSize > 0)
+                    UserData = reader.ReadBytes(userDataSize);
             }
 
-            Log.Write("Header completed!", ConsoleColor.Green);
-
-            return true;
+            NumNodes = reader.ReadInt32();
+            Log.Write("- Number of nodes: " + NumNodes.ToString());
         }
+
+        Log.Write("Header completed!", ConsoleColor.Green);
+
+        return true;
     }
 }

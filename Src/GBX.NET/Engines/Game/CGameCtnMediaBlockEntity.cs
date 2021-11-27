@@ -1,41 +1,38 @@
-﻿using GBX.NET.Engines.Plug;
+﻿namespace GBX.NET.Engines.Game;
 
-namespace GBX.NET.Engines.Game
+[Node(0x0329F000)]
+public sealed class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
 {
-    [Node(0x0329F000)]
-    public sealed class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
+    private CPlugEntRecordData recordData;
+
+    public CPlugEntRecordData RecordData
     {
-        private CPlugEntRecordData recordData;
+        get => recordData;
+        set => recordData = value;
+    }
 
-        public CPlugEntRecordData RecordData
+    private CGameCtnMediaBlockEntity()
+    {
+        recordData = null!;
+    }
+
+    [Chunk(0x0329F000)]
+    public class Chunk0329F000 : Chunk<CGameCtnMediaBlockEntity>, IVersionable
+    {
+        private int version;
+
+        public int Version
         {
-            get => recordData;
-            set => recordData = value;
+            get => version;
+            set => version = value;
         }
 
-        private CGameCtnMediaBlockEntity()
+        public override void ReadWrite(CGameCtnMediaBlockEntity n, GameBoxReaderWriter rw)
         {
-            recordData = null!;
-        }
+            rw.Int32(ref version);
+            rw.NodeRef<CPlugEntRecordData>(ref n.recordData!);
 
-        [Chunk(0x0329F000)]
-        public class Chunk0329F000 : Chunk<CGameCtnMediaBlockEntity>, IVersionable
-        {
-            private int version;
-
-            public int Version
-            {
-                get => version;
-                set => version = value;
-            }
-
-            public override void ReadWrite(CGameCtnMediaBlockEntity n, GameBoxReaderWriter rw)
-            {
-                rw.Int32(ref version);
-                rw.NodeRef<CPlugEntRecordData>(ref n.recordData!);
-
-                rw.UntilFacade(Unknown);
-            }
+            rw.UntilFacade(Unknown);
         }
     }
 }

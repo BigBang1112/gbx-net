@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace GBX.NET.Exceptions;
 
-namespace GBX.NET.Exceptions
+/// <summary>
+/// The exception that is thrown when a hypothetically impossible state is detected.
+/// </summary>
+public class ThisShouldNotHappenException : Exception
 {
-    /// <summary>
-    /// The exception that is thrown when a hypothetically impossible state is detected.
-    /// </summary>
-    public class ThisShouldNotHappenException : Exception
+    public ThisShouldNotHappenException() : base("This should not happen.")
     {
-        public ThisShouldNotHappenException() : base("This should not happen.")
-        {
 
-        }
-	}
+    }
 }

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace GBX.NET;
 
-namespace GBX.NET
+[AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
+public class WritingNotSupportedAttribute : Attribute
 {
-    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-    public class WritingNotSupportedAttribute : Attribute
-    {
 
-    }
 }

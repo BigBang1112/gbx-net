@@ -9,12 +9,13 @@
 		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
 		
-		<Version>0.13.0</Version>
+		<Version>0.14.0</Version>
 		<PackageReleaseNotes></PackageReleaseNotes>
 		
-		<TargetFrameworks>netstandard2.1;netstandard2.0;net45</TargetFrameworks>
-		<LangVersion>9.0</LangVersion>
+		<TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;net48</TargetFrameworks>
+		<LangVersion>10</LangVersion>
 		<Platforms>AnyCPU;x64;x86</Platforms>
 		
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -28,6 +29,25 @@
 		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
 		<NoWarn>1591</NoWarn>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<Using Remove="System.Net.Http"/>
+		<Using Include="TmEssentials"/>
+		<Using Include="GBX.NET.Attributes"/>
+		<Using Include="GBX.NET.Exceptions"/>
+		<Using Include="GBX.NET.Extensions"/>
+		<Using Include="GBX.NET.Engines.Control"/>
+		<Using Include="GBX.NET.Engines.Game"/>
+		<Using Include="GBX.NET.Engines.GameData"/>
+		<Using Include="GBX.NET.Engines.Hms"/>
+		<Using Include="GBX.NET.Engines.Input"/>
+		<Using Include="GBX.NET.Engines.MwFoundations"/>
+		<Using Include="GBX.NET.Engines.Plug"/>
+		<Using Include="GBX.NET.Engines.Scene"/>
+		<Using Include="GBX.NET.Engines.Script"/>
+		<Using Include="GBX.NET.Engines.System"/>
+		<Using Include="GBX.NET.Engines.TrackMania"/>
+	</ItemGroup>
 
 	<ItemGroup>
 		<Compile Update="Resources.Designer.cs">
@@ -53,17 +73,12 @@
 		<Folder Include="Engines\Xml\" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)' == 'net45'">
-		<PackageReference Include="System.IO.Compression">
-			<Version>4.3.0</Version>
-		</PackageReference>
-		<PackageReference Include="System.ValueTuple">
-			<Version>4.5.0</Version>
-		</PackageReference>
-	</ItemGroup>
-
 	<ItemGroup>
 	  <PackageReference Include="TmEssentials" Version="2.0.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
 	</ItemGroup>
 
 </Project>
