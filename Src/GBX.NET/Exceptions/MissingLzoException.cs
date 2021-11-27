@@ -1,4 +1,4 @@
-﻿namespace GBX.NET;
+﻿namespace GBX.NET.Exceptions;
 
 public class MissingLzoException : Exception
 {
