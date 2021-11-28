@@ -320,12 +320,12 @@ public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 #if DEBUG
             n.challenge.ContinueWith(x =>
             {
-                if (x.IsFaulted)
-                {
-                    var e = x.Exception?.InnerException;
-                    Debug.WriteLine(e?.Message);
-                    Debug.WriteLine(e?.StackTrace);
-                }
+                if (!x.IsFaulted)
+                    return;
+
+                var e = x.Exception?.InnerException;
+                Debug.WriteLine(e?.Message);
+                Debug.WriteLine(e?.StackTrace);
             });
 #endif
         }
@@ -345,43 +345,43 @@ public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
         {
             n.eventsDuration = r.ReadInt32();
 
-            if (n.eventsDuration != 0)
+            if (n.eventsDuration == 0)
+                return;
+
+            U01 = r.ReadInt32();
+
+            // All control names available in the game
+            var controlNames = r.ReadArray(r1 =>
             {
-                U01 = r.ReadInt32();
-
-                // All control names available in the game
-                var controlNames = r.ReadArray(r1 =>
-                {
-                        // Maybe bindings
-                        r1.ReadInt32();
+                    // Maybe bindings
                     r1.ReadInt32();
+                r1.ReadInt32();
 
-                    return r1.ReadString(); // Input name
-                    });
+                return r1.ReadString(); // Input name
+                });
 
-                var numEntries = r.ReadInt32() - 1;
+            var numEntries = r.ReadInt32() - 1;
 
-                n.controlEntries = new ControlEntry[numEntries];
+            n.controlEntries = new ControlEntry[numEntries];
 
-                for (var i = 0; i < numEntries; i++)
+            for (var i = 0; i < numEntries; i++)
+            {
+                var time = TimeSpan.FromMilliseconds(r.ReadInt32() - 10000);
+                var controlNameIndex = r.ReadInt32();
+                var data = r.ReadUInt32();
+
+                var name = controlNames[controlNameIndex];
+
+                n.controlEntries[i] = name switch
                 {
-                    var time = TimeSpan.FromMilliseconds(r.ReadInt32() - 10000);
-                    var controlNameIndex = r.ReadInt32();
-                    var data = r.ReadUInt32();
-
-                    var name = controlNames[controlNameIndex];
-
-                    n.controlEntries[i] = name switch
-                    {
-                        "Steer (analog)" => new ControlEntryAnalog(name) { Time = time, Data = data }, // Data is bugged
-                        _ => new ControlEntry(name) { Time = time, Data = data },
-                    };
-                }
-
-                Array.Reverse(n.controlEntries); // Inputs are originally reversed
-
-                U02 = r.ReadInt32();
+                    "Steer (analog)" => new ControlEntryAnalog(name) { Time = time, Data = data }, // Data is bugged
+                    _ => new ControlEntry(name) { Time = time, Data = data },
+                };
             }
+
+            Array.Reverse(n.controlEntries); // Inputs are originally reversed
+
+            U02 = r.ReadInt32();
         }
     }
 
@@ -479,32 +479,32 @@ public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
         {
             n.eventsDuration = r.ReadInt32();
 
-            if (n.eventsDuration != 0)
+            if (n.eventsDuration == 0)
+                return;
+
+            U01 = r.ReadInt32();
+
+            var controlNames = r.ReadArray(r1 => r1.ReadId());
+
+            var numEntries = r.ReadInt32();
+            U02 = r.ReadInt32();
+
+            n.controlEntries = new ControlEntry[numEntries];
+
+            for (var i = 0; i < numEntries; i++)
             {
-                U01 = r.ReadInt32();
+                var time = TimeSpan.FromMilliseconds(r.ReadInt32() - 100000);
+                var controlNameIndex = r.ReadByte();
+                var data = r.ReadUInt32();
 
-                var controlNames = r.ReadArray(r1 => r1.ReadId());
+                var name = controlNames[controlNameIndex];
 
-                var numEntries = r.ReadInt32();
-                U02 = r.ReadInt32();
-
-                n.controlEntries = new ControlEntry[numEntries];
-
-                for (var i = 0; i < numEntries; i++)
+                n.controlEntries[i] = (string)name switch
                 {
-                    var time = TimeSpan.FromMilliseconds(r.ReadInt32() - 100000);
-                    var controlNameIndex = r.ReadByte();
-                    var data = r.ReadUInt32();
-
-                    var name = controlNames[controlNameIndex];
-
-                    n.controlEntries[i] = (string)name switch
-                    {
-                        "Steer" or "Gas" or "AccelerateReal" or "BrakeReal"
-                          => new ControlEntryAnalog(name) { Time = time, Data = data },
-                        _ => new ControlEntry(name) { Time = time, Data = data },
-                    };
-                }
+                    "Steer" or "Gas" or "AccelerateReal" or "BrakeReal"
+                      => new ControlEntryAnalog(name) { Time = time, Data = data },
+                    _ => new ControlEntry(name) { Time = time, Data = data },
+                };
             }
         }
     }

@@ -180,17 +180,16 @@ public class ChunkSet : SortedSet<Chunk>
     /// </summary>
     public void DiscoverAll(bool parallel)
     {
-        if (parallel)
-        {
-            Parallel.ForEach(this, chunk =>
-            {
-                if (chunk is ISkippableChunk s)
-                    s.Discover();
-            });
-        }
-        else
+        if (!parallel)
         {
             DiscoverAll();
+            return;
         }
+
+        Parallel.ForEach(this, chunk =>
+        {
+            if (chunk is ISkippableChunk s)
+                s.Discover();
+        });
     }
 }

@@ -37,21 +37,21 @@ public class CGameGhost : CMwNod
         sampleData = null!;
         dataExceptionHandle = task =>
         {
-            if (task.IsFaulted)
+            if (!task.IsFaulted)
+                return;
+
+            var exception = task.Exception;
+
+            if (exception is null)
             {
-                var exception = task.Exception;
-
-                if (exception is null)
-                {
-                    Log.Write("Ghost data faulted without an exception", ConsoleColor.Yellow);
-                    return;
-                }
-
-                Log.Write($"\nExceptions while reading ghost data: ({exception.InnerExceptions.Count})", ConsoleColor.Yellow);
-
-                foreach (var ex in exception.InnerExceptions)
-                    Log.Write(ex.ToString());
+                Log.Write("Ghost data faulted without an exception", ConsoleColor.Yellow);
+                return;
             }
+
+            Log.Write($"\nExceptions while reading ghost data: ({exception.InnerExceptions.Count})", ConsoleColor.Yellow);
+
+            foreach (var ex in exception.InnerExceptions)
+                Log.Write(ex.ToString());
         };
     }
 
@@ -411,30 +411,28 @@ public class CGameGhost : CMwNod
         /// or <see cref="SamplePeriod"/> is lower or equal to 0.</returns>
         public Sample? GetSampleLerp(TimeSpan timestamp)
         {
-            if (Samples?.Count > 0 && samplePeriod.Ticks > 0)
+            if (Samples is null || Samples.Count == 0 || samplePeriod.Ticks <= 0)
+                return null;
+
+            var sampleKey = timestamp.TotalMilliseconds / samplePeriod.TotalMilliseconds;
+            var a = Samples.ElementAtOrDefault((int)Math.Floor(sampleKey)); // Sample A
+            var b = Samples.ElementAtOrDefault((int)Math.Ceiling(sampleKey)); // Sample B
+
+            if (a == null) // Timestamp is outside of the range
+                return null;
+
+            if (b == null || a == b) // There's no second sample to interpolate with
+                return a;
+
+            var t = (float)(sampleKey - Math.Floor(sampleKey));
+
+            return new Sample(a.Data)
             {
-                var sampleKey = timestamp.TotalMilliseconds / samplePeriod.TotalMilliseconds;
-                var a = Samples.ElementAtOrDefault((int)Math.Floor(sampleKey)); // Sample A
-                var b = Samples.ElementAtOrDefault((int)Math.Ceiling(sampleKey)); // Sample B
-
-                if (a == null) // Timestamp is outside of the range
-                    return null;
-
-                if (b == null || a == b) // There's no second sample to interpolate with
-                    return a;
-
-                var t = (float)(sampleKey - Math.Floor(sampleKey));
-
-                return new Sample(a.Data)
-                {
-                    Position = AdditionalMath.Lerp(a.Position, b.Position, t),
-                    Rotation = AdditionalMath.Lerp(a.Rotation, b.Rotation, t),
-                    Speed = AdditionalMath.Lerp(a.Speed, b.Speed, t),
-                    Velocity = AdditionalMath.Lerp(a.Velocity, b.Velocity, t)
-                };
-            }
-
-            return null;
+                Position = AdditionalMath.Lerp(a.Position, b.Position, t),
+                Rotation = AdditionalMath.Lerp(a.Rotation, b.Rotation, t),
+                Speed = AdditionalMath.Lerp(a.Speed, b.Speed, t),
+                Velocity = AdditionalMath.Lerp(a.Velocity, b.Velocity, t)
+            };
         }
 
         public class Sample : NET.Sample

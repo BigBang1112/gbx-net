@@ -458,12 +458,11 @@ public class CMwNod
             }
             catch (NotImplementedException e)
             {
-                if (chunk is ISkippableChunk)
-                {
-                    Debug.WriteLine(e.Message);
-                    Debug.WriteLine("Ignoring the skippable chunk from writing.");
-                }
-                else throw e; // Unskippable chunk must have a Write implementation
+                if (chunk is not ISkippableChunk)
+                    throw e; // Unskippable chunk must have a Write implementation
+                
+                Debug.WriteLine(e.Message);
+                Debug.WriteLine("Ignoring the skippable chunk from writing.");
             }
         }
 
@@ -558,11 +557,11 @@ public class CMwNod
 
         foreach (var nodeProperty in GetType().GetProperties())
         {
-            if (nodeProperty.PropertyType.IsSubclassOf(typeof(CMwNod)))
-            {
-                var node = nodeProperty.GetValue(this) as CMwNod;
-                node?.DiscoverAllChunks();
-            }
+            if (!nodeProperty.PropertyType.IsSubclassOf(typeof(CMwNod)))
+                continue;
+
+            var node = nodeProperty.GetValue(this) as CMwNod;
+            node?.DiscoverAllChunks();
         }
     }
 

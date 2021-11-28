@@ -83,38 +83,37 @@ public static class NodeCacheManager
 
             var className = "";
 
-            if (line.StartsWith("  "))
-            {
-                var cl = line.Substring(2, 3);
-                if (line.Length - 6 > 0) className = line.Substring(6);
-
-                var classIDString = $"{en}{cl}{ch}";
-
-                var extension = default(string);
-
-                var classNameSplit = className.Split(' ');
-                if (classNameSplit.Length > 1)
-                {
-                    className = classNameSplit[0];
-                    extension = classNameSplit[1];
-                }
-
-                if (uint.TryParse(classIDString, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint classID))
-                {
-                    Names[classID] = engineName + "::" + className;
-                    if (extension != null)
-                        Extensions[classID] = extension;
-                }
-                else
-                {
-                    Debug.WriteLine($"Invalid class ID {classIDString}, skipping");
-                }
-            }
-            else
+            if (!line.StartsWith("  "))
             {
                 en = line.Substring(0, 2);
                 if (line.Length - 3 > 0) engineName = line.Substring(3);
             }
+
+            var cl = line.Substring(2, 3);
+            if (line.Length - 6 > 0) className = line.Substring(6);
+
+            var classIDString = $"{en}{cl}{ch}";
+
+            var extension = default(string);
+
+            var classNameSplit = className.Split(' ');
+
+            if (classNameSplit.Length > 1)
+            {
+                className = classNameSplit[0];
+                extension = classNameSplit[1];
+            }
+
+            if (uint.TryParse(classIDString, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint classID))
+            {
+                Names[classID] = engineName + "::" + className;
+                if (extension != null)
+                    Extensions[classID] = extension;
+
+                continue;
+            }
+
+            Debug.WriteLine($"Invalid class ID {classIDString}, skipping");
         }
 
         Debug.WriteLine("Classes named in " + watch.Elapsed.TotalMilliseconds + "ms");
@@ -130,16 +129,17 @@ public static class NodeCacheManager
         while ((line = reader.ReadLine()) is not null)
         {
             var valueKey = line.Split(new string[] { " -> " }, StringSplitOptions.None);
-            if (valueKey.Length == 2)
-            {
-                if (uint.TryParse(valueKey[0], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint key)
-                && uint.TryParse(valueKey[1], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint value))
-                {
-                    if (Mappings.ContainsValue(key)) // Virtual Skipper solution
-                        Mappings[Mappings.FirstOrDefault(x => x.Value == key).Key] = value;
-                    Mappings[key] = value;
-                }
-            }
+
+            if (valueKey.Length != 2)
+                continue;
+
+            if (!uint.TryParse(valueKey[0], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint key)
+            || !uint.TryParse(valueKey[1], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint value))
+                continue;
+
+            if (Mappings.ContainsValue(key)) // Virtual Skipper solution
+                Mappings[Mappings.FirstOrDefault(x => x.Value == key).Key] = value;
+            Mappings[key] = value;
         }
 
         Debug.WriteLine("Mappings defined in " + watch.Elapsed.TotalMilliseconds + "ms");
@@ -170,20 +170,16 @@ public static class NodeCacheManager
 
         foreach (var type in engineRelatedTypes)
         {
-            if (type.IsSubclassOf(typeof(CMwNod)) || type == typeof(CMwNod)) // Engine types
-            {
-                var id = type.GetCustomAttribute<NodeAttribute>()?.ID;
+            if (!type.IsSubclassOf(typeof(CMwNod)) && type != typeof(CMwNod)) // Engine types
+                continue;
 
-                if (id.HasValue)
-                {
-                    AvailableClasses.Add(id.Value, type);
-                    availableClassesByType.Add(type, id.Value);
-                }
-                else
-                {
-                    throw new Exception($"{type.Name} misses NodeAttribute.");
-                }
-            }
+            var id = type.GetCustomAttribute<NodeAttribute>()?.ID;
+
+            if (!id.HasValue)
+                throw new Exception($"{type.Name} misses NodeAttribute.");
+
+            AvailableClasses.Add(id.Value, type);
+            availableClassesByType.Add(type, id.Value);
         }
 
         foreach (var typePair in AvailableClasses)
