@@ -75,6 +75,7 @@ public class CGameCtnMediaBlockTextBuilderTests
             .NewNode();
 
         Assert.Equal(expectedText, actual: node.Text);
+        Assert.Equal(expectedEffect, actual: node.Effect);
     }
 
     [Fact]

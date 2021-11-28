@@ -41,7 +41,9 @@ public class CControlEffectSimiBuilderTests
     private static CControlEffectSimi BuildNode(Func<ICControlEffectSimiBuilderFor,
         GameBuilder<ICControlEffectSimiBuilder, CControlEffectSimi>> func, CControlEffectSimi.Key[] keys)
     {
-        var builder = new CControlEffectSimiBuilder().WithKeys(keys);
+        var builder = new CControlEffectSimiBuilder()
+            .WithKeys(keys)
+            .Centered();
         return func.Invoke(builder).Build();
     }
 
@@ -50,7 +52,9 @@ public class CControlEffectSimiBuilderTests
     {
         var keys = GetSampleKeys();
         var node = BuildNode(func, keys);
+
         Assert.Equal(expected: keys, actual: node.Keys);
+        Assert.True(node.Centered);
     }
 
     private static void ForX_ChunksShouldMatch(Func<ICControlEffectSimiBuilderFor,

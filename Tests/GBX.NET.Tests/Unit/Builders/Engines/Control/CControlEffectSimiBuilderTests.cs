@@ -61,6 +61,15 @@ public class CControlEffectSimiBuilderTests
     }
 
     [Fact]
+    public void Centered_ShouldSetIsCentered()
+    {
+        var builder = new CControlEffectSimiBuilder()
+            .Centered();
+
+        Assert.True(builder.IsCentered);
+    }
+
+    [Fact]
     public void NewNode_ShouldReturnInstance()
     {
         var expected = NodeCacheManager.GetNodeInstance<CControlEffectSimi>(0x07010000);
@@ -73,12 +82,13 @@ public class CControlEffectSimiBuilderTests
     [Fact]
     public void NewNode_ShouldSetValues()
     {
-        var expected = GetSampleKeys();
+        var expectedKeys = GetSampleKeys();
 
-        var node = new CControlEffectSimiBuilder { Keys = expected }
+        var node = new CControlEffectSimiBuilder { Keys = expectedKeys, IsCentered = true }
             .NewNode();
 
-        Assert.Equal(expected, actual: node.Keys);
+        Assert.Equal(expectedKeys, actual: node.Keys);
+        Assert.True(node.Centered);
     }
 
     [Fact]
@@ -93,37 +103,190 @@ public class CControlEffectSimiBuilderTests
     [Fact]
     public void TMSX_Build_ShouldHaveSpecifics()
     {
-        var node = new CControlEffectSimiBuilder().ForTMSX().Build();
+        var node = new CControlEffectSimiBuilder()
+            .ForTMSX()
+            .Build();
+
         Assert.NotNull(node.GetChunk<CControlEffectSimi.Chunk07010002>());
     }
 
     [Fact]
     public void TMU_Build_ShouldHaveSpecifics()
     {
-        var node = new CControlEffectSimiBuilder().ForTMU().Build();
+        var node = new CControlEffectSimiBuilder()
+            .ForTMU()
+            .WithColorBlendMode(1)
+            .ContinousEffect()
+            .Build();
+
+        Assert.Equal(expected: 1, actual: node.ColorBlendMode);
+        Assert.True(node.IsContinousEffect);
         Assert.NotNull(node.GetChunk<CControlEffectSimi.Chunk07010004>());
     }
 
     [Fact]
     public void TMUF_Build_ShouldHaveSpecifics()
     {
-        var node = new CControlEffectSimiBuilder().ForTMUF().Build();
+        var node = new CControlEffectSimiBuilder()
+            .ForTMUF()
+            .WithColorBlendMode(1)
+            .ContinousEffect()
+            .Interpolated()
+            .Build();
+
+        Assert.Equal(expected: 1, actual: node.ColorBlendMode);
+        Assert.True(node.IsContinousEffect);
+        Assert.True(node.IsInterpolated);
         Assert.NotNull(node.GetChunk<CControlEffectSimi.Chunk07010005>());
     }
 
     [Fact]
     public void TM2_Build_ShouldHaveSpecifics()
     {
-        var node = new CControlEffectSimiBuilder().ForTM2().Build();
+        var node = new CControlEffectSimiBuilder()
+            .ForTM2()
+            .WithColorBlendMode(1)
+            .ContinousEffect()
+            .Interpolated()
+            .Build();
 
+        Assert.Equal(expected: 1, actual: node.ColorBlendMode);
+        Assert.True(node.IsContinousEffect);
+        Assert.True(node.IsInterpolated);
         Assert.NotNull(node.GetChunk<CControlEffectSimi.Chunk07010005>());
     }
 
     [Fact]
     public void TM2020_Build_ShouldHaveSpecifics()
     {
-        var node = new CControlEffectSimiBuilder().ForTM2020().Build();
+        var node = new CControlEffectSimiBuilder()
+            .ForTM2020()
+            .WithColorBlendMode(1)
+            .ContinousEffect()
+            .Interpolated()
+            .Build();
 
+        Assert.Equal(expected: 1, actual: node.ColorBlendMode);
+        Assert.True(node.IsContinousEffect);
+        Assert.True(node.IsInterpolated);
         Assert.NotNull(node.GetChunk<CControlEffectSimi.Chunk07010005>());
+    }
+
+    [Fact]
+    public void TMU_WithColorBlendMode_ShouldSetColorBlendMode()
+    {
+        var expected = 1;
+
+        var builder = new CControlEffectSimiBuilder()
+            .ForTMU()
+            .WithColorBlendMode(expected);
+
+        Assert.Equal(expected, actual: builder.ColorBlendMode);
+    }
+
+    [Fact]
+    public void TMU_ContinousEffect_ShouldSetIsContinousEffect()
+    {
+        var builder = new CControlEffectSimiBuilder()
+            .ForTMU()
+            .ContinousEffect();
+
+        Assert.True(builder.IsContinousEffect);
+    }
+
+    [Fact]
+    public void TMUF_WithColorBlendMode_ShouldSetColorBlendMode()
+    {
+        var expected = 1;
+
+        var builder = new CControlEffectSimiBuilder()
+            .ForTMUF()
+            .WithColorBlendMode(expected);
+
+        Assert.Equal(expected, actual: builder.ColorBlendMode);
+    }
+
+    [Fact]
+    public void TMUF_ContinousEffect_ShouldSetIsContinousEffect()
+    {
+        var builder = new CControlEffectSimiBuilder()
+            .ForTMUF()
+            .ContinousEffect();
+
+        Assert.True(builder.IsContinousEffect);
+    }
+
+    [Fact]
+    public void TMUF_Interpolated_ShouldSetIsInterpolated()
+    {
+        var builder = new CControlEffectSimiBuilder()
+            .ForTMUF()
+            .Interpolated();
+
+        Assert.True(builder.IsInterpolated);
+    }
+
+    [Fact]
+    public void TM2_WithColorBlendMode_ShouldSetColorBlendMode()
+    {
+        var expected = 1;
+
+        var builder = new CControlEffectSimiBuilder()
+            .ForTM2()
+            .WithColorBlendMode(expected);
+
+        Assert.Equal(expected, actual: builder.ColorBlendMode);
+    }
+
+    [Fact]
+    public void TM2_ContinousEffect_ShouldSetIsContinousEffect()
+    {
+        var builder = new CControlEffectSimiBuilder()
+            .ForTM2()
+            .ContinousEffect();
+
+        Assert.True(builder.IsContinousEffect);
+    }
+
+    [Fact]
+    public void TM2_Interpolated_ShouldSetIsInterpolated()
+    {
+        var builder = new CControlEffectSimiBuilder()
+            .ForTM2()
+            .Interpolated();
+
+        Assert.True(builder.IsInterpolated);
+    }
+
+    [Fact]
+    public void TM2020_WithColorBlendMode_ShouldSetColorBlendMode()
+    {
+        var expected = 1;
+
+        var builder = new CControlEffectSimiBuilder()
+            .ForTM2020()
+            .WithColorBlendMode(expected);
+
+        Assert.Equal(expected, actual: builder.ColorBlendMode);
+    }
+
+    [Fact]
+    public void TM2020_ContinousEffect_ShouldSetIsContinousEffect()
+    {
+        var builder = new CControlEffectSimiBuilder()
+            .ForTM2020()
+            .ContinousEffect();
+
+        Assert.True(builder.IsContinousEffect);
+    }
+
+    [Fact]
+    public void TM2020_Interpolated_ShouldSetIsInterpolated()
+    {
+        var builder = new CControlEffectSimiBuilder()
+            .ForTM2020()
+            .Interpolated();
+
+        Assert.True(builder.IsInterpolated);
     }
 }
