@@ -87,6 +87,7 @@ public static class NodeCacheManager
             {
                 en = line.Substring(0, 2);
                 if (line.Length - 3 > 0) engineName = line.Substring(3);
+                continue;
             }
 
             var cl = line.Substring(2, 3);

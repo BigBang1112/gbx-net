@@ -14,6 +14,14 @@ public abstract class GameBoxBody : GameBoxPart
     [IgnoreDataMember]
     public SortedDictionary<int, CMwNod> AuxilaryNodes { get; }
 
+    internal bool IsParsed { get; set; }
+    internal int UncompressedSize { get; set; }
+
+    /// <summary>
+    /// Pure body data usually in compressed form. This property is used if GameBox's ParseHeader methods are used, otherwise null.
+    /// </summary>
+    internal byte[]? RawData { get; set; }
+
     public GameBoxBody(GameBox gbx) : base(gbx)
     {
         AuxilaryNodes = new SortedDictionary<int, CMwNod>();
@@ -36,6 +44,21 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
 
     }
 
+    /// <exception cref="MissingLzoException"></exception>
+    public void Read(byte[] data, int uncompressedSize, IProgress<GameBoxReadProgress>? progress = null)
+    {
+        var buffer = new byte[uncompressedSize];
+
+        Lzo.Decompress(data, buffer);
+
+#if DEBUG
+        Debugger.CompressedData = data;
+        Debugger.UncompressedData = buffer;
+#endif
+
+        Read(buffer, progress);
+    }
+
     public void Read(byte[] data, IProgress<GameBoxReadProgress>? progress = null)
     {
         using var ms = new MemoryStream(data);
@@ -52,26 +75,13 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
     {
         CMwNod.Parse(GBX.Node, reader, progress);
 
+        IsParsed = true;
+
         using var ms = new MemoryStream();
         var s = reader.BaseStream;
         s.CopyTo(ms);
         Rest = ms.ToArray();
         Debug.WriteLine("Amount read: " + (s.Position / (float)(s.Position + Rest.Length)).ToString("P"));
-    }
-
-    /// <exception cref="MissingLzoException"></exception>
-    public void Read(byte[] data, int uncompressedSize, IProgress<GameBoxReadProgress>? progress = null)
-    {
-        var buffer = new byte[uncompressedSize];
-
-        Lzo.Decompress(data, buffer);
-
-#if DEBUG
-        Debugger.CompressedData = data;
-        Debugger.UncompressedData = buffer;
-#endif
-
-        Read(buffer, progress);
     }
 
     public void Write(GameBoxWriter w)
@@ -99,7 +109,7 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
 
             w.Write((int)msBody.Length); // Uncompressed
             w.Write(output.Length); // Compressed
-            w.Write(output, 0, output.Length); // Compressed body data
+            w.WriteBytes(output); // Compressed body data
         }
         else
         {
@@ -141,10 +151,11 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
     {
         foreach (var chunk in GBX.Node.Chunks)
         {
-            if (chunk is TChunk1 c1)
-                c1.Discover();
-            if (chunk is TChunk2 c2)
-                c2.Discover();
+            switch (chunk)
+            {
+                case TChunk1 c: c.Discover(); break;
+                case TChunk2 c: c.Discover(); break;
+            }
         }
     }
 
@@ -155,12 +166,12 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
     {
         foreach (var chunk in GBX.Node.Chunks)
         {
-            if (chunk is TChunk1 c1)
-                c1.Discover();
-            if (chunk is TChunk2 c2)
-                c2.Discover();
-            if (chunk is TChunk3 c3)
-                c3.Discover();
+            switch (chunk)
+            {
+                case TChunk1 c: c.Discover(); break;
+                case TChunk2 c: c.Discover(); break;
+                case TChunk3 c: c.Discover(); break;
+            }
         }
     }
 
@@ -172,14 +183,13 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
     {
         foreach (var chunk in GBX.Node.Chunks)
         {
-            if (chunk is TChunk1 c1)
-                c1.Discover();
-            if (chunk is TChunk2 c2)
-                c2.Discover();
-            if (chunk is TChunk3 c3)
-                c3.Discover();
-            if (chunk is TChunk4 c4)
-                c4.Discover();
+            switch (chunk)
+            {
+                case TChunk1 c: c.Discover(); break;
+                case TChunk2 c: c.Discover(); break;
+                case TChunk3 c: c.Discover(); break;
+                case TChunk4 c: c.Discover(); break;
+            }
         }
     }
 
@@ -192,16 +202,14 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
     {
         foreach (var chunk in GBX.Node.Chunks)
         {
-            if (chunk is TChunk1 c1)
-                c1.Discover();
-            if (chunk is TChunk2 c2)
-                c2.Discover();
-            if (chunk is TChunk3 c3)
-                c3.Discover();
-            if (chunk is TChunk4 c4)
-                c4.Discover();
-            if (chunk is TChunk5 c5)
-                c5.Discover();
+            switch (chunk)
+            {
+                case TChunk1 c: c.Discover(); break;
+                case TChunk2 c: c.Discover(); break;
+                case TChunk3 c: c.Discover(); break;
+                case TChunk4 c: c.Discover(); break;
+                case TChunk5 c: c.Discover(); break;
+            }
         }
     }
 
@@ -215,18 +223,15 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
     {
         foreach (var chunk in GBX.Node.Chunks)
         {
-            if (chunk is TChunk1 c1)
-                c1.Discover();
-            if (chunk is TChunk2 c2)
-                c2.Discover();
-            if (chunk is TChunk3 c3)
-                c3.Discover();
-            if (chunk is TChunk4 c4)
-                c4.Discover();
-            if (chunk is TChunk5 c5)
-                c5.Discover();
-            if (chunk is TChunk6 c6)
-                c6.Discover();
+            switch (chunk)
+            {
+                case TChunk1 c: c.Discover(); break;
+                case TChunk2 c: c.Discover(); break;
+                case TChunk3 c: c.Discover(); break;
+                case TChunk4 c: c.Discover(); break;
+                case TChunk5 c: c.Discover(); break;
+                case TChunk6 c: c.Discover(); break;
+            }
         }
     }
 
