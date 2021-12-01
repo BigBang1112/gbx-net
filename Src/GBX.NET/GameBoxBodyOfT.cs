@@ -5,7 +5,6 @@ namespace GBX.NET;
 public class GameBoxBody<T> : GameBoxBody where T : CMwNod
 {
     public byte[]? Rest { get; set; }
-    public bool Aborting { get; private set; }
 
     public new GameBox<T> GBX => (GameBox<T>)base.GBX;
 
@@ -58,45 +57,31 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
         Debug.WriteLine("Amount read: " + (s.Position / (float)(s.Position + Rest.Length)).ToString("P"));
     }
 
-    public void Write(GameBoxWriter w)
-    {
-        Write(w, IDRemap.Latest);
-    }
-
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="MissingLzoException"></exception>
-    public void Write(GameBoxWriter w, IDRemap remap)
+    public void Write(GameBoxWriter w, IDRemap remap = default)
     {
         GBX.Remap = remap;
 
-        if (GBX.Header.CompressionOfBody == GameBoxCompression.Compressed)
-        {
-            using var msBody = new MemoryStream();
-            using var gbxwBody = new GameBoxWriter(msBody, this);
-
-            GBX.Node.Write(gbxwBody, remap);
-
-            var buffer = msBody.ToArray();
-
-            // File.WriteAllBytes("out.dat", buffer);
-
-            var output = Lzo.Compress(buffer);
-
-            w.Write((int)msBody.Length); // Uncompressed
-            w.Write(output.Length); // Compressed
-            w.WriteBytes(output); // Compressed body data
-        }
-        else
+        if (GBX.Header.CompressionOfBody == GameBoxCompression.Uncompressed)
         {
             GBX.Node.Write(w);
+            return;
         }
 
-        // ...
-    }
+        using var msBody = new MemoryStream();
+        using var gbxwBody = new GameBoxWriter(msBody, body: this);
 
-    [Obsolete]
-    public void Abort()
-    {
-        Aborting = true;
+        GBX.Node.Write(gbxwBody, remap);
+
+        var buffer = msBody.ToArray();
+
+        var output = Lzo.Compress(buffer);
+
+        w.Write((int)msBody.Length); // Uncompressed
+        w.Write(output.Length); // Compressed
+        w.WriteBytes(output); // Compressed body data
     }
 
     public TChunk CreateChunk<TChunk>(byte[] data) where TChunk : Chunk<T>
@@ -220,11 +205,13 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
     {
         foreach (var chunk in GBX.Node.Chunks)
         {
-            if (chunk is TChunk t)
-            {
-                if (chunk is SkippableChunk<T> s) s.Discover();
-                return t;
-            }
+            if (chunk is not TChunk t)
+                continue;
+
+            if (chunk is SkippableChunk<T> s)
+                s.Discover();
+
+            return t;
         }
 
         return default;

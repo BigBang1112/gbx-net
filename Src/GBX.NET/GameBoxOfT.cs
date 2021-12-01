@@ -61,19 +61,19 @@ public class GameBox<T> : GameBox where T : CMwNod
     /// <param name="headerInfo">Header info to use.</param>
     public GameBox(T node, GameBoxHeaderInfo? headerInfo = null) : this(headerInfo ?? new GameBoxHeaderInfo(node.ID))
     {
-        // It needs to be sure that GBX is assigned correctly to every node
-        AssignGBXToNode(this, node);
-
         Node = node;
         ID = node.ID;
+
+        // It needs to be sure that GBX is assigned correctly to every node
+        AssignGbxToNode();
     }
 
-    private void AssignGBXToNode()
+    private void AssignGbxToNode()
     {
-        AssignGBXToNode(this, Node);
+        AssignGbxToNode(this, Node);
     }
 
-    private void AssignGBXToNode(GameBox gbx, CMwNod? n)
+    private void AssignGbxToNode(GameBox gbx, CMwNod? n)
     {
         if (n is null) return;
 
@@ -88,9 +88,11 @@ public class GameBox<T> : GameBox where T : CMwNod
 
             if (prop.PropertyType.IsSubclassOf(typeof(CMwNod))) // If the property is Node
             {
-                AssignGBXToNode(gbx, prop.GetValue(n) as CMwNod); // Recurse through the node
+                AssignGbxToNode(gbx, prop.GetValue(n) as CMwNod); // Recurse through the node
+                continue;
             }
-            else if (typeof(IEnumerable).IsAssignableFrom(prop.PropertyType)) // If the property is a list of something
+            
+            if (typeof(IEnumerable).IsAssignableFrom(prop.PropertyType)) // If the property is a list of something
             {
                 // If the list has a generic argument of anu kind of Node
                 if (Array.Find(prop.PropertyType.GetGenericArguments(), x => x.IsSubclassOf(typeof(CMwNod))) is null)
@@ -101,7 +103,7 @@ public class GameBox<T> : GameBox where T : CMwNod
                     continue;
 
                 foreach (var e in enumerable)
-                    AssignGBXToNode(gbx, (CMwNod)e);
+                    AssignGbxToNode(gbx, (CMwNod)e);
             }
         }
     }
@@ -247,16 +249,17 @@ public class GameBox<T> : GameBox where T : CMwNod
         return true;
     }
 
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="MissingLzoException"></exception>
+    /// <exception cref="HeaderOnlyParseLimitationException">Writing is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
     internal void Write(Stream stream, IDRemap remap)
     {
         if (Body is null)
             return;
 
         // It needs to be sure that the Body and Part are assigned to the correct GameBox body
-        AssignGBXToNode();
-
-        using var ms = new MemoryStream();
-        using var bodyW = new GameBoxWriter(ms, Body);
+        AssignGbxToNode();
 
         (Body as ILookbackable).IdWritten = false;
         (Body as ILookbackable).IdStrings.Clear();
@@ -264,7 +267,22 @@ public class GameBox<T> : GameBox where T : CMwNod
 
         Log.Write("Writing the body...");
 
-        Body.Write(bodyW, remap); // Body is written first so that the aux node count is determined properly
+        using var ms = new MemoryStream();
+        using var bodyW = new GameBoxWriter(ms, Body);
+
+        if (Body.RawData is null)
+        {
+            if (!Body.IsParsed)
+                throw new HeaderOnlyParseLimitationException();
+
+            Body.Write(bodyW, remap); // Body is written first so that the aux node count is determined properly
+        }
+        else
+        {
+            if (Header.CompressionOfBody == GameBoxCompression.Compressed)
+                bodyW.Write(Body.UncompressedSize);
+            bodyW.WriteBytes(Body.RawData);
+        }
 
         Log.Write("Writing the header...");
 
@@ -275,12 +293,12 @@ public class GameBox<T> : GameBox where T : CMwNod
 
         Log.Write("Writing the reference table...");
 
-        if (RefTable == null)
+        if (RefTable is null)
             headerW.Write(0);
         else
             RefTable.Write(headerW);
 
-        headerW.Write(ms.ToArray(), 0, (int)ms.Length);
+        headerW.WriteBytes(ms.ToArray());
     }
 
     /// <summary>
@@ -288,6 +306,10 @@ public class GameBox<T> : GameBox where T : CMwNod
     /// </summary>
     /// <param name="stream">Any kind of stream that supports writing.</param>
     /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="MissingLzoException"></exception>
+    /// <exception cref="HeaderOnlyParseLimitationException">Saving is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
     public void Save(Stream stream, IDRemap remap = default)
     {
         Write(stream, remap);
@@ -298,13 +320,17 @@ public class GameBox<T> : GameBox where T : CMwNod
     /// </summary>
     /// <param name="fileName">Relative or absolute file path. Null will pick the <see cref="GameBox.FileName"/> value instead.</param>
     /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
-    /// <exception cref="PropertyNullException"></exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBox.FileName"/> is null.</exception>
     /// <exception cref="ArgumentException"><paramref name="fileName"/> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by System.IO.Path.InvalidPathChars.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="fileName"/> is null.</exception>
     /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.</exception>
     /// <exception cref="DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive).</exception>
     /// <exception cref="UnauthorizedAccessException"><paramref name="fileName"/> specified a file that is read-only. -or- <paramref name="fileName"/> specified a file that is hidden. -or- This operation is not supported on the current platform. -or- <paramref name="fileName"/> specified a directory. -or- The caller does not have the required permission.</exception>
     /// <exception cref="NotSupportedException"><paramref name="fileName"/> is in an invalid format.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="MissingLzoException"></exception>
+    /// <exception cref="HeaderOnlyParseLimitationException">Saving is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
     public void Save(string? fileName = default, IDRemap remap = default)
     {
         fileName ??= (FileName ?? throw new PropertyNullException(nameof(FileName)));
