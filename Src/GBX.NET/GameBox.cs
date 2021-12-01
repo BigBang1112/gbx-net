@@ -70,7 +70,7 @@ public class GameBox
     /// <returns>True if the type of this <see cref="GameBox"/> is <see cref="GameBox{T}"/> and <typeparamref name="T"/> matches. Otherwise false.</returns>
     public bool TryNode<T>(out T? node) where T : CMwNod
     {
-        var property = GetType().GetProperty("MainNode");
+        var property = GetType().GetProperty(nameof(Node));
 
         if (property?.PropertyType == typeof(T))
         {
