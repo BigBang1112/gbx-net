@@ -86,22 +86,18 @@ public sealed class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHas
             rw.List(ref n.keys!, (i, r) => new Key()
             {
                 Time = r.ReadSingle_s(),
-                X = r.ReadSingle(),
-                Y = r.ReadSingle(),
+                Position = r.ReadVec2(),
                 Rotation = r.ReadSingle(),
-                ScaleX = r.ReadSingle(),
-                ScaleY = r.ReadSingle(),
+                Scale = r.ReadVec2(),
                 Opacity = r.ReadSingle(),
                 Depth = r.ReadSingle()
             },
             (x, w) =>
             {
                 w.WriteSingle_s(x.Time);
-                w.Write(x.X);
-                w.Write(x.Y);
+                w.Write(x.Position);
                 w.Write(x.Rotation);
-                w.Write(x.ScaleX);
-                w.Write(x.ScaleY);
+                w.Write(x.Scale);
                 w.Write(x.Opacity);
                 w.Write(x.Depth);
             });
@@ -125,11 +121,9 @@ public sealed class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHas
             rw.List(ref n.keys!, r => new Key()
             {
                 Time = r.ReadSingle_s(),
-                X = r.ReadSingle(),
-                Y = r.ReadSingle(),
+                Position = r.ReadVec2(),
                 Rotation = r.ReadSingle(),
-                ScaleX = r.ReadSingle(),
-                ScaleY = r.ReadSingle(),
+                Scale = r.ReadVec2(),
                 Opacity = r.ReadSingle(),
                 Depth = r.ReadSingle(),
                 U01 = r.ReadSingle(),
@@ -140,11 +134,9 @@ public sealed class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHas
             (x, w) =>
             {
                 w.WriteSingle_s(x.Time);
-                w.Write(x.X);
-                w.Write(x.Y);
+                w.Write(x.Position);
                 w.Write(x.Rotation);
-                w.Write(x.ScaleX);
-                w.Write(x.ScaleY);
+                w.Write(x.Scale);
                 w.Write(x.Opacity);
                 w.Write(x.Depth);
                 w.Write(x.U01);
@@ -174,11 +166,9 @@ public sealed class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHas
             rw.List(ref n.keys!, r => new Key()
             {
                 Time = r.ReadSingle_s(),
-                X = r.ReadSingle(),
-                Y = r.ReadSingle(),
+                Position = r.ReadVec2(),
                 Rotation = r.ReadSingle(),
-                ScaleX = r.ReadSingle(),
-                ScaleY = r.ReadSingle(),
+                Scale = r.ReadVec2(),
                 Opacity = r.ReadSingle(),
                 Depth = r.ReadSingle(),
                 U01 = r.ReadSingle(),
@@ -189,11 +179,9 @@ public sealed class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHas
             (x, w) =>
             {
                 w.WriteSingle_s(x.Time);
-                w.Write(x.X);
-                w.Write(x.Y);
+                w.Write(x.Position);
                 w.Write(x.Rotation);
-                w.Write(x.ScaleX);
-                w.Write(x.ScaleY);
+                w.Write(x.Scale);
                 w.Write(x.Opacity);
                 w.Write(x.Depth);
                 w.Write(x.U01);
@@ -217,14 +205,12 @@ public sealed class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHas
 
     public class Key : CGameCtnMediaBlock.Key
     {
-        public float X { get; set; }
-        public float Y { get; set; }
+        public Vec2 Position { get; set; }
         /// <summary>
         /// Rotation in radians
         /// </summary>
         public float Rotation { get; set; }
-        public float ScaleX { get; set; } = 1;
-        public float ScaleY { get; set; } = 1;
+        public Vec2 Scale { get; set; } = new(1, 1);
         public float Opacity { get; set; } = 1;
         public float Depth { get; set; } = 0.5f;
         public float IsContinuousEffect { get; set; }
