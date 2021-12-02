@@ -18,9 +18,7 @@ public class LzoBenchmark : Benchmark
 
         MapCompressed.Seek(0, SeekOrigin.Begin);
 
-        var map = GameBox.ParseNode(MapCompressed)!;
-        map.GBX!.Header.CompressionOfBody = GameBoxCompression.Uncompressed;
-        map.Save(MapUncompressed);
+        GameBox.Decompress(MapCompressed, MapUncompressed);
 
         MapCompressed.Seek(0, SeekOrigin.Begin);
         MapUncompressed.Seek(0, SeekOrigin.Begin);

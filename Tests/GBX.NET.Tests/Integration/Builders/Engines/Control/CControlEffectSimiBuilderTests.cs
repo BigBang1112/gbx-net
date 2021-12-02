@@ -17,22 +17,18 @@ public class CControlEffectSimiBuilderTests
         new()
         {
             Time = TimeSpan.Zero,
-            X = 0.5f,
-            Y = 0.5f,
+            Position = (0.5f, 0.5f),
             Rotation = 0.2f,
-            ScaleX = 0.9f,
-            ScaleY = 1f,
+            Scale = (0.9f, 1f),
             Opacity = 1f,
             Depth = 0.5f
         },
         new()
         {
             Time = TimeSpan.FromSeconds(3),
-            X = 0.6f,
-            Y = 0.8f,
+            Position = (0.6f, 0.8f),
             Rotation = 0.5f,
-            ScaleX = 1.1f,
-            ScaleY = 1.5f,
+            Scale = (1.1f, 1.5f),
             Opacity = 0.5f,
             Depth = 0.2f
         }
