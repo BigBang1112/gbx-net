@@ -70,12 +70,14 @@ public class CGameCtnMediaBlockTextBuilderTests
     {
         var expectedText = GetSampleText();
         var expectedEffect = GetSampleEffect();
+        var expectedColor = new Vec3(1, 1, 1);
 
-        var node = new CGameCtnMediaBlockTextBuilder { Text = expectedText, Effect = expectedEffect }
+        var node = new CGameCtnMediaBlockTextBuilder { Text = expectedText, Effect = expectedEffect, Color = expectedColor }
             .NewNode();
 
         Assert.Equal(expectedText, actual: node.Text);
         Assert.Equal(expectedEffect, actual: node.Effect);
+        Assert.Equal(expectedColor, actual: node.Color);
     }
 
     [Fact]
