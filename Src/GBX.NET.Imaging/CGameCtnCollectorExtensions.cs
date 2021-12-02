@@ -79,7 +79,7 @@ public static class CGameCtnCollectorExtensions
     /// <param name="format">Image format to use.</param>
     public static void ExportIcon(this CGameCtnCollector node, string fileName, ImageFormat format)
     {
-        using var fs = File.OpenWrite(fileName);
+        using var fs = File.Create(fileName);
         ExportIcon(node, fs, format);
     }
 

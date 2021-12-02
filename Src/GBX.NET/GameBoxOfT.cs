@@ -335,7 +335,7 @@ public class GameBox<T> : GameBox where T : CMwNod
     {
         fileName ??= (FileName ?? throw new PropertyNullException(nameof(FileName)));
 
-        using var fs = File.OpenWrite(fileName);
+        using var fs = File.Create(fileName);
 
         Save(fs, remap);
 

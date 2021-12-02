@@ -57,7 +57,7 @@ public static class CGameCtnChallengeExtensions
     /// <param name="format">Image format to use.</param>
     public static void ExportThumbnail(this CGameCtnChallenge node, string fileName, ImageFormat format)
     {
-        using var fs = File.OpenWrite(fileName);
+        using var fs = File.Create(fileName);
         ExportThumbnail(node, fs, format);
     }
 
