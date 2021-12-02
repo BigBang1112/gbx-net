@@ -593,9 +593,14 @@ public class CMwNod
         GameBox gbx;
 
         if (GBX is not null && gbxOfType == gbxType)
+        {
             gbx = GBX;
+        }
         else
-            gbx = (GameBox)Activator.CreateInstance(gbxOfType, this)!;
+        {
+            gbx = (GameBox)Activator.CreateInstance(gbxOfType, this, null)!;
+            gbx.Body!.IsParsed = true;
+        }
 
         _ = gbxOfType.GetMethod("Save", types)!.Invoke(gbx, parameters);
     }
