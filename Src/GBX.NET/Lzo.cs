@@ -66,8 +66,8 @@ internal static class Lzo
         var expectedAttribute = new[] { "LZOforGBX.NET", "true" };
 
         var hasExpectedAttribute = attribute.ConstructorArguments
-            .Select(x => x.Value)
-            .Cast<string>()
+            .Select(x => x.Value as string)
+            .Where(x => x is not null)
             .SequenceEqual(expectedAttribute);
 
         if (hasExpectedAttribute)
