@@ -4,7 +4,7 @@ public partial class CGameCtnMediaBlockSoundBuilder : ICGameCtnMediaBlockSoundBu
 {
     public FileRef? Sound { get; set; }
     public IList<CGameCtnMediaBlockSound.Key>? Keys { get; set; }
-    public int PlayCount { get; set; }
+    public int PlayCount { get; set; } = 1;
     public bool IsLooping { get; set; }
 
     public CGameCtnMediaBlockSoundBuilder WithSound(FileRef sound)

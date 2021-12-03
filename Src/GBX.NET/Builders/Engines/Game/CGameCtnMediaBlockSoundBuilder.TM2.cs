@@ -5,7 +5,7 @@ public partial class CGameCtnMediaBlockSoundBuilder
     public class TM2 : GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
     {
         public bool IsMusic { get; set; }
-        public bool StopWithClip { get; set; }
+        public bool StopWithClip { get; set; } = true;
         public bool AudioToSpeech { get; set; }
         public int AudioToSpeechTarget { get; set; }
 
