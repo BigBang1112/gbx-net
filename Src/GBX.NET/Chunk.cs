@@ -55,16 +55,23 @@ public abstract class Chunk : IChunk, IComparable<Chunk>
         {
             case IDRemap.Latest:
                 {
-                    uint newClassPart = classPart;
+                    var newClassPart = classPart;
                     while (NodeCacheManager.Mappings.TryGetValue(newClassPart, out uint newID))
                         newClassPart = newID;
                     return newClassPart + chunkPart;
                 }
             case IDRemap.TrackMania2006:
                 {
-                    return classPart == 0x03078000 // Not ideal solution
+                    var olderClassId = NodeCacheManager.Mappings.LastOrDefault(x => x.Value == classPart).Key;
+
+                    if (olderClassId == default)
+                        return chunkID;
+
+                    var newId = classPart == 0x03078000 // Not ideal solution
                         ? 0x24061000 + chunkPart
-                        : NodeCacheManager.Mappings.Last(x => x.Value == classPart).Key + chunkPart;
+                        : olderClassId + chunkPart;
+
+                    return newId;
                 }
             default:
                 return chunkID;
