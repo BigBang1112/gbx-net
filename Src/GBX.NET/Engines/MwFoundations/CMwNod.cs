@@ -146,27 +146,25 @@ public class CMwNod
             {
                 break;
             }
-            else
+
+            var logChunk = new StringBuilder("[")
+                .Append(node.ClassName)
+                .Append("] 0x")
+                .Append(chunkId.ToString("X8"));
+
+            if (r.BaseStream.CanSeek) // Decompressed body can always seek
             {
-                var logChunk = new StringBuilder("[")
-                    .Append(node.ClassName)
-                    .Append("] 0x")
-                    .Append(chunkId.ToString("X8"));
-
-                if (r.BaseStream.CanSeek) // Decompressed body can always seek
-                {
-                    logChunk.Append(" (")
-                        .Append(((float)r.BaseStream.Position / r.BaseStream.Length).ToString("0.00%"))
-                        .Append(')');
-                }
-
-                if (node.GBX is null || !node.GBX.ID.HasValue || Remap(node.GBX.ID.Value) != node.ID)
-                {
-                    logChunk.Insert(0, "~ ");
-                }
-
-                Log.Write(logChunk.ToString());
+                logChunk.Append(" (")
+                    .Append(((float)r.BaseStream.Position / r.BaseStream.Length).ToString("0.00%"))
+                    .Append(')');
             }
+
+            if (node.GBX is null || !node.GBX.ID.HasValue || Remap(node.GBX.ID.Value) != node.ID)
+            {
+                logChunk.Insert(0, "~ ");
+            }
+
+            Log.Write(logChunk.ToString());
 
             Chunk chunk;
 
