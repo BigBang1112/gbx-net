@@ -15,7 +15,7 @@ namespace GBX.NET.Tests.Unit.Builders.Engines.Game;
 public class CGameCtnMediaTrackBuilderTests
 {
     public static string GetSampleName() => "Random Track 1";
-    public static List<CGameCtnMediaBlock> GetSampleBlocksForTMUF() => new()
+    public static CGameCtnMediaBlock[] GetSampleBlocksForTMUF() => new[]
     {
         CGameCtnMediaBlockText.Create()
             .WithEffect(CControlEffectSimi.Create()
@@ -37,9 +37,20 @@ public class CGameCtnMediaTrackBuilderTests
     }
 
     [Fact]
-    public void WithBlocks_ShouldSetBlocks()
+    public void WithBlocks_Params_ShouldSetBlocks()
     {
         var expected = GetSampleBlocksForTMUF();
+
+        var builder = new CGameCtnMediaTrackBuilder()
+             .WithBlocks(expected);
+
+        Assert.Equal(expected, actual: builder.Blocks);
+    }
+
+    [Fact]
+    public void WithBlocks_List_ShouldSetBlocks()
+    {
+        var expected = GetSampleBlocksForTMUF().ToList();
 
         var builder = new CGameCtnMediaTrackBuilder()
              .WithBlocks(expected);

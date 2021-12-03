@@ -3,6 +3,7 @@
 public partial class CControlEffectSimiBuilder : ICControlEffectSimiBuilder
 {
     public IList<CControlEffectSimi.Key>? Keys { get; set; }
+    public bool IsCentered { get; set; }
 
     public CControlEffectSimiBuilder WithKeys(IList<CControlEffectSimi.Key> keys)
     {
@@ -13,6 +14,12 @@ public partial class CControlEffectSimiBuilder : ICControlEffectSimiBuilder
     public CControlEffectSimiBuilder WithKeys(params CControlEffectSimi.Key[] keys)
     {
         Keys = keys;
+        return this;
+    }
+
+    public CControlEffectSimiBuilder Centered()
+    {
+        IsCentered = true;
         return this;
     }
 
@@ -37,6 +44,7 @@ public partial class CControlEffectSimiBuilder : ICControlEffectSimiBuilder
     {
         var node = NodeCacheManager.GetNodeInstance<CControlEffectSimi>(0x07010000);
         node.Keys = Keys ?? new List<CControlEffectSimi.Key>();
+        node.Centered = IsCentered;
         return node;
     }
 }

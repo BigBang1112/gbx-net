@@ -352,7 +352,9 @@ public class GameBoxReader : BinaryReader
         var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
         var refTable = body.GBX.RefTable;
-        if (refTable is not null) // First checks if reference table is used
+
+        // First checks if reference table is used
+        if (refTable is not null && (refTable.Folders.Count > 0 || refTable.Folders.Count > 0))
         {
             var allFiles = refTable.GetAllFiles(); // Returns available external references
             if (allFiles.Any()) // If there's one
@@ -1094,14 +1096,23 @@ public class GameBoxReader : BinaryReader
     public IEnumerable<byte> ReadUntilFacade() => ReadUntilUInt32(0xFACADE01);
 
     /// <summary>
-    /// Continues reading the stream until the end of the is reached. The stream must support seeking.
+    /// Continues reading the stream until the end of the is reached. The stream can use either seeking or non-seeking method, depends what works best for you.
     /// </summary>
+    /// <param name="seek">If the method should use seeking features.</param>
     /// <returns>Array of bytes.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
-    public byte[] ReadToEnd() => ReadBytes((int)(BaseStream.Length - BaseStream.Position));
+    public byte[] ReadToEnd(bool seek = false)
+    {
+        if (seek)
+            return ReadBytes((int)(BaseStream.Length - BaseStream.Position));
+
+        using var ms = new MemoryStream();
+        BaseStream.CopyTo(ms);
+        return ms.ToArray();
+    }
 
     /// <summary>
     /// Continues reading the stream until facade (<c>0xFACADE01</c>) is reached and converts the result to string.

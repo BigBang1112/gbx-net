@@ -1286,7 +1286,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public void ExportThumbnail(string fileName)
     {
         if (thumbnail == null) return;
-        using var fs = File.OpenWrite(fileName);
+        using var fs = File.Create(fileName);
         ExportThumbnail(fs);
     }
 

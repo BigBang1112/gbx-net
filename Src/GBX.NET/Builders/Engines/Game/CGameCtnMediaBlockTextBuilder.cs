@@ -45,6 +45,8 @@ public partial class CGameCtnMediaBlockTextBuilder : ICGameCtnMediaBlockTextBuil
     {
         var node = NodeCacheManager.GetNodeInstance<CGameCtnMediaBlockText>(0x030A8000);
         node.Text = Text ?? string.Empty;
+        node.Effect = Effect!;
+        node.Color = Color;
         node.CreateChunk<CGameCtnMediaBlockText.Chunk030A8001>();
         node.CreateChunk<CGameCtnMediaBlockText.Chunk030A8002>();
         return node;

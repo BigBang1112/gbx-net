@@ -22,10 +22,19 @@ public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
         set => GBX.Header.CompressionOfRefTable = value;
     }
 
+    /// <summary>
+    /// Compression type of the body part.
+    /// </summary>
+    /// <exception cref="HeaderOnlyParseLimitationException">Setting the compression is forbidden in <see cref="GameBox"/> where only the header was parsed (with raw body being read).</exception>
     public GameBoxCompression CompressionOfBody
     {
         get => GBX.Header.CompressionOfBody;
-        set => GBX.Header.CompressionOfBody = value;
+        set
+        {
+            if (GBX.Body?.RawData is not null)
+                throw new HeaderOnlyParseLimitationException();
+            GBX.Header.CompressionOfBody = value;
+        }
     }
 
     public char? UnknownByte

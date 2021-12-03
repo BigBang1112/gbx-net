@@ -16,10 +16,10 @@ namespace GBX.NET.Tests.Integration.Builders.Engines.Game;
 public class CGameCtnMediaClipBuilderTests
 {
     public static string GetSampleName() => Unit.Builders.Engines.Game.CGameCtnMediaClipBuilderTests.GetSampleName();
-    public static List<CGameCtnMediaTrack> GetSampleTracksForTM2() => Unit.Builders.Engines.Game.CGameCtnMediaClipBuilderTests.GetSampleTracksForTMUF();
+    public static CGameCtnMediaTrack[] GetSampleTracksForTM2() => Unit.Builders.Engines.Game.CGameCtnMediaClipBuilderTests.GetSampleTracksForTMUF();
 
     private static CGameCtnMediaClip BuildNode(Func<ICGameCtnMediaClipBuilderFor,
-        GameBuilder<ICGameCtnMediaClipBuilder, CGameCtnMediaClip>> func, string name, List<CGameCtnMediaTrack> tracks)
+        GameBuilder<ICGameCtnMediaClipBuilder, CGameCtnMediaClip>> func, string name, params CGameCtnMediaTrack[] tracks)
     {
         var builder = new CGameCtnMediaClipBuilder()
             .WithName(name)

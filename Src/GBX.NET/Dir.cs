@@ -16,7 +16,7 @@ public static class Dir
         Direction.East => Direction.South,
         Direction.South => Direction.West,
         Direction.West => Direction.North,
-        _ => throw new Exception(),
+        _ => throw new ThisShouldNotHappenException(),
     };
 
     /// <summary>
@@ -30,7 +30,7 @@ public static class Dir
         Direction.West => Direction.South,
         Direction.South => Direction.East,
         Direction.East => Direction.North,
-        _ => throw new Exception(),
+        _ => throw new ThisShouldNotHappenException(),
     };
 
     public static Direction Add(Direction a, Direction b)

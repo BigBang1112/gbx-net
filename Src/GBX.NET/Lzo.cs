@@ -29,31 +29,10 @@ internal static class Lzo
 
         foreach (var dllFile in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll"))
         {
-            var assemblyMetadata = Assembly.LoadFrom(dllFile); // TODO: also support System.Reflection.Metadata
+            lzoFound = AnalyzeDllFile(dllFile);
 
-            try
-            {
-                var attributes = assemblyMetadata.GetCustomAttributesData();
-
-                foreach (var attribute in attributes)
-                {
-                    if (attribute.ConstructorArguments.Count != 2)
-                        continue;
-
-                    if (attribute.ConstructorArguments[0].Value is string sK && sK == "LZOforGBX.NET"
-                        && attribute.ConstructorArguments[1].Value is string sV && sV == "true")
-                    {
-                        lzoFound = CheckForLZO(Assembly.Load(assemblyMetadata.GetName()));
-                        if (lzoFound) break;
-                    }
-                }
-            }
-            catch (FileLoadException)
-            {
-
-            }
-
-            if (lzoFound) break;
+            if (lzoFound)
+                break;
         }
 
         if (!lzoFound)
@@ -62,14 +41,53 @@ internal static class Lzo
         checkedForLzo = true;
     }
 
+    private static bool AnalyzeDllFile(string dllFile)
+    {
+        var assembly = Assembly.LoadFrom(dllFile); // TODO: also support System.Reflection.Metadata
+
+        var attributes = assembly.GetCustomAttributesData();
+
+        foreach (var attribute in attributes)
+        {
+            var verified = VerifyAttribute(assembly, attribute);
+
+            if (verified)
+                return true;
+        }
+
+        return false;
+    }
+
+    private static bool VerifyAttribute(Assembly assembly, CustomAttributeData attribute)
+    {
+        if (attribute.ConstructorArguments.Count != 2)
+            return false;
+
+        var expectedAttribute = new[] { "LZOforGBX.NET", "true" };
+
+        var hasExpectedAttribute = attribute.ConstructorArguments
+            .Select(x => x.Value as string)
+            .Where(x => x is not null)
+            .SequenceEqual(expectedAttribute);
+
+        if (hasExpectedAttribute)
+        {
+            var lzoFound = CheckForLZO(assembly);
+
+            if (lzoFound)
+                return true;
+        }
+
+        return false;
+    }
+
     private static bool CheckForLZO(Assembly assembly)
     {
-        var type = assembly.GetTypes().FirstOrDefault(x => x.Name == "MiniLZO");
+        var type = assembly.GetTypes()
+            .FirstOrDefault(x => x.Name == "MiniLZO");
 
         if (type is null)
-        {
             return false;
-        }
 
         methodLzoCompress = type.GetMethod("Compress", new Type[] { typeof(byte[]) });
         methodLzoDecompress = type.GetMethod("Decompress", new Type[] { typeof(byte[]), typeof(byte[]) });

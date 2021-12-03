@@ -210,7 +210,7 @@ public sealed class CGameCtnMediaBlockSound : CGameCtnMediaBlock, CGameCtnMediaB
 
     public new class Key : CGameCtnMediaBlock.Key
     {
-        public float Volume { get; set; }
+        public float Volume { get; set; } = 1;
         public float Pan { get; set; }
         public float U01 { get; set; }
         public Vec3 Position { get; set; }

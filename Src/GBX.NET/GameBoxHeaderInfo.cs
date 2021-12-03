@@ -5,7 +5,7 @@ public class GameBoxHeaderInfo
     public short Version { get; set; }
     public GameBoxByteFormat ByteFormat { get; set; }
     public GameBoxCompression CompressionOfRefTable { get; set; }
-    public GameBoxCompression CompressionOfBody { get; set; }
+    public GameBoxCompression CompressionOfBody { get; internal set; }
     public char? UnknownByte { get; set; }
     public uint? ID { get; internal set; }
     public byte[] UserData { get; protected set; }

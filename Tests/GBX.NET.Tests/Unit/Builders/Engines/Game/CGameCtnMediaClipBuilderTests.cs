@@ -15,7 +15,7 @@ namespace GBX.NET.Tests.Unit.Builders.Engines.Game;
 public class CGameCtnMediaClipBuilderTests
 {
     public static string GetSampleName() => "Random Clip 1";
-    public static List<CGameCtnMediaTrack> GetSampleTracksForTMUF() => new()
+    public static CGameCtnMediaTrack[] GetSampleTracksForTMUF() => new[]
     {
         CGameCtnMediaTrack.Create()
             .WithName(CGameCtnMediaTrackBuilderTests.GetSampleName())
@@ -41,9 +41,20 @@ public class CGameCtnMediaClipBuilderTests
     }
 
     [Fact]
-    public void WithTracks_ShouldSetTracks()
+    public void WithTracks_Params_ShouldSetTracks()
     {
         var expected = GetSampleTracksForTMUF();
+
+        var builder = new CGameCtnMediaClipBuilder()
+             .WithTracks(expected);
+
+        Assert.Equal(expected, actual: builder.Tracks);
+    }
+
+    [Fact]
+    public void WithTracks_List_ShouldSetTracks()
+    {
+        var expected = GetSampleTracksForTMUF().ToList();
 
         var builder = new CGameCtnMediaClipBuilder()
              .WithTracks(expected);

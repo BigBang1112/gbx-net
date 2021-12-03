@@ -9,8 +9,8 @@
 		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		
-		<Version>1.0.1</Version>
-		<PackageReleaseNotes>Update to C# 10.</PackageReleaseNotes>
+		<Version>1.0.2</Version>
+		<PackageReleaseNotes>Replace File.OpenWrite with File.Create</PackageReleaseNotes>
 
 		<TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;net48</TargetFrameworks>
 		<LangVersion>10</LangVersion>

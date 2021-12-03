@@ -30,7 +30,7 @@ public sealed class CGameCtnMediaClip : CMwNod
     #region Properties
 
     /// <summary>
-    /// Name of the clip. This property is null if the clip is an intro, ambiance or podium.
+    /// Name of the clip. The value of this property is an empty string if the clip is an intro, ambiance or podium.
     /// </summary>
     [NodeMember]
     public string Name

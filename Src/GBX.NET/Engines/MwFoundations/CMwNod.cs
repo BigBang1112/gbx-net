@@ -146,27 +146,25 @@ public class CMwNod
             {
                 break;
             }
-            else
+
+            var logChunk = new StringBuilder("[")
+                .Append(node.ClassName)
+                .Append("] 0x")
+                .Append(chunkId.ToString("X8"));
+
+            if (r.BaseStream.CanSeek) // Decompressed body can always seek
             {
-                var logChunk = new StringBuilder("[")
-                    .Append(node.ClassName)
-                    .Append("] 0x")
-                    .Append(chunkId.ToString("X8"));
-
-                if (r.BaseStream.CanSeek) // Decompressed body can always seek
-                {
-                    logChunk.Append(" (")
-                        .Append(((float)r.BaseStream.Position / r.BaseStream.Length).ToString("0.00%"))
-                        .Append(')');
-                }
-
-                if (node.GBX is null || !node.GBX.ID.HasValue || Remap(node.GBX.ID.Value) != node.ID)
-                {
-                    logChunk.Insert(0, "~ ");
-                }
-
-                Log.Write(logChunk.ToString());
+                logChunk.Append(" (")
+                    .Append(((float)r.BaseStream.Position / r.BaseStream.Length).ToString("0.00%"))
+                    .Append(')');
             }
+
+            if (node.GBX is null || !node.GBX.ID.HasValue || Remap(node.GBX.ID.Value) != node.ID)
+            {
+                logChunk.Insert(0, "~ ");
+            }
+
+            Log.Write(logChunk.ToString());
 
             Chunk chunk;
 
@@ -458,12 +456,11 @@ public class CMwNod
             }
             catch (NotImplementedException e)
             {
-                if (chunk is ISkippableChunk)
-                {
-                    Debug.WriteLine(e.Message);
-                    Debug.WriteLine("Ignoring the skippable chunk from writing.");
-                }
-                else throw e; // Unskippable chunk must have a Write implementation
+                if (chunk is not ISkippableChunk)
+                    throw e; // Unskippable chunk must have a Write implementation
+                
+                Debug.WriteLine(e.Message);
+                Debug.WriteLine("Ignoring the skippable chunk from writing.");
             }
         }
 
@@ -558,11 +555,11 @@ public class CMwNod
 
         foreach (var nodeProperty in GetType().GetProperties())
         {
-            if (nodeProperty.PropertyType.IsSubclassOf(typeof(CMwNod)))
-            {
-                var node = nodeProperty.GetValue(this) as CMwNod;
-                node?.DiscoverAllChunks();
-            }
+            if (!nodeProperty.PropertyType.IsSubclassOf(typeof(CMwNod)))
+                continue;
+
+            var node = nodeProperty.GetValue(this) as CMwNod;
+            node?.DiscoverAllChunks();
         }
     }
 
@@ -594,9 +591,14 @@ public class CMwNod
         GameBox gbx;
 
         if (GBX is not null && gbxOfType == gbxType)
+        {
             gbx = GBX;
+        }
         else
-            gbx = (GameBox)Activator.CreateInstance(gbxOfType, this)!;
+        {
+            gbx = (GameBox)Activator.CreateInstance(gbxOfType, this, null)!;
+            gbx.Body!.IsParsed = true;
+        }
 
         _ = gbxOfType.GetMethod("Save", types)!.Invoke(gbx, parameters);
     }

@@ -46,9 +46,20 @@ public class CGameCtnMediaBlockSoundBuilderTests
     }
 
     [Fact]
-    public void WithKeys_ShouldSetKeys()
+    public void WithKeys_Params_ShouldSetKeys()
     {
         var expected = GetSampleKeys();
+
+        var builder = new CGameCtnMediaBlockSoundBuilder()
+             .WithKeys(expected);
+
+        Assert.Equal(expected, actual: builder.Keys);
+    }
+
+    [Fact]
+    public void WithKeys_List_ShouldSetKeys()
+    {
+        var expected = GetSampleKeys().ToList();
 
         var builder = new CGameCtnMediaBlockSoundBuilder()
              .WithKeys(expected);
