@@ -352,7 +352,9 @@ public class GameBoxReader : BinaryReader
         var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
         var refTable = body.GBX.RefTable;
-        if (refTable is not null) // First checks if reference table is used
+
+        // First checks if reference table is used
+        if (refTable is not null && (refTable.Folders.Count > 0 || refTable.Folders.Count > 0))
         {
             var allFiles = refTable.GetAllFiles(); // Returns available external references
             if (allFiles.Any()) // If there's one
