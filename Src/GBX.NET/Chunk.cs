@@ -64,7 +64,7 @@ public abstract class Chunk : IChunk, IComparable<Chunk>
                 {
                     return classPart == 0x03078000 // Not ideal solution
                         ? 0x24061000 + chunkPart
-                        : NodeCacheManager.Mappings.LastOrDefault(x => x.Value == classPart).Key + chunkPart;
+                        : NodeCacheManager.Mappings.Last(x => x.Value == classPart).Key + chunkPart;
                 }
             default:
                 return chunkID;
