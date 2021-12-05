@@ -170,15 +170,7 @@ public class CMwNod
 
             chunkId = Chunk.Remap(chunkId);
 
-            Type? chunkClass = null;
-
-            var reflected = (
-                   (chunkId & 0xFFFFF000) == node.ID
-                || NodeCacheManager.AvailableInheritanceClasses[type].Contains(chunkId & 0xFFFFF000)
-              )
-              && (
-                   NodeCacheManager.AvailableChunkClasses[type].TryGetValue(chunkId, out chunkClass)
-            );
+            var reflected = NodeCacheManager.AvailableChunkClasses[type].TryGetValue(chunkId, out Type? chunkClass);
 
             if (reflected && chunkClass is null)
                 throw new ThisShouldNotHappenException();
