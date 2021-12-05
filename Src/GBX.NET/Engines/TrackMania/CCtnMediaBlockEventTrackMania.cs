@@ -98,13 +98,13 @@ public sealed class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
     [Chunk(0x2407F000)]
     public class Chunk2407F000 : Chunk<CCtnMediaBlockEventTrackMania>
     {
-        public int U01;
+        public bool U01;
 
         public override void ReadWrite(CCtnMediaBlockEventTrackMania n, GameBoxReaderWriter rw)
         {
             rw.Single(ref n.start);
             rw.Single(ref n.end);
-            rw.Int32(ref U01);
+            rw.Boolean(ref U01);
 
             rw.Array(ref n.stunts!, (i, r) => new Stunt()
             {
@@ -114,9 +114,9 @@ public sealed class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
                 Score = r.ReadInt32(),
                 Factor = r.ReadSingle(),
                 Straight = r.ReadBoolean(),
-                U02 = r.ReadInt32(),
-                U03 = r.ReadInt32(),
-                U04 = r.ReadInt32(),
+                U02 = r.ReadBoolean(),
+                U03 = r.ReadBoolean(),
+                U04 = r.ReadBoolean(),
                 Combo = r.ReadInt32(),
                 TotalScore = r.ReadInt32()
             },
@@ -162,9 +162,9 @@ public sealed class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
         public int Score { get; set; }
         public float Factor { get; set; }
         public bool Straight { get; set; }
-        public int U02 { get; set; }
-        public int U03 { get; set; }
-        public int U04 { get; set; }
+        public bool U02 { get; set; }
+        public bool U03 { get; set; }
+        public bool U04 { get; set; }
         public int Combo { get; set; }
         public int TotalScore { get; set; }
 

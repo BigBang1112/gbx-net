@@ -791,7 +791,7 @@ public sealed class CGameCtnGhost : CGameGhost
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
             rw.UInt32(ref U01);
-            rw.Int128(ref U02);
+            rw.Int128(ref U02); // probably random ID according to RE
         }
     }
 

@@ -54,7 +54,7 @@ public class CPlugTree : CPlug
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
             rw.Id(ref U01);
-            rw.Int32(ref U02);
+            rw.Int32(ref U02); // node
         }
     }
 
