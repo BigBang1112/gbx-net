@@ -37,6 +37,24 @@ public sealed class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, CGameCtnMe
 
     #region Chunks
 
+    [Chunk(0x03085000)]
+    public class Chunk03085000 : Chunk<CGameCtnMediaBlockTimeSpeed>
+    {
+        public override void ReadWrite(CGameCtnMediaBlockTimeSpeed n, GameBoxReaderWriter rw)
+        {
+            rw.List(ref n.keys!, r => new Key()
+            {
+                Time = r.ReadSingle_s(),
+                Speed = r.ReadSingle()
+            },
+            (x, w) =>
+            {
+                w.WriteSingle_s(x.Time);
+                w.Write(x.Speed);
+            });
+        }
+    }
+
     [Chunk(0x03129000)]
     public class Chunk03129000 : Chunk<CGameCtnMediaBlockTimeSpeed>
     {
