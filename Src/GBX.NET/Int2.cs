@@ -11,7 +11,7 @@ public struct Int2
         Y = y;
     }
 
-    public override string ToString() => $"({X}, {Y})";
+    public override string ToString() => $"<{X}, {Y}>";
     public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode();
     public override bool Equals(object? obj) => obj is Int2 a && a == this;
 

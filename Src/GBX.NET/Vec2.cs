@@ -1,4 +1,6 @@
-﻿namespace GBX.NET;
+﻿using System.Globalization;
+
+namespace GBX.NET;
 
 public struct Vec2 : IVec
 {
@@ -14,7 +16,14 @@ public struct Vec2 : IVec
     public float GetMagnitude() => (float)Math.Sqrt(X * X + Y * Y);
     public float GetSqrMagnitude() => X * X + Y * Y;
 
-    public override string ToString() => $"({X}, {Y})";
+    public override string ToString()
+    {
+        var x = X.ToString(CultureInfo.InvariantCulture);
+        var y = Y.ToString(CultureInfo.InvariantCulture);
+
+        return $"<{x}, {y}>";
+    } 
+
     public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode();
     public override bool Equals(object? obj) => obj is Vec2 a && a == this;
 
