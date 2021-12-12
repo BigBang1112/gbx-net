@@ -184,7 +184,7 @@ public class CMwNod
 
                 if (skip != 0x534B4950)
                 {
-                    if (chunkId == 0 || reflected)
+                    if (reflected)
                     {
                         break;
                     }
