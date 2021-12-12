@@ -1,10 +1,5 @@
 ﻿using GBX.NET.Engines.MwFoundations;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Text;
 
 namespace GBX.NET.PAK;
@@ -16,17 +11,22 @@ public class NadeoPak : IDisposable
 
     public byte[] Key { get; }
     public int Version { get; private set; }
+    public int MetadataStart { get; private set; }
     public int DataStart { get; private set; }
     public List<NadeoPakFolder> Folders { get; private set; }
     public List<NadeoPakFile> Files { get; private set; }
 
     internal Stream Stream { get; private set; }
 
-    public NadeoPak(byte[] key)
+    private NadeoPak(byte[] key)
     {
         Key = key;
         Folders = new List<NadeoPakFolder>();
         Files = new List<NadeoPakFile>();
+        Stream = null!;
+
+        blowfish = null!;
+        files = null!;
     }
 
     internal void Read(Stream stream)
@@ -46,13 +46,15 @@ public class NadeoPak : IDisposable
 
         using (blowfish = new BlowfishCBCStream(r.BaseStream, Key, headerIV))
         using (var rr = new GameBoxReader(blowfish))
+        {
             ReadEncrypted(rr);
+        }
     }
 
     private void ReadEncrypted(GameBoxReader r)
     {
         var headerMD5 = r.ReadBytes(16);
-        var gbxHeadersStart = r.ReadInt32(); // offset to metadata section
+        MetadataStart = r.ReadInt32(); // offset to metadata section
         DataStart = r.ReadInt32();
 
         if (Version >= 2)
@@ -69,6 +71,30 @@ public class NadeoPak : IDisposable
         var folders = ReadFolders(r);
 
         ReadFiles(r, folders);
+
+        ReadMetadata();
+    }
+
+    private void ReadMetadata()
+    {
+        Stream.Position = MetadataStart;
+
+        using var reader = new GameBoxReader(Stream);
+        var iv = reader.ReadUInt64();
+
+        using (blowfish = new BlowfishCBCStream(Stream, Key, iv))
+        using (var deflate = new CompressedStream(blowfish, CompressionMode.Decompress))
+        using (var r = new GameBoxReader(deflate))
+        {
+            int fileIndex;
+
+            do
+            {
+                fileIndex = r.ReadInt32();
+                var header = new GameBoxHeaderInfo(r);
+            }
+            while (fileIndex != -1);
+        }
     }
 
     private NadeoPakFolder[] ReadFolders(GameBoxReader r)

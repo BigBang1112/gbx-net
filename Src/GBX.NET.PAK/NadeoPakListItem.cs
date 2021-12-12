@@ -1,14 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GBX.NET.PAK;
+﻿namespace GBX.NET.PAK;
 
 public class NadeoPakListItem
 {
     public string Name { get; set; }
     public byte Flags { get; set; }
     public byte[] Key { get; set; }
+
+    public NadeoPakListItem(string name, byte flags, byte[] key)
+    {
+        Name = name;
+        Flags = flags;
+        Key = key;
+    }
 
     public override string ToString()
     {

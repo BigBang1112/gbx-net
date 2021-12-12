@@ -1187,8 +1187,15 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public IEnumerable<byte> ReadUntilNextChunk(uint classId)
     {
-        while ((Chunk.Remap(PeekUInt32()) & classId) != classId)
+        classId |= 0x00000FFF;
+
+        while (true)
+        {
+            var peekedUint = PeekUInt32();
+            if ((Chunk.Remap(peekedUint) | 0x00000FFF) == classId)
+                yield break;
             yield return ReadByte();
+        }
     }
 
     /// <summary>

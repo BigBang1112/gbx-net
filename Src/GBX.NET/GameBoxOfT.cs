@@ -280,7 +280,11 @@ public class GameBox<T> : GameBox where T : CMwNod
         else
         {
             if (Header.CompressionOfBody == GameBoxCompression.Compressed)
+            {
                 bodyW.Write(Body.UncompressedSize);
+                bodyW.Write(Body.RawData.Length);
+            }
+
             bodyW.WriteBytes(Body.RawData);
         }
 

@@ -49,46 +49,47 @@ public class CPlugTree : CPlug
     public class Chunk0904F00D : Chunk<CPlugTree>
     {
         public string? U01;
-        public int U02;
+        public CMwNod? U02;
 
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
             rw.Id(ref U01);
-            rw.Int32(ref U02);
+            rw.NodeRef(ref U02); // node
         }
     }
 
     [Chunk(0x0904F011)]
     public class Chunk0904F011 : Chunk<CPlugTree>
     {
-        public int U01;
+        public CMwNod? U01;
 
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.NodeRef(ref U01);
         }
     }
 
     [Chunk(0x0904F016)]
-    public class Chunk0904F016 : Chunk<CPlugTree>
+    public class Chunk0904F016 : Chunk<CPlugTree> /////////////////
     {
-        public int U01;
-        public int U02;
+        public CMwNod U01;
+        public CMwNod U02;
         public int U03;
 
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef<CPlugVisual>(ref n.visual);
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
+            rw.NodeRef<CPlugVisual>(ref n.visual); // CPlugVisual?
+            rw.NodeRef(ref U01); // CPlugSurface?
+            rw.NodeRef(ref U02); // CPlugTreeGenerator?
+            rw.Int32(ref U03); // ???
         }
     }
 
     [Chunk(0x0904F01A)]
     public class Chunk0904F01A : Chunk<CPlugTree>
     {
-        public int U01;
+        public int flags;
+
         public float U02;
         public float U03;
         public float U04;
@@ -102,21 +103,34 @@ public class CPlugTree : CPlug
         public float U12;
         public float U13;
 
+        public int Flags
+        {
+            get => flags;
+            set => flags = value;
+        }
+
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Single(ref U05);
-            rw.Single(ref U06);
-            rw.Single(ref U07);
-            rw.Single(ref U08);
-            rw.Single(ref U09);
-            rw.Single(ref U10);
-            rw.Single(ref U11);
-            rw.Single(ref U12);
-            rw.Single(ref U13);
+            rw.Int32(ref flags); // Flags?
+
+            if ((flags & 4) != 0)
+            {
+                // Iso4
+                rw.Single(ref U02);
+                rw.Single(ref U03);
+                rw.Single(ref U04);
+                rw.Single(ref U05);
+                rw.Single(ref U06);
+                rw.Single(ref U07);
+                rw.Single(ref U08);
+                rw.Single(ref U09);
+                rw.Single(ref U10);
+
+                rw.Single(ref U11);
+                rw.Single(ref U12);
+                rw.Single(ref U13);
+                //
+            }
         }
     }
 }
