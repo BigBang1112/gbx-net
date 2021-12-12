@@ -9,6 +9,8 @@
 		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
 		<PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
 		
 		<Version>1.0.1</Version>
 		<PackageReleaseNotes></PackageReleaseNotes>
@@ -27,6 +29,10 @@
 		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
 		<NoWarn>1591</NoWarn>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<Using Remove="System.Net.Http"/>
+	</ItemGroup>
 
 	<ItemGroup>
 		<None Update="LICENSE.GPL-3.0-or-later.md">

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -59,12 +56,7 @@ public class NadeoPakList : IReadOnlyCollection<NadeoPakListItem>
 
             var key = ComputeMD5(Encoding.ASCII.GetString(encryptedKeyString) + "NadeoPak");
 
-            packs[i] = new NadeoPakListItem
-            {
-                Flags = flags,
-                Name = name,
-                Key = key
-            };
+            packs[i] = new NadeoPakListItem(name, flags, key);
         }
 
         var signature = r.ReadBytes(0x10);

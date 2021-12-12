@@ -243,8 +243,8 @@ public class Blowfish
         uint datal;
         uint datar;
 
-        P = _P.Clone() as uint[];
-        S = _S.Clone() as uint[,];
+        P = (uint[])_P.Clone();
+        S = (uint[,])_S.Clone();
 
         j = 0;
         for (i = 0; i < N + 2; ++i)
@@ -433,19 +433,21 @@ public class BlowfishStream : Stream
 {
     class CBState : IAsyncResult
     {
-        internal AsyncCallback callback;
-        internal object state;
+        internal AsyncCallback? callback;
+        internal object? state;
         internal byte[] buffer;
         internal IAsyncResult result;
-        internal CBState(AsyncCallback callback, object state, byte[] buffer)
+        internal CBState(AsyncCallback? callback, object? state, byte[] buffer)
         {
             this.callback = callback;
             this.state = state;
             this.buffer = buffer;
+
+            result = null!;
         }
         #region IAsyncResult Members
 
-        public object AsyncState
+        public object? AsyncState
         {
             get
             {
@@ -587,7 +589,7 @@ public class BlowfishStream : Stream
     /// <param name="callback"></param>
     /// <param name="state"></param>
     /// <returns></returns>
-    public override IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
+    public override IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback? callback, object? state)
     {
         var cbs = new CBState(callback, state, buffer);
         cbs.result = base.BeginRead(buffer, offset, count, new AsyncCallback(ReadComplete), cbs);
@@ -601,8 +603,8 @@ public class BlowfishStream : Stream
     /// <returns></returns>
     public override int EndRead(IAsyncResult asyncResult)
     {
-        CBState cbs = (CBState)asyncResult.AsyncState;
-        int bytesRead = base.EndRead(cbs.result);
+        CBState? cbs = asyncResult.AsyncState as CBState;
+        int bytesRead = base.EndRead(cbs!.result);
         if (target == Target.Normal)
             bf.Encipher(cbs.buffer, bytesRead);
         else
@@ -617,8 +619,8 @@ public class BlowfishStream : Stream
     /// <param name="result">The result of the async write.</param>
     private void ReadComplete(IAsyncResult result)
     {
-        CBState cbs = (CBState)result.AsyncState;
-        cbs.callback(cbs);
+        CBState? cbs = result.AsyncState as CBState;
+        cbs!.callback!(cbs);
     }
 
 
@@ -631,7 +633,7 @@ public class BlowfishStream : Stream
     /// <param name="callback"></param>
     /// <param name="state"></param>
     /// <returns></returns>
-    public override IAsyncResult BeginWrite(byte[] buffer, int offset, int count, AsyncCallback callback, object state)
+    public override IAsyncResult BeginWrite(byte[] buffer, int offset, int count, AsyncCallback? callback, object? state)
     {
         if (target == Target.Normal)
             bf.Decipher(buffer, count);
