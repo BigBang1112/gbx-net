@@ -28,7 +28,6 @@ public sealed class CGameCtnBlock : CMwNod
     private CGameCtnBlockSkin? skin;
     private CGameWaypointSpecialProperty? waypoint;
     private Vec3 absolutePositionInMap;
-    private Vec3 pitchYawRoll;
     private DifficultyColor? color;
 
     #endregion
@@ -46,7 +45,7 @@ public sealed class CGameCtnBlock : CMwNod
         get => blockModel.ID;
         set
         {
-            if (blockModel == null)
+            if (blockModel is null)
                 blockModel = new Ident(value);
             else blockModel = new Ident(value, blockModel.Collection, blockModel.Author);
         }
@@ -104,19 +103,18 @@ public sealed class CGameCtnBlock : CMwNod
         get => skin;
         set
         {
-            if (Flags != -1)
+            if (Flags == -1)
+                return;
+
+            if (value is null)
             {
-                if (value == null)
-                {
-                    Flags &= ~(1 << isSkinnableBit);
-                    skin = null;
-                }
-                else
-                {
-                    Flags |= 1 << isSkinnableBit;
-                    skin = value;
-                }
+                Flags &= ~(1 << isSkinnableBit);
+                skin = null;
+                return;
             }
+
+            Flags |= 1 << isSkinnableBit;
+            skin = value;
         }
     }
 
@@ -129,26 +127,26 @@ public sealed class CGameCtnBlock : CMwNod
         get => waypoint;
         set
         {
-            if (Flags != -1)
+            if (Flags == -1)
+                return;
+
+            if (value is null)
             {
-                if (value == null)
-                {
-                    Flags &= ~(1 << isWaypointBit);
-                    waypoint = null;
-                }
-                else
-                {
-                    Flags |= 1 << isWaypointBit;
-                    waypoint = value;
-                }
+                Flags &= ~(1 << isWaypointBit);
+                waypoint = null;
+
+                return;
             }
+
+            Flags |= 1 << isWaypointBit;
+            waypoint = value;
         }
     }
 
     [NodeMember]
     public bool IsGhost
     {
-        get => Flags > -1 && (Flags & (1 << isGhostBit)) != 0;
+        get => IsGhostBlock(Flags);
         set
         {
             if (value) Flags |= 1 << isGhostBit;
@@ -162,7 +160,7 @@ public sealed class CGameCtnBlock : CMwNod
     [NodeMember]
     public bool IsFree
     {
-        get => Flags > -1 && (Flags & (1 << isFreeBit)) != 0;
+        get => IsFreeBlock(Flags);
         set
         {
             if (value)
@@ -170,15 +168,15 @@ public sealed class CGameCtnBlock : CMwNod
                 Flags |= 1 << isFreeBit;
                 absolutePositionInMap = Coord * (32, 8, 32);
                 Coord = (-1, -1, -1);
+
+                return;
             }
-            else
-            {
-                Flags &= ~(1 << isFreeBit);
-                absolutePositionInMap = Coord * (32, 8, 32);
-                Coord = (Convert.ToInt32(absolutePositionInMap.X / 32),
-                    Convert.ToInt32(absolutePositionInMap.Y / 8),
-                    Convert.ToInt32(absolutePositionInMap.Z / 32));
-            }
+
+            Flags &= ~(1 << isFreeBit);
+            absolutePositionInMap = Coord * (32, 8, 32);
+            Coord = (Convert.ToInt32(absolutePositionInMap.X / 32),
+                Convert.ToInt32(absolutePositionInMap.Y / 8),
+                Convert.ToInt32(absolutePositionInMap.Z / 32));
         }
     }
 
@@ -188,7 +186,7 @@ public sealed class CGameCtnBlock : CMwNod
     [NodeMember]
     public bool IsGround // ground: bit 12
     {
-        get => Flags > -1 && (Flags & (1 << isGroundBit)) != 0;
+        get => IsGroundBlock(Flags);
         set
         {
             if (value) Flags |= 1 << isGroundBit;
@@ -241,37 +239,6 @@ public sealed class CGameCtnBlock : CMwNod
         {
             if (value.HasValue)
                 Flags = (int)(Flags & 0xFFFFFFF0) + (value.Value & 15);
-        }
-    }
-
-    public Vec3? AbsolutePositionInMap
-    {
-        get
-        {
-            if (IsFree)
-                return absolutePositionInMap;
-            return null;
-        }
-        set
-        {
-            if (IsFree)
-                absolutePositionInMap = value.GetValueOrDefault();
-        }
-    }
-
-    [NodeMember]
-    public Vec3 PitchYawRoll
-    {
-        get
-        {
-            if (IsFree)
-                return pitchYawRoll;
-            return ((int)Direction * (float)(Math.PI / 2), 0, 0);
-        }
-        set
-        {
-            if (IsFree)
-                pitchYawRoll = value;
         }
     }
 
@@ -347,6 +314,11 @@ public sealed class CGameCtnBlock : CMwNod
     #region Methods
 
     public override string ToString() => $"{Name} {Coord}";
+
+    internal static bool IsGhostBlock(int flags) => flags > -1 && (flags & (1 << isGhostBit)) != 0;
+    internal static bool IsFreeBlock(int flags) => flags > -1 && (flags & (1 << isFreeBit)) != 0;
+    internal static bool IsGroundBlock(int flags) => flags > -1 && (flags & (1 << isGroundBit)) != 0;
+    internal static bool IsWaypointBlock(int flags) => flags > -1 && (flags & (1 << isWaypointBit)) != 0;
 
     #endregion
 
