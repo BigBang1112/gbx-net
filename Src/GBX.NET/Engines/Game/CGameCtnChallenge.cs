@@ -1,8 +1,9 @@
-﻿using GBX.NET.BlockInfo;
-using System.IO.Compression;
+﻿using System.IO.Compression;
 using System.Security;
 using System.Security.Cryptography;
 using System.Text;
+using System.Linq;
+using GBX.NET.BlockInfo;
 
 namespace GBX.NET.Engines.Game;
 
@@ -1294,14 +1295,10 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Sets a new map password.
     /// </summary>
     /// <param name="password">Password that will be hashed.</param>
-    public void NewPassword(string password)
+    private void NewPassword(string password)
     {
         var md5 = MD5.Create();
         hashedPassword = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
-
-        //Crc32 crc32 = new Crc32();
-        //crc32.Update(Encoding.ASCII.GetBytes("0x" + BitConverter.ToInt16(HashedPassword, 0).ToString() + "???" + MapUid));
-        //CRC32 = Convert.ToUInt32(crc32.Value);
     }
 
     /// <summary>
@@ -1310,6 +1307,10 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public void CrackPassword()
     {
         password = null;
+
+        if (hashedPassword is not null)
+            hashedPassword = new byte[16];
+
         RemoveChunk<Chunk03043029>();
     }
 
@@ -1473,7 +1474,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <param name="skin">Skin to use on the free block.</param>
     /// <returns>A newly placed block.</returns>
     /// <exception cref="MemberNullException"><see cref="Blocks"/> is null.</exception>
-    public CGameCtnBlock PlaceFreeBlock(string name, Vec3 absolutePosition, Vec3 pitchYawRoll, CGameCtnBlockSkin? skin = null)
+    private CGameCtnBlock PlaceFreeBlock(string name, Vec3 absolutePosition, Vec3 pitchYawRoll, CGameCtnBlockSkin? skin = null)
     {
         if (Blocks is null)
             throw new MemberNullException(nameof(Blocks));
@@ -1574,48 +1575,41 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <param name="offset">Amount of units to offset the cameras.</param>
     public void OffsetMediaTrackerCameras(Vec3 offset)
     {
-        OffsetCamerasInClip(ClipIntro);
-        OffsetCamerasInClipGroup(ClipGroupInGame);
-        OffsetCamerasInClipGroup(ClipGroupEndRace);
-        OffsetCamerasInClip(ClipAmbiance);
-        OffsetCamerasInClip(ClipPodium);
+        OffsetMediaTrackerCameras(offset, ClipIntro);
+        OffsetMediaTrackerCameras(offset, ClipGroupInGame);
+        OffsetMediaTrackerCameras(offset, ClipGroupEndRace);
+        OffsetMediaTrackerCameras(offset, ClipAmbiance);
+        OffsetMediaTrackerCameras(offset, ClipPodium);
+    }
 
-        void OffsetCamerasInClipGroup(CGameCtnMediaClipGroup? group)
+    private static void OffsetMediaTrackerCameras(Vec3 offset, CGameCtnMediaClipGroup? group)
+    {
+        if (group is null) return;
+
+        foreach (var clip in group.Clips)
+            OffsetMediaTrackerCameras(offset, clip.Clip);
+    }
+
+    private static void OffsetMediaTrackerCameras(Vec3 offset, CGameCtnMediaClip? clip)
+    {
+        if (clip is null) return;
+
+        foreach (var track in clip.Tracks)
         {
-            if (group is null) return;
-
-            foreach (var clip in group.Clips)
-                OffsetCamerasInClip(clip.Clip);
-        }
-
-        void OffsetCamerasInClip(CGameCtnMediaClip? clip)
-        {
-            if (clip is null) return;
-
-            if (clip.Tracks is not null)
+            foreach (var block in track.Blocks)
             {
-                foreach (var track in clip.Tracks)
+                switch (block)
                 {
-                    if (track.Blocks is not null)
-                    {
-                        foreach (var block in track.Blocks)
-                        {
-                            if (block is CGameCtnMediaBlockCameraCustom c)
-                            {
-                                if (c.Keys is not null)
-                                    foreach (var key in c.Keys)
-                                        if (key.Anchor == -1)
-                                            key.Position += offset;
-                            }
-                            else if (block is CGameCtnMediaBlockCameraPath p)
-                            {
-                                if (p.Keys is not null)
-                                    foreach (var key in p.Keys)
-                                        if (key.Anchor == -1)
-                                            key.Position += offset;
-                            }
-                        }
-                    }
+                    case CGameCtnMediaBlockCameraCustom c:
+                        foreach (var key in c.Keys)
+                            if (key.Anchor == -1)
+                                key.Position += offset;
+                        break;
+                    case CGameCtnMediaBlockCameraPath p:
+                        foreach (var key in p.Keys)
+                            if (key.Anchor == -1)
+                                key.Position += offset;
+                        break;
                 }
             }
         }
@@ -1627,18 +1621,18 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <param name="offset">Amount of units to offset the triggers.</param>
     public void OffsetMediaTrackerTriggers(Int3 offset)
     {
-        OffsetTriggers(ClipGroupInGame);
-        OffsetTriggers(ClipGroupEndRace);
+        OffsetMediaTrackerTriggers(offset, ClipGroupInGame);
+        OffsetMediaTrackerTriggers(offset, ClipGroupEndRace);
+    }
 
-        void OffsetTriggers(CGameCtnMediaClipGroup? group)
+    private static void OffsetMediaTrackerTriggers(Int3 offset, CGameCtnMediaClipGroup? group)
+    {
+        if (group is null) return;
+
+        foreach (var clip in group.Clips)
         {
-            if (group is null) return;
-
-            foreach (var clip in group.Clips)
-            {
-                var trigger = clip.Trigger;
-                trigger.Coords = trigger.Coords.Select(x => x + offset).ToArray();
-            }
+            var trigger = clip.Trigger;
+            trigger.Coords = trigger.Coords.Select(x => x + offset).ToArray();
         }
     }
 
@@ -1785,52 +1779,54 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
                 var userData = gbxr.ReadBytes();
 
-                using (var msNewUserData = new MemoryStream())
-                using (var wNewUserData = new GameBoxWriter(msNewUserData))
-                using (var msUserData = new MemoryStream(userData))
-                using (var rUserData = new GameBoxReader(msUserData))
+                using var msNewUserData = new MemoryStream();
+                using var wNewUserData = new GameBoxWriter(msNewUserData);
+                using var msUserData = new MemoryStream(userData);
+                using var rUserData = new GameBoxReader(msUserData);
+
+                var headers = rUserData.ReadArray(r => (
+                    chunkID: r.ReadUInt32(),
+                    size: (int)(r.ReadInt32() & ~0x80000000))
+                );
+
+                var contains004 = false;
+
+                foreach (var (chunkID, size) in headers)
                 {
-                    var headers = rUserData.ReadArray(r => (
-                        chunkID: r.ReadUInt32(),
-                        size: (int)(r.ReadInt32() & ~0x80000000))
-                    );
-
-                    var contains004 = false;
-                    foreach (var (chunkID, size) in headers)
+                    if (chunkID == 0x2E001004)
                     {
-                        if (chunkID == 0x2E001004)
-                        {
-                            wNewUserData.Write(headers.Length - 1);
-                            contains004 = true;
-                        }
+                        wNewUserData.Write(headers.Length - 1);
+                        contains004 = true;
                     }
-                    if (!contains004) wNewUserData.Write(headers.Length);
-
-                    foreach (var (chunkID, size) in headers)
-                    {
-                        if (chunkID != 0x2E001004)
-                        {
-                            wNewUserData.Write(chunkID);
-                            wNewUserData.Write(size);
-                        }
-                    }
-
-                    foreach (var (chunkID, size) in headers)
-                    {
-                        var chunkData = rUserData.ReadBytes(size);
-
-                        if (chunkID != 0x2E001004)
-                            wNewUserData.Write(chunkData);
-                    }
-
-                    gbxOutw.Write("GBX", StringLengthPrefix.None);
-                    gbxOutw.Write(basic, 0, basic.Length);
-                    gbxOutw.Write(classID);
-                    gbxOutw.Write((int)msNewUserData.Length);
-                    gbxOutw.Write(msNewUserData.ToArray(), 0, (int)msNewUserData.Length);
                 }
 
+                if (!contains004) wNewUserData.Write(headers.Length);
+
+                foreach (var (chunkID, size) in headers)
+                {
+                    if (chunkID != 0x2E001004)
+                    {
+                        wNewUserData.Write(chunkID);
+                        wNewUserData.Write(size);
+                    }
+                }
+
+                foreach (var (chunkID, size) in headers)
+                {
+                    var chunkData = rUserData.ReadBytes(size);
+
+                    if (chunkID != 0x2E001004)
+                        wNewUserData.Write(chunkData);
+                }
+
+                gbxOutw.Write("GBX", StringLengthPrefix.None);
+                gbxOutw.Write(basic, 0, basic.Length);
+                gbxOutw.Write(classID);
+                gbxOutw.Write((int)msNewUserData.Length);
+                gbxOutw.Write(msNewUserData.ToArray(), 0, (int)msNewUserData.Length);
+
                 gbxms.CopyTo(gbxOutms);
+
             }
 
             data = gbxOutms.ToArray();
@@ -3863,6 +3859,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
                     var id = gbxItem.FileName;
                     var dirs = id.Split('/', '\\');
+
                     for (var i = 0; i < dirs.Length; i++)
                     {
                         var dir = dirs[dirs.Length - 1 - i];
@@ -4096,7 +4093,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x05F skippable chunk (free blocks) [TM®️]
     /// </summary>
-    [Chunk(0x0304305F, "free blocks")]
+    [Chunk(0x0304305F, "free blocks"), IgnoreChunk]
     public class Chunk0304305F : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private int version;
@@ -4114,47 +4111,12 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             rw.Int32(ref version);
 
-            if (n.blocks is null)
-                return;
-
-            foreach (var block in n.blocks)
-            {
-                if (block.IsFree)
-                {
-                    block.AbsolutePositionInMap = rw.Vec3(block.AbsolutePositionInMap);
-                    block.PitchYawRoll = rw.Vec3(block.PitchYawRoll);
-
-                    if (BlockInfoManager.BlockModels != null)
-                    {
-                        if (BlockInfoManager.BlockModels.TryGetValue(block.Name, out BlockModel model))
-                        {
-                            foreach (var unit in model.Air)
-                            {
-                                if (unit.Clips != null)
-                                {
-                                    for (var i = 0; i < unit.Clips.Length; i++)
-                                    {
-                                        if (!string.IsNullOrEmpty(unit.Clips[i]))
-                                        {
-                                            if (rw.Mode == GameBoxReaderWriterMode.Read)
-                                            {
-                                                rw.Reader!.ReadVec3();
-                                                rw.Reader!.ReadVec3();
-                                            }
-                                            else if (rw.Mode == GameBoxReaderWriterMode.Write)
-                                            {
-                                                var dir = (Direction)i;
-                                                rw.Writer!.Write(new Vec3());
-                                                rw.Writer!.Write(new Vec3());
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            // for each block
+            //   Vec3 AbsolutePositionInMap
+            //   Vec3 PitchYawRoll
+            //   for each clip
+            //     Vec3 AbsolutePositionInMap of clip
+            //     Vec3 PitchYawRoll of clip
         }
     }
 
