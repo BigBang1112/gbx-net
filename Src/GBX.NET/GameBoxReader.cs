@@ -246,6 +246,19 @@ public class GameBoxReader : BinaryReader
 
         var index = ReadUInt32();
 
+        if (index == uint.MaxValue)
+        {
+            return new Id("", lookbackable);
+        }
+
+        if ((index >> 16 & 0x1FF) == 0x1FF) // ????
+        {
+            var bytes = ReadBytes(5);
+            var length = bytes[2];
+            var str = ReadString(length);
+            return new Id(str, lookbackable);
+        }
+
         if ((index & 0x3FFF) == 0 && (index >> 30 == 1 || index >> 30 == 2))
         {
             var str = ReadString();
