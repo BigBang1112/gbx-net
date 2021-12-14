@@ -1466,35 +1466,6 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     /// <summary>
-    /// FREE BLOCKS ARE CURRENTLY ALWAYS REMOVED FROM MAPS AFTER SAVING. Place a free block on a map. The placed block SHOULDN'T HAVE CLIPS, otherwise the map can break.
-    /// </summary>
-    /// <param name="name">Name of the block to place.</param>
-    /// <param name="absolutePosition">Absolute position of the free block.</param>
-    /// <param name="pitchYawRoll">Rotation of the free block in pitch, yaw, and roll format.</param>
-    /// <param name="skin">Skin to use on the free block.</param>
-    /// <returns>A newly placed block.</returns>
-    /// <exception cref="MemberNullException"><see cref="Blocks"/> is null.</exception>
-    private CGameCtnBlock PlaceFreeBlock(string name, Vec3 absolutePosition, Vec3 pitchYawRoll, CGameCtnBlockSkin? skin = null)
-    {
-        if (Blocks is null)
-            throw new MemberNullException(nameof(Blocks));
-
-        CreateChunk<Chunk0304305F>();
-
-        var block = new CGameCtnBlock(name, Direction.North, (-1, -1, -1))
-        {
-            IsFree = true,
-            AbsolutePositionInMap = absolutePosition,
-            PitchYawRoll = pitchYawRoll,
-            Skin = skin
-        };
-
-        Blocks.Add(block);
-
-        return block;
-    }
-
-    /// <summary>
     /// Transfers the MediaTracker from <see cref="Chunk03043021"/> (up to TMUF) to <see cref="Chunk03043049"/> (ManiaPlanet and Trackmania®). If <see cref="Chunk03043049"/> is already presented, no action is performed.
     /// </summary>
     /// <param name="upscaleTriggerCoord">Defines how many times the same coord should repeat.</param>
@@ -1640,11 +1611,10 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Enumerates through all of the embedded objects and yields their header data through the <see cref="GameBox"/> object.
     /// </summary>
     /// <returns>An enumerable of <see cref="GameBox"/> objects with header data only.</returns>
-    /// <exception cref="MemberNullException"><see cref="EmbeddedObjects"/> is null.</exception>
     public IEnumerable<GameBox> GetEmbeddedObjects()
     {
         if (EmbeddedObjects is null)
-            throw new MemberNullException(nameof(EmbeddedObjects));
+            yield break;
 
         foreach (var embed in EmbeddedObjects)
         {
@@ -1659,11 +1629,11 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Extracts embed ZIP file based on the data in <see cref="EmbeddedObjects"/>. File metadata is simplified and the timestamp of extraction is used for all files. Stream must have permission to read.
     /// </summary>
     /// <param name="stream">Stream to write the ZIP data to.</param>
-    /// <exception cref="MemberNullException"><see cref="EmbeddedObjects"/> is null.</exception>
-    public void ExtractEmbedZip(Stream stream)
+    /// <returns>False if there's nothing to extract, otherwise true.</returns>
+    public bool ExtractEmbedZip(Stream stream)
     {
-        if (EmbeddedObjects is null)
-            throw new MemberNullException(nameof(EmbeddedObjects));
+        if (EmbeddedObjects is null || !EmbeddedObjects.Any())
+            return false;
 
         using var zip = new ZipArchive(stream, ZipArchiveMode.Create, true);
 
@@ -1675,6 +1645,8 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             s.Write(embed.Value, 0, embed.Value.Length);
         }
+
+        return true;
     }
 
     /// <summary>
@@ -2246,7 +2218,11 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                                             if (version >= 13)
                                             {
                                                 rw.Int32(ref n.nbCheckpoints);
-                                                rw.Int32(ref n.nbLaps);
+
+                                                if (rw.Mode == GameBoxReaderWriterMode.Read)
+                                                    rw.Int32(ref n.nbLaps);
+                                                if (rw.Mode == GameBoxReaderWriterMode.Write)
+                                                    rw.Int32(n.isLapRace.GetValueOrDefault() ? n.nbLaps : 1, defaultValue: 3);
                                             }
                                         }
                                     }
@@ -2807,18 +2783,21 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
                 CGameWaypointSpecialProperty? parameters = null;
 
-                if ((flags & (1 << 20)) != 0)
+                if (CGameCtnBlock.IsWaypointBlock(flags))
                     parameters = r.ReadNodeRef<CGameWaypointSpecialProperty>();
 
                 if ((flags & (1 << 18)) != 0)
                 {
-
+                    // TODO
                 }
 
                 if ((flags & (1 << 17)) != 0)
                 {
-
+                    // TODO
                 }
+
+                if (CGameCtnBlock.IsFreeBlock(flags))
+                    coord -= (0, 1, 0);
 
                 n.blocks.Add(new CGameCtnBlock(blockName, dir, coord, flags, author, skin, parameters)
                 {
@@ -2842,30 +2821,6 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             if (!is013)
                 w.Write(version);
 
-            // Remove all free blocks with clips
-            if (n.blocks is not null)
-            {
-                for (int i = 0; i < n.blocks.Count; i++)
-                {
-                    var x = n.blocks[i];
-                    var skip = false;
-
-                    if (x.IsFree)
-                        if (BlockInfoManager.BlockModels?.TryGetValue(x.Name, out BlockModel m) == true)
-                            foreach (var unit in m.Air)
-                                if (unit.Clips != null)
-                                    foreach (var clip in unit.Clips)
-                                        if (!string.IsNullOrEmpty(clip))
-                                            skip = true;
-
-                    if (skip)
-                        n.blocks[i].IsFree = false;
-                }
-
-                n.blocks.RemoveAll(x => !x.IsFree && x.Coord == (-1, -1, -1) && x.Flags != -1);
-            }
-            //
-
             w.Write(n.NbBlocks.GetValueOrDefault());
 
             if (n.blocks is null)
@@ -2879,6 +2834,9 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 var coord = x.Coord;
                 if (version >= 6 && x.Flags != -1)
                     coord += (1, 0, 1);
+                if (CGameCtnBlock.IsFreeBlock(x.Flags))
+                    coord += (0, 1, 0);
+
                 w.Write((Byte3)coord);
 
                 switch (version)
@@ -3140,7 +3098,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043036, "realtime thumbnail")]
     public class Chunk03043036 : SkippableChunk<CGameCtnChallenge>
     {
-        public byte[] U01 = new byte[31];
+        public byte[]? U01;
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
@@ -3148,7 +3106,15 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             rw.Vec3(ref n.thumbnailPitchYawRoll);
             rw.Single(ref n.thumbnailFOV);
 
-            rw.Bytes(ref U01!, 31);
+            if (rw.Mode == GameBoxReaderWriterMode.Read)
+            {
+                U01 = rw.Reader!.ReadBytes((int)(rw.BaseStream.Length - rw.BaseStream.Position));
+            }
+
+            if (rw.Mode == GameBoxReaderWriterMode.Write)
+            {
+                rw.Writer!.WriteBytes(U01);
+            }
         }
     }
 
@@ -3363,37 +3329,37 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             version = r.ReadInt32();
 
-            if (version != 0)
-            {
-                U01 = r.ReadInt32();
-                var size = r.ReadInt32();
-                U02 = r.ReadInt32(); // 10
+            if (version == 0)
+                return;
 
-                n.anchoredObjects = ParseList<CGameCtnAnchoredObject>(r)!;
+            U01 = r.ReadInt32();
+            var size = r.ReadInt32();
+            U02 = r.ReadInt32(); // 10
 
-                U03 = r.ReadToEnd();
-            }
+            n.anchoredObjects = ParseList<CGameCtnAnchoredObject>(r)!;
+
+            U03 = r.ReadToEnd();
         }
 
         public override void Write(CGameCtnChallenge n, GameBoxWriter w)
         {
             w.Write(Version);
 
-            if (version != 0)
-            {
-                w.Write(U01);
+            if (version == 0)
+                return;
 
-                using var itemMs = new MemoryStream();
-                using var itemW = CreateWriter(itemMs);
+            w.Write(U01);
 
-                itemW.Write(U02);
-                itemW.WriteNodes(n.anchoredObjects);
+            using var itemMs = new MemoryStream();
+            using var itemW = CreateWriter(itemMs);
 
-                itemW.WriteBytes(U03);
+            itemW.Write(U02);
+            itemW.WriteNodes(n.anchoredObjects);
 
-                w.Write((int)itemMs.Length);
-                w.WriteBytes(itemMs.ToArray());
-            }
+            itemW.WriteBytes(U03);
+
+            w.Write((int)itemMs.Length);
+            w.WriteBytes(itemMs.ToArray());
         }
     }
 
@@ -3467,7 +3433,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             w.Write(Version);
 
             using var ms = new MemoryStream();
-            using var w1 = new GameBoxWriter(ms);
+            using var w1 = CreateWriter(ms);
 
             w1.Write(n.genealogies, (x, w) =>
             {
