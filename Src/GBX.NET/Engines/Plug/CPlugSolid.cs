@@ -157,6 +157,7 @@ public sealed class CPlugSolid : CPlug
         {
             rw.Boolean(ref U01);
             rw.Boolean(ref U02);
+            rw.NodeRef<CPlugTree>(ref n.tree);
         }
     }
 

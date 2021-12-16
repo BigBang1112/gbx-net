@@ -1,14 +1,28 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
-[Node(0x09006000)]
+[Node(0x09006000), WritingNotSupported]
 public class CPlugVisual : CPlug
 {
-    private IList<Vec4>? vertices;
+    protected int flags;
+    protected int count;
+    protected Vec2[]? texCoords;
 
-    public IList<Vec4>? Vertices
+    public int Flags
     {
-        get => vertices;
-        set => vertices = value;
+        get => flags;
+        set => flags = value;
+    }
+
+    public int Count
+    {
+        get => count;
+        set => count = value;
+    }
+
+    public Vec2[]? TexCoords
+    {
+        get => texCoords;
+        set => texCoords = value;
     }
 
     protected CPlugVisual()
@@ -54,6 +68,28 @@ public class CPlugVisual : CPlug
         }
     }
 
+    [Chunk(0x09006006)]
+    public class Chunk09006006 : Chunk<CPlugVisual>
+    {
+        public bool U01;
+
+        public override void ReadWrite(CPlugVisual n, GameBoxReaderWriter rw)
+        {
+            rw.Boolean(ref U01);
+        }
+    }
+
+    [Chunk(0x09006007)]
+    public class Chunk09006007 : Chunk<CPlugVisual>
+    {
+        public bool U01;
+
+        public override void ReadWrite(CPlugVisual n, GameBoxReaderWriter rw)
+        {
+            rw.Boolean(ref U01);
+        }
+    }
+
     [Chunk(0x09006009)]
     public class Chunk09006009 : Chunk<CPlugVisual>
     {
@@ -65,14 +101,46 @@ public class CPlugVisual : CPlug
         }
     }
 
+    [Chunk(0x0900600A)]
+    public class Chunk0900600A : Chunk<CPlugVisual>
+    {
+        public int U01;
+        public int U02;
+        public int U03;
+        public int U04;
+        public int U05;
+        public int U06;
+        public int U07;
+        public int U08;
+
+        public override void Read(CPlugVisual n, GameBoxReader r)
+        {
+            U01 = r.ReadInt32(); // IsGeometryStatic?
+            U02 = r.ReadInt32(); // IsIndexationStatic?
+            U03 = r.ReadInt32(); //
+            U04 = r.ReadInt32();
+            n.count = r.ReadInt32();
+            U05 = r.ReadInt32();
+            U06 = r.ReadInt32();
+
+            if (U03 == 1)
+            {
+                n.texCoords = r.ReadArray(n.count, r => r.ReadVec2());
+                U07 = r.ReadInt32(); // not correct but works
+            }
+
+            U08 = r.ReadInt32();
+        }
+    }
+
     [Chunk(0x0900600B)]
     public class Chunk0900600B : Chunk<CPlugVisual>
     {
-        public int U01;
+        public object[]? U01;
 
         public override void ReadWrite(CPlugVisual n, GameBoxReaderWriter rw)
         {
-            rw.Array<object>(null, (i, r) => new
+            U01 = rw.Array<object>(null, (i, r) => new
             {
                 x = r.ReadInt32(),
                 y = r.ReadInt32(),
@@ -134,33 +202,33 @@ public class CPlugVisual : CPlug
     [Chunk(0x0900600E)]
     public class Chunk0900600E : Chunk<CPlugVisual>
     {
-        private int flags;
-
-        public int Flags
-        {
-            get => flags;
-            set => flags = value;
-        }
-
         public int U01;
         public int U02;
-
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public float U07;
-        public float U08;
+        public int U03;
 
         public override void ReadWrite(CPlugVisual n, GameBoxReaderWriter rw)
         {
-            var flags = rw.Bytes(count: 4);
-            // CFastBuffer::GetCount(); - could get from 0x00B
+            rw.Int32(ref n.flags);
+            rw.Int32(ref U01); // 1 works fine, 2 or 3 doesnt
 
-            var count1 = rw.Int32(); // count?
-            rw.Int32(ref U02);
+            if (U01 != 1)
+            {
 
-            throw new Exception();
+            }
+
+            n.count = rw.Int32();
+
+            U02 = rw.Int32(); // array of node refs
+
+            for (var i = 0; i < U01; i++)
+            {
+                U03 = rw.Int32(); // something flag related
+
+                var textureCoords = rw.Reader!.ReadArray(n.count, r => r.ReadVec2());
+            }
+
+            var floats = rw.Array<float>(count: 6); // GmBoxAligned::ArchiveABox
+            var someCount = rw.Int32(); // CFastArray::ArchiveCountAndElems
         }
     }
 }
