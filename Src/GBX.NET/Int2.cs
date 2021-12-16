@@ -11,6 +11,12 @@ public struct Int2
         Y = y;
     }
 
+    public void Deconstruct(out int x, out int y)
+    {
+        x = X;
+        y = Y;
+    }
+
     public override string ToString() => $"<{X}, {Y}>";
     public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode();
     public override bool Equals(object? obj) => obj is Int2 a && a == this;

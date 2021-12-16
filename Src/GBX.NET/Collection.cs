@@ -36,7 +36,7 @@ public struct Collection
 
     public Int3 GetBlockSize()
     {
-        return (ToString()) switch
+        return ToString() switch
         {
             "Desert" => (32, 16, 32),
             "Snow" => (32, 16, 32),

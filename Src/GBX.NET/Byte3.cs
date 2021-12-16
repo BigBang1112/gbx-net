@@ -22,6 +22,13 @@ public struct Byte3
         Z = z;
     }
 
+    public void Deconstruct(out byte x, out byte y, out byte z)
+    {
+        x = X;
+        y = Y;
+        z = Z;
+    }
+
     /// <summary>
     /// Converts the bytes to a string format of "&lt;{X}, {Y}, {Z}&gt;".
     /// </summary>

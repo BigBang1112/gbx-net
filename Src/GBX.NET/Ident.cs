@@ -26,6 +26,13 @@ public class Ident
 
     }
 
+    public void Deconstruct(out string id, out Collection collection, out string author)
+    {
+        id = ID;
+        collection = Collection;
+        author = Author;
+    }
+
     public override string ToString() => $"(\"{ID}\", \"{Collection}\", \"{Author}\")";
     public override int GetHashCode() => ID.GetHashCode() ^ Collection.GetHashCode() ^ Author.GetHashCode();
     public override bool Equals(object? obj) => this is Ident m && this == m;

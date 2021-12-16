@@ -21,6 +21,13 @@ public struct Vec3 : IVec
         Z = z;
     }
 
+    public void Deconstruct(out float x, out float y, out float z)
+    {
+        x = X;
+        y = Y;
+        z = Z;
+    }
+
     public float GetMagnitude() => (float)Math.Sqrt(X * X + Y * Y + Z * Z);
     public float GetSqrMagnitude() => X * X + Y * Y + Z * Z;
 

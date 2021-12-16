@@ -17,6 +17,14 @@ public struct Vec4 : IVec
         W = w;
     }
 
+    public void Deconstruct(out float x, out float y, out float z, out float w)
+    {
+        x = X;
+        y = Y;
+        z = Z;
+        w = W;
+    }
+
     public override string ToString()
     {
         var x = X.ToString(CultureInfo.InvariantCulture);

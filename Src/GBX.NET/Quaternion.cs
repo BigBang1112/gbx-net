@@ -20,6 +20,14 @@ public struct Quaternion
 
     }
 
+    public void Deconstruct(out float x, out float y, out float z, out float w)
+    {
+        x = X;
+        y = Y;
+        z = Z;
+        w = W;
+    }
+
     public Vec3 ToPitchYawRoll()
     {
         var pitch = (float)Math.Atan2(2 * X * W - 2 * Y * Z, 1 - 2 * X * X - 2 * Z * Z);

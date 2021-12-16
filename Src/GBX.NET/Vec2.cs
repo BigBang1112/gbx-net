@@ -13,6 +13,12 @@ public struct Vec2 : IVec
         Y = y;
     }
 
+    public void Deconstruct(out float x, out float y)
+    {
+        x = X;
+        y = Y;
+    }
+
     public float GetMagnitude() => (float)Math.Sqrt(X * X + Y * Y);
     public float GetSqrMagnitude() => X * X + Y * Y;
 
