@@ -11,6 +11,8 @@ if (args.Length == 0)
 var rootPath = Path.GetDirectoryName(typeof(Program).Assembly.Location)!;
 var extractPath = Path.Combine(rootPath, "Extract");
 
+Directory.CreateDirectory(extractPath);
+
 foreach (var fileName in args)
 {
     Console.WriteLine(fileName);
