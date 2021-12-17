@@ -43,9 +43,13 @@ void Recurse(CPlugTree? tree, float? distance = null)
     if (visual is null)
         return;
 
-    var fileName = distance is null ? tree.Name + ".obj" : $"{tree.Name}_{distance}.obj";
+    var fileName = tree.Name + ".obj";
+    var fullDirectory = Path.Combine(dirName, distance.ToString() ?? "");
+    var fullFileName = Path.Combine(fullDirectory, fileName);
 
-    using var w = new StreamWriter(Path.Combine(dirName, fileName));
+    Directory.CreateDirectory(fullDirectory);
+
+    using var w = new StreamWriter(fullFileName);
 
     if (visual is CPlugVisualIndexed indexed)
     {
@@ -54,9 +58,27 @@ void Recurse(CPlugTree? tree, float? distance = null)
             w.WriteLine("v {0} {1} {2}", vertex.Position.X, vertex.Position.Y, vertex.Position.Z);
         }
 
+        if (indexed.TexCoords is not null)
+        {
+            foreach (var uv in indexed.TexCoords)
+            {
+                w.WriteLine("vt {0} {1}", uv.X, uv.Y);
+            }
+        }
+
         foreach (var indicies in indexed.Indicies.Chunk(3))
         {
-            w.WriteLine("f {0} {1} {2}", indicies[0] + 1, indicies[1] + 1, indicies[2] + 1);
+            var a = indicies[0] + 1;
+            var b = indicies[1] + 1;
+            var c = indicies[2] + 1;
+
+            if (indexed.TexCoords is null)
+            {
+                w.WriteLine("f {0} {1} {2}", a, b, c);
+                continue;
+            }
+
+            w.WriteLine("f {0}/{0} {1}/{1} {2}/{2}", a, b, c);
         }
     }
 }
