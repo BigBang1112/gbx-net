@@ -7,6 +7,7 @@ CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 if (args.Length == 0)
     return;
 
+var rootPath = Path.GetDirectoryName(typeof(Program).Assembly.Location)!;
 var fileName = args[0];
 
 var node = GameBox.ParseNode<CPlugSolid>(fileName);
@@ -44,7 +45,7 @@ void Recurse(CPlugTree? tree, float? distance = null)
         return;
 
     var fileName = tree.Name + ".obj";
-    var fullDirectory = Path.Combine(dirName, distance.ToString() ?? "");
+    var fullDirectory = Path.Combine(rootPath, dirName, distance.ToString() ?? "");
     var fullFileName = Path.Combine(fullDirectory, fileName);
 
     Directory.CreateDirectory(fullDirectory);
