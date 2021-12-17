@@ -8,34 +8,40 @@ if (args.Length == 0)
     return;
 
 var rootPath = Path.GetDirectoryName(typeof(Program).Assembly.Location)!;
-var fileName = args[0];
 
-var node = GameBox.ParseNode<CPlugSolid>(fileName);
+foreach (var fileName in args)
+{
+    var node = GameBox.ParseNode<CPlugSolid>(fileName);
 
-if (node.Tree is null)
-    return;
+    if (node.Tree is null)
+        continue;
 
-var dirName = Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(fileName));
+    var dirName = Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(fileName));
 
-Directory.CreateDirectory(dirName);
+    Directory.CreateDirectory(dirName);
 
-Recurse(node.Tree);
+    Console.WriteLine(fileName);
 
-void Recurse(CPlugTree? tree, float? distance = null)
+    Recurse(node.Tree, dirName);
+}
+
+void Recurse(CPlugTree? tree, string dirName, float? distance = null)
 {
     if (tree is null)
         return;
 
+    Console.WriteLine(tree.Name);
+
     foreach (var plug in tree.Children)
     {
-        Recurse(plug, distance);
+        Recurse(plug, dirName, distance);
     }
 
     if (tree is CPlugTreeVisualMip mip)
     {
         foreach (var level in mip.Levels)
         {
-            Recurse(level.Value, distance: level.Key);
+            Recurse(level.Value, dirName, distance: level.Key);
         }
     }
 
