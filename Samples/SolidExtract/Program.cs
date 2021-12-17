@@ -1,6 +1,7 @@
 ﻿using GBX.NET;
 using GBX.NET.Engines.Plug;
 using System.Globalization;
+using System.Text;
 
 CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 
@@ -12,18 +13,11 @@ var extractPath = Path.Combine(rootPath, "Extract");
 
 foreach (var fileName in args)
 {
+    Console.WriteLine(fileName);
+
     try
     {
-        var node = GameBox.ParseNode<CPlugSolid>(fileName);
-
-        if (node.Tree is null)
-            continue;
-
-        var dirName = Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(fileName));
-
-        Console.WriteLine(fileName);
-
-        Recurse(node.Tree, dirName);
+        ProcessFile(fileName);
     }
     catch (Exception ex)
     {
@@ -33,41 +27,72 @@ foreach (var fileName in args)
 
 Console.ReadKey();
 
-void Recurse(CPlugTree? tree, string dirName, float? distance = null)
+void ProcessFile(string fileName)
 {
+    var node = GameBox.ParseNode<CPlugSolid>(fileName);
+
+    var tree = node.Tree;
+
     if (tree is null)
         return;
 
-    Console.WriteLine(tree.Name);
+    using var fs = File.Create(Path.Combine(extractPath, Path.GetFileName(fileName) + ".obj"));
+    using var w = new StreamWriter(fs);
 
-    foreach (var plug in tree.Children)
-    {
-        Recurse(plug, dirName, distance);
-    }
+    using var texStream = new MemoryStream();
+    using var faceStream = new MemoryStream();
 
-    if (tree is CPlugTreeVisualMip mip)
+    using var texWriter = new StreamWriter(texStream);
+    using var faceWriter = new StreamWriter(faceStream);
+
+    var offsetVert = 0;
+    var offsetUv = 0;
+
+    Recurse(tree);
+
+    texWriter.Flush();
+    faceWriter.Flush();
+
+    texStream.Position = 0;
+    faceStream.Position = 0;
+
+    w.WriteLine();
+    w.Flush();
+
+    texStream.CopyTo(fs);
+    faceStream.CopyTo(fs);
+
+    void Recurse(CPlugTree? tree, float? lodValue = null)
     {
-        foreach (var level in mip.Levels)
+        if (tree is null)
+            return;
+
+        foreach (var plug in tree.Children)
         {
-            Recurse(level.Value, dirName, distance: level.Key);
+            Recurse(plug);
         }
-    }
 
-    var visual = tree.Visual;
+        if (tree is CPlugTreeVisualMip mip)
+        {
+            foreach (var (lod, plug) in mip.Levels)
+            {
+                Recurse(plug, lod);
+            }
+        }
 
-    if (visual is null)
-        return;
+        var visual = tree.Visual;
 
-    var fileName = tree.Name + ".obj";
-    var fullDirectory = Path.Combine(extractPath, dirName, distance.ToString() ?? "");
-    var fullFileName = Path.Combine(fullDirectory, fileName);
+        if (visual is null)
+            return;
 
-    Directory.CreateDirectory(fullDirectory);
+        Console.WriteLine(tree.Name);
 
-    using var w = new StreamWriter(fullFileName);
+        faceWriter.WriteLine();
+        faceWriter.WriteLine("o " + tree.Name);
 
-    if (visual is CPlugVisualIndexed indexed)
-    {
+        if (visual is not CPlugVisualIndexed indexed)
+            return;
+
         foreach (var vertex in indexed.Vertices)
         {
             w.WriteLine("v {0} {1} {2}", vertex.Position.X, vertex.Position.Y, vertex.Position.Z);
@@ -77,23 +102,32 @@ void Recurse(CPlugTree? tree, string dirName, float? distance = null)
         {
             foreach (var uv in indexed.TexCoords)
             {
-                w.WriteLine("vt {0} {1}", uv.X, uv.Y);
+                texWriter.WriteLine("vt {0} {1}", uv.X, uv.Y);
             }
         }
 
         foreach (var indicies in indexed.Indicies.Chunk(3))
         {
-            var a = indicies[0] + 1;
-            var b = indicies[1] + 1;
-            var c = indicies[2] + 1;
+            var aVert = indicies[0] + 1 + offsetVert;
+            var bVert = indicies[1] + 1 + offsetVert;
+            var cVert = indicies[2] + 1 + offsetVert;
+
+            var aUV = indicies[0] + 1 + offsetUv;
+            var bUV = indicies[1] + 1 + offsetUv;
+            var cUV = indicies[2] + 1 + offsetUv;
 
             if (indexed.TexCoords is null)
             {
-                w.WriteLine("f {0} {1} {2}", a, b, c);
+                faceWriter.WriteLine("f {0} {1} {2}", aVert, bVert, cVert);
                 continue;
             }
 
-            w.WriteLine("f {0}/{0} {1}/{1} {2}/{2}", a, b, c);
+            faceWriter.WriteLine("f {0}/{1} {2}/{3} {4}/{5}", aVert, aUV, bVert, bUV, cVert, cUV);
         }
+
+        offsetVert += indexed.Vertices.Length;
+
+        if (indexed.TexCoords is not null)
+            offsetUv += indexed.TexCoords.Length;
     }
 }
