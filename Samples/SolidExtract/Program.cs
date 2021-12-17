@@ -8,21 +8,28 @@ if (args.Length == 0)
     return;
 
 var rootPath = Path.GetDirectoryName(typeof(Program).Assembly.Location)!;
+var extractPath = Path.Combine(rootPath, "Extract");
 
 foreach (var fileName in args)
 {
-    var node = GameBox.ParseNode<CPlugSolid>(fileName);
+    try
+    {
+        var node = GameBox.ParseNode<CPlugSolid>(fileName);
 
-    if (node.Tree is null)
-        continue;
+        if (node.Tree is null)
+            continue;
 
-    var dirName = Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(fileName));
+        var dirName = Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(fileName));
 
-    Directory.CreateDirectory(dirName);
+        Console.WriteLine(fileName);
 
-    Console.WriteLine(fileName);
-
-    Recurse(node.Tree, dirName);
+        Recurse(node.Tree, dirName);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex);
+        Console.ReadKey();
+    }
 }
 
 void Recurse(CPlugTree? tree, string dirName, float? distance = null)
@@ -51,7 +58,7 @@ void Recurse(CPlugTree? tree, string dirName, float? distance = null)
         return;
 
     var fileName = tree.Name + ".obj";
-    var fullDirectory = Path.Combine(rootPath, dirName, distance.ToString() ?? "");
+    var fullDirectory = Path.Combine(extractPath, dirName, distance.ToString() ?? "");
     var fullFileName = Path.Combine(fullDirectory, fileName);
 
     Directory.CreateDirectory(fullDirectory);
