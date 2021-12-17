@@ -5,7 +5,7 @@ public class CPlugVisual : CPlug
 {
     protected int flags;
     protected int count;
-    protected Vec2[]? texCoords;
+    protected Vec2[][]? texCoords;
 
     public int Flags
     {
@@ -19,7 +19,7 @@ public class CPlugVisual : CPlug
         set => count = value;
     }
 
-    public Vec2[]? TexCoords
+    public Vec2[][]? TexCoords
     {
         get => texCoords;
         set => texCoords = value;
@@ -112,6 +112,7 @@ public class CPlugVisual : CPlug
         public int U06;
         public int U07;
         public int U08;
+        public int U09;
 
         public override void Read(CPlugVisual n, GameBoxReader r)
         {
@@ -121,15 +122,16 @@ public class CPlugVisual : CPlug
             U04 = r.ReadInt32();
             n.count = r.ReadInt32();
             U05 = r.ReadInt32();
-            U06 = r.ReadInt32();
 
-            if (U03 == 1)
+            n.texCoords = r.ReadArray(U03, r =>
             {
-                n.texCoords = r.ReadArray(n.count, r => r.ReadVec2());
-                U07 = r.ReadInt32(); // not correct but works
-            }
+                var u06 = r.ReadInt32();
+                var array = r.ReadArray(n.count, r => r.ReadVec2());
+                return array;
+            });
 
             U08 = r.ReadInt32();
+            U09 = r.ReadInt32();
         }
     }
 
@@ -171,12 +173,13 @@ public class CPlugVisual : CPlug
             n.count = r.ReadInt32();
             U05 = r.ReadInt32();
 
-            for (var i = 0; i < U03; i++)
+            n.texCoords = r.ReadArray(U03, r =>
             {
                 var u06 = r.ReadInt32();
-                var texCoords = r.ReadArray(n.count, r => r.ReadVec2());
-            }
-            
+                var array = r.ReadArray(n.count, r => r.ReadVec2());
+                return array;
+            });
+
             U07 = r.ReadBoolean();
             var floats = r.ReadArray<float>(6); // GmBoxAligned::ArchiveABox
         }
