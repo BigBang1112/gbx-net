@@ -151,6 +151,37 @@ public class CPlugVisual : CPlug
         }
     }
 
+    [Chunk(0x0900600C)]
+    public class Chunk0900600C : Chunk<CPlugVisual>
+    {
+        public int U01;
+        public int U02;
+        public int U03;
+        public int U04;
+        public int U05;
+        public int U06;
+        public bool U07;
+
+        public override void Read(CPlugVisual n, GameBoxReader r)
+        {
+            U01 = r.ReadInt32(); // IsGeometryStatic?
+            U02 = r.ReadInt32(); // IsIndexationStatic?
+            U03 = r.ReadInt32(); //
+            U04 = r.ReadInt32();
+            n.count = r.ReadInt32();
+            U05 = r.ReadInt32();
+
+            for (var i = 0; i < U03; i++)
+            {
+                var u06 = r.ReadInt32();
+                var texCoords = r.ReadArray(n.count, r => r.ReadVec2());
+            }
+            
+            U07 = r.ReadBoolean();
+            var floats = r.ReadArray<float>(6); // GmBoxAligned::ArchiveABox
+        }
+    }
+
     [Chunk(0x0900600D)]
     public class Chunk0900600D : Chunk<CPlugVisual>
     {

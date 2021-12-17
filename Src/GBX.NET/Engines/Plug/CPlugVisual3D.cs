@@ -32,8 +32,8 @@ public class CPlugVisual3D : CPlugVisual
     [Chunk(0x0902C003)]
     public class Chunk0902C003 : Chunk<CPlugVisual3D>
     {
-        public int U01;
-        public int U02;
+        public Vec3[] U01;
+        public Vec3[] U02;
 
         public override void Read(CPlugVisual3D n, GameBoxReader r)
         {
@@ -49,8 +49,8 @@ public class CPlugVisual3D : CPlugVisual
                 );
             }
 
-            U01 = r.ReadInt32();
-            U02 = r.ReadInt32();
+            U01 = r.ReadArray(r => r.ReadVec3());
+            U02 = r.ReadArray(r => r.ReadVec3());
         }
     }
 
