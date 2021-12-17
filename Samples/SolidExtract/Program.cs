@@ -28,9 +28,10 @@ foreach (var fileName in args)
     catch (Exception ex)
     {
         Console.WriteLine(ex);
-        Console.ReadKey();
     }
 }
+
+Console.ReadKey();
 
 void Recurse(CPlugTree? tree, string dirName, float? distance = null)
 {
