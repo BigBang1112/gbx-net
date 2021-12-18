@@ -21,7 +21,7 @@ public sealed class CPlugTreeVisualMip : CPlugTree
     {
         public override void ReadWrite(CPlugTreeVisualMip n, GameBoxReaderWriter rw)
         {
-            rw.DictionaryNode(ref n.levels!);
+            rw.DictionaryNode(ref n.levels!, overrideKey: true);
         }
     }
 }
