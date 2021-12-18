@@ -101,7 +101,7 @@ void ProcessFile(string fileName)
         faceWriter.WriteLine();
         faceWriter.WriteLine("o " + tree.Name);
 
-        if (visual is not CPlugVisualIndexed indexed)
+        if (visual is not CPlugVisualIndexedTriangles indexed)
             return;
 
         foreach (var vertex in indexed.Vertices)
@@ -123,7 +123,7 @@ void ProcessFile(string fileName)
             }
         }
 
-        foreach (var indicies in indexed.Indicies.Chunk(3))
+        foreach (var indicies in indexed.Indices.Chunk(3))
         {
             var aVert = indicies[0] + 1 + offsetVert;
             var bVert = indicies[1] + 1 + offsetVert;
