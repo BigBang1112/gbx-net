@@ -22,8 +22,15 @@ public static class EnumerableExtensions
     {
         var list = new List<T>(capacity);
 
-        foreach (var item in source)
-            list.Add(item);
+        try
+        {
+            foreach (var item in source)
+                list.Add(item);
+        }
+        catch (EndOfStreamException)
+        {
+
+        }
 
         return list;
     }
