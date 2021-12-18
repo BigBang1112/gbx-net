@@ -60,11 +60,12 @@ public class CPlugVisual : CPlug
     [Chunk(0x09006005)]
     public class Chunk09006005 : Chunk<CPlugVisual>
     {
-        public int U01;
+        public Int3[]? U01;
 
         public override void ReadWrite(CPlugVisual n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01); // ArchiveCountAndElems, could have binary data with U01 length
+            rw.Array<Int3>(ref U01, r => r.ReadInt3(),
+                (x, w) => w.Write(x));
         }
     }
 
