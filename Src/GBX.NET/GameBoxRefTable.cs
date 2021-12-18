@@ -145,7 +145,9 @@ public class GameBoxRefTable
 
     public IEnumerable<File> GetAllFiles()
     {
-        return Folders.Flatten(x => x.Folders).SelectMany(x => x.Files);
+        return Folders.Flatten(x => x.Folders)
+            .SelectMany(x => x.Files)
+            .Concat(Files);
     }
 
     public class File

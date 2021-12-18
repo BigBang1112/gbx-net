@@ -371,7 +371,7 @@ public class GameBoxReader : BinaryReader
         var refTable = body.GBX.RefTable;
 
         // First checks if reference table is used
-        if (refTable is not null && (refTable.Folders.Count > 0 || refTable.Folders.Count > 0))
+        if (refTable is not null && (refTable.Files.Count > 0 || refTable.Folders.Count > 0))
         {
             var allFiles = refTable.GetAllFiles(); // Returns available external references
 
