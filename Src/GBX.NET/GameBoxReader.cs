@@ -365,12 +365,16 @@ public class GameBoxReader : BinaryReader
 
         var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
+        if (index < 0) // If aux node index is below 0 then there's not much to solve
+            return null;
+
         var refTable = body.GBX.RefTable;
 
         // First checks if reference table is used
         if (refTable is not null && (refTable.Folders.Count > 0 || refTable.Folders.Count > 0))
         {
             var allFiles = refTable.GetAllFiles(); // Returns available external references
+
             if (allFiles.Any()) // If there's one
             {
                 // Tries to get the one with this node index
@@ -382,16 +386,18 @@ public class GameBoxReader : BinaryReader
             }
         }
 
+        var node = default(CMwNod?);
+
         // If index is 0 or bigger and the node wasn't read yet, or is null
         if (index >= 0 && (!body.AuxilaryNodes.ContainsKey(index) || body.AuxilaryNodes[index] == null))
-            body.AuxilaryNodes[index] = CMwNod.Parse<T>(this)!;
+            node = CMwNod.Parse<T>(this)!;
 
-        if (index < 0) // If aux node index is below 0 then there's not much to solve
-            return null;
+        if (node is null)
+            body.AuxilaryNodes.TryGetValue(index, out node); // Tries to get the available node from index
+        else
+            body.AuxilaryNodes[index] = node;
 
-        body.AuxilaryNodes.TryGetValue(index, out CMwNod? n); // Tries to get the available node from index
-
-        if (n is T nod) // If the node is presented at the index, then it's simple
+        if (node is T nod) // If the node is presented at the index, then it's simple
             return nod;
 
         // But sometimes it indexes the node reference that is further in the expected indexes
