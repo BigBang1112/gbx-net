@@ -1885,46 +1885,54 @@ public class GameBoxReaderWriter
             (x, w) => w.Write(x));
     }
 
+    /// <param name="dictionary">Dictionary to write. Ignored in read mode.</param>
+    /// <param name="overrideKey">Only affecting read mode: if the pair in the dictionary should be overriden by the new value when a duplicate key is read. It is recommended to keep it false to easily spot errors.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
-    public IDictionary<TKey, TValue>? Dictionary<TKey, TValue>(IDictionary<TKey, TValue>? dictionary = default) where TKey : notnull
+    public IDictionary<TKey, TValue>? Dictionary<TKey, TValue>(IDictionary<TKey, TValue>? dictionary = default, bool overrideKey = false) where TKey : notnull
     {
-        if (Reader is not null) return Reader.ReadDictionary<TKey, TValue>();
+        if (Reader is not null) return Reader.ReadDictionary<TKey, TValue>(overrideKey);
         if (Writer is not null) Writer.Write(dictionary);
         return dictionary;
     }
 
+    /// <param name="dictionary">Dictionary to read or write. Read mode sets <paramref name="dictionary"/>, write mode uses <paramref name="dictionary"/> to write the value (keeping <paramref name="dictionary"/> unchanged).</param>
+    /// <param name="overrideKey">Only affecting read mode: if the pair in the dictionary should be overriden by the new value when a duplicate key is read. It is recommended to keep it false to easily spot errors.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
-    public void Dictionary<TKey, TValue>(ref IDictionary<TKey, TValue>? dictionary) where TKey : notnull
+    public void Dictionary<TKey, TValue>(ref IDictionary<TKey, TValue>? dictionary, bool overrideKey = false) where TKey : notnull
     {
-        dictionary = Dictionary(dictionary);
+        dictionary = Dictionary(dictionary, overrideKey);
     }
 
+    /// <param name="dictionary">Dictionary to write. Ignored in read mode.</param>
+    /// <param name="overrideKey">Only affecting read mode: if the pair in the dictionary should be overriden by the new value when a duplicate key is read. It is recommended to keep it false to easily spot errors.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public IDictionary<TKey, TValue?>? DictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary = default) where TKey : notnull where TValue : CMwNod
+    public IDictionary<TKey, TValue?>? DictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary = default, bool overrideKey = false) where TKey : notnull where TValue : CMwNod
     {
-        if (Reader is not null) return Reader.ReadDictionaryNode<TKey, TValue>();
+        if (Reader is not null) return Reader.ReadDictionaryNode<TKey, TValue>(overrideKey);
         if (Writer is not null) Writer.WriteDictionaryNode(dictionary);
         return dictionary;
     }
 
+    /// <param name="dictionary">Dictionary to read or write. Read mode sets <paramref name="dictionary"/>, write mode uses <paramref name="dictionary"/> to write the value (keeping <paramref name="dictionary"/> unchanged).</param>
+    /// <param name="overrideKey">Only affecting read mode: if the pair in the dictionary should be overriden by the new value when a duplicate key is read. It is recommended to keep it false to easily spot errors.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void DictionaryNode<TKey, TValue>(ref IDictionary<TKey, TValue?>? dictionary) where TKey : notnull where TValue : CMwNod
+    public void DictionaryNode<TKey, TValue>(ref IDictionary<TKey, TValue?>? dictionary, bool overrideKey = false) where TKey : notnull where TValue : CMwNod
     {
-        dictionary = DictionaryNode(dictionary);
+        dictionary = DictionaryNode(dictionary, overrideKey);
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>

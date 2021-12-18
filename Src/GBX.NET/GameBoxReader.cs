@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Extensions;
+using System.Diagnostics;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -927,19 +928,28 @@ public class GameBoxReader : BinaryReader
     /// </summary>
     /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>. Mustn't be null.</typeparam>
     /// <typeparam name="TValue">One of the supported types of <see cref="Read{T}"/>.</typeparam>
+    /// <param name="overrideKey">If the pair in the dictionary should be overriden by the new value when a duplicate key is found. It is recommended to keep it false to easily spot errors.</param>
     /// <returns>A dictionary.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
-    public IDictionary<TKey, TValue> ReadDictionary<TKey, TValue>() where TKey : notnull
+    public IDictionary<TKey, TValue> ReadDictionary<TKey, TValue>(bool overrideKey = false) where TKey : notnull
     {
         var length = ReadInt32();
 
         var dictionary = new Dictionary<TKey, TValue>(length);
 
         for (var i = 0; i < length; i++)
-            dictionary.Add(key: Read<TKey>(), value: Read<TValue>());
+        {
+            var key = Read<TKey>();
+            var value = Read<TValue>();
+
+            if (overrideKey)
+                dictionary[key] = value;
+            else
+                dictionary.Add(key, value);
+        }
 
         return dictionary;
     }
@@ -949,20 +959,30 @@ public class GameBoxReader : BinaryReader
     /// </summary>
     /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>. Mustn't be null.</typeparam>
     /// <typeparam name="TValue">A node that is presented as node reference.</typeparam>
+    /// <param name="overrideKey">If the pair in the dictionary should be overriden by the new value when a duplicate key is found. It is recommended to keep it false to easily spot errors.</param>
     /// <returns>A dictionary.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException"><see cref="Body"/> is null.</exception>
     /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
-    public IDictionary<TKey, TValue?> ReadDictionaryNode<TKey, TValue>() where TKey : notnull where TValue : CMwNod
+    public IDictionary<TKey, TValue?> ReadDictionaryNode<TKey, TValue>(bool overrideKey = false) where TKey : notnull where TValue : CMwNod
     {
         var length = ReadInt32();
 
         var dictionary = new Dictionary<TKey, TValue?>(length);
 
         for (var i = 0; i < length; i++)
-            dictionary.Add(key: Read<TKey>(), value: ReadNodeRef<TValue>());
+        {
+            var key = Read<TKey>();
+            var value = ReadNodeRef<TValue>();
+
+            if (overrideKey)
+                dictionary[key] = value;
+            else
+                dictionary.Add(key, value);
+        }
+            
 
         return dictionary;
     }
