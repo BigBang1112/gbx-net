@@ -54,7 +54,7 @@ public static class NodeCacheManager
     /// <typeparam name="T">Type of the node to instantiate.</typeparam>
     /// <param name="classId">Class ID.</param>
     /// <returns>The instantiated node.</returns>
-    /// <exception cref="NodeNotFoundException">Node has not been found in the cached list.</exception>
+    /// <exception cref="NodeNotInstantiableException">Node instance cannot be created from this class ID.</exception>
     internal static T GetNodeInstance<T>(uint classId) where T : CMwNod
     {
         if (AvailableClassConstructors.TryGetValue(classId, out Func<CMwNod>? constructor))
@@ -64,7 +64,7 @@ public static class NodeCacheManager
             return node;
         }
 
-        throw new NodeNotFoundException(classId);
+        throw new NodeNotInstantiableException(classId);
     }
 
     private static void DefineNames()
@@ -272,6 +272,9 @@ public static class NodeCacheManager
 
             if (privateConstructor is null)
                 throw new PrivateConstructorNotFoundException(classType);
+
+            if (classType.IsAbstract)
+                continue;
 
             var newExp = Expression.New(privateConstructor);
             var lambda = Expression.Lambda<Func<CMwNod>>(newExp);
