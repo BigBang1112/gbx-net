@@ -99,13 +99,12 @@ public class CPlugTree : CPlug
     [Chunk(0x0904F016)]
     public class Chunk0904F016 : Chunk<CPlugTree> /////////////////
     {
-        public CMwNod? U01;
         public int U03;
 
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
             rw.NodeRef<CPlugVisual>(ref n.visual); // CPlugVisual?
-            rw.NodeRef(ref U01); // CPlugSurface?
+            rw.NodeRef<CPlug>(ref n.shader);
             rw.NodeRef<CPlugSurfaceGeom>(ref n.surface); // CPlugSurface? CPlugTreeGenerator?
             rw.Int32(ref U03); // ???
         }
