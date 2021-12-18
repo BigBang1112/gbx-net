@@ -21,6 +21,8 @@ public class HeaderChunk<T> : SkippableChunk<T>, IHeaderChunk where T : CMwNod
 
     }
 
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
     public override void ReadWrite(T n, GameBoxReaderWriter rw)
     {
         if (rw.Reader != null)

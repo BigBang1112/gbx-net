@@ -25,31 +25,39 @@ public abstract class Chunk<T> : Chunk, IChunk where T : CMwNod
 
     }
 
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     void IChunk.Read(CMwNod n, GameBoxReader r)
     {
         Read((T)n, r);
     }
 
+    /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
     void IChunk.Write(CMwNod n, GameBoxWriter w)
     {
         Write((T)n, w);
     }
 
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
     void IChunk.ReadWrite(CMwNod n, GameBoxReaderWriter rw)
     {
         ReadWrite((T)n, rw);
     }
 
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     public virtual void Read(T n, GameBoxReader r)
     {
-        throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support Read.");
+        throw new ChunkReadNotImplementedException(ID, Node.ClassName);
     }
 
+    /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
     public virtual void Write(T n, GameBoxWriter w)
     {
-        throw new NotImplementedException($"Chunk 0x{ID & 0xFFF:x3} from class {Node.ClassName} doesn't support Write.");
+        throw new ChunkWriteNotImplementedException(ID, Node.ClassName);
     }
 
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
     public virtual void ReadWrite(T n, GameBoxReaderWriter rw)
     {
         if (rw.Reader != null)
@@ -58,6 +66,7 @@ public abstract class Chunk<T> : Chunk, IChunk where T : CMwNod
             Write(n, rw.Writer);
     }
 
+    /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
     public byte[] ToByteArray()
     {
         if (this is ILookbackable l)
@@ -75,7 +84,9 @@ public abstract class Chunk<T> : Chunk, IChunk where T : CMwNod
 
     public override string ToString()
     {
-        var desc = GetType().GetCustomAttribute<ChunkAttribute>()?.Description;
+        var att = NodeCacheManager.AvailableChunkAttributesByType[GetType()]
+            .FirstOrDefault(x => x is ChunkAttribute) as ChunkAttribute;
+        var desc = att?.Description;
         var version = (this as IVersionable)?.Version;
         return $"{typeof(T).Name} chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(version is null ? "" : $" [v{version}]")}";
     }

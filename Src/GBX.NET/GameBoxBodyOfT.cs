@@ -18,6 +18,9 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
     }
 
     /// <exception cref="MissingLzoException"></exception>
+    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     public void Read(byte[] data, int uncompressedSize, IProgress<GameBoxReadProgress>? progress = null)
     {
         var buffer = new byte[uncompressedSize];
@@ -32,18 +35,27 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
         Read(buffer, progress);
     }
 
+    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     public void Read(byte[] data, IProgress<GameBoxReadProgress>? progress = null)
     {
         using var ms = new MemoryStream(data);
         Read(ms, progress);
     }
 
+    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     public void Read(Stream stream, IProgress<GameBoxReadProgress>? progress = null)
     {
         using var gbxr = new GameBoxReader(stream, this);
         Read(gbxr, progress);
     }
 
+    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     public void Read(GameBoxReader reader, IProgress<GameBoxReadProgress>? progress = null)
     {
         CMwNod.Parse(GBX.Node, reader, progress);

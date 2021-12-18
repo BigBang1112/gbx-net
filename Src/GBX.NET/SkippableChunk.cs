@@ -60,15 +60,13 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : CMwNod
         {
             ReadWrite(Node, gbxrw);
         }
-        catch (NotImplementedException)
+        catch (ChunkReadNotImplementedException)
         {
-            using var unknownGbxw = CreateWriter(Unknown);
-
             try
             {
                 Read(Node, gbxr);
             }
-            catch (NotImplementedException e)
+            catch (ChunkReadNotImplementedException e)
             {
                 Debug.WriteLine(e.Message);
             }

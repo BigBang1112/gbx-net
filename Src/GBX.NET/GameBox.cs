@@ -266,6 +266,9 @@ public class GameBox
     /// <exception cref="NotSupportedException"/>
     /// <exception cref="GameBoxParseException"/>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
+    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     public static GameBox<T> Parse<T>(Stream stream, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false) where T : CMwNod
     {
         var gbx = ParseHeader<T>(stream, progress);
@@ -292,6 +295,9 @@ public class GameBox
     /// <exception cref="NotSupportedException"/>
     /// <exception cref="GameBoxParseException"/>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
+    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     public static GameBox<T> Parse<T>(string fileName, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false) where T : CMwNod
     {
         using var fs = File.OpenRead(fileName);
@@ -313,6 +319,9 @@ public class GameBox
     /// <exception cref="NotSupportedException"/>
     /// <exception cref="GameBoxParseException"/>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
+    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     public static GameBox Parse(string fileName, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false)
     {
         using var fs = File.OpenRead(fileName);
@@ -333,6 +342,9 @@ public class GameBox
     /// <exception cref="MissingLzoException"/>
     /// <exception cref="NotSupportedException"/>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
+    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     public static GameBox Parse(Stream stream, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false)
     {
         using var rHeader = new GameBoxReader(stream);
@@ -418,6 +430,9 @@ public class GameBox
     /// <exception cref="InvalidCastException"/>
     /// <exception cref="NotSupportedException"/>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
+    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     public static T ParseNode<T>(Stream stream, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false) where T : CMwNod
     {
         return Parse<T>(stream, progress, readUncompressedBodyDirectly);
@@ -436,6 +451,9 @@ public class GameBox
     /// <exception cref="InvalidCastException"/>
     /// <exception cref="NotSupportedException"/>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
+    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     public static T ParseNode<T>(string fileName, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false) where T : CMwNod
     {
         return Parse<T>(fileName, progress, readUncompressedBodyDirectly);
@@ -452,6 +470,9 @@ public class GameBox
     /// <exception cref="MissingLzoException"/>
     /// <exception cref="NotSupportedException"/>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
+    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     public static CMwNod? ParseNode(string fileName, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false)
     {
         return Parse(fileName, progress, readUncompressedBodyDirectly);
@@ -468,6 +489,9 @@ public class GameBox
     /// <exception cref="MissingLzoException"/>
     /// <exception cref="NotSupportedException"/>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
+    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     public static CMwNod? ParseNode(Stream stream, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false)
     {
         return Parse(stream, progress, readUncompressedBodyDirectly);

@@ -211,6 +211,10 @@ public class GameBox<T> : GameBox where T : CMwNod
         return true;
     }
 
+    /// <exception cref="MissingLzoException"></exception>
+    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     protected internal override bool ReadBody(GameBoxReader reader, IProgress<GameBoxReadProgress>? progress, bool readUncompressedBodyDirectly)
     {
         if (Body is null)
