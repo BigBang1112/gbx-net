@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 
 namespace GBX.NET;
 
-public struct Vec3 : IVec
+public readonly struct Vec3 : IVec
 {
     public float X { get; }
     public float Y { get; }

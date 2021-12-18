@@ -3,7 +3,7 @@
 /// <summary>
 /// 3-dimensional byte coordination struct. Implicit <see cref="ValueTuple{T1, T2, T3}"/> is available.
 /// </summary>
-public struct Byte3
+public readonly struct Byte3
 {
     public byte X { get; }
     public byte Y { get; }

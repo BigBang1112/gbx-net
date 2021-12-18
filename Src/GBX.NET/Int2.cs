@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET;
 
-public struct Int2
+public readonly struct Int2
 {
     public int X { get; }
     public int Y { get; }

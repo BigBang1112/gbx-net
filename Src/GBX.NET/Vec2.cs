@@ -2,7 +2,7 @@
 
 namespace GBX.NET;
 
-public struct Vec2 : IVec
+public readonly struct Vec2 : IVec
 {
     public float X { get; }
     public float Y { get; }

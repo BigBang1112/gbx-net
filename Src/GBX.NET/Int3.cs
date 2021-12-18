@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace GBX.NET;
 
-public struct Int3
+public readonly struct Int3
 {
     public int X { get; }
     public int Y { get; }
