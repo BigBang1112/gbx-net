@@ -153,16 +153,15 @@ public class CMwNod
 
         uint? previousChunkId = null;
 
-        var canSeek = r.BaseStream.CanSeek;
-        var position = r.BaseStream.Position;
-        var length = r.BaseStream.Length;
+        var stream = r.BaseStream;
+        var canSeek = stream.CanSeek;
 
-        while (!canSeek || position < length)
+        while (!canSeek || stream.Position < stream.Length)
         {
-            if (canSeek && position + 4 > length)
+            if (canSeek && stream.Position + 4 > stream.Length)
             {
-                Debug.WriteLine($"Unexpected end of the stream: {position}/{length}");
-                var bytes = r.ReadBytes((int)(length - position));
+                Debug.WriteLine($"Unexpected end of the stream: {stream.Position}/{stream.Length}");
+                var bytes = r.ReadBytes((int)(stream.Length - stream.Position));
                 break;
             }
 
@@ -181,7 +180,7 @@ public class CMwNod
             if (canSeek) // Decompressed body can always seek
             {
                 logChunk.Append(" (")
-                    .Append(((float)position / length).ToString("0.00%"))
+                    .Append(((float)stream.Position / stream.Length).ToString("0.00%"))
                     .Append(')');
             }
 
@@ -224,9 +223,9 @@ public class CMwNod
 #if DEBUG
                     // Read the rest of the body
 
-                    var streamPos = r.BaseStream.Position;
+                    var streamPos = stream.Position;
                     var uncontrollableData = r.ReadToEnd();
-                    r.BaseStream.Position = streamPos;
+                    stream.Position = streamPos;
 #endif
 
                     throw new ChunkParseException(chunkId, previousChunkId);
@@ -321,7 +320,7 @@ public class CMwNod
 
                 //r.Chunk = (Chunk)c; // Set chunk temporarily for reading
 
-                var posBefore = r.BaseStream.Position;
+                var posBefore = stream.Position;
 
                 var gbxrw = new GameBoxReaderWriter(r);
 
@@ -353,7 +352,7 @@ public class CMwNod
                 try
                 {
 #if DEBUG
-                    var streamPos = r.BaseStream.Position;
+                    var streamPos = stream.Position;
 #endif
                     if (autoReadWriteChunkAttribute == null)
                     {
@@ -366,9 +365,9 @@ public class CMwNod
                         unknown.WriteBytes(unknownData);
                     }
 #if DEBUG
-                    var chunkLength = (int)(r.BaseStream.Position - streamPos);
+                    var chunkLength = (int)(stream.Position - streamPos);
 
-                    r.BaseStream.Position = streamPos;
+                    stream.Position = streamPos;
 
                     var rawData = r.ReadBytes(chunkLength);
 
@@ -380,12 +379,12 @@ public class CMwNod
                     Debug.WriteLine($"Unexpected end of the stream while reading the chunk.");
                 }
 
-                c.Progress = (int)(r.BaseStream.Position - posBefore);
+                c.Progress = (int)(stream.Position - posBefore);
 
                 chunk = c;
             }
 
-            progress?.Report(new GameBoxReadProgress(GameBoxReadProgressStage.Body, (float)r.BaseStream.Position / r.BaseStream.Length, node.GBX, chunk));
+            progress?.Report(new GameBoxReadProgress(GameBoxReadProgressStage.Body, (float)stream.Position / stream.Length, node.GBX, chunk));
 
             previousChunkId = chunkId;
         }
@@ -410,12 +409,7 @@ public class CMwNod
         throw new NotImplementedException($"Node doesn't support Read.");
     }
 
-    public void Write(GameBoxWriter w)
-    {
-        Write(w, IDRemap.Latest);
-    }
-
-    public void Write(GameBoxWriter w, IDRemap remap)
+    public void Write(GameBoxWriter w, IDRemap remap = IDRemap.Latest)
     {
         var stopwatch = Stopwatch.StartNew();
 
