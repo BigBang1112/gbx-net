@@ -95,19 +95,24 @@ public class CMwNod
         return ParseEnumerable<T>(r, count).ToList(count);
     }
 
-    internal static T? Parse<T>(GameBoxReader r, uint? classID = null, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
+    internal static T? Parse<T>(GameBoxReader r, uint? classId = null, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
     {
-        if (!classID.HasValue)
-            classID = r.ReadUInt32();
+        if (!classId.HasValue)
+            classId = r.ReadUInt32();
 
-        if (classID == uint.MaxValue) return null;
+        if (classId == uint.MaxValue)
+            return null;
 
-        classID = Remap(classID.Value);
+        classId = Remap(classId.Value);
 
-        if (!NodeCacheManager.AvailableClasses.TryGetValue(classID.Value, out Type? type))
-            throw new NotImplementedException($"Node ID 0x{classID.Value:X8} is not implemented. ({NodeCacheManager.Names.Where(x => x.Key == Chunk.Remap(classID.Value)).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
+        var id = classId.Value;
 
-        NodeCacheManager.AvailableClassConstructors.TryGetValue(classID.Value, out Func<CMwNod>? constructor);
+        if (!NodeCacheManager.AvailableClasses.TryGetValue(id, out Type? type))
+        {
+            throw new NodeNotImplementedException(id);
+        }
+
+        NodeCacheManager.AvailableClassConstructors.TryGetValue(id, out Func<CMwNod>? constructor);
 
         if (constructor is null)
             throw new ThisShouldNotHappenException();
@@ -204,20 +209,6 @@ public class CMwNod
 #endif
 
                     throw new ChunkParseException(chunkId, previousChunkId);
-
-                    /* Usually breaks in the current state and causes confusion
-                        * 
-                        * var buffer = BitConverter.GetBytes(chunkID);
-                    using (var restMs = new MemoryStream(ushort.MaxValue))
-                    {
-                        restMs.Write(buffer, 0, buffer.Length);
-
-                        while (r.PeekUInt32() != 0xFACADE01)
-                            restMs.WriteByte(r.ReadByte());
-
-                        node.Rest = restMs.ToArray();
-                    }
-                    Debug.WriteLine("FACADE found.");*/
                 }
 
                 var chunkDataSize = r.ReadInt32();
