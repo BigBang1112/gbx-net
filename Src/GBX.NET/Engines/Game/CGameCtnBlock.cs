@@ -161,23 +161,6 @@ public sealed class CGameCtnBlock : CMwNod
     public bool IsFree
     {
         get => IsFreeBlock(Flags);
-        set
-        {
-            if (value)
-            {
-                Flags |= 1 << isFreeBit;
-                absolutePositionInMap = Coord * (32, 8, 32);
-                Coord = (-1, -1, -1);
-
-                return;
-            }
-
-            Flags &= ~(1 << isFreeBit);
-            absolutePositionInMap = Coord * (32, 8, 32);
-            Coord = (Convert.ToInt32(absolutePositionInMap.X / 32),
-                Convert.ToInt32(absolutePositionInMap.Y / 8),
-                Convert.ToInt32(absolutePositionInMap.Z / 32));
-        }
     }
 
     /// <summary>
