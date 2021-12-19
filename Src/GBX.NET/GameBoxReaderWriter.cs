@@ -17,6 +17,8 @@ public class GameBoxReaderWriter
     /// </summary>
     public GameBoxWriter? Writer { get; }
 
+    public Stream BaseStream => Reader?.BaseStream ?? Writer?.BaseStream ?? throw new ThisShouldNotHappenException();
+
     /// <summary>
     /// Mode of the reader-writer.
     /// </summary>

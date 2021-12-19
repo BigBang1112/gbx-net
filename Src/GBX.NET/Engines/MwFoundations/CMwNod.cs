@@ -431,10 +431,12 @@ public class CMwNod
             {
                 if (chunk is ISkippableChunk s && !s.Discovered)
                     s.Write(msW);
-                else if (!Attribute.IsDefined(chunk.GetType(), typeof(AutoReadWriteChunkAttribute)))
+                else if (!IsIgnorableChunk(chunk))
                     ((IChunk)chunk).ReadWrite(this, rw);
+                else if (chunk is ISkippableChunk sIgnored)
+                    msW.WriteBytes(sIgnored.Data);
                 else
-                    msW.Write(chunk.Unknown.ToArray(), 0, (int)chunk.Unknown.Length);
+                    msW.WriteBytes(chunk.Unknown.ToArray());
 
                 w.Write(Chunk.Remap(chunk.ID, remap));
 
@@ -465,6 +467,14 @@ public class CMwNod
             Log.Write(logNodeCompletion, ConsoleColor.Green);
         else
             Log.Write($"~ {logNodeCompletion}", ConsoleColor.Green);
+    }
+
+    private static bool IsIgnorableChunk(Chunk chunk)
+    {
+        var chunkType = chunk.GetType();
+
+        return Attribute.IsDefined(chunkType, typeof(AutoReadWriteChunkAttribute))
+            || Attribute.IsDefined(chunkType, typeof(IgnoreChunkAttribute));
     }
 
     public T? GetChunk<T>() where T : Chunk

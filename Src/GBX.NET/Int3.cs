@@ -20,7 +20,14 @@ public struct Int3
         Z = z;
     }
 
-    public override string ToString() => $"({X}, {Y}, {Z})";
+    public void Deconstruct(out int x, out int y, out int z)
+    {
+        x = X;
+        y = Y;
+        z = Z;
+    }
+
+    public override string ToString() => $"<{X}, {Y}, {Z}>";
     public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
     public override bool Equals(object? obj) => obj is Int3 a && a == this;
 

@@ -1,4 +1,6 @@
-﻿namespace GBX.NET;
+﻿using System.Globalization;
+
+namespace GBX.NET;
 
 public struct Vec4 : IVec
 {
@@ -15,7 +17,24 @@ public struct Vec4 : IVec
         W = w;
     }
 
-    public override string ToString() => $"({X}, {Y}, {Z}, {W})";
+    public void Deconstruct(out float x, out float y, out float z, out float w)
+    {
+        x = X;
+        y = Y;
+        z = Z;
+        w = W;
+    }
+
+    public override string ToString()
+    {
+        var x = X.ToString(CultureInfo.InvariantCulture);
+        var y = Y.ToString(CultureInfo.InvariantCulture);
+        var z = Z.ToString(CultureInfo.InvariantCulture);
+        var w = W.ToString(CultureInfo.InvariantCulture);
+
+        return $"<{x}, {y}, {z}, {w}>";
+    }
+
     public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode() ^ W.GetHashCode();
     public override bool Equals(object? obj) => obj is Vec4 a && a == this;
 

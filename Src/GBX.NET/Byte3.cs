@@ -22,11 +22,18 @@ public struct Byte3
         Z = z;
     }
 
+    public void Deconstruct(out byte x, out byte y, out byte z)
+    {
+        x = X;
+        y = Y;
+        z = Z;
+    }
+
     /// <summary>
-    /// Converts the bytes to a string format of "({X}, {Y}, {Z})".
+    /// Converts the bytes to a string format of "&lt;{X}, {Y}, {Z}&gt;".
     /// </summary>
     /// <returns>Returns formatted <see cref="string"/>.</returns>
-    public override string ToString() => $"({X}, {Y}, {Z})";
+    public override string ToString() => $"<{X}, {Y}, {Z}>";
     public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
     public override bool Equals(object? obj) => obj is Byte3 a && a == this;
 

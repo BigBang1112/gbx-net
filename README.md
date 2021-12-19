@@ -28,6 +28,8 @@ GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software 
 
 \* Consider extracting `CGameCtnGhost` from `CGameCtnReplayRecord`, transfer it over to `CGameCtnMediaBlockGhost`, add it to `CGameCtnMediaClip`, and save it as `.Clip.Gbx`, which you can then import in MediaTracker.
 
+### For any questions, join [my Discord server](https://discord.gg/perAcdxscQ) or message me via DM: BigBang1112#9489
+
 ## Compatibility
 
 - GBX.NET is compatible down to **.NET Standard 2.0** and **.NET Framework 4.8**.

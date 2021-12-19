@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Globalization;
 using System.Runtime.Serialization;
 
 namespace GBX.NET;
@@ -20,10 +21,25 @@ public struct Vec3 : IVec
         Z = z;
     }
 
+    public void Deconstruct(out float x, out float y, out float z)
+    {
+        x = X;
+        y = Y;
+        z = Z;
+    }
+
     public float GetMagnitude() => (float)Math.Sqrt(X * X + Y * Y + Z * Z);
     public float GetSqrMagnitude() => X * X + Y * Y + Z * Z;
 
-    public override string ToString() => $"({X}, {Y}, {Z})";
+    public override string ToString()
+    {
+        var x = X.ToString(CultureInfo.InvariantCulture);
+        var y = Y.ToString(CultureInfo.InvariantCulture);
+        var z = Z.ToString(CultureInfo.InvariantCulture);
+
+        return $"<{x}, {y}, {z}>";
+    }
+
     public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
     public override bool Equals(object? obj) => obj is Vec3 a && a == this;
 
