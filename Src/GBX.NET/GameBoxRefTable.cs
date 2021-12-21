@@ -92,10 +92,10 @@ public class GameBoxRefTable
             if (!folderIndex.HasValue)
                 continue;
 
-            if (folderIndex.Value - 1 < 0)
+            if (folderIndex.Value < 0)
                 Files.Add(file);
             else
-                allFolders[folderIndex.Value - 1].Files.Add(file);
+                allFolders[folderIndex.Value].Files.Add(file);
         }
     }
 
