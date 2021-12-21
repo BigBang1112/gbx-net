@@ -1462,6 +1462,61 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
+    public T? NodeRef<T>(T? variable, ref int? nodeRefIndex, GameBoxBody body) where T : CMwNod
+    {
+        if (Reader is not null)
+        {
+            var node =  Reader.ReadNodeRef<T>(out int index, body);
+            nodeRefIndex = index < 0 ? null : index;
+            return node;
+        }
+
+        if (Writer is not null) Writer.Write(variable, body);
+
+        return variable;
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
+    public void NodeRef<T>(ref T? variable, ref int? nodeRefIndex, GameBoxBody body) where T : CMwNod => variable = NodeRef(variable, ref nodeRefIndex, body);
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
+    public T? NodeRef<T>(T? variable, ref int? nodeRefIndex) where T : CMwNod
+    {
+        if (Reader is not null)
+        {
+            if (Reader.Body is null)
+                throw new PropertyNullException(nameof(Reader.Body));
+
+            return NodeRef(variable, ref nodeRefIndex, Reader.Body);
+        }
+
+        if (Writer is not null)
+        {
+            if (Writer.Body is null)
+                throw new PropertyNullException(nameof(Writer.Body));
+
+            return NodeRef(variable, ref nodeRefIndex, Writer.Body);
+        }
+
+        throw new ThisShouldNotHappenException();
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
+    public void NodeRef<T>(ref T? variable, ref int? nodeRefIndex) where T : CMwNod => variable = NodeRef(variable, ref nodeRefIndex);
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
     public void EnumByte<T>(ref T variable) where T : struct, Enum
     {
         var v = Mode == GameBoxReaderWriterMode.Write ? CastTo<byte>.From(variable) : default;

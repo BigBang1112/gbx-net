@@ -25,7 +25,9 @@ public class CMwNod
     /// <summary>
     /// Chunk where the aux node appeared
     /// </summary>
-    public Chunk? ParentChunk { get; set; }
+    internal Chunk? ParentChunk { get; set; }
+
+    internal int? NodeRefIndex { get; set; }
 
     public virtual uint ID { get; private set; }
 
@@ -65,6 +67,37 @@ public class CMwNod
         ID = ((NodeAttribute)NodeCacheManager.AvailableClassAttributes[GetType()]
             .First(x => x is NodeAttribute)).ID;
         chunks = new ChunkSet(this);
+    }
+
+    protected CMwNod? GetNodeFromRefTable(CMwNod? nodeAtTheMoment, int? nodeIndex)
+    {
+        if (nodeAtTheMoment is not null || nodeIndex is null)
+            return nodeAtTheMoment;
+
+        if (GBX is null)
+            return nodeAtTheMoment;
+
+        var refTable = GBX.RefTable;
+
+        if (refTable is null)
+            return nodeAtTheMoment;
+
+        var fileName = GBX.FileName;
+
+        var currentGbxFolderPath = Path.GetDirectoryName(fileName);
+
+        if (currentGbxFolderPath is null)
+            return nodeAtTheMoment;
+
+        var refTableNode = refTable.GetAllFiles().FirstOrDefault(x => x.NodeIndex == nodeIndex);
+
+        if (refTableNode is null)
+            return nodeAtTheMoment;
+
+        var folderPath = refTable.GetRelativeFolderPathToFile(refTableNode);
+        var finalFileName = Path.Combine(currentGbxFolderPath, folderPath, refTableNode.FileName ?? "");
+
+        return GameBox.ParseNode(finalFileName);
     }
 
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
@@ -376,7 +409,7 @@ public class CMwNod
                 }
                 catch (EndOfStreamException)
                 {
-                    Debug.WriteLine($"Unexpected end of the stream while reading the chunk.");
+                    Debug.WriteLine($"Unexpected end of the stream while reading the chunk. 0x" + chunkId.ToString("X"));
                 }
 
                 c.Progress = (int)(stream.Position - posBefore);

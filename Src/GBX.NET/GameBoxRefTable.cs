@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Extensions;
+using System.Text;
 
 namespace GBX.NET;
 
@@ -36,9 +37,10 @@ public class GameBoxRefTable
 
         var allFolders = new List<Folder>();
 
-        Folders = ReadRefTableFolders(numFolders);
+        var indexCounter = 0;
+        Folders = ReadRefTableFolders(numFolders, ref indexCounter, asParentFolder: null);
 
-        Folder[] ReadRefTableFolders(int n)
+        Folder[] ReadRefTableFolders(int n, ref int indexCounter, Folder? asParentFolder)
         {
             var folders = new Folder[n];
 
@@ -47,9 +49,12 @@ public class GameBoxRefTable
                 var name = reader.ReadString();
                 var numSubFolders = reader.ReadInt32();
 
-                var folder = new Folder(name);
+                var folder = new Folder(name, indexCounter, asParentFolder);
                 allFolders.Add(folder);
-                foreach (var subFolder in ReadRefTableFolders(numSubFolders))
+
+                indexCounter++;
+
+                foreach (var subFolder in ReadRefTableFolders(numSubFolders, ref indexCounter, folder))
                     folder.Folders.Add(subFolder);
 
                 folders[i] = folder;
@@ -74,23 +79,23 @@ public class GameBoxRefTable
             else
                 resourceIndex = reader.ReadInt32();
 
-            var nodeIndex = reader.ReadInt32();
+            var nodeIndex = reader.ReadInt32() - 1;
 
             if (Header.Version >= 5)
                 useFile = reader.ReadBoolean();
 
             if ((flags & 4) == 0)
-                folderIndex = reader.ReadInt32();
+                folderIndex = reader.ReadInt32() - 1;
 
             var file = new File(flags, fileName, resourceIndex, nodeIndex, useFile, folderIndex);
 
-            if (folderIndex.HasValue)
-            {
-                if (folderIndex.Value - 1 < 0)
-                    Files.Add(file);
-                else
-                    allFolders[folderIndex.Value - 1].Files.Add(file);
-            }
+            if (!folderIndex.HasValue)
+                continue;
+
+            if (folderIndex.Value - 1 < 0)
+                Files.Add(file);
+            else
+                allFolders[folderIndex.Value - 1].Files.Add(file);
         }
     }
 
@@ -133,24 +138,63 @@ public class GameBoxRefTable
             else
                 w.Write(file.ResourceIndex.GetValueOrDefault());
 
-            w.Write(file.NodeIndex);
+            w.Write(file.NodeIndex + 1);
 
             if (Header.Version >= 5)
                 w.Write(file.UseFile.GetValueOrDefault());
 
             if ((file.Flags & 4) == 0)
-                w.Write(file.FolderIndex.GetValueOrDefault());
+                w.Write(file.FolderIndex.GetValueOrDefault() + 1);
         }
+    }
+
+    public IEnumerable<Folder> GetAllFolders()
+    {
+        return Folders.Flatten(x => x.Folders);
     }
 
     public IEnumerable<File> GetAllFiles()
     {
-        return Folders.Flatten(x => x.Folders)
-            .SelectMany(x => x.Files)
-            .Concat(Files);
+        foreach (var file in GetAllFolders().SelectMany(x => x.Files))
+            yield return file;
+        
+        foreach (var file in Files)
+            yield return file;
     }
 
-    public class File
+    public string GetRelativeFolderPathToFile(File file)
+    {
+        // could be normal file not just gbx
+        //var folder = GetAllFolders().FirstOrDefault(x => x.Index == file.FolderIndex);
+        //var bruh = folders.ElementAt(file.FolderIndex.GetValueOrDefault());
+        var mainBuilder = new StringBuilder()
+            .Insert(0, "../", count: AncestorLevel);
+
+        var folder = GetAllFolders().First(x => x.Index == file.FolderIndex);
+
+        var parentBuilder = new StringBuilder(folder.Name);
+
+        var parentFolder = folder.ParentFolder;
+
+        while (parentFolder is not null)
+        {
+            parentBuilder.Insert(0, '/');
+            parentBuilder.Insert(0, parentFolder.Name);
+
+            parentFolder = parentFolder.ParentFolder;
+        }
+
+        mainBuilder.Append(parentBuilder.ToString());
+
+        return mainBuilder.ToString();
+    }
+
+    private static string Repeat(string value, int count)
+    {
+        return new StringBuilder(value.Length * count).Insert(0, value, count).ToString();
+    }
+
+    public record File
     {
         public int Flags { get; }
         public string? FileName { get; }
@@ -178,12 +222,16 @@ public class GameBoxRefTable
     public class Folder
     {
         public string Name { get; }
+        public int Index { get; }
+        public Folder? ParentFolder { get; }
         public IList<Folder> Folders { get; }
         public IList<File> Files { get; }
 
-        public Folder(string name)
+        public Folder(string name, int index, Folder? parentFolder = null)
         {
             Name = name;
+            Index = index;
+            ParentFolder = parentFolder;
             Folders = new List<Folder>();
             Files = new List<File>();
         }
