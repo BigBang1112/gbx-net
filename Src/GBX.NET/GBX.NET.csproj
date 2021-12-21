@@ -31,22 +31,23 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Using Remove="System.Net.Http"/>
-		<Using Include="TmEssentials"/>
-		<Using Include="GBX.NET.Attributes"/>
-		<Using Include="GBX.NET.Exceptions"/>
-		<Using Include="GBX.NET.Extensions"/>
-		<Using Include="GBX.NET.Engines.Control"/>
-		<Using Include="GBX.NET.Engines.Game"/>
-		<Using Include="GBX.NET.Engines.GameData"/>
-		<Using Include="GBX.NET.Engines.Hms"/>
-		<Using Include="GBX.NET.Engines.Input"/>
-		<Using Include="GBX.NET.Engines.MwFoundations"/>
-		<Using Include="GBX.NET.Engines.Plug"/>
-		<Using Include="GBX.NET.Engines.Scene"/>
-		<Using Include="GBX.NET.Engines.Script"/>
-		<Using Include="GBX.NET.Engines.System"/>
-		<Using Include="GBX.NET.Engines.TrackMania"/>
+		<Using Remove="System.Net.Http" />
+		<Using Include="TmEssentials" />
+		<Using Include="GBX.NET.Attributes" />
+		<Using Include="GBX.NET.Exceptions" />
+		<Using Include="GBX.NET.Extensions" />
+		<Using Include="GBX.NET.Engines.Control" />
+		<Using Include="GBX.NET.Engines.Function" />
+		<Using Include="GBX.NET.Engines.Game" />
+		<Using Include="GBX.NET.Engines.GameData" />
+		<Using Include="GBX.NET.Engines.Hms" />
+		<Using Include="GBX.NET.Engines.Input" />
+		<Using Include="GBX.NET.Engines.MwFoundations" />
+		<Using Include="GBX.NET.Engines.Plug" />
+		<Using Include="GBX.NET.Engines.Scene" />
+		<Using Include="GBX.NET.Engines.Script" />
+		<Using Include="GBX.NET.Engines.System" />
+		<Using Include="GBX.NET.Engines.TrackMania" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -64,7 +65,6 @@
 
 	<ItemGroup>
 		<Folder Include="Engines\Audio\" />
-		<Folder Include="Engines\Function\" />
 		<Folder Include="Engines\Graphic\" />
 		<Folder Include="Engines\Motion\" />
 		<Folder Include="Engines\Net\" />
@@ -74,6 +74,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
 	  <PackageReference Include="TmEssentials" Version="2.0.0" />
 	</ItemGroup>
 

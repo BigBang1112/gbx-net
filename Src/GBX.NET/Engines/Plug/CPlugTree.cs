@@ -7,7 +7,9 @@ public class CPlugTree : CPlug
     private string? name;
     private CPlugVisual? visual;
     private CPlugSurfaceGeom? surface;
+
     private CPlug? shader;
+    private int? shaderIndex;
 
     public IList<CPlugTree?> Children
     {
@@ -35,7 +37,7 @@ public class CPlugTree : CPlug
 
     public CPlug? Shader
     {
-        get => shader;
+        get => shader = GetNodeFromRefTable(shader, shaderIndex) as CPlug;
         set => shader = value;
     }
 
@@ -97,14 +99,14 @@ public class CPlugTree : CPlug
     }
 
     [Chunk(0x0904F016)]
-    public class Chunk0904F016 : Chunk<CPlugTree> /////////////////
+    public class Chunk0904F016 : Chunk<CPlugTree>
     {
         public int U03;
 
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
             rw.NodeRef<CPlugVisual>(ref n.visual); // CPlugVisual?
-            rw.NodeRef<CPlug>(ref n.shader);
+            rw.NodeRef<CPlug>(ref n.shader, ref n.shaderIndex); // definitely Shader, can have CPlugShaderApply or CPlugMaterial
             rw.NodeRef<CPlugSurfaceGeom>(ref n.surface); // CPlugSurface? CPlugTreeGenerator?
             rw.Int32(ref U03); // ???
         }

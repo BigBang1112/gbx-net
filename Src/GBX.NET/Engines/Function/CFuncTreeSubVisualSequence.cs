@@ -39,7 +39,7 @@ public class CFuncTreeSubVisualSequence : CFuncTree
     [Chunk(0x05031001)]
     public class Chunk05031001 : Chunk<CFuncTreeSubVisualSequence>
     {
-        public string U01;
+        public string? U01;
 
         public override void ReadWrite(CFuncTreeSubVisualSequence n, GameBoxReaderWriter rw)
         {
