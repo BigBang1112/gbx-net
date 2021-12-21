@@ -162,6 +162,9 @@ public class GameBox
             gbx = new GameBox(header);
         }
 
+        if (reader.BaseStream is FileStream fs)
+            gbx.FileName = fs.Name;
+
         if (!gbx.ReadRefTable(reader, progress))
             return gbx;
 
@@ -216,6 +219,9 @@ public class GameBox
     {
         var gbx = new GameBox<T>();
 
+        if (stream is FileStream fs)
+            gbx.FileName = fs.Name;
+
         using var r = new GameBoxReader(stream);
 
         if (!gbx.ReadHeader(r, progress))
@@ -247,9 +253,7 @@ public class GameBox
     public static GameBox<T> ParseHeader<T>(string fileName, IProgress<GameBoxReadProgress>? progress = null, bool readRawBody = false) where T : CMwNod
     {
         using var fs = File.OpenRead(fileName);
-        var gbx = ParseHeader<T>(fs, progress, readRawBody);
-        gbx.FileName = fileName;
-        return gbx;
+        return ParseHeader<T>(fs, progress, readRawBody);
     }
 
     /// <summary>
@@ -301,10 +305,7 @@ public class GameBox
     public static GameBox<T> Parse<T>(string fileName, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false) where T : CMwNod
     {
         using var fs = File.OpenRead(fileName);
-        var gbx = Parse<T>(fs, progress, readUncompressedBodyDirectly);
-        if (gbx == null) throw new GameBoxParseException();
-        gbx.FileName = fileName;
-        return gbx;
+        return Parse<T>(fs, progress, readUncompressedBodyDirectly) ?? throw new GameBoxParseException();
     }
 
     /// <summary>
@@ -325,10 +326,7 @@ public class GameBox
     public static GameBox Parse(string fileName, IProgress<GameBoxReadProgress>? progress = null, bool readUncompressedBodyDirectly = false)
     {
         using var fs = File.OpenRead(fileName);
-        var gbx = Parse(fs, progress, readUncompressedBodyDirectly);
-        if (gbx == null) throw new GameBoxParseException();
-        gbx.FileName = fileName;
-        return gbx;
+        return Parse(fs, progress, readUncompressedBodyDirectly) ?? throw new GameBoxParseException();
     }
 
     /// <summary>
