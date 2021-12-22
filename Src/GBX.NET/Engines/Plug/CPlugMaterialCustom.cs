@@ -3,6 +3,8 @@
 [Node(0x0903A000), WritingNotSupported]
 public sealed class CPlugMaterialCustom : CPlug
 {
+    public SBitmap[]? Textures { get; set; }
+
     private CPlugMaterialCustom()
     {
 
@@ -22,19 +24,16 @@ public sealed class CPlugMaterialCustom : CPlug
     [Chunk(0x0903A006)]
     public class Chunk0903A006 : Chunk<CPlugMaterialCustom>
     {
-        public object[]? U01;
-        public int U02;
-
         public override void Read(CPlugMaterialCustom n, GameBoxReader r)
         {
-            U01 = r.ReadArray(r =>
+            n.Textures = r.ReadArray(r =>
             {
-                return new
-                {
-                    u01 = r.ReadId(),
-                    u02 = r.ReadInt32(),
-                    u03 = r.ReadInt32()
-                };
+                var name = r.ReadId();
+                var u01 = r.ReadInt32();
+
+                _ = r.ReadNodeRef<CPlugBitmap>(out int bitmapIndex);
+
+                return new SBitmap(n.GBX, name, u01, bitmapIndex);
             });
         }
     }
@@ -100,6 +99,37 @@ public sealed class CPlugMaterialCustom : CPlug
             rw.Id(ref U04);
 
             // ...
+        }
+    }
+
+    public class SBitmap
+    {
+        private CPlugBitmap? bitmap;
+        private int bitmapIndex;
+
+        public GameBox? Gbx { get; }
+
+        public string Name { get; set; }
+        public int U01 { get; set; }
+
+        public CPlugBitmap? Bitmap
+        {
+            get => bitmap = Gbx?.RefTable?.GetNode(bitmap, bitmapIndex, Gbx.FileName) as CPlugBitmap;
+            set => bitmap = value;
+        }
+
+        public SBitmap(GameBox? gbx, string name, int u01, int bitmapIndex)
+        {
+            Gbx = gbx;
+            Name = name;
+            U01 = u01;
+            
+            this.bitmapIndex = bitmapIndex;
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }
