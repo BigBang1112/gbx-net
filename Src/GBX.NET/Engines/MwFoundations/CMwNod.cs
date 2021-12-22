@@ -22,13 +22,6 @@ public class CMwNod
         }
     }
 
-    /// <summary>
-    /// Chunk where the aux node appeared
-    /// </summary>
-    internal Chunk? ParentChunk { get; set; }
-
-    internal int? NodeRefIndex { get; set; }
-
     public virtual uint ID { get; private set; }
 
     public string[]? Dependencies { get; set; }
