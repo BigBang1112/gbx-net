@@ -1,7 +1,6 @@
 ﻿using GBX.NET;
 using GBX.NET.Engines.Plug;
 using System.Globalization;
-using System.Text;
 
 CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 
@@ -38,7 +37,9 @@ void ProcessFile(string fileName)
     if (tree is null)
         return;
 
-    using var fs = File.Create(Path.Combine(extractPath, Path.GetFileName(fileName) + ".obj"));
+    var fullFileNameWithoutExt = Path.Combine(extractPath, Path.GetFileName(fileName));
+
+    using var fs = File.Create(fullFileNameWithoutExt + ".obj");
     using var w = new StreamWriter(fs);
 
     using var normalStream = new MemoryStream();
@@ -48,6 +49,10 @@ void ProcessFile(string fileName)
     using var normalWriter = new StreamWriter(normalStream);
     using var texWriter = new StreamWriter(texStream);
     using var faceWriter = new StreamWriter(faceStream);
+
+    using var mtlWriter = new StreamWriter(fullFileNameWithoutExt + ".mtl");
+
+    w.WriteLine($"mtlib {Path.GetFileName(fileName)}.mtl");
 
     var offsetVert = 0;
     var offsetUv = 0;
@@ -101,6 +106,8 @@ void ProcessFile(string fileName)
         faceWriter.WriteLine();
         faceWriter.WriteLine("o " + tree.Name);
 
+        WriteMaterial(tree.Shader as CPlugMaterial);
+
         if (visual is not CPlugVisualIndexedTriangles indexed)
             return;
 
@@ -146,5 +153,56 @@ void ProcessFile(string fileName)
 
         if (indexed.TexCoords is not null && indexed.TexCoords.Length > 0)
             offsetUv += indexed.TexCoords[0].Length;
+    }
+
+    void WriteMaterial(CPlugMaterial? material)
+    {
+        if (material is null)
+            return;
+
+        var materialName = Path.GetFileNameWithoutExtension(
+            Path.GetFileNameWithoutExtension(material.GBX!.FileName));
+
+        faceWriter.WriteLine("usemtl " + materialName);
+        mtlWriter.WriteLine("newmtl " + materialName);
+
+        var texture = material.CustomMaterial?
+            .Textures?
+            .FirstOrDefault(x => x.Name == "Diffuse")?
+            .Bitmap;
+
+        if (texture is null)
+            return;
+
+        if (texture.GBX is null)
+            return;
+
+        var refTable = texture.GBX.RefTable;
+
+        if (refTable is null)
+            return;
+
+        var textureFile = refTable.GetAllFiles()
+            .FirstOrDefault(x => x.FileName?.ToLower().EndsWith(".dds") == true);
+
+        if (textureFile is null)
+            return;
+
+        if (textureFile.FileName is null)
+            return;
+
+        try
+        {
+            var textureDirectory = Path.Combine(Path.GetDirectoryName(texture.GBX.FileName) ?? "",
+                refTable.GetRelativeFolderPathToFile(textureFile));
+
+            var fullTextureFileName = Path.Combine(textureDirectory, textureFile.FileName);
+
+            mtlWriter.WriteLine("map_Kd " + fullTextureFileName.Replace('\\', '/'));
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Exception during path extract.");
+        }
     }
 }
