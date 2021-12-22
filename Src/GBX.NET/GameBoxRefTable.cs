@@ -189,6 +189,30 @@ public class GameBoxRefTable
         return mainBuilder.ToString();
     }
 
+    public CMwNod? GetNode(CMwNod? nodeAtTheMoment, int? nodeIndex, string? fileName)
+    {
+        if (nodeAtTheMoment is not null || nodeIndex is null)
+            return nodeAtTheMoment;
+
+        if (Folders.Count == 0 && Files.Count == 0)
+            return nodeAtTheMoment;
+
+        var currentGbxFolderPath = Path.GetDirectoryName(fileName);
+
+        if (currentGbxFolderPath is null)
+            return nodeAtTheMoment;
+
+        var refTableNode = GetAllFiles().FirstOrDefault(x => x.NodeIndex == nodeIndex);
+
+        if (refTableNode is null)
+            return nodeAtTheMoment;
+
+        var folderPath = GetRelativeFolderPathToFile(refTableNode);
+        var finalFileName = Path.Combine(currentGbxFolderPath, folderPath, refTableNode.FileName ?? "");
+
+        return GameBox.ParseNode(finalFileName);
+    }
+
     private static string Repeat(string value, int count)
     {
         return new StringBuilder(value.Length * count).Insert(0, value, count).ToString();

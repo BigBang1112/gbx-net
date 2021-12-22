@@ -84,20 +84,7 @@ public class CMwNod
 
         var fileName = GBX.FileName;
 
-        var currentGbxFolderPath = Path.GetDirectoryName(fileName);
-
-        if (currentGbxFolderPath is null)
-            return nodeAtTheMoment;
-
-        var refTableNode = refTable.GetAllFiles().FirstOrDefault(x => x.NodeIndex == nodeIndex);
-
-        if (refTableNode is null)
-            return nodeAtTheMoment;
-
-        var folderPath = refTable.GetRelativeFolderPathToFile(refTableNode);
-        var finalFileName = Path.Combine(currentGbxFolderPath, folderPath, refTableNode.FileName ?? "");
-
-        return GameBox.ParseNode(finalFileName);
+        return refTable.GetNode(nodeAtTheMoment, nodeIndex, fileName);
     }
 
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
