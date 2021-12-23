@@ -18,6 +18,14 @@ public class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, CGameCtnMediaBlock.
         set => keys = value.Cast<Key>().ToList();
     }
 
+    [NodeMember]
+    public IList<Key> Keys
+    {
+        get => keys;
+        set => keys = value;
+    }
+
+    [NodeMember]
     public CPlugDataTape? DataTape
     {
         get => dataTape;
