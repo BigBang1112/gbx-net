@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -12,7 +13,15 @@ namespace GBX.NET.Tests.Integration;
 
 public class GameBoxRefTableTests
 {
-    private readonly JsonSerializerOptions jsonSeralizerOptions = new();
+    private readonly JsonSerializerOptions jsonSeralizerOptions;
+
+    public GameBoxRefTableTests()
+    {
+        jsonSeralizerOptions = new JsonSerializerOptions
+        {
+            ReferenceHandler = ReferenceHandler.IgnoreCycles
+        };
+    }
 
     [Theory(DisplayName = "Read/Write should equal")]
     [InlineData("CCP#04 - ODYSSEY.Map.Gbx")]
