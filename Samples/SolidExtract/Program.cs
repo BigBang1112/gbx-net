@@ -166,18 +166,26 @@ void ProcessFile(string fileName)
         faceWriter.WriteLine("usemtl " + materialName);
         mtlWriter.WriteLine("newmtl " + materialName);
 
-        var texture = material.CustomMaterial?
-            .Textures?
-            .FirstOrDefault(x => x.Name == "Diffuse")?
-            .Bitmap;
-
-        if (texture is null)
+        if (material.CustomMaterial is null)
             return;
 
-        if (texture.GBX is null)
+        var textures = material.CustomMaterial.Textures;
+
+        if (textures is null)
             return;
 
-        var refTable = texture.GBX.RefTable;
+        var diffuse = textures.FirstOrDefault(x => x.Name == "Diffuse")?.Bitmap;
+
+        if (diffuse is null)
+            diffuse = textures.FirstOrDefault()?.Bitmap;
+
+        if (diffuse is null)
+            return;
+
+        if (diffuse.GBX is null)
+            return;
+
+        var refTable = diffuse.GBX.RefTable;
 
         if (refTable is null)
             return;
@@ -191,14 +199,19 @@ void ProcessFile(string fileName)
         if (textureFile.FileName is null)
             return;
 
+        mtlWriter.WriteLine("Ka 1.000 1.000 1.000");
+        mtlWriter.WriteLine("Kd 1.000 1.000 1.000");
+
         try
         {
-            var textureDirectory = Path.Combine(Path.GetDirectoryName(texture.GBX.FileName) ?? "",
+            var textureDirectory = Path.Combine(Path.GetDirectoryName(diffuse.GBX.FileName) ?? "",
                 refTable.GetRelativeFolderPathToFile(textureFile));
 
-            var fullTextureFileName = Path.Combine(textureDirectory, textureFile.FileName);
+            var fullTextureFileName = Path.Combine(textureDirectory, textureFile.FileName)
+                .Replace('\\', '/');
 
-            mtlWriter.WriteLine("map_Kd " + fullTextureFileName.Replace('\\', '/'));
+            mtlWriter.WriteLine($"map_Ka \"{fullTextureFileName}\"");
+            mtlWriter.WriteLine($"map_Kd \"{fullTextureFileName}\"");
         }
         catch (Exception ex)
         {
