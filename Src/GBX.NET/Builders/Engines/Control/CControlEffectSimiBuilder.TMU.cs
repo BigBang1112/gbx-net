@@ -2,12 +2,12 @@
 
 public partial class CControlEffectSimiBuilder
 {
-    public class TMU : GameBuilder<ICControlEffectSimiBuilder, CControlEffectSimi>
+    public class TMU : GameBuilder<CControlEffectSimiBuilder, CControlEffectSimi>
     {
         public int ColorBlendMode { get; set; }
         public bool IsContinousEffect { get; set; }
 
-        public TMU(ICControlEffectSimiBuilder baseBuilder, CControlEffectSimi node) : base(baseBuilder, node) { }
+        public TMU(CControlEffectSimiBuilder baseBuilder, CControlEffectSimi node) : base(baseBuilder, node) { }
 
         public TMU WithColorBlendMode(int colorBlendMode)
         {

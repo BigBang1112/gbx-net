@@ -1,5 +1,5 @@
 ﻿namespace GBX.NET.Builders;
 
-public interface IBuilder
+public abstract class Builder
 {
 }

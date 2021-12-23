@@ -35,8 +35,8 @@ public class CGameCtnMediaBlockSoundBuilderTests
         }
     };
 
-    private static CGameCtnMediaBlockSound BuildNode(Func<ICGameCtnMediaBlockSoundBuilderFor,
-        GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>> func, FileRef sound, CGameCtnMediaBlockSound.Key[] keys)
+    private static CGameCtnMediaBlockSound BuildNode(Func<CGameCtnMediaBlockSoundBuilder,
+        GameBuilder<CGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>> func, FileRef sound, CGameCtnMediaBlockSound.Key[] keys)
     {
         var builder = new CGameCtnMediaBlockSoundBuilder()
             .WithSound(sound)
@@ -46,8 +46,8 @@ public class CGameCtnMediaBlockSoundBuilderTests
         return func.Invoke(builder).Build();
     }
 
-    private static void ForX_ParametersShouldMatch(Func<ICGameCtnMediaBlockSoundBuilderFor,
-        GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>> func)
+    private static void ForX_ParametersShouldMatch(Func<CGameCtnMediaBlockSoundBuilder,
+        GameBuilder<CGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>> func)
     {
         var sound = GetSampleSound();
         var keys = GetSampleKeys();
@@ -58,8 +58,8 @@ public class CGameCtnMediaBlockSoundBuilderTests
         Assert.Equal(expected: keys, actual: node.Keys);
     }
 
-    private static void ForX_ChunksShouldMatch(Func<ICGameCtnMediaBlockSoundBuilderFor,
-        GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>> func, Action<CGameCtnMediaBlockSound> chunkAssert)
+    private static void ForX_ChunksShouldMatch(Func<CGameCtnMediaBlockSoundBuilder,
+        GameBuilder<CGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>> func, Action<CGameCtnMediaBlockSound> chunkAssert)
     {
         var sound = GetSampleSound();
         var keys = GetSampleKeys();

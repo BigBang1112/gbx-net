@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET.Builders.Engines.Control;
 
-public partial class CControlEffectSimiBuilder : ICControlEffectSimiBuilder
+public partial class CControlEffectSimiBuilder : Builder
 {
     public IList<CControlEffectSimi.Key>? Keys { get; set; }
     public bool IsCentered { get; set; }
@@ -28,17 +28,6 @@ public partial class CControlEffectSimiBuilder : ICControlEffectSimiBuilder
     public TMUF ForTMUF() => new(this, NewNode());
     public TM2 ForTM2() => new(this, NewNode());
     public TM2020 ForTM2020() => new(this, NewNode());
-
-    GameBuilder<ICControlEffectSimiBuilder, CControlEffectSimi>
-        IBuilderForTMSX<ICControlEffectSimiBuilder, CControlEffectSimi>.ForTMSX() => ForTMSX();
-    GameBuilder<ICControlEffectSimiBuilder, CControlEffectSimi>
-        IBuilderForTMU<ICControlEffectSimiBuilder, CControlEffectSimi>.ForTMU() => ForTMU();
-    GameBuilder<ICControlEffectSimiBuilder, CControlEffectSimi>
-        IBuilderForTMUF<ICControlEffectSimiBuilder, CControlEffectSimi>.ForTMUF() => ForTMUF();
-    GameBuilder<ICControlEffectSimiBuilder, CControlEffectSimi>
-        IBuilderForTM2<ICControlEffectSimiBuilder, CControlEffectSimi>.ForTM2() => ForTM2();
-    GameBuilder<ICControlEffectSimiBuilder, CControlEffectSimi>
-        IBuilderForTM2020<ICControlEffectSimiBuilder, CControlEffectSimi>.ForTM2020() => ForTM2020();
 
     internal CControlEffectSimi NewNode()
     {

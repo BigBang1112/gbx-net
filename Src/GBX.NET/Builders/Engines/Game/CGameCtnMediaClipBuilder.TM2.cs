@@ -2,13 +2,13 @@
 
 public partial class CGameCtnMediaClipBuilder
 {
-    public class TM2 : GameBuilder<ICGameCtnMediaClipBuilder, CGameCtnMediaClip>
+    public class TM2 : GameBuilder<CGameCtnMediaClipBuilder, CGameCtnMediaClip>
     {
         public int? LocalPlayerClipEntIndex { get; set; }
         public bool StopWhenRespawn { get; set; }
         public bool StopWhenLeave { get; set; }
 
-        public TM2(ICGameCtnMediaClipBuilder baseBuilder, CGameCtnMediaClip node) : base(baseBuilder, node) { }
+        public TM2(CGameCtnMediaClipBuilder baseBuilder, CGameCtnMediaClip node) : base(baseBuilder, node) { }
 
         public TM2 WithLocalPlayerClipEntIndex(int localPlayerClipEntIndex)
         {

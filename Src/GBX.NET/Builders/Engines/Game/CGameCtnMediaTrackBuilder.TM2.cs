@@ -2,11 +2,11 @@
 
 public partial class CGameCtnMediaTrackBuilder
 {
-    public class TM2 : GameBuilder<ICGameCtnMediaTrackBuilder, CGameCtnMediaTrack>
+    public class TM2 : GameBuilder<CGameCtnMediaTrackBuilder, CGameCtnMediaTrack>
     {
         public bool IsCycling { get; set; }
 
-        public TM2(ICGameCtnMediaTrackBuilder baseBuilder, CGameCtnMediaTrack node) : base(baseBuilder, node) { }
+        public TM2(CGameCtnMediaTrackBuilder baseBuilder, CGameCtnMediaTrack node) : base(baseBuilder, node) { }
 
         public TM2 Cycles()
         {

@@ -2,13 +2,13 @@
 
 public partial class CControlEffectSimiBuilder
 {
-    public class TM2020 : GameBuilder<ICControlEffectSimiBuilder, CControlEffectSimi>
+    public class TM2020 : GameBuilder<CControlEffectSimiBuilder, CControlEffectSimi>
     {
         public int ColorBlendMode { get; set; }
         public bool IsContinousEffect { get; set; }
         public bool IsInterpolated { get; set; }
 
-        public TM2020(ICControlEffectSimiBuilder baseBuilder, CControlEffectSimi node) : base(baseBuilder, node) { }
+        public TM2020(CControlEffectSimiBuilder baseBuilder, CControlEffectSimi node) : base(baseBuilder, node) { }
 
         public TM2020 WithColorBlendMode(int colorBlendMode)
         {

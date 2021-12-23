@@ -34,8 +34,8 @@ public class CControlEffectSimiBuilderTests
         }
     };
 
-    private static CControlEffectSimi BuildNode(Func<ICControlEffectSimiBuilderFor,
-        GameBuilder<ICControlEffectSimiBuilder, CControlEffectSimi>> func, CControlEffectSimi.Key[] keys)
+    private static CControlEffectSimi BuildNode(Func<CControlEffectSimiBuilder,
+        GameBuilder<CControlEffectSimiBuilder, CControlEffectSimi>> func, CControlEffectSimi.Key[] keys)
     {
         var builder = new CControlEffectSimiBuilder()
             .WithKeys(keys)
@@ -43,8 +43,8 @@ public class CControlEffectSimiBuilderTests
         return func.Invoke(builder).Build();
     }
 
-    private static void ForX_ParametersShouldMatch(Func<ICControlEffectSimiBuilderFor,
-        GameBuilder<ICControlEffectSimiBuilder, CControlEffectSimi>> func)
+    private static void ForX_ParametersShouldMatch(Func<CControlEffectSimiBuilder,
+        GameBuilder<CControlEffectSimiBuilder, CControlEffectSimi>> func)
     {
         var keys = GetSampleKeys();
         var node = BuildNode(func, keys);
@@ -53,8 +53,8 @@ public class CControlEffectSimiBuilderTests
         Assert.True(node.Centered);
     }
 
-    private static void ForX_ChunksShouldMatch(Func<ICControlEffectSimiBuilderFor,
-        GameBuilder<ICControlEffectSimiBuilder, CControlEffectSimi>> func, Action<CControlEffectSimi> chunkAssert)
+    private static void ForX_ChunksShouldMatch(Func<CControlEffectSimiBuilder,
+        GameBuilder<CControlEffectSimiBuilder, CControlEffectSimi>> func, Action<CControlEffectSimi> chunkAssert)
     {
         var keys = GetSampleKeys();
         var node = BuildNode(func, keys);

@@ -2,13 +2,13 @@
 
 public partial class CControlEffectSimiBuilder
 {
-    public class TMUF : GameBuilder<ICControlEffectSimiBuilder, CControlEffectSimi>
+    public class TMUF : GameBuilder<CControlEffectSimiBuilder, CControlEffectSimi>
     {
         public int ColorBlendMode { get; set; }
         public bool IsContinousEffect { get; set; }
         public bool IsInterpolated { get; set; }
 
-        public TMUF(ICControlEffectSimiBuilder baseBuilder, CControlEffectSimi node) : base(baseBuilder, node) { }
+        public TMUF(CControlEffectSimiBuilder baseBuilder, CControlEffectSimi node) : base(baseBuilder, node) { }
 
         public TMUF WithColorBlendMode(int colorBlendMode)
         {
