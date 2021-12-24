@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// MediaTracker block - Triangles (0x03029000)
+/// </summary>
 [Node(0x03029000)]
 public class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {

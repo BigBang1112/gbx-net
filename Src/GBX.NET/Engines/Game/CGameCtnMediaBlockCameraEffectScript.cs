@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Camera effect script
+/// MediaTracker block - Camera effect script (0x03161000)
 /// </summary>
 [Node(0x03161000)]
 public sealed class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCameraEffect,

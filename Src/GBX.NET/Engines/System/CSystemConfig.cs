@@ -1,5 +1,9 @@
 ﻿namespace GBX.NET.Engines.System;
 
+/// <summary>
+/// Game configuration (0x0B005000)
+/// </summary>
+/// <remarks>Handles all general game settings not related to a specific profile.</remarks>
 [Node(0x0B005000)]
 public sealed class CSystemConfig : CMwNod
 {

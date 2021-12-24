@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// MediaTracker block - Entity (0x0329F000)
+/// </summary>
 [Node(0x0329F000)]
 public sealed class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
 {

@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// MediaTracker block - Dirty lens (0x03165000)
+/// </summary>
 [Node(0x03165000)]
 public sealed class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {

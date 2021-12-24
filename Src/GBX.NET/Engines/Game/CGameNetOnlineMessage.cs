@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// Mail (0x03028000)
+/// </summary>
 [Node(0x03028000), WritingNotSupported]
 public class CGameNetOnlineMessage : CMwNod
 {

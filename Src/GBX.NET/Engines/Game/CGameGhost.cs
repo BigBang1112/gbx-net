@@ -4,6 +4,9 @@ using System.IO.Compression;
 
 namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// Ghost data (0x0303F000)
+/// </summary>
 [Node(0x0303F000)]
 public class CGameGhost : CMwNod
 {

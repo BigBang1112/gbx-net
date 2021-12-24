@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker Bloom block for TMUF and older games (0x03083000). This node causes "Couldn't load map" in ManiaPlanet.
+/// MediaTracker block - Bloom effect (0x03083000)
 /// </summary>
+/// <remarks>Bloom MediaTracker block for TMUF and older games. This node causes "Couldn't load map" in ManiaPlanet.</remarks>
 [Node(0x03083000)]
 public sealed class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
 {

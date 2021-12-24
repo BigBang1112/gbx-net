@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <summary>
+/// Material (0x09079000)
+/// </summary>
 [Node(0x09079000), WritingNotSupported]
 public sealed class CPlugMaterial : CPlug
 {

@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.GameData;
 
+/// <summary>
+/// Waypoint (0x2E009000)
+/// </summary>
 [Node(0x2E009000)]
 public sealed class CGameWaypointSpecialProperty : CMwNod
 {

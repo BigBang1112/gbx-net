@@ -3,9 +3,8 @@
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Block on a map (0x03057000)
+/// Block placed on a map (0x03057000)
 /// </summary>
-/// <remarks>A block placed on a map.</remarks>
 [Node(0x03057000)]
 public sealed class CGameCtnBlock : CMwNod
 {

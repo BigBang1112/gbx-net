@@ -2,6 +2,9 @@
 
 namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// MediaTracker clip (0x03079000)
+/// </summary>
 [Node(0x03079000)]
 public sealed class CGameCtnMediaClip : CMwNod
 {

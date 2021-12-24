@@ -1,5 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// League (0x0308E000)
+/// </summary>
+/// <remarks>Or zone in other words.</remarks>
 [Node(0x0308E000)]
 public class CGameLeague : CMwNod
 {

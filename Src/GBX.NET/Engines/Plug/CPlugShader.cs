@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <summary>
+/// Shader (0x09002000)
+/// </summary>
 [Node(0x09002000)]
 public class CPlugShader : CPlug
 {

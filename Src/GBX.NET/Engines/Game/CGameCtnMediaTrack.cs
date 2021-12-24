@@ -2,6 +2,9 @@
 
 namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// MediaTracker track (0x03078000)
+/// </summary>
 [Node(0x03078000)]
 public sealed class CGameCtnMediaTrack : CMwNod
 {

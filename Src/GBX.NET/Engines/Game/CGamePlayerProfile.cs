@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// Player profile (0x0308C000)
+/// </summary>
 [Node(0x0308C000), WritingNotSupported]
 public sealed class CGamePlayerProfile : CMwNod
 {

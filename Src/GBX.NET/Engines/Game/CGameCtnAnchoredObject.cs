@@ -1,9 +1,8 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Item on a map (0x03101000)
+/// Item placed on a map (0x03101000)
 /// </summary>
-/// <remarks>An item placed on a map.</remarks>
 [Node(0x03101000)]
 public sealed class CGameCtnAnchoredObject : CMwNod
 {

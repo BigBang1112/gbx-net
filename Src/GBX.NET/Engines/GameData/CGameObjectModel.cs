@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.GameData;
 
+/// <summary>
+/// CGameObjectModel (0x2E01D000)
+/// </summary>
 [Node(0x2E01D000)]
 public sealed class CGameObjectModel : CMwNod
 {

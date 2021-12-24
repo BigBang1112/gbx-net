@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block (0x030A2000)
+/// MediaTracker block - Custom camera (0x030A2000)
 /// </summary>
 [Node(0x030A2000)]
 public sealed class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasKeys

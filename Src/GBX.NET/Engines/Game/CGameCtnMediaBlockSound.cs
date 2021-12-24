@@ -2,6 +2,9 @@
 
 namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// MediaTracker block - Sound (0x030A7000)
+/// </summary>
 [Node(0x030A7000)]
 public sealed class CGameCtnMediaBlockSound : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {

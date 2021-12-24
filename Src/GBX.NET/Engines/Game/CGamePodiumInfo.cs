@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// Podium info (0x03168000)
+/// </summary>
 [Node(0x03168000)]
 public sealed class CGamePodiumInfo : CMwNod
 {

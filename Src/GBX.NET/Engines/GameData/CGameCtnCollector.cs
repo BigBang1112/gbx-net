@@ -2,6 +2,9 @@
 
 namespace GBX.NET.Engines.GameData;
 
+/// <summary>
+/// Collector (0x2E001000)
+/// </summary>
 [Node(0x2E001000)]
 public class CGameCtnCollector : CMwNod
 {

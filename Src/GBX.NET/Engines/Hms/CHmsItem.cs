@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.Hms;
 
+/// <summary>
+/// CHmsItem (0x06003000)
+/// </summary>
 [Node(0x06003000)]
 public sealed class CHmsItem : CMwNod
 {

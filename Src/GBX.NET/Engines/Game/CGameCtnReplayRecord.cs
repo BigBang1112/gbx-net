@@ -2,6 +2,9 @@
 
 namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// Replay (0x03093000)
+/// </summary>
 [Node(0x03093000), WritingNotSupported]
 public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 {

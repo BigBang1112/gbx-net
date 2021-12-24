@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Color grading
+/// MediaTracker block - Color grading (0x03186000)
 /// </summary>
 [Node(0x03186000)]
 public sealed class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys

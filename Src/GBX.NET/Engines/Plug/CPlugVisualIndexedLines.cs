@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace GBX.NET.Engines.Plug;
 
-namespace GBX.NET.Engines.Plug;
-
+/// <summary>
+/// Indexed visual as lines (0x09009000)
+/// </summary>
+/// <remarks>Handles indicies of a 3D mesh by line connections.</remarks>
 [Node(0x09009000)]
 public class CPlugVisualIndexedLines : CPlugVisualIndexed
 {

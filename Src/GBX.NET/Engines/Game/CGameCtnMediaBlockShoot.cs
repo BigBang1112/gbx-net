@@ -1,5 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// MediaTracker block - Shoot (0x03145000)
+/// </summary>
+/// <remarks>Better known as "Editing cut".</remarks>
 [Node(0x03145000)]
 public sealed class CGameCtnMediaBlockShoot : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {

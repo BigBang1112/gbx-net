@@ -10,7 +10,7 @@ namespace GBX.NET.Engines.Game;
 /// <summary>
 /// Map (0x03043000)
 /// </summary>
-/// <remarks>A map. Known extensions: .Challenge.Gbx, .Map.Gbx</remarks>
+/// <remarks>Extensions: .Challenge.Gbx, .Map.Gbx</remarks>
 [Node(0x03043000)]
 public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 {
@@ -3102,8 +3102,11 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
+            // GmLocFreeVal
             rw.Vec3(ref n.thumbnailPosition);
             rw.Vec3(ref n.thumbnailPitchYawRoll);
+
+            // GmLensVal
             rw.Single(ref n.thumbnailFOV);
 
             if (rw.Mode == GameBoxReaderWriterMode.Read)

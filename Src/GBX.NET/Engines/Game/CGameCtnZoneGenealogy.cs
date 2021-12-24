@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// Zone genealogy (0x0311D000)
+/// </summary>
 [Node(0x0311D000)]
 public sealed class CGameCtnZoneGenealogy : CMwNod
 {

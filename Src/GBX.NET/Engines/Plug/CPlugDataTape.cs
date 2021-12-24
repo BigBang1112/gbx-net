@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace GBX.NET.Engines.Plug;
 
-namespace GBX.NET.Engines.Plug;
-
+/// <summary>
+/// Data tape (0x090CE000)
+/// </summary>
 [Node(0x090CE000)]
 public class CPlugDataTape : CMwNod
 {

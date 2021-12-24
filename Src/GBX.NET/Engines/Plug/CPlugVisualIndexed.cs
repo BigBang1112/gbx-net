@@ -1,5 +1,9 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <summary>
+/// Indexed visual (0x0906A000)
+/// </summary>
+/// <remarks>Handles indicies of a 3D mesh.</remarks>
 [Node(0x0906A000)]
 public class CPlugVisualIndexed : CPlugVisual3D
 {

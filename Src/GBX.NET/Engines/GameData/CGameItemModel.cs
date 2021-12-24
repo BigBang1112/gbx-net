@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.GameData;
 
+/// <summary>
+/// Custom item (0x2E002000)
+/// </summary>
 [Node(0x2E002000), WritingNotSupported]
 public sealed class CGameItemModel : CGameCtnCollector
 {

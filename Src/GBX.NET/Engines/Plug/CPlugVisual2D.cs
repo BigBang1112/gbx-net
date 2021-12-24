@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace GBX.NET.Engines.Plug;
 
-namespace GBX.NET.Engines.Plug;
-
+/// <summary>
+/// 2D visual (0x09006000)
+/// </summary>
 [Node(0x0904A000)]
 public class CPlugVisual2D : CPlugVisual
 {

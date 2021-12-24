@@ -2,6 +2,9 @@
 
 namespace GBX.NET.Engines.Plug;
 
+/// <summary>
+/// Custom mesh/model (0x09003000)
+/// </summary>
 [Node(0x09003000)]
 public sealed class CPlugCrystal : CPlugTreeGenerator
 {

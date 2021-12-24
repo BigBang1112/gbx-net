@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.GameData;
 
+/// <summary>
+/// Item placement parameters (0x2E020000)
+/// </summary>
 [Node(0x2E020000)]
 public sealed class CGameItemPlacementParam : CMwNod
 {

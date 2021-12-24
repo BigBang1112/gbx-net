@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <summary>
+/// Visual (0x09006000)
+/// </summary>
 [Node(0x09006000), WritingNotSupported]
 public class CPlugVisual : CPlug
 {

@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <summary>
+/// Bitmap sampler (0x0907E000)
+/// </summary>
 [Node(0x0907E000)]
 public class CPlugBitmapSampler : CPlug
 {

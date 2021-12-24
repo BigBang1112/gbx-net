@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <summary>
+/// Official mesh/model (0x09005000)
+/// </summary>
 [Node(0x09005000), WritingNotSupported]
 public sealed class CPlugSolid : CPlug
 {

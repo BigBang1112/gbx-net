@@ -3,6 +3,9 @@ using System.IO.Compression;
 
 namespace GBX.NET.Engines.Plug;
 
+/// <summary>
+/// Entity record data (0x0911F000)
+/// </summary>
 [Node(0x0911F000)]
 public sealed class CPlugEntRecordData : CMwNod
 {

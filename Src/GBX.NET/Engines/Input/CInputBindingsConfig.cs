@@ -2,6 +2,9 @@
 
 namespace GBX.NET.Engines.Input;
 
+/// <summary>
+/// Input bindings configuration (0x13006000)
+/// </summary>
 [Node(0x13006000)]
 public sealed class CInputBindingsConfig : CMwNod
 {

@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <summary>
+/// Bitmap (0x09011000)
+/// </summary>
 [Node(0x09011000), WritingNotSupported]
 public class CPlugBitmap : CPlug
 {

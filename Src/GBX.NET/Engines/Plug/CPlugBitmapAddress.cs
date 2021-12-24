@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace GBX.NET.Engines.Plug;
 
-namespace GBX.NET.Engines.Plug;
-
+/// <summary>
+/// Bitmap address (0x09047000)
+/// </summary>
 [Node(0x09047000)]
 public class CPlugBitmapAddress : CPlugBitmapSampler
 {

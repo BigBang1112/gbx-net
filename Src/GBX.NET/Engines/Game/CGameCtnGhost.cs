@@ -5,6 +5,7 @@ namespace GBX.NET.Engines.Game;
 /// <summary>
 /// Ghost (0x03092000)
 /// </summary>
+/// <remarks>Extension: .Ghost.Gbx</remarks>
 [Node(0x03092000)]
 public sealed class CGameCtnGhost : CGameGhost
 {

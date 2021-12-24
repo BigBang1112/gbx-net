@@ -2,6 +2,9 @@
 
 namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// MediaTracker block - Text (0x030A8000)
+/// </summary>
 [Node(0x030A8000)]
 public sealed class CGameCtnMediaBlockText : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {

@@ -1,7 +1,8 @@
-﻿using System.Globalization;
+﻿namespace GBX.NET.Engines.Plug;
 
-namespace GBX.NET.Engines.Plug;
-
+/// <summary>
+/// 3D visual (0x0902C000)
+/// </summary>
 [Node(0x0902C000), WritingNotSupported]
 public class CPlugVisual3D : CPlugVisual
 {
