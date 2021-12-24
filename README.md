@@ -225,6 +225,19 @@ var silverTime = map.SilverTime; // Correct
 
 Your work doesn't have to fall under the GNU GPL license if you're interested in either reading the header data only, or reading certain uncompressed GBX files (usually the internal ones inside PAK files). If you're looking to read the content of a **compressed GBX body** (applies to maps, replays and other user generated content), you **have to license your work with GNU GPL v3.0 or later**.
 
+## Special thanks
+
+Without these people, this project wouldn't be what it is today:
+
+- Stefan Baumann (Solux)
+- florenzius
+- Kim
+- James Romeril
+- Mika Kuijpers (TheMrMiku)
+- donadigo
+
+And many thanks to every bug reporter!
+
 ## Alternative GBX parsers
 
 - [gbx.js](https://github.com/ThaumicTom/gbx.js) by ThaumicTom (GBX header parser for clientside JavaScript)
