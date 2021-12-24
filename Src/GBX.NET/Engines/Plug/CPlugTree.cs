@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <summary>
+/// Tree (0x0904F000)
+/// </summary>
 [Node(0x0904F000)]
 public class CPlugTree : CPlug
 {
@@ -7,9 +10,9 @@ public class CPlugTree : CPlug
     private string? name;
     private CPlugVisual? visual;
     private CPlugSurfaceGeom? surface;
-
     private CPlug? shader;
     private int? shaderIndex;
+    private CPlugTreeGenerator? generator;
 
     public IList<CPlugTree?> Children
     {
@@ -39,6 +42,12 @@ public class CPlugTree : CPlug
     {
         get => shader = GetNodeFromRefTable(shader, shaderIndex) as CPlug;
         set => shader = value;
+    }
+
+    public CPlugTreeGenerator? Generator
+    {
+        get => generator;
+        set => generator = value;
     }
 
     protected CPlugTree()
@@ -94,7 +103,7 @@ public class CPlugTree : CPlug
 
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01);
+            rw.NodeRef(ref U01); // FuncTree
         }
     }
 
@@ -108,7 +117,7 @@ public class CPlugTree : CPlug
             rw.NodeRef<CPlugVisual>(ref n.visual); // CPlugVisual?
             rw.NodeRef<CPlug>(ref n.shader, ref n.shaderIndex); // definitely Shader, can have CPlugShaderApply or CPlugMaterial
             rw.NodeRef<CPlugSurfaceGeom>(ref n.surface); // CPlugSurface? CPlugTreeGenerator?
-            rw.Int32(ref U03); // ???
+            rw.NodeRef<CPlugTreeGenerator>(ref n.generator); // ???
         }
     }
 
