@@ -438,7 +438,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             DiscoverChunk<Chunk03043042>();
             authorLogin = value;
 
-            mapInfo = new Ident(value, mapInfo.Collection, mapInfo.Author);
+            mapInfo = new Ident(mapInfo.ID, mapInfo.Collection, value);
         }
     }
 
