@@ -3212,7 +3212,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     {
                         using var ms = new MemoryStream(data);
                         using var deflate = new CompressedStream(ms, CompressionMode.Decompress);
-                        using var gbxr = new GameBoxReader(deflate, logger: logger);
+                        using var gbxr = CreateReader(deflate, logger);
 
                         var cacheNode = Parse<CHmsLightMapCache>(gbxr, 0x06022000, progress: null, logger);
 
@@ -3426,17 +3426,17 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             Data = r.ReadBytes(sizeOfNodeWithClassID);
 
             using var ms = new MemoryStream(Data);
-            using var r2 = CreateReader(ms);
+            using var r2 = CreateReader(ms, logger);
 
             n.genealogies = ParseArray<CGameCtnZoneGenealogy>(r2, progress: null, logger)!;
         }
         
-        public override void Write(CGameCtnChallenge n, GameBoxWriter w)
+        public override void Write(CGameCtnChallenge n, GameBoxWriter w, ILogger? logger)
         {
             w.Write(Version);
 
             using var ms = new MemoryStream();
-            using var w1 = CreateWriter(ms);
+            using var w1 = CreateWriter(ms, logger);
 
             w1.Write(n.genealogies, (x, w) =>
             {
