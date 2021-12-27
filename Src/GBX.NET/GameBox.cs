@@ -378,7 +378,7 @@ public class GameBox
     }
 
     /// <summary>
-    /// Parses only the header of the GBX and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="CMwNod.GBX"/>.
+    /// Parses only the header of the GBX and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="Node.GBX"/>.
     /// </summary>
     /// <param name="stream">Stream to read GBX format from.</param>
     /// <param name="progress">Callback that reports any read progress.</param>
@@ -395,7 +395,7 @@ public class GameBox
     }
 
     /// <summary>
-    /// Parses only the header of the GBX and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="CMwNod.GBX"/>.
+    /// Parses only the header of the GBX and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="Node.GBX"/>.
     /// </summary>
     /// <param name="fileName">Relative or absolute file path.</param>
     /// <param name="progress">Callback that reports any read progress.</param>
@@ -412,7 +412,7 @@ public class GameBox
     }
 
     /// <summary>
-    /// Parses only the header of the GBX and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="CMwNod.GBX"/>.
+    /// Parses only the header of the GBX and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="Node.GBX"/>.
     /// </summary>
     /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an exception. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
     /// <param name="stream">Stream to read GBX format from.</param>
@@ -432,7 +432,7 @@ public class GameBox
     }
 
     /// <summary>
-    /// Parses only the header of the GBX and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="CMwNod.GBX"/>.
+    /// Parses only the header of the GBX and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="Node.GBX"/>.
     /// </summary>
     /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an exception. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
     /// <param name="fileName">Relative or absolute file path.</param>
@@ -452,7 +452,7 @@ public class GameBox
     }
 
     /// <summary>
-    /// Easily parses GBX format and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="CMwNod.GBX"/>.
+    /// Easily parses GBX format and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="Node.GBX"/>.
     /// </summary>
     /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an exception. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
     /// <param name="stream">Stream to read GBX format from.</param>
@@ -477,7 +477,7 @@ public class GameBox
     }
 
     /// <summary>
-    /// Easily parses a GBX file and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="CMwNod.GBX"/>.
+    /// Easily parses a GBX file and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="Node.GBX"/>.
     /// </summary>
     /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an exception. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
     /// <param name="fileName">Relative or absolute file path.</param>
@@ -502,7 +502,7 @@ public class GameBox
     }
 
     /// <summary>
-    /// Easily parses a GBX file and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="CMwNod.GBX"/>.
+    /// Easily parses a GBX file and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="Node.GBX"/>.
     /// </summary>
     /// <param name="fileName">Relative or absolute file path.</param>
     /// <param name="progress">Callback that reports any read progress.</param>
@@ -525,7 +525,7 @@ public class GameBox
     }
 
     /// <summary>
-    /// Easily parses GBX format and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="CMwNod.GBX"/>.
+    /// Easily parses GBX format and returns the node of it. <see cref="GameBox"/> is then accessible with <see cref="Node.GBX"/>.
     /// </summary>
     /// <param name="stream">Stream to read GBX format from.</param>
     /// <param name="progress">Callback that reports any read progress.</param>

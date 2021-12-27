@@ -193,9 +193,9 @@ public static class NodeCacheManager
 
             var classes = new List<uint>();
 
-            Type currentType = type.BaseType!;
+            var currentType = type.BaseType!;
 
-            while (currentType != typeof(object))
+            while (currentType != typeof(Node))
             {
                 classes.Add(availableClassesByType[currentType]);
 

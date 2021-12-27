@@ -6,14 +6,14 @@ namespace GBX.NET;
 public class ChunkSet : SortedSet<Chunk>
 {
     [IgnoreDataMember]
-    public CMwNod Node { get; set; }
+    public Node Node { get; set; }
 
-    public ChunkSet(CMwNod node) : base()
+    public ChunkSet(Node node) : base()
     {
         Node = node;
     }
 
-    public ChunkSet(CMwNod node, IEnumerable<Chunk> collection) : base(collection)
+    public ChunkSet(Node node, IEnumerable<Chunk> collection) : base(collection)
     {
         Node = node;
     }

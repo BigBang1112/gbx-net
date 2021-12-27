@@ -10,10 +10,10 @@ public interface IChunk
 {
     uint ID { get; }
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
-    void Read(CMwNod n, GameBoxReader r);
+    void Read(Node n, GameBoxReader r);
     /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
-    void Write(CMwNod n, GameBoxWriter w);
+    void Write(Node n, GameBoxWriter w);
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
-    void ReadWrite(CMwNod n, GameBoxReaderWriter rw);
+    void ReadWrite(Node n, GameBoxReaderWriter rw);
 }

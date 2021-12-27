@@ -15,7 +15,7 @@ public abstract class Chunk : IChunk, IComparable<Chunk>
     [IgnoreDataMember]
     public MemoryStream Unknown { get; } = new MemoryStream();
 
-    public CMwNod Node { get; internal set; }
+    internal Node Node { get; set; }
 
     public int Progress { get; set; }
 
@@ -85,17 +85,17 @@ public abstract class Chunk : IChunk, IComparable<Chunk>
         return ID.CompareTo(other?.ID);
     }
 
-    void IChunk.Read(CMwNod n, GameBoxReader r)
+    void IChunk.Read(Node n, GameBoxReader r)
     {
         throw new NotSupportedException();
     }
 
-    void IChunk.Write(CMwNod n, GameBoxWriter w)
+    void IChunk.Write(Node n, GameBoxWriter w)
     {
         throw new NotSupportedException();
     }
 
-    void IChunk.ReadWrite(CMwNod n, GameBoxReaderWriter rw)
+    void IChunk.ReadWrite(Node n, GameBoxReaderWriter rw)
     {
         throw new NotSupportedException();
     }

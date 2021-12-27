@@ -25,20 +25,20 @@ public abstract class Chunk<T> : Chunk, IChunk where T : CMwNod
     }
 
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
-    void IChunk.Read(CMwNod n, GameBoxReader r)
+    void IChunk.Read(Node n, GameBoxReader r)
     {
         Read((T)n, r);
     }
 
     /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
-    void IChunk.Write(CMwNod n, GameBoxWriter w)
+    void IChunk.Write(Node n, GameBoxWriter w)
     {
         Write((T)n, w);
     }
 
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
-    void IChunk.ReadWrite(CMwNod n, GameBoxReaderWriter rw)
+    void IChunk.ReadWrite(Node n, GameBoxReaderWriter rw)
     {
         ReadWrite((T)n, rw);
     }
