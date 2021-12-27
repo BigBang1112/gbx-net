@@ -48,12 +48,12 @@ public sealed class CGameCtnMediaBlockFog : CGameCtnMediaBlock, CGameCtnMediaBlo
         {
             Version = r.ReadInt32();
 
-            n.keys = r.ReadList(r1 =>
+            n.keys = r.ReadList(r =>
             {
-                var time = r1.ReadSingle_s();
-                var intensity = r1.ReadSingle();
-                var skyIntensity = r1.ReadSingle();
-                var distance = r1.ReadSingle();
+                var time = r.ReadSingle_s();
+                var intensity = r.ReadSingle();
+                var skyIntensity = r.ReadSingle();
+                var distance = r.ReadSingle();
 
                 float? coefficient = null;
                 Vec3? color = null;
@@ -62,13 +62,13 @@ public sealed class CGameCtnMediaBlockFog : CGameCtnMediaBlock, CGameCtnMediaBlo
 
                 if (Version >= 1)
                 {
-                    coefficient = r1.ReadSingle();
-                    color = r1.ReadVec3();
+                    coefficient = r.ReadSingle();
+                    color = r.ReadVec3();
 
                     if (Version >= 2)
                     {
-                        cloudsOpacity = r1.ReadSingle();
-                        cloudsSpeed = r1.ReadSingle();
+                        cloudsOpacity = r.ReadSingle();
+                        cloudsSpeed = r.ReadSingle();
                     }
                 }
 
@@ -90,22 +90,22 @@ public sealed class CGameCtnMediaBlockFog : CGameCtnMediaBlock, CGameCtnMediaBlo
         {
             w.Write(Version);
 
-            w.Write(n.Keys, (x, w1) =>
+            w.Write(n.keys, (x, w) =>
             {
-                w1.WriteSingle_s(x.Time);
-                w1.Write(x.Intensity);
-                w1.Write(x.SkyIntensity);
-                w1.Write(x.Distance);
+                w.WriteSingle_s(x.Time);
+                w.Write(x.Intensity);
+                w.Write(x.SkyIntensity);
+                w.Write(x.Distance);
 
                 if (Version >= 1)
                 {
-                    w1.Write(x.Coefficient.GetValueOrDefault(1));
-                    w1.Write(x.Coefficient.GetValueOrDefault());
+                    w.Write(x.Coefficient.GetValueOrDefault(1));
+                    w.Write(x.Color.GetValueOrDefault());
 
                     if (Version >= 2)
                     {
-                        w1.Write(x.CloudsOpacity.GetValueOrDefault(1));
-                        w1.Write(x.CloudsSpeed.GetValueOrDefault(1));
+                        w.Write(x.CloudsOpacity.GetValueOrDefault(1));
+                        w.Write(x.CloudsSpeed.GetValueOrDefault(1));
                     }
                 }
             });
