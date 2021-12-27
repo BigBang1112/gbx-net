@@ -19,6 +19,7 @@ public static class NodeCacheManager
     public static Dictionary<Type, IEnumerable<Attribute>> AvailableClassAttributes { get; }
     public static Dictionary<Type, Dictionary<uint, IEnumerable<Attribute>>> AvailableChunkAttributes { get; }
     public static Dictionary<Type, IEnumerable<Attribute>> AvailableChunkAttributesByType { get; }
+    public static HashSet<Type> SkippableChunks { get; }
 
     public static Dictionary<uint, Func<CMwNod>> AvailableClassConstructors { get; }
     public static Dictionary<Type, Dictionary<uint, Func<Chunk>>> AvailableChunkConstructors { get; }
@@ -42,6 +43,8 @@ public static class NodeCacheManager
         AvailableClassConstructors = new Dictionary<uint, Func<CMwNod>>();
         AvailableChunkConstructors = new Dictionary<Type, Dictionary<uint, Func<Chunk>>>();
         AvailableHeaderChunkConstructors = new Dictionary<Type, Dictionary<uint, Func<Chunk>>>();
+
+        SkippableChunks = new HashSet<Type>();
 
         DefineNames();
         DefineMappings();
@@ -229,6 +232,11 @@ public static class NodeCacheManager
                 else
                 {
                     availableHeaderChunkClasses.Add(chunkAttribute.ID, chunk);
+                }
+
+                if (chunk.BaseType?.GetGenericTypeDefinition() == typeof(SkippableChunk<>))
+                {
+                    SkippableChunks.Add(chunk);
                 }
             }
 

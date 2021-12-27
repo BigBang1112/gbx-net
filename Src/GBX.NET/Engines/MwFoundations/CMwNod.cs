@@ -206,7 +206,7 @@ public class CMwNod
             if (reflected && chunkClass is null)
                 throw new ThisShouldNotHappenException();
 
-            var skippable = reflected && chunkClass!.BaseType!.GetGenericTypeDefinition() == typeof(SkippableChunk<>);
+            var skippable = reflected && NodeCacheManager.SkippableChunks.Contains(chunkClass!);
 
             // Unknown or skippable chunk
             if (!reflected || skippable)
@@ -611,10 +611,11 @@ public class CMwNod
     /// </summary>
     /// <param name="fileName">Relative or absolute file path. Null will pick the <see cref="GameBox.FileName"/> value from <see cref="GBX"/> object instead.</param>
     /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
+    /// <param name="logger">Logger.</param>
     /// <exception cref="NotSupportedException"/>
-    public void Save(string? fileName = default, IDRemap remap = default)
+    public void Save(string? fileName, IDRemap remap = default, ILogger? logger = null)
     {
-        Save(new Type[] { typeof(string), typeof(IDRemap) }, new object?[] { fileName, remap });
+        Save(new Type[] { typeof(string), typeof(IDRemap), typeof(ILogger) }, new object?[] { fileName, remap, logger });
     }
 
     /// <summary>
@@ -622,10 +623,11 @@ public class CMwNod
     /// </summary>
     /// <param name="stream">Any kind of stream that supports writing.</param>
     /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
+    /// <param name="logger">Logger.</param>
     /// <exception cref="NotSupportedException"/>
-    public void Save(Stream stream, IDRemap remap = default)
+    public void Save(Stream stream, IDRemap remap = default, ILogger? logger = null)
     {
-        Save(new Type[] { typeof(Stream), typeof(IDRemap) }, new object?[] { stream, remap });
+        Save(new Type[] { typeof(Stream), typeof(IDRemap), typeof(ILogger) }, new object?[] { stream, remap, logger });
     }
 
     internal static uint Remap(uint id)
