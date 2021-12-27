@@ -213,13 +213,14 @@ public abstract class Node
                         break;
                     }
 
-#if DEBUG
-                    // Read the rest of the body
+                    if (GameBox.Debug) // I don't get it
+                    {
+                        // Read the rest of the body
 
-                    var streamPos = stream.Position;
-                    var uncontrollableData = r.ReadToEnd();
-                    stream.Position = streamPos;
-#endif
+                        var streamPos = stream.Position;
+                        var uncontrollableData = r.ReadToEnd();
+                        stream.Position = streamPos;
+                    }
 
                     throw new ChunkParseException(chunkId, previousChunkId);
                 }
@@ -262,14 +263,16 @@ public abstract class Node
 
                     var c = constructor();
                     c.Node = node;
+                    if (GameBox.Debug) c.Debugger ??= new();
                     ((ISkippableChunk)c).Data = chunkData;
                     if (chunkData == null || chunkData.Length == 0)
                         ((ISkippableChunk)c).Discovered = true;
                     node.Chunks.Add(c);
 
-#if DEBUG
-                    c.Debugger.RawData = chunkData;
-#endif
+                    if (GameBox.Debug)
+                    {
+                        c.Debugger!.RawData = chunkData;
+                    }
 
                     if (ignoreChunkAttribute == null)
                     {
@@ -289,9 +292,13 @@ public abstract class Node
                     Debug.WriteLine(debugLine);
 
                     chunk = (Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkId, chunkData)!;
-#if DEBUG
-                    chunk.Debugger.RawData = chunkData;
-#endif
+
+                    if (GameBox.Debug)
+                    {
+                        chunk.Debugger ??= new();
+                        chunk.Debugger.RawData = chunkData;
+                    }
+
                     node.Chunks.Add(chunk);
                 }
             }
@@ -306,6 +313,8 @@ public abstract class Node
 
                 var c = constructor();
                 c.Node = node;
+
+                if (GameBox.Debug) c.Debugger ??= new();
 
                 c.OnLoad();
 
@@ -344,9 +353,13 @@ public abstract class Node
 
                 try
                 {
-#if DEBUG
-                    var streamPos = stream.Position;
-#endif
+                    var streamPos = default(long);
+
+                    if (GameBox.Debug)
+                    {
+                        streamPos = stream.Position;
+                    }
+
                     if (autoReadWriteChunkAttribute == null)
                     {
                         ((IChunk)c).ReadWrite(node, gbxrw);
@@ -357,15 +370,17 @@ public abstract class Node
                         var unknownData = r.ReadUntilFacade().ToArray();
                         unknown.WriteBytes(unknownData);
                     }
-#if DEBUG
-                    var chunkLength = (int)(stream.Position - streamPos);
 
-                    stream.Position = streamPos;
+                    if (GameBox.Debug)
+                    {
+                        var chunkLength = (int)(stream.Position - streamPos);
 
-                    var rawData = r.ReadBytes(chunkLength);
+                        stream.Position = streamPos;
 
-                    c.Debugger.RawData = rawData;
-#endif
+                        var rawData = r.ReadBytes(chunkLength);
+
+                        c.Debugger!.RawData = rawData;
+                    }
                 }
                 catch (EndOfStreamException)
                 {

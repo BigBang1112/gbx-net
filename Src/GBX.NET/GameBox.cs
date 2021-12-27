@@ -11,6 +11,11 @@ public class GameBox
     public const string Magic = "GBX";
 
     /// <summary>
+    /// If specialized actions should be executed that can help further with debugging but slow down the parse speed. Options can be then visible inside Debugger properties if available.
+    /// </summary>
+    public static bool Debug { get; set; }
+
+    /// <summary>
     /// Header part containing generic GameBox values.
     /// </summary>
     public GameBoxHeaderInfo Header { get; }
@@ -620,7 +625,7 @@ public class GameBox
         if (NodeCacheManager.Mappings.TryGetValue(classID.GetValueOrDefault(), out uint newerClassID))
             modernID = newerClassID;
 
-        Debug.WriteLine("GetGameBoxType: " + modernID.ToString("x8"));
+        System.Diagnostics.Debug.WriteLine("GetGameBoxType: " + modernID.ToString("x8"));
 
         var availableClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
                 && x.Namespace?.StartsWith("GBX.NET.Engines") == true && x.IsSubclassOf(typeof(CMwNod))

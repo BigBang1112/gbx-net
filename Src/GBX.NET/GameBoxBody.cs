@@ -5,10 +5,7 @@ namespace GBX.NET;
 
 public abstract class GameBoxBody : GameBoxPart
 {
-
-#if DEBUG
-    public GameBoxBodyDebugger Debugger { get; } = new();
-#endif
+    public GameBoxBodyDebugger? Debugger { get; protected set; }
 
     [IgnoreDataMember]
     public SortedDictionary<int, CMwNod> AuxilaryNodes { get; }

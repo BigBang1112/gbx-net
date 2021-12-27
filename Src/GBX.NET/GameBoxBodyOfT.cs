@@ -27,10 +27,12 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
 
         Lzo.Decompress(data, buffer);
 
-#if DEBUG
-        Debugger.CompressedData = data;
-        Debugger.UncompressedData = buffer;
-#endif
+        if (GameBox.Debug)
+        {
+            Debugger ??= new();
+            Debugger.CompressedData = data;
+            Debugger.UncompressedData = buffer;
+        }
 
         Read(buffer, progress, logger);
     }
