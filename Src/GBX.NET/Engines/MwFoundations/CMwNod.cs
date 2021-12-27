@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
@@ -392,7 +391,7 @@ public class CMwNod
 
         stopwatch.Stop();
 
-        logger?.LogDebug("[{className}] DONE! ({time}ms)", node.ClassName, stopwatch.Elapsed.TotalMilliseconds);
+        logger?.LogDebug("DONE! ({time}ms)", stopwatch.Elapsed.TotalMilliseconds);
     }
 
     public void Read(GameBoxReader r)

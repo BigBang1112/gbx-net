@@ -1,5 +1,6 @@
 ﻿using GBX.NET;
 using GBX.NET.Engines.Plug;
+using Microsoft.Extensions.Logging;
 using System.Globalization;
 
 CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
@@ -10,11 +11,22 @@ if (args.Length == 0)
 var rootPath = Path.GetDirectoryName(typeof(Program).Assembly.Location)!;
 var extractPath = Path.Combine(rootPath, "Extract");
 
+var logger = LoggerFactory.Create(builder =>
+{
+    builder.AddSimpleConsole(options =>
+    {
+        options.IncludeScopes = true;
+        options.SingleLine = true;
+        options.TimestampFormat = "yyyy-MM-dd HH:mm:ss ";
+    });
+    builder.SetMinimumLevel(LogLevel.Debug);
+}).CreateLogger<Program>();
+
 Directory.CreateDirectory(extractPath);
 
 foreach (var fileName in args)
 {
-    Console.WriteLine(fileName);
+    logger.LogInformation("{fileName}", fileName);
 
     try
     {
@@ -22,7 +34,7 @@ foreach (var fileName in args)
     }
     catch (Exception ex)
     {
-        Console.WriteLine(ex);
+        logger.LogError(ex, "Exception for {fileName}", fileName);
     }
 }
 
@@ -30,7 +42,7 @@ Console.ReadKey();
 
 void ProcessFile(string fileName)
 {
-    var node = GameBox.ParseNode<CPlugSolid>(fileName);
+    var node = GameBox.ParseNode<CPlugSolid>(fileName, logger: logger);
 
     var tree = node.Tree;
 
@@ -101,7 +113,7 @@ void ProcessFile(string fileName)
         if (visual is null)
             return;
 
-        Console.WriteLine(tree.Name);
+        logger.LogInformation("{name}", tree.Name);
 
         faceWriter.WriteLine();
         faceWriter.WriteLine("o " + tree.Name);
@@ -215,7 +227,7 @@ void ProcessFile(string fileName)
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Exception during path extract.");
+            logger.LogError(ex, "Exception during path extract");
         }
     }
 }
