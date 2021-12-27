@@ -91,7 +91,7 @@ public class NadeoPak : IDisposable
             do
             {
                 fileIndex = r.ReadInt32();
-                var header = new GameBoxHeaderInfo(r);
+                var header = new GameBoxHeaderInfo(r, logger: null);
             }
             while (fileIndex != -1);
         }
