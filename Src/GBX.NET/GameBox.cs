@@ -706,8 +706,12 @@ public class GameBox
         // Num nodes
         w.Write(r.ReadInt32());
 
-        // Ref table, TODO: full read
-        w.Write(r.ReadInt32());
+        var numExternalNodes = r.ReadInt32();
+
+        if (numExternalNodes > 0)
+            throw new Exception(); // Ref table, TODO: full read
+
+        w.Write(numExternalNodes);
 
         var uncompressedSize = r.ReadInt32();
         var compressedData = r.ReadBytes();
