@@ -3164,7 +3164,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             set => cacheData = value;
         }
 
-        public override void Read(CGameCtnChallenge n, GameBoxReader r)
+        public override void Read(CGameCtnChallenge n, GameBoxReader r, ILogger? logger)
         {
             U01 = r.ReadBoolean();
             version = r.ReadInt32();
@@ -3212,9 +3212,9 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     {
                         using var ms = new MemoryStream(data);
                         using var deflate = new CompressedStream(ms, CompressionMode.Decompress);
-                        using var gbxr = new GameBoxReader(deflate);
+                        using var gbxr = new GameBoxReader(deflate, logger: logger);
 
-                        var cacheNode = Parse<CHmsLightMapCache>(gbxr, 0x06022000);
+                        var cacheNode = Parse<CHmsLightMapCache>(gbxr, 0x06022000, progress: null, logger);
 
                         using var msOut = new MemoryStream();
 
@@ -3328,7 +3328,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             Node.anchoredObjects = new List<CGameCtnAnchoredObject>();
         }
 
-        public override void Read(CGameCtnChallenge n, GameBoxReader r)
+        public override void Read(CGameCtnChallenge n, GameBoxReader r, ILogger? logger)
         {
             version = r.ReadInt32();
 
@@ -3339,7 +3339,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             var size = r.ReadInt32();
             U02 = r.ReadInt32(); // 10
 
-            n.anchoredObjects = ParseList<CGameCtnAnchoredObject>(r)!;
+            n.anchoredObjects = ParseList<CGameCtnAnchoredObject>(r, progress: null, logger)!;
 
             U03 = r.ReadToEnd();
         }
@@ -3419,7 +3419,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         public new byte[]? Data { get; set; }
 
-        public override void Read(CGameCtnChallenge n, GameBoxReader r)
+        public override void Read(CGameCtnChallenge n, GameBoxReader r, ILogger? logger)
         {
             Version = r.ReadInt32();
             var sizeOfNodeWithClassID = r.ReadInt32();
@@ -3428,9 +3428,9 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             using var ms = new MemoryStream(Data);
             using var r2 = CreateReader(ms);
 
-            n.genealogies = ParseArray<CGameCtnZoneGenealogy>(r2)!;
+            n.genealogies = ParseArray<CGameCtnZoneGenealogy>(r2, progress: null, logger)!;
         }
-
+        
         public override void Write(CGameCtnChallenge n, GameBoxWriter w)
         {
             w.Write(Version);

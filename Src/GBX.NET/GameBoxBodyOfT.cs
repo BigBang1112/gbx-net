@@ -21,7 +21,7 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    public void Read(byte[] data, int uncompressedSize, IProgress<GameBoxReadProgress>? progress = null)
+    internal void Read(byte[] data, int uncompressedSize, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
     {
         var buffer = new byte[uncompressedSize];
 
@@ -32,33 +32,33 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
         Debugger.UncompressedData = buffer;
 #endif
 
-        Read(buffer, progress);
+        Read(buffer, progress, logger);
     }
 
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    public void Read(byte[] data, IProgress<GameBoxReadProgress>? progress = null)
+    internal void Read(byte[] data, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
     {
         using var ms = new MemoryStream(data);
-        Read(ms, progress);
+        Read(ms, progress, logger);
     }
 
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    public void Read(Stream stream, IProgress<GameBoxReadProgress>? progress = null)
+    internal void Read(Stream stream, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
     {
-        using var gbxr = new GameBoxReader(stream, this);
-        Read(gbxr, progress);
+        using var gbxr = new GameBoxReader(stream, this, logger: logger);
+        Read(gbxr, progress, logger);
     }
 
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    public void Read(GameBoxReader reader, IProgress<GameBoxReadProgress>? progress = null)
+    internal void Read(GameBoxReader reader, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
     {
-        CMwNod.Parse(GBX.Node, reader, progress);
+        CMwNod.Parse(GBX.Node, reader, progress, logger);
 
         IsParsed = true;
 
@@ -72,7 +72,7 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="MissingLzoException"></exception>
-    public void Write(GameBoxWriter w, IDRemap remap = default)
+    internal void Write(GameBoxWriter w, IDRemap remap = default)
     {
         GBX.Remap = remap;
 

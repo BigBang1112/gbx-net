@@ -64,7 +64,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
         Chunks = new ChunkSet(gbx.Node);
     }
 
-    public void Read(byte[] userData, IProgress<GameBoxReadProgress>? progress)
+    public void Read(byte[] userData, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
     {
         var gbx = (GameBox<T>)GBX;
 
@@ -75,7 +75,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
             return;
 
         using var ms = new MemoryStream(userData);
-        using var r = new GameBoxReader(ms, lookbackable: this);
+        using var r = new GameBoxReader(ms, lookbackable: this, logger: logger);
 
         var numHeaderChunks = r.ReadInt32();
 
@@ -92,14 +92,14 @@ public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
             chunkList[clId + chId] = ((int)(chunkSize & ~0x80000000), (chunkSize & (1 << 31)) != 0);
         }
 
-        Log.Write("Header data chunk list:");
+        logger?.LogDebug("Header data chunk list:");
 
         foreach (var c in chunkList)
         {
             if (c.Value.IsHeavy)
-                Log.Write($"| 0x{c.Key:X8} | {c.Value.Size} B (Heavy)");
+                logger?.LogDebug("| 0x{classId} | {size} B (Heavy)", c.Key.ToString("X8"), c.Value.Size);
             else
-                Log.Write($"| 0x{c.Key:X8} | {c.Value.Size} B");
+                logger?.LogDebug("| 0x{classId} | {size} B", c.Key.ToString("X8"), c.Value.Size);
         }
 
         foreach (var chunkInfo in chunkList)
@@ -110,7 +110,11 @@ public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
             var isNodeImplemented = NodeCacheManager.AvailableClasses.TryGetValue(nodeId, out Type? nodeType);
 
             if (!isNodeImplemented)
-                Log.Write($"Node ID 0x{nodeId:X8} is not implemented. This occurs only in the header therefore it's not a fatal problem. ({NodeCacheManager.Names.Where(x => x.Key == nodeId).Select(x => x.Value).FirstOrDefault() ?? "unknown class"})");
+            {
+                logger?.LogWarning("Node ID 0x{nodeId} is not implemented. This occurs only in the header therefore it's not a fatal problem. ({nodeName})",
+                    nodeId.ToString("X8"),
+                    NodeCacheManager.Names.Where(x => x.Key == nodeId).Select(x => x.Value).FirstOrDefault() ?? "unknown class");
+            }
 
             var chunkTypes = new Dictionary<uint, Type>();
 
@@ -145,7 +149,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
                 if (d is not null)
                 {
                     using var msChunk = new MemoryStream(d);
-                    using var rChunk = new GameBoxReader(msChunk, lookbackable: this);
+                    using var rChunk = new GameBoxReader(msChunk, lookbackable: this, logger: logger);
                     var rw = new GameBoxReaderWriter(rChunk);
                     ((IChunk)chunk).ReadWrite(gbx.Node, rw);
                     ((ISkippableChunk)chunk).Discovered = true;
@@ -168,7 +172,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
         }
     }
 
-    public void Write(GameBoxWriter w, int numNodes, IDRemap remap)
+    internal void Write(GameBoxWriter w, int numNodes, IDRemap remap, ILogger? logger)
     {
         w.Write(GameBox.Magic, StringLengthPrefix.None);
         w.Write(Version);
@@ -191,13 +195,13 @@ public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
 
         if (Version >= 6)
         {
-            WriteVersion6Header(w, remap);
+            WriteVersion6Header(w, remap, logger);
         }
 
         w.Write(numNodes);
     }
 
-    private void WriteVersion6Header(GameBoxWriter w, IDRemap remap)
+    private void WriteVersion6Header(GameBoxWriter w, IDRemap remap, ILogger? logger)
     {
         if (Chunks is null)
         {
@@ -206,7 +210,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
         }
 
         using var userData = new MemoryStream();
-        using var gbxw = new GameBoxWriter(userData, w.Body, w.Lookbackable);
+        using var gbxw = new GameBoxWriter(userData, w.Body, w.Lookbackable, logger);
 
         var gbxrw = new GameBoxReaderWriter(gbxw);
 
@@ -243,9 +247,9 @@ public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
         w.Write(userData.ToArray(), 0, (int)userData.Length);
     }
 
-    public void Write(GameBoxWriter w, int numNodes)
+    internal void Write(GameBoxWriter w, int numNodes, ILogger? logger)
     {
-        Write(w, numNodes, IDRemap.Latest);
+        Write(w, numNodes, IDRemap.Latest, logger);
     }
 
     public TChunk CreateChunk<TChunk>(byte[] data) where TChunk : Chunk

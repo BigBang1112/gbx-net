@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace GBX.NET;
 
@@ -45,20 +44,39 @@ public abstract class Chunk<T> : Chunk, IChunk where T : CMwNod
     }
 
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
-    public virtual void Read(T n, GameBoxReader r)
+    public virtual void Read(T n, GameBoxReader r, ILogger? logger)
     {
         throw new ChunkReadNotImplementedException(ID, Node.ClassName);
+    }
+
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    public virtual void Read(T n, GameBoxReader r)
+    {
+        Read(n, r, logger: null);
+    }
+
+    /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
+    public virtual void Write(T n, GameBoxWriter w, ILogger? logger)
+    {
+        throw new ChunkWriteNotImplementedException(ID, Node.ClassName);
     }
 
     /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
     public virtual void Write(T n, GameBoxWriter w)
     {
-        throw new ChunkWriteNotImplementedException(ID, Node.ClassName);
+        Write(n, w, logger: null);
     }
 
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
     public virtual void ReadWrite(T n, GameBoxReaderWriter rw)
+    {
+        ReadWrite(n, rw, logger: null);
+    }
+
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
+    public virtual void ReadWrite(T n, GameBoxReaderWriter rw, ILogger? logger)
     {
         if (rw.Reader != null)
             Read(n, rw.Reader);

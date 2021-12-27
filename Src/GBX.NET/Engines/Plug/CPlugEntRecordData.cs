@@ -35,7 +35,7 @@ public sealed class CPlugEntRecordData : CMwNod
         public int CompressedSize { get; private set; }
         public int UncompressedSize { get; private set; }
 
-        public override void Read(CPlugEntRecordData n, GameBoxReader r)
+        public override void Read(CPlugEntRecordData n, GameBoxReader r, ILogger? logger)
         {
             Version = r.ReadInt32(); // 10
             UncompressedSize = r.ReadInt32();
@@ -48,7 +48,7 @@ public sealed class CPlugEntRecordData : CMwNod
 
                 using var ms = new MemoryStream(data);
                 using var cs = new CompressedStream(ms, CompressionMode.Decompress);
-                using var r = new GameBoxReader(cs);
+                using var r = new GameBoxReader(cs, logger: logger);
 
                 var u01 = r.ReadInt32();
                 var ghostLength = r.ReadInt32(); // milliseconds
@@ -121,7 +121,7 @@ public sealed class CPlugEntRecordData : CMwNod
                         if (buffer.Length > 0)
                         {
                             using var bufferMs = new MemoryStream(buffer);
-                            using var bufferR = new GameBoxReader(bufferMs);
+                            using var bufferR = new GameBoxReader(bufferMs, logger: logger);
 
                             var sampleProgress = (int)bufferMs.Position;
 

@@ -36,14 +36,14 @@ public abstract class Chunk : IChunk, IComparable<Chunk>
 
     public bool Equals(Chunk? chunk) => chunk is not null && chunk.ID == ID;
 
-    protected internal GameBoxReader CreateReader(Stream input)
+    protected internal GameBoxReader CreateReader(Stream input, ILogger? logger = null)
     {
-        return new GameBoxReader(input, Node.GBX?.Body, this as ILookbackable);
+        return new GameBoxReader(input, Node.GBX?.Body, this as ILookbackable, logger);
     }
 
-    protected internal GameBoxWriter CreateWriter(Stream input)
+    protected internal GameBoxWriter CreateWriter(Stream input, ILogger? logger = null)
     {
-        return new GameBoxWriter(input, Node.GBX?.Body, this as ILookbackable);
+        return new GameBoxWriter(input, Node.GBX?.Body, this as ILookbackable, logger);
     }
 
     public static uint Remap(uint chunkID, IDRemap remap = IDRemap.Latest)

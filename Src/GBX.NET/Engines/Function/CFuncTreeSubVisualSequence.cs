@@ -19,9 +19,9 @@ public class CFuncTreeSubVisualSequence : CFuncTree
     [Chunk(0x05031000)]
     public class Chunk05031000 : Chunk<CFuncTreeSubVisualSequence>
     {
-        public override void Read(CFuncTreeSubVisualSequence n, GameBoxReader r)
+        public override void Read(CFuncTreeSubVisualSequence n, GameBoxReader r, ILogger? logger)
         {
-            n.subKeys = Parse<CFuncKeysNatural>(r, 0x05030000);
+            n.subKeys = Parse<CFuncKeysNatural>(r, 0x05030000, progress: null, logger);
         }
 
         public override void Write(CFuncTreeSubVisualSequence n, GameBoxWriter w)

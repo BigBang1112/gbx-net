@@ -1228,6 +1228,11 @@ public class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public void Vec3(ref Vec3? variable, Vec3 defaultValue = default) => variable = Vec3(variable, defaultValue);
 
+    /// <summary>
+    /// Reads or writes a <see cref="NET.FileRef"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -1239,6 +1244,10 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="NET.FileRef"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -1378,7 +1387,10 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public void NodeRef(ref CMwNod? variable, GameBoxBody body) => variable = NodeRef(variable, body);
+    public void NodeRef(ref CMwNod? variable, GameBoxBody body)
+    {
+        variable = NodeRef(variable, body);
+    }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1426,7 +1438,10 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public void NodeRef<T>(ref T? variable, GameBoxBody body) where T : CMwNod => variable = NodeRef(variable, body);
+    public void NodeRef<T>(ref T? variable, GameBoxBody body) where T : CMwNod
+    {
+        variable = NodeRef(variable, body);
+    }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1457,7 +1472,10 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void NodeRef<T>(ref T? variable) where T : CMwNod => variable = NodeRef(variable);
+    public void NodeRef<T>(ref T? variable) where T : CMwNod
+    {
+        variable = NodeRef(variable);
+    }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1481,7 +1499,10 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public void NodeRef<T>(ref T? variable, ref int? nodeRefIndex, GameBoxBody body) where T : CMwNod => variable = NodeRef(variable, ref nodeRefIndex, body);
+    public void NodeRef<T>(ref T? variable, ref int? nodeRefIndex, GameBoxBody body) where T : CMwNod
+    {
+        variable = NodeRef(variable, ref nodeRefIndex, body);
+    }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1512,7 +1533,10 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void NodeRef<T>(ref T? variable, ref int? nodeRefIndex) where T : CMwNod => variable = NodeRef(variable, ref nodeRefIndex);
+    public void NodeRef<T>(ref T? variable, ref int? nodeRefIndex) where T : CMwNod
+    {
+        variable = NodeRef(variable, ref nodeRefIndex);
+    }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>

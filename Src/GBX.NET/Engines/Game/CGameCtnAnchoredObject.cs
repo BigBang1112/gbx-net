@@ -199,7 +199,7 @@ public sealed class CGameCtnAnchoredObject : CMwNod
             set => version = value;
         }
 
-        public override void ReadWrite(CGameCtnAnchoredObject n, GameBoxReaderWriter rw)
+        public override void ReadWrite(CGameCtnAnchoredObject n, GameBoxReaderWriter rw, ILogger? logger)
         {
             rw.Int32(ref version);
             rw.Ident(ref n.itemModel!);
@@ -209,7 +209,7 @@ public sealed class CGameCtnAnchoredObject : CMwNod
             rw.Vec3(ref n.absolutePositionInMap);
 
             if (rw.Mode == GameBoxReaderWriterMode.Read)
-                n.waypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(rw.Reader!);
+                n.waypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(rw.Reader!, classId: null, progress: null, logger);
             else if (rw.Mode == GameBoxReaderWriterMode.Write)
             {
                 if (n.waypointSpecialProperty is null)

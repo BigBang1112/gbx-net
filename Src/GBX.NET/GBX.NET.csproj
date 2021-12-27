@@ -32,6 +32,7 @@
 
 	<ItemGroup>
 		<Using Remove="System.Net.Http" />
+		<Using Include="Microsoft.Extensions.Logging" />
 		<Using Include="TmEssentials" />
 		<Using Include="GBX.NET.Attributes" />
 		<Using Include="GBX.NET.Exceptions" />
@@ -74,7 +75,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
 	  <PackageReference Include="TmEssentials" Version="2.0.0" />
 	</ItemGroup>
 

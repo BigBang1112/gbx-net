@@ -10,6 +10,8 @@ namespace GBX.NET;
 /// </summary>
 public class GameBoxWriter : BinaryWriter
 {
+    private readonly ILogger? logger;
+
     /// <summary>
     /// Body used to store node references.
     /// </summary>
@@ -26,10 +28,13 @@ public class GameBoxWriter : BinaryWriter
     /// <param name="output">The output stream.</param>
     /// <param name="body">Body used to store node references. If null, <see cref="CMwNod"/> cannot be written and <see cref="PropertyNullException"/> can be thrown.</param>
     /// <param name="lookbackable">A specified object to look into for the list of already written data. If null while <paramref name="body"/> is null, <see cref="Id"/> or <see cref="Ident"/> cannot be written and <see cref="PropertyNullException"/> can be thrown. If null while <paramref name="body"/> is not null, the body is used as <see cref="ILookbackable"/> instead.</param>
-    public GameBoxWriter(Stream output, GameBoxBody? body = null, ILookbackable? lookbackable = null) : base(output, Encoding.UTF8, true)
+    /// <param name="logger">Logger.</param>
+    public GameBoxWriter(Stream output, GameBoxBody? body = null, ILookbackable? lookbackable = null, ILogger? logger = null) : base(output, Encoding.UTF8, true)
     {
         Body = body;
         Lookbackable = lookbackable ?? body;
+
+        this.logger = logger;
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -384,7 +389,7 @@ public class GameBoxWriter : BinaryWriter
         body.AuxilaryNodes[body.AuxilaryNodes.Count] = node;
         Write(body.AuxilaryNodes.Count);
         Write(Chunk.Remap(node.ID, body.GBX.Remap));
-        node.Write(this, body.GBX.Remap);
+        node.Write(this, body.GBX.Remap, logger);
     }
 
     /// <exception cref="PropertyNullException"><see cref="Body"/> is null.</exception>
@@ -534,16 +539,13 @@ public class GameBoxWriter : BinaryWriter
         foreach (var node in nodes)
         {
             Write(node.ID);
-            node.Write(this);
+            node.Write(this, logger: logger);
 
-            string logProgress = $"[{nodeType.FullName!.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::")}] {counter + 1}/{count} ({watch.Elapsed.TotalMilliseconds}ms)";
-            if (Body == null || !Body.GBX.ID.HasValue || CMwNod.Remap(Body.GBX.ID.Value) != node.ID)
-                logProgress = "~ " + logProgress;
-
-            Log.Write(logProgress, ConsoleColor.Magenta);
-
-            if (counter != count - 1)
-                Log.Push(node.Chunks.Count + 2);
+            logger?.LogDebug("[{className}] {current}/{count} ({time}ms)",
+                nodeType.FullName!.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::"),
+                counter + 1,
+                count,
+                watch.Elapsed.TotalMilliseconds);
 
             counter += 1;
         }

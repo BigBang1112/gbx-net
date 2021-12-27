@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
@@ -87,13 +88,13 @@ public class CMwNod
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal static T?[] ParseArray<T>(GameBoxReader r) where T : CMwNod
+    internal static T?[] ParseArray<T>(GameBoxReader r, IProgress<GameBoxReadProgress>? progress, ILogger? logger) where T : CMwNod
     {
         var count = r.ReadInt32();
         var array = new T?[count];
 
         for (var i = 0; i < count; i++)
-            array[i] = Parse<T>(r);
+            array[i] = Parse<T>(r, classId: null, progress, logger);
 
         return array;
     }
@@ -101,33 +102,33 @@ public class CMwNod
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal static IEnumerable<T?> ParseEnumerable<T>(GameBoxReader r, int count) where T : CMwNod
+    internal static IEnumerable<T?> ParseEnumerable<T>(GameBoxReader r, int count, IProgress<GameBoxReadProgress>? progress, ILogger? logger) where T : CMwNod
     {
         for (var i = 0; i < count; i++)
-            yield return Parse<T>(r);
+            yield return Parse<T>(r, classId: null, progress, logger);
     }
 
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal static IEnumerable<T?> ParseEnumerable<T>(GameBoxReader r) where T : CMwNod
+    internal static IEnumerable<T?> ParseEnumerable<T>(GameBoxReader r, IProgress<GameBoxReadProgress>? progress, ILogger? logger) where T : CMwNod
     {
-        return ParseEnumerable<T>(r, count: r.ReadInt32());
+        return ParseEnumerable<T>(r, count: r.ReadInt32(), progress, logger);
     }
 
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal static IList<T?> ParseList<T>(GameBoxReader r) where T : CMwNod
+    internal static IList<T?> ParseList<T>(GameBoxReader r, IProgress<GameBoxReadProgress>? progress, ILogger? logger) where T : CMwNod
     {
         var count = r.ReadInt32();
-        return ParseEnumerable<T>(r, count).ToList(count);
+        return ParseEnumerable<T>(r, count, progress, logger).ToList(count);
     }
 
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal static T? Parse<T>(GameBoxReader r, uint? classId = null, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
+    internal static T? Parse<T>(GameBoxReader r, uint? classId, IProgress<GameBoxReadProgress>? progress, ILogger? logger) where T : CMwNod
     {
         if (!classId.HasValue)
             classId = r.ReadUInt32();
@@ -152,7 +153,7 @@ public class CMwNod
         var node = (T)constructor();
         node.SetIDAndChunks();
 
-        Parse(node, r, progress);
+        Parse(node, r, progress, logger);
 
         return node;
     }
@@ -160,13 +161,15 @@ public class CMwNod
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal static void Parse<T>(T node, GameBoxReader r, IProgress<GameBoxReadProgress>? progress = null) where T : CMwNod
+    internal static void Parse<T>(T node, GameBoxReader r, IProgress<GameBoxReadProgress>? progress, ILogger? logger) where T : CMwNod
     {
         var stopwatch = Stopwatch.StartNew();
 
         node.GBX = r.Body?.GBX;
 
         var type = node.GetType();
+
+        using var scope = logger?.BeginScope("{name}", type.Name);
 
         uint? previousChunkId = null;
 
@@ -177,7 +180,7 @@ public class CMwNod
         {
             if (canSeek && stream.Position + 4 > stream.Length)
             {
-                Debug.WriteLine($"Unexpected end of the stream: {stream.Position}/{stream.Length}");
+                logger?.LogDebug("Unexpected end of the stream: {position}/{length}", stream.Position, stream.Length);
                 var bytes = r.ReadBytes((int)(stream.Length - stream.Position));
                 break;
             }
@@ -189,24 +192,11 @@ public class CMwNod
                 break;
             }
 
-            var logChunk = new StringBuilder("[")
-                .Append(node.ClassName)
-                .Append("] 0x")
-                .Append(chunkId.ToString("X8"));
+            var progressPercentage = (float)stream.Position / stream.Length;
 
-            if (canSeek) // Decompressed body can always seek
-            {
-                logChunk.Append(" (")
-                    .Append(((float)stream.Position / stream.Length).ToString("0.00%"))
-                    .Append(')');
-            }
-
-            if (node.GBX is null || !node.GBX.ID.HasValue || Remap(node.GBX.ID.Value) != node.ID)
-            {
-                logChunk.Insert(0, "~ ");
-            }
-
-            Log.Write(logChunk.ToString());
+            logger?.LogDebug("0x{chunk} ({progress})",
+                chunkId.ToString("X8"),
+                progressPercentage.ToString("0.00%"));
 
             Chunk chunk;
 
@@ -230,12 +220,6 @@ public class CMwNod
                     {
                         break;
                     }
-
-                    var logChunkError = $"[{node.ClassName}] 0x{chunkId:X8} ERROR (wrong chunk format or unknown unskippable chunk)";
-                    if (node.GBX is not null && node.GBX.ID.HasValue && Remap(node.GBX.ID.Value) == node.ID)
-                        Log.Write(logChunkError, ConsoleColor.Red);
-                    else
-                        Log.Write("~ " + logChunkError, ConsoleColor.Red);
 
 #if DEBUG
                     // Read the rest of the body
@@ -377,7 +361,7 @@ public class CMwNod
                     }
                     else
                     {
-                        var unknown = new GameBoxWriter(c.Unknown);
+                        var unknown = new GameBoxWriter(c.Unknown, logger: logger);
                         var unknownData = r.ReadUntilFacade().ToArray();
                         unknown.WriteBytes(unknownData);
                     }
@@ -408,17 +392,7 @@ public class CMwNod
 
         stopwatch.Stop();
 
-        var logNodeCompletion = new StringBuilder("[")
-            .Append(node.ClassName)
-            .Append("] DONE! (")
-            .Append(stopwatch.Elapsed.TotalMilliseconds)
-            .Append("ms)")
-            .ToString();
-
-        if (node.GBX is not null && node.GBX.ID.HasValue == true && Remap(node.GBX.ID.Value) == node.ID)
-            Log.Write(logNodeCompletion, ConsoleColor.Green);
-        else
-            Log.Write($"~ {logNodeCompletion}", ConsoleColor.Green);
+        logger?.LogDebug("[{className}] DONE! ({time}ms)", node.ClassName, stopwatch.Elapsed.TotalMilliseconds);
     }
 
     public void Read(GameBoxReader r)
@@ -426,7 +400,7 @@ public class CMwNod
         throw new NotImplementedException($"Node doesn't support Read.");
     }
 
-    public void Write(GameBoxWriter w, IDRemap remap = IDRemap.Latest)
+    public void Write(GameBoxWriter w, IDRemap remap = default, ILogger? logger = null)
     {
         var stopwatch = Stopwatch.StartNew();
 
@@ -441,11 +415,10 @@ public class CMwNod
         {
             counter++;
 
-            var logChunk = $"[{ClassName}] 0x{chunk.ID:X8} ({(float)counter / Chunks.Count:0.00%})";
-            if (GBX is not null && GBX.ID.HasValue == true && GBX.ID.Value == ID)
-                Log.Write(logChunk);
-            else
-                Log.Write($"~ {logChunk}");
+            logger?.LogDebug("[{className}] 0x{chunkId} ({progressPercentage})",
+                ClassName,
+                chunk.ID.ToString("X8"),
+                ((float)counter / Chunks.Count).ToString("0.00%"));
 
             chunk.Node = this;
             chunk.Unknown.Position = 0;
@@ -457,7 +430,7 @@ public class CMwNod
             }
 
             using var ms = new MemoryStream();
-            using var msW = new GameBoxWriter(ms, w.Body, w.Lookbackable);
+            using var msW = new GameBoxWriter(ms, w.Body, w.Lookbackable, logger);
             var rw = new GameBoxReaderWriter(msW);
 
             try
@@ -495,11 +468,7 @@ public class CMwNod
 
         stopwatch.Stop();
 
-        var logNodeCompletion = $"[{ClassName}] DONE! ({stopwatch.Elapsed.TotalMilliseconds}ms)";
-        if (GBX is not null && GBX.ID.HasValue == true && GBX.ID.Value == ID)
-            Log.Write(logNodeCompletion, ConsoleColor.Green);
-        else
-            Log.Write($"~ {logNodeCompletion}", ConsoleColor.Green);
+        logger?.LogDebug("[{className}] DONE! ({time}ms)", ClassName, stopwatch.Elapsed.TotalMilliseconds);
     }
 
     private static bool IsIgnorableChunk(Chunk chunk)

@@ -1,5 +1,4 @@
-﻿using GBX.NET.Extensions;
-using System.Text;
+﻿using System.Text;
 
 namespace GBX.NET;
 
@@ -22,13 +21,13 @@ public class GameBoxRefTable
         Files = new List<File>();
     }
 
-    internal void Read(GameBoxReader reader)
+    internal void Read(GameBoxReader reader, ILogger? logger)
     {
         var numFiles = reader.ReadInt32(); // With this, number of files value can be optimized
 
         if (numFiles <= 0)
         {
-            Log.Write("No external nodes found, reference table completed.", ConsoleColor.Green);
+            logger?.LogDebug("No external nodes found, reference table completed.");
             return;
         }
 

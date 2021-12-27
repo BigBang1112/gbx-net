@@ -47,14 +47,14 @@ public class CGameGhost : CMwNod
 
             if (exception is null)
             {
-                Log.Write("Ghost data faulted without an exception", ConsoleColor.Yellow);
+                //Log.Write("Ghost data faulted without an exception", ConsoleColor.Yellow);
                 return;
             }
 
-            Log.Write($"\nExceptions while reading ghost data: ({exception.InnerExceptions.Count})", ConsoleColor.Yellow);
+            //Log.Write($"\nExceptions while reading ghost data: ({exception.InnerExceptions.Count})", ConsoleColor.Yellow);
 
-            foreach (var ex in exception.InnerExceptions)
-                Log.Write(ex.ToString());
+            //foreach (var ex in exception.InnerExceptions)
+            //    Log.Write(ex.ToString());
         };
     }
 

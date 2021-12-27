@@ -49,7 +49,7 @@ public class GameBoxRefTableTests
 
         using var reader = new GameBoxReader(ms);
 
-        refTable.Read(reader);
+        refTable.Read(reader, logger: null);
 
         var actualAncestorLevel = refTable.AncestorLevel;
         var actualFiles = JsonSerializer.Serialize(refTable.Files, jsonSeralizerOptions);

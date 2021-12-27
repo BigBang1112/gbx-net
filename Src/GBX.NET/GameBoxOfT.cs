@@ -184,7 +184,7 @@ public class GameBox<T> : GameBox where T : CMwNod
         Node.DiscoverAllChunks();
     }
 
-    protected override bool ProcessHeader(IProgress<GameBoxReadProgress>? progress)
+    protected override bool ProcessHeader(IProgress<GameBoxReadProgress>? progress, ILogger? logger)
     {
         if (ID.HasValue && ID != typeof(T).GetCustomAttribute<NodeAttribute>()?.ID)
         {
@@ -193,17 +193,16 @@ public class GameBox<T> : GameBox where T : CMwNod
             throw new InvalidCastException($"GBX with ID 0x{ID:X8} ({name}) can't be casted to GameBox<{typeof(T).Name}>.");
         }
 
-        Log.Write("Working out the header chunks...");
+        logger?.LogDebug("Working out the header chunks...");
 
         try
         {
-            Header.Read(Header.UserData, progress);
-            Log.Write("Header chunks parsed without any exceptions.", ConsoleColor.Green);
+            Header.Read(Header.UserData, progress, logger);
+            logger?.LogDebug("Header chunks parsed without any exceptions.");
         }
         catch (Exception e)
         {
-            Log.Write("Header chunks parsed with exceptions.", ConsoleColor.Red);
-            Log.Write(e.ToString(), ConsoleColor.Red);
+            logger?.LogWarning(e, "Header chunks parsed with exceptions.");
         }
 
         progress?.Report(new GameBoxReadProgress(GameBoxReadProgressStage.HeaderUserData, 1, this));
@@ -215,12 +214,12 @@ public class GameBox<T> : GameBox where T : CMwNod
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    protected internal override bool ReadBody(GameBoxReader reader, IProgress<GameBoxReadProgress>? progress, bool readUncompressedBodyDirectly)
+    protected internal override bool ReadBody(GameBoxReader reader, IProgress<GameBoxReadProgress>? progress, bool readUncompressedBodyDirectly, ILogger? logger)
     {
         if (Body is null)
             return false;
 
-        Log.Write("Reading the body...");
+        logger?.LogDebug("Reading the body...");
 
         switch (Header.CompressionOfBody)
         {
@@ -229,26 +228,26 @@ public class GameBox<T> : GameBox where T : CMwNod
                 var compressedSize = reader.ReadInt32();
 
                 var data = reader.ReadBytes(compressedSize);
-                Body.Read(data, uncompressedSize, progress);
+                Body.Read(data, uncompressedSize, progress, logger);
 
                 break;
             case GameBoxCompression.Uncompressed:
                 if (readUncompressedBodyDirectly)
                 {
-                    Body.Read(reader, progress);
+                    Body.Read(reader, progress, logger);
                 }
                 else
                 {
                     var uncompressedData = reader.ReadToEnd();
-                    Body.Read(uncompressedData, progress);
+                    Body.Read(uncompressedData, progress, logger);
                 }
                 break;
             default:
-                Log.Write("Body can't be read!", ConsoleColor.Red);
+                logger?.LogError("Body can't be read! Compression type is unknown.");
                 return false;
         }
 
-        Log.Write("Body completed!");
+        logger?.LogDebug("Body chunks parsed without major exceptions.");
 
         return true;
     }
@@ -257,7 +256,7 @@ public class GameBox<T> : GameBox where T : CMwNod
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="MissingLzoException"></exception>
     /// <exception cref="HeaderOnlyParseLimitationException">Writing is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
-    internal void Write(Stream stream, IDRemap remap)
+    internal void Write(Stream stream, IDRemap remap, ILogger? logger)
     {
         if (Body is null)
             return;
@@ -269,7 +268,7 @@ public class GameBox<T> : GameBox where T : CMwNod
         (Body as ILookbackable).IdStrings.Clear();
         Body.AuxilaryNodes.Clear();
 
-        Log.Write("Writing the body...");
+        logger?.LogDebug("Writing the body...");
 
         using var ms = new MemoryStream();
         using var bodyW = new GameBoxWriter(ms, Body);
@@ -292,14 +291,14 @@ public class GameBox<T> : GameBox where T : CMwNod
             bodyW.WriteBytes(Body.RawData);
         }
 
-        Log.Write("Writing the header...");
+        logger?.LogDebug("Writing the header...");
 
         using var headerW = new GameBoxWriter(stream, lookbackable: Header);
         (Header as ILookbackable).IdWritten = false;
         (Header as ILookbackable).IdStrings.Clear();
-        Header.Write(headerW, Body.AuxilaryNodes.Count + 1, remap);
+        Header.Write(headerW, Body.AuxilaryNodes.Count + 1, remap, logger);
 
-        Log.Write("Writing the reference table...");
+        logger?.LogDebug("Writing the reference table...");
 
         if (RefTable is null)
             headerW.Write(0);
@@ -314,13 +313,14 @@ public class GameBox<T> : GameBox where T : CMwNod
     /// </summary>
     /// <param name="stream">Any kind of stream that supports writing.</param>
     /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
+    /// <param name="logger">Logger.</param>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="MissingLzoException"></exception>
     /// <exception cref="HeaderOnlyParseLimitationException">Saving is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
-    public void Save(Stream stream, IDRemap remap = default)
+    public void Save(Stream stream, IDRemap remap = default, ILogger? logger = null)
     {
-        Write(stream, remap);
+        Write(stream, remap, logger);
     }
 
     /// <summary>
@@ -328,6 +328,7 @@ public class GameBox<T> : GameBox where T : CMwNod
     /// </summary>
     /// <param name="fileName">Relative or absolute file path. Null will pick the <see cref="GameBox.FileName"/> value instead.</param>
     /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
+    /// <param name="logger">Logger.</param>
     /// <exception cref="PropertyNullException"><see cref="GameBox.FileName"/> is null.</exception>
     /// <exception cref="ArgumentException"><paramref name="fileName"/> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by System.IO.Path.InvalidPathChars.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="fileName"/> is null.</exception>
@@ -339,7 +340,7 @@ public class GameBox<T> : GameBox where T : CMwNod
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="MissingLzoException"></exception>
     /// <exception cref="HeaderOnlyParseLimitationException">Saving is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
-    public void Save(string? fileName = default, IDRemap remap = default)
+    public void Save(string? fileName = default, IDRemap remap = default, ILogger? logger = null)
     {
         fileName ??= (FileName ?? throw new PropertyNullException(nameof(FileName)));
 
@@ -347,7 +348,7 @@ public class GameBox<T> : GameBox where T : CMwNod
 
         Save(fs, remap);
 
-        Log.Write($"GBX file {fileName} saved.");
+        logger?.LogDebug("GBX file {fileName} saved.", fileName);
     }
 
     /// <summary>

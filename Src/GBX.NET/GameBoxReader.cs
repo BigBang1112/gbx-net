@@ -1,6 +1,4 @@
-﻿using GBX.NET.Extensions;
-using System.Diagnostics;
-using System.Numerics;
+﻿using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -11,6 +9,8 @@ namespace GBX.NET;
 /// </summary>
 public class GameBoxReader : BinaryReader
 {
+    private readonly ILogger? logger;
+
     /// <summary>
     /// Body used to store node references.
     /// </summary>
@@ -27,10 +27,13 @@ public class GameBoxReader : BinaryReader
     /// <param name="input">The input stream.</param>
     /// <param name="body">Body used to store node references. If null, <see cref="CMwNod"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
     /// <param name="lookbackable">A specified object to look into for the list of already read data. If null while <paramref name="body"/> is null, <see cref="Id"/> or <see cref="Ident"/> cannot be read and <see cref="PropertyNullException"/> can be thrown. If null while <paramref name="body"/> is not null, the body is used as <see cref="ILookbackable"/> instead.</param>
-    public GameBoxReader(Stream input, GameBoxBody? body = null, ILookbackable? lookbackable = null) : base(input, Encoding.UTF8, true)
+    /// <param name="logger">Logger.</param>
+    public GameBoxReader(Stream input, GameBoxBody? body = null, ILookbackable? lookbackable = null, ILogger? logger = null) : base(input, Encoding.UTF8, true)
     {
         Body = body;
         Lookbackable = lookbackable ?? body;
+
+        this.logger = logger;
     }
 
     /// <summary>
@@ -397,7 +400,7 @@ public class GameBoxReader : BinaryReader
 
         // If index is 0 or bigger and the node wasn't read yet, or is null
         if (index >= 0 && (!body.AuxilaryNodes.ContainsKey(index) || body.AuxilaryNodes[index] == null))
-            node = CMwNod.Parse<T>(this)!;
+            node = CMwNod.Parse<T>(this, classId: null, progress: null, logger)!;
 
         if (node is null)
             body.AuxilaryNodes.TryGetValue(index, out node); // Tries to get the available node from index

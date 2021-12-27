@@ -23,63 +23,63 @@ public class GameBoxHeaderInfo
     }
 
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    public GameBoxHeaderInfo(GameBoxReader reader)
+    public GameBoxHeaderInfo(GameBoxReader reader, ILogger? logger)
     {
         UserData = Array.Empty<byte>();
-        Read(reader);
+        Read(reader, logger);
     }
 
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    internal bool Read(GameBoxReader reader)
+    internal bool Read(GameBoxReader reader, ILogger? logger)
     {
         if (!reader.HasMagic(GameBox.Magic))
         {
-            Log.Write("GBX magic missing! Corrupted file or not a GBX file.", ConsoleColor.Red);
+            logger?.LogError("GBX magic missing! Corrupted file or not a GBX file.");
             return false;
         }
 
-        Log.Write("GBX recognized!", ConsoleColor.Green);
+        logger?.LogDebug("GBX recognized!");
 
         Version = reader.ReadInt16();
-        Log.Write("- Version: " + Version.ToString());
+        logger?.LogDebug("Version: {version}", Version);
 
         if (Version >= 3)
         {
             ByteFormat = (GameBoxByteFormat)reader.ReadByte();
-            Log.Write("- Byte format: " + ByteFormat.ToString());
+            logger?.LogDebug("Byte format: {format}", ByteFormat);
 
             if (ByteFormat == GameBoxByteFormat.Text)
                 throw new TextFormatNotSupportedException();
 
             CompressionOfRefTable = (GameBoxCompression)reader.ReadByte();
-            Log.Write("- Ref. table compression: " + CompressionOfRefTable.ToString());
+            logger?.LogDebug("Ref. table compression: {compression}", CompressionOfRefTable);
 
             CompressionOfBody = (GameBoxCompression)reader.ReadByte();
-            Log.Write("- Body compression: " + CompressionOfBody.ToString());
+            logger?.LogDebug("Body compression: {compression}", CompressionOfBody);
 
             if (Version >= 4)
             {
                 UnknownByte = (char)reader.ReadByte();
-                Log.Write("- Unknown byte: " + UnknownByte.ToString());
+                logger?.LogDebug("Unknown byte: {byte}", UnknownByte);
             }
 
             ID = CMwNod.Remap(reader.ReadUInt32());
-            Log.Write("- Class ID: 0x" + ID.Value.ToString("X8"));
+            logger?.LogDebug("Class ID: 0x{classId}", ID.Value.ToString("X8"));
 
             if (Version >= 6)
             {
                 var userDataSize = reader.ReadInt32();
-                Log.Write($"- User data size: {(userDataSize / 1024f).ToString()} kB");
+                logger?.LogDebug("User data size: {size} kB", userDataSize / 1024f);
 
                 if (userDataSize > 0)
                     UserData = reader.ReadBytes(userDataSize);
             }
 
             NumNodes = reader.ReadInt32();
-            Log.Write("- Number of nodes: " + NumNodes.ToString());
+            logger?.LogDebug("Number of nodes: {numNodes}", NumNodes);
         }
 
-        Log.Write("Header completed!", ConsoleColor.Green);
+        logger?.LogDebug("Header completed!");
 
         return true;
     }

@@ -30,9 +30,9 @@ public sealed class CSceneMobil : CSceneObject
     [Chunk(0x0A011005)]
     public class Chunk0A011005 : Chunk<CSceneMobil>
     {
-        public override void Read(CSceneMobil n, GameBoxReader r)
+        public override void Read(CSceneMobil n, GameBoxReader r, ILogger? logger)
         {
-            n.item = Parse<CHmsItem>(r, 0x06003000)!;
+            n.item = Parse<CHmsItem>(r, 0x06003000, progress: null, logger)!;
             var gds = r.ReadBytes(14);
             var gdshsd = r.ReadInt32();
             var str = r.ReadString();

@@ -195,12 +195,12 @@ public class CGameCtnBlockInfo : CGameCtnCollector
     [Chunk(0x0304E023)]
     public class Chunk0304E023 : Chunk<CGameCtnBlockInfo>
     {
-        public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
+        public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw, ILogger? logger)
         {
             if (rw.Mode == GameBoxReaderWriterMode.Read)
             {
-                n.VariantBaseGround = Parse<CGameCtnBlockInfoVariantGround>(rw.Reader!, 0x0315C000);
-                n.VariantBaseAir = Parse<CGameCtnBlockInfoVariantAir>(rw.Reader!, 0x0315D000);
+                n.VariantBaseGround = Parse<CGameCtnBlockInfoVariantGround>(rw.Reader!, 0x0315C000, progress: null, logger);
+                n.VariantBaseAir = Parse<CGameCtnBlockInfoVariantAir>(rw.Reader!, 0x0315D000, progress: null, logger);
             }
         }
     }
