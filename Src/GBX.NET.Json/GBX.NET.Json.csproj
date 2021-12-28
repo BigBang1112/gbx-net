@@ -9,10 +9,10 @@
 		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 
-		<Version>0.1.4</Version>
-		<PackageReleaseNotes>Update to C# 10.</PackageReleaseNotes>
+		<Version>0.1.5</Version>
+		<PackageReleaseNotes></PackageReleaseNotes>
 
-		<TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;net48</TargetFrameworks>
+		<TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
 		<LangVersion>10</LangVersion>
 		<Platforms>AnyCPU;x64;x86</Platforms>
 

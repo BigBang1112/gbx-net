@@ -10,10 +10,10 @@
 		<PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 
-		<Version>1.0.1</Version>
+		<Version>1.0.2</Version>
 		<PackageReleaseNotes>Update to C# 10.</PackageReleaseNotes>
 
-		<TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;net48</TargetFrameworks>
+		<TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
 		<LangVersion>10</LangVersion>
 		<Platforms>AnyCPU;x64;x86</Platforms>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>

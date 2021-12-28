@@ -11,10 +11,10 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		
-		<Version>0.14.2</Version>
+		<Version>0.15.0</Version>
 		<PackageReleaseNotes></PackageReleaseNotes>
 		
-		<TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;net48</TargetFrameworks>
+		<TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
 		<LangVersion>10</LangVersion>
 		<Platforms>AnyCPU;x64;x86</Platforms>
 		
@@ -79,8 +79,9 @@
 	  <PackageReference Include="TmEssentials" Version="2.0.0" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+	<ItemGroup Condition="'$(TargetFramework)' == 'net462'">
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
+		<PackageReference Include="System.ValueTuple" Version="4.5.0" />
 	</ItemGroup>
 
 </Project>
