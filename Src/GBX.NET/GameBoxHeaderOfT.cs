@@ -143,9 +143,12 @@ public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
                     ((IHeaderChunk)headerChunk).Discovered = true;
                 chunk = (Chunk)headerChunk;
 
-#if DEBUG
-                chunk.Debugger.RawData = d;
-#endif
+                if (GameBox.Debug)
+                {
+                    chunk.Debugger ??= new();
+                    chunk.Debugger.RawData = d;
+                }
+
                 if (d is not null)
                 {
                     using var msChunk = new MemoryStream(d);
