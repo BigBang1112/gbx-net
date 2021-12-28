@@ -117,7 +117,7 @@ public class CPlugTree : CPlug
             rw.NodeRef<CPlugVisual>(ref n.visual); // CPlugVisual?
             rw.NodeRef<CPlug>(ref n.shader, ref n.shaderIndex); // definitely Shader, can have CPlugShaderApply or CPlugMaterial
             rw.NodeRef<CPlugSurfaceGeom>(ref n.surface); // CPlugSurface? CPlugTreeGenerator?
-            rw.NodeRef<CPlugTreeGenerator>(ref n.generator); // ???
+            rw.NodeRef<CPlugTreeGenerator>(ref n.generator);
         }
     }
 
