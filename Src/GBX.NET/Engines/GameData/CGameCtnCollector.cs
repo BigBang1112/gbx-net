@@ -190,6 +190,10 @@ public class CGameCtnCollector : CMwNod
             set => version = value;
         }
 
+        public int U01;
+        public int U02;
+        public int U03;
+
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
             rw.Ident(ref n.ident);
@@ -197,13 +201,13 @@ public class CGameCtnCollector : CMwNod
             rw.String(ref n.pageName!);
 
             if (version == 5)
-                rw.Int32();
+                rw.Int32(ref U01);
             if (version >= 4)
-                rw.Int32();
+                rw.Int32(ref U02);
 
             if (version >= 3)
             {
-                rw.Int32();
+                rw.Int32(ref U03);
                 n.CatalogPosition = rw.Int16((short)n.CatalogPosition);
             }
 
@@ -291,9 +295,11 @@ public class CGameCtnCollector : CMwNod
     [Chunk(0x2E001006)]
     public class Chunk2E001006B : Chunk<CGameCtnCollector>
     {
+        public int U01;
+
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.Int32();
+            rw.Int32(ref U01);
         }
     }
 
@@ -307,14 +313,21 @@ public class CGameCtnCollector : CMwNod
     [Chunk(0x2E001007)]
     public class Chunk2E001007 : Chunk<CGameCtnCollector>
     {
+        public bool U01;
+        public bool U02;
+        public int U03;
+        public int U04;
+        public int U05;
+        public int U06;
+
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.Int32();
-            rw.Int32();
-            rw.Int32();
-            rw.Int32();
-            rw.Int32();
-            rw.Int32();
+            rw.Boolean(ref U01);
+            rw.Boolean(ref U02);
+            rw.Int32(ref U03);
+            rw.Int32(ref U04);
+            rw.Int32(ref U05);
+            rw.Int32(ref U06);
         }
     }
 
@@ -353,9 +366,12 @@ public class CGameCtnCollector : CMwNod
         {
             rw.String(ref n.pageName!);
 
-            var hasIconFid = rw.Boolean(n.IconFid != null);
+            var hasIconFid = rw.Boolean(n.IconFid is not null);
+
             if (hasIconFid)
+            {
                 n.IconFid = rw.NodeRef(n.IconFid);
+            }
 
             rw.Id(ref U01);
         }
