@@ -116,8 +116,16 @@ public abstract class CPlugVisual : CPlug
             n.texCoords = r.ReadArray(U03, r =>
             {
                 var u06 = r.ReadInt32();
-                var array = r.ReadArray(n.count, r => r.ReadVec2());
-                return array;
+
+                if (u06 == 0)
+                {
+                    var array = r.ReadArray(n.count, r => r.ReadVec2());
+                    return array;
+                }
+
+                // I don't understand this much
+                var u02 = r.ReadArray(n.count, r => r.ReadVec3());
+                return Array.Empty<Vec2>();
             });
 
             U06 = r.ReadInt32();
