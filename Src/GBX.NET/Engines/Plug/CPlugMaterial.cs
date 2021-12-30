@@ -45,6 +45,40 @@ public class CPlugMaterial : CPlug
         }
     }
 
+    [Chunk(0x09079002)]
+    public class Chunk09079002 : Chunk<CPlugMaterial>
+    {
+        public int U01;
+
+        public override void ReadWrite(CPlugMaterial n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01); // DoData
+        }
+    }
+
+    [Chunk(0x09079004)]
+    public class Chunk09079004 : Chunk<CPlugMaterial>
+    {
+        public override void Read(CPlugMaterial n, GameBoxReader r)
+        {
+            n.deviceMaterials = r.ReadArray(r =>
+            {
+                var u01 = r.ReadInt16();
+                var u02 = r.ReadInt16();
+                var u03 = r.ReadInt32();
+
+                var shader1 = r.ReadNodeRef<CPlugShader>();
+
+                return new SDeviceMat(n.GBX, shader1)
+                {
+                    U01 = u01,
+                    U02 = u02,
+                    U03 = u03
+                };
+            });
+        }
+    }
+
     [Chunk(0x09079007)]
     public class Chunk09079007 : Chunk<CPlugMaterial>
     {
@@ -131,6 +165,13 @@ public class CPlugMaterial : CPlug
         {
             get => shader3 = Gbx?.RefTable?.GetNode(shader3, shader3Index, Gbx.FileName) as CPlugShader;
             set => shader3 = value;
+        }
+
+        public SDeviceMat(GameBox? gbx, CPlugShader shader1)
+        {
+            Gbx = gbx;
+
+            this.shader1 = shader1;
         }
 
         public SDeviceMat(GameBox? gbx, int shader1Index, int shader2Index, int shader3Index)
