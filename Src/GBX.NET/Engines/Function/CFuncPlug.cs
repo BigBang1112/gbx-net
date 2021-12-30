@@ -37,6 +37,17 @@ public abstract class CFuncPlug : CFunc
 
     }
 
+    [Chunk(0x0500B003)]
+    public class Chunk0500B003 : Chunk<CFuncPlug>
+    {
+        public override void ReadWrite(CFuncPlug n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref n.period);
+            rw.Single(ref n.phase);
+            rw.Boolean(ref n.autoCreateMotion);
+        }
+    }
+
     [Chunk(0x0500B004)]
     public class Chunk0500B004 : Chunk<CFuncPlug>
     {
