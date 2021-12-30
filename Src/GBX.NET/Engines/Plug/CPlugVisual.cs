@@ -6,9 +6,9 @@
 [Node(0x09006000), WritingNotSupported]
 public abstract class CPlugVisual : CPlug
 {
-    protected int flags;
-    protected int count;
-    protected Vec2[][]? texCoords;
+    private int flags;
+    private int count;
+    private Vec2[][]? texCoords;
 
     public int Flags
     {
@@ -94,6 +94,37 @@ public abstract class CPlugVisual : CPlug
         }
     }
 
+    [Chunk(0x09006008)]
+    public class Chunk09006008 : Chunk<CPlugVisual>
+    {
+        public bool U01;
+        public bool U02;
+        public int U03;
+        public int U04;
+        public int U05;
+        public int U06;
+        public int U07;
+
+        public override void Read(CPlugVisual n, GameBoxReader r)
+        {
+            U01 = r.ReadBoolean(); // IsGeometryStatic?
+            U02 = r.ReadBoolean(); // IsIndexationStatic?
+            U03 = r.ReadInt32(); //
+            U04 = r.ReadInt32();
+            n.count = r.ReadInt32();
+
+            n.texCoords = r.ReadArray(U03, r =>
+            {
+                var u06 = r.ReadInt32();
+                var array = r.ReadArray(n.count, r => r.ReadVec2());
+                return array;
+            });
+
+            U06 = r.ReadInt32();
+            U07 = r.ReadInt32();
+        }
+    }
+
     [Chunk(0x09006009)]
     public class Chunk09006009 : Chunk<CPlugVisual>
     {
@@ -115,8 +146,6 @@ public abstract class CPlugVisual : CPlug
         public int U05;
         public int U06;
         public int U07;
-        public int U08;
-        public int U09;
 
         public override void Read(CPlugVisual n, GameBoxReader r)
         {
@@ -134,8 +163,8 @@ public abstract class CPlugVisual : CPlug
                 return array;
             });
 
-            U08 = r.ReadInt32();
-            U09 = r.ReadInt32();
+            U06 = r.ReadInt32();
+            U07 = r.ReadInt32();
         }
     }
 
