@@ -20,6 +20,15 @@ public abstract class CPlugVisualIndexed : CPlugVisual3D
         indices = null!;
     }
 
+    [Chunk(0x0906A000)]
+    public class Chunk0906A000 : Chunk<CPlugVisualIndexed>
+    {
+        public override void ReadWrite(CPlugVisualIndexed n, GameBoxReaderWriter rw)
+        {
+            rw.Array<ushort>(ref n.indices!);
+        }
+    }
+
     [Chunk(0x0906A001)]
     public class Chunk0906A001 : Chunk<CPlugVisualIndexed>
     {
