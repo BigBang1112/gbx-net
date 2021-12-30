@@ -107,6 +107,23 @@ public class CPlugTree : CPlug
         }
     }
 
+    [Chunk(0x0904F015)]
+    public class Chunk0904F015 : Chunk<CPlugTree>
+    {
+        public int U01;
+        public float[]? U02;
+
+        public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01); // DoData
+
+            if ((U01 & 4) != 0)
+            {
+                rw.Array<float>(ref U02, 12); // Iso4
+            }
+        }
+    }
+
     [Chunk(0x0904F016)]
     public class Chunk0904F016 : Chunk<CPlugTree>
     {
