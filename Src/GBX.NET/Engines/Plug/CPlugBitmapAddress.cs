@@ -11,6 +11,28 @@ public class CPlugBitmapAddress : CPlugBitmapSampler
 
     }
 
+    [Chunk(0x09047002)]
+    public class Chunk09047002 : Chunk<CPlugBitmapAddress>
+    {
+        public int U01;
+
+        public override void ReadWrite(CPlugBitmapAddress n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01); // SBitmapElemToPack array?
+        }
+    }
+
+    [Chunk(0x09047005)]
+    public class Chunk09047005 : Chunk<CPlugBitmapAddress>
+    {
+        public byte[]? U01;
+
+        public override void ReadWrite(CPlugBitmapAddress n, GameBoxReaderWriter rw)
+        {
+            rw.Bytes(ref U01, count: 21);
+        }
+    }
+
     [Chunk(0x09047007)]
     public class Chunk09047007 : Chunk<CPlugBitmapAddress>
     {
