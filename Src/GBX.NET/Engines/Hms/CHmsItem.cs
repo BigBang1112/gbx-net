@@ -28,6 +28,19 @@ public class CHmsItem : CMwNod
         }
     }
 
+    [Chunk(0x06003010)]
+    public class Chunk06003010 : Chunk<CHmsItem>
+    {
+        private ulong U01;
+        private short U02;
+
+        public override void ReadWrite(CHmsItem n, GameBoxReaderWriter rw)
+        {
+            rw.UInt64(ref U01);
+            rw.Int16(ref U02);
+        }
+    }
+
     [Chunk(0x06003011)]
     public class Chunk06003011 : Chunk<CHmsItem>
     {
