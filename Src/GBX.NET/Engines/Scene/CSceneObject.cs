@@ -29,4 +29,15 @@ public abstract class CSceneObject : CMwNod
             rw.Int32(ref U01);
         }
     }
+
+    [Chunk(0x0A005004)]
+    public class Chunk0A005004 : Chunk<CSceneObject>
+    {
+        public int U01;
+
+        public override void ReadWrite(CSceneObject n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+        }
+    }
 }
