@@ -44,7 +44,7 @@ void ProcessFile(string fileName)
 {
     var node = GameBox.ParseNode<CPlugSolid>(fileName, logger: logger);
 
-    var tree = node.Tree;
+    var tree = node.Tree as CPlugTree;
 
     if (tree is null)
         return;
