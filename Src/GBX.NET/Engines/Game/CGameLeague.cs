@@ -9,6 +9,8 @@ public class CGameLeague : CMwNod
 {
     private string path;
     private string name;
+    private string description;
+    private string login;
     private Uri flagUrl;
 
     public string Path
@@ -23,6 +25,18 @@ public class CGameLeague : CMwNod
         set => name = value;
     }
 
+    public string Description
+    {
+        get => description;
+        set => description = value;
+    }
+
+    public string Login
+    {
+        get => login;
+        set => login = value;
+    }
+
     public Uri FlagUrl
     {
         get => flagUrl;
@@ -33,6 +47,8 @@ public class CGameLeague : CMwNod
     {
         path = null!;
         name = null!;
+        description = null!;
+        login = null!;
         flagUrl = null!;
     }
 
@@ -44,16 +60,14 @@ public class CGameLeague : CMwNod
     [Chunk(0x0308E001)]
     public class Chunk0308E001 : Chunk<CGameLeague>
     {
-        public int U01;
-        public int U02;
         public byte U03;
 
         public override void ReadWrite(CGameLeague n, GameBoxReaderWriter rw)
         {
             rw.String(ref n.path!);
             rw.String(ref n.name!);
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
+            rw.String(ref n.description!);
+            rw.String(ref n.login!);
             rw.Byte(ref U03);
             rw.Uri(ref n.flagUrl!);
         }
