@@ -2,8 +2,11 @@
 
 [Node(0x0304E000), WritingNotSupported]
 public abstract class CGameCtnBlockInfo : CGameCtnCollector
-{
+{ 
     private CGameCtnBlockUnitInfo[]? units;
+    private CGameCtnBlockUnitInfo[]? units2;
+    private CSceneMobil?[][]? mobils;
+    private CSceneMobil?[][]? mobils2;
     private bool isPillar;
 
     public enum EWayPointType
@@ -20,6 +23,24 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     {
         get => units;
         set => units = value;
+    }
+
+    public CGameCtnBlockUnitInfo[]? Units2
+    {
+        get => units2;
+        set => units2 = value;
+    }
+
+    public CSceneMobil?[][]? Mobils
+    {
+        get => mobils;
+        set => mobils = value;
+    }
+
+    public CSceneMobil?[][]? Mobils2
+    {
+        get => mobils2;
+        set => mobils2 = value;
     }
 
     public bool IsPillar
@@ -60,9 +81,6 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
         public int U06;
         public int U07;
         public CMwNod? U08;
-        public CMwNod?[]? U09;
-        public CMwNod?[][]? U10;
-        public CMwNod?[][]? U11;
         public byte U12;
         public int U13;
         public short U14;
@@ -78,18 +96,20 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
             U06 = r.ReadInt32();
             U07 = r.ReadInt32();
 
-            U08 = r.ReadNodeRef();
+            U08 = r.ReadNodeRef(); // null in every TMEDClassic
+
             n.units = r.ReadArray(r => r.ReadNodeRef<CGameCtnBlockUnitInfo>()!);
-            U09 = r.ReadArray(r => r.ReadNodeRef());
-            U10 = r.ReadArray(r =>
+            n.units2 = r.ReadArray(r => r.ReadNodeRef<CGameCtnBlockUnitInfo>()!);
+
+            n.mobils = r.ReadArray(r =>
             {
-                return r.ReadArray(r => r.ReadNodeRef());
+                return r.ReadArray(r => r.ReadNodeRef<CSceneMobil>()); // External refs to some mobils
             });
 
             // may not be it but could be
-            U11 = r.ReadArray(r =>
+            n.mobils2 = r.ReadArray(r =>
             {
-                return r.ReadArray(r => r.ReadNodeRef());
+                return r.ReadArray(r => r.ReadNodeRef<CSceneMobil>());
             });
 
             U12 = r.ReadByte();
