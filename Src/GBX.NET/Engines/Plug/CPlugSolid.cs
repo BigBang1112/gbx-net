@@ -6,11 +6,12 @@
 [Node(0x09005000), WritingNotSupported]
 public class CPlugSolid : CPlug
 {
-    private CPlugTree? tree;
+    private CPlug? tree;
+    private int? treeIndex;
 
-    public CPlugTree? Tree
+    public CPlug? Tree
     {
-        get => tree;
+        get => tree = GetNodeFromRefTable(tree, treeIndex) as CPlug;
         set => tree = value;
     }
 
@@ -160,7 +161,7 @@ public class CPlugSolid : CPlug
         {
             rw.Boolean(ref U01);
             rw.Boolean(ref U02);
-            rw.NodeRef<CPlugTree>(ref n.tree);
+            rw.NodeRef<CPlug>(ref n.tree, ref n.treeIndex);
         }
     }
 
