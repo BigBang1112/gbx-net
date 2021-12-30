@@ -14,16 +14,14 @@ public class CPlugShaderApply : CPlugShaderGeneric
         public int U01;
         public int U02;
         public int U03;
-        public CMwNod? U04;
-        public int U05;
+        public int U04;
 
         public override void ReadWrite(CPlugShaderApply n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref U01);
             rw.Int32(ref U02);
             rw.Int32(ref U03);
-            rw.NodeRef(ref U04);
-            rw.Int32(ref U05); // DoData
+            rw.Int32(ref U04); // DoData
         }
     }
 
