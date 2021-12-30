@@ -38,9 +38,9 @@ public abstract class CPlugVisual3D : CPlugVisual
 
         public override void Read(CPlugVisual3D n, GameBoxReader r)
         {
-            n.vertices = new Vertex[n.count];
+            n.vertices = new Vertex[n.Count];
 
-            for (int i = 0; i < n.count; i++)
+            for (int i = 0; i < n.Count; i++)
             {
                 n.vertices[i] = new Vertex(
                     position: r.ReadVec3(),
@@ -60,17 +60,17 @@ public abstract class CPlugVisual3D : CPlugVisual
     {
         public override void ReadWrite(CPlugVisual3D n, GameBoxReaderWriter rw)
         {
-            if ((char)n.flags < '\0') // wtf
+            if ((char)n.Flags < '\0') // wtf
             {
 
             }
 
-            if ((n.flags & 0x200000U) == 0)
+            if ((n.Flags & 0x200000U) == 0)
             {
 
             }
 
-            var wat = ~(n.flags >> 0x11) & 8 | 4;
+            var wat = ~(n.Flags >> 0x11) & 8 | 4;
 
             //var verts = rw.Reader.ReadArray(n.count-4, r => r.ReadVec4());
         }
