@@ -5,7 +5,7 @@
 /// </summary>
 /// <remarks>Information about a campaign.</remarks>
 [Node(0x03090000)]
-public sealed class CGameCtnCampaign : CMwNod
+public class CGameCtnCampaign : CMwNod
 {
     #region Fields
 
@@ -92,7 +92,7 @@ public sealed class CGameCtnCampaign : CMwNod
 
     #region Constructors
 
-    private CGameCtnCampaign()
+    protected CGameCtnCampaign()
     {
         mapGroups = null!;
     }

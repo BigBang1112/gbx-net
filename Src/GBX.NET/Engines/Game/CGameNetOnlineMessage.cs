@@ -13,7 +13,7 @@ public class CGameNetOnlineMessage : CMwNod
     public int Donation { get; set; }
     public DateTime Date { get; set; }
 
-    private CGameNetOnlineMessage()
+    protected CGameNetOnlineMessage()
     {
         ReceiverLogin = null!;
         SenderLogin = null!;

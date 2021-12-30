@@ -4,7 +4,7 @@
 /// MediaTracker block - Interface (0x03195000)
 /// </summary>
 [Node(0x03195000)]
-public sealed class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
+public class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {
     #region Fields
 
@@ -49,7 +49,7 @@ public sealed class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, CGameCtnMe
 
     #region Constructors
 
-    private CGameCtnMediaBlockInterface()
+    protected CGameCtnMediaBlockInterface()
     {
         manialink = null!;
     }

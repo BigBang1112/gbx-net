@@ -4,7 +4,7 @@
 /// Item placed on a map (0x03101000)
 /// </summary>
 [Node(0x03101000)]
-public sealed class CGameCtnAnchoredObject : CMwNod
+public class CGameCtnAnchoredObject : CMwNod
 {
     #region Fields
 
@@ -147,7 +147,7 @@ public sealed class CGameCtnAnchoredObject : CMwNod
 
     #region Constructors
 
-    private CGameCtnAnchoredObject()
+    protected CGameCtnAnchoredObject()
     {
         itemModel = null!;
     }

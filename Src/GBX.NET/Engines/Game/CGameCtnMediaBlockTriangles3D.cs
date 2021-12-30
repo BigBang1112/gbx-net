@@ -4,9 +4,9 @@
 /// MediaTracker block - 3D triangles (0x0304C000)
 /// </summary>
 [Node(0x0304C000)]
-public sealed class CGameCtnMediaBlockTriangles3D : CGameCtnMediaBlockTriangles
+public class CGameCtnMediaBlockTriangles3D : CGameCtnMediaBlockTriangles
 {
-    private CGameCtnMediaBlockTriangles3D()
+    protected CGameCtnMediaBlockTriangles3D()
     {
 
     }

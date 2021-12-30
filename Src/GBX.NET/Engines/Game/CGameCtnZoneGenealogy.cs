@@ -4,7 +4,7 @@
 /// Zone genealogy (0x0311D000)
 /// </summary>
 [Node(0x0311D000)]
-public sealed class CGameCtnZoneGenealogy : CMwNod
+public class CGameCtnZoneGenealogy : CMwNod
 {
     #region Fields
 
@@ -55,7 +55,7 @@ public sealed class CGameCtnZoneGenealogy : CMwNod
 
     #region Constructors
 
-    private CGameCtnZoneGenealogy()
+    protected CGameCtnZoneGenealogy()
     {
 
     }

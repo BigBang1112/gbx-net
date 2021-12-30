@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x03033000)]
-public sealed class CGameCtnCollection : CMwNod
+public class CGameCtnCollection : CMwNod
 {
     public byte CollectionID { get; set; }
     public byte CollectionPackMask { get; set; }
@@ -13,7 +13,7 @@ public sealed class CGameCtnCollection : CMwNod
 
     #region Constructors
 
-    private CGameCtnCollection()
+    protected CGameCtnCollection()
     {
 
     }

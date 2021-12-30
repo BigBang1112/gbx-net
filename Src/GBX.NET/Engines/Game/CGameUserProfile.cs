@@ -4,9 +4,9 @@
 /// User profile (0x031CC000)
 /// </summary>
 [Node(0x031CC000)]
-public sealed class CGameUserProfile : CMwNod
+public class CGameUserProfile : CMwNod
 {
-    private CGameUserProfile()
+    protected CGameUserProfile()
     {
 
     }

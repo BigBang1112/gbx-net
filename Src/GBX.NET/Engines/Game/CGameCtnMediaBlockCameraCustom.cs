@@ -4,7 +4,7 @@
 /// MediaTracker block - Custom camera (0x030A2000)
 /// </summary>
 [Node(0x030A2000)]
-public sealed class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasKeys
+public class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -31,7 +31,7 @@ public sealed class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, C
 
     #region Constructors
 
-    private CGameCtnMediaBlockCameraCustom()
+    protected CGameCtnMediaBlockCameraCustom()
     {
         keys = null!;
     }

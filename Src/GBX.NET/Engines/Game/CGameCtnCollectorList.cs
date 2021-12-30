@@ -5,7 +5,7 @@
 /// </summary>
 /// <remarks>A list of puzzle pieces.</remarks>
 [Node(0x0301B000)]
-public sealed class CGameCtnCollectorList : CMwNod
+public class CGameCtnCollectorList : CMwNod
 {
     #region Fields
 
@@ -26,7 +26,7 @@ public sealed class CGameCtnCollectorList : CMwNod
 
     #region Constructors
 
-    private CGameCtnCollectorList()
+    protected CGameCtnCollectorList()
     {
         collectorStock = null!;
     }

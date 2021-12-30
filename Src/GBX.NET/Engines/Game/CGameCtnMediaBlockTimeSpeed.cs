@@ -4,7 +4,7 @@
 /// MediaTracker block - Time speed (0x03129000)
 /// </summary>
 [Node(0x03129000)]
-public sealed class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -31,7 +31,7 @@ public sealed class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, CGameCtnMe
 
     #region Constructors
 
-    private CGameCtnMediaBlockTimeSpeed()
+    protected CGameCtnMediaBlockTimeSpeed()
     {
         keys = null!;
     }

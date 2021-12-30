@@ -4,7 +4,7 @@
 /// MediaTracker block - Camera base (0x0307C000)
 /// </summary>
 [Node(0x0307C000)]
-public class CGameCtnMediaBlockCamera : CGameCtnMediaBlock
+public abstract class CGameCtnMediaBlockCamera : CGameCtnMediaBlock
 {
     protected CGameCtnMediaBlockCamera()
     {

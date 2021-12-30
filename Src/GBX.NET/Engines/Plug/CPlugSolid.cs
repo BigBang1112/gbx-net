@@ -4,7 +4,7 @@
 /// Official mesh/model (0x09005000)
 /// </summary>
 [Node(0x09005000), WritingNotSupported]
-public sealed class CPlugSolid : CPlug
+public class CPlugSolid : CPlug
 {
     private CPlugTree? tree;
 
@@ -14,7 +14,7 @@ public sealed class CPlugSolid : CPlug
         set => tree = value;
     }
 
-    private CPlugSolid()
+    protected CPlugSolid()
     {
 
     }

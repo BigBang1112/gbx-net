@@ -3,7 +3,7 @@
 namespace GBX.NET.Engines.Control;
 
 [Node(0x07010000)]
-public sealed class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHasKeys
+public class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -62,7 +62,7 @@ public sealed class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHas
 
     #region Constructors
 
-    private CControlEffectSimi()
+    protected CControlEffectSimi()
     {
         keys = null!;
     }

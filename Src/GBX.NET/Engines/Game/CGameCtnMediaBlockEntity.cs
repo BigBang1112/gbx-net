@@ -4,7 +4,7 @@
 /// MediaTracker block - Entity (0x0329F000)
 /// </summary>
 [Node(0x0329F000)]
-public sealed class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
+public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
 {
     private CPlugEntRecordData recordData;
 
@@ -14,7 +14,7 @@ public sealed class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
         set => recordData = value;
     }
 
-    private CGameCtnMediaBlockEntity()
+    protected CGameCtnMediaBlockEntity()
     {
         recordData = null!;
     }

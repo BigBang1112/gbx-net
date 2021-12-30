@@ -4,7 +4,7 @@
 /// MediaTracker block - Camera path (0x030A1000)
 /// </summary>
 [Node(0x030A1000)]
-public sealed class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasKeys
+public class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -31,7 +31,7 @@ public sealed class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, CGa
 
     #region Constructors
 
-    private CGameCtnMediaBlockCameraPath()
+    protected CGameCtnMediaBlockCameraPath()
     {
         keys = null!;
     }

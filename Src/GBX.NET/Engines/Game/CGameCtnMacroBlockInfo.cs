@@ -4,7 +4,7 @@
 /// Macroblock (0x0310D000)
 /// </summary>
 [Node(0x0310D000), WritingNotSupported]
-public sealed class CGameCtnMacroBlockInfo : CGameCtnCollector
+public class CGameCtnMacroBlockInfo : CGameCtnCollector
 {
     public CGameCtnBlock[]? Blocks { get; set; }
 
@@ -12,7 +12,7 @@ public sealed class CGameCtnMacroBlockInfo : CGameCtnCollector
 
     #region Constructors
 
-    private CGameCtnMacroBlockInfo()
+    protected CGameCtnMacroBlockInfo()
     {
 
     }

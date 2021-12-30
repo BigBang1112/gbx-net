@@ -4,11 +4,11 @@
 /// Decoration of a map (0x03038000)
 /// </summary>
 [Node(0x03038000)]
-public sealed class CGameCtnDecoration : CGameCtnCollector
+public class CGameCtnDecoration : CGameCtnCollector
 {
     #region Constructors
 
-    private CGameCtnDecoration()
+    protected CGameCtnDecoration()
     {
 
     }

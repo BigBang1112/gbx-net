@@ -4,7 +4,7 @@
 /// MediaTracker block - Depth of field (0x03126000)
 /// </summary>
 [Node(0x03126000)]
-public sealed class CGameCtnMediaBlockDOF : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public class CGameCtnMediaBlockDOF : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -31,7 +31,7 @@ public sealed class CGameCtnMediaBlockDOF : CGameCtnMediaBlock, CGameCtnMediaBlo
 
     #region Constructors
 
-    private CGameCtnMediaBlockDOF()
+    protected CGameCtnMediaBlockDOF()
     {
         keys = null!;
     }

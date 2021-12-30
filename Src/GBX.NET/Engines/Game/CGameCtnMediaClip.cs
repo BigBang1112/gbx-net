@@ -6,7 +6,7 @@ namespace GBX.NET.Engines.Game;
 /// MediaTracker clip (0x03079000)
 /// </summary>
 [Node(0x03079000)]
-public sealed class CGameCtnMediaClip : CMwNod
+public class CGameCtnMediaClip : CMwNod
 {
     #region Fields
 
@@ -20,7 +20,7 @@ public sealed class CGameCtnMediaClip : CMwNod
 
     #region Constructors
 
-    private CGameCtnMediaClip()
+    protected CGameCtnMediaClip()
     {
         name = null!;
         tracks = null!;

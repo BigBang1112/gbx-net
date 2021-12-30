@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.Control;
 
 [Node(0x07005000)]
-public class CControlEffect : CMwNod
+public abstract class CControlEffect : CMwNod
 {
     protected CControlEffect()
     {

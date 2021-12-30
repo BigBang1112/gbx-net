@@ -6,7 +6,7 @@ namespace GBX.NET.Engines.Game;
 /// Replay (0x03093000)
 /// </summary>
 [Node(0x03093000), WritingNotSupported]
-public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
+public class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 {
     #region Fields
 
@@ -198,7 +198,7 @@ public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region Constructors
 
-    private CGameCtnReplayRecord()
+    protected CGameCtnReplayRecord()
     {
         challenge = null!;
         ghosts = null!;

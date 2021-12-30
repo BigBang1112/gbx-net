@@ -7,7 +7,7 @@ namespace GBX.NET.Engines.Game;
 /// </summary>
 /// <remarks>Extension: .Ghost.Gbx</remarks>
 [Node(0x03092000)]
-public sealed class CGameCtnGhost : CGameGhost
+public class CGameCtnGhost : CGameGhost
 {
     #region Fields
 
@@ -368,7 +368,7 @@ public sealed class CGameCtnGhost : CGameGhost
 
     #region Constructors
 
-    private CGameCtnGhost()
+    protected CGameCtnGhost()
     {
         playerModel = null!;
     }

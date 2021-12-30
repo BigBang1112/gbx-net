@@ -4,7 +4,7 @@
 /// CHmsItem (0x06003000)
 /// </summary>
 [Node(0x06003000)]
-public sealed class CHmsItem : CMwNod
+public class CHmsItem : CMwNod
 {
     private CPlugSolid solid;
 
@@ -14,7 +14,7 @@ public sealed class CHmsItem : CMwNod
         set => solid = value;
     }
 
-    private CHmsItem()
+    protected CHmsItem()
     {
         solid = null!;
     }

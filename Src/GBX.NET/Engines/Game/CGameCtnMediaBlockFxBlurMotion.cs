@@ -4,7 +4,7 @@
 /// MediaTracker block - Motion blur effect (0x03082000)
 /// </summary>
 [Node(0x03082000)]
-public sealed class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur, CGameCtnMediaBlock.IHasTwoKeys
+public class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur, CGameCtnMediaBlock.IHasTwoKeys
 {
     #region Fields
 
@@ -33,7 +33,7 @@ public sealed class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur, C
 
     #region Constructors
 
-    private CGameCtnMediaBlockFxBlurMotion()
+    protected CGameCtnMediaBlockFxBlurMotion()
     {
 
     }

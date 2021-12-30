@@ -4,7 +4,7 @@
 /// MediaTracker block - Color effect (0x03080000)
 /// </summary>
 [Node(0x03080000)]
-public sealed class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
+public class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -31,7 +31,7 @@ public sealed class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, CGameCtnM
 
     #region Constructors
 
-    private CGameCtnMediaBlockFxColors()
+    protected CGameCtnMediaBlockFxColors()
     {
         keys = null!;
     }

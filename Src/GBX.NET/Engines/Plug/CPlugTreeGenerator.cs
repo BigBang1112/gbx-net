@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 [Node(0x09051000)]
-public class CPlugTreeGenerator : CPlug
+public abstract class CPlugTreeGenerator : CPlug
 {
     protected CPlugTreeGenerator()
     {

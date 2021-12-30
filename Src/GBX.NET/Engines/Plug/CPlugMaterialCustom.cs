@@ -4,11 +4,11 @@
 /// Custom material (0x0903A000)
 /// </summary>
 [Node(0x0903A000), WritingNotSupported]
-public sealed class CPlugMaterialCustom : CPlug
+public class CPlugMaterialCustom : CPlug
 {
     public SBitmap[]? Textures { get; set; }
 
-    private CPlugMaterialCustom()
+    protected CPlugMaterialCustom()
     {
 
     }

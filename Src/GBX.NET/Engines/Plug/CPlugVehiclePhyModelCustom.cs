@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 [Node(0x0911E000)]
-public sealed class CPlugVehiclePhyModelCustom : CMwNod
+public class CPlugVehiclePhyModelCustom : CMwNod
 {
     #region Fields
 
@@ -38,7 +38,7 @@ public sealed class CPlugVehiclePhyModelCustom : CMwNod
 
     #region Constructors
 
-    private CPlugVehiclePhyModelCustom()
+    protected CPlugVehiclePhyModelCustom()
     {
 
     }

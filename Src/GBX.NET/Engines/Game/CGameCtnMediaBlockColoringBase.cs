@@ -4,7 +4,7 @@
 /// MediaTracker block - Coloring base (0x03172000)
 /// </summary>
 [Node(0x03172000)]
-public sealed class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -39,7 +39,7 @@ public sealed class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameCt
 
     #region Constructors
 
-    private CGameCtnMediaBlockColoringBase()
+    protected CGameCtnMediaBlockColoringBase()
     {
         keys = null!;
     }

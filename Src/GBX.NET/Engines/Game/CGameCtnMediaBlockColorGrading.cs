@@ -4,7 +4,7 @@
 /// MediaTracker block - Color grading (0x03186000)
 /// </summary>
 [Node(0x03186000)]
-public sealed class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -39,7 +39,7 @@ public sealed class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, CGameCt
 
     #region Constructors
 
-    private CGameCtnMediaBlockColorGrading()
+    protected CGameCtnMediaBlockColorGrading()
     {
         image = null!;
         keys = null!;

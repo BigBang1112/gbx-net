@@ -4,7 +4,7 @@
 /// MediaTracker block - Ghost (0x030E5000)
 /// </summary>
 [Node(0x030E5000)]
-public sealed class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys, CGameCtnMediaBlock.IHasKeys
+public class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -99,7 +99,7 @@ public sealed class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMediaB
 
     #region Constructors
 
-    private CGameCtnMediaBlockGhost()
+    protected CGameCtnMediaBlockGhost()
     {
         ghostModel = null!;
     }

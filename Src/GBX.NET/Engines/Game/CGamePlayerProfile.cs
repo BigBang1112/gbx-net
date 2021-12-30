@@ -4,7 +4,7 @@
 /// Player profile (0x0308C000)
 /// </summary>
 [Node(0x0308C000), WritingNotSupported]
-public sealed class CGamePlayerProfile : CMwNod
+public class CGamePlayerProfile : CMwNod
 {
     private string? description;
     private CGameNetOnlineMessage[]? messages;
@@ -48,7 +48,7 @@ public sealed class CGamePlayerProfile : CMwNod
 
     #region Constructors
 
-    private CGamePlayerProfile()
+    protected CGamePlayerProfile()
     {
 
     }

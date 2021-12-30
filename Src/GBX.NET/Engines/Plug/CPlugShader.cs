@@ -4,7 +4,7 @@
 /// Shader (0x09002000)
 /// </summary>
 [Node(0x09002000)]
-public class CPlugShader : CPlug
+public abstract class CPlugShader : CPlug
 {
     protected CPlugShader()
     {

@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.Scene;
 
 [Node(0x0A011000)]
-public sealed class CSceneMobil : CSceneObject
+public class CSceneMobil : CSceneObject
 {
     private CHmsItem item;
 
@@ -11,7 +11,7 @@ public sealed class CSceneMobil : CSceneObject
         set => item = value;
     }
 
-    private CSceneMobil()
+    protected CSceneMobil()
     {
         item = null!;
     }

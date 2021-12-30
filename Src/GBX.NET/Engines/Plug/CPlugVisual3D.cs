@@ -4,7 +4,7 @@
 /// 3D visual (0x0902C000)
 /// </summary>
 [Node(0x0902C000), WritingNotSupported]
-public class CPlugVisual3D : CPlugVisual
+public abstract class CPlugVisual3D : CPlugVisual
 {
     protected Vertex[] vertices;
 

@@ -7,7 +7,7 @@ namespace GBX.NET.Engines.Plug;
 /// Entity record data (0x0911F000)
 /// </summary>
 [Node(0x0911F000)]
-public sealed class CPlugEntRecordData : CMwNod
+public class CPlugEntRecordData : CMwNod
 {
     private Task<ObservableCollection<Sample>> samples;
 
@@ -16,7 +16,7 @@ public sealed class CPlugEntRecordData : CMwNod
         get => samples.Result;
     }
 
-    private CPlugEntRecordData()
+    protected CPlugEntRecordData()
     {
         samples = null!;
     }

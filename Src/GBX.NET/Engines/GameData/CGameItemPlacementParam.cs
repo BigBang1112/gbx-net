@@ -4,7 +4,7 @@
 /// Item placement parameters (0x2E020000)
 /// </summary>
 [Node(0x2E020000)]
-public sealed class CGameItemPlacementParam : CMwNod
+public class CGameItemPlacementParam : CMwNod
 {
     #region Constants
 
@@ -245,7 +245,7 @@ public sealed class CGameItemPlacementParam : CMwNod
 
     #region Constructors
 
-    private CGameItemPlacementParam()
+    protected CGameItemPlacementParam()
     {
 
     }

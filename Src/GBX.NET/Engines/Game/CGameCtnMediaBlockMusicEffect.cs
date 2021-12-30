@@ -4,7 +4,7 @@
 /// MediaTracker block - Music effect (0x030A6000)
 /// </summary>
 [Node(0x030A6000)]
-public sealed class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -31,7 +31,7 @@ public sealed class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, CGameCtn
 
     #region Constructors
 
-    private CGameCtnMediaBlockMusicEffect()
+    protected CGameCtnMediaBlockMusicEffect()
     {
         keys = null!;
     }

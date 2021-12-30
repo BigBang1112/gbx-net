@@ -29,7 +29,7 @@ public class CGameLeague : CMwNod
         set => flagUrl = value;
     }
 
-    private CGameLeague()
+    protected CGameLeague()
     {
         path = null!;
         name = null!;

@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 [Node(0x09004000)]
-public class CPlugShaderGeneric : CPlugShader
+public abstract class CPlugShaderGeneric : CPlugShader
 {
     protected CPlugShaderGeneric()
     {

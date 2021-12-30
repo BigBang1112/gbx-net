@@ -4,7 +4,7 @@
 /// MediaTracker block - Transition fade (0x030AB000)
 /// </summary>
 [Node(0x030AB000)]
-public sealed class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -39,7 +39,7 @@ public sealed class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlock, CGame
 
     #region Constructors
 
-    private CGameCtnMediaBlockTransitionFade()
+    protected CGameCtnMediaBlockTransitionFade()
     {
         keys = null!;
     }

@@ -6,12 +6,12 @@ namespace GBX.NET.Engines.Input;
 /// Input bindings configuration (0x13006000)
 /// </summary>
 [Node(0x13006000)]
-public sealed class CInputBindingsConfig : CMwNod
+public class CInputBindingsConfig : CMwNod
 {
     public ReadOnlyCollection<string> Devices { get; private set; }
     public IList<Binding> Bindings { get; private set; }
 
-    private CInputBindingsConfig()
+    protected CInputBindingsConfig()
     {
         Devices = null!;
         Bindings = null!;

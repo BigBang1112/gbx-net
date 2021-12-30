@@ -4,7 +4,7 @@
 /// Podium info (0x03168000)
 /// </summary>
 [Node(0x03168000)]
-public sealed class CGamePodiumInfo : CMwNod
+public class CGamePodiumInfo : CMwNod
 {
     private int[] mediaClipFids;
 
@@ -14,7 +14,7 @@ public sealed class CGamePodiumInfo : CMwNod
         set => mediaClipFids = value;
     }
 
-    private CGamePodiumInfo()
+    protected CGamePodiumInfo()
     {
         mediaClipFids = null!;
     }

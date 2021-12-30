@@ -4,9 +4,9 @@
 /// Player score (0x0308D000)
 /// </summary>
 [Node(0x0308D000)]
-public sealed class CGamePlayerScore : CMwNod
+public class CGamePlayerScore : CMwNod // What's this class actually?
 {
-    private CGamePlayerScore()
+    protected CGamePlayerScore()
     {
 
     }

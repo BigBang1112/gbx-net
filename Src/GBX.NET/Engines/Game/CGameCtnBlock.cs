@@ -6,7 +6,7 @@ namespace GBX.NET.Engines.Game;
 /// Block placed on a map (0x03057000)
 /// </summary>
 [Node(0x03057000)]
-public sealed class CGameCtnBlock : CMwNod
+public class CGameCtnBlock : CMwNod
 {
     #region Constants
 
@@ -260,7 +260,7 @@ public sealed class CGameCtnBlock : CMwNod
 
     #region Constructors
 
-    private CGameCtnBlock()
+    protected CGameCtnBlock()
     {
         blockModel = null!;
     }

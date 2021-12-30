@@ -5,7 +5,7 @@
 /// </summary>
 /// <remarks>Bloom MediaTracker block for TMUF and older games. This node causes "Couldn't load map" in ManiaPlanet.</remarks>
 [Node(0x03083000)]
-public sealed class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
+public class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -15,7 +15,7 @@ public sealed class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, CGameCtnMe
 
     #region Constructors
 
-    private CGameCtnMediaBlockFxBloom()
+    protected CGameCtnMediaBlockFxBloom()
     {
         keys = null!;
     }

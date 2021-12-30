@@ -4,7 +4,7 @@
 /// MediaTracker block - Bloom HDR (0x03128000)
 /// </summary>
 [Node(0x03128000)]
-public sealed class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -31,7 +31,7 @@ public sealed class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMed
 
     #region Constructors
 
-    private CGameCtnMediaBlockBloomHdr()
+    protected CGameCtnMediaBlockBloomHdr()
     {
         keys = null!;
     }

@@ -4,7 +4,7 @@
 /// 2D visual (0x09006000)
 /// </summary>
 [Node(0x0904A000)]
-public class CPlugVisual2D : CPlugVisual
+public abstract class CPlugVisual2D : CPlugVisual
 {
     protected CPlugVisual2D()
     {

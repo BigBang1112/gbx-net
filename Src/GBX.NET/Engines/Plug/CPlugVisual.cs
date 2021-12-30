@@ -4,7 +4,7 @@
 /// Visual (0x09006000)
 /// </summary>
 [Node(0x09006000), WritingNotSupported]
-public class CPlugVisual : CPlug
+public abstract class CPlugVisual : CPlug
 {
     protected int flags;
     protected int count;

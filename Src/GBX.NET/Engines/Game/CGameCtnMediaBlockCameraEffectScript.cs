@@ -4,7 +4,7 @@
 /// MediaTracker block - Camera effect script (0x03161000)
 /// </summary>
 [Node(0x03161000)]
-public sealed class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCameraEffect,
+public class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCameraEffect,
     CGameCtnMediaBlock.IHasKeys,
     CGameCtnMediaBlock.IHasTwoKeys
 {
@@ -69,7 +69,7 @@ public sealed class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCam
 
     #region Constructors
 
-    private CGameCtnMediaBlockCameraEffectScript()
+    protected CGameCtnMediaBlockCameraEffectScript()
     {
         script = null!;
     }

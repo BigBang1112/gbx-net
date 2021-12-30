@@ -4,7 +4,7 @@
 /// MediaTracker block - Vehicle light (0x03133000)
 /// </summary>
 [Node(0x03133000)]
-public sealed class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
+public class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {
     #region Properties
 
@@ -21,7 +21,7 @@ public sealed class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock, CGameCt
 
     #region Constructors
 
-    private CGameCtnMediaBlockVehicleLight()
+    protected CGameCtnMediaBlockVehicleLight()
     {
 
     }

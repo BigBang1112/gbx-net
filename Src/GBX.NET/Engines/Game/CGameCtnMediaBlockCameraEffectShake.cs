@@ -4,7 +4,7 @@
 /// MediaTracker block - Camera shake (0x030A4000)
 /// </summary>
 [Node(0x030A4000)]
-public sealed class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCameraEffect, CGameCtnMediaBlock.IHasKeys
+public class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCameraEffect, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -31,7 +31,7 @@ public sealed class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCame
 
     #region Constructors
 
-    private CGameCtnMediaBlockCameraEffectShake()
+    protected CGameCtnMediaBlockCameraEffectShake()
     {
         keys = null!;
     }

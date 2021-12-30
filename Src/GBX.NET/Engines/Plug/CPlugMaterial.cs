@@ -4,7 +4,7 @@
 /// Material (0x09079000)
 /// </summary>
 [Node(0x09079000), WritingNotSupported]
-public sealed class CPlugMaterial : CPlug
+public class CPlugMaterial : CPlug
 {
     private CPlugMaterialCustom? customMaterial;
     private CPlug? shader;
@@ -29,7 +29,7 @@ public sealed class CPlugMaterial : CPlug
         set => deviceMaterials = value;
     }
 
-    private CPlugMaterial()
+    protected CPlugMaterial()
     {
 
     }

@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x0315B000)]
-public class CGameCtnBlockInfoVariant : CMwNod
+public abstract class CGameCtnBlockInfoVariant : CMwNod
 {
     private CGameCtnBlockInfoMobil?[]? mobils;
 

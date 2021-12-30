@@ -4,7 +4,7 @@
 /// MediaTracker block - Image (0x030A5000)
 /// </summary>
 [Node(0x030A5000)]
-public sealed class CGameCtnMediaBlockImage : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public class CGameCtnMediaBlockImage : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -43,7 +43,7 @@ public sealed class CGameCtnMediaBlockImage : CGameCtnMediaBlock, CGameCtnMediaB
 
     #region Constructors
 
-    private CGameCtnMediaBlockImage()
+    protected CGameCtnMediaBlockImage()
     {
         effect = null!;
         image = null!;

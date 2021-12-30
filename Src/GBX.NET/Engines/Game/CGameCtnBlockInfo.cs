@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x0304E000), WritingNotSupported]
-public class CGameCtnBlockInfo : CGameCtnCollector
+public abstract class CGameCtnBlockInfo : CGameCtnCollector
 {
     public enum EWayPointType
     {

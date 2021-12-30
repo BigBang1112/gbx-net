@@ -4,7 +4,7 @@
 /// Custom item (0x2E002000)
 /// </summary>
 [Node(0x2E002000), WritingNotSupported]
-public sealed class CGameItemModel : CGameCtnCollector
+public class CGameItemModel : CGameCtnCollector
 {
     #region Enums
 
@@ -220,7 +220,7 @@ public sealed class CGameItemModel : CGameCtnCollector
 
     #region Constructors
 
-    private CGameItemModel()
+    protected CGameItemModel()
     {
 
     }

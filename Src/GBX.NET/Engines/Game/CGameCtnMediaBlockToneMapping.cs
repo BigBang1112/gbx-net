@@ -4,7 +4,7 @@
 /// MediaTracker block - Tone mapping (0x03127000)
 /// </summary>
 [Node(0x03127000)]
-public sealed class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -31,7 +31,7 @@ public sealed class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCtn
 
     #region Constructors
 
-    private CGameCtnMediaBlockToneMapping()
+    protected CGameCtnMediaBlockToneMapping()
     {
         keys = null!;
     }

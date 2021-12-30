@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 [Node(0x090FD000)]
-public sealed class CPlugMaterialUserInst : CMwNod
+public class CPlugMaterialUserInst : CMwNod
 {
     private string? materialFile;
 
@@ -11,7 +11,7 @@ public sealed class CPlugMaterialUserInst : CMwNod
         set => materialFile = value;
     }
 
-    private CPlugMaterialUserInst()
+    protected CPlugMaterialUserInst()
     {
 
     }

@@ -4,7 +4,7 @@
 /// MediaTracker clip group (0x0307A000)
 /// </summary>
 [Node(0x0307A000)]
-public sealed class CGameCtnMediaClipGroup : CMwNod
+public class CGameCtnMediaClipGroup : CMwNod
 {
     #region Enums
 
@@ -38,7 +38,7 @@ public sealed class CGameCtnMediaClipGroup : CMwNod
 
     #region Constructors
 
-    private CGameCtnMediaClipGroup()
+    protected CGameCtnMediaClipGroup()
     {
         Clips = null!;
     }

@@ -4,7 +4,7 @@
 /// Custom block (0x2E025000)
 /// </summary>
 [Node(0x2E026000)]
-public sealed class CGameCommonItemEntityModelEdition : CMwNod
+public class CGameCommonItemEntityModelEdition : CMwNod
 {
     #region Enums
 
@@ -60,7 +60,7 @@ public sealed class CGameCommonItemEntityModelEdition : CMwNod
 
     #region Constructors
 
-    private CGameCommonItemEntityModelEdition()
+    protected CGameCommonItemEntityModelEdition()
     {
         meshCrystal = null!;
     }

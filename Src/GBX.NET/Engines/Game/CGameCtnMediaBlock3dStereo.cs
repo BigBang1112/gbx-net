@@ -4,7 +4,7 @@
 /// MediaTracker block - 3D stereo (0x03024000)
 /// </summary>
 [Node(0x03024000)]
-public sealed class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -31,7 +31,7 @@ public sealed class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, CGameCtnMed
 
     #region Constructors
 
-    private CGameCtnMediaBlock3dStereo()
+    protected CGameCtnMediaBlock3dStereo()
     {
         keys = null!;
     }

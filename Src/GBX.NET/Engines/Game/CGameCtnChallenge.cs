@@ -12,7 +12,7 @@ namespace GBX.NET.Engines.Game;
 /// </summary>
 /// <remarks>Extensions: .Challenge.Gbx, .Map.Gbx</remarks>
 [Node(0x03043000)]
-public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
+public class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 {
     #region Enums
 
@@ -1259,7 +1259,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #region Constructors
 
-    private CGameCtnChallenge()
+    protected CGameCtnChallenge()
     {
         mapInfo = null!;
         mapName = null!;

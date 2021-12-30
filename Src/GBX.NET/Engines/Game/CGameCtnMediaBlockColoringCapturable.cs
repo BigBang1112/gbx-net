@@ -4,7 +4,7 @@
 /// MediaTracker block - Coloring capturable (0x0316C000)
 /// </summary>
 [Node(0x0316C000)]
-public sealed class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -31,7 +31,7 @@ public sealed class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, C
 
     #region Constructors
 
-    private CGameCtnMediaBlockColoringCapturable()
+    protected CGameCtnMediaBlockColoringCapturable()
     {
         keys = null!;
     }

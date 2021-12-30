@@ -57,7 +57,7 @@ public class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMediaBlock
 
     #region Constructors
 
-    private CGameCtnMediaBlockCameraEffectInertialTracking()
+    protected CGameCtnMediaBlockCameraEffectInertialTracking()
     {
 
     }

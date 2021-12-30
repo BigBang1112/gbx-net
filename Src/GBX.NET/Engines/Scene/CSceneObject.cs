@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.Scene;
 
 [Node(0x0A005000)]
-public class CSceneObject : CMwNod
+public abstract class CSceneObject : CMwNod
 {
     protected CSceneObject()
     {

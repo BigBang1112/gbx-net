@@ -4,7 +4,7 @@
 /// MediaTracker block - Camera ingame (0x03084000)
 /// </summary>
 [Node(0x03084000)]
-public sealed class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasTwoKeys
+public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasTwoKeys
 {
     #region Enums
 
@@ -88,7 +88,7 @@ public sealed class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGa
 
     #region Constructors
 
-    private CGameCtnMediaBlockCameraGame()
+    protected CGameCtnMediaBlockCameraGame()
     {
 
     }

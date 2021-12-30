@@ -4,9 +4,9 @@
 /// CGameCtnAutoTerrain (0x03120000)
 /// </summary>
 [Node(0x03120000)]
-public sealed class CGameCtnAutoTerrain : CMwNod
+public class CGameCtnAutoTerrain : CMwNod
 {
-    private CGameCtnAutoTerrain()
+    protected CGameCtnAutoTerrain()
     {
 
     }

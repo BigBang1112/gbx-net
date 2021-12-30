@@ -4,7 +4,7 @@
 /// Custom block (0x2E025000)
 /// </summary>
 [Node(0x2E025000)]
-public sealed class CGameBlockItem : CMwNod
+public class CGameBlockItem : CMwNod
 {
     #region Fields
 
@@ -41,7 +41,7 @@ public sealed class CGameBlockItem : CMwNod
 
     #region Constructors
 
-    private CGameBlockItem()
+    protected CGameBlockItem()
     {
         archetypeBlockInfoId = null!;
         archetypeBlockInfoCollectionId = null!;

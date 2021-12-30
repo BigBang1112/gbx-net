@@ -4,7 +4,7 @@
 /// MediaTracker block (0x03077000)
 /// </summary>
 [Node(0x03077000)]
-public class CGameCtnMediaBlock : CMwNod
+public abstract class CGameCtnMediaBlock : CMwNod
 {
     #region Constructors
 

@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x03036000)]
-public sealed class CGameCtnBlockUnitInfo : CMwNod
+public class CGameCtnBlockUnitInfo : CMwNod
 {
     public Int3 OffsetE { get; set; }
     public CGameCtnBlockInfoClip[]? Clips { get; set; }
@@ -9,7 +9,7 @@ public sealed class CGameCtnBlockUnitInfo : CMwNod
 
     public override string ToString() => OffsetE.ToString();
 
-    private CGameCtnBlockUnitInfo()
+    protected CGameCtnBlockUnitInfo()
     {
 
     }
