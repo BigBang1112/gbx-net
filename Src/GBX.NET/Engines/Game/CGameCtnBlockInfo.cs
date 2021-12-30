@@ -3,6 +3,9 @@
 [Node(0x0304E000), WritingNotSupported]
 public abstract class CGameCtnBlockInfo : CGameCtnCollector
 {
+    private CGameCtnBlockUnitInfo[]? units;
+    private bool isPillar;
+
     public enum EWayPointType
     {
         Start,
@@ -11,6 +14,18 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
         None,
         StartFinish,
         Dispenser
+    }
+
+    public CGameCtnBlockUnitInfo[]? Units
+    {
+        get => units;
+        set => units = value;
+    }
+
+    public bool IsPillar
+    {
+        get => isPillar;
+        set => isPillar = value;
     }
 
     public string? BlockName { get; set; }
@@ -37,27 +52,50 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     [Chunk(0x0304E005)]
     public class Chunk0304E005 : Chunk<CGameCtnBlockInfo>
     {
-        public override void Read(CGameCtnBlockInfo n, GameBoxReader r) // WIP
+        public string? U01;
+        public int U02;
+        public int U03;
+        public int U04;
+        public bool U05;
+        public int U06;
+        public int U07;
+        public CMwNod? U08;
+        public CMwNod?[]? U09;
+        public CMwNod?[][]? U10;
+        public CMwNod?[][]? U11;
+        public byte U12;
+        public int U13;
+        public short U14;
+        public short U15;
+
+        public override void Read(CGameCtnBlockInfo n, GameBoxReader r)
         {
-            n.BlockName = r.ReadId();
-            r.ReadInt32();
-            r.ReadInt32();
-            r.ReadInt32();
-            r.ReadInt32();
-            r.ReadInt32();
-            r.ReadInt32();
-            r.ReadInt32();
-            r.ReadArray(r => r.ReadNodeRef<CGameCtnBlockUnitInfo>());
-            r.ReadArray(r => r.ReadNodeRef<CGameCtnBlockUnitInfo>());
-            r.ReadInt32();
-            r.ReadInt32();
-            r.ReadNodeRef<CSceneMobil>();
-            r.ReadInt32();
-            r.ReadInt32();
-            r.ReadNodeRef<CSceneMobil>();
-            r.ReadByte();
-            r.ReadInt32();
-            r.ReadInt32();
+            U01 = r.ReadId();
+            U02 = r.ReadInt32();
+            U03 = r.ReadInt32();
+            U04 = r.ReadInt32();
+            U05 = r.ReadBoolean();
+            U06 = r.ReadInt32();
+            U07 = r.ReadInt32();
+
+            U08 = r.ReadNodeRef();
+            n.units = r.ReadArray(r => r.ReadNodeRef<CGameCtnBlockUnitInfo>()!);
+            U09 = r.ReadArray(r => r.ReadNodeRef());
+            U10 = r.ReadArray(r =>
+            {
+                return r.ReadArray(r => r.ReadNodeRef());
+            });
+
+            // may not be it but could be
+            U11 = r.ReadArray(r =>
+            {
+                return r.ReadArray(r => r.ReadNodeRef());
+            });
+
+            U12 = r.ReadByte();
+            U13 = r.ReadInt32();
+            U14 = r.ReadInt16();
+            U15 = r.ReadInt16();
         }
     }
 
@@ -66,26 +104,46 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     {
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            rw.Int32();
+            rw.Boolean(ref n.isPillar);
+        }
+    }
+
+    [Chunk(0x0304E00B)]
+    public class Chunk0304E00B : Chunk<CGameCtnBlockInfo>
+    {
+        private int U01;
+        private CMwNod? U02;
+        private CMwNod? U03;
+        private CMwNod? U04;
+
+        public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+            rw.NodeRef(ref U02); // VariantBaseGround
+            rw.NodeRef(ref U03); // ??
+            rw.NodeRef(ref U04); // VariantBaseAir
         }
     }
 
     [Chunk(0x0304E00C)]
     public class Chunk0304E00C : Chunk<CGameCtnBlockInfo>
     {
+        public float[]? U01;
+
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            for (var i = 0; i < 24; i++)
-                rw.Single();
+            rw.Array<float>(ref U01, count: 24); // Two Iso4s
         }
     }
 
     [Chunk(0x0304E00D)]
     public class Chunk0304E00D : Chunk<CGameCtnBlockInfo>
     {
+        public bool U01;
+
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            rw.Int32();
+            rw.Boolean(ref U01);
         }
     }
 
