@@ -28,6 +28,23 @@ public abstract class CPlugShader : CPlug
         }
     }
 
+    [Chunk(0x09002010)]
+    public class Chunk09002010 : Chunk<CPlugShader>
+    {
+        public ulong U01;
+        public float U02;
+        public CMwNod? U03;
+        public short U04;
+
+        public override void ReadWrite(CPlugShader n, GameBoxReaderWriter rw)
+        {
+            rw.UInt64(ref U01);
+            rw.Single(ref U02);
+            rw.NodeRef(ref U03);
+            rw.Int16(ref U04);
+        }
+    }
+
     [Chunk(0x09002014)]
     public class Chunk09002014 : Chunk<CPlugShader>
     {
