@@ -2,43 +2,81 @@
 
 namespace GBX.NET;
 
-internal static class Lzo
+public static class Lzo
 {
+    private const string expectedClassName = "MiniLZO";
+    private const string expectedCompressMethodName = "Compress";
+    private const string expectedDecompressMethodName = "Decompress";
+    private const string expectedAttributeName = "LZOforGBX.NET";
+
     private static bool checkedForLzo;
+    private static Type? predefinedLzoType;
     private static MethodInfo? methodLzoCompress;
     private static MethodInfo? methodLzoDecompress;
 
     public static void Decompress(byte[] input, byte[] output)
     {
-        CheckForLZO();
+        CheckForLzo();
         methodLzoDecompress!.Invoke(null, new object[] { input, output });
     }
 
     public static byte[] Compress(byte[] data)
     {
-        CheckForLZO();
+        CheckForLzo();
         return (byte[])methodLzoCompress!.Invoke(null, new object[] { data })!;
     }
 
     /// <exception cref="MissingLzoException"></exception>
-    private static void CheckForLZO()
+    private static void CheckForLzo()
     {
         if (checkedForLzo) return;
 
-        var lzoFound = false;
+        var lzoFound = CheckForLzoFromPredefinedType();
 
+        if (!lzoFound)
+        {
+            FindLzoInCurrentDomain(ref lzoFound);
+        }
+
+        if (!lzoFound)
+        {
+            throw new MissingLzoException();
+        }
+
+        checkedForLzo = true;
+    }
+
+    public static void SetLzo<T>()
+    {
+        SetLzo(typeof(T));
+    }
+
+    public static void SetLzo(Type type)
+    {
+        predefinedLzoType = type;
+    }
+
+    private static bool CheckForLzoFromPredefinedType()
+    {
+        if (predefinedLzoType is null)
+        {
+            return false;
+        }
+
+        return CheckForLzoFromType(predefinedLzoType);
+    }
+
+    private static void FindLzoInCurrentDomain(ref bool lzoFound)
+    {
         foreach (var dllFile in Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.dll"))
         {
             lzoFound = AnalyzeDllFile(dllFile);
 
             if (lzoFound)
+            {
                 break;
+            }
         }
-
-        if (!lzoFound)
-            throw new MissingLzoException();
-
-        checkedForLzo = true;
     }
 
     private static bool AnalyzeDllFile(string dllFile)
@@ -52,7 +90,9 @@ internal static class Lzo
             var verified = VerifyAttribute(assembly, attribute);
 
             if (verified)
+            {
                 return true;
+            }
         }
 
         return false;
@@ -63,7 +103,7 @@ internal static class Lzo
         if (attribute.ConstructorArguments.Count != 2)
             return false;
 
-        var expectedAttribute = new[] { "LZOforGBX.NET", "true" };
+        var expectedAttribute = new[] { expectedAttributeName, "true" };
 
         var hasExpectedAttribute = attribute.ConstructorArguments
             .Select(x => x.Value as string)
@@ -72,29 +112,44 @@ internal static class Lzo
 
         if (hasExpectedAttribute)
         {
-            var lzoFound = CheckForLZO(assembly);
+            var lzoFound = CheckForLzoFromAssembly(assembly);
 
             if (lzoFound)
+            {
                 return true;
+            }
         }
 
         return false;
     }
 
-    private static bool CheckForLZO(Assembly assembly)
+    private static bool CheckForLzoFromAssembly(Assembly assembly)
     {
-        var type = assembly.GetTypes()
-            .FirstOrDefault(x => x.Name == "MiniLZO");
+        var type = GetTypeFromAssembly(assembly);
 
         if (type is null)
+        {
             return false;
+        }
 
-        methodLzoCompress = type.GetMethod("Compress", new Type[] { typeof(byte[]) });
-        methodLzoDecompress = type.GetMethod("Decompress", new Type[] { typeof(byte[]), typeof(byte[]) });
+        return CheckForLzoFromType(type);
+    }
+
+    private static bool CheckForLzoFromType(Type type)
+    {
+        methodLzoCompress = type.GetMethod(expectedCompressMethodName, new Type[] { typeof(byte[]) });
+        methodLzoDecompress = type.GetMethod(expectedDecompressMethodName, new Type[] { typeof(byte[]), typeof(byte[]) });
 
         if (methodLzoCompress == null || methodLzoDecompress == null)
+        {
             return false;
+        }
 
         return true;
+    }
+
+    private static Type? GetTypeFromAssembly(Assembly assembly)
+    {
+        return assembly.GetTypes().FirstOrDefault(x => x.Name == expectedClassName);
     }
 }
