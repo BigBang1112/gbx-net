@@ -186,9 +186,12 @@ public abstract class Node
 
             var progressPercentage = (float)stream.Position / stream.Length;
 
-            logger?.LogDebug("0x{chunk} ({progress})",
-                chunkId.ToString("X8"),
-                progressPercentage.ToString("0.00%"));
+            if (logger?.IsEnabled(LogLevel.Debug) == true)
+            {
+                logger?.LogDebug("0x{chunk} ({progress})",
+                    chunkId.ToString("X8"),
+                    progressPercentage.ToString("0.00%"));
+            }
 
             Chunk chunk;
 
@@ -418,14 +421,19 @@ public abstract class Node
         if (writingNotSupported)
             throw new NotSupportedException($"Writing of {type.Name} is not supported.");
 
+        var className = logger?.IsEnabled(LogLevel.Debug) == true ? ClassName : null;
+
         foreach (Chunk chunk in Chunks)
         {
             counter++;
 
-            logger?.LogDebug("[{className}] 0x{chunkId} ({progressPercentage})",
-                ClassName,
-                chunk.ID.ToString("X8"),
-                ((float)counter / Chunks.Count).ToString("0.00%"));
+            if (logger?.IsEnabled(LogLevel.Debug) == true)
+            {
+                logger?.LogDebug("[{className}] 0x{chunkId} ({progressPercentage})",
+                    className,
+                    chunk.ID.ToString("X8"),
+                    ((float)counter / Chunks.Count).ToString("0.00%"));
+            }
 
             chunk.Node = this;
             chunk.Unknown.Position = 0;
@@ -475,7 +483,7 @@ public abstract class Node
 
         stopwatch.Stop();
 
-        logger?.LogDebug("[{className}] DONE! ({time}ms)", ClassName, stopwatch.Elapsed.TotalMilliseconds);
+        logger?.LogDebug("[{className}] DONE! ({time}ms)", className, stopwatch.Elapsed.TotalMilliseconds);
     }
 
     private static bool IsIgnorableChunk(Chunk chunk)

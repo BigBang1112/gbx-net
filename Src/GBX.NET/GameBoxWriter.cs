@@ -541,11 +541,14 @@ public class GameBoxWriter : BinaryWriter
             Write(node.ID);
             node.Write(this, logger: logger);
 
-            logger?.LogDebug("[{className}] {current}/{count} ({time}ms)",
-                nodeType.FullName!.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::"),
-                counter + 1,
-                count,
-                watch.Elapsed.TotalMilliseconds);
+            if (logger?.IsEnabled(LogLevel.Debug) == true)
+            {
+                logger?.LogDebug("[{className}] {current}/{count} ({time}ms)",
+                    nodeType.FullName!.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::"),
+                    counter + 1,
+                    count,
+                    watch.Elapsed.TotalMilliseconds);
+            }
 
             counter += 1;
         }

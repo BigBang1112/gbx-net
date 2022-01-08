@@ -64,7 +64,7 @@ public class GameBoxHeaderInfo
             }
 
             ID = CMwNod.Remap(reader.ReadUInt32());
-            logger?.LogDebug("Class ID: 0x{classId}", ID.Value.ToString("X8"));
+            logger?.LogDebug("Class ID: 0x{classId}", ID.Value, "X8");
 
             if (Version >= 6)
             {

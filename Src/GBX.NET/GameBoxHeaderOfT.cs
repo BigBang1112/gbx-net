@@ -92,14 +92,17 @@ public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
             chunkList[clId + chId] = ((int)(chunkSize & ~0x80000000), (chunkSize & (1 << 31)) != 0);
         }
 
-        logger?.LogDebug("Header data chunk list:");
-
-        foreach (var c in chunkList)
+        if (logger?.IsEnabled(LogLevel.Debug) == true)
         {
-            if (c.Value.IsHeavy)
-                logger?.LogDebug("| 0x{classId} | {size} B (Heavy)", c.Key.ToString("X8"), c.Value.Size);
-            else
-                logger?.LogDebug("| 0x{classId} | {size} B", c.Key.ToString("X8"), c.Value.Size);
+            logger?.LogDebug("Header data chunk list:");
+
+            foreach (var c in chunkList)
+            {
+                if (c.Value.IsHeavy)
+                    logger?.LogDebug("| 0x{classId} | {size} B (Heavy)", c.Key.ToString("X8"), c.Value.Size);
+                else
+                    logger?.LogDebug("| 0x{classId} | {size} B", c.Key.ToString("X8"), c.Value.Size);
+            }
         }
 
         foreach (var chunkInfo in chunkList)
