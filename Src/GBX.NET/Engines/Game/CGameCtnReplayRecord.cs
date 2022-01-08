@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.Game;
+﻿using System.Diagnostics;
+
+namespace GBX.NET.Engines.Game;
 
 /// <summary>
 /// CGameCtnReplayRecord (0x03093000)
