@@ -4,4 +4,5 @@
 public class NodeMemberAttribute : Attribute
 {
     public bool ExactlyNamed { get; set; }
+    public string? ExactName { get; set; }
 }
