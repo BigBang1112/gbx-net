@@ -2,6 +2,10 @@
 
 namespace GBX.NET.Engines.Control;
 
+/// <summary>
+/// CControlEffectSimi (0x07005000)
+/// </summary>
+/// <remarks>An effect used on certain MediaTracker block types that tells how to generally render the component.</remarks>
 [Node(0x07010000)]
 public class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHasKeys
 {
@@ -23,6 +27,9 @@ public class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHasKeys
         set => keys = value.Cast<Key>().ToList();
     }
 
+    /// <summary>
+    /// Keyframes of the effect.
+    /// </summary>
     [NodeMember]
     public IList<Key> Keys
     {
@@ -30,28 +37,34 @@ public class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHasKeys
         set => keys = value;
     }
 
-    [NodeMember]
+    /// <summary>
+    /// If the effect should be centered.
+    /// </summary>
+    [NodeMember(ExactlyNamed = true)]
     public bool Centered
     {
         get => centered;
         set => centered = value;
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public int ColorBlendMode
     {
         get => colorBlendMode;
         set => colorBlendMode = value;
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public bool IsContinousEffect
     {
         get => isContinousEffect;
         set => isContinousEffect = value;
     }
 
-    [NodeMember]
+    /// <summary>
+    /// If the keyframes should interpolate values between each other.
+    /// </summary>
+    [NodeMember(ExactlyNamed = true)]
     public bool IsInterpolated
     {
         get => isInterpolated;
@@ -60,24 +73,27 @@ public class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHasKeys
 
     #endregion
 
-    #region Constructors
-
     protected CControlEffectSimi()
     {
         keys = null!;
     }
 
+    /// <summary>
+    /// Creates a new builder that can output <see cref="CControlEffectSimi"/> in certain versions with certain chunks and values.
+    /// </summary>
+    /// <returns>A builder.</returns>
     public static CControlEffectSimiBuilder Create()
     {
         return new CControlEffectSimiBuilder();
     }
 
-    #endregion
-
     #region Chunks
 
     #region 0x002 chunk
 
+    /// <summary>
+    /// CControlEffectSimi 0x002 chunk
+    /// </summary>
     [Chunk(0x07010002)]
     public class Chunk07010002 : Chunk<CControlEffectSimi>
     {
@@ -203,6 +219,10 @@ public class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHasKeys
 
     #region Other classes
 
+    /// <summary>
+    /// Keyframe of <see cref="CControlEffectSimi"/>.
+    /// </summary>
+    /// <remarks>Internally called <c>SKeyVal</c>.</remarks>
     public class Key : CGameCtnMediaBlock.Key
     {
         public Vec2 Position { get; set; }

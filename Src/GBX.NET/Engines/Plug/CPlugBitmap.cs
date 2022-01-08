@@ -1,9 +1,11 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 /// <summary>
-/// Bitmap (0x09011000)
+/// CPlugBitmap (0x09011000)
 /// </summary>
+/// <remarks>A texture.</remarks>
 [Node(0x09011000), WritingNotSupported]
+[NodeExtension("Texture")]
 public class CPlugBitmap : CPlug
 {
     protected CPlugBitmap()

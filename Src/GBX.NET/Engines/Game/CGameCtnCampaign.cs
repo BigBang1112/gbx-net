@@ -1,10 +1,12 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Campaign info (0x03090000)
+/// CGameCtnCampaign (0x03090000)
 /// </summary>
 /// <remarks>Information about a campaign.</remarks>
 [Node(0x03090000)]
+[NodeExtension("ConstructionCampaign")]
+[NodeExtension("Campaign")]
 public class CGameCtnCampaign : CMwNod
 {
     #region Fields

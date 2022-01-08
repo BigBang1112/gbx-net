@@ -1,12 +1,11 @@
-﻿using System.Diagnostics;
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
 /// CGameCtnReplayRecord (0x03093000)
 /// </summary>
 /// <remarks>A replay.</remarks>
 [Node(0x03093000), WritingNotSupported]
+[NodeExtension("Replay")]
 public class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 {
     #region Fields

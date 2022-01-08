@@ -1,9 +1,11 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Decoration of a map (0x03038000)
+/// CGameCtnDecoration (0x03038000)
 /// </summary>
 [Node(0x03038000)]
+[NodeExtension("TMDecoration")]
+[NodeExtension("Decoration")]
 public class CGameCtnDecoration : CGameCtnCollector
 {
     #region Constructors

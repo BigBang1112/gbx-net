@@ -1,5 +1,8 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// CGameCtnBlockInfo (0x0304E000)
+/// </summary>
 [Node(0x0304E000), WritingNotSupported]
 public abstract class CGameCtnBlockInfo : CGameCtnCollector
 { 

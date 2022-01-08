@@ -3,10 +3,11 @@
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Ghost (0x03092000)
+/// CGameCtnGhost (0x03092000)
 /// </summary>
-/// <remarks>Extension: .Ghost.Gbx</remarks>
+/// <remarks>A ghost.</remarks>
 [Node(0x03092000)]
+[NodeExtension("Ghost")]
 public class CGameCtnGhost : CGameGhost
 {
     #region Fields

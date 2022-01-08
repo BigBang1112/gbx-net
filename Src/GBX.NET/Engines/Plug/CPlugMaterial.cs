@@ -1,9 +1,10 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 /// <summary>
-/// Material (0x09079000)
+/// CPlugMaterial (0x09079000)
 /// </summary>
 [Node(0x09079000), WritingNotSupported]
+[NodeExtension("Material")]
 public class CPlugMaterial : CPlug
 {
     private CPlugMaterialCustom? customMaterial;
@@ -167,7 +168,7 @@ public class CPlugMaterial : CPlug
             set => shader3 = value;
         }
 
-        public SDeviceMat(GameBox? gbx, CPlugShader shader1)
+        public SDeviceMat(GameBox? gbx, CPlugShader? shader1)
         {
             Gbx = gbx;
 

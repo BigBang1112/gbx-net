@@ -3,9 +3,11 @@
 namespace GBX.NET.Engines.Plug;
 
 /// <summary>
-/// Custom mesh/model (0x09003000)
+/// CPlugCrystal (0x09003000)
 /// </summary>
+/// <remarks>A custom mesh or model.</remarks>
 [Node(0x09003000)]
+[NodeExtension("Crystal")]
 public class CPlugCrystal : CPlugTreeGenerator
 {
     #region Enums

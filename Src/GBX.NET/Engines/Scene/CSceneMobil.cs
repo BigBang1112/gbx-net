@@ -1,6 +1,10 @@
 ﻿namespace GBX.NET.Engines.Scene;
 
+/// <summary>
+/// CSceneMobil (0x0A011000)
+/// </summary>
 [Node(0x0A011000)]
+[NodeExtension("Mobil")]
 public class CSceneMobil : CSceneObject
 {
     private CHmsItem item;

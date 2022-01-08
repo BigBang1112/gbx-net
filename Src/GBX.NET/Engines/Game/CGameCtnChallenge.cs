@@ -8,10 +8,12 @@ using GBX.NET.BlockInfo;
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Map (0x03043000)
+/// CGameCtnChallenge (0x03043000)
 /// </summary>
-/// <remarks>Extensions: .Challenge.Gbx, .Map.Gbx</remarks>
+/// <remarks>A map.</remarks>
 [Node(0x03043000)]
+[NodeExtension("Challenge")]
+[NodeExtension("Map")]
 public class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 {
     #region Enums
@@ -3180,9 +3182,9 @@ public class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             else
             {
                 n.lightmapFrames = new List<List<byte[]>>
-                    {
-                        new List<byte[]>()
-                    };
+                {
+                    new List<byte[]>()
+                };
             }
 
             if (version >= 2)

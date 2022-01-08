@@ -3,9 +3,11 @@
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker clip (0x03079000)
+/// CGameCtnMediaClip (0x03079000)
 /// </summary>
+/// <remarks>A MediaTracker clip.</remarks>
 [Node(0x03079000)]
+[NodeExtension("Clip")]
 public class CGameCtnMediaClip : CMwNod
 {
     #region Fields

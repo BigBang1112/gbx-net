@@ -1,6 +1,8 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x03033000)]
+[NodeExtension("TMCollection")]
+[NodeExtension("Collection")]
 public class CGameCtnCollection : CMwNod
 {
     public byte CollectionID { get; set; }

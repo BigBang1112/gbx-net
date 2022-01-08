@@ -1,9 +1,11 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 /// <summary>
-/// Official mesh/model (0x09005000)
+/// CPlugSolid (0x09005000)
 /// </summary>
+/// <remarks>An official mesh or model.</remarks>
 [Node(0x09005000), WritingNotSupported]
+[NodeExtension("Solid")]
 public class CPlugSolid : CPlug
 {
     private CPlug? tree;
