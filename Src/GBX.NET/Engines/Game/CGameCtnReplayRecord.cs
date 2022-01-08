@@ -3,8 +3,9 @@
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Replay (0x03093000)
+/// CGameCtnReplayRecord (0x03093000)
 /// </summary>
+/// <remarks>A replay.</remarks>
 [Node(0x03093000), WritingNotSupported]
 public class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 {
@@ -21,8 +22,8 @@ public class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     private string? authorNickname;
     private string? authorZone;
     private string? authorExtraInfo;
-    private Task<CGameCtnChallenge> challenge;
-    private CGameCtnGhost[] ghosts;
+    private Task<CGameCtnChallenge?>? challenge;
+    private CGameCtnGhost[]? ghosts;
     private long[]? extras;
     private CGameCtnMediaClip? clip;
     private CPlugEntRecordData? recordData;
@@ -143,16 +144,17 @@ public class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     }
 
     /// <summary>
-    /// The map the replay orients in.
+    /// The map the replay orients in. Null if only the header was read.
     /// </summary>
     [NodeMember]
-    public CGameCtnChallenge Challenge => challenge.Result;
+    public CGameCtnChallenge? Challenge => challenge?.Result;
 
     /// <summary>
-    /// Ghosts in the replay. NOTE: Some ghosts can be considered as <see cref="CGameCtnMediaBlockGhost"/>. See <see cref="Clip"/>.
+    /// Ghosts in the replay. Null if only the header was read.
     /// </summary>
+    /// <remarks>Some ghosts can be considered as <see cref="CGameCtnMediaBlockGhost"/>. See <see cref="Clip"/>.</remarks>
     [NodeMember]
-    public CGameCtnGhost[] Ghosts => ghosts;
+    public CGameCtnGhost[]? Ghosts => ghosts;
 
     [NodeMember]
     public long[]? Extras => extras;
@@ -200,8 +202,7 @@ public class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     protected CGameCtnReplayRecord()
     {
-        challenge = null!;
-        ghosts = null!;
+        
     }
 
     #endregion
@@ -210,6 +211,9 @@ public class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     public IEnumerable<CGameCtnGhost> GetGhosts()
     {
+        if (ghosts is null)
+            yield break;
+
         foreach (var ghost in ghosts)
             if (ghost is not null)
                 yield return ghost;
@@ -223,9 +227,9 @@ public class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
                                 yield return ghostBlock.GhostModel;
     }
 
-    public async Task<CGameCtnChallenge> GetChallengeAsync()
+    public async Task<CGameCtnChallenge?> GetChallengeAsync()
     {
-        return await challenge;
+        return await (challenge ?? Task.FromResult(default(CGameCtnChallenge?)));
     }
 
     #endregion
@@ -318,7 +322,7 @@ public class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             {
                 using var ms = new MemoryStream(trackGbx);
                 return GameBox.ParseNode<CGameCtnChallenge>(ms);
-            });
+            })!;
 
 #if DEBUG
             n.challenge.ContinueWith(x =>
