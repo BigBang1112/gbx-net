@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿#if DEBUG
+using System.Diagnostics;
+#endif
 
 namespace GBX.NET.Engines.Game;
 
