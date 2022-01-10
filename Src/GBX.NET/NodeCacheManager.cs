@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Text;
 
 namespace GBX.NET;
 
@@ -46,8 +47,8 @@ public static class NodeCacheManager
 
         SkippableChunks = new HashSet<Type>();
 
-        DefineNames();
-        DefineMappings();
+        DefineNames2(Names, Extensions);
+        DefineMappings(Mappings);
         DefineTypes();
     }
 
@@ -70,18 +71,22 @@ public static class NodeCacheManager
         throw new NodeNotInstantiableException(classId);
     }
 
-    private static void DefineNames()
+    internal static void DefineNames(IDictionary<uint, string> names, IDictionary<uint, string> extensions)
     {
-        var watch = Stopwatch.StartNew();
-
         using var reader = new StringReader(Resources.ClassID);
 
         var en = "";
         var engineName = "";
 
-        string? line;
-        while ((line = reader.ReadLine()) is not null)
+        while (true)
         {
+            var line = reader.ReadLine();
+
+            if (line is null)
+            {
+                break;
+            }
+
             var ch = "000";
 
             var className = "";
@@ -110,20 +115,120 @@ public static class NodeCacheManager
 
             if (uint.TryParse(classIDString, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint classID))
             {
-                Names[classID] = engineName + "::" + className;
+                names[classID] = engineName + "::" + className;
                 if (extension != null)
-                    Extensions[classID] = extension;
+                    extensions[classID] = extension;
 
                 continue;
             }
 
-            Debug.WriteLine($"Invalid class ID {classIDString}, skipping");
+            //Debug.WriteLine($"Invalid class ID {classIDString}, skipping");
         }
 
-        Debug.WriteLine("Classes named in " + watch.Elapsed.TotalMilliseconds + "ms");
+        //Debug.WriteLine("Classes named in " + watch.Elapsed.TotalMilliseconds + "ms");
     }
 
-    private static void DefineMappings()
+    internal static void DefineNames2(IDictionary<uint, string> names, IDictionary<uint, string> extensions)
+    {
+        var watch = Stopwatch.StartNew();
+
+        using var reader = new StringReader(Resources.ClassID);
+
+        var classIdSpan = new Span<char>(new[] { '0', '0', '0', '0', '0', '0', '0', '0' });
+        var engineNameSpan = new ReadOnlySpan<char>();
+
+        while (true)
+        {
+            var stringLine = reader.ReadLine();
+
+            if (stringLine is null)
+            {
+                break;
+            }
+
+            var line = stringLine.AsSpan();
+
+#if NET462 || NETSTANDARD2_0
+            if (!line.StartsWith(new ReadOnlySpan<char>(new char[] { ' ', ' ' })))
+#else
+            if (!line.StartsWith("  "))
+#endif
+            {
+                var engine = line.Slice(0, 2);
+                classIdSpan[0] = engine[0];
+                classIdSpan[1] = engine[1];
+
+                if (line.Length > 3)
+                {
+                    engineNameSpan = line.Slice(3, line.Length - 3);
+                }
+
+                continue;
+            }
+
+            var classIdPart = line.Slice(2, 3);
+            classIdSpan[2] = classIdPart[0];
+            classIdSpan[3] = classIdPart[1];
+            classIdSpan[4] = classIdPart[2];
+
+            var classNameWithExtensionSpan = new ReadOnlySpan<char>();
+
+            if (line.Length <= 6)
+            {
+                continue;
+            }
+
+            classNameWithExtensionSpan = line.Slice(6, line.Length - 6);
+            var classNameWithExtensionSpaceIndex = classNameWithExtensionSpan.IndexOf(' ');
+            var noExtension = classNameWithExtensionSpaceIndex == -1;
+
+            var classNameSpan = noExtension
+                ? classNameWithExtensionSpan
+                : classNameWithExtensionSpan.Slice(0, classNameWithExtensionSpaceIndex);
+
+            var extensionSpan = noExtension
+                ? new ReadOnlySpan<char>()
+                : classNameWithExtensionSpan.Slice(classNameWithExtensionSpaceIndex + 1,
+                    length: classNameWithExtensionSpan.Length - classNameWithExtensionSpaceIndex - 1);
+
+#if NET462 || NETSTANDARD2_0
+            if (!uint.TryParse(classIdSpan.ToString(), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint classID))
+#else
+            if (!uint.TryParse(classIdSpan, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint classID))
+#endif
+            {
+                continue;
+            }
+
+#if NET6_0_OR_GREATER
+            var fullName = string.Concat(engineNameSpan, "::", classNameSpan); // .NET Core 3+
+#else
+            var fullNameSpan = new Span<char>(new char[engineNameSpan.Length + 2 + classNameSpan.Length]);
+                
+            var i = 0;
+            engineNameSpan.CopyTo(fullNameSpan.Slice(i, engineNameSpan.Length));
+            i += engineNameSpan.Length;
+
+            new ReadOnlySpan<char>(new char[] { ':', ':' }).CopyTo(fullNameSpan.Slice(i, 2));
+            i += 2;
+
+            classNameSpan.CopyTo(fullNameSpan.Slice(i, classNameSpan.Length));
+
+            var fullName = fullNameSpan.ToString();
+#endif
+
+            names[classID] = fullName;
+
+            if (!extensionSpan.IsEmpty)
+                extensions[classID] = extensionSpan.ToString();
+
+            //Debug.WriteLine($"Invalid class ID {classIdSpan}, skipping");
+        }
+
+        //Debug.WriteLine("Classes named in " + watch.Elapsed.TotalMilliseconds + "ms");
+    }
+
+    internal static void DefineMappings(Dictionary<uint, uint> mappings)
     {
         var watch = Stopwatch.StartNew();
 
@@ -141,15 +246,15 @@ public static class NodeCacheManager
             || !uint.TryParse(valueKey[1], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint value))
                 continue;
 
-            if (Mappings.ContainsValue(key)) // Virtual Skipper solution
-                Mappings[Mappings.FirstOrDefault(x => x.Value == key).Key] = value;
-            Mappings[key] = value;
+            if (mappings.ContainsValue(key)) // Virtual Skipper solution
+                mappings[mappings.FirstOrDefault(x => x.Value == key).Key] = value;
+            mappings[key] = value;
         }
 
         Debug.WriteLine("Mappings defined in " + watch.Elapsed.TotalMilliseconds + "ms");
     }
 
-    private static void DefineTypes()
+    internal static void DefineTypes()
     {
         var watch = Stopwatch.StartNew();
 
