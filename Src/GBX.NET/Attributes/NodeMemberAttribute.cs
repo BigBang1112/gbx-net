@@ -3,6 +3,6 @@
 [AttributeUsage(AttributeTargets.Property)]
 public class NodeMemberAttribute : Attribute
 {
-    public bool ExactlyNamed { get; set; }
-    public string? ExactName { get; set; }
+    public bool ExactlyNamed { get; init; }
+    public string? ExactName { get; init; }
 }
