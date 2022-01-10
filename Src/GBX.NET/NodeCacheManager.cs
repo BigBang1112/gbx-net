@@ -48,7 +48,7 @@ public static class NodeCacheManager
         SkippableChunks = new HashSet<Type>();
 
         DefineNames2(Names, Extensions);
-        DefineMappings(Mappings);
+        DefineMappings2(Mappings);
         DefineTypes();
     }
 
@@ -217,10 +217,10 @@ public static class NodeCacheManager
             var fullName = fullNameSpan.ToString();
 #endif
 
-            names[classID] = fullName;
+            names.Add(classID, fullName);
 
             if (!extensionSpan.IsEmpty)
-                extensions[classID] = extensionSpan.ToString();
+                extensions.Add(classID, extensionSpan.ToString());
 
             //Debug.WriteLine($"Invalid class ID {classIdSpan}, skipping");
         }
@@ -287,7 +287,7 @@ public static class NodeCacheManager
             }
 #endif
 
-            mappings[key] = value;
+            mappings.Add(key, value);
         }
     }
 
