@@ -7,6 +7,7 @@ using BenchmarkDotNet.Running;
 using GBX.NET.Benchmarks;
 using Perfolizer.Horology;
 using System.Globalization;
+using System.Reflection;
 
 var benchmarkTypes = typeof(Program).Assembly
     .GetTypes()
@@ -18,7 +19,6 @@ var fileConfig = new ManualConfig()
     .AddColumn(TargetMethodColumn.Method)
     .AddColumn(new ParamColumn("FileName"))
     .AddColumn(StatisticColumn.Median)
-    .AddDiagnoser(MemoryDiagnoser.Default)
     .WithSummaryStyle(new SummaryStyle(
         CultureInfo.InvariantCulture,
         printUnitsInHeader: true,
@@ -67,7 +67,16 @@ while (true)
 
     var benchmarkType = benchmarkTypes[num];
 
-    var results = BenchmarkRunner.Run(benchmarkType, fileConfig, args);
+    var customBenchmarkAttribute = benchmarkType.GetCustomAttribute<CustomBenchmarkAttribute>();
+
+    var config = default(IConfig?);
+
+    if (customBenchmarkAttribute?.FileBenchmark == true)
+    {
+        config = fileConfig;
+    }
+
+    var results = BenchmarkRunner.Run(benchmarkType, config, args);
 
     Console.WriteLine();
 }

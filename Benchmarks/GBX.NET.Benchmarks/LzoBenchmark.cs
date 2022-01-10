@@ -4,6 +4,7 @@ using GBX.NET.Engines.MwFoundations;
 namespace GBX.NET.Benchmarks;
 
 [MemoryDiagnoser]
+[CustomBenchmark(FileBenchmark = true)]
 public class LzoBenchmark : Benchmark
 {
     public MemoryStream MapCompressed { get; set; } = new();

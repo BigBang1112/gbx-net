@@ -7,6 +7,7 @@ namespace GBX.NET.Benchmarks;
 [IterationCount(50)]
 [Orderer(SummaryOrderPolicy.FastestToSlowest)]
 [MarkdownExporterAttribute.GitHub]
+[CustomBenchmark(FileBenchmark = true)]
 public abstract class GameBoxParseBenchmark<T> : Benchmark where T : CMwNod
 {
     private readonly string folder;

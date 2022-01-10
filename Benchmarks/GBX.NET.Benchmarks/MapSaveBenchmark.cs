@@ -3,6 +3,7 @@ using GBX.NET.Engines.Game;
 
 namespace GBX.NET.Benchmarks;
 
+[CustomBenchmark(FileBenchmark = true)]
 public class MapSaveBenchmark : GameBoxParseBenchmark<CGameCtnChallenge>
 {
     private CGameCtnChallenge map;
