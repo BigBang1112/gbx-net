@@ -230,8 +230,6 @@ public static class NodeCacheManager
 
     internal static void DefineMappings(Dictionary<uint, uint> mappings)
     {
-        var watch = Stopwatch.StartNew();
-
         using var reader = new StringReader(Resources.ClassIDMappings);
 
         string? line;
@@ -250,8 +248,47 @@ public static class NodeCacheManager
                 mappings[mappings.FirstOrDefault(x => x.Value == key).Key] = value;
             mappings[key] = value;
         }
+    }
 
-        Debug.WriteLine("Mappings defined in " + watch.Elapsed.TotalMilliseconds + "ms");
+    internal static void DefineMappings2(Dictionary<uint, uint> mappings)
+    {
+        using var reader = new StringReader(Resources.ClassIDMappings);
+
+        while (true)
+        {
+            var stringLine = reader.ReadLine();
+
+            if (stringLine is null)
+            {
+                break;
+            }
+
+            if (stringLine == "")
+            {
+                continue;
+            }
+
+            var line = stringLine.AsSpan();
+
+            var from = line.Slice(0, 8);
+            var to = line.Slice(12, 8);
+
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+            if (!uint.TryParse(from, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint key)
+            || !uint.TryParse(to, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint value))
+            {
+                continue;
+            }
+#else
+            if (!uint.TryParse(from.ToString(), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint key)
+            || !uint.TryParse(to.ToString(), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint value))
+            {
+                continue;
+            }
+#endif
+
+            mappings[key] = value;
+        }
     }
 
     internal static void DefineTypes()
