@@ -34,23 +34,20 @@ public struct Collection
         Name = null;
     }
 
-    public Int3 GetBlockSize()
+    public Int3 GetBlockSize() => ToString() switch
     {
-        return (ToString()) switch
-        {
-            "Desert" => (32, 16, 32),
-            "Snow" => (32, 16, 32),
-            "Rally" => (32, 16, 32),
-            "Island" => (64, 8, 64),
-            "Bay" => (32, 8, 32),
-            "Coast" => (16, 8, 16),
-            "Valley" => (32, 8, 32),
-            "Stadium" => (32, 8, 32),
-            "Canyon" => (64, 16, 64),
-            "Lagoon" => (32, 8, 32),
-            _ => throw new Exception(),
-        };
-    }
+        "Desert" => (32, 16, 32),
+        "Snow" => (32, 16, 32),
+        "Rally" => (32, 16, 32),
+        "Island" => (64, 8, 64),
+        "Bay" => (32, 8, 32),
+        "Coast" => (16, 8, 16),
+        "Valley" => (32, 8, 32),
+        "Stadium" => (32, 8, 32),
+        "Canyon" => (64, 16, 64),
+        "Lagoon" => (32, 8, 32),
+        _ => throw new Exception(),
+    };
 
     /// <summary>
     /// Converts the collection to a readable string.

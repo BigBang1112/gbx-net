@@ -1,34 +1,19 @@
-﻿using System.Globalization;
+﻿namespace GBX.NET;
 
-namespace GBX.NET;
-
-public readonly struct Vec2 : IVec
+public readonly record struct Vec2(float X, float Y) : IVec
 {
-    public float X { get; }
-    public float Y { get; }
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
+    public float GetMagnitude() => MathF.Sqrt(GetSqrMagnitude());
+#endif
 
-    public Vec2(float x, float y)
-    {
-        X = x;
-        Y = y;
-    }
+#if NETSTANDARD2_0 || NET462_OR_GREATER
+    public float GetMagnitude() => (float)Math.Sqrt(GetSqrMagnitude());
+#endif
 
-    public float GetMagnitude() => (float)Math.Sqrt(X * X + Y * Y);
     public float GetSqrMagnitude() => X * X + Y * Y;
 
-    public override string ToString()
-    {
-        var x = X.ToString(CultureInfo.InvariantCulture);
-        var y = Y.ToString(CultureInfo.InvariantCulture);
-
-        return $"<{x}, {y}>";
-    } 
-
-    public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode();
-    public override bool Equals(object? obj) => obj is Vec2 a && a == this;
-
-    public static bool operator ==(Vec2 a, Vec2 b) => a.X == b.X && a.Y == b.Y;
-    public static bool operator !=(Vec2 a, Vec2 b) => !(a.X == b.X && a.Y == b.Y);
+    public static readonly Vec2 Zero = new();
+    public static float GetDotProduct(Vec2 a, Vec2 b) => a.X * b.X + a.Y * b.Y;
 
     public static Vec2 operator +(Vec2 a, Vec2 b) => new (a.X + b.X, a.Y + b.Y);
     public static Vec2 operator +(Vec2 a, Int2 b) => new (a.X + b.X, a.Y + b.Y);
@@ -58,7 +43,17 @@ public readonly struct Vec2 : IVec
     public static implicit operator Vec2((float X, float Y) v) => new (v.X, v.Y);
     public static implicit operator (float X, float Y)(Vec2 v) => (v.X, v.Y);
 
-    public static explicit operator Vec2(Vec3 a) => new (a.X, a.Y);
-    public static explicit operator Vec2(Vec4 a) => new (a.X, a.Y);
-    public static explicit operator Vec2(float[] a) => a == null ? new Vec2() : a.Length >= 2 ? new Vec2(a[0], a[1]) : throw new Exception();
+    public static explicit operator Vec2(Vec3 a) => new(a.X, a.Y);
+    public static explicit operator Vec2(Vec4 a) => new(a.X, a.Y);
+
+    public static explicit operator Vec2(ReadOnlySpan<float> a) => GetVec2FromReadOnlySpan(a);
+    public static explicit operator Vec2(Span<float> a) => GetVec2FromReadOnlySpan(a);
+    public static explicit operator Vec2(float[] a) => GetVec2FromReadOnlySpan(a);
+
+    public static Vec2 GetVec2FromReadOnlySpan(ReadOnlySpan<float> a) => a.Length switch
+    {
+        0 => default,
+        1 => new(a[0], 0),
+        _ => new(a[0], a[1])
+    };
 }

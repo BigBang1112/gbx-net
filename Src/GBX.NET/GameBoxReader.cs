@@ -1034,7 +1034,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public Vec2 ReadVec2() => new(x: ReadSingle(), y: ReadSingle());
+    public Vec2 ReadVec2() => new(X: ReadSingle(), Y: ReadSingle());
 
     /// <summary>
     /// Reads 3 <see cref="float"/>s.
@@ -1043,7 +1043,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public Vec3 ReadVec3() => new(x: ReadSingle(), y: ReadSingle(), z: ReadSingle());
+    public Vec3 ReadVec3() => new(X: ReadSingle(), Y: ReadSingle(), Z: ReadSingle());
 
     /// <summary>
     /// Reads 4 <see cref="float"/>s.
@@ -1052,7 +1052,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public Vec4 ReadVec4() => new(x: ReadSingle(), y: ReadSingle(), z: ReadSingle(), w: ReadSingle());
+    public Vec4 ReadVec4() => new(X: ReadSingle(), Y: ReadSingle(), Z: ReadSingle(), W: ReadSingle());
 
     /// <summary>
     /// Reads 3 <see cref="int"/>s.
@@ -1061,7 +1061,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public Int3 ReadInt3() => new(x: ReadInt32(), y: ReadInt32(), z: ReadInt32());
+    public Int3 ReadInt3() => new(X: ReadInt32(), Y: ReadInt32(), Z: ReadInt32());
 
     /// <summary>
     /// Reads 2 <see cref="int"/>s.
@@ -1070,7 +1070,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public Int2 ReadInt2() => new(x: ReadInt32(), y: ReadInt32());
+    public Int2 ReadInt2() => new(X: ReadInt32(), Y: ReadInt32());
 
     /// <summary>
     /// Reads 3 <see cref="byte"/>s.
@@ -1079,7 +1079,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public Byte3 ReadByte3() => new(x: ReadByte(), y: ReadByte(), z: ReadByte());
+    public Byte3 ReadByte3() => new(X: ReadByte(), Y: ReadByte(), Z: ReadByte());
 
     /// <summary>
     /// Reads a <paramref name="byteLength"/> amount of bytes and converts them into <see cref="BigInteger"/>.
