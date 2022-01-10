@@ -6,18 +6,19 @@ namespace GBX.NET.Benchmarks;
 [CustomBenchmark]
 public class NodeCacheDefineNamesBenchmark : Benchmark
 {
-    public Dictionary<uint, string> Names { get; set; } = new();
-    public Dictionary<uint, string> Extensions { get; set; } = new();
-
     [Benchmark]
     public void DefineNames()
     {
-        NodeCacheManager.DefineNames(Names, Extensions);
+        var names = new Dictionary<uint, string>();
+        var extensions = new Dictionary<uint, string>();
+        NodeCacheManager.DefineNames(names, extensions);
     }
 
     [Benchmark(Baseline = true)]
     public void DefineNames2()
     {
-        NodeCacheManager.DefineNames2(Names, Extensions);
+        var names = new Dictionary<uint, string>();
+        var extensions = new Dictionary<uint, string>();
+        NodeCacheManager.DefineNames2(names, extensions);
     }
 }

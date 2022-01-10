@@ -6,17 +6,17 @@ namespace GBX.NET.Benchmarks;
 [CustomBenchmark]
 public class NodeCacheDefineMappingsBenchmark : Benchmark
 {
-    public Dictionary<uint, uint> Mappings { get; set; } = new();
-
     [Benchmark]
     public void DefineMappings()
     {
-        NodeCacheManager.DefineMappings(Mappings);
+        var mappings = new Dictionary<uint, uint>();
+        NodeCacheManager.DefineMappings(mappings);
     }
 
     [Benchmark(Baseline = true)]
     public void DefineMappings2()
     {
-        NodeCacheManager.DefineMappings2(Mappings);
+        var mappings = new Dictionary<uint, uint>();
+        NodeCacheManager.DefineMappings2(mappings);
     }
 }
