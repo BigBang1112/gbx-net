@@ -19,7 +19,6 @@ public static class NodeCacheManager
 
     public static Dictionary<Type, uint> TypeWithClassId { get; }
     public static Dictionary<uint, Type> ClassIdWithType { get; }
-    public static Dictionary<Type, List<uint>> AvailableInheritanceClasses { get; }
     public static Dictionary<uint, Type> AvailableChunkTypes { get; }
     public static Dictionary<uint, Type> AvailableHeaderChunkTypes { get; }
     public static Dictionary<Type, IEnumerable<Attribute>> AvailableClassAttributes { get; }
@@ -29,6 +28,9 @@ public static class NodeCacheManager
     public static Dictionary<uint, Func<Chunk>> AvailableChunkConstructors { get; }
     public static Dictionary<uint, Func<Chunk>> AvailableHeaderChunkConstructors { get; }
 
+    public static bool ChunksAreCurrentlyGettingCached { get; private set; }
+
+    public static HashSet<Type> ClassTypesWithCachedChunks { get; }
     public static HashSet<Type> SkippableChunks { get; }
 
     static NodeCacheManager()
@@ -39,9 +41,10 @@ public static class NodeCacheManager
 
         TypeWithClassId = new Dictionary<Type, uint>();
         ClassIdWithType = new Dictionary<uint, Type>();
-        AvailableInheritanceClasses = new Dictionary<Type, List<uint>>();
         AvailableChunkTypes = new Dictionary<uint, Type>();
         AvailableHeaderChunkTypes = new Dictionary<uint, Type>();
+
+        ClassTypesWithCachedChunks = new HashSet<Type>();
 
         AvailableClassAttributes = new Dictionary<Type, IEnumerable<Attribute>>();
         AvailableChunkAttributes = new Dictionary<uint, IEnumerable<Attribute>>();
@@ -138,12 +141,33 @@ public static class NodeCacheManager
         return GetChunkTypeById(classType, chunkId, AvailableChunkTypes);
     }
 
-    internal static Type? GetChunkTypeById(Type classType, uint chunkId, Dictionary<uint, Type> availableChunkTypes)
+    internal static Type? GetChunkTypeById(Type classType, uint chunkId, IDictionary<uint, Type> availableChunkTypes)
     {
         if (availableChunkTypes.TryGetValue(chunkId, out var cachedChunkType))
         {
             return cachedChunkType;
         }
+
+        if (ClassTypesWithCachedChunks.Contains(classType))
+        {
+            return null;
+        }
+
+        ClassTypesWithCachedChunks.Add(classType);
+
+        // If this section is running while the same classType arrives, it should wait until its completed
+        // and then return it from AvailableChunkTypes/AvailableHeaderChunkTypes
+        // The solution is probably with async
+        // This would mainly fix performance issues with parallel gbx parsing
+
+        // Current solution doesnt allow multiple classType processing but doesnt require concurrent collection for now
+        // Would be better to replace with an async option
+        if (ChunksAreCurrentlyGettingCached)
+        {
+            Thread.Sleep(1);
+        }
+        
+        ChunksAreCurrentlyGettingCached = true;
 
         var requestedChunkType = default(Type?);
 
@@ -174,7 +198,7 @@ public static class NodeCacheManager
                 }
 
                 AvailableChunkAttributesByType.Add(chunkType, attributes);
-                AvailableChunkAttributes.Add(chunkAttribute.ID, attributes);
+                AvailableChunkAttributes[chunkAttribute.ID] = attributes; // Problem with CGameCtnReplayRecord having two 0x03093002
 
                 if (chunkAttribute.ID == chunkId)
                 {
@@ -199,7 +223,6 @@ public static class NodeCacheManager
                     AvailableHeaderChunkConstructors.Add(chunkAttribute.ID, constructor);
                 }
 
-
                 if (chunkType.BaseType?.GetGenericTypeDefinition() == typeof(SkippableChunk<>))
                 {
                     SkippableChunks.Add(chunkType);
@@ -215,6 +238,8 @@ public static class NodeCacheManager
 
             classType = baseType;
         }
+
+        ChunksAreCurrentlyGettingCached = false;
 
         return requestedChunkType;
     }
