@@ -8,23 +8,125 @@ namespace GBX.NET;
 
 public static class NodeCacheManager
 {
+    private static readonly Assembly assembly = typeof(NodeCacheManager).Assembly;
+
+    private static readonly Dictionary<uint, Type> availableClasses;
+    private static readonly Dictionary<Type, List<uint>> availableInheritanceClasses;
+    private static readonly Dictionary<Type, Dictionary<uint, Type>> availableChunkClasses;
+    private static readonly Dictionary<Type, Dictionary<uint, Type>> availableHeaderChunkClasses;
+    private static readonly Dictionary<Type, IEnumerable<Attribute>> availableClassAttributes;
+    private static readonly Dictionary<Type, Dictionary<uint, IEnumerable<Attribute>>> availableChunkAttributes;
+    private static readonly Dictionary<Type, IEnumerable<Attribute>> availableChunkAttributesByType;
+    private static readonly Dictionary<uint, Func<CMwNod>> availableClassConstructors;
+    private static readonly Dictionary<Type, Dictionary<uint, Func<Chunk>>> availableChunkConstructors;
+    private static readonly Dictionary<Type, Dictionary<uint, Func<Chunk>>> availableHeaderChunkConstructors;
+    private static readonly HashSet<Type> skippableChunks;
+
+    public static bool TypesDefined { get; internal set; }
+
     public static Dictionary<uint, string> Names { get; }
     public static Dictionary<uint, uint> Mappings { get; } // key: older, value: newer
     public static Dictionary<uint, string> Extensions { get; }
 
-    public static Dictionary<uint, Type> AvailableClasses { get; }
-    public static Dictionary<Type, List<uint>> AvailableInheritanceClasses { get; }
-    public static Dictionary<Type, Dictionary<uint, Type>> AvailableChunkClasses { get; }
-    public static Dictionary<Type, Dictionary<uint, Type>> AvailableHeaderChunkClasses { get; }
+    public static Dictionary<uint, Type> AvailableClasses
+    {
+        get
+        {
+            DefineTypes();
+            return availableClasses;
+        }
+    }
 
-    public static Dictionary<Type, IEnumerable<Attribute>> AvailableClassAttributes { get; }
-    public static Dictionary<Type, Dictionary<uint, IEnumerable<Attribute>>> AvailableChunkAttributes { get; }
-    public static Dictionary<Type, IEnumerable<Attribute>> AvailableChunkAttributesByType { get; }
-    public static HashSet<Type> SkippableChunks { get; }
+    public static Dictionary<Type, List<uint>> AvailableInheritanceClasses
+    {
+        get
+        {
+            DefineTypes();
+            return availableInheritanceClasses;
+        }
+    }
 
-    public static Dictionary<uint, Func<CMwNod>> AvailableClassConstructors { get; }
-    public static Dictionary<Type, Dictionary<uint, Func<Chunk>>> AvailableChunkConstructors { get; }
-    public static Dictionary<Type, Dictionary<uint, Func<Chunk>>> AvailableHeaderChunkConstructors { get; }
+    public static Dictionary<Type, Dictionary<uint, Type>> AvailableChunkClasses
+    {
+        get
+        {
+            DefineTypes();
+            return availableChunkClasses;
+        }
+    }
+
+    public static Dictionary<Type, Dictionary<uint, Type>> AvailableHeaderChunkClasses
+    {
+        get
+        {
+            DefineTypes();
+            return availableHeaderChunkClasses;
+        }
+    }
+
+
+    public static Dictionary<Type, IEnumerable<Attribute>> AvailableClassAttributes
+    {
+        get
+        {
+            DefineTypes();
+            return availableClassAttributes;
+        }
+    }
+
+    public static Dictionary<Type, Dictionary<uint, IEnumerable<Attribute>>> AvailableChunkAttributes
+    {
+        get
+        {
+            DefineTypes();
+            return availableChunkAttributes;
+        }
+    }
+
+    public static Dictionary<Type, IEnumerable<Attribute>> AvailableChunkAttributesByType
+    {
+        get
+        {
+            DefineTypes();
+            return availableChunkAttributesByType;
+        }
+    }
+
+    public static Dictionary<uint, Func<CMwNod>> AvailableClassConstructors
+    {
+        get
+        {
+            DefineTypes();
+            return availableClassConstructors;
+        }
+    }
+
+    public static Dictionary<Type, Dictionary<uint, Func<Chunk>>> AvailableChunkConstructors
+    {
+        get
+        {
+            DefineTypes();
+            return availableChunkConstructors;
+        }
+    }
+
+    public static Dictionary<Type, Dictionary<uint, Func<Chunk>>> AvailableHeaderChunkConstructors
+    {
+        get
+        {
+            DefineTypes();
+            return availableHeaderChunkConstructors;
+        }
+    }
+
+    public static HashSet<Type> SkippableChunks
+    {
+        get
+        {
+            DefineTypes();
+            return skippableChunks;
+        }
+    }
 
     static NodeCacheManager()
     {
@@ -32,24 +134,23 @@ public static class NodeCacheManager
         Mappings = new Dictionary<uint, uint>();
         Extensions = new Dictionary<uint, string>();
 
-        AvailableClasses = new Dictionary<uint, Type>();
-        AvailableInheritanceClasses = new Dictionary<Type, List<uint>>();
-        AvailableChunkClasses = new Dictionary<Type, Dictionary<uint, Type>>();
-        AvailableHeaderChunkClasses = new Dictionary<Type, Dictionary<uint, Type>>();
+        availableClasses = new Dictionary<uint, Type>();
+        availableInheritanceClasses = new Dictionary<Type, List<uint>>();
+        availableChunkClasses = new Dictionary<Type, Dictionary<uint, Type>>();
+        availableHeaderChunkClasses = new Dictionary<Type, Dictionary<uint, Type>>();
 
-        AvailableClassAttributes = new Dictionary<Type, IEnumerable<Attribute>>();
-        AvailableChunkAttributes = new Dictionary<Type, Dictionary<uint, IEnumerable<Attribute>>>();
-        AvailableChunkAttributesByType = new Dictionary<Type, IEnumerable<Attribute>>();
+        availableClassAttributes = new Dictionary<Type, IEnumerable<Attribute>>();
+        availableChunkAttributes = new Dictionary<Type, Dictionary<uint, IEnumerable<Attribute>>>();
+        availableChunkAttributesByType = new Dictionary<Type, IEnumerable<Attribute>>();
 
-        AvailableClassConstructors = new Dictionary<uint, Func<CMwNod>>();
-        AvailableChunkConstructors = new Dictionary<Type, Dictionary<uint, Func<Chunk>>>();
-        AvailableHeaderChunkConstructors = new Dictionary<Type, Dictionary<uint, Func<Chunk>>>();
+        availableClassConstructors = new Dictionary<uint, Func<CMwNod>>();
+        availableChunkConstructors = new Dictionary<Type, Dictionary<uint, Func<Chunk>>>();
+        availableHeaderChunkConstructors = new Dictionary<Type, Dictionary<uint, Func<Chunk>>>();
 
-        SkippableChunks = new HashSet<Type>();
+        skippableChunks = new HashSet<Type>();
 
         DefineNames2(Names, Extensions);
         DefineMappings2(Mappings);
-        DefineTypes();
     }
 
     /// <summary>
@@ -293,7 +394,28 @@ public static class NodeCacheManager
 
     internal static void DefineTypes()
     {
-        var watch = Stopwatch.StartNew();
+        DefineTypes(availableClasses, availableInheritanceClasses, availableChunkClasses,
+                    availableHeaderChunkClasses, availableClassAttributes, availableChunkAttributes,
+                    availableChunkAttributesByType, availableClassConstructors, availableChunkConstructors,
+                    availableHeaderChunkConstructors, skippableChunks);
+    }
+
+    internal static void DefineTypes(IDictionary<uint, Type> availableClasses,
+        IDictionary<Type, List<uint>> availableInheritanceClasses,
+        IDictionary<Type, Dictionary<uint, Type>> availableChunkClasses,
+        IDictionary<Type, Dictionary<uint, Type>> availableHeaderChunkClasses,
+        IDictionary<Type, IEnumerable<Attribute>> availableClassAttributes,
+        IDictionary<Type, Dictionary<uint, IEnumerable<Attribute>>> availableChunkAttributes,
+        IDictionary<Type, IEnumerable<Attribute>> availableChunkAttributesByType,
+        IDictionary<uint, Func<CMwNod>> availableClassConstructors,
+        IDictionary<Type, Dictionary<uint, Func<Chunk>>> availableChunkConstructors,
+        IDictionary<Type, Dictionary<uint, Func<Chunk>>> availableHeaderChunkConstructors,
+        HashSet<Type> skippableChunks)
+    {
+        if (TypesDefined)
+        {
+            return;
+        }
 
         var assembly = Assembly.GetExecutingAssembly();
 
@@ -308,9 +430,7 @@ public static class NodeCacheManager
             types = e.Types.Where(x => x is not null)!;
         }
 
-        var engineRelatedTypes = types.Where(t =>
-             t?.IsClass == true
-          && t.Namespace?.StartsWith("GBX.NET.Engines") == true);
+        var engineRelatedTypes = types.Where(IsGameBoxNode);
 
         var availableClassesByType = new Dictionary<Type, uint>();
 
@@ -324,11 +444,11 @@ public static class NodeCacheManager
             if (!id.HasValue)
                 throw new Exception($"{type.Name} misses NodeAttribute.");
 
-            AvailableClasses.Add(id.Value, type);
+            availableClasses.Add(id.Value, type);
             availableClassesByType.Add(type, id.Value);
         }
 
-        foreach (var typePair in AvailableClasses)
+        foreach (var typePair in availableClasses)
         {
             var id = typePair.Key;
             var type = typePair.Value;
@@ -344,7 +464,7 @@ public static class NodeCacheManager
                 currentType = currentType.BaseType!;
             }
 
-            AvailableInheritanceClasses[type] = classes;
+            availableInheritanceClasses.Add(type, classes);
 
             var chunks = type.GetNestedTypes().Where(x => x.IsSubclassOf(typeof(Chunk)));
 
@@ -357,8 +477,8 @@ public static class NodeCacheManager
                 baseType = baseType.BaseType;
             }
 
-            var availableChunkClasses = new Dictionary<uint, Type>();
-            var availableHeaderChunkClasses = new Dictionary<uint, Type>();
+            var availableChunkClassesPerClass = new Dictionary<uint, Type>();
+            var availableHeaderChunkClassesPerClass = new Dictionary<uint, Type>();
 
             foreach (var chunk in chunks)
             {
@@ -369,32 +489,32 @@ public static class NodeCacheManager
 
                 if (chunk.GetInterface(nameof(IHeaderChunk)) == null)
                 {
-                    availableChunkClasses.Add(chunkAttribute.ID, chunk);
+                    availableChunkClassesPerClass.Add(chunkAttribute.ID, chunk);
                 }
                 else
                 {
-                    availableHeaderChunkClasses.Add(chunkAttribute.ID, chunk);
+                    availableHeaderChunkClassesPerClass.Add(chunkAttribute.ID, chunk);
                 }
 
                 if (chunk.BaseType?.GetGenericTypeDefinition() == typeof(SkippableChunk<>))
                 {
-                    SkippableChunks.Add(chunk);
+                    skippableChunks.Add(chunk);
                 }
             }
 
-            AvailableChunkClasses.Add(type, availableChunkClasses);
-            AvailableHeaderChunkClasses.Add(type, availableHeaderChunkClasses);
+            availableChunkClasses.Add(type, availableChunkClassesPerClass);
+            availableHeaderChunkClasses.Add(type, availableHeaderChunkClassesPerClass);
         }
 
-        foreach (var idClassPair in AvailableClasses)
+        foreach (var idClassPair in availableClasses)
         {
             var id = idClassPair.Key;
             var classType = idClassPair.Value;
 
-            AvailableClassAttributes.Add(classType, classType.GetCustomAttributes());
+            availableClassAttributes.Add(classType, classType.GetCustomAttributes());
         }
 
-        foreach (var classChunksPair in AvailableHeaderChunkClasses.Concat(AvailableChunkClasses))
+        foreach (var classChunksPair in availableHeaderChunkClasses.Concat(availableChunkClasses))
         {
             var attributeDictionary = new Dictionary<uint, IEnumerable<Attribute>>();
 
@@ -405,15 +525,15 @@ public static class NodeCacheManager
 
                 var attributes = chunkClass.GetCustomAttributes();
 
-                attributeDictionary[id] = attributes;
+                attributeDictionary.Add(id, attributes);
 
-                AvailableChunkAttributesByType[chunkClass] = attributes;
+                availableChunkAttributesByType[chunkClass] = attributes; // some duplicates
             }
 
-            AvailableChunkAttributes[classChunksPair.Key] = attributeDictionary;
+            availableChunkAttributes[classChunksPair.Key] = attributeDictionary; // some duplicates
         }
 
-        foreach (var idClassPair in AvailableClasses)
+        foreach (var idClassPair in availableClasses)
         {
             var id = idClassPair.Key;
             var classType = idClassPair.Value;
@@ -430,24 +550,29 @@ public static class NodeCacheManager
             var lambda = Expression.Lambda<Func<CMwNod>>(newExp);
             var compiled = lambda.Compile();
 
-            AvailableClassConstructors.Add(id, compiled);
+            availableClassConstructors.Add(id, compiled);
         }
 
-        foreach (var classChunksPair in AvailableChunkClasses)
+        foreach (var classChunksPair in availableChunkClasses)
         {
             var constructors = GetChunkConstructors(classChunksPair);
-            if (constructors != null)
-                AvailableChunkConstructors[classChunksPair.Key] = constructors;
+            if (constructors is not null)
+                availableChunkConstructors.Add(classChunksPair.Key, constructors);
         }
 
-        foreach (var classChunksPair in AvailableHeaderChunkClasses)
+        foreach (var classChunksPair in availableHeaderChunkClasses)
         {
             var constructors = GetChunkConstructors(classChunksPair);
-            if (constructors != null)
-                AvailableHeaderChunkConstructors[classChunksPair.Key] = constructors;
+            if (constructors is not null)
+                availableHeaderChunkConstructors.Add(classChunksPair.Key, constructors);
         }
 
-        Debug.WriteLine("Types defined in " + watch.Elapsed.TotalMilliseconds + "ms");
+        TypesDefined = true;
+    }
+
+    private static bool IsGameBoxNode(Type t)
+    {
+        return t?.IsClass == true && t.Namespace?.StartsWith("GBX.NET.Engines") == true;
     }
 
     private static Dictionary<uint, Func<Chunk>>? GetChunkConstructors(
