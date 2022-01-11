@@ -21,8 +21,6 @@ public abstract class Node
         }
     }
 
-    public virtual uint ID { get; private set; }
-
     /// <summary>
     /// Name of the class. The format is <c>Engine::Class</c>.
     /// </summary>
@@ -30,8 +28,9 @@ public abstract class Node
     {
         get
         {
-            if (NodeCacheManager.Names.TryGetValue(ID, out string? name))
-                return name;
+            if (NodeCacheManager.TypeWithClassId.TryGetValue(GetType(), out uint id))
+                if (NodeCacheManager.Names.TryGetValue(id, out string? name))
+                    return name;
             return GetType().FullName?.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::") ?? string.Empty;
         }
     }
@@ -52,10 +51,9 @@ public abstract class Node
         }
     }
 
+    // Now only chunks
     internal void SetIDAndChunks()
     {
-        ID = ((NodeAttribute)NodeCacheManager.AvailableClassAttributes[GetType()]
-            .First(x => x is NodeAttribute)).ID;
         chunks = new ChunkSet(this);
     }
 
@@ -132,15 +130,15 @@ public abstract class Node
 
         var id = classId.Value;
 
-        if (!NodeCacheManager.AvailableClasses.TryGetValue(id, out Type? type))
+        // Duplicate check
+        var type = NodeCacheManager.GetClassTypeById(id);
+
+        if (type is null)
         {
             throw new NodeNotImplementedException(id);
         }
 
-        NodeCacheManager.AvailableClassConstructors.TryGetValue(id, out Func<CMwNod>? constructor);
-
-        if (constructor is null)
-            throw new ThisShouldNotHappenException();
+        var constructor = NodeCacheManager.GetClassConstructor(id);
 
         var node = (T)constructor();
         node.SetIDAndChunks();
@@ -197,11 +195,9 @@ public abstract class Node
 
             chunkId = Chunk.Remap(chunkId);
 
-            var reflected = NodeCacheManager.AvailableChunkClasses[type].TryGetValue(chunkId, out Type? chunkClass);
+            var chunkClass = NodeCacheManager.GetChunkTypeById(type, chunkId);
 
-            if (reflected && chunkClass is null)
-                throw new ThisShouldNotHappenException();
-
+            var reflected = chunkClass is not null;
             var skippable = reflected && NodeCacheManager.SkippableChunks.Contains(chunkClass!);
 
             // Unknown or skippable chunk
@@ -235,7 +231,7 @@ public abstract class Node
 
                 if (reflected)
                 {
-                    var attributesAvailable = NodeCacheManager.AvailableChunkAttributes[type].TryGetValue(
+                    var attributesAvailable = NodeCacheManager.AvailableChunkAttributes.TryGetValue(
                         chunkId, out IEnumerable<Attribute>? attributes);
 
                     if (!attributesAvailable)
@@ -258,7 +254,7 @@ public abstract class Node
                     if (chunkAttribute is null)
                         throw new ThisShouldNotHappenException();
 
-                    NodeCacheManager.AvailableChunkConstructors[type].TryGetValue(chunkId,
+                    NodeCacheManager.AvailableChunkConstructors.TryGetValue(chunkId,
                         out Func<Chunk>? constructor);
 
                     if (constructor is null)
@@ -308,7 +304,7 @@ public abstract class Node
             else // Known or unskippable chunk
             {
                 // Faster than caching
-                NodeCacheManager.AvailableChunkConstructors[type].TryGetValue(chunkId,
+                NodeCacheManager.AvailableChunkConstructors.TryGetValue(chunkId,
                     out Func<Chunk>? constructor);
 
                 if (constructor is null)
@@ -329,7 +325,7 @@ public abstract class Node
 
                 var gbxrw = new GameBoxReaderWriter(r);
 
-                var attributesAvailable = NodeCacheManager.AvailableChunkAttributes[type].TryGetValue(
+                var attributesAvailable = NodeCacheManager.AvailableChunkAttributes.TryGetValue(
                     chunkId, out IEnumerable<Attribute>? attributes);
 
                 if (!attributesAvailable)

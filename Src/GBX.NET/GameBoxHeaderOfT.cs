@@ -110,30 +110,27 @@ public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
             var chunkId = Chunk.Remap(chunkInfo.Key);
             var nodeId = chunkId & 0xFFFFF000;
 
-            var isNodeImplemented = NodeCacheManager.AvailableClasses.TryGetValue(nodeId, out Type? nodeType);
+            var nodeType = NodeCacheManager.GetClassTypeById(nodeId);
 
-            if (!isNodeImplemented)
+            if (nodeType is null)
             {
-                logger?.LogWarning("Node ID 0x{nodeId} is not implemented. This occurs only in the header therefore it's not a fatal problem. ({nodeName})",
+                logger?.LogWarning("Node ID 0x{nodeId} is not implemented. This occurs only in the header therefore it's not a fatal problem (it actually is). ({nodeName})",
                     nodeId.ToString("X8"),
                     NodeCacheManager.Names.Where(x => x.Key == nodeId).Select(x => x.Value).FirstOrDefault() ?? "unknown class");
+                throw new Exception();
             }
 
             var chunkTypes = new Dictionary<uint, Type>();
-
-            if (nodeType is not null)
-                NodeCacheManager.AvailableHeaderChunkClasses.TryGetValue(nodeType, out chunkTypes);
-
-            if (chunkTypes is null)
-                throw new ThisShouldNotHappenException();
 
             var d = r.ReadBytes(chunkInfo.Value.Size);
 
             Chunk chunk;
 
-            if (chunkTypes.TryGetValue(chunkId, out Type? type))
+            var type = NodeCacheManager.GetHeaderChunkTypeById(nodeType, chunkId);
+
+            if (type is not null)
             {
-                NodeCacheManager.AvailableHeaderChunkConstructors[nodeType!].TryGetValue(chunkId,
+                NodeCacheManager.AvailableHeaderChunkConstructors.TryGetValue(chunkId,
                     out Func<Chunk>? constructor);
 
                 if (constructor is null)

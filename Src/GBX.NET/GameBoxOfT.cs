@@ -59,10 +59,10 @@ public class GameBox<T> : GameBox where T : CMwNod
     /// </summary>
     /// <param name="node">Node to wrap.</param>
     /// <param name="headerInfo">Header info to use.</param>
-    public GameBox(T node, GameBoxHeaderInfo? headerInfo = null) : this(headerInfo ?? new GameBoxHeaderInfo(node.ID))
+    public GameBox(T node, GameBoxHeaderInfo? headerInfo = null)
+        : this(headerInfo ?? new GameBoxHeaderInfo(node.GetType().GetCustomAttribute<NodeAttribute>()!.ID))
     {
         Node = node;
-        ID = node.ID;
 
         // It needs to be sure that GBX is assigned correctly to every node
         AssignGbxToNode();

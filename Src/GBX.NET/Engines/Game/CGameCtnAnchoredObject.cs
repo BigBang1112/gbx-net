@@ -216,7 +216,7 @@ public class CGameCtnAnchoredObject : CMwNod
                     rw.Writer!.Write(-1);
                 else
                 {
-                    rw.Writer!.Write(n.waypointSpecialProperty.ID);
+                    rw.Writer!.Write(0x2E009000);
                     n.waypointSpecialProperty.Write(rw.Writer);
                 }
             }

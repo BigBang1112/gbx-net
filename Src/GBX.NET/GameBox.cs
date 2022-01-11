@@ -147,11 +147,11 @@ public class GameBox
 
         GameBox gbx;
 
-        var isNodeAvailable = NodeCacheManager.AvailableClasses.TryGetValue(header.ID.Value, out Type? availableClass);
+        var availableClass = NodeCacheManager.GetClassTypeById(header.ID.Value);
 
-        if (isNodeAvailable)
+        if (availableClass is not null)
         {
-            var gbxType = typeof(GameBox<>).MakeGenericType(availableClass!);
+            var gbxType = typeof(GameBox<>).MakeGenericType(availableClass);
             gbx = (GameBox)Activator.CreateInstance(
                 gbxType,
                 BindingFlags.NonPublic | BindingFlags.Instance,
@@ -173,7 +173,7 @@ public class GameBox
         if (!gbx.ReadRefTable(reader, progress, logger))
             return gbx;
 
-        if (isNodeAvailable && readRawBody)
+        if (availableClass is not null && readRawBody)
             gbx.ReadRawBody(reader);
 
         return gbx;
