@@ -184,12 +184,7 @@ public abstract class Node
 
             var progressPercentage = (float)stream.Position / stream.Length;
 
-            if (logger?.IsEnabled(LogLevel.Debug) == true)
-            {
-                logger?.LogDebug("0x{chunk} ({progress})",
-                    chunkId.ToString("X8"),
-                    progressPercentage.ToString("0.00%"));
-            }
+            logger?.LogChunkProgress(chunkHex: chunkId.ToString("X8"), progressPercentage * 100);
 
             Chunk chunk;
 
@@ -398,7 +393,7 @@ public abstract class Node
 
         stopwatch.Stop();
 
-        logger?.LogDebug("DONE! ({time}ms)", stopwatch.Elapsed.TotalMilliseconds);
+        logger?.LogNodeComplete(time: stopwatch.Elapsed.TotalMilliseconds);
     }
 
     public void Read(GameBoxReader r)
