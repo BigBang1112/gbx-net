@@ -3,7 +3,7 @@
 /// <summary>
 /// A struct that can handle GameBox collection/environment values by either a name or a value.
 /// </summary>
-public struct Collection
+public readonly struct Collection
 {
     /// <summary>
     /// Represents an ID defined kind of collection. If set, the ID is converted to its proper name from the <see cref="Resources.CollectionID"/> list using the <see cref="ToString"/> method. Always available if <see cref="Name"/> is null.
