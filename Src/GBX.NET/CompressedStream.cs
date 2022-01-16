@@ -26,7 +26,7 @@ public class CompressedStream : DeflateStream
 
     public override void Write(byte[] buffer, int offset, int count)
     {
-        if (magic is not null)
+        if (magic is null)
         {
             WriteMagic();
         }
@@ -64,8 +64,6 @@ public class CompressedStream : DeflateStream
 
     private void WriteMagic()
     {
-        BaseStream.WriteByte(0x78);
-
         byte compressionTypeByte = Compression switch
         {
             CompressionLevel.BestCompression => 0xDA,
@@ -74,8 +72,8 @@ public class CompressedStream : DeflateStream
             _ => throw new Exception("Unknown compression can't be written."),
         };
 
-        BaseStream.WriteByte(compressionTypeByte);
+        magic = new byte[] { 0x78, compressionTypeByte };
 
-        magic = null; // Temp set to make sure the method is not called again
+        BaseStream.Write(magic, 0, magic.Length);
     }
 }
