@@ -214,10 +214,13 @@ public class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #region Properties
 
+#if DEBUG
     /// <summary>
-    /// Shows members that are available from the GBX header (reading the body is not required).
+    /// Shows members that are available from the GBX header (members where reading the body is not required). This method is available only in DEBUG configuration.
     /// </summary>
-    public IHeader Header => this;
+    /// <remarks>This is just a helper method that just returns THIS object, just casted as <see cref="IHeader"/>. Avoid using this method in production.</remarks>
+    public IHeader GetHeaderMembers() => this;
+#endif
 
     /// <summary>
     /// Time of the bronze medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
