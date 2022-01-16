@@ -23,7 +23,7 @@ public class CGameNetOnlineMessage : CMwNod
 
     public override string ToString()
     {
-        return "Message from " + SenderLogin;
+        return $"{base.ToString()} {{ Message from {SenderLogin} }}";
     }
 
     [Chunk(0x03028000)]

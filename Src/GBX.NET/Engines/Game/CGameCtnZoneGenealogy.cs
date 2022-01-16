@@ -49,7 +49,10 @@ public class CGameCtnZoneGenealogy : CMwNod
 
     #region Methods
 
-    public override string ToString() => ZoneIds is null ? string.Empty : string.Join(" ", ZoneIds);
+    public override string ToString()
+    {
+        return $"{base.ToString()} {{ {(ZoneIds is null ? string.Empty : string.Join(" ", ZoneIds))} }}";
+    }
 
     #endregion
 

@@ -310,7 +310,7 @@ public class CGameCtnBlock : CMwNod
 
     #region Methods
 
-    public override string ToString() => $"{Name} {Coord}";
+    public override string ToString() => $"{base.ToString()} {{ {Name} {Coord} }}";
 
     internal static bool IsGhostBlock(int flags) => flags > -1 && (flags & (1 << isGhostBit)) != 0;
     internal static bool IsFreeBlock(int flags) => flags > -1 && (flags & (1 << isFreeBit)) != 0;

@@ -18,7 +18,7 @@ public class CPlugMaterialUserInst : CMwNod
 
     public override string ToString()
     {
-        return MaterialFile ?? "";
+        return $"{base.ToString()} {{ {MaterialFile ?? "No material file"} }}";
     }
 
     [Chunk(0x090FD000)]

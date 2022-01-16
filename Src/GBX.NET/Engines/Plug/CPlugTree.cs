@@ -55,7 +55,7 @@ public class CPlugTree : CPlug
         children = null!;
     }
 
-    public override string ToString() => GetType().Name + ": " + name;
+    public override string ToString() => $"{base.ToString()} {{ \"{name}\" }}";
 
     [Chunk(0x0904F006)]
     public class Chunk0904F006 : Chunk<CPlugTree>

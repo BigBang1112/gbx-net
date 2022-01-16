@@ -206,6 +206,11 @@ public class CGameCtnMediaClipGroup : CMwNod
             Clip = clip;
             Trigger = trigger;
         }
+
+        public override string ToString()
+        {
+            return $"{Clip} with trigger";
+        }
     }
 
     #endregion

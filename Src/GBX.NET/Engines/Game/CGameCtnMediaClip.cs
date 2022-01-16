@@ -85,7 +85,10 @@ public class CGameCtnMediaClip : CMwNod
 
     #region Methods
 
-    public override string ToString() => string.IsNullOrEmpty(Name) ? "Unnamed clip" : Name;
+    public override string ToString()
+    {
+        return $"{base.ToString()} {{ \"{(string.IsNullOrEmpty(Name) ? "Unnamed clip" : Name)}\" }}";
+    }
 
     #endregion
 

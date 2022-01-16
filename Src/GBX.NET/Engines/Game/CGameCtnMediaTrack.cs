@@ -80,7 +80,7 @@ public class CGameCtnMediaTrack : CMwNod
 
     #region Methods
 
-    public override string ToString() => Name;
+    public override string ToString() => $"{base.ToString()} {{ \"{Name}\" }}";
 
     /// <summary>
     /// Transfers the MediaTracker track properties from either <see cref="Chunk03078002"/> (ESWC) or <see cref="Chunk03078004"/> (TMF)

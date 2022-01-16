@@ -46,7 +46,7 @@ public abstract class Chunk<T> : Chunk, IChunk where T : CMwNod
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     public virtual void Read(T n, GameBoxReader r, ILogger? logger)
     {
-        throw new ChunkReadNotImplementedException(ID, Node.ClassName);
+        throw new ChunkReadNotImplementedException(ID, Node);
     }
 
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
@@ -58,7 +58,7 @@ public abstract class Chunk<T> : Chunk, IChunk where T : CMwNod
     /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
     public virtual void Write(T n, GameBoxWriter w, ILogger? logger)
     {
-        throw new ChunkWriteNotImplementedException(ID, Node.ClassName);
+        throw new ChunkWriteNotImplementedException(ID, Node);
     }
 
     /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>

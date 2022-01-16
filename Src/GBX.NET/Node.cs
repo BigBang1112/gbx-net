@@ -9,6 +9,8 @@ public abstract class Node
 {
     private ChunkSet? chunks;
 
+    // Should be removed for causing recursive behaviour, problematic writing etc.
+    // Responsibility should be thrown on readers/writers
     [IgnoreDataMember]
     public GameBox? GBX { get; internal set; }
 
@@ -16,22 +18,8 @@ public abstract class Node
     {
         get
         {
-            chunks ??= new ChunkSet(this);
+            chunks ??= new ChunkSet(this); // Maybe improve this
             return chunks;
-        }
-    }
-
-    /// <summary>
-    /// Name of the class. The format is <c>Engine::Class</c>.
-    /// </summary>
-    public string ClassName
-    {
-        get
-        {
-            if (NodeCacheManager.TypeWithClassId.TryGetValue(GetType(), out uint id))
-                if (NodeCacheManager.Names.TryGetValue(id, out string? name))
-                    return name;
-            return GetType().FullName?.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::") ?? string.Empty;
         }
     }
 
@@ -40,6 +28,7 @@ public abstract class Node
 
     }
 
+    // Why does this exist still
     protected Node(params Chunk[] chunks) : this()
     {
         foreach (var chunk in chunks)
@@ -49,6 +38,23 @@ public abstract class Node
                 .MakeGenericMethod(chunk.GetType())
                 .Invoke(this, Array.Empty<object>());
         }
+    }
+
+    /// <summary>
+    /// Returns the name of the class formatted as <c>[engine]::[class]</c>.
+    /// </summary>
+    /// <returns></returns>
+    public override string ToString()
+    {
+        var type = GetType();
+
+        if (NodeCacheManager.TypeWithClassId.TryGetValue(type, out uint id)
+         && NodeCacheManager.Names.TryGetValue(id, out string? name))
+        {
+            return name;
+        }
+
+        return type.FullName?.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::") ?? string.Empty;
     }
 
     // Now only chunks
@@ -412,7 +418,7 @@ public abstract class Node
         if (writingNotSupported)
             throw new NotSupportedException($"Writing of {type.Name} is not supported.");
 
-        var className = logger?.IsEnabled(LogLevel.Debug) == true ? ClassName : null;
+        var className = logger?.IsEnabled(LogLevel.Debug) == true ? ToString() : null;
 
         foreach (Chunk chunk in Chunks)
         {

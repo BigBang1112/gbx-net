@@ -170,7 +170,7 @@ public class CGameCtnAnchoredObject : CMwNod
 
     public override string ToString()
     {
-        return ItemModel.ToString();
+        return $"{base.ToString()} {{ {ItemModel} }}";
     }
 
     #endregion

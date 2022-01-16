@@ -54,7 +54,7 @@ public class CGameLeague : CMwNod
 
     public override string ToString()
     {
-        return path + "|" + name;
+        return $"{base.ToString()} {{ \"{path}|{name}\" }}";
     }
 
     [Chunk(0x0308E001)]

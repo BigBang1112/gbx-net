@@ -47,7 +47,7 @@ public class CGameCtnBlockUnitInfo : CMwNod
         set => terrainModifierId = value;
     }
 
-    public override string ToString() => "Block unit at " + relativeOffset.ToString();
+    public override string ToString() => $"{base.ToString()} {{ {relativeOffset} }}";
 
     protected CGameCtnBlockUnitInfo()
     {
