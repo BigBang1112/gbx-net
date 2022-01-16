@@ -50,6 +50,12 @@
 		<Using Include="GBX.NET.Engines.System" />
 		<Using Include="GBX.NET.Engines.TrackMania" />
 	</ItemGroup>
+	
+	<ItemGroup>
+		<InternalsVisibleTo Include="$(AssemblyName).PAK" />
+		<InternalsVisibleTo Include="$(AssemblyName).Tests" />
+		<InternalsVisibleTo Include="$(AssemblyName).Benchmarks" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<Compile Update="Resources.Designer.cs">
@@ -66,7 +72,6 @@
 
 	<ItemGroup>
 		<Folder Include="Engines\Audio\" />
-		<Folder Include="Engines\Graphic\" />
 		<Folder Include="Engines\Motion\" />
 		<Folder Include="Engines\Net\" />
 		<Folder Include="Engines\VirtualSkipper\" />
