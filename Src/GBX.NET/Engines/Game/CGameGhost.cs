@@ -242,11 +242,11 @@ public class CGameGhost : CMwNod
             {
                 using var zlib = new CompressedStream(stream, CompressionMode.Decompress);
 
-                Compression = zlib.Compression;
-
                 using var r = new GameBoxReader(zlib);
 
                 Read(r);
+
+                Compression = zlib.Compression.GetValueOrDefault();
             }
             else
             {
