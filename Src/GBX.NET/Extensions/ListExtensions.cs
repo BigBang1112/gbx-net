@@ -1,4 +1,4 @@
-﻿namespace GBX.NET;
+﻿namespace GBX.NET.Extensions;
 
 public static class ListExtensions
 {
