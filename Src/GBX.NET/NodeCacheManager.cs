@@ -27,12 +27,12 @@ public static class NodeCacheManager
     public static Dictionary<uint, Type> HeaderChunkTypesById { get; }
     public static Dictionary<Type, uint> HeaderChunkIdsByType { get; }
 
-    public static Dictionary<Type, IEnumerable<Attribute>> AvailableClassAttributes { get; }
-    public static Dictionary<uint, IEnumerable<Attribute>> AvailableChunkAttributes { get; }
-    public static Dictionary<Type, IEnumerable<Attribute>> AvailableChunkAttributesByType { get; }
-    public static Dictionary<uint, Func<CMwNod>> AvailableClassConstructors { get; }
-    public static Dictionary<uint, Func<Chunk>> AvailableChunkConstructors { get; }
-    public static Dictionary<uint, Func<Chunk>> AvailableHeaderChunkConstructors { get; }
+    public static Dictionary<Type, IEnumerable<Attribute>> ClassAttributesByType { get; }
+    public static Dictionary<uint, IEnumerable<Attribute>> ChunkAttributesById { get; }
+    public static Dictionary<Type, IEnumerable<Attribute>> ChunkAttributesByType { get; }
+    public static Dictionary<uint, Func<CMwNod>> ClassConstructors { get; }
+    public static Dictionary<uint, Func<Chunk>> ChunkConstructors { get; }
+    public static Dictionary<uint, Func<Chunk>> HeaderChunkConstructors { get; }
 
     public static bool ChunksAreCurrentlyGettingCached { get; private set; }
 
@@ -54,13 +54,13 @@ public static class NodeCacheManager
 
         ClassTypesWithCachedChunks = new HashSet<Type>();
 
-        AvailableClassAttributes = new Dictionary<Type, IEnumerable<Attribute>>();
-        AvailableChunkAttributes = new Dictionary<uint, IEnumerable<Attribute>>();
-        AvailableChunkAttributesByType = new Dictionary<Type, IEnumerable<Attribute>>();
+        ClassAttributesByType = new Dictionary<Type, IEnumerable<Attribute>>();
+        ChunkAttributesById = new Dictionary<uint, IEnumerable<Attribute>>();
+        ChunkAttributesByType = new Dictionary<Type, IEnumerable<Attribute>>();
 
-        AvailableClassConstructors = new Dictionary<uint, Func<CMwNod>>();
-        AvailableChunkConstructors = new Dictionary<uint, Func<Chunk>>();
-        AvailableHeaderChunkConstructors = new Dictionary<uint, Func<Chunk>>();
+        ClassConstructors = new Dictionary<uint, Func<CMwNod>>();
+        ChunkConstructors = new Dictionary<uint, Func<Chunk>>();
+        HeaderChunkConstructors = new Dictionary<uint, Func<Chunk>>();
 
         SkippableChunks = new HashSet<Type>();
 
@@ -78,7 +78,7 @@ public static class NodeCacheManager
     /// <exception cref="NodeNotInstantiableException">Node instance cannot be created from this class ID.</exception>
     internal static T GetNodeInstance<T>(uint classId) where T : CMwNod
     {
-        if (AvailableClassConstructors.TryGetValue(classId, out Func<CMwNod>? constructor))
+        if (ClassConstructors.TryGetValue(classId, out Func<CMwNod>? constructor))
         {
             var node = (T)constructor();
             node.SetIDAndChunks();
@@ -122,7 +122,7 @@ public static class NodeCacheManager
 
             ClassIdWithType.Add(nodeAttribute.ID, type);
             TypeWithClassId.Add(type, nodeAttribute.ID);
-            AvailableClassAttributes.Add(type, attributes);
+            ClassAttributesByType.Add(type, attributes);
         }
 
         ClassesAreCached = true;
@@ -249,7 +249,7 @@ public static class NodeCacheManager
     private static void CacheChunk(Type type, ref uint? chunkId, ref Type? chunkType)
     {
         // If the chunk was already cached
-        if (AvailableChunkAttributesByType.ContainsKey(type))
+        if (ChunkAttributesByType.ContainsKey(type))
         {
             return;
         }
@@ -266,8 +266,8 @@ public static class NodeCacheManager
             throw new Exception($"Chunk {type.FullName} doesn't have ChunkAttribute.");
         }
 
-        AvailableChunkAttributesByType.Add(type, attributes);
-        AvailableChunkAttributes[chunkAttribute.ID] = attributes; // Problem with CGameCtnReplayRecord having two 0x03093002
+        ChunkAttributesByType.Add(type, attributes);
+        ChunkAttributesById[chunkAttribute.ID] = attributes; // Problem with CGameCtnReplayRecord having two 0x03093002
 
         if (chunkId is null && chunkType is not null && chunkType == type)
         {
@@ -285,12 +285,12 @@ public static class NodeCacheManager
         {
             ChunkTypesById.Add(chunkAttribute.ID, type);
             ChunkIdsByType.Add(type, chunkAttribute.ID);
-            AvailableChunkConstructors.Add(chunkAttribute.ID, constructor);
+            ChunkConstructors.Add(chunkAttribute.ID, constructor);
         }
         else
         {
             HeaderChunkTypesById.Add(chunkAttribute.ID, type);
-            AvailableHeaderChunkConstructors.Add(chunkAttribute.ID, constructor);
+            HeaderChunkConstructors.Add(chunkAttribute.ID, constructor);
         }
 
         if (type.BaseType?.GetGenericTypeDefinition() == typeof(SkippableChunk<>))
@@ -301,7 +301,7 @@ public static class NodeCacheManager
 
     internal static Func<CMwNod> GetClassConstructor(uint id)
     {
-        if (AvailableClassConstructors.TryGetValue(id, out var cachedConstructor))
+        if (ClassConstructors.TryGetValue(id, out var cachedConstructor))
         {
             return cachedConstructor;
         }
@@ -313,7 +313,7 @@ public static class NodeCacheManager
 
         var constructor = CreateConstructor<CMwNod>(cachedType);
 
-        AvailableClassConstructors.Add(id, constructor);
+        ClassConstructors.Add(id, constructor);
 
         return constructor;
     }

@@ -107,7 +107,7 @@ public abstract class Chunk<T> : Chunk, IChunk where T : CMwNod
 
     public override string ToString()
     {
-        var att = NodeCacheManager.AvailableChunkAttributesByType[GetType()]
+        var att = NodeCacheManager.ChunkAttributesByType[GetType()]
             .FirstOrDefault(x => x is ChunkAttribute) as ChunkAttribute;
         var desc = att?.Description;
         var version = (this as IVersionable)?.Version;

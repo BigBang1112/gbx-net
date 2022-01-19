@@ -130,7 +130,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
 
             if (type is not null)
             {
-                NodeCacheManager.AvailableHeaderChunkConstructors.TryGetValue(chunkId,
+                NodeCacheManager.HeaderChunkConstructors.TryGetValue(chunkId,
                     out Func<Chunk>? constructor);
 
                 if (constructor is null)

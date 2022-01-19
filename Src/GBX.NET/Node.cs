@@ -232,7 +232,7 @@ public abstract class Node
 
                 if (reflected)
                 {
-                    var attributesAvailable = NodeCacheManager.AvailableChunkAttributes.TryGetValue(
+                    var attributesAvailable = NodeCacheManager.ChunkAttributesById.TryGetValue(
                         chunkId, out IEnumerable<Attribute>? attributes);
 
                     if (!attributesAvailable)
@@ -255,7 +255,7 @@ public abstract class Node
                     if (chunkAttribute is null)
                         throw new ThisShouldNotHappenException();
 
-                    NodeCacheManager.AvailableChunkConstructors.TryGetValue(chunkId,
+                    NodeCacheManager.ChunkConstructors.TryGetValue(chunkId,
                         out Func<Chunk>? constructor);
 
                     if (constructor is null)
@@ -305,7 +305,7 @@ public abstract class Node
             else // Known or unskippable chunk
             {
                 // Faster than caching
-                NodeCacheManager.AvailableChunkConstructors.TryGetValue(chunkId,
+                NodeCacheManager.ChunkConstructors.TryGetValue(chunkId,
                     out Func<Chunk>? constructor);
 
                 if (constructor is null)
@@ -326,7 +326,7 @@ public abstract class Node
 
                 var gbxrw = new GameBoxReaderWriter(r);
 
-                var attributesAvailable = NodeCacheManager.AvailableChunkAttributes.TryGetValue(
+                var attributesAvailable = NodeCacheManager.ChunkAttributesById.TryGetValue(
                     chunkId, out IEnumerable<Attribute>? attributes);
 
                 if (!attributesAvailable)

@@ -35,7 +35,7 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : CMwNod
         if (Discovered) return;
         Discovered = true;
 
-        if (NodeCacheManager.AvailableChunkAttributesByType.TryGetValue(GetType(), out IEnumerable<Attribute>? chunkAttributes))
+        if (NodeCacheManager.ChunkAttributesByType.TryGetValue(GetType(), out IEnumerable<Attribute>? chunkAttributes))
         {
             var ignoreChunkAttribute = chunkAttributes.FirstOrDefault(x => x is IgnoreChunkAttribute);
             if (ignoreChunkAttribute is not null)
