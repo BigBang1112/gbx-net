@@ -15,6 +15,7 @@ public static class NodeCacheManager
 
     public static Dictionary<uint, string> Names { get; }
     public static Dictionary<uint, uint> Mappings { get; } // key: older, value: newer
+    public static ILookup<uint, uint> ReverseMappings { get; } // key: newer, value: older
     public static Dictionary<uint, string> Extensions { get; }
 
     public static Dictionary<Type, uint> TypeWithClassId { get; }
@@ -58,6 +59,7 @@ public static class NodeCacheManager
 
         DefineNames2(Names, Extensions);
         DefineMappings2(Mappings);
+        ReverseMappings = Mappings.ToLookup(x => x.Value, x => x.Key);
     }
 
     /// <summary>
