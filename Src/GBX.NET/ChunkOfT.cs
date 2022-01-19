@@ -24,6 +24,11 @@ public abstract class Chunk<T> : Chunk, IChunk where T : CMwNod
 
     }
 
+    protected override uint GetChunkId()
+    {
+        return NodeCacheManager.GetChunkIdByType(typeof(T), GetType());
+    }
+
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     void IChunk.Read(Node n, GameBoxReader r)
     {
@@ -46,7 +51,7 @@ public abstract class Chunk<T> : Chunk, IChunk where T : CMwNod
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     public virtual void Read(T n, GameBoxReader r, ILogger? logger)
     {
-        throw new ChunkReadNotImplementedException(ID, Node);
+        throw new ChunkReadNotImplementedException(GetChunkId(), Node);
     }
 
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
@@ -58,7 +63,7 @@ public abstract class Chunk<T> : Chunk, IChunk where T : CMwNod
     /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
     public virtual void Write(T n, GameBoxWriter w, ILogger? logger)
     {
-        throw new ChunkWriteNotImplementedException(ID, Node);
+        throw new ChunkWriteNotImplementedException(GetChunkId(), Node);
     }
 
     /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
@@ -106,7 +111,7 @@ public abstract class Chunk<T> : Chunk, IChunk where T : CMwNod
             .FirstOrDefault(x => x is ChunkAttribute) as ChunkAttribute;
         var desc = att?.Description;
         var version = (this as IVersionable)?.Version;
-        return $"{typeof(T).Name} chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(version is null ? "" : $" [v{version}]")}";
+        return $"{typeof(T).Name} chunk 0x{GetChunkId():X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(version is null ? "" : $" [v{version}]")}";
     }
 }
 

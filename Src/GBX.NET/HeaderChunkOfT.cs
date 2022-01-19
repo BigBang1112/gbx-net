@@ -16,11 +16,6 @@ public class HeaderChunk<T> : SkippableChunk<T>, IHeaderChunk where T : CMwNod
 
     }
 
-    public HeaderChunk(T node, uint id, byte[] data) : base(node, id, data)
-    {
-
-    }
-
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
     public override void ReadWrite(T n, GameBoxReaderWriter rw)
@@ -35,6 +30,6 @@ public class HeaderChunk<T> : SkippableChunk<T>, IHeaderChunk where T : CMwNod
     public override string ToString()
     {
         var desc = GetType().GetCustomAttribute<ChunkAttribute>()?.Description;
-        return $"{typeof(T).Name} header chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}";
+        return $"{typeof(T).Name} header chunk 0x{GetChunkId():X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}";
     }
 }

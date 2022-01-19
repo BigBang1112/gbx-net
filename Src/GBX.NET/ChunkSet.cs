@@ -20,19 +20,19 @@ public class ChunkSet : SortedSet<Chunk>
 
     public bool Remove(uint chunkID)
     {
-        return RemoveWhere(x => x.ID == chunkID) > 0;
+        return RemoveWhere(x => x.Id == chunkID) > 0;
     }
 
     public bool Remove<T>() where T : Chunk
     {
-        return RemoveWhere(x => x.ID == typeof(T).GetCustomAttribute<ChunkAttribute>()?.ID) > 0;
+        return RemoveWhere(x => x.Id == typeof(T).GetCustomAttribute<ChunkAttribute>()?.ID) > 0;
     }
 
     public T Create<T>(byte[] data) where T : Chunk
     {
         var chunkId = typeof(T).GetCustomAttribute<ChunkAttribute>()?.ID;
 
-        var c = this.FirstOrDefault(x => x.ID == chunkId);
+        var c = this.FirstOrDefault(x => x.Id == chunkId);
         if (c != null)
             return (T)c;
 

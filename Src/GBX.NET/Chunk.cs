@@ -6,8 +6,7 @@ namespace GBX.NET;
 
 public abstract class Chunk : IChunk, IComparable<Chunk>
 {
-    public virtual uint ID => ((ChunkAttribute)NodeCacheManager.AvailableChunkAttributesByType[GetType()]
-        .First(x => x is ChunkAttribute)).ID;
+    private uint? id;
 
     /// <summary>
     /// Stream of unknown bytes
@@ -26,13 +25,23 @@ public abstract class Chunk : IChunk, IComparable<Chunk>
         Node = node;
     }
 
-    public override int GetHashCode() => (int)ID;
+    public uint Id => GetStoredChunkId();
+
+    private uint GetStoredChunkId()
+    {
+        id ??= GetChunkId();
+        return id.Value;
+    }
+
+    protected abstract uint GetChunkId();
+
+    public override int GetHashCode() => (int)Id;
 
     public override bool Equals(object? obj) => Equals(obj as Chunk);
 
-    public override string ToString() => $"Chunk 0x{ID:X8}";
+    public override string ToString() => $"Chunk 0x{Id:X8}";
 
-    public bool Equals(Chunk? chunk) => chunk is not null && chunk.ID == ID;
+    public bool Equals(Chunk? chunk) => chunk is not null && chunk.Id == Id;
 
     protected internal GameBoxReader CreateReader(Stream input, ILogger? logger = null)
     {
@@ -80,7 +89,7 @@ public abstract class Chunk : IChunk, IComparable<Chunk>
 
     public int CompareTo(Chunk? other)
     {
-        return ID.CompareTo(other?.ID);
+        return Id.CompareTo(other?.Id);
     }
 
     void IChunk.Read(Node n, GameBoxReader r)

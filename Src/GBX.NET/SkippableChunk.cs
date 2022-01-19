@@ -5,39 +5,29 @@ namespace GBX.NET;
 
 public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : CMwNod
 {
-    private readonly uint chunkID;
-
-    public override uint ID => chunkID;
+    private readonly uint? skippableChunkId;
 
     public bool Discovered { get; set; }
     public byte[] Data { get; set; }
 
     protected SkippableChunk()
     {
-        chunkID = ((ChunkAttribute)NodeCacheManager.AvailableChunkAttributesByType[GetType()]
-            .First(x => x is ChunkAttribute)).ID;
         Data = null!;
     }
 
-    public SkippableChunk(T node, uint id, byte[] data) : base(node)
+    public SkippableChunk(T node, byte[] data, uint? chunkId = null) : base(node)
     {
-        chunkID = id;
-
         Data = data;
 
         if (data == null || data.Length == 0)
             Discovered = true;
+
+        skippableChunkId = chunkId;
     }
 
-    public SkippableChunk(T node, byte[] data) : base(node)
+    protected override uint GetChunkId()
     {
-        chunkID = ((ChunkAttribute)NodeCacheManager.AvailableChunkAttributesByType[GetType()]
-            .First(x => x is ChunkAttribute)).ID;
-
-        Data = data;
-
-        if (data == null || data.Length == 0)
-            Discovered = true;
+        return skippableChunkId ?? base.GetChunkId();
     }
 
     public void Discover()
@@ -97,10 +87,10 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : CMwNod
         var ignoreChunkAttribute = chunkType.GetCustomAttribute<IgnoreChunkAttribute>();
 
         if (chunkAttribute == null)
-            return $"{typeof(T).Name} unknown skippable chunk 0x{ID:X8}";
+            return $"{typeof(T).Name} unknown skippable chunk 0x{GetChunkId():X8}";
         var desc = chunkAttribute.Description;
         var version = (this as IVersionable)?.Version;
 
-        return $"{typeof(T).Name} skippable chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(ignoreChunkAttribute == null ? "" : " [ignored]")}{(version is null ? "" : $" [v{version}]")}";
+        return $"{typeof(T).Name} skippable chunk 0x{GetChunkId():X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(ignoreChunkAttribute == null ? "" : " [ignored]")}{(version is null ? "" : $" [v{version}]")}";
     }
 }

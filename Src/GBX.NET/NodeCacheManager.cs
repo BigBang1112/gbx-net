@@ -20,8 +20,13 @@ public static class NodeCacheManager
 
     public static Dictionary<Type, uint> TypeWithClassId { get; }
     public static Dictionary<uint, Type> ClassIdWithType { get; }
-    public static Dictionary<uint, Type> AvailableChunkTypes { get; }
-    public static Dictionary<uint, Type> AvailableHeaderChunkTypes { get; }
+
+    public static Dictionary<uint, Type> ChunkTypesById { get; }
+    public static Dictionary<Type, uint> ChunkIdsByType { get; }
+
+    public static Dictionary<uint, Type> HeaderChunkTypesById { get; }
+    public static Dictionary<Type, uint> HeaderChunkIdsByType { get; }
+
     public static Dictionary<Type, IEnumerable<Attribute>> AvailableClassAttributes { get; }
     public static Dictionary<uint, IEnumerable<Attribute>> AvailableChunkAttributes { get; }
     public static Dictionary<Type, IEnumerable<Attribute>> AvailableChunkAttributesByType { get; }
@@ -42,8 +47,10 @@ public static class NodeCacheManager
 
         TypeWithClassId = new Dictionary<Type, uint>();
         ClassIdWithType = new Dictionary<uint, Type>();
-        AvailableChunkTypes = new Dictionary<uint, Type>();
-        AvailableHeaderChunkTypes = new Dictionary<uint, Type>();
+        ChunkTypesById = new Dictionary<uint, Type>();
+        ChunkIdsByType = new Dictionary<Type, uint>();
+        HeaderChunkTypesById = new Dictionary<uint, Type>();
+        HeaderChunkIdsByType = new Dictionary<Type, uint>();
 
         ClassTypesWithCachedChunks = new HashSet<Type>();
 
@@ -135,24 +142,70 @@ public static class NodeCacheManager
 
     internal static Type? GetHeaderChunkTypeById(Type classType, uint chunkId)
     {
-        return GetChunkTypeById(classType, chunkId, AvailableHeaderChunkTypes);
+        return GetChunkTypeById(classType, chunkId, HeaderChunkTypesById);
     }
 
     internal static Type? GetChunkTypeById(Type classType, uint chunkId)
     {
-        return GetChunkTypeById(classType, chunkId, AvailableChunkTypes);
+        return GetChunkTypeById(classType, chunkId, ChunkTypesById);
     }
 
-    internal static Type? GetChunkTypeById(Type classType, uint chunkId, IDictionary<uint, Type> availableChunkTypes)
+    internal static Type? GetChunkTypeById(Type classType, uint chunkId, IDictionary<uint, Type> chunkTypesById)
     {
-        if (availableChunkTypes.TryGetValue(chunkId, out var cachedChunkType))
+        if (chunkTypesById.TryGetValue(chunkId, out var cachedChunkType))
         {
             return cachedChunkType;
         }
 
+        var nullableChunkId = (uint?)chunkId;
+        var chunkType = default(Type);
+
+        CacheChunkTypesIfNotCached(classType, ref nullableChunkId, ref chunkType);
+
+        return chunkType;
+    }
+
+    internal static uint GetHeaderChunkIdByType(Type classType, Type chunkType)
+    {
+        return GetChunkIdByType(classType, chunkType, HeaderChunkIdsByType);
+    }
+
+    internal static uint GetChunkIdByType(Type classType, Type chunkType)
+    {
+        return GetChunkIdByType(classType, chunkType, ChunkIdsByType);
+    }
+
+    internal static uint GetChunkIdByType(Type classType, Type chunkType, IDictionary<Type, uint> chunkIdsByType)
+    {
+        if (chunkIdsByType.TryGetValue(chunkType, out var cachedChunkId))
+        {
+            return cachedChunkId;
+        }
+
+        var nullableChunkId = default(uint?);
+
+        CacheChunkTypesIfNotCached(classType, ref nullableChunkId, ref chunkType!);
+
+        if (nullableChunkId is null)
+        {
+            throw new Exception();
+        }
+
+        return nullableChunkId.Value;
+    }
+
+    /// <summary>
+    /// Cache chunk types based on its <paramref name="classType"/>.
+    /// </summary>
+    /// <param name="classType"></param>
+    /// <param name="chunkId">If not null, this chunk ID is used to return the <paramref name="chunkType"/>.</param>
+    /// <param name="chunkType">If not null, this chunk type is used to return the <paramref name="chunkId"/>.</param>
+    private static void CacheChunkTypesIfNotCached(Type classType, ref uint? chunkId, ref Type? chunkType)
+    {
+        // Unknown skippable chunk solution
         if (ClassTypesWithCachedChunks.Contains(classType))
         {
-            return null;
+            return;
         }
 
         ClassTypesWithCachedChunks.Add(classType);
@@ -168,10 +221,8 @@ public static class NodeCacheManager
         {
             Thread.Sleep(1);
         }
-        
-        ChunksAreCurrentlyGettingCached = true;
 
-        var requestedChunkType = default(Type?);
+        ChunksAreCurrentlyGettingCached = true;
 
         while (classType != typeof(CMwNod))
         {
@@ -179,56 +230,7 @@ public static class NodeCacheManager
 
             foreach (var type in nestedTypes)
             {
-                // If the chunk was already cached
-                if (AvailableChunkAttributesByType.ContainsKey(type))
-                {
-                    continue;
-                }
-
-                if (!type.IsSubclassOf(typeof(Chunk)))
-                {
-                    continue;
-                }
-
-                var chunkType = type;
-
-                var attributes = chunkType.GetCustomAttributes();
-
-                if (attributes.FirstOrDefault(x => x is ChunkAttribute) is not ChunkAttribute chunkAttribute)
-                {
-                    throw new Exception($"Chunk {chunkType.FullName} doesn't have ChunkAttribute.");
-                }
-
-                AvailableChunkAttributesByType.Add(chunkType, attributes);
-                AvailableChunkAttributes[chunkAttribute.ID] = attributes; // Problem with CGameCtnReplayRecord having two 0x03093002
-
-                if (chunkAttribute.ID == chunkId)
-                {
-                    if (requestedChunkType is not null)
-                    {
-                        throw new Exception("Duplicate chunk IDs");
-                    }
-
-                    requestedChunkType = chunkType;
-                }
-
-                var constructor = CreateConstructor<Chunk>(chunkType);
-
-                if (chunkType.GetInterface(nameof(IHeaderChunk)) is null)
-                {
-                    AvailableChunkTypes.Add(chunkAttribute.ID, chunkType);
-                    AvailableChunkConstructors.Add(chunkAttribute.ID, constructor);
-                }
-                else
-                {
-                    AvailableHeaderChunkTypes.Add(chunkAttribute.ID, chunkType);
-                    AvailableHeaderChunkConstructors.Add(chunkAttribute.ID, constructor);
-                }
-
-                if (chunkType.BaseType?.GetGenericTypeDefinition() == typeof(SkippableChunk<>))
-                {
-                    SkippableChunks.Add(chunkType);
-                }
+                CacheChunk(type, ref chunkId, ref chunkType);
             }
 
             var baseType = classType.BaseType;
@@ -242,8 +244,59 @@ public static class NodeCacheManager
         }
 
         ChunksAreCurrentlyGettingCached = false;
+    }
 
-        return requestedChunkType;
+    private static void CacheChunk(Type type, ref uint? chunkId, ref Type? chunkType)
+    {
+        // If the chunk was already cached
+        if (AvailableChunkAttributesByType.ContainsKey(type))
+        {
+            return;
+        }
+
+        if (!type.IsSubclassOf(typeof(Chunk)))
+        {
+            return;
+        }
+
+        var attributes = type.GetCustomAttributes();
+
+        if (attributes.FirstOrDefault(x => x is ChunkAttribute) is not ChunkAttribute chunkAttribute)
+        {
+            throw new Exception($"Chunk {type.FullName} doesn't have ChunkAttribute.");
+        }
+
+        AvailableChunkAttributesByType.Add(type, attributes);
+        AvailableChunkAttributes[chunkAttribute.ID] = attributes; // Problem with CGameCtnReplayRecord having two 0x03093002
+
+        if (chunkId is null && chunkType is not null && chunkType == type)
+        {
+            chunkId = chunkAttribute.ID;
+        }
+
+        if (chunkId is not null && chunkType is null && chunkAttribute.ID == chunkId)
+        {
+            chunkType = type;
+        }
+
+        var constructor = CreateConstructor<Chunk>(type);
+
+        if (type.GetInterface(nameof(IHeaderChunk)) is null)
+        {
+            ChunkTypesById.Add(chunkAttribute.ID, type);
+            ChunkIdsByType.Add(type, chunkAttribute.ID);
+            AvailableChunkConstructors.Add(chunkAttribute.ID, constructor);
+        }
+        else
+        {
+            HeaderChunkTypesById.Add(chunkAttribute.ID, type);
+            AvailableHeaderChunkConstructors.Add(chunkAttribute.ID, constructor);
+        }
+
+        if (type.BaseType?.GetGenericTypeDefinition() == typeof(SkippableChunk<>))
+        {
+            SkippableChunks.Add(type);
+        }
     }
 
     internal static Func<CMwNod> GetClassConstructor(uint id)

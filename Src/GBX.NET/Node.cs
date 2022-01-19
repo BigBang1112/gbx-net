@@ -286,12 +286,12 @@ public abstract class Node
                 }
                 else
                 {
-                    var debugLine = new StringBuilder("Unknown skippable chunk: ")
+                    var debugLine = new StringBuilder("Unknown skippable chunk: 0x")
                         .Append(chunkId.ToString("X"))
                         .ToString();
                     Debug.WriteLine(debugLine);
 
-                    chunk = (Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkId, chunkData)!;
+                    chunk = (Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(type), node, chunkData, chunkId)!;
 
                     if (GameBox.Debug)
                     {
@@ -428,7 +428,7 @@ public abstract class Node
             {
                 logger?.LogDebug("[{className}] 0x{chunkId} ({progressPercentage})",
                     className,
-                    chunk.ID.ToString("X8"),
+                    chunk.Id.ToString("X8"),
                     ((float)counter / Chunks.Count).ToString("0.00%"));
             }
 
@@ -456,7 +456,7 @@ public abstract class Node
                 else
                     msW.WriteBytes(chunk.Unknown.ToArray());
 
-                w.Write(Chunk.Remap(chunk.ID, remap));
+                w.Write(Chunk.Remap(chunk.Id, remap));
 
                 if (chunk is ISkippableChunk)
                 {

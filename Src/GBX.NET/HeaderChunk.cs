@@ -2,7 +2,7 @@
 
 public sealed class HeaderChunk : Chunk, IHeaderChunk
 {
-    readonly uint id;
+    private readonly uint headerChunkId;
 
     public bool Discovered
     {
@@ -16,11 +16,14 @@ public sealed class HeaderChunk : Chunk, IHeaderChunk
 
     public HeaderChunk(uint id, byte[] data) : base(null!)
     {
-        this.id = id;
+        headerChunkId = id;
         Data = data;
     }
 
-    public override uint ID => id;
+    protected override uint GetChunkId()
+    {
+        return headerChunkId;
+    }
 
     public void Discover() => throw new NotSupportedException("Cannot discover an unknown header chunk.");
 
@@ -34,6 +37,6 @@ public sealed class HeaderChunk : Chunk, IHeaderChunk
 
     public override string ToString()
     {
-        return $"Header chunk 0x{ID:X8}";
+        return $"Header chunk 0x{Id:X8}";
     }
 }

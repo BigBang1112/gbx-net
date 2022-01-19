@@ -229,7 +229,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
             else
                 ((ISkippableChunk)chunk).Write(gbxw);
 
-            lengths[chunk.ID] = (int)(userData.Position - pos);
+            lengths[chunk.Id] = (int)(userData.Position - pos);
         }
 
         // Actual data size plus the class id (4 bytes) and each length (4 bytes) plus the number of chunks integer
@@ -240,8 +240,8 @@ public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
 
         foreach (Chunk chunk in Chunks)
         {
-            w.Write(Chunk.Remap(chunk.ID, remap));
-            var length = lengths[chunk.ID];
+            w.Write(Chunk.Remap(chunk.Id, remap));
+            var length = lengths[chunk.Id];
             if (((IHeaderChunk)chunk).IsHeavy)
                 length |= 1 << 31;
             w.Write(length);

@@ -133,7 +133,7 @@ public class GameBox<T> : GameBox where T : CMwNod
     /// <returns>True, if the chunk was removed, otherwise false.</returns>
     public bool RemoveHeaderChunk<TChunk>() where TChunk : Chunk, IHeaderChunk
     {
-        return Header.Chunks.RemoveWhere(x => x.ID == typeof(TChunk).GetCustomAttribute<ChunkAttribute>()?.ID) > 0;
+        return Header.Chunks.RemoveWhere(x => x.Id == typeof(TChunk).GetCustomAttribute<ChunkAttribute>()?.ID) > 0;
     }
 
     /// <summary>
