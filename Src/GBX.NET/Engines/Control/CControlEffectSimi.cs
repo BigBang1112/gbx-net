@@ -7,7 +7,7 @@ namespace GBX.NET.Engines.Control;
 /// </summary>
 /// <remarks>An effect used on certain MediaTracker block types that tells how to generally render the component.</remarks>
 [Node(0x07010000)]
-public class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHasKeys
+public partial class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -99,25 +99,7 @@ public class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHasKeys
     {
         public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, (i, r) => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Position = r.ReadVec2(),
-                Rotation = r.ReadSingle(),
-                Scale = r.ReadVec2(),
-                Opacity = r.ReadSingle(),
-                Depth = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Position);
-                w.Write(x.Rotation);
-                w.Write(x.Scale);
-                w.Write(x.Opacity);
-                w.Write(x.Depth);
-            });
-
+            rw.List<Key>(ref n.keys!, (rw, x) => x.ReadWrite<Chunk07010002>(rw));
             rw.Boolean(ref n.centered);
         }
     }
@@ -134,33 +116,7 @@ public class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHasKeys
     {
         public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Position = r.ReadVec2(),
-                Rotation = r.ReadSingle(),
-                Scale = r.ReadVec2(),
-                Opacity = r.ReadSingle(),
-                Depth = r.ReadSingle(),
-                U01 = r.ReadSingle(),
-                IsContinuousEffect = r.ReadSingle(),
-                U02 = r.ReadSingle(),
-                U03 = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Position);
-                w.Write(x.Rotation);
-                w.Write(x.Scale);
-                w.Write(x.Opacity);
-                w.Write(x.Depth);
-                w.Write(x.U01);
-                w.Write(x.IsContinuousEffect);
-                w.Write(x.U02);
-                w.Write(x.U03);
-            });
-
+            rw.List<Key>(ref n.keys!, (rw, x) => x.ReadWrite<Chunk07010004>(rw));
             rw.Boolean(ref n.centered);
             rw.Int32(ref n.colorBlendMode);
             rw.Boolean(ref n.isContinousEffect);
@@ -179,33 +135,7 @@ public class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHasKeys
     {
         public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Position = r.ReadVec2(),
-                Rotation = r.ReadSingle(),
-                Scale = r.ReadVec2(),
-                Opacity = r.ReadSingle(),
-                Depth = r.ReadSingle(),
-                U01 = r.ReadSingle(),
-                IsContinuousEffect = r.ReadSingle(),
-                U02 = r.ReadSingle(),
-                U03 = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Position);
-                w.Write(x.Rotation);
-                w.Write(x.Scale);
-                w.Write(x.Opacity);
-                w.Write(x.Depth);
-                w.Write(x.U01);
-                w.Write(x.IsContinuousEffect);
-                w.Write(x.U02);
-                w.Write(x.U03);
-            });
-
+            rw.List<Key>(ref n.keys!, (rw, x) => x.ReadWrite<Chunk07010005>(rw));
             rw.Boolean(ref n.centered);
             rw.Int32(ref n.colorBlendMode);
             rw.Boolean(ref n.isContinousEffect);
@@ -214,30 +144,6 @@ public class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHasKeys
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    /// <summary>
-    /// Keyframe of <see cref="CControlEffectSimi"/>.
-    /// </summary>
-    /// <remarks>Internally called <c>SKeyVal</c>.</remarks>
-    public class Key : CGameCtnMediaBlock.Key
-    {
-        public Vec2 Position { get; set; }
-        /// <summary>
-        /// Rotation in radians
-        /// </summary>
-        public float Rotation { get; set; }
-        public Vec2 Scale { get; set; } = new(1, 1);
-        public float Opacity { get; set; } = 1;
-        public float Depth { get; set; } = 0.5f;
-        public float IsContinuousEffect { get; set; }
-        public float U01;
-        public float U02;
-        public float U03;
-    }
 
     #endregion
 }

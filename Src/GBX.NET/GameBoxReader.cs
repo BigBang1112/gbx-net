@@ -729,6 +729,10 @@ public class GameBoxReader : BinaryReader
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
 
+        // In theory it doesn't have to be there, but it ensures that the parse can crash as soon as something weird happens
+        if (length < 0)
+            throw new ArgumentOutOfRangeException(nameof(length));
+
         for (var i = 0; i < length; i++)
             yield return forLoop.Invoke();
     }

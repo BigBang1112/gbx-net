@@ -1943,6 +1943,55 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoopReadWrite"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
+    public IList<T>? List<T>(IList<T>? list, Action<GameBoxReaderWriter, T> forLoopReadWrite) where T : new()
+    {
+        if (forLoopReadWrite is null)
+        {
+            throw new ArgumentNullException(nameof(forLoopReadWrite));
+        }
+
+        if (Reader is not null)
+        {
+            var length = Reader.ReadInt32();
+
+            list = new List<T>(length);
+
+            for (int i = 0; i < length; i++)
+            {
+                var t = new T();
+                forLoopReadWrite(this, t);
+                list.Add(t);
+            }
+        }
+        else if (Writer is not null)
+        {
+            if (list is null)
+            {
+                Writer.Write(0);
+                return list;
+            }
+
+            Writer.Write(list.Count);
+
+            foreach (var t in list)
+            {
+                forLoopReadWrite(this, t);
+            }
+        }
+
+        return list;
+    }
+
+    public void List<T>(ref IList<T>? list, Action<GameBoxReaderWriter, T> forLoopReadWrite) where T : new()
+    {
+        list = List(list, forLoopReadWrite);
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
     public IList<T?>? ListNode<T>(IList<T?>? list = default) where T : CMwNod
