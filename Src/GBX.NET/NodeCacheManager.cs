@@ -29,6 +29,7 @@ public static class NodeCacheManager
 
     public static Dictionary<Type, IEnumerable<Attribute>> ClassAttributesByType { get; }
     public static Dictionary<uint, IEnumerable<Attribute>> ChunkAttributesById { get; }
+    public static Dictionary<uint, IEnumerable<Attribute>> HeaderChunkAttributesById { get; }
     public static Dictionary<Type, IEnumerable<Attribute>> ChunkAttributesByType { get; }
     public static Dictionary<uint, Func<CMwNod>> ClassConstructors { get; }
     public static Dictionary<uint, Func<Chunk>> ChunkConstructors { get; }
@@ -56,6 +57,7 @@ public static class NodeCacheManager
 
         ClassAttributesByType = new Dictionary<Type, IEnumerable<Attribute>>();
         ChunkAttributesById = new Dictionary<uint, IEnumerable<Attribute>>();
+        HeaderChunkAttributesById = new Dictionary<uint, IEnumerable<Attribute>>();
         ChunkAttributesByType = new Dictionary<Type, IEnumerable<Attribute>>();
 
         ClassConstructors = new Dictionary<uint, Func<CMwNod>>();
@@ -267,7 +269,6 @@ public static class NodeCacheManager
         }
 
         ChunkAttributesByType.Add(type, attributes);
-        ChunkAttributesById[chunkAttribute.ID] = attributes; // Problem with CGameCtnReplayRecord having two 0x03093002
 
         if (chunkId is null && chunkType is not null && chunkType == type)
         {
@@ -283,13 +284,16 @@ public static class NodeCacheManager
 
         if (type.GetInterface(nameof(IHeaderChunk)) is null)
         {
+            ChunkAttributesById.Add(chunkAttribute.ID, attributes);
             ChunkTypesById.Add(chunkAttribute.ID, type);
             ChunkIdsByType.Add(type, chunkAttribute.ID);
             ChunkConstructors.Add(chunkAttribute.ID, constructor);
         }
         else
         {
+            HeaderChunkAttributesById.Add(chunkAttribute.ID, attributes);
             HeaderChunkTypesById.Add(chunkAttribute.ID, type);
+            HeaderChunkIdsByType.Add(type, chunkAttribute.ID);
             HeaderChunkConstructors.Add(chunkAttribute.ID, constructor);
         }
 
@@ -421,9 +425,11 @@ public static class NodeCacheManager
             }
 
             var classIdPart = line.Slice(2, 3);
-            classIdSpan[2] = classIdPart[0];
-            classIdSpan[3] = classIdPart[1];
-            classIdSpan[4] = classIdPart[2];
+
+            for (var i = 0; i < 3; i++)
+            {
+                classIdSpan[2 + i] = classIdPart[i];
+            }
 
             var classNameWithExtensionSpan = new ReadOnlySpan<char>();
 
@@ -459,14 +465,14 @@ public static class NodeCacheManager
 #else
             var fullNameSpan = new Span<char>(new char[engineNameSpan.Length + 2 + classNameSpan.Length]);
                 
-            var i = 0;
-            engineNameSpan.CopyTo(fullNameSpan.Slice(i, engineNameSpan.Length));
-            i += engineNameSpan.Length;
+            var ii = 0;
+            engineNameSpan.CopyTo(fullNameSpan.Slice(ii, engineNameSpan.Length));
+            ii += engineNameSpan.Length;
 
-            new ReadOnlySpan<char>(new char[] { ':', ':' }).CopyTo(fullNameSpan.Slice(i, 2));
-            i += 2;
+            new ReadOnlySpan<char>(new char[] { ':', ':' }).CopyTo(fullNameSpan.Slice(ii, 2));
+            ii += 2;
 
-            classNameSpan.CopyTo(fullNameSpan.Slice(i, classNameSpan.Length));
+            classNameSpan.CopyTo(fullNameSpan.Slice(ii, classNameSpan.Length));
 
             var fullName = fullNameSpan.ToString();
 #endif

@@ -16,6 +16,11 @@ public class HeaderChunk<T> : SkippableChunk<T>, IHeaderChunk where T : CMwNod
 
     }
 
+    protected override uint GetChunkId()
+    {
+        return NodeCacheManager.GetHeaderChunkIdByType(typeof(T), GetType());
+    }
+
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
     public override void ReadWrite(T n, GameBoxReaderWriter rw)
