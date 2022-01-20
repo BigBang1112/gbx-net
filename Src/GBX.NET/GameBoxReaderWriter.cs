@@ -1993,6 +1993,26 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
+    public IList<FileRef>? ListFileRef(IList<FileRef>? list = default)
+    {
+        return List(list,
+            r => r.ReadFileRef(),
+            (x, w) => w.Write(x));
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
+    public void ListFileRef(ref IList<FileRef>? list)
+    {
+        list = ListFileRef(list);
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
     public IList<T?>? ListNode<T>(IList<T?>? list = default) where T : CMwNod
     {
@@ -2008,9 +2028,7 @@ public class GameBoxReaderWriter
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
     public void ListNode<T>(ref IList<T?>? list) where T : CMwNod
     {
-        list = List(list,
-            r => r.ReadNodeRef<T>(),
-            (x, w) => w.Write(x));
+        list = ListNode(list);
     }
 
     /// <param name="dictionary">Dictionary to write. Ignored in read mode.</param>
