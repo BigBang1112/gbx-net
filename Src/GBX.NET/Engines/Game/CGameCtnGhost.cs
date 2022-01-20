@@ -8,7 +8,7 @@ namespace GBX.NET.Engines.Game;
 /// <remarks>A ghost.</remarks>
 [Node(0x03092000)]
 [NodeExtension("Ghost")]
-public class CGameCtnGhost : CGameGhost
+public partial class CGameCtnGhost : CGameGhost
 {
     #region Fields
 
@@ -407,9 +407,7 @@ public class CGameCtnGhost : CGameGhost
             rw.Int32(ref version);
             rw.Ident(ref n.playerModel!);
             rw.Vec3(ref n.lightTrailColor);
-            rw.List(ref n.skinPackDescs,
-                (i, r) => r.ReadFileRef(),
-                (x, w) => w.Write(x));
+            rw.ListFileRef(ref n.skinPackDescs);
             rw.Boolean(ref n.hasBadges);
 
             if (n.hasBadges)
@@ -865,9 +863,7 @@ public class CGameCtnGhost : CGameGhost
     {
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.skinPackDescs,
-                r => r.ReadFileRef(),
-                (x, w) => w.Write(x));
+            rw.ListFileRef(ref n.skinPackDescs);
             rw.String(ref n.ghostNickname);
             rw.String(ref n.ghostAvatarName);
         }
@@ -1054,42 +1050,6 @@ public class CGameCtnGhost : CGameGhost
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    /// <summary>
-    /// Checkpoint timestamp driven by the ghost.
-    /// </summary>
-    public struct Checkpoint
-    {
-        /// <summary>
-        /// Time of the checkpoint.
-        /// </summary>
-        public TimeSpan? Time { get; set; }
-
-        /// <summary>
-        /// Amount of stunt points when reaching this checkpoint. This is very often 0 in TM2 replay.
-        /// </summary>
-        public int StuntsScore { get; set; }
-
-        public Checkpoint(TimeSpan? time, int stuntsScore)
-        {
-            Time = time;
-            StuntsScore = stuntsScore;
-        }
-
-        public Checkpoint(TimeSpan? time) : this(time, 0)
-        {
-
-        }
-
-        public override string ToString()
-        {
-            return $"{Time.ToTmString()} ({StuntsScore})";
-        }
-    }
 
     #endregion
 }
