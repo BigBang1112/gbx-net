@@ -256,15 +256,6 @@ public class CGameCtnBlock : CMwNod
 
     #endregion
 
-    #region Constructors
-
-    protected CGameCtnBlock()
-    {
-        blockModel = null!;
-    }
-
-    #endregion
-
     #region Static properties
 
     /// <summary>
@@ -276,6 +267,11 @@ public class CGameCtnBlock : CMwNod
     #endregion
 
     #region Constructors
+
+    protected CGameCtnBlock()
+    {
+        blockModel = null!;
+    }
 
     public CGameCtnBlock(string name, Direction direction, Int3 coord) : this(name, direction, coord, 0)
     {
