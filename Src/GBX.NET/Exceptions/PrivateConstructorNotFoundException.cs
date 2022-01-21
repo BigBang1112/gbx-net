@@ -6,7 +6,7 @@
 public class PrivateConstructorNotFoundException : Exception
 {
     public PrivateConstructorNotFoundException(Type type)
-        : base(type.Name + " doesn't have a private constructor.")
+        : base($"{type.Name} doesn't have a private constructor.")
     {
 
     }

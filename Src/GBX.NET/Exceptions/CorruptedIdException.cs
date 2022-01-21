@@ -5,7 +5,8 @@
 /// </summary>
 public class CorruptedIdException : Exception
 {
-    public CorruptedIdException(uint index) : base($"The index ({index}) in Id is not matching any known values.")
+    public CorruptedIdException(uint index)
+        : base($"The index ({index}) in Id is not matching any known values.")
     {
 
     }
