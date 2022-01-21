@@ -1059,6 +1059,15 @@ public class GameBoxReader : BinaryReader
     public Vec4 ReadVec4() => new(X: ReadSingle(), Y: ReadSingle(), Z: ReadSingle(), W: ReadSingle());
 
     /// <summary>
+    /// Reads 4 <see cref="float"/>s.
+    /// </summary>
+    /// <returns>A 4D quaternion.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public Quat ReadQuat() => new(X: ReadSingle(), Y: ReadSingle(), Z: ReadSingle(), W: ReadSingle());
+
+    /// <summary>
     /// Reads 3 <see cref="int"/>s.
     /// </summary>
     /// <returns>A 3-int.</returns>
@@ -1101,7 +1110,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public (Vec3 position, Quaternion rotation, float speed, Vec3 velocity) ReadTransform()
+    public (Vec3 position, Quat rotation, float speed, Vec3 velocity) ReadTransform()
     {
         var pos = ReadVec3();
         
@@ -1118,7 +1127,7 @@ public class GameBoxReader : BinaryReader
             (float)(MathF.Sin(angle) * MathF.Cos(axisPitch) * MathF.Sin(axisHeading)),
             (float)(MathF.Sin(angle) * MathF.Sin(axisPitch)));
 
-        var quaternion = new Quaternion(axis, MathF.Cos(angle));
+        var quaternion = new Quat(axis, MathF.Cos(angle));
 
         var velocity = new Vec3((float)(speed * MathF.Cos(velocityPitch) * MathF.Cos(velocityHeading)),
             (float)(speed * MathF.Cos(velocityPitch) * MathF.Sin(velocityHeading)),
@@ -1137,7 +1146,7 @@ public class GameBoxReader : BinaryReader
             (float)(Math.Sin(angle) * Math.Cos(axisPitch) * Math.Sin(axisHeading)),
             (float)(Math.Sin(angle) * Math.Sin(axisPitch)));
 
-        var quaternion = new Quaternion(axis, (float)Math.Cos(angle));
+        var quaternion = new Quat(axis, (float)Math.Cos(angle));
 
         var velocity = new Vec3((float)(speed * Math.Cos(velocityPitch) * Math.Cos(velocityHeading)),
             (float)(speed * Math.Cos(velocityPitch) * Math.Sin(velocityHeading)),

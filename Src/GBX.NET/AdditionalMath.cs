@@ -51,7 +51,7 @@ public static class AdditionalMath
         return a + t * (b - a);
     }
 
-    public static Quaternion Lerp(Quaternion a, Quaternion b, float t)
+    public static Quat Lerp(Quat a, Quat b, float t)
     {
         return a + t * (b - a);
     }

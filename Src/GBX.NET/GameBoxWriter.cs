@@ -245,6 +245,16 @@ public class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public void Write(Quat value)
+    {
+        Write(value.X);
+        Write(value.Y);
+        Write(value.Z);
+        Write(value.W);
+    }
+
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write(Int3 value)
     {
         Write(value.X);

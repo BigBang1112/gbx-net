@@ -6,7 +6,7 @@ public class Sample
 
     public byte? BufferType { get; set; }
     public Vec3 Position { get; set; }
-    public Quaternion Rotation { get; set; }
+    public Quat Rotation { get; set; }
     public Vec3 PitchYawRoll => Rotation.ToPitchYawRoll();
     public float Speed { get; set; }
     public Vec3 Velocity { get; set; }
