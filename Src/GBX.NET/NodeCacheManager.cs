@@ -122,6 +122,13 @@ public static class NodeCacheManager
                 continue;
             }
 
+            var privateConstructor = type.GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, Array.Empty<Type>(), null);
+
+            if (privateConstructor is null)
+            {
+                throw new PrivateConstructorNotFoundException(type);
+            }
+
             ClassIdWithType.Add(nodeAttribute.ID, type);
             TypeWithClassId.Add(type, nodeAttribute.ID);
             ClassAttributesByType.Add(type, attributes);
