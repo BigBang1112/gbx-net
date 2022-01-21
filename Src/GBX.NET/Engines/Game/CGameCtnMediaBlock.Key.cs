@@ -2,7 +2,7 @@
 
 public abstract partial class CGameCtnMediaBlock
 {
-    public abstract class Key : ICloneable
+    public abstract class Key : IReadableWritable, ICloneable
     {
         private TimeSpan time;
 
@@ -29,13 +29,19 @@ public abstract partial class CGameCtnMediaBlock
         }
 
         /// <summary>
-        /// Reads or writes the time (in seconds) of the keyframe.
+        /// Reads or writes the keyframe structure. 
         /// </summary>
-        /// <typeparam name="TChunk">Type of the chunk.</typeparam>
+        /// <remarks>Base includes time of the keyframe (in seconds).</remarks>
         /// <param name="rw">Reader/Writer.</param>
-        protected internal virtual void ReadWrite<TChunk>(GameBoxReaderWriter rw) where TChunk : Chunk
+        /// <param name="version">Version to determine how to read the key.</param>
+        public virtual void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
             rw.Single_s(ref time);
+        }
+
+        public override string ToString()
+        {
+            return $"{GetType().Name} {{ Time: {time.ToTmString(useHundredths: true)} }}";
         }
     }
 }

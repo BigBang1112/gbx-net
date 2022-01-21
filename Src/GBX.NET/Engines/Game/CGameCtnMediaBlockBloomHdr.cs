@@ -4,7 +4,7 @@
 /// MediaTracker block - Bloom HDR (0x03128000)
 /// </summary>
 [Node(0x03128000)]
-public class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public partial class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -50,20 +50,7 @@ public class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMediaBlock
     {
         public override void ReadWrite(CGameCtnMediaBlockBloomHdr n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Intensity = r.ReadSingle(),
-                StreaksIntensity = r.ReadSingle(),
-                StreaksAttenuation = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Intensity);
-                w.Write(x.StreaksIntensity);
-                w.Write(x.StreaksAttenuation);
-            });
+            rw.List<Key>(ref n.keys!, (rw, x) => x.ReadWrite(rw));
         }
     }
 
@@ -79,35 +66,11 @@ public class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMediaBlock
     {
         public override void ReadWrite(CGameCtnMediaBlockBloomHdr n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Intensity = r.ReadSingle(),
-                StreaksIntensity = r.ReadSingle(),
-                StreaksAttenuation = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Intensity);
-                w.Write(x.StreaksIntensity);
-                w.Write(x.StreaksAttenuation);
-            });
+            rw.List<Key>(ref n.keys!, (rw, x) => x.ReadWrite(rw));
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float Intensity { get; set; }
-        public float StreaksIntensity { get; set; }
-        public float StreaksAttenuation { get; set; }
-    }
-
+    
     #endregion
 }

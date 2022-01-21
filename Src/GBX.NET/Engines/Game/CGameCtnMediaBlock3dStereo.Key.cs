@@ -19,9 +19,9 @@ public partial class CGameCtnMediaBlock3dStereo
             set => screenDist = value;
         }
 
-        protected internal override void ReadWrite<TChunk>(GameBoxReaderWriter rw)
+        public override void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
-            base.ReadWrite<TChunk>(rw);
+            base.ReadWrite(rw, version);
 
             rw.Single(ref upToMax);
             rw.Single(ref screenDist);

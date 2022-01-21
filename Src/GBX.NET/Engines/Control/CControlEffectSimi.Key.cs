@@ -65,9 +65,9 @@ public partial class CControlEffectSimi
             depth = 0.5f;
         }
 
-        protected internal override void ReadWrite<TChunk>(GameBoxReaderWriter rw)
+        public override void ReadWrite(GameBoxReaderWriter rw, int version)
         {
-            base.ReadWrite<TChunk>(rw);
+            base.ReadWrite(rw, version);
 
             rw.Vec2(ref position);
             rw.Single(ref rotation);
@@ -75,7 +75,7 @@ public partial class CControlEffectSimi
             rw.Single(ref opacity);
             rw.Single(ref depth);
 
-            if (typeof(TChunk) != typeof(Chunk07010002))
+            if (version != 2)
             {
                 rw.Single(ref U01);
                 rw.Single(ref isContinuousEffect);

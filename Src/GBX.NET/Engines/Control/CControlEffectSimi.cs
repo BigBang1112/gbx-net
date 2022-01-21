@@ -99,7 +99,7 @@ public partial class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHa
     {
         public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
         {
-            rw.List<Key>(ref n.keys!, (rw, x) => x.ReadWrite<Chunk07010002>(rw));
+            rw.List<Key>(ref n.keys!, (rw, x) => x.ReadWrite(rw, version: 2));
             rw.Boolean(ref n.centered);
         }
     }
@@ -116,7 +116,7 @@ public partial class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHa
     {
         public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
         {
-            rw.List<Key>(ref n.keys!, (rw, x) => x.ReadWrite<Chunk07010004>(rw));
+            rw.List<Key>(ref n.keys!, (rw, x) => x.ReadWrite(rw, version: 4));
             rw.Boolean(ref n.centered);
             rw.Int32(ref n.colorBlendMode);
             rw.Boolean(ref n.isContinousEffect);
@@ -135,7 +135,7 @@ public partial class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHa
     {
         public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
         {
-            rw.List<Key>(ref n.keys!, (rw, x) => x.ReadWrite<Chunk07010005>(rw));
+            rw.List<Key>(ref n.keys!, (rw, x) => x.ReadWrite(rw, version: 5));
             rw.Boolean(ref n.centered);
             rw.Int32(ref n.colorBlendMode);
             rw.Boolean(ref n.isContinousEffect);
