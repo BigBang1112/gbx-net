@@ -16,6 +16,12 @@ public class GameBox
     public static bool Debug { get; set; }
 
     /// <summary>
+    /// If to ignore exceptions on certain chunk versions that are unknown, but shouldn't crash the reading/writing, however, could return unexpected values.
+    /// </summary>
+    /// <remarks>Example where this could happen is <see cref="CGameCtnMediaBlockCameraCustom.Key.ReadWrite(GameBoxReaderWriter, int)"/>.</remarks>
+    public static bool IgnoreUnseenVersions { get; set; }
+
+    /// <summary>
     /// Header part containing generic GameBox values.
     /// </summary>
     public GameBoxHeaderInfo Header { get; }
