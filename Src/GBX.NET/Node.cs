@@ -201,9 +201,15 @@ public abstract class Node
                 break;
             }
 
-            var progressPercentage = (float)stream.Position / stream.Length;
-
-            logger?.LogChunkProgress(chunkHex: chunkId.ToString("X8"), progressPercentage * 100);
+            if (stream.CanSeek)
+            {
+                var progressPercentage = (float)stream.Position / stream.Length;
+                logger?.LogChunkProgress(chunkHex: chunkId.ToString("X8"), progressPercentage * 100);
+            }
+            else
+            {
+                logger?.LogChunkProgressSeekless(chunkHex: chunkId.ToString("X8"));
+            }
 
             Chunk chunk;
 
