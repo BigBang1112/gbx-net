@@ -706,7 +706,7 @@ public class GameBoxReaderWriter
     }
 
     /// <summary>
-    /// Reads or writes an <see cref="float"/> through reference.
+    /// Reads or writes a <see cref="float"/> through reference.
     /// </summary>
     /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -725,7 +725,7 @@ public class GameBoxReaderWriter
     public void Single(ref float? variable, float defaultValue = default) => variable = Single(variable, defaultValue);
 
     /// <summary>
-    /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of seconds.
+    /// Reads or writes a <see cref="float"/> as a <see cref="TimeSpan"/> of seconds.
     /// </summary>
     /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
     /// <param name="variable">Variable to write. Ignored in read mode.</param>
@@ -758,7 +758,7 @@ public class GameBoxReaderWriter
     }
 
     /// <summary>
-    /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of seconds through reference.
+    /// Reads or writes a <see cref="float"/> as a <see cref="TimeSpan"/> of seconds through reference.
     /// </summary>
     /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
     /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
@@ -2087,6 +2087,17 @@ public class GameBoxReaderWriter
     public void List<T>(ref IList<T>? list, Action<GameBoxReaderWriter, T> forLoopReadWrite) where T : new()
     {
         list = List(list, forLoopReadWrite);
+    }
+
+    public void ListKey<T>(ref IList<T>? list, int version) where T : CGameCtnMediaBlock.Key, new()
+    {
+        List(ref list, (rw, x) => x.ReadWrite(rw, version));
+    }
+
+    public void ListKey<T>(ref IList<T>? list) where T : CGameCtnMediaBlock.Key, new()
+    {
+        // Almost duplicate method content to avoid closures
+        List(ref list, (rw, x) => x.ReadWrite(rw));
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
