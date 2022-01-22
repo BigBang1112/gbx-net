@@ -178,7 +178,7 @@ public static class NodeCacheManager
 
         if (CacheChunkTypesIfNotCached(classType))
         {
-            ChunkTypesById.TryGetValue(chunkId, out var chunkType);
+            chunkTypesById.TryGetValue(chunkId, out var chunkType);
             return chunkType;
         }
 

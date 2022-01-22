@@ -161,7 +161,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
                 ((IHeaderChunk)chunk).IsHeavy = chunkInfo.Value.IsHeavy;
             }
             else if (nodeType is not null)
-                chunk = (Chunk)Activator.CreateInstance(typeof(HeaderChunk<>).MakeGenericType(nodeType), gbx.Node, chunkId, d)!;
+                chunk = (Chunk)Activator.CreateInstance(typeof(HeaderChunk<>).MakeGenericType(nodeType), gbx.Node, d, chunkId)!;
             else
                 chunk = new HeaderChunk(chunkId, d) { IsHeavy = chunkInfo.Value.IsHeavy };
 

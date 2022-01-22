@@ -4,6 +4,8 @@ namespace GBX.NET;
 
 public class HeaderChunk<T> : SkippableChunk<T>, IHeaderChunk where T : CMwNod
 {
+    private readonly uint? id;
+
     public bool IsHeavy { get; set; }
 
     public HeaderChunk()
@@ -11,14 +13,14 @@ public class HeaderChunk<T> : SkippableChunk<T>, IHeaderChunk where T : CMwNod
 
     }
 
-    public HeaderChunk(T node, byte[] data) : base(node, data)
+    public HeaderChunk(T node, byte[] data, uint? id = null) : base(node, data)
     {
-
+        this.id = id;
     }
 
     protected override uint GetId()
     {
-        return NodeCacheManager.GetHeaderChunkIdByType(typeof(T), GetType());
+        return id ?? NodeCacheManager.GetHeaderChunkIdByType(typeof(T), GetType());
     }
 
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
