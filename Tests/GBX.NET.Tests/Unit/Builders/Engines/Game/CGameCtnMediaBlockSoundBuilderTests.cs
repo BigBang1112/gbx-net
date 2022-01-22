@@ -94,7 +94,7 @@ public class CGameCtnMediaBlockSoundBuilderTests
 
         var actual = new CGameCtnMediaBlockSoundBuilder().NewNode();
 
-        Assert.Equal(expected.ID, actual.ID);
+        Assert.Equal(expected.Id, actual.Id);
     }
 
     [Fact]

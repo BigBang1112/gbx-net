@@ -83,7 +83,7 @@ public class CGameCtnMediaTrackBuilderTests
 
         var actual = new CGameCtnMediaTrackBuilder().NewNode();
 
-        Assert.Equal(expected.ID, actual.ID);
+        Assert.Equal(expected.Id, actual.Id);
     }
 
     [Fact]
