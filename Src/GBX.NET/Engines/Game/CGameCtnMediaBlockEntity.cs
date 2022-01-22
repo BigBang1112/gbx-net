@@ -53,6 +53,11 @@ public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
             rw.Int32(ref version);
             rw.NodeRef<CPlugEntRecordData>(ref n.recordData!);
 
+            if (version > 3)
+            {
+                rw.UntilFacade(Unknown);
+            }
+
             rw.Vec3(ref U01);
             rw.Array<int>(ref U02);
 
