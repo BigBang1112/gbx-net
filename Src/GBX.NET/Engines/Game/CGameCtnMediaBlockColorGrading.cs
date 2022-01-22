@@ -4,7 +4,7 @@
 /// MediaTracker block - Color grading (0x03186000)
 /// </summary>
 [Node(0x03186000)]
-public class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public partial class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -75,29 +75,11 @@ public class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, CGameCtnMediaB
     {
         public override void ReadWrite(CGameCtnMediaBlockColorGrading n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Intensity = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Intensity);
-            });
+            rw.ListKey(ref n.keys!);
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float Intensity { get; set; }
-    }
 
     #endregion
 }

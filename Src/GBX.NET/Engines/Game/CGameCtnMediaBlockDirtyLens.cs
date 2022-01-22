@@ -4,7 +4,7 @@
 /// MediaTracker block - Dirty lens (0x03165000)
 /// </summary>
 [Node(0x03165000)]
-public class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public partial class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -45,41 +45,22 @@ public class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock, CGameCtnMediaBloc
     [Chunk(0x03165000)]
     public class Chunk03165000 : Chunk<CGameCtnMediaBlockDirtyLens>, IVersionable
     {
-        public int Version { get; set; }
+        private int version;
 
-        public override void Read(CGameCtnMediaBlockDirtyLens n, GameBoxReader r)
+        public int Version
         {
-            Version = r.ReadInt32();
-
-            n.keys = r.ReadArray(r1 => new Key()
-            {
-                Time = r1.ReadSingle_s(),
-                Intensity = r1.ReadSingle()
-            });
+            get => version;
+            set => version = value;
         }
 
-        public override void Write(CGameCtnMediaBlockDirtyLens n, GameBoxWriter w)
+        public override void ReadWrite(CGameCtnMediaBlockDirtyLens n, GameBoxReaderWriter rw)
         {
-            w.Write(Version);
-
-            w.Write(n.keys, (x, w1) =>
-            {
-                w1.WriteSingle_s(x.Time);
-                w1.Write(x.Intensity);
-            });
+            rw.Int32(ref version);
+            rw.ListKey(ref n.keys!);
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float Intensity { get; set; }
-    }
 
     #endregion
 }

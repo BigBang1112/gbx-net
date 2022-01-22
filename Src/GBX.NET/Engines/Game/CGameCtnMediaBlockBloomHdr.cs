@@ -50,7 +50,7 @@ public partial class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMe
     {
         public override void ReadWrite(CGameCtnMediaBlockBloomHdr n, GameBoxReaderWriter rw)
         {
-            rw.List<Key>(ref n.keys!, (rw, x) => x.ReadWrite(rw));
+            rw.ListKey(ref n.keys!);
         }
     }
 
@@ -66,7 +66,7 @@ public partial class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMe
     {
         public override void ReadWrite(CGameCtnMediaBlockBloomHdr n, GameBoxReaderWriter rw)
         {
-            rw.List<Key>(ref n.keys!, (rw, x) => x.ReadWrite(rw));
+            rw.ListKey(ref n.keys!);
         }
     }
 

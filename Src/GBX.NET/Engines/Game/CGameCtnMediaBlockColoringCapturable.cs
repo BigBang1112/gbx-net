@@ -4,7 +4,7 @@
 /// MediaTracker block - Coloring capturable (0x0316C000)
 /// </summary>
 [Node(0x0316C000)]
-public class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -48,7 +48,7 @@ public class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, CGameCtn
     [Chunk(0x0316C000)]
     public class Chunk0316C000 : Chunk<CGameCtnMediaBlockColoringCapturable>, IVersionable
     {
-        private int version;
+        private int version = 2;
 
         public int U01;
 
@@ -60,38 +60,14 @@ public class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, CGameCtn
 
         public override void ReadWrite(CGameCtnMediaBlockColoringCapturable n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.Int32(ref version); // If version is below 2, there is an loop of two floats and no U01
             rw.Int32(ref U01);
 
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Hue = r.ReadSingle(),
-                Gauge = r.ReadSingle(),
-                Emblem = r.ReadInt32()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Hue);
-                w.Write(x.Gauge);
-                w.Write(x.Emblem);
-            });
+            rw.ListKey(ref n.keys!);
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float Hue { get; set; }
-        public float Gauge { get; set; }
-        public int Emblem { get; set; }
-    }
 
     #endregion
 }

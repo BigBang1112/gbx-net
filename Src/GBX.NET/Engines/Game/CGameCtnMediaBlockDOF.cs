@@ -4,7 +4,7 @@
 /// MediaTracker block - Depth of field (0x03126000)
 /// </summary>
 [Node(0x03126000)]
-public class CGameCtnMediaBlockDOF : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public partial class CGameCtnMediaBlockDOF : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -47,18 +47,7 @@ public class CGameCtnMediaBlockDOF : CGameCtnMediaBlock, CGameCtnMediaBlock.IHas
     {
         public override void ReadWrite(CGameCtnMediaBlockDOF n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                ZFocus = r.ReadSingle(),
-                LensSize = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.ZFocus);
-                w.Write(x.LensSize);
-            });
+            rw.ListKey(ref n.keys!);
         }
     }
 
@@ -71,20 +60,7 @@ public class CGameCtnMediaBlockDOF : CGameCtnMediaBlock, CGameCtnMediaBlock.IHas
     {
         public override void ReadWrite(CGameCtnMediaBlockDOF n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                ZFocus = r.ReadSingle(),
-                LensSize = r.ReadSingle(),
-                U01 = r.ReadInt32()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.ZFocus);
-                w.Write(x.LensSize);
-                w.Write(x.U01.GetValueOrDefault());
-            });
+            rw.ListKey(ref n.keys!, version: 1);
         }
     }
 
@@ -97,45 +73,11 @@ public class CGameCtnMediaBlockDOF : CGameCtnMediaBlock, CGameCtnMediaBlock.IHas
     {
         public override void ReadWrite(CGameCtnMediaBlockDOF n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                ZFocus = r.ReadSingle(),
-                LensSize = r.ReadSingle(),
-                U01 = r.ReadInt32(),
-                U02 = r.ReadSingle(),
-                U03 = r.ReadSingle(),
-                U04 = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.ZFocus);
-                w.Write(x.LensSize);
-                w.Write(x.U01.GetValueOrDefault());
-                w.Write(x.U02.GetValueOrDefault());
-                w.Write(x.U03.GetValueOrDefault());
-                w.Write(x.U04.GetValueOrDefault());
-            });
+            rw.ListKey(ref n.keys!, version: 2);
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float ZFocus { get; set; }
-        public float LensSize { get; set; }
-
-        public int? U01;
-        public float? U02;
-        public float? U03;
-        public float? U04;
-    }
 
     #endregion
 }

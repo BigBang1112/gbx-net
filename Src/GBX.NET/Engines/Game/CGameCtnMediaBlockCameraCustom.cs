@@ -62,7 +62,7 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
     {
         public override void ReadWrite(CGameCtnMediaBlockCameraCustom n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, (rw, x) => x.ReadWrite(rw, version: 1));
+            rw.ListKey(ref n.keys!, version: 1);
         }
     }
 
@@ -78,7 +78,7 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
     {
         public override void ReadWrite(CGameCtnMediaBlockCameraCustom n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, (rw, x) => x.ReadWrite(rw, version: 2));
+            rw.ListKey(ref n.keys!, version: 2);
         }
     }
 
@@ -94,7 +94,7 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
     {
         public override void ReadWrite(CGameCtnMediaBlockCameraCustom n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, (rw, x) => x.ReadWrite(rw, 5));
+            rw.ListKey(ref n.keys!, version: 5);
         }
     }
 
@@ -119,7 +119,7 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
         public override void ReadWrite(CGameCtnMediaBlockCameraCustom n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
-            rw.List(ref n.keys!, (rw, x) => x.ReadWrite(rw, 6 + version));
+            rw.ListKey(ref n.keys!, version: 6 + version);
         }
     }
 

@@ -4,7 +4,7 @@
 /// MediaTracker block - Camera shake (0x030A4000)
 /// </summary>
 [Node(0x030A4000)]
-public class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCameraEffect, CGameCtnMediaBlock.IHasKeys
+public partial class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCameraEffect, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -50,32 +50,11 @@ public class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCameraEffec
     {
         public override void ReadWrite(CGameCtnMediaBlockCameraEffectShake n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Intensity = r.ReadSingle(),
-                Speed = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Intensity);
-                w.Write(x.Speed);
-            });
+            rw.ListKey(ref n.keys!);
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float Intensity { get; set; }
-        public float Speed { get; set; }
-    }
 
     #endregion
 }

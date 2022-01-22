@@ -4,7 +4,7 @@
 /// MediaTracker block - Coloring base (0x03172000)
 /// </summary>
 [Node(0x03172000)]
-public class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -68,40 +68,14 @@ public class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameCtnMediaB
 
         public override void ReadWrite(CGameCtnMediaBlockColoringBase n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
-            rw.Int32(ref U01);
-
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Hue = r.ReadSingle(),
-                Intensity = r.ReadSingle(),
-                Unknown = r.ReadInt16()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Hue);
-                w.Write(x.Intensity);
-                w.Write(x.Unknown);
-            });
-
+            rw.Int32(ref version); // If version is below 2, there is an loop of two floats and no U01
+            rw.Int32(ref U01); 
+            rw.ListKey(ref n.keys!, version);
             rw.Int32(ref n.baseIndex);
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float Hue { get; set; }
-        public float Intensity { get; set; }
-        public short Unknown { get; set; }
-    }
 
     #endregion
 }

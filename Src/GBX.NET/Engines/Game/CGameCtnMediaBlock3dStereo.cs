@@ -50,7 +50,7 @@ public partial class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, CGameCtnMe
     {
         public override void ReadWrite(CGameCtnMediaBlock3dStereo n, GameBoxReaderWriter rw)
         {
-            rw.List<Key>(ref n.keys!, (rw, x) => x.ReadWrite(rw));
+            rw.ListKey(ref n.keys!);
         }
     }
 
