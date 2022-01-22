@@ -220,23 +220,25 @@ public static class NodeCacheManager
             return false;
         }
 
-        while (classType != typeof(CMwNod))
+        var tempClassType = classType;
+
+        while (tempClassType != typeof(CMwNod))
         {
-            var nestedTypes = classType.GetNestedTypes(BindingFlags.Instance | BindingFlags.Public);
+            var nestedTypes = tempClassType.GetNestedTypes(BindingFlags.Instance | BindingFlags.Public);
 
             foreach (var type in nestedTypes)
             {
                 CacheChunk(type);
             }
 
-            var baseType = classType.BaseType;
+            var baseType = tempClassType.BaseType;
 
             if (baseType is null)
             {
                 throw new ThisShouldNotHappenException();
             }
 
-            classType = baseType;
+            tempClassType = baseType;
         }
 
         ClassTypesWithCachedChunks[classType] = classType;
