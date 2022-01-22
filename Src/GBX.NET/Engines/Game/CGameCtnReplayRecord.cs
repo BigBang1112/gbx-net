@@ -25,7 +25,8 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     private string? authorNickname;
     private string? authorZone;
     private string? authorExtraInfo;
-    private Task<CGameCtnChallenge?>? challenge;
+    private byte[]? challengeData;
+    private CGameCtnChallenge? challenge;
     private CGameCtnGhost[]? ghosts;
     private long[]? extras;
     private CGameCtnMediaClip? clip;
@@ -153,7 +154,24 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// The map the replay orients in. Null if only the header was read.
     /// </summary>
     [NodeMember]
-    public CGameCtnChallenge? Challenge => challenge?.Result;
+    public CGameCtnChallenge? Challenge
+    {
+        get
+        {
+            if (challengeData is null)
+            {
+                return null;
+            }
+
+            if (challenge is null)
+            {
+                using var ms = new MemoryStream(challengeData);
+                challenge = GameBox.ParseNode<CGameCtnChallenge>(ms);
+            }
+
+            return challenge;
+        }
+    }
 
     /// <summary>
     /// Ghosts in the replay. Null if only the header was read.
@@ -217,25 +235,27 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     public IEnumerable<CGameCtnGhost> GetGhosts()
     {
-        if (ghosts is null)
-            yield break;
-
-        foreach (var ghost in ghosts)
-            if (ghost is not null)
+        if (ghosts is not null)
+        {
+            foreach (var ghost in ghosts)
+            {
                 yield return ghost;
+            }
+        }
 
         if (clip is not null)
+        {
             foreach (var track in clip.Tracks)
-                if (track is not null)
-                    foreach (var block in track.Blocks)
-                        if (block is CGameCtnMediaBlockGhost ghostBlock)
-                            if (ghostBlock.GhostModel is not null)
-                                yield return ghostBlock.GhostModel;
-    }
-
-    public async Task<CGameCtnChallenge?> GetChallengeAsync()
-    {
-        return await (challenge ?? Task.FromResult(default(CGameCtnChallenge?)));
+            {
+                foreach (var block in track.Blocks)
+                {
+                    if (block is CGameCtnMediaBlockGhost ghostBlock)
+                    {
+                        yield return ghostBlock.GhostModel;
+                    }
+                }
+            }
+        }
     }
 
     #endregion
@@ -317,30 +337,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     {
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
         {
-            var size = r.ReadInt32();
-
-            if (size <= 0)
-                throw new Exception();
-
-            var trackGbx = r.ReadBytes(size);
-
-            n.challenge = Task.Run(() =>
-            {
-                using var ms = new MemoryStream(trackGbx);
-                return GameBox.ParseNode<CGameCtnChallenge>(ms);
-            })!;
-
-#if DEBUG
-            n.challenge.ContinueWith(x =>
-            {
-                if (!x.IsFaulted)
-                    return;
-
-                var e = x.Exception?.InnerException;
-                Debug.WriteLine(e?.Message);
-                Debug.WriteLine(e?.StackTrace);
-            });
-#endif
+            n.challengeData = r.ReadBytes();
         }
     }
 
@@ -366,12 +363,12 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             // All control names available in the game
             var controlNames = r.ReadArray(r1 =>
             {
-                    // Maybe bindings
-                    r1.ReadInt32();
+                // Maybe bindings
+                r1.ReadInt32();
                 r1.ReadInt32();
 
                 return r1.ReadString(); // Input name
-                });
+            });
 
             var numEntries = r.ReadInt32() - 1;
 
