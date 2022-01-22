@@ -25,15 +25,15 @@ public abstract class Chunk : IChunk, IComparable<Chunk>
         Node = node;
     }
 
-    public uint Id => GetStoredChunkId();
+    public uint Id => GetStoredId();
 
-    private uint GetStoredChunkId()
+    private uint GetStoredId()
     {
-        id ??= GetChunkId();
+        id ??= GetId();
         return id.Value;
     }
 
-    protected abstract uint GetChunkId();
+    protected abstract uint GetId();
 
     public override int GetHashCode() => (int)Id;
 

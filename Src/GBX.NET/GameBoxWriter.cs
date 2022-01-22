@@ -396,14 +396,9 @@ public class GameBoxWriter : BinaryWriter
             return;
         }
 
-        if (!NodeCacheManager.TypeWithClassId.TryGetValue(node.GetType(), out uint id))
-        {
-            throw new ThisShouldNotHappenException();
-        }
-
         body.AuxilaryNodes[body.AuxilaryNodes.Count] = node;
         Write(body.AuxilaryNodes.Count);
-        Write(Chunk.Remap(id, body.GBX.Remap));
+        Write(Chunk.Remap(node.Id, body.GBX.Remap));
         node.Write(this, body.GBX.Remap, logger);
     }
 
@@ -553,12 +548,7 @@ public class GameBoxWriter : BinaryWriter
 
         foreach (var node in nodes)
         {
-            if (!NodeCacheManager.TypeWithClassId.TryGetValue(node.GetType(), out uint id))
-            {
-                throw new ThisShouldNotHappenException();
-            }
-
-            Write(id);
+            Write(node.Id);
             node.Write(this, logger: logger);
 
             if (logger?.IsEnabled(LogLevel.Debug) == true)

@@ -20,7 +20,7 @@ public sealed class HeaderChunk : Chunk, IHeaderChunk
         Data = data;
     }
 
-    protected override uint GetChunkId()
+    protected override uint GetId()
     {
         return headerChunkId;
     }

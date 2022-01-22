@@ -25,9 +25,9 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : CMwNod
         skippableChunkId = chunkId;
     }
 
-    protected override uint GetChunkId()
+    protected override uint GetId()
     {
-        return skippableChunkId ?? base.GetChunkId();
+        return skippableChunkId ?? base.GetId();
     }
 
     public void Discover()
@@ -87,10 +87,10 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : CMwNod
         var ignoreChunkAttribute = chunkType.GetCustomAttribute<IgnoreChunkAttribute>();
 
         if (chunkAttribute == null)
-            return $"{typeof(T).Name} unknown skippable chunk 0x{GetChunkId():X8}";
+            return $"{typeof(T).Name} unknown skippable chunk 0x{Id:X8}";
         var desc = chunkAttribute.Description;
         var version = (this as IVersionable)?.Version;
 
-        return $"{typeof(T).Name} skippable chunk 0x{GetChunkId():X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(ignoreChunkAttribute == null ? "" : " [ignored]")}{(version is null ? "" : $" [v{version}]")}";
+        return $"{typeof(T).Name} skippable chunk 0x{Id:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(ignoreChunkAttribute == null ? "" : " [ignored]")}{(version is null ? "" : $" [v{version}]")}";
     }
 }

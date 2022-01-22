@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -10,35 +11,32 @@ public static class NodeCacheManager
 {
     private static readonly Assembly assembly = typeof(NodeCacheManager).Assembly;
 
-    public static bool TypesDefined { get; internal set; }
-    public static bool ClassesAreCached { get; internal set; }
-
     public static Dictionary<uint, string> Names { get; }
     public static Dictionary<uint, uint> Mappings { get; } // key: older, value: newer
     public static ILookup<uint, uint> ReverseMappings { get; } // key: newer, value: older
     public static Dictionary<uint, string> Extensions { get; }
 
-    public static Dictionary<Type, uint> TypeWithClassId { get; }
-    public static Dictionary<uint, Type> ClassIdWithType { get; }
+    public static ConcurrentDictionary<uint, Type> ClassTypesById { get; }
+    public static ConcurrentDictionary<Type, uint> ClassIdsByType { get; }
 
-    public static Dictionary<uint, Type> ChunkTypesById { get; }
-    public static Dictionary<Type, uint> ChunkIdsByType { get; }
+    public static ConcurrentDictionary<uint, Type> ChunkTypesById { get; }
+    public static ConcurrentDictionary<Type, uint> ChunkIdsByType { get; }
 
-    public static Dictionary<uint, Type> HeaderChunkTypesById { get; }
-    public static Dictionary<Type, uint> HeaderChunkIdsByType { get; }
+    public static ConcurrentDictionary<uint, Type> HeaderChunkTypesById { get; }
+    public static ConcurrentDictionary<Type, uint> HeaderChunkIdsByType { get; }
 
-    public static Dictionary<Type, IEnumerable<Attribute>> ClassAttributesByType { get; }
-    public static Dictionary<uint, IEnumerable<Attribute>> ChunkAttributesById { get; }
-    public static Dictionary<uint, IEnumerable<Attribute>> HeaderChunkAttributesById { get; }
-    public static Dictionary<Type, IEnumerable<Attribute>> ChunkAttributesByType { get; }
-    public static Dictionary<uint, Func<CMwNod>> ClassConstructors { get; }
-    public static Dictionary<uint, Func<Chunk>> ChunkConstructors { get; }
-    public static Dictionary<uint, Func<Chunk>> HeaderChunkConstructors { get; }
+    public static ConcurrentDictionary<Type, IEnumerable<Attribute>> ClassAttributesByType { get; }
+    public static ConcurrentDictionary<uint, IEnumerable<Attribute>> ChunkAttributesById { get; }
+    public static ConcurrentDictionary<uint, IEnumerable<Attribute>> HeaderChunkAttributesById { get; }
+    public static ConcurrentDictionary<Type, IEnumerable<Attribute>> ChunkAttributesByType { get; }
+    public static ConcurrentDictionary<uint, Func<CMwNod>> ClassConstructors { get; }
+    public static ConcurrentDictionary<uint, Func<Chunk>> ChunkConstructors { get; }
+    public static ConcurrentDictionary<uint, Func<Chunk>> HeaderChunkConstructors { get; }
 
-    public static bool ChunksAreCurrentlyGettingCached { get; private set; }
+    public static bool ChunksAreCurrentlyBeingCached { get; private set; }
 
-    public static HashSet<Type> ClassTypesWithCachedChunks { get; }
-    public static HashSet<Type> SkippableChunks { get; }
+    public static ConcurrentDictionary<Type, Type> ClassTypesWithCachedChunks { get; }
+    public static ConcurrentDictionary<Type, Type> SkippableChunks { get; }
 
     static NodeCacheManager()
     {
@@ -46,25 +44,25 @@ public static class NodeCacheManager
         Mappings = new Dictionary<uint, uint>();
         Extensions = new Dictionary<uint, string>();
 
-        TypeWithClassId = new Dictionary<Type, uint>();
-        ClassIdWithType = new Dictionary<uint, Type>();
-        ChunkTypesById = new Dictionary<uint, Type>();
-        ChunkIdsByType = new Dictionary<Type, uint>();
-        HeaderChunkTypesById = new Dictionary<uint, Type>();
-        HeaderChunkIdsByType = new Dictionary<Type, uint>();
+        ClassTypesById = new ConcurrentDictionary<uint, Type>();
+        ClassIdsByType = new ConcurrentDictionary<Type, uint>();
+        ChunkTypesById = new ConcurrentDictionary<uint, Type>();
+        ChunkIdsByType = new ConcurrentDictionary<Type, uint>();
+        HeaderChunkTypesById = new ConcurrentDictionary<uint, Type>();
+        HeaderChunkIdsByType = new ConcurrentDictionary<Type, uint>();
 
-        ClassTypesWithCachedChunks = new HashSet<Type>();
+        ClassTypesWithCachedChunks = new ConcurrentDictionary<Type, Type>();
 
-        ClassAttributesByType = new Dictionary<Type, IEnumerable<Attribute>>();
-        ChunkAttributesById = new Dictionary<uint, IEnumerable<Attribute>>();
-        HeaderChunkAttributesById = new Dictionary<uint, IEnumerable<Attribute>>();
-        ChunkAttributesByType = new Dictionary<Type, IEnumerable<Attribute>>();
+        ClassAttributesByType = new ConcurrentDictionary<Type, IEnumerable<Attribute>>();
+        ChunkAttributesById = new ConcurrentDictionary<uint, IEnumerable<Attribute>>();
+        HeaderChunkAttributesById = new ConcurrentDictionary<uint, IEnumerable<Attribute>>();
+        ChunkAttributesByType = new ConcurrentDictionary<Type, IEnumerable<Attribute>>();
 
-        ClassConstructors = new Dictionary<uint, Func<CMwNod>>();
-        ChunkConstructors = new Dictionary<uint, Func<Chunk>>();
-        HeaderChunkConstructors = new Dictionary<uint, Func<Chunk>>();
+        ClassConstructors = new ConcurrentDictionary<uint, Func<CMwNod>>();
+        ChunkConstructors = new ConcurrentDictionary<uint, Func<Chunk>>();
+        HeaderChunkConstructors = new ConcurrentDictionary<uint, Func<Chunk>>();
 
-        SkippableChunks = new HashSet<Type>();
+        SkippableChunks = new ConcurrentDictionary<Type, Type>();
 
         DefineNames2(Names, Extensions);
         DefineMappings2(Mappings);
@@ -80,23 +78,15 @@ public static class NodeCacheManager
     /// <exception cref="NodeNotInstantiableException">Node instance cannot be created from this class ID.</exception>
     internal static T GetNodeInstance<T>(uint classId) where T : CMwNod
     {
-        if (ClassConstructors.TryGetValue(classId, out Func<CMwNod>? constructor))
-        {
-            var node = (T)constructor();
-            node.SetIDAndChunks();
-            return node;
-        }
+        CacheClassTypesIfNotCached();
 
-        throw new NodeNotInstantiableException(classId);
+        var node = (T)GetClassConstructor(classId)();
+        node.SetIDAndChunks();
+        return node;
     }
 
     internal static void CacheClassTypesIfNotCached()
     {
-        if (ClassesAreCached)
-        {
-            return;
-        }
-
         IEnumerable<Type> types;
 
         try
@@ -129,21 +119,32 @@ public static class NodeCacheManager
                 throw new PrivateConstructorNotFoundException(type);
             }
 
-            ClassIdWithType.Add(nodeAttribute.ID, type);
-            TypeWithClassId.Add(type, nodeAttribute.ID);
-            ClassAttributesByType.Add(type, attributes);
+            var nodeId = nodeAttribute.ID;
+            ClassTypesById[nodeId] = type;
+            ClassIdsByType[type] = nodeId;
+            ClassAttributesByType[type] = attributes;
         }
-
-        ClassesAreCached = true;
     }
 
     internal static Type? GetClassTypeById(uint id)
     {
         CacheClassTypesIfNotCached();
 
-        if (ClassIdWithType.TryGetValue(id, out var cachedType))
+        if (ClassTypesById.TryGetValue(id, out var cachedType))
         {
             return cachedType;
+        }
+
+        return null;
+    }
+
+    internal static uint? GetClassIdByType(Type type)
+    {
+        CacheClassTypesIfNotCached();
+
+        if (ClassIdsByType.TryGetValue(type, out var cachedId))
+        {
+            return cachedId;
         }
 
         return null;
@@ -166,12 +167,13 @@ public static class NodeCacheManager
             return cachedChunkType;
         }
 
-        var nullableChunkId = (uint?)chunkId;
-        var chunkType = default(Type);
+        if (CacheChunkTypesIfNotCached(classType))
+        {
+            ChunkTypesById.TryGetValue(chunkId, out var chunkType);
+            return chunkType;
+        }
 
-        CacheChunkTypesIfNotCached(classType, ref nullableChunkId, ref chunkType);
-
-        return chunkType;
+        return null;
     }
 
     internal static uint GetHeaderChunkIdByType(Type classType, Type chunkType)
@@ -191,47 +193,23 @@ public static class NodeCacheManager
             return cachedChunkId;
         }
 
-        var nullableChunkId = default(uint?);
+        CacheChunkTypesIfNotCached(classType);
 
-        CacheChunkTypesIfNotCached(classType, ref nullableChunkId, ref chunkType!);
-
-        if (nullableChunkId is null)
-        {
-            throw new Exception();
-        }
-
-        return nullableChunkId.Value;
+        return ChunkIdsByType[chunkType];
     }
 
     /// <summary>
     /// Cache chunk types based on its <paramref name="classType"/>.
     /// </summary>
     /// <param name="classType"></param>
-    /// <param name="chunkId">If not null, this chunk ID is used to return the <paramref name="chunkType"/>.</param>
-    /// <param name="chunkType">If not null, this chunk type is used to return the <paramref name="chunkId"/>.</param>
-    private static void CacheChunkTypesIfNotCached(Type classType, ref uint? chunkId, ref Type? chunkType)
+    /// <returns>False if chunks have been already cached, otherwise true.</returns>
+    private static bool CacheChunkTypesIfNotCached(Type classType)
     {
         // Unknown skippable chunk solution
-        if (ClassTypesWithCachedChunks.Contains(classType))
+        if (ClassTypesWithCachedChunks.ContainsKey(classType))
         {
-            return;
+            return false;
         }
-
-        ClassTypesWithCachedChunks.Add(classType);
-
-        // If this section is running while the same classType arrives, it should wait until its completed
-        // and then return it from AvailableChunkTypes/AvailableHeaderChunkTypes
-        // The solution is probably with async
-        // This would mainly fix performance issues with parallel gbx parsing
-
-        // Current solution doesnt allow multiple classType processing but doesnt require concurrent collection for now
-        // Would be better to replace with an async option
-        if (ChunksAreCurrentlyGettingCached)
-        {
-            Thread.Sleep(1);
-        }
-
-        ChunksAreCurrentlyGettingCached = true;
 
         while (classType != typeof(CMwNod))
         {
@@ -239,7 +217,7 @@ public static class NodeCacheManager
 
             foreach (var type in nestedTypes)
             {
-                CacheChunk(type, ref chunkId, ref chunkType);
+                CacheChunk(type);
             }
 
             var baseType = classType.BaseType;
@@ -252,10 +230,12 @@ public static class NodeCacheManager
             classType = baseType;
         }
 
-        ChunksAreCurrentlyGettingCached = false;
+        ClassTypesWithCachedChunks[classType] = classType;
+
+        return true;
     }
 
-    private static void CacheChunk(Type type, ref uint? chunkId, ref Type? chunkType)
+    private static void CacheChunk(Type type)
     {
         // If the chunk was already cached
         if (ChunkAttributesByType.ContainsKey(type))
@@ -275,38 +255,28 @@ public static class NodeCacheManager
             throw new Exception($"Chunk {type.FullName} doesn't have ChunkAttribute.");
         }
 
-        ChunkAttributesByType.Add(type, attributes);
-
-        if (chunkId is null && chunkType is not null && chunkType == type)
-        {
-            chunkId = chunkAttribute.ID;
-        }
-
-        if (chunkId is not null && chunkType is null && chunkAttribute.ID == chunkId)
-        {
-            chunkType = type;
-        }
+        ChunkAttributesByType[type] = attributes;
 
         var constructor = CreateConstructor<Chunk>(type);
 
         if (type.GetInterface(nameof(IHeaderChunk)) is null)
         {
-            ChunkAttributesById.Add(chunkAttribute.ID, attributes);
-            ChunkTypesById.Add(chunkAttribute.ID, type);
-            ChunkIdsByType.Add(type, chunkAttribute.ID);
-            ChunkConstructors.Add(chunkAttribute.ID, constructor);
+            ChunkAttributesById[chunkAttribute.ID] = attributes;
+            ChunkTypesById[chunkAttribute.ID] = type;
+            ChunkIdsByType[type] = chunkAttribute.ID;
+            ChunkConstructors[chunkAttribute.ID] = constructor;
         }
         else
         {
-            HeaderChunkAttributesById.Add(chunkAttribute.ID, attributes);
-            HeaderChunkTypesById.Add(chunkAttribute.ID, type);
-            HeaderChunkIdsByType.Add(type, chunkAttribute.ID);
-            HeaderChunkConstructors.Add(chunkAttribute.ID, constructor);
+            HeaderChunkAttributesById[chunkAttribute.ID] = attributes;
+            HeaderChunkTypesById[chunkAttribute.ID] = type;
+            HeaderChunkIdsByType[type] = chunkAttribute.ID;
+            HeaderChunkConstructors[chunkAttribute.ID] = constructor;
         }
 
         if (type.BaseType?.GetGenericTypeDefinition() == typeof(SkippableChunk<>))
         {
-            SkippableChunks.Add(type);
+            SkippableChunks[type] = type;
         }
     }
 
@@ -317,14 +287,14 @@ public static class NodeCacheManager
             return cachedConstructor;
         }
 
-        if (!ClassIdWithType.TryGetValue(id, out var cachedType))
+        if (!ClassTypesById.TryGetValue(id, out var cachedType))
         {
             throw new ThisShouldNotHappenException();
         }
 
         var constructor = CreateConstructor<CMwNod>(cachedType);
 
-        ClassConstructors.Add(id, constructor);
+        ClassConstructors[id] = constructor;
 
         return constructor;
     }

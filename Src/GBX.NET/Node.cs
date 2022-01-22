@@ -7,12 +7,15 @@ namespace GBX.NET;
 
 public abstract class Node
 {
+    private uint? id;
     private ChunkSet? chunks;
 
     // Should be removed for causing recursive behaviour, problematic writing etc.
     // Responsibility should be thrown on readers/writers
     [IgnoreDataMember]
     public GameBox? GBX { get; internal set; }
+
+    public uint Id => GetStoredId();
 
     public ChunkSet Chunks
     {
@@ -40,6 +43,17 @@ public abstract class Node
         }
     }
 
+    private uint GetStoredId()
+    {
+        id ??= GetId();
+        return id.Value;
+    }
+
+    private uint GetId()
+    {
+        return NodeCacheManager.GetClassIdByType(GetType()) ?? throw new ThisShouldNotHappenException();
+    }
+
     /// <summary>
     /// Returns the name of the class formatted as <c>[engine]::[class]</c>.
     /// </summary>
@@ -48,8 +62,7 @@ public abstract class Node
     {
         var type = GetType();
 
-        if (NodeCacheManager.TypeWithClassId.TryGetValue(type, out uint id)
-         && NodeCacheManager.Names.TryGetValue(id, out string? name))
+        if (NodeCacheManager.Names.TryGetValue(Id, out string? name))
         {
             return name;
         }
@@ -199,7 +212,7 @@ public abstract class Node
             var chunkClass = NodeCacheManager.GetChunkTypeById(type, chunkId);
 
             var reflected = chunkClass is not null;
-            var skippable = reflected && NodeCacheManager.SkippableChunks.Contains(chunkClass!);
+            var skippable = reflected && NodeCacheManager.SkippableChunks.ContainsKey(chunkClass!);
 
             // Unknown or skippable chunk
             if (!reflected || skippable)

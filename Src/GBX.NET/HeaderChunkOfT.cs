@@ -16,7 +16,7 @@ public class HeaderChunk<T> : SkippableChunk<T>, IHeaderChunk where T : CMwNod
 
     }
 
-    protected override uint GetChunkId()
+    protected override uint GetId()
     {
         return NodeCacheManager.GetHeaderChunkIdByType(typeof(T), GetType());
     }
@@ -35,6 +35,6 @@ public class HeaderChunk<T> : SkippableChunk<T>, IHeaderChunk where T : CMwNod
     public override string ToString()
     {
         var desc = GetType().GetCustomAttribute<ChunkAttribute>()?.Description;
-        return $"{typeof(T).Name} header chunk 0x{GetChunkId():X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}";
+        return $"{typeof(T).Name} header chunk 0x{Id:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}";
     }
 }
