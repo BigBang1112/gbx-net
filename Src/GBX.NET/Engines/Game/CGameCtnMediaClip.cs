@@ -112,7 +112,7 @@ public class CGameCtnMediaClip : CMwNod
         public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
-            rw.ListNode(ref n.tracks!);
+            rw.ListNode<CGameCtnMediaTrack>(ref n.tracks!);
             rw.String(ref n.name!);
             rw.Int32(ref U01);
         }
@@ -136,7 +136,7 @@ public class CGameCtnMediaClip : CMwNod
         public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref tracksVersion);
-            rw.ListNode(ref n.tracks!);
+            rw.ListNode<CGameCtnMediaTrack>(ref n.tracks!);
 
             rw.String(ref n.name!);
         }

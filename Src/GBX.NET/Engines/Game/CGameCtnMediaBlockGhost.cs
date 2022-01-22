@@ -5,7 +5,7 @@
 /// </summary>
 [Node(0x030E5000)]
 [NodeExtension("GameCtnMediaBlockGhost")]
-public class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys, CGameCtnMediaBlock.IHasKeys
+public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -144,16 +144,7 @@ public class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMediaBlock.IH
 
             if (Version >= 3)
             {
-                rw.List(ref n.keys, r => new Key()
-                {
-                    Time = r.ReadSingle_s(),
-                    Unknown = r.ReadSingle()
-                },
-                (x, w) =>
-                {
-                    w.WriteSingle_s(x.Time);
-                    w.Write(x.Unknown);
-                });
+                rw.ListKey(ref n.keys);
             }
             else
             {
@@ -170,15 +161,6 @@ public class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMediaBlock.IH
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float Unknown { get; set; }
-    }
 
     #endregion
 }

@@ -5,7 +5,7 @@
 /// </summary>
 [Node(0x0316D000)]
 [NodeExtension("GameCtnMediaBlockFxCameraBlend")]
-public class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public partial class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -57,30 +57,11 @@ public class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, CGameCtnMedia
         public override void ReadWrite(CGameCtnMediaBlockFxCameraBlend n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
-
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                CaptureWeight = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.CaptureWeight);
-            });
+            rw.ListKey(ref n.keys!);
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float CaptureWeight { get; set; }
-    }
 
     #endregion
 }

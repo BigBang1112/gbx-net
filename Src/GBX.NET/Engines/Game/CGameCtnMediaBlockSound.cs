@@ -7,7 +7,7 @@ namespace GBX.NET.Engines.Game;
 /// </summary>
 [Node(0x030A7000)]
 [NodeExtension("GameCtnMediaBlockSound")]
-public class CGameCtnMediaBlockSound : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -110,19 +110,7 @@ public class CGameCtnMediaBlockSound : CGameCtnMediaBlock, CGameCtnMediaBlock.IH
         public override void ReadWrite(CGameCtnMediaBlockSound n, GameBoxReaderWriter rw)
         {
             rw.FileRef(ref n.sound!);
-
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Volume = r.ReadSingle(),
-                Pan = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Volume);
-                w.Write(x.Pan);
-            });
+            rw.ListKey(ref n.keys!);
         }
     }
 
@@ -180,45 +168,25 @@ public class CGameCtnMediaBlockSound : CGameCtnMediaBlock, CGameCtnMediaBlock.IH
     #region 0x004 chunk
 
     [Chunk(0x030A7004)]
-    public class Chunk030A7004 : Chunk<CGameCtnMediaBlockSound>
+    public class Chunk030A7004 : Chunk<CGameCtnMediaBlockSound>, IVersionable
     {
-        public int U01 = 1;
+        private int version = 1;
+
+        public int Version
+        {
+            get => version;
+            set => version = value;
+        }
 
         public override void ReadWrite(CGameCtnMediaBlockSound n, GameBoxReaderWriter rw)
         {
             rw.FileRef(ref n.sound!);
-            rw.Int32(ref U01); // 1
-
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Volume = r.ReadSingle(),
-                U01 = r.ReadSingle(),
-                Position = r.ReadVec3()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Volume);
-                w.Write(x.U01);
-                w.Write(x.Position);
-            });
+            rw.Int32(ref version);
+            rw.ListKey(ref n.keys!, version);
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float Volume { get; set; } = 1;
-        public float Pan { get; set; }
-        public float U01 { get; set; }
-        public Vec3 Position { get; set; }
-    }
 
     #endregion
 }

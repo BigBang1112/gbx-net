@@ -5,7 +5,7 @@
 /// </summary>
 [Node(0x030AB000)]
 [NodeExtension("CtnMediaBlockTransFade")]
-public class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public partial class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -58,32 +58,13 @@ public class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlock, CGameCtnMedi
 
         public override void ReadWrite(CGameCtnMediaBlockTransitionFade n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Opacity = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Opacity);
-            });
-
+            rw.ListKey(ref n.keys!);
             rw.Vec3(ref n.color);
             rw.Single(ref U01);
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float Opacity { get; set; }
-    }
 
     #endregion
 }

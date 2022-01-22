@@ -5,7 +5,7 @@
 /// </summary>
 [Node(0x03199000)]
 [NodeExtension("GameCtnMediaBlockFog")]
-public class CGameCtnMediaBlockFog : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public partial class CGameCtnMediaBlockFog : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -46,92 +46,22 @@ public class CGameCtnMediaBlockFog : CGameCtnMediaBlock, CGameCtnMediaBlock.IHas
     [Chunk(0x03199000)]
     public class Chunk03199000 : Chunk<CGameCtnMediaBlockFog>, IVersionable
     {
-        public int Version { get; set; }
+        private int version;
 
-        public override void Read(CGameCtnMediaBlockFog n, GameBoxReader r)
+        public int Version
         {
-            Version = r.ReadInt32();
-
-            n.keys = r.ReadList(r1 =>
-            {
-                var time = r1.ReadSingle_s();
-                var intensity = r1.ReadSingle();
-                var skyIntensity = r1.ReadSingle();
-                var distance = r1.ReadSingle();
-
-                float? coefficient = null;
-                Vec3? color = null;
-                float? cloudsOpacity = null;
-                float? cloudsSpeed = null;
-
-                if (Version >= 1)
-                {
-                    coefficient = r1.ReadSingle();
-                    color = r1.ReadVec3();
-
-                    if (Version >= 2)
-                    {
-                        cloudsOpacity = r1.ReadSingle();
-                        cloudsSpeed = r1.ReadSingle();
-                    }
-                }
-
-                return new Key()
-                {
-                    Time = time,
-                    Intensity = intensity,
-                    SkyIntensity = skyIntensity,
-                    Distance = distance,
-                    Coefficient = coefficient,
-                    Color = color,
-                    CloudsOpacity = cloudsOpacity,
-                    CloudsSpeed = cloudsSpeed
-                };
-            });
+            get => version;
+            set => version = value;
         }
 
-        public override void Write(CGameCtnMediaBlockFog n, GameBoxWriter w)
+        public override void ReadWrite(CGameCtnMediaBlockFog n, GameBoxReaderWriter rw)
         {
-            w.Write(Version);
-
-            w.Write(n.Keys, (x, w1) =>
-            {
-                w1.WriteSingle_s(x.Time);
-                w1.Write(x.Intensity);
-                w1.Write(x.SkyIntensity);
-                w1.Write(x.Distance);
-
-                if (Version >= 1)
-                {
-                    w1.Write(x.Coefficient.GetValueOrDefault(1));
-                    w1.Write(x.Coefficient.GetValueOrDefault());
-
-                    if (Version >= 2)
-                    {
-                        w1.Write(x.CloudsOpacity.GetValueOrDefault(1));
-                        w1.Write(x.CloudsSpeed.GetValueOrDefault(1));
-                    }
-                }
-            });
+            rw.Int32(ref version);
+            rw.ListKey(ref n.keys!, version);
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float Intensity { get; set; }
-        public float SkyIntensity { get; set; }
-        public float Distance { get; set; }
-        public float? Coefficient { get; set; }
-        public Vec3? Color { get; set; }
-        public float? CloudsOpacity { get; set; }
-        public float? CloudsSpeed { get; set; }
-    }
 
     #endregion
 }

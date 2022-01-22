@@ -5,7 +5,7 @@
 /// </summary>
 [Node(0x030A6000)]
 [NodeExtension("CtnMediaBlockMusicFx")]
-public class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public partial class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -48,16 +48,7 @@ public class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, CGameCtnMediaBl
     {
         public override void ReadWrite(CGameCtnMediaBlockMusicEffect n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                MusicVolume = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.MusicVolume);
-            });
+            rw.ListKey(ref n.keys!);
         }
     }
 
@@ -70,32 +61,11 @@ public class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, CGameCtnMediaBl
     {
         public override void ReadWrite(CGameCtnMediaBlockMusicEffect n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                MusicVolume = r.ReadSingle(),
-                SoundVolume = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.MusicVolume);
-                w.Write(x.SoundVolume);
-            });
+            rw.ListKey(ref n.keys!, version: 1);
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float MusicVolume { get; set; }
-        public float SoundVolume { get; set; }
-    }
 
     #endregion
 }

@@ -421,9 +421,7 @@ public partial class CGameCtnGhost : CGameGhost
                         w.Write(x.Item1);
                         w.Write(x.Item2);
                     });
-                rw.Array(ref U08,
-                    (i, r) => r.ReadString(),
-                    (x, w) => w.Write(x));
+                rw.ArrayString(ref U08);
             }
 
             rw.String(ref n.ghostNickname);

@@ -28,7 +28,7 @@ public class CGamePodiumInfo : CMwNod
         public override void ReadWrite(CGamePodiumInfo n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref U01);
-            rw.Array(ref n.mediaClipFids!);
+            rw.Array<int>(ref n.mediaClipFids!);
         }
     }
 }

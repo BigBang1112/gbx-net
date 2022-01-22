@@ -4,7 +4,7 @@
 /// MediaTracker block - Scenery (0x03188000)
 /// </summary>
 [Node(0x03188000)]
-public class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -64,21 +64,7 @@ public class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, CGameCtnMediaBlock.
         public override void ReadWrite(CGameCtnMediaBlockScenery n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
-
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                U01 = r.ReadSingle(),
-                U02 = r.ReadSingle(),
-                U03 = r.ReadSingle(),
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.U01);
-                w.Write(x.U02);
-                w.Write(x.U03);
-            });
+            rw.ListKey(ref n.keys!);
         }
     }
 
@@ -108,18 +94,6 @@ public class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, CGameCtnMediaBlock.
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float U01 { get; set; }
-        public float U02 { get; set; }
-        public float U03 { get; set; }
-        public Vec3 Position { get; set; }
-    }
 
     #endregion
 }

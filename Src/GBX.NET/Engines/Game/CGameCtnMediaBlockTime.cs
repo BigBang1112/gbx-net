@@ -4,7 +4,7 @@
 /// MediaTracker block - Time (0x03085000)
 /// </summary>
 [Node(0x03085000)]
-public class CGameCtnMediaBlockTime : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public partial class CGameCtnMediaBlockTime : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Properties
 
@@ -95,16 +95,6 @@ public class CGameCtnMediaBlockTime : CGameCtnMediaBlock, CGameCtnMediaBlock.IHa
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float TimeValue { get; set; }
-        public float Tangent { get; set; }
-    }
 
     #endregion
 }

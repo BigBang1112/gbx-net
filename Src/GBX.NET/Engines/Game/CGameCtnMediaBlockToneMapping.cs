@@ -5,7 +5,7 @@
 /// </summary>
 [Node(0x03127000)]
 [NodeExtension("GameCtnMediaBlockToneMapping")]
-public class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -54,7 +54,7 @@ public class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCtnMediaBl
                 Exposure = r.ReadSingle(),
                 MaxHDR = r.ReadSingle(),
                 LightTrailScale = r.ReadSingle(),
-                Unknown = r.ReadInt32()
+                U01 = r.ReadInt32()
             },
             (x, w) =>
             {
@@ -62,24 +62,12 @@ public class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCtnMediaBl
                 w.Write(x.Exposure);
                 w.Write(x.MaxHDR);
                 w.Write(x.LightTrailScale);
-                w.Write(x.Unknown);
+                w.Write(x.U01);
             });
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float Exposure { get; set; }
-        public float MaxHDR { get; set; }
-        public float LightTrailScale { get; set; }
-        public int Unknown { get; set; }
-    }
 
     #endregion
 }
