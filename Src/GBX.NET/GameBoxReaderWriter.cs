@@ -1895,8 +1895,59 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoopReadWrite"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
+    public T[]? Array<T>(T[]? array, Action<GameBoxReaderWriter, T> forLoopReadWrite) where T : new()
+    {
+        if (forLoopReadWrite is null)
+        {
+            throw new ArgumentNullException(nameof(forLoopReadWrite));
+        }
+
+        if (Reader is not null)
+        {
+            var length = Reader.ReadInt32();
+
+            array = new T[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                var t = new T();
+                forLoopReadWrite(this, t);
+                array[i] = t;
+            }
+
+            return array;
+        }
+
+        if (Writer is not null)
+        {
+            if (array is null)
+            {
+                Writer.Write(0);
+                return array;
+            }
+
+            Writer.Write(array.Length);
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                forLoopReadWrite(this, array[i]);
+            }
+        }
+
+        return array;
+    }
+
+    public void Array<T>(ref T[]? array, Action<GameBoxReaderWriter, T> forLoopReadWrite) where T : new()
+    {
+        array = Array(array, forLoopReadWrite);
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
-    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
     public Vec2[]? ArrayVec2(Vec2[]? array = default)
     {
         return Array(array, r => r.ReadVec2(), (x, w) => w.Write(x));
@@ -1906,7 +1957,6 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
-    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
     public void ArrayVec2(ref Vec2[]? array)
     {
         array = Array(array, r => r.ReadVec2(), (x, w) => w.Write(x));
@@ -1916,7 +1966,6 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
-    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
     public Vec3[]? ArrayVec3(Vec3[]? array = default)
     {
         return Array(array, r => r.ReadVec3(), (x, w) => w.Write(x));
@@ -1926,10 +1975,27 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
-    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
     public void ArrayVec3(ref Vec3[]? array)
     {
         array = Array(array, r => r.ReadVec3(), (x, w) => w.Write(x));
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
+    public string[]? ArrayString(string[]? array = default)
+    {
+        return Array(array, r => r.ReadString(), (x, w) => w.Write(x));
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
+    public void ArrayString(ref string[]? array)
+    {
+        array = Array(array, r => r.ReadString(), (x, w) => w.Write(x));
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -2064,8 +2130,11 @@ public class GameBoxReaderWriter
                 forLoopReadWrite(this, t);
                 list.Add(t);
             }
+
+            return list;
         }
-        else if (Writer is not null)
+
+        if (Writer is not null)
         {
             if (list is null)
             {
