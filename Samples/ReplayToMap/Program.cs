@@ -1,24 +1,15 @@
 ﻿using GBX.NET;
 using GBX.NET.Engines.Game;
-using System;
 using System.Linq;
 using TmEssentials;
 
-namespace ReplayToMap;
+var fileName = args.FirstOrDefault();
+if (fileName is null) return;
 
-class Program
+var node = GameBox.ParseNode(fileName);
+
+if (node is CGameCtnReplayRecord replay)
 {
-    static void Main(string[] args)
-    {
-        var fileName = args.FirstOrDefault();
-        if (fileName == null) return;
-
-        var node = GameBox.ParseNode(fileName);
-
-        if (node is CGameCtnReplayRecord replay)
-        {
-            var map = replay.Challenge;
-            map.Save(Formatter.Deformat(map.MapName + ".Map.Gbx"));
-        }
-    }
+    var map = replay.Challenge;
+    map.Save(Formatter.Deformat(map.MapName + ".Map.Gbx"));
 }
