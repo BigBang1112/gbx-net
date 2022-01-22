@@ -4,6 +4,7 @@
 /// MediaTracker block - Tone mapping (0x03127000)
 /// </summary>
 [Node(0x03127000)]
+[NodeExtension("GameCtnMediaBlockToneMapping")]
 public class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

@@ -4,6 +4,7 @@
 /// MediaTracker block - Vehicle light (0x03133000)
 /// </summary>
 [Node(0x03133000)]
+[NodeExtension("GameCtnMediaBlockVehicleLight")]
 public class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {
     #region Properties

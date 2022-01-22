@@ -4,6 +4,7 @@
 /// MediaTracker block - Trails (0x030A9000)
 /// </summary>
 [Node(0x030A9000)]
+[NodeExtension("GameCtnMediaBlockTrails")]
 public class CGameCtnMediaBlockTrails : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {
     #region Fields

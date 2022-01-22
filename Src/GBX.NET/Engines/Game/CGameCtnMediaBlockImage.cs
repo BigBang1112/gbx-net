@@ -4,6 +4,7 @@
 /// MediaTracker block - Image (0x030A5000)
 /// </summary>
 [Node(0x030A5000)]
+[NodeExtension("GameCtnMediaBlockImage")]
 public class CGameCtnMediaBlockImage : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

@@ -1,6 +1,7 @@
 ﻿namespace GBX.NET.Engines.Function;
 
 [Node(0x05015000)]
+[NodeExtension("FuncShader")]
 public class CFuncShaderLayerUV : CFuncShader
 {
     private string? layerName;

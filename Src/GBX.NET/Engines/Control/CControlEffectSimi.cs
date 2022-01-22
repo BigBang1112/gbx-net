@@ -7,6 +7,7 @@ namespace GBX.NET.Engines.Control;
 /// </summary>
 /// <remarks>An effect used on certain MediaTracker block types that tells how to generally render the component.</remarks>
 [Node(0x07010000)]
+[NodeExtension("ControlEffect")]
 public partial class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

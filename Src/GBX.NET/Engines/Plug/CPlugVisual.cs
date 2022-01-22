@@ -3,7 +3,9 @@
 /// <summary>
 /// Visual (0x09006000)
 /// </summary>
-[Node(0x09006000), WritingNotSupported]
+[Node(0x09006000)]
+[NodeExtension("Visual")]
+[WritingNotSupported]
 public abstract class CPlugVisual : CPlug
 {
     private int flags;

@@ -4,6 +4,7 @@
 /// MediaTracker block - Manialink (0x0312A000)
 /// </summary>
 [Node(0x0312A000)]
+[NodeExtension("GameCtnMediaBlockManialink")]
 public class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {
     #region Fields

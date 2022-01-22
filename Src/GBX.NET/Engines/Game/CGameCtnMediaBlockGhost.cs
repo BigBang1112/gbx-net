@@ -4,6 +4,7 @@
 /// MediaTracker block - Ghost (0x030E5000)
 /// </summary>
 [Node(0x030E5000)]
+[NodeExtension("GameCtnMediaBlockGhost")]
 public class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

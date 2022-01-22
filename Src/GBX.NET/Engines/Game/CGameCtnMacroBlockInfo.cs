@@ -5,7 +5,7 @@
 /// </summary>
 /// <remarks>A macroblock.</remarks>
 [Node(0x0310D000), WritingNotSupported]
-[NodeExtension("Macroblock")]
+[NodeExtension("MacroBlock")]
 public class CGameCtnMacroBlockInfo : CGameCtnCollector
 {
     public CGameCtnBlock[]? Blocks { get; set; }

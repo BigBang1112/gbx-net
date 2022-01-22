@@ -4,6 +4,7 @@
 /// MediaTracker block - Blur depth effect (0x03081000)
 /// </summary>
 [Node(0x03081000)]
+[NodeExtension("GameCtnMediaBlockFxBlurDepth")]
 public class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

@@ -4,6 +4,7 @@
 /// MediaTracker block - Music effect (0x030A6000)
 /// </summary>
 [Node(0x030A6000)]
+[NodeExtension("CtnMediaBlockMusicFx")]
 public class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

@@ -4,6 +4,7 @@
 /// MediaTracker block - Fog (0x03199000)
 /// </summary>
 [Node(0x03199000)]
+[NodeExtension("GameCtnMediaBlockFog")]
 public class CGameCtnMediaBlockFog : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

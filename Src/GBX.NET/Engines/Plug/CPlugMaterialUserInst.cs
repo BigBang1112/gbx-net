@@ -1,6 +1,7 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 [Node(0x090FD000)]
+[NodeExtension("Mat")]
 public class CPlugMaterialUserInst : CMwNod
 {
     private string? materialFile;

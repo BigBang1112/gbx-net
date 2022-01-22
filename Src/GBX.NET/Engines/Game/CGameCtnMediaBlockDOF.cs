@@ -4,6 +4,7 @@
 /// MediaTracker block - Depth of field (0x03126000)
 /// </summary>
 [Node(0x03126000)]
+[NodeExtension("GameCtnMediaBlockDOF")]
 public partial class CGameCtnMediaBlockDOF : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

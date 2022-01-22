@@ -4,6 +4,7 @@
 /// MediaTracker block - Dirty lens (0x03165000)
 /// </summary>
 [Node(0x03165000)]
+[NodeExtension("GameCtnMediaBlockDirtyLens")]
 public partial class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

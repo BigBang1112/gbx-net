@@ -4,6 +4,7 @@
 /// MediaTracker block - Coloring base (0x03172000)
 /// </summary>
 [Node(0x03172000)]
+[NodeExtension("GameCtnMediaBlockColoringBase")]
 public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

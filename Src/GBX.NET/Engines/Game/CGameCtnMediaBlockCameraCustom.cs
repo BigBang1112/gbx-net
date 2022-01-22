@@ -4,6 +4,7 @@
 /// MediaTracker block - Custom camera (0x030A2000)
 /// </summary>
 [Node(0x030A2000)]
+[NodeExtension("CtnMediaBlockCamCustom")]
 public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasKeys
 {
     #region Enums

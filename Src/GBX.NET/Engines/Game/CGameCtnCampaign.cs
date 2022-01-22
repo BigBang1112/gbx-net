@@ -7,6 +7,7 @@
 [Node(0x03090000)]
 [NodeExtension("ConstructionCampaign")]
 [NodeExtension("Campaign")]
+[NodeExtension("GameCtnCampaign")]
 public class CGameCtnCampaign : CMwNod
 {
     #region Fields

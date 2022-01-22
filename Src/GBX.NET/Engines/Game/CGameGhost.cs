@@ -8,6 +8,7 @@ namespace GBX.NET.Engines.Game;
 /// Ghost data (0x0303F000)
 /// </summary>
 [Node(0x0303F000)]
+[NodeExtension("Ghost")]
 public class CGameGhost : CMwNod
 {
     #region Fields

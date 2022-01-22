@@ -4,6 +4,7 @@
 /// MediaTracker block - Camera shake (0x030A4000)
 /// </summary>
 [Node(0x030A4000)]
+[NodeExtension("CtnMediaBlockCamFxShake")]
 public partial class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCameraEffect, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

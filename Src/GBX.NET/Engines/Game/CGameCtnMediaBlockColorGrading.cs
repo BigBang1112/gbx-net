@@ -4,6 +4,7 @@
 /// MediaTracker block - Color grading (0x03186000)
 /// </summary>
 [Node(0x03186000)]
+[NodeExtension("GameCtnMediaBlockColorGrading")]
 public partial class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

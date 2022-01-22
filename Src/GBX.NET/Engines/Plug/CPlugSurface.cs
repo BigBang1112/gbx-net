@@ -1,6 +1,7 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 [Node(0x0900C000)]
+[NodeExtension("Shape")]
 public class CPlugSurface : CPlug
 {
     protected CPlugSurface()

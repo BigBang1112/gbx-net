@@ -4,6 +4,7 @@
 /// MediaTracker block - Color effect (0x03080000)
 /// </summary>
 [Node(0x03080000)]
+[NodeExtension("GameCtnMediaBlockFxColors")]
 public class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

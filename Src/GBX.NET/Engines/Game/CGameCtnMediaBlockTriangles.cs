@@ -4,6 +4,7 @@
 /// MediaTracker block - Triangles (0x03029000)
 /// </summary>
 [Node(0x03029000)]
+[NodeExtension("GameCtnMediaBlockTriangles")]
 public abstract class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

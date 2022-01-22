@@ -5,6 +5,7 @@
 /// </summary>
 /// <remarks>Or zone in other words.</remarks>
 [Node(0x0308E000)]
+[NodeExtension("League")]
 public class CGameLeague : CMwNod
 {
     private string path;

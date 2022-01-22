@@ -4,6 +4,7 @@
 /// MediaTracker block - Bloom HDR (0x03128000)
 /// </summary>
 [Node(0x03128000)]
+[NodeExtension("GameCtnMediaBlockBloomHdr")]
 public partial class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

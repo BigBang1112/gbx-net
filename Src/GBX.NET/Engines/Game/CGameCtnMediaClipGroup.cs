@@ -4,6 +4,7 @@
 /// MediaTracker clip group (0x0307A000)
 /// </summary>
 [Node(0x0307A000)]
+[NodeExtension("GameCtnMediaClipGroup")]
 public class CGameCtnMediaClipGroup : CMwNod
 {
     #region Enums

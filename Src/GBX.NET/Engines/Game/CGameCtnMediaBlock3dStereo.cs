@@ -4,6 +4,7 @@
 /// MediaTracker block - 3D stereo (0x03024000)
 /// </summary>
 [Node(0x03024000)]
+[NodeExtension("GameCtnMediaBlock3dStereo")]
 public partial class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

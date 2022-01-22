@@ -4,6 +4,7 @@
 /// MediaTracker block - Camera blend effect (0x0316D000)
 /// </summary>
 [Node(0x0316D000)]
+[NodeExtension("GameCtnMediaBlockFxCameraBlend")]
 public class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

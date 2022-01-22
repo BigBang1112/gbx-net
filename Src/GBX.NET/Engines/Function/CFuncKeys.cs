@@ -4,10 +4,13 @@
 /// CFuncKeys (0x05002000)
 /// </summary>
 [Node(0x05002000)]
+[NodeExtension("FuncKey")]
 public abstract class CFuncKeys : CFunc
 {
     private float[]? xs;
 
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk05002001))]
     public float[]? Xs
     {
         get => xs;

@@ -4,6 +4,7 @@
 /// MediaTracker block - Transition fade (0x030AB000)
 /// </summary>
 [Node(0x030AB000)]
+[NodeExtension("CtnMediaBlockTransFade")]
 public class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

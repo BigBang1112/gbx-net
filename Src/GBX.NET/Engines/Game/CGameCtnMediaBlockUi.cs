@@ -4,6 +4,7 @@
 /// MediaTracker block - UI (0x0307D000)
 /// </summary>
 [Node(0x0307D000)]
+[NodeExtension("GameCtnMediaBlockUi")]
 public class CGameCtnMediaBlockUi : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {
     #region Fields

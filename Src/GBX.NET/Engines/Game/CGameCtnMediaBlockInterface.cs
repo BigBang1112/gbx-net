@@ -4,6 +4,7 @@
 /// MediaTracker block - Interface (0x03195000)
 /// </summary>
 [Node(0x03195000)]
+[NodeExtension("GameCtnMediaBlockInterface")]
 public class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {
     #region Fields

@@ -4,6 +4,7 @@
 /// MediaTracker block - Coloring capturable (0x0316C000)
 /// </summary>
 [Node(0x0316C000)]
+[NodeExtension("GameCtnMediaBlockColoringCapturable")]
 public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

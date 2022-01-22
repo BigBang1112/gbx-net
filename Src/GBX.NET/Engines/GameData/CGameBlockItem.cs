@@ -4,6 +4,7 @@
 /// Custom block (0x2E025000)
 /// </summary>
 [Node(0x2E025000)]
+[NodeExtension("BlockItem")]
 public class CGameBlockItem : CMwNod
 {
     #region Fields

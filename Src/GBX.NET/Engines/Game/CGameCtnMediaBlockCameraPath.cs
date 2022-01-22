@@ -4,7 +4,7 @@
 /// MediaTracker block - Camera path (0x030A1000)
 /// </summary>
 [Node(0x030A1000)]
-[NodeExtension("CtnMediaBlockCamPath.Gbx")]
+[NodeExtension("CtnMediaBlockCamPath")]
 public partial class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields

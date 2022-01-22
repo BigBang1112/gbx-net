@@ -4,6 +4,7 @@
 /// Zone genealogy (0x0311D000)
 /// </summary>
 [Node(0x0311D000)]
+[NodeExtension("ZoneGenealogy")]
 public class CGameCtnZoneGenealogy : CMwNod
 {
     #region Fields

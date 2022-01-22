@@ -6,7 +6,7 @@
 /// <remarks>A custom item, or possibly a custom block.</remarks>
 [Node(0x2E002000), WritingNotSupported]
 [NodeExtension("Item")]
-[NodeExtension("Block")]
+[NodeExtension("Block")] // CGameCustomBlockModel but it's here instead
 public class CGameItemModel : CGameCtnCollector
 {
     #region Enums

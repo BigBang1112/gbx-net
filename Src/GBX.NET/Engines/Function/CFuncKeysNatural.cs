@@ -8,6 +8,8 @@ public class CFuncKeysNatural : CFuncKeys
 {
     private int[]? naturals;
 
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk05030000))]
     public int[]? Naturals
     {
         get => naturals;
@@ -16,7 +18,7 @@ public class CFuncKeysNatural : CFuncKeys
 
     protected CFuncKeysNatural()
     {
-
+        
     }
 
     #region Chunks

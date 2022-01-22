@@ -4,6 +4,7 @@
 /// Podium info (0x03168000)
 /// </summary>
 [Node(0x03168000)]
+[NodeExtension("GamePodiumInfo")]
 public class CGamePodiumInfo : CMwNod
 {
     private int[] mediaClipFids;

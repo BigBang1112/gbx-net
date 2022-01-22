@@ -1,6 +1,7 @@
 ﻿namespace GBX.NET.Engines.Function;
 
 [Node(0x0501E000)]
+[NodeExtension("FuncTree")]
 public class CFuncTreeRotate : CFuncTree
 {
     private float angleMin;
