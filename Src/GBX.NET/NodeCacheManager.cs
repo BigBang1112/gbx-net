@@ -11,6 +11,8 @@ public static class NodeCacheManager
 {
     private static readonly Assembly assembly = typeof(NodeCacheManager).Assembly;
 
+    public static bool ClassesAreCached { get; private set; }
+
     public static Dictionary<uint, string> Names { get; }
     public static Dictionary<uint, uint> Mappings { get; } // key: older, value: newer
     public static ILookup<uint, uint> ReverseMappings { get; } // key: newer, value: older
@@ -87,6 +89,11 @@ public static class NodeCacheManager
 
     internal static void CacheClassTypesIfNotCached()
     {
+        if (ClassesAreCached)
+        {
+            return;
+        }
+
         IEnumerable<Type> types;
 
         try
@@ -124,6 +131,8 @@ public static class NodeCacheManager
             ClassIdsByType[type] = nodeId;
             ClassAttributesByType[type] = attributes;
         }
+
+        ClassesAreCached = true;
     }
 
     internal static Type? GetClassTypeById(uint id)
