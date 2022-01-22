@@ -10,6 +10,7 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
     #region Fields
 
     private IList<Key> keys;
+    private int capturableIndex;
 
     #endregion
 
@@ -26,6 +27,13 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
     {
         get => keys;
         set => keys = value;
+    }
+
+    [NodeMember(ExactlyNamed = true)]
+    public int CapturableIndex
+    {
+        get => capturableIndex;
+        set => capturableIndex = value;
     }
 
     #endregion
@@ -65,6 +73,11 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
             rw.Int32(ref U01);
 
             rw.ListKey(ref n.keys!);
+
+            if (version >= 1)
+            {
+                rw.Int32(ref n.capturableIndex);
+            }
         }
     }
 

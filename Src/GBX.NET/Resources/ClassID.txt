@@ -387,6 +387,7 @@
   129 CGameCtnMediaBlockTimeSpeed
   14C CGameCtnBlockInfoTransition
   166 CGameCtnMediaBlockCameraEffectInertialTracking
+  16C CGameCtnMediaBlockColoringCapturable
   199 CGameCtnMediaBlockFog
   282 CGameShield
   291 CGameTurretVis

@@ -29,7 +29,7 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameC
         set => keys = value;
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public int BaseIndex
     {
         get => baseIndex;
@@ -71,8 +71,13 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameC
         {
             rw.Int32(ref version); // If version is below 2, there is an loop of two floats and no U01
             rw.Int32(ref U01); 
+
             rw.ListKey(ref n.keys!, version);
-            rw.Int32(ref n.baseIndex);
+
+            if (version >= 1)
+            {
+                rw.Int32(ref n.baseIndex);
+            }
         }
     }
 
