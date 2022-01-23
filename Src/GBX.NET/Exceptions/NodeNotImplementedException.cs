@@ -2,18 +2,17 @@
 
 public class NodeNotImplementedException : Exception
 {
-    public NodeNotImplementedException(uint classId) : base(GetMessage(classId))
-    {
-        
-    }
+    public uint ClassId { get; }
 
-    private static string GetMessage(uint id)
-    {
-        var name = NodeCacheManager.Names
-            .Where(x => x.Key == id)
-            .Select(x => x.Value)
-            .FirstOrDefault() ?? "unknown class";
+    public string ClassName => NodeCacheManager.Names
+        .Where(x => x.Key == ClassId)
+        .Select(x => x.Value)
+        .FirstOrDefault() ?? "unknown class";
 
-        return $"Node with ID 0x{id:X8} is not implemented. ({name})";
+    public override string Message => $"Node with ID 0x{ClassId:X8} is not implemented. ({ClassName})";
+
+    public NodeNotImplementedException(uint classId)
+    {
+        ClassId = classId;
     }
 }
