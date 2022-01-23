@@ -17,4 +17,10 @@
     <ProjectReference Include="..\..\Src\GBX.NET\GBX.NET.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Chunk.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
