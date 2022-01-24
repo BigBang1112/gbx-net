@@ -66,11 +66,23 @@ public readonly record struct Vec3(float X, float Y, float Z) : IVec
     public static explicit operator Vec3(Span<float> a) => GetVec3FromReadOnlySpan(a);
     public static explicit operator Vec3(float[] a) => GetVec3FromReadOnlySpan(a);
 
-    public static Vec3 GetVec3FromReadOnlySpan(ReadOnlySpan<float> a) => a.Length switch
+    public static Vec3 GetVec3FromReadOnlySpan(ReadOnlySpan<float> a, int offset = 0)
     {
-        0 => default,
-        1 => new(a[0], 0, 0),
-        2 => new(a[0], a[1], 0),
-        _ => new(a[0], a[1], a[2])
-    };
+        return GetVec3FromReadOnlySpan(in a, offset);
+    }
+
+    public static Vec3 GetVec3FromReadOnlySpan(in ReadOnlySpan<float> a, int offset = 0)
+    {
+        var l = a.Length;
+
+        if (offset > l)
+        {
+            return new();
+        }
+
+        var bI = offset + 1;
+        var cI = offset + 2;
+
+        return new(a[offset], bI > l ? 0 : a[bI], cI > l ? 0 : a[cI]);
+    }
 }

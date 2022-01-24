@@ -518,15 +518,23 @@ public class GameBoxReader : BinaryReader
     /// </summary>
     /// <typeparam name="T">Type of the array.</typeparam>
     /// <param name="length">Length of the array.</param>
+    /// <param name="lengthInBytes">If to take length as the size of the byte array and not the <typeparamref name="T"/> array.</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
-    public T[] ReadArray<T>(int length) where T : struct
+    public T[] ReadArray<T>(int length, bool lengthInBytes = false) where T : struct
     {
-        var buffer = ReadBytes(length * Marshal.SizeOf(default(T)));
-        var array = new T[length];
+        var sizeOfT = Marshal.SizeOf<T>();
+
+        if (lengthInBytes && (length % 4) != 0)
+        {
+            throw new Exception();
+        }
+
+        var buffer = ReadBytes(length * (lengthInBytes ? 1 : sizeOfT));
+        var array = new T[length / (lengthInBytes ? sizeOfT : 1)];
         Buffer.BlockCopy(buffer, 0, array, 0, buffer.Length);
         return array;
     }
@@ -535,12 +543,13 @@ public class GameBoxReader : BinaryReader
     /// First reads an <see cref="int"/> representing the length, then reads an array of primitive types (only some are supported) with this length.
     /// </summary>
     /// <typeparam name="T">Type of the array.</typeparam>
+    /// <param name="lengthInBytes">If to take length as the size of the byte array and not the <typeparamref name="T"/> array.</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
-    public T[] ReadArray<T>() where T : struct => ReadArray<T>(length: ReadInt32());
+    public T[] ReadArray<T>(bool lengthInBytes = false) where T : struct => ReadArray<T>(length: ReadInt32(), lengthInBytes);
 
     /// <summary>
     /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>.
@@ -713,6 +722,46 @@ public class GameBoxReader : BinaryReader
             throw new ArgumentNullException(nameof(forLoop));
 
         return ReadArray(length: ReadInt32(), forLoop);
+    }
+
+    /// <summary>
+    /// Reads a <typeparamref name="T"/> span with the <paramref name="length"/> (<paramref name="lengthInBytes"/> determines the format) by using <see cref="MemoryMarshal.Cast{TFrom, TTo}(Span{TFrom})"/>, resulting in more optimized read of array for value types.
+    /// </summary>
+    /// <typeparam name="T">A struct type.</typeparam>
+    /// <param name="length">Length of the array.</param>
+    /// <param name="lengthInBytes">If to take length as the size of the byte array and not the <see cref="Vec3"/> array.</param>
+    /// <returns>An array of <see cref="Vec3"/>.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
+    public Span<T> ReadSpan<T>(int length, bool lengthInBytes = false) where T : struct
+    {
+        var l = length * (lengthInBytes ? 1 : Marshal.SizeOf<T>());
+
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        var bytes = new byte[l];
+        Read(bytes);
+#else
+        var bytes = ReadBytes(l);
+#endif
+        
+        return MemoryMarshal.Cast<byte, T>(bytes);
+    }
+
+    /// <summary>
+    /// First reads an <see cref="int"/> representing the length, then reads a <typeparamref name="T"/> span with the length (<paramref name="lengthInBytes"/> determines the format) by using <see cref="MemoryMarshal.Cast{TFrom, TTo}(Span{TFrom})"/>, resulting in more optimized read of array for value types.
+    /// </summary>
+    /// <typeparam name="T">A struct type.</typeparam>
+    /// <param name="lengthInBytes">If to take length as the size of the byte array and not the <see cref="Vec3"/> array.</param>
+    /// <returns>An array of <see cref="Vec3"/>.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
+    public Span<T> ReadSpan<T>(bool lengthInBytes = false) where T : struct
+    {
+        return ReadSpan<T>(length: ReadInt32(), lengthInBytes);
     }
 
     /// <summary>
@@ -1102,6 +1151,38 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public BigInteger ReadBigInt(int byteLength) => new(ReadBytes(byteLength));
+
+    /// <summary>
+    /// Reads a 2D rectangle.
+    /// </summary>
+    /// <returns>A rectangle.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public Rect ReadRect()
+    {
+        return new Rect(X: ReadSingle(),
+                        Y: ReadSingle(),
+                        X2: ReadSingle(),
+                        Y2: ReadSingle());
+    }
+
+    /// <summary>
+    /// Reads a 3D box.
+    /// </summary>
+    /// <returns>A box.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public Box ReadBox()
+    {
+        return new Box(X: ReadSingle(),
+                       Y: ReadSingle(),
+                       Z: ReadSingle(),
+                       X2: ReadSingle(),
+                       Y2: ReadSingle(),
+                       Z2: ReadSingle());
+    }
 
     /// <summary>
     /// Reads a common transform representation.
