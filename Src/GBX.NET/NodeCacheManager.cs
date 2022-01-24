@@ -17,6 +17,7 @@ public static class NodeCacheManager
     public static Dictionary<uint, uint> Mappings { get; } // key: older, value: newer
     public static ILookup<uint, uint> ReverseMappings { get; } // key: newer, value: older
     public static Dictionary<uint, string> Extensions { get; }
+    public static ConcurrentDictionary<uint, string> GbxExtensions { get; }
 
     public static ConcurrentDictionary<uint, Type> ClassTypesById { get; }
     public static ConcurrentDictionary<Type, uint> ClassIdsByType { get; }
@@ -45,6 +46,7 @@ public static class NodeCacheManager
         Names = new Dictionary<uint, string>();
         Mappings = new Dictionary<uint, uint>();
         Extensions = new Dictionary<uint, string>();
+        GbxExtensions = new ConcurrentDictionary<uint, string>();
 
         ClassTypesById = new ConcurrentDictionary<uint, Type>();
         ClassIdsByType = new ConcurrentDictionary<Type, uint>();
@@ -69,6 +71,15 @@ public static class NodeCacheManager
         DefineNames2(Names, Extensions);
         DefineMappings2(Mappings);
         ReverseMappings = Mappings.ToLookup(x => x.Value, x => x.Key);
+    }
+
+    public static string? GetNodeExtension(uint classId)
+    {
+        CacheClassTypesIfNotCached();
+
+        GbxExtensions.TryGetValue(classId, out var extension);
+
+        return extension;
     }
 
     /// <summary>
@@ -114,7 +125,23 @@ public static class NodeCacheManager
 
             var attributes = type.GetCustomAttributes();
 
-            if (attributes.FirstOrDefault(x => x is NodeAttribute) is not NodeAttribute nodeAttribute)
+            var nodeAttribute = default(NodeAttribute);
+            var nodeExtensionAttribute = default(NodeExtensionAttribute);
+
+            foreach (var attribute in attributes)
+            {
+                switch (attribute)
+                {
+                    case NodeAttribute na:
+                        nodeAttribute = na;
+                        break;
+                    case NodeExtensionAttribute nea:
+                        nodeExtensionAttribute = nea;
+                        break;
+                }
+            }
+
+            if (nodeAttribute is null)
             {
                 continue;
             }
@@ -130,6 +157,11 @@ public static class NodeCacheManager
             ClassTypesById[nodeId] = type;
             ClassIdsByType[type] = nodeId;
             ClassAttributesByType[type] = attributes;
+
+            if (nodeExtensionAttribute is not null)
+            {
+                GbxExtensions[nodeId] = nodeExtensionAttribute.Extension;
+            }
         }
 
         ClassesAreCached = true;
