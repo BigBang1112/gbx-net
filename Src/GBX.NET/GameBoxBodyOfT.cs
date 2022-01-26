@@ -17,6 +17,18 @@ public class GameBoxBody<T> : GameBoxBody where T : Node
 
     }
 
+    private void DecompressData(byte[] input, byte[] output)
+    {
+        Lzo.Decompress(input, output);
+
+        if (GameBox.Debug)
+        {
+            Debugger ??= new();
+            Debugger.CompressedData = input;
+            Debugger.UncompressedData = output;
+        }
+    }
+
     /// <exception cref="MissingLzoException"></exception>
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
@@ -25,14 +37,7 @@ public class GameBoxBody<T> : GameBoxBody where T : Node
     {
         var buffer = new byte[uncompressedSize];
 
-        Lzo.Decompress(data, buffer);
-
-        if (GameBox.Debug)
-        {
-            Debugger ??= new();
-            Debugger.CompressedData = data;
-            Debugger.UncompressedData = buffer;
-        }
+        DecompressData(data, buffer);
 
         Read(buffer, progress, logger);
     }
@@ -69,6 +74,53 @@ public class GameBoxBody<T> : GameBoxBody where T : Node
         using var ms = new MemoryStream();
         var s = reader.BaseStream;
         s.CopyTo(ms);
+        Rest = ms.ToArray();
+        Debug.WriteLine("Amount read: " + (s.Position / (float)(s.Position + Rest.Length)).ToString("P"));
+    }
+
+    /// <exception cref="MissingLzoException"></exception>
+    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
+    internal async Task ReadAsync(byte[] data, int uncompressedSize, ILogger? logger, Func<Task>? actionAfterEveryChunkIteration)
+    {
+        var buffer = new byte[uncompressedSize];
+
+        DecompressData(data, buffer);
+
+        await ReadAsync(buffer, logger, actionAfterEveryChunkIteration);
+    }
+
+    internal async Task ReadAsync(byte[] data, ILogger? logger, Func<Task>? actionAfterEveryChunkIteration)
+    {
+        using var ms = new MemoryStream(data);
+        await ReadAsync(ms, logger, actionAfterEveryChunkIteration);
+    }
+
+    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
+    internal async Task ReadAsync(Stream stream, ILogger? logger, Func<Task>? actionAfterEveryChunkIteration)
+    {
+        using var gbxr = new GameBoxReader(stream, body: this, logger: logger);
+        await ReadAsync(gbxr, logger, actionAfterEveryChunkIteration);
+    }
+
+    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
+    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
+    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
+    internal async Task ReadAsync(GameBoxReader reader, ILogger? logger, Func<Task>? actionAfterEveryChunkIteration)
+    {
+        var node = GBX.Node;
+
+        await Node.ParseAsync(node, node.GetType(), reader, logger, actionAfterEveryChunkIteration);
+
+        IsParsed = true;
+
+        // Maybe not needed
+        using var ms = new MemoryStream();
+        var s = reader.BaseStream;
+        await s.CopyToAsync(ms);
         Rest = ms.ToArray();
         Debug.WriteLine("Amount read: " + (s.Position / (float)(s.Position + Rest.Length)).ToString("P"));
     }

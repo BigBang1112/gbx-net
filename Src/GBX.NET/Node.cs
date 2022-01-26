@@ -182,6 +182,31 @@ public abstract class Node
         logger?.LogNodeComplete(time: stopwatch.Elapsed.TotalMilliseconds);
     }
 
+    internal static async Task ParseAsync(Node node, Type nodeType, GameBoxReader r, ILogger? logger, Func<Task>? actionAfterEveryChunkIteration)
+    {
+        var stopwatch = Stopwatch.StartNew();
+
+        node.GBX = r.Body?.GBX;
+
+        using var scope = logger?.BeginScope("{name} (async)", nodeType.Name);
+
+        var previousChunkId = default(uint?);
+
+        while (IterateChunks(node, nodeType, r, progress: null, logger, ref previousChunkId))
+        {
+            // Iterates through chunks until false is returned
+
+            if (actionAfterEveryChunkIteration is not null)
+            {
+                await actionAfterEveryChunkIteration();
+            }
+        }
+
+        stopwatch.Stop();
+
+        logger?.LogNodeComplete(time: stopwatch.Elapsed.TotalMilliseconds);
+    }
+
     private static bool IterateChunks(Node node, Type nodeType, GameBoxReader r, IProgress<GameBoxReadProgress>? progress, ILogger? logger, ref uint? previousChunkId)
     {
         var stream = r.BaseStream;
