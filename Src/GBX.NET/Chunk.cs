@@ -16,11 +16,9 @@ public abstract class Chunk : IChunk, IComparable<Chunk>
 
     internal Node Node { get; set; }
 
-    public int Progress { get; set; }
-
     public ChunkDebugger? Debugger { get; internal set; }
 
-    protected Chunk(CMwNod node)
+    protected Chunk(Node node)
     {
         Node = node;
     }

@@ -188,7 +188,7 @@ public class GameBoxRefTable
         return mainBuilder.ToString();
     }
 
-    public CMwNod? GetNode(CMwNod? nodeAtTheMoment, int? nodeIndex, string? fileName)
+    public Node? GetNode(Node? nodeAtTheMoment, int? nodeIndex, string? fileName)
     {
         if (nodeAtTheMoment is not null || nodeIndex is null)
             return nodeAtTheMoment;

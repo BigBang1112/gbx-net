@@ -26,7 +26,7 @@ public class GameBoxWriter : BinaryWriter
     /// Constructs a binary writer specialized for GBX.
     /// </summary>
     /// <param name="output">The output stream.</param>
-    /// <param name="body">Body used to store node references. If null, <see cref="CMwNod"/> cannot be written and <see cref="PropertyNullException"/> can be thrown.</param>
+    /// <param name="body">Body used to store node references. If null, <see cref="Node"/> cannot be written and <see cref="PropertyNullException"/> can be thrown.</param>
     /// <param name="lookbackable">A specified object to look into for the list of already written data. If null while <paramref name="body"/> is null, <see cref="Id"/> or <see cref="Ident"/> cannot be written and <see cref="PropertyNullException"/> can be thrown. If null while <paramref name="body"/> is not null, the body is used as <see cref="ILookbackable"/> instead.</param>
     /// <param name="logger">Logger.</param>
     public GameBoxWriter(Stream output, GameBoxBody? body = null, ILookbackable? lookbackable = null, ILogger? logger = null) : base(output, Encoding.UTF8, true)
@@ -401,7 +401,7 @@ public class GameBoxWriter : BinaryWriter
     /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Write(CMwNod? node, GameBoxBody body)
+    public void Write(Node? node, GameBoxBody body)
     {
         if (body is null)
             throw new ArgumentNullException(nameof(body));
@@ -427,7 +427,7 @@ public class GameBoxWriter : BinaryWriter
     /// <exception cref="PropertyNullException"><see cref="Body"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Write(CMwNod? node)
+    public void Write(Node? node)
     {
         if (Body is null)
             throw new PropertyNullException(nameof(Body));
@@ -550,7 +550,7 @@ public class GameBoxWriter : BinaryWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="OverflowException">There's more nodes than <see cref="int.MaxValue"/>.</exception>
-    public void WriteNodes<T>(IEnumerable<T>? nodes) where T : CMwNod
+    public void WriteNodes<T>(IEnumerable<T>? nodes) where T : Node
     {
         if (nodes is null)
         {
@@ -590,7 +590,7 @@ public class GameBoxWriter : BinaryWriter
     /// <exception cref="PropertyNullException"><see cref="Body"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteDictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary) where TValue : CMwNod
+    public void WriteDictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary) where TValue : Node
     {
         if (dictionary is null)
         {

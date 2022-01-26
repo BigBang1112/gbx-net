@@ -1576,7 +1576,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public CMwNod? NodeRef(CMwNod? variable, GameBoxBody body)
+    public Node? NodeRef(Node? variable, GameBoxBody body)
     {
         if (Reader is not null) return Reader.ReadNodeRef(body);
         if (Writer is not null) Writer.Write(variable, body);
@@ -1587,7 +1587,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public void NodeRef(ref CMwNod? variable, GameBoxBody body)
+    public void NodeRef(ref Node? variable, GameBoxBody body)
     {
         variable = NodeRef(variable, body);
     }
@@ -1596,7 +1596,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public CMwNod? NodeRef(CMwNod? variable = default)
+    public Node? NodeRef(Node? variable = default)
     {
         if (Reader is not null)
         {
@@ -1621,13 +1621,13 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void NodeRef(ref CMwNod? variable) => variable = NodeRef(variable);
+    public void NodeRef(ref Node? variable) => variable = NodeRef(variable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public T? NodeRef<T>(T? variable, GameBoxBody body) where T : CMwNod
+    public T? NodeRef<T>(T? variable, GameBoxBody body) where T : Node
     {
         if (Reader is not null) return Reader.ReadNodeRef<T>(body);
         if (Writer is not null) Writer.Write(variable, body);
@@ -1638,7 +1638,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public void NodeRef<T>(ref T? variable, GameBoxBody body) where T : CMwNod
+    public void NodeRef<T>(ref T? variable, GameBoxBody body) where T : Node
     {
         variable = NodeRef(variable, body);
     }
@@ -1647,7 +1647,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public T? NodeRef<T>(T? variable = default) where T : CMwNod
+    public T? NodeRef<T>(T? variable = default) where T : Node
     {
         if (Reader is not null)
         {
@@ -1672,7 +1672,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void NodeRef<T>(ref T? variable) where T : CMwNod
+    public void NodeRef<T>(ref T? variable) where T : Node
     {
         variable = NodeRef(variable);
     }
@@ -1681,7 +1681,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public T? NodeRef<T>(T? variable, ref int? nodeRefIndex, GameBoxBody body) where T : CMwNod
+    public T? NodeRef<T>(T? variable, ref int? nodeRefIndex, GameBoxBody body) where T : Node
     {
         if (Reader is not null)
         {
@@ -1699,7 +1699,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public void NodeRef<T>(ref T? variable, ref int? nodeRefIndex, GameBoxBody body) where T : CMwNod
+    public void NodeRef<T>(ref T? variable, ref int? nodeRefIndex, GameBoxBody body) where T : Node
     {
         variable = NodeRef(variable, ref nodeRefIndex, body);
     }
@@ -1708,7 +1708,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public T? NodeRef<T>(T? variable, ref int? nodeRefIndex) where T : CMwNod
+    public T? NodeRef<T>(T? variable, ref int? nodeRefIndex) where T : Node
     {
         if (Reader is not null)
         {
@@ -1733,7 +1733,7 @@ public class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void NodeRef<T>(ref T? variable, ref int? nodeRefIndex) where T : CMwNod
+    public void NodeRef<T>(ref T? variable, ref int? nodeRefIndex) where T : Node
     {
         variable = NodeRef(variable, ref nodeRefIndex);
     }
@@ -2103,7 +2103,7 @@ public class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public T?[]? ArrayNode<T>(T?[]? array = default) where T : CMwNod
+    public T?[]? ArrayNode<T>(T?[]? array = default) where T : Node
     {
         return Array(array, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
     }
@@ -2113,7 +2113,7 @@ public class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void ArrayNode<T>(ref T?[]? array) where T : CMwNod
+    public void ArrayNode<T>(ref T?[]? array) where T : Node
     {
         array = Array(array, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
     }
@@ -2294,7 +2294,7 @@ public class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public IList<T?>? ListNode<T>(IList<T?>? list = default) where T : CMwNod
+    public IList<T?>? ListNode<T>(IList<T?>? list = default) where T : Node
     {
         return List(list,
             r => r.ReadNodeRef<T>(),
@@ -2306,7 +2306,7 @@ public class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void ListNode<T>(ref IList<T?>? list) where T : CMwNod
+    public void ListNode<T>(ref IList<T?>? list) where T : Node
     {
         list = ListNode(list);
     }
@@ -2342,7 +2342,7 @@ public class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public IDictionary<TKey, TValue?>? DictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary = default, bool overrideKey = false) where TKey : notnull where TValue : CMwNod
+    public IDictionary<TKey, TValue?>? DictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary = default, bool overrideKey = false) where TKey : notnull where TValue : Node
     {
         if (Reader is not null) return Reader.ReadDictionaryNode<TKey, TValue>(overrideKey);
         if (Writer is not null) Writer.WriteDictionaryNode(dictionary);
@@ -2356,7 +2356,7 @@ public class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void DictionaryNode<TKey, TValue>(ref IDictionary<TKey, TValue?>? dictionary, bool overrideKey = false) where TKey : notnull where TValue : CMwNod
+    public void DictionaryNode<TKey, TValue>(ref IDictionary<TKey, TValue?>? dictionary, bool overrideKey = false) where TKey : notnull where TValue : Node
     {
         dictionary = DictionaryNode(dictionary, overrideKey);
     }

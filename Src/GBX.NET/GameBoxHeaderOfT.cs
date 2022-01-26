@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET;
 
-public class GameBoxHeader<T> : GameBoxPart where T : CMwNod
+public class GameBoxHeader<T> : GameBoxPart where T : Node
 {
     public ChunkSet Chunks { get; }
 

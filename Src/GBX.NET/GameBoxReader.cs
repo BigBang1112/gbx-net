@@ -25,7 +25,7 @@ public class GameBoxReader : BinaryReader
     /// Constructs a binary reader specialized for GBX.
     /// </summary>
     /// <param name="input">The input stream.</param>
-    /// <param name="body">Body used to store node references. If null, <see cref="CMwNod"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
+    /// <param name="body">Body used to store node references. If null, <see cref="Node"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
     /// <param name="lookbackable">A specified object to look into for the list of already read data. If null while <paramref name="body"/> is null, <see cref="Id"/> or <see cref="Ident"/> cannot be read and <see cref="PropertyNullException"/> can be thrown. If null while <paramref name="body"/> is not null, the body is used as <see cref="ILookbackable"/> instead.</param>
     /// <param name="logger">Logger.</param>
     public GameBoxReader(Stream input, GameBoxBody? body = null, ILookbackable? lookbackable = null, ILogger? logger = null) : base(input, Encoding.UTF8, true)
@@ -352,7 +352,7 @@ public class GameBoxReader : BinaryReader
     }
 
     /// <summary>
-    /// Reads an <see cref="int"/> containing the node reference index, then the node using the <see cref="CMwNod"/>'s Parse method. The index is also checked if it isn't a part of a reference table, which currently returns null.
+    /// Reads an <see cref="int"/> containing the node reference index, then the node using the <see cref="Node"/>'s Parse method. The index is also checked if it isn't a part of a reference table, which currently returns null.
     /// </summary>
     /// <typeparam name="T">Type of node.</typeparam>
     /// <param name="nodeRefIndex">Index of the node reference.</param>
@@ -362,7 +362,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public T? ReadNodeRef<T>(out int nodeRefIndex, GameBoxBody body) where T : CMwNod
+    public T? ReadNodeRef<T>(out int nodeRefIndex, GameBoxBody body) where T : Node
     {
         if (body is null)
             throw new ArgumentNullException(nameof(body));
@@ -396,11 +396,11 @@ public class GameBoxReader : BinaryReader
             // Else it's a nested object
         }
 
-        var node = default(CMwNod?);
+        var node = default(Node?);
 
         // If index is 0 or bigger and the node wasn't read yet, or is null
         if (index >= 0 && (!body.AuxilaryNodes.ContainsKey(index) || body.AuxilaryNodes[index] == null))
-            node = CMwNod.Parse<T>(this, classId: null, progress: null, logger)!;
+            node = Node.Parse<T>(this, classId: null, progress: null, logger)!;
 
         if (node is null)
             body.AuxilaryNodes.TryGetValue(index, out node); // Tries to get the available node from index
@@ -415,7 +415,7 @@ public class GameBoxReader : BinaryReader
     }
 
     /// <summary>
-    /// Reads an <see cref="int"/> containing the node reference index, then the node using the <see cref="CMwNod"/>'s Parse method. The index is also checked if it isn't a part of a reference table, which currently returns null.
+    /// Reads an <see cref="int"/> containing the node reference index, then the node using the <see cref="Node"/>'s Parse method. The index is also checked if it isn't a part of a reference table, which currently returns null.
     /// </summary>
     /// <typeparam name="T">Type of node.</typeparam>
     /// <param name="body">Body used to store node references.</param>
@@ -424,10 +424,10 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public T? ReadNodeRef<T>(GameBoxBody body) where T : CMwNod => ReadNodeRef<T>(out int _, body);
+    public T? ReadNodeRef<T>(GameBoxBody body) where T : Node => ReadNodeRef<T>(out int _, body);
 
     /// <summary>
-    /// Reads an <see cref="int"/> containing the node reference index, then the node using the <see cref="CMwNod"/>'s Parse method. The index is also checked if it isn't a part of a reference table, which currently returns null.
+    /// Reads an <see cref="int"/> containing the node reference index, then the node using the <see cref="Node"/>'s Parse method. The index is also checked if it isn't a part of a reference table, which currently returns null.
     /// </summary>
     /// <typeparam name="T">Type of node.</typeparam>
     /// <param name="nodeRefIndex">Index of the node reference.</param>
@@ -436,7 +436,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException"><see cref="Body"/> is null.</exception>
-    public T? ReadNodeRef<T>(out int nodeRefIndex) where T : CMwNod
+    public T? ReadNodeRef<T>(out int nodeRefIndex) where T : Node
     {
         if (Body is null)
             throw new PropertyNullException(nameof(Body));
@@ -445,7 +445,7 @@ public class GameBoxReader : BinaryReader
     }
 
     /// <summary>
-    /// Reads an <see cref="int"/> containing the node reference index, then the node using the <see cref="CMwNod"/>'s Parse method. The index is also checked if it isn't a part of a reference table, which currently returns null.
+    /// Reads an <see cref="int"/> containing the node reference index, then the node using the <see cref="Node"/>'s Parse method. The index is also checked if it isn't a part of a reference table, which currently returns null.
     /// </summary>
     /// <typeparam name="T">Type of node.</typeparam>
     /// <returns>A node, or null if the index is -1 or the node is from reference table.</returns>
@@ -453,10 +453,10 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException"><see cref="Body"/> is null.</exception>
-    public T? ReadNodeRef<T>() where T : CMwNod => ReadNodeRef<T>(out int _);
+    public T? ReadNodeRef<T>() where T : Node => ReadNodeRef<T>(out int _);
 
     /// <summary>
-    /// Reads an <see cref="int"/> containing the node reference index, then the node using the <see cref="CMwNod"/>'s Parse method. The index is also checked if it isn't a part of a reference table, which currently returns null.
+    /// Reads an <see cref="int"/> containing the node reference index, then the node using the <see cref="Node"/>'s Parse method. The index is also checked if it isn't a part of a reference table, which currently returns null.
     /// </summary>
     /// <param name="body">Body used to store node references.</param>
     /// <returns>A node, or null if the index is -1 or the node is from reference table.</returns>
@@ -464,28 +464,28 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public CMwNod? ReadNodeRef(GameBoxBody body)
+    public Node? ReadNodeRef(GameBoxBody body)
     {
         if (body is null)
             throw new ArgumentNullException(nameof(body));
 
-        return ReadNodeRef<CMwNod>(body);
+        return ReadNodeRef<Node>(body);
     }
 
     /// <summary>
-    /// Reads an <see cref="int"/> containing the node reference index, then the node using the <see cref="CMwNod"/>'s Parse method. The index is also checked if it isn't a part of a reference table, which currently returns null.
+    /// Reads an <see cref="int"/> containing the node reference index, then the node using the <see cref="Node"/>'s Parse method. The index is also checked if it isn't a part of a reference table, which currently returns null.
     /// </summary>
     /// <returns>A node, or null if the index is -1 or the node is from reference table.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException"><see cref="Body"/> is null.</exception>
-    public CMwNod? ReadNodeRef()
+    public Node? ReadNodeRef()
     {
         if (Body is null)
             throw new PropertyNullException(nameof(Body));
 
-        return ReadNodeRef<CMwNod>(Body);
+        return ReadNodeRef<Node>(Body);
     }
 
     /// <summary>
@@ -1059,7 +1059,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException"><see cref="Body"/> is null.</exception>
     /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
-    public IDictionary<TKey, TValue?> ReadDictionaryNode<TKey, TValue>(bool overrideKey = false) where TKey : notnull where TValue : CMwNod
+    public IDictionary<TKey, TValue?> ReadDictionaryNode<TKey, TValue>(bool overrideKey = false) where TKey : notnull where TValue : Node
     {
         var length = ReadInt32();
 

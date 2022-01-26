@@ -2,7 +2,7 @@
 
 namespace GBX.NET;
 
-public class GameBoxBody<T> : GameBoxBody where T : CMwNod
+public class GameBoxBody<T> : GameBoxBody where T : Node
 {
     public byte[]? Rest { get; set; }
 
@@ -60,7 +60,9 @@ public class GameBoxBody<T> : GameBoxBody where T : CMwNod
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     internal void Read(GameBoxReader reader, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
     {
-        CMwNod.Parse(GBX.Node, reader, progress, logger);
+        var node = GBX.Node;
+
+        Node.Parse(node, node.GetType(), reader, progress, logger);
 
         IsParsed = true;
 

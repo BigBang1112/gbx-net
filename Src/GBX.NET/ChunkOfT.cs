@@ -2,7 +2,7 @@
 
 namespace GBX.NET;
 
-public abstract class Chunk<T> : Chunk, IChunk where T : CMwNod
+public abstract class Chunk<T> : Chunk, IChunk where T : Node
 {
     [IgnoreDataMember]
     public new T Node

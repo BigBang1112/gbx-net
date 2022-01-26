@@ -7,7 +7,7 @@ namespace GBX.NET;
 /// A known serialized GameBox node with additional attributes. This class can represent deserialized .Gbx file.
 /// </summary>
 /// <typeparam name="T">The main node of the GBX. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
-public class GameBox<T> : GameBox where T : CMwNod
+public class GameBox<T> : GameBox where T : Node
 {
     /// <summary>
     /// Header part specialized for <typeparamref name="T"/>, typically storing metadata for quickest access.
@@ -50,7 +50,6 @@ public class GameBox<T> : GameBox where T : CMwNod
         Body = new GameBoxBody<T>(this);
 
         Node = (T)Activator.CreateInstance(typeof(T), true)!;
-        Node.SetIDAndChunks();
         Node.GBX = this;
     }
 
@@ -73,7 +72,7 @@ public class GameBox<T> : GameBox where T : CMwNod
         AssignGbxToNode(this, Node);
     }
 
-    private void AssignGbxToNode(GameBox gbx, CMwNod? n)
+    private void AssignGbxToNode(GameBox gbx, Node? n) // Goal is to get rid of this method
     {
         if (n is null) return;
 

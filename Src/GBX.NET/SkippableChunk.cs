@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace GBX.NET;
 
-public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : CMwNod
+public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
 {
     private readonly uint? id;
 
@@ -66,8 +66,6 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : CMwNod
         {
             Debug.WriteLine($"Skippable chunk not fully parsed! ({ms.Position}/{ms.Length}) - {ToString()}");
         }
-
-        Progress = (int)ms.Position;
     }
 
     public override void Write(T n, GameBoxWriter w)

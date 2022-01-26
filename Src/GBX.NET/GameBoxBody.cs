@@ -8,7 +8,7 @@ public abstract class GameBoxBody : GameBoxPart
     public GameBoxBodyDebugger? Debugger { get; protected set; }
 
     [IgnoreDataMember]
-    public SortedDictionary<int, CMwNod> AuxilaryNodes { get; }
+    public SortedDictionary<int, Node> AuxilaryNodes { get; }
 
     internal bool IsParsed { get; set; }
     internal int UncompressedSize { get; set; }
@@ -20,6 +20,6 @@ public abstract class GameBoxBody : GameBoxPart
 
     public GameBoxBody(GameBox gbx) : base(gbx)
     {
-        AuxilaryNodes = new SortedDictionary<int, CMwNod>();
+        AuxilaryNodes = new SortedDictionary<int, Node>();
     }
 }

@@ -33,7 +33,7 @@ public class GameBox
 
     public GameBoxBody? Body { get; protected set; }
 
-    public CMwNod? Node { get; internal set; }
+    public Node? Node { get; internal set; }
 
     /// <summary>
     /// ID of the node.
@@ -74,12 +74,12 @@ public class GameBox
     }
 
     /// <summary>
-    /// Tries to get the <see cref="CMwNod"/> of this GBX.
+    /// Tries to get the <see cref="Node"/> of this GBX.
     /// </summary>
-    /// <typeparam name="T">Type of the <see cref="CMwNod"/> to look for.</typeparam>
+    /// <typeparam name="T">Type of the <see cref="Node"/> to look for.</typeparam>
     /// <param name="node">A node that is being extracted from this <see cref="GameBox"/> object. Null if unsuccessful.</param>
     /// <returns>True if the type of this <see cref="GameBox"/> is <see cref="GameBox{T}"/> and <typeparamref name="T"/> matches. Otherwise false.</returns>
-    public bool TryNode<T>(out T? node) where T : CMwNod
+    public bool TryNode<T>(out T? node) where T : Node
     {
         var property = GetType().GetProperty(nameof(Node));
 
@@ -139,7 +139,7 @@ public class GameBox
     /// Implicitly casts <see cref="GameBox"/> to its <see cref="Node"/>.
     /// </summary>
     /// <param name="gbx"></param>
-    public static implicit operator CMwNod?(GameBox gbx) => gbx.Node;
+    public static implicit operator Node?(GameBox gbx) => gbx.Node;
 
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
     private static GameBox ParseHeader(GameBoxReader reader,
@@ -241,7 +241,7 @@ public class GameBox
     public static GameBox<T> ParseHeader<T>(Stream stream,
                                             IProgress<GameBoxReadProgress>? progress = null,
                                             bool readRawBody = false,
-                                            ILogger? logger = null) where T : CMwNod
+                                            ILogger? logger = null) where T : Node
     {
         var gbx = new GameBox<T>();
 
@@ -280,7 +280,7 @@ public class GameBox
     public static GameBox<T> ParseHeader<T>(string fileName,
                                             IProgress<GameBoxReadProgress>? progress = null,
                                             bool readRawBody = false,
-                                            ILogger? logger = null) where T : CMwNod
+                                            ILogger? logger = null) where T : Node
     {
         using var fs = File.OpenRead(fileName);
         return ParseHeader<T>(fs, progress, readRawBody, logger);
@@ -307,7 +307,7 @@ public class GameBox
     public static GameBox<T> Parse<T>(Stream stream,
                                       IProgress<GameBoxReadProgress>? progress = null,
                                       bool readUncompressedBodyDirectly = false,
-                                      ILogger? logger = null) where T : CMwNod
+                                      ILogger? logger = null) where T : Node
     {
         var gbx = ParseHeader<T>(stream, progress, readRawBody: false, logger);
 
@@ -340,7 +340,7 @@ public class GameBox
     public static GameBox<T> Parse<T>(string fileName,
                                       IProgress<GameBoxReadProgress>? progress = null,
                                       bool readUncompressedBodyDirectly = false,
-                                      ILogger? logger = null) where T : CMwNod
+                                      ILogger? logger = null) where T : Node
     {
         using var fs = File.OpenRead(fileName);
         return Parse<T>(fs, progress, readUncompressedBodyDirectly, logger) ?? throw new GameBoxParseException();
@@ -410,9 +410,9 @@ public class GameBox
     /// <param name="progress">Callback that reports any read progress.</param>
     /// <param name="readRawBody">If the body should be read in raw bytes. True allows modification (write abilities) of GBX headers.</param>
     /// <param name="logger">Logger.</param>
-    /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
+    /// <returns>A <see cref="NET.Node"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    public static CMwNod? ParseNodeHeader(Stream stream,
+    public static Node? ParseNodeHeader(Stream stream,
                                           IProgress<GameBoxReadProgress>? progress = null,
                                           bool readRawBody = false,
                                           ILogger? logger = null)
@@ -427,9 +427,9 @@ public class GameBox
     /// <param name="progress">Callback that reports any read progress.</param>
     /// <param name="readRawBody">If the body should be read in raw bytes. True allows modification (write abilities) of GBX headers.</param>
     /// <param name="logger">Logger.</param>
-    /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
+    /// <returns>A <see cref="NET.Node"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    public static CMwNod? ParseNodeHeader(string fileName,
+    public static Node? ParseNodeHeader(string fileName,
                                           IProgress<GameBoxReadProgress>? progress = null,
                                           bool readRawBody = false,
                                           ILogger? logger = null)
@@ -445,14 +445,14 @@ public class GameBox
     /// <param name="progress">Callback that reports any read progress.</param>
     /// <param name="readRawBody">If the body should be read in raw bytes. True allows modification (write abilities) of GBX headers.</param>
     /// <param name="logger">Logger.</param>
-    /// <returns>A <see cref="CMwNod"/> casted to <typeparamref name="T"/>.</returns>
+    /// <returns>A <see cref="NET.Node"/> casted to <typeparamref name="T"/>.</returns>
     /// <exception cref="InvalidCastException"/>
     /// <exception cref="GameBoxParseException"></exception>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
     public static T ParseNodeHeader<T>(Stream stream,
                                        IProgress<GameBoxReadProgress>? progress = null,
                                        bool readRawBody = false,
-                                       ILogger? logger = null) where T : CMwNod
+                                       ILogger? logger = null) where T : Node
     {
         return ParseHeader<T>(stream, progress, readRawBody, logger);
     }
@@ -465,14 +465,14 @@ public class GameBox
     /// <param name="progress">Callback that reports any read progress.</param>
     /// <param name="readRawBody">If the body should be read in raw bytes. True allows modification (write abilities) of GBX headers.</param>
     /// <param name="logger">Logger.</param>
-    /// <returns>A <see cref="CMwNod"/> casted to <typeparamref name="T"/>.</returns>
+    /// <returns>A <see cref="NET.Node"/> casted to <typeparamref name="T"/>.</returns>
     /// <exception cref="InvalidCastException"/>
     /// <exception cref="GameBoxParseException"></exception>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
     public static T ParseNodeHeader<T>(string fileName,
                                        IProgress<GameBoxReadProgress>? progress = null,
                                        bool readRawBody = false,
-                                       ILogger? logger = null) where T : CMwNod
+                                       ILogger? logger = null) where T : Node
     {
         return ParseHeader<T>(fileName, progress, readRawBody, logger);
     }
@@ -486,7 +486,7 @@ public class GameBox
     /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
     /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
     /// <param name="logger">Logger.</param>
-    /// <returns>A <see cref="CMwNod"/> casted to <typeparamref name="T"/>.</returns>
+    /// <returns>A <see cref="NET.Node"/> casted to <typeparamref name="T"/>.</returns>
     /// <exception cref="MissingLzoException"/>
     /// <exception cref="InvalidCastException"/>
     /// <exception cref="NotSupportedException"/>
@@ -497,7 +497,7 @@ public class GameBox
     public static T ParseNode<T>(Stream stream,
                                  IProgress<GameBoxReadProgress>? progress = null,
                                  bool readUncompressedBodyDirectly = false,
-                                 ILogger? logger = null) where T : CMwNod
+                                 ILogger? logger = null) where T : Node
     {
         return Parse<T>(stream, progress, readUncompressedBodyDirectly, logger);
     }
@@ -511,7 +511,7 @@ public class GameBox
     /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
     /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
     /// <param name="logger">Logger.</param>
-    /// <returns>A <see cref="CMwNod"/> casted to <typeparamref name="T"/>.</returns>
+    /// <returns>A <see cref="NET.Node"/> casted to <typeparamref name="T"/>.</returns>
     /// <exception cref="MissingLzoException"/>
     /// <exception cref="InvalidCastException"/>
     /// <exception cref="NotSupportedException"/>
@@ -522,7 +522,7 @@ public class GameBox
     public static T ParseNode<T>(string fileName,
                                  IProgress<GameBoxReadProgress>? progress = null,
                                  bool readUncompressedBodyDirectly = false,
-                                 ILogger? logger = null) where T : CMwNod
+                                 ILogger? logger = null) where T : Node
     {
         return Parse<T>(fileName, progress, readUncompressedBodyDirectly, logger);
     }
@@ -535,14 +535,14 @@ public class GameBox
     /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
     /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
     /// <param name="logger">Logger.</param>
-    /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
+    /// <returns>A <see cref="NET.Node"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
     /// <exception cref="MissingLzoException"/>
     /// <exception cref="NotSupportedException"/>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    public static CMwNod? ParseNode(string fileName,
+    public static Node? ParseNode(string fileName,
                                     IProgress<GameBoxReadProgress>? progress = null,
                                     bool readUncompressedBodyDirectly = false,
                                     ILogger? logger = null)
@@ -558,14 +558,14 @@ public class GameBox
     /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
     /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
     /// <param name="logger">Logger.</param>
-    /// <returns>A <see cref="CMwNod"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
+    /// <returns>A <see cref="NET.Node"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
     /// <exception cref="MissingLzoException"/>
     /// <exception cref="NotSupportedException"/>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    public static CMwNod? ParseNode(Stream stream,
+    public static Node? ParseNode(Stream stream,
                                     IProgress<GameBoxReadProgress>? progress = null,
                                     bool readUncompressedBodyDirectly = false,
                                     ILogger? logger = null)
@@ -648,6 +648,7 @@ public class GameBox
 
         System.Diagnostics.Debug.WriteLine("GetGameBoxType: " + modernID.ToString("x8"));
 
+        // This should be optimized
         var availableClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
                 && x.Namespace?.StartsWith("GBX.NET.Engines") == true && x.IsSubclassOf(typeof(CMwNod))
                 && x.GetCustomAttribute<NodeAttribute>()?.ID == modernID).FirstOrDefault();
