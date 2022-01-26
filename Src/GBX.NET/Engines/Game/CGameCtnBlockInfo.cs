@@ -83,7 +83,7 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
         public bool U05;
         public int U06;
         public int U07;
-        public CMwNod? U08;
+        public Node? U08;
         public byte U12;
         public int U13;
         public short U14;
