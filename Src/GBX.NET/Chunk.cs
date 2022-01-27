@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 
 namespace GBX.NET;
 
-public abstract class Chunk : IChunk, IComparable<Chunk>
+public abstract class Chunk : IComparable<Chunk>
 {
     private uint? id;
 
@@ -88,20 +88,5 @@ public abstract class Chunk : IChunk, IComparable<Chunk>
     public int CompareTo(Chunk? other)
     {
         return Id.CompareTo(other?.Id);
-    }
-
-    void IChunk.Read(Node n, GameBoxReader r)
-    {
-        throw new NotSupportedException();
-    }
-
-    void IChunk.Write(Node n, GameBoxWriter w)
-    {
-        throw new NotSupportedException();
-    }
-
-    void IChunk.ReadWrite(Node n, GameBoxReaderWriter rw)
-    {
-        throw new NotSupportedException();
     }
 }

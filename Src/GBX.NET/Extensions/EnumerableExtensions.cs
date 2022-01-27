@@ -25,7 +25,9 @@ public static class EnumerableExtensions
         try
         {
             foreach (var item in source)
+            {
                 list.Add(item);
+            }
         }
         catch (EndOfStreamException)
         {

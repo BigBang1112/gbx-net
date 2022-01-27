@@ -131,6 +131,14 @@ public class CGameCtnMediaTrack : CMwNod
             rw.ListNode<CGameCtnMediaBlock>(ref n.blocks!);
             rw.Int32(ref U02);
         }
+
+        public override async Task ReadWriteAsync(CGameCtnMediaTrack n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            rw.String(ref n.name!);
+            rw.Int32(ref tracksVersion);
+            n.blocks = (await rw.ListNodeAsync<CGameCtnMediaBlock>(n.blocks!))!;
+            rw.Int32(ref U02);
+        }
     }
 
     #endregion

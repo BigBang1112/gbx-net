@@ -265,7 +265,11 @@ public class GameBox<T> : GameBox where T : Node
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    protected internal override async Task<bool> ReadBodyAsync(GameBoxReader reader, bool readUncompressedBodyDirectly, ILogger? logger, Func<Task>? actionAfterEveryChunkIteration)
+    protected internal override async Task<bool> ReadBodyAsync(GameBoxReader reader,
+                                                               bool readUncompressedBodyDirectly,
+                                                               ILogger? logger,
+                                                               GameBoxAsyncAction? asyncAction,
+                                                               CancellationToken cancellationToken)
     {
         if (Body is null)
         {
@@ -277,10 +281,10 @@ public class GameBox<T> : GameBox where T : Node
         switch (Header.CompressionOfBody)
         {
             case GameBoxCompression.Compressed:
-                await ReadCompressedBodyAsync(reader, logger, actionAfterEveryChunkIteration);
+                await ReadCompressedBodyAsync(reader, logger, asyncAction, cancellationToken);
                 break;
             case GameBoxCompression.Uncompressed:
-                await ReadUncompressedBodyAsync(reader, readUncompressedBodyDirectly, logger, actionAfterEveryChunkIteration);
+                await ReadUncompressedBodyAsync(reader, readUncompressedBodyDirectly, logger, asyncAction, cancellationToken);
                 break;
             default:
                 logger?.LogError("Body can't be read! Compression type is unknown.");
@@ -292,25 +296,32 @@ public class GameBox<T> : GameBox where T : Node
         return true;
     }
 
-    private async Task ReadCompressedBodyAsync(GameBoxReader reader, ILogger? logger, Func<Task>? actionAfterEveryChunkIteration)
+    private async Task ReadCompressedBodyAsync(GameBoxReader reader,
+                                               ILogger? logger,
+                                               GameBoxAsyncAction? asyncAction,
+                                               CancellationToken cancellationToken)
     {
         var uncompressedSize = reader.ReadInt32();
         var compressedSize = reader.ReadInt32();
 
         var data = reader.ReadBytes(compressedSize);
-        await Body!.ReadAsync(data, uncompressedSize, logger, actionAfterEveryChunkIteration);
+        await Body!.ReadAsync(data, uncompressedSize, logger, asyncAction, cancellationToken);
     }
 
-    private async Task ReadUncompressedBodyAsync(GameBoxReader reader, bool readUncompressedBodyDirectly, ILogger? logger, Func<Task>? actionAfterEveryChunkIteration)
+    private async Task ReadUncompressedBodyAsync(GameBoxReader reader,
+                                                 bool readUncompressedBodyDirectly,
+                                                 ILogger? logger,
+                                                 GameBoxAsyncAction? asyncAction,
+                                                 CancellationToken cancellationToken)
     {
         if (readUncompressedBodyDirectly)
         {
-            await Body!.ReadAsync(reader, logger, actionAfterEveryChunkIteration);
+            await Body!.ReadAsync(reader, logger, asyncAction, cancellationToken);
             return;
         }
 
         var uncompressedData = reader.ReadToEnd();
-        await Body!.ReadAsync(uncompressedData, logger, actionAfterEveryChunkIteration);
+        await Body!.ReadAsync(uncompressedData, logger, asyncAction, cancellationToken);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>

@@ -20,7 +20,7 @@ public class HeaderChunk<T> : SkippableChunk<T>, IHeaderChunk where T : CMwNod
 
     protected override uint GetId()
     {
-        return id ?? NodeCacheManager.GetHeaderChunkIdByType(typeof(T), GetType());
+        return id ?? NodeCacheManager.GetChunkIdByType(typeof(T), GetType());
     }
 
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>

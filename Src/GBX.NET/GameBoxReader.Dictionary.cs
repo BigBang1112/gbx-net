@@ -25,9 +25,13 @@ public partial class GameBoxReader
             var value = Read<TValue>();
 
             if (overrideKey)
+            {
                 dictionary[key] = value;
+            }
             else
+            {
                 dictionary.Add(key, value);
+            }
         }
 
         return dictionary;
@@ -57,11 +61,14 @@ public partial class GameBoxReader
             var value = ReadNodeRef<TValue>();
 
             if (overrideKey)
+            {
                 dictionary[key] = value;
+            }
             else
+            {
                 dictionary.Add(key, value);
+            }
         }
-
 
         return dictionary;
     }

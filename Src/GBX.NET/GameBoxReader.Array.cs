@@ -244,6 +244,53 @@ public partial class GameBoxReader
     }
 
     /// <summary>
+    /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">Type of the array.</typeparam>
+    /// <param name="length">Length of the array.</param>
+    /// <param name="forLoop">Each element with this reader (to avoid closures).</param>
+    /// <returns>An array of <typeparamref name="T"/>.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
+    public async Task<T[]> ReadArrayAsync<T>(int length, Func<GameBoxReader, Task<T>> forLoop)
+    {
+        if (forLoop is null)
+        {
+            throw new ArgumentNullException(nameof(forLoop));
+        }
+
+        var result = new T[length];
+
+        for (var i = 0; i < length; i++)
+        {
+            result[i] = await forLoop.Invoke(this);
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// First reads an <see cref="int"/> representing the length, then does a for loop with this length, each element requiring to return an instance of <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">Type of the array.</typeparam>
+    /// <param name="forLoop">Each element with this reader (to avoid closures).</param>
+    /// <returns>An array of <typeparamref name="T"/>.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
+    public async Task<T[]> ReadArrayAsync<T>(Func<GameBoxReader, Task<T>> forLoop)
+    {
+        if (forLoop is null)
+        {
+            throw new ArgumentNullException(nameof(forLoop));
+        }
+
+        return await ReadArrayAsync(length: ReadInt32(), forLoop);
+    }
+
+    /// <summary>
     /// Continues reading the stream until facade (<c>0xFACADE01</c>) is reached and the result is converted into an array of <typeparamref name="T"/>.
     /// </summary>
     /// <returns>An array of <typeparamref name="T"/>.</returns>

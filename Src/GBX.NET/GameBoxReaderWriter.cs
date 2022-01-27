@@ -5,7 +5,7 @@ namespace GBX.NET;
 /// <summary>
 /// Provides single-method reading and writing by wrapping <see cref="GameBoxReader"/> and <see cref="GameBoxWriter"/> depending on the mode.
 /// </summary>
-public class GameBoxReaderWriter
+public partial class GameBoxReaderWriter
 {
     /// <summary>
     /// Reader component of the reader-writer. This will be null if <see cref="Mode"/> is <see cref="GameBoxReaderWriterMode.Write"/>.
@@ -1575,172 +1575,6 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public Node? NodeRef(Node? variable, GameBoxBody body)
-    {
-        if (Reader is not null) return Reader.ReadNodeRef(body);
-        if (Writer is not null) Writer.Write(variable, body);
-        return variable;
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public void NodeRef(ref Node? variable, GameBoxBody body)
-    {
-        variable = NodeRef(variable, body);
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public Node? NodeRef(Node? variable = default)
-    {
-        if (Reader is not null)
-        {
-            if (Reader.Body is null)
-                throw new PropertyNullException(nameof(Reader.Body));
-
-            return NodeRef(variable, Reader.Body);
-        }
-
-        if (Writer is not null)
-        {
-            if (Writer.Body is null)
-                throw new PropertyNullException(nameof(Writer.Body));
-
-            return NodeRef(variable, Writer.Body);
-        }
-
-        throw new ThisShouldNotHappenException();
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void NodeRef(ref Node? variable) => variable = NodeRef(variable);
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public T? NodeRef<T>(T? variable, GameBoxBody body) where T : Node
-    {
-        if (Reader is not null) return Reader.ReadNodeRef<T>(body);
-        if (Writer is not null) Writer.Write(variable, body);
-        return variable;
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public void NodeRef<T>(ref T? variable, GameBoxBody body) where T : Node
-    {
-        variable = NodeRef(variable, body);
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public T? NodeRef<T>(T? variable = default) where T : Node
-    {
-        if (Reader is not null)
-        {
-            if (Reader.Body is null)
-                throw new PropertyNullException(nameof(Reader.Body));
-
-            return NodeRef(variable, Reader.Body);
-        }
-
-        if (Writer is not null)
-        {
-            if (Writer.Body is null)
-                throw new PropertyNullException(nameof(Writer.Body));
-
-            return NodeRef(variable, Writer.Body);
-        }
-
-        throw new ThisShouldNotHappenException();
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void NodeRef<T>(ref T? variable) where T : Node
-    {
-        variable = NodeRef(variable);
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public T? NodeRef<T>(T? variable, ref int? nodeRefIndex, GameBoxBody body) where T : Node
-    {
-        if (Reader is not null)
-        {
-            var node =  Reader.ReadNodeRef<T>(out int index, body);
-            nodeRefIndex = index < 0 ? null : index;
-            return node;
-        }
-
-        if (Writer is not null) Writer.Write(variable, body);
-
-        return variable;
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public void NodeRef<T>(ref T? variable, ref int? nodeRefIndex, GameBoxBody body) where T : Node
-    {
-        variable = NodeRef(variable, ref nodeRefIndex, body);
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public T? NodeRef<T>(T? variable, ref int? nodeRefIndex) where T : Node
-    {
-        if (Reader is not null)
-        {
-            if (Reader.Body is null)
-                throw new PropertyNullException(nameof(Reader.Body));
-
-            return NodeRef(variable, ref nodeRefIndex, Reader.Body);
-        }
-
-        if (Writer is not null)
-        {
-            if (Writer.Body is null)
-                throw new PropertyNullException(nameof(Writer.Body));
-
-            return NodeRef(variable, ref nodeRefIndex, Writer.Body);
-        }
-
-        throw new ThisShouldNotHappenException();
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void NodeRef<T>(ref T? variable, ref int? nodeRefIndex) where T : Node
-    {
-        variable = NodeRef(variable, ref nodeRefIndex);
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
     public void EnumByte<T>(ref T variable) where T : struct, Enum
     {
         var v = Mode == GameBoxReaderWriterMode.Write ? CastTo<byte>.From(variable) : default;
@@ -2258,6 +2092,18 @@ public class GameBoxReaderWriter
         list = List(list, forLoopReadWrite);
     }
 
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoopRead"/> or <paramref name="forLoopWrite"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
+    public async Task<IList<T>?> ListAsync<T>(IList<T>? list, Func<GameBoxReader, Task<T>> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+    {
+        if (Reader is not null) return await Reader.ReadListAsync(forLoopRead);
+        if (Writer is not null) Writer.Write(list, forLoopWrite);
+        return list;
+    }
+
     public void ListKey<T>(ref IList<T>? list, int version) where T : CGameCtnMediaBlock.Key, new()
     {
         List(ref list, (rw, x) => x.ReadWrite(rw, version));
@@ -2309,6 +2155,18 @@ public class GameBoxReaderWriter
     public void ListNode<T>(ref IList<T?>? list) where T : Node
     {
         list = ListNode(list);
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
+    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
+    public async Task<IList<T?>?> ListNodeAsync<T>(IList<T?>? list = default) where T : Node
+    {
+        return await ListAsync(list,
+            async r => await r.ReadNodeRefAsync<T>(),
+            (x, w) => w.Write(x));
     }
 
     /// <param name="dictionary">Dictionary to write. Ignored in read mode.</param>

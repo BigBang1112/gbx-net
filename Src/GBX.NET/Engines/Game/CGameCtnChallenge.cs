@@ -2876,6 +2876,13 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupInGame);
             rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupEndRace);
         }
+
+        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            n.clipIntro = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipIntro);
+            n.clipGroupInGame = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupInGame);
+            n.clipGroupEndRace = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupEndRace);
+        }
     }
 
     #endregion
@@ -3567,6 +3574,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
+
             rw.NodeRef<CGameCtnMediaClip>(ref n.clipIntro);
             rw.NodeRef<CGameCtnMediaClip>(ref n.clipPodium);
             rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupInGame);
@@ -3575,6 +3583,22 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             if (version >= 2)
             {
                 rw.NodeRef<CGameCtnMediaClip>(ref n.clipAmbiance);
+                rw.Int3(ref triggerSize);
+            }
+        }
+
+        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            rw.Int32(ref version);
+
+            n.clipIntro = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipIntro);
+            n.clipPodium = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipPodium);
+            n.clipGroupInGame = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupInGame);
+            n.clipGroupEndRace = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupEndRace);
+
+            if (version >= 2)
+            {
+                n.clipAmbiance = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipAmbiance);
                 rw.Int3(ref triggerSize);
             }
         }

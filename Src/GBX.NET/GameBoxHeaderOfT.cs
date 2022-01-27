@@ -154,7 +154,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
                     using var msChunk = new MemoryStream(d);
                     using var rChunk = new GameBoxReader(msChunk, lookbackable: this, logger: logger);
                     var rw = new GameBoxReaderWriter(rChunk);
-                    ((IChunk)chunk).ReadWrite(gbx.Node, rw);
+                    ((IReadableWritableChunk)chunk).ReadWrite(gbx.Node, rw);
                     ((ISkippableChunk)chunk).Discovered = true;
                 }
 
@@ -225,7 +225,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
 
             var pos = userData.Position;
             if (((ISkippableChunk)chunk).Discovered)
-                ((IChunk)chunk).ReadWrite(((GameBox<T>)GBX).Node, gbxrw);
+                ((IReadableWritableChunk)chunk).ReadWrite(((GameBox<T>)GBX).Node, gbxrw);
             else
                 ((ISkippableChunk)chunk).Write(gbxw);
 

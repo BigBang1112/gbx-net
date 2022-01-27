@@ -53,7 +53,7 @@ public class ChunkSet : SortedSet<Chunk>
             using var r = new GameBoxReader(ms);
 
             var rw = new GameBoxReaderWriter(r);
-            ((IChunk)chunk).ReadWrite(Node, rw);
+            ((IReadableWritableChunk)chunk).ReadWrite(Node, rw);
         }
 
         if (chunk is ILookbackable l) l.IdVersion = 3;

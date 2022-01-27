@@ -82,45 +82,64 @@ public class GameBoxBody<T> : GameBoxBody where T : Node
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal async Task ReadAsync(byte[] data, int uncompressedSize, ILogger? logger, Func<Task>? actionAfterEveryChunkIteration)
+    internal async Task ReadAsync(byte[] data,
+                                  int uncompressedSize,
+                                  ILogger? logger,
+                                  GameBoxAsyncAction? asyncAction,
+                                  CancellationToken cancellationToken)
     {
         var buffer = new byte[uncompressedSize];
 
         DecompressData(data, buffer);
 
-        await ReadAsync(buffer, logger, actionAfterEveryChunkIteration);
+        await ReadAsync(buffer, logger, asyncAction, cancellationToken);
     }
 
-    internal async Task ReadAsync(byte[] data, ILogger? logger, Func<Task>? actionAfterEveryChunkIteration)
+    internal async Task ReadAsync(byte[] data,
+                                  ILogger? logger,
+                                  GameBoxAsyncAction? asyncAction,
+                                  CancellationToken cancellationToken)
     {
         using var ms = new MemoryStream(data);
-        await ReadAsync(ms, logger, actionAfterEveryChunkIteration);
+        await ReadAsync(ms, logger, asyncAction, cancellationToken);
     }
 
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal async Task ReadAsync(Stream stream, ILogger? logger, Func<Task>? actionAfterEveryChunkIteration)
+    internal async Task ReadAsync(Stream stream,
+                                  ILogger? logger,
+                                  GameBoxAsyncAction? asyncAction,
+                                  CancellationToken cancellationToken)
     {
-        using var gbxr = new GameBoxReader(stream, body: this, logger: logger);
-        await ReadAsync(gbxr, logger, actionAfterEveryChunkIteration);
+        using var gbxr = new GameBoxReader(stream, body: this, logger: logger, asyncAction: asyncAction);
+        await ReadAsync(gbxr, logger, asyncAction, cancellationToken);
     }
 
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal async Task ReadAsync(GameBoxReader reader, ILogger? logger, Func<Task>? actionAfterEveryChunkIteration)
+    internal async Task ReadAsync(GameBoxReader reader,
+                                  ILogger? logger,
+                                  GameBoxAsyncAction? asyncAction,
+                                  CancellationToken cancellationToken)
     {
         var node = GBX.Node;
 
-        await Node.ParseAsync(node, node.GetType(), reader, logger, actionAfterEveryChunkIteration);
+        await Node.ParseAsync(node, node.GetType(), reader, logger, asyncAction, cancellationToken);
 
         IsParsed = true;
 
         // Maybe not needed
         using var ms = new MemoryStream();
         var s = reader.BaseStream;
+
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+        await s.CopyToAsync(ms, cancellationToken);
+#else
         await s.CopyToAsync(ms);
+#endif
+
         Rest = ms.ToArray();
         Debug.WriteLine("Amount read: " + (s.Position / (float)(s.Position + Rest.Length)).ToString("P"));
     }

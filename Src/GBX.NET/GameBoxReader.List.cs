@@ -121,4 +121,39 @@ public partial class GameBoxReader
     {
         return ReadList(length: ReadInt32(), forLoop);
     }
+
+    /// <summary>
+    /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>. A list is allocated and elements are added via enumeration.
+    /// </summary>
+    /// <typeparam name="T">Type of the list.</typeparam>
+    /// <param name="length">Length of the list.</param>
+    /// <param name="forLoop">Each element with this reader (to avoid closures).</param>
+    /// <returns>List of <typeparamref name="T"/>.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
+    public async Task<IList<T>> ReadListAsync<T>(int length, Func<GameBoxReader, Task<T>> forLoop)
+    {
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+        return await ReadEnumerableAsync(length, forLoop).ToListAsync(length);
+#else
+        if (forLoop is null)
+        {
+            throw new ArgumentNullException(nameof(forLoop));
+        }
+
+        var list = new List<T>(length);
+
+        for (var i = 0; i < length; i++)
+        {
+            list.Add(await forLoop(this));
+        }
+
+        return list;
+#endif
+    }
+
+    public async Task<IList<T>?> ReadListAsync<T>(Func<GameBoxReader, Task<T>> forLoop)
+    {
+        return await ReadListAsync(length: ReadInt32(), forLoop);
+    }
 }

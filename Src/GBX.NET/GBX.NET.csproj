@@ -58,30 +58,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Compile Include="GameBoxReader.Array.cs">
-			<DependentUpon>GameBoxReader.cs</DependentUpon>
-		</Compile>
-		<Compile Include="GameBoxReader.Dictionary.cs">
-			<DependentUpon>GameBoxReader.cs</DependentUpon>
-		</Compile>
-		<Compile Include="GameBoxReader.Enumerable.cs">
-			<DependentUpon>GameBoxReader.cs</DependentUpon>
-		</Compile>
-		<Compile Include="GameBoxReader.List.cs">
-			<DependentUpon>GameBoxReader.cs</DependentUpon>
-		</Compile>
-		<Compile Include="GameBoxReader.Node.cs">
-			<DependentUpon>GameBoxReader.cs</DependentUpon>
-		</Compile>
-		<Compile Include="GameBoxReader.Span.cs">
-			<DependentUpon>GameBoxReader.cs</DependentUpon>
-		</Compile>
-		<Compile Include="GameBoxReader.Time.cs">
-			<DependentUpon>GameBoxReader.cs</DependentUpon>
-		</Compile>
-	</ItemGroup>
-
-	<ItemGroup>
 		<Compile Update="Resources.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>

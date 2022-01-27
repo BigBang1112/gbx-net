@@ -123,7 +123,11 @@ public class GameBox
         return false;
     }
 
-    protected internal virtual Task<bool> ReadBodyAsync(GameBoxReader reader, bool readUncompressedBodyDirectly, ILogger? logger, Func<Task>? actionAfterEveryChunkIteration)
+    protected internal virtual Task<bool> ReadBodyAsync(GameBoxReader reader,
+                                                        bool readUncompressedBodyDirectly,
+                                                        ILogger? logger,
+                                                        GameBoxAsyncAction? asyncAction = null,
+                                                        CancellationToken cancellationToken = default)
     {
         return Task.FromResult(false);
     }
@@ -583,16 +587,27 @@ public class GameBox
     public static async Task<GameBox> ParseAsync(Stream stream,
                                                  bool readUncompressedBodyDirectly = false,
                                                  ILogger? logger = null,
-                                                 Func<Task>? actionAfterEveryChunkIteration = null)
+                                                 GameBoxAsyncAction? asyncAction = null,
+                                                 CancellationToken cancellationToken = default)
     {
-        using var rHeader = new GameBoxReader(stream, logger: logger);
+        using var rHeader = new GameBoxReader(stream, logger: logger, asyncAction: asyncAction);
 
         var gbx = ParseHeader(rHeader, progress: null, readRawBody: false, logger);
 
         // Body resets Id (lookback string) list
-        using var rBody = new GameBoxReader(stream, gbx.Body, logger: logger);
+        using var rBody = new GameBoxReader(stream, gbx.Body, logger: logger, asyncAction: asyncAction);
 
-        await gbx.ReadBodyAsync(rBody, readUncompressedBodyDirectly, logger, actionAfterEveryChunkIteration);
+        var successfulBodyRead = await gbx.ReadBodyAsync(
+            rBody,
+            readUncompressedBodyDirectly,
+            logger,
+            asyncAction,
+            cancellationToken);
+
+        if (!successfulBodyRead)
+        {
+            throw new GameBoxParseException();
+        }
 
         return gbx;
     }
@@ -600,36 +615,46 @@ public class GameBox
     public static async Task<GameBox<T>> ParseAsync<T>(Stream stream,
                                                        bool readUncompressedBodyDirectly = false,
                                                        ILogger? logger = null,
-                                                       Func<Task>? actionAfterEveryChunkIteration = null)
+                                                       GameBoxAsyncAction? asyncAction = null,
+                                                       CancellationToken cancellationToken = default)
                                                        where T : Node
     {
         var gbx = ParseHeader<T>(stream, progress: null, readRawBody: false, logger);
 
-        using var r = new GameBoxReader(stream, logger: logger);
+        using var r = new GameBoxReader(stream, logger: logger, asyncAction: asyncAction);
 
-        if (await gbx.ReadBodyAsync(r, readUncompressedBodyDirectly, logger, actionAfterEveryChunkIteration))
+        var successfulBodyRead = await gbx.ReadBodyAsync(
+            r,
+            readUncompressedBodyDirectly,
+            logger,
+            asyncAction,
+            cancellationToken);
+
+        if (!successfulBodyRead)
         {
-            return gbx;
+            throw new GameBoxParseException();
         }
 
-        throw new GameBoxParseException();
+        return gbx;
     }
 
     public static async Task<Node?> ParseNodeAsync(Stream stream,
-                                                  bool readUncompressedBodyDirectly = false,
-                                                  ILogger? logger = null,
-                                                  Func<Task>? actionAfterEveryChunkIteration = null)
+                                                   bool readUncompressedBodyDirectly = false,
+                                                   ILogger? logger = null,
+                                                   GameBoxAsyncAction? asyncAction = null,
+                                                   CancellationToken cancellationToken = default)
     {
-        return await ParseAsync(stream, readUncompressedBodyDirectly, logger, actionAfterEveryChunkIteration);
+        return await ParseAsync(stream, readUncompressedBodyDirectly, logger, asyncAction, cancellationToken);
     }
 
     public static async Task<T> ParseNodeAsync<T>(Stream stream,
                                                   bool readUncompressedBodyDirectly = false,
                                                   ILogger? logger = null,
-                                                  Func<Task>? actionAfterEveryChunkIteration = null)
+                                                  GameBoxAsyncAction? asyncAction = null,
+                                                  CancellationToken cancellationToken = default)
                                                   where T : Node
     {
-        return await ParseAsync<T>(stream, readUncompressedBodyDirectly, logger, actionAfterEveryChunkIteration);
+        return await ParseAsync<T>(stream, readUncompressedBodyDirectly, logger, asyncAction, cancellationToken);
     }
 
     private static uint? ReadNodeID(GameBoxReader reader)

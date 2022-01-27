@@ -97,22 +97,30 @@ public class CGameCtnMediaClip : CMwNod
     #region 0x002 chunk
 
     [Chunk(0x03079002)]
-    public class Chunk03079002 : Chunk<CGameCtnMediaClip>, IVersionable
+    public class Chunk03079002 : Chunk<CGameCtnMediaClip>
     {
-        private int version;
+        private int tracksVersion = 10;
 
         public int U01;
 
-        public int Version
+        public int TracksVersion
         {
-            get => version;
-            set => version = value;
+            get => tracksVersion;
+            set => tracksVersion = value;
         }
 
         public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.Int32(ref tracksVersion);
             rw.ListNode<CGameCtnMediaTrack>(ref n.tracks!);
+            rw.String(ref n.name!);
+            rw.Int32(ref U01);
+        }
+
+        public override async Task ReadWriteAsync(CGameCtnMediaClip n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            rw.Int32(ref tracksVersion);
+            n.tracks = (await rw.ListNodeAsync<CGameCtnMediaTrack>(n.tracks!))!;
             rw.String(ref n.name!);
             rw.Int32(ref U01);
         }
@@ -137,7 +145,13 @@ public class CGameCtnMediaClip : CMwNod
         {
             rw.Int32(ref tracksVersion);
             rw.ListNode<CGameCtnMediaTrack>(ref n.tracks!);
+            rw.String(ref n.name!);
+        }
 
+        public override async Task ReadWriteAsync(CGameCtnMediaClip n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            rw.Int32(ref tracksVersion);
+            n.tracks = (await rw.ListNodeAsync<CGameCtnMediaTrack>(n.tracks!))!;
             rw.String(ref n.name!);
         }
     }
@@ -176,6 +190,13 @@ public class CGameCtnMediaClip : CMwNod
         {
             rw.Int32(ref tracksVersion);
             rw.ListNode<CGameCtnMediaTrack>(ref n.tracks!);
+            rw.String(ref n.name!);
+        }
+
+        public override async Task ReadWriteAsync(CGameCtnMediaClip n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            rw.Int32(ref tracksVersion);
+            n.tracks = (await rw.ListNodeAsync<CGameCtnMediaTrack>(n.tracks!))!;
             rw.String(ref n.name!);
         }
     }
@@ -303,12 +324,23 @@ public class CGameCtnMediaClip : CMwNod
         public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
-
             rw.Int32(ref tracksVersion);
             rw.ListNode<CGameCtnMediaTrack>(ref n.tracks!);
-
             rw.String(ref n.name!);
+            rw.Boolean(ref n.stopWhenLeave);
+            rw.Boolean(ref U03);
+            rw.Boolean(ref n.stopWhenRespawn);
+            rw.String(ref U05!);
+            rw.Single(ref U06);
+            rw.Int32(ref n.localPlayerClipEntIndex, -1);
+        }
 
+        public override async Task ReadWriteAsync(CGameCtnMediaClip n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            rw.Int32(ref version);
+            rw.Int32(ref tracksVersion);
+            n.tracks = (await rw.ListNodeAsync<CGameCtnMediaTrack>(n.tracks!))!;
+            rw.String(ref n.name!);
             rw.Boolean(ref n.stopWhenLeave);
             rw.Boolean(ref U03);
             rw.Boolean(ref n.stopWhenRespawn);

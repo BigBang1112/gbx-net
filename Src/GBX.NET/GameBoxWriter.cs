@@ -542,6 +542,20 @@ public class GameBoxWriter : BinaryWriter
         Write(bytes, 0, bytes.Length);
     }
 
+    public async Task WriteBytesAsync(byte[]? bytes, CancellationToken cancellationToken = default)
+    {
+        if (bytes is null)
+        {
+            return;
+        }
+
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+        await BaseStream.WriteAsync(bytes, cancellationToken);
+#else
+        await BaseStream.WriteAsync(bytes, 0, bytes.Length, cancellationToken);
+#endif
+    }
+
     /// <summary>
     /// Writes the node array that are presented directly and not as a node reference.
     /// </summary>

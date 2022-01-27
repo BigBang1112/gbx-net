@@ -21,18 +21,26 @@ public partial class GameBoxReader : BinaryReader
     public ILookbackable? Lookbackable { get; }
 
     /// <summary>
+    /// A delegate collection that gets executed throughout the asynchronous reading.
+    /// </summary>
+    public GameBoxAsyncAction? AsyncAction { get; }
+
+    /// <summary>
     /// Constructs a binary reader specialized for GBX.
     /// </summary>
     /// <param name="input">The input stream.</param>
     /// <param name="body">Body used to store node references. If null, <see cref="Node"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
     /// <param name="lookbackable">A specified object to look into for the list of already read data. If null while <paramref name="body"/> is null, <see cref="Id"/> or <see cref="Ident"/> cannot be read and <see cref="PropertyNullException"/> can be thrown. If null while <paramref name="body"/> is not null, the body is used as <see cref="ILookbackable"/> instead.</param>
     /// <param name="logger">Logger.</param>
-    public GameBoxReader(Stream input, GameBoxBody? body = null, ILookbackable? lookbackable = null, ILogger? logger = null) : base(input, Encoding.UTF8, true)
+    /// <param name="asyncAction">Specialized executions during asynchronous reading.</param>
+    public GameBoxReader(Stream input, GameBoxBody? body = null, ILookbackable? lookbackable = null, ILogger? logger = null, GameBoxAsyncAction? asyncAction = null) : base(input, Encoding.UTF8, true)
     {
         Body = body;
         Lookbackable = lookbackable ?? body;
 
         this.logger = logger;
+
+        AsyncAction = asyncAction;
     }
 
     /// <summary>

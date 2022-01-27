@@ -5,7 +5,7 @@
 /// </summary>
 [Node(0x0307A000)]
 [NodeExtension("GameCtnMediaClipGroup")]
-public class CGameCtnMediaClipGroup : CMwNod
+public partial class CGameCtnMediaClipGroup : CMwNod
 {
     #region Enums
 
@@ -79,6 +79,22 @@ public class CGameCtnMediaClipGroup : CMwNod
                 w.Write(x.Trigger.Coords, (y, w) => w.Write(y));
             });
         }
+
+        public override async Task ReadAsync(CGameCtnMediaClipGroup n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            n.ClipsVersion = r.ReadInt32();
+
+            var clips = await r.ReadArrayAsync(r => r.ReadNodeRefAsync<CGameCtnMediaClip>());
+
+            var triggers = r.ReadArray(r => new Trigger()
+            {
+                Coords = r.ReadArray(r => r.ReadInt3())
+            });
+
+            n.Clips = clips.Select((clip, index) =>
+                new ClipTrigger(clip!, triggers[index])
+            ).ToList();
+        }
     }
 
     #endregion
@@ -92,34 +108,51 @@ public class CGameCtnMediaClipGroup : CMwNod
         {
             n.ClipsVersion = r.ReadInt32();
 
-            var clips = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnMediaClip>()!);
-            var triggers = r.ReadArray(r1 => new Trigger()
-            {
-                Coords = r1.ReadArray(r2 => r2.ReadInt3()),
-                U01 = r1.ReadInt32(),
-                U02 = r1.ReadInt32(),
-                U03 = r1.ReadInt32(),
-                U04 = r1.ReadInt32()
-            });
+            var clips = r.ReadArray(r => r.ReadNodeRef<CGameCtnMediaClip>()!);
+            var triggers = ReadTriggers(r);
 
             n.Clips = clips.Select((clip, index) =>
                 new ClipTrigger(clip, triggers[index])
             ).ToList();
         }
 
+        private static Trigger[] ReadTriggers(GameBoxReader r)
+        {
+            return r.ReadArray(r => new Trigger()
+            {
+                Coords = r.ReadArray(r => r.ReadInt3()),
+                U01 = r.ReadInt32(),
+                U02 = r.ReadInt32(),
+                U03 = r.ReadInt32(),
+                U04 = r.ReadInt32()
+            });
+        }
+
         public override void Write(CGameCtnMediaClipGroup n, GameBoxWriter w)
         {
             w.Write(n.ClipsVersion);
 
-            w.Write(n.Clips, (x, w1) => w1.Write(x.Clip));
-            w.Write(n.Clips, (x, w1) =>
+            w.Write(n.Clips, (x, w) => w.Write(x.Clip));
+            w.Write(n.Clips, (x, w) =>
             {
-                w1.Write(x.Trigger.Coords, (y, w2) => w2.Write(y));
-                w1.Write(x.Trigger.U01);
-                w1.Write(x.Trigger.U02);
-                w1.Write(x.Trigger.U03);
-                w1.Write(x.Trigger.U04);
+                w.Write(x.Trigger.Coords, (y, w) => w.Write(y));
+                w.Write(x.Trigger.U01);
+                w.Write(x.Trigger.U02);
+                w.Write(x.Trigger.U03);
+                w.Write(x.Trigger.U04);
             });
+        }
+
+        public override async Task ReadAsync(CGameCtnMediaClipGroup n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            n.ClipsVersion = r.ReadInt32();
+
+            var clips = await r.ReadArrayAsync(r => r.ReadNodeRefAsync<CGameCtnMediaClip>());
+            var triggers = ReadTriggers(r);
+
+            n.Clips = clips.Select((clip, index) =>
+                new ClipTrigger(clip!, triggers[index])
+            ).ToList();
         }
     }
 
@@ -134,16 +167,25 @@ public class CGameCtnMediaClipGroup : CMwNod
         {
             n.ClipsVersion = r.ReadInt32();
 
-            var clips = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnMediaClip>()!);
-            var triggers = r.ReadArray(r1 =>
+            var clips = r.ReadArray(r => r.ReadNodeRef<CGameCtnMediaClip>()!);
+            var triggers = ReadTriggers(r);
+
+            n.Clips = clips.Select((clip, index) =>
+                new ClipTrigger(clip, triggers[index])
+            ).ToList();
+        }
+
+        private static Trigger[] ReadTriggers(GameBoxReader r)
+        {
+            return r.ReadArray(r =>
             {
-                var u01 = r1.ReadInt32();
-                var u02 = r1.ReadInt32();
-                var u03 = r1.ReadInt32();
-                var u04 = r1.ReadInt32();
-                var condition = (ECondition)r1.ReadInt32();
-                var conditionValue = r1.ReadSingle();
-                var coords = r1.ReadArray(r2 => r2.ReadInt3());
+                var u01 = r.ReadInt32();
+                var u02 = r.ReadInt32();
+                var u03 = r.ReadInt32();
+                var u04 = r.ReadInt32();
+                var condition = (ECondition)r.ReadInt32();
+                var conditionValue = r.ReadSingle();
+                var coords = r.ReadArray(r => r.ReadInt3());
 
                 return new Trigger()
                 {
@@ -156,63 +198,39 @@ public class CGameCtnMediaClipGroup : CMwNod
                     ConditionValue = conditionValue
                 };
             });
-
-            n.Clips = clips.Select((clip, index) =>
-                new ClipTrigger(clip, triggers[index])
-            ).ToList();
         }
 
         public override void Write(CGameCtnMediaClipGroup n, GameBoxWriter w)
         {
             w.Write(n.ClipsVersion);
 
-            w.Write(n.Clips, (x, w1) => w1.Write(x.Clip));
-            w.Write(n.Clips, (x, w1) =>
+            w.Write(n.Clips, (x, w) => w.Write(x.Clip));
+            w.Write(n.Clips, (x, w) =>
             {
-                w1.Write(x.Trigger.U01);
-                w1.Write(x.Trigger.U02);
-                w1.Write(x.Trigger.U03);
-                w1.Write(x.Trigger.U04);
-                w1.Write((int)x.Trigger.Condition);
-                w1.Write(x.Trigger.ConditionValue);
-                w1.Write(x.Trigger.Coords, (y, w2) => w2.Write(y));
+                w.Write(x.Trigger.U01);
+                w.Write(x.Trigger.U02);
+                w.Write(x.Trigger.U03);
+                w.Write(x.Trigger.U04);
+                w.Write((int)x.Trigger.Condition);
+                w.Write(x.Trigger.ConditionValue);
+                w.Write(x.Trigger.Coords, (y, w) => w.Write(y));
             });
         }
+
+        public override async Task ReadAsync(CGameCtnMediaClipGroup n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            n.ClipsVersion = r.ReadInt32();
+
+            var clips = await r.ReadArrayAsync(r => r.ReadNodeRefAsync<CGameCtnMediaClip>());
+            var triggers = ReadTriggers(r);
+
+            n.Clips = clips.Select((clip, index) =>
+                new ClipTrigger(clip!, triggers[index])
+            ).ToList();
+        }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public class Trigger
-    {
-        public Int3[] Coords { get; set; } = Array.Empty<Int3>();
-        public int U01 { get; set; }
-        public int U02 { get; set; }
-        public int U03 { get; set; }
-        public int U04 { get; set; }
-        public ECondition Condition { get; set; }
-        public float ConditionValue { get; set; }
-    }
-
-    public class ClipTrigger
-    {
-        public CGameCtnMediaClip Clip { get; set; }
-        public Trigger Trigger { get; set; }
-
-        public ClipTrigger(CGameCtnMediaClip clip, Trigger trigger)
-        {
-            Clip = clip;
-            Trigger = trigger;
-        }
-
-        public override string ToString()
-        {
-            return $"{Clip} with trigger";
-        }
-    }
 
     #endregion
 }
