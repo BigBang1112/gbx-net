@@ -6,5 +6,6 @@ public interface ISkippableChunk : IReadableWritableChunk
     byte[] Data { get; set; }
 
     void Write(GameBoxWriter w);
+    Task WriteAsync(GameBoxWriter w, CancellationToken cancellationToken);
     void Discover();
 }

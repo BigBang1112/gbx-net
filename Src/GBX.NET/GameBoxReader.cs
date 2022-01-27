@@ -23,7 +23,7 @@ public partial class GameBoxReader : BinaryReader
     /// <summary>
     /// A delegate collection that gets executed throughout the asynchronous reading.
     /// </summary>
-    public GameBoxAsyncAction? AsyncAction { get; }
+    public GameBoxAsyncReadAction? AsyncAction { get; }
 
     /// <summary>
     /// Constructs a binary reader specialized for GBX.
@@ -33,7 +33,7 @@ public partial class GameBoxReader : BinaryReader
     /// <param name="lookbackable">A specified object to look into for the list of already read data. If null while <paramref name="body"/> is null, <see cref="Id"/> or <see cref="Ident"/> cannot be read and <see cref="PropertyNullException"/> can be thrown. If null while <paramref name="body"/> is not null, the body is used as <see cref="ILookbackable"/> instead.</param>
     /// <param name="logger">Logger.</param>
     /// <param name="asyncAction">Specialized executions during asynchronous reading.</param>
-    public GameBoxReader(Stream input, GameBoxBody? body = null, ILookbackable? lookbackable = null, ILogger? logger = null, GameBoxAsyncAction? asyncAction = null) : base(input, Encoding.UTF8, true)
+    public GameBoxReader(Stream input, GameBoxBody? body = null, ILookbackable? lookbackable = null, ILogger? logger = null, GameBoxAsyncReadAction? asyncAction = null) : base(input, Encoding.UTF8, true)
     {
         Body = body;
         Lookbackable = lookbackable ?? body;

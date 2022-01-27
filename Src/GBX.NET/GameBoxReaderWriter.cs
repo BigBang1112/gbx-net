@@ -2219,6 +2219,17 @@ public partial class GameBoxReaderWriter
         dictionary = DictionaryNode(dictionary, overrideKey);
     }
 
+    public async Task<IDictionary<TKey, TValue?>?> DictionaryNodeAsync<TKey, TValue>(
+        IDictionary<TKey, TValue?>? dictionary,
+        bool overrideKey,
+        CancellationToken cancellationToken = default)
+        where TKey : notnull where TValue : Node
+    {
+        if (Reader is not null) return await Reader.ReadDictionaryNodeAsync<TKey, TValue>(overrideKey, cancellationToken);
+        if (Writer is not null) Writer.WriteDictionaryNode(dictionary);
+        return dictionary;
+    }
+
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>

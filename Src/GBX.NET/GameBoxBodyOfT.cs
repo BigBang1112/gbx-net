@@ -85,19 +85,29 @@ public class GameBoxBody<T> : GameBoxBody where T : Node
     internal async Task ReadAsync(byte[] data,
                                   int uncompressedSize,
                                   ILogger? logger,
-                                  GameBoxAsyncAction? asyncAction,
+                                  GameBoxAsyncReadAction? asyncAction,
                                   CancellationToken cancellationToken)
     {
         var buffer = new byte[uncompressedSize];
 
+        if (asyncAction is not null)
+        {
+            await asyncAction.BeforeLzoDecompression();
+        }
+
         DecompressData(data, buffer);
+
+        if (asyncAction is not null)
+        {
+            await asyncAction.AfterLzoDecompression();
+        }
 
         await ReadAsync(buffer, logger, asyncAction, cancellationToken);
     }
 
     internal async Task ReadAsync(byte[] data,
                                   ILogger? logger,
-                                  GameBoxAsyncAction? asyncAction,
+                                  GameBoxAsyncReadAction? asyncAction,
                                   CancellationToken cancellationToken)
     {
         using var ms = new MemoryStream(data);
@@ -109,7 +119,7 @@ public class GameBoxBody<T> : GameBoxBody where T : Node
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     internal async Task ReadAsync(Stream stream,
                                   ILogger? logger,
-                                  GameBoxAsyncAction? asyncAction,
+                                  GameBoxAsyncReadAction? asyncAction,
                                   CancellationToken cancellationToken)
     {
         using var gbxr = new GameBoxReader(stream, body: this, logger: logger, asyncAction: asyncAction);
@@ -121,7 +131,7 @@ public class GameBoxBody<T> : GameBoxBody where T : Node
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     internal async Task ReadAsync(GameBoxReader reader,
                                   ILogger? logger,
-                                  GameBoxAsyncAction? asyncAction,
+                                  GameBoxAsyncReadAction? asyncAction,
                                   CancellationToken cancellationToken)
     {
         var node = GBX.Node;

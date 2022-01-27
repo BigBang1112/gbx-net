@@ -78,6 +78,11 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
         w.WriteBytes(Data);
     }
 
+    public async Task WriteAsync(GameBoxWriter w, CancellationToken cancellationToken)
+    {
+        await w.WriteBytesAsync(Data, cancellationToken);
+    }
+
     public override string ToString()
     {
         var chunkType = GetType();

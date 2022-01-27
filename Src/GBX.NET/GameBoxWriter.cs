@@ -8,7 +8,7 @@ namespace GBX.NET;
 /// <summary>
 /// Writes data types from GameBox serialization.
 /// </summary>
-public class GameBoxWriter : BinaryWriter
+public partial class GameBoxWriter : BinaryWriter
 {
     private readonly ILogger? logger;
 
@@ -23,18 +23,26 @@ public class GameBoxWriter : BinaryWriter
     public ILookbackable? Lookbackable { get; }
 
     /// <summary>
+    /// A delegate collection that gets executed throughout the asynchronous writing.
+    /// </summary>
+    public GameBoxAsyncWriteAction? AsyncAction { get; }
+
+    /// <summary>
     /// Constructs a binary writer specialized for GBX.
     /// </summary>
     /// <param name="output">The output stream.</param>
     /// <param name="body">Body used to store node references. If null, <see cref="Node"/> cannot be written and <see cref="PropertyNullException"/> can be thrown.</param>
     /// <param name="lookbackable">A specified object to look into for the list of already written data. If null while <paramref name="body"/> is null, <see cref="Id"/> or <see cref="Ident"/> cannot be written and <see cref="PropertyNullException"/> can be thrown. If null while <paramref name="body"/> is not null, the body is used as <see cref="ILookbackable"/> instead.</param>
     /// <param name="logger">Logger.</param>
-    public GameBoxWriter(Stream output, GameBoxBody? body = null, ILookbackable? lookbackable = null, ILogger? logger = null) : base(output, Encoding.UTF8, true)
+    /// <param name="asyncAction">Specialized executions during asynchronous writing.</param>
+    public GameBoxWriter(Stream output, GameBoxBody? body = null, ILookbackable? lookbackable = null, ILogger? logger = null, GameBoxAsyncWriteAction? asyncAction = null) : base(output, Encoding.UTF8, true)
     {
         Body = body;
         Lookbackable = lookbackable ?? body;
 
         this.logger = logger;
+
+        AsyncAction = asyncAction;
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -54,12 +62,17 @@ public class GameBoxWriter : BinaryWriter
         }
 
         if (value is not null)
+        {
             WriteBytes(Encoding.UTF8.GetBytes(value));
+        }
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public override void Write(string? value) => Write(value, StringLengthPrefix.Int32);
+    public override void Write(string? value)
+    {
+        Write(value, StringLengthPrefix.Int32);
+    }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -76,144 +89,9 @@ public class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public override void Write(bool value) => Write(value, false);
-
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteArray<T>(T[]? array) where T : struct
+    public override void Write(bool value)
     {
-        if (array is null)
-        {
-            Write(0);
-            return;
-        }
-
-        Write(array.Length);
-        WriteArray_NoPrefix(array);
-    }
-
-    /// <exception cref="ArgumentNullException"><paramref name="array"/> is null.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteArray_NoPrefix<T>(T[] array) where T : struct
-    {
-        if (array is null)
-            throw new ArgumentNullException(nameof(array));
-
-        var bytes = new byte[array.Length * Marshal.SizeOf(default(T))];
-        Buffer.BlockCopy(array, 0, bytes, 0, bytes.Length);
-        WriteBytes(bytes);
-    }
-
-    /// <summary>
-    /// First writes an <see cref="int"/> representing the length, then does a for loop with this length, each yield having an option to write something from <typeparamref name="T"/>.
-    /// </summary>
-    /// <typeparam name="T">Type of the array.</typeparam>
-    /// <param name="array">An array.</param>
-    /// <param name="forLoop">Each element.</param>
-    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Write<T>(T[]? array, Action<T> forLoop)
-    {
-        if (forLoop is null)
-            throw new ArgumentNullException(nameof(forLoop));
-
-        if (array is null)
-        {
-            Write(0);
-            return;
-        }
-
-        Write(array.Length);
-
-        for (var i = 0; i < array.Length; i++)
-            forLoop.Invoke(array[i]);
-    }
-
-    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    internal void Write<T>(T[]? array, Action<T, GameBoxWriter> forLoop)
-    {
-        if (forLoop is null)
-            throw new ArgumentNullException(nameof(forLoop));
-
-        if (array is null)
-        {
-            Write(0);
-            return;
-        }
-
-        Write(array.Length);
-
-        for (var i = 0; i < array.Length; i++)
-            forLoop.Invoke(array[i], this);
-    }
-
-    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Write<T>(IList<T>? list, Action<T> forLoop)
-    {
-        if (forLoop is null)
-            throw new ArgumentNullException(nameof(forLoop));
-
-        if (list is null)
-        {
-            Write(0);
-            return;
-        }
-
-        Write(list.Count);
-
-        for (var i = 0; i < list.Count; i++)
-            forLoop.Invoke(list[i]);
-    }
-
-    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Write<T>(IList<T>? list, Action<T, GameBoxWriter> forLoop)
-    {
-        if (forLoop is null)
-            throw new ArgumentNullException(nameof(forLoop));
-
-        if (list is null)
-        {
-            Write(0);
-            return;
-        }
-
-        Write(list.Count);
-
-        for (var i = 0; i < list.Count; i++)
-            forLoop.Invoke(list[i], this);
-    }
-
-    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="OverflowException">The number of elements in source is larger than <see cref="int.MaxValue"/>.</exception>
-    public void Write<T>(IEnumerable<T>? enumerable, Action<T> forLoop)
-    {
-        if (forLoop is null)
-            throw new ArgumentNullException(nameof(forLoop));
-
-        if (enumerable is null)
-        {
-            Write(0);
-            return;
-        }
-
-        var count = enumerable.Count();
-
-        Write(count);
-
-        IEnumerator<T> enumerator = enumerable.GetEnumerator();
-
-        while (enumerator.MoveNext())
-            forLoop.Invoke(enumerator.Current);
+        Write(value, false);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -435,32 +313,6 @@ public class GameBoxWriter : BinaryWriter
         Write(node, Body);
     }
 
-    /// <exception cref="ArgumentNullException">Key or value in dictionary is null.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Write<TKey, TValue>(IDictionary<TKey, TValue>? dictionary)
-    {
-        if (dictionary is null)
-        {
-            Write(0);
-            return;
-        }
-
-        Write(dictionary.Count);
-
-        foreach (var pair in dictionary)
-        {
-            if (pair.Key is null)
-                throw new ArgumentNullException(nameof(pair.Key));
-
-            if (pair.Value is null)
-                throw new ArgumentNullException(nameof(pair.Value));
-
-            WriteAny(pair.Key);
-            WriteAny(pair.Value);
-        }
-    }
-
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void WriteBigInt(BigInteger bigInteger) => WriteBytes(bigInteger.ToByteArray());
@@ -542,6 +394,17 @@ public class GameBoxWriter : BinaryWriter
         Write(bytes, 0, bytes.Length);
     }
 
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+    public async ValueTask WriteBytesAsync(byte[]? bytes, CancellationToken cancellationToken = default)
+    {
+        if (bytes is null)
+        {
+            return;
+        }
+
+        await BaseStream.WriteAsync(bytes, cancellationToken);
+    }
+#else
     public async Task WriteBytesAsync(byte[]? bytes, CancellationToken cancellationToken = default)
     {
         if (bytes is null)
@@ -549,12 +412,9 @@ public class GameBoxWriter : BinaryWriter
             return;
         }
 
-#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
-        await BaseStream.WriteAsync(bytes, cancellationToken);
-#else
         await BaseStream.WriteAsync(bytes, 0, bytes.Length, cancellationToken);
-#endif
     }
+#endif
 
     /// <summary>
     /// Writes the node array that are presented directly and not as a node reference.

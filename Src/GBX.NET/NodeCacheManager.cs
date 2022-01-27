@@ -335,10 +335,15 @@ public static class NodeCacheManager
 
     private static void CheckMethod(Type type, uint chunkId, string name, IDictionary<uint, byte> dictionary)
     {
-        var method = type.GetMethod(name);
+        var methods = type.GetMethods().Where(x => x.Name == name);
 
-        if (method is not null && method.GetBaseDefinition().DeclaringType != method.DeclaringType)
+        foreach (var method in methods)
         {
+            if (method.GetBaseDefinition().DeclaringType == method.DeclaringType)
+            {
+                continue;
+            }
+
             dictionary[chunkId] = 1;
             AsyncChunksById[chunkId] = 1;
         }

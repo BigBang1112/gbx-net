@@ -60,16 +60,46 @@ public partial class GameBoxReader
             var key = Read<TKey>();
             var value = ReadNodeRef<TValue>();
 
-            if (overrideKey)
-            {
-                dictionary[key] = value;
-            }
-            else
-            {
-                dictionary.Add(key, value);
-            }
+            AddOrOverrideKey(dictionary, key, value, overrideKey);
         }
 
         return dictionary;
+    }
+
+    public async Task<IDictionary<TKey, TValue?>?> ReadDictionaryNodeAsync<TKey, TValue>(
+        bool overrideKey,
+        CancellationToken cancellationToken = default)
+        where TKey : notnull where TValue : Node
+    {
+        var length = ReadInt32();
+
+        var dictionary = new Dictionary<TKey, TValue?>(length);
+
+        for (var i = 0; i < length; i++)
+        {
+            var key = Read<TKey>();
+            var value = await ReadNodeRefAsync<TValue>(cancellationToken);
+
+            AddOrOverrideKey(dictionary, key, value, overrideKey);
+        }
+
+        return dictionary;
+    }
+
+    private static void AddOrOverrideKey<TKey, TValue>(Dictionary<TKey, TValue?> dictionary,
+                                                       TKey key,
+                                                       TValue? value,
+                                                       bool overrideKey)
+                                                       where TKey : notnull
+                                                       where TValue : Node
+    {
+        if (overrideKey)
+        {
+            dictionary[key] = value;
+        }
+        else
+        {
+            dictionary.Add(key, value);
+        }
     }
 }

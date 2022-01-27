@@ -2,6 +2,9 @@
 
 public interface IReadableWritableChunk
 {
+    uint Id { get; }
+    MemoryStream Unknown { get; }
+
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     void Read(Node n, GameBoxReader r);
     /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>

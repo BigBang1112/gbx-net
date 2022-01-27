@@ -255,9 +255,9 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public async Task<Node?> NodeRefAsync(Node? variable, GameBoxBody body)
+    public async Task<Node?> NodeRefAsync(Node? variable, GameBoxBody body, CancellationToken cancellationToken = default)
     {
-        if (Reader is not null) return await Reader.ReadNodeRefAsync(body);
+        if (Reader is not null) return await Reader.ReadNodeRefAsync(body, cancellationToken);
         if (Writer is not null) Writer.Write(variable, body);
         return variable;
     }
@@ -295,9 +295,9 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public async Task<T?> NodeRefAsync<T>(T? variable, GameBoxBody body) where T : Node
+    public async Task<T?> NodeRefAsync<T>(T? variable, GameBoxBody body, CancellationToken cancellationToken = default) where T : Node
     {
-        if (Reader is not null) return await Reader.ReadNodeRefAsync<T>(body);
+        if (Reader is not null) return await Reader.ReadNodeRefAsync<T>(body, cancellationToken);
         if (Writer is not null) Writer.Write(variable, body);
         return variable;
     }
@@ -306,7 +306,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public async Task<T?> NodeRefAsync<T>(T? variable = default) where T : Node
+    public async Task<T?> NodeRefAsync<T>(T? variable = default, CancellationToken cancellationToken = default) where T : Node
     {
         if (Reader is not null)
         {
@@ -315,7 +315,7 @@ public partial class GameBoxReaderWriter
                 throw new PropertyNullException(nameof(Reader.Body));
             }
 
-            return await NodeRefAsync(variable, Reader.Body);
+            return await NodeRefAsync(variable, Reader.Body, cancellationToken);
         }
 
         if (Writer is not null)

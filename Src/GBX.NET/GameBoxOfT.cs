@@ -268,7 +268,7 @@ public class GameBox<T> : GameBox where T : Node
     protected internal override async Task<bool> ReadBodyAsync(GameBoxReader reader,
                                                                bool readUncompressedBodyDirectly,
                                                                ILogger? logger,
-                                                               GameBoxAsyncAction? asyncAction,
+                                                               GameBoxAsyncReadAction? asyncAction,
                                                                CancellationToken cancellationToken)
     {
         if (Body is null)
@@ -298,7 +298,7 @@ public class GameBox<T> : GameBox where T : Node
 
     private async Task ReadCompressedBodyAsync(GameBoxReader reader,
                                                ILogger? logger,
-                                               GameBoxAsyncAction? asyncAction,
+                                               GameBoxAsyncReadAction? asyncAction,
                                                CancellationToken cancellationToken)
     {
         var uncompressedSize = reader.ReadInt32();
@@ -311,7 +311,7 @@ public class GameBox<T> : GameBox where T : Node
     private async Task ReadUncompressedBodyAsync(GameBoxReader reader,
                                                  bool readUncompressedBodyDirectly,
                                                  ILogger? logger,
-                                                 GameBoxAsyncAction? asyncAction,
+                                                 GameBoxAsyncReadAction? asyncAction,
                                                  CancellationToken cancellationToken)
     {
         if (readUncompressedBodyDirectly)
@@ -348,7 +348,9 @@ public class GameBox<T> : GameBox where T : Node
         if (Body.RawData is null)
         {
             if (!Body.IsParsed)
+            {
                 throw new HeaderOnlyParseLimitationException();
+            }
 
             Body.Write(bodyW, remap); // Body is written first so that the aux node count is determined properly
         }

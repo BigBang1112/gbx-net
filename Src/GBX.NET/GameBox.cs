@@ -126,7 +126,7 @@ public class GameBox
     protected internal virtual Task<bool> ReadBodyAsync(GameBoxReader reader,
                                                         bool readUncompressedBodyDirectly,
                                                         ILogger? logger,
-                                                        GameBoxAsyncAction? asyncAction = null,
+                                                        GameBoxAsyncReadAction? asyncAction = null,
                                                         CancellationToken cancellationToken = default)
     {
         return Task.FromResult(false);
@@ -587,7 +587,7 @@ public class GameBox
     public static async Task<GameBox> ParseAsync(Stream stream,
                                                  bool readUncompressedBodyDirectly = false,
                                                  ILogger? logger = null,
-                                                 GameBoxAsyncAction? asyncAction = null,
+                                                 GameBoxAsyncReadAction? asyncAction = null,
                                                  CancellationToken cancellationToken = default)
     {
         using var rHeader = new GameBoxReader(stream, logger: logger, asyncAction: asyncAction);
@@ -615,7 +615,7 @@ public class GameBox
     public static async Task<GameBox<T>> ParseAsync<T>(Stream stream,
                                                        bool readUncompressedBodyDirectly = false,
                                                        ILogger? logger = null,
-                                                       GameBoxAsyncAction? asyncAction = null,
+                                                       GameBoxAsyncReadAction? asyncAction = null,
                                                        CancellationToken cancellationToken = default)
                                                        where T : Node
     {
@@ -641,7 +641,7 @@ public class GameBox
     public static async Task<Node?> ParseNodeAsync(Stream stream,
                                                    bool readUncompressedBodyDirectly = false,
                                                    ILogger? logger = null,
-                                                   GameBoxAsyncAction? asyncAction = null,
+                                                   GameBoxAsyncReadAction? asyncAction = null,
                                                    CancellationToken cancellationToken = default)
     {
         return await ParseAsync(stream, readUncompressedBodyDirectly, logger, asyncAction, cancellationToken);
@@ -650,7 +650,7 @@ public class GameBox
     public static async Task<T> ParseNodeAsync<T>(Stream stream,
                                                   bool readUncompressedBodyDirectly = false,
                                                   ILogger? logger = null,
-                                                  GameBoxAsyncAction? asyncAction = null,
+                                                  GameBoxAsyncReadAction? asyncAction = null,
                                                   CancellationToken cancellationToken = default)
                                                   where T : Node
     {
@@ -758,30 +758,7 @@ public class GameBox
         using var r = new GameBoxReader(input);
         using var w = new GameBoxWriter(output);
 
-        // Magic
-        if (!r.HasMagic(Magic))
-            throw new Exception();
-
-        w.Write(Magic, StringLengthPrefix.None);
-
-        // Version
-        var version = r.ReadInt16();
-
-        if (version < 3)
-            throw new VersionNotSupportedException(version);
-
-        w.Write(version);
-
-        // Format
-        var format = r.ReadByte();
-
-        if (format != 'B')
-            throw new TextFormatNotSupportedException();
-
-        w.Write(format);
-
-        // Ref table compression
-        w.Write(r.ReadByte());
+        var version = CopyBasicInformation(r, w);
 
         // Body compression type
         var compressedBody = r.ReadByte();
@@ -894,5 +871,94 @@ public class GameBox
         using var fsInput = File.OpenRead(inputFileName);
         using var fsOutput = File.Create(outputFileName);
         Decompress(fsInput, fsOutput);
+    }
+
+    public static void Compress(Stream input, Stream output)
+    {
+        using var r = new GameBoxReader(input);
+        using var w = new GameBoxWriter(output);
+
+        var version = CopyBasicInformation(r, w);
+
+        // Body compression type
+        var compressedBody = r.ReadByte();
+
+        if (compressedBody != 'U')
+        {
+            input.CopyTo(output);
+            return;
+        }
+
+        w.Write('C');
+
+        // Unknown byte
+        if (version >= 4)
+        {
+            w.Write(r.ReadByte());
+        }
+
+        // Id
+        w.Write(r.ReadInt32());
+
+        // User data
+        if (version >= 6)
+        {
+            var bytes = r.ReadBytes();
+            w.Write(bytes.Length);
+            w.WriteBytes(bytes);
+        }
+
+        // Num nodes
+        w.Write(r.ReadInt32());
+
+        var numExternalNodes = r.ReadInt32();
+
+        if (numExternalNodes > 0)
+        {
+            throw new Exception(); // Ref table, TODO: full read
+        }
+
+        w.Write(numExternalNodes);
+
+        var uncompressedData = r.ReadToEnd();
+        var compressedData = Lzo.Compress(uncompressedData);
+
+        w.Write(uncompressedData.Length);
+        w.Write(compressedData.Length);
+        w.WriteBytes(compressedData);
+    }
+
+    private static short CopyBasicInformation(GameBoxReader r, GameBoxWriter w)
+    {
+        // Magic
+        if (!r.HasMagic(Magic))
+            throw new Exception();
+
+        w.Write(Magic, StringLengthPrefix.None);
+
+        // Version
+        var version = r.ReadInt16();
+
+        if (version < 3)
+        {
+            throw new VersionNotSupportedException(version);
+        }
+
+        w.Write(version);
+
+        // Format
+        var format = r.ReadByte();
+
+        if (format != 'B')
+        {
+            throw new TextFormatNotSupportedException();
+        }
+
+        w.Write(format);
+
+        // Ref table compression
+        w.Write(r.ReadByte());
+
+        return version;
     }
 }
