@@ -57,25 +57,12 @@ public readonly struct Collection
     {
         if (!ID.HasValue)
             return Name ?? "";
-        if (Id.CollectionIDs.TryGetValue(ID.Value, out string? value))
+        if (NodeCacheManager.CollectionIds.TryGetValue(ID.Value, out string? value))
             return value;
         return ID.Value.ToString();
     }
 
-    /// <summary>
-    /// Converts the collection to a GBX-ready format.
-    /// </summary>
-    /// <param name="lookbackable">A lookbackable to look for existing strings from.</param>
-    /// <returns>Returns a ready-to-use <see cref="Id"/>.</returns>
-    public Id ToId(ILookbackable lookbackable)
-    {
-        if (ID.HasValue)
-            return new Id(ID.ToString(), lookbackable);
-        return new Id(Name, lookbackable);
-    }
-
-    public static implicit operator Collection(string a) => new(a);
-    public static implicit operator Collection(Id a)
+    public static implicit operator Collection(string a)
     {
         if (string.IsNullOrEmpty(a))
             return new Collection();

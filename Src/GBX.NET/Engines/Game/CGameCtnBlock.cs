@@ -6,7 +6,7 @@ namespace GBX.NET.Engines.Game;
 /// Block placed on a map (0x03057000)
 /// </summary>
 [Node(0x03057000)]
-public class CGameCtnBlock : CMwNod
+public class CGameCtnBlock : CMwNod, INodeDependant<CGameCtnChallenge>
 {
     #region Constants
 
@@ -247,12 +247,14 @@ public class CGameCtnBlock : CMwNod
     {
         get
         {
-            GBX?.Node?.DiscoverChunk<CGameCtnChallenge.Chunk03043062>();
+            ((INodeDependant<CGameCtnChallenge>)this).DependingNode?.DiscoverChunk<CGameCtnChallenge.Chunk03043062>();
 
             return color;
         }
         set => color = value;
     }
+
+    CGameCtnChallenge? INodeDependant<CGameCtnChallenge>.DependingNode { get; set; }
 
     #endregion
 
@@ -273,16 +275,6 @@ public class CGameCtnBlock : CMwNod
         blockModel = null!;
     }
 
-    public CGameCtnBlock(string name, Direction direction, Int3 coord) : this(name, direction, coord, 0)
-    {
-
-    }
-
-    public CGameCtnBlock(string name, Direction direction, Int3 coord, int flags) : this(name, direction, coord, flags, null, null, null)
-    {
-
-    }
-
     public CGameCtnBlock(Ident blockModel, Direction direction, Int3 coord, int flags)
     {
         this.blockModel = blockModel;
@@ -291,7 +283,7 @@ public class CGameCtnBlock : CMwNod
         this.flags = flags;
     }
 
-    public CGameCtnBlock(string name, Direction direction, Int3 coord, int flags, string? author, CGameCtnBlockSkin? skin, CGameWaypointSpecialProperty? waypoint)
+    public CGameCtnBlock(string name, Direction direction, Int3 coord, int flags = 0, string? author = null, CGameCtnBlockSkin? skin = null, CGameWaypointSpecialProperty? waypoint = null)
     {
         blockModel = new Ident(name);
         this.direction = direction;

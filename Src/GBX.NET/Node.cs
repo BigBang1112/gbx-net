@@ -9,15 +9,11 @@ namespace GBX.NET;
 /// The skeleton of the Gbx object and representation of the <see cref="CMwNod"/>.
 /// </summary>
 /// <remarks>You shouldn't inherit this class unless <see cref="CMwNod"/> cannot be inherited instead, at all costs.</remarks>
-public abstract class Node
+public abstract class Node : IState
 {
     private uint? id;
     private ChunkSet? chunks;
-
-    // Should be removed for causing recursive behaviour, problematic writing etc.
-    // Responsibility should be thrown on readers/writers
-    [IgnoreDataMember]
-    public GameBox? GBX { get; internal set; }
+    private GameBox? gbx;
 
     public uint Id => GetStoredId();
 
@@ -30,9 +26,16 @@ public abstract class Node
         }
     }
 
+    Guid? IState.StateGuid { get; set; }
+
     protected Node()
     {
 
+    }
+
+    public GameBox? GetGbx()
+    {
+        return gbx;
     }
 
     private uint GetStoredId()
@@ -67,57 +70,17 @@ public abstract class Node
         if (nodeAtTheMoment is not null || nodeIndex is null)
             return nodeAtTheMoment;
 
-        if (GBX is null)
+        if (gbx is null)
             return nodeAtTheMoment;
 
-        var refTable = GBX.RefTable;
+        var refTable = gbx.RefTable;
 
         if (refTable is null)
             return nodeAtTheMoment;
 
-        var fileName = GBX.FileName;
+        var fileName = gbx.FileName;
 
         return refTable.GetNode(nodeAtTheMoment, nodeIndex, fileName);
-    }
-
-    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
-    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
-    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal static T?[] ParseArray<T>(GameBoxReader r, IProgress<GameBoxReadProgress>? progress, ILogger? logger) where T : Node
-    {
-        var count = r.ReadInt32();
-        var array = new T?[count];
-
-        for (var i = 0; i < count; i++)
-            array[i] = Parse<T>(r, classId: null, progress, logger);
-
-        return array;
-    }
-
-    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
-    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
-    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal static IEnumerable<T?> ParseEnumerable<T>(GameBoxReader r, int count, IProgress<GameBoxReadProgress>? progress, ILogger? logger) where T : Node
-    {
-        for (var i = 0; i < count; i++)
-            yield return Parse<T>(r, classId: null, progress, logger);
-    }
-
-    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
-    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
-    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal static IEnumerable<T?> ParseEnumerable<T>(GameBoxReader r, IProgress<GameBoxReadProgress>? progress, ILogger? logger) where T : Node
-    {
-        return ParseEnumerable<T>(r, count: r.ReadInt32(), progress, logger);
-    }
-
-    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
-    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
-    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal static IList<T?> ParseList<T>(GameBoxReader r, IProgress<GameBoxReadProgress>? progress, ILogger? logger) where T : Node
-    {
-        var count = r.ReadInt32();
-        return ParseEnumerable<T>(r, count, progress, logger).ToList(count);
     }
 
     internal static T? Parse<T>(GameBoxReader r, uint? classId, IProgress<GameBoxReadProgress>? progress, ILogger? logger) where T : Node
@@ -179,7 +142,7 @@ public abstract class Node
     {
         var stopwatch = Stopwatch.StartNew();
 
-        node.GBX = r.Body?.GBX;
+        ((IState)node).StateGuid = r.Settings.StateGuid;
 
         using var scope = logger?.BeginScope("{name}", nodeType.Name);
 
@@ -198,7 +161,7 @@ public abstract class Node
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal static async Task<Node?> ParseAsync(GameBoxReader r, uint? classId, ILogger? logger, GameBoxAsyncReadAction? asyncAction, CancellationToken cancellationToken = default)
+    internal static async Task<Node?> ParseAsync(GameBoxReader r, uint? classId, ILogger? logger, CancellationToken cancellationToken = default)
     {
         GetNodeInfoFromClassId(r, classId, out Node? node, out Type nodeType);
 
@@ -207,16 +170,14 @@ public abstract class Node
             return null;
         }
 
-        await ParseAsync(node, nodeType, r, logger, asyncAction, cancellationToken);
+        await ParseAsync(node, nodeType, r, logger, cancellationToken);
 
         return node;
     }
 
-    internal static async Task ParseAsync(Node node, Type nodeType, GameBoxReader r, ILogger? logger, GameBoxAsyncReadAction? asyncAction, CancellationToken cancellationToken = default)
+    internal static async Task ParseAsync(Node node, Type nodeType, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
     {
         var stopwatch = Stopwatch.StartNew();
-
-        node.GBX = r.Body?.GBX;
 
         using var scope = logger?.BeginScope("{name} (async)", nodeType.Name);
 
@@ -233,6 +194,8 @@ public abstract class Node
             {
                 break;
             }
+
+            var asyncAction = r.Settings.AsyncAction;
 
             if (asyncAction is not null && asyncAction.AfterChunkIteration is not null)
             {
@@ -303,7 +266,7 @@ public abstract class Node
 
         node.Chunks.Add(chunk);
 
-        progress?.Report(new GameBoxReadProgress(GameBoxReadProgressStage.Body, (float)stream.Position / stream.Length, node.GBX, chunk));
+        progress?.Report(new GameBoxReadProgress(GameBoxReadProgressStage.Body, (float)stream.Position / stream.Length, gbx: null, chunk));
 
         previousChunkId = chunkId;
 
@@ -668,7 +631,7 @@ public abstract class Node
         logger?.LogChunkProgressSeekless(chunkHex: chunkId.ToString("X8"));
     }
 
-    public void Write(GameBoxWriter w, IDRemap remap = default, ILogger? logger = null)
+    internal void Write(GameBoxWriter w, ILogger? logger)
     {
         var stopwatch = Stopwatch.StartNew();
 
@@ -684,7 +647,7 @@ public abstract class Node
         {
             counter++;
             PrepareToWriteChunk(logger, counter, chunk);
-            WriteChunk(chunk, w, remap, logger);
+            WriteChunk(chunk, w, logger);
         }
 
         WriteFacade(w);
@@ -692,7 +655,7 @@ public abstract class Node
         logger?.LogNodeComplete(stopwatch.Elapsed.TotalMilliseconds);
     }
 
-    public async Task WriteAsync(GameBoxWriter w, IDRemap remap = default, ILogger? logger = null, GameBoxAsyncWriteAction? asyncAction = null, CancellationToken cancellationToken = default)
+    public async Task WriteAsync(GameBoxWriter w, ILogger? logger = null, CancellationToken cancellationToken = default)
     {
         var stopwatch = Stopwatch.StartNew();
 
@@ -710,7 +673,9 @@ public abstract class Node
         {
             counter++;
             PrepareToWriteChunk(logger, counter, chunk);
-            await WriteChunkAsync(chunk, w, remap, logger, asyncAction, cancellationToken);
+            await WriteChunkAsync(chunk, w, logger, cancellationToken);
+
+            var asyncAction = w.Settings.AsyncAction;
 
             if (asyncAction is not null && asyncAction.AfterChunkIteration is not null)
             {
@@ -746,13 +711,13 @@ public abstract class Node
         }
     }
 
-    private void WriteChunk(IReadableWritableChunk chunk, GameBoxWriter w, IDRemap remap, ILogger? logger)
+    private void WriteChunk(IReadableWritableChunk chunk, GameBoxWriter w, ILogger? logger)
     {
         using var ms = new MemoryStream();
-        using var msW = new GameBoxWriter(ms, w.Body, w.Lookbackable, logger);
+        using var msW = new GameBoxWriter(ms, w.Settings, logger);
         var rw = new GameBoxReaderWriter(msW);
 
-        w.Write(Chunk.Remap(chunk.Id, remap));
+        w.Write(Chunk.Remap(chunk.Id, w.Settings.Remap));
 
         switch (chunk)
         {
@@ -767,13 +732,13 @@ public abstract class Node
         w.WriteBytes(ms.ToArray());
     }
 
-    private async Task WriteChunkAsync(IReadableWritableChunk chunk, GameBoxWriter w, IDRemap remap, ILogger? logger, GameBoxAsyncWriteAction? asyncAction, CancellationToken cancellationToken)
+    private async Task WriteChunkAsync(IReadableWritableChunk chunk, GameBoxWriter w, ILogger? logger, CancellationToken cancellationToken)
     {
         using var ms = new MemoryStream();
-        using var msW = new GameBoxWriter(ms, w.Body, w.Lookbackable, logger, asyncAction);
+        using var msW = new GameBoxWriter(ms, w.Settings, logger);
         var rw = new GameBoxReaderWriter(msW);
 
-        w.Write(Chunk.Remap(chunk.Id, remap));
+        w.Write(Chunk.Remap(chunk.Id, w.Settings.Remap));
 
         switch (chunk)
         {
@@ -890,12 +855,6 @@ public abstract class Node
 
         ((Chunk)chunk).Node = this; //
         chunk.Unknown.Position = 0;
-
-        if (chunk is ILookbackable l)
-        {
-            l.IdWritten = false;
-            l.IdStrings.Clear();
-        }
     }
 
     private static bool IsIgnorableChunk(Type chunkType)
@@ -1018,7 +977,7 @@ public abstract class Node
     /// Makes a <see cref="GameBox"/> from this node. You can explicitly cast it to <see cref="GameBox{T}"/> depending on the <see cref="Node"/>. NOTE: Non-generic <see cref="GameBox"/> doesn't have a Save method.
     /// </summary>
     /// <returns></returns>
-    public GameBox ToGBX()
+    public GameBox ToGbx()
     {
         return (GameBox)Activator.CreateInstance(typeof(GameBox<>).MakeGenericType(GetType()), this)!;
     }
@@ -1026,22 +985,22 @@ public abstract class Node
     private void Save(Type[] types, object?[] parameters)
     {
         var type = GetType();
-        var gbxType = GBX?.GetType();
+        var gbxType = gbx?.GetType();
         var gbxOfType = typeof(GameBox<>).MakeGenericType(type);
 
-        GameBox gbx;
+        GameBox gbxx;
 
-        if (GBX is not null && gbxOfType == gbxType)
+        if (gbx is not null && gbxOfType == gbxType)
         {
-            gbx = GBX;
+            gbxx = gbx;
         }
         else
         {
-            gbx = (GameBox)Activator.CreateInstance(gbxOfType, this, null)!;
-            gbx.Body!.IsParsed = true;
+            gbxx = (GameBox)Activator.CreateInstance(gbxOfType, this, null)!;
+            gbxx.Body!.IsParsed = true;
         }
 
-        _ = gbxOfType.GetMethod("Save", types)!.Invoke(gbx, parameters);
+        _ = gbxOfType.GetMethod("Save", types)!.Invoke(gbxx, parameters);
     }
 
     /// <summary>

@@ -35,7 +35,7 @@ public class GameBox<T> : GameBox where T : Node
     /// <summary>
     /// Creates an empty GameBox object version 6.
     /// </summary>
-    internal GameBox() : this(new GameBoxHeaderInfo(typeof(T).GetCustomAttribute<NodeAttribute>()!.ID))
+    internal GameBox() : this(new GameBoxHeaderInfo(NodeCacheManager.GetClassIdByType(typeof(T)).GetValueOrDefault()))
     {
 
     }
@@ -50,7 +50,7 @@ public class GameBox<T> : GameBox where T : Node
         Body = new GameBoxBody<T>(this);
 
         Node = (T)Activator.CreateInstance(typeof(T), true)!;
-        Node.GBX = this;
+        //Node.GBX = this;
     }
 
     /// <summary>
@@ -62,49 +62,6 @@ public class GameBox<T> : GameBox where T : Node
         : this(headerInfo ?? new GameBoxHeaderInfo(node.GetType().GetCustomAttribute<NodeAttribute>()!.ID))
     {
         Node = node;
-
-        // It needs to be sure that GBX is assigned correctly to every node
-        AssignGbxToNode();
-    }
-
-    private void AssignGbxToNode()
-    {
-        AssignGbxToNode(this, Node);
-    }
-
-    private void AssignGbxToNode(GameBox gbx, Node? n) // Goal is to get rid of this method
-    {
-        if (n is null) return;
-
-        n.GBX = gbx; // Assign the GBX body to this body
-
-        var type = n.GetType();
-
-        foreach (var prop in type.GetProperties()) // Go through all properties of a node
-        {
-            if (!Attribute.IsDefined(prop, typeof(NodeMemberAttribute))) // Check only NodeMember attributes
-                continue;
-
-            if (prop.PropertyType.IsSubclassOf(typeof(CMwNod))) // If the property is Node
-            {
-                AssignGbxToNode(gbx, prop.GetValue(n) as CMwNod); // Recurse through the node
-                continue;
-            }
-            
-            if (typeof(IEnumerable).IsAssignableFrom(prop.PropertyType)) // If the property is a list of something
-            {
-                // If the list has a generic argument of anu kind of Node
-                if (Array.Find(prop.PropertyType.GetGenericArguments(), x => x.IsSubclassOf(typeof(CMwNod))) is null)
-                    continue;
-
-                // Go through each Node and recurse
-                if (prop.GetValue(n) is not IEnumerable enumerable)
-                    continue;
-
-                foreach (var e in enumerable)
-                    AssignGbxToNode(gbx, (CMwNod)e);
-            }
-        }
     }
 
     /// <summary>
@@ -183,7 +140,7 @@ public class GameBox<T> : GameBox where T : Node
         Node.DiscoverAllChunks();
     }
 
-    protected override bool ProcessHeader(IProgress<GameBoxReadProgress>? progress, ILogger? logger)
+    protected override bool ProcessHeader(Guid stateGuid, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
     {
         if (ID.HasValue && ID != typeof(T).GetCustomAttribute<NodeAttribute>()?.ID)
         {
@@ -196,7 +153,7 @@ public class GameBox<T> : GameBox where T : Node
 
         try
         {
-            Header.Read(Header.UserData, progress, logger);
+            Header.Read(Header.UserData, stateGuid, progress, logger);
             logger?.LogDebug("Header chunks parsed without any exceptions.");
         }
         catch (Exception e)
@@ -218,6 +175,13 @@ public class GameBox<T> : GameBox where T : Node
         if (Body is null)
         {
             return false;
+        }
+
+        var stateGuid = reader.Settings.StateGuid;
+
+        if (stateGuid is not null)
+        {
+            StateManager.Shared.ResetIdState(stateGuid.Value);
         }
 
         logger?.LogDebug("Reading the body...");
@@ -246,7 +210,7 @@ public class GameBox<T> : GameBox where T : Node
         var compressedSize = reader.ReadInt32();
 
         var data = reader.ReadBytes(compressedSize);
-        Body!.Read(data, uncompressedSize, progress, logger);
+        Body!.Read(data, uncompressedSize, reader.Settings.StateGuid, progress, logger);
     }
 
     private void ReadUncompressedBody(GameBoxReader reader, IProgress<GameBoxReadProgress>? progress, bool readUncompressedBodyDirectly, ILogger? logger)
@@ -258,7 +222,7 @@ public class GameBox<T> : GameBox where T : Node
         }
 
         var uncompressedData = reader.ReadToEnd();
-        Body!.Read(uncompressedData, progress, logger);
+        Body!.Read(uncompressedData, reader.Settings.StateGuid, progress, logger);
     }
 
     /// <exception cref="MissingLzoException"></exception>
@@ -305,7 +269,12 @@ public class GameBox<T> : GameBox where T : Node
         var compressedSize = reader.ReadInt32();
 
         var data = reader.ReadBytes(compressedSize);
-        await Body!.ReadAsync(data, uncompressedSize, logger, asyncAction, cancellationToken);
+        await Body!.ReadAsync(data,
+                              uncompressedSize,
+                              reader.Settings.StateGuid.GetValueOrDefault(),
+                              logger,
+                              asyncAction,
+                              cancellationToken);
     }
 
     private async Task ReadUncompressedBodyAsync(GameBoxReader reader,
@@ -316,12 +285,16 @@ public class GameBox<T> : GameBox where T : Node
     {
         if (readUncompressedBodyDirectly)
         {
-            await Body!.ReadAsync(reader, logger, asyncAction, cancellationToken);
+            await Body!.ReadAsync(reader, logger, cancellationToken);
             return;
         }
 
         var uncompressedData = reader.ReadToEnd();
-        await Body!.ReadAsync(uncompressedData, logger, asyncAction, cancellationToken);
+        await Body!.ReadAsync(uncompressedData,
+                              reader.Settings.StateGuid.GetValueOrDefault(),
+                              logger,
+                              asyncAction,
+                              cancellationToken);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -331,19 +304,16 @@ public class GameBox<T> : GameBox where T : Node
     internal void Write(Stream stream, IDRemap remap, ILogger? logger)
     {
         if (Body is null)
+        {
             return;
+        }
 
-        // It needs to be sure that the Body and Part are assigned to the correct GameBox body
-        AssignGbxToNode();
-
-        (Body as ILookbackable).IdWritten = false;
-        (Body as ILookbackable).IdStrings.Clear();
-        Body.AuxilaryNodes.Clear();
+        var stateGuid = StateManager.Shared.CreateState();
 
         logger?.LogDebug("Writing the body...");
 
         using var ms = new MemoryStream();
-        using var bodyW = new GameBoxWriter(ms, Body);
+        using var bodyW = new GameBoxWriter(ms, stateGuid, remap, logger: logger);
 
         if (Body.RawData is null)
         {
@@ -352,7 +322,7 @@ public class GameBox<T> : GameBox where T : Node
                 throw new HeaderOnlyParseLimitationException();
             }
 
-            Body.Write(bodyW, remap); // Body is written first so that the aux node count is determined properly
+            Body.Write(bodyW, logger); // Body is written first so that the aux node count is determined properly
         }
         else
         {
@@ -367,10 +337,10 @@ public class GameBox<T> : GameBox where T : Node
 
         logger?.LogDebug("Writing the header...");
 
-        using var headerW = new GameBoxWriter(stream, lookbackable: Header);
-        (Header as ILookbackable).IdWritten = false;
-        (Header as ILookbackable).IdStrings.Clear();
-        Header.Write(headerW, Body.AuxilaryNodes.Count + 1, remap, logger);
+        StateManager.Shared.ResetIdState(stateGuid);
+
+        using var headerW = new GameBoxWriter(stream, stateGuid, remap, logger: logger);
+        Header.Write(headerW, StateManager.Shared.GetNodeCount(stateGuid) + 1, logger);
 
         logger?.LogDebug("Writing the reference table...");
 

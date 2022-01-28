@@ -189,9 +189,7 @@ public abstract class CPlugVisual : CPlug
             {
                 x = r.ReadInt32(),
                 y = r.ReadInt32(),
-                
-                vec1 = r.ReadVec3(), // GmBoxAligned::ArchiveABox
-                vec2 = r.ReadVec3()
+                box = r.ReadBox() // GmBoxAligned::ArchiveABox
             }, (x, w) => { });
         }
     }
@@ -206,6 +204,7 @@ public abstract class CPlugVisual : CPlug
         public int U05;
         public int U06;
         public bool U07;
+        public Box U08;
 
         public override void Read(CPlugVisual n, GameBoxReader r)
         {
@@ -224,55 +223,31 @@ public abstract class CPlugVisual : CPlug
             });
 
             U07 = r.ReadBoolean();
-            var floats = r.ReadArray<float>(6); // GmBoxAligned::ArchiveABox
+            U08 = r.ReadBox();
         }
     }
 
     [Chunk(0x0900600D)]
     public class Chunk0900600D : Chunk<CPlugVisual>
     {
-        private int flags;
-
-        public int Flags
-        {
-            get => flags;
-            set => flags = value;
-        }
-
         public int U01;
         public int U02;
+        public int U03;
+        public Box U04;
 
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public float U07;
-        public float U08;
-
-        public override void ReadWrite(CPlugVisual n, GameBoxReaderWriter rw)
+        public override void Read(CPlugVisual n, GameBoxReader r)
         {
-            rw.Int32(ref flags);
-            // CFastBuffer::GetCount(); - could get from 0x00B
+            n.flags = r.ReadInt32();
+            U01 = r.ReadInt32();
+            n.count = r.ReadInt32();
+            U02 = r.ReadInt32();
+            U03 = r.ReadInt32();
 
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-
-            var count = rw.Int32(); // could be vertex count
-
-            // Array of node references using 'count'
-
-            // Another array using 'count'
+            n.texCoords = new Vec2[][] { r.ReadSpan<Vec2>(n.count).ToArray() };
 
             // if((param_1_00 + 7) & 7) != 0 ----> CPlugVisual::ArchiveSkinData
 
-            U03 = rw.Single(); // ArchiveABox
-            U04 = rw.Single();
-            U05 = rw.Single();
-            U06 = rw.Single();
-            U07 = rw.Single();
-            U08 = rw.Single();
-
-            // Count + byte array probably
+            U04 = r.ReadBox(); // ArchiveABox
         }
     }
 
@@ -304,7 +279,7 @@ public abstract class CPlugVisual : CPlug
                 var textureCoords = rw.Reader!.ReadArray(n.count, r => r.ReadVec2());
             }
 
-            var floats = rw.Array<float>(count: 6); // GmBoxAligned::ArchiveABox
+            var box = rw.Box();
             var someCount = rw.Int32(); // CFastArray::ArchiveCountAndElems
         }
     }

@@ -1460,10 +1460,11 @@ public partial class GameBoxReaderWriter
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    public string? Id(string? variable, ILookbackable lookbackable)
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> or <see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
+    public string? Id(string? variable = default)
     {
-        if (Reader is not null) return Reader.ReadId(lookbackable);
-        if (Writer is not null) Writer.Write(new Id(variable, lookbackable));
+        if (Reader is not null) return Reader.ReadId();
+        if (Writer is not null) Writer.WriteId(variable ?? "");
         return variable;
     }
 
@@ -1473,103 +1474,29 @@ public partial class GameBoxReaderWriter
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    public void Id(ref string? variable, ILookbackable lookbackable) => variable = Id(variable, lookbackable);
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
-    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
-    /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    /// <exception cref="PropertyNullException">Lookbackable of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public string? Id(string? variable = default)
-    {
-        if (Reader is not null)
-        {
-            if (Reader.Lookbackable is null)
-                throw new PropertyNullException(nameof(Reader.Lookbackable));
-
-            return Id(variable, Reader.Lookbackable);
-        }
-
-        if (Writer is not null)
-        {
-            if (Writer.Lookbackable is null)
-                throw new PropertyNullException(nameof(Writer.Lookbackable));
-
-            return Id(variable, Writer.Lookbackable);
-        }
-
-        throw new ThisShouldNotHappenException();
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
-    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
-    /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    /// <exception cref="PropertyNullException">Lookbackable of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
     public void Id(ref string? variable) => variable = Id(variable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="lookbackable"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> or <see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    public Ident? Ident(Ident? variable, ILookbackable lookbackable)
+    public Ident? Ident(Ident? variable = default)
     {
-        if (Reader is not null) return Reader.ReadIdent(lookbackable);
-        if (Writer is not null) Writer.Write(variable, lookbackable);
+        if (Reader is not null) return Reader.ReadIdent();
+        if (Writer is not null) Writer.Write(variable);
         return variable;
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="lookbackable"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> or <see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    public void Ident(ref Ident? variable, ILookbackable lookbackable) => variable = Ident(variable, lookbackable);
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
-    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
-    /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    /// <exception cref="PropertyNullException">Lookbackable of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public Ident? Ident(Ident? variable = default)
-    {
-        if (Reader is not null)
-        {
-            if (Reader.Lookbackable is null)
-                throw new PropertyNullException(nameof(Reader.Lookbackable));
-
-            return Ident(variable, Reader.Lookbackable);
-        }
-
-        if (Writer is not null)
-        {
-            if (Writer.Lookbackable is null)
-                throw new PropertyNullException(nameof(Writer.Lookbackable));
-
-            return Ident(variable, Writer.Lookbackable);
-        }
-
-        throw new ThisShouldNotHappenException();
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
-    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
-    /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    /// <exception cref="PropertyNullException">Lookbackable of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
     public void Ident(ref Ident? variable) => variable = Ident(variable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -2235,7 +2162,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="stream"/> is null.</exception>
-    /// <exception cref="PropertyNullException">Lookbackable of <see cref="Reader"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> or <see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
     public void UntilFacade(MemoryStream stream)
     {
         if (stream is null)
@@ -2243,8 +2170,10 @@ public partial class GameBoxReaderWriter
 
         if (Reader is not null)
         {
-            if (Reader.Lookbackable is null)
-                throw new PropertyNullException(nameof(Reader.Lookbackable));
+            if (Reader.Settings.StateGuid is null)
+            {
+                throw new PropertyNullException(nameof(Reader.Settings.StateGuid));
+            }
 
             using var w = new GameBoxWriter(stream);
             w.Write(Reader.ReadUntilFacade().ToArray());

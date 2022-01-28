@@ -36,7 +36,7 @@ public class CPlugMaterialCustom : CPlug
 
                 _ = r.ReadNodeRef<CPlugBitmap>(out int bitmapIndex);
 
-                return new SBitmap(n.GBX, name, u01, bitmapIndex);
+                return new SBitmap(n.GetGbx(), name, u01, bitmapIndex);
             });
         }
     }

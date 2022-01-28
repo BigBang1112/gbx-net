@@ -33,30 +33,30 @@ public class GameBoxBody<T> : GameBoxBody where T : Node
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal void Read(byte[] data, int uncompressedSize, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
+    internal void Read(byte[] data, int uncompressedSize, Guid? contextGuid, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
     {
         var buffer = new byte[uncompressedSize];
 
         DecompressData(data, buffer);
 
-        Read(buffer, progress, logger);
+        Read(buffer, contextGuid, progress, logger);
     }
 
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal void Read(byte[] data, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
+    internal void Read(byte[] data, Guid? contextGuid, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
     {
         using var ms = new MemoryStream(data);
-        Read(ms, progress, logger);
+        Read(ms, contextGuid, progress, logger);
     }
 
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal void Read(Stream stream, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
+    internal void Read(Stream stream, Guid? contextGuid, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
     {
-        using var gbxr = new GameBoxReader(stream, this, logger: logger);
+        using var gbxr = new GameBoxReader(stream, contextGuid, logger: logger);
         Read(gbxr, progress, logger);
     }
 
@@ -84,46 +84,49 @@ public class GameBoxBody<T> : GameBoxBody where T : Node
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     internal async Task ReadAsync(byte[] data,
                                   int uncompressedSize,
+                                  Guid stateGuid,
                                   ILogger? logger,
                                   GameBoxAsyncReadAction? asyncAction,
                                   CancellationToken cancellationToken)
     {
         var buffer = new byte[uncompressedSize];
 
-        if (asyncAction is not null)
+        if (asyncAction is not null && asyncAction.BeforeLzoDecompression is not null)
         {
             await asyncAction.BeforeLzoDecompression();
         }
 
         DecompressData(data, buffer);
 
-        if (asyncAction is not null)
+        if (asyncAction is not null && asyncAction.AfterLzoDecompression is not null)
         {
             await asyncAction.AfterLzoDecompression();
         }
 
-        await ReadAsync(buffer, logger, asyncAction, cancellationToken);
+        await ReadAsync(buffer, stateGuid, logger, asyncAction, cancellationToken);
     }
 
     internal async Task ReadAsync(byte[] data,
+                                  Guid stateGuid,
                                   ILogger? logger,
                                   GameBoxAsyncReadAction? asyncAction,
                                   CancellationToken cancellationToken)
     {
         using var ms = new MemoryStream(data);
-        await ReadAsync(ms, logger, asyncAction, cancellationToken);
+        await ReadAsync(ms, stateGuid, logger, asyncAction, cancellationToken);
     }
 
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     internal async Task ReadAsync(Stream stream,
+                                  Guid stateGuid,
                                   ILogger? logger,
                                   GameBoxAsyncReadAction? asyncAction,
                                   CancellationToken cancellationToken)
     {
-        using var gbxr = new GameBoxReader(stream, body: this, logger: logger, asyncAction: asyncAction);
-        await ReadAsync(gbxr, logger, asyncAction, cancellationToken);
+        using var gbxr = new GameBoxReader(stream, stateGuid, logger: logger, asyncAction: asyncAction);
+        await ReadAsync(gbxr, logger, cancellationToken);
     }
 
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
@@ -131,12 +134,11 @@ public class GameBoxBody<T> : GameBoxBody where T : Node
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     internal async Task ReadAsync(GameBoxReader reader,
                                   ILogger? logger,
-                                  GameBoxAsyncReadAction? asyncAction,
                                   CancellationToken cancellationToken)
     {
         var node = GBX.Node;
 
-        await Node.ParseAsync(node, node.GetType(), reader, logger, asyncAction, cancellationToken);
+        await Node.ParseAsync(node, node.GetType(), reader, logger, cancellationToken);
 
         IsParsed = true;
 
@@ -157,20 +159,18 @@ public class GameBoxBody<T> : GameBoxBody where T : Node
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="MissingLzoException"></exception>
-    internal void Write(GameBoxWriter w, IDRemap remap = default)
+    internal void Write(GameBoxWriter w, ILogger? logger)
     {
-        GBX.Remap = remap;
-
         if (GBX.Header.CompressionOfBody == GameBoxCompression.Uncompressed)
         {
-            GBX.Node.Write(w);
+            GBX.Node.Write(w, logger);
             return;
         }
 
         using var msBody = new MemoryStream();
-        using var gbxwBody = new GameBoxWriter(msBody, body: this);
+        using var gbxwBody = new GameBoxWriter(msBody, w.Settings, logger);
 
-        GBX.Node.Write(gbxwBody, remap);
+        GBX.Node.Write(gbxwBody, logger);
 
         var buffer = msBody.ToArray();
 

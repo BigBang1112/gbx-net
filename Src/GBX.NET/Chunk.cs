@@ -41,16 +41,6 @@ public abstract class Chunk : IComparable<Chunk>
 
     public bool Equals(Chunk? chunk) => chunk is not null && chunk.Id == Id;
 
-    protected internal GameBoxReader CreateReader(Stream input, ILogger? logger = null)
-    {
-        return new GameBoxReader(input, Node.GBX?.Body, this as ILookbackable, logger);
-    }
-
-    protected internal GameBoxWriter CreateWriter(Stream input, ILogger? logger = null)
-    {
-        return new GameBoxWriter(input, Node.GBX?.Body, this as ILookbackable, logger);
-    }
-
     public static uint Remap(uint chunkID, IDRemap remap = IDRemap.Latest)
     {
         var classPart = chunkID & 0xFFFFF000;

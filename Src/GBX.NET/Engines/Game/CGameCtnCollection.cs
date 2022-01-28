@@ -27,12 +27,9 @@ public class CGameCtnCollection : CMwNod
     #region 0x001 chunk
 
     [Chunk(0x03033001)]
-    public class Chunk03033001 : Chunk<CGameCtnCollection>, ILookbackable
+    [ResetIdState]
+    public class Chunk03033001 : Chunk<CGameCtnCollection>
     {
-        int? ILookbackable.IdVersion { get; set; } = 3;
-        List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
-        bool ILookbackable.IdWritten { get; set; }
-
         public int Version { get; set; }
 
         public override void Read(CGameCtnCollection n, GameBoxReader r)
@@ -45,8 +42,8 @@ public class CGameCtnCollection : CMwNod
             _ = r.ReadInt32();
             n.CollectionIcon = r.ReadString();
             _ = r.ReadArray<int>(2);
-            n.BlockInfoFlat = r.ReadId(this);
-            n.Vehicle = r.ReadIdent(this);
+            n.BlockInfoFlat = r.ReadId();
+            n.Vehicle = r.ReadIdent();
             _ = r.ReadInt32();
             _ = r.ReadArray<float>(4);
             n.LoadingScreen = r.ReadString();

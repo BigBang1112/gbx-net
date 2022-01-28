@@ -9,7 +9,7 @@ public class CPlugTree : CPlug
     private IList<CPlugTree?> children;
     private string? name;
     private CPlugVisual? visual;
-    private CPlugSurfaceGeom? surface;
+    private CPlugSurface? surface;
     private CPlug? shader;
     private int? shaderIndex;
     private CPlugTreeGenerator? generator;
@@ -32,7 +32,7 @@ public class CPlugTree : CPlug
         set => visual = value;
     }
 
-    public CPlugSurfaceGeom? Surface
+    public CPlugSurface? Surface
     {
         get => surface;
         set => surface = value;
@@ -65,10 +65,13 @@ public class CPlugTree : CPlug
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref U01); // list version
+            rw.ListNode<CPlugTree>(ref n.children!);
+        }
 
-            rw.List(ref n.children!,
-                (i, r) => r.ReadNodeRef<CPlugTree>(),
-                (x, w) => w.Write(x));
+        public override async Task ReadWriteAsync(CPlugTree n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            rw.Int32(ref U01); // list version
+            n.children = (await rw.ListNodeAsync<CPlugTree>(n.children!))!;
         }
     }
 
@@ -133,8 +136,16 @@ public class CPlugTree : CPlug
         {
             rw.NodeRef<CPlugVisual>(ref n.visual); // CPlugVisual?
             rw.NodeRef<CPlug>(ref n.shader, ref n.shaderIndex); // definitely Shader, can have CPlugShaderApply or CPlugMaterial
-            rw.NodeRef<CPlugSurfaceGeom>(ref n.surface); // CPlugSurface? CPlugTreeGenerator?
+            rw.NodeRef<CPlugSurface>(ref n.surface); // CPlugSurface? CPlugTreeGenerator?
             rw.NodeRef<CPlugTreeGenerator>(ref n.generator);
+        }
+
+        public override async Task ReadWriteAsync(CPlugTree n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            n.visual = await rw.NodeRefAsync<CPlugVisual>(n.visual, cancellationToken);
+            rw.NodeRef<CPlug>(ref n.shader, ref n.shaderIndex);
+            n.surface = await rw.NodeRefAsync<CPlugSurface>(n.surface, cancellationToken);
+            n.generator = await rw.NodeRefAsync<CPlugTreeGenerator>(n.generator, cancellationToken);
         }
     }
 

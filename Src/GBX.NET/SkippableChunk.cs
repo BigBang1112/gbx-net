@@ -43,7 +43,7 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
         }
 
         using var ms = new MemoryStream(Data);
-        using var gbxr = CreateReader(ms);
+        using var gbxr = new GameBoxReader(ms, ((IState)Node).StateGuid);
         var gbxrw = new GameBoxReaderWriter(gbxr);
 
         try

@@ -64,7 +64,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
         Chunks = new ChunkSet(gbx.Node);
     }
 
-    public void Read(byte[] userData, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
+    public void Read(byte[] userData, Guid stateGuid, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
     {
         var gbx = (GameBox<T>)GBX;
 
@@ -75,7 +75,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
             return;
 
         using var ms = new MemoryStream(userData);
-        using var r = new GameBoxReader(ms, lookbackable: this, logger: logger);
+        using var r = new GameBoxReader(ms, stateGuid, logger: logger);
 
         var numHeaderChunks = r.ReadInt32();
 
@@ -152,7 +152,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
                 if (d is not null)
                 {
                     using var msChunk = new MemoryStream(d);
-                    using var rChunk = new GameBoxReader(msChunk, lookbackable: this, logger: logger);
+                    using var rChunk = new GameBoxReader(msChunk, stateGuid, logger: logger);
                     var rw = new GameBoxReaderWriter(rChunk);
                     ((IReadableWritableChunk)chunk).ReadWrite(gbx.Node, rw);
                     ((ISkippableChunk)chunk).Discovered = true;
@@ -175,7 +175,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
         }
     }
 
-    internal void Write(GameBoxWriter w, int numNodes, IDRemap remap, ILogger? logger)
+    internal void Write(GameBoxWriter w, int numNodes, ILogger? logger)
     {
         w.Write(GameBox.Magic, StringLengthPrefix.None);
         w.Write(Version);
@@ -194,17 +194,17 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
             w.Write((byte)UnknownByte.GetValueOrDefault());
         }
 
-        w.Write(Chunk.Remap(GBX.ID.GetValueOrDefault(), remap));
+        w.Write(Chunk.Remap(GBX.ID.GetValueOrDefault(), w.Settings.Remap));
 
         if (Version >= 6)
         {
-            WriteVersion6Header(w, remap, logger);
+            WriteVersion6Header(w, logger);
         }
 
         w.Write(numNodes);
     }
 
-    private void WriteVersion6Header(GameBoxWriter w, IDRemap remap, ILogger? logger)
+    private void WriteVersion6Header(GameBoxWriter w, ILogger? logger)
     {
         if (Chunks is null)
         {
@@ -213,7 +213,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
         }
 
         using var userData = new MemoryStream();
-        using var gbxw = new GameBoxWriter(userData, w.Body, w.Lookbackable, logger);
+        using var gbxw = new GameBoxWriter(userData, w.Settings, logger);
 
         var gbxrw = new GameBoxReaderWriter(gbxw);
 
@@ -240,19 +240,19 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
 
         foreach (Chunk chunk in Chunks)
         {
-            w.Write(Chunk.Remap(chunk.Id, remap));
+            w.Write(Chunk.Remap(chunk.Id, w.Settings.Remap));
+
             var length = lengths[chunk.Id];
+
             if (((IHeaderChunk)chunk).IsHeavy)
+            {
                 length |= 1 << 31;
+            }
+
             w.Write(length);
         }
 
-        w.Write(userData.ToArray(), 0, (int)userData.Length);
-    }
-
-    internal void Write(GameBoxWriter w, int numNodes, ILogger? logger)
-    {
-        Write(w, numNodes, IDRemap.Latest, logger);
+        w.WriteBytes(userData.ToArray());
     }
 
     public TChunk CreateChunk<TChunk>(byte[] data) where TChunk : Chunk

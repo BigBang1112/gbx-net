@@ -1,14 +1,10 @@
 ﻿using GBX.NET.Debugging;
-using System.Runtime.Serialization;
 
 namespace GBX.NET;
 
 public abstract class GameBoxBody : GameBoxPart
 {
     public GameBoxBodyDebugger? Debugger { get; protected set; }
-
-    [IgnoreDataMember]
-    public SortedDictionary<int, Node> AuxilaryNodes { get; }
 
     internal bool IsParsed { get; set; }
     internal int UncompressedSize { get; set; }
@@ -18,8 +14,8 @@ public abstract class GameBoxBody : GameBoxPart
     /// </summary>
     internal byte[]? RawData { get; set; }
 
-    public GameBoxBody(GameBox gbx) : base(gbx)
+    protected GameBoxBody(GameBox gbx) : base(gbx)
     {
-        AuxilaryNodes = new SortedDictionary<int, Node>();
+
     }
 }

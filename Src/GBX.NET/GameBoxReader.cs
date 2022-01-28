@@ -10,37 +10,27 @@ public partial class GameBoxReader : BinaryReader
 {
     private readonly ILogger? logger;
 
-    /// <summary>
-    /// Body used to store node references.
-    /// </summary>
-    public GameBoxBody? Body { get; }
-
-    /// <summary>
-    /// An object to look into for the list of already read data.
-    /// </summary>
-    public ILookbackable? Lookbackable { get; }
-
-    /// <summary>
-    /// A delegate collection that gets executed throughout the asynchronous reading.
-    /// </summary>
-    public GameBoxAsyncReadAction? AsyncAction { get; }
+    public GameBoxReaderSettings Settings { get; }
 
     /// <summary>
     /// Constructs a binary reader specialized for GBX.
     /// </summary>
     /// <param name="input">The input stream.</param>
-    /// <param name="body">Body used to store node references. If null, <see cref="Node"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
-    /// <param name="lookbackable">A specified object to look into for the list of already read data. If null while <paramref name="body"/> is null, <see cref="Id"/> or <see cref="Ident"/> cannot be read and <see cref="PropertyNullException"/> can be thrown. If null while <paramref name="body"/> is not null, the body is used as <see cref="ILookbackable"/> instead.</param>
-    /// <param name="logger">Logger.</param>
+    /// <param name="stateGuid">ID used to point to a state that stores node references and lookback strings. If null, <see cref="Node"/>, <see cref="Id"/>, or <see cref="Ident"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
     /// <param name="asyncAction">Specialized executions during asynchronous reading.</param>
-    public GameBoxReader(Stream input, GameBoxBody? body = null, ILookbackable? lookbackable = null, ILogger? logger = null, GameBoxAsyncReadAction? asyncAction = null) : base(input, Encoding.UTF8, true)
+    /// <param name="logger">Logger.</param>
+    public GameBoxReader(Stream input, Guid? stateGuid = null, GameBoxAsyncReadAction? asyncAction = null, ILogger? logger = null) : base(input, Encoding.UTF8, true)
     {
-        Body = body;
-        Lookbackable = lookbackable ?? body;
+        Settings = new GameBoxReaderSettings(stateGuid, asyncAction);
 
         this.logger = logger;
+    }
 
-        AsyncAction = asyncAction;
+    public GameBoxReader(Stream input, GameBoxReaderSettings settings, ILogger? logger = null) : base(input, Encoding.UTF8, true)
+    {
+        Settings = settings;
+
+        this.logger = logger;
     }
 
     /// <summary>
@@ -121,30 +111,34 @@ public partial class GameBoxReader : BinaryReader
     public byte[] ReadBytes() => ReadBytes(count: ReadInt32());
 
     /// <summary>
-    /// First reads the <see cref="int"/> of the Id version, if not read yet, considering the information from <paramref name="lookbackable"/>. Then reads an <see cref="int"/> (index) that holds the flags of the representing <see cref="string"/>. If the first 30 bits are 0, a fresh <see cref="string"/> is also read.
+    /// First reads the <see cref="int"/> of the Id version, if not read yet, considering the information from state. Then reads an <see cref="int"/> (index) that holds the flags of the representing <see cref="string"/>. If the first 30 bits are 0, a fresh <see cref="string"/> is also read.
     /// </summary>
-    /// <param name="lookbackable">An object to look into for the list of already read data.</param>
     /// <returns>An <see cref="Id"/> which can be implicitly casted to <see cref="string"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="lookbackable"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> is null.</exception>
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    public Id ReadId(ILookbackable lookbackable)
+    public string ReadId()
     {
-        if (lookbackable is null)
-            throw new ArgumentNullException(nameof(lookbackable));
-
-        if (!lookbackable.IdVersion.HasValue)
+        if (Settings.StateGuid is null)
         {
-            lookbackable.IdVersion = ReadInt32();
+            throw new PropertyNullException(nameof(Settings.StateGuid));
+        }
+
+        var stateGuid = Settings.StateGuid.Value;
+        var idState = StateManager.Shared.GetIdState(stateGuid);
+
+        if (!idState.Version.HasValue)
+        {
+            idState.Version = ReadInt32();
 
             // Edge-case scenario where Id doesn't have a version for whatever reason (can be multiple)
-            if ((lookbackable.IdVersion & 0xC0000000) > 10)
+            if ((idState.Version & 0xC0000000) > 10)
             {
-                lookbackable.IdVersion = 3;
+                idState.Version = 3;
 
                 if (BaseStream.CanSeek)
                 {
@@ -161,113 +155,64 @@ public partial class GameBoxReader : BinaryReader
 
         if (index == uint.MaxValue)
         {
-            return new Id("", lookbackable);
+            return "";
         }
 
         if ((index >> 16 & 0x1FF) == 0x1FF) // ????
         {
             var bytes = ReadBytes(5);
             var length = bytes[2];
-            var str = ReadString(length);
-            return new Id(str, lookbackable);
+            return ReadString(length);
         }
 
         if ((index & 0x3FFF) == 0 && (index >> 30 == 1 || index >> 30 == 2))
         {
             var str = ReadString();
-            lookbackable.IdStrings.Add(str);
-            return new Id(str, lookbackable);
+            idState.Strings.Add(str);
+            return str;
         }
 
         if ((index & 0x3FFF) == 0x3FFF)
         {
             return (index >> 30) switch
             {
-                2 => new Id("Unassigned", lookbackable),
-                3 => new Id("", lookbackable),
+                2 => "Unassigned",
+                3 => "",
                 _ => throw new CorruptedIdException(index >> 30),
             };
         }
 
         if (index >> 30 == 0)
         {
-            return new Id(index.ToString(), lookbackable);
+            return index.ToString();
         }
 
-        if (lookbackable.IdStrings.Count > (index & 0x3FFF) - 1)
+        if (idState.Strings.Count > (index & 0x3FFF) - 1)
         {
-            return new Id(lookbackable.IdStrings[(int)(index & 0x3FFF) - 1], lookbackable);
+            return idState.Strings[(int)(index & 0x3FFF) - 1];
         }
 
-        return new Id("", lookbackable);
+        return "";
     }
 
     /// <summary>
-    /// First reads the <see cref="int"/> of the Id version, if not read yet, considering the information from <see cref="Lookbackable"/>. Then reads an <see cref="int"/> (index) that holds the flags of the representing <see cref="string"/>. If the first 30 bits are 0, a fresh <see cref="string"/> is also read.
-    /// </summary>
-    /// <returns>An <see cref="Id"/> which can be implicitly casted to <see cref="string"/>.</returns>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
-    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
-    /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    /// <exception cref="PropertyNullException"><see cref="Lookbackable"/> is null.</exception>
-    public Id ReadId()
-    {
-        if (Lookbackable is null)
-        {
-            throw new PropertyNullException(nameof(Lookbackable));
-        }
-
-        return ReadId(Lookbackable);
-    }
-
-    /// <summary>
-    /// Reads an <see cref="Id"/> using <see cref="ReadId(ILookbackable)"/> 3 times.
-    /// </summary>
-    /// <param name="lookbackable">An object to look into for the list of already read data.</param>
-    /// <returns>An <see cref="Ident"/>.</returns>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="lookbackable"/> is null.</exception>
-    /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
-    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
-    /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    public Ident ReadIdent(ILookbackable lookbackable)
-    {
-        if (lookbackable is null)
-        {
-            throw new ArgumentNullException(nameof(lookbackable));
-        }
-
-        var id = ReadId(lookbackable);
-        var collection = ReadId(lookbackable);
-        var author = ReadId(lookbackable);
-
-        return new Ident(id, collection, author);
-    }
-
-    /// <summary>
-    /// Reads an <see cref="Id"/> using <see cref="ReadId(ILookbackable)"/> 3 times.
+    /// Reads an <see cref="Id"/> using <see cref="ReadId"/> 3 times.
     /// </summary>
     /// <returns>An <see cref="Ident"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> is null.</exception>
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    /// <exception cref="PropertyNullException"><see cref="Lookbackable"/> is null.</exception>
     public Ident ReadIdent()
     {
-        if (Lookbackable is null)
-        {
-            throw new PropertyNullException(nameof(Lookbackable));
-        }
+        var id = ReadId();
+        var collection = ReadId();
+        var author = ReadId();
 
-        return ReadIdent(Lookbackable);
+        return new Ident(id, collection, author);
     }
 
     /// <summary>
@@ -570,7 +515,7 @@ public partial class GameBoxReader : BinaryReader
     /// <typeparam name="T">Type of the variable to read. Supported types are <see cref="byte"/>, <see cref="short"/>, <see cref="int"/>,
     /// <see cref="long"/>, <see cref="float"/>, <see cref="bool"/>, <see cref="string"/>, <see cref="sbyte"/>, <see cref="ushort"/>,
     /// <see cref="uint"/>, <see cref="ulong"/>, <see cref="Byte3"/>, <see cref="Vec2"/>, <see cref="Vec3"/>,
-    /// <see cref="Vec4"/>, <see cref="Int3"/>, <see cref="Id"/> and <see cref="Ident"/>.</typeparam>
+    /// <see cref="Vec4"/>, <see cref="Int3"/>, and <see cref="Ident"/>.</typeparam>
     /// <returns>Object read from the stream.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -594,7 +539,6 @@ public partial class GameBoxReader : BinaryReader
         Type vec4Type   when vec4Type   == typeof(Vec4)     => (T)Convert.ChangeType(ReadVec4(), typeof(T)),
         Type int2Type   when int2Type   == typeof(Int2)     => (T)Convert.ChangeType(ReadInt2(), typeof(T)),
         Type int3Type   when int3Type   == typeof(Int3)     => (T)Convert.ChangeType(ReadInt3(), typeof(T)),
-        Type idType     when idType     == typeof(Id)       => (T)Convert.ChangeType(ReadId(), typeof(T)),
         Type identType  when identType  == typeof(Ident)    => (T)Convert.ChangeType(ReadIdent(), typeof(T)),
 
         _ => throw new NotSupportedException($"{typeof(T)} is not supported for Read<T>."),

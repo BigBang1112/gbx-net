@@ -58,8 +58,64 @@ public abstract class CPlugVisual3D : CPlugVisual
     [Chunk(0x0902C004)]
     public class Chunk0902C004 : Chunk<CPlugVisual3D>
     {
-        public override void ReadWrite(CPlugVisual3D n, GameBoxReaderWriter rw)
+        public override void Read(CPlugVisual3D n, GameBoxReader r)
         {
+            var u01 = n.Flags >> 0x16 & 1;
+            var u02 = u01 == 0 || (char)n.Flags < '\0';
+            var u03 = u01 == 0 || (n.Flags & 0x100) != 0;
+
+            var u04 = (n.Flags & 0x100000) != 0;
+
+            if (!u04)
+            {
+                if (u02 && (n.Flags & 0x200000U) == 0 && u03)
+                {
+                    // DoData
+                }
+            }
+
+            var ara = new Vec3[n.Count];
+
+            for (var i = 0; i < n.Count; i++)
+            {
+                ara[i] = r.ReadVec3();
+                if (u02)
+                {
+                    if (u04)
+                    {
+                        var ok = r.ReadInt32();
+                    }
+                    else
+                    {
+                        var ok2 = r.ReadVec3();
+                    }
+                }
+
+                if (u03)
+                {
+                    if ((n.Flags & 0x200000U) == 0)
+                    {
+                        var wtff = r.ReadBytes(0x10);
+                    }
+                    else
+                    {
+                        var color = r.ReadInt32();
+                    }
+                }
+            }
+
+            var wtf = r.ReadArray<int>(800);
+            var bruh = r.ReadArray(n.Count, r => (r.ReadVec4(), r.ReadInt32()));
+
+            var strst = r.ReadSpan<Vec4>(50);
+        }
+
+        /*public override void ReadWrite(CPlugVisual3D n, GameBoxReaderWriter rw)
+        {
+            
+
+            var nice = rw.Array<int>(count: 30);
+
             if ((char)n.Flags < '\0') // wtf
             {
 
@@ -73,7 +129,7 @@ public abstract class CPlugVisual3D : CPlugVisual
             var wat = ~(n.Flags >> 0x11) & 8 | 4;
 
             //var verts = rw.Reader.ReadArray(n.count-4, r => r.ReadVec4());
-        }
+        }*/
     }
 
     public readonly struct Vertex

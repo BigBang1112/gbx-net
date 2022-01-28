@@ -28,7 +28,7 @@ public class ChunkSet : SortedSet<Chunk>
         return RemoveWhere(x => x.Id == typeof(T).GetCustomAttribute<ChunkAttribute>()?.ID) > 0;
     }
 
-    public T Create<T>(byte[] data) where T : Chunk
+    public T Create<T>(byte[] data) where T : Chunk // Improve
     {
         var chunkId = typeof(T).GetCustomAttribute<ChunkAttribute>()?.ID;
 
@@ -56,7 +56,6 @@ public class ChunkSet : SortedSet<Chunk>
             ((IReadableWritableChunk)chunk).ReadWrite(Node, rw);
         }
 
-        if (chunk is ILookbackable l) l.IdVersion = 3;
         Add(chunk);
         return chunk;
     }

@@ -138,22 +138,6 @@ public abstract class Chunk<T> : Chunk, IReadableWritableChunk where T : Node
         }
     }
 
-    /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
-    public byte[] ToByteArray()
-    {
-        if (this is ILookbackable l)
-        {
-            l.IdWritten = false;
-            l.IdStrings.Clear();
-        }
-
-        using var ms = new MemoryStream();
-        using var w = CreateWriter(ms);
-        var rw = new GameBoxReaderWriter(w);
-        ReadWrite(Node, rw);
-        return ms.ToArray();
-    }
-
     public override string ToString()
     {
         var att = NodeCacheManager.ChunkAttributesByType[GetType()]

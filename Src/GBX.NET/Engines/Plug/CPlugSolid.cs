@@ -165,6 +165,13 @@ public class CPlugSolid : CPlug
             rw.Boolean(ref U02);
             rw.NodeRef<CPlug>(ref n.tree, ref n.treeIndex);
         }
+
+        public override async Task ReadWriteAsync(CPlugSolid n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            rw.Boolean(ref U01);
+            rw.Boolean(ref U02);
+            n.tree = await rw.NodeRefAsync<CPlug>(n.tree, cancellationToken);
+        }
     }
 
     [Chunk(0x0900500E)]
@@ -245,6 +252,13 @@ public class CPlugSolid : CPlug
             rw.Boolean(ref U01);
             rw.Boolean(ref U02);
             rw.NodeRef(ref n.tree);
+        }
+
+        public override async Task ReadWriteAsync(CPlugSolid n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            rw.Boolean(ref U01);
+            rw.Boolean(ref U02);
+            n.tree = await rw.NodeRefAsync(n.tree, cancellationToken);
         }
     }
 

@@ -17,6 +17,7 @@ public static class NodeCacheManager
     public static Dictionary<uint, uint> Mappings { get; } // key: older, value: newer
     public static ILookup<uint, uint> ReverseMappings { get; } // key: newer, value: older
     public static Dictionary<uint, string> Extensions { get; }
+    public static Dictionary<int, string> CollectionIds { get; }
     public static ConcurrentDictionary<uint, string> GbxExtensions { get; }
 
     public static ConcurrentDictionary<uint, Type> ClassTypesById { get; }
@@ -50,6 +51,7 @@ public static class NodeCacheManager
         Names = new Dictionary<uint, string>();
         Mappings = new Dictionary<uint, uint>();
         Extensions = new Dictionary<uint, string>();
+        CollectionIds = new Dictionary<int, string>();
         GbxExtensions = new ConcurrentDictionary<uint, string>();
 
         ClassTypesById = new ConcurrentDictionary<uint, Type>();
@@ -78,6 +80,40 @@ public static class NodeCacheManager
         DefineNames2(Names, Extensions);
         DefineMappings2(Mappings);
         ReverseMappings = Mappings.ToLookup(x => x.Value, x => x.Key);
+        DefineCollectionIds(CollectionIds);
+    }
+
+    private static void DefineCollectionIds(IDictionary<int, string> collectionIds)
+    {
+        using var reader = new StringReader(Resources.CollectionID);
+
+        while (true)
+        {
+            var stringLine = reader.ReadLine();
+
+            if (stringLine is null)
+            {
+                break;
+            }
+
+            var line = stringLine.AsSpan();
+
+            var spaceAtIndex = line.IndexOf(' ');
+
+            if (spaceAtIndex == -1)
+            {
+                continue;
+            }
+
+            var key = line.Slice(0, spaceAtIndex);
+            var value = line.Slice(spaceAtIndex + 1);
+
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+            collectionIds[int.Parse(key)] = value.ToString();
+#else
+            collectionIds[int.Parse(key.ToString())] = value.ToString();
+#endif
+        }
     }
 
     public static string? GetNodeExtension(uint classId)

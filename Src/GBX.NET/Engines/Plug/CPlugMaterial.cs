@@ -70,7 +70,7 @@ public class CPlugMaterial : CPlug
 
                 var shader1 = r.ReadNodeRef<CPlugShader>();
 
-                return new SDeviceMat(n.GBX, shader1)
+                return new SDeviceMat(n.GetGbx(), shader1)
                 {
                     U01 = u01,
                     U02 = u02,
@@ -114,7 +114,7 @@ public class CPlugMaterial : CPlug
                 _ = r.ReadNodeRef<CPlugShader>(out int shader2Index);
                 _ = r.ReadNodeRef<CPlugShader>(out int shader3Index);
 
-                return new SDeviceMat(n.GBX, shader1Index, shader2Index, shader3Index)
+                return new SDeviceMat(n.GetGbx(), shader1Index, shader2Index, shader3Index)
                 {
                     U01 = u01,
                     U02 = u02,

@@ -4,6 +4,10 @@
 [NodeExtension("Shape")]
 public class CPlugSurface : CPlug
 {
+    private CPlugSurfaceGeom? geom;
+
+    public CPlugSurfaceGeom? Geom { get => geom; set => geom = value; }
+
     protected CPlugSurface()
     {
 
@@ -16,7 +20,13 @@ public class CPlugSurface : CPlug
 
         public override void ReadWrite(CPlugSurface n, GameBoxReaderWriter rw)
         {
-            rw.Id(ref U01);
+            if (n is CPlugSurfaceGeom)
+            {
+                rw.Id(ref U01);
+                return;
+            }
+
+            rw.NodeRef(ref n.geom);
         }
     }
 

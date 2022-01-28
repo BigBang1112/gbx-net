@@ -24,7 +24,7 @@ public class CFuncTreeSubVisualSequence : CFuncTree
             n.subKeys = Parse<CFuncKeysNatural>(r, 0x05030000, progress: null, logger);
         }
 
-        public override void Write(CFuncTreeSubVisualSequence n, GameBoxWriter w)
+        public override void Write(CFuncTreeSubVisualSequence n, GameBoxWriter w, ILogger? logger)
         {
             if (n.subKeys is null)
             {
@@ -32,7 +32,7 @@ public class CFuncTreeSubVisualSequence : CFuncTree
                 return;
             }
 
-            n.subKeys.Write(w);
+            n.subKeys.Write(w, logger);
         }
     }
 

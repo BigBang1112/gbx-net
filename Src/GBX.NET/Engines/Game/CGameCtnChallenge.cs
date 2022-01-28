@@ -2798,10 +2798,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 if (CGameCtnBlock.IsFreeBlock(flags))
                     coord -= (0, 1, 0);
 
-                n.blocks.Add(new CGameCtnBlock(blockName, dir, coord, flags, author, skin, parameters)
-                {
-                    GBX = n.GBX
-                });
+                var block = new CGameCtnBlock(blockName, dir, coord, flags, author, skin, parameters);
+                ((INodeDependant<CGameCtnChallenge>)block).DependingNode = n;
+
+                n.blocks.Add(block);
 
                 blockCounter++;
             }
@@ -3218,7 +3218,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     {
                         using var ms = new MemoryStream(data);
                         using var deflate = new CompressedStream(ms, CompressionMode.Decompress);
-                        using var gbxr = CreateReader(deflate, logger);
+                        using var gbxr = new GameBoxReader(deflate, r.Settings, logger);
 
                         var cacheNode = Parse<CHmsLightMapCache>(gbxr, 0x06022000, progress: null, logger);
 
@@ -3233,7 +3233,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             }
         }
 
-        public override void Write(CGameCtnChallenge n, GameBoxWriter w)
+        public override void Write(CGameCtnChallenge n, GameBoxWriter w, ILogger? logger)
         {
             w.Write(U01);
             w.Write(version);
@@ -3268,7 +3268,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     using var ms = new MemoryStream();
                     using var gbxw = new GameBoxWriter(ms);
 
-                    n.lightmapCache?.Result?.Write(gbxw);
+                    n.lightmapCache?.Result?.Write(gbxw, logger);
                     gbxw.WriteBytes(CacheData ?? Array.Empty<byte>());
 
                     w.Write((int)ms.Length);
@@ -3308,17 +3308,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CGameCtnChallenge 0x040 skippable chunk (items)
     /// </summary>
     [Chunk(0x03043040, "items")]
-    public class Chunk03043040 : SkippableChunk<CGameCtnChallenge>, IVersionable, ILookbackable
+    [ResetIdState]
+    public class Chunk03043040 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private int version = 4;
 
         public int U01;
         public int U02 = 10;
         public byte[]? U03;
-
-        int? ILookbackable.IdVersion { get; set; }
-        List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
-        bool ILookbackable.IdWritten { get; set; }
 
         /// <summary>
         /// Version of the chunk.
@@ -3345,12 +3342,17 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             var size = r.ReadInt32();
             U02 = r.ReadInt32(); // 10
 
-            n.anchoredObjects = ParseList<CGameCtnAnchoredObject>(r, progress: null, logger)!;
+            n.anchoredObjects = r.ReadList(r =>
+            {
+                var node = Parse<CGameCtnAnchoredObject>(r, classId: null, progress: null, logger)!;
+                ((INodeDependant<CGameCtnChallenge>)node).DependingNode = n;
+                return node;
+            });
 
             U03 = r.ReadToEnd();
         }
 
-        public override void Write(CGameCtnChallenge n, GameBoxWriter w)
+        public override void Write(CGameCtnChallenge n, GameBoxWriter w, ILogger? logger)
         {
             w.Write(Version);
 
@@ -3360,7 +3362,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             w.Write(U01);
 
             using var itemMs = new MemoryStream();
-            using var itemW = CreateWriter(itemMs);
+            using var itemW = new GameBoxWriter(itemMs, w.Settings, logger);
 
             itemW.Write(U02);
             itemW.WriteNodes(n.anchoredObjects);
@@ -3412,12 +3414,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CGameCtnChallenge 0x043 skippable chunk (generalogies)
     /// </summary>
     [Chunk(0x03043043, "generalogies")]
-    public class Chunk03043043 : SkippableChunk<CGameCtnChallenge>, IVersionable, ILookbackable
+    [ResetIdState]
+    public class Chunk03043043 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        int? ILookbackable.IdVersion { get; set; }
-        List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
-        bool ILookbackable.IdWritten { get; set; }
-
         /// <summary>
         /// Version of the chunk.
         /// </summary>
@@ -3431,10 +3430,15 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             var sizeOfNodeWithClassID = r.ReadInt32();
             Data = r.ReadBytes(sizeOfNodeWithClassID);
 
-            using var ms = new MemoryStream(Data);
-            using var r2 = CreateReader(ms, logger);
+            // Run this only when calling Genealogies property
 
-            n.genealogies = ParseArray<CGameCtnZoneGenealogy>(r2, progress: null, logger)!;
+            using var ms = new MemoryStream(Data);
+            using var r2 = new GameBoxReader(ms, r.Settings, logger);
+
+            n.genealogies = r2.ReadArray(r =>
+            {
+                return Parse<CGameCtnZoneGenealogy>(r, classId: null, progress: null, logger)!;
+            });
         }
         
         public override void Write(CGameCtnChallenge n, GameBoxWriter w, ILogger? logger)
@@ -3442,12 +3446,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             w.Write(Version);
 
             using var ms = new MemoryStream();
-            using var w1 = CreateWriter(ms, logger);
+            using var w1 = new GameBoxWriter(ms, w.Settings, logger);
 
             w1.Write(n.genealogies, (x, w) =>
             {
                 w.Write(0x0311D000);
-                x.Write(w);
+                x.Write(w, logger);
             });
 
             w.Write((int)ms.Length);
@@ -3525,8 +3529,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 direction: (Direction)r.ReadByte(),
                 coord: (Int3)r.ReadByte3(),
                 flags: r.ReadInt32()
-            )
-            { GBX = n.GBX },
+            ),
             (x, w) =>
             {
                 w.WriteId(x.Name);
@@ -3773,12 +3776,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CGameCtnChallenge 0x054 skippable chunk (embedded objects)
     /// </summary>
     [Chunk(0x03043054, "embedded objects")]
-    public class Chunk03043054 : SkippableChunk<CGameCtnChallenge>, IVersionable, ILookbackable
+    [ResetIdState]
+    public class Chunk03043054 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        int? ILookbackable.IdVersion { get; set; }
-        List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
-        bool ILookbackable.IdWritten { get; set; }
-
         public int U01;
 
         /// <summary>
@@ -3793,7 +3793,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             U01 = r.ReadInt32();
             var size = r.ReadInt32();
 
-            var embedded = r.ReadArray(r1 => r1.ReadIdent());
+            var embedded = r.ReadArray(r => r.ReadIdent());
 
             n.embeddedObjects = new Dictionary<string, byte[]>();
             n.originalEmbedZip = r.ReadBytes();
@@ -3813,46 +3813,50 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 }
             }
 
-            Textures = r.ReadArray(r1 => r1.ReadString());
+            Textures = r.ReadArray(r => r.ReadString());
         }
 
-        public override void Write(CGameCtnChallenge n, GameBoxWriter w)
+        public override void Write(CGameCtnChallenge n, GameBoxWriter w, ILogger? logger)
         {
             w.Write(Version);
             w.Write(U01);
 
             using var ms = new MemoryStream();
-            using var writer = CreateWriter(ms);
+            using var writer = new GameBoxWriter(ms, w.Settings, logger);
 
             var embedded = new List<Ident>();
 
             foreach (var embed in n.GetEmbeddedObjects())
             {
-                if (embed is GameBox<CGameItemModel> gbxItem)
+                if (embed is not GameBox<CGameItemModel> gbxItem)
                 {
-                    if (gbxItem.FileName is null)
-                        continue;
-
-                    var id = gbxItem.FileName;
-                    var dirs = id.Split('/', '\\');
-
-                    for (var i = 0; i < dirs.Length; i++)
-                    {
-                        var dir = dirs[dirs.Length - 1 - i];
-                        if (dir == "Items"
-                        || dir == "Blocks")
-                        {
-                            id = string.Join("\\", dirs, dirs.Length - i, i);
-                            break;
-                        }
-                    }
-
-                    var item = gbxItem.Node;
-
-                    embedded.Add(new Ident(id,
-                        item.Ident?.Collection ?? new Collection(),
-                        item.Ident?.Author ?? string.Empty));
+                    continue;
                 }
+
+                if (gbxItem.FileName is null)
+                {
+                    continue;
+                }
+
+                var id = gbxItem.FileName;
+                var dirs = id.Split('/', '\\');
+
+                for (var i = 0; i < dirs.Length; i++)
+                {
+                    var dir = dirs[dirs.Length - 1 - i];
+                    if (dir == "Items"
+                    || dir == "Blocks")
+                    {
+                        id = string.Join("\\", dirs, dirs.Length - i, i);
+                        break;
+                    }
+                }
+
+                var item = gbxItem.Node;
+
+                embedded.Add(new Ident(id,
+                    item.Ident?.Collection ?? new Collection(),
+                    item.Ident?.Author ?? string.Empty));
             }
 
             writer.Write(embedded.ToArray(), (x, w1) => w1.Write(x));

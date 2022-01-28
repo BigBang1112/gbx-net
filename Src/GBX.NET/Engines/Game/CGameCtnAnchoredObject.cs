@@ -4,7 +4,7 @@
 /// Item placed on a map (0x03101000)
 /// </summary>
 [Node(0x03101000)]
-public class CGameCtnAnchoredObject : CMwNod
+public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
 {
     #region Fields
 
@@ -129,7 +129,7 @@ public class CGameCtnAnchoredObject : CMwNod
     {
         get
         {
-            GBX?.Node?.DiscoverChunk<CGameCtnChallenge.Chunk03043062>();
+            ((INodeDependant<CGameCtnChallenge>)this).DependingNode?.DiscoverChunk<CGameCtnChallenge.Chunk03043062>();
 
             return color;
         }
@@ -142,6 +142,8 @@ public class CGameCtnAnchoredObject : CMwNod
         get => skin;
         set => skin = value;
     }
+
+    CGameCtnChallenge? INodeDependant<CGameCtnChallenge>.DependingNode { get; set; }
 
     #endregion
 
@@ -217,7 +219,7 @@ public class CGameCtnAnchoredObject : CMwNod
                 else
                 {
                     rw.Writer!.Write(0x2E009000);
-                    n.waypointSpecialProperty.Write(rw.Writer);
+                    n.waypointSpecialProperty.Write(rw.Writer, logger);
                 }
             }
 
