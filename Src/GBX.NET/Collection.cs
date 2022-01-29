@@ -8,9 +8,9 @@ public readonly struct Collection
     /// <summary>
     /// Represents an ID defined kind of collection. If set, the ID is converted to its proper name from the <see cref="Resources.CollectionID"/> list using the <see cref="ToString"/> method. Always available if <see cref="Name"/> is null.
     /// </summary>
-    public int? ID { get; }
+    public int? Id { get; }
     /// <summary>
-    /// Represents a name defined kind of collection. If set, collection is stored as a regular <see cref="Id"/> in GBX. Always avaliable if <see cref="ID"/> is null.
+    /// Represents a name defined kind of collection. If set, collection is stored as a regular <see cref="Id"/> in GBX. Always avaliable if <see cref="Id"/> is null.
     /// </summary>
     public string? Name { get; }
 
@@ -20,17 +20,17 @@ public readonly struct Collection
     /// <param name="name">A collection name.</param>
     public Collection(string name)
     {
-        ID = null;
+        Id = null;
         Name = name;
     }
 
     /// <summary>
     /// Constructs a Collection struct from an ID reprentation.
     /// </summary>
-    /// <param name="collectionID">A collection ID from the <see cref="Resources.CollectionID"/> list (specified ID doesn't have to be available in the list).</param>
-    public Collection(int collectionID)
+    /// <param name="collectionId">A collection ID from the <see cref="Resources.CollectionID"/> list (specified ID doesn't have to be available in the list).</param>
+    public Collection(int collectionId)
     {
-        ID = collectionID;
+        Id = collectionId;
         Name = null;
     }
 
@@ -55,11 +55,11 @@ public readonly struct Collection
     /// <returns>If collection is ID-represented, the ID is converted to <see cref="string"/> based from the <see cref="Resources.CollectionID"/> list. If it's name-represented, <see cref="Name"/> is returned instead.</returns>
     public override string ToString()
     {
-        if (!ID.HasValue)
+        if (!Id.HasValue)
             return Name ?? "";
-        if (NodeCacheManager.CollectionIds.TryGetValue(ID.Value, out string? value))
+        if (NodeCacheManager.CollectionIds.TryGetValue(Id.Value, out string? value))
             return value;
-        return ID.Value.ToString();
+        return Id.Value.ToString();
     }
 
     public static implicit operator Collection(string a)

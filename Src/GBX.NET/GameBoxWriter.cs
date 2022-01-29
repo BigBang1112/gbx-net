@@ -218,15 +218,15 @@ public partial class GameBoxWriter : BinaryWriter
             idState.IsWritten = true;
         }
 
-        if (value == "Unassigned")
+        if (value is null || value == "")
         {
-            Write(0xBFFFFFFF);
+            Write(0xFFFFFFFF);
             return;
         }
 
-        if (string.IsNullOrEmpty(value))
+        if (value == "Unassigned")
         {
-            Write(0xFFFFFFFF);
+            Write(0xBFFFFFFF);
             return;
         }
 
@@ -256,7 +256,7 @@ public partial class GameBoxWriter : BinaryWriter
     {
         ident ??= new Ident();
 
-        Write(ident.ID);
+        Write(ident.Id);
         Write(ident.Collection);
         Write(ident.Author);
     }
