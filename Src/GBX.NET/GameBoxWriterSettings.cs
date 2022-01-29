@@ -10,6 +10,11 @@ public class GameBoxWriterSettings
     public IDRemap Remap { get; }
 
     /// <summary>
+    /// State used for writing lookback strings in special chunks.
+    /// </summary>
+    public Guid? IdSubStateGuid { get; set; }
+
+    /// <summary>
     /// A delegate collection that gets executed throughout the asynchronous writing.
     /// </summary>
     public GameBoxAsyncWriteAction? AsyncAction { get; }

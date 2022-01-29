@@ -18,7 +18,7 @@ public partial class GameBoxWriter : BinaryWriter
     /// Constructs a binary writer specialized for GBX.
     /// </summary>
     /// <param name="output">The output stream.</param>
-    /// <param name="stateGuid">ID used to point to a state that stores node references and lookback strings. If null, <see cref="Node"/>, <see cref="Id"/>, or <see cref="Ident"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
+    /// <param name="stateGuid">ID used to point to a state that stores node references and lookback strings. If null, <see cref="Node"/>, Id, or <see cref="Ident"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
     /// <param name="remap">Node ID remap mode.</param>
     /// <param name="asyncAction">Specialized executions during asynchronous writing.</param>
     /// <param name="logger">Logger.</param>
@@ -198,27 +198,56 @@ public partial class GameBoxWriter : BinaryWriter
     /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
     public void WriteId(string? value)
     {
+        var idState = GetIdState();
+        WriteIdVersionIfNotWritten(idState);
+        WriteIdAsString(value ?? "", idState);
+    }
+
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public void WriteId(Collection value)
+    {
+        var idState = GetIdState();
+
+        WriteIdVersionIfNotWritten(idState);
+
+        if (value.Id is not null)
+        {
+            Write(value.Id.Value);
+            return;
+        }
+
+        WriteIdAsString(value, idState);
+    }
+
+    private StateManager.IdState GetIdState()
+    {
         if (Settings.StateGuid is null)
         {
             throw new PropertyNullException(nameof(Settings.StateGuid));
         }
-        
-        var idState = StateManager.Shared.GetIdState(Settings.StateGuid.Value);
 
-        if (!idState.IsWritten)
+        var stateGuid = Settings.StateGuid.Value;
+
+        return Settings.IdSubStateGuid is null
+            ? StateManager.Shared.GetIdState(stateGuid)
+            : StateManager.Shared.GetIdSubState(stateGuid, Settings.IdSubStateGuid.Value);
+    }
+
+    private void WriteIdVersionIfNotWritten(StateManager.IdState idState)
+    {
+        if (idState.IsWritten)
         {
-            if (idState.Version.HasValue)
-            {
-                Write(idState.Version.Value);
-            }
-            else
-            {
-                Write(3);
-            }
-            idState.IsWritten = true;
+            return;
         }
 
-        if (value is null || value == "")
+        Write(idState.Version ?? 3);
+        idState.IsWritten = true;
+    }
+
+    private void WriteIdAsString(string value, StateManager.IdState idState)
+    {
+        if (value == "")
         {
             Write(0xFFFFFFFF);
             return;
@@ -238,14 +267,8 @@ public partial class GameBoxWriter : BinaryWriter
             return;
         }
 
-        if (int.TryParse(value, out int cID))
-        {
-            Write(cID);
-            return;
-        }
-
         Write(0x40000000);
-        Write(value.ToString());
+        Write(value);
 
         idState.Strings.Add(value);
     }
@@ -256,9 +279,9 @@ public partial class GameBoxWriter : BinaryWriter
     {
         ident ??= new Ident();
 
-        Write(ident.Id);
-        Write(ident.Collection);
-        Write(ident.Author);
+        WriteId(ident.Id);
+        WriteId(ident.Collection);
+        WriteId(ident.Author);
     }
 
     /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
@@ -466,11 +489,38 @@ public partial class GameBoxWriter : BinaryWriter
         }
     }
 
+    public void StartIdSubState()
+    {
+        if (Settings.StateGuid is null)
+        {
+            throw new PropertyNullException(nameof(Settings.StateGuid));
+        }
+
+        Settings.IdSubStateGuid = StateManager.Shared.CreateIdSubState(Settings.StateGuid.Value);
+    }
+
+    public void EndIdSubState()
+    {
+        if (Settings.IdSubStateGuid is null)
+        {
+            return;
+        }
+
+        if (Settings.StateGuid is null)
+        {
+            throw new PropertyNullException(nameof(Settings.StateGuid));
+        }
+
+        StateManager.Shared.RemoveIdSubState(Settings.StateGuid.Value, Settings.IdSubStateGuid.Value);
+
+        Settings.IdSubStateGuid = null;
+    }
+
     /// <summary>
     /// Writes any kind of value. Prefer using specified methods for better performance. Supported types are <see cref="byte"/>, <see cref="short"/>, <see cref="int"/>,
     /// <see cref="long"/>, <see cref="float"/>, <see cref="bool"/>, <see cref="string"/>, <see cref="sbyte"/>, <see cref="ushort"/>,
     /// <see cref="uint"/>, <see cref="ulong"/>, <see cref="Byte3"/>, <see cref="Vec2"/>, <see cref="Vec3"/>,
-    /// <see cref="Vec4"/>, <see cref="Int3"/>, <see cref="Id"/> and <see cref="Ident"/>.
+    /// <see cref="Vec4"/>, <see cref="Int3"/>, <see cref="Collection"/>, and <see cref="Ident"/>.
     /// </summary>
     /// <param name="any">Any supported object.</param>
     /// <exception cref="ArgumentNullException"><paramref name="any"/> is null.</exception>
@@ -483,25 +533,33 @@ public partial class GameBoxWriter : BinaryWriter
 
         switch (any)
         {
-            case byte   v: Write(v); break;
-            case short  v: Write(v); break;
-            case int    v: Write(v); break;
-            case long   v: Write(v); break;
-            case float  v: Write(v); break;
-            case string v: Write(v); break;
-            case sbyte  v: Write(v); break;
-            case ushort v: Write(v); break;
-            case uint   v: Write(v); break;
-            case ulong  v: Write(v); break;
-            case Byte3  v: Write(v); break;
-            case Vec2   v: Write(v); break;
-            case Vec3   v: Write(v); break;
-            case Vec4   v: Write(v); break;
-            case Int2   v: Write(v); break;
-            case Int3   v: Write(v); break;
-            case Ident  v: Write(v); break;
+            case byte       v: Write(v); break;
+            case short      v: Write(v); break;
+            case int        v: Write(v); break;
+            case long       v: Write(v); break;
+            case float      v: Write(v); break;
+            case string     v: Write(v); break;
+            case sbyte      v: Write(v); break;
+            case ushort     v: Write(v); break;
+            case uint       v: Write(v); break;
+            case ulong      v: Write(v); break;
+            case Byte3      v: Write(v); break;
+            case Vec2       v: Write(v); break;
+            case Vec3       v: Write(v); break;
+            case Vec4       v: Write(v); break;
+            case Int2       v: Write(v); break;
+            case Int3       v: Write(v); break;
+            case Collection v: Write(v); break;
+            case Ident      v: Write(v); break;
 
             default: throw new NotSupportedException($"{any.GetType()} is not supported for Read<T>.");
         }
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        EndIdSubState();
+
+        base.Dispose(disposing);
     }
 }

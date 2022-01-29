@@ -35,6 +35,13 @@ public partial class StateManager
         return guid;
     }
 
+    public void RemoveState(Guid stateGuid)
+    {
+        AuxilaryNodeStates.TryRemove(stateGuid, out _);
+        IdStates.TryRemove(stateGuid, out _);
+        ReferenceTableStates.TryRemove(stateGuid, out _);
+    }
+
     public void ResetIdState(Guid stateGuid)
     {
         var idStates = IdStates[stateGuid];

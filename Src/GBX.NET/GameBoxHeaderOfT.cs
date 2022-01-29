@@ -2,8 +2,6 @@
 
 public class GameBoxHeader<T> : GameBoxPart where T : Node
 {
-    public ChunkSet Chunks { get; }
-
     public short Version
     {
         get => GBX.Header.Version;
@@ -59,14 +57,17 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
         get => GBX.Header.NumNodes;
     }
 
+    public ChunkSet HeaderChunks => ((GameBox<T>)GBX).Node.HeaderChunks;
+
     public GameBoxHeader(GameBox<T> gbx) : base(gbx)
     {
-        Chunks = new ChunkSet(gbx.Node);
+        
     }
 
     public void Read(byte[] userData, Guid stateGuid, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
     {
         var gbx = (GameBox<T>)GBX;
+        var node = gbx.Node;
 
         if (Version < 6)
             return;
@@ -128,6 +129,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
 
             var type = NodeCacheManager.GetHeaderChunkTypeById(nodeType, chunkId);
 
+
             if (type is not null)
             {
                 NodeCacheManager.HeaderChunkConstructors.TryGetValue(chunkId,
@@ -137,7 +139,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
                     throw new ThisShouldNotHappenException();
 
                 Chunk headerChunk = constructor();
-                headerChunk.Node = gbx.Node;
+                headerChunk.Node = node; //
                 ((IHeaderChunk)headerChunk).Data = d;
                 if (d == null || d.Length == 0)
                     ((IHeaderChunk)headerChunk).Discovered = true;
@@ -154,18 +156,18 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
                     using var msChunk = new MemoryStream(d);
                     using var rChunk = new GameBoxReader(msChunk, stateGuid, logger: logger);
                     var rw = new GameBoxReaderWriter(rChunk);
-                    ((IReadableWritableChunk)chunk).ReadWrite(gbx.Node, rw);
+                    ((IReadableWritableChunk)chunk).ReadWrite(node, rw);
                     ((ISkippableChunk)chunk).Discovered = true;
                 }
 
                 ((IHeaderChunk)chunk).IsHeavy = chunkInfo.Value.IsHeavy;
             }
             else if (nodeType is not null)
-                chunk = (Chunk)Activator.CreateInstance(typeof(HeaderChunk<>).MakeGenericType(nodeType), gbx.Node, d, chunkId)!;
+                chunk = (Chunk)Activator.CreateInstance(typeof(HeaderChunk<>).MakeGenericType(nodeType), node, d, chunkId)!;
             else
                 chunk = new HeaderChunk(chunkId, d) { IsHeavy = chunkInfo.Value.IsHeavy };
 
-            Chunks.Add(chunk);
+            node.HeaderChunks.Add(chunk);
 
             progress?.Report(new GameBoxReadProgress(
                 GameBoxReadProgressStage.HeaderUserData,
@@ -206,7 +208,10 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
 
     private void WriteVersion6Header(GameBoxWriter w, ILogger? logger)
     {
-        if (Chunks is null)
+        var gbx = (GameBox<T>)GBX;
+        var node = gbx.Node;
+
+        if (node.HeaderChunks is null)
         {
             w.Write(0);
             return;
@@ -219,13 +224,13 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
 
         var lengths = new Dictionary<uint, int>();
 
-        foreach (var chunk in Chunks)
+        foreach (var chunk in node.HeaderChunks)
         {
             chunk.Unknown.Position = 0;
 
             var pos = userData.Position;
             if (((ISkippableChunk)chunk).Discovered)
-                ((IReadableWritableChunk)chunk).ReadWrite(((GameBox<T>)GBX).Node, gbxrw);
+                ((IReadableWritableChunk)chunk).ReadWrite(node, gbxrw);
             else
                 ((ISkippableChunk)chunk).Write(gbxw);
 
@@ -233,12 +238,12 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
         }
 
         // Actual data size plus the class id (4 bytes) and each length (4 bytes) plus the number of chunks integer
-        w.Write((int)userData.Length + Chunks.Count * 8 + 4);
+        w.Write((int)userData.Length + node.HeaderChunks.Count * 8 + 4);
 
         // Write number of header chunks integer
-        w.Write(Chunks.Count);
+        w.Write(node.HeaderChunks.Count);
 
-        foreach (Chunk chunk in Chunks)
+        foreach (Chunk chunk in node.HeaderChunks)
         {
             w.Write(Chunk.Remap(chunk.Id, w.Settings.Remap));
 
@@ -257,7 +262,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
 
     public TChunk CreateChunk<TChunk>(byte[] data) where TChunk : Chunk
     {
-        return Chunks.Create<TChunk>(data);
+        return HeaderChunks.Create<TChunk>(data);
     }
 
     public TChunk CreateChunk<TChunk>() where TChunk : Chunk
@@ -267,19 +272,19 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
 
     public void InsertChunk(IHeaderChunk chunk)
     {
-        Chunks.Add((Chunk)chunk);
+        HeaderChunks.Add((Chunk)chunk);
     }
 
     public void DiscoverChunk<TChunk>() where TChunk : IHeaderChunk
     {
-        foreach (var chunk in Chunks)
+        foreach (var chunk in HeaderChunks)
             if (chunk is TChunk c)
                 c.Discover();
     }
 
     public void DiscoverChunks<TChunk1, TChunk2>() where TChunk1 : IHeaderChunk where TChunk2 : IHeaderChunk
     {
-        foreach (var chunk in Chunks)
+        foreach (var chunk in HeaderChunks)
         {
             if (chunk is TChunk1 c1)
                 c1.Discover();
@@ -293,7 +298,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
         where TChunk2 : IHeaderChunk
         where TChunk3 : IHeaderChunk
     {
-        foreach (var chunk in Chunks)
+        foreach (var chunk in HeaderChunks)
         {
             if (chunk is TChunk1 c1)
                 c1.Discover();
@@ -310,7 +315,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
         where TChunk3 : IHeaderChunk
         where TChunk4 : IHeaderChunk
     {
-        foreach (var chunk in Chunks)
+        foreach (var chunk in HeaderChunks)
         {
             if (chunk is TChunk1 c1)
                 c1.Discover();
@@ -330,7 +335,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
         where TChunk4 : IHeaderChunk
         where TChunk5 : IHeaderChunk
     {
-        foreach (var chunk in Chunks)
+        foreach (var chunk in HeaderChunks)
         {
             if (chunk is TChunk1 c1)
                 c1.Discover();
@@ -353,7 +358,7 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
         where TChunk5 : IHeaderChunk
         where TChunk6 : IHeaderChunk
     {
-        foreach (var chunk in Chunks)
+        foreach (var chunk in HeaderChunks)
         {
             if (chunk is TChunk1 c1)
                 c1.Discover();
@@ -372,14 +377,14 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
 
     public void DiscoverAllChunks()
     {
-        foreach (var chunk in Chunks)
+        foreach (var chunk in HeaderChunks)
             if (chunk is IHeaderChunk s)
                 s.Discover();
     }
 
     public TChunk? GetChunk<TChunk>() where TChunk : IHeaderChunk
     {
-        foreach (var chunk in Chunks)
+        foreach (var chunk in HeaderChunks)
         {
             if (chunk is TChunk t)
             {
@@ -399,11 +404,11 @@ public class GameBoxHeader<T> : GameBoxPart where T : Node
 
     public void RemoveAllChunks()
     {
-        Chunks.Clear();
+        HeaderChunks.Clear();
     }
 
     public bool RemoveChunk<TChunk>() where TChunk : Chunk
     {
-        return Chunks.Remove<TChunk>();
+        return HeaderChunks.Remove<TChunk>();
     }
 }

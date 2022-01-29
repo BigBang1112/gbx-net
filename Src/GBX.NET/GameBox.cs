@@ -6,7 +6,7 @@ namespace GBX.NET;
 /// <summary>
 /// An unknown serialized GameBox node with additional attributes. This class can represent deserialized .Gbx file.
 /// </summary>
-public class GameBox
+public class GameBox : IDisposable
 {
     public const string Magic = "GBX";
 
@@ -991,5 +991,10 @@ public class GameBox
         w.Write(r.ReadByte());
 
         return version;
+    }
+
+    public void Dispose()
+    {
+        Node?.Dispose();
     }
 }

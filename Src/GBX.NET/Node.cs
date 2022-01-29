@@ -9,10 +9,11 @@ namespace GBX.NET;
 /// The skeleton of the Gbx object and representation of the <see cref="CMwNod"/>.
 /// </summary>
 /// <remarks>You shouldn't inherit this class unless <see cref="CMwNod"/> cannot be inherited instead, at all costs.</remarks>
-public abstract class Node : IState
+public abstract class Node : IState, IDisposable
 {
     private uint? id;
     private ChunkSet? chunks;
+    private ChunkSet? headerChunks;
     private GameBox? gbx;
 
     public uint Id => GetStoredId();
@@ -23,6 +24,15 @@ public abstract class Node : IState
         {
             chunks ??= new ChunkSet(this); // Maybe improve this
             return chunks;
+        }
+    }
+
+    public ChunkSet HeaderChunks
+    {
+        get
+        {
+            headerChunks ??= new ChunkSet(this); // Maybe improve this
+            return headerChunks;
         }
     }
 
@@ -770,7 +780,10 @@ public abstract class Node : IState
         }
     }
 
-    private async Task WriteUnskippableChunkAsync(IReadableWritableChunk chunk, GameBoxWriter msW, GameBoxReaderWriter rw, CancellationToken cancellationToken)
+    private async Task WriteUnskippableChunkAsync(IReadableWritableChunk chunk,
+                                                  GameBoxWriter msW,
+                                                  GameBoxReaderWriter rw,
+                                                  CancellationToken cancellationToken)
     {
         if (IsIgnorableChunk(chunk.GetType()))
         {
@@ -781,7 +794,10 @@ public abstract class Node : IState
         await WriteChunkWithReadWriteAsync(chunk, rw, cancellationToken);
     }
 
-    private static async Task WriteChunkWithReadWriteAsync(Node node, IReadableWritableChunk chunk, GameBoxReaderWriter rw, CancellationToken cancellationToken)
+    private static async Task WriteChunkWithReadWriteAsync(Node node,
+                                                           IReadableWritableChunk chunk,
+                                                           GameBoxReaderWriter rw,
+                                                           CancellationToken cancellationToken)
     {
         if (NodeCacheManager.AsyncChunksById.ContainsKey(chunk.Id))
         {
@@ -797,61 +813,128 @@ public abstract class Node : IState
         chunk.ReadWrite(node, rw);
     }
 
-    private async Task WriteChunkWithReadWriteAsync(IReadableWritableChunk chunk, GameBoxReaderWriter rw, CancellationToken cancellationToken)
+    private async Task WriteChunkWithReadWriteAsync(IReadableWritableChunk chunk,
+                                                    GameBoxReaderWriter rw,
+                                                    CancellationToken cancellationToken)
     {
         await WriteChunkWithReadWriteAsync(this, chunk, rw, cancellationToken);
     }
 
-    private void WriteSkippableChunk(ISkippableChunk skippableChunk, GameBoxWriter mainWriter, GameBoxWriter chunkWriter, GameBoxReaderWriter rw)
+    private void WriteSkippableChunk(ISkippableChunk skippableChunk,
+                                     GameBoxWriter mainWriter,
+                                     GameBoxWriter chunkWriter,
+                                     GameBoxReaderWriter rw)
     {
-        if (!skippableChunk.Discovered)
-        {
-            skippableChunk.Write(chunkWriter);
-        }
-        else if (IsIgnorableChunk(skippableChunk.GetType()))
-        {
-            chunkWriter.WriteBytes(skippableChunk.Data);
-        }
-        else
-        {
-            try
-            {
-                skippableChunk.ReadWrite(this, rw);
-            }
-            catch (ChunkWriteNotImplementedException)
-            {
-                chunkWriter.WriteBytes(skippableChunk.Data);
-            }
-        }
+        WriteSkippableChunkBody(skippableChunk, chunkWriter, rw);
 
         mainWriter.Write(0x534B4950);
         mainWriter.Write((uint)chunkWriter.BaseStream.Length);
     }
 
-    private async Task WriteSkippableChunkAsync(ISkippableChunk skippableChunk, GameBoxWriter mainWriter, GameBoxWriter chunkWriter, GameBoxReaderWriter rw, CancellationToken cancellationToken)
+    private void WriteSkippableChunkBody(ISkippableChunk skippableChunk, GameBoxWriter chunkWriter, GameBoxReaderWriter rw)
+    {
+        if (!skippableChunk.Discovered)
+        {
+            skippableChunk.Write(chunkWriter);
+            return;
+        }
+
+        var type = skippableChunk.GetType();
+
+        if (IsIgnorableChunk(type))
+        {
+            chunkWriter.WriteBytes(skippableChunk.Data);
+            return;
+        }
+
+        var ownIdState = HasChunkOwnIdState(type);
+
+        if (ownIdState)
+        {
+            chunkWriter.StartIdSubState();
+        }
+
+        try
+        {
+            skippableChunk.ReadWrite(this, rw);
+        }
+        catch (ChunkWriteNotImplementedException)
+        {
+            chunkWriter.WriteBytes(skippableChunk.Data);
+        }
+
+        if (ownIdState)
+        {
+            chunkWriter.EndIdSubState();
+        }
+    }
+
+    private bool HasChunkOwnIdState(Type type)
+    {
+        if (!NodeCacheManager.ChunkAttributesByType.TryGetValue(type, out var attributes))
+        {
+            return false;
+        }
+
+        foreach (var attribute in attributes)
+        {
+            if (attribute is ChunkWithOwnIdStateAttribute)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private async Task WriteSkippableChunkAsync(ISkippableChunk skippableChunk,
+                                                GameBoxWriter mainWriter,
+                                                GameBoxWriter chunkWriter,
+                                                GameBoxReaderWriter rw,
+                                                CancellationToken cancellationToken)
+    {
+        await WriteSkippableChunkBodyAsync(skippableChunk, chunkWriter, rw, cancellationToken);
+
+        mainWriter.Write(0x534B4950);
+        mainWriter.Write((uint)chunkWriter.BaseStream.Length);
+    }
+
+    private async Task WriteSkippableChunkBodyAsync(ISkippableChunk skippableChunk, GameBoxWriter chunkWriter, GameBoxReaderWriter rw, CancellationToken cancellationToken)
     {
         if (!skippableChunk.Discovered)
         {
             await skippableChunk.WriteAsync(chunkWriter, cancellationToken);
+            return;
         }
-        else if (IsIgnorableChunk(skippableChunk.GetType()))
+
+        var type = skippableChunk.GetType();
+
+        if (IsIgnorableChunk(type))
+        {
+            await chunkWriter.WriteBytesAsync(skippableChunk.Data, cancellationToken);
+            return;
+        }
+
+        var ownIdState = HasChunkOwnIdState(type);
+
+        if (ownIdState)
+        {
+            chunkWriter.StartIdSubState();
+        }
+
+        try
+        {
+            await WriteChunkWithReadWriteAsync(skippableChunk, rw, cancellationToken);
+        }
+        catch (ChunkWriteNotImplementedException)
         {
             await chunkWriter.WriteBytesAsync(skippableChunk.Data, cancellationToken);
         }
-        else
-        {
-            try
-            {
-                await WriteChunkWithReadWriteAsync(skippableChunk, rw, cancellationToken);
-            }
-            catch (ChunkWriteNotImplementedException)
-            {
-                await chunkWriter.WriteBytesAsync(skippableChunk.Data, cancellationToken);
-            }
-        }
 
-        mainWriter.Write(0x534B4950);
-        mainWriter.Write((uint)chunkWriter.BaseStream.Length);
+        if (ownIdState)
+        {
+            chunkWriter.EndIdSubState();
+        }
     }
 
     private void PrepareToWriteChunk(ILogger? logger, int counter, IReadableWritableChunk chunk)
@@ -1037,5 +1120,15 @@ public abstract class Node : IState
         if (NodeCacheManager.Mappings.TryGetValue(id, out uint newerClassID))
             return newerClassID;
         return id;
+    }
+
+    public void Dispose()
+    {
+        var stateGuid = ((IState)this).StateGuid;
+
+        if (stateGuid is not null)
+        {
+            StateManager.Shared.RemoveState(stateGuid.Value);
+        }
     }
 }

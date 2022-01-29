@@ -16,7 +16,7 @@ public partial class GameBoxReader : BinaryReader
     /// Constructs a binary reader specialized for GBX.
     /// </summary>
     /// <param name="input">The input stream.</param>
-    /// <param name="stateGuid">ID used to point to a state that stores node references and lookback strings. If null, <see cref="Node"/>, <see cref="Id"/>, or <see cref="Ident"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
+    /// <param name="stateGuid">ID used to point to a state that stores node references and lookback strings. If null, <see cref="Node"/>, Id, or <see cref="Ident"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
     /// <param name="asyncAction">Specialized executions during asynchronous reading.</param>
     /// <param name="logger">Logger.</param>
     public GameBoxReader(Stream input, Guid? stateGuid = null, GameBoxAsyncReadAction? asyncAction = null, ILogger? logger = null) : base(input, Encoding.UTF8, true)
@@ -113,7 +113,7 @@ public partial class GameBoxReader : BinaryReader
     /// <summary>
     /// First reads the <see cref="int"/> of the Id version, if not read yet, considering the information from state. Then reads an <see cref="int"/> (index) that holds the flags of the representing <see cref="string"/>. If the first 30 bits are 0, a fresh <see cref="string"/> is also read.
     /// </summary>
-    /// <returns>An <see cref="Id"/> which can be implicitly casted to <see cref="string"/>.</returns>
+    /// <returns>A string.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -199,7 +199,7 @@ public partial class GameBoxReader : BinaryReader
     }
 
     /// <summary>
-    /// Reads an <see cref="Id"/> using <see cref="ReadId"/> 3 times.
+    /// Reads an Id using <see cref="ReadId"/> 3 times.
     /// </summary>
     /// <returns>An <see cref="Ident"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>

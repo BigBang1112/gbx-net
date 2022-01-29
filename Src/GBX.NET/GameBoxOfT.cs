@@ -71,7 +71,7 @@ public class GameBox<T> : GameBox where T : Node
     /// <returns>A newly created chunk.</returns>
     public TChunk CreateHeaderChunk<TChunk>() where TChunk : Chunk, IHeaderChunk
     {
-        return Header.Chunks.Create<TChunk>();
+        return Node.HeaderChunks.Create<TChunk>();
     }
 
     /// <summary>
@@ -79,7 +79,7 @@ public class GameBox<T> : GameBox where T : Node
     /// </summary>
     public void RemoveAllHeaderChunks()
     {
-        Header.Chunks.Clear();
+        Node.HeaderChunks.Clear();
     }
 
     /// <summary>
@@ -89,7 +89,7 @@ public class GameBox<T> : GameBox where T : Node
     /// <returns>True, if the chunk was removed, otherwise false.</returns>
     public bool RemoveHeaderChunk<TChunk>() where TChunk : Chunk, IHeaderChunk
     {
-        return Header.Chunks.RemoveWhere(x => x.Id == typeof(TChunk).GetCustomAttribute<ChunkAttribute>()?.ID) > 0;
+        return Node.HeaderChunks.RemoveWhere(x => x.Id == typeof(TChunk).GetCustomAttribute<ChunkAttribute>()?.ID) > 0;
     }
 
     /// <summary>
@@ -357,6 +357,8 @@ public class GameBox<T> : GameBox where T : Node
             RefTable.Write(headerW);
 
         headerW.WriteBytes(ms.ToArray());
+
+        StateManager.Shared.RemoveState(stateGuid);
     }
 
     /// <summary>
