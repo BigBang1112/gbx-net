@@ -36,7 +36,7 @@ for (var i = 0; i < files.Length; i++)
 
     try
     {
-        var node = GameBox.ParseNode(fileName);
+        using var node = GameBox.ParseNode(fileName);
 
         if (node is null)
         {
@@ -58,3 +58,5 @@ for (var i = 0; i < files.Length; i++)
     Console.Write("Progress: {0}/{1}", i + 1, files.Length);
     Console.CursorLeft = 0;
 }
+
+Console.WriteLine("Complete!");

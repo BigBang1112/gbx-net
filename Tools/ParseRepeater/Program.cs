@@ -24,25 +24,28 @@ while (true)
 {
     try
     {
-        var gbx = GameBox.Parse(fileName, logger: logger);
+        using var gbx = GameBox.ParseNode(fileName, logger: logger);
     }
     catch (ChunkParseException ex)
     {
-        var splitClassName = ex.ClassName.Split("::");
-        var className = splitClassName[1];
-
-        var objs = new string[]
+        if (ex.ClassName != "unknown class")
         {
-            (ex.ChunkId & 0xFFF).ToString("X3"),
-            className,
-            ex.ChunkId.ToString("X8")
-        };
+            var splitClassName = ex.ClassName.Split("::");
+            var className = splitClassName[1];
 
-        Console.WriteLine();
-        Console.WriteLine();
-        Console.WriteLine("Possible chunk class structure:\n\n" + string.Format(chunkTxt, objs));
-        Console.WriteLine();
-        Console.WriteLine();
+            var objs = new string[]
+            {
+                (ex.ChunkId & 0xFFF).ToString("X3"),
+                className,
+                ex.ChunkId.ToString("X8")
+            };
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Possible chunk class structure:\n\n" + string.Format(chunkTxt, objs));
+            Console.WriteLine();
+            Console.WriteLine();
+        }
 
         logger.LogError(ex, "Exception during parse: ");
     }
