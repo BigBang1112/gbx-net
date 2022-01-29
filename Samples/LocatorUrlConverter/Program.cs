@@ -42,7 +42,7 @@ void ProcessGbx(string fileName)
 
     Directory.CreateDirectory(rootPath + "output");
 
-    node.Save(rootPath + "output/" + Path.GetFileName(map.GBX!.FileName));
+    node.Save(rootPath + "output/" + Path.GetFileName(map.GetGbx()!.FileName));
 }
 
 Dictionary<string, string?> UpdateLocatorList(Dictionary<string, string?> newDictionary)
@@ -80,5 +80,5 @@ void ProcessBlock(CGameCtnBlock? block, Dictionary<string, string?> dictionary)
     if (string.IsNullOrEmpty(newLocatorUrl))
         return;
 
-    block.Skin.PackDesc.LocatorUrl = new Uri(newLocatorUrl);
+    block.Skin.PackDesc = block.Skin.PackDesc with { LocatorUrl = new Uri(newLocatorUrl) };
 }

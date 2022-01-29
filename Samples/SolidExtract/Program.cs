@@ -173,7 +173,7 @@ void ProcessFile(string fileName)
             return;
 
         var materialName = Path.GetFileNameWithoutExtension(
-            Path.GetFileNameWithoutExtension(material.GBX!.FileName));
+            Path.GetFileNameWithoutExtension(material.GetGbx()!.FileName));
 
         faceWriter.WriteLine("usemtl " + materialName);
         mtlWriter.WriteLine("newmtl " + materialName);
@@ -194,10 +194,10 @@ void ProcessFile(string fileName)
         if (diffuse is null)
             return;
 
-        if (diffuse.GBX is null)
+        if (diffuse.GetGbx() is null)
             return;
 
-        var refTable = diffuse.GBX.RefTable;
+        var refTable = diffuse.GetGbx().RefTable;
 
         if (refTable is null)
             return;
@@ -216,7 +216,7 @@ void ProcessFile(string fileName)
 
         try
         {
-            var textureDirectory = Path.Combine(Path.GetDirectoryName(diffuse.GBX.FileName) ?? "",
+            var textureDirectory = Path.Combine(Path.GetDirectoryName(diffuse.GetGbx()!.FileName) ?? "",
                 refTable.GetRelativeFolderPathToFile(textureFile));
 
             var fullTextureFileName = Path.Combine(textureDirectory, textureFile.FileName)

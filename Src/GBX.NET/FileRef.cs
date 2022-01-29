@@ -11,22 +11,22 @@ public record FileRef
     /// <summary>
     /// Version of the file reference.
     /// </summary>
-    public byte Version { get; }
+    public byte Version { get; init; }
 
     /// <summary>
     /// File checksum.
     /// </summary>
-    public byte[]? Checksum { get; }
+    public byte[]? Checksum { get; init; }
 
     /// <summary>
     /// File relative to user folder (or Skins folder if <c><see cref="Version"/> &lt;= 1</c>).
     /// </summary>
-    public string? FilePath { get; }
+    public string? FilePath { get; init; }
 
     /// <summary>
     /// Url of the locator.
     /// </summary>
-    public Uri? LocatorUrl { get; }
+    public Uri? LocatorUrl { get; init; }
 
     /// <summary>
     /// Empty file reference version 3.
