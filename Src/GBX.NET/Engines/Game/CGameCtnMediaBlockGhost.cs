@@ -114,11 +114,29 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMedia
     [Chunk(0x030E5001)]
     public class Chunk030E5001 : Chunk<CGameCtnMediaBlockGhost>
     {
-        public override void ReadWrite(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw)
+        private static void ReadWriteBeforeGhost(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw)
         {
             rw.Single_s(ref n.start);
             rw.Single_s(ref n.end, n.start.GetValueOrDefault() + TimeSpan.FromSeconds(3));
+        }
+
+        public override void ReadWrite(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw)
+        {
+            ReadWriteBeforeGhost(n, rw);
             rw.NodeRef<CGameCtnGhost>(ref n.ghostModel!);
+            ReadWriteAfterGhost(n, rw);
+        }
+
+        public override async Task ReadWriteAsync(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            rw.Single_s(ref n.start);
+            rw.Single_s(ref n.end, n.start.GetValueOrDefault() + TimeSpan.FromSeconds(3));
+            n.ghostModel = (await rw.NodeRefAsync<CGameCtnGhost>(n.ghostModel!, cancellationToken))!;
+            rw.Single(ref n.startOffset);
+        }
+
+        private static void ReadWriteAfterGhost(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw)
+        {
             rw.Single(ref n.startOffset);
         }
     }
@@ -138,7 +156,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMedia
             set => version = value;
         }
 
-        public override void ReadWrite(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw)
+        private void ReadWriteBeforeGhost(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
 
@@ -151,8 +169,24 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMedia
                 rw.Single_s(ref n.start);
                 rw.Single_s(ref n.end, n.start.GetValueOrDefault() + TimeSpan.FromSeconds(3));
             }
+        }
 
+        public override void ReadWrite(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw)
+        {
+            ReadWriteBeforeGhost(n, rw);
             rw.NodeRef<CGameCtnGhost>(ref n.ghostModel!);
+            ReadWriteAfterGhost(n, rw);
+        }
+
+        public override async Task ReadWriteAsync(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            ReadWriteBeforeGhost(n, rw);
+            n.ghostModel = (await rw.NodeRefAsync<CGameCtnGhost>(n.ghostModel!, cancellationToken))!;
+            ReadWriteAfterGhost(n, rw);
+        }
+
+        private static void ReadWriteAfterGhost(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw)
+        {
             rw.Single(ref n.startOffset);
             rw.Boolean(ref n.noDamage);
             rw.Boolean(ref n.forceLight);
