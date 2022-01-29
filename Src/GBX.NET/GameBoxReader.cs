@@ -129,7 +129,10 @@ public partial class GameBoxReader : BinaryReader
         }
 
         var stateGuid = Settings.StateGuid.Value;
-        var idState = StateManager.Shared.GetIdState(stateGuid);
+
+        var idState = Settings.IdSubStateGuid is null
+            ? StateManager.Shared.GetIdState(stateGuid)
+            : StateManager.Shared.GetIdSubState(stateGuid, Settings.IdSubStateGuid.Value);
 
         if (!idState.Version.HasValue)
         {
@@ -509,6 +512,33 @@ public partial class GameBoxReader : BinaryReader
         return ReadString(Encoding.UTF8.GetByteCount(magic)) == magic;
     }
 
+    public void StartIdSubState()
+    {
+        if (Settings.StateGuid is null)
+        {
+            throw new PropertyNullException(nameof(Settings.StateGuid));
+        }
+
+        Settings.IdSubStateGuid = StateManager.Shared.CreateIdSubState(Settings.StateGuid.Value);
+    }
+
+    public void EndIdSubState()
+    {
+        if (Settings.IdSubStateGuid is null)
+        {
+            return;
+        }
+
+        if (Settings.StateGuid is null)
+        {
+            throw new PropertyNullException(nameof(Settings.StateGuid));
+        }
+
+        StateManager.Shared.RemoveIdSubState(Settings.StateGuid.Value, Settings.IdSubStateGuid.Value);
+
+        Settings.IdSubStateGuid = null;
+    }
+
     /// <summary>
     /// A generic read method of parameterless types for the cost of performance loss. Prefer using the pre-defined data read methods.
     /// </summary>
@@ -543,4 +573,11 @@ public partial class GameBoxReader : BinaryReader
 
         _ => throw new NotSupportedException($"{typeof(T)} is not supported for Read<T>."),
     };
+
+    protected override void Dispose(bool disposing)
+    {
+        EndIdSubState();
+
+        base.Dispose(disposing);
+    }
 }

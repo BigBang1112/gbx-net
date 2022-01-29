@@ -39,7 +39,7 @@ public class CGameCtnBlock : CMwNod, INodeDependant<CGameCtnChallenge>
     [NodeMember]
     public string Name
     {
-        get => blockModel.ID;
+        get => blockModel.Id;
         set
         {
             if (blockModel is null)

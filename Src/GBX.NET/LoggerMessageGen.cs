@@ -11,8 +11,8 @@ internal static partial class LoggerMessageGen
     [LoggerMessage(Level = LogLevel.Debug, Message = "0x{chunkHex} (???%)", EventId = 3)]
     public static partial void LogChunkProgressSeekless(this ILogger logger, string chunkHex);
 
-    [LoggerMessage(Level = LogLevel.Debug, Message = "Unknown skippable chunk: 0x{chunkHex}", EventId = 4)]
-    public static partial void LogChunkUnknownSkippable(this ILogger logger, string chunkHex);
+    [LoggerMessage(Level = LogLevel.Debug, Message = "0x{chunkHex} [unknown] ({size} bytes)", EventId = 4)]
+    public static partial void LogChunkUnknownSkippable(this ILogger logger, string chunkHex, int size);
 
     [LoggerMessage(Level = LogLevel.Debug, Message = "Unexpected end of the stream: {position}/{length}", EventId = 5)]
     public static partial void LogUnexpectedEndOfStream(this ILogger logger, long position, long length);

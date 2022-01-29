@@ -547,7 +547,7 @@ public abstract class Node : IState
         var chunkData = r.ReadBytes();
 
         return reflected
-            ? CreateKnownSkippableChunk(node, chunkId, chunkData)
+            ? CreateKnownSkippableChunk(node, chunkId, chunkData, r.Settings, logger)
             : CreateUnknownSkippableChunk(node, nodeType, chunkId, chunkData, logger);
     }
 
@@ -557,7 +557,7 @@ public abstract class Node : IState
                                                      byte[] chunkData,
                                                      ILogger? logger)
     {
-        logger?.LogChunkUnknownSkippable(chunkId.ToString("X"));
+        logger?.LogChunkUnknownSkippable(chunkId.ToString("X8"), chunkData.Length);
 
         var chunk = (Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(nodeType), new object?[] { node, chunkData, chunkId })!;
 
@@ -570,7 +570,7 @@ public abstract class Node : IState
         return chunk;
     }
 
-    private static Chunk CreateKnownSkippableChunk(Node node, uint chunkId, byte[] chunkData)
+    private static Chunk CreateKnownSkippableChunk(Node node, uint chunkId, byte[] chunkData, GameBoxReaderSettings readerSettings, ILogger? logger)
     {
         TryGetChunkAttributes(chunkId,
             out ChunkAttribute? chunkAttribute,
@@ -605,7 +605,12 @@ public abstract class Node : IState
 
             if (chunkAttribute.ProcessSync)
             {
-                skippableChunk.Discover();
+                using var ms = new MemoryStream(chunkData);
+                using var r = new GameBoxReader(ms, readerSettings, logger);
+                var rw = new GameBoxReaderWriter(r);
+
+                skippableChunk.ReadWrite(node, rw);
+                skippableChunk.Discovered = true;
             }
         }
 

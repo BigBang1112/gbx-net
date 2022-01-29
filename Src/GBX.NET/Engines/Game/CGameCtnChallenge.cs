@@ -416,7 +416,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [NodeMember]
     public string MapUid
     {
-        get => mapInfo.ID;
+        get => mapInfo.Id;
         set
         {
             mapInfo = new Ident(value, mapInfo.Collection, mapInfo.Author);
@@ -582,7 +582,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public Collection Collection
     {
         get => mapInfo.Collection;
-        set => mapInfo = new Ident(mapInfo.ID, value, mapInfo.Author);
+        set => mapInfo = new Ident(mapInfo.Id, value, mapInfo.Author);
     }
 
     /// <summary>
@@ -1370,7 +1370,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         if (Blocks is null)
             throw new MemberNullException(nameof(Blocks));
 
-        var block = new CGameCtnBlock(blockModel.ID, dir, coord);
+        var block = new CGameCtnBlock(blockModel.Id, dir, coord);
 
         block.CreateChunk<CGameCtnBlock.Chunk03057002>();
 
@@ -2480,6 +2480,16 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             rw.Boolean(ref n.needUnlock);
             rw.Ident(ref n.decoration);
         }
+
+        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            rw.Ident(ref n.mapInfo!);
+            rw.Int3(ref n.size);
+            rw.Int32(ref version);
+            n.blocks = (await rw.ListNodeAsync<CGameCtnBlock>(n.blocks!, cancellationToken))!;
+            rw.Boolean(ref n.needUnlock);
+            rw.Ident(ref n.decoration);
+        }
     }
 
     #endregion
@@ -2496,6 +2506,13 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             rw.NodeRef<CGameCtnCollectorList>(ref n.blockStock);
             rw.NodeRef<CGameCtnChallengeParameters>(ref n.challengeParameters);
+            rw.EnumInt32<MapKind>(ref n.kind);
+        }
+
+        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            n.blockStock = await rw.NodeRefAsync(n.blockStock, cancellationToken);
+            n.challengeParameters = await rw.NodeRefAsync(n.challengeParameters, cancellationToken);
             rw.EnumInt32<MapKind>(ref n.kind);
         }
     }
@@ -2738,10 +2755,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             NeedUnlock = r.ReadBoolean();
 
             if (!is013)
+            {
                 version = r.ReadInt32();
+            }
 
             if (version > 6)
+            {
                 throw new ChunkVersionNotSupportedException(version);
+            }
 
             var nbBlocks = r.ReadInt32(); // It's maybe slower but better for the program to determine the count from the list
 
@@ -2756,7 +2777,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 var coord = (Int3)r.ReadByte3();
 
                 if (version >= 6)
+                {
                     coord -= (1, 0, 1);
+                }
 
                 var flags = version switch
                 {
@@ -2783,7 +2806,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 CGameWaypointSpecialProperty? parameters = null;
 
                 if (CGameCtnBlock.IsWaypointBlock(flags))
+                {
                     parameters = r.ReadNodeRef<CGameWaypointSpecialProperty>();
+                }
 
                 if ((flags & (1 << 18)) != 0)
                 {
@@ -2796,7 +2821,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 }
 
                 if (CGameCtnBlock.IsFreeBlock(flags))
+                {
                     coord -= (0, 1, 0);
+                }
 
                 var block = new CGameCtnBlock(blockName, dir, coord, flags, author, skin, parameters);
                 ((INodeDependant<CGameCtnChallenge>)block).DependingNode = n;
@@ -2879,9 +2906,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
         {
-            n.clipIntro = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipIntro);
-            n.clipGroupInGame = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupInGame);
-            n.clipGroupEndRace = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupEndRace);
+            n.clipIntro = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipIntro, cancellationToken);
+            n.clipGroupInGame = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupInGame, cancellationToken);
+            n.clipGroupEndRace = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupEndRace, cancellationToken);
         }
     }
 
@@ -3308,7 +3335,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CGameCtnChallenge 0x040 skippable chunk (items)
     /// </summary>
     [Chunk(0x03043040, "items")]
-    [ResetIdState]
+    [ChunkWithOwnIdState]
     public class Chunk03043040 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private int version = 4;
@@ -3414,7 +3441,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CGameCtnChallenge 0x043 skippable chunk (generalogies)
     /// </summary>
     [Chunk(0x03043043, "generalogies")]
-    [ResetIdState]
+    [ChunkWithOwnIdState]
     public class Chunk03043043 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         /// <summary>
@@ -3505,6 +3532,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CGameCtnChallenge 0x048 skippable chunk (baked blocks)
     /// </summary>
     [Chunk(0x03043048, "baked blocks")]
+    [ChunkWithOwnIdState]
     public class Chunk03043048 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private int version;
@@ -3594,14 +3622,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             rw.Int32(ref version);
 
-            n.clipIntro = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipIntro);
-            n.clipPodium = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipPodium);
-            n.clipGroupInGame = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupInGame);
-            n.clipGroupEndRace = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupEndRace);
+            n.clipIntro = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipIntro, cancellationToken);
+            n.clipPodium = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipPodium, cancellationToken);
+            n.clipGroupInGame = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupInGame, cancellationToken);
+            n.clipGroupEndRace = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupEndRace, cancellationToken);
 
             if (version >= 2)
             {
-                n.clipAmbiance = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipAmbiance);
+                n.clipAmbiance = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipAmbiance, cancellationToken);
                 rw.Int3(ref triggerSize);
             }
         }
@@ -3776,7 +3804,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CGameCtnChallenge 0x054 skippable chunk (embedded objects)
     /// </summary>
     [Chunk(0x03043054, "embedded objects")]
-    [ResetIdState]
+    [ChunkWithOwnIdState]
     public class Chunk03043054 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         public int U01;

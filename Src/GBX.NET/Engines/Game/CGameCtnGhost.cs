@@ -383,7 +383,7 @@ public partial class CGameCtnGhost : CGameGhost
     /// <summary>
     /// CGameCtnGhost 0x000 skippable chunk (basic)
     /// </summary>
-    [Chunk(0x03092000, true, "basic")]
+    [Chunk(0x03092000, processSync: true, "basic")]
     public class Chunk03092000 : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         private int version;

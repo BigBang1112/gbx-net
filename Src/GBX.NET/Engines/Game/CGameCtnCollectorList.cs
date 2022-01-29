@@ -71,7 +71,7 @@ public class CGameCtnCollectorList : CMwNod
 
         public override string ToString()
         {
-            return $"{Count} {Ident.ID}";
+            return $"{Count} {Ident.Id}";
         }
     }
 

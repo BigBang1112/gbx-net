@@ -3,12 +3,14 @@ using System.Reflection;
 
 namespace GBX.NET;
 
-public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
+public class SkippableChunk<T> : Chunk<T>, ISkippableChunk, IState where T : Node
 {
     private readonly uint? id;
 
     public bool Discovered { get; set; }
     public byte[] Data { get; set; }
+
+    Guid? IState.StateGuid { get; set; }
 
     protected SkippableChunk()
     {
@@ -32,29 +34,49 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
 
     public void Discover()
     {
-        if (Discovered) return;
+        if (Discovered)
+        {
+            return;
+        }
+
         Discovered = true;
+
+        var stateGuid = ((IState)Node).StateGuid.GetValueOrDefault();
+        var hasOwnIdState = false;
 
         if (NodeCacheManager.ChunkAttributesByType.TryGetValue(GetType(), out IEnumerable<Attribute>? chunkAttributes))
         {
-            var ignoreChunkAttribute = chunkAttributes.FirstOrDefault(x => x is IgnoreChunkAttribute);
-            if (ignoreChunkAttribute is not null)
-                return;
+            foreach (var attribute in chunkAttributes)
+            {
+                switch (attribute)
+                {
+                    case IgnoreChunkAttribute:
+                        return;
+                    case ChunkWithOwnIdStateAttribute:
+                        hasOwnIdState = true;
+                        break;
+                }
+            }
         }
 
         using var ms = new MemoryStream(Data);
-        using var gbxr = new GameBoxReader(ms, ((IState)Node).StateGuid);
-        var gbxrw = new GameBoxReaderWriter(gbxr);
+        using var r = new GameBoxReader(ms, stateGuid);
+        var rw = new GameBoxReaderWriter(r);
+
+        if (hasOwnIdState)
+        {
+            r.StartIdSubState();
+        }
 
         try
         {
-            ReadWrite(Node, gbxrw);
+            ReadWrite(Node, rw);
         }
         catch (ChunkReadNotImplementedException)
         {
             try
             {
-                Read(Node, gbxr);
+                Read(Node, r);
             }
             catch (ChunkReadNotImplementedException e)
             {

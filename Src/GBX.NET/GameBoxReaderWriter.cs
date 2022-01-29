@@ -2089,10 +2089,10 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public async Task<IList<T?>?> ListNodeAsync<T>(IList<T?>? list = default) where T : Node
+    public async Task<IList<T?>?> ListNodeAsync<T>(IList<T?>? list = default, CancellationToken cancellationToken = default) where T : Node
     {
         return await ListAsync(list,
-            async r => await r.ReadNodeRefAsync<T>(),
+            async r => await r.ReadNodeRefAsync<T>(cancellationToken),
             (x, w) => w.Write(x));
     }
 

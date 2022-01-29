@@ -240,6 +240,13 @@ public class GameBox<T> : GameBox where T : Node
             return false;
         }
 
+        var stateGuid = reader.Settings.StateGuid;
+
+        if (stateGuid is not null)
+        {
+            StateManager.Shared.ResetIdState(stateGuid.Value);
+        }
+
         logger?.LogDebug("Reading the body...");
 
         switch (Header.CompressionOfBody)

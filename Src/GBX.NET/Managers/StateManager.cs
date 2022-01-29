@@ -48,6 +48,28 @@ public partial class StateManager
         return IdStates[stateGuid];
     }
 
+    public Guid CreateIdSubState(Guid stateGuid)
+    {
+        var guid = Guid.NewGuid();
+        IdStates[stateGuid].SubStates[guid] = new IdState();
+        return guid;
+    }
+
+    public IdState GetIdSubState(Guid stateGuid, Guid subStateGuid)
+    {
+        return IdStates[stateGuid].SubStates[subStateGuid];
+    }
+
+    public bool TryGetIdSubState(Guid stateGuid, Guid subStateGuid, out IdState? value)
+    {
+        return IdStates[stateGuid].SubStates.TryGetValue(subStateGuid, out value);
+    }
+
+    public bool RemoveIdSubState(Guid stateGuid, Guid subStateGuid)
+    {
+        return IdStates[stateGuid].SubStates.TryRemove(subStateGuid, out _);
+    }
+
     public Node GetLastNode(Guid stateGuid)
     {
         return AuxilaryNodeStates[stateGuid].Last().Value;

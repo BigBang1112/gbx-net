@@ -27,7 +27,7 @@ public class CGameCtnCollection : CMwNod
     #region 0x001 chunk
 
     [Chunk(0x03033001)]
-    [ResetIdState]
+    [ChunkWithOwnIdState]
     public class Chunk03033001 : Chunk<CGameCtnCollection>
     {
         public int Version { get; set; }
