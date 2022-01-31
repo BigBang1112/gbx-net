@@ -15,13 +15,13 @@ public partial class StateManager
     /// <summary>
     /// Long-term state. Needs to be disposed with <see cref="IDisposable.Dispose"/> on the <see cref="GameBox"/>.
     /// </summary>
-    public ConcurrentDictionary<Guid, GameBoxRefTable?> ReferenceTableStates { get; }
+    public ConcurrentDictionary<Guid, GameBox.RefTable?> ReferenceTableStates { get; }
 
     public StateManager()
     {
         AuxilaryNodeStates = new ConcurrentDictionary<Guid, SortedDictionary<int, Node>>();
         IdStates = new ConcurrentDictionary<Guid, IdState>();
-        ReferenceTableStates = new ConcurrentDictionary<Guid, GameBoxRefTable?>();
+        ReferenceTableStates = new ConcurrentDictionary<Guid, GameBox.RefTable?>();
     }
 
     public Guid CreateState()
@@ -129,9 +129,15 @@ public partial class StateManager
         return IdStates[stateGuid].Strings.IndexOf(str);
     }
 
-    public GameBoxRefTable GetReferenceTable(Guid stateGuid)
+    public GameBox.RefTable GetReferenceTable(Guid stateGuid)
     {
         return ReferenceTableStates[stateGuid]!;
+    }
+
+    public static T? GetNodeFromReferenceTable<T>(IStateRefTable state, T? referencingNode, int? nodeIndex) where T : Node
+    {
+        return Shared.GetReferenceTable(state.StateGuid.GetValueOrDefault())?
+            .GetNode(referencingNode, nodeIndex, state.FileName) as T;
     }
 
     public static readonly StateManager Shared = new();

@@ -220,19 +220,34 @@ public partial class GameBox
     {
         var gbx = ParseHeader(stream, progress, logger: logger);
 
+        var header = gbx.header;
+        var node = gbx.Node;
+
         // When the node type isn't recognized, there's also no node instance
         // Node instance is required for reading the body
-        if (gbx.Node is null)
+        if (node is null)
         {
             return gbx;
         }
 
-        var stateGuid = ((IState)gbx.Node).StateGuid;
+        Guid stateGuid;
+
+        if (header.UserData.Length == 0)
+        {
+            stateGuid = StateManager.Shared.CreateState();
+            ((IState)node).StateGuid = stateGuid;
+        }
+        else
+        {
+            stateGuid = ((IState)node).StateGuid.GetValueOrDefault();
+        }
 
         using var bodyR = new GameBoxReader(stream, stateGuid, logger: logger);
 
         // Body resets Id (lookback string) list
-        gbx.ReadBody(bodyR, progress, readUncompressedBodyDirectly, logger);
+        Body.Read(node, header, bodyR, progress, readUncompressedBodyDirectly, logger);
+        
+        gbx.IsMainNodeParsed = true;
 
         return gbx;
     }
@@ -497,19 +512,21 @@ public partial class GameBox
     {
         var gbx = ParseHeader(stream, logger: logger);
 
+        var node = gbx.Node;
+
         // When the node type isn't recognized, there's also no node instance
         // Node instance is required for reading the body
-        if (gbx.Node is null)
+        if (node is null)
         {
             return gbx;
         }
 
-        var stateGuid = ((IState)gbx.Node).StateGuid;
+        var stateGuid = ((IState)node).StateGuid;
 
         using var bodyR = new GameBoxReader(stream, stateGuid, logger: logger);
 
         // Body resets Id (lookback string) list
-        await gbx.ReadBodyAsync(bodyR, readUncompressedBodyDirectly, logger, asyncAction, cancellationToken);
+        await Body.ReadAsync(node, gbx.header, bodyR, readUncompressedBodyDirectly, logger, asyncAction, cancellationToken);
 
         return gbx;
     }

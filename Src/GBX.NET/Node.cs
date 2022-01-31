@@ -9,11 +9,10 @@ namespace GBX.NET;
 /// The skeleton of the Gbx object and representation of the <see cref="CMwNod"/>.
 /// </summary>
 /// <remarks>You shouldn't inherit this class unless <see cref="CMwNod"/> cannot be inherited instead.</remarks>
-public abstract class Node : IState, IDisposable
+public abstract class Node : IStateRefTable, IDisposable
 {
     private uint? id;
     private ChunkSet? chunks;
-    private ChunkSet? headerChunks;
     private GameBox? gbx;
 
     public uint Id => GetStoredId();
@@ -30,6 +29,7 @@ public abstract class Node : IState, IDisposable
     public ChunkSet? HeaderChunks { get; internal set; }
 
     Guid? IState.StateGuid { get; set; }
+    string? IStateRefTable.FileName { get; set; }
 
     protected Node()
     {
@@ -76,7 +76,7 @@ public abstract class Node : IState, IDisposable
         if (gbx is null)
             return nodeAtTheMoment;
 
-        var refTable = gbx.RefTable;
+        var refTable = StateManager.Shared.GetReferenceTable(((IState)this).StateGuid.GetValueOrDefault());
 
         if (refTable is null)
             return nodeAtTheMoment;
@@ -1105,9 +1105,9 @@ public abstract class Node : IState, IDisposable
 
     public static uint RemapToLatest(uint id)
     {
-        while (NodeCacheManager.Mappings.TryGetValue(id, out id))
+        while (NodeCacheManager.Mappings.TryGetValue(id, out var newId))
         {
-
+            id = newId;
         }
 
         return id;

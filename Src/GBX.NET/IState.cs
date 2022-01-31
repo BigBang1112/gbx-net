@@ -2,5 +2,5 @@
 
 public interface IState
 {
-    Guid? StateGuid { get; set; }
+    Guid? StateGuid { get; internal set; }
 }

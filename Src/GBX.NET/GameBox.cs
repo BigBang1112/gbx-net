@@ -27,7 +27,8 @@ public partial class GameBox : IDisposable
 
     public Node? Node { get; private set; }
     public Body? RawBody { get; private set; }
-    public bool IsBodyParsed { get; private set; }
+    public bool IsMainNodeParsed { get; private set; }
+    public GameBoxBodyDebugger? Debugger { get; private set; }
 
     /// <summary>
     /// ID of the node.
@@ -109,21 +110,25 @@ public partial class GameBox : IDisposable
         using var ms = new MemoryStream();
         using var bodyW = new GameBoxWriter(ms, stateGuid, remap, logger: logger);
 
-        WriteBody(bodyW, logger);
+        (RawBody ?? new Body()).Write(this, bodyW, logger);
 
         logger?.LogDebug("Writing the header...");
 
         StateManager.Shared.ResetIdState(stateGuid);
 
         using var headerW = new GameBoxWriter(stream, stateGuid, remap, logger: logger);
-        Header.Write(headerW, StateManager.Shared.GetNodeCount(stateGuid) + 1, logger);
+        header.Write(Node, headerW, StateManager.Shared.GetNodeCount(stateGuid) + 1, logger);
 
         logger?.LogDebug("Writing the reference table...");
 
-        if (RefTable is null)
+        if (refTable is null)
+        {
             headerW.Write(0);
+        }
         else
-            RefTable.Write(headerW);
+        {
+            refTable.Write(header, headerW);
+        }
 
         headerW.WriteBytes(ms.ToArray());
 
@@ -143,21 +148,21 @@ public partial class GameBox : IDisposable
         using var ms = new MemoryStream();
         using var bodyW = new GameBoxWriter(ms, stateGuid, remap, logger: logger);
 
-        await WriteBodyAsync(bodyW, logger, cancellationToken);
+        await (RawBody ?? new Body()).WriteAsync(this, bodyW, logger, cancellationToken);
 
         logger?.LogDebug("Writing the header...");
 
         StateManager.Shared.ResetIdState(stateGuid);
 
         using var headerW = new GameBoxWriter(stream, stateGuid, remap, logger: logger);
-        Header.Write(headerW, StateManager.Shared.GetNodeCount(stateGuid) + 1, logger);
+        header.Write(Node, headerW, StateManager.Shared.GetNodeCount(stateGuid) + 1, logger);
 
         logger?.LogDebug("Writing the reference table...");
 
-        if (RefTable is null)
+        if (refTable is null)
             headerW.Write(0);
         else
-            RefTable.Write(headerW);
+            refTable.Write(header, headerW);
 
         headerW.WriteBytes(ms.ToArray());
 

@@ -70,7 +70,7 @@ public class CPlugMaterial : CPlug
 
                 var shader1 = r.ReadNodeRef<CPlugShader>();
 
-                return new SDeviceMat(n.GetGbx(), shader1)
+                return new SDeviceMat(n, shader1)
                 {
                     U01 = u01,
                     U02 = u02,
@@ -114,7 +114,7 @@ public class CPlugMaterial : CPlug
                 _ = r.ReadNodeRef<CPlugShader>(out int shader2Index);
                 _ = r.ReadNodeRef<CPlugShader>(out int shader3Index);
 
-                return new SDeviceMat(n.GetGbx(), shader1Index, shader2Index, shader3Index)
+                return new SDeviceMat(n, shader1Index, shader2Index, shader3Index)
                 {
                     U01 = u01,
                     U02 = u02,
@@ -137,12 +137,14 @@ public class CPlugMaterial : CPlug
 
     public class SDeviceMat
     {
+        private IStateRefTable state;
+
         private CPlugShader? shader1;
-        private int? shader1Index;
+        private readonly int? shader1Index;
         private CPlugShader? shader2;
-        private int? shader2Index;
+        private readonly int? shader2Index;
         private CPlugShader? shader3;
-        private int? shader3Index;
+        private readonly int? shader3Index;
 
         public GameBox? Gbx { get; }
 
@@ -152,33 +154,31 @@ public class CPlugMaterial : CPlug
 
         public CPlugShader? Shader1
         {
-            get => shader1 = Gbx?.RefTable?.GetNode(shader1, shader1Index, Gbx.FileName) as CPlugShader;
+            get => shader1 = StateManager.GetNodeFromReferenceTable(state, shader1, shader1Index);
             set => shader1 = value;
         }
 
         public CPlugShader? Shader2
         {
-            get => shader2 = Gbx?.RefTable?.GetNode(shader2, shader2Index, Gbx.FileName) as CPlugShader;
+            get => shader2 = StateManager.GetNodeFromReferenceTable(state, shader2, shader2Index);
             set => shader2 = value;
         }
 
         public CPlugShader? Shader3
         {
-            get => shader3 = Gbx?.RefTable?.GetNode(shader3, shader3Index, Gbx.FileName) as CPlugShader;
+            get => shader3 = StateManager.GetNodeFromReferenceTable(state, shader3, shader3Index);
             set => shader3 = value;
         }
-
-        public SDeviceMat(GameBox? gbx, CPlugShader? shader1)
+        
+        public SDeviceMat(IStateRefTable state, CPlugShader? shader1)
         {
-            Gbx = gbx;
-
+            this.state = state;
             this.shader1 = shader1;
         }
 
-        public SDeviceMat(GameBox? gbx, int shader1Index, int shader2Index, int shader3Index)
+        public SDeviceMat(IStateRefTable state, int shader1Index, int shader2Index, int shader3Index)
         {
-            Gbx = gbx;
-
+            this.state = state;
             this.shader1Index = shader1Index;
             this.shader2Index = shader2Index;
             this.shader3Index = shader3Index;

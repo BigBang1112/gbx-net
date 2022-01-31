@@ -22,6 +22,11 @@ public class GameBox<T> : GameBox where T : Node
 
     }
 
+    public GameBox(Header header, RefTable? refTable, string? fileName = null) : base(header, refTable, fileName)
+    {
+        
+    }
+
     /// <summary>
     /// Creates a header chunk based on the attributes from <typeparamref name="TChunk"/>.
     /// </summary>

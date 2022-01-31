@@ -4,11 +4,11 @@ public partial class GameBox
 {
     public class Header
     {
-        public short Version { get; init; } = 6;
+        public short Version { get; init; }
         public GameBoxFormat Format { get; init; }
-        public GameBoxCompression CompressionOfRefTable { get; init; } = GameBoxCompression.Uncompressed;
-        public GameBoxCompression CompressionOfBody { get; init; } = GameBoxCompression.Compressed;
-        public char? UnknownByte { get; init; } = 'R';
+        public GameBoxCompression CompressionOfRefTable { get; init; }
+        public GameBoxCompression CompressionOfBody { get; init; }
+        public char? UnknownByte { get; init; }
         public uint Id { get; init; }
         public byte[] UserData { get; init; }
         public int NumNodes { get; init; }
@@ -223,20 +223,6 @@ public partial class GameBox
         internal static void ProcessUserData(Node node, GameBoxReader r, ILogger? logger)
         {
             var chunkList = GetChunkList(r);
-
-            if (logger?.IsEnabled(LogLevel.Debug) == true)
-            {
-                logger?.LogDebug("Header data chunk list:");
-
-                foreach (var c in chunkList)
-                {
-                    if (c.Value.IsHeavy)
-                        logger?.LogDebug("- 0x{classId} | {size} B (Heavy)", c.Key.ToString("X8"), c.Value.Size);
-                    else
-                        logger?.LogDebug("| 0x{classId} | {size} B", c.Key.ToString("X8"), c.Value.Size);
-                }
-            }
-
             var chunks = ProcessChunks(node, r, logger, chunkList);
 
             node.HeaderChunks = new ChunkSet(node, chunks);
@@ -306,7 +292,6 @@ public partial class GameBox
             var headerChunk = NodeCacheManager.HeaderChunkConstructors[chunkId]();
             ((Chunk)headerChunk).Node = node; //
             headerChunk.Data = chunkData;
-            headerChunk.Discovered = true;
             headerChunk.IsHeavy = isHeavy;
 
             if (chunkData.Length > 0)
@@ -317,6 +302,8 @@ public partial class GameBox
 
                 headerChunk.ReadWrite(node, rw);
             }
+
+            headerChunk.Discovered = true;
 
             return (Chunk)headerChunk; //
         }

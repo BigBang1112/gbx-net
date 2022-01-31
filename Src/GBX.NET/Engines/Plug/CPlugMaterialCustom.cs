@@ -36,7 +36,7 @@ public class CPlugMaterialCustom : CPlug
 
                 _ = r.ReadNodeRef<CPlugBitmap>(out int bitmapIndex);
 
-                return new SBitmap(n.GetGbx(), name, u01, bitmapIndex);
+                return new SBitmap(n, name, u01, bitmapIndex);
             });
         }
     }
@@ -107,26 +107,25 @@ public class CPlugMaterialCustom : CPlug
 
     public class SBitmap
     {
+        private IStateRefTable state;
         private CPlugBitmap? bitmap;
         private int bitmapIndex;
-
-        public GameBox? Gbx { get; }
 
         public string Name { get; set; }
         public int U01 { get; set; }
 
         public CPlugBitmap? Bitmap
         {
-            get => bitmap = Gbx?.RefTable?.GetNode(bitmap, bitmapIndex, Gbx.FileName) as CPlugBitmap;
+            get => bitmap = StateManager.GetNodeFromReferenceTable(state, bitmap, bitmapIndex);
             set => bitmap = value;
         }
 
-        public SBitmap(GameBox? gbx, string name, int u01, int bitmapIndex)
+        public SBitmap(IStateRefTable state, string name, int u01, int bitmapIndex)
         {
-            Gbx = gbx;
             Name = name;
             U01 = u01;
-            
+
+            this.state = state;
             this.bitmapIndex = bitmapIndex;
         }
 
