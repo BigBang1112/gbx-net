@@ -8,7 +8,7 @@ namespace GBX.NET;
 /// <summary>
 /// The skeleton of the Gbx object and representation of the <see cref="CMwNod"/>.
 /// </summary>
-/// <remarks>You shouldn't inherit this class unless <see cref="CMwNod"/> cannot be inherited instead, at all costs.</remarks>
+/// <remarks>You shouldn't inherit this class unless <see cref="CMwNod"/> cannot be inherited instead.</remarks>
 public abstract class Node : IState, IDisposable
 {
     private uint? id;
@@ -27,14 +27,7 @@ public abstract class Node : IState, IDisposable
         }
     }
 
-    public ChunkSet HeaderChunks
-    {
-        get
-        {
-            headerChunks ??= new ChunkSet(this); // Maybe improve this
-            return headerChunks;
-        }
-    }
+    public ChunkSet? HeaderChunks { get; internal set; }
 
     Guid? IState.StateGuid { get; set; }
 
@@ -129,7 +122,7 @@ public abstract class Node : IState, IDisposable
             return;
         }
 
-        classId = Remap(classId.Value);
+        classId = RemapToLatest(classId.Value);
 
         var id = classId.Value;
 
@@ -1052,43 +1045,23 @@ public abstract class Node : IState, IDisposable
     }
 
     /// <summary>
-    /// Makes a <see cref="GameBox"/> from this node. NOTE: Non-generic <see cref="GameBox"/> doesn't have a Save method.
+    /// Wraps this node into <see cref="GameBox"/> object.
     /// </summary>
-    /// <param name="headerInfo"></param>
-    /// <returns></returns>
-    public GameBox ToGBX(GameBoxHeaderInfo headerInfo)
+    /// <param name="nonGeneric">If to instantiate a <see cref="GameBox"/> object instead of the generic <see cref="GameBox{T}"/>, where comparing of the node type has to be done on <see cref="GameBox.Node"/> level, but the method executes faster.</param>
+    /// <returns>A <see cref="GameBox"/> or <see cref="GameBox{T}"/> depending on the <paramref name="nonGeneric"/> parameter.</returns>
+    public GameBox ToGbx(bool nonGeneric = false) // TODO: Unit test this
     {
-        return (GameBox)Activator.CreateInstance(typeof(GameBox<>).MakeGenericType(GetType()), this, headerInfo)!;
-    }
-
-    /// <summary>
-    /// Makes a <see cref="GameBox"/> from this node. You can explicitly cast it to <see cref="GameBox{T}"/> depending on the <see cref="Node"/>. NOTE: Non-generic <see cref="GameBox"/> doesn't have a Save method.
-    /// </summary>
-    /// <returns></returns>
-    public GameBox ToGbx()
-    {
-        return (GameBox)Activator.CreateInstance(typeof(GameBox<>).MakeGenericType(GetType()), this)!;
-    }
-
-    private void Save(Type[] types, object?[] parameters)
-    {
-        var type = GetType();
-        var gbxType = gbx?.GetType();
-        var gbxOfType = typeof(GameBox<>).MakeGenericType(type);
-
-        GameBox gbxx;
-
-        if (gbx is not null && gbxOfType == gbxType)
+        if (nonGeneric)
         {
-            gbxx = gbx;
-        }
-        else
-        {
-            gbxx = (GameBox)Activator.CreateInstance(gbxOfType, this, null)!;
-            gbxx.Body!.IsParsed = true;
+            return new GameBox(this);
         }
 
-        _ = gbxOfType.GetMethod("Save", types)!.Invoke(gbxx, parameters);
+        if (Activator.CreateInstance(typeof(GameBox<>).MakeGenericType(GetType()), this) is not GameBox gbx)
+        {
+            throw new ThisShouldNotHappenException();
+        }
+
+        return gbx;
     }
 
     /// <summary>
@@ -1097,10 +1070,17 @@ public abstract class Node : IState, IDisposable
     /// <param name="fileName">Relative or absolute file path. Null will pick the <see cref="GameBox.FileName"/> value from <see cref="GBX"/> object instead.</param>
     /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
     /// <param name="logger">Logger.</param>
-    /// <exception cref="NotSupportedException"/>
-    public void Save(string? fileName, IDRemap remap = default, ILogger? logger = null)
+    public void Save(string? fileName = default, IDRemap remap = default, ILogger? logger = null)
     {
-        Save(new Type[] { typeof(string), typeof(IDRemap), typeof(ILogger) }, new object?[] { fileName, remap, logger });
+        var gbx = GetGbx();
+
+        if (gbx is null)
+        {
+            ToGbx(nonGeneric: true).Save(fileName, remap, logger);
+            return;
+        }
+
+        gbx.Save(fileName, remap, logger);
     }
 
     /// <summary>
@@ -1112,13 +1092,24 @@ public abstract class Node : IState, IDisposable
     /// <exception cref="NotSupportedException"/>
     public void Save(Stream stream, IDRemap remap = default, ILogger? logger = null)
     {
-        Save(new Type[] { typeof(Stream), typeof(IDRemap), typeof(ILogger) }, new object?[] { stream, remap, logger });
+        var gbx = GetGbx();
+
+        if (gbx is null)
+        {
+            ToGbx(nonGeneric: true).Save(stream, remap, logger);
+            return;
+        }
+
+        gbx.Save(stream, remap, logger);
     }
 
-    internal static uint Remap(uint id)
+    public static uint RemapToLatest(uint id)
     {
-        if (NodeCacheManager.Mappings.TryGetValue(id, out uint newerClassID))
-            return newerClassID;
+        while (NodeCacheManager.Mappings.TryGetValue(id, out id))
+        {
+
+        }
+
         return id;
     }
 

@@ -13,9 +13,11 @@ public class HeaderChunk<T> : SkippableChunk<T>, IHeaderChunk where T : CMwNod
 
     }
 
-    public HeaderChunk(T node, byte[] data, uint? id = null) : base(node, data)
+    public HeaderChunk(T node, byte[] data, uint? id = null, bool isHeavy = false) : base(node, data)
     {
         this.id = id;
+
+        IsHeavy = isHeavy;
     }
 
     protected override uint GetId()

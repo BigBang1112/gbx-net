@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using GBX.NET.Debugging;
+using System.Diagnostics;
 using System.Reflection;
 
 namespace GBX.NET;
@@ -6,9 +7,12 @@ namespace GBX.NET;
 /// <summary>
 /// An unknown serialized GameBox node with additional attributes. This class can represent deserialized .Gbx file.
 /// </summary>
-public class GameBox : IDisposable
+public partial class GameBox : IDisposable
 {
     public const string Magic = "GBX";
+
+    private readonly Header header;
+    private readonly RefTable? refTable;
 
     /// <summary>
     /// If specialized actions should be executed that can help further with debugging but slow down the parse speed. Options can be then visible inside Debugger properties if available.
@@ -21,51 +25,55 @@ public class GameBox : IDisposable
     /// <remarks>Example where this could happen is <see cref="CGameCtnMediaBlockCameraCustom.Key.ReadWrite(GameBoxReaderWriter, int)"/>.</remarks>
     public static bool IgnoreUnseenVersions { get; set; }
 
-    /// <summary>
-    /// Header part containing generic GameBox values.
-    /// </summary>
-    public GameBoxHeaderInfo Header { get; }
-
-    /// <summary>
-    /// Reference table, referencing other GBX.
-    /// </summary>
-    public GameBoxRefTable? RefTable { get; private set; }
-
-    public GameBoxBody? Body { get; protected set; }
-
-    public Node? Node { get; internal set; }
+    public Node? Node { get; private set; }
+    public Body? RawBody { get; private set; }
+    public bool IsBodyParsed { get; private set; }
 
     /// <summary>
     /// ID of the node.
     /// </summary>
-    public uint? ID
-    {
-        get => Header.ID;
-        internal set => Header.ID = value;
-    }
+    public uint Id { get; init; }
 
     /// <summary>
     /// File path of the GameBox.
     /// </summary>
-    public string? FileName { get; set; }
+    public string? FileName { get; }
 
     /// <summary>
-    /// Creates an empty GameBox object version 6.
+    /// Creates a new GameBox object with the most common parameters without the node (object).
     /// </summary>
-    private GameBox(uint id)
+    /// <param name="id">ID of the expected node - should be provided remapped to latest.</param>
+    public GameBox(uint id)
     {
-        Header = new GameBoxHeaderInfo(id);
-        Node = null!;
+        header = new Header(id);
     }
 
     /// <summary>
-    /// Creates an empty GameBox object based on defined <see cref="GameBoxHeaderInfo"/>.
+    /// Creates a new GameBox object with the most common parameters.
     /// </summary>
-    /// <param name="headerInfo">Header info to use.</param>
-    protected GameBox(GameBoxHeaderInfo headerInfo)
+    /// <param name="node">Node to wrap in.</param>
+    public GameBox(Node node)
     {
-        Header = headerInfo ?? throw new ArgumentNullException(nameof(headerInfo));
-        Node = null!;
+        header = new Header(node.Id);
+        Node = node;
+    }
+
+    public GameBox(Header header, RefTable? refTable, string? fileName = null)
+    {
+        this.header = header;
+        this.refTable = refTable;
+
+        FileName = fileName;
+    }
+
+    public Header GetHeader()
+    {
+        return header;
+    }
+
+    public RefTable? GetRefTable()
+    {
+        return refTable;
     }
 
     /// <summary>
@@ -88,55 +96,160 @@ public class GameBox : IDisposable
         return false;
     }
 
-    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    internal bool ReadHeader(GameBoxReader reader, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="MissingLzoException"></exception>
+    /// <exception cref="HeaderOnlyParseLimitationException">Writing is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
+    internal void Write(Stream stream, IDRemap remap, ILogger? logger)
     {
-        var success = Header.Read(reader, logger);
+        var stateGuid = StateManager.Shared.CreateState();
 
-        progress?.Report(new GameBoxReadProgress(GameBoxReadProgressStage.Header, 1, this));
+        logger?.LogDebug("Writing the body...");
 
-        return success;
+        using var ms = new MemoryStream();
+        using var bodyW = new GameBoxWriter(ms, stateGuid, remap, logger: logger);
+
+        WriteBody(bodyW, logger);
+
+        logger?.LogDebug("Writing the header...");
+
+        StateManager.Shared.ResetIdState(stateGuid);
+
+        using var headerW = new GameBoxWriter(stream, stateGuid, remap, logger: logger);
+        Header.Write(headerW, StateManager.Shared.GetNodeCount(stateGuid) + 1, logger);
+
+        logger?.LogDebug("Writing the reference table...");
+
+        if (RefTable is null)
+            headerW.Write(0);
+        else
+            RefTable.Write(headerW);
+
+        headerW.WriteBytes(ms.ToArray());
+
+        StateManager.Shared.RemoveState(stateGuid);
     }
 
-    protected virtual bool ProcessHeader(Guid stateGuid, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="MissingLzoException"></exception>
+    /// <exception cref="HeaderOnlyParseLimitationException">Writing is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
+    internal async Task WriteAsync(Stream stream, IDRemap remap, ILogger? logger, CancellationToken cancellationToken)
     {
-        return true; // There are no header chunks to proccess in an unknown GBX
+        var stateGuid = StateManager.Shared.CreateState();
+
+        logger?.LogDebug("Writing the body...");
+
+        using var ms = new MemoryStream();
+        using var bodyW = new GameBoxWriter(ms, stateGuid, remap, logger: logger);
+
+        await WriteBodyAsync(bodyW, logger, cancellationToken);
+
+        logger?.LogDebug("Writing the header...");
+
+        StateManager.Shared.ResetIdState(stateGuid);
+
+        using var headerW = new GameBoxWriter(stream, stateGuid, remap, logger: logger);
+        Header.Write(headerW, StateManager.Shared.GetNodeCount(stateGuid) + 1, logger);
+
+        logger?.LogDebug("Writing the reference table...");
+
+        if (RefTable is null)
+            headerW.Write(0);
+        else
+            RefTable.Write(headerW);
+
+        headerW.WriteBytes(ms.ToArray());
+
+        StateManager.Shared.RemoveState(stateGuid);
     }
 
-    protected bool ReadRefTable(GameBoxReader reader, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
+    /// <summary>
+    /// Saves the serialized <see cref="GameBox{T}"/> to a stream.
+    /// </summary>
+    /// <param name="stream">Any kind of stream that supports writing.</param>
+    /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
+    /// <param name="logger">Logger.</param>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="MissingLzoException"></exception>
+    /// <exception cref="HeaderOnlyParseLimitationException">Saving is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
+    public void Save(Stream stream, IDRemap remap = default, ILogger? logger = null)
     {
-        RefTable = new GameBoxRefTable(Header);
-        RefTable.Read(reader, logger);
-
-        progress?.Report(new GameBoxReadProgress(GameBoxReadProgressStage.RefTable, 1, this));
-
-        return true;
+        Write(stream, remap, logger);
     }
 
-    protected internal virtual bool ReadBody(GameBoxReader reader, IProgress<GameBoxReadProgress>? progress, bool readUncompressedBodyDirectly, ILogger? logger)
+    /// <summary>
+    /// Saves the serialized <see cref="GameBox{T}"/> on a disk.
+    /// </summary>
+    /// <param name="fileName">Relative or absolute file path. Null will pick the <see cref="GameBox.FileName"/> value instead.</param>
+    /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
+    /// <param name="logger">Logger.</param>
+    /// <exception cref="PropertyNullException"><see cref="GameBox.FileName"/> is null.</exception>
+    /// <exception cref="ArgumentException"><paramref name="fileName"/> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by System.IO.Path.InvalidPathChars.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="fileName"/> is null.</exception>
+    /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.</exception>
+    /// <exception cref="DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive).</exception>
+    /// <exception cref="UnauthorizedAccessException"><paramref name="fileName"/> specified a file that is read-only. -or- <paramref name="fileName"/> specified a file that is hidden. -or- This operation is not supported on the current platform. -or- <paramref name="fileName"/> specified a directory. -or- The caller does not have the required permission.</exception>
+    /// <exception cref="NotSupportedException"><paramref name="fileName"/> is in an invalid format.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="MissingLzoException"></exception>
+    /// <exception cref="HeaderOnlyParseLimitationException">Saving is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
+    public void Save(string? fileName = default, IDRemap remap = default, ILogger? logger = null)
     {
-        return false;
+        fileName ??= (FileName ?? throw new PropertyNullException(nameof(FileName)));
+
+        using var fs = File.Create(fileName);
+
+        Save(fs, remap);
+
+        logger?.LogDebug("GBX file {fileName} saved.", fileName);
     }
 
-    protected internal virtual Task<bool> ReadBodyAsync(GameBoxReader reader,
-                                                        bool readUncompressedBodyDirectly,
-                                                        ILogger? logger,
-                                                        GameBoxAsyncReadAction? asyncAction = null,
-                                                        CancellationToken cancellationToken = default)
+    /// <summary>
+    /// Saves the serialized <see cref="GameBox{T}"/> to a stream.
+    /// </summary>
+    /// <param name="stream">Any kind of stream that supports writing.</param>
+    /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
+    /// <param name="logger">Logger.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="MissingLzoException"></exception>
+    /// <exception cref="HeaderOnlyParseLimitationException">Saving is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
+    public async Task SaveAsync(Stream stream, IDRemap remap = default, ILogger? logger = null, CancellationToken cancellationToken = default)
     {
-        return Task.FromResult(false);
+        await WriteAsync(stream, remap, logger, cancellationToken);
     }
 
-    private void ReadRawBody(GameBoxReader reader)
+    /// <summary>
+    /// Saves the serialized <see cref="GameBox{T}"/> on a disk.
+    /// </summary>
+    /// <param name="fileName">Relative or absolute file path. Null will pick the <see cref="GameBox.FileName"/> value instead.</param>
+    /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
+    /// <param name="logger">Logger.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    /// <exception cref="PropertyNullException"><see cref="GameBox.FileName"/> is null.</exception>
+    /// <exception cref="ArgumentException"><paramref name="fileName"/> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by System.IO.Path.InvalidPathChars.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="fileName"/> is null.</exception>
+    /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.</exception>
+    /// <exception cref="DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive).</exception>
+    /// <exception cref="UnauthorizedAccessException"><paramref name="fileName"/> specified a file that is read-only. -or- <paramref name="fileName"/> specified a file that is hidden. -or- This operation is not supported on the current platform. -or- <paramref name="fileName"/> specified a directory. -or- The caller does not have the required permission.</exception>
+    /// <exception cref="NotSupportedException"><paramref name="fileName"/> is in an invalid format.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="MissingLzoException"></exception>
+    /// <exception cref="HeaderOnlyParseLimitationException">Saving is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
+    public async Task SaveAsync(string? fileName = default, IDRemap remap = default, ILogger? logger = null, CancellationToken cancellationToken = default)
     {
-        if (Header.CompressionOfBody == GameBoxCompression.Uncompressed)
-        {
-            Body!.RawData = reader.ReadToEnd();
-            return;
-        }
+        fileName ??= (FileName ?? throw new PropertyNullException(nameof(FileName)));
 
-        Body!.UncompressedSize = reader.ReadInt32();
-        Body!.RawData = reader.ReadBytes();
+        using var fs = File.Create(fileName);
+
+        await SaveAsync(fs, remap, logger, cancellationToken);
+
+        logger?.LogDebug("GBX file {fileName} saved.", fileName);
     }
 
     /// <summary>
@@ -144,549 +257,6 @@ public class GameBox : IDisposable
     /// </summary>
     /// <param name="gbx"></param>
     public static implicit operator Node?(GameBox gbx) => gbx.Node;
-
-    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    private static GameBox ParseHeaderWithDefinedState(GameBoxReader reader,
-                                                       IProgress<GameBoxReadProgress>? progress,
-                                                       bool readRawBody,
-                                                       ILogger? logger)
-    {
-        var header = new GameBoxHeaderInfo(reader, logger);
-
-        progress?.Report(new GameBoxReadProgress(header));
-
-        if (!header.ID.HasValue)
-        {
-            return new GameBox(header);
-        }
-
-        GameBox gbx;
-
-        var availableClass = NodeCacheManager.GetClassTypeById(header.ID.Value);
-
-        if (availableClass is not null)
-        {
-            var gbxType = typeof(GameBox<>).MakeGenericType(availableClass);
-            gbx = (GameBox)Activator.CreateInstance(
-                gbxType,
-                BindingFlags.NonPublic | BindingFlags.Instance,
-                binder: null,
-                args: new object[] { header },
-                culture: null)!;
-
-            var processHeaderMethod = gbxType.GetMethod(nameof(ProcessHeader), BindingFlags.Instance | BindingFlags.NonPublic)!;
-            processHeaderMethod.Invoke(gbx, new object?[] { reader.Settings.StateGuid, progress, logger }); //
-        }
-        else
-        {
-            gbx = new GameBox(header);
-        }
-
-        if (reader.BaseStream is FileStream fs)
-        {
-            gbx.FileName = fs.Name;
-        }
-
-        if (!gbx.ReadRefTable(reader, progress, logger))
-        {
-            return gbx;
-        }
-
-        if (availableClass is not null && readRawBody)
-        {
-            gbx.ReadRawBody(reader);
-        }
-
-        return gbx;
-    }
-
-    /// <summary>
-    /// Parses only the header of the GBX.
-    /// </summary>
-    /// <param name="stream">Stream to read GBX format from.</param>
-    /// <param name="progress">Callback that reports any read progress.</param>
-    /// <param name="readRawBody">If the body should be read in raw bytes. True allows modification (write abilities) of GBX headers.</param>
-    /// <param name="logger">Logger.</param>
-    /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
-    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    public static GameBox ParseHeader(Stream stream,
-                                      IProgress<GameBoxReadProgress>? progress = null,
-                                      bool readRawBody = false,
-                                      ILogger? logger = null)
-    {
-        var stateGuid = StateManager.Shared.CreateState();
-        using var r = new GameBoxReader(stream, stateGuid, logger: logger);
-        return ParseHeaderWithDefinedState(r, progress, readRawBody, logger);
-    }
-
-    /// <summary>
-    /// Parses only the header of the GBX.
-    /// </summary>
-    /// <param name="fileName">Relative or absolute file path.</param>
-    /// <param name="progress">Callback that reports any read progress.</param>
-    /// <param name="readRawBody">If the body should be read in raw bytes. True allows modification (write abilities) of GBX headers.</param>
-    /// <param name="logger">Logger.</param>
-    /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast.</returns>
-    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    public static GameBox ParseHeader(string fileName,
-                                      IProgress<GameBoxReadProgress>? progress = null,
-                                      bool readRawBody = false,
-                                      ILogger? logger = null)
-    {
-        using var fs = File.OpenRead(fileName);
-        var gbx = ParseHeader(fs, progress, readRawBody, logger);
-        gbx.FileName = fileName;
-        return gbx;
-    }
-
-    /// <summary>
-    /// Parses only the header of the GBX.
-    /// </summary>
-    /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an <see cref="InvalidCastException"/>. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
-    /// <param name="stream">Stream to read GBX format from.</param>
-    /// <param name="progress">Callback that reports any read progress.</param>
-    /// <param name="readRawBody">If the body should be read in raw bytes. True allows modification (write abilities) of GBX headers.</param>
-    /// <param name="logger">Logger.</param>
-    /// <returns>A GameBox with specified main node type.</returns>
-    /// <exception cref="InvalidCastException"/>
-    /// <exception cref="GameBoxParseException"/>
-    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    public static GameBox<T> ParseHeader<T>(Stream stream,
-                                            IProgress<GameBoxReadProgress>? progress = null,
-                                            bool readRawBody = false,
-                                            ILogger? logger = null) where T : Node
-    {
-        var stateGuid = StateManager.Shared.CreateState();
-        var gbx = ParseHeaderWithDefinedState<T>(stream, progress, readRawBody, logger, stateGuid);
-        return gbx;
-    }
-
-    private static GameBox<T> ParseHeaderWithDefinedState<T>(Stream stream,
-                                                             IProgress<GameBoxReadProgress>? progress,
-                                                             bool readRawBody,
-                                                             ILogger? logger,
-                                                             Guid stateGuid) where T : Node
-    {
-        var gbx = new GameBox<T>();
-
-        if (stream is FileStream fs)
-        {
-            gbx.FileName = fs.Name;
-        }
-
-        using var r = new GameBoxReader(stream, stateGuid, logger: logger);
-
-        if (!gbx.ReadHeader(r, progress, logger))
-        {
-            throw new GameBoxParseException();
-        }
-
-        if (!gbx.ProcessHeader(stateGuid, progress, logger))
-        {
-            throw new GameBoxParseException();
-        }
-
-        if (!gbx.ReadRefTable(r, progress, logger))
-        {
-            throw new GameBoxParseException();
-        }
-
-        if (readRawBody)
-        {
-            gbx.ReadRawBody(r);
-        }
-
-        return gbx;
-    }
-
-    /// <summary>
-    /// Parses only the header of the GBX.
-    /// </summary>
-    /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an <see cref="InvalidCastException"/>. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
-    /// <param name="fileName">Relative or absolute file path.</param>
-    /// <param name="progress">Callback that reports any read progress.</param>
-    /// <param name="readRawBody">If the body should be read in raw bytes. True allows modification (write abilities) of GBX headers.</param>
-    /// <param name="logger">Logger.</param>
-    /// <returns>A GameBox with specified main node type.</returns>
-    /// <exception cref="InvalidCastException"/>
-    /// <exception cref="GameBoxParseException"/>
-    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    public static GameBox<T> ParseHeader<T>(string fileName,
-                                            IProgress<GameBoxReadProgress>? progress = null,
-                                            bool readRawBody = false,
-                                            ILogger? logger = null) where T : Node
-    {
-        using var fs = File.OpenRead(fileName);
-        return ParseHeader<T>(fs, progress, readRawBody, logger);
-    }
-
-    /// <summary>
-    /// Easily parses GBX format.
-    /// </summary>
-    /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an <see cref="InvalidCastException"/>. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
-    /// <param name="stream">Stream to read GBX format from.</param>
-    /// <param name="progress">Callback that reports any read progress.</param>
-    /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
-    /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
-    /// <param name="logger">Logger.</param>
-    /// <returns>A GameBox with specified main node type.</returns>
-    /// <exception cref="MissingLzoException"/>
-    /// <exception cref="InvalidCastException"/>
-    /// <exception cref="NotSupportedException"/>
-    /// <exception cref="GameBoxParseException"/>
-    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
-    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
-    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    public static GameBox<T> Parse<T>(Stream stream,
-                                      IProgress<GameBoxReadProgress>? progress = null,
-                                      bool readUncompressedBodyDirectly = false,
-                                      ILogger? logger = null) where T : Node
-    {
-        var stateGuid = StateManager.Shared.CreateState();
-
-        var gbx = ParseHeaderWithDefinedState<T>(stream, progress, readRawBody: false, logger, stateGuid);
-
-        using var r = new GameBoxReader(stream, stateGuid, logger: logger);
-
-        if (gbx.ReadBody(r, progress, readUncompressedBodyDirectly, logger))
-        {
-            return gbx;
-        }
-
-        throw new GameBoxParseException();
-    }
-
-    /// <summary>
-    /// Easily parses a GBX file.
-    /// </summary>
-    /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an <see cref="InvalidCastException"/>. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
-    /// <param name="fileName">Relative or absolute file path.</param>
-    /// <param name="progress">Callback that reports any read progress.</param>
-    /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
-    /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
-    /// <param name="logger">Logger.</param>
-    /// <returns>A GameBox with specified main node type.</returns>
-    /// <exception cref="MissingLzoException"/>
-    /// <exception cref="InvalidCastException"/>
-    /// <exception cref="NotSupportedException"/>
-    /// <exception cref="GameBoxParseException"/>
-    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
-    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
-    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    public static GameBox<T> Parse<T>(string fileName,
-                                      IProgress<GameBoxReadProgress>? progress = null,
-                                      bool readUncompressedBodyDirectly = false,
-                                      ILogger? logger = null) where T : Node
-    {
-        using var fs = File.OpenRead(fileName);
-        return Parse<T>(fs, progress, readUncompressedBodyDirectly, logger) ?? throw new GameBoxParseException();
-    }
-
-    /// <summary>
-    /// Easily parses a GBX file.
-    /// </summary>
-    /// <param name="fileName">Relative or absolute file path.</param>
-    /// <param name="progress">Callback that reports any read progress.</param>
-    /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
-    /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
-    /// <param name="logger">Logger.</param>
-    /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast).</returns>
-    /// <exception cref="MissingLzoException"/>
-    /// <exception cref="NotSupportedException"/>
-    /// <exception cref="GameBoxParseException"/>
-    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
-    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
-    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    public static GameBox Parse(string fileName,
-                                IProgress<GameBoxReadProgress>? progress = null,
-                                bool readUncompressedBodyDirectly = false,
-                                ILogger? logger = null)
-    {
-        using var fs = File.OpenRead(fileName);
-        return Parse(fs, progress, readUncompressedBodyDirectly, logger) ?? throw new GameBoxParseException();
-    }
-
-    /// <summary>
-    /// Easily parses GBX format.
-    /// </summary>
-    /// <param name="stream">Stream to read GBX format from.</param>
-    /// <param name="progress">Callback that reports any read progress.</param>
-    /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
-    /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
-    /// <param name="logger">Logger.</param>
-    /// <returns>A GameBox with either basic information only (if unknown), or also with specified main node type (available by using an explicit <see cref="GameBox{T}"/> cast).</returns>
-    /// <exception cref="MissingLzoException"/>
-    /// <exception cref="NotSupportedException"/>
-    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
-    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
-    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    public static GameBox Parse(Stream stream,
-                                IProgress<GameBoxReadProgress>? progress = null,
-                                bool readUncompressedBodyDirectly = false,
-                                ILogger? logger = null)
-    {
-        var stateGuid = StateManager.Shared.CreateState();
-
-        using var rHeader = new GameBoxReader(stream, stateGuid, logger: logger);
-
-        var gbx = ParseHeaderWithDefinedState(rHeader, progress, readRawBody: false, logger);
-
-        // Body resets Id (lookback string) list
-        using var rBody = new GameBoxReader(stream, stateGuid, logger: logger);
-
-        gbx.ReadBody(rBody, progress, readUncompressedBodyDirectly, logger);
-
-        return gbx;
-    }
-
-    /// <summary>
-    /// Parses only the header of the Gbx and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
-    /// </summary>
-    /// <param name="stream">Stream to read GBX format from.</param>
-    /// <param name="progress">Callback that reports any read progress.</param>
-    /// <param name="readRawBody">If the body should be read in raw bytes. True allows modification (write abilities) of GBX headers.</param>
-    /// <param name="logger">Logger.</param>
-    /// <returns>A <see cref="NET.Node"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
-    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    public static Node? ParseNodeHeader(Stream stream,
-                                        IProgress<GameBoxReadProgress>? progress = null,
-                                        bool readRawBody = false,
-                                        ILogger? logger = null)
-    {
-        return ParseHeader(stream, progress, readRawBody, logger).Node;
-    }
-
-    /// <summary>
-    /// Parses only the header of the GBX and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
-    /// </summary>
-    /// <param name="fileName">Relative or absolute file path.</param>
-    /// <param name="progress">Callback that reports any read progress.</param>
-    /// <param name="readRawBody">If the body should be read in raw bytes. True allows modification (write abilities) of GBX headers.</param>
-    /// <param name="logger">Logger.</param>
-    /// <returns>A <see cref="NET.Node"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
-    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    public static Node? ParseNodeHeader(string fileName,
-                                        IProgress<GameBoxReadProgress>? progress = null,
-                                        bool readRawBody = false,
-                                        ILogger? logger = null)
-    {
-        return ParseHeader(fileName, progress, readRawBody, logger);
-    }
-
-    /// <summary>
-    /// Parses only the header of the GBX and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
-    /// </summary>
-    /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an <see cref="InvalidCastException"/>. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
-    /// <param name="stream">Stream to read GBX format from.</param>
-    /// <param name="progress">Callback that reports any read progress.</param>
-    /// <param name="readRawBody">If the body should be read in raw bytes. True allows modification (write abilities) of GBX headers.</param>
-    /// <param name="logger">Logger.</param>
-    /// <returns>A <see cref="NET.Node"/> casted to <typeparamref name="T"/>.</returns>
-    /// <exception cref="InvalidCastException"/>
-    /// <exception cref="GameBoxParseException"></exception>
-    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    public static T ParseNodeHeader<T>(Stream stream,
-                                       IProgress<GameBoxReadProgress>? progress = null,
-                                       bool readRawBody = false,
-                                       ILogger? logger = null) where T : Node
-    {
-        return ParseHeader<T>(stream, progress, readRawBody, logger);
-    }
-
-    /// <summary>
-    /// Parses only the header of the GBX and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
-    /// </summary>
-    /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an <see cref="InvalidCastException"/>. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
-    /// <param name="fileName">Relative or absolute file path.</param>
-    /// <param name="progress">Callback that reports any read progress.</param>
-    /// <param name="readRawBody">If the body should be read in raw bytes. True allows modification (write abilities) of GBX headers.</param>
-    /// <param name="logger">Logger.</param>
-    /// <returns>A <see cref="NET.Node"/> casted to <typeparamref name="T"/>.</returns>
-    /// <exception cref="InvalidCastException"/>
-    /// <exception cref="GameBoxParseException"></exception>
-    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    public static T ParseNodeHeader<T>(string fileName,
-                                       IProgress<GameBoxReadProgress>? progress = null,
-                                       bool readRawBody = false,
-                                       ILogger? logger = null) where T : Node
-    {
-        return ParseHeader<T>(fileName, progress, readRawBody, logger);
-    }
-
-    /// <summary>
-    /// Easily parses GBX format and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
-    /// </summary>
-    /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an <see cref="InvalidCastException"/>. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
-    /// <param name="stream">Stream to read GBX format from.</param>
-    /// <param name="progress">Callback that reports any read progress.</param>
-    /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
-    /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
-    /// <param name="logger">Logger.</param>
-    /// <returns>A <see cref="NET.Node"/> casted to <typeparamref name="T"/>.</returns>
-    /// <exception cref="MissingLzoException"/>
-    /// <exception cref="InvalidCastException"/>
-    /// <exception cref="NotSupportedException"/>
-    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
-    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
-    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    public static T ParseNode<T>(Stream stream,
-                                 IProgress<GameBoxReadProgress>? progress = null,
-                                 bool readUncompressedBodyDirectly = false,
-                                 ILogger? logger = null) where T : Node
-    {
-        return Parse<T>(stream, progress, readUncompressedBodyDirectly, logger);
-    }
-
-    /// <summary>
-    /// Easily parses a GBX file and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
-    /// </summary>
-    /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an <see cref="InvalidCastException"/>. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
-    /// <param name="fileName">Relative or absolute file path.</param>
-    /// <param name="progress">Callback that reports any read progress.</param>
-    /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
-    /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
-    /// <param name="logger">Logger.</param>
-    /// <returns>A <see cref="NET.Node"/> casted to <typeparamref name="T"/>.</returns>
-    /// <exception cref="MissingLzoException"/>
-    /// <exception cref="InvalidCastException"/>
-    /// <exception cref="NotSupportedException"/>
-    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
-    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
-    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    public static T ParseNode<T>(string fileName,
-                                 IProgress<GameBoxReadProgress>? progress = null,
-                                 bool readUncompressedBodyDirectly = false,
-                                 ILogger? logger = null) where T : Node
-    {
-        return Parse<T>(fileName, progress, readUncompressedBodyDirectly, logger);
-    }
-
-    /// <summary>
-    /// Easily parses a GBX file and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
-    /// </summary>
-    /// <param name="fileName">Relative or absolute file path.</param>
-    /// <param name="progress">Callback that reports any read progress.</param>
-    /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
-    /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
-    /// <param name="logger">Logger.</param>
-    /// <returns>A <see cref="NET.Node"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
-    /// <exception cref="MissingLzoException"/>
-    /// <exception cref="NotSupportedException"/>
-    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
-    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
-    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    public static Node? ParseNode(string fileName,
-                                  IProgress<GameBoxReadProgress>? progress = null,
-                                  bool readUncompressedBodyDirectly = false,
-                                  ILogger? logger = null)
-    {
-        return Parse(fileName, progress, readUncompressedBodyDirectly, logger);
-    }
-
-    /// <summary>
-    /// Easily parses GBX format and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
-    /// </summary>
-    /// <param name="stream">Stream to read GBX format from.</param>
-    /// <param name="progress">Callback that reports any read progress.</param>
-    /// <param name="readUncompressedBodyDirectly">If the body (if presented uncompressed) should be parsed directly from the stream (true), or loaded to memory first (false).
-    /// This set to true makes the parse slower with files and <see cref="FileStream"/> but could potentially speed up direct parses from the internet. Use wisely!</param>
-    /// <param name="logger">Logger.</param>
-    /// <returns>A <see cref="NET.Node"/> with either basic information only (if unknown), or also with specified node information (available by using an explicit cast).</returns>
-    /// <exception cref="MissingLzoException"/>
-    /// <exception cref="NotSupportedException"/>
-    /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
-    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
-    /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    public static Node? ParseNode(Stream stream,
-                                  IProgress<GameBoxReadProgress>? progress = null,
-                                  bool readUncompressedBodyDirectly = false,
-                                  ILogger? logger = null)
-    {
-        return Parse(stream, progress, readUncompressedBodyDirectly, logger);
-    }
-
-    public static async Task<GameBox> ParseAsync(Stream stream,
-                                                 bool readUncompressedBodyDirectly = false,
-                                                 ILogger? logger = null,
-                                                 GameBoxAsyncReadAction? asyncAction = null,
-                                                 CancellationToken cancellationToken = default)
-    {
-        var stateGuid = StateManager.Shared.CreateState();
-
-        using var rHeader = new GameBoxReader(stream, stateGuid, logger: logger, asyncAction: asyncAction);
-
-        var gbx = ParseHeaderWithDefinedState(rHeader, progress: null, readRawBody: false, logger);
-
-        // Body resets Id (lookback string) list
-        using var rBody = new GameBoxReader(stream, stateGuid, logger: logger, asyncAction: asyncAction);
-
-        var successfulBodyRead = await gbx.ReadBodyAsync(
-            rBody,
-            readUncompressedBodyDirectly,
-            logger,
-            asyncAction,
-            cancellationToken);
-
-        if (!successfulBodyRead)
-        {
-            throw new GameBoxParseException();
-        }
-
-        return gbx;
-    }
-
-    public static async Task<GameBox<T>> ParseAsync<T>(Stream stream,
-                                                       bool readUncompressedBodyDirectly = false,
-                                                       ILogger? logger = null,
-                                                       GameBoxAsyncReadAction? asyncAction = null,
-                                                       CancellationToken cancellationToken = default)
-                                                       where T : Node
-    {
-        var gbx = ParseHeader<T>(stream, progress: null, readRawBody: false, logger);
-
-        using var r = new GameBoxReader(stream, logger: logger, asyncAction: asyncAction);
-
-        var successfulBodyRead = await gbx.ReadBodyAsync(
-            r,
-            readUncompressedBodyDirectly,
-            logger,
-            asyncAction,
-            cancellationToken);
-
-        if (!successfulBodyRead)
-        {
-            throw new GameBoxParseException();
-        }
-
-        return gbx;
-    }
-
-    public static async Task<Node?> ParseNodeAsync(Stream stream,
-                                                   bool readUncompressedBodyDirectly = false,
-                                                   ILogger? logger = null,
-                                                   GameBoxAsyncReadAction? asyncAction = null,
-                                                   CancellationToken cancellationToken = default)
-    {
-        return await ParseAsync(stream, readUncompressedBodyDirectly, logger, asyncAction, cancellationToken);
-    }
-
-    public static async Task<T> ParseNodeAsync<T>(Stream stream,
-                                                  bool readUncompressedBodyDirectly = false,
-                                                  ILogger? logger = null,
-                                                  GameBoxAsyncReadAction? asyncAction = null,
-                                                  CancellationToken cancellationToken = default)
-                                                  where T : Node
-    {
-        return await ParseAsync<T>(stream, readUncompressedBodyDirectly, logger, asyncAction, cancellationToken);
-    }
 
     private static uint? ReadNodeID(GameBoxReader reader)
     {

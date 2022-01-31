@@ -15,10 +15,12 @@ public sealed class HeaderChunk : Chunk, IHeaderChunk
 
     public bool IsHeavy { get; set; }
 
-    public HeaderChunk(uint id, byte[] data) : base(null!)
+    public HeaderChunk(uint id, byte[] data, bool isHeavy = false) : base(null!)
     {
         headerChunkId = id;
+
         Data = data;
+        IsHeavy = isHeavy;
     }
 
     protected override uint GetId()

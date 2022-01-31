@@ -34,7 +34,7 @@ public static class NodeCacheManager
     public static ConcurrentDictionary<Type, IEnumerable<Attribute>> ChunkAttributesByType { get; }
     public static ConcurrentDictionary<uint, Func<Node>> ClassConstructors { get; }
     public static ConcurrentDictionary<uint, Func<Chunk>> ChunkConstructors { get; }
-    public static ConcurrentDictionary<uint, Func<Chunk>> HeaderChunkConstructors { get; }
+    public static ConcurrentDictionary<uint, Func<IHeaderChunk>> HeaderChunkConstructors { get; }
 
     public static bool ChunksAreCurrentlyBeingCached { get; private set; }
 
@@ -67,7 +67,7 @@ public static class NodeCacheManager
 
         ClassConstructors = new ConcurrentDictionary<uint, Func<Node>>();
         ChunkConstructors = new ConcurrentDictionary<uint, Func<Chunk>>();
-        HeaderChunkConstructors = new ConcurrentDictionary<uint, Func<Chunk>>();
+        HeaderChunkConstructors = new ConcurrentDictionary<uint, Func<IHeaderChunk>>();
 
         ClassTypesWithCachedChunks = new ConcurrentDictionary<Type, byte>();
         SkippableChunks = new ConcurrentDictionary<Type, byte>();
@@ -339,10 +339,10 @@ public static class NodeCacheManager
         ChunkIdsByType[type] = chunkId;
         ChunkAttributesByType[type] = attributes;
 
-        var constructor = CreateConstructor<Chunk>(type);
-
         if (type.GetInterface(nameof(IHeaderChunk)) is null)
         {
+            var constructor = CreateConstructor<Chunk>(type);
+
             ChunkAttributesById[chunkId] = attributes;
             ChunkTypesById[chunkId] = type;
             ChunkConstructors[chunkId] = constructor;
@@ -351,6 +351,8 @@ public static class NodeCacheManager
         }
         else
         {
+            var constructor = CreateConstructor<IHeaderChunk>(type);
+
             HeaderChunkAttributesById[chunkId] = attributes;
             HeaderChunkTypesById[chunkId] = type;
             HeaderChunkConstructors[chunkId] = constructor;
