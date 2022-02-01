@@ -56,6 +56,7 @@ public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
             if (version > 3)
             {
                 rw.UntilFacade(Unknown);
+                return;
             }
 
             rw.Vec3(ref U01);
