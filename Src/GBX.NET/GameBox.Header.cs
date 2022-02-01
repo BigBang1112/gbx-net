@@ -296,7 +296,7 @@ public partial class GameBox
             headerChunk.Data = chunkData;
             headerChunk.IsHeavy = isHeavy;
 
-            if (!nodeType.IsSubclassOf(chunkNodeType))
+            if (nodeType != chunkNodeType && !nodeType.IsSubclassOf(chunkNodeType))
             {
                 // There are cast-related problems when one of the header chunks is not part of inheritance
                 // For example, CGameCtnDecoration has a header chunk of type CPlugGameSkin that is not
