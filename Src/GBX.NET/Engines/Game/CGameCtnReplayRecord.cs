@@ -35,6 +35,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     private int? eventsDuration;
     private ControlEntry[]? controlEntries;
     private string? game;
+    private CCtnMediaBlockUiTMSimpleEvtsDisplay? simpleEventsDisplay;
 
     #endregion
 
@@ -197,6 +198,12 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// </summary>
     [NodeMember]
     public CCtnMediaBlockEventTrackMania? Events => events;
+
+    /// <summary>
+    /// Events occuring during the replay. Available in TMS and older games.
+    /// </summary>
+    [NodeMember]
+    public CCtnMediaBlockUiTMSimpleEvtsDisplay? SimpleEventsDisplay => simpleEventsDisplay;
 
     /// <summary>
     /// Duration of events in the replay (range of detected inputs). This can be 0 if the replay was driven in editor and null if driven in TMU, TMUF, TMTurbo, TM2 and TM2020.
@@ -575,12 +582,16 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     #region 0x010 chunk
 
     [Chunk(0x03093010)]
-    [IgnoreChunk]
     public class Chunk03093010 : Chunk<CGameCtnReplayRecord>
     {
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
         {
+            n.simpleEventsDisplay = r.ReadNodeRef<CCtnMediaBlockUiTMSimpleEvtsDisplay>();
+        }
 
+        public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            n.simpleEventsDisplay = await r.ReadNodeRefAsync<CCtnMediaBlockUiTMSimpleEvtsDisplay>(cancellationToken);
         }
     }
 

@@ -11,6 +11,7 @@ public class CGameCtnMediaBlockUi : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasT
 
     private TimeSpan start;
     private TimeSpan end = TimeSpan.FromSeconds(3);
+    private CControlList? userInterface;
 
     #endregion
 
@@ -30,6 +31,8 @@ public class CGameCtnMediaBlockUi : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasT
         set => end = value;
     }
 
+    public CControlList? UserInterface { get => userInterface; set => userInterface = value; }
+
     #endregion
 
     #region Constructors
@@ -42,6 +45,21 @@ public class CGameCtnMediaBlockUi : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasT
     #endregion
 
     #region Chunks
+
+    #region 0x000 chunk
+
+    [Chunk(0x0307D000)]
+    public class Chunk0307D000 : Chunk<CGameCtnMediaBlockUi>
+    {
+        public override void ReadWrite(CGameCtnMediaBlockUi n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef<CControlList>(ref n.userInterface);
+            rw.Single_s(ref n.start);
+            rw.Single_s(ref n.end);
+        }
+    }
+
+    #endregion
 
     #region 0x001 chunk
 
