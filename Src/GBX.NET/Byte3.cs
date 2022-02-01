@@ -8,6 +8,11 @@
 /// <param name="Z">Z value.</param>
 public readonly record struct Byte3(byte X, byte Y, byte Z)
 {
+    public override string ToString()
+    {
+        return $"<{X}, {Y}, {Z}>";
+    }
+
     public static Byte3 operator +(Byte3 a, Byte3 b) => new((byte)(a.X + b.X), (byte)(a.Y + b.Y), (byte)(a.Z + b.Z));
     public static Byte3 operator +(Byte3 a, byte b) => new((byte)(a.X + b), (byte)(a.Y + b), (byte)(a.Z + b));
 

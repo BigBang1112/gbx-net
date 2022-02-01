@@ -1,10 +1,17 @@
-﻿namespace GBX.NET;
+﻿using System.Globalization;
+
+namespace GBX.NET;
 
 public readonly record struct Int3(int X, int Y, int Z)
 {
     public Int3 GetXY() => new(X, Y, 0);
     public Int3 GetXZ() => new(X, 0, Z);
     public Int3 GetYZ() => new(0, Y, Z);
+
+    public override string ToString()
+    {
+        return $"<{X}, {Y}, {Z}>";
+    }
 
     public static readonly Int3 Zero = new();
 

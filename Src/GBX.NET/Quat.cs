@@ -1,4 +1,6 @@
-﻿namespace GBX.NET;
+﻿using System.Globalization;
+
+namespace GBX.NET;
 
 public readonly record struct Quat(float X, float Y, float Z, float W)
 {
@@ -14,6 +16,18 @@ public readonly record struct Quat(float X, float Y, float Z, float W)
         var roll = (float)Math.Asin(2 * X * Y + 2 * Z * W);
 
         return (pitch, yaw, roll);
+    }
+
+    public override string ToString()
+    {
+        var c = CultureInfo.InvariantCulture;
+
+        var x = X.ToString(c);
+        var y = Y.ToString(c);
+        var z = Z.ToString(c);
+        var w = W.ToString(c);
+
+        return $"<{x}, {y}, {z}, {w}>";
     }
 
     public static readonly Quat Zero = new();

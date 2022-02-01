@@ -1,4 +1,6 @@
-﻿namespace GBX.NET;
+﻿using System.Globalization;
+
+namespace GBX.NET;
 
 public readonly record struct Vec2(float X, float Y) : IVec
 {
@@ -11,6 +13,16 @@ public readonly record struct Vec2(float X, float Y) : IVec
 #endif
 
     public float GetSqrMagnitude() => X * X + Y * Y;
+
+    public override string ToString()
+    {
+        var c = CultureInfo.InvariantCulture;
+
+        var x = X.ToString(c);
+        var y = Y.ToString(c);
+
+        return $"<{x}, {y}>";
+    }
 
     public static readonly Vec2 Zero = new();
     public static float GetDotProduct(Vec2 a, Vec2 b) => a.X * b.X + a.Y * b.Y;

@@ -2,6 +2,11 @@
 
 public readonly record struct Int2(int X, int Y)
 {
+    public override string ToString()
+    {
+        return $"<{X}, {Y}>";
+    }
+
     public static readonly Int2 Zero = new();
 
     public static Int2 operator +(Int2 a, Int2 b) => new(a.X + b.X, a.Y + b.Y);

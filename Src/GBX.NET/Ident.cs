@@ -12,7 +12,12 @@ public record Ident(string Id, Collection Collection, string Author)
 
     public Ident() : this(string.Empty)
     {
-        
+
+    }
+
+    public override string ToString()
+    {
+        return $"(\"{Id}\", \"{Collection}\", \"{Author}\")";
     }
 
     public static implicit operator Ident((string Id, Collection Collection, string Author) v)
