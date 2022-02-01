@@ -1058,7 +1058,7 @@ public abstract class Node : IStateRefTable, IDisposable
     /// </summary>
     /// <param name="nonGeneric">If to instantiate a <see cref="GameBox"/> object instead of the generic <see cref="GameBox{T}"/>, where comparing of the node type has to be done on <see cref="GameBox.Node"/> level, but the method executes faster.</param>
     /// <returns>A <see cref="GameBox"/> or <see cref="GameBox{T}"/> depending on the <paramref name="nonGeneric"/> parameter.</returns>
-    public GameBox ToGbx(bool nonGeneric = false) // TODO: Unit test this
+    public GameBox ToGbx(bool nonGeneric = false)
     {
         if (nonGeneric)
         {
@@ -1071,6 +1071,16 @@ public abstract class Node : IStateRefTable, IDisposable
         }
 
         return gbx;
+    }
+
+    /// <summary>
+    /// Wraps this node into <see cref="GameBox{T}"/> object with explicit conversion.
+    /// </summary>
+    /// <typeparam name="T">Type of the node to use on <see cref="GameBox{T}"/>.</typeparam>
+    /// <returns>A <see cref="GameBox{T}"/>.</returns>
+    public GameBox<T> ToGbx<T>() where T : Node
+    {
+        return new GameBox<T>((T)this);
     }
 
     /// <summary>
@@ -1098,7 +1108,6 @@ public abstract class Node : IStateRefTable, IDisposable
     /// <param name="stream">Any kind of stream that supports writing.</param>
     /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
     /// <param name="logger">Logger.</param>
-    /// <exception cref="NotSupportedException"/>
     public void Save(Stream stream, IDRemap remap = default, ILogger? logger = null)
     {
         var gbx = GetGbx();
@@ -1110,6 +1119,56 @@ public abstract class Node : IStateRefTable, IDisposable
         }
 
         gbx.Save(stream, remap, logger);
+    }
+
+    /// <summary>
+    /// Saves the serialized node on a disk in a GBX form.
+    /// </summary>
+    /// <param name="fileName">Relative or absolute file path. Null will pick the <see cref="GameBox.FileName"/> value from <see cref="GBX"/> object instead.</param>
+    /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
+    /// <param name="logger">Logger.</param>
+    /// <param name="asyncAction">Specialized executions during asynchronous writing.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    public async Task SaveAsync(string? fileName = default,
+                                IDRemap remap = default,
+                                ILogger? logger = null,
+                                GameBoxAsyncWriteAction? asyncAction = null,
+                                CancellationToken cancellationToken = default)
+    {
+        var gbx = GetGbx();
+
+        if (gbx is null)
+        {
+            await ToGbx(nonGeneric: true).SaveAsync(fileName, remap, logger, asyncAction, cancellationToken);
+            return;
+        }
+
+        await gbx.SaveAsync(fileName, remap, logger, asyncAction, cancellationToken);
+    }
+
+    /// <summary>
+    /// Saves the serialized node to a stream in a GBX form.
+    /// </summary>
+    /// <param name="stream">Any kind of stream that supports writing.</param>
+    /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
+    /// <param name="logger">Logger.</param>
+    /// <param name="asyncAction">Specialized executions during asynchronous writing.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
+    public async Task SaveAsync(Stream stream,
+                                IDRemap remap = default,
+                                ILogger? logger = null,
+                                GameBoxAsyncWriteAction? asyncAction = null,
+                                CancellationToken cancellationToken = default)
+    {
+        var gbx = GetGbx();
+
+        if (gbx is null)
+        {
+            await ToGbx(nonGeneric: true).SaveAsync(stream, remap, logger, asyncAction, cancellationToken);
+            return;
+        }
+
+        await gbx.SaveAsync(stream, remap, logger, asyncAction, cancellationToken);
     }
 
     public static uint RemapToLatest(uint id)

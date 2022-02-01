@@ -142,14 +142,14 @@ public partial class GameBox : IDisposable
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="MissingLzoException"></exception>
     /// <exception cref="HeaderOnlyParseLimitationException">Writing is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
-    internal async Task WriteAsync(Stream stream, IDRemap remap, ILogger? logger, CancellationToken cancellationToken)
+    internal async Task WriteAsync(Stream stream, IDRemap remap, ILogger? logger, GameBoxAsyncWriteAction asyncAction, CancellationToken cancellationToken)
     {
         var stateGuid = StateManager.Shared.CreateState(refTable);
 
         logger?.LogDebug("Writing the body...");
 
         using var ms = new MemoryStream();
-        using var bodyW = new GameBoxWriter(ms, stateGuid, remap, logger: logger);
+        using var bodyW = new GameBoxWriter(ms, stateGuid, remap, asyncAction, logger);
 
         await (RawBody ?? new Body()).WriteAsync(this, bodyW, logger, cancellationToken);
 
@@ -229,24 +229,26 @@ public partial class GameBox : IDisposable
     /// <param name="stream">Any kind of stream that supports writing.</param>
     /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
     /// <param name="logger">Logger.</param>
+    /// <param name="asyncAction">Specialized executions during asynchronous writing.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="MissingLzoException"></exception>
     /// <exception cref="HeaderOnlyParseLimitationException">Saving is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
-    public async Task SaveAsync(Stream stream, IDRemap remap = default, ILogger? logger = null, CancellationToken cancellationToken = default)
+    public async Task SaveAsync(Stream stream, IDRemap remap = default, ILogger? logger = null, GameBoxAsyncWriteAction? asyncAction = null, CancellationToken cancellationToken = default)
     {
-        await WriteAsync(stream, remap, logger, cancellationToken);
+        await WriteAsync(stream, remap, logger, asyncAction, cancellationToken);
     }
 
     /// <summary>
     /// Saves the serialized <see cref="GameBox{T}"/> on a disk.
     /// </summary>
-    /// <param name="fileName">Relative or absolute file path. Null will pick the <see cref="GameBox.FileName"/> value instead.</param>
+    /// <param name="fileName">Relative or absolute file path. Null will pick the <see cref="FileName"/> value instead.</param>
     /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
     /// <param name="logger">Logger.</param>
+    /// <param name="asyncAction">Specialized executions during asynchronous writing.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
-    /// <exception cref="PropertyNullException"><see cref="GameBox.FileName"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="FileName"/> is null.</exception>
     /// <exception cref="ArgumentException"><paramref name="fileName"/> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by System.IO.Path.InvalidPathChars.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="fileName"/> is null.</exception>
     /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.</exception>
@@ -257,13 +259,13 @@ public partial class GameBox : IDisposable
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="MissingLzoException"></exception>
     /// <exception cref="HeaderOnlyParseLimitationException">Saving is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
-    public async Task SaveAsync(string? fileName = default, IDRemap remap = default, ILogger? logger = null, CancellationToken cancellationToken = default)
+    public async Task SaveAsync(string? fileName = default, IDRemap remap = default, ILogger? logger = null, GameBoxAsyncWriteAction? asyncAction = null, CancellationToken cancellationToken = default)
     {
         fileName ??= (FileName ?? throw new PropertyNullException(nameof(FileName)));
 
         using var fs = File.Create(fileName);
 
-        await SaveAsync(fs, remap, logger, cancellationToken);
+        await SaveAsync(fs, remap, logger, asyncAction, cancellationToken);
 
         logger?.LogDebug("GBX file {fileName} saved.", fileName);
     }
