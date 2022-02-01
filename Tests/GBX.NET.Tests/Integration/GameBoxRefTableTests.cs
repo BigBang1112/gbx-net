@@ -15,6 +15,8 @@ public class GameBoxRefTableTests
 {
     private readonly JsonSerializerOptions jsonSeralizerOptions;
 
+    public static IEnumerable<string> ExampleGbxs { get; } = Directory.GetFiles(Environment.CurrentDirectory, "*.Gbx", SearchOption.AllDirectories);
+
     public GameBoxRefTableTests()
     {
         jsonSeralizerOptions = new JsonSerializerOptions
@@ -23,56 +25,56 @@ public class GameBoxRefTableTests
         };
     }
 
-    [Theory(DisplayName = "Read/Write should equal")]
-    [InlineData("CCP#04 - ODYSSEY.Map.Gbx")]
-    [InlineData("IslandSeaWaySupport.TMEDRoad.Gbx")]
-    [InlineData("RallyBase45x45Sunrise.TMDecoration.Gbx")]
-    public void ReadWriteShouldEqual(string fileName)
+    [Fact(DisplayName = "Read/Write - should equal")]
+    public void ReadWrite_ShouldEqual()
     {
-        var gbx = GameBox.ParseHeader(Path.Combine("Files", fileName));
-        var refTable = gbx.GetRefTable();
-        var header = gbx.GetHeader();
-
-        using var ms = new MemoryStream();
-        using var writer = new GameBoxWriter(ms);
-
-        var expectedNull = refTable is null;
-        var expectedAncestorLevel = default(int);
-        var expectedFiles = default(string);
-        var expectedFolders = default(string);
-
-        if (refTable is null)
+        foreach (var fileName in ExampleGbxs)
         {
-            writer.Write(0);
+            var gbx = GameBox.ParseHeader(Path.Combine("Files", fileName));
+            var refTable = gbx.GetRefTable();
+            var header = gbx.GetHeader();
+
+            using var ms = new MemoryStream();
+            using var writer = new GameBoxWriter(ms);
+
+            var expectedNull = refTable is null;
+            var expectedAncestorLevel = default(int);
+            var expectedFiles = default(string);
+            var expectedFolders = default(string);
+
+            if (refTable is null)
+            {
+                writer.Write(0);
+            }
+            else
+            {
+                expectedAncestorLevel = refTable.AncestorLevel;
+                expectedFiles = JsonSerializer.Serialize(refTable.Files, jsonSeralizerOptions);
+                expectedFolders = JsonSerializer.Serialize(refTable.Folders, jsonSeralizerOptions);
+
+                refTable.Write(header, writer);
+            }
+
+            ms.Seek(0, SeekOrigin.Begin);
+
+            using var reader = new GameBoxReader(ms);
+
+            var newRefTable = GameBox.RefTable.Parse(header, reader);
+            var actualNull = newRefTable is null;
+
+            if (newRefTable is null)
+            {
+                Assert.Equal(expectedNull, actualNull);
+                return;
+            }
+
+            var actualAncestorLevel = newRefTable.AncestorLevel;
+            var actualFiles = JsonSerializer.Serialize(newRefTable.Files, jsonSeralizerOptions);
+            var actualFolders = JsonSerializer.Serialize(newRefTable.Folders, jsonSeralizerOptions);
+
+            Assert.Equal(expectedAncestorLevel, actualAncestorLevel);
+            Assert.Equal(expectedFiles, actualFiles);
+            Assert.Equal(expectedFolders, actualFolders);
         }
-        else
-        {
-            expectedAncestorLevel = refTable.AncestorLevel;
-            expectedFiles = JsonSerializer.Serialize(refTable.Files, jsonSeralizerOptions);
-            expectedFolders = JsonSerializer.Serialize(refTable.Folders, jsonSeralizerOptions);
-
-            refTable.Write(header, writer);
-        }
-
-        ms.Seek(0, SeekOrigin.Begin);
-
-        using var reader = new GameBoxReader(ms);
-
-        var newRefTable = GameBox.RefTable.Parse(header, reader);
-        var actualNull = newRefTable is null;
-
-        if (newRefTable is null)
-        {
-            Assert.Equal(expectedNull, actualNull);
-            return;
-        }
-
-        var actualAncestorLevel = newRefTable.AncestorLevel;
-        var actualFiles = JsonSerializer.Serialize(newRefTable.Files, jsonSeralizerOptions);
-        var actualFolders = JsonSerializer.Serialize(newRefTable.Folders, jsonSeralizerOptions);
-
-        Assert.Equal(expectedAncestorLevel, actualAncestorLevel);
-        Assert.Equal(expectedFiles, actualFiles);
-        Assert.Equal(expectedFolders, actualFolders);
     }
 }
