@@ -136,7 +136,7 @@ public class CGameCtnMediaTrack : CMwNod
         {
             rw.String(ref n.name!);
             rw.Int32(ref tracksVersion);
-            n.blocks = (await rw.ListNodeAsync<CGameCtnMediaBlock>(n.blocks!))!;
+            n.blocks = (await rw.ListNodeAsync<CGameCtnMediaBlock>(n.blocks!, cancellationToken))!;
             rw.Int32(ref U02);
         }
     }

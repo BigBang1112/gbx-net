@@ -129,10 +129,9 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMedia
 
         public override async Task ReadWriteAsync(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
         {
-            rw.Single_s(ref n.start);
-            rw.Single_s(ref n.end, n.start.GetValueOrDefault() + TimeSpan.FromSeconds(3));
+            ReadWriteBeforeGhost(n, rw);
             n.ghostModel = (await rw.NodeRefAsync<CGameCtnGhost>(n.ghostModel!, cancellationToken))!;
-            rw.Single(ref n.startOffset);
+            ReadWriteAfterGhost(n, rw);
         }
 
         private static void ReadWriteAfterGhost(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw)

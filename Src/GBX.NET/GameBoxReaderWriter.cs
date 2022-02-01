@@ -1440,7 +1440,7 @@ public partial class GameBoxReaderWriter
     public FileRef? FileRef(FileRef? variable = default)
     {
         if (Reader is not null) return Reader.ReadFileRef();
-        if (Writer is not null) Writer.Write(variable ?? new FileRef());
+        if (Writer is not null) Writer.Write(variable ?? NET.FileRef.Default);
         return variable;
     }
 

@@ -283,7 +283,7 @@ public partial class GameBoxWriter : BinaryWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write(Ident? ident)
     {
-        ident ??= new Ident();
+        ident ??= Ident.Empty;
 
         WriteId(ident.Id);
         WriteId(ident.Collection);

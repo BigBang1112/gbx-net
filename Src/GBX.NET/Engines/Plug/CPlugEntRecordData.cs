@@ -29,8 +29,6 @@ public class CPlugEntRecordData : CMwNod
 
     protected CPlugEntRecordData()
     {
-        data = null!;
-
         Version = 10;
     }
 

@@ -142,7 +142,7 @@ public partial class GameBox : IDisposable
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="MissingLzoException"></exception>
     /// <exception cref="HeaderOnlyParseLimitationException">Writing is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
-    internal async Task WriteAsync(Stream stream, IDRemap remap, ILogger? logger, GameBoxAsyncWriteAction asyncAction, CancellationToken cancellationToken)
+    internal async Task WriteAsync(Stream stream, IDRemap remap, ILogger? logger, GameBoxAsyncWriteAction? asyncAction, CancellationToken cancellationToken)
     {
         var stateGuid = StateManager.Shared.CreateState(refTable);
 

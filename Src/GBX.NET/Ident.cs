@@ -24,4 +24,6 @@ public record Ident(string Id, Collection Collection, string Author)
     {
         return (v.Id, v.Collection, v.Author);
     }
+
+    public static readonly Ident Empty = new();
 }
