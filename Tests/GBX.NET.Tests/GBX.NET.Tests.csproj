@@ -38,5 +38,11 @@
 	  <ProjectReference Include="..\..\Src\GBX.NET.LZO\GBX.NET.LZO.csproj" />
 	  <ProjectReference Include="..\..\Src\GBX.NET\GBX.NET.csproj" />
 	</ItemGroup>
+	
+	<ItemGroup>
+		<Content Include="..\..\ExampleFiles\**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
 </Project>

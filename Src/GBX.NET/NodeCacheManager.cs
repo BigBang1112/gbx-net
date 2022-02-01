@@ -11,7 +11,7 @@ public static class NodeCacheManager
 {
     private static readonly Assembly assembly = typeof(NodeCacheManager).Assembly;
 
-    public static bool ClassesAreCached { get; private set; }
+    public static bool ClassesAreCached { get; internal set; }
 
     public static Dictionary<uint, string> Names { get; }
     public static Dictionary<uint, uint> Mappings { get; } // key: older, value: newer

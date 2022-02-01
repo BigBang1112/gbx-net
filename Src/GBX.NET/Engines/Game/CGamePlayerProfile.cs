@@ -751,7 +751,7 @@ public class CGamePlayerProfile : CMwNod
 
     public class Skin
     {
-        public Ident PlayerModel { get; set; } = new Ident();
+        public Ident PlayerModel { get; set; } = Ident.Empty;
         public string? SkinFile { get; set; }
         public uint Checksum { get; set; }
     }

@@ -66,7 +66,7 @@ public class CGameCtnCollectorList : CMwNod
 
     public class Collector
     {
-        public Ident Ident { get; set; } = new Ident();
+        public Ident Ident { get; set; } = Ident.Empty;
         public int Count { get; set; }
 
         public override string ToString()

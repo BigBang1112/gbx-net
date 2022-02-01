@@ -99,7 +99,7 @@ public class CGameCtnChallengeGroup : CMwNod
 
     public class MapInfo
     {
-        public Ident Metadata { get; set; } = new Ident();
+        public Ident Metadata { get; set; } = Ident.Empty;
         public string FilePath { get; set; } = string.Empty;
 
         public override string ToString()

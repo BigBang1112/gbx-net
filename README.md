@@ -6,11 +6,12 @@ GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software 
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/BigBang1112/gbx-net?include_prereleases&style=for-the-badge)](https://github.com/BigBang1112/gbx-net/releases)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/BigBang1112/gbx-net?style=for-the-badge)](#)
 
-- GBX.NET can recognize **entire GBX files**, however **can't read all of the possible files**. GBX file is basically a serialized class from the GameBox engine, and all of these classes must be known to read. This is where you can help contributing to the project, by [exploring new chunks](https://github.com/BigBang1112/gbx-net/wiki/How-to-discover-nodes-and-chunks) (available very soon).
-- GBX.NET can write GBX files which can be read by the parser, however this may not apply to all readable GBXs.
-- All versions of GBX are supported: ranging from TM1.0 to TM®.
+- GBX.NET can recognize **entire Gbx files**, however **cannot read all of the existing files**. Gbx file is basically a serialized class from the GameBox engine, and all of these classes must be known to read. This is where you can help contributing to the project, by [exploring new chunks](https://github.com/BigBang1112/gbx-net/wiki/How-to-discover-nodes-and-chunks) (available very soon).
+- GBX.NET can write Gbx files which can be read by the parser, however this may not apply to all readable Gbxs.
+- All versions of Gbx are supported: ranging from TM1.0 to TM®, except the Gbx versions below 3 (which I haven't seen so far, even in the oldest game).
 - **GBX.NET 0.10.0+ is separated into MIT and GPL3.0, see [License](#License)**.
-- Reading text-formatted GBX is not currently supported.
+- Reading text-formatted Gbx is not currently supported.
+- Reading compressed reference tables is not currently supported.
 - Reading PAK files is partially supported with **GBX.NET.PAK** sublibrary, but it applies only to PAKs from TMUF and below, and most of contents cannot be read or crashes during decryption.
 
 | Extension | Node | Can read | Can write
@@ -32,21 +33,27 @@ GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software 
 
 ## Compatibility
 
-- GBX.NET is compatible down to **.NET Standard 2.0** and **.NET Framework 4.8**.
-- Current language version is 10 and you need Visual Studio 2022 to contribute to the project **(you don't need Visual Studio 2022 if you install it as NuGet package)**.
-- The library supports **saving GBX files in 64bit environment** since 0.10.0. In the older versions, to be able to save your GBX, set your platform target to **x86**.
+- GBX.NET is compatible down to **.NET Standard 2.0** and **.NET Framework 4.6.2**.
+- Current language version is 10 and you need Visual Studio 2022 to contribute to the project + installation of .NET Framework 4.6.2 SDK **(you don't need Visual Studio 2022 if you install the project as NuGet package)**.
+- The library supports **saving Gbx files in 64bit environment** since 0.10.0. In the older versions, to be able to save your Gbx, set your platform target to **x86**.
 
 ## Techniques
 
-The library does node caching to speed up node parsing:
+The Gbx format compatibility is extensible through the `GBX.NET.Engines` namespace.
 
-- Currently, all nodes are cached when accessing the `Node` class for the first time, causing a slight (up to 100 ms) delay which may go up with future library additions.
-- *Selective node caching* would cache only the nodes the developer is interested in. This feature is planned for the future.
+Through the Gbx format, internal game objects (called **nodes**) are being serialized and deserialized through **chunks**. In GBX.NET, chunks are presented as node's **nested classes** and they are named using the pattern `Chunk[chunkId]` (where `chunkId` is formatted on 8 digits).
 
-The library speeds up parse time by ignoring unused skippable chunks with *discover* feature:
+Nodes inherit `CMwNod` or other class that inherits `CMwNod` and each node class has a `NodeAttribute` with its **latest ID** and a **protected constructor**. Chunks inherit the `Chunk<T>`/`SkippableChunk<T>`/`HeaderChunk<T>` class based on the behaviour and each chunk class has a `ChunkAttribute` with its **latest ID**.
 
-- Discover basically means "parse a skippable chunk".
-- Skippable chunks are parsed in-depth only if methods or properties request for them.
+Node caching is being done to increase the performance of reflection that handles the rules above (applies to both reading and writing):
+
+- All nodes are cached when calling the `NodeCacheManager.GetClassTypeById` (reading) or `NodeCacheManager.GetClassIdByType` (writing) for the first time - using the `NodeCacheManager.CacheClassTypesIfNotCached()` method, causing a slight delay on the first parse (rougly between 7-20 ms) and additional 1MB usage of memory. This may increase very slightly with future library additions.
+- *Selective chunk caching* only caches the chunk types and their attributes when a "new" node type appears during reading/writing. This was done to improve the delay of node caching and to value memory usage to things that are needed. Not caching the chunk types together with node types (at the same time) improves the performance by around 80%.
+
+The library also speeds up parse time by ignoring unused skippable chunks with *discover* feature:
+
+- Discover basically means "read a skippable chunk".
+- Skippable chunks are read in-depth only if methods or properties request for them.
 - Calling certain properties will discover all needed chunks synchronously before returning the value.
 - You can pre-discover certain chunks on different threads to increase your code's performance.
 
@@ -55,56 +62,57 @@ The library speeds up parse time by ignoring unused skippable chunks with *disco
 Maps were selected from all kinds of Trackmania official campaigns picked by the biggest file size.
 
 ```
-BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19043.1348 (21H1/May2021Update)
+BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19043.1466 (21H1/May2021Update)
 AMD Ryzen 7 3700X, 1 CPU, 16 logical and 8 physical cores
-  [Host]     : .NET 6.0.0 (6.0.21.52210), X64 RyuJIT  [AttachedDebugger]
-  Job-QCSCDP : .NET 6.0.0 (6.0.21.52210), X64 RyuJIT
+.NET SDK=6.0.101
+  [Host]     : .NET 6.0.1 (6.0.121.56705), X64 RyuJIT  [AttachedDebugger]
+  Job-CZXUUN : .NET 6.0.1 (6.0.121.56705), X64 RyuJIT
 ```
 
 | File name | Read | Read header | Write
 | --- | --- | --- | ---
-| 0_TrackMania\1.2.5 DemoSolo\DemoRaceB1 | 0,24 ms | 0,05 ms | 15,55 ms
-| 4_TrackMania United\2\snowC5 | 0,33 ms | 0,06 ms | 17,39 ms
-| 1_TrackMania Sunrise\1.4.7\CleanLanding | 0,35 ms | 0,06 ms | 22,24 ms
-| 0_TrackMania\1.2.3\RaceF7 | 0,39 ms | 0,04 ms | 26,53 ms
-| 2_TrackMania Original\1.5 Demo\DemoRace3 | 0,40 ms | 0,04 ms | 21,36 ms
-| 4_TrackMania United\2.0.8\DesertE | 0,40 ms | 0,06 ms | 28,52 ms
-| 8_Trackmania 2020\Training\cR­ç»f - 20 | 0,58 ms | 0,10 ms | 8,89 ms
-| 8_Trackmania 2020\Training\Training - 20 | 0,60 ms | 0,10 ms | 9,44 ms
-| 1_TrackMania Sunrise\1.4.5\AirControl | 0,71 ms | 0,06 ms | 16,76 ms
-| 6_TrackMania 2\MP4\BaseValley | 0,84 ms | 0,09 ms | 51,70 ms
-| 1_TrackMania Sunrise\1.4.5 Nvidia\TrialTime | 1,02 ms | 0,05 ms | 29,22 ms
-| 3_TrackMania Nations ESWC\1.7.5\Pro A-4 | 1,07 ms | 0,05 ms | 14,08 ms
-| 1_TrackMania Sunrise\1.5\TrialTime | 1,11 ms | 0,05 ms | 32,68 ms
-| 7_TrackMania Turbo\VR\VR_Stadium_007 | 1,16 ms | 0,08 ms | 20,48 ms
-| 1_TrackMania Sunrise\1.4.6\LittleWalk | 1,25 ms | 0,05 ms | 21,82 ms
-| 1_TrackMania Sunrise\1.5 Demo\DemoRace1 | 1,30 ms | 0,05 ms | 27,46 ms
-| 6_TrackMania 2\MP4Valley\D13 | 1,33 ms | 0,09 ms | 35,13 ms
-| 6_TrackMania 2\MP4Lagoon\B01 | 1,57 ms | 0,06 ms | 41,17 ms
-| 7_TrackMania Turbo\Solo\100 | 1,92 ms | 0,08 ms | 53,07 ms
-| 6_TrackMania 2\MP3Platform\E03 - Ultimate Nightmare | 1,97 ms | 0,10 ms | 64,17 ms
-| 6_TrackMania 2\MP3Valley\E01 | 2,01 ms | 0,10 ms | 63,66 ms
-| 6_TrackMania 2\MP3Stadium\E02 | 2,03 ms | 0,10 ms | 85,97 ms
-| 8_Trackmania 2020\Royal\NoTechLogic | 2,10 ms | 0,15 ms | 66,99 ms
-| 5_TrackMania Forever\2.11.11 Nations\E02-Endurance | 2,15 ms | 0,09 ms | 23,97 ms
-| 5_TrackMania Forever\2.11.25\StarStadiumE | 2,65 ms | 0,07 ms | 25,71 ms
-| 1_TrackMania Sunrise\1.4\Paradise Island | 2,87 ms | 0,04 ms | 28,37 ms
-| 5_TrackMania Forever\2.11.11 United\StuntC1 | 3,34 ms | 0,09 ms | 57,83 ms
-| 8_Trackmania 2020\20200701\a¤?a­Lcu> 2020 - 11 | 3,37 ms | 0,10 ms | 185,57 ms
-| 8_Trackmania 2020\20201001\ç§<a­L 2020 - 12 | 3,43 ms | 0,09 ms | 152,00 ms
-| 8_Trackmania 2020\20201001\Fall 2020 - 12 | 3,43 ms | 0,09 ms | 151,81 ms
-| 8_Trackmania 2020\20200701\Summer 2020 - 11 | 3,54 ms | 0,11 ms | 185,16 ms
-| 6_TrackMania 2\MP3Canyon\B10 | 3,87 ms | 0,07 ms | 24,26 ms
-| 2_TrackMania Original\1.5\StuntsD1 | 3,97 ms | 0,04 ms | 44,63 ms
-| Community\CCP#04 - ODYSSEY | 3,99 ms | 0,09 ms | 104,41 ms
-| 0_TrackMania\1 Demo\Track6 | 4,17 ms | 0,06 ms | 37,04 ms
-| 0_TrackMania\1 Beta\Track6 | 4,21 ms | 0,05 ms | 36,77 ms
-| 8_Trackmania 2020\20210401\Spring 2021 - 23 | 4,24 ms | 0,09 ms | 82,10 ms
-| 8_Trackmania 2020\20210101\Winter 2021 - 15 | 4,26 ms | 0,14 ms | 135,10 ms
-| 0_TrackMania\1.1\RaceD1 | 4,40 ms | 0,04 ms | 39,06 ms
-| 0_TrackMania\1\PuzzleF2 | 5,20 ms | 0,04 ms | 57,21 ms
-| 8_Trackmania 2020\20210701\Summer 2021 - 25 | 5,55 ms | 0,09 ms | 160,57 ms
-| 8_Trackmania 2020\20211001\Fall 2021 - 16 | 14,03 ms | 0,16 ms | 1204,03 ms
+| 0_TrackMania\1.2.5 DemoSolo\DemoRaceB1 | 0,25 ms | 0,03 ms | 0,29 ms
+| 4_TrackMania United\2\snowC5 | 0,28 ms | 0,03 ms | 0,38 ms
+| 2_TrackMania Original\1.5 Demo\DemoRace3 | 0,31 ms | 0,03 ms | 0,35 ms
+| 1_TrackMania Sunrise\1.4.7\CleanLanding | 0,33 ms | 0,04 ms | 0,37 ms
+| 4_TrackMania United\2.0.8\DesertE | 0,41 ms | 0,03 ms | 0,50 ms
+| 0_TrackMania\1.2.3\RaceF7 | 0,46 ms | 0,04 ms | 0,44 ms
+| 8_Trackmania 2020\Training\cR­ç»f - 20 | 0,49 ms | 0,04 ms | 1,43 ms
+| 8_Trackmania 2020\Training\Training - 20 | 0,49 ms | 0,04 ms | 1,59 ms
+| 1_TrackMania Sunrise\1.4.5\AirControl | 0,50 ms | 0,02 ms | 0,66 ms
+| 3_TrackMania Nations ESWC\1.7.5\Pro A-4 | 0,68 ms | 0,02 ms | 1,31 ms
+| 1_TrackMania Sunrise\1.4.5 Nvidia\TrialTime | 0,69 ms | 0,04 ms | 1,02 ms
+| 1_TrackMania Sunrise\1.5\TrialTime | 0,79 ms | 0,03 ms | 1,09 ms
+| 6_TrackMania 2\MP4\BaseValley | 0,85 ms | 0,04 ms | 1,74 ms
+| 1_TrackMania Sunrise\1.4.6\LittleWalk | 0,87 ms | 0,03 ms | 1,44 ms
+| 1_TrackMania Sunrise\1.5 Demo\DemoRace1 | 0,88 ms | 0,03 ms | 2,28 ms
+| 7_TrackMania Turbo\VR\VR_Stadium_007 | 1,05 ms | 0,03 ms | 2,42 ms
+| 6_TrackMania 2\MP4Lagoon\B01 | 1,22 ms | 0,03 ms | 2,71 ms
+| 6_TrackMania 2\MP4Valley\D13 | 1,24 ms | 0,03 ms | 2,91 ms
+| 5_TrackMania Forever\2.11.11 Nations\E02-Endurance | 1,25 ms | 0,04 ms | 2,62 ms
+| 1_TrackMania Sunrise\1.4\Paradise Island | 1,42 ms | 0,02 ms | 4,57 ms
+| 6_TrackMania 2\MP3Platform\E03 - Ultimate Nightmare | 1,48 ms | 0,03 ms | 3,20 ms
+| 7_TrackMania Turbo\Solo\100 | 1,55 ms | 0,03 ms | 3,67 ms
+| 6_TrackMania 2\MP3Valley\E01 | 1,58 ms | 0,03 ms | 3,43 ms
+| 5_TrackMania Forever\2.11.11 United\StuntC1 | 1,65 ms | 0,03 ms | 6,30 ms
+| 6_TrackMania 2\MP3Stadium\E02 | 1,82 ms | 0,03 ms | 4,48 ms
+| 0_TrackMania\1.1\RaceD1 | 1,85 ms | 0,02 ms | 10,36 ms
+| 0_TrackMania\1 Demo\Track6 | 1,96 ms | 0,03 ms | 9,64 ms
+| 8_Trackmania 2020\Royal\NoTechLogic | 2,00 ms | 0,04 ms | 5,39 ms
+| 2_TrackMania Original\1.5\StuntsD1 | 2,01 ms | 0,02 ms | 9,11 ms
+| 5_TrackMania Forever\2.11.25\StarStadiumE | 2,01 ms | 0,03 ms | 2,46 ms
+| 0_TrackMania\1\PuzzleF2 | 2,02 ms | 0,03 ms | 16,58 ms
+| 0_TrackMania\1 Beta\Track6 | 2,08 ms | 0,04 ms | 10,41 ms
+| 6_TrackMania 2\MP3Canyon\B10 | 2,82 ms | 0,02 ms | 3,14 ms
+| 8_Trackmania 2020\20200701\Summer 2020 - 11 | 2,88 ms | 0,05 ms | 7,22 ms
+| 8_Trackmania 2020\20201001\Fall 2020 - 12 | 2,97 ms | 0,04 ms | 7,42 ms
+| 8_Trackmania 2020\20201001\ç§<a­L 2020 - 12 | 3,05 ms | 0,04 ms | 7,66 ms
+| 8_Trackmania 2020\20210401\Spring 2021 - 23 | 3,07 ms | 0,03 ms | 8,10 ms
+| 8_Trackmania 2020\20200701\a¤?a­Lcu> 2020 - 11 | 3,08 ms | 0,04 ms | 7,45 ms
+| Community\CCP#04 - ODYSSEY | 3,32 ms | 0,03 ms | 7,76 ms
+| 8_Trackmania 2020\20210101\Winter 2021 - 15 | 3,62 ms | 0,04 ms | 9,54 ms
+| 8_Trackmania 2020\20210701\Summer 2021 - 25 | 4,33 ms | 0,03 ms | 11,67 ms
+| 8_Trackmania 2020\20211001\Fall 2021 - 16 | 12,52 ms | 0,04 ms | 20,64 ms
 
 ## Dependencies
 
@@ -113,6 +121,8 @@ AMD Ryzen 7 3700X, 1 CPU, 16 logical and 8 physical cores
 - 0.0.1 - 0.4.1: SharpZipLib.NETStandard
 - 0.1.0 - 0.4.1: Microsoft.CSharp
 - 0.0.1 - 0.9.0: System.Drawing.Common
+- 0.13.0+: TmEssentials
+- 0.15.0+: Microsoft.Extensions.Logging.Abstractions
 
 ### GBX.NET.Imaging
 - System.Drawing.Common
@@ -124,7 +134,7 @@ AMD Ryzen 7 3700X, 1 CPU, 16 logical and 8 physical cores
 
 **Since GBX.NET 0.11.0, the base of parsing has been simplified.**
 
-To parse a GBX with a known type:
+To parse a Gbx with a known type:
 
 ```cs
 using GBX.NET;
@@ -133,9 +143,11 @@ using GBX.NET.Engines.Game;
 using var map = GameBox.ParseNode<CGameCtnChallenge>("MyMap.Map.Gbx");
 ```
 
-**Don't forget to dispose the `Node`/`GameBox` with `Dispose()` or the `using` statement to not bloat the memory with states!**
+**Don't forget to dispose the `Node`/`GameBox` with `Dispose()` or the `using` statement** to not bloat the memory with states!
 
-To parse a GBX with an unknown type:
+Even though all nodes implement the `IDisposable` interface, **you only need to dispose the main node, OR the `GameBox` object.**
+
+To parse a Gbx with an unknown type:
 
 ```cs
 using GBX.NET;
@@ -165,9 +177,9 @@ switch (node)
 }
 ```
 
-To get GBX metadata or header chunks, use the `node.GBX` property.
+To get the Gbx metadata, use the `node.GetGbx()` property (only possible on the main node).
 
-To save changes of the parsed GBX file:
+To save changes of the parsed Gbx file:
 
 ```cs
 using GBX.NET;
@@ -189,7 +201,7 @@ else if (node is CGameCtnGhost ghost)
 }
 ```
 
-To save any supported `Node` to a GBX file:
+To save any supported `Node` to a Gbx file:
 
 ```cs
 using GBX.NET;
@@ -197,11 +209,12 @@ using GBX.NET.Engines.Game;
 
 using var replay = GameBox.ParseNode<CGameCtnReplayRecord>("MyReplay.Replay.Gbx");
 
+// Ghosts property can be null if you would use the ParseNodeHeader method.
 if (replay.Ghosts is not null)
 {
     foreach (CGameCtnGhost ghost in replay.Ghosts)
     {
-        ghost.Save("MyExtractedGhost.Ghost.Gbx");
+        ghost.Save($"{ghost.GhostNickname}.Ghost.Gbx");
     }
 }
 ```
@@ -210,7 +223,7 @@ if (replay.Ghosts is not null)
 
 ### This convention is no longer relevant in GBX.NET 0.11.0+ when using the ParseNode method.
 
-Make the code cleaner by **aliasing** the `Node` from the parsed `GameBox<T>`:
+Make the code cleaner by **aliasing** the `Node` from the parsed `GameBox`:
 
 ```cs
 using var gbx = GameBox.Parse<CGameCtnChallenge>("MyMap.Map.Gbx");
@@ -230,7 +243,7 @@ var silverTime = map.SilverTime; // Correct
 
 ### Conclusion
 
-Your work doesn't have to fall under the GNU GPL license if you're interested in either reading the header data only, or reading certain uncompressed GBX files (usually the internal ones inside PAK files). If you're looking to read the content of a **compressed GBX body** (applies to maps, replays and other user generated content), you **have to license your work with GNU GPL v3.0 or later**.
+Your work doesn't have to fall under the GNU GPL license if you're interested in either reading the header data only, or reading certain uncompressed Gbx files (usually the internal ones inside PAK files). If you're looking to read the content of a **compressed Gbx body** (applies to maps, replays and other user generated content), you **have to license your work with GNU GPL v3.0 or later**.
 
 ## Special thanks
 
@@ -245,8 +258,8 @@ Without these people, this project wouldn't be what it is today:
 
 And many thanks to every bug reporter!
 
-## Alternative GBX parsers
+## Alternative Gbx parsers
 
-- [gbx.js](https://github.com/ThaumicTom/gbx.js) by ThaumicTom (GBX header parser for clientside JavaScript)
-- [ManiaPlanetSharp](https://github.com/stefan-baumann/ManiaPlanetSharp) by Solux (C# toolkit for accessing ManiaPlanet data, including GBX parser used by ManiaExchange)
-- [pygbx](https://github.com/donadigo/pygbx) by Donadigo (GBX parser for Python)
+- [gbx.js](https://github.com/ThaumicTom/gbx.js) by ThaumicTom (Gbx header parser for clientside JavaScript)
+- [ManiaPlanetSharp](https://github.com/stefan-baumann/ManiaPlanetSharp) by Solux (C# toolkit for accessing ManiaPlanet data, including Gbx parser used by ManiaExchange)
+- [pygbx](https://github.com/donadigo/pygbx) by Donadigo (Gbx parser for Python)

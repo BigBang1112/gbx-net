@@ -85,6 +85,8 @@ public record FileRef
         get => new byte[] { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     }
 
+    public static readonly FileRef Default = new();
+
     private class DebugView
     {
         private readonly FileRef fileRef;

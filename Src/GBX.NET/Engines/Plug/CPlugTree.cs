@@ -71,7 +71,7 @@ public class CPlugTree : CPlug
         public override async Task ReadWriteAsync(CPlugTree n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
         {
             rw.Int32(ref U01); // list version
-            n.children = (await rw.ListNodeAsync<CPlugTree>(n.children!))!;
+            n.children = (await rw.ListNodeAsync<CPlugTree>(n.children!, cancellationToken))!;
         }
     }
 

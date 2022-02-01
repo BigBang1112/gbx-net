@@ -1297,16 +1297,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     /// <summary>
-    /// Sets a new map password.
-    /// </summary>
-    /// <param name="password">Password that will be hashed.</param>
-    private void NewPassword(string password)
-    {
-        var md5 = MD5.Create();
-        hashedPassword = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
-    }
-
-    /// <summary>
     /// Cracks the map password.
     /// </summary>
     public void CrackPassword()
@@ -1625,7 +1615,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             using var ms = new MemoryStream(embed.Value);
             var gbx = GameBox.ParseHeader(ms);
-            gbx.FileName = embed.Key;
             yield return gbx;
         }
     }
@@ -2390,18 +2379,20 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             rw.Int32(ref version);
 
-            if (version != 0)
+            if (version == 0)
             {
-                var thumbnailSize = rw.Int32(n.thumbnail?.Length ?? 0);
-
-                rw.Bytes(Encoding.UTF8.GetBytes("<Thumbnail.jpg>"), "<Thumbnail.jpg>".Length); // Because the string is purely ASCII anyway, Length is usable
-                rw.Bytes(ref n.thumbnail, thumbnailSize);
-                rw.Bytes(Encoding.UTF8.GetBytes("</Thumbnail.jpg>"), "</Thumbnail.jpg>".Length);
-
-                rw.Bytes(Encoding.UTF8.GetBytes("<Comments>"), "<Comments>".Length);
-                rw.String(ref n.comments);
-                rw.Bytes(Encoding.UTF8.GetBytes("</Comments>"), "</Comments>".Length);
+                return;
             }
+
+            var thumbnailSize = rw.Int32(n.thumbnail?.Length ?? 0);
+
+            rw.Bytes(Encoding.UTF8.GetBytes("<Thumbnail.jpg>"), "<Thumbnail.jpg>".Length); // Because the string is purely ASCII anyway, Length is usable
+            rw.Bytes(ref n.thumbnail, thumbnailSize);
+            rw.Bytes(Encoding.UTF8.GetBytes("</Thumbnail.jpg>"), "</Thumbnail.jpg>".Length);
+
+            rw.Bytes(Encoding.UTF8.GetBytes("<Comments>"), "<Comments>".Length);
+            rw.String(ref n.comments);
+            rw.Bytes(Encoding.UTF8.GetBytes("</Comments>"), "</Comments>".Length);
         }
     }
 

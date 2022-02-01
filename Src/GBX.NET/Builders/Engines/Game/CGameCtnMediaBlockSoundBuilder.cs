@@ -47,7 +47,7 @@ public partial class CGameCtnMediaBlockSoundBuilder : Builder
     {
         var node = NodeCacheManager.GetNodeInstance<CGameCtnMediaBlockSound>(0x030A7000);
 
-        node.Sound = Sound ?? new FileRef();
+        node.Sound = Sound ?? FileRef.Default;
         node.Keys = Keys ?? new List<CGameCtnMediaBlockSound.Key>();
         node.PlayCount = PlayCount;
         node.IsLooping = IsLooping;
