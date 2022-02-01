@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 [Node(0x09015000)]
-public sealed class CPlugTreeVisualMip : CPlugTree
+public class CPlugTreeVisualMip : CPlugTree
 {
     private IDictionary<float, CPlugTree> levels;
 
@@ -11,7 +11,7 @@ public sealed class CPlugTreeVisualMip : CPlugTree
         set => levels = value;
     }
 
-    private CPlugTreeVisualMip()
+    protected CPlugTreeVisualMip()
     {
         levels = null!;
     }
@@ -21,7 +21,12 @@ public sealed class CPlugTreeVisualMip : CPlugTree
     {
         public override void ReadWrite(CPlugTreeVisualMip n, GameBoxReaderWriter rw)
         {
-            rw.DictionaryNode(ref n.levels!);
+            rw.DictionaryNode(ref n.levels!, overrideKey: true);
+        }
+
+        public override async Task ReadWriteAsync(CPlugTreeVisualMip n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            n.levels = (await rw.DictionaryNodeAsync(n.levels!, overrideKey: true, cancellationToken))!;
         }
     }
 }

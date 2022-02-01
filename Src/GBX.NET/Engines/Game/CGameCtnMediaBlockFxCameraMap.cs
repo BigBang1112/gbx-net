@@ -1,7 +1,11 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// MediaTracker block - Camera map effect (0x03139000)
+/// </summary>
 [Node(0x03139000)]
-public sealed class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
+[NodeExtension("GameCtnMediaBlockFxCameraMap")]
+public class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {
     #region Fields
 
@@ -30,7 +34,7 @@ public sealed class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, CGameCtn
 
     #region Constructors
 
-    private CGameCtnMediaBlockFxCameraMap()
+    protected CGameCtnMediaBlockFxCameraMap()
     {
 
     }

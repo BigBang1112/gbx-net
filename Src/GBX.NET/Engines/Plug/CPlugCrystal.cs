@@ -2,8 +2,13 @@
 
 namespace GBX.NET.Engines.Plug;
 
+/// <summary>
+/// CPlugCrystal (0x09003000)
+/// </summary>
+/// <remarks>A custom mesh or model.</remarks>
 [Node(0x09003000)]
-public sealed class CPlugCrystal : CPlugTreeGenerator
+[NodeExtension("Crystal")]
+public class CPlugCrystal : CPlugTreeGenerator
 {
     #region Enums
 
@@ -56,7 +61,7 @@ public sealed class CPlugCrystal : CPlugTreeGenerator
 
     #region Constructors
 
-    private CPlugCrystal()
+    protected CPlugCrystal()
     {
         materials = null!;
         Layers = null!;

@@ -91,7 +91,7 @@ public class NadeoPak : IDisposable
             do
             {
                 fileIndex = r.ReadInt32();
-                var header = new GameBoxHeaderInfo(r);
+                var header = GameBox.Header.Parse(r, logger: null);
             }
             while (fileIndex != -1);
         }
@@ -143,7 +143,7 @@ public class NadeoPak : IDisposable
             var uncompressedSize = r.ReadInt32();
             var compressedSize = r.ReadInt32();
             var offset = r.ReadInt32();
-            var classID = CMwNod.Remap(r.ReadUInt32()); // indicates the type of the file
+            var classID = Node.RemapToLatest(r.ReadUInt32()); // indicates the type of the file
             var flags = r.ReadUInt64();
 
             var folder = folders.ElementAtOrDefault(folderIndex);

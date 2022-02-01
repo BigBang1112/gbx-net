@@ -1,14 +1,16 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Coloring capturable
+/// MediaTracker block - Coloring capturable (0x0316C000)
 /// </summary>
 [Node(0x0316C000)]
-public sealed class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+[NodeExtension("GameCtnMediaBlockColoringCapturable")]
+public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
     private IList<Key> keys;
+    private int capturableIndex;
 
     #endregion
 
@@ -27,11 +29,18 @@ public sealed class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, C
         set => keys = value;
     }
 
+    [NodeMember(ExactlyNamed = true)]
+    public int CapturableIndex
+    {
+        get => capturableIndex;
+        set => capturableIndex = value;
+    }
+
     #endregion
 
     #region Constructors
 
-    private CGameCtnMediaBlockColoringCapturable()
+    protected CGameCtnMediaBlockColoringCapturable()
     {
         keys = null!;
     }
@@ -48,7 +57,7 @@ public sealed class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, C
     [Chunk(0x0316C000)]
     public class Chunk0316C000 : Chunk<CGameCtnMediaBlockColoringCapturable>, IVersionable
     {
-        private int version;
+        private int version = 2;
 
         public int U01;
 
@@ -60,38 +69,19 @@ public sealed class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, C
 
         public override void ReadWrite(CGameCtnMediaBlockColoringCapturable n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.Int32(ref version); // If version is below 2, there is an loop of two floats and no U01
             rw.Int32(ref U01);
 
-            rw.List(ref n.keys!, r => new Key()
+            rw.ListKey(ref n.keys!);
+
+            if (version >= 1)
             {
-                Time = r.ReadSingle_s(),
-                Hue = r.ReadSingle(),
-                Gauge = r.ReadSingle(),
-                Emblem = r.ReadInt32()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Hue);
-                w.Write(x.Gauge);
-                w.Write(x.Emblem);
-            });
+                rw.Int32(ref n.capturableIndex);
+            }
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float Hue { get; set; }
-        public float Gauge { get; set; }
-        public int Emblem { get; set; }
-    }
 
     #endregion
 }

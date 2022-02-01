@@ -2,8 +2,12 @@
 
 namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// MediaTracker block - Text (0x030A8000)
+/// </summary>
 [Node(0x030A8000)]
-public sealed class CGameCtnMediaBlockText : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+[NodeExtension("GameCtnMediaBlockText")]
+public class CGameCtnMediaBlockText : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     private string text;
     private CControlEffectSimi effect;
@@ -42,7 +46,7 @@ public sealed class CGameCtnMediaBlockText : CGameCtnMediaBlock, CGameCtnMediaBl
 
     #region Constructors
 
-    private CGameCtnMediaBlockText()
+    protected CGameCtnMediaBlockText()
     {
         text = null!;
         effect = null!;

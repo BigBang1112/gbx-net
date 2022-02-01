@@ -17,8 +17,8 @@ public class CGameCtnMediaTrackBuilderTests
     public static string GetSampleName() => Unit.Builders.Engines.Game.CGameCtnMediaTrackBuilderTests.GetSampleName();
     public static CGameCtnMediaBlock[] GetSampleBlocksForTM2() => Unit.Builders.Engines.Game.CGameCtnMediaTrackBuilderTests.GetSampleBlocksForTMUF();
 
-    private static CGameCtnMediaTrack BuildNode(Func<ICGameCtnMediaTrackBuilderFor,
-        GameBuilder<ICGameCtnMediaTrackBuilder, CGameCtnMediaTrack>> func, string name, params CGameCtnMediaBlock[] blocks)
+    private static CGameCtnMediaTrack BuildNode(Func<CGameCtnMediaTrackBuilder,
+        GameBuilder<CGameCtnMediaTrackBuilder, CGameCtnMediaTrack>> func, string name, params CGameCtnMediaBlock[] blocks)
     {
         var builder = new CGameCtnMediaTrackBuilder()
             .WithName(name)
@@ -26,8 +26,8 @@ public class CGameCtnMediaTrackBuilderTests
         return func.Invoke(builder).Build();
     }
 
-    private static void ForX_ParametersShouldMatch(Func<ICGameCtnMediaTrackBuilderFor,
-        GameBuilder<ICGameCtnMediaTrackBuilder, CGameCtnMediaTrack>> func)
+    private static void ForX_ParametersShouldMatch(Func<CGameCtnMediaTrackBuilder,
+        GameBuilder<CGameCtnMediaTrackBuilder, CGameCtnMediaTrack>> func)
     {
         var name = GetSampleName();
         var blocks = GetSampleBlocksForTM2();
@@ -38,8 +38,8 @@ public class CGameCtnMediaTrackBuilderTests
         Assert.Equal(expected: blocks, actual: node.Blocks);
     }
 
-    private static void ForX_ChunksShouldMatch(Func<ICGameCtnMediaTrackBuilderFor,
-        GameBuilder<ICGameCtnMediaTrackBuilder, CGameCtnMediaTrack>> func, Action<CGameCtnMediaTrack> chunkAssert)
+    private static void ForX_ChunksShouldMatch(Func<CGameCtnMediaTrackBuilder,
+        GameBuilder<CGameCtnMediaTrackBuilder, CGameCtnMediaTrack>> func, Action<CGameCtnMediaTrack> chunkAssert)
     {
         var name = GetSampleName();
         var blocks = GetSampleBlocksForTM2();

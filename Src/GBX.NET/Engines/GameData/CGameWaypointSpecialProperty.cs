@@ -1,7 +1,10 @@
 ﻿namespace GBX.NET.Engines.GameData;
 
+/// <summary>
+/// Waypoint (0x2E009000)
+/// </summary>
 [Node(0x2E009000)]
-public sealed class CGameWaypointSpecialProperty : CMwNod
+public class CGameWaypointSpecialProperty : CMwNod
 {
     #region Fields
 
@@ -38,7 +41,7 @@ public sealed class CGameWaypointSpecialProperty : CMwNod
 
     #region Constructors
 
-    private CGameWaypointSpecialProperty()
+    protected CGameWaypointSpecialProperty()
     {
 
     }

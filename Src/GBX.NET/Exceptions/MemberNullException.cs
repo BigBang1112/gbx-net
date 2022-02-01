@@ -7,5 +7,6 @@ public class MemberNullException : Exception
 {
     public MemberNullException(string memberName) : base($"Member '{memberName}' is null.")
     {
+
     }
 }

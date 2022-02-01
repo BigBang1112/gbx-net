@@ -1,10 +1,10 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Camera ingame
+/// MediaTracker block - Camera ingame (0x03084000)
 /// </summary>
 [Node(0x03084000)]
-public sealed class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasTwoKeys
+public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasTwoKeys
 {
     #region Enums
 
@@ -88,7 +88,7 @@ public sealed class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGa
 
     #region Constructors
 
-    private CGameCtnMediaBlockCameraGame()
+    protected CGameCtnMediaBlockCameraGame()
     {
 
     }
@@ -155,6 +155,34 @@ public sealed class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGa
 
     #endregion
 
+    #region 0x004 chunk
+
+    /// <summary>
+    /// CGameCtnMediaBlockCameraGame 0x004 chunk
+    /// </summary>
+    [Chunk(0x03084004)]
+    public class Chunk03084004 : Chunk<CGameCtnMediaBlockCameraGame>
+    {
+        public float[]? U01;
+        public float[]? U02;
+
+        public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
+        {
+            rw.Single_s(ref n.start);
+            rw.Single_s(ref n.end);
+            rw.Id(ref n.gameCam);
+            rw.Int32(ref n.clipEntId);
+
+            // GmCamFreeVal
+            // // GmLocFreeVal
+            rw.Array<float>(ref U01, count: 6);
+            // // GmLensVal
+            rw.Array<float>(ref U02, count: 5);
+        }
+    }
+
+    #endregion
+
     #region 0x005 chunk
 
     /// <summary>
@@ -163,15 +191,57 @@ public sealed class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGa
     [Chunk(0x03084005)]
     public class Chunk03084005 : Chunk<CGameCtnMediaBlockCameraGame>
     {
-        public int Version { get; set; }
+        public float[]? U01;
+        public float[]? U02;
+        public bool U03;
 
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
         {
             rw.Single_s(ref n.start);
             rw.Single_s(ref n.end);
             rw.Id(ref n.gameCam);
+            rw.Int32(ref n.clipEntId);
 
-            rw.UntilFacade(Unknown); // Helicopter camera transform? 17 ints, sometimes 19
+            // GmCamFreeVal
+            // // GmLocFreeVal
+            rw.Array<float>(ref U01, count: 6);
+            // // GmLensVal
+            rw.Array<float>(ref U02, count: 5);
+
+            rw.Boolean(ref U03);
+        }
+    }
+
+    #endregion
+
+    #region 0x006 chunk
+
+    /// <summary>
+    /// CGameCtnMediaBlockCameraGame 0x005 chunk
+    /// </summary>
+    [Chunk(0x03084006)]
+    public class Chunk03084006 : Chunk<CGameCtnMediaBlockCameraGame>
+    {
+        public float[]? U01;
+        public float[]? U02;
+        public bool U03;
+        public bool U04;
+
+        public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
+        {
+            rw.Single_s(ref n.start);
+            rw.Single_s(ref n.end);
+            rw.Id(ref n.gameCam);
+            rw.Int32(ref n.clipEntId);
+
+            // GmCamFreeVal
+            // // GmLocFreeVal
+            rw.Array<float>(ref U01, count: 6);
+            // // GmLensVal
+            rw.Array<float>(ref U02, count: 5);
+
+            rw.Boolean(ref U03);
+            rw.Boolean(ref U04);
         }
     }
 
@@ -193,14 +263,51 @@ public sealed class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGa
             set => version = value;
         }
 
+        public float[]? U01;
+        public float[]? U02;
+        public bool U03;
+        public bool U04;
+        public bool U05;
+        public float U06;
+        public int U07;
+
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
             rw.Single_s(ref n.start);
             rw.Single_s(ref n.end);
-            rw.EnumInt32<EGameCam2>(ref n.gameCam2);
 
-            rw.UntilFacade(Unknown); // Helicopter camera transform? 17 ints, sometimes 19
+            if (version <= 1)
+            {
+                rw.Id(ref n.gameCam);
+            }
+
+            if (version >= 2)
+            {
+                rw.EnumInt32<EGameCam2>(ref n.gameCam2);
+            }
+
+            rw.Int32(ref n.clipEntId);
+
+            // GmCamFreeVal
+            // // GmLocFreeVal
+            rw.Array<float>(ref U01, count: 6);
+            // // GmLensVal
+            rw.Array<float>(ref U02, count: 5);
+
+            rw.Boolean(ref U03);
+            rw.Boolean(ref U04);
+            rw.Boolean(ref U05);
+
+            if (version >= 1)
+            {
+                rw.Single(ref U06);
+
+                if (version >= 3)
+                {
+                    rw.Int32(ref U07);
+                }
+            }
         }
     }
 

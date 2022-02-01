@@ -6,4 +6,14 @@ public class TextFormatNotSupportedException : Exception
     {
 
     }
+
+    public TextFormatNotSupportedException(string? message) : base(message)
+    {
+
+    }
+
+    public TextFormatNotSupportedException(string? message, Exception? innerException) : base(message, innerException)
+    {
+
+    }
 }

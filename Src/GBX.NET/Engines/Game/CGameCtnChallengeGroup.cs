@@ -4,7 +4,7 @@
 /// Group of maps (0x0308F000)
 /// </summary>
 [Node(0x0308F000)]
-public sealed class CGameCtnChallengeGroup : CMwNod
+public class CGameCtnChallengeGroup : CMwNod
 {
     #region Fields
 
@@ -33,7 +33,7 @@ public sealed class CGameCtnChallengeGroup : CMwNod
 
     #region Constructors
 
-    private CGameCtnChallengeGroup()
+    protected CGameCtnChallengeGroup()
     {
 
     }
@@ -99,7 +99,7 @@ public sealed class CGameCtnChallengeGroup : CMwNod
 
     public class MapInfo
     {
-        public Ident Metadata { get; set; } = new Ident();
+        public Ident Metadata { get; set; } = Ident.Empty;
         public string FilePath { get; set; } = string.Empty;
 
         public override string ToString()

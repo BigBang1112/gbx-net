@@ -1,9 +1,16 @@
-﻿using System.Diagnostics;
+﻿#if DEBUG
+using System.Diagnostics;
+#endif
 
 namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// CGameCtnReplayRecord (0x03093000)
+/// </summary>
+/// <remarks>A replay.</remarks>
 [Node(0x03093000), WritingNotSupported]
-public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
+[NodeExtension("Replay")]
+public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 {
     #region Fields
 
@@ -18,8 +25,9 @@ public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     private string? authorNickname;
     private string? authorZone;
     private string? authorExtraInfo;
-    private Task<CGameCtnChallenge> challenge;
-    private CGameCtnGhost[] ghosts;
+    private byte[]? challengeData;
+    private CGameCtnChallenge? challenge;
+    private CGameCtnGhost[]? ghosts;
     private long[]? extras;
     private CGameCtnMediaClip? clip;
     private CPlugEntRecordData? recordData;
@@ -27,15 +35,19 @@ public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     private int? eventsDuration;
     private ControlEntry[]? controlEntries;
     private string? game;
+    private CCtnMediaBlockUiTMSimpleEvtsDisplay? simpleEventsDisplay;
 
     #endregion
 
     #region Properties
 
+#if DEBUG
     /// <summary>
-    /// Shows members that are available from the GBX header (reading the body is not required).
+    /// Shows members that are available from the GBX header (members where reading the body is not required). This method is available only in DEBUG configuration.
     /// </summary>
-    public IHeader Header => this;
+    /// <remarks>This is just a helper method that just returns THIS object, just casted as <see cref="IHeader"/>. Avoid using this method in production.</remarks>
+    public IHeader GetHeaderMembers() => this;
+#endif
 
     /// <summary>
     /// Map UID, environment, and author login of the map the replay orients in.
@@ -140,16 +152,34 @@ public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     }
 
     /// <summary>
-    /// The map the replay orients in.
+    /// The map the replay orients in. Null if only the header was read.
     /// </summary>
     [NodeMember]
-    public CGameCtnChallenge Challenge => challenge.Result;
+    public CGameCtnChallenge? Challenge
+    {
+        get
+        {
+            if (challengeData is null)
+            {
+                return null;
+            }
+
+            if (challenge is null)
+            {
+                using var ms = new MemoryStream(challengeData);
+                challenge = GameBox.ParseNode<CGameCtnChallenge>(ms);
+            }
+
+            return challenge;
+        }
+    }
 
     /// <summary>
-    /// Ghosts in the replay. NOTE: Some ghosts can be considered as <see cref="CGameCtnMediaBlockGhost"/>. See <see cref="Clip"/>.
+    /// Ghosts in the replay. Null if only the header was read.
     /// </summary>
+    /// <remarks>Some ghosts can be considered as <see cref="CGameCtnMediaBlockGhost"/>. See <see cref="Clip"/>.</remarks>
     [NodeMember]
-    public CGameCtnGhost[] Ghosts => ghosts;
+    public CGameCtnGhost[]? Ghosts => ghosts;
 
     [NodeMember]
     public long[]? Extras => extras;
@@ -168,6 +198,12 @@ public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// </summary>
     [NodeMember]
     public CCtnMediaBlockEventTrackMania? Events => events;
+
+    /// <summary>
+    /// Events occuring during the replay. Available in TMS and older games.
+    /// </summary>
+    [NodeMember]
+    public CCtnMediaBlockUiTMSimpleEvtsDisplay? SimpleEventsDisplay => simpleEventsDisplay;
 
     /// <summary>
     /// Duration of events in the replay (range of detected inputs). This can be 0 if the replay was driven in editor and null if driven in TMU, TMUF, TMTurbo, TM2 and TM2020.
@@ -195,10 +231,9 @@ public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region Constructors
 
-    private CGameCtnReplayRecord()
+    protected CGameCtnReplayRecord()
     {
-        challenge = null!;
-        ghosts = null!;
+        
     }
 
     #endregion
@@ -207,22 +242,27 @@ public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     public IEnumerable<CGameCtnGhost> GetGhosts()
     {
-        foreach (var ghost in ghosts)
-            if (ghost is not null)
+        if (ghosts is not null)
+        {
+            foreach (var ghost in ghosts)
+            {
                 yield return ghost;
+            }
+        }
 
         if (clip is not null)
+        {
             foreach (var track in clip.Tracks)
-                if (track is not null)
-                    foreach (var block in track.Blocks)
-                        if (block is CGameCtnMediaBlockGhost ghostBlock)
-                            if (ghostBlock.GhostModel is not null)
-                                yield return ghostBlock.GhostModel;
-    }
-
-    public async Task<CGameCtnChallenge> GetChallengeAsync()
-    {
-        return await challenge;
+            {
+                foreach (var block in track.Blocks)
+                {
+                    if (block is CGameCtnMediaBlockGhost ghostBlock)
+                    {
+                        yield return ghostBlock.GhostModel;
+                    }
+                }
+            }
+        }
     }
 
     #endregion
@@ -304,30 +344,7 @@ public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     {
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
         {
-            var size = r.ReadInt32();
-
-            if (size <= 0)
-                throw new Exception();
-
-            var trackGbx = r.ReadBytes(size);
-
-            n.challenge = Task.Run(() =>
-            {
-                using var ms = new MemoryStream(trackGbx);
-                return GameBox.ParseNode<CGameCtnChallenge>(ms);
-            });
-
-#if DEBUG
-            n.challenge.ContinueWith(x =>
-            {
-                if (!x.IsFaulted)
-                    return;
-
-                var e = x.Exception?.InnerException;
-                Debug.WriteLine(e?.Message);
-                Debug.WriteLine(e?.StackTrace);
-            });
-#endif
+            n.challengeData = r.ReadBytes();
         }
     }
 
@@ -353,12 +370,12 @@ public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             // All control names available in the game
             var controlNames = r.ReadArray(r1 =>
             {
-                    // Maybe bindings
-                    r1.ReadInt32();
+                // Maybe bindings
+                r1.ReadInt32();
                 r1.ReadInt32();
 
                 return r1.ReadString(); // Input name
-                });
+            });
 
             var numEntries = r.ReadInt32() - 1;
 
@@ -399,7 +416,18 @@ public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             Version = r.ReadInt32();
             var u02 = r.ReadInt32();
 
-            n.ghosts = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnGhost>()!);
+            n.ghosts = r.ReadArray(r => r.ReadNodeRef<CGameCtnGhost>()!);
+
+            var u03 = r.ReadInt32(); // millisecond length of something (usually record time + 0.5s)
+            var u04 = r.ReadInt32();
+        }
+
+        public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            Version = r.ReadInt32();
+            var u02 = r.ReadInt32();
+
+            n.ghosts = (await r.ReadArrayAsync(r => r.ReadNodeRefAsync<CGameCtnGhost>()!))!;
 
             var u03 = r.ReadInt32(); // millisecond length of something (usually record time + 0.5s)
             var u04 = r.ReadInt32();
@@ -462,6 +490,11 @@ public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
         {
             n.clip = r.ReadNodeRef<CGameCtnMediaClip>();
+        }
+
+        public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            n.clip = await r.ReadNodeRefAsync<CGameCtnMediaClip>(cancellationToken);
         }
     }
 
@@ -549,12 +582,16 @@ public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     #region 0x010 chunk
 
     [Chunk(0x03093010)]
-    [IgnoreChunk]
     public class Chunk03093010 : Chunk<CGameCtnReplayRecord>
     {
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
         {
+            n.simpleEventsDisplay = r.ReadNodeRef<CCtnMediaBlockUiTMSimpleEvtsDisplay>();
+        }
 
+        public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            n.simpleEventsDisplay = await r.ReadNodeRefAsync<CCtnMediaBlockUiTMSimpleEvtsDisplay>(cancellationToken);
         }
     }
 
@@ -595,9 +632,17 @@ public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
         {
             Version = r.ReadInt32();
-            n.ghosts = r.ReadArray(r1 => r1.ReadNodeRef<CGameCtnGhost>()!);
+            n.ghosts = r.ReadArray(r => r.ReadNodeRef<CGameCtnGhost>()!);
             U01 = r.ReadInt32();
-            n.extras = r.ReadArray(r1 => r1.ReadInt64());
+            n.extras = r.ReadArray(r => r.ReadInt64());
+        }
+
+        public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            Version = r.ReadInt32();
+            n.ghosts = (await r.ReadArrayAsync(r => r.ReadNodeRefAsync<CGameCtnGhost>()!))!;
+            U01 = r.ReadInt32();
+            n.extras = r.ReadArray(r => r.ReadInt64());
         }
     }
 
@@ -611,6 +656,11 @@ public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
         {
             n.clip = r.ReadNodeRef<CGameCtnMediaClip>();
+        }
+
+        public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            n.clip = await r.ReadNodeRefAsync<CGameCtnMediaClip>(cancellationToken);
         }
     }
 
@@ -664,65 +714,16 @@ public sealed class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             U02 = r.ReadInt32();
             n.recordData = r.ReadNodeRef<CPlugEntRecordData>();
         }
+
+        public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            U01 = r.ReadInt32();
+            U02 = r.ReadInt32();
+            n.recordData = await r.ReadNodeRefAsync<CPlugEntRecordData>(cancellationToken);
+        }
     }
 
     #endregion
-
-    #endregion
-
-    #region Header interface
-
-    public interface IHeader : INodeHeader
-    {
-        /// <summary>
-        /// Map UID, environment, and author login of the map the replay orients in.
-        /// </summary>
-        Ident? MapInfo { get; }
-
-        /// <summary>
-        /// The record time.
-        /// </summary>
-        TimeSpan? Time { get; }
-
-        /// <summary>
-        /// Nickname of the record owner.
-        /// </summary>
-        string? PlayerNickname { get; }
-
-        /// <summary>
-        /// Login of the record owner.
-        /// </summary>
-        string? PlayerLogin { get; }
-
-        /// <summary>
-        /// Title pack the replay orients in.
-        /// </summary>
-        string? TitleID { get; }
-
-        /// <summary>
-        /// XML replay information.
-        /// </summary>
-        string? XML { get; }
-
-        int? AuthorVersion { get; }
-
-        /// <summary>
-        /// Login of the replay creator.
-        /// </summary>
-        string? AuthorLogin { get; }
-
-        /// <summary>
-        /// Nickname of the replay creator.
-        /// </summary>
-        string? AuthorNickname { get; }
-
-        /// <summary>
-        /// Zone of the replay creator.
-        /// </summary>
-        string? AuthorZone { get; }
-
-        string? AuthorExtraInfo { get; }
-    }
 
     #endregion
 }

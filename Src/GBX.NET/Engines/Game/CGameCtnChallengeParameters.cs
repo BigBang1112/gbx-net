@@ -4,7 +4,7 @@
 /// Map parameters (0x0305B000)
 /// </summary>
 [Node(0x0305B000)]
-public sealed class CGameCtnChallengeParameters : CMwNod
+public class CGameCtnChallengeParameters : CMwNod
 {
     #region Fields
 
@@ -147,7 +147,7 @@ public sealed class CGameCtnChallengeParameters : CMwNod
 
     #region Constructors
 
-    private CGameCtnChallengeParameters()
+    protected CGameCtnChallengeParameters()
     {
         tip = null!;
     }

@@ -1,7 +1,8 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 [Node(0x090FD000)]
-public sealed class CPlugMaterialUserInst : CMwNod
+[NodeExtension("Mat")]
+public class CPlugMaterialUserInst : CMwNod
 {
     private string? materialFile;
 
@@ -11,14 +12,14 @@ public sealed class CPlugMaterialUserInst : CMwNod
         set => materialFile = value;
     }
 
-    private CPlugMaterialUserInst()
+    protected CPlugMaterialUserInst()
     {
 
     }
 
     public override string ToString()
     {
-        return MaterialFile ?? "";
+        return $"{base.ToString()} {{ {MaterialFile ?? "No material file"} }}";
     }
 
     [Chunk(0x090FD000)]

@@ -1,7 +1,10 @@
 ﻿namespace GBX.NET.Engines.Hms;
 
+/// <summary>
+/// CHmsItem (0x06003000)
+/// </summary>
 [Node(0x06003000)]
-public sealed class CHmsItem : CMwNod
+public class CHmsItem : CMwNod
 {
     private CPlugSolid solid;
 
@@ -11,7 +14,7 @@ public sealed class CHmsItem : CMwNod
         set => solid = value;
     }
 
-    private CHmsItem()
+    protected CHmsItem()
     {
         solid = null!;
     }
@@ -22,6 +25,19 @@ public sealed class CHmsItem : CMwNod
         public override void ReadWrite(CHmsItem n, GameBoxReaderWriter rw)
         {
             rw.NodeRef<CPlugSolid>(ref n.solid!);
+        }
+    }
+
+    [Chunk(0x06003010)]
+    public class Chunk06003010 : Chunk<CHmsItem>
+    {
+        private ulong U01;
+        private short U02;
+
+        public override void ReadWrite(CHmsItem n, GameBoxReaderWriter rw)
+        {
+            rw.UInt64(ref U01);
+            rw.Int16(ref U02);
         }
     }
 

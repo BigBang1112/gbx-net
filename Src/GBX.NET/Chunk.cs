@@ -4,10 +4,9 @@ using System.Runtime.Serialization;
 
 namespace GBX.NET;
 
-public abstract class Chunk : IChunk, IComparable<Chunk>
+public abstract class Chunk : IComparable<Chunk>
 {
-    public virtual uint ID => ((ChunkAttribute)NodeCacheManager.AvailableChunkAttributesByType[GetType()]
-        .First(x => x is ChunkAttribute)).ID;
+    private uint? id;
 
     /// <summary>
     /// Stream of unknown bytes
@@ -15,36 +14,32 @@ public abstract class Chunk : IChunk, IComparable<Chunk>
     [IgnoreDataMember]
     public MemoryStream Unknown { get; } = new MemoryStream();
 
-    public CMwNod Node { get; internal set; }
+    internal Node Node { get; set; }
 
-    public int Progress { get; set; }
+    public ChunkDebugger? Debugger { get; internal set; }
 
-#if DEBUG
-    public ChunkDebugger Debugger { get; } = new();
-#endif
-
-    protected Chunk(CMwNod node)
+    protected Chunk(Node node)
     {
         Node = node;
     }
 
-    public override int GetHashCode() => (int)ID;
+    public uint Id => GetStoredId();
+
+    private uint GetStoredId()
+    {
+        id ??= GetId();
+        return id.Value;
+    }
+
+    protected abstract uint GetId();
+
+    public override int GetHashCode() => (int)Id;
 
     public override bool Equals(object? obj) => Equals(obj as Chunk);
 
-    public override string ToString() => $"Chunk 0x{ID:X8}";
+    public override string ToString() => $"Chunk 0x{Id:X8}";
 
-    public bool Equals(Chunk? chunk) => chunk is not null && chunk.ID == ID;
-
-    protected internal GameBoxReader CreateReader(Stream input)
-    {
-        return new GameBoxReader(input, Node.GBX?.Body, this as ILookbackable);
-    }
-
-    protected internal GameBoxWriter CreateWriter(Stream input)
-    {
-        return new GameBoxWriter(input, Node.GBX?.Body, this as ILookbackable);
-    }
+    public bool Equals(Chunk? chunk) => chunk is not null && chunk.Id == Id;
 
     public static uint Remap(uint chunkID, IDRemap remap = IDRemap.Latest)
     {
@@ -56,22 +51,22 @@ public abstract class Chunk : IChunk, IComparable<Chunk>
             case IDRemap.Latest:
                 {
                     var newClassPart = classPart;
+
                     while (NodeCacheManager.Mappings.TryGetValue(newClassPart, out uint newID))
+                    {
                         newClassPart = newID;
+                    }
+
                     return newClassPart + chunkPart;
                 }
             case IDRemap.TrackMania2006:
                 {
-                    var olderClassId = NodeCacheManager.Mappings.LastOrDefault(x => x.Value == classPart).Key;
+                    if (NodeCacheManager.Mappings.ContainsValue(classPart))
+                    {
+                        return NodeCacheManager.Mappings.Last(x => x.Value == classPart).Key + chunkPart;
+                    }
 
-                    if (olderClassId == default)
-                        return chunkID;
-
-                    var newId = classPart == 0x03078000 // Not ideal solution
-                        ? 0x24061000 + chunkPart
-                        : olderClassId + chunkPart;
-
-                    return newId;
+                    return chunkID;
                 }
             default:
                 return chunkID;
@@ -82,21 +77,6 @@ public abstract class Chunk : IChunk, IComparable<Chunk>
 
     public int CompareTo(Chunk? other)
     {
-        return ID.CompareTo(other?.ID);
-    }
-
-    void IChunk.Read(CMwNod n, GameBoxReader r)
-    {
-        throw new NotSupportedException();
-    }
-
-    void IChunk.Write(CMwNod n, GameBoxWriter w)
-    {
-        throw new NotSupportedException();
-    }
-
-    void IChunk.ReadWrite(CMwNod n, GameBoxReaderWriter rw)
-    {
-        throw new NotSupportedException();
+        return Id.CompareTo(other?.Id);
     }
 }

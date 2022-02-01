@@ -1,9 +1,9 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 [Node(0x090F4000)]
-public sealed class CPlugGameSkin : CMwNod
+public class CPlugGameSkin : CMwNod
 {
-    private CPlugGameSkin()
+    protected CPlugGameSkin()
     {
 
     }

@@ -9,4 +9,14 @@ public class ThisShouldNotHappenException : Exception
     {
 
     }
+
+    public ThisShouldNotHappenException(string? message) : base(message)
+    {
+
+    }
+
+    public ThisShouldNotHappenException(string? message, Exception? innerException) : base(message, innerException)
+    {
+
+    }
 }

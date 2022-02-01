@@ -1,7 +1,11 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// MediaTracker block - Trails (0x030A9000)
+/// </summary>
 [Node(0x030A9000)]
-public sealed class CGameCtnMediaBlockTrails : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
+[NodeExtension("GameCtnMediaBlockTrails")]
+public class CGameCtnMediaBlockTrails : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {
     #region Fields
 
@@ -30,7 +34,7 @@ public sealed class CGameCtnMediaBlockTrails : CGameCtnMediaBlock, CGameCtnMedia
 
     #region Constructors
 
-    private CGameCtnMediaBlockTrails()
+    protected CGameCtnMediaBlockTrails()
     {
 
     }

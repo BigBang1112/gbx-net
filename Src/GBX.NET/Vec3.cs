@@ -1,50 +1,36 @@
-﻿using System.Diagnostics;
-using System.Globalization;
-using System.Runtime.Serialization;
+﻿using System.Globalization;
 
 namespace GBX.NET;
 
-public struct Vec3 : IVec
+public readonly record struct Vec3(float X, float Y, float Z) : IVec
 {
-    public float X { get; }
-    public float Y { get; }
-    public float Z { get; }
+    public Vec3 GetXY() => new(X, Y, 0);
+    public Vec3 GetXZ() => new(X, 0, Z);
+    public Vec3 GetYZ() => new(0, Y, Z);
 
-    [IgnoreDataMember]
-    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    public Vec3 XZ => new(X, 0, Z);
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
+    public float GetMagnitude() => MathF.Sqrt(GetSqrMagnitude());
+#endif
 
-    public Vec3(float x, float y, float z)
-    {
-        X = x;
-        Y = y;
-        Z = z;
-    }
+#if NETSTANDARD2_0 || NET462_OR_GREATER
+    public float GetMagnitude() => (float)Math.Sqrt(GetSqrMagnitude());
+#endif
 
-    public void Deconstruct(out float x, out float y, out float z)
-    {
-        x = X;
-        y = Y;
-        z = Z;
-    }
-
-    public float GetMagnitude() => (float)Math.Sqrt(X * X + Y * Y + Z * Z);
     public float GetSqrMagnitude() => X * X + Y * Y + Z * Z;
 
     public override string ToString()
     {
-        var x = X.ToString(CultureInfo.InvariantCulture);
-        var y = Y.ToString(CultureInfo.InvariantCulture);
-        var z = Z.ToString(CultureInfo.InvariantCulture);
+        var c = CultureInfo.InvariantCulture;
+
+        var x = X.ToString(c);
+        var y = Y.ToString(c);
+        var z = Z.ToString(c);
 
         return $"<{x}, {y}, {z}>";
     }
 
-    public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
-    public override bool Equals(object? obj) => obj is Vec3 a && a == this;
-
-    public static bool operator ==(Vec3 a, Vec3 b) => a.X == b.X && a.Y == b.Y && a.Z == b.Z;
-    public static bool operator !=(Vec3 a, Vec3 b) => !(a.X == b.X && a.Y == b.Y && a.Z == b.Z);
+    public static readonly Vec3 Zero = new();
+    public static float GetDotProduct(Vec3 a, Vec3 b) => a.X * b.X + a.Y * b.Y + a.Z * b.Z;
 
     public static Vec3 operator +(Vec3 a, Vec3 b) => new(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
     public static Vec3 operator +(Vec3 a, Int3 b) => new(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
@@ -88,5 +74,28 @@ public struct Vec3 : IVec
     public static explicit operator Vec3(Int2 a) => new(a.X, 0, a.Y);
     public static explicit operator Vec3(Vec2 a) => new(a.X, a.Y, 0);
     public static explicit operator Vec3(Vec4 a) => new(a.X, a.Y, a.Z);
-    public static explicit operator Vec3(float[] a) => a == null ? new Vec3() : a.Length >= 3 ? new Vec3(a[0], a[1], a[2]) : throw new Exception();
+
+    public static explicit operator Vec3(ReadOnlySpan<float> a) => GetVec3FromReadOnlySpan(a);
+    public static explicit operator Vec3(Span<float> a) => GetVec3FromReadOnlySpan(a);
+    public static explicit operator Vec3(float[] a) => GetVec3FromReadOnlySpan(a);
+
+    public static Vec3 GetVec3FromReadOnlySpan(ReadOnlySpan<float> a, int offset = 0)
+    {
+        return GetVec3FromReadOnlySpan(in a, offset);
+    }
+
+    public static Vec3 GetVec3FromReadOnlySpan(in ReadOnlySpan<float> a, int offset = 0)
+    {
+        var l = a.Length;
+
+        if (offset > l)
+        {
+            return new();
+        }
+
+        var bI = offset + 1;
+        var cI = offset + 2;
+
+        return new(a[offset], bI > l ? 0 : a[bI], cI > l ? 0 : a[cI]);
+    }
 }

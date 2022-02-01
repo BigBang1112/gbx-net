@@ -3,72 +3,82 @@ using System.Reflection;
 
 namespace GBX.NET;
 
-public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : CMwNod
+public class SkippableChunk<T> : Chunk<T>, ISkippableChunk, IState where T : Node
 {
-    private readonly uint chunkID;
-
-    public override uint ID => chunkID;
+    private readonly uint? id;
 
     public bool Discovered { get; set; }
     public byte[] Data { get; set; }
 
+    Guid? IState.StateGuid { get; set; }
+
     protected SkippableChunk()
     {
-        chunkID = ((ChunkAttribute)NodeCacheManager.AvailableChunkAttributesByType[GetType()]
-            .First(x => x is ChunkAttribute)).ID;
         Data = null!;
     }
 
-    public SkippableChunk(T node, uint id, byte[] data) : base(node)
+    public SkippableChunk(T node, byte[] data, uint? id = null) : base(node)
     {
-        chunkID = id;
-
         Data = data;
 
         if (data == null || data.Length == 0)
             Discovered = true;
+
+        this.id = id;
     }
 
-    public SkippableChunk(T node, byte[] data) : base(node)
+    protected override uint GetId()
     {
-        chunkID = ((ChunkAttribute)NodeCacheManager.AvailableChunkAttributesByType[GetType()]
-            .First(x => x is ChunkAttribute)).ID;
-
-        Data = data;
-
-        if (data == null || data.Length == 0)
-            Discovered = true;
+        return id ?? base.GetId();
     }
 
     public void Discover()
     {
-        if (Discovered) return;
+        if (Discovered)
+        {
+            return;
+        }
+
         Discovered = true;
 
-        if (NodeCacheManager.AvailableChunkAttributesByType.TryGetValue(GetType(), out IEnumerable<Attribute>? chunkAttributes))
+        var stateGuid = ((IState)Node).StateGuid.GetValueOrDefault();
+        var hasOwnIdState = false;
+
+        if (NodeCacheManager.ChunkAttributesByType.TryGetValue(GetType(), out IEnumerable<Attribute>? chunkAttributes))
         {
-            var ignoreChunkAttribute = chunkAttributes.FirstOrDefault(x => x is IgnoreChunkAttribute);
-            if (ignoreChunkAttribute is not null)
-                return;
+            foreach (var attribute in chunkAttributes)
+            {
+                switch (attribute)
+                {
+                    case IgnoreChunkAttribute:
+                        return;
+                    case ChunkWithOwnIdStateAttribute:
+                        hasOwnIdState = true;
+                        break;
+                }
+            }
         }
 
         using var ms = new MemoryStream(Data);
-        using var gbxr = CreateReader(ms);
-        var gbxrw = new GameBoxReaderWriter(gbxr);
+        using var r = new GameBoxReader(ms, stateGuid);
+        var rw = new GameBoxReaderWriter(r);
+
+        if (hasOwnIdState)
+        {
+            r.StartIdSubState();
+        }
 
         try
         {
-            ReadWrite(Node, gbxrw);
+            ReadWrite(Node, rw);
         }
-        catch (NotImplementedException)
+        catch (ChunkReadNotImplementedException)
         {
-            using var unknownGbxw = CreateWriter(Unknown);
-
             try
             {
-                Read(Node, gbxr);
+                Read(Node, r);
             }
-            catch (NotImplementedException e)
+            catch (ChunkReadNotImplementedException e)
             {
                 Debug.WriteLine(e.Message);
             }
@@ -78,8 +88,6 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : CMwNod
         {
             Debug.WriteLine($"Skippable chunk not fully parsed! ({ms.Position}/{ms.Length}) - {ToString()}");
         }
-
-        Progress = (int)ms.Position;
     }
 
     public override void Write(T n, GameBoxWriter w)
@@ -92,6 +100,11 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : CMwNod
         w.WriteBytes(Data);
     }
 
+    public async Task WriteAsync(GameBoxWriter w, CancellationToken cancellationToken)
+    {
+        await w.WriteBytesAsync(Data, cancellationToken);
+    }
+
     public override string ToString()
     {
         var chunkType = GetType();
@@ -99,10 +112,10 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : CMwNod
         var ignoreChunkAttribute = chunkType.GetCustomAttribute<IgnoreChunkAttribute>();
 
         if (chunkAttribute == null)
-            return $"{typeof(T).Name} unknown skippable chunk 0x{ID:X8}";
+            return $"{typeof(T).Name} unknown skippable chunk 0x{Id:X8}";
         var desc = chunkAttribute.Description;
         var version = (this as IVersionable)?.Version;
 
-        return $"{typeof(T).Name} skippable chunk 0x{ID:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(ignoreChunkAttribute == null ? "" : " [ignored]")}{(version is null ? "" : $" [v{version}]")}";
+        return $"{typeof(T).Name} skippable chunk 0x{Id:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(ignoreChunkAttribute == null ? "" : " [ignored]")}{(version is null ? "" : $" [v{version}]")}";
     }
 }

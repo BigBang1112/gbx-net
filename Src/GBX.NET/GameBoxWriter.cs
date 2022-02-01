@@ -8,28 +8,36 @@ namespace GBX.NET;
 /// <summary>
 /// Writes data types from GameBox serialization.
 /// </summary>
-public class GameBoxWriter : BinaryWriter
+public partial class GameBoxWriter : BinaryWriter
 {
-    /// <summary>
-    /// Body used to store node references.
-    /// </summary>
-    public GameBoxBody? Body { get; }
+    private readonly ILogger? logger;
 
-    /// <summary>
-    /// An object to look into for the list of already written data.
-    /// </summary>
-    public ILookbackable? Lookbackable { get; }
+    public GameBoxWriterSettings Settings { get; }
 
     /// <summary>
     /// Constructs a binary writer specialized for GBX.
     /// </summary>
     /// <param name="output">The output stream.</param>
-    /// <param name="body">Body used to store node references. If null, <see cref="CMwNod"/> cannot be written and <see cref="PropertyNullException"/> can be thrown.</param>
-    /// <param name="lookbackable">A specified object to look into for the list of already written data. If null while <paramref name="body"/> is null, <see cref="Id"/> or <see cref="Ident"/> cannot be written and <see cref="PropertyNullException"/> can be thrown. If null while <paramref name="body"/> is not null, the body is used as <see cref="ILookbackable"/> instead.</param>
-    public GameBoxWriter(Stream output, GameBoxBody? body = null, ILookbackable? lookbackable = null) : base(output, Encoding.UTF8, true)
+    /// <param name="stateGuid">ID used to point to a state that stores node references and lookback strings. If null, <see cref="Node"/>, Id, or <see cref="Ident"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
+    /// <param name="remap">Node ID remap mode.</param>
+    /// <param name="asyncAction">Specialized executions during asynchronous writing.</param>
+    /// <param name="logger">Logger.</param>
+    public GameBoxWriter(Stream output,
+                         Guid? stateGuid = null,
+                         IDRemap? remap = null,
+                         GameBoxAsyncWriteAction? asyncAction = null,
+                         ILogger? logger = null) : base(output, Encoding.UTF8, true)
     {
-        Body = body;
-        Lookbackable = lookbackable ?? body;
+        Settings = new GameBoxWriterSettings(stateGuid, remap.GetValueOrDefault(), asyncAction);
+
+        this.logger = logger;
+    }
+
+    public GameBoxWriter(Stream output, GameBoxWriterSettings settings, ILogger? logger = null) : base(output, Encoding.UTF8, true)
+    {
+        Settings = settings;
+
+        this.logger = logger;
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -49,12 +57,17 @@ public class GameBoxWriter : BinaryWriter
         }
 
         if (value is not null)
+        {
             WriteBytes(Encoding.UTF8.GetBytes(value));
+        }
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public override void Write(string? value) => Write(value, StringLengthPrefix.Int32);
+    public override void Write(string? value)
+    {
+        Write(value, StringLengthPrefix.Int32);
+    }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -71,144 +84,9 @@ public class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public override void Write(bool value) => Write(value, false);
-
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteArray<T>(T[]? array) where T : struct
+    public override void Write(bool value)
     {
-        if (array is null)
-        {
-            Write(0);
-            return;
-        }
-
-        Write(array.Length);
-        WriteArray_NoPrefix(array);
-    }
-
-    /// <exception cref="ArgumentNullException"><paramref name="array"/> is null.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteArray_NoPrefix<T>(T[] array) where T : struct
-    {
-        if (array is null)
-            throw new ArgumentNullException(nameof(array));
-
-        var bytes = new byte[array.Length * Marshal.SizeOf(default(T))];
-        Buffer.BlockCopy(array, 0, bytes, 0, bytes.Length);
-        WriteBytes(bytes);
-    }
-
-    /// <summary>
-    /// First writes an <see cref="int"/> representing the length, then does a for loop with this length, each yield having an option to write something from <typeparamref name="T"/>.
-    /// </summary>
-    /// <typeparam name="T">Type of the array.</typeparam>
-    /// <param name="array">An array.</param>
-    /// <param name="forLoop">Each element.</param>
-    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Write<T>(T[]? array, Action<T> forLoop)
-    {
-        if (forLoop is null)
-            throw new ArgumentNullException(nameof(forLoop));
-
-        if (array is null)
-        {
-            Write(0);
-            return;
-        }
-
-        Write(array.Length);
-
-        for (var i = 0; i < array.Length; i++)
-            forLoop.Invoke(array[i]);
-    }
-
-    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    internal void Write<T>(T[]? array, Action<T, GameBoxWriter> forLoop)
-    {
-        if (forLoop is null)
-            throw new ArgumentNullException(nameof(forLoop));
-
-        if (array is null)
-        {
-            Write(0);
-            return;
-        }
-
-        Write(array.Length);
-
-        for (var i = 0; i < array.Length; i++)
-            forLoop.Invoke(array[i], this);
-    }
-
-    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Write<T>(IList<T>? list, Action<T> forLoop)
-    {
-        if (forLoop is null)
-            throw new ArgumentNullException(nameof(forLoop));
-
-        if (list is null)
-        {
-            Write(0);
-            return;
-        }
-
-        Write(list.Count);
-
-        for (var i = 0; i < list.Count; i++)
-            forLoop.Invoke(list[i]);
-    }
-
-    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Write<T>(IList<T>? list, Action<T, GameBoxWriter> forLoop)
-    {
-        if (forLoop is null)
-            throw new ArgumentNullException(nameof(forLoop));
-
-        if (list is null)
-        {
-            Write(0);
-            return;
-        }
-
-        Write(list.Count);
-
-        for (var i = 0; i < list.Count; i++)
-            forLoop.Invoke(list[i], this);
-    }
-
-    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="OverflowException">The number of elements in source is larger than <see cref="int.MaxValue"/>.</exception>
-    public void Write<T>(IEnumerable<T>? enumerable, Action<T> forLoop)
-    {
-        if (forLoop is null)
-            throw new ArgumentNullException(nameof(forLoop));
-
-        if (enumerable is null)
-        {
-            Write(0);
-            return;
-        }
-
-        var count = enumerable.Count();
-
-        Write(count);
-
-        IEnumerator<T> enumerator = enumerable.GetEnumerator();
-
-        while (enumerator.MoveNext())
-            forLoop.Invoke(enumerator.Current);
+        Write(value, false);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -236,6 +114,38 @@ public class GameBoxWriter : BinaryWriter
         Write(value.Y);
         Write(value.Z);
         Write(value.W);
+    }
+
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public void Write(Quat value)
+    {
+        Write(value.X);
+        Write(value.Y);
+        Write(value.Z);
+        Write(value.W);
+    }
+
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public void Write(Rect value)
+    {
+        Write(value.X);
+        Write(value.Y);
+        Write(value.X2);
+        Write(value.Y2);
+    }
+
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public void Write(Box value)
+    {
+        Write(value.X);
+        Write(value.Y);
+        Write(value.Z);
+        Write(value.X2);
+        Write(value.Y2);
+        Write(value.Z2);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -283,22 +193,64 @@ public class GameBoxWriter : BinaryWriter
             Write(fileRef.LocatorUrl?.ToString());
     }
 
-    /// <exception cref="ArgumentNullException"><paramref name="value"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Write(Id value)
+    /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
+    public void WriteId(string? value, bool tryParseToInt32 = false)
     {
-        if (value is null)
-            throw new ArgumentNullException(nameof(value));
+        var idState = GetIdState();
+        WriteIdVersionIfNotWritten(idState);
+        WriteIdAsString(value ?? "", idState, tryParseToInt32);
+    }
 
-        var l = value.Owner;
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public void WriteId(Collection value)
+    {
+        var idState = GetIdState();
 
-        if (!l.IdWritten)
+        WriteIdVersionIfNotWritten(idState);
+
+        if (value.Id is not null)
         {
-            if (l.IdVersion.HasValue)
-                Write(l.IdVersion.Value);
-            else Write(3);
-            l.IdWritten = true;
+            Write(value.Id.Value);
+            return;
+        }
+
+        WriteIdAsString(value, idState, tryParseToInt32: false); // Could be true
+    }
+
+    private StateManager.IdState GetIdState()
+    {
+        if (Settings.StateGuid is null)
+        {
+            throw new PropertyNullException(nameof(Settings.StateGuid));
+        }
+
+        var stateGuid = Settings.StateGuid.Value;
+
+        return Settings.IdSubStateGuid is null
+            ? StateManager.Shared.GetIdState(stateGuid)
+            : StateManager.Shared.GetIdSubState(stateGuid, Settings.IdSubStateGuid.Value);
+    }
+
+    private void WriteIdVersionIfNotWritten(StateManager.IdState idState)
+    {
+        if (idState.IsWritten)
+        {
+            return;
+        }
+
+        Write(idState.Version ?? 3);
+        idState.IsWritten = true;
+    }
+
+    private void WriteIdAsString(string value, StateManager.IdState idState, bool tryParseToInt32)
+    {
+        if (value == "")
+        {
+            Write(0xFFFFFFFF);
+            return;
         }
 
         if (value == "Unassigned")
@@ -307,67 +259,48 @@ public class GameBoxWriter : BinaryWriter
             return;
         }
 
-        if (string.IsNullOrEmpty(value))
+        var index = idState.Strings.IndexOf(value);
+
+        if (index != -1)
         {
-            Write(0xFFFFFFFF);
+            Write(index + 1 + 0x40000000);
             return;
         }
 
-        if (l.IdStrings.Contains(value))
+        if (tryParseToInt32 && int.TryParse(value, out index))
         {
-            Write(value.Index + 1 + 0x40000000);
-            return;
-        }
-
-        if (int.TryParse(value, out int cID))
-        {
-            Write(cID);
+            Write(index);
             return;
         }
 
         Write(0x40000000);
-        Write(value.ToString());
-        l.IdStrings.Add(value);
+        Write(value);
+
+        idState.Strings.Add(value);
     }
 
-    /// <exception cref="PropertyNullException"><see cref="Lookbackable"/> is null.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteId(string? value)
-    {
-        if (Lookbackable is null)
-            throw new PropertyNullException(nameof(Lookbackable));
-
-        Write(new Id(value, Lookbackable));
-    }
-
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Write(Ident? ident, ILookbackable lookbackable)
-    {
-        Write(new Id(ident?.ID, lookbackable));
-        Write(ident?.Collection.ToId(lookbackable) ?? new Id(null, lookbackable));
-        Write(new Id(ident?.Author, lookbackable));
-    }
-
-    /// <exception cref="PropertyNullException"><see cref="Lookbackable"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write(Ident? ident)
     {
-        if (Lookbackable is null)
-            throw new PropertyNullException(nameof(Lookbackable));
+        ident ??= Ident.Empty;
 
-        Write(ident, Lookbackable);
+        WriteId(ident.Id);
+        WriteId(ident.Collection);
+        WriteId(ident.Author);
     }
 
-    /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Write(CMwNod? node, GameBoxBody body)
+    public void Write(Node? node)
     {
-        if (body is null)
-            throw new ArgumentNullException(nameof(body));
+        if (Settings.StateGuid is null)
+        {
+            throw new PropertyNullException(nameof(Settings.StateGuid));
+        }
+
+        var stateGuid = Settings.StateGuid.Value;
 
         if (node is null)
         {
@@ -375,53 +308,18 @@ public class GameBoxWriter : BinaryWriter
             return;
         }
 
-        if (body.AuxilaryNodes.ContainsValue(node))
+        if (StateManager.Shared.ContainsNode(stateGuid, node))
         {
-            Write(body.AuxilaryNodes.FirstOrDefault(x => x.Equals(node)).Key);
+            Write(StateManager.Shared.GetNodeIndexByNode(stateGuid, node));
             return;
         }
 
-        body.AuxilaryNodes[body.AuxilaryNodes.Count] = node;
-        Write(body.AuxilaryNodes.Count);
-        Write(Chunk.Remap(node.ID, body.GBX.Remap));
-        node.Write(this, body.GBX.Remap);
-    }
+        StateManager.Shared.AddNode(stateGuid, node);
 
-    /// <exception cref="PropertyNullException"><see cref="Body"/> is null.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Write(CMwNod? node)
-    {
-        if (Body is null)
-            throw new PropertyNullException(nameof(Body));
+        Write(StateManager.Shared.GetNodeCount(stateGuid));
+        Write(Chunk.Remap(node.Id, Settings.Remap));
 
-        Write(node, Body);
-    }
-
-    /// <exception cref="ArgumentNullException">Key or value in dictionary is null.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Write<TKey, TValue>(IDictionary<TKey, TValue>? dictionary)
-    {
-        if (dictionary is null)
-        {
-            Write(0);
-            return;
-        }
-
-        Write(dictionary.Count);
-
-        foreach (var pair in dictionary)
-        {
-            if (pair.Key is null)
-                throw new ArgumentNullException(nameof(pair.Key));
-
-            if (pair.Value is null)
-                throw new ArgumentNullException(nameof(pair.Value));
-
-            WriteAny(pair.Key);
-            WriteAny(pair.Value);
-        }
+        node.Write(this, logger);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -505,6 +403,28 @@ public class GameBoxWriter : BinaryWriter
         Write(bytes, 0, bytes.Length);
     }
 
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+    public async ValueTask WriteBytesAsync(byte[]? bytes, CancellationToken cancellationToken = default)
+    {
+        if (bytes is null)
+        {
+            return;
+        }
+
+        await BaseStream.WriteAsync(bytes, cancellationToken);
+    }
+#else
+    public async Task WriteBytesAsync(byte[]? bytes, CancellationToken cancellationToken = default)
+    {
+        if (bytes is null)
+        {
+            return;
+        }
+
+        await BaseStream.WriteAsync(bytes, 0, bytes.Length, cancellationToken);
+    }
+#endif
+
     /// <summary>
     /// Writes the node array that are presented directly and not as a node reference.
     /// </summary>
@@ -513,7 +433,7 @@ public class GameBoxWriter : BinaryWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="OverflowException">There's more nodes than <see cref="int.MaxValue"/>.</exception>
-    public void WriteNodes<T>(IEnumerable<T>? nodes) where T : CMwNod
+    public void WriteNodes<T>(IEnumerable<T>? nodes) where T : Node
     {
         if (nodes is null)
         {
@@ -533,27 +453,27 @@ public class GameBoxWriter : BinaryWriter
 
         foreach (var node in nodes)
         {
-            Write(node.ID);
-            node.Write(this);
+            Write(node.Id);
+            node.Write(this, logger: logger);
 
-            string logProgress = $"[{nodeType.FullName!.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::")}] {counter + 1}/{count} ({watch.Elapsed.TotalMilliseconds}ms)";
-            if (Body == null || !Body.GBX.ID.HasValue || CMwNod.Remap(Body.GBX.ID.Value) != node.ID)
-                logProgress = "~ " + logProgress;
-
-            Log.Write(logProgress, ConsoleColor.Magenta);
-
-            if (counter != count - 1)
-                Log.Push(node.Chunks.Count + 2);
+            if (logger?.IsEnabled(LogLevel.Debug) == true)
+            {
+                logger?.LogDebug("[{className}] {current}/{count} ({time}ms)",
+                    nodeType.FullName!.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::"),
+                    counter + 1,
+                    count,
+                    watch.Elapsed.TotalMilliseconds);
+            }
 
             counter += 1;
         }
     }
 
     /// <exception cref="ArgumentNullException">Key in dictionary is null.</exception>
-    /// <exception cref="PropertyNullException"><see cref="Body"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteDictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary) where TValue : CMwNod
+    public void WriteDictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary) where TValue : Node
     {
         if (dictionary is null)
         {
@@ -566,18 +486,47 @@ public class GameBoxWriter : BinaryWriter
         foreach (var pair in dictionary)
         {
             if (pair.Key is null)
+            {
                 throw new ArgumentNullException(nameof(pair.Key));
+            }
 
             WriteAny(pair.Key);
             Write(pair.Value);
         }
     }
 
+    public void StartIdSubState()
+    {
+        if (Settings.StateGuid is null)
+        {
+            throw new PropertyNullException(nameof(Settings.StateGuid));
+        }
+
+        Settings.IdSubStateGuid = StateManager.Shared.CreateIdSubState(Settings.StateGuid.Value);
+    }
+
+    public void EndIdSubState()
+    {
+        if (Settings.IdSubStateGuid is null)
+        {
+            return;
+        }
+
+        if (Settings.StateGuid is null)
+        {
+            throw new PropertyNullException(nameof(Settings.StateGuid));
+        }
+
+        StateManager.Shared.RemoveIdSubState(Settings.StateGuid.Value, Settings.IdSubStateGuid.Value);
+
+        Settings.IdSubStateGuid = null;
+    }
+
     /// <summary>
     /// Writes any kind of value. Prefer using specified methods for better performance. Supported types are <see cref="byte"/>, <see cref="short"/>, <see cref="int"/>,
     /// <see cref="long"/>, <see cref="float"/>, <see cref="bool"/>, <see cref="string"/>, <see cref="sbyte"/>, <see cref="ushort"/>,
     /// <see cref="uint"/>, <see cref="ulong"/>, <see cref="Byte3"/>, <see cref="Vec2"/>, <see cref="Vec3"/>,
-    /// <see cref="Vec4"/>, <see cref="Int3"/>, <see cref="Id"/> and <see cref="Ident"/>.
+    /// <see cref="Vec4"/>, <see cref="Int3"/>, <see cref="Collection"/>, and <see cref="Ident"/>.
     /// </summary>
     /// <param name="any">Any supported object.</param>
     /// <exception cref="ArgumentNullException"><paramref name="any"/> is null.</exception>
@@ -590,26 +539,33 @@ public class GameBoxWriter : BinaryWriter
 
         switch (any)
         {
-            case byte   v: Write(v); break;
-            case short  v: Write(v); break;
-            case int    v: Write(v); break;
-            case long   v: Write(v); break;
-            case float  v: Write(v); break;
-            case string v: Write(v); break;
-            case sbyte  v: Write(v); break;
-            case ushort v: Write(v); break;
-            case uint   v: Write(v); break;
-            case ulong  v: Write(v); break;
-            case Byte3  v: Write(v); break;
-            case Vec2   v: Write(v); break;
-            case Vec3   v: Write(v); break;
-            case Vec4   v: Write(v); break;
-            case Int2   v: Write(v); break;
-            case Int3   v: Write(v); break;
-            case Id     v: Write(v); break;
-            case Ident  v: Write(v); break;
+            case byte       v: Write(v); break;
+            case short      v: Write(v); break;
+            case int        v: Write(v); break;
+            case long       v: Write(v); break;
+            case float      v: Write(v); break;
+            case string     v: Write(v); break;
+            case sbyte      v: Write(v); break;
+            case ushort     v: Write(v); break;
+            case uint       v: Write(v); break;
+            case ulong      v: Write(v); break;
+            case Byte3      v: Write(v); break;
+            case Vec2       v: Write(v); break;
+            case Vec3       v: Write(v); break;
+            case Vec4       v: Write(v); break;
+            case Int2       v: Write(v); break;
+            case Int3       v: Write(v); break;
+            case Collection v: Write(v); break;
+            case Ident      v: Write(v); break;
 
             default: throw new NotSupportedException($"{any.GetType()} is not supported for Read<T>.");
         }
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        EndIdSubState();
+
+        base.Dispose(disposing);
     }
 }

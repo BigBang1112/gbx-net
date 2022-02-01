@@ -2,9 +2,9 @@
 
 public partial class CGameCtnMediaClipBuilder
 {
-    public class TMSX : GameBuilder<ICGameCtnMediaClipBuilder, CGameCtnMediaClip>
+    public class TMSX : GameBuilder<CGameCtnMediaClipBuilder, CGameCtnMediaClip>
     {
-        public TMSX(ICGameCtnMediaClipBuilder baseBuilder, CGameCtnMediaClip node) : base(baseBuilder, node) { }
+        public TMSX(CGameCtnMediaClipBuilder baseBuilder, CGameCtnMediaClip node) : base(baseBuilder, node) { }
 
         public override CGameCtnMediaClip Build()
         {

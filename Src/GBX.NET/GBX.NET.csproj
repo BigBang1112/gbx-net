@@ -11,10 +11,10 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		
-		<Version>0.14.3</Version>
-		<PackageReleaseNotes>Temporarily removed free block support, writing bugfixes</PackageReleaseNotes>
+		<Version>0.15.0-rc</Version>
+		<PackageReleaseNotes></PackageReleaseNotes>
 		
-		<TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;net48</TargetFrameworks>
+		<TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
 		<LangVersion>10</LangVersion>
 		<Platforms>AnyCPU;x64;x86</Platforms>
 		
@@ -31,22 +31,31 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Using Remove="System.Net.Http"/>
-		<Using Include="TmEssentials"/>
-		<Using Include="GBX.NET.Attributes"/>
-		<Using Include="GBX.NET.Exceptions"/>
-		<Using Include="GBX.NET.Extensions"/>
-		<Using Include="GBX.NET.Engines.Control"/>
-		<Using Include="GBX.NET.Engines.Game"/>
-		<Using Include="GBX.NET.Engines.GameData"/>
-		<Using Include="GBX.NET.Engines.Hms"/>
-		<Using Include="GBX.NET.Engines.Input"/>
-		<Using Include="GBX.NET.Engines.MwFoundations"/>
-		<Using Include="GBX.NET.Engines.Plug"/>
-		<Using Include="GBX.NET.Engines.Scene"/>
-		<Using Include="GBX.NET.Engines.Script"/>
-		<Using Include="GBX.NET.Engines.System"/>
-		<Using Include="GBX.NET.Engines.TrackMania"/>
+		<Using Remove="System.Net.Http" />
+		<Using Include="Microsoft.Extensions.Logging" />
+		<Using Include="TmEssentials" />
+		<Using Include="GBX.NET.Attributes" />
+		<Using Include="GBX.NET.Exceptions" />
+		<Using Include="GBX.NET.Extensions" />
+		<Using Include="GBX.NET.Managers" />
+		<Using Include="GBX.NET.Engines.Control" />
+		<Using Include="GBX.NET.Engines.Function" />
+		<Using Include="GBX.NET.Engines.Game" />
+		<Using Include="GBX.NET.Engines.GameData" />
+		<Using Include="GBX.NET.Engines.Hms" />
+		<Using Include="GBX.NET.Engines.Input" />
+		<Using Include="GBX.NET.Engines.MwFoundations" />
+		<Using Include="GBX.NET.Engines.Plug" />
+		<Using Include="GBX.NET.Engines.Scene" />
+		<Using Include="GBX.NET.Engines.Script" />
+		<Using Include="GBX.NET.Engines.System" />
+		<Using Include="GBX.NET.Engines.TrackMania" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<InternalsVisibleTo Include="$(AssemblyName).PAK" />
+		<InternalsVisibleTo Include="$(AssemblyName).Tests" />
+		<InternalsVisibleTo Include="$(AssemblyName).Benchmarks" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -64,8 +73,6 @@
 
 	<ItemGroup>
 		<Folder Include="Engines\Audio\" />
-		<Folder Include="Engines\Function\" />
-		<Folder Include="Engines\Graphic\" />
 		<Folder Include="Engines\Motion\" />
 		<Folder Include="Engines\Net\" />
 		<Folder Include="Engines\VirtualSkipper\" />
@@ -74,11 +81,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
 	  <PackageReference Include="TmEssentials" Version="2.0.0" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+	<ItemGroup Condition="'$(TargetFramework)' == 'net462'">
 		<PackageReference Include="System.IO.Compression" Version="4.3.0" />
+		<PackageReference Include="System.ValueTuple" Version="4.5.0" />
 	</ItemGroup>
 
 </Project>

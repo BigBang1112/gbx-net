@@ -2,9 +2,9 @@
 
 public partial class CGameCtnMediaBlockTextBuilder
 {
-    public class TMU : GameBuilder<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>
+    public class TMU : GameBuilder<CGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>
     {
-        public TMU(ICGameCtnMediaBlockTextBuilder baseBuilder, CGameCtnMediaBlockText node) : base(baseBuilder, node) { }
+        public TMU(CGameCtnMediaBlockTextBuilder baseBuilder, CGameCtnMediaBlockText node) : base(baseBuilder, node) { }
 
         public override CGameCtnMediaBlockText Build()
         {

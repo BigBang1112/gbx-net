@@ -6,27 +6,27 @@ namespace GBX.NET;
 /// A file reference used for locating media.
 /// </summary>
 [DebuggerTypeProxy(typeof(DebugView))]
-public class FileRef
+public record FileRef
 {
     /// <summary>
     /// Version of the file reference.
     /// </summary>
-    public byte Version { get; }
+    public byte Version { get; init; }
 
     /// <summary>
     /// File checksum.
     /// </summary>
-    public byte[]? Checksum { get; set; }
+    public byte[]? Checksum { get; init; }
 
     /// <summary>
     /// File relative to user folder (or Skins folder if <c><see cref="Version"/> &lt;= 1</c>).
     /// </summary>
-    public string? FilePath { get; set; }
+    public string? FilePath { get; init; }
 
     /// <summary>
     /// Url of the locator.
     /// </summary>
-    public Uri? LocatorUrl { get; set; }
+    public Uri? LocatorUrl { get; init; }
 
     /// <summary>
     /// Empty file reference version 3.
@@ -84,6 +84,8 @@ public class FileRef
     {
         get => new byte[] { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     }
+
+    public static readonly FileRef Default = new();
 
     private class DebugView
     {

@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET.Builders.Engines.Game;
 
-public partial class CGameCtnMediaBlockSoundBuilder : ICGameCtnMediaBlockSoundBuilder
+public partial class CGameCtnMediaBlockSoundBuilder : Builder
 {
     public FileRef? Sound { get; set; }
     public IList<CGameCtnMediaBlockSound.Key>? Keys { get; set; }
@@ -43,22 +43,11 @@ public partial class CGameCtnMediaBlockSoundBuilder : ICGameCtnMediaBlockSoundBu
     public TM2 ForTM2() => new(this, NewNode());
     public TM2020 ForTM2020() => new(this, NewNode());
 
-    GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
-        IBuilderForTMSX<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>.ForTMSX() => ForTMSX();
-    GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
-        IBuilderForTMU<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>.ForTMU() => ForTMU();
-    GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
-        IBuilderForTMUF<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>.ForTMUF() => ForTMUF();
-    GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
-        IBuilderForTM2<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>.ForTM2() => ForTM2();
-    GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
-        IBuilderForTM2020<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>.ForTM2020() => ForTM2020();
-
     internal CGameCtnMediaBlockSound NewNode()
     {
         var node = NodeCacheManager.GetNodeInstance<CGameCtnMediaBlockSound>(0x030A7000);
 
-        node.Sound = Sound ?? new FileRef();
+        node.Sound = Sound ?? FileRef.Default;
         node.Keys = Keys ?? new List<CGameCtnMediaBlockSound.Key>();
         node.PlayCount = PlayCount;
         node.IsLooping = IsLooping;

@@ -1,7 +1,12 @@
 ﻿namespace GBX.NET.Engines.System;
 
+/// <summary>
+/// CSystemConfig (0x0B005000)
+/// </summary>
+/// <remarks>Handles all general game settings not related to a specific profile.</remarks>
 [Node(0x0B005000)]
-public sealed class CSystemConfig : CMwNod
+[NodeExtension("SystemConfig")]
+public class CSystemConfig : CMwNod
 {
     #region Fields
 
@@ -914,7 +919,7 @@ public sealed class CSystemConfig : CMwNod
 
     #region Constructors
 
-    private CSystemConfig()
+    protected CSystemConfig()
     {
 
     }
@@ -935,17 +940,11 @@ public sealed class CSystemConfig : CMwNod
     [Chunk(0x0B00502B)]
     public class Chunk0B00502B : SkippableChunk<CSystemConfig>
     {
-        private int u01;
-
-        public int U01
-        {
-            get => u01;
-            set => u01 = value;
-        }
+        public int U01;
 
         public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref u01);
+            rw.Int32(ref U01);
             rw.Boolean(ref n.advertising_DisabledByUser);
             rw.Single(ref n.advertising_TunningCoef);
         }
@@ -954,36 +953,18 @@ public sealed class CSystemConfig : CMwNod
     [Chunk(0x0B005034)]
     public class Chunk0B005034 : SkippableChunk<CSystemConfig>
     {
-        private int u01;
-        private int u02;
-        private bool u03;
-
-        public int U01
-        {
-            get => u01;
-            set => u01 = value;
-        }
-
-        public int U02
-        {
-            get => u02;
-            set => u02 = value;
-        }
-
-        public bool U03
-        {
-            get => u03;
-            set => u03 = value;
-        }
+        public int U01;
+        public int U02;
+        public bool U03;
 
         public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref n.tmCarQuality);
-            rw.Int32(ref u01);
-            rw.Int32(ref u02);
+            rw.Int32(ref U01);
+            rw.Int32(ref U02);
             rw.Int32(ref n.tmOpponents);
             rw.Int32(ref n.tmMaxOpponents);
-            rw.Boolean(ref u03);
+            rw.Boolean(ref U03);
             rw.Int32(ref n.tmBackgroundQuality);
         }
     }
@@ -991,17 +972,11 @@ public sealed class CSystemConfig : CMwNod
     [Chunk(0x0B005035)]
     public class Chunk0B005035 : SkippableChunk<CSystemConfig>
     {
-        private bool u01;
-
-        public bool U01
-        {
-            get => u01;
-            set => u01 = value;
-        }
+        public bool U01;
 
         public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
         {
-            rw.Boolean(ref u01);
+            rw.Boolean(ref U01);
             rw.Boolean(ref n.networkTestInternetConnection);
         }
     }
@@ -1009,26 +984,14 @@ public sealed class CSystemConfig : CMwNod
     [Chunk(0x0B005039)]
     public class Chunk0B005039 : SkippableChunk<CSystemConfig>
     {
-        private string? u01;
-        private string? u02;
-
-        public string? U01
-        {
-            get => u01;
-            set => u01 = value;
-        }
-
-        public string? U02
-        {
-            get => u02;
-            set => u02 = value;
-        }
+        public string? U01;
+        public string? U02;
 
         public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
         {
             rw.Boolean(ref n.networkUseProxy);
-            rw.String(ref u01);
-            rw.String(ref u02);
+            rw.String(ref U01);
+            rw.String(ref U02);
             rw.Int32(ref n.networkServerPort);
             rw.Int32(ref n.networkP2PServerPort);
             rw.Int32(ref n.networkClientPort);
@@ -1044,53 +1007,35 @@ public sealed class CSystemConfig : CMwNod
     [Chunk(0x0B00503D)]
     public class Chunk0B00503D : SkippableChunk<CSystemConfig>
     {
-        private int u01;
-
-        public int U01
-        {
-            get => u01;
-            set => u01 = value;
-        }
+        public int U01;
 
         public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
         {
             rw.Boolean(ref n.isIgnorePlayerSkins);
             rw.Boolean(ref n.isSkipRollingDemo);
-            rw.Int32(ref u01);
+            rw.Int32(ref U01);
         }
     }
 
     [Chunk(0x0B005041)]
     public class Chunk0B005041 : SkippableChunk<CSystemConfig>
     {
-        private string? u01;
-
-        public string? U01
-        {
-            get => u01;
-            set => u01 = value;
-        }
+        public string? U01;
 
         public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
         {
-            rw.String(ref u01);
+            rw.String(ref U01);
         }
     }
 
     [Chunk(0x0B005043)]
     public class Chunk0B005043 : SkippableChunk<CSystemConfig>
     {
-        private bool u01;
-
-        public bool U01
-        {
-            get => u01;
-            set => u01 = value;
-        }
+        public bool U01;
 
         public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
         {
-            rw.Boolean(ref u01);
+            rw.Boolean(ref U01);
             rw.Boolean(ref n.networkTestInternetConnection);
             rw.String(ref n.networkLastUsedMSAddress);
             rw.String(ref n.networkLastUsedMSPath);
@@ -1100,20 +1045,14 @@ public sealed class CSystemConfig : CMwNod
     [Chunk(0x0B005044)]
     public class Chunk0B005044 : SkippableChunk<CSystemConfig>
     {
-        private int[]? u01;
-
-        public int[]? U01
-        {
-            get => u01;
-            set => u01 = value;
-        }
+        public int[]? U01;
 
         public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
         {
             rw.Boolean(ref n.networkTestInternetConnection);
             rw.String(ref n.networkLastUsedMSAddress);
             rw.String(ref n.networkLastUsedMSPath);
-            rw.Array(ref u01);
+            rw.Array(ref U01);
         }
     }
 
@@ -1132,17 +1071,11 @@ public sealed class CSystemConfig : CMwNod
     [Chunk(0x0B005047)]
     public class Chunk0B005047 : SkippableChunk<CSystemConfig>
     {
-        private bool u01;
-
-        public bool U01
-        {
-            get => u01;
-            set => u01 = value;
-        }
+        public bool U01;
 
         public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
         {
-            rw.Boolean(ref u01);
+            rw.Boolean(ref U01);
         }
     }
 
@@ -1159,73 +1092,37 @@ public sealed class CSystemConfig : CMwNod
     [Chunk(0x0B00504A)]
     public class Chunk0B00504A : SkippableChunk<CSystemConfig>
     {
-        private int u01;
-        private int u02;
-
-        public int U01
-        {
-            get => u01;
-            set => u01 = value;
-        }
-
-        public int U02
-        {
-            get => u02;
-            set => u02 = value;
-        }
+        public int U01;
+        public int U02;
 
         public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
         {
             rw.Boolean(ref n.isIgnorePlayerSkins);
             rw.Boolean(ref n.isSkipRollingDemo);
-            rw.Int32(ref u01);
-            rw.Int32(ref u02);
+            rw.Int32(ref U01);
+            rw.Int32(ref U02);
         }
     }
 
     [Chunk(0x0B00504F)]
     public class Chunk0B00504F : SkippableChunk<CSystemConfig>
     {
-        private int u01;
-        private int u02;
-        private int u03;
-        private bool u04;
-
-        public int U01
-        {
-            get => u01;
-            set => u01 = value;
-        }
-
-        public int U02
-        {
-            get => u02;
-            set => u02 = value;
-        }
-
-        public int U03
-        {
-            get => u03;
-            set => u03 = value;
-        }
-
-        public bool U04
-        {
-            get => u04;
-            set => u04 = value;
-        }
+        public int U01;
+        public int U02;
+        public int U03;
+        public bool U04;
 
         public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
         {
             rw.Boolean(ref n.audioEnabled);
             rw.Single(ref n.audioSoundVolume);
             rw.Single(ref n.audioMusicVolume);
-            rw.Int32(ref u01);
-            rw.Int32(ref u02);
-            rw.Int32(ref u03);
+            rw.Int32(ref U01);
+            rw.Int32(ref U02);
+            rw.Int32(ref U03);
             rw.Boolean(ref n.audioAllowEFX);
             rw.Boolean(ref n.audioDisableDoppler);
-            rw.Boolean(ref u04);
+            rw.Boolean(ref U04);
             rw.Int32(ref n.audioGlobalQuality);
             rw.String(ref n.audioDevice_Oal);
         }
@@ -1234,61 +1131,37 @@ public sealed class CSystemConfig : CMwNod
     [Chunk(0x0B005050)]
     public class Chunk0B005050 : SkippableChunk<CSystemConfig>
     {
-        private bool u01;
-
-        public bool U01
-        {
-            get => u01;
-            set => u01 = value;
-        }
+        public bool U01;
 
         public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
         {
-            rw.Boolean(ref u01);
+            rw.Boolean(ref U01);
         }
     }
 
     [Chunk(0x0B005051)]
     public class Chunk0B005051 : SkippableChunk<CSystemConfig>
     {
-        private string? u01;
-
-        public string? U01
-        {
-            get => u01;
-            set => u01 = value;
-        }
+        public string? U01;
 
         public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
         {
-            rw.String(ref u01);
+            rw.String(ref U01);
         }
     }
 
     [Chunk(0x0B005052)]
     public class Chunk0B005052 : SkippableChunk<CSystemConfig>
     {
-        private int u01;
-        private int u02;
-
-        public int U01
-        {
-            get => u01;
-            set => u01 = value;
-        }
-
-        public int U02
-        {
-            get => u02;
-            set => u02 = value;
-        }
+        public int U01;
+        public int U02;
 
         public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref n.tmCarQuality);
-            rw.Int32(ref u01);
+            rw.Int32(ref U01);
             rw.Int32(ref n.playerShadow);
-            rw.Int32(ref u02);
+            rw.Int32(ref U02);
             rw.Int32(ref n.tmOpponents);
             rw.Int32(ref n.tmMaxOpponents);
         }
@@ -1306,36 +1179,18 @@ public sealed class CSystemConfig : CMwNod
     [Chunk(0x0B005056)]
     public class Chunk0B005056 : SkippableChunk<CSystemConfig>
     {
-        private bool u01;
-        private int u02;
-        private bool u03;
-
-        public bool U01
-        {
-            get => u01;
-            set => u01 = value;
-        }
-
-        public int U02
-        {
-            get => u02;
-            set => u02 = value;
-        }
-
-        public bool U03
-        {
-            get => u03;
-            set => u03 = value;
-        }
+        public bool U01;
+        public int U02;
+        public bool U03;
 
         public override void ReadWrite(CSystemConfig n, GameBoxReaderWriter rw)
         {
-            rw.Boolean(ref u01);
+            rw.Boolean(ref U01);
             rw.Boolean(ref n.audioAllowHRTF);
             rw.Int32(ref n.audioDontMuteWhenApplicationUnfocused);
-            rw.Int32(ref u02);
+            rw.Int32(ref U02);
             rw.Boolean(ref n.audioSoundHdr);
-            rw.Boolean(ref u03);
+            rw.Boolean(ref U03);
         }
     }
 

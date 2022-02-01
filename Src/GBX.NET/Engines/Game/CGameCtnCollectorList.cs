@@ -5,7 +5,7 @@
 /// </summary>
 /// <remarks>A list of puzzle pieces.</remarks>
 [Node(0x0301B000)]
-public sealed class CGameCtnCollectorList : CMwNod
+public class CGameCtnCollectorList : CMwNod
 {
     #region Fields
 
@@ -26,7 +26,7 @@ public sealed class CGameCtnCollectorList : CMwNod
 
     #region Constructors
 
-    private CGameCtnCollectorList()
+    protected CGameCtnCollectorList()
     {
         collectorStock = null!;
     }
@@ -66,12 +66,12 @@ public sealed class CGameCtnCollectorList : CMwNod
 
     public class Collector
     {
-        public Ident Ident { get; set; } = new Ident();
+        public Ident Ident { get; set; } = Ident.Empty;
         public int Count { get; set; }
 
         public override string ToString()
         {
-            return $"{Count} {Ident.ID}";
+            return $"{Count} {Ident.Id}";
         }
     }
 

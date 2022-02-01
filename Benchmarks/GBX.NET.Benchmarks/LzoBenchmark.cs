@@ -4,6 +4,7 @@ using GBX.NET.Engines.MwFoundations;
 namespace GBX.NET.Benchmarks;
 
 [MemoryDiagnoser]
+[CustomBenchmark(FileBenchmark = true)]
 public class LzoBenchmark : Benchmark
 {
     public MemoryStream MapCompressed { get; set; } = new();
@@ -25,14 +26,14 @@ public class LzoBenchmark : Benchmark
     }
 
     [Benchmark(Baseline = true)]
-    public CMwNod ParseMapCompressed()
+    public Node ParseMapCompressed()
     {
         MapCompressed.Position = 0;
         return GameBox.ParseNode(MapCompressed)!;
     }
 
     [Benchmark]
-    public CMwNod ParseMapUncompressed()
+    public Node ParseMapUncompressed()
     {
         MapUncompressed.Position = 0;
         return GameBox.ParseNode(MapUncompressed)!;

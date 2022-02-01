@@ -1,7 +1,11 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// CGamePlayerProfile (0x0308C000)
+/// </summary>
 [Node(0x0308C000), WritingNotSupported]
-public sealed class CGamePlayerProfile : CMwNod
+[NodeExtension("Profile")]
+public class CGamePlayerProfile : CMwNod
 {
     private string? description;
     private CGameNetOnlineMessage[]? messages;
@@ -45,7 +49,7 @@ public sealed class CGamePlayerProfile : CMwNod
 
     #region Constructors
 
-    private CGamePlayerProfile()
+    protected CGamePlayerProfile()
     {
 
     }
@@ -747,7 +751,7 @@ public sealed class CGamePlayerProfile : CMwNod
 
     public class Skin
     {
-        public Ident PlayerModel { get; set; } = new Ident();
+        public Ident PlayerModel { get; set; } = Ident.Empty;
         public string? SkinFile { get; set; }
         public uint Checksum { get; set; }
     }

@@ -2,9 +2,9 @@
 
 public partial class CGameCtnMediaTrackBuilder
 {
-    public class TMSX : GameBuilder<ICGameCtnMediaTrackBuilder, CGameCtnMediaTrack>
+    public class TMSX : GameBuilder<CGameCtnMediaTrackBuilder, CGameCtnMediaTrack>
     {
-        public TMSX(ICGameCtnMediaTrackBuilder baseBuilder, CGameCtnMediaTrack node) : base(baseBuilder, node) { }
+        public TMSX(CGameCtnMediaTrackBuilder baseBuilder, CGameCtnMediaTrack node) : base(baseBuilder, node) { }
 
         public override CGameCtnMediaTrack Build()
         {

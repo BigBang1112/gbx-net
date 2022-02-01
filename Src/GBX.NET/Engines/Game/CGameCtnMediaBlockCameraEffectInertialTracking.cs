@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Camera effect inetrial tracking
+/// MediaTracker block - Camera effect inetrial tracking (0x03166000)
 /// </summary>
 [Node(0x03166000)]
 public class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMediaBlockCameraEffect, CGameCtnMediaBlock.IHasTwoKeys
@@ -57,7 +57,7 @@ public class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMediaBlock
 
     #region Constructors
 
-    private CGameCtnMediaBlockCameraEffectInertialTracking()
+    protected CGameCtnMediaBlockCameraEffectInertialTracking()
     {
 
     }

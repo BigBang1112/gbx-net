@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x0315C000)]
-public sealed class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant
+public class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant
 {
     private CGameCtnAutoTerrain?[]? autoTerrains;
 
@@ -11,7 +11,7 @@ public sealed class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant
         set => autoTerrains = value;
     }
 
-    private CGameCtnBlockInfoVariantGround()
+    protected CGameCtnBlockInfoVariantGround()
     {
 
     }

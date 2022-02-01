@@ -891,6 +891,7 @@ public class GameBoxReaderWriterTests
     #region EnumInt32
 
     [Theory]
+    [InlineData(TestEnum.Zero)]
     [InlineData(TestEnum.One)]
     [InlineData(TestEnum.Two)]
     [InlineData(TestEnum.Three)]
@@ -906,6 +907,7 @@ public class GameBoxReaderWriterTests
     }
 
     [Theory]
+    [InlineData(TestEnum.Zero)]
     [InlineData(TestEnum.One)]
     [InlineData(TestEnum.Two)]
     [InlineData(TestEnum.Three)]
@@ -932,6 +934,7 @@ public class GameBoxReaderWriterTests
     }
 
     [Theory]
+    [InlineData(TestEnum.Zero)]
     [InlineData(TestEnum.One)]
     [InlineData(TestEnum.Two)]
     [InlineData(TestEnum.Three)]
@@ -948,6 +951,7 @@ public class GameBoxReaderWriterTests
 
     [Theory]
     [InlineData(null)]
+    [InlineData(TestEnum.Zero)]
     [InlineData(TestEnum.One)]
     [InlineData(TestEnum.Two)]
     [InlineData(TestEnum.Three)]
@@ -980,6 +984,7 @@ public class GameBoxReaderWriterTests
     #region Int2
 
     [Theory]
+    [InlineData(0, 0)]
     [InlineData(0, 1)]
     [InlineData(5, 10)]
     [InlineData(69, 420)]
@@ -997,6 +1002,7 @@ public class GameBoxReaderWriterTests
     }
 
     [Theory]
+    [InlineData(0, 0)]
     [InlineData(0, 1)]
     [InlineData(5, 10)]
     [InlineData(69, 420)]
@@ -1025,6 +1031,7 @@ public class GameBoxReaderWriterTests
     }
 
     [Theory]
+    [InlineData(0, 0)]
     [InlineData(0, 1)]
     [InlineData(5, 10)]
     [InlineData(69, 420)]
@@ -1043,6 +1050,7 @@ public class GameBoxReaderWriterTests
 
     [Theory]
     [InlineData(null, null)]
+    [InlineData(0, 0)]
     [InlineData(0, 1)]
     [InlineData(5, 10)]
     [InlineData(69, 420)]
@@ -1062,6 +1070,7 @@ public class GameBoxReaderWriterTests
     }
 
     [Theory]
+    [InlineData(0, 0)]
     [InlineData(0, 1)]
     [InlineData(5, 10)]
     [InlineData(69, 420)]
@@ -1080,6 +1089,7 @@ public class GameBoxReaderWriterTests
     #region Int3
 
     [Theory]
+    [InlineData(0, 0, 0)]
     [InlineData(0, 1, 2)]
     [InlineData(5, 10, 15)]
     [InlineData(69, 420, 69)]
@@ -1097,6 +1107,7 @@ public class GameBoxReaderWriterTests
     }
 
     [Theory]
+    [InlineData(0, 0, 0)]
     [InlineData(0, 1, 2)]
     [InlineData(5, 10, 15)]
     [InlineData(69, 420, 69)]
@@ -1125,6 +1136,7 @@ public class GameBoxReaderWriterTests
     }
 
     [Theory]
+    [InlineData(0, 0, 0)]
     [InlineData(0, 1, 2)]
     [InlineData(5, 10, 15)]
     [InlineData(69, 420, 69)]
@@ -1143,6 +1155,7 @@ public class GameBoxReaderWriterTests
 
     [Theory]
     [InlineData(null, null, null)]
+    [InlineData(0, 0, 0)]
     [InlineData(0, 1, 2)]
     [InlineData(5, 10, 15)]
     [InlineData(69, 420, 69)]
@@ -1162,6 +1175,7 @@ public class GameBoxReaderWriterTests
     }
 
     [Theory]
+    [InlineData(0, 0, 0)]
     [InlineData(0, 1, 2)]
     [InlineData(5, 10, 15)]
     [InlineData(69, 420, 69)]
@@ -1180,6 +1194,7 @@ public class GameBoxReaderWriterTests
     #region Byte3
 
     [Theory]
+    [InlineData(0, 0, 0)]
     [InlineData(0, 1, 2)]
     [InlineData(3, 4, 5)]
     [InlineData(0, 255, 255)]
@@ -1197,6 +1212,7 @@ public class GameBoxReaderWriterTests
     }
 
     [Theory]
+    [InlineData(0, 0, 0)]
     [InlineData(0, 1, 2)]
     [InlineData(3, 4, 5)]
     [InlineData(0, 255, 255)]
@@ -1225,6 +1241,7 @@ public class GameBoxReaderWriterTests
     }
 
     [Theory]
+    [InlineData(0, 0, 0)]
     [InlineData(0, 1, 2)]
     [InlineData(3, 4, 5)]
     [InlineData(0, 255, 255)]
@@ -1243,6 +1260,7 @@ public class GameBoxReaderWriterTests
 
     [Theory]
     [InlineData(null, null, null)]
+    [InlineData((byte)0, (byte)0, (byte)0)]
     [InlineData((byte)0, (byte)1, (byte)2)]
     [InlineData((byte)3, (byte)4, (byte)5)]
     [InlineData((byte)0, (byte)255, (byte)255)]
@@ -1262,6 +1280,7 @@ public class GameBoxReaderWriterTests
     }
 
     [Theory]
+    [InlineData(0, 0, 0)]
     [InlineData(0, 1, 2)]
     [InlineData(3, 4, 5)]
     [InlineData(0, 255, 255)]
@@ -1280,6 +1299,7 @@ public class GameBoxReaderWriterTests
     #region Vec2
 
     [Theory]
+    [InlineData(0, 0)]
     [InlineData(0.12f, 1.123f)]
     [InlineData(5.5f, 10.15f)]
     [InlineData(69.420f, 420.69f)]
@@ -1297,6 +1317,7 @@ public class GameBoxReaderWriterTests
     }
 
     [Theory]
+    [InlineData(0, 0)]
     [InlineData(0.12f, 1.123f)]
     [InlineData(5.5f, 10.15f)]
     [InlineData(69.420f, 420.69f)]
@@ -1325,6 +1346,7 @@ public class GameBoxReaderWriterTests
     }
 
     [Theory]
+    [InlineData(0, 0)]
     [InlineData(0.12f, 1.123f)]
     [InlineData(5.5f, 10.15f)]
     [InlineData(69.420f, 420.69f)]
@@ -1343,6 +1365,7 @@ public class GameBoxReaderWriterTests
 
     [Theory]
     [InlineData(null, null)]
+    [InlineData(0, 0)]
     [InlineData(0.12f, 1.123f)]
     [InlineData(5.5f, 10.15f)]
     [InlineData(69.420f, 420.69f)]
@@ -1362,6 +1385,7 @@ public class GameBoxReaderWriterTests
     }
 
     [Theory]
+    [InlineData(0, 0)]
     [InlineData(0.12f, 1.123f)]
     [InlineData(5.5f, 10.15f)]
     [InlineData(69.420f, 420.69f)]
@@ -1380,6 +1404,7 @@ public class GameBoxReaderWriterTests
     #region Vec3
 
     [Theory]
+    [InlineData(0, 0, 0)]
     [InlineData(0.12f, 1.123f, 2.345f)]
     [InlineData(5.5f, 10.15f, 15.30f)]
     [InlineData(69.420f, 420.69f, 69.69f)]
@@ -1397,6 +1422,7 @@ public class GameBoxReaderWriterTests
     }
 
     [Theory]
+    [InlineData(0, 0, 0)]
     [InlineData(0.12f, 1.123f, 2.345f)]
     [InlineData(5.5f, 10.15f, 15.30f)]
     [InlineData(69.420f, 420.69f, 69.69f)]
@@ -1425,6 +1451,7 @@ public class GameBoxReaderWriterTests
     }
 
     [Theory]
+    [InlineData(0, 0, 0)]
     [InlineData(0.12f, 1.123f, 2.345f)]
     [InlineData(5.5f, 10.15f, 15.30f)]
     [InlineData(69.420f, 420.69f, 69.69f)]
@@ -1443,6 +1470,7 @@ public class GameBoxReaderWriterTests
 
     [Theory]
     [InlineData(null, null, null)]
+    [InlineData(0, 0, 0)]
     [InlineData(0.12f, 1.123f, 2.345f)]
     [InlineData(5.5f, 10.15f, 15.30f)]
     [InlineData(69.420f, 420.69f, 69.69f)]
@@ -1462,6 +1490,7 @@ public class GameBoxReaderWriterTests
     }
 
     [Theory]
+    [InlineData(0, 0, 0)]
     [InlineData(0.12f, 1.123f, 2.345f)]
     [InlineData(5.5f, 10.15f, 15.30f)]
     [InlineData(69.420f, 420.69f, 69.69f)]
@@ -1473,6 +1502,426 @@ public class GameBoxReaderWriterTests
         GeneralTest_Write_Nullable_DefaultShouldBeWritten(
             (rw, value, defaultValue) => rw.Vec3(ref value, defaultValue),
             r => r.ReadVec3(), defaultValue);
+    }
+
+    #endregion
+
+    #region Vec4
+
+    [Theory]
+    [InlineData(0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0)]
+    public void Vec4_Read_Ref_ShouldEqualExampleValue(float exampleValueX, float exampleValueY, float exampleValueZ, float exampleValueW)
+    {
+        var exampleValue = new Vec4(exampleValueX, exampleValueY, exampleValueZ, exampleValueW);
+
+        GeneralTest_Read_Ref_ShouldEqualExampleValue((rw, value) =>
+        {
+            rw.Vec4(ref value);
+            return value;
+        },
+        w => w.Write(exampleValue), exampleValue);
+    }
+
+    [Theory]
+    [InlineData(0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0)]
+    public void Vec4_Nullable_Read_Ref_ShouldEqualExampleValue(float exampleValueX, float exampleValueY, float exampleValueZ, float exampleValueW)
+    {
+        var exampleValue = new Vec4(exampleValueX, exampleValueY, exampleValueZ, exampleValueW);
+
+        GeneralTest_Read_Ref_ShouldEqualExampleValue<Vec4?>((rw, value) =>
+        {
+            rw.Vec4(ref value);
+            return value;
+        },
+        w => w.Write(exampleValue), exampleValue);
+    }
+
+    [Fact]
+    public void Vec4_Nullable_Read_Ref_NullValueShouldNotEqual()
+    {
+        GeneralTest_Read_Ref_NullValueShouldNotEqual<Vec4>((rw, value) =>
+        {
+            rw.Vec4(ref value);
+            return value;
+        },
+        w => w.Write(default(Vec4)));
+    }
+
+    [Theory]
+    [InlineData(0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0)]
+    public void Vec4_Write_Ref_ShouldBeEqual(float valueX, float valueY, float valueZ, float valueW)
+    {
+        var value = new Vec4(valueX, valueY, valueZ, valueW);
+
+        GeneralTest_Write_Ref_ShouldBeEqual((rw, value) =>
+        {
+            rw.Vec4(ref value);
+            return value;
+        },
+        value);
+    }
+
+    [Theory]
+    [InlineData(null, null, null, null)]
+    [InlineData(0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0)]
+    public void Vec4_Nullable_Write_Ref_ShouldBeEqual(float? valueX, float? valueY, float? valueZ, float? valueW)
+    {
+        var value = valueX.HasValue && valueY.HasValue && valueZ.HasValue && valueW.HasValue
+            ? new Vec4(valueX.Value, valueY.Value, valueZ.Value, valueW.Value)
+            : default(Vec4?);
+
+        GeneralTest_Write_Ref_ShouldBeEqual((rw, value) =>
+        {
+            rw.Vec4(ref value);
+            return value;
+        },
+        value);
+    }
+
+    [Theory]
+    [InlineData(0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0)]
+    public void Vec4_Nullable_Write_DefaultShouldBeWritten(float defaultValueX, float defaultValueY, float defaultValueZ, float defaultValueW)
+    {
+        var defaultValue = new Vec4(defaultValueX, defaultValueY, defaultValueZ, defaultValueW);
+
+        GeneralTest_Write_Nullable_DefaultShouldBeWritten(
+            (rw, value, defaultValue) => rw.Vec4(ref value, defaultValue),
+            r => r.ReadVec4(), defaultValue);
+    }
+
+    #endregion
+
+    #region Rect
+
+    [Theory]
+    [InlineData(0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0)]
+    public void Rect_Read_Ref_ShouldEqualExampleValue(float exampleValueX, float exampleValueY, float exampleValueX2, float exampleValueY2)
+    {
+        var exampleValue = new Rect(exampleValueX, exampleValueY, exampleValueX2, exampleValueY2);
+
+        GeneralTest_Read_Ref_ShouldEqualExampleValue((rw, value) =>
+        {
+            rw.Rect(ref value);
+            return value;
+        },
+        w => w.Write(exampleValue), exampleValue);
+    }
+
+    [Theory]
+    [InlineData(0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0)]
+    public void Rect_Nullable_Read_Ref_ShouldEqualExampleValue(float exampleValueX, float exampleValueY, float exampleValueX2, float exampleValueY2)
+    {
+        var exampleValue = new Rect(exampleValueX, exampleValueY, exampleValueX2, exampleValueY2);
+
+        GeneralTest_Read_Ref_ShouldEqualExampleValue<Rect?>((rw, value) =>
+        {
+            rw.Rect(ref value);
+            return value;
+        },
+        w => w.Write(exampleValue), exampleValue);
+    }
+
+    [Fact]
+    public void Rect_Nullable_Read_Ref_NullValueShouldNotEqual()
+    {
+        GeneralTest_Read_Ref_NullValueShouldNotEqual<Rect>((rw, value) =>
+        {
+            rw.Rect(ref value);
+            return value;
+        },
+        w => w.Write(default(Rect)));
+    }
+
+    [Theory]
+    [InlineData(0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0)]
+    public void Rect_Write_Ref_ShouldBeEqual(float valueX, float valueY, float valueX2, float valueY2)
+    {
+        var value = new Rect(valueX, valueY, valueX2, valueY2);
+
+        GeneralTest_Write_Ref_ShouldBeEqual((rw, value) =>
+        {
+            rw.Rect(ref value);
+            return value;
+        },
+        value);
+    }
+
+    [Theory]
+    [InlineData(null, null, null, null)]
+    [InlineData(0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0)]
+    public void Rect_Nullable_Write_Ref_ShouldBeEqual(float? valueX, float? valueY, float? valueX2, float? valueY2)
+    {
+        var value = valueX.HasValue && valueY.HasValue && valueX2.HasValue && valueY2.HasValue
+            ? new Rect(valueX.Value, valueY.Value, valueX2.Value, valueY2.Value)
+            : default(Rect?);
+
+        GeneralTest_Write_Ref_ShouldBeEqual((rw, value) =>
+        {
+            rw.Rect(ref value);
+            return value;
+        },
+        value);
+    }
+
+    [Theory]
+    [InlineData(0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0)]
+    public void Rect_Nullable_Write_DefaultShouldBeWritten(float defaultValueX, float defaultValueY, float defaultValueX2, float defaultValueY2)
+    {
+        var defaultValue = new Rect(defaultValueX, defaultValueY, defaultValueX2, defaultValueY2);
+
+        GeneralTest_Write_Nullable_DefaultShouldBeWritten(
+            (rw, value, defaultValue) => rw.Rect(ref value, defaultValue),
+            r => r.ReadRect(), defaultValue);
+    }
+
+    #endregion
+
+    #region Box
+
+    [Theory]
+    [InlineData(0, 0, 0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0, 69.1f, 0)]
+    public void Box_Read_Ref_ShouldEqualExampleValue(float exampleValueX, float exampleValueY, float exampleValueZ, float exampleValueX2, float exampleValueY2, float exampleValueZ2)
+    {
+        var exampleValue = new Box(exampleValueX, exampleValueY, exampleValueZ, exampleValueX2, exampleValueY2, exampleValueZ2);
+
+        GeneralTest_Read_Ref_ShouldEqualExampleValue((rw, value) =>
+        {
+            rw.Box(ref value);
+            return value;
+        },
+        w => w.Write(exampleValue), exampleValue);
+    }
+
+    [Theory]
+    [InlineData(0, 0, 0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0, 69.1f, 0)]
+    public void Box_Nullable_Read_Ref_ShouldEqualExampleValue(float exampleValueX, float exampleValueY, float exampleValueZ, float exampleValueX2, float exampleValueY2, float exampleValueZ2)
+    {
+        var exampleValue = new Box(exampleValueX, exampleValueY, exampleValueZ, exampleValueX2, exampleValueY2, exampleValueZ2);
+
+        GeneralTest_Read_Ref_ShouldEqualExampleValue<Box?>((rw, value) =>
+        {
+            rw.Box(ref value);
+            return value;
+        },
+        w => w.Write(exampleValue), exampleValue);
+    }
+
+    [Fact]
+    public void Box_Nullable_Read_Ref_NullValueShouldNotEqual()
+    {
+        GeneralTest_Read_Ref_NullValueShouldNotEqual<Box>((rw, value) =>
+        {
+            rw.Box(ref value);
+            return value;
+        },
+        w => w.Write(default(Box)));
+    }
+
+    [Theory]
+    [InlineData(0, 0, 0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0, 69.1f, 0)]
+    public void Box_Write_Ref_ShouldBeEqual(float valueX, float valueY, float valueZ, float valueX2, float valueY2, float valueZ2)
+    {
+        var value = new Box(valueX, valueY, valueZ, valueX2, valueY2, valueZ2);
+
+        GeneralTest_Write_Ref_ShouldBeEqual((rw, value) =>
+        {
+            rw.Box(ref value);
+            return value;
+        },
+        value);
+    }
+
+    [Theory]
+    [InlineData(null, null, null, null, null, null)]
+    [InlineData(0, 0, 0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0, 69.1f, 0)]
+    public void Box_Nullable_Write_Ref_ShouldBeEqual(float? valueX, float? valueY, float? valueZ, float? valueX2, float? valueY2, float? valueZ2)
+    {
+        var value = valueX.HasValue && valueY.HasValue && valueZ.HasValue && valueX2.HasValue && valueY2.HasValue && valueZ2.HasValue
+            ? new Box(valueX.Value, valueY.Value, valueZ.Value, valueX2.Value, valueY2.Value, valueZ2.Value)
+            : default(Box?);
+
+        GeneralTest_Write_Ref_ShouldBeEqual((rw, value) =>
+        {
+            rw.Box(ref value);
+            return value;
+        },
+        value);
+    }
+
+    [Theory]
+    [InlineData(0, 0, 0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0, 69.1f, 0)]
+    public void Box_Nullable_Write_DefaultShouldBeWritten(float defaultValueX, float defaultValueY, float defaultValueZ, float defaultValueX2, float defaultValueY2, float defaultValueZ2)
+    {
+        var defaultValue = new Box(defaultValueX, defaultValueY, defaultValueZ, defaultValueX2, defaultValueY2, defaultValueZ2);
+
+        GeneralTest_Write_Nullable_DefaultShouldBeWritten(
+            (rw, value, defaultValue) => rw.Box(ref value, defaultValue),
+            r => r.ReadBox(), defaultValue);
+    }
+
+    #endregion
+
+    #region Quat
+
+    [Theory]
+    [InlineData(0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0)]
+    public void Quat_Read_Ref_ShouldEqualExampleValue(float exampleValueX, float exampleValueY, float exampleValueZ, float exampleValueW)
+    {
+        var exampleValue = new Quat(exampleValueX, exampleValueY, exampleValueZ, exampleValueW);
+
+        GeneralTest_Read_Ref_ShouldEqualExampleValue((rw, value) =>
+        {
+            rw.Quat(ref value);
+            return value;
+        },
+        w => w.Write(exampleValue), exampleValue);
+    }
+
+    [Theory]
+    [InlineData(0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0)]
+    public void Quat_Nullable_Read_Ref_ShouldEqualExampleValue(float exampleValueX, float exampleValueY, float exampleValueZ, float exampleValueW)
+    {
+        var exampleValue = new Quat(exampleValueX, exampleValueY, exampleValueZ, exampleValueW);
+
+        GeneralTest_Read_Ref_ShouldEqualExampleValue<Quat?>((rw, value) =>
+        {
+            rw.Quat(ref value);
+            return value;
+        },
+        w => w.Write(exampleValue), exampleValue);
+    }
+
+    [Fact]
+    public void Quat_Nullable_Read_Ref_NullValueShouldNotEqual()
+    {
+        GeneralTest_Read_Ref_NullValueShouldNotEqual<Quat>((rw, value) =>
+        {
+            rw.Quat(ref value);
+            return value;
+        },
+        w => w.Write(default(Quat)));
+    }
+
+    [Theory]
+    [InlineData(0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0)]
+    public void Quat_Write_Ref_ShouldBeEqual(float valueX, float valueY, float valueZ, float valueW)
+    {
+        var value = new Quat(valueX, valueY, valueZ, valueW);
+
+        GeneralTest_Write_Ref_ShouldBeEqual((rw, value) =>
+        {
+            rw.Quat(ref value);
+            return value;
+        },
+        value);
+    }
+
+    [Theory]
+    [InlineData(null, null, null, null)]
+    [InlineData(0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0)]
+    public void Quat_Nullable_Write_Ref_ShouldBeEqual(float? valueX, float? valueY, float? valueZ, float? valueW)
+    {
+        var value = valueX.HasValue && valueY.HasValue && valueZ.HasValue && valueW.HasValue
+            ? new Quat(valueX.Value, valueY.Value, valueZ.Value, valueW.Value)
+            : default(Quat?);
+
+        GeneralTest_Write_Ref_ShouldBeEqual((rw, value) =>
+        {
+            rw.Quat(ref value);
+            return value;
+        },
+        value);
+    }
+
+    [Theory]
+    [InlineData(0, 0, 0, 0)]
+    [InlineData(0.12f, 1.123f, 2.345f, 1.568f)]
+    [InlineData(5.5f, 10.15f, 15.30f, 16.15f)]
+    [InlineData(69.420f, 420.69f, 69.69f, 111.2f)]
+    [InlineData(420.420f, 420.69f, 69.1f, 0)]
+    public void Quat_Nullable_Write_DefaultShouldBeWritten(float defaultValueX, float defaultValueY, float defaultValueZ, float defaultValueW)
+    {
+        var defaultValue = new Quat(defaultValueX, defaultValueY, defaultValueZ, defaultValueW);
+
+        GeneralTest_Write_Nullable_DefaultShouldBeWritten(
+            (rw, value, defaultValue) => rw.Quat(ref value, defaultValue),
+            r => r.ReadQuat(), defaultValue);
     }
 
     #endregion

@@ -4,7 +4,8 @@
 /// MediaTracker block - 3D stereo (0x03024000)
 /// </summary>
 [Node(0x03024000)]
-public sealed class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+[NodeExtension("GameCtnMediaBlock3dStereo")]
+public partial class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -31,7 +32,7 @@ public sealed class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, CGameCtnMed
 
     #region Constructors
 
-    private CGameCtnMediaBlock3dStereo()
+    protected CGameCtnMediaBlock3dStereo()
     {
         keys = null!;
     }
@@ -50,32 +51,11 @@ public sealed class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, CGameCtnMed
     {
         public override void ReadWrite(CGameCtnMediaBlock3dStereo n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                UpToMax = r.ReadSingle(),
-                ScreenDist = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.UpToMax);
-                w.Write(x.ScreenDist);
-            });
+            rw.ListKey(ref n.keys!);
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float UpToMax { get; set; }
-        public float ScreenDist { get; set; }
-    }
 
     #endregion
 }

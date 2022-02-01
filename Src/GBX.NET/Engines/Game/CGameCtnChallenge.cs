@@ -8,11 +8,13 @@ using GBX.NET.BlockInfo;
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Map (0x03043000)
+/// CGameCtnChallenge (0x03043000)
 /// </summary>
-/// <remarks>A map. Known extensions: .Challenge.Gbx, .Map.Gbx</remarks>
+/// <remarks>A map.</remarks>
 [Node(0x03043000)]
-public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
+[NodeExtension("Challenge")]
+[NodeExtension("Map")]
+public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 {
     #region Enums
 
@@ -212,10 +214,13 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #region Properties
 
+#if DEBUG
     /// <summary>
-    /// Shows members that are available from the GBX header (reading the body is not required).
+    /// Shows members that are available from the GBX header (members where reading the body is not required). This method is available only in DEBUG configuration.
     /// </summary>
-    public IHeader Header => this;
+    /// <remarks>This is just a helper method that just returns THIS object, just casted as <see cref="IHeader"/>. Avoid using this method in production.</remarks>
+    public IHeader GetHeaderMembers() => this;
+#endif
 
     /// <summary>
     /// Time of the bronze medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
@@ -411,7 +416,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [NodeMember]
     public string MapUid
     {
-        get => mapInfo.ID;
+        get => mapInfo.Id;
         set
         {
             mapInfo = new Ident(value, mapInfo.Collection, mapInfo.Author);
@@ -438,7 +443,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             DiscoverChunk<Chunk03043042>();
             authorLogin = value;
 
-            mapInfo = new Ident(value, mapInfo.Collection, mapInfo.Author);
+            mapInfo = new Ident(mapInfo.Id, mapInfo.Collection, value);
         }
     }
 
@@ -577,7 +582,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public Collection Collection
     {
         get => mapInfo.Collection;
-        set => mapInfo = new Ident(mapInfo.ID, value, mapInfo.Author);
+        set => mapInfo = new Ident(mapInfo.Id, value, mapInfo.Author);
     }
 
     /// <summary>
@@ -1259,7 +1264,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #region Constructors
 
-    private CGameCtnChallenge()
+    protected CGameCtnChallenge()
     {
         mapInfo = null!;
         mapName = null!;
@@ -1289,16 +1294,6 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         if (thumbnail == null) return;
         using var fs = File.Create(fileName);
         ExportThumbnail(fs);
-    }
-
-    /// <summary>
-    /// Sets a new map password.
-    /// </summary>
-    /// <param name="password">Password that will be hashed.</param>
-    private void NewPassword(string password)
-    {
-        var md5 = MD5.Create();
-        hashedPassword = md5.ComputeHash(Encoding.UTF8.GetBytes(password));
     }
 
     /// <summary>
@@ -1365,7 +1360,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         if (Blocks is null)
             throw new MemberNullException(nameof(Blocks));
 
-        var block = new CGameCtnBlock(blockModel.ID, dir, coord);
+        var block = new CGameCtnBlock(blockModel.Id, dir, coord);
 
         block.CreateChunk<CGameCtnBlock.Chunk03057002>();
 
@@ -1620,7 +1615,6 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             using var ms = new MemoryStream(embed.Value);
             var gbx = GameBox.ParseHeader(ms);
-            gbx.FileName = embed.Key;
             yield return gbx;
         }
     }
@@ -2385,18 +2379,20 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             rw.Int32(ref version);
 
-            if (version != 0)
+            if (version == 0)
             {
-                var thumbnailSize = rw.Int32(n.thumbnail?.Length ?? 0);
-
-                rw.Bytes(Encoding.UTF8.GetBytes("<Thumbnail.jpg>"), "<Thumbnail.jpg>".Length); // Because the string is purely ASCII anyway, Length is usable
-                rw.Bytes(ref n.thumbnail, thumbnailSize);
-                rw.Bytes(Encoding.UTF8.GetBytes("</Thumbnail.jpg>"), "</Thumbnail.jpg>".Length);
-
-                rw.Bytes(Encoding.UTF8.GetBytes("<Comments>"), "<Comments>".Length);
-                rw.String(ref n.comments);
-                rw.Bytes(Encoding.UTF8.GetBytes("</Comments>"), "</Comments>".Length);
+                return;
             }
+
+            var thumbnailSize = rw.Int32(n.thumbnail?.Length ?? 0);
+
+            rw.Bytes(Encoding.UTF8.GetBytes("<Thumbnail.jpg>"), "<Thumbnail.jpg>".Length); // Because the string is purely ASCII anyway, Length is usable
+            rw.Bytes(ref n.thumbnail, thumbnailSize);
+            rw.Bytes(Encoding.UTF8.GetBytes("</Thumbnail.jpg>"), "</Thumbnail.jpg>".Length);
+
+            rw.Bytes(Encoding.UTF8.GetBytes("<Comments>"), "<Comments>".Length);
+            rw.String(ref n.comments);
+            rw.Bytes(Encoding.UTF8.GetBytes("</Comments>"), "</Comments>".Length);
         }
     }
 
@@ -2475,6 +2471,16 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             rw.Boolean(ref n.needUnlock);
             rw.Ident(ref n.decoration);
         }
+
+        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            rw.Ident(ref n.mapInfo!);
+            rw.Int3(ref n.size);
+            rw.Int32(ref version);
+            n.blocks = (await rw.ListNodeAsync<CGameCtnBlock>(n.blocks!, cancellationToken))!;
+            rw.Boolean(ref n.needUnlock);
+            rw.Ident(ref n.decoration);
+        }
     }
 
     #endregion
@@ -2491,6 +2497,13 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             rw.NodeRef<CGameCtnCollectorList>(ref n.blockStock);
             rw.NodeRef<CGameCtnChallengeParameters>(ref n.challengeParameters);
+            rw.EnumInt32<MapKind>(ref n.kind);
+        }
+
+        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            n.blockStock = await rw.NodeRefAsync(n.blockStock, cancellationToken);
+            n.challengeParameters = await rw.NodeRefAsync(n.challengeParameters, cancellationToken);
             rw.EnumInt32<MapKind>(ref n.kind);
         }
     }
@@ -2708,16 +2721,10 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        /// <exception cref="ChunkVersionNotSupportedException">Chunk version below 0 and above 6 isn't supported.</exception>
         public int Version
         {
             get => version;
-            set
-            {
-                if (version < 0 && version > 6)
-                    throw new ChunkVersionNotSupportedException(this, version);
-                version = value;
-            }
+            set => version = value;
         }
 
         public Chunk0304301F() : this(null)
@@ -2739,10 +2746,14 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             NeedUnlock = r.ReadBoolean();
 
             if (!is013)
+            {
                 version = r.ReadInt32();
+            }
 
             if (version > 6)
-                throw new ChunkVersionNotSupportedException(this, version);
+            {
+                throw new ChunkVersionNotSupportedException(version);
+            }
 
             var nbBlocks = r.ReadInt32(); // It's maybe slower but better for the program to determine the count from the list
 
@@ -2757,13 +2768,15 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 var coord = (Int3)r.ReadByte3();
 
                 if (version >= 6)
+                {
                     coord -= (1, 0, 1);
+                }
 
                 var flags = version switch
                 {
                     0 => r.ReadUInt16(),
                     > 0 => r.ReadInt32(),
-                    _ => throw new ChunkVersionNotSupportedException(this, version),
+                    _ => throw new ChunkVersionNotSupportedException(version),
                 };
 
                 if (flags == -1)
@@ -2784,7 +2797,9 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 CGameWaypointSpecialProperty? parameters = null;
 
                 if (CGameCtnBlock.IsWaypointBlock(flags))
+                {
                     parameters = r.ReadNodeRef<CGameWaypointSpecialProperty>();
+                }
 
                 if ((flags & (1 << 18)) != 0)
                 {
@@ -2797,12 +2812,14 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 }
 
                 if (CGameCtnBlock.IsFreeBlock(flags))
-                    coord -= (0, 1, 0);
-
-                n.blocks.Add(new CGameCtnBlock(blockName, dir, coord, flags, author, skin, parameters)
                 {
-                    GBX = n.GBX
-                });
+                    coord -= (0, 1, 0);
+                }
+
+                var block = new CGameCtnBlock(blockName, dir, coord, flags, author, skin, parameters);
+                ((INodeDependant<CGameCtnChallenge>)block).DependingNode = n;
+
+                n.blocks.Add(block);
 
                 blockCounter++;
             }
@@ -2843,7 +2860,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 {
                     case 0: w.Write((short)x.Flags); break;
                     case > 0: w.Write(x.Flags); break;
-                    default: throw new ChunkVersionNotSupportedException(this, version);
+                    default: throw new ChunkVersionNotSupportedException(version);
                 }
 
                 if (x.Flags != -1)
@@ -2876,6 +2893,13 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             rw.NodeRef<CGameCtnMediaClip>(ref n.clipIntro);
             rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupInGame);
             rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupEndRace);
+        }
+
+        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            n.clipIntro = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipIntro, cancellationToken);
+            n.clipGroupInGame = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupInGame, cancellationToken);
+            n.clipGroupEndRace = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupEndRace, cancellationToken);
         }
     }
 
@@ -3102,8 +3126,11 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
+            // GmLocFreeVal
             rw.Vec3(ref n.thumbnailPosition);
             rw.Vec3(ref n.thumbnailPitchYawRoll);
+
+            // GmLensVal
             rw.Single(ref n.thumbnailFOV);
 
             if (rw.Mode == GameBoxReaderWriterMode.Read)
@@ -3161,7 +3188,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             set => cacheData = value;
         }
 
-        public override void Read(CGameCtnChallenge n, GameBoxReader r)
+        public override void Read(CGameCtnChallenge n, GameBoxReader r, ILogger? logger)
         {
             U01 = r.ReadBoolean();
             version = r.ReadInt32();
@@ -3177,9 +3204,9 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             else
             {
                 n.lightmapFrames = new List<List<byte[]>>
-                    {
-                        new List<byte[]>()
-                    };
+                {
+                    new List<byte[]>()
+                };
             }
 
             if (version >= 2)
@@ -3209,9 +3236,9 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     {
                         using var ms = new MemoryStream(data);
                         using var deflate = new CompressedStream(ms, CompressionMode.Decompress);
-                        using var gbxr = new GameBoxReader(deflate);
+                        using var gbxr = new GameBoxReader(deflate, r.Settings, logger);
 
-                        var cacheNode = Parse<CHmsLightMapCache>(gbxr, 0x06022000);
+                        var cacheNode = Parse<CHmsLightMapCache>(gbxr, 0x06022000, progress: null, logger);
 
                         using var msOut = new MemoryStream();
 
@@ -3224,7 +3251,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             }
         }
 
-        public override void Write(CGameCtnChallenge n, GameBoxWriter w)
+        public override void Write(CGameCtnChallenge n, GameBoxWriter w, ILogger? logger)
         {
             w.Write(U01);
             w.Write(version);
@@ -3259,7 +3286,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     using var ms = new MemoryStream();
                     using var gbxw = new GameBoxWriter(ms);
 
-                    n.lightmapCache?.Result?.Write(gbxw);
+                    n.lightmapCache?.Result?.Write(gbxw, logger);
                     gbxw.WriteBytes(CacheData ?? Array.Empty<byte>());
 
                     w.Write((int)ms.Length);
@@ -3299,17 +3326,14 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CGameCtnChallenge 0x040 skippable chunk (items)
     /// </summary>
     [Chunk(0x03043040, "items")]
-    public class Chunk03043040 : SkippableChunk<CGameCtnChallenge>, IVersionable, ILookbackable
+    [ChunkWithOwnIdState]
+    public class Chunk03043040 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private int version = 4;
 
         public int U01;
         public int U02 = 10;
         public byte[]? U03;
-
-        int? ILookbackable.IdVersion { get; set; }
-        List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
-        bool ILookbackable.IdWritten { get; set; }
 
         /// <summary>
         /// Version of the chunk.
@@ -3325,7 +3349,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             Node.anchoredObjects = new List<CGameCtnAnchoredObject>();
         }
 
-        public override void Read(CGameCtnChallenge n, GameBoxReader r)
+        public override void Read(CGameCtnChallenge n, GameBoxReader r, ILogger? logger)
         {
             version = r.ReadInt32();
 
@@ -3336,12 +3360,17 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             var size = r.ReadInt32();
             U02 = r.ReadInt32(); // 10
 
-            n.anchoredObjects = ParseList<CGameCtnAnchoredObject>(r)!;
+            n.anchoredObjects = r.ReadList(r =>
+            {
+                var node = Parse<CGameCtnAnchoredObject>(r, classId: null, progress: null, logger)!;
+                ((INodeDependant<CGameCtnChallenge>)node).DependingNode = n;
+                return node;
+            });
 
             U03 = r.ReadToEnd();
         }
 
-        public override void Write(CGameCtnChallenge n, GameBoxWriter w)
+        public override void Write(CGameCtnChallenge n, GameBoxWriter w, ILogger? logger)
         {
             w.Write(Version);
 
@@ -3351,7 +3380,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             w.Write(U01);
 
             using var itemMs = new MemoryStream();
-            using var itemW = CreateWriter(itemMs);
+            using var itemW = new GameBoxWriter(itemMs, w.Settings, logger);
 
             itemW.Write(U02);
             itemW.WriteNodes(n.anchoredObjects);
@@ -3403,12 +3432,9 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CGameCtnChallenge 0x043 skippable chunk (generalogies)
     /// </summary>
     [Chunk(0x03043043, "generalogies")]
-    public class Chunk03043043 : SkippableChunk<CGameCtnChallenge>, IVersionable, ILookbackable
+    [ChunkWithOwnIdState]
+    public class Chunk03043043 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        int? ILookbackable.IdVersion { get; set; }
-        List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
-        bool ILookbackable.IdWritten { get; set; }
-
         /// <summary>
         /// Version of the chunk.
         /// </summary>
@@ -3416,29 +3442,34 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         public new byte[]? Data { get; set; }
 
-        public override void Read(CGameCtnChallenge n, GameBoxReader r)
+        public override void Read(CGameCtnChallenge n, GameBoxReader r, ILogger? logger)
         {
             Version = r.ReadInt32();
             var sizeOfNodeWithClassID = r.ReadInt32();
             Data = r.ReadBytes(sizeOfNodeWithClassID);
 
+            // Run this only when calling Genealogies property
+
             using var ms = new MemoryStream(Data);
-            using var r2 = CreateReader(ms);
+            using var r2 = new GameBoxReader(ms, r.Settings, logger);
 
-            n.genealogies = ParseArray<CGameCtnZoneGenealogy>(r2)!;
+            n.genealogies = r2.ReadArray(r =>
+            {
+                return Parse<CGameCtnZoneGenealogy>(r, classId: null, progress: null, logger)!;
+            });
         }
-
-        public override void Write(CGameCtnChallenge n, GameBoxWriter w)
+        
+        public override void Write(CGameCtnChallenge n, GameBoxWriter w, ILogger? logger)
         {
             w.Write(Version);
 
             using var ms = new MemoryStream();
-            using var w1 = CreateWriter(ms);
+            using var w1 = new GameBoxWriter(ms, w.Settings, logger);
 
             w1.Write(n.genealogies, (x, w) =>
             {
                 w.Write(0x0311D000);
-                x.Write(w);
+                x.Write(w, logger);
             });
 
             w.Write((int)ms.Length);
@@ -3492,6 +3523,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CGameCtnChallenge 0x048 skippable chunk (baked blocks)
     /// </summary>
     [Chunk(0x03043048, "baked blocks")]
+    [ChunkWithOwnIdState]
     public class Chunk03043048 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private int version;
@@ -3516,8 +3548,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 direction: (Direction)r.ReadByte(),
                 coord: (Int3)r.ReadByte3(),
                 flags: r.ReadInt32()
-            )
-            { GBX = n.GBX },
+            ),
             (x, w) =>
             {
                 w.WriteId(x.Name);
@@ -3565,6 +3596,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
+
             rw.NodeRef<CGameCtnMediaClip>(ref n.clipIntro);
             rw.NodeRef<CGameCtnMediaClip>(ref n.clipPodium);
             rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupInGame);
@@ -3573,6 +3605,22 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             if (version >= 2)
             {
                 rw.NodeRef<CGameCtnMediaClip>(ref n.clipAmbiance);
+                rw.Int3(ref triggerSize);
+            }
+        }
+
+        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            rw.Int32(ref version);
+
+            n.clipIntro = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipIntro, cancellationToken);
+            n.clipPodium = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipPodium, cancellationToken);
+            n.clipGroupInGame = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupInGame, cancellationToken);
+            n.clipGroupEndRace = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupEndRace, cancellationToken);
+
+            if (version >= 2)
+            {
+                n.clipAmbiance = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipAmbiance, cancellationToken);
                 rw.Int3(ref triggerSize);
             }
         }
@@ -3735,23 +3783,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
-
-            rw.List(ref n.botPaths, r => new BotPath()
-            {
-                Clan = r.ReadInt32(),
-                Path = r.ReadArray(r1 => r1.ReadVec3()).ToList(),
-                IsFlying = r.ReadBoolean(),
-                WaypointSpecialProperty = r.ReadNodeRef<CGameWaypointSpecialProperty>(),
-                IsAutonomous = r.ReadBoolean()
-            },
-            (x, w) =>
-            {
-                w.Write(x.Clan);
-                w.Write(x.Path, (y, w1) => w1.Write(y));
-                w.Write(x.IsFlying);
-                w.Write(x.WaypointSpecialProperty);
-                w.Write(x.IsAutonomous);
-            });
+            rw.List(ref n.botPaths, (rw, x) => x.ReadWrite(rw));
         }
     }
 
@@ -3763,12 +3795,9 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CGameCtnChallenge 0x054 skippable chunk (embedded objects)
     /// </summary>
     [Chunk(0x03043054, "embedded objects")]
-    public class Chunk03043054 : SkippableChunk<CGameCtnChallenge>, IVersionable, ILookbackable
+    [ChunkWithOwnIdState]
+    public class Chunk03043054 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        int? ILookbackable.IdVersion { get; set; }
-        List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
-        bool ILookbackable.IdWritten { get; set; }
-
         public int U01;
 
         /// <summary>
@@ -3783,7 +3812,7 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             U01 = r.ReadInt32();
             var size = r.ReadInt32();
 
-            var embedded = r.ReadArray(r1 => r1.ReadIdent());
+            var embedded = r.ReadArray(r => r.ReadIdent());
 
             n.embeddedObjects = new Dictionary<string, byte[]>();
             n.originalEmbedZip = r.ReadBytes();
@@ -3803,46 +3832,50 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 }
             }
 
-            Textures = r.ReadArray(r1 => r1.ReadString());
+            Textures = r.ReadArray(r => r.ReadString());
         }
 
-        public override void Write(CGameCtnChallenge n, GameBoxWriter w)
+        public override void Write(CGameCtnChallenge n, GameBoxWriter w, ILogger? logger)
         {
             w.Write(Version);
             w.Write(U01);
 
             using var ms = new MemoryStream();
-            using var writer = CreateWriter(ms);
+            using var writer = new GameBoxWriter(ms, w.Settings, logger);
 
             var embedded = new List<Ident>();
 
             foreach (var embed in n.GetEmbeddedObjects())
             {
-                if (embed is GameBox<CGameItemModel> gbxItem)
+                if (embed is not GameBox<CGameItemModel> gbxItem)
                 {
-                    if (gbxItem.FileName is null)
-                        continue;
-
-                    var id = gbxItem.FileName;
-                    var dirs = id.Split('/', '\\');
-
-                    for (var i = 0; i < dirs.Length; i++)
-                    {
-                        var dir = dirs[dirs.Length - 1 - i];
-                        if (dir == "Items"
-                        || dir == "Blocks")
-                        {
-                            id = string.Join("\\", dirs, dirs.Length - i, i);
-                            break;
-                        }
-                    }
-
-                    var item = gbxItem.Node;
-
-                    embedded.Add(new Ident(id,
-                        item.Ident?.Collection ?? new Collection(),
-                        item.Ident?.Author ?? string.Empty));
+                    continue;
                 }
+
+                if (gbxItem.FileName is null)
+                {
+                    continue;
+                }
+
+                var id = gbxItem.FileName;
+                var dirs = id.Split('/', '\\');
+
+                for (var i = 0; i < dirs.Length; i++)
+                {
+                    var dir = dirs[dirs.Length - 1 - i];
+                    if (dir == "Items"
+                    || dir == "Blocks")
+                    {
+                        id = string.Join("\\", dirs, dirs.Length - i, i);
+                        break;
+                    }
+                }
+
+                var item = gbxItem.Node;
+
+                embedded.Add(new Ident(id,
+                    item.Ident?.Collection ?? new Collection(),
+                    item.Ident?.Author ?? string.Empty));
             }
 
             writer.Write(embedded.ToArray(), (x, w1) => w1.Write(x));
@@ -4223,193 +4256,6 @@ public sealed class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     #endregion
-
-    #endregion
-
-    #region Header interface
-
-    public interface IHeader : INodeHeader
-    {
-        /// <summary>
-        /// Time of the bronze medal.
-        /// </summary>
-        TimeSpan? TMObjective_BronzeTime { get; set; }
-
-        /// <summary>
-        /// Time of the silver medal.
-        /// </summary>
-        TimeSpan? TMObjective_SilverTime { get; set; }
-
-        /// <summary>
-        /// Time of the gold medal.
-        /// </summary>
-        TimeSpan? TMObjective_GoldTime { get; set; }
-
-        /// <summary>
-        /// Time of the author medal.
-        /// </summary>
-        TimeSpan? TMObjective_AuthorTime { get; set; }
-
-        /// <summary>
-        /// Display cost of the track (or copper cost) explaining the performance of the map.
-        /// </summary>
-        int? Cost { get; set; }
-
-        /// <summary>
-        /// Usually author time or stunts score.
-        /// </summary>
-        int? AuthorScore { get; set; }
-
-        /// <summary>
-        /// In which editor settings the map was made.
-        /// </summary>
-        EditorMode Editor { get; set; }
-
-        /// <summary>
-        /// If the map was made using the simple editor.
-        /// </summary>
-        bool CreatedWithSimpleEditor { get; }
-
-        /// <summary>
-        /// If the map uses ghost blocks.
-        /// </summary>
-        bool HasGhostBlocks { get; }
-
-        /// <summary>
-        /// Map type in which the track was validated in.
-        /// </summary>
-        PlayMode? Mode { get; set; }
-
-        /// <summary>
-        /// If the map is a multilap.
-        /// </summary>
-        bool? TMObjective_IsLapRace { get; set; }
-
-        /// <summary>
-        /// Number of laps.
-        /// </summary>
-        int? TMObjective_NbLaps { get; set; }
-
-        /// <summary>
-        /// Number of checkpoints.
-        /// </summary>
-        int? NbCheckpoints { get; set; }
-
-        /// <summary>
-        /// Map UID, environment, and author login.
-        /// </summary>
-        Ident MapInfo { get; set; }
-
-        /// <summary>
-        /// The map's environment.
-        /// </summary>
-        Collection Collection { get; set; }
-
-        /// <summary>
-        /// The map's UID.
-        /// </summary>
-        string MapUid { get; set; }
-
-        /// <summary>
-        /// Login of the map author.
-        /// </summary>
-        string AuthorLogin { get; set; }
-
-        /// <summary>
-        /// Nickname of the map author.
-        /// </summary>
-        string? AuthorNickname { get; set; }
-
-        /// <summary>
-        /// Zone of the map author.
-        /// </summary>
-        string? AuthorZone { get; set; }
-
-        string? AuthorExtraInfo { get; set; }
-
-        /// <summary>
-        /// The map's name.
-        /// </summary>
-        string MapName { get; set; }
-
-        /// <summary>
-        /// The map's intended use.
-        /// </summary>
-        MapKind Kind { get; set; }
-
-        /// <summary>
-        /// Password of the map used by older maps.
-        /// </summary>
-        string? Password { get; set; }
-
-        /// <summary>
-        /// The map's decoration (time of the day or scenery)
-        /// </summary>
-        Ident? Decoration { get; set; }
-
-        /// <summary>
-        /// Target of the map.
-        /// </summary>
-        Vec2? MapCoordTarget { get; set; }
-
-        /// <summary>
-        /// Origin of the map.
-        /// </summary>
-        Vec2? MapCoordOrigin { get; set; }
-
-        /// <summary>
-        /// Name of the map type script.
-        /// </summary>
-        string? MapType { get; set; }
-
-        /// <summary>
-        /// Style of the map (Fullspeed, LOL, Tech), usually unused and defined by user.
-        /// </summary>
-        string? MapStyle { get; set; }
-
-        /// <summary>
-        /// UID of the lightmap data stored in cache.
-        /// </summary>
-        ulong? LightmapCacheUID { get; set; }
-
-        /// <summary>
-        /// Version of the lightmap calculation.
-        /// </summary>
-        byte? LightmapVersion { get; set; }
-
-        /// <summary>
-        /// Title pack the map was built in.
-        /// </summary>
-        string? TitleID { get; set; }
-
-        /// <summary>
-        /// XML track information and dependencies.
-        /// </summary>
-        string? XML { get; set; }
-
-        /// <summary>
-        /// The map's author comments.
-        /// </summary>
-        string? Comments { get; set; }
-
-        /// <summary>
-        /// Thumbnail JPEG data.
-        /// </summary>
-        byte[]? Thumbnail { get; set; }
-    }
-
-    #endregion
-
-    #region Other classes
-
-    public class BotPath
-    {
-        public int Clan { get; set; }
-        public List<Vec3>? Path { get; set; }
-        public bool IsFlying { get; set; }
-        public CGameWaypointSpecialProperty? WaypointSpecialProperty { get; set; }
-        public bool IsAutonomous { get; set; }
-    }
 
     #endregion
 }

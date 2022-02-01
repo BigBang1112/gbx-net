@@ -1,7 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x03033000)]
-public sealed class CGameCtnCollection : CMwNod
+[NodeExtension("TMCollection")]
+[NodeExtension("Collection")]
+public class CGameCtnCollection : CMwNod
 {
     public byte CollectionID { get; set; }
     public byte CollectionPackMask { get; set; }
@@ -13,7 +15,7 @@ public sealed class CGameCtnCollection : CMwNod
 
     #region Constructors
 
-    private CGameCtnCollection()
+    protected CGameCtnCollection()
     {
 
     }
@@ -25,12 +27,9 @@ public sealed class CGameCtnCollection : CMwNod
     #region 0x001 chunk
 
     [Chunk(0x03033001)]
-    public class Chunk03033001 : Chunk<CGameCtnCollection>, ILookbackable
+    [ChunkWithOwnIdState]
+    public class Chunk03033001 : Chunk<CGameCtnCollection>
     {
-        int? ILookbackable.IdVersion { get; set; } = 3;
-        List<string> ILookbackable.IdStrings { get; set; } = new List<string>();
-        bool ILookbackable.IdWritten { get; set; }
-
         public int Version { get; set; }
 
         public override void Read(CGameCtnCollection n, GameBoxReader r)
@@ -43,8 +42,8 @@ public sealed class CGameCtnCollection : CMwNod
             _ = r.ReadInt32();
             n.CollectionIcon = r.ReadString();
             _ = r.ReadArray<int>(2);
-            n.BlockInfoFlat = r.ReadId(this);
-            n.Vehicle = r.ReadIdent(this);
+            n.BlockInfoFlat = r.ReadId();
+            n.Vehicle = r.ReadIdent();
             _ = r.ReadInt32();
             _ = r.ReadArray<float>(4);
             n.LoadingScreen = r.ReadString();

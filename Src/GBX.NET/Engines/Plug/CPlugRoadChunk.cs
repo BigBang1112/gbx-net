@@ -1,9 +1,9 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 [Node(0x09128000)]
-public sealed class CPlugRoadChunk : CMwNod
+public class CPlugRoadChunk : CMwNod
 {
-    private CPlugRoadChunk()
+    protected CPlugRoadChunk()
     {
 
     }
