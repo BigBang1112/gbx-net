@@ -5,9 +5,7 @@
 /// </summary>
 public class ThisShouldNotHappenException : Exception
 {
-    public override string Message => "This should not happen.";
-
-    public ThisShouldNotHappenException()
+    public ThisShouldNotHappenException() : base("This should not happen.")
     {
 
     }

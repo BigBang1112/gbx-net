@@ -2,9 +2,7 @@
 
 public class HeaderOnlyParseLimitationException : Exception
 {
-    public override string Message => "This action is forbidden in GameBox where only the header was parsed.";
-
-    public HeaderOnlyParseLimitationException()
+    public HeaderOnlyParseLimitationException() : base("This action is forbidden in GameBox where only the header was parsed.")
     {
 
     }

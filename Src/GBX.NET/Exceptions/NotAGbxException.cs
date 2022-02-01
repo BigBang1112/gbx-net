@@ -2,7 +2,7 @@
 
 public class NotAGbxException : Exception
 {
-    public NotAGbxException()
+    public NotAGbxException() : base("Gbx data stream was not identified.")
     {
 
     }

@@ -5,10 +5,15 @@
 /// </summary>
 public class ChunkVersionNotSeenException : Exception
 {
-    private static string GetMessage(int version) => $"Chunk version {version} hasn't been seen yet, but reading and writing should work just fine. You can disable GameBox.IgnoreUnseenVersions to not throw this again.";
+    public int Version { get; }
 
     public ChunkVersionNotSeenException(int version) : base(GetMessage(version))
     {
+        Version = version;
+    }
 
+    private static string GetMessage(int version)
+    {
+        return $"Chunk version {version} hasn't been seen yet, but reading and writing should work just fine. You can disable GameBox.IgnoreUnseenVersions to not throw this again.";
     }
 }

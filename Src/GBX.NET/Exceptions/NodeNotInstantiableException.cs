@@ -4,10 +4,13 @@ public class NodeNotInstantiableException : Exception
 {
     public uint ClassId { get; }
 
-    public override string Message => $"Instance of a node with a class ID 0x{ClassId:X8} cannot be created.";
-
-    public NodeNotInstantiableException(uint classId)
+    public NodeNotInstantiableException(uint classId) : base(GetMessage(classId))
     {
         ClassId = classId;
+    }
+
+    private static string GetMessage(uint classId)
+    {
+        return $"Instance of a node with a class ID 0x{classId:X8} cannot be created.";
     }
 }
