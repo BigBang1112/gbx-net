@@ -1,5 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// CGameNetOnlineMessage (0x03028000)
+/// </summary>
+/// <remarks>An ingame mail.</remarks>
 [Node(0x03028000), WritingNotSupported]
 public class CGameNetOnlineMessage : CMwNod
 {
@@ -10,7 +14,7 @@ public class CGameNetOnlineMessage : CMwNod
     public int Donation { get; set; }
     public DateTime Date { get; set; }
 
-    private CGameNetOnlineMessage()
+    protected CGameNetOnlineMessage()
     {
         ReceiverLogin = null!;
         SenderLogin = null!;
@@ -20,7 +24,7 @@ public class CGameNetOnlineMessage : CMwNod
 
     public override string ToString()
     {
-        return "Message from " + SenderLogin;
+        return $"{base.ToString()} {{ Message from {SenderLogin} }}";
     }
 
     [Chunk(0x03028000)]

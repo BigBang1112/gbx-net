@@ -2,11 +2,11 @@
 
 public partial class CGameCtnMediaClipBuilder
 {
-    public class TMUF : GameBuilder<ICGameCtnMediaClipBuilder, CGameCtnMediaClip>
+    public class TMUF : GameBuilder<CGameCtnMediaClipBuilder, CGameCtnMediaClip>
     {
         public int? LocalPlayerClipEntIndex { get; set; }
 
-        public TMUF(ICGameCtnMediaClipBuilder baseBuilder, CGameCtnMediaClip node) : base(baseBuilder, node) { }
+        public TMUF(CGameCtnMediaClipBuilder baseBuilder, CGameCtnMediaClip node) : base(baseBuilder, node) { }
 
         public TMUF WithLocalPlayerClipEntIndex(int localPlayerClipEntIndex)
         {

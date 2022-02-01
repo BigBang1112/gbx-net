@@ -4,7 +4,8 @@
 /// MediaTracker block - Bloom HDR (0x03128000)
 /// </summary>
 [Node(0x03128000)]
-public sealed class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+[NodeExtension("GameCtnMediaBlockBloomHdr")]
+public partial class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -31,7 +32,7 @@ public sealed class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMed
 
     #region Constructors
 
-    private CGameCtnMediaBlockBloomHdr()
+    protected CGameCtnMediaBlockBloomHdr()
     {
         keys = null!;
     }
@@ -50,20 +51,7 @@ public sealed class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMed
     {
         public override void ReadWrite(CGameCtnMediaBlockBloomHdr n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Intensity = r.ReadSingle(),
-                StreaksIntensity = r.ReadSingle(),
-                StreaksAttenuation = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Intensity);
-                w.Write(x.StreaksIntensity);
-                w.Write(x.StreaksAttenuation);
-            });
+            rw.ListKey(ref n.keys!);
         }
     }
 
@@ -79,35 +67,11 @@ public sealed class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMed
     {
         public override void ReadWrite(CGameCtnMediaBlockBloomHdr n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Intensity = r.ReadSingle(),
-                StreaksIntensity = r.ReadSingle(),
-                StreaksAttenuation = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Intensity);
-                w.Write(x.StreaksIntensity);
-                w.Write(x.StreaksAttenuation);
-            });
+            rw.ListKey(ref n.keys!);
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float Intensity { get; set; }
-        public float StreaksIntensity { get; set; }
-        public float StreaksAttenuation { get; set; }
-    }
-
+    
     #endregion
 }

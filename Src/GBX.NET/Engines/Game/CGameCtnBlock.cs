@@ -3,11 +3,10 @@
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Block on a map (0x03057000)
+/// Block placed on a map (0x03057000)
 /// </summary>
-/// <remarks>A block placed on a map.</remarks>
 [Node(0x03057000)]
-public sealed class CGameCtnBlock : CMwNod
+public class CGameCtnBlock : CMwNod, INodeDependant<CGameCtnChallenge>
 {
     #region Constants
 
@@ -34,15 +33,13 @@ public sealed class CGameCtnBlock : CMwNod
 
     #region Properties
 
-    public override uint ID => 0x03057000;
-
     /// <summary>
     /// Name of the block.
     /// </summary>
     [NodeMember]
     public string Name
     {
-        get => blockModel.ID;
+        get => blockModel.Id;
         set
         {
             if (blockModel is null)
@@ -233,21 +230,14 @@ public sealed class CGameCtnBlock : CMwNod
     {
         get
         {
-            GBX?.Node?.DiscoverChunk<CGameCtnChallenge.Chunk03043062>();
+            ((INodeDependant<CGameCtnChallenge>)this).DependingNode?.DiscoverChunk<CGameCtnChallenge.Chunk03043062>();
 
             return color;
         }
         set => color = value;
     }
 
-    #endregion
-
-    #region Constructors
-
-    private CGameCtnBlock()
-    {
-        blockModel = null!;
-    }
+    CGameCtnChallenge? INodeDependant<CGameCtnChallenge>.DependingNode { get; set; }
 
     #endregion
 
@@ -263,14 +253,9 @@ public sealed class CGameCtnBlock : CMwNod
 
     #region Constructors
 
-    public CGameCtnBlock(string name, Direction direction, Int3 coord) : this(name, direction, coord, 0)
+    protected CGameCtnBlock()
     {
-
-    }
-
-    public CGameCtnBlock(string name, Direction direction, Int3 coord, int flags) : this(name, direction, coord, flags, null, null, null)
-    {
-
+        blockModel = null!;
     }
 
     public CGameCtnBlock(Ident blockModel, Direction direction, Int3 coord, int flags)
@@ -281,7 +266,7 @@ public sealed class CGameCtnBlock : CMwNod
         this.flags = flags;
     }
 
-    public CGameCtnBlock(string name, Direction direction, Int3 coord, int flags, string? author, CGameCtnBlockSkin? skin, CGameWaypointSpecialProperty? waypoint)
+    public CGameCtnBlock(string name, Direction direction, Int3 coord, int flags = 0, string? author = null, CGameCtnBlockSkin? skin = null, CGameWaypointSpecialProperty? waypoint = null)
     {
         blockModel = new Ident(name);
         this.direction = direction;
@@ -296,7 +281,7 @@ public sealed class CGameCtnBlock : CMwNod
 
     #region Methods
 
-    public override string ToString() => $"{Name} {Coord}";
+    public override string ToString() => $"{base.ToString()} {{ {Name} {Coord} }}";
 
     internal static bool IsGhostBlock(int flags) => flags > -1 && (flags & (1 << isGhostBit)) != 0;
     internal static bool IsFreeBlock(int flags) => flags > -1 && (flags & (1 << isFreeBit)) != 0;

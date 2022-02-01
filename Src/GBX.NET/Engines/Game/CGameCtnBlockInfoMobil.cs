@@ -6,7 +6,7 @@ public class CGameCtnBlockInfoMobil : CMwNod
     public CPlugRoadChunk?[]? RoadChunks { get; set; }
     public CGameCtnBlockInfoMobilLink?[]? DynaLinks { get; set; }
 
-    private CGameCtnBlockInfoMobil()
+    protected CGameCtnBlockInfoMobil()
     {
 
     }

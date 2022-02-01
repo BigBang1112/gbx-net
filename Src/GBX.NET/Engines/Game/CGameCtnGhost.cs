@@ -3,10 +3,12 @@
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Ghost (0x03092000)
+/// CGameCtnGhost (0x03092000)
 /// </summary>
+/// <remarks>A ghost.</remarks>
 [Node(0x03092000)]
-public sealed class CGameCtnGhost : CGameGhost
+[NodeExtension("Ghost")]
+public partial class CGameCtnGhost : CGameGhost
 {
     #region Fields
 
@@ -367,7 +369,7 @@ public sealed class CGameCtnGhost : CGameGhost
 
     #region Constructors
 
-    private CGameCtnGhost()
+    protected CGameCtnGhost()
     {
         playerModel = null!;
     }
@@ -381,7 +383,7 @@ public sealed class CGameCtnGhost : CGameGhost
     /// <summary>
     /// CGameCtnGhost 0x000 skippable chunk (basic)
     /// </summary>
-    [Chunk(0x03092000, true, "basic")]
+    [Chunk(0x03092000, processSync: true, "basic")]
     public class Chunk03092000 : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         private int version;
@@ -405,9 +407,7 @@ public sealed class CGameCtnGhost : CGameGhost
             rw.Int32(ref version);
             rw.Ident(ref n.playerModel!);
             rw.Vec3(ref n.lightTrailColor);
-            rw.List(ref n.skinPackDescs,
-                (i, r) => r.ReadFileRef(),
-                (x, w) => w.Write(x));
+            rw.ListFileRef(ref n.skinPackDescs);
             rw.Boolean(ref n.hasBadges);
 
             if (n.hasBadges)
@@ -421,9 +421,7 @@ public sealed class CGameCtnGhost : CGameGhost
                         w.Write(x.Item1);
                         w.Write(x.Item2);
                     });
-                rw.Array(ref U08,
-                    (i, r) => r.ReadString(),
-                    (x, w) => w.Write(x));
+                rw.ArrayString(ref U08);
             }
 
             rw.String(ref n.ghostNickname);
@@ -641,7 +639,7 @@ public sealed class CGameCtnGhost : CGameGhost
     {
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
-            rw.Id(ref n.ghostUid); // TODO: check writing
+            rw.Id(ref n.ghostUid, tryParseToInt32: true); // TODO: check writing
         }
     }
 
@@ -863,9 +861,7 @@ public sealed class CGameCtnGhost : CGameGhost
     {
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.skinPackDescs,
-                r => r.ReadFileRef(),
-                (x, w) => w.Write(x));
+            rw.ListFileRef(ref n.skinPackDescs);
             rw.String(ref n.ghostNickname);
             rw.String(ref n.ghostAvatarName);
         }
@@ -1052,42 +1048,6 @@ public sealed class CGameCtnGhost : CGameGhost
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    /// <summary>
-    /// Checkpoint timestamp driven by the ghost.
-    /// </summary>
-    public struct Checkpoint
-    {
-        /// <summary>
-        /// Time of the checkpoint.
-        /// </summary>
-        public TimeSpan? Time { get; set; }
-
-        /// <summary>
-        /// Amount of stunt points when reaching this checkpoint. This is very often 0 in TM2 replay.
-        /// </summary>
-        public int StuntsScore { get; set; }
-
-        public Checkpoint(TimeSpan? time, int stuntsScore)
-        {
-            Time = time;
-            StuntsScore = stuntsScore;
-        }
-
-        public Checkpoint(TimeSpan? time) : this(time, 0)
-        {
-
-        }
-
-        public override string ToString()
-        {
-            return $"{Time.ToTmString()} ({StuntsScore})";
-        }
-    }
 
     #endregion
 }

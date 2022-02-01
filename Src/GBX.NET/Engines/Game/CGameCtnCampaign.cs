@@ -1,11 +1,14 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Campaign info (0x03090000)
+/// CGameCtnCampaign (0x03090000)
 /// </summary>
 /// <remarks>Information about a campaign.</remarks>
 [Node(0x03090000)]
-public sealed class CGameCtnCampaign : CMwNod
+[NodeExtension("ConstructionCampaign")]
+[NodeExtension("Campaign")]
+[NodeExtension("GameCtnCampaign")]
+public class CGameCtnCampaign : CMwNod
 {
     #region Fields
 
@@ -92,7 +95,7 @@ public sealed class CGameCtnCampaign : CMwNod
 
     #region Constructors
 
-    private CGameCtnCampaign()
+    protected CGameCtnCampaign()
     {
         mapGroups = null!;
     }

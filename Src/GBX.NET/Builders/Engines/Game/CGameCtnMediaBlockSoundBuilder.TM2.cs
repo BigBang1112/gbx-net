@@ -2,14 +2,14 @@
 
 public partial class CGameCtnMediaBlockSoundBuilder
 {
-    public class TM2 : GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
+    public class TM2 : GameBuilder<CGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
     {
         public bool IsMusic { get; set; }
         public bool StopWithClip { get; set; } = true;
         public bool AudioToSpeech { get; set; }
         public int AudioToSpeechTarget { get; set; }
 
-        public TM2(ICGameCtnMediaBlockSoundBuilder baseBuilder, CGameCtnMediaBlockSound node) : base(baseBuilder, node) { }
+        public TM2(CGameCtnMediaBlockSoundBuilder baseBuilder, CGameCtnMediaBlockSound node) : base(baseBuilder, node) { }
 
         public TM2 WithMusic(bool music)
         {

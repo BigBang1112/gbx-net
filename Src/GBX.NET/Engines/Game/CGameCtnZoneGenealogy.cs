@@ -1,7 +1,11 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// Zone genealogy (0x0311D000)
+/// </summary>
 [Node(0x0311D000)]
-public sealed class CGameCtnZoneGenealogy : CMwNod
+[NodeExtension("ZoneGenealogy")]
+public class CGameCtnZoneGenealogy : CMwNod
 {
     #region Fields
 
@@ -46,13 +50,16 @@ public sealed class CGameCtnZoneGenealogy : CMwNod
 
     #region Methods
 
-    public override string ToString() => ZoneIds is null ? string.Empty : string.Join(" ", ZoneIds);
+    public override string ToString()
+    {
+        return $"{base.ToString()} {{ {(ZoneIds is null ? string.Empty : string.Join(" ", ZoneIds))} }}";
+    }
 
     #endregion
 
     #region Constructors
 
-    private CGameCtnZoneGenealogy()
+    protected CGameCtnZoneGenealogy()
     {
 
     }

@@ -7,5 +7,6 @@ public class PropertyNullException : Exception
 {
     public PropertyNullException(string propertyName) : base($"Property '{propertyName}' is null.")
     {
+
     }
 }

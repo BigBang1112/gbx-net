@@ -1,7 +1,11 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// MediaTracker block - Tone mapping (0x03127000)
+/// </summary>
 [Node(0x03127000)]
-public sealed class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+[NodeExtension("GameCtnMediaBlockToneMapping")]
+public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -28,7 +32,7 @@ public sealed class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCtn
 
     #region Constructors
 
-    private CGameCtnMediaBlockToneMapping()
+    protected CGameCtnMediaBlockToneMapping()
     {
         keys = null!;
     }
@@ -50,7 +54,7 @@ public sealed class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCtn
                 Exposure = r.ReadSingle(),
                 MaxHDR = r.ReadSingle(),
                 LightTrailScale = r.ReadSingle(),
-                Unknown = r.ReadInt32()
+                U01 = r.ReadInt32()
             },
             (x, w) =>
             {
@@ -58,24 +62,12 @@ public sealed class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCtn
                 w.Write(x.Exposure);
                 w.Write(x.MaxHDR);
                 w.Write(x.LightTrailScale);
-                w.Write(x.Unknown);
+                w.Write(x.U01);
             });
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float Exposure { get; set; }
-        public float MaxHDR { get; set; }
-        public float LightTrailScale { get; set; }
-        public int Unknown { get; set; }
-    }
 
     #endregion
 }

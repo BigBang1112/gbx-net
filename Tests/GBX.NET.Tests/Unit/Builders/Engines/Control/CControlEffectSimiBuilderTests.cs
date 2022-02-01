@@ -72,7 +72,7 @@ public class CControlEffectSimiBuilderTests
 
         var actual = new CControlEffectSimiBuilder().NewNode();
 
-        Assert.Equal(expected.ID, actual.ID);
+        Assert.Equal(expected.Id, actual.Id);
     }
 
     [Fact]

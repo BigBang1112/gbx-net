@@ -1,17 +1,23 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <summary>
+/// CPlugSolid (0x09005000)
+/// </summary>
+/// <remarks>An official mesh or model.</remarks>
 [Node(0x09005000), WritingNotSupported]
-public sealed class CPlugSolid : CPlug
+[NodeExtension("Solid")]
+public class CPlugSolid : CPlug
 {
-    private CPlugTree? tree;
+    private CPlug? tree;
+    private int? treeIndex;
 
-    public CPlugTree? Tree
+    public CPlug? Tree
     {
-        get => tree;
+        get => tree = GetNodeFromRefTable(tree, treeIndex) as CPlug;
         set => tree = value;
     }
 
-    private CPlugSolid()
+    protected CPlugSolid()
     {
 
     }
@@ -157,6 +163,14 @@ public sealed class CPlugSolid : CPlug
         {
             rw.Boolean(ref U01);
             rw.Boolean(ref U02);
+            rw.NodeRef<CPlug>(ref n.tree, ref n.treeIndex);
+        }
+
+        public override async Task ReadWriteAsync(CPlugSolid n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            rw.Boolean(ref U01);
+            rw.Boolean(ref U02);
+            n.tree = await rw.NodeRefAsync<CPlug>(n.tree, cancellationToken);
         }
     }
 
@@ -238,6 +252,13 @@ public sealed class CPlugSolid : CPlug
             rw.Boolean(ref U01);
             rw.Boolean(ref U02);
             rw.NodeRef(ref n.tree);
+        }
+
+        public override async Task ReadWriteAsync(CPlugSolid n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            rw.Boolean(ref U01);
+            rw.Boolean(ref U02);
+            n.tree = await rw.NodeRefAsync(n.tree, cancellationToken);
         }
     }
 

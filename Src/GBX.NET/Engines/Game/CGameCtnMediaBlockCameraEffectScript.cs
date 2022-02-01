@@ -1,10 +1,10 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Camera effect script
+/// MediaTracker block - Camera effect script (0x03161000)
 /// </summary>
 [Node(0x03161000)]
-public sealed class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCameraEffect,
+public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCameraEffect,
     CGameCtnMediaBlock.IHasKeys,
     CGameCtnMediaBlock.IHasTwoKeys
 {
@@ -69,7 +69,7 @@ public sealed class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCam
 
     #region Constructors
 
-    private CGameCtnMediaBlockCameraEffectScript()
+    protected CGameCtnMediaBlockCameraEffectScript()
     {
         script = null!;
     }
@@ -99,7 +99,7 @@ public sealed class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCam
             rw.Int32(ref version);
             rw.String(ref n.script!);
 
-            if (version == 0) // Unverified
+            if (version == 0)
             {
                 rw.Single_s(ref n.start);
                 rw.Single_s(ref n.end, n.start.GetValueOrDefault() + TimeSpan.FromSeconds(3));
@@ -107,35 +107,11 @@ public sealed class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCam
                 return;
             }
 
-            rw.List(ref n.keys, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                A = r.ReadSingle(),
-                B = r.ReadSingle(),
-                C = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.A);
-                w.Write(x.B);
-                w.Write(x.C);
-            });
+            rw.ListKey(ref n.keys);
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float A { get; set; }
-        public float B { get; set; }
-        public float C { get; set; }
-    }
 
     #endregion
 }

@@ -2,9 +2,9 @@
 
 public partial class CGameCtnMediaBlockSoundBuilder
 {
-    public class TMU : GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
+    public class TMU : GameBuilder<CGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
     {
-        public TMU(ICGameCtnMediaBlockSoundBuilder baseBuilder, CGameCtnMediaBlockSound node) : base(baseBuilder, node) { }
+        public TMU(CGameCtnMediaBlockSoundBuilder baseBuilder, CGameCtnMediaBlockSound node) : base(baseBuilder, node) { }
 
         public override CGameCtnMediaBlockSound Build()
         {

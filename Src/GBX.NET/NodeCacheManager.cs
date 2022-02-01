@@ -1,51 +1,128 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Text;
 
 namespace GBX.NET;
 
 public static class NodeCacheManager
 {
+    private static readonly Assembly assembly = typeof(NodeCacheManager).Assembly;
+
+    public static bool ClassesAreCached { get; private set; }
+
     public static Dictionary<uint, string> Names { get; }
     public static Dictionary<uint, uint> Mappings { get; } // key: older, value: newer
+    public static ILookup<uint, uint> ReverseMappings { get; } // key: newer, value: older
     public static Dictionary<uint, string> Extensions { get; }
+    public static Dictionary<int, string> CollectionIds { get; }
+    public static ConcurrentDictionary<uint, string> GbxExtensions { get; }
 
-    public static Dictionary<uint, Type> AvailableClasses { get; }
-    public static Dictionary<Type, List<uint>> AvailableInheritanceClasses { get; }
-    public static Dictionary<Type, Dictionary<uint, Type>> AvailableChunkClasses { get; }
-    public static Dictionary<Type, Dictionary<uint, Type>> AvailableHeaderChunkClasses { get; }
+    public static ConcurrentDictionary<uint, Type> ClassTypesById { get; }
+    public static ConcurrentDictionary<Type, uint> ClassIdsByType { get; }
 
-    public static Dictionary<Type, IEnumerable<Attribute>> AvailableClassAttributes { get; }
-    public static Dictionary<Type, Dictionary<uint, IEnumerable<Attribute>>> AvailableChunkAttributes { get; }
-    public static Dictionary<Type, IEnumerable<Attribute>> AvailableChunkAttributesByType { get; }
+    public static ConcurrentDictionary<uint, Type> ChunkTypesById { get; }
+    public static ConcurrentDictionary<Type, uint> ChunkIdsByType { get; }
 
-    public static Dictionary<uint, Func<CMwNod>> AvailableClassConstructors { get; }
-    public static Dictionary<Type, Dictionary<uint, Func<Chunk>>> AvailableChunkConstructors { get; }
-    public static Dictionary<Type, Dictionary<uint, Func<Chunk>>> AvailableHeaderChunkConstructors { get; }
+    public static ConcurrentDictionary<uint, Type> HeaderChunkTypesById { get; }
+
+    public static ConcurrentDictionary<Type, IEnumerable<Attribute>> ClassAttributesByType { get; }
+    public static ConcurrentDictionary<uint, IEnumerable<Attribute>> ChunkAttributesById { get; }
+    public static ConcurrentDictionary<uint, IEnumerable<Attribute>> HeaderChunkAttributesById { get; }
+    public static ConcurrentDictionary<Type, IEnumerable<Attribute>> ChunkAttributesByType { get; }
+    public static ConcurrentDictionary<uint, Func<Node>> ClassConstructors { get; }
+    public static ConcurrentDictionary<uint, Func<Chunk>> ChunkConstructors { get; }
+    public static ConcurrentDictionary<uint, Func<IHeaderChunk>> HeaderChunkConstructors { get; }
+
+    public static bool ChunksAreCurrentlyBeingCached { get; private set; }
+
+    public static ConcurrentDictionary<Type, byte> ClassTypesWithCachedChunks { get; }
+    public static ConcurrentDictionary<Type, byte> SkippableChunks { get; }
+
+    public static ConcurrentDictionary<uint, byte> AsyncChunksById { get; }
+    public static ConcurrentDictionary<uint, byte> ReadAsyncChunksById { get; }
+    public static ConcurrentDictionary<uint, byte> WriteAsyncChunksById { get; }
+    public static ConcurrentDictionary<uint, byte> ReadWriteAsyncChunksById { get; }
 
     static NodeCacheManager()
     {
         Names = new Dictionary<uint, string>();
         Mappings = new Dictionary<uint, uint>();
         Extensions = new Dictionary<uint, string>();
+        CollectionIds = new Dictionary<int, string>();
+        GbxExtensions = new ConcurrentDictionary<uint, string>();
 
-        AvailableClasses = new Dictionary<uint, Type>();
-        AvailableInheritanceClasses = new Dictionary<Type, List<uint>>();
-        AvailableChunkClasses = new Dictionary<Type, Dictionary<uint, Type>>();
-        AvailableHeaderChunkClasses = new Dictionary<Type, Dictionary<uint, Type>>();
+        ClassTypesById = new ConcurrentDictionary<uint, Type>();
+        ClassIdsByType = new ConcurrentDictionary<Type, uint>();
+        ChunkTypesById = new ConcurrentDictionary<uint, Type>();
+        ChunkIdsByType = new ConcurrentDictionary<Type, uint>();
+        HeaderChunkTypesById = new ConcurrentDictionary<uint, Type>();
 
-        AvailableClassAttributes = new Dictionary<Type, IEnumerable<Attribute>>();
-        AvailableChunkAttributes = new Dictionary<Type, Dictionary<uint, IEnumerable<Attribute>>>();
-        AvailableChunkAttributesByType = new Dictionary<Type, IEnumerable<Attribute>>();
+        ClassAttributesByType = new ConcurrentDictionary<Type, IEnumerable<Attribute>>();
+        ChunkAttributesById = new ConcurrentDictionary<uint, IEnumerable<Attribute>>();
+        HeaderChunkAttributesById = new ConcurrentDictionary<uint, IEnumerable<Attribute>>();
+        ChunkAttributesByType = new ConcurrentDictionary<Type, IEnumerable<Attribute>>();
 
-        AvailableClassConstructors = new Dictionary<uint, Func<CMwNod>>();
-        AvailableChunkConstructors = new Dictionary<Type, Dictionary<uint, Func<Chunk>>>();
-        AvailableHeaderChunkConstructors = new Dictionary<Type, Dictionary<uint, Func<Chunk>>>();
+        ClassConstructors = new ConcurrentDictionary<uint, Func<Node>>();
+        ChunkConstructors = new ConcurrentDictionary<uint, Func<Chunk>>();
+        HeaderChunkConstructors = new ConcurrentDictionary<uint, Func<IHeaderChunk>>();
 
-        DefineNames();
-        DefineMappings();
-        DefineTypes();
+        ClassTypesWithCachedChunks = new ConcurrentDictionary<Type, byte>();
+        SkippableChunks = new ConcurrentDictionary<Type, byte>();
+
+        AsyncChunksById = new ConcurrentDictionary<uint, byte>();
+        ReadAsyncChunksById = new ConcurrentDictionary<uint, byte>();
+        WriteAsyncChunksById = new ConcurrentDictionary<uint, byte>();
+        ReadWriteAsyncChunksById = new ConcurrentDictionary<uint, byte>();
+
+        DefineNames2(Names, Extensions);
+        DefineMappings2(Mappings);
+        ReverseMappings = Mappings.ToLookup(x => x.Value, x => x.Key);
+        DefineCollectionIds(CollectionIds);
+    }
+
+    private static void DefineCollectionIds(IDictionary<int, string> collectionIds)
+    {
+        using var reader = new StringReader(Resources.CollectionID);
+
+        while (true)
+        {
+            var stringLine = reader.ReadLine();
+
+            if (stringLine is null)
+            {
+                break;
+            }
+
+            var line = stringLine.AsSpan();
+
+            var spaceAtIndex = line.IndexOf(' ');
+
+            if (spaceAtIndex == -1)
+            {
+                continue;
+            }
+
+            var key = line.Slice(0, spaceAtIndex);
+            var value = line.Slice(spaceAtIndex + 1);
+
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+            collectionIds[int.Parse(key)] = value.ToString();
+#else
+            collectionIds[int.Parse(key.ToString())] = value.ToString();
+#endif
+        }
+    }
+
+    public static string? GetNodeExtension(uint classId)
+    {
+        CacheClassTypesIfNotCached();
+
+        GbxExtensions.TryGetValue(classId, out var extension);
+
+        return extension;
     }
 
     /// <summary>
@@ -54,31 +131,304 @@ public static class NodeCacheManager
     /// <typeparam name="T">Type of the node to instantiate.</typeparam>
     /// <param name="classId">Class ID.</param>
     /// <returns>The instantiated node.</returns>
-    /// <exception cref="NodeNotFoundException">Node has not been found in the cached list.</exception>
-    internal static T GetNodeInstance<T>(uint classId) where T : CMwNod
+    /// <exception cref="NodeNotInstantiableException">Node instance cannot be created from this class ID.</exception>
+    internal static T GetNodeInstance<T>(uint classId) where T : Node
     {
-        if (AvailableClassConstructors.TryGetValue(classId, out Func<CMwNod>? constructor))
-        {
-            var node = (T)constructor();
-            node.SetIDAndChunks();
-            return node;
-        }
+        CacheClassTypesIfNotCached();
 
-        throw new NodeNotFoundException(classId);
+        return (T)GetClassConstructor(classId)();
     }
 
-    private static void DefineNames()
+    public static void CacheClassTypesIfNotCached()
     {
-        var watch = Stopwatch.StartNew();
+        if (ClassesAreCached)
+        {
+            return;
+        }
 
+        IEnumerable<Type> types;
+
+        try
+        {
+            types = assembly.GetTypes();
+        }
+        catch (ReflectionTypeLoadException e)
+        {
+            types = e.Types.Where(x => x is not null)!;
+        }
+
+        foreach (var type in types)
+        {
+            if (!IsClassFromEngines(type))
+            {
+                continue;
+            }
+
+            var attributes = type.GetCustomAttributes();
+
+            var nodeAttribute = default(NodeAttribute);
+            var nodeExtensionAttribute = default(NodeExtensionAttribute);
+
+            foreach (var attribute in attributes)
+            {
+                switch (attribute)
+                {
+                    case NodeAttribute na:
+                        nodeAttribute = na;
+                        break;
+                    case NodeExtensionAttribute nea:
+                        nodeExtensionAttribute = nea;
+                        break;
+                }
+            }
+
+            if (nodeAttribute is null)
+            {
+                continue;
+            }
+
+            var privateConstructor = type.GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, Array.Empty<Type>(), null);
+
+            if (privateConstructor is null)
+            {
+                throw new PrivateConstructorNotFoundException(type);
+            }
+
+            var nodeId = nodeAttribute.ID;
+            ClassTypesById[nodeId] = type;
+            ClassIdsByType[type] = nodeId;
+            ClassAttributesByType[type] = attributes;
+
+            if (nodeExtensionAttribute is not null)
+            {
+                GbxExtensions[nodeId] = nodeExtensionAttribute.Extension;
+            }
+        }
+
+        ClassesAreCached = true;
+    }
+
+    internal static Type? GetClassTypeById(uint id)
+    {
+        CacheClassTypesIfNotCached();
+
+        if (ClassTypesById.TryGetValue(id, out var cachedType))
+        {
+            return cachedType;
+        }
+
+        return null;
+    }
+
+    internal static uint? GetClassIdByType(Type type)
+    {
+        CacheClassTypesIfNotCached();
+
+        if (ClassIdsByType.TryGetValue(type, out var cachedId))
+        {
+            return cachedId;
+        }
+
+        return null;
+    }
+
+    internal static Type? GetHeaderChunkTypeById(Type classType, uint chunkId)
+    {
+        return GetChunkTypeById(classType, chunkId, HeaderChunkTypesById);
+    }
+
+    internal static Type? GetChunkTypeById(Type classType, uint chunkId)
+    {
+        return GetChunkTypeById(classType, chunkId, ChunkTypesById);
+    }
+
+    internal static Type? GetChunkTypeById(Type classType, uint chunkId, IDictionary<uint, Type> chunkTypesById)
+    {
+        if (chunkTypesById.TryGetValue(chunkId, out var cachedChunkType))
+        {
+            return cachedChunkType;
+        }
+
+        if (CacheChunkTypesIfNotCached(classType))
+        {
+            chunkTypesById.TryGetValue(chunkId, out var chunkType);
+            return chunkType;
+        }
+
+        return null;
+    }
+
+    internal static uint GetChunkIdByType(Type classType, Type chunkType)
+    {
+        return GetChunkIdByType(classType, chunkType, ChunkIdsByType);
+    }
+
+    internal static uint GetChunkIdByType(Type classType, Type chunkType, IDictionary<Type, uint> chunkIdsByType)
+    {
+        if (chunkIdsByType.TryGetValue(chunkType, out var cachedChunkId))
+        {
+            return cachedChunkId;
+        }
+
+        CacheChunkTypesIfNotCached(classType);
+
+        return ChunkIdsByType[chunkType];
+    }
+
+    /// <summary>
+    /// Cache chunk types based on its <paramref name="classType"/>.
+    /// </summary>
+    /// <param name="classType"></param>
+    /// <returns>False if chunks have been already cached, otherwise true.</returns>
+    private static bool CacheChunkTypesIfNotCached(Type classType)
+    {
+        // Unknown skippable chunk solution
+        if (ClassTypesWithCachedChunks.ContainsKey(classType))
+        {
+            return false;
+        }
+
+        var tempClassType = classType;
+
+        while (tempClassType != typeof(CMwNod))
+        {
+            var nestedTypes = tempClassType.GetNestedTypes(BindingFlags.Instance | BindingFlags.Public);
+
+            foreach (var type in nestedTypes)
+            {
+                CacheChunk(type);
+            }
+
+            var baseType = tempClassType.BaseType;
+
+            if (baseType is null)
+            {
+                throw new ThisShouldNotHappenException();
+            }
+
+            tempClassType = baseType;
+        }
+
+        ClassTypesWithCachedChunks[classType] = 1;
+
+        return true;
+    }
+
+    private static void CacheChunk(Type type)
+    {
+        // If the chunk was already cached
+        if (ChunkAttributesByType.ContainsKey(type))
+        {
+            return;
+        }
+
+        if (!type.IsSubclassOf(typeof(Chunk)))
+        {
+            return;
+        }
+
+        var attributes = type.GetCustomAttributes();
+
+        if (attributes.FirstOrDefault(x => x is ChunkAttribute) is not ChunkAttribute chunkAttribute)
+        {
+            throw new Exception($"Chunk {type.FullName} doesn't have ChunkAttribute.");
+        }
+
+        var chunkId = chunkAttribute.ID;
+
+        ChunkIdsByType[type] = chunkId;
+        ChunkAttributesByType[type] = attributes;
+
+        if (type.GetInterface(nameof(IHeaderChunk)) is null)
+        {
+            var constructor = CreateConstructor<Chunk>(type);
+
+            ChunkAttributesById[chunkId] = attributes;
+            ChunkTypesById[chunkId] = type;
+            ChunkConstructors[chunkId] = constructor;
+            
+            CheckAsyncReadWrite(type, chunkId);
+        }
+        else
+        {
+            var constructor = CreateConstructor<IHeaderChunk>(type);
+
+            HeaderChunkAttributesById[chunkId] = attributes;
+            HeaderChunkTypesById[chunkId] = type;
+            HeaderChunkConstructors[chunkId] = constructor;
+        }
+
+        if (type.BaseType?.GetGenericTypeDefinition() == typeof(SkippableChunk<>))
+        {
+            SkippableChunks[type] = 1;
+        }
+    }
+
+    private static void CheckAsyncReadWrite(Type type, uint chunkId)
+    {
+        CheckMethod(type, chunkId, nameof(IReadableWritableChunk.ReadAsync), ReadAsyncChunksById);
+        CheckMethod(type, chunkId, nameof(IReadableWritableChunk.WriteAsync), WriteAsyncChunksById);
+        CheckMethod(type, chunkId, nameof(IReadableWritableChunk.ReadWriteAsync), ReadWriteAsyncChunksById);
+    }
+
+    private static void CheckMethod(Type type, uint chunkId, string name, IDictionary<uint, byte> dictionary)
+    {
+        var methods = type.GetMethods().Where(x => x.Name == name);
+
+        foreach (var method in methods)
+        {
+            if (method.GetBaseDefinition().DeclaringType == method.DeclaringType)
+            {
+                continue;
+            }
+
+            dictionary[chunkId] = 1;
+            AsyncChunksById[chunkId] = 1;
+        }
+    }
+
+    internal static Func<Node> GetClassConstructor(uint id)
+    {
+        if (ClassConstructors.TryGetValue(id, out var cachedConstructor))
+        {
+            return cachedConstructor;
+        }
+
+        if (!ClassTypesById.TryGetValue(id, out var cachedType))
+        {
+            throw new ThisShouldNotHappenException();
+        }
+
+        var constructor = CreateConstructor<Node>(cachedType);
+
+        ClassConstructors[id] = constructor;
+
+        return constructor;
+    }
+
+    private static Func<T> CreateConstructor<T>(Type type)
+    {
+        var newExp = Expression.New(type);
+        var lambda = Expression.Lambda<Func<T>>(newExp);
+        return lambda.Compile();
+    }
+
+    internal static void DefineNames(IDictionary<uint, string> names, IDictionary<uint, string> extensions)
+    {
         using var reader = new StringReader(Resources.ClassID);
 
         var en = "";
         var engineName = "";
 
-        string? line;
-        while ((line = reader.ReadLine()) is not null)
+        while (true)
         {
+            var line = reader.ReadLine();
+
+            if (line is null)
+            {
+                break;
+            }
+
             var ch = "000";
 
             var className = "";
@@ -107,23 +457,123 @@ public static class NodeCacheManager
 
             if (uint.TryParse(classIDString, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint classID))
             {
-                Names[classID] = engineName + "::" + className;
+                names[classID] = engineName + "::" + className;
                 if (extension != null)
-                    Extensions[classID] = extension;
+                    extensions[classID] = extension;
 
                 continue;
             }
 
-            Debug.WriteLine($"Invalid class ID {classIDString}, skipping");
+            //Debug.WriteLine($"Invalid class ID {classIDString}, skipping");
         }
 
-        Debug.WriteLine("Classes named in " + watch.Elapsed.TotalMilliseconds + "ms");
+        //Debug.WriteLine("Classes named in " + watch.Elapsed.TotalMilliseconds + "ms");
     }
 
-    private static void DefineMappings()
+    internal static void DefineNames2(IDictionary<uint, string> names, IDictionary<uint, string> extensions)
     {
         var watch = Stopwatch.StartNew();
 
+        using var reader = new StringReader(Resources.ClassID);
+
+        var classIdSpan = new Span<char>(new[] { '0', '0', '0', '0', '0', '0', '0', '0' });
+        var engineNameSpan = new ReadOnlySpan<char>();
+
+        while (true)
+        {
+            var stringLine = reader.ReadLine();
+
+            if (stringLine is null)
+            {
+                break;
+            }
+
+            var line = stringLine.AsSpan();
+
+#if NET462 || NETSTANDARD2_0
+            if (!line.StartsWith(new ReadOnlySpan<char>(new char[] { ' ', ' ' })))
+#else
+            if (!line.StartsWith("  "))
+#endif
+            {
+                var engine = line.Slice(0, 2);
+                classIdSpan[0] = engine[0];
+                classIdSpan[1] = engine[1];
+
+                if (line.Length > 3)
+                {
+                    engineNameSpan = line.Slice(3, line.Length - 3);
+                }
+
+                continue;
+            }
+
+            var classIdPart = line.Slice(2, 3);
+
+            for (var i = 0; i < 3; i++)
+            {
+                classIdSpan[2 + i] = classIdPart[i];
+            }
+
+            var classNameWithExtensionSpan = new ReadOnlySpan<char>();
+
+            if (line.Length <= 6)
+            {
+                continue;
+            }
+
+            classNameWithExtensionSpan = line.Slice(6, line.Length - 6);
+            var classNameWithExtensionSpaceIndex = classNameWithExtensionSpan.IndexOf(' ');
+            var noExtension = classNameWithExtensionSpaceIndex == -1;
+
+            var classNameSpan = noExtension
+                ? classNameWithExtensionSpan
+                : classNameWithExtensionSpan.Slice(0, classNameWithExtensionSpaceIndex);
+
+            var extensionSpan = noExtension
+                ? new ReadOnlySpan<char>()
+                : classNameWithExtensionSpan.Slice(classNameWithExtensionSpaceIndex + 1,
+                    length: classNameWithExtensionSpan.Length - classNameWithExtensionSpaceIndex - 1);
+
+#if NET462 || NETSTANDARD2_0
+            if (!uint.TryParse(classIdSpan.ToString(), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint classID))
+#else
+            if (!uint.TryParse(classIdSpan, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint classID))
+#endif
+            {
+                continue;
+            }
+
+#if NET6_0_OR_GREATER
+            var fullName = string.Concat(engineNameSpan, "::", classNameSpan); // .NET Core 3+
+#else
+            var fullNameSpan = new Span<char>(new char[engineNameSpan.Length + 2 + classNameSpan.Length]);
+                
+            var ii = 0;
+            engineNameSpan.CopyTo(fullNameSpan.Slice(ii, engineNameSpan.Length));
+            ii += engineNameSpan.Length;
+
+            new ReadOnlySpan<char>(new char[] { ':', ':' }).CopyTo(fullNameSpan.Slice(ii, 2));
+            ii += 2;
+
+            classNameSpan.CopyTo(fullNameSpan.Slice(ii, classNameSpan.Length));
+
+            var fullName = fullNameSpan.ToString();
+#endif
+
+            names.Add(classID, fullName);
+
+            if (!extensionSpan.IsEmpty)
+                extensions.Add(classID, extensionSpan.ToString());
+
+            //Debug.WriteLine($"Invalid class ID {classIdSpan}, skipping");
+        }
+
+        //Debug.WriteLine("Classes named in " + watch.Elapsed.TotalMilliseconds + "ms");
+    }
+
+    internal static void DefineMappings(Dictionary<uint, uint> mappings)
+    {
         using var reader = new StringReader(Resources.ClassIDMappings);
 
         string? line;
@@ -138,184 +588,55 @@ public static class NodeCacheManager
             || !uint.TryParse(valueKey[1], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint value))
                 continue;
 
-            if (Mappings.ContainsValue(key)) // Virtual Skipper solution
-                Mappings[Mappings.FirstOrDefault(x => x.Value == key).Key] = value;
-            Mappings[key] = value;
+            if (mappings.ContainsValue(key)) // Virtual Skipper solution
+                mappings[mappings.FirstOrDefault(x => x.Value == key).Key] = value;
+            mappings[key] = value;
         }
-
-        Debug.WriteLine("Mappings defined in " + watch.Elapsed.TotalMilliseconds + "ms");
     }
 
-    private static void DefineTypes()
+    internal static void DefineMappings2(Dictionary<uint, uint> mappings)
     {
-        var watch = Stopwatch.StartNew();
+        using var reader = new StringReader(Resources.ClassIDMappings);
 
-        var assembly = Assembly.GetExecutingAssembly();
-
-        IEnumerable<Type> types;
-
-        try
+        while (true)
         {
-            types = assembly.GetTypes();
-        }
-        catch (ReflectionTypeLoadException e)
-        {
-            types = e.Types.Where(x => x is not null)!;
-        }
+            var stringLine = reader.ReadLine();
 
-        var engineRelatedTypes = types.Where(t =>
-             t?.IsClass == true
-          && t.Namespace?.StartsWith("GBX.NET.Engines") == true);
+            if (stringLine is null)
+            {
+                break;
+            }
 
-        var availableClassesByType = new Dictionary<Type, uint>();
-
-        foreach (var type in engineRelatedTypes)
-        {
-            if (!type.IsSubclassOf(typeof(CMwNod)) && type != typeof(CMwNod)) // Engine types
+            if (stringLine == "")
+            {
                 continue;
-
-            var id = type.GetCustomAttribute<NodeAttribute>()?.ID;
-
-            if (!id.HasValue)
-                throw new Exception($"{type.Name} misses NodeAttribute.");
-
-            AvailableClasses.Add(id.Value, type);
-            availableClassesByType.Add(type, id.Value);
-        }
-
-        foreach (var typePair in AvailableClasses)
-        {
-            var id = typePair.Key;
-            var type = typePair.Value;
-
-            var classes = new List<uint>();
-
-            Type currentType = type.BaseType!;
-
-            while (currentType != typeof(object))
-            {
-                classes.Add(availableClassesByType[currentType]);
-
-                currentType = currentType.BaseType!;
             }
 
-            AvailableInheritanceClasses[type] = classes;
+            var line = stringLine.AsSpan();
 
-            var chunks = type.GetNestedTypes().Where(x => x.IsSubclassOf(typeof(Chunk)));
+            var from = line.Slice(0, 8);
+            var to = line.Slice(12, 8);
 
-            var baseType = type.BaseType!;
-
-            while (baseType!.IsSubclassOf(typeof(CMwNod)))
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+            if (!uint.TryParse(from, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint key)
+            || !uint.TryParse(to, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint value))
             {
-                chunks = chunks.Concat(baseType.GetNestedTypes().Where(x => x.IsSubclassOf(typeof(Chunk))));
-
-                baseType = baseType.BaseType;
+                continue;
             }
-
-            var availableChunkClasses = new Dictionary<uint, Type>();
-            var availableHeaderChunkClasses = new Dictionary<uint, Type>();
-
-            foreach (var chunk in chunks)
+#else
+            if (!uint.TryParse(from.ToString(), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint key)
+            || !uint.TryParse(to.ToString(), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint value))
             {
-                var chunkAttribute = chunk.GetCustomAttribute<ChunkAttribute>();
-
-                if (chunkAttribute == null)
-                    throw new Exception($"Chunk {chunk.FullName} doesn't have ChunkAttribute.");
-
-                if (chunk.GetInterface(nameof(IHeaderChunk)) == null)
-                {
-                    availableChunkClasses.Add(chunkAttribute.ID, chunk);
-                }
-                else
-                {
-                    availableHeaderChunkClasses.Add(chunkAttribute.ID, chunk);
-                }
+                continue;
             }
+#endif
 
-            AvailableChunkClasses.Add(type, availableChunkClasses);
-            AvailableHeaderChunkClasses.Add(type, availableHeaderChunkClasses);
+            mappings.Add(key, value);
         }
-
-        foreach (var idClassPair in AvailableClasses)
-        {
-            var id = idClassPair.Key;
-            var classType = idClassPair.Value;
-
-            AvailableClassAttributes.Add(classType, classType.GetCustomAttributes());
-        }
-
-        foreach (var classChunksPair in AvailableHeaderChunkClasses.Concat(AvailableChunkClasses))
-        {
-            var attributeDictionary = new Dictionary<uint, IEnumerable<Attribute>>();
-
-            foreach (var chunkClassIdTypePair in classChunksPair.Value)
-            {
-                var id = chunkClassIdTypePair.Key;
-                var chunkClass = chunkClassIdTypePair.Value;
-
-                var attributes = chunkClass.GetCustomAttributes();
-
-                attributeDictionary[id] = attributes;
-
-                AvailableChunkAttributesByType[chunkClass] = attributes;
-            }
-
-            AvailableChunkAttributes[classChunksPair.Key] = attributeDictionary;
-        }
-
-        foreach (var idClassPair in AvailableClasses)
-        {
-            var id = idClassPair.Key;
-            var classType = idClassPair.Value;
-
-            var privateConstructor = classType.GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, Array.Empty<Type>(), null);
-
-            if (privateConstructor is null)
-                throw new PrivateConstructorNotFoundException(classType);
-
-            var newExp = Expression.New(privateConstructor);
-            var lambda = Expression.Lambda<Func<CMwNod>>(newExp);
-            var compiled = lambda.Compile();
-
-            AvailableClassConstructors.Add(id, compiled);
-        }
-
-        foreach (var classChunksPair in AvailableChunkClasses)
-        {
-            var constructors = GetChunkConstructors(classChunksPair);
-            if (constructors != null)
-                AvailableChunkConstructors[classChunksPair.Key] = constructors;
-        }
-
-        foreach (var classChunksPair in AvailableHeaderChunkClasses)
-        {
-            var constructors = GetChunkConstructors(classChunksPair);
-            if (constructors != null)
-                AvailableHeaderChunkConstructors[classChunksPair.Key] = constructors;
-        }
-
-        Debug.WriteLine("Types defined in " + watch.Elapsed.TotalMilliseconds + "ms");
     }
 
-    private static Dictionary<uint, Func<Chunk>>? GetChunkConstructors(
-        KeyValuePair<Type, Dictionary<uint, Type>> classChunksPair)
+    private static bool IsClassFromEngines(Type t)
     {
-        if (classChunksPair.Value.Count == 0) return null;
-
-        var constructorDictionary = new Dictionary<uint, Func<Chunk>>();
-
-        foreach (var chunkClassIdTypePair in classChunksPair.Value)
-        {
-            var id = chunkClassIdTypePair.Key;
-            var chunkClass = chunkClassIdTypePair.Value;
-
-            var newExp = Expression.New(chunkClass);
-            var lambda = Expression.Lambda<Func<Chunk>>(newExp);
-            var compiled = lambda.Compile();
-
-            constructorDictionary.Add(id, compiled);
-        }
-
-        return constructorDictionary;
+        return t?.IsClass == true && t.Namespace?.StartsWith("GBX.NET.Engines") == true;
     }
 }

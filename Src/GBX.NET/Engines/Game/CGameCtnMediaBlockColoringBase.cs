@@ -1,10 +1,11 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Coloring base
+/// MediaTracker block - Coloring base (0x03172000)
 /// </summary>
 [Node(0x03172000)]
-public sealed class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+[NodeExtension("GameCtnMediaBlockColoringBase")]
+public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -28,7 +29,7 @@ public sealed class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameCt
         set => keys = value;
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public int BaseIndex
     {
         get => baseIndex;
@@ -39,7 +40,7 @@ public sealed class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameCt
 
     #region Constructors
 
-    private CGameCtnMediaBlockColoringBase()
+    protected CGameCtnMediaBlockColoringBase()
     {
         keys = null!;
     }
@@ -68,40 +69,19 @@ public sealed class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameCt
 
         public override void ReadWrite(CGameCtnMediaBlockColoringBase n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
-            rw.Int32(ref U01);
+            rw.Int32(ref version); // If version is below 2, there is an loop of two floats and no U01
+            rw.Int32(ref U01); 
 
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Hue = r.ReadSingle(),
-                Intensity = r.ReadSingle(),
-                Unknown = r.ReadInt16()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Hue);
-                w.Write(x.Intensity);
-                w.Write(x.Unknown);
-            });
+            rw.ListKey(ref n.keys!, version);
 
-            rw.Int32(ref n.baseIndex);
+            if (version >= 1)
+            {
+                rw.Int32(ref n.baseIndex);
+            }
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float Hue { get; set; }
-        public float Intensity { get; set; }
-        public short Unknown { get; set; }
-    }
 
     #endregion
 }

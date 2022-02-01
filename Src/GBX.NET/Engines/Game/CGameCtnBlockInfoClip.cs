@@ -1,9 +1,14 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// CGameCtnBlockInfoClip (0x03053000)
+/// </summary>
 [Node(0x03053000)]
-public sealed class CGameCtnBlockInfoClip : CGameCtnBlockInfo
+[NodeExtension("TMEDClip")]
+[NodeExtension("EDClip")]
+public class CGameCtnBlockInfoClip : CGameCtnBlockInfo
 {
-    private CGameCtnBlockInfoClip()
+    protected CGameCtnBlockInfoClip()
     {
 
     }

@@ -3,43 +3,25 @@
 /// <summary>
 /// Identifier defined by ID, collection and author. Also known as "meta".
 /// </summary>
-public class Ident
+public record Ident(string Id, Collection Collection, string Author)
 {
-    public string ID { get; set; }
-    public Collection Collection { get; set; }
-    public string Author { get; set; }
-
-    public Ident(string id, Collection collection, string author)
-    {
-        ID = id;
-        Collection = collection;
-        Author = author;
-    }
-
-    public Ident(string id) : this(id, new Collection(), string.Empty)
+    public Ident(string id) : this(id, new Collection(), "")
     {
 
     }
 
     public Ident() : this(string.Empty)
     {
-
+        
     }
 
-    public void Deconstruct(out string id, out Collection collection, out string author)
+    public static implicit operator Ident((string Id, Collection Collection, string Author) v)
     {
-        id = ID;
-        collection = Collection;
-        author = Author;
+        return new(v.Id, v.Collection, v.Author);
     }
 
-    public override string ToString() => $"(\"{ID}\", \"{Collection}\", \"{Author}\")";
-    public override int GetHashCode() => ID.GetHashCode() ^ Collection.GetHashCode() ^ Author.GetHashCode();
-    public override bool Equals(object? obj) => this is Ident m && this == m;
-
-    public static bool operator ==(Ident? a, Ident? b) => a?.ID == b?.ID && a?.Collection == b?.Collection && a?.Author == b?.Author;
-    public static bool operator !=(Ident? a, Ident? b) => !(a?.ID == b?.ID && a?.Collection == b?.Collection && a?.Author == b?.Author);
-
-    public static implicit operator Ident((string ID, Collection Collection, string Author) v) => new(v.ID, v.Collection, v.Author);
-    public static implicit operator (string ID, Collection Collection, string Author)(Ident v) => (v.ID, v.Collection, v.Author);
+    public static implicit operator (string Id, Collection Collection, string Author)(Ident v)
+    {
+        return (v.Id, v.Collection, v.Author);
+    }
 }

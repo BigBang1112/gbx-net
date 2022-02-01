@@ -2,9 +2,9 @@
 
 public partial class CControlEffectSimiBuilder
 {
-    public class TMSX : GameBuilder<ICControlEffectSimiBuilder, CControlEffectSimi>
+    public class TMSX : GameBuilder<CControlEffectSimiBuilder, CControlEffectSimi>
     {
-        public TMSX(ICControlEffectSimiBuilder baseBuilder, CControlEffectSimi node) : base(baseBuilder, node) { }
+        public TMSX(CControlEffectSimiBuilder baseBuilder, CControlEffectSimi node) : base(baseBuilder, node) { }
 
         public override CControlEffectSimi Build()
         {

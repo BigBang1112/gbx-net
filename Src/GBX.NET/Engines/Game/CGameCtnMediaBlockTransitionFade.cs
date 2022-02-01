@@ -1,7 +1,11 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// MediaTracker block - Transition fade (0x030AB000)
+/// </summary>
 [Node(0x030AB000)]
-public sealed class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+[NodeExtension("CtnMediaBlockTransFade")]
+public partial class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -36,7 +40,7 @@ public sealed class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlock, CGame
 
     #region Constructors
 
-    private CGameCtnMediaBlockTransitionFade()
+    protected CGameCtnMediaBlockTransitionFade()
     {
         keys = null!;
     }
@@ -54,32 +58,13 @@ public sealed class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlock, CGame
 
         public override void ReadWrite(CGameCtnMediaBlockTransitionFade n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Opacity = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Opacity);
-            });
-
+            rw.ListKey(ref n.keys!);
             rw.Vec3(ref n.color);
             rw.Single(ref U01);
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float Opacity { get; set; }
-    }
 
     #endregion
 }

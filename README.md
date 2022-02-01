@@ -130,8 +130,10 @@ To parse a GBX with a known type:
 using GBX.NET;
 using GBX.NET.Engines.Game;
 
-var map = GameBox.ParseNode<CGameCtnChallenge>("MyMap.Map.Gbx");
+using var map = GameBox.ParseNode<CGameCtnChallenge>("MyMap.Map.Gbx");
 ```
+
+**Don't forget to dispose the `Node`/`GameBox` with `Dispose()` or the `using` statement to not bloat the memory with states!**
 
 To parse a GBX with an unknown type:
 
@@ -139,7 +141,7 @@ To parse a GBX with an unknown type:
 using GBX.NET;
 using GBX.NET.Engines.Game;
 
-var node = GameBox.ParseNode("MyMap.Map.Gbx");
+using var node = GameBox.ParseNode("MyMap.Map.Gbx");
 
 if (node is CGameCtnChallenge map)
 {
@@ -171,7 +173,7 @@ To save changes of the parsed GBX file:
 using GBX.NET;
 using GBX.NET.Engines.Game;
 
-var node = GameBox.ParseNode("MyMap.Map.Gbx");
+using var node = GameBox.ParseNode("MyMap.Map.Gbx");
 
 if (node is CGameCtnChallenge map)
 {
@@ -193,11 +195,14 @@ To save any supported `Node` to a GBX file:
 using GBX.NET;
 using GBX.NET.Engines.Game;
 
-var replay = GameBox.ParseNode<CGameCtnReplayRecord>("MyReplay.Replay.Gbx");
+using var replay = GameBox.ParseNode<CGameCtnReplayRecord>("MyReplay.Replay.Gbx");
 
-foreach (CGameCtnGhost ghost in replay.Ghosts)
+if (replay.Ghosts is not null)
 {
-    ghost.Save("MyExtractedGhost.Ghost.Gbx");
+    foreach (CGameCtnGhost ghost in replay.Ghosts)
+    {
+        ghost.Save("MyExtractedGhost.Ghost.Gbx");
+    }
 }
 ```
 
@@ -208,7 +213,7 @@ foreach (CGameCtnGhost ghost in replay.Ghosts)
 Make the code cleaner by **aliasing** the `Node` from the parsed `GameBox<T>`:
 
 ```cs
-var gbx = GameBox.Parse<CGameCtnChallenge>("MyMap.Map.Gbx");
+using var gbx = GameBox.Parse<CGameCtnChallenge>("MyMap.Map.Gbx");
 var map = gbx.Node; // Like this
 
 var bronzeTime = gbx.Node.BronzeTime; // WRONG !!!
@@ -226,6 +231,19 @@ var silverTime = map.SilverTime; // Correct
 ### Conclusion
 
 Your work doesn't have to fall under the GNU GPL license if you're interested in either reading the header data only, or reading certain uncompressed GBX files (usually the internal ones inside PAK files). If you're looking to read the content of a **compressed GBX body** (applies to maps, replays and other user generated content), you **have to license your work with GNU GPL v3.0 or later**.
+
+## Special thanks
+
+Without these people, this project wouldn't be what it is today:
+
+- Stefan Baumann (Solux)
+- florenzius
+- Kim
+- James Romeril
+- Mika Kuijpers (TheMrMiku)
+- donadigo
+
+And many thanks to every bug reporter!
 
 ## Alternative GBX parsers
 

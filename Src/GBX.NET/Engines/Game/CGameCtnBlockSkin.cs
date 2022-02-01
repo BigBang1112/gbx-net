@@ -4,7 +4,7 @@
 /// Skin for a block (0x03059000)
 /// </summary>
 [Node(0x03059000)]
-public sealed class CGameCtnBlockSkin : CMwNod
+public class CGameCtnBlockSkin : CMwNod
 {
     #region Fields
 
@@ -52,7 +52,7 @@ public sealed class CGameCtnBlockSkin : CMwNod
 
     #region Constructors
 
-    private CGameCtnBlockSkin()
+    protected CGameCtnBlockSkin()
     {
 
     }

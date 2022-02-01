@@ -1,7 +1,10 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// MediaTracker block - Time speed (0x03129000)
+/// </summary>
 [Node(0x03129000)]
-public sealed class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public partial class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -28,7 +31,7 @@ public sealed class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, CGameCtnMe
 
     #region Constructors
 
-    private CGameCtnMediaBlockTimeSpeed()
+    protected CGameCtnMediaBlockTimeSpeed()
     {
         keys = null!;
     }
@@ -42,16 +45,7 @@ public sealed class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, CGameCtnMe
     {
         public override void ReadWrite(CGameCtnMediaBlockTimeSpeed n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Speed = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Speed);
-            });
+            rw.ListKey(ref n.keys!);
         }
     }
 
@@ -60,26 +54,8 @@ public sealed class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, CGameCtnMe
     {
         public override void ReadWrite(CGameCtnMediaBlockTimeSpeed n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Speed = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Speed);
-            });
+            rw.ListKey(ref n.keys!);
         }
-    }
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float Speed { get; set; }
     }
 
     #endregion

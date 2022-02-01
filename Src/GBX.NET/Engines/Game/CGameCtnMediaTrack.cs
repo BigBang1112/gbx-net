@@ -2,8 +2,12 @@
 
 namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// MediaTracker track (0x03078000)
+/// </summary>
 [Node(0x03078000)]
-public sealed class CGameCtnMediaTrack : CMwNod
+[NodeExtension("GameCtnMediaTrack")]
+public class CGameCtnMediaTrack : CMwNod
 {
     #region Fields
 
@@ -65,7 +69,7 @@ public sealed class CGameCtnMediaTrack : CMwNod
 
     #region Constructors
 
-    private CGameCtnMediaTrack()
+    protected CGameCtnMediaTrack()
     {
         name = null!;
         blocks = null!;
@@ -77,7 +81,7 @@ public sealed class CGameCtnMediaTrack : CMwNod
 
     #region Methods
 
-    public override string ToString() => Name;
+    public override string ToString() => $"{base.ToString()} {{ \"{Name}\" }}";
 
     /// <summary>
     /// Transfers the MediaTracker track properties from either <see cref="Chunk03078002"/> (ESWC) or <see cref="Chunk03078004"/> (TMF)
@@ -125,6 +129,14 @@ public sealed class CGameCtnMediaTrack : CMwNod
             rw.String(ref n.name!);
             rw.Int32(ref tracksVersion);
             rw.ListNode<CGameCtnMediaBlock>(ref n.blocks!);
+            rw.Int32(ref U02);
+        }
+
+        public override async Task ReadWriteAsync(CGameCtnMediaTrack n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        {
+            rw.String(ref n.name!);
+            rw.Int32(ref tracksVersion);
+            n.blocks = (await rw.ListNodeAsync<CGameCtnMediaBlock>(n.blocks!))!;
             rw.Int32(ref U02);
         }
     }

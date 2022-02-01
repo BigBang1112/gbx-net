@@ -1,7 +1,11 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// MediaTracker block - Blur depth effect (0x03081000)
+/// </summary>
 [Node(0x03081000)]
-public sealed class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
+[NodeExtension("GameCtnMediaBlockFxBlurDepth")]
+public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -28,7 +32,7 @@ public sealed class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, CGameC
 
     #region Constructors
 
-    private CGameCtnMediaBlockFxBlurDepth()
+    protected CGameCtnMediaBlockFxBlurDepth()
     {
         keys = null!;
     }
@@ -44,35 +48,11 @@ public sealed class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, CGameC
     {
         public override void ReadWrite(CGameCtnMediaBlockFxBlurDepth n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r1 => new Key()
-            {
-                Time = r1.ReadSingle_s(),
-                LensSize = r1.ReadSingle(),
-                ForceFocus = r1.ReadBoolean(),
-                FocusZ = r1.ReadSingle(),
-            },
-            (x, w1) =>
-            {
-                w1.WriteSingle_s(x.Time);
-                w1.Write(x.LensSize);
-                w1.Write(x.ForceFocus);
-                w1.Write(x.FocusZ);
-            });
+            rw.ListKey(ref n.keys!);
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float LensSize { get; set; }
-        public bool ForceFocus { get; set; }
-        public float FocusZ { get; set; }
-    }
 
     #endregion
 }

@@ -1,17 +1,15 @@
 ﻿namespace GBX.NET.Builders;
 
-public abstract class GameBuilder<TBaseBuilder, TClass>
-    where TBaseBuilder : IBuilder
-    where TClass : CMwNod
+public abstract class GameBuilder<TBuilder, TNode> where TBuilder : Builder where TNode : CMwNod
 {
-    protected TBaseBuilder BaseBuilder { get; }
-    protected TClass Node { get; }
+    protected TBuilder BaseBuilder { get; }
+    protected TNode Node { get; }
 
-    public GameBuilder(TBaseBuilder baseBuilder, TClass node)
+    public GameBuilder(TBuilder baseBuilder, TNode node)
     {
         BaseBuilder = baseBuilder;
         Node = node;
     }
 
-    public abstract TClass Build();
+    public abstract TNode Build();
 }

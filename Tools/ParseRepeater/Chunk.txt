@@ -1,0 +1,15 @@
+﻿#region 0x{0} chunk
+
+/// <summary>
+/// {1} 0x{0} chunk
+/// </summary>
+[Chunk(0x{2})]
+public class Chunk{2} : Chunk<{1}>
+{{
+    public override void ReadWrite({1} n, GameBoxReaderWriter rw)
+    {{
+        
+    }}
+}}
+
+#endregion

@@ -1,10 +1,12 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker Bloom block for TMUF and older games (0x03083000). This node causes "Couldn't load map" in ManiaPlanet.
+/// MediaTracker block - Bloom effect (0x03083000)
 /// </summary>
+/// <remarks>Bloom MediaTracker block for TMUF and older games. This node causes "Couldn't load map" in ManiaPlanet.</remarks>
 [Node(0x03083000)]
-public sealed class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
+[NodeExtension("GameCtnMediaBlockFxBloom")]
+public partial class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -14,7 +16,7 @@ public sealed class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, CGameCtnMe
 
     #region Constructors
 
-    private CGameCtnMediaBlockFxBloom()
+    protected CGameCtnMediaBlockFxBloom()
     {
         keys = null!;
     }
@@ -50,32 +52,11 @@ public sealed class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, CGameCtnMe
     {
         public override void ReadWrite(CGameCtnMediaBlockFxBloom n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r1 => new Key()
-            {
-                Time = r1.ReadSingle_s(),
-                Intensity = r1.ReadSingle(),
-                Sensitivity = r1.ReadSingle()
-            },
-            (x, w1) =>
-            {
-                w1.WriteSingle_s(x.Time);
-                w1.Write(x.Intensity);
-                w1.Write(x.Sensitivity);
-            });
+            rw.ListKey(ref n.keys!);
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float Intensity { get; set; }
-        public float Sensitivity { get; set; }
-    }
-
+    
     #endregion
 }

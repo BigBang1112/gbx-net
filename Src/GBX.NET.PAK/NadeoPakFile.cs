@@ -35,7 +35,7 @@ public class NadeoPakFile
 
     public byte[]? Data => GetData();
     public GameBox GBX => GetGBX();
-    public CMwNod? Node => GetNode();
+    public Node? Node => GetNode();
 
     public NadeoPakFile(NadeoPak owner, NadeoPakFolder? folder, string name, int uncompressedSize, int compressedSize, int offset, uint classID, ulong flags)
     {
@@ -127,7 +127,7 @@ public class NadeoPakFile
         return GameBox.ParseHeader(ms);
     }
 
-    public CMwNod? GetNode()
+    public Node? GetNode()
     {
         using var ms = Open();
         return GameBox.ParseNodeHeader(ms);

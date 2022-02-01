@@ -6,33 +6,33 @@ namespace GBX.NET;
 public class ChunkSet : SortedSet<Chunk>
 {
     [IgnoreDataMember]
-    public CMwNod Node { get; set; }
+    public Node Node { get; set; }
 
-    public ChunkSet(CMwNod node) : base()
+    public ChunkSet(Node node) : base()
     {
         Node = node;
     }
 
-    public ChunkSet(CMwNod node, IEnumerable<Chunk> collection) : base(collection)
+    public ChunkSet(Node node, IEnumerable<Chunk> collection) : base(collection)
     {
         Node = node;
     }
 
     public bool Remove(uint chunkID)
     {
-        return RemoveWhere(x => x.ID == chunkID) > 0;
+        return RemoveWhere(x => x.Id == chunkID) > 0;
     }
 
     public bool Remove<T>() where T : Chunk
     {
-        return RemoveWhere(x => x.ID == typeof(T).GetCustomAttribute<ChunkAttribute>()?.ID) > 0;
+        return RemoveWhere(x => x.Id == typeof(T).GetCustomAttribute<ChunkAttribute>()?.ID) > 0;
     }
 
-    public T Create<T>(byte[] data) where T : Chunk
+    public T Create<T>(byte[] data) where T : Chunk // Improve
     {
         var chunkId = typeof(T).GetCustomAttribute<ChunkAttribute>()?.ID;
 
-        var c = this.FirstOrDefault(x => x.ID == chunkId);
+        var c = this.FirstOrDefault(x => x.Id == chunkId);
         if (c != null)
             return (T)c;
 
@@ -53,10 +53,9 @@ public class ChunkSet : SortedSet<Chunk>
             using var r = new GameBoxReader(ms);
 
             var rw = new GameBoxReaderWriter(r);
-            ((IChunk)chunk).ReadWrite(Node, rw);
+            ((IReadableWritableChunk)chunk).ReadWrite(Node, rw);
         }
 
-        if (chunk is ILookbackable l) l.IdVersion = 3;
         Add(chunk);
         return chunk;
     }

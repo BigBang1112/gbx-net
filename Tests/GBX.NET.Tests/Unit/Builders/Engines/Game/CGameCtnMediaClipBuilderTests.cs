@@ -69,7 +69,7 @@ public class CGameCtnMediaClipBuilderTests
 
         var actual = new CGameCtnMediaClipBuilder().NewNode();
 
-        Assert.Equal(expected.ID, actual.ID);
+        Assert.Equal(expected.Id, actual.Id);
     }
 
     [Fact]

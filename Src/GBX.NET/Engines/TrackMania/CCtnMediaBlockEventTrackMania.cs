@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.TrackMania;
 
 [Node(0x2407F000)]
-public sealed class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
+public class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
 {
     #region Enums
 
@@ -84,7 +84,7 @@ public sealed class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
 
     #region Constructors
 
-    private CCtnMediaBlockEventTrackMania()
+    protected CCtnMediaBlockEventTrackMania()
     {
         stunts = null!;
     }

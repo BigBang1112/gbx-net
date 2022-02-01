@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.TrackMania;
 
 [Node(0x24092000)]
-public sealed class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi
+public class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi
 {
     #region Enums
 
@@ -67,7 +67,7 @@ public sealed class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi
 
     #region Constructors
 
-    private CCtnMediaBlockUiTMSimpleEvtsDisplay()
+    protected CCtnMediaBlockUiTMSimpleEvtsDisplay()
     {
 
     }

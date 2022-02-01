@@ -23,8 +23,8 @@ public class CGameCtnMediaBlockTextBuilderTests
         .Build();
     public static Vec3 GetSampleColor() => new(1, 0, 0);
 
-    private static CGameCtnMediaBlockText BuildNode(Func<ICGameCtnMediaBlockTextBuilderFor,
-        GameBuilder<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>> func, string text, CControlEffectSimi effect, Vec3 color)
+    private static CGameCtnMediaBlockText BuildNode(Func<CGameCtnMediaBlockTextBuilder,
+        GameBuilder<CGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>> func, string text, CControlEffectSimi effect, Vec3 color)
     {
         var builder = new CGameCtnMediaBlockTextBuilder()
             .WithText(text)
@@ -33,8 +33,8 @@ public class CGameCtnMediaBlockTextBuilderTests
         return func.Invoke(builder).Build();
     }
 
-    private static void ForX_ParametersShouldMatch(Func<ICGameCtnMediaBlockTextBuilderFor,
-        GameBuilder<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>> func)
+    private static void ForX_ParametersShouldMatch(Func<CGameCtnMediaBlockTextBuilder,
+        GameBuilder<CGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>> func)
     {
         var text = GetSampleText();
         var effect = GetSampleEffect();
@@ -46,8 +46,8 @@ public class CGameCtnMediaBlockTextBuilderTests
         Assert.Equal(expected: effect, actual: node.Effect);
     }
 
-    private static void ForX_ChunksShouldMatch(Func<ICGameCtnMediaBlockTextBuilderFor,
-        GameBuilder<ICGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>> func, Action<CGameCtnMediaBlockText> chunkAssert)
+    private static void ForX_ChunksShouldMatch(Func<CGameCtnMediaBlockTextBuilder,
+        GameBuilder<CGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>> func, Action<CGameCtnMediaBlockText> chunkAssert)
     {
         var text = GetSampleText();
         var effect = GetSampleEffect();

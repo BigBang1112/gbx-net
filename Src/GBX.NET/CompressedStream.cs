@@ -5,25 +5,40 @@ namespace GBX.NET;
 
 public class CompressedStream : DeflateStream
 {
-    public CompressionLevel Compression { get; } = CompressionLevel.BestCompression;
+    private byte[]? magic;
+
+    public CompressionLevel? Compression { get; private set; }
 
     public CompressedStream(Stream stream, CompressionMode mode) : base(stream, mode, true)
     {
-        switch (mode)
-        {
-            case CompressionMode.Compress:
-                WriteMagic(stream);
-                break;
-            case CompressionMode.Decompress:
-                Compression = ReadMagic(stream);
-                break;
-        }
+        
     }
 
-    private static CompressionLevel ReadMagic(Stream stream)
+    public override int Read(byte[] buffer, int offset, int count)
     {
-        var magic = new byte[2];
-        stream.Read(magic, 0, 2); // Needed for DeflateStream to work
+        if (magic is null)
+        {
+            ReadMagic();
+        }
+
+        return base.Read(buffer, offset, count);
+    }
+
+    public override void Write(byte[] buffer, int offset, int count)
+    {
+        if (magic is null)
+        {
+            WriteMagic();
+        }
+
+        base.Write(buffer, offset, count);
+    }
+
+    private void ReadMagic()
+    {
+        magic = new byte[2];
+
+        BaseStream.Read(magic, 0, magic.Length); // Needed for DeflateStream to work
 
         if (magic[0] != 0x78)
             throw new Exception("Data isn't compressed with Deflate ZLIB");
@@ -38,7 +53,7 @@ public class CompressedStream : DeflateStream
 
         Debug.WriteLine(log);
 
-        return magic[1] switch
+        Compression = magic[1] switch
         {
             0x01 => CompressionLevel.NoCompression,
             0x9C => CompressionLevel.DefaultCompression,
@@ -47,10 +62,8 @@ public class CompressedStream : DeflateStream
         };
     }
 
-    private void WriteMagic(Stream stream)
+    private void WriteMagic()
     {
-        stream.WriteByte(0x78);
-
         byte compressionTypeByte = Compression switch
         {
             CompressionLevel.BestCompression => 0xDA,
@@ -59,6 +72,8 @@ public class CompressedStream : DeflateStream
             _ => throw new Exception("Unknown compression can't be written."),
         };
 
-        stream.WriteByte(compressionTypeByte);
+        magic = new byte[] { 0x78, compressionTypeByte };
+
+        BaseStream.Write(magic, 0, magic.Length);
     }
 }

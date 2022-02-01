@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET.Builders.Engines.Game;
 
-public partial class CGameCtnMediaTrackBuilder : ICGameCtnMediaTrackBuilder
+public partial class CGameCtnMediaTrackBuilder : Builder
 {
     public string? Name { get; set; }
     public IList<CGameCtnMediaBlock>? Blocks { get; set; }
@@ -42,17 +42,6 @@ public partial class CGameCtnMediaTrackBuilder : ICGameCtnMediaTrackBuilder
     public TMUF ForTMUF() => new(this, NewNode());
     public TM2 ForTM2() => new(this, NewNode());
     public TM2020 ForTM2020() => new(this, NewNode());
-
-    GameBuilder<ICGameCtnMediaTrackBuilder, CGameCtnMediaTrack>
-        IBuilderForTMSX<ICGameCtnMediaTrackBuilder, CGameCtnMediaTrack>.ForTMSX() => ForTMSX();
-    GameBuilder<ICGameCtnMediaTrackBuilder, CGameCtnMediaTrack>
-        IBuilderForTMU<ICGameCtnMediaTrackBuilder, CGameCtnMediaTrack>.ForTMU() => ForTMU();
-    GameBuilder<ICGameCtnMediaTrackBuilder, CGameCtnMediaTrack>
-        IBuilderForTMUF<ICGameCtnMediaTrackBuilder, CGameCtnMediaTrack>.ForTMUF() => ForTMUF();
-    GameBuilder<ICGameCtnMediaTrackBuilder, CGameCtnMediaTrack>
-        IBuilderForTM2<ICGameCtnMediaTrackBuilder, CGameCtnMediaTrack>.ForTM2() => ForTM2();
-    GameBuilder<ICGameCtnMediaTrackBuilder, CGameCtnMediaTrack>
-        IBuilderForTM2020<ICGameCtnMediaTrackBuilder, CGameCtnMediaTrack>.ForTM2020() => ForTM2020();
 
     internal CGameCtnMediaTrack NewNode()
     {

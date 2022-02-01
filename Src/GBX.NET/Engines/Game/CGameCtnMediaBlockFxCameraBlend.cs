@@ -1,7 +1,11 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// MediaTracker block - Camera blend effect (0x0316D000)
+/// </summary>
 [Node(0x0316D000)]
-public sealed class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+[NodeExtension("GameCtnMediaBlockFxCameraBlend")]
+public partial class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -28,7 +32,7 @@ public sealed class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, CGameC
 
     #region Constructors
 
-    private CGameCtnMediaBlockFxCameraBlend()
+    protected CGameCtnMediaBlockFxCameraBlend()
     {
         keys = null!;
     }
@@ -53,30 +57,11 @@ public sealed class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, CGameC
         public override void ReadWrite(CGameCtnMediaBlockFxCameraBlend n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
-
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                CaptureWeight = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.CaptureWeight);
-            });
+            rw.ListKey(ref n.keys!);
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float CaptureWeight { get; set; }
-    }
 
     #endregion
 }

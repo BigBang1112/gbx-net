@@ -2,9 +2,9 @@
 
 public partial class CGameCtnMediaTrackBuilder
 {
-    public class TMU : GameBuilder<ICGameCtnMediaTrackBuilder, CGameCtnMediaTrack>
+    public class TMU : GameBuilder<CGameCtnMediaTrackBuilder, CGameCtnMediaTrack>
     {
-        public TMU(ICGameCtnMediaTrackBuilder baseBuilder, CGameCtnMediaTrack node) : base(baseBuilder, node) { }
+        public TMU(CGameCtnMediaTrackBuilder baseBuilder, CGameCtnMediaTrack node) : base(baseBuilder, node) { }
 
         public override CGameCtnMediaTrack Build()
         {

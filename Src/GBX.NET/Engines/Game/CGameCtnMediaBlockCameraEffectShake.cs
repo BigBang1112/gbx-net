@@ -1,10 +1,11 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Camera shake
+/// MediaTracker block - Camera shake (0x030A4000)
 /// </summary>
 [Node(0x030A4000)]
-public sealed class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCameraEffect, CGameCtnMediaBlock.IHasKeys
+[NodeExtension("CtnMediaBlockCamFxShake")]
+public partial class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCameraEffect, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -31,7 +32,7 @@ public sealed class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCame
 
     #region Constructors
 
-    private CGameCtnMediaBlockCameraEffectShake()
+    protected CGameCtnMediaBlockCameraEffectShake()
     {
         keys = null!;
     }
@@ -50,32 +51,11 @@ public sealed class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCame
     {
         public override void ReadWrite(CGameCtnMediaBlockCameraEffectShake n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Intensity = r.ReadSingle(),
-                Speed = r.ReadSingle()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Intensity);
-                w.Write(x.Speed);
-            });
+            rw.ListKey(ref n.keys!);
         }
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        public float Intensity { get; set; }
-        public float Speed { get; set; }
-    }
 
     #endregion
 }

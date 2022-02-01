@@ -2,8 +2,6 @@
 
 public class GameBoxReadProgress
 {
-    private readonly GameBoxHeaderInfo? headerInfo;
-
     /// <summary>
     /// Reading stage of GBX.
     /// </summary>
@@ -15,28 +13,15 @@ public class GameBoxReadProgress
     /// <summary>
     /// Gradually updated GBX object.
     /// </summary>
-    public GameBox? GBX { get; }
+    public GameBox? Gbx { get; }
     /// <summary>
     /// Chunk that has been currently read. This is null in <see cref="GameBoxReadProgressStage.Header"/> and <see cref="GameBoxReadProgressStage.RefTable"/> stages.
     /// </summary>
     public Chunk? Chunk { get; }
 
-    public GameBoxHeaderInfo? HeaderInfo
-    {
-        get => headerInfo ?? GBX?.Header;
-    }
-
     public GameBoxReadProgress()
     {
 
-    }
-
-    public GameBoxReadProgress(GameBoxHeaderInfo headerInfo)
-    {
-        this.headerInfo = headerInfo;
-
-        Stage = GameBoxReadProgressStage.Header;
-        Percentage = 1;
     }
 
     public GameBoxReadProgress(GameBoxReadProgressStage stage, float percentage, GameBox? gbx)
@@ -46,7 +31,7 @@ public class GameBoxReadProgress
     {
         Stage = stage;
         Percentage = percentage;
-        GBX = gbx;
+        Gbx = gbx;
         Chunk = chunk;
     }
 }

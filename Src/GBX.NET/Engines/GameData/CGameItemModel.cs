@@ -1,7 +1,13 @@
 ﻿namespace GBX.NET.Engines.GameData;
 
+/// <summary>
+/// CGameItemModel (0x2E002000)
+/// </summary>
+/// <remarks>A custom item, or possibly a custom block.</remarks>
 [Node(0x2E002000), WritingNotSupported]
-public sealed class CGameItemModel : CGameCtnCollector
+[NodeExtension("Item")]
+[NodeExtension("Block")] // CGameCustomBlockModel but it's here instead
+public class CGameItemModel : CGameCtnCollector
 {
     #region Enums
 
@@ -217,7 +223,7 @@ public sealed class CGameItemModel : CGameCtnCollector
 
     #region Constructors
 
-    private CGameItemModel()
+    protected CGameItemModel()
     {
 
     }

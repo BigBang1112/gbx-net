@@ -1,7 +1,11 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// MediaTracker block - Manialink (0x0312A000)
+/// </summary>
 [Node(0x0312A000)]
-public sealed class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
+[NodeExtension("GameCtnMediaBlockManialink")]
+public class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {
     #region Fields
 
@@ -38,7 +42,7 @@ public sealed class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, CGameCtnMe
 
     #region Constructors
 
-    private CGameCtnMediaBlockManialink()
+    protected CGameCtnMediaBlockManialink()
     {
         manialinkURL = null!;
     }

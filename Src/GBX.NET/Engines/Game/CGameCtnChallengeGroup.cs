@@ -4,7 +4,7 @@
 /// Group of maps (0x0308F000)
 /// </summary>
 [Node(0x0308F000)]
-public sealed class CGameCtnChallengeGroup : CMwNod
+public class CGameCtnChallengeGroup : CMwNod
 {
     #region Fields
 
@@ -33,7 +33,7 @@ public sealed class CGameCtnChallengeGroup : CMwNod
 
     #region Constructors
 
-    private CGameCtnChallengeGroup()
+    protected CGameCtnChallengeGroup()
     {
 
     }

@@ -2,9 +2,9 @@
 
 public partial class CGameCtnMediaClipBuilder
 {
-    public class TMU : GameBuilder<ICGameCtnMediaClipBuilder, CGameCtnMediaClip>
+    public class TMU : GameBuilder<CGameCtnMediaClipBuilder, CGameCtnMediaClip>
     {
-        public TMU(ICGameCtnMediaClipBuilder baseBuilder, CGameCtnMediaClip node) : base(baseBuilder, node) { }
+        public TMU(CGameCtnMediaClipBuilder baseBuilder, CGameCtnMediaClip node) : base(baseBuilder, node) { }
 
         public override CGameCtnMediaClip Build()
         {

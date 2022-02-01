@@ -1,9 +1,14 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// CGameCtnBlockInfoClassic (0x03051000)
+/// </summary>
 [Node(0x03051000)]
-public sealed class CGameCtnBlockInfoClassic : CGameCtnBlockInfo
+[NodeExtension("EDClassic")]
+[NodeExtension("TMEDClassic")]
+public class CGameCtnBlockInfoClassic : CGameCtnBlockInfo
 {
-    private CGameCtnBlockInfoClassic()
+    protected CGameCtnBlockInfoClassic()
     {
 
     }

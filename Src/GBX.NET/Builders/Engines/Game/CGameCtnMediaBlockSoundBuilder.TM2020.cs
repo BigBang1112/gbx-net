@@ -2,14 +2,14 @@
 
 public partial class CGameCtnMediaBlockSoundBuilder
 {
-    public class TM2020 : GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
+    public class TM2020 : GameBuilder<CGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
     {
         public bool IsMusic { get; set; }
         public bool StopWithClip { get; set; }
         public bool AudioToSpeech { get; set; }
         public int AudioToSpeechTarget { get; set; }
 
-        public TM2020(ICGameCtnMediaBlockSoundBuilder baseBuilder, CGameCtnMediaBlockSound node) : base(baseBuilder, node) { }
+        public TM2020(CGameCtnMediaBlockSoundBuilder baseBuilder, CGameCtnMediaBlockSound node) : base(baseBuilder, node) { }
 
         public TM2020 WithMusic(bool music)
         {

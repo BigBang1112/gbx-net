@@ -5,7 +5,7 @@ namespace GBX.NET;
 /// <summary>
 /// Provides single-method reading and writing by wrapping <see cref="GameBoxReader"/> and <see cref="GameBoxWriter"/> depending on the mode.
 /// </summary>
-public class GameBoxReaderWriter
+public partial class GameBoxReaderWriter
 {
     /// <summary>
     /// Reader component of the reader-writer. This will be null if <see cref="Mode"/> is <see cref="GameBoxReaderWriterMode.Write"/>.
@@ -706,7 +706,7 @@ public class GameBoxReaderWriter
     }
 
     /// <summary>
-    /// Reads or writes an <see cref="float"/> through reference.
+    /// Reads or writes a <see cref="float"/> through reference.
     /// </summary>
     /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -725,7 +725,7 @@ public class GameBoxReaderWriter
     public void Single(ref float? variable, float defaultValue = default) => variable = Single(variable, defaultValue);
 
     /// <summary>
-    /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of seconds.
+    /// Reads or writes a <see cref="float"/> as a <see cref="TimeSpan"/> of seconds.
     /// </summary>
     /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
     /// <param name="variable">Variable to write. Ignored in read mode.</param>
@@ -758,7 +758,7 @@ public class GameBoxReaderWriter
     }
 
     /// <summary>
-    /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of seconds through reference.
+    /// Reads or writes a <see cref="float"/> as a <see cref="TimeSpan"/> of seconds through reference.
     /// </summary>
     /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
     /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
@@ -1228,6 +1228,211 @@ public class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public void Vec3(ref Vec3? variable, Vec3 defaultValue = default) => variable = Vec3(variable, defaultValue);
 
+    /// <summary>
+    /// Reads or writes a <see cref="NET.Vec4"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public Vec4 Vec4(Vec4 variable = default)
+    {
+        if (Reader is not null) return Reader.ReadVec4();
+        if (Writer is not null) Writer.Write(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="NET.Vec4"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public Vec4? Vec4(Vec4? variable, Vec4 defaultValue = default)
+    {
+        if (Reader is not null) return Reader.ReadVec4();
+        if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes an <see cref="NET.Vec4"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void Vec4(ref Vec4 variable) => variable = Vec4(variable);
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="NET.Vec4"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void Vec4(ref Vec4? variable, Vec4 defaultValue = default) => variable = Vec4(variable, defaultValue);
+
+    /// <summary>
+    /// Reads or writes a <see cref="NET.Rect"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public Rect Rect(Rect variable = default)
+    {
+        if (Reader is not null) return Reader.ReadRect();
+        if (Writer is not null) Writer.Write(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="NET.Rect"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public Rect? Rect(Rect? variable, Rect defaultValue = default)
+    {
+        if (Reader is not null) return Reader.ReadRect();
+        if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes an <see cref="NET.Rect"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void Rect(ref Rect variable) => variable = Rect(variable);
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="NET.Rect"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void Rect(ref Rect? variable, Rect defaultValue = default) => variable = Rect(variable, defaultValue);
+    
+    /// <summary>
+    /// Reads or writes a <see cref="NET.Box"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public Box Box(Box variable = default)
+    {
+        if (Reader is not null) return Reader.ReadBox();
+        if (Writer is not null) Writer.Write(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="NET.Box"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public Box? Box(Box? variable, Box defaultValue = default)
+    {
+        if (Reader is not null) return Reader.ReadBox();
+        if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes an <see cref="NET.Box"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void Box(ref Box variable) => variable = Box(variable);
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="NET.Box"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void Box(ref Box? variable, Box defaultValue = default) => variable = Box(variable, defaultValue);
+
+    /// <summary>
+    /// Reads or writes a <see cref="NET.Quat"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public Quat Quat(Quat variable = default)
+    {
+        if (Reader is not null) return Reader.ReadQuat();
+        if (Writer is not null) Writer.Write(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="NET.Quat"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public Quat? Quat(Quat? variable, Quat defaultValue = default)
+    {
+        if (Reader is not null) return Reader.ReadQuat();
+        if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes an <see cref="NET.Quat"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void Quat(ref Quat variable) => variable = Quat(variable);
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="NET.Quat"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void Quat(ref Quat? variable, Quat defaultValue = default) => variable = Quat(variable, defaultValue);
+
+    /// <summary>
+    /// Reads or writes a <see cref="NET.FileRef"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -1239,6 +1444,10 @@ public class GameBoxReaderWriter
         return variable;
     }
 
+    /// <summary>
+    /// Reads or writes an <see cref="NET.FileRef"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -1251,10 +1460,11 @@ public class GameBoxReaderWriter
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    public string? Id(string? variable, ILookbackable lookbackable)
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> or <see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
+    public string? Id(string? variable = default, bool tryParseToInt32 = false)
     {
-        if (Reader is not null) return Reader.ReadId(lookbackable);
-        if (Writer is not null) Writer.Write(new Id(variable, lookbackable));
+        if (Reader is not null) return Reader.ReadId();
+        if (Writer is not null) Writer.WriteId(variable ?? "", tryParseToInt32);
         return variable;
     }
 
@@ -1264,200 +1474,30 @@ public class GameBoxReaderWriter
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    public void Id(ref string? variable, ILookbackable lookbackable) => variable = Id(variable, lookbackable);
+    public void Id(ref string? variable, bool tryParseToInt32 = false) => variable = Id(variable, tryParseToInt32);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> or <see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    /// <exception cref="PropertyNullException">Lookbackable of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public string? Id(string? variable = default)
-    {
-        if (Reader is not null)
-        {
-            if (Reader.Lookbackable is null)
-                throw new PropertyNullException(nameof(Reader.Lookbackable));
-
-            return Id(variable, Reader.Lookbackable);
-        }
-
-        if (Writer is not null)
-        {
-            if (Writer.Lookbackable is null)
-                throw new PropertyNullException(nameof(Writer.Lookbackable));
-
-            return Id(variable, Writer.Lookbackable);
-        }
-
-        throw new ThisShouldNotHappenException();
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
-    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
-    /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    /// <exception cref="PropertyNullException">Lookbackable of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void Id(ref string? variable) => variable = Id(variable);
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="lookbackable"/> is null.</exception>
-    /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
-    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
-    /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    public Ident? Ident(Ident? variable, ILookbackable lookbackable)
-    {
-        if (Reader is not null) return Reader.ReadIdent(lookbackable);
-        if (Writer is not null) Writer.Write(variable, lookbackable);
-        return variable;
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="lookbackable"/> is null.</exception>
-    /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
-    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
-    /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    public void Ident(ref Ident? variable, ILookbackable lookbackable) => variable = Ident(variable, lookbackable);
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
-    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
-    /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    /// <exception cref="PropertyNullException">Lookbackable of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
     public Ident? Ident(Ident? variable = default)
     {
-        if (Reader is not null)
-        {
-            if (Reader.Lookbackable is null)
-                throw new PropertyNullException(nameof(Reader.Lookbackable));
-
-            return Ident(variable, Reader.Lookbackable);
-        }
-
-        if (Writer is not null)
-        {
-            if (Writer.Lookbackable is null)
-                throw new PropertyNullException(nameof(Writer.Lookbackable));
-
-            return Ident(variable, Writer.Lookbackable);
-        }
-
-        throw new ThisShouldNotHappenException();
+        if (Reader is not null) return Reader.ReadIdent();
+        if (Writer is not null) Writer.Write(variable);
+        return variable;
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> or <see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    /// <exception cref="PropertyNullException">Lookbackable of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
     public void Ident(ref Ident? variable) => variable = Ident(variable);
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public CMwNod? NodeRef(CMwNod? variable, GameBoxBody body)
-    {
-        if (Reader is not null) return Reader.ReadNodeRef(body);
-        if (Writer is not null) Writer.Write(variable, body);
-        return variable;
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public void NodeRef(ref CMwNod? variable, GameBoxBody body) => variable = NodeRef(variable, body);
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public CMwNod? NodeRef(CMwNod? variable = default)
-    {
-        if (Reader is not null)
-        {
-            if (Reader.Body is null)
-                throw new PropertyNullException(nameof(Reader.Body));
-
-            return NodeRef(variable, Reader.Body);
-        }
-
-        if (Writer is not null)
-        {
-            if (Writer.Body is null)
-                throw new PropertyNullException(nameof(Writer.Body));
-
-            return NodeRef(variable, Writer.Body);
-        }
-
-        throw new ThisShouldNotHappenException();
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void NodeRef(ref CMwNod? variable) => variable = NodeRef(variable);
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public T? NodeRef<T>(T? variable, GameBoxBody body) where T : CMwNod
-    {
-        if (Reader is not null) return Reader.ReadNodeRef<T>(body);
-        if (Writer is not null) Writer.Write(variable, body);
-        return variable;
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="body"/> is null.</exception>
-    public void NodeRef<T>(ref T? variable, GameBoxBody body) where T : CMwNod => variable = NodeRef(variable, body);
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public T? NodeRef<T>(T? variable = default) where T : CMwNod
-    {
-        if (Reader is not null)
-        {
-            if (Reader.Body is null)
-                throw new PropertyNullException(nameof(Reader.Body));
-
-            return NodeRef(variable, Reader.Body);
-        }
-
-        if (Writer is not null)
-        {
-            if (Writer.Body is null)
-                throw new PropertyNullException(nameof(Writer.Body));
-
-            return NodeRef(variable, Writer.Body);
-        }
-
-        throw new ThisShouldNotHappenException();
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void NodeRef<T>(ref T? variable) where T : CMwNod => variable = NodeRef(variable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1716,9 +1756,115 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoopReadWrite"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
+    public T[]? Array<T>(T[]? array, Action<GameBoxReaderWriter, T> forLoopReadWrite) where T : new()
+    {
+        if (forLoopReadWrite is null)
+        {
+            throw new ArgumentNullException(nameof(forLoopReadWrite));
+        }
+
+        if (Reader is not null)
+        {
+            var length = Reader.ReadInt32();
+
+            array = new T[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                var t = new T();
+                forLoopReadWrite(this, t);
+                array[i] = t;
+            }
+
+            return array;
+        }
+
+        if (Writer is not null)
+        {
+            if (array is null)
+            {
+                Writer.Write(0);
+                return array;
+            }
+
+            Writer.Write(array.Length);
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                forLoopReadWrite(this, array[i]);
+            }
+        }
+
+        return array;
+    }
+
+    public void Array<T>(ref T[]? array, Action<GameBoxReaderWriter, T> forLoopReadWrite) where T : new()
+    {
+        array = Array(array, forLoopReadWrite);
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
+    public Vec2[]? ArrayVec2(Vec2[]? array = default)
+    {
+        return Array(array, r => r.ReadVec2(), (x, w) => w.Write(x));
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
+    public void ArrayVec2(ref Vec2[]? array)
+    {
+        array = Array(array, r => r.ReadVec2(), (x, w) => w.Write(x));
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
+    public Vec3[]? ArrayVec3(Vec3[]? array = default)
+    {
+        return Array(array, r => r.ReadVec3(), (x, w) => w.Write(x));
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
+    public void ArrayVec3(ref Vec3[]? array)
+    {
+        array = Array(array, r => r.ReadVec3(), (x, w) => w.Write(x));
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
+    public string[]? ArrayString(string[]? array = default)
+    {
+        return Array(array, r => r.ReadString(), (x, w) => w.Write(x));
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
+    public void ArrayString(ref string[]? array)
+    {
+        array = Array(array, r => r.ReadString(), (x, w) => w.Write(x));
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public T?[]? ArrayNode<T>(T?[]? array = default) where T : CMwNod
+    public T?[]? ArrayNode<T>(T?[]? array = default) where T : Node
     {
         return Array(array, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
     }
@@ -1728,7 +1874,7 @@ public class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void ArrayNode<T>(ref T?[]? array) where T : CMwNod
+    public void ArrayNode<T>(ref T?[]? array) where T : Node
     {
         array = Array(array, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
     }
@@ -1824,9 +1970,104 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoopReadWrite"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
+    public IList<T>? List<T>(IList<T>? list, Action<GameBoxReaderWriter, T> forLoopReadWrite) where T : new()
+    {
+        if (forLoopReadWrite is null)
+        {
+            throw new ArgumentNullException(nameof(forLoopReadWrite));
+        }
+
+        if (Reader is not null)
+        {
+            var length = Reader.ReadInt32();
+
+            list = new List<T>(length);
+
+            for (int i = 0; i < length; i++)
+            {
+                var t = new T();
+                forLoopReadWrite(this, t);
+                list.Add(t);
+            }
+
+            return list;
+        }
+
+        if (Writer is not null)
+        {
+            if (list is null)
+            {
+                Writer.Write(0);
+                return list;
+            }
+
+            Writer.Write(list.Count);
+
+            foreach (var t in list)
+            {
+                forLoopReadWrite(this, t);
+            }
+        }
+
+        return list;
+    }
+
+    public void List<T>(ref IList<T>? list, Action<GameBoxReaderWriter, T> forLoopReadWrite) where T : new()
+    {
+        list = List(list, forLoopReadWrite);
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentNullException"><paramref name="forLoopRead"/> or <paramref name="forLoopWrite"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
+    public async Task<IList<T>?> ListAsync<T>(IList<T>? list, Func<GameBoxReader, Task<T>> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
+    {
+        if (Reader is not null) return await Reader.ReadListAsync(forLoopRead);
+        if (Writer is not null) Writer.Write(list, forLoopWrite);
+        return list;
+    }
+
+    public void ListKey<T>(ref IList<T>? list, int version) where T : CGameCtnMediaBlock.Key, new()
+    {
+        List(ref list, (rw, x) => x.ReadWrite(rw, version));
+    }
+
+    public void ListKey<T>(ref IList<T>? list) where T : CGameCtnMediaBlock.Key, new()
+    {
+        // Almost duplicate method content to avoid closures
+        List(ref list, (rw, x) => x.ReadWrite(rw));
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
+    public IList<FileRef>? ListFileRef(IList<FileRef>? list = default)
+    {
+        return List(list,
+            r => r.ReadFileRef(),
+            (x, w) => w.Write(x));
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
+    public void ListFileRef(ref IList<FileRef>? list)
+    {
+        list = ListFileRef(list);
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public IList<T?>? ListNode<T>(IList<T?>? list = default) where T : CMwNod
+    public IList<T?>? ListNode<T>(IList<T?>? list = default) where T : Node
     {
         return List(list,
             r => r.ReadNodeRef<T>(),
@@ -1838,41 +2079,80 @@ public class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void ListNode<T>(ref IList<T?>? list) where T : CMwNod
+    public void ListNode<T>(ref IList<T?>? list) where T : Node
     {
-        list = List(list,
-            r => r.ReadNodeRef<T>(),
-            (x, w) => w.Write(x));
+        list = ListNode(list);
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
-    public IDictionary<TKey, TValue>? Dictionary<TKey, TValue>(IDictionary<TKey, TValue>? dictionary = default) where TKey : notnull
+    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
+    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
+    public async Task<IList<T?>?> ListNodeAsync<T>(IList<T?>? list = default, CancellationToken cancellationToken = default) where T : Node
     {
-        if (Reader is not null) return Reader.ReadDictionary<TKey, TValue>();
+        return await ListAsync(list,
+            async r => await r.ReadNodeRefAsync<T>(cancellationToken),
+            (x, w) => w.Write(x));
+    }
+
+    /// <param name="dictionary">Dictionary to write. Ignored in read mode.</param>
+    /// <param name="overrideKey">Only affecting read mode: if the pair in the dictionary should be overriden by the new value when a duplicate key is read. It is recommended to keep it false to easily spot errors.</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
+    public IDictionary<TKey, TValue>? Dictionary<TKey, TValue>(IDictionary<TKey, TValue>? dictionary = default, bool overrideKey = false) where TKey : notnull
+    {
+        if (Reader is not null) return Reader.ReadDictionary<TKey, TValue>(overrideKey);
         if (Writer is not null) Writer.Write(dictionary);
         return dictionary;
     }
 
+    /// <param name="dictionary">Dictionary to read or write. Read mode sets <paramref name="dictionary"/>, write mode uses <paramref name="dictionary"/> to write the value (keeping <paramref name="dictionary"/> unchanged).</param>
+    /// <param name="overrideKey">Only affecting read mode: if the pair in the dictionary should be overriden by the new value when a duplicate key is read. It is recommended to keep it false to easily spot errors.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
-    public void Dictionary<TKey, TValue>(ref IDictionary<TKey, TValue>? dictionary) where TKey : notnull
+    public void Dictionary<TKey, TValue>(ref IDictionary<TKey, TValue>? dictionary, bool overrideKey = false) where TKey : notnull
     {
-        dictionary = Dictionary(dictionary);
+        dictionary = Dictionary(dictionary, overrideKey);
     }
 
+    /// <param name="dictionary">Dictionary to write. Ignored in read mode.</param>
+    /// <param name="overrideKey">Only affecting read mode: if the pair in the dictionary should be overriden by the new value when a duplicate key is read. It is recommended to keep it false to easily spot errors.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public IDictionary<TKey, TValue?>? DictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary = default) where TKey : notnull where TValue : CMwNod
+    public IDictionary<TKey, TValue?>? DictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary = default, bool overrideKey = false) where TKey : notnull where TValue : Node
     {
-        if (Reader is not null) return Reader.ReadDictionaryNode<TKey, TValue>();
+        if (Reader is not null) return Reader.ReadDictionaryNode<TKey, TValue>(overrideKey);
+        if (Writer is not null) Writer.WriteDictionaryNode(dictionary);
+        return dictionary;
+    }
+
+    /// <param name="dictionary">Dictionary to read or write. Read mode sets <paramref name="dictionary"/>, write mode uses <paramref name="dictionary"/> to write the value (keeping <paramref name="dictionary"/> unchanged).</param>
+    /// <param name="overrideKey">Only affecting read mode: if the pair in the dictionary should be overriden by the new value when a duplicate key is read. It is recommended to keep it false to easily spot errors.</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
+    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
+    public void DictionaryNode<TKey, TValue>(ref IDictionary<TKey, TValue?>? dictionary, bool overrideKey = false) where TKey : notnull where TValue : Node
+    {
+        dictionary = DictionaryNode(dictionary, overrideKey);
+    }
+
+    public async Task<IDictionary<TKey, TValue?>?> DictionaryNodeAsync<TKey, TValue>(
+        IDictionary<TKey, TValue?>? dictionary,
+        bool overrideKey,
+        CancellationToken cancellationToken = default)
+        where TKey : notnull where TValue : Node
+    {
+        if (Reader is not null) return await Reader.ReadDictionaryNodeAsync<TKey, TValue>(overrideKey, cancellationToken);
         if (Writer is not null) Writer.WriteDictionaryNode(dictionary);
         return dictionary;
     }
@@ -1880,19 +2160,9 @@ public class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
-    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void DictionaryNode<TKey, TValue>(ref IDictionary<TKey, TValue?>? dictionary) where TKey : notnull where TValue : CMwNod
-    {
-        dictionary = DictionaryNode(dictionary);
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="stream"/> is null.</exception>
-    /// <exception cref="PropertyNullException">Lookbackable of <see cref="Reader"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> or <see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
     public void UntilFacade(MemoryStream stream)
     {
         if (stream is null)
@@ -1900,8 +2170,10 @@ public class GameBoxReaderWriter
 
         if (Reader is not null)
         {
-            if (Reader.Lookbackable is null)
-                throw new PropertyNullException(nameof(Reader.Lookbackable));
+            if (Reader.Settings.StateGuid is null)
+            {
+                throw new PropertyNullException(nameof(Reader.Settings.StateGuid));
+            }
 
             using var w = new GameBoxWriter(stream);
             w.Write(Reader.ReadUntilFacade().ToArray());

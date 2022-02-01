@@ -62,7 +62,7 @@ public class CGameCtnMediaBlockTextBuilderTests
 
         var actual = new CGameCtnMediaBlockTextBuilder().NewNode();
 
-        Assert.Equal(expected.ID, actual.ID);
+        Assert.Equal(expected.Id, actual.Id);
     }
 
     [Fact]

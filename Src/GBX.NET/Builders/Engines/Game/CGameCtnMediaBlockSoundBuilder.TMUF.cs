@@ -2,11 +2,11 @@
 
 public partial class CGameCtnMediaBlockSoundBuilder
 {
-    public class TMUF : GameBuilder<ICGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
+    public class TMUF : GameBuilder<CGameCtnMediaBlockSoundBuilder, CGameCtnMediaBlockSound>
     {
         public bool IsMusic { get; set; }
 
-        public TMUF(ICGameCtnMediaBlockSoundBuilder baseBuilder, CGameCtnMediaBlockSound node) : base(baseBuilder, node) { }
+        public TMUF(CGameCtnMediaBlockSoundBuilder baseBuilder, CGameCtnMediaBlockSound node) : base(baseBuilder, node) { }
 
         public TMUF WithMusic(bool music)
         {

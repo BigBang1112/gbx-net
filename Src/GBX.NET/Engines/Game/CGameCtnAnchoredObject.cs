@@ -1,11 +1,10 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Item on a map (0x03101000)
+/// Item placed on a map (0x03101000)
 /// </summary>
-/// <remarks>An item placed on a map.</remarks>
 [Node(0x03101000)]
-public sealed class CGameCtnAnchoredObject : CMwNod
+public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
 {
     #region Fields
 
@@ -130,7 +129,7 @@ public sealed class CGameCtnAnchoredObject : CMwNod
     {
         get
         {
-            GBX?.Node?.DiscoverChunk<CGameCtnChallenge.Chunk03043062>();
+            ((INodeDependant<CGameCtnChallenge>)this).DependingNode?.DiscoverChunk<CGameCtnChallenge.Chunk03043062>();
 
             return color;
         }
@@ -144,11 +143,13 @@ public sealed class CGameCtnAnchoredObject : CMwNod
         set => skin = value;
     }
 
+    CGameCtnChallenge? INodeDependant<CGameCtnChallenge>.DependingNode { get; set; }
+
     #endregion
 
     #region Constructors
 
-    private CGameCtnAnchoredObject()
+    protected CGameCtnAnchoredObject()
     {
         itemModel = null!;
     }
@@ -171,7 +172,7 @@ public sealed class CGameCtnAnchoredObject : CMwNod
 
     public override string ToString()
     {
-        return ItemModel.ToString();
+        return $"{base.ToString()} {{ {ItemModel} }}";
     }
 
     #endregion
@@ -200,7 +201,7 @@ public sealed class CGameCtnAnchoredObject : CMwNod
             set => version = value;
         }
 
-        public override void ReadWrite(CGameCtnAnchoredObject n, GameBoxReaderWriter rw)
+        public override void ReadWrite(CGameCtnAnchoredObject n, GameBoxReaderWriter rw, ILogger? logger)
         {
             rw.Int32(ref version);
             rw.Ident(ref n.itemModel!);
@@ -210,15 +211,15 @@ public sealed class CGameCtnAnchoredObject : CMwNod
             rw.Vec3(ref n.absolutePositionInMap);
 
             if (rw.Mode == GameBoxReaderWriterMode.Read)
-                n.waypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(rw.Reader!);
+                n.waypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(rw.Reader!, classId: null, progress: null, logger);
             else if (rw.Mode == GameBoxReaderWriterMode.Write)
             {
                 if (n.waypointSpecialProperty is null)
                     rw.Writer!.Write(-1);
                 else
                 {
-                    rw.Writer!.Write(n.waypointSpecialProperty.ID);
-                    n.waypointSpecialProperty.Write(rw.Writer);
+                    rw.Writer!.Write(0x2E009000);
+                    n.waypointSpecialProperty.Write(rw.Writer, logger);
                 }
             }
 

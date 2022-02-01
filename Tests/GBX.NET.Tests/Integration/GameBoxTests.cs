@@ -13,18 +13,36 @@ public class GameBoxTests
 {
     [Theory]
     [InlineData("CCP#04 - ODYSSEY.Map.Gbx")]
+    [InlineData("Summer 2021 - 25.Map.Gbx")]
     public void ParseMap(string fileName)
     {
-        var node = GameBox.ParseNode(Path.Combine("Files", fileName));
+        using var node = GameBox.ParseNode(Path.Combine("Files", fileName));
     }
 
     [Theory]
     [InlineData("CCP#04 - ODYSSEY.Map.Gbx")]
+    [InlineData("Summer 2021 - 25.Map.Gbx")]
     public void ParseSaveMap(string fileName)
     {
-        var node = GameBox.ParseNode(Path.Combine("Files", fileName));
+        using var node = GameBox.ParseNode(Path.Combine("Files", fileName))!;
         using var ms = new MemoryStream();
+
         node.Save(ms);
+    }
+
+    [Theory]
+    [InlineData("CCP#04 - ODYSSEY.Map.Gbx")]
+    [InlineData("Summer 2021 - 25.Map.Gbx")]
+    public void ParseSaveParseMap(string fileName)
+    {
+        using var node = GameBox.ParseNode(Path.Combine("Files", fileName))!;
+        using var ms = new MemoryStream();
+
+        node.Save(ms);
+
+        ms.Position = 0;
+
+        using var newNode = GameBox.ParseNode(ms);
     }
 
     [Theory(DisplayName = "Parse/Save map without exceptions")]
@@ -32,8 +50,9 @@ public class GameBoxTests
     [InlineData("Summer 2021 - 25.Map.Gbx")]
     public void ParseSaveMapWithoutExceptions(string fileName)
     {
-        var node = GameBox.ParseNode(Path.Combine("Files", fileName));
+        using var node = GameBox.ParseNode(Path.Combine("Files", fileName))!;
         using var ms = new MemoryStream();
+
         node.Save(ms);
     }
 }
