@@ -220,15 +220,16 @@ public partial class GameBox
             return chunkList;
         }
 
-        internal static void ProcessUserData(Node node, GameBoxReader r, ILogger? logger)
+        internal static void ProcessUserData(Node node, Type nodeType, GameBoxReader r, ILogger? logger)
         {
             var chunkList = GetChunkList(r);
-            var chunks = ProcessChunks(node, r, logger, chunkList);
+            var chunks = ProcessChunks(node, nodeType, r, logger, chunkList);
 
             node.HeaderChunks = new ChunkSet(node, chunks);
         }
 
         private static IEnumerable<Chunk> ProcessChunks(Node node,
+                                                        Type nodeType,
                                                         GameBoxReader r,
                                                         ILogger? logger,
                                                         IDictionary<uint, HeaderChunkSize> chunkList)
@@ -237,11 +238,12 @@ public partial class GameBox
 
             foreach (var chunkInfo in chunkList)
             {
-                yield return ProcessChunk(node, r, logger, chunkInfo.Key, chunkInfo.Value.Size, chunkInfo.Value.IsHeavy);
+                yield return ProcessChunk(node, nodeType, r, logger, chunkInfo.Key, chunkInfo.Value.Size, chunkInfo.Value.IsHeavy);
             }
         }
 
         private static Chunk ProcessChunk(Node node,
+                                          Type nodeType,
                                           GameBoxReader r,
                                           ILogger? logger,
                                           uint chunkId,
@@ -262,9 +264,9 @@ public partial class GameBox
             // Chunk data can be always read
             var chunkData = r.ReadBytes(size);
 
-            var nodeType = NodeCacheManager.GetClassTypeById(classId);
+            var chunkNodeType = NodeCacheManager.GetClassTypeById(classId);
 
-            if (nodeType is null)
+            if (chunkNodeType is null)
             {
                 NodeCacheManager.Names.TryGetValue(classId, out var className);
 
@@ -273,11 +275,11 @@ public partial class GameBox
                 return new HeaderChunk(chunkId, chunkData, isHeavy);
             }
 
-            var headerChunkType = NodeCacheManager.GetHeaderChunkTypeById(nodeType, chunkId);
+            var headerChunkType = NodeCacheManager.GetHeaderChunkTypeById(chunkNodeType, chunkId);
 
             if (headerChunkType is null)
             {
-                var genericHeaderChunkType = typeof(HeaderChunk<>).MakeGenericType(nodeType);
+                var genericHeaderChunkType = typeof(HeaderChunk<>).MakeGenericType(chunkNodeType);
 
                 var args = new object?[] { node, chunkData, chunkId, isHeavy };
 
@@ -293,6 +295,15 @@ public partial class GameBox
             ((Chunk)headerChunk).Node = node; //
             headerChunk.Data = chunkData;
             headerChunk.IsHeavy = isHeavy;
+
+            if (!nodeType.IsSubclassOf(chunkNodeType))
+            {
+                // There are cast-related problems when one of the header chunks is not part of inheritance
+                // For example, CGameCtnDecoration has a header chunk of type CPlugGameSkin that is not
+                // inherited by CGameCtnDecoration. This could be later solved by using special attributes
+                // on these kinds of unusual chunks.
+                return (Chunk)headerChunk;
+            }
 
             if (chunkData.Length > 0)
             {

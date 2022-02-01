@@ -43,11 +43,12 @@ Console.ReadKey();
 void ProcessFile(string fileName)
 {
     var node = GameBox.ParseNode<CPlugSolid>(fileName, logger: logger);
+    var refTable = node.GetGbx()!.GetRefTable();
 
-    var tree = node.Tree as CPlugTree;
-
-    if (tree is null)
+    if (node.Tree is not CPlugTree tree)
+    {
         return;
+    }
 
     var fullFileNameWithoutExt = Path.Combine(extractPath, Path.GetFileName(fileName));
 
@@ -196,8 +197,6 @@ void ProcessFile(string fileName)
 
         if (diffuse.GetGbx() is null)
             return;
-
-        var refTable = diffuse.GetGbx().RefTable;
 
         if (refTable is null)
             return;

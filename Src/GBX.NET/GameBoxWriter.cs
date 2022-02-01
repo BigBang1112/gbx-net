@@ -196,11 +196,11 @@ public partial class GameBoxWriter : BinaryWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
-    public void WriteId(string? value)
+    public void WriteId(string? value, bool tryParseToInt32 = false)
     {
         var idState = GetIdState();
         WriteIdVersionIfNotWritten(idState);
-        WriteIdAsString(value ?? "", idState);
+        WriteIdAsString(value ?? "", idState, tryParseToInt32);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -217,7 +217,7 @@ public partial class GameBoxWriter : BinaryWriter
             return;
         }
 
-        WriteIdAsString(value, idState);
+        WriteIdAsString(value, idState, tryParseToInt32: false); // Could be true
     }
 
     private StateManager.IdState GetIdState()
@@ -245,7 +245,7 @@ public partial class GameBoxWriter : BinaryWriter
         idState.IsWritten = true;
     }
 
-    private void WriteIdAsString(string value, StateManager.IdState idState)
+    private void WriteIdAsString(string value, StateManager.IdState idState, bool tryParseToInt32)
     {
         if (value == "")
         {
@@ -264,6 +264,12 @@ public partial class GameBoxWriter : BinaryWriter
         if (index != -1)
         {
             Write(index + 1 + 0x40000000);
+            return;
+        }
+
+        if (tryParseToInt32 && int.TryParse(value, out index))
+        {
+            Write(index);
             return;
         }
 

@@ -27,13 +27,7 @@ public partial class GameBox : IDisposable
 
     public Node? Node { get; private set; }
     public Body? RawBody { get; private set; }
-    public bool IsMainNodeParsed { get; private set; }
     public GameBoxBodyDebugger? Debugger { get; private set; }
-
-    /// <summary>
-    /// ID of the node.
-    /// </summary>
-    public uint Id { get; init; }
 
     /// <summary>
     /// File path of the GameBox.
@@ -57,6 +51,7 @@ public partial class GameBox : IDisposable
     {
         header = new Header(node.Id);
         Node = node;
+        Node.SetGbx(this);
     }
 
     public GameBox(Header header, RefTable? refTable, string? fileName = null)
@@ -103,7 +98,7 @@ public partial class GameBox : IDisposable
     /// <exception cref="HeaderOnlyParseLimitationException">Writing is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
     internal void Write(Stream stream, IDRemap remap, ILogger? logger)
     {
-        var stateGuid = StateManager.Shared.CreateState();
+        var stateGuid = StateManager.Shared.CreateState(refTable);
 
         logger?.LogDebug("Writing the body...");
 
@@ -117,7 +112,7 @@ public partial class GameBox : IDisposable
         StateManager.Shared.ResetIdState(stateGuid);
 
         using var headerW = new GameBoxWriter(stream, stateGuid, remap, logger: logger);
-        header.Write(Node, headerW, StateManager.Shared.GetNodeCount(stateGuid) + 1, logger);
+        header.Write(Node!, headerW, StateManager.Shared.GetNodeCount(stateGuid) + 1, logger);
 
         logger?.LogDebug("Writing the reference table...");
 
@@ -141,7 +136,7 @@ public partial class GameBox : IDisposable
     /// <exception cref="HeaderOnlyParseLimitationException">Writing is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
     internal async Task WriteAsync(Stream stream, IDRemap remap, ILogger? logger, CancellationToken cancellationToken)
     {
-        var stateGuid = StateManager.Shared.CreateState();
+        var stateGuid = StateManager.Shared.CreateState(refTable);
 
         logger?.LogDebug("Writing the body...");
 
@@ -155,7 +150,7 @@ public partial class GameBox : IDisposable
         StateManager.Shared.ResetIdState(stateGuid);
 
         using var headerW = new GameBoxWriter(stream, stateGuid, remap, logger: logger);
-        header.Write(Node, headerW, StateManager.Shared.GetNodeCount(stateGuid) + 1, logger);
+        header.Write(Node!, headerW, StateManager.Shared.GetNodeCount(stateGuid) + 1, logger);
 
         logger?.LogDebug("Writing the reference table...");
 

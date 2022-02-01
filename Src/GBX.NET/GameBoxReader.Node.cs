@@ -13,6 +13,16 @@ public partial class GameBoxReader
     /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> is null.</exception>
     public Node? ReadNodeRef(out int nodeRefIndex)
     {
+        var index = ReadInt32() - 1; // GBX seems to start the index at 1
+
+        nodeRefIndex = index;
+
+        // If aux node index is below 0 or the node index is part of the reference table
+        if (index < 0)
+        {
+            return null;
+        }
+
         if (Settings.StateGuid is null)
         {
             throw new PropertyNullException(nameof(Settings.StateGuid));
@@ -20,12 +30,7 @@ public partial class GameBoxReader
 
         var stateGuid = Settings.StateGuid.Value;
 
-        var index = ReadInt32() - 1; // GBX seems to start the index at 1
-
-        nodeRefIndex = index;
-
-        // If aux node index is below 0 or the node index is part of the reference table
-        if (index < 0 || IsRefTableNode(stateGuid, index))
+        if (IsRefTableNode(stateGuid, index))
         {
             return null;
         }

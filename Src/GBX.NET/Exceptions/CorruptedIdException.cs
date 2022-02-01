@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Exceptions;
 
 /// <summary>
-/// The exception that is thrown when a read <see cref="Id"/> has not a valid index. 
+/// The exception that is thrown when a read Id has not a valid index. 
 /// </summary>
 public class CorruptedIdException : Exception
 {

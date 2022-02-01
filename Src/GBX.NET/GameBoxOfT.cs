@@ -34,6 +34,11 @@ public class GameBox<T> : GameBox where T : Node
     /// <returns>A newly created chunk.</returns>
     public TChunk CreateHeaderChunk<TChunk>() where TChunk : Chunk, IHeaderChunk
     {
+        if (Node.HeaderChunks is null)
+        {
+            throw new PropertyNullException(nameof(Node.HeaderChunks));
+        }
+
         return Node.HeaderChunks.Create<TChunk>();
     }
 
@@ -42,6 +47,11 @@ public class GameBox<T> : GameBox where T : Node
     /// </summary>
     public void RemoveAllHeaderChunks()
     {
+        if (Node.HeaderChunks is null)
+        {
+            throw new PropertyNullException(nameof(Node.HeaderChunks));
+        }
+
         Node.HeaderChunks.Clear();
     }
 
@@ -52,6 +62,11 @@ public class GameBox<T> : GameBox where T : Node
     /// <returns>True, if the chunk was removed, otherwise false.</returns>
     public bool RemoveHeaderChunk<TChunk>() where TChunk : Chunk, IHeaderChunk
     {
+        if (Node.HeaderChunks is null)
+        {
+            throw new PropertyNullException(nameof(Node.HeaderChunks));
+        }
+
         return Node.HeaderChunks.RemoveWhere(x => x.Id == typeof(TChunk).GetCustomAttribute<ChunkAttribute>()?.ID) > 0;
     }
 

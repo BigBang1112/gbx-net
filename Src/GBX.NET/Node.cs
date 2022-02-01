@@ -36,9 +36,18 @@ public abstract class Node : IStateRefTable, IDisposable
 
     }
 
+    /// <summary>
+    /// Gets the <see cref="GameBox"/> object holding the main node.
+    /// </summary>
+    /// <returns>The holding <see cref="GameBox"/> object, if THIS node is the main node, otherwise null.</returns>
     public GameBox? GetGbx()
     {
         return gbx;
+    }
+
+    internal void SetGbx(GameBox gbx)
+    {
+        this.gbx = gbx;
     }
 
     private uint GetStoredId()

@@ -24,13 +24,13 @@ public partial class StateManager
         ReferenceTableStates = new ConcurrentDictionary<Guid, GameBox.RefTable?>();
     }
 
-    public Guid CreateState()
+    public Guid CreateState(GameBox.RefTable? refTable)
     {
         var guid = Guid.NewGuid();
 
         AuxilaryNodeStates[guid] = new SortedDictionary<int, Node>();
         IdStates[guid] = new IdState();
-        ReferenceTableStates[guid] = null;
+        ReferenceTableStates[guid] = refTable;
 
         return guid;
     }

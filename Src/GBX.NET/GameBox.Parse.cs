@@ -99,19 +99,20 @@ public partial class GameBox
         }
 
         gbx.Node = NodeCacheManager.GetClassConstructor(header.Id)();
+        gbx.Node.SetGbx(gbx);
 
         if (header.UserData.Length == 0)
         {
             return gbx;
         }
 
-        var stateGuid = StateManager.Shared.CreateState();
+        var stateGuid = StateManager.Shared.CreateState(gbx.refTable);
         ((IState)gbx.Node).StateGuid = stateGuid;
 
         using var ms = new MemoryStream(header.UserData);
         var headerR = new GameBoxReader(ms, stateGuid, logger: logger);
 
-        Header.ProcessUserData(gbx.Node, headerR, logger);
+        Header.ProcessUserData(gbx.Node, classType, headerR, logger);
 
         return gbx;
     }
@@ -234,7 +235,7 @@ public partial class GameBox
 
         if (header.UserData.Length == 0)
         {
-            stateGuid = StateManager.Shared.CreateState();
+            stateGuid = StateManager.Shared.CreateState(gbx.refTable);
             ((IState)node).StateGuid = stateGuid;
         }
         else
@@ -246,8 +247,6 @@ public partial class GameBox
 
         // Body resets Id (lookback string) list
         Body.Read(node, header, bodyR, progress, readUncompressedBodyDirectly, logger);
-        
-        gbx.IsMainNodeParsed = true;
 
         return gbx;
     }

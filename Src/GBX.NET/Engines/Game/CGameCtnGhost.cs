@@ -639,7 +639,7 @@ public partial class CGameCtnGhost : CGameGhost
     {
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
-            rw.Id(ref n.ghostUid); // TODO: check writing
+            rw.Id(ref n.ghostUid, tryParseToInt32: true); // TODO: check writing
         }
     }
 

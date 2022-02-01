@@ -1461,10 +1461,10 @@ public partial class GameBoxReaderWriter
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
     /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> or <see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
-    public string? Id(string? variable = default)
+    public string? Id(string? variable = default, bool tryParseToInt32 = false)
     {
         if (Reader is not null) return Reader.ReadId();
-        if (Writer is not null) Writer.WriteId(variable ?? "");
+        if (Writer is not null) Writer.WriteId(variable ?? "", tryParseToInt32);
         return variable;
     }
 
@@ -1474,7 +1474,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    public void Id(ref string? variable) => variable = Id(variable);
+    public void Id(ref string? variable, bool tryParseToInt32 = false) => variable = Id(variable, tryParseToInt32);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>

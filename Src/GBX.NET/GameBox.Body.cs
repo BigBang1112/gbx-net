@@ -319,7 +319,12 @@ public partial class GameBox
         {
             if (RawData is null)
             {
-                if (!gbx.IsMainNodeParsed)
+                if (gbx.Node is null)
+                {
+                    throw new PropertyNullException(nameof(gbx.Node));
+                }
+
+                if (gbx.Node.Chunks.Count == 0)
                 {
                     throw new HeaderOnlyParseLimitationException();
                 }
@@ -345,7 +350,12 @@ public partial class GameBox
         {
             if (RawData is null)
             {
-                if (!gbx.IsMainNodeParsed)
+                if (gbx.Node is null)
+                {
+                    throw new PropertyNullException(nameof(gbx.Node));
+                }
+
+                if (gbx.Node.Chunks.Count == 0)
                 {
                     throw new HeaderOnlyParseLimitationException();
                 }
