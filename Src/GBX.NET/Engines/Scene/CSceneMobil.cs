@@ -47,6 +47,15 @@ public class CSceneMobil : CSceneObject
     {
         public override void Read(CSceneMobil n, GameBoxReader r, ILogger? logger)
         {
+            var randomNumber = r.ReadUInt32();
+
+            if (randomNumber == 0)
+            {
+                return;
+            }
+
+            r.BaseStream.Position -= 4;
+
             n.item = Parse<CHmsItem>(r, 0x06003000, progress: null, logger)!;
         }
     }
