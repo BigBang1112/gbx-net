@@ -112,7 +112,15 @@ public partial class GameBox : IDisposable
         StateManager.Shared.ResetIdState(stateGuid);
 
         using var headerW = new GameBoxWriter(stream, stateGuid, remap, logger: logger);
-        header.Write(Node!, headerW, StateManager.Shared.GetNodeCount(stateGuid) + 1, logger);
+
+        if (RawBody is null)
+        {
+            header.Write(Node!, headerW, StateManager.Shared.GetNodeCount(stateGuid) + 1, logger);
+        }
+        else
+        {
+            header.Write(Node!, headerW, header.NumNodes, logger);
+        }
 
         logger?.LogDebug("Writing the reference table...");
 
@@ -150,7 +158,15 @@ public partial class GameBox : IDisposable
         StateManager.Shared.ResetIdState(stateGuid);
 
         using var headerW = new GameBoxWriter(stream, stateGuid, remap, logger: logger);
-        header.Write(Node!, headerW, StateManager.Shared.GetNodeCount(stateGuid) + 1, logger);
+
+        if (RawBody is null)
+        {
+            header.Write(Node!, headerW, StateManager.Shared.GetNodeCount(stateGuid) + 1, logger);
+        }
+        else
+        {
+            header.Write(Node!, headerW, header.NumNodes, logger);
+        }
 
         logger?.LogDebug("Writing the reference table...");
 

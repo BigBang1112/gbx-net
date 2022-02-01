@@ -357,6 +357,7 @@ public partial class GameBox
 
                 if (gbx.Node.Chunks.Count == 0)
                 {
+                    // "Body not possible to write" kind of exception would be more suitable
                     throw new HeaderOnlyParseLimitationException();
                 }
 
