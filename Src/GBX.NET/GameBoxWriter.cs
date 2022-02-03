@@ -205,15 +205,15 @@ public partial class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteId(Collection value)
+    public void WriteId(Id value)
     {
         var idState = GetIdState();
 
         WriteIdVersionIfNotWritten(idState);
 
-        if (value.Id is not null)
+        if (value.Index.HasValue)
         {
-            Write(value.Id.Value);
+            Write(value.Index.Value);
             return;
         }
 
@@ -526,7 +526,7 @@ public partial class GameBoxWriter : BinaryWriter
     /// Writes any kind of value. Prefer using specified methods for better performance. Supported types are <see cref="byte"/>, <see cref="short"/>, <see cref="int"/>,
     /// <see cref="long"/>, <see cref="float"/>, <see cref="bool"/>, <see cref="string"/>, <see cref="sbyte"/>, <see cref="ushort"/>,
     /// <see cref="uint"/>, <see cref="ulong"/>, <see cref="Byte3"/>, <see cref="Vec2"/>, <see cref="Vec3"/>,
-    /// <see cref="Vec4"/>, <see cref="Int3"/>, <see cref="Collection"/>, and <see cref="Ident"/>.
+    /// <see cref="Vec4"/>, <see cref="Int3"/>, <see cref="Id"/>, and <see cref="Ident"/>.
     /// </summary>
     /// <param name="any">Any supported object.</param>
     /// <exception cref="ArgumentNullException"><paramref name="any"/> is null.</exception>
@@ -555,7 +555,7 @@ public partial class GameBoxWriter : BinaryWriter
             case Vec4       v: Write(v); break;
             case Int2       v: Write(v); break;
             case Int3       v: Write(v); break;
-            case Collection v: Write(v); break;
+            case Id v: Write(v); break;
             case Ident      v: Write(v); break;
 
             default: throw new NotSupportedException($"{any.GetType()} is not supported for Read<T>.");

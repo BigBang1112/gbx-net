@@ -121,7 +121,7 @@ public partial class GameBoxReader : BinaryReader
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    public string ReadId()
+    public Id ReadId()
     {
         if (Settings.StateGuid is null)
         {
@@ -134,7 +134,7 @@ public partial class GameBoxReader : BinaryReader
             ? StateManager.Shared.GetIdState(stateGuid)
             : StateManager.Shared.GetIdSubState(stateGuid, Settings.IdSubStateGuid.Value);
 
-        if (!idState.Version.HasValue)
+        if (idState.Version is null)
         {
             idState.Version = ReadInt32();
 
@@ -143,14 +143,12 @@ public partial class GameBoxReader : BinaryReader
             {
                 idState.Version = 3;
 
-                if (BaseStream.CanSeek)
+                if (!BaseStream.CanSeek)
                 {
-                    BaseStream.Seek(-4, SeekOrigin.Current);
+                    throw new NotSupportedException("Gbx has the first Id presented without a version. Solution exists, but the stream does not support seeking.");
                 }
-                else
-                {
-                    throw new NotSupportedException("GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.");
-                }
+
+                BaseStream.Seek(-4, SeekOrigin.Current);
             }
         }
 
@@ -187,7 +185,7 @@ public partial class GameBoxReader : BinaryReader
 
         if (index >> 30 == 0)
         {
-            return index.ToString();
+            return new Id((int)index);
         }
 
         if (idState.Strings.Count > (index & 0x3FFF) - 1)

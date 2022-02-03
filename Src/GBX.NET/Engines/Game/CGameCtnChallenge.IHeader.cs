@@ -77,7 +77,7 @@ public partial class CGameCtnChallenge
         /// <summary>
         /// The map's environment.
         /// </summary>
-        Collection Collection { get; set; }
+        Id Collection { get; set; }
 
         /// <summary>
         /// The map's UID.

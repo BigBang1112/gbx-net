@@ -579,7 +579,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// The map's environment.
     /// </summary>
     [NodeMember]
-    public Collection Collection
+    public Id Collection
     {
         get => mapInfo.Collection;
         set => mapInfo = new Ident(mapInfo.Id, value, mapInfo.Author);
@@ -3166,6 +3166,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CGameCtnChallenge 0x03D skippable chunk (lightmaps)
     /// </summary>
     [Chunk(0x0304303D, "lightmaps")]
+    [ChunkWithOwnIdState]
     public class Chunk0304303D : SkippableChunk<CGameCtnChallenge>
     {
         private int version = 4;
@@ -3884,7 +3885,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 var item = gbxItem.Node;
 
                 embedded.Add(new Ident(id,
-                    item.Ident?.Collection ?? new Collection(),
+                    item.Ident?.Collection ?? new Id(),
                     item.Ident?.Author ?? string.Empty));
             }
 
@@ -3938,8 +3939,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         public override void Read(CGameCtnChallenge n, GameBoxReader r)
         {
             Version = r.ReadInt32();
-            U01 = r.ReadInt32();
 
+            U01 = r.ReadInt32();
             var dayTime = r.ReadInt32();
             if (dayTime != -1)
                 n.dayTime = TimeSpan.FromSeconds(dayTime / (double)ushort.MaxValue * new TimeSpan(23, 59, 59).TotalSeconds);
@@ -3952,8 +3953,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         public override void Write(CGameCtnChallenge n, GameBoxWriter w)
         {
             w.Write(Version);
-            w.Write(U01);
 
+            w.Write(U01);
             if (n.dayTime.HasValue)
                 w.Write(Convert.ToInt32(n.dayTime.Value.TotalSeconds / new TimeSpan(23, 59, 59).TotalSeconds * ushort.MaxValue));
             else
@@ -4051,6 +4052,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CGameCtnChallenge 0x05B skippable chunk (lightmaps TM2020)
     /// </summary>
     [Chunk(0x0304305B, "lightmaps TM2020")]
+    [ChunkWithOwnIdState]
     public class Chunk0304305B : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private readonly Chunk0304303D chunk0304303D = new();
