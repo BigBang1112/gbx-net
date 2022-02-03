@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Engines.MwFoundations;
+using GBX.NET.Managers;
 using System.IO.Compression;
 using System.Text.RegularExpressions;
 

@@ -1,4 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
+using GBX.NET.Managers;
 
 namespace GBX.NET.Benchmarks;
 
