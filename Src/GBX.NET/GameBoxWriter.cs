@@ -506,6 +506,17 @@ public partial class GameBoxWriter : BinaryWriter
         }
     }
 
+    public void WriteSpan<T>(ReadOnlySpan<T> span) where T : struct
+    {
+        var bytes = MemoryMarshal.Cast<T, byte>(span);
+
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        Write(bytes);
+#else
+        Write(bytes.ToArray());
+#endif
+    }
+
     public void StartIdSubState()
     {
         if (Settings.StateGuid is null)

@@ -2243,19 +2243,23 @@ public partial class GameBoxReaderWriter
 
         throw new ThisShouldNotHappenException();
     }
-}
 
-/// <summary>
-/// Reader-writer mode.
-/// </summary>
-public enum GameBoxReaderWriterMode
-{
-    /// <summary>
-    /// Read mode.
-    /// </summary>
-    Read,
-    /// <summary>
-    /// Write mode.
-    /// </summary>
-    Write
+    public void Archive<T>(ref T? obj, int version = 0) where T : IReadableWritable, new()
+    {
+        if (obj is null)
+        {
+            switch (Mode)
+            {
+                case GameBoxReaderWriterMode.Read:
+                    obj = new();
+                    break;
+                case GameBoxReaderWriterMode.Write:
+                    return;
+                default:
+                    throw new ThisShouldNotHappenException();
+            }
+        }
+
+        obj.ReadWrite(this, version);
+    }
 }
