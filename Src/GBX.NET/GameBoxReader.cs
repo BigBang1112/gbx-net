@@ -345,6 +345,18 @@ public partial class GameBoxReader : BinaryReader
                        Z2: ReadSingle());
     }
 
+    public TimeSpan? ReadTimeOfDay()
+    {
+        var dayTime = ReadInt32();
+
+        if (dayTime == -1)
+        {
+            return null;
+        }
+
+        return TimeSpan.FromSeconds(dayTime / (double)ushort.MaxValue * new TimeSpan(23, 59, 59).TotalSeconds);
+    }
+
     /// <summary>
     /// Reads a common transform representation.
     /// </summary>

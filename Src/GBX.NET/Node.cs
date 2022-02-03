@@ -871,7 +871,7 @@ public abstract class Node : IStateRefTable, IDisposable
         }
     }
 
-    private bool HasChunkOwnIdState(Type type)
+    private static bool HasChunkOwnIdState(Type type)
     {
         if (!NodeCacheManager.ChunkAttributesByType.TryGetValue(type, out var attributes))
         {

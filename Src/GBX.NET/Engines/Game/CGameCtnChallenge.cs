@@ -3928,41 +3928,21 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043056, "light settings")]
     public class Chunk03043056 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
+        private int version = 3;
+
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version { get; set; } = 3;
+        public int Version { get => version; set => version = value; }
 
-        public int U01;
-        public int U02;
-
-        public override void Read(CGameCtnChallenge n, GameBoxReader r)
+        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger)
         {
-            Version = r.ReadInt32();
-
-            U01 = r.ReadInt32();
-            var dayTime = r.ReadInt32();
-            if (dayTime != -1)
-                n.dayTime = TimeSpan.FromSeconds(dayTime / (double)ushort.MaxValue * new TimeSpan(23, 59, 59).TotalSeconds);
-
-            U02 = r.ReadInt32();
-            n.dynamicDaylight = r.ReadBoolean();
-            n.dayDuration = r.ReadInt32_msn();
-        }
-
-        public override void Write(CGameCtnChallenge n, GameBoxWriter w)
-        {
-            w.Write(Version);
-
-            w.Write(U01);
-            if (n.dayTime.HasValue)
-                w.Write(Convert.ToInt32(n.dayTime.Value.TotalSeconds / new TimeSpan(23, 59, 59).TotalSeconds * ushort.MaxValue));
-            else
-                w.Write(-1);
-
-            w.Write(U02);
-            w.Write(n.dynamicDaylight);
-            w.WriteInt32_msn(n.dayDuration);
+            rw.Int32(ref version);
+            rw.Int32(0);
+            rw.TimeOfDay(ref n.dayTime);
+            rw.Int32(0);
+            rw.Boolean(ref n.dynamicDaylight);
+            rw.Int32_msn(ref n.dayDuration);
         }
     }
 

@@ -174,6 +174,17 @@ public partial class GameBoxWriter : BinaryWriter
         Write(value.Z);
     }
 
+    public void WriteTimeOfDay(TimeSpan? timeOfDay)
+    {
+        if (timeOfDay is null)
+        {
+            Write(-1);
+            return;
+        }
+
+        Write(Convert.ToInt32(timeOfDay.Value.TotalSeconds / new TimeSpan(23, 59, 59).TotalSeconds * ushort.MaxValue));
+    }
+
     /// <exception cref="ArgumentNullException"><paramref name="fileRef"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>

@@ -1110,7 +1110,7 @@ public partial class GameBoxReaderWriter
     }
 
     /// <summary>
-    /// Reads or writes an <see cref="NET.Byte3"/> through reference.
+    /// Reads or writes a <see cref="NET.Byte3"/> through reference.
     /// </summary>
     /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1160,7 +1160,7 @@ public partial class GameBoxReaderWriter
     }
 
     /// <summary>
-    /// Reads or writes an <see cref="NET.Vec2"/> through reference.
+    /// Reads or writes a <see cref="NET.Vec2"/> through reference.
     /// </summary>
     /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1210,7 +1210,7 @@ public partial class GameBoxReaderWriter
     }
 
     /// <summary>
-    /// Reads or writes an <see cref="NET.Vec3"/> through reference.
+    /// Reads or writes a <see cref="NET.Vec3"/> through reference.
     /// </summary>
     /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1260,7 +1260,7 @@ public partial class GameBoxReaderWriter
     }
 
     /// <summary>
-    /// Reads or writes an <see cref="NET.Vec4"/> through reference.
+    /// Reads or writes a <see cref="NET.Vec4"/> through reference.
     /// </summary>
     /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1310,7 +1310,7 @@ public partial class GameBoxReaderWriter
     }
 
     /// <summary>
-    /// Reads or writes an <see cref="NET.Rect"/> through reference.
+    /// Reads or writes a <see cref="NET.Rect"/> through reference.
     /// </summary>
     /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1360,7 +1360,7 @@ public partial class GameBoxReaderWriter
     }
 
     /// <summary>
-    /// Reads or writes an <see cref="NET.Box"/> through reference.
+    /// Reads or writes a <see cref="NET.Box"/> through reference.
     /// </summary>
     /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1410,7 +1410,7 @@ public partial class GameBoxReaderWriter
     }
 
     /// <summary>
-    /// Reads or writes an <see cref="NET.Quat"/> through reference.
+    /// Reads or writes a <see cref="NET.Quat"/> through reference.
     /// </summary>
     /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1427,6 +1427,35 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public void Quat(ref Quat? variable, Quat defaultValue = default) => variable = Quat(variable, defaultValue);
+
+    /// <summary>
+    /// Reads or writes a nullable time of day using <see cref="TimeSpan"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public TimeSpan? TimeOfDay(TimeSpan? variable = default, TimeSpan defaultValue = default)
+    {
+        if (Reader is not null) return Reader.ReadTimeOfDay();
+        if (Writer is not null) Writer.WriteTimeOfDay(variable.GetValueOrDefault(defaultValue));
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes a nullable time of day using <see cref="TimeSpan"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void TimeOfDay(ref TimeSpan? variable, TimeSpan defaultValue = default)
+    {
+        variable = TimeOfDay(variable, defaultValue);
+    }
 
     /// <summary>
     /// Reads or writes a <see cref="NET.FileRef"/>.
