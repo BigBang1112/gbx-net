@@ -194,7 +194,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     private IList<CGameCtnAnchoredObject>? anchoredObjects;
     private CScriptTraitsMetadata? scriptMetadata;
     private List<List<byte[]>>? lightmapFrames;
-    private Task<CHmsLightMapCache?>? lightmapCache;
+    private CHmsLightMapCache? lightmapCache;
     private CGameCtnZoneGenealogy[]? genealogies;
     private string? objectiveTextAuthor;
     private string? objectiveTextGold;
@@ -1008,7 +1008,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Lightmap cache information.
     /// </summary>
     [NodeMember]
-    public Task<CHmsLightMapCache?>? LightmapCache
+    public CHmsLightMapCache? LightmapCache
     {
         get
         {
@@ -3166,10 +3166,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CGameCtnChallenge 0x03D skippable chunk (lightmaps)
     /// </summary>
     [Chunk(0x0304303D, "lightmaps")]
-    public class Chunk0304303D : SkippableChunk<CGameCtnChallenge>, IVersionable
+    public class Chunk0304303D : SkippableChunk<CGameCtnChallenge>
     {
         private int version = 4;
-        private byte[]? cacheData;
 
         public bool U01;
 
@@ -3182,15 +3181,33 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             set => version = value;
         }
 
-        public byte[]? CacheData
+        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger)
         {
-            get => cacheData;
-            set => cacheData = value;
+            rw.Boolean(ref U01);
+
+            if (U01 == false)
+            {
+                return;
+            }
+
+            ReadWriteSHmsLightMapCacheSmall(n, rw, logger);
         }
 
-        public override void Read(CGameCtnChallenge n, GameBoxReader r, ILogger? logger)
+        public void ReadWriteSHmsLightMapCacheSmall(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger)
         {
-            U01 = r.ReadBoolean();
+            switch (rw.Mode)
+            {
+                case GameBoxReaderWriterMode.Read:
+                    ReadSHmsLightMapCacheSmall(n, rw.Reader!, logger);
+                    break;
+                case GameBoxReaderWriterMode.Write:
+                    WriteSHmsLightMapCacheSmall(n, rw.Writer!, logger);
+                    break;
+            }
+        }
+
+        public void ReadSHmsLightMapCacheSmall(CGameCtnChallenge n, GameBoxReader r, ILogger? logger)
+        {
             version = r.ReadInt32();
 
             if (version >= 5)
@@ -3209,51 +3226,42 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 };
             }
 
-            if (version >= 2)
+            if (version < 2)
             {
-                foreach (var frame in n.lightmapFrames)
+                return;
+            }
+
+            foreach (var frame in n.lightmapFrames)
+            {
+                frame.Add(r.ReadBytes());
+
+                if (version >= 3)
                 {
                     frame.Add(r.ReadBytes());
-
-                    if (version >= 3)
-                    {
-                        frame.Add(r.ReadBytes());
-                    }
-
-                    if (version >= 6)
-                    {
-                        frame.Add(r.ReadBytes());
-                    }
                 }
 
-                if (n.lightmapFrames.Any(x => x.Any(y => y.Length > 0)))
+                if (version >= 6)
                 {
-                    var uncompressedSize = r.ReadInt32();
-                    var compressedSize = r.ReadInt32();
-                    var data = r.ReadBytes(compressedSize);
-
-                    n.lightmapCache = Task.Run(() =>
-                    {
-                        using var ms = new MemoryStream(data);
-                        using var deflate = new CompressedStream(ms, CompressionMode.Decompress);
-                        using var gbxr = new GameBoxReader(deflate, r.Settings, logger);
-
-                        var cacheNode = Parse<CHmsLightMapCache>(gbxr, 0x06022000, progress: null, logger);
-
-                        using var msOut = new MemoryStream();
-
-                        deflate.CopyTo(msOut);
-                        cacheData = msOut.ToArray();
-
-                        return cacheNode;
-                    });
+                    frame.Add(r.ReadBytes());
                 }
+            }
+
+            if (n.lightmapFrames.Any(x => x.Any(y => y.Length > 0)))
+            {
+                var uncompressedSize = r.ReadInt32();
+                var compressedSize = r.ReadInt32();
+                var data = r.ReadBytes(compressedSize);
+
+                using var ms = new MemoryStream(data);
+                using var deflate = new CompressedStream(ms, CompressionMode.Decompress);
+                using var gbxr = new GameBoxReader(deflate, r.Settings, logger);
+
+                n.lightmapCache = Parse<CHmsLightMapCache>(gbxr, 0x06022000, progress: null, logger);
             }
         }
 
-        public override void Write(CGameCtnChallenge n, GameBoxWriter w, ILogger? logger)
+        public void WriteSHmsLightMapCacheSmall(CGameCtnChallenge n, GameBoxWriter w, ILogger? logger)
         {
-            w.Write(U01);
             w.Write(version);
 
             if (version >= 5)
@@ -3261,46 +3269,48 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 w.Write(n.lightmapFrames?.Count ?? 0);
             }
 
-            if (version >= 2 && n.lightmapFrames is not null)
+            if (version < 2 || n.lightmapFrames is null)
             {
-                foreach (var frame in n.lightmapFrames)
+                return;
+            }
+
+            foreach (var frame in n.lightmapFrames)
+            {
+                w.Write(frame[0].Length);
+                w.WriteBytes(frame[0]);
+
+                if (version >= 3)
                 {
-                    w.Write(frame[0].Length);
-                    w.WriteBytes(frame[0]);
-
-                    if (version >= 3)
-                    {
-                        w.Write(frame[1].Length);
-                        w.WriteBytes(frame[1]);
-                    }
-
-                    if (version >= 6)
-                    {
-                        w.Write(frame[2].Length);
-                        w.WriteBytes(frame[2]);
-                    }
+                    w.Write(frame[1].Length);
+                    w.WriteBytes(frame[1]);
                 }
 
-                if (n.lightmapFrames.Any(x => x.Any(y => y.Length > 0)))
+                if (version >= 6)
                 {
-                    using var ms = new MemoryStream();
-                    using var gbxw = new GameBoxWriter(ms);
-
-                    n.lightmapCache?.Result?.Write(gbxw, logger);
-                    gbxw.WriteBytes(CacheData ?? Array.Empty<byte>());
-
-                    w.Write((int)ms.Length);
-
-                    ms.Seek(0, SeekOrigin.Begin);
-
-                    using var msCompressed = new MemoryStream();
-                    using var deflate = new CompressedStream(msCompressed, CompressionMode.Compress);
-
-                    ms.CopyTo(deflate);
-
-                    w.Write((int)msCompressed.Length);
-                    w.WriteBytes(msCompressed.ToArray());
+                    w.Write(frame[2].Length);
+                    w.WriteBytes(frame[2]);
                 }
+            }
+
+            if (n.lightmapFrames.Any(x => x.Any(y => y.Length > 0)))
+            {
+                using var ms = new MemoryStream();
+                using var gbxw = new GameBoxWriter(ms);
+
+                n.lightmapCache?.Write(gbxw, logger);
+                //gbxw.WriteBytes(CacheData ?? Array.Empty<byte>());
+
+                w.Write((int)ms.Length);
+
+                ms.Seek(0, SeekOrigin.Begin);
+
+                using var msCompressed = new MemoryStream();
+                using var deflate = new CompressedStream(msCompressed, CompressionMode.Compress);
+
+                ms.CopyTo(deflate);
+
+                w.Write((int)msCompressed.Length);
+                w.WriteBytes(msCompressed.ToArray());
             }
         }
     }
@@ -4035,15 +4045,46 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x05B skippable chunk
+    #region 0x05B skippable chunk (lightmaps TM2020)
 
     /// <summary>
-    /// CGameCtnChallenge 0x05B skippable chunk
+    /// CGameCtnChallenge 0x05B skippable chunk (lightmaps TM2020)
     /// </summary>
-    [Chunk(0x0304305B), IgnoreChunk]
-    public class Chunk0304305B : SkippableChunk<CGameCtnChallenge>
+    [Chunk(0x0304305B, "lightmaps TM2020")]
+    public class Chunk0304305B : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
+        private readonly Chunk0304303D chunk0304303D = new();
 
+        private int version;
+
+        /// <summary>
+        /// Version of the chunk.
+        /// </summary>
+        public int Version
+        {
+            get => version;
+            set => version = value;
+        }
+
+        public bool U01;
+        public bool U02;
+        public bool U03;
+
+        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger)
+        {
+            rw.Int32(ref version);
+
+            rw.Boolean(ref U01);
+            rw.Boolean(ref U02);
+            rw.Boolean(ref U03);
+
+            if (U01 == false)
+            {
+                return;
+            }
+
+            chunk0304303D.ReadWriteSHmsLightMapCacheSmall(n, rw, logger);
+        }
     }
 
     #endregion
