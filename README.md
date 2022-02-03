@@ -250,6 +250,7 @@ Your work doesn't have to fall under the GNU GPL license if you're interested in
 Without these people, this project wouldn't be what it is today:
 
 - Stefan Baumann (Solux)
+- Melissa (Miss)
 - florenzius
 - Kim
 - James Romeril
