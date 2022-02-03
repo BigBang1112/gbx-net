@@ -3,7 +3,7 @@
 /// <summary>
 /// A struct that handles Id (lookback string) by either a string or an index.
 /// </summary>
-public readonly struct Id
+public readonly record struct Id
 {
     /// <summary>
     /// Represents an ID of the collection. Null if the <see cref="Id"/> is string-defined.
