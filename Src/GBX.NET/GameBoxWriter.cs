@@ -321,13 +321,13 @@ public partial class GameBoxWriter : BinaryWriter
 
         if (StateManager.Shared.ContainsNode(stateGuid, node))
         {
-            Write(StateManager.Shared.GetNodeIndexByNode(stateGuid, node));
+            Write(StateManager.Shared.GetNodeIndexByNode(stateGuid, node) + 1);
             return;
         }
 
-        StateManager.Shared.AddNode(stateGuid, node);
+        var index = StateManager.Shared.AddNode(stateGuid, node);
 
-        Write(StateManager.Shared.GetNodeCount(stateGuid));
+        Write(index + 1);
         Write(Chunk.Remap(node.Id, Settings.Remap));
 
         node.Write(this, logger);

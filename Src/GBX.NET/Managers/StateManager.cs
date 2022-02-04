@@ -110,13 +110,15 @@ public partial class StateManager
 
     public int GetNodeIndexByNode(Guid stateGuid, Node node)
     {
-        return AuxilaryNodeStates[stateGuid].FirstOrDefault(x => x.Equals(node)).Key;
+        return AuxilaryNodeStates[stateGuid].FirstOrDefault(x => x.Value.Equals(node)).Key;
     }
 
-    public void AddNode(Guid stateGuid, Node node)
+    public int AddNode(Guid stateGuid, Node node)
     {
         var dictionary = AuxilaryNodeStates[stateGuid];
-        dictionary[dictionary.Count] = node;
+        var index = dictionary.Count;
+        dictionary[index] = node;
+        return index;
     }
 
     public int GetNodeCount(Guid stateGuid)
