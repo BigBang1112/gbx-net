@@ -231,12 +231,16 @@ public partial class GameBoxReader : BinaryReader
         string locatorUrl = "";
 
         if (version >= 3)
+        {
             checksum = ReadBytes(32);
+        }
 
         var filePath = ReadString();
 
         if ((filePath.Length > 0 && version >= 1) || version >= 3)
+        {
             locatorUrl = ReadString();
+        }
 
         return new FileRef(version, checksum, filePath, locatorUrl);
     }

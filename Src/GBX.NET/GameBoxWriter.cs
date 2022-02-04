@@ -191,17 +191,25 @@ public partial class GameBoxWriter : BinaryWriter
     public void Write(FileRef fileRef)
     {
         if (fileRef is null)
+        {
             throw new ArgumentNullException(nameof(fileRef));
+        }
 
         Write(fileRef.Version);
 
         if (fileRef.Version >= 3)
+        {
             WriteBytes(fileRef.Checksum ?? FileRef.DefaultChecksum);
+        }
 
         Write(fileRef.FilePath);
 
-        if (fileRef.FilePath is not null && ((fileRef.FilePath.Length > 0 && fileRef.Version >= 1) || fileRef.Version >= 3))
-            Write(fileRef.LocatorUrl?.ToString());
+        if (fileRef.FilePath is not null
+            && ((fileRef.FilePath.Length > 0 && fileRef.Version >= 1)
+                || fileRef.Version >= 3))
+        {
+            Write(fileRef.LocatorUrl);
+        }
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
