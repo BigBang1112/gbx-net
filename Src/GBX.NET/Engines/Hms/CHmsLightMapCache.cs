@@ -616,7 +616,7 @@ public partial class CHmsLightMapCache : CMwNod
             ReadWriteCompressedSpan<uint>(ref U10, rw, Count);
         }
 
-        public static void ReadWriteCompressedSpan<T>(ref T[] array, GameBoxReaderWriter rw, int readCount) where T : struct
+        public static void ReadWriteCompressedSpan<T>(ref T[]? array, GameBoxReaderWriter rw, int readCount) where T : struct
         {
             if (rw.Reader is not null)
             {

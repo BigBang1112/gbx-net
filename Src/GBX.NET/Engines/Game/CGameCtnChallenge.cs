@@ -2788,7 +2788,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 string? author = null;
                 CGameCtnBlockSkin? skin = null;
 
-                if ((flags & (1 << 15)) != 0) // custom block
+                if (CGameCtnBlock.IsSkinnableBlock_WhenDefined(flags)) // custom block
                 {
                     author = r.ReadId();
                     skin = r.ReadNodeRef<CGameCtnBlockSkin>();
@@ -2796,22 +2796,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
                 CGameWaypointSpecialProperty? parameters = null;
 
-                if (CGameCtnBlock.IsWaypointBlock(flags))
+                if (CGameCtnBlock.IsWaypointBlock_WhenDefined(flags))
                 {
                     parameters = r.ReadNodeRef<CGameWaypointSpecialProperty>();
                 }
 
-                if ((flags & (1 << 18)) != 0)
-                {
-                    // TODO
-                }
-
-                if ((flags & (1 << 17)) != 0)
-                {
-                    // TODO
-                }
-
-                if (CGameCtnBlock.IsFreeBlock(flags))
+                if (CGameCtnBlock.IsFreeBlock_WhenDefined(flags))
                 {
                     coord -= (0, 1, 0);
                 }
@@ -2836,12 +2826,16 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             w.Write(NeedUnlock);
 
             if (!is013)
+            {
                 w.Write(version);
+            }
 
             w.Write(n.NbBlocks.GetValueOrDefault());
 
             if (n.blocks is null)
+            {
                 return;
+            }
 
             foreach (var x in n.blocks)
             {
@@ -2849,10 +2843,16 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 w.Write((byte)x.Direction);
 
                 var coord = x.Coord;
+
                 if (version >= 6 && x.Flags != -1)
+                {
                     coord += (1, 0, 1);
+                }
+
                 if (CGameCtnBlock.IsFreeBlock(x.Flags))
+                {
                     coord += (0, 1, 0);
+                }
 
                 w.Write((Byte3)coord);
 
@@ -2863,16 +2863,20 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     default: throw new ChunkVersionNotSupportedException(version);
                 }
 
-                if (x.Flags != -1)
+                if (x.Flags == -1)
                 {
-                    if ((x.Flags & 0x8000) != 0) // custom block
-                    {
-                        w.WriteId(x.Author);
-                        w.Write(x.Skin);
-                    }
+                    continue;
+                }
 
-                    if ((x.Flags & 0x100000) != 0)
-                        w.Write(x.WaypointSpecialProperty);
+                if (CGameCtnBlock.IsSkinnableBlock_WhenDefined(x.Flags)) // custom block
+                {
+                    w.WriteId(x.Author);
+                    w.Write(x.Skin);
+                }
+
+                if (CGameCtnBlock.IsWaypointBlock_WhenDefined(x.Flags))
+                {
+                    w.Write(x.WaypointSpecialProperty);
                 }
             }
         }
