@@ -381,6 +381,7 @@ public partial class CHmsLightMapCache : CMwNod
 
             if (version >= 2)
             {
+                rw.Int32(0);
                 rw.TimeOfDay(ref U04);
 
                 if (version >= 3)
@@ -655,8 +656,11 @@ public partial class CHmsLightMapCache : CMwNod
             uncompressedStream.Position = 0;
 
             using var output = new MemoryStream();
-            using var deflate = new CompressedStream(output, CompressionMode.Compress);
-            uncompressedStream.CopyTo(deflate);
+
+            using (var deflate = new CompressedStream(output, CompressionMode.Compress))
+            {
+                uncompressedStream.CopyTo(deflate);
+            }
 
             w.Write((int)output.Length);
             w.WriteBytes(output.ToArray());

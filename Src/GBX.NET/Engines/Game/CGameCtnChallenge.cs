@@ -193,7 +193,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     private float? thumbnailFOV;
     private IList<CGameCtnAnchoredObject>? anchoredObjects;
     private CScriptTraitsMetadata? scriptMetadata;
-    private List<List<byte[]>>? lightmapFrames;
+    private List<List<EmbeddedFile>>? lightmapFrames;
     private CHmsLightMapCache? lightmapCache;
     private CGameCtnZoneGenealogy[]? genealogies;
     private string? objectiveTextAuthor;
@@ -990,16 +990,16 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// List of all the available lightmap frames. Each frame can contain up to 3 different variants in either JPEG or WEBP format.
     /// </summary>
-    public List<List<byte[]>>? LightmapFrames
+    public List<List<EmbeddedFile>>? LightmapFrames
     {
         get
         {
-            DiscoverChunk<Chunk0304303D>();
+            DiscoverChunks<Chunk0304303D, Chunk0304305B>();
             return lightmapFrames;
         }
         set
         {
-            DiscoverChunk<Chunk0304303D>();
+            DiscoverChunks<Chunk0304303D, Chunk0304305B>();
             lightmapFrames = value;
         }
     }
@@ -1012,12 +1012,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     {
         get
         {
-            DiscoverChunk<Chunk0304303D>();
+            DiscoverChunks<Chunk0304303D, Chunk0304305B>();
             return lightmapCache;
         }
         set
         {
-            DiscoverChunk<Chunk0304303D>();
+            DiscoverChunks<Chunk0304303D, Chunk0304305B>();
             lightmapCache = value;
         }
     }
@@ -3176,6 +3176,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         private int version = 4;
 
         public bool U01;
+        
+        public byte[]? DataAfterLightmapCache { get; set; }
 
         /// <summary>
         /// Version of the chunk.
@@ -3185,6 +3187,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             get => version;
             set => version = value;
         }
+
+        public int? LightmapCacheDataUncompressedSize { get; set; }
+        public byte[]? LightmapCacheData { get; set; }
+        public bool EnableWriteOfCompressedData { get; set; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger)
         {
@@ -3218,16 +3224,16 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             if (version >= 5)
             {
                 var frameCount = r.ReadInt32();
-                n.lightmapFrames = new List<List<byte[]>>(frameCount);
+                n.lightmapFrames = new List<List<EmbeddedFile>>(frameCount);
 
                 for (var i = 0; i < frameCount; i++)
-                    n.lightmapFrames.Add(new List<byte[]>());
+                    n.lightmapFrames.Add(new List<EmbeddedFile>());
             }
             else
             {
-                n.lightmapFrames = new List<List<byte[]>>
+                n.lightmapFrames = new List<List<EmbeddedFile>>
                 {
-                    new List<byte[]>()
+                    new List<EmbeddedFile>()
                 };
             }
 
@@ -3238,30 +3244,34 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             foreach (var frame in n.lightmapFrames)
             {
-                frame.Add(r.ReadBytes());
+                frame.Add(EmbeddedFile.Parse(r.ReadBytes()));
 
                 if (version >= 3)
                 {
-                    frame.Add(r.ReadBytes());
+                    frame.Add(EmbeddedFile.Parse(r.ReadBytes()));
                 }
 
                 if (version >= 6)
                 {
-                    frame.Add(r.ReadBytes());
+                    frame.Add(EmbeddedFile.Parse(r.ReadBytes()));
                 }
             }
 
-            if (n.lightmapFrames.Any(x => x.Any(y => y.Length > 0)))
+            if (n.lightmapFrames.Any(x => x.Any(y => y.Data.Length > 0)))
             {
-                var uncompressedSize = r.ReadInt32();
+                LightmapCacheDataUncompressedSize = r.ReadInt32();
                 var compressedSize = r.ReadInt32();
-                var data = r.ReadBytes(compressedSize);
+                LightmapCacheData = r.ReadBytes(compressedSize);
 
-                using var ms = new MemoryStream(data);
+                using var ms = new MemoryStream(LightmapCacheData);
                 using var deflate = new CompressedStream(ms, CompressionMode.Decompress);
                 using var gbxr = new GameBoxReader(deflate, r.Settings, logger);
 
                 n.lightmapCache = Parse<CHmsLightMapCache>(gbxr, 0x06022000, progress: null, logger);
+
+                using var restMs = new MemoryStream();
+                deflate.CopyTo(restMs);
+                DataAfterLightmapCache = restMs.ToArray();
             }
         }
 
@@ -3281,38 +3291,49 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             foreach (var frame in n.lightmapFrames)
             {
-                w.Write(frame[0].Length);
-                w.WriteBytes(frame[0]);
+                w.Write(frame[0].Data.Length);
+                w.WriteBytes(frame[0].Data);
 
                 if (version >= 3)
                 {
-                    w.Write(frame[1].Length);
-                    w.WriteBytes(frame[1]);
+                    w.Write(frame[1].Data.Length);
+                    w.WriteBytes(frame[1].Data);
                 }
 
                 if (version >= 6)
                 {
-                    w.Write(frame[2].Length);
-                    w.WriteBytes(frame[2]);
+                    w.Write(frame[2].Data.Length);
+                    w.WriteBytes(frame[2].Data);
                 }
             }
 
-            if (n.lightmapFrames.Any(x => x.Any(y => y.Length > 0)))
+            if (n.lightmapFrames.Any(x => x.Any(y => y.Data.Length > 0)))
             {
+                if (!EnableWriteOfCompressedData)
+                {
+                    // Temporary solution due to problems with compression
+                    w.Write(LightmapCacheDataUncompressedSize.GetValueOrDefault());
+                    w.Write(LightmapCacheData!.Length);
+                    w.WriteBytes(LightmapCacheData);
+                    return;
+                }
+
                 using var ms = new MemoryStream();
-                using var gbxw = new GameBoxWriter(ms);
+                using var gbxw = new GameBoxWriter(ms, w.Settings, logger);
 
                 n.lightmapCache?.Write(gbxw, logger);
-                //gbxw.WriteBytes(CacheData ?? Array.Empty<byte>());
+                gbxw.WriteBytes(DataAfterLightmapCache ?? Array.Empty<byte>());
 
                 w.Write((int)ms.Length);
 
                 ms.Seek(0, SeekOrigin.Begin);
 
                 using var msCompressed = new MemoryStream();
-                using var deflate = new CompressedStream(msCompressed, CompressionMode.Compress);
 
-                ms.CopyTo(deflate);
+                using (var deflate = new CompressedStream(msCompressed, CompressionMode.Compress))
+                {
+                    ms.CopyTo(deflate);
+                }
 
                 w.Write((int)msCompressed.Length);
                 w.WriteBytes(msCompressed.ToArray());

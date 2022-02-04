@@ -11,7 +11,10 @@ public class CompressedStream : DeflateStream
 
     public CompressedStream(Stream stream, CompressionMode mode) : base(stream, mode, true)
     {
-        
+        if (mode == CompressionMode.Compress)
+        {
+            Compression = CompressionLevel.BestCompression;
+        }
     }
 
     public override int Read(byte[] buffer, int offset, int count)

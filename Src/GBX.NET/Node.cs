@@ -731,7 +731,9 @@ public abstract class Node : IStateRefTable, IDisposable
     private void WriteChunk(IReadableWritableChunk chunk, GameBoxWriter w, ILogger? logger)
     {
         using var ms = new MemoryStream();
-        using var msW = new GameBoxWriter(ms, w.Settings, logger);
+
+        // Writer doesn't have using to not dispose nested IdSubStates. Hopefully this will be fine
+        var msW = new GameBoxWriter(ms, w.Settings, logger);
         var rw = new GameBoxReaderWriter(msW);
 
         w.Write(Chunk.Remap(chunk.Id, w.Settings.Remap));
@@ -752,7 +754,7 @@ public abstract class Node : IStateRefTable, IDisposable
     private async Task WriteChunkAsync(IReadableWritableChunk chunk, GameBoxWriter w, ILogger? logger, CancellationToken cancellationToken)
     {
         using var ms = new MemoryStream();
-        using var msW = new GameBoxWriter(ms, w.Settings, logger);
+        var msW = new GameBoxWriter(ms, w.Settings, logger);
         var rw = new GameBoxReaderWriter(msW);
 
         w.Write(Chunk.Remap(chunk.Id, w.Settings.Remap));
