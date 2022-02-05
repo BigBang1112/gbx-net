@@ -37,8 +37,16 @@ public class CGameCtnChallengeParameters : CMwNod
     [NodeMember]
     public TimeSpan? BronzeTime
     {
-        get => bronzeTime;
-        set => bronzeTime = value;
+        get
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            return bronzeTime;
+        }
+        set
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            bronzeTime = value;
+        }
     }
 
     /// <summary>
@@ -47,8 +55,16 @@ public class CGameCtnChallengeParameters : CMwNod
     [NodeMember]
     public TimeSpan? SilverTime
     {
-        get => silverTime;
-        set => silverTime = value;
+        get
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            return silverTime;
+        }
+        set
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            silverTime = value;
+        }
     }
 
     /// <summary>
@@ -57,8 +73,16 @@ public class CGameCtnChallengeParameters : CMwNod
     [NodeMember]
     public TimeSpan? GoldTime
     {
-        get => goldTime;
-        set => goldTime = value;
+        get
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            return goldTime;
+        }
+        set
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            goldTime = value;
+        }
     }
 
     /// <summary>
@@ -67,12 +91,20 @@ public class CGameCtnChallengeParameters : CMwNod
     [NodeMember]
     public TimeSpan? AuthorTime
     {
-        get => authorTime;
-        set => authorTime = value;
+        get
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            return authorTime;
+        }
+        set
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            authorTime = value;
+        }
     }
 
     /// <summary>
-    /// Usually author time or stunt score.
+    /// Usually author time or stunts score.
     /// </summary>
     [NodeMember]
     public int? AuthorScore
@@ -82,13 +114,21 @@ public class CGameCtnChallengeParameters : CMwNod
     }
 
     /// <summary>
-    /// Stunt time limit.
+    /// Stunts time limit.
     /// </summary>
     [NodeMember]
     public TimeSpan TimeLimit
     {
-        get => timeLimit;
-        set => timeLimit = value;
+        get
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            return timeLimit;
+        }
+        set
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            timeLimit = value;
+        }
     }
 
     [NodeMember]
