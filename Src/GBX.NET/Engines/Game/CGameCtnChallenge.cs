@@ -3264,13 +3264,17 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 LightmapCacheData = r.ReadBytes(compressedSize);
 
                 using var ms = new MemoryStream(LightmapCacheData);
-                using var deflate = new CompressedStream(ms, CompressionMode.Decompress);
-                using var gbxr = new GameBoxReader(deflate, r.Settings, logger);
+#if NET6_0_OR_GREATER
+                using var zlib = new ZLibStream(ms, CompressionMode.Decompress);
+#else
+                using var zlib = new CompressedStream(ms, CompressionMode.Decompress);
+#endif
+                using var gbxr = new GameBoxReader(zlib, r.Settings, logger);
 
                 n.lightmapCache = Parse<CHmsLightMapCache>(gbxr, 0x06022000, progress: null, logger);
 
                 using var restMs = new MemoryStream();
-                deflate.CopyTo(restMs);
+                zlib.CopyTo(restMs);
                 DataAfterLightmapCache = restMs.ToArray();
             }
         }
@@ -3309,15 +3313,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             if (n.lightmapFrames.Any(x => x.Any(y => y.Data.Length > 0)))
             {
-                if (!EnableWriteOfCompressedData)
-                {
-                    // Temporary solution due to problems with compression
-                    w.Write(LightmapCacheDataUncompressedSize.GetValueOrDefault());
-                    w.Write(LightmapCacheData!.Length);
-                    w.WriteBytes(LightmapCacheData);
-                    return;
-                }
-
+#if NET6_0_OR_GREATER
                 using var ms = new MemoryStream();
                 using var gbxw = new GameBoxWriter(ms, w.Settings, logger);
 
@@ -3330,20 +3326,32 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
                 using var msCompressed = new MemoryStream();
 
-                using (var deflate = new CompressedStream(msCompressed, CompressionMode.Compress))
+                using (var zlib = new ZLibStream(msCompressed, global::System.IO.Compression.CompressionLevel.SmallestSize, true))
                 {
-                    ms.CopyTo(deflate);
+                    ms.CopyTo(zlib);
                 }
 
                 w.Write((int)msCompressed.Length);
                 w.WriteBytes(msCompressed.ToArray());
+#else
+                EnableWriteOfCompressedData = true;
+
+                if (!EnableWriteOfCompressedData)
+                {
+                    // Temporary solution due to problems with compression
+                    w.Write(LightmapCacheDataUncompressedSize.GetValueOrDefault());
+                    w.Write(LightmapCacheData!.Length);
+                    w.WriteBytes(LightmapCacheData);
+                    return;
+                }
+#endif
             }
         }
     }
 
-    #endregion
+#endregion
 
-    #region 0x03E skippable chunk
+#region 0x03E skippable chunk
 
     /// <summary>
     /// CGameCtnChallenge 0x03E skippable chunk
@@ -3354,9 +3362,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     }
 
-    #endregion
+#endregion
 
-    #region 0x040 skippable chunk (items)
+#region 0x040 skippable chunk (items)
 
     /// <summary>
     /// CGameCtnChallenge 0x040 skippable chunk (items)
@@ -3428,9 +3436,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-    #endregion
+#endregion
 
-    #region 0x042 skippable chunk (author)
+#region 0x042 skippable chunk (author)
 
     /// <summary>
     /// CGameCtnChallenge 0x042 skippable chunk (author)
@@ -3460,9 +3468,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-    #endregion
+#endregion
 
-    #region 0x043 skippable chunk (genealogies)
+#region 0x043 skippable chunk (genealogies)
 
     /// <summary>
     /// CGameCtnChallenge 0x043 skippable chunk (generalogies)
@@ -3513,9 +3521,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-    #endregion
+#endregion
 
-    #region 0x044 skippable chunk (metadata)
+#region 0x044 skippable chunk (metadata)
 
     /// <summary>
     /// CGameCtnChallenge 0x044 skippable chunk (metadata)
@@ -3551,9 +3559,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-    #endregion
+#endregion
 
-    #region 0x048 skippable chunk (baked blocks)
+#region 0x048 skippable chunk (baked blocks)
 
     /// <summary>
     /// CGameCtnChallenge 0x048 skippable chunk (baked blocks)
@@ -3598,9 +3606,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-    #endregion
+#endregion
 
-    #region 0x049 chunk (mediatracker)
+#region 0x049 chunk (mediatracker)
 
     /// <summary>
     /// CGameCtnChallenge 0x049 chunk (mediatracker)
@@ -3662,9 +3670,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-    #endregion
+#endregion
 
-    #region 0x04B skippable chunk (objectives)
+#region 0x04B skippable chunk (objectives)
 
     /// <summary>
     /// CGameCtnChallenge 0x04B skippable chunk (objectives)
@@ -3681,9 +3689,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-    #endregion
+#endregion
 
-    #region 0x04F skippable chunk
+#region 0x04F skippable chunk
 
     /// <summary>
     /// CGameCtnChallenge 0x04F skippable chunk
@@ -3694,9 +3702,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     }
 
-    #endregion
+#endregion
 
-    #region 0x050 skippable chunk (offzones)
+#region 0x050 skippable chunk (offzones)
 
     /// <summary>
     /// CGameCtnChallenge 0x050 skippable chunk (offzones)
@@ -3737,9 +3745,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-    #endregion
+#endregion
 
-    #region 0x051 skippable chunk (title info)
+#region 0x051 skippable chunk (title info)
 
     /// <summary>
     /// CGameCtnChallenge 0x051 skippable chunk (title info)
@@ -3767,9 +3775,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-    #endregion
+#endregion
 
-    #region 0x052 skippable chunk (deco height)
+#region 0x052 skippable chunk (deco height)
 
     /// <summary>
     /// CGameCtnChallenge 0x052 skippable chunk (deco height)
@@ -3795,9 +3803,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-    #endregion
+#endregion
 
-    #region 0x053 skippable chunk (bot paths)
+#region 0x053 skippable chunk (bot paths)
 
     /// <summary>
     /// CGameCtnChallenge 0x053 skippable chunk (bot paths)
@@ -3823,9 +3831,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-    #endregion
+#endregion
 
-    #region 0x054 skippable chunk (embedded objects)
+#region 0x054 skippable chunk (embedded objects)
 
     /// <summary>
     /// CGameCtnChallenge 0x054 skippable chunk (embedded objects)
@@ -3930,9 +3938,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-    #endregion
+#endregion
 
-    #region 0x055 skippable chunk
+#region 0x055 skippable chunk
 
     /// <summary>
     /// CGameCtnChallenge 0x055 skippable chunk
@@ -3943,9 +3951,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     }
 
-    #endregion
+#endregion
 
-    #region 0x056 skippable chunk (light settings)
+#region 0x056 skippable chunk (light settings)
 
     /// <summary>
     /// CGameCtnChallenge 0x056 skippable chunk (light settings)
@@ -3971,9 +3979,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-    #endregion
+#endregion
 
-    #region 0x057 skippable chunk
+#region 0x057 skippable chunk
 
     /// <summary>
     /// CGameCtnChallenge 0x057 skippable chunk
@@ -3984,9 +3992,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     }
 
-    #endregion
+#endregion
 
-    #region 0x059 skippable chunk
+#region 0x059 skippable chunk
 
     /// <summary>
     /// CGameCtnChallenge 0x059 skippable chunk
@@ -4029,9 +4037,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-    #endregion
+#endregion
 
-    #region 0x05A skippable chunk
+#region 0x05A skippable chunk
 
     /// <summary>
     /// CGameCtnChallenge 0x05A skippable chunk [TM®️]
@@ -4049,9 +4057,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-    #endregion
+#endregion
 
-    #region 0x05B skippable chunk (lightmaps TM2020)
+#region 0x05B skippable chunk (lightmaps TM2020)
 
     /// <summary>
     /// CGameCtnChallenge 0x05B skippable chunk (lightmaps TM2020)
@@ -4094,9 +4102,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-    #endregion
+#endregion
 
-    #region 0x05C skippable chunk
+#region 0x05C skippable chunk
 
     /// <summary>
     /// CGameCtnChallenge 0x05C skippable chunk
@@ -4107,9 +4115,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     }
 
-    #endregion
+#endregion
 
-    #region 0x05D skippable chunk
+#region 0x05D skippable chunk
 
     /// <summary>
     /// CGameCtnChallenge 0x05D skippable chunk
@@ -4120,9 +4128,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     }
 
-    #endregion
+#endregion
 
-    #region 0x05E skippable chunk
+#region 0x05E skippable chunk
 
     /// <summary>
     /// CGameCtnChallenge 0x05E skippable chunk
@@ -4133,9 +4141,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     }
 
-    #endregion
+#endregion
 
-    #region 0x05F skippable chunk (free blocks) [TM®️]
+#region 0x05F skippable chunk (free blocks) [TM®️]
 
     /// <summary>
     /// CGameCtnChallenge 0x05F skippable chunk (free blocks) [TM®️]
@@ -4167,9 +4175,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-    #endregion
+#endregion
 
-    #region 0x060 skippable chunk [TM®️]
+#region 0x060 skippable chunk [TM®️]
 
     /// <summary>
     /// CGameCtnChallenge 0x060 skippable chunk [TM®️]
@@ -4180,9 +4188,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     }
 
-    #endregion
+#endregion
 
-    #region 0x061 skippable chunk [TM®️]
+#region 0x061 skippable chunk [TM®️]
 
     /// <summary>
     /// CGameCtnChallenge 0x061 skippable chunk [TM®️]
@@ -4193,9 +4201,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     }
 
-    #endregion
+#endregion
 
-    #region 0x062 skippable chunk (block color) [TM®️]
+#region 0x062 skippable chunk (block color) [TM®️]
 
     /// <summary>
     /// CGameCtnChallenge 0x062 skippable chunk (block color) [TM®️]
@@ -4264,9 +4272,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-    #endregion
+#endregion
 
-    #region 0x063 skippable chunk [TM®️]
+#region 0x063 skippable chunk [TM®️]
 
     /// <summary>
     /// CGameCtnChallenge 0x063 skippable chunk [TM®️]
@@ -4277,9 +4285,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     }
 
-    #endregion
+#endregion
 
-    #region 0x064 skippable chunk [TM®️]
+#region 0x064 skippable chunk [TM®️]
 
     /// <summary>
     /// CGameCtnChallenge 0x064 skippable chunk [TM®️]
@@ -4290,9 +4298,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     }
 
-    #endregion
+#endregion
 
-    #region 0x065 skippable chunk [TM®️]
+#region 0x065 skippable chunk [TM®️]
 
     /// <summary>
     /// CGameCtnChallenge 0x065 skippable chunk [TM®️]
@@ -4303,7 +4311,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     }
 
-    #endregion
+#endregion
 
-    #endregion
+#endregion
 }
