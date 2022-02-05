@@ -972,6 +972,18 @@ public abstract class Node : IStateRefTable, IDisposable
         return Chunks.Get<T>();
     }
 
+    public T? GetChunkAndDiscover<T>() where T : Chunk, ISkippableChunk
+    {
+        var chunk = Chunks.Get<T>();
+
+        if (chunk is not null)
+        {
+            chunk.Discover();
+        }
+
+        return chunk;
+    }
+
     public T CreateChunk<T>() where T : Chunk
     {
         return Chunks.Create<T>();
@@ -992,47 +1004,47 @@ public abstract class Node : IStateRefTable, IDisposable
         return Chunks.TryGet(out chunk);
     }
 
-    public void DiscoverChunk<T>() where T : ISkippableChunk
+    public void DiscoverChunk<T>() where T : Chunk, ISkippableChunk
     {
         Chunks.Discover<T>();
     }
 
-    public void DiscoverChunks<T1, T2>() where T1 : ISkippableChunk where T2 : ISkippableChunk
+    public void DiscoverChunks<T1, T2>() where T1 : Chunk, ISkippableChunk where T2 : Chunk, ISkippableChunk
     {
         Chunks.Discover<T1, T2>();
     }
 
-    public void DiscoverChunks<T1, T2, T3>() where T1 : ISkippableChunk where T2 : ISkippableChunk where T3 : ISkippableChunk
+    public void DiscoverChunks<T1, T2, T3>() where T1 : Chunk, ISkippableChunk where T2 : Chunk, ISkippableChunk where T3 : Chunk, ISkippableChunk
     {
         Chunks.Discover<T1, T2, T3>();
     }
 
     public void DiscoverChunks<T1, T2, T3, T4>()
-        where T1 : ISkippableChunk
-        where T2 : ISkippableChunk
-        where T3 : ISkippableChunk
-        where T4 : ISkippableChunk
+        where T1 : Chunk, ISkippableChunk
+        where T2 : Chunk, ISkippableChunk
+        where T3 : Chunk, ISkippableChunk
+        where T4 : Chunk, ISkippableChunk
     {
         Chunks.Discover<T1, T2, T3, T4>();
     }
 
     public void DiscoverChunks<T1, T2, T3, T4, T5>()
-        where T1 : ISkippableChunk
-        where T2 : ISkippableChunk
-        where T3 : ISkippableChunk
-        where T4 : ISkippableChunk
-        where T5 : ISkippableChunk
+        where T1 : Chunk, ISkippableChunk
+        where T2 : Chunk, ISkippableChunk
+        where T3 : Chunk, ISkippableChunk
+        where T4 : Chunk, ISkippableChunk
+        where T5 : Chunk, ISkippableChunk
     {
         Chunks.Discover<T1, T2, T3, T4, T5>();
     }
 
     public void DiscoverChunks<T1, T2, T3, T4, T5, T6>()
-        where T1 : ISkippableChunk
-        where T2 : ISkippableChunk
-        where T3 : ISkippableChunk
-        where T4 : ISkippableChunk
-        where T5 : ISkippableChunk
-        where T6 : ISkippableChunk
+        where T1 : Chunk, ISkippableChunk
+        where T2 : Chunk, ISkippableChunk
+        where T3 : Chunk, ISkippableChunk
+        where T4 : Chunk, ISkippableChunk
+        where T5 : Chunk, ISkippableChunk
+        where T6 : Chunk, ISkippableChunk
     {
         Chunks.Discover<T1, T2, T3, T4, T5, T6>();
     }
