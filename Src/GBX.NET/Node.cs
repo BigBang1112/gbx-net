@@ -117,7 +117,7 @@ public abstract class Node : IStateRefTable, IDisposable
         return node;
     }
 
-    private static void GetNodeInfoFromClassId(GameBoxReader r, uint? classId, out Node? node, out Type nodeType)
+    private static uint GetNodeInfoFromClassId(GameBoxReader r, uint? classId, out Node? node, out Type nodeType)
     {
         if (classId is null)
         {
@@ -128,7 +128,8 @@ public abstract class Node : IStateRefTable, IDisposable
         {
             node = null;
             nodeType = null!;
-            return;
+
+            return classId.Value;
         }
 
         classId = RemapToLatest(classId.Value);
@@ -145,6 +146,8 @@ public abstract class Node : IStateRefTable, IDisposable
         var constructor = NodeCacheManager.GetClassConstructor(id);
 
         node = constructor();
+
+        return classId.Value;
     }
 
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
@@ -175,12 +178,14 @@ public abstract class Node : IStateRefTable, IDisposable
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     internal static async Task<Node?> ParseAsync(GameBoxReader r, uint? classId, ILogger? logger, CancellationToken cancellationToken = default)
     {
-        GetNodeInfoFromClassId(r, classId, out Node? node, out Type nodeType);
+        var realClassId = GetNodeInfoFromClassId(r, classId, out Node? node, out Type nodeType);
 
         if (node is null)
         {
             return null;
         }
+
+        r.Settings.AsyncAction?.OnReadNode?.Invoke(r, realClassId);
 
         await ParseAsync(node, nodeType, r, logger, cancellationToken);
 
