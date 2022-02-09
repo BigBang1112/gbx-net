@@ -72,54 +72,62 @@ public class NadeoPakFile
         return Name;
     }
 
-    public byte[]? GetData()
+    public Stream Open()
     {
-        if (data is not null)
-            return data;
+        var mainStream = owner.Stream;
 
-        owner.Stream.Position = owner.DataStart + Offset;
+        mainStream.Position = owner.DataStart + Offset;
 
         var roundedDataSize = 8 + CompressedSize;
+
         if ((roundedDataSize & 7) != 0)
+        {
             roundedDataSize = (roundedDataSize & ~7) + 8;
+        }
 
         var buffer = new byte[roundedDataSize];
 
-        owner.Stream.Read(buffer, 0, buffer.Length);
+        mainStream.Read(buffer, 0, buffer.Length);
 
-        using var ms = new MemoryStream(buffer);
-        using var r = new GameBoxReader(ms);
+        var ms = new MemoryStream(buffer);
+        var r = new GameBoxReader(ms);
 
         var iv = r.ReadUInt64();
 
-        using var blowfish = new BlowfishCBCStream(ms, owner.Key, iv);
+        var blowfish = new BlowfishCBCStream(ms, owner.Key, iv, ignore256ivXorReset: false);
 
-        if (IsCompressed)
+        if (!IsCompressed)
         {
-            using var deflate = new CompressedStream(blowfish, CompressionMode.Decompress);
-            using var rr = new GameBoxReader(deflate);
-
-            try
-            {
-                data = rr.ReadBytes(UncompressedSize); // CopyTo nefunguje xd
-            }
-            catch (InvalidDataException)
-            {
-
-            }
+            return blowfish;
         }
-        else
+
+#if NET6_0_OR_GREATER
+        return new ZLibStream(blowfish, CompressionMode.Decompress);
+#else
+        return new CompressedStream(blowfish, CompressionMode.Decompress);
+#endif
+    }
+
+    public byte[]? GetData()
+    {
+        if (data is not null)
         {
-            using var rr = new GameBoxReader(blowfish);
-            data = rr.ReadBytes(UncompressedSize); // CopyTo nefunguje xd
+            return data;
+        }
+
+        using var stream = Open();
+        using var r = new BinaryReader(stream);
+
+        try
+        {
+            data = r.ReadBytes(UncompressedSize);
+        }
+        catch (InvalidDataException)
+        {
+
         }
 
         return data;
-    }
-
-    public MemoryStream Open()
-    {
-        return new MemoryStream(Data ?? Array.Empty<byte>());
     }
 
     public GameBox GetGBX()

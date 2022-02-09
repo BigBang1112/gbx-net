@@ -86,14 +86,17 @@ public class NadeoPak : IDisposable
         using (var deflate = new CompressedStream(blowfish, CompressionMode.Decompress))
         using (var r = new GameBoxReader(deflate))
         {
-            int fileIndex;
-
-            do
+            while (true)
             {
-                fileIndex = r.ReadInt32();
+                var fileIndex = r.ReadInt32();
+
+                if (fileIndex == -1)
+                {
+                    break;
+                }
+
                 var header = GameBox.Header.Parse(r, logger: null);
             }
-            while (fileIndex != -1);
         }
     }
 
