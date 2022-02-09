@@ -136,9 +136,9 @@ public partial class StateManager
         return ReferenceTableStates[stateGuid]!;
     }
 
-    public static T? GetNodeFromReferenceTable<T>(IStateRefTable state, T? referencingNode, int? nodeIndex) where T : Node
+    public T? GetNodeFromReferenceTable<T>(IStateRefTable state, T? referencingNode, int? nodeIndex) where T : Node
     {
-        return Shared.GetReferenceTable(state.StateGuid.GetValueOrDefault())?
+        return GetReferenceTable(state.StateGuid.GetValueOrDefault())?
             .GetNode(referencingNode, nodeIndex, state.FileName) as T;
     }
 

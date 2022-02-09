@@ -154,19 +154,19 @@ public class CPlugMaterial : CPlug
 
         public CPlugShader? Shader1
         {
-            get => shader1 = StateManager.GetNodeFromReferenceTable(state, shader1, shader1Index);
+            get => shader1 = StateManager.Shared.GetNodeFromReferenceTable(state, shader1, shader1Index);
             set => shader1 = value;
         }
 
         public CPlugShader? Shader2
         {
-            get => shader2 = StateManager.GetNodeFromReferenceTable(state, shader2, shader2Index);
+            get => shader2 = StateManager.Shared.GetNodeFromReferenceTable(state, shader2, shader2Index);
             set => shader2 = value;
         }
 
         public CPlugShader? Shader3
         {
-            get => shader3 = StateManager.GetNodeFromReferenceTable(state, shader3, shader3Index);
+            get => shader3 = StateManager.Shared.GetNodeFromReferenceTable(state, shader3, shader3Index);
             set => shader3 = value;
         }
         
