@@ -133,7 +133,7 @@ public partial class GameBox
             var version = r.ReadInt16();
             logger?.LogVersion(version);
 
-            if (version < 3)
+            if (version < 3 || version >= 7)
             {
                 throw new VersionNotSupportedException(version);
             }
