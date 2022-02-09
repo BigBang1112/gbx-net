@@ -72,7 +72,7 @@ void ProcessBlock(CGameCtnBlock? block, Dictionary<string, string?> dictionary)
     if (block?.Skin?.PackDesc?.LocatorUrl is null)
         return;
 
-    var oldLocatorUrl = block.Skin.PackDesc.LocatorUrl.ToString();
+    var oldLocatorUrl = block.Skin.PackDesc.LocatorUrl;
     if (string.IsNullOrEmpty(oldLocatorUrl))
         return;
 
@@ -80,5 +80,5 @@ void ProcessBlock(CGameCtnBlock? block, Dictionary<string, string?> dictionary)
     if (string.IsNullOrEmpty(newLocatorUrl))
         return;
 
-    block.Skin.PackDesc = block.Skin.PackDesc with { LocatorUrl = new Uri(newLocatorUrl) };
+    block.Skin.PackDesc = block.Skin.PackDesc with { LocatorUrl = newLocatorUrl };
 }
