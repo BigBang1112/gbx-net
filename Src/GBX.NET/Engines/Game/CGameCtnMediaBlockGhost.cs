@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.Game;
+﻿using GBX.NET.Builders.Engines.Game;
+
+namespace GBX.NET.Engines.Game;
 
 /// <summary>
 /// MediaTracker block - Ghost (0x030E5000)
@@ -104,6 +106,8 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMedia
     {
         ghostModel = null!;
     }
+
+    public static CGameCtnMediaBlockGhostBuilder Create(CGameCtnGhost ghostModel) => new(ghostModel);
 
     #endregion
 
