@@ -4,61 +4,47 @@ using System.IO;
 using System.Linq;
 using GBX.NET;
 using GBX.NET.Engines.Game;
+using Microsoft.Extensions.Logging;
 
-namespace GhostToClip
+var fileName = args.FirstOrDefault();
+
+if (fileName is null)
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var fileName = args.FirstOrDefault();
-            if (fileName == null) return;
-
-            Log.OnLogEvent += Log_OnLogEvent;
-
-            var node = GameBox.ParseNode(fileName);
-
-            if (node is CGameCtnGhost ghost)
-            {
-                var clip = new CGameCtnMediaClip();
-                clip.CreateChunk<CGameCtnMediaClip.Chunk0307900D>();
-
-                var track = new CGameCtnMediaTrack()
-                {
-                    Name = ghost.GhostNickname
-                };
-                track.CreateChunk<CGameCtnMediaTrack.Chunk03078001>();
-                track.CreateChunk<CGameCtnMediaTrack.Chunk03078005>();
-
-                clip.Tracks.Add(track);
-
-                var ghostBlock = new CGameCtnMediaBlockGhost()
-                {
-                    GhostModel = ghost,
-                    Keys = new List<CGameCtnMediaBlockGhost.Key>
-                    {
-                        new CGameCtnMediaBlockGhost.Key(),
-                        new CGameCtnMediaBlockGhost.Key()
-                        {
-                            Time = ghost.RaceTime.GetValueOrDefault(TimeSpan.FromSeconds(3))
-                        }
-                    }
-                };
-
-                var chunk002 = ghostBlock.CreateChunk<CGameCtnMediaBlockGhost.Chunk030E5002>();
-                chunk002.Version = 3;
-
-                track.Blocks.Add(ghostBlock);
-
-                clip.Save(Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(node.GBX.FileName)) + ".Clip.Gbx");
-            }
-        }
-
-        private static void Log_OnLogEvent(string text, ConsoleColor color)
-        {
-            Console.ForegroundColor = color;
-            Console.WriteLine(text);
-            Console.ResetColor();
-        }
-    }
+    return;
 }
+
+var logger = LoggerFactory.Create(builder =>
+{
+    builder.AddSimpleConsole(options =>
+    {
+        options.IncludeScopes = true;
+        options.SingleLine = true;
+        options.TimestampFormat = "yyyy-MM-dd HH:mm:ss ";
+    });
+    builder.SetMinimumLevel(LogLevel.Debug);
+}).CreateLogger<Program>();
+
+var node = GameBox.ParseNode(fileName);
+
+if (node is not CGameCtnGhost ghost)
+{
+    return;
+}
+
+var ghostMediaBlock = CGameCtnMediaBlockGhost.Create(ghost)
+    .ForTMUF()
+    .EndingAt(ghost.RaceTime.GetValueOrDefault(TimeSpan.FromSeconds(3)) + TimeSpan.FromSeconds(3))
+    .Build();
+
+var track = CGameCtnMediaTrack.Create()
+    .WithName(ghost.GhostNickname ?? "Unnamed")
+    .WithBlocks(ghostMediaBlock)
+    .ForTMUF()
+    .Build();
+
+var clip = CGameCtnMediaClip.Create()
+    .WithTracks(track)
+    .ForTMUF()
+    .Build();
+
+clip.Save(Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(fileName)) + ".Clip.Gbx");
