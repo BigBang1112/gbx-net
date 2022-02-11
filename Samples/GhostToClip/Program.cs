@@ -24,7 +24,7 @@ var logger = LoggerFactory.Create(builder =>
     builder.SetMinimumLevel(LogLevel.Debug);
 }).CreateLogger<Program>();
 
-var node = GameBox.ParseNode(fileName);
+var node = GameBox.ParseNode(fileName, logger: logger);
 
 if (node is not CGameCtnGhost ghost)
 {
@@ -47,4 +47,4 @@ var clip = CGameCtnMediaClip.Create()
     .ForTMUF()
     .Build();
 
-clip.Save(Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(fileName)) + ".Clip.Gbx");
+clip.Save(Path.GetFileNameWithoutExtension(Path.GetFileNameWithoutExtension(fileName)) + ".Clip.Gbx", logger: logger);
