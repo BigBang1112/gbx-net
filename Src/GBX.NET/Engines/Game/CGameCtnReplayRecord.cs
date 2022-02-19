@@ -391,8 +391,8 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
                 n.controlEntries[i] = name switch
                 {
-                    "Steer (analog)" => new ControlEntryAnalog(name) { Time = time, Data = data }, // Data is bugged
-                    _ => new ControlEntry(name) { Time = time, Data = data },
+                    "Steer (analog)" => new ControlEntryAnalog(name, time, data), // Data is bugged
+                    _ => new ControlEntry(name, time, data),
                 };
             }
 
@@ -535,8 +535,8 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
                 n.controlEntries[i] = (string)name switch
                 {
                     "Steer" or "Gas" or "AccelerateReal" or "BrakeReal"
-                      => new ControlEntryAnalog(name) { Time = time, Data = data },
-                    _ => new ControlEntry(name) { Time = time, Data = data },
+                      => new ControlEntryAnalog(name, time, data),
+                    _ => new ControlEntry(name, time, data),
                 };
             }
         }

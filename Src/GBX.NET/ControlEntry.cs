@@ -3,17 +3,9 @@
 /// <summary>
 /// Input from an input device.
 /// </summary>
-public class ControlEntry
+public record ControlEntry(string Name, TimeInt32 Time, uint Data)
 {
-    public string Name { get; set; }
-    public TimeInt32 Time { get; set; }
-    public uint Data { get; set; }
     public bool IsEnabled => Data != 0;
-
-    public ControlEntry(string name)
-    {
-        Name = name;
-    }
 
     public override string ToString()
     {

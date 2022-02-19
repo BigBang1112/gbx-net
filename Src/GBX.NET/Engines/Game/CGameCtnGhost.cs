@@ -730,8 +730,8 @@ public partial class CGameCtnGhost : CGameGhost
                     n.ControlEntries[i] = (string)name switch
                     {
                         "Steer" or "Gas" or "AccelerateReal" or "BrakeReal"
-                          => new ControlEntryAnalog(name) { Time = time, Data = data },
-                        _ => new ControlEntry(name) { Time = time, Data = data },
+                          => new ControlEntryAnalog(name, time, data),
+                        _ => new ControlEntry(name, time, data),
                     };
                 }
             }

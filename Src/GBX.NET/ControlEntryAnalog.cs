@@ -3,7 +3,7 @@
 /// <summary>
 /// A control entry with an additional <see cref="float"/> value.
 /// </summary>
-public class ControlEntryAnalog : ControlEntry
+public record ControlEntryAnalog : ControlEntry
 {
     public float Value
     {
@@ -22,20 +22,15 @@ public class ControlEntryAnalog : ControlEntry
     /// <summary>
     /// If the input value comes from TM1.0.
     /// </summary>
-    public bool IsOldTM { get; }
+    public bool IsOldTM { get; init; }
 
-    public ControlEntryAnalog(string name) : base(name)
-    {
-
-    }
-
-    public ControlEntryAnalog(string name, bool isOldTm) : base(name)
+    public ControlEntryAnalog(string name, TimeInt32 time, uint data, bool isOldTm = false) : base(name, time, data)
     {
         IsOldTM = isOldTm;
     }
 
     public override string ToString()
     {
-        return $"[{Time.ToTmString()}] {Name}: {Value}";
+        return $"[{Time}] {Name}: {Value}";
     }
 }
