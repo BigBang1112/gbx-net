@@ -5,7 +5,7 @@
 		<AssemblyName>GBX.NET.Json</AssemblyName>
 		<AssemblyTitle>GBX.NET.Json</AssemblyTitle>
 		<Authors>Petr Pivoňka (BigBang1112)</Authors>
-		<Description>A wrapper for better JSON serialization of GBX, useful for comparing data.</Description>
+		<Description>A wrapper for better JSON serialization of GBX.NET nodes, useful for comparing data.</Description>
 		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 

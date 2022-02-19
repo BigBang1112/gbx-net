@@ -5,7 +5,7 @@
 		<AssemblyName>GBX.NET.LZO</AssemblyName>
 		<AssemblyTitle>GBX.NET.LZO</AssemblyTitle>
 		<Authors>Petr Pivoňka (BigBang1112)</Authors>
-		<Description>An LZO compression plugin for GBX.NET to allow reading of compressed GBX bodies.</Description>
+		<Description>An LZO compression plugin for GBX.NET to allow reading of compressed Gbx bodies.</Description>
 		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
 		<PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
