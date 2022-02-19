@@ -11,5 +11,5 @@ var node = GameBox.ParseNode(fileName);
 if (node is CGameCtnReplayRecord replay)
 {
     var map = replay.Challenge;
-    map.Save(Formatter.Deformat(map.MapName + ".Map.Gbx"));
+    map.Save(TextFormatter.Deformat(map.MapName + ".Map.Gbx"));
 }
