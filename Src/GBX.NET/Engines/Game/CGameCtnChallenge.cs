@@ -1997,7 +1997,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         public int StartTime { get; set; }
 
-        public ITime TimeLimit { get; set; } = TimeInt32.Zero;
+        public TimeInt32 TimeLimit { get; set; } = TimeInt32.Zero;
 
         public bool NoPenalty { get; set; }
 
