@@ -16,7 +16,7 @@ GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software 
 
 Here are some of the useful classes/types to start with:
 
-| Extension | Node | Can read | Can write
+| Extension | Class | Can read | Can write
 | --- | --- | --- | ---
 | Map.Gbx<sup>1</sup> | [CGameCtnChallenge](Src/GBX.NET/Engines/Game/CGameCtnChallenge.cs) | Yes | Yes
 | Replay.Gbx | [CGameCtnReplayRecord](Src/GBX.NET/Engines/Game/CGameCtnReplayRecord.cs) | Yes | **No<sup>2</sup>**
