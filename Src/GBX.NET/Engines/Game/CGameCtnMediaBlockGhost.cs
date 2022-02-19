@@ -43,14 +43,14 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMedia
     }
 
     [NodeMember]
-    public TimeSpan? Start
+    public TimeSingle? Start
     {
         get => start;
         set => start = value;
     }
 
     [NodeMember]
-    public TimeSpan? End
+    public TimeSingle? End
     {
         get => end;
         set => end = value;

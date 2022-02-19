@@ -15,7 +15,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     #region Fields
 
     private Ident? mapInfo;
-    private TimeSpan? time;
+    private TimeInt32? time;
     private string? playerNickname;
     private string? playerLogin;
     private string? titleID;
@@ -59,7 +59,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// The record time.
     /// </summary>
     [NodeMember]
-    public TimeSpan? Time => time;
+    public TimeInt32? Time => time;
 
     /// <summary>
     /// Nickname of the record owner.
@@ -383,7 +383,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
             for (var i = 0; i < numEntries; i++)
             {
-                var time = TimeSpan.FromMilliseconds(r.ReadInt32() - 10000);
+                var time = TimeInt32.FromMilliseconds(r.ReadInt32() - 10000);
                 var controlNameIndex = r.ReadInt32();
                 var data = r.ReadUInt32();
 
@@ -526,7 +526,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
             for (var i = 0; i < numEntries; i++)
             {
-                var time = TimeSpan.FromMilliseconds(r.ReadInt32() - 100000);
+                var time = TimeInt32.FromMilliseconds(r.ReadInt32() - 100000);
                 var controlNameIndex = r.ReadByte();
                 var data = r.ReadUInt32();
 

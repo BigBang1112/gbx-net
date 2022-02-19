@@ -12,7 +12,7 @@ public partial class CGameCtnReplayRecord
         /// <summary>
         /// The record time.
         /// </summary>
-        TimeSpan? Time { get; }
+        TimeInt32? Time { get; }
 
         /// <summary>
         /// Nickname of the record owner.

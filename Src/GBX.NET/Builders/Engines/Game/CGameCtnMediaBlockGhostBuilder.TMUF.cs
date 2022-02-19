@@ -4,27 +4,27 @@ public partial class CGameCtnMediaBlockGhostBuilder
 {
     public class TMUF : GameBuilder<CGameCtnMediaBlockGhostBuilder, CGameCtnMediaBlockGhost>
     {
-        public TimeSpan Start { get; set; }
-        public TimeSpan End { get; set; } = TimeSpan.FromSeconds(3);
+        public TimeSingle Start { get; set; }
+        public TimeSingle End { get; set; } = TimeSingle.FromSeconds(3);
 
         public TMUF(CGameCtnMediaBlockGhostBuilder baseBuilder, CGameCtnMediaBlockGhost node) : base(baseBuilder, node)
         {
 
         }
 
-        public TMUF StartingAt(TimeSpan start)
+        public TMUF StartingAt(TimeSingle start)
         {
             Start = start;
             return this;
         }
 
-        public TMUF EndingAt(TimeSpan end)
+        public TMUF EndingAt(TimeSingle end)
         {
             End = end;
             return this;
         }
 
-        public TMUF WithTimeRange(TimeSpan start, TimeSpan end)
+        public TMUF WithTimeRange(TimeSingle start, TimeSingle end)
         {
             Start = start;
             End = end;

@@ -6,7 +6,7 @@
 public class ControlEntry
 {
     public string Name { get; set; }
-    public TimeSpan Time { get; set; }
+    public TimeInt32 Time { get; set; }
     public uint Data { get; set; }
     public bool IsEnabled => Data != 0;
 
@@ -17,6 +17,6 @@ public class ControlEntry
 
     public override string ToString()
     {
-        return $"[{Time.ToTmString()}] {Name}: {((Data == 128 || Data == 1 || Data == 0) ? IsEnabled.ToString() : Data.ToString())}";
+        return $"[{Time}] {Name}: {((Data == 128 || Data == 1 || Data == 0) ? IsEnabled.ToString() : Data.ToString())}";
     }
 }

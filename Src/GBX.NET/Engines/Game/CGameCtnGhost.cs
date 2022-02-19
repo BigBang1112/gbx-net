@@ -721,7 +721,7 @@ public partial class CGameCtnGhost : CGameGhost
 
                 for (var i = 0; i < numEntries; i++)
                 {
-                    var time = TimeSpan.FromMilliseconds(r.ReadInt32() - 100000);
+                    var time = TimeInt32.FromMilliseconds(r.ReadInt32() - 100000);
                     var controlNameIndex = r.ReadByte();
                     var data = r.ReadUInt32();
 

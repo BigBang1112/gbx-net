@@ -9,7 +9,7 @@ public class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMediaBlock
     #region Fields
 
     private TimeSingle start;
-    private TimeSingle end = new TimeSingle(3);
+    private TimeSingle end = TimeSingle.FromSeconds(3);
     private bool tracking;
     private bool autoFocus;
     private bool autoZoom;

@@ -29,7 +29,7 @@ public partial class CGameGhost
             internal void UpdateTimestamp()
             {
                 if (owner is not null)
-                    Timestamp = TimeSpan.FromMilliseconds(owner.samplePeriod.TotalMilliseconds * owner.Samples.IndexOf(this));
+                    Timestamp = TimeInt32.FromMilliseconds(owner.samplePeriod.TotalMilliseconds * owner.Samples.IndexOf(this));
             }
         }
     }
