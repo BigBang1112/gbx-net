@@ -384,6 +384,7 @@ public partial class GameBox : IDisposable
 
         if (compressedBody != 'C')
         {
+            w.Write(compressedBody);
             input.CopyTo(output);
             return;
         }

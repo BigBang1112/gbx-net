@@ -315,166 +315,6 @@ public partial class GameBoxReaderWriter
     public void Int32(ref int? variable, int defaultValue = default) => variable = Int32(variable, defaultValue);
 
     /// <summary>
-    /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of seconds.
-    /// </summary>
-    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
-    /// <param name="variable">Variable to write. Ignored in read mode.</param>
-    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan Int32_s(TimeSpan variable = default)
-    {
-        if (Reader is not null) return Reader.ReadInt32_s();
-        if (Writer is not null) Writer.WriteInt32_s(variable);
-        return variable;
-    }
-
-    /// <summary>
-    /// Reads or writes a nullable <see cref="int"/> as a nullable <see cref="TimeSpan"/> of seconds.
-    /// </summary>
-    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
-    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
-    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
-    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan? Int32_s(TimeSpan? variable, TimeSpan defaultValue = default)
-    {
-        if (Reader is not null) return Reader.ReadInt32_s();
-        if (Writer is not null) Writer.WriteInt32_s(variable.GetValueOrDefault(defaultValue));
-        return variable;
-    }
-
-    /// <summary>
-    /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of seconds through reference.
-    /// </summary>
-    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
-    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int32_s(ref TimeSpan variable) => variable = Int32_s(variable);
-
-    /// <summary>
-    /// Reads or writes a nullable <see cref="int"/> as a nullable <see cref="TimeSpan"/> of seconds through reference.
-    /// </summary>
-    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
-    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
-    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int32_s(ref TimeSpan? variable, TimeSpan defaultValue = default) => variable = Int32_s(variable, defaultValue);
-
-    /// <summary>
-    /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of milliseconds.
-    /// </summary>
-    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/>.</remarks>
-    /// <param name="variable">Variable to write. Ignored in read mode.</param>
-    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan Int32_ms(TimeSpan variable = default)
-    {
-        if (Reader is not null) return Reader.ReadInt32_ms();
-        if (Writer is not null) Writer.WriteInt32_ms(variable);
-        return variable;
-    }
-
-    /// <summary>
-    /// Reads or writes a nullable <see cref="int"/> as a nullable <see cref="TimeSpan"/> of milliseconds.
-    /// </summary>
-    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/>.</remarks>
-    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
-    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
-    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan? Int32_ms(TimeSpan? variable, TimeSpan defaultValue = default)
-    {
-        if (Reader is not null) return Reader.ReadInt32_ms();
-        if (Writer is not null) Writer.WriteInt32_ms(variable.GetValueOrDefault(defaultValue));
-        return variable;
-    }
-
-    /// <summary>
-    /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of milliseconds through reference.
-    /// </summary>
-    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/>.</remarks>
-    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int32_ms(ref TimeSpan variable) => variable = Int32_ms(variable);
-
-    /// <summary>
-    /// Reads or writes a nullable <see cref="int"/> as a nullable <see cref="TimeSpan"/> of milliseconds through reference.
-    /// </summary>
-    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/>.</remarks>
-    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
-    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int32_ms(ref TimeSpan? variable, TimeSpan defaultValue = default) => variable = Int32_ms(variable, defaultValue);
-
-    /// <summary>
-    /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of seconds. If the read value is -1, null is returned. If the written <paramref name="variable"/> is null, -1 value is written.
-    /// </summary>
-    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/> (except for -1).</remarks>
-    /// <param name="variable">Variable to write. Ignored in read mode.</param>
-    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned. If the read value is -1, null is returned.</returns>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan? Int32_sn(TimeSpan? variable = default)
-    {
-        if (Reader is not null) return Reader.ReadInt32_sn();
-        if (Writer is not null) Writer.WriteInt32_sn(variable);
-        return variable;
-    }
-
-    /// <summary>
-    /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of seconds through reference. If the read value is -1, <paramref name="variable"/> is set to null. If the written <paramref name="variable"/> is null, -1 value is written.
-    /// </summary>
-    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/> (except for -1).</remarks>
-    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int32_sn(ref TimeSpan? variable) => variable = Int32_sn(variable);
-
-    /// <summary>
-    /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of milliseconds. If the read value is -1, null is returned. If the written <paramref name="variable"/> is null, -1 value is written.
-    /// </summary>
-    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/> (except for -1).</remarks>
-    /// <param name="variable">Variable to write. Ignored in read mode.</param>
-    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned. If the read value is -1, null is returned.</returns>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan? Int32_msn(TimeSpan? variable = default)
-    {
-        if (Reader is not null) return Reader.ReadInt32_msn();
-        if (Writer is not null) Writer.WriteInt32_msn(variable);
-        return variable;
-    }
-
-    /// <summary>
-    /// Reads or writes an <see cref="int"/> as a <see cref="TimeSpan"/> of milliseconds through reference. If the read value is -1, <paramref name="variable"/> is set to null. If the written <paramref name="variable"/> is null, -1 value is written.
-    /// </summary>
-    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/> (except for -1).</remarks>
-    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Int32_msn(ref TimeSpan? variable) => variable = Int32_msn(variable);
-
-    /// <summary>
     /// Reads or writes a <see cref="long"/>.
     /// </summary>
     /// <param name="variable">Variable to write. Ignored in read mode.</param>
@@ -725,166 +565,6 @@ public partial class GameBoxReaderWriter
     public void Single(ref float? variable, float defaultValue = default) => variable = Single(variable, defaultValue);
 
     /// <summary>
-    /// Reads or writes a <see cref="float"/> as a <see cref="TimeSpan"/> of seconds.
-    /// </summary>
-    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
-    /// <param name="variable">Variable to write. Ignored in read mode.</param>
-    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan Single_s(TimeSpan variable = default)
-    {
-        if (Reader is not null) return Reader.ReadSingle_s();
-        if (Writer is not null) Writer.WriteSingle_s(variable);
-        return variable;
-    }
-
-    /// <summary>
-    /// Reads or writes a nullable <see cref="float"/> as a nullable <see cref="TimeSpan"/> of seconds.
-    /// </summary>
-    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
-    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
-    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
-    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan? Single_s(TimeSpan? variable, TimeSpan defaultValue = default)
-    {
-        if (Reader is not null) return Reader.ReadSingle_s();
-        if (Writer is not null) Writer.WriteSingle_s(variable.GetValueOrDefault(defaultValue));
-        return variable;
-    }
-
-    /// <summary>
-    /// Reads or writes a <see cref="float"/> as a <see cref="TimeSpan"/> of seconds through reference.
-    /// </summary>
-    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
-    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Single_s(ref TimeSpan variable) => variable = Single_s(variable);
-
-    /// <summary>
-    /// Reads or writes a nullable <see cref="float"/> as a nullable <see cref="TimeSpan"/> of seconds through reference.
-    /// </summary>
-    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/>.</remarks>
-    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
-    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Single_s(ref TimeSpan? variable, TimeSpan defaultValue = default) => variable = Single_s(variable, defaultValue);
-
-    /// <summary>
-    /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of milliseconds.
-    /// </summary>
-    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/>.</remarks>
-    /// <param name="variable">Variable to write. Ignored in read mode.</param>
-    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan Single_ms(TimeSpan variable = default)
-    {
-        if (Reader is not null) return Reader.ReadSingle_ms();
-        if (Writer is not null) Writer.WriteSingle_ms(variable);
-        return variable;
-    }
-
-    /// <summary>
-    /// Reads or writes a nullable <see cref="float"/> as a nullable <see cref="TimeSpan"/> of milliseconds.
-    /// </summary>
-    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/>.</remarks>
-    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
-    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
-    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan? Single_ms(TimeSpan? variable, TimeSpan defaultValue = default)
-    {
-        if (Reader is not null) return Reader.ReadSingle_ms();
-        if (Writer is not null) Writer.WriteSingle_ms(variable.GetValueOrDefault(defaultValue));
-        return variable;
-    }
-
-    /// <summary>
-    /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of milliseconds through reference.
-    /// </summary>
-    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/>.</remarks>
-    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Single_ms(ref TimeSpan variable) => variable = Single_ms(variable);
-
-    /// <summary>
-    /// Reads or writes a nullable <see cref="float"/> as a nullable <see cref="TimeSpan"/> of milliseconds through reference.
-    /// </summary>
-    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/>.</remarks>
-    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
-    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Single_ms(ref TimeSpan? variable, TimeSpan defaultValue = default) => variable = Single_ms(variable, defaultValue);
-
-    /// <summary>
-    /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of seconds. If the read value is -1, null is returned. If the written <paramref name="variable"/> is null, -1 value is written.
-    /// </summary>
-    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/> (except for -1).</remarks>
-    /// <param name="variable">Variable to write. Ignored in read mode.</param>
-    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned. If the read value is -1, null is returned.</returns>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan? Single_sn(TimeSpan? variable = default)
-    {
-        if (Reader is not null) return Reader.ReadSingle_sn();
-        if (Writer is not null) Writer.WriteSingle_sn(variable);
-        return variable;
-    }
-
-    /// <summary>
-    /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of seconds through reference. If the read value is -1, <paramref name="variable"/> is set to null. If the written <paramref name="variable"/> is null, -1 value is written.
-    /// </summary>
-    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromSeconds(double)"/> (except for -1).</remarks>
-    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Single_sn(ref TimeSpan? variable) => variable = Single_sn(variable);
-
-    /// <summary>
-    /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of milliseconds. If the read value is -1, null is returned. If the written <paramref name="variable"/> is null, -1 value is written.
-    /// </summary>
-    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/> (except for -1).</remarks>
-    /// <param name="variable">Variable to write. Ignored in read mode.</param>
-    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned. If the read value is -1, null is returned.</returns>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan? Single_msn(TimeSpan? variable = default)
-    {
-        if (Reader is not null) return Reader.ReadSingle_msn();
-        if (Writer is not null) Writer.WriteSingle_msn(variable);
-        return variable;
-    }
-
-    /// <summary>
-    /// Reads or writes an <see cref="float"/> as a <see cref="TimeSpan"/> of milliseconds through reference. If the read value is -1, <paramref name="variable"/> is set to null. If the written <paramref name="variable"/> is null, -1 value is written.
-    /// </summary>
-    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TimeSpan"/> using <see cref="TimeSpan.FromMilliseconds(double)"/> (except for -1).</remarks>
-    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    public void Single_msn(ref TimeSpan? variable) => variable = Single_msn(variable);
-
-    /// <summary>
     /// Reads or writes a <paramref name="byteLength"/> amount of bytes as a <see cref="BigInteger"/>.
     /// </summary>
     /// <param name="variable">Variable to write. Ignored in read mode.</param>
@@ -1110,7 +790,7 @@ public partial class GameBoxReaderWriter
     }
 
     /// <summary>
-    /// Reads or writes an <see cref="NET.Byte3"/> through reference.
+    /// Reads or writes a <see cref="NET.Byte3"/> through reference.
     /// </summary>
     /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1160,7 +840,7 @@ public partial class GameBoxReaderWriter
     }
 
     /// <summary>
-    /// Reads or writes an <see cref="NET.Vec2"/> through reference.
+    /// Reads or writes a <see cref="NET.Vec2"/> through reference.
     /// </summary>
     /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1210,7 +890,7 @@ public partial class GameBoxReaderWriter
     }
 
     /// <summary>
-    /// Reads or writes an <see cref="NET.Vec3"/> through reference.
+    /// Reads or writes a <see cref="NET.Vec3"/> through reference.
     /// </summary>
     /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1260,7 +940,7 @@ public partial class GameBoxReaderWriter
     }
 
     /// <summary>
-    /// Reads or writes an <see cref="NET.Vec4"/> through reference.
+    /// Reads or writes a <see cref="NET.Vec4"/> through reference.
     /// </summary>
     /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1310,7 +990,7 @@ public partial class GameBoxReaderWriter
     }
 
     /// <summary>
-    /// Reads or writes an <see cref="NET.Rect"/> through reference.
+    /// Reads or writes a <see cref="NET.Rect"/> through reference.
     /// </summary>
     /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1360,7 +1040,7 @@ public partial class GameBoxReaderWriter
     }
 
     /// <summary>
-    /// Reads or writes an <see cref="NET.Box"/> through reference.
+    /// Reads or writes a <see cref="NET.Box"/> through reference.
     /// </summary>
     /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1410,7 +1090,7 @@ public partial class GameBoxReaderWriter
     }
 
     /// <summary>
-    /// Reads or writes an <see cref="NET.Quat"/> through reference.
+    /// Reads or writes a <see cref="NET.Quat"/> through reference.
     /// </summary>
     /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1427,6 +1107,33 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public void Quat(ref Quat? variable, Quat defaultValue = default) => variable = Quat(variable, defaultValue);
+
+    /// <summary>
+    /// Reads or writes a nullable time of day using <see cref="TimeSpan"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write.Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public TimeSpan? TimeOfDay(TimeSpan? variable = default)
+    {
+        if (Reader is not null) return Reader.ReadTimeOfDay();
+        if (Writer is not null) Writer.WriteTimeOfDay(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes a nullable time of day using <see cref="TimeSpan"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void TimeOfDay(ref TimeSpan? variable)
+    {
+        variable = TimeOfDay(variable);
+    }
 
     /// <summary>
     /// Reads or writes a <see cref="NET.FileRef"/>.
@@ -1475,6 +1182,28 @@ public partial class GameBoxReaderWriter
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
     public void Id(ref string? variable, bool tryParseToInt32 = false) => variable = Id(variable, tryParseToInt32);
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
+    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
+    /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> or <see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
+    public Id? Collection(Id? variable = default)
+    {
+        if (Reader is not null) return Reader.ReadId();
+        if (Writer is not null) Writer.WriteId(variable ?? -1);
+        return variable;
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
+    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
+    /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
+    public void Collection(ref Id? variable) => variable = Collection(variable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -2192,19 +1921,23 @@ public partial class GameBoxReaderWriter
 
         throw new ThisShouldNotHappenException();
     }
-}
 
-/// <summary>
-/// Reader-writer mode.
-/// </summary>
-public enum GameBoxReaderWriterMode
-{
-    /// <summary>
-    /// Read mode.
-    /// </summary>
-    Read,
-    /// <summary>
-    /// Write mode.
-    /// </summary>
-    Write
+    public void Archive<T>(ref T? obj, int version = 0) where T : IReadableWritable, new()
+    {
+        if (obj is null)
+        {
+            switch (Mode)
+            {
+                case GameBoxReaderWriterMode.Read:
+                    obj = new();
+                    break;
+                case GameBoxReaderWriterMode.Write:
+                    return;
+                default:
+                    throw new ThisShouldNotHappenException();
+            }
+        }
+
+        obj.ReadWrite(this, version);
+    }
 }

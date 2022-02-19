@@ -2,7 +2,7 @@ namespace GBX.NET;
 
 public class Sample
 {
-    public TimeSpan? Timestamp { get; internal set; }
+    public TimeInt32? Timestamp { get; internal set; }
 
     public byte? BufferType { get; set; }
     public Vec3 Position { get; set; }
@@ -28,7 +28,7 @@ public class Sample
         if (!BufferType.HasValue || BufferType == 0 || BufferType == 2 || BufferType == 4)
         {
             if (Timestamp.HasValue)
-                return $"Sample: {Timestamp.Value.ToTmString()} {Position}";
+                return $"Sample: {Timestamp.ToTmString()} {Position}";
             return $"Sample: {Position}";
         }
 

@@ -108,7 +108,7 @@ public class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
 
             rw.Array(ref n.stunts!, (i, r) => new Stunt()
             {
-                Time = TimeSpan.FromSeconds(r.ReadSingle()),
+                Time = r.ReadTimeSingle(),
                 Figure = (EStuntFigure)r.ReadInt32(),
                 Angle = r.ReadInt32(),
                 Score = r.ReadInt32(),
@@ -122,7 +122,7 @@ public class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
             },
             (x, w) =>
             {
-                w.Write((float)x.Time.TotalSeconds);
+                w.WriteTimeSingle(x.Time);
                 w.Write((int)x.Figure);
                 w.Write(x.Angle);
                 w.Write(x.Score);
@@ -156,7 +156,7 @@ public class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
 
     public class Stunt
     {
-        public TimeSpan Time { get; set; }
+        public TimeSingle Time { get; set; }
         public EStuntFigure Figure { get; set; }
         public int Angle { get; set; }
         public int Score { get; set; }

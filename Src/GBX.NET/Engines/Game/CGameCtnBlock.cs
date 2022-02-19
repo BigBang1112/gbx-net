@@ -283,10 +283,17 @@ public class CGameCtnBlock : CMwNod, INodeDependant<CGameCtnChallenge>
 
     public override string ToString() => $"{base.ToString()} {{ {Name} {Coord} }}";
 
-    internal static bool IsGhostBlock(int flags) => flags > -1 && (flags & (1 << isGhostBit)) != 0;
-    internal static bool IsFreeBlock(int flags) => flags > -1 && (flags & (1 << isFreeBit)) != 0;
-    internal static bool IsGroundBlock(int flags) => flags > -1 && (flags & (1 << isGroundBit)) != 0;
-    internal static bool IsWaypointBlock(int flags) => flags > -1 && (flags & (1 << isWaypointBit)) != 0;
+    internal static bool IsGhostBlock_WhenDefined(int flags) => (flags & (1 << isGhostBit)) != 0;
+    internal static bool IsFreeBlock_WhenDefined(int flags) => (flags & (1 << isFreeBit)) != 0;
+    internal static bool IsGroundBlock_WhenDefined(int flags) => (flags & (1 << isGroundBit)) != 0;
+    internal static bool IsWaypointBlock_WhenDefined(int flags) => (flags & (1 << isWaypointBit)) != 0;
+    internal static bool IsSkinnableBlock_WhenDefined(int flags) => (flags & (1 << isSkinnableBit)) != 0;
+
+    internal static bool IsGhostBlock(int flags) => flags > -1 && IsGhostBlock_WhenDefined(flags);
+    internal static bool IsFreeBlock(int flags) => flags > -1 && IsFreeBlock_WhenDefined(flags);
+    internal static bool IsGroundBlock(int flags) => flags > -1 && IsGroundBlock_WhenDefined(flags);
+    internal static bool IsWaypointBlock(int flags) => flags > -1 && IsWaypointBlock_WhenDefined(flags);
+    internal static bool IsSkinnableBlock(int flags) => flags > -1 && IsSkinnableBlock_WhenDefined(flags);
 
     #endregion
 

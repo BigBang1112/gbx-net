@@ -8,12 +8,12 @@ public partial class CGameGhost
 {
     public partial class Data
     {
-        private TimeSpan samplePeriod;
+        private TimeInt32 samplePeriod;
 
         /// <summary>
         /// How much time is between each sample.
         /// </summary>
-        public TimeSpan SamplePeriod
+        public TimeInt32 SamplePeriod
         {
             get => samplePeriod;
             set
@@ -92,7 +92,7 @@ public partial class CGameGhost
             {
                 var bSkipList2 = r.ReadBoolean();
                 var u01 = r.ReadInt32();
-                SamplePeriod = TimeSpan.FromMilliseconds(r.ReadInt32());
+                SamplePeriod = TimeInt32.FromMilliseconds(r.ReadInt32());
                 var u02 = r.ReadInt32();
 
                 var sampleData = r.ReadBytes();
@@ -227,7 +227,7 @@ public partial class CGameGhost
         /// or a reference to an existing sample if <paramref name="timestamp"/> matches an existing sample timestamp.
         /// Also returns null if there are no samples, or if <paramref name="timestamp"/> is outside of the sample range,
         /// or <see cref="SamplePeriod"/> is lower or equal to 0.</returns>
-        public Sample? GetSampleLerp(TimeSpan timestamp)
+        public Sample? GetSampleLerp(TimeSingle timestamp)
         {
             if (Samples is null || Samples.Count == 0 || samplePeriod.Ticks <= 0)
                 return null;

@@ -117,7 +117,7 @@ public abstract class Node : IStateRefTable, IDisposable
         return node;
     }
 
-    private static void GetNodeInfoFromClassId(GameBoxReader r, uint? classId, out Node? node, out Type nodeType)
+    private static uint GetNodeInfoFromClassId(GameBoxReader r, uint? classId, out Node? node, out Type nodeType)
     {
         if (classId is null)
         {
@@ -128,7 +128,8 @@ public abstract class Node : IStateRefTable, IDisposable
         {
             node = null;
             nodeType = null!;
-            return;
+
+            return classId.Value;
         }
 
         classId = RemapToLatest(classId.Value);
@@ -145,6 +146,8 @@ public abstract class Node : IStateRefTable, IDisposable
         var constructor = NodeCacheManager.GetClassConstructor(id);
 
         node = constructor();
+
+        return classId.Value;
     }
 
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
@@ -175,12 +178,14 @@ public abstract class Node : IStateRefTable, IDisposable
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     internal static async Task<Node?> ParseAsync(GameBoxReader r, uint? classId, ILogger? logger, CancellationToken cancellationToken = default)
     {
-        GetNodeInfoFromClassId(r, classId, out Node? node, out Type nodeType);
+        var realClassId = GetNodeInfoFromClassId(r, classId, out Node? node, out Type nodeType);
 
         if (node is null)
         {
             return null;
         }
+
+        r.Settings.AsyncAction?.OnReadNode?.Invoke(r, realClassId);
 
         await ParseAsync(node, nodeType, r, logger, cancellationToken);
 
@@ -731,7 +736,9 @@ public abstract class Node : IStateRefTable, IDisposable
     private void WriteChunk(IReadableWritableChunk chunk, GameBoxWriter w, ILogger? logger)
     {
         using var ms = new MemoryStream();
-        using var msW = new GameBoxWriter(ms, w.Settings, logger);
+
+        // Writer doesn't have using to not dispose nested IdSubStates. Hopefully this will be fine
+        var msW = new GameBoxWriter(ms, w.Settings, logger);
         var rw = new GameBoxReaderWriter(msW);
 
         w.Write(Chunk.Remap(chunk.Id, w.Settings.Remap));
@@ -752,7 +759,7 @@ public abstract class Node : IStateRefTable, IDisposable
     private async Task WriteChunkAsync(IReadableWritableChunk chunk, GameBoxWriter w, ILogger? logger, CancellationToken cancellationToken)
     {
         using var ms = new MemoryStream();
-        using var msW = new GameBoxWriter(ms, w.Settings, logger);
+        var msW = new GameBoxWriter(ms, w.Settings, logger);
         var rw = new GameBoxReaderWriter(msW);
 
         w.Write(Chunk.Remap(chunk.Id, w.Settings.Remap));
@@ -871,7 +878,7 @@ public abstract class Node : IStateRefTable, IDisposable
         }
     }
 
-    private bool HasChunkOwnIdState(Type type)
+    private static bool HasChunkOwnIdState(Type type)
     {
         if (!NodeCacheManager.ChunkAttributesByType.TryGetValue(type, out var attributes))
         {
@@ -970,6 +977,18 @@ public abstract class Node : IStateRefTable, IDisposable
         return Chunks.Get<T>();
     }
 
+    public T? GetChunkAndDiscover<T>() where T : Chunk, ISkippableChunk
+    {
+        var chunk = Chunks.Get<T>();
+
+        if (chunk is not null)
+        {
+            chunk.Discover();
+        }
+
+        return chunk;
+    }
+
     public T CreateChunk<T>() where T : Chunk
     {
         return Chunks.Create<T>();
@@ -990,47 +1009,47 @@ public abstract class Node : IStateRefTable, IDisposable
         return Chunks.TryGet(out chunk);
     }
 
-    public void DiscoverChunk<T>() where T : ISkippableChunk
+    public void DiscoverChunk<T>() where T : Chunk, ISkippableChunk
     {
         Chunks.Discover<T>();
     }
 
-    public void DiscoverChunks<T1, T2>() where T1 : ISkippableChunk where T2 : ISkippableChunk
+    public void DiscoverChunks<T1, T2>() where T1 : Chunk, ISkippableChunk where T2 : Chunk, ISkippableChunk
     {
         Chunks.Discover<T1, T2>();
     }
 
-    public void DiscoverChunks<T1, T2, T3>() where T1 : ISkippableChunk where T2 : ISkippableChunk where T3 : ISkippableChunk
+    public void DiscoverChunks<T1, T2, T3>() where T1 : Chunk, ISkippableChunk where T2 : Chunk, ISkippableChunk where T3 : Chunk, ISkippableChunk
     {
         Chunks.Discover<T1, T2, T3>();
     }
 
     public void DiscoverChunks<T1, T2, T3, T4>()
-        where T1 : ISkippableChunk
-        where T2 : ISkippableChunk
-        where T3 : ISkippableChunk
-        where T4 : ISkippableChunk
+        where T1 : Chunk, ISkippableChunk
+        where T2 : Chunk, ISkippableChunk
+        where T3 : Chunk, ISkippableChunk
+        where T4 : Chunk, ISkippableChunk
     {
         Chunks.Discover<T1, T2, T3, T4>();
     }
 
     public void DiscoverChunks<T1, T2, T3, T4, T5>()
-        where T1 : ISkippableChunk
-        where T2 : ISkippableChunk
-        where T3 : ISkippableChunk
-        where T4 : ISkippableChunk
-        where T5 : ISkippableChunk
+        where T1 : Chunk, ISkippableChunk
+        where T2 : Chunk, ISkippableChunk
+        where T3 : Chunk, ISkippableChunk
+        where T4 : Chunk, ISkippableChunk
+        where T5 : Chunk, ISkippableChunk
     {
         Chunks.Discover<T1, T2, T3, T4, T5>();
     }
 
     public void DiscoverChunks<T1, T2, T3, T4, T5, T6>()
-        where T1 : ISkippableChunk
-        where T2 : ISkippableChunk
-        where T3 : ISkippableChunk
-        where T4 : ISkippableChunk
-        where T5 : ISkippableChunk
-        where T6 : ISkippableChunk
+        where T1 : Chunk, ISkippableChunk
+        where T2 : Chunk, ISkippableChunk
+        where T3 : Chunk, ISkippableChunk
+        where T4 : Chunk, ISkippableChunk
+        where T5 : Chunk, ISkippableChunk
+        where T6 : Chunk, ISkippableChunk
     {
         Chunks.Discover<T1, T2, T3, T4, T5, T6>();
     }

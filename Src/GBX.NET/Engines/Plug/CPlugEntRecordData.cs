@@ -135,7 +135,7 @@ public class CPlugEntRecordData : CMwNod
 
                                 var (position, rotation, speed, velocity) = bufferR.ReadTransform(); // Only position matches
 
-                                sample.Timestamp = TimeSpan.FromMilliseconds(timestamp);
+                                sample.Timestamp = TimeInt32.FromMilliseconds(timestamp);
                                 sample.Position = position;
                                 sample.Rotation = rotation;
                                 sample.Speed = speed * 3.6f;
@@ -175,7 +175,7 @@ public class CPlugEntRecordData : CMwNod
 
                                 var (position, rotation, speed, velocity) = bufferR.ReadTransform();
 
-                                sample.Timestamp = TimeSpan.FromMilliseconds(timestamp);
+                                sample.Timestamp = TimeInt32.FromMilliseconds(timestamp);
                                 sample.Position = position;
                                 sample.Rotation = rotation;
                                 sample.Speed = speed * 3.6f;

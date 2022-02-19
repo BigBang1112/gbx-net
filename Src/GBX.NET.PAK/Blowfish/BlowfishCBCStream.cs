@@ -17,11 +17,14 @@ public class BlowfishCBCStream : Stream
     private uint _bufferIndex;
     private uint _totalIndex;
 
-    public BlowfishCBCStream(Stream stream, byte[] key, ulong iv)
+    public Stream BaseStream => stream;
+
+    public BlowfishCBCStream(Stream stream, byte[] key, ulong iv, bool ignore256ivXorReset = false)
     {
         this.stream = stream;
 
         _iv = iv;
+        Ignore256IvXorReset = ignore256ivXorReset;
         _blowfish = new Blowfish(key);
         _buffer = new byte[8];
         _bufferIndex = 0;
@@ -53,6 +56,8 @@ public class BlowfishCBCStream : Stream
     public override bool CanRead => stream.CanRead;
 
     public override bool CanWrite => stream.CanWrite;
+
+    public bool Ignore256IvXorReset { get; }
 
     public override long Seek(long offset, SeekOrigin origin)
     {
@@ -92,7 +97,7 @@ public class BlowfishCBCStream : Stream
         {
             if (_bufferIndex % 8 == 0)
             {
-                if (_bufferIndex == 0x100)
+                if (!Ignore256IvXorReset && _bufferIndex == 0x100)
                 {
                     _iv ^= _ivXor;
                     _ivXor = 0;

@@ -14,27 +14,37 @@ GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software 
 - Reading compressed reference tables is not currently supported.
 - Reading PAK files is partially supported with **GBX.NET.PAK** sublibrary, but it applies only to PAKs from TMUF and below, and most of contents cannot be read or crashes during decryption.
 
-| Extension | Node | Can read | Can write
+Here are some of the useful classes/types to start with:
+
+| Extension | Class | Can read | Can write
 | --- | --- | --- | ---
-| Map.Gbx | [CGameCtnChallenge](Src/GBX.NET/Engines/Game/CGameCtnChallenge.cs) | Yes | Yes
-| Replay.Gbx | [CGameCtnReplayRecord](Src/GBX.NET/Engines/Game/CGameCtnReplayRecord.cs) | Yes | **No\***
+| Map.Gbx<sup>1</sup> | [CGameCtnChallenge](Src/GBX.NET/Engines/Game/CGameCtnChallenge.cs) | Yes | Yes
+| Replay.Gbx | [CGameCtnReplayRecord](Src/GBX.NET/Engines/Game/CGameCtnReplayRecord.cs) | Yes | **No<sup>2</sup>**
 | Ghost.Gbx | [CGameCtnGhost](Src/GBX.NET/Engines/Game/CGameCtnGhost.cs) | Yes | **Yes**
 | Clip.Gbx | [CGameCtnMediaClip](Src/GBX.NET/Engines/Game/CGameCtnMediaClip.cs) | Yes | Yes
-| EDClassic.Gbx | [CGameCtnBlockInfoClassic](Src/GBX.NET/Engines/Game/CGameCtnBlockInfoClassic.cs) | Yes | No
-| Campaign.Gbx | [CGameCtnCampaign](Src/GBX.NET/Engines/Game/CGameCtnCampaign.cs) | Yes | Yes
-| Block.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.cs) | Yes | No
-| Macroblock.Gbx | [CGameCtnMacroBlockInfo](Src/GBX.NET/Engines/Game/CGameCtnMacroBlockInfo.cs) | Yes | No
-| Item.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.cs) | Yes | No
+| Campaign.Gbx | [CGameCtnCampaign](Src/GBX.NET/Engines/Game/CGameCtnCampaign.cs) | Partially<sup>3</sup> | Partially<sup>3</sup>
+| EDClassic.Gbx | [CGameCtnBlockInfoClassic](Src/GBX.NET/Engines/Game/CGameCtnBlockInfoClassic.cs) | *Fix soon* | No
+| Block.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.cs) | *Fix soon* | No
+| Macroblock.Gbx | [CGameCtnMacroBlockInfo](Src/GBX.NET/Engines/Game/CGameCtnMacroBlockInfo.cs) | *Fix soon* | No
+| Item.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.cs) | *Fix soon* | No
+| Crystal.Gbx | [CPlugCrystal](Src/GBX.NET/Engines/GameData/CPlugCrystal.cs) | *Fix soon* | No
 | SystemConfig.Gbx | [CSystemConfig](Src/GBX.NET/Engines/System/CSystemConfig.cs) | Yes | Yes
+| LightMapCache.Gbx | [CHmsLightMapCache](Src/GBX.NET/Engines/Hms/CHmsLightMapCache.cs) | Yes | Yes
+| Solid.Gbx | [CPlugSolid](Src/GBX.NET/Engines/Plug/CPlugSolid.cs) | Partially<sup>4</sup> | No
+| Material.Gbx | [CPlugMaterial](Src/GBX.NET/Engines/Plug/CPlugMaterial.cs) | Partially<sup>4</sup> | No
+| Texture.Gbx | [CPlugBitmap](Src/GBX.NET/Engines/Plug/CPlugBitmap.cs) | Partially<sup>4</sup> | No
 
-\* Consider extracting `CGameCtnGhost` from `CGameCtnReplayRecord`, transfer it over to `CGameCtnMediaBlockGhost`, add it to `CGameCtnMediaClip`, and save it as `.Clip.Gbx`, which you can then import in MediaTracker.
+- <sup>1</sup>Challenge.Gbx is the same.
+- <sup>2</sup>Safety reasons. Consider extracting `CGameCtnGhost` from `CGameCtnReplayRecord`, transfer it over to `CGameCtnMediaBlockGhost`, add it to `CGameCtnMediaClip`, and save it as `.Clip.Gbx`, which you can then import in MediaTracker.
+- <sup>3</sup>Not tested for a long time, possibly works only in ManiaPlanet.
+- <sup>4</sup>Only in TM1.0, TMO, TMS and TMNESWC.
 
 ### For any questions, join [my Discord server](https://discord.gg/perAcdxscQ) or message me via DM: BigBang1112#9489
 
 ## Compatibility
 
 - GBX.NET is compatible down to **.NET Standard 2.0** and **.NET Framework 4.6.2**.
-- Current language version is 10 and you need Visual Studio 2022 to contribute to the project + installation of .NET Framework 4.6.2 SDK **(you don't need Visual Studio 2022 if you install the project as NuGet package)**.
+- Current language version is 10 and you need Visual Studio 2022 to contribute to the project + installation of .NET Framework 4.6.2 Targeting Pack **(you don't need Visual Studio 2022 if you install the project as NuGet package)**.
 - The library supports **saving Gbx files in 64bit environment** since 0.10.0. In the older versions, to be able to save your Gbx, set your platform target to **x86**.
 
 ## Techniques
@@ -250,6 +260,7 @@ Your work doesn't have to fall under the GNU GPL license if you're interested in
 Without these people, this project wouldn't be what it is today:
 
 - Stefan Baumann (Solux)
+- Melissa (Miss)
 - florenzius
 - Kim
 - James Romeril

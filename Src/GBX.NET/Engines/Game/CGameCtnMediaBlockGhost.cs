@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.Game;
+﻿using GBX.NET.Builders.Engines.Game;
+
+namespace GBX.NET.Engines.Game;
 
 /// <summary>
 /// MediaTracker block - Ghost (0x030E5000)
@@ -9,8 +11,8 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMedia
 {
     #region Fields
 
-    private TimeSpan? start;
-    private TimeSpan? end;
+    private TimeSingle? start;
+    private TimeSingle? end;
     private IList<Key>? keys;
     private CGameCtnGhost ghostModel;
     private float startOffset;
@@ -28,27 +30,27 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMedia
         set => keys = value.Cast<Key>().ToList();
     }
 
-    TimeSpan IHasTwoKeys.Start
+    TimeSingle IHasTwoKeys.Start
     {
         get => start.GetValueOrDefault();
         set => start = value;
     }
 
-    TimeSpan IHasTwoKeys.End
+    TimeSingle IHasTwoKeys.End
     {
-        get => end.GetValueOrDefault(start.GetValueOrDefault() + TimeSpan.FromSeconds(3));
+        get => end.GetValueOrDefault(start.GetValueOrDefault() + TimeSingle.FromSeconds(3));
         set => end = value;
     }
 
     [NodeMember]
-    public TimeSpan? Start
+    public TimeSingle? Start
     {
         get => start;
         set => start = value;
     }
 
     [NodeMember]
-    public TimeSpan? End
+    public TimeSingle? End
     {
         get => end;
         set => end = value;
@@ -105,6 +107,8 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMedia
         ghostModel = null!;
     }
 
+    public static CGameCtnMediaBlockGhostBuilder Create(CGameCtnGhost ghostModel) => new(ghostModel);
+
     #endregion
 
     #region Chunks
@@ -116,8 +120,8 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMedia
     {
         private static void ReadWriteBeforeGhost(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw)
         {
-            rw.Single_s(ref n.start);
-            rw.Single_s(ref n.end, n.start.GetValueOrDefault() + TimeSpan.FromSeconds(3));
+            rw.TimeSingle(ref n.start);
+            rw.TimeSingle(ref n.end, n.start.GetValueOrDefault() + TimeSingle.FromSeconds(3));
         }
 
         public override void ReadWrite(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw)
@@ -165,8 +169,8 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMedia
             }
             else
             {
-                rw.Single_s(ref n.start);
-                rw.Single_s(ref n.end, n.start.GetValueOrDefault() + TimeSpan.FromSeconds(3));
+                rw.TimeSingle(ref n.start);
+                rw.TimeSingle(ref n.end, n.start.GetValueOrDefault() + TimeSingle.FromSeconds(3));
             }
         }
 

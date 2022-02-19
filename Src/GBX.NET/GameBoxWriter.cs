@@ -174,23 +174,42 @@ public partial class GameBoxWriter : BinaryWriter
         Write(value.Z);
     }
 
+    public void WriteTimeOfDay(TimeSpan? timeOfDay)
+    {
+        if (timeOfDay is null)
+        {
+            Write(-1);
+            return;
+        }
+
+        Write(Convert.ToInt32(timeOfDay.Value.TotalSeconds / new TimeSpan(23, 59, 59).TotalSeconds * ushort.MaxValue));
+    }
+
     /// <exception cref="ArgumentNullException"><paramref name="fileRef"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write(FileRef fileRef)
     {
         if (fileRef is null)
+        {
             throw new ArgumentNullException(nameof(fileRef));
+        }
 
         Write(fileRef.Version);
 
         if (fileRef.Version >= 3)
+        {
             WriteBytes(fileRef.Checksum ?? FileRef.DefaultChecksum);
+        }
 
         Write(fileRef.FilePath);
 
-        if (fileRef.FilePath is not null && ((fileRef.FilePath.Length > 0 && fileRef.Version >= 1) || fileRef.Version >= 3))
-            Write(fileRef.LocatorUrl?.ToString());
+        if (fileRef.FilePath is not null
+            && ((fileRef.FilePath.Length > 0 && fileRef.Version >= 1)
+                || fileRef.Version >= 3))
+        {
+            Write(fileRef.LocatorUrl);
+        }
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -205,15 +224,15 @@ public partial class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteId(Collection value)
+    public void WriteId(Id value)
     {
         var idState = GetIdState();
 
         WriteIdVersionIfNotWritten(idState);
 
-        if (value.Id is not null)
+        if (value.Index.HasValue)
         {
-            Write(value.Id.Value);
+            Write(value.Index.Value);
             return;
         }
 
@@ -310,13 +329,13 @@ public partial class GameBoxWriter : BinaryWriter
 
         if (StateManager.Shared.ContainsNode(stateGuid, node))
         {
-            Write(StateManager.Shared.GetNodeIndexByNode(stateGuid, node));
+            Write(StateManager.Shared.GetNodeIndexByNode(stateGuid, node) + 1);
             return;
         }
 
-        StateManager.Shared.AddNode(stateGuid, node);
+        var index = StateManager.Shared.AddNode(stateGuid, node);
 
-        Write(StateManager.Shared.GetNodeCount(stateGuid));
+        Write(index + 1);
         Write(Chunk.Remap(node.Id, Settings.Remap));
 
         node.Write(this, logger);
@@ -328,70 +347,108 @@ public partial class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteInt32_s(TimeSpan variable) => Write((int)variable.TotalSeconds);
+    public void WriteInt32_s(ITime variable) => Write((int)variable.TotalSeconds);
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteInt32_ms(TimeSpan variable) => Write((int)variable.TotalMilliseconds);
+    [Obsolete("Prefer using WriteTimeInt32()")]
+    public void WriteInt32_ms(ITime variable) => Write((int)variable.TotalMilliseconds);
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteInt32_sn(TimeSpan? variable)
+    public void WriteInt32_sn(ITime? variable)
     {
-        if (variable.HasValue)
+        if (variable is null)
         {
-            Write((int)variable.Value.TotalSeconds);
+            Write(-1);
             return;
         }
 
-        Write(-1);
+        Write((int)variable.TotalSeconds);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteInt32_msn(TimeSpan? variable)
+    [Obsolete("Prefer using WriteTimeInt32Nullable()")]
+    public void WriteInt32_msn(ITime? variable)
     {
-        if (variable.HasValue)
+        if (variable is null)
         {
-            Write((int)variable.Value.TotalMilliseconds);
+            Write(-1);
             return;
         }
 
-        Write(-1);
+        Write((int)variable.TotalMilliseconds);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteSingle_s(TimeSpan variable) => Write((float)variable.TotalSeconds);
+    [Obsolete("Prefer using WriteTimeSingle()")]
+    public void WriteSingle_s(ITime variable) => Write(variable.TotalSeconds);
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteSingle_ms(TimeSpan variable) => Write((float)variable.TotalMilliseconds);
+    public void WriteSingle_ms(ITime variable) => Write(variable.TotalMilliseconds);
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteSingle_sn(TimeSpan? variable)
+    [Obsolete("Prefer using WriteTimeSingleNullable()")]
+    public void WriteSingle_sn(ITime? variable)
     {
-        if (variable.HasValue)
+        if (variable is null)
         {
-            Write((float)variable.Value.TotalSeconds);
+            Write(-1);
             return;
         }
-
-        Write(-1);
+        
+        Write(variable.TotalSeconds);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteSingle_msn(TimeSpan? variable)
+    public void WriteSingle_msn(ITime? variable)
     {
-        if (variable.HasValue)
+        if (variable is null)
         {
-            Write((float)variable.Value.TotalMilliseconds);
+            Write(-1);
             return;
         }
 
-        Write(-1);
+        Write(variable.TotalMilliseconds);
+    }
+
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public void WriteTimeInt32(ITime variable) => Write((int)variable.TotalMilliseconds);
+
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public void WriteTimeInt32Nullable(ITime? variable)
+    {
+        if (variable is null)
+        {
+            Write(-1);
+            return;
+        }
+
+        Write((int)variable.TotalMilliseconds);
+    }
+
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public void WriteTimeSingle(ITime variable) => Write(variable.TotalSeconds);
+
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public void WriteTimeSingleNullable(ITime? variable)
+    {
+        if (variable is null)
+        {
+            Write(-1);
+            return;
+        }
+
+        Write(variable.TotalSeconds);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -495,6 +552,17 @@ public partial class GameBoxWriter : BinaryWriter
         }
     }
 
+    public void WriteSpan<T>(ReadOnlySpan<T> span) where T : struct
+    {
+        var bytes = MemoryMarshal.Cast<T, byte>(span);
+
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        Write(bytes);
+#else
+        Write(bytes.ToArray());
+#endif
+    }
+
     public void StartIdSubState()
     {
         if (Settings.StateGuid is null)
@@ -526,7 +594,7 @@ public partial class GameBoxWriter : BinaryWriter
     /// Writes any kind of value. Prefer using specified methods for better performance. Supported types are <see cref="byte"/>, <see cref="short"/>, <see cref="int"/>,
     /// <see cref="long"/>, <see cref="float"/>, <see cref="bool"/>, <see cref="string"/>, <see cref="sbyte"/>, <see cref="ushort"/>,
     /// <see cref="uint"/>, <see cref="ulong"/>, <see cref="Byte3"/>, <see cref="Vec2"/>, <see cref="Vec3"/>,
-    /// <see cref="Vec4"/>, <see cref="Int3"/>, <see cref="Collection"/>, and <see cref="Ident"/>.
+    /// <see cref="Vec4"/>, <see cref="Int3"/>, <see cref="Id"/>, and <see cref="Ident"/>.
     /// </summary>
     /// <param name="any">Any supported object.</param>
     /// <exception cref="ArgumentNullException"><paramref name="any"/> is null.</exception>
@@ -555,7 +623,7 @@ public partial class GameBoxWriter : BinaryWriter
             case Vec4       v: Write(v); break;
             case Int2       v: Write(v); break;
             case Int3       v: Write(v); break;
-            case Collection v: Write(v); break;
+            case Id v: Write(v); break;
             case Ident      v: Write(v); break;
 
             default: throw new NotSupportedException($"{any.GetType()} is not supported for Read<T>.");

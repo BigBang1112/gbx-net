@@ -48,22 +48,7 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCt
     {
         public override void ReadWrite(CGameCtnMediaBlockToneMapping n, GameBoxReaderWriter rw)
         {
-            rw.List(ref n.keys!, r => new Key()
-            {
-                Time = r.ReadSingle_s(),
-                Exposure = r.ReadSingle(),
-                MaxHDR = r.ReadSingle(),
-                LightTrailScale = r.ReadSingle(),
-                U01 = r.ReadInt32()
-            },
-            (x, w) =>
-            {
-                w.WriteSingle_s(x.Time);
-                w.Write(x.Exposure);
-                w.Write(x.MaxHDR);
-                w.Write(x.LightTrailScale);
-                w.Write(x.U01);
-            });
+            rw.ListKey(ref n.keys!);
         }
     }
 

@@ -101,7 +101,7 @@ public partial class CGameGhost : CMwNod
             {
                 var ghostData = new Data
                 {
-                    SamplePeriod = TimeSpan.FromMilliseconds(SamplePeriod)
+                    SamplePeriod = TimeInt32.FromMilliseconds(SamplePeriod)
                 };
 
                 using var ms = new MemoryStream(Data);

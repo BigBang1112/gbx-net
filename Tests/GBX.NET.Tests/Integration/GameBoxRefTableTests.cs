@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Text;
+using Xunit;
+
+#if NET6_0_OR_GREATER
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using Xunit;
+#endif
 
 namespace GBX.NET.Tests.Integration;
 
 public class GameBoxRefTableTests
 {
+
+#if NET6_0_OR_GREATER
+
     private readonly JsonSerializerOptions jsonSeralizerOptions;
 
     public static IEnumerable<string> ExampleGbxs { get; } = Directory.GetFiles(Environment.CurrentDirectory, "*.Gbx", SearchOption.AllDirectories);
@@ -77,4 +79,7 @@ public class GameBoxRefTableTests
             Assert.Equal(expectedFolders, actualFolders);
         }
     }
+
+#endif
+
 }

@@ -3,9 +3,8 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
 
-namespace GBX.NET;
+namespace GBX.NET.Managers;
 
 public static class NodeCacheManager
 {

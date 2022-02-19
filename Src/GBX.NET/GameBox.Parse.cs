@@ -511,6 +511,7 @@ public partial class GameBox
     {
         var gbx = ParseHeader(stream, logger: logger);
 
+        var header = gbx.header;
         var node = gbx.Node;
 
         // When the node type isn't recognized, there's also no node instance
@@ -520,12 +521,22 @@ public partial class GameBox
             return gbx;
         }
 
-        var stateGuid = ((IState)node).StateGuid;
+        Guid stateGuid;
 
-        using var bodyR = new GameBoxReader(stream, stateGuid, logger: logger);
+        if (header.UserData.Length == 0)
+        {
+            stateGuid = StateManager.Shared.CreateState(gbx.refTable);
+            ((IState)node).StateGuid = stateGuid;
+        }
+        else
+        {
+            stateGuid = ((IState)node).StateGuid.GetValueOrDefault();
+        }
+
+        using var bodyR = new GameBoxReader(stream, stateGuid, asyncAction, logger);
 
         // Body resets Id (lookback string) list
-        await Body.ReadAsync(node, gbx.header, bodyR, readUncompressedBodyDirectly, logger, asyncAction, cancellationToken);
+        await Body.ReadAsync(node, header, bodyR, readUncompressedBodyDirectly, logger, asyncAction, cancellationToken);
 
         return gbx;
     }

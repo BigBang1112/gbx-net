@@ -65,6 +65,17 @@ public class ChunkSet : SortedSet<Chunk>
         return Create<T>(Array.Empty<byte>());
     }
 
+    public Chunk? Get(uint chunkId)
+    {
+        return this.FirstOrDefault(x => x.Id == chunkId);
+    }
+
+    public bool TryGet(uint chunkId, out Chunk? chunk)
+    {
+        chunk = Get(chunkId);
+        return chunk is not null;
+    }
+
     public T? Get<T>() where T : Chunk
     {
         foreach (var chunk in this)
@@ -81,7 +92,18 @@ public class ChunkSet : SortedSet<Chunk>
     public bool TryGet<T>(out T? chunk) where T : Chunk
     {
         chunk = Get<T>();
-        return chunk != default;
+        return chunk is not null;
+    }
+
+    public ISkippableChunk? GetSkippable(uint chunkId)
+    {
+        return this.FirstOrDefault(x => x.Id == chunkId) as ISkippableChunk;
+    }
+
+    public bool TryGetSkippable(uint chunkId, out ISkippableChunk? chunk)
+    {
+        chunk = GetSkippable(chunkId);
+        return chunk is not null;
     }
 
     public void Discover<TChunk1>() where TChunk1 : ISkippableChunk

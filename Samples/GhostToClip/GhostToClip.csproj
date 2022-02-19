@@ -1,17 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFramework>net5.0</TargetFramework>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<Content Include="..\LICENSE.GPL-3.0-or-later.md">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+	</ItemGroup>
 
-		<ProjectReference Include="..\..\GBX.NET.LZO\GBX.NET.LZO.csproj" />
-		<ProjectReference Include="..\..\GBX.NET\GBX.NET.csproj" />
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Src\GBX.NET.LZO\GBX.NET.LZO.csproj" />
+	  <ProjectReference Include="..\..\Src\GBX.NET\GBX.NET.csproj" />
 	</ItemGroup>
 
 </Project>

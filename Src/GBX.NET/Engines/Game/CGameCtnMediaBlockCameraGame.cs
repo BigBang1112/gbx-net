@@ -31,8 +31,8 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
 
     #region Fields
 
-    public TimeSpan start;
-    public TimeSpan end = TimeSpan.FromSeconds(3);
+    public TimeSingle start;
+    public TimeSingle end = TimeSingle.FromSeconds(3);
     public EGameCam? gameCam1;
     public EGameCam2? gameCam2;
     public int clipEntId = -1;
@@ -43,14 +43,14 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
     #region Properties
 
     [NodeMember]
-    public TimeSpan Start
+    public TimeSingle Start
     {
         get => start;
         set => start = value;
     }
 
     [NodeMember]
-    public TimeSpan End
+    public TimeSingle End
     {
         get => end;
         set => end = value;
@@ -109,8 +109,8 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
 
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
         {
-            rw.Single_s(ref n.start);
-            rw.Single_s(ref n.end);
+            rw.TimeSingle(ref n.start);
+            rw.TimeSingle(ref n.end);
             rw.Int32(ref U01);
         }
     }
@@ -127,8 +127,8 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
     {
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
         {
-            rw.Single_s(ref n.start);
-            rw.Single_s(ref n.end);
+            rw.TimeSingle(ref n.start);
+            rw.TimeSingle(ref n.end);
             rw.EnumInt32<EGameCam>(ref n.gameCam1);
             rw.Int32(ref n.clipEntId);
         }
@@ -146,8 +146,8 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
     {
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
         {
-            rw.Single_s(ref n.start);
-            rw.Single_s(ref n.end);
+            rw.TimeSingle(ref n.start);
+            rw.TimeSingle(ref n.end);
             rw.Id(ref n.gameCam);
             rw.Int32(ref n.clipEntId);
         }
@@ -168,8 +168,8 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
 
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
         {
-            rw.Single_s(ref n.start);
-            rw.Single_s(ref n.end);
+            rw.TimeSingle(ref n.start);
+            rw.TimeSingle(ref n.end);
             rw.Id(ref n.gameCam);
             rw.Int32(ref n.clipEntId);
 
@@ -197,8 +197,8 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
 
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
         {
-            rw.Single_s(ref n.start);
-            rw.Single_s(ref n.end);
+            rw.TimeSingle(ref n.start);
+            rw.TimeSingle(ref n.end);
             rw.Id(ref n.gameCam);
             rw.Int32(ref n.clipEntId);
 
@@ -229,8 +229,8 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
 
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
         {
-            rw.Single_s(ref n.start);
-            rw.Single_s(ref n.end);
+            rw.TimeSingle(ref n.start);
+            rw.TimeSingle(ref n.end);
             rw.Id(ref n.gameCam);
             rw.Int32(ref n.clipEntId);
 
@@ -274,8 +274,8 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
-            rw.Single_s(ref n.start);
-            rw.Single_s(ref n.end);
+            rw.TimeSingle(ref n.start);
+            rw.TimeSingle(ref n.end);
 
             if (version <= 1)
             {

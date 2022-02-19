@@ -2,6 +2,7 @@
 using GBX.NET.Builders.Engines.Game;
 using GBX.NET.Engines.Control;
 using GBX.NET.Engines.Game;
+using GBX.NET.Managers;
 using GBX.NET.Tests.Unit.Builders.Engines.Control;
 using System;
 using System.Collections.Generic;

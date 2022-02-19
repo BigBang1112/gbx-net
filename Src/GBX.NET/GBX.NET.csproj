@@ -5,13 +5,13 @@
 		<AssemblyName>GBX.NET</AssemblyName>
 		<AssemblyTitle>GBX.NET</AssemblyTitle>
 		<Authors>Petr Pivoňka (BigBang1112)</Authors>
-		<Description>Open-source GBX format parser library with writing possibilities for .NET.</Description>
+		<Description>C#/.NET parser for Gbx files from Nadeo games. Supports deserialization of 150+ nodes, where 50%+ can be serialized back to Gbx.</Description>
 		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		
-		<Version>0.15.0-rc</Version>
+		<Version>0.15.0-rc2</Version>
 		<PackageReleaseNotes></PackageReleaseNotes>
 		
 		<TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
@@ -82,7 +82,7 @@
 
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
-	  <PackageReference Include="TmEssentials" Version="2.0.0" />
+	  <PackageReference Include="TmEssentials" Version="2.1.2" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net462'">

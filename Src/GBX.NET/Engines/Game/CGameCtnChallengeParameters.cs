@@ -9,12 +9,12 @@ public class CGameCtnChallengeParameters : CMwNod
     #region Fields
 
     private string tip;
-    private TimeSpan? bronzeTime;
-    private TimeSpan? silverTime;
-    private TimeSpan? goldTime;
-    private TimeSpan? authorTime;
+    private TimeInt32? bronzeTime;
+    private TimeInt32? silverTime;
+    private TimeInt32? goldTime;
+    private TimeInt32? authorTime;
     private int? authorScore;
-    private TimeSpan timeLimit = TimeSpan.FromMinutes(1);
+    private TimeInt32 timeLimit = TimeInt32.FromMinutes(1);
     private CGameCtnGhost? raceValidateGhost;
     private string? mapType;
     private string? mapStyle;
@@ -35,44 +35,76 @@ public class CGameCtnChallengeParameters : CMwNod
     /// Time of the bronze medal.
     /// </summary>
     [NodeMember]
-    public TimeSpan? BronzeTime
+    public TimeInt32? BronzeTime
     {
-        get => bronzeTime;
-        set => bronzeTime = value;
+        get
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            return bronzeTime;
+        }
+        set
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            bronzeTime = value;
+        }
     }
 
     /// <summary>
     /// Time of the silver medal.
     /// </summary>
     [NodeMember]
-    public TimeSpan? SilverTime
+    public TimeInt32? SilverTime
     {
-        get => silverTime;
-        set => silverTime = value;
+        get
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            return silverTime;
+        }
+        set
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            silverTime = value;
+        }
     }
 
     /// <summary>
     /// Time of the gold medal.
     /// </summary>
     [NodeMember]
-    public TimeSpan? GoldTime
+    public TimeInt32? GoldTime
     {
-        get => goldTime;
-        set => goldTime = value;
+        get
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            return goldTime;
+        }
+        set
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            goldTime = value;
+        }
     }
 
     /// <summary>
     /// Time of the author medal.
     /// </summary>
     [NodeMember]
-    public TimeSpan? AuthorTime
+    public TimeInt32? AuthorTime
     {
-        get => authorTime;
-        set => authorTime = value;
+        get
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            return authorTime;
+        }
+        set
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            authorTime = value;
+        }
     }
 
     /// <summary>
-    /// Usually author time or stunt score.
+    /// Usually author time or stunts score.
     /// </summary>
     [NodeMember]
     public int? AuthorScore
@@ -82,13 +114,21 @@ public class CGameCtnChallengeParameters : CMwNod
     }
 
     /// <summary>
-    /// Stunt time limit.
+    /// Stunts time limit.
     /// </summary>
     [NodeMember]
-    public TimeSpan TimeLimit
+    public TimeInt32 TimeLimit
     {
-        get => timeLimit;
-        set => timeLimit = value;
+        get
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            return timeLimit;
+        }
+        set
+        {
+            DiscoverChunk<Chunk0305B00A>();
+            timeLimit = value;
+        }
     }
 
     [NodeMember]
@@ -299,10 +339,10 @@ public class CGameCtnChallengeParameters : CMwNod
 
         public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
         {
-            rw.Int32_msn(ref n.bronzeTime);
-            rw.Int32_msn(ref n.silverTime);
-            rw.Int32_msn(ref n.goldTime);
-            rw.Int32_msn(ref n.authorTime);
+            rw.TimeInt32Nullable(ref n.bronzeTime);
+            rw.TimeInt32Nullable(ref n.silverTime);
+            rw.TimeInt32Nullable(ref n.goldTime);
+            rw.TimeInt32Nullable(ref n.authorTime);
 
             rw.UInt32(ref U01);
         }
@@ -380,7 +420,7 @@ public class CGameCtnChallengeParameters : CMwNod
     {
         public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
         {
-            rw.Int32_ms(ref n.timeLimit);
+            rw.TimeInt32(ref n.timeLimit);
             rw.Int32(ref n.authorScore);
         }
     }
@@ -399,11 +439,11 @@ public class CGameCtnChallengeParameters : CMwNod
         {
             rw.String(ref n.tip!);
 
-            rw.Int32_msn(ref n.bronzeTime);
-            rw.Int32_msn(ref n.silverTime);
-            rw.Int32_msn(ref n.goldTime);
-            rw.Int32_msn(ref n.authorTime);
-            rw.Int32_ms(ref n.timeLimit);
+            rw.TimeInt32Nullable(ref n.bronzeTime);
+            rw.TimeInt32Nullable(ref n.silverTime);
+            rw.TimeInt32Nullable(ref n.goldTime);
+            rw.TimeInt32Nullable(ref n.authorTime);
+            rw.TimeInt32(ref n.timeLimit);
             rw.Int32(ref n.authorScore);
         }
     }

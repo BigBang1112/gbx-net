@@ -110,13 +110,15 @@ public partial class StateManager
 
     public int GetNodeIndexByNode(Guid stateGuid, Node node)
     {
-        return AuxilaryNodeStates[stateGuid].FirstOrDefault(x => x.Equals(node)).Key;
+        return AuxilaryNodeStates[stateGuid].FirstOrDefault(x => x.Value.Equals(node)).Key;
     }
 
-    public void AddNode(Guid stateGuid, Node node)
+    public int AddNode(Guid stateGuid, Node node)
     {
         var dictionary = AuxilaryNodeStates[stateGuid];
-        dictionary[dictionary.Count] = node;
+        var index = dictionary.Count;
+        dictionary[index] = node;
+        return index;
     }
 
     public int GetNodeCount(Guid stateGuid)
@@ -134,9 +136,9 @@ public partial class StateManager
         return ReferenceTableStates[stateGuid]!;
     }
 
-    public static T? GetNodeFromReferenceTable<T>(IStateRefTable state, T? referencingNode, int? nodeIndex) where T : Node
+    public T? GetNodeFromReferenceTable<T>(IStateRefTable state, T? referencingNode, int? nodeIndex) where T : Node
     {
-        return Shared.GetReferenceTable(state.StateGuid.GetValueOrDefault())?
+        return GetReferenceTable(state.StateGuid.GetValueOrDefault())?
             .GetNode(referencingNode, nodeIndex, state.FileName) as T;
     }
 

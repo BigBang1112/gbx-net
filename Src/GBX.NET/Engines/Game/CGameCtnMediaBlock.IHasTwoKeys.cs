@@ -4,7 +4,7 @@ public abstract partial class CGameCtnMediaBlock
 {
     public interface IHasTwoKeys
     {
-        TimeSpan Start { get; set; }
-        TimeSpan End { get; set; }
+        TimeSingle Start { get; set; }
+        TimeSingle End { get; set; }
     }
 }

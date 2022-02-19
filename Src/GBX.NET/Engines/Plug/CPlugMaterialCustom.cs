@@ -116,7 +116,7 @@ public class CPlugMaterialCustom : CPlug
 
         public CPlugBitmap? Bitmap
         {
-            get => bitmap = StateManager.GetNodeFromReferenceTable(state, bitmap, bitmapIndex);
+            get => bitmap = StateManager.Shared.GetNodeFromReferenceTable(state, bitmap, bitmapIndex);
             set => bitmap = value;
         }
 

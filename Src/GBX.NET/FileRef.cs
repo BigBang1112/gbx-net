@@ -26,7 +26,7 @@ public record FileRef
     /// <summary>
     /// Url of the locator.
     /// </summary>
-    public Uri? LocatorUrl { get; init; }
+    public string? LocatorUrl { get; init; }
 
     /// <summary>
     /// Empty file reference version 3.
@@ -51,24 +51,17 @@ public record FileRef
         Version = version;
         Checksum = checksum;
         FilePath = filePath;
-
-        Uri.TryCreate(locatorUrl, UriKind.Absolute, out Uri? uri);
-        LocatorUrl = uri;
+        LocatorUrl = locatorUrl;
     }
 
-    /// <summary>
-    /// File reference.
-    /// </summary>
-    /// <param name="version">Version of the file reference.</param>
-    /// <param name="checksum">File checksum, should be null if <c><paramref name="version"/> &lt; 3</c>.</param>
-    /// <param name="filePath">If <c><paramref name="version"/> &gt; 1</c>, relative to user folder, else relative to Skins folder.</param>
-    /// <param name="locatorUrl"><see cref="Uri"/> of the locator.</param>
-    public FileRef(byte version, byte[]? checksum, string? filePath, Uri? locatorUrl)
+    public Uri? GetLocatorUri()
     {
-        Version = version;
-        Checksum = checksum;
-        FilePath = filePath;
-        LocatorUrl = locatorUrl;
+        if (LocatorUrl is null)
+        {
+            return null;
+        }
+
+        return new Uri(LocatorUrl);
     }
 
     /// <summary>
@@ -94,7 +87,7 @@ public record FileRef
         public byte Version => fileRef.Version;
         public string Checksum => Convert.ToBase64String(fileRef.Checksum ?? Array.Empty<byte>());
         public string? FilePath => fileRef.FilePath;
-        public Uri? LocatorUrl => fileRef.LocatorUrl;
+        public string? LocatorUrl => fileRef.LocatorUrl;
 
         public DebugView(FileRef fileRef) => this.fileRef = fileRef;
     }

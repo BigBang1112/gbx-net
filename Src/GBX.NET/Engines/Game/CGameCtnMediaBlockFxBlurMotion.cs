@@ -9,22 +9,22 @@ public class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur, CGameCtn
 {
     #region Fields
 
-    public TimeSpan start;
-    public TimeSpan end = TimeSpan.FromSeconds(3);
+    public TimeSingle start;
+    public TimeSingle end = TimeSingle.FromSeconds(3);
 
     #endregion
 
     #region Properties
 
     [NodeMember]
-    public TimeSpan Start
+    public TimeSingle Start
     {
         get => start;
         set => start = value;
     }
 
     [NodeMember]
-    public TimeSpan End
+    public TimeSingle End
     {
         get => end;
         set => end = value;
@@ -50,8 +50,8 @@ public class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur, CGameCtn
     {
         public override void ReadWrite(CGameCtnMediaBlockFxBlurMotion n, GameBoxReaderWriter rw)
         {
-            rw.Single_s(ref n.start);
-            rw.Single_s(ref n.end);
+            rw.TimeSingle(ref n.start);
+            rw.TimeSingle(ref n.end);
         }
     }
 

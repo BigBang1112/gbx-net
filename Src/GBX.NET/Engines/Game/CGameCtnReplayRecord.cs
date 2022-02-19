@@ -15,7 +15,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     #region Fields
 
     private Ident? mapInfo;
-    private TimeSpan? time;
+    private TimeInt32? time;
     private string? playerNickname;
     private string? playerLogin;
     private string? titleID;
@@ -59,7 +59,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// The record time.
     /// </summary>
     [NodeMember]
-    public TimeSpan? Time => time;
+    public TimeInt32? Time => time;
 
     /// <summary>
     /// Nickname of the record owner.
@@ -285,7 +285,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             if (Version >= 2)
             {
                 n.mapInfo = r.ReadIdent();
-                n.time = r.ReadInt32_msn();
+                n.time = r.ReadTimeInt32Nullable();
                 n.playerNickname = r.ReadString();
 
                 if (Version >= 6)
@@ -383,7 +383,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
             for (var i = 0; i < numEntries; i++)
             {
-                var time = TimeSpan.FromMilliseconds(r.ReadInt32() - 10000);
+                var time = TimeInt32.FromMilliseconds(r.ReadInt32() - 10000);
                 var controlNameIndex = r.ReadInt32();
                 var data = r.ReadUInt32();
 
@@ -391,8 +391,8 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
                 n.controlEntries[i] = name switch
                 {
-                    "Steer (analog)" => new ControlEntryAnalog(name) { Time = time, Data = data }, // Data is bugged
-                    _ => new ControlEntry(name) { Time = time, Data = data },
+                    "Steer (analog)" => new ControlEntryAnalog(name, time, data), // Data is bugged
+                    _ => new ControlEntry(name, time, data),
                 };
             }
 
@@ -526,7 +526,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
             for (var i = 0; i < numEntries; i++)
             {
-                var time = TimeSpan.FromMilliseconds(r.ReadInt32() - 100000);
+                var time = TimeInt32.FromMilliseconds(r.ReadInt32() - 100000);
                 var controlNameIndex = r.ReadByte();
                 var data = r.ReadUInt32();
 
@@ -535,8 +535,8 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
                 n.controlEntries[i] = (string)name switch
                 {
                     "Steer" or "Gas" or "AccelerateReal" or "BrakeReal"
-                      => new ControlEntryAnalog(name) { Time = time, Data = data },
-                    _ => new ControlEntry(name) { Time = time, Data = data },
+                      => new ControlEntryAnalog(name, time, data),
+                    _ => new ControlEntry(name, time, data),
                 };
             }
         }
