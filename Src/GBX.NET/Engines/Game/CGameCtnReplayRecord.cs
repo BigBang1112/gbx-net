@@ -285,7 +285,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             if (Version >= 2)
             {
                 n.mapInfo = r.ReadIdent();
-                n.time = r.ReadInt32_msn();
+                n.time = r.ReadTimeInt32Nullable();
                 n.playerNickname = r.ReadString();
 
                 if (Version >= 6)

@@ -10,10 +10,10 @@ public class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock, CGameCtnMediaB
     #region Properties
 
     [NodeMember]
-    public TimeSpan Start { get; set; }
+    public TimeSingle Start { get; set; }
 
     [NodeMember]
-    public TimeSpan End { get; set; } = TimeSpan.FromSeconds(3);
+    public TimeSingle End { get; set; } = TimeSingle.FromSeconds(3);
 
     [NodeMember]
     public int Target { get; set; }
@@ -38,8 +38,8 @@ public class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock, CGameCtnMediaB
     {
         public override void ReadWrite(CGameCtnMediaBlockVehicleLight n, GameBoxReaderWriter rw)
         {
-            n.Start = rw.Single_s(n.Start);
-            n.End = rw.Single_s(n.End);
+            n.Start = rw.TimeSingle(n.Start);
+            n.End = rw.TimeSingle(n.End);
         }
     }
 

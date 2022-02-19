@@ -347,70 +347,108 @@ public partial class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteInt32_s(TimeSpan variable) => Write((int)variable.TotalSeconds);
+    public void WriteInt32_s(ITime variable) => Write((int)variable.TotalSeconds);
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteInt32_ms(TimeSpan variable) => Write((int)variable.TotalMilliseconds);
+    [Obsolete("Prefer using WriteTimeInt32()")]
+    public void WriteInt32_ms(ITime variable) => Write((int)variable.TotalMilliseconds);
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteInt32_sn(TimeSpan? variable)
+    public void WriteInt32_sn(ITime? variable)
     {
-        if (variable.HasValue)
+        if (variable is null)
         {
-            Write((int)variable.Value.TotalSeconds);
+            Write(-1);
             return;
         }
 
-        Write(-1);
+        Write((int)variable.TotalSeconds);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteInt32_msn(TimeSpan? variable)
+    [Obsolete("Prefer using WriteTimeInt32Nullable()")]
+    public void WriteInt32_msn(ITime? variable)
     {
-        if (variable.HasValue)
+        if (variable is null)
         {
-            Write((int)variable.Value.TotalMilliseconds);
+            Write(-1);
             return;
         }
 
-        Write(-1);
+        Write((int)variable.TotalMilliseconds);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteSingle_s(TimeSpan variable) => Write((float)variable.TotalSeconds);
+    [Obsolete("Prefer using WriteTimeSingle()")]
+    public void WriteSingle_s(ITime variable) => Write(variable.TotalSeconds);
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteSingle_ms(TimeSpan variable) => Write((float)variable.TotalMilliseconds);
+    public void WriteSingle_ms(ITime variable) => Write(variable.TotalMilliseconds);
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteSingle_sn(TimeSpan? variable)
+    [Obsolete("Prefer using WriteTimeSingleNullable()")]
+    public void WriteSingle_sn(ITime? variable)
     {
-        if (variable.HasValue)
+        if (variable is null)
         {
-            Write((float)variable.Value.TotalSeconds);
+            Write(-1);
             return;
         }
-
-        Write(-1);
+        
+        Write(variable.TotalSeconds);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteSingle_msn(TimeSpan? variable)
+    public void WriteSingle_msn(ITime? variable)
     {
-        if (variable.HasValue)
+        if (variable is null)
         {
-            Write((float)variable.Value.TotalMilliseconds);
+            Write(-1);
             return;
         }
 
-        Write(-1);
+        Write(variable.TotalMilliseconds);
+    }
+
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public void WriteTimeInt32(ITime variable) => Write((int)variable.TotalMilliseconds);
+
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public void WriteTimeInt32Nullable(ITime? variable)
+    {
+        if (variable is null)
+        {
+            Write(-1);
+            return;
+        }
+
+        Write((int)variable.TotalMilliseconds);
+    }
+
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public void WriteTimeSingle(ITime variable) => Write(variable.TotalSeconds);
+
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public void WriteTimeSingleNullable(ITime? variable)
+    {
+        if (variable is null)
+        {
+            Write(-1);
+            return;
+        }
+
+        Write(variable.TotalSeconds);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>

@@ -4,18 +4,18 @@ public abstract partial class CGameCtnMediaBlock
 {
     public abstract class Key : IReadableWritable, ICloneable
     {
-        private TimeSpan time;
+        private TimeSingle time;
 
-        public TimeSpan Time { get => time; set => time = value; }
+        public TimeSingle Time { get => time; set => time = value; }
 
         protected Key()
         {
-
+            
         }
 
         protected Key(GameBoxReader r)
         {
-            Time = r.ReadSingle_s();
+            time = r.ReadTimeSingle();
         }
 
         public Key Clone()
@@ -36,12 +36,12 @@ public abstract partial class CGameCtnMediaBlock
         /// <param name="version">Version to determine how to read the key.</param>
         public virtual void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
-            rw.Single_s(ref time);
+            rw.TimeSingle(ref time);
         }
 
         public override string ToString()
         {
-            return $"{GetType().Name} {{ Time: {time.ToTmString(useHundredths: true)} }}";
+            return $"{GetType().Name} {{ Time: {time} }}";
         }
     }
 }

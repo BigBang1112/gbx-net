@@ -51,10 +51,10 @@ public partial class CGameCtnMediaBlockTime : CGameCtnMediaBlock, CGameCtnMediaB
 
                 r.BaseStream.Seek(-bytes.Length, SeekOrigin.Current);
 
-                n.Keys = r.ReadList(numKeys, r1 => new Key()
+                n.Keys = r.ReadList(numKeys, r => new Key()
                 {
-                    Time = r1.ReadSingle_s(),
-                    TimeValue = r1.ReadSingle()
+                    Time = r.ReadTimeSingle(),
+                    TimeValue = r.ReadSingle()
                 });
 
                 return;
@@ -64,11 +64,11 @@ public partial class CGameCtnMediaBlockTime : CGameCtnMediaBlock, CGameCtnMediaB
 
             r.BaseStream.Seek(-bytes.Length, SeekOrigin.Current);
 
-            n.Keys = r.ReadList(numKeys, r1 => new Key()
+            n.Keys = r.ReadList(numKeys, r => new Key()
             {
-                Time = r1.ReadSingle_s(),
-                TimeValue = r1.ReadSingle(),
-                Tangent = r1.ReadSingle()
+                Time = r.ReadTimeSingle(),
+                TimeValue = r.ReadSingle(),
+                Tangent = r.ReadSingle()
             });
         }
 
@@ -76,20 +76,20 @@ public partial class CGameCtnMediaBlockTime : CGameCtnMediaBlock, CGameCtnMediaB
         {
             if (n.IsTM2)
             {
-                w.Write(n.Keys, (x, w1) =>
+                w.Write(n.Keys, (x, w) =>
                 {
-                    w1.WriteSingle_s(x.Time);
-                    w1.Write(x.TimeValue);
+                    w.WriteTimeSingle(x.Time);
+                    w.Write(x.TimeValue);
                 });
 
                 return;
             }
 
-            w.Write(n.Keys, (x, w1) =>
+            w.Write(n.Keys, (x, w) =>
             {
-                w1.WriteSingle_s(x.Time);
-                w1.Write(x.TimeValue);
-                w1.Write(x.Tangent);
+                w.WriteTimeSingle(x.Time);
+                w.Write(x.TimeValue);
+                w.Write(x.Tangent);
             });
         }
     }

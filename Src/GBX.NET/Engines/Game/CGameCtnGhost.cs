@@ -22,7 +22,7 @@ public partial class CGameCtnGhost : CGameGhost
     private string? ghostTrigram;
     private string? ghostZone;
     private string? ghostUid;
-    private TimeSpan? raceTime;
+    private TimeInt32? raceTime;
     private int? respawns;
     private Vec3? lightTrailColor;
     private int? stuntScore;
@@ -119,7 +119,7 @@ public partial class CGameCtnGhost : CGameGhost
     }
 
     [NodeMember]
-    public TimeSpan? RaceTime
+    public TimeInt32? RaceTime
     {
         get
         {
@@ -488,7 +488,7 @@ public partial class CGameCtnGhost : CGameGhost
     {
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
-            rw.Int32_msn(ref n.raceTime);
+            rw.TimeInt32Nullable(ref n.raceTime);
         }
     }
 
@@ -574,8 +574,8 @@ public partial class CGameCtnGhost : CGameGhost
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
             rw.Array(ref n.checkpoints,
-                (i, r) => new Checkpoint(r.ReadInt32_msn(), r.ReadInt32()),
-                (x, w) => { w.WriteInt32_msn(x.Time); w.Write(x.StuntsScore); }
+                (i, r) => new Checkpoint(r.ReadTimeInt32Nullable(), r.ReadInt32()),
+                (x, w) => { w.WriteTimeInt32Nullable(x.Time); w.Write(x.StuntsScore); }
             );
         }
     }

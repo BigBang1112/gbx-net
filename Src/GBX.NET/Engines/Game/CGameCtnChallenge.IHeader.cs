@@ -7,22 +7,22 @@ public partial class CGameCtnChallenge
         /// <summary>
         /// Time of the bronze medal.
         /// </summary>
-        TimeSpan? TMObjective_BronzeTime { get; set; }
+        TimeInt32? TMObjective_BronzeTime { get; set; }
 
         /// <summary>
         /// Time of the silver medal.
         /// </summary>
-        TimeSpan? TMObjective_SilverTime { get; set; }
+        TimeInt32? TMObjective_SilverTime { get; set; }
 
         /// <summary>
         /// Time of the gold medal.
         /// </summary>
-        TimeSpan? TMObjective_GoldTime { get; set; }
+        TimeInt32? TMObjective_GoldTime { get; set; }
 
         /// <summary>
         /// Time of the author medal.
         /// </summary>
-        TimeSpan? TMObjective_AuthorTime { get; set; }
+        TimeInt32? TMObjective_AuthorTime { get; set; }
 
         /// <summary>
         /// Display cost of the track (or copper cost) explaining the performance of the map.

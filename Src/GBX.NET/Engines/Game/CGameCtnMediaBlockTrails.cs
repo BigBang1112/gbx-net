@@ -9,22 +9,22 @@ public class CGameCtnMediaBlockTrails : CGameCtnMediaBlock, CGameCtnMediaBlock.I
 {
     #region Fields
 
-    private TimeSpan start;
-    private TimeSpan end = TimeSpan.FromSeconds(3);
+    private TimeSingle start = TimeSingle.Zero;
+    private TimeSingle end = TimeSingle.FromSeconds(3);
 
     #endregion
 
     #region Properties
 
     [NodeMember]
-    public TimeSpan Start
+    public TimeSingle Start
     {
         get => start;
         set => start = value;
     }
 
     [NodeMember]
-    public TimeSpan End
+    public TimeSingle End
     {
         get => end;
         set => end = value;
@@ -50,8 +50,8 @@ public class CGameCtnMediaBlockTrails : CGameCtnMediaBlock, CGameCtnMediaBlock.I
     {
         public override void ReadWrite(CGameCtnMediaBlockTrails n, GameBoxReaderWriter rw)
         {
-            rw.Single_s(ref n.start);
-            rw.Single_s(ref n.end);
+            rw.TimeSingle(ref n.start);
+            rw.TimeSingle(ref n.end);
         }
     }
 

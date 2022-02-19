@@ -3,106 +3,144 @@
 public partial class GameBoxReader
 {
     /// <summary>
-    /// Reads a 4-byte signed integer from the current stream and advances the current position of the stream by four bytes.
-    /// The integer is then presented as time in seconds.
+    /// Reads an <see cref="int"/>, which is then presented as time in milliseconds.
     /// </summary>
-    /// <returns>A TimeSpan converted from the integer.</returns>
+    /// <returns>A <see cref="TimeInt32"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan ReadInt32_s() => TimeSpan.FromSeconds(ReadInt32());
+    public TimeInt32 ReadTimeInt32() => new(TotalMilliseconds: ReadInt32());
 
     /// <summary>
-    /// Reads a 4-byte signed integer from the current stream and advances the current position of the stream by four bytes.
-    /// The integer is then presented as time in milliseconds.
+    /// Reads an <see cref="int"/>, which is then presented as time in milliseconds. If value is -1, a null is returned instead.
     /// </summary>
-    /// <returns>A TimeSpan converted from the integer.</returns>
+    /// <returns>A <see cref="TimeInt32"/>. Null if the read value is -1.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan ReadInt32_ms() => TimeSpan.FromMilliseconds(ReadInt32());
+    public TimeInt32? ReadTimeInt32Nullable()
+    {
+        var totalMilliseconds = ReadInt32();
+        if (totalMilliseconds < 0) return null;
+        return new TimeInt32(totalMilliseconds);
+    }
 
     /// <summary>
-    /// Reads a 4-byte signed integer from the current stream and advances the current position of the stream by four bytes.
-    /// The integer is then presented as time in seconds. If value is -1, a null is returned instead.
+    /// Reads a <see cref="float"/>, which is then presented as time in seconds.
     /// </summary>
-    /// <returns>A TimeSpan converted from the integer. Null if the read value is -1.</returns>
+    /// <returns>A <see cref="TimeSingle"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan? ReadInt32_sn()
+    public TimeSingle ReadTimeSingle() => new(TotalSeconds: ReadSingle());
+
+    /// <summary>
+    /// Reads a <see cref="float"/>, which is then presented as time in seconds. If value is -1, a null is returned instead.
+    /// </summary>
+    /// <returns>A <see cref="TimeSingle"/>. Null if the read value is -1.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public TimeSingle? ReadTimeSingleNullable()
+    {
+        var totalSeconds = ReadSingle();
+        if (totalSeconds < 0) return null;
+        return new TimeSingle(totalSeconds);
+    }
+
+    /// <summary>
+    /// Reads an <see cref="int"/>, which is then presented as time in seconds.
+    /// </summary>
+    /// <returns>A <see cref="TimeInt32"/>.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public TimeInt32 ReadInt32_s() => TimeInt32.FromSeconds(ReadInt32());
+
+    /// <summary>
+    /// Reads an <see cref="int"/>, which is then presented as time in milliseconds.
+    /// </summary>
+    /// <returns>A <see cref="TimeInt32"/>.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    [Obsolete("Prefer using ReadTimeInt32()")]
+    public TimeInt32 ReadInt32_ms() => TimeInt32.FromMilliseconds(ReadInt32());
+
+    /// <summary>
+    /// Reads an <see cref="int"/>, which is then presented as time in seconds. If value is -1, a null is returned instead.
+    /// </summary>
+    /// <returns>A <see cref="TimeInt32"/>. Null if the read value is -1.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public TimeInt32? ReadInt32_sn()
     {
         var time = ReadInt32();
-        if (time < 0)
-            return null;
-        return TimeSpan.FromSeconds(time);
+        if (time < 0) return null;
+        return TimeInt32.FromSeconds(time);
     }
 
     /// <summary>
-    /// Reads a 4-byte signed integer from the current stream and advances the current position of the stream by four bytes.
-    /// The integer is then presented as time in milliseconds. If value is -1, a null is returned instead.
+    /// Reads an <see cref="int"/>, which is then presented as time in milliseconds. If value is -1, a null is returned instead.
     /// </summary>
-    /// <returns>A TimeSpan converted from the integer. Null if the read value is -1.</returns>
+    /// <returns>A <see cref="TimeInt32"/>. Null if the read value is -1.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan? ReadInt32_msn()
+    [Obsolete("Prefer using ReadTimeInt32Nullable()")]
+    public TimeInt32? ReadInt32_msn()
     {
         var time = ReadInt32();
-        if (time < 0)
-            return null;
-        return TimeSpan.FromMilliseconds(time);
+        if (time < 0) return null;
+        return TimeInt32.FromMilliseconds(time);
     }
 
     /// <summary>
-    /// Reads a 4-byte floating point value from the current stream and advances the current position of the stream by four bytes.
-    /// The floating point value is then presented as time in seconds.
+    /// Reads a <see cref="float"/>, which is then presented as time in seconds.
     /// </summary>
-    /// <returns>A TimeSpan converted from the floating point value.</returns>
+    /// <returns>A <see cref="TimeSingle"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan ReadSingle_s() => TimeSpan.FromSeconds(ReadSingle());
+    [Obsolete("Prefer using ReadTimeSingle()")]
+    public TimeSingle ReadSingle_s() => TimeSingle.FromSeconds(ReadSingle());
 
     /// <summary>
-    /// Reads a 4-byte floating point value from the current stream and advances the current position of the stream by four bytes.
-    /// The floating point value is then presented as time in milliseconds.
+    /// Reads a <see cref="float"/>, which is then presented as time in milliseconds.
     /// </summary>
-    /// <returns>A TimeSpan converted from the floating point value.</returns>
+    /// <returns>A <see cref="TimeSingle"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan ReadSingle_ms() => TimeSpan.FromMilliseconds(ReadSingle());
+    public TimeSingle ReadSingle_ms() => TimeSingle.FromMilliseconds(ReadSingle());
 
     /// <summary>
-    /// Reads a 4-byte floating point value from the current stream and advances the current position of the stream by four bytes.
-    /// The floating point value is then presented as time in seconds. If value is -1, a null is returned instead.
+    /// Reads a <see cref="float"/>, which is then presented as time in seconds. If value is -1, a null is returned instead.
     /// </summary>
-    /// <returns>A TimeSpan converted from the floating point value. Null if the read value is -1.</returns>
+    /// <returns>A <see cref="TimeSingle"/>. Null if the read value is -1.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan? ReadSingle_sn()
+    [Obsolete("Prefer using ReadTimeSingleNullable()")]
+    public TimeSingle? ReadSingle_sn()
     {
         var time = ReadSingle();
-        if (time < 0)
-            return null;
-        return TimeSpan.FromSeconds(time);
+        if (time < 0) return null;
+        return TimeSingle.FromSeconds(time);
     }
 
     /// <summary>
-    /// Reads a 4-byte floating point value from the current stream and advances the current position of the stream by four bytes.
-    /// The floating point value is then presented as time in milliseconds. If value is -1, a null is returned instead.
+    /// Reads a <see cref="float"/>, which is then presented as time in milliseconds. If value is -1, a null is returned instead.
     /// </summary>
-    /// <returns>A TimeSpan converted from the floating point value. Null if the read value is -1.</returns>
+    /// <returns>A <see cref="TimeSingle"/>. Null if the read value is -1.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public TimeSpan? ReadSingle_msn()
+    public TimeSingle? ReadSingle_msn()
     {
         var time = ReadSingle();
-        if (time < 0)
-            return null;
-        return TimeSpan.FromMilliseconds(time);
+        if (time < 0) return null;
+        return TimeSingle.FromMilliseconds(time);
     }
 }

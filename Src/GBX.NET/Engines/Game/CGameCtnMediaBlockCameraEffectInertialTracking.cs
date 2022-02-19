@@ -8,8 +8,8 @@ public class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMediaBlock
 {
     #region Fields
 
-    private TimeSpan start;
-    private TimeSpan end = TimeSpan.FromSeconds(3);
+    private TimeSingle start;
+    private TimeSingle end = new TimeSingle(3);
     private bool tracking;
     private bool autoFocus;
     private bool autoZoom;
@@ -19,14 +19,14 @@ public class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMediaBlock
     #region Properties
 
     [NodeMember]
-    public TimeSpan Start
+    public TimeSingle Start
     {
         get => start;
         set => start = value;
     }
 
     [NodeMember]
-    public TimeSpan End
+    public TimeSingle End
     {
         get => end;
         set => end = value;
@@ -85,8 +85,8 @@ public class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMediaBlock
         public override void ReadWrite(CGameCtnMediaBlockCameraEffectInertialTracking n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
-            rw.Single_s(ref n.start);
-            rw.Single_s(ref n.end);
+            rw.TimeSingle(ref n.start);
+            rw.TimeSingle(ref n.end);
             rw.Boolean(ref n.tracking);
             rw.Boolean(ref n.autoZoom);
             rw.Boolean(ref n.autoFocus);

@@ -140,10 +140,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #region Fields
 
-    private TimeSpan? bronzeTime; // Only used if ChallengeParameters is null
-    private TimeSpan? silverTime; // Only used if ChallengeParameters is null
-    private TimeSpan? goldTime; // Only used if ChallengeParameters is null
-    private TimeSpan? authorTime; // Only used if ChallengeParameters is null
+    private TimeInt32? bronzeTime; // Only used if ChallengeParameters is null
+    private TimeInt32? silverTime; // Only used if ChallengeParameters is null
+    private TimeInt32? goldTime; // Only used if ChallengeParameters is null
+    private TimeInt32? authorTime; // Only used if ChallengeParameters is null
     private int? cost;
     private EditorMode editor;
     private int? authorScore;
@@ -208,7 +208,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     private byte[]? originalEmbedZip;
     private TimeSpan? dayTime;
     private bool dynamicDaylight;
-    private TimeSpan? dayDuration;
+    private TimeInt32? dayDuration;
 
     #endregion
 
@@ -226,7 +226,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Time of the bronze medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
     [NodeMember]
-    public TimeSpan? TMObjective_BronzeTime
+    public TimeInt32? TMObjective_BronzeTime
     {
         get
         {
@@ -246,7 +246,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Time of the silver medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
     [NodeMember]
-    public TimeSpan? TMObjective_SilverTime
+    public TimeInt32? TMObjective_SilverTime
     {
         get
         {
@@ -266,7 +266,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Time of the gold medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
     [NodeMember]
-    public TimeSpan? TMObjective_GoldTime
+    public TimeInt32? TMObjective_GoldTime
     {
         get
         {
@@ -286,7 +286,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Time of the author medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
     [NodeMember]
-    public TimeSpan? TMObjective_AuthorTime
+    public TimeInt32? TMObjective_AuthorTime
     {
         get
         {
@@ -1246,7 +1246,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Duration of the day defined in real time. Available since ManiaPlanet 4.
     /// </summary>
     [NodeMember]
-    public TimeSpan? DayDuration
+    public TimeInt32? DayDuration
     {
         get
         {
@@ -1997,7 +1997,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         public int StartTime { get; set; }
 
-        public TimeSpan TimeLimit { get; set; }
+        public ITime TimeLimit { get; set; } = TimeInt32.Zero;
 
         public bool NoPenalty { get; set; }
 
@@ -2073,7 +2073,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             if (version >= 2)
             {
-                TimeLimit = TimeSpan.FromMilliseconds(rw.Int32(Convert.ToInt32(TimeLimit.TotalMilliseconds)));
+                TimeLimit = TimeInt32.FromMilliseconds(rw.Int32((int)TimeLimit.TotalMilliseconds));
                 NoPenalty = rw.Boolean(NoPenalty);
                 InflPenalty = rw.Boolean(InflPenalty);
                 FinishFirst = rw.Boolean(FinishFirst);
@@ -2170,10 +2170,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             if (version >= 1)
             {
-                rw.Int32_msn(ref n.bronzeTime);
-                rw.Int32_msn(ref n.silverTime);
-                rw.Int32_msn(ref n.goldTime);
-                rw.Int32_msn(ref n.authorTime);
+                rw.TimeInt32Nullable(ref n.bronzeTime);
+                rw.TimeInt32Nullable(ref n.silverTime);
+                rw.TimeInt32Nullable(ref n.goldTime);
+                rw.TimeInt32Nullable(ref n.authorTime);
 
                 if (version == 2)
                     rw.Byte(ref U02);
@@ -3975,7 +3975,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             rw.TimeOfDay(ref n.dayTime);
             rw.Int32(0);
             rw.Boolean(ref n.dynamicDaylight);
-            rw.Int32_msn(ref n.dayDuration);
+            rw.TimeInt32Nullable(ref n.dayDuration);
         }
     }
 

@@ -130,7 +130,7 @@ public abstract class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, CGameCtn
         {
             n.keys = r.ReadList(r1 => new Key(n)
             {
-                Time = r1.ReadSingle_s()
+                Time = r1.ReadTimeSingle()
             });
 
             var numKeys = r.ReadInt32();
@@ -159,7 +159,7 @@ public abstract class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, CGameCtn
 
         public override void Write(CGameCtnMediaBlockTriangles n, GameBoxWriter w)
         {
-            w.Write(n.keys, (x, w1) => w1.WriteSingle_s(x.Time));
+            w.Write(n.keys, (x, w1) => w1.WriteTimeSingle(x.Time));
             w.Write(n.keys.Count);
             w.Write(n.vertices.Length);
 

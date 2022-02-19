@@ -12,8 +12,8 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
 
     private string script;
     private IList<Key>? keys;
-    private TimeSpan? start;
-    private TimeSpan? end;
+    private TimeSingle? start;
+    private TimeSingle? end;
 
     #endregion
 
@@ -25,15 +25,15 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
         set => keys = value.Cast<Key>().ToList();
     }
 
-    TimeSpan IHasTwoKeys.Start
+    TimeSingle IHasTwoKeys.Start
     {
-        get => start.GetValueOrDefault();
+        get => start ?? TimeSingle.Zero;
         set => start = value;
     }
 
-    TimeSpan IHasTwoKeys.End
+    TimeSingle IHasTwoKeys.End
     {
-        get => end.GetValueOrDefault(start.GetValueOrDefault() + TimeSpan.FromSeconds(3));
+        get => end.GetValueOrDefault(start.GetValueOrDefault() + TimeSingle.FromSeconds(3));
         set => end = value;
     }
 
@@ -52,14 +52,14 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
     }
 
     [NodeMember]
-    public TimeSpan? Start
+    public TimeSingle? Start
     {
         get => start;
         set => start = value;
     }
 
     [NodeMember]
-    public TimeSpan? End
+    public TimeSingle? End
     {
         get => end;
         set => end = value;
@@ -101,8 +101,8 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
 
             if (version == 0)
             {
-                rw.Single_s(ref n.start);
-                rw.Single_s(ref n.end, n.start.GetValueOrDefault() + TimeSpan.FromSeconds(3));
+                rw.TimeSingle(ref n.start);
+                rw.TimeSingle(ref n.end, n.start.GetValueOrDefault() + TimeSingle.FromSeconds(3));
 
                 return;
             }

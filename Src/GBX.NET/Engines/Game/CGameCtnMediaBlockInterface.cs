@@ -9,8 +9,8 @@ public class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, CGameCtnMediaBloc
 {
     #region Fields
 
-    private TimeSpan start;
-    private TimeSpan end = TimeSpan.FromSeconds(3);
+    private TimeSingle start;
+    private TimeSingle end = TimeSingle.FromSeconds(3);
     private bool showInterface;
     private string manialink;
 
@@ -19,14 +19,14 @@ public class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, CGameCtnMediaBloc
     #region Properties
 
     [NodeMember]
-    public TimeSpan Start
+    public TimeSingle Start
     {
         get => start;
         set => start = value;
     }
 
     [NodeMember]
-    public TimeSpan End
+    public TimeSingle End
     {
         get => end;
         set => end = value;
@@ -75,8 +75,8 @@ public class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, CGameCtnMediaBloc
         public override void ReadWrite(CGameCtnMediaBlockInterface n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
-            rw.Single_s(ref n.start);
-            rw.Single_s(ref n.end);
+            rw.TimeSingle(ref n.start);
+            rw.TimeSingle(ref n.end);
             rw.Boolean(ref n.showInterface);
             rw.String(ref n.manialink!);
         }
