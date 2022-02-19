@@ -5,6 +5,7 @@ using System.Linq;
 using GBX.NET;
 using GBX.NET.Engines.Game;
 using Microsoft.Extensions.Logging;
+using TmEssentials;
 
 var fileName = args.FirstOrDefault();
 
@@ -33,7 +34,7 @@ if (node is not CGameCtnGhost ghost)
 
 var ghostMediaBlock = CGameCtnMediaBlockGhost.Create(ghost)
     .ForTMUF()
-    .EndingAt(ghost.RaceTime.GetValueOrDefault(TimeSpan.FromSeconds(3)) + TimeSpan.FromSeconds(3))
+    .EndingAt(ghost.RaceTime.GetValueOrDefault(TimeInt32.FromSeconds(3)) + TimeInt32.FromSeconds(3))
     .Build();
 
 var track = CGameCtnMediaTrack.Create()
