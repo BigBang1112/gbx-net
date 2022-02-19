@@ -1,0 +1,40 @@
+name: Publish
+
+on:
+  release:
+    types: [ published ]
+
+env:
+  NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+  NUGET_SOURCE: https://api.nuget.org/v3/index.json
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_SOURCE: https://nuget.pkg.github.com/bigbang1112/index.json
+
+jobs:
+  build:
+
+    if: "github.event.release.prerelease"
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: |
+          6.0.x
+          3.1.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build -c Release --no-restore
+    - name: Test
+      run: dotnet test -c Release --no-build --verbosity normal
+
+    - name: Create the GBX.NET package
+      run: dotnet pack Src/GBX.NET -c Release
+    - name: Publish the GBX.NET package to nuget.org
+      run: dotnet nuget push Src/GBX.NET/bin/Release/*.nupkg -k $NUGET_API_KEY -s $NUGET_SOURCE
+    - name: Publish the GBX.NET package to github.com
+      run: dotnet nuget push Src/GBX.NET/bin/Release/*.nupkg -k $GITHUB_TOKEN -s $GITHUB_SOURCE
