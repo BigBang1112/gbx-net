@@ -229,6 +229,16 @@ if (replay.Ghosts is not null)
 }
 ```
 
+Compressed Gbx files require to include the GBX.NET.LZO library (or any similar implementation, but there are no other compatible at the moment). In most of the cases, the LZO compression is automatically detected after just referencing the library in the project. You don't require to have a `using GBX.NET.LZO;` anywhere.
+
+On specific platforms like Blazor WebAssembly though, the dependency system works differently and (currently) GBX.NET struggles to automatically detect the LZO library.
+
+In these cases (if just following the `MissingLzoException` message didn't solve the problem), add this line above the first attempt of parsing the Gbx. It should be called just once.
+
+```cs
+GBX.NET.Lzo.SetLzo(typeof(GBX.NET.LZO.MiniLZO));
+```
+
 ## Conventions
 
 ### This convention is no longer relevant in GBX.NET 0.11.0+ when using the ParseNode method.
