@@ -66,6 +66,11 @@ public class CPlugSurfaceGeom : CPlugSurface
             var u02 = rw.Box();
             var u03 = rw.Int32();
 
+            if (rw.BaseStream is IXorTrickStream cryptedStream)
+            {
+                cryptedStream.InitializeXorTrick(BitConverter.GetBytes(u02.X - u02.X2), 0, 4);
+            }
+
             switch (u03)
             {
                 case 7:
@@ -76,39 +81,39 @@ public class CPlugSurfaceGeom : CPlugSurface
                     {
                         case 1:
                         case 2:
-
-                            break;
                         case 3:
-                            rw.UntilFacade(Unknown);
                             // Array of Vec3
-                            //var ddshfsah = rw.Reader.ReadSpan<Vec3>();
+                            rw.Reader!.ReadSpan<Vec3>();
                             // Array of STriangle
-                            /*var ddshh = rw.Reader.ReadArray(r => (
-                                r.ReadVec4(), r.ReadInt32(), r.ReadInt32(), r.ReadInt32(), r.ReadInt32()
-                            ));*/
+                            rw.Reader.ReadArray(r => r.ReadBytes(32));
 
                             // SMeshOctreeCell (GmOctree)
-                            //var u05 = rw.Int32();
+                            var type = rw.Int32();
 
-                            /*switch (u05)
+                            switch (type)
                             {
                                 case 1:
-                                case 3:
-                                    var ddshh2 = rw.Reader.ReadArray(r =>
-                                        (r.ReadInt32(), r.ReadInt32(), r.ReadInt32(), r.ReadInt32(), r.ReadInt32())
-                                    );
+                                    uint version = rw.UInt32();
+                                    uint size = rw.UInt32();
                                     break;
-                            }*/
-                            
+                                case 3:
+                                    rw.Reader.ReadArray(r => r.ReadBytes(32));
+                                    break;
+                                default:
+                                    throw new NotImplementedException();
+                            }
+
                             break;
+                        default:
+                            throw new NotImplementedException();
                     }
 
                     break;
+                default:
+                    throw new NotImplementedException();
             }
 
-            /*var count = rw.Int32() / 3 / 4;
-
-            var niceVecArray = rw.Reader.ReadArray(count, r => r.ReadVec3());*/
+            rw.UInt16();
         }
     }
 
