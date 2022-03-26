@@ -7,12 +7,18 @@
 [Node(0x0906A000)]
 public abstract class CPlugVisualIndexed : CPlugVisual3D
 {
-    private ushort[] indices;
+    private CPlugIndexBuffer? indexBuffer;
 
-    public ushort[] Indices
+    public ushort[]? Indices
     {
-        get => indices;
-        set => indices = value;
+        get => indexBuffer?.Indices;
+        set
+        {
+            if (indexBuffer is not null)
+            {
+                indexBuffer.Indices = value;
+            }
+        }
     }
 
     protected CPlugVisualIndexed()
@@ -23,9 +29,26 @@ public abstract class CPlugVisualIndexed : CPlugVisual3D
     [Chunk(0x0906A000)]
     public class Chunk0906A000 : Chunk<CPlugVisualIndexed>
     {
-        public override void ReadWrite(CPlugVisualIndexed n, GameBoxReaderWriter rw)
+        public override void Read(CPlugVisualIndexed n, GameBoxReader r)
         {
-            rw.Array<ushort>(ref n.indices!);
+            var indices = r.ReadArray<ushort>();
+
+            if (n.indexBuffer is not null)
+            {
+                n.indexBuffer.Indices = indices;
+            }
+        }
+
+        public override void Write(CPlugVisualIndexed n, GameBoxWriter w)
+        {
+            if (n.indexBuffer is null)
+            {
+                w.Write(0);
+            }
+            else
+            {
+                w.WriteArray(n.indexBuffer.Indices);
+            }
         }
     }
 
@@ -35,14 +58,30 @@ public abstract class CPlugVisualIndexed : CPlugVisual3D
         public bool U01;
         public int Flags;
 
-        public override void ReadWrite(CPlugVisualIndexed n, GameBoxReaderWriter rw)
+        public override void Read(CPlugVisualIndexed n, GameBoxReader r, ILogger? logger)
         {
-            rw.Boolean(ref U01);
+            U01 = r.ReadBoolean();
 
-            rw.UInt32(0x9057000);
-            rw.Int32(ref Flags);
-            rw.Array<ushort>(ref n.indices!);
-            rw.UInt32(0xFACADE01);
+            if (U01)
+            {
+                n.indexBuffer = Parse<CPlugIndexBuffer>(r, 0x9057000, progress: null, logger);
+            }
+        }
+
+        public override void Write(CPlugVisualIndexed n, GameBoxWriter w, ILogger? logger)
+        {
+            w.Write(U01);
+
+            if (U01)
+            {
+                if (n.indexBuffer is null)
+                {
+                    w.Write(-1);
+                    return;
+                }
+
+                n.indexBuffer.Write(w, logger);
+            }
         }
     }
 }

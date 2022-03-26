@@ -22,11 +22,11 @@ public abstract class CPlugVisual3D : CPlugVisual
     [Chunk(0x0902C002)]
     public class Chunk0902C002 : Chunk<CPlugVisual3D>
     {
-        public int U01;
+        public CMwNod? U01;
 
         public override void ReadWrite(CPlugVisual3D n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.NodeRef(ref U01);
         }
     }
 
@@ -58,78 +58,50 @@ public abstract class CPlugVisual3D : CPlugVisual
     [Chunk(0x0902C004)]
     public class Chunk0902C004 : Chunk<CPlugVisual3D>
     {
+        void TODOSkipTangents(CPlugVisual3D n, GameBoxReader r)
+        {
+            // this is some weird bit trickery...
+            int numBytesPerTangent = (~(byte)((uint)n.Flags >> 17) & 8) | 4;
+            int numElems = r.ReadInt32();
+            if (numElems != 0 && numElems != n.Count)
+            {
+                throw new InvalidDataException(String.Format("num tangents is not equal to num vertices ({0} != {1})", numElems, n.Count));
+            }
+            r.ReadBytes(numElems * numBytesPerTangent);
+        }
+        
         public override void Read(CPlugVisual3D n, GameBoxReader r)
         {
-            var u01 = n.Flags >> 0x16 & 1;
-            var u02 = u01 == 0 || (char)n.Flags < '\0';
-            var u03 = u01 == 0 || (n.Flags & 0x100) != 0;
+            var u02 = !n.Flags.HasFlag(VisualFlags.UnknownFlag22) || n.Flags.HasFlag(VisualFlags.HasVertexNormals);
+            var u03 = !n.Flags.HasFlag(VisualFlags.UnknownFlag22) || n.Flags.HasFlag(VisualFlags.UnknownFlag8);
 
-            var u04 = (n.Flags & 0x100000) != 0;
-
-            if (!u04)
+            int numBytesPerVertex = 12;
+            if (u02)
             {
-                if (u02 && (n.Flags & 0x200000U) == 0 && u03)
-                {
-                    // DoData
-                }
+                numBytesPerVertex += n.Flags.HasFlag(VisualFlags.UnknownFlag20) ? 4 : 12;
             }
-
-            var ara = new Vec3[n.Count];
-
-            for (var i = 0; i < n.Count; i++)
+            if (u03)
             {
-                ara[i] = r.ReadVec3();
-                if (u02)
-                {
-                    if (u04)
-                    {
-                        var ok = r.ReadInt32();
-                    }
-                    else
-                    {
-                        var ok2 = r.ReadVec3();
-                    }
-                }
-
-                if (u03)
-                {
-                    if ((n.Flags & 0x200000U) == 0)
-                    {
-                        var wtff = r.ReadBytes(0x10);
-                    }
-                    else
-                    {
-                        var color = r.ReadInt32();
-                    }
-                }
-            }
-
-            var wtf = r.ReadArray<int>(800);
-            var bruh = r.ReadArray(n.Count, r => (r.ReadVec4(), r.ReadInt32()));
-
-            var strst = r.ReadSpan<Vec4>(50);
-        }
-
-        /*public override void ReadWrite(CPlugVisual3D n, GameBoxReaderWriter rw)
-        {
+                numBytesPerVertex += n.Flags.HasFlag(VisualFlags.UnknownFlag21) ? 4 : 16;
+            }   
             
+            // Console.WriteLine("numBytesPerVertex={0}", numBytesPerVertex);
+            var verts = r.ReadBytes(numBytesPerVertex * n.Count);
 
-            var nice = rw.Array<int>(count: 30);
+            /*var list = new Vertex[n.Count];
 
-            if ((char)n.Flags < '\0') // wtf
+            for(var i = 0; i < n.Count; i++)
             {
+                list[i] = new Vertex(r.ReadVec3(), default, default, default);
+                r.ReadInt32();
+                r.ReadInt32();
+            }*/
 
-            }
+            //n.vertices = verts;
 
-            if ((n.Flags & 0x200000U) == 0)
-            {
-
-            }
-
-            var wat = ~(n.Flags >> 0x11) & 8 | 4;
-
-            //var verts = rw.Reader.ReadArray(n.count-4, r => r.ReadVec4());
-        }*/
+            TODOSkipTangents(n, r);
+            TODOSkipTangents(n, r);
+        }
     }
 
     public readonly struct Vertex

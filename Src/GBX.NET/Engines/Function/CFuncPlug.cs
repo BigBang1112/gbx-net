@@ -7,6 +7,7 @@ public abstract class CFuncPlug : CFunc
     private float phase;
     private bool autoCreateMotion;
     private bool randomizePhase;
+    private string? inputValId;
 
     public float Period
     {
@@ -30,6 +31,12 @@ public abstract class CFuncPlug : CFunc
     {
         get => randomizePhase;
         set => randomizePhase = value;
+    }
+
+    public string? InputValId
+    {
+        get => inputValId;
+        set => inputValId = value;
     }
 
     protected CFuncPlug()
@@ -57,6 +64,19 @@ public abstract class CFuncPlug : CFunc
             rw.Single(ref n.phase);
             rw.Boolean(ref n.autoCreateMotion);
             rw.Boolean(ref n.randomizePhase);
+        }
+    }
+
+    [Chunk(0x0500B005)]
+    public class Chunk0500B005 : Chunk<CFuncPlug>
+    {
+        public override void ReadWrite(CFuncPlug n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref n.period);
+            rw.Single(ref n.phase);
+            rw.Boolean(ref n.autoCreateMotion);
+            rw.Boolean(ref n.randomizePhase);
+            rw.Id(ref n.inputValId);
         }
     }
 }

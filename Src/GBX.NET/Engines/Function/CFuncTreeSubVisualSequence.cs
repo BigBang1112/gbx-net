@@ -4,12 +4,19 @@
 public class CFuncTreeSubVisualSequence : CFuncTree
 {
     private CFuncKeysNatural? subKeys;
+    private bool simpleModeIsLooping;
+    private int simpleModeStartIndex;
+    private int simpleModeEndIndex;
 
     public CFuncKeysNatural? SubKeys
     {
         get => subKeys;
         set => subKeys = value;
     }
+
+    public bool SimpleModeIsLooping { get => simpleModeIsLooping; set => simpleModeIsLooping = value; }
+    public int SimpleModeStartIndex { get => simpleModeStartIndex; set => simpleModeStartIndex = value; }
+    public int SimpleModeEndIndex { get => simpleModeEndIndex; set => simpleModeEndIndex = value; }
 
     protected CFuncTreeSubVisualSequence()
     {
@@ -44,6 +51,26 @@ public class CFuncTreeSubVisualSequence : CFuncTree
         public override void ReadWrite(CFuncTreeSubVisualSequence n, GameBoxReaderWriter rw)
         {
             rw.Id(ref U01);
+        }
+    }
+
+    [Chunk(0x05031002)]
+    public class Chunk05031002 : Chunk<CFuncTreeSubVisualSequence>
+    {
+        public override void ReadWrite(CFuncTreeSubVisualSequence n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef(ref n.subKeys);
+        }
+    }
+
+    [Chunk(0x05031003)]
+    public class Chunk05031003 : Chunk<CFuncTreeSubVisualSequence>
+    {
+        public override void ReadWrite(CFuncTreeSubVisualSequence n, GameBoxReaderWriter rw)
+        {
+            rw.Boolean(ref n.simpleModeIsLooping);
+            rw.Int32(ref n.simpleModeStartIndex);
+            rw.Int32(ref n.simpleModeEndIndex);
         }
     }
 }

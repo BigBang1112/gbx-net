@@ -6,7 +6,7 @@ using System.Text;
 
 namespace GBX.NET.PAK;
 
-public class BlowfishCBCStream : Stream
+public class BlowfishCBCStream : Stream, IXorTrickStream
 {
     private readonly Stream stream;
 
@@ -74,6 +74,7 @@ public class BlowfishCBCStream : Stream
             hipart = (uint)((_ivXor << 13) >> 32);
             _ivXor = ((ulong)hipart << 32) | lopart;
         }
+        //Console.WriteLine("BlowfishCBC_Write {0} {1:x} _ivXor={2:x}", count, BitConverter.ToUInt32(data, (int)offset), _ivXor);
     }
 
     public void FinishWriting()
@@ -87,6 +88,7 @@ public class BlowfishCBCStream : Stream
 
     public override int Read(byte[] buffer, int offset, int count)
     {
+        //Console.WriteLine("BlowfishCBC_Read {0} _iv={1:x} _ivXor={2:x}", count, _iv, _ivXor);
         if (_totalIndex == 0)
         {
             _iv ^= _ivXor;
@@ -99,6 +101,7 @@ public class BlowfishCBCStream : Stream
             {
                 if (!Ignore256IvXorReset && _bufferIndex == 0x100)
                 {
+                    //Console.WriteLine("xor _iv");
                     _iv ^= _ivXor;
                     _ivXor = 0;
                     _bufferIndex = 0;
@@ -161,5 +164,10 @@ public class BlowfishCBCStream : Stream
     public override void SetLength(long value)
     {
         stream.SetLength(value);
+    }
+
+    public void InitializeXorTrick(byte[] bytes, uint offset, uint count)
+    {
+        Initialize(bytes, offset, count);
     }
 }

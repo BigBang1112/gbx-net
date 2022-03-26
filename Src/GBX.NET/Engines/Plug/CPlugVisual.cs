@@ -8,11 +8,26 @@
 [WritingNotSupported]
 public abstract class CPlugVisual : CPlug
 {
-    private int flags;
+    [Flags]
+    public enum VisualFlags
+    {
+        SkinFlag1 = (1 << 0),
+        SkinFlag2 = (1 << 1),
+        SkinFlag3 = (1 << 2),
+        IsGeometryStatic = (1 << 3),
+        IsIndexationStatic = (1 << 5),
+        HasVertexNormals = (1 << 7),
+        UnknownFlag8 = (1 << 8),
+        UnknownFlag20 = (1 << 20),
+        UnknownFlag21 = (1 << 21),
+        UnknownFlag22 = (1 << 22)
+    }
+
+    private VisualFlags flags;
     private int count;
     private Vec2[][]? texCoords;
 
-    public int Flags
+    public VisualFlags Flags
     {
         get => flags;
         set => flags = value;
@@ -30,9 +45,22 @@ public abstract class CPlugVisual : CPlug
         set => texCoords = value;
     }
 
+    public Int3[]? indices;
+
     protected CPlugVisual()
     {
+    }
 
+    void SetFlag(VisualFlags f, bool enable)
+    {
+        if (enable)
+        {
+            flags |= f;
+        }
+        else
+        {
+            flags &= ~f;
+        }
     }
 
     [Chunk(0x09006001)]
@@ -65,11 +93,9 @@ public abstract class CPlugVisual : CPlug
     [Chunk(0x09006005)]
     public class Chunk09006005 : Chunk<CPlugVisual>
     {
-        public Int3[]? U01;
-
         public override void ReadWrite(CPlugVisual n, GameBoxReaderWriter rw)
         {
-            rw.Array<Int3>(ref U01, r => r.ReadInt3(),
+            rw.Array<Int3>(ref n.indices, r => r.ReadInt3(),
                 (x, w) => w.Write(x));
         }
     }
@@ -82,6 +108,7 @@ public abstract class CPlugVisual : CPlug
         public override void ReadWrite(CPlugVisual n, GameBoxReaderWriter rw)
         {
             rw.Boolean(ref U01);
+            n.SetFlag(VisualFlags.HasVertexNormals, U01);
         }
     }
 
@@ -95,43 +122,39 @@ public abstract class CPlugVisual : CPlug
             rw.Boolean(ref U01);
         }
     }
-
+    
     [Chunk(0x09006008)]
     public class Chunk09006008 : Chunk<CPlugVisual>
     {
-        public bool U01;
-        public bool U02;
-        public int U03;
-        public int U04;
-        public int U05;
-        public int U06;
-        public int U07;
+        public int NumTexCoordSets;
+        public int SkinFlags;
 
         public override void Read(CPlugVisual n, GameBoxReader r)
         {
-            U01 = r.ReadBoolean(); // IsGeometryStatic?
-            U02 = r.ReadBoolean(); // IsIndexationStatic?
-            U03 = r.ReadInt32(); //
-            U04 = r.ReadInt32();
+            n.SetFlag(VisualFlags.IsGeometryStatic, r.ReadBoolean());
+            n.SetFlag(VisualFlags.IsIndexationStatic, r.ReadBoolean());
+            NumTexCoordSets = r.ReadInt32(); 
+            SkinFlags = r.ReadInt32();
+            n.SetFlag(VisualFlags.SkinFlag1, (SkinFlags & 1) != 0);
+            n.SetFlag(VisualFlags.SkinFlag2, (SkinFlags & 2) != 0);
+            n.SetFlag(VisualFlags.SkinFlag3, (SkinFlags & 4) != 0);
             n.count = r.ReadInt32();
 
-            n.texCoords = r.ReadArray(U03, r =>
+            n.texCoords = r.ReadArray(NumTexCoordSets, r =>
             {
-                var u06 = r.ReadInt32();
+                var texCoordKind = r.ReadInt32();
+                int[] sizeByKind = {8, 12, 16};
 
-                if (u06 == 0)
-                {
-                    var array = r.ReadArray(n.count, r => r.ReadVec2());
-                    return array;
-                }
-
-                // I don't understand this much
-                var u02 = r.ReadArray(n.count, r => r.ReadVec3());
+                r.ReadBytes(sizeByKind[texCoordKind] * n.count);
+                // TODO convert to Vec2? 
                 return Array.Empty<Vec2>();
             });
 
-            U06 = r.ReadInt32();
-            U07 = r.ReadInt32();
+            if (SkinFlags != 0)
+            {
+                throw new NotImplementedException();
+            }
+            n.SetFlag(VisualFlags.UnknownFlag8, r.ReadBoolean());
         }
     }
 
@@ -149,52 +172,42 @@ public abstract class CPlugVisual : CPlug
     [Chunk(0x0900600A)]
     public class Chunk0900600A : Chunk<CPlugVisual>
     {
-        public int U01;
-        public int U02;
-        public int U03;
-        public int U04;
-        public int U05;
-        public int U06;
-        public int U07;
+        public int NumTexCoordSets;
+        public int SkinFlags;
 
         public override void Read(CPlugVisual n, GameBoxReader r)
         {
-            U01 = r.ReadInt32(); // IsGeometryStatic?
-            U02 = r.ReadInt32(); // IsIndexationStatic?
-            U03 = r.ReadInt32(); //
-            U04 = r.ReadInt32();
+            n.SetFlag(VisualFlags.IsGeometryStatic, r.ReadBoolean());
+            n.SetFlag(VisualFlags.IsIndexationStatic, r.ReadBoolean());
+            NumTexCoordSets = r.ReadInt32(); 
+            SkinFlags = r.ReadInt32();
+            n.SetFlag(VisualFlags.SkinFlag1, (SkinFlags & 1) != 0);
+            n.SetFlag(VisualFlags.SkinFlag2, (SkinFlags & 2) != 0);
+            n.SetFlag(VisualFlags.SkinFlag3, (SkinFlags & 4) != 0);
             n.count = r.ReadInt32();
-            U05 = r.ReadInt32();
+            
+            // vertex streams
+            r.ReadArray(r => r.ReadNodeRef());
 
-            n.texCoords = r.ReadArray(U03, r =>
+            n.texCoords = r.ReadArray(NumTexCoordSets, r =>
             {
-                var u06 = r.ReadInt32();
-                var array = r.ReadArray(n.count, r => r.ReadVec2());
-                return array;
+                var texCoordKind = r.ReadInt32();
+                int[] sizeByKind = {8, 12, 16};
+
+                r.ReadBytes(sizeByKind[texCoordKind] * n.count);
+                // TODO convert to Vec2? 
+                return Array.Empty<Vec2>();
             });
 
-            U06 = r.ReadInt32();
-            U07 = r.ReadInt32();
-        }
-    }
-
-    [Chunk(0x0900600B)]
-    public class Chunk0900600B : Chunk<CPlugVisual>
-    {
-        public object[]? U01;
-
-        public override void ReadWrite(CPlugVisual n, GameBoxReaderWriter rw)
-        {
-            U01 = rw.Array<object>(null, (i, r) => new
+            if (SkinFlags != 0)
             {
-                x = r.ReadInt32(),
-                y = r.ReadInt32(),
-                box = r.ReadBox() // GmBoxAligned::ArchiveABox
-            }, (x, w) => { });
+                throw new NotImplementedException();
+            }
+            n.SetFlag(VisualFlags.UnknownFlag8, r.ReadBoolean());
         }
     }
-
-    [Chunk(0x0900600C)]
+    
+     /*[Chunk(0x0900600C)]
     public class Chunk0900600C : Chunk<CPlugVisual>
     {
         public int U01;
@@ -225,28 +238,49 @@ public abstract class CPlugVisual : CPlug
             U07 = r.ReadBoolean();
             U08 = r.ReadBox();
         }
-    }
+    }*/
+
+     void ConvertChunkFlagsToFlags(int chunkFlags)
+     {
+         flags = 0;
+         flags |= (VisualFlags)(chunkFlags & 15);
+         flags |= (VisualFlags)((chunkFlags<<1) & 0x20);
+         flags |= (VisualFlags)((chunkFlags<<2) & 0x80);
+         flags |= (VisualFlags)((chunkFlags<<2) & 0x100);
+         flags |= (VisualFlags)((chunkFlags << 13) & 0x100000);
+         flags |= (VisualFlags)((chunkFlags << 13) & 0x200000);
+         flags |= (VisualFlags)((chunkFlags << 13) & 0x400000);
+     }
 
     [Chunk(0x0900600D)]
     public class Chunk0900600D : Chunk<CPlugVisual>
     {
-        public int U01;
-        public int U02;
-        public int U03;
+        public int chunkFlags;
+        public int NumTexCoordSets;
         public Box U04;
 
         public override void Read(CPlugVisual n, GameBoxReader r)
         {
-            n.flags = r.ReadInt32();
-            U01 = r.ReadInt32();
+            n.ConvertChunkFlagsToFlags(r.ReadInt32());
+            NumTexCoordSets = r.ReadInt32();
             n.count = r.ReadInt32();
-            U02 = r.ReadInt32();
-            U03 = r.ReadInt32();
+            r.ReadArray(r => r.ReadNodeRef());
+            
+            n.texCoords = r.ReadArray(NumTexCoordSets, r =>
+            {
+                var texCoordKind = r.ReadInt32();
+                int[] sizeByKind = {8, 12, 16};
 
-            n.texCoords = new Vec2[][] { r.ReadSpan<Vec2>(n.count).ToArray() };
-
-            // if((param_1_00 + 7) & 7) != 0 ----> CPlugVisual::ArchiveSkinData
-
+                r.ReadBytes(sizeByKind[texCoordKind] * n.count);
+                // TODO convert to Vec2? 
+                return Array.Empty<Vec2>();
+            });
+            
+            if (n.flags.HasFlag(VisualFlags.SkinFlag1) || n.flags.HasFlag(VisualFlags.SkinFlag2) || n.flags.HasFlag(VisualFlags.SkinFlag3))
+            {
+                throw new NotImplementedException();
+            }
+            
             U04 = r.ReadBox(); // ArchiveABox
         }
     }
@@ -254,33 +288,50 @@ public abstract class CPlugVisual : CPlug
     [Chunk(0x0900600E)]
     public class Chunk0900600E : Chunk<CPlugVisual>
     {
-        public int U01;
-        public int U02;
-        public int U03;
+        public int NumTexCoordSets;
+        public Box U04;
+
+        public override void Read(CPlugVisual n, GameBoxReader r)
+        {
+            n.ConvertChunkFlagsToFlags(r.ReadInt32());
+            NumTexCoordSets = r.ReadInt32();
+            n.count = r.ReadInt32();
+            r.ReadArray(r => r.ReadNodeRef());
+            
+            n.texCoords = r.ReadArray(NumTexCoordSets, r =>
+            {
+                var texCoordKind = r.ReadInt32();
+                int[] sizeByKind = {8, 12, 16};
+
+                r.ReadBytes(sizeByKind[texCoordKind] * n.count);
+                // TODO convert to Vec2? 
+                return Array.Empty<Vec2>();
+            });
+            
+            if (n.flags.HasFlag(VisualFlags.SkinFlag1) || n.flags.HasFlag(VisualFlags.SkinFlag2) || n.flags.HasFlag(VisualFlags.SkinFlag3))
+            {
+                throw new NotImplementedException();
+            }
+            
+            U04 = r.ReadBox(); // ArchiveABox
+            
+            r.ReadArray(r => r.ReadBytes(20));
+        }
+    }
+
+    [Chunk(0x0900600B)]
+    public class Chunk0900600B : Chunk<CPlugVisual>
+    {
+        public object[]? U01;
 
         public override void ReadWrite(CPlugVisual n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref n.flags);
-            rw.Int32(ref U01); // 1 works fine, 2 or 3 doesnt
-
-            if (U01 != 1)
+            U01 = rw.Array<object>(null, (i, r) => new
             {
-
-            }
-
-            n.count = rw.Int32();
-
-            U02 = rw.Int32(); // array of node refs
-
-            for (var i = 0; i < U01; i++)
-            {
-                U03 = rw.Int32(); // something flag related
-
-                var textureCoords = rw.Reader!.ReadArray(n.count, r => r.ReadVec2());
-            }
-
-            var box = rw.Box();
-            var someCount = rw.Int32(); // CFastArray::ArchiveCountAndElems
+                x = r.ReadInt32(),
+                y = r.ReadInt32(),
+                box = r.ReadBox() // GmBoxAligned::ArchiveABox
+            }, (x, w) => { });
         }
     }
 }
