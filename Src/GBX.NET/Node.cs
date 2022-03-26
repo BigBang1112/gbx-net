@@ -163,6 +163,27 @@ public abstract class Node : IStateRefTable, IDisposable
 
         var previousChunkId = default(uint?);
 
+        if (r.BaseStream is IXorTrickStream cryptedStream)
+        {
+            var baseType = nodeType.BaseType!;
+                
+            var parentClassId = NodeCacheManager.GetClassIdByType(baseType) ?? throw new Exception();
+
+            if (parentClassId == 0x07031000)
+            {
+                parentClassId = 0x07001000;
+            }
+
+            if (node is CPlugSurfaceGeom)
+            {
+                parentClassId = 0x902B000;
+            }
+
+            var parentClassIDBytes = BitConverter.GetBytes(parentClassId);
+
+            cryptedStream.InitializeXorTrick(parentClassIDBytes, 0, 4);
+        }
+
         while (IterateChunks(node, nodeType, r, progress, logger, ref previousChunkId))
         {
             // Iterates through chunks until false is returned
