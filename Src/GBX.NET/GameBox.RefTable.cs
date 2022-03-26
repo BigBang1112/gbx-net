@@ -4,7 +4,7 @@ namespace GBX.NET;
 
 public partial class GameBox
 {
-	public class RefTable
+	public partial class RefTable
     {
         /// <summary>
         /// How many folder levels to go up in the .pak folder hierarchy to reach the base folder from which files will be referenced.
@@ -197,6 +197,11 @@ public partial class GameBox
             var mainBuilder = new StringBuilder()
                 .Insert(0, "../", count: AncestorLevel);
 
+            if (file.FolderIndex == -1)
+            {
+                return "";
+            }
+
             var folder = GetAllFolders().First(x => x.Index == file.FolderIndex);
 
             var parentBuilder = new StringBuilder(folder.Name);
@@ -243,54 +248,6 @@ public partial class GameBox
         private static string Repeat(string value, int count)
         {
             return new StringBuilder(value.Length * count).Insert(0, value, count).ToString();
-        }
-
-        public record File
-        {
-            public int Flags { get; }
-            public string? FileName { get; }
-            public int? ResourceIndex { get; }
-            public int NodeIndex { get; }
-            public bool? UseFile { get; }
-            public int? FolderIndex { get; }
-
-            public File(int flags, string? fileName, int? resourceIndex, int nodeIndex, bool? useFile, int? folderIndex)
-            {
-                Flags = flags;
-                FileName = fileName;
-                ResourceIndex = resourceIndex;
-                NodeIndex = nodeIndex;
-                UseFile = useFile;
-                FolderIndex = folderIndex;
-            }
-
-            public override string ToString()
-            {
-                return FileName ?? string.Empty;
-            }
-        }
-
-        public class Folder
-        {
-            public string Name { get; }
-            public int Index { get; }
-            public Folder? ParentFolder { get; }
-            public IList<Folder> Folders { get; }
-            public IList<File> Files { get; }
-
-            public Folder(string name, int index, Folder? parentFolder = null)
-            {
-                Name = name;
-                Index = index;
-                ParentFolder = parentFolder;
-                Folders = new List<Folder>();
-                Files = new List<File>();
-            }
-
-            public override string ToString()
-            {
-                return Name;
-            }
         }
     }
 }
