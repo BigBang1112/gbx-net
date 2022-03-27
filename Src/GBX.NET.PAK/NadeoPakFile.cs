@@ -125,9 +125,9 @@ public class NadeoPakFile
         {
             data = r.ReadBytes(UncompressedSize);
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            Console.WriteLine(ex);
+            
         }
 
         return data;
