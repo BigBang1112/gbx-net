@@ -8,7 +8,7 @@ namespace GBX.NET;
 /// </summary>
 public partial class GameBoxReader : BinaryReader
 {
-    private readonly ILogger? logger;
+    internal ILogger? Logger { get; }
 
     public GameBoxReaderSettings Settings { get; }
 
@@ -23,14 +23,14 @@ public partial class GameBoxReader : BinaryReader
     {
         Settings = new GameBoxReaderSettings(stateGuid, asyncAction);
 
-        this.logger = logger;
+        Logger = logger;
     }
 
     public GameBoxReader(Stream input, GameBoxReaderSettings settings, ILogger? logger = null) : base(input, Encoding.UTF8, true)
     {
         Settings = settings;
 
-        this.logger = logger;
+        Logger = logger;
     }
 
     /// <summary>

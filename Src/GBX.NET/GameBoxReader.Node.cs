@@ -39,7 +39,7 @@ public partial class GameBoxReader
 
         if (NodeShouldBeParsed(stateGuid, index))
         {
-            node = Node.Parse(this, classId: null, progress: null, logger)!;
+            node = Node.Parse(this, classId: null, progress: null, Logger)!;
         }
 
         TryGetNodeIfNullOrAssignExistingNode(stateGuid, index, ref node);
@@ -123,7 +123,7 @@ public partial class GameBoxReader
 
         if (NodeShouldBeParsed(stateGuid, index))
         {
-            node = await Node.ParseAsync(this, classId: null, logger, cancellationToken);
+            node = await Node.ParseAsync(this, classId: null, Logger, cancellationToken);
         }
 
         TryGetNodeIfNullOrAssignExistingNode(stateGuid, index, ref node);
