@@ -14,7 +14,7 @@ public class NadeoPakFile
 
     public int U01;
 
-    public string Name { get; }
+    public string Name { get; set; }
     public int UncompressedSize { get; }
     public int CompressedSize { get; }
     public int Offset { get; }
