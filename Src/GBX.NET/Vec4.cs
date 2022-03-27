@@ -34,7 +34,7 @@ public readonly record struct Vec4(float X, float Y, float Z, float W) : IVec
     public static Vec4 operator -(Vec4 a) => new(-a.X, -a.Y, -a.Z, -a.W);
     public static Vec4 operator -(Vec4 a, Vec4 b) => new(a.X - b.X, a.Y - b.Y, a.Z - b.Z, a.W - b.W);
 
-    public static Vec4 operator *(Vec4 a, Vec4 b) => new(a.X * b.X, a.Y * b.Y, a.Z * b.Z, a.W * a.W);
+    public static Vec4 operator *(Vec4 a, Vec4 b) => new(a.X * b.X, a.Y * b.Y, a.Z * b.Z, a.W * b.W);
 
     public static implicit operator Vec4((float X, float Y, float Z, float W) v) => new(v.X, v.Y, v.Z, v.W);
     public static implicit operator (float X, float Y, float Z, float W)(Vec4 v) => (v.X, v.Y, v.Z, v.W);
