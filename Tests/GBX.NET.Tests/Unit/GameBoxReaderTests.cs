@@ -29,10 +29,10 @@ public class GameBoxReaderTests
     public void Constructor_InputSettingsLogger()
     {
         // arrange
-        var ms = new MemoryStream();
+        using var ms = new MemoryStream();
         var settings = new GameBoxReaderSettings(Guid.NewGuid(), new GameBoxAsyncReadAction());
         var logger = CreateLogger();
-        var reader = new GameBoxReader(ms, settings, logger);
+        using var reader = new GameBoxReader(ms, settings, logger);
 
         // assert
         Assert.Equal(ms, reader.BaseStream);
@@ -60,11 +60,11 @@ public class GameBoxReaderTests
     public void Constructor_InputSettingsLoggerAsyncReadAction()
     {
         // arrange
-        var ms = new MemoryStream();
+        using var ms = new MemoryStream();
         var logger = CreateLogger();
         var stateGuid = Guid.NewGuid();
         var asyncReadAction = new GameBoxAsyncReadAction();
-        var reader = new GameBoxReader(ms, stateGuid, asyncReadAction, logger);
+        using var reader = new GameBoxReader(ms, stateGuid, asyncReadAction, logger);
 
         // assert
         Assert.Equal(ms, reader.BaseStream);
@@ -94,8 +94,8 @@ public class GameBoxReaderTests
     public void ReadBoolean()
     {
         // arrange
-        var ms = new MemoryStream(BitConverter.GetBytes(1));
-        var reader = new GameBoxReader(ms);
+        using var ms = new MemoryStream(BitConverter.GetBytes(1));
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadBoolean();
@@ -109,8 +109,8 @@ public class GameBoxReaderTests
     public void ReadBoolean_EmptyStream()
     {
         // arrange
-        var ms = new MemoryStream();
-        var reader = new GameBoxReader(ms);
+        using var ms = new MemoryStream();
+        using var reader = new GameBoxReader(ms);
 
         Assert.Throws<EndOfStreamException>(() => reader.ReadBoolean());
     }
@@ -120,8 +120,8 @@ public class GameBoxReaderTests
     public void ReadBoolean_AsByte()
     {
         // arrange
-        var ms = new MemoryStream(new byte[] { 1 });
-        var reader = new GameBoxReader(ms);
+        using var ms = new MemoryStream(new byte[] { 1 });
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadBoolean(asByte: true);
@@ -135,8 +135,8 @@ public class GameBoxReaderTests
     public void ReadBoolean_AsByte_EmptyStream()
     {
         // arrange
-        var ms = new MemoryStream();
-        var reader = new GameBoxReader(ms);
+        using var ms = new MemoryStream();
+        using var reader = new GameBoxReader(ms);
 
         Assert.Throws<EndOfStreamException>(() => reader.ReadBoolean(asByte: true));
     }
@@ -147,8 +147,8 @@ public class GameBoxReaderTests
     {
         // arrange
         var text = "Hello World";
-        var ms = new MemoryStream(BitConverter.GetBytes(text.Length).Concat(Encoding.UTF8.GetBytes(text)).ToArray());
-        var reader = new GameBoxReader(ms);
+        using var ms = new MemoryStream(BitConverter.GetBytes(text.Length).Concat(Encoding.UTF8.GetBytes(text)).ToArray());
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadString(StringLengthPrefix.Int32);
@@ -163,8 +163,8 @@ public class GameBoxReaderTests
     {
         // arrange
         var text = "Hello World";
-        var ms = new MemoryStream(new byte[] { (byte)text.Length }.Concat(Encoding.UTF8.GetBytes(text)).ToArray());
-        var reader = new GameBoxReader(ms);
+        using var ms = new MemoryStream(new byte[] { (byte)text.Length }.Concat(Encoding.UTF8.GetBytes(text)).ToArray());
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadString(StringLengthPrefix.Byte);
@@ -179,8 +179,8 @@ public class GameBoxReaderTests
     {
         // arrange
         var text = "Hello World";
-        var ms = new MemoryStream(Encoding.UTF8.GetBytes(text));
-        var reader = new GameBoxReader(ms);
+        using var ms = new MemoryStream(Encoding.UTF8.GetBytes(text));
+        using var reader = new GameBoxReader(ms);
 
         Assert.Throws<ArgumentException>(() => reader.ReadString(StringLengthPrefix.None));
     }
@@ -191,8 +191,8 @@ public class GameBoxReaderTests
     {
         // arrange
         var text = "Hello World";
-        var ms = new MemoryStream(BitConverter.GetBytes(-text.Length).Concat(Encoding.UTF8.GetBytes(text)).ToArray());
-        var reader = new GameBoxReader(ms);
+        using var ms = new MemoryStream(BitConverter.GetBytes(-text.Length).Concat(Encoding.UTF8.GetBytes(text)).ToArray());
+        using var reader = new GameBoxReader(ms);
 
         Assert.Throws<StringLengthOutOfRangeException>(() => reader.ReadString(StringLengthPrefix.Int32));
     }
@@ -203,8 +203,8 @@ public class GameBoxReaderTests
     {
         // arrange
         var text = "Hello World";
-        var ms = new MemoryStream(BitConverter.GetBytes(text.Length).Concat(Encoding.UTF8.GetBytes(text)).ToArray());
-        var reader = new GameBoxReader(ms);
+        using var ms = new MemoryStream(BitConverter.GetBytes(text.Length).Concat(Encoding.UTF8.GetBytes(text)).ToArray());
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadString();
@@ -219,8 +219,8 @@ public class GameBoxReaderTests
     {
         // arrange
         var text = "Hello World";
-        var ms = new MemoryStream(Encoding.UTF8.GetBytes(text));
-        var reader = new GameBoxReader(ms);
+        using var ms = new MemoryStream(Encoding.UTF8.GetBytes(text));
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadString(text.Length);
@@ -236,8 +236,8 @@ public class GameBoxReaderTests
         // arrange
         var bytes = new byte[] { 1, 2, 3, 4, 5 };
         var totalBytes = BitConverter.GetBytes(bytes.Length).Concat(new byte[] { 1, 2, 3, 4, 5 }).ToArray();
-        var ms = new MemoryStream(totalBytes);
-        var reader = new GameBoxReader(ms);
+        using var ms = new MemoryStream(totalBytes);
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadBytes();
@@ -251,8 +251,8 @@ public class GameBoxReaderTests
     public void ReadId_NullStateGuid()
     {
         // arrange
-        var ms = new MemoryStream();
-        var reader = new GameBoxReader(ms);
+        using var ms = new MemoryStream();
+        using var reader = new GameBoxReader(ms);
 
         Assert.Throws<PropertyNullException>(() => reader.ReadId());
     }
@@ -263,8 +263,8 @@ public class GameBoxReaderTests
     {
         // arrange
         var state = StateManager.Shared.CreateState(null);
-        var ms = new MemoryStream(new byte[] { 3, 0, 0, 0, 255, 255, 255, 255 });
-        var reader = new GameBoxReader(ms, state);
+        using var ms = new MemoryStream(new byte[] { 3, 0, 0, 0, 255, 255, 255, 255 });
+        using var reader = new GameBoxReader(ms, state);
 
         // act
         var result = reader.ReadId();
@@ -279,8 +279,8 @@ public class GameBoxReaderTests
     {
         // arrange
         var state = StateManager.Shared.CreateState(null);
-        var ms = new MemoryStream(new byte[] { 3, 0, 0, 0, 0, 0, 0, 64, 5, 0, 0, 0, 0x48, 0x65, 0x6c, 0x6c, 0x6f });
-        var reader = new GameBoxReader(ms, state);
+        using var ms = new MemoryStream(new byte[] { 3, 0, 0, 0, 0, 0, 0, 64, 5, 0, 0, 0, 0x48, 0x65, 0x6c, 0x6c, 0x6f });
+        using var reader = new GameBoxReader(ms, state);
 
         // act
         var result = reader.ReadId();
@@ -296,8 +296,8 @@ public class GameBoxReaderTests
     {
         // arrange
         var state = StateManager.Shared.CreateState(null);
-        var ms = new MemoryStream(new byte[] { 3, 0, 0, 0, 0, 0, 0, 128, 5, 0, 0, 0, 0x48, 0x65, 0x6c, 0x6c, 0x6f });
-        var reader = new GameBoxReader(ms, state);
+        using var ms = new MemoryStream(new byte[] { 3, 0, 0, 0, 0, 0, 0, 128, 5, 0, 0, 0, 0x48, 0x65, 0x6c, 0x6c, 0x6f });
+        using var reader = new GameBoxReader(ms, state);
 
         // act
         var result = reader.ReadId();
@@ -313,12 +313,12 @@ public class GameBoxReaderTests
     {
         // arrange
         var state = StateManager.Shared.CreateState(null);
-        var ms = new MemoryStream(new byte[] { 3, 0, 0, 0,
+        using var ms = new MemoryStream(new byte[] { 3, 0, 0, 0,
             0, 0, 0, 128, 5, 0, 0, 0, 0x48, 0x65, 0x6c, 0x6c, 0x6f,
             0, 0, 0, 128, 2, 0, 0, 0, 0x48, 0x69,
             0, 0, 0, 128, 9, 0, 0, 0, 0x47, 0x6f, 0x6f, 0x64, 0x20, 0x67, 0x6f, 0x6f, 0x64
         });
-        var reader = new GameBoxReader(ms, state);
+        using var reader = new GameBoxReader(ms, state);
 
         // act
         var result = reader.ReadIdent();
@@ -334,7 +334,7 @@ public class GameBoxReaderTests
     public void ReadFileRef_Version3()
     {
         // arrange
-        var ms = new MemoryStream();
+        using var ms = new MemoryStream();
         using var w = new BinaryWriter(ms);
 
         var checksum = new byte[32];
@@ -352,7 +352,7 @@ public class GameBoxReaderTests
 
         ms.Position = 0;
 
-        var reader = new GameBoxReader(ms);
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadFileRef();
@@ -369,7 +369,7 @@ public class GameBoxReaderTests
     public void ReadFileRef_Version2()
     {
         // arrange
-        var ms = new MemoryStream();
+        using var ms = new MemoryStream();
         using var w = new BinaryWriter(ms);
 
         var filePath = "Path/To/File.dds";
@@ -383,7 +383,7 @@ public class GameBoxReaderTests
 
         ms.Position = 0;
 
-        var reader = new GameBoxReader(ms);
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadFileRef();
@@ -399,7 +399,7 @@ public class GameBoxReaderTests
     public void ReadVec2()
     {
         // arrange
-        var ms = new MemoryStream();
+        using var ms = new MemoryStream();
         using var w = new BinaryWriter(ms);
 
         var x = 1.0f;
@@ -410,7 +410,7 @@ public class GameBoxReaderTests
 
         ms.Position = 0;
 
-        var reader = new GameBoxReader(ms);
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadVec2();
@@ -425,7 +425,7 @@ public class GameBoxReaderTests
     public void ReadVec3()
     {
         // arrange
-        var ms = new MemoryStream();
+        using var ms = new MemoryStream();
         using var w = new BinaryWriter(ms);
 
         var x = 1.0f;
@@ -438,7 +438,7 @@ public class GameBoxReaderTests
 
         ms.Position = 0;
 
-        var reader = new GameBoxReader(ms);
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadVec3();
@@ -454,7 +454,7 @@ public class GameBoxReaderTests
     public void ReadVec4()
     {
         // arrange
-        var ms = new MemoryStream();
+        using var ms = new MemoryStream();
         using var w = new BinaryWriter(ms);
 
         var x = 1.0f;
@@ -469,7 +469,7 @@ public class GameBoxReaderTests
 
         ms.Position = 0;
 
-        var reader = new GameBoxReader(ms);
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadVec4();
@@ -486,7 +486,7 @@ public class GameBoxReaderTests
     public void ReadQuat()
     {
         // arrange
-        var ms = new MemoryStream();
+        using var ms = new MemoryStream();
         using var w = new BinaryWriter(ms);
 
         var x = 1.0f;
@@ -501,7 +501,7 @@ public class GameBoxReaderTests
 
         ms.Position = 0;
 
-        var reader = new GameBoxReader(ms);
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadQuat();
@@ -518,7 +518,7 @@ public class GameBoxReaderTests
     public void ReadInt3()
     {
         // arrange
-        var ms = new MemoryStream();
+        using var ms = new MemoryStream();
         using var w = new BinaryWriter(ms);
 
         var x = 1;
@@ -531,7 +531,7 @@ public class GameBoxReaderTests
 
         ms.Position = 0;
 
-        var reader = new GameBoxReader(ms);
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadInt3();
@@ -547,7 +547,7 @@ public class GameBoxReaderTests
     public void ReadInt2()
     {
         // arrange
-        var ms = new MemoryStream();
+        using var ms = new MemoryStream();
         using var w = new BinaryWriter(ms);
 
         var x = 1;
@@ -558,7 +558,7 @@ public class GameBoxReaderTests
 
         ms.Position = 0;
 
-        var reader = new GameBoxReader(ms);
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadInt2();
@@ -573,7 +573,7 @@ public class GameBoxReaderTests
     public void ReadByte3()
     {
         // arrange
-        var ms = new MemoryStream();
+        using var ms = new MemoryStream();
         using var w = new BinaryWriter(ms);
 
         var x = 1;
@@ -586,7 +586,7 @@ public class GameBoxReaderTests
 
         ms.Position = 0;
 
-        var reader = new GameBoxReader(ms);
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadByte3();
@@ -602,7 +602,7 @@ public class GameBoxReaderTests
     public void ReadBigInt()
     {
         // arrange
-        var ms = new MemoryStream();
+        using var ms = new MemoryStream();
         using var w = new BinaryWriter(ms);
 
         var x = new byte[] { 128, 128, 128, 255 };
@@ -612,7 +612,7 @@ public class GameBoxReaderTests
 
         ms.Position = 0;
 
-        var reader = new GameBoxReader(ms);
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadBigInt(x.Length);
@@ -626,7 +626,7 @@ public class GameBoxReaderTests
     public void ReadRect()
     {
         // arrange
-        var ms = new MemoryStream();
+        using var ms = new MemoryStream();
         using var w = new BinaryWriter(ms);
 
         var x = 1.0f;
@@ -641,7 +641,7 @@ public class GameBoxReaderTests
 
         ms.Position = 0;
 
-        var reader = new GameBoxReader(ms);
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadRect();
@@ -658,7 +658,7 @@ public class GameBoxReaderTests
     public void ReadBox()
     {
         // arrange
-        var ms = new MemoryStream();
+        using var ms = new MemoryStream();
         using var w = new BinaryWriter(ms);
 
         var x = 1.0f;
@@ -677,7 +677,7 @@ public class GameBoxReaderTests
 
         ms.Position = 0;
 
-        var reader = new GameBoxReader(ms);
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadBox();
@@ -696,7 +696,7 @@ public class GameBoxReaderTests
     public void ReadTimeOfDay()
     {
         // arrange
-        var ms = new MemoryStream();
+        using var ms = new MemoryStream();
         using var w = new BinaryWriter(ms);
 
         var x = ushort.MaxValue / 2 + 1;
@@ -705,7 +705,7 @@ public class GameBoxReaderTests
 
         ms.Position = 0;
 
-        var reader = new GameBoxReader(ms);
+        using var reader = new GameBoxReader(ms);
 
         // act
         var result = reader.ReadTimeOfDay();
@@ -713,5 +713,406 @@ public class GameBoxReaderTests
         // assert
         Assert.NotNull(result);
         Assert.Equal(expected: (int)TimeSpan.FromHours(12).TotalSeconds, actual: (int)result!.Value.TotalSeconds);
+    }
+
+    // test ReadToEnd
+    [Fact]
+    public void ReadToEnd()
+    {
+        // arrange
+        var bytes = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        using var ms = new MemoryStream(bytes);
+
+        using var reader = new GameBoxReader(ms);
+
+        // act
+        var result = reader.ReadToEnd();
+
+        // assert
+        Assert.Equal(expected: bytes, actual: result);
+    }
+
+    // test ReadToEnd seek true
+    [Fact]
+    public void ReadToEnd_Seek()
+    {
+        // arrange
+        var bytes = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        using var ms = new MemoryStream(bytes);
+
+        using var reader = new GameBoxReader(ms);
+
+        // act
+        var result = reader.ReadToEnd(seek: true);
+
+        // assert
+        Assert.Equal(expected: bytes, actual: result);
+    }
+
+    // test Read<byte>
+    [Fact]
+    public void Read_Byte()
+    {
+        // arrange
+        using var ms = new MemoryStream();
+        using var w = new BinaryWriter(ms);
+
+        w.Write((byte)5);
+
+        ms.Position = 0;
+
+        using var reader = new GameBoxReader(ms);
+
+        // act
+        var result = reader.Read<byte>();
+
+        // assert
+        Assert.Equal(expected: 5, actual: result);
+    }
+
+    // test Read<short>
+    [Fact]
+    public void Read_Short()
+    {
+        // arrange
+        using var ms = new MemoryStream();
+        using var w = new BinaryWriter(ms);
+
+        w.Write((short)5);
+
+        ms.Position = 0;
+
+        using var reader = new GameBoxReader(ms);
+
+        // act
+        var result = reader.Read<short>();
+
+        // assert
+        Assert.Equal(expected: 5, actual: result);
+    }
+
+    // test Read<int>
+    [Fact]
+    public void Read_Int()
+    {
+        // arrange
+        using var ms = new MemoryStream();
+        using var w = new BinaryWriter(ms);
+
+        w.Write(5);
+
+        ms.Position = 0;
+
+        using var reader = new GameBoxReader(ms);
+
+        // act
+        var result = reader.Read<int>();
+
+        // assert
+        Assert.Equal(expected: 5, actual: result);
+    }
+
+    // test Read<long>
+    [Fact]
+    public void Read_Long()
+    {
+        // arrange
+        using var ms = new MemoryStream();
+        using var w = new BinaryWriter(ms);
+
+        w.Write((long)5);
+
+        ms.Position = 0;
+
+        using var reader = new GameBoxReader(ms);
+
+        // act
+        var result = reader.Read<long>();
+
+        // assert
+        Assert.Equal(expected: 5, actual: result);
+    }
+
+    // test Read<float>
+    [Fact]
+    public void Read_Float()
+    {
+        // arrange
+        using var ms = new MemoryStream();
+        using var w = new BinaryWriter(ms);
+
+        w.Write(5f);
+
+        ms.Position = 0;
+
+        using var reader = new GameBoxReader(ms);
+
+        // act
+        var result = reader.Read<float>();
+
+        // assert
+        Assert.Equal(expected: 5.0, actual: result);
+    }
+
+    // test Read<bool>
+    [Fact]
+    public void Read_Bool()
+    {
+        // arrange
+        using var ms = new MemoryStream();
+        using var w = new BinaryWriter(ms);
+
+        w.Write(new byte[] { 1, 0, 0, 0 });
+
+        ms.Position = 0;
+
+        using var reader = new GameBoxReader(ms);
+
+        // act
+        var result = reader.Read<bool>();
+
+        // assert
+        Assert.True(result);
+    }
+
+    // test Read<string>
+    [Fact]
+    public void Read_String()
+    {
+        // arrange
+        using var ms = new MemoryStream();
+        using var w = new BinaryWriter(ms);
+
+        w.Write(5);
+        w.Write(Encoding.UTF8.GetBytes("Hello"));
+
+        ms.Position = 0;
+
+        using var reader = new GameBoxReader(ms);
+
+        // act
+        var result = reader.Read<string>();
+
+        // assert
+        Assert.Equal(expected: "Hello", actual: result);
+    }
+
+    // test Read<sbyte>
+    [Fact]
+    public void Read_SByte()
+    {
+        // arrange
+        using var ms = new MemoryStream();
+        using var w = new BinaryWriter(ms);
+
+        w.Write((sbyte)5);
+
+        ms.Position = 0;
+
+        using var reader = new GameBoxReader(ms);
+
+        // act
+        var result = reader.Read<sbyte>();
+
+        // assert
+        Assert.Equal(expected: 5, actual: result);
+    }
+
+    // test Read<uint>
+    [Fact]
+    public void Read_UInt()
+    {
+        // arrange
+        using var ms = new MemoryStream();
+        using var w = new BinaryWriter(ms);
+
+        w.Write((uint)5);
+
+        ms.Position = 0;
+
+        using var reader = new GameBoxReader(ms);
+
+        // act
+        var result = reader.Read<uint>();
+
+        // assert
+        Assert.Equal<uint>(expected: 5, actual: result);
+    }
+
+    // test Read<ulong>
+    [Fact]
+    public void Read_ULong()
+    {
+        // arrange
+        using var ms = new MemoryStream();
+        using var w = new BinaryWriter(ms);
+
+        w.Write((ulong)5);
+
+        ms.Position = 0;
+
+        using var reader = new GameBoxReader(ms);
+
+        // act
+        var result = reader.Read<ulong>();
+
+        // assert
+        Assert.Equal<ulong>(expected: 5, actual: result);
+    }
+
+    // test Read<Byte3>
+    [Fact]
+    public void Read_Byte3()
+    {
+        // arrange
+        using var ms = new MemoryStream();
+        using var w = new BinaryWriter(ms);
+
+        w.Write(new byte[] { 1, 2, 3 });
+
+        ms.Position = 0;
+
+        using var reader = new GameBoxReader(ms);
+
+        // act
+        var result = reader.Read<Byte3>();
+
+        // assert
+        Assert.Equal(expected: new Byte3(1, 2, 3), actual: result);
+    }
+
+    // test Read<Vec2>
+    [Fact]
+    public void Read_Vec2()
+    {
+        // arrange
+        using var ms = new MemoryStream();
+        using var w = new BinaryWriter(ms);
+
+        w.Write(1f);
+        w.Write(2f);
+
+        ms.Position = 0;
+
+        using var reader = new GameBoxReader(ms);
+
+        // act
+        var result = reader.Read<Vec2>();
+
+        // assert
+        Assert.Equal(expected: new Vec2(1, 2), actual: result);
+    }
+
+    // test Read<Vec3>
+    [Fact]
+    public void Read_Vec3()
+    {
+        // arrange
+        using var ms = new MemoryStream();
+        using var w = new BinaryWriter(ms);
+
+        w.Write(1f);
+        w.Write(2f);
+        w.Write(3f);
+
+        ms.Position = 0;
+
+        using var reader = new GameBoxReader(ms);
+
+        // act
+        var result = reader.Read<Vec3>();
+
+        // assert
+        Assert.Equal(expected: new Vec3(1, 2, 3), actual: result);
+    }
+
+    // test Read<Vec4>
+    [Fact]
+    public void Read_Vec4()
+    {
+        // arrange
+        using var ms = new MemoryStream();
+        using var w = new BinaryWriter(ms);
+
+        w.Write(1f);
+        w.Write(2f);
+        w.Write(3f);
+        w.Write(4f);
+
+        ms.Position = 0;
+
+        using var reader = new GameBoxReader(ms);
+
+        // act
+        var result = reader.Read<Vec4>();
+
+        // assert
+        Assert.Equal(expected: new Vec4(1, 2, 3, 4), actual: result);
+    }
+
+    // test Read<Int2>
+    [Fact]
+    public void Read_Int2()
+    {
+        // arrange
+        using var ms = new MemoryStream();
+        using var w = new BinaryWriter(ms);
+
+        w.Write(1);
+        w.Write(2);
+
+        ms.Position = 0;
+
+        using var reader = new GameBoxReader(ms);
+
+        // act
+        var result = reader.Read<Int2>();
+
+        // assert
+        Assert.Equal(expected: new Int2(1, 2), actual: result);
+    }
+
+    // test Read<Int3>
+    [Fact]
+    public void Read_Int3()
+    {
+        // arrange
+        using var ms = new MemoryStream();
+        using var w = new BinaryWriter(ms);
+
+        w.Write(1);
+        w.Write(2);
+        w.Write(3);
+
+        ms.Position = 0;
+
+        using var reader = new GameBoxReader(ms);
+
+        // act
+        var result = reader.Read<Int3>();
+
+        // assert
+        Assert.Equal(expected: new Int3(1, 2, 3), actual: result);
+    }
+
+    // test Read anything else
+    [Fact]
+    public void Read_AnythingElse()
+    {
+        // arrange
+        using var ms = new MemoryStream();
+        using var w = new BinaryWriter(ms);
+
+        w.Write(1);
+        w.Write(2);
+        w.Write(3);
+        w.Write(4);
+
+        ms.Position = 0;
+
+        using var reader = new GameBoxReader(ms);
+
+        // assert
+        Assert.Throws<NotSupportedException>(() => /* act */ reader.Read<BigInteger>());
     }
 }
