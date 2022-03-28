@@ -206,6 +206,18 @@ public class CGameCtnMediaBlockSoundBuilderTests
     }
 
     [Fact]
+    public void TM2_StopsWithClip_ShouldSetStopWithClipToTrue()
+    {
+        var expected = true;
+
+        var builder = new CGameCtnMediaBlockSoundBuilder()
+            .ForTM2()
+            .StopsWithClip(expected);
+
+        Assert.Equal(expected, actual: builder.StopWithClip);
+    }
+
+    [Fact]
     public void TM2_WithAudioToSpeech_ShouldSetAudioToSpeech()
     {
         var expected = true;
