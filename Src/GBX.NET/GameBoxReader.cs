@@ -351,14 +351,22 @@ public partial class GameBoxReader : BinaryReader
 
     public TimeSpan? ReadTimeOfDay()
     {
-        var dayTime = ReadInt32();
+        var dayTime = ReadUInt32();
 
-        if (dayTime == -1)
+        if (dayTime == uint.MaxValue)
         {
             return null;
         }
 
-        return TimeSpan.FromSeconds(dayTime / (double)ushort.MaxValue * new TimeSpan(23, 59, 59).TotalSeconds);
+        if (dayTime > ushort.MaxValue)
+        {
+            throw new InvalidDataException("Day time is over 65535");
+        }
+
+        var maxTime = TimeSpan.FromDays(1) - TimeSpan.FromTicks(1);
+        var maxSecs = maxTime.TotalSeconds;        
+        
+        return TimeSpan.FromSeconds(dayTime / (double)ushort.MaxValue * maxSecs);
     }
 
     /// <summary>
