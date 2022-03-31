@@ -35,6 +35,21 @@ public partial class GameBoxWriter
 #endif
     }
 
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public void WriteByteArray(byte[]? array)
+    {
+        if (array is null)
+        {
+            Write(0);
+        }
+        else
+        {
+            Write(array.Length);
+            Write(array);
+        }
+    }
+
     /// <summary>
     /// First writes an <see cref="int"/> representing the length, then does a for loop with this length, each yield having an option to write something from <typeparamref name="T"/>.
     /// </summary>
