@@ -3144,7 +3144,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             if (rw.Mode == GameBoxReaderWriterMode.Write)
             {
-                rw.Writer!.WriteBytes(U01);
+                rw.Writer!.Write(U01);
             }
         }
     }
@@ -3296,18 +3296,18 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             foreach (var frame in n.lightmapFrames)
             {
                 w.Write(frame[0].Data.Length);
-                w.WriteBytes(frame[0].Data);
+                w.Write(frame[0].Data);
 
                 if (version >= 3)
                 {
                     w.Write(frame[1].Data.Length);
-                    w.WriteBytes(frame[1].Data);
+                    w.Write(frame[1].Data);
                 }
 
                 if (version >= 6)
                 {
                     w.Write(frame[2].Data.Length);
-                    w.WriteBytes(frame[2].Data);
+                    w.Write(frame[2].Data);
                 }
             }
 
@@ -3318,7 +3318,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 using var gbxw = new GameBoxWriter(ms, w.Settings, logger);
 
                 n.lightmapCache?.Write(gbxw, logger);
-                gbxw.WriteBytes(DataAfterLightmapCache ?? Array.Empty<byte>());
+                gbxw.Write(DataAfterLightmapCache ?? Array.Empty<byte>());
 
                 w.Write((int)ms.Length);
 
@@ -3332,7 +3332,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 }
 
                 w.Write((int)msCompressed.Length);
-                w.WriteBytes(msCompressed.ToArray());
+                w.Write(msCompressed.ToArray());
 #else
                 EnableWriteOfCompressedData = true;
 
@@ -3341,7 +3341,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     // Temporary solution due to problems with compression
                     w.Write(LightmapCacheDataUncompressedSize.GetValueOrDefault());
                     w.Write(LightmapCacheData!.Length);
-                    w.WriteBytes(LightmapCacheData);
+                    w.Write(LightmapCacheData);
                     return;
                 }
 #endif
@@ -3427,12 +3427,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             using var itemW = new GameBoxWriter(itemMs, w.Settings, logger);
 
             itemW.Write(U02);
-            itemW.WriteNodes(n.anchoredObjects);
+            itemW.WriteNodeArray(n.anchoredObjects);
 
-            itemW.WriteBytes(U03);
+            itemW.Write(U03);
 
             w.Write((int)itemMs.Length);
-            w.WriteBytes(itemMs.ToArray());
+            w.Write(itemMs.ToArray());
         }
     }
 
@@ -3510,7 +3510,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             using var ms = new MemoryStream();
             using var w1 = new GameBoxWriter(ms, w.Settings, logger);
 
-            w1.Write(n.genealogies, (x, w) =>
+            w1.WriteArray(n.genealogies, (x, w) =>
             {
                 w.Write(0x0311D000);
                 x.Write(w, logger);
@@ -3922,7 +3922,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     item.Ident?.Author ?? string.Empty));
             }
 
-            writer.Write(embedded.ToArray(), (x, w1) => w1.Write(x));
+            writer.WriteArray(embedded.ToArray(), (x, w1) => w1.Write(x));
 
             using (var zipStream = new MemoryStream())
             {
@@ -3931,7 +3931,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 writer.Write(zipStream.ToArray(), 0, (int)zipStream.Length);
             }
 
-            writer.Write(Textures, (x, w1) => w1.Write(x));
+            writer.WriteArray(Textures, (x, w1) => w1.Write(x));
 
             w.Write((int)ms.Length);
             w.Write(ms.ToArray());

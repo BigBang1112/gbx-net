@@ -83,7 +83,7 @@ public class CPlugSurfaceGeom : CPlugSurface
                         case 2:
                         case 3:
                             // Array of Vec3
-                            rw.Reader!.ReadSpan<Vec3>();
+                            rw.Reader!.ReadArray<Vec3>();
                             // Array of STriangle
                             rw.Reader.ReadArray(r => r.ReadBytes(32));
 

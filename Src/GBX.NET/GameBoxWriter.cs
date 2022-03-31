@@ -2,6 +2,7 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
+using System;
 
 namespace GBX.NET;
 
@@ -39,6 +40,20 @@ public partial class GameBoxWriter : BinaryWriter
 
         this.logger = logger;
     }
+    
+    /// <summary>
+    /// Writes a byte array to the underlying stream.
+    /// </summary>
+    /// <param name="buffer">A byte array containing the data to write.</param>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public override void Write(byte[]? buffer)
+    {
+        if (buffer is not null)
+        {
+            base.Write(buffer);
+        }
+    }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -58,7 +73,7 @@ public partial class GameBoxWriter : BinaryWriter
 
         if (value is not null)
         {
-            WriteBytes(Encoding.UTF8.GetBytes(value));
+            Write(Encoding.UTF8.GetBytes(value));
         }
     }
 
@@ -203,7 +218,7 @@ public partial class GameBoxWriter : BinaryWriter
 
         if (fileRef.Version >= 3)
         {
-            WriteBytes(fileRef.Checksum ?? FileRef.DefaultChecksum);
+            Write(fileRef.Checksum ?? FileRef.DefaultChecksum);
         }
 
         Write(fileRef.FilePath);
@@ -347,7 +362,7 @@ public partial class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteBigInt(BigInteger bigInteger) => WriteBytes(bigInteger.ToByteArray());
+    public void WriteBigInt(BigInteger bigInteger) => Write(bigInteger.ToByteArray());
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -455,36 +470,24 @@ public partial class GameBoxWriter : BinaryWriter
         Write(variable.TotalSeconds);
     }
 
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteBytes(byte[]? bytes)
-    {
-        if (bytes is null) return;
-
-        Write(bytes, 0, bytes.Length);
-    }
-
 #if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
-    public async ValueTask WriteBytesAsync(byte[]? bytes, CancellationToken cancellationToken = default)
+    public async ValueTask WriteBytesAsync(ReadOnlyMemory<byte> bytes, CancellationToken cancellationToken = default)
     {
-        if (bytes is null)
-        {
-            return;
-        }
-
         await BaseStream.WriteAsync(bytes, cancellationToken);
     }
-#else
+#endif
+    
     public async Task WriteBytesAsync(byte[]? bytes, CancellationToken cancellationToken = default)
     {
-        if (bytes is null)
+        if (bytes is not null)
         {
-            return;
-        }
-
-        await BaseStream.WriteAsync(bytes, 0, bytes.Length, cancellationToken);
-    }
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+            await BaseStream.WriteAsync(bytes, cancellationToken);
+#else
+            await BaseStream.WriteAsync(bytes, 0, bytes.Length, cancellationToken);
 #endif
+        }
+    }
 
     /// <summary>
     /// Writes the node array that are presented directly and not as a node reference.
@@ -494,7 +497,7 @@ public partial class GameBoxWriter : BinaryWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="OverflowException">There's more nodes than <see cref="int.MaxValue"/>.</exception>
-    public void WriteNodes<T>(IEnumerable<T>? nodes) where T : Node
+    public void WriteNodeArray<T>(IEnumerable<T>? nodes) where T : Node
     {
         if (nodes is null)
         {

@@ -106,7 +106,7 @@ public partial class GameBox
                 w.Write(length);
             }
 
-            w.WriteBytes(userDataStream.ToArray());
+            w.Write(userDataStream.ToArray());
         }
 
         /// <summary>

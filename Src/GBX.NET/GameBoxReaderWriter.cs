@@ -1402,7 +1402,7 @@ public partial class GameBoxReaderWriter
     public T[]? Array<T>(T[]? array, Func<int, T> forLoopRead, Action<T> forLoopWrite)
     {
         if (Reader is not null) return Reader.ReadArray(forLoopRead);
-        if (Writer is not null) Writer.Write(array, forLoopWrite);
+        if (Writer is not null) Writer.WriteArray(array, forLoopWrite);
         return array;
     }
 
@@ -1424,7 +1424,7 @@ public partial class GameBoxReaderWriter
     public T[]? Array<T>(T[]? array, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
     {
         if (Reader is not null) return Reader.ReadArray(forLoopRead);
-        if (Writer is not null) Writer.Write(array, forLoopWrite);
+        if (Writer is not null) Writer.WriteArray(array, forLoopWrite);
         return array;
     }
 
@@ -1446,7 +1446,7 @@ public partial class GameBoxReaderWriter
     public T[]? Array<T>(T[]? array, Func<T> forLoopRead, Action<T> forLoopWrite)
     {
         if (Reader is not null) return Reader.ReadArray(forLoopRead);
-        if (Writer is not null) Writer.Write(array, forLoopWrite);
+        if (Writer is not null) Writer.WriteArray(array, forLoopWrite);
         return array;
     }
 
@@ -1468,7 +1468,7 @@ public partial class GameBoxReaderWriter
     public T[]? Array<T>(T[]? array, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
     {
         if (Reader is not null) return Reader.ReadArray(forLoopRead);
-        if (Writer is not null) Writer.Write(array, forLoopWrite);
+        if (Writer is not null) Writer.WriteArray(array, forLoopWrite);
         return array;
     }
 
@@ -1616,7 +1616,7 @@ public partial class GameBoxReaderWriter
     public IList<T>? List<T>(IList<T>? list, Func<int, T> forLoopRead, Action<T> forLoopWrite)
     {
         if (Reader is not null) return Reader.ReadList(forLoopRead);
-        if (Writer is not null) Writer.Write(list, forLoopWrite);
+        if (Writer is not null) Writer.WriteList(list, forLoopWrite);
         return list;
     }
 
@@ -1638,7 +1638,7 @@ public partial class GameBoxReaderWriter
     public IList<T>? List<T>(IList<T>? list, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
     {
         if (Reader is not null) return Reader.ReadList(forLoopRead);
-        if (Writer is not null) Writer.Write(list, forLoopWrite);
+        if (Writer is not null) Writer.WriteList(list, forLoopWrite);
         return list;
     }
 
@@ -1660,7 +1660,7 @@ public partial class GameBoxReaderWriter
     public IList<T>? List<T>(IList<T>? list, Func<T> forLoopRead, Action<T> forLoopWrite)
     {
         if (Reader is not null) return Reader.ReadList(forLoopRead);
-        if (Writer is not null) Writer.Write(list, forLoopWrite);
+        if (Writer is not null) Writer.WriteList(list, forLoopWrite);
         return list;
     }
 
@@ -1682,7 +1682,7 @@ public partial class GameBoxReaderWriter
     public IList<T>? List<T>(IList<T>? list, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
     {
         if (Reader is not null) return Reader.ReadList(forLoopRead);
-        if (Writer is not null) Writer.Write(list, forLoopWrite);
+        if (Writer is not null) Writer.WriteList(list, forLoopWrite);
         return list;
     }
 
@@ -1756,7 +1756,7 @@ public partial class GameBoxReaderWriter
     public async Task<IList<T>?> ListAsync<T>(IList<T>? list, Func<GameBoxReader, Task<T>> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
     {
         if (Reader is not null) return await Reader.ReadListAsync(forLoopRead);
-        if (Writer is not null) Writer.Write(list, forLoopWrite);
+        if (Writer is not null) Writer.WriteList(list, forLoopWrite);
         return list;
     }
 
@@ -1834,7 +1834,7 @@ public partial class GameBoxReaderWriter
     public IDictionary<TKey, TValue>? Dictionary<TKey, TValue>(IDictionary<TKey, TValue>? dictionary = default, bool overrideKey = false) where TKey : notnull
     {
         if (Reader is not null) return Reader.ReadDictionary<TKey, TValue>(overrideKey);
-        if (Writer is not null) Writer.Write(dictionary);
+        if (Writer is not null) Writer.WriteDictionary(dictionary);
         return dictionary;
     }
 
@@ -1914,7 +1914,7 @@ public partial class GameBoxReaderWriter
         {
             var buffer = new byte[stream.Length - stream.Position];
             stream.Read(buffer, 0, buffer.Length);
-            Writer.WriteBytes(buffer);
+            Writer.Write(buffer);
 
             return;
         }

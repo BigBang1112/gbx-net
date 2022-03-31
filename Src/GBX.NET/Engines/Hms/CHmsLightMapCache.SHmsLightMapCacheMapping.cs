@@ -83,7 +83,7 @@ public partial class CHmsLightMapCache
 
                 w.Write(ColorCount);
                 w.Write(FaceCount);
-                w.WriteBytes(ColorData);
+                w.Write(ColorData);
 
                 ms.Position = 0;
 
@@ -103,7 +103,7 @@ public partial class CHmsLightMapCache
 
                 rw.Writer.Write((int)ms.Length);
                 rw.Writer.Write((int)compressedMs.Length);
-                rw.Writer.WriteBytes(compressedMs.ToArray());
+                rw.Writer.Write(compressedMs.ToArray());
             }
 
             //ReadWriteCompressedSpan<uint>(ref U10, rw, Count);
@@ -168,7 +168,7 @@ public partial class CHmsLightMapCache
         {
             var spanLength = count * (sizeOfStruct ?? 1);
             var lengthInBytes = sizeOfStruct.HasValue;
-            return ReadCompressed(r, count, r => r.ReadSpan<T>(spanLength, lengthInBytes).ToArray());
+            return ReadCompressed(r, count, r => r.ReadArray<T>(spanLength, lengthInBytes).ToArray());
         }
 
         public static void WriteCompressed<T>(GameBoxWriter w, T value, Action<GameBoxWriter, T> action)
@@ -197,7 +197,7 @@ public partial class CHmsLightMapCache
 #endif
 
             w.Write((int)output.Length);
-            w.WriteBytes(output.ToArray());
+            w.Write(output.ToArray());
         }
 
         public static void WriteCompressedArray<T>(GameBoxWriter w, T[] value) where T : struct

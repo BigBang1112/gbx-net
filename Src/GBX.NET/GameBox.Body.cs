@@ -340,7 +340,7 @@ public partial class GameBox
                 bodyW.Write(RawData.Length);
             }
 
-            bodyW.WriteBytes(RawData);
+            bodyW.Write(RawData);
         }
 
         internal async Task WriteAsync(GameBox gbx,
@@ -412,7 +412,7 @@ public partial class GameBox
 
             w.Write((int)msBody.Length); // Uncompressed
             w.Write(output.Length); // Compressed
-            w.WriteBytes(output); // Compressed body data
+            w.Write(output); // Compressed body data
         }
 
         /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -441,7 +441,7 @@ public partial class GameBox
 
             w.Write((int)msBody.Length); // Uncompressed
             w.Write(output.Length); // Compressed
-            w.WriteBytes(output); // Compressed body data
+            w.Write(output); // Compressed body data
         }
     }
 }

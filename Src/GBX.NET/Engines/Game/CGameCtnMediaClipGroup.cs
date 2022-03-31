@@ -73,10 +73,10 @@ public partial class CGameCtnMediaClipGroup : CMwNod
         {
             w.Write(n.ClipsVersion);
 
-            w.Write(n.Clips, (x, w) => w.Write(x.Clip));
-            w.Write(n.Clips, (x, w) =>
+            w.WriteList(n.Clips, (x, w) => w.Write(x.Clip));
+            w.WriteList(n.Clips, (x, w) =>
             {
-                w.Write(x.Trigger.Coords, (y, w) => w.Write(y));
+                w.WriteArray(x.Trigger.Coords, (y, w) => w.Write(y));
             });
         }
 
@@ -132,10 +132,10 @@ public partial class CGameCtnMediaClipGroup : CMwNod
         {
             w.Write(n.ClipsVersion);
 
-            w.Write(n.Clips, (x, w) => w.Write(x.Clip));
-            w.Write(n.Clips, (x, w) =>
+            w.WriteList(n.Clips, (x, w) => w.Write(x.Clip));
+            w.WriteList(n.Clips, (x, w) =>
             {
-                w.Write(x.Trigger.Coords, (y, w) => w.Write(y));
+                w.WriteArray(x.Trigger.Coords, (y, w) => w.Write(y));
                 w.Write(x.Trigger.U01);
                 w.Write(x.Trigger.U02);
                 w.Write(x.Trigger.U03);
@@ -204,8 +204,8 @@ public partial class CGameCtnMediaClipGroup : CMwNod
         {
             w.Write(n.ClipsVersion);
 
-            w.Write(n.Clips, (x, w) => w.Write(x.Clip));
-            w.Write(n.Clips, (x, w) =>
+            w.WriteList(n.Clips, (x, w) => w.Write(x.Clip));
+            w.WriteList(n.Clips, (x, w) =>
             {
                 w.Write(x.Trigger.U01);
                 w.Write(x.Trigger.U02);
@@ -213,7 +213,7 @@ public partial class CGameCtnMediaClipGroup : CMwNod
                 w.Write(x.Trigger.U04);
                 w.Write((int)x.Trigger.Condition);
                 w.Write(x.Trigger.ConditionValue);
-                w.Write(x.Trigger.Coords, (y, w) => w.Write(y));
+                w.WriteArray(x.Trigger.Coords, (y, w) => w.Write(y));
             });
         }
 

@@ -288,7 +288,7 @@ public class CPlugEntRecordData : CMwNod
             w.Write(Version);
             w.Write(UncompressedSize);
             w.Write(CompressedSize);
-            w.WriteBytes(n.data);
+            w.Write(n.data);
         }
     }
 }

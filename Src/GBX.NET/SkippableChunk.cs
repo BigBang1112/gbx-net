@@ -92,12 +92,12 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk, IState where T : Nod
 
     public override void Write(T n, GameBoxWriter w)
     {
-        w.WriteBytes(Data);
+        w.Write(Data);
     }
 
     public void Write(GameBoxWriter w)
     {
-        w.WriteBytes(Data);
+        w.Write(Data);
     }
 
     public async Task WriteAsync(GameBoxWriter w, CancellationToken cancellationToken)

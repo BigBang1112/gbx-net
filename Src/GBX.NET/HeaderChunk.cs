@@ -40,7 +40,7 @@ public sealed class HeaderChunk : Chunk, IHeaderChunk
 
     public void Write(GameBoxWriter w)
     {
-        w.WriteBytes(Data);
+        w.Write(Data);
     }
 
     public async Task ReadWriteAsync(GameBoxReaderWriter rw, CancellationToken cancellationToken = default)

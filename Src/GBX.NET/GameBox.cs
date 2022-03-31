@@ -133,7 +133,7 @@ public partial class GameBox : IDisposable
             refTable.Write(header, headerW);
         }
 
-        headerW.WriteBytes(ms.ToArray());
+        headerW.Write(ms.ToArray());
 
         StateManager.Shared.RemoveState(stateGuid);
     }
@@ -175,7 +175,7 @@ public partial class GameBox : IDisposable
         else
             refTable.Write(header, headerW);
 
-        headerW.WriteBytes(ms.ToArray());
+        headerW.Write(ms.ToArray());
 
         StateManager.Shared.RemoveState(stateGuid);
     }
@@ -403,7 +403,7 @@ public partial class GameBox : IDisposable
         {
             var bytes = r.ReadBytes();
             w.Write(bytes.Length);
-            w.WriteBytes(bytes);
+            w.Write(bytes);
         }
 
         // Num nodes
@@ -421,7 +421,7 @@ public partial class GameBox : IDisposable
 
         var buffer = new byte[uncompressedSize];
         Lzo.Decompress(compressedData, buffer);
-        w.WriteBytes(buffer);
+        w.Write(buffer);
     }
 
     /// <summary>
@@ -525,7 +525,7 @@ public partial class GameBox : IDisposable
         {
             var bytes = r.ReadBytes();
             w.Write(bytes.Length);
-            w.WriteBytes(bytes);
+            w.Write(bytes);
         }
 
         // Num nodes
@@ -545,7 +545,7 @@ public partial class GameBox : IDisposable
 
         w.Write(uncompressedData.Length);
         w.Write(compressedData.Length);
-        w.WriteBytes(compressedData);
+        w.Write(compressedData);
     }
 
     private static short CopyBasicInformation(GameBoxReader r, GameBoxWriter w)

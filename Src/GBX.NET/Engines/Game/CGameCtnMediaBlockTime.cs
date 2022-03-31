@@ -76,7 +76,7 @@ public partial class CGameCtnMediaBlockTime : CGameCtnMediaBlock, CGameCtnMediaB
         {
             if (n.IsTM2)
             {
-                w.Write(n.Keys, (x, w) =>
+                w.WriteList(n.Keys, (x, w) =>
                 {
                     w.WriteTimeSingle(x.Time);
                     w.Write(x.TimeValue);
@@ -85,7 +85,7 @@ public partial class CGameCtnMediaBlockTime : CGameCtnMediaBlock, CGameCtnMediaB
                 return;
             }
 
-            w.Write(n.Keys, (x, w) =>
+            w.WriteList(n.Keys, (x, w) =>
             {
                 w.WriteTimeSingle(x.Time);
                 w.Write(x.TimeValue);

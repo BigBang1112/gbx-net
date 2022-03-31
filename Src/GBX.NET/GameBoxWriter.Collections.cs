@@ -28,9 +28,11 @@ public partial class GameBoxWriter
             throw new ArgumentNullException(nameof(array));
         }
 
-        var bytes = new byte[array.Length * Marshal.SizeOf<T>()];
-        Buffer.BlockCopy(array, 0, bytes, 0, bytes.Length);
-        WriteBytes(bytes);
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+        Write(MemoryMarshal.Cast<T, byte>(array));
+#else
+        Write(MemoryMarshal.Cast<T, byte>(array).ToArray());
+#endif
     }
 
     /// <summary>
@@ -42,7 +44,7 @@ public partial class GameBoxWriter
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Write<T>(T[]? array, Action<T> forLoop)
+    public void WriteArray<T>(T[]? array, Action<T> forLoop)
     {
         if (forLoop is null)
         {
@@ -66,7 +68,7 @@ public partial class GameBoxWriter
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    internal void Write<T>(T[]? array, Action<T, GameBoxWriter> forLoop)
+    public void WriteArray<T>(T[]? array, Action<T, GameBoxWriter> forLoop)
     {
         if (forLoop is null)
         {
@@ -90,7 +92,7 @@ public partial class GameBoxWriter
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Write<T>(IList<T>? list, Action<T> forLoop)
+    public void WriteList<T>(IList<T>? list, Action<T> forLoop)
     {
         if (forLoop is null)
         {
@@ -114,7 +116,7 @@ public partial class GameBoxWriter
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Write<T>(IList<T>? list, Action<T, GameBoxWriter> forLoop)
+    public void WriteList<T>(IList<T>? list, Action<T, GameBoxWriter> forLoop)
     {
         if (forLoop is null)
         {
@@ -139,7 +141,7 @@ public partial class GameBoxWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="OverflowException">The number of elements in source is larger than <see cref="int.MaxValue"/>.</exception>
-    public void Write<T>(IEnumerable<T>? enumerable, Action<T> forLoop)
+    public void WriteEnumerable<T>(IEnumerable<T>? enumerable, Action<T> forLoop)
     {
         if (forLoop is null)
             throw new ArgumentNullException(nameof(forLoop));
@@ -163,7 +165,7 @@ public partial class GameBoxWriter
     /// <exception cref="ArgumentNullException">Key or value in dictionary is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Write<TKey, TValue>(IDictionary<TKey, TValue>? dictionary)
+    public void WriteDictionary<TKey, TValue>(IDictionary<TKey, TValue>? dictionary)
     {
         if (dictionary is null)
         {

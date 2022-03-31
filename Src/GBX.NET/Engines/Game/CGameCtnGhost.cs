@@ -748,7 +748,7 @@ public partial class CGameCtnGhost : CGameGhost
                             controlNames.Add(entry.Name);
                 }
 
-                w.Write(controlNames,
+                w.WriteList(controlNames,
                     (x, w1) => w1.WriteId(x));
 
                 w.Write(n.ControlEntries?.Length ?? 0);

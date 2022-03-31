@@ -159,7 +159,7 @@ public abstract class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, CGameCtn
 
         public override void Write(CGameCtnMediaBlockTriangles n, GameBoxWriter w)
         {
-            w.Write(n.keys, (x, w1) => w1.WriteTimeSingle(x.Time));
+            w.WriteList(n.keys, (x, w1) => w1.WriteTimeSingle(x.Time));
             w.Write(n.keys.Count);
             w.Write(n.vertices.Length);
 
@@ -171,8 +171,8 @@ public abstract class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, CGameCtn
                 }
             }
 
-            w.Write(n.vertices, (x, w1) => w1.Write(x));
-            w.Write(n.triangles, (x, w1) => w1.Write(x));
+            w.WriteArray(n.vertices, (x, w1) => w1.Write(x));
+            w.WriteArray(n.triangles, (x, w1) => w1.Write(x));
 
             w.Write(U01);
             w.Write(U02);

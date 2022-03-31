@@ -351,7 +351,7 @@ public abstract class Node : IStateRefTable, IDisposable
             {
                 var unknown = new GameBoxWriter(chunk.Unknown, logger: logger);
                 var unknownData = r.ReadUntilFacade().ToArray();
-                unknown.WriteBytes(unknownData);
+                unknown.Write(unknownData);
             }
         }
         catch (EndOfStreamException) // May not be needed
@@ -507,7 +507,7 @@ public abstract class Node : IStateRefTable, IDisposable
             {
                 var unknown = new GameBoxWriter(chunk.Unknown, logger: logger);
                 var unknownData = r.ReadUntilFacade().ToArray();
-                unknown.WriteBytes(unknownData);
+                unknown.Write(unknownData);
             }
         }
         catch (EndOfStreamException) // May not be needed
@@ -774,7 +774,7 @@ public abstract class Node : IStateRefTable, IDisposable
                 break;
         }
 
-        w.WriteBytes(ms.ToArray());
+        w.Write(ms.ToArray());
     }
 
     private async Task WriteChunkAsync(IReadableWritableChunk chunk, GameBoxWriter w, ILogger? logger, CancellationToken cancellationToken)
@@ -802,7 +802,7 @@ public abstract class Node : IStateRefTable, IDisposable
     {
         if (IsIgnorableChunk(chunk.GetType()))
         {
-            msW.WriteBytes(chunk.Unknown.ToArray());
+            msW.Write(chunk.Unknown.ToArray());
         }
         else
         {
@@ -873,7 +873,7 @@ public abstract class Node : IStateRefTable, IDisposable
 
         if (IsIgnorableChunk(type))
         {
-            chunkWriter.WriteBytes(skippableChunk.Data);
+            chunkWriter.Write(skippableChunk.Data);
             return;
         }
 
@@ -890,7 +890,7 @@ public abstract class Node : IStateRefTable, IDisposable
         }
         catch (ChunkWriteNotImplementedException)
         {
-            chunkWriter.WriteBytes(skippableChunk.Data);
+            chunkWriter.Write(skippableChunk.Data);
         }
 
         if (ownIdState)
