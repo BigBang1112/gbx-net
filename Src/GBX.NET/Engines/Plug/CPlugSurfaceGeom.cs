@@ -22,7 +22,7 @@ public class CPlugSurfaceGeom : CPlugSurface
         public override void ReadWrite(CPlugSurfaceGeom n, GameBoxReaderWriter rw)
         {
             U01 = rw.Int32();
-            U02 = rw.ArrayVec3();
+            U02 = rw.Array<Vec3>();
 
             U03 = rw.Array(null, r =>
             {

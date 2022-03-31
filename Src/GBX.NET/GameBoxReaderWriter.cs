@@ -1538,42 +1538,6 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
-    public Vec2[]? ArrayVec2(Vec2[]? array = default)
-    {
-        return Array(array, r => r.ReadVec2(), (x, w) => w.Write(x));
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
-    public void ArrayVec2(ref Vec2[]? array)
-    {
-        array = Array(array, r => r.ReadVec2(), (x, w) => w.Write(x));
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
-    public Vec3[]? ArrayVec3(Vec3[]? array = default)
-    {
-        return Array(array, r => r.ReadVec3(), (x, w) => w.Write(x));
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
-    public void ArrayVec3(ref Vec3[]? array)
-    {
-        array = Array(array, r => r.ReadVec3(), (x, w) => w.Write(x));
-    }
-
-    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
-    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     public string[]? ArrayString(string[]? array = default)
     {
         return Array(array, r => r.ReadString(), (x, w) => w.Write(x));
