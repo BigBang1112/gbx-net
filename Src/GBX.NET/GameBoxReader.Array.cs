@@ -5,36 +5,35 @@ namespace GBX.NET;
 public partial class GameBoxReader
 {
     /// <summary>
-    /// Reads an array of primitive types (only some are supported) with <paramref name="length"/>.
+    /// Reads bytes into a stack-allocated area (decided by <paramref name="length"/>, where <paramref name="lengthInBytes"/> determines the format), then casts the data into <typeparamref name="T"/> structs by using <see cref="MemoryMarshal.Cast{TFrom, TTo}(Span{TFrom})"/>, resulting in more optimized read of array for value types.
     /// </summary>
-    /// <typeparam name="T">Type of the array.</typeparam>
+    /// <typeparam name="T">A struct type.</typeparam>
     /// <param name="length">Length of the array.</param>
-    /// <param name="lengthInBytes">If to take length as the size of the byte array and not the <typeparamref name="T"/> array.</param>
+    /// <param name="lengthInBytes">If to take length as the size of the byte array and not the <see cref="Vec3"/> array.</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
     public T[] ReadArray<T>(int length, bool lengthInBytes = false) where T : struct
     {
-        var sizeOfT = Marshal.SizeOf<T>();
+        var l = length * (lengthInBytes ? 1 : Marshal.SizeOf<T>());
 
-        if (lengthInBytes && (length % 4) != 0)
-        {
-            throw new Exception();
-        }
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        Span<byte> bytes = stackalloc byte[l];
+        Read(bytes);
+#else
+        var bytes = ReadBytes(l);
+#endif
 
-        var buffer = ReadBytes(length * (lengthInBytes ? 1 : sizeOfT));
-        var array = new T[length / (lengthInBytes ? sizeOfT : 1)];
-        Buffer.BlockCopy(buffer, 0, array, 0, buffer.Length);
-        return array;
+        return MemoryMarshal.Cast<byte, T>(bytes).ToArray();
     }
 
     /// <summary>
-    /// First reads an <see cref="int"/> representing the length, then reads an array of primitive types (only some are supported) with this length.
+    /// First reads an <see cref="int"/> representing the length, then reads bytes into a stack-allocated area (decided by the length, where <paramref name="lengthInBytes"/> determines the format), then casts the data into <typeparamref name="T"/> structs by using <see cref="MemoryMarshal.Cast{TFrom, TTo}(Span{TFrom})"/>, resulting in more optimized read of array for value types.
     /// </summary>
-    /// <typeparam name="T">Type of the array.</typeparam>
-    /// <param name="lengthInBytes">If to take length as the size of the byte array and not the <typeparamref name="T"/> array.</param>
+    /// <typeparam name="T">A struct type.</typeparam>
+    /// <param name="lengthInBytes">If to take length as the size of the byte array and not the <see cref="Vec3"/> array.</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>

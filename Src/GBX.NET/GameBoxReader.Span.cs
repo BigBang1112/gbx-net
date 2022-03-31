@@ -10,11 +10,12 @@ public partial class GameBoxReader
     /// <typeparam name="T">A struct type.</typeparam>
     /// <param name="length">Length of the array.</param>
     /// <param name="lengthInBytes">If to take length as the size of the byte array and not the <see cref="Vec3"/> array.</param>
-    /// <returns>An array of <see cref="Vec3"/>.</returns>
+    /// <returns>A span of <typeparamref name="T"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
+    [Obsolete("Prefer using ReadStructArray, turning the Span into an array will double the memory allocation.")]
     public Span<T> ReadSpan<T>(int length, bool lengthInBytes = false) where T : struct
     {
         var l = length * (lengthInBytes ? 1 : Marshal.SizeOf<T>());
@@ -34,11 +35,12 @@ public partial class GameBoxReader
     /// </summary>
     /// <typeparam name="T">A struct type.</typeparam>
     /// <param name="lengthInBytes">If to take length as the size of the byte array and not the <see cref="Vec3"/> array.</param>
-    /// <returns>An array of <see cref="Vec3"/>.</returns>
+    /// <returns>A span of <typeparamref name="T"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
+    [Obsolete("Prefer using ReadStructArray, turning the Span into an array will double the memory allocation.")]
     public Span<T> ReadSpan<T>(bool lengthInBytes = false) where T : struct
     {
         return ReadSpan<T>(length: ReadInt32(), lengthInBytes);
