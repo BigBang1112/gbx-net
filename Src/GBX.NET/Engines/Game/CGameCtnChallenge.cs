@@ -1707,7 +1707,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     /// <param name="fileOnDisk">File to embed located on the disk.</param>
     /// <param name="relativeDirectory">Relative directory where the embed should be represented in the game, usually starts with <c>"Items/..."</c>, <c>"Blocks/..."</c> or <c>"Materials/..."</c>.</param>
-    /// <param name="keepIcon">Keep the icon (chunk 0x2E001004) of the embedded GBX. Increases total unneeded embed size.</param>
+    /// <param name="keepIcon">Keep the icon (chunk 0x2E001004) of the embedded GBX. Increases total embed size that is technically not needed.</param>
     /// <exception cref="MemberNullException"><see cref="EmbeddedObjects"/> is null.</exception>
     /// <exception cref="ArgumentException"><paramref name="fileOnDisk"/> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by System.IO.Path.InvalidPathChars.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="fileOnDisk"/> is null.</exception>
@@ -1718,7 +1718,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <exception cref="FileNotFoundException">The file specified in path was not found.</exception>
     /// <exception cref="NotSupportedException"><paramref name="fileOnDisk"/> is in an invalid format.</exception>
     /// <exception cref="SecurityException">The caller does not have the required permission.</exception>
-    public void ImportFileToEmbed(string fileOnDisk, string relativeDirectory, bool keepIcon)
+    public void ImportFileToEmbed(string fileOnDisk, string relativeDirectory, bool keepIcon = false)
     {
         if (EmbeddedObjects is null)
             throw new MemberNullException(nameof(EmbeddedObjects));
@@ -1799,26 +1799,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
 
         EmbeddedObjects[relativeDirectory + "/" + Path.GetFileName(fileOnDisk)] = data;
-    }
-
-    /// <summary>
-    /// Import a file to embed in the map by keeping the file name but relocating it in the embed ZIP.
-    /// </summary>
-    /// <param name="fileOnDisk">File to embed located on the disk.</param>
-    /// <param name="relativeDirectory">Relative directory where the embed should be represented in the game, usually starts with <c>"Items/..."</c>, <c>"Blocks/..."</c> or <c>"Materials/..."</c>.</param>
-    /// <exception cref="MemberNullException"><see cref="EmbeddedObjects"/> is null.</exception>
-    /// <exception cref="ArgumentException"><paramref name="fileOnDisk"/> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by System.IO.Path.InvalidPathChars.</exception>
-    /// <exception cref="ArgumentNullException"><paramref name="fileOnDisk"/> is null.</exception>
-    /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.</exception>
-    /// <exception cref="DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive).</exception>
-    /// <exception cref="IOException">An I/O error occurred while opening the file.</exception>
-    /// <exception cref="UnauthorizedAccessException"><paramref name="fileOnDisk"/> specified a file that is read-only. -or- <paramref name="fileOnDisk"/> specified a file that is hidden. -or- This operation is not supported on the current platform. -or- <paramref name="fileOnDisk"/> specified a directory. -or- The caller does not have the required permission.</exception>
-    /// <exception cref="FileNotFoundException">The file specified in path was not found.</exception>
-    /// <exception cref="NotSupportedException"><paramref name="fileOnDisk"/> is in an invalid format.</exception>
-    /// <exception cref="SecurityException">The caller does not have the required permission.</exception>
-    public void ImportFileToEmbed(string fileOnDisk, string relativeDirectory)
-    {
-        ImportFileToEmbed(fileOnDisk, relativeDirectory, false);
     }
 
     /// <summary>
