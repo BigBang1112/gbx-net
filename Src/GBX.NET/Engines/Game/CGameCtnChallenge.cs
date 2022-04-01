@@ -3878,6 +3878,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
                 if (gbxItem.FileName is null)
                 {
+                    if (gbxItem.Node.Ident is not null)
+                    {
+                        embedded.Add(gbxItem.Node.Ident);
+                    }
+
                     continue;
                 }
 
