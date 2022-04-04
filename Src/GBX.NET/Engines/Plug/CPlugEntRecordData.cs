@@ -113,84 +113,87 @@ public class CPlugEntRecordData : CMwNod
                 var timestamp = r.ReadInt32();
                 var buffer = r.ReadBytes(); // MwBuffer
 
-                if (buffer.Length > 0)
+                if (buffer.Length == 0)
                 {
-                    using var bufferMs = new MemoryStream(buffer);
-                    using var bufferR = new GameBoxReader(bufferMs);
-
-                    var sampleProgress = (int)bufferMs.Position;
-
-                    var sample = new Sample(buffer)
-                    {
-                        BufferType = (byte)bufferType
-                    };
-
-                    switch (bufferType)
-                    {
-                        case 0:
-                            break;
-                        case 2:
-                            {
-                                bufferMs.Position = 5;
-
-                                var (position, rotation, speed, velocity) = bufferR.ReadTransform(); // Only position matches
-
-                                sample.Timestamp = TimeInt32.FromMilliseconds(timestamp);
-                                sample.Position = position;
-                                sample.Rotation = rotation;
-                                sample.Speed = speed * 3.6f;
-                                sample.Velocity = velocity;
-
-                                break;
-                            }
-                        case 4:
-                            {
-                                bufferMs.Position = 5;
-                                var rpmByte = bufferR.ReadByte();
-
-                                bufferMs.Position = 14;
-                                var steerByte = bufferR.ReadByte();
-                                var steer = ((steerByte / 255f) - 0.5f) * 2;
-
-                                bufferMs.Position = 91;
-                                var gearByte = bufferR.ReadByte();
-                                var gear = gearByte / 5f;
-
-                                sample.Gear = gear;
-                                sample.RPM = rpmByte;
-                                sample.Steer = steer;
-
-                                bufferMs.Position = 15;
-                                var u15 = bufferR.ReadByte();
-
-                                bufferMs.Position = 18;
-                                var brakeByte = bufferR.ReadByte();
-                                var brake = brakeByte / 255f;
-                                var gas = u15 / 255f + brake;
-
-                                sample.Brake = brake;
-                                sample.Gas = gas;
-
-                                bufferMs.Position = 47;
-
-                                var (position, rotation, speed, velocity) = bufferR.ReadTransform();
-
-                                sample.Timestamp = TimeInt32.FromMilliseconds(timestamp);
-                                sample.Position = position;
-                                sample.Rotation = rotation;
-                                sample.Speed = speed * 3.6f;
-                                sample.Velocity = velocity;
-
-                                break;
-                            }
-                        case 10:
-                            break;
-                        default:
-                            break;
-                    }
-
-                    samples.Add(sample);
+                    continue;
                 }
+
+                using var bufferMs = new MemoryStream(buffer);
+                using var bufferR = new GameBoxReader(bufferMs);
+
+                var sampleProgress = (int)bufferMs.Position;
+
+                var sample = new Sample(buffer)
+                {
+                    BufferType = (byte)bufferType
+                };
+
+                switch (bufferType)
+                {
+                    case 0:
+                        break;
+                    case 2:
+                        {
+                            bufferMs.Position = 5;
+
+                            var (position, rotation, speed, velocity) = bufferR.ReadTransform(); // Only position matches
+
+                            sample.Timestamp = TimeInt32.FromMilliseconds(timestamp);
+                            sample.Position = position;
+                            sample.Rotation = rotation;
+                            sample.Speed = speed * 3.6f;
+                            sample.Velocity = velocity;
+
+                            break;
+                        }
+                    case 4:
+                    case 6:
+                        {
+                            bufferMs.Position = 5;
+                            var rpmByte = bufferR.ReadByte();
+
+                            bufferMs.Position = 14;
+                            var steerByte = bufferR.ReadByte();
+                            var steer = ((steerByte / 255f) - 0.5f) * 2;
+
+                            bufferMs.Position = 91;
+                            var gearByte = bufferR.ReadByte();
+                            var gear = gearByte / 5f;
+
+                            sample.Gear = gear;
+                            sample.RPM = rpmByte;
+                            sample.Steer = steer;
+
+                            bufferMs.Position = 15;
+                            var u15 = bufferR.ReadByte();
+
+                            bufferMs.Position = 18;
+                            var brakeByte = bufferR.ReadByte();
+                            var brake = brakeByte / 255f;
+                            var gas = u15 / 255f + brake;
+
+                            sample.Brake = brake;
+                            sample.Gas = gas;
+
+                            bufferMs.Position = 47;
+
+                            var (position, rotation, speed, velocity) = bufferR.ReadTransform();
+
+                            sample.Timestamp = TimeInt32.FromMilliseconds(timestamp);
+                            sample.Position = position;
+                            sample.Rotation = rotation;
+                            sample.Speed = speed * 3.6f;
+                            sample.Velocity = velocity;
+
+                            break;
+                        }
+                    case 10:
+                        break;
+                    default:
+                        break;
+                }
+
+                samples.Add(sample);
             }
 
             u04 = r.ReadByte();
