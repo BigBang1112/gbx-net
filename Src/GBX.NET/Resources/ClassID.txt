@@ -396,6 +396,7 @@
   2AC CGameObjectVis
   2CB CGameArenaPlayer
   2E3 CGameSlotVis
+  38B CGameCtnMediaBlockOpponentVisibility
 04 Graphic
   001 GxLight
   002 GxLightBall
