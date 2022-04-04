@@ -1609,13 +1609,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public IEnumerable<GameBox> GetEmbeddedObjects()
     {
         if (EmbeddedObjects is null)
+        {
             yield break;
+        }
 
         foreach (var embed in EmbeddedObjects)
         {
             using var ms = new MemoryStream(embed.Value);
-            var gbx = GameBox.ParseHeader(ms);
-            yield return gbx;
+            yield return GameBox.ParseHeader(ms);
         }
     }
 
@@ -3907,7 +3908,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     item.Ident?.Author ?? string.Empty));
             }
 
-            writer.WriteArray(embedded.ToArray(), (x, w1) => w1.Write(x));
+            writer.WriteList(embedded, (x, w) => w.Write(x));
 
             using (var zipStream = new MemoryStream())
             {
@@ -3916,7 +3917,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 writer.Write(zipStream.ToArray(), 0, (int)zipStream.Length);
             }
 
-            writer.WriteArray(Textures, (x, w1) => w1.Write(x));
+            writer.WriteArray(Textures, (x, w) => w.Write(x));
 
             w.Write((int)ms.Length);
             w.Write(ms.ToArray());
