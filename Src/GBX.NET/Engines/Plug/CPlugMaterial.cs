@@ -137,7 +137,7 @@ public class CPlugMaterial : CPlug
 
     public class SDeviceMat
     {
-        private IStateRefTable state;
+        private Node node;
 
         private CPlugShader? shader1;
         private readonly int? shader1Index;
@@ -154,31 +154,31 @@ public class CPlugMaterial : CPlug
 
         public CPlugShader? Shader1
         {
-            get => shader1 = StateManager.Shared.GetNodeFromReferenceTable(state, shader1, shader1Index);
+            get => shader1 = node.GetNodeFromRefTable(shader1, shader1Index) as CPlugShader;
             set => shader1 = value;
         }
 
         public CPlugShader? Shader2
         {
-            get => shader2 = StateManager.Shared.GetNodeFromReferenceTable(state, shader2, shader2Index);
+            get => shader2 = node.GetNodeFromRefTable(shader2, shader2Index) as CPlugShader;
             set => shader2 = value;
         }
 
         public CPlugShader? Shader3
         {
-            get => shader3 = StateManager.Shared.GetNodeFromReferenceTable(state, shader3, shader3Index);
+            get => shader3 = node.GetNodeFromRefTable(shader3, shader3Index) as CPlugShader;
             set => shader3 = value;
         }
         
-        public SDeviceMat(IStateRefTable state, CPlugShader? shader1)
+        public SDeviceMat(Node node, CPlugShader? shader1)
         {
-            this.state = state;
+            this.node = node;
             this.shader1 = shader1;
         }
 
-        public SDeviceMat(IStateRefTable state, int shader1Index, int shader2Index, int shader3Index)
+        public SDeviceMat(Node node, int shader1Index, int shader2Index, int shader3Index)
         {
-            this.state = state;
+            this.node = node;
             this.shader1Index = shader1Index;
             this.shader2Index = shader2Index;
             this.shader3Index = shader3Index;

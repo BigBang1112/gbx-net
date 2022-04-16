@@ -7,12 +7,12 @@ namespace GBX.NET;
 /// <summary>
 /// An unknown serialized GameBox node with additional attributes. This class can represent deserialized .Gbx file.
 /// </summary>
-public partial class GameBox : IDisposable
+public partial class GameBox
 {
     public const string Magic = "GBX";
 
-    private readonly Header header;
-    private readonly RefTable? refTable;
+    private readonly GameBoxHeader header;
+    private readonly GameBoxRefTable? refTable;
 
     /// <summary>
     /// If specialized actions should be executed that can help further with debugging but slow down the parse speed. Options can be then visible inside Debugger properties if available.
@@ -26,8 +26,14 @@ public partial class GameBox : IDisposable
     public static bool IgnoreUnseenVersions { get; set; }
 
     public Node? Node { get; private set; }
-    public Body? RawBody { get; private set; }
+    public GameBoxBody? RawBody { get; private set; }
     public GameBoxBodyDebugger? Debugger { get; private set; }
+
+    public int? IdVersion { get; internal set; }
+    public List<string> IdStrings { get; } = new();
+    public bool IdIsWritten { get; internal set; }
+
+    public SortedDictionary<int, Node> AuxNodes { get; } = new();
 
     /// <summary>
     /// File path of the GameBox.
@@ -40,7 +46,7 @@ public partial class GameBox : IDisposable
     /// <param name="id">ID of the expected node - should be provided remapped to latest.</param>
     public GameBox(uint id)
     {
-        header = new Header(id);
+        header = new GameBoxHeader(id);
     }
 
     /// <summary>
@@ -49,12 +55,12 @@ public partial class GameBox : IDisposable
     /// <param name="node">Node to wrap in.</param>
     public GameBox(Node node)
     {
-        header = new Header(node.Id);
+        header = new GameBoxHeader(node.Id);
         Node = node;
         Node.SetGbx(this);
     }
 
-    public GameBox(Header header, RefTable? refTable, string? fileName = null)
+    public GameBox(GameBoxHeader header, GameBoxRefTable? refTable, string? fileName = null)
     {
         this.header = header;
         this.refTable = refTable;
@@ -62,12 +68,12 @@ public partial class GameBox : IDisposable
         FileName = fileName;
     }
 
-    public Header GetHeader()
+    public GameBoxHeader GetHeader()
     {
         return header;
     }
 
-    public RefTable? GetRefTable()
+    public GameBoxRefTable? GetRefTable()
     {
         return refTable;
     }
@@ -98,24 +104,24 @@ public partial class GameBox : IDisposable
     /// <exception cref="HeaderOnlyParseLimitationException">Writing is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
     internal void Write(Stream stream, IDRemap remap, ILogger? logger)
     {
-        var stateGuid = StateManager.Shared.CreateState(refTable);
-
         logger?.LogDebug("Writing the body...");
 
-        using var ms = new MemoryStream();
-        using var bodyW = new GameBoxWriter(ms, stateGuid, remap, logger: logger);
+        AuxNodes.Clear();
 
-        (RawBody ?? new Body()).Write(this, bodyW, logger);
+        using var ms = new MemoryStream();
+        using var bodyW = new GameBoxWriter(ms, this, remap: remap, logger: logger);
+
+        (RawBody ?? new GameBoxBody()).Write(this, bodyW, logger);
 
         logger?.LogDebug("Writing the header...");
 
-        StateManager.Shared.ResetIdState(stateGuid);
+        ResetIdState();
 
-        using var headerW = new GameBoxWriter(stream, stateGuid, remap, logger: logger);
+        using var headerW = new GameBoxWriter(stream, this, remap, logger: logger);
 
         if (RawBody is null)
         {
-            header.Write(Node!, headerW, StateManager.Shared.GetNodeCount(stateGuid) + 1, logger);
+            header.Write(Node!, headerW, AuxNodes.Count + 1, logger);
         }
         else
         {
@@ -134,8 +140,13 @@ public partial class GameBox : IDisposable
         }
 
         headerW.Write(ms.ToArray());
+    }
 
-        StateManager.Shared.RemoveState(stateGuid);
+    internal void ResetIdState()
+    {
+        IdVersion = null;
+        IdStrings.Clear();
+        IdIsWritten = false;
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -144,24 +155,22 @@ public partial class GameBox : IDisposable
     /// <exception cref="HeaderOnlyParseLimitationException">Writing is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
     internal async Task WriteAsync(Stream stream, IDRemap remap, ILogger? logger, GameBoxAsyncWriteAction? asyncAction, CancellationToken cancellationToken)
     {
-        var stateGuid = StateManager.Shared.CreateState(refTable);
-
         logger?.LogDebug("Writing the body...");
 
         using var ms = new MemoryStream();
-        using var bodyW = new GameBoxWriter(ms, stateGuid, remap, asyncAction, logger);
+        using var bodyW = new GameBoxWriter(ms, this, remap, asyncAction, logger);
 
-        await (RawBody ?? new Body()).WriteAsync(this, bodyW, logger, cancellationToken);
+        await (RawBody ?? new GameBoxBody()).WriteAsync(this, bodyW, logger, cancellationToken);
 
         logger?.LogDebug("Writing the header...");
 
-        StateManager.Shared.ResetIdState(stateGuid);
+        ResetIdState();
 
-        using var headerW = new GameBoxWriter(stream, stateGuid, remap, logger: logger);
+        using var headerW = new GameBoxWriter(stream, this, remap, logger: logger);
 
         if (RawBody is null)
         {
-            header.Write(Node!, headerW, StateManager.Shared.GetNodeCount(stateGuid) + 1, logger);
+            header.Write(Node!, headerW, AuxNodes.Count + 1, logger);
         }
         else
         {
@@ -176,8 +185,6 @@ public partial class GameBox : IDisposable
             refTable.Write(header, headerW);
 
         headerW.Write(ms.ToArray());
-
-        StateManager.Shared.RemoveState(stateGuid);
     }
 
     /// <summary>
@@ -580,10 +587,5 @@ public partial class GameBox : IDisposable
         w.Write(r.ReadByte());
 
         return version;
-    }
-
-    public void Dispose()
-    {
-        Node?.Dispose();
     }
 }

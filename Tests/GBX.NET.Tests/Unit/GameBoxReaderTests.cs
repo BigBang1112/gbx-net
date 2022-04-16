@@ -30,7 +30,8 @@ public class GameBoxReaderTests
     {
         // arrange
         using var ms = new MemoryStream();
-        var settings = new GameBoxReaderSettings(Guid.NewGuid(), new GameBoxAsyncReadAction());
+        var gbx = new GameBox(0x03043000);
+        var settings = new GameBoxReaderSettings(gbx, new GameBoxAsyncReadAction());
         var logger = CreateLogger();
         using var reader = new GameBoxReader(ms, settings, logger);
 
@@ -45,7 +46,8 @@ public class GameBoxReaderTests
     public void Constructor_InputSettingsLogger_NullStream()
     {
         // arrange
-        var settings = new GameBoxReaderSettings(Guid.NewGuid(), new GameBoxAsyncReadAction());
+        var gbx = new GameBox(0x03043000);
+        var settings = new GameBoxReaderSettings(gbx, new GameBoxAsyncReadAction());
         var logger = CreateLogger();
 
         // act
@@ -61,14 +63,14 @@ public class GameBoxReaderTests
     {
         // arrange
         using var ms = new MemoryStream();
+        var gbx = new GameBox(0x03043000);
         var logger = CreateLogger();
-        var stateGuid = Guid.NewGuid();
         var asyncReadAction = new GameBoxAsyncReadAction();
-        using var reader = new GameBoxReader(ms, stateGuid, asyncReadAction, logger);
+        using var reader = new GameBoxReader(ms, gbx, asyncReadAction, logger);
 
         // assert
         Assert.Equal(ms, reader.BaseStream);
-        Assert.Equal(stateGuid, reader.Settings.StateGuid);
+        Assert.Equal(gbx, reader.Settings.Gbx);
         Assert.Equal(asyncReadAction, reader.Settings.AsyncAction);
         Assert.Equal(logger, reader.Logger);
     }
@@ -79,11 +81,11 @@ public class GameBoxReaderTests
     {
         // arrange
         var logger = CreateLogger();
-        var stateGuid = Guid.NewGuid();
+        var gbx = new GameBox(0x03043000);
         var asyncReadAction = new GameBoxAsyncReadAction();
 
         // act
-        var ex = Assert.Throws<ArgumentNullException>(() => new GameBoxReader(null!, stateGuid, asyncReadAction, logger));
+        var ex = Assert.Throws<ArgumentNullException>(() => new GameBoxReader(null!, gbx, asyncReadAction, logger));
 
         // assert
         Assert.Equal("input", ex.ParamName);
@@ -262,9 +264,9 @@ public class GameBoxReaderTests
     public void ReadId_WithVersion_IndexMinus1()
     {
         // arrange
-        var state = StateManager.Shared.CreateState(null);
+        var gbx = new GameBox(0x03043000);
         using var ms = new MemoryStream(new byte[] { 3, 0, 0, 0, 255, 255, 255, 255 });
-        using var reader = new GameBoxReader(ms, state);
+        using var reader = new GameBoxReader(ms, gbx);
 
         // act
         var result = reader.ReadId();
@@ -278,9 +280,9 @@ public class GameBoxReaderTests
     public void ReadId_WithVersion_Index0_Bit30Is1()
     {
         // arrange
-        var state = StateManager.Shared.CreateState(null);
+        var gbx = new GameBox(0x03043000);
         using var ms = new MemoryStream(new byte[] { 3, 0, 0, 0, 0, 0, 0, 64, 5, 0, 0, 0, 0x48, 0x65, 0x6c, 0x6c, 0x6f });
-        using var reader = new GameBoxReader(ms, state);
+        using var reader = new GameBoxReader(ms, gbx);
 
         // act
         var result = reader.ReadId();
@@ -295,9 +297,9 @@ public class GameBoxReaderTests
     public void ReadId_WithVersion_Index0_Bit31Is1()
     {
         // arrange
-        var state = StateManager.Shared.CreateState(null);
+        var gbx = new GameBox(0x03043000);
         using var ms = new MemoryStream(new byte[] { 3, 0, 0, 0, 0, 0, 0, 128, 5, 0, 0, 0, 0x48, 0x65, 0x6c, 0x6c, 0x6f });
-        using var reader = new GameBoxReader(ms, state);
+        using var reader = new GameBoxReader(ms, gbx);
 
         // act
         var result = reader.ReadId();
@@ -312,13 +314,13 @@ public class GameBoxReaderTests
     public void ReadIdent()
     {
         // arrange
-        var state = StateManager.Shared.CreateState(null);
+        var gbx = new GameBox(0x03043000);
         using var ms = new MemoryStream(new byte[] { 3, 0, 0, 0,
             0, 0, 0, 128, 5, 0, 0, 0, 0x48, 0x65, 0x6c, 0x6c, 0x6f,
             0, 0, 0, 128, 2, 0, 0, 0, 0x48, 0x69,
             0, 0, 0, 128, 9, 0, 0, 0, 0x47, 0x6f, 0x6f, 0x64, 0x20, 0x67, 0x6f, 0x6f, 0x64
         });
-        using var reader = new GameBoxReader(ms, state);
+        using var reader = new GameBoxReader(ms, gbx);
 
         // act
         var result = reader.ReadIdent();

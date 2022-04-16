@@ -18,15 +18,15 @@ public partial class GameBox
     {
         var fileName = reader.BaseStream is FileStream fs ? fs.Name : null;
 
-        var header = Header.Parse(reader, logger);
+        var header = GameBoxHeader.Parse(reader, logger);
 
         //progress?.Report(new GameBoxReadProgress(header));
 
-        var refTable = default(RefTable);
+        var refTable = default(GameBoxRefTable);
 
         try
         {
-            refTable = RefTable.Parse(header, reader);
+            refTable = GameBoxRefTable.Parse(header, reader);
             isRefTableCompressed = false;
         }
         catch (CompressedRefTableException)
@@ -90,7 +90,7 @@ public partial class GameBox
         // Raw body can be read at pretty much any time
         if (readRawBody)
         {
-            gbx.RawBody = Body.ParseRaw(header.CompressionOfBody, r);
+            gbx.RawBody = GameBoxBody.ParseRaw(header.CompressionOfBody, r);
         }
 
         if (classType is null)
@@ -106,13 +106,10 @@ public partial class GameBox
             return gbx;
         }
 
-        var stateGuid = StateManager.Shared.CreateState(gbx.refTable);
-        ((IState)gbx.Node).StateGuid = stateGuid;
-
         using var ms = new MemoryStream(header.UserData);
-        var headerR = new GameBoxReader(ms, stateGuid, logger: logger);
+        var headerR = new GameBoxReader(ms, gbx, logger: logger);
 
-        Header.ProcessUserData(gbx.Node, classType, headerR, logger);
+        GameBoxHeader.ProcessUserData(gbx.Node, classType, headerR, logger);
 
         return gbx;
     }
@@ -231,22 +228,10 @@ public partial class GameBox
             return gbx;
         }
 
-        Guid stateGuid;
-
-        if (header.UserData.Length == 0)
-        {
-            stateGuid = StateManager.Shared.CreateState(gbx.refTable);
-            ((IState)node).StateGuid = stateGuid;
-        }
-        else
-        {
-            stateGuid = ((IState)node).StateGuid.GetValueOrDefault();
-        }
-
-        using var bodyR = new GameBoxReader(stream, stateGuid, logger: logger);
+        using var bodyR = new GameBoxReader(stream, gbx, logger: logger);
 
         // Body resets Id (lookback string) list
-        Body.Read(node, header, bodyR, progress, readUncompressedBodyDirectly, logger);
+        GameBoxBody.Read(node, header, bodyR, progress, readUncompressedBodyDirectly, logger);
 
         return gbx;
     }
@@ -521,22 +506,10 @@ public partial class GameBox
             return gbx;
         }
 
-        Guid stateGuid;
-
-        if (header.UserData.Length == 0)
-        {
-            stateGuid = StateManager.Shared.CreateState(gbx.refTable);
-            ((IState)node).StateGuid = stateGuid;
-        }
-        else
-        {
-            stateGuid = ((IState)node).StateGuid.GetValueOrDefault();
-        }
-
-        using var bodyR = new GameBoxReader(stream, stateGuid, asyncAction, logger);
+        using var bodyR = new GameBoxReader(stream, gbx, asyncAction, logger);
 
         // Body resets Id (lookback string) list
-        await Body.ReadAsync(node, header, bodyR, readUncompressedBodyDirectly, logger, asyncAction, cancellationToken);
+        await GameBoxBody.ReadAsync(node, header, bodyR, readUncompressedBodyDirectly, logger, asyncAction, cancellationToken);
 
         return gbx;
     }

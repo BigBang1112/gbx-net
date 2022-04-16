@@ -10,7 +10,7 @@ public partial class GameBoxReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public Node? ReadNodeRef(out int nodeRefIndex)
     {
         var index = ReadInt32() - 1; // GBX seems to start the index at 1
@@ -23,32 +23,27 @@ public partial class GameBoxReader
             return null;
         }
 
-        if (Settings.StateGuid is null)
-        {
-            throw new PropertyNullException(nameof(Settings.StateGuid));
-        }
+        var gbx = Settings.GetGbxOrThrow();
 
-        var stateGuid = Settings.StateGuid.Value;
-
-        if (IsRefTableNode(stateGuid, index))
+        if (IsRefTableNode(gbx, index))
         {
             return null;
         }
 
         var node = default(Node?);
 
-        if (NodeShouldBeParsed(stateGuid, index))
+        if (NodeShouldBeParsed(gbx, index))
         {
             node = Node.Parse(this, classId: null, progress: null, Logger)!;
         }
 
-        TryGetNodeIfNullOrAssignExistingNode(stateGuid, index, ref node);
+        TryGetNodeIfNullOrAssignExistingNode(gbx, index, ref node);
 
         if (node is null)
         {
             // Sometimes it indexes the node reference that is further in the expected indexes
             // So it grabs the last one instead, needs to be further tested
-            return StateManager.Shared.GetLastNode(stateGuid); 
+            return gbx.AuxNodes.Values.Last(); 
         }
 
         return node;
@@ -104,35 +99,30 @@ public partial class GameBoxReader
     /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> is null.</exception>
     public async Task<Node?> ReadNodeRefAsync(CancellationToken cancellationToken = default)
     {
-        if (Settings.StateGuid is null)
-        {
-            throw new PropertyNullException(nameof(Settings.StateGuid));
-        }
-
-        var stateGuid = Settings.StateGuid.Value;
+        var gbx = Settings.GetGbxOrThrow();
 
         var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
         // If aux node index is below 0 or the node index is part of the reference table
-        if (index < 0 || IsRefTableNode(stateGuid, index))
+        if (index < 0 || IsRefTableNode(gbx, index))
         {
             return null;
         }
 
         var node = default(Node?);
 
-        if (NodeShouldBeParsed(stateGuid, index))
+        if (NodeShouldBeParsed(gbx, index))
         {
             node = await Node.ParseAsync(this, classId: null, Logger, cancellationToken);
         }
 
-        TryGetNodeIfNullOrAssignExistingNode(stateGuid, index, ref node);
+        TryGetNodeIfNullOrAssignExistingNode(gbx, index, ref node);
 
         if (node is null)
         {
             // Sometimes it indexes the node reference that is further in the expected indexes
             // So it grabs the last one instead, needs to be further tested
-            return StateManager.Shared.GetLastNode(stateGuid);
+            return gbx.AuxNodes.Values.Last();
         }
 
         return node;
@@ -153,30 +143,30 @@ public partial class GameBoxReader
         return await ReadNodeRefAsync(cancellationToken) as T;
     }
 
-    private static bool NodeShouldBeParsed(Guid stateGuid, int index)
+    private static bool NodeShouldBeParsed(GameBox gbx, int index)
     {
-        var containsNodeIndex = StateManager.Shared.ContainsNodeIndex(stateGuid, index);
-        var nodeAtIndexIsNull = StateManager.Shared.GetNode(stateGuid, index) is null;
+        var containsNodeIndex = gbx.AuxNodes.ContainsKey(index);
+        _ = gbx.AuxNodes.TryGetValue(index, out Node? node);
 
         // If index is 0 or bigger and the node wasn't read yet, or is null
-        return index >= 0 && (!containsNodeIndex || nodeAtIndexIsNull);
+        return index >= 0 && (!containsNodeIndex || node is null);
     }
 
-    private static void TryGetNodeIfNullOrAssignExistingNode(Guid stateGuid, int index, ref Node? node)
+    private static void TryGetNodeIfNullOrAssignExistingNode(GameBox gbx, int index, ref Node? node)
     {
         if (node is null)
         {
-            StateManager.Shared.TryGetNode(stateGuid, index, out node); // Tries to get the available node from index
+            gbx.AuxNodes.TryGetValue(index, out node); // Tries to get the available node from index
         }
         else
         {
-            StateManager.Shared.SetNode(stateGuid, index, node);
+            gbx.AuxNodes[index] = node;
         }
     }
 
-    private static bool IsRefTableNode(Guid stateGuid, int index)
+    private static bool IsRefTableNode(GameBox gbx, int index)
     {
-        var refTable = StateManager.Shared.GetReferenceTable(stateGuid);
+        var refTable = gbx.GetRefTable();
 
         // First checks if reference table is used
         if (refTable is null || refTable.Files.Count <= 0 && refTable.Folders.Count <= 0)
@@ -187,15 +177,17 @@ public partial class GameBoxReader
 
         var allFiles = refTable.GetAllFiles(); // Returns available external references
 
-        if (allFiles.Any()) // If there's one
+        if (!allFiles.Any()) // If there's none
         {
-            // Tries to get the one with this node index
-            var refTableNode = allFiles.FirstOrDefault(x => x.NodeIndex == index);
+            return false;
+        }
 
-            if (refTableNode is not null)
-            {
-                return true;
-            }
+        // Tries to get the one with this node index
+        var refTableNode = allFiles.FirstOrDefault(x => x.NodeIndex == index);
+
+        if (refTableNode is not null)
+        {
+            return true;
         }
 
         return false;

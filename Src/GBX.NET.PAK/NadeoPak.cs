@@ -95,7 +95,7 @@ public class NadeoPak : IDisposable
                     break;
                 }
 
-                var header = GameBox.Header.Parse(r, logger: null);
+                var header = GameBoxHeader.Parse(r, logger: null);
             }
         }
     }

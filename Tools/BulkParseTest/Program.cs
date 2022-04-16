@@ -36,7 +36,7 @@ for (var i = 0; i < files.Length; i++)
 
     try
     {
-        using var node = GameBox.ParseNode(fileName);
+        var node = GameBox.ParseNode(fileName);
 
         if (node is null)
         {

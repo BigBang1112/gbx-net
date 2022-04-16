@@ -61,7 +61,7 @@ public class GameBoxRefTableTests
 
             using var reader = new GameBoxReader(ms);
 
-            var newRefTable = GameBox.RefTable.Parse(header, reader);
+            var newRefTable = GameBoxRefTable.Parse(header, reader);
             var actualNull = newRefTable is null;
 
             if (newRefTable is null)

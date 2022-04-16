@@ -16,12 +16,13 @@ public partial class GameBoxReader : BinaryReader
     /// Constructs a binary reader specialized for GBX.
     /// </summary>
     /// <param name="input">The input stream.</param>
-    /// <param name="stateGuid">ID used to point to a state that stores node references and lookback strings. If null, <see cref="Node"/>, Id, or <see cref="Ident"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
+    /// <param name="body">A state used to store node references. If null, <see cref="Node"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
+    /// <param name="lookbackable">A state used to store Ids and Idents. If set to null, <paramref name="body"/> is used instead. If <paramref name="body"/> is null as well, Id, or <see cref="Ident"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
     /// <param name="asyncAction">Specialized executions during asynchronous reading.</param>
     /// <param name="logger">Logger.</param>
-    public GameBoxReader(Stream input, Guid? stateGuid = null, GameBoxAsyncReadAction? asyncAction = null, ILogger? logger = null) : base(input, Encoding.UTF8, true)
+    public GameBoxReader(Stream input, GameBox? gbx = null, GameBoxAsyncReadAction? asyncAction = null, ILogger? logger = null) : base(input, Encoding.UTF8, true)
     {
-        Settings = new GameBoxReaderSettings(stateGuid, asyncAction);
+        Settings = new GameBoxReaderSettings(gbx, asyncAction);
 
         Logger = logger;
     }
@@ -29,7 +30,6 @@ public partial class GameBoxReader : BinaryReader
     public GameBoxReader(Stream input, GameBoxReaderSettings settings, ILogger? logger = null) : base(input, Encoding.UTF8, true)
     {
         Settings = settings;
-
         Logger = logger;
     }
 
@@ -117,31 +117,22 @@ public partial class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Lookbackable"/> or <see cref="GameBoxReaderSettings.Body"/> is null.</exception>
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
     public Id ReadId()
     {
-        if (Settings.StateGuid is null)
+        var gbx = Settings.GetGbxOrThrow();
+
+        if (gbx.IdVersion is null)
         {
-            throw new PropertyNullException(nameof(Settings.StateGuid));
-        }
-
-        var stateGuid = Settings.StateGuid.Value;
-
-        var idState = Settings.IdSubStateGuid is null
-            ? StateManager.Shared.GetIdState(stateGuid)
-            : StateManager.Shared.GetIdSubState(stateGuid, Settings.IdSubStateGuid.Value);
-
-        if (idState.Version is null)
-        {
-            idState.Version = ReadInt32();
+            gbx.IdVersion = ReadInt32();
 
             // Edge-case scenario where Id doesn't have a version for whatever reason (can be multiple)
-            if ((idState.Version & 0xC0000000) > 10)
+            if ((gbx.IdVersion & 0xC0000000) > 10)
             {
-                idState.Version = 3;
+                gbx.IdVersion = 3;
 
                 if (!BaseStream.CanSeek)
                 {
@@ -169,7 +160,7 @@ public partial class GameBoxReader : BinaryReader
         if ((index & 0x3FFF) == 0 && (index >> 30 == 1 || index >> 30 == 2))
         {
             var str = ReadString();
-            idState.Strings.Add(str);
+            gbx.IdStrings.Add(str);
             return str;
         }
 
@@ -188,9 +179,9 @@ public partial class GameBoxReader : BinaryReader
             return new Id((int)index);
         }
 
-        if (idState.Strings.Count > (index & 0x3FFF) - 1)
+        if (gbx.IdStrings.Count > (index & 0x3FFF) - 1)
         {
-            return idState.Strings[(int)(index & 0x3FFF) - 1];
+            return gbx.IdStrings[(int)(index & 0x3FFF) - 1];
         }
 
         return "";
@@ -203,7 +194,7 @@ public partial class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Lookbackable"/> or <see cref="GameBoxReaderSettings.Body"/> is null.</exception>
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
@@ -534,33 +525,6 @@ public partial class GameBoxReader : BinaryReader
         return ReadString(Encoding.UTF8.GetByteCount(magic)) == magic;
     }
 
-    public void StartIdSubState()
-    {
-        if (Settings.StateGuid is null)
-        {
-            throw new PropertyNullException(nameof(Settings.StateGuid));
-        }
-
-        Settings.IdSubStateGuid = StateManager.Shared.CreateIdSubState(Settings.StateGuid.Value);
-    }
-
-    public void EndIdSubState()
-    {
-        if (Settings.IdSubStateGuid is null)
-        {
-            return;
-        }
-
-        if (Settings.StateGuid is null)
-        {
-            throw new PropertyNullException(nameof(Settings.StateGuid));
-        }
-
-        StateManager.Shared.RemoveIdSubState(Settings.StateGuid.Value, Settings.IdSubStateGuid.Value);
-
-        Settings.IdSubStateGuid = null;
-    }
-
     /// <summary>
     /// A generic read method of parameterless types for the cost of performance loss. Prefer using the pre-defined data read methods.
     /// </summary>
@@ -595,11 +559,4 @@ public partial class GameBoxReader : BinaryReader
 
         _ => throw new NotSupportedException($"{typeof(T)} is not supported for Read<T>."),
     };
-
-    protected override void Dispose(bool disposing)
-    {
-        EndIdSubState();
-
-        base.Dispose(disposing);
-    }
 }

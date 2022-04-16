@@ -1863,11 +1863,6 @@ public partial class GameBoxReaderWriter
 
         if (Reader is not null)
         {
-            if (Reader.Settings.StateGuid is null)
-            {
-                throw new PropertyNullException(nameof(Reader.Settings.StateGuid));
-            }
-
             using var w = new GameBoxWriter(stream);
             w.Write(Reader.ReadUntilFacade().ToArray());
 

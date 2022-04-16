@@ -9,7 +9,7 @@ namespace GBX.NET;
 /// The skeleton of the Gbx object and representation of the <see cref="CMwNod"/>.
 /// </summary>
 /// <remarks>You shouldn't inherit this class unless <see cref="CMwNod"/> cannot be inherited instead.</remarks>
-public abstract class Node : IStateRefTable, IDisposable
+public abstract class Node : IStateRefTable
 {
     private uint? id;
     private ChunkSet? chunks;
@@ -77,18 +77,24 @@ public abstract class Node : IStateRefTable, IDisposable
         return type.FullName?.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::") ?? string.Empty;
     }
 
-    protected Node? GetNodeFromRefTable(Node? nodeAtTheMoment, int? nodeIndex)
+    protected internal Node? GetNodeFromRefTable(Node? nodeAtTheMoment, int? nodeIndex)
     {
         if (nodeAtTheMoment is not null || nodeIndex is null)
+        {
             return nodeAtTheMoment;
+        }
 
         if (gbx is null)
+        {
             return nodeAtTheMoment;
+        }
 
-        var refTable = StateManager.Shared.GetReferenceTable(((IState)this).StateGuid.GetValueOrDefault());
+        var refTable = gbx.GetRefTable();
 
         if (refTable is null)
+        {
             return nodeAtTheMoment;
+        }
 
         var fileName = gbx.FileName;
 
@@ -156,8 +162,6 @@ public abstract class Node : IStateRefTable, IDisposable
     internal static void Parse(Node node, Type nodeType, GameBoxReader r, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
     {
         var stopwatch = Stopwatch.StartNew();
-
-        ((IState)node).StateGuid = r.Settings.StateGuid;
 
         using var scope = logger?.BeginScope("{name}", nodeType.Name);
 
@@ -881,7 +885,7 @@ public abstract class Node : IStateRefTable, IDisposable
 
         if (ownIdState)
         {
-            chunkWriter.StartIdSubState();
+            gbx?.ResetIdState();
         }
 
         try
@@ -891,11 +895,6 @@ public abstract class Node : IStateRefTable, IDisposable
         catch (ChunkWriteNotImplementedException)
         {
             chunkWriter.Write(skippableChunk.Data);
-        }
-
-        if (ownIdState)
-        {
-            chunkWriter.EndIdSubState();
         }
     }
 
@@ -949,7 +948,7 @@ public abstract class Node : IStateRefTable, IDisposable
 
         if (ownIdState)
         {
-            chunkWriter.StartIdSubState();
+            GetGbx()?.ResetIdState();
         }
 
         try
@@ -959,11 +958,6 @@ public abstract class Node : IStateRefTable, IDisposable
         catch (ChunkWriteNotImplementedException)
         {
             await chunkWriter.WriteBytesAsync(skippableChunk.Data, cancellationToken);
-        }
-
-        if (ownIdState)
-        {
-            chunkWriter.EndIdSubState();
         }
     }
 
@@ -1219,15 +1213,5 @@ public abstract class Node : IStateRefTable, IDisposable
         }
 
         return id;
-    }
-
-    public void Dispose()
-    {
-        var stateGuid = ((IState)this).StateGuid;
-
-        if (stateGuid is not null)
-        {
-            StateManager.Shared.RemoveState(stateGuid.Value);
-        }
     }
 }

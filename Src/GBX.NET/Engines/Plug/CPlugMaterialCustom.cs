@@ -107,7 +107,7 @@ public class CPlugMaterialCustom : CPlug
 
     public class SBitmap
     {
-        private IStateRefTable state;
+        private Node node;
         private CPlugBitmap? bitmap;
         private int bitmapIndex;
 
@@ -116,16 +116,16 @@ public class CPlugMaterialCustom : CPlug
 
         public CPlugBitmap? Bitmap
         {
-            get => bitmap = StateManager.Shared.GetNodeFromReferenceTable(state, bitmap, bitmapIndex);
+            get => bitmap = node.GetNodeFromRefTable(bitmap, bitmapIndex) as CPlugBitmap;
             set => bitmap = value;
         }
 
-        public SBitmap(IStateRefTable state, string name, int u01, int bitmapIndex)
+        public SBitmap(Node node, string name, int u01, int bitmapIndex)
         {
             Name = name;
             U01 = u01;
 
-            this.state = state;
+            this.node = node;
             this.bitmapIndex = bitmapIndex;
         }
 

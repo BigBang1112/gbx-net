@@ -24,7 +24,7 @@ while (true)
 {
     try
     {
-        using var gbx = GameBox.ParseNode(fileName, logger: logger);
+        var gbx = GameBox.ParseNode(fileName, logger: logger);
     }
     catch (ChunkParseException ex)
     {

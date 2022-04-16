@@ -19,7 +19,7 @@ public class GameBoxTests
     {
         foreach (var mapFileName in ExampleMaps)
         {
-            using var node = GameBox.ParseNode(mapFileName);
+            var node = GameBox.ParseNode(mapFileName);
         }
     }
 
@@ -28,7 +28,7 @@ public class GameBoxTests
     {
         foreach (var mapFileName in ExampleMaps)
         {
-            using var node = GameBox.ParseNode(mapFileName)!;
+            var node = GameBox.ParseNode(mapFileName)!;
             using var ms = new MemoryStream();
 
             node.Save(ms);
@@ -40,14 +40,14 @@ public class GameBoxTests
     {
         foreach (var mapFileName in ExampleMaps)
         {
-            using var node = GameBox.ParseNode(mapFileName)!;
+            var node = GameBox.ParseNode(mapFileName)!;
             using var ms = new MemoryStream();
 
             node.Save(ms);
 
             ms.Position = 0;
 
-            using var newNode = GameBox.ParseNode(ms);
+            var newNode = GameBox.ParseNode(ms);
         }
     }
 
@@ -56,7 +56,7 @@ public class GameBoxTests
     {
         foreach (var mapFileName in ExampleReplays)
         {
-            using var node = GameBox.ParseNode(mapFileName);
+            var node = GameBox.ParseNode(mapFileName);
         }
     }
 }

@@ -22,7 +22,7 @@ public class GameBox<T> : GameBox where T : Node
 
     }
 
-    public GameBox(Header header, RefTable? refTable, string? fileName = null) : base(header, refTable, fileName)
+    public GameBox(GameBoxHeader header, GameBoxRefTable? refTable, string? fileName = null) : base(header, refTable, fileName)
     {
         
     }

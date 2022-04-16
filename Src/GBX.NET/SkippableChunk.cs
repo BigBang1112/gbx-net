@@ -41,7 +41,6 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk, IState where T : Nod
 
         Discovered = true;
 
-        var stateGuid = ((IState)Node).StateGuid.GetValueOrDefault();
         var hasOwnIdState = false;
 
         if (NodeCacheManager.ChunkAttributesByType.TryGetValue(GetType(), out IEnumerable<Attribute>? chunkAttributes))
@@ -60,12 +59,12 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk, IState where T : Nod
         }
 
         using var ms = new MemoryStream(Data);
-        using var r = new GameBoxReader(ms, stateGuid);
+        using var r = new GameBoxReader(ms, Node.GetGbx());
         var rw = new GameBoxReaderWriter(r);
 
         if (hasOwnIdState)
         {
-            r.StartIdSubState();
+            Node.GetGbx()?.ResetIdState();
         }
 
         try

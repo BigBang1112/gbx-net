@@ -19,17 +19,17 @@ public partial class GameBoxWriter : BinaryWriter
     /// Constructs a binary writer specialized for GBX.
     /// </summary>
     /// <param name="output">The output stream.</param>
-    /// <param name="stateGuid">ID used to point to a state that stores node references and lookback strings. If null, <see cref="Node"/>, Id, or <see cref="Ident"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
     /// <param name="remap">Node ID remap mode.</param>
+    /// <param name="stateGuid">ID used to point to a state that stores node references and lookback strings. If null, <see cref="Node"/>, Id, or <see cref="Ident"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
     /// <param name="asyncAction">Specialized executions during asynchronous writing.</param>
     /// <param name="logger">Logger.</param>
     public GameBoxWriter(Stream output,
-                         Guid? stateGuid = null,
+                         GameBox? gbx = null,
                          IDRemap? remap = null,
                          GameBoxAsyncWriteAction? asyncAction = null,
                          ILogger? logger = null) : base(output, Encoding.UTF8, true)
     {
-        Settings = new GameBoxWriterSettings(stateGuid, remap.GetValueOrDefault(), asyncAction);
+        Settings = new GameBoxWriterSettings(gbx, remap.GetValueOrDefault(), asyncAction);
 
         this.logger = logger;
     }
@@ -236,18 +236,19 @@ public partial class GameBoxWriter : BinaryWriter
     /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
     public void WriteId(string? value, bool tryParseToInt32 = false)
     {
-        var idState = GetIdState();
-        WriteIdVersionIfNotWritten(idState);
-        WriteIdAsString(value ?? "", idState, tryParseToInt32);
+        var gbx = Settings.GetGbxOrThrow();
+
+        WriteIdVersionIfNotWritten(gbx);
+        WriteIdAsString(value ?? "", gbx, tryParseToInt32);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void WriteId(Id value)
     {
-        var idState = GetIdState();
+        var gbx = Settings.GetGbxOrThrow();
 
-        WriteIdVersionIfNotWritten(idState);
+        WriteIdVersionIfNotWritten(gbx);
 
         if (value.Index.HasValue)
         {
@@ -255,35 +256,21 @@ public partial class GameBoxWriter : BinaryWriter
             return;
         }
 
-        WriteIdAsString(value, idState, tryParseToInt32: false); // Could be true
+        WriteIdAsString(value, gbx, tryParseToInt32: false); // Could be true
     }
 
-    private StateManager.IdState GetIdState()
+    private void WriteIdVersionIfNotWritten(GameBox gbx)
     {
-        if (Settings.StateGuid is null)
-        {
-            throw new PropertyNullException(nameof(Settings.StateGuid));
-        }
-
-        var stateGuid = Settings.StateGuid.Value;
-
-        return Settings.IdSubStateGuid is null
-            ? StateManager.Shared.GetIdState(stateGuid)
-            : StateManager.Shared.GetIdSubState(stateGuid, Settings.IdSubStateGuid.Value);
-    }
-
-    private void WriteIdVersionIfNotWritten(StateManager.IdState idState)
-    {
-        if (idState.IsWritten)
+        if (gbx.IdIsWritten)
         {
             return;
         }
 
-        Write(idState.Version ?? 3);
-        idState.IsWritten = true;
+        Write(gbx.IdVersion ?? 3);
+        gbx.IdIsWritten = true;
     }
 
-    private void WriteIdAsString(string value, StateManager.IdState idState, bool tryParseToInt32)
+    private void WriteIdAsString(string value, GameBox gbx, bool tryParseToInt32)
     {
         if (value == "")
         {
@@ -297,7 +284,7 @@ public partial class GameBoxWriter : BinaryWriter
             return;
         }
 
-        var index = idState.Strings.IndexOf(value);
+        var index = gbx.IdStrings.IndexOf(value);
 
         if (index != -1)
         {
@@ -314,7 +301,7 @@ public partial class GameBoxWriter : BinaryWriter
         Write(0x40000000);
         Write(value);
 
-        idState.Strings.Add(value);
+        gbx.IdStrings.Add(value);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -333,12 +320,7 @@ public partial class GameBoxWriter : BinaryWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write(Node? node)
     {
-        if (Settings.StateGuid is null)
-        {
-            throw new PropertyNullException(nameof(Settings.StateGuid));
-        }
-
-        var stateGuid = Settings.StateGuid.Value;
+        var gbx = Settings.GetGbxOrThrow();
 
         if (node is null)
         {
@@ -346,13 +328,14 @@ public partial class GameBoxWriter : BinaryWriter
             return;
         }
 
-        if (StateManager.Shared.ContainsNode(stateGuid, node))
+        if (gbx.AuxNodes.ContainsValue(node))
         {
-            Write(StateManager.Shared.GetNodeIndexByNode(stateGuid, node) + 1);
+            Write(gbx.AuxNodes.FirstOrDefault(x => x.Value.Equals(node)).Key + 1);
             return;
         }
 
-        var index = StateManager.Shared.AddNode(stateGuid, node);
+        var index = gbx.AuxNodes.Count;
+        gbx.AuxNodes.Add(index, node);
 
         Write(index + 1);
         Write(Chunk.Remap(node.Id, Settings.Remap));
@@ -570,33 +553,6 @@ public partial class GameBoxWriter : BinaryWriter
 #endif
     }
 
-    public void StartIdSubState()
-    {
-        if (Settings.StateGuid is null)
-        {
-            throw new PropertyNullException(nameof(Settings.StateGuid));
-        }
-
-        Settings.IdSubStateGuid = StateManager.Shared.CreateIdSubState(Settings.StateGuid.Value);
-    }
-
-    public void EndIdSubState()
-    {
-        if (Settings.IdSubStateGuid is null)
-        {
-            return;
-        }
-
-        if (Settings.StateGuid is null)
-        {
-            throw new PropertyNullException(nameof(Settings.StateGuid));
-        }
-
-        StateManager.Shared.RemoveIdSubState(Settings.StateGuid.Value, Settings.IdSubStateGuid.Value);
-
-        Settings.IdSubStateGuid = null;
-    }
-
     /// <summary>
     /// Writes any kind of value. Prefer using specified methods for better performance. Supported types are <see cref="byte"/>, <see cref="short"/>, <see cref="int"/>,
     /// <see cref="long"/>, <see cref="float"/>, <see cref="bool"/>, <see cref="string"/>, <see cref="sbyte"/>, <see cref="ushort"/>,
@@ -635,12 +591,5 @@ public partial class GameBoxWriter : BinaryWriter
 
             default: throw new NotSupportedException($"{any.GetType()} is not supported for Read<T>.");
         }
-    }
-
-    protected override void Dispose(bool disposing)
-    {
-        EndIdSubState();
-
-        base.Dispose(disposing);
     }
 }
