@@ -157,6 +157,8 @@ public partial class GameBox
     {
         logger?.LogDebug("Writing the body...");
 
+        AuxNodes.Clear();
+
         using var ms = new MemoryStream();
         using var bodyW = new GameBoxWriter(ms, this, remap, asyncAction, logger);
 
