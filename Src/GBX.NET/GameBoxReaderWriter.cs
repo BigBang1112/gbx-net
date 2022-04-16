@@ -1167,7 +1167,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> or <see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public string? Id(string? variable = default, bool tryParseToInt32 = false)
     {
         if (Reader is not null) return Reader.ReadId();
@@ -1189,7 +1189,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> or <see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public Id? Collection(Id? variable = default)
     {
         if (Reader is not null) return Reader.ReadId();
@@ -1208,7 +1208,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> or <see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
@@ -1222,7 +1222,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> or <see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
@@ -1855,7 +1855,6 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="NotSupportedException">The stream does not support seeking.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="stream"/> is null.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> or <see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
     public void UntilFacade(MemoryStream stream)
     {
         if (stream is null)

@@ -47,7 +47,7 @@ public partial class GameBoxReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
     public IDictionary<TKey, TValue?> ReadDictionaryNode<TKey, TValue>(bool overrideKey = false) where TKey : notnull where TValue : Node
     {

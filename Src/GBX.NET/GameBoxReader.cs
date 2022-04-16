@@ -16,8 +16,7 @@ public partial class GameBoxReader : BinaryReader
     /// Constructs a binary reader specialized for GBX.
     /// </summary>
     /// <param name="input">The input stream.</param>
-    /// <param name="body">A state used to store node references. If null, <see cref="Node"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
-    /// <param name="lookbackable">A state used to store Ids and Idents. If set to null, <paramref name="body"/> is used instead. If <paramref name="body"/> is null as well, Id, or <see cref="Ident"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
+    /// <param name="gbx">Gbx that holds node references and lookback strings while reading. If null, <see cref="Node"/>, <see cref="Id"/>, or <see cref="Ident"/> cannot be written and <see cref="PropertyNullException"/> will be thrown.</param>
     /// <param name="asyncAction">Specialized executions during asynchronous reading.</param>
     /// <param name="logger">Logger.</param>
     public GameBoxReader(Stream input, GameBox? gbx = null, GameBoxAsyncReadAction? asyncAction = null, ILogger? logger = null) : base(input, Encoding.UTF8, true)
@@ -117,7 +116,7 @@ public partial class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Lookbackable"/> or <see cref="GameBoxReaderSettings.Body"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
@@ -194,7 +193,7 @@ public partial class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Lookbackable"/> or <see cref="GameBoxReaderSettings.Body"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>

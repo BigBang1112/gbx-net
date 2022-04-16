@@ -16,11 +16,11 @@ public partial class GameBoxWriter : BinaryWriter
     public GameBoxWriterSettings Settings { get; }
 
     /// <summary>
-    /// Constructs a binary writer specialized for GBX.
+    /// Constructs a binary writer specialized for Gbx serializing.
     /// </summary>
     /// <param name="output">The output stream.</param>
+    /// <param name="gbx">Gbx that holds node references and lookback strings while writing. If null, <see cref="Node"/>, <see cref="Id"/>, or <see cref="Ident"/> cannot be written and <see cref="PropertyNullException"/> will be thrown.</param>
     /// <param name="remap">Node ID remap mode.</param>
-    /// <param name="stateGuid">ID used to point to a state that stores node references and lookback strings. If null, <see cref="Node"/>, Id, or <see cref="Ident"/> cannot be read and <see cref="PropertyNullException"/> can be thrown.</param>
     /// <param name="asyncAction">Specialized executions during asynchronous writing.</param>
     /// <param name="logger">Logger.</param>
     public GameBoxWriter(Stream output,
@@ -34,6 +34,12 @@ public partial class GameBoxWriter : BinaryWriter
         this.logger = logger;
     }
 
+    /// <summary>
+    /// Constructs a binary writer specialized for Gbx serializing.
+    /// </summary>
+    /// <param name="output">The output stream.</param>
+    /// <param name="settings">Settings for the writer.</param>
+    /// <param name="logger">Logger.</param>
     public GameBoxWriter(Stream output, GameBoxWriterSettings settings, ILogger? logger = null) : base(output, Encoding.UTF8, true)
     {
         Settings = settings;
@@ -233,7 +239,7 @@ public partial class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.Gbx"/> is null.</exception>
     public void WriteId(string? value, bool tryParseToInt32 = false)
     {
         var gbx = Settings.GetGbxOrThrow();
@@ -315,7 +321,7 @@ public partial class GameBoxWriter : BinaryWriter
         WriteId(ident.Author);
     }
 
-    /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.Gbx"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write(Node? node)
@@ -517,7 +523,7 @@ public partial class GameBoxWriter : BinaryWriter
     }
 
     /// <exception cref="ArgumentNullException">Key in dictionary is null.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.StateGuid"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.Gbx"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void WriteDictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary) where TValue : Node

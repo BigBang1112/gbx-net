@@ -56,7 +56,7 @@ public partial class GameBoxReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public Node? ReadNodeRef() => ReadNodeRef(out int _);
 
     /// <summary>
@@ -68,7 +68,7 @@ public partial class GameBoxReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public T? ReadNodeRef<T>(out int nodeRefIndex) where T : Node
     {
         return ReadNodeRef(out nodeRefIndex) as T;
@@ -82,7 +82,7 @@ public partial class GameBoxReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public T? ReadNodeRef<T>() where T : Node
     {
         return ReadNodeRef() as T;
@@ -96,7 +96,7 @@ public partial class GameBoxReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public async Task<Node?> ReadNodeRefAsync(CancellationToken cancellationToken = default)
     {
         var gbx = Settings.GetGbxOrThrow();
@@ -137,7 +137,7 @@ public partial class GameBoxReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.StateGuid"/> is null.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public async Task<T?> ReadNodeRefAsync<T>(CancellationToken cancellationToken = default) where T : Node
     {
         return await ReadNodeRefAsync(cancellationToken) as T;
