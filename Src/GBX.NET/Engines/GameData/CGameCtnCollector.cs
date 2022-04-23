@@ -558,5 +558,29 @@ public class CGameCtnCollector : CMwNod
 
     #endregion
 
+    #region 0x012 chunk
+
+    /// <summary>
+    /// CGameCtnCollector 0x012 chunk
+    /// </summary>
+    [Chunk(0x2E001012)]
+    public class Chunk2E001012 : Chunk<CGameCtnCollector>
+    {
+        public int U01;
+        public int U02;
+        public int U03;
+        public int U04;
+
+        public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+            rw.Int32(ref U02);
+            rw.Int32(ref U03);
+            rw.Int32(ref U04);
+        }
+    }
+
+    #endregion
+
     #endregion
 }
