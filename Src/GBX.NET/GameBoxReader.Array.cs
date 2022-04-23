@@ -17,6 +17,11 @@ public partial class GameBoxReader
     /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
     public T[] ReadArray<T>(int length, bool lengthInBytes = false) where T : struct
     {
+        if (length < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(length), "Length is negative.");
+        }
+
         var l = length * (lengthInBytes ? 1 : Marshal.SizeOf<T>());
 
 #if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
