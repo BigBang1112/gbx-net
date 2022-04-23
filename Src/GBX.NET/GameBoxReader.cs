@@ -13,10 +13,10 @@ public partial class GameBoxReader : BinaryReader
     public GameBoxReaderSettings Settings { get; }
 
     /// <summary>
-    /// Constructs a binary reader specialized for GBX.
+    /// Constructs a binary reader specialized for Gbx deserializing.
     /// </summary>
     /// <param name="input">The input stream.</param>
-    /// <param name="gbx">Gbx that holds node references and lookback strings while reading. If null, <see cref="Node"/>, <see cref="Id"/>, or <see cref="Ident"/> cannot be written and <see cref="PropertyNullException"/> will be thrown.</param>
+    /// <param name="gbx">Gbx that holds node references and lookback strings while reading. If null, <see cref="Node"/>, <see cref="Id"/>, or <see cref="Ident"/> cannot be read and <see cref="PropertyNullException"/> will be thrown.</param>
     /// <param name="asyncAction">Specialized executions during asynchronous reading.</param>
     /// <param name="logger">Logger.</param>
     public GameBoxReader(Stream input, GameBox? gbx = null, GameBoxAsyncReadAction? asyncAction = null, ILogger? logger = null) : base(input, Encoding.UTF8, true)
