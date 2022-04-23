@@ -5,7 +5,7 @@
 		<AssemblyName>GBX.NET</AssemblyName>
 		<AssemblyTitle>GBX.NET</AssemblyTitle>
 		<Authors>Petr Pivoňka (BigBang1112)</Authors>
-		<Description>C#/.NET parser for Gbx files from Nadeo games. Supports deserialization of 150+ nodes, where 50%+ can be serialized back to Gbx.</Description>
+		<Description>C#/.NET parser for Gbx files from Nadeo games. Supports deserialization of 150+ nodes, where 50 %+ can be serialized back to Gbx.</Description>
 		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Nullable>enable</Nullable>

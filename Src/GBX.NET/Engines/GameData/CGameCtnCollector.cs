@@ -87,6 +87,9 @@ public class CGameCtnCollector : CMwNod
     public Color[,]? Icon { get; set; }
 
     [NodeMember]
+    public byte[]? IconWebP { get; set; }
+
+    [NodeMember]
     public CMwNod? IconFid { get; set; }
 
     [NodeMember]
@@ -228,10 +231,29 @@ public class CGameCtnCollector : CMwNod
     [Chunk(0x2E001004, "icon")]
     public class Chunk2E001004 : HeaderChunk<CGameCtnCollector>
     {
+        public short U01 = 1;
+
         public override void Read(CGameCtnCollector n, GameBoxReader r)
         {
             var width = r.ReadInt16();
             var height = r.ReadInt16();
+
+            var flags1 = width & 0x8000;
+            var flags2 = width & 0x8000;
+
+            var isWebP = flags1 >> 15 != 0 && flags2 >> 15 != 0;
+
+            if (isWebP)
+            {
+                // width &= 255;
+                // height &= 255;
+                // both seem to be unused so this operation is not useful
+
+                U01 = r.ReadInt16();
+                n.IconWebP = r.ReadBytes();
+
+                return;
+            }
 
             var iconData = r.ReadArray<int>(width * height);
 
@@ -248,11 +270,26 @@ public class CGameCtnCollector : CMwNod
 
         public override void Write(CGameCtnCollector n, GameBoxWriter w)
         {
-            var width = (short)(n.Icon?.GetLength(0) ?? 64);
-            var height = (short)(n.Icon?.GetLength(1) ?? 64);
+            var width = (ushort)(n.Icon?.GetLength(0) ?? 64);
+            var height = (ushort)(n.Icon?.GetLength(1) ?? 64);
+
+            if (n.IconWebP is not null)
+            {
+                width |= 0x8000;
+                height |= 0x8000;
+            }
 
             w.Write(width);
             w.Write(height);
+
+            if (n.IconWebP is not null)
+            {
+                w.Write(U01);
+                w.Write(n.IconWebP.Length);
+                w.Write(n.IconWebP);
+
+                return;
+            }
 
             if (n.Icon is null)
             {

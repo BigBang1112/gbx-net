@@ -149,12 +149,12 @@ public partial class GameBoxReader : BinaryReader
             return "";
         }
 
-        if ((index >> 16 & 0x1FF) == 0x1FF) // ????
+        /*if ((index >> 16 & 0x1FF) == 0x1FF) // ????
         {
             var bytes = ReadBytes(5);
             var length = bytes[2];
             return ReadString(length);
-        }
+        }*/
 
         if ((index & 0x3FFF) == 0 && (index >> 30 == 1 || index >> 30 == 2))
         {

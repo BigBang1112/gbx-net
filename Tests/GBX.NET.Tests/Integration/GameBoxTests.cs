@@ -1,10 +1,5 @@
-﻿using GBX.NET.Engines.Game;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace GBX.NET.Tests.Integration;
@@ -13,6 +8,8 @@ public class GameBoxTests
 {
     public static IEnumerable<string> ExampleMaps { get; } = Directory.GetFiles("Maps", "*.Gbx", SearchOption.AllDirectories);
     public static IEnumerable<string> ExampleReplays { get; } = Directory.GetFiles("Replays", "*.Gbx", SearchOption.AllDirectories);
+
+#if !NET462_OR_GREATER
 
     [Fact(DisplayName = "Parse example maps - no exception is thrown")]
     public void ParseExampleMaps_NoExceptionIsThrown()
@@ -59,4 +56,7 @@ public class GameBoxTests
             var node = GameBox.ParseNode(mapFileName);
         }
     }
+
+#endif
+
 }
