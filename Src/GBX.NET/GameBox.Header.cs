@@ -44,7 +44,7 @@ public partial class GameBox
                 w.Write((byte)UnknownByte.GetValueOrDefault('R'));
             }
 
-            w.Write(Id);
+            w.Write(Chunk.Remap(Id, w.Settings.Remap));
 
             if (Version >= 6)
             {
