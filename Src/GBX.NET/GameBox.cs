@@ -107,6 +107,7 @@ public partial class GameBox
         logger?.LogDebug("Writing the body...");
 
         AuxNodes.Clear();
+        ResetIdState();
 
         using var ms = new MemoryStream();
         using var bodyW = new GameBoxWriter(ms, this, remap: remap, logger: logger);
