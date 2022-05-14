@@ -203,7 +203,9 @@ public abstract class CPlugVisual : CPlug
             {
                 throw new NotImplementedException();
             }
+
             n.SetFlag(VisualFlags.UnknownFlag8, r.ReadBoolean());
+            // apparently one more boolean in TMS
         }
     }
     

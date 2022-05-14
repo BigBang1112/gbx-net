@@ -30,10 +30,10 @@ public class CPlugSurfaceGeom : CPlugSurface
                     r.ReadSingle(),
                     r.ReadSingle(),
                     r.ReadSingle(),
-                    r.ReadInt32(),
-                    r.ReadInt32(),
-                    r.ReadInt32(),
-                    r.ReadInt32());
+                    r.ReadInt3(),
+                    r.ReadUInt16(),
+                    r.ReadByte(),
+                    r.ReadByte());
             }, (x, w) => { });
 
             U04 = rw.Int32();
@@ -41,12 +41,8 @@ public class CPlugSurfaceGeom : CPlugSurface
             U05 = rw.Array(null, r =>
             {
                 return (r.ReadInt32(),
-                    r.ReadSingle(),
-                    r.ReadSingle(),
-                    r.ReadSingle(),
-                    r.ReadSingle(),
-                    r.ReadSingle(),
-                    r.ReadSingle(),
+                    r.ReadVec3(),
+                    r.ReadVec3(),
                     r.ReadInt32());
             }, (x, w) => { });
         }
