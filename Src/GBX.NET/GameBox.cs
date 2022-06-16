@@ -422,7 +422,7 @@ public partial class GameBox
         var numExternalNodes = r.ReadInt32();
 
         if (numExternalNodes > 0)
-            throw new Exception(); // Ref table, TODO: full read
+            throw new Exception("Non-empty reference table cannot be read at the moment"); // Ref table, TODO: full read
 
         w.Write(numExternalNodes);
 

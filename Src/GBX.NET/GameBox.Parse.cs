@@ -82,7 +82,7 @@ public partial class GameBox
         // if anyone did, let me know!
         if (isRefTableCompressed)
         {
-            return gbx;
+            return gbx; // TODO: this should maybe throw?
         }
 
         var header = gbx.header;
