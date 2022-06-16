@@ -14,6 +14,7 @@ public abstract class Node : IStateRefTable
     private uint? id;
     private ChunkSet? chunks;
     private GameBox? gbx;
+    private GameBox? gbxForRefTable;
 
     public uint Id => GetStoredId();
 
@@ -79,24 +80,19 @@ public abstract class Node : IStateRefTable
 
     protected internal Node? GetNodeFromRefTable(Node? nodeAtTheMoment, int? nodeIndex)
     {
-        if (nodeAtTheMoment is not null || nodeIndex is null)
+        if (nodeAtTheMoment is not null || nodeIndex is null || gbxForRefTable is null)
         {
             return nodeAtTheMoment;
         }
 
-        if (gbx is null)
-        {
-            return nodeAtTheMoment;
-        }
-
-        var refTable = gbx.GetRefTable();
+        var refTable = gbxForRefTable.GetRefTable();
 
         if (refTable is null)
         {
             return nodeAtTheMoment;
         }
 
-        var fileName = gbx.FileName;
+        var fileName = gbxForRefTable.FileName;
 
         return refTable.GetNode(nodeAtTheMoment, nodeIndex, fileName);
     }
@@ -152,6 +148,7 @@ public abstract class Node : IStateRefTable
         var constructor = NodeCacheManager.GetClassConstructor(id);
 
         node = constructor();
+        node.gbxForRefTable = r.Settings.Gbx;
 
         return classId.Value;
     }
