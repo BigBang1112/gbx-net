@@ -338,6 +338,22 @@ public partial class GameBoxReader : BinaryReader
                        Y2: ReadSingle(),
                        Z2: ReadSingle());
     }
+    
+    public Iso4 ReadIso4()
+    {
+        return new Iso4(XX: ReadSingle(),
+                        XY: ReadSingle(),
+                        XZ: ReadSingle(),
+                        YX: ReadSingle(),
+                        YY: ReadSingle(),
+                        YZ: ReadSingle(),
+                        ZX: ReadSingle(),
+                        ZY: ReadSingle(),
+                        ZZ: ReadSingle(),
+                        TX: ReadSingle(),
+                        TY: ReadSingle(),
+                        TZ: ReadSingle());
+    }
 
     public TimeSpan? ReadTimeOfDay()
     {
