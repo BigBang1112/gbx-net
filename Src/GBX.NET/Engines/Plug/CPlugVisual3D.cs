@@ -50,8 +50,8 @@ public abstract class CPlugVisual3D : CPlugVisual
                 );
             }
 
-            U01 = r.ReadArray(r => r.ReadVec3());
-            U02 = r.ReadArray(r => r.ReadVec3());
+            U01 = r.ReadArray<Vec3>();
+            U02 = r.ReadArray<Vec3>();
         }
     }
 

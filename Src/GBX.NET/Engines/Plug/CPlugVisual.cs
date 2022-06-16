@@ -95,8 +95,7 @@ public abstract class CPlugVisual : CPlug
     {
         public override void ReadWrite(CPlugVisual n, GameBoxReaderWriter rw)
         {
-            rw.Array<Int3>(ref n.indices, r => r.ReadInt3(),
-                (x, w) => w.Write(x));
+            rw.Array<Int3>(ref n.indices);
         }
     }
 
@@ -142,12 +141,24 @@ public abstract class CPlugVisual : CPlug
 
             n.texCoords = r.ReadArray(NumTexCoordSets, r =>
             {
-                var texCoordKind = r.ReadInt32();
-                int[] sizeByKind = {8, 12, 16};
+                var version = r.ReadInt32();
 
-                r.ReadBytes(sizeByKind[texCoordKind] * n.count);
-                // TODO convert to Vec2? 
-                return Array.Empty<Vec2>();
+                return r.ReadArray<Vec2>(n.count, r =>
+                {
+                    var uv = r.ReadVec2();
+
+                    if (version >= 1)
+                    {
+                        var u01 = r.ReadInt32();
+
+                        if (version >= 2)
+                        {
+                            var u02 = r.ReadInt32();
+                        }
+                    }
+
+                    return uv;
+                });
             });
 
             if (SkinFlags != 0)
@@ -187,16 +198,28 @@ public abstract class CPlugVisual : CPlug
             n.count = r.ReadInt32();
             
             // vertex streams
-            r.ReadArray(r => r.ReadNodeRef());
+            var vertStreams = r.ReadArray(r => r.ReadNodeRef());
 
             n.texCoords = r.ReadArray(NumTexCoordSets, r =>
             {
-                var texCoordKind = r.ReadInt32();
-                int[] sizeByKind = {8, 12, 16};
+                var version = r.ReadInt32();
 
-                r.ReadBytes(sizeByKind[texCoordKind] * n.count);
-                // TODO convert to Vec2? 
-                return Array.Empty<Vec2>();
+                return r.ReadArray<Vec2>(n.count, r =>
+                {
+                    var uv = r.ReadVec2();
+
+                    if (version >= 1)
+                    {
+                        var u01 = r.ReadInt32();
+
+                        if (version >= 2)
+                        {
+                            var u02 = r.ReadInt32();
+                        }
+                    }
+
+                    return uv;
+                });
             });
 
             if (SkinFlags != 0)
@@ -206,10 +229,11 @@ public abstract class CPlugVisual : CPlug
 
             n.SetFlag(VisualFlags.UnknownFlag8, r.ReadBoolean());
             // apparently one more boolean in TMS
+            r.ReadBoolean();
         }
     }
-    
-     /*[Chunk(0x0900600C)]
+
+    /*[Chunk(0x0900600C)]
     public class Chunk0900600C : Chunk<CPlugVisual>
     {
         public int U01;
@@ -242,17 +266,17 @@ public abstract class CPlugVisual : CPlug
         }
     }*/
 
-     void ConvertChunkFlagsToFlags(int chunkFlags)
-     {
-         flags = 0;
-         flags |= (VisualFlags)(chunkFlags & 15);
-         flags |= (VisualFlags)((chunkFlags<<1) & 0x20);
-         flags |= (VisualFlags)((chunkFlags<<2) & 0x80);
-         flags |= (VisualFlags)((chunkFlags<<2) & 0x100);
-         flags |= (VisualFlags)((chunkFlags << 13) & 0x100000);
-         flags |= (VisualFlags)((chunkFlags << 13) & 0x200000);
-         flags |= (VisualFlags)((chunkFlags << 13) & 0x400000);
-     }
+    void ConvertChunkFlagsToFlags(int chunkFlags)
+    {
+        flags = 0;
+        flags |= (VisualFlags)(chunkFlags & 15);
+        flags |= (VisualFlags)((chunkFlags << 1) & 0x20);
+        flags |= (VisualFlags)((chunkFlags << 2) & 0x80);
+        flags |= (VisualFlags)((chunkFlags << 2) & 0x100);
+        flags |= (VisualFlags)((chunkFlags << 13) & 0x100000);
+        flags |= (VisualFlags)((chunkFlags << 13) & 0x200000);
+        flags |= (VisualFlags)((chunkFlags << 13) & 0x400000);
+    }
 
     [Chunk(0x0900600D)]
     public class Chunk0900600D : Chunk<CPlugVisual>
@@ -270,12 +294,24 @@ public abstract class CPlugVisual : CPlug
             
             n.texCoords = r.ReadArray(NumTexCoordSets, r =>
             {
-                var texCoordKind = r.ReadInt32();
-                int[] sizeByKind = {8, 12, 16};
+                var version = r.ReadInt32();
 
-                r.ReadBytes(sizeByKind[texCoordKind] * n.count);
-                // TODO convert to Vec2? 
-                return Array.Empty<Vec2>();
+                return r.ReadArray<Vec2>(n.count, r =>
+                {
+                    var uv = r.ReadVec2();
+
+                    if (version >= 1)
+                    {
+                        var u01 = r.ReadInt32();
+
+                        if (version >= 2)
+                        {
+                            var u02 = r.ReadInt32();
+                        }
+                    }
+
+                    return uv;
+                });
             });
             
             if (n.flags.HasFlag(VisualFlags.SkinFlag1) || n.flags.HasFlag(VisualFlags.SkinFlag2) || n.flags.HasFlag(VisualFlags.SkinFlag3))
@@ -302,12 +338,24 @@ public abstract class CPlugVisual : CPlug
             
             n.texCoords = r.ReadArray(NumTexCoordSets, r =>
             {
-                var texCoordKind = r.ReadInt32();
-                int[] sizeByKind = {8, 12, 16};
+                var version = r.ReadInt32();
 
-                r.ReadBytes(sizeByKind[texCoordKind] * n.count);
-                // TODO convert to Vec2? 
-                return Array.Empty<Vec2>();
+                return r.ReadArray<Vec2>(n.count, r =>
+                {
+                    var uv = r.ReadVec2();
+
+                    if (version >= 1)
+                    {
+                        var u01 = r.ReadInt32();
+
+                        if (version >= 2)
+                        {
+                            var u02 = r.ReadInt32();
+                        }
+                    }
+
+                    return uv;
+                });
             });
             
             if (n.flags.HasFlag(VisualFlags.SkinFlag1) || n.flags.HasFlag(VisualFlags.SkinFlag2) || n.flags.HasFlag(VisualFlags.SkinFlag3))
