@@ -60,7 +60,7 @@ public class CPlugTree : CPlug
     [Chunk(0x0904F006)]
     public class Chunk0904F006 : Chunk<CPlugTree>
     {
-        public int U01;
+        public int U01 = 10;
 
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
@@ -83,7 +83,7 @@ public class CPlugTree : CPlug
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref U01);
-            // could be array of IDs
+            // could be array of Ids
         }
     }
 
@@ -152,18 +152,7 @@ public class CPlugTree : CPlug
     [Chunk(0x0904F019)]
     public class Chunk0904F019 : Chunk<CPlugTree>
     {
-        public float U01;
-        public float U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public float U07;
-        public float U08;
-        public float U09;
-        public float U10;
-        public float U11;
-        public float U12;
+        public Iso4 U01;
 
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
@@ -171,19 +160,7 @@ public class CPlugTree : CPlug
 
             if ((flags & 4) != 0)
             {
-                rw.Single(ref U01);
-                rw.Single(ref U02);
-                rw.Single(ref U03);
-                rw.Single(ref U04);
-                rw.Single(ref U05);
-                rw.Single(ref U06);
-                rw.Single(ref U07);
-                rw.Single(ref U08);
-                rw.Single(ref U09);
-
-                rw.Single(ref U10);
-                rw.Single(ref U11);
-                rw.Single(ref U12);
+                rw.Iso4(ref U01);
             }
         }
     }
@@ -193,18 +170,7 @@ public class CPlugTree : CPlug
     {
         public int flags;
 
-        public float U02;
-        public float U03;
-        public float U04;
-        public float U05;
-        public float U06;
-        public float U07;
-        public float U08;
-        public float U09;
-        public float U10;
-        public float U11;
-        public float U12;
-        public float U13;
+        public Iso4 U01;
 
         public int Flags
         {
@@ -218,21 +184,7 @@ public class CPlugTree : CPlug
 
             if ((flags & 4) != 0)
             {
-                // Iso4
-                rw.Single(ref U02);
-                rw.Single(ref U03);
-                rw.Single(ref U04);
-                rw.Single(ref U05);
-                rw.Single(ref U06);
-                rw.Single(ref U07);
-                rw.Single(ref U08);
-                rw.Single(ref U09);
-                rw.Single(ref U10);
-
-                rw.Single(ref U11);
-                rw.Single(ref U12);
-                rw.Single(ref U13);
-                //
+                rw.Iso4(ref U01);
             }
         }
     }

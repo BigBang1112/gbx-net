@@ -151,11 +151,13 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     [Chunk(0x0304E00C)]
     public class Chunk0304E00C : Chunk<CGameCtnBlockInfo>
     {
-        public float[]? U01;
+        public Iso4 U01;
+        public Iso4 U02;
 
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            rw.Array<float>(ref U01, count: 24); // Two Iso4s
+            rw.Iso4(ref U01);
+            rw.Iso4(ref U02);
         }
     }
 
