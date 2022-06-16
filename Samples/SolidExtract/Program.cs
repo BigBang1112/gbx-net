@@ -195,8 +195,12 @@ void ProcessFile(string fileName)
         if (diffuse is null)
             return;
 
-        if (diffuse.GetGbx() is null)
+        var gbx = diffuse.GetGbx();
+
+        if (gbx is null)
             return;
+
+        var refTable = gbx.GetRefTable();
 
         if (refTable is null)
             return;
