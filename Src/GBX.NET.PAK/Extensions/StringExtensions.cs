@@ -1,11 +1,11 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace GBX.NET.Extensions;
+namespace GBX.NET.PAK.Extensions;
 
 public static class StringExtensions
 {
-    public static string HashMD5(this string value)
+    public static string ComputeHashMD5(this string value)
     {
         var lowered = value.ToLower();
         var bytes = Encoding.UTF8.GetBytes(lowered);
@@ -62,5 +62,4 @@ public static class StringExtensions
 
         return (char)(v + 55);
     }
-
 }
