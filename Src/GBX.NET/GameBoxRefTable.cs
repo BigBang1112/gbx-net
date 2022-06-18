@@ -50,70 +50,61 @@ public partial class GameBoxRefTable
 
         var ancestorLevel = r.ReadInt32();
         var numFolders = r.ReadInt32();
+        
+        var folders = ReadRefTableFolders(r, numFolders, parentFolder: null).ToList();
 
-        var allFolders = new List<Folder>();
-
-        var indexCounter = 0;
-        var folders = ReadRefTableFolders(numFolders, ref indexCounter, asParentFolder: null);
-
-        Folder[] ReadRefTableFolders(int n, ref int indexCounter, Folder? asParentFolder)
+        static IEnumerable<Folder> ReadRefTableFolders(GameBoxReader r, int numFolders, Folder? parentFolder)
         {
-            var folders = new Folder[n];
-
-            for (var i = 0; i < n; i++)
+            for (var i = 0; i < numFolders; i++)
             {
                 var name = r.ReadString();
+
+                var folder = new Folder(name, parentFolder);
+
+                yield return folder;
+
                 var numSubFolders = r.ReadInt32();
 
-                var folder = new Folder(name, indexCounter, asParentFolder);
-                allFolders.Add(folder);
-
-                indexCounter++;
-
-                foreach (var subFolder in ReadRefTableFolders(numSubFolders, ref indexCounter, folder))
+                foreach (var subFolder in ReadRefTableFolders(r, numSubFolders, folder))
                 {
-                    folder.Folders.Add(subFolder);
+                    yield return subFolder;
                 }
-
-                folders[i] = folder;
             }
-
-            return folders;
         }
 
         var files = new List<File>();
 
         for (var i = 0; i < numFiles; i++)
         {
-            string? fileName = null;
-            int? resourceIndex = null;
-            bool? useFile = null;
-            int? folderIndex = null;
+            var fileName = default(string?);
+            var resourceIndex = default(int?);
+            var useFile = default(bool?);
+            var folderIndex = -1;
 
             var flags = r.ReadInt32();
 
             if ((flags & 4) == 0)
+            {
                 fileName = r.ReadString();
+            }
             else
+            {
                 resourceIndex = r.ReadInt32();
+            }
 
             var nodeIndex = r.ReadInt32() - 1;
 
             if (header.Version >= 5)
+            {
                 useFile = r.ReadBoolean();
+            }
 
             if ((flags & 4) == 0)
+            {
                 folderIndex = r.ReadInt32() - 1;
+            }
 
-            var file = new File(flags, fileName, resourceIndex, nodeIndex, useFile, folderIndex);
-
-            if (!folderIndex.HasValue)
-                continue;
-
-            if (folderIndex.Value < 0)
-                files.Add(file);
-            else
-                allFolders[folderIndex.Value].Files.Add(file);
+            files.Add(new File(flags, fileName, resourceIndex, nodeIndex, useFile, folderIndex));
         }
 
         return new GameBoxRefTable(ancestorLevel, folders, files);
@@ -126,65 +117,57 @@ public partial class GameBoxRefTable
 
     public void Write(int version, GameBoxWriter w)
     {
-        var allFiles = GetAllFiles();
-        var numFiles = allFiles.Count();
+        w.Write(Files.Count);
 
-        w.Write(numFiles);
-
-        if (numFiles <= 0)
+        if (Files.Count <= 0)
         {
             return;
         }
 
         w.Write(AncestorLevel);
-        w.Write(Folders.Count);
+
+        w.Write(Folders.Count(x => x.ParentFolder is null));
 
         WriteFolders(Folders);
 
         void WriteFolders(IEnumerable<Folder> folders)
         {
-            if (folders == null) return;
-
             foreach (var folder in folders)
             {
                 w.Write(folder.Name);
-                w.Write(folder.Folders.Count);
 
-                WriteFolders(folder.Folders);
+                var subFolders = Folders.Where(x => x.ParentFolder == folder);
+                w.Write(subFolders.Count());
+
+                WriteFolders(subFolders);
             }
         }
 
-        foreach (var file in allFiles)
+        foreach (var file in Files)
         {
             w.Write(file.Flags);
 
             if ((file.Flags & 4) == 0)
+            {
                 w.Write(file.FileName);
+            }
             else
+            {
                 w.Write(file.ResourceIndex.GetValueOrDefault());
+            }
 
             w.Write(file.NodeIndex + 1);
 
             if (version >= 5)
+            {
                 w.Write(file.UseFile.GetValueOrDefault());
+            }
 
             if ((file.Flags & 4) == 0)
-                w.Write(file.FolderIndex.GetValueOrDefault() + 1);
+            {
+                w.Write(file.FolderIndex + 1);
+            }
         }
-    }
-
-    public IEnumerable<Folder> GetAllFolders()
-    {
-        return Folders.Flatten(x => x.Folders);
-    }
-
-    public IEnumerable<File> GetAllFiles()
-    {
-        foreach (var file in GetAllFolders().SelectMany(x => x.Files))
-            yield return file;
-
-        foreach (var file in Files)
-            yield return file;
     }
 
     public string GetRelativeFolderPathToFile(File file)
@@ -200,7 +183,7 @@ public partial class GameBoxRefTable
             return "";
         }
 
-        var folder = GetAllFolders().First(x => x.Index == file.FolderIndex);
+        var folder = Folders[file.FolderIndex];
 
         var parentBuilder = new StringBuilder(folder.Name);
 
@@ -232,7 +215,7 @@ public partial class GameBoxRefTable
         if (currentGbxFolderPath is null)
             return nodeAtTheMoment;
 
-        var refTableNode = GetAllFiles().FirstOrDefault(x => x.NodeIndex == nodeIndex);
+        var refTableNode = Files.FirstOrDefault(x => x.NodeIndex == nodeIndex);
 
         if (refTableNode is null)
             return nodeAtTheMoment;

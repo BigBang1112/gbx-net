@@ -12,9 +12,9 @@ public partial class GameBoxRefTable
         public int? ResourceIndex { get; }
         public int NodeIndex { get; }
         public bool? UseFile { get; }
-        public int? FolderIndex { get; }
+        public int FolderIndex { get; }
 
-        public File(int flags, string? fileName, int? resourceIndex, int nodeIndex, bool? useFile, int? folderIndex)
+        public File(int flags, string? fileName, int? resourceIndex, int nodeIndex, bool? useFile, int folderIndex)
         {
             Flags = flags;
             FileName = fileName;

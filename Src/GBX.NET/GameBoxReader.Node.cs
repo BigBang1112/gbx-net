@@ -175,7 +175,7 @@ public partial class GameBoxReader
             return false;
         }
 
-        var allFiles = refTable.GetAllFiles(); // Returns available external references
+        var allFiles = refTable.Files; // Returns available external references
 
         if (!allFiles.Any()) // If there's none
         {
