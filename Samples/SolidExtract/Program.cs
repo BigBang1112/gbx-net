@@ -205,7 +205,7 @@ void ProcessFile(string fileName)
         if (refTable is null)
             return;
 
-        var textureFile = refTable.GetAllFiles()
+        var textureFile = refTable.Files
             .FirstOrDefault(x => x.FileName?.ToLower().EndsWith(".dds") == true);
 
         if (textureFile is null)
