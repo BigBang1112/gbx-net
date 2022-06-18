@@ -27,7 +27,6 @@ public class CPlugSurface : CPlug
     public class Chunk0900C000 : Chunk<CPlugSurface>
     {
         public string? U01;
-        
 
         public override void ReadWrite(CPlugSurface n, GameBoxReaderWriter rw)
         {

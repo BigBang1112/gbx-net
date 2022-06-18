@@ -26,6 +26,7 @@ public abstract class CPlugVisual : CPlug
     private VisualFlags flags;
     private int count;
     private Vec2[][]? texCoords;
+    private Int3[]? indices;
 
     public VisualFlags Flags
     {
@@ -44,8 +45,6 @@ public abstract class CPlugVisual : CPlug
         get => texCoords;
         set => texCoords = value;
     }
-
-    public Int3[]? indices;
 
     protected CPlugVisual()
     {
@@ -233,6 +232,23 @@ public abstract class CPlugVisual : CPlug
         }
     }
 
+    [Chunk(0x0900600B)]
+    public class Chunk0900600B : Chunk<CPlugVisual>
+    {
+        public object[]? U01;
+
+        public override void ReadWrite(CPlugVisual n, GameBoxReaderWriter rw)
+        {
+            // array of SSplits
+            U01 = rw.Array<object>(null, (i, r) => new
+            {
+                x = r.ReadInt32(),
+                y = r.ReadInt32(),
+                box = r.ReadBox() // GmBoxAligned::ArchiveABox
+            }, (x, w) => { });
+        }
+    }
+
     /*[Chunk(0x0900600C)]
     public class Chunk0900600C : Chunk<CPlugVisual>
     {
@@ -366,22 +382,6 @@ public abstract class CPlugVisual : CPlug
             U04 = r.ReadBox(); // ArchiveABox
             
             r.ReadArray(r => r.ReadBytes(20));
-        }
-    }
-
-    [Chunk(0x0900600B)]
-    public class Chunk0900600B : Chunk<CPlugVisual>
-    {
-        public object[]? U01;
-
-        public override void ReadWrite(CPlugVisual n, GameBoxReaderWriter rw)
-        {
-            U01 = rw.Array<object>(null, (i, r) => new
-            {
-                x = r.ReadInt32(),
-                y = r.ReadInt32(),
-                box = r.ReadBox() // GmBoxAligned::ArchiveABox
-            }, (x, w) => { });
         }
     }
 }

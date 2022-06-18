@@ -23,7 +23,7 @@ public abstract class CPlugVisualIndexed : CPlugVisual3D
 
     protected CPlugVisualIndexed()
     {
-        indices = null!;
+        
     }
 
     [Chunk(0x0906A000)]

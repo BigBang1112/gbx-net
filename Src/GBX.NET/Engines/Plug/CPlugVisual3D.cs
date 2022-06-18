@@ -42,12 +42,13 @@ public abstract class CPlugVisual3D : CPlugVisual
 
             for (int i = 0; i < n.Count; i++)
             {
-                n.vertices[i] = new Vertex(
-                    position: r.ReadVec3(),
-                    u01: r.ReadVec3(),
-                    u02: r.ReadVec3(),
-                    u03: r.ReadSingle()
-                );
+                n.vertices[i] = new Vertex
+                {
+                    Position = r.ReadVec3(),
+                    U01 = r.ReadVec3(),
+                    U02 = r.ReadVec3(),
+                    U03 = r.ReadSingle()
+                };
             }
 
             U01 = r.ReadArray<Vec3>();
@@ -75,18 +76,48 @@ public abstract class CPlugVisual3D : CPlugVisual
             var u02 = !n.Flags.HasFlag(VisualFlags.UnknownFlag22) || n.Flags.HasFlag(VisualFlags.HasVertexNormals);
             var u03 = !n.Flags.HasFlag(VisualFlags.UnknownFlag22) || n.Flags.HasFlag(VisualFlags.UnknownFlag8);
 
-            int numBytesPerVertex = 12;
-            if (u02)
-            {
-                numBytesPerVertex += n.Flags.HasFlag(VisualFlags.UnknownFlag20) ? 4 : 12;
-            }
-            if (u03)
-            {
-                numBytesPerVertex += n.Flags.HasFlag(VisualFlags.UnknownFlag21) ? 4 : 16;
-            }   
-            
             // Console.WriteLine("numBytesPerVertex={0}", numBytesPerVertex);
-            var verts = r.ReadBytes(numBytesPerVertex * n.Count);
+            n.vertices = r.ReadArray(n.Count, r =>
+            {
+                var pos = r.ReadVec3();
+                var vertU01 = default(int?);
+                var vertU02 = default(Vec3?);
+                var vertU03 = default(int?);
+                var vertU04 = default(Vec4?);
+
+                if (u02)
+                {
+                    if (n.Flags.HasFlag(VisualFlags.UnknownFlag20))
+                    {
+                        vertU01 = r.ReadInt32();
+                    }
+                    else
+                    {
+                        vertU02 = r.ReadVec3();
+                    }
+                }
+
+                if (u03)
+                {
+                    if (n.Flags.HasFlag(VisualFlags.UnknownFlag21))
+                    {
+                        vertU03 = r.ReadInt32();
+                    }
+                    else
+                    {
+                        vertU04 = r.ReadVec4();
+                    }
+                }
+
+                return new Vertex
+                {
+                    Position = pos,
+                    U04 = vertU01,
+                    U05 = vertU02,
+                    U06 = vertU03,
+                    U07 = vertU04
+                };
+            });
 
             /*var list = new Vertex[n.Count];
 
@@ -104,21 +135,8 @@ public abstract class CPlugVisual3D : CPlugVisual
         }
     }
 
-    public readonly struct Vertex
+    public readonly record struct Vertex(Vec3 Position, Vec3? U01, Vec3? U02, float? U03, int? U04, Vec3? U05, int? U06, Vec4? U07)
     {
-        public Vec3 Position { get; }
-        public Vec3 U01 { get; }
-        public Vec3 U02 { get; }
-        public float U03 { get; }
-
-        public Vertex(Vec3 position, Vec3 u01, Vec3 u02, float u03)
-        {
-            Position = position;
-            U01 = u01;
-            U02 = u02;
-            U03 = u03;
-        }
-
         public override string ToString() => Position.ToString();
     }
 }
