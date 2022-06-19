@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.Plug;
+﻿using GBX.NET.Utils;
+
+namespace GBX.NET.Engines.Plug;
 
 /// <summary>
 /// CPlugSolid (0x09005000)
@@ -20,6 +22,18 @@ public class CPlugSolid : CPlug
     protected CPlugSolid()
     {
 
+    }
+
+    public void ExportToObj(Stream objStream, Stream mtlStream)
+    {
+        if (Tree is not CPlugTree tree)
+        {
+            return;
+        }
+
+        using var exporter = new ObjFileExporter(objStream, mtlStream);
+        
+        exporter.Export(tree);
     }
 
     [Chunk(0x09005000)]
