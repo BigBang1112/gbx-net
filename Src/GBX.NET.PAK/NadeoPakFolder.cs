@@ -42,6 +42,7 @@ public class NadeoPakFolder
             var finalFolder = RecurseFolderCreation(this, pathSplit);
 
             file.Name = pathSplit[pathSplit.Length - 1];
+            file.Folder = finalFolder;
 
             finalFolder.Files.Add(file);
         }

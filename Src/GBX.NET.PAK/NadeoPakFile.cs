@@ -2,6 +2,7 @@
 using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
 using System.IO.Compression;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace GBX.NET.PAK;
@@ -20,7 +21,7 @@ public class NadeoPakFile
     public int Offset { get; }
     public uint ClassID { get; }
     public ulong Flags { get; }
-    public NadeoPakFolder? Folder { get; }
+    public NadeoPakFolder? Folder { get; internal set; }
 
     public bool IsCompressed => (Flags & 0x7C) != 0;
 
@@ -142,7 +143,23 @@ public class NadeoPakFile
 
         using var ms = Open();
 
-        return GameBox.Parse(ms, progress, readUncompressedBodyDirectly: true, logger);
+        var gbx = GameBox.Parse(ms, progress, readUncompressedBodyDirectly: true, logger);
+
+        var fileNameBuilder = new StringBuilder(Name);
+
+        var folder = Folder;
+
+        while (folder is not null)
+        {
+            fileNameBuilder.Insert(0, folder.Name);
+
+            folder = folder.Parent;
+        }
+
+        gbx.PakFileName = fileNameBuilder.ToString();
+        gbx.ExternalGameData = owner;
+
+        return gbx;
     }
 
     public GameBox? ParseGbxHeader(IProgress<GameBoxReadProgress>? progress = null, bool readRawBody = false, ILogger? logger = null)

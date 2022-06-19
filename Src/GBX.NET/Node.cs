@@ -9,7 +9,7 @@ namespace GBX.NET;
 /// The skeleton of the Gbx object and representation of the <see cref="CMwNod"/>.
 /// </summary>
 /// <remarks>You shouldn't inherit this class unless <see cref="CMwNod"/> cannot be inherited instead.</remarks>
-public abstract class Node : IStateRefTable
+public abstract class Node
 {
     private uint? id;
     private ChunkSet? chunks;
@@ -28,9 +28,6 @@ public abstract class Node : IStateRefTable
     }
 
     public ChunkSet? HeaderChunks { get; internal set; }
-
-    Guid? IState.StateGuid { get; set; }
-    string? IStateRefTable.FileName { get; set; }
 
     protected Node()
     {
@@ -92,9 +89,9 @@ public abstract class Node : IStateRefTable
             return nodeAtTheMoment;
         }
 
-        var fileName = gbxForRefTable.FileName;
+        var fileName = gbxForRefTable.PakFileName ?? gbxForRefTable.FileName;
 
-        return refTable.GetNode(nodeAtTheMoment, nodeIndex, fileName);
+        return refTable.GetNode(nodeAtTheMoment, nodeIndex, fileName, gbxForRefTable?.ExternalGameData);
     }
 
     internal static T? Parse<T>(GameBoxReader r, uint? classId, IProgress<GameBoxReadProgress>? progress, ILogger? logger) where T : Node

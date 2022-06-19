@@ -35,10 +35,17 @@ public partial class GameBox
 
     public SortedDictionary<int, Node> AuxNodes { get; } = new();
 
+    public IExternalGameData? ExternalGameData { get; set; }
+
     /// <summary>
-    /// File path of the GameBox.
+    /// File path of the Gbx.
     /// </summary>
     public string? FileName { get; }
+
+    /// <summary>
+    /// File path inside the Pak.
+    /// </summary>
+    internal string? PakFileName { get; set; }
 
     /// <summary>
     /// Creates a new GameBox object with the most common parameters without the node (object).
