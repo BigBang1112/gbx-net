@@ -89,19 +89,41 @@ public class CPlugMaterialCustom : CPlug
     [Chunk(0x0903A00C)]
     public class Chunk0903A00C : Chunk<CPlugMaterialCustom>
     {
-        public int U01;
-        public string? U02;
-        public int U03;
-        public string? U04;
+        public (string, bool)[]? GpuParamSkipSamplers;
 
         public override void ReadWrite(CPlugMaterialCustom n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Id(ref U02);
-            rw.Int32(ref U03);
-            rw.Id(ref U04);
+            // array of SPlugGpuParamSkipSampler
+            rw.Array(ref GpuParamSkipSamplers, 
+                r => (r.ReadId(), r.ReadBoolean()),
+                (x, w) =>
+                {
+                    w.Write(x.Item1);
+                    w.Write(x.Item2);
+                });
+        }
+    }
 
-            // ...
+    [Chunk(0x0903A00D)]
+    public class Chunk0903A00D : Chunk<CPlugMaterialCustom>
+    {
+        public ulong U01;
+        public ulong U02;
+        public short? U03;
+        public short? U04;
+
+        public override void ReadWrite(CPlugMaterialCustom n, GameBoxReaderWriter rw)
+        {
+            rw.UInt64(ref U01);
+            rw.UInt64(ref U02);
+
+            if ((U01 & 1) != 0)
+            {
+                // SPlugVisibleFilter
+                rw.Int16(ref U03);
+                rw.Int16(ref U04);
+                //
+            }
         }
     }
 
