@@ -34,11 +34,6 @@ public class NadeoPakFolder
         {
             var pathSplit = GetBruteforcedNameOrDefault(file.Name, hashes).Split('\\');
 
-            if (pathSplit.Length != 2)
-            {
-                continue; // shouldn't went there
-            }
-
             var finalFolder = RecurseFolderCreation(this, pathSplit);
 
             file.Name = pathSplit[pathSplit.Length - 1];

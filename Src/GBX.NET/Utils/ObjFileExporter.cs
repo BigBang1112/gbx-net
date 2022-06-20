@@ -131,7 +131,81 @@ internal class ObjFileExporter : IDisposable
 
     private void WriteMaterialToMtl(CPlugMaterial material)
     {
-        // mtlWriter
+        if (material.CustomMaterial is null)
+        {
+            return;
+        }
+
+        var materialName = Path.GetFileNameWithoutExtension(
+            Path.GetFileNameWithoutExtension(material.GetGbx()!.PakFileName));
+
+        objFaceWriter.WriteLine("usemtl " + materialName);
+        mtlWriter.WriteLine("newmtl " + materialName);
+
+        if (material.CustomMaterial is null)
+        {
+            return;
+        }
+
+        var textures = material.CustomMaterial.Textures;
+
+        if (textures is null)
+        {
+            return;
+        }
+
+        var diffuse = textures.FirstOrDefault(x => x.Name == "Diffuse" || x.Name == "Blend3" || x.Name.StartsWith("Soil"))?.Bitmap;
+
+        if (diffuse is null)
+        {
+            diffuse = textures.FirstOrDefault()?.Bitmap;
+        }
+
+        if (diffuse is null)
+        {
+            return;
+        }
+
+        var gbx = diffuse.GetGbx();
+
+        if (gbx is null)
+        {
+            return;
+        }
+
+        var refTable = gbx.GetRefTable();
+
+        if (refTable is null)
+        {
+            return;
+        }
+
+        var textureFile = refTable.Files
+            .FirstOrDefault(x => x.FileName?.ToLower().EndsWith(".dds") == true);
+
+        if (textureFile?.FileName is null)
+        {
+            return;
+        }
+
+        mtlWriter.WriteLine("Ka 1.000 1.000 1.000");
+        mtlWriter.WriteLine("Kd 1.000 1.000 1.000");
+
+        try
+        {
+            var textureDirectory = Path.Combine(Path.GetDirectoryName(diffuse.GetGbx()!.PakFileName) ?? "",
+                refTable.GetRelativeFolderPathToFile(textureFile));
+
+            var fullTextureFileName = Path.Combine(@"E:\Games\TmUnitedForever\GameData", textureDirectory, textureFile.FileName)
+                .Replace('\\', '/');
+
+            mtlWriter.WriteLine($"map_Ka \"{fullTextureFileName}\"");
+            mtlWriter.WriteLine($"map_Kd \"{fullTextureFileName}\"");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+        }
     }
 
     public void Dispose()
