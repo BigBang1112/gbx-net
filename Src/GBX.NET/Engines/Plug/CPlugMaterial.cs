@@ -102,7 +102,9 @@ public class CPlugMaterial : CPlug
             _ = r.ReadNodeRef<CPlug>(out n.shaderIndex);
 
             if (n.shaderIndex >= 0)
+            {
                 return;
+            }
 
             n.deviceMaterials = r.ReadArray(r =>
             {
@@ -135,9 +137,78 @@ public class CPlugMaterial : CPlug
         }
     }
 
+    [Chunk(0x0907900D)]
+    public class Chunk0907900D : Chunk<CPlugMaterial>
+    {
+        public Node? U01;
+        public int? U01Index;
+        public int[]? U02;
+
+        public override void Read(CPlugMaterial n, GameBoxReader r)
+        {
+            U01 = r.ReadNodeRef(out int U01Index);
+
+            if (U01 is not null || U01Index > -2)
+            {
+                return;
+            }
+            
+            n.deviceMaterials = r.ReadArray(r =>
+            {
+                // UPlugRenderDevice
+                var u01 = r.ReadInt16();
+                var u02 = r.ReadByte();
+                var u03 = r.ReadByte();
+                //
+
+                var u04 = r.ReadBoolean();
+
+                var shader = default(CPlugShader);
+
+                if (!u04)
+                {
+                    shader = r.ReadNodeRef<CPlugShader>();
+                }
+                else
+                {
+                    var u08 = r.ReadInt32();
+                }
+
+                var u06 = r.ReadInt32();
+                var u07 = r.ReadInt32();
+
+                return new SDeviceMat(n, shader);
+            });
+
+            U02 = r.ReadArray<int>();
+        }
+    }
+
+    [Chunk(0x0907900E)]
+    public class Chunk0907900E : Chunk<CPlugMaterial>
+    {
+        public int U01;
+
+        public override void ReadWrite(CPlugMaterial n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+        }
+    }
+
+    [Chunk(0x0907900F)]
+    public class Chunk0907900F : Chunk<CPlugMaterial>
+    {
+        public int U01;
+
+        public override void ReadWrite(CPlugMaterial n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+        }
+    }
+
     public class SDeviceMat
     {
-        private Node node;
+        private readonly Node node;
 
         private CPlugShader? shader1;
         private readonly int? shader1Index;
@@ -145,8 +216,6 @@ public class CPlugMaterial : CPlug
         private readonly int? shader2Index;
         private CPlugShader? shader3;
         private readonly int? shader3Index;
-
-        public GameBox? Gbx { get; }
 
         public short U01 { get; set; }
         public short U02 { get; set; }
