@@ -100,4 +100,64 @@ public class CPlugBitmap : CPlug
             rw.Int16(ref U02);
         }
     }
+
+    [Chunk(0x0901101E)]
+    public class Chunk0901101E : Chunk<CPlugBitmap>
+    {
+        public Vec2[]? U01;
+
+        public override void ReadWrite(CPlugBitmap n, GameBoxReaderWriter rw)
+        {
+            rw.Array<Vec2>(ref U01);
+        }
+    }
+
+    [Chunk(0x09011020)]
+    public class Chunk09011020 : Chunk<CPlugBitmap>
+    {
+        public float[]? U01;
+
+        public override void ReadWrite(CPlugBitmap n, GameBoxReaderWriter rw)
+        {
+            rw.Array<float>(ref U01);
+        }
+    }
+
+    [Chunk(0x09011022)]
+    public class Chunk09011022 : Chunk<CPlugBitmap>
+    {
+        public Node? TextureFile;
+        public int? TextureFileIndex;
+        public ulong U01;
+        public float U02;
+        public float U03;
+        public float U04;
+        public int U05;
+
+        public override void ReadWrite(CPlugBitmap n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef(ref TextureFile, ref TextureFileIndex);
+            rw.UInt64(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+            rw.Int32(ref U05);
+
+            if (U05 != 0)
+            {
+                throw new Exception("U05 != 0");
+            }
+        }
+    }
+
+    [Chunk(0x09011024)]
+    public class Chunk09011024 : Chunk<CPlugBitmap>
+    {
+        public int U01;
+
+        public override void ReadWrite(CPlugBitmap n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+        }
+    }
 }
