@@ -6,13 +6,13 @@ GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software 
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/BigBang1112/gbx-net?include_prereleases&style=for-the-badge)](https://github.com/BigBang1112/gbx-net/releases)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/BigBang1112/gbx-net?style=for-the-badge)](#)
 
-- GBX.NET can recognize **entire Gbx files**, however **cannot read all of the existing files**. Gbx file is basically a serialized class from the GameBox engine, and all of these classes must be known to read. This is where you can help contributing to the project, by [exploring new chunks](https://github.com/BigBang1112/gbx-net/wiki/How-to-discover-nodes-and-chunks) (available very soon).
+- GBX.NET can recognize **entire Gbx files**, however **cannot read all of the existing files**. Gbx file is basically a serialized class from the GameBox engine, and all of these classes must be known to read. Exploring new chunks can be done by reverse engineering the games.
 - GBX.NET can write Gbx files which can be read by the parser, however this may not apply to all readable Gbxs.
-- All versions of Gbx are supported: ranging from TM1.0 to TM®, except the Gbx versions below 3 (which I haven't seen so far, even in the oldest game).
+- All versions of Gbx are supported: ranging from TM1.0 to TM®, except the Gbx versions below 3 (which haven't been seen so far, even in the oldest game).
 - **GBX.NET 0.10.0+ is separated into MIT and GPL3.0, see [License](#License)**.
 - Reading text-formatted Gbx is not currently supported.
 - Reading compressed reference tables is not currently supported.
-- Reading PAK files is partially supported with **GBX.NET.PAK** sublibrary, but it applies only to PAKs from TMUF and below, and most of contents cannot be read or crashes during decryption.
+- Reading Pak files is partially supported with the **GBX.NET.PAK** sublibrary, but it applies only to Paks from TMU/F.
 
 Here are some of the useful classes/types to start with:
 
