@@ -37,7 +37,7 @@ Here are some of the useful classes/types to start with:
 - <sup>1</sup>Challenge.Gbx is the same.
 - <sup>2</sup>Safety reasons. Consider extracting `CGameCtnGhost` from `CGameCtnReplayRecord`, transfer it over to `CGameCtnMediaBlockGhost`, add it to `CGameCtnMediaClip`, and save it as `.Clip.Gbx`, which you can then import in MediaTracker.
 - <sup>3</sup>Not tested for a long time, possibly works only in ManiaPlanet.
-- <sup>4</sup>Only in TM1.0, TMO, TMS and TMNESWC.
+- <sup>4</sup>Only up to TMUF.
 
 ### For any questions, join [my Discord server](https://discord.gg/perAcdxscQ) or message me via DM: BigBang1112#9489
 
