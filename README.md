@@ -7,7 +7,7 @@ GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software 
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/BigBang1112/gbx-net?style=for-the-badge)](#)
 
 - GBX.NET can recognize **entire Gbx files**, however **cannot read all of the existing files**. Gbx file is basically a serialized class from the GameBox engine, and all of these classes must be known to read. Exploring new chunks can be done by reverse engineering the games.
-- GBX.NET can write Gbx files which can be read by the parser, however this may not apply to all readable Gbxs.
+- GBX.NET can **write** most of the Gbx file types (those that can be read by the parser).
 - All versions of Gbx are supported: ranging from TM1.0 to TM®, except the Gbx versions below 3 (which haven't been seen so far, even in the oldest game).
 - **GBX.NET 0.10.0+ is separated into MIT and GPL3.0, see [License](#License)**.
 - Reading text-formatted Gbx is not currently supported.
