@@ -628,6 +628,7 @@ public abstract class Node
 
         var skippableChunk = (ISkippableChunk)chunk;
         skippableChunk.Data = chunkData;
+        skippableChunk.Gbx = readerSettings.Gbx;
 
         if (chunkData.Length == 0)
         {
@@ -653,7 +654,7 @@ public abstract class Node
         if (GameBox.Debug)
         {
             chunk.Debugger ??= new();
-            chunk.Debugger!.RawData = chunkData;
+            chunk.Debugger.RawData = chunkData;
         }
 
         return chunk;

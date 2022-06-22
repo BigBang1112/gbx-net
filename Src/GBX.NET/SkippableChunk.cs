@@ -3,14 +3,13 @@ using System.Reflection;
 
 namespace GBX.NET;
 
-public class SkippableChunk<T> : Chunk<T>, ISkippableChunk, IState where T : Node
+public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
 {
     private readonly uint? id;
 
     public bool Discovered { get; set; }
     public byte[] Data { get; set; }
-
-    Guid? IState.StateGuid { get; set; }
+    public GameBox? Gbx { get; set; }
 
     protected SkippableChunk()
     {
@@ -59,12 +58,12 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk, IState where T : Nod
         }
 
         using var ms = new MemoryStream(Data);
-        using var r = new GameBoxReader(ms, Node.GetGbx());
+        using var r = new GameBoxReader(ms, Gbx);
         var rw = new GameBoxReaderWriter(r);
 
         if (hasOwnIdState)
         {
-            Node.GetGbx()?.ResetIdState();
+            Gbx?.ResetIdState();
         }
 
         try

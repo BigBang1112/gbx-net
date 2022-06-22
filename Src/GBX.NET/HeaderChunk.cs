@@ -14,6 +14,7 @@ public sealed class HeaderChunk : Chunk, IHeaderChunk
     public byte[] Data { get; set; }
 
     public bool IsHeavy { get; set; }
+    public GameBox? Gbx { get; set; } // Shouldn't be there forever
 
     public HeaderChunk(uint id, byte[] data, bool isHeavy = false) : base(null!)
     {
