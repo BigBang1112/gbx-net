@@ -32,7 +32,6 @@ public class CGameCtnCollector : CMwNod
     private int iconQuarterRotationY;
     private EProdState prodState;
     private string? skinDirectory;
-    private string? collectorName;
     private bool isInternal;
     private bool isAdvanced;
     private long fileTime;
@@ -91,13 +90,6 @@ public class CGameCtnCollector : CMwNod
 
     [NodeMember]
     public CMwNod? IconFid { get; set; }
-
-    [NodeMember]
-    public string? CollectorName
-    {
-        get => collectorName;
-        set => collectorName = value;
-    }
 
     [NodeMember]
     public string? Description
@@ -204,9 +196,14 @@ public class CGameCtnCollector : CMwNod
             rw.String(ref n.pageName!);
 
             if (version == 5)
+            {
                 rw.Int32(ref U01);
+            }
+
             if (version >= 4)
+            {
                 rw.Int32(ref U02);
+            }
 
             if (version >= 3)
             {
@@ -215,7 +212,9 @@ public class CGameCtnCollector : CMwNod
             }
 
             if (version >= 7)
+            {
                 rw.String(ref n.name);
+            }
 
             rw.EnumByte<EProdState>(ref n.prodState);
         }
@@ -460,7 +459,7 @@ public class CGameCtnCollector : CMwNod
     {
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.String(ref n.collectorName);
+            rw.String(ref n.name);
         }
     }
 
@@ -521,10 +520,16 @@ public class CGameCtnCollector : CMwNod
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version); // 2
+            
+            // Needs more checking
+
             rw.NodeRef(ref U01); // -1
             rw.String(ref n.skinDirectory);
+            
             if (n.skinDirectory!.Length == 0)
+            {
                 rw.Int32(ref U02); // -1
+            }
         }
     }
 
