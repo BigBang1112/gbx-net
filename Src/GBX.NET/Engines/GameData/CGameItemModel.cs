@@ -363,7 +363,7 @@ public class CGameItemModel : CGameCtnCollector
     /// CGameItemModel 0x019 chunk (model)
     /// </summary>
     [Chunk(0x2E002019, "model")]
-    public class Chunk2E002019 : Chunk<CGameItemModel>
+    public class Chunk2E002019 : Chunk<CGameItemModel>, IVersionable
     {
         private int version;
         private int? u01;
@@ -425,7 +425,9 @@ public class CGameItemModel : CGameCtnCollector
                                         rw.NodeRef(ref n.entityModel);
 
                                         if (version >= 13)
+                                        {
                                             rw.NodeRef(ref u02);
+                                        }
                                     }
                                 }
                             }
@@ -496,8 +498,8 @@ public class CGameItemModel : CGameCtnCollector
     public class Chunk2E00201E : Chunk<CGameItemModel>
     {
         private int version;
-        private int u01;
-        private int u02;
+        private int U01;
+        private int U02;
 
         public int Version
         {
@@ -505,25 +507,17 @@ public class CGameItemModel : CGameCtnCollector
             set => version = value;
         }
 
-        public int U01
-        {
-            get => u01;
-            set => u01 = value;
-        }
-
-        public int U02
-        {
-            get => u02;
-            set => u02 = value;
-        }
-
         public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
             rw.String(ref n.archetypeRef!);
+
             if (n.archetypeRef.Length == 0)
-                rw.Int32(ref u01);
-            rw.Int32(ref u02);
+            {
+                rw.Int32(ref U01);
+            }
+
+            rw.Int32(ref U02);
         }
     }
 
@@ -573,7 +567,9 @@ public class CGameItemModel : CGameCtnCollector
             rw.Int32(ref u02);
 
             if (version >= 10)
+            {
                 rw.Int32(ref u03);
+            }
         }
     }
 
@@ -589,7 +585,7 @@ public class CGameItemModel : CGameCtnCollector
     {
         private int version;
 
-        public byte U01;
+        public bool U01;
 
         public int Version
         {
@@ -603,7 +599,9 @@ public class CGameItemModel : CGameCtnCollector
             rw.String(ref n.iconFid);
 
             if (version >= 3)
-                rw.Byte(ref U01);
+            {
+                rw.Boolean(ref U01, asByte: true); // ArticlePtr? xD
+            }
         }
     }
 
@@ -615,15 +613,17 @@ public class CGameItemModel : CGameCtnCollector
     /// CGameItemModel 0x021 chunk
     /// </summary>
     [Chunk(0x2E002021)]
-    public class Chunk2E002021 : Chunk<CGameItemModel>
+    public class Chunk2E002021 : Chunk<CGameItemModel>, IVersionable
     {
-        public int U01;
+        private int version;
         public int U02;
+
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
+            rw.Int32(ref version);
+            rw.Int32(ref U02); // SItemGroupElement array with Iso4 and CMwNodDataRef
         }
     }
 
@@ -635,17 +635,20 @@ public class CGameItemModel : CGameCtnCollector
     /// CGameItemModel 0x023 chunk
     /// </summary>
     [Chunk(0x2E002023)]
-    public class Chunk2E002023 : Chunk<CGameItemModel>
+    public class Chunk2E002023 : Chunk<CGameItemModel>, IVersionable
     {
+        private int version;
+
         public byte U01;
-        public int U02;
         public int U03;
+
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
         {
+            rw.Int32(ref version);
             rw.Byte(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
+            rw.Int32(ref U03); // SItemGroupElement array with Iso4 and CMwNodDataRef
         }
     }
 
@@ -657,9 +660,19 @@ public class CGameItemModel : CGameCtnCollector
     /// CGameItemModel 0x024 skippable chunk
     /// </summary>
     [Chunk(0x2E002024)]
-    public class Chunk2E002024 : SkippableChunk<CGameItemModel>
+    public class Chunk2E002024 : SkippableChunk<CGameItemModel>, IVersionable
     {
+        private int version;
 
+        public Vec2[]? U01;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.Array<Vec2>(ref U01);
+        }
     }
 
     #endregion
