@@ -157,12 +157,16 @@ public class CPlugCrystal : CPlugTreeGenerator
         {
             Version = r.ReadInt32();
 
-            n.materials = r.ReadArray(r1 =>
+            n.materials = r.ReadArray(r =>
             {
-                var name = r1.ReadString();
+                var name = r.ReadString();
+
                 if (name.Length == 0)  // If the material file exists (name != ""), it references the file instead
-                    {
-                    var material = r1.ReadNodeRef<CPlugMaterialUserInst>();
+                {
+                    var material = r.ReadNodeRef<CPlugMaterialUserInst>();
+
+                    // more stuff when version <=1
+
                     return material;
                 }
                 return null;
@@ -177,10 +181,25 @@ public class CPlugCrystal : CPlugTreeGenerator
     /// <summary>
     /// CPlugCrystal 0x004 skippable chunk
     /// </summary>
-    [Chunk(0x09003004), IgnoreChunk]
-    public class Chunk09003004 : SkippableChunk<CPlugCrystal>
+    [Chunk(0x09003004)]
+    public class Chunk09003004 : SkippableChunk<CPlugCrystal>, IVersionable
     {
+        private int version;
+        private byte[]? U01;
+        private int? U02;
 
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CPlugCrystal n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.Bytes(ref U01);
+
+            if (version >= 1)
+            {
+                rw.Int32(ref U02);
+            }
+        }
     }
 
     #endregion
@@ -199,143 +218,81 @@ public class CPlugCrystal : CPlugTreeGenerator
         {
             Version = r.ReadInt32();
 
-            n.Layers = r.ReadArray<Layer>(r1 =>
+            var layerCount = r.ReadInt32();
+
+            // in some cases, something is here
+
+            n.Layers = r.ReadArray<Layer>(layerCount, r =>
             {
-                var type = (ELayerType)r1.ReadInt32();
-                var u01 = r1.ReadInt32(); // 2
-                    var u02 = r1.ReadInt32();
-                var layerId = r1.ReadId(); // Layer0
-                    var layerName = r1.ReadString();
-                var isEnabled = r1.ReadBoolean();
+                var type = (ELayerType)r.ReadInt32();
+                var version = r.ReadInt32(); // 2 - version
+                var u02 = r.ReadBoolean();
+                var layerId = r.ReadId(); // Layer0
+                var layerName = r.ReadString();
+                var isEnabled = true;
 
-                var u04 = r1.ReadInt32(); // 1
-
-                    if (type == ELayerType.Geometry || type == ELayerType.Trigger)
+                if (version >= 1)
                 {
-                    var u05 = r1.ReadInt32(); // 32
-                        var u06 = r1.ReadInt32(); // 4
-                        var u07 = r1.ReadInt32(); // 3
-                        var u08 = r1.ReadInt32(); // 4
-                        var u09 = r1.ReadSingle(); // 64
-                        var u10 = r1.ReadInt32(); // 2
-                        var u11 = r1.ReadSingle(); // 128
-                        var u12 = r1.ReadInt32(); // 1
-                        var u13 = r1.ReadSingle(); // 192
-                        var u14 = r1.ReadInt32(); // 0
+                    isEnabled = r.ReadBoolean();
 
-                        var groups = r1.ReadArray(r2 => new Group()
+                    if (version >= 2) // Just an assume
                     {
-                        U01 = r2.ReadInt32(),
-                        U02 = r2.ReadInt32(),
-                        U03 = r2.ReadInt32(),
-                        Name = r2.ReadString(),
-                        U04 = r2.ReadInt32(),
-                        U05 = r2.ReadArray<int>()
-                    });
-
-                    Vec3[]? vertices = null;
-                    Int2[]? edges = null;
-                    Face[]? faces = null;
-
-                    var u15 = r1.ReadInt32();
-                    if (u15 == 1)
-                    {
-                        vertices = r1.ReadArray(r2 => r2.ReadVec3());
-                        edges = r1.ReadArray(r2 => r2.ReadInt2());
-
-                        faces = r1.ReadArray(r2 =>
-                        {
-                            var uvVertices = r2.ReadInt32();
-                            var inds = r2.ReadArray<int>(uvVertices);
-                            var uv = new Vec2[uvVertices];
-                            for (var k = 0; k < uvVertices; k++)
-                                uv[k] = r2.ReadVec2();
-                            var materialIndex = r2.ReadInt32();
-                            var groupIndex = r2.ReadInt32();
-
-                            return new Face()
-                            {
-                                VertCount = uvVertices,
-                                Indices = inds,
-                                UV = uv,
-                                Material = n.Materials[materialIndex],
-                                Group = groups[groupIndex]
-                            };
-                        });
+                        // u04 = r.ReadBoolean();
                     }
-                    else
-                    {
-                        throw new NotSupportedException("Unsupported crystal.");
-                    }
-
-                    var u16 = r1.ReadInt32();
-                    var numUVs = r1.ReadInt32();
-                    var numEdges = r1.ReadInt32();
-                    var numVerts = r1.ReadInt32();
-                    var empty = r1.ReadArray<int>(numUVs + numEdges + numVerts);
-
-                    if (numUVs + numEdges + numVerts == 0)
-                    {
-                        numUVs = r1.ReadInt32();
-                        numEdges = r1.ReadInt32();
-                        numVerts = r1.ReadInt32();
-
-                        empty = r1.ReadArray<int>(numUVs + numEdges + numVerts);
-                    }
-
-                    var u17 = r1.ReadInt32();
-                    var numGroups2 = r1.ReadInt32();
-                    var counter = r1.ReadArray<int>(numGroups2);
-
-                    var isVisible = false;
-                    var collidable = true;
-
-                    if (type == ELayerType.Geometry)
-                    {
-                        isVisible = r1.ReadBoolean();
-                        collidable = r1.ReadBoolean();
-                    }
-                    else
-                    {
-
-                    }
-
-                    return new GeometryLayer()
-                    {
-                        LayerID = layerId,
-                        LayerName = layerName,
-                        Vertices = vertices,
-                        Edges = edges,
-                        Faces = faces,
-                        Groups = groups,
-                        IsEnabled = isEnabled,
-                        IsVisible = isVisible,
-                        Collidable = collidable,
-                        Unknown = new object[]
-                        {
-                                u01, u02, u04, u05, u06, u07, u08, u09, u10, u11, u12, u13, u14,
-                                u15, u16, numUVs, numEdges, numVerts, empty, u17, counter
-                        }
-                    };
                 }
-                else if (type == ELayerType.Cubes)
-                {
-                    throw new NotSupportedException("Cubes layer is not currently supported.");
-                }
-                else
-                {
-                    var mask = r1.ReadArray(r2 => new LayerMask()
-                    {
-                        GroupIndex = r2.ReadInt32(),
-                        LayerId = r2.ReadId()
-                    });
 
-                    var mask_u01 = r1.ReadInt32();
+                var typeVersion = r.ReadInt32(); // not part of SLayer::ArchiveWithoutTyp
 
-                    if (type == ELayerType.Scale)
+                return type switch
+                {
+                    ELayerType.Geometry or ELayerType.Trigger => ReadGeometryOrTriggerLayer(r, n, type, u02, layerId, layerName, isEnabled, typeVersion),
+                    ELayerType.Cubes => ReadCubesLayer(r, typeVersion),
+                    _ => ReadMaskLayer(r, type, layerId, layerName)
+                };
+            });
+        }
+
+        private static Layer ReadCubesLayer(GameBoxReader r, int version)
+        {
+            var u01 = r.ReadByte();
+            var voxelSize = r.ReadSingle();
+            var u03 = default(Vec3);
+            var u04 = default(bool?);
+            var u05 = default(bool?);
+
+            if (version >= 4)
+            {
+                u03 = r.ReadVec3();
+            }
+
+            var voxelModelArray = r.ReadInt32(); // SVoxelModel array
+            var voxelModelArray2 = r.ReadInt32();
+
+            if (version >= 2)
+            {
+                u04 = r.ReadBoolean();
+                u05 = r.ReadBoolean();
+            }
+
+            return new CubesLayer();
+        }
+
+        private static Layer ReadMaskLayer(GameBoxReader r, ELayerType type, string layerId, string layerName)
+        {
+            var mask = r.ReadArray(r2 => new LayerMask()
+            {
+                GroupIndex = r2.ReadInt32(),
+                LayerId = r2.ReadId()
+            });
+
+            var mask_u01 = r.ReadInt32();
+
+            switch (type)
+            {
+                case ELayerType.Scale:
                     {
-                        var scale = r1.ReadVec3();
-                        var independently = r1.ReadBoolean();
+                        var scale = r.ReadVec3();
+                        var independently = r.ReadBoolean();
 
                         return new ScaleLayer()
                         {
@@ -347,11 +304,12 @@ public class CPlugCrystal : CPlugTreeGenerator
                             Unknown = new object[] { mask_u01 }
                         };
                     }
-                    else if (type == ELayerType.SpawnPosition)
+
+                case ELayerType.SpawnPosition:
                     {
-                        var position = r1.ReadVec3();
-                        var horizontalAngle = r1.ReadSingle();
-                        var verticalAngle = r1.ReadSingle();
+                        var position = r.ReadVec3();
+                        var horizontalAngle = r.ReadSingle();
+                        var verticalAngle = r.ReadSingle();
 
                         return new SpawnPositionLayer()
                         {
@@ -364,9 +322,10 @@ public class CPlugCrystal : CPlugTreeGenerator
                             Unknown = new object[] { mask_u01 }
                         };
                     }
-                    else if (type == ELayerType.Translation)
+
+                case ELayerType.Translation:
                     {
-                        var translation = r1.ReadVec3();
+                        var translation = r.ReadVec3();
 
                         return new TranslationLayer()
                         {
@@ -377,11 +336,12 @@ public class CPlugCrystal : CPlugTreeGenerator
                             Unknown = new object[] { mask_u01 }
                         };
                     }
-                    else if (type == ELayerType.Rotation)
+
+                case ELayerType.Rotation:
                     {
-                        var rotation = r1.ReadSingle(); // in radians
-                            var axis = (EAxis)r1.ReadInt32();
-                        var independently = r1.ReadBoolean();
+                        var rotation = r.ReadSingle(); // in radians
+                        var axis = (EAxis)r.ReadInt32();
+                        var independently = r.ReadBoolean();
 
                         return new RotationLayer()
                         {
@@ -393,11 +353,12 @@ public class CPlugCrystal : CPlugTreeGenerator
                             Independently = independently
                         };
                     }
-                    else if (type == ELayerType.Mirror)
+
+                case ELayerType.Mirror:
                     {
-                        var axis = (EAxis)r1.ReadInt32();
-                        var distance = r1.ReadSingle();
-                        var independently = r1.ReadBoolean();
+                        var axis = (EAxis)r.ReadInt32();
+                        var distance = r.ReadSingle();
+                        var independently = r.ReadBoolean();
 
                         return new MirrorLayer()
                         {
@@ -409,16 +370,15 @@ public class CPlugCrystal : CPlugTreeGenerator
                             Independently = independently
                         };
                     }
-                    else if (type == ELayerType.Deformation)
+
+                case ELayerType.Deformation:
+                    // TODO: how deformation works
+                    throw new NotSupportedException("Deformation layer is not currently supported.");
+                case ELayerType.Chaos:
                     {
-                            // TODO: how deformation works
-                            throw new NotSupportedException("Deformation layer is not currently supported.");
-                    }
-                    else if (type == ELayerType.Chaos)
-                    {
-                        var minDistance = r1.ReadSingle();
-                        var chaos_u01 = r1.ReadSingle();
-                        var maxDistance = r1.ReadSingle();
+                        var minDistance = r.ReadSingle();
+                        var chaos_u01 = r.ReadSingle();
+                        var maxDistance = r.ReadSingle();
 
                         return new ChaosLayer()
                         {
@@ -430,11 +390,12 @@ public class CPlugCrystal : CPlugTreeGenerator
                             MaxDistance = maxDistance,
                         };
                     }
-                    else if (type == ELayerType.Subdivide)
-                    {
-                        var subdivisions = r1.ReadInt32(); // max 4
 
-                            return new SubdivideLayer()
+                case ELayerType.Subdivide:
+                    {
+                        var subdivisions = r.ReadInt32(); // max 4
+
+                        return new SubdivideLayer()
                         {
                             LayerID = layerId,
                             LayerName = layerName,
@@ -442,11 +403,12 @@ public class CPlugCrystal : CPlugTreeGenerator
                             Subdivisions = subdivisions
                         };
                     }
-                    else if (type == ELayerType.Smooth)
-                    {
-                        var intensity = r1.ReadInt32(); // max 4
 
-                            return new SmoothLayer()
+                case ELayerType.Smooth:
+                    {
+                        var intensity = r.ReadInt32(); // max 4
+
+                        return new SmoothLayer()
                         {
                             LayerID = layerId,
                             LayerName = layerName,
@@ -454,10 +416,144 @@ public class CPlugCrystal : CPlugTreeGenerator
                             Intensity = intensity
                         };
                     }
-                    else
-                        throw new NotSupportedException($"Unknown or unsupported layer. ({type})");
-                }
+
+                default:
+                    throw new NotSupportedException($"Unknown or unsupported layer. ({type})");
+            }
+        }
+
+        private static Layer ReadGeometryOrTriggerLayer(GameBoxReader r, CPlugCrystal n, ELayerType type, bool u02, string layerId, string layerName, bool isEnabled, int typeVersion)
+        {
+            var u05 = r.ReadInt32(); // 32
+            var u06 = r.ReadInt32(); // 4
+            var u07 = r.ReadInt32(); // 3
+            var u08 = r.ReadInt32(); // 4
+            var u09 = r.ReadSingle(); // 64
+            var u10 = r.ReadInt32(); // 2
+            var u11 = r.ReadSingle(); // 128
+            var u12 = r.ReadInt32(); // 1
+            var u13 = r.ReadSingle(); // 192
+            var u14 = r.ReadInt32(); // 0 - SAnchorInfo array?
+
+            // SCrystalPart array
+            var groups = r.ReadArray(r => new Group()
+            {
+                U01 = r.ReadInt32(),
+                U02 = r.ReadInt32(), // maybe bool
+                U03 = r.ReadInt32(),
+                Name = r.ReadString(),
+                U04 = r.ReadInt32(),
+                U05 = r.ReadArray<int>()
             });
+
+            Vec3[]? vertices = null;
+            Int2[]? edges = null;
+            Face[]? faces = null;
+
+            var u15 = r.ReadBoolean();
+
+            if (u15)
+            {
+                vertices = r.ReadArray<Vec3>();
+                edges = r.ReadArray<Int2>();
+
+                faces = r.ReadArray(r =>
+                {
+                    var uvVertices = r.ReadInt32();
+                    var inds = r.ReadArray<int>(uvVertices);
+                    var uv = r.ReadArray<Vec2>(uvVertices);
+                    var materialIndex = r.ReadInt32();
+                    var groupIndex = r.ReadInt32();
+
+                    return new Face()
+                    {
+                        VertCount = uvVertices,
+                        Indices = inds,
+                        UV = uv,
+                        Material = n.Materials[materialIndex],
+                        Group = groups[groupIndex]
+                    };
+                });
+            }
+            else
+            {
+                var handleVerts = r.ReadArray<(bool, int, int)>(r => new(
+                    r.ReadBoolean(),
+                    r.ReadInt32(),
+                    r.ReadInt32()
+                ));
+                var handleVertsU01 = r.ReadInt32();
+                var handleVertsU02 = r.ReadInt32();
+                var handleEdges = r.ReadArray<(bool, int, int)>(r => new(
+                    r.ReadBoolean(),
+                    r.ReadInt32(),
+                    r.ReadInt32()
+                ));
+                var handleEdgesU01 = r.ReadInt32();
+                var handleEdgesU02 = r.ReadInt32();
+                var handleFaces = r.ReadArray<(bool, int, int)>(r => new(
+                    r.ReadBoolean(),
+                    r.ReadInt32(),
+                    r.ReadInt32()
+                ));
+                var handleFacesU01 = r.ReadInt32();
+                var handleFacesU02 = r.ReadInt32();
+
+                var wtf = r.ReadArray<int>(15007);
+
+                var verts = r.ReadArray<Vec3>();
+
+                throw new NotSupportedException("Unsupported crystal.");
+            }
+
+            var u16 = r.ReadInt32();
+            var numUVs = r.ReadInt32();
+            var numEdges = r.ReadInt32();
+            var numVerts = r.ReadInt32();
+            var empty = r.ReadArray<int>(numUVs + numEdges + numVerts);
+
+            if (numUVs + numEdges + numVerts == 0)
+            {
+                numUVs = r.ReadInt32();
+                numEdges = r.ReadInt32();
+                numVerts = r.ReadInt32();
+
+                empty = r.ReadArray<int>(numUVs + numEdges + numVerts);
+            }
+
+            var u17 = r.ReadInt32();
+            var counter = r.ReadArray<int>(); // each element is related to each group
+
+            var isVisible = false;
+            var collidable = true;
+
+            if (type == ELayerType.Geometry)
+            {
+                isVisible = r.ReadBoolean();
+                collidable = r.ReadBoolean();
+            }
+            else
+            {
+
+            }
+
+            return new GeometryLayer()
+            {
+                LayerID = layerId,
+                LayerName = layerName,
+                Vertices = vertices,
+                Edges = edges,
+                Faces = faces,
+                Groups = groups,
+                IsEnabled = isEnabled,
+                IsVisible = isVisible,
+                Collidable = collidable,
+                Unknown = new object[]
+                {
+                    u02, u05, u06, u07, u08, u09, u10, u11, u12, u13, u14,
+                    u15, u16, numUVs, numEdges, numVerts, empty, u17, counter
+                }
+            };
         }
     }
 
@@ -606,6 +702,11 @@ public class CPlugCrystal : CPlugTreeGenerator
     {
         public LayerMask[]? Mask { get; set; }
         public float Intensity { get; set; }
+    }
+
+    public class CubesLayer : Layer
+    {
+        
     }
 
     public class Group
