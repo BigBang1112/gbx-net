@@ -33,6 +33,11 @@ public class CGameCommonItemEntityModelEdition : CMwNod
 
     private EItemType itemType;
     private CPlugCrystal meshCrystal;
+    private float? mass;
+    private string? inventoryName;
+    private string? inventoryDescription;
+    private int inventoryItemClass;
+    private int inventoryOccupation;
 
     #endregion
 
@@ -41,20 +46,29 @@ public class CGameCommonItemEntityModelEdition : CMwNod
     /// <summary>
     /// Type of the item.
     /// </summary>
-    public EItemType ItemType
-    {
-        get => itemType;
-        set => itemType = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public EItemType ItemType { get => itemType; set => itemType = value; }
 
     /// <summary>
     /// Mesh of the item model.
     /// </summary>
-    public CPlugCrystal MeshCrystal
-    {
-        get => meshCrystal;
-        set => meshCrystal = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public CPlugCrystal MeshCrystal { get => meshCrystal; set => meshCrystal = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public float? Mass { get => mass; set => mass = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public string? InventoryName { get => inventoryName; set => inventoryName = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public string? InventoryDescription { get => inventoryDescription; set => inventoryDescription = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public int InventoryItemClass { get => inventoryItemClass; set => inventoryItemClass = value; }
+    
+    [NodeMember(ExactlyNamed = true)]
+    public int InventoryOccupation { get => inventoryOccupation; set => inventoryOccupation = value; }
 
     #endregion
 
@@ -80,6 +94,23 @@ public class CGameCommonItemEntityModelEdition : CMwNod
         private int version;
 
         public string? U01;
+        public CMwNod? U02;
+        public int U03;
+        public int U04;
+        public CMwNod? U05;
+        public CMwNod? U06;
+        public int U07;
+        public string? U08;
+        public string? U09;
+        public string? U10;
+        public string? U11;
+        public string? U12;
+        public string? U13;
+        public string? U14;
+        public Iso4 U15;
+        public bool U16;
+        public bool U17;
+        public int U18;
 
         public int Version
         {
@@ -93,9 +124,64 @@ public class CGameCommonItemEntityModelEdition : CMwNod
             rw.EnumInt32<EItemType>(ref n.itemType);
             rw.NodeRef<CPlugCrystal>(ref n.meshCrystal!);
             rw.String(ref U01);
+            rw.NodeRef(ref U02);
 
-            for (var i = 0; i < 32; i++)
-                rw.Int32();
+            rw.Int32(ref U03); // CPlugFileImg array
+            if (U03 > 0) throw new Exception("CPlugFileImg array not empty");
+            
+            rw.Int32(ref U04); // SSpriteParam array
+            if (U04 > 0) throw new Exception("SSpriteParam array not empty");
+
+            rw.NodeRef(ref U05); // DestroyParticleModel?
+            rw.NodeRef(ref U06); // DestroyParticleModel?
+
+            rw.Int32(ref U07); // SPlugLightBallStateSimple array
+            if (U07 > 0) throw new Exception("SPlugLightBallStateSimple array not empty");
+
+            rw.String(ref U08);
+            rw.String(ref U09);
+
+            rw.String(ref U10);
+            rw.String(ref U11);
+            rw.String(ref U12);
+            rw.String(ref U13);
+            rw.String(ref U14);
+
+            rw.Iso4(ref U15);
+
+            if (version >= 3 && n.itemType == EItemType.PickUp)
+            {
+                rw.Single(ref n.mass);
+            }
+
+            rw.Boolean(ref U16);
+
+            if (!U16)
+            {
+                throw new Exception("U16 == false");
+            }
+
+            if (n.itemType != EItemType.Ornament)
+            {
+                throw new NotSupportedException("Other item types than Ornament not supported");
+            }
+
+            rw.Boolean(ref U17);
+
+            if (U17)
+            {
+                throw new Exception("U17 == true");
+            }
+
+            rw.Int32(ref U18);
+
+            if (version >= 1)
+            {
+                rw.String(ref n.inventoryName);
+                rw.String(ref n.inventoryDescription);
+                rw.Int32(ref n.inventoryItemClass);
+                rw.Int32(ref n.inventoryOccupation);
+            }
         }
     }
 
