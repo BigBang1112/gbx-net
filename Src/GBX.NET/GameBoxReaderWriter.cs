@@ -1601,6 +1601,24 @@ public partial class GameBoxReaderWriter
     {
         array = Array(array, r => r.ReadString(), (x, w) => w.Write(x));
     }
+    
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
+    public string[]? ArrayId(string[]? array = default)
+    {
+        return Array<string>(array, r => r.ReadId(), (x, w) => w.Write(x));
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
+    public void ArrayId(ref string[]? array)
+    {
+        array = Array<string>(array, r => r.ReadId(), (x, w) => w.Write(x));
+    }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>

@@ -9,7 +9,7 @@ public partial class GameBoxReader
     /// </summary>
     /// <typeparam name="T">A struct type.</typeparam>
     /// <param name="length">Length of the array.</param>
-    /// <param name="lengthInBytes">If to take length as the size of the byte array and not the <see cref="Vec3"/> array.</param>
+    /// <param name="lengthInBytes">If to take length as the size of the byte array and not the <typeparamref name="T"/> array.</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
