@@ -22,6 +22,11 @@ public partial class GameBoxReader
             throw new ArgumentOutOfRangeException(nameof(length), "Length is negative.");
         }
 
+        if (length == 0)
+        {
+            return Array.Empty<T>();
+        }
+
         var l = length * (lengthInBytes ? 1 : Marshal.SizeOf<T>());
 
 #if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
