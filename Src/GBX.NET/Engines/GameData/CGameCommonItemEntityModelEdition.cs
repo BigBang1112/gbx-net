@@ -110,7 +110,9 @@ public class CGameCommonItemEntityModelEdition : CMwNod
         public Iso4 U15;
         public bool U16;
         public bool U17;
-        public int U18;
+        public int? U18;
+        public Iso4? U19;
+        public int U20;
 
         public int Version
         {
@@ -158,6 +160,7 @@ public class CGameCommonItemEntityModelEdition : CMwNod
 
             if (!U16)
             {
+                // Some nod
                 throw new Exception("U16 == false");
             }
 
@@ -170,10 +173,11 @@ public class CGameCommonItemEntityModelEdition : CMwNod
 
             if (U17)
             {
-                throw new Exception("U17 == true");
+                rw.Int32(ref U18);
+                rw.Iso4(ref U19);
             }
 
-            rw.Int32(ref U18);
+            rw.Int32(ref U20);
 
             if (version >= 1)
             {
