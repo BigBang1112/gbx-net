@@ -1288,7 +1288,34 @@ public partial class GameBoxReaderWriter
         Byte(ref v);
 
         if (Mode == GameBoxReaderWriterMode.Read)
+        {
             variable = CastTo<T>.From(v);
+        }
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void EnumByte<T>(ref T? variable, T defaultValue = default) where T : struct, Enum
+    {
+        var v = Mode == GameBoxReaderWriterMode.Write ? CastTo<byte?>.From(variable) : default;
+
+        if (Mode == GameBoxReaderWriterMode.Write)
+        {
+            if (defaultValue.Equals(default(T)))
+            {
+                Byte(ref v);
+                return;
+            }
+
+            Byte(ref v, CastTo<byte>.From(defaultValue));
+        }
+
+        if (Mode == GameBoxReaderWriterMode.Read)
+        {
+            Byte(ref v);
+            variable = CastTo<T>.From(v);
+        }
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1301,7 +1328,9 @@ public partial class GameBoxReaderWriter
         Int32(ref v);
 
         if (Mode == GameBoxReaderWriterMode.Read)
+        {
             variable = CastTo<T>.From(v);
+        }
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1948,6 +1977,10 @@ public partial class GameBoxReaderWriter
         throw new ThisShouldNotHappenException();
     }
 
+    /// <summary>
+    /// Reads or writes a comprehensive binary component, usually in a way it's defined in the game code.
+    /// </summary>
+    /// <remarks>Binary component has to be defined with the <see cref="IReadableWritable"/> interface.</remarks>
     public void Archive<T>(ref T? obj, int version = 0) where T : IReadableWritable, new()
     {
         if (obj is null)
