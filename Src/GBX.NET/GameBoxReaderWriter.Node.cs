@@ -64,7 +64,18 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
-    public void NodeRef<T>(ref T? variable) where T : Node => variable = NodeRef(variable);
+    public void NodeRef<T>(ref T? variable, bool disallowOverride = false) where T : Node
+    {
+        if (disallowOverride)
+        {
+            var node = NodeRef(variable);
+            variable ??= node;
+        }
+        else
+        {
+            variable = NodeRef(variable);
+        }
+    }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
