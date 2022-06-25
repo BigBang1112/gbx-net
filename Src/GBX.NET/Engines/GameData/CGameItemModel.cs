@@ -34,11 +34,51 @@ public class CGameItemModel : CGameCtnCollector
         EntitySpawner = 12
     }
 
+    public enum EWaypointType : int
+    {
+        Start,
+        Finish,
+        Checkpoint,
+        None,
+        StartFinish,
+        Dispenser
+    }
+
+    public enum EDefaultCam : int
+    {
+        None,
+        Default,
+        Free,
+        Spectator,
+        Behind,
+        Close,
+        Internal,
+        Helico,
+        FirstPerson,
+        ThirdPerson,
+        ThirdPersonTop,
+        Iso,
+        IsoFocus,
+        Dia3,
+        Board,
+        MonoScreen,
+        Rear,
+        Debug,
+        _1,
+        _2,
+        _3,
+        Alt1,
+        Orbital,
+        Decals,
+        Snap
+    }
+
     #endregion
 
     #region Fields
 
     private EItemType itemType;
+    private EItemType itemTypeE;
     private CMwNod?[]? nadeoSkinFids;
     private CMwNod?[]? cameras;
     private CMwNod? raceInterfaceFid;
@@ -47,36 +87,37 @@ public class CGameItemModel : CGameCtnCollector
     private float orbitalCenterHeightFromGround;
     private float orbitalRadiusBase;
     private float orbitalPreviewAngle;
-    private CMwNod? baseAttributes;
     private string? defaultWeaponName;
     private CPlugVehiclePhyModelCustom? phyModelCustom;
     private CMwNod? visModelCustom;
     private CMwNod? entityModelEdition;
     private CMwNod? entityModel;
-    private int? defaultCam;
-    private CGameItemPlacementParam? itemPlacement;
+    private EDefaultCam? defaultCam;
+    private CGameItemPlacementParam? defaultPlacement;
     private string? archetypeRef;
     private string? iconFid;
+    private EWaypointType waypointType;
+    private bool disableLightmap;
 
     #endregion
 
     #region Properties
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public EItemType ItemType
     {
         get => itemType;
         set => itemType = value;
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public CMwNod?[]? NadeoSkinFids
     {
         get => nadeoSkinFids;
         set => nadeoSkinFids = value;
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public CMwNod?[]? Cameras
     {
         get => cameras;
@@ -90,71 +131,71 @@ public class CGameItemModel : CGameCtnCollector
         set => raceInterfaceFid = value;
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public Vec3 GroundPoint
     {
         get => groundPoint;
         set => groundPoint = value;
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public float PainterGroundMargin
     {
         get => painterGroundMargin;
         set => painterGroundMargin = value;
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public float OrbitalCenterHeightFromGround
     {
         get => orbitalCenterHeightFromGround;
         set => orbitalCenterHeightFromGround = value;
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public float OrbitalRadiusBase
     {
         get => orbitalRadiusBase;
         set => orbitalRadiusBase = value;
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public float OrbitalPreviewAngle
     {
         get => orbitalPreviewAngle;
         set => orbitalPreviewAngle = value;
     }
 
-    [NodeMember]
-    public CMwNod? BaseAttributes
+    [NodeMember(ExactlyNamed = true)]
+    public EItemType ItemTypeE
     {
-        get => baseAttributes;
-        set => baseAttributes = value;
+        get => itemTypeE;
+        set => itemTypeE = value;
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public string? DefaultWeaponName
     {
         get => defaultWeaponName;
         set => defaultWeaponName = value;
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public CPlugVehiclePhyModelCustom? PhyModelCustom
     {
         get => phyModelCustom;
         set => phyModelCustom = value;
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public CMwNod? VisModelCustom
     {
         get => visModelCustom;
         set => visModelCustom = value;
     }
 
-    [NodeMember]
-    public int? DefaultCam
+    [NodeMember(ExactlyNamed = true)]
+    public EDefaultCam? DefaultCam
     {
         get => defaultCam;
         set => defaultCam = value;
@@ -163,14 +204,14 @@ public class CGameItemModel : CGameCtnCollector
     /// <summary>
     /// An entity object of the item model.
     /// </summary>
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public CMwNod? EntityModelEdition
     {
         get => entityModelEdition;
         set => entityModelEdition = value;
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public CMwNod? EntityModel
     {
         get => entityModel;
@@ -198,14 +239,14 @@ public class CGameItemModel : CGameCtnCollector
     /// <summary>
     /// Placement information when the item model is used in the editor.
     /// </summary>
-    [NodeMember]
-    public CGameItemPlacementParam? ItemPlacement
+    [NodeMember(ExactName = "DefaultPlacementParam_Dbg")]
+    public CGameItemPlacementParam? DefaultPlacement
     {
-        get => itemPlacement;
-        set => itemPlacement = value;
+        get => defaultPlacement;
+        set => defaultPlacement = value;
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public string? ArchetypeRef
     {
         get => archetypeRef;
@@ -218,6 +259,12 @@ public class CGameItemModel : CGameCtnCollector
         get => iconFid;
         set => iconFid = value;
     }
+
+    [NodeMember(ExactlyNamed = true)]
+    public EWaypointType WaypointType { get => waypointType; set => waypointType = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public bool DisableLightmap { get => disableLightmap; set => disableLightmap = value; }
 
     #endregion
 
@@ -325,33 +372,35 @@ public class CGameItemModel : CGameCtnCollector
 
     #endregion
 
-    #region 0x013 (base attributes)
+    #region 0x013
 
     /// <summary>
-    /// CGameItemModel 0x013 chunk (base attributes)
+    /// CGameItemModel 0x013 chunk
     /// </summary>
-    [Chunk(0x2E002013, "base attributes")]
+    [Chunk(0x2E002013)]
     public class Chunk2E002013 : Chunk<CGameItemModel>
     {
+        public CMwNod? U01;
+
         public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref n.baseAttributes);
+            rw.NodeRef(ref U01);
         }
     }
 
     #endregion
 
-    #region 0x015 chunk (item type)
+    #region 0x015 chunk (item type e)
 
     /// <summary>
-    /// CGameItemModel 0x015 chunk (item type)
+    /// CGameItemModel 0x015 chunk (item type e)
     /// </summary>
-    [Chunk(0x2E002015, "item type")]
+    [Chunk(0x2E002015, "item type e")]
     public class Chunk2E002015 : Chunk<CGameItemModel>
     {
         public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
         {
-            rw.EnumInt32(ref n.itemType);
+            rw.EnumInt32(ref n.itemTypeE);
         }
     }
 
@@ -414,7 +463,7 @@ public class CGameItemModel : CGameCtnCollector
 
                             if (version >= 7)
                             {
-                                rw.Int32(ref n.defaultCam);
+                                rw.EnumInt32<EDefaultCam>(ref n.defaultCam);
 
                                 if (version >= 8)
                                 {
@@ -483,7 +532,7 @@ public class CGameItemModel : CGameCtnCollector
         public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
-            rw.NodeRef(ref n.itemPlacement);
+            rw.NodeRef<CGameItemPlacementParam>(ref n.defaultPlacement);
         }
     }
 
@@ -517,7 +566,7 @@ public class CGameItemModel : CGameCtnCollector
                 rw.Int32(ref U01);
             }
 
-            rw.Int32(ref U02);
+            rw.Int32(ref U02); // SkinDirNameCustom if ver >= 6?
         }
     }
 
@@ -529,46 +578,39 @@ public class CGameItemModel : CGameCtnCollector
     /// CGameItemModel 0x01F chunk
     /// </summary>
     [Chunk(0x2E00201F)]
-    public class Chunk2E00201F : Chunk<CGameItemModel>
+    public class Chunk2E00201F : Chunk<CGameItemModel>, IVersionable
     {
         private int version;
-        private int u01;
-        private int u02;
-        private int u03;
+        
+        private Iso4 U01;
+        private int U02;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
-
-        public int U01
-        {
-            get => u01;
-            set => u01 = value;
-        }
-
-        public int U02
-        {
-            get => u02;
-            set => u02 = value;
-        }
-
-        public int U03
-        {
-            get => u03;
-            set => u03 = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
-            rw.Int32(ref u01);
-            rw.Int32(ref u02);
 
-            if (version >= 10)
+            if (version < 7)
             {
-                rw.Int32(ref u03);
+                throw new ChunkVersionNotSupportedException(version);
+            }
+
+            rw.EnumInt32<EWaypointType>(ref n.waypointType);
+
+            if (version < 8)
+            {
+                rw.Iso4(ref U01);
+            }
+
+            if (version >= 6)
+            {
+                rw.Boolean(ref n.disableLightmap);
+                
+                if (version >= 10)
+                {
+                    rw.Int32(ref U02);
+                }
             }
         }
     }
@@ -584,7 +626,7 @@ public class CGameItemModel : CGameCtnCollector
     public class Chunk2E002020 : Chunk<CGameItemModel>, IVersionable
     {
         private int version;
-
+        
         public bool U01;
 
         public int Version
