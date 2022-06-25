@@ -88,7 +88,7 @@ public class CGameItemModel : CGameCtnCollector
     private float orbitalRadiusBase;
     private float orbitalPreviewAngle;
     private string? defaultWeaponName;
-    private CPlugVehiclePhyModelCustom? phyModelCustom;
+    private CMwNod? phyModelCustom;
     private CMwNod? visModelCustom;
     private CMwNod? entityModelEdition;
     private CMwNod? entityModel;
@@ -181,7 +181,7 @@ public class CGameItemModel : CGameCtnCollector
     }
 
     [NodeMember(ExactlyNamed = true)]
-    public CPlugVehiclePhyModelCustom? PhyModelCustom
+    public CMwNod? PhyModelCustom
     {
         get => phyModelCustom;
         set => phyModelCustom = value;
@@ -295,6 +295,44 @@ public class CGameItemModel : CGameCtnCollector
 
     #endregion
 
+    #region 0x001 header chunk (item type)
+
+    /// <summary>
+    /// CGameItemModel 0x001 header chunk (file version)
+    /// </summary>
+    [Chunk(0x2E002001, "file version")]
+    public class Chunk2E002001 : HeaderChunk<CGameItemModel>, IVersionable
+    {
+        private int version;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+        }
+    }
+
+    #endregion
+
+    #region 0x006 chunk
+
+    /// <summary>
+    /// CGameItemModel 0x006 chunk
+    /// </summary>
+    [Chunk(0x2E002006)]
+    public class Chunk2E002006 : Chunk<CGameItemModel>
+    {
+        public int U01;
+
+        public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01); // some cam thingie?
+        }
+    }
+
+    #endregion
+
     #region 0x008 chunk (Nadeo skin fids)
 
     /// <summary>
@@ -331,6 +369,24 @@ public class CGameItemModel : CGameCtnCollector
         {
             rw.Int32(ref version);
             rw.ArrayNode(ref n.cameras);
+        }
+    }
+
+    #endregion
+
+    #region 0x00A chunk
+
+    /// <summary>
+    /// CGameItemModel 0x00A chunk
+    /// </summary>
+    [Chunk(0x2E00200A)]
+    public class Chunk2E00200A : Chunk<CGameItemModel>
+    {
+        public CMwNod? U01;
+
+        public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef(ref U01);
         }
     }
 
@@ -415,8 +471,9 @@ public class CGameItemModel : CGameCtnCollector
     public class Chunk2E002019 : Chunk<CGameItemModel>, IVersionable
     {
         private int version;
-        private int? u01;
-        private CMwNod? u02;
+
+        public int? U01;
+        public CMwNod? U02;
 
         public int Version
         {
@@ -424,25 +481,14 @@ public class CGameItemModel : CGameCtnCollector
             set => version = value;
         }
 
-        public int? U01
-        {
-            get => u01;
-            set => u01 = value;
-        }
-
-        public CMwNod? U02
-        {
-            get => u02;
-            set => u02 = value;
-        }
-
         public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
 
-            if (version == 1)
+            if ((n.ItemTypeE == EItemType.Ornament && version < 9) || (n.ItemTypeE == EItemType.Vehicle && version < 10))
             {
-
+                rw.NodeRef<CMwNod>(ref n.phyModelCustom);
+                rw.NodeRef<CMwNod>(ref n.visModelCustom);
             }
 
             if (version >= 3)
@@ -451,15 +497,15 @@ public class CGameItemModel : CGameCtnCollector
 
                 if (version >= 4)
                 {
-                    rw.NodeRef(ref n.phyModelCustom);
+                    rw.NodeRef<CMwNod>(ref n.phyModelCustom, disallowOverride: true);
 
                     if (version >= 5)
                     {
-                        rw.NodeRef(ref n.visModelCustom);
+                        rw.NodeRef<CMwNod>(ref n.visModelCustom, disallowOverride: true);
 
                         if (version >= 6)
                         {
-                            rw.Int32(ref u01); // Actions
+                            rw.Int32(ref U01); // Actions
 
                             if (version >= 7)
                             {
@@ -469,15 +515,15 @@ public class CGameItemModel : CGameCtnCollector
                                 {
                                     rw.NodeRef(ref n.entityModelEdition); // CGameCommonItemEntityModelEdition, CGameBlockItem
 
-                                    if (version >= 12)
-                                    {
+                                    //if (version >= 12)
+                                    //{
                                         rw.NodeRef(ref n.entityModel);
 
                                         if (version >= 13)
                                         {
-                                            rw.NodeRef(ref u02);
+                                            rw.NodeRef(ref U02);
                                         }
-                                    }
+                                    //}
                                 }
                             }
                         }
@@ -508,6 +554,24 @@ public class CGameItemModel : CGameCtnCollector
         public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
         {
             rw.NodeRef(ref u01);
+        }
+    }
+
+    #endregion
+
+    #region 0x01B chunk
+
+    /// <summary>
+    /// CGameItemModel 0x01B chunk
+    /// </summary>
+    [Chunk(0x2E00201B)]
+    public class Chunk2E00201B : Chunk<CGameItemModel>
+    {
+        public CMwNod? U01;
+
+        public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef(ref U01);
         }
     }
 
@@ -566,7 +630,10 @@ public class CGameItemModel : CGameCtnCollector
                 rw.Int32(ref U01);
             }
 
-            rw.Int32(ref U02); // SkinDirNameCustom if ver >= 6?
+            if (version >= 6)
+            {
+                rw.Int32(ref U02); // SkinDirNameCustom
+            }
         }
     }
 
@@ -582,8 +649,13 @@ public class CGameItemModel : CGameCtnCollector
     {
         private int version;
         
-        private Iso4 U01;
-        private int U02;
+        public Iso4 U01;
+        public int U02;
+        public string? U03;
+        public string? U04;
+        public int? U05;
+        public int? U06;
+        public short? U07;
 
         public int Version { get => version; set => version = value; }
 
@@ -593,7 +665,22 @@ public class CGameItemModel : CGameCtnCollector
 
             if (version < 7)
             {
-                throw new ChunkVersionNotSupportedException(version);
+                if (version >= 5)
+                {
+                    rw.String(ref U03);
+                    rw.String(ref U04);
+                    rw.Int32(ref U05);
+                }
+
+                if (version >= 4)
+                {
+                    rw.Int32(ref U06);
+                }
+
+                if (version < 3)
+                {
+                    rw.Int16(ref U07);
+                }
             }
 
             rw.EnumInt32<EWaypointType>(ref n.waypointType);
@@ -628,6 +715,8 @@ public class CGameItemModel : CGameCtnCollector
         private int version;
         
         public bool U01;
+        public string? U02;
+        public CMwNod? U03;
 
         public int Version
         {
@@ -638,6 +727,15 @@ public class CGameItemModel : CGameCtnCollector
         public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
+
+            if (version < 2)
+            {
+                rw.String(ref U02);
+                rw.NodeRef(ref U03);
+
+                return;
+            }
+
             rw.String(ref n.iconFid);
 
             if (version >= 3)
