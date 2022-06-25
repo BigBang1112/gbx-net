@@ -29,6 +29,11 @@ public partial class GameBoxReader
 
         var l = length * (lengthInBytes ? 1 : Marshal.SizeOf<T>());
 
+        if (l > 1_000_000 || l < 0)
+        {
+            throw new Exception($"Length is too big to handle on the stack ({(l < 0 ? length : l)}).");
+        }
+
 #if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
         Span<byte> bytes = stackalloc byte[l];
         Read(bytes);
