@@ -30,7 +30,7 @@ public class CGameCtnCollector : CMwNod
     private string? description;
     private bool iconUseAutoRender;
     private int iconQuarterRotationY;
-    private EProdState prodState;
+    private EProdState? prodState;
     private string? skinDirectory;
     private bool isInternal;
     private bool isAdvanced;
@@ -69,7 +69,7 @@ public class CGameCtnCollector : CMwNod
     }
 
     [NodeMember]
-    public EProdState ProdState
+    public EProdState? ProdState
     {
         get => prodState;
         set => prodState = value;
@@ -169,12 +169,12 @@ public class CGameCtnCollector : CMwNod
 
     #endregion
 
-    #region 0x003 header chunk
+    #region 0x003 header chunk (desc)
 
     /// <summary>
-    /// CGameCtnCollector 0x003 header chunk
+    /// CGameCtnCollector 0x003 header chunk (desc)
     /// </summary>
-    [Chunk(0x2E001003)]
+    [Chunk(0x2E001003, "desc")]
     public class Chunk2E001003 : HeaderChunk<CGameCtnCollector>, IVersionable
     {
         private int version;
@@ -209,14 +209,17 @@ public class CGameCtnCollector : CMwNod
             {
                 rw.Int32(ref U03);
                 n.CatalogPosition = rw.Int16((short)n.CatalogPosition);
-            }
+                
+                if (version >= 7)
+                {
+                    rw.String(ref n.name);
 
-            if (version >= 7)
-            {
-                rw.String(ref n.name);
+                    if (version >= 8)
+                    {
+                        rw.EnumByte<EProdState>(ref n.prodState);
+                    }
+                }
             }
-
-            rw.EnumByte<EProdState>(ref n.prodState);
         }
     }
 
@@ -557,7 +560,11 @@ public class CGameCtnCollector : CMwNod
             rw.Boolean(ref n.isInternal);
             rw.Boolean(ref n.isAdvanced);
             rw.Int32(ref n.catalogPosition);
-            rw.EnumByte<EProdState>(ref n.prodState);
+
+            if (version >= 1)
+            {
+                rw.EnumByte<EProdState>(ref n.prodState);
+            }
         }
     }
 
