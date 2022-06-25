@@ -720,8 +720,8 @@ public class CPlugCrystal : CPlugTreeGenerator
     {
         private int version;
 
-        public int U01;
-        public int U02;
+        public float[]? U01;
+        public int[]? U02;
         public float U03;
         public float U04;
         public int[]? U05;
@@ -735,11 +735,13 @@ public class CPlugCrystal : CPlugTreeGenerator
         public override void ReadWrite(CPlugCrystal n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Array(ref U05);
+            rw.Array<float>(ref U01); // SCrystalSmoothingGroup array
+            rw.Array<int>(ref U02);
+
+            // in other versions
+            //rw.Single(ref U03);
+            //rw.Single(ref U04);
+            //rw.Array(ref U05);
         }
     }
 
