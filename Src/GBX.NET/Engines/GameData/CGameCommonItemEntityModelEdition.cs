@@ -113,6 +113,7 @@ public class CGameCommonItemEntityModelEdition : CMwNod
         public int? U18;
         public Iso4? U19;
         public int U20;
+        public CMwNod? U21;
 
         public int Version
         {
@@ -160,8 +161,7 @@ public class CGameCommonItemEntityModelEdition : CMwNod
 
             if (!U16)
             {
-                // Some nod
-                throw new Exception("U16 == false");
+                rw.NodeRef(ref U21);
             }
 
             if (n.itemType != EItemType.Ornament)
