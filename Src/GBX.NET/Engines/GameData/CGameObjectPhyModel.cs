@@ -153,6 +153,9 @@ public class CGameObjectPhyModel : CMwNod
         public CMwNod? U27;
         public CMwNod? U28;
         public CMwNod? U29;
+        public CMwNod? U30;
+        public CMwNod? U31;
+        public CMwNod? U32;
 
         public int Version { get => version; set => version = value; }
 
@@ -162,10 +165,9 @@ public class CGameObjectPhyModel : CMwNod
 
             if (version < 11)
             {
-                // MoveShape
-                // HitShape
-                // TriggerShape
-                throw new ChunkVersionNotSupportedException(version);
+                rw.NodeRef(ref U30); // MoveShape
+                rw.NodeRef(ref U31); // HitShape
+                rw.NodeRef(ref U32); // TriggerShape
             }
 
             if (version >= 8)

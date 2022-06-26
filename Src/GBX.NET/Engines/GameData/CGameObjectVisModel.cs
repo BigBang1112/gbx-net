@@ -11,6 +11,7 @@ public class CGameObjectVisModel : CMwNod
     private string? visEntFx;
     private CMwNod? meshShadedFid;
     private Vec3? domeShaderColor;
+    private CPlugSolid2Model? meshShaded;
 
     [NodeMember(ExactlyNamed = true)]
     public string? Mesh { get => mesh; set => mesh = value; }
@@ -35,6 +36,9 @@ public class CGameObjectVisModel : CMwNod
 
     [NodeMember(ExactlyNamed = true)]
     public Vec3? DomeShaderColor { get => domeShaderColor; set => domeShaderColor = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public CPlugSolid2Model? MeshShaded { get => meshShaded; set => meshShaded = value; }
 
     protected CGameObjectVisModel()
     {
@@ -67,6 +71,8 @@ public class CGameObjectVisModel : CMwNod
         public CMwNod? U11;
         public float? U12;
         public CMwNod? U13;
+        public CMwNod? U14;
+        public CMwNod? U15;
 
         public int Version { get => version; set => version = value; }
 
@@ -76,13 +82,18 @@ public class CGameObjectVisModel : CMwNod
 
             if (version < 9)
             {
-                throw new ChunkVersionNotSupportedException(version);
+                rw.NodeRef(ref U14);
+                rw.NodeRef(ref U15);
             }
 
             rw.String(ref n.mesh);
 
-            rw.NodeRef(ref U01); // LocAnim
-            rw.NodeRef(ref U02);
+            rw.NodeRef<CPlugSolid2Model>(ref n.meshShaded);
+
+            if (version >= 7) // Condition not seen in code
+            {
+                rw.NodeRef(ref U02);
+            }
 
             rw.Int32(ref U03); // SPlugLightBallStateSimple array
 
