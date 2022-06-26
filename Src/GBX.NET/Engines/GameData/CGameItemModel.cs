@@ -408,6 +408,24 @@ public class CGameItemModel : CGameCtnCollector
 
     #endregion
 
+    #region 0x010 chunk
+
+    /// <summary>
+    /// CGameItemModel 0x010 chunk
+    /// </summary>
+    [Chunk(0x2E002010)]
+    public class Chunk2E002010 : Chunk<CGameItemModel>
+    {
+        public CMwNod? U01;
+
+        public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef(ref U01);
+        }
+    }
+
+    #endregion
+
     #region 0x012 chunk
 
     /// <summary>
@@ -435,6 +453,24 @@ public class CGameItemModel : CGameCtnCollector
     /// </summary>
     [Chunk(0x2E002013)]
     public class Chunk2E002013 : Chunk<CGameItemModel>
+    {
+        public CMwNod? U01;
+
+        public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x014 chunk
+
+    /// <summary>
+    /// CGameItemModel 0x014 chunk
+    /// </summary>
+    [Chunk(0x2E002014)]
+    public class Chunk2E002014 : Chunk<CGameItemModel>
     {
         public CMwNod? U01;
 
@@ -583,9 +619,26 @@ public class CGameItemModel : CGameCtnCollector
     /// CGameItemModel 0x01C chunk
     /// </summary>
     [Chunk(0x2E00201C)]
-    public class Chunk2E00201C : Chunk<CGameItemModel>
+    public class Chunk2E00201C : Chunk<CGameItemModel>, IVersionable
     {
         private int version;
+
+        public int? U01;
+        public float? U02;
+        public float? U03;
+        public float? U04;
+        public float? U05;
+        public float? U06;
+        public float? U07;
+        public float? U08;
+        public float? U09;
+        public float? U10;
+        public float? U11;
+        public float? U12;
+        public float? U13;
+        public float? U14;
+        public float? U15;
+        public Vec3[]? U16;
 
         public int Version
         {
@@ -596,7 +649,64 @@ public class CGameItemModel : CGameCtnCollector
         public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
-            rw.NodeRef<CGameItemPlacementParam>(ref n.defaultPlacement);
+
+            if (version >= 5)
+            {
+                rw.NodeRef<CGameItemPlacementParam>(ref n.defaultPlacement);
+                return;
+            }
+
+            rw.Int32(ref U01);
+
+            if (version >= 1)
+            {
+                rw.Single(ref U02);
+                rw.Single(ref U03);
+                rw.Single(ref U04);
+                rw.Single(ref U05);
+                rw.Single(ref U06);
+                rw.Single(ref U07);
+
+                if (version >= 2)
+                {
+                    rw.Single(ref U08);
+                    rw.Single(ref U09);
+                    rw.Single(ref U10);
+                    rw.Single(ref U11);
+                    rw.Single(ref U12);
+
+                    if (version >= 3)
+                    {
+                        rw.Single(ref U13);
+                        rw.Single(ref U14);
+
+                        rw.Array<Vec3>(ref U16, U01.GetValueOrDefault()); // Hack
+
+                        if (version >= 4)
+                        {
+                            rw.Single(ref U15);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #endregion
+
+    #region 0x01D chunk
+
+    /// <summary>
+    /// CGameItemModel 0x01D chunk
+    /// </summary>
+    [Chunk(0x2E00201D)]
+    public class Chunk2E00201D : Chunk<CGameItemModel>
+    {
+        public short U01;
+
+        public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
+        {
+            rw.Int16(ref U01);
         }
     }
 
