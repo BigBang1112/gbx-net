@@ -97,7 +97,15 @@ public partial class GameBoxReader : BinaryReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
-    public string ReadString(int length) => Encoding.UTF8.GetString(ReadBytes(length));
+    public string ReadString(int length)
+    {
+        if (length == 0)
+        {
+            return "";
+        }
+
+        return Encoding.UTF8.GetString(ReadBytes(length));
+    }
 
     /// <summary>
     /// First reads an <see cref="int"/> representing the length, then reads the sequence of bytes.

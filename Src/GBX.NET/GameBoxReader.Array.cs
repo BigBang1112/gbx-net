@@ -77,10 +77,17 @@ public partial class GameBoxReader
             throw new ArgumentOutOfRangeException(nameof(length));
         }
 
+        if (length == 0)
+        {
+            return Array.Empty<T>();
+        }
+
         var result = new T[length];
 
         for (var i = 0; i < length; i++)
+        {
             result[i] = forLoop.Invoke(i);
+        }
 
         return result;
     }
@@ -125,6 +132,11 @@ public partial class GameBoxReader
         if (length < 0)
         {
             throw new ArgumentOutOfRangeException(nameof(length));
+        }
+
+        if (length == 0)
+        {
+            return Array.Empty<T>();
         }
 
         var result = new T[length];
@@ -179,6 +191,11 @@ public partial class GameBoxReader
             throw new ArgumentOutOfRangeException(nameof(length));
         }
 
+        if (length == 0)
+        {
+            return Array.Empty<T>();
+        }
+
         var result = new T[length];
 
         for (var i = 0; i < length; i++)
@@ -226,6 +243,11 @@ public partial class GameBoxReader
             throw new ArgumentNullException(nameof(forLoop));
         }
 
+        if (length == 0)
+        {
+            return Array.Empty<T>();
+        }
+
         var result = new T[length];
 
         for (var i = 0; i < length; i++)
@@ -271,6 +293,11 @@ public partial class GameBoxReader
         if (forLoop is null)
         {
             throw new ArgumentNullException(nameof(forLoop));
+        }
+
+        if (length == 0)
+        {
+            return Array.Empty<T>();
         }
 
         var result = new T[length];
