@@ -522,14 +522,11 @@ public class CGameCtnCollector : CMwNod
 
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version); // 2
-            
-            // Needs more checking
-
-            rw.NodeRef(ref U01); // -1
+            rw.Int32(ref version);
+            rw.NodeRef(ref U01);
             rw.String(ref n.skinDirectory);
             
-            if (n.skinDirectory!.Length == 0)
+            if (version >= 2 && n.skinDirectory!.Length == 0)
             {
                 rw.Int32(ref U02); // -1
             }
