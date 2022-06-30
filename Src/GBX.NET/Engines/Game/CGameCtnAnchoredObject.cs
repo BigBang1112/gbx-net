@@ -210,15 +210,20 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
             rw.Id(ref n.anchorTreeId!);
             rw.Vec3(ref n.absolutePositionInMap);
 
-            if (rw.Mode == GameBoxReaderWriterMode.Read)
+            if (rw.Reader is not null)
+            {
                 n.waypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(rw.Reader!, classId: null, progress: null, logger);
-            else if (rw.Mode == GameBoxReaderWriterMode.Write)
+            }
+            
+            if (rw.Writer is not null)
             {
                 if (n.waypointSpecialProperty is null)
-                    rw.Writer!.Write(-1);
+                {
+                    rw.Writer.Write(-1);
+                }
                 else
                 {
-                    rw.Writer!.Write(0x2E009000);
+                    rw.Writer.Write(0x2E009000);
                     n.waypointSpecialProperty.Write(rw.Writer, logger);
                 }
             }

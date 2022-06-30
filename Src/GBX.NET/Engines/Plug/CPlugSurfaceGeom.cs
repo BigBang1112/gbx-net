@@ -56,13 +56,13 @@ public class CPlugSurfaceGeom : CPlugSurface
     [Chunk(0x0900F004)]
     public class Chunk0900F004 : Chunk<CPlugSurfaceGeom>
     {
-        public override void ReadWrite(CPlugSurfaceGeom n, GameBoxReaderWriter rw)
+        public override void Read(CPlugSurfaceGeom n, GameBoxReader r)
         {
-            var u01 = rw.Id();
-            var u02 = rw.Box();
-            var u03 = rw.Int32();
+            var u01 = r.ReadId();
+            var u02 = r.ReadBox();
+            var u03 = r.ReadInt32();
 
-            if (rw.BaseStream is IXorTrickStream cryptedStream)
+            if (r.BaseStream is IXorTrickStream cryptedStream)
             {
                 cryptedStream.InitializeXorTrick(BitConverter.GetBytes(u02.X - u02.X2), 0, 4);
             }
@@ -71,7 +71,7 @@ public class CPlugSurfaceGeom : CPlugSurface
             {
                 case 7:
                     // SurfMesh
-                    var u04 = rw.Int32();
+                    var u04 = r.ReadInt32();
 
                     switch (u04)
                     {
@@ -79,21 +79,21 @@ public class CPlugSurfaceGeom : CPlugSurface
                         case 2:
                         case 3:
                             // Array of Vec3
-                            rw.Reader!.ReadArray<Vec3>();
+                            r.ReadArray<Vec3>();
                             // Array of STriangle
-                            rw.Reader.ReadArray(r => r.ReadBytes(32));
+                            r.ReadArray(r => r.ReadBytes(32));
 
                             // SMeshOctreeCell (GmOctree)
-                            var type = rw.Int32();
+                            var type = r.ReadInt32();
 
                             switch (type)
                             {
                                 case 1:
-                                    uint version = rw.UInt32();
-                                    uint size = rw.UInt32();
+                                    uint version = r.ReadUInt32();
+                                    uint size = r.ReadUInt32();
                                     break;
                                 case 3:
-                                    rw.Reader.ReadArray(r => r.ReadBytes(32));
+                                    r.ReadArray(r => r.ReadBytes(32));
                                     break;
                                 default:
                                     throw new NotImplementedException();
@@ -109,7 +109,7 @@ public class CPlugSurfaceGeom : CPlugSurface
                     throw new NotImplementedException();
             }
 
-            rw.UInt16();
+            r.ReadUInt16();
         }
     }
 

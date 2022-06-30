@@ -278,13 +278,10 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     [Chunk(0x0304E023)]
     public class Chunk0304E023 : Chunk<CGameCtnBlockInfo>
     {
-        public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void Read(CGameCtnBlockInfo n, GameBoxReader r, ILogger? logger)
         {
-            if (rw.Mode == GameBoxReaderWriterMode.Read)
-            {
-                n.VariantBaseGround = Parse<CGameCtnBlockInfoVariantGround>(rw.Reader!, 0x0315C000, progress: null, logger);
-                n.VariantBaseAir = Parse<CGameCtnBlockInfoVariantAir>(rw.Reader!, 0x0315D000, progress: null, logger);
-            }
+            n.VariantBaseGround = Parse<CGameCtnBlockInfoVariantGround>(r, 0x0315C000, progress: null, logger);
+            n.VariantBaseAir = Parse<CGameCtnBlockInfoVariantAir>(r, 0x0315D000, progress: null, logger);
         }
     }
 

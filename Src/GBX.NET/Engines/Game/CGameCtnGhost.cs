@@ -708,9 +708,9 @@ public partial class CGameCtnGhost : CGameGhost
 
             rw.UInt32(ref U01);
 
-            if (rw.Mode == GameBoxReaderWriterMode.Read)
+            if (rw.Reader is not null)
             {
-                var r = rw.Reader!;
+                var r = rw.Reader;
 
                 var controlNames = r.ReadArray(r1 => r1.ReadId());
 
@@ -735,9 +735,10 @@ public partial class CGameCtnGhost : CGameGhost
                     };
                 }
             }
-            else if (rw.Mode == GameBoxReaderWriterMode.Write)
+            
+            if (rw.Writer is not null)
             {
-                var w = rw.Writer!;
+                var w = rw.Writer;
 
                 var controlNames = new List<string>();
 
@@ -748,8 +749,7 @@ public partial class CGameCtnGhost : CGameGhost
                             controlNames.Add(entry.Name);
                 }
 
-                w.WriteList(controlNames,
-                    (x, w1) => w1.WriteId(x));
+                w.WriteList(controlNames, (x, w) => w.WriteId(x));
 
                 w.Write(n.ControlEntries?.Length ?? 0);
                 w.Write(U02);
@@ -758,7 +758,7 @@ public partial class CGameCtnGhost : CGameGhost
                 {
                     foreach (var entry in n.ControlEntries)
                     {
-                        w.Write(Convert.ToInt32(entry.Time.TotalMilliseconds + 100000));
+                        w.Write(entry.Time.TotalMilliseconds + 100000);
                         w.Write((byte)controlNames.IndexOf(entry.Name));
                         w.Write(entry.Data);
                     }

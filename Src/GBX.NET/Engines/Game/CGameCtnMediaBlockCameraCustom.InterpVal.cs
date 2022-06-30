@@ -68,7 +68,7 @@ public partial class CGameCtnMediaBlockCameraCustom
 
             (t as IReadableWritable).ReadWrite(rw, version);
 
-            if (rw.Mode == GameBoxReaderWriterMode.Read)
+            if (rw.Reader is not null) // I don't understand this xd
             {
                 interpVal = t;
             }

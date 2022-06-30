@@ -150,7 +150,7 @@ public partial class CGameGhost : CMwNod
             CompressedSize = rw.Int32(CompressedSize);
             Data = rw.Bytes(Data, CompressedSize)!;
 
-            if (rw.Mode == GameBoxReaderWriterMode.Read)
+            if (rw.Reader is not null)
             {
                 n.sampleData = Task.Run(() =>
                 {

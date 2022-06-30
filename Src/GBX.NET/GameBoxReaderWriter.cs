@@ -8,31 +8,14 @@ namespace GBX.NET;
 public partial class GameBoxReaderWriter
 {
     /// <summary>
-    /// Reader component of the reader-writer. This will be null if <see cref="Mode"/> is <see cref="GameBoxReaderWriterMode.Write"/>.
+    /// Reader component of the reader-writer.
     /// </summary>
     public GameBoxReader? Reader { get; }
 
     /// <summary>
-    /// Writer component of the reader-writer. This will be null if <see cref="Mode"/> is <see cref="GameBoxReaderWriterMode.Read"/>.
+    /// Writer component of the reader-writer.
     /// </summary>
     public GameBoxWriter? Writer { get; }
-
-    public Stream BaseStream => Reader?.BaseStream ?? Writer?.BaseStream ?? throw new ThisShouldNotHappenException();
-
-    /// <summary>
-    /// Mode of the reader-writer.
-    /// </summary>
-    public GameBoxReaderWriterMode Mode
-    {
-        get
-        {
-            if (Reader is not null)
-                return GameBoxReaderWriterMode.Read;
-            if (Writer is not null)
-                return GameBoxReaderWriterMode.Write;
-            throw new ThisShouldNotHappenException();
-        }
-    }
 
     /// <summary>
     /// Constructs a reader-writer in reader mode.
@@ -47,6 +30,17 @@ public partial class GameBoxReaderWriter
     public GameBoxReaderWriter(GameBoxWriter writer) => Writer = writer;
 
     /// <summary>
+    /// Constructs a reader-writer in reader and writer mode at the same time.
+    /// </summary>
+    /// <param name="reader">Reader to use.</param>
+    /// <param name="writer">Writer to use.</param>
+    public GameBoxReaderWriter(GameBoxReader reader, GameBoxWriter writer)
+    {
+        Reader = reader;
+        Writer = writer;
+    }
+
+    /// <summary>
     /// Reads or writes a <see cref="bool"/>.
     /// </summary>
     /// <param name="variable">Variable to write. Ignored in read mode.</param>
@@ -57,7 +51,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public bool Boolean(bool variable = default, bool asByte = false)
     {
-        if (Reader is not null) return Reader.ReadBoolean(asByte);
+        if (Reader is not null) variable = Reader.ReadBoolean(asByte);
         if (Writer is not null) Writer.Write(variable, asByte);
         return variable;
     }
@@ -74,7 +68,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public bool? Boolean(bool? variable, bool defaultValue = default, bool asByte = false)
     {
-        if (Reader is not null) return Reader.ReadBoolean(asByte);
+        if (Reader is not null) variable = Reader.ReadBoolean(asByte);
         if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue), asByte);
         return variable;
     }
@@ -116,7 +110,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public byte Byte(byte variable = default)
     {
-        if (Reader is not null) return Reader.ReadByte();
+        if (Reader is not null) variable = Reader.ReadByte();
         if (Writer is not null) Writer.Write(variable);
         return variable;
     }
@@ -132,7 +126,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public byte? Byte(byte? variable, byte defaultValue = default)
     {
-        if (Reader is not null) return Reader.ReadByte();
+        if (Reader is not null) variable = Reader.ReadByte();
         if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
         return variable;
     }
@@ -224,7 +218,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public short Int16(short variable = default)
     {
-        if (Reader is not null) return Reader.ReadInt16();
+        if (Reader is not null) variable = Reader.ReadInt16();
         if (Writer is not null) Writer.Write(variable);
         return variable;
     }
@@ -240,7 +234,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public short? Int16(short? variable, short defaultValue = default)
     {
-        if (Reader is not null) return Reader.ReadInt16();
+        if (Reader is not null) variable = Reader.ReadInt16();
         if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
         return variable;
     }
@@ -274,7 +268,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public int Int32(int variable = default)
     {
-        if (Reader is not null) return Reader.ReadInt32();
+        if (Reader is not null) variable = Reader.ReadInt32();
         if (Writer is not null) Writer.Write(variable);
         return variable;
     }
@@ -290,7 +284,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public int? Int32(int? variable, int defaultValue = default)
     {
-        if (Reader is not null) return Reader.ReadInt32();
+        if (Reader is not null) variable = Reader.ReadInt32();
         if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
         return variable;
     }
@@ -324,7 +318,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public long Int64(long variable = default)
     {
-        if (Reader is not null) return Reader.ReadInt64();
+        if (Reader is not null) variable = Reader.ReadInt64();
         if (Writer is not null) Writer.Write(variable);
         return variable;
     }
@@ -340,7 +334,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public long? Int64(long? variable, long defaultValue = default)
     {
-        if (Reader is not null) return Reader.ReadInt64();
+        if (Reader is not null) variable = Reader.ReadInt64();
         if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
         return variable;
     }
@@ -374,7 +368,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public ushort UInt16(ushort variable = default)
     {
-        if (Reader is not null) return Reader.ReadUInt16();
+        if (Reader is not null) variable = Reader.ReadUInt16();
         if (Writer is not null) Writer.Write(variable);
         return variable;
     }
@@ -390,7 +384,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public ushort? UInt16(ushort? variable, ushort defaultValue = default)
     {
-        if (Reader is not null) return Reader.ReadUInt16();
+        if (Reader is not null) variable = Reader.ReadUInt16();
         if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
         return variable;
     }
@@ -424,7 +418,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public uint UInt32(uint variable = default)
     {
-        if (Reader is not null) return Reader.ReadUInt32();
+        if (Reader is not null) variable = Reader.ReadUInt32();
         if (Writer is not null) Writer.Write(variable);
         return variable;
     }
@@ -440,7 +434,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public uint? UInt32(uint? variable, uint defaultValue = default)
     {
-        if (Reader is not null) return Reader.ReadUInt32();
+        if (Reader is not null) variable = Reader.ReadUInt32();
         if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
         return variable;
     }
@@ -474,7 +468,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public ulong UInt64(ulong variable = default)
     {
-        if (Reader is not null) return Reader.ReadUInt64();
+        if (Reader is not null) variable = Reader.ReadUInt64();
         if (Writer is not null) Writer.Write(variable);
         return variable;
     }
@@ -490,7 +484,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public ulong? UInt64(ulong? variable, ulong defaultValue = default)
     {
-        if (Reader is not null) return Reader.ReadUInt64();
+        if (Reader is not null) variable = Reader.ReadUInt64();
         if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
         return variable;
     }
@@ -524,7 +518,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public float Single(float variable = default)
     {
-        if (Reader is not null) return Reader.ReadSingle();
+        if (Reader is not null) variable = Reader.ReadSingle();
         if (Writer is not null) Writer.Write(variable);
         return variable;
     }
@@ -540,7 +534,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public float? Single(float? variable, float defaultValue = default)
     {
-        if (Reader is not null) return Reader.ReadSingle();
+        if (Reader is not null) variable = Reader.ReadSingle();
         if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
         return variable;
     }
@@ -575,7 +569,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public BigInteger BigInt(BigInteger variable, int byteLength)
     {
-        if (Reader is not null) return Reader.ReadBigInt(byteLength);
+        if (Reader is not null) variable = Reader.ReadBigInt(byteLength);
         if (Writer is not null) Writer.WriteBigInt(variable);
         return variable;
     }
@@ -592,7 +586,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public BigInteger? BigInt(BigInteger? variable, int byteLength, BigInteger defaultValue = default)
     {
-        if (Reader is not null) return Reader.ReadBigInt(byteLength);
+        if (Reader is not null) variable = Reader.ReadBigInt(byteLength);
         if (Writer is not null) Writer.WriteBigInt(variable.GetValueOrDefault(defaultValue));
         return variable;
     }
@@ -668,7 +662,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Int2 Int2(Int2 variable = default)
     {
-        if (Reader is not null) return Reader.ReadInt2();
+        if (Reader is not null) variable = Reader.ReadInt2();
         if (Writer is not null) Writer.Write(variable);
         return variable;
     }
@@ -684,7 +678,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Int2? Int2(Int2? variable = default, Int2 defaultValue = default)
     {
-        if (Reader is not null) return Reader.ReadInt2();
+        if (Reader is not null) variable = Reader.ReadInt2();
         if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
         return variable;
     }
@@ -718,7 +712,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Int3 Int3(Int3 variable = default)
     {
-        if (Reader is not null) return Reader.ReadInt3();
+        if (Reader is not null) variable = Reader.ReadInt3();
         if (Writer is not null) Writer.Write(variable);
         return variable;
     }
@@ -734,7 +728,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Int3? Int3(Int3? variable, Int3 defaultValue = default)
     {
-        if (Reader is not null) return Reader.ReadInt3();
+        if (Reader is not null) variable = Reader.ReadInt3();
         if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
         return variable;
     }
@@ -768,7 +762,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Byte3 Byte3(Byte3 variable = default)
     {
-        if (Reader is not null) return Reader.ReadByte3();
+        if (Reader is not null) variable = Reader.ReadByte3();
         if (Writer is not null) Writer.Write(variable);
         return variable;
     }
@@ -784,7 +778,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Byte3? Byte3(Byte3? variable, Byte3 defaultValue = default)
     {
-        if (Reader is not null) return Reader.ReadByte3();
+        if (Reader is not null) variable = Reader.ReadByte3();
         if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
         return variable;
     }
@@ -818,7 +812,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Vec2 Vec2(Vec2 variable = default)
     {
-        if (Reader is not null) return Reader.ReadVec2();
+        if (Reader is not null) variable = Reader.ReadVec2();
         if (Writer is not null) Writer.Write(variable);
         return variable;
     }
@@ -834,7 +828,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Vec2? Vec2(Vec2? variable, Vec2 defaultValue = default)
     {
-        if (Reader is not null) return Reader.ReadVec2();
+        if (Reader is not null) variable = Reader.ReadVec2();
         if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
         return variable;
     }
@@ -868,7 +862,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Vec3 Vec3(Vec3 variable = default)
     {
-        if (Reader is not null) return Reader.ReadVec3();
+        if (Reader is not null) variable = Reader.ReadVec3();
         if (Writer is not null) Writer.Write(variable);
         return variable;
     }
@@ -884,7 +878,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Vec3? Vec3(Vec3? variable, Vec3 defaultValue = default)
     {
-        if (Reader is not null) return Reader.ReadVec3();
+        if (Reader is not null) variable = Reader.ReadVec3();
         if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
         return variable;
     }
@@ -918,7 +912,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Vec4 Vec4(Vec4 variable = default)
     {
-        if (Reader is not null) return Reader.ReadVec4();
+        if (Reader is not null) variable = Reader.ReadVec4();
         if (Writer is not null) Writer.Write(variable);
         return variable;
     }
@@ -934,7 +928,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Vec4? Vec4(Vec4? variable, Vec4 defaultValue = default)
     {
-        if (Reader is not null) return Reader.ReadVec4();
+        if (Reader is not null) variable = Reader.ReadVec4();
         if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
         return variable;
     }
@@ -968,7 +962,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Rect Rect(Rect variable = default)
     {
-        if (Reader is not null) return Reader.ReadRect();
+        if (Reader is not null) variable = Reader.ReadRect();
         if (Writer is not null) Writer.Write(variable);
         return variable;
     }
@@ -984,7 +978,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Rect? Rect(Rect? variable, Rect defaultValue = default)
     {
-        if (Reader is not null) return Reader.ReadRect();
+        if (Reader is not null) variable = Reader.ReadRect();
         if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
         return variable;
     }
@@ -1018,7 +1012,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Box Box(Box variable = default)
     {
-        if (Reader is not null) return Reader.ReadBox();
+        if (Reader is not null) variable = Reader.ReadBox();
         if (Writer is not null) Writer.Write(variable);
         return variable;
     }
@@ -1034,7 +1028,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Box? Box(Box? variable, Box defaultValue = default)
     {
-        if (Reader is not null) return Reader.ReadBox();
+        if (Reader is not null) variable = Reader.ReadBox();
         if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
         return variable;
     }
@@ -1068,7 +1062,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Quat Quat(Quat variable = default)
     {
-        if (Reader is not null) return Reader.ReadQuat();
+        if (Reader is not null) variable = Reader.ReadQuat();
         if (Writer is not null) Writer.Write(variable);
         return variable;
     }
@@ -1084,7 +1078,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Quat? Quat(Quat? variable, Quat defaultValue = default)
     {
-        if (Reader is not null) return Reader.ReadQuat();
+        if (Reader is not null) variable = Reader.ReadQuat();
         if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
         return variable;
     }
@@ -1118,7 +1112,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Iso4 Iso4(Iso4 variable = default)
     {
-        if (Reader is not null) return Reader.ReadIso4();
+        if (Reader is not null) variable = Reader.ReadIso4();
         if (Writer is not null) Writer.Write(variable);
         return variable;
     }
@@ -1134,7 +1128,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Iso4? Iso4(Iso4? variable, Iso4 defaultValue = default)
     {
-        if (Reader is not null) return Reader.ReadIso4();
+        if (Reader is not null) variable = Reader.ReadIso4();
         if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
         return variable;
     }
@@ -1168,7 +1162,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public TimeSpan? TimeOfDay(TimeSpan? variable = default)
     {
-        if (Reader is not null) return Reader.ReadTimeOfDay();
+        if (Reader is not null) variable = Reader.ReadTimeOfDay();
         if (Writer is not null) Writer.WriteTimeOfDay(variable);
         return variable;
     }
@@ -1196,7 +1190,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     public FileRef? FileRef(FileRef? variable = default)
     {
-        if (Reader is not null) return Reader.ReadFileRef();
+        if (Reader is not null) variable = Reader.ReadFileRef();
         if (Writer is not null) Writer.Write(variable ?? NET.FileRef.Default);
         return variable;
     }
@@ -1220,7 +1214,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public string? Id(string? variable = default, bool tryParseToInt32 = false)
     {
-        if (Reader is not null) return Reader.ReadId();
+        if (Reader is not null) variable = Reader.ReadId();
         if (Writer is not null) Writer.WriteId(variable ?? "", tryParseToInt32);
         return variable;
     }
@@ -1242,7 +1236,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public Id? Collection(Id? variable = default)
     {
-        if (Reader is not null) return Reader.ReadId();
+        if (Reader is not null) variable = Reader.ReadId();
         if (Writer is not null) Writer.WriteId(variable ?? -1);
         return variable;
     }
@@ -1264,7 +1258,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
     public Ident? Ident(Ident? variable = default)
     {
-        if (Reader is not null) return Reader.ReadIdent();
+        if (Reader is not null) variable = Reader.ReadIdent();
         if (Writer is not null) Writer.Write(variable);
         return variable;
     }
@@ -1283,11 +1277,11 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public void EnumByte<T>(ref T variable) where T : struct, Enum
     {
-        var v = Mode == GameBoxReaderWriterMode.Write ? CastTo<byte>.From(variable) : default;
+        var v = Writer is not null ? CastTo<byte>.From(variable) : default;
 
         Byte(ref v);
 
-        if (Mode == GameBoxReaderWriterMode.Read)
+        if (Reader is not null)
         {
             variable = CastTo<T>.From(v);
         }
@@ -1298,9 +1292,9 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public void EnumByte<T>(ref T? variable, T defaultValue = default) where T : struct, Enum
     {
-        var v = Mode == GameBoxReaderWriterMode.Write ? CastTo<byte?>.From(variable) : default;
+        var v = Writer is not null ? CastTo<byte?>.From(variable) : default;
 
-        if (Mode == GameBoxReaderWriterMode.Write)
+        if (Writer is not null)
         {
             if (defaultValue.Equals(default(T)))
             {
@@ -1311,7 +1305,7 @@ public partial class GameBoxReaderWriter
             Byte(ref v, CastTo<byte>.From(defaultValue));
         }
 
-        if (Mode == GameBoxReaderWriterMode.Read)
+        if (Reader is not null)
         {
             Byte(ref v);
             variable = CastTo<T>.From(v);
@@ -1323,11 +1317,11 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public void EnumInt32<T>(ref T variable) where T : struct, Enum
     {
-        var v = Mode == GameBoxReaderWriterMode.Write ? CastTo<int>.From(variable) : default;
+        var v = Writer is not null ? CastTo<int>.From(variable) : default;
 
         Int32(ref v);
 
-        if (Mode == GameBoxReaderWriterMode.Read)
+        if (Reader is not null)
         {
             variable = CastTo<T>.From(v);
         }
@@ -1338,9 +1332,9 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public void EnumInt32<T>(ref T? variable, T defaultValue = default) where T : struct, Enum
     {
-        var v = Mode == GameBoxReaderWriterMode.Write ? CastTo<int?>.From(variable) : default;
+        var v = Writer is not null ? CastTo<int?>.From(variable) : default;
 
-        if (Mode == GameBoxReaderWriterMode.Write)
+        if (Writer is not null)
         {
             if (defaultValue.Equals(default(T)))
             {
@@ -1351,7 +1345,7 @@ public partial class GameBoxReaderWriter
             Int32(ref v, CastTo<int>.From(defaultValue));
         }
 
-        if (Mode == GameBoxReaderWriterMode.Read)
+        if (Reader is not null)
         {
             Int32(ref v);
             variable = CastTo<T>.From(v);
@@ -1365,7 +1359,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     public string? String(string? variable = default, StringLengthPrefix readPrefix = default)
     {
-        if (Reader is not null) return Reader.ReadString(readPrefix);
+        if (Reader is not null) variable = Reader.ReadString(readPrefix);
         if (Writer is not null) Writer.Write(variable, readPrefix);
         return variable;
     }
@@ -1396,7 +1390,7 @@ public partial class GameBoxReaderWriter
     {
         if (count is null)
         {
-            if (Reader is not null) return Reader.ReadBytes();
+            if (Reader is not null) variable = Reader.ReadBytes();
             if (Writer is not null)
             {
                 if (variable is null)
@@ -1414,12 +1408,14 @@ public partial class GameBoxReaderWriter
 
         var c = count.Value;
 
-        if (Reader is not null) return Reader.ReadBytes(c);
+        if (Reader is not null) variable = Reader.ReadBytes(c);
         if (Writer is not null)
         {
             if (c < 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(count), "Count is negative");
-
+            }
+            
             Writer.Write(variable ?? new byte[c], 0, c);
 
             return variable;
@@ -1451,12 +1447,12 @@ public partial class GameBoxReaderWriter
     {
         if (count is null)
         {
-            if (Reader is not null) return Reader.ReadArray<T>();
+            if (Reader is not null) array = Reader.ReadArray<T>();
             if (Writer is not null) Writer.WriteArray(array);
             return array;
         }
 
-        if (Reader is not null) return Reader.ReadArray<T>(count.Value);
+        if (Reader is not null) array = Reader.ReadArray<T>(count.Value);
         if (Writer is not null && array is not null) Writer.WriteArray_NoPrefix(array);
         return array;
     }
@@ -1480,7 +1476,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     public T[]? Array<T>(T[]? array, Func<int, T> forLoopRead, Action<T> forLoopWrite)
     {
-        if (Reader is not null) return Reader.ReadArray(forLoopRead);
+        if (Reader is not null) array = Reader.ReadArray(forLoopRead);
         if (Writer is not null) Writer.WriteArray(array, forLoopWrite);
         return array;
     }
@@ -1502,7 +1498,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     public T[]? Array<T>(T[]? array, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
     {
-        if (Reader is not null) return Reader.ReadArray(forLoopRead);
+        if (Reader is not null) array = Reader.ReadArray(forLoopRead);
         if (Writer is not null) Writer.WriteArray(array, forLoopWrite);
         return array;
     }
@@ -1524,7 +1520,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     public T[]? Array<T>(T[]? array, Func<T> forLoopRead, Action<T> forLoopWrite)
     {
-        if (Reader is not null) return Reader.ReadArray(forLoopRead);
+        if (Reader is not null) array = Reader.ReadArray(forLoopRead);
         if (Writer is not null) Writer.WriteArray(array, forLoopWrite);
         return array;
     }
@@ -1546,7 +1542,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     public T[]? Array<T>(T[]? array, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
     {
-        if (Reader is not null) return Reader.ReadArray(forLoopRead);
+        if (Reader is not null) array = Reader.ReadArray(forLoopRead);
         if (Writer is not null) Writer.WriteArray(array, forLoopWrite);
         return array;
     }
@@ -1585,8 +1581,6 @@ public partial class GameBoxReaderWriter
                 forLoopReadWrite(this, t);
                 array[i] = t;
             }
-
-            return array;
         }
 
         if (Writer is not null)
@@ -1676,7 +1670,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     public IList<T>? List<T>(IList<T>? list, Func<int, T> forLoopRead, Action<T> forLoopWrite)
     {
-        if (Reader is not null) return Reader.ReadList(forLoopRead);
+        if (Reader is not null) list = Reader.ReadList(forLoopRead);
         if (Writer is not null) Writer.WriteList(list, forLoopWrite);
         return list;
     }
@@ -1698,7 +1692,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     public IList<T>? List<T>(IList<T>? list, Func<int, GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
     {
-        if (Reader is not null) return Reader.ReadList(forLoopRead);
+        if (Reader is not null) list = Reader.ReadList(forLoopRead);
         if (Writer is not null) Writer.WriteList(list, forLoopWrite);
         return list;
     }
@@ -1720,7 +1714,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     public IList<T>? List<T>(IList<T>? list, Func<T> forLoopRead, Action<T> forLoopWrite)
     {
-        if (Reader is not null) return Reader.ReadList(forLoopRead);
+        if (Reader is not null) list = Reader.ReadList(forLoopRead);
         if (Writer is not null) Writer.WriteList(list, forLoopWrite);
         return list;
     }
@@ -1742,7 +1736,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     public IList<T>? List<T>(IList<T>? list, Func<GameBoxReader, T> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
     {
-        if (Reader is not null) return Reader.ReadList(forLoopRead);
+        if (Reader is not null) list = Reader.ReadList(forLoopRead);
         if (Writer is not null) Writer.WriteList(list, forLoopWrite);
         return list;
     }
@@ -1781,8 +1775,6 @@ public partial class GameBoxReaderWriter
                 forLoopReadWrite(this, t);
                 list.Add(t);
             }
-
-            return list;
         }
 
         if (Writer is not null)
@@ -1816,7 +1808,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     public async Task<IList<T>?> ListAsync<T>(IList<T>? list, Func<GameBoxReader, Task<T>> forLoopRead, Action<T, GameBoxWriter> forLoopWrite)
     {
-        if (Reader is not null) return await Reader.ReadListAsync(forLoopRead);
+        if (Reader is not null) list = await Reader.ReadListAsync(forLoopRead);
         if (Writer is not null) Writer.WriteList(list, forLoopWrite);
         return list;
     }
@@ -1838,9 +1830,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     public IList<FileRef>? ListFileRef(IList<FileRef>? list = default)
     {
-        return List(list,
-            r => r.ReadFileRef(),
-            (x, w) => w.Write(x));
+        return List(list, r => r.ReadFileRef(), (x, w) => w.Write(x));
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1859,9 +1849,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
     public IList<T?>? ListNode<T>(IList<T?>? list = default) where T : Node
     {
-        return List(list,
-            r => r.ReadNodeRef<T>(),
-            (x, w) => w.Write(x));
+        return List(list, r => r.ReadNodeRef<T>(), (x, w) => w.Write(x));
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1894,7 +1882,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
     public IDictionary<TKey, TValue>? Dictionary<TKey, TValue>(IDictionary<TKey, TValue>? dictionary = default, bool overrideKey = false) where TKey : notnull
     {
-        if (Reader is not null) return Reader.ReadDictionary<TKey, TValue>(overrideKey);
+        if (Reader is not null) dictionary = Reader.ReadDictionary<TKey, TValue>(overrideKey);
         if (Writer is not null) Writer.WriteDictionary(dictionary);
         return dictionary;
     }
@@ -1919,7 +1907,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
     public IDictionary<TKey, TValue?>? DictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary = default, bool overrideKey = false) where TKey : notnull where TValue : Node
     {
-        if (Reader is not null) return Reader.ReadDictionaryNode<TKey, TValue>(overrideKey);
+        if (Reader is not null) dictionary = Reader.ReadDictionaryNode<TKey, TValue>(overrideKey);
         if (Writer is not null) Writer.WriteDictionaryNode(dictionary);
         return dictionary;
     }
@@ -1942,10 +1930,627 @@ public partial class GameBoxReaderWriter
         CancellationToken cancellationToken = default)
         where TKey : notnull where TValue : Node
     {
-        if (Reader is not null) return await Reader.ReadDictionaryNodeAsync<TKey, TValue>(overrideKey, cancellationToken);
+        if (Reader is not null) dictionary = await Reader.ReadDictionaryNodeAsync<TKey, TValue>(overrideKey, cancellationToken);
         if (Writer is not null) Writer.WriteDictionaryNode(dictionary);
         return dictionary;
     }
+    
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
+    public Node? NodeRef(Node? variable = default)
+    {
+        if (Reader is not null) variable = Reader.ReadNodeRef();
+        if (Writer is not null) Writer.Write(variable);
+        return variable;
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
+    public void NodeRef(ref Node? variable) => variable = NodeRef(variable);
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
+    public Node? NodeRef(Node? variable, ref int? nodeRefIndex)
+    {
+        if (Reader is not null)
+        {
+            variable = Reader.ReadNodeRef(out int index);
+            nodeRefIndex = index < 0 ? null : index;
+        }
+
+        if (Writer is not null)
+        {
+            Writer.Write(variable);
+        }
+
+        return variable;
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
+    public void NodeRef(ref Node? variable, ref int? nodeRefIndex)
+    {
+        variable = NodeRef(variable, ref nodeRefIndex);
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
+    public T? NodeRef<T>(T? variable = default) where T : Node
+    {
+        if (Reader is not null) variable = Reader.ReadNodeRef<T>();
+        if (Writer is not null) Writer.Write(variable);
+        return variable;
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
+    public void NodeRef<T>(ref T? variable, bool disallowOverride = false) where T : Node
+    {
+        if (disallowOverride)
+        {
+            var node = NodeRef(variable);
+            variable ??= node;
+        }
+        else
+        {
+            variable = NodeRef(variable);
+        }
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
+    public T? NodeRef<T>(T? variable, ref int? nodeRefIndex) where T : Node
+    {
+        if (Reader is not null)
+        {
+            variable = Reader.ReadNodeRef<T>(out int index);
+            nodeRefIndex = index < 0 ? null : index;
+        }
+
+        if (Writer is not null)
+        {
+            Writer.Write(variable);
+        }
+
+        return variable;
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
+    public void NodeRef<T>(ref T? variable, ref int? nodeRefIndex) where T : Node
+    {
+        variable = NodeRef(variable, ref nodeRefIndex);
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
+    public async Task<Node?> NodeRefAsync(Node? variable = default, CancellationToken cancellationToken = default)
+    {
+        if (Reader is not null) variable = await Reader.ReadNodeRefAsync(cancellationToken);
+        if (Writer is not null) Writer.Write(variable);
+        return variable;
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
+    public async Task<T?> NodeRefAsync<T>(T? variable = default, CancellationToken cancellationToken = default) where T : Node
+    {
+        if (Reader is not null) variable = await Reader.ReadNodeRefAsync<T>(cancellationToken);
+        if (Writer is not null) Writer.Write(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as a <see cref="TmEssentials.TimeInt32"/> of milliseconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TmEssentials.TimeInt32"/> using <see cref="TimeInt32.FromMilliseconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public TimeInt32 TimeInt32(TimeInt32 variable = default)
+    {
+        if (Reader is not null) variable = Reader.ReadTimeInt32();
+        if (Writer is not null) Writer.WriteTimeInt32(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="int"/> as a nullable <see cref="TmEssentials.TimeInt32"/> of milliseconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TmEssentials.TimeInt32"/> using <see cref="TimeInt32.FromMilliseconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public TimeInt32? TimeInt32(TimeInt32? variable, TimeInt32 defaultValue = default)
+    {
+        if (Reader is not null) variable = Reader.ReadTimeInt32();
+        if (Writer is not null) Writer.WriteTimeInt32(variable ?? defaultValue);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as a <see cref="TmEssentials.TimeInt32"/> of milliseconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TmEssentials.TimeInt32"/> using <see cref="TimeInt32.FromMilliseconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void TimeInt32(ref TimeInt32 variable) => variable = TimeInt32(variable);
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="int"/> as a nullable <see cref="TmEssentials.TimeInt32"/> of milliseconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TmEssentials.TimeInt32"/> using <see cref="TimeInt32.FromMilliseconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void TimeInt32(ref TimeInt32? variable, TimeInt32 defaultValue = default) => variable = TimeInt32(variable, defaultValue);
+
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as a <see cref="TmEssentials.TimeInt32"/> of milliseconds. If the read value is -1, null is returned. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TmEssentials.TimeInt32"/> using <see cref="TimeInt32.FromMilliseconds(float)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned. If the read value is -1, null is returned.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public TimeInt32? TimeInt32Nullable(TimeInt32? variable = default)
+    {
+        if (Reader is not null) variable = Reader.ReadTimeInt32Nullable();
+        if (Writer is not null) Writer.WriteTimeInt32Nullable(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as a <see cref="TmEssentials.TimeInt32"/> of milliseconds through reference. If the read value is -1, <paramref name="variable"/> is set to null. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TmEssentials.TimeInt32"/> using <see cref="TimeInt32.FromMilliseconds(float)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void TimeInt32Nullable(ref TimeInt32? variable) => variable = TimeInt32Nullable(variable);
+
+    /// <summary>
+    /// Reads or writes a <see cref="float"/> as a <see cref="TmEssentials.TimeSingle"/> of seconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TmEssentials.TimeSingle"/> using <see cref="TimeSingle.FromSeconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public TimeSingle TimeSingle(TimeSingle variable = default)
+    {
+        if (Reader is not null) variable = Reader.ReadTimeSingle();
+        if (Writer is not null) Writer.WriteTimeSingle(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="float"/> as a nullable <see cref="TmEssentials.TimeSingle"/> of seconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TmEssentials.TimeSingle"/> using <see cref="TimeSingle.FromSeconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public TimeSingle? TimeSingle(TimeSingle? variable, TimeSingle defaultValue = default)
+    {
+        if (Reader is not null) variable = Reader.ReadTimeSingle();
+        if (Writer is not null) Writer.WriteTimeSingle(variable ?? defaultValue);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes a <see cref="float"/> as a <see cref="TmEssentials.TimeSingle"/> of seconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TmEssentials.TimeSingle"/> using <see cref="TimeSingle.FromSeconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void TimeSingle(ref TimeSingle variable) => variable = TimeSingle(variable);
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="float"/> as a nullable <see cref="TmEssentials.TimeSingle"/> of seconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TmEssentials.TimeSingle"/> using <see cref="TimeSingle.FromSeconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void TimeSingle(ref TimeSingle? variable, TimeSingle defaultValue = default) => variable = TimeSingle(variable, defaultValue);
+
+    /// <summary>
+    /// Reads or writes an <see cref="float"/> as a <see cref="TmEssentials.TimeSingle"/> of seconds. If the read value is -1, null is returned. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TmEssentials.TimeSingle"/> using <see cref="TimeSingle.FromSeconds(float)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned. If the read value is -1, null is returned.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public TimeSingle? TimeSingleNullable(TimeSingle? variable = default)
+    {
+        if (Reader is not null) variable = Reader.ReadTimeSingleNullable();
+        if (Writer is not null) Writer.WriteTimeSingleNullable(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes an <see cref="float"/> as a <see cref="TmEssentials.TimeSingle"/> of seconds through reference. If the read value is -1, <paramref name="variable"/> is set to null. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TmEssentials.TimeSingle"/> using <see cref="TimeSingle.FromSeconds(float)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void TimeSingleNullable(ref TimeSingle? variable) => variable = TimeSingleNullable(variable);
+
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as an <see cref="TmEssentials.TimeInt32"/> of seconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TmEssentials.TimeInt32"/> using <see cref="TimeInt32.FromSeconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public TimeInt32 Int32_s(TimeInt32 variable = default)
+    {
+        if (Reader is not null) variable = Reader.ReadInt32_s();
+        if (Writer is not null) Writer.WriteInt32_s(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="int"/> as a nullable <see cref="TmEssentials.TimeInt32"/> of seconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TmEssentials.TimeInt32"/> using <see cref="TimeInt32.FromSeconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public TimeInt32? Int32_s(TimeInt32? variable, TimeInt32 defaultValue = default)
+    {
+        if (Reader is not null) variable = Reader.ReadInt32_s();
+        if (Writer is not null) Writer.WriteInt32_s(variable ?? defaultValue);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as a <see cref="TmEssentials.TimeInt32"/> of seconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TmEssentials.TimeInt32"/> using <see cref="TimeInt32.FromSeconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void Int32_s(ref TimeInt32 variable) => variable = Int32_s(variable);
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="int"/> as a nullable <see cref="TmEssentials.TimeInt32"/> of seconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TmEssentials.TimeInt32"/> using <see cref="TimeInt32.FromSeconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void Int32_s(ref TimeInt32? variable, TimeInt32 defaultValue = default) => variable = Int32_s(variable, defaultValue);
+
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as a <see cref="TmEssentials.TimeInt32"/> of milliseconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TmEssentials.TimeInt32"/> using <see cref="TimeInt32.FromMilliseconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    [Obsolete("Prefer using TimeInt32()")]
+    public TimeInt32 Int32_ms(TimeInt32 variable = default)
+    {
+        if (Reader is not null) variable = Reader.ReadInt32_ms();
+        if (Writer is not null) Writer.WriteInt32_ms(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="int"/> as a nullable <see cref="TmEssentials.TimeInt32"/> of milliseconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TmEssentials.TimeInt32"/> using <see cref="TimeInt32.FromMilliseconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    [Obsolete("Prefer using TimeInt32()")]
+    public TimeInt32? Int32_ms(TimeInt32? variable, TimeInt32 defaultValue = default)
+    {
+        if (Reader is not null) variable = Reader.ReadInt32_ms();
+        if (Writer is not null) Writer.WriteInt32_ms(variable ?? defaultValue);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as a <see cref="TmEssentials.TimeInt32"/> of milliseconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TmEssentials.TimeInt32"/> using <see cref="TimeInt32.FromMilliseconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    [Obsolete("Prefer using TimeInt32()")]
+    public void Int32_ms(ref TimeInt32 variable) => variable = Int32_ms(variable);
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="int"/> as a nullable <see cref="TmEssentials.TimeInt32"/> of milliseconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TmEssentials.TimeInt32"/> using <see cref="TimeInt32.FromMilliseconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    [Obsolete("Prefer using TimeInt32()")]
+    public void Int32_ms(ref TimeInt32? variable, TimeInt32 defaultValue = default) => variable = Int32_ms(variable, defaultValue);
+
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as a <see cref="TmEssentials.TimeInt32"/> of seconds. If the read value is -1, null is returned. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TmEssentials.TimeInt32"/> using <see cref="TimeInt32.FromSeconds(float)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned. If the read value is -1, null is returned.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public TimeInt32? Int32_sn(TimeInt32? variable = default)
+    {
+        if (Reader is not null) variable = Reader.ReadInt32_sn();
+        if (Writer is not null) Writer.WriteInt32_sn(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as a <see cref="TmEssentials.TimeInt32"/> of seconds through reference. If the read value is -1, <paramref name="variable"/> is set to null. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TmEssentials.TimeInt32"/> using <see cref="TimeInt32.FromSeconds(float)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void Int32_sn(ref TimeInt32? variable) => variable = Int32_sn(variable);
+
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as a <see cref="TmEssentials.TimeInt32"/> of milliseconds. If the read value is -1, null is returned. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TmEssentials.TimeInt32"/> using <see cref="TimeInt32.FromMilliseconds(float)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned. If the read value is -1, null is returned.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    [Obsolete("Prefer using TimeInt32Nullable()")]
+    public TimeInt32? Int32_msn(TimeInt32? variable = default)
+    {
+        if (Reader is not null) variable = Reader.ReadInt32_msn();
+        if (Writer is not null) Writer.WriteInt32_msn(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes an <see cref="int"/> as a <see cref="TmEssentials.TimeInt32"/> of milliseconds through reference. If the read value is -1, <paramref name="variable"/> is set to null. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="int"/> is read/written but converted to/from <see cref="TmEssentials.TimeInt32"/> using <see cref="TimeInt32.FromMilliseconds(float)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    [Obsolete("Prefer using TimeInt32Nullable()")]
+    public void Int32_msn(ref TimeInt32? variable) => variable = Int32_msn(variable);
+
+    /// <summary>
+    /// Reads or writes a <see cref="float"/> as a <see cref="TmEssentials.TimeSingle"/> of seconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TmEssentials.TimeSingle"/> using <see cref="TimeSingle.FromSeconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    [Obsolete("Prefer using TimeSingle()")]
+    public TimeSingle Single_s(TimeSingle variable = default)
+    {
+        if (Reader is not null) variable = Reader.ReadSingle_s();
+        if (Writer is not null) Writer.WriteSingle_s(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="float"/> as a nullable <see cref="TmEssentials.TimeSingle"/> of seconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TmEssentials.TimeSingle"/> using <see cref="TimeSingle.FromSeconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    [Obsolete("Prefer using TimeSingle()")]
+    public TimeSingle? Single_s(TimeSingle? variable, TimeSingle defaultValue = default)
+    {
+        if (Reader is not null) variable = Reader.ReadSingle_s();
+        if (Writer is not null) Writer.WriteSingle_s(variable ?? defaultValue);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes a <see cref="float"/> as a <see cref="TmEssentials.TimeSingle"/> of seconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TmEssentials.TimeSingle"/> using <see cref="TimeSingle.FromSeconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    [Obsolete("Prefer using TimeSingle()")]
+    public void Single_s(ref TimeSingle variable) => variable = Single_s(variable);
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="float"/> as a nullable <see cref="TmEssentials.TimeSingle"/> of seconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TmEssentials.TimeSingle"/> using <see cref="TimeSingle.FromSeconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    [Obsolete("Prefer using TimeSingle()")]
+    public void Single_s(ref TimeSingle? variable, TimeSingle defaultValue = default) => variable = Single_s(variable, defaultValue);
+
+    /// <summary>
+    /// Reads or writes an <see cref="float"/> as a <see cref="TmEssentials.TimeSingle"/> of milliseconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TmEssentials.TimeSingle"/> using <see cref="TimeSingle.FromMilliseconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public TimeSingle Single_ms(TimeSingle variable = default)
+    {
+        if (Reader is not null) variable = Reader.ReadSingle_ms();
+        if (Writer is not null) Writer.WriteSingle_ms(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="float"/> as a nullable <see cref="TmEssentials.TimeSingle"/> of milliseconds.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TmEssentials.TimeSingle"/> using <see cref="TimeSingle.FromMilliseconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public TimeSingle? Single_ms(TimeSingle? variable, TimeSingle defaultValue = default)
+    {
+        if (Reader is not null) variable = Reader.ReadSingle_ms();
+        if (Writer is not null) Writer.WriteSingle_ms(variable ?? defaultValue);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes an <see cref="float"/> as a <see cref="TmEssentials.TimeSingle"/> of milliseconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TmEssentials.TimeSingle"/> using <see cref="TimeSingle.FromMilliseconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void Single_ms(ref TimeSingle variable) => variable = Single_ms(variable);
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="float"/> as a nullable <see cref="TmEssentials.TimeSingle"/> of milliseconds through reference.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TmEssentials.TimeSingle"/> using <see cref="TimeSingle.FromMilliseconds(float)"/>.</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void Single_ms(ref TimeSingle? variable, TimeSingle defaultValue = default) => variable = Single_ms(variable, defaultValue);
+
+    /// <summary>
+    /// Reads or writes an <see cref="float"/> as a <see cref="TmEssentials.TimeSingle"/> of seconds. If the read value is -1, null is returned. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TmEssentials.TimeSingle"/> using <see cref="TimeSingle.FromSeconds(float)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned. If the read value is -1, null is returned.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    [Obsolete("Prefer using TimeSingleNullable()")]
+    public TimeSingle? Single_sn(TimeSingle? variable = default)
+    {
+        if (Reader is not null) variable = Reader.ReadSingle_sn();
+        if (Writer is not null) Writer.WriteSingle_sn(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes an <see cref="float"/> as a <see cref="TmEssentials.TimeSingle"/> of seconds through reference. If the read value is -1, <paramref name="variable"/> is set to null. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TmEssentials.TimeSingle"/> using <see cref="TimeSingle.FromSeconds(float)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    [Obsolete("Prefer using TimeSingleNullable()")]
+    public void Single_sn(ref TimeSingle? variable) => variable = Single_sn(variable);
+
+    /// <summary>
+    /// Reads or writes an <see cref="float"/> as a <see cref="TmEssentials.TimeSingle"/> of milliseconds. If the read value is -1, null is returned. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TmEssentials.TimeSingle"/> using <see cref="TimeSingle.FromMilliseconds(float)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned. If the read value is -1, null is returned.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public TimeSingle? Single_msn(TimeSingle? variable = default)
+    {
+        if (Reader is not null) variable = Reader.ReadSingle_msn();
+        if (Writer is not null) Writer.WriteSingle_msn(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes an <see cref="float"/> as a <see cref="TmEssentials.TimeSingle"/> of milliseconds through reference. If the read value is -1, <paramref name="variable"/> is set to null. If the written <paramref name="variable"/> is null, -1 value is written.
+    /// </summary>
+    /// <remarks>A regular <see cref="float"/> is read/written but converted to/from <see cref="TmEssentials.TimeSingle"/> using <see cref="TimeSingle.FromMilliseconds(float)"/> (except for -1).</remarks>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void Single_msn(ref TimeSingle? variable) => variable = Single_msn(variable);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -1955,7 +2560,9 @@ public partial class GameBoxReaderWriter
     public void UntilFacade(MemoryStream stream)
     {
         if (stream is null)
+        {
             throw new ArgumentNullException(nameof(stream));
+        }
 
         if (Reader is not null)
         {
@@ -1985,18 +2592,12 @@ public partial class GameBoxReaderWriter
     {
         if (obj is null)
         {
-            switch (Mode)
+            if (Reader is not null)
             {
-                case GameBoxReaderWriterMode.Read:
-                    obj = new();
-                    break;
-                case GameBoxReaderWriterMode.Write:
-                    return;
-                default:
-                    throw new ThisShouldNotHappenException();
+                obj = new();
             }
         }
 
-        obj.ReadWrite(this, version);
+        obj?.ReadWrite(this, version);
     }
 }
