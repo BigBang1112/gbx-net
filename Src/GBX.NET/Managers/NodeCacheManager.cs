@@ -257,6 +257,28 @@ public static class NodeCacheManager
         return null;
     }
 
+    internal static uint GetChunkIdByType(Type chunkType)
+    {
+        return GetChunkIdByType(chunkType, ChunkIdsByType);
+    }
+
+    internal static uint GetChunkIdByType(Type chunkType, IDictionary<Type, uint> chunkIdsByType)
+    {
+        if (chunkIdsByType.TryGetValue(chunkType, out var cachedChunkId))
+        {
+            return cachedChunkId;
+        }
+
+        if (chunkType.DeclaringType is null)
+        {
+            throw new Exception("Wrongly defined chunk class.");
+        }
+
+        CacheChunkTypesIfNotCached(chunkType.DeclaringType);
+
+        return ChunkIdsByType[chunkType];
+    }
+
     internal static uint GetChunkIdByType(Type classType, Type chunkType)
     {
         return GetChunkIdByType(classType, chunkType, ChunkIdsByType);
@@ -268,7 +290,7 @@ public static class NodeCacheManager
         {
             return cachedChunkId;
         }
-
+        
         CacheChunkTypesIfNotCached(classType);
 
         return ChunkIdsByType[chunkType];

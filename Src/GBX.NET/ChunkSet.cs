@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using System.Runtime.Serialization;
 
 namespace GBX.NET;
@@ -25,25 +26,32 @@ public class ChunkSet : SortedSet<Chunk>
 
     public bool Remove<T>() where T : Chunk
     {
-        return RemoveWhere(x => x.Id == typeof(T).GetCustomAttribute<ChunkAttribute>()?.ID) > 0;
+        return RemoveWhere(x => x is T) > 0;
     }
 
     public T Create<T>(byte[] data) where T : Chunk // Improve
     {
-        var chunkId = typeof(T).GetCustomAttribute<ChunkAttribute>()?.ID;
+        var chunkId = NodeCacheManager.GetChunkIdByType(typeof(T));
 
-        var c = this.FirstOrDefault(x => x.Id == chunkId);
-        if (c != null)
+        if (TryGet(chunkId, out var c))
+        {
             return (T)c;
+        }
 
-        T chunk = (T)Activator.CreateInstance(typeof(T))!;
+        var chunk = NodeCacheManager.ChunkConstructors.TryGetValue(chunkId, out var constructor)
+            ? (T)constructor()
+            : (T)Activator.CreateInstance(typeof(T))!;
+
         chunk.Node = Node;
 
         if (chunk is ISkippableChunk s)
         {
             s.Data = data;
-            if (data == null || data.Length == 0)
+
+            if (data is null || data.Length == 0)
+            {
                 s.Discovered = true;
+            }
 
             chunk.OnLoad();
         }
@@ -57,6 +65,7 @@ public class ChunkSet : SortedSet<Chunk>
         }
 
         Add(chunk);
+        
         return chunk;
     }
 
@@ -70,7 +79,11 @@ public class ChunkSet : SortedSet<Chunk>
         return this.FirstOrDefault(x => x.Id == chunkId);
     }
 
+#if NET462_OR_GREATER || NETSTANDARD2_0
     public bool TryGet(uint chunkId, out Chunk? chunk)
+#else
+    public bool TryGet(uint chunkId, [NotNullWhen(true)] out Chunk? chunk)
+#endif
     {
         chunk = Get(chunkId);
         return chunk is not null;
