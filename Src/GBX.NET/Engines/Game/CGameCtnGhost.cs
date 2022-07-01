@@ -178,17 +178,20 @@ public partial class CGameCtnGhost : CGameGhost
         }
     }
 
+    /// <summary>
+    /// Checkpoints driven by the ghost. In some cases, they may not be in order.
+    /// </summary>
     [NodeMember]
     public Checkpoint[]? Checkpoints
     {
         get
         {
-            DiscoverChunk<Chunk0309200B>();
+            DiscoverChunks<Chunk03092004, Chunk0309200B>();
             return checkpoints;
         }
         set
         {
-            DiscoverChunk<Chunk0309200B>();
+            DiscoverChunks<Chunk03092004, Chunk0309200B>();
             checkpoints = value;
         }
     }
@@ -478,6 +481,25 @@ public partial class CGameCtnGhost : CGameGhost
 
     #endregion
 
+    #region 0x004 skippable chunk (old checkpoints)
+
+    /// <summary>
+    /// CGameCtnGhost 0x004 skippable chunk (old checkpoints)
+    /// </summary>
+    [Chunk(0x03092004)]
+    public class Chunk03092004 : SkippableChunk<CGameCtnGhost>
+    {
+        public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
+        {
+            rw.Array(ref n.checkpoints,
+                (i, r) => new(r.ReadTimeInt32Nullable(), Speed: r.ReadSingle()),
+                (x, w) => { w.WriteTimeInt32Nullable(x.Time); w.Write(x.Speed.GetValueOrDefault()); }
+            );
+        }
+    }
+
+    #endregion
+
     #region 0x005 skippable chunk (race time)
 
     /// <summary>
@@ -574,7 +596,7 @@ public partial class CGameCtnGhost : CGameGhost
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
             rw.Array(ref n.checkpoints,
-                (i, r) => new Checkpoint(r.ReadTimeInt32Nullable(), r.ReadInt32()),
+                (i, r) => new(r.ReadTimeInt32Nullable(), StuntsScore: r.ReadInt32()),
                 (x, w) => { w.WriteTimeInt32Nullable(x.Time); w.Write(x.StuntsScore); }
             );
         }

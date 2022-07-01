@@ -414,8 +414,8 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
         {
             Version = r.ReadInt32();
-            var u02 = r.ReadInt32();
 
+            var u02 = r.ReadInt32();
             n.ghosts = r.ReadArray(r => r.ReadNodeRef<CGameCtnGhost>()!);
 
             var u03 = r.ReadInt32(); // millisecond length of something (usually record time + 0.5s)
@@ -425,8 +425,8 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
         public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
         {
             Version = r.ReadInt32();
-            var u02 = r.ReadInt32();
 
+            var u02 = r.ReadInt32();
             n.ghosts = (await r.ReadArrayAsync(r => r.ReadNodeRefAsync<CGameCtnGhost>()!))!;
 
             var u03 = r.ReadInt32(); // millisecond length of something (usually record time + 0.5s)
