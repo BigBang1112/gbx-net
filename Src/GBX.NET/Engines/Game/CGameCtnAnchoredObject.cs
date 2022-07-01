@@ -240,15 +240,18 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
                     {
                         rw.Single(ref n.scale);
 
-                        if (version >= 8) // TM 2020
+                        if (version >= 7)
                         {
                             if ((n.flags & 0x4) == 0x4)
                             {
                                 rw.FileRef(ref n.skin);
                             }
 
-                            rw.Vec3(ref U01);
-                            rw.Vec3(ref U02);
+                            if (version >= 8) // TM 2020
+                            {
+                                rw.Vec3(ref U01);
+                                rw.Vec3(ref U02);
+                            }
                         }
                     }
                 }
@@ -264,14 +267,17 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     /// CGameCtnAnchoredObject 0x004 skippable chunk
     /// </summary>
     [Chunk(0x03101004)]
-    public class Chunk03101004 : SkippableChunk<CGameCtnAnchoredObject>
+    public class Chunk03101004 : SkippableChunk<CGameCtnAnchoredObject>, IVersionable
     {
-        public int U01 = 0;
+        private int version;
+
+        public int Version { get => version; set => version = value; }
+
         public int U02 = -1;
 
         public override void ReadWrite(CGameCtnAnchoredObject n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.Int32(ref version);
             rw.Int32(ref U02);
         }
     }
