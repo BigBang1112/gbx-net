@@ -317,8 +317,7 @@ public abstract class Node
         }
 
         var chunk = constructor();
-        chunk.Node = node; //
-        chunk.OnLoad(); // The chunk is immediately activated, but may not be yet parsed at this state
+        chunk.OnLoad(); // The chunk is immediately activated, but is not parsed at this state
 
         var gbxrw = new GameBoxReaderWriter(r);
 
@@ -474,7 +473,6 @@ public abstract class Node
         }
 
         var chunk = constructor();
-        chunk.Node = node; //
         chunk.OnLoad(); // The chunk is immediately activated, but may not be yet parsed at this state
 
         var gbxrw = new GameBoxReaderWriter(r);
@@ -624,11 +622,11 @@ public abstract class Node
         }
 
         var chunk = constructor();
-        chunk.Node = node; //
 
         var skippableChunk = (ISkippableChunk)chunk;
         skippableChunk.Data = chunkData;
         skippableChunk.Gbx = readerSettings.Gbx;
+        skippableChunk.Node = node; //
 
         if (chunkData.Length == 0)
         {
@@ -960,7 +958,6 @@ public abstract class Node
     {
         logger?.LogChunkProgress(chunk.Id.ToString("X8"), (float)counter / Chunks.Count * 100);
 
-        ((Chunk)chunk).Node = this; //
         chunk.Unknown.Position = 0;
     }
 

@@ -13,14 +13,7 @@ public abstract class Chunk : IComparable<Chunk>
     [IgnoreDataMember]
     public MemoryStream Unknown { get; } = new MemoryStream();
 
-    internal Node Node { get; set; } // Should be gone one day
-
     public ChunkDebugger? Debugger { get; internal set; }
-
-    protected Chunk(Node node)
-    {
-        Node = node;
-    }
 
     public uint Id => GetStoredId();
 

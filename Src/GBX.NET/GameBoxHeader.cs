@@ -72,14 +72,7 @@ public class GameBoxHeader
 
             var pos = userDataStream.Position;
 
-            if (chunk.Discovered)
-            {
-                chunk.ReadWrite(node, userDataReaderWriter);
-            }
-            else
-            {
-                chunk.Write(userDataWriter);
-            }
+            chunk.ReadWrite(node, userDataReaderWriter);
 
             table[chunk.Id] = (int)(userDataStream.Position - pos);
         }
@@ -290,7 +283,6 @@ public class GameBoxHeader
         }
 
         var headerChunk = NodeCacheManager.HeaderChunkConstructors[chunkId]();
-        ((Chunk)headerChunk).Node = node; //
         headerChunk.Data = chunkData;
         headerChunk.IsHeavy = isHeavy;
 
@@ -311,8 +303,6 @@ public class GameBoxHeader
 
             headerChunk.ReadWrite(node, rw);
         }
-
-        headerChunk.Discovered = true;
 
         return (Chunk)headerChunk; //
     }

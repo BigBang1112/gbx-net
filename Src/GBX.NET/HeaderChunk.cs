@@ -4,19 +4,10 @@ public sealed class HeaderChunk : Chunk, IHeaderChunk
 {
     private readonly uint headerChunkId;
 
-    /// <exception cref="NotSupportedException"></exception>
-    public bool Discovered
-    {
-        get => false;
-        set => throw new NotSupportedException("Cannot discover an unknown header chunk.");
-    }
-
     public byte[] Data { get; set; }
-
     public bool IsHeavy { get; set; }
-    public GameBox? Gbx { get; set; } // Shouldn't be there forever
 
-    public HeaderChunk(uint id, byte[] data, bool isHeavy = false) : base(null!)
+    public HeaderChunk(uint id, byte[] data, bool isHeavy = false)
     {
         headerChunkId = id;
 

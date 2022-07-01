@@ -10,18 +10,29 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
     public bool Discovered { get; set; }
     public byte[] Data { get; set; }
     public GameBox? Gbx { get; set; }
+    
+    Node? ISkippableChunk.Node { get; set; }
+
+    public T? Node
+    {
+        get => (this as ISkippableChunk).Node as T;
+        set => (this as ISkippableChunk).Node = value;
+    }
 
     protected SkippableChunk()
     {
         Data = null!;
     }
 
-    public SkippableChunk(T node, byte[] data, uint? id = null) : base(node)
+    public SkippableChunk(T node, byte[] data, uint? id = null)
     {
+        Node = node;
         Data = data;
 
         if (data == null || data.Length == 0)
+        {
             Discovered = true;
+        }
 
         this.id = id;
     }
@@ -33,7 +44,7 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
 
     public void Discover()
     {
-        if (Discovered)
+        if (Discovered || Node is null)
         {
             return;
         }

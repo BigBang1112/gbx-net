@@ -4,25 +4,8 @@ namespace GBX.NET;
 
 public abstract class Chunk<T> : Chunk, IReadableWritableChunk where T : Node
 {
-    [IgnoreDataMember]
-    public new T Node // Should be gone one day
-    {
-        get => (T)base.Node;
-        internal set => base.Node = value;
-    }
-
     public bool IsHeader => this is IHeaderChunk;
     public bool IsBody => !IsHeader;
-
-    protected Chunk() : base(null!)
-    {
-
-    }
-
-    protected Chunk(T node) : base(node)
-    {
-
-    }
 
     protected override uint GetId()
     {
