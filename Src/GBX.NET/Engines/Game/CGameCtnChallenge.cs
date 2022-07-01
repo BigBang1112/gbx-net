@@ -3349,7 +3349,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         public int U01;
         public int U02 = 10;
-        public byte[]? U03;
+        public byte[]? U03 = new byte[] { 0, 0, 0, 0 };
 
         /// <summary>
         /// Version of the chunk.
@@ -3368,10 +3368,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         public override void Read(CGameCtnChallenge n, GameBoxReader r, ILogger? logger)
         {
             version = r.ReadInt32();
-
-            if (version == 0)
-                return;
-
             U01 = r.ReadInt32();
             var size = r.ReadInt32();
             U02 = r.ReadInt32(); // 10
@@ -3389,10 +3385,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         public override void Write(CGameCtnChallenge n, GameBoxWriter w, ILogger? logger)
         {
             w.Write(Version);
-
-            if (version == 0)
-                return;
-
             w.Write(U01);
 
             using var itemMs = new MemoryStream();
