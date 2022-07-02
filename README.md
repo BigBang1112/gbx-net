@@ -24,7 +24,7 @@ Here are some of the useful classes/types to start with:
 | Replay.Gbx | [CGameCtnReplayRecord](Src/GBX.NET/Engines/Game/CGameCtnReplayRecord.cs) | Yes | **No<sup>2</sup>**
 | Ghost.Gbx | [CGameCtnGhost](Src/GBX.NET/Engines/Game/CGameCtnGhost.cs) | Yes | **Yes**
 | Clip.Gbx | [CGameCtnMediaClip](Src/GBX.NET/Engines/Game/CGameCtnMediaClip.cs) | Yes | Yes
-| Campaign.Gbx | [CGameCtnCampaign](Src/GBX.NET/Engines/Game/CGameCtnCampaign.cs) | Partially<sup>3</sup> | Partially<sup>3</sup>
+| Campaign.Gbx<sup>3</sup> | [CGameCtnCampaign](Src/GBX.NET/Engines/Game/CGameCtnCampaign.cs) | Yes | Yes
 | EDClassic.Gbx | [CGameCtnBlockInfoClassic](Src/GBX.NET/Engines/Game/CGameCtnBlockInfoClassic.cs) | *Fix soon* | No
 | Block.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.cs) | *Fix soon* | No
 | Macroblock.Gbx | [CGameCtnMacroBlockInfo](Src/GBX.NET/Engines/Game/CGameCtnMacroBlockInfo.cs) | *Fix soon* | No
@@ -37,7 +37,7 @@ Here are some of the useful classes/types to start with:
 
 - <sup>1</sup>Challenge.Gbx is the same.
 - <sup>2</sup>Safety reasons. Consider extracting `CGameCtnGhost` from `CGameCtnReplayRecord`, transfer it over to `CGameCtnMediaBlockGhost`, add it to `CGameCtnMediaClip`, and save it as `.Clip.Gbx`, which you can then import in MediaTracker.
-- <sup>3</sup>Not tested for a long time, possibly works only in ManiaPlanet.
+- <sup>3</sup>ConstructionCampaign.Gbx is the same.
 - <sup>4</sup>Only up to TMUF.
 
 ### For any questions, join [my Discord server](https://discord.gg/perAcdxscQ) or message me via DM: BigBang1112#9489
