@@ -537,6 +537,22 @@ public partial class CGameCtnGhost : CGameGhost
 
     #endregion
 
+    #region 0x007 chunk (old light trail color)
+
+    /// <summary>
+    /// CGameCtnGhost 0x007 chunk (old light trail color)
+    /// </summary>
+    [Chunk(0x03092007, "old light trail color")]
+    public class Chunk03092007 : Chunk<CGameCtnGhost>
+    {
+        public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
+        {
+            rw.Vec3(ref n.lightTrailColor);
+        }
+    }
+
+    #endregion
+
     #region 0x008 skippable chunk (respawns)
 
     /// <summary>
