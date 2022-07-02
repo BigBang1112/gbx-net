@@ -222,6 +222,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public IHeader GetHeaderMembers() => this;
 #endif
 
+    public ChunkSet HeaderChunks { get; }
+
     /// <summary>
     /// Time of the bronze medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
@@ -1269,6 +1271,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         mapInfo = null!;
         mapName = null!;
         authorLogin = null!;
+
+        HeaderChunks = new ChunkSet();
     }
 
     #endregion

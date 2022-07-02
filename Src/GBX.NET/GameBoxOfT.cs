@@ -32,27 +32,29 @@ public class GameBox<T> : GameBox where T : Node
     /// </summary>
     /// <typeparam name="TChunk">A chunk type compatible with <see cref="IHeaderChunk"/>.</typeparam>
     /// <returns>A newly created chunk.</returns>
-    public TChunk CreateHeaderChunk<TChunk>() where TChunk : Chunk, IHeaderChunk
+    public TChunk? CreateHeaderChunk<TChunk>() where TChunk : Chunk, IHeaderChunk
     {
-        if (Node.HeaderChunks is null)
+        if (Node is not INodeHeader nodeHeader)
         {
-            throw new PropertyNullException(nameof(Node.HeaderChunks));
+            return null;
         }
 
-        return Node.HeaderChunks.Create<TChunk>();
+        return nodeHeader.HeaderChunks.Create<TChunk>();
     }
 
     /// <summary>
     /// Removes all header chunks.
     /// </summary>
-    public void RemoveAllHeaderChunks()
+    public bool RemoveAllHeaderChunks()
     {
-        if (Node.HeaderChunks is null)
+        if (Node is not INodeHeader nodeHeader)
         {
-            throw new PropertyNullException(nameof(Node.HeaderChunks));
+            return false;
         }
 
-        Node.HeaderChunks.Clear();
+        nodeHeader.HeaderChunks.Clear();
+
+        return true;
     }
 
     /// <summary>
@@ -62,12 +64,12 @@ public class GameBox<T> : GameBox where T : Node
     /// <returns>True, if the chunk was removed, otherwise false.</returns>
     public bool RemoveHeaderChunk<TChunk>() where TChunk : Chunk, IHeaderChunk
     {
-        if (Node.HeaderChunks is null)
+        if (Node is not INodeHeader nodeHeader)
         {
-            throw new PropertyNullException(nameof(Node.HeaderChunks));
+            return false;
         }
 
-        return Node.HeaderChunks.RemoveWhere(x => x.Id == typeof(TChunk).GetCustomAttribute<ChunkAttribute>()?.ID) > 0;
+        return nodeHeader.HeaderChunks.RemoveWhere(x => x is T) > 0;
     }
 
     /// <summary>
@@ -78,7 +80,29 @@ public class GameBox<T> : GameBox where T : Node
     /// <returns>A newly created chunk.</returns>
     public TChunk CreateBodyChunk<TChunk>(byte[] data) where TChunk : Chunk
     {
-        return Node.Chunks.Create<TChunk>(data);
+        var chunk = Node.Chunks.Create<TChunk>();
+
+        if (chunk is ISkippableChunk s)
+        {
+            s.Data = data;
+
+            if (data is null || data.Length == 0)
+            {
+                s.Discovered = true;
+            }
+
+            chunk.OnLoad();
+        }
+        else
+        {
+            using var ms = new MemoryStream(data);
+            using var r = new GameBoxReader(ms);
+
+            var rw = new GameBoxReaderWriter(r);
+            ((IReadableWritableChunk)chunk).ReadWrite(Node, rw);
+        }
+
+        return chunk;
     }
 
     /// <summary>

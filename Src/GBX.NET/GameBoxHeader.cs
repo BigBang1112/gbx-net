@@ -11,6 +11,11 @@ public class GameBoxHeader
     public byte[] UserData { get; init; }
     public int NumNodes { get; init; }
 
+    /// <summary>
+    /// Header chunks that are part of an unknown node. For known node header chunks, see <see cref="GameBox.Node"/> -> <see cref="INodeHeader.HeaderChunks"/>.
+    /// </summary>
+    public ChunkSet HeaderChunks { get; init; }
+
     public GameBoxHeader(uint id)
     {
         Version = 6;
@@ -21,6 +26,7 @@ public class GameBoxHeader
         Id = id;
         UserData = Array.Empty<byte>();
         NumNodes = 0;
+        HeaderChunks = new ChunkSet();
     }
 
     internal void Write(Node node, GameBoxWriter w, int numNodes, ILogger? logger)
@@ -52,9 +58,11 @@ public class GameBoxHeader
         w.Write(numNodes);
     }
 
-    private static void WriteVersion6(Node node, GameBoxWriter w, ILogger? logger)
+    private void WriteVersion6(Node node, GameBoxWriter w, ILogger? logger)
     {
-        if (node.HeaderChunks is null)
+        var headerChunks = (node as INodeHeader)?.HeaderChunks ?? HeaderChunks;
+
+        if (headerChunks is null)
         {
             w.Write(0);
             return;
@@ -66,7 +74,7 @@ public class GameBoxHeader
 
         var table = new Dictionary<uint, int>();
 
-        foreach (IHeaderChunk chunk in node.HeaderChunks)
+        foreach (IHeaderChunk chunk in headerChunks)
         {
             chunk.Unknown.Position = 0;
 
@@ -78,12 +86,12 @@ public class GameBoxHeader
         }
 
         // Actual data size plus the class id (4 bytes) and each length (4 bytes) plus the number of chunks integer
-        w.Write((int)userDataStream.Length + node.HeaderChunks.Count * 8 + 4);
+        w.Write((int)userDataStream.Length + headerChunks.Count * 8 + 4);
 
         // Write number of header chunks integer
-        w.Write(node.HeaderChunks.Count);
+        w.Write(headerChunks.Count);
 
-        foreach (IHeaderChunk chunk in node.HeaderChunks)
+        foreach (IHeaderChunk chunk in headerChunks)
         {
             w.Write(Chunk.Remap(chunk.Id, w.Settings.Remap));
 
@@ -211,12 +219,17 @@ public class GameBoxHeader
         return chunkList;
     }
 
-    internal static void ProcessUserData(Node node, Type nodeType, GameBoxReader r, ILogger? logger)
+    internal void ProcessUserData(Node node, Type nodeType, GameBoxReader r, ILogger? logger)
     {
         var chunkList = GetChunkList(r);
         var chunks = ProcessChunks(node, nodeType, r, logger, chunkList);
 
-        node.HeaderChunks = new ChunkSet(node, chunks);
+        var headerChunks = (node as INodeHeader)?.HeaderChunks ?? HeaderChunks;
+        
+        foreach (var chunk in chunks)
+        {
+            headerChunks.Add(chunk);
+        }
     }
 
     private static IEnumerable<Chunk> ProcessChunks(Node node,

@@ -109,7 +109,7 @@ public partial class GameBox
         using var ms = new MemoryStream(header.UserData);
         var headerR = new GameBoxReader(ms, gbx, logger: logger);
 
-        GameBoxHeader.ProcessUserData(gbx.Node, classType, headerR, logger);
+        header.ProcessUserData(gbx.Node, classType, headerR, logger);
 
         return gbx;
     }

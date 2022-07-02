@@ -1,22 +1,17 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
-using System.Runtime.Serialization;
 
 namespace GBX.NET;
 
 public class ChunkSet : SortedSet<Chunk>
 {
-    [IgnoreDataMember]
-    public Node Node { get; set; }
-
-    public ChunkSet(Node node) : base()
+    public ChunkSet() : base()
     {
-        Node = node;
+        
     }
 
-    public ChunkSet(Node node, IEnumerable<Chunk> collection) : base(collection)
+    public ChunkSet(IEnumerable<Chunk> collection) : base(collection)
     {
-        Node = node;
+        
     }
 
     public bool Remove(uint chunkID)
@@ -29,47 +24,22 @@ public class ChunkSet : SortedSet<Chunk>
         return RemoveWhere(x => x is T) > 0;
     }
 
-    public T Create<T>(byte[] data) where T : Chunk // Improve
+    public T Create<T>() where T : Chunk
     {
         var chunkId = NodeCacheManager.GetChunkIdByType(typeof(T));
 
         if (TryGet(chunkId, out var c))
         {
-            return (T)c;
+            return c as T ?? throw new ThisShouldNotHappenException();
         }
 
         var chunk = NodeCacheManager.ChunkConstructors.TryGetValue(chunkId, out var constructor)
             ? (T)constructor()
             : (T)Activator.CreateInstance(typeof(T))!;
 
-        if (chunk is ISkippableChunk s)
-        {
-            s.Data = data;
-
-            if (data is null || data.Length == 0)
-            {
-                s.Discovered = true;
-            }
-
-            chunk.OnLoad();
-        }
-        else if (data.Length > 0)
-        {
-            using var ms = new MemoryStream(data);
-            using var r = new GameBoxReader(ms);
-
-            var rw = new GameBoxReaderWriter(r);
-            ((IReadableWritableChunk)chunk).ReadWrite(Node, rw);
-        }
-
         Add(chunk);
         
         return chunk;
-    }
-
-    public T Create<T>() where T : Chunk
-    {
-        return Create<T>(Array.Empty<byte>());
     }
 
     public Chunk? Get(uint chunkId)

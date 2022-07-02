@@ -1,7 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Reflection;
-using System.Runtime.Serialization;
-using System.Text;
 
 namespace GBX.NET;
 
@@ -22,12 +19,10 @@ public abstract class Node
     {
         get
         {
-            chunks ??= new ChunkSet(this); // Maybe improve this
+            chunks ??= new ChunkSet();
             return chunks;
         }
     }
-
-    public ChunkSet? HeaderChunks { get; internal set; }
 
     protected Node()
     {
