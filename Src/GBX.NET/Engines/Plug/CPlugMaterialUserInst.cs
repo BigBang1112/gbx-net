@@ -65,6 +65,7 @@ public class CPlugMaterialUserInst : CMwNod
         public ulong[]? U06;
         public string[]? U07;
         public string? U08;
+        public byte? U09;
 
         /// <summary>
         /// Version 10: TM®, version 9: ManiaPlanet 2019.11.19.1850
@@ -78,6 +79,11 @@ public class CPlugMaterialUserInst : CMwNod
         public override void ReadWrite(CPlugMaterialUserInst n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
+
+            if (version >= 11)
+            {
+                rw.Byte(ref U09);
+            }
 
             rw.Id(ref U01);
             rw.Id(ref n.model);
@@ -195,12 +201,18 @@ public class CPlugMaterialUserInst : CMwNod
     }
 
     [Chunk(0x090FD002)]
-    public class Chunk090FD002 : Chunk<CPlugMaterialUserInst>
+    public class Chunk090FD002 : Chunk<CPlugMaterialUserInst>, IVersionable
     {
+        private int version;
+
+        public int U01;
+
+        public int Version { get => version; set => version = value; }
+
         public override void ReadWrite(CPlugMaterialUserInst n, GameBoxReaderWriter rw)
         {
-            rw.Int32();
-            rw.Int32();
+            rw.Int32(ref version);
+            rw.Int32(ref U01);
         }
     }
 
