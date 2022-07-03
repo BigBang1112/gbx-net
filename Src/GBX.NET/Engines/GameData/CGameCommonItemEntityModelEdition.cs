@@ -114,6 +114,8 @@ public class CGameCommonItemEntityModelEdition : CMwNod
         public Iso4? U19;
         public int U20;
         public CMwNod? U21;
+        public CMwNod? U22;
+        public bool? U23;
 
         public int Version
         {
@@ -124,10 +126,11 @@ public class CGameCommonItemEntityModelEdition : CMwNod
         public override void ReadWrite(CGameCommonItemEntityModelEdition n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
+            
             rw.EnumInt32<EItemType>(ref n.itemType);
             rw.NodeRef<CPlugCrystal>(ref n.meshCrystal!);
             rw.String(ref U01);
-            rw.NodeRef(ref U02);
+            rw.NodeRef(ref U02); // if U01 is empty probably
 
             rw.Int32(ref U03); // CPlugFileImg array
             if (U03 > 0) throw new Exception("CPlugFileImg array not empty");
@@ -156,7 +159,7 @@ public class CGameCommonItemEntityModelEdition : CMwNod
             {
                 rw.Single(ref n.mass);
             }
-
+ 
             rw.Boolean(ref U16);
 
             if (!U16)
@@ -185,6 +188,16 @@ public class CGameCommonItemEntityModelEdition : CMwNod
                 rw.String(ref n.inventoryDescription);
                 rw.Int32(ref n.inventoryItemClass);
                 rw.Int32(ref n.inventoryOccupation);
+
+                if (version >= 6)
+                {
+                    rw.NodeRef(ref U22);
+
+                    if (version >= 7 && n.itemType == EItemType.PickUp)
+                    {
+                        rw.Boolean(ref U23);
+                    }
+                }
             }
         }
     }
