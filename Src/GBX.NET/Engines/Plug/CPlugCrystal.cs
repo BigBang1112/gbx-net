@@ -211,7 +211,7 @@ public class CPlugCrystal : CPlugTreeGenerator
         var groups = r.ReadArray(r => new Group()
         {
             U01 = crystalVersion >= 31 ? r.ReadInt32() : 0,
-            U02 = r.ReadInt32(), // maybe bool
+            U02 = crystalVersion >= 36 ? r.ReadByte() : r.ReadInt32(), // maybe bool
             U03 = r.ReadInt32(),
             Name = r.ReadString(),
             U04 = r.ReadInt32(),
@@ -234,7 +234,13 @@ public class CPlugCrystal : CPlugTreeGenerator
                 isEmbeddedCrystal = r.ReadBoolean();
             }
 
-            isEmbeddedCrystal = r.ReadBoolean();
+            isEmbeddedCrystal = r.ReadBoolean(asByte: crystalVersion >= 34);
+
+            if (crystalVersion >= 33)
+            {
+                var u30 = r.ReadInt32(); // local_378
+                var u31 = r.ReadInt32(); // local_374
+            }
         }
 
         var vertices = default(Vec3[]);
@@ -244,29 +250,69 @@ public class CPlugCrystal : CPlugTreeGenerator
         if (isEmbeddedCrystal)
         {
             vertices = r.ReadArray<Vec3>();
-            edges = r.ReadArray<Int2>();
 
-            faces = r.ReadArray(r =>
+            var edgesCount = r.ReadInt32();
+
+            if (crystalVersion >= 35)
             {
-                var uvVertices = r.ReadInt32();
-                var inds = r.ReadArray<int>(uvVertices);
+                var unfacedEdgesCount = r.ReadInt32();
+                var unfacedEdges = r.ReadOptimizedIntArray(unfacedEdgesCount * 2); // unfaced edges
+            }
 
-                var uv = crystalVersion < 27 ? r.ReadArray<Vec2>() : r.ReadArray<Vec2>(uvVertices);
+            edges = r.ReadArray<Int2>(crystalVersion >= 35 ? 0 : edgesCount);
+
+            var facesCount = r.ReadInt32();
+
+            var uvs = default(Vec2[]);
+            var faceIndicies = default(int[]);
+
+            if (crystalVersion >= 37)
+            {
+                uvs = r.ReadArray<Vec2>(); // unique uv values
+                faceIndicies = r.ReadOptimizedIntArray();
+            }
+
+            faces = r.ReadArray(facesCount, r =>
+            {
+                var uvVertices = crystalVersion >= 35 ? (r.ReadByte() + 3) : r.ReadInt32();
+                var inds = crystalVersion >= 34 ? r.ReadOptimizedIntArray(uvVertices, vertices.Length) : r.ReadArray<int>(uvVertices);
+
+                var uv = default(Vec2[]);
 
                 if (crystalVersion < 27)
                 {
+                    uv = r.ReadArray<Vec2>();
                     var niceVec = r.ReadVec3();
                 }
+                else if (crystalVersion < 37)
+                {
+                    uv = r.ReadArray<Vec2>(uvVertices);
+                }
 
-                var materialIndex = r.ReadInt32();
-                var groupIndex = r.ReadInt32();
+                var materialIndex = default(int);
 
+                if (crystalVersion >= 25)
+                {
+                    materialIndex = crystalVersion >= 33 ? r.ReadByte() : r.ReadInt32(); // optimized by amount of materials?
+                }
+
+                var groupIndex = crystalVersion >= 33 ? r.ReadByte() : r.ReadInt32(); // optimized by amount of groups?
+
+                if (crystalVersion > 32)
+                {
+                    return new Face()
+                    {
+                        VertCount = uvVertices,
+                        Indices = inds
+                    };
+                }
+                
                 return new Face()
                 {
                     VertCount = uvVertices,
                     Indices = inds,
                     UV = uv,
-                    Material = materialIndex >= 32 ? n.Materials?[materialIndex] : null,
+                    Material = crystalVersion >= 32 /* 25 */ && materialIndex != -1 ? n.Materials?[materialIndex] : null,
                     Group = groups[groupIndex]
                 };
             });
@@ -346,15 +392,18 @@ public class CPlugCrystal : CPlugTreeGenerator
             }
         }
 
-        var numFaces = r.ReadInt32();
-        var numEdges = r.ReadInt32();
-        var numVerts = r.ReadInt32();
+        if (crystalVersion < 36)
+        {
+            var numFaces = r.ReadInt32();
+            var numEdges = r.ReadInt32();
+            var numVerts = r.ReadInt32();
 
-        var u27 = r.ReadArray<int>(numFaces);
-        var u28 = r.ReadArray<int>(numEdges);
-        var u29 = r.ReadArray<int>(numVerts);
+            var u27 = r.ReadArray<int>(numFaces);
+            var u28 = r.ReadArray<int>(numEdges);
+            var u29 = r.ReadArray<int>(numVerts);
 
-        var u17 = r.ReadInt32();
+            var u17 = r.ReadInt32();
+        }
 
         return new Crystal()
         {
@@ -424,6 +473,7 @@ public class CPlugCrystal : CPlugTreeGenerator
 
                     return material;
                 }
+
                 return null;
             });
         }
@@ -489,11 +539,6 @@ public class CPlugCrystal : CPlugTreeGenerator
                 if (version >= 1)
                 {
                     isEnabled = r.ReadBoolean();
-
-                    if (version >= 2) // Just an assume
-                    {
-                        // u04 = r.ReadBoolean();
-                    }
                 }
 
                 var typeVersion = r.ReadInt32(); // not part of SLayer::ArchiveWithoutTyp
@@ -541,7 +586,7 @@ public class CPlugCrystal : CPlugTreeGenerator
                 LayerId = r2.ReadId()
             });
 
-            var mask_u01 = r.ReadInt32();
+            var mask_u01 = r.ReadInt32(); // version
 
             switch (type)
             {
@@ -557,7 +602,7 @@ public class CPlugCrystal : CPlugTreeGenerator
                             Mask = mask,
                             Scale = scale,
                             Independently = independently,
-                            Unknown = new object[] { mask_u01 }
+                            U01 = mask_u01
                         };
                     }
 
@@ -566,6 +611,12 @@ public class CPlugCrystal : CPlugTreeGenerator
                         var position = r.ReadVec3();
                         var horizontalAngle = r.ReadSingle();
                         var verticalAngle = r.ReadSingle();
+                        var rollAngle = 0f;
+
+                        if (mask_u01 >= 1)
+                        {
+                            rollAngle = r.ReadSingle();
+                        }
 
                         return new SpawnPositionLayer()
                         {
@@ -575,7 +626,8 @@ public class CPlugCrystal : CPlugTreeGenerator
                             Position = position,
                             HorizontalAngle = horizontalAngle,
                             VerticalAngle = verticalAngle,
-                            Unknown = new object[] { mask_u01 }
+                            RollAngle = rollAngle,
+                            U01 = mask_u01
                         };
                     }
 
@@ -589,7 +641,7 @@ public class CPlugCrystal : CPlugTreeGenerator
                             LayerName = layerName,
                             Mask = mask,
                             Translation = translation,
-                            Unknown = new object[] { mask_u01 }
+                            U01 = mask_u01
                         };
                     }
 
@@ -606,7 +658,8 @@ public class CPlugCrystal : CPlugTreeGenerator
                             Mask = mask,
                             Rotation = rotation,
                             Axis = axis,
-                            Independently = independently
+                            Independently = independently,
+                            U01 = mask_u01
                         };
                     }
 
@@ -623,7 +676,8 @@ public class CPlugCrystal : CPlugTreeGenerator
                             Mask = mask,
                             Distance = distance,
                             Axis = axis,
-                            Independently = independently
+                            Independently = independently,
+                            U01 = mask_u01
                         };
                     }
 
@@ -642,8 +696,9 @@ public class CPlugCrystal : CPlugTreeGenerator
                             LayerName = layerName,
                             Mask = mask,
                             MinDistance = minDistance,
-                            U01 = chaos_u01,
+                            U02 = chaos_u01,
                             MaxDistance = maxDistance,
+                            U01 = mask_u01
                         };
                     }
 
@@ -656,7 +711,8 @@ public class CPlugCrystal : CPlugTreeGenerator
                             LayerID = layerId,
                             LayerName = layerName,
                             Mask = mask,
-                            Subdivisions = subdivisions
+                            Subdivisions = subdivisions,
+                            U01 = mask_u01
                         };
                     }
 
@@ -669,7 +725,8 @@ public class CPlugCrystal : CPlugTreeGenerator
                             LayerID = layerId,
                             LayerName = layerName,
                             Mask = mask,
-                            Intensity = intensity
+                            Intensity = intensity,
+                            U01 = mask_u01
                         };
                     }
 
@@ -690,6 +747,8 @@ public class CPlugCrystal : CPlugTreeGenerator
     public class Chunk09003006 : Chunk<CPlugCrystal>, IVersionable
     {
         public Vec2[]? U01;
+        public uint[]? U02;
+        public int[]? U03;
 
         private int version;
 
@@ -702,9 +761,21 @@ public class CPlugCrystal : CPlugTreeGenerator
         public override void ReadWrite(CPlugCrystal n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
-            rw.Array(ref U01,
-                (i, r) => r.ReadVec2(),
-                (x, w) => w.Write(x));
+
+            if (version == 0)
+            {
+                rw.Array<Vec2>(ref U01);
+            }
+
+            if (version >= 1)
+            {
+                rw.Array<uint>(ref U02); // two Int16 technically
+
+                if (version >= 2)
+                {
+                    U03 = rw.Reader.ReadOptimizedIntArray(); // two Int16 technically
+                }
+            }
         }
     }
 
@@ -756,7 +827,7 @@ public class CPlugCrystal : CPlugTreeGenerator
         public string? LayerID { get; set; }
         public string? LayerName { get; set; }
         public bool IsEnabled { get; set; }
-        public object[]? Unknown { get; set; }
+        public int? U01 { get; set; }
 
         public override string ToString() => LayerName ?? string.Empty;
     }
@@ -808,6 +879,7 @@ public class CPlugCrystal : CPlugTreeGenerator
         public Vec3 Position { get; set; }
         public float HorizontalAngle { get; set; }
         public float VerticalAngle { get; set; }
+        public float RollAngle { get; set; }
     }
 
     public class ChaosLayer : Layer
@@ -815,7 +887,7 @@ public class CPlugCrystal : CPlugTreeGenerator
         public LayerMask[]? Mask { get; set; }
         public float MinDistance { get; set; }
         public float MaxDistance { get; set; }
-        public float U01 { get; set; }
+        public float U02 { get; set; }
     }
 
     public class SubdivideLayer : Layer
