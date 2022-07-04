@@ -731,6 +731,7 @@
   0A6 CPlugFurWind
   0AD CPlugFileExr .exr
   0B0 CPlugAnimFile
+  0BA CPlugSkel
   0BB CPlugSolid2Model
   0CE CPlugDataTape
   0DB CPlugFileWebP .webp
@@ -744,6 +745,7 @@
   10C CPlugCamControlModel
   11E CPlugVehiclePhyModelCustom
   11F CPlugEntRecordData
+  159 CPlugStaticObjectModel
 0A Scene
   000 CSceneEngine
   001 CScene
