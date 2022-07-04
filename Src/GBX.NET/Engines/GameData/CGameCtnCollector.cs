@@ -6,7 +6,7 @@ namespace GBX.NET.Engines.GameData;
 /// Collector (0x2E001000)
 /// </summary>
 [Node(0x2E001000)]
-public class CGameCtnCollector : CMwNod
+public class CGameCtnCollector : CMwNod, INodeHeader
 {
     #region Enums
 
@@ -39,6 +39,8 @@ public class CGameCtnCollector : CMwNod
     #endregion
 
     #region Properties
+
+    public ChunkSet HeaderChunks { get; }
 
     [NodeMember]
     public Ident? Author
@@ -146,6 +148,8 @@ public class CGameCtnCollector : CMwNod
 
     protected CGameCtnCollector()
     {
+        HeaderChunks = new ChunkSet();
+
         pageName = null!;
     }
 
