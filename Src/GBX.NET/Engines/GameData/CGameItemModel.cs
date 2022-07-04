@@ -721,8 +721,10 @@ public class CGameItemModel : CGameCtnCollector
     public class Chunk2E00201E : Chunk<CGameItemModel>
     {
         private int version;
-        private int U01;
-        private int U02;
+
+        public int U01;
+        public int U02;
+        public int U03;
 
         public int Version
         {
@@ -743,6 +745,11 @@ public class CGameItemModel : CGameCtnCollector
             if (version >= 6)
             {
                 rw.Int32(ref U02); // SkinDirNameCustom
+
+                if (version >= 7)
+                {
+                    rw.Int32(ref U03); // -1
+                }
             }
         }
     }
@@ -766,6 +773,9 @@ public class CGameItemModel : CGameCtnCollector
         public int? U05;
         public int? U06;
         public short? U07;
+        public byte? U08;
+        public int? U09;
+        public int? U10;
 
         public int Version { get => version; set => version = value; }
 
@@ -807,6 +817,17 @@ public class CGameItemModel : CGameCtnCollector
                 if (version >= 10)
                 {
                     rw.Int32(ref U02);
+
+                    if (version >= 11)
+                    {
+                        rw.Byte(ref U08);
+
+                        if (version >= 12)
+                        {
+                            rw.Int32(ref U09);
+                            rw.Int32(ref U10);
+                        }
+                    }
                 }
             }
         }
