@@ -548,6 +548,13 @@ public partial class GameBoxReader : BinaryReader
         return ReadString(Encoding.UTF8.GetByteCount(magic)) == magic;
     }
 
+    public int ReadOptimizedInt(int determineFrom) => (uint)determineFrom switch
+    {
+        >= ushort.MaxValue => ReadInt32(),
+        >= byte.MaxValue => ReadUInt16(),
+        _ => ReadByte()
+    };
+
     /// <summary>
     /// A generic read method of parameterless types for the cost of performance loss. Prefer using the pre-defined data read methods.
     /// </summary>

@@ -206,4 +206,32 @@ public partial class GameBoxWriter
             WriteAny(pair.Value);
         }
     }
+
+    public void WriteOptimizedIntArray(int[]? array, int? determineFrom = null)
+    {
+        if (array is null)
+        {
+            Write(0);
+            return;
+        }
+
+        Write(array.Length);
+        WriteOptimizedIntArray_NoPrefix(array, determineFrom);
+    }
+
+    public void WriteOptimizedIntArray_NoPrefix(int[] array, int? determineFrom = null)
+    {
+        switch ((uint)determineFrom.GetValueOrDefault(array.Length))
+        {
+            case >= ushort.MaxValue:
+                WriteArray(array);
+                break;
+            case >= byte.MaxValue:
+                WriteArray(Array.ConvertAll(array, x => (ushort)x));
+                break;
+            default:
+                Write(Array.ConvertAll(array, x => (byte)x));
+                break;
+        }
+    }
 }

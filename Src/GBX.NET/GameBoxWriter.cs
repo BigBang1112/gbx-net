@@ -577,6 +577,22 @@ public partial class GameBoxWriter : BinaryWriter
 #endif
     }
 
+    public void WriteOptimizedInt(int value, int determineFrom)
+    {
+        switch ((uint)determineFrom)
+        {
+            case >= ushort.MaxValue:
+                Write(value);
+                break;
+            case >= byte.MaxValue:
+                Write((uint)value);
+                break;
+            default:
+                Write((byte)value);
+                break;
+        };
+    }
+
     /// <summary>
     /// Writes any kind of value. Prefer using specified methods for better performance. Supported types are <see cref="byte"/>, <see cref="short"/>, <see cref="int"/>,
     /// <see cref="long"/>, <see cref="float"/>, <see cref="bool"/>, <see cref="string"/>, <see cref="sbyte"/>, <see cref="ushort"/>,

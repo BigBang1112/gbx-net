@@ -54,7 +54,30 @@ public partial class GameBoxReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
-    public T[] ReadArray<T>(bool lengthInBytes = false) where T : struct => ReadArray<T>(length: ReadInt32(), lengthInBytes);
+    public T[] ReadArray<T>(bool lengthInBytes = false) where T : struct
+    {
+        return ReadArray<T>(length: ReadInt32(), lengthInBytes);
+    }
+
+    public int[] ReadOptimizedIntArray(int length, int? determineFrom = null)
+    {
+        if (length == 0)
+        {
+            return Array.Empty<int>();
+        }
+
+        return (uint)determineFrom.GetValueOrDefault(length) switch
+        {
+            >= ushort.MaxValue => ReadArray<int>(length),
+            >= byte.MaxValue => Array.ConvertAll(ReadArray<ushort>(length), x => (int)x),
+            _ => Array.ConvertAll(ReadBytes(length), x => (int)x),
+        };
+    }
+    
+    public int[] ReadOptimizedIntArray(int? determineFrom = null)
+    {
+        return ReadOptimizedIntArray(length: ReadInt32(), determineFrom);
+    }
 
     /// <summary>
     /// Does a for loop with <paramref name="length"/> parameter, each element requiring to return an instance of <typeparamref name="T"/>.

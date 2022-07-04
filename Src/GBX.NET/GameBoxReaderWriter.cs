@@ -2551,6 +2551,66 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public void Single_msn(ref TimeSingle? variable) => variable = Single_msn(variable);
+    
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public int OptimizedInt(int variable, int determineFrom)
+    {
+        if (Reader is not null) variable = Reader.ReadOptimizedInt(determineFrom);
+        if (Writer is not null) Writer.WriteOptimizedInt(variable, determineFrom);
+        return variable;
+    }
+    
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public int? OptimizedInt(int? variable, int determineFrom, int defaultValue = default)
+    {
+        if (Reader is not null) variable = Reader.ReadOptimizedInt(determineFrom);
+        if (Writer is not null) Writer.WriteOptimizedInt(variable.GetValueOrDefault(defaultValue), determineFrom);
+        return variable;
+    }
+    
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void OptimizedInt(ref int variable, int determineFrom) => variable = OptimizedInt(variable, determineFrom);
+    
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void OptimizedInt(ref int? variable, int determineFrom) => variable = OptimizedInt(variable, determineFrom);
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
+    public int[]? OptimizedIntArray(int[]? array = default, int? count = null, int? determineFrom = null)
+    {
+        if (count is null)
+        {
+            if (Reader is not null) array = Reader.ReadOptimizedIntArray(determineFrom);
+            if (Writer is not null) Writer.WriteOptimizedIntArray(array, determineFrom);
+            return array;
+        }
+
+        if (Reader is not null) array = Reader.ReadOptimizedIntArray(count.Value, determineFrom);
+        if (Writer is not null && array is not null) Writer.WriteOptimizedIntArray_NoPrefix(array, determineFrom);
+        return array;
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
+    public void OptimizedIntArray(ref int[]? array, int count, int? determineFrom = null) => array = OptimizedIntArray(array, count, determineFrom);
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
+    public void OptimizedIntArray(ref int[]? array, int? determineFrom = null) => array = OptimizedIntArray(array, determineFrom: determineFrom);
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
