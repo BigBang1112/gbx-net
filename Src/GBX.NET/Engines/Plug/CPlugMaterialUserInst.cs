@@ -62,7 +62,7 @@ public class CPlugMaterialUserInst : CMwNod
         public string? U03;
         public byte U04;
         public byte? U05;
-        public ulong[]? U06;
+        public int[]? U06;
         public string[]? U07;
         public string? U08;
         public byte? U09;
@@ -88,6 +88,7 @@ public class CPlugMaterialUserInst : CMwNod
             rw.Id(ref U01);
             rw.Id(ref n.model);
             rw.String(ref n.baseTexture);
+
             rw.Byte(ref U04);
 
             if (version >= 10)
@@ -124,7 +125,7 @@ public class CPlugMaterialUserInst : CMwNod
                         w.Write(x.U03);
                     });
 
-                    rw.Array<ulong>(ref U06);
+                    rw.Array<int>(ref U06);
 
                     if (version >= 3)
                     {
