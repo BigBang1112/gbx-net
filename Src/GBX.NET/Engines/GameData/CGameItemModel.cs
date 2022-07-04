@@ -510,6 +510,7 @@ public class CGameItemModel : CGameCtnCollector
 
         public int? U01;
         public CMwNod? U02;
+        public CMwNod? U03;
 
         public int Version
         {
@@ -550,16 +551,17 @@ public class CGameItemModel : CGameCtnCollector
                                 if (version >= 8)
                                 {
                                     rw.NodeRef(ref n.entityModelEdition); // CGameCommonItemEntityModelEdition, CGameBlockItem
+                                    rw.NodeRef(ref n.entityModel);
 
-                                    //if (version >= 12)
-                                    //{
-                                        rw.NodeRef(ref n.entityModel);
+                                    if (version >= 13)
+                                    {
+                                        rw.NodeRef(ref U02);
 
-                                        if (version >= 13)
+                                        if (version >= 15)
                                         {
-                                            rw.NodeRef(ref U02);
+                                            rw.NodeRef(ref U03);
                                         }
-                                    //}
+                                    }
                                 }
                             }
                         }
