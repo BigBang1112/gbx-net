@@ -30,6 +30,8 @@ if (directory is null)
 var files = Directory.GetFiles(directory, pattern, SearchOption.AllDirectories);
 var exceptionMessages = new List<string>();
 
+var successful = 0;
+
 for (var i = 0; i < files.Length; i++)
 {
     var fileName = files[i];
@@ -41,6 +43,10 @@ for (var i = 0; i < files.Length; i++)
         if (node is null)
         {
             Console.WriteLine(fileName + " returns null!");
+        }
+        else
+        {
+            successful++;
         }
     }
     catch (Exception ex)
@@ -55,7 +61,7 @@ for (var i = 0; i < files.Length; i++)
         }
     }
 
-    Console.Write("Progress: {0}/{1}", i + 1, files.Length);
+    Console.Write("Progress: {0}/{1}/{2} ({3})", successful, i + 1, files.Length, (successful / (float)(i + 1)).ToString("P"));
     Console.CursorLeft = 0;
 }
 
