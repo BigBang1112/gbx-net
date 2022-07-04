@@ -29,7 +29,7 @@ public partial class GameBoxReader
 
         var l = length * (lengthInBytes ? 1 : Marshal.SizeOf<T>());
 
-        if (l > 1_000_000 || l < 0)
+        if (l > 1_500_000 || l < 0)
         {
             throw new Exception($"Length is too big to handle on the stack ({(l < 0 ? length : l)}).");
         }
