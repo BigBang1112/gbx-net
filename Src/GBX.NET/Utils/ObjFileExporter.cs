@@ -6,12 +6,12 @@ internal class ObjFileExporter : IModelExporter, IDisposable
     private readonly StreamWriter mtlWriter;
     private readonly StringWriter objFaceWriter;
     private readonly StringWriter objUvWriter;
-    private readonly string gameDataFolderPath;
+    private readonly string? gameDataFolderPath;
 
     private int offsetVert;
     private int offsetUv;
 
-    public ObjFileExporter(Stream objStream, Stream mtlStream, string gameDataFolderPath)
+    public ObjFileExporter(Stream objStream, Stream mtlStream, string? gameDataFolderPath = null)
     {
         objWriter = new StreamWriter(objStream);
         mtlWriter = new StreamWriter(mtlStream);
@@ -36,6 +36,13 @@ internal class ObjFileExporter : IModelExporter, IDisposable
             foreach (var mat in crystal.Materials)
             {
                 if (mat is null || mat.Link is null)
+                {
+                    continue;
+                }
+                
+                mtlWriter.WriteLine("newmtl " + mat.Link);
+
+                if (gameDataFolderPath is null)
                 {
                     continue;
                 }
@@ -85,7 +92,6 @@ internal class ObjFileExporter : IModelExporter, IDisposable
                 var texDdsFolder = Path.GetDirectoryName(texGbx.FileName) ?? "";
                 var texDdsFilePath = Path.Combine(texDdsFolder, texRefTable.GetRelativeFolderPathToFile(texDdsFile), texDdsFile.FileName!);
 
-                mtlWriter.WriteLine("newmtl " + mat.Link);
                 mtlWriter.WriteLine($"map_Ka \"{texDdsFilePath}\"");
                 mtlWriter.WriteLine($"map_Kd \"{texDdsFilePath}\"");
 
@@ -251,7 +257,7 @@ internal class ObjFileExporter : IModelExporter, IDisposable
 
     private void WriteMaterialToMtl(CPlugMaterial material)
     {
-        if (material.CustomMaterial is null)
+        if (material.CustomMaterial is null || gameDataFolderPath is null)
         {
             return;
         }

@@ -77,7 +77,7 @@ public class CPlugCrystal : CPlugTreeGenerator
     /// <param name="objStream">Stream to write OBJ content into.</param>
     /// <param name="mtlStream">Stream to write MTL content into.</param>
     /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>
-    public void ExportToObj(Stream objStream, Stream mtlStream, string gameDataFolderPath)
+    public void ExportToObj(Stream objStream, Stream mtlStream, string? gameDataFolderPath = null)
     {
         using var exporter = new ObjFileExporter(objStream, mtlStream, gameDataFolderPath);
 
