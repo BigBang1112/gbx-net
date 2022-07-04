@@ -6,7 +6,7 @@ namespace GBX.NET.Engines.Plug;
 /// CPlugCrystal (0x09003000)
 /// </summary>
 /// <remarks>A custom mesh or model.</remarks>
-[Node(0x09003000)]
+[Node(0x09003000), WritingNotSupported]
 [NodeExtension("Crystal")]
 public class CPlugCrystal : CPlugTreeGenerator
 {
@@ -272,6 +272,8 @@ public class CPlugCrystal : CPlugTreeGenerator
                 faceIndicies = r.ReadOptimizedIntArray();
             }
 
+            var indiciesCounter = 0;
+
             faces = r.ReadArray(facesCount, r =>
             {
                 var uvVertices = crystalVersion >= 35 ? (r.ReadByte() + 3) : r.ReadInt32();
@@ -288,31 +290,43 @@ public class CPlugCrystal : CPlugTreeGenerator
                 {
                     uv = r.ReadArray<Vec2>(uvVertices);
                 }
+                else if (uvs is not null && faceIndicies is not null)
+                {
+                    uv = new Vec2[inds.Length];
+
+                    for (var i = 0; i < uv.Length; i++)
+                    {
+                        uv[i] = uvs[faceIndicies[indiciesCounter]];
+                        indiciesCounter++;
+                    }
+                }
 
                 var materialIndex = default(int);
 
                 if (crystalVersion >= 25)
                 {
-                    materialIndex = crystalVersion >= 33 ? r.ReadByte() : r.ReadInt32(); // optimized by amount of materials?
-                }
-
-                var groupIndex = crystalVersion >= 33 ? r.ReadByte() : r.ReadInt32(); // optimized by amount of groups?
-
-                if (crystalVersion > 32)
-                {
-                    return new Face()
+                    if (crystalVersion >= 33)
                     {
-                        VertCount = uvVertices,
-                        Indices = inds
-                    };
+                        materialIndex = n.Materials is null
+                            ? r.ReadInt32()
+                            : r.ReadOptimizedInt(n.Materials.Length);
+                    }
+                    else
+                    {
+                        materialIndex = r.ReadInt32();
+                    }
                 }
+
+                var groupIndex = crystalVersion >= 33 ? r.ReadOptimizedInt(groups.Length) : r.ReadInt32(); // optimized by amount of groups?
+
+                var material = materialIndex != -1 ? n.Materials?[materialIndex] : null;
                 
                 return new Face()
                 {
                     VertCount = uvVertices,
                     Indices = inds,
-                    UV = uv,
-                    Material = crystalVersion >= 32 /* 25 */ && materialIndex != -1 ? n.Materials?[materialIndex] : null,
+                    UV = uv ?? throw new Exception("No UVs"),
+                    Material = material,
                     Group = groups[groupIndex]
                 };
             });
@@ -773,7 +787,7 @@ public class CPlugCrystal : CPlugTreeGenerator
 
                 if (version >= 2)
                 {
-                    U03 = rw.Reader.ReadOptimizedIntArray(); // two Int16 technically
+                    rw.OptimizedIntArray(ref U03);
                 }
             }
         }
