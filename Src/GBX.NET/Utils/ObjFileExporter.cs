@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET.Utils;
 
-internal class ObjFileExporter : IDisposable
+internal class ObjFileExporter : IModelExporter, IDisposable
 {
     private readonly StreamWriter objWriter;
     private readonly StreamWriter mtlWriter;
@@ -18,10 +18,72 @@ internal class ObjFileExporter : IDisposable
         objUvWriter = new StringWriter();
     }
 
+    public void Export(CPlugCrystal crystal)
+    {
+        var invariant = System.Globalization.CultureInfo.InvariantCulture;
+
+        if (crystal.Materials is not null)
+        {
+            foreach (var mat in crystal.Materials)
+            {
+                if (mat is null)
+                {
+                    return;
+                }
+
+                mtlWriter.WriteLine("newmtl " + mat.Link);
+            }
+        }
+
+        foreach (var layer in crystal.Layers)
+        {
+            objFaceWriter.WriteLine($"\no {layer.LayerName}");
+
+            if (layer is not CPlugCrystal.GeometryLayer geometryLayer)
+            {
+                continue;
+            }
+            
+            var indexCounter = 1;
+
+            foreach (var face in geometryLayer.Crystal.Faces)
+            {
+                var f = new string[face.Indices.Length];
+                
+                for (int i = 0; i < f.Length; i++)
+                {
+                    var ind = face.Indices[i];
+                    var uv = face.UV[i];
+
+                    objWriter.WriteLine("v {0} {1} {2}", geometryLayer.Crystal.Vertices[ind].X.ToString(invariant), geometryLayer.Crystal.Vertices[ind].Y.ToString(invariant), geometryLayer.Crystal.Vertices[ind].Z.ToString(invariant));
+
+                    objUvWriter.WriteLine("vt {0} {1}", uv.X.ToString(invariant), uv.Y.ToString(invariant));
+
+                    f[i] = $"{indexCounter}/{indexCounter}";
+
+                    indexCounter++;
+                }
+
+                if (face.Material is not null)
+                {
+                    objFaceWriter.WriteLine("usemtl " + face.Material.Link);
+                }
+
+                objFaceWriter.WriteLine("f {0}", string.Join(" ", f));
+            }
+        }
+        
+        Merge();
+    }
+
     public void Export(CPlugTree tree)
     {
         ExportRecurse(tree);
+        Merge();
+    }
 
+    private void Merge()
+    {
         objWriter.WriteLine();
         //objWriter.WriteLine(objNormalWriter);
 #if NET6_0_OR_GREATER

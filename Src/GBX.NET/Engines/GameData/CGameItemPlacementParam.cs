@@ -312,8 +312,6 @@ public class CGameItemPlacementParam : CMwNod
     [Chunk(0x2E020001, "pivot positions")]
     public class Chunk2E020001 : SkippableChunk<CGameItemPlacementParam>
     {
-        public int U01;
-
         public override void ReadWrite(CGameItemPlacementParam n, GameBoxReaderWriter rw)
         {
             rw.Array<Vec3>(ref n.pivotPositions);

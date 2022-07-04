@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using GBX.NET.Utils;
+using System.Globalization;
 
 namespace GBX.NET.Engines.Plug;
 
@@ -69,6 +70,13 @@ public class CPlugCrystal : CPlugTreeGenerator
     #endregion
 
     #region Methods
+
+    public void ExportToObj(Stream objStream, Stream mtlStream)
+    {
+        using var exporter = new ObjFileExporter(objStream, mtlStream);
+
+        exporter.Export(this);
+    }
 
     public void ToOBJ(Stream stream)
     {
@@ -160,11 +168,10 @@ public class CPlugCrystal : CPlugTreeGenerator
             collidable = r.ReadBoolean();
         }
 
-        return new GeometryLayer
+        return new GeometryLayer(crystal)
         {
             LayerID = layerId,
             LayerName = layerName,
-            Crystal = crystal,
             IsEnabled = isEnabled,
             IsVisible = isVisible,
             Collidable = collidable
@@ -185,11 +192,10 @@ public class CPlugCrystal : CPlugTreeGenerator
             var countup = r.ReadArray<int>();
         }
 
-        return new TriggerLayer
+        return new TriggerLayer(crystal)
         {
             LayerID = layerId,
             LayerName = layerName,
-            Crystal = crystal,
             IsEnabled = isEnabled
         };
     }
@@ -448,12 +454,11 @@ public class CPlugCrystal : CPlugTreeGenerator
 
             n.Layers = new[]
             {
-                new GeometryLayer()
+                new GeometryLayer(ReadCrystal(r, n))
                 {
                     LayerID = "Layer0",
                     LayerName = "Geometry",
-                    IsEnabled = true,
-                    Crystal = ReadCrystal(r, n)
+                    IsEnabled = true
                 }
             };
         }
@@ -848,14 +853,24 @@ public class CPlugCrystal : CPlugTreeGenerator
 
     public class GeometryLayer : Layer
     {
-        public Crystal? Crystal { get; set; }
+        public Crystal Crystal { get; init; }
         public bool Collidable { get; set; }
         public bool IsVisible { get; set; }
+
+        public GeometryLayer(Crystal crystal)
+        {
+            Crystal = crystal;
+        }
     }
 
     public class TriggerLayer : Layer
     {
-        public Crystal? Crystal { get; set; }
+        public Crystal? Crystal { get; init; }
+
+        public TriggerLayer(Crystal crystal)
+        {
+            Crystal = crystal;
+        }
     }
 
     public class TranslationLayer : Layer
@@ -960,10 +975,10 @@ public class CPlugCrystal : CPlugTreeGenerator
 
     public class Crystal
     {
-        public Vec3[]? Vertices { get; set; }
-        public Int2[]? Edges { get; set; }
-        public Face[]? Faces { get; set; }
-        public Group[]? Groups { get; set; }
+        public Vec3[] Vertices { get; set; } = Array.Empty<Vec3>();
+        public Int2[] Edges { get; set; } = Array.Empty<Int2>();
+        public Face[] Faces { get; set; } = Array.Empty<Face>();
+        public Group[] Groups { get; set; } = Array.Empty<Group>();
     }
 
     #endregion
