@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// User profile (0x031CC000)
+/// User profile.
 /// </summary>
+/// <remarks>ID: 0x031CC000</remarks>
 [Node(0x031CC000)]
 public class CGameUserProfile : CMwNod
 {

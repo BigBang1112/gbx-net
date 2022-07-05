@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Manialink (0x0312A000)
+/// MediaTracker block - Manialink.
 /// </summary>
+/// <remarks>ID: 0x0312A000</remarks>
 [Node(0x0312A000)]
 [NodeExtension("GameCtnMediaBlockManialink")]
 public class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys

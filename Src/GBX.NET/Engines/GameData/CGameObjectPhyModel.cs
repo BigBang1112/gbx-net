@@ -1,11 +1,11 @@
 ﻿namespace GBX.NET.Engines.GameData;
 
-/// <summary>
-/// CGameObjectPhyModel (0x2E006000)
-/// </summary>
+/// <remarks>ID: 0x2E006000</remarks>
 [Node(0x2E006000)]
 public class CGameObjectPhyModel : CMwNod
 {
+    #region Enums
+
     public enum EPersistence
     {
         OnPlayerUnspawn,
@@ -19,6 +19,10 @@ public class CGameObjectPhyModel : CMwNod
         Target,
         Turret
     }
+
+    #endregion
+
+    #region Fields
 
     private CMwNod? specialProperties;
     private EPersistence? persistence;
@@ -43,10 +47,9 @@ public class CGameObjectPhyModel : CMwNod
     private string? hitShape;
     private string? triggerShape;
 
-    protected CGameObjectPhyModel()
-    {
-        
-    }
+    #endregion
+
+    #region Properties
 
     [NodeMember(ExactlyNamed = true)]
     public CMwNod? SpecialProperties { get => specialProperties; set => specialProperties = value; } // CPlugCharPhySpecialProperty
@@ -113,6 +116,17 @@ public class CGameObjectPhyModel : CMwNod
 
     [NodeMember(ExactlyNamed = true)]
     public string? TriggerShape { get => triggerShape; set => triggerShape = value; }
+
+    #endregion
+
+    #region Constructors
+
+    protected CGameObjectPhyModel()
+    {
+
+    }
+
+    #endregion
 
     #region Chunks
 

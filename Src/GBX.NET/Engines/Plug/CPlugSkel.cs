@@ -1,5 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090BA000</remarks>
 [Node(0x090BA000)]
 public class CPlugSkel : CMwNod
 {

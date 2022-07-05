@@ -1,8 +1,5 @@
 ﻿namespace GBX.NET.Engines.Game;
 
-/// <summary>
-/// CGameCtnDecoration (0x03038000)
-/// </summary>
 [Node(0x03038000)]
 [NodeExtension("TMDecoration")]
 [NodeExtension("Decoration")]

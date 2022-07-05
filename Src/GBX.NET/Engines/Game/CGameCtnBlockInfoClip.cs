@@ -1,8 +1,6 @@
 ﻿namespace GBX.NET.Engines.Game;
 
-/// <summary>
-/// CGameCtnBlockInfoClip (0x03053000)
-/// </summary>
+/// <remarks>ID: 0x03053000</remarks>
 [Node(0x03053000)]
 [NodeExtension("TMEDClip")]
 [NodeExtension("EDClip")]

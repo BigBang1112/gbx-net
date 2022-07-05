@@ -1,48 +1,43 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// League (0x0308E000)
+/// League (or zone in other words).
 /// </summary>
-/// <remarks>Or zone in other words.</remarks>
+/// <remarks>ID: 0x0308E000</remarks>
 [Node(0x0308E000)]
 [NodeExtension("League")]
 public class CGameLeague : CMwNod
 {
+    #region Fields
+
     private string path;
     private string name;
     private string description;
     private string login;
     private Uri flagUrl;
 
-    public string Path
-    {
-        get => path;
-        set => path = value;
-    }
+    #endregion
 
-    public string Name
-    {
-        get => name;
-        set => name = value;
-    }
+    #region Properties
 
-    public string Description
-    {
-        get => description;
-        set => description = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public string Path { get => path; set => path = value; }
 
-    public string Login
-    {
-        get => login;
-        set => login = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public string Name { get => name; set => name = value; }
 
-    public Uri FlagUrl
-    {
-        get => flagUrl;
-        set => flagUrl = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public string Description { get => description; set => description = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public string Login { get => login; set => login = value; }
+
+    [NodeMember]
+    public Uri FlagUrl { get => flagUrl; set => flagUrl = value; }
+
+    #endregion
+
+    #region Constructors
 
     protected CGameLeague()
     {
@@ -53,11 +48,24 @@ public class CGameLeague : CMwNod
         flagUrl = null!;
     }
 
+    #endregion
+
+    #region Methods
+
     public override string ToString()
     {
         return $"{base.ToString()} {{ \"{path}|{name}\" }}";
     }
 
+    #endregion
+
+    #region Chunks
+
+    #region 0x001 chunk
+
+    /// <summary>
+    /// CGameLeague 0x001 chunk
+    /// </summary>
     [Chunk(0x0308E001)]
     public class Chunk0308E001 : Chunk<CGameLeague>
     {
@@ -73,4 +81,8 @@ public class CGameLeague : CMwNod
             rw.Uri(ref n.flagUrl!);
         }
     }
+
+    #endregion
+
+    #endregion
 }

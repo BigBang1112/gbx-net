@@ -1,5 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0903B000</remarks>
 [Node(0x0903B000)]
 public class CPlugVisualGrid : CPlugVisual3D
 {
@@ -13,18 +14,21 @@ public class CPlugVisualGrid : CPlugVisual3D
         
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public int NbPointX { get => nbPointX; set => nbPointX = value; }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public int NbPointZ { get => nbPointZ; set => nbPointZ = value; }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public float RangeX { get => rangeX; set => rangeX = value; }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public float RangeZ { get => rangeZ; set => rangeZ = value; }
 
+    /// <summary>
+    /// CPlugVisualGrid 0x000 chunk
+    /// </summary>
     [Chunk(0x0903B000)]
     public class Chunk0903B000 : Chunk<CPlugVisualGrid>
     {

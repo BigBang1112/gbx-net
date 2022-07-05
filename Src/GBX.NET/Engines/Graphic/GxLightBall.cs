@@ -1,5 +1,6 @@
 ﻿namespace GBX.NET.Engines.Graphic;
 
+/// <remarks>ID: 0x04002000</remarks>
 [Node(0x04002000)]
 public class GxLightBall : GxLightPoint
 {
@@ -8,6 +9,9 @@ public class GxLightBall : GxLightPoint
 
     }
 
+    /// <summary>
+    /// GxLightBall 0x002 chunk
+    /// </summary>
     [Chunk(0x04002002)]
     public class Chunk04002002 : Chunk<GxLightBall>
     {

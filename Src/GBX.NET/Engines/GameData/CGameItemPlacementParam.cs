@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.GameData;
 
 /// <summary>
-/// Item placement parameters (0x2E020000)
+/// Item placement parameters.
 /// </summary>
+/// <remarks>ID: 0x2E020000</remarks>
 [Node(0x2E020000)]
 public class CGameItemPlacementParam : CMwNod
 {
@@ -280,11 +281,7 @@ public class CGameItemPlacementParam : CMwNod
     {
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameItemPlacementParam n, GameBoxReaderWriter rw)
         {

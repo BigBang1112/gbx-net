@@ -1,9 +1,9 @@
 ﻿namespace GBX.NET.Engines.System;
 
 /// <summary>
-/// CSystemConfig (0x0B005000)
+/// Handles all general game settings not related to a specific profile.
 /// </summary>
-/// <remarks>Handles all general game settings not related to a specific profile.</remarks>
+/// <remarks>ID: 0x0B005000</remarks>
 [Node(0x0B005000)]
 [NodeExtension("SystemConfig")]
 public class CSystemConfig : CMwNod
@@ -928,6 +928,9 @@ public class CSystemConfig : CMwNod
 
     #region Chunks
 
+    /// <summary>
+    /// CSystemConfig 0x008 skippable chunk
+    /// </summary>
     [Chunk(0x0B005008)]
     public class Chunk0B005008 : SkippableChunk<CSystemConfig>
     {
@@ -937,6 +940,9 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CSystemConfig 0x02B skippable chunk
+    /// </summary>
     [Chunk(0x0B00502B)]
     public class Chunk0B00502B : SkippableChunk<CSystemConfig>
     {
@@ -950,6 +956,9 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CSystemConfig 0x034 skippable chunk
+    /// </summary>
     [Chunk(0x0B005034)]
     public class Chunk0B005034 : SkippableChunk<CSystemConfig>
     {
@@ -969,6 +978,9 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CSystemConfig 0x035 skippable chunk
+    /// </summary>
     [Chunk(0x0B005035)]
     public class Chunk0B005035 : SkippableChunk<CSystemConfig>
     {
@@ -981,6 +993,9 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CSystemConfig 0x039 skippable chunk
+    /// </summary>
     [Chunk(0x0B005039)]
     public class Chunk0B005039 : SkippableChunk<CSystemConfig>
     {
@@ -1004,6 +1019,9 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CSystemConfig 0x03D skippable chunk
+    /// </summary>
     [Chunk(0x0B00503D)]
     public class Chunk0B00503D : SkippableChunk<CSystemConfig>
     {
@@ -1017,6 +1035,9 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CSystemConfig 0x041 skippable chunk
+    /// </summary>
     [Chunk(0x0B005041)]
     public class Chunk0B005041 : SkippableChunk<CSystemConfig>
     {
@@ -1028,6 +1049,9 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CSystemConfig 0x043 skippable chunk
+    /// </summary>
     [Chunk(0x0B005043)]
     public class Chunk0B005043 : SkippableChunk<CSystemConfig>
     {
@@ -1042,6 +1066,9 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CSystemConfig 0x044 skippable chunk
+    /// </summary>
     [Chunk(0x0B005044)]
     public class Chunk0B005044 : SkippableChunk<CSystemConfig>
     {
@@ -1056,6 +1083,9 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CSystemConfig 0x045 skippable chunk
+    /// </summary>
     [Chunk(0x0B005045)]
     public class Chunk0B005045 : SkippableChunk<CSystemConfig>
     {
@@ -1068,6 +1098,9 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CSystemConfig 0x047 skippable chunk
+    /// </summary>
     [Chunk(0x0B005047)]
     public class Chunk0B005047 : SkippableChunk<CSystemConfig>
     {
@@ -1079,6 +1112,9 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CSystemConfig 0x048 skippable chunk
+    /// </summary>
     [Chunk(0x0B005048)]
     public class Chunk0B005048 : SkippableChunk<CSystemConfig>
     {
@@ -1089,6 +1125,9 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CSystemConfig 0x04A skippable chunk
+    /// </summary>
     [Chunk(0x0B00504A)]
     public class Chunk0B00504A : SkippableChunk<CSystemConfig>
     {
@@ -1104,6 +1143,9 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CSystemConfig 0x04F skippable chunk
+    /// </summary>
     [Chunk(0x0B00504F)]
     public class Chunk0B00504F : SkippableChunk<CSystemConfig>
     {
@@ -1128,6 +1170,9 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CSystemConfig 0x050 skippable chunk
+    /// </summary>
     [Chunk(0x0B005050)]
     public class Chunk0B005050 : SkippableChunk<CSystemConfig>
     {
@@ -1139,6 +1184,9 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CSystemConfig 0x051 skippable chunk
+    /// </summary>
     [Chunk(0x0B005051)]
     public class Chunk0B005051 : SkippableChunk<CSystemConfig>
     {
@@ -1150,6 +1198,9 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CSystemConfig 0x052 skippable chunk
+    /// </summary>
     [Chunk(0x0B005052)]
     public class Chunk0B005052 : SkippableChunk<CSystemConfig>
     {
@@ -1167,6 +1218,9 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CSystemConfig 0x053 skippable chunk
+    /// </summary>
     [Chunk(0x0B005053)]
     public class Chunk0B005053 : SkippableChunk<CSystemConfig>
     {
@@ -1176,6 +1230,9 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CSystemConfig 0x056 skippable chunk
+    /// </summary>
     [Chunk(0x0B005056)]
     public class Chunk0B005056 : SkippableChunk<CSystemConfig>
     {
@@ -1194,6 +1251,9 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CSystemConfig 0x059 skippable chunk
+    /// </summary>
     [Chunk(0x0B005059)]
     public class Chunk0B005059 : SkippableChunk<CSystemConfig>
     {

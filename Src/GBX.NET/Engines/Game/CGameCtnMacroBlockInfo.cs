@@ -1,9 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// CGameCtnMacroBlockInfo (0x0310D000)
+/// A macroblock.
 /// </summary>
-/// <remarks>A macroblock.</remarks>
+/// <remarks>ID: 0x0310D000</remarks>
 [Node(0x0310D000), WritingNotSupported]
 [NodeExtension("MacroBlock")]
 public class CGameCtnMacroBlockInfo : CGameCtnCollector

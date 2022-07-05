@@ -3,8 +3,9 @@
 namespace GBX.NET.Engines.Input;
 
 /// <summary>
-/// Input bindings configuration (0x13006000)
+/// Input bindings configuration.
 /// </summary>
+/// <remarks>ID: 0x13006000</remarks>
 [Node(0x13006000)]
 public class CInputBindingsConfig : CMwNod
 {
@@ -17,6 +18,9 @@ public class CInputBindingsConfig : CMwNod
         Bindings = null!;
     }
 
+    /// <summary>
+    /// CInputBindingsConfig 0x000 chunk
+    /// </summary>
     [Chunk(0x13006000)]
     public class Chunk13006000 : Chunk<CInputBindingsConfig>
     {
@@ -39,6 +43,9 @@ public class CInputBindingsConfig : CMwNod
         }
     }
 
+    /// <summary>
+    /// CInputBindingsConfig 0x001 chunk
+    /// </summary>
     [Chunk(0x13006001)]
     public class Chunk13006001 : Chunk<CInputBindingsConfig>
     {

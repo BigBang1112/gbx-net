@@ -9,29 +9,10 @@ public partial class CGameCtnMediaBlockDOF
         private int? target;
         private Vec3? targetPosition;
 
-        public float ZFocus
-        {
-            get => zFocus;
-            set => zFocus = value;
-        }
-
-        public float LensSize
-        {
-            get => lensSize;
-            set => lensSize = value;
-        }
-
-        public int? Target
-        {
-            get => target;
-            set => target = value;
-        }
-
-        public Vec3? TargetPosition
-        {
-            get => targetPosition;
-            set => targetPosition = value;
-        }
+        public float ZFocus { get => zFocus; set => zFocus = value; }
+        public float LensSize { get => lensSize; set => lensSize = value; }
+        public int? Target { get => target; set => target = value; }
+        public Vec3? TargetPosition { get => targetPosition; set => targetPosition = value; }
 
         public override void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {

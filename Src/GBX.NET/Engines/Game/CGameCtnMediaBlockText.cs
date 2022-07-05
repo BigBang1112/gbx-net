@@ -3,8 +3,9 @@
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Text (0x030A8000)
+/// MediaTracker block - Text.
 /// </summary>
+/// <remarks>ID: 0x030A8000</remarks>
 [Node(0x030A8000)]
 [NodeExtension("GameCtnMediaBlockText")]
 public class CGameCtnMediaBlockText : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
@@ -60,6 +61,9 @@ public class CGameCtnMediaBlockText : CGameCtnMediaBlock, CGameCtnMediaBlock.IHa
 
     #region 0x001 chunk (text)
 
+    /// <summary>
+    /// CGameCtnMediaBlockText 0x001 chunk (text)
+    /// </summary>
     [Chunk(0x030A8001, "text")]
     public class Chunk030A8001 : Chunk<CGameCtnMediaBlockText>
     {
@@ -74,6 +78,9 @@ public class CGameCtnMediaBlockText : CGameCtnMediaBlock, CGameCtnMediaBlock.IHa
 
     #region 0x002 chunk (color)
 
+    /// <summary>
+    /// CGameCtnMediaBlockText 0x002 chunk (color)
+    /// </summary>
     [Chunk(0x030A8002, "color")]
     public class Chunk030A8002 : Chunk<CGameCtnMediaBlockText>
     {
@@ -87,6 +94,9 @@ public class CGameCtnMediaBlockText : CGameCtnMediaBlock, CGameCtnMediaBlock.IHa
 
     #region 0x003 chunk
 
+    /// <summary>
+    /// CGameCtnMediaBlockText 0x003 chunk
+    /// </summary>
     [Chunk(0x030A8003)]
     public class Chunk030A8003 : Chunk<CGameCtnMediaBlockText>
     {

@@ -1,26 +1,32 @@
 ﻿namespace GBX.NET.Engines.Function;
 
-/// <summary>
-/// CFuncKeys (0x05002000)
-/// </summary>
+/// <remarks>ID: 0x05002000</remarks>
 [Node(0x05002000)]
 [NodeExtension("FuncKey")]
 public abstract class CFuncKeys : CFunc
 {
+    #region Fields
+
     private float[]? xs;
+
+    #endregion
+
+    #region Properties
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk05002001))]
-    public float[]? Xs
-    {
-        get => xs;
-        set => xs = value;
-    }
+    public float[]? Xs { get => xs; set => xs = value; }
 
+    #endregion
+
+    #region Constructors
+    
     protected CFuncKeys()
     {
 
     }
+
+    #endregion
 
     #region Chunks
 
@@ -42,6 +48,9 @@ public abstract class CFuncKeys : CFunc
 
     #region 0x003 chunk
 
+    /// <summary>
+    /// CFuncKeys 0x003 chunk
+    /// </summary>
     [Chunk(0x05002003)]
     public class Chunk05002003 : Chunk<CFuncKeys>
     {

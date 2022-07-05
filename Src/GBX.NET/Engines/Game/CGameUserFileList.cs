@@ -1,16 +1,31 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <remarks>ID: 0x031B7000</remarks>
 [Node(0x031B7000)]
 public partial class CGameUserFileList : CMwNod
 {
+    #region Fields
+
     private IList<FileInfo> files;
 
+    #endregion
+
+    #region Properties
+
     public IList<FileInfo> Files { get => files; set => files = value; }
+
+    #endregion
+
+    #region Constructors
 
     protected CGameUserFileList()
     {
         files = null!;
     }
+
+    #endregion
+
+    #region Chunks
 
     #region 0x000 chunk
 
@@ -32,6 +47,8 @@ public partial class CGameUserFileList : CMwNod
             rw.List<FileInfo>(ref n.files!, FileInfo.ReadWrite);
         }
     }
+
+    #endregion
 
     #endregion
 }

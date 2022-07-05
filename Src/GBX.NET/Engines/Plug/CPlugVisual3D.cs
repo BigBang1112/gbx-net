@@ -1,8 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
-/// <summary>
-/// 3D visual (0x0902C000)
-/// </summary>
+/// <remarks>ID: 0x0902C000</remarks>
 [Node(0x0902C000), WritingNotSupported]
 public abstract class CPlugVisual3D : CPlugVisual
 {
@@ -19,6 +17,9 @@ public abstract class CPlugVisual3D : CPlugVisual
         vertices = null!;
     }
 
+    /// <summary>
+    /// CPlugVisual3D 0x002 chunk
+    /// </summary>
     [Chunk(0x0902C002)]
     public class Chunk0902C002 : Chunk<CPlugVisual3D>
     {
@@ -30,6 +31,9 @@ public abstract class CPlugVisual3D : CPlugVisual
         }
     }
 
+    /// <summary>
+    /// CPlugVisual3D 0x003 chunk
+    /// </summary>
     [Chunk(0x0902C003)]
     public class Chunk0902C003 : Chunk<CPlugVisual3D>
     {
@@ -56,6 +60,9 @@ public abstract class CPlugVisual3D : CPlugVisual
         }
     }
 
+    /// <summary>
+    /// CPlugVisual3D 0x004 chunk
+    /// </summary>
     [Chunk(0x0902C004)]
     public class Chunk0902C004 : Chunk<CPlugVisual3D>
     {

@@ -1,10 +1,17 @@
 ﻿namespace GBX.NET.Engines.Control;
 
+/// <remarks>ID: 0x07002000</remarks>
 [Node(0x07002000)]
 public class CControlContainer : CControlBase
 {
+    #region Fields
+
     private bool acceptOwnControls;
     private bool useScript;
+
+    #endregion
+
+    #region Properties
 
     [NodeMember(ExactlyNamed = true)]
     public bool AcceptOwnControls { get => acceptOwnControls; set => acceptOwnControls = value; }
@@ -12,10 +19,20 @@ public class CControlContainer : CControlBase
     [NodeMember(ExactlyNamed = true)]
     public bool UseScript { get => useScript; set => useScript = value; }
 
+    #endregion
+
+    #region Constructors
+
     protected CControlContainer()
     {
 
     }
+
+    #endregion
+
+    #region Chunks
+
+    #region 0x005 chunk
 
     [Chunk(0x07002005)]
     public class Chunk07002005 : Chunk<CControlContainer>
@@ -40,4 +57,8 @@ public class CControlContainer : CControlBase
             }
         }
     }
+
+    #endregion
+
+    #endregion
 }

@@ -1,5 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09004000</remarks>
 [Node(0x09004000)]
 public abstract class CPlugShaderGeneric : CPlugShader
 {
@@ -8,6 +9,9 @@ public abstract class CPlugShaderGeneric : CPlugShader
 
     }
 
+    /// <summary>
+    /// CPlugShaderGeneric 0x001 chunk
+    /// </summary>
     [Chunk(0x09004001)]
     public class Chunk09004001 : Chunk<CPlugShaderGeneric>
     {
@@ -19,6 +23,9 @@ public abstract class CPlugShaderGeneric : CPlugShader
         }
     }
 
+    /// <summary>
+    /// CPlugShaderGeneric 0x003 chunk
+    /// </summary>
     [Chunk(0x09004003)]
     public class Chunk09004003 : Chunk<CPlugShaderGeneric>
     {

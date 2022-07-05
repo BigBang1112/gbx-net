@@ -1,8 +1,6 @@
 ﻿namespace GBX.NET.Engines.GameData;
 
-/// <summary>
-/// CGameObjectModel (0x2E01D000)
-/// </summary>
+/// <remarks>ID: 0x2E01D000</remarks>
 [Node(0x2E01D000)]
 public class CGameObjectModel : CMwNod
 {
@@ -15,6 +13,9 @@ public class CGameObjectModel : CMwNod
 
     }
 
+    /// <summary>
+    /// CGameObjectModel 0x000 chunk
+    /// </summary>
     [Chunk(0x2E01D000)]
     public class Chunk2E01D000 : Chunk<CGameObjectModel>
     {

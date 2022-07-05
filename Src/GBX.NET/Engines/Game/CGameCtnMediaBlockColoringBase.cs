@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Coloring base (0x03172000)
+/// MediaTracker block - Coloring base.
 /// </summary>
+/// <remarks>ID: 0x03172000</remarks>
 [Node(0x03172000)]
 [NodeExtension("GameCtnMediaBlockColoringBase")]
 public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys

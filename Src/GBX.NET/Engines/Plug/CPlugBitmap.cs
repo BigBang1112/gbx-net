@@ -1,9 +1,9 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 /// <summary>
-/// CPlugBitmap (0x09011000)
+/// A texture.
 /// </summary>
-/// <remarks>A texture.</remarks>
+/// <remarks>ID: 0x09011000</remarks>
 [Node(0x09011000), WritingNotSupported]
 [NodeExtension("Texture")]
 public class CPlugBitmap : CPlug
@@ -13,6 +13,9 @@ public class CPlugBitmap : CPlug
 
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x015 chunk
+    /// </summary>
     [Chunk(0x09011015)]
     public class Chunk09011015 : Chunk<CPlugBitmap>
     {
@@ -27,6 +30,9 @@ public class CPlugBitmap : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x017 chunk
+    /// </summary>
     [Chunk(0x09011017)]
     public class Chunk09011017 : Chunk<CPlugBitmap>
     {
@@ -40,6 +46,9 @@ public class CPlugBitmap : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x018 chunk
+    /// </summary>
     [Chunk(0x09011018), AutoReadWriteChunk]
     public class Chunk09011018 : Chunk<CPlugBitmap>
     {
@@ -49,6 +58,9 @@ public class CPlugBitmap : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x019 chunk
+    /// </summary>
     [Chunk(0x09011019)]
     public class Chunk09011019 : Chunk<CPlugBitmap>
     {
@@ -60,6 +72,9 @@ public class CPlugBitmap : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x01B chunk
+    /// </summary>
     [Chunk(0x0901101B)]
     public class Chunk0901101B : Chunk<CPlugBitmap>
     {
@@ -69,6 +84,9 @@ public class CPlugBitmap : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x01C chunk
+    /// </summary>
     [Chunk(0x0901101C)]
     public class Chunk0901101C : Chunk<CPlugBitmap>
     {
@@ -88,6 +106,9 @@ public class CPlugBitmap : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x01D chunk
+    /// </summary>
     [Chunk(0x0901101D)]
     public class Chunk0901101D : Chunk<CPlugBitmap>
     {
@@ -101,6 +122,9 @@ public class CPlugBitmap : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x01E chunk
+    /// </summary>
     [Chunk(0x0901101E)]
     public class Chunk0901101E : Chunk<CPlugBitmap>
     {
@@ -112,6 +136,9 @@ public class CPlugBitmap : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x020 chunk
+    /// </summary>
     [Chunk(0x09011020)]
     public class Chunk09011020 : Chunk<CPlugBitmap>
     {
@@ -123,6 +150,9 @@ public class CPlugBitmap : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x022 chunk
+    /// </summary>
     [Chunk(0x09011022)]
     public class Chunk09011022 : Chunk<CPlugBitmap>
     {
@@ -150,6 +180,9 @@ public class CPlugBitmap : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugBitmap 0x024 chunk
+    /// </summary>
     [Chunk(0x09011024)]
     public class Chunk09011024 : Chunk<CPlugBitmap>
     {

@@ -1,8 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
-/// <summary>
-/// CPlugCamShakeModel (0x0910B000)
-/// </summary>
+/// <remarks>ID: 0x0910B000</remarks>
 [Node(0x0910B000)]
 public class CPlugCamShakeModel : CMwNod
 {

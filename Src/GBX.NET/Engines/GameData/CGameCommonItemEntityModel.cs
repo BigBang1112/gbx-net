@@ -1,5 +1,6 @@
 ﻿namespace GBX.NET.Engines.GameData;
 
+/// <remarks>ID: 0x2E027000</remarks>
 [Node(0x2E027000)]
 public class CGameCommonItemEntityModel : CMwNod
 {

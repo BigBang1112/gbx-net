@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Item placed on a map (0x03101000)
+/// Item placed on a map.
 /// </summary>
+/// <remarks>ID: 0x03101000</remarks>
 [Node(0x03101000)]
 public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
 {
@@ -27,89 +28,53 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     /// <summary>
     /// Name of the item with collection and author
     /// </summary>
-    [NodeMember]
-    public Ident ItemModel
-    {
-        get => itemModel;
-        set => itemModel = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public Ident ItemModel { get => itemModel; set => itemModel = value; }
 
     /// <summary>
     /// Pitch, yaw and roll of the item in radians.
     /// </summary>
     [NodeMember]
-    public Vec3 PitchYawRoll
-    {
-        get => pitchYawRoll;
-        set => pitchYawRoll = value;
-    }
+    public Vec3 PitchYawRoll { get => pitchYawRoll; set => pitchYawRoll = value; }
 
     /// <summary>
     /// Block coordinates that the item is approximately located in. It doesn't have to be provided most of the time.
     /// </summary>
-    [NodeMember]
-    public Byte3 BlockUnitCoord
-    {
-        get => blockUnitCoord;
-        set => blockUnitCoord = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public Byte3 BlockUnitCoord { get => blockUnitCoord; set => blockUnitCoord = value; }
 
-    [NodeMember]
-    public string AnchorTreeId
-    {
-        get => anchorTreeId;
-        set => anchorTreeId = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public string AnchorTreeId { get => anchorTreeId; set => anchorTreeId = value; }
 
     /// <summary>
     /// The X, Y and Z position in the real world space of the item.
     /// </summary>
-    [NodeMember]
-    public Vec3 AbsolutePositionInMap
-    {
-        get => absolutePositionInMap;
-        set => absolutePositionInMap = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public Vec3 AbsolutePositionInMap { get => absolutePositionInMap; set => absolutePositionInMap = value; }
 
     /// <summary>
     /// If the item is a waypoint, contains inner waypoint info, otherwise null.
     /// </summary>
-    [NodeMember]
-    public CGameWaypointSpecialProperty? WaypointSpecialProperty
-    {
-        get => waypointSpecialProperty;
-        set => waypointSpecialProperty = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public CGameWaypointSpecialProperty? WaypointSpecialProperty { get => waypointSpecialProperty; set => waypointSpecialProperty = value; }
 
     /// <summary>
     /// Flags of the item.
     /// </summary>
     [NodeMember]
-    public short Flags
-    {
-        get => flags;
-        set => flags = value;
-    }
+    public short Flags { get => flags; set => flags = value; }
 
     /// <summary>
     /// Scale of the item.
     /// </summary>
-    [NodeMember]
-    public float Scale
-    {
-        get => scale;
-        set => scale = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public float Scale { get => scale; set => scale = value; }
 
     /// <summary>
     /// Pivot position of the item. Useful for making rotations around a different point than center.
     /// </summary>
     [NodeMember]
-    public Vec3 PivotPosition
-    {
-        get => pivotPosition;
-        set => pivotPosition = value;
-    }
+    public Vec3 PivotPosition { get => pivotPosition; set => pivotPosition = value; }
 
     /// <summary>
     /// Variant index of the item. Taken from flags.
@@ -137,11 +102,7 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     }
 
     [NodeMember]
-    public FileRef? Skin
-    {
-        get => skin;
-        set => skin = value;
-    }
+    public FileRef? Skin { get => skin; set => skin = value; }
 
     CGameCtnChallenge? INodeDependant<CGameCtnChallenge>.DependingNode { get; set; }
 
@@ -187,19 +148,15 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     [Chunk(0x03101002)]
     public class Chunk03101002 : Chunk<CGameCtnAnchoredObject>, IVersionable
     {
+        private int version = 7;
+
         public Vec3 U01;
         public Vec3 U02;
-
-        private int version = 7;
 
         /// <summary>
         /// Version of the chunk. For the lastst TM2 version, version 7 the latest, in TM®, the latest known version is 8.
         /// </summary>
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnAnchoredObject n, GameBoxReaderWriter rw, ILogger? logger)
         {

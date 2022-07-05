@@ -3,9 +3,9 @@
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// CGameCtnGhost (0x03092000)
+/// A ghost.
 /// </summary>
-/// <remarks>A ghost.</remarks>
+/// <remarks>ID: 0x03092000</remarks>
 [Node(0x03092000)]
 [NodeExtension("Ghost")]
 public partial class CGameCtnGhost : CGameGhost

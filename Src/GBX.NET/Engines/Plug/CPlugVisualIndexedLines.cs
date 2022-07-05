@@ -1,9 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
-/// <summary>
-/// Indexed visual as lines (0x09009000)
-/// </summary>
-/// <remarks>Handles indicies of a 3D mesh by line connections.</remarks>
+/// <remarks>ID: 0x09009000</remarks>
 [Node(0x09009000)]
 public class CPlugVisualIndexedLines : CPlugVisualIndexed
 {
@@ -12,6 +9,9 @@ public class CPlugVisualIndexedLines : CPlugVisualIndexed
 
     }
 
+    /// <summary>
+    /// CPlugVisualIndexedLines 0x001 chunk
+    /// </summary>
     [Chunk(0x09009001)]
     public class Chunk09009001 : Chunk<CPlugVisualIndexedLines>
     {

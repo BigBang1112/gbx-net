@@ -3,9 +3,9 @@
 namespace GBX.NET.Engines.Control;
 
 /// <summary>
-/// CControlEffectSimi (0x07005000)
+/// An effect used on certain MediaTracker block types that tells how to generally render the component.
 /// </summary>
-/// <remarks>An effect used on certain MediaTracker block types that tells how to generally render the component.</remarks>
+/// <remarks>ID: 0x07005000</remarks>
 [Node(0x07010000)]
 [NodeExtension("ControlEffect")]
 public partial class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHasKeys
@@ -24,7 +24,7 @@ public partial class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHa
 
     IEnumerable<CGameCtnMediaBlock.Key> CGameCtnMediaBlock.IHasKeys.Keys
     {
-        get => keys.Cast<CGameCtnMediaBlock.Key>().ToList();
+        get => keys.Cast<CGameCtnMediaBlock.Key>();
         set => keys = value.Cast<Key>().ToList();
     }
 
@@ -32,52 +32,38 @@ public partial class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHa
     /// Keyframes of the effect.
     /// </summary>
     [NodeMember]
-    public IList<Key> Keys
-    {
-        get => keys;
-        set => keys = value;
-    }
+    public IList<Key> Keys { get => keys; set => keys = value; }
 
     /// <summary>
     /// If the effect should be centered.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
-    public bool Centered
-    {
-        get => centered;
-        set => centered = value;
-    }
+    public bool Centered { get => centered; set => centered = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public int ColorBlendMode
-    {
-        get => colorBlendMode;
-        set => colorBlendMode = value;
-    }
+    public int ColorBlendMode { get => colorBlendMode; set => colorBlendMode = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public bool IsContinousEffect
-    {
-        get => isContinousEffect;
-        set => isContinousEffect = value;
-    }
+    public bool IsContinousEffect { get => isContinousEffect; set => isContinousEffect = value; }
 
     /// <summary>
     /// If the keyframes should interpolate values between each other.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
-    public bool IsInterpolated
-    {
-        get => isInterpolated;
-        set => isInterpolated = value;
-    }
+    public bool IsInterpolated { get => isInterpolated; set => isInterpolated = value; }
 
     #endregion
+
+    #region Constructors
 
     protected CControlEffectSimi()
     {
         keys = null!;
     }
+
+    #endregion
+
+    #region Methods
 
     /// <summary>
     /// Creates a new builder that can output <see cref="CControlEffectSimi"/> in certain versions with certain chunks and values.
@@ -87,6 +73,8 @@ public partial class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHa
     {
         return new CControlEffectSimiBuilder();
     }
+
+    #endregion
 
     #region Chunks
 

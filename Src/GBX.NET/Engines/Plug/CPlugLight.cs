@@ -2,6 +2,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0901D000</remarks>
 [Node(0x0901D000)]
 public class CPlugLight : CPlug
 {
@@ -10,35 +11,26 @@ public class CPlugLight : CPlug
     private CPlugBitmap? bitmapFlare;
     private CPlugBitmap? bitmapProjector;
 
-    public GxLight? GxLightModel
-    {
-        get => gxLightModel;
-        set => gxLightModel = value;
-    }
+    [NodeMember(ExactName = "m_GxLightModel")]
+    public GxLight? GxLightModel { get => gxLightModel; set => gxLightModel = value; }
 
-    public CFuncLight? FuncLight
-    {
-        get => funcLight;
-        set => funcLight = value;
-    }
+    [NodeMember(ExactName = "m_FuncLight")]
+    public CFuncLight? FuncLight { get => funcLight; set => funcLight = value; }
 
-    public CPlugBitmap? BitmapFlare
-    {
-        get => bitmapFlare;
-        set => bitmapFlare = value;
-    }
+    [NodeMember(ExactName = "m_BitmapFlare")]
+    public CPlugBitmap? BitmapFlare { get => bitmapFlare; set => bitmapFlare = value; }
 
-    public CPlugBitmap? BitmapProjector
-    {
-        get => bitmapProjector;
-        set => bitmapProjector = value;
-    }
+    [NodeMember(ExactName = "m_BitmapProjector")]
+    public CPlugBitmap? BitmapProjector { get => bitmapProjector; set => bitmapProjector = value; }
 
     protected CPlugLight()
     {
 
     }
 
+    /// <summary>
+    /// CPlugLight 0x000 chunk
+    /// </summary>
     [Chunk(0x0901D000)]
     public class Chunk0901D000 : Chunk<CPlugLight>
     {

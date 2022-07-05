@@ -1,25 +1,25 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Podium info (0x03168000)
+/// Podium info.
 /// </summary>
+/// <remarks>ID: 0x03168000</remarks>
 [Node(0x03168000)]
 [NodeExtension("GamePodiumInfo")]
 public class CGamePodiumInfo : CMwNod
 {
     private int[] mediaClipFids;
 
-    public int[] MediaClipFids
-    {
-        get => mediaClipFids;
-        set => mediaClipFids = value;
-    }
+    public int[] MediaClipFids { get => mediaClipFids; set => mediaClipFids = value; }
 
     protected CGamePodiumInfo()
     {
         mediaClipFids = null!;
     }
 
+    /// <summary>
+    /// CGamePodiumInfo 0x000 chunk
+    /// </summary>
     [Chunk(0x03168000)]
     public class Chunk03168000 : Chunk<CGamePodiumInfo>
     {

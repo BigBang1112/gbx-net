@@ -7,17 +7,8 @@ public partial class CGameCtnMediaBlockFxBloom
         private float intensity;
         private float sensitivity;
 
-        public float Intensity
-        {
-            get => intensity;
-            set => intensity = value;
-        }
-
-        public float Sensitivity
-        {
-            get => sensitivity;
-            set => sensitivity = value;
-        }
+        public float Intensity { get => intensity; set => intensity = value; }
+        public float Sensitivity { get => sensitivity; set => sensitivity = value; }
 
         public override void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {

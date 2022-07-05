@@ -1,28 +1,50 @@
 ﻿namespace GBX.NET.Engines.Function;
 
+/// <remarks>ID: 0x05031000</remarks>
 [Node(0x05031000)]
 public class CFuncTreeSubVisualSequence : CFuncTree
 {
+    #region Fields
+
     private CFuncKeysNatural? subKeys;
     private bool simpleModeIsLooping;
     private int simpleModeStartIndex;
     private int simpleModeEndIndex;
 
-    public CFuncKeysNatural? SubKeys
-    {
-        get => subKeys;
-        set => subKeys = value;
-    }
+    #endregion
 
+    #region Properties
+
+    [NodeMember(ExactlyNamed = true)]
+    public CFuncKeysNatural? SubKeys { get => subKeys; set => subKeys = value; }
+
+    [NodeMember(ExactlyNamed = true)]
     public bool SimpleModeIsLooping { get => simpleModeIsLooping; set => simpleModeIsLooping = value; }
+
+    [NodeMember(ExactlyNamed = true)]
     public int SimpleModeStartIndex { get => simpleModeStartIndex; set => simpleModeStartIndex = value; }
+    
+    [NodeMember(ExactlyNamed = true)]
     public int SimpleModeEndIndex { get => simpleModeEndIndex; set => simpleModeEndIndex = value; }
+
+    #endregion
+
+    #region Constructors
 
     protected CFuncTreeSubVisualSequence()
     {
 
     }
 
+    #endregion
+
+    #region Chunks
+
+    #region 0x000 chunk
+
+    /// <summary>
+    /// CFuncTreeSubVisualSequence 0x000 chunk
+    /// </summary>
     [Chunk(0x05031000)]
     public class Chunk05031000 : Chunk<CFuncTreeSubVisualSequence>
     {
@@ -43,6 +65,13 @@ public class CFuncTreeSubVisualSequence : CFuncTree
         }
     }
 
+    #endregion
+
+    #region 0x001 chunk
+
+    /// <summary>
+    /// CFuncTreeSubVisualSequence 0x001 chunk
+    /// </summary>
     [Chunk(0x05031001)]
     public class Chunk05031001 : Chunk<CFuncTreeSubVisualSequence>
     {
@@ -54,6 +83,13 @@ public class CFuncTreeSubVisualSequence : CFuncTree
         }
     }
 
+    #endregion
+
+    #region 0x002 chunk
+
+    /// <summary>
+    /// CFuncTreeSubVisualSequence 0x002 chunk
+    /// </summary>
     [Chunk(0x05031002)]
     public class Chunk05031002 : Chunk<CFuncTreeSubVisualSequence>
     {
@@ -63,6 +99,13 @@ public class CFuncTreeSubVisualSequence : CFuncTree
         }
     }
 
+    #endregion
+
+    #region 0x003
+
+    /// <summary>
+    /// CFuncTreeSubVisualSequence 0x003 chunk
+    /// </summary>
     [Chunk(0x05031003)]
     public class Chunk05031003 : Chunk<CFuncTreeSubVisualSequence>
     {
@@ -73,4 +116,8 @@ public class CFuncTreeSubVisualSequence : CFuncTree
             rw.Int32(ref n.simpleModeEndIndex);
         }
     }
+
+    #endregion
+
+    #endregion
 }

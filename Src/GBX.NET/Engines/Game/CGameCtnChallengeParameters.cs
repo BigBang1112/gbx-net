@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Map parameters (0x0305B000)
+/// Map parameters.
 /// </summary>
+/// <remarks>ID: 0x0305B000</remarks>
 [Node(0x0305B000)]
 public class CGameCtnChallengeParameters : CMwNod
 {

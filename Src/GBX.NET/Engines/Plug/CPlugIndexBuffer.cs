@@ -1,6 +1,7 @@
 namespace GBX.NET.Engines.Plug;
 
-[Node(0x9057000)]
+/// <remarks>ID: 0x09057000</remarks>
+[Node(0x09057000)]
 public class CPlugIndexBuffer : CPlug
 {
     private int flags;
@@ -13,7 +14,10 @@ public class CPlugIndexBuffer : CPlug
         indices = null!;
     }
 
-    [Chunk(0x9057000)]
+    /// <summary>
+    /// CPlugIndexBuffer 0x000 chunk
+    /// </summary>
+    [Chunk(0x09057000)]
     public class Chunk09057000 : Chunk<CPlugIndexBuffer>
     {
         public override void ReadWrite(CPlugIndexBuffer n, GameBoxReaderWriter rw)

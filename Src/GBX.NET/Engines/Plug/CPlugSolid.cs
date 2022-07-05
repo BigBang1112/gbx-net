@@ -3,9 +3,9 @@
 namespace GBX.NET.Engines.Plug;
 
 /// <summary>
-/// CPlugSolid (0x09005000)
+/// An official mesh or model.
 /// </summary>
-/// <remarks>An official mesh or model.</remarks>
+/// <remarks>ID: 0x09005000</remarks>
 [Node(0x09005000), WritingNotSupported]
 [NodeExtension("Solid")]
 public class CPlugSolid : CPlug
@@ -42,6 +42,9 @@ public class CPlugSolid : CPlug
         exporter.Export(tree);
     }
 
+    /// <summary>
+    /// CPlugSolid 0x000 chunk
+    /// </summary>
     [Chunk(0x09005000)]
     public class Chunk09005000 : Chunk<CPlugSolid>
     {
@@ -53,6 +56,9 @@ public class CPlugSolid : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x006 chunk
+    /// </summary>
     [Chunk(0x09005006)]
     public class Chunk09005006 : Chunk<CPlugSolid>
     {
@@ -94,6 +100,9 @@ public class CPlugSolid : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x007 chunk
+    /// </summary>
     [Chunk(0x09005007)]
     public class Chunk09005007 : Chunk<CPlugSolid>
     {
@@ -105,6 +114,9 @@ public class CPlugSolid : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x00B chunk
+    /// </summary>
     [Chunk(0x0900500B)]
     public class Chunk0900500B : Chunk<CPlugSolid>
     {
@@ -128,6 +140,9 @@ public class CPlugSolid : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x00C chunk
+    /// </summary>
     [Chunk(0x0900500C)]
     public class Chunk0900500C : Chunk<CPlugSolid>
     {
@@ -173,6 +188,9 @@ public class CPlugSolid : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x00D chunk
+    /// </summary>
     [Chunk(0x0900500D)]
     public class Chunk0900500D : Chunk<CPlugSolid>
     {
@@ -194,6 +212,9 @@ public class CPlugSolid : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x00E chunk
+    /// </summary>
     [Chunk(0x0900500E)]
     public class Chunk0900500E : Chunk<CPlugSolid>
     {
@@ -237,6 +258,9 @@ public class CPlugSolid : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x00F chunk
+    /// </summary>
     [Chunk(0x0900500F)]
     public class Chunk0900500F : Chunk<CPlugSolid>
     {
@@ -250,6 +274,9 @@ public class CPlugSolid : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x010 chunk
+    /// </summary>
     [Chunk(0x09005010)]
     public class Chunk09005010 : Chunk<CPlugSolid>
     {
@@ -261,6 +288,9 @@ public class CPlugSolid : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x011 chunk
+    /// </summary>
     [Chunk(0x09005011)]
     public class Chunk09005011 : Chunk<CPlugSolid>
     {
@@ -282,6 +312,9 @@ public class CPlugSolid : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x012 chunk
+    /// </summary>
     [Chunk(0x09005012)]
     public class Chunk09005012 : Chunk<CPlugSolid>
     {

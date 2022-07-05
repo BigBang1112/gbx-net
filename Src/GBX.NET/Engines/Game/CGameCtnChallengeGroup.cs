@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Group of maps (0x0308F000)
+/// Group of maps.
 /// </summary>
+/// <remarks>ID: 0x0308F000</remarks>
 [Node(0x0308F000)]
 public class CGameCtnChallengeGroup : CMwNod
 {

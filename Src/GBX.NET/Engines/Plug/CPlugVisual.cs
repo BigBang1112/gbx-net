@@ -1,8 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
-/// <summary>
-/// Visual (0x09006000)
-/// </summary>
+/// <remarks>ID: 0x09006000</remarks>
 [Node(0x09006000)]
 [NodeExtension("Visual")]
 [WritingNotSupported]
@@ -62,6 +60,9 @@ public abstract class CPlugVisual : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugVisual 0x001 chunk
+    /// </summary>
     [Chunk(0x09006001)]
     public class Chunk09006001 : Chunk<CPlugVisual>
     {
@@ -78,6 +79,9 @@ public abstract class CPlugVisual : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugVisual 0x004 chunk
+    /// </summary>
     [Chunk(0x09006004)]
     public class Chunk09006004 : Chunk<CPlugVisual>
     {
@@ -89,6 +93,9 @@ public abstract class CPlugVisual : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugVisual 0x005 chunk
+    /// </summary>
     [Chunk(0x09006005)]
     public class Chunk09006005 : Chunk<CPlugVisual>
     {
@@ -98,6 +105,9 @@ public abstract class CPlugVisual : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugVisual 0x006 chunk
+    /// </summary>
     [Chunk(0x09006006)]
     public class Chunk09006006 : Chunk<CPlugVisual>
     {
@@ -110,6 +120,9 @@ public abstract class CPlugVisual : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugVisual 0x007 chunk
+    /// </summary>
     [Chunk(0x09006007)]
     public class Chunk09006007 : Chunk<CPlugVisual>
     {
@@ -120,7 +133,10 @@ public abstract class CPlugVisual : CPlug
             rw.Boolean(ref U01);
         }
     }
-    
+
+    /// <summary>
+    /// CPlugVisual 0x008 chunk
+    /// </summary>
     [Chunk(0x09006008)]
     public class Chunk09006008 : Chunk<CPlugVisual>
     {
@@ -168,6 +184,9 @@ public abstract class CPlugVisual : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugVisual 0x009 chunk
+    /// </summary>
     [Chunk(0x09006009)]
     public class Chunk09006009 : Chunk<CPlugVisual>
     {
@@ -179,6 +198,9 @@ public abstract class CPlugVisual : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugVisual 0x00A chunk
+    /// </summary>
     [Chunk(0x0900600A)]
     public class Chunk0900600A : Chunk<CPlugVisual>
     {
@@ -232,6 +254,9 @@ public abstract class CPlugVisual : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugVisual 0x00B chunk
+    /// </summary>
     [Chunk(0x0900600B)]
     public class Chunk0900600B : Chunk<CPlugVisual>
     {
@@ -294,6 +319,9 @@ public abstract class CPlugVisual : CPlug
         flags |= (VisualFlags)((chunkFlags << 13) & 0x400000);
     }
 
+    /// <summary>
+    /// CPlugVisual 0x00D chunk
+    /// </summary>
     [Chunk(0x0900600D)]
     public class Chunk0900600D : Chunk<CPlugVisual>
     {
@@ -339,6 +367,9 @@ public abstract class CPlugVisual : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugVisual 0x00E chunk
+    /// </summary>
     [Chunk(0x0900600E)]
     public class Chunk0900600E : Chunk<CPlugVisual>
     {

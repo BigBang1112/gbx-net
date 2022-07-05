@@ -1,9 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
-/// <summary>
-/// Indexed visual (0x0906A000)
-/// </summary>
-/// <remarks>Handles indicies of a 3D mesh.</remarks>
+/// <remarks>ID: 0x0906A000</remarks>
 [Node(0x0906A000)]
 public abstract class CPlugVisualIndexed : CPlugVisual3D
 {
@@ -26,6 +23,9 @@ public abstract class CPlugVisualIndexed : CPlugVisual3D
         
     }
 
+    /// <summary>
+    /// CPlugVisualIndexed 0x000 chunk
+    /// </summary>
     [Chunk(0x0906A000)]
     public class Chunk0906A000 : Chunk<CPlugVisualIndexed>
     {
@@ -52,6 +52,9 @@ public abstract class CPlugVisualIndexed : CPlugVisual3D
         }
     }
 
+    /// <summary>
+    /// CPlugVisualIndexed 0x001 chunk
+    /// </summary>
     [Chunk(0x0906A001)]
     public class Chunk0906A001 : Chunk<CPlugVisualIndexed>
     {

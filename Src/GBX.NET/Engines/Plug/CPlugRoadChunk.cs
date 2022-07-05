@@ -1,5 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09128000</remarks>
 [Node(0x09128000)]
 public class CPlugRoadChunk : CMwNod
 {
@@ -8,6 +9,9 @@ public class CPlugRoadChunk : CMwNod
 
     }
 
+    /// <summary>
+    /// CPlugRoadChunk 0x000 chunk
+    /// </summary>
     [Chunk(0x09128000)]
     public class Chunk09128000 : Chunk<CPlugRoadChunk>, IVersionable
     {

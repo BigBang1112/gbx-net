@@ -1,20 +1,22 @@
 ﻿namespace GBX.NET.Engines.Function;
 
-/// <summary>
-/// CFuncKeysNatural (0x05030000)
-/// </summary>
+/// <remarks>ID: 0x05030000</remarks>
 [Node(0x05030000)]
 public class CFuncKeysNatural : CFuncKeys
 {
+    #region Fields
+
     private int[]? naturals;
+
+    #endregion
+
+    #region Properties
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk05030000))]
-    public int[]? Naturals
-    {
-        get => naturals;
-        set => naturals = value;
-    }
+    public int[]? Naturals { get => naturals; set => naturals = value; }
+
+    #endregion
 
     protected CFuncKeysNatural()
     {

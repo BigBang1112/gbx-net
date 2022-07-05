@@ -1,19 +1,32 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
-/// <summary>
-/// CPlugCamControlModel (0x0910C000)
-/// </summary>
+/// <remarks>ID: 0x0910C000</remarks>
 [Node(0x0910C000)]
 public abstract class CPlugCamControlModel : CMwNod
 {
+    #region Fields
+
     private CPlugCamShakeModel? shake;
 
+    #endregion
+
+    #region Properties
+
+    [NodeMember(ExactlyNamed = true)]
     public CPlugCamShakeModel? Shake { get => shake; set => shake = value; }
+
+    #endregion
+
+    #region Constructors
 
     protected CPlugCamControlModel()
     {
 
     }
+
+    #endregion
+
+    #region Chunks
 
     #region 0x000 chunk
 
@@ -33,6 +46,8 @@ public abstract class CPlugCamControlModel : CMwNod
             rw.NodeRef<CPlugCamShakeModel>(ref n.shake);
         }
     }
+
+    #endregion
 
     #endregion
 }

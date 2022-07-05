@@ -1,9 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Puzzle piece list (0x0301B000)
+/// A list of puzzle pieces.
 /// </summary>
-/// <remarks>A list of puzzle pieces.</remarks>
+/// <remarks>ID: 0x0301B000</remarks>
 [Node(0x0301B000)]
 public class CGameCtnCollectorList : CMwNod
 {

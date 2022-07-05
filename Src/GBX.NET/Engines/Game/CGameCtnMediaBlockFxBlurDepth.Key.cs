@@ -8,23 +8,9 @@ public partial class CGameCtnMediaBlockFxBlurDepth
         private bool forceFocus;
         private float focusZ;
 
-        public float LensSize
-        {
-            get => lensSize;
-            set => lensSize = value;
-        }
-
-        public bool ForceFocus
-        {
-            get => forceFocus;
-            set => forceFocus = value;
-        }
-
-        public float FocusZ
-        {
-            get => focusZ;
-            set => focusZ = value;
-        }
+        public float LensSize { get => lensSize; set => lensSize = value; }
+        public bool ForceFocus { get => forceFocus; set => forceFocus = value; }
+        public float FocusZ { get => focusZ; set => focusZ = value; }
 
         public override void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {

@@ -1,8 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
-/// <summary>
-/// CPlugMaterial (0x09079000)
-/// </summary>
+/// <remarks>ID: 0x09079000</remarks>
 [Node(0x09079000), WritingNotSupported]
 [NodeExtension("Material")]
 public class CPlugMaterial : CPlug
@@ -35,6 +33,9 @@ public class CPlugMaterial : CPlug
 
     }
 
+    /// <summary>
+    /// CPlugMaterial 0x001 chunk
+    /// </summary>
     [Chunk(0x09079001)]
     public class Chunk09079001 : Chunk<CPlugMaterial>
     {
@@ -46,6 +47,9 @@ public class CPlugMaterial : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugMaterial 0x002 chunk
+    /// </summary>
     [Chunk(0x09079002)]
     public class Chunk09079002 : Chunk<CPlugMaterial>
     {
@@ -57,6 +61,9 @@ public class CPlugMaterial : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugMaterial 0x004 chunk
+    /// </summary>
     [Chunk(0x09079004)]
     public class Chunk09079004 : Chunk<CPlugMaterial>
     {
@@ -80,6 +87,9 @@ public class CPlugMaterial : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugMaterial 0x007 chunk
+    /// </summary>
     [Chunk(0x09079007)]
     public class Chunk09079007 : Chunk<CPlugMaterial>
     {
@@ -89,6 +99,9 @@ public class CPlugMaterial : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugMaterial 0x009 chunk
+    /// </summary>
     [Chunk(0x09079009)]
     public class Chunk09079009 : Chunk<CPlugMaterial>
     {
@@ -126,6 +139,9 @@ public class CPlugMaterial : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugMaterial 0x00A chunk
+    /// </summary>
     [Chunk(0x0907900A)]
     public class Chunk0907900A : Chunk<CPlugMaterial>
     {
@@ -137,6 +153,9 @@ public class CPlugMaterial : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugMaterial 0x00D chunk
+    /// </summary>
     [Chunk(0x0907900D)]
     public class Chunk0907900D : Chunk<CPlugMaterial>
     {
@@ -184,6 +203,9 @@ public class CPlugMaterial : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugMaterial 0x00E chunk
+    /// </summary>
     [Chunk(0x0907900E)]
     public class Chunk0907900E : Chunk<CPlugMaterial>
     {
@@ -195,6 +217,9 @@ public class CPlugMaterial : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugMaterial 0x00F chunk
+    /// </summary>
     [Chunk(0x0907900F)]
     public class Chunk0907900F : Chunk<CPlugMaterial>
     {

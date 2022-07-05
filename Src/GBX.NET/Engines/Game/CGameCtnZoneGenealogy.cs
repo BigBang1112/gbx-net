@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Zone genealogy (0x0311D000)
+/// Zone genealogy.
 /// </summary>
+/// <remarks>ID: 0x0311D000</remarks>
 [Node(0x0311D000)]
 [NodeExtension("ZoneGenealogy")]
 public class CGameCtnZoneGenealogy : CMwNod
@@ -70,6 +71,9 @@ public class CGameCtnZoneGenealogy : CMwNod
 
     #region 0x001 chunk
 
+    /// <summary>
+    /// CGameCtnZoneGenealogy 0x001 chunk
+    /// </summary>
     [Chunk(0x0311D001)]
     public class Chunk0311D001 : Chunk<CGameCtnZoneGenealogy>
     {
@@ -84,14 +88,15 @@ public class CGameCtnZoneGenealogy : CMwNod
 
     #region 0x002 chunk
 
+    /// <summary>
+    /// CGameCtnZoneGenealogy 0x002 chunk
+    /// </summary>
     [Chunk(0x0311D002)]
     public class Chunk0311D002 : Chunk<CGameCtnZoneGenealogy>
     {
         public override void ReadWrite(CGameCtnZoneGenealogy n, GameBoxReaderWriter rw)
         {
-            rw.Array(ref n.zoneIds,
-                r => r.ReadId(),
-                (x, w) => w.WriteId(x));
+            rw.ArrayId(ref n.zoneIds);
             rw.Int32(ref n.currentIndex); // 9
             rw.EnumInt32<Direction>(ref n.dir);
             rw.Id(ref n.currentZoneId);

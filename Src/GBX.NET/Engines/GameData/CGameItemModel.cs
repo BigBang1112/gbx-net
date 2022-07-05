@@ -1,13 +1,13 @@
 ﻿namespace GBX.NET.Engines.GameData;
 
 /// <summary>
-/// CGameItemModel (0x2E002000)
+/// An item model, custom block, vehicle, etc.
 /// </summary>
-/// <remarks>A custom item, or possibly a custom block.</remarks>
+/// <remarks>ID: 0x0x2E002000</remarks>
 [Node(0x2E002000), WritingNotSupported]
 [NodeExtension("Item")]
-[NodeExtension("Block")] // CGameCustomBlockModel but it's here instead
-public class CGameItemModel : CGameCtnCollector
+[NodeExtension("Block")]
+public class CGameItemModel : CGameCtnCollector // CGameCustomBlockModel but it's here instead
 {
     #region Enums
 
@@ -104,119 +104,55 @@ public class CGameItemModel : CGameCtnCollector
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
-    public EItemType ItemType
-    {
-        get => itemType;
-        set => itemType = value;
-    }
+    public EItemType ItemType { get => itemType; set => itemType = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public CMwNod?[]? NadeoSkinFids
-    {
-        get => nadeoSkinFids;
-        set => nadeoSkinFids = value;
-    }
+    public CMwNod?[]? NadeoSkinFids { get => nadeoSkinFids; set => nadeoSkinFids = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public CMwNod?[]? Cameras
-    {
-        get => cameras;
-        set => cameras = value;
-    }
+    public CMwNod?[]? Cameras { get => cameras; set => cameras = value; }
 
     [NodeMember]
-    public CMwNod? RaceInterfaceFid
-    {
-        get => raceInterfaceFid;
-        set => raceInterfaceFid = value;
-    }
+    public CMwNod? RaceInterfaceFid { get => raceInterfaceFid; set => raceInterfaceFid = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public Vec3 GroundPoint
-    {
-        get => groundPoint;
-        set => groundPoint = value;
-    }
+    public Vec3 GroundPoint { get => groundPoint; set => groundPoint = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public float PainterGroundMargin
-    {
-        get => painterGroundMargin;
-        set => painterGroundMargin = value;
-    }
+    public float PainterGroundMargin { get => painterGroundMargin; set => painterGroundMargin = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public float OrbitalCenterHeightFromGround
-    {
-        get => orbitalCenterHeightFromGround;
-        set => orbitalCenterHeightFromGround = value;
-    }
+    public float OrbitalCenterHeightFromGround { get => orbitalCenterHeightFromGround; set => orbitalCenterHeightFromGround = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public float OrbitalRadiusBase
-    {
-        get => orbitalRadiusBase;
-        set => orbitalRadiusBase = value;
-    }
+    public float OrbitalRadiusBase { get => orbitalRadiusBase; set => orbitalRadiusBase = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public float OrbitalPreviewAngle
-    {
-        get => orbitalPreviewAngle;
-        set => orbitalPreviewAngle = value;
-    }
+    public float OrbitalPreviewAngle { get => orbitalPreviewAngle; set => orbitalPreviewAngle = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public EItemType ItemTypeE
-    {
-        get => itemTypeE;
-        set => itemTypeE = value;
-    }
+    public EItemType ItemTypeE { get => itemTypeE; set => itemTypeE = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public string? DefaultWeaponName
-    {
-        get => defaultWeaponName;
-        set => defaultWeaponName = value;
-    }
+    public string? DefaultWeaponName { get => defaultWeaponName; set => defaultWeaponName = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public CMwNod? PhyModelCustom
-    {
-        get => phyModelCustom;
-        set => phyModelCustom = value;
-    }
+    public CMwNod? PhyModelCustom { get => phyModelCustom; set => phyModelCustom = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public CMwNod? VisModelCustom
-    {
-        get => visModelCustom;
-        set => visModelCustom = value;
-    }
+    public CMwNod? VisModelCustom { get => visModelCustom; set => visModelCustom = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public EDefaultCam? DefaultCam
-    {
-        get => defaultCam;
-        set => defaultCam = value;
-    }
+    public EDefaultCam? DefaultCam { get => defaultCam; set => defaultCam = value; }
 
     /// <summary>
     /// An entity object of the item model.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
-    public CMwNod? EntityModelEdition
-    {
-        get => entityModelEdition;
-        set => entityModelEdition = value;
-    }
+    public CMwNod? EntityModelEdition { get => entityModelEdition; set => entityModelEdition = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public CMwNod? EntityModel
-    {
-        get => entityModel;
-        set => entityModel = value;
-    }
+    public CMwNod? EntityModel { get => entityModel; set => entityModel = value; }
 
     /// <summary>
     /// An item model if <see cref="EntityModelEdition"/> is <see cref="CGameCommonItemEntityModelEdition"/>, otherwise null.
@@ -240,25 +176,13 @@ public class CGameItemModel : CGameCtnCollector
     /// Placement information when the item model is used in the editor.
     /// </summary>
     [NodeMember(ExactName = "DefaultPlacementParam_Dbg")]
-    public CGameItemPlacementParam? DefaultPlacement
-    {
-        get => defaultPlacement;
-        set => defaultPlacement = value;
-    }
+    public CGameItemPlacementParam? DefaultPlacement { get => defaultPlacement; set => defaultPlacement = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public string? ArchetypeRef
-    {
-        get => archetypeRef;
-        set => archetypeRef = value;
-    }
+    public string? ArchetypeRef { get => archetypeRef; set => archetypeRef = value; }
 
-    [NodeMember]
-    public new string? IconFid
-    {
-        get => iconFid;
-        set => iconFid = value;
-    }
+    [NodeMember] // Idk
+    public new string? IconFid { get => iconFid; set => iconFid = value; }
 
     [NodeMember(ExactlyNamed = true)]
     public EWaypointType WaypointType { get => waypointType; set => waypointType = value; }
@@ -359,11 +283,7 @@ public class CGameItemModel : CGameCtnCollector
     {
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
         {
@@ -446,7 +366,7 @@ public class CGameItemModel : CGameCtnCollector
 
     #endregion
 
-    #region 0x013
+    #region 0x013 chunk
 
     /// <summary>
     /// CGameItemModel 0x013 chunk
@@ -512,11 +432,7 @@ public class CGameItemModel : CGameCtnCollector
         public CMwNod? U02;
         public CMwNod? U03;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
         {
@@ -581,17 +497,11 @@ public class CGameItemModel : CGameCtnCollector
     [Chunk(0x2E00201A)]
     public class Chunk2E00201A : Chunk<CGameItemModel>
     {
-        private CMwNod? u01;
-
-        public CMwNod? U01
-        {
-            get => u01;
-            set => u01 = value;
-        }
+        public CMwNod? U01;
 
         public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref u01);
+            rw.NodeRef(ref U01);
         }
     }
 
@@ -642,11 +552,7 @@ public class CGameItemModel : CGameCtnCollector
         public float? U15;
         public Vec3[]? U16;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
         {
@@ -851,11 +757,7 @@ public class CGameItemModel : CGameCtnCollector
         public string? U02;
         public CMwNod? U03;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
         {

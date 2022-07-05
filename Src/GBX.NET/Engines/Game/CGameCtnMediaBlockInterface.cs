@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Interface (0x03195000)
+/// MediaTracker block - Interface.
 /// </summary>
+/// <remarks>ID: 0x03195000</remarks>
 [Node(0x03195000)]
 [NodeExtension("GameCtnMediaBlockInterface")]
 public class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys

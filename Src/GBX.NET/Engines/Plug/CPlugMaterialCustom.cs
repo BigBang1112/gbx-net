@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 /// <summary>
-/// Custom material (0x0903A000)
+/// Custom material.
 /// </summary>
+/// <remarks>ID: 0x0903A000</remarks>
 [Node(0x0903A000), WritingNotSupported]
 public class CPlugMaterialCustom : CPlug
 {
@@ -13,6 +14,9 @@ public class CPlugMaterialCustom : CPlug
 
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x004 chunk
+    /// </summary>
     [Chunk(0x0903A004)]
     public class Chunk0903A004 : Chunk<CPlugMaterialCustom>
     {
@@ -24,6 +28,9 @@ public class CPlugMaterialCustom : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x006 chunk
+    /// </summary>
     [Chunk(0x0903A006)]
     public class Chunk0903A006 : Chunk<CPlugMaterialCustom>
     {
@@ -41,6 +48,9 @@ public class CPlugMaterialCustom : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x00A chunk
+    /// </summary>
     [Chunk(0x0903A00A)]
     public class Chunk0903A00A : Chunk<CPlugMaterialCustom>
     {
@@ -70,6 +80,9 @@ public class CPlugMaterialCustom : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x00B chunk
+    /// </summary>
     [Chunk(0x0903A00B)]
     public class Chunk0903A00B : Chunk<CPlugMaterialCustom>
     {
@@ -86,6 +99,9 @@ public class CPlugMaterialCustom : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x00C chunk
+    /// </summary>
     [Chunk(0x0903A00C)]
     public class Chunk0903A00C : Chunk<CPlugMaterialCustom>
     {
@@ -104,6 +120,9 @@ public class CPlugMaterialCustom : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x00D chunk
+    /// </summary>
     [Chunk(0x0903A00D)]
     public class Chunk0903A00D : Chunk<CPlugMaterialCustom>
     {

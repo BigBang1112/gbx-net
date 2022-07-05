@@ -1,5 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09062000</remarks>
 [Node(0x09062000)]
 public class CPlugTreeLight : CPlugTree
 {
@@ -17,6 +18,9 @@ public class CPlugTreeLight : CPlugTree
 
     }
 
+    /// <summary>
+    /// CPlugTreeLight 0x004 chunk
+    /// </summary>
     [Chunk(0x09062004)]
     public class Chunk09062004 : Chunk<CPlugTreeLight>
     {

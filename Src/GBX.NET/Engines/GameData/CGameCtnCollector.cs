@@ -3,8 +3,9 @@
 namespace GBX.NET.Engines.GameData;
 
 /// <summary>
-/// Collector (0x2E001000)
+/// Collector.
 /// </summary>
+/// <remarks>ID: 0x2E001000</remarks>
 [Node(0x2E001000)]
 public class CGameCtnCollector : CMwNod, INodeHeader
 {
@@ -42,47 +43,23 @@ public class CGameCtnCollector : CMwNod, INodeHeader
 
     public ChunkSet HeaderChunks { get; }
 
-    [NodeMember]
-    public Ident? Author
-    {
-        get => author;
-        set => author = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public Ident? Author { get => author; set => author = value; }
 
     [NodeMember]
-    public Ident? Ident
-    {
-        get => ident;
-        set => ident = value;
-    }
+    public Ident? Ident { get => ident; set => ident = value; }
 
-    [NodeMember]
-    public string PageName
-    {
-        get => pageName;
-        set => pageName = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public string PageName { get => pageName; set => pageName = value; }
 
-    [NodeMember]
-    public int CatalogPosition
-    {
-        get => catalogPosition;
-        set => catalogPosition = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public int CatalogPosition { get => catalogPosition; set => catalogPosition = value; }
 
-    [NodeMember]
-    public EProdState? ProdState
-    {
-        get => prodState;
-        set => prodState = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public EProdState? ProdState { get => prodState; set => prodState = value; }
 
-    [NodeMember]
-    public string? Name
-    {
-        get => name;
-        set => name = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public string? Name { get => name; set => name = value; }
 
     [NodeMember]
     public Color[,]? Icon { get; set; }
@@ -90,57 +67,29 @@ public class CGameCtnCollector : CMwNod, INodeHeader
     [NodeMember]
     public byte[]? IconWebP { get; set; }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public CMwNod? IconFid { get; set; }
 
-    [NodeMember]
-    public string? Description
-    {
-        get => description;
-        set => description = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public string? Description { get => description; set => description = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public bool IconUseAutoRender { get => iconUseAutoRender; set => iconUseAutoRender = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public int IconQuarterRotationY { get => iconQuarterRotationY; set => iconQuarterRotationY = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public string? SkinDirectory { get => skinDirectory; set => skinDirectory = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public bool IsInternal { get => isInternal; set => isInternal = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public bool IsAdvanced { get => isAdvanced; set => isAdvanced = value; }
 
     [NodeMember]
-    public bool IconUseAutoRender
-    {
-        get => iconUseAutoRender;
-        set => iconUseAutoRender = value;
-    }
-
-    [NodeMember]
-    public int IconQuarterRotationY
-    {
-        get => iconQuarterRotationY;
-        set => iconQuarterRotationY = value;
-    }
-
-    [NodeMember]
-    public string? SkinDirectory
-    {
-        get => skinDirectory;
-        set => skinDirectory = value;
-    }
-
-    [NodeMember]
-    public bool IsInternal
-    {
-        get => isInternal;
-        set => isInternal = value;
-    }
-
-    [NodeMember]
-    public bool IsAdvanced
-    {
-        get => isAdvanced;
-        set => isAdvanced = value;
-    }
-
-    [NodeMember]
-    public long FileTime
-    {
-        get => fileTime;
-        set => fileTime = value;
-    }
+    public long FileTime { get => fileTime; set => fileTime = value; }
 
     #endregion
 

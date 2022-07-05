@@ -1,9 +1,15 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <summary>
+/// Material referenced in user creation.
+/// </summary>
+/// <remarks>ID: 0x090FD000</remarks>
 [Node(0x090FD000)]
 [NodeExtension("Mat")]
 public class CPlugMaterialUserInst : CMwNod
 {
+    #region Fields
+
     private string? model;
     private string? baseTexture;
     private string? link;
@@ -14,6 +20,10 @@ public class CPlugMaterialUserInst : CMwNod
     private int tilingV;
     private float textureSizeInMeters;
     private bool isNatural;
+
+    #endregion
+
+    #region Properties
 
     [NodeMember(ExactlyNamed = true)]
     public string? Model { get => model; set => model = value; }
@@ -42,16 +52,33 @@ public class CPlugMaterialUserInst : CMwNod
     [NodeMember(ExactlyNamed = true)]
     public bool IsNatural { get => isNatural; set => isNatural = value; }
 
+    #endregion
+
+    #region Constructors
+
     protected CPlugMaterialUserInst()
     {
 
     }
+
+    #endregion
+
+    #region Methods
 
     public override string ToString()
     {
         return $"{base.ToString()} {{ {Link ?? "No material file"} }}";
     }
 
+    #endregion
+
+    #region Chunks
+
+    #region 0x000 chunk
+
+    /// <summary>
+    /// CPlugMaterialUserInst 0x000 chunk
+    /// </summary>
     [Chunk(0x090FD000)]
     public class Chunk090FD000 : Chunk<CPlugMaterialUserInst>, IVersionable
     {
@@ -163,6 +190,13 @@ public class CPlugMaterialUserInst : CMwNod
         }
     }
 
+    #endregion
+
+    #region 0x001 chunk
+
+    /// <summary>
+    /// CPlugMaterialUserInst 0x001 chunk
+    /// </summary>
     [Chunk(0x090FD001)]
     public class Chunk090FD001 : Chunk<CPlugMaterialUserInst>, IVersionable
     {
@@ -201,6 +235,13 @@ public class CPlugMaterialUserInst : CMwNod
         }
     }
 
+    #endregion
+
+    #region 0x002 chunk
+
+    /// <summary>
+    /// CPlugMaterialUserInst 0x002 chunk
+    /// </summary>
     [Chunk(0x090FD002)]
     public class Chunk090FD002 : Chunk<CPlugMaterialUserInst>, IVersionable
     {
@@ -217,6 +258,14 @@ public class CPlugMaterialUserInst : CMwNod
         }
     }
 
+    #endregion
+
+    #endregion
+
+    #region Other classes
+
     public record Cst(string U01, string U02, int U03);
     public record UvAnim(string U01, string U02, float U03, ulong U04);
+
+    #endregion
 }

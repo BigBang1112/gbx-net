@@ -5,9 +5,9 @@ using System.Diagnostics;
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// CGameCtnReplayRecord (0x03093000)
+/// A replay.
 /// </summary>
-/// <remarks>A replay.</remarks>
+/// <remarks>ID: 0x03093000</remarks>
 [Node(0x03093000), WritingNotSupported]
 [NodeExtension("Replay")]
 public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
@@ -273,6 +273,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region 0x000 header chunk (basic)
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x000 header chunk (basic)
+    /// </summary>
     [Chunk(0x03093000, "basic")]
     public class Chunk03093000 : HeaderChunk<CGameCtnReplayRecord>, IVersionable
     {
@@ -308,6 +311,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region 0x001 header chunk (xml)
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x001 header chunk (xml)
+    /// </summary>
     [Chunk(0x03093001, "xml")]
     public class Chunk03093001 : HeaderChunk<CGameCtnReplayRecord>
     {
@@ -321,6 +327,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region 0x002 header chunk (author)
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x002 header chunk (author)
+    /// </summary>
     [Chunk(0x03093002, "author")]
     public class Chunk03093002H : HeaderChunk<CGameCtnReplayRecord>, IVersionable
     {
@@ -341,6 +350,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region 0x002 chunk (track)
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x002 chunk (track)
+    /// </summary>
     [Chunk(0x03093002, "track")]
     public class Chunk03093002B : Chunk<CGameCtnReplayRecord>
     {
@@ -354,6 +366,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region 0x003 chunk (validation TM1.0)
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x003 chunk (validation TM1.0)
+    /// </summary>
     [Chunk(0x03093003, "validation TM1.0")]
     public class Chunk03093003 : Chunk<CGameCtnReplayRecord>
     {
@@ -408,6 +423,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region 0x004 chunk (ghosts)
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x004 chunk (ghosts)
+    /// </summary>
     [Chunk(0x03093004, "ghosts")]
     public class Chunk03093004 : Chunk<CGameCtnReplayRecord>, IVersionable
     {
@@ -440,6 +458,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region 0x005 chunk
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x005 chunk
+    /// </summary>
     [Chunk(0x03093005)]
     public class Chunk03093005 : Chunk<CGameCtnReplayRecord>
     {
@@ -455,6 +476,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region 0x007 skippable chunk
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x007 skippable chunk
+    /// </summary>
     [Chunk(0x03093007)]
     public class Chunk03093007 : SkippableChunk<CGameCtnReplayRecord>
     {
@@ -470,6 +494,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region 0x008 skippable chunk (game)
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x008 skippable chunk (game)
+    /// </summary>
     [Chunk(0x03093008, "game")]
     public class Chunk03093008 : SkippableChunk<CGameCtnReplayRecord>
     {
@@ -486,6 +513,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region 0x00C chunk (clip)
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x00C chunk (clip)
+    /// </summary>
     [Chunk(0x0309300C, "clip")]
     public class Chunk0309300C : Chunk<CGameCtnReplayRecord>
     {
@@ -504,6 +534,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region 0x00D chunk (validation)
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x00D chunk (validation)
+    /// </summary>
     [Chunk(0x0309300D, "validation")]
     public class Chunk0309300D : Chunk<CGameCtnReplayRecord>
     {
@@ -548,6 +581,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region 0x00E chunk (events)
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x00E chunk (events)
+    /// </summary>
     [Chunk(0x0309300E, "events")]
     public class Chunk0309300E : Chunk<CGameCtnReplayRecord>
     {
@@ -559,8 +595,11 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #endregion
 
-    #region 0x00F chunk
+    #region 0x00F skippable chunk
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x00F skippable chunk
+    /// </summary>
     [Chunk(0x0309300F)]
     public class Chunk0309300F : SkippableChunk<CGameCtnReplayRecord>
     {
@@ -583,6 +622,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region 0x010 chunk
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x010 chunk
+    /// </summary>
     [Chunk(0x03093010)]
     public class Chunk03093010 : Chunk<CGameCtnReplayRecord>
     {
@@ -601,6 +643,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region 0x011 chunk
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x011 chunk
+    /// </summary>
     [Chunk(0x03093011)]
     public class Chunk03093011 : Chunk<CGameCtnReplayRecord>
     {
@@ -614,6 +659,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region 0x013 skippable chunk
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x013 skippable chunk
+    /// </summary>
     [Chunk(0x03093013), IgnoreChunk]
     public class Chunk03093013 : SkippableChunk<CGameCtnReplayRecord>
     {
@@ -624,6 +672,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region 0x014 chunk (ghosts)
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x014 chunk (ghosts)
+    /// </summary>
     [Chunk(0x03093014, "ghosts")]
     public class Chunk03093014 : Chunk<CGameCtnReplayRecord>, IVersionable
     {
@@ -652,6 +703,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region 0x015 chunk (clip)
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x015 chunk (clip)
+    /// </summary>
     [Chunk(0x03093015, "clip")]
     public class Chunk03093015 : Chunk<CGameCtnReplayRecord>
     {
@@ -668,8 +722,11 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #endregion
 
-    #region 0x018 skippable chunk
+    #region 0x018 skippable chunk (author)
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x018 skippable chunk (author)
+    /// </summary>
     [Chunk(0x03093018, "author")]
     public class Chunk03093018 : SkippableChunk<CGameCtnReplayRecord>
     {
@@ -688,6 +745,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region 0x01C skippable chunk
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x01C skippable chunk
+    /// </summary>
     [Chunk(0x0309301C)]
     public class Chunk0309301C : SkippableChunk<CGameCtnReplayRecord>, IVersionable
     {
@@ -704,6 +764,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region 0x024 chunk
 
+    /// <summary>
+    /// CGameCtnReplayRecord 0x024 chunk
+    /// </summary>
     [Chunk(0x03093024)]
     public class Chunk03093024 : Chunk<CGameCtnReplayRecord>
     {

@@ -4,9 +4,9 @@ using System.Globalization;
 namespace GBX.NET.Engines.Plug;
 
 /// <summary>
-/// CPlugCrystal (0x09003000)
+/// A custom mesh or model with materials.
 /// </summary>
-/// <remarks>A custom mesh or model.</remarks>
+/// <remarks>ID: 0x09003000</remarks>
 [Node(0x09003000), WritingNotSupported]
 [NodeExtension("Crystal")]
 public class CPlugCrystal : CPlugTreeGenerator
@@ -49,11 +49,7 @@ public class CPlugCrystal : CPlugTreeGenerator
     #region Properties
 
     [NodeMember]
-    public CPlugMaterialUserInst?[]? Materials
-    {
-        get => materials;
-        set => materials = value;
-    }
+    public CPlugMaterialUserInst?[]? Materials { get => materials; set => materials = value; }
 
     [NodeMember]
     public Layer[] Layers { get; set; }
@@ -64,7 +60,7 @@ public class CPlugCrystal : CPlugTreeGenerator
 
     protected CPlugCrystal()
     {
-        Layers = null!;
+        Layers = Array.Empty<Layer>();
     }
 
     #endregion
@@ -243,7 +239,7 @@ public class CPlugCrystal : CPlugTreeGenerator
                     }
                 }
 
-                var materialIndex = default(int);
+                var materialIndex = -1;
 
                 if (crystalVersion >= 25)
                 {
@@ -259,7 +255,7 @@ public class CPlugCrystal : CPlugTreeGenerator
                     }
                 }
 
-                var groupIndex = crystalVersion >= 33 ? r.ReadOptimizedInt(groups.Length) : r.ReadInt32(); // optimized by amount of groups?
+                var groupIndex = crystalVersion >= 33 ? r.ReadOptimizedInt(groups.Length) : r.ReadInt32();
 
                 var material = materialIndex != -1 ? n.Materials?[materialIndex] : null;
                 
@@ -374,12 +370,12 @@ public class CPlugCrystal : CPlugTreeGenerator
 
     #region Chunks
 
-    #region 0x003 chunk
+    #region 0x000 chunk (one layer only)
 
     /// <summary>
-    /// CPlugCrystal 0x000 chunk
+    /// CPlugCrystal 0x000 chunk (one layer only)
     /// </summary>
-    [Chunk(0x09003000)]
+    [Chunk(0x09003000, "one layer only")]
     public class Chunk09003000 : Chunk<CPlugCrystal>, IVersionable
     {
         public int Version { get; set; }
@@ -402,7 +398,7 @@ public class CPlugCrystal : CPlugTreeGenerator
 
     #endregion
 
-    #region 0x003 chunk
+    #region 0x003 chunk (materials)
 
     /// <summary>
     /// CPlugCrystal 0x003 chunk (materials)

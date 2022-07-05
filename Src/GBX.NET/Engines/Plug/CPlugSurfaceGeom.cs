@@ -2,6 +2,7 @@
 
 namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0900F000</remarks>
 [Node(0x0900F000), WritingNotSupported]
 public class CPlugSurfaceGeom : CPlugSurface
 {
@@ -10,6 +11,11 @@ public class CPlugSurfaceGeom : CPlugSurface
 
     }
 
+    #region 0x002 chunk
+
+    /// <summary>
+    /// CPlugSurfaceGeom 0x002 chunk
+    /// </summary>
     [Chunk(0x0900F002)]
     public class Chunk0900F002 : Chunk<CPlugSurfaceGeom>
     {
@@ -47,6 +53,8 @@ public class CPlugSurfaceGeom : CPlugSurface
             }, (x, w) => { });
         }
     }
+
+    #endregion
 
     #region 0x004 chunk
 

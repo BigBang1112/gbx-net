@@ -1,5 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x090F4000</remarks>
 [Node(0x090F4000)]
 public class CPlugGameSkin : CMwNod
 {
@@ -8,6 +9,9 @@ public class CPlugGameSkin : CMwNod
 
     }
 
+    /// <summary>
+    /// CPlugGameSkin 0x000 header chunk
+    /// </summary>
     [Chunk(0x090F4000)]
     public class Chunk090F4000 : HeaderChunk<CPlugGameSkin>, IVersionable
     {

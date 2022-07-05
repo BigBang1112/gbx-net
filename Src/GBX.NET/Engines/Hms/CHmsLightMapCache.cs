@@ -1,14 +1,15 @@
-﻿using System.IO.Compression;
-
-namespace GBX.NET.Engines.Hms;
+﻿namespace GBX.NET.Engines.Hms;
 
 /// <summary>
-/// Lightmap cache (0x06022000)
+/// Lightmap cache.
 /// </summary>
+/// <remarks>ID: 0x06022000</remarks>
 [Node(0x06022000)]
 [NodeExtension("LightMapCache")]
 public partial class CHmsLightMapCache : CMwNod
 {
+    #region Fields
+
     private int[]? mapT3s;
     private EQuality quality;
     private Id? collection;
@@ -29,6 +30,10 @@ public partial class CHmsLightMapCache : CMwNod
     private SHmsLightMapCacheMapping? mapping;
     private EPlugGpuPlatform? gpuPlatform;
     private float? allocatedTexelByMeter;
+
+    #endregion
+
+    #region Properties
 
     [NodeMember]
     public int[]? MapT3s
@@ -345,11 +350,24 @@ public partial class CHmsLightMapCache : CMwNod
         }
     }
 
+    #endregion
+
+    #region Constructors
+
     protected CHmsLightMapCache()
     {
 
     }
 
+    #endregion
+
+    #region Chunks
+
+    #region 0x00B skippable chunk
+
+    /// <summary>
+    /// CHmsLightMapCache 0x00B skippable chunk
+    /// </summary>
     [Chunk(0x0602200B)]
     public class Chunk0602200B : SkippableChunk<CHmsLightMapCache>
     {
@@ -359,6 +377,13 @@ public partial class CHmsLightMapCache : CMwNod
         }
     }
 
+    #endregion
+
+    #region 0x00F skippable chunk
+
+    /// <summary>
+    /// CHmsLightMapCache 0x00F skippable chunk
+    /// </summary>
     [Chunk(0x0602200F)]
     public class Chunk0602200F : SkippableChunk<CHmsLightMapCache>
     {
@@ -371,6 +396,13 @@ public partial class CHmsLightMapCache : CMwNod
         }
     }
 
+    #endregion
+
+    #region 0x013 skippable chunk
+
+    /// <summary>
+    /// CHmsLightMapCache 0x013 skippable chunk
+    /// </summary>
     [Chunk(0x06022013)]
     public class Chunk06022013 : SkippableChunk<CHmsLightMapCache>
     {
@@ -386,7 +418,14 @@ public partial class CHmsLightMapCache : CMwNod
         }
     }
 
-    [Chunk(0x06022015, processSync: true)]
+    #endregion
+
+    #region 0x015 skippable chunk
+
+    /// <summary>
+    /// CHmsLightMapCache 0x015 skippable chunk
+    /// </summary>
+    [Chunk(0x06022015, processSync: true)] // does processSync need to be set?
     public class Chunk06022015 : SkippableChunk<CHmsLightMapCache>, IVersionable
     {
         private int version;
@@ -432,6 +471,13 @@ public partial class CHmsLightMapCache : CMwNod
         }
     }
 
+    #endregion
+
+    #region 0x016 skippable chunk
+
+    /// <summary>
+    /// CHmsLightMapCache 0x016 skippable chunk
+    /// </summary>
     [Chunk(0x06022016)]
     public class Chunk06022016 : SkippableChunk<CHmsLightMapCache>
     {
@@ -441,6 +487,13 @@ public partial class CHmsLightMapCache : CMwNod
         }
     }
 
+    #endregion
+
+    #region 0x017 skippable chunk
+
+    /// <summary>
+    /// CHmsLightMapCache 0x017 skippable chunk
+    /// </summary>
     [Chunk(0x06022017)]
     public class Chunk06022017 : SkippableChunk<CHmsLightMapCache>
     {
@@ -451,6 +504,13 @@ public partial class CHmsLightMapCache : CMwNod
         }
     }
 
+    #endregion
+
+    #region 0x018 skippable chunk
+
+    /// <summary>
+    /// CHmsLightMapCache 0x018 skippable chunk
+    /// </summary>
     [Chunk(0x06022018)]
     public class Chunk06022018 : SkippableChunk<CHmsLightMapCache>
     {
@@ -462,6 +522,13 @@ public partial class CHmsLightMapCache : CMwNod
         }
     }
 
+    #endregion
+
+    #region 0x019 skippable chunk
+
+    /// <summary>
+    /// CHmsLightMapCache 0x019 skippable chunk
+    /// </summary>
     [Chunk(0x06022019)]
     public class Chunk06022019 : SkippableChunk<CHmsLightMapCache>
     {
@@ -471,6 +538,13 @@ public partial class CHmsLightMapCache : CMwNod
         }
     }
 
+    #endregion
+
+    #region 0x01A skippable chunk
+
+    /// <summary>
+    /// CHmsLightMapCache 0x01A skippable chunk
+    /// </summary>
     [Chunk(0x0602201A)]
     public class Chunk0602201A : SkippableChunk<CHmsLightMapCache>, IVersionable
     {
@@ -547,4 +621,8 @@ public partial class CHmsLightMapCache : CMwNod
             }
         }
     }
+
+    #endregion
+
+    #endregion
 }

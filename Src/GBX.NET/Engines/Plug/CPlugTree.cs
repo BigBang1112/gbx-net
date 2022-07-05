@@ -1,8 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
-/// <summary>
-/// Tree (0x0904F000)
-/// </summary>
+/// <remarks>ID: 0x0904F000</remarks>
 [Node(0x0904F000)]
 public class CPlugTree : CPlug
 {
@@ -57,6 +55,9 @@ public class CPlugTree : CPlug
 
     public override string ToString() => $"{base.ToString()} {{ \"{name}\" }}";
 
+    /// <summary>
+    /// CPlugTree 0x006 chunk
+    /// </summary>
     [Chunk(0x0904F006)]
     public class Chunk0904F006 : Chunk<CPlugTree>
     {
@@ -75,6 +76,9 @@ public class CPlugTree : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugTree 0x00C chunk
+    /// </summary>
     [Chunk(0x0904F00C)]
     public class Chunk0904F00C : Chunk<CPlugTree>
     {
@@ -87,6 +91,9 @@ public class CPlugTree : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugTree 0x00D chunk
+    /// </summary>
     [Chunk(0x0904F00D)]
     public class Chunk0904F00D : Chunk<CPlugTree>
     {
@@ -99,6 +106,9 @@ public class CPlugTree : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugTree 0x011 chunk
+    /// </summary>
     [Chunk(0x0904F011)]
     public class Chunk0904F011 : Chunk<CPlugTree>
     {
@@ -110,6 +120,9 @@ public class CPlugTree : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugTree 0x015 chunk
+    /// </summary>
     [Chunk(0x0904F015)]
     public class Chunk0904F015 : Chunk<CPlugTree>
     {
@@ -127,6 +140,9 @@ public class CPlugTree : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugTree 0x016 chunk
+    /// </summary>
     [Chunk(0x0904F016)]
     public class Chunk0904F016 : Chunk<CPlugTree>
     {
@@ -149,6 +165,9 @@ public class CPlugTree : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugTree 0x019 chunk
+    /// </summary>
     [Chunk(0x0904F019)]
     public class Chunk0904F019 : Chunk<CPlugTree>
     {
@@ -165,6 +184,9 @@ public class CPlugTree : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugTree 0x01A chunk
+    /// </summary>
     [Chunk(0x0904F01A)]
     public class Chunk0904F01A : Chunk<CPlugTree>
     {

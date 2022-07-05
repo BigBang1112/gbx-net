@@ -1,24 +1,41 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Entity (0x0329F000)
+/// MediaTracker block - Entity.
 /// </summary>
+/// <remarks>ID: 0x0329F000</remarks>
 [Node(0x0329F000)]
 public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
 {
+    #region Fields
+
     private CPlugEntRecordData recordData;
 
-    public CPlugEntRecordData RecordData
-    {
-        get => recordData;
-        set => recordData = value;
-    }
+    #endregion
+
+    #region Properties
+
+    [NodeMember]
+    public CPlugEntRecordData RecordData { get => recordData; set => recordData = value; }
+
+    #endregion
+
+    #region Constructors
 
     protected CGameCtnMediaBlockEntity()
     {
         recordData = null!;
     }
 
+    #endregion
+
+    #region Chunks
+
+    #region 0x000 chunk
+
+    /// <summary>
+    /// CGameCtnMediaBlockEntity 0x000 chunk
+    /// </summary>
     [Chunk(0x0329F000)]
     public class Chunk0329F000 : Chunk<CGameCtnMediaBlockEntity>, IVersionable
     {
@@ -103,4 +120,8 @@ public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
             }
         }
     }
+
+    #endregion
+
+    #endregion
 }

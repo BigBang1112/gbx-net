@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Time (0x03085000)
+/// MediaTracker block - Time.
 /// </summary>
+/// <remarks>ID: 0x03085000</remarks>
 [Node(0x03085000)]
 public partial class CGameCtnMediaBlockTime : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
@@ -34,6 +35,9 @@ public partial class CGameCtnMediaBlockTime : CGameCtnMediaBlock, CGameCtnMediaB
 
     #region 0x000 chunk
 
+    /// <summary>
+    /// CGameCtnMediaBlockTime 0x000 chunk
+    /// </summary>
     [Chunk(0x03085000)]
     public class Chunk03085000 : Chunk<CGameCtnMediaBlockTime>
     {

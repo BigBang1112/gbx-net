@@ -1,5 +1,9 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <summary>
+/// Level of detail for individual <see cref="CPlugTree"/>s.
+/// </summary>
+/// <remarks>ID: 0x09015000</remarks>
 [Node(0x09015000)]
 public class CPlugTreeVisualMip : CPlugTree
 {
@@ -16,6 +20,9 @@ public class CPlugTreeVisualMip : CPlugTree
         levels = null!;
     }
 
+    /// <summary>
+    /// CPlugTreeVisualMip 0x002 chunk
+    /// </summary>
     [Chunk(0x09015002)]
     public class Chunk09015002 : Chunk<CPlugTreeVisualMip>
     {

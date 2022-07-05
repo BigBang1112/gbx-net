@@ -3,8 +3,9 @@
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Sound (0x030A7000)
+/// MediaTracker block - Sound.
 /// </summary>
+/// <remarks>ID: 0x030A7000</remarks>
 [Node(0x030A7000)]
 [NodeExtension("GameCtnMediaBlockSound")]
 public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
@@ -104,6 +105,9 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, CGameCtnMedia
 
     #region 0x001 chunk
 
+    /// <summary>
+    /// CGameCtnMediaBlockSound 0x001 chunk
+    /// </summary>
     [Chunk(0x030A7001)]
     public class Chunk030A7001 : Chunk<CGameCtnMediaBlockSound>
     {
@@ -118,6 +122,9 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, CGameCtnMedia
 
     #region 0x002 chunk
 
+    /// <summary>
+    /// CGameCtnMediaBlockSound 0x002 chunk
+    /// </summary>
     [Chunk(0x030A7002)]
     public class Chunk030A7002 : Chunk<CGameCtnMediaBlockSound>
     {
@@ -132,16 +139,15 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, CGameCtnMedia
 
     #region 0x003 chunk
 
+    /// <summary>
+    /// CGameCtnMediaBlockSound 0x003 chunk
+    /// </summary>
     [Chunk(0x030A7003)]
     public class Chunk030A7003 : Chunk<CGameCtnMediaBlockSound>, IVersionable
     {
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnMediaBlockSound n, GameBoxReaderWriter rw)
         {
@@ -167,16 +173,15 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, CGameCtnMedia
 
     #region 0x004 chunk
 
+    /// <summary>
+    /// CGameCtnMediaBlockSound 0x004 chunk
+    /// </summary>
     [Chunk(0x030A7004)]
     public class Chunk030A7004 : Chunk<CGameCtnMediaBlockSound>, IVersionable
     {
         private int version = 1;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnMediaBlockSound n, GameBoxReaderWriter rw)
         {

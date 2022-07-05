@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Camera ingame (0x03084000)
+/// MediaTracker block - Camera ingame.
 /// </summary>
+/// <remarks>ID: 0x03084000</remarks>
 [Node(0x03084000)]
 public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasTwoKeys
 {

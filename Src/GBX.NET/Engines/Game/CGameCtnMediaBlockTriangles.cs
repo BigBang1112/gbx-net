@@ -1,11 +1,12 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Triangles (0x03029000)
+/// MediaTracker block - Triangles.
 /// </summary>
+/// <remarks>ID: 0x03029000</remarks>
 [Node(0x03029000)]
 [NodeExtension("GameCtnMediaBlockTriangles")]
-public abstract class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
+public abstract partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
     #region Fields
 
@@ -116,6 +117,9 @@ public abstract class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, CGameCtn
 
     #region 0x001 chunk
 
+    /// <summary>
+    /// CGameCtnMediaBlockTriangles 0x001 chunk
+    /// </summary>
     [Chunk(0x03029001)]
     public class Chunk03029001 : Chunk<CGameCtnMediaBlockTriangles>
     {
@@ -184,43 +188,6 @@ public abstract class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, CGameCtn
     }
 
     #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public new class Key : CGameCtnMediaBlock.Key
-    {
-        private readonly CGameCtnMediaBlockTriangles node;
-
-        private Vec3[] positions;
-
-        public Vec3[] Positions
-        {
-            get => positions;
-            set
-            {
-                if (value.Length != positions.Length)
-                {
-                    Array.Resize(ref node.vertices, value.Length);
-
-                    foreach (var k in node.keys)
-                        if (k != this)
-                            Array.Resize(ref k.positions, value.Length);
-
-                    node.RemoveTrianglesOutOfRange();
-                }
-
-                positions = value;
-            }
-        }
-
-        public Key(CGameCtnMediaBlockTriangles node)
-        {
-            this.node = node;
-            positions = new Vec3[node.vertices?.Length ?? 0];
-        }
-    }
-
+    
     #endregion
 }

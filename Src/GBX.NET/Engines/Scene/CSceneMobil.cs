@@ -1,8 +1,6 @@
 ﻿namespace GBX.NET.Engines.Scene;
 
-/// <summary>
-/// CSceneMobil (0x0A011000)
-/// </summary>
+/// <remarks>ID: 0x0A011000</remarks>
 [Node(0x0A011000)]
 [NodeExtension("Mobil")]
 public class CSceneMobil : CSceneObject
@@ -20,6 +18,9 @@ public class CSceneMobil : CSceneObject
         item = null!;
     }
 
+    /// <summary>
+    /// CSceneMobil 0x003 chunk
+    /// </summary>
     [Chunk(0x0A011003)]
     public class Chunk0A011003 : Chunk<CSceneMobil>
     {
@@ -31,6 +32,9 @@ public class CSceneMobil : CSceneObject
         }
     }
 
+    /// <summary>
+    /// CSceneMobil 0x004 chunk
+    /// </summary>
     [Chunk(0x0A011004)]
     public class Chunk0A011004 : Chunk<CSceneMobil>
     {
@@ -42,6 +46,9 @@ public class CSceneMobil : CSceneObject
         }
     }
 
+    /// <summary>
+    /// CSceneMobil 0x005 chunk
+    /// </summary>
     [Chunk(0x0A011005)]
     public class Chunk0A011005 : Chunk<CSceneMobil>
     {
@@ -60,6 +67,9 @@ public class CSceneMobil : CSceneObject
         }
     }
 
+    /// <summary>
+    /// CSceneMobil 0x006 chunk
+    /// </summary>
     [Chunk(0x0A011006)]
     public class Chunk0A011006 : Chunk<CSceneMobil>
     {

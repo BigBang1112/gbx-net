@@ -6,11 +6,7 @@ public partial class CGameCtnMediaBlockDirtyLens
     {
         private float intensity;
 
-        public float Intensity
-        {
-            get => intensity;
-            set => intensity = value;
-        }
+        public float Intensity { get => intensity; set => intensity = value; }
 
         public override void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {

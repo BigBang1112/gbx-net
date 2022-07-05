@@ -1,8 +1,6 @@
 ﻿namespace GBX.NET.Engines.GameData;
 
-/// <summary>
-/// CGameCtnAutoTerrain (0x03120000)
-/// </summary>
+/// <remarks>ID: 0x03120000</remarks>
 [Node(0x03120000)]
 public class CGameCtnAutoTerrain : CMwNod
 {

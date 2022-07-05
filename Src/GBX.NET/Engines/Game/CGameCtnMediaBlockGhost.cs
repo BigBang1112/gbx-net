@@ -3,8 +3,9 @@
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Ghost (0x030E5000)
+/// MediaTracker block - Ghost.
 /// </summary>
+/// <remarks>ID: 0x030E5000</remarks>
 [Node(0x030E5000)]
 [NodeExtension("GameCtnMediaBlockGhost")]
 public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys, CGameCtnMediaBlock.IHasKeys

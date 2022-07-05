@@ -2,6 +2,10 @@
 
 public abstract partial class CGameCtnMediaBlock
 {
+    /// <summary>
+    /// Keyframe of a MediaTracker block.
+    /// </summary>
+    /// <remarks>Internally called <c>SKeyVal</c>.</remarks>
     public abstract class Key : IReadableWritable, ICloneable
     {
         private TimeSingle time;

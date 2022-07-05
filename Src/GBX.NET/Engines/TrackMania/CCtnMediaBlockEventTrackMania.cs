@@ -1,5 +1,6 @@
 ﻿namespace GBX.NET.Engines.TrackMania;
 
+/// <remarks>ID: 0x2407F000</remarks>
 [Node(0x2407F000)]
 public class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
 {
@@ -95,6 +96,9 @@ public class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
 
     #region 0x000 chunk
 
+    /// <summary>
+    /// CCtnMediaBlockEventTrackMania 0x000 chunk
+    /// </summary>
     [Chunk(0x2407F000)]
     public class Chunk2407F000 : Chunk<CCtnMediaBlockEventTrackMania>
     {
@@ -141,6 +145,9 @@ public class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
 
     #region 0x003 chunk
 
+    /// <summary>
+    /// CCtnMediaBlockEventTrackMania 0x003 chunk
+    /// </summary>
     [Chunk(0x2407F003)]
     [AutoReadWriteChunk]
     public class Chunk2407F003 : Chunk<CCtnMediaBlockEventTrackMania>

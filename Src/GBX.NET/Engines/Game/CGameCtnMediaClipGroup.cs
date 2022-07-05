@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker clip group (0x0307A000)
+/// MediaTracker clip group.
 /// </summary>
+/// <remarks>ID: 0x0307A000</remarks>
 [Node(0x0307A000)]
 [NodeExtension("GameCtnMediaClipGroup")]
 public partial class CGameCtnMediaClipGroup : CMwNod
@@ -28,12 +29,10 @@ public partial class CGameCtnMediaClipGroup : CMwNod
     #region Properties
 
     /// <summary>
-    /// An array of MediaTracker clips.
+    /// List of MediaTracker clips.
     /// </summary>
     [NodeMember]
     public IList<ClipTrigger> Clips { get; set; }
-
-    public int ClipsVersion { get; set; } = 10;
 
     #endregion
 
@@ -50,12 +49,17 @@ public partial class CGameCtnMediaClipGroup : CMwNod
 
     #region 0x001 chunk
 
+    /// <summary>
+    /// CGameCtnMediaClipGroup 0x001 chunk
+    /// </summary>
     [Chunk(0x0307A001)]
     public class Chunk0307A001 : Chunk<CGameCtnMediaClipGroup>
     {
+        public int ClipsVersion { get; set; } = 10;
+
         public override void Read(CGameCtnMediaClipGroup n, GameBoxReader r)
         {
-            n.ClipsVersion = r.ReadInt32();
+            ClipsVersion = r.ReadInt32();
 
             var clips = r.ReadArray(r => r.ReadNodeRef<CGameCtnMediaClip>()!);
 
@@ -71,7 +75,7 @@ public partial class CGameCtnMediaClipGroup : CMwNod
 
         public override void Write(CGameCtnMediaClipGroup n, GameBoxWriter w)
         {
-            w.Write(n.ClipsVersion);
+            w.Write(ClipsVersion);
 
             w.WriteList(n.Clips, (x, w) => w.Write(x.Clip));
             w.WriteList(n.Clips, (x, w) =>
@@ -82,7 +86,7 @@ public partial class CGameCtnMediaClipGroup : CMwNod
 
         public override async Task ReadAsync(CGameCtnMediaClipGroup n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
         {
-            n.ClipsVersion = r.ReadInt32();
+            ClipsVersion = r.ReadInt32();
 
             var clips = await r.ReadArrayAsync(r => r.ReadNodeRefAsync<CGameCtnMediaClip>());
 
@@ -101,12 +105,17 @@ public partial class CGameCtnMediaClipGroup : CMwNod
 
     #region 0x002 chunk
 
+    /// <summary>
+    /// CGameCtnMediaClipGroup 0x002 chunk
+    /// </summary>
     [Chunk(0x0307A002)]
     public class Chunk0307A002 : Chunk<CGameCtnMediaClipGroup>
     {
+        public int ClipsVersion { get; set; } = 10;
+
         public override void Read(CGameCtnMediaClipGroup n, GameBoxReader r)
         {
-            n.ClipsVersion = r.ReadInt32();
+            ClipsVersion = r.ReadInt32();
 
             var clips = r.ReadArray(r => r.ReadNodeRef<CGameCtnMediaClip>()!);
             var triggers = ReadTriggers(r);
@@ -130,7 +139,7 @@ public partial class CGameCtnMediaClipGroup : CMwNod
 
         public override void Write(CGameCtnMediaClipGroup n, GameBoxWriter w)
         {
-            w.Write(n.ClipsVersion);
+            w.Write(ClipsVersion);
 
             w.WriteList(n.Clips, (x, w) => w.Write(x.Clip));
             w.WriteList(n.Clips, (x, w) =>
@@ -145,7 +154,7 @@ public partial class CGameCtnMediaClipGroup : CMwNod
 
         public override async Task ReadAsync(CGameCtnMediaClipGroup n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
         {
-            n.ClipsVersion = r.ReadInt32();
+            ClipsVersion = r.ReadInt32();
 
             var clips = await r.ReadArrayAsync(r => r.ReadNodeRefAsync<CGameCtnMediaClip>());
             var triggers = ReadTriggers(r);
@@ -160,12 +169,17 @@ public partial class CGameCtnMediaClipGroup : CMwNod
 
     #region 0x003 chunk
 
+    /// <summary>
+    /// CGameCtnMediaClipGroup 0x003 chunk
+    /// </summary>
     [Chunk(0x0307A003)]
     public class Chunk0307A003 : Chunk<CGameCtnMediaClipGroup>
     {
+        public int ClipsVersion { get; set; } = 10;
+
         public override void Read(CGameCtnMediaClipGroup n, GameBoxReader r)
         {
-            n.ClipsVersion = r.ReadInt32();
+            ClipsVersion = r.ReadInt32();
 
             var clips = r.ReadArray(r => r.ReadNodeRef<CGameCtnMediaClip>()!);
             var triggers = ReadTriggers(r);
@@ -202,7 +216,7 @@ public partial class CGameCtnMediaClipGroup : CMwNod
 
         public override void Write(CGameCtnMediaClipGroup n, GameBoxWriter w)
         {
-            w.Write(n.ClipsVersion);
+            w.Write(ClipsVersion);
 
             w.WriteList(n.Clips, (x, w) => w.Write(x.Clip));
             w.WriteList(n.Clips, (x, w) =>
@@ -219,7 +233,7 @@ public partial class CGameCtnMediaClipGroup : CMwNod
 
         public override async Task ReadAsync(CGameCtnMediaClipGroup n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
         {
-            n.ClipsVersion = r.ReadInt32();
+            ClipsVersion = r.ReadInt32();
 
             var clips = await r.ReadArrayAsync(r => r.ReadNodeRefAsync<CGameCtnMediaClip>());
             var triggers = ReadTriggers(r);

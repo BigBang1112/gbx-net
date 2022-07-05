@@ -1,9 +1,9 @@
 ﻿namespace GBX.NET.Engines.Control;
 
 /// <summary>
-/// CControlEffect (0x07005000)
+/// Base of the widely used <see cref="CControlEffectSimi"/>.
 /// </summary>
-/// <remarks>Base of the widely used <see cref="CControlEffectSimi"/>.</remarks>
+/// <remarks>ID: 0x07005000</remarks>
 [Node(0x07005000)]
 public abstract class CControlEffect : CMwNod
 {

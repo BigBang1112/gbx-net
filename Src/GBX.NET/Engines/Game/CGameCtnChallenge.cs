@@ -8,9 +8,9 @@ using GBX.NET.BlockInfo;
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// CGameCtnChallenge (0x03043000)
+/// A map.
 /// </summary>
-/// <remarks>A map.</remarks>
+/// <remarks>ID: 0x03043000</remarks>
 [Node(0x03043000)]
 [NodeExtension("Challenge")]
 [NodeExtension("Map")]

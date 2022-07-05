@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Camera effect script (0x03161000)
+/// MediaTracker block - Camera effect script.
 /// </summary>
+/// <remarks>ID: 0x03161000</remarks>
 [Node(0x03161000)]
 public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCameraEffect,
     CGameCtnMediaBlock.IHasKeys,

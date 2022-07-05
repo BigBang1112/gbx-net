@@ -1,5 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0900C000</remarks>
 [Node(0x0900C000)]
 [NodeExtension("Shape")]
 public class CPlugSurface : CPlug
@@ -23,6 +24,9 @@ public class CPlugSurface : CPlug
         public ushort? defaultMaterialIndex; // set if containsMaterial is false
     }
 
+    /// <summary>
+    /// CPlugSurface 0x000 chunk
+    /// </summary>
     [Chunk(0x0900C000)]
     public class Chunk0900C000 : Chunk<CPlugSurface>
     {
@@ -56,6 +60,9 @@ public class CPlugSurface : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSurface 0x001 chunk
+    /// </summary>
     [Chunk(0x0900C001)]
     public class Chunk0900C001 : Chunk<CPlugSurface>
     {
@@ -67,6 +74,9 @@ public class CPlugSurface : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSurface 0x003 chunk
+    /// </summary>
     [Chunk(0x0900C003)]
     public class Chunk0900C003 : Chunk<CPlugSurface>, IVersionable
     {

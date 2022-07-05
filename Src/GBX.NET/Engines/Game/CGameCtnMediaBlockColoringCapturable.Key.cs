@@ -8,23 +8,9 @@ public partial class CGameCtnMediaBlockColoringCapturable
         private float gauge;
         private int emblem;
 
-        public float Hue
-        {
-            get => hue;
-            set => hue = value;
-        }
-
-        public float Gauge
-        {
-            get => gauge;
-            set => gauge = value;
-        }
-
-        public int Emblem
-        {
-            get => emblem;
-            set => emblem = value;
-        }
+        public float Hue { get => hue; set => hue = value; }
+        public float Gauge { get => gauge; set => gauge = value; }
+        public int Emblem { get => emblem; set => emblem = value; }
 
         public override void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {

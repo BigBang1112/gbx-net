@@ -10,38 +10,16 @@ public partial class CGameCtnMediaBlockCameraCustom
         private Vec3? targetPosition;
         private float? nearZ;
 
-        public Vec3 Position
-        {
-            get => position;
-            set => position = value;
-        }
+        public Vec3 Position { get => position; set => position = value; }
 
         /// <summary>
         /// Pitch, yaw and roll in radians.
         /// </summary>
-        public Vec3? PitchYawRoll
-        {
-            get => pitchYawRoll;
-            set => pitchYawRoll = value;
-        }
+        public Vec3? PitchYawRoll { get => pitchYawRoll; set => pitchYawRoll = value; }
 
-        public float? Fov
-        {
-            get => fov;
-            set => fov = value;
-        }
-
-        public Vec3? TargetPosition
-        {
-            get => targetPosition;
-            set => targetPosition = value;
-        }
-
-        public float? NearZ
-        {
-            get => nearZ;
-            set => nearZ = value;
-        }
+        public float? Fov { get => fov; set => fov = value; }
+        public Vec3? TargetPosition { get => targetPosition; set => targetPosition = value; }
+        public float? NearZ { get => nearZ; set => nearZ = value; }
 
         public void ReadWrite(GameBoxReaderWriter rw, int version)
         {
@@ -68,7 +46,7 @@ public partial class CGameCtnMediaBlockCameraCustom
 
             (t as IReadableWritable).ReadWrite(rw, version);
 
-            if (rw.Reader is not null) // I don't understand this xd
+            if (rw.Reader is not null)
             {
                 interpVal = t;
             }

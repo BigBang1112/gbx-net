@@ -7,17 +7,8 @@ public partial class CGameCtnMediaBlockCameraEffectShake
         private float intensity;
         private float speed;
 
-        public float Intensity
-        {
-            get => intensity;
-            set => intensity = value;
-        }
-
-        public float Speed
-        {
-            get => speed;
-            set => speed = value;
-        }
+        public float Intensity { get => intensity; set => intensity = value; }
+        public float Speed { get => speed; set => speed = value; }
 
         public override void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {

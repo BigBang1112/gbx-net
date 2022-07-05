@@ -1,9 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Shoot (0x03145000)
+/// MediaTracker block - Shoot (better known as "Editing cut").
 /// </summary>
-/// <remarks>Better known as "Editing cut".</remarks>
+/// <remarks>ID: 0x03145000</remarks>
 [Node(0x03145000)]
 public class CGameCtnMediaBlockShoot : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {
@@ -45,6 +45,9 @@ public class CGameCtnMediaBlockShoot : CGameCtnMediaBlock, CGameCtnMediaBlock.IH
 
     #region 0x000 chunk
 
+    /// <summary>
+    /// CGameCtnMediaBlockShoot 0x000 chunk
+    /// </summary>
     [Chunk(0x03145000)]
     public class Chunk03145000 : Chunk<CGameCtnMediaBlockShoot>
     {

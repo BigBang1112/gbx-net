@@ -4,8 +4,9 @@ using System.IO.Compression;
 namespace GBX.NET.Engines.Plug;
 
 /// <summary>
-/// CPlugEntRecordData (0x0911F000)
+/// Entity data in a timeline.
 /// </summary>
+/// <remarks>ID: 0x0911F000</remarks>
 [Node(0x0911F000)]
 public class CPlugEntRecordData : CMwNod
 {
@@ -268,6 +269,9 @@ public class CPlugEntRecordData : CMwNod
         return samples;
     }
 
+    /// <summary>
+    /// CPlugEntRecordData 0x000 chunk
+    /// </summary>
     [Chunk(0x0911F000)]
     public class Chunk0911F000 : Chunk<CPlugEntRecordData>, IVersionable
     {       

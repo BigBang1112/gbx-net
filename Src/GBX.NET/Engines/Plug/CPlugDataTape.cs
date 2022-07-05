@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 /// <summary>
-/// Data tape (0x090CE000)
+/// Data tape.
 /// </summary>
+/// <remarks>ID: 0x090CE000</remarks>
 [Node(0x090CE000)]
 public class CPlugDataTape : CMwNod
 {
@@ -11,6 +12,9 @@ public class CPlugDataTape : CMwNod
 
     }
 
+    /// <summary>
+    /// CPlugDataTape 0x001 chunk
+    /// </summary>
     [Chunk(0x090CE001)]
     public class Chunk090CE001 : Chunk<CPlugDataTape>, IVersionable
     {

@@ -1,12 +1,12 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// CGameCtnCampaign (0x03090000)
+/// Campaign map list and other information about a campaign.
 /// </summary>
-/// <remarks>Information about a campaign.</remarks>
+/// <remarks>ID: 0x03090000</remarks>
 [Node(0x03090000)]
-[NodeExtension("ConstructionCampaign")]
 [NodeExtension("Campaign")]
+[NodeExtension("ConstructionCampaign")]
 [NodeExtension("GameCtnCampaign")]
 public class CGameCtnCampaign : CMwNod
 {

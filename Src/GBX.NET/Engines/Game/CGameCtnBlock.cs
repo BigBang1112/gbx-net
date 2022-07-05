@@ -3,8 +3,9 @@
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Block placed on a map (0x03057000)
+/// Block placed on a map.
 /// </summary>
+/// <remarks>ID: 0x03057000</remarks>
 [Node(0x03057000)]
 public class CGameCtnBlock : CMwNod, INodeDependant<CGameCtnChallenge>
 {

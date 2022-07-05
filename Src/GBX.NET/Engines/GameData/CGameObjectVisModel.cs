@@ -1,8 +1,11 @@
 ﻿namespace GBX.NET.Engines.GameData;
 
+/// <remarks>ID: 0x2E007000</remarks>
 [Node(0x2E007000)]
 public class CGameObjectVisModel : CMwNod
 {
+    #region Fields
+
     private string? mesh;
     private string? soundRefSpawn;
     private string? soundRefUnspawn;
@@ -12,6 +15,10 @@ public class CGameObjectVisModel : CMwNod
     private CMwNod? meshShadedFid;
     private Vec3? domeShaderColor;
     private CPlugSolid2Model? meshShaded;
+
+    #endregion
+
+    #region Properties
 
     [NodeMember(ExactlyNamed = true)]
     public string? Mesh { get => mesh; set => mesh = value; }
@@ -40,11 +47,16 @@ public class CGameObjectVisModel : CMwNod
     [NodeMember(ExactlyNamed = true)]
     public CPlugSolid2Model? MeshShaded { get => meshShaded; set => meshShaded = value; }
 
+    #endregion
+
+    #region Constructors
+
     protected CGameObjectVisModel()
     {
         
     }
 
+    #endregion
 
     #region Chunks
 
