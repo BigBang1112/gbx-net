@@ -6,7 +6,7 @@ internal sealed class Vec3EqualityComparer : EqualityComparer<Vec3>
 {
     private readonly int digitThreshold;
 
-    public Vec3EqualityComparer(int digitThreshold = 4)
+    public Vec3EqualityComparer(int digitThreshold)
     {
         this.digitThreshold = digitThreshold;
     }
