@@ -124,38 +124,49 @@ internal class ObjFileExporter : IModelExporter, IDisposable
             var uvs = new List<Vec2>();
 
             var currentMat = default(string);
-            
-            foreach (var face in geometryLayer.Crystal.Faces)
+
+            var counter = 0;
+
+            foreach (var faceGroup in geometryLayer.Crystal.Faces.GroupBy(x => x.Group))
             {
-                var f = new string[face.Vertices.Length];
+                counter++;
+                
+                var group = faceGroup.Key;
 
-                for (int i = 0; i < face.Vertices.Length; i++)
+                objFaceWriter.WriteLine($"\ng {counter}{group.Name}");
+
+                foreach (var face in faceGroup)
                 {
-                    var v = face.Vertices[i];
-                    var uvIndex = uvs.IndexOf(v.UV);
+                    var f = new string[face.Vertices.Length];
 
-                    if (uvIndex == -1)
+                    for (int i = 0; i < face.Vertices.Length; i++)
                     {
-                        objUvWriter.WriteLine("vt {0} {1}", v.UV.X.ToString(invariant), v.UV.Y.ToString(invariant));
-                        
-                        uvIndex = uvs.Count;
-                        uvs.Add(v.UV);
+                        var v = face.Vertices[i];
+                        var uvIndex = uvs.IndexOf(v.UV);
+
+                        if (uvIndex == -1)
+                        {
+                            objUvWriter.WriteLine("vt {0} {1}", v.UV.X.ToString(invariant), v.UV.Y.ToString(invariant));
+
+                            uvIndex = uvs.Count;
+                            uvs.Add(v.UV);
+                        }
+
+                        var vertStr = $"{Array.IndexOf(positions, v.Position) + 1}/{uvIndex + 1}";
+
+                        f[i] = vertStr;
                     }
 
-                    var vertStr = $"{Array.IndexOf(positions, v.Position) + 1}/{uvIndex + 1}";
+                    var thisMaterial = face.Material?.Link is not null && validMaterials.Contains(face.Material.Link) ? face.Material.Link : "_Nothing";
 
-                    f[i] = vertStr;
+                    if (currentMat != thisMaterial)
+                    {
+                        currentMat = thisMaterial;
+                        objFaceWriter.WriteLine("usemtl " + currentMat);
+                    }
+
+                    objFaceWriter.WriteLine("f {0}", string.Join(" ", f));
                 }
-
-                var thisMaterial = face.Material?.Link is not null && validMaterials.Contains(face.Material.Link) ? face.Material.Link : "_Nothing";
-
-                if (currentMat != thisMaterial)
-                {
-                    currentMat = thisMaterial;
-                    objFaceWriter.WriteLine("usemtl " + currentMat);
-                }
-
-                objFaceWriter.WriteLine("f {0}", string.Join(" ", f));
             }
         }
         
