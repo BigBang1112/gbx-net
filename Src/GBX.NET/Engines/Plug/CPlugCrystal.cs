@@ -9,7 +9,7 @@ namespace GBX.NET.Engines.Plug;
 /// <remarks>ID: 0x09003000</remarks>
 [Node(0x09003000), WritingNotSupported]
 [NodeExtension("Crystal")]
-public class CPlugCrystal : CPlugTreeGenerator
+public partial class CPlugCrystal : CPlugTreeGenerator
 {
     #region Enums
 
@@ -81,15 +81,15 @@ public class CPlugCrystal : CPlugTreeGenerator
     }
 
     private static GeometryLayer ReadGeometryLayer(GameBoxReader r,
-                                                   CPlugCrystal n,
+                                                   CPlugMaterialUserInst?[]? materials,
                                                    string layerId,
                                                    string layerName,
                                                    bool isEnabled,
                                                    int typeVersion)
     {
-        var crystal = ReadCrystal(r, n);
+        var crystal = Crystal.Read(r, materials);
 
-        var countup = r.ReadArray<int>();
+        var countup = r.ReadArray<int>(); // ID for each group?
 
         var collidable = true;
         var isVisible = true;
@@ -111,13 +111,13 @@ public class CPlugCrystal : CPlugTreeGenerator
     }
 
     private static TriggerLayer ReadTriggerLayer(GameBoxReader r,
-                                                 CPlugCrystal n,
+                                                 CPlugMaterialUserInst?[]? materials,
                                                  string layerId,
                                                  string layerName,
                                                  bool isEnabled,
                                                  int typeVersion)
     {
-        var crystal = ReadCrystal(r, n);
+        var crystal = Crystal.Read(r, materials);
 
         if (typeVersion >= 1)
         {
@@ -129,240 +129,6 @@ public class CPlugCrystal : CPlugTreeGenerator
             LayerID = layerId,
             LayerName = layerName,
             IsEnabled = isEnabled
-        };
-    }
-
-    private static Crystal ReadCrystal(GameBoxReader r, CPlugCrystal n)
-    {
-        var crystalVersion = r.ReadInt32(); // up to 32 supported
-        var u06 = r.ReadInt32(); // 4
-        var u07 = r.ReadInt32(); // 3
-        var u08 = r.ReadInt32(); // 4
-        var u09 = r.ReadSingle(); // 64
-        var u10 = r.ReadInt32(); // 2
-        var u11 = r.ReadSingle(); // 128
-        var u12 = r.ReadInt32(); // 1
-        var u13 = r.ReadSingle(); // 192
-        var u14 = r.ReadInt32(); // 0 - SAnchorInfo array?
-
-        // SCrystalPart array
-        var groups = r.ReadArray(r => new Group()
-        {
-            U01 = crystalVersion >= 31 ? r.ReadInt32() : 0,
-            U02 = crystalVersion >= 36 ? r.ReadByte() : r.ReadInt32(), // maybe bool
-            U03 = r.ReadInt32(),
-            Name = r.ReadString(),
-            U04 = r.ReadInt32(),
-            U05 = r.ReadArray<int>()
-        });
-
-        if (crystalVersion < 21)
-        {
-            // some other values
-            throw new Exception("crystalVersion < 21 not supported");
-        }
-
-        var isEmbeddedCrystal = false;
-
-        if (crystalVersion >= 25)
-        {
-            if (crystalVersion < 29)
-            {
-                isEmbeddedCrystal = r.ReadBoolean();
-                isEmbeddedCrystal = r.ReadBoolean();
-            }
-
-            isEmbeddedCrystal = r.ReadBoolean(asByte: crystalVersion >= 34);
-
-            if (crystalVersion >= 33)
-            {
-                var u30 = r.ReadInt32(); // local_378
-                var u31 = r.ReadInt32(); // local_374
-            }
-        }
-
-        var vertices = default(Vec3[]);
-        var edges = default(Int2[]);
-        var faces = default(Face[]);
-
-        if (isEmbeddedCrystal)
-        {
-            vertices = r.ReadArray<Vec3>();
-
-            var edgesCount = r.ReadInt32();
-
-            if (crystalVersion >= 35)
-            {
-                var unfacedEdgesCount = r.ReadInt32();
-                var unfacedEdges = r.ReadOptimizedIntArray(unfacedEdgesCount * 2); // unfaced edges
-            }
-
-            edges = r.ReadArray<Int2>(crystalVersion >= 35 ? 0 : edgesCount);
-
-            var facesCount = r.ReadInt32();
-
-            var uvs = default(Vec2[]);
-            var faceIndicies = default(int[]);
-
-            if (crystalVersion >= 37)
-            {
-                uvs = r.ReadArray<Vec2>(); // unique uv values
-                faceIndicies = r.ReadOptimizedIntArray();
-            }
-
-            var indiciesCounter = 0;
-
-            faces = r.ReadArray(facesCount, r =>
-            {
-                var uvVertices = crystalVersion >= 35 ? (r.ReadByte() + 3) : r.ReadInt32();
-                var inds = crystalVersion >= 34 ? r.ReadOptimizedIntArray(uvVertices, vertices.Length) : r.ReadArray<int>(uvVertices);
-
-                var uv = default(Vec2[]);
-
-                if (crystalVersion < 27)
-                {
-                    uv = r.ReadArray<Vec2>();
-                    var niceVec = r.ReadVec3();
-                }
-                else if (crystalVersion < 37)
-                {
-                    uv = r.ReadArray<Vec2>(uvVertices);
-                }
-                else if (uvs is not null && faceIndicies is not null)
-                {
-                    uv = new Vec2[inds.Length];
-
-                    for (var i = 0; i < uv.Length; i++)
-                    {
-                        uv[i] = uvs[faceIndicies[indiciesCounter]];
-                        indiciesCounter++;
-                    }
-                }
-
-                var materialIndex = -1;
-
-                if (crystalVersion >= 25)
-                {
-                    if (crystalVersion >= 33)
-                    {
-                        materialIndex = n.Materials is null
-                            ? r.ReadInt32()
-                            : r.ReadOptimizedInt(n.Materials.Length);
-                    }
-                    else
-                    {
-                        materialIndex = r.ReadInt32();
-                    }
-                }
-
-                var groupIndex = crystalVersion >= 33 ? r.ReadOptimizedInt(groups.Length) : r.ReadInt32();
-
-                var material = materialIndex != -1 ? n.Materials?[materialIndex] : null;
-                
-                return new Face()
-                {
-                    VertCount = uvVertices,
-                    Indices = inds,
-                    UV = uv ?? throw new Exception("No UVs"),
-                    Material = material,
-                    Group = groups[groupIndex]
-                };
-            });
-        }
-        else
-        {
-            var handleVerts = r.ReadArray<(bool, int, int)>(r => new(
-                r.ReadBoolean(),
-                r.ReadInt32(),
-                r.ReadInt32()
-            ));
-            var handleVertsU01 = r.ReadInt32();
-            var handleVertsU02 = r.ReadInt32();
-            var handleEdges = r.ReadArray<(bool, int, int)>(r => new(
-                r.ReadBoolean(),
-                r.ReadInt32(),
-                r.ReadInt32()
-            ));
-            var handleEdgesU01 = r.ReadInt32();
-            var handleEdgesU02 = r.ReadInt32();
-            var handleFaces = r.ReadArray<(bool, int, int)>(r => new(
-                r.ReadBoolean(),
-                r.ReadInt32(),
-                r.ReadInt32()
-            ));
-            var handleFacesU01 = r.ReadInt32();
-            var handleFacesU02 = r.ReadInt32();
-
-            throw new NotSupportedException("Unsupported crystal.");
-
-            var wtf = r.ReadArray<int>(15007);
-
-            var verts = r.ReadArray<Vec3>();
-        }
-
-        foreach (var face in faces)
-        {
-            if (!isEmbeddedCrystal)
-            {
-                var u18 = r.ReadInt32();
-            }
-
-            if (crystalVersion < 30 || !isEmbeddedCrystal)
-            {
-                var u19 = r.ReadInt32();
-            }
-
-            if (crystalVersion >= 22 && !isEmbeddedCrystal)
-            {
-                var u20 = r.ReadInt32();
-            }
-        }
-
-        foreach (var vert in vertices)
-        {
-            if (crystalVersion < 29)
-            {
-                var u21 = r.ReadSingle();
-            }
-        }
-
-        var u22 = r.ReadInt32();
-
-        if (crystalVersion >= 7 && crystalVersion < 32)
-        {
-            var u23 = r.ReadInt32(); // crystal link array
-
-            if (crystalVersion >= 10)
-            {
-                var u24 = r.ReadInt32();
-                var u25 = r.ReadString();
-
-                if (crystalVersion < 30)
-                {
-                    var u26 = r.ReadArray<float>(); // SCrystalSmoothingGroup array
-                }
-            }
-        }
-
-        if (crystalVersion < 36)
-        {
-            var numFaces = r.ReadInt32();
-            var numEdges = r.ReadInt32();
-            var numVerts = r.ReadInt32();
-
-            var u27 = r.ReadArray<int>(numFaces);
-            var u28 = r.ReadArray<int>(numEdges);
-            var u29 = r.ReadArray<int>(numVerts);
-
-            var u17 = r.ReadInt32();
-        }
-
-        return new Crystal()
-        {
-            Vertices = vertices,
-            Edges = edges,
-            Faces = faces,
-            Groups = groups
         };
     }
 
@@ -386,7 +152,7 @@ public class CPlugCrystal : CPlugTreeGenerator
 
             n.Layers = new[]
             {
-                new GeometryLayer(ReadCrystal(r, n))
+                new GeometryLayer(Crystal.Read(r, n.materials))
                 {
                     LayerID = "Layer0",
                     LayerName = "Geometry",
@@ -496,8 +262,8 @@ public class CPlugCrystal : CPlugTreeGenerator
 
                 return type switch
                 {
-                    ELayerType.Geometry => ReadGeometryLayer(r, n, layerId, layerName, isEnabled, typeVersion),
-                    ELayerType.Trigger => ReadTriggerLayer(r, n, layerId, layerName, isEnabled, typeVersion),
+                    ELayerType.Geometry => ReadGeometryLayer(r, n.materials, layerId, layerName, isEnabled, typeVersion),
+                    ELayerType.Trigger => ReadTriggerLayer(r, n.materials, layerId, layerName, isEnabled, typeVersion),
                     ELayerType.Cubes => ReadCubesLayer(r, typeVersion),
                     _ => ReadMaskLayer(r, type, layerId, layerName)
                 };
@@ -506,6 +272,8 @@ public class CPlugCrystal : CPlugTreeGenerator
 
         private static Layer ReadCubesLayer(GameBoxReader r, int version)
         {
+            throw new NotSupportedException("Cubes/Voxel layer is not supported");
+
             var u01 = r.ReadByte();
             var voxelSize = r.ReadSingle();
             var u03 = default(Vec3);
@@ -770,7 +538,7 @@ public class CPlugCrystal : CPlugTreeGenerator
     #endregion
 
     #endregion
-
+    
     #region Other classes
 
     public abstract class Layer
@@ -887,30 +655,29 @@ public class CPlugCrystal : CPlugTreeGenerator
 
     public class Face
     {
-        public int VertCount { get; set; }
-        public int[] Indices { get; set; } = Array.Empty<int>();
-        public Vec2[] UV { get; set; } = Array.Empty<Vec2>();
+        public Vertex[] Vertices { get; set; }
+        public Group Group { get; set; }
         public CPlugMaterialUserInst? Material { get; set; }
-        public Group? Group { get; set; }
+
+        public Face(Vertex[] vertices, Group group, CPlugMaterialUserInst? material = null)
+        {
+            Vertices = vertices;
+            Group = group;
+            Material = material;
+        }
 
         public override string ToString()
         {
-            return $"({string.Join(" ", Indices)}) ({string.Join(" ", UV)})";
+            return string.Join(" ", Vertices);
         }
     }
+
+    public readonly record struct Vertex(Vec3 Position, Vec2 UV);
 
     public class LayerMask
     {
         public string? LayerId { get; set; }
         public int GroupIndex { get; set; }
-    }
-
-    public class Crystal
-    {
-        public Vec3[] Vertices { get; set; } = Array.Empty<Vec3>();
-        public Int2[] Edges { get; set; } = Array.Empty<Int2>();
-        public Face[] Faces { get; set; } = Array.Empty<Face>();
-        public Group[] Groups { get; set; } = Array.Empty<Group>();
     }
 
     #endregion

@@ -102,6 +102,9 @@ internal class ObjFileExporter : IModelExporter, IDisposable
             }
         }
 
+        var writtenVerts = new HashSet<Vec3>();
+        var writtenUVs = new HashSet<Vec2>();
+        
         foreach (var layer in crystal.Layers)
         {
             objFaceWriter.WriteLine($"\no {layer.LayerName}");
@@ -110,28 +113,47 @@ internal class ObjFileExporter : IModelExporter, IDisposable
             {
                 continue;
             }
-            
-            var indexCounter = 1;
 
+            var positions = geometryLayer.Crystal.Positions;
+
+            foreach (var pos in positions)
+            {
+                objWriter.WriteLine("v {0} {1} {2}", pos.X.ToString(invariant), pos.Y.ToString(invariant), pos.Z.ToString(invariant));
+            }
+
+            var uvs = new List<Vec2>();
+
+            var currentMat = default(string);
+            
             foreach (var face in geometryLayer.Crystal.Faces)
             {
-                var f = new string[face.Indices.Length];
-                
-                for (int i = 0; i < f.Length; i++)
+                var f = new string[face.Vertices.Length];
+
+                for (int i = 0; i < face.Vertices.Length; i++)
                 {
-                    var ind = face.Indices[i];
-                    var uv = face.UV[i];
+                    var v = face.Vertices[i];
+                    var uvIndex = uvs.IndexOf(v.UV);
 
-                    objWriter.WriteLine("v {0} {1} {2}", geometryLayer.Crystal.Vertices[ind].X.ToString(invariant), geometryLayer.Crystal.Vertices[ind].Y.ToString(invariant), geometryLayer.Crystal.Vertices[ind].Z.ToString(invariant));
+                    if (uvIndex == -1)
+                    {
+                        objUvWriter.WriteLine("vt {0} {1}", v.UV.X.ToString(invariant), v.UV.Y.ToString(invariant));
+                        
+                        uvIndex = uvs.Count;
+                        uvs.Add(v.UV);
+                    }
 
-                    objUvWriter.WriteLine("vt {0} {1}", uv.X.ToString(invariant), uv.Y.ToString(invariant));
+                    var vertStr = $"{Array.IndexOf(positions, v.Position) + 1}/{uvIndex + 1}";
 
-                    f[i] = $"{indexCounter}/{indexCounter}";
-
-                    indexCounter++;
+                    f[i] = vertStr;
                 }
 
-                objFaceWriter.WriteLine("usemtl " + (face.Material?.Link is not null && validMaterials.Contains(face.Material.Link) ? face.Material.Link : "_Nothing"));
+                var thisMaterial = face.Material?.Link is not null && validMaterials.Contains(face.Material.Link) ? face.Material.Link : "_Nothing";
+
+                if (currentMat != thisMaterial)
+                {
+                    currentMat = thisMaterial;
+                    objFaceWriter.WriteLine("usemtl " + currentMat);
+                }
 
                 objFaceWriter.WriteLine("f {0}", string.Join(" ", f));
             }
