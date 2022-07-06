@@ -478,7 +478,7 @@ public class CPlugCrystal : CPlugTreeGenerator
 
             // in some cases, something is here
 
-            n.Layers ??= r.ReadArray<Layer>(layerCount, r =>
+            n.Layers = r.ReadArray<Layer>(layerCount, r =>
             {
                 var type = (ELayerType)r.ReadInt32();
                 var version = r.ReadInt32(); // 2 - version
