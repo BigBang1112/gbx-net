@@ -37,7 +37,7 @@ public class CPlugSolid : CPlug
             return;
         }
 
-        using var exporter = new ObjFileExporter(objStream, mtlStream, gameDataFolderPath);
+        using var exporter = new ObjFileExporter(objStream, mtlStream, mergeVertices: false, gameDataFolderPath);
         
         exporter.Export(tree);
     }

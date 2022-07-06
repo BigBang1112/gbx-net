@@ -6,18 +6,21 @@ internal class ObjFileExporter : IModelExporter, IDisposable
     private readonly StreamWriter mtlWriter;
     private readonly StringWriter objFaceWriter;
     private readonly StringWriter objUvWriter;
+    
+    private readonly bool mergeVertices;
     private readonly string? gameDataFolderPath;
 
     private int offsetVert;
     private int offsetUv;
 
-    public ObjFileExporter(Stream objStream, Stream mtlStream, string? gameDataFolderPath = null)
+    public ObjFileExporter(Stream objStream, Stream mtlStream, bool mergeVertices = false, string? gameDataFolderPath = null)
     {
         objWriter = new StreamWriter(objStream);
         mtlWriter = new StreamWriter(mtlStream);
         objFaceWriter = new StringWriter();
         objUvWriter = new StringWriter();
-
+        
+        this.mergeVertices = mergeVertices;
         this.gameDataFolderPath = gameDataFolderPath;
     }
 
@@ -115,13 +118,20 @@ internal class ObjFileExporter : IModelExporter, IDisposable
             }
 
             var positions = geometryLayer.Crystal.Positions;
-            var positionsDict = new Dictionary<Vec3, int>(positions.Length);
+
+            var positionsDict = mergeVertices
+                ? new Dictionary<Vec3, int>(positions.Length, new Comparers.Vec3EqualityComparer())
+                : new Dictionary<Vec3, int>(positions.Length);
 
             for (int i = 0; i < positions.Length; i++)
             {
                 var pos = positions[i];
-                objWriter.WriteLine("v {0} {1} {2}", pos.X.ToString(invariant), pos.Y.ToString(invariant), pos.Z.ToString(invariant));
-                positionsDict.Add(pos, i);
+
+                if (!positionsDict.ContainsKey(pos))
+                {
+                    objWriter.WriteLine("v {0} {1} {2}", pos.X.ToString(invariant), pos.Y.ToString(invariant), pos.Z.ToString(invariant));
+                    positionsDict.Add(pos, positionsDict.Count);
+                }
             }
 
             var uvs = new Dictionary<Vec2, int>();
