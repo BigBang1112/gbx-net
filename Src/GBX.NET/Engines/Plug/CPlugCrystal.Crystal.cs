@@ -7,7 +7,6 @@ public partial class CPlugCrystal
         public int Version { get; set; }
 
         public Vec3[] Positions { get; set; } = Array.Empty<Vec3>();
-        public Vec2[] TexCoords { get; set; } = Array.Empty<Vec2>();
         public Face[] Faces { get; set; } = Array.Empty<Face>();
         public Group[] Groups { get; set; } = Array.Empty<Group>();
 
