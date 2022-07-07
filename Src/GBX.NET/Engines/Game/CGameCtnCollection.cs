@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.Game;
+﻿using System.Numerics;
+
+namespace GBX.NET.Engines.Game;
 
 /// <summary>
 /// Information about an environment. Does not include list of possible blocks.
@@ -10,6 +12,8 @@
 [NodeExtension("Collection")]
 public partial class CGameCtnCollection : CMwNod, INodeHeader
 {
+    #region Enums
+
     public enum EBackgroundShadow
     {
         None,
@@ -23,6 +27,16 @@ public partial class CGameCtnCollection : CMwNod, INodeHeader
         Sunrise,
         Nations
     }
+
+    public enum EVehicleEnvLayer
+    {
+        Dirt,
+        Mud
+    }
+
+    #endregion
+
+    #region Fields
 
     private string? collection;
     private bool needUnlock;
@@ -61,6 +75,44 @@ public partial class CGameCtnCollection : CMwNod, INodeHeader
     private bool isWaterMultiHeight;
     private EBackgroundShadow backgroundShadow;
     private EVertexLighting vertexLighting;
+    private float boardSquareHeight;
+    private float boardSquareBorder;
+    private string? folderDecalModels;
+    private Vec3? tech3TunnelSpecularExpScaleMax;
+    private string? folderMacroDecals;
+    private string? folderAdditionalItem1;
+    private string? folderAdditionalItem2;
+    private CFuncShaderLayerUV? fidFuncShaderCloudsX2;
+    private CPlugBitmap? fidPlugBitmapCloudsX2;
+    private CPlugBitmap? vehicleEnvLayerFidBitmap;
+    private EVehicleEnvLayer vehicleEnvLayer;
+    private CPlugFogMatter? offZoneFogMatter;
+    private float terrainHeightOffset;
+    private CPlugBitmap? waterGBitmapNormal;
+    private float? waterGBumpSpeedUV;
+    private float? waterGBumpScaleUV;
+    private float? waterGBumpScale;
+    private float? waterGRefracPertub;
+    private float? waterFogClampAboveDist;
+    private float? visMeshLodDistScale;
+    private int decalFadeCBlockFullDensity;
+    private Node? itemPlacementGroups;
+    private Node? adnRandomGenList;
+    private Node? fidBlockInfoGroups;
+    private uint? turboColorRoulette1;
+    private uint? turboColorRoulette2;
+    private uint? turboColorRoulette3;
+    private uint? turboColorTurbo;
+    private uint? turboColorTurbo2;
+    private CPlugBitmap? bitmapDisplayControlDefaultTVProgram16x9;
+    private CPlugBitmap? bitmapDisplayControlDefaultTVProgram64x10A;
+    private CPlugBitmap? bitmapDisplayControlDefaultTVProgram64x10B;
+    private CPlugBitmap? bitmapDisplayControlDefaultTVProgram64x10C;
+    private CPlugBitmap? bitmapDisplayControlDefaultTVProgram2x3;
+
+    #endregion
+
+    #region Properties
 
     public ChunkSet HeaderChunks { get; } = new();
 
@@ -183,6 +235,95 @@ public partial class CGameCtnCollection : CMwNod, INodeHeader
 
     [NodeMember(ExactlyNamed = true)]
     public EVertexLighting VertexLighting { get => vertexLighting; set => vertexLighting = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public float BoardSquareHeight { get => boardSquareHeight; set => boardSquareHeight = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public float BoardSquareBorder { get => boardSquareBorder; set => boardSquareBorder = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public string? FolderDecalModels { get => folderDecalModels; set => folderDecalModels = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public Vec3? Tech3TunnelSpecularExpScaleMax { get => tech3TunnelSpecularExpScaleMax; set => tech3TunnelSpecularExpScaleMax = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public string? FolderMacroDecals { get => folderMacroDecals; set => folderMacroDecals = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public string? FolderAdditionalItem1 { get => folderAdditionalItem1; set => folderAdditionalItem1 = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public string? FolderAdditionalItem2 { get => folderAdditionalItem2; set => folderAdditionalItem2 = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public CFuncShaderLayerUV? FidFuncShaderCloudsX2 { get => fidFuncShaderCloudsX2; set => fidFuncShaderCloudsX2 = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public CPlugBitmap? FidPlugBitmapCloudsX2 { get => fidPlugBitmapCloudsX2; set => fidPlugBitmapCloudsX2 = value; }
+
+    [NodeMember(ExactName = "VehicleEnvLayer_FidBitmap")]
+    public CPlugBitmap? VehicleEnvLayerFidBitmap { get => vehicleEnvLayerFidBitmap; set => vehicleEnvLayerFidBitmap = value; }
+
+    [NodeMember(ExactName = "OffZone_FogMatter")]
+    public CPlugFogMatter? OffZoneFogMatter { get => offZoneFogMatter; set => offZoneFogMatter = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public float TerrainHeightOffset { get => terrainHeightOffset; set => terrainHeightOffset = value; }
+
+    [NodeMember(ExactName = "WaterG_BumpSpeedUV")]
+    public float? WaterGBumpSpeedUV { get => waterGBumpSpeedUV; set => waterGBumpSpeedUV = value; }
+
+    [NodeMember(ExactName = "WaterG_BumpScaleUV")]
+    public float? WaterGBumpScaleUV { get => waterGBumpScaleUV; set => waterGBumpScaleUV = value; }
+
+    [NodeMember(ExactName = "WaterG_BumpScale")]
+    public float? WaterGBumpScale { get => waterGBumpScale; set => waterGBumpScale = value; }
+
+    [NodeMember(ExactName = "WaterG_RefracPertub")]
+    public float? WaterGRefracPertub { get => waterGRefracPertub; set => waterGRefracPertub = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public float? WaterFogClampAboveDist { get => waterFogClampAboveDist; set => waterFogClampAboveDist = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public float? VisMeshLodDistScale { get => visMeshLodDistScale; set => visMeshLodDistScale = value; }
+    
+    [NodeMember(ExactName = "DecalFade_cBlock_FullDensity")]
+    public int DecalFadeCBlockFullDensity { get => decalFadeCBlockFullDensity; set => decalFadeCBlockFullDensity = value; }
+
+    [NodeMember(ExactName = "TurboColor_Roulette1")]
+    public uint? TurboColorRoulette1 { get => turboColorRoulette1; set => turboColorRoulette1 = value; }
+
+    [NodeMember(ExactName = "TurboColor_Roulette2")]
+    public uint? TurboColorRoulette2 { get => turboColorRoulette2; set => turboColorRoulette2 = value; }
+
+    [NodeMember(ExactName = "TurboColor_Roulette3")]
+    public uint? TurboColorRoulette3 { get => turboColorRoulette3; set => turboColorRoulette3 = value; }
+
+    [NodeMember(ExactName = "TurboColor_Turbo")]
+    public uint? TurboColorTurbo { get => turboColorTurbo; set => turboColorTurbo = value; }
+
+    [NodeMember(ExactName = "TurboColor_Turbo2")]
+    public uint? TurboColorTurbo2 { get => turboColorTurbo2; set => turboColorTurbo2 = value; }
+
+    [NodeMember(ExactName = "BitmapDisplayControlDefaultTVProgram_16x9")]
+    public CPlugBitmap? BitmapDisplayControlDefaultTVProgram16x9 { get => bitmapDisplayControlDefaultTVProgram16x9; set => bitmapDisplayControlDefaultTVProgram16x9 = value; }
+
+    [NodeMember(ExactName = "BitmapDisplayControlDefaultTVProgram_64x10A")]
+    public CPlugBitmap? BitmapDisplayControlDefaultTVProgram64x10A { get => bitmapDisplayControlDefaultTVProgram64x10A; set => bitmapDisplayControlDefaultTVProgram64x10A = value; }
+
+    [NodeMember(ExactName = "BitmapDisplayControlDefaultTVProgram_64x10B")]
+    public CPlugBitmap? BitmapDisplayControlDefaultTVProgram64x10B { get => bitmapDisplayControlDefaultTVProgram64x10B; set => bitmapDisplayControlDefaultTVProgram64x10B = value; }
+
+    [NodeMember(ExactName = "BitmapDisplayControlDefaultTVProgram_64x10C")]
+    public CPlugBitmap? BitmapDisplayControlDefaultTVProgram64x10C { get => bitmapDisplayControlDefaultTVProgram64x10C; set => bitmapDisplayControlDefaultTVProgram64x10C = value; }
+
+    [NodeMember(ExactName = "BitmapDisplayControlDefaultTVProgram_2x3")]
+    public CPlugBitmap? BitmapDisplayControlDefaultTVProgram2x3 { get => bitmapDisplayControlDefaultTVProgram2x3; set => bitmapDisplayControlDefaultTVProgram2x3 = value; }
+
+    #endregion
 
     #region Constructors
 
@@ -729,5 +870,645 @@ public partial class CGameCtnCollection : CMwNod, INodeHeader
 
     #endregion
 
+    #region 0x027 chunk (board square)
+
+    /// <summary>
+    /// CGameCtnCollection 0x027 chunk (board square)
+    /// </summary>
+    [Chunk(0x03033027, "board square")]
+    public class Chunk03033027 : Chunk<CGameCtnCollection>
+    {
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref n.boardSquareHeight);
+            rw.Single(ref n.boardSquareBorder);
+        }
+    }
+
     #endregion
+
+    #region 0x028 chunk (FolderAdditionalItem1)
+
+    /// <summary>
+    /// CGameCtnCollection 0x028 chunk (FolderAdditionalItem1)
+    /// </summary>
+    [Chunk(0x03033028, "FolderAdditionalItem1")]
+    public class Chunk03033028 : Chunk<CGameCtnCollection>
+    {
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.String(ref n.folderAdditionalItem1);
+        }
+    }
+
+    #endregion
+
+    #region 0x029 chunk (FolderAdditionalItem2)
+
+    /// <summary>
+    /// CGameCtnCollection 0x029 chunk (FolderAdditionalItem2)
+    /// </summary>
+    [Chunk(0x03033029, "FolderAdditionalItem2")]
+    public class Chunk03033029 : Chunk<CGameCtnCollection>
+    {
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.String(ref n.folderAdditionalItem2);
+        }
+    }
+
+    #endregion
+
+    #region 0x02A chunk (FolderDecalModels)
+
+    /// <summary>
+    /// CGameCtnCollection 0x02A chunk (FolderDecalModels)
+    /// </summary>
+    [Chunk(0x0303302A, "FolderDecalModels")]
+    public class Chunk0303302A : Chunk<CGameCtnCollection>
+    {
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.String(ref n.folderDecalModels);
+        }
+    }
+
+    #endregion
+
+    #region 0x02C chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x02C chunk
+    /// </summary>
+    [Chunk(0x0303302C)]
+    public class Chunk0303302C : Chunk<CGameCtnCollection>
+    {
+        private BigInteger U01;
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Int128(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x02F chunk (Tech3TunnelSpecularExpScaleMax)
+
+    /// <summary>
+    /// CGameCtnCollection 0x02F chunk (Tech3TunnelSpecularExpScaleMax)
+    /// </summary>
+    [Chunk(0x0303302F, "Tech3TunnelSpecularExpScaleMax")]
+    public class Chunk0303302F : Chunk<CGameCtnCollection>
+    {
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Vec3(ref n.tech3TunnelSpecularExpScaleMax);
+        }
+    }
+
+    #endregion
+
+    #region 0x030 chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x030 chunk
+    /// </summary>
+    [Chunk(0x03033030)]
+    public class Chunk03033030 : Chunk<CGameCtnCollection>
+    {
+        public int U01;
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01); // MarksModel?
+        }
+    }
+
+    #endregion
+
+    #region 0x031 chunk (FolderMacroDecals)
+
+    /// <summary>
+    /// CGameCtnCollection 0x031 chunk (FolderMacroDecals)
+    /// </summary>
+    [Chunk(0x03033031, "FolderMacroDecals")]
+    public class Chunk03033031 : Chunk<CGameCtnCollection>
+    {
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.String(ref n.folderMacroDecals);
+        }
+    }
+
+    #endregion
+
+    #region 0x033 chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x033 chunk
+    /// </summary>
+    [Chunk(0x03033033)]
+    public class Chunk03033033 : Chunk<CGameCtnCollection>, IVersionable
+    {
+        private int version;
+
+        public string[]? U01;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.ArrayId(ref U01);
+
+            if (version >= 1)
+            {
+                rw.Int32(ref n.decalFadeCBlockFullDensity);
+            }
+        }
+    }
+
+    #endregion
+
+    #region 0x034 chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x034 chunk
+    /// </summary>
+    [Chunk(0x03033034)]
+    public class Chunk03033034 : Chunk<CGameCtnCollection>, IVersionable
+    {
+        private int version;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.NodeRef<CFuncShaderLayerUV>(ref n.fidFuncShaderCloudsX2);
+            rw.NodeRef<CPlugBitmap>(ref n.fidPlugBitmapCloudsX2);
+
+            if (version >= 1)
+            {
+                rw.NodeRef<CPlugBitmap>(ref n.vehicleEnvLayerFidBitmap);
+                rw.EnumInt32<EVehicleEnvLayer>(ref n.vehicleEnvLayer);
+            }
+        }
+    }
+
+    #endregion
+
+    #region 0x036 chunk (OffZone_FogMatter)
+
+    /// <summary>
+    /// CGameCtnCollection 0x036 chunk (OffZone_FogMatter)
+    /// </summary>
+    [Chunk(0x03033036, "OffZone_FogMatter")]
+    public class Chunk03033036 : Chunk<CGameCtnCollection>, IVersionable
+    {
+        private int version;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.NodeRef<CPlugFogMatter>(ref n.offZoneFogMatter);
+        }
+    }
+
+    #endregion
+
+    #region 0x037 chunk (TerrainHeightOffset)
+
+    /// <summary>
+    /// CGameCtnCollection 0x037 chunk (TerrainHeightOffset)
+    /// </summary>
+    [Chunk(0x03033037, "TerrainHeightOffset")]
+    public class Chunk03033037 : Chunk<CGameCtnCollection>
+    {
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref n.terrainHeightOffset);
+        }
+    }
+
+    #endregion
+
+    #region 0x038 chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x038 chunk
+    /// </summary>
+    [Chunk(0x03033038)]
+    public class Chunk03033038 : Chunk<CGameCtnCollection>, IVersionable
+    {
+        private int version;
+
+        public float? U01;
+        public float? U02;
+        public UnknownClass1[]? U03;
+        public bool? U04;
+        public float? U05;
+        public int? U06;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+
+            if (version < 4)
+            {
+                rw.Single(ref U01);
+
+                if (version == 0)
+                {
+                    rw.Single(ref U01);
+                    rw.Single(ref U02);
+                }
+                
+                if (version >= 1)
+                {
+                    if (rw.Reader is GameBoxReader r)
+                    {
+                        U03 = r.ReadArray(2, r =>
+                        {
+                            var u01 = r.ReadId();
+                            var u02 = r.ReadSingle();
+                            var u03 = r.ReadSingle();
+                            var u04 = default(float?);
+                            var u05 = default(int?);
+
+                            if (version >= 3)
+                            {
+                                u04 = r.ReadSingle();
+                            }
+
+                            if (version >= 2)
+                            {
+                                u05 = r.ReadInt32(); // NodeRef?
+                            }
+
+                            return new UnknownClass1
+                            {
+                                U01 = u01,
+                                U02 = u02,
+                                U03 = u03,
+                                U04 = u04,
+                                U05 = u05
+                            };
+                        });
+                    }
+
+                    if (rw.Writer is GameBoxWriter w)
+                    {
+                        if (U03?.Length != 2)
+                        {
+                            throw new Exception("U03 is missing or U03.Length != 2");
+                        }
+
+                        foreach (var u in U03)
+                        {
+                            w.WriteId(u.U01);
+                            w.Write(u.U02);
+                            w.Write(u.U03);
+
+                            if (version >= 3)
+                            {
+                                w.Write(u.U04.GetValueOrDefault());
+                            }
+
+                            if (version >= 2)
+                            {
+                                w.Write(u.U05.GetValueOrDefault()); // NodeRef?
+                            }
+                        }
+                    }
+                }
+            }
+            
+            if (version >= 4)
+            {
+                if (rw.Reader is GameBoxReader r)
+                {
+                    U03 = r.ReadArray(4, r =>
+                    {
+                        var u01 = r.ReadId();
+                        var u02 = r.ReadSingle();
+                        var u03 = r.ReadSingle();
+                        var u04 = r.ReadSingle();
+                        var u05 = r.ReadInt32(); // NodeRef?
+                        var u06 = default(int?);
+
+                        if (version >= 7) // Not seen in code
+                        {
+                            u06 = r.ReadInt32();
+                        }
+
+                        return new UnknownClass1
+                        {
+                            U01 = u01,
+                            U02 = u02,
+                            U03 = u03,
+                            U04 = u04,
+                            U05 = u05,
+                            U06 = u06
+                        };
+                    });
+                }
+
+                if (rw.Writer is GameBoxWriter w)
+                {
+                    if (U03?.Length != 4)
+                    {
+                        throw new Exception("U03 is missing or U03.Length != 4");
+                    }
+
+                    foreach (var u in U03)
+                    {
+                        w.WriteId(u.U01);
+                        w.Write(u.U02);
+                        w.Write(u.U03);
+                        w.Write(u.U04.GetValueOrDefault());
+                        w.Write(u.U05.GetValueOrDefault()); // NodeRef?
+
+                        if (version >= 7) // Not seen in code
+                        {
+                            w.Write(u.U06.GetValueOrDefault());
+                        }
+                    }
+                }
+            }
+
+            if (version >= 5)
+            {
+                rw.NodeRef<CPlugBitmap>(ref n.waterGBitmapNormal);
+                rw.Single(ref n.waterGBumpSpeedUV);
+                rw.Single(ref n.waterGBumpScaleUV);
+                rw.Single(ref n.waterGBumpScale);
+                rw.Single(ref n.waterGRefracPertub);
+            }
+
+            if (version >= 7) // Not seen in code
+            {
+                rw.Int32(ref U06);
+            }
+
+            rw.Single(ref n.cameraMinHeight);
+            
+            if (version < 4)
+            {
+                rw.Boolean(ref U04); // CSystemFidsFolder something?
+            }
+
+            rw.Boolean(ref n.isWaterMultiHeight);
+            
+            if (version < 3)
+            {
+                rw.Single(ref U05);
+            }
+
+            rw.Single(ref n.waterFogClampAboveDist);
+        }
+    }
+
+    #endregion
+
+    #region 0x039 chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x039 chunk
+    /// </summary>
+    [Chunk(0x03033039)]
+    public class Chunk03033039 : Chunk<CGameCtnCollection>, IVersionable
+    {
+        private int version;
+
+        public float? U01;
+        public float? U02;
+        public float? U03;
+        public int? U04;
+        public CMwNod? U05;
+        public CMwNod? U06;
+        public CMwNod? U07;
+        public CMwNod? U08;
+        public CMwNod? U09;
+        public CMwNod? U10;
+        public CMwNod? U11;
+        public CMwNod? U12;
+        public CMwNod? U13;
+        public CMwNod? U14;
+        public CMwNod? U15;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+
+            if (version == 0)
+            {
+                rw.Single(ref U01);
+                rw.Single(ref U02);
+                rw.Single(ref U03);
+            }
+
+            if (version >= 1)
+            {
+                rw.Int32(ref U04); // VehicleStyles?
+
+                if (version >= 2)
+                {
+                    rw.NodeRef(ref n.itemPlacementGroups);
+
+                    if (version >= 3)
+                    {
+                        rw.NodeRef(ref n.adnRandomGenList);
+
+                        if (version >= 4)
+                        {
+                            rw.NodeRef(ref n.fidBlockInfoGroups);
+
+                            if (version < 11)
+                            {
+                                rw.NodeRef(ref U05);
+
+                                if (version >= 8)
+                                {
+                                    rw.NodeRef(ref U06);
+                                }
+                            }
+
+                            if (version >= 6)
+                            {
+                                rw.NodeRef(ref U07);
+                            }
+
+                            if (version < 9)
+                            {
+                                rw.NodeRef(ref U08);
+                            }
+
+                            if (version >= 10)
+                            {
+                                rw.NodeRef(ref U09);
+                                
+                                if (version >= 12)
+                                {
+                                    rw.NodeRef(ref U10);
+                                }
+
+                                if (version >= 11)
+                                {
+                                    rw.NodeRef(ref U11);
+                                    rw.NodeRef(ref U12);
+                                    rw.NodeRef(ref U13);
+                                    rw.NodeRef(ref U14);
+                                    rw.NodeRef(ref U15);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #endregion
+
+    #region 0x03A chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x03A chunk
+    /// </summary>
+    [Chunk(0x0303303A)]
+    public class Chunk0303303A : Chunk<CGameCtnCollection>, IVersionable
+    {
+        private int version;
+
+        public int U01;
+        public bool U02;
+        public int U03;
+        public int U04;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.Int32(ref U01);
+            rw.EnumInt32<EBackgroundShadow>(ref n.backgroundShadow);
+            rw.Boolean(ref U02);
+            rw.Single(ref n.shadowSoftSizeInWorld);
+            rw.EnumInt32<EVertexLighting>(ref n.vertexLighting);
+            rw.Single(ref n.colorVertexMin);
+            rw.Single(ref n.colorVertexMax);
+            rw.Int32(ref U03);
+            rw.Single(ref n.visMeshLodDistScale);
+
+            if (version == 1)
+            {
+                rw.Int32(ref U04); // NodeRef?
+            }
+        }
+    }
+
+    #endregion
+
+    #region 0x03B chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x03B chunk
+    /// </summary>
+    [Chunk(0x0303303B)]
+    public class Chunk0303303B : Chunk<CGameCtnCollection>, IVersionable
+    {
+        private int version;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.UInt32(ref n.turboColorRoulette1);
+            rw.UInt32(ref n.turboColorRoulette2);
+            rw.UInt32(ref n.turboColorRoulette3);
+
+            if (version >= 1)
+            {
+                rw.UInt32(ref n.turboColorTurbo);
+                rw.UInt32(ref n.turboColorTurbo2);
+            }
+        }
+    }
+
+    #endregion
+
+    #region 0x03C chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x03C chunk
+    /// </summary>
+    [Chunk(0x0303303C)]
+    public class Chunk0303303C : Chunk<CGameCtnCollection>, IVersionable
+    {
+        private int version = 1;
+
+        public string? U01;
+        public int? U02;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.String(ref U01);
+            
+            if (version >= 1)
+            {
+                rw.Int32(ref U02);
+            }
+        }
+    }
+
+    #endregion
+
+    #region 0x03D chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x03D chunk
+    /// </summary>
+    [Chunk(0x0303303D)]
+    public class Chunk0303303D : Chunk<CGameCtnCollection>, IVersionable
+    {
+        private int version;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.NodeRef<CPlugBitmap>(ref n.bitmapDisplayControlDefaultTVProgram16x9);
+            rw.NodeRef<CPlugBitmap>(ref n.bitmapDisplayControlDefaultTVProgram64x10A);
+            rw.NodeRef<CPlugBitmap>(ref n.bitmapDisplayControlDefaultTVProgram64x10B);
+            rw.NodeRef<CPlugBitmap>(ref n.bitmapDisplayControlDefaultTVProgram64x10C);
+            rw.NodeRef<CPlugBitmap>(ref n.bitmapDisplayControlDefaultTVProgram2x3);
+        }
+    }
+
+    #endregion
+
+    #endregion
+
+    public class UnknownClass1
+    {
+        public Id U01 { get; set; }
+        public float U02 { get; set; }
+        public float U03 { get; set; }
+        public float? U04 { get; set; }
+        public int? U05 { get; set; }
+        public int? U06 { get; internal set; }
+    }
 }
