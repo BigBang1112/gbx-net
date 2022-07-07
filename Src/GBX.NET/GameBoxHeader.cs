@@ -258,11 +258,11 @@ public class GameBoxHeader
 
         if (isHeavy)
         {
-            logger?.LogHeaderChunkHeavy(classId.ToString("X8"), size);
+            logger?.LogHeaderChunkHeavy(chunkId.ToString("X8"), size);
         }
         else
         {
-            logger?.LogHeaderChunk(classId.ToString("X8"), size);
+            logger?.LogHeaderChunk(chunkId.ToString("X8"), size);
         }
 
         // Chunk data can be always read
@@ -285,7 +285,7 @@ public class GameBoxHeader
         {
             var genericHeaderChunkType = typeof(HeaderChunk<>).MakeGenericType(chunkNodeType);
 
-            var args = new object?[] { node, chunkData, chunkId, isHeavy };
+            var args = new object?[] { chunkData, chunkId, isHeavy };
 
             if (Activator.CreateInstance(genericHeaderChunkType, args) is not Chunk chunk)
             {
