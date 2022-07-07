@@ -140,7 +140,6 @@ public abstract class Node
         var constructor = NodeCacheManager.GetClassConstructor(id);
 
         node = constructor();
-        node.gbxForRefTable = r.Settings.Gbx;
 
         return classId.Value;
     }
@@ -150,6 +149,8 @@ public abstract class Node
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     internal static void Parse(Node node, Type nodeType, GameBoxReader r, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
     {
+        node.gbxForRefTable = r.Settings.Gbx;
+        
         var stopwatch = Stopwatch.StartNew();
 
         using var scope = logger?.BeginScope("{name}", nodeType.Name);
