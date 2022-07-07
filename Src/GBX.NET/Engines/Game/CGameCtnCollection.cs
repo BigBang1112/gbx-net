@@ -1,11 +1,29 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// Information about an environment. Does not include list of possible blocks.
+/// </summary>
+/// <remarks>ID: 0x03033000</remarks>
 [Node(0x03033000)]
 [NodeExtension("TMElementColl")]
 [NodeExtension("TMCollection")]
 [NodeExtension("Collection")]
-public class CGameCtnCollection : CMwNod, INodeHeader
+public partial class CGameCtnCollection : CMwNod, INodeHeader
 {
+    public enum EBackgroundShadow
+    {
+        None,
+        Receive,
+        CastAndReceive
+    }
+
+    public enum EVertexLighting
+    {
+        None,
+        Sunrise,
+        Nations
+    }
+
     private string? collection;
     private bool needUnlock;
     private string? iconEnv;
@@ -34,6 +52,15 @@ public class CGameCtnCollection : CMwNod, INodeHeader
     private CGameCtnDecoration? defaultDecoration;
     private int? defaultDecorationIndex;
     private CGameCtnZone?[]? completeZoneList;
+    private ZoneString[]? zoneStrings;
+    private CGameCtnDecorationTerrainModifier?[]? replacementTerrainModifiers;
+    private string? folderBlockInfo;
+    private string? folderItem;
+    private string? folderDecoration;
+    private string? folderMenusIcons;
+    private bool isWaterMultiHeight;
+    private EBackgroundShadow backgroundShadow;
+    private EVertexLighting vertexLighting;
 
     public ChunkSet HeaderChunks { get; } = new();
 
@@ -129,6 +156,33 @@ public class CGameCtnCollection : CMwNod, INodeHeader
 
     [NodeMember(ExactlyNamed = true)]
     public CGameCtnZone?[]? CompleteZoneList { get => completeZoneList; set => completeZoneList = value; }
+
+    [NodeMember]
+    public ZoneString[]? ZoneStrings { get => zoneStrings; set => zoneStrings = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public CGameCtnDecorationTerrainModifier?[]? ReplacementTerrainModifiers { get => replacementTerrainModifiers; set => replacementTerrainModifiers = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public string? FolderBlockInfo { get => folderBlockInfo; set => folderBlockInfo = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public string? FolderItem { get => folderItem; set => folderItem = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public string? FolderDecoration { get => folderDecoration; set => folderDecoration = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public string? FolderMenusIcons { get => folderMenusIcons; set => folderMenusIcons = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public bool IsWaterMultiHeight { get => isWaterMultiHeight; set => isWaterMultiHeight = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public EBackgroundShadow BackgroundShadow { get => backgroundShadow; set => backgroundShadow = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public EVertexLighting VertexLighting { get => vertexLighting; set => vertexLighting = value; }
 
     #region Constructors
 
@@ -358,7 +412,7 @@ public class CGameCtnCollection : CMwNod, INodeHeader
 
     #endregion
 
-    #region 0x011 chunk (not reviewed)
+    #region 0x011 chunk
 
     [Chunk(0x03033011)]
     public class Chunk03033011 : Chunk<CGameCtnCollection>
@@ -411,9 +465,9 @@ public class CGameCtnCollection : CMwNod, INodeHeader
         {
             rw.Int32(ref U01);
             rw.Boolean(ref U02);
-            rw.Boolean(ref U03); // BackgroundShadow?
+            rw.EnumInt32<EBackgroundShadow>(ref n.backgroundShadow); // Boolean in the code, may bring wrong values
             rw.Single(ref n.shadowSoftSizeInWorld);
-            rw.Boolean(ref U04); // VertexLighting?
+            rw.EnumInt32<EVertexLighting>(ref n.vertexLighting); // Boolean in the code, may bring wrong values
             rw.Single(ref n.colorVertexMin);
             rw.Single(ref n.colorVertexMax);
         }
@@ -445,14 +499,231 @@ public class CGameCtnCollection : CMwNod, INodeHeader
 
     #endregion
 
-    #region 0x019 chunk
+    #region 0x019 chunk (LoadScreenFid)
 
-    [Chunk(0x03033019)]
+    /// <summary>
+    /// CGameCtnCollection 0x019 chunk (LoadScreenFid)
+    /// </summary>
+    [Chunk(0x03033019, "LoadScreenFid")]
     public class Chunk03033019 : Chunk<CGameCtnCollection>
     {
         public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
         {
             rw.NodeRef<CPlugBitmap>(ref n.loadScreenFid, ref n.loadScreenFidIndex);
+        }
+    }
+
+    #endregion
+
+    #region 0x01A chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x01A chunk
+    /// </summary>
+    [Chunk(0x0303301A)]
+    public class Chunk0303301A : Chunk<CGameCtnCollection>
+    {
+        public CMwNod? U01;
+        public Rect U02;
+        public Vec2 U03;
+        public Vec2 U04;
+        public Vec2 U05;
+        public string? U06;
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef(ref U01);
+            rw.Rect(ref U02);
+            rw.Vec2(ref U03);
+            rw.Vec2(ref U04);
+            rw.Vec2(ref U05);
+            rw.String(ref U06);
+        }
+    }
+
+    #endregion
+
+    #region 0x01B chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x01B chunk
+    /// </summary>
+    [Chunk(0x0303301B)]
+    public class Chunk0303301B : Chunk<CGameCtnCollection>
+    {
+        public int U01;
+        public bool U02;
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+            rw.Boolean(ref U02);
+            rw.EnumInt32<EBackgroundShadow>(ref n.backgroundShadow); // Boolean in the code, may bring wrong values
+            rw.Single(ref n.shadowSoftSizeInWorld);
+            rw.EnumInt32<EVertexLighting>(ref n.vertexLighting);
+            rw.Single(n.colorVertexMin);
+            rw.Single(n.colorVertexMax);
+        }
+    }
+
+    #endregion
+
+    #region 0x01D chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x01D chunk
+    /// </summary>
+    [Chunk(0x0303301D)]
+    public class Chunk0303301D : Chunk<CGameCtnCollection>
+    {
+        private int listVersion = 10;
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Array(ref n.zoneStrings, r => new(r.ReadId(), r.ReadId()), 
+               (x, w) =>
+               {
+                   w.WriteId(x.Base);
+                   w.WriteId(x.Replacement);
+               });
+            
+            rw.Int32(ref listVersion);
+            rw.ArrayNode(ref n.replacementTerrainModifiers);
+        }
+    }
+
+    #endregion
+
+    #region 0x01E chunk (camera)
+
+    /// <summary>
+    /// CGameCtnCollection 0x01E chunk (camera)
+    /// </summary>
+    [Chunk(0x0303301E, "camera")]
+    public class Chunk0303301E : Chunk<CGameCtnCollection>
+    {
+        public float U01;
+        public float U02;
+        public bool U03;
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref n.cameraMinHeight);
+            rw.Boolean(ref U03);
+        }
+    }
+
+    #endregion
+
+    #region 0x01F chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x01F chunk
+    /// </summary>
+    [Chunk(0x0303301F)]
+    public class Chunk0303301F : Chunk<CGameCtnCollection>
+    {
+        private int[]? U01;
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Array<int>(ref U01); // ParticleEmitterModelsFids?
+        }
+    }
+
+    #endregion
+
+    #region 0x020 chunk (folders)
+
+    /// <summary>
+    /// CGameCtnCollection 0x020 chunk (folders)
+    /// </summary>
+    [Chunk(0x03033020, "folders")]
+    public class Chunk03033020 : Chunk<CGameCtnCollection>
+    {
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.String(ref n.folderBlockInfo);
+            rw.String(ref n.folderItem);
+            rw.String(ref n.folderDecoration);
+            rw.String(ref n.folderMenusIcons);
+        }
+    }
+
+    #endregion
+
+    #region 0x021 chunk (display name)
+
+    /// <summary>
+    /// CGameCtnCollection 0x021 chunk (display name)
+    /// </summary>
+    [Chunk(0x03033021, "display name")]
+    public class Chunk03033021 : Chunk<CGameCtnCollection>
+    {
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.String(ref n.displayName);
+        }
+    }
+
+    #endregion
+
+    #region 0x022 chunk (is water multi-height)
+
+    /// <summary>
+    /// CGameCtnCollection 0x022 chunk (is water multi-height)
+    /// </summary>
+    [Chunk(0x03033022, "is water multi-height")]
+    public class Chunk03033022 : Chunk<CGameCtnCollection>
+    {
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Boolean(ref n.isWaterMultiHeight);
+        }
+    }
+
+    #endregion
+
+    #region 0x023 chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x023 chunk
+    /// </summary>
+    [Chunk(0x03033023)]
+    public class Chunk03033023 : Chunk<CGameCtnCollection>
+    {
+        public bool U01;
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Boolean(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x024 chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x024 chunk
+    /// </summary>
+    [Chunk(0x03033024)]
+    public class Chunk03033024 : Chunk<CGameCtnCollection>
+    {
+        public int U01;
+        public bool U02;
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+            rw.EnumInt32<EBackgroundShadow>(ref n.backgroundShadow);
+            rw.Boolean(ref U02);
+            rw.Single(ref n.shadowSoftSizeInWorld);
+            rw.EnumInt32<EVertexLighting>(ref n.vertexLighting);
+            rw.Single(ref n.colorVertexMin);
+            rw.Single(ref n.colorVertexMax);
         }
     }
 
