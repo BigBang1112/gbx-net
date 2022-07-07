@@ -42,7 +42,7 @@ public readonly record struct Id
         "Rally" => (32, 16, 32),
         "Island" => (64, 8, 64),
         "Bay" => (32, 8, 32),
-        "Coast" => (16, 8, 16),
+        "Coast" => (16, 4, 16),
         "Valley" => (32, 8, 32),
         "Stadium" => (32, 8, 32),
         "Canyon" => (64, 16, 64),
