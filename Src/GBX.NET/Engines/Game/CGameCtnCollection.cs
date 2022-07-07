@@ -1,17 +1,134 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x03033000)]
+[NodeExtension("TMElementColl")]
 [NodeExtension("TMCollection")]
 [NodeExtension("Collection")]
-public class CGameCtnCollection : CMwNod
+public class CGameCtnCollection : CMwNod, INodeHeader
 {
+    private string? collection;
+    private bool needUnlock;
+    private string? iconEnv;
+    private string? iconCollection;
+    private int sortIndex;
+    private string? defaultZone;
+    private Ident? vehicle;
+    private string? mapFid;
+    private Vec2? mapCoordElem;
+    private Vec2? mapCoordIcon;
+    private string? loadScreen;
+    private Vec2? mapCoordDesc;
+    private string? longDesc;
+    private string? displayName;
+    private bool? isEditable;
+    private float squareSize;
+    private float squareHeight;
+    private float cameraMinHeight;
+    private float shadowSoftSizeInWorld;
+    private float colorVertexMin;
+    private float colorVertexMax;
+    private CPlugBitmap? iconFid;
+    private int? iconFidIndex;
+    private CPlugBitmap? loadScreenFid;
+    private int? loadScreenFidIndex;
+    private CGameCtnDecoration? defaultDecoration;
+    private int? defaultDecorationIndex;
+    private CGameCtnZone?[]? completeZoneList;
+
+    public ChunkSet HeaderChunks { get; } = new();
+
+    [NodeMember]
+    public string? Collection { get => collection; set => collection = value; }
+
+    [NodeMember]
+    public bool NeedUnlock { get => needUnlock; set => needUnlock = value; }
+
+    [NodeMember]
+    public string? IconEnv { get => iconEnv; set => iconEnv = value; }
+
+    [NodeMember]
+    public string? IconCollection { get => iconCollection; set => iconCollection = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public int SortIndex { get => sortIndex; set => sortIndex = value; }
+
+    [NodeMember]
+    public string? DefaultZone { get => defaultZone; set => defaultZone = value; }
+
+    [NodeMember]
+    public Ident? Vehicle { get => vehicle; set => vehicle = value; }
+
+    [NodeMember]
+    public string? MapFid { get => mapFid; set => mapFid = value; }
+
+    [NodeMember]
+    public Vec2? MapCoordElem { get => mapCoordElem; set => mapCoordElem = value; }
+
+    [NodeMember]
+    public Vec2? MapCoordIcon { get => mapCoordIcon; set => mapCoordIcon = value; }
+
+    [NodeMember]
+    public string? LoadScreen { get => loadScreen; set => loadScreen = value; }
+
+    [NodeMember]
+    public Vec2? MapCoordDesc { get => mapCoordDesc; set => mapCoordDesc = value; }
+
+    [NodeMember]
+    public string? LongDesc { get => longDesc; set => longDesc = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public string? DisplayName { get => displayName; set => displayName = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public bool? IsEditable { get => isEditable; set => isEditable = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public float SquareSize { get => squareSize; set => squareSize = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public float SquareHeight { get => squareHeight; set => squareHeight = value; }
+
     public byte CollectionID { get; set; }
     public byte CollectionPackMask { get; set; }
-    public string? DisplayName { get; set; }
     public string? CollectionIcon { get; set; }
     public string? BlockInfoFlat { get; set; }
-    public Ident? Vehicle { get; set; }
     public string? LoadingScreen { get; set; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public float CameraMinHeight { get => cameraMinHeight; set => cameraMinHeight = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public float ShadowSoftSizeInWorld { get => shadowSoftSizeInWorld; set => shadowSoftSizeInWorld = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public float ColorVertexMin { get => colorVertexMin; set => colorVertexMin = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public float ColorVertexMax { get => colorVertexMax; set => colorVertexMax = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public CPlugBitmap? IconFid
+    {
+        get => iconFid = GetNodeFromRefTable(iconFid, iconFidIndex) as CPlugBitmap;
+        set => iconFid = value;
+    }
+
+    [NodeMember(ExactlyNamed = true)]
+    public CPlugBitmap? LoadScreenFid
+    {
+        get => loadScreenFid = GetNodeFromRefTable(loadScreenFid, loadScreenFidIndex) as CPlugBitmap;
+        set => loadScreenFid = value;
+    }
+
+    [NodeMember(ExactlyNamed = true)]
+    public CGameCtnDecoration? DefaultDecoration
+    {
+        get => defaultDecoration = GetNodeFromRefTable(defaultDecoration, defaultDecorationIndex) as CGameCtnDecoration;
+        set => defaultDecoration = value;
+    }
+
+    [NodeMember(ExactlyNamed = true)]
+    public CGameCtnZone?[]? CompleteZoneList { get => completeZoneList; set => completeZoneList = value; }
 
     #region Constructors
 
@@ -24,63 +141,115 @@ public class CGameCtnCollection : CMwNod
 
     #region Chunks
 
-    #region 0x001 chunk
+    #region 0x000 header chunk
 
-    [Chunk(0x03033001)]
-    [ChunkWithOwnIdState]
-    public class Chunk03033001 : Chunk<CGameCtnCollection>
+    [Chunk(0x03033000)]
+    public class Chunk03033000 : HeaderChunk<CGameCtnCollection>
     {
-        public int Version { get; set; }
+        public string? U01;
 
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
         {
-            Version = r.ReadByte();
-            n.CollectionID = r.ReadByte();
-            _ = r.ReadBytes(6);
-            n.CollectionPackMask = r.ReadByte();
-            n.DisplayName = r.ReadString();
-            _ = r.ReadInt32();
-            n.CollectionIcon = r.ReadString();
-            _ = r.ReadArray<int>(2);
-            n.BlockInfoFlat = r.ReadId();
-            n.Vehicle = r.ReadIdent();
-            _ = r.ReadInt32();
-            _ = r.ReadArray<float>(4);
-            n.LoadingScreen = r.ReadString();
-            _ = r.ReadArray<int>(7);
-            _ = r.ReadString();
-            _ = r.ReadInt32();
+            rw.Id(ref U01);
         }
     }
 
     #endregion
 
-    #region 0x002 chunk
+    #region 0x001 header chunk (desc)
 
-    [Chunk(0x03033002)]
-    public class Chunk03033002 : Chunk<CGameCtnCollection>
+    [Chunk(0x03033001, "desc")]
+    public class Chunk03033001H : HeaderChunk<CGameCtnCollection>, IVersionable
     {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
+        private int version;
+
+        public Vec2? U01;
+        public Vec2? U02;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
         {
-            _ = r.ReadByte();
-            _ = r.ReadString();
-            _ = r.ReadInt32();
-            _ = r.ReadString();
-            _ = r.ReadArray<int>(3);
+            rw.Byte(ref version);
+            rw.Id(ref n.collection);
+            rw.Boolean(ref n.needUnlock);
+
+            if (version >= 1)
+            {
+                rw.String(ref n.iconEnv);
+                rw.String(ref n.iconCollection);
+
+                if (version >= 2)
+                {
+                    rw.Int32(ref n.sortIndex);
+
+                    if (version >= 3)
+                    {
+                        rw.Id(ref n.defaultZone);
+
+                        if (version >= 4)
+                        {
+                            rw.Ident(ref n.vehicle);
+
+                            if (version >= 5)
+                            {
+                                rw.String(ref n.mapFid);
+                                rw.Vec2(ref U01);
+                                rw.Vec2(ref U02);
+
+                                if (version < 8)
+                                {
+                                    rw.Vec2(ref n.mapCoordElem);
+
+                                    if (version >= 6)
+                                    {
+                                        rw.Vec2(ref n.mapCoordIcon);
+                                    }
+                                }
+
+                                if (version >= 7)
+                                {
+                                    rw.String(ref n.loadScreen);
+
+                                    if (version >= 8)
+                                    {
+                                        rw.Vec2(ref n.mapCoordElem);
+                                        rw.Vec2(ref n.mapCoordIcon);
+                                        rw.Vec2(ref n.mapCoordDesc);
+                                        rw.String(ref n.longDesc);
+
+                                        if (version >= 9)
+                                        {
+                                            rw.String(ref n.displayName);
+
+                                            if (version >= 10)
+                                            {
+                                                rw.Boolean(ref n.isEditable);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
     #endregion
 
-    #region 0x003 chunk
+    #region 0x008 chunk
 
-    [Chunk(0x03033003)]
-    public class Chunk03033003 : Chunk<CGameCtnCollection>
+    /// <summary>
+    /// CGameCtnCollection 0x008 chunk
+    /// </summary>
+    [Chunk(0x03033008)]
+    public class Chunk03033008 : Chunk<CGameCtnCollection>
     {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
         {
-            _ = r.ReadByte();
-            _ = r.ReadString();
+            rw.NodeRef<CGameCtnDecoration>(ref n.defaultDecoration, ref n.defaultDecorationIndex);
         }
     }
 
@@ -91,14 +260,38 @@ public class CGameCtnCollection : CMwNod
     [Chunk(0x03033009)]
     public class Chunk03033009 : Chunk<CGameCtnCollection>
     {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
+        private int listVersion;
+
+        public int U01;
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
         {
-            _ = r.ReadId();
-            _ = r.ReadInt32();
-            _ = r.ReadArray(r1 => r1.ReadInt32());
-            _ = r.ReadInt32();
-            _ = r.ReadArray<float>(3);
-            n.Vehicle = r.ReadIdent();
+            rw.Id(ref n.collection);
+            rw.Int32(ref listVersion);
+            rw.ArrayNode<CGameCtnZone>(ref n.completeZoneList);
+            rw.Int32(ref U01);
+            rw.Boolean(ref n.needUnlock);
+            rw.Single(ref n.squareSize);
+            rw.Single(ref n.squareHeight);
+            rw.Ident(ref n.vehicle);
+        }
+    }
+
+    #endregion
+
+    #region 0x00B chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x00B chunk
+    /// </summary>
+    [Chunk(0x0303300B)]
+    public class Chunk0303300B : Chunk<CGameCtnCollection>
+    {
+        public int U01;
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
         }
     }
 
@@ -109,10 +302,12 @@ public class CGameCtnCollection : CMwNod
     [Chunk(0x0303300C)]
     public class Chunk0303300C : Chunk<CGameCtnCollection>
     {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
+        public int U01;
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
         {
-            r.ReadInt32();
-            r.ReadInt32();
+            rw.Boolean(ref n.isEditable);
+            rw.Int32(ref U01); // This one just disappeared later in the code xd
         }
     }
 
@@ -123,11 +318,26 @@ public class CGameCtnCollection : CMwNod
     [Chunk(0x0303300D)]
     public class Chunk0303300D : Chunk<CGameCtnCollection>
     {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
+        public bool U01;
+        public int U02;
+        public bool U03;
+        public int U04;
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
         {
-            r.ReadInt32();
-            r.ReadInt32();
-            r.ReadInt32();
+            rw.Boolean(ref U01);
+
+            if (U01)
+            {
+                rw.NodeRef<CPlugBitmap>(ref n.iconFid, ref n.iconFidIndex); // IconFid
+            }
+
+            rw.Boolean(ref U03);
+
+            if (U03)
+            {
+                rw.Int32(ref U04);
+            }
         }
     }
 
@@ -138,22 +348,98 @@ public class CGameCtnCollection : CMwNod
     [Chunk(0x0303300E)]
     public class Chunk0303300E : Chunk<CGameCtnCollection>
     {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
+        public int U01;
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
         {
-            r.ReadInt32();
+            rw.Int32(ref U01);
         }
     }
 
     #endregion
 
-    #region 0x011 chunk
+    #region 0x011 chunk (not reviewed)
 
     [Chunk(0x03033011)]
     public class Chunk03033011 : Chunk<CGameCtnCollection>
     {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
+        public int U01;
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
         {
-            r.ReadInt32();
+            rw.Int32(ref U01); // CSysFidNodRefBase
+        }
+    }
+
+    #endregion
+
+    #region 0x013 chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x013 chunk
+    /// </summary>
+    [Chunk(0x03033013)]
+    public class Chunk03033013 : Chunk<CGameCtnCollection>
+    {
+        public float U01;
+        public float U02;
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref n.cameraMinHeight);
+        }
+    }
+
+    #endregion
+
+    #region 0x016 chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x016 chunk
+    /// </summary>
+    [Chunk(0x03033016)]
+    public class Chunk03033016 : Chunk<CGameCtnCollection>
+    {
+        public int U01;
+        public bool U02;
+        public bool U03;
+        public bool U04;
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+            rw.Boolean(ref U02);
+            rw.Boolean(ref U03); // BackgroundShadow?
+            rw.Single(ref n.shadowSoftSizeInWorld);
+            rw.Boolean(ref U04); // VertexLighting?
+            rw.Single(ref n.colorVertexMin);
+            rw.Single(ref n.colorVertexMax);
+        }
+    }
+
+    #endregion
+
+    #region 0x018 chunk
+
+    /// <summary>
+    /// CGameCtnCollection 0x018 chunk
+    /// </summary>
+    [Chunk(0x03033018)]
+    public class Chunk03033018 : Chunk<CGameCtnCollection>
+    {
+        public int U01;
+        public Rect U02;
+        public Vec2 U03;
+        public Vec2 U04;
+
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+            rw.Rect(ref U02);
+            rw.Vec2(ref U03);
+            rw.Vec2(ref U04);
         }
     }
 
@@ -164,252 +450,9 @@ public class CGameCtnCollection : CMwNod
     [Chunk(0x03033019)]
     public class Chunk03033019 : Chunk<CGameCtnCollection>
     {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
+        public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
         {
-            r.ReadInt32();
-        }
-    }
-
-    #endregion
-
-    #region 0x01A chunk
-
-    [Chunk(0x0303301A)]
-    public class Chunk0303301A : Chunk<CGameCtnCollection>
-    {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
-        {
-            _ = r.ReadInt32(); // -1
-            _ = r.ReadArray<float>(11);
-        }
-    }
-
-    #endregion
-
-    #region 0x01D chunk
-
-    [Chunk(0x0303301D)]
-    public class Chunk0303301D : Chunk<CGameCtnCollection>
-    {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
-        {
-            _ = r.ReadInt32();
-            _ = r.ReadIdent();
-            _ = r.ReadInt32();
-            _ = r.ReadInt32();
-        }
-    }
-
-    #endregion
-
-    #region 0x01F chunk
-
-    [Chunk(0x0303301F)]
-    public class Chunk0303301F : Chunk<CGameCtnCollection>
-    {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
-        {
-            _ = r.ReadInt32();
-        }
-    }
-
-    #endregion
-
-    #region 0x020 chunk
-
-    [Chunk(0x03033020)]
-    public class Chunk03033020 : Chunk<CGameCtnCollection>
-    {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
-        {
-            _ = r.ReadString();
-            _ = r.ReadInt32();
-            _ = r.ReadString();
-            _ = r.ReadString();
-        }
-    }
-
-    #endregion
-
-    #region 0x021 chunk
-
-    [Chunk(0x03033021)]
-    public class Chunk03033021 : Chunk<CGameCtnCollection>
-    {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
-        {
-            _ = r.ReadString();
-        }
-    }
-
-    #endregion
-
-    #region 0x027 chunk
-
-    [Chunk(0x03033027)]
-    public class Chunk03033027 : Chunk<CGameCtnCollection>
-    {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
-        {
-            _ = r.ReadInt32();
-            _ = r.ReadInt32();
-        }
-    }
-
-    #endregion
-
-    #region 0x028 chunk
-
-    [Chunk(0x03033028)]
-    public class Chunk03033028 : Chunk<CGameCtnCollection>
-    {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
-        {
-            _ = r.ReadInt32();
-        }
-    }
-
-    #endregion
-
-    #region 0x029 chunk
-
-    [Chunk(0x03033029)]
-    public class Chunk03033029 : Chunk<CGameCtnCollection>
-    {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
-        {
-            _ = r.ReadInt32();
-        }
-    }
-
-    #endregion
-
-    #region 0x02A chunk
-
-    [Chunk(0x0303302A)]
-    public class Chunk0303302A : Chunk<CGameCtnCollection>
-    {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
-        {
-            _ = r.ReadInt32();
-        }
-    }
-
-    #endregion
-
-    #region 0x02C chunk
-
-    [Chunk(0x0303302C)]
-    public class Chunk0303302C : Chunk<CGameCtnCollection>
-    {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
-        {
-            _ = r.ReadArray<int>(4);
-        }
-    }
-
-    #endregion
-
-    #region 0x02F chunk
-
-    [Chunk(0x0303302F)]
-    public class Chunk0303302F : Chunk<CGameCtnCollection>
-    {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
-        {
-            _ = r.ReadVec3();
-        }
-    }
-
-    #endregion
-
-    #region 0x030 chunk
-
-    [Chunk(0x03033030)]
-    public class Chunk03033030 : Chunk<CGameCtnCollection>
-    {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
-        {
-            _ = r.ReadInt32();
-        }
-    }
-
-    #endregion
-
-    #region 0x031 chunk
-
-    [Chunk(0x03033031)]
-    public class Chunk03033031 : Chunk<CGameCtnCollection>
-    {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
-        {
-            _ = r.ReadInt32();
-        }
-    }
-
-    #endregion
-
-    #region 0x033 chunk
-
-    [Chunk(0x03033033)]
-    public class Chunk03033033 : Chunk<CGameCtnCollection>
-    {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
-        {
-            _ = r.ReadInt32();
-            _ = r.ReadArray(r1 => r1.ReadId());
-        }
-    }
-
-    #endregion
-
-    #region 0x034 chunk
-
-    [Chunk(0x03033034)]
-    public class Chunk03033034 : Chunk<CGameCtnCollection>
-    {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
-        {
-            _ = r.ReadArray<int>(3);
-        }
-    }
-
-    #endregion
-
-    #region 0x036 chunk
-
-    [Chunk(0x03033036)]
-    public class Chunk03033036 : Chunk<CGameCtnCollection>
-    {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
-        {
-            _ = r.ReadArray<int>(2);
-        }
-    }
-
-    #endregion
-
-    #region 0x037 chunk
-
-    [Chunk(0x03033037)]
-    public class Chunk03033037 : Chunk<CGameCtnCollection>
-    {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
-        {
-            _ = r.ReadSingle();
-        }
-    }
-
-    #endregion
-
-    #region 0x038 chunk
-
-    [Chunk(0x03033038)]
-    public class Chunk03033038 : Chunk<CGameCtnCollection>
-    {
-        public override void Read(CGameCtnCollection n, GameBoxReader r)
-        {
-            _ = r.ReadInt32();
+            rw.NodeRef<CPlugBitmap>(ref n.loadScreenFid, ref n.loadScreenFidIndex);
         }
     }
 

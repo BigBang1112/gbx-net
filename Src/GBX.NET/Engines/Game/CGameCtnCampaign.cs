@@ -5,9 +5,9 @@
 /// </summary>
 /// <remarks>ID: 0x03090000</remarks>
 [Node(0x03090000)]
-[NodeExtension("Campaign")]
-[NodeExtension("ConstructionCampaign")]
 [NodeExtension("GameCtnCampaign")]
+[NodeExtension("ConstructionCampaign")]
+[NodeExtension("Campaign")]
 public class CGameCtnCampaign : CMwNod
 {
     #region Enums
