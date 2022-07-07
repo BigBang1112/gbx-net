@@ -92,10 +92,7 @@ public class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi
 
         public override void Write(CCtnMediaBlockUiTMSimpleEvtsDisplay n, GameBoxWriter w)
         {
-            if (n.displayMode == EDisplayMode.Always || n.displayMode == EDisplayMode.Never)
-                w.Write(true);
-            else
-                w.Write(false);
+            w.Write(n.displayMode == EDisplayMode.Always || n.displayMode == EDisplayMode.Never);
         }
     }
 
@@ -137,10 +134,7 @@ public class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi
 
         public override void Write(CCtnMediaBlockUiTMSimpleEvtsDisplay n, GameBoxWriter w)
         {
-            if (n.displayMode == EDisplayMode.Never)
-                w.Write(true);
-            else
-                w.Write(false);
+            w.Write(n.displayMode == EDisplayMode.Never);
         }
     }
 
