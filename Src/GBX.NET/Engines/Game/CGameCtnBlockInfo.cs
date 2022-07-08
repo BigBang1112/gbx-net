@@ -4,10 +4,10 @@
 [Node(0x0304E000), WritingNotSupported]
 public abstract class CGameCtnBlockInfo : CGameCtnCollector
 { 
-    private CGameCtnBlockUnitInfo[]? units;
-    private CGameCtnBlockUnitInfo[]? units2;
-    private CSceneMobil?[][]? mobils;
-    private CSceneMobil?[][]? mobils2;
+    private CGameCtnBlockUnitInfo?[]? groundUnits;
+    private CGameCtnBlockUnitInfo?[]? airUnits;
+    private CSceneMobil?[][]? groundMobils;
+    private CSceneMobil?[][]? airMobils;
     private bool isPillar;
 
     public enum EWayPointType
@@ -20,35 +20,19 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
         Dispenser
     }
 
-    public CGameCtnBlockUnitInfo[]? Units
-    {
-        get => units;
-        set => units = value;
-    }
+    [NodeMember]
+    public CGameCtnBlockUnitInfo?[]? GroundUnits { get => groundUnits; set => groundUnits = value; }
 
-    public CGameCtnBlockUnitInfo[]? Units2
-    {
-        get => units2;
-        set => units2 = value;
-    }
+    [NodeMember]
+    public CGameCtnBlockUnitInfo?[]? AirUnits { get => airUnits; set => airUnits = value; }
 
-    public CSceneMobil?[][]? Mobils
-    {
-        get => mobils;
-        set => mobils = value;
-    }
+    [NodeMember]
+    public CSceneMobil?[][]? GroundMobils { get => groundMobils; set => groundMobils = value; }
 
-    public CSceneMobil?[][]? Mobils2
-    {
-        get => mobils2;
-        set => mobils2 = value;
-    }
+    [NodeMember]
+    public CSceneMobil?[][]? AirMobils { get => airMobils; set => airMobils = value; }
 
-    public bool IsPillar
-    {
-        get => isPillar;
-        set => isPillar = value;
-    }
+    public bool IsPillar { get => isPillar; set => isPillar = value; }
 
     public string? BlockName { get; set; }
     public CGameCtnBlockInfoVariantGround? VariantBaseGround { get; set; }
@@ -87,36 +71,35 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
         public short U14;
         public short U15;
 
-        public override void Read(CGameCtnBlockInfo n, GameBoxReader r)
+        public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            U01 = r.ReadId();
-            U02 = r.ReadInt32();
-            U03 = r.ReadInt32();
-            U04 = r.ReadInt32();
-            U05 = r.ReadBoolean();
-            U06 = r.ReadInt32();
-            U07 = r.ReadInt32();
+            // ChunkCrypted_Base
+            rw.Id(ref U01);
+            rw.Int32(ref U02);
+            rw.Int32(ref U03);
+            rw.Int32(ref U04);
+            rw.Boolean(ref U05);
+            rw.Int32(ref U06);
+            rw.Int32(ref U07);
+            //
 
-            U08 = r.ReadNodeRef(); // null in every TMEDClassic
+            rw.NodeRef(ref U08); // null in every TMEDClassic
 
-            n.units = r.ReadArray(r => r.ReadNodeRef<CGameCtnBlockUnitInfo>()!);
-            n.units2 = r.ReadArray(r => r.ReadNodeRef<CGameCtnBlockUnitInfo>()!);
+            rw.ArrayNode<CGameCtnBlockUnitInfo>(ref n.groundUnits);
+            rw.ArrayNode<CGameCtnBlockUnitInfo>(ref n.airUnits);
 
-            n.mobils = r.ReadArray(r =>
-            {
-                return r.ReadArray(r => r.ReadNodeRef<CSceneMobil>()); // External refs to some mobils
-            });
+            rw.Array<CSceneMobil?[]>(ref n.groundMobils,
+                (i, r) => r.ReadArray(r => r.ReadNodeRef<CSceneMobil>()),
+                (x, w) => w.WriteNodeArray(x));
+            
+            rw.Array<CSceneMobil?[]>(ref n.airMobils,
+                (i, r) => r.ReadArray(r => r.ReadNodeRef<CSceneMobil>()),
+                (x, w) => w.WriteNodeArray(x));
 
-            // may not be it but could be
-            n.mobils2 = r.ReadArray(r =>
-            {
-                return r.ReadArray(r => r.ReadNodeRef<CSceneMobil>());
-            });
-
-            U12 = r.ReadByte();
-            U13 = r.ReadInt32();
-            U14 = r.ReadInt16();
-            U15 = r.ReadInt16();
+            rw.Byte(ref U12);
+            rw.Int32(ref U13);
+            rw.Int16(ref U14);
+            rw.Int16(ref U15);
         }
     }
 
