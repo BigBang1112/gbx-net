@@ -504,7 +504,7 @@ public class GameBoxWriter : BinaryWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="OverflowException">There's more nodes than <see cref="int.MaxValue"/>.</exception>
-    public void WriteNodeArray<T>(IEnumerable<T>? nodes) where T : Node
+    public void WriteNodeArray<T>(IEnumerable<T?>? nodes) where T : Node
     {
         if (nodes is null)
         {
@@ -524,6 +524,12 @@ public class GameBoxWriter : BinaryWriter
 
         foreach (var node in nodes)
         {
+            if (node is null)
+            {
+                Write(-1);
+                continue;
+            }
+
             Write(node.Id);
             node.Write(this, logger: logger);
 
