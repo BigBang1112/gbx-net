@@ -4,28 +4,22 @@
 public class CGameCtnBlockUnitInfo : CMwNod
 {
     private int placePylons;
+    private int acceptPylons;
     private Int3 relativeOffset;
-    private CMwNod?[]? clips;
+    private CGameCtnBlockInfoClip?[]? clips;
     private bool underground;
     private string? terrainModifierId;
 
-    public int PlacePylons
-    {
-        get => placePylons;
-        set => placePylons = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public int PlacePylons { get => placePylons; set => placePylons = value; }
 
-    public Int3 RelativeOffset
-    {
-        get => relativeOffset;
-        set => relativeOffset = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public int AcceptPylons { get => acceptPylons; set => acceptPylons = value; }
 
-    public CMwNod?[]? Clips
-    {
-        get => clips;
-        set => clips = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public Int3 RelativeOffset { get => relativeOffset; set => relativeOffset = value; }
+
+    public CGameCtnBlockInfoClip?[]? Clips { get => clips; set => clips = value; }
 
     public bool Underground
     {
@@ -66,7 +60,7 @@ public class CGameCtnBlockUnitInfo : CMwNod
             rw.Boolean(ref U01); // AcceptPylons?
             rw.Boolean(ref U02);
             rw.Int3(ref n.relativeOffset);
-            rw.ArrayNode(ref n.clips);
+            rw.ArrayNode<CGameCtnBlockInfoClip>(ref n.clips);
         }
     }
 
@@ -74,14 +68,14 @@ public class CGameCtnBlockUnitInfo : CMwNod
     public class Chunk03036001 : Chunk<CGameCtnBlockUnitInfo>
     {
         public string? U01;
-        public float U02;
-        public float U03;
+        public int U02;
+        public int U03;
 
         public override void ReadWrite(CGameCtnBlockUnitInfo n, GameBoxReaderWriter rw)
         {
             rw.Id(ref U01); // Desert, Grass
-            rw.Single(ref U02);
-            rw.Single(ref U03);
+            rw.Int32(ref U02);
+            rw.Int32(ref U03);
         }
     }
 
@@ -114,11 +108,9 @@ public class CGameCtnBlockUnitInfo : CMwNod
     [Chunk(0x03036004)]
     public class Chunk03036004 : Chunk<CGameCtnBlockUnitInfo>
     {
-        public int U01;
-
         public override void ReadWrite(CGameCtnBlockUnitInfo n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.Int32(ref n.acceptPylons);
         }
     }
 
@@ -129,38 +121,5 @@ public class CGameCtnBlockUnitInfo : CMwNod
         {
             rw.Id(ref n.terrainModifierId);
         }
-    }
-
-    // incomplete
-
-    [Chunk(0x03036007)]
-    public class Chunk03036007 : Chunk<CGameCtnBlockUnitInfo>
-    {
-        public override void ReadWrite(CGameCtnBlockUnitInfo n, GameBoxReaderWriter rw)
-        {
-            rw.Int32();
-            rw.Int32();
-            rw.Int32();
-            rw.Int32();
-        }
-    }
-
-    [Chunk(0x0303600B)]
-    public class Chunk0303600B : Chunk<CGameCtnBlockUnitInfo>
-    {
-        public override void ReadWrite(CGameCtnBlockUnitInfo n, GameBoxReaderWriter rw)
-        {
-            rw.Int32();
-            rw.Int32();
-            rw.Int32();
-            rw.Int32();
-            rw.Int32();
-        }
-    }
-
-    [Chunk(0x0303600C), AutoReadWriteChunk]
-    public class Chunk0303600C : Chunk<CGameCtnBlockUnitInfo>
-    {
-
     }
 }
