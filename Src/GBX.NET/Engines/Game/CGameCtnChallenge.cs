@@ -3866,9 +3866,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
                 if (gbxItem.FileName is null)
                 {
-                    if (gbxItem.Node.Ident is not null)
+                    if (gbxItem.Node.Author is not null)
                     {
-                        embedded.Add(gbxItem.Node.Ident);
+                        embedded.Add(gbxItem.Node.Author);
                     }
 
                     continue;
@@ -3891,8 +3891,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 var item = gbxItem.Node;
 
                 embedded.Add(new Ident(id,
-                    item.Ident?.Collection ?? new Id(),
-                    item.Ident?.Author ?? string.Empty));
+                    item.Author?.Collection ?? new Id(),
+                    item.Author?.Author ?? string.Empty));
             }
 
             writer.WriteList(embedded, (x, w) => w.Write(x));

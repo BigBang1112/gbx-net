@@ -3,7 +3,7 @@
 namespace GBX.NET.Engines.GameData;
 
 /// <summary>
-/// Collector.
+/// Collector. Something that can have an icon.
 /// </summary>
 /// <remarks>ID: 0x2E001000</remarks>
 [Node(0x2E001000)]
@@ -24,7 +24,6 @@ public class CGameCtnCollector : CMwNod, INodeHeader
     #region Fields
 
     private Ident? author;
-    private Ident? ident;
     private string pageName;
     private int catalogPosition;
     private string? name;
@@ -45,9 +44,6 @@ public class CGameCtnCollector : CMwNod, INodeHeader
 
     [NodeMember(ExactlyNamed = true)]
     public Ident? Author { get => author; set => author = value; }
-
-    [NodeMember]
-    public Ident? Ident { get => ident; set => ident = value; }
 
     [NodeMember(ExactlyNamed = true)]
     public string PageName { get => pageName; set => pageName = value; }
@@ -132,11 +128,7 @@ public class CGameCtnCollector : CMwNod, INodeHeader
     {
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public int U01;
         public int U02;
@@ -144,7 +136,7 @@ public class CGameCtnCollector : CMwNod, INodeHeader
 
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.Ident(ref n.ident);
+            rw.Ident(ref n.author);
             rw.Int32(ref version);
             rw.String(ref n.pageName!);
 
@@ -399,7 +391,7 @@ public class CGameCtnCollector : CMwNod, INodeHeader
     {
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.Ident(ref n.ident);
+            rw.Ident(ref n.author);
         }
     }
 
