@@ -31,11 +31,8 @@ public class HeaderChunk<T> : Chunk<T>, IHeaderChunk where T : CMwNod
     /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
     public override void ReadWrite(T n, GameBoxReaderWriter rw)
     {
-        if (rw.Reader != null)
-            Read(n, rw.Reader);
-
-        if (rw.Writer != null)
-            Write(n, rw.Writer);
+        if (rw.Reader is not null) Read(n, rw.Reader);
+        if (rw.Writer is not null) Write(n, rw.Writer);
     }
 
     public override string ToString()
@@ -52,5 +49,10 @@ public class HeaderChunk<T> : Chunk<T>, IHeaderChunk where T : CMwNod
     public async Task WriteAsync(GameBoxWriter w, CancellationToken cancellationToken)
     {
         await w.WriteBytesAsync(Data, cancellationToken);
+    }
+
+    public virtual void ReadWrite(GameBoxReaderWriter rw)
+    {
+        throw new NotSupportedException("Header chunk that is not part of the inheriting class can be read or written, but this chunk does not support it.");
     }
 }

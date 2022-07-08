@@ -7,4 +7,5 @@ public interface IHeaderChunk : IReadableWritableChunk
     
     void Write(GameBoxWriter w);
     Task WriteAsync(GameBoxWriter w, CancellationToken cancellationToken);
+    void ReadWrite(GameBoxReaderWriter rw);
 }

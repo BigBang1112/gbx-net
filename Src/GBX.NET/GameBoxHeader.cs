@@ -246,13 +246,7 @@ public class GameBoxHeader
         }
     }
 
-    private static Chunk ProcessChunk(Node node,
-                                        Type nodeType,
-                                        GameBoxReader r,
-                                        ILogger? logger,
-                                        uint chunkId,
-                                        int size,
-                                        bool isHeavy)
+    private static Chunk ProcessChunk(Node node, Type nodeType, GameBoxReader r, ILogger? logger, uint chunkId, int size, bool isHeavy)
     {
         var classId = chunkId & 0xFFFFF000;
 
@@ -299,21 +293,32 @@ public class GameBoxHeader
         headerChunk.Data = chunkData;
         headerChunk.IsHeavy = isHeavy;
 
+        if (chunkData.Length == 0)
+        {
+            return (Chunk)headerChunk;
+        }
+
+        using var chunkStream = new MemoryStream(chunkData);
+        using var chunkReader = new GameBoxReader(chunkStream, r.Settings, logger: logger);
+        var rw = new GameBoxReaderWriter(chunkReader);
+
         if (nodeType != chunkNodeType && !nodeType.IsSubclassOf(chunkNodeType))
         {
             // There are cast-related problems when one of the header chunks is not part of inheritance
             // For example, CGameCtnDecoration has a header chunk of type CPlugGameSkin that is not
-            // inherited by CGameCtnDecoration. This could be later solved by using special attributes
-            // on these kinds of unusual chunks.
-            return (Chunk)headerChunk;
+            // inherited by CGameCtnDecoration. A ReadWrite without a node is called.
+
+            try
+            {
+                headerChunk.ReadWrite(rw);
+            }
+            catch (NotSupportedException ex)
+            {
+                logger?.LogWarning(ex, "Exception with chunk 0x{chunkId}:", chunkId.ToString("X8"));
+            }
         }
-
-        if (chunkData.Length > 0)
+        else
         {
-            using var chunkStream = new MemoryStream(chunkData);
-            using var chunkReader = new GameBoxReader(chunkStream, r.Settings, logger: logger);
-            var rw = new GameBoxReaderWriter(chunkReader);
-
             headerChunk.ReadWrite(node, rw);
         }
 
