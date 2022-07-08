@@ -7,7 +7,7 @@ public class CPlugMaterial : CPlug
 {
     private CPlugMaterialCustom? customMaterial;
     private CPlug? shader;
-    private int shaderIndex;
+    private GameBoxRefTable.File? shaderFile;
     private SDeviceMat[]? deviceMaterials;
 
     public CPlugMaterialCustom? CustomMaterial
@@ -18,7 +18,7 @@ public class CPlugMaterial : CPlug
 
     public CPlug? Shader
     {
-        get => shader = GetNodeFromRefTable(shader, shaderIndex) as CPlug;
+        get => shader = GetNodeFromRefTable(shader, shaderFile) as CPlug;
         set => shader = value;
     }
 
@@ -112,9 +112,9 @@ public class CPlugMaterial : CPlug
 
         public override void Read(CPlugMaterial n, GameBoxReader r)
         {
-            _ = r.ReadNodeRef<CPlug>(out n.shaderIndex);
+            _ = r.ReadNodeRef<CPlug>(out n.shaderFile);
 
-            if (n.shaderIndex >= 0)
+            if (n.shaderFile is not null)
             {
                 return;
             }
@@ -125,11 +125,11 @@ public class CPlugMaterial : CPlug
                 var u02 = r.ReadInt16();
                 var u03 = r.ReadInt32();
 
-                _ = r.ReadNodeRef<CPlugShader>(out int shader1Index);
-                _ = r.ReadNodeRef<CPlugShader>(out int shader2Index);
-                _ = r.ReadNodeRef<CPlugShader>(out int shader3Index);
+                _ = r.ReadNodeRef<CPlugShader>(out GameBoxRefTable.File? shader1File);
+                _ = r.ReadNodeRef<CPlugShader>(out GameBoxRefTable.File? shader2File);
+                _ = r.ReadNodeRef<CPlugShader>(out GameBoxRefTable.File? shader3File);
 
-                return new SDeviceMat(n, shader1Index, shader2Index, shader3Index)
+                return new SDeviceMat(n, shader1File, shader2File, shader3File)
                 {
                     U01 = u01,
                     U02 = u02,
@@ -160,14 +160,14 @@ public class CPlugMaterial : CPlug
     public class Chunk0907900D : Chunk<CPlugMaterial>
     {
         public Node? U01;
-        public int? U01Index;
+        public GameBoxRefTable.File? U01File;
         public int[]? U02;
 
         public override void Read(CPlugMaterial n, GameBoxReader r)
         {
-            U01 = r.ReadNodeRef(out int U01Index);
+            U01 = r.ReadNodeRef(out U01File);
 
-            if (U01 is not null || U01Index > -2)
+            if (U01 is not null || U01File is not null)
             {
                 return;
             }
@@ -236,11 +236,11 @@ public class CPlugMaterial : CPlug
         private readonly Node node;
 
         private CPlugShader? shader1;
-        private readonly int? shader1Index;
+        private readonly GameBoxRefTable.File? shader1File;
         private CPlugShader? shader2;
-        private readonly int? shader2Index;
+        private readonly GameBoxRefTable.File? shader2File;
         private CPlugShader? shader3;
-        private readonly int? shader3Index;
+        private readonly GameBoxRefTable.File? shader3File;
 
         public short U01 { get; set; }
         public short U02 { get; set; }
@@ -248,19 +248,19 @@ public class CPlugMaterial : CPlug
 
         public CPlugShader? Shader1
         {
-            get => shader1 = node.GetNodeFromRefTable(shader1, shader1Index) as CPlugShader;
+            get => shader1 = node.GetNodeFromRefTable(shader1, shader1File) as CPlugShader;
             set => shader1 = value;
         }
 
         public CPlugShader? Shader2
         {
-            get => shader2 = node.GetNodeFromRefTable(shader2, shader2Index) as CPlugShader;
+            get => shader2 = node.GetNodeFromRefTable(shader2, shader2File) as CPlugShader;
             set => shader2 = value;
         }
 
         public CPlugShader? Shader3
         {
-            get => shader3 = node.GetNodeFromRefTable(shader3, shader3Index) as CPlugShader;
+            get => shader3 = node.GetNodeFromRefTable(shader3, shader3File) as CPlugShader;
             set => shader3 = value;
         }
         
@@ -270,12 +270,12 @@ public class CPlugMaterial : CPlug
             this.shader1 = shader1;
         }
 
-        public SDeviceMat(Node node, int shader1Index, int shader2Index, int shader3Index)
+        public SDeviceMat(Node node, GameBoxRefTable.File? shader1File, GameBoxRefTable.File? shader2File, GameBoxRefTable.File? shader3File)
         {
             this.node = node;
-            this.shader1Index = shader1Index;
-            this.shader2Index = shader2Index;
-            this.shader3Index = shader3Index;
+            this.shader1File = shader1File;
+            this.shader2File = shader2File;
+            this.shader3File = shader3File;
         }
     }
 }

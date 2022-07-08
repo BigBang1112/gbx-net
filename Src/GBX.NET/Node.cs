@@ -70,9 +70,9 @@ public abstract class Node
         return type.FullName?.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::") ?? string.Empty;
     }
 
-    protected internal Node? GetNodeFromRefTable(Node? nodeAtTheMoment, int? nodeIndex)
+    protected internal Node? GetNodeFromRefTable(Node? nodeAtTheMoment, GameBoxRefTable.File? nodeFile)
     {
-        if (nodeAtTheMoment is not null || nodeIndex is null || gbxForRefTable is null)
+        if (nodeAtTheMoment is not null || nodeFile is null || gbxForRefTable is null)
         {
             return nodeAtTheMoment;
         }
@@ -86,7 +86,7 @@ public abstract class Node
 
         var fileName = gbxForRefTable.PakFileName ?? gbxForRefTable.FileName;
 
-        return refTable.GetNode(nodeAtTheMoment, nodeIndex, fileName, gbxForRefTable?.ExternalGameData);
+        return refTable.GetNode(nodeAtTheMoment, nodeFile, fileName, gbxForRefTable?.ExternalGameData);
     }
 
     internal static T? Parse<T>(GameBoxReader r, uint? classId, IProgress<GameBoxReadProgress>? progress, ILogger? logger) where T : Node

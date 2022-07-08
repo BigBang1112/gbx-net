@@ -11,11 +11,11 @@ namespace GBX.NET.Engines.Plug;
 public class CPlugSolid : CPlug
 {
     private CPlug? tree;
-    private int? treeIndex;
+    private GameBoxRefTable.File? treeFile;
 
     public CPlug? Tree
     {
-        get => tree = GetNodeFromRefTable(tree, treeIndex) as CPlug;
+        get => tree = GetNodeFromRefTable(tree, treeFile) as CPlug;
         set => tree = value;
     }
 
@@ -201,7 +201,7 @@ public class CPlugSolid : CPlug
         {
             rw.Boolean(ref U01);
             rw.Boolean(ref U02);
-            rw.NodeRef<CPlug>(ref n.tree, ref n.treeIndex);
+            rw.NodeRef<CPlug>(ref n.tree, ref n.treeFile);
         }
 
         public override async Task ReadWriteAsync(CPlugSolid n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)

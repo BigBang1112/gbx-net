@@ -5,11 +5,11 @@
 public class CPlugTreeLight : CPlugTree
 {
     private CPlugLight? plugLight;
-    private int? plugLightIndex;
+    private GameBoxRefTable.File? plugLightFile;
 
     public CPlugLight? PlugLight
     {
-        get => plugLight = GetNodeFromRefTable(plugLight, plugLightIndex) as CPlugLight;
+        get => plugLight = GetNodeFromRefTable(plugLight, plugLightFile) as CPlugLight;
         set => plugLight = value;
     }
 
@@ -26,7 +26,7 @@ public class CPlugTreeLight : CPlugTree
     {
         public override void ReadWrite(CPlugTreeLight n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref n.plugLight, ref n.plugLightIndex);
+            rw.NodeRef(ref n.plugLight, ref n.plugLightFile);
         }
     }
 }

@@ -202,9 +202,9 @@ public partial class GameBoxRefTable
         return mainBuilder.ToString();
     }
 
-    public Node? GetNode(Node? nodeAtTheMoment, int? nodeIndex, string? fileName, IExternalGameData? externalGameData)
+    public Node? GetNode(Node? nodeAtTheMoment, File? nodeFile, string? fileName, IExternalGameData? externalGameData)
     {
-        var path = GetNodePath(nodeAtTheMoment, nodeIndex, fileName);
+        var path = GetNodePath(nodeAtTheMoment, nodeFile, fileName);
 
         if (path is null)
         {
@@ -219,9 +219,9 @@ public partial class GameBoxRefTable
         return externalGameData.GetNodeFromFilePath(path);
     }
 
-    public string? GetNodePath(Node? nodeAtTheMoment, int? nodeIndex, string? fileName)
+    public string? GetNodePath(Node? nodeAtTheMoment, File? nodeFile, string? fileName)
     {
-        if (nodeAtTheMoment is not null || nodeIndex is null)
+        if (nodeAtTheMoment is not null || nodeFile is null)
         {
             return null;
         }
@@ -238,15 +238,13 @@ public partial class GameBoxRefTable
             return null;
         }
 
-        var refTableNode = Files.FirstOrDefault(x => x.NodeIndex == nodeIndex);
-
-        if (refTableNode is null)
+        if (nodeFile is null)
         {
             return null;
         }
 
-        var folderPath = GetRelativeFolderPathToFile(refTableNode);
-        var finalFileName = Path.Combine(currentGbxFolderPath, folderPath, refTableNode.FileName ?? "");
+        var folderPath = GetRelativeFolderPathToFile(nodeFile);
+        var finalFileName = Path.Combine(currentGbxFolderPath, folderPath, nodeFile.FileName ?? "");
 
         return finalFileName;
     }

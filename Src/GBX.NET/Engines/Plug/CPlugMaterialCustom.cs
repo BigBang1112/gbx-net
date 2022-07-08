@@ -41,9 +41,9 @@ public class CPlugMaterialCustom : CPlug
                 var name = r.ReadId();
                 var u01 = r.ReadInt32();
 
-                _ = r.ReadNodeRef<CPlugBitmap>(out int bitmapIndex);
+                _ = r.ReadNodeRef<CPlugBitmap>(out GameBoxRefTable.File? bitmapFile);
 
-                return new SBitmap(n, name, u01, bitmapIndex);
+                return new SBitmap(n, name, u01, bitmapFile);
             });
         }
     }
@@ -150,24 +150,24 @@ public class CPlugMaterialCustom : CPlug
     {
         private Node node;
         private CPlugBitmap? bitmap;
-        private int bitmapIndex;
+        private GameBoxRefTable.File? bitmapFile;
 
         public string Name { get; set; }
         public int U01 { get; set; }
 
         public CPlugBitmap? Bitmap
         {
-            get => bitmap = node.GetNodeFromRefTable(bitmap, bitmapIndex) as CPlugBitmap;
+            get => bitmap = node.GetNodeFromRefTable(bitmap, bitmapFile) as CPlugBitmap;
             set => bitmap = value;
         }
 
-        public SBitmap(Node node, string name, int u01, int bitmapIndex)
+        public SBitmap(Node node, string name, int u01, GameBoxRefTable.File? bitmapFile)
         {
             Name = name;
             U01 = u01;
 
             this.node = node;
-            this.bitmapIndex = bitmapIndex;
+            this.bitmapFile = bitmapFile;
         }
 
         public override string ToString()

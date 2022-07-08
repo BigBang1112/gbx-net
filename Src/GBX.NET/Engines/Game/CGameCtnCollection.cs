@@ -60,11 +60,11 @@ public partial class CGameCtnCollection : CMwNod, INodeHeader
     private float colorVertexMin;
     private float colorVertexMax;
     private CPlugBitmap? iconFid;
-    private int? iconFidIndex;
+    private GameBoxRefTable.File? iconFidFile;
     private CPlugBitmap? loadScreenFid;
-    private int? loadScreenFidIndex;
+    private GameBoxRefTable.File? loadScreenFidFile;
     private CGameCtnDecoration? defaultDecoration;
-    private int? defaultDecorationIndex;
+    private GameBoxRefTable.File? defaultDecorationFile;
     private CGameCtnZone?[]? completeZoneList;
     private ZoneString[]? zoneStrings;
     private CGameCtnDecorationTerrainModifier?[]? replacementTerrainModifiers;
@@ -182,21 +182,21 @@ public partial class CGameCtnCollection : CMwNod, INodeHeader
     [NodeMember(ExactlyNamed = true)]
     public CPlugBitmap? IconFid
     {
-        get => iconFid = GetNodeFromRefTable(iconFid, iconFidIndex) as CPlugBitmap;
+        get => iconFid = GetNodeFromRefTable(iconFid, iconFidFile) as CPlugBitmap;
         set => iconFid = value;
     }
 
     [NodeMember(ExactlyNamed = true)]
     public CPlugBitmap? LoadScreenFid
     {
-        get => loadScreenFid = GetNodeFromRefTable(loadScreenFid, loadScreenFidIndex) as CPlugBitmap;
+        get => loadScreenFid = GetNodeFromRefTable(loadScreenFid, loadScreenFidFile) as CPlugBitmap;
         set => loadScreenFid = value;
     }
 
     [NodeMember(ExactlyNamed = true)]
     public CGameCtnDecoration? DefaultDecoration
     {
-        get => defaultDecoration = GetNodeFromRefTable(defaultDecoration, defaultDecorationIndex) as CGameCtnDecoration;
+        get => defaultDecoration = GetNodeFromRefTable(defaultDecoration, defaultDecorationFile) as CGameCtnDecoration;
         set => defaultDecoration = value;
     }
 
@@ -438,7 +438,7 @@ public partial class CGameCtnCollection : CMwNod, INodeHeader
     {
         public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnDecoration>(ref n.defaultDecoration, ref n.defaultDecorationIndex);
+            rw.NodeRef<CGameCtnDecoration>(ref n.defaultDecoration, ref n.defaultDecorationFile);
         }
     }
 
@@ -518,7 +518,7 @@ public partial class CGameCtnCollection : CMwNod, INodeHeader
 
             if (U01)
             {
-                rw.NodeRef<CPlugBitmap>(ref n.iconFid, ref n.iconFidIndex); // IconFid
+                rw.NodeRef<CPlugBitmap>(ref n.iconFid, ref n.iconFidFile); // IconFid
             }
 
             rw.Boolean(ref U03);
@@ -644,7 +644,7 @@ public partial class CGameCtnCollection : CMwNod, INodeHeader
     {
         public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef<CPlugBitmap>(ref n.loadScreenFid, ref n.loadScreenFidIndex);
+            rw.NodeRef<CPlugBitmap>(ref n.loadScreenFid, ref n.loadScreenFidFile);
         }
     }
 

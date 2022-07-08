@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -594,27 +595,26 @@ public class GameBoxReader : BinaryReader
     /// <summary>
     /// Reads an <see cref="int"/> containing the node reference index, then the node using the <see cref="Node"/>'s Parse method. The index is also checked if it isn't a part of a reference table, which currently returns null.
     /// </summary>
-    /// <param name="nodeRefIndex">Index of the node reference.</param>
+    /// <param name="nodeRefFile">File reference to the node (if from reference table).</param>
     /// <returns>A node, or null if the index is -1 or the node is from reference table.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
-    public Node? ReadNodeRef(out int nodeRefIndex)
+    public Node? ReadNodeRef(out GameBoxRefTable.File? nodeRefFile)
     {
         var index = ReadInt32() - 1; // GBX seems to start the index at 1
-
-        nodeRefIndex = index;
 
         // If aux node index is below 0 or the node index is part of the reference table
         if (index < 0)
         {
+            nodeRefFile = null;
             return null;
         }
 
         var gbx = Settings.GetGbxOrThrow();
 
-        if (IsRefTableNode(gbx, index))
+        if (TryGetRefTableNode(gbx, index, out nodeRefFile))
         {
             return null;
         }
@@ -646,21 +646,21 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
-    public Node? ReadNodeRef() => ReadNodeRef(out int _);
+    public Node? ReadNodeRef() => ReadNodeRef(out _);
 
     /// <summary>
     /// Reads an <see cref="int"/> containing the node reference index, then the node using the <see cref="Node"/>'s Parse method. The index is also checked if it isn't a part of a reference table, which currently returns null.
     /// </summary>
     /// <typeparam name="T">Type of node.</typeparam>
-    /// <param name="nodeRefIndex">Index of the node reference.</param>
+    /// <param name="nodeRefFile">File reference to the node (if from reference table).</param>
     /// <returns>A node, or null if the index is -1 or the node is from reference table.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
-    public T? ReadNodeRef<T>(out int nodeRefIndex) where T : Node
+    public T? ReadNodeRef<T>(out GameBoxRefTable.File? nodeRefFile) where T : Node
     {
-        return ReadNodeRef(out nodeRefIndex) as T;
+        return ReadNodeRef(out nodeRefFile) as T;
     }
 
     /// <summary>
@@ -693,7 +693,7 @@ public class GameBoxReader : BinaryReader
         var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
         // If aux node index is below 0 or the node index is part of the reference table
-        if (index < 0 || IsRefTableNode(gbx, index))
+        if (index < 0 || TryGetRefTableNode(gbx, index, out _))
         {
             return null;
         }
@@ -753,7 +753,11 @@ public class GameBoxReader : BinaryReader
         }
     }
 
-    private static bool IsRefTableNode(GameBox gbx, int index)
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+    private static bool TryGetRefTableNode(GameBox gbx, int index, [NotNullWhen(true)] out GameBoxRefTable.File? nodeRefFile)
+#else
+    private static bool TryGetRefTableNode(GameBox gbx, int index, out GameBoxRefTable.File? nodeRefFile)
+#endif
     {
         var refTable = gbx.GetRefTable();
 
@@ -761,25 +765,22 @@ public class GameBoxReader : BinaryReader
         if (refTable is null || refTable.Files.Count <= 0 && refTable.Folders.Count <= 0)
         {
             // Reference table isn't used so it's a nested object
+            nodeRefFile = null;
             return false;
         }
 
         var allFiles = refTable.Files; // Returns available external references
 
-        if (!allFiles.Any()) // If there's none
+        if (allFiles.Count == 0) // If there's none
         {
+            nodeRefFile = null;
             return false;
         }
 
         // Tries to get the one with this node index
-        var refTableNode = allFiles.FirstOrDefault(x => x.NodeIndex == index);
+        nodeRefFile = allFiles.FirstOrDefault(x => x.NodeIndex == index);
 
-        if (refTableNode is not null)
-        {
-            return true;
-        }
-
-        return false;
+        return nodeRefFile is not null;
     }
 
     /// <summary>

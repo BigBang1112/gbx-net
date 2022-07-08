@@ -1963,19 +1963,10 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
-    public Node? NodeRef(Node? variable, ref int? nodeRefIndex)
+    public Node? NodeRef(Node? variable, ref GameBoxRefTable.File? nodeRefFile)
     {
-        if (Reader is not null)
-        {
-            variable = Reader.ReadNodeRef(out int index);
-            nodeRefIndex = index < 0 ? null : index;
-        }
-
-        if (Writer is not null)
-        {
-            Writer.Write(variable);
-        }
-
+        if (Reader is not null) variable = Reader.ReadNodeRef(out nodeRefFile);
+        if (Writer is not null) Writer.Write(variable);
         return variable;
     }
 
@@ -1983,9 +1974,9 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
-    public void NodeRef(ref Node? variable, ref int? nodeRefIndex)
+    public void NodeRef(ref Node? variable, ref GameBoxRefTable.File? nodeRefFile)
     {
-        variable = NodeRef(variable, ref nodeRefIndex);
+        variable = NodeRef(variable, ref nodeRefFile);
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -2020,19 +2011,10 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
-    public T? NodeRef<T>(T? variable, ref int? nodeRefIndex) where T : Node
+    public T? NodeRef<T>(T? variable, ref GameBoxRefTable.File? nodeRefFile) where T : Node
     {
-        if (Reader is not null)
-        {
-            variable = Reader.ReadNodeRef<T>(out int index);
-            nodeRefIndex = index < 0 ? null : index;
-        }
-
-        if (Writer is not null)
-        {
-            Writer.Write(variable);
-        }
-
+        if (Reader is not null) variable = Reader.ReadNodeRef<T>(out nodeRefFile);
+        if (Writer is not null) Writer.Write(variable);
         return variable;
     }
 
@@ -2040,9 +2022,9 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
-    public void NodeRef<T>(ref T? variable, ref int? nodeRefIndex) where T : Node
+    public void NodeRef<T>(ref T? variable, ref GameBoxRefTable.File? nodeRefFile) where T : Node
     {
-        variable = NodeRef(variable, ref nodeRefIndex);
+        variable = NodeRef(variable, ref nodeRefFile);
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>

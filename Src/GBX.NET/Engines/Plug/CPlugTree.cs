@@ -9,7 +9,7 @@ public class CPlugTree : CPlug
     private CPlugVisual? visual;
     private CPlugSurface? surface;
     private CPlug? shader;
-    private int? shaderIndex;
+    private GameBoxRefTable.File? shaderFile;
     private CPlugTreeGenerator? generator;
 
     public IList<CPlugTree?> Children
@@ -38,7 +38,7 @@ public class CPlugTree : CPlug
 
     public CPlug? Shader
     {
-        get => shader = GetNodeFromRefTable(shader, shaderIndex) as CPlug;
+        get => shader = GetNodeFromRefTable(shader, shaderFile) as CPlug;
         set => shader = value;
     }
 
@@ -151,7 +151,7 @@ public class CPlugTree : CPlug
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
             rw.NodeRef<CPlugVisual>(ref n.visual); // CPlugVisual?
-            rw.NodeRef<CPlug>(ref n.shader, ref n.shaderIndex); // definitely Shader, can have CPlugShaderApply or CPlugMaterial
+            rw.NodeRef<CPlug>(ref n.shader, ref n.shaderFile); // definitely Shader, can have CPlugShaderApply or CPlugMaterial
             rw.NodeRef<CPlugSurface>(ref n.surface); // CPlugSurface? CPlugTreeGenerator?
             rw.NodeRef<CPlugTreeGenerator>(ref n.generator);
         }
@@ -159,7 +159,7 @@ public class CPlugTree : CPlug
         public override async Task ReadWriteAsync(CPlugTree n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
         {
             n.visual = await rw.NodeRefAsync<CPlugVisual>(n.visual, cancellationToken);
-            rw.NodeRef<CPlug>(ref n.shader, ref n.shaderIndex);
+            rw.NodeRef<CPlug>(ref n.shader, ref n.shaderFile);
             n.surface = await rw.NodeRefAsync<CPlugSurface>(n.surface, cancellationToken);
             n.generator = await rw.NodeRefAsync<CPlugTreeGenerator>(n.generator, cancellationToken);
         }

@@ -4,39 +4,39 @@
 public class CGameCtnZoneFlat : CGameCtnZone
 {
     private CGameCtnBlockInfoFlat? blockInfoFlat;
-    private int? blockInfoFlatIndex;
+    private GameBoxRefTable.File? blockInfoFlatFile;
     private CGameCtnBlockInfoClip? blockInfoClip;
-    private int? blockInfoClipIndex;
+    private GameBoxRefTable.File? blockInfoClipFile;
     private CGameCtnBlockInfoRoad? blockInfoRoad;
-    private int? blockInfoRoadIndex;
+    private GameBoxRefTable.File? blockInfoRoadFile;
     private CGameCtnBlockInfoPylon? blockInfoPylon;
-    private int? blockInfoPylonIndex;
+    private GameBoxRefTable.File? blockInfoPylonFile;
 
     [NodeMember(ExactlyNamed = true)]
     public CGameCtnBlockInfoFlat? BlockInfoFlat
     {
-        get => blockInfoFlat = GetNodeFromRefTable(blockInfoFlat, blockInfoFlatIndex) as CGameCtnBlockInfoFlat;
+        get => blockInfoFlat = GetNodeFromRefTable(blockInfoFlat, blockInfoFlatFile) as CGameCtnBlockInfoFlat;
         set => blockInfoFlat = value;
     }
 
     [NodeMember(ExactlyNamed = true)]
     public CGameCtnBlockInfoClip? BlockInfoClip
     {
-        get => blockInfoClip = GetNodeFromRefTable(blockInfoClip, blockInfoClipIndex) as CGameCtnBlockInfoClip;
+        get => blockInfoClip = GetNodeFromRefTable(blockInfoClip, blockInfoClipFile) as CGameCtnBlockInfoClip;
         set => blockInfoClip = value;
     }
 
     [NodeMember(ExactlyNamed = true)]
     public CGameCtnBlockInfoRoad? BlockInfoRoad
     {
-        get => blockInfoRoad = GetNodeFromRefTable(blockInfoRoad, blockInfoRoadIndex) as CGameCtnBlockInfoRoad;
+        get => blockInfoRoad = GetNodeFromRefTable(blockInfoRoad, blockInfoRoadFile) as CGameCtnBlockInfoRoad;
         set => blockInfoRoad = value;
     }
 
     [NodeMember(ExactlyNamed = true)]
     public CGameCtnBlockInfoPylon? BlockInfoPylon
     {
-        get => blockInfoPylon = GetNodeFromRefTable(blockInfoPylon, blockInfoPylonIndex) as CGameCtnBlockInfoPylon;
+        get => blockInfoPylon = GetNodeFromRefTable(blockInfoPylon, blockInfoPylonFile) as CGameCtnBlockInfoPylon;
         set => blockInfoPylon = value;
     }
 
@@ -55,10 +55,10 @@ public class CGameCtnZoneFlat : CGameCtnZone
     {
         public override void ReadWrite(CGameCtnZoneFlat n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnBlockInfoFlat>(ref n.blockInfoFlat, ref n.blockInfoFlatIndex);
-            rw.NodeRef<CGameCtnBlockInfoClip>(ref n.blockInfoClip, ref n.blockInfoClipIndex);
-            rw.NodeRef<CGameCtnBlockInfoRoad>(ref n.blockInfoRoad, ref n.blockInfoRoadIndex);
-            rw.NodeRef<CGameCtnBlockInfoPylon>(ref n.blockInfoPylon, ref n.blockInfoPylonIndex);
+            rw.NodeRef<CGameCtnBlockInfoFlat>(ref n.blockInfoFlat, ref n.blockInfoFlatFile);
+            rw.NodeRef<CGameCtnBlockInfoClip>(ref n.blockInfoClip, ref n.blockInfoClipFile);
+            rw.NodeRef<CGameCtnBlockInfoRoad>(ref n.blockInfoRoad, ref n.blockInfoRoadFile);
+            rw.NodeRef<CGameCtnBlockInfoPylon>(ref n.blockInfoPylon, ref n.blockInfoPylonFile);
         }
     }
 

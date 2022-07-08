@@ -157,7 +157,7 @@ public class CPlugBitmap : CPlug
     public class Chunk09011022 : Chunk<CPlugBitmap>
     {
         public Node? TextureFile;
-        public int? TextureFileIndex;
+        public GameBoxRefTable.File? TextureFileIndex;
         public ulong U01;
         public float U02;
         public float U03;

@@ -7,7 +7,7 @@ public class CGameCtnDecorationSize : CMwNod
     private Vec2 editionZoneMax;
     private int baseHeightBase;
     private CSceneLayout? scene;
-    private int? sceneIndex;
+    private GameBoxRefTable.File? sceneFile;
 
     [NodeMember(ExactlyNamed = true)]
     public Vec2 EditionZoneMin { get => editionZoneMin; set => editionZoneMin = value; }
@@ -21,7 +21,7 @@ public class CGameCtnDecorationSize : CMwNod
     [NodeMember(ExactlyNamed = true)]
     public CSceneLayout? Scene
     {
-        get => scene = GetNodeFromRefTable(scene, sceneIndex) as CSceneLayout;
+        get => scene = GetNodeFromRefTable(scene, sceneFile) as CSceneLayout;
         set => scene = value;
     }
 
@@ -68,7 +68,7 @@ public class CGameCtnDecorationSize : CMwNod
             rw.Int32(ref U01);
             rw.Int32(ref U02);
             rw.Int32(ref U03);
-            rw.NodeRef<CSceneLayout>(ref n.scene, ref n.sceneIndex);
+            rw.NodeRef<CSceneLayout>(ref n.scene, ref n.sceneFile);
         }
     }
 
