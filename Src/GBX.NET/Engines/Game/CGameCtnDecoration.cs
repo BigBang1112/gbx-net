@@ -5,6 +5,19 @@
 [NodeExtension("Decoration")]
 public class CGameCtnDecoration : CGameCtnCollector
 {
+    private CGameCtnDecorationSize? decoSize;
+    private CGameCtnDecorationAudio? decoAudio;
+    private CGameCtnDecorationMood? decoMood;
+
+    [NodeMember(ExactlyNamed = true)]
+    public CGameCtnDecorationSize? DecoSize { get => decoSize; set => decoSize = value; }
+    
+    [NodeMember(ExactlyNamed = true)]
+    internal CGameCtnDecorationAudio? DecoAudio { get => decoAudio; set => decoAudio = value; }
+    
+    [NodeMember(ExactlyNamed = true)]
+    public CGameCtnDecorationMood? DecoMood { get => decoMood; set => decoMood = value; }
+
     #region Constructors
 
     protected CGameCtnDecoration()
@@ -21,11 +34,25 @@ public class CGameCtnDecoration : CGameCtnCollector
     [Chunk(0x03038011)]
     public class Chunk03038011 : Chunk<CGameCtnDecoration>
     {
-        public int U01;
-
         public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.NodeRef<CGameCtnDecorationSize>(ref n.decoSize);
+        }
+    }
+
+    #endregion
+
+    #region 0x012 chunk
+
+    /// <summary>
+    /// CGameCtnDecoration 0x012 chunk
+    /// </summary>
+    [Chunk(0x03038012)]
+    public class Chunk03038012 : Chunk<CGameCtnDecoration>
+    {
+        public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef<CGameCtnDecorationAudio>(ref n.decoAudio);
         }
     }
 
@@ -40,126 +67,7 @@ public class CGameCtnDecoration : CGameCtnCollector
 
         public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-        }
-    }
-
-    #endregion
-
-    #region 0x014 chunk
-
-    [Chunk(0x03038014)]
-    public class Chunk03038014 : Chunk<CGameCtnDecoration>
-    {
-        public int U01;
-
-        public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
-        {
-            rw.Int32(ref U01);
-        }
-    }
-
-    #endregion
-
-    #region 0x015 chunk
-
-    [Chunk(0x03038015)]
-    public class Chunk03038015 : Chunk<CGameCtnDecoration>
-    {
-        public int U01;
-
-        public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
-        {
-            rw.Int32(ref U01);
-        }
-    }
-
-    #endregion
-
-    #region 0x016 chunk
-
-    [Chunk(0x03038016)]
-    public class Chunk03038016 : Chunk<CGameCtnDecoration>
-    {
-        public int U01;
-
-        public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
-        {
-            rw.Int32(ref U01);
-        }
-    }
-
-    #endregion
-
-    #region 0x017 chunk
-
-    [Chunk(0x03038017)]
-    public class Chunk03038017 : Chunk<CGameCtnDecoration>
-    {
-        public int U01;
-        public int U02;
-        public int U03;
-
-        public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
-        {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-        }
-    }
-
-    #endregion
-
-    #region 0x018 chunk
-
-    [Chunk(0x03038018)]
-    public class Chunk03038018 : Chunk<CGameCtnDecoration>
-    {
-        public int U01;
-        public int U02;
-        public int U03;
-
-        public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
-        {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-        }
-    }
-
-    #endregion
-
-    #region 0x019 chunk
-
-    [Chunk(0x03038019)]
-    public class Chunk03038019 : Chunk<CGameCtnDecoration>
-    {
-        public int U01;
-        public int U02;
-        public int U03;
-
-        public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
-        {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-        }
-    }
-
-    #endregion
-
-    #region 0x01A chunk
-
-    [Chunk(0x0303801A)]
-    public class Chunk0303801A : Chunk<CGameCtnDecoration>
-    {
-        public int U01;
-        public int U02;
-
-        public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
-        {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
+            rw.NodeRef<CGameCtnDecorationMood>(ref n.decoMood);
         }
     }
 
