@@ -1905,10 +1905,13 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public IDictionary<TKey, TValue?>? DictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary = default, bool overrideKey = false) where TKey : notnull where TValue : Node
+    public IDictionary<TKey, TValue?>? DictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary = default,
+        bool overrideKey = false,
+        (Func<GameBoxReader, TKey>, Action<TKey, GameBoxWriter>)? keyReaderWriter = null)
+        where TKey : notnull where TValue : Node
     {
-        if (Reader is not null) dictionary = Reader.ReadDictionaryNode<TKey, TValue>(overrideKey);
-        if (Writer is not null) Writer.WriteDictionaryNode(dictionary);
+        if (Reader is not null) dictionary = Reader.ReadDictionaryNode<TKey, TValue>(overrideKey, keyReaderWriter?.Item1);
+        if (Writer is not null) Writer.WriteDictionaryNode(dictionary, keyReaderWriter?.Item2);
         return dictionary;
     }
 
@@ -1919,19 +1922,23 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
     /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
-    public void DictionaryNode<TKey, TValue>(ref IDictionary<TKey, TValue?>? dictionary, bool overrideKey = false) where TKey : notnull where TValue : Node
+    public void DictionaryNode<TKey, TValue>(ref IDictionary<TKey, TValue?>? dictionary,
+        bool overrideKey = false,
+        (Func<GameBoxReader, TKey>, Action<TKey, GameBoxWriter>)? keyReaderWriter = null)
+        where TKey : notnull where TValue : Node
     {
-        dictionary = DictionaryNode(dictionary, overrideKey);
+        dictionary = DictionaryNode(dictionary, overrideKey, keyReaderWriter);
     }
-
+    
     public async Task<IDictionary<TKey, TValue?>?> DictionaryNodeAsync<TKey, TValue>(
         IDictionary<TKey, TValue?>? dictionary,
-        bool overrideKey,
+        bool overrideKey = false,
+        (Func<GameBoxReader, TKey>, Action<TKey, GameBoxWriter>)? keyReaderWriter = null,
         CancellationToken cancellationToken = default)
         where TKey : notnull where TValue : Node
     {
-        if (Reader is not null) dictionary = await Reader.ReadDictionaryNodeAsync<TKey, TValue>(overrideKey, cancellationToken);
-        if (Writer is not null) Writer.WriteDictionaryNode(dictionary);
+        if (Reader is not null) dictionary = await Reader.ReadDictionaryNodeAsync<TKey, TValue>(overrideKey, keyReaderWriter?.Item1, cancellationToken);
+        if (Writer is not null) Writer.WriteDictionaryNode(dictionary, keyReaderWriter?.Item2);
         return dictionary;
     }
     

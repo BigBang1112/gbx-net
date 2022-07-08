@@ -550,7 +550,7 @@ public class GameBoxWriter : BinaryWriter
     /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.Gbx"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteDictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary) where TValue : Node
+    public void WriteDictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary, Action<TKey, GameBoxWriter>? keyWriter = null) where TValue : Node
     {
         if (dictionary is null)
         {
@@ -567,7 +567,15 @@ public class GameBoxWriter : BinaryWriter
                 throw new ArgumentNullException(nameof(pair.Key));
             }
 
-            WriteAny(pair.Key);
+            if (keyWriter is null)
+            {
+                WriteAny(pair.Key);
+            }
+            else
+            {
+                keyWriter(pair.Key, this);
+            }
+
             Write(pair.Value);
         }
     }

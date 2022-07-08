@@ -1681,16 +1681,20 @@ public class GameBoxReader : BinaryReader
     /// <summary>
     /// Reads nodes in a dictionary kind (first key, then value).
     /// </summary>
-    /// <typeparam name="TKey">One of the supported types of <see cref="Read{T}"/>. Mustn't be null.</typeparam>
+    /// <typeparam name="TKey">Type of the key. Mustn't be nullable.</typeparam>
     /// <typeparam name="TValue">A node that is presented as node reference.</typeparam>
     /// <param name="overrideKey">If the pair in the dictionary should be overriden by the new value when a duplicate key is found. It is recommended to keep it false to easily spot errors.</param>
+    /// <param name="keyReader">An optional way to read the key. Default is <see cref="Read{T}"/></param>
     /// <returns>A dictionary.</returns>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
-    public IDictionary<TKey, TValue?> ReadDictionaryNode<TKey, TValue>(bool overrideKey = false) where TKey : notnull where TValue : Node
+    public IDictionary<TKey, TValue?> ReadDictionaryNode<TKey, TValue>(
+        bool overrideKey = false,
+        Func<GameBoxReader, TKey>? keyReader = null)
+        where TKey : notnull where TValue : Node
     {
         var length = ReadInt32();
 
@@ -1698,7 +1702,7 @@ public class GameBoxReader : BinaryReader
 
         for (var i = 0; i < length; i++)
         {
-            var key = Read<TKey>();
+            var key = keyReader is null ? Read<TKey>() : keyReader(this);
             var value = ReadNodeRef<TValue>();
 
             AddOrOverrideKey(dictionary, key, value, overrideKey);
@@ -1708,7 +1712,8 @@ public class GameBoxReader : BinaryReader
     }
 
     public async Task<IDictionary<TKey, TValue?>?> ReadDictionaryNodeAsync<TKey, TValue>(
-        bool overrideKey,
+        bool overrideKey = false,
+        Func<GameBoxReader, TKey>? keyReader = null,
         CancellationToken cancellationToken = default)
         where TKey : notnull where TValue : Node
     {
@@ -1718,7 +1723,7 @@ public class GameBoxReader : BinaryReader
 
         for (var i = 0; i < length; i++)
         {
-            var key = Read<TKey>();
+            var key = keyReader is null ? Read<TKey>() : keyReader(this);
             var value = await ReadNodeRefAsync<TValue>(cancellationToken);
 
             AddOrOverrideKey(dictionary, key, value, overrideKey);
