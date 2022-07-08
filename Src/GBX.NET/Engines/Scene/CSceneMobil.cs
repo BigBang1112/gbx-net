@@ -7,11 +7,7 @@ public class CSceneMobil : CSceneObject
 {
     private CHmsItem item;
 
-    public CHmsItem Item
-    {
-        get => item;
-        set => item = value;
-    }
+    public CHmsItem Item { get => item; set => item = value; }
 
     protected CSceneMobil()
     {
@@ -28,7 +24,7 @@ public class CSceneMobil : CSceneObject
 
         public override void ReadWrite(CSceneMobil n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01); // CSceneObject array?
+            rw.Int32(ref U01); // CSceneObjectLink array
         }
     }
 
@@ -38,11 +34,11 @@ public class CSceneMobil : CSceneObject
     [Chunk(0x0A011004)]
     public class Chunk0A011004 : Chunk<CSceneMobil>
     {
-        public int U01;
+        public CMwNod? U01;
 
         public override void ReadWrite(CSceneMobil n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.NodeRef(ref U01);
         }
     }
 
@@ -54,16 +50,12 @@ public class CSceneMobil : CSceneObject
     {
         public override void Read(CSceneMobil n, GameBoxReader r, ILogger? logger)
         {
-            var randomNumber = r.ReadUInt32();
-
-            if (randomNumber == 0)
-            {
-                return;
-            }
-
-            r.BaseStream.Position -= 4;
-
             n.item = Parse<CHmsItem>(r, 0x06003000, progress: null, logger)!;
+        }
+
+        public override void Write(CSceneMobil n, GameBoxWriter w, ILogger? logger)
+        {
+            n.item.Write(w, logger);
         }
     }
 

@@ -15,11 +15,25 @@ public abstract class CSceneObject : CMwNod
     [Chunk(0x0A005001)]
     public class Chunk0A005001 : Chunk<CSceneObject>
     {
-        public int U01;
+        public string? U01;
 
         public override void ReadWrite(CSceneObject n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.Id(ref U01);
+        }
+    }
+
+    /// <summary>
+    /// CSceneObject 0x002 chunk
+    /// </summary>
+    [Chunk(0x0A005002)]
+    public class Chunk0A005002 : Chunk<CSceneObject>
+    {
+        public bool U01;
+
+        public override void ReadWrite(CSceneObject n, GameBoxReaderWriter rw)
+        {
+            rw.Boolean(ref U01);
         }
     }
 
@@ -29,11 +43,11 @@ public abstract class CSceneObject : CMwNod
     [Chunk(0x0A005003)]
     public class Chunk0A005003 : Chunk<CSceneObject>
     {
-        public int U01;
+        public CMwNod? U01;
 
         public override void ReadWrite(CSceneObject n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.NodeRef(ref U01); // CMotion?
         }
     }
 
