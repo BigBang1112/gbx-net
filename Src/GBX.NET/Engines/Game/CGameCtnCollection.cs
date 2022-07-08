@@ -167,12 +167,6 @@ public partial class CGameCtnCollection : CMwNod, INodeHeader
     [NodeMember(ExactlyNamed = true)]
     public float SquareHeight { get => squareHeight; set => squareHeight = value; }
 
-    public byte CollectionID { get; set; }
-    public byte CollectionPackMask { get; set; }
-    public string? CollectionIcon { get; set; }
-    public string? BlockInfoFlat { get; set; }
-    public string? LoadingScreen { get; set; }
-
     [NodeMember(ExactlyNamed = true)]
     public float CameraMinHeight { get => cameraMinHeight; set => cameraMinHeight = value; }
 
