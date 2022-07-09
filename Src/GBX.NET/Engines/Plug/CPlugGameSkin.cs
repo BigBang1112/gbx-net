@@ -48,7 +48,7 @@ public class CPlugGameSkin : CMwNod
 
                     if (version >= 3)
                     {
-                        u05 = r.ReadBoolean();
+                        //u05 = r.ReadBoolean();
                     }
 
                     var u03 = r.ReadString();
