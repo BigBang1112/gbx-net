@@ -25,6 +25,11 @@ public partial class GameBox
     /// <remarks>Example where this could happen is <see cref="CGameCtnMediaBlockCameraCustom.Key.ReadWrite(GameBoxReaderWriter, int)"/>.</remarks>
     public static bool IgnoreUnseenVersions { get; set; }
 
+    /// <summary>
+    /// If to strictly throw an exception when the supposedly-read boolean is not 0 or 1.
+    /// </summary>
+    public static bool StrictBooleans { get; set; }
+
     public Node? Node { get; private set; }
     public GameBoxBody? RawBody { get; private set; }
     public GameBoxBodyDebugger? Debugger { get; private set; }

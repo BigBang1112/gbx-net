@@ -41,7 +41,18 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public override bool ReadBoolean() => Convert.ToBoolean(ReadInt32());
+    /// <exception cref="BooleanOutOfRangeException">Boolean is neither 0 or 1.</exception>
+    public override bool ReadBoolean()
+    {
+        var booleanAsInt = ReadInt32();
+
+        if (GameBox.StrictBooleans && (booleanAsInt < 0 || booleanAsInt > 1))
+        {
+            throw new BooleanOutOfRangeException(booleanAsInt);
+        }
+
+        return Convert.ToBoolean(booleanAsInt);
+    }
 
     /// <summary>
     /// If <paramref name="asByte"/> is true, reads the next <see cref="byte"/> from the current stream and casts it as <see cref="bool"/>. Otherwise <see cref="ReadBoolean()"/> is called.
@@ -51,7 +62,22 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public bool ReadBoolean(bool asByte) => asByte ? base.ReadBoolean() : ReadBoolean();
+    public bool ReadBoolean(bool asByte)
+    {
+        if (!asByte)
+        {
+            return ReadBoolean();
+        }
+
+        var booleanAsByte = ReadByte();
+
+        if (GameBox.StrictBooleans && booleanAsByte > 1)
+        {
+            throw new BooleanOutOfRangeException(booleanAsByte);
+        }
+
+        return booleanAsByte != 0;
+    }
 
     /// <summary>
     /// Reads a <see cref="string"/> from the current stream with one of the prefix reading methods.
