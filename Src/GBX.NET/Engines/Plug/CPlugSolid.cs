@@ -296,18 +296,31 @@ public class CPlugSolid : CPlug
     {
         public bool U01;
         public bool U02;
+        public bool? U03;
 
         public override void ReadWrite(CPlugSolid n, GameBoxReaderWriter rw)
         {
             rw.Boolean(ref U01);
             rw.Boolean(ref U02);
-            rw.NodeRef(ref n.tree);
+
+            if (U02) // True when referenced through CHmsItem?
+            {
+                rw.Boolean(ref U03);
+            }
+
+            rw.NodeRef<CPlug>(ref n.tree, ref n.treeFile);
         }
 
         public override async Task ReadWriteAsync(CPlugSolid n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
         {
             rw.Boolean(ref U01);
             rw.Boolean(ref U02);
+
+            if (U02) // True when referenced through CHmsItem?
+            {
+                rw.Boolean(ref U03);
+            }
+            
             n.tree = await rw.NodeRefAsync(n.tree, cancellationToken);
         }
     }
