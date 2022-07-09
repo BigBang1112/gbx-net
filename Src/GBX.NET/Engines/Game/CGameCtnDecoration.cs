@@ -8,15 +8,27 @@ public class CGameCtnDecoration : CGameCtnCollector
     private CGameCtnDecorationSize? decoSize;
     private CGameCtnDecorationAudio? decoAudio;
     private CGameCtnDecorationMood? decoMood;
+    private CPlugDecoratorSolid? decoratorSolidWarp;
+    private CGameCtnDecorationTerrainModifier? terrainModifierCovered;
+    private CGameCtnDecorationTerrainModifier? terrainModifierBase;
 
     [NodeMember(ExactlyNamed = true)]
     public CGameCtnDecorationSize? DecoSize { get => decoSize; set => decoSize = value; }
     
     [NodeMember(ExactlyNamed = true)]
-    internal CGameCtnDecorationAudio? DecoAudio { get => decoAudio; set => decoAudio = value; }
+    public CGameCtnDecorationAudio? DecoAudio { get => decoAudio; set => decoAudio = value; }
     
     [NodeMember(ExactlyNamed = true)]
     public CGameCtnDecorationMood? DecoMood { get => decoMood; set => decoMood = value; }
+    
+    [NodeMember(ExactlyNamed = true)]
+    public CPlugDecoratorSolid? DecoratorSolidWarp { get => decoratorSolidWarp; set => decoratorSolidWarp = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public CGameCtnDecorationTerrainModifier? TerrainModifierCovered { get => terrainModifierCovered; set => terrainModifierCovered = value; }
+    
+    [NodeMember(ExactlyNamed = true)]
+    public CGameCtnDecorationTerrainModifier? TerrainModifierBase { get => terrainModifierBase; set => terrainModifierBase = value; }
 
     #region Constructors
 
@@ -68,6 +80,54 @@ public class CGameCtnDecoration : CGameCtnCollector
         public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
         {
             rw.NodeRef<CGameCtnDecorationMood>(ref n.decoMood);
+        }
+    }
+
+    #endregion
+
+    #region 0x014 chunk
+
+    /// <summary>
+    /// CGameCtnDecoration 0x014 chunk
+    /// </summary>
+    [Chunk(0x03038014)]
+    public class Chunk03038014 : Chunk<CGameCtnDecoration>
+    {
+        public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef<CPlugDecoratorSolid>(ref n.decoratorSolidWarp);
+        }
+    }
+
+    #endregion
+
+    #region 0x015 chunk
+
+    /// <summary>
+    /// CGameCtnDecoration 0x015 chunk
+    /// </summary>
+    [Chunk(0x03038015)]
+    public class Chunk03038015 : Chunk<CGameCtnDecoration>
+    {
+        public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef<CGameCtnDecorationTerrainModifier>(ref n.terrainModifierCovered);
+        }
+    }
+
+    #endregion
+
+    #region 0x016 chunk
+
+    /// <summary>
+    /// CGameCtnDecoration 0x016 chunk
+    /// </summary>
+    [Chunk(0x03038016)]
+    public class Chunk03038016 : Chunk<CGameCtnDecoration>
+    {
+        public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef<CGameCtnDecorationTerrainModifier>(ref n.terrainModifierBase);
         }
     }
 
