@@ -3,13 +3,7 @@
 /// <remarks>ID: 0x0304E000</remarks>
 [Node(0x0304E000), WritingNotSupported]
 public abstract class CGameCtnBlockInfo : CGameCtnCollector
-{ 
-    private CGameCtnBlockUnitInfo?[]? groundUnits;
-    private CGameCtnBlockUnitInfo?[]? airUnits;
-    private CSceneMobil?[][]? groundMobils;
-    private CSceneMobil?[][]? airMobils;
-    private bool isPillar;
-
+{
     public enum EWayPointType
     {
         Start,
@@ -20,11 +14,19 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
         Dispenser
     }
 
-    [NodeMember]
-    public CGameCtnBlockUnitInfo?[]? GroundUnits { get => groundUnits; set => groundUnits = value; }
+    private CGameCtnBlockUnitInfo?[]? groundBlockUnitInfos;
+    private CGameCtnBlockUnitInfo?[]? airBlockUnitInfos;
+    private CSceneMobil?[][]? groundMobils;
+    private CSceneMobil?[][]? airMobils;
+    private bool isPillar;
+    private EWayPointType? wayPointType;
+    private bool noRespawn;
 
     [NodeMember]
-    public CGameCtnBlockUnitInfo?[]? AirUnits { get => airUnits; set => airUnits = value; }
+    public CGameCtnBlockUnitInfo?[]? GroundBlockUnitInfos { get => groundBlockUnitInfos; set => groundBlockUnitInfos = value; }
+
+    [NodeMember]
+    public CGameCtnBlockUnitInfo?[]? AirBlockUnitInfos { get => airBlockUnitInfos; set => airBlockUnitInfos = value; }
 
     [NodeMember]
     public CSceneMobil?[][]? GroundMobils { get => groundMobils; set => groundMobils = value; }
@@ -32,7 +34,14 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     [NodeMember]
     public CSceneMobil?[][]? AirMobils { get => airMobils; set => airMobils = value; }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool IsPillar { get => isPillar; set => isPillar = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public EWayPointType? WayPointType { get => wayPointType; set => wayPointType = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public bool NoRespawn { get => noRespawn; set => noRespawn = value; }
 
     public string? BlockName { get; set; }
     public CGameCtnBlockInfoVariantGround? VariantBaseGround { get; set; }
@@ -44,8 +53,6 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     public CGamePodiumInfo? PodiumInfo { get; set; }
     public CGamePodiumInfo? IntroInfo { get; set; }
     public bool IconAutoUseGround { get; set; }
-    public bool NoRespawn { get; set; }
-    public EWayPointType WayPointType { get; set; }
     public string? SymmetricalBlockInfoId { get; set; }
     public Direction Dir { get; set; }
 
@@ -85,13 +92,13 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
 
             rw.NodeRef(ref U08); // null in every TMEDClassic
 
-            rw.ArrayNode<CGameCtnBlockUnitInfo>(ref n.groundUnits);
-            rw.ArrayNode<CGameCtnBlockUnitInfo>(ref n.airUnits);
+            rw.ArrayNode<CGameCtnBlockUnitInfo>(ref n.groundBlockUnitInfos);
+            rw.ArrayNode<CGameCtnBlockUnitInfo>(ref n.airBlockUnitInfos);
 
             rw.Array<CSceneMobil?[]>(ref n.groundMobils,
                 (i, r) => r.ReadArray(r => r.ReadNodeRef<CSceneMobil>()),
                 (x, w) => w.WriteNodeArray(x));
-            
+
             rw.Array<CSceneMobil?[]>(ref n.airMobils,
                 (i, r) => r.ReadArray(r => r.ReadNodeRef<CSceneMobil>()),
                 (x, w) => w.WriteNodeArray(x));
@@ -137,8 +144,8 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
 
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            rw.Iso4(ref U01);
-            rw.Iso4(ref U02);
+            rw.Iso4(ref U01); // Sound1Loc/SpawnLocAir?
+            rw.Iso4(ref U02); // Sound2Loc/SpawnLocGround?
         }
     }
 
@@ -156,11 +163,16 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     [Chunk(0x0304E00E)]
     public class Chunk0304E00E : Chunk<CGameCtnBlockInfo>
     {
-        public CMwNod?[]? U01;
+        private CMwNod? U01;
+        private CMwNod? U02;
+        private CMwNod? U03;
 
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            rw.ArrayNode(ref U01);
+            rw.EnumInt32<EWayPointType>(ref n.wayPointType);
+            rw.NodeRef(ref U01); // helper
+            rw.NodeRef(ref U02); // helper
+            rw.NodeRef(ref U03); // arrow
         }
     }
 
@@ -169,7 +181,7 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     {
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            n.NoRespawn = rw.Boolean(n.NoRespawn);
+            rw.Boolean(ref n.noRespawn);
         }
     }
 
