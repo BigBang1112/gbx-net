@@ -44,9 +44,9 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="BooleanOutOfRangeException">Boolean is neither 0 or 1.</exception>
     public override bool ReadBoolean()
     {
-        var booleanAsInt = ReadInt32();
+        var booleanAsInt = ReadUInt32();
 
-        if (GameBox.StrictBooleans && (booleanAsInt < 0 || booleanAsInt > 1))
+        if (GameBox.StrictBooleans && booleanAsInt > 1)
         {
             throw new BooleanOutOfRangeException(booleanAsInt);
         }
