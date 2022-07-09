@@ -35,11 +35,7 @@ public class CGameCtnBlockUnitInfo : CMwNod
         }
     }
 
-    public string? TerrainModifierId
-    {
-        get => terrainModifierId;
-        set => terrainModifierId = value;
-    }
+    public string? TerrainModifierId { get => terrainModifierId; set => terrainModifierId = value; }
 
     public override string ToString() => $"{base.ToString()} {{ {relativeOffset} }}";
 

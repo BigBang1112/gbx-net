@@ -108,8 +108,8 @@ public class NadeoPakFile
         {
             return blowfish;
         }
-
-        return new Arc.TrackMania.Compression.ZlibDeflateStream(blowfish, false);
+        
+        return new Arc.TrackMania.Compression.ZlibDeflateStream(blowfish, compressing: false);
     }
 
     public byte[]? GetData()
