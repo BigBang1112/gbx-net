@@ -25,6 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		logo_shadow.png = logo_shadow.png
 		NUGET.md = NUGET.md
 		README.md = README.md
+		SUPPORTED_GBX_FILE_TYPES.md = SUPPORTED_GBX_FILE_TYPES.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{4357734F-ED75-4E82-B765-586EE8B4AF56}"
