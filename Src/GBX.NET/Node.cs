@@ -170,7 +170,12 @@ public abstract class Node
 
             if (node is CPlugSurfaceGeom)
             {
-                parentClassId = 0x902B000;
+                parentClassId = 0x0902B000;
+            }
+
+            if (nodeType.BaseType == typeof(CGameCtnBlockInfo))
+            {
+                parentClassId = 0x24005000;
             }
 
             var parentClassIDBytes = BitConverter.GetBytes(parentClassId);
@@ -254,16 +259,16 @@ public abstract class Node
             return false;
         }
 
-        var chunkId = r.ReadUInt32();
+        var originalChunkId = r.ReadUInt32();
 
-        if (chunkId == 0xFACADE01) // no more chunks
+        if (originalChunkId == 0xFACADE01) // no more chunks
         {
             return false;
         }
 
-        LogChunkProgress(logger, stream, chunkId);
+        LogChunkProgress(logger, stream, originalChunkId);
 
-        chunkId = Chunk.Remap(chunkId);
+        var chunkId = Chunk.Remap(originalChunkId);
 
         var chunkClass = NodeCacheManager.GetChunkTypeById(nodeType, chunkId);
 
