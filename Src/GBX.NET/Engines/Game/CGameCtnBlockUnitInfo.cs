@@ -3,12 +3,24 @@
 [Node(0x03036000)]
 public class CGameCtnBlockUnitInfo : CMwNod
 {
+    #region Fields
+
     private int placePylons;
     private int acceptPylons;
     private Int3 relativeOffset;
-    private CGameCtnBlockInfoClip?[]? clips;
+    private ExternalNode<CGameCtnBlockInfoClip>[]? clips;
     private bool underground;
     private string? terrainModifierId;
+    private CGameCtnBlockInfoClip? bottomClip;
+    private GameBoxRefTable.File? bottomClipFile;
+    private CGameCtnBlockInfoClip? topClip;
+    private GameBoxRefTable.File? topClipFile;
+    private Direction bottomClipDir;
+    private Direction topClipDir;
+
+    #endregion
+
+    #region Properties
 
     [NodeMember(ExactlyNamed = true)]
     public int PlacePylons { get => placePylons; set => placePylons = value; }
@@ -19,8 +31,10 @@ public class CGameCtnBlockUnitInfo : CMwNod
     [NodeMember(ExactlyNamed = true)]
     public Int3 RelativeOffset { get => relativeOffset; set => relativeOffset = value; }
 
-    public CGameCtnBlockInfoClip?[]? Clips { get => clips; set => clips = value; }
+    [NodeMember(ExactlyNamed = true)]
+    public ExternalNode<CGameCtnBlockInfoClip>[]? Clips { get => clips; set => clips = value; }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool Underground
     {
         get
@@ -35,15 +49,53 @@ public class CGameCtnBlockUnitInfo : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public string? TerrainModifierId { get => terrainModifierId; set => terrainModifierId = value; }
 
-    public override string ToString() => $"{base.ToString()} {{ {relativeOffset} }}";
+    [NodeMember(ExactlyNamed = true)]
+    public CGameCtnBlockInfoClip? BottomClip
+    {
+        get => bottomClip = GetNodeFromRefTable(bottomClip, bottomClipFile) as CGameCtnBlockInfoClip;
+        set => bottomClip = value;
+    }
+
+    [NodeMember(ExactlyNamed = true)]
+    public CGameCtnBlockInfoClip? TopClip
+    {
+        get => topClip = GetNodeFromRefTable(topClip, topClipFile) as CGameCtnBlockInfoClip;
+        set => topClip = value;
+    }
+
+    [NodeMember(ExactlyNamed = true)]
+    public Direction BottomClipDir { get => bottomClipDir; set => bottomClipDir = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public Direction TopClipDir { get => topClipDir; set => topClipDir = value; }
+
+    #endregion
+
+    #region Constructors
 
     protected CGameCtnBlockUnitInfo()
     {
 
     }
 
+    #endregion
+
+    #region Methods
+
+    public override string ToString() => $"{base.ToString()} {{ {relativeOffset} }}";
+
+    #endregion
+
+    #region Chunks
+
+    #region 0x000 chunk
+
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x000 chunk
+    /// </summary>
     [Chunk(0x03036000)]
     public class Chunk03036000 : Chunk<CGameCtnBlockUnitInfo>
     {
@@ -60,6 +112,13 @@ public class CGameCtnBlockUnitInfo : CMwNod
         }
     }
 
+    #endregion
+
+    #region 0x001 chunk
+
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x001 chunk
+    /// </summary>
     [Chunk(0x03036001)]
     public class Chunk03036001 : Chunk<CGameCtnBlockUnitInfo>
     {
@@ -75,7 +134,14 @@ public class CGameCtnBlockUnitInfo : CMwNod
         }
     }
 
-    [Chunk(0x03036002)]
+    #endregion
+
+    #region 0x002 chunk (Underground)
+
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x002 chunk (Underground)
+    /// </summary>
+    [Chunk(0x03036002, "Underground")]
     public class Chunk03036002 : SkippableChunk<CGameCtnBlockUnitInfo>
     {
         public override void ReadWrite(CGameCtnBlockUnitInfo n, GameBoxReaderWriter rw)
@@ -84,24 +150,39 @@ public class CGameCtnBlockUnitInfo : CMwNod
         }
     }
 
+    #endregion
+
+    #region 0x003 chunk
+
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x003 chunk
+    /// </summary>
     [Chunk(0x03036003)]
     public class Chunk03036003 : Chunk<CGameCtnBlockUnitInfo>
     {
         public CMwNod? U01;
+        private GameBoxRefTable.File? U01file;
         public string? U02;
         public int U03;
         public int U04;
 
         public override void ReadWrite(CGameCtnBlockUnitInfo n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01);
+            rw.NodeRef(ref U01, ref U01file); // pillar stuff?
             rw.Id(ref U02); // TerrainModifierId?
             rw.Int32(ref U03);
             rw.Int32(ref U04);
         }
     }
 
-    [Chunk(0x03036004)]
+    #endregion
+
+    #region 0x004 chunk (AcceptPylons)
+
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x004 chunk (AcceptPylons)
+    /// </summary>
+    [Chunk(0x03036004, "AcceptPylons")]
     public class Chunk03036004 : Chunk<CGameCtnBlockUnitInfo>
     {
         public override void ReadWrite(CGameCtnBlockUnitInfo n, GameBoxReaderWriter rw)
@@ -110,7 +191,14 @@ public class CGameCtnBlockUnitInfo : CMwNod
         }
     }
 
-    [Chunk(0x03036005)]
+    #endregion
+
+    #region 0x005 chunk (TerrainModifierId)
+
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x005 chunk (TerrainModifierId)
+    /// </summary>
+    [Chunk(0x03036005, "TerrainModifierId")]
     public class Chunk03036005 : Chunk<CGameCtnBlockUnitInfo>
     {
         public override void ReadWrite(CGameCtnBlockUnitInfo n, GameBoxReaderWriter rw)
@@ -118,4 +206,186 @@ public class CGameCtnBlockUnitInfo : CMwNod
             rw.Id(ref n.terrainModifierId);
         }
     }
+
+    #endregion
+
+    #region 0x006 chunk
+
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x006 chunk
+    /// </summary>
+    [Chunk(0x03036006)]
+    public class Chunk03036006 : Chunk<CGameCtnBlockUnitInfo>
+    {
+        public bool U01;
+        public (bool, int) U02;
+
+        public override void ReadWrite(CGameCtnBlockUnitInfo n, GameBoxReaderWriter rw)
+        {
+            rw.Boolean(ref U01);
+
+            for (var i = 0; i < 4; i++)
+            {
+                rw.Boolean(ref U02.Item1);
+                rw.Int32(ref U02.Item2);
+            }
+        }
+    }
+
+    #endregion
+
+    #region 0x007 chunk
+
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x007 chunk
+    /// </summary>
+    [Chunk(0x03036007)]
+    public class Chunk03036007 : Chunk<CGameCtnBlockUnitInfo>
+    {
+        public ExternalNode<CMwNod>[]? U01;
+
+        public override void Read(CGameCtnBlockUnitInfo n, GameBoxReader r)
+        {
+            U01 = new ExternalNode<CMwNod>[n.clips?.Length ?? 0]; // or pylons?
+
+            for (var i = 0; i < U01.Length; i++)
+            {
+                var node = r.ReadNodeRef<CMwNod>(out GameBoxRefTable.File? file);
+                U01[i] = new(node, file);
+            }
+        }
+
+        public override void Write(CGameCtnBlockUnitInfo n, GameBoxWriter w)
+        {
+            for (var i = 0; i < (n.clips?.Length ?? 0); i++) // or pylons?
+            {
+                if (U01 is null || i >= U01.Length)
+                {
+                    w.Write(-1);
+                }
+                else 
+                {
+                    var extNode = U01[i];
+                    
+                    if (extNode.File is not null)
+                    {
+                        w.Write(extNode.File.NodeIndex + 1);
+                    }
+                    else
+                    {
+                        w.Write(extNode.Node);
+                    }
+                }
+            }
+        }
+    }
+
+    #endregion
+
+    #region 0x008 chunk (bottom+top clip)
+
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x008 chunk (bottom+top clip)
+    /// </summary>
+    [Chunk(0x03036008, "bottom+top clip")]
+    public class Chunk03036008 : Chunk<CGameCtnBlockUnitInfo>
+    {
+        public override void ReadWrite(CGameCtnBlockUnitInfo n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef<CGameCtnBlockInfoClip>(ref n.bottomClip);
+            rw.NodeRef<CGameCtnBlockInfoClip>(ref n.topClip);
+        }
+    }
+
+    #endregion
+
+    #region 0x009 chunk
+
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x009 chunk
+    /// </summary>
+    [Chunk(0x03036009)]
+    public class Chunk03036009 : Chunk<CGameCtnBlockUnitInfo>, IVersionable
+    {
+        private int version;
+
+        public CMwNod? U01;
+        private GameBoxRefTable.File? U01file;
+        public int U02;
+        public int? U03;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnBlockUnitInfo n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+
+            rw.NodeRef(ref U01, ref U01file); // pillar stuff?
+            rw.Int32(ref U02);
+
+            if (version == 0)
+            {
+                rw.Int32(ref U03);
+            }
+
+            if (version == 2)
+            {
+                rw.Byte(ref U03);
+            }
+        }
+    }
+
+    #endregion
+
+    #region 0x00A chunk
+
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x00A chunk
+    /// </summary>
+    [Chunk(0x0303600A)]
+    public class Chunk0303600A : Chunk<CGameCtnBlockUnitInfo>, IVersionable
+    {
+        private int version;
+
+        public CMwNod? U01;
+        private GameBoxRefTable.File? U01file;
+        public int U02;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnBlockUnitInfo n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.NodeRef(ref U01, ref U01file); // pillar stuff?
+            rw.Int32(ref U02);
+        }
+    }
+
+    #endregion
+
+    #region 0x00B chunk (bottom+top clip with dir)
+
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x00B chunk (bottom+top clip with dir)
+    /// </summary>
+    [Chunk(0x0303600B, "bottom+top clip with dir")]
+    public class Chunk0303600B : Chunk<CGameCtnBlockUnitInfo>, IVersionable
+    {
+        private int version;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnBlockUnitInfo n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.NodeRef<CGameCtnBlockInfoClip>(ref n.bottomClip, ref n.bottomClipFile);
+            rw.NodeRef<CGameCtnBlockInfoClip>(ref n.topClip, ref n.topClipFile);
+            rw.EnumInt32<Direction>(ref n.bottomClipDir);
+            rw.EnumInt32<Direction>(ref n.topClipDir);
+        }
+    }
+
+    #endregion
+
+    #endregion
 }

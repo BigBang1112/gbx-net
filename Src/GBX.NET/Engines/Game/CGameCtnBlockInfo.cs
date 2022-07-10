@@ -14,13 +14,42 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
         Dispenser
     }
 
+    public enum EMultiDir
+    {
+        SameDir,
+        SymmetricalDirs,
+        AllDir,
+        OpposedDirOnly,
+        PerpendicularDirsOnly,
+        NextDirOnly,
+        PreviousDirOnly
+    }
+
     private CGameCtnBlockUnitInfo?[]? groundBlockUnitInfos;
     private CGameCtnBlockUnitInfo?[]? airBlockUnitInfos;
-    private CSceneMobil?[][]? groundMobils;
-    private CSceneMobil?[][]? airMobils;
+    private ExternalNode<CSceneMobil>[][]? groundMobils;
+    private ExternalNode<CSceneMobil>[][]? airMobils;
     private bool isPillar;
     private EWayPointType? wayPointType;
     private bool noRespawn;
+    private bool iconAutoUseGround;
+    private CPlugCharPhySpecialProperty? charPhySpecialProperty;
+    private CGamePodiumInfo? podiumInfo;
+    private CGamePodiumInfo? introInfo;
+    private bool charPhySpecialPropertyCustomizable;
+    private CGameCtnBlockInfoVariantGround?[]? additionalVariantsGround;
+    private CGameCtnBlockInfoVariantAir?[]? additionalVariantsAir;
+    private string? symmetricalBlockInfoId;
+    private Direction? dir;
+    private CPlugFogVolumeBox? fogVolumeBox;
+    private GameBoxRefTable.File? fogVolumeBoxFile;
+    private CPlugSound? sound1;
+    private GameBoxRefTable.File? sound1File;
+    private CPlugSound? sound2;
+    private GameBoxRefTable.File? sound2File;
+    private Iso4 sound1Loc;
+    private Iso4 sound2Loc;
+    private EMultiDir pillarShapeMultiDir;
 
     [NodeMember]
     public CGameCtnBlockUnitInfo?[]? GroundBlockUnitInfos { get => groundBlockUnitInfos; set => groundBlockUnitInfos = value; }
@@ -29,10 +58,10 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     public CGameCtnBlockUnitInfo?[]? AirBlockUnitInfos { get => airBlockUnitInfos; set => airBlockUnitInfos = value; }
 
     [NodeMember]
-    public CSceneMobil?[][]? GroundMobils { get => groundMobils; set => groundMobils = value; }
+    public ExternalNode<CSceneMobil>[][]? GroundMobils { get => groundMobils; set => groundMobils = value; }
 
     [NodeMember]
-    public CSceneMobil?[][]? AirMobils { get => airMobils; set => airMobils = value; }
+    public ExternalNode<CSceneMobil>[][]? AirMobils { get => airMobils; set => airMobils = value; }
 
     [NodeMember(ExactlyNamed = true)]
     public bool IsPillar { get => isPillar; set => isPillar = value; }
@@ -43,23 +72,70 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     [NodeMember(ExactlyNamed = true)]
     public bool NoRespawn { get => noRespawn; set => noRespawn = value; }
 
+    [NodeMember(ExactlyNamed = true)]
+    public bool IconAutoUseGround { get => iconAutoUseGround; set => iconAutoUseGround = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public CPlugCharPhySpecialProperty? CharPhySpecialProperty { get => charPhySpecialProperty; set => charPhySpecialProperty = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public CGamePodiumInfo? PodiumInfo { get => podiumInfo; set => podiumInfo = value; }
+    
+    [NodeMember(ExactlyNamed = true)]
+    public CGamePodiumInfo? IntroInfo { get => introInfo; set => introInfo = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public bool CharPhySpecialPropertyCustomizable { get => charPhySpecialPropertyCustomizable; set => charPhySpecialPropertyCustomizable = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public CGameCtnBlockInfoVariantGround?[]? AdditionalVariantsGround { get => additionalVariantsGround; set => additionalVariantsGround = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public CGameCtnBlockInfoVariantAir?[]? AdditionalVariantsAir { get => additionalVariantsAir; set => additionalVariantsAir = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public string? SymmetricalBlockInfoId { get => symmetricalBlockInfoId; set => symmetricalBlockInfoId = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public Direction? Dir { get => dir; set => dir = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public CPlugFogVolumeBox? FogVolumeBox
+    {
+        get => fogVolumeBox = GetNodeFromRefTable(fogVolumeBox, fogVolumeBoxFile) as CPlugFogVolumeBox;
+        set => fogVolumeBox = value;
+    }
+
+    [NodeMember(ExactlyNamed = true)]
+    public CPlugSound? Sound1
+    {
+        get => sound1 = GetNodeFromRefTable(sound1, sound1File) as CPlugSound;
+        set => sound1 = value;
+    }
+
+    [NodeMember(ExactlyNamed = true)]
+    public CPlugSound? Sound2
+    {
+        get => sound2 = GetNodeFromRefTable(sound2, sound2File) as CPlugSound;
+        set => sound2 = value;
+    }
+
+    [NodeMember(ExactlyNamed = true)]
+    public Iso4 Sound1Loc { get => sound1Loc; set => sound1Loc = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public Iso4 Sound2Loc { get => sound2Loc; set => sound2Loc = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public EMultiDir PillarShapeMultiDir { get => pillarShapeMultiDir; set => pillarShapeMultiDir = value; }
+
     public string? BlockName { get; set; }
     public CGameCtnBlockInfoVariantGround? VariantBaseGround { get; set; }
     public CGameCtnBlockInfoVariantAir? VariantBaseAir { get; set; }
-    public CGameCtnBlockInfoVariantGround?[] AdditionalVariantsGround { get; set; }
-    public CGameCtnBlockInfoVariantAir?[] AdditionalVariantsAir { get; set; }
-    public CMwNod? CharPhySpecialProperty { get; set; }
-    public CMwNod? CharPhySpecialPropertyCustomizable { get; set; }
-    public CGamePodiumInfo? PodiumInfo { get; set; }
-    public CGamePodiumInfo? IntroInfo { get; set; }
-    public bool IconAutoUseGround { get; set; }
-    public string? SymmetricalBlockInfoId { get; set; }
-    public Direction Dir { get; set; }
 
     protected CGameCtnBlockInfo()
     {
-        AdditionalVariantsGround = Array.Empty<CGameCtnBlockInfoVariantGround>();
-        AdditionalVariantsAir = Array.Empty<CGameCtnBlockInfoVariantAir>();
+        
     }
 
     [Chunk(0x0304E005)]
@@ -73,6 +149,7 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
         public int U06;
         public int U07;
         public Node? U08;
+        private GameBoxRefTable.File? U08file;
         public byte U12;
         public int U13;
         public short U14;
@@ -90,18 +167,18 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
             rw.Int32(ref U07);
             //
 
-            rw.NodeRef(ref U08); // null in every TMEDClassic
+            rw.NodeRef(ref U08, ref U08file); // null in every TMEDClassic, pillar stuff?
 
             rw.ArrayNode<CGameCtnBlockUnitInfo>(ref n.groundBlockUnitInfos);
             rw.ArrayNode<CGameCtnBlockUnitInfo>(ref n.airBlockUnitInfos);
+            
+            rw.Array<ExternalNode<CSceneMobil>[]>(ref n.groundMobils,
+                (i, r) => r.ReadExternalNodeArray<CSceneMobil>(),
+                (x, w) => w.WriteExternalNodeArray(x));
 
-            rw.Array<CSceneMobil?[]>(ref n.groundMobils,
-                (i, r) => r.ReadArray(r => r.ReadNodeRef<CSceneMobil>()),
-                (x, w) => w.WriteArray(x, (x, w) => w.Write(x)));
-
-            rw.Array<CSceneMobil?[]>(ref n.airMobils,
-                (i, r) => r.ReadArray(r => r.ReadNodeRef<CSceneMobil>()),
-                (x, w) => w.WriteArray(x, (x, w) => w.Write(x)));
+            rw.Array<ExternalNode<CSceneMobil>[]>(ref n.airMobils,
+                (i, r) => r.ReadExternalNodeArray<CSceneMobil>(),
+                (x, w) => w.WriteExternalNodeArray(x));
 
             rw.Byte(ref U12);
             rw.Int32(ref U13);
@@ -190,81 +267,87 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     {
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            n.IconAutoUseGround = rw.Boolean(n.IconAutoUseGround);
+            rw.Boolean(ref n.iconAutoUseGround);
         }
     }
 
     [Chunk(0x0304E015)]
     public class Chunk0304E015 : Chunk<CGameCtnBlockInfo>
     {
+        public int U01;
+        public Iso4 U02;
+
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            rw.Int32();
-            rw.Single();
-            rw.Single();
-            rw.Single();
-            rw.Single();
-            rw.Single();
-            rw.Single();
-            rw.Single();
-            rw.Single();
-            rw.Single();
-            rw.Single();
-            rw.Single();
-            rw.Single();
+            rw.Int32(ref U01); // node ref
+            rw.Iso4(ref U02);
         }
     }
 
     [Chunk(0x0304E017)]
     public class Chunk0304E017 : Chunk<CGameCtnBlockInfo>
     {
+        public bool U01;
+
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            rw.Boolean();
+            rw.Boolean(ref U01);
         }
     }
 
     [Chunk(0x0304E020)]
     public class Chunk0304E020 : Chunk<CGameCtnBlockInfo>, IVersionable
     {
-        public int Version { get; set; }
+        private int version;
+
+        public CMwNod? U01;
+        public bool U02;
+        public bool U03;
+        public string? U04;
+        public string? U05;
+
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            Version = rw.Int32(Version);
-            n.CharPhySpecialProperty = rw.NodeRef(n.CharPhySpecialProperty);
+            rw.Int32(ref version);
+            rw.NodeRef(ref n.charPhySpecialProperty);
 
-            if (Version < 7)
+            if (version < 7)
             {
-
+                rw.NodeRef(ref U01);
             }
 
-            if (Version >= 2)
+            if (version >= 2)
             {
-                n.PodiumInfo = rw.NodeRef<CGamePodiumInfo>(n.PodiumInfo);
+                rw.NodeRef<CGamePodiumInfo>(ref n.podiumInfo);
 
-                if (Version >= 3)
+                if (version >= 3)
                 {
-                    n.IntroInfo = rw.NodeRef<CGamePodiumInfo>(n.IntroInfo);
+                    rw.NodeRef<CGamePodiumInfo>(ref n.introInfo);
 
-                    if (Version >= 4)
+                    if (version >= 4)
                     {
-                        rw.Int32();
+                        rw.Boolean(ref n.charPhySpecialPropertyCustomizable);
 
-                        if (Version == 5)
-                            rw.Boolean();
-
-                        if (Version >= 8)
+                        if (version == 5)
                         {
-                            rw.Boolean();
-                            rw.String(); // MatModifier
-                            rw.String(); // Grass
+                            rw.Boolean(ref U02);
+                        }
+
+                        if (version >= 8)
+                        {
+                            rw.Boolean(ref U03);
+
+                            if (U03)
+                            {
+                                rw.String(ref U04); // MatModifier
+                                rw.String(ref U05); // Grass
+                            }
                         }
                     }
                 }
             }
-
-
         }
     }
 
@@ -276,6 +359,27 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
             n.VariantBaseGround = Parse<CGameCtnBlockInfoVariantGround>(r, 0x0315C000, progress: null, logger);
             n.VariantBaseAir = Parse<CGameCtnBlockInfoVariantAir>(r, 0x0315D000, progress: null, logger);
         }
+
+        public override void Write(CGameCtnBlockInfo n, GameBoxWriter w, ILogger? logger)
+        {
+            if (n.VariantBaseGround is null)
+            {
+                w.Write(-1);
+            }
+            else
+            {
+                n.VariantBaseGround.Write(w, logger);
+            }
+
+            if (n.VariantBaseAir is null)
+            {
+                w.Write(-1);
+            }
+            else
+            {
+                n.VariantBaseAir.Write(w, logger);
+            }
+        }
     }
 
     [Chunk(0x0304E026)]
@@ -283,17 +387,19 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     {
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            n.WayPointType = (EWayPointType)rw.Int32((int)n.WayPointType);
+            rw.EnumInt32<EWayPointType>(ref n.wayPointType);
         }
     }
 
     [Chunk(0x0304E027)]
     public class Chunk0304E027 : Chunk<CGameCtnBlockInfo>
     {
+        private int listVersion = 10;
+
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            rw.Int32();
-            n.AdditionalVariantsGround = rw.ArrayNode<CGameCtnBlockInfoVariantGround>(n.AdditionalVariantsGround)!;
+            rw.Int32(ref listVersion);
+            rw.ArrayNode<CGameCtnBlockInfoVariantGround>(ref n.additionalVariantsGround);
         }
     }
 
@@ -302,8 +408,8 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     {
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            n.SymmetricalBlockInfoId = rw.Id(n.SymmetricalBlockInfoId);
-            n.Dir = (Direction)rw.Int32((int)n.Dir);
+            rw.Id(ref n.symmetricalBlockInfoId);
+            rw.EnumInt32<Direction>(ref n.dir);
         }
     }
 
@@ -312,51 +418,67 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     {
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            rw.Int32();
+            rw.NodeRef<CPlugFogVolumeBox>(ref n.fogVolumeBox, ref n.fogVolumeBoxFile);
         }
     }
 
     [Chunk(0x0304E02A)]
-    public class Chunk0304E02A : Chunk<CGameCtnBlockInfo>
+    public class Chunk0304E02A : Chunk<CGameCtnBlockInfo>, IVersionable
     {
+        private int version;
+
+        public int Version { get => version; set => version = value; }
+
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            rw.Int32();
-            rw.Int32();
-            rw.Int32();
-            for (var i = 0; i < 24; i++)
-                rw.Single();
+            rw.Int32(ref version);
+            rw.NodeRef<CPlugSound>(ref n.sound1, ref n.sound1File);
+            rw.NodeRef<CPlugSound>(ref n.sound2, ref n.sound2File);
+            rw.Iso4(ref n.sound1Loc);
+            rw.Iso4(ref n.sound2Loc);
         }
     }
 
     [Chunk(0x0304E02B)]
-    public class Chunk0304E02B : Chunk<CGameCtnBlockInfo>
+    public class Chunk0304E02B : Chunk<CGameCtnBlockInfo>, IVersionable
     {
+        private int version;
+
+        public int U01;
+
+        public int Version { get => version; set => version = value; }
+
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            rw.Int32();
-            rw.Int32();
+            rw.Int32(ref version);
+            rw.Int32(ref U01);
         }
     }
 
     [Chunk(0x0304E02C)]
     public class Chunk0304E02C : Chunk<CGameCtnBlockInfo>
     {
+        private int listVersion = 10;
+
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            rw.Int32();
-            n.AdditionalVariantsAir = rw.ArrayNode<CGameCtnBlockInfoVariantAir>(n.AdditionalVariantsAir)!;
+            rw.Int32(ref listVersion);
+            rw.ArrayNode<CGameCtnBlockInfoVariantAir>(ref n.additionalVariantsAir);
         }
     }
 
     [Chunk(0x0304E02F)]
-    public class Chunk0304E02F : Chunk<CGameCtnBlockInfo>
+    public class Chunk0304E02F : Chunk<CGameCtnBlockInfo>, IVersionable
     {
+        private int version;
+
+        public int Version { get => version; set => version = value; }
+
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            rw.Int32();
-            rw.Byte();
-            rw.Int16();
+            rw.Int32(ref version);
+            rw.Boolean(ref n.isPillar, asByte: true);
+            rw.EnumByte<EMultiDir>(ref n.pillarShapeMultiDir);
         }
     }
 
