@@ -2,11 +2,11 @@
 
 GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software framework. This file type can be seen in many of the Nadeo games like TrackMania, ShootMania or Virtual Skipper.
 
+For any questions, open an issue, join [my Discord server](https://discord.gg/perAcdxscQ) or message me via DM: BigBang1112#9489.
+
 [![Nuget](https://img.shields.io/nuget/v/GBX.NET?style=for-the-badge)](https://www.nuget.org/packages/GBX.NET/)
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/BigBang1112/gbx-net?include_prereleases&style=for-the-badge)](https://github.com/BigBang1112/gbx-net/releases)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/BigBang1112/gbx-net?style=for-the-badge)](#)
-
-### Easiest way to use the library is through **the NuGet packages**.
 
 - GBX.NET can recognize **entire Gbx files**, however **cannot read all of the existing files**. Gbx file is basically a serialized class from the GameBox engine, and all of these classes must be known to read. Exploring new chunks can be done by reverse engineering the games.
 - GBX.NET can **write** most of the Gbx file types (those that can be read by the parser).
@@ -34,8 +34,6 @@ Here are some of the useful classes/types to start with:
 - <sup>2</sup>Only up to TMUF.
 
 **Full list of supported file types is available in the [SUPPORTED GBX FILE TYPES](SUPPORTED_GBX_FILE_TYPES.md)**.
-
-### For any questions, join [my Discord server](https://discord.gg/perAcdxscQ) or message me via DM: BigBang1112#9489
 
 ## Compatibility and build
 
