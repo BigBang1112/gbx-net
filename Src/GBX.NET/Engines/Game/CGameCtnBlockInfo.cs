@@ -97,11 +97,11 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
 
             rw.Array<CSceneMobil?[]>(ref n.groundMobils,
                 (i, r) => r.ReadArray(r => r.ReadNodeRef<CSceneMobil>()),
-                (x, w) => w.WriteNodeArray(x));
+                (x, w) => w.WriteArray(x, (x, w) => w.Write(x)));
 
             rw.Array<CSceneMobil?[]>(ref n.airMobils,
                 (i, r) => r.ReadArray(r => r.ReadNodeRef<CSceneMobil>()),
-                (x, w) => w.WriteNodeArray(x));
+                (x, w) => w.WriteArray(x, (x, w) => w.Write(x)));
 
             rw.Byte(ref U12);
             rw.Int32(ref U13);
