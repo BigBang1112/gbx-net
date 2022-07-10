@@ -38,7 +38,7 @@ public partial class GameBox
     public List<string> IdStrings { get; } = new();
     public bool IdIsWritten { get; internal set; }
 
-    public SortedDictionary<int, Node> AuxNodes { get; } = new();
+    public SortedDictionary<int, Node?> AuxNodes { get; } = new();
 
     public IExternalGameData? ExternalGameData { get; set; }
 

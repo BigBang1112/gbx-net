@@ -642,6 +642,7 @@ public class GameBoxReader : BinaryReader
 
         if (TryGetRefTableNode(gbx, index, out nodeRefFile))
         {
+            gbx.AuxNodes[index] = null;
             return null;
         }
 
@@ -718,9 +719,15 @@ public class GameBoxReader : BinaryReader
 
         var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
-        // If aux node index is below 0 or the node index is part of the reference table
-        if (index < 0 || TryGetRefTableNode(gbx, index, out _))
+        if (index < 0)
         {
+            return null;
+        }
+
+        // If the node index is part of the reference table
+        if (TryGetRefTableNode(gbx, index, out _))
+        {
+            gbx.AuxNodes[index] = null;
             return null;
         }
 
