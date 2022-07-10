@@ -3,7 +3,7 @@
 Disclaimer: The list may be incomplete. Also, watch the last modified date.
 
 Older extensions | Latest extension | Class | Can read whole | Can write | Can read header
-| --- | --- | --- | --- | ---
+| --- | --- | --- | --- | --- | ---
 | Challenge.Gbx | Map.Gbx | [CGameCtnChallenge](Src/GBX.NET/Engines/Game/CGameCtnChallenge.cs) | Yes | Yes | Yes
 | | Replay.Gbx | [CGameCtnReplayRecord](Src/GBX.NET/Engines/Game/CGameCtnReplayRecord.cs) | Yes | No | Yes
 | | Ghost.Gbx | [CGameCtnGhost](Src/GBX.NET/Engines/Game/CGameCtnGhost.cs) | Yes | Yes
