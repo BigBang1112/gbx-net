@@ -1666,6 +1666,28 @@ public partial class GameBoxReaderWriter
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
+    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
+    public ExternalNode<T>[]? ArrayNode<T>(ExternalNode<T>[]? array = default) where T : Node
+    {
+        if (Reader is not null) array = Reader.ReadExternalNodeArray<T>();
+        if (Writer is not null) Writer.WriteExternalNodeArray(array);
+        return array;
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
+    /// <exception cref="PropertyNullException">Body of <see cref="Reader"/> or <see cref="Writer"/> is null.</exception>
+    public void ArrayNode<T>(ref ExternalNode<T>[]? array) where T : Node
+    {
+        array = ArrayNode(array);
+    }
+
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="forLoopRead"/> or <paramref name="forLoopWrite"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
     public IList<T>? List<T>(IList<T>? list, Func<int, T> forLoopRead, Action<T> forLoopWrite)

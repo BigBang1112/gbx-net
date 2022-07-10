@@ -1966,4 +1966,18 @@ public class GameBoxReader : BinaryReader
         if (time < 0) return null;
         return TimeSingle.FromMilliseconds(time);
     }
+
+    public ExternalNode<T>[] ReadExternalNodeArray<T>(int length) where T : Node
+    {
+        return ReadArray(length, r =>
+        {
+            var node = r.ReadNodeRef(out GameBoxRefTable.File? file);
+            return new ExternalNode<T>(node as T, file);
+        });
+    }
+
+    public ExternalNode<T>[] ReadExternalNodeArray<T>() where T : Node
+    {
+        return ReadExternalNodeArray<T>(length: ReadInt32());
+    }
 }

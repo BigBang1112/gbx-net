@@ -348,7 +348,9 @@ public class GameBoxWriter : BinaryWriter
 
         if (nodeFile is not null)
         {
-            Write(nodeFile.NodeIndex);
+            var nodeFileIndex = nodeFile.NodeIndex + 1;
+            Write(nodeFileIndex);
+            gbx.AuxNodes.Add(nodeFileIndex, null);
             return;
         }
 
@@ -360,7 +362,7 @@ public class GameBoxWriter : BinaryWriter
 
         if (gbx.AuxNodes.ContainsValue(node))
         {
-            Write(gbx.AuxNodes.FirstOrDefault(x => x.Value.Equals(node)).Key + 1);
+            Write(gbx.AuxNodes.FirstOrDefault(x => (x.Value ?? throw new Exception("Node or its external index not found")).Equals(node)).Key + 1);
             return;
         }
 
@@ -882,5 +884,10 @@ public class GameBoxWriter : BinaryWriter
                 Write(Array.ConvertAll(array, x => (byte)x));
                 break;
         }
+    }
+
+    public void WriteExternalNodeArray<T>(ExternalNode<T>[]? array) where T : Node
+    {
+        WriteArray(array, (x, w) => w.Write(x.Node, x.File));
     }
 }

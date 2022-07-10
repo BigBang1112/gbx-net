@@ -59,13 +59,17 @@ public partial class CGameCtnCollection : CMwNod, INodeHeader
     private float shadowSoftSizeInWorld;
     private float colorVertexMin;
     private float colorVertexMax;
+    private bool hasIconFid;
     private CPlugBitmap? iconFid;
     private GameBoxRefTable.File? iconFidFile;
+    private bool hasCollectionIconFid;
+    private CPlugBitmap? collectionIconFid;
+    private GameBoxRefTable.File? collectionIconFidFile;
     private CPlugBitmap? loadScreenFid;
     private GameBoxRefTable.File? loadScreenFidFile;
     private CGameCtnDecoration? defaultDecoration;
     private GameBoxRefTable.File? defaultDecorationFile;
-    private CGameCtnZone?[]? completeZoneList;
+    private ExternalNode<CGameCtnZone>[]? completeZoneList;
     private ZoneString[]? zoneStrings;
     private CGameCtnDecorationTerrainModifier?[]? replacementTerrainModifiers;
     private string? folderBlockInfo;
@@ -179,11 +183,24 @@ public partial class CGameCtnCollection : CMwNod, INodeHeader
     [NodeMember(ExactlyNamed = true)]
     public float ColorVertexMax { get => colorVertexMax; set => colorVertexMax = value; }
 
+    [NodeMember]
+    public bool HasIconFid { get => hasIconFid; set => hasIconFid = value; }
+
     [NodeMember(ExactlyNamed = true)]
     public CPlugBitmap? IconFid
     {
         get => iconFid = GetNodeFromRefTable(iconFid, iconFidFile) as CPlugBitmap;
         set => iconFid = value;
+    }
+
+    [NodeMember]
+    public bool HasCollectionIconFid { get => hasCollectionIconFid; set => hasCollectionIconFid = value; }
+
+    [NodeMember]
+    public CPlugBitmap? CollectionIconFid
+    {
+        get => collectionIconFid = GetNodeFromRefTable(collectionIconFid, collectionIconFidFile) as CPlugBitmap;
+        set => collectionIconFid = value;
     }
 
     [NodeMember(ExactlyNamed = true)]
@@ -201,7 +218,7 @@ public partial class CGameCtnCollection : CMwNod, INodeHeader
     }
 
     [NodeMember(ExactlyNamed = true)]
-    public CGameCtnZone?[]? CompleteZoneList { get => completeZoneList; set => completeZoneList = value; }
+    public ExternalNode<CGameCtnZone>[]? CompleteZoneList { get => completeZoneList; set => completeZoneList = value; }
 
     [NodeMember]
     public ZoneString[]? ZoneStrings { get => zoneStrings; set => zoneStrings = value; }
@@ -507,25 +524,24 @@ public partial class CGameCtnCollection : CMwNod, INodeHeader
     [Chunk(0x0303300D)]
     public class Chunk0303300D : Chunk<CGameCtnCollection>
     {
-        public bool U01;
         public int U02;
         public bool U03;
         public int U04;
 
         public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
+            rw.Boolean(ref n.hasIconFid);
 
-            if (U01)
+            if (n.hasIconFid)
             {
-                rw.NodeRef<CPlugBitmap>(ref n.iconFid, ref n.iconFidFile); // IconFid
+                rw.NodeRef<CPlugBitmap>(ref n.iconFid, ref n.iconFidFile);
             }
 
-            rw.Boolean(ref U03);
+            rw.Boolean(ref n.hasCollectionIconFid);
 
-            if (U03)
+            if (n.hasCollectionIconFid)
             {
-                rw.Int32(ref U04);
+                rw.NodeRef<CPlugBitmap>(ref n.collectionIconFid, ref n.collectionIconFidFile);
             }
         }
     }
@@ -556,7 +572,7 @@ public partial class CGameCtnCollection : CMwNod, INodeHeader
 
         public override void ReadWrite(CGameCtnCollection n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01); // CSysFidNodRefBase
+            rw.Int32(ref U01); // Base.TMDecoration.Gbx?
         }
     }
 
