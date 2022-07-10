@@ -129,8 +129,10 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     [NodeMember(ExactlyNamed = true)]
     public EMultiDir PillarShapeMultiDir { get => pillarShapeMultiDir; set => pillarShapeMultiDir = value; }
 
-    public string? BlockName { get; set; }
+    [NodeMember(ExactlyNamed = true)]
     public CGameCtnBlockInfoVariantGround? VariantBaseGround { get; set; }
+
+    [NodeMember(ExactlyNamed = true)]
     public CGameCtnBlockInfoVariantAir? VariantBaseAir { get; set; }
 
     protected CGameCtnBlockInfo()
