@@ -383,9 +383,14 @@
   0EE CGameLadderScores
   10D CGameCtnMacroBlockInfo
   114 CGameCtnMacroDecals
+  121 CGameCtnSolidDecals
+  122 CGameCtnBlockInfoMobil
   128 CGameCtnMediaBlockBloomHdr
   129 CGameCtnMediaBlockTimeSpeed
   14C CGameCtnBlockInfoTransition
+  15B CGameCtnBlockInfoVariant
+  15C CGameCtnBlockInfoVariantGround
+  15D CGameCtnBlockInfoVariantAir
   166 CGameCtnMediaBlockCameraEffectInertialTracking
   16C CGameCtnMediaBlockColoringCapturable
   199 CGameCtnMediaBlockFog
