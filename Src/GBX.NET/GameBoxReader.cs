@@ -839,7 +839,7 @@ public class GameBoxReader : BinaryReader
             throw new ArgumentOutOfRangeException(nameof(length), "Length is negative.");
         }
 
-        var l = length * (lengthInBytes ? 1 : Marshal.SizeOf<T>());
+        var l = length * (lengthInBytes ? 1 : TypeSize<T>.Size);
 
         if (l > 1_500_000 || l < 0)
         {
