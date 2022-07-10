@@ -213,7 +213,7 @@ public partial class GameBoxRefTable
 
         if (externalGameData is null)
         {
-            return GameBox.ParseNode(path);
+            return System.IO.File.Exists(path) ? GameBox.ParseNode(path) : null;
         }
 
         return externalGameData.GetNodeFromFilePath(path);
