@@ -1,6 +1,8 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 [Node(0x03050000)]
+[NodeExtension("EDFrontier")]
+[NodeExtension("TMEDFrontier")]
 public class CGameCtnBlockInfoFrontier : CGameCtnBlockInfo
 {
     protected CGameCtnBlockInfoFrontier()
