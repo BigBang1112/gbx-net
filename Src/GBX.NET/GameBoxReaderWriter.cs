@@ -2014,7 +2014,7 @@ public partial class GameBoxReaderWriter
     public T? NodeRef<T>(T? variable, ref GameBoxRefTable.File? nodeRefFile) where T : Node
     {
         if (Reader is not null) variable = Reader.ReadNodeRef<T>(out nodeRefFile);
-        if (Writer is not null) Writer.Write(variable);
+        if (Writer is not null) Writer.Write(variable, nodeRefFile);
         return variable;
     }
 

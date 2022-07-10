@@ -342,9 +342,15 @@ public class GameBoxWriter : BinaryWriter
     /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.Gbx"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void Write(Node? node)
+    public void Write(Node? node, GameBoxRefTable.File? nodeFile = null)
     {
         var gbx = Settings.GetGbxOrThrow();
+
+        if (nodeFile is not null)
+        {
+            Write(nodeFile.NodeIndex);
+            return;
+        }
 
         if (node is null)
         {
