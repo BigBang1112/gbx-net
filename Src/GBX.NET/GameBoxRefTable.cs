@@ -128,7 +128,7 @@ public partial class GameBoxRefTable
 
         w.Write(Folders.Count(x => x.ParentFolder is null));
 
-        WriteFolders(Folders);
+        WriteFolders(Folders.Where(x => x.ParentFolder is null));
 
         void WriteFolders(IEnumerable<Folder> folders)
         {
@@ -136,8 +136,8 @@ public partial class GameBoxRefTable
             {
                 w.Write(folder.Name);
 
-                var subFolders = Folders.Where(x => x.ParentFolder == folder);
-                w.Write(subFolders.Count());
+                var subFolders = Folders.Where(x => x.ParentFolder == folder).ToList();
+                w.Write(subFolders.Count);
 
                 WriteFolders(subFolders);
             }
