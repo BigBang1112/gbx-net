@@ -1607,6 +1607,16 @@ public partial class GameBoxReaderWriter
         array = Array(array, forLoopReadWrite);
     }
 
+    public void ArrayArchive<T>(ref T[]? array) where T : IReadableWritable, new()
+    {
+        array = Array(array, (rw, x) => x.ReadWrite(rw));
+    }
+
+    public void ArrayArchive<T>(ref T[]? array, int version) where T : IReadableWritable, new()
+    {
+        array = Array(array, (rw, x) => x.ReadWrite(rw, version));
+    }
+
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
