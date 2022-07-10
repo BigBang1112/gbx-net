@@ -9,9 +9,14 @@
 public class CGameCtnBlockInfoRoad : CGameCtnBlockInfo
 {
     private CGameCtnBlockInfoSlope? slope;
+    private GameBoxRefTable.File? slopeFile;
 
     [NodeMember(ExactlyNamed = true)]
-    public CGameCtnBlockInfoSlope? Slope { get => slope; set => slope = value; }
+    public CGameCtnBlockInfoSlope? Slope
+    {
+        get => slope = GetNodeFromRefTable(slope, slopeFile) as CGameCtnBlockInfoSlope;
+        set => slope = value;
+    }
 
     protected CGameCtnBlockInfoRoad()
     {
@@ -29,7 +34,7 @@ public class CGameCtnBlockInfoRoad : CGameCtnBlockInfo
     {
         public override void ReadWrite(CGameCtnBlockInfoRoad n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnBlockInfoSlope>(ref n.slope);
+            rw.NodeRef<CGameCtnBlockInfoSlope>(ref n.slope, ref n.slopeFile);
         }
     }
 
