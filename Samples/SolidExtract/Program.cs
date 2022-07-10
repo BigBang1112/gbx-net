@@ -127,7 +127,7 @@ void ProcessFile(string fileName)
         foreach (var vertex in indexed.Vertices)
         {
             w.WriteLine("v {0} {1} {2}", vertex.Position.X, vertex.Position.Y, vertex.Position.Z);
-            normalWriter.WriteLine("vn {0} {1} {2}", vertex.U01.GetValueOrDefault().X, vertex.U01.GetValueOrDefault().Y, vertex.U01.GetValueOrDefault().Z);
+            normalWriter.WriteLine("vn {0} {1} {2}", vertex.Normal.GetValueOrDefault().X, vertex.Normal.GetValueOrDefault().Y, vertex.Normal.GetValueOrDefault().Z);
         }
 
         if (indexed.TexCoords is not null)

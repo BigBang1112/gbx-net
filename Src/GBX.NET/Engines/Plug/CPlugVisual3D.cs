@@ -4,13 +4,18 @@
 [Node(0x0902C000), WritingNotSupported]
 public abstract class CPlugVisual3D : CPlugVisual
 {
-    protected Vertex[] vertices;
+    private Vertex[] vertices;
+    private Vec3[]? tangents;
+    private Vec3[]? biTangents;
 
-    public Vertex[] Vertices
-    {
-        get => vertices;
-        set => vertices = value;
-    }
+    [NodeMember]
+    public Vertex[] Vertices  { get => vertices; set => vertices = value; }
+
+    [NodeMember]
+    public Vec3[]? Tangents { get => tangents; set => tangents = value; }
+
+    [NodeMember]
+    public Vec3[]? BiTangents { get => biTangents; set => biTangents = value; }
 
     protected CPlugVisual3D()
     {
@@ -37,9 +42,6 @@ public abstract class CPlugVisual3D : CPlugVisual
     [Chunk(0x0902C003)]
     public class Chunk0902C003 : Chunk<CPlugVisual3D>
     {
-        public Vec3[]? U01;
-        public Vec3[]? U02;
-
         public override void Read(CPlugVisual3D n, GameBoxReader r)
         {
             n.vertices = new Vertex[n.Count];
@@ -49,14 +51,14 @@ public abstract class CPlugVisual3D : CPlugVisual
                 n.vertices[i] = new Vertex
                 {
                     Position = r.ReadVec3(),
-                    U01 = r.ReadVec3(),
+                    Normal = r.ReadVec3(),
                     U02 = r.ReadVec3(),
                     U03 = r.ReadSingle()
                 };
             }
 
-            U01 = r.ReadArray<Vec3>();
-            U02 = r.ReadArray<Vec3>();
+            n.tangents = r.ReadArray<Vec3>();
+            n.biTangents = r.ReadArray<Vec3>();
         }
     }
 
@@ -142,7 +144,7 @@ public abstract class CPlugVisual3D : CPlugVisual
         }
     }
 
-    public readonly record struct Vertex(Vec3 Position, Vec3? U01, Vec3? U02, float? U03, int? U04, Vec3? U05, int? U06, Vec4? U07)
+    public readonly record struct Vertex(Vec3 Position, Vec3? Normal, Vec3? U02, float? U03, int? U04, Vec3? U05, int? U06, Vec4? U07)
     {
         public override string ToString() => Position.ToString();
     }
