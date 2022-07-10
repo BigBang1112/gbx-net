@@ -673,7 +673,17 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
-    public Node? ReadNodeRef() => ReadNodeRef(out _);
+    public Node? ReadNodeRef()
+    {
+        var node = ReadNodeRef(out GameBoxRefTable.File? nodeRefFile);
+
+        if (nodeRefFile is not null)
+        {
+            Logger?.LogDiscardedExternalNode(nodeRefFile);
+        }
+
+        return node;
+    }
 
     /// <summary>
     /// Reads an <see cref="int"/> containing the node reference index, then the node using the <see cref="Node"/>'s Parse method. The index is also checked if it isn't a part of a reference table, which currently returns null.
@@ -701,7 +711,14 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public T? ReadNodeRef<T>() where T : Node
     {
-        return ReadNodeRef() as T;
+        var node = ReadNodeRef(out GameBoxRefTable.File? nodeRefFile) as T;
+
+        if (nodeRefFile is not null)
+        {
+            Logger?.LogDiscardedExternalNode(nodeRefFile);
+        }
+
+        return node;
     }
 
     /// <summary>
@@ -725,8 +742,10 @@ public class GameBoxReader : BinaryReader
         }
 
         // If the node index is part of the reference table
-        if (TryGetRefTableNode(gbx, index, out _))
+        if (TryGetRefTableNode(gbx, index, out GameBoxRefTable.File? nodeRefFile))
         {
+            Logger?.LogDiscardedExternalNode(nodeRefFile);
+
             gbx.AuxNodes[index] = null;
             return null;
         }
