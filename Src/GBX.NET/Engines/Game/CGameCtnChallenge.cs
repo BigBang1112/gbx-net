@@ -3358,16 +3358,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
-
-        public override void OnLoad()
-        {
-            Node.anchoredObjects = new List<CGameCtnAnchoredObject>();
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void Read(CGameCtnChallenge n, GameBoxReader r, ILogger? logger)
         {
