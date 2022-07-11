@@ -711,14 +711,21 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public T? ReadNodeRef<T>() where T : Node
     {
-        var node = ReadNodeRef(out GameBoxRefTable.File? nodeRefFile) as T;
+        var node = ReadNodeRef(out GameBoxRefTable.File? nodeRefFile);
+
+        var nodeT = node as T;
+
+        if (node != nodeT)
+        {
+            Logger?.LogWarning("Discarded node! Check your chunk code!");
+        }
 
         if (nodeRefFile is not null)
         {
             Logger?.LogDiscardedExternalNode(nodeRefFile);
         }
 
-        return node;
+        return nodeT;
     }
 
     /// <summary>
@@ -781,7 +788,16 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public async Task<T?> ReadNodeRefAsync<T>(CancellationToken cancellationToken = default) where T : Node
     {
-        return await ReadNodeRefAsync(cancellationToken) as T;
+        var node = await ReadNodeRefAsync(cancellationToken);
+
+        var nodeT = node as T;
+
+        if (node != nodeT)
+        {
+            Logger?.LogWarning("Discarded node! Check your chunk code!");
+        }
+
+        return nodeT;
     }
 
     private static bool NodeShouldBeParsed(GameBox gbx, int index)
