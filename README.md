@@ -30,6 +30,7 @@ Here are some of the useful classes/types to start with:
 | Macroblock.Gbx | [CGameCtnMacroBlockInfo](Src/GBX.NET/Engines/Game/CGameCtnMacroBlockInfo.cs) | *Fix soon* | No
 | LightMapCache.Gbx | [CHmsLightMapCache](Src/GBX.NET/Engines/Hms/CHmsLightMapCache.cs) | Yes | Yes
 | SystemConfig.Gbx | [CSystemConfig](Src/GBX.NET/Engines/System/CSystemConfig.cs) | Yes | Yes
+| Scores.Gbx | [CGamePlayerScore](Src/GBX.NET/Engines/Game/CGamePlayerScore.cs) | Yes | No
 
 - <sup>1</sup>Safety reasons. Consider extracting `CGameCtnGhost` from `CGameCtnReplayRecord`, transfer it over to `CGameCtnMediaBlockGhost`, add it to `CGameCtnMediaClip`, and save it as `.Clip.Gbx`, which you can then import in MediaTracker.
 - <sup>2</sup>Only up to TMUF.
@@ -164,7 +165,7 @@ To parse a Gbx with an unknown type:
 using GBX.NET;
 using GBX.NET.Engines.Game;
 
-using var node = GameBox.ParseNode("MyMap.Map.Gbx");
+var node = GameBox.ParseNode("MyMap.Map.Gbx");
 
 if (node is CGameCtnChallenge map)
 {
@@ -196,7 +197,7 @@ To save changes of the parsed Gbx file:
 using GBX.NET;
 using GBX.NET.Engines.Game;
 
-using var node = GameBox.ParseNode("MyMap.Map.Gbx");
+var node = GameBox.ParseNode("MyMap.Map.Gbx");
 
 if (node is CGameCtnChallenge map)
 {
@@ -218,7 +219,7 @@ To save any supported `Node` to a Gbx file:
 using GBX.NET;
 using GBX.NET.Engines.Game;
 
-using var replay = GameBox.ParseNode<CGameCtnReplayRecord>("MyReplay.Replay.Gbx");
+var replay = GameBox.ParseNode<CGameCtnReplayRecord>("MyReplay.Replay.Gbx");
 
 // Ghosts property can be null if you would use the ParseNodeHeader method.
 if (replay.Ghosts is not null)
@@ -247,7 +248,7 @@ GBX.NET.Lzo.SetLzo(typeof(GBX.NET.LZO.MiniLZO));
 Make the code cleaner by **aliasing** the `Node` from the parsed `GameBox`:
 
 ```cs
-using var gbx = GameBox.Parse<CGameCtnChallenge>("MyMap.Map.Gbx");
+var gbx = GameBox.Parse<CGameCtnChallenge>("MyMap.Map.Gbx");
 var map = gbx.Node; // Like this
 
 var bronzeTime = gbx.Node.BronzeTime; // WRONG !!!
