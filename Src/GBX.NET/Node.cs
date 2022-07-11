@@ -281,7 +281,7 @@ public abstract class Node
             return false;
         }
 
-        if (ignoreZeroIdChunk && originalChunkId == 0)
+        if (previousChunkId is null && ignoreZeroIdChunk && originalChunkId == 0)
         {
             return false;
         }
