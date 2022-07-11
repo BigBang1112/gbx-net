@@ -74,57 +74,57 @@ The library also speeds up parse time by ignoring unused skippable chunks with *
 Maps were selected from all kinds of Trackmania official campaigns picked by the biggest file size.
 
 ```
-BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19043.1466 (21H1/May2021Update)
+BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19043.1766 (21H1/May2021Update)
 AMD Ryzen 7 3700X, 1 CPU, 16 logical and 8 physical cores
-.NET SDK=6.0.101
-  [Host]     : .NET 6.0.1 (6.0.121.56705), X64 RyuJIT  [AttachedDebugger]
-  Job-CZXUUN : .NET 6.0.1 (6.0.121.56705), X64 RyuJIT
+.NET SDK=6.0.301
+  [Host]     : .NET 6.0.6 (6.0.622.26707), X64 RyuJIT  [AttachedDebugger]
+  Job-PLWBFQ : .NET 6.0.6 (6.0.622.26707), X64 RyuJIT
 ```
 
 | File name | Read | Read header | Write
 | --- | --- | --- | ---
-| 0_TrackMania\1.2.5 DemoSolo\DemoRaceB1 | 0,25 ms | 0,03 ms | 0,29 ms
-| 4_TrackMania United\2\snowC5 | 0,28 ms | 0,03 ms | 0,38 ms
-| 2_TrackMania Original\1.5 Demo\DemoRace3 | 0,31 ms | 0,03 ms | 0,35 ms
-| 1_TrackMania Sunrise\1.4.7\CleanLanding | 0,33 ms | 0,04 ms | 0,37 ms
-| 4_TrackMania United\2.0.8\DesertE | 0,41 ms | 0,03 ms | 0,50 ms
-| 0_TrackMania\1.2.3\RaceF7 | 0,46 ms | 0,04 ms | 0,44 ms
-| 8_Trackmania 2020\Training\cR­ç»f - 20 | 0,49 ms | 0,04 ms | 1,43 ms
-| 8_Trackmania 2020\Training\Training - 20 | 0,49 ms | 0,04 ms | 1,59 ms
-| 1_TrackMania Sunrise\1.4.5\AirControl | 0,50 ms | 0,02 ms | 0,66 ms
-| 3_TrackMania Nations ESWC\1.7.5\Pro A-4 | 0,68 ms | 0,02 ms | 1,31 ms
-| 1_TrackMania Sunrise\1.4.5 Nvidia\TrialTime | 0,69 ms | 0,04 ms | 1,02 ms
-| 1_TrackMania Sunrise\1.5\TrialTime | 0,79 ms | 0,03 ms | 1,09 ms
-| 6_TrackMania 2\MP4\BaseValley | 0,85 ms | 0,04 ms | 1,74 ms
-| 1_TrackMania Sunrise\1.4.6\LittleWalk | 0,87 ms | 0,03 ms | 1,44 ms
-| 1_TrackMania Sunrise\1.5 Demo\DemoRace1 | 0,88 ms | 0,03 ms | 2,28 ms
-| 7_TrackMania Turbo\VR\VR_Stadium_007 | 1,05 ms | 0,03 ms | 2,42 ms
-| 6_TrackMania 2\MP4Lagoon\B01 | 1,22 ms | 0,03 ms | 2,71 ms
-| 6_TrackMania 2\MP4Valley\D13 | 1,24 ms | 0,03 ms | 2,91 ms
-| 5_TrackMania Forever\2.11.11 Nations\E02-Endurance | 1,25 ms | 0,04 ms | 2,62 ms
-| 1_TrackMania Sunrise\1.4\Paradise Island | 1,42 ms | 0,02 ms | 4,57 ms
-| 6_TrackMania 2\MP3Platform\E03 - Ultimate Nightmare | 1,48 ms | 0,03 ms | 3,20 ms
-| 7_TrackMania Turbo\Solo\100 | 1,55 ms | 0,03 ms | 3,67 ms
-| 6_TrackMania 2\MP3Valley\E01 | 1,58 ms | 0,03 ms | 3,43 ms
-| 5_TrackMania Forever\2.11.11 United\StuntC1 | 1,65 ms | 0,03 ms | 6,30 ms
-| 6_TrackMania 2\MP3Stadium\E02 | 1,82 ms | 0,03 ms | 4,48 ms
-| 0_TrackMania\1.1\RaceD1 | 1,85 ms | 0,02 ms | 10,36 ms
-| 0_TrackMania\1 Demo\Track6 | 1,96 ms | 0,03 ms | 9,64 ms
-| 8_Trackmania 2020\Royal\NoTechLogic | 2,00 ms | 0,04 ms | 5,39 ms
-| 2_TrackMania Original\1.5\StuntsD1 | 2,01 ms | 0,02 ms | 9,11 ms
-| 5_TrackMania Forever\2.11.25\StarStadiumE | 2,01 ms | 0,03 ms | 2,46 ms
-| 0_TrackMania\1\PuzzleF2 | 2,02 ms | 0,03 ms | 16,58 ms
-| 0_TrackMania\1 Beta\Track6 | 2,08 ms | 0,04 ms | 10,41 ms
-| 6_TrackMania 2\MP3Canyon\B10 | 2,82 ms | 0,02 ms | 3,14 ms
-| 8_Trackmania 2020\20200701\Summer 2020 - 11 | 2,88 ms | 0,05 ms | 7,22 ms
-| 8_Trackmania 2020\20201001\Fall 2020 - 12 | 2,97 ms | 0,04 ms | 7,42 ms
-| 8_Trackmania 2020\20201001\ç§<a­L 2020 - 12 | 3,05 ms | 0,04 ms | 7,66 ms
-| 8_Trackmania 2020\20210401\Spring 2021 - 23 | 3,07 ms | 0,03 ms | 8,10 ms
-| 8_Trackmania 2020\20200701\a¤?a­Lcu> 2020 - 11 | 3,08 ms | 0,04 ms | 7,45 ms
-| Community\CCP#04 - ODYSSEY | 3,32 ms | 0,03 ms | 7,76 ms
-| 8_Trackmania 2020\20210101\Winter 2021 - 15 | 3,62 ms | 0,04 ms | 9,54 ms
-| 8_Trackmania 2020\20210701\Summer 2021 - 25 | 4,33 ms | 0,03 ms | 11,67 ms
-| 8_Trackmania 2020\20211001\Fall 2021 - 16 | 12,52 ms | 0,04 ms | 20,64 ms
+| 0_TrackMania\1.2.5 DemoSolo\DemoRaceB1 | 0,20 ms | 0,02 ms | 0,22 ms
+| 4_TrackMania United\2\snowC5 | 0,25 ms | 0,03 ms | 0,31 ms
+| 2_TrackMania Original\1.5 Demo\DemoRace3 | 0,26 ms | 0,02 ms | 0,27 ms
+| 1_TrackMania Sunrise\1.4.7\CleanLanding | 0,26 ms | 0,02 ms | 0,30 ms
+| 0_TrackMania\1.2.3\RaceF7 | 0,30 ms | 0,02 ms | 0,33 ms
+| 4_TrackMania United\2.0.8\DesertE | 0,35 ms | 0,03 ms | 0,40 ms
+| 8_Trackmania 2020\Training\cR­ç»f - 20 | 0,36 ms | 0,04 ms | 1,26 ms
+| 8_Trackmania 2020\Training\Training - 20 | 0,36 ms | 0,04 ms | 1,22 ms
+| 1_TrackMania Sunrise\1.4.5\AirControl | 0,42 ms | 0,02 ms | 0,55 ms
+| 3_TrackMania Nations ESWC\1.7.5\Pro A-4 | 0,55 ms | 0,02 ms | 1,15 ms
+| 1_TrackMania Sunrise\1.4.5 Nvidia\TrialTime | 0,62 ms | 0,02 ms | 0,93 ms
+| 6_TrackMania 2\MP4\BaseValley | 0,67 ms | 0,03 ms | 1,47 ms
+| 1_TrackMania Sunrise\1.5\TrialTime | 0,67 ms | 0,02 ms | 1,01 ms
+| 1_TrackMania Sunrise\1.4.6\LittleWalk | 0,72 ms | 0,02 ms | 1,31 ms
+| 1_TrackMania Sunrise\1.5 Demo\DemoRace1 | 0,74 ms | 0,02 ms | 1,97 ms
+| 7_TrackMania Turbo\VR\VR_Stadium_007 | 0,85 ms | 0,03 ms | 2,14 ms
+| 6_TrackMania 2\MP4Valley\D13 | 0,95 ms | 0,03 ms | 2,29 ms
+| 5_TrackMania Forever\2.11.11 Nations\E02-Endurance | 1,13 ms | 0,03 ms | 2,45 ms
+| 6_TrackMania 2\MP4Lagoon\B01 | 1,18 ms | 0,03 ms | 2,42 ms
+| 6_TrackMania 2\MP3Platform\E03 - Ultimate Nightmare | 1,24 ms | 0,03 ms | 2,57 ms
+| 7_TrackMania Turbo\Solo\100 | 1,33 ms | 0,03 ms | 3,14 ms
+| 6_TrackMania 2\MP3Valley\E01 | 1,38 ms | 0,04 ms | 3,06 ms
+| 1_TrackMania Sunrise\1.4\Paradise Island | 1,44 ms | 0,02 ms | 5,51 ms
+| 6_TrackMania 2\MP3Stadium\E02 | 1,54 ms | 0,03 ms | 3,68 ms
+| 8_Trackmania 2020\Royal\NoTechLogic | 1,70 ms | 0,08 ms | 4,81 ms
+| 5_TrackMania Forever\2.11.11 United\StuntC1 | 1,76 ms | 0,02 ms | 6,99 ms
+| 5_TrackMania Forever\2.11.25\StarStadiumE | 1,79 ms | 0,03 ms | 2,21 ms
+| 0_TrackMania\1 Demo\Track6 | 1,96 ms | 0,02 ms | 9,33 ms
+| 2_TrackMania Original\1.5\StuntsD1 | 1,99 ms | 0,02 ms | 8,47 ms
+| 0_TrackMania\1.1\RaceD1 | 2,03 ms | 0,02 ms | 9,46 ms
+| 0_TrackMania\1 Beta\Track6 | 2,07 ms | 0,02 ms | 9,04 ms
+| 0_TrackMania\1\PuzzleF2 | 2,40 ms | 0,02 ms | 15,97 ms
+| 8_Trackmania 2020\20200701\Summer 2020 - 11 | 2,42 ms | 0,04 ms | 6,30 ms
+| 8_Trackmania 2020\20201001\Fall 2020 - 12 | 2,48 ms | 0,04 ms | 6,33 ms
+| 8_Trackmania 2020\20201001\ç§<a­L 2020 - 12 | 2,51 ms | 0,04 ms | 6,32 ms
+| 6_TrackMania 2\MP3Canyon\B10 | 2,53 ms | 0,03 ms | 2,83 ms
+| 8_Trackmania 2020\20210401\Spring 2021 - 23 | 2,63 ms | 0,04 ms | 6,92 ms
+| 8_Trackmania 2020\20200701\a¤?a­Lcu> 2020 - 11 | 2,64 ms | 0,04 ms | 6,58 ms
+| Community\CCP#04 - ODYSSEY | 3,14 ms | 0,03 ms | 6,66 ms
+| 8_Trackmania 2020\20210101\Winter 2021 - 15 | 3,19 ms | 0,04 ms | 8,78 ms
+| 8_Trackmania 2020\20210701\Summer 2021 - 25 | 4,08 ms | 0,04 ms | 9,43 ms
+| 8_Trackmania 2020\20211001\Fall 2021 - 16 | 11,62 ms | 0,10 ms | 16,11 ms
 
 ## Dependencies
 
