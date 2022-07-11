@@ -9,8 +9,6 @@ public class GameBoxTests
     public static IEnumerable<string> ExampleMaps { get; } = Directory.GetFiles("Maps", "*.Gbx", SearchOption.AllDirectories);
     public static IEnumerable<string> ExampleReplays { get; } = Directory.GetFiles("Replays", "*.Gbx", SearchOption.AllDirectories);
 
-#if !NET462_OR_GREATER
-
     [Fact(DisplayName = "Parse example maps - no exception is thrown")]
     public void ParseExampleMaps_NoExceptionIsThrown()
     {
@@ -56,7 +54,4 @@ public class GameBoxTests
             var node = GameBox.ParseNode(mapFileName);
         }
     }
-
-#endif
-
 }
