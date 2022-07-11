@@ -5,13 +5,13 @@
 [NodeExtension("Mobil")]
 public class CSceneMobil : CSceneObject
 {
-    private CHmsItem item;
+    private CHmsItem? item;
 
-    public CHmsItem Item { get => item; set => item = value; }
+    public CHmsItem? Item { get => item; set => item = value; }
 
     protected CSceneMobil()
     {
-        item = null!;
+        
     }
 
     /// <summary>
@@ -50,12 +50,19 @@ public class CSceneMobil : CSceneObject
     {
         public override void Read(CSceneMobil n, GameBoxReader r, ILogger? logger)
         {
-            n.item = Parse<CHmsItem>(r, 0x06003000, progress: null, logger)!;
+            n.item = Parse<CHmsItem>(r, 0x06003000, progress: null, logger, ignoreZeroIdChunk: true); // direct node
         }
 
         public override void Write(CSceneMobil n, GameBoxWriter w, ILogger? logger)
         {
-            n.item.Write(w, logger);
+            if (n.item is null)
+            {
+                w.Write(0);
+            }
+            else
+            {
+                n.item.Write(w, logger);
+            }
         }
     }
 

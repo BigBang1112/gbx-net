@@ -89,15 +89,19 @@ public abstract class Node
         return refTable.GetNode(nodeAtTheMoment, nodeFile, fileName, gbxForRefTable?.ExternalGameData);
     }
 
-    internal static T? Parse<T>(GameBoxReader r, uint? classId, IProgress<GameBoxReadProgress>? progress, ILogger? logger) where T : Node
+    internal static T? Parse<T>(GameBoxReader r, uint? classId, IProgress<GameBoxReadProgress>? progress, ILogger? logger, bool ignoreZeroIdChunk = false) where T : Node
     {
-        return Parse(r, classId, progress, logger) as T;
+        return Parse(r, classId, progress, logger, ignoreZeroIdChunk) as T;
     }
 
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal static Node? Parse(GameBoxReader r, uint? classId, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
+    internal static Node? Parse(GameBoxReader r,
+                                uint? classId,
+                                IProgress<GameBoxReadProgress>? progress,
+                                ILogger? logger,
+                                bool ignoreZeroIdChunk = false)
     {
         GetNodeInfoFromClassId(r, classId, out Node? node, out Type nodeType);
 
@@ -106,7 +110,7 @@ public abstract class Node
             return null;
         }
 
-        Parse(node, nodeType, r, progress, logger);
+        Parse(node, nodeType, r, progress, logger, ignoreZeroIdChunk);
 
         return node;
     }
@@ -147,7 +151,12 @@ public abstract class Node
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal static void Parse(Node node, Type nodeType, GameBoxReader r, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
+    internal static void Parse(Node node,
+                               Type nodeType,
+                               GameBoxReader r,
+                               IProgress<GameBoxReadProgress>? progress,
+                               ILogger? logger,
+                               bool ignoreZeroIdChunk = false)
     {
         node.gbxForRefTable = r.Settings.Gbx;
         
@@ -183,7 +192,7 @@ public abstract class Node
             cryptedStream.InitializeXorTrick(parentClassIDBytes, 0, 4);
         }
 
-        while (IterateChunks(node, nodeType, r, progress, logger, ref previousChunkId))
+        while (IterateChunks(node, nodeType, r, progress, logger, ref previousChunkId, ignoreZeroIdChunk))
         {
             // Iterates through chunks until false is returned
         }
@@ -247,7 +256,13 @@ public abstract class Node
         logger?.LogNodeComplete(time: stopwatch.Elapsed.TotalMilliseconds);
     }
 
-    private static bool IterateChunks(Node node, Type nodeType, GameBoxReader r, IProgress<GameBoxReadProgress>? progress, ILogger? logger, ref uint? previousChunkId)
+    private static bool IterateChunks(Node node,
+                                      Type nodeType,
+                                      GameBoxReader r,
+                                      IProgress<GameBoxReadProgress>? progress,
+                                      ILogger? logger,
+                                      ref uint? previousChunkId,
+                                      bool ignoreZeroIdChunk = false)
     {
         var stream = r.BaseStream;
         var canSeek = stream.CanSeek;
@@ -262,6 +277,11 @@ public abstract class Node
         var originalChunkId = r.ReadUInt32();
 
         if (originalChunkId == 0xFACADE01) // no more chunks
+        {
+            return false;
+        }
+
+        if (ignoreZeroIdChunk && originalChunkId == 0)
         {
             return false;
         }
