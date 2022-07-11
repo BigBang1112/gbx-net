@@ -9,6 +9,11 @@ public class GameBoxTests
     public static IEnumerable<string> ExampleMaps { get; } = Directory.GetFiles("Maps", "*.Gbx", SearchOption.AllDirectories);
     public static IEnumerable<string> ExampleReplays { get; } = Directory.GetFiles("Replays", "*.Gbx", SearchOption.AllDirectories);
 
+    public GameBoxTests()
+    {
+        Lzo.SetLzo(typeof(LZO.MiniLZO));
+    }
+
     [Fact(DisplayName = "Parse example maps - no exception is thrown")]
     public void ParseExampleMaps_NoExceptionIsThrown()
     {
