@@ -8,6 +8,18 @@
 [NodeExtension("Mat")]
 public class CPlugMaterialUserInst : CMwNod
 {
+    #region Enums
+
+    public enum ETexAddress
+    {
+        Wrap,
+        Mirror,
+        Clamp,
+        Border
+    }
+
+    #endregion
+
     #region Fields
 
     private string? model;
@@ -16,10 +28,14 @@ public class CPlugMaterialUserInst : CMwNod
     private Cst[]? csts;
     private UvAnim[]? uvAnims;
     private string? hidingGroup;
-    private int tilingU;
-    private int tilingV;
+    private ETexAddress tilingU;
+    private ETexAddress tilingV;
     private float textureSizeInMeters;
     private bool isNatural;
+    private UserTexture[]? userTextures;
+    private byte surfaceGameplayId;
+    private byte surfacePhysicId;
+    private bool isUsingGameMaterial;
 
     #endregion
 
@@ -41,16 +57,28 @@ public class CPlugMaterialUserInst : CMwNod
     public string? HidingGroup { get => hidingGroup; set => hidingGroup = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public int TilingU { get => tilingU; set => tilingU = value; }
+    public ETexAddress TilingU { get => tilingU; set => tilingU = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public int TilingV { get => tilingV; set => tilingV = value; }
+    public ETexAddress TilingV { get => tilingV; set => tilingV = value; }
 
     [NodeMember(ExactlyNamed = true)]
     public float TextureSizeInMeters { get => textureSizeInMeters; set => textureSizeInMeters = value; }
 
     [NodeMember(ExactlyNamed = true)]
     public bool IsNatural { get => isNatural; set => isNatural = value; }
+
+    [NodeMember]
+    public UserTexture[]? UserTextures { get => userTextures; set => userTextures = value; }
+
+    [NodeMember]
+    public byte SurfaceGameplayId { get => surfaceGameplayId; set => surfaceGameplayId = value; }
+    
+    [NodeMember]
+    public byte SurfacePhysicId { get => surfacePhysicId; set => surfacePhysicId = value; }
+    
+    [NodeMember(ExactlyNamed = true)]
+    public bool IsUsingGameMaterial { get => isUsingGameMaterial; set => isUsingGameMaterial = value; }
 
     #endregion
 
@@ -85,14 +113,8 @@ public class CPlugMaterialUserInst : CMwNod
         private int version;
 
         public string? U01;
-        public string? U02;
-        public string? U03;
-        public byte U04;
-        public byte? U05;
         public int[]? U06;
         public string[]? U07;
-        public string? U08;
-        public byte? U09;
 
         /// <summary>
         /// Version 10: TM®, version 9: ManiaPlanet 2019.11.19.1850
@@ -109,29 +131,29 @@ public class CPlugMaterialUserInst : CMwNod
 
             if (version >= 11)
             {
-                rw.Byte(ref U09);
+                rw.Boolean(ref n.isUsingGameMaterial, asByte: true);
             }
 
             rw.Id(ref U01);
             rw.Id(ref n.model);
             rw.String(ref n.baseTexture);
 
-            rw.Byte(ref U04);
+            rw.Byte(ref n.surfacePhysicId);
 
             if (version >= 10)
             {
-                rw.Byte(ref U05);
+                rw.Byte(ref n.surfaceGameplayId);
             }
 
             if (version >= 1)
             {
-                if (version < 9)
+                if (n.isUsingGameMaterial)
                 {
-                    rw.Id(ref n.link);
+                    rw.String(ref n.link);
                 }
                 else
                 {
-                    rw.String(ref n.link);
+                    rw.Id(ref n.link);
                 }
 
                 if (version >= 11)
@@ -175,8 +197,9 @@ public class CPlugMaterialUserInst : CMwNod
 
                             if (version >= 6)
                             {
-                                // UserTextures
-                                rw.Int32();
+                                rw.Array<UserTexture>(ref n.userTextures, // UserTextures
+                                    r => new(r.ReadInt32(), r.ReadString()),
+                                    (x, w) => { w.Write(x.U01); w.Write(x.Texture); });
 
                                 if (version >= 7)
                                 {
@@ -216,10 +239,15 @@ public class CPlugMaterialUserInst : CMwNod
             rw.Int32(ref version);
             rw.NodeRef(ref U01);
 
+            if (version == 2)
+            {
+                throw new ChunkVersionNotSupportedException(version);
+            }
+
             if (version >= 3)
             {
-                rw.Int32(ref n.tilingU);
-                rw.Int32(ref n.tilingV);
+                rw.EnumInt32<ETexAddress>(ref n.tilingU);
+                rw.EnumInt32<ETexAddress>(ref n.tilingV);
                 rw.Single(ref n.textureSizeInMeters);
 
                 if (version >= 4)
@@ -266,6 +294,7 @@ public class CPlugMaterialUserInst : CMwNod
 
     public record Cst(string U01, string U02, int U03);
     public record UvAnim(string U01, string U02, float U03, ulong U04);
+    public record UserTexture(int U01, string Texture);
 
     #endregion
 }
