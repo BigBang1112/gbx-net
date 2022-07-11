@@ -744,7 +744,7 @@ public class GameBoxReader : BinaryReader
         // If the node index is part of the reference table
         if (TryGetRefTableNode(gbx, index, out GameBoxRefTable.File? nodeRefFile))
         {
-            Logger?.LogDiscardedExternalNode(nodeRefFile);
+            Logger?.LogDiscardedExternalNode(nodeRefFile!);
 
             gbx.AuxNodes[index] = null;
             return null;

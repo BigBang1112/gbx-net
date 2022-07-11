@@ -159,9 +159,9 @@ public abstract class Node
 
         if (r.BaseStream is IXorTrickStream cryptedStream)
         {
-            var baseType = nodeType.BaseType!;
+            var baseType = nodeType.BaseType ?? throw new ThisShouldNotHappenException();
                 
-            var parentClassId = NodeCacheManager.GetClassIdByType(baseType) ?? throw new Exception();
+            var parentClassId = NodeCacheManager.GetClassIdByType(baseType) ?? throw new ThisShouldNotHappenException();
 
             if (parentClassId == 0x07031000)
             {
@@ -173,7 +173,7 @@ public abstract class Node
                 parentClassId = 0x0902B000;
             }
 
-            if (nodeType.BaseType == typeof(CGameCtnBlockInfo))
+            if (baseType == typeof(CGameCtnBlockInfo))
             {
                 parentClassId = 0x24005000;
             }
