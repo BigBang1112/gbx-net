@@ -353,7 +353,7 @@ public abstract class Node
 
         var streamPos = default(long);
 
-        if (GameBox.Debug)
+        if (GameBox.SeekForRawChunkData)
         {
             streamPos = r.BaseStream.Position;
         }
@@ -377,7 +377,7 @@ public abstract class Node
             logger?.LogDebug("Unexpected end of the stream while reading the chunk.");
         }
 
-        if (GameBox.Debug)
+        if (GameBox.SeekForRawChunkData)
         {
             SetChunkRawData(r.BaseStream, chunk, streamPos);
         }
@@ -509,7 +509,7 @@ public abstract class Node
 
         var streamPos = default(long);
 
-        if (GameBox.Debug)
+        if (GameBox.SeekForRawChunkData)
         {
             streamPos = r.BaseStream.Position;
         }
@@ -532,7 +532,7 @@ public abstract class Node
             logger?.LogDebug("Unexpected end of the stream while reading the chunk.");
         }
 
-        if (GameBox.Debug)
+        if (GameBox.SeekForRawChunkData)
         {
             await SetChunkRawDataAsync(r.BaseStream, chunk, streamPos, cancellationToken);
         }
@@ -554,8 +554,7 @@ public abstract class Node
 
         _ = stream.Read(rawData, 0, chunkLength);
 
-        chunk.Debugger ??= new();
-        chunk.Debugger.RawData = rawData;
+        chunk.RawData = rawData;
     }
 
     private static async Task SetChunkRawDataAsync(Stream stream, Chunk chunk, long streamPos, CancellationToken cancellationToken)
@@ -576,20 +575,19 @@ public abstract class Node
         _ = await stream.ReadAsync(rawData, 0, rawData.Length, cancellationToken);
 #endif
 
-        chunk.Debugger ??= new();
-        chunk.Debugger.RawData = rawData;
+        chunk.RawData = rawData;
     }
 
     private static void BeforeChunkParseException(GameBoxReader r)
     {
-        if (GameBox.Debug && r.BaseStream.CanSeek) // I don't get it
+        /*if (GameBox.Debug && r.BaseStream.CanSeek) // I don't get it
         {
             // Read the rest of the body
 
             var streamPos = r.BaseStream.Position;
             var uncontrollableData = r.ReadToEnd();
             r.BaseStream.Position = streamPos;
-        }
+        }*/
     }
 
     private static Chunk ReadSkippableChunk(Node node,
@@ -616,10 +614,9 @@ public abstract class Node
 
         var chunk = (Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(nodeType), new object?[] { node, chunkData, chunkId })!;
 
-        if (GameBox.Debug)
+        if (GameBox.SeekForRawChunkData)
         {
-            chunk.Debugger ??= new();
-            chunk.Debugger.RawData = chunkData;
+            chunk.RawData = chunkData;
         }
 
         return chunk;
@@ -670,10 +667,9 @@ public abstract class Node
             }
         }
 
-        if (GameBox.Debug)
+        if (GameBox.SeekForRawChunkData)
         {
-            chunk.Debugger ??= new();
-            chunk.Debugger.RawData = chunkData;
+            chunk.RawData = chunkData;
         }
 
         return chunk;

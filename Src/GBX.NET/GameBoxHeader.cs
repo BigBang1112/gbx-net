@@ -322,6 +322,11 @@ public class GameBoxHeader
             headerChunk.ReadWrite(node, rw);
         }
 
+        if (GameBox.SeekForRawChunkData)
+        {
+            ((Chunk)headerChunk).RawData = chunkData; //
+        }
+
         return (Chunk)headerChunk; //
     }
 

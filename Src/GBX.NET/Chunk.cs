@@ -13,7 +13,10 @@ public abstract class Chunk : IComparable<Chunk>
     [IgnoreDataMember]
     public MemoryStream Unknown { get; } = new MemoryStream();
 
-    public ChunkDebugger? Debugger { get; internal set; }
+    /// <summary>
+    /// Raw data of the chunk. Always null with <see cref="GameBox.SeekForRawChunkData"/> set to false.
+    /// </summary>
+    public byte[]? RawData { get; internal set; }
 
     public uint Id => GetStoredId();
 

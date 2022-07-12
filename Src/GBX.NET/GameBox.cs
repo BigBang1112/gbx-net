@@ -15,11 +15,6 @@ public partial class GameBox
     private readonly GameBoxRefTable? refTable;
 
     /// <summary>
-    /// If specialized actions should be executed that can help further with debugging but slow down the parse speed. Options can be then visible inside Debugger properties if available.
-    /// </summary>
-    public static bool Debug { get; set; }
-
-    /// <summary>
     /// If to ignore exceptions on certain chunk versions that are unknown, but shouldn't crash the reading/writing, however, could return unexpected values.
     /// </summary>
     /// <remarks>Example where this could happen is <see cref="CGameCtnMediaBlockCameraCustom.Key.ReadWrite(GameBoxReaderWriter, int)"/>.</remarks>
@@ -29,6 +24,11 @@ public partial class GameBox
     /// If to strictly throw an exception when the supposedly-read boolean is not 0 or 1.
     /// </summary>
     public static bool StrictBooleans { get; set; }
+
+    /// <summary>
+    /// If to come back at the original position of an unskippable chunk, to read the pure data form without the usage of "double mode" <see cref="GameBoxReaderWriter"/>. Doesn't work with "read uncompressed body directly" option.
+    /// </summary>
+    public static bool SeekForRawChunkData { get; set; }
 
     public Node? Node { get; private set; }
     public GameBoxBody? RawBody { get; private set; }
