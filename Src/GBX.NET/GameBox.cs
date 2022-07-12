@@ -396,54 +396,7 @@ public partial class GameBox
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
     public static void Decompress(Stream input, Stream output)
     {
-        using var r = new GameBoxReader(input);
-        using var w = new GameBoxWriter(output);
-
-        var version = CopyBasicInformation(r, w);
-
-        // Body compression type
-        var compressedBody = r.ReadByte();
-
-        if (compressedBody != 'C')
-        {
-            w.Write(compressedBody);
-            input.CopyTo(output);
-            return;
-        }
-
-        w.Write('U');
-
-        // Unknown byte
-        if (version >= 4)
-            w.Write(r.ReadByte());
-
-        // Id
-        w.Write(r.ReadInt32());
-
-        // User data
-        if (version >= 6)
-        {
-            var bytes = r.ReadBytes();
-            w.Write(bytes.Length);
-            w.Write(bytes);
-        }
-
-        // Num nodes
-        w.Write(r.ReadInt32());
-
-        var numExternalNodes = r.ReadInt32();
-
-        if (numExternalNodes > 0)
-            throw new Exception("Non-empty reference table cannot be read at the moment"); // Ref table, TODO: full read
-
-        w.Write(numExternalNodes);
-
-        var uncompressedSize = r.ReadInt32();
-        var compressedData = r.ReadBytes();
-
-        var buffer = new byte[uncompressedSize];
-        Lzo.Decompress(compressedData, buffer);
-        w.Write(buffer);
+        GbxCompressor.Decompress(input, output);
     }
 
     /// <summary>
@@ -514,93 +467,28 @@ public partial class GameBox
         using var fsOutput = File.Create(outputFileName);
         Decompress(fsInput, fsOutput);
     }
-
+    
     public static void Compress(Stream input, Stream output)
     {
-        using var r = new GameBoxReader(input);
-        using var w = new GameBoxWriter(output);
-
-        var version = CopyBasicInformation(r, w);
-
-        // Body compression type
-        var compressedBody = r.ReadByte();
-
-        if (compressedBody != 'U')
-        {
-            input.CopyTo(output);
-            return;
-        }
-
-        w.Write('C');
-
-        // Unknown byte
-        if (version >= 4)
-        {
-            w.Write(r.ReadByte());
-        }
-
-        // Id
-        w.Write(r.ReadInt32());
-
-        // User data
-        if (version >= 6)
-        {
-            var bytes = r.ReadBytes();
-            w.Write(bytes.Length);
-            w.Write(bytes);
-        }
-
-        // Num nodes
-        w.Write(r.ReadInt32());
-
-        var numExternalNodes = r.ReadInt32();
-
-        if (numExternalNodes > 0)
-        {
-            throw new Exception(); // Ref table, TODO: full read
-        }
-
-        w.Write(numExternalNodes);
-
-        var uncompressedData = r.ReadToEnd();
-        var compressedData = Lzo.Compress(uncompressedData);
-
-        w.Write(uncompressedData.Length);
-        w.Write(compressedData.Length);
-        w.Write(compressedData);
+        GbxCompressor.Compress(input, output);
     }
 
-    private static short CopyBasicInformation(GameBoxReader r, GameBoxWriter w)
+    public static void Compress(string inputFileName, Stream output)
     {
-        // Magic
-        if (!r.HasMagic(Magic))
-            throw new Exception();
+        using var fs = File.OpenRead(inputFileName);
+        Compress(fs, output);
+    }
 
-        w.Write(Magic, StringLengthPrefix.None);
+    public static void Compress(Stream input, string outputFileName)
+    {
+        using var fs = File.Create(outputFileName);
+        Compress(input, fs);
+    }
 
-        // Version
-        var version = r.ReadInt16();
-
-        if (version < 3)
-        {
-            throw new VersionNotSupportedException(version);
-        }
-
-        w.Write(version);
-
-        // Format
-        var format = r.ReadByte();
-
-        if (format != 'B')
-        {
-            throw new TextFormatNotSupportedException();
-        }
-
-        w.Write(format);
-
-        // Ref table compression
-        w.Write(r.ReadByte());
-
-        return version;
+    public static void Compress(string inputFileName, string outputFileName)
+    {
+        using var fsInput = File.OpenRead(inputFileName);
+        using var fsOutput = File.Create(outputFileName);
+        Compress(fsInput, fsOutput);
     }
 }
