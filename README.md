@@ -144,20 +144,14 @@ AMD Ryzen 7 3700X, 1 CPU, 16 logical and 8 physical cores
 
 ## Usage
 
-**Since GBX.NET 0.11.0, the base of parsing has been simplified.**
-
 To parse a Gbx with a known type:
 
 ```cs
 using GBX.NET;
 using GBX.NET.Engines.Game;
 
-using var map = GameBox.ParseNode<CGameCtnChallenge>("MyMap.Map.Gbx");
+var map = GameBox.ParseNode<CGameCtnChallenge>("MyMap.Map.Gbx");
 ```
-
-**Don't forget to dispose the `Node`/`GameBox` with `Dispose()` or the `using` statement** to not bloat the memory with states!
-
-Even though all nodes implement the `IDisposable` interface, **you only need to dispose the main node, OR the `GameBox` object.**
 
 To parse a Gbx with an unknown type:
 
