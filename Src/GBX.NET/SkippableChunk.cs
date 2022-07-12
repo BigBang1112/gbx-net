@@ -116,15 +116,35 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
 
     public override string ToString()
     {
-        var chunkType = GetType();
-        var chunkAttribute = chunkType.GetCustomAttribute<ChunkAttribute>();
-        var ignoreChunkAttribute = chunkType.GetCustomAttribute<IgnoreChunkAttribute>();
+        var chunkAttribute = default(ChunkAttribute);
+        var ignoreChunkAttribute = default(IgnoreChunkAttribute);
 
-        if (chunkAttribute == null)
-            return $"{typeof(T).Name} unknown skippable chunk 0x{Id:X8}";
+        if (NodeCacheManager.ChunkAttributesByType.TryGetValue(GetType(), out IEnumerable<Attribute>? chunkAttributes))
+        {
+            foreach (var attribute in chunkAttributes)
+            {
+                switch (attribute)
+                {
+                    case ChunkAttribute chunkAtt:
+                        chunkAttribute = chunkAtt;
+                        break;
+                    case IgnoreChunkAttribute ignoreChunkAtt:
+                        ignoreChunkAttribute = ignoreChunkAtt;
+                        break;
+                }
+            }
+        }
+
+        var nodeName = typeof(T).Name;
+
+        if (chunkAttribute is null)
+        {
+            return $"{nodeName} unknown skippable chunk 0x{Id:X8}";
+        }
+        
         var desc = chunkAttribute.Description;
         var version = (this as IVersionable)?.Version;
 
-        return $"{typeof(T).Name} skippable chunk 0x{Id:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(ignoreChunkAttribute == null ? "" : " [ignored]")}{(version is null ? "" : $" [v{version}]")}";
+        return $"{nodeName} skippable chunk 0x{Id:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(ignoreChunkAttribute is null ? "" : " [ignored]")}{(version is null ? "" : $" [v{version}]")}";
     }
 }

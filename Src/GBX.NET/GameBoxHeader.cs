@@ -322,6 +322,11 @@ public class GameBoxHeader
             headerChunk.ReadWrite(node, rw);
         }
 
+        if (chunkStream.Position != chunkStream.Length)
+        {
+            logger?.LogWarning("Header chunk 0x{chunkId} has {chunkSize} bytes left.", chunkId.ToString("X8"), chunkStream.Length - chunkStream.Position);
+        }
+
         if (GameBox.SeekForRawChunkData)
         {
             ((Chunk)headerChunk).RawData = chunkData; //

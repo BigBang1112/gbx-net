@@ -664,6 +664,11 @@ public abstract class Node
 
                 skippableChunk.ReadWrite(node, rw);
                 skippableChunk.Discovered = true;
+                
+                if (ms.Position != ms.Length)
+                {
+                    logger?.LogWarning("Skippable chunk 0x{chunkId} has {chunkSize} bytes left.", chunkId.ToString("X8"), ms.Length - ms.Position);
+                }
             }
         }
 
