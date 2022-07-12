@@ -27,7 +27,6 @@ public class CGameCtnBlock : CMwNod, INodeDependant<CGameCtnChallenge>
     private int flags;
     private CGameCtnBlockSkin? skin;
     private CGameWaypointSpecialProperty? waypoint;
-    private Vec3 absolutePositionInMap;
     private DifficultyColor? color;
 
     #endregion
