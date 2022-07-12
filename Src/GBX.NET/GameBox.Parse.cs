@@ -319,7 +319,7 @@ public partial class GameBox
     }
 
     /// <summary>
-    /// Parses only the header of the Gbx and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
+    /// Parses only the header of the Gbx and returns the node of it.
     /// </summary>
     /// <param name="stream">Stream to read GBX format from.</param>
     /// <param name="progress">Callback that reports any read progress.</param>
@@ -336,7 +336,7 @@ public partial class GameBox
     }
 
     /// <summary>
-    /// Parses only the header of the GBX and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
+    /// Parses only the header of the GBX and returns the node of it.
     /// </summary>
     /// <param name="fileName">Relative or absolute file path.</param>
     /// <param name="progress">Callback that reports any read progress.</param>
@@ -353,7 +353,7 @@ public partial class GameBox
     }
 
     /// <summary>
-    /// Parses only the header of the GBX and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
+    /// Parses only the header of the GBX and returns the node of it.
     /// </summary>
     /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an <see cref="InvalidCastException"/>. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
     /// <param name="stream">Stream to read GBX format from.</param>
@@ -373,7 +373,7 @@ public partial class GameBox
     }
 
     /// <summary>
-    /// Parses only the header of the GBX and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
+    /// Parses only the header of the GBX and returns the node of it.
     /// </summary>
     /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an <see cref="InvalidCastException"/>. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
     /// <param name="fileName">Relative or absolute file path.</param>
@@ -393,7 +393,7 @@ public partial class GameBox
     }
 
     /// <summary>
-    /// Easily parses GBX format and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
+    /// Easily parses GBX format and returns the node of it.
     /// </summary>
     /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an <see cref="InvalidCastException"/>. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
     /// <param name="stream">Stream to read GBX format from.</param>
@@ -418,7 +418,7 @@ public partial class GameBox
     }
 
     /// <summary>
-    /// Easily parses a GBX file and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
+    /// Easily parses a GBX file and returns the node of it.
     /// </summary>
     /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an <see cref="InvalidCastException"/>. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
     /// <param name="fileName">Relative or absolute file path.</param>
@@ -443,7 +443,7 @@ public partial class GameBox
     }
 
     /// <summary>
-    /// Easily parses a GBX file and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
+    /// Easily parses a GBX file and returns the node of it.
     /// </summary>
     /// <param name="fileName">Relative or absolute file path.</param>
     /// <param name="progress">Callback that reports any read progress.</param>
@@ -466,7 +466,7 @@ public partial class GameBox
     }
 
     /// <summary>
-    /// Easily parses GBX format and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
+    /// Easily parses GBX format and returns the node of it.
     /// </summary>
     /// <param name="stream">Stream to read GBX format from.</param>
     /// <param name="progress">Callback that reports any read progress.</param>

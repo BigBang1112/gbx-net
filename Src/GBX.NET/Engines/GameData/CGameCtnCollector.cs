@@ -207,12 +207,8 @@ public class CGameCtnCollector : CMwNod, INodeHeader
             n.Icon = new Color[width, height];
 
             for (var y = 0; y < height; y++)
-            {
                 for (var x = 0; x < width; x++)
-                {
                     n.Icon[width - 1 - x, height - 1 - y] = Color.FromArgb(iconData[y * width + x]);
-                }
-            }
         }
 
         public override void Write(CGameCtnCollector n, GameBoxWriter w)
@@ -381,12 +377,12 @@ public class CGameCtnCollector : CMwNod, INodeHeader
 
     #endregion
 
-    #region 0x00B chunk (ident)
+    #region 0x00B chunk (author)
 
     /// <summary>
-    /// CGameCtnCollector 0x00B chunk (ident)
+    /// CGameCtnCollector 0x00B chunk (author)
     /// </summary>
-    [Chunk(0x2E00100B, "ident")]
+    [Chunk(0x2E00100B, "author")]
     public class Chunk2E00100B : Chunk<CGameCtnCollector>
     {
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)

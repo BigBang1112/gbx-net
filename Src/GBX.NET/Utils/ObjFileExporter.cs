@@ -105,9 +105,6 @@ internal class ObjFileExporter : IModelExporter, IDisposable
             }
         }
 
-        var writtenVerts = new HashSet<Vec3>();
-        var writtenUVs = new HashSet<Vec2>();
-
         var positionsDict = mergeVerticesDigitThreshold.HasValue
             ? new Dictionary<Vec3, int>(new Comparers.Vec3EqualityComparer(mergeVerticesDigitThreshold.Value))
             : new Dictionary<Vec3, int>();
