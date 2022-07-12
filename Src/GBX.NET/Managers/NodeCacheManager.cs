@@ -138,6 +138,20 @@ public static class NodeCacheManager
         return (T)GetClassConstructor(classId)();
     }
 
+    /// <summary>
+    /// Gets the cached private constructor of the node with an additional of allocating the class ID from <typeparamref name="T"/>. The node can potentially have null values in non-nullable properties and fields.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    internal static T GetNodeInstance<T>() where T : Node
+    {
+        CacheClassTypesIfNotCached();
+
+        var classId = GetClassIdByType(typeof(T)) ?? throw new Exception("Node cannot be instantiated.");
+
+        return (T)GetClassConstructor(classId)();
+    }
+
     public static void CacheClassTypesIfNotCached()
     {
         if (ClassesAreCached)
