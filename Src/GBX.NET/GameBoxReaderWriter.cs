@@ -1561,7 +1561,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="forLoopReadWrite"/> is null.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">List count is negative.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Array count is negative.</exception>
     public T[]? Array<T>(T[]? array, Action<GameBoxReaderWriter, T> forLoopReadWrite) where T : new()
     {
         if (forLoopReadWrite is null)
@@ -1607,14 +1607,24 @@ public partial class GameBoxReaderWriter
         array = Array(array, forLoopReadWrite);
     }
 
+    public T[]? ArrayArchive<T>(T[]? array) where T : IReadableWritable, new()
+    {
+        return Array(array, (rw, x) => x.ReadWrite(rw));
+    }
+
     public void ArrayArchive<T>(ref T[]? array) where T : IReadableWritable, new()
     {
-        array = Array(array, (rw, x) => x.ReadWrite(rw));
+        array = ArrayArchive(array);
+    }
+
+    public T[]? ArrayArchive<T>(T[]? array, int version) where T : IReadableWritable, new()
+    {
+        return Array(array, (rw, x) => x.ReadWrite(rw, version));
     }
 
     public void ArrayArchive<T>(ref T[]? array, int version) where T : IReadableWritable, new()
     {
-        array = Array(array, (rw, x) => x.ReadWrite(rw, version));
+        array = ArrayArchive(array, version);
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1904,6 +1914,26 @@ public partial class GameBoxReaderWriter
         return await ListAsync(list,
             async r => await r.ReadNodeRefAsync<T>(cancellationToken),
             (x, w) => w.Write(x));
+    }
+
+    public IList<T>? ListArchive<T>(IList<T>? list) where T : IReadableWritable, new()
+    {
+        return List(list, (rw, x) => x.ReadWrite(rw));
+    }
+
+    public void ListArchive<T>(ref IList<T>? list) where T : IReadableWritable, new()
+    {
+        list = ListArchive(list);
+    }
+
+    public IList<T>? ListArchive<T>(IList<T>? list, int version) where T : IReadableWritable, new()
+    {
+        return List(list, (rw, x) => x.ReadWrite(rw, version));
+    }
+
+    public void ListArchive<T>(ref IList<T>? list, int version) where T : IReadableWritable, new()
+    {
+        list = ListArchive(list, version);
     }
 
     /// <param name="dictionary">Dictionary to write. Ignored in read mode.</param>
