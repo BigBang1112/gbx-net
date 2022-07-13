@@ -5,6 +5,11 @@ namespace GBX.NET.Tests.Unit;
 
 public class GbxDecompressorTests
 {
+    public GbxDecompressorTests()
+    {
+        Lzo.SetLzo(typeof(LZO.MiniLZO));
+    }
+
     [Fact]
     public void DecompressDecompressed_DataIsEqual()
     {
