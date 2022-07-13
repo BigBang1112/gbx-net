@@ -20,7 +20,7 @@ public static class CGameCtnCollectorExtensions
     /// <returns>Thumbnail as <see cref="Bitmap"/>. Null if <see cref="CGameCtnCollector.Icon"/> is null.</returns>
     public static Bitmap GetIconBitmap(this CGameCtnCollector node)
     {
-        if (node.Icon == null) return null;
+        if (node.Icon is null) return null;
 
         var width = node.Icon.GetLength(0);
         var height = node.Icon.GetLength(1);
@@ -54,11 +54,17 @@ public static class CGameCtnCollectorExtensions
     /// <param name="node">CGameCtnCollector</param>
     /// <param name="stream">Stream to export to.</param>
     /// <param name="format">Image format to use.</param>
-    public static void ExportIcon(this CGameCtnCollector node, Stream stream, ImageFormat format)
+    public static bool ExportIcon(this CGameCtnCollector node, Stream stream, ImageFormat format)
     {
         var icon = GetIconBitmap(node);
-        if (icon != null)
+
+        if (icon is not null)
+        {
             icon.Save(stream, format);
+            return true;
+        }
+
+        return false;
     }
 
     /// <summary>
@@ -66,9 +72,9 @@ public static class CGameCtnCollectorExtensions
     /// </summary>
     /// <param name="node">CGameCtnCollector</param>
     /// <param name="stream">Stream to export to.</param>
-    public static void ExportIcon(this CGameCtnCollector node, Stream stream)
+    public static bool ExportIcon(this CGameCtnCollector node, Stream stream)
     {
-        ExportIcon(node, stream, ImageFormat.Png);
+        return ExportIcon(node, stream, ImageFormat.Png);
     }
 
     /// <summary>
@@ -77,10 +83,15 @@ public static class CGameCtnCollectorExtensions
     /// <param name="node">CGameCtnCollector</param>
     /// <param name="fileName">File to export to.</param>
     /// <param name="format">Image format to use.</param>
-    public static void ExportIcon(this CGameCtnCollector node, string fileName, ImageFormat format)
+    public static bool ExportIcon(this CGameCtnCollector node, string fileName, ImageFormat format)
     {
+        if (node.Icon is null)
+        {
+            return false;
+        }
+
         using var fs = File.Create(fileName);
-        ExportIcon(node, fs, format);
+        return ExportIcon(node, fs, format);
     }
 
     /// <summary>
@@ -88,8 +99,8 @@ public static class CGameCtnCollectorExtensions
     /// </summary>
     /// <param name="node">CGameCtnCollector</param>
     /// <param name="fileName">File to export to.</param>
-    public static void ExportIcon(this CGameCtnCollector node, string fileName)
+    public static bool ExportIcon(this CGameCtnCollector node, string fileName)
     {
-        ExportIcon(node, fileName, ImageFormat.Png);
+        return ExportIcon(node, fileName, ImageFormat.Png);
     }
 }
