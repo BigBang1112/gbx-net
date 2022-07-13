@@ -50,7 +50,7 @@ public class CPlugTree : CPlug
 
     protected CPlugTree()
     {
-        children = null!;
+        children = Array.Empty<CPlugTree>();
     }
 
     public override string ToString() => $"{base.ToString()} {{ \"{name}\" }}";
@@ -126,16 +126,16 @@ public class CPlugTree : CPlug
     [Chunk(0x0904F015)]
     public class Chunk0904F015 : Chunk<CPlugTree>
     {
-        public int U01;
-        public float[]? U02;
+        public int Flags;
+        public Iso4? U01;
 
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01); // DoData
+            rw.Int32(ref Flags); // DoData
 
-            if ((U01 & 4) != 0)
+            if ((Flags & 4) != 0)
             {
-                rw.Array<float>(ref U02, 12); // Iso4
+                rw.Iso4(ref U01);
             }
         }
     }
@@ -171,13 +171,14 @@ public class CPlugTree : CPlug
     [Chunk(0x0904F019)]
     public class Chunk0904F019 : Chunk<CPlugTree>
     {
+        public int Flags;
         public Iso4 U01;
 
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
-            var flags = rw.Int32();
+            rw.Int32(ref Flags);
 
-            if ((flags & 4) != 0)
+            if ((Flags & 4) != 0)
             {
                 rw.Iso4(ref U01);
             }
@@ -190,21 +191,14 @@ public class CPlugTree : CPlug
     [Chunk(0x0904F01A)]
     public class Chunk0904F01A : Chunk<CPlugTree>
     {
-        public int flags;
-
+        public int Flags;
         public Iso4 U01;
-
-        public int Flags
-        {
-            get => flags;
-            set => flags = value;
-        }
 
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref flags); // Flags?
+            rw.Int32(ref Flags); // Flags?
 
-            if ((flags & 4) != 0)
+            if ((Flags & 4) != 0)
             {
                 rw.Iso4(ref U01);
             }
