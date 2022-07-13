@@ -59,7 +59,7 @@ internal class ObjFileExporter : IModelExporter, IDisposable
 
                 var matGbx = GameBox.ParseHeader($"{gameDataFolderPath}/{mat.Link}.Material.Gbx");
 
-                var refTable = matGbx.GetRefTable();
+                var refTable = matGbx.RefTable;
 
                 if (refTable is null)
                 {
@@ -78,7 +78,7 @@ internal class ObjFileExporter : IModelExporter, IDisposable
 
                 var texGbx = GameBox.ParseHeader(textGbxPath);
 
-                var texRefTable = texGbx.GetRefTable();
+                var texRefTable = texGbx.RefTable;
 
                 if (texRefTable is null)
                 {
@@ -346,7 +346,7 @@ internal class ObjFileExporter : IModelExporter, IDisposable
             return;
         }
 
-        var refTable = gbx.GetRefTable();
+        var refTable = gbx.RefTable;
 
         if (refTable is null)
         {

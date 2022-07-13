@@ -827,7 +827,7 @@ public class GameBoxReader : BinaryReader
     private static bool TryGetRefTableNode(GameBox gbx, int index, out GameBoxRefTable.File? nodeRefFile)
 #endif
     {
-        var refTable = gbx.GetRefTable();
+        var refTable = gbx.RefTable;
 
         // First checks if reference table is used
         if (refTable is null || refTable.Files.Count <= 0 && refTable.Folders.Count <= 0)

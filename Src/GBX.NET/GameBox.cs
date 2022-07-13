@@ -11,8 +11,8 @@ public partial class GameBox
 {
     public const string Magic = "GBX";
 
-    private readonly GameBoxHeader header;
-    private readonly GameBoxRefTable? refTable;
+    public GameBoxHeader Header { get; }
+    public GameBoxRefTable? RefTable { get; }
 
     /// <summary>
     /// If to ignore exceptions on certain chunk versions that are unknown, but shouldn't crash the reading/writing, however, could return unexpected values.
@@ -58,7 +58,7 @@ public partial class GameBox
     /// <param name="id">ID of the expected node - should be provided remapped to latest.</param>
     public GameBox(uint id)
     {
-        header = new GameBoxHeader(id);
+        Header = new GameBoxHeader(id);
     }
 
     /// <summary>
@@ -67,27 +67,17 @@ public partial class GameBox
     /// <param name="node">Node to wrap in.</param>
     public GameBox(Node node)
     {
-        header = new GameBoxHeader(node.Id);
+        Header = new GameBoxHeader(node.Id);
         Node = node;
         Node.SetGbx(this);
     }
 
     public GameBox(GameBoxHeader header, GameBoxRefTable? refTable, string? fileName = null)
     {
-        this.header = header;
-        this.refTable = refTable;
+        Header = header;
+        RefTable = refTable;
 
         FileName = fileName;
-    }
-
-    public GameBoxHeader GetHeader()
-    {
-        return header;
-    }
-
-    public GameBoxRefTable? GetRefTable()
-    {
-        return refTable;
     }
 
     /// <summary>
@@ -134,22 +124,22 @@ public partial class GameBox
 
         if (RawBody is null)
         {
-            header.Write(Node!, headerW, AuxNodes.Count + 1, logger);
+            Header.Write(Node!, headerW, AuxNodes.Count + 1, logger);
         }
         else
         {
-            header.Write(Node!, headerW, header.NumNodes, logger);
+            Header.Write(Node!, headerW, Header.NumNodes, logger);
         }
 
         logger?.LogDebug("Writing the reference table...");
 
-        if (refTable is null)
+        if (RefTable is null)
         {
             headerW.Write(0);
         }
         else
         {
-            refTable.Write(header, headerW);
+            RefTable.Write(Header, headerW);
         }
 
         headerW.Write(ms.ToArray());
@@ -185,19 +175,19 @@ public partial class GameBox
 
         if (RawBody is null)
         {
-            header.Write(Node!, headerW, AuxNodes.Count + 1, logger);
+            Header.Write(Node!, headerW, AuxNodes.Count + 1, logger);
         }
         else
         {
-            header.Write(Node!, headerW, header.NumNodes, logger);
+            Header.Write(Node!, headerW, Header.NumNodes, logger);
         }
 
         logger?.LogDebug("Writing the reference table...");
 
-        if (refTable is null)
+        if (RefTable is null)
             headerW.Write(0);
         else
-            refTable.Write(header, headerW);
+            RefTable.Write(Header, headerW);
 
         headerW.Write(ms.ToArray());
     }

@@ -43,7 +43,7 @@ Console.ReadKey();
 void ProcessFile(string fileName)
 {
     var node = GameBox.ParseNode<CPlugSolid>(fileName, logger: logger);
-    var refTable = node.GetGbx()!.GetRefTable();
+    var refTable = node.GetGbx()!.RefTable;
 
     if (node.Tree is not CPlugTree tree)
     {
@@ -200,7 +200,7 @@ void ProcessFile(string fileName)
         if (gbx is null)
             return;
 
-        var refTable = gbx.GetRefTable();
+        var refTable = gbx.RefTable;
 
         if (refTable is null)
             return;

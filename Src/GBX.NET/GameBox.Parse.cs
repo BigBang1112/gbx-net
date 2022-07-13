@@ -85,7 +85,7 @@ public partial class GameBox
             return gbx; // TODO: this should maybe throw?
         }
 
-        var header = gbx.header;
+        var header = gbx.Header;
 
         // Raw body can be read at pretty much any time
         if (readRawBody)
@@ -218,7 +218,7 @@ public partial class GameBox
     {
         var gbx = ParseHeader(stream, progress, logger: logger);
 
-        var header = gbx.header;
+        var header = gbx.Header;
         var node = gbx.Node;
 
         // When the node type isn't recognized, there's also no node instance
@@ -496,7 +496,7 @@ public partial class GameBox
     {
         var gbx = ParseHeader(stream, logger: logger);
 
-        var header = gbx.header;
+        var header = gbx.Header;
         var node = gbx.Node;
 
         // When the node type isn't recognized, there's also no node instance

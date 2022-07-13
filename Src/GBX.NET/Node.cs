@@ -77,7 +77,7 @@ public abstract class Node
             return nodeAtTheMoment;
         }
 
-        var refTable = gbxForRefTable.GetRefTable();
+        var refTable = gbxForRefTable.RefTable;
 
         if (refTable is null)
         {

@@ -308,12 +308,12 @@ public class GameBoxBody
                 throw new HeaderOnlyParseLimitationException();
             }
 
-            WriteMainNode(gbx.Node, gbx.GetHeader(), bodyW, logger); // Body is written first so that the aux node count is determined properly
+            WriteMainNode(gbx.Node, gbx.Header, bodyW, logger); // Body is written first so that the aux node count is determined properly
 
             return;
         }
 
-        if (gbx.GetHeader().CompressionOfBody == GameBoxCompression.Compressed)
+        if (gbx.Header.CompressionOfBody == GameBoxCompression.Compressed)
         {
             bodyW.Write(UncompressedSize.GetValueOrDefault());
             bodyW.Write(RawData.Length);
@@ -340,12 +340,12 @@ public class GameBoxBody
                 throw new HeaderOnlyParseLimitationException();
             }
 
-            await WriteMainNodeAsync(gbx.Node, gbx.GetHeader(), bodyW, logger, cancellationToken); // Body is written first so that the aux node count is determined properly
+            await WriteMainNodeAsync(gbx.Node, gbx.Header, bodyW, logger, cancellationToken); // Body is written first so that the aux node count is determined properly
 
             return;
         }
 
-        if (gbx.GetHeader().CompressionOfBody == GameBoxCompression.Compressed)
+        if (gbx.Header.CompressionOfBody == GameBoxCompression.Compressed)
         {
             bodyW.Write(UncompressedSize.GetValueOrDefault());
             bodyW.Write(RawData.Length);
