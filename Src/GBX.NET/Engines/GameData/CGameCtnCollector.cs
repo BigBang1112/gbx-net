@@ -133,6 +133,9 @@ public class CGameCtnCollector : CMwNod, INodeHeader
         public int U01;
         public int U02;
         public int U03;
+        public byte U04;
+        public int U05;
+        public short U06;
 
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
@@ -147,13 +150,20 @@ public class CGameCtnCollector : CMwNod, INodeHeader
 
             if (version >= 4)
             {
-                rw.Int32(ref U02);
+                rw.Int32(ref U02); // Id?
             }
 
             if (version >= 3)
             {
                 rw.Int32(ref U03);
                 n.CatalogPosition = rw.Int16((short)n.CatalogPosition);
+
+                if (version < 6)
+                {
+                    rw.Byte(ref U04);
+                    rw.Int32(ref U05);
+                    rw.Int16(ref U06);
+                }
                 
                 if (version >= 7)
                 {
