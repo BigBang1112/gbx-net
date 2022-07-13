@@ -29,5 +29,10 @@ foreach (var filePath in fileNames)
         continue;
     }
 
-    collector.ExportIcon(filePath + ".png");
+    var pngFileName = filePath + ".png";
+
+    if (collector.ExportIcon(pngFileName))
+    {
+        Console.WriteLine("{0} exported!", pngFileName);
+    }
 }
