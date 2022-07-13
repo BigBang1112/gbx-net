@@ -455,11 +455,7 @@ public class CGameCtnCollector : CMwNod, INodeHeader
         public CMwNod? U01;
         public int U02;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {

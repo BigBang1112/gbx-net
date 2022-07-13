@@ -266,7 +266,13 @@ public class CGameCtnBlock : CMwNod, INodeDependant<CGameCtnChallenge>
         this.flags = flags;
     }
 
-    public CGameCtnBlock(string name, Direction direction, Int3 coord, int flags = 0, string? author = null, CGameCtnBlockSkin? skin = null, CGameWaypointSpecialProperty? waypoint = null)
+    public CGameCtnBlock(string name,
+                         Direction direction,
+                         Int3 coord,
+                         int flags = 0,
+                         string? author = null,
+                         CGameCtnBlockSkin? skin = null,
+                         CGameWaypointSpecialProperty? waypoint = null)
     {
         blockModel = new Ident(name);
         this.direction = direction;

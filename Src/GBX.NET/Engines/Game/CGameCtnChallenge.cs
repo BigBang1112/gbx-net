@@ -1828,11 +1828,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         if (Blocks is null)
             throw new MemberNullException(nameof(Blocks));
 
-        if (macroblock.Blocks is null)
+        if (macroblock.BlockSpawns is null)
             return; // TODO: Support macroblock placing for item-only macroblocks (if they are possible)
 
         var macroRad = (int)dir * (Math.PI / 2); // Rotation of the macroblock in radians needed for the formula to determine individual coords
-        var macroBlocks = macroblock.Blocks.Where(x => !x.IsFree).ToArray();
+        var macroBlocks = macroblock.BlockSpawns.Where(x => !x.IsFree).ToArray();
         var allCoords = macroBlocks.Select(x => x.Coord); // Creates an enumerable of macroblock block coords
 
         var min = new Int3(allCoords.Select(x => x.X).Min(), allCoords.Select(x => x.Y).Min(), allCoords.Select(x => x.Z).Min());
@@ -1900,9 +1900,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 direction: Dir.Add(block.Direction, dir),
                 coord: coord + (Int3)newRelativeCoord,
                 flags: block.Flags,
-                author: block.Author,
-                skin: block.Skin,
-                waypoint: block.WaypointSpecialProperty
+                author: block.BlockModel.Author,
+                skin: null,
+                waypoint: block.Waypoint
             );
 
             if (b.Coord.Y == 0)
@@ -1915,9 +1915,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         var blockSize = Collection.GetBlockSize();
 
-        if (macroblock.AnchoredObjects is not null)
+        if (macroblock.ObjectSpawns is not null)
         {
-            foreach (var item in macroblock.AnchoredObjects)
+            foreach (var item in macroblock.ObjectSpawns)
             {
                 var itemRadians = (float)((int)dir * Math.PI / 2);
                 var blockCenterVec = size * blockSize * new Vec3(0.5f, 0f, 0.5f);
@@ -1935,7 +1935,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             }
         }
 
-        foreach (var freeBlock in macroblock.Blocks.Where(x => x.IsFree))
+        foreach (var freeBlock in macroblock.BlockSpawns.Where(x => x.IsFree))
         {
             //PlaceFreeBlock(freeBlock.Name, (coord + (0, 1, 0)) * Collection.GetBlockSize() + freeBlock.AbsolutePositionInMap, freeBlock.PitchYawRoll);
         }
