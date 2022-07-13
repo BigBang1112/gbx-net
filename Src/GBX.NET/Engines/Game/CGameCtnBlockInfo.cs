@@ -47,9 +47,11 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     private GameBoxRefTable.File? sound1File;
     private CPlugSound? sound2;
     private GameBoxRefTable.File? sound2File;
-    private Iso4 sound1Loc;
-    private Iso4 sound2Loc;
+    private Iso4? sound1Loc;
+    private Iso4? sound2Loc;
     private EMultiDir pillarShapeMultiDir;
+    private CGameCtnBlockInfoClassic? pillar;
+    private GameBoxRefTable.File? pillarFile;
 
     [NodeMember]
     public CGameCtnBlockUnitInfo?[]? GroundBlockUnitInfos { get => groundBlockUnitInfos; set => groundBlockUnitInfos = value; }
@@ -121,10 +123,10 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     }
 
     [NodeMember(ExactlyNamed = true)]
-    public Iso4 Sound1Loc { get => sound1Loc; set => sound1Loc = value; }
+    public Iso4? Sound1Loc { get => sound1Loc; set => sound1Loc = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public Iso4 Sound2Loc { get => sound2Loc; set => sound2Loc = value; }
+    public Iso4? Sound2Loc { get => sound2Loc; set => sound2Loc = value; }
 
     [NodeMember(ExactlyNamed = true)]
     public EMultiDir PillarShapeMultiDir { get => pillarShapeMultiDir; set => pillarShapeMultiDir = value; }
@@ -134,6 +136,13 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
 
     [NodeMember(ExactlyNamed = true)]
     public CGameCtnBlockInfoVariantAir? VariantBaseAir { get; set; }
+
+    [NodeMember]
+    public CGameCtnBlockInfoClassic? Pillar
+    {
+        get => pillar = GetNodeFromRefTable(pillar, pillarFile) as CGameCtnBlockInfoClassic;
+        set => pillar = value;
+    }
 
     protected CGameCtnBlockInfo()
     {
@@ -150,8 +159,6 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
         public bool U05;
         public int U06;
         public int U07;
-        public Node? U08;
-        private GameBoxRefTable.File? U08file;
         public byte U12;
         public int U13;
         public short U14;
@@ -169,7 +176,7 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
             rw.Int32(ref U07);
             //
 
-            rw.NodeRef(ref U08, ref U08file); // null in every TMEDClassic, pillar stuff?
+            rw.NodeRef<CGameCtnBlockInfoClassic>(ref n.pillar, ref n.pillarFile);
 
             rw.ArrayNode<CGameCtnBlockUnitInfo>(ref n.groundBlockUnitInfos);
             rw.ArrayNode<CGameCtnBlockUnitInfo>(ref n.airBlockUnitInfos);
