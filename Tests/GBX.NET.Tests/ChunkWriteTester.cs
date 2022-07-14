@@ -11,11 +11,12 @@ internal class ChunkWriteTester<TNode, TChunk> : ChunkTester<TNode, TChunk>, IDi
     private readonly GameBoxWriter writer;
     private readonly byte[] expectedData;
 
-    public ChunkWriteTester(string gameVersion, bool idWasWritten = false) : base(gameVersion, idWasWritten)
+    public ChunkWriteTester(string gameVersion, bool idVersionWasWritten = false) : base(gameVersion, idVersionWasWritten)
     {
         ms = new MemoryStream();
         writer = new GameBoxWriter(ms, gbx: Gbx);
-        expectedData = File.ReadAllBytes(GetChunkFileName());
+        expectedData = GetChunkData();
+        Gbx.IdIsWritten = true;
     }
 
     public void Write()
@@ -33,8 +34,9 @@ internal class ChunkWriteTester<TNode, TChunk> : ChunkTester<TNode, TChunk>, IDi
         return expectedData.SequenceEqual(ms.ToArray());
     }
 
-    public void Dispose()
+    public override void Dispose()
     {
+        base.Dispose();
         writer.Dispose();
         ms.Dispose();
     }

@@ -41,7 +41,7 @@ public class CGameCtnCollectorTests
             var node = chunkTester.Node;
             var chunk = chunkTester.Chunk;
 
-            var expectedIconWebp = File.ReadAllBytes(chunkTester.GetAdditionalFileName(IconWebP));
+            var expectedIconWebp = chunkTester.GetAdditionalEntryData(IconWebP);
             var expectedU01 = (short)1;
 
             // Act
@@ -76,7 +76,7 @@ public class CGameCtnCollectorTests
             using ChunkWriteTester<CGameCtnCollector, CGameCtnCollector.Chunk2E001004> chunkTester
                 = new(GameVersions.Trackmania2020_2022_7_6);
 
-            chunkTester.Node.IconWebP = File.ReadAllBytes(chunkTester.GetAdditionalFileName(IconWebP));
+            chunkTester.Node.IconWebP = chunkTester.GetAdditionalEntryData(IconWebP);
             chunkTester.Chunk.U01 = 1;
             
             // Act
@@ -94,7 +94,7 @@ public class CGameCtnCollectorTests
         {
             // Arrange
             using ChunkReadTester<CGameCtnCollector, CGameCtnCollector.Chunk2E00100B> chunkTester
-                = new(GameVersions.ManiaPlanet_Latest, idWasWritten: true);
+                = new(GameVersions.ManiaPlanet_Latest, idVersionWasWritten: true);
 
             // Act
             chunkTester.ReadWriteWithReader();
@@ -108,7 +108,7 @@ public class CGameCtnCollectorTests
         {
             // Arrange
             using ChunkReadTester<CGameCtnCollector, CGameCtnCollector.Chunk2E00100B> chunkTester
-                = new(GameVersions.Trackmania2020_2022_7_6, idWasWritten: true);
+                = new(GameVersions.Trackmania2020_2022_7_6, idVersionWasWritten: true);
 
             // Act
             chunkTester.ReadWriteWithReader();
@@ -122,7 +122,7 @@ public class CGameCtnCollectorTests
         {
             // Arrange
             using ChunkWriteTester<CGameCtnCollector, CGameCtnCollector.Chunk2E00100B> chunkTester
-                = new(GameVersions.ManiaPlanet_Latest, idWasWritten: true);
+                = new(GameVersions.ManiaPlanet_Latest, idVersionWasWritten: true);
 
             chunkTester.Node.Author = new("", "Stadium", "bigbang1112");
 
@@ -138,7 +138,7 @@ public class CGameCtnCollectorTests
         {
             // Arrange
             using ChunkWriteTester<CGameCtnCollector, CGameCtnCollector.Chunk2E00100B> chunkTester
-                = new(GameVersions.Trackmania2020_2022_7_6, idWasWritten: true);
+                = new(GameVersions.Trackmania2020_2022_7_6, idVersionWasWritten: true);
 
             chunkTester.Node.Author = new("", new(26), "akPfIM0aSzuHuaaDWptBbQ");
 
@@ -157,7 +157,7 @@ public class CGameCtnCollectorTests
         {
             // Arrange
             using ChunkReadTester<CGameCtnCollector, CGameCtnCollector.Chunk2E00100C> chunkTester
-                = new(GameVersions.ManiaPlanet_Latest, idWasWritten: true);
+                = new(GameVersions.ManiaPlanet_Latest, idVersionWasWritten: true);
 
             // Act
             chunkTester.ReadWriteWithReader();
@@ -171,7 +171,7 @@ public class CGameCtnCollectorTests
         {
             // Arrange
             using ChunkReadTester<CGameCtnCollector, CGameCtnCollector.Chunk2E00100C> chunkTester
-                = new(GameVersions.Trackmania2020_2022_7_6, idWasWritten: true);
+                = new(GameVersions.Trackmania2020_2022_7_6, idVersionWasWritten: true);
 
             // Act
             chunkTester.ReadWriteWithReader();
@@ -185,7 +185,7 @@ public class CGameCtnCollectorTests
         {
             // Arrange
             using ChunkWriteTester<CGameCtnCollector, CGameCtnCollector.Chunk2E00100C> chunkTester
-                = new(GameVersions.ManiaPlanet_Latest, idWasWritten: true);
+                = new(GameVersions.ManiaPlanet_Latest, idVersionWasWritten: true);
 
             chunkTester.Node.Name = "New Item";
 
@@ -201,7 +201,7 @@ public class CGameCtnCollectorTests
         {
             // Arrange
             using ChunkWriteTester<CGameCtnCollector, CGameCtnCollector.Chunk2E00100C> chunkTester
-                = new(GameVersions.Trackmania2020_2022_7_6, idWasWritten: true);
+                = new(GameVersions.Trackmania2020_2022_7_6, idVersionWasWritten: true);
 
             chunkTester.Node.Name = "Item.2022.7.6.1137";
 
@@ -220,7 +220,7 @@ public class CGameCtnCollectorTests
         {
             // Arrange
             using ChunkReadTester<CGameCtnCollector, CGameCtnCollector.Chunk2E00100D> chunkTester
-                = new(GameVersions.ManiaPlanet_Latest, idWasWritten: true);
+                = new(GameVersions.ManiaPlanet_Latest, idVersionWasWritten: true);
 
             // Act
             chunkTester.ReadWriteWithReader();
@@ -234,7 +234,7 @@ public class CGameCtnCollectorTests
         {
             // Arrange
             using ChunkReadTester<CGameCtnCollector, CGameCtnCollector.Chunk2E00100D> chunkTester
-                = new(GameVersions.Trackmania2020_2022_7_6, idWasWritten: true);
+                = new(GameVersions.Trackmania2020_2022_7_6, idVersionWasWritten: true);
 
             // Act
             chunkTester.ReadWriteWithReader();
@@ -248,7 +248,7 @@ public class CGameCtnCollectorTests
         {
             // Arrange
             using ChunkWriteTester<CGameCtnCollector, CGameCtnCollector.Chunk2E00100D> chunkTester
-                = new(GameVersions.ManiaPlanet_Latest, idWasWritten: true);
+                = new(GameVersions.ManiaPlanet_Latest, idVersionWasWritten: true);
 
             chunkTester.Node.Description = "No Description";
 
@@ -264,7 +264,7 @@ public class CGameCtnCollectorTests
         {
             // Arrange
             using ChunkWriteTester<CGameCtnCollector, CGameCtnCollector.Chunk2E00100D> chunkTester
-                = new(GameVersions.Trackmania2020_2022_7_6, idWasWritten: true);
+                = new(GameVersions.Trackmania2020_2022_7_6, idVersionWasWritten: true);
 
             chunkTester.Node.Description = "﻿Žádný popis";
 
@@ -283,7 +283,7 @@ public class CGameCtnCollectorTests
         {
             // Arrange
             using ChunkReadTester<CGameCtnCollector, CGameCtnCollector.Chunk2E00100E> chunkTester
-                = new(GameVersions.ManiaPlanet_Latest, idWasWritten: true);
+                = new(GameVersions.ManiaPlanet_Latest, idVersionWasWritten: true);
 
             // Act
             chunkTester.ReadWriteWithReader();
@@ -300,7 +300,7 @@ public class CGameCtnCollectorTests
         {
             // Arrange
             using ChunkWriteTester<CGameCtnCollector, CGameCtnCollector.Chunk2E00100E> chunkTester
-                = new(GameVersions.ManiaPlanet_Latest, idWasWritten: true);
+                = new(GameVersions.ManiaPlanet_Latest, idVersionWasWritten: true);
 
             chunkTester.Node.IconUseAutoRender = true;
             chunkTester.Node.IconQuarterRotationY = 2;

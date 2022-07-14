@@ -9,9 +9,9 @@ internal class ChunkReadWriteEqualityTester<TNode, TChunk> : ChunkTester<TNode, 
     public byte[] InputData { get; }
     public MemoryStream OutputStream { get; }
 
-    public ChunkReadWriteEqualityTester(string gameVersion, bool idWasWritten) : base(gameVersion, idWasWritten)
+    public ChunkReadWriteEqualityTester(string gameVersion, bool idVersionWasWritten) : base(gameVersion, idVersionWasWritten)
     {
-        InputData = File.ReadAllBytes(GetChunkFileName());
+        InputData = GetChunkData();
         OutputStream = new MemoryStream();
     }
 
@@ -25,8 +25,9 @@ internal class ChunkReadWriteEqualityTester<TNode, TChunk> : ChunkTester<TNode, 
         Chunk.ReadWrite(Node, rw);
     }
 
-    public void Dispose()
+    public override void Dispose()
     {
+        base.Dispose();
         OutputStream.Dispose();
     }
 }

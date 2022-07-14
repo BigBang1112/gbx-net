@@ -33,43 +33,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Remove="Files\CCP#04 - ODYSSEY.Map.Gbx" />
-		<None Remove="Files\Game_Over.Map.Gbx" />
-		<None Remove="Files\IslandSeaWaySupport.TMEDRoad.Gbx" />
-		<None Remove="Files\Mape.Map.Gbx" />
-		<None Remove="Files\Summer 2021 - 25.Map.Gbx" />
-		<None Remove="TestData\Chunks\CGameItemModel.2019.11.19.1850\CGameItemModel+Chunk2E002000.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2019.11.19.1850\CGameItemModel+Chunk2E002001.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2019.11.19.1850\CGameItemModel+Chunk2E002008.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2019.11.19.1850\CGameItemModel+Chunk2E002009.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2019.11.19.1850\CGameItemModel+Chunk2E00200C.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2019.11.19.1850\CGameItemModel+Chunk2E002012.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2019.11.19.1850\CGameItemModel+Chunk2E002013.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2019.11.19.1850\CGameItemModel+Chunk2E002015.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2019.11.19.1850\CGameItemModel+Chunk2E002019.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2019.11.19.1850\CGameItemModel+Chunk2E00201C.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2019.11.19.1850\CGameItemModel+Chunk2E00201E.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2019.11.19.1850\CGameItemModel+Chunk2E00201F.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2019.11.19.1850\CGameItemModel+Chunk2E002020.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2019.11.19.1850\CGameItemModel+Chunk2E002021.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2019.11.19.1850\CGameItemModel+Chunk2E002023.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2019.11.19.1850\CGameItemModel+Chunk2E002024.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2022.7.6.1137\CGameItemModel+Chunk2E002000.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2022.7.6.1137\CGameItemModel+Chunk2E002001.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2022.7.6.1137\CGameItemModel+Chunk2E002008.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2022.7.6.1137\CGameItemModel+Chunk2E002009.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2022.7.6.1137\CGameItemModel+Chunk2E00200C.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2022.7.6.1137\CGameItemModel+Chunk2E002012.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2022.7.6.1137\CGameItemModel+Chunk2E002015.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2022.7.6.1137\CGameItemModel+Chunk2E002019.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2022.7.6.1137\CGameItemModel+Chunk2E00201C.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2022.7.6.1137\CGameItemModel+Chunk2E00201E.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2022.7.6.1137\CGameItemModel+Chunk2E00201F.dat" />
-		<None Remove="TestData\Chunks\CGameItemModel.2022.7.6.1137\CGameItemModel+Chunk2E002020.dat" />
-		<None Remove="TestData\GbxDecompressor\BayDecompressed.TMCollection.Gbx" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<ProjectReference Include="..\..\Src\GBX.NET.LZO\GBX.NET.LZO.csproj" />
 		<ProjectReference Include="..\..\Src\GBX.NET\GBX.NET.csproj" />
 		<ProjectReference Include="..\GBX.NET.Tests.Generators\GBX.NET.Tests.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />

@@ -6,13 +6,13 @@ namespace GBX.NET.Tests;
 internal class ChunkReadTester<TNode, TChunk> : ChunkTester<TNode, TChunk>, IDisposable
     where TNode : Node where TChunk : Chunk<TNode>
 {
-    private readonly FileStream fs;
+    private readonly Stream stream;
     private readonly GameBoxReader reader;
 
-    public ChunkReadTester(string gameVersion, bool idWasWritten = false) : base(gameVersion, idWasWritten)
+    public ChunkReadTester(string gameVersion, bool idVersionWasWritten = false) : base(gameVersion, idVersionWasWritten)
     {
-        fs = File.OpenRead(GetChunkFileName());
-        reader = new GameBoxReader(fs, gbx: Gbx);
+        stream = ChunkEntry.Open();
+        reader = new GameBoxReader(stream, gbx: Gbx);
     }
 
     public void Read()
@@ -25,9 +25,10 @@ internal class ChunkReadTester<TNode, TChunk> : ChunkTester<TNode, TChunk>, IDis
         Chunk.ReadWrite(Node, new GameBoxReaderWriter(reader));
     }
 
-    public void Dispose()
+    public override void Dispose()
     {
+        base.Dispose();
         reader.Dispose();
-        fs.Dispose();
+        stream.Dispose();
     }
 }

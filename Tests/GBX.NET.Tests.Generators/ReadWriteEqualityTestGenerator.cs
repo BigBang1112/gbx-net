@@ -3,6 +3,7 @@ using Microsoft.CodeAnalysis.Text;
 using System.Diagnostics;
 using System.Text;
 using GBX.NET.Tests.Generators.Extensions;
+using System.IO.Compression;
 
 namespace GBX.NET.Tests.Generators;
 
@@ -48,7 +49,7 @@ public class ReadWriteEqualityTestGenerator : ISourceGenerator
 
             foreach (var version in versions)
             {
-                if (Directory.Exists(Path.Combine(testsProjectDirectory, "TestData", "Chunks", $"{type.Name}.{version.ConstantValue}")))
+                if (File.Exists(Path.Combine(testsProjectDirectory, "TestData", "Chunks", $"{type.Name}.{version.ConstantValue}.zip")))
                 {
                     anyVersionExists = true;
                     break;
@@ -83,7 +84,10 @@ public partial class {type.Name}Tests
         //var nestedChunks = nestedTypes.Where(x => x.BaseType?.Name == "Chunk" || x.BaseType?.Name == "HeaderChunk");
     }
 
-    private IEnumerable<string> GenerateChunkCode(INamedTypeSymbol type, INamedTypeSymbol? existingClassTestsType, string testsProjectDirectory, IFieldSymbol[] versions)
+    private IEnumerable<string> GenerateChunkCode(INamedTypeSymbol type,
+                                                  INamedTypeSymbol? existingClassTestsType,
+                                                  string testsProjectDirectory,
+                                                  IFieldSymbol[] versions)
     {
         foreach (var typeMember in type.GetTypeMembers())
         {
@@ -104,13 +108,24 @@ public partial class {type.Name}Tests
         }
     }
 
-    private IEnumerable<string> GenerateVersionMethods(INamedTypeSymbol type, INamedTypeSymbol? existingChunkTestsType, INamedTypeSymbol chunkType, string testsProjectDirectory, IFieldSymbol[] versions)
+    private IEnumerable<string> GenerateVersionMethods(INamedTypeSymbol type,
+                                                       INamedTypeSymbol? existingChunkTestsType,
+                                                       INamedTypeSymbol chunkType,
+                                                       string testsProjectDirectory,
+                                                       IFieldSymbol[] versions)
     {
         foreach (var version in versions)
         {
-            var chunkDataFilePath = Path.Combine(testsProjectDirectory, "TestData", "Chunks", $"{type.Name}.{version.ConstantValue}", $"{type.Name}+{chunkType.Name}.dat");
+            var zipPath = Path.Combine(testsProjectDirectory, "TestData", "Chunks", $"{type.Name}.{version.ConstantValue}.zip");
 
-            if (!File.Exists(chunkDataFilePath))
+            if (!File.Exists(zipPath))
+            {
+                continue;
+            }
+            
+            using var zip = ZipFile.OpenRead(zipPath);
+
+            if (zip.Entries.FirstOrDefault(x => x.Name == $"{chunkType.Name}.dat") is null)
             {
                 continue;
             }
@@ -141,7 +156,7 @@ public partial class {type.Name}Tests
         {{
             // Arrange
             using ChunkReadWriteEqualityTester<{type.Name}, {type.Name}.{chunkType.Name}> chunkTester
-                = new(GameVersions.{version.Name}, idWasWritten: true); // idWasWritten usage missing
+                = new(GameVersions.{version.Name}, idVersionWasWritten: true); // idVersionWasWritten usage missing
 
             // Act
             chunkTester.ReadWrite();

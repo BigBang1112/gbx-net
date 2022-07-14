@@ -1,10 +1,11 @@
 ﻿using GBX.NET.Managers;
 using System;
 using System.IO;
+using System.IO.Compression;
 
 namespace GBX.NET.Tests;
 
-internal abstract class ChunkTester<TNode, TChunk> where TNode : Node where TChunk : Chunk<TNode>
+internal abstract class ChunkTester<TNode, TChunk> : IDisposable where TNode : Node where TChunk : Chunk<TNode>
 {
     public string GameVersion { get; }
     public TNode Node { get; }
@@ -12,8 +13,10 @@ internal abstract class ChunkTester<TNode, TChunk> where TNode : Node where TChu
     public string NodeName { get; }
     public string ChunkName { get; }
     public GameBox<TNode> Gbx { get; }
+    public ZipArchive Zip { get; }
+    public ZipArchiveEntry ChunkEntry { get; }
 
-    public ChunkTester(string gameVersion, bool idWasWritten)
+    public ChunkTester(string gameVersion, bool idVersionWasWritten)
     {
         GameVersion = gameVersion;
         Node = NodeCacheManager.GetNodeInstance<TNode>();
@@ -37,27 +40,55 @@ internal abstract class ChunkTester<TNode, TChunk> where TNode : Node where TChu
 
         Gbx = new GameBox<TNode>(Node)
         {
-            IdIsWritten = idWasWritten
+            IdVersion = idVersionWasWritten ? 3 : null
         };
 
-        if (!File.Exists(GetChunkFileName()))
+        if (!File.Exists(GetZipPath()))
         {
-            throw new FileNotFoundException($"Chunk file not found for {NodeName}.{ChunkName}, game version {gameVersion}.");
+            throw new FileNotFoundException($"Class ZIP file not found for {NodeName}, game version {gameVersion}.");
         }
+
+        Zip = ZipFile.OpenRead(GetZipPath());
+        ChunkEntry = Zip.GetEntry($"{ChunkName}.dat") ?? throw new Exception($"Chunk entry not found for {NodeName}.{ChunkName}, game version {gameVersion}.");
     }
 
-    public string GetBasePath()
+    public string GetZipPath()
     {
-        return Path.Combine("TestData", "Chunks", $"{NodeName}.{GameVersion}");
+        return Path.Combine("TestData", "Chunks", $"{NodeName}.{GameVersion}.zip");
     }
 
-    public string GetChunkFileName()
+    public byte[] GetChunkData()
     {
-        return Path.Combine(GetBasePath(), $"{NodeName}+{ChunkName}.dat");
+        return GetEntryData(ChunkEntry);
     }
 
-    public string GetAdditionalFileName(string identifier)
+    public ZipArchiveEntry? GetAdditionalEntry(string entryName)
     {
-        return Path.Combine(GetBasePath(), $"{NodeName}+{ChunkName}.{identifier}.dat");
+        return Zip.GetEntry($"{ChunkName}.{entryName}.dat");
+    }
+
+    public byte[]? GetAdditionalEntryData(string entryName)
+    {
+        var entry = GetAdditionalEntry(entryName);
+
+        if (entry is null)
+        {
+            return null;
+        }
+        
+        return GetEntryData(entry);
+    }
+
+    public virtual void Dispose()
+    {
+        Zip.Dispose();
+    }
+
+    private static byte[] GetEntryData(ZipArchiveEntry entry)
+    {
+        using var ms = new MemoryStream();
+        using var entryStream = entry.Open();
+        entryStream.CopyTo(ms);
+        return ms.ToArray();
     }
 }
