@@ -17,7 +17,20 @@ internal abstract class ChunkTester<TNode, TChunk> where TNode : Node where TChu
     {
         GameVersion = gameVersion;
         Node = NodeCacheManager.GetNodeInstance<TNode>();
-        Chunk = Node.CreateChunk<TChunk>();
+
+        if (typeof(TChunk).GetInterface(nameof(IHeaderChunk)) is not null)
+        {
+            if (Node is not INodeHeader nodeHeader)
+            {
+                throw new Exception("Testing a chunk in a node that doesn't implement INodeHeader.");
+            }
+
+            Chunk = nodeHeader.HeaderChunks.Create<TChunk>();
+        }
+        else
+        {
+            Chunk = Node.CreateChunk<TChunk>();
+        }
 
         NodeName = Node.GetType().Name;
         ChunkName = Chunk.GetType().Name;

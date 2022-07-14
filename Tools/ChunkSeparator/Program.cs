@@ -32,7 +32,7 @@ if (node is INodeHeader nodeHeader)
 {
     foreach (var chunk in nodeHeader.HeaderChunks)
     {
-        ExportChunkData(chunk);
+        ExportChunkData((Chunk)chunk);
     }
 }
 
