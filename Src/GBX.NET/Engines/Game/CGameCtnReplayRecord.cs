@@ -49,7 +49,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     public IHeader GetHeaderMembers() => this;
 #endif
 
-    public ChunkSet HeaderChunks { get; }
+    public HeaderChunkSet HeaderChunks { get; } = new();
 
     /// <summary>
     /// Map UID, environment, and author login of the map the replay orients in.
@@ -235,7 +235,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     protected CGameCtnReplayRecord()
     {
-        HeaderChunks = new ChunkSet();
+        
     }
 
     #endregion

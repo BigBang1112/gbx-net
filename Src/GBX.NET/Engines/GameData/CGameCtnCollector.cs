@@ -40,7 +40,7 @@ public class CGameCtnCollector : CMwNod, INodeHeader
 
     #region Properties
 
-    public ChunkSet HeaderChunks { get; }
+    public HeaderChunkSet HeaderChunks { get; }
 
     [NodeMember(ExactlyNamed = true)]
     public Ident? Author { get => author; set => author = value; }
@@ -93,7 +93,7 @@ public class CGameCtnCollector : CMwNod, INodeHeader
 
     protected CGameCtnCollector()
     {
-        HeaderChunks = new ChunkSet();
+        HeaderChunks = new HeaderChunkSet();
 
         pageName = null!;
     }

@@ -118,7 +118,7 @@ public partial class CGameCtnCollection : CMwNod, INodeHeader
 
     #region Properties
 
-    public ChunkSet HeaderChunks { get; } = new();
+    public HeaderChunkSet HeaderChunks { get; } = new();
 
     [NodeMember]
     public string? Collection { get => collection; set => collection = value; }

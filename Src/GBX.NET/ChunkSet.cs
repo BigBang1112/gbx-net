@@ -27,7 +27,7 @@ public class ChunkSet : SortedSet<Chunk>
     public T Create<T>() where T : Chunk
     {
         var chunkId = NodeCacheManager.GetChunkIdByType(typeof(T));
-
+        
         if (TryGet(chunkId, out var c))
         {
             return c as T ?? throw new ThisShouldNotHappenException();

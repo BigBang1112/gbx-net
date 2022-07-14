@@ -14,7 +14,7 @@ public class GameBoxHeader
     /// <summary>
     /// Header chunks that are part of an unknown node. For known node header chunks, see <see cref="GameBox.Node"/> -> <see cref="INodeHeader.HeaderChunks"/>.
     /// </summary>
-    public ChunkSet HeaderChunks { get; init; }
+    public HeaderChunkSet HeaderChunks { get; init; }
 
     public GameBoxHeader(uint id)
     {
@@ -26,7 +26,7 @@ public class GameBoxHeader
         Id = id;
         UserData = Array.Empty<byte>();
         NumNodes = 0;
-        HeaderChunks = new ChunkSet();
+        HeaderChunks = new();
     }
 
     internal void Write(Node node, GameBoxWriter w, int numNodes, ILogger? logger)
