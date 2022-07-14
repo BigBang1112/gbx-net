@@ -24,13 +24,13 @@ public class ReadWriteEqualityTestGenerator : ISourceGenerator
     {
         // GBX.NET assembly
         var gbxnet = context.Compilation.SourceModule.ReferencedAssemblySymbols.First(x => x.Name == "GBX.NET");
-        var enginesNamespace = gbxnet.GlobalNamespace.NavigateToNamespace("GBX.NET.Engines");
+        var enginesNamespace = gbxnet.GlobalNamespace.NavigateToNamespace("GBX.NET.Engines") ?? throw new Exception("GBX.NET.Engines namespace not found.");
         var engineTypes = enginesNamespace.GetNamespaceMembers().SelectMany(x => x.GetTypeMembers());
         var testsProjectDirectory = Path.GetDirectoryName(context.Compilation.SyntaxTrees.First(x => Path.GetDirectoryName(x.FilePath).EndsWith("GBX.NET.Tests")).FilePath);
 
         var testsNamespace = context.Compilation
             .GlobalNamespace
-            .NavigateToNamespace("GBX.NET.Tests");
+            .NavigateToNamespace("GBX.NET.Tests") ?? throw new Exception("GBX.NET.Tests namespace not found."); ;
 
         var gameVersionsType = testsNamespace
             .GetTypeMembers()
@@ -61,8 +61,8 @@ public class ReadWriteEqualityTestGenerator : ISourceGenerator
                 continue;
             }
 
-            var existingClassTestsType = existingTestsNamespace
-                .NavigateToNamespace(type.ContainingNamespace.Name)
+            var existingClassTestsType = existingTestsNamespace?
+                .NavigateToNamespace(type.ContainingNamespace.Name)?
                 .GetTypeMembers().FirstOrDefault(x => x.Name == $"{type.Name}Tests");
 
             var chunkCode = GenerateChunkCode(type, existingClassTestsType, testsProjectDirectory, versions);
