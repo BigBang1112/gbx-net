@@ -802,6 +802,24 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public void Byte3(ref Byte3? variable, Byte3 defaultValue = default) => variable = Byte3(variable, defaultValue);
 
+    public Int3 Byte3(Int3 variable = default)
+    {
+        if (Reader is not null) variable = (Int3)Reader.ReadByte3();
+        if (Writer is not null) Writer.Write((Byte3)variable);
+        return variable;
+    }
+
+    public Int3? Byte3(Int3? variable, Int3 defaultValue = default)
+    {
+        if (Reader is not null) variable = (Int3)Reader.ReadByte3();
+        if (Writer is not null) Writer.Write((Byte3)variable.GetValueOrDefault(defaultValue));
+        return variable;
+    }
+
+    public void Byte3(ref Int3 variable) => variable = Byte3(variable);
+
+    public void Byte3(ref Int3? variable, Int3 defaultValue = default) => variable = Byte3(variable, defaultValue);
+
     /// <summary>
     /// Reads or writes a <see cref="NET.Vec2"/>.
     /// </summary>
@@ -1569,33 +1587,38 @@ public partial class GameBoxReaderWriter
             throw new ArgumentNullException(nameof(forLoopReadWrite));
         }
 
+        var length = Reader?.ReadInt32() ?? array?.Length ?? 0;
+        Writer?.Write(length);
+
         if (Reader is not null)
         {
-            var length = Reader.ReadInt32();
-
             array = new T[length];
-
-            for (int i = 0; i < length; i++)
-            {
-                var t = new T();
-                forLoopReadWrite(this, t);
-                array[i] = t;
-            }
         }
 
-        if (Writer is not null)
+        if (array is null)
         {
-            if (array is null)
+            return null;
+        }
+
+        for (int i = 0; i < length; i++)
+        {
+            var t = array[i];
+
+            if (Reader is not null)
             {
-                Writer.Write(0);
-                return array;
+                t = new T();
             }
 
-            Writer.Write(array.Length);
-
-            for (int i = 0; i < array.Length; i++)
+            if (Writer is not null)
             {
-                forLoopReadWrite(this, array[i]);
+                t = array[i];
+            }
+
+            forLoopReadWrite(this, t);
+
+            if (Reader is not null)
+            {
+                array[i] = t;
             }
         }
 
@@ -1805,33 +1828,43 @@ public partial class GameBoxReaderWriter
             throw new ArgumentNullException(nameof(forLoopReadWrite));
         }
 
+        var count = Reader?.ReadInt32() ?? list?.Count ?? 0;
+        Writer?.Write(count);
+
         if (Reader is not null)
         {
-            var length = Reader.ReadInt32();
-
-            list = new List<T>(length);
-
-            for (int i = 0; i < length; i++)
-            {
-                var t = new T();
-                forLoopReadWrite(this, t);
-                list.Add(t);
-            }
+            list = new List<T>(count);
         }
 
-        if (Writer is not null)
+        if (list is null)
         {
-            if (list is null)
+            return null;
+        }
+
+        for (int i = 0; i < count; i++)
+        {
+            var t = default(T);
+
+            if (Reader is not null)
             {
-                Writer.Write(0);
-                return list;
+                t = new T();
             }
 
-            Writer.Write(list.Count);
-
-            foreach (var t in list)
+            if (Writer is not null)
             {
-                forLoopReadWrite(this, t);
+                t ??= list[i];
+            }
+
+            if (t is null)
+            {
+                throw new ThisShouldNotHappenException();
+            }
+
+            forLoopReadWrite(this, t);
+
+            if (Reader is not null)
+            {
+                list.Add(t);
             }
         }
 
