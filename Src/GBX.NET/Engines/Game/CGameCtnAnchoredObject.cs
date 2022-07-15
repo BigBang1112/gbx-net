@@ -18,7 +18,7 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     private short flags;
     private float scale = 1;
     private Vec3 pivotPosition;
-    private FileRef? skin;
+    private FileRef? packDesc;
     private DifficultyColor? color;
 
     #endregion
@@ -101,8 +101,11 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
         set => color = value;
     }
 
+    /// <summary>
+    /// Skin used on the item.
+    /// </summary>
     [NodeMember]
-    public FileRef? Skin { get => skin; set => skin = value; }
+    public FileRef? PackDesc { get => packDesc; set => packDesc = value; }
 
     CGameCtnChallenge? INodeDependant<CGameCtnChallenge>.DependingNode { get; set; }
 
@@ -201,7 +204,7 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
                         {
                             if ((n.flags & 0x4) == 0x4)
                             {
-                                rw.FileRef(ref n.skin);
+                                rw.FileRef(ref n.packDesc);
                             }
 
                             if (version >= 8) // TM 2020
