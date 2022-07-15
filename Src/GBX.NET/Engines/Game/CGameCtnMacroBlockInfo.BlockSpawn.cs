@@ -6,18 +6,23 @@ public partial class CGameCtnMacroBlockInfo
     {
         private int ver;
         private Ident blockModel = Ident.Empty;
-        private Int3 coord;
-        private Direction direction;
+        private Int3? coord;
+        private Direction? direction;
         private int flags;
         private CGameWaypointSpecialProperty? waypoint;
         private CMwNod? U01;
+        private short? U02;
+        private Vec3? absolutePositionInMap;
+        private Vec3? pitchYawRoll;
 
         public int Version { get => ver; set => ver = value; }
         public Ident BlockModel { get => blockModel; set => blockModel = value; }
-        public Int3 Coord { get => coord; set => coord = value; }
-        public Direction Direction { get => direction; set => direction = value; }
+        public Int3? Coord { get => coord; set => coord = value; }
+        public Direction? Direction { get => direction; set => direction = value; }
         public int Flags { get => flags; set => flags = value; }
         public CGameWaypointSpecialProperty? Waypoint { get => waypoint; set => waypoint = value; }
+        public Vec3? AbsolutePositionInMap { get => absolutePositionInMap; set => absolutePositionInMap = value; }
+        public Vec3? PitchYawRoll { get => pitchYawRoll; set => pitchYawRoll = value; }
 
         public string Name
         {
@@ -43,22 +48,52 @@ public partial class CGameCtnMacroBlockInfo
 
             if (ver >= 2)
             {
-                coord = (Int3)rw.Byte3((Byte3)coord);
-                rw.EnumByte<Direction>(ref direction);
+                if (ver < 5)
+                {
+                    rw.Byte3(ref coord);
+                    rw.EnumByte<Direction>(ref direction);
+                }
 
                 rw.Int32(ref flags);
 
                 if (ver >= 3)
                 {
+                    if (ver >= 5)
+                    {
+                        if (((flags >> 24) & 1) != 0)
+                        {
+                            rw.Byte3(ref coord);
+                            rw.EnumByte<Direction>(ref direction);
+                        }
+                        else
+                        {
+                            rw.Vec3(ref absolutePositionInMap);
+                            rw.Vec3(ref pitchYawRoll);
+                        }
+                    }
+
                     rw.NodeRef<CGameWaypointSpecialProperty>(ref waypoint);
 
                     if (ver >= 4)
                     {
-                        rw.NodeRef(ref U01);
-
-                        if (U01 is not null)
+                        if (ver >= 6 && ver < 8)
                         {
-                            throw new NotImplementedException();
+                            throw new ChunkVersionNotSupportedException(ver);
+                        }
+
+                        if (ver < 6)
+                        {
+                            rw.NodeRef(ref U01);
+
+                            if (U01 is not null)
+                            {
+                                throw new NotImplementedException();
+                            }
+                        }
+
+                        if (ver >= 8)
+                        {
+                            rw.Int16(ref U02);
                         }
                     }
                 }

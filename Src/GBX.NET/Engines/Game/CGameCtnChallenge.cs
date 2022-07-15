@@ -1833,8 +1833,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         var macroBlocks = macroblock.BlockSpawns.Where(x => !x.IsFree).ToArray();
         var allCoords = macroBlocks.Select(x => x.Coord); // Creates an enumerable of macroblock block coords
 
-        var min = new Int3(allCoords.Select(x => x.X).Min(), allCoords.Select(x => x.Y).Min(), allCoords.Select(x => x.Z).Min());
-        var max = new Int3(allCoords.Select(x => x.X).Max(), allCoords.Select(x => x.Y).Max(), allCoords.Select(x => x.Z).Max());
+        var min = new Int3(
+            allCoords.Select(x => x.GetValueOrDefault().X).Min(), 
+            allCoords.Select(x => x.GetValueOrDefault().Y).Min(), 
+            allCoords.Select(x => x.GetValueOrDefault().Z).Min());
+        var max = new Int3(
+            allCoords.Select(x => x.GetValueOrDefault().X).Max(), 
+            allCoords.Select(x => x.GetValueOrDefault().Y).Max(), 
+            allCoords.Select(x => x.GetValueOrDefault().Z).Max());
         // Calculates the minimum and maximum coord, used to determine size and center of the macroblock
 
         var size = max - min + (1, 1, 1);
@@ -1845,7 +1851,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         for (var i = 0; i < newCoords.Length; i++)
         {
             var block = macroBlocks[i];
-            var blockCoord = (Vec3)block.Coord;
+            var blockCoord = (Vec3)block.Coord.GetValueOrDefault();
 
             var blockCenter = new Vec3();
             // Temporary center variable whose rule is to properly position blocks over size of 1x1
@@ -1880,7 +1886,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             offsetZ -= blockCenter.Z;
             // If the center is different than 0 0 (the block coordinates pretended to be in the middle), fix the coord back to its normal coordination
 
-            newCoords[i] = new Vec3((float)offsetX, block.Coord.Y, (float)offsetZ); // Applies the result to the array, Y isn't affected
+            newCoords[i] = new Vec3((float)offsetX, block.Coord.GetValueOrDefault().Y, (float)offsetZ); // Applies the result to the array, Y isn't affected
         }
 
         var newMin = new Vec3(newCoords.Select(x => x.X).Min(), newCoords.Select(x => x.Y).Min(), newCoords.Select(x => x.Z).Min());
@@ -1895,7 +1901,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             var b = new CGameCtnBlock(
                 name: block.Name,
-                direction: Dir.Add(block.Direction, dir),
+                direction: Dir.Add(block.Direction ?? Direction.North, dir),
                 coord: coord + (Int3)newRelativeCoord,
                 flags: block.Flags,
                 author: block.BlockModel.Author,
@@ -3351,7 +3357,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         public int U01;
         public int U02 = 10;
-        public byte[]? U03 = new byte[] { 0, 0, 0, 0 };
+        public int U03 = 0;
+        public byte[]? U04;
 
         /// <summary>
         /// Version of the chunk.
@@ -3372,7 +3379,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 return node;
             });
 
-            U03 = r.ReadToEnd();
+            U03 = r.ReadInt32();
+            U04 = r.ReadToEnd(); // bunch of random int32-sized arrays
         }
 
         public override void Write(CGameCtnChallenge n, GameBoxWriter w, ILogger? logger)
@@ -3387,6 +3395,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             itemW.WriteNodeArray(n.anchoredObjects);
 
             itemW.Write(U03);
+            itemW.Write(U04);
 
             w.Write((int)itemMs.Length);
             w.Write(itemMs.ToArray());

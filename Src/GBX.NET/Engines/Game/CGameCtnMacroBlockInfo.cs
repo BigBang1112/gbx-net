@@ -40,12 +40,12 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector
 
     #region Chunks
 
-    #region 0x000 chunk (blocks)
+    #region 0x000 chunk (block spawns)
 
     /// <summary>
-    /// CGameCtnMacroBlockInfo 0x000 chunk (blocks)
+    /// CGameCtnMacroBlockInfo 0x000 chunk (block spawns)
     /// </summary>
-    [Chunk(0x0310D000, "blocks")]
+    [Chunk(0x0310D000, "block spawns")]
     public class Chunk0310D000 : Chunk<CGameCtnMacroBlockInfo>
     {
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GameBoxReaderWriter rw)
@@ -56,12 +56,12 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector
 
     #endregion
 
-    #region 0x001 chunk
+    #region 0x001 chunk (block skin spawns)
 
     /// <summary>
-    /// CGameCtnMacroBlockInfo 0x001 chunk
+    /// CGameCtnMacroBlockInfo 0x001 chunk (block skin spawns)
     /// </summary>
-    [Chunk(0x0310D001)]
+    [Chunk(0x0310D001, "block skin spawns")]
     public class Chunk0310D001 : Chunk<CGameCtnMacroBlockInfo>
     {
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GameBoxReaderWriter rw)
@@ -72,12 +72,12 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector
 
     #endregion
 
-    #region 0x002 chunk
+    #region 0x002 chunk (card events spawns)
 
     /// <summary>
-    /// CGameCtnMacroBlockInfo 0x002 chunk
+    /// CGameCtnMacroBlockInfo 0x002 chunk (card events spawns)
     /// </summary>
-    [Chunk(0x0310D002)]
+    [Chunk(0x0310D002, "card events spawns")]
     public class Chunk0310D002 : Chunk<CGameCtnMacroBlockInfo>
     {
         public override void ReadWrite(CGameCtnMacroBlockInfo n, GameBoxReaderWriter rw)
@@ -108,12 +108,30 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector
 
     #endregion
 
-    #region 0x008 chunk
+    #region 0x007 chunk
 
     /// <summary>
-    /// CGameCtnMacroBlockInfo 0x008 chunk
+    /// CGameCtnMacroBlockInfo 0x007 chunk
     /// </summary>
-    [Chunk(0x0310D008)]
+    [Chunk(0x0310D007)]
+    public class Chunk0310D007 : Chunk<CGameCtnMacroBlockInfo>
+    {
+        public CMwNod?[] U01 = new CMwNod?[] { null, null, null };
+
+        public override void ReadWrite(CGameCtnMacroBlockInfo n, GameBoxReaderWriter rw)
+        {
+            rw.ArrayNode(ref U01!);
+        }
+    }
+
+    #endregion
+
+    #region 0x008 chunk (auto terrains)
+
+    /// <summary>
+    /// CGameCtnMacroBlockInfo 0x008 chunk (auto terrains)
+    /// </summary>
+    [Chunk(0x0310D008, "auto terrains")]
     public class Chunk0310D008 : Chunk<CGameCtnMacroBlockInfo>
     {
         private int listVersion = 10;
@@ -145,12 +163,12 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector
 
     #endregion
 
-    #region 0x00E chunk (items)
+    #region 0x00E chunk (object spawns)
 
     /// <summary>
-    /// CGameCtnMacroBlockInfo 0x00E chunk (items)
+    /// CGameCtnMacroBlockInfo 0x00E chunk (object spawns)
     /// </summary>
-    [Chunk(0x0310D00E)]
+    [Chunk(0x0310D00E, "object spawns")]
     public class Chunk0310D00E : Chunk<CGameCtnMacroBlockInfo>, IVersionable
     {
         private int version;
@@ -210,96 +228,6 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector
     }
 
     #endregion
-
+    
     #endregion
-
-    public class ObjectSpawn : IReadableWritable, IVersionable
-    {
-        private int ver;
-        private Ident itemModel = Ident.Empty;
-        private byte? quarterY;
-        private byte? additionalDir;
-        private Vec3 pitchYawRoll;
-        private Int3 blockCoord;
-        private string? anchorTreeId;
-        private Vec3 absolutePositionInMap;
-        private Vec3 pivotPosition;
-        private float scale;
-
-        public int U01;
-        public int U02;
-        public short U03;
-        public CMwNod? U04;
-        public Int3 U05;
-
-        public int Version { get => ver; set => ver = value; }
-        public Ident ItemModel { get => itemModel; set => itemModel = value; }
-        public byte? QuarterY { get => quarterY; set => quarterY = value; }
-        public byte? AdditionalDir { get => additionalDir; set => additionalDir = value; }
-        public Vec3 PitchYawRoll { get => pitchYawRoll; set => pitchYawRoll = value; }
-        public Int3 BlockCoord { get => blockCoord; set => blockCoord = value; }
-        public string? AnchorTreeId { get => anchorTreeId; set => anchorTreeId = value; }
-        public Vec3 AbsolutePositionInMap { get => absolutePositionInMap; set => absolutePositionInMap = value; }
-        public Vec3 PivotPosition { get => pivotPosition; set => pivotPosition = value; }
-        public float Scale { get => scale; set => scale = value; }
-
-        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
-        {
-            rw.Int32(ref ver);
-            rw.Ident(ref itemModel!);
-
-            if (ver < 3)
-            {
-                rw.Byte(ref quarterY);
-
-                if (ver >= 1)
-                {
-                    rw.Byte(ref additionalDir);
-                }
-            }
-            else
-            {
-                rw.Vec3(ref pitchYawRoll);
-            }
-
-            rw.Int3(ref blockCoord);
-            rw.Id(ref anchorTreeId);
-            rw.Vec3(ref absolutePositionInMap);
-
-            if (ver < 5)
-            {
-                rw.Int32(ref U01);
-            }
-
-            if (ver < 6)
-            {
-                rw.Int32(ref U02);
-            }
-
-            if (ver >= 6)
-            {
-                rw.Int16(ref U03); // 0
-
-                if (ver >= 7)
-                {
-                    rw.Vec3(ref pivotPosition);
-
-                    if (ver >= 8)
-                    {
-                        rw.NodeRef(ref U04); // probably waypoint
-
-                        if (ver >= 9)
-                        {
-                            rw.Single(ref scale);
-
-                            if (ver >= 10)
-                            {
-                                rw.Int3(ref U05); // 0 1 -1
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
