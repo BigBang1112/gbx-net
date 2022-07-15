@@ -2,7 +2,7 @@
 
 namespace GBX.NET.Tests;
 
-[AttributeUsage(AttributeTargets.Method)]
+[AttributeUsage(AttributeTargets.Method | AttributeTargets.Class)]
 public class IgnoreReadWriteEqualityTestAttribute : Attribute
 {
 }

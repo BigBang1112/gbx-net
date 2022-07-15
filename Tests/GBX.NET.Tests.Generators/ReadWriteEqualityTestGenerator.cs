@@ -114,6 +114,10 @@ public partial class {type.Name}Tests
                                                        string testsProjectDirectory,
                                                        IFieldSymbol[] versions)
     {
+
+        var ignoreReadWriteEqualityTestFullyAtt = existingChunkTestsType?.GetAttributes()
+            .FirstOrDefault(x => x.AttributeClass?.Name == "IgnoreReadWriteEqualityTestAttribute");
+        
         foreach (var version in versions)
         {
             var zipPath = Path.Combine(testsProjectDirectory, "TestData", "Chunks", $"{type.Name}.{version.ConstantValue}.zip");
@@ -142,7 +146,7 @@ public partial class {type.Name}Tests
             {
                 var manualTestMethodAttributes = manualTestMethod.GetAttributes();
 
-                ignoreReadWriteEqualityTestAtt = manualTestMethodAttributes
+                ignoreReadWriteEqualityTestAtt ??= manualTestMethodAttributes
                     .FirstOrDefault(x => x.AttributeClass?.Name == "IgnoreReadWriteEqualityTestAttribute");
 
                 if (!manualTestMethod.IsPartialDefinition)
@@ -151,7 +155,7 @@ public partial class {type.Name}Tests
                 }
             }
 
-            yield return $@"[Fact{(ignoreReadWriteEqualityTestAtt is null ? "" : "(Skip = \"This chunk was ignored from the automatic test.\")")}]
+            yield return $@"[Fact{((ignoreReadWriteEqualityTestFullyAtt is null && ignoreReadWriteEqualityTestAtt is null) ? "" : "(Skip = \"This chunk was ignored from the automatic test.\")")}]
         public{(manualTestMethod is null ? "" : " partial")} void {methodName}()
         {{
             // Arrange
