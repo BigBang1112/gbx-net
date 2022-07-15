@@ -40,7 +40,8 @@ internal abstract class ChunkTester<TNode, TChunk> : IDisposable where TNode : N
 
         Gbx = new GameBox<TNode>(Node)
         {
-            IdVersion = idVersionWasWritten ? 3 : null
+            IdVersion = idVersionWasWritten ? 3 : null,
+            IdIsWritten = true
         };
 
         if (!File.Exists(GetZipPath()))
