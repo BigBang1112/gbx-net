@@ -35,10 +35,12 @@ public partial class GameBox
     public GameBoxBodyDebugger? Debugger { get; private set; }
 
     public int? IdVersion { get; internal set; }
-    public List<string> IdStrings { get; } = new();
+    public List<string> IdStringsInReadMode { get; } = new();
+    public List<string> IdStringsInWriteMode { get; } = new();
     public bool IdIsWritten { get; internal set; }
 
-    public SortedDictionary<int, Node?> AuxNodes { get; } = new();
+    public SortedDictionary<int, Node?> AuxNodesInReadMode { get; } = new();
+    public SortedDictionary<int, Node?> AuxNodesInWriteMode { get; } = new();
 
     public IExternalGameData? ExternalGameData { get; set; }
 
@@ -108,7 +110,7 @@ public partial class GameBox
     {
         logger?.LogDebug("Writing the body...");
 
-        AuxNodes.Clear();
+        AuxNodesInWriteMode.Clear();
         ResetIdState();
 
         using var ms = new MemoryStream();
@@ -124,7 +126,7 @@ public partial class GameBox
 
         if (RawBody is null)
         {
-            Header.Write(Node!, headerW, AuxNodes.Count + 1, logger);
+            Header.Write(Node!, headerW, AuxNodesInWriteMode.Count + 1, logger);
         }
         else
         {
@@ -148,7 +150,8 @@ public partial class GameBox
     internal void ResetIdState()
     {
         IdVersion = null;
-        IdStrings.Clear();
+        IdStringsInReadMode.Clear();
+        IdStringsInWriteMode.Clear();
         IdIsWritten = false;
     }
 
@@ -160,7 +163,7 @@ public partial class GameBox
     {
         logger?.LogDebug("Writing the body...");
 
-        AuxNodes.Clear();
+        AuxNodesInWriteMode.Clear();
 
         using var ms = new MemoryStream();
         using var bodyW = new GameBoxWriter(ms, this, remap, asyncAction, logger);
@@ -175,7 +178,7 @@ public partial class GameBox
 
         if (RawBody is null)
         {
-            Header.Write(Node!, headerW, AuxNodes.Count + 1, logger);
+            Header.Write(Node!, headerW, AuxNodesInWriteMode.Count + 1, logger);
         }
         else
         {

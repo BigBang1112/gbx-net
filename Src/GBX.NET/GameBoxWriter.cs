@@ -308,7 +308,7 @@ public class GameBoxWriter : BinaryWriter
             return;
         }
 
-        var index = gbx.IdStrings.IndexOf(value);
+        var index = gbx.IdStringsInWriteMode.IndexOf(value);
 
         if (index != -1)
         {
@@ -325,7 +325,7 @@ public class GameBoxWriter : BinaryWriter
         Write(0x40000000);
         Write(value);
 
-        gbx.IdStrings.Add(value);
+        gbx.IdStringsInWriteMode.Add(value);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -350,7 +350,7 @@ public class GameBoxWriter : BinaryWriter
         {
             var nodeFileIndex = nodeFile.NodeIndex + 1;
             Write(nodeFileIndex);
-            gbx.AuxNodes.Add(nodeFileIndex, null);
+            gbx.AuxNodesInWriteMode.Add(nodeFileIndex, null);
             return;
         }
 
@@ -360,14 +360,14 @@ public class GameBoxWriter : BinaryWriter
             return;
         }
 
-        if (gbx.AuxNodes.ContainsValue(node))
+        if (gbx.AuxNodesInWriteMode.ContainsValue(node))
         {
-            Write(gbx.AuxNodes.FirstOrDefault(x => (x.Value ?? throw new Exception("Node or its external index not found")).Equals(node)).Key + 1);
+            Write(gbx.AuxNodesInWriteMode.FirstOrDefault(x => (x.Value ?? throw new Exception("Node or its external index not found")).Equals(node)).Key + 1);
             return;
         }
 
-        var index = gbx.AuxNodes.Count;
-        gbx.AuxNodes.Add(index, node);
+        var index = gbx.AuxNodesInWriteMode.Count;
+        gbx.AuxNodesInWriteMode.Add(index, node);
 
         Write(index + 1);
         Write(Chunk.Remap(node.Id, Settings.Remap));

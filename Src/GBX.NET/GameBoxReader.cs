@@ -195,7 +195,7 @@ public class GameBoxReader : BinaryReader
         if ((index & 0x3FFF) == 0 && (index >> 30 == 1 || index >> 30 == 2))
         {
             var str = ReadString();
-            gbx.IdStrings.Add(str);
+            gbx.IdStringsInReadMode.Add(str);
             return str;
         }
 
@@ -214,9 +214,9 @@ public class GameBoxReader : BinaryReader
             return new Id((int)index);
         }
 
-        if (gbx.IdStrings.Count > (index & 0x3FFF) - 1)
+        if (gbx.IdStringsInReadMode.Count > (index & 0x3FFF) - 1)
         {
-            return gbx.IdStrings[(int)(index & 0x3FFF) - 1];
+            return gbx.IdStringsInReadMode[(int)(index & 0x3FFF) - 1];
         }
 
         return "";
@@ -642,7 +642,7 @@ public class GameBoxReader : BinaryReader
 
         if (TryGetRefTableNode(gbx, index, out nodeRefFile))
         {
-            gbx.AuxNodes[index] = null;
+            gbx.AuxNodesInReadMode[index] = null;
             return null;
         }
 
@@ -659,7 +659,7 @@ public class GameBoxReader : BinaryReader
         {
             // Sometimes it indexes the node reference that is further in the expected indexes
             // So it grabs the last one instead, needs to be further tested
-            return gbx.AuxNodes.Values.Last();
+            return gbx.AuxNodesInReadMode.Values.Last();
         }
 
         return node;
@@ -753,7 +753,7 @@ public class GameBoxReader : BinaryReader
         {
             Logger?.LogDiscardedExternalNode(nodeRefFile!);
 
-            gbx.AuxNodes[index] = null;
+            gbx.AuxNodesInReadMode[index] = null;
             return null;
         }
 
@@ -770,7 +770,7 @@ public class GameBoxReader : BinaryReader
         {
             // Sometimes it indexes the node reference that is further in the expected indexes
             // So it grabs the last one instead, needs to be further tested
-            return gbx.AuxNodes.Values.Last();
+            return gbx.AuxNodesInReadMode.Values.Last();
         }
 
         return node;
@@ -802,8 +802,8 @@ public class GameBoxReader : BinaryReader
 
     private static bool NodeShouldBeParsed(GameBox gbx, int index)
     {
-        var containsNodeIndex = gbx.AuxNodes.ContainsKey(index);
-        _ = gbx.AuxNodes.TryGetValue(index, out Node? node);
+        var containsNodeIndex = gbx.AuxNodesInReadMode.ContainsKey(index);
+        _ = gbx.AuxNodesInReadMode.TryGetValue(index, out Node? node);
 
         // If index is 0 or bigger and the node wasn't read yet, or is null
         return index >= 0 && (!containsNodeIndex || node is null);
@@ -813,11 +813,11 @@ public class GameBoxReader : BinaryReader
     {
         if (node is null)
         {
-            gbx.AuxNodes.TryGetValue(index, out node); // Tries to get the available node from index
+            gbx.AuxNodesInReadMode.TryGetValue(index, out node); // Tries to get the available node from index
         }
         else
         {
-            gbx.AuxNodes[index] = node;
+            gbx.AuxNodesInReadMode[index] = node;
         }
     }
 
