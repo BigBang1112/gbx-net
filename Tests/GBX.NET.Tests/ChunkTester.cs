@@ -1,5 +1,6 @@
 ﻿using GBX.NET.Managers;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 
@@ -16,7 +17,7 @@ internal abstract class ChunkTester<TNode, TChunk> : IDisposable where TNode : N
     public ZipArchive Zip { get; }
     public ZipArchiveEntry ChunkEntry { get; }
 
-    public ChunkTester(string gameVersion, bool idVersionWasWritten)
+    public ChunkTester(string gameVersion)
     {
         GameVersion = gameVersion;
         Node = NodeCacheManager.GetNodeInstance<TNode>();
@@ -40,7 +41,7 @@ internal abstract class ChunkTester<TNode, TChunk> : IDisposable where TNode : N
 
         Gbx = new GameBox<TNode>(Node)
         {
-            IdVersion = idVersionWasWritten ? 3 : null,
+            IdVersion = 3,
             IdIsWritten = true
         };
 
@@ -51,6 +52,18 @@ internal abstract class ChunkTester<TNode, TChunk> : IDisposable where TNode : N
 
         Zip = ZipFile.OpenRead(GetZipPath());
         ChunkEntry = Zip.GetEntry($"{ChunkName}.dat") ?? throw new Exception($"Chunk entry not found for {NodeName}.{ChunkName}, game version {gameVersion}.");
+    }
+
+    public void SetIdState(int? version = 3, IEnumerable<string>? strings = null)
+    {
+        Gbx.IdVersion = version;
+        Gbx.IdIsWritten = version.HasValue;
+
+        if (strings is not null)
+        {
+            Gbx.IdStringsInReadMode.AddRange(strings);
+            Gbx.IdStringsInWriteMode.AddRange(strings);
+        }
     }
 
     public string GetZipPath()

@@ -9,7 +9,7 @@ internal class ChunkReadTester<TNode, TChunk> : ChunkTester<TNode, TChunk>, IDis
     private readonly Stream stream;
     private readonly GameBoxReader reader;
 
-    public ChunkReadTester(string gameVersion, bool idVersionWasWritten = false) : base(gameVersion, idVersionWasWritten)
+    public ChunkReadTester(string gameVersion) : base(gameVersion)
     {
         stream = ChunkEntry.Open();
         reader = new GameBoxReader(stream, gbx: Gbx);

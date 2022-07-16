@@ -141,17 +141,35 @@ public partial class {type.Name}Tests
                 .FirstOrDefault(x => x.Name == methodName);
 
             var ignoreReadWriteEqualityTestAtt = default(AttributeData);
+            var readWriteEqualityTestAtt = default(AttributeData);
 
             if (manualTestMethod is not null)
             {
+                if (!manualTestMethod.IsPartialDefinition)
+                {
+                    continue;
+                }
+
                 var manualTestMethodAttributes = manualTestMethod.GetAttributes();
 
                 ignoreReadWriteEqualityTestAtt ??= manualTestMethodAttributes
                     .FirstOrDefault(x => x.AttributeClass?.Name == "IgnoreReadWriteEqualityTestAttribute");
+                readWriteEqualityTestAtt = manualTestMethodAttributes
+                    .FirstOrDefault(x => x.AttributeClass?.Name == "ReadWriteEqualityTestAttribute");
+            }
 
-                if (!manualTestMethod.IsPartialDefinition)
+            var idVersion = (int?)3;
+            var idStrings = default(string);
+
+            if (readWriteEqualityTestAtt is not null)
+            {
+                var attArguments = readWriteEqualityTestAtt.NamedArguments
+                    .ToDictionary(x => x.Key, x => x.Value);
+
+                if (attArguments.TryGetValue("FirstIdOccurance", out TypedConstant firstIdOccuranceValue)
+                    && (firstIdOccuranceValue.Value is bool firstIdOccuranceVal) && firstIdOccuranceVal)
                 {
-                    continue;
+                    idVersion = null;
                 }
             }
 
@@ -160,8 +178,8 @@ public partial class {type.Name}Tests
         {{
             // Arrange
             using ChunkReadWriteEqualityTester<{type.Name}, {type.Name}.{chunkType.Name}> chunkTester
-                = new(GameVersions.{version.Name}, idVersionWasWritten: true); // idVersionWasWritten usage missing
-
+                = new(GameVersions.{version.Name});
+            {(idVersion != 3 && idStrings is null ? $"\n            chunkTester.SetIdState(version: {idVersion?.ToString() ?? "null"}); // idStrings usage missing\n" : "")}
             // Act
             chunkTester.ReadWrite();
 

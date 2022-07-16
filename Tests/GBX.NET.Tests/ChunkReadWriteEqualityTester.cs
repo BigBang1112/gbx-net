@@ -9,7 +9,7 @@ internal class ChunkReadWriteEqualityTester<TNode, TChunk> : ChunkTester<TNode, 
     public byte[] InputData { get; }
     public MemoryStream OutputStream { get; }
 
-    public ChunkReadWriteEqualityTester(string gameVersion, bool idVersionWasWritten) : base(gameVersion, idVersionWasWritten)
+    public ChunkReadWriteEqualityTester(string gameVersion) : base(gameVersion)
     {
         InputData = GetChunkData();
         OutputStream = new MemoryStream();
