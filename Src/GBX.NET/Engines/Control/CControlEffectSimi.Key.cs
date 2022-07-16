@@ -5,7 +5,6 @@ public partial class CControlEffectSimi
     /// <summary>
     /// Keyframe of <see cref="CControlEffectSimi"/>.
     /// </summary>
-    /// <remarks>Internally called <c>SKeyVal</c>.</remarks>
     public class Key : CGameCtnMediaBlock.Key
     {
         private Vec2 position;
@@ -19,44 +18,17 @@ public partial class CControlEffectSimi
         public float U02;
         public float U03;
 
-        public Vec2 Position
-        {
-            get => position;
-            set => position = value;
-        }
+        public Vec2 Position { get => position; set => position = value; }
 
         /// <summary>
         /// Rotation in radians
         /// </summary>
-        public float Rotation
-        {
-            get => rotation;
-            set => rotation = value;
-        }
+        public float Rotation { get => rotation; set => rotation = value; }
 
-        public Vec2 Scale
-        {
-            get => scale;
-            set => scale = value;
-        }
-
-        public float Opacity
-        {
-            get => opacity;
-            set => opacity = value;
-        }
-
-        public float Depth
-        {
-            get => depth;
-            set => depth = value;
-        }
-
-        public float IsContinuousEffect
-        {
-            get => isContinuousEffect;
-            set => isContinuousEffect = value;
-        }
+        public Vec2 Scale { get => scale; set => scale = value; }
+        public float Opacity { get => opacity; set => opacity = value; }
+        public float Depth { get => depth; set => depth = value; }
+        public float IsContinuousEffect { get => isContinuousEffect; set => isContinuousEffect = value; }
 
         public Key()
         {

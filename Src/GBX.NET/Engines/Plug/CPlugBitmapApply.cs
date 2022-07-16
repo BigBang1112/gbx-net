@@ -1,5 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09012000</remarks>
 [Node(0x09012000)]
 public class CPlugBitmapApply : CPlugBitmapAddress
 {
@@ -8,6 +9,9 @@ public class CPlugBitmapApply : CPlugBitmapAddress
 
     }
 
+    /// <summary>
+    /// CPlugBitmapApply 0x003 chunk
+    /// </summary>
     [Chunk(0x09012003)]
     public class Chunk090120003 : Chunk<CPlugBitmapApply>
     {

@@ -1,5 +1,6 @@
 ﻿namespace GBX.NET.Engines.TrackMania;
 
+/// <remarks>ID: 0x24092000</remarks>
 [Node(0x24092000)]
 public class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi
 {
@@ -78,6 +79,9 @@ public class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi
 
     #region 0x000 chunk
 
+    /// <summary>
+    /// CCtnMediaBlockUiTMSimpleEvtsDisplay 0x000 chunk
+    /// </summary>
     [Chunk(0x24092000)]
     public class Chunk24092000 : Chunk<CCtnMediaBlockUiTMSimpleEvtsDisplay>
     {
@@ -88,10 +92,7 @@ public class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi
 
         public override void Write(CCtnMediaBlockUiTMSimpleEvtsDisplay n, GameBoxWriter w)
         {
-            if (n.displayMode == EDisplayMode.Always || n.displayMode == EDisplayMode.Never)
-                w.Write(true);
-            else
-                w.Write(false);
+            w.Write(n.displayMode == EDisplayMode.Always || n.displayMode == EDisplayMode.Never);
         }
     }
 
@@ -99,6 +100,9 @@ public class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi
 
     #region 0x001 chunk
 
+    /// <summary>
+    /// CCtnMediaBlockUiTMSimpleEvtsDisplay 0x001 chunk
+    /// </summary>
     [Chunk(0x24092001)]
     public class Chunk24092001 : Chunk<CCtnMediaBlockUiTMSimpleEvtsDisplay>
     {
@@ -116,6 +120,9 @@ public class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi
 
     #region 0x002 chunk
 
+    /// <summary>
+    /// CCtnMediaBlockUiTMSimpleEvtsDisplay 0x002 chunk
+    /// </summary>
     [Chunk(0x24092002)]
     public class Chunk24092002 : Chunk<CCtnMediaBlockUiTMSimpleEvtsDisplay>
     {
@@ -127,10 +134,7 @@ public class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi
 
         public override void Write(CCtnMediaBlockUiTMSimpleEvtsDisplay n, GameBoxWriter w)
         {
-            if (n.displayMode == EDisplayMode.Never)
-                w.Write(true);
-            else
-                w.Write(false);
+            w.Write(n.displayMode == EDisplayMode.Never);
         }
     }
 

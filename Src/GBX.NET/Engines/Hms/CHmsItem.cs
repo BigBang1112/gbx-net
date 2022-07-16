@@ -1,25 +1,39 @@
 ﻿namespace GBX.NET.Engines.Hms;
 
-/// <summary>
-/// CHmsItem (0x06003000)
-/// </summary>
+/// <remarks>ID: 0x06003000</remarks>
 [Node(0x06003000)]
 public class CHmsItem : CMwNod
 {
+    #region Fields
+
     private CPlugSolid solid;
 
-    public CPlugSolid Solid
-    {
-        get => solid;
-        set => solid = value;
-    }
+    #endregion
+
+    #region Properties
+
+    [NodeMember(ExactlyNamed = true)]
+    public CPlugSolid Solid { get => solid; set => solid = value; }
+
+    #endregion
+
+    #region Constructors
 
     protected CHmsItem()
     {
         solid = null!;
     }
 
-    [Chunk(0x06003001)]
+    #endregion
+
+    #region Chunks
+
+    #region 0x001 chunk (solid)
+
+    /// <summary>
+    /// CHmsItem 0x001 chunk (solid)
+    /// </summary>
+    [Chunk(0x06003001, "solid")]
     public class Chunk06003001 : Chunk<CHmsItem>
     {
         public override void ReadWrite(CHmsItem n, GameBoxReaderWriter rw)
@@ -28,6 +42,13 @@ public class CHmsItem : CMwNod
         }
     }
 
+    #endregion
+
+    #region 0x010 chunk
+
+    /// <summary>
+    /// CHmsItem 0x010 chunk
+    /// </summary>
     [Chunk(0x06003010)]
     public class Chunk06003010 : Chunk<CHmsItem>
     {
@@ -41,6 +62,13 @@ public class CHmsItem : CMwNod
         }
     }
 
+    #endregion
+
+    #region 0x011 chunk
+
+    /// <summary>
+    /// CHmsItem 0x011 chunk
+    /// </summary>
     [Chunk(0x06003011)]
     public class Chunk06003011 : Chunk<CHmsItem>
     {
@@ -53,4 +81,8 @@ public class CHmsItem : CMwNod
             rw.Int16(ref U02);
         }
     }
+
+    #endregion
+
+    #endregion
 }

@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Dirty lens (0x03165000)
+/// MediaTracker block - Dirty lens.
 /// </summary>
+/// <remarks>ID: 0x03165000</remarks>
 [Node(0x03165000)]
 [NodeExtension("GameCtnMediaBlockDirtyLens")]
 public partial class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
@@ -43,16 +44,15 @@ public partial class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock, CGameCtnM
 
     #region 0x000 chunk
 
+    /// <summary>
+    /// CGameCtnMediaBlockDirtyLens 0x000 chunk
+    /// </summary>
     [Chunk(0x03165000)]
     public class Chunk03165000 : Chunk<CGameCtnMediaBlockDirtyLens>, IVersionable
     {
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnMediaBlockDirtyLens n, GameBoxReaderWriter rw)
         {

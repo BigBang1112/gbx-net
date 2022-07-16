@@ -1,5 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x0911E000</remarks>
 [Node(0x0911E000)]
 public class CPlugVehiclePhyModelCustom : CMwNod
 {

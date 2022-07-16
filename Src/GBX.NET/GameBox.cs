@@ -7,17 +7,12 @@ namespace GBX.NET;
 /// <summary>
 /// An unknown serialized GameBox node with additional attributes. This class can represent deserialized .Gbx file.
 /// </summary>
-public partial class GameBox : IDisposable
+public partial class GameBox
 {
     public const string Magic = "GBX";
 
-    private readonly Header header;
-    private readonly RefTable? refTable;
-
-    /// <summary>
-    /// If specialized actions should be executed that can help further with debugging but slow down the parse speed. Options can be then visible inside Debugger properties if available.
-    /// </summary>
-    public static bool Debug { get; set; }
+    public GameBoxHeader Header { get; }
+    public GameBoxRefTable? RefTable { get; }
 
     /// <summary>
     /// If to ignore exceptions on certain chunk versions that are unknown, but shouldn't crash the reading/writing, however, could return unexpected values.
@@ -25,14 +20,39 @@ public partial class GameBox : IDisposable
     /// <remarks>Example where this could happen is <see cref="CGameCtnMediaBlockCameraCustom.Key.ReadWrite(GameBoxReaderWriter, int)"/>.</remarks>
     public static bool IgnoreUnseenVersions { get; set; }
 
-    public Node? Node { get; private set; }
-    public Body? RawBody { get; private set; }
-    public GameBoxBodyDebugger? Debugger { get; private set; }
+    /// <summary>
+    /// If to strictly throw an exception when the supposedly-read boolean is not 0 or 1.
+    /// </summary>
+    public static bool StrictBooleans { get; set; }
 
     /// <summary>
-    /// File path of the GameBox.
+    /// If to come back at the original position of an unskippable chunk, to read the pure data form without the usage of "double mode" <see cref="GameBoxReaderWriter"/>. Doesn't work with "read uncompressed body directly" option.
+    /// </summary>
+    public static bool SeekForRawChunkData { get; set; }
+
+    public Node? Node { get; private set; }
+    public GameBoxBody? RawBody { get; private set; }
+    public GameBoxBodyDebugger? Debugger { get; private set; }
+
+    public int? IdVersion { get; internal set; }
+    public List<string> IdStringsInReadMode { get; } = new();
+    public List<string> IdStringsInWriteMode { get; } = new();
+    public bool IdIsWritten { get; internal set; }
+
+    public SortedDictionary<int, Node?> AuxNodesInReadMode { get; } = new();
+    public SortedDictionary<int, Node?> AuxNodesInWriteMode { get; } = new();
+
+    public IExternalGameData? ExternalGameData { get; set; }
+
+    /// <summary>
+    /// File path of the Gbx.
     /// </summary>
     public string? FileName { get; }
+
+    /// <summary>
+    /// File path inside the Pak.
+    /// </summary>
+    internal string? PakFileName { get; set; }
 
     /// <summary>
     /// Creates a new GameBox object with the most common parameters without the node (object).
@@ -40,7 +60,7 @@ public partial class GameBox : IDisposable
     /// <param name="id">ID of the expected node - should be provided remapped to latest.</param>
     public GameBox(uint id)
     {
-        header = new Header(id);
+        Header = new GameBoxHeader(id);
     }
 
     /// <summary>
@@ -49,27 +69,17 @@ public partial class GameBox : IDisposable
     /// <param name="node">Node to wrap in.</param>
     public GameBox(Node node)
     {
-        header = new Header(node.Id);
+        Header = new GameBoxHeader(node.Id);
         Node = node;
         Node.SetGbx(this);
     }
 
-    public GameBox(Header header, RefTable? refTable, string? fileName = null)
+    public GameBox(GameBoxHeader header, GameBoxRefTable? refTable, string? fileName = null)
     {
-        this.header = header;
-        this.refTable = refTable;
+        Header = header;
+        RefTable = refTable;
 
         FileName = fileName;
-    }
-
-    public Header GetHeader()
-    {
-        return header;
-    }
-
-    public RefTable? GetRefTable()
-    {
-        return refTable;
     }
 
     /// <summary>
@@ -98,44 +108,51 @@ public partial class GameBox : IDisposable
     /// <exception cref="HeaderOnlyParseLimitationException">Writing is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
     internal void Write(Stream stream, IDRemap remap, ILogger? logger)
     {
-        var stateGuid = StateManager.Shared.CreateState(refTable);
-
         logger?.LogDebug("Writing the body...");
 
-        using var ms = new MemoryStream();
-        using var bodyW = new GameBoxWriter(ms, stateGuid, remap, logger: logger);
+        AuxNodesInWriteMode.Clear();
+        ResetIdState();
 
-        (RawBody ?? new Body()).Write(this, bodyW, logger);
+        using var ms = new MemoryStream();
+        using var bodyW = new GameBoxWriter(ms, this, remap: remap, logger: logger);
+
+        (RawBody ?? new GameBoxBody()).Write(this, bodyW, logger);
 
         logger?.LogDebug("Writing the header...");
 
-        StateManager.Shared.ResetIdState(stateGuid);
+        ResetIdState();
 
-        using var headerW = new GameBoxWriter(stream, stateGuid, remap, logger: logger);
+        using var headerW = new GameBoxWriter(stream, this, remap, logger: logger);
 
         if (RawBody is null)
         {
-            header.Write(Node!, headerW, StateManager.Shared.GetNodeCount(stateGuid) + 1, logger);
+            Header.Write(Node!, headerW, AuxNodesInWriteMode.Count + 1, logger);
         }
         else
         {
-            header.Write(Node!, headerW, header.NumNodes, logger);
+            Header.Write(Node!, headerW, Header.NumNodes, logger);
         }
 
         logger?.LogDebug("Writing the reference table...");
 
-        if (refTable is null)
+        if (RefTable is null)
         {
             headerW.Write(0);
         }
         else
         {
-            refTable.Write(header, headerW);
+            RefTable.Write(Header, headerW);
         }
 
-        headerW.WriteBytes(ms.ToArray());
+        headerW.Write(ms.ToArray());
+    }
 
-        StateManager.Shared.RemoveState(stateGuid);
+    internal void ResetIdState()
+    {
+        IdVersion = null;
+        IdStringsInReadMode.Clear();
+        IdStringsInWriteMode.Clear();
+        IdIsWritten = false;
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -144,40 +161,38 @@ public partial class GameBox : IDisposable
     /// <exception cref="HeaderOnlyParseLimitationException">Writing is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
     internal async Task WriteAsync(Stream stream, IDRemap remap, ILogger? logger, GameBoxAsyncWriteAction? asyncAction, CancellationToken cancellationToken)
     {
-        var stateGuid = StateManager.Shared.CreateState(refTable);
-
         logger?.LogDebug("Writing the body...");
 
-        using var ms = new MemoryStream();
-        using var bodyW = new GameBoxWriter(ms, stateGuid, remap, asyncAction, logger);
+        AuxNodesInWriteMode.Clear();
 
-        await (RawBody ?? new Body()).WriteAsync(this, bodyW, logger, cancellationToken);
+        using var ms = new MemoryStream();
+        using var bodyW = new GameBoxWriter(ms, this, remap, asyncAction, logger);
+
+        await (RawBody ?? new GameBoxBody()).WriteAsync(this, bodyW, logger, cancellationToken);
 
         logger?.LogDebug("Writing the header...");
 
-        StateManager.Shared.ResetIdState(stateGuid);
+        ResetIdState();
 
-        using var headerW = new GameBoxWriter(stream, stateGuid, remap, logger: logger);
+        using var headerW = new GameBoxWriter(stream, this, remap, logger: logger);
 
         if (RawBody is null)
         {
-            header.Write(Node!, headerW, StateManager.Shared.GetNodeCount(stateGuid) + 1, logger);
+            Header.Write(Node!, headerW, AuxNodesInWriteMode.Count + 1, logger);
         }
         else
         {
-            header.Write(Node!, headerW, header.NumNodes, logger);
+            Header.Write(Node!, headerW, Header.NumNodes, logger);
         }
 
         logger?.LogDebug("Writing the reference table...");
 
-        if (refTable is null)
+        if (RefTable is null)
             headerW.Write(0);
         else
-            refTable.Write(header, headerW);
+            RefTable.Write(Header, headerW);
 
-        headerW.WriteBytes(ms.ToArray());
-
-        StateManager.Shared.RemoveState(stateGuid);
+        headerW.Write(ms.ToArray());
     }
 
     /// <summary>
@@ -374,54 +389,7 @@ public partial class GameBox : IDisposable
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
     public static void Decompress(Stream input, Stream output)
     {
-        using var r = new GameBoxReader(input);
-        using var w = new GameBoxWriter(output);
-
-        var version = CopyBasicInformation(r, w);
-
-        // Body compression type
-        var compressedBody = r.ReadByte();
-
-        if (compressedBody != 'C')
-        {
-            w.Write(compressedBody);
-            input.CopyTo(output);
-            return;
-        }
-
-        w.Write('U');
-
-        // Unknown byte
-        if (version >= 4)
-            w.Write(r.ReadByte());
-
-        // Id
-        w.Write(r.ReadInt32());
-
-        // User data
-        if (version >= 6)
-        {
-            var bytes = r.ReadBytes();
-            w.Write(bytes.Length);
-            w.WriteBytes(bytes);
-        }
-
-        // Num nodes
-        w.Write(r.ReadInt32());
-
-        var numExternalNodes = r.ReadInt32();
-
-        if (numExternalNodes > 0)
-            throw new Exception(); // Ref table, TODO: full read
-
-        w.Write(numExternalNodes);
-
-        var uncompressedSize = r.ReadInt32();
-        var compressedData = r.ReadBytes();
-
-        var buffer = new byte[uncompressedSize];
-        Lzo.Decompress(compressedData, buffer);
-        w.WriteBytes(buffer);
+        GbxCompressor.Decompress(input, output);
     }
 
     /// <summary>
@@ -492,98 +460,28 @@ public partial class GameBox : IDisposable
         using var fsOutput = File.Create(outputFileName);
         Decompress(fsInput, fsOutput);
     }
-
+    
     public static void Compress(Stream input, Stream output)
     {
-        using var r = new GameBoxReader(input);
-        using var w = new GameBoxWriter(output);
-
-        var version = CopyBasicInformation(r, w);
-
-        // Body compression type
-        var compressedBody = r.ReadByte();
-
-        if (compressedBody != 'U')
-        {
-            input.CopyTo(output);
-            return;
-        }
-
-        w.Write('C');
-
-        // Unknown byte
-        if (version >= 4)
-        {
-            w.Write(r.ReadByte());
-        }
-
-        // Id
-        w.Write(r.ReadInt32());
-
-        // User data
-        if (version >= 6)
-        {
-            var bytes = r.ReadBytes();
-            w.Write(bytes.Length);
-            w.WriteBytes(bytes);
-        }
-
-        // Num nodes
-        w.Write(r.ReadInt32());
-
-        var numExternalNodes = r.ReadInt32();
-
-        if (numExternalNodes > 0)
-        {
-            throw new Exception(); // Ref table, TODO: full read
-        }
-
-        w.Write(numExternalNodes);
-
-        var uncompressedData = r.ReadToEnd();
-        var compressedData = Lzo.Compress(uncompressedData);
-
-        w.Write(uncompressedData.Length);
-        w.Write(compressedData.Length);
-        w.WriteBytes(compressedData);
+        GbxCompressor.Compress(input, output);
     }
 
-    private static short CopyBasicInformation(GameBoxReader r, GameBoxWriter w)
+    public static void Compress(string inputFileName, Stream output)
     {
-        // Magic
-        if (!r.HasMagic(Magic))
-            throw new Exception();
-
-        w.Write(Magic, StringLengthPrefix.None);
-
-        // Version
-        var version = r.ReadInt16();
-
-        if (version < 3)
-        {
-            throw new VersionNotSupportedException(version);
-        }
-
-        w.Write(version);
-
-        // Format
-        var format = r.ReadByte();
-
-        if (format != 'B')
-        {
-            throw new TextFormatNotSupportedException();
-        }
-
-        w.Write(format);
-
-        // Ref table compression
-        w.Write(r.ReadByte());
-
-        return version;
+        using var fs = File.OpenRead(inputFileName);
+        Compress(fs, output);
     }
 
-    public void Dispose()
+    public static void Compress(Stream input, string outputFileName)
     {
-        Node?.Dispose();
+        using var fs = File.Create(outputFileName);
+        Compress(input, fs);
+    }
+
+    public static void Compress(string inputFileName, string outputFileName)
+    {
+        using var fsInput = File.OpenRead(inputFileName);
+        using var fsOutput = File.Create(outputFileName);
+        Compress(fsInput, fsOutput);
     }
 }

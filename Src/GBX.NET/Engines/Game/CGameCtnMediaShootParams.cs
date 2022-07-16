@@ -1,8 +1,25 @@
 ﻿namespace GBX.NET.Engines.Game;
 
+/// <summary>
+/// MediaTracker block - shoot parameters.
+/// </summary>
+/// <remarks>ID: 0x03060000</remarks>
 [Node(0x03060000)]
 public class CGameCtnMediaShootParams : CMwNod // CGameCtnMediaVideoParams
 {
+    #region Enums
+
+    public enum EStereo3d
+    {
+        None,
+        RedNCyan,
+        LeftNRight
+    }
+
+    #endregion
+
+    #region Fields
+
     private int videoFps;
     private int sizeX;
     private int sizeY;
@@ -11,67 +28,53 @@ public class CGameCtnMediaShootParams : CMwNod // CGameCtnMediaVideoParams
     private bool hqSoftShadows;
     private bool hqAmbientOcc;
     private bool isAudioStream;
-    private int stereo3d;
+    private EStereo3d stereo3d;
 
-    public int VideoFps
-    {
-        get => videoFps;
-        set => videoFps = value;
-    }
+    #endregion
 
-    public int SizeX
-    {
-        get => sizeX;
-        set => sizeX = value;
-    }
+    #region Properties
 
-    public int SizeY
-    {
-        get => sizeY;
-        set => sizeY = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public int VideoFps { get => videoFps; set => videoFps = value; }
 
-    public bool Hq
-    {
-        get => hq;
-        set => hq = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public int SizeX { get => sizeX; set => sizeX = value; }
 
-    public int HqSampleCountPerAxe
-    {
-        get => hqSampleCountPerAxe;
-        set => hqSampleCountPerAxe = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public int SizeY { get => sizeY; set => sizeY = value; }
 
-    public bool HqSoftShadows
-    {
-        get => hqSoftShadows;
-        set => hqSoftShadows = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public bool Hq { get => hq; set => hq = value; }
 
-    public bool HqAmbientOcc
-    {
-        get => hqAmbientOcc;
-        set => hqAmbientOcc = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public int HqSampleCountPerAxe { get => hqSampleCountPerAxe; set => hqSampleCountPerAxe = value; }
 
-    public bool IsAudioStream
-    {
-        get => isAudioStream;
-        set => isAudioStream = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public bool HqSoftShadows { get => hqSoftShadows; set => hqSoftShadows = value; }
 
-    public int Stereo3d
-    {
-        get => stereo3d;
-        set => stereo3d = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public bool HqAmbientOcc { get => hqAmbientOcc; set => hqAmbientOcc = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public bool IsAudioStream { get => isAudioStream; set => isAudioStream = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public EStereo3d Stereo3d { get => stereo3d; set => stereo3d = value; }
+
+    #endregion
 
     protected CGameCtnMediaShootParams()
     {
 
     }
 
+    #region Chunks
+
+    #region 0x001 chunk
+
+    /// <summary>
+    /// CGameCtnMediaShootParams 0x001 chunk
+    /// </summary>
     [Chunk(0x03060001)]
     public class Chunk03060001 : Chunk<CGameCtnMediaShootParams>
     {
@@ -88,7 +91,11 @@ public class CGameCtnMediaShootParams : CMwNod // CGameCtnMediaVideoParams
             rw.Boolean(ref n.hqSoftShadows);
             rw.Boolean(ref n.hqAmbientOcc);
             rw.Boolean(ref n.isAudioStream);
-            rw.Int32(ref n.stereo3d);
+            rw.EnumInt32<EStereo3d>(ref n.stereo3d);
         }
     }
+
+    #endregion
+
+    #endregion
 }

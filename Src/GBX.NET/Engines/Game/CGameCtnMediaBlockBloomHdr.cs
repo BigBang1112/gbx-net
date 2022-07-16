@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Bloom HDR (0x03128000)
+/// MediaTracker block - Bloom HDR.
 /// </summary>
+/// <remarks>ID: 0x03128000</remarks>
 [Node(0x03128000)]
 [NodeExtension("GameCtnMediaBlockBloomHdr")]
 public partial class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys

@@ -1,20 +1,38 @@
 ﻿namespace GBX.NET.Engines.Control;
 
+/// <remarks>ID: 0x07001000</remarks>
 [Node(0x07001000)]
 public abstract class CControlBase : CSceneToy
 {
+    #region Fields
+
     private string? stackText;
     private CControlLayout? layout;
+
+    #endregion
+
+    #region Properties
 
     [NodeMember(ExactlyNamed = true)]
     public string? StackText { get => stackText; set => stackText = value; }
 
+    [NodeMember(ExactlyNamed = true)]
     public CControlLayout? Layout { get => layout; set => layout = value; }
+
+    #endregion
+
+    #region Constructors
 
     protected CControlBase()
     {
 
     }
+
+    #endregion
+
+    #region Chunks
+
+    #region 0x00C chunk
 
     [Chunk(0x0700100C)]
     public class Chunk0700100C : Chunk<CControlBase>
@@ -34,6 +52,10 @@ public abstract class CControlBase : CSceneToy
         }
     }
 
+    #endregion
+
+    #region 0x00E chunk
+
     [Chunk(0x0700100E)]
     public class Chunk0700100E : Chunk<CControlBase>
     {
@@ -50,6 +72,10 @@ public abstract class CControlBase : CSceneToy
         }
     }
 
+    #endregion
+
+    #region 0x00F chunk
+
     [Chunk(0x0700100F)]
     public class Chunk0700100F : Chunk<CControlBase>
     {
@@ -60,6 +86,10 @@ public abstract class CControlBase : CSceneToy
             rw.String(ref U01);
         }
     }
+
+    #endregion
+
+    #region 0x010 chunk
 
     [Chunk(0x07001010)]
     public class Chunk07001010 : Chunk<CControlBase>
@@ -78,4 +108,8 @@ public abstract class CControlBase : CSceneToy
             }
         }
     }
+
+    #endregion
+
+    #endregion
 }

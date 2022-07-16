@@ -1,9 +1,9 @@
 ﻿namespace GBX.NET.Engines.MwFoundations;
 
 /// <summary>
-/// Node (0x01001000)
+/// The base of every existing node.
 /// </summary>
-/// <remarks>The base of every existing node.</remarks>
+/// <remarks>ID: 0x01001000</remarks>
 [Node(0x01001000)]
 public class CMwNod : Node
 {

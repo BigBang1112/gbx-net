@@ -1,29 +1,45 @@
 ﻿namespace GBX.NET.Engines.Function;
 
+/// <remarks>ID: 0x0501E000</remarks>
 [Node(0x0501E000)]
 [NodeExtension("FuncTree")]
 public class CFuncTreeRotate : CFuncTree
 {
+    #region Fields
+
     private float angleMin;
     private float angleMax;
 
-    public float AngleMin
-    {
-        get => angleMin;
-        set => angleMin = value;
-    }
+    #endregion
 
-    public float AngleMax
-    {
-        get => angleMax;
-        set => angleMax = value;
-    }
+    #region Properties
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0501E001))]
+    public float AngleMin { get => angleMin; set => angleMin = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0501E001))]
+    public float AngleMax { get => angleMax; set => angleMax = value; }
+
+    #endregion
+
+    #region Constuctors
 
     protected CFuncTreeRotate()
     {
 
     }
 
+    #endregion
+
+    #region Chunks
+
+    #region 0x001 chunk
+
+    /// <summary>
+    /// CFuncTreeRotate 0x001 chunk
+    /// </summary>
     [Chunk(0x0501E001)]
     public class Chunk0501E001 : Chunk<CFuncTreeRotate>
     {
@@ -40,4 +56,8 @@ public class CFuncTreeRotate : CFuncTree
             rw.Single(ref n.angleMax);
         }
     }
+
+    #endregion
+
+    #endregion
 }

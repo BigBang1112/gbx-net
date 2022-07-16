@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Music effect (0x030A6000)
+/// MediaTracker block - Music effect.
 /// </summary>
+/// <remarks>ID: 0x030A6000</remarks>
 [Node(0x030A6000)]
 [NodeExtension("CtnMediaBlockMusicFx")]
 public partial class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys

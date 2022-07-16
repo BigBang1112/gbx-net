@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Fog (0x03199000)
+/// MediaTracker block - Fog.
 /// </summary>
+/// <remarks>ID: 0x03199000</remarks>
 [Node(0x03199000)]
 [NodeExtension("GameCtnMediaBlockFog")]
 public partial class CGameCtnMediaBlockFog : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
@@ -43,6 +44,9 @@ public partial class CGameCtnMediaBlockFog : CGameCtnMediaBlock, CGameCtnMediaBl
 
     #region 0x000 chunk
 
+    /// <summary>
+    /// CGameCtnMediaBlockFog 0x000 chunk
+    /// </summary>
     [Chunk(0x03199000)]
     public class Chunk03199000 : Chunk<CGameCtnMediaBlockFog>, IVersionable
     {

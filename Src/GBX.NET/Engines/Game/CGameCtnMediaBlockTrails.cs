@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Trails (0x030A9000)
+/// MediaTracker block - Trails.
 /// </summary>
+/// <remarks>ID: 0x030A9000</remarks>
 [Node(0x030A9000)]
 [NodeExtension("GameCtnMediaBlockTrails")]
 public class CGameCtnMediaBlockTrails : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys

@@ -1,5 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09010000</remarks>
 [Node(0x09010000)]
 public class CPlugVisualSprite : CPlugVisual3D
 {
@@ -8,6 +9,9 @@ public class CPlugVisualSprite : CPlugVisual3D
 
     }
 
+    /// <summary>
+    /// CPlugVisualSprite 0x005 chunk
+    /// </summary>
     [Chunk(0x09010005)]
     public class Chunk09010005 : Chunk<CPlugVisualSprite>
     {
@@ -29,6 +33,9 @@ public class CPlugVisualSprite : CPlugVisual3D
         }
     }
 
+    /// <summary>
+    /// CPlugVisualSprite 0x006 chunk
+    /// </summary>
     [Chunk(0x09010006)]
     public class Chunk09010006 : Chunk<CPlugVisualSprite>
     {

@@ -1,8 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
-/// <summary>
-/// 2D visual (0x09006000)
-/// </summary>
+/// <remarks>ID: 0x09006000</remarks>
 [Node(0x0904A000)]
 public abstract class CPlugVisual2D : CPlugVisual
 {
@@ -11,6 +9,9 @@ public abstract class CPlugVisual2D : CPlugVisual
 
     }
 
+    /// <summary>
+    /// CPlugVisual2D 0x000 chunk
+    /// </summary>
     [Chunk(0x0904A000)]
     public class Chunk0904A000 : Chunk<CPlugVisual2D>
     {

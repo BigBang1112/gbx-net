@@ -1,13 +1,25 @@
 ﻿namespace GBX.NET.Engines.Control;
 
+/// <remarks>ID: 0x0700F000</remarks>
 [Node(0x0700F000), WritingNotSupported]
 public class CControlList : CControlContainer
 {
+    #region Constructors
+    
     protected CControlList()
     {
 
     }
 
+    #endregion
+
+    #region Chunks
+
+    #region 0x007 chunk
+
+    /// <summary>
+    /// CControlList 0x007 chunk
+    /// </summary>
     [Chunk(0x0700F007)]
     public class Chunk07002007 : Chunk<CControlList>
     {
@@ -39,6 +51,13 @@ public class CControlList : CControlContainer
         }
     }
 
+    #endregion
+
+    #region 0x00A chunk
+
+    /// <summary>
+    /// CControlList 0x00A chunk
+    /// </summary>
     [Chunk(0x0700F00A)]
     public class Chunk0700200A : Chunk<CControlList>
     {
@@ -74,4 +93,8 @@ public class CControlList : CControlContainer
             rw.Boolean(ref U10);
         }
     }
+
+    #endregion
+
+    #endregion
 }

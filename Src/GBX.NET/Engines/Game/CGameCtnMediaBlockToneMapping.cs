@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Tone mapping (0x03127000)
+/// MediaTracker block - Tone mapping
 /// </summary>
+/// <remarks>ID: 0x03127000</remarks>
 [Node(0x03127000)]
 [NodeExtension("GameCtnMediaBlockToneMapping")]
 public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
@@ -43,6 +44,9 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCt
 
     #region 0x004 chunk
 
+    /// <summary>
+    /// CGameCtnMediaBlockToneMapping 0x004 chunk
+    /// </summary>
     [Chunk(0x03127004)]
     public class Chunk03127004 : Chunk<CGameCtnMediaBlockToneMapping>
     {

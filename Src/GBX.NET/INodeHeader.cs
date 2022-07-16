@@ -5,5 +5,5 @@
 /// </summary>
 public interface INodeHeader
 {
-
+    public HeaderChunkSet HeaderChunks { get; }
 }

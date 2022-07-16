@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 /// <summary>
-/// File (0x09020000)
+/// A file.
 /// </summary>
+/// <remarks>ID: 0x09020000</remarks>
 [Node(0x09020000)]
 public abstract class CPlugFile : CPlug
 {

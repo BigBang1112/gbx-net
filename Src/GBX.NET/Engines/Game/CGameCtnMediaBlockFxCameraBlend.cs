@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Camera blend effect (0x0316D000)
+/// MediaTracker block - Camera blend effect.
 /// </summary>
+/// <remarks>ID: 0x0316D000</remarks>
 [Node(0x0316D000)]
 [NodeExtension("GameCtnMediaBlockFxCameraBlend")]
 public partial class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys

@@ -1,13 +1,24 @@
 ﻿namespace GBX.NET.Engines.Game;
 
-public class CGameCtnBlockInfoMobilLink
+[Node(0x03192000)]
+public class CGameCtnBlockInfoMobilLink : CMwNod
 {
-    public string SocketID { get; set; }
+    public Id SocketId { get; set; }
     public CGameObjectModel? Model { get; set; }
+    
+    public int U01 { get; set; }
+    public int U02 { get; set; }
+    public int U03 { get; set; }
+    public int? U04 { get; set; }
 
-    public CGameCtnBlockInfoMobilLink(string socketID, CGameObjectModel? model)
+    protected CGameCtnBlockInfoMobilLink()
     {
-        SocketID = socketID;
+        
+    }
+
+    public CGameCtnBlockInfoMobilLink(Id socketId, CGameObjectModel? model)
+    {
+        SocketId = socketId;
         Model = model;
     }
 }

@@ -3,8 +3,9 @@
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Block placed on a map (0x03057000)
+/// Block placed on a map.
 /// </summary>
+/// <remarks>ID: 0x03057000</remarks>
 [Node(0x03057000)]
 public class CGameCtnBlock : CMwNod, INodeDependant<CGameCtnChallenge>
 {
@@ -26,7 +27,6 @@ public class CGameCtnBlock : CMwNod, INodeDependant<CGameCtnChallenge>
     private int flags;
     private CGameCtnBlockSkin? skin;
     private CGameWaypointSpecialProperty? waypoint;
-    private Vec3 absolutePositionInMap;
     private DifficultyColor? color;
 
     #endregion
@@ -266,7 +266,13 @@ public class CGameCtnBlock : CMwNod, INodeDependant<CGameCtnChallenge>
         this.flags = flags;
     }
 
-    public CGameCtnBlock(string name, Direction direction, Int3 coord, int flags = 0, string? author = null, CGameCtnBlockSkin? skin = null, CGameWaypointSpecialProperty? waypoint = null)
+    public CGameCtnBlock(string name,
+                         Direction direction,
+                         Int3 coord,
+                         int flags = 0,
+                         string? author = null,
+                         CGameCtnBlockSkin? skin = null,
+                         CGameWaypointSpecialProperty? waypoint = null)
     {
         blockModel = new Ident(name);
         this.direction = direction;

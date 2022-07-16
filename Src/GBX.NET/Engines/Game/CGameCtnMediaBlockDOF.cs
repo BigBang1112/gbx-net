@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Depth of field (0x03126000)
+/// MediaTracker block - Depth of field.
 /// </summary>
+/// <remarks>ID: 0x03126000</remarks>
 [Node(0x03126000)]
 [NodeExtension("GameCtnMediaBlockDOF")]
 public partial class CGameCtnMediaBlockDOF : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
@@ -41,9 +42,12 @@ public partial class CGameCtnMediaBlockDOF : CGameCtnMediaBlock, CGameCtnMediaBl
 
     #region Chunks
 
-    #region 0x000 chunk
+    #region 0x000 chunk (version 0)
 
-    [Chunk(0x03126000)]
+    /// <summary>
+    /// CGameCtnMediaBlockDOF 0x000 chunk (version 0)
+    /// </summary>
+    [Chunk(0x03126000, "version 0")]
     public class Chunk03126000 : Chunk<CGameCtnMediaBlockDOF>
     {
         public override void ReadWrite(CGameCtnMediaBlockDOF n, GameBoxReaderWriter rw)
@@ -54,9 +58,12 @@ public partial class CGameCtnMediaBlockDOF : CGameCtnMediaBlock, CGameCtnMediaBl
 
     #endregion
 
-    #region 0x001 chunk
+    #region 0x001 chunk (version 1)
 
-    [Chunk(0x03126001)]
+    /// <summary>
+    /// CGameCtnMediaBlockDOF 0x001 chunk (version 1)
+    /// </summary>
+    [Chunk(0x03126001, "version 1")]
     public class Chunk03126001 : Chunk<CGameCtnMediaBlockDOF>
     {
         public override void ReadWrite(CGameCtnMediaBlockDOF n, GameBoxReaderWriter rw)
@@ -67,9 +74,12 @@ public partial class CGameCtnMediaBlockDOF : CGameCtnMediaBlock, CGameCtnMediaBl
 
     #endregion
 
-    #region 0x002 chunk
+    #region 0x002 chunk (version 2)
 
-    [Chunk(0x03126002)]
+    /// <summary>
+    /// CGameCtnMediaBlockDOF 0x002 chunk (version 2)
+    /// </summary>
+    [Chunk(0x03126002, "version 2")]
     public class Chunk03126002 : Chunk<CGameCtnMediaBlockDOF>
     {
         public override void ReadWrite(CGameCtnMediaBlockDOF n, GameBoxReaderWriter rw)

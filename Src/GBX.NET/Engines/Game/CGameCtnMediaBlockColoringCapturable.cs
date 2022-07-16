@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Coloring capturable (0x0316C000)
+/// MediaTracker block - Coloring capturable.
 /// </summary>
+/// <remarks>ID: 0x0316C000</remarks>
 [Node(0x0316C000)]
 [NodeExtension("GameCtnMediaBlockColoringCapturable")]
 public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys

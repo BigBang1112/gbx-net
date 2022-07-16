@@ -1,5 +1,4 @@
 ﻿using GBX.NET.Debugging;
-using System.Reflection;
 using System.Runtime.Serialization;
 
 namespace GBX.NET;
@@ -14,14 +13,10 @@ public abstract class Chunk : IComparable<Chunk>
     [IgnoreDataMember]
     public MemoryStream Unknown { get; } = new MemoryStream();
 
-    internal Node Node { get; set; }
-
-    public ChunkDebugger? Debugger { get; internal set; }
-
-    protected Chunk(Node node)
-    {
-        Node = node;
-    }
+    /// <summary>
+    /// Raw data of the chunk. Always null with <see cref="GameBox.SeekForRawChunkData"/> set to false.
+    /// </summary>
+    public byte[]? RawData { get; internal set; }
 
     public uint Id => GetStoredId();
 

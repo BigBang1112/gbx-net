@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Transition fade (0x030AB000)
+/// MediaTracker block - Transition fade.
 /// </summary>
+/// <remarks>ID: 0x030AB000</remarks>
 [Node(0x030AB000)]
 [NodeExtension("CtnMediaBlockTransFade")]
 public partial class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
@@ -51,6 +52,9 @@ public partial class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlock, CGam
 
     #region 0x000 chunk
 
+    /// <summary>
+    /// CGameCtnMediaBlockTransitionFade 0x000 chunk
+    /// </summary>
     [Chunk(0x030AB000)]
     public class Chunk030AB000 : Chunk<CGameCtnMediaBlockTransitionFade>
     {

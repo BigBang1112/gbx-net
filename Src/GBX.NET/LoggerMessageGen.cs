@@ -49,4 +49,7 @@ internal static partial class LoggerMessageGen
 
     [LoggerMessage(EventId = 16, Level = LogLevel.Warning, Message = "Node ID 0x{classId} contained in the header is not implemented. ({className})")]
     public static partial void LogHeaderChunkNodeNotImplemented(this ILogger logger, string classId, string className);
+
+    [LoggerMessage(EventId = 17, Level = LogLevel.Warning, Message = "Discarded external node: {externalNode}")]
+    public static partial void LogDiscardedExternalNode(this ILogger logger, GameBoxRefTable.File externalNode);
 }

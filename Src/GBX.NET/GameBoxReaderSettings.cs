@@ -3,23 +3,23 @@
 public class GameBoxReaderSettings
 {
     /// <summary>
-    /// State used for reading node references or lookback strings.
+    /// A Gbx temporary kind of state used for reading node references and lookback strings.
     /// </summary>
-    public Guid? StateGuid { get; }
-
-    /// <summary>
-    /// State used for reading lookback strings in special chunks.
-    /// </summary>
-    public Guid? IdSubStateGuid { get; set; }
+    public GameBox? Gbx { get; }
 
     /// <summary>
     /// A delegate collection that gets executed throughout the asynchronous reading.
     /// </summary>
     public GameBoxAsyncReadAction? AsyncAction { get; }
 
-    public GameBoxReaderSettings(Guid? stateGuid, GameBoxAsyncReadAction? asyncAction)
+    public GameBoxReaderSettings(GameBox? gbx, GameBoxAsyncReadAction? asyncAction)
     {
-        StateGuid = stateGuid;
+        Gbx = gbx;
         AsyncAction = asyncAction;
+    }
+
+    public GameBox GetGbxOrThrow()
+    {
+        return Gbx ?? throw new PropertyNullException(nameof(Gbx));
     }
 }

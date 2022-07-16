@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Opponent visibility (0x0338B000)
+/// MediaTracker block - Opponent visibility.
 /// </summary>
+/// <remarks>ID: 0x0338B000</remarks>
 [Node(0x0338B000)]
 public partial class CGameCtnMediaBlockOpponentVisibility : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {

@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Camera path (0x030A1000)
+/// MediaTracker block - Camera path.
 /// </summary>
+/// <remarks>ID: 0x030A1000</remarks>
 [Node(0x030A1000)]
 [NodeExtension("CtnMediaBlockCamPath")]
 public partial class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasKeys

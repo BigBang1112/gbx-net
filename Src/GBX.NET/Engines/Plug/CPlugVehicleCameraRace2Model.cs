@@ -1,8 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
-/// <summary>
-/// CPlugVehicleCameraRace2Model (0x090F6000)
-/// </summary>
+/// <remarks>ID: 0x090F6000</remarks>
 [Node(0x090F6000)]
 [NodeExtension("Cam")]
 [NodeExtension("VehicleCameraRace2Model")]

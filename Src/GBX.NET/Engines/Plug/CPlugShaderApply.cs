@@ -1,5 +1,6 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
+/// <remarks>ID: 0x09026000</remarks>
 [Node(0x09026000)]
 public class CPlugShaderApply : CPlugShaderGeneric
 {
@@ -8,6 +9,9 @@ public class CPlugShaderApply : CPlugShaderGeneric
 
     }
 
+    /// <summary>
+    /// CPlugShaderApply 0x001 chunk
+    /// </summary>
     [Chunk(0x09026001)]
     public class Chunk09026001 : Chunk<CPlugShaderApply>
     {
@@ -25,26 +29,48 @@ public class CPlugShaderApply : CPlugShaderGeneric
         }
     }
 
+    /// <summary>
+    /// CPlugShaderApply 0x002 chunk
+    /// </summary>
     [Chunk(0x09026002)]
     public class Chunk09026002 : Chunk<CPlugShaderApply>
     {
         public int U01;
+
+        public override void ReadWrite(CPlugShaderApply n, GameBoxReaderWriter rw)
+        {
+            // array of CPlugBitmapAddress
+            rw.Int32(ref U01);
+        }
+    }
+
+    /// <summary>
+    /// CPlugShaderApply 0x004 chunk
+    /// </summary>
+    [Chunk(0x09026004)]
+    public class Chunk09026004 : Chunk<CPlugShaderApply>
+    {
+        public int U01;
+
+        public override void ReadWrite(CPlugShaderApply n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+        }
+    }
+
+    /// <summary>
+    /// CPlugShaderApply 0x008 chunk
+    /// </summary>
+    [Chunk(0x09026008)]
+    public class Chunk09026008 : Chunk<CPlugShaderApply>
+    {
+        public int U01;
         public int U02;
-        public CMwNod? U03;
-        public int U04;
-        public int U05;
-        public int U06;
-        public int U07;
 
         public override void ReadWrite(CPlugShaderApply n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref U01);
             rw.Int32(ref U02);
-            rw.NodeRef(ref U03);
-            rw.Int32(ref U04);
-            rw.Int32(ref U05);
-            rw.Int32(ref U06);
-            rw.Int32(ref U07);
         }
     }
 }

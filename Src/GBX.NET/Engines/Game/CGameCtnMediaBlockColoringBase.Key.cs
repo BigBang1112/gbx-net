@@ -6,19 +6,11 @@ public partial class CGameCtnMediaBlockColoringBase
     {
         private float hue;
         private float intensity;
-        private short U01;
 
-        public float Hue
-        {
-            get => hue;
-            set => hue = value;
-        }
+        public short U01;
 
-        public float Intensity
-        {
-            get => intensity;
-            set => intensity = value;
-        }
+        public float Hue { get => hue; set => hue = value; }
+        public float Intensity { get => intensity; set => intensity = value; }
 
         public override void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {

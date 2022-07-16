@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Color effect (0x03080000)
+/// MediaTracker block - Color effect.
 /// </summary>
+/// <remarks>ID: 0x03080000</remarks>
 [Node(0x03080000)]
 [NodeExtension("GameCtnMediaBlockFxColors")]
 public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys

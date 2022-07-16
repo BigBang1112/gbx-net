@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Time speed (0x03129000)
+/// MediaTracker block - Time speed.
 /// </summary>
+/// <remarks>ID: 0x03129000</remarks>
 [Node(0x03129000)]
 public partial class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {

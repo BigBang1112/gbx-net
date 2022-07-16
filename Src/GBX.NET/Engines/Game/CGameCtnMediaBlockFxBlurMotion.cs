@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Motion blur effect (0x03082000)
+/// MediaTracker block - Motion blur effect.
 /// </summary>
+/// <remarks>ID: 0x03082000</remarks>
 [Node(0x03082000)]
 [NodeExtension("GameCtnMediaBlockFxBlurMotion")]
 public class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur, CGameCtnMediaBlock.IHasTwoKeys

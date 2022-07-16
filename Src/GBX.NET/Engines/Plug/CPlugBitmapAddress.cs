@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 /// <summary>
-/// Bitmap address (0x09047000)
+/// Bitmap address.
 /// </summary>
+/// <remarks>ID: 0x09047000</remarks>
 [Node(0x09047000)]
 public class CPlugBitmapAddress : CPlugBitmapSampler
 {
@@ -11,6 +12,9 @@ public class CPlugBitmapAddress : CPlugBitmapSampler
 
     }
 
+    /// <summary>
+    /// CPlugBitmapAddress 0x002 chunk
+    /// </summary>
     [Chunk(0x09047002)]
     public class Chunk09047002 : Chunk<CPlugBitmapAddress>
     {
@@ -22,6 +26,9 @@ public class CPlugBitmapAddress : CPlugBitmapSampler
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapAddress 0x005 chunk
+    /// </summary>
     [Chunk(0x09047005)]
     public class Chunk09047005 : Chunk<CPlugBitmapAddress>
     {
@@ -33,6 +40,9 @@ public class CPlugBitmapAddress : CPlugBitmapSampler
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapAddress 0x007 chunk
+    /// </summary>
     [Chunk(0x09047007)]
     public class Chunk09047007 : Chunk<CPlugBitmapAddress>
     {
@@ -48,6 +58,9 @@ public class CPlugBitmapAddress : CPlugBitmapSampler
         }
     }
 
+    /// <summary>
+    /// CPlugBitmapAddress 0x008 chunk
+    /// </summary>
     [Chunk(0x09047008)]
     public class Chunk09047008 : Chunk<CPlugBitmapAddress>
     {

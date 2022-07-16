@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 /// <summary>
-/// Custom material (0x0903A000)
+/// Custom material.
 /// </summary>
+/// <remarks>ID: 0x0903A000</remarks>
 [Node(0x0903A000), WritingNotSupported]
 public class CPlugMaterialCustom : CPlug
 {
@@ -13,6 +14,9 @@ public class CPlugMaterialCustom : CPlug
 
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x004 chunk
+    /// </summary>
     [Chunk(0x0903A004)]
     public class Chunk0903A004 : Chunk<CPlugMaterialCustom>
     {
@@ -24,6 +28,9 @@ public class CPlugMaterialCustom : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x006 chunk
+    /// </summary>
     [Chunk(0x0903A006)]
     public class Chunk0903A006 : Chunk<CPlugMaterialCustom>
     {
@@ -34,13 +41,16 @@ public class CPlugMaterialCustom : CPlug
                 var name = r.ReadId();
                 var u01 = r.ReadInt32();
 
-                _ = r.ReadNodeRef<CPlugBitmap>(out int bitmapIndex);
+                _ = r.ReadNodeRef<CPlugBitmap>(out GameBoxRefTable.File? bitmapFile);
 
-                return new SBitmap(n, name, u01, bitmapIndex);
+                return new SBitmap(n, name, u01, bitmapFile);
             });
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x00A chunk
+    /// </summary>
     [Chunk(0x0903A00A)]
     public class Chunk0903A00A : Chunk<CPlugMaterialCustom>
     {
@@ -70,6 +80,9 @@ public class CPlugMaterialCustom : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x00B chunk
+    /// </summary>
     [Chunk(0x0903A00B)]
     public class Chunk0903A00B : Chunk<CPlugMaterialCustom>
     {
@@ -86,47 +99,75 @@ public class CPlugMaterialCustom : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugMaterialCustom 0x00C chunk
+    /// </summary>
     [Chunk(0x0903A00C)]
     public class Chunk0903A00C : Chunk<CPlugMaterialCustom>
     {
-        public int U01;
-        public string? U02;
-        public int U03;
-        public string? U04;
+        public (string, bool)[]? GpuParamSkipSamplers;
 
         public override void ReadWrite(CPlugMaterialCustom n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Id(ref U02);
-            rw.Int32(ref U03);
-            rw.Id(ref U04);
+            // array of SPlugGpuParamSkipSampler
+            rw.Array(ref GpuParamSkipSamplers, 
+                r => (r.ReadId(), r.ReadBoolean()),
+                (x, w) =>
+                {
+                    w.Write(x.Item1);
+                    w.Write(x.Item2);
+                });
+        }
+    }
 
-            // ...
+    /// <summary>
+    /// CPlugMaterialCustom 0x00D chunk
+    /// </summary>
+    [Chunk(0x0903A00D)]
+    public class Chunk0903A00D : Chunk<CPlugMaterialCustom>
+    {
+        public ulong U01;
+        public ulong U02;
+        public short? U03;
+        public short? U04;
+
+        public override void ReadWrite(CPlugMaterialCustom n, GameBoxReaderWriter rw)
+        {
+            rw.UInt64(ref U01);
+            rw.UInt64(ref U02);
+
+            if ((U01 & 1) != 0)
+            {
+                // SPlugVisibleFilter
+                rw.Int16(ref U03);
+                rw.Int16(ref U04);
+                //
+            }
         }
     }
 
     public class SBitmap
     {
-        private IStateRefTable state;
+        private Node node;
         private CPlugBitmap? bitmap;
-        private int bitmapIndex;
+        private GameBoxRefTable.File? bitmapFile;
 
         public string Name { get; set; }
         public int U01 { get; set; }
 
         public CPlugBitmap? Bitmap
         {
-            get => bitmap = StateManager.Shared.GetNodeFromReferenceTable(state, bitmap, bitmapIndex);
+            get => bitmap = node.GetNodeFromRefTable(bitmap, bitmapFile) as CPlugBitmap;
             set => bitmap = value;
         }
 
-        public SBitmap(IStateRefTable state, string name, int u01, int bitmapIndex)
+        public SBitmap(Node node, string name, int u01, GameBoxRefTable.File? bitmapFile)
         {
             Name = name;
             U01 = u01;
 
-            this.state = state;
-            this.bitmapIndex = bitmapIndex;
+            this.node = node;
+            this.bitmapFile = bitmapFile;
         }
 
         public override string ToString()

@@ -1,6 +1,8 @@
 ﻿using GBX.NET.Engines.MwFoundations;
 using GBX.NET.Managers;
+using Microsoft.Extensions.Logging;
 using System.IO.Compression;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace GBX.NET.PAK;
@@ -13,15 +15,17 @@ public class NadeoPakFile
 
     public int U01;
 
-    public string Name { get; }
+    public string Name { get; set; }
     public int UncompressedSize { get; }
     public int CompressedSize { get; }
     public int Offset { get; }
     public uint ClassID { get; }
     public ulong Flags { get; }
-    public NadeoPakFolder? Folder { get; }
+    public NadeoPakFolder? Folder { get; internal set; }
 
     public bool IsCompressed => (Flags & 0x7C) != 0;
+
+    public bool IsGbx { get; }
 
     public bool IsHashed => Regex.IsMatch(Name, "^[0-9a-fA-F]{34}$", RegexOptions.Compiled);
     public byte? HashedNameLength
@@ -29,13 +33,15 @@ public class NadeoPakFile
         get
         {
             if (IsHashed)
+            {
                 return Convert.ToByte(new string(Name.Substring(0, 2).ToCharArray().Reverse().ToArray()), 16);
+            }
+
             return null;
         }
     }
 
     public byte[]? Data => GetData();
-    public GameBox GBX => GetGBX();
     public Node? Node => GetNode();
 
     public NadeoPakFile(NadeoPak owner, NadeoPakFolder? folder, string name, int uncompressedSize, int compressedSize, int offset, uint classID, ulong flags)
@@ -48,6 +54,8 @@ public class NadeoPakFile
         Offset = offset;
         ClassID = classID;
         Flags = flags;
+
+        IsGbx = !NodeCacheManager.Extensions.TryGetValue(ClassID, out _);
     }
 
     public string? GetClassName()
@@ -100,12 +108,8 @@ public class NadeoPakFile
         {
             return blowfish;
         }
-
-#if NET6_0_OR_GREATER
-        return new ZLibStream(blowfish, CompressionMode.Decompress);
-#else
-        return new CompressedStream(blowfish, CompressionMode.Decompress);
-#endif
+        
+        return new Arc.TrackMania.Compression.ZlibDeflateStream(blowfish, compressing: false);
     }
 
     public byte[]? GetData()
@@ -122,18 +126,52 @@ public class NadeoPakFile
         {
             data = r.ReadBytes(UncompressedSize);
         }
-        catch (InvalidDataException)
+        catch (Exception)
         {
-
+            
         }
 
         return data;
     }
 
-    public GameBox GetGBX()
+    public GameBox? ParseGbx(IProgress<GameBoxReadProgress>? progress = null, ILogger? logger = null)
     {
+        if (!IsGbx)
+        {
+            return null;
+        }
+
         using var ms = Open();
-        return GameBox.ParseHeader(ms);
+
+        var gbx = GameBox.Parse(ms, progress, readUncompressedBodyDirectly: true, logger);
+
+        var fileNameBuilder = new StringBuilder(Name);
+
+        var folder = Folder;
+
+        while (folder is not null)
+        {
+            fileNameBuilder.Insert(0, folder.Name);
+
+            folder = folder.Parent;
+        }
+
+        gbx.PakFileName = fileNameBuilder.ToString();
+        gbx.ExternalGameData = owner;
+
+        return gbx;
+    }
+
+    public GameBox? ParseGbxHeader(IProgress<GameBoxReadProgress>? progress = null, bool readRawBody = false, ILogger? logger = null)
+    {
+        if (!IsGbx)
+        {
+            return null;
+        }
+
+        using var ms = Open();
+
+        return GameBox.ParseHeader(ms, progress, readRawBody, logger);
     }
 
     public Node? GetNode()
@@ -148,9 +186,9 @@ public class NadeoPakFile
 
         var currentParent = Folder;
         var folders = new List<string>
-            {
-                Name
-            };
+        {
+            Name
+        };
 
         while (currentParent != null)
         {

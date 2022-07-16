@@ -19,68 +19,21 @@ public partial class CGameCtnMediaBlockCameraPath
         public int? U02;
         public int? U03;
 
-        public Vec3 Position
-        {
-            get => position;
-            set => position = value;
-        }
+        public Vec3 Position { get => position; set => position = value; }
 
         /// <summary>
         /// Pitch, yaw and roll in radians.
         /// </summary>
-        public Vec3 PitchYawRoll
-        {
-            get => pitchYawRoll;
-            set => pitchYawRoll = value;
-        }
+        public Vec3 PitchYawRoll { get => pitchYawRoll; set => pitchYawRoll = value; }
 
-        public float Fov
-        {
-            get => fov;
-            set => fov = value;
-        }
-
-        public float? NearZ
-        {
-            get => nearZ;
-            set => nearZ = value;
-        }
-
-        public int Anchor
-        {
-            get => anchor;
-            set => anchor = value;
-        }
-
-        public bool AnchorVis
-        {
-            get => anchorVis;
-            set => anchorVis = value;
-        }
-
-        public bool AnchorRot
-        {
-            get => anchorRot;
-            set => anchorRot = value;
-        }
-
-        public int Target
-        {
-            get => target;
-            set => target = value;
-        }
-
-        public Vec3 TargetPosition
-        {
-            get => targetPosition;
-            set => targetPosition = value;
-        }
-
-        public float Weight
-        {
-            get => weight;
-            set => weight = value;
-        }
+        public float Fov { get => fov; set => fov = value; }
+        public float? NearZ { get => nearZ; set => nearZ = value; }
+        public int Anchor { get => anchor; set => anchor = value; }
+        public bool AnchorVis { get => anchorVis; set => anchorVis = value; }
+        public bool AnchorRot { get => anchorRot; set => anchorRot = value; }
+        public int Target { get => target; set => target = value; }
+        public Vec3 TargetPosition { get => targetPosition; set => targetPosition = value; }
+        public float Weight { get => weight; set => weight = value; }
 
         public override void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {

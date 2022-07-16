@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Item placed on a map (0x03101000)
+/// Item placed on a map.
 /// </summary>
+/// <remarks>ID: 0x03101000</remarks>
 [Node(0x03101000)]
 public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
 {
@@ -17,7 +18,7 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     private short flags;
     private float scale = 1;
     private Vec3 pivotPosition;
-    private FileRef? skin;
+    private FileRef? packDesc;
     private DifficultyColor? color;
 
     #endregion
@@ -27,89 +28,53 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     /// <summary>
     /// Name of the item with collection and author
     /// </summary>
-    [NodeMember]
-    public Ident ItemModel
-    {
-        get => itemModel;
-        set => itemModel = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public Ident ItemModel { get => itemModel; set => itemModel = value; }
 
     /// <summary>
     /// Pitch, yaw and roll of the item in radians.
     /// </summary>
     [NodeMember]
-    public Vec3 PitchYawRoll
-    {
-        get => pitchYawRoll;
-        set => pitchYawRoll = value;
-    }
+    public Vec3 PitchYawRoll { get => pitchYawRoll; set => pitchYawRoll = value; }
 
     /// <summary>
     /// Block coordinates that the item is approximately located in. It doesn't have to be provided most of the time.
     /// </summary>
-    [NodeMember]
-    public Byte3 BlockUnitCoord
-    {
-        get => blockUnitCoord;
-        set => blockUnitCoord = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public Byte3 BlockUnitCoord { get => blockUnitCoord; set => blockUnitCoord = value; }
 
-    [NodeMember]
-    public string AnchorTreeId
-    {
-        get => anchorTreeId;
-        set => anchorTreeId = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public string AnchorTreeId { get => anchorTreeId; set => anchorTreeId = value; }
 
     /// <summary>
     /// The X, Y and Z position in the real world space of the item.
     /// </summary>
-    [NodeMember]
-    public Vec3 AbsolutePositionInMap
-    {
-        get => absolutePositionInMap;
-        set => absolutePositionInMap = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public Vec3 AbsolutePositionInMap { get => absolutePositionInMap; set => absolutePositionInMap = value; }
 
     /// <summary>
     /// If the item is a waypoint, contains inner waypoint info, otherwise null.
     /// </summary>
-    [NodeMember]
-    public CGameWaypointSpecialProperty? WaypointSpecialProperty
-    {
-        get => waypointSpecialProperty;
-        set => waypointSpecialProperty = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public CGameWaypointSpecialProperty? WaypointSpecialProperty { get => waypointSpecialProperty; set => waypointSpecialProperty = value; }
 
     /// <summary>
     /// Flags of the item.
     /// </summary>
     [NodeMember]
-    public short Flags
-    {
-        get => flags;
-        set => flags = value;
-    }
+    public short Flags { get => flags; set => flags = value; }
 
     /// <summary>
     /// Scale of the item.
     /// </summary>
-    [NodeMember]
-    public float Scale
-    {
-        get => scale;
-        set => scale = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public float Scale { get => scale; set => scale = value; }
 
     /// <summary>
     /// Pivot position of the item. Useful for making rotations around a different point than center.
     /// </summary>
     [NodeMember]
-    public Vec3 PivotPosition
-    {
-        get => pivotPosition;
-        set => pivotPosition = value;
-    }
+    public Vec3 PivotPosition { get => pivotPosition; set => pivotPosition = value; }
 
     /// <summary>
     /// Variant index of the item. Taken from flags.
@@ -136,12 +101,11 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
         set => color = value;
     }
 
+    /// <summary>
+    /// Skin used on the item.
+    /// </summary>
     [NodeMember]
-    public FileRef? Skin
-    {
-        get => skin;
-        set => skin = value;
-    }
+    public FileRef? PackDesc { get => packDesc; set => packDesc = value; }
 
     CGameCtnChallenge? INodeDependant<CGameCtnChallenge>.DependingNode { get; set; }
 
@@ -187,19 +151,15 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     [Chunk(0x03101002)]
     public class Chunk03101002 : Chunk<CGameCtnAnchoredObject>, IVersionable
     {
+        private int version = 7;
+
         public Vec3 U01;
         public Vec3 U02;
-
-        private int version = 7;
 
         /// <summary>
         /// Version of the chunk. For the lastst TM2 version, version 7 the latest, in TM®, the latest known version is 8.
         /// </summary>
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnAnchoredObject n, GameBoxReaderWriter rw, ILogger? logger)
         {
@@ -210,15 +170,20 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
             rw.Id(ref n.anchorTreeId!);
             rw.Vec3(ref n.absolutePositionInMap);
 
-            if (rw.Mode == GameBoxReaderWriterMode.Read)
+            if (rw.Reader is not null)
+            {
                 n.waypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(rw.Reader!, classId: null, progress: null, logger);
-            else if (rw.Mode == GameBoxReaderWriterMode.Write)
+            }
+            
+            if (rw.Writer is not null)
             {
                 if (n.waypointSpecialProperty is null)
-                    rw.Writer!.Write(-1);
+                {
+                    rw.Writer.Write(-1);
+                }
                 else
                 {
-                    rw.Writer!.Write(0x2E009000);
+                    rw.Writer.Write(0x2E009000);
                     n.waypointSpecialProperty.Write(rw.Writer, logger);
                 }
             }
@@ -235,15 +200,18 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
                     {
                         rw.Single(ref n.scale);
 
-                        if (version >= 8) // TM 2020
+                        if (version >= 7)
                         {
                             if ((n.flags & 0x4) == 0x4)
                             {
-                                rw.FileRef(ref n.skin);
+                                rw.FileRef(ref n.packDesc);
                             }
 
-                            rw.Vec3(ref U01);
-                            rw.Vec3(ref U02);
+                            if (version >= 8) // TM 2020
+                            {
+                                rw.Vec3(ref U01);
+                                rw.Vec3(ref U02);
+                            }
                         }
                     }
                 }
@@ -259,14 +227,17 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     /// CGameCtnAnchoredObject 0x004 skippable chunk
     /// </summary>
     [Chunk(0x03101004)]
-    public class Chunk03101004 : SkippableChunk<CGameCtnAnchoredObject>
+    public class Chunk03101004 : SkippableChunk<CGameCtnAnchoredObject>, IVersionable
     {
-        public int U01 = 0;
+        private int version;
+
+        public int Version { get => version; set => version = value; }
+
         public int U02 = -1;
 
         public override void ReadWrite(CGameCtnAnchoredObject n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.Int32(ref version);
             rw.Int32(ref U02);
         }
     }

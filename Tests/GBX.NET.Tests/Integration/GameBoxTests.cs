@@ -9,14 +9,17 @@ public class GameBoxTests
     public static IEnumerable<string> ExampleMaps { get; } = Directory.GetFiles("Maps", "*.Gbx", SearchOption.AllDirectories);
     public static IEnumerable<string> ExampleReplays { get; } = Directory.GetFiles("Replays", "*.Gbx", SearchOption.AllDirectories);
 
-#if !NET462_OR_GREATER
+    public GameBoxTests()
+    {
+        Lzo.SetLzo(typeof(LZO.MiniLZO));
+    }
 
     [Fact(DisplayName = "Parse example maps - no exception is thrown")]
     public void ParseExampleMaps_NoExceptionIsThrown()
     {
         foreach (var mapFileName in ExampleMaps)
         {
-            using var node = GameBox.ParseNode(mapFileName);
+            var node = GameBox.ParseNode(mapFileName);
         }
     }
 
@@ -25,7 +28,7 @@ public class GameBoxTests
     {
         foreach (var mapFileName in ExampleMaps)
         {
-            using var node = GameBox.ParseNode(mapFileName)!;
+            var node = GameBox.ParseNode(mapFileName)!;
             using var ms = new MemoryStream();
 
             node.Save(ms);
@@ -37,14 +40,14 @@ public class GameBoxTests
     {
         foreach (var mapFileName in ExampleMaps)
         {
-            using var node = GameBox.ParseNode(mapFileName)!;
+            var node = GameBox.ParseNode(mapFileName)!;
             using var ms = new MemoryStream();
 
             node.Save(ms);
 
             ms.Position = 0;
 
-            using var newNode = GameBox.ParseNode(ms);
+            var newNode = GameBox.ParseNode(ms);
         }
     }
 
@@ -53,10 +56,7 @@ public class GameBoxTests
     {
         foreach (var mapFileName in ExampleReplays)
         {
-            using var node = GameBox.ParseNode(mapFileName);
+            var node = GameBox.ParseNode(mapFileName);
         }
     }
-
-#endif
-
 }

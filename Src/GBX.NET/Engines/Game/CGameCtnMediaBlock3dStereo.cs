@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - 3D stereo (0x03024000)
+/// MediaTracker block - 3D stereo.
 /// </summary>
+/// <remarks>ID: 0x03024000</remarks>
 [Node(0x03024000)]
 [NodeExtension("GameCtnMediaBlock3dStereo")]
 public partial class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys

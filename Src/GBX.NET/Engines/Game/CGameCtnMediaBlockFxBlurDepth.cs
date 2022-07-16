@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Blur depth effect (0x03081000)
+/// MediaTracker block - Blur depth effect.
 /// </summary>
+/// <remarks>ID: 0x03081000</remarks>
 [Node(0x03081000)]
 [NodeExtension("GameCtnMediaBlockFxBlurDepth")]
 public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
@@ -43,6 +44,9 @@ public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, CGame
 
     #region 0x001 chunk
 
+    /// <summary>
+    /// CGameCtnMediaBlockFxBlurDepth 0x001 chunk
+    /// </summary>
     [Chunk(0x03081001)]
     public class Chunk03081001 : Chunk<CGameCtnMediaBlockFxBlurDepth>
     {

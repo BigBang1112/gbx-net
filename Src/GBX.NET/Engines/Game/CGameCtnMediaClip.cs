@@ -3,9 +3,9 @@
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// CGameCtnMediaClip (0x03079000)
+/// A MediaTracker clip.
 /// </summary>
-/// <remarks>A MediaTracker clip.</remarks>
+/// <remarks>ID: 0x03079000</remarks>
 [Node(0x03079000)]
 [NodeExtension("Clip")]
 public class CGameCtnMediaClip : CMwNod
@@ -96,6 +96,9 @@ public class CGameCtnMediaClip : CMwNod
 
     #region 0x002 chunk
 
+    /// <summary>
+    /// CGameCtnMediaClip 0x002 chunk
+    /// </summary>
     [Chunk(0x03079002)]
     public class Chunk03079002 : Chunk<CGameCtnMediaClip>
     {
@@ -103,11 +106,7 @@ public class CGameCtnMediaClip : CMwNod
 
         public int U01;
 
-        public int TracksVersion
-        {
-            get => tracksVersion;
-            set => tracksVersion = value;
-        }
+        public int TracksVersion { get => tracksVersion; set => tracksVersion = value; }
 
         public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
         {
@@ -130,16 +129,15 @@ public class CGameCtnMediaClip : CMwNod
 
     #region 0x003 chunk
 
+    /// <summary>
+    /// CGameCtnMediaClip 0x003 chunk
+    /// </summary>
     [Chunk(0x03079003)]
     public class Chunk03079003 : Chunk<CGameCtnMediaClip>
     {
         private int tracksVersion = 10;
 
-        public int TracksVersion
-        {
-            get => tracksVersion;
-            set => tracksVersion = value;
-        }
+        public int TracksVersion { get => tracksVersion; set => tracksVersion = value; }
 
         public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
         {
@@ -160,6 +158,9 @@ public class CGameCtnMediaClip : CMwNod
 
     #region 0x004 chunk
 
+    /// <summary>
+    /// CGameCtnMediaClip 0x004 chunk
+    /// </summary>
     [Chunk(0x03079004)]
     public class Chunk03079004 : Chunk<CGameCtnMediaClip>
     {
@@ -175,16 +176,15 @@ public class CGameCtnMediaClip : CMwNod
 
     #region 0x005 chunk
 
+    /// <summary>
+    /// CGameCtnMediaClip 0x005 chunk
+    /// </summary>
     [Chunk(0x03079005)]
     public class Chunk03079005 : Chunk<CGameCtnMediaClip>
     {
         private int tracksVersion = 10;
 
-        public int TracksVersion
-        {
-            get => tracksVersion;
-            set => tracksVersion = value;
-        }
+        public int TracksVersion { get => tracksVersion; set => tracksVersion = value; }
 
         public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
         {
@@ -205,6 +205,9 @@ public class CGameCtnMediaClip : CMwNod
 
     #region 0x007 chunk
 
+    /// <summary>
+    /// CGameCtnMediaClip 0x007 chunk
+    /// </summary>
     [Chunk(0x03079007)]
     public class Chunk03079007 : Chunk<CGameCtnMediaClip>
     {
@@ -218,6 +221,9 @@ public class CGameCtnMediaClip : CMwNod
 
     #region 0x008 chunk
 
+    /// <summary>
+    /// CGameCtnMediaClip 0x008 chunk
+    /// </summary>
     [Chunk(0x03079008)]
     public class Chunk03079008 : Chunk<CGameCtnMediaClip>
     {
@@ -233,6 +239,9 @@ public class CGameCtnMediaClip : CMwNod
 
     #region 0x009 chunk
 
+    /// <summary>
+    /// CGameCtnMediaClip 0x009 chunk
+    /// </summary>
     [Chunk(0x03079009)]
     public class Chunk03079009 : Chunk<CGameCtnMediaClip>
     {
@@ -249,7 +258,7 @@ public class CGameCtnMediaClip : CMwNod
     #region 0x00A chunk
 
     /// <summary>
-    /// ManiaPlanet 3
+    /// CGameCtnMediaClip 0x00A chunk
     /// </summary>
     [Chunk(0x0307900A)]
     public class Chunk0307900A : Chunk<CGameCtnMediaClip>
@@ -265,7 +274,7 @@ public class CGameCtnMediaClip : CMwNod
     #region 0x00B chunk
 
     /// <summary>
-    /// ManiaPlanet 3
+    /// CGameCtnMediaClip 0x00B chunk
     /// </summary>
     [Chunk(0x0307900B)]
     public class Chunk0307900B : Chunk<CGameCtnMediaClip>
@@ -282,6 +291,9 @@ public class CGameCtnMediaClip : CMwNod
 
     #region 0x00C chunk
 
+    /// <summary>
+    /// CGameCtnMediaClip 0x00C chunk
+    /// </summary>
     [Chunk(0x0307900C)]
     public class Chunk0307900C : Chunk<CGameCtnMediaClip>
     {
@@ -297,6 +309,9 @@ public class CGameCtnMediaClip : CMwNod
 
     #region 0x00D chunk
 
+    /// <summary>
+    /// CGameCtnMediaClip 0x00D chunk
+    /// </summary>
     [Chunk(0x0307900D)]
     public class Chunk0307900D : Chunk<CGameCtnMediaClip>, IVersionable
     {
@@ -309,17 +324,8 @@ public class CGameCtnMediaClip : CMwNod
         public float U06 = 0.2f;
         public int U07 = -1;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
-
-        public int TracksVersion
-        {
-            get => tracksVersion;
-            set => tracksVersion = value;
-        }
+        public int Version { get => version; set => version = value; }
+        public int TracksVersion { get => tracksVersion; set => tracksVersion = value; }
 
         public override void ReadWrite(CGameCtnMediaClip n, GameBoxReaderWriter rw)
         {

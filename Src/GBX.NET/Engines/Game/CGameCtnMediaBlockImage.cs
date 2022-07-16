@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Image (0x030A5000)
+/// MediaTracker block - Image.
 /// </summary>
+/// <remarks>ID: 0x030A5000</remarks>
 [Node(0x030A5000)]
 [NodeExtension("GameCtnMediaBlockImage")]
 public class CGameCtnMediaBlockImage : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys

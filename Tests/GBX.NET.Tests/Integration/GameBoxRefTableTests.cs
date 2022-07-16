@@ -33,8 +33,8 @@ public class GameBoxRefTableTests
         foreach (var fileName in ExampleGbxs)
         {
             var gbx = GameBox.ParseHeader(Path.Combine("Files", fileName));
-            var refTable = gbx.GetRefTable();
-            var header = gbx.GetHeader();
+            var refTable = gbx.RefTable;
+            var header = gbx.Header;
 
             using var ms = new MemoryStream();
             using var writer = new GameBoxWriter(ms);
@@ -61,7 +61,7 @@ public class GameBoxRefTableTests
 
             using var reader = new GameBoxReader(ms);
 
-            var newRefTable = GameBox.RefTable.Parse(header, reader);
+            var newRefTable = GameBoxRefTable.Parse(header, reader);
             var actualNull = newRefTable is null;
 
             if (newRefTable is null)

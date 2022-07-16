@@ -1939,7 +1939,7 @@ public class GameBoxReaderWriterTests
             rw.Bytes(ref value, exampleLength);
             return value;
         },
-        w => w.WriteBytes(exampleValue), expectedValue);
+        w => w.Write(exampleValue), expectedValue);
     }
 
     [Theory]

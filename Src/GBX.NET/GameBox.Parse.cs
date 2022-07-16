@@ -18,15 +18,15 @@ public partial class GameBox
     {
         var fileName = reader.BaseStream is FileStream fs ? fs.Name : null;
 
-        var header = Header.Parse(reader, logger);
+        var header = GameBoxHeader.Parse(reader, logger);
 
         //progress?.Report(new GameBoxReadProgress(header));
 
-        var refTable = default(RefTable);
+        var refTable = default(GameBoxRefTable);
 
         try
         {
-            refTable = RefTable.Parse(header, reader);
+            refTable = GameBoxRefTable.Parse(header, reader);
             isRefTableCompressed = false;
         }
         catch (CompressedRefTableException)
@@ -82,15 +82,15 @@ public partial class GameBox
         // if anyone did, let me know!
         if (isRefTableCompressed)
         {
-            return gbx;
+            return gbx; // TODO: this should maybe throw?
         }
 
-        var header = gbx.header;
+        var header = gbx.Header;
 
         // Raw body can be read at pretty much any time
         if (readRawBody)
         {
-            gbx.RawBody = Body.ParseRaw(header.CompressionOfBody, r);
+            gbx.RawBody = GameBoxBody.ParseRaw(header.CompressionOfBody, r);
         }
 
         if (classType is null)
@@ -106,13 +106,10 @@ public partial class GameBox
             return gbx;
         }
 
-        var stateGuid = StateManager.Shared.CreateState(gbx.refTable);
-        ((IState)gbx.Node).StateGuid = stateGuid;
-
         using var ms = new MemoryStream(header.UserData);
-        var headerR = new GameBoxReader(ms, stateGuid, logger: logger);
+        var headerR = new GameBoxReader(ms, gbx, logger: logger);
 
-        Header.ProcessUserData(gbx.Node, classType, headerR, logger);
+        header.ProcessUserData(gbx.Node, classType, headerR, logger);
 
         return gbx;
     }
@@ -221,7 +218,7 @@ public partial class GameBox
     {
         var gbx = ParseHeader(stream, progress, logger: logger);
 
-        var header = gbx.header;
+        var header = gbx.Header;
         var node = gbx.Node;
 
         // When the node type isn't recognized, there's also no node instance
@@ -231,22 +228,10 @@ public partial class GameBox
             return gbx;
         }
 
-        Guid stateGuid;
-
-        if (header.UserData.Length == 0)
-        {
-            stateGuid = StateManager.Shared.CreateState(gbx.refTable);
-            ((IState)node).StateGuid = stateGuid;
-        }
-        else
-        {
-            stateGuid = ((IState)node).StateGuid.GetValueOrDefault();
-        }
-
-        using var bodyR = new GameBoxReader(stream, stateGuid, logger: logger);
+        using var bodyR = new GameBoxReader(stream, gbx, logger: logger);
 
         // Body resets Id (lookback string) list
-        Body.Read(node, header, bodyR, progress, readUncompressedBodyDirectly, logger);
+        GameBoxBody.Read(node, header, bodyR, progress, readUncompressedBodyDirectly, logger);
 
         return gbx;
     }
@@ -334,7 +319,7 @@ public partial class GameBox
     }
 
     /// <summary>
-    /// Parses only the header of the Gbx and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
+    /// Parses only the header of the Gbx and returns the node of it.
     /// </summary>
     /// <param name="stream">Stream to read GBX format from.</param>
     /// <param name="progress">Callback that reports any read progress.</param>
@@ -351,7 +336,7 @@ public partial class GameBox
     }
 
     /// <summary>
-    /// Parses only the header of the GBX and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
+    /// Parses only the header of the GBX and returns the node of it.
     /// </summary>
     /// <param name="fileName">Relative or absolute file path.</param>
     /// <param name="progress">Callback that reports any read progress.</param>
@@ -368,7 +353,7 @@ public partial class GameBox
     }
 
     /// <summary>
-    /// Parses only the header of the GBX and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
+    /// Parses only the header of the GBX and returns the node of it.
     /// </summary>
     /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an <see cref="InvalidCastException"/>. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
     /// <param name="stream">Stream to read GBX format from.</param>
@@ -388,7 +373,7 @@ public partial class GameBox
     }
 
     /// <summary>
-    /// Parses only the header of the GBX and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
+    /// Parses only the header of the GBX and returns the node of it.
     /// </summary>
     /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an <see cref="InvalidCastException"/>. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
     /// <param name="fileName">Relative or absolute file path.</param>
@@ -408,7 +393,7 @@ public partial class GameBox
     }
 
     /// <summary>
-    /// Easily parses GBX format and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
+    /// Easily parses GBX format and returns the node of it.
     /// </summary>
     /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an <see cref="InvalidCastException"/>. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
     /// <param name="stream">Stream to read GBX format from.</param>
@@ -433,7 +418,7 @@ public partial class GameBox
     }
 
     /// <summary>
-    /// Easily parses a GBX file and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
+    /// Easily parses a GBX file and returns the node of it.
     /// </summary>
     /// <typeparam name="T">Known node of the GBX file parsed. Unmatching node will throw an <see cref="InvalidCastException"/>. Nodes to use are located in the GBX.NET.Engines namespace.</typeparam>
     /// <param name="fileName">Relative or absolute file path.</param>
@@ -458,7 +443,7 @@ public partial class GameBox
     }
 
     /// <summary>
-    /// Easily parses a GBX file and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
+    /// Easily parses a GBX file and returns the node of it.
     /// </summary>
     /// <param name="fileName">Relative or absolute file path.</param>
     /// <param name="progress">Callback that reports any read progress.</param>
@@ -481,7 +466,7 @@ public partial class GameBox
     }
 
     /// <summary>
-    /// Easily parses GBX format and returns the node of it. <see cref="GameBox"/> class is not accessible this way.
+    /// Easily parses GBX format and returns the node of it.
     /// </summary>
     /// <param name="stream">Stream to read GBX format from.</param>
     /// <param name="progress">Callback that reports any read progress.</param>
@@ -511,7 +496,7 @@ public partial class GameBox
     {
         var gbx = ParseHeader(stream, logger: logger);
 
-        var header = gbx.header;
+        var header = gbx.Header;
         var node = gbx.Node;
 
         // When the node type isn't recognized, there's also no node instance
@@ -521,22 +506,10 @@ public partial class GameBox
             return gbx;
         }
 
-        Guid stateGuid;
-
-        if (header.UserData.Length == 0)
-        {
-            stateGuid = StateManager.Shared.CreateState(gbx.refTable);
-            ((IState)node).StateGuid = stateGuid;
-        }
-        else
-        {
-            stateGuid = ((IState)node).StateGuid.GetValueOrDefault();
-        }
-
-        using var bodyR = new GameBoxReader(stream, stateGuid, asyncAction, logger);
+        using var bodyR = new GameBoxReader(stream, gbx, asyncAction, logger);
 
         // Body resets Id (lookback string) list
-        await Body.ReadAsync(node, header, bodyR, readUncompressedBodyDirectly, logger, asyncAction, cancellationToken);
+        await GameBoxBody.ReadAsync(node, header, bodyR, readUncompressedBodyDirectly, logger, asyncAction, cancellationToken);
 
         return gbx;
     }

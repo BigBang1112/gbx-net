@@ -43,7 +43,7 @@ Console.ReadKey();
 void ProcessFile(string fileName)
 {
     var node = GameBox.ParseNode<CPlugSolid>(fileName, logger: logger);
-    var refTable = node.GetGbx()!.GetRefTable();
+    var refTable = node.GetGbx()!.RefTable;
 
     if (node.Tree is not CPlugTree tree)
     {
@@ -70,7 +70,7 @@ void ProcessFile(string fileName)
     var offsetVert = 0;
     var offsetUv = 0;
 
-    Recurse(tree);
+    Recurse(tree, lodValue: null);
 
     normalWriter.Flush();
     texWriter.Flush();
@@ -91,14 +91,14 @@ void ProcessFile(string fileName)
     texStream.CopyTo(fs);
     faceStream.CopyTo(fs);
 
-    void Recurse(CPlugTree? tree, float? lodValue = null)
+    void Recurse(CPlugTree? tree, float? lodValue)
     {
         if (tree is null)
             return;
 
         foreach (var plug in tree.Children)
         {
-            Recurse(plug);
+            Recurse(plug, lodValue);
         }
 
         if (tree is CPlugTreeVisualMip mip)
@@ -117,7 +117,7 @@ void ProcessFile(string fileName)
         logger.LogInformation("{name}", tree.Name);
 
         faceWriter.WriteLine();
-        faceWriter.WriteLine("o " + tree.Name);
+        faceWriter.WriteLine(lodValue.HasValue ? $"o {tree.Name}_{lodValue}" : $"o {tree.Name}");
 
         WriteMaterial(tree.Shader as CPlugMaterial);
 
@@ -127,7 +127,7 @@ void ProcessFile(string fileName)
         foreach (var vertex in indexed.Vertices)
         {
             w.WriteLine("v {0} {1} {2}", vertex.Position.X, vertex.Position.Y, vertex.Position.Z);
-            normalWriter.WriteLine("vn {0} {1} {2}", vertex.U01.X, vertex.U01.Y, vertex.U01.Z);
+            normalWriter.WriteLine("vn {0} {1} {2}", vertex.Normal.GetValueOrDefault().X, vertex.Normal.GetValueOrDefault().Y, vertex.Normal.GetValueOrDefault().Z);
         }
 
         if (indexed.TexCoords is not null)
@@ -195,13 +195,17 @@ void ProcessFile(string fileName)
         if (diffuse is null)
             return;
 
-        if (diffuse.GetGbx() is null)
+        var gbx = diffuse.GetGbx();
+
+        if (gbx is null)
             return;
+
+        var refTable = gbx.RefTable;
 
         if (refTable is null)
             return;
 
-        var textureFile = refTable.GetAllFiles()
+        var textureFile = refTable.Files
             .FirstOrDefault(x => x.FileName?.ToLower().EndsWith(".dds") == true);
 
         if (textureFile is null)

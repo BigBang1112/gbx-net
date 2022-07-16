@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Camera shake (0x030A4000)
+/// MediaTracker block - Camera shake.
 /// </summary>
+/// <remarks>ID: 0x030A4000</remarks>
 [Node(0x030A4000)]
 [NodeExtension("CtnMediaBlockCamFxShake")]
 public partial class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCameraEffect, CGameCtnMediaBlock.IHasKeys

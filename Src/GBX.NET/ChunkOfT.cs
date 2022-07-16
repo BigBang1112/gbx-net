@@ -4,25 +4,8 @@ namespace GBX.NET;
 
 public abstract class Chunk<T> : Chunk, IReadableWritableChunk where T : Node
 {
-    [IgnoreDataMember]
-    public new T Node
-    {
-        get => (T)base.Node;
-        internal set => base.Node = value;
-    }
-
     public bool IsHeader => this is IHeaderChunk;
     public bool IsBody => !IsHeader;
-
-    protected Chunk() : base(null!)
-    {
-
-    }
-
-    protected Chunk(T node) : base(node)
-    {
-
-    }
 
     protected override uint GetId()
     {
@@ -76,7 +59,7 @@ public abstract class Chunk<T> : Chunk, IReadableWritableChunk where T : Node
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     public virtual void Read(T n, GameBoxReader r)
     {
-        throw new ChunkReadNotImplementedException(Id, Node);
+        throw new ChunkReadNotImplementedException(Id, n);
     }
 
     /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
@@ -88,7 +71,7 @@ public abstract class Chunk<T> : Chunk, IReadableWritableChunk where T : Node
     /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
     public virtual void Write(T n, GameBoxWriter w)
     {
-        throw new ChunkWriteNotImplementedException(Id, Node);
+        throw new ChunkWriteNotImplementedException(Id, n);
     }
 
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
@@ -106,7 +89,8 @@ public abstract class Chunk<T> : Chunk, IReadableWritableChunk where T : Node
         {
             Read(n, rw.Reader, logger);
         }
-        else if (rw.Writer is not null)
+
+        if (rw.Writer is not null)
         {
             Write(n, rw.Writer, logger);
         }
@@ -115,13 +99,13 @@ public abstract class Chunk<T> : Chunk, IReadableWritableChunk where T : Node
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     public virtual Task ReadAsync(T n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
     {
-        throw new ChunkReadNotImplementedException(Id, Node);
+        throw new ChunkReadNotImplementedException(Id, n);
     }
 
     /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
     public virtual Task WriteAsync(T n, GameBoxWriter w, ILogger? logger, CancellationToken cancellationToken = default)
     {
-        throw new ChunkWriteNotImplementedException(Id, Node);
+        throw new ChunkWriteNotImplementedException(Id, n);
     }
 
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
@@ -132,7 +116,8 @@ public abstract class Chunk<T> : Chunk, IReadableWritableChunk where T : Node
         {
             await ReadAsync(n, rw.Reader, logger, cancellationToken);
         }
-        else if (rw.Writer is not null)
+        
+        if (rw.Writer is not null)
         {
             await WriteAsync(n, rw.Writer, logger, cancellationToken);
         }

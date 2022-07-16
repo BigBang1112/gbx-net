@@ -1,8 +1,6 @@
 ﻿namespace GBX.NET.Engines.Function;
 
-/// <summary>
-/// CFuncShader (0x05011000)
-/// </summary>
+/// <remarks>ID: 0x05011000</remarks>
 [Node(0x05011000)]
 public abstract class CFuncShader : CFuncPlug
 {

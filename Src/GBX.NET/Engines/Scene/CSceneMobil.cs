@@ -1,25 +1,22 @@
 ﻿namespace GBX.NET.Engines.Scene;
 
-/// <summary>
-/// CSceneMobil (0x0A011000)
-/// </summary>
+/// <remarks>ID: 0x0A011000</remarks>
 [Node(0x0A011000)]
 [NodeExtension("Mobil")]
 public class CSceneMobil : CSceneObject
 {
-    private CHmsItem item;
+    private CHmsItem? item;
 
-    public CHmsItem Item
-    {
-        get => item;
-        set => item = value;
-    }
+    public CHmsItem? Item { get => item; set => item = value; }
 
     protected CSceneMobil()
     {
-        item = null!;
+        
     }
 
+    /// <summary>
+    /// CSceneMobil 0x003 chunk
+    /// </summary>
     [Chunk(0x0A011003)]
     public class Chunk0A011003 : Chunk<CSceneMobil>
     {
@@ -27,39 +24,51 @@ public class CSceneMobil : CSceneObject
 
         public override void ReadWrite(CSceneMobil n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01); // CSceneObject array?
+            rw.Int32(ref U01); // CSceneObjectLink array
         }
     }
 
+    /// <summary>
+    /// CSceneMobil 0x004 chunk
+    /// </summary>
     [Chunk(0x0A011004)]
     public class Chunk0A011004 : Chunk<CSceneMobil>
     {
-        public int U01;
+        public CMwNod? U01;
 
         public override void ReadWrite(CSceneMobil n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.NodeRef(ref U01);
         }
     }
 
+    /// <summary>
+    /// CSceneMobil 0x005 chunk
+    /// </summary>
     [Chunk(0x0A011005)]
     public class Chunk0A011005 : Chunk<CSceneMobil>
     {
         public override void Read(CSceneMobil n, GameBoxReader r, ILogger? logger)
         {
-            var randomNumber = r.ReadUInt32();
+            n.item = Parse<CHmsItem>(r, 0x06003000, progress: null, logger, ignoreZeroIdChunk: true); // direct node
+        }
 
-            if (randomNumber == 0)
+        public override void Write(CSceneMobil n, GameBoxWriter w, ILogger? logger)
+        {
+            if (n.item is null)
             {
-                return;
+                w.Write(0);
             }
-
-            r.BaseStream.Position -= 4;
-
-            n.item = Parse<CHmsItem>(r, 0x06003000, progress: null, logger)!;
+            else
+            {
+                n.item.Write(w, logger);
+            }
         }
     }
 
+    /// <summary>
+    /// CSceneMobil 0x006 chunk
+    /// </summary>
     [Chunk(0x0A011006)]
     public class Chunk0A011006 : Chunk<CSceneMobil>
     {

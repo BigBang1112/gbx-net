@@ -1,152 +1,151 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
-/// <summary>
-/// 3D visual (0x0902C000)
-/// </summary>
+/// <remarks>ID: 0x0902C000</remarks>
 [Node(0x0902C000), WritingNotSupported]
 public abstract class CPlugVisual3D : CPlugVisual
 {
-    protected Vertex[] vertices;
+    private Vertex[] vertices;
+    private Vec3[]? tangents;
+    private Vec3[]? biTangents;
 
-    public Vertex[] Vertices
-    {
-        get => vertices;
-        set => vertices = value;
-    }
+    [NodeMember]
+    public Vertex[] Vertices  { get => vertices; set => vertices = value; }
+
+    [NodeMember]
+    public Vec3[]? Tangents { get => tangents; set => tangents = value; }
+
+    [NodeMember]
+    public Vec3[]? BiTangents { get => biTangents; set => biTangents = value; }
 
     protected CPlugVisual3D()
     {
         vertices = null!;
     }
 
+    /// <summary>
+    /// CPlugVisual3D 0x002 chunk
+    /// </summary>
     [Chunk(0x0902C002)]
     public class Chunk0902C002 : Chunk<CPlugVisual3D>
     {
-        public int U01;
+        public CMwNod? U01;
 
         public override void ReadWrite(CPlugVisual3D n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.NodeRef(ref U01);
         }
     }
 
+    /// <summary>
+    /// CPlugVisual3D 0x003 chunk
+    /// </summary>
     [Chunk(0x0902C003)]
     public class Chunk0902C003 : Chunk<CPlugVisual3D>
     {
-        public Vec3[]? U01;
-        public Vec3[]? U02;
-
         public override void Read(CPlugVisual3D n, GameBoxReader r)
         {
             n.vertices = new Vertex[n.Count];
 
             for (int i = 0; i < n.Count; i++)
             {
-                n.vertices[i] = new Vertex(
-                    position: r.ReadVec3(),
-                    u01: r.ReadVec3(),
-                    u02: r.ReadVec3(),
-                    u03: r.ReadSingle()
-                );
+                n.vertices[i] = new Vertex
+                {
+                    Position = r.ReadVec3(),
+                    Normal = r.ReadVec3(),
+                    U02 = r.ReadVec3(),
+                    U03 = r.ReadSingle()
+                };
             }
 
-            U01 = r.ReadArray(r => r.ReadVec3());
-            U02 = r.ReadArray(r => r.ReadVec3());
+            n.tangents = r.ReadArray<Vec3>();
+            n.biTangents = r.ReadArray<Vec3>();
         }
     }
 
+    /// <summary>
+    /// CPlugVisual3D 0x004 chunk
+    /// </summary>
     [Chunk(0x0902C004)]
     public class Chunk0902C004 : Chunk<CPlugVisual3D>
     {
+        void TODOSkipTangents(CPlugVisual3D n, GameBoxReader r)
+        {
+            // this is some weird bit trickery...
+            int numBytesPerTangent = (~(byte)((uint)n.Flags >> 17) & 8) | 4;
+            int numElems = r.ReadInt32();
+            if (numElems != 0 && numElems != n.Count)
+            {
+                throw new InvalidDataException(String.Format("num tangents is not equal to num vertices ({0} != {1})", numElems, n.Count));
+            }
+            r.ReadBytes(numElems * numBytesPerTangent);
+        }
+        
         public override void Read(CPlugVisual3D n, GameBoxReader r)
         {
-            var u01 = n.Flags >> 0x16 & 1;
-            var u02 = u01 == 0 || (char)n.Flags < '\0';
-            var u03 = u01 == 0 || (n.Flags & 0x100) != 0;
+            var u02 = !n.Flags.HasFlag(VisualFlags.UnknownFlag22) || n.Flags.HasFlag(VisualFlags.HasVertexNormals);
+            var u03 = !n.Flags.HasFlag(VisualFlags.UnknownFlag22) || n.Flags.HasFlag(VisualFlags.UnknownFlag8);
 
-            var u04 = (n.Flags & 0x100000) != 0;
-
-            if (!u04)
+            // Console.WriteLine("numBytesPerVertex={0}", numBytesPerVertex);
+            n.vertices = r.ReadArray(n.Count, r =>
             {
-                if (u02 && (n.Flags & 0x200000U) == 0 && u03)
-                {
-                    // DoData
-                }
-            }
+                var pos = r.ReadVec3();
+                var vertU01 = default(int?);
+                var vertU02 = default(Vec3?);
+                var vertU03 = default(int?);
+                var vertU04 = default(Vec4?);
 
-            var ara = new Vec3[n.Count];
-
-            for (var i = 0; i < n.Count; i++)
-            {
-                ara[i] = r.ReadVec3();
                 if (u02)
                 {
-                    if (u04)
+                    if (n.Flags.HasFlag(VisualFlags.UnknownFlag20))
                     {
-                        var ok = r.ReadInt32();
+                        vertU01 = r.ReadInt32();
                     }
                     else
                     {
-                        var ok2 = r.ReadVec3();
+                        vertU02 = r.ReadVec3();
                     }
                 }
 
                 if (u03)
                 {
-                    if ((n.Flags & 0x200000U) == 0)
+                    if (n.Flags.HasFlag(VisualFlags.UnknownFlag21))
                     {
-                        var wtff = r.ReadBytes(0x10);
+                        vertU03 = r.ReadInt32();
                     }
                     else
                     {
-                        var color = r.ReadInt32();
+                        vertU04 = r.ReadVec4();
                     }
                 }
-            }
 
-            var wtf = r.ReadArray<int>(800);
-            var bruh = r.ReadArray(n.Count, r => (r.ReadVec4(), r.ReadInt32()));
+                return new Vertex
+                {
+                    Position = pos,
+                    U04 = vertU01,
+                    U05 = vertU02,
+                    U06 = vertU03,
+                    U07 = vertU04
+                };
+            });
 
-            var strst = r.ReadSpan<Vec4>(50);
+            /*var list = new Vertex[n.Count];
+
+            for(var i = 0; i < n.Count; i++)
+            {
+                list[i] = new Vertex(r.ReadVec3(), default, default, default);
+                r.ReadInt32();
+                r.ReadInt32();
+            }*/
+
+            //n.vertices = verts;
+
+            TODOSkipTangents(n, r);
+            TODOSkipTangents(n, r);
         }
-
-        /*public override void ReadWrite(CPlugVisual3D n, GameBoxReaderWriter rw)
-        {
-            
-
-            var nice = rw.Array<int>(count: 30);
-
-            if ((char)n.Flags < '\0') // wtf
-            {
-
-            }
-
-            if ((n.Flags & 0x200000U) == 0)
-            {
-
-            }
-
-            var wat = ~(n.Flags >> 0x11) & 8 | 4;
-
-            //var verts = rw.Reader.ReadArray(n.count-4, r => r.ReadVec4());
-        }*/
     }
 
-    public readonly struct Vertex
+    public readonly record struct Vertex(Vec3 Position, Vec3? Normal, Vec3? U02, float? U03, int? U04, Vec3? U05, int? U06, Vec4? U07)
     {
-        public Vec3 Position { get; }
-        public Vec3 U01 { get; }
-        public Vec3 U02 { get; }
-        public float U03 { get; }
-
-        public Vertex(Vec3 position, Vec3 u01, Vec3 u02, float u03)
-        {
-            Position = position;
-            U01 = u01;
-            U02 = u02;
-            U03 = u03;
-        }
-
         public override string ToString() => Position.ToString();
     }
 }

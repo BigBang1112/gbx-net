@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.GameData;
 
 /// <summary>
-/// Custom block (0x2E025000)
+/// Custom block.
 /// </summary>
+/// <remarks>ID: 0x2E025000</remarks>
 [Node(0x2E025000)]
 [NodeExtension("BlockItem")]
 public class CGameBlockItem : CMwNod

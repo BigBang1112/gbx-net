@@ -1,16 +1,33 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// CGameCtnMacroBlockInfo (0x0310D000)
+/// A macroblock.
 /// </summary>
-/// <remarks>A macroblock.</remarks>
+/// <remarks>ID: 0x0310D000</remarks>
 [Node(0x0310D000), WritingNotSupported]
-[NodeExtension("MacroBlock")]
-public class CGameCtnMacroBlockInfo : CGameCtnCollector
+[NodeExtension("Macroblock")]
+public partial class CGameCtnMacroBlockInfo : CGameCtnCollector
 {
-    public CGameCtnBlock[]? Blocks { get; set; }
+    private IList<BlockSpawn>? blockSpawns;
+    private IList<BlockSkinSpawn>? blockSkinSpawns;
+    private IList<CardEventsSpawn>? cardEventsSpawns;
+    private CGameCtnAutoTerrain?[]? autoTerrains;
+    private IList<ObjectSpawn>? objectSpawns;
 
-    public CGameCtnAnchoredObject[]? AnchoredObjects { get; set; }
+    [NodeMember]
+    public IList<BlockSpawn>? BlockSpawns { get => blockSpawns; set => blockSpawns = value; }
+
+    [NodeMember]
+    public IList<BlockSkinSpawn>? BlockSkinSpawns { get => blockSkinSpawns; set => blockSkinSpawns = value; }
+
+    [NodeMember]
+    public IList<CardEventsSpawn>? CardEventsSpawns { get => cardEventsSpawns; set => cardEventsSpawns = value; }
+
+    [NodeMember]
+    public CGameCtnAutoTerrain?[]? AutoTerrains { get => autoTerrains; set => autoTerrains = value; }
+
+    [NodeMember]
+    public IList<ObjectSpawn>? ObjectSpawns { get => objectSpawns; set => objectSpawns = value; }
 
     #region Constructors
 
@@ -23,137 +40,49 @@ public class CGameCtnMacroBlockInfo : CGameCtnCollector
 
     #region Chunks
 
-    #region 0x000 chunk (blocks)
+    #region 0x000 chunk (block spawns)
 
     /// <summary>
-    /// CGameCtnMacroBlockInfo 0x000 chunk (blocks)
+    /// CGameCtnMacroBlockInfo 0x000 chunk (block spawns)
     /// </summary>
-    [Chunk(0x0310D000, "blocks")]
+    [Chunk(0x0310D000, "block spawns")]
     public class Chunk0310D000 : Chunk<CGameCtnMacroBlockInfo>
     {
-        public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r)
+        public override void ReadWrite(CGameCtnMacroBlockInfo n, GameBoxReaderWriter rw)
         {
-            n.Blocks = r.ReadArray(r1 =>
-            {
-                Int3? coord = null;
-                Direction? dir = null;
-                Vec3? position = null;
-                Vec3? pitchYawRoll = null;
-
-                var ver = r1.ReadInt32();
-                var blockModel = r1.ReadIdent();
-                int flags = 0;
-
-                if (ver >= 2)
-                {
-                    if (ver < 5)
-                    {
-
-                    }
-
-                    flags = r1.ReadInt32();
-
-                    if (ver >= 4)
-                    {
-                        if ((flags & (1 << 26)) != 0) // free block
-                            {
-                            position = r1.ReadVec3();
-                            pitchYawRoll = r1.ReadVec3();
-                        }
-                        else
-                        {
-                            coord = (Int3)r1.ReadByte3();
-                            dir = (Direction)r1.ReadByte();
-                        }
-                    }
-                }
-
-                if (ver >= 3)
-                    if (r1.ReadNodeRef() != null)
-                        throw new NotImplementedException();
-
-                if (ver >= 4)
-                    if (r1.ReadNodeRef() != null)
-                        throw new NotImplementedException();
-
-                var correctFlags = flags & 15;
-
-                if ((flags & 0x20000) != 0) // Fixes inner pillars of some blocks
-                        correctFlags |= 0x400000;
-
-                if ((flags & 0x10000) != 0) // Fixes ghost blocks
-                        correctFlags |= 0x10000000;
-
-                var block = new CGameCtnBlock(blockModel, dir.GetValueOrDefault(), coord.GetValueOrDefault(), correctFlags);
-
-                if ((flags & (1 << 26)) != 0)
-                {
-                    //block.IsFree = true;
-                    //block.AbsolutePositionInMap = block.AbsolutePositionInMap.GetValueOrDefault() + position.GetValueOrDefault();
-                    //block.PitchYawRoll += pitchYawRoll.GetValueOrDefault();
-                }
-
-                return block;
-            }).Where(x => x != null).ToArray();
+            rw.ListArchive<BlockSpawn>(ref n.blockSpawns);
         }
     }
 
     #endregion
 
-    #region 0x001 chunk
+    #region 0x001 chunk (block skin spawns)
 
     /// <summary>
-    /// CGameCtnMacroBlockInfo 0x001 chunk
+    /// CGameCtnMacroBlockInfo 0x001 chunk (block skin spawns)
     /// </summary>
-    [Chunk(0x0310D001)]
+    [Chunk(0x0310D001, "block skin spawns")]
     public class Chunk0310D001 : Chunk<CGameCtnMacroBlockInfo>
     {
-        public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r)
+        public override void ReadWrite(CGameCtnMacroBlockInfo n, GameBoxReaderWriter rw)
         {
-            var unknown = r.ReadArray(r1 =>
-            {
-                var version = r1.ReadInt32();
-                if (r1.ReadNodeRef() != null)
-                    throw new NotImplementedException();
-
-                if (version == 0)
-                {
-                    r1.ReadInt32();
-                    r1.ReadInt32();
-                    r1.ReadInt32();
-                }
-
-                r1.ReadInt32();
-
-                return new object();
-            });
+            rw.ListArchive<BlockSkinSpawn>(ref n.blockSkinSpawns);
         }
     }
 
     #endregion
 
-    #region 0x002 chunk
+    #region 0x002 chunk (card events spawns)
 
     /// <summary>
-    /// CGameCtnMacroBlockInfo 0x002 chunk
+    /// CGameCtnMacroBlockInfo 0x002 chunk (card events spawns)
     /// </summary>
-    [Chunk(0x0310D002)]
+    [Chunk(0x0310D002, "card events spawns")]
     public class Chunk0310D002 : Chunk<CGameCtnMacroBlockInfo>
     {
-        public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r)
+        public override void ReadWrite(CGameCtnMacroBlockInfo n, GameBoxReaderWriter rw)
         {
-            var unknown = r.ReadArray(r1 =>
-            {
-                return new object[]
-                {
-                        r1.ReadInt32(),
-                        r1.ReadArray(r2 => r2.ReadIdent()),
-
-                        r1.ReadInt32(),
-                        r1.ReadInt32(),
-                        r1.ReadInt32()
-                };
-            });
+            rw.ListArchive<CardEventsSpawn>(ref n.cardEventsSpawns);
         }
     }
 
@@ -167,99 +96,104 @@ public class CGameCtnMacroBlockInfo : CGameCtnCollector
     [Chunk(0x0310D006)]
     public class Chunk0310D006 : Chunk<CGameCtnMacroBlockInfo>
     {
-        public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r)
+        public int U01;
+        public byte[]? U02;
+
+        public override void ReadWrite(CGameCtnMacroBlockInfo n, GameBoxReaderWriter rw)
         {
-            var version = r.ReadInt32();
-            var arrayLength = r.ReadInt32();
+            rw.Int32(ref U01);
+            rw.Bytes(ref U02); // SceneDecals?
         }
     }
 
     #endregion
 
-    #region 0x008 chunk
+    #region 0x007 chunk
 
     /// <summary>
-    /// CGameCtnMacroBlockInfo 0x008 chunk
+    /// CGameCtnMacroBlockInfo 0x007 chunk
     /// </summary>
-    [Chunk(0x0310D008)]
+    [Chunk(0x0310D007)]
+    public class Chunk0310D007 : Chunk<CGameCtnMacroBlockInfo>
+    {
+        public CMwNod?[] U01 = new CMwNod?[] { null, null, null };
+
+        public override void ReadWrite(CGameCtnMacroBlockInfo n, GameBoxReaderWriter rw)
+        {
+            rw.ArrayNode(ref U01!);
+        }
+    }
+
+    #endregion
+
+    #region 0x008 chunk (auto terrains)
+
+    /// <summary>
+    /// CGameCtnMacroBlockInfo 0x008 chunk (auto terrains)
+    /// </summary>
+    [Chunk(0x0310D008, "auto terrains")]
     public class Chunk0310D008 : Chunk<CGameCtnMacroBlockInfo>
     {
-        public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r)
+        private int listVersion = 10;
+
+        public int U01;
+        public bool U02;
+
+        public override void ReadWrite(CGameCtnMacroBlockInfo n, GameBoxReaderWriter rw)
         {
-            var version = r.ReadInt32();
-            var nodrefs = r.ReadArray(r1 => r1.ReadNodeRef());
-            r.ReadArray<int>(2);
+            rw.Int32(ref listVersion);
+            rw.ArrayNode<CGameCtnAutoTerrain>(ref n.autoTerrains);
+            rw.Int32(ref U01);
+            rw.Boolean(ref U02);
         }
     }
 
     #endregion
 
-    #region 0x00E chunk (items)
+    #region 0x00B skippable chunk (script metadata)
 
     /// <summary>
-    /// CGameCtnMacroBlockInfo 0x00E chunk (items)
+    /// CGameCtnMacroBlockInfo 0x00B skippable chunk (script metadata)
     /// </summary>
-    [Chunk(0x0310D00E)]
-    public class Chunk0310D00E : Chunk<CGameCtnMacroBlockInfo>
+    [Chunk(0x0310D00B, "script metadata"), IgnoreChunk]
+    public class Chunk0310D00B : SkippableChunk<CGameCtnMacroBlockInfo>
     {
-        public int Version { get; set; }
+        
+    }
 
-        public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r)
+    #endregion
+
+    #region 0x00E chunk (object spawns)
+
+    /// <summary>
+    /// CGameCtnMacroBlockInfo 0x00E chunk (object spawns)
+    /// </summary>
+    [Chunk(0x0310D00E, "object spawns")]
+    public class Chunk0310D00E : Chunk<CGameCtnMacroBlockInfo>, IVersionable
+    {
+        private int version;
+
+        public Int2[]? U01;
+        public Int4[]? U02;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnMacroBlockInfo n, GameBoxReaderWriter rw)
         {
-            Version = r.ReadInt32();
+            rw.Int32(ref version);
+            rw.ListArchive<ObjectSpawn>(ref n.objectSpawns);
 
-            n.AnchoredObjects = r.ReadArray(r1 =>
+            if (version < 3)
             {
-                var v = r1.ReadInt32();
-
-                var itemModel = r1.ReadIdent();
-
-                Vec3 pitchYawRoll = default;
-                Vec3 pivotPosition = default;
-                float scale = 1;
-
-                if (v < 3)
+                if (version >= 1)
                 {
-                    var quarterY = r1.ReadByte();
-
-                    if (v != 0)
-                    {
-                        var additionalDir = r1.ReadByte();
-                    }
+                    rw.Array<Int2>(ref U01);
                 }
-                else
-                {
-                    pitchYawRoll = r1.ReadVec3();
-                }
+            }
 
-                var blockCoord = r1.ReadInt3();
-                var lookback = r1.ReadId();
-                var pos = r1.ReadVec3();
-
-                if (v < 5)
-                    r1.ReadInt32();
-                if (v < 6)
-                    r1.ReadInt32();
-                if (v >= 6)
-                    r1.ReadInt16(); // 0
-                    if (v >= 7)
-                    pivotPosition = r1.ReadVec3();
-                if (v >= 8)
-                    r1.ReadNodeRef(); // probably waypoint
-                    if (v >= 9)
-                    scale = r1.ReadSingle(); // 1
-                    if (v >= 10)
-                    r1.ReadArray<int>(3); // 0 1 -1
-
-                    return new CGameCtnAnchoredObject(itemModel, pos, pitchYawRoll, pivotPosition,
-                    scale: scale, blockUnitCoord: (Byte3)blockCoord);
-            });
-
-            var num = r.ReadInt32();
-            if (num == 1)
+            if (version >= 3)
             {
-                r.ReadInt32();
-                r.ReadInt32();
+                rw.Array<Int4>(ref U02);
             }
         }
     }
@@ -272,16 +206,28 @@ public class CGameCtnMacroBlockInfo : CGameCtnCollector
     /// CGameCtnMacroBlockInfo 0x00F chunk
     /// </summary>
     [Chunk(0x0310D00F)]
-    public class Chunk0310D00F : Chunk<CGameCtnMacroBlockInfo>
+    public class Chunk0310D00F : Chunk<CGameCtnMacroBlockInfo>, IVersionable
     {
-        public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r)
+        private int version;
+
+        public Int3 U01;
+        public Int3 U02;
+        public Int3[]? U03;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnMacroBlockInfo n, GameBoxReaderWriter rw)
         {
-            var version = r.ReadInt32();
-            _ = r.ReadArray<int>(7);
+            rw.Int32(ref version);
+            rw.Int3(ref U01);
+
+            // SBoxesSelection
+            rw.Int3(ref U02);
+            rw.Array<Int3>(ref U03);
         }
     }
 
     #endregion
-
+    
     #endregion
 }

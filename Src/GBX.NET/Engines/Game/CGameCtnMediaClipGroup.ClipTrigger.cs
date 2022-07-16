@@ -2,17 +2,8 @@
 
 public partial class CGameCtnMediaClipGroup
 {
-    public class ClipTrigger
+    public record ClipTrigger(CGameCtnMediaClip Clip, Trigger Trigger)
     {
-        public CGameCtnMediaClip Clip { get; set; }
-        public Trigger Trigger { get; set; }
-
-        public ClipTrigger(CGameCtnMediaClip clip, Trigger trigger)
-        {
-            Clip = clip;
-            Trigger = trigger;
-        }
-
         public override string ToString()
         {
             return $"{Clip} with trigger";

@@ -1,9 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// CGameNetOnlineMessage (0x03028000)
+/// An ingame mail.
 /// </summary>
-/// <remarks>An ingame mail.</remarks>
+/// <remarks>ID: 0x03028000</remarks>
 [Node(0x03028000), WritingNotSupported]
 public class CGameNetOnlineMessage : CMwNod
 {
@@ -27,6 +27,9 @@ public class CGameNetOnlineMessage : CMwNod
         return $"{base.ToString()} {{ Message from {SenderLogin} }}";
     }
 
+    /// <summary>
+    /// CGameNetOnlineMessage 0x000 chunk
+    /// </summary>
     [Chunk(0x03028000)]
     public class Chunk03028000 : Chunk<CGameNetOnlineMessage>
     {

@@ -138,6 +138,20 @@ public static class NodeCacheManager
         return (T)GetClassConstructor(classId)();
     }
 
+    /// <summary>
+    /// Gets the cached private constructor of the node with an additional of allocating the class ID from <typeparamref name="T"/>. The node can potentially have null values in non-nullable properties and fields.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    internal static T GetNodeInstance<T>() where T : Node
+    {
+        CacheClassTypesIfNotCached();
+
+        var classId = GetClassIdByType(typeof(T)) ?? throw new Exception("Node cannot be instantiated.");
+
+        return (T)GetClassConstructor(classId)();
+    }
+
     public static void CacheClassTypesIfNotCached()
     {
         if (ClassesAreCached)
@@ -257,6 +271,28 @@ public static class NodeCacheManager
         return null;
     }
 
+    internal static uint GetChunkIdByType(Type chunkType)
+    {
+        return GetChunkIdByType(chunkType, ChunkIdsByType);
+    }
+
+    internal static uint GetChunkIdByType(Type chunkType, IDictionary<Type, uint> chunkIdsByType)
+    {
+        if (chunkIdsByType.TryGetValue(chunkType, out var cachedChunkId))
+        {
+            return cachedChunkId;
+        }
+
+        if (chunkType.DeclaringType is null)
+        {
+            throw new Exception("Wrongly defined chunk class.");
+        }
+
+        CacheChunkTypesIfNotCached(chunkType.DeclaringType);
+
+        return ChunkIdsByType[chunkType];
+    }
+
     internal static uint GetChunkIdByType(Type classType, Type chunkType)
     {
         return GetChunkIdByType(classType, chunkType, ChunkIdsByType);
@@ -268,7 +304,7 @@ public static class NodeCacheManager
         {
             return cachedChunkId;
         }
-
+        
         CacheChunkTypesIfNotCached(classType);
 
         return ChunkIdsByType[chunkType];

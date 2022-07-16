@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.GameData;
 
 /// <summary>
-/// Waypoint (0x2E009000)
+/// Waypoint.
 /// </summary>
+/// <remarks>ID: 0x2E009000</remarks>
 [Node(0x2E009000)]
 public class CGameWaypointSpecialProperty : CMwNod
 {
@@ -52,16 +53,15 @@ public class CGameWaypointSpecialProperty : CMwNod
 
     #region 0x000 chunk
 
+    /// <summary>
+    /// CGameWaypointSpecialProperty 0x000 chunk
+    /// </summary>
     [Chunk(0x2E009000)]
     public class Chunk2E009000 : Chunk<CGameWaypointSpecialProperty>, IVersionable
     {
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameWaypointSpecialProperty n, GameBoxReaderWriter rw)
         {
@@ -84,6 +84,9 @@ public class CGameWaypointSpecialProperty : CMwNod
 
     #region 0x001 skippable chunk
 
+    /// <summary>
+    /// CGameWaypointSpecialProperty 0x001 skippable chunk
+    /// </summary>
     [Chunk(0x2E009001)]
     public class Chunk2E009001 : SkippableChunk<CGameWaypointSpecialProperty>
     {

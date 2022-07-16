@@ -1,7 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Reflection;
-using System.Runtime.Serialization;
-using System.Text;
 
 namespace GBX.NET;
 
@@ -9,11 +6,12 @@ namespace GBX.NET;
 /// The skeleton of the Gbx object and representation of the <see cref="CMwNod"/>.
 /// </summary>
 /// <remarks>You shouldn't inherit this class unless <see cref="CMwNod"/> cannot be inherited instead.</remarks>
-public abstract class Node : IStateRefTable, IDisposable
+public abstract class Node
 {
     private uint? id;
     private ChunkSet? chunks;
     private GameBox? gbx;
+    private GameBox? gbxForRefTable;
 
     public uint Id => GetStoredId();
 
@@ -21,15 +19,10 @@ public abstract class Node : IStateRefTable, IDisposable
     {
         get
         {
-            chunks ??= new ChunkSet(this); // Maybe improve this
+            chunks ??= new ChunkSet();
             return chunks;
         }
     }
-
-    public ChunkSet? HeaderChunks { get; internal set; }
-
-    Guid? IState.StateGuid { get; set; }
-    string? IStateRefTable.FileName { get; set; }
 
     protected Node()
     {
@@ -77,33 +70,38 @@ public abstract class Node : IStateRefTable, IDisposable
         return type.FullName?.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::") ?? string.Empty;
     }
 
-    protected Node? GetNodeFromRefTable(Node? nodeAtTheMoment, int? nodeIndex)
+    protected internal Node? GetNodeFromRefTable(Node? nodeAtTheMoment, GameBoxRefTable.File? nodeFile)
     {
-        if (nodeAtTheMoment is not null || nodeIndex is null)
+        if (nodeAtTheMoment is not null || nodeFile is null || gbxForRefTable is null)
+        {
             return nodeAtTheMoment;
+        }
 
-        if (gbx is null)
-            return nodeAtTheMoment;
-
-        var refTable = StateManager.Shared.GetReferenceTable(((IState)this).StateGuid.GetValueOrDefault());
+        var refTable = gbxForRefTable.RefTable;
 
         if (refTable is null)
+        {
             return nodeAtTheMoment;
+        }
 
-        var fileName = gbx.FileName;
+        var fileName = gbxForRefTable.PakFileName ?? gbxForRefTable.FileName;
 
-        return refTable.GetNode(nodeAtTheMoment, nodeIndex, fileName);
+        return refTable.GetNode(nodeAtTheMoment, nodeFile, fileName, gbxForRefTable?.ExternalGameData);
     }
 
-    internal static T? Parse<T>(GameBoxReader r, uint? classId, IProgress<GameBoxReadProgress>? progress, ILogger? logger) where T : Node
+    internal static T? Parse<T>(GameBoxReader r, uint? classId, IProgress<GameBoxReadProgress>? progress, ILogger? logger, bool ignoreZeroIdChunk = false) where T : Node
     {
-        return Parse(r, classId, progress, logger) as T;
+        return Parse(r, classId, progress, logger, ignoreZeroIdChunk) as T;
     }
 
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal static Node? Parse(GameBoxReader r, uint? classId, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
+    internal static Node? Parse(GameBoxReader r,
+                                uint? classId,
+                                IProgress<GameBoxReadProgress>? progress,
+                                ILogger? logger,
+                                bool ignoreZeroIdChunk = false)
     {
         GetNodeInfoFromClassId(r, classId, out Node? node, out Type nodeType);
 
@@ -112,7 +110,7 @@ public abstract class Node : IStateRefTable, IDisposable
             return null;
         }
 
-        Parse(node, nodeType, r, progress, logger);
+        Parse(node, nodeType, r, progress, logger, ignoreZeroIdChunk);
 
         return node;
     }
@@ -153,17 +151,48 @@ public abstract class Node : IStateRefTable, IDisposable
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
-    internal static void Parse(Node node, Type nodeType, GameBoxReader r, IProgress<GameBoxReadProgress>? progress, ILogger? logger)
+    internal static void Parse(Node node,
+                               Type nodeType,
+                               GameBoxReader r,
+                               IProgress<GameBoxReadProgress>? progress,
+                               ILogger? logger,
+                               bool ignoreZeroIdChunk = false)
     {
+        node.gbxForRefTable = r.Settings.Gbx;
+        
         var stopwatch = Stopwatch.StartNew();
-
-        ((IState)node).StateGuid = r.Settings.StateGuid;
 
         using var scope = logger?.BeginScope("{name}", nodeType.Name);
 
         var previousChunkId = default(uint?);
 
-        while (IterateChunks(node, nodeType, r, progress, logger, ref previousChunkId))
+        if (r.BaseStream is IXorTrickStream cryptedStream)
+        {
+            var baseType = nodeType.BaseType ?? throw new ThisShouldNotHappenException();
+                
+            var parentClassId = NodeCacheManager.GetClassIdByType(baseType) ?? throw new ThisShouldNotHappenException();
+
+            if (parentClassId == 0x07031000)
+            {
+                parentClassId = 0x07001000;
+            }
+
+            if (node is CPlugSurfaceGeom)
+            {
+                parentClassId = 0x0902B000;
+            }
+
+            if (baseType == typeof(CGameCtnBlockInfo))
+            {
+                parentClassId = 0x24005000;
+            }
+
+            var parentClassIDBytes = BitConverter.GetBytes(parentClassId);
+
+            cryptedStream.InitializeXorTrick(parentClassIDBytes, 0, 4);
+        }
+
+        while (IterateChunks(node, nodeType, r, progress, logger, ref previousChunkId, ignoreZeroIdChunk))
         {
             // Iterates through chunks until false is returned
         }
@@ -227,7 +256,13 @@ public abstract class Node : IStateRefTable, IDisposable
         logger?.LogNodeComplete(time: stopwatch.Elapsed.TotalMilliseconds);
     }
 
-    private static bool IterateChunks(Node node, Type nodeType, GameBoxReader r, IProgress<GameBoxReadProgress>? progress, ILogger? logger, ref uint? previousChunkId)
+    private static bool IterateChunks(Node node,
+                                      Type nodeType,
+                                      GameBoxReader r,
+                                      IProgress<GameBoxReadProgress>? progress,
+                                      ILogger? logger,
+                                      ref uint? previousChunkId,
+                                      bool ignoreZeroIdChunk = false)
     {
         var stream = r.BaseStream;
         var canSeek = stream.CanSeek;
@@ -239,16 +274,21 @@ public abstract class Node : IStateRefTable, IDisposable
             return false;
         }
 
-        var chunkId = r.ReadUInt32();
+        var originalChunkId = r.ReadUInt32();
 
-        if (chunkId == 0xFACADE01) // no more chunks
+        if (originalChunkId == 0xFACADE01) // no more chunks
         {
             return false;
         }
 
-        LogChunkProgress(logger, stream, chunkId);
+        if (previousChunkId is null && ignoreZeroIdChunk && originalChunkId == 0)
+        {
+            return false;
+        }
 
-        chunkId = Chunk.Remap(chunkId);
+        LogChunkProgress(logger, stream, originalChunkId);
+
+        var chunkId = Chunk.Remap(originalChunkId);
 
         var chunkClass = NodeCacheManager.GetChunkTypeById(nodeType, chunkId);
 
@@ -298,8 +338,7 @@ public abstract class Node : IStateRefTable, IDisposable
         }
 
         var chunk = constructor();
-        chunk.Node = node; //
-        chunk.OnLoad(); // The chunk is immediately activated, but may not be yet parsed at this state
+        chunk.OnLoad(); // The chunk is immediately activated, but is not parsed at this state
 
         var gbxrw = new GameBoxReaderWriter(r);
 
@@ -314,7 +353,7 @@ public abstract class Node : IStateRefTable, IDisposable
 
         var streamPos = default(long);
 
-        if (GameBox.Debug)
+        if (GameBox.SeekForRawChunkData)
         {
             streamPos = r.BaseStream.Position;
         }
@@ -330,7 +369,7 @@ public abstract class Node : IStateRefTable, IDisposable
             {
                 var unknown = new GameBoxWriter(chunk.Unknown, logger: logger);
                 var unknownData = r.ReadUntilFacade().ToArray();
-                unknown.WriteBytes(unknownData);
+                unknown.Write(unknownData);
             }
         }
         catch (EndOfStreamException) // May not be needed
@@ -338,7 +377,7 @@ public abstract class Node : IStateRefTable, IDisposable
             logger?.LogDebug("Unexpected end of the stream while reading the chunk.");
         }
 
-        if (GameBox.Debug)
+        if (GameBox.SeekForRawChunkData)
         {
             SetChunkRawData(r.BaseStream, chunk, streamPos);
         }
@@ -455,7 +494,6 @@ public abstract class Node : IStateRefTable, IDisposable
         }
 
         var chunk = constructor();
-        chunk.Node = node; //
         chunk.OnLoad(); // The chunk is immediately activated, but may not be yet parsed at this state
 
         var gbxrw = new GameBoxReaderWriter(r);
@@ -471,7 +509,7 @@ public abstract class Node : IStateRefTable, IDisposable
 
         var streamPos = default(long);
 
-        if (GameBox.Debug)
+        if (GameBox.SeekForRawChunkData)
         {
             streamPos = r.BaseStream.Position;
         }
@@ -486,7 +524,7 @@ public abstract class Node : IStateRefTable, IDisposable
             {
                 var unknown = new GameBoxWriter(chunk.Unknown, logger: logger);
                 var unknownData = r.ReadUntilFacade().ToArray();
-                unknown.WriteBytes(unknownData);
+                unknown.Write(unknownData);
             }
         }
         catch (EndOfStreamException) // May not be needed
@@ -494,7 +532,7 @@ public abstract class Node : IStateRefTable, IDisposable
             logger?.LogDebug("Unexpected end of the stream while reading the chunk.");
         }
 
-        if (GameBox.Debug)
+        if (GameBox.SeekForRawChunkData)
         {
             await SetChunkRawDataAsync(r.BaseStream, chunk, streamPos, cancellationToken);
         }
@@ -516,8 +554,7 @@ public abstract class Node : IStateRefTable, IDisposable
 
         _ = stream.Read(rawData, 0, chunkLength);
 
-        chunk.Debugger ??= new();
-        chunk.Debugger.RawData = rawData;
+        chunk.RawData = rawData;
     }
 
     private static async Task SetChunkRawDataAsync(Stream stream, Chunk chunk, long streamPos, CancellationToken cancellationToken)
@@ -538,20 +575,19 @@ public abstract class Node : IStateRefTable, IDisposable
         _ = await stream.ReadAsync(rawData, 0, rawData.Length, cancellationToken);
 #endif
 
-        chunk.Debugger ??= new();
-        chunk.Debugger.RawData = rawData;
+        chunk.RawData = rawData;
     }
 
     private static void BeforeChunkParseException(GameBoxReader r)
     {
-        if (GameBox.Debug && r.BaseStream.CanSeek) // I don't get it
+        /*if (GameBox.Debug && r.BaseStream.CanSeek) // I don't get it
         {
             // Read the rest of the body
 
             var streamPos = r.BaseStream.Position;
             var uncontrollableData = r.ReadToEnd();
             r.BaseStream.Position = streamPos;
-        }
+        }*/
     }
 
     private static Chunk ReadSkippableChunk(Node node,
@@ -578,10 +614,9 @@ public abstract class Node : IStateRefTable, IDisposable
 
         var chunk = (Chunk)Activator.CreateInstance(typeof(SkippableChunk<>).MakeGenericType(nodeType), new object?[] { node, chunkData, chunkId })!;
 
-        if (GameBox.Debug)
+        if (GameBox.SeekForRawChunkData)
         {
-            chunk.Debugger ??= new();
-            chunk.Debugger.RawData = chunkData;
+            chunk.RawData = chunkData;
         }
 
         return chunk;
@@ -605,10 +640,11 @@ public abstract class Node : IStateRefTable, IDisposable
         }
 
         var chunk = constructor();
-        chunk.Node = node; //
 
         var skippableChunk = (ISkippableChunk)chunk;
         skippableChunk.Data = chunkData;
+        skippableChunk.Gbx = readerSettings.Gbx;
+        skippableChunk.Node = node; //
 
         if (chunkData.Length == 0)
         {
@@ -628,13 +664,17 @@ public abstract class Node : IStateRefTable, IDisposable
 
                 skippableChunk.ReadWrite(node, rw);
                 skippableChunk.Discovered = true;
+                
+                if (ms.Position != ms.Length)
+                {
+                    logger?.LogWarning("Skippable chunk 0x{chunkId} has {chunkSize} bytes left.", chunkId.ToString("X8"), ms.Length - ms.Position);
+                }
             }
         }
 
-        if (GameBox.Debug)
+        if (GameBox.SeekForRawChunkData)
         {
-            chunk.Debugger ??= new();
-            chunk.Debugger!.RawData = chunkData;
+            chunk.RawData = chunkData;
         }
 
         return chunk;
@@ -753,7 +793,7 @@ public abstract class Node : IStateRefTable, IDisposable
                 break;
         }
 
-        w.WriteBytes(ms.ToArray());
+        w.Write(ms.ToArray());
     }
 
     private async Task WriteChunkAsync(IReadableWritableChunk chunk, GameBoxWriter w, ILogger? logger, CancellationToken cancellationToken)
@@ -781,7 +821,7 @@ public abstract class Node : IStateRefTable, IDisposable
     {
         if (IsIgnorableChunk(chunk.GetType()))
         {
-            msW.WriteBytes(chunk.Unknown.ToArray());
+            msW.Write(chunk.Unknown.ToArray());
         }
         else
         {
@@ -852,7 +892,7 @@ public abstract class Node : IStateRefTable, IDisposable
 
         if (IsIgnorableChunk(type))
         {
-            chunkWriter.WriteBytes(skippableChunk.Data);
+            chunkWriter.Write(skippableChunk.Data);
             return;
         }
 
@@ -860,7 +900,7 @@ public abstract class Node : IStateRefTable, IDisposable
 
         if (ownIdState)
         {
-            chunkWriter.StartIdSubState();
+            gbx?.ResetIdState();
         }
 
         try
@@ -869,12 +909,7 @@ public abstract class Node : IStateRefTable, IDisposable
         }
         catch (ChunkWriteNotImplementedException)
         {
-            chunkWriter.WriteBytes(skippableChunk.Data);
-        }
-
-        if (ownIdState)
-        {
-            chunkWriter.EndIdSubState();
+            chunkWriter.Write(skippableChunk.Data);
         }
     }
 
@@ -928,7 +963,7 @@ public abstract class Node : IStateRefTable, IDisposable
 
         if (ownIdState)
         {
-            chunkWriter.StartIdSubState();
+            GetGbx()?.ResetIdState();
         }
 
         try
@@ -939,18 +974,12 @@ public abstract class Node : IStateRefTable, IDisposable
         {
             await chunkWriter.WriteBytesAsync(skippableChunk.Data, cancellationToken);
         }
-
-        if (ownIdState)
-        {
-            chunkWriter.EndIdSubState();
-        }
     }
 
     private void PrepareToWriteChunk(ILogger? logger, int counter, IReadableWritableChunk chunk)
     {
         logger?.LogChunkProgress(chunk.Id.ToString("X8"), (float)counter / Chunks.Count * 100);
 
-        ((Chunk)chunk).Node = this; //
         chunk.Unknown.Position = 0;
     }
 
@@ -1198,15 +1227,5 @@ public abstract class Node : IStateRefTable, IDisposable
         }
 
         return id;
-    }
-
-    public void Dispose()
-    {
-        var stateGuid = ((IState)this).StateGuid;
-
-        if (stateGuid is not null)
-        {
-            StateManager.Shared.RemoveState(stateGuid.Value);
-        }
     }
 }

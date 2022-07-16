@@ -1,8 +1,6 @@
 ﻿namespace GBX.NET.Engines.Function;
 
-/// <summary>
-/// CFunc (0x05010000)
-/// </summary>
+/// <remarks>ID: 0x05010000</remarks>
 [Node(0x05010000)]
 [NodeExtension("Func")]
 public abstract class CFunc : CMwNod

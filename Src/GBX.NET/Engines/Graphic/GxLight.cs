@@ -1,35 +1,46 @@
 ﻿namespace GBX.NET.Engines.Graphic;
 
+/// <remarks>ID: 0x04001000</remarks>
 [Node(0x04001000)]
 public class GxLight : CMwNod
 {
+    #region Fields
+
     private float intensity;
     private float shadowIntensity;
     private float flareIntensity;
 
-    public float Intensity
-    {
-        get => intensity;
-        set => intensity = value;
-    }
+    #endregion
 
-    public float ShadowIntensity
-    {
-        get => shadowIntensity;
-        set => shadowIntensity = value;
-    }
+    #region Properties
 
-    public float FlareIntensity
-    {
-        get => flareIntensity;
-        set => flareIntensity = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public float Intensity { get => intensity; set => intensity = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public float ShadowIntensity { get => shadowIntensity; set => shadowIntensity = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public float FlareIntensity { get => flareIntensity; set => flareIntensity = value; }
+
+    #endregion
+
+    #region Constructors
 
     protected GxLight()
     {
 
     }
 
+    #endregion
+
+    #region Chunks
+
+    #region 0x008 chunk
+
+    /// <summary>
+    /// GxLight 0x008 chunk
+    /// </summary>
     [Chunk(0x04001008)]
     public class Chunk04001008 : Chunk<GxLight>
     {
@@ -55,4 +66,8 @@ public class GxLight : CMwNod
             rw.Single(ref U07);
         }
     }
+
+    #endregion
+
+    #endregion
 }

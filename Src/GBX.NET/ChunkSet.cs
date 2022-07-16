@@ -1,21 +1,17 @@
-﻿using System.Reflection;
-using System.Runtime.Serialization;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace GBX.NET;
 
 public class ChunkSet : SortedSet<Chunk>
 {
-    [IgnoreDataMember]
-    public Node Node { get; set; }
-
-    public ChunkSet(Node node) : base()
+    public ChunkSet() : base()
     {
-        Node = node;
+        
     }
 
-    public ChunkSet(Node node, IEnumerable<Chunk> collection) : base(collection)
+    public ChunkSet(IEnumerable<Chunk> collection) : base(collection)
     {
-        Node = node;
+        
     }
 
     public bool Remove(uint chunkID)
@@ -25,44 +21,25 @@ public class ChunkSet : SortedSet<Chunk>
 
     public bool Remove<T>() where T : Chunk
     {
-        return RemoveWhere(x => x.Id == typeof(T).GetCustomAttribute<ChunkAttribute>()?.ID) > 0;
-    }
-
-    public T Create<T>(byte[] data) where T : Chunk // Improve
-    {
-        var chunkId = typeof(T).GetCustomAttribute<ChunkAttribute>()?.ID;
-
-        var c = this.FirstOrDefault(x => x.Id == chunkId);
-        if (c != null)
-            return (T)c;
-
-        T chunk = (T)Activator.CreateInstance(typeof(T))!;
-        chunk.Node = Node;
-
-        if (chunk is ISkippableChunk s)
-        {
-            s.Data = data;
-            if (data == null || data.Length == 0)
-                s.Discovered = true;
-
-            chunk.OnLoad();
-        }
-        else if (data.Length > 0)
-        {
-            using var ms = new MemoryStream(data);
-            using var r = new GameBoxReader(ms);
-
-            var rw = new GameBoxReaderWriter(r);
-            ((IReadableWritableChunk)chunk).ReadWrite(Node, rw);
-        }
-
-        Add(chunk);
-        return chunk;
+        return RemoveWhere(x => x is T) > 0;
     }
 
     public T Create<T>() where T : Chunk
     {
-        return Create<T>(Array.Empty<byte>());
+        var chunkId = NodeCacheManager.GetChunkIdByType(typeof(T));
+        
+        if (TryGet(chunkId, out var c))
+        {
+            return c as T ?? throw new ThisShouldNotHappenException();
+        }
+
+        var chunk = NodeCacheManager.ChunkConstructors.TryGetValue(chunkId, out var constructor)
+            ? (T)constructor()
+            : (T)Activator.CreateInstance(typeof(T))!;
+
+        Add(chunk);
+        
+        return chunk;
     }
 
     public Chunk? Get(uint chunkId)
@@ -70,7 +47,11 @@ public class ChunkSet : SortedSet<Chunk>
         return this.FirstOrDefault(x => x.Id == chunkId);
     }
 
+#if NET462_OR_GREATER || NETSTANDARD2_0
     public bool TryGet(uint chunkId, out Chunk? chunk)
+#else
+    public bool TryGet(uint chunkId, [NotNullWhen(true)] out Chunk? chunk)
+#endif
     {
         chunk = Get(chunkId);
         return chunk is not null;

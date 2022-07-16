@@ -9,13 +9,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
+		<PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
 		<PackageReference Include="xunit" Version="2.4.1" />
-		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
-		<PackageReference Include="coverlet.collector" Version="3.0.2">
+		<PackageReference Include="coverlet.collector" Version="3.1.2">
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
@@ -25,19 +27,15 @@
 		<Content Include="Files\**">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
-	</ItemGroup>
-
-	<ItemGroup>
-		<None Remove="Files\CCP#04 - ODYSSEY.Map.Gbx" />
-		<None Remove="Files\Game_Over.Map.Gbx" />
-		<None Remove="Files\IslandSeaWaySupport.TMEDRoad.Gbx" />
-		<None Remove="Files\Mape.Map.Gbx" />
-		<None Remove="Files\Summer 2021 - 25.Map.Gbx" />
+		<Content Include="TestData\**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\Src\GBX.NET.LZO\GBX.NET.LZO.csproj" />
 		<ProjectReference Include="..\..\Src\GBX.NET\GBX.NET.csproj" />
+		<ProjectReference Include="..\GBX.NET.Tests.Generators\GBX.NET.Tests.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -48,6 +46,15 @@
 		<Content Include="..\..\ExampleFiles\**">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="TestData\Chunks\CGameCtnChallenge.2019.11.19.1850.zip" />
+	  <None Remove="TestData\Chunks\CGameCtnCollector.2015-06-18_15_10.zip" />
+	  <None Remove="TestData\Chunks\CGameCtnCollector.2016-11-07_16_15.zip" />
+	  <None Remove="TestData\Chunks\CGameCtnMacroBlockInfo.2015-06-18_15_10.zip" />
+	  <None Remove="TestData\Chunks\CGameCtnMacroBlockInfo.2016-11-07_16_15.zip" />
+	  <None Remove="TestData\Chunks\CGameCtnMacroBlockInfo.2022.7.6.1137.zip" />
 	</ItemGroup>
 
 </Project>

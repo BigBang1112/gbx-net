@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Scenery (0x03188000)
+/// MediaTracker block - Scenery.
 /// </summary>
+/// <remarks>ID: 0x03188000</remarks>
 [Node(0x03188000)]
 public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
@@ -50,6 +51,9 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, CGameCtnMed
 
     #region 0x000 chunk
 
+    /// <summary>
+    /// CGameCtnMediaBlockScenery 0x000 chunk
+    /// </summary>
     [Chunk(0x03188000)]
     public class Chunk03188000 : Chunk<CGameCtnMediaBlockScenery>, IVersionable
     {

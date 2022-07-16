@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.GameData;
 
 /// <summary>
-/// Item placement parameters (0x2E020000)
+/// Item placement parameters.
 /// </summary>
+/// <remarks>ID: 0x2E020000</remarks>
 [Node(0x2E020000)]
 public class CGameItemPlacementParam : CMwNod
 {
@@ -18,16 +19,17 @@ public class CGameItemPlacementParam : CMwNod
     #region Fields
 
     private short flags;
-    private Vec3 cube_Center;
-    private float cube_Size;
-    private float gridSnap_HStep;
-    private float gridSnap_VStep;
-    private float gridSnap_HOffset;
-    private float gridSnap_VOffset;
-    private float flyStep;
-    private float flyOffset;
-    private float pivotSnap_Distance;
+    private Vec3 cubeCenter;
+    private float cubeSize;
+    private float gridSnapHStep;
+    private float gridSnapVStep;
+    private float gridSnapHOffset;
+    private float gridSnapVOffset;
+    private float flyVStep;
+    private float flyVOffset;
+    private float pivotSnapDistance;
     private Vec3[]? pivotPositions;
+    private Quat[]? pivotRotations;
 
     #endregion
 
@@ -47,7 +49,7 @@ public class CGameItemPlacementParam : CMwNod
         }
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public bool YawOnly
     {
         get => (Flags & (1 << yawOnlyBit)) != 0;
@@ -58,7 +60,7 @@ public class CGameItemPlacementParam : CMwNod
         }
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public bool NotOnObject
     {
         get => (Flags & (1 << notOnObjectBit)) != 0;
@@ -69,7 +71,7 @@ public class CGameItemPlacementParam : CMwNod
         }
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public bool AutoRotation
     {
         get => (Flags & (1 << autoRotationBit)) != 0;
@@ -80,7 +82,7 @@ public class CGameItemPlacementParam : CMwNod
         }
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public bool SwitchPivotManually
     {
         get => (Flags & (1 << switchPivotManuallyBit)) != 0;
@@ -91,142 +93,142 @@ public class CGameItemPlacementParam : CMwNod
         }
     }
 
-    [NodeMember]
-    public Vec3 Cube_Center
+    [NodeMember(ExactName = "Cube_Center")]
+    public Vec3 CubeCenter
     {
         get
         {
             DiscoverChunk<Chunk2E020000>();
-            return cube_Center;
+            return cubeCenter;
         }
         set
         {
             DiscoverChunk<Chunk2E020000>();
-            cube_Center = value;
+            cubeCenter = value;
         }
     }
 
-    [NodeMember]
-    public float Cube_Size
+    [NodeMember(ExactName = "Cube_Size")]
+    public float CubeSize
     {
         get
         {
             DiscoverChunk<Chunk2E020000>();
-            return cube_Size;
+            return cubeSize;
         }
         set
         {
             DiscoverChunk<Chunk2E020000>();
-            cube_Size = value;
+            cubeSize = value;
         }
     }
 
-    [NodeMember]
-    public float GridSnap_HStep
+    [NodeMember(ExactName = "GridSnap_HStep")]
+    public float GridSnapHStep
     {
         get
         {
             DiscoverChunk<Chunk2E020000>();
-            return gridSnap_HStep;
+            return gridSnapHStep;
         }
         set
         {
             DiscoverChunk<Chunk2E020000>();
-            gridSnap_HStep = value;
+            gridSnapHStep = value;
         }
     }
 
-    [NodeMember]
-    public float GridSnap_VStep
+    [NodeMember(ExactName = "GridSnap_VStep")]
+    public float GridSnapVStep
     {
         get
         {
             DiscoverChunk<Chunk2E020000>();
-            return gridSnap_VStep;
+            return gridSnapVStep;
         }
         set
         {
             DiscoverChunk<Chunk2E020000>();
-            gridSnap_VStep = value;
+            gridSnapVStep = value;
         }
     }
 
-    [NodeMember]
-    public float GridSnap_HOffset
+    [NodeMember(ExactName = "GridSnap_HOffset")]
+    public float GridSnapHOffset
     {
         get
         {
             DiscoverChunk<Chunk2E020000>();
-            return gridSnap_HOffset;
+            return gridSnapHOffset;
         }
         set
         {
             DiscoverChunk<Chunk2E020000>();
-            gridSnap_HOffset = value;
+            gridSnapHOffset = value;
         }
     }
 
-    [NodeMember]
-    public float GridSnap_VOffset
+    [NodeMember(ExactName = "GridSnap_VOffset")]
+    public float GridSnapVOffset
     {
         get
         {
             DiscoverChunk<Chunk2E020000>();
-            return gridSnap_VOffset;
+            return gridSnapVOffset;
         }
         set
         {
             DiscoverChunk<Chunk2E020000>();
-            gridSnap_VOffset = value;
+            gridSnapVOffset = value;
         }
     }
 
-    [NodeMember]
-    public float FlyStep
+    [NodeMember(ExactlyNamed = true)]
+    public float FlyVStep
     {
         get
         {
             DiscoverChunk<Chunk2E020000>();
-            return flyStep;
+            return flyVStep;
         }
         set
         {
             DiscoverChunk<Chunk2E020000>();
-            flyStep = value;
+            flyVStep = value;
         }
     }
 
-    [NodeMember]
-    public float FlyOffset
+    [NodeMember(ExactlyNamed = true)]
+    public float FlyVOffset
     {
         get
         {
             DiscoverChunk<Chunk2E020000>();
-            return flyOffset;
+            return flyVOffset;
         }
         set
         {
             DiscoverChunk<Chunk2E020000>();
-            flyOffset = value;
+            flyVOffset = value;
         }
     }
 
-    [NodeMember]
-    public float PivotSnap_Distance
+    [NodeMember(ExactName = "PivotSnap_Distance")]
+    public float PivotSnapDistance
     {
         get
         {
             DiscoverChunk<Chunk2E020000>();
-            return pivotSnap_Distance;
+            return pivotSnapDistance;
         }
         set
         {
             DiscoverChunk<Chunk2E020000>();
-            pivotSnap_Distance = value;
+            pivotSnapDistance = value;
         }
     }
 
-    [NodeMember]
+    [NodeMember(ExactName = "Pivots_Positions")]
     public Vec3[]? PivotPositions
     {
         get
@@ -238,6 +240,21 @@ public class CGameItemPlacementParam : CMwNod
         {
             DiscoverChunk<Chunk2E020001>();
             pivotPositions = value;
+        }
+    }
+
+    [NodeMember(ExactName = "PivotRotations")]
+    public Quat[]? PivotRotations
+    {
+        get
+        {
+            DiscoverChunk<Chunk2E020001>();
+            return pivotRotations;
+        }
+        set
+        {
+            DiscoverChunk<Chunk2E020001>();
+            pivotRotations = value;
         }
     }
 
@@ -264,25 +281,21 @@ public class CGameItemPlacementParam : CMwNod
     {
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameItemPlacementParam n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
             rw.Int16(ref n.flags);
-            rw.Vec3(ref n.cube_Center);
-            rw.Single(ref n.cube_Size);
-            rw.Single(ref n.gridSnap_HStep);
-            rw.Single(ref n.gridSnap_VStep);
-            rw.Single(ref n.gridSnap_HOffset);
-            rw.Single(ref n.gridSnap_VOffset);
-            rw.Single(ref n.flyStep);
-            rw.Single(ref n.flyOffset);
-            rw.Single(ref n.pivotSnap_Distance);
+            rw.Vec3(ref n.cubeCenter);
+            rw.Single(ref n.cubeSize);
+            rw.Single(ref n.gridSnapHStep);
+            rw.Single(ref n.gridSnapVStep);
+            rw.Single(ref n.gridSnapHOffset);
+            rw.Single(ref n.gridSnapVOffset);
+            rw.Single(ref n.flyVStep);
+            rw.Single(ref n.flyVOffset);
+            rw.Single(ref n.pivotSnapDistance);
         }
     }
 
@@ -296,14 +309,10 @@ public class CGameItemPlacementParam : CMwNod
     [Chunk(0x2E020001, "pivot positions")]
     public class Chunk2E020001 : SkippableChunk<CGameItemPlacementParam>
     {
-        public int U01;
-
         public override void ReadWrite(CGameItemPlacementParam n, GameBoxReaderWriter rw)
         {
-            rw.Array(ref n.pivotPositions,
-                (i, r) => r.ReadVec3(),
-                (x, w) => w.Write(x));
-            rw.Int32(ref U01);
+            rw.Array<Vec3>(ref n.pivotPositions);
+            rw.Array<Quat>(ref n.pivotRotations);
         }
     }
 

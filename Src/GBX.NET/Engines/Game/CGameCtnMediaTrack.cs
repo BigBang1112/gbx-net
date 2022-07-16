@@ -3,8 +3,9 @@
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker track (0x03078000)
+/// MediaTracker track.
 /// </summary>
+/// <remarks>ID: 0x03078000</remarks>
 [Node(0x03078000)]
 [NodeExtension("GameCtnMediaTrack")]
 public class CGameCtnMediaTrack : CMwNod
@@ -109,8 +110,11 @@ public class CGameCtnMediaTrack : CMwNod
 
     #region Chunks
 
-    #region 0x001 chunk
+    #region 0x001 chunk (main)
 
+    /// <summary>
+    /// CGameCtnMediaTrack 0x001 chunk (main)
+    /// </summary>
     [Chunk(0x03078001, "main")]
     public class Chunk03078001 : Chunk<CGameCtnMediaTrack>
     {
@@ -143,10 +147,10 @@ public class CGameCtnMediaTrack : CMwNod
 
     #endregion
 
-    #region 0x002 chunk
+    #region 0x002 chunk (TMS/TMU IsKeepPlaying)
 
     /// <summary>
-    /// CGameCtnMediaTrack 0x002 chunk. Represents <see cref="IsKeepPlaying"/> for ESWC tracks. This chunk should be removed or transfered
+    /// CGameCtnMediaTrack 0x002 chunk (TMS/TMU IsKeepPlaying). Represents <see cref="IsKeepPlaying"/> for ESWC tracks. This chunk should be removed or transfered
     /// to <see cref="Chunk03078005"/> in the new versions of ManiaPlanet with <see cref="TransferMediaTrackTo005"/>.
     /// </summary>
     [Chunk(0x03078002, "TMS/TMU IsKeepPlaying")]
@@ -160,8 +164,11 @@ public class CGameCtnMediaTrack : CMwNod
 
     #endregion
 
-    #region 0x003 chunk
+    #region 0x003 chunk (TMS/TMU IsReadOnly)
 
+    /// <summary>
+    /// CGameCtnMediaTrack 0x003 chunk (TMS/TMU IsReadOnly)
+    /// </summary>
     [Chunk(0x03078003, "TMS/TMU IsReadOnly")]
     public class Chunk03078003 : Chunk<CGameCtnMediaTrack>
     {
@@ -173,10 +180,10 @@ public class CGameCtnMediaTrack : CMwNod
 
     #endregion
 
-    #region 0x004 chunk
+    #region 0x004 chunk (TMUF parameters)
 
     /// <summary>
-    /// CGameCtnMediaTrack 0x004 chunk. Represents <see cref="IsKeepPlaying"/> for TMF tracks. This chunk should be removed or transfered
+    /// CGameCtnMediaTrack 0x004 chunk (TMUF parameters). Represents <see cref="IsKeepPlaying"/> for TMF tracks. This chunk should be removed or transfered
     /// to <see cref="Chunk03078005"/> in the new versions of ManiaPlanet with <see cref="TransferMediaTrackTo005"/>.
     /// </summary>
     [Chunk(0x03078004, "TMUF parameters")]
@@ -193,8 +200,11 @@ public class CGameCtnMediaTrack : CMwNod
 
     #endregion
 
-    #region 0x005 chunk
+    #region 0x005 chunk (MP parameters)
 
+    /// <summary>
+    /// CGameCtnMediaTrack 0x005 chunk (MP parameters).
+    /// </summary>
     [Chunk(0x03078005, "MP parameters")]
     public class Chunk03078005 : Chunk<CGameCtnMediaTrack>, IVersionable
     {
@@ -203,11 +213,7 @@ public class CGameCtnMediaTrack : CMwNod
         public float U04 = -1;
         public float U05 = -1;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
         {

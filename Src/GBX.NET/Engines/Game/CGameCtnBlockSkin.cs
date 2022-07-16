@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// Skin for a block (0x03059000)
+/// Skin for a block.
 /// </summary>
+/// <remarks>ID: 0x03059000</remarks>
 [Node(0x03059000)]
 public class CGameCtnBlockSkin : CMwNod
 {
@@ -18,35 +19,19 @@ public class CGameCtnBlockSkin : CMwNod
     #region Properties
 
     [NodeMember]
-    public string? Text
-    {
-        get => text;
-        set => text = value;
-    }
+    public string? Text { get => text; set => text = value; }
 
-    [NodeMember]
-    public FileRef? PackDesc
-    {
-        get => packDesc;
-        set => packDesc = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public FileRef? PackDesc { get => packDesc; set => packDesc = value; }
 
-    [NodeMember]
-    public FileRef? ParentPackDesc
-    {
-        get => parentPackDesc;
-        set => parentPackDesc = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public FileRef? ParentPackDesc { get => parentPackDesc; set => parentPackDesc = value; }
 
     /// <summary>
     /// Second skin for the skinnable block. Available in TM®.
     /// </summary>
-    [NodeMember]
-    public FileRef? ForegroundPackDesc
-    {
-        get => foregroundPackDesc;
-        set => foregroundPackDesc = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public FileRef? ForegroundPackDesc { get => foregroundPackDesc; set => foregroundPackDesc = value; }
 
     #endregion
 
@@ -61,12 +46,12 @@ public class CGameCtnBlockSkin : CMwNod
 
     #region Chunks
 
-    #region 0x000 chunk
+    #region 0x000 chunk (text)
 
     /// <summary>
-    /// CGameCtnBlockSkin 0x000 chunk
+    /// CGameCtnBlockSkin 0x000 chunk (text)
     /// </summary>
-    [Chunk(0x03059000)]
+    [Chunk(0x03059000, "text")]
     public class Chunk03059000 : Chunk<CGameCtnBlockSkin>
     {
         public string? U01;
@@ -80,12 +65,12 @@ public class CGameCtnBlockSkin : CMwNod
 
     #endregion
 
-    #region 0x001 chunk
+    #region 0x001 chunk (skin)
 
     /// <summary>
-    /// CGameCtnBlockSkin 0x001 chunk
+    /// CGameCtnBlockSkin 0x001 chunk (skin)
     /// </summary>
-    [Chunk(0x03059001)]
+    [Chunk(0x03059001, "skin")]
     public class Chunk03059001 : Chunk<CGameCtnBlockSkin>
     {
         public override void ReadWrite(CGameCtnBlockSkin n, GameBoxReaderWriter rw)
@@ -97,12 +82,12 @@ public class CGameCtnBlockSkin : CMwNod
 
     #endregion
 
-    #region 0x002 chunk
+    #region 0x002 chunk (skin + parent skin)
 
     /// <summary>
-    /// CGameCtnBlockSkin 0x002 chunk (skin)
+    /// CGameCtnBlockSkin 0x002 chunk (skin + parent skin)
     /// </summary>
-    [Chunk(0x03059002, "skin")]
+    [Chunk(0x03059002, "skin + parent skin")]
     public class Chunk03059002 : Chunk<CGameCtnBlockSkin>
     {
         public override void ReadWrite(CGameCtnBlockSkin n, GameBoxReaderWriter rw)
@@ -125,11 +110,7 @@ public class CGameCtnBlockSkin : CMwNod
     {
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnBlockSkin n, GameBoxReaderWriter rw)
         {

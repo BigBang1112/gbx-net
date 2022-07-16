@@ -1,19 +1,21 @@
-﻿namespace GBX.NET.Engines.Plug;
+﻿using GBX.NET.Utils;
+
+namespace GBX.NET.Engines.Plug;
 
 /// <summary>
-/// CPlugSolid (0x09005000)
+/// An official mesh or model.
 /// </summary>
-/// <remarks>An official mesh or model.</remarks>
+/// <remarks>ID: 0x09005000</remarks>
 [Node(0x09005000), WritingNotSupported]
 [NodeExtension("Solid")]
 public class CPlugSolid : CPlug
 {
     private CPlug? tree;
-    private int? treeIndex;
+    private GameBoxRefTable.File? treeFile;
 
     public CPlug? Tree
     {
-        get => tree = GetNodeFromRefTable(tree, treeIndex) as CPlug;
+        get => tree = GetNodeFromRefTable(tree, treeFile) as CPlug;
         set => tree = value;
     }
 
@@ -22,6 +24,27 @@ public class CPlugSolid : CPlug
 
     }
 
+    /// <summary>
+    /// Exports the solid to .obj file.
+    /// </summary>
+    /// <param name="objStream">Stream to write OBJ content into.</param>
+    /// <param name="mtlStream">Stream to write MTL content into.</param>
+    /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>
+    public void ExportToObj(Stream objStream, Stream mtlStream, string? gameDataFolderPath = null)
+    {
+        if (Tree is not CPlugTree tree)
+        {
+            return;
+        }
+
+        using var exporter = new ObjFileExporter(objStream, mtlStream, mergeVerticesDigitThreshold: null, gameDataFolderPath);
+        
+        exporter.Export(tree);
+    }
+
+    /// <summary>
+    /// CPlugSolid 0x000 chunk
+    /// </summary>
     [Chunk(0x09005000)]
     public class Chunk09005000 : Chunk<CPlugSolid>
     {
@@ -33,6 +56,9 @@ public class CPlugSolid : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x006 chunk
+    /// </summary>
     [Chunk(0x09005006)]
     public class Chunk09005006 : Chunk<CPlugSolid>
     {
@@ -74,6 +100,9 @@ public class CPlugSolid : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x007 chunk
+    /// </summary>
     [Chunk(0x09005007)]
     public class Chunk09005007 : Chunk<CPlugSolid>
     {
@@ -85,6 +114,9 @@ public class CPlugSolid : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x00B chunk
+    /// </summary>
     [Chunk(0x0900500B)]
     public class Chunk0900500B : Chunk<CPlugSolid>
     {
@@ -108,6 +140,9 @@ public class CPlugSolid : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x00C chunk
+    /// </summary>
     [Chunk(0x0900500C)]
     public class Chunk0900500C : Chunk<CPlugSolid>
     {
@@ -153,6 +188,9 @@ public class CPlugSolid : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x00D chunk
+    /// </summary>
     [Chunk(0x0900500D)]
     public class Chunk0900500D : Chunk<CPlugSolid>
     {
@@ -163,7 +201,7 @@ public class CPlugSolid : CPlug
         {
             rw.Boolean(ref U01);
             rw.Boolean(ref U02);
-            rw.NodeRef<CPlug>(ref n.tree, ref n.treeIndex);
+            rw.NodeRef<CPlug>(ref n.tree, ref n.treeFile);
         }
 
         public override async Task ReadWriteAsync(CPlugSolid n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
@@ -174,6 +212,9 @@ public class CPlugSolid : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x00E chunk
+    /// </summary>
     [Chunk(0x0900500E)]
     public class Chunk0900500E : Chunk<CPlugSolid>
     {
@@ -217,6 +258,9 @@ public class CPlugSolid : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x00F chunk
+    /// </summary>
     [Chunk(0x0900500F)]
     public class Chunk0900500F : Chunk<CPlugSolid>
     {
@@ -230,6 +274,9 @@ public class CPlugSolid : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x010 chunk
+    /// </summary>
     [Chunk(0x09005010)]
     public class Chunk09005010 : Chunk<CPlugSolid>
     {
@@ -241,27 +288,46 @@ public class CPlugSolid : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x011 chunk
+    /// </summary>
     [Chunk(0x09005011)]
     public class Chunk09005011 : Chunk<CPlugSolid>
     {
         public bool U01;
         public bool U02;
+        public bool? U03;
 
         public override void ReadWrite(CPlugSolid n, GameBoxReaderWriter rw)
         {
             rw.Boolean(ref U01);
             rw.Boolean(ref U02);
-            rw.NodeRef(ref n.tree);
+
+            if (U02) // True when referenced through CHmsItem?
+            {
+                rw.Boolean(ref U03);
+            }
+
+            rw.NodeRef<CPlug>(ref n.tree, ref n.treeFile);
         }
 
         public override async Task ReadWriteAsync(CPlugSolid n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
         {
             rw.Boolean(ref U01);
             rw.Boolean(ref U02);
+
+            if (U02) // True when referenced through CHmsItem?
+            {
+                rw.Boolean(ref U03);
+            }
+            
             n.tree = await rw.NodeRefAsync(n.tree, cancellationToken);
         }
     }
 
+    /// <summary>
+    /// CPlugSolid 0x012 chunk
+    /// </summary>
     [Chunk(0x09005012)]
     public class Chunk09005012 : Chunk<CPlugSolid>
     {

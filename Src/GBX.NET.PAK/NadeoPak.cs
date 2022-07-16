@@ -1,10 +1,9 @@
-﻿using GBX.NET.Engines.MwFoundations;
-using System.IO.Compression;
+﻿using System.IO.Compression;
 using System.Text;
 
 namespace GBX.NET.PAK;
 
-public class NadeoPak : IDisposable
+public class NadeoPak : IDisposable, IExternalGameData
 {
     private BlowfishCBCStream blowfish;
     private NadeoPakFile[] files;
@@ -95,7 +94,7 @@ public class NadeoPak : IDisposable
                     break;
                 }
 
-                var header = GameBox.Header.Parse(r, logger: null);
+                var header = GameBoxHeader.Parse(r, logger: null);
             }
         }
     }
@@ -194,5 +193,35 @@ public class NadeoPak : IDisposable
     public void Dispose()
     {
         Stream.Dispose();
+    }
+
+    Node? IExternalGameData.GetNodeFromFilePath(string filePath)
+    {
+        var currentFolder = default(NadeoPakFolder);
+
+        var elements = filePath.Split('\\', '/');
+
+        for (int i = 0; i < elements.Length; i++)
+        {
+            var element = elements[i];
+
+            if (i == elements.Length - 1)
+            {
+                var file = (currentFolder?.Files ?? Files).Find(x => string.Equals(x.Name, element));
+                return file?.ParseGbx()?.Node;
+            }
+
+            if (string.Equals(element, ".."))
+            {
+                currentFolder = currentFolder?.Parent;
+                continue;
+            }
+
+            currentFolder = currentFolder is null
+                ? Folders.Find(x => string.Equals(x.Name, element + '\\'))
+                : currentFolder.Folders.Find(x => string.Equals(x.Name, element + '\\'));
+        }
+
+        throw new NotImplementedException();
     }
 }

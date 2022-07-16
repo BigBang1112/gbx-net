@@ -3,10 +3,11 @@
 namespace GBX.NET.Engines.GameData;
 
 /// <summary>
-/// Collector (0x2E001000)
+/// Collector. Something that can have an icon.
 /// </summary>
+/// <remarks>ID: 0x2E001000</remarks>
 [Node(0x2E001000)]
-public class CGameCtnCollector : CMwNod
+public class CGameCtnCollector : CMwNod, INodeHeader
 {
     #region Enums
 
@@ -23,16 +24,14 @@ public class CGameCtnCollector : CMwNod
     #region Fields
 
     private Ident? author;
-    private Ident? ident;
     private string pageName;
     private int catalogPosition;
     private string? name;
     private string? description;
     private bool iconUseAutoRender;
     private int iconQuarterRotationY;
-    private EProdState prodState;
+    private EProdState? prodState;
     private string? skinDirectory;
-    private string? collectorName;
     private bool isInternal;
     private bool isAdvanced;
     private long fileTime;
@@ -41,47 +40,22 @@ public class CGameCtnCollector : CMwNod
 
     #region Properties
 
-    [NodeMember]
-    public Ident? Author
-    {
-        get => author;
-        set => author = value;
-    }
+    public HeaderChunkSet HeaderChunks { get; }
 
-    [NodeMember]
-    public Ident? Ident
-    {
-        get => ident;
-        set => ident = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public Ident? Author { get => author; set => author = value; }
 
-    [NodeMember]
-    public string PageName
-    {
-        get => pageName;
-        set => pageName = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public string PageName { get => pageName; set => pageName = value; }
 
-    [NodeMember]
-    public int CatalogPosition
-    {
-        get => catalogPosition;
-        set => catalogPosition = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public int CatalogPosition { get => catalogPosition; set => catalogPosition = value; }
 
-    [NodeMember]
-    public EProdState ProdState
-    {
-        get => prodState;
-        set => prodState = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public EProdState? ProdState { get => prodState; set => prodState = value; }
 
-    [NodeMember]
-    public string? Name
-    {
-        get => name;
-        set => name = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public string? Name { get => name; set => name = value; }
 
     [NodeMember]
     public Color[,]? Icon { get; set; }
@@ -89,64 +63,29 @@ public class CGameCtnCollector : CMwNod
     [NodeMember]
     public byte[]? IconWebP { get; set; }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public CMwNod? IconFid { get; set; }
 
-    [NodeMember]
-    public string? CollectorName
-    {
-        get => collectorName;
-        set => collectorName = value;
-    }
+    [NodeMember(ExactlyNamed = true)]
+    public string? Description { get => description; set => description = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public bool IconUseAutoRender { get => iconUseAutoRender; set => iconUseAutoRender = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public int IconQuarterRotationY { get => iconQuarterRotationY; set => iconQuarterRotationY = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public string? SkinDirectory { get => skinDirectory; set => skinDirectory = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public bool IsInternal { get => isInternal; set => isInternal = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public bool IsAdvanced { get => isAdvanced; set => isAdvanced = value; }
 
     [NodeMember]
-    public string? Description
-    {
-        get => description;
-        set => description = value;
-    }
-
-    [NodeMember]
-    public bool IconUseAutoRender
-    {
-        get => iconUseAutoRender;
-        set => iconUseAutoRender = value;
-    }
-
-    [NodeMember]
-    public int IconQuarterRotationY
-    {
-        get => iconQuarterRotationY;
-        set => iconQuarterRotationY = value;
-    }
-
-    [NodeMember]
-    public string? SkinDirectory
-    {
-        get => skinDirectory;
-        set => skinDirectory = value;
-    }
-
-    [NodeMember]
-    public bool IsInternal
-    {
-        get => isInternal;
-        set => isInternal = value;
-    }
-
-    [NodeMember]
-    public bool IsAdvanced
-    {
-        get => isAdvanced;
-        set => isAdvanced = value;
-    }
-
-    [NodeMember]
-    public long FileTime
-    {
-        get => fileTime;
-        set => fileTime = value;
-    }
+    public long FileTime { get => fileTime; set => fileTime = value; }
 
     #endregion
 
@@ -154,6 +93,8 @@ public class CGameCtnCollector : CMwNod
 
     protected CGameCtnCollector()
     {
+        HeaderChunks = new HeaderChunkSet();
+
         pageName = null!;
     }
 
@@ -177,47 +118,63 @@ public class CGameCtnCollector : CMwNod
 
     #endregion
 
-    #region 0x003 header chunk
+    #region 0x003 header chunk (desc)
 
     /// <summary>
-    /// CGameCtnCollector 0x003 header chunk
+    /// CGameCtnCollector 0x003 header chunk (desc)
     /// </summary>
-    [Chunk(0x2E001003)]
+    [Chunk(0x2E001003, "desc")]
     public class Chunk2E001003 : HeaderChunk<CGameCtnCollector>, IVersionable
     {
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public int U01;
         public int U02;
         public int U03;
+        public byte U04;
+        public int U05;
+        public short U06;
 
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.Ident(ref n.ident);
+            rw.Ident(ref n.author);
             rw.Int32(ref version);
             rw.String(ref n.pageName!);
 
             if (version == 5)
+            {
                 rw.Int32(ref U01);
+            }
+
             if (version >= 4)
-                rw.Int32(ref U02);
+            {
+                rw.Int32(ref U02); // Id?
+            }
 
             if (version >= 3)
             {
                 rw.Int32(ref U03);
                 n.CatalogPosition = rw.Int16((short)n.CatalogPosition);
+
+                if (version < 6)
+                {
+                    rw.Byte(ref U04);
+                    rw.Int32(ref U05);
+                    rw.Int16(ref U06);
+                }
+                
+                if (version >= 7)
+                {
+                    rw.String(ref n.name);
+
+                    if (version >= 8)
+                    {
+                        rw.EnumByte<EProdState>(ref n.prodState);
+                    }
+                }
             }
-
-            if (version >= 7)
-                rw.String(ref n.name);
-
-            rw.EnumByte<EProdState>(ref n.prodState);
         }
     }
 
@@ -260,12 +217,8 @@ public class CGameCtnCollector : CMwNod
             n.Icon = new Color[width, height];
 
             for (var y = 0; y < height; y++)
-            {
                 for (var x = 0; x < width; x++)
-                {
                     n.Icon[width - 1 - x, height - 1 - y] = Color.FromArgb(iconData[y * width + x]);
-                }
-            }
         }
 
         public override void Write(CGameCtnCollector n, GameBoxWriter w)
@@ -434,17 +387,17 @@ public class CGameCtnCollector : CMwNod
 
     #endregion
 
-    #region 0x00B chunk (ident)
+    #region 0x00B chunk (author)
 
     /// <summary>
-    /// CGameCtnCollector 0x00B chunk (ident)
+    /// CGameCtnCollector 0x00B chunk (author)
     /// </summary>
-    [Chunk(0x2E00100B, "ident")]
+    [Chunk(0x2E00100B, "author")]
     public class Chunk2E00100B : Chunk<CGameCtnCollector>
     {
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.Ident(ref n.ident);
+            rw.Ident(ref n.author);
         }
     }
 
@@ -460,7 +413,7 @@ public class CGameCtnCollector : CMwNod
     {
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.String(ref n.collectorName);
+            rw.String(ref n.name);
         }
     }
 
@@ -512,19 +465,18 @@ public class CGameCtnCollector : CMwNod
         public CMwNod? U01;
         public int U02;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version); // 2
-            rw.NodeRef(ref U01); // -1
+            rw.Int32(ref version);
+            rw.NodeRef(ref U01);
             rw.String(ref n.skinDirectory);
-            if (n.skinDirectory!.Length == 0)
+            
+            if (version >= 2 && n.skinDirectory!.Length == 0)
+            {
                 rw.Int32(ref U02); // -1
+            }
         }
     }
 
@@ -552,7 +504,35 @@ public class CGameCtnCollector : CMwNod
             rw.Boolean(ref n.isInternal);
             rw.Boolean(ref n.isAdvanced);
             rw.Int32(ref n.catalogPosition);
-            rw.EnumByte<EProdState>(ref n.prodState);
+
+            if (version >= 1)
+            {
+                rw.EnumByte<EProdState>(ref n.prodState);
+            }
+        }
+    }
+
+    #endregion
+
+    #region 0x012 chunk
+
+    /// <summary>
+    /// CGameCtnCollector 0x012 chunk
+    /// </summary>
+    [Chunk(0x2E001012)]
+    public class Chunk2E001012 : Chunk<CGameCtnCollector>
+    {
+        public int U01;
+        public int U02;
+        public int U03;
+        public int U04;
+
+        public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+            rw.Int32(ref U02);
+            rw.Int32(ref U03);
+            rw.Int32(ref U04);
         }
     }
 

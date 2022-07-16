@@ -1,8 +1,9 @@
 ﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// MediaTracker block - Camera map effect (0x03139000)
+/// MediaTracker block - Camera map effect.
 /// </summary>
+/// <remarks>ID: 0x03139000</remarks>
 [Node(0x03139000)]
 [NodeExtension("GameCtnMediaBlockFxCameraMap")]
 public class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys

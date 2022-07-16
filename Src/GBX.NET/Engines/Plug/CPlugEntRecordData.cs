@@ -4,23 +4,28 @@ using System.IO.Compression;
 namespace GBX.NET.Engines.Plug;
 
 /// <summary>
-/// Entity record data (0x0911F000)
+/// Entity data in a timeline.
 /// </summary>
+/// <remarks>ID: 0x0911F000</remarks>
 [Node(0x0911F000)]
 public class CPlugEntRecordData : CMwNod
 {
-    private byte[]? data;
     private ObservableCollection<Sample>? samples;
 
-    public int Version { get; set; }
+    public byte[]? Data { get; set; }
 
-    public ObservableCollection<Sample> Samples
+    public ObservableCollection<Sample>? Samples
     {
         get
         {
             if (samples is null)
             {
-                samples = ReadSamples();
+                var chunkVersion = GetChunk<Chunk0911F000>()?.Version;
+
+                if (chunkVersion.HasValue)
+                {
+                    samples = ReadSamples(chunkVersion.Value);
+                }
             }
 
             return samples;
@@ -29,19 +34,19 @@ public class CPlugEntRecordData : CMwNod
 
     protected CPlugEntRecordData()
     {
-        Version = 10;
+        
     }
 
-    private ObservableCollection<Sample> ReadSamples()
+    private ObservableCollection<Sample> ReadSamples(int version)
     {
-        if (data is null)
+        if (Data is null)
         {
             throw new Exception();
         }
 
         var samples = new ObservableCollection<Sample>();
-        
-        using var ms = new MemoryStream(data);
+
+        using var ms = new MemoryStream(Data);
         using var cs = new CompressedStream(ms, CompressionMode.Decompress);
         using var r = new GameBoxReader(cs);
 
@@ -64,7 +69,7 @@ public class CPlugEntRecordData : CMwNod
             };
         });
 
-        if (Version >= 2)
+        if (version >= 2)
         {
             var objcts2 = r.ReadArray<object>(r =>
             {
@@ -74,7 +79,7 @@ public class CPlugEntRecordData : CMwNod
                 uint? clas = null;
                 string? clasName = null;
 
-                if (Version >= 4)
+                if (version >= 4)
                 {
                     clas = r.ReadUInt32();
                     NodeCacheManager.Names.TryGetValue(clas.Value, out clasName);
@@ -98,7 +103,7 @@ public class CPlugEntRecordData : CMwNod
             var u07 = r.ReadInt32();
             var ghostLengthFinish = r.ReadInt32(); // ms
 
-            if (Version < 6)
+            if (version < 6)
             {
                 // temp_79f24995b2b->field_0x28 = temp_79f24995b2b->field_0xc
             }
@@ -198,7 +203,7 @@ public class CPlugEntRecordData : CMwNod
 
             u04 = r.ReadByte();
 
-            if (Version >= 2)
+            if (version >= 2)
             {
                 while (r.ReadByte() != 0)
                 {
@@ -209,7 +214,7 @@ public class CPlugEntRecordData : CMwNod
             }
         }
 
-        if (Version >= 3)
+        if (version >= 3)
         {
             while (r.ReadByte() != 0)
             {
@@ -218,7 +223,7 @@ public class CPlugEntRecordData : CMwNod
                 var u21 = r.ReadBytes(); // MwBuffer
             }
 
-            if (Version == 7)
+            if (version == 7)
             {
                 while (r.ReadByte() != 0)
                 {
@@ -227,7 +232,7 @@ public class CPlugEntRecordData : CMwNod
                 }
             }
 
-            if (Version >= 8)
+            if (version >= 8)
             {
                 var u23 = r.ReadInt32();
 
@@ -236,7 +241,7 @@ public class CPlugEntRecordData : CMwNod
                     return samples;
                 }
 
-                if (Version == 8)
+                if (version == 8)
                 {
                     while (r.ReadByte() != 0)
                     {
@@ -253,27 +258,24 @@ public class CPlugEntRecordData : CMwNod
                         var u30 = r.ReadBytes(); // MwBuffer
                     }
 
-                    if (Version >= 10)
+                    if (version >= 10)
                     {
                         var period = r.ReadInt32();
                     }
                 }
-
-                return samples;
             }
         }
 
         return samples;
     }
 
+    /// <summary>
+    /// CPlugEntRecordData 0x000 chunk
+    /// </summary>
     [Chunk(0x0911F000)]
     public class Chunk0911F000 : Chunk<CPlugEntRecordData>, IVersionable
-    {
-        public int Version
-        {
-            get => Node.Version;
-            set => Node.Version = value;
-        }
+    {       
+        public int Version { get; set; }
 
         public int CompressedSize { get; private set; }
         public int UncompressedSize { get; private set; }
@@ -283,7 +285,7 @@ public class CPlugEntRecordData : CMwNod
             Version = r.ReadInt32(); // 10
             UncompressedSize = r.ReadInt32();
             CompressedSize = r.ReadInt32();
-            n.data = r.ReadBytes(CompressedSize);
+            n.Data = r.ReadBytes(CompressedSize);
         }
 
         public override void Write(CPlugEntRecordData n, GameBoxWriter w)
@@ -291,7 +293,7 @@ public class CPlugEntRecordData : CMwNod
             w.Write(Version);
             w.Write(UncompressedSize);
             w.Write(CompressedSize);
-            w.WriteBytes(n.data);
+            w.Write(n.Data);
         }
     }
 }

@@ -3,9 +3,9 @@
 namespace GBX.NET.Engines.Game;
 
 /// <summary>
-/// CGameCtnGhost (0x03092000)
+/// A ghost.
 /// </summary>
-/// <remarks>A ghost.</remarks>
+/// <remarks>ID: 0x03092000</remarks>
 [Node(0x03092000)]
 [NodeExtension("Ghost")]
 public partial class CGameCtnGhost : CGameGhost
@@ -178,17 +178,20 @@ public partial class CGameCtnGhost : CGameGhost
         }
     }
 
+    /// <summary>
+    /// Checkpoints driven by the ghost. In some cases, they may not be in order.
+    /// </summary>
     [NodeMember]
     public Checkpoint[]? Checkpoints
     {
         get
         {
-            DiscoverChunk<Chunk0309200B>();
+            DiscoverChunks<Chunk03092004, Chunk0309200B>();
             return checkpoints;
         }
         set
         {
-            DiscoverChunk<Chunk0309200B>();
+            DiscoverChunks<Chunk03092004, Chunk0309200B>();
             checkpoints = value;
         }
     }
@@ -478,6 +481,25 @@ public partial class CGameCtnGhost : CGameGhost
 
     #endregion
 
+    #region 0x004 skippable chunk (old checkpoints)
+
+    /// <summary>
+    /// CGameCtnGhost 0x004 skippable chunk (old checkpoints)
+    /// </summary>
+    [Chunk(0x03092004)]
+    public class Chunk03092004 : SkippableChunk<CGameCtnGhost>
+    {
+        public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
+        {
+            rw.Array(ref n.checkpoints,
+                (i, r) => new(r.ReadTimeInt32Nullable(), Speed: r.ReadSingle()),
+                (x, w) => { w.WriteTimeInt32Nullable(x.Time); w.Write(x.Speed.GetValueOrDefault()); }
+            );
+        }
+    }
+
+    #endregion
+
     #region 0x005 skippable chunk (race time)
 
     /// <summary>
@@ -510,6 +532,22 @@ public partial class CGameCtnGhost : CGameGhost
             rw.String(ref n.skinFile);
             rw.Int32(ref U01);
             rw.String(ref n.ghostNickname);
+        }
+    }
+
+    #endregion
+
+    #region 0x007 chunk (old light trail color)
+
+    /// <summary>
+    /// CGameCtnGhost 0x007 chunk (old light trail color)
+    /// </summary>
+    [Chunk(0x03092007, "old light trail color")]
+    public class Chunk03092007 : Chunk<CGameCtnGhost>
+    {
+        public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
+        {
+            rw.Vec3(ref n.lightTrailColor);
         }
     }
 
@@ -574,7 +612,7 @@ public partial class CGameCtnGhost : CGameGhost
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
             rw.Array(ref n.checkpoints,
-                (i, r) => new Checkpoint(r.ReadTimeInt32Nullable(), r.ReadInt32()),
+                (i, r) => new(r.ReadTimeInt32Nullable(), StuntsScore: r.ReadInt32()),
                 (x, w) => { w.WriteTimeInt32Nullable(x.Time); w.Write(x.StuntsScore); }
             );
         }
@@ -708,9 +746,9 @@ public partial class CGameCtnGhost : CGameGhost
 
             rw.UInt32(ref U01);
 
-            if (rw.Mode == GameBoxReaderWriterMode.Read)
+            if (rw.Reader is not null)
             {
-                var r = rw.Reader!;
+                var r = rw.Reader;
 
                 var controlNames = r.ReadArray(r1 => r1.ReadId());
 
@@ -735,9 +773,10 @@ public partial class CGameCtnGhost : CGameGhost
                     };
                 }
             }
-            else if (rw.Mode == GameBoxReaderWriterMode.Write)
+            
+            if (rw.Writer is not null)
             {
-                var w = rw.Writer!;
+                var w = rw.Writer;
 
                 var controlNames = new List<string>();
 
@@ -748,8 +787,7 @@ public partial class CGameCtnGhost : CGameGhost
                             controlNames.Add(entry.Name);
                 }
 
-                w.Write(controlNames,
-                    (x, w1) => w1.WriteId(x));
+                w.WriteList(controlNames, (x, w) => w.WriteId(x));
 
                 w.Write(n.ControlEntries?.Length ?? 0);
                 w.Write(U02);
@@ -758,7 +796,7 @@ public partial class CGameCtnGhost : CGameGhost
                 {
                     foreach (var entry in n.ControlEntries)
                     {
-                        w.Write(Convert.ToInt32(entry.Time.TotalMilliseconds + 100000));
+                        w.Write(entry.Time.TotalMilliseconds + 100000);
                         w.Write((byte)controlNames.IndexOf(entry.Name));
                         w.Write(entry.Data);
                     }
@@ -961,10 +999,10 @@ public partial class CGameCtnGhost : CGameGhost
     /// <summary>
     /// CGameCtnGhost 0x023 skippable chunk
     /// </summary>
-    [Chunk(0x03092023), IgnoreChunk]
+    [Chunk(0x03092023)]
     public class Chunk03092023 : SkippableChunk<CGameCtnGhost>, IVersionable
     {
-        private int version;
+        private int version = 3;
 
         public string? U01;
         public int U02;
@@ -972,6 +1010,13 @@ public partial class CGameCtnGhost : CGameGhost
         public int U04;
         public int U05;
         public string? U06;
+        public int U07;
+        public string? U08;
+        public byte? U09;
+        public int? U10;
+        public int? U11;
+        public byte? U12;
+        public byte? U13;
 
         public int Version
         {
@@ -987,8 +1032,22 @@ public partial class CGameCtnGhost : CGameGhost
             rw.String(ref U03);
             rw.Int32(ref U04);
             rw.Int32(ref U05);
+            rw.String(ref U06);
+            rw.Int32(ref U07);
+            rw.String(ref U08);
 
-            // ...
+            if (version >= 2)
+            {
+                rw.Byte(ref U09);
+                rw.Int32(ref U10);
+                rw.Int32(ref U11);
+
+                if (version >= 3)
+                {
+                    rw.Byte(ref U12);
+                    rw.Byte(ref U13);
+                }
+            }
         }
     }
 
@@ -1032,6 +1091,24 @@ public partial class CGameCtnGhost : CGameGhost
 
     #endregion
 
+    #region 0x026 skippable chunk
+
+    /// <summary>
+    /// CGameCtnGhost 0x026 skippable chunk
+    /// </summary>
+    [Chunk(0x03092026)]
+    public class Chunk03092026 : SkippableChunk<CGameCtnGhost>
+    {
+        public BigInteger U01;
+
+        public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
+        {
+            rw.Int128(ref U01);
+        }
+    }
+
+    #endregion
+
     #region 0x028 skippable chunk (title id)
 
     /// <summary>
@@ -1040,10 +1117,17 @@ public partial class CGameCtnGhost : CGameGhost
     [Chunk(0x03092028, "title id")]
     public class Chunk03092028 : SkippableChunk<CGameCtnGhost>
     {
+        public BigInteger? U01;
+
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
-            if (n.EventsDuration != 0)
-                rw.String(ref n.validate_TitleId);
+            if (n.EventsDuration == 0)
+            {
+                return;
+            }
+            
+            rw.String(ref n.validate_TitleId);
+            rw.BigInt(ref U01, 32);
         }
     }
 
