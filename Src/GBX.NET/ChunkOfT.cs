@@ -89,7 +89,8 @@ public abstract class Chunk<T> : Chunk, IReadableWritableChunk where T : Node
         {
             Read(n, rw.Reader, logger);
         }
-        else if (rw.Writer is not null)
+
+        if (rw.Writer is not null)
         {
             Write(n, rw.Writer, logger);
         }
@@ -115,7 +116,8 @@ public abstract class Chunk<T> : Chunk, IReadableWritableChunk where T : Node
         {
             await ReadAsync(n, rw.Reader, logger, cancellationToken);
         }
-        else if (rw.Writer is not null)
+        
+        if (rw.Writer is not null)
         {
             await WriteAsync(n, rw.Writer, logger, cancellationToken);
         }
