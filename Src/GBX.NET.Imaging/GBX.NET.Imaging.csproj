@@ -9,7 +9,7 @@
 		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		
-		<Version>1.0.3</Version>
+		<Version>1.1.0</Version>
 		<PackageReleaseNotes>Replace File.OpenWrite with File.Create</PackageReleaseNotes>
 
 		<TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
