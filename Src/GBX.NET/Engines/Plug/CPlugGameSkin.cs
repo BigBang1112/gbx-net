@@ -25,6 +25,16 @@ public class CPlugGameSkin : CMwNod
 
         public int Version { get => version; set => version = value; }
 
+        public override void Read(CPlugGameSkin n, GameBoxReader r)
+        {
+            
+        }
+
+        public override void Write(CPlugGameSkin n, GameBoxWriter w)
+        {
+            
+        }
+
         public override void ReadWrite(GameBoxReaderWriter rw)
         {
             rw.Byte(ref version);
