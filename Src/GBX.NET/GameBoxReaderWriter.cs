@@ -1993,8 +1993,9 @@ public partial class GameBoxReaderWriter
         dictionary = Dictionary(dictionary, overrideKey);
     }
 
-    /// <param name="dictionary">Dictionary to write. Ignored in read mode.</param>
+    /// <param name="dictionary">Dictionary of <see cref="Node"/> values to write. Ignored in read mode.</param>
     /// <param name="overrideKey">Only affecting read mode: if the pair in the dictionary should be overriden by the new value when a duplicate key is read. It is recommended to keep it false to easily spot errors.</param>
+    /// <param name="keyReaderWriter">A way to read and write the key. Null will use the <see cref="GameBoxReader.Read{T}"/> and <see cref="GameBoxWriter.WriteAny(object)"/>, which are slower.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -2010,8 +2011,9 @@ public partial class GameBoxReaderWriter
         return dictionary;
     }
 
-    /// <param name="dictionary">Dictionary to read or write. Read mode sets <paramref name="dictionary"/>, write mode uses <paramref name="dictionary"/> to write the value (keeping <paramref name="dictionary"/> unchanged).</param>
+    /// <param name="dictionary">Dictionary of <see cref="Node"/> values to read or write. Read mode sets <paramref name="dictionary"/>, write mode uses <paramref name="dictionary"/> to write the value (keeping <paramref name="dictionary"/> unchanged).</param>
     /// <param name="overrideKey">Only affecting read mode: if the pair in the dictionary should be overriden by the new value when a duplicate key is read. It is recommended to keep it false to easily spot errors.</param>
+    /// <param name="keyReaderWriter">A way to read and write the key. Null will use the <see cref="GameBoxReader.Read{T}"/> and <see cref="GameBoxWriter.WriteAny(object)"/>, which are slower.</param>
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -2024,7 +2026,11 @@ public partial class GameBoxReaderWriter
     {
         dictionary = DictionaryNode(dictionary, overrideKey, keyReaderWriter);
     }
-    
+
+    /// <param name="dictionary">Dictionary of <see cref="Node"/> values to read or write. Read mode sets <paramref name="dictionary"/>, write mode uses <paramref name="dictionary"/> to write the value (keeping <paramref name="dictionary"/> unchanged).</param>
+    /// <param name="overrideKey">Only affecting read mode: if the pair in the dictionary should be overriden by the new value when a duplicate key is read. It is recommended to keep it false to easily spot errors.</param>
+    /// <param name="keyReaderWriter">A way to read and write the key. Null will use the <see cref="GameBoxReader.Read{T}"/> and <see cref="GameBoxWriter.WriteAny(object)"/>, which are slower.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
     public async Task<IDictionary<TKey, TValue?>?> DictionaryNodeAsync<TKey, TValue>(
         IDictionary<TKey, TValue?>? dictionary,
         bool overrideKey = false,
