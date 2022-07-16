@@ -1268,9 +1268,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     protected CGameCtnChallenge()
     {
-        mapInfo = null!;
-        mapName = null!;
-        authorLogin = null!;
+        mapInfo = Ident.Empty;
+        mapName = "";
+        authorLogin = "";
     }
 
     #endregion
@@ -2748,7 +2748,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             var blockCounter = 0;
 
-            while ((r.PeekUInt32() & 0xC0000000) > 0)
+            while (r.BaseStream.Position < r.BaseStream.Length && (r.PeekUInt32() & 0xC0000000) > 0)
             {
                 var blockName = r.ReadId();
                 var dir = (Direction)r.ReadByte();
@@ -3615,6 +3615,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             if (version >= 2)
             {
                 rw.NodeRef<CGameCtnMediaClip>(ref n.clipAmbiance);
+            }
+
+            if (version >= 1)
+            {
                 rw.Int3(ref triggerSize);
             }
         }
