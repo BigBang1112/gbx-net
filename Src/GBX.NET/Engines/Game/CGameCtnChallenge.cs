@@ -2748,57 +2748,64 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             var blockCounter = 0;
 
-            while (r.BaseStream.Position < r.BaseStream.Length && (r.PeekUInt32() & 0xC0000000) > 0)
+            try // Helpul to avoid Peek problems around the end of the stream (when testing) without an impact on peformance
             {
-                var blockName = r.ReadId();
-                var dir = (Direction)r.ReadByte();
-                var coord = (Int3)r.ReadByte3();
-
-                if (version >= 6)
+                while ((r.PeekUInt32() & 0xC0000000) > 0)
                 {
-                    coord -= (1, 0, 1);
+                    var blockName = r.ReadId();
+                    var dir = (Direction)r.ReadByte();
+                    var coord = (Int3)r.ReadByte3();
+
+                    if (version >= 6)
+                    {
+                        coord -= (1, 0, 1);
+                    }
+
+                    var flags = version switch
+                    {
+                        0 => r.ReadUInt16(),
+                        > 0 => r.ReadInt32(),
+                        _ => throw new ChunkVersionNotSupportedException(version),
+                    };
+
+                    if (flags == -1)
+                    {
+                        n.blocks.Add(new CGameCtnBlock(blockName, dir, coord: (-1, -1, -1), flags));
+                        continue;
+                    }
+
+                    string? author = null;
+                    CGameCtnBlockSkin? skin = null;
+
+                    if (CGameCtnBlock.IsSkinnableBlock_WhenDefined(flags)) // custom block
+                    {
+                        author = r.ReadId();
+                        skin = r.ReadNodeRef<CGameCtnBlockSkin>();
+                    }
+
+                    CGameWaypointSpecialProperty? parameters = null;
+
+                    if (CGameCtnBlock.IsWaypointBlock_WhenDefined(flags))
+                    {
+                        parameters = r.ReadNodeRef<CGameWaypointSpecialProperty>();
+                    }
+
+                    if (CGameCtnBlock.IsFreeBlock_WhenDefined(flags))
+                    {
+                        coord -= (0, 1, 0);
+                    }
+
+                    var block = new CGameCtnBlock(blockName, dir, coord, flags, author, skin, parameters);
+                    ((INodeDependant<CGameCtnChallenge>)block).DependingNode = n;
+
+                    n.blocks.Add(block);
+
+                    blockCounter++;
                 }
+            }
+            catch (EndOfStreamException)
+            {
 
-                var flags = version switch
-                {
-                    0 => r.ReadUInt16(),
-                    > 0 => r.ReadInt32(),
-                    _ => throw new ChunkVersionNotSupportedException(version),
-                };
-
-                if (flags == -1)
-                {
-                    n.blocks.Add(new CGameCtnBlock(blockName, dir, coord: (-1, -1, -1), flags));
-                    continue;
-                }
-
-                string? author = null;
-                CGameCtnBlockSkin? skin = null;
-
-                if (CGameCtnBlock.IsSkinnableBlock_WhenDefined(flags)) // custom block
-                {
-                    author = r.ReadId();
-                    skin = r.ReadNodeRef<CGameCtnBlockSkin>();
-                }
-
-                CGameWaypointSpecialProperty? parameters = null;
-
-                if (CGameCtnBlock.IsWaypointBlock_WhenDefined(flags))
-                {
-                    parameters = r.ReadNodeRef<CGameWaypointSpecialProperty>();
-                }
-
-                if (CGameCtnBlock.IsFreeBlock_WhenDefined(flags))
-                {
-                    coord -= (0, 1, 0);
-                }
-
-                var block = new CGameCtnBlock(blockName, dir, coord, flags, author, skin, parameters);
-                ((INodeDependant<CGameCtnChallenge>)block).DependingNode = n;
-
-                n.blocks.Add(block);
-
-                blockCounter++;
             }
 
             // Debug.Assert(blockCounter == nbBlocks);
