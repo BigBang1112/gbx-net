@@ -17,9 +17,9 @@ public class AppliedWithChunkAttribute : Attribute
     public int SinceVersion { get; set; }
 
     /// <summary>
-    /// Up to which version the member is written to the chunk. 0 (default) means there's no known version limit. Ignored on chunks without <see cref="IVersionable"/>.
+    /// Up to which version the member is written to the chunk. -1 (default value) means there's no known version limit. Ignored on chunks without <see cref="IVersionable"/>.
     /// </summary>
-    public int UpToVersion { get; set; }
+    public int UpToVersion { get; set; } = -1;
 
     /// <summary>
     /// Creates the <see cref="AppliedWithChunkAttribute"/>.
