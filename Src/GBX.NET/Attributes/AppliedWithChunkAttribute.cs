@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Attributes;
 
 /// <summary>
-/// Tells which chunk is used to write a certain node memeber.
+/// Tells which chunk is used to write a certain node member.
 /// </summary>
 [AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
 public class AppliedWithChunkAttribute : Attribute
