@@ -14,19 +14,32 @@ public class AppliedWithChunkAttribute : Attribute
     /// <summary>
     /// Since which version this member is written to the chunk. Ignored on chunks without <see cref="IVersionable"/>.
     /// </summary>
-    public int SinceVersion { get; set; }
+    public int SinceVersion { get; }
 
     /// <summary>
-    /// Up to which version the member is written to the chunk. -1 (default value) means there's no known version limit. Ignored on chunks without <see cref="IVersionable"/>.
+    /// Up to which version the member is written to the chunk. Null means there's no known version limit. Ignored on chunks without <see cref="IVersionable"/>.
     /// </summary>
-    public int UpToVersion { get; set; } = -1;
+    public int? UpToVersion { get; }
 
     /// <summary>
     /// Creates the <see cref="AppliedWithChunkAttribute"/>.
     /// </summary>
     /// <param name="chunkType">Type of the chunk.</param>
-    public AppliedWithChunkAttribute(Type chunkType)
+    /// <param name="sinceVersion">Since which version this member is written to the chunk. Can be ignored on chunks without <see cref="IVersionable"/>.</param>
+    public AppliedWithChunkAttribute(Type chunkType, int sinceVersion = 0)
     {
         ChunkType = chunkType;
+        SinceVersion = sinceVersion;
+    }
+
+    /// <summary>
+    /// Creates the <see cref="AppliedWithChunkAttribute"/>.
+    /// </summary>
+    /// <param name="chunkType">Type of the chunk.</param>
+    /// <param name="sinceVersion">Since which version this member is written to the chunk. Can be ignored on chunks without <see cref="IVersionable"/>.</param>
+    /// <param name="upToVersion">Up to which version the member is written to the chunk. Can be ignored on chunks without <see cref="IVersionable"/>.</param>
+    public AppliedWithChunkAttribute(Type chunkType, int sinceVersion, int upToVersion) : this(chunkType, sinceVersion)
+    {
+        UpToVersion = upToVersion;
     }
 }
