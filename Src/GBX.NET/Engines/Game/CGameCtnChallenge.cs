@@ -166,7 +166,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     private string? mapStyle;
     private string? titleID;
     private int? authorVersion;
-    private string authorLogin;
+    private string? authorLogin;
     private string? authorNickname;
     private string? authorZone;
     private string? authorExtraInfo;
@@ -436,7 +436,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             DiscoverChunk<Chunk03043042>();
 
             if (authorLogin is null)
+            {
                 return mapInfo.Author;
+            }
 
             return authorLogin;
         }
@@ -1270,7 +1272,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     {
         mapInfo = Ident.Empty;
         mapName = "";
-        authorLogin = "";
     }
 
     #endregion
