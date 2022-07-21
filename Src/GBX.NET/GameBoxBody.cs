@@ -45,9 +45,9 @@ public class GameBoxBody
     }
 
     private static void ReadCompressed(Node node,
-                                        GameBoxReader reader,
-                                        IProgress<GameBoxReadProgress>? progress,
-                                        ILogger? logger)
+                                       GameBoxReader reader,
+                                       IProgress<GameBoxReadProgress>? progress,
+                                       ILogger? logger)
     {
         var uncompressedSize = reader.ReadInt32();
         var compressedSize = reader.ReadInt32();
@@ -57,10 +57,10 @@ public class GameBoxBody
     }
 
     private static void ReadUncompressed(Node node,
-                                            GameBoxReader reader,
-                                            IProgress<GameBoxReadProgress>? progress,
-                                            bool readUncompressedBodyDirectly,
-                                            ILogger? logger)
+                                         GameBoxReader reader,
+                                         IProgress<GameBoxReadProgress>? progress,
+                                         bool readUncompressedBodyDirectly,
+                                         ILogger? logger)
     {
         if (readUncompressedBodyDirectly)
         {
@@ -79,13 +79,15 @@ public class GameBoxBody
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     internal static async Task<bool> ReadAsync(Node node,
-                                                GameBoxHeader header,
-                                                GameBoxReader reader,
-                                                bool readUncompressedBodyDirectly,
-                                                ILogger? logger,
-                                                GameBoxAsyncReadAction? asyncAction,
-                                                CancellationToken cancellationToken)
+                                               GameBoxHeader header,
+                                               GameBoxReader reader,
+                                               bool readUncompressedBodyDirectly,
+                                               ILogger? logger,
+                                               GameBoxAsyncReadAction? asyncAction,
+                                               CancellationToken cancellationToken)
     {
+        reader.Settings.GetGbxOrThrow().ResetIdState();
+
         logger?.LogDebug("Reading the body...");
 
         switch (header.CompressionOfBody)
@@ -107,10 +109,10 @@ public class GameBoxBody
     }
 
     private static async Task ReadCompressedAsync(Node node,
-                                                    GameBoxReader reader,
-                                                    ILogger? logger,
-                                                    GameBoxAsyncReadAction? asyncAction,
-                                                    CancellationToken cancellationToken)
+                                                  GameBoxReader reader,
+                                                  ILogger? logger,
+                                                  GameBoxAsyncReadAction? asyncAction,
+                                                  CancellationToken cancellationToken)
     {
         var uncompressedSize = reader.ReadInt32();
         var compressedSize = reader.ReadInt32();
@@ -148,10 +150,10 @@ public class GameBoxBody
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     private static void ReadMainNode(Node node,
-                                        byte[] data,
-                                        int uncompressedSize,
-                                        IProgress<GameBoxReadProgress>? progress,
-                                        ILogger? logger)
+                                     byte[] data,
+                                     int uncompressedSize,
+                                     IProgress<GameBoxReadProgress>? progress,
+                                     ILogger? logger)
     {
         var buffer = new byte[uncompressedSize];
 
@@ -164,9 +166,9 @@ public class GameBoxBody
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     private static void ReadMainNode(Node node,
-                                        byte[] data,
-                                        IProgress<GameBoxReadProgress>? progress,
-                                        ILogger? logger)
+                                     byte[] data,
+                                     IProgress<GameBoxReadProgress>? progress,
+                                     ILogger? logger)
     {
         using var ms = new MemoryStream(data);
         ReadMainNode(node, ms, progress, logger);
@@ -185,9 +187,9 @@ public class GameBoxBody
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     private static void ReadMainNode(Node node,
-                                        GameBoxReader reader,
-                                        IProgress<GameBoxReadProgress>? progress,
-                                        ILogger? logger)
+                                     GameBoxReader reader,
+                                     IProgress<GameBoxReadProgress>? progress,
+                                     ILogger? logger)
     {
         Node.Parse(node, node.GetType(), reader, progress, logger);
 

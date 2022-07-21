@@ -7,4 +7,5 @@ public static class GameVersions
     public const string ManiaPlanet_3_Frozen = "2015-06-18_15_10";
     public const string TrackmaniaTurbo_Latest = "2016-11-07_16_15";
     public const string ManiaPlanet_2 = "2013-11-06_21_49";
+    public const string TMUF = "2.11.26";
 }
