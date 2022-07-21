@@ -147,7 +147,7 @@ public class CPlugMaterialUserInst : CMwNod
 
             if (version >= 1)
             {
-                if (version < 11 || n.isUsingGameMaterial)
+                if ((version >= 9 && version < 11) || n.isUsingGameMaterial) // Guessed
                 {
                     rw.String(ref n.link);
                 }
