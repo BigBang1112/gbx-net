@@ -9,6 +9,9 @@ public partial class CGameCtnChallengeTests
 
         [ReadWriteEqualityTest(FirstIdOccurance = true)]
         public partial void ReadAndWrite_ManiaPlanet_Latest_DataShouldEqual();
+
+        [ReadWriteEqualityTest(FirstIdOccurance = true), IgnoreReadWriteEqualityTest]
+        public partial void ReadAndWrite_TMUF_DataShouldEqual();
     }
 
     public partial class Chunk0304300DTests
@@ -18,6 +21,9 @@ public partial class CGameCtnChallengeTests
 
         [ReadWriteEqualityTest(FirstIdOccurance = true)]
         public partial void ReadAndWrite_ManiaPlanet_Latest_DataShouldEqual();
+
+        [ReadWriteEqualityTest(FirstIdOccurance = true)]
+        public partial void ReadAndWrite_TMUF_DataShouldEqual();
     }
 
     public partial class Chunk0304301FTests
@@ -27,5 +33,14 @@ public partial class CGameCtnChallengeTests
 
         [IgnoreReadWriteEqualityTest]
         public partial void ReadAndWrite_ManiaPlanet_Latest_DataShouldEqual();
+
+        [IgnoreReadWriteEqualityTest]
+        public partial void ReadAndWrite_TMUF_DataShouldEqual();
+    }
+
+    public partial class Chunk03043021Tests
+    {
+        [IgnoreReadWriteEqualityTest]
+        public partial void ReadAndWrite_TMUF_DataShouldEqual();
     }
 }
