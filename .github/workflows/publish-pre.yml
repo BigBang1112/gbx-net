@@ -42,5 +42,6 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         file: Src/GBX.NET/bin/Release/*.nupkg
+        file_glob: true
         tag: ${{ github.ref }}
         overwrite: true
