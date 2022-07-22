@@ -35,9 +35,9 @@ jobs:
     - name: Create the GBX.NET package
       run: dotnet pack Src/GBX.NET -c Release
     - name: Publish the GBX.NET package to nuget.org
-      run: dotnet nuget push Src/GBX.NET/bin/Release/*.nupkg -k $NUGET_API_KEY -s $NUGET_SOURCE
+      run: dotnet nuget push Src/GBX.NET/bin/Release/*.nupkg -k $NUGET_API_KEY -s $NUGET_SOURCE --skip-duplicate
     - name: Publish the GBX.NET package to github.com
-      run: dotnet nuget push Src/GBX.NET/bin/Release/*.nupkg -k $GITHUB_TOKEN -s $GITHUB_SOURCE
+      run: dotnet nuget push Src/GBX.NET/bin/Release/*.nupkg -k $GITHUB_TOKEN -s $GITHUB_SOURCE --skip-duplicate
     - name: Upload the GBX.NET package to the release
       uses: svenstaro/upload-release-action@v2
       with:
