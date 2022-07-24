@@ -6,8 +6,10 @@
 public class CSceneMobil : CSceneObject
 {
     private CHmsItem? item;
+    private CSceneObjectLink?[]? links;
 
     public CHmsItem? Item { get => item; set => item = value; }
+    public CSceneObjectLink?[]? Links { get => links; set => links = value; }
 
     protected CSceneMobil()
     {
@@ -20,11 +22,9 @@ public class CSceneMobil : CSceneObject
     [Chunk(0x0A011003)]
     public class Chunk0A011003 : Chunk<CSceneMobil>
     {
-        public int U01;
-
         public override void ReadWrite(CSceneMobil n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01); // CSceneObjectLink array
+            rw.ArrayNode<CSceneObjectLink>(ref n.links);
         }
     }
 
