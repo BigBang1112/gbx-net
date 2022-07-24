@@ -1,0 +1,10 @@
+﻿namespace GBX.NET.Engines.{0};
+
+[Node(0x{1})]
+public class {2} : TODO
+{{
+    protected {2}()
+    {{
+        
+    }}
+}}
