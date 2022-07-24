@@ -3,10 +3,12 @@
 public class NodeNotImplementedException : Exception
 {
     public uint ClassId { get; }
+    public string ClassName { get; }
 
     public NodeNotImplementedException(uint classId) : base(GetMessage(classId))
     {
         ClassId = classId;
+        ClassName = GetClassName(classId);
     }
 
     private static string GetMessage(uint classId)
