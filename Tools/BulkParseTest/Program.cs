@@ -1,4 +1,5 @@
 ﻿using GBX.NET;
+using Microsoft.Extensions.Logging;
 
 if (args.Length == 0)
     return;
@@ -27,6 +28,16 @@ while (argsEnumerator.MoveNext())
 if (directory is null)
     return;
 
+var logger = LoggerFactory.Create(builder =>
+{
+    builder.AddSimpleConsole(options =>
+    {
+        options.IncludeScopes = true;
+        options.SingleLine = true;
+    });
+    builder.SetMinimumLevel(LogLevel.Warning);
+}).CreateLogger<Program>();
+
 var files = Directory.GetFiles(directory, pattern, SearchOption.AllDirectories);
 var exceptionMessages = new List<string>();
 
@@ -38,7 +49,7 @@ for (var i = 0; i < files.Length; i++)
 
     try
     {
-        var node = GameBox.ParseNode(fileName);
+        var node = GameBox.ParseNode(fileName, logger: logger);
 
         if (node is null)
         {
