@@ -177,7 +177,7 @@ public static class NodeCacheManager
                 continue;
             }
 
-            var attributes = type.GetCustomAttributes();
+            var attributes = CustomAttributeExtensions.GetCustomAttributes(type, inherit: false);
 
             var nodeAttribute = default(NodeAttribute);
             var nodeExtensionAttribute = default(NodeExtensionAttribute);
