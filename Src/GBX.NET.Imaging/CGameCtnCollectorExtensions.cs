@@ -1,8 +1,5 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
 using GBX.NET.Engines.GameData;
 
@@ -18,7 +15,7 @@ public static class CGameCtnCollectorExtensions
     /// </summary>
     /// <param name="node">CGameCtnCollector</param>
     /// <returns>Thumbnail as <see cref="Bitmap"/>. Null if <see cref="CGameCtnCollector.Icon"/> is null.</returns>
-    public static Bitmap GetIconBitmap(this CGameCtnCollector node)
+    public static Bitmap? GetIconBitmap(this CGameCtnCollector node)
     {
         if (node.Icon is null) return null;
 
