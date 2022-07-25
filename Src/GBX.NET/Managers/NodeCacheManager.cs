@@ -181,13 +181,23 @@ public static class NodeCacheManager
 
             var nodeAttribute = default(NodeAttribute);
             var nodeExtensionAttribute = default(NodeExtensionAttribute);
+            var moreNodeAttributes = default(List<NodeAttribute>);
 
             foreach (var attribute in attributes)
             {
                 switch (attribute)
                 {
                     case NodeAttribute na:
+
+                        if (nodeAttribute is not null)
+                        {
+                            moreNodeAttributes ??= new();
+                            moreNodeAttributes.Add(na);
+                            continue;
+                        }
+
                         nodeAttribute = na;
+
                         break;
                     case NodeExtensionAttribute nea:
                         nodeExtensionAttribute = nea;
@@ -215,6 +225,14 @@ public static class NodeCacheManager
             if (nodeExtensionAttribute is not null)
             {
                 GbxExtensions[nodeId] = nodeExtensionAttribute.Extension;
+            }
+
+            if (moreNodeAttributes is not null)
+            {
+                foreach (var att in moreNodeAttributes)
+                {
+                    ClassTypesById[att.ID] = type;
+                }
             }
         }
 
