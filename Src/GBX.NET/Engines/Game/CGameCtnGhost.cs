@@ -723,7 +723,7 @@ public partial class CGameCtnGhost : CGameGhost
     [Chunk(0x03092011, "validation TMU")]
     public class Chunk03092011 : Chunk<CGameCtnGhost>
     {
-        internal bool Is025 { get; }
+        internal bool Is025Ver1 { get; set; }
 
         public uint U01;
         public int U02;
@@ -733,16 +733,11 @@ public partial class CGameCtnGhost : CGameGhost
 
         }
 
-        public Chunk03092011(Chunk03092019 chunk019)
-        {
-            Is025 = chunk019.Is025;
-        }
-
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref n.eventsDuration);
 
-            if (n.eventsDuration == 0) return;
+            if (n.eventsDuration == 0 && !Is025Ver1) return;
 
             rw.UInt32(ref U01);
 
@@ -931,32 +926,17 @@ public partial class CGameCtnGhost : CGameGhost
     /// CGameCtnGhost 0x019 chunk (validation TMUF)
     /// </summary>
     [Chunk(0x03092019, "validation TMUF")]
-    public class Chunk03092019 : Chunk<CGameCtnGhost>
+    public class Chunk03092019 : Chunk03092011
     {
-        internal bool Is025 { get; }
-
-        public Chunk03092011 Chunk011 { get; }
-
-        public int U01;
-
-        public Chunk03092019(Chunk03092025? chunk025)
-        {
-            Is025 = chunk025 is not null;
-            Chunk011 = new Chunk03092011(this);
-        }
-
-        public Chunk03092019() : this(null)
-        {
-
-        }
+        public int U03;
 
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
-            Chunk011.ReadWrite(n, rw);
+            base.ReadWrite(n, rw);
 
-            if (n.eventsDuration == 0) return;
+            if (n.eventsDuration == 0 && !Is025Ver1) return;
 
-            rw.Int32(ref U01);
+            rw.Int32(ref U03);
         }
     }
 
@@ -1065,25 +1045,23 @@ public partial class CGameCtnGhost : CGameGhost
 
         public bool U01;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public Chunk03092019 Chunk019 { get; }
 
         public Chunk03092025()
         {
-            Chunk019 = new Chunk03092019(this);
+            Chunk019 = new Chunk03092019();
         }
 
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
+
+            Chunk019.Is025Ver1 = version >= 1;
             Chunk019.ReadWrite(n, rw);
 
-            if (n.eventsDuration == 0) return;
+            if (n.eventsDuration == 0 && !Chunk019.Is025Ver1) return;
 
             rw.Boolean(ref U01);
         }
