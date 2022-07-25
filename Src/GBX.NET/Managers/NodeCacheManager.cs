@@ -380,7 +380,7 @@ public static class NodeCacheManager
             return;
         }
 
-        var attributes = type.GetCustomAttributes();
+        var attributes = CustomAttributeExtensions.GetCustomAttributes(type, inherit: false);
 
         if (attributes.FirstOrDefault(x => x is ChunkAttribute) is not ChunkAttribute chunkAttribute)
         {
@@ -411,7 +411,7 @@ public static class NodeCacheManager
             HeaderChunkConstructors[chunkId] = constructor;
         }
 
-        if (type.BaseType?.GetGenericTypeDefinition() == typeof(SkippableChunk<>))
+        if (type.BaseType?.IsGenericType == true && type.BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>))
         {
             SkippableChunks[type] = 1;
         }
