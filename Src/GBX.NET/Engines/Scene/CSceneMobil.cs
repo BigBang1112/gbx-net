@@ -6,10 +6,17 @@
 public class CSceneMobil : CSceneObject
 {
     private CHmsItem? item;
-    private CSceneObjectLink?[]? links;
+    private CSceneObjectLink?[]? objectLink;
+    private CSceneMessageHandler? messageHandler;
 
+    [NodeMember(ExactlyNamed = true)]
     public CHmsItem? Item { get => item; set => item = value; }
-    public CSceneObjectLink?[]? Links { get => links; set => links = value; }
+    
+    [NodeMember(ExactlyNamed = true)]
+    public CSceneObjectLink?[]? ObjectLink { get => objectLink; set => objectLink = value; }
+    
+    [NodeMember(ExactlyNamed = true)]
+    public CSceneMessageHandler? MessageHandler { get => messageHandler; set => messageHandler = value; }
 
     protected CSceneMobil()
     {
@@ -24,7 +31,7 @@ public class CSceneMobil : CSceneObject
     {
         public override void ReadWrite(CSceneMobil n, GameBoxReaderWriter rw)
         {
-            rw.ArrayNode<CSceneObjectLink>(ref n.links);
+            rw.ArrayNode<CSceneObjectLink>(ref n.objectLink);
         }
     }
 
@@ -38,7 +45,7 @@ public class CSceneMobil : CSceneObject
 
         public override void ReadWrite(CSceneMobil n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01);
+            rw.NodeRef(ref U01); // MotionSolid?
         }
     }
 
@@ -72,11 +79,9 @@ public class CSceneMobil : CSceneObject
     [Chunk(0x0A011006)]
     public class Chunk0A011006 : Chunk<CSceneMobil>
     {
-        public int U01;
-
         public override void ReadWrite(CSceneMobil n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.NodeRef<CSceneMessageHandler>(ref n.messageHandler);
         }
     }
 }

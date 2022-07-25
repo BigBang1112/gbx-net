@@ -1,6 +1,7 @@
 ﻿namespace GBX.NET.Engines.Scene;
 
-[Node(0x0A014000)]
+[Node(0x0A00F000)]
+[Node(0x0A014000)] // Superb
 public class CSceneObjectLink : CMwNod
 {
     protected CSceneObjectLink()
@@ -34,12 +35,19 @@ public class CSceneObjectLink : CMwNod
         public int U16;
         public int U17;
         public int U18;
+        public Node? U19;
 
         public override void ReadWrite(CSceneObjectLink n, GameBoxReaderWriter rw)
         {
             // All guessed, barely anything matches the code
 
             rw.Int32(ref U01);
+
+            if (U01 == 0)
+            {
+                rw.NodeRef(ref U19);
+            }
+
             rw.Int32(ref U02);
             rw.Int32(ref U03);
             rw.Id(ref U04);
@@ -57,6 +65,32 @@ public class CSceneObjectLink : CMwNod
             rw.Int32(ref U16);
             rw.Int32(ref U17);
             rw.Int32(ref U18);
+        }
+    }
+    
+    /// <summary>
+    /// CSceneObjectLink 0x001 chunk
+    /// </summary>
+    [Chunk(0x0A00F001)]
+    public class Chunk0A00F001 : Chunk<CSceneObjectLink>
+    {
+        public float U01;
+        public float U02;
+        public float U03;
+        public float U04;
+        public float U05;
+        public float U06;
+        public bool U07;
+
+        public override void ReadWrite(CSceneObjectLink n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+            rw.Single(ref U05);
+            rw.Single(ref U06);
+            rw.Boolean(ref U07);
         }
     }
 
@@ -79,6 +113,20 @@ public class CSceneObjectLink : CMwNod
             rw.Id(ref U01);
             rw.Boolean(ref U02);
             rw.Boolean(ref U03);
+        }
+    }
+
+    /// <summary>
+    /// CSceneObjectLink 0x002 chunk
+    /// </summary>
+    [Chunk(0x0A00F002)]
+    public class Chunk0A00F002 : Chunk<CSceneObjectLink>
+    {
+        public bool U01;
+
+        public override void ReadWrite(CSceneObjectLink n, GameBoxReaderWriter rw)
+        {
+            rw.Boolean(ref U01);
         }
     }
 
