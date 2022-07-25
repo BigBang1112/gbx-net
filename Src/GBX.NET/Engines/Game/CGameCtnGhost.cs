@@ -974,6 +974,36 @@ public partial class CGameCtnGhost : CGameGhost
 
     #endregion
 
+    #region 0x01D skippable chunk (player input data)
+
+    /// <summary>
+    /// CGameCtnGhost 0x01D skippable chunk (player input data)
+    /// </summary>
+    [Chunk(0x0309201D, "player input data")]
+    public class Chunk0309201D : SkippableChunk<CGameCtnGhost>, IVersionable
+    {
+        private int version;
+        
+        public PlayerInputData[]? PlayerInputData;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+
+            if (version < 2)
+            {
+                throw new VersionNotSupportedException(version);
+            }
+
+            // empty in an unfinished run
+            rw.ArrayArchive<PlayerInputData>(ref PlayerInputData, version);
+        }
+    }
+
+    #endregion
+
     #region 0x023 skippable chunk
 
     /// <summary>
