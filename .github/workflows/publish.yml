@@ -4,12 +4,6 @@ on:
   release:
     types: [ published ]
 
-env:
-  NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-  NUGET_SOURCE: https://api.nuget.org/v3/index.json
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  GITHUB_SOURCE: https://nuget.pkg.github.com/bigbang1112/index.json
-
 jobs:
   build:
 
@@ -39,9 +33,9 @@ jobs:
     - name: Create the ${{ matrix.lib }} package
       run: dotnet pack Src/${{ matrix.lib }} -c Release
     - name: Publish the ${{ matrix.lib }} package to nuget.org
-      run: dotnet nuget push Src/${{ matrix.lib }}/bin/Release/*.nupkg -k $NUGET_API_KEY -s $NUGET_SOURCE
+      run: dotnet nuget push Src/${{ matrix.lib }}/bin/Release/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
     - name: Publish the ${{ matrix.lib }} package to github.com
-      run: dotnet nuget push Src/${{ matrix.lib }}/bin/Release/*.nupkg -k $GITHUB_TOKEN -s $GITHUB_SOURCE
+      run: dotnet nuget push Src/${{ matrix.lib }}/bin/Release/*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/bigbang1112/index.json --skip-duplicate
     - name: Upload the ${{ matrix.lib }} package to the release
       uses: svenstaro/upload-release-action@v2
       with:
