@@ -14,7 +14,11 @@ jobs:
   build:
 
     if: "!github.event.release.prerelease"
-
+    
+    strategy:
+      matrix:
+        lib: [GBX.NET, GBX.NET.Imaging, GBX.NET.Json, GBX.NET.LZO, GBX.NET.PAK]
+    
     runs-on: ubuntu-latest
 
     steps:
@@ -32,72 +36,16 @@ jobs:
     - name: Test
       run: dotnet test -c Release --no-build --verbosity normal
 
-    - name: Create the GBX.NET package
-      run: dotnet pack Src/GBX.NET -c Release
-    - name: Publish the GBX.NET package to nuget.org
-      run: dotnet nuget push Src/GBX.NET/bin/Release/*.nupkg -k $NUGET_API_KEY -s $NUGET_SOURCE
-    - name: Publish the GBX.NET package to github.com
-      run: dotnet nuget push Src/GBX.NET/bin/Release/*.nupkg -k $GITHUB_TOKEN -s $GITHUB_SOURCE
-    - name: Upload the GBX.NET package to the release
+    - name: Create the ${{ matrix.lib }} package
+      run: dotnet pack Src/${{ matrix.lib }} -c Release
+    - name: Publish the ${{ matrix.lib }} package to nuget.org
+      run: dotnet nuget push Src/${{ matrix.lib }}/bin/Release/*.nupkg -k $NUGET_API_KEY -s $NUGET_SOURCE
+    - name: Publish the ${{ matrix.lib }} package to github.com
+      run: dotnet nuget push Src/${{ matrix.lib }}/bin/Release/*.nupkg -k $GITHUB_TOKEN -s $GITHUB_SOURCE
+    - name: Upload the ${{ matrix.lib }} package to the release
       uses: svenstaro/upload-release-action@v2
       with:
-        file: Src/GBX.NET/bin/Release/*.nupkg
-        file_glob: true
-        tag: ${{ github.ref }}
-        overwrite: true
-
-    - name: Create the GBX.NET.Imaging package
-      run: dotnet pack Src/GBX.NET.Imaging -c Release
-    - name: Publish the GBX.NET.Imaging package to nuget.org
-      run: dotnet nuget push Src/GBX.NET.Imaging/bin/Release/*.nupkg -k $NUGET_API_KEY -s $NUGET_SOURCE --skip-duplicate
-    - name: Publish the GBX.NET.Imaging package to github.com
-      run: dotnet nuget push Src/GBX.NET.Imaging/bin/Release/*.nupkg -k $GITHUB_TOKEN -s $GITHUB_SOURCE --skip-duplicate
-    - name: Upload the GBX.NET.Imaging package to the release
-      uses: svenstaro/upload-release-action@v2
-      with:
-        file: Src/GBX.NET.Imaging/bin/Release/*.nupkg
-        file_glob: true
-        tag: ${{ github.ref }}
-        overwrite: true
-
-    - name: Create the GBX.NET.Json package
-      run: dotnet pack Src/GBX.NET.Json -c Release
-    - name: Publish the GBX.NET.Json package to nuget.org
-      run: dotnet nuget push Src/GBX.NET.Json/bin/Release/*.nupkg -k $NUGET_API_KEY -s $NUGET_SOURCE --skip-duplicate
-    - name: Publish the GBX.NET.Json package to github.com
-      run: dotnet nuget push Src/GBX.NET.Json/bin/Release/*.nupkg -k $GITHUB_TOKEN -s $GITHUB_SOURCE --skip-duplicate
-    - name: Upload the GBX.NET.Json package to the release
-      uses: svenstaro/upload-release-action@v2
-      with:
-        file: Src/GBX.NET.Json/bin/Release/*.nupkg
-        file_glob: true
-        tag: ${{ github.ref }}
-        overwrite: true
-
-    - name: Create the GBX.NET.LZO package
-      run: dotnet pack Src/GBX.NET.LZO -c Release
-    - name: Publish the GBX.NET.LZO package to nuget.org
-      run: dotnet nuget push Src/GBX.NET.LZO/bin/Release/*.nupkg -k $NUGET_API_KEY -s $NUGET_SOURCE --skip-duplicate
-    - name: Publish the GBX.NET.LZO package to github.com
-      run: dotnet nuget push Src/GBX.NET.LZO/bin/Release/*.nupkg -k $GITHUB_TOKEN -s $GITHUB_SOURCE --skip-duplicate
-    - name: Upload the GBX.NET.LZO package to the release
-      uses: svenstaro/upload-release-action@v2
-      with:
-        file: Src/GBX.NET.LZO/bin/Release/*.nupkg
-        file_glob: true
-        tag: ${{ github.ref }}
-        overwrite: true
-       
-    - name: Create the GBX.NET.PAK package
-      run: dotnet pack Src/GBX.NET.PAK -c Release
-    - name: Publish the GBX.NET.PAK package to nuget.org
-      run: dotnet nuget push Src/GBX.NET.PAK/bin/Release/*.nupkg -k $NUGET_API_KEY -s $NUGET_SOURCE --skip-duplicate
-    - name: Publish the GBX.NET.PAK package to github.com
-      run: dotnet nuget push Src/GBX.NET.PAK/bin/Release/*.nupkg -k $GITHUB_TOKEN -s $GITHUB_SOURCE --skip-duplicate
-    - name: Upload the GBX.NET.PAK package to the release
-      uses: svenstaro/upload-release-action@v2
-      with:
-        file: Src/GBX.NET.PAK/bin/Release/*.nupkg
+        file: Src/${{ matrix.lib }}/bin/Release/*.nupkg
         file_glob: true
         tag: ${{ github.ref }}
         overwrite: true
