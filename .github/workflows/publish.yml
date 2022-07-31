@@ -5,41 +5,60 @@ on:
     types: [ published ]
 
 jobs:
-  publish:
+  build:
 
     if: "!github.event.release.prerelease"
-    
-    strategy:
-      matrix:
-        lib: [GBX.NET, GBX.NET.Imaging, GBX.NET.Json, GBX.NET.LZO, GBX.NET.PAK]
     
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
+    
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: |
           6.0.x
           3.1.x
+          
     - name: Restore dependencies
       run: dotnet restore
+      
     - name: Build
       run: dotnet build -c Release --no-restore
+      
     - name: Test
       run: dotnet test -c Release --no-build --verbosity normal
-
-    - name: Create the ${{ matrix.lib }} package
-      run: dotnet pack Src/${{ matrix.lib }} -c Release
+      
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        name: build
+        path: Src/GBX.NET*/bin/Release/*.nupkg
+      
+  publish:
+    needs: build
+    
+    strategy:
+      matrix:
+        lib: [GBX.NET, GBX.NET.Imaging, GBX.NET.Json, GBX.NET.LZO, GBX.NET.PAK]
+  
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v3.0.0
+      with:
+        name: build
+      
     - name: Publish the ${{ matrix.lib }} package to nuget.org
-      run: dotnet nuget push Src/${{ matrix.lib }}/bin/Release/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+      run: dotnet nuget push ${{ matrix.lib }}.*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
     - name: Publish the ${{ matrix.lib }} package to github.com
-      run: dotnet nuget push Src/${{ matrix.lib }}/bin/Release/*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/bigbang1112/index.json --skip-duplicate
+      run: dotnet nuget push ${{ matrix.lib }}.*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/bigbang1112/index.json --skip-duplicate
     - name: Upload the ${{ matrix.lib }} package to the release
       uses: svenstaro/upload-release-action@v2
       with:
-        file: Src/${{ matrix.lib }}/bin/Release/*.nupkg
+        file: ${{ matrix.lib }}.*.nupkg
         file_glob: true
         tag: ${{ github.ref }}
         overwrite: true
