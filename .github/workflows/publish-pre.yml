@@ -4,12 +4,6 @@ on:
   release:
     types: [ published ]
 
-env:
-  NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-  NUGET_SOURCE: https://api.nuget.org/v3/index.json
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  GITHUB_SOURCE: https://nuget.pkg.github.com/bigbang1112/index.json
-
 jobs:
   build:
 
@@ -19,29 +13,50 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: |
           6.0.x
           3.1.x
+          
     - name: Restore dependencies
       run: dotnet restore
+      
     - name: Build
       run: dotnet build -c Release --no-restore
+      
     - name: Test
       run: dotnet test -c Release --no-build --verbosity normal
-
-    - name: Create the GBX.NET package
-      run: dotnet pack Src/GBX.NET -c Release
+      
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        name: build
+        path: Src/GBX.NET/bin/Release/GBX.NET.*.nupkg
+  
+  publish:
+    needs: build
+  
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v3.0.0
+      with:
+        name: build
+        
     - name: Publish the GBX.NET package to nuget.org
-      run: dotnet nuget push Src/GBX.NET/bin/Release/*.nupkg -k $NUGET_API_KEY -s $NUGET_SOURCE
+      run: dotnet nuget push GBX.NET.*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
+    
     - name: Publish the GBX.NET package to github.com
-      run: dotnet nuget push Src/GBX.NET/bin/Release/*.nupkg -k $GITHUB_TOKEN -s $GITHUB_SOURCE
+      run: dotnet nuget push GBX.NET.*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/bigbang1112/index.json
+    
     - name: Upload the GBX.NET package to the release
       uses: svenstaro/upload-release-action@v2
       with:
-        file: Src/GBX.NET/bin/Release/*.nupkg
+        file: GBX.NET.*.nupkg
         file_glob: true
         tag: ${{ github.ref }}
         overwrite: true
