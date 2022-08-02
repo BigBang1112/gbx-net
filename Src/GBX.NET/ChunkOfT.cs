@@ -28,7 +28,14 @@ public abstract class Chunk<T> : Chunk, IReadableWritableChunk where T : Node
     /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
     void IReadableWritableChunk.ReadWrite(Node n, GameBoxReaderWriter rw)
     {
-        ReadWrite((T)n, rw);
+        if (n is T t)
+        {
+            ReadWrite(t, rw);
+        }
+        else if (this is IHeaderChunk headerChunk)
+        {
+            headerChunk.ReadWrite(rw);
+        }
     }
 
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>

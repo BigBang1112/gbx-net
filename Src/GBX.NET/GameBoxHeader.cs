@@ -302,25 +302,7 @@ public class GameBoxHeader
         using var chunkReader = new GameBoxReader(chunkStream, r.Settings, logger: logger);
         var rw = new GameBoxReaderWriter(chunkReader);
 
-        if (nodeType != chunkNodeType && !nodeType.IsSubclassOf(chunkNodeType))
-        {
-            // There are cast-related problems when one of the header chunks is not part of inheritance
-            // For example, CGameCtnDecoration has a header chunk of type CPlugGameSkin that is not
-            // inherited by CGameCtnDecoration. A ReadWrite without a node is called.
-
-            try
-            {
-                headerChunk.ReadWrite(rw);
-            }
-            catch (NotSupportedException ex)
-            {
-                logger?.LogWarning(ex, "Exception with chunk 0x{chunkId}:", chunkId.ToString("X8"));
-            }
-        }
-        else
-        {
-            headerChunk.ReadWrite(node, rw);
-        }
+        headerChunk.ReadWrite(node, rw);
 
         if (chunkStream.Position != chunkStream.Length)
         {
