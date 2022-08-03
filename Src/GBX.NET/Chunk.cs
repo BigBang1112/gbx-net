@@ -56,6 +56,11 @@ public abstract class Chunk : IComparable<Chunk>
                 }
             case IDRemap.TrackMania2006:
                 {
+                    if (classPart == 0x2E001000)
+                    {
+                        return 0x2400A000 + chunkPart;
+                    }
+
                     if (NodeCacheManager.Mappings.ContainsValue(classPart))
                     {
                         return NodeCacheManager.Mappings.Last(x => x.Value == classPart).Key + chunkPart;
