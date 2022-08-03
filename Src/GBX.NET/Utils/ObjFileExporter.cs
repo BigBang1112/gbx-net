@@ -304,7 +304,7 @@ internal class ObjFileExporter : IModelExporter, IDisposable
 
     private void WriteMaterialToMtl(CPlugMaterial material)
     {
-        if (material.CustomMaterial is null || gameDataFolderPath is null)
+        if (material.CustomMaterial is null)
         {
             return;
         }
@@ -369,8 +369,11 @@ internal class ObjFileExporter : IModelExporter, IDisposable
             var textureDirectory = Path.Combine(Path.GetDirectoryName(diffuse.GetGbx()!.PakFileName) ?? "",
                 refTable.GetRelativeFolderPathToFile(textureFile));
 
-            var fullTextureFileName = Path.Combine(gameDataFolderPath, textureDirectory, textureFile.FileName)
-                .Replace('\\', '/');
+            var fullTextureFileName = gameDataFolderPath is null
+                ? Path.Combine(textureDirectory, textureFile.FileName)
+                : Path.Combine(gameDataFolderPath, textureDirectory, textureFile.FileName);
+
+            fullTextureFileName = fullTextureFileName.Replace('\\', '/');
 
             mtlWriter.WriteLine($"map_Ka \"{fullTextureFileName}\"");
             mtlWriter.WriteLine($"map_Kd \"{fullTextureFileName}\"");
