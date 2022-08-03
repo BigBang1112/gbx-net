@@ -6,6 +6,7 @@ on:
 
 jobs:
   build:
+    name: Build
 
     if: "github.event.release.prerelease"
 
@@ -36,8 +37,10 @@ jobs:
         name: build
         path: Src/GBX.NET/bin/Release/GBX.NET.*.nupkg
   
-  publish:
+  publish:    
     needs: build
+    
+    name: Publish
   
     runs-on: ubuntu-latest
     

@@ -6,9 +6,11 @@ on:
 
 jobs:
   build:
-
+  
     if: "!github.event.release.prerelease"
     
+    name: Build
+
     runs-on: ubuntu-latest
 
     steps:
@@ -36,12 +38,14 @@ jobs:
         name: build
         path: Src/GBX.NET*/bin/Release/*.nupkg
       
-  publish:
+  publish:    
     needs: build
     
     strategy:
       matrix:
         lib: [GBX.NET, GBX.NET.Imaging, GBX.NET.Json, GBX.NET.LZO, GBX.NET.PAK]
+        
+    name: Publish ${{ matrix.lib }}
   
     runs-on: ubuntu-latest
     
