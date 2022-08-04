@@ -73,7 +73,6 @@
 
 	<ItemGroup>
 		<Folder Include="Engines\Audio\" />
-		<Folder Include="Engines\Motion\" />
 		<Folder Include="Engines\Net\" />
 		<Folder Include="Engines\VirtualSkipper\" />
 		<Folder Include="Engines\Vision\" />
@@ -82,7 +81,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
-		<PackageReference Include="TmEssentials" Version="2.2.0" />
+		<PackageReference Include="TmEssentials" Version="2.3.0" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
