@@ -13,6 +13,7 @@ public class CPlugSolid : CPlug
     private CPlug? tree;
     private GameBoxRefTable.File? treeFile;
 
+    [NodeMember]
     public CPlug? Tree
     {
         get => tree = GetNodeFromRefTable(tree, treeFile) as CPlug;
