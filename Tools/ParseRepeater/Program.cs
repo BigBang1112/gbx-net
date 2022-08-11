@@ -19,6 +19,7 @@ var logger = LoggerFactory.Create(builder =>
 }).CreateLogger<Program>();
 
 var chunkTxt = File.ReadAllText("Chunk.txt");
+var classTxt = File.ReadAllText("Node.txt");
 
 while (true)
 {
@@ -46,6 +47,27 @@ while (true)
             Console.WriteLine();
             Console.WriteLine();
         }
+        
+        logger.LogError(ex, "Exception during parse: ");
+    }
+    catch (NodeNotImplementedException ex)
+    {
+        var splitClassName = ex.ClassName.Split("::");
+        var engineName = splitClassName[0];
+        var className = splitClassName[1];
+
+        var objs = new string[]
+        {
+            engineName,
+            ex.ClassId.ToString("X8"),
+            className
+        };
+
+        Console.WriteLine();
+        Console.WriteLine();
+        Console.WriteLine("Possible class structure:\n\n" + string.Format(classTxt, objs));
+        Console.WriteLine();
+        Console.WriteLine();
 
         logger.LogError(ex, "Exception during parse: ");
     }

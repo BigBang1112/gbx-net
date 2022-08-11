@@ -1,0 +1,11 @@
+﻿namespace GBX.NET.Engines.{0};
+
+/// <remarks>ID: 0x{1}</remarks>
+[Node(0x{1})]
+public class {2} : TODO
+{{
+    protected {2}()
+    {{
+        
+    }}
+}}

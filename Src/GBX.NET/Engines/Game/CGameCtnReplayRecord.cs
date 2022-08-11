@@ -676,15 +676,15 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// CGameCtnReplayRecord 0x014 chunk (ghosts)
     /// </summary>
     [Chunk(0x03093014, "ghosts")]
-    public class Chunk03093014 : Chunk<CGameCtnReplayRecord>, IVersionable
+    public class Chunk03093014 : Chunk<CGameCtnReplayRecord>
     {
-        public int U01;
+        private int listVersion;
 
-        public int Version { get; set; }
+        public int U01;
 
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
         {
-            Version = r.ReadInt32();
+            listVersion = r.ReadInt32();
             n.ghosts = r.ReadArray(r => r.ReadNodeRef<CGameCtnGhost>()!);
             U01 = r.ReadInt32();
             n.extras = r.ReadArray(r => r.ReadInt64());
@@ -692,7 +692,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
         public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
         {
-            Version = r.ReadInt32();
+            listVersion = r.ReadInt32();
             n.ghosts = (await r.ReadArrayAsync(r => r.ReadNodeRefAsync<CGameCtnGhost>()!))!;
             U01 = r.ReadInt32();
             n.extras = r.ReadArray(r => r.ReadInt64());

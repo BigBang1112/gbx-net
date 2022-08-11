@@ -161,13 +161,14 @@ public class CGameCtnBlockUnitInfo : CMwNod
     public class Chunk03036003 : Chunk<CGameCtnBlockUnitInfo>
     {
         public CMwNod? U01;
+        public GameBoxRefTable.File? U01file;
         public string? U02;
         public int U03;
         public int U04;
 
         public override void ReadWrite(CGameCtnBlockUnitInfo n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01); // pillar stuff?
+            rw.NodeRef(ref U01, ref U01file); // pillar stuff?
             rw.Id(ref U02); // TerrainModifierId?
             rw.Int32(ref U03);
             rw.Int32(ref U04);

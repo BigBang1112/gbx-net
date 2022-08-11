@@ -767,6 +767,7 @@
   00C CSceneController
   00D CSceneListener
   00E CSceneSoundSource
+  00F CSceneObjectLink
   010
   011 CSceneMobil
   012 CSceneToy

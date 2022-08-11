@@ -349,8 +349,18 @@ public class GameBoxWriter : BinaryWriter
         if (nodeFile is not null)
         {
             var nodeFileIndex = nodeFile.NodeIndex + 1;
+
+            while (gbx.AuxNodesInWriteMode.ContainsKey(nodeFileIndex))
+            {
+                nodeFileIndex++;
+            }
+
+            nodeFile.NodeIndex = nodeFileIndex;
+
             Write(nodeFileIndex);
+            
             gbx.AuxNodesInWriteMode.Add(nodeFileIndex, null);
+
             return;
         }
 
@@ -367,6 +377,12 @@ public class GameBoxWriter : BinaryWriter
         }
 
         var index = gbx.AuxNodesInWriteMode.Count;
+
+        while (gbx.AuxNodesInWriteMode.ContainsKey(index))
+        {
+            index++;
+        }
+
         gbx.AuxNodesInWriteMode.Add(index, node);
 
         Write(index + 1);

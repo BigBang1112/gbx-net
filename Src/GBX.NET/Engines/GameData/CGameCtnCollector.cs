@@ -11,6 +11,15 @@ public class CGameCtnCollector : CMwNod, INodeHeader
 {
     #region Enums
 
+    [Flags]
+    public enum ECollectorFlags
+    {
+        None = 0,
+        UnknownValue = 1,
+        IsInternal = 2,
+        IsAdvanced = 4
+    }
+
     public enum EProdState
     {
         Aborted,
@@ -25,6 +34,7 @@ public class CGameCtnCollector : CMwNod, INodeHeader
 
     private Ident? author;
     private string pageName;
+    private ECollectorFlags flags;
     private int catalogPosition;
     private string? name;
     private string? description;
@@ -47,6 +57,9 @@ public class CGameCtnCollector : CMwNod, INodeHeader
 
     [NodeMember(ExactlyNamed = true)]
     public string PageName { get => pageName; set => pageName = value; }
+
+    [NodeMember]
+    public ECollectorFlags Flags { get => flags; set => flags = value; }
 
     [NodeMember(ExactlyNamed = true)]
     public int CatalogPosition { get => catalogPosition; set => catalogPosition = value; }
@@ -155,7 +168,7 @@ public class CGameCtnCollector : CMwNod, INodeHeader
 
             if (version >= 3)
             {
-                rw.Int32(ref U03);
+                rw.EnumInt32<ECollectorFlags>(ref n.flags);
                 n.CatalogPosition = rw.Int16((short)n.CatalogPosition);
 
                 if (version < 6)
@@ -164,7 +177,7 @@ public class CGameCtnCollector : CMwNod, INodeHeader
                     rw.Int32(ref U05);
                     rw.Int16(ref U06);
                 }
-                
+
                 if (version >= 7)
                 {
                     rw.String(ref n.name);
@@ -305,7 +318,6 @@ public class CGameCtnCollector : CMwNod, INodeHeader
     {
         public bool U01;
         public bool U02;
-        public int U03;
         public int U04;
         public int U05;
         public int U06;
@@ -314,7 +326,7 @@ public class CGameCtnCollector : CMwNod, INodeHeader
         {
             rw.Boolean(ref U01);
             rw.Boolean(ref U02);
-            rw.Int32(ref U03);
+            rw.Int32(ref n.catalogPosition);
             rw.Int32(ref U04);
             rw.Int32(ref U05);
             rw.Int32(ref U06);
@@ -472,7 +484,7 @@ public class CGameCtnCollector : CMwNod, INodeHeader
             rw.Int32(ref version);
             rw.NodeRef(ref U01);
             rw.String(ref n.skinDirectory);
-            
+
             if (version >= 2 && n.skinDirectory!.Length == 0)
             {
                 rw.Int32(ref U02); // -1

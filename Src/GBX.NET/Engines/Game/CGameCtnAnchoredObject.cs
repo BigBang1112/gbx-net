@@ -65,7 +65,7 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     public short Flags { get => flags; set => flags = value; }
 
     /// <summary>
-    /// Scale of the item.
+    /// Scale of the item. This value currently doesn't have any effect.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
     public float Scale { get => scale; set => scale = value; }

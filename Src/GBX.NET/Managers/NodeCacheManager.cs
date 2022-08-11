@@ -177,17 +177,27 @@ public static class NodeCacheManager
                 continue;
             }
 
-            var attributes = type.GetCustomAttributes();
+            var attributes = CustomAttributeExtensions.GetCustomAttributes(type, inherit: false);
 
             var nodeAttribute = default(NodeAttribute);
             var nodeExtensionAttribute = default(NodeExtensionAttribute);
+            var moreNodeAttributes = default(List<NodeAttribute>);
 
             foreach (var attribute in attributes)
             {
                 switch (attribute)
                 {
                     case NodeAttribute na:
+
+                        if (nodeAttribute is not null)
+                        {
+                            moreNodeAttributes ??= new();
+                            moreNodeAttributes.Add(na);
+                            continue;
+                        }
+
                         nodeAttribute = na;
+
                         break;
                     case NodeExtensionAttribute nea:
                         nodeExtensionAttribute = nea;
@@ -215,6 +225,14 @@ public static class NodeCacheManager
             if (nodeExtensionAttribute is not null)
             {
                 GbxExtensions[nodeId] = nodeExtensionAttribute.Extension;
+            }
+
+            if (moreNodeAttributes is not null)
+            {
+                foreach (var att in moreNodeAttributes)
+                {
+                    ClassTypesById[att.ID] = type;
+                }
             }
         }
 
@@ -362,7 +380,7 @@ public static class NodeCacheManager
             return;
         }
 
-        var attributes = type.GetCustomAttributes();
+        var attributes = CustomAttributeExtensions.GetCustomAttributes(type, inherit: false);
 
         if (attributes.FirstOrDefault(x => x is ChunkAttribute) is not ChunkAttribute chunkAttribute)
         {
@@ -393,7 +411,7 @@ public static class NodeCacheManager
             HeaderChunkConstructors[chunkId] = constructor;
         }
 
-        if (type.BaseType?.GetGenericTypeDefinition() == typeof(SkippableChunk<>))
+        if (type.BaseType?.IsGenericType == true && type.BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>))
         {
             SkippableChunks[type] = 1;
         }

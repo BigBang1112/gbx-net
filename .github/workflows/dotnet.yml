@@ -1,19 +1,20 @@
-name: Test
+name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, dev ]
   pull_request:
     branches: [ master, dev ]
 
 jobs:
   build:
-
     runs-on: ${{ matrix.os }}
     
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
+        
+    name: Build on ${{ matrix.os }}
     
     steps:
     - uses: actions/checkout@v2

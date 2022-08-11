@@ -12,36 +12,42 @@ public class CPlugTree : CPlug
     private GameBoxRefTable.File? shaderFile;
     private CPlugTreeGenerator? generator;
 
+    [NodeMember(ExactName = "Childs")]
     public IList<CPlugTree?> Children
     {
         get => children;
         set => children = value;
     }
 
+    [NodeMember]
     public string? Name
     {
         get => name;
         set => name = value;
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public CPlugVisual? Visual
     {
         get => visual;
         set => visual = value;
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public CPlugSurface? Surface
     {
         get => surface;
         set => surface = value;
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public CPlug? Shader
     {
         get => shader = GetNodeFromRefTable(shader, shaderFile) as CPlug;
         set => shader = value;
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public CPlugTreeGenerator? Generator
     {
         get => generator;

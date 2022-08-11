@@ -39,6 +39,28 @@ public class CGameCtnBlockInfoPylon : CGameCtnBlockInfo
     [NodeMember(ExactlyNamed = true)]
     public int BlockHeightOffset { get => blockHeightOffset; set => blockHeightOffset = value; }
 
+    #region 0x000 chunk
+
+    /// <summary>
+    /// CGameCtnBlockInfoPylon 0x000 chunk
+    /// </summary>
+    [Chunk(0x03055000)]
+    public class Chunk03055000 : Chunk<CGameCtnBlockInfoPylon>
+    {
+        private Node? U01;
+        private Node? U02;
+        private Node? U03;
+
+        public override void ReadWrite(CGameCtnBlockInfoPylon n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef(ref U01);
+            rw.NodeRef(ref U02);
+            rw.NodeRef(ref U03);
+        }
+    }
+
+    #endregion
+
     #region 0x002 chunk
 
     /// <summary>

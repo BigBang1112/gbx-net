@@ -1,8 +1,5 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
-using System.Linq;
 using GBX.NET.Engines.Game;
 
 namespace GBX.NET.Imaging;
@@ -17,8 +14,13 @@ public static class CGameCtnChallengeExtensions
     /// </summary>
     /// <param name="node">CGameCtnChallenge</param>
     /// <returns>Thumbnail as <see cref="Bitmap"/>.</returns>
-    public static Bitmap GetThumbnailBitmap(this CGameCtnChallenge node)
+    public static Bitmap? GetThumbnailBitmap(this CGameCtnChallenge node)
     {
+        if (node.Thumbnail is null)
+        {
+            return null;
+        }
+
         using var ms = new MemoryStream(node.Thumbnail);
         var bitmap = (Bitmap)Image.FromStream(ms);
         bitmap.RotateFlip(RotateFlipType.Rotate180FlipX);
@@ -33,9 +35,12 @@ public static class CGameCtnChallengeExtensions
     /// <param name="format">Image format to use.</param>
     public static void ExportThumbnail(this CGameCtnChallenge node, Stream stream, ImageFormat format)
     {
-        if (node.Thumbnail == null) return;
-
         var thumbnail = GetThumbnailBitmap(node);
+
+        if (thumbnail is null)
+        {
+            return;
+        }
 
         if (format == ImageFormat.Jpeg)
         {
@@ -46,7 +51,9 @@ public static class CGameCtnChallengeExtensions
             thumbnail.Save(stream, encoder, encoding);
         }
         else
+        {
             thumbnail.Save(stream, format);
+        }
     }
 
     /// <summary>

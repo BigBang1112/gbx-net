@@ -6,13 +6,14 @@ namespace GBX.NET.Engines.Plug;
 /// An official mesh or model.
 /// </summary>
 /// <remarks>ID: 0x09005000</remarks>
-[Node(0x09005000), WritingNotSupported]
+[Node(0x09005000)]
 [NodeExtension("Solid")]
 public class CPlugSolid : CPlug
 {
     private CPlug? tree;
     private GameBoxRefTable.File? treeFile;
 
+    [NodeMember]
     public CPlug? Tree
     {
         get => tree = GetNodeFromRefTable(tree, treeFile) as CPlug;
@@ -321,7 +322,7 @@ public class CPlugSolid : CPlug
                 rw.Boolean(ref U03);
             }
             
-            n.tree = await rw.NodeRefAsync(n.tree, cancellationToken);
+            n.tree = await rw.NodeRefAsync<CPlug>(n.tree, cancellationToken);
         }
     }
 

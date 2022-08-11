@@ -8,8 +8,10 @@
 		<Description>A wrapper for handling images inside GBX files.</Description>
 		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
 		
-		<Version>1.1.0</Version>
+		<Version>1.1.1</Version>
 		<PackageReleaseNotes></PackageReleaseNotes>
 
 		<TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
@@ -27,6 +29,10 @@
 		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
 		<NoWarn>1591</NoWarn>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<Using Remove="System.Net.Http" />
+	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' != 'net462'">
 		<PackageReference Include="System.Drawing.Common" Version="5.0.3" />
