@@ -1282,21 +1282,32 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Exports the map's thumbnail as JPEG.
     /// </summary>
     /// <param name="stream">Stream to export to.</param>
-    public void ExportThumbnail(Stream stream)
+    public bool ExportThumbnail(Stream stream)
     {
-        if (thumbnail == null) return;
+        if (thumbnail is null)
+        {
+            return false;
+        }
+        
         stream.Write(thumbnail, 0, thumbnail.Length);
+
+        return true;
     }
 
     /// <summary>
     /// Exports the map's thumbnail as JPEG.
     /// </summary>
     /// <param name="fileName">File to export to.</param>
-    public void ExportThumbnail(string fileName)
+    public bool ExportThumbnail(string fileName)
     {
-        if (thumbnail == null) return;
+        if (thumbnail is null)
+        {
+            return false;
+        }
+        
         using var fs = File.Create(fileName);
-        ExportThumbnail(fs);
+        
+        return ExportThumbnail(fs);
     }
 
     /// <summary>
@@ -1307,7 +1318,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         password = null;
 
         if (hashedPassword is not null)
+        {
             hashedPassword = new byte[16];
+        }
 
         RemoveChunk<Chunk03043029>();
     }
@@ -1329,11 +1342,17 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public CGameCtnBlock? GetBlock(int x, int y, int z) => GetBlock((x, y, z));
 
     /// <summary>
+    /// Retrieves blocks.
+    /// </summary>
+    /// <returns>An enumerable of blocks.</returns>
+    public IEnumerable<CGameCtnBlock> GetBlocks() => blocks ?? Enumerable.Empty<CGameCtnBlock>();
+    
+    /// <summary>
     /// Retrieves blocks at this position.
     /// </summary>
     /// <param name="pos">Position of the block.</param>
     /// <returns>An enumerable of blocks.</returns>
-    public IEnumerable<CGameCtnBlock> GetBlocks(Int3 pos) => blocks?.Where(x => x.Coord == pos) ?? Enumerable.Empty<CGameCtnBlock>();
+    public IEnumerable<CGameCtnBlock> GetBlocks(Int3 pos) => GetBlocks().Where(x => x.Coord == pos);
 
     /// <summary>
     /// Retrieves blocks at this position.
@@ -1348,7 +1367,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Retrieves ghost blocks on the map.
     /// </summary>
     /// <returns>An enumerable of ghost blocks.</returns>
-    public IEnumerable<CGameCtnBlock> GetGhostBlocks() => blocks?.Where(x => x.IsGhost) ?? Enumerable.Empty<CGameCtnBlock>();
+    public IEnumerable<CGameCtnBlock> GetGhostBlocks() => GetBlocks().Where(x => x.IsGhost);
 
     /// <summary>
     /// Places a block in the map.
@@ -1360,8 +1379,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <exception cref="MemberNullException"><see cref="Blocks"/> is null.</exception>
     public CGameCtnBlock PlaceBlock(Ident blockModel, Int3 coord, Direction dir)
     {
-        if (Blocks is null)
-            throw new MemberNullException(nameof(Blocks));
+        _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
 
         var block = new CGameCtnBlock(blockModel.Id, dir, coord);
 
@@ -1392,8 +1410,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <exception cref="NotSupportedException"><see cref="Blocks"/> is read-only.</exception>
     public void RemoveAllBlocks(Predicate<CGameCtnBlock> match)
     {
-        if (Blocks is null)
-            throw new MemberNullException(nameof(Blocks));
+        _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
 
         Blocks.RemoveAll(match);
     }
@@ -1415,8 +1432,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <exception cref="NotSupportedException"><see cref="Blocks"/> is read-only.</exception>
     public void ClearBlocks()
     {
-        if (Blocks is null)
-            throw new MemberNullException(nameof(Blocks));
+        _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
 
         Blocks.Clear();
     }
@@ -1433,8 +1449,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <exception cref="MemberNullException"><see cref="AnchoredObjects"/> is null.</exception>
     public CGameCtnAnchoredObject PlaceAnchoredObject(Ident itemModel, Vec3 absolutePosition, Vec3 pitchYawRoll, Vec3 offsetPivot = default, int variant = 0)
     {
-        if (AnchoredObjects is null)
-            throw new MemberNullException(nameof(AnchoredObjects));
+        _ = AnchoredObjects ?? throw new MemberNullException(nameof(AnchoredObjects));
 
         CreateChunk<Chunk03043040>();
 
@@ -1473,7 +1488,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         var chunk021 = GetChunk<Chunk03043021>();
         var chunk049 = CreateChunk<Chunk03043049>();
 
-        if (chunk021 is null) return false;
+        if (chunk021 is null)
+        {
+            return false;
+        }
 
         ConvertMediaClip(ClipIntro);
         ConvertMediaClipGroup(ClipGroupInGame, upscaleTriggerCoord);
@@ -1481,20 +1499,25 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         RemoveChunk<Chunk03043021>();
 
-        void ConvertMediaClip(CGameCtnMediaClip? node)
+        static void ConvertMediaClip(CGameCtnMediaClip? node)
         {
             if (node is null)
+            {
                 return;
+            }
 
             foreach (var track in node.Tracks)
-                if (track is not null)
-                    ConvertMediaTrack(track);
+            {
+                ConvertMediaTrack(track);
+            }
         }
 
-        void ConvertMediaClipGroup(CGameCtnMediaClipGroup? node, int upscTriggerCoord)
+        static void ConvertMediaClipGroup(CGameCtnMediaClipGroup? node, int upscTriggerCoord)
         {
             if (node is null)
+            {
                 return;
+            }
 
             foreach (var clip in node.Clips)
             {
@@ -1521,7 +1544,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             }
         }
 
-        void ConvertMediaTrack(CGameCtnMediaTrack node)
+        static void ConvertMediaTrack(CGameCtnMediaTrack node)
         {
             var chunk001 = node.GetChunk<CGameCtnMediaTrack.Chunk03078001>();
 
@@ -1553,15 +1576,23 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     private static void OffsetMediaTrackerCameras(Vec3 offset, CGameCtnMediaClipGroup? group)
     {
-        if (group is null) return;
+        if (group is null)
+        {
+            return;
+        }
 
         foreach (var clip in group.Clips)
+        {
             OffsetMediaTrackerCameras(offset, clip.Clip);
+        }
     }
 
     private static void OffsetMediaTrackerCameras(Vec3 offset, CGameCtnMediaClip? clip)
     {
-        if (clip is null) return;
+        if (clip is null)
+        {
+            return;
+        }
 
         foreach (var track in clip.Tracks)
         {
@@ -1596,7 +1627,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     private static void OffsetMediaTrackerTriggers(Int3 offset, CGameCtnMediaClipGroup? group)
     {
-        if (group is null) return;
+        if (group is null)
+        {
+            return;
+        }
 
         foreach (var clip in group.Clips)
         {
@@ -1630,8 +1664,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <returns>False if there's nothing to extract, otherwise true.</returns>
     public bool ExtractEmbedZip(Stream stream)
     {
-        if (EmbeddedObjects is null || !EmbeddedObjects.Any())
+        if (EmbeddedObjects is null || EmbeddedObjects.Count == 0)
+        {
             return false;
+        }
 
         using var zip = new ZipArchive(stream, ZipArchiveMode.Create, true);
 
@@ -1670,12 +1706,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <exception cref="IOException">An I/O error occurred.</exception>
     public bool ExtractOriginalEmbedZip(Stream stream)
     {
-        if (stream is null)
-            throw new ArgumentNullException(nameof(stream));
+        _ = stream ?? throw new ArgumentNullException(nameof(stream));
 
         DiscoverChunk<Chunk03043054>();
 
-        if (originalEmbedZip is null || originalEmbedZip.Length == 0) return false;
+        if (originalEmbedZip is null || originalEmbedZip.Length == 0)
+        {
+            return false;
+        }
 
         using var ms = new MemoryStream(originalEmbedZip);
 
@@ -1700,9 +1738,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public bool ExtractOriginalEmbedZip(string fileName)
     {
         DiscoverChunk<Chunk03043054>();
-        if (originalEmbedZip is null || originalEmbedZip.Length == 0) return false;
+
+        if (originalEmbedZip is null || originalEmbedZip.Length == 0)
+        {
+            return false;
+        }
 
         File.WriteAllBytes(fileName, originalEmbedZip);
+        
         return true;
     }
 
@@ -1731,78 +1774,84 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         if (!keepIcon)
         {
-            using var gbxOutms = new MemoryStream();
-            using var gbxOutw = new GameBoxWriter(gbxOutms);
-            using var gbxms = new MemoryStream();
-            using var gbxr = new GameBoxReader(gbxms);
-
-            gbxms.Write(data, 0, data.Length);
-            gbxms.Position = 0;
-
-            if (gbxr.HasMagic(GameBox.Magic))
-            {
-                var basic = gbxr.ReadBytes(6); // gbx basic
-
-                var classID = gbxr.ReadUInt32();
-
-                var userDataPos = gbxms.Position;
-
-                var userData = gbxr.ReadBytes();
-
-                using var msNewUserData = new MemoryStream();
-                using var wNewUserData = new GameBoxWriter(msNewUserData);
-                using var msUserData = new MemoryStream(userData);
-                using var rUserData = new GameBoxReader(msUserData);
-
-                var headers = rUserData.ReadArray(r => (
-                    chunkID: r.ReadUInt32(),
-                    size: (int)(r.ReadInt32() & ~0x80000000))
-                );
-
-                var contains004 = false;
-
-                foreach (var (chunkID, size) in headers)
-                {
-                    if (chunkID == 0x2E001004)
-                    {
-                        wNewUserData.Write(headers.Length - 1);
-                        contains004 = true;
-                    }
-                }
-
-                if (!contains004) wNewUserData.Write(headers.Length);
-
-                foreach (var (chunkID, size) in headers)
-                {
-                    if (chunkID != 0x2E001004)
-                    {
-                        wNewUserData.Write(chunkID);
-                        wNewUserData.Write(size);
-                    }
-                }
-
-                foreach (var (chunkID, size) in headers)
-                {
-                    var chunkData = rUserData.ReadBytes(size);
-
-                    if (chunkID != 0x2E001004)
-                        wNewUserData.Write(chunkData);
-                }
-
-                gbxOutw.Write("GBX", StringLengthPrefix.None);
-                gbxOutw.Write(basic, 0, basic.Length);
-                gbxOutw.Write(classID);
-                gbxOutw.Write((int)msNewUserData.Length);
-                gbxOutw.Write(msNewUserData.ToArray(), 0, (int)msNewUserData.Length);
-
-                gbxms.CopyTo(gbxOutms);
-
-            }
-
-            data = gbxOutms.ToArray();
+            RemoveIconFromGbxData(ref data);
         }
 
         EmbeddedObjects[relativeDirectory + "/" + Path.GetFileName(fileOnDisk)] = data;
+    }
+
+    private static void RemoveIconFromGbxData(ref byte[] data)
+    {
+        using var gbxms = new MemoryStream(data);
+        using var gbxr = new GameBoxReader(gbxms);
+
+        if (!gbxr.HasMagic(GameBox.Magic))
+        {
+            return;
+        }
+
+        using var gbxOutms = new MemoryStream();
+        using var gbxOutw = new GameBoxWriter(gbxOutms);
+        
+        var basic = gbxr.ReadBytes(6); // gbx basic
+
+        var classID = gbxr.ReadUInt32();
+
+        var userDataPos = gbxms.Position;
+
+        var userData = gbxr.ReadBytes();
+
+        using var msNewUserData = new MemoryStream();
+        using var wNewUserData = new GameBoxWriter(msNewUserData);
+        using var msUserData = new MemoryStream(userData);
+        using var rUserData = new GameBoxReader(msUserData);
+
+        var headers = rUserData.ReadArray(r => (
+            chunkID: r.ReadUInt32(),
+            size: (int)(r.ReadInt32() & ~0x80000000))
+        );
+
+        var contains004 = false;
+
+        foreach (var (chunkID, size) in headers)
+        {
+            if (chunkID == 0x2E001004)
+            {
+                wNewUserData.Write(headers.Length - 1);
+                contains004 = true;
+            }
+        }
+
+        if (!contains004) wNewUserData.Write(headers.Length);
+
+        foreach (var (chunkID, size) in headers)
+        {
+            if (chunkID != 0x2E001004)
+            {
+                wNewUserData.Write(chunkID);
+                wNewUserData.Write(size);
+            }
+        }
+
+        foreach (var (chunkID, size) in headers)
+        {
+            var chunkData = rUserData.ReadBytes(size);
+
+            if (chunkID != 0x2E001004)
+            {
+                wNewUserData.Write(chunkData);
+            }
+        }
+
+        gbxOutw.Write("GBX", StringLengthPrefix.None);
+        gbxOutw.Write(basic, 0, basic.Length);
+        gbxOutw.Write(classID);
+        gbxOutw.Write((int)msNewUserData.Length);
+        gbxOutw.Write(msNewUserData.ToArray(), 0, (int)msNewUserData.Length);
+
+        gbxms.CopyTo(gbxOutms);
+
+        data = gbxOutms.ToArray();
     }
 
     /// <summary>
@@ -1824,11 +1873,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <exception cref="MemberNullException"><see cref="Blocks"/> is null.</exception>
     public void PlaceMacroblock(CGameCtnMacroBlockInfo macroblock, Int3 coord, Direction dir)
     {
-        if (Blocks is null)
-            throw new MemberNullException(nameof(Blocks));
+        _ = Blocks ?? throw new MemberNullException(nameof(Blocks));
 
         if (macroblock.BlockSpawns is null)
+        {
             return; // TODO: Support macroblock placing for item-only macroblocks (if they are possible)
+        }
 
         var macroRad = (int)dir * (Math.PI / 2); // Rotation of the macroblock in radians needed for the formula to determine individual coords
         var macroBlocks = macroblock.BlockSpawns.Where(x => !x.IsFree).ToArray();
@@ -1859,11 +1909,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             if (BlockInfoManager.BlockModels.TryGetValue(block.Name, out BlockModel model)) // Get quick block information if available
             {
-                BlockUnit[] blockUnits;
-                if (block.IsGround)
-                    blockUnits = model.Ground;
-                else
-                    blockUnits = model.Air;
+                var blockUnits = block.IsGround ? model.Ground : model.Air;
                 // Use the block units from what the block actually pretends to be placed on
 
                 if (blockUnits.Length > 1) // Optimization for blocks that are simple 1x1 size
@@ -1932,9 +1978,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 Int3 offsetCollection = (0, blockSize.Y, 0);
 
                 if (TryGetChunk(out Chunk0304301F? chunk01F))
-                    if (chunk01F is not null)
-                        if (chunk01F.Version <= 1)
-                            offsetCollection += (32, 0, 32);
+                {
+                    if (chunk01F!.Version <= 1)
+                    {
+                        offsetCollection += (32, 0, 32);
+                    }
+                }
 
                 PlaceAnchoredObject(item.ItemModel, offsetPos + coord * blockSize + offsetCollection, item.PitchYawRoll + (-itemRadians, 0f, 0f));
             }
