@@ -942,6 +942,37 @@ public partial class CGameCtnGhost : CGameGhost
 
     #endregion
 
+    #region 0x01A skippable chunk
+
+    /// <summary>
+    /// CGameCtnGhost 0x01A skippable chunk
+    /// </summary>
+    [Chunk(0x0309201A)]
+    public class Chunk0309201A : SkippableChunk<CGameCtnGhost>
+    {
+        public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
+        {
+
+        }
+    }
+
+    #endregion
+
+    #region 0x01B skippable chunk (race result)
+
+    /// <summary>
+    /// CGameCtnGhost 0x01B skippable chunk (race result)
+    /// </summary>
+    [Chunk(0x0309201B, "race result")]
+    public class Chunk0309201B : SkippableChunk<CGameCtnGhost>, IVersionable
+    {
+        private int version;
+
+        public int Version { get => version; set => version = value; }
+    }
+
+    #endregion
+
     #region 0x01C chunk
 
     /// <summary>
@@ -950,25 +981,11 @@ public partial class CGameCtnGhost : CGameGhost
     [Chunk(0x0309201C)]
     public class Chunk0309201C : Chunk<CGameCtnGhost>
     {
-        public int U01;
-        public int U02;
-        public int U03;
-        public int U04;
-        public int U05;
-        public int U06;
-        public int U07;
-        public int U08;
+        public BigInteger U01;
 
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-            rw.Int32(ref U04);
-            rw.Int32(ref U05);
-            rw.Int32(ref U06);
-            rw.Int32(ref U07);
-            rw.Int32(ref U08);
+            rw.BigInt(ref U01, 32);
         }
     }
 
@@ -1000,6 +1017,21 @@ public partial class CGameCtnGhost : CGameGhost
             // empty in an unfinished run
             rw.ArrayArchive<PlayerInputData>(ref PlayerInputData, version);
         }
+    }
+
+    #endregion
+
+    #region 0x022 skippable chunk (timed pixel array)
+
+    /// <summary>
+    /// CGameCtnGhost 0x022 skippable chunk (timed pixel array)
+    /// </summary>
+    [Chunk(0x03092022, "timed pixel array")]
+    public class Chunk03092022 : SkippableChunk<CGameCtnGhost>, IVersionable
+    {
+        private int version;
+
+        public int Version { get => version; set => version = value; }
     }
 
     #endregion
@@ -1063,6 +1095,21 @@ public partial class CGameCtnGhost : CGameGhost
 
     #endregion
 
+    #region 0x024 skippable chunk (match replay separators)
+
+    /// <summary>
+    /// CGameCtnGhost 0x024 skippable chunk (match replay separators)
+    /// </summary>
+    [Chunk(0x03092024, "match replay separators")]
+    public class Chunk03092024 : SkippableChunk<CGameCtnGhost>, IVersionable
+    {
+        private int version;
+
+        public int Version { get => version; set => version = value; }
+    }
+
+    #endregion
+
     #region 0x025 skippable chunk (validation TM2)
 
     /// <summary>
@@ -1113,6 +1160,21 @@ public partial class CGameCtnGhost : CGameGhost
         {
             rw.Int128(ref U01);
         }
+    }
+
+    #endregion
+
+    #region 0x027 skippable chunk (timed pixel array 2)
+
+    /// <summary>
+    /// CGameCtnGhost 0x027 skippable chunk (timed pixel array 2)
+    /// </summary>
+    [Chunk(0x03092027, "timed pixel array 2")]
+    public class Chunk03092027 : SkippableChunk<CGameCtnGhost>, IVersionable
+    {
+        private int version;
+
+        public int Version { get => version; set => version = value; }
     }
 
     #endregion
