@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GBX.NET;
 
@@ -1033,7 +1034,11 @@ public abstract class Node
         return Chunks.Remove(chunkID);
     }
 
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+    public bool TryGetChunk<T>([NotNullWhen(true)] out T? chunk) where T : Chunk
+#else
     public bool TryGetChunk<T>(out T? chunk) where T : Chunk
+#endif
     {
         return Chunks.TryGet(out chunk);
     }
