@@ -3411,9 +3411,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public class Chunk03043040 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private int version = 4;
+        private int listVersion = 10;
 
         public int U01;
-        public int U02 = 10;
         public int U03 = 0;
         public byte[]? U04;
 
@@ -3427,7 +3427,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             version = r.ReadInt32();
             U01 = r.ReadInt32();
             var size = r.ReadInt32();
-            U02 = r.ReadInt32(); // 10
+            listVersion = r.ReadInt32(); // 10
 
             n.anchoredObjects = r.ReadList(r =>
             {
@@ -3448,7 +3448,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             using var itemMs = new MemoryStream();
             using var itemW = new GameBoxWriter(itemMs, w.Settings, logger);
 
-            itemW.Write(U02);
+            itemW.Write(listVersion);
             itemW.WriteNodeArray(n.anchoredObjects);
 
             itemW.Write(U03);
