@@ -3414,8 +3414,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         private int listVersion = 10;
 
         public int U01;
-        public int U03 = 0;
-        public byte[]? U04;
+        public Int2[]? U02;
+        public int? U03;
+        public int[]? U04;
+        public int[]? U05;
 
         /// <summary>
         /// Version of the chunk.
@@ -3436,8 +3438,25 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 return node;
             });
 
-            U03 = r.ReadInt32();
-            U04 = r.ReadToEnd(); // bunch of random int32-sized arrays
+            if (version >= 1)
+            {
+                U02 = r.ReadArray<Int2>();
+
+                if (version >= 5)
+                {
+                    if (version < 7)
+                    {
+                        U03 = r.ReadInt32();
+                    }
+
+                    U04 = r.ReadArray<int>();
+
+                    if (version >= 7)
+                    {
+                        U05 = r.ReadArray<int>();
+                    }
+                }
+            }
         }
 
         public override void Write(CGameCtnChallenge n, GameBoxWriter w, ILogger? logger)
@@ -3451,8 +3470,25 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             itemW.Write(listVersion);
             itemW.WriteNodeArray(n.anchoredObjects);
 
-            itemW.Write(U03);
-            itemW.Write(U04);
+            if (version >= 1)
+            {
+                itemW.WriteArray(U02);
+
+                if (version >= 5)
+                {
+                    if (version < 7)
+                    {
+                        itemW.Write(U03.GetValueOrDefault());
+                    }
+
+                    itemW.WriteArray(U04);
+
+                    if (version >= 7)
+                    {
+                        itemW.WriteArray(U05);
+                    }
+                }
+            }
 
             w.Write((int)itemMs.Length);
             w.Write(itemMs.ToArray());
