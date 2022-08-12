@@ -2,7 +2,7 @@
 
 public partial class CGameCtnReplayRecord
 {
-    public interface IHeader : INodeHeader
+    public interface IHeader : INodeHeader<CGameCtnReplayRecord>
     {
         /// <summary>
         /// Map UID, environment, and author login of the map the replay orients in.

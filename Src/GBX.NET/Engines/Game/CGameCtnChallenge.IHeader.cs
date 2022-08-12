@@ -2,7 +2,7 @@
 
 public partial class CGameCtnChallenge
 {
-    public interface IHeader : INodeHeader
+    public interface IHeader : INodeHeader<CGameCtnChallenge>
     {
         /// <summary>
         /// Time of the bronze medal.

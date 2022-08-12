@@ -10,7 +10,7 @@ namespace GBX.NET.Engines.Game;
 [NodeExtension("TMElementColl")]
 [NodeExtension("TMCollection")]
 [NodeExtension("Collection")]
-public partial class CGameCtnCollection : CMwNod, INodeHeader
+public partial class CGameCtnCollection : CMwNod, CGameCtnCollection.IHeader
 {
     #region Enums
 
@@ -347,9 +347,9 @@ public partial class CGameCtnCollection : CMwNod, INodeHeader
 
     #region Chunks
 
-    #region 0x000 header chunk
+    #region 0x000 header chunk (old header)
 
-    [Chunk(0x03033000)]
+    [Chunk(0x03033000, "old header")]
     public class Chunk03033000 : HeaderChunk<CGameCtnCollection>
     {
         public string? U01;

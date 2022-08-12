@@ -3,8 +3,7 @@
 /// <summary>
 /// Identifies that the node can include user data in the serialized form.
 /// </summary>
-public interface INodeHeader
+public interface INodeHeader<T> : INodeHeader where T : Node
 {
-    public HeaderChunkSet HeaderChunks { get; }
-    GameBox? GetGbx();
+    
 }
