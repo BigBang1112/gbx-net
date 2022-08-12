@@ -37,6 +37,11 @@ public class ChunkSet : SortedSet<Chunk>
             ? (T)constructor()
             : (T)Activator.CreateInstance(typeof(T))!;
 
+        if (chunk is ISkippableChunk skippableChunk)
+        {
+            skippableChunk.Discovered = true;
+        }
+
         Add(chunk);
         
         return chunk;
