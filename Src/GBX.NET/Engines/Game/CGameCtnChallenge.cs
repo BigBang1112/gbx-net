@@ -3418,6 +3418,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         public int? U03;
         public int[]? U04;
         public int[]? U05;
+        public int[]? U06;
+        public int[]? U07;
+        public int[]? U08;
 
         /// <summary>
         /// Version of the chunk.
@@ -3444,16 +3447,23 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
                 if (version >= 5)
                 {
-                    if (version < 7)
+                    if (version < 6)
                     {
                         U03 = r.ReadInt32();
                     }
-
+                    
                     U04 = r.ReadArray<int>();
+                    U05 = r.ReadArray<int>();
 
-                    if (version >= 7)
+                    if (version >= 6)
                     {
-                        U05 = r.ReadArray<int>();
+                        U06 = r.ReadArray<int>();
+                        U07 = r.ReadArray<int>();
+
+                        if (version >= 7)
+                        {
+                            U08 = r.ReadArray<int>();
+                        }
                     }
                 }
             }
@@ -3476,16 +3486,23 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
                 if (version >= 5)
                 {
-                    if (version < 7)
+                    if (version < 6)
                     {
                         itemW.Write(U03.GetValueOrDefault());
                     }
 
                     itemW.WriteArray(U04);
+                    itemW.WriteArray(U05);
 
-                    if (version >= 7)
+                    if (version >= 6)
                     {
-                        itemW.WriteArray(U05);
+                        itemW.WriteArray(U06);
+                        itemW.WriteArray(U07);
+
+                        if (version >= 7)
+                        {
+                            itemW.WriteArray(U08);
+                        }
                     }
                 }
             }
