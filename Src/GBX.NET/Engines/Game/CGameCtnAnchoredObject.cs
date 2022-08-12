@@ -155,6 +155,7 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
 
         public Vec3 U01;
         public Vec3 U02;
+        public int U03;
 
         /// <summary>
         /// Version of the chunk. For the lastst TM2 version, version 7 the latest, in TM®, the latest known version is 8.
@@ -186,6 +187,11 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
                     rw.Writer.Write(0x2E009000);
                     n.waypointSpecialProperty.Write(rw.Writer, logger);
                 }
+            }
+
+            if (version < 5)
+            {
+                rw.Int32(ref U03);
             }
 
             if (version >= 4)
