@@ -14,6 +14,7 @@ public class CPlugEntRecordData : CMwNod
 
     public byte[]? Data { get; set; }
 
+    [NodeMember]
     public ObservableCollection<Sample>? Samples
     {
         get
