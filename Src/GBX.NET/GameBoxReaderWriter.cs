@@ -1232,7 +1232,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public string? Id(string? variable = default, bool tryParseToInt32 = false)
     {
-        if (Reader is not null) variable = Reader.ReadId();
+        if (Reader is not null) variable = Reader.ReadId(cannotBeCollection: tryParseToInt32);
         if (Writer is not null) Writer.WriteId(variable ?? "", tryParseToInt32);
         return variable;
     }
