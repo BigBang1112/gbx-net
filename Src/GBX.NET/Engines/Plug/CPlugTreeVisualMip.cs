@@ -9,6 +9,7 @@ public class CPlugTreeVisualMip : CPlugTree
 {
     private IDictionary<float, CPlugTree> levels;
 
+    [NodeMember]
     public IDictionary<float, CPlugTree> Levels
     {
         get => levels;
