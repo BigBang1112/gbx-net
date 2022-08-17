@@ -684,7 +684,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             DiscoverChunk<Chunk03043042>();
             return authorNickname;
         }
-        set => authorNickname = value;
+        set
+        {
+            DiscoverChunk<Chunk03043042>();
+            authorNickname = value;
+        }
     }
 
     /// <summary>
@@ -698,7 +702,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             DiscoverChunk<Chunk03043042>();
             return authorZone;
         }
-        set => authorZone = value;
+        set
+        {
+            DiscoverChunk<Chunk03043042>();
+            authorZone = value;
+        }
     }
 
     [NodeMember]
@@ -709,7 +717,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             DiscoverChunk<Chunk03043042>();
             return authorExtraInfo;
         }
-        set => authorExtraInfo = value;
+        set
+        {
+            DiscoverChunk<Chunk03043042>();
+            authorExtraInfo = value;
+        }
     }
 
     /// <summary>
