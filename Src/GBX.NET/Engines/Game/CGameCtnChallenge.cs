@@ -455,6 +455,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// The map's name.
     /// </summary>
     [NodeMember]
+    [SupportsFormatting]
     public string MapName
     {
         get => mapName;
@@ -649,6 +650,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// The map's author comments.
     /// </summary>
     [NodeMember]
+    [SupportsFormatting]
     public string? Comments
     {
         get => comments;
@@ -674,6 +676,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Nickname of the map author.
     /// </summary>
     [NodeMember]
+    [SupportsFormatting]
     public string? AuthorNickname
     {
         get
