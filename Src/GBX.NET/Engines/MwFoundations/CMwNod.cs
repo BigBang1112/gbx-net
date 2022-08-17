@@ -7,7 +7,7 @@
 [Node(0x01001000)]
 public class CMwNod : Node
 {
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public override uint Id => base.Id;
 
     protected CMwNod()
