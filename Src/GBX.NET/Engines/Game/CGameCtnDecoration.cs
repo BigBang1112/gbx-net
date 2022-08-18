@@ -79,7 +79,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, CGameCtnDecoration.
     /// CGameCtnDecoration 0x001 header chunk (LightMap)
     /// </summary>
     [Chunk(0x03038001, "LightMap")]
-    public class Chunk03038001 : Chunk<CGameCtnDecoration>, IVersionable
+    public class Chunk03038001 : HeaderChunk<CGameCtnDecoration>, IVersionable
     {
         private int version;
         
