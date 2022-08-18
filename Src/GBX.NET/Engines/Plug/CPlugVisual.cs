@@ -274,38 +274,59 @@ public abstract class CPlugVisual : CPlug
         }
     }
 
-    /*[Chunk(0x0900600C)]
+    [Chunk(0x0900600C)]
     public class Chunk0900600C : Chunk<CPlugVisual>
     {
-        public int U01;
-        public int U02;
-        public int U03;
-        public int U04;
-        public int U05;
-        public int U06;
-        public bool U07;
-        public Box U08;
-
+        public Box U01;
+        
         public override void Read(CPlugVisual n, GameBoxReader r)
         {
-            U01 = r.ReadInt32(); // IsGeometryStatic?
-            U02 = r.ReadInt32(); // IsIndexationStatic?
-            U03 = r.ReadInt32(); //
-            U04 = r.ReadInt32();
-            n.count = r.ReadInt32();
-            U05 = r.ReadInt32();
+            n.SetFlag(VisualFlags.IsGeometryStatic, r.ReadBoolean());
+            n.SetFlag(VisualFlags.IsIndexationStatic, r.ReadBoolean());
 
-            n.texCoords = r.ReadArray(U03, r =>
+            var numTexCoordSets = r.ReadInt32();
+
+            var skinFlags = r.ReadInt32();
+            n.SetFlag(VisualFlags.SkinFlag1, (skinFlags & 1) != 0);
+            n.SetFlag(VisualFlags.SkinFlag2, (skinFlags & 2) != 0);
+            n.SetFlag(VisualFlags.SkinFlag3, (skinFlags & 4) != 0);
+
+            n.count = r.ReadInt32();
+
+            var vertStreams = r.ReadArray(r => r.ReadNodeRef()); // vertex streams
+
+            n.texCoords = r.ReadArray(numTexCoordSets, r =>
             {
-                var u06 = r.ReadInt32();
-                var array = r.ReadArray(n.count, r => r.ReadVec2());
-                return array;
+                var version = r.ReadInt32();
+
+                return r.ReadArray<Vec2>(n.count, r =>
+                {
+                    var uv = r.ReadVec2();
+
+                    if (version >= 1)
+                    {
+                        var u01 = r.ReadInt32();
+
+                        if (version >= 2)
+                        {
+                            var u02 = r.ReadInt32();
+                        }
+                    }
+
+                    return uv;
+                });
             });
 
-            U07 = r.ReadBoolean();
-            U08 = r.ReadBox();
+            n.SetFlag(VisualFlags.UnknownFlag8, r.ReadBoolean());
+
+            if (n.flags.HasFlag(VisualFlags.SkinFlag1) || n.flags.HasFlag(VisualFlags.SkinFlag2) || n.flags.HasFlag(VisualFlags.SkinFlag3))
+            {
+                throw new NotImplementedException();
+            }
+
+            U01 = r.ReadBox(); // ArchiveABox
         }
-    }*/
+    }
 
     void ConvertChunkFlagsToFlags(int chunkFlags)
     {
@@ -326,17 +347,16 @@ public abstract class CPlugVisual : CPlug
     public class Chunk0900600D : Chunk<CPlugVisual>
     {
         public int chunkFlags;
-        public int NumTexCoordSets;
         public Box U04;
 
         public override void Read(CPlugVisual n, GameBoxReader r)
         {
             n.ConvertChunkFlagsToFlags(r.ReadInt32());
-            NumTexCoordSets = r.ReadInt32();
+            var numTexCoordSets = r.ReadInt32();
             n.count = r.ReadInt32();
             r.ReadArray(r => r.ReadNodeRef());
             
-            n.texCoords = r.ReadArray(NumTexCoordSets, r =>
+            n.texCoords = r.ReadArray(numTexCoordSets, r =>
             {
                 var version = r.ReadInt32();
 

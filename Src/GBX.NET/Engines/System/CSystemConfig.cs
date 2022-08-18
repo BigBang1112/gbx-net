@@ -75,6 +75,7 @@ public class CSystemConfig : CMwNod
 
     #region Properties
 
+    [NodeMember(ExactlyNamed = true)]
     public string? DesiredLanguageId
     {
         get
@@ -89,6 +90,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool Advertising_DisabledByUser
     {
         get
@@ -103,6 +105,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public float Advertising_TunningCoef
     {
         get
@@ -117,6 +120,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool InputsAlternateMethod
     {
         get
@@ -131,6 +135,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool InputsFreezeUnusedAxes
     {
         get
@@ -145,6 +150,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool InputsEnableRumble
     {
         get
@@ -159,6 +165,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool InputsCaptureKeyboard
     {
         get
@@ -173,6 +180,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool GameProfileEnableMulti
     {
         get
@@ -187,6 +195,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public string? GameProfileName
     {
         get
@@ -201,6 +210,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool IsIgnorePlayerSkins
     {
         get
@@ -215,6 +225,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool IsSkipRollingDemo
     {
         get
@@ -229,6 +240,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool AudioEnabled
     {
         get
@@ -243,6 +255,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public float AudioSoundVolume
     {
         get
@@ -257,6 +270,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public float AudioMusicVolume
     {
         get
@@ -271,6 +285,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool AudioAllowEFX
     {
         get
@@ -285,6 +300,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool AudioDisableDoppler
     {
         get
@@ -299,6 +315,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public int AudioGlobalQuality
     {
         get
@@ -313,6 +330,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public string? AudioDevice_Oal
     {
         get
@@ -327,6 +345,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool AudioAllowHRTF
     {
         get
@@ -341,6 +360,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public int AudioDontMuteWhenApplicationUnfocused
     {
         get
@@ -355,6 +375,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool AudioSoundHdr
     {
         get
@@ -369,6 +390,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableAvatarDownload
     {
         get
@@ -383,6 +405,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableAvatarUpload
     {
         get
@@ -397,6 +420,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableAvatarLocators
     {
         get
@@ -411,6 +435,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableMapDownload
     {
         get
@@ -425,6 +450,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableMapUpload
     {
         get
@@ -439,6 +465,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableMapLocators
     {
         get
@@ -453,6 +480,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableMapModDownload
     {
         get
@@ -467,6 +495,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableMapModUpload
     {
         get
@@ -481,6 +510,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableMapModLocators
     {
         get
@@ -495,6 +525,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableMapSkinDownload
     {
         get
@@ -509,6 +540,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableMapSkinUpload
     {
         get
@@ -523,6 +555,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableMapSkinLocators
     {
         get
@@ -537,6 +570,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableTagDownload
     {
         get
@@ -551,6 +585,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableTagUpload
     {
         get
@@ -565,6 +600,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableTagLocators
     {
         get
@@ -579,6 +615,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableVehicleSkinDownload
     {
         get
@@ -593,6 +630,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableVehicleSkinUpload
     {
         get
@@ -607,6 +645,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableVehicleSkinLocators
     {
         get
@@ -621,6 +660,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableUnknownTypeDownload
     {
         get
@@ -635,6 +675,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableUnknownTypeUpload
     {
         get
@@ -649,6 +690,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool FileTransferEnableUnknownTypeLocators
     {
         get
@@ -663,6 +705,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool NetworkTestInternetConnection
     {
         get
@@ -677,6 +720,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public string? NetworkLastUsedMSAddress
     {
         get
@@ -691,6 +735,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public string? NetworkLastUsedMSPath
     {
         get
@@ -705,6 +750,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool NetworkUseProxy
     {
         get
@@ -719,6 +765,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public int NetworkServerPort
     {
         get
@@ -733,6 +780,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public int NetworkP2PServerPort
     {
         get
@@ -747,6 +795,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public int NetworkClientPort
     {
         get
@@ -761,6 +810,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public int NetworkServerBroadcastLength
     {
         get
@@ -775,6 +825,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool NetworkForceUseLocalAddress
     {
         get
@@ -789,6 +840,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public string? NetworkForceServerAddress
     {
         get
@@ -803,6 +855,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public int NetworkDownload
     {
         get
@@ -817,6 +870,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public int NetworkUpload
     {
         get
@@ -831,6 +885,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public bool NetworkUseNatUPnP
     {
         get
@@ -845,6 +900,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public int TmCarQuality
     {
         get
@@ -859,6 +915,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public int PlayerShadow
     {
         get
@@ -873,6 +930,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public int TmOpponents
     {
         get
@@ -887,6 +945,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public int TmMaxOpponents
     {
         get
@@ -901,6 +960,7 @@ public class CSystemConfig : CMwNod
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public int TmBackgroundQuality
     {
         get

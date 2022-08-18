@@ -7,7 +7,7 @@ namespace GBX.NET.Engines.GameData;
 /// </summary>
 /// <remarks>ID: 0x2E001000</remarks>
 [Node(0x2E001000)]
-public class CGameCtnCollector : CMwNod, INodeHeader
+public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
 {
     #region Enums
 
@@ -32,7 +32,7 @@ public class CGameCtnCollector : CMwNod, INodeHeader
 
     #region Fields
 
-    private Ident? author;
+    private Ident author;
     private string pageName;
     private ECollectorFlags flags;
     private int catalogPosition;
@@ -53,7 +53,7 @@ public class CGameCtnCollector : CMwNod, INodeHeader
     public HeaderChunkSet HeaderChunks { get; }
 
     [NodeMember(ExactlyNamed = true)]
-    public Ident? Author { get => author; set => author = value; }
+    public Ident Author { get => author; set => author = value; }
 
     [NodeMember(ExactlyNamed = true)]
     public string PageName { get => pageName; set => pageName = value; }
@@ -65,16 +65,19 @@ public class CGameCtnCollector : CMwNod, INodeHeader
     public int CatalogPosition { get => catalogPosition; set => catalogPosition = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public EProdState? ProdState { get => prodState; set => prodState = value; }
+    public string? Name { get => name; set => name = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public string? Name { get => name; set => name = value; }
+    public EProdState? ProdState { get => prodState; set => prodState = value; }
 
     [NodeMember]
     public Color[,]? Icon { get; set; }
 
     [NodeMember]
     public byte[]? IconWebP { get; set; }
+
+    [NodeMember]
+    public long FileTime { get => fileTime; set => fileTime = value; }
 
     [NodeMember(ExactlyNamed = true)]
     public CMwNod? IconFid { get; set; }
@@ -97,9 +100,6 @@ public class CGameCtnCollector : CMwNod, INodeHeader
     [NodeMember(ExactlyNamed = true)]
     public bool IsAdvanced { get => isAdvanced; set => isAdvanced = value; }
 
-    [NodeMember]
-    public long FileTime { get => fileTime; set => fileTime = value; }
-
     #endregion
 
     #region Constructors
@@ -108,6 +108,7 @@ public class CGameCtnCollector : CMwNod, INodeHeader
     {
         HeaderChunks = new HeaderChunkSet();
 
+        author = Ident.Empty;
         pageName = null!;
     }
 
@@ -125,7 +126,7 @@ public class CGameCtnCollector : CMwNod, INodeHeader
     {
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.Ident(ref n.author);
+            rw.Ident(ref n.author!);
         }
     }
 
@@ -152,7 +153,7 @@ public class CGameCtnCollector : CMwNod, INodeHeader
 
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.Ident(ref n.author);
+            rw.Ident(ref n.author!);
             rw.Int32(ref version);
             rw.String(ref n.pageName!);
 
@@ -409,7 +410,7 @@ public class CGameCtnCollector : CMwNod, INodeHeader
     {
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.Ident(ref n.author);
+            rw.Ident(ref n.author!);
         }
     }
 

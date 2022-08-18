@@ -3,7 +3,7 @@
 [Node(0x03038000)]
 [NodeExtension("TMDecoration")]
 [NodeExtension("Decoration")]
-public class CGameCtnDecoration : CGameCtnCollector
+public partial class CGameCtnDecoration : CGameCtnCollector, CGameCtnDecoration.IHeader
 {
     private CGameCtnDecorationSize? decoSize;
     private CGameCtnDecorationAudio? decoAudio;
@@ -72,6 +72,29 @@ public class CGameCtnDecoration : CGameCtnCollector
     #endregion
 
     #region Chunks
+
+    #region 0x001 header chunk (LightMap)
+
+    /// <summary>
+    /// CGameCtnDecoration 0x001 header chunk (LightMap)
+    /// </summary>
+    [Chunk(0x03038001, "LightMap")]
+    public class Chunk03038001 : HeaderChunk<CGameCtnDecoration>, IVersionable
+    {
+        private int version;
+        
+        public int U01;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
+        {
+            rw.Byte(ref version);
+            rw.Int32(ref U01);
+        }
+    }
+
+    #endregion
 
     #region 0x011 chunk (DecoSize)
 

@@ -7,6 +7,7 @@ public class CPlugTreeLight : CPlugTree
     private CPlugLight? plugLight;
     private GameBoxRefTable.File? plugLightFile;
 
+    [NodeMember(ExactlyNamed = true)]
     public CPlugLight? PlugLight
     {
         get => plugLight = GetNodeFromRefTable(plugLight, plugLightFile) as CPlugLight;

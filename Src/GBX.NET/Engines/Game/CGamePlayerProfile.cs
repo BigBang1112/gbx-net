@@ -3,7 +3,7 @@
 /// <remarks>ID: 0x0308C000</remarks>
 [Node(0x0308C000), WritingNotSupported]
 [NodeExtension("Profile")]
-public class CGamePlayerProfile : CMwNod, INodeHeader
+public partial class CGamePlayerProfile : CMwNod, CGamePlayerProfile.IHeader
 {
     private string? onlineLogin;
     private string? onlineSupportKey;
@@ -14,7 +14,10 @@ public class CGamePlayerProfile : CMwNod, INodeHeader
 
     public HeaderChunkSet HeaderChunks { get; } = new();
 
+    [NodeMember]
     public string? OnlineLogin { get => onlineLogin; set => onlineLogin = value; }
+    
+    [NodeMember]
     public string? OnlineSupportKey { get => onlineSupportKey; set => onlineSupportKey = value; }
 
     public CGameNetOnlineMessage[]? Messages

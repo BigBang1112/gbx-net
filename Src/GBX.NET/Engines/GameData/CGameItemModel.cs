@@ -7,7 +7,7 @@
 [Node(0x2E002000), WritingNotSupported]
 [NodeExtension("Item")]
 [NodeExtension("Block")]
-public class CGameItemModel : CGameCtnCollector // CGameCustomBlockModel but it's here instead
+public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader // CGameCustomBlockModel but it's here instead
 {
     #region Enums
 
@@ -219,7 +219,7 @@ public class CGameItemModel : CGameCtnCollector // CGameCustomBlockModel but it'
 
     #endregion
 
-    #region 0x001 header chunk (item type)
+    #region 0x001 header chunk (file version)
 
     /// <summary>
     /// CGameItemModel 0x001 header chunk (file version)

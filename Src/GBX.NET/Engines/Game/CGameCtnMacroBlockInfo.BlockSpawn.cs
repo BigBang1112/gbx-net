@@ -60,15 +60,15 @@ public partial class CGameCtnMacroBlockInfo
                 {
                     if (ver >= 5)
                     {
-                        if (((flags >> 24) & 1) != 0)
-                        {
-                            rw.Byte3(ref coord);
-                            rw.EnumByte<Direction>(ref direction);
-                        }
-                        else
+                        if (((flags >> 26) & 1) != 0)
                         {
                             rw.Vec3(ref absolutePositionInMap);
                             rw.Vec3(ref pitchYawRoll);
+                        }
+                        else
+                        {
+                            rw.Byte3(ref coord);
+                            rw.EnumByte<Direction>(ref direction);
                         }
                     }
 

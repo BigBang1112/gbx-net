@@ -156,7 +156,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
-    public Id ReadId()
+    public Id ReadId(bool cannotBeCollection = false)
     {
         var gbx = Settings.GetGbxOrThrow();
 
@@ -209,9 +209,14 @@ public class GameBoxReader : BinaryReader
             };
         }
 
-        if (index >> 30 == 0)
+        if (index >> 30 == 0 && !cannotBeCollection)
         {
             return new Id((int)index);
+        }
+
+        if (cannotBeCollection)
+        {
+            return new Id(index.ToString());
         }
 
         if (gbx.IdStringsInReadMode.Count > (index & 0x3FFF) - 1)

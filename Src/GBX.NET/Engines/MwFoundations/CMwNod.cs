@@ -7,8 +7,6 @@
 [Node(0x01001000)]
 public class CMwNod : Node
 {
-    public string[]? Dependencies { get; set; }
-
     protected CMwNod()
     {
 
