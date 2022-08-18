@@ -9,6 +9,8 @@ public class CPlugShaderApply : CPlugShaderGeneric
 
     }
 
+    #region 0x001 chunk
+
     /// <summary>
     /// CPlugShaderApply 0x001 chunk
     /// </summary>
@@ -29,6 +31,10 @@ public class CPlugShaderApply : CPlugShaderGeneric
         }
     }
 
+    #endregion
+
+    #region 0x002 chunk
+
     /// <summary>
     /// CPlugShaderApply 0x002 chunk
     /// </summary>
@@ -44,6 +50,10 @@ public class CPlugShaderApply : CPlugShaderGeneric
         }
     }
 
+    #endregion
+
+    #region 0x004 chunk
+
     /// <summary>
     /// CPlugShaderApply 0x004 chunk
     /// </summary>
@@ -57,6 +67,28 @@ public class CPlugShaderApply : CPlugShaderGeneric
             rw.Int32(ref U01);
         }
     }
+
+    #endregion
+
+    #region 0x006 chunk
+
+    /// <summary>
+    /// CPlugShaderApply 0x006 chunk
+    /// </summary>
+    [Chunk(0x09026006)]
+    public class Chunk09026006 : Chunk<CPlugShaderApply>
+    {
+        public int U01;
+
+        public override void ReadWrite(CPlugShaderApply n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x008 chunk
 
     /// <summary>
     /// CPlugShaderApply 0x008 chunk
@@ -73,4 +105,6 @@ public class CPlugShaderApply : CPlugShaderGeneric
             rw.Int32(ref U02);
         }
     }
+
+    #endregion
 }
