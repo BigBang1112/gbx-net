@@ -455,6 +455,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// The map's name.
     /// </summary>
     [NodeMember]
+    [SupportsFormatting]
     public string MapName
     {
         get => mapName;
@@ -649,6 +650,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// The map's author comments.
     /// </summary>
     [NodeMember]
+    [SupportsFormatting]
     public string? Comments
     {
         get => comments;
@@ -674,6 +676,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Nickname of the map author.
     /// </summary>
     [NodeMember]
+    [SupportsFormatting]
     public string? AuthorNickname
     {
         get
@@ -681,7 +684,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             DiscoverChunk<Chunk03043042>();
             return authorNickname;
         }
-        set => authorNickname = value;
+        set
+        {
+            DiscoverChunk<Chunk03043042>();
+            authorNickname = value;
+        }
     }
 
     /// <summary>
@@ -695,7 +702,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             DiscoverChunk<Chunk03043042>();
             return authorZone;
         }
-        set => authorZone = value;
+        set
+        {
+            DiscoverChunk<Chunk03043042>();
+            authorZone = value;
+        }
     }
 
     [NodeMember]
@@ -706,7 +717,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             DiscoverChunk<Chunk03043042>();
             return authorExtraInfo;
         }
-        set => authorExtraInfo = value;
+        set
+        {
+            DiscoverChunk<Chunk03043042>();
+            authorExtraInfo = value;
+        }
     }
 
     /// <summary>

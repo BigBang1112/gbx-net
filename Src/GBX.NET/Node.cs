@@ -14,7 +14,8 @@ public abstract class Node
     private GameBox? gbx;
     private GameBox? gbxForRefTable;
 
-    public uint Id => GetStoredId();
+    [Hexadecimal]
+    public virtual uint Id => GetStoredId();
 
     public ChunkSet Chunks
     {
