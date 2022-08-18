@@ -67,6 +67,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// Nickname of the record owner.
     /// </summary>
     [NodeMember]
+    [SupportsFormatting]
     public string? PlayerNickname => playerNickname;
 
     /// <summary>
@@ -121,6 +122,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// Nickname of the replay creator.
     /// </summary>
     [NodeMember]
+    [SupportsFormatting]
     public string? AuthorNickname
     {
         get
@@ -156,7 +158,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// <summary>
     /// The map the replay orients in. Null if only the header was read.
     /// </summary>
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public CGameCtnChallenge? Challenge
     {
         get
@@ -180,7 +182,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// Ghosts in the replay. Null if only the header was read.
     /// </summary>
     /// <remarks>Some ghosts can be considered as <see cref="CGameCtnMediaBlockGhost"/>. See <see cref="Clip"/>.</remarks>
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public CGameCtnGhost[]? Ghosts => ghosts;
 
     [NodeMember]
@@ -189,7 +191,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// <summary>
     /// MediaTracker clip of the replay.
     /// </summary>
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public CGameCtnMediaClip? Clip => clip;
 
     [NodeMember]

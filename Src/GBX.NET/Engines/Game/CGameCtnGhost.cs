@@ -73,7 +73,8 @@ public partial class CGameCtnGhost : CGameGhost
         }
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
+    [SupportsFormatting]
     public string? GhostNickname
     {
         get
@@ -88,7 +89,7 @@ public partial class CGameCtnGhost : CGameGhost
         }
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public string? GhostAvatarName
     {
         get
@@ -103,7 +104,7 @@ public partial class CGameCtnGhost : CGameGhost
         }
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public string? RecordingContext
     {
         get
@@ -118,7 +119,7 @@ public partial class CGameCtnGhost : CGameGhost
         }
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public TimeInt32? RaceTime
     {
         get
@@ -148,7 +149,7 @@ public partial class CGameCtnGhost : CGameGhost
         }
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public Vec3? LightTrailColor
     {
         get
@@ -196,7 +197,7 @@ public partial class CGameCtnGhost : CGameGhost
         }
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public string? GhostLogin
     {
         get => ghostLogin;
@@ -253,7 +254,7 @@ public partial class CGameCtnGhost : CGameGhost
         }
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public string? Validate_ExeVersion
     {
         get
@@ -268,7 +269,7 @@ public partial class CGameCtnGhost : CGameGhost
         }
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public uint Validate_ExeChecksum
     {
         get
@@ -283,7 +284,7 @@ public partial class CGameCtnGhost : CGameGhost
         }
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public int Validate_OsKind
     {
         get
@@ -298,7 +299,7 @@ public partial class CGameCtnGhost : CGameGhost
         }
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public int Validate_CpuKind
     {
         get
@@ -313,7 +314,7 @@ public partial class CGameCtnGhost : CGameGhost
         }
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public string? Validate_RaceSettings
     {
         get
@@ -328,12 +329,14 @@ public partial class CGameCtnGhost : CGameGhost
         }
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public string? Validate_ChallengeUid
     {
         get => validate_ChallengeUid;
         set => validate_ChallengeUid = value;
     }
 
+    [NodeMember(ExactlyNamed = true)]
     public string? Validate_TitleId
     {
         get => validate_TitleId;
@@ -347,14 +350,14 @@ public partial class CGameCtnGhost : CGameGhost
         set => recordData = value;
     }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     public string? GhostTrigram
     {
         get => ghostTrigram;
         set => ghostTrigram = value;
     }
 
-    [NodeMember]
+    [NodeMember(ExactName = "GhostCountryPath")]
     public string? GhostZone
     {
         get => ghostZone;

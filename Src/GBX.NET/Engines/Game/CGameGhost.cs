@@ -18,12 +18,14 @@ public partial class CGameGhost : CMwNod
 
     #region Properties
 
+    [NodeMember]
     public bool IsReplaying
     {
         get => isReplaying;
         set => isReplaying = value;
     }
 
+    [NodeMember]
     public Data? SampleData
     {
         get => sampleData.Result;
