@@ -585,6 +585,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Thumbnail JPEG data.
     /// </summary>
     [NodeMember]
+    [JpegData]
     public byte[]? Thumbnail
     {
         get => thumbnail;
