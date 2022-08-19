@@ -374,6 +374,7 @@ public partial class CGameCtnGhost : CGameGhost
     }
 
     [NodeMember]
+    [SupportsFormatting]
     public string? GhostClubTag
     {
         get => ghostClubTag;
