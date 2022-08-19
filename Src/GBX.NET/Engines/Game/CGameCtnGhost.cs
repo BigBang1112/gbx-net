@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using GBX.NET.Exceptions;
+using System.Numerics;
 
 namespace GBX.NET.Engines.Game;
 
@@ -38,6 +39,7 @@ public partial class CGameCtnGhost : CGameGhost
     private string? validate_TitleId;
     private bool hasBadges;
     private string? skinFile;
+    private string? ghostClubTag;
 
     #endregion
 
@@ -371,6 +373,13 @@ public partial class CGameCtnGhost : CGameGhost
         set => hasBadges = value;
     }
 
+    [NodeMember]
+    public string? GhostClubTag
+    {
+        get => ghostClubTag;
+        set => ghostClubTag = value;
+    }
+
     #endregion
 
     #region Constructors
@@ -456,7 +465,19 @@ public partial class CGameCtnGhost : CGameGhost
                             rw.String(ref n.ghostTrigram);
 
                             if (Version >= 7)
+                            {
                                 rw.String(ref n.ghostZone);
+
+                                if (Version >= 8)
+                                {
+                                    rw.String(ref n.ghostClubTag);
+
+                                    if (Version > 8)
+                                    {
+                                        throw new ChunkVersionNotSupportedException(version);
+                                    }
+                                }
+                            }
                         }
                     }
                 }
