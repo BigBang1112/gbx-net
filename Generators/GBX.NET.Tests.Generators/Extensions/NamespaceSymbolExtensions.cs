@@ -2,7 +2,7 @@
 
 namespace GBX.NET.Tests.Generators.Extensions;
 
-internal static class NamespaceSymbolExtensions
+public static class NamespaceSymbolExtensions
 {
     public static INamespaceSymbol? NavigateToNamespace(this INamespaceSymbol namespaceSymbol, string namespacePath)
     {
@@ -17,7 +17,7 @@ internal static class NamespaceSymbolExtensions
                 return null;
             }
         }
-        
+
         return namespaceSymbol;
     }
 }
