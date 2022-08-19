@@ -3668,7 +3668,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x048 skippable chunk (baked blocks)
     /// </summary>
-    [Chunk(0x03043048, "baked blocks")]
+    [Chunk(0x03043048, processSync: true, "baked blocks")]
     public class Chunk03043048 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private int version;
