@@ -469,8 +469,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [NodeMember]
     public MapKind KindInHeader
     {
-        get => kind;
-        set => kind = value;
+        get => kindInHeader;
+        set => kindInHeader = value;
     }
 
     /// <summary>
