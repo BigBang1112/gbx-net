@@ -151,6 +151,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     private int? nbLaps;
     private Ident mapInfo;
     private string mapName;
+    private MapKind kindInHeader;
     private MapKind kind;
     private int? nbCheckpoints;
     private string? password;
@@ -463,7 +464,17 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     /// <summary>
-    /// The map's intended use.
+    /// The map's intended use or state, defined in the header. This defines the visibility in the the map browser.
+    /// </summary>
+    [NodeMember]
+    public MapKind KindInHeader
+    {
+        get => kind;
+        set => kind = value;
+    }
+
+    /// <summary>
+    /// The map's intended use or state, defined in the body. This defines general validity.
     /// </summary>
     [NodeMember]
     public MapKind Kind
@@ -2311,7 +2322,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             rw.Byte(ref version);
             rw.Ident(ref n.mapInfo!);
             rw.String(ref n.mapName!);
-            rw.EnumByte<MapKind>(ref n.kind);
+            rw.EnumByte<MapKind>(ref n.kindInHeader);
 
             if (version >= 1)
             {
@@ -3658,7 +3669,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CGameCtnChallenge 0x048 skippable chunk (baked blocks)
     /// </summary>
     [Chunk(0x03043048, "baked blocks")]
-    [ChunkWithOwnIdState]
     public class Chunk03043048 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private int version;
