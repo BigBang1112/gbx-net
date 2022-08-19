@@ -167,6 +167,8 @@ public class GameBoxReader : BinaryReader
             // Edge-case scenario where Id doesn't have a version for whatever reason (can be multiple)
             if ((gbx.IdVersion & 0xC0000000) > 10)
             {
+                Logger?.LogWarning("The detected Id version is {version}! Make sure this is correct.", gbx.IdVersion);
+
                 gbx.IdVersion = 3;
 
                 if (!BaseStream.CanSeek)
