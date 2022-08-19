@@ -107,9 +107,9 @@ public partial class CGameCtnChallenge
         string MapName { get; set; }
 
         /// <summary>
-        /// The map's intended use.
+        /// The map's intended use or state, defined in the header. This defines the visibility in the the map browser.
         /// </summary>
-        MapKind Kind { get; set; }
+        MapKind KindInHeader { get; set; }
 
         /// <summary>
         /// Password of the map used by older maps.
