@@ -845,6 +845,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public IList<CGameCtnBlock>? BakedBlocks { get => bakedBlocks; set => bakedBlocks = value; }
 
     /// <summary>
+    /// Number of actual baked blocks on the map (doesn't include Unassigned1 and other blocks with <see cref="CGameCtnBlock.Flags"/> equal to -1).
+    /// </summary>
+    [NodeMember]
+    public int? NbBakedBlocks => BakedBlocks?.Count(x => x.Flags != -1);
+
+    /// <summary>
     /// MediaTracker intro.
     /// </summary>
     [NodeMember]
@@ -3729,9 +3735,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             w.Write(U01);
 
-            var length = n.bakedBlocks?.Where(x => x.Flags != -1).Count() ?? 0;
-
-            w.Write(length);
+            w.Write(n.NbBakedBlocks.GetValueOrDefault());
 
             if (n.bakedBlocks is not null)
             {
