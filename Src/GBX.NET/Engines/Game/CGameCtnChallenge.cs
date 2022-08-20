@@ -191,6 +191,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     private Vec3? thumbnailPosition;
     private Vec3? thumbnailPitchYawRoll;
     private float? thumbnailFOV;
+    private float? thumbnailNearClipPlane;
+    private float? thumbnailFarClipPlane;
     private IList<CGameCtnAnchoredObject>? anchoredObjects;
     private CScriptTraitsMetadata? scriptMetadata;
     private List<List<EmbeddedFile>>? lightmapFrames;
@@ -656,8 +658,16 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [SupportsFormatting]
     public string? Comments
     {
-        get => comments;
-        set => comments = value;
+        get
+        {
+            DiscoverChunk<Chunk03043036>();
+            return comments;
+        }
+        set
+        {
+            DiscoverChunk<Chunk03043036>();
+            comments = value;
+        }
     }
 
     [NodeMember]
@@ -999,6 +1009,36 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             DiscoverChunk<Chunk03043036>();
             thumbnailFOV = value;
+        }
+    }
+
+    [NodeMember]
+    public float? ThumbnailNearClipPlane
+    {
+        get
+        {
+            DiscoverChunk<Chunk03043036>();
+            return thumbnailNearClipPlane;
+        }
+        set
+        {
+            DiscoverChunk<Chunk03043036>();
+            thumbnailNearClipPlane = value;
+        }
+    }
+
+    [NodeMember]
+    public float? ThumbnailFarClipPlane
+    {
+        get
+        {
+            DiscoverChunk<Chunk03043036>();
+            return thumbnailFarClipPlane;
+        }
+        set
+        {
+            DiscoverChunk<Chunk03043036>();
+            thumbnailFarClipPlane = value;
         }
     }
 
@@ -3173,15 +3213,16 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x036 skippable chunk (realtime thumbnail)
+    #region 0x036 skippable chunk (realtime thumbnail + comments)
 
     /// <summary>
-    /// CGameCtnChallenge 0x036 skippable chunk (realtime thumbnail)
+    /// CGameCtnChallenge 0x036 skippable chunk (realtime thumbnail + comments)
     /// </summary>
-    [Chunk(0x03043036, "realtime thumbnail")]
+    [Chunk(0x03043036, "realtime thumbnail + comments")]
     public class Chunk03043036 : SkippableChunk<CGameCtnChallenge>
     {
-        public byte[]? U01;
+        public float U01 = 10;
+        public float U02 = 0; // depth? 0 or 0.02
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
@@ -3190,17 +3231,13 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             rw.Vec3(ref n.thumbnailPitchYawRoll);
 
             // GmLensVal
-            rw.Single(ref n.thumbnailFOV);
+            rw.Single(ref n.thumbnailFOV, defaultValue: 90);
+            rw.Single(ref U01); // always 10
+            rw.Single(ref U02); // depth? 0 or 0.02
+            rw.Single(ref n.thumbnailNearClipPlane, defaultValue: -1);
+            rw.Single(ref n.thumbnailFarClipPlane, defaultValue: -1);
 
-            if (rw.Reader is not null)
-            {
-                U01 = rw.Reader.ReadBytes((int)(rw.Reader.BaseStream.Length - rw.Reader.BaseStream.Position));
-            }
-
-            if (rw.Writer is not null)
-            {
-                rw.Writer.Write(U01);
-            }
+            rw.String(ref n.comments);
         }
     }
 
