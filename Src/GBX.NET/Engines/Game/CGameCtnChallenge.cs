@@ -179,7 +179,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     private Int3? size;
     private bool? needUnlock;
     private IList<CGameCtnBlock>? blocks;
-    private CGameCtnBlock[]? bakedBlocks;
+    private IList<CGameCtnBlock>? bakedBlocks;
     private CGameCtnMediaClip? clipIntro;
     private CGameCtnMediaClipGroup? clipGroupInGame;
     private CGameCtnMediaClipGroup? clipGroupEndRace;
@@ -841,11 +841,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// List of all blocks on the map. Can be null when only the header was read, or simply when <see cref="Chunk0304300F"/>, <see cref="Chunk03043013"/>, or <see cref="Chunk0304301F"/> is missing.
     /// </summary>
     [NodeMember]
-    public IList<CGameCtnBlock>? Blocks
-    {
-        get => blocks;
-        set => blocks = value;
-    }
+    public IList<CGameCtnBlock>? Blocks { get => blocks; set => blocks = value; }
 
     /// <summary>
     /// Number of actual blocks on the map (doesn't include Unassigned1 and other blocks with <see cref="CGameCtnBlock.Flags"/> equal to -1).
@@ -854,19 +850,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public int? NbBlocks => Blocks?.Count(x => x.Flags != -1);
 
     [NodeMember]
-    public CGameCtnBlock[]? BakedBlocks
-    {
-        get
-        {
-            DiscoverChunk<Chunk03043048>();
-            return bakedBlocks;
-        }
-        set
-        {
-            DiscoverChunk<Chunk03043048>();
-            bakedBlocks = value;
-        }
-    }
+    public IList<CGameCtnBlock>? BakedBlocks { get => bakedBlocks; set => bakedBlocks = value; }
 
     /// <summary>
     /// MediaTracker intro.
@@ -3672,39 +3656,91 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043048, processSync: true, "baked blocks")]
     public class Chunk03043048 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
-
         public int U01;
         public int U02;
         public int U03;
 
-        public int Version
+        public int Version { get; set; }
+
+        public override void Read(CGameCtnChallenge n, GameBoxReader r)
         {
-            get => version;
-            set => version = value;
+            Version = r.ReadInt32();
+
+            if (Version >= 1)
+            {
+                throw new ChunkVersionNotSupportedException(Version);
+            }
+
+            U01 = r.ReadInt32();
+
+            var count = r.ReadInt32();
+            var hasUnassignedBlocks = false;
+
+            n.bakedBlocks = new List<CGameCtnBlock>(count);
+
+            for (var i = 0; i < count; i++)
+            {
+                var flags = ReadAndAddBakedBlock(n, r);
+
+                if (flags == -1)
+                {
+                    hasUnassignedBlocks = true;
+                    i--;
+                }
+            }
+
+            if (hasUnassignedBlocks)
+            {
+                while ((r.PeekUInt32() & 0xC0000000) > 0)
+                {
+                    ReadAndAddBakedBlock(n, r);
+                }
+            }
+
+            U02 = r.ReadInt32();
+            U03 = r.ReadInt32();
+
+            static int ReadAndAddBakedBlock(CGameCtnChallenge n, GameBoxReader r)
+            {
+                var name = r.ReadId();
+                var direction = (Direction)r.ReadByte();
+                var coord = (Int3)r.ReadByte3();
+                var flags = r.ReadInt32();
+
+                n.bakedBlocks?.Add(new(name, direction, coord, flags));
+
+                return flags;
+            }
         }
 
-        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+        public override void Write(CGameCtnChallenge n, GameBoxWriter w)
         {
-            rw.Int32(ref version);
-            rw.Int32(ref U01);
+            w.Write(Version);
 
-            rw.Array(ref n.bakedBlocks, r => new CGameCtnBlock(
-                name: r.ReadId(),
-                direction: (Direction)r.ReadByte(),
-                coord: (Int3)r.ReadByte3(),
-                flags: r.ReadInt32()
-            ),
-            (x, w) =>
+            if (Version >= 1)
             {
-                w.WriteId(x.Name);
-                w.Write((byte)x.Direction);
-                w.Write((Byte3)x.Coord);
-                w.Write(x.Flags);
-            });
+                throw new ChunkVersionNotSupportedException(Version);
+            }
 
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
+            w.Write(U01);
+
+            var length = n.bakedBlocks?.Where(x => x.Flags != -1).Count() ?? 0;
+
+            w.Write(length);
+
+            if (n.bakedBlocks is not null)
+            {
+                foreach (var block in n.bakedBlocks)
+                {
+                    w.WriteId(block.Name);
+                    w.Write((byte)block.Direction);
+                    w.Write((Byte3)block.Coord);
+                    w.Write(block.Flags);
+                }
+            }
+
+            w.Write(U02);
+            w.Write(U03);
         }
     }
 
