@@ -2804,7 +2804,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             }
 
             var nbBlocks = r.ReadInt32();
-            var hasUnassignedBlocks = false;
 
             n.blocks = new List<CGameCtnBlock>(nbBlocks);
 
@@ -2817,17 +2816,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     continue;
                 }
 
-                hasUnassignedBlocks = true;
-
                 i--;
             }
 
-            if (hasUnassignedBlocks)
+            while ((r.PeekUInt32() & 0xC0000000) > 0)
             {
-                while ((r.PeekUInt32() & 0xC0000000) > 0)
-                {
-                    ReadAndAddBlock(n, r, version);
-                }
+                ReadAndAddBlock(n, r, version);
             }
         }
 
@@ -3686,7 +3680,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             U01 = r.ReadInt32();
 
             var count = r.ReadInt32();
-            var hasUnassignedBlocks = false;
 
             n.BakedBlocks = new List<CGameCtnBlock>(count);
 
@@ -3696,17 +3689,13 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
                 if (flags == -1)
                 {
-                    hasUnassignedBlocks = true;
                     i--;
                 }
             }
 
-            if (hasUnassignedBlocks)
+            while ((r.PeekUInt32() & 0xC0000000) > 0)
             {
-                while ((r.PeekUInt32() & 0xC0000000) > 0)
-                {
-                    ReadAndAddBakedBlock(n, r);
-                }
+                ReadAndAddBakedBlock(n, r);
             }
 
             U02 = r.ReadInt32();
