@@ -179,7 +179,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     private Int3? size;
     private bool? needUnlock;
     private IList<CGameCtnBlock>? blocks;
-    private IList<CGameCtnBlock>? bakedBlocks;
     private CGameCtnMediaClip? clipIntro;
     private CGameCtnMediaClipGroup? clipGroupInGame;
     private CGameCtnMediaClipGroup? clipGroupEndRace;
@@ -842,13 +841,16 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public int? NbBlocks => Blocks?.Count(x => x.Flags != -1);
 
     [NodeMember]
-    public IList<CGameCtnBlock>? BakedBlocks { get => bakedBlocks; set => bakedBlocks = value; }
+    public IList<CGameCtnBlock>? BakedBlocks { get; set; }
 
     /// <summary>
     /// Number of actual baked blocks on the map (doesn't include Unassigned1 and other blocks with <see cref="CGameCtnBlock.Flags"/> equal to -1).
     /// </summary>
     [NodeMember]
     public int? NbBakedBlocks => BakedBlocks?.Count(x => x.Flags != -1);
+
+    [NodeMember]
+    public SBakedClipsAdditionalData[]? BakedClipsAdditionalData { get; set; }
 
     /// <summary>
     /// MediaTracker intro.
@@ -3669,7 +3671,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     {
         public int U01;
         public int U02;
-        public int U03;
 
         public int Version { get; set; }
 
@@ -3687,7 +3688,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             var count = r.ReadInt32();
             var hasUnassignedBlocks = false;
 
-            n.bakedBlocks = new List<CGameCtnBlock>(count);
+            n.BakedBlocks = new List<CGameCtnBlock>(count);
 
             for (var i = 0; i < count; i++)
             {
@@ -3709,7 +3710,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             }
 
             U02 = r.ReadInt32();
-            U03 = r.ReadInt32();
+
+            n.BakedClipsAdditionalData = r.ReadArray<SBakedClipsAdditionalData>(r => new(
+                Clip1: r.ReadIdent(),
+                Clip2: r.ReadIdent(),
+                Clip3: r.ReadIdent(),
+                Clip4: r.ReadIdent(),
+                Coord: r.ReadInt3()
+            ));
         }
 
         private static int ReadAndAddBakedBlock(CGameCtnChallenge n, GameBoxReader r)
@@ -3719,7 +3727,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             var coord = (Int3)r.ReadByte3();
             var flags = r.ReadInt32();
 
-            n.bakedBlocks!.Add(new(name, direction, coord, flags));
+            n.BakedBlocks!.Add(new(name, direction, coord, flags));
 
             return flags;
         }
@@ -3737,9 +3745,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             w.Write(n.NbBakedBlocks.GetValueOrDefault());
 
-            if (n.bakedBlocks is not null)
+            if (n.BakedBlocks is not null)
             {
-                foreach (var block in n.bakedBlocks)
+                foreach (var block in n.BakedBlocks)
                 {
                     w.WriteId(block.Name);
                     w.Write((byte)block.Direction);
@@ -3749,7 +3757,15 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             }
 
             w.Write(U02);
-            w.Write(U03);
+
+            w.WriteArray(n.BakedClipsAdditionalData, (x, r) =>
+            {
+                w.Write(x.Clip1);
+                w.Write(x.Clip2);
+                w.Write(x.Clip3);
+                w.Write(x.Clip4);
+                w.Write(x.Coord);
+            });
         }
     }
 
