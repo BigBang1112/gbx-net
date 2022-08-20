@@ -74,6 +74,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
     public Color[,]? Icon { get; set; }
 
     [NodeMember]
+    [WebpData]
     public byte[]? IconWebP { get; set; }
 
     [NodeMember]
