@@ -29,57 +29,53 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     /// Name of the item with collection and author
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03101002))]
     public Ident ItemModel { get => itemModel; set => itemModel = value; }
 
     /// <summary>
     /// Pitch, yaw and roll of the item in radians.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03101002))]
     public Vec3 PitchYawRoll { get => pitchYawRoll; set => pitchYawRoll = value; }
 
     /// <summary>
     /// Block coordinates that the item is approximately located in. It doesn't have to be provided most of the time.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03101002))]
     public Byte3 BlockUnitCoord { get => blockUnitCoord; set => blockUnitCoord = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03101002))]
     public string AnchorTreeId { get => anchorTreeId; set => anchorTreeId = value; }
 
     /// <summary>
     /// The X, Y and Z position in the real world space of the item.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03101002))]
     public Vec3 AbsolutePositionInMap { get => absolutePositionInMap; set => absolutePositionInMap = value; }
 
     /// <summary>
     /// If the item is a waypoint, contains inner waypoint info, otherwise null.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03101002))]
     public CGameWaypointSpecialProperty? WaypointSpecialProperty { get => waypointSpecialProperty; set => waypointSpecialProperty = value; }
 
     /// <summary>
     /// Flags of the item.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03101002), sinceVersion: 4)]
     public short Flags { get => flags; set => flags = value; }
-
-    /// <summary>
-    /// Scale of the item. This value currently doesn't have any effect.
-    /// </summary>
-    [NodeMember(ExactlyNamed = true)]
-    public float Scale { get => scale; set => scale = value; }
-
-    /// <summary>
-    /// Pivot position of the item. Useful for making rotations around a different point than center.
-    /// </summary>
-    [NodeMember]
-    public Vec3 PivotPosition { get => pivotPosition; set => pivotPosition = value; }
 
     /// <summary>
     /// Variant index of the item. Taken from flags.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03101002), sinceVersion: 4)]
     public int Variant
     {
         get => (flags >> 8) & 15;
@@ -87,9 +83,24 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     }
 
     /// <summary>
+    /// Pivot position of the item. Useful for making rotations around a different point than center.
+    /// </summary>
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03101002), sinceVersion: 5)]
+    public Vec3 PivotPosition { get => pivotPosition; set => pivotPosition = value; }
+
+    /// <summary>
+    /// Scale of the item. This value currently doesn't have any effect.
+    /// </summary>
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03101002), sinceVersion: 6)]
+    public float Scale { get => scale; set => scale = value; }
+
+    /// <summary>
     /// Color of the item. Available since TM® Royal update.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03101002))]
     public DifficultyColor? Color
     {
         get
@@ -105,6 +116,7 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     /// Skin used on the item.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03101002), sinceVersion: 7)]
     public FileRef? PackDesc { get => packDesc; set => packDesc = value; }
 
     CGameCtnChallenge? INodeDependant<CGameCtnChallenge>.DependingNode { get; set; }
@@ -115,7 +127,7 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
 
     protected CGameCtnAnchoredObject()
     {
-        itemModel = null!;
+        itemModel = Ident.Empty;
     }
 
     internal CGameCtnAnchoredObject(Ident itemModel, Vec3 absolutePositionInMap, Vec3 pitchYawRoll,

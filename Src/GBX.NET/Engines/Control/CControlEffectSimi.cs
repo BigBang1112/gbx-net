@@ -32,24 +32,35 @@ public partial class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHa
     /// Keyframes of the effect.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk07010002))]
+    [AppliedWithChunk(typeof(Chunk07010004))]
+    [AppliedWithChunk(typeof(Chunk07010005))]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
     /// <summary>
     /// If the effect should be centered.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk07010002))]
+    [AppliedWithChunk(typeof(Chunk07010004))]
+    [AppliedWithChunk(typeof(Chunk07010005))]
     public bool Centered { get => centered; set => centered = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk07010004))]
+    [AppliedWithChunk(typeof(Chunk07010005))]
     public int ColorBlendMode { get => colorBlendMode; set => colorBlendMode = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk07010004))]
+    [AppliedWithChunk(typeof(Chunk07010005))]
     public bool IsContinousEffect { get => isContinousEffect; set => isContinousEffect = value; }
 
     /// <summary>
     /// If the keyframes should interpolate values between each other.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk07010005))]
     public bool IsInterpolated { get => isInterpolated; set => isInterpolated = value; }
 
     #endregion

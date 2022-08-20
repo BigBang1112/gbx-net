@@ -19,18 +19,25 @@ public class CGameCtnBlockSkin : CMwNod
     #region Properties
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03059000))]
+    [AppliedWithChunk(typeof(Chunk03059001))]
+    [AppliedWithChunk(typeof(Chunk03059002))]
     public string? Text { get => text; set => text = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03059001))]
+    [AppliedWithChunk(typeof(Chunk03059002))]
     public FileRef? PackDesc { get => packDesc; set => packDesc = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03059002))]
     public FileRef? ParentPackDesc { get => parentPackDesc; set => parentPackDesc = value; }
 
     /// <summary>
     /// Second skin for the skinnable block. Available in TM®.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03059003))]
     public FileRef? ForegroundPackDesc { get => foregroundPackDesc; set => foregroundPackDesc = value; }
 
     #endregion

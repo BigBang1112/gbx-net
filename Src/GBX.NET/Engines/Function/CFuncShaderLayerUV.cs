@@ -14,6 +14,7 @@ public class CFuncShaderLayerUV : CFuncShader
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk05015005))]
     public string? LayerName { get => layerName; set => layerName = value; }
 
     #endregion

@@ -23,18 +23,23 @@ public class CGameCtnBlockUnitInfo : CMwNod
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03036000))]
     public int PlacePylons { get => placePylons; set => placePylons = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03036004))]
     public int AcceptPylons { get => acceptPylons; set => acceptPylons = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03036000))]
     public Int3 RelativeOffset { get => relativeOffset; set => relativeOffset = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03036000))]
     public ExternalNode<CGameCtnBlockInfoClip>[]? Clips { get => clips; set => clips = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03036002))]
     public bool Underground
     {
         get
@@ -50,9 +55,12 @@ public class CGameCtnBlockUnitInfo : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03036005))]
     public string? TerrainModifierId { get => terrainModifierId; set => terrainModifierId = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03036008))]
+    [AppliedWithChunk(typeof(Chunk0303600B))]
     public CGameCtnBlockInfoClip? BottomClip
     {
         get => bottomClip = GetNodeFromRefTable(bottomClip, bottomClipFile) as CGameCtnBlockInfoClip;
@@ -60,6 +68,8 @@ public class CGameCtnBlockUnitInfo : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03036008))]
+    [AppliedWithChunk(typeof(Chunk0303600B))]
     public CGameCtnBlockInfoClip? TopClip
     {
         get => topClip = GetNodeFromRefTable(topClip, topClipFile) as CGameCtnBlockInfoClip;
@@ -67,9 +77,11 @@ public class CGameCtnBlockUnitInfo : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0303600B))]
     public Direction BottomClipDir { get => bottomClipDir; set => bottomClipDir = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0303600B))]
     public Direction TopClipDir { get => topClipDir; set => topClipDir = value; }
 
     #endregion
