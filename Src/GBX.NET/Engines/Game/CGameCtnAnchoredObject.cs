@@ -229,6 +229,11 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
                             {
                                 rw.Vec3(ref U01);
                                 rw.Vec3(ref U02);
+
+                                if (version >= 9)
+                                {
+                                    throw new VersionNotSupportedException(version);
+                                }
                             }
                         }
                     }
