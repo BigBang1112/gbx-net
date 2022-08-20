@@ -215,14 +215,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #region Properties
 
-#if DEBUG
-    /// <summary>
-    /// Shows members that are available from the GBX header (members where reading the body is not required). This method is available only in DEBUG configuration.
-    /// </summary>
-    /// <remarks>This is just a helper method that just returns THIS object, just casted as <see cref="IHeader"/>. Avoid using this method in production.</remarks>
-    public IHeader GetHeaderMembers() => this;
-#endif
-
     public HeaderChunkSet HeaderChunks { get; } = new();
 
     /// <summary>
@@ -2803,73 +2795,86 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 throw new ChunkVersionNotSupportedException(version);
             }
 
-            var nbBlocks = r.ReadInt32(); // It's maybe slower but better for the program to determine the count from the list
+            var nbBlocks = r.ReadInt32();
+            var hasUnassignedBlocks = false;
 
             n.blocks = new List<CGameCtnBlock>(nbBlocks);
 
-            var blockCounter = 0;
+            for (var i = 0; i < nbBlocks; i++)
+            {
+                var isNormalBlock = ReadAndAddBlock(n, r, version);
 
-            try // Helpul to avoid Peek problems around the end of the stream (when testing) without an impact on peformance
+                if (isNormalBlock)
+                {
+                    continue;
+                }
+
+                hasUnassignedBlocks = true;
+
+                i--;
+            }
+
+            if (hasUnassignedBlocks)
             {
                 while ((r.PeekUInt32() & 0xC0000000) > 0)
                 {
-                    var blockName = r.ReadId();
-                    var dir = (Direction)r.ReadByte();
-                    var coord = (Int3)r.ReadByte3();
-
-                    if (version >= 6)
-                    {
-                        coord -= (1, 0, 1);
-                    }
-
-                    var flags = version switch
-                    {
-                        0 => r.ReadUInt16(),
-                        > 0 => r.ReadInt32(),
-                        _ => throw new ChunkVersionNotSupportedException(version),
-                    };
-
-                    if (flags == -1)
-                    {
-                        n.blocks.Add(new CGameCtnBlock(blockName, dir, coord: (-1, -1, -1), flags));
-                        continue;
-                    }
-
-                    string? author = null;
-                    CGameCtnBlockSkin? skin = null;
-
-                    if (CGameCtnBlock.IsSkinnableBlock_WhenDefined(flags)) // custom block
-                    {
-                        author = r.ReadId();
-                        skin = r.ReadNodeRef<CGameCtnBlockSkin>();
-                    }
-
-                    CGameWaypointSpecialProperty? parameters = null;
-
-                    if (CGameCtnBlock.IsWaypointBlock_WhenDefined(flags))
-                    {
-                        parameters = r.ReadNodeRef<CGameWaypointSpecialProperty>();
-                    }
-
-                    if (CGameCtnBlock.IsFreeBlock_WhenDefined(flags))
-                    {
-                        coord -= (0, 1, 0);
-                    }
-
-                    var block = new CGameCtnBlock(blockName, dir, coord, flags, author, skin, parameters);
-                    ((INodeDependant<CGameCtnChallenge>)block).DependingNode = n;
-
-                    n.blocks.Add(block);
-
-                    blockCounter++;
+                    ReadAndAddBlock(n, r, version);
                 }
             }
-            catch (EndOfStreamException)
-            {
+        }
 
+        // Returns true if it's a normal block
+        private static bool ReadAndAddBlock(CGameCtnChallenge n, GameBoxReader r, int version)
+        {
+            var blockName = r.ReadId();
+            var dir = (Direction)r.ReadByte();
+            var coord = (Int3)r.ReadByte3();
+
+            var flags = version switch
+            {
+                0 => r.ReadUInt16(),
+                > 0 => r.ReadInt32(),
+                _ => throw new ChunkVersionNotSupportedException(version),
+            };
+
+            if (flags == -1)
+            {
+                n.blocks!.Add(new CGameCtnBlock(blockName, dir, coord: (-1, -1, -1), flags));
+                return false;
             }
 
-            // Debug.Assert(blockCounter == nbBlocks);
+            if (version >= 6)
+            {
+                coord -= (1, 0, 1);
+            }
+
+            var author = default(string?);
+            var skin = default(CGameCtnBlockSkin?);
+
+            if (CGameCtnBlock.IsSkinnableBlock_WhenDefined(flags)) // custom block
+            {
+                author = r.ReadId();
+                skin = r.ReadNodeRef<CGameCtnBlockSkin>();
+            }
+
+            var parameters = default(CGameWaypointSpecialProperty?);
+
+            if (CGameCtnBlock.IsWaypointBlock_WhenDefined(flags))
+            {
+                parameters = r.ReadNodeRef<CGameWaypointSpecialProperty>();
+            }
+
+            if (CGameCtnBlock.IsFreeBlock_WhenDefined(flags))
+            {
+                coord -= (0, 1, 0);
+            }
+
+            var block = new CGameCtnBlock(blockName, dir, coord, flags, author, skin, parameters);
+            ((INodeDependant<CGameCtnChallenge>)block).DependingNode = n;
+
+            n.blocks!.Add(block);
+
+            return true;
         }
 
         public override void Write(CGameCtnChallenge n, GameBoxWriter w)
@@ -3699,18 +3704,18 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             U02 = r.ReadInt32();
             U03 = r.ReadInt32();
+        }
 
-            static int ReadAndAddBakedBlock(CGameCtnChallenge n, GameBoxReader r)
-            {
-                var name = r.ReadId();
-                var direction = (Direction)r.ReadByte();
-                var coord = (Int3)r.ReadByte3();
-                var flags = r.ReadInt32();
+        private static int ReadAndAddBakedBlock(CGameCtnChallenge n, GameBoxReader r)
+        {
+            var name = r.ReadId();
+            var direction = (Direction)r.ReadByte();
+            var coord = (Int3)r.ReadByte3();
+            var flags = r.ReadInt32();
 
-                n.bakedBlocks?.Add(new(name, direction, coord, flags));
+            n.bakedBlocks!.Add(new(name, direction, coord, flags));
 
-                return flags;
-            }
+            return flags;
         }
 
         public override void Write(CGameCtnChallenge n, GameBoxWriter w)
