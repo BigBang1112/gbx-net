@@ -3,6 +3,7 @@
 [Node(0x030EA000)]
 public class CGameCampaignPlayerScores : CMwNod
 {
+    [NodeMember]
     public string? CampaignId { get; private set; }
 
     protected CGameCampaignPlayerScores()

@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.Function;
+﻿using static GBX.NET.Engines.Function.CFuncShaderLayerUV;
+
+namespace GBX.NET.Engines.Function;
 
 /// <remarks>ID: 0x05031000</remarks>
 [Node(0x05031000)]
@@ -16,15 +18,20 @@ public class CFuncTreeSubVisualSequence : CFuncTree
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk05031000))]
+    [AppliedWithChunk(typeof(Chunk05031002))]
     public CFuncKeysNatural? SubKeys { get => subKeys; set => subKeys = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk05031003))]
     public bool SimpleModeIsLooping { get => simpleModeIsLooping; set => simpleModeIsLooping = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk05031003))]
     public int SimpleModeStartIndex { get => simpleModeStartIndex; set => simpleModeStartIndex = value; }
     
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk05031003))]
     public int SimpleModeEndIndex { get => simpleModeEndIndex; set => simpleModeEndIndex = value; }
 
     #endregion
@@ -101,7 +108,7 @@ public class CFuncTreeSubVisualSequence : CFuncTree
 
     #endregion
 
-    #region 0x003
+    #region 0x003 chunk
 
     /// <summary>
     /// CFuncTreeSubVisualSequence 0x003 chunk

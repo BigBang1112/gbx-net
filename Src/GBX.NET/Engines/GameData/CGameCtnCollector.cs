@@ -74,6 +74,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
     public Color[,]? Icon { get; set; }
 
     [NodeMember]
+    [WebpData]
     public byte[]? IconWebP { get; set; }
 
     [NodeMember]
@@ -232,7 +233,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
 
             for (var y = 0; y < height; y++)
                 for (var x = 0; x < width; x++)
-                    n.Icon[width - 1 - x, height - 1 - y] = Color.FromArgb(iconData[y * width + x]);
+                    n.Icon[x, height - 1 - y] = Color.FromArgb(iconData[y * width + x]);
         }
 
         public override void Write(CGameCtnCollector n, GameBoxWriter w)
@@ -269,7 +270,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
 
             for (var y = 0; y < height; y++)
                 for (var x = 0; x < width; x++)
-                    w.Write(n.Icon[width - 1 - x, height - 1 - y].ToArgb());
+                    w.Write(n.Icon[x, height - 1 - y].ToArgb());
         }
     }
 

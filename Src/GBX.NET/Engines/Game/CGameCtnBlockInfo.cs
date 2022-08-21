@@ -54,54 +54,73 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     private GameBoxRefTable.File? pillarFile;
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0304E005))]
     public CGameCtnBlockUnitInfo?[]? GroundBlockUnitInfos { get => groundBlockUnitInfos; set => groundBlockUnitInfos = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0304E005))]
     public CGameCtnBlockUnitInfo?[]? AirBlockUnitInfos { get => airBlockUnitInfos; set => airBlockUnitInfos = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0304E005))]
     public ExternalNode<CSceneMobil>[][]? GroundMobils { get => groundMobils; set => groundMobils = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0304E005))]
     public ExternalNode<CSceneMobil>[][]? AirMobils { get => airMobils; set => airMobils = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E009))]
+    [AppliedWithChunk(typeof(Chunk0304E02F))]
     public bool IsPillar { get => isPillar; set => isPillar = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E00E))]
+    [AppliedWithChunk(typeof(Chunk0304E026))]
     public EWayPointType? WayPointType { get => wayPointType; set => wayPointType = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E00F))]
     public bool NoRespawn { get => noRespawn; set => noRespawn = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E013))]
     public bool IconAutoUseGround { get => iconAutoUseGround; set => iconAutoUseGround = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E020))]
     public CPlugCharPhySpecialProperty? CharPhySpecialProperty { get => charPhySpecialProperty; set => charPhySpecialProperty = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E020), sinceVersion: 2)]
     public CGamePodiumInfo? PodiumInfo { get => podiumInfo; set => podiumInfo = value; }
     
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E020), sinceVersion: 3)]
     public CGamePodiumInfo? IntroInfo { get => introInfo; set => introInfo = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E020), sinceVersion: 4)]
     public bool CharPhySpecialPropertyCustomizable { get => charPhySpecialPropertyCustomizable; set => charPhySpecialPropertyCustomizable = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E027))]
     public CGameCtnBlockInfoVariantGround?[]? AdditionalVariantsGround { get => additionalVariantsGround; set => additionalVariantsGround = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E02C))]
     public CGameCtnBlockInfoVariantAir?[]? AdditionalVariantsAir { get => additionalVariantsAir; set => additionalVariantsAir = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E028))]
     public string? SymmetricalBlockInfoId { get => symmetricalBlockInfoId; set => symmetricalBlockInfoId = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E028))]
     public Direction? Dir { get => dir; set => dir = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E029))]
     public CPlugFogVolumeBox? FogVolumeBox
     {
         get => fogVolumeBox = GetNodeFromRefTable(fogVolumeBox, fogVolumeBoxFile) as CPlugFogVolumeBox;
@@ -109,6 +128,7 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E02A))]
     public CPlugSound? Sound1
     {
         get => sound1 = GetNodeFromRefTable(sound1, sound1File) as CPlugSound;
@@ -116,6 +136,7 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E02A))]
     public CPlugSound? Sound2
     {
         get => sound2 = GetNodeFromRefTable(sound2, sound2File) as CPlugSound;
@@ -123,21 +144,27 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E02A))]
     public Iso4? Sound1Loc { get => sound1Loc; set => sound1Loc = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E02A))]
     public Iso4? Sound2Loc { get => sound2Loc; set => sound2Loc = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E02F))]
     public EMultiDir PillarShapeMultiDir { get => pillarShapeMultiDir; set => pillarShapeMultiDir = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E023))]
     public CGameCtnBlockInfoVariantGround? VariantBaseGround { get; set; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304E023))]
     public CGameCtnBlockInfoVariantAir? VariantBaseAir { get; set; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0304E005))]
     public CGameCtnBlockInfoClassic? Pillar
     {
         get => pillar = GetNodeFromRefTable(pillar, pillarFile) as CGameCtnBlockInfoClassic;
@@ -146,7 +173,7 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
 
     protected CGameCtnBlockInfo()
     {
-        
+
     }
 
     [Chunk(0x0304E005)]

@@ -2,8 +2,8 @@
 using Microsoft.CodeAnalysis.Text;
 using System.Diagnostics;
 using System.Text;
-using GBX.NET.Tests.Generators.Extensions;
 using System.IO.Compression;
+using GBX.NET.Tests.Generators.Extensions;
 
 namespace GBX.NET.Tests.Generators;
 

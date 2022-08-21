@@ -12,12 +12,11 @@ public class CGameCtnBlockInfoMobil : CMwNod
     private GameBoxRefTable.File? prefabFidFile;
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03122002))]
     public CGameCtnSolidDecals?[]? SolidDecals { get => solidDecals; set => solidDecals = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public CGameCtnBlockInfoMobilLink[]? DynaLinks { get => dynaLinks; set => dynaLinks = value; }
-
-    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03122003), sinceVersion: 2)]
     public CPlugSolid? SolidFid
     {
         get => solidFid = GetNodeFromRefTable(solidFid, solidFidFile) as CPlugSolid;
@@ -25,11 +24,16 @@ public class CGameCtnBlockInfoMobil : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03122003), sinceVersion: 3)]
     public CPlugPrefab? PrefabFid
     {
         get => prefabFid = GetNodeFromRefTable(prefabFid, prefabFidFile) as CPlugPrefab;
         set => prefabFid = value;
     }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03122004))]
+    public CGameCtnBlockInfoMobilLink[]? DynaLinks { get => dynaLinks; set => dynaLinks = value; }
 
     protected CGameCtnBlockInfoMobil()
     {

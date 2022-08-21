@@ -43,47 +43,36 @@ public class CGameCtnBlock : CMwNod, INodeDependant<CGameCtnChallenge>
         set
         {
             if (blockModel is null)
+            {
                 blockModel = new Ident(value);
-            else blockModel = new Ident(value, blockModel.Collection, blockModel.Author);
+            }
+            else
+            {
+                blockModel = new Ident(value, blockModel.Collection, blockModel.Author);
+            }
         }
     }
 
     [NodeMember]
-    public Ident BlockModel
-    {
-        get => blockModel;
-        set => blockModel = value;
-    }
+    public Ident BlockModel { get => blockModel; set => blockModel = value; }
 
     /// <summary>
     /// Facing direction of the block.
     /// </summary>
     [NodeMember]
-    public Direction Direction
-    {
-        get => direction;
-        set => direction = value;
-    }
+    public Direction Direction { get => direction; set => direction = value; }
 
     /// <summary>
     /// Position of the block on the map in block coordination. This value get's explicitly converted to <see cref="Byte3"/> in the serialized form. Values below 0 or above 255 should be avoided.
     /// </summary>
     [NodeMember]
-    public Int3 Coord
-    {
-        get => coord;
-        set => coord = value;
-    }
+    public Int3 Coord { get => coord; set => coord = value; }
 
     /// <summary>
     /// Flags of the block. If the chunk version is null, this value can be presented as <see cref="short"/>.
     /// </summary>
     [NodeMember]
-    public int Flags
-    {
-        get => flags;
-        set => flags = value;
-    }
+    public int Flags { get => flags; set => flags = value; }
 
     /// <summary>
     /// Author of the block, usually of a custom one made in Mesh Modeller.
@@ -255,7 +244,7 @@ public class CGameCtnBlock : CMwNod, INodeDependant<CGameCtnChallenge>
 
     protected CGameCtnBlock()
     {
-        blockModel = null!;
+        blockModel = Ident.Empty;
     }
 
     public CGameCtnBlock(Ident blockModel, Direction direction, Int3 coord, int flags)
@@ -317,7 +306,7 @@ public class CGameCtnBlock : CMwNod, INodeDependant<CGameCtnChallenge>
         {
             rw.Ident(ref n.blockModel!);
             rw.EnumByte<Direction>(ref n.direction);
-            n.coord = (Int3)rw.Byte3((Byte3)n.coord);
+            rw.Byte3(ref n.coord);
             rw.Int32(ref n.flags);
         }
     }

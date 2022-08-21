@@ -194,7 +194,7 @@ public class CGameCtnCampaign : CMwNod
     public string? ModeScriptName { get => modeScriptName; set => modeScriptName = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03090012))]
+    [AppliedWithChunk(typeof(Chunk03090012), sinceVersion: 0, upToVersion: 1)]
     public string? ScoreContext
     {
         get
@@ -252,7 +252,7 @@ public class CGameCtnCampaign : CMwNod
 
         public override void ReadWrite(CGameCtnCampaign n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.Int32(ref version); // 10?
             rw.ArrayNode(ref n.mapGroups!);
         }
     }

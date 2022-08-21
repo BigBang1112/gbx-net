@@ -14,9 +14,11 @@ public class CControlContainer : CControlBase
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk07002005))]
     public bool AcceptOwnControls { get => acceptOwnControls; set => acceptOwnControls = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk07002005))]
     public bool UseScript { get => useScript; set => useScript = value; }
 
     #endregion
