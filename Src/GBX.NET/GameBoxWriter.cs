@@ -225,7 +225,7 @@ public class GameBoxWriter : BinaryWriter
         var maxSecs = maxTime.TotalSeconds;
         var secs = timeOfDay.Value.TotalSeconds % maxTime.TotalSeconds;
 
-        Write((ushort)(secs / maxSecs * ushort.MaxValue));
+        Write((int)(secs / maxSecs * ushort.MaxValue));
     }
 
     /// <exception cref="ArgumentNullException"><paramref name="fileRef"/> is null.</exception>

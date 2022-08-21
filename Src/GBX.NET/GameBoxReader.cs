@@ -415,7 +415,7 @@ public class GameBoxReader : BinaryReader
         var maxTime = TimeSpan.FromDays(1) - TimeSpan.FromTicks(1);
         var maxSecs = maxTime.TotalSeconds;        
         
-        return TimeSpan.FromSeconds(dayTime / (double)ushort.MaxValue * maxSecs);
+        return TimeSpan.FromSeconds(Math.Round(dayTime / (double)ushort.MaxValue * maxSecs, 7));
     }
 
     /// <summary>
