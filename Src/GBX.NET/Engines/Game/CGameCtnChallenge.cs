@@ -211,6 +211,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     private TimeSpan? dayTime;
     private bool dynamicDaylight;
     private TimeInt32? dayDuration;
+    private bool? hasCustomCamThumbnail;
 
     #endregion
 
@@ -1314,6 +1315,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             dayDuration = value;
         }
     }
+
+    /// <summary>
+    /// If the thumbnail camera was customized. Only relevant up to TMUF.
+    /// </summary>
+    [NodeMember]
+    public bool? HasCustomCamThumbnail { get => hasCustomCamThumbnail; set => hasCustomCamThumbnail = value; }
 
     #endregion
 
@@ -3111,31 +3118,31 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043027)]
     public class Chunk03043027 : Chunk<CGameCtnChallenge>
     {
-        public bool ArchiveGmCamVal;
         public byte U01;
         public Vec3 U02;
         public Vec3 U03;
         public Vec3 U04;
-        public float U05;
-        public float U06;
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Boolean(ref ArchiveGmCamVal);
+            rw.Boolean(ref n.hasCustomCamThumbnail);
 
-            if (ArchiveGmCamVal)
+            if (!n.hasCustomCamThumbnail.GetValueOrDefault())
             {
-                rw.Byte(ref U01);
-
-                rw.Vec3(ref U02);
-                rw.Vec3(ref U03);
-                rw.Vec3(ref U04);
-
-                rw.Vec3(ref n.thumbnailPosition);
-                rw.Single(ref n.thumbnailFOV);
-                rw.Single(ref U05);
-                rw.Single(ref U06);
+                return;
             }
+
+            rw.Byte(ref U01);
+
+            // Iso4
+            rw.Vec3(ref U02);
+            rw.Vec3(ref U03); // camera calibration matrix?
+            rw.Vec3(ref U04);
+            rw.Vec3(ref n.thumbnailPosition);
+
+            rw.Single(ref n.thumbnailFOV);
+            rw.Single(ref n.thumbnailNearClipPlane);
+            rw.Single(ref n.thumbnailFarClipPlane);
         }
     }
 
