@@ -409,9 +409,11 @@ public static class NodeCacheManager
             HeaderChunkAttributesById[chunkId] = attributes;
             HeaderChunkTypesById[chunkId] = type;
             HeaderChunkConstructors[chunkId] = constructor;
+
+            return;
         }
 
-        if (type.BaseType?.IsGenericType == true && type.BaseType.GetGenericTypeDefinition() == typeof(SkippableChunk<>))
+        if (type.GetInterface(nameof(ISkippableChunk)) is not null)
         {
             SkippableChunks[type] = 1;
         }
