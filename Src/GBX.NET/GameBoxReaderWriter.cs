@@ -1674,7 +1674,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     public string[]? ArrayId(string[]? array = default)
     {
-        return Array<string>(array, r => r.ReadId(), (x, w) => w.Write(x));
+        return Array<string>(array, r => r.ReadId(), (x, w) => w.WriteId(x));
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -1683,7 +1683,7 @@ public partial class GameBoxReaderWriter
     /// <exception cref="ArgumentOutOfRangeException">Array length is negative.</exception>
     public void ArrayId(ref string[]? array)
     {
-        array = Array<string>(array, r => r.ReadId(), (x, w) => w.Write(x));
+        array = Array<string>(array, r => r.ReadId(), (x, w) => w.WriteId(x));
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
