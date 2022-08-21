@@ -221,11 +221,11 @@ public class GameBoxWriter : BinaryWriter
             return;
         }
 
-        var maxTime = TimeSpan.FromDays(1) - TimeSpan.FromTicks(1);
+        var maxTime = TimeSpan.FromDays(1) - TimeSpan.FromSeconds(1);
         var maxSecs = maxTime.TotalSeconds;
         var secs = timeOfDay.Value.TotalSeconds % maxTime.TotalSeconds;
 
-        Write((int)(secs / maxSecs * ushort.MaxValue));
+        Write(Convert.ToInt32(secs / maxSecs * ushort.MaxValue));
     }
 
     /// <exception cref="ArgumentNullException"><paramref name="fileRef"/> is null.</exception>
