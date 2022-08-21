@@ -38,52 +38,48 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
     public EGameCam2? gameCam2;
     public int clipEntId = -1;
     public string? gameCam;
+    private Vec3? camPosition;
+    private Vec3? camPitchYawRoll;
+    private float? camFov;
+    private float? camNearClipPlane;
+    private float? camFarClipPlane;
 
     #endregion
 
     #region Properties
 
     [NodeMember]
-    public TimeSingle Start
-    {
-        get => start;
-        set => start = value;
-    }
+    public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    public TimeSingle End
-    {
-        get => end;
-        set => end = value;
-    }
+    public TimeSingle End { get => end; set => end = value; }
 
     [NodeMember]
-    public EGameCam? GameCam1
-    {
-        get => gameCam1;
-        set => gameCam1 = value;
-    }
+    public EGameCam? GameCam1 { get => gameCam1; set => gameCam1 = value; }
 
     [NodeMember]
-    public EGameCam2? GameCam2
-    {
-        get => gameCam2;
-        set => gameCam2 = value;
-    }
+    public EGameCam2? GameCam2 { get => gameCam2; set => gameCam2 = value; }
 
     [NodeMember]
-    public int ClipEntId
-    {
-        get => clipEntId;
-        set => clipEntId = value;
-    }
+    public int ClipEntId { get => clipEntId; set => clipEntId = value; }
 
     [NodeMember]
-    public string? GameCam
-    {
-        get => gameCam;
-        set => gameCam = value;
-    }
+    public string? GameCam { get => gameCam; set => gameCam = value; }
+
+    [NodeMember]
+    public Vec3? CamPosition { get => camPosition; set => camPosition = value; }
+
+    [NodeMember]
+    public Vec3? CamPitchYawRoll { get => camPitchYawRoll; set => camPitchYawRoll = value; }
+
+    [NodeMember]
+    public float? CamFov { get => camFov; set => camFov = value; }
+
+    [NodeMember]
+    public float? CamNearClipPlane { get => camNearClipPlane; set => camNearClipPlane = value; }
+
+    [NodeMember]
+    public float? CamFarClipPlane { get => camFarClipPlane; set => camFarClipPlane = value; }
 
     #endregion
 
@@ -264,8 +260,8 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
             set => version = value;
         }
 
-        public float[]? U01;
-        public float[]? U02;
+        public float U01 = 10;
+        public float U02 = 0; // depth? 0 or 0.02
         public bool U03;
         public bool U04;
         public bool U05;
@@ -292,9 +288,14 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
 
             // GmCamFreeVal
             // // GmLocFreeVal
-            rw.Array<float>(ref U01, count: 6);
+            rw.Vec3(ref n.camPosition);
+            rw.Vec3(ref n.camPitchYawRoll);
             // // GmLensVal
-            rw.Array<float>(ref U02, count: 5);
+            rw.Single(ref n.camFov, defaultValue: 90);
+            rw.Single(ref U01); // always 10
+            rw.Single(ref U02); // depth? 0 or 0.02
+            rw.Single(ref n.camNearClipPlane, defaultValue: -1);
+            rw.Single(ref n.camFarClipPlane, defaultValue: -1);
 
             rw.Boolean(ref U03);
             rw.Boolean(ref U04);
