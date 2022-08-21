@@ -1,8 +1,6 @@
 ﻿using System.IO.Compression;
 using System.Security;
-using System.Security.Cryptography;
 using System.Text;
-using System.Linq;
 using GBX.NET.BlockInfo;
 
 namespace GBX.NET.Engines.Game;
@@ -225,16 +223,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [NodeMember]
     public TimeInt32? TMObjective_BronzeTime
     {
-        get
-        {
-            if (ChallengeParameters != null)
-                return ChallengeParameters.BronzeTime;
-            return bronzeTime;
-        }
+        get => ChallengeParameters is null ? bronzeTime : ChallengeParameters.BronzeTime;
         set
         {
-            if (ChallengeParameters != null)
+            if (ChallengeParameters is not null)
+            {
                 ChallengeParameters.BronzeTime = value;
+            }
+
             bronzeTime = value;
         }
     }
@@ -245,16 +241,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [NodeMember]
     public TimeInt32? TMObjective_SilverTime
     {
-        get
-        {
-            if (ChallengeParameters != null)
-                return ChallengeParameters.SilverTime;
-            return silverTime;
-        }
+        get => ChallengeParameters is null ? silverTime : ChallengeParameters.SilverTime;
         set
         {
-            if (ChallengeParameters != null)
+            if (ChallengeParameters is not null)
+            {
                 ChallengeParameters.SilverTime = value;
+            }
+
             silverTime = value;
         }
     }
@@ -265,16 +259,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [NodeMember]
     public TimeInt32? TMObjective_GoldTime
     {
-        get
-        {
-            if (ChallengeParameters != null)
-                return ChallengeParameters.GoldTime;
-            return goldTime;
-        }
+        get => ChallengeParameters is null ? goldTime : ChallengeParameters.GoldTime;
         set
         {
-            if (ChallengeParameters != null)
+            if (ChallengeParameters is not null)
+            {
                 ChallengeParameters.GoldTime = value;
+            }
+
             goldTime = value;
         }
     }
@@ -285,16 +277,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [NodeMember]
     public TimeInt32? TMObjective_AuthorTime
     {
-        get
-        {
-            if (ChallengeParameters != null)
-                return ChallengeParameters.AuthorTime;
-            return authorTime;
-        }
+        get => ChallengeParameters is null ? authorTime : ChallengeParameters.AuthorTime;
         set
         {
-            if (ChallengeParameters != null)
+            if (ChallengeParameters is not null)
+            {
                 ChallengeParameters.AuthorTime = value;
+            }
+
             authorTime = value;
         }
     }
@@ -303,11 +293,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Display cost of the track (or copper cost) explaining the performance of the map.
     /// </summary>
     [NodeMember]
-    public int? Cost
-    {
-        get => cost;
-        set => cost = value;
-    }
+    public int? Cost { get => cost; set => cost = value; }
 
     /// <summary>
     /// Usually author time or stunts score. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
@@ -315,16 +301,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [NodeMember]
     public int? AuthorScore
     {
-        get
-        {
-            if (ChallengeParameters != null)
-                return ChallengeParameters.AuthorScore;
-            return authorScore;
-        }
+        get => ChallengeParameters is null ? authorScore : ChallengeParameters.AuthorScore;
         set
         {
-            if (ChallengeParameters != null)
+            if (ChallengeParameters is not null)
+            {
                 ChallengeParameters.AuthorScore = value;
+            }
+
             authorScore = value;
         }
     }
@@ -333,11 +317,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// In which editor settings the map was made.
     /// </summary>
     [NodeMember]
-    public EditorMode Editor
-    {
-        get => editor;
-        set => editor = value;
-    }
+    public EditorMode Editor { get => editor; set => editor = value; }
 
     /// <summary>
     /// If the map was made using the simple editor.
@@ -391,21 +371,13 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Number of checkpoints.
     /// </summary>
     [NodeMember]
-    public int? NbCheckpoints
-    {
-        get => nbCheckpoints;
-        set => nbCheckpoints = value;
-    }
+    public int? NbCheckpoints { get => nbCheckpoints; set => nbCheckpoints = value; }
 
     /// <summary>
     /// Map UID, environment, and author login.
     /// </summary>
     [NodeMember]
-    public Ident MapInfo
-    {
-        get => mapInfo;
-        set => mapInfo = value;
-    }
+    public Ident MapInfo { get => mapInfo; set => mapInfo = value; }
 
     /// <summary>
     /// The map's UID.
@@ -414,10 +386,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public string MapUid
     {
         get => mapInfo.Id;
-        set
-        {
-            mapInfo = new Ident(value, mapInfo.Collection, mapInfo.Author);
-        }
+        set => mapInfo = new Ident(value, mapInfo.Collection, mapInfo.Author);
     }
 
     /// <summary>
@@ -430,12 +399,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             DiscoverChunk<Chunk03043042>();
 
-            if (authorLogin is null)
-            {
-                return mapInfo.Author;
-            }
-
-            return authorLogin;
+            return authorLogin is null ? mapInfo.Author : authorLogin;
         }
         set
         {
@@ -451,31 +415,19 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     [SupportsFormatting]
-    public string MapName
-    {
-        get => mapName;
-        set => mapName = value;
-    }
+    public string MapName { get => mapName; set => mapName = value; }
 
     /// <summary>
     /// The map's intended use or state, defined in the header. This defines the visibility in the the map browser.
     /// </summary>
     [NodeMember]
-    public MapKind KindInHeader
-    {
-        get => kindInHeader;
-        set => kindInHeader = value;
-    }
+    public MapKind KindInHeader { get => kindInHeader; set => kindInHeader = value; }
 
     /// <summary>
     /// The map's intended use or state, defined in the body. This defines general validity.
     /// </summary>
     [NodeMember]
-    public MapKind Kind
-    {
-        get => kind;
-        set => kind = value;
-    }
+    public MapKind Kind { get => kind; set => kind = value; }
 
     /// <summary>
     /// Password of the map used by older maps.
@@ -499,11 +451,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// The map's decoration (time of the day or scenery)
     /// </summary>
     [NodeMember]
-    public Ident? Decoration
-    {
-        get => decoration;
-        set => decoration = value;
-    }
+    public Ident? Decoration { get => decoration; set => decoration = value; }
 
     /// <summary>
     /// Name of the map type script.
@@ -511,16 +459,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [NodeMember]
     public string? MapType
     {
-        get
-        {
-            if (ChallengeParameters != null)
-                return ChallengeParameters.MapType;
-            return mapType;
-        }
+        get => ChallengeParameters is null ? mapType : ChallengeParameters.MapType;
         set
         {
-            if (ChallengeParameters != null)
+            if (ChallengeParameters is not null)
+            {
                 ChallengeParameters.MapType = value;
+            }
+
             mapType = value;
         }
     }
@@ -531,16 +477,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [NodeMember]
     public string? MapStyle
     {
-        get
-        {
-            if (ChallengeParameters != null)
-                return ChallengeParameters.MapStyle;
-            return mapStyle;
-        }
+        get => ChallengeParameters is null ? mapStyle : ChallengeParameters.MapStyle;
         set
         {
-            if (ChallengeParameters != null)
+            if (ChallengeParameters is not null)
+            {
                 ChallengeParameters.MapStyle = value;
+            }
+
             mapStyle = value;
         }
     }
@@ -549,42 +493,26 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// UID of the lightmap data stored in cache.
     /// </summary>
     [NodeMember]
-    public ulong? LightmapCacheUID
-    {
-        get => lightmapCacheUID;
-        set => lightmapCacheUID = value;
-    }
+    public ulong? LightmapCacheUID { get => lightmapCacheUID; set => lightmapCacheUID = value; }
 
     /// <summary>
     /// Version of the lightmap calculation.
     /// </summary>
     [NodeMember]
-    public byte? LightmapVersion
-    {
-        get => lightmapVersion;
-        set => lightmapVersion = value;
-    }
+    public byte? LightmapVersion { get => lightmapVersion; set => lightmapVersion = value; }
 
     /// <summary>
     /// XML track information and dependencies.
     /// </summary>
     [NodeMember]
-    public string? XML
-    {
-        get => xml;
-        set => xml = value;
-    }
+    public string? XML { get => xml; set => xml = value; }
 
     /// <summary>
     /// Thumbnail JPEG data.
     /// </summary>
     [NodeMember]
     [JpegData]
-    public byte[]? Thumbnail
-    {
-        get => thumbnail;
-        set => thumbnail = value;
-    }
+    public byte[]? Thumbnail { get => thumbnail; set => thumbnail = value; }
 
     /// <summary>
     /// The map's environment.
@@ -600,21 +528,13 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Origin of the map.
     /// </summary>
     [NodeMember]
-    public Vec2? MapCoordOrigin
-    {
-        get => mapCoordOrigin;
-        set => mapCoordOrigin = value;
-    }
+    public Vec2? MapCoordOrigin { get => mapCoordOrigin; set => mapCoordOrigin = value; }
 
     /// <summary>
     /// Target of the map.
     /// </summary>
     [NodeMember]
-    public Vec2? MapCoordTarget
-    {
-        get => mapCoordTarget;
-        set => mapCoordTarget = value;
-    }
+    public Vec2? MapCoordTarget { get => mapCoordTarget; set => mapCoordTarget = value; }
 
     /// <summary>
     /// Title pack the map was built in.
@@ -742,31 +662,19 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// The car's name, environment and author used on the map.
     /// </summary>
     [NodeMember]
-    public Ident? PlayerModel
-    {
-        get => playerModel;
-        set => playerModel = value;
-    }
+    public Ident? PlayerModel { get => playerModel; set => playerModel = value; }
 
     /// <summary>
     /// Map parameters.
     /// </summary>
     [NodeMember]
-    public CGameCtnChallengeParameters? ChallengeParameters
-    {
-        get => challengeParameters;
-        set => challengeParameters = value;
-    }
+    public CGameCtnChallengeParameters? ChallengeParameters { get => challengeParameters; set => challengeParameters = value; }
 
     /// <summary>
     /// List of available puzzle pieces.
     /// </summary>
     [NodeMember]
-    public CGameCtnCollectorList? BlockStock
-    {
-        get => blockStock;
-        set => blockStock = value;
-    }
+    public CGameCtnCollectorList? BlockStock { get => blockStock; set => blockStock = value; }
 
     /// <summary>
     /// All checkpoints and their map coordinates. Used by TMUF and older games.
@@ -826,18 +734,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Size of the map in block coordinates.
     /// </summary>
     [NodeMember]
-    public Int3? Size
-    {
-        get => size;
-        set => size = value;
-    }
+    public Int3? Size { get => size; set => size = value; }
 
     [NodeMember]
-    public bool? NeedUnlock
-    {
-        get => needUnlock;
-        set => needUnlock = value;
-    }
+    public bool? NeedUnlock { get => needUnlock; set => needUnlock = value; }
 
     /// <summary>
     /// List of all blocks on the map. Can be null when only the header was read, or simply when <see cref="Chunk0304300F"/>, <see cref="Chunk03043013"/>, or <see cref="Chunk0304301F"/> is missing.
@@ -867,61 +767,37 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// MediaTracker intro.
     /// </summary>
     [NodeMember]
-    public CGameCtnMediaClip? ClipIntro
-    {
-        get => clipIntro;
-        set => clipIntro = value;
-    }
+    public CGameCtnMediaClip? ClipIntro { get => clipIntro; set => clipIntro = value; }
 
     /// <summary>
     /// MediaTracker ingame.
     /// </summary>
     [NodeMember]
-    public CGameCtnMediaClipGroup? ClipGroupInGame
-    {
-        get => clipGroupInGame;
-        set => clipGroupInGame = value;
-    }
+    public CGameCtnMediaClipGroup? ClipGroupInGame { get => clipGroupInGame; set => clipGroupInGame = value; }
 
     /// <summary>
     /// MediaTracker end race.
     /// </summary>
     [NodeMember]
-    public CGameCtnMediaClipGroup? ClipGroupEndRace
-    {
-        get => clipGroupEndRace;
-        set => clipGroupEndRace = value;
-    }
+    public CGameCtnMediaClipGroup? ClipGroupEndRace { get => clipGroupEndRace; set => clipGroupEndRace = value; }
 
     /// <summary>
     /// MediaTracker ambiance.
     /// </summary>
     [NodeMember]
-    public CGameCtnMediaClip? ClipAmbiance
-    {
-        get => clipAmbiance;
-        set => clipAmbiance = value;
-    }
+    public CGameCtnMediaClip? ClipAmbiance { get => clipAmbiance; set => clipAmbiance = value; }
 
     /// <summary>
     /// MediaTracker podium.
     /// </summary>
     [NodeMember]
-    public CGameCtnMediaClip? ClipPodium
-    {
-        get => clipPodium;
-        set => clipPodium = value;
-    }
+    public CGameCtnMediaClip? ClipPodium { get => clipPodium; set => clipPodium = value; }
 
     /// <summary>
     /// Reference to the custom music used on the map.
     /// </summary>
     [NodeMember]
-    public FileRef? CustomMusicPackDesc
-    {
-        get => customMusicPackDesc;
-        set => customMusicPackDesc = value;
-    }
+    public FileRef? CustomMusicPackDesc { get => customMusicPackDesc; set => customMusicPackDesc = value; }
 
     /// <summary>
     /// Hashed password of the map, if it's password protected.
@@ -1557,6 +1433,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         RemoveChunk<Chunk03043021>();
 
+        return true;
+
         static void ConvertMediaClip(CGameCtnMediaClip? node)
         {
             if (node is null)
@@ -1615,8 +1493,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             // FX Bloom is no longer supported and was remade into FxBloomHdr
             // TODO: convert to fx bloom hdr effectively
         }
-
-        return true;
     }
 
     /// <summary>
@@ -2547,21 +2423,13 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CGameCtnChallenge 0x00F chunk (TM1.0 block data)
     /// </summary>
     [Chunk(0x0304300F, "TM1.0 block data")]
-    public class Chunk0304300F : Chunk<CGameCtnChallenge>, IVersionable
+    public class Chunk0304300F : Chunk<CGameCtnChallenge>
     {
-        private int version;
-
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
-
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
             rw.Ident(ref n.mapInfo!);
             rw.Int3(ref n.size);
-            rw.Int32(ref version);
+            rw.Int32(10);
             rw.ListNode<CGameCtnBlock>(ref n.blocks!);
             rw.Boolean(ref n.needUnlock);
             rw.Ident(ref n.decoration);
@@ -2571,7 +2439,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             rw.Ident(ref n.mapInfo!);
             rw.Int3(ref n.size);
-            rw.Int32(ref version);
+            rw.Int32(10);
             n.blocks = (await rw.ListNodeAsync<CGameCtnBlock>(n.blocks!, cancellationToken))!;
             rw.Boolean(ref n.needUnlock);
             rw.Ident(ref n.decoration);
@@ -2742,25 +2610,30 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01);
+            rw.NodeRef(ref U01); // assert: '!ReplayRecord || !ReplayRecord->m_Challenge' failed.
         }
     }
 
     #endregion
 
-    #region 0x01B chunk
+    #region 0x01B chunk (OldIgs)
 
     /// <summary>
-    /// CGameCtnChallenge 0x01B chunk
+    /// CGameCtnChallenge 0x01B chunk (OldIgs)
     /// </summary>
-    [Chunk(0x0304301B)]
+    [Chunk(0x0304301B, "OldIgs")]
     public class Chunk0304301B : Chunk<CGameCtnChallenge>
     {
         public int U01;
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.Int32(ref U01); // SOldIgs array
+
+            if (U01 > 0)
+            {
+                throw new NotSupportedException("SOldIgs count > 0");
+            }
         }
     }
 
@@ -2794,7 +2667,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01);
+            rw.NodeRef(ref U01); // assert: '!ReplayRecord || !ReplayRecord->m_Challenge' failed.
         }
     }
 
@@ -3094,7 +2967,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043026, "clip global")]
     public class Chunk03043026 : Chunk<CGameCtnChallenge>
     {
-        public CMwNod? clipGlobal;
+        private CMwNod? clipGlobal;
 
         public CMwNod? ClipGlobal
         {
@@ -3110,10 +2983,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x027 chunk
+    #region 0x027 chunk (old realtime thumbnail)
 
     /// <summary>
-    /// CGameCtnChallenge 0x027 chunk
+    /// CGameCtnChallenge 0x027 chunk (old realtime thumbnail)
     /// </summary>
     [Chunk(0x03043027)]
     public class Chunk03043027 : Chunk<CGameCtnChallenge>
@@ -3148,24 +3021,17 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x028 chunk (comments)
+    #region 0x028 chunk (old realtime thumbnail + comments)
 
     /// <summary>
-    /// CGameCtnChallenge 0x028 chunk (comments)
+    /// CGameCtnChallenge 0x028 chunk (old realtime thumbnail + comments)
     /// </summary>
     [Chunk(0x03043028, "comments")]
-    public class Chunk03043028 : Chunk<CGameCtnChallenge>
+    public class Chunk03043028 : Chunk03043027
     {
-        public Chunk03043027 Chunk027 { get; }
-
-        public Chunk03043028()
-        {
-            Chunk027 = new Chunk03043027();
-        }
-
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            Chunk027.ReadWrite(n, rw);
+            base.ReadWrite(n, rw);
             rw.String(ref n.comments);
         }
     }
@@ -3201,32 +3067,19 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
+            rw.Boolean(ref U01); // code hints to something with locking (NeedUnlock?)
         }
     }
 
     #endregion
 
-    #region 0x034 skippable chunk
+    #region 0x02D skippable chunk (realtime thumbnail + comments)
 
     /// <summary>
-    /// CGameCtnChallenge 0x034 skippable chunk
+    /// CGameCtnChallenge 0x02D skippable chunk (realtime thumbnail + comments)
     /// </summary>
-    [Chunk(0x03043034), IgnoreChunk]
-    public class Chunk03043034 : SkippableChunk<CGameCtnChallenge>
-    {
-
-    }
-
-    #endregion
-
-    #region 0x036 skippable chunk (realtime thumbnail + comments)
-
-    /// <summary>
-    /// CGameCtnChallenge 0x036 skippable chunk (realtime thumbnail + comments)
-    /// </summary>
-    [Chunk(0x03043036, "realtime thumbnail + comments")]
-    public class Chunk03043036 : SkippableChunk<CGameCtnChallenge>
+    [Chunk(0x0304302D, "realtime thumbnail + comments")]
+    public class Chunk0304302D : SkippableChunk<CGameCtnChallenge>
     {
         public float U01 = 10;
         public float U02 = 0; // depth? 0 or 0.02
@@ -3250,6 +3103,37 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
+    #region 0x034 skippable chunk
+
+    /// <summary>
+    /// CGameCtnChallenge 0x034 skippable chunk
+    /// </summary>
+    [Chunk(0x03043034)]
+    public class Chunk03043034 : SkippableChunk<CGameCtnChallenge>
+    {
+        public byte[]? U01;
+
+        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+        {
+            rw.Bytes(ref U01); // ArchiveBufMem
+        }
+    }
+
+    #endregion
+
+    #region 0x036 skippable chunk (realtime thumbnail + comments)
+
+    /// <summary>
+    /// CGameCtnChallenge 0x036 skippable chunk (realtime thumbnail + comments)
+    /// </summary>
+    [Chunk(0x03043036, "realtime thumbnail + comments")]
+    public class Chunk03043036 : Chunk0304302D
+    {
+        
+    }
+
+    #endregion
+
     #region 0x038 skippable chunk
 
     /// <summary>
@@ -3258,7 +3142,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043038), IgnoreChunk]
     public class Chunk03043038 : SkippableChunk<CGameCtnChallenge>
     {
-
+        // refers to 0x03043031 which could be SChallengeCardEventIds?
     }
 
     #endregion
@@ -3448,17 +3332,39 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-#endregion
+    #endregion
 
-    #region 0x03E skippable chunk
+    #region 0x03E skippable chunk (CSceneVehicleCarMarksSamples)
 
     /// <summary>
-    /// CGameCtnChallenge 0x03E skippable chunk
+    /// CGameCtnChallenge 0x03E skippable chunk (CSceneVehicleCarMarksSamples)
     /// </summary>
-    [Chunk(0x0304303E), IgnoreChunk]
-    public class Chunk0304303E : SkippableChunk<CGameCtnChallenge>
+    [Chunk(0x0304303E, "CSceneVehicleCarMarksSamples")]
+    public class Chunk0304303E : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
+        private int version;
 
+        public int U01;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+
+            if (version > 0)
+            {
+                throw new ChunkVersionNotSupportedException(version);
+            }
+
+            rw.Int32(10);
+            rw.Int32(ref U01); // CSceneVehicleCarMarksSamples array
+
+            if (U01 > 0)
+            {
+                throw new NotSupportedException("U01 > 0");
+            }
+        }
     }
 
     #endregion
@@ -3473,7 +3379,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public class Chunk03043040 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private int version = 4;
-        private int listVersion = 10;
 
         public int U01;
         public Int2[]? U02;
@@ -3494,8 +3399,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             version = r.ReadInt32();
             U01 = r.ReadInt32();
             var size = r.ReadInt32();
-            listVersion = r.ReadInt32(); // 10
 
+            _ = r.ReadInt32(); // 10
             n.anchoredObjects = r.ReadList(r =>
             {
                 var node = Parse<CGameCtnAnchoredObject>(r, classId: null, progress: null, logger)!;
@@ -3539,7 +3444,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             using var itemMs = new MemoryStream();
             using var itemW = new GameBoxWriter(itemMs, w.Settings, logger);
 
-            itemW.Write(listVersion);
+            itemW.Write(10);
             itemW.WriteNodeArray(n.anchoredObjects);
 
             if (version >= 1)
@@ -3584,22 +3489,18 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043042, "author")]
     public class Chunk03043042 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version = 4;
+        private int version = 1;
 
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
             rw.Int32(ref n.authorVersion);
-            rw.String(ref n.authorLogin!);
+            rw.String(ref n.authorLogin!); // according to asserts, login must be larger than 0 and maybe equal to the MapInfo.Author
             rw.String(ref n.authorNickname);
             rw.String(ref n.authorZone);
             rw.String(ref n.authorExtraInfo);
@@ -3899,7 +3800,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x0304304F), IgnoreChunk]
     public class Chunk0304304F : SkippableChunk<CGameCtnChallenge>
     {
-
+        // possibly some enum
     }
 
     #endregion
@@ -4153,7 +4054,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043055), IgnoreChunk]
     public class Chunk03043055 : SkippableChunk<CGameCtnChallenge>
     {
-
+        // sets something to constant 1
     }
 
     #endregion
@@ -4194,7 +4095,35 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043057), IgnoreChunk]
     public class Chunk03043057 : SkippableChunk<CGameCtnChallenge>
     {
+        // additional stuff for bot paths
+    }
 
+    #endregion
+
+    #region 0x058 skippable chunk (SubMapsInfos)
+
+    /// <summary>
+    /// CGameCtnChallenge 0x058 skippable chunk (SubMapsInfos)
+    /// </summary>
+    [Chunk(0x03043058, "SubMapsInfos")]
+    public class Chunk03043058 : SkippableChunk<CGameCtnChallenge>
+    {
+        private int version;
+
+        public int U01;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.Int32(ref U01);
+
+            if (U01 > 0)
+            {
+                throw new NotSupportedException("U01 > 0");
+            }
+        }
     }
 
     #endregion
@@ -4210,18 +4139,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         private int version;
 
         public Vec3 U01;
-        public bool U02;
-        public float U03;
-        public float U04;
+        public bool? U02;
+        public float? U03;
+        public float? U04;
 
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
@@ -4229,9 +4154,19 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             rw.Vec3(ref U01);
 
-            if (version != 0)
+            if (version == 0)
+            {
+                throw new VersionNotSupportedException(version);
+            }
+
+            if (version >= 1)
             {
                 rw.Boolean(ref U02);
+
+                if (U02.GetValueOrDefault())
+                {
+                    throw new NotSupportedException("U02 == true");
+                }
 
                 if (version >= 3)
                 {
@@ -4244,10 +4179,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x05A skippable chunk
+    #region 0x05A skippable chunk [TM2020]
 
     /// <summary>
-    /// CGameCtnChallenge 0x05A skippable chunk [TM®️]
+    /// CGameCtnChallenge 0x05A skippable chunk [TM2020]
     /// </summary>
     [Chunk(0x0304305A)]
     public class Chunk0304305A : SkippableChunk<CGameCtnChallenge>
@@ -4264,12 +4199,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x05B skippable chunk (lightmaps TM2020)
+    #region 0x05B skippable chunk (lightmaps) [TM2020]
 
     /// <summary>
-    /// CGameCtnChallenge 0x05B skippable chunk (lightmaps TM2020)
+    /// CGameCtnChallenge 0x05B skippable chunk (lightmaps) [TM2020]
     /// </summary>
-    [Chunk(0x0304305B, "lightmaps TM2020")]
+    [Chunk(0x0304305B, "lightmaps")]
     [ChunkWithOwnIdState]
     public class Chunk0304305B : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
@@ -4280,11 +4215,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public bool U01;
         public bool U02;
@@ -4309,10 +4240,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x05C skippable chunk
+    #region 0x05C skippable chunk [TM2020]
 
     /// <summary>
-    /// CGameCtnChallenge 0x05C skippable chunk
+    /// CGameCtnChallenge 0x05C skippable chunk [TM2020]
     /// </summary>
     [Chunk(0x0304305C), IgnoreChunk]
     public class Chunk0304305C : SkippableChunk<CGameCtnChallenge>
@@ -4322,10 +4253,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x05D skippable chunk
+    #region 0x05D skippable chunk [TM2020]
 
     /// <summary>
-    /// CGameCtnChallenge 0x05D skippable chunk
+    /// CGameCtnChallenge 0x05D skippable chunk [TM2020]
     /// </summary>
     [Chunk(0x0304305D), IgnoreChunk]
     public class Chunk0304305D : SkippableChunk<CGameCtnChallenge>
@@ -4335,10 +4266,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x05E skippable chunk
+    #region 0x05E skippable chunk [TM2020]
 
     /// <summary>
-    /// CGameCtnChallenge 0x05E skippable chunk
+    /// CGameCtnChallenge 0x05E skippable chunk [TM2020]
     /// </summary>
     [Chunk(0x0304305E), IgnoreChunk]
     public class Chunk0304305E : SkippableChunk<CGameCtnChallenge>
@@ -4382,10 +4313,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x060 skippable chunk [TM®️]
+    #region 0x060 skippable chunk [TM2020]
 
     /// <summary>
-    /// CGameCtnChallenge 0x060 skippable chunk [TM®️]
+    /// CGameCtnChallenge 0x060 skippable chunk [TM2020]
     /// </summary>
     [Chunk(0x03043060), IgnoreChunk]
     public class Chunk03043060 : SkippableChunk<CGameCtnChallenge>
@@ -4395,10 +4326,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x061 skippable chunk [TM®️]
+    #region 0x061 skippable chunk [TM2020]
 
     /// <summary>
-    /// CGameCtnChallenge 0x061 skippable chunk [TM®️]
+    /// CGameCtnChallenge 0x061 skippable chunk [TM2020]
     /// </summary>
     [Chunk(0x03043061), IgnoreChunk]
     public class Chunk03043061 : SkippableChunk<CGameCtnChallenge>
@@ -4408,10 +4339,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x062 skippable chunk (block color) [TM®️]
+    #region 0x062 skippable chunk (block color) [TM2020]
 
     /// <summary>
-    /// CGameCtnChallenge 0x062 skippable chunk (block color) [TM®️]
+    /// CGameCtnChallenge 0x062 skippable chunk (block color) [TM2020]
     /// </summary>
     [Chunk(0x03043062, "block color")]
     public class Chunk03043062 : SkippableChunk<CGameCtnChallenge>, IVersionable
@@ -4479,10 +4410,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x063 skippable chunk [TM®️]
+    #region 0x063 skippable chunk [TM2020]
 
     /// <summary>
-    /// CGameCtnChallenge 0x063 skippable chunk [TM®️]
+    /// CGameCtnChallenge 0x063 skippable chunk [TM2020]
     /// </summary>
     [Chunk(0x03043063), IgnoreChunk]
     public class Chunk03043063 : SkippableChunk<CGameCtnChallenge>
@@ -4492,10 +4423,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x064 skippable chunk [TM®️]
+    #region 0x064 skippable chunk [TM2020]
 
     /// <summary>
-    /// CGameCtnChallenge 0x064 skippable chunk [TM®️]
+    /// CGameCtnChallenge 0x064 skippable chunk [TM2020]
     /// </summary>
     [Chunk(0x03043064), IgnoreChunk]
     public class Chunk03043064 : SkippableChunk<CGameCtnChallenge>
@@ -4505,13 +4436,52 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x065 skippable chunk [TM®️]
+    #region 0x065 skippable chunk [TM2020]
 
     /// <summary>
-    /// CGameCtnChallenge 0x065 skippable chunk [TM®️]
+    /// CGameCtnChallenge 0x065 skippable chunk [TM2020]
     /// </summary>
     [Chunk(0x03043065), IgnoreChunk]
     public class Chunk03043065 : SkippableChunk<CGameCtnChallenge>
+    {
+
+    }
+
+    #endregion
+
+    #region 0x067 skippable chunk [TM2020]
+
+    /// <summary>
+    /// CGameCtnChallenge 0x067 skippable chunk [TM2020]
+    /// </summary>
+    [Chunk(0x03043067), IgnoreChunk]
+    public class Chunk03043067 : SkippableChunk<CGameCtnChallenge>
+    {
+
+    }
+
+    #endregion
+
+    #region 0x068 skippable chunk [TM2020]
+
+    /// <summary>
+    /// CGameCtnChallenge 0x068 skippable chunk [TM2020]
+    /// </summary>
+    [Chunk(0x03043068), IgnoreChunk]
+    public class Chunk03043068 : SkippableChunk<CGameCtnChallenge>
+    {
+
+    }
+
+    #endregion
+
+    #region 0x069 skippable chunk [TM2020]
+
+    /// <summary>
+    /// CGameCtnChallenge 0x069 skippable chunk [TM2020]
+    /// </summary>
+    [Chunk(0x03043069), IgnoreChunk]
+    public class Chunk03043069 : SkippableChunk<CGameCtnChallenge>
     {
 
     }

@@ -10,35 +10,11 @@ public partial class CGameCtnChallenge
         private CGameWaypointSpecialProperty? waypointSpecialProperty;
         private bool isAutonomous;
 
-        public int Clan
-        {
-            get => clan;
-            set => clan = value;
-        }
-
-        public IList<Vec3>? Path
-        {
-            get => path;
-            set => path = value;
-        }
-
-        public bool IsFlying
-        {
-            get => isFlying;
-            set => isFlying = value;
-        }
-
-        public CGameWaypointSpecialProperty? WaypointSpecialProperty
-        {
-            get => waypointSpecialProperty;
-            set => waypointSpecialProperty = value;
-        }
-
-        public bool IsAutonomous
-        {
-            get => isAutonomous;
-            set => isAutonomous = value;
-        }
+        public int Clan { get => clan; set => clan = value; }
+        public IList<Vec3>? Path { get => path; set => path = value; }
+        public bool IsFlying { get => isFlying; set => isFlying = value; }
+        public CGameWaypointSpecialProperty? WaypointSpecialProperty { get => waypointSpecialProperty; set => waypointSpecialProperty = value; }
+        public bool IsAutonomous { get => isAutonomous; set => isAutonomous = value; }
 
         internal void ReadWrite(GameBoxReaderWriter rw)
         {
