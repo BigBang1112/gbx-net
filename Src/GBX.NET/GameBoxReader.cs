@@ -412,10 +412,10 @@ public class GameBoxReader : BinaryReader
             throw new InvalidDataException("Day time is over 65535");
         }
 
-        var maxTime = TimeSpan.FromDays(1) - TimeSpan.FromTicks(1);
+        var maxTime = TimeSpan.FromDays(1) - TimeSpan.FromSeconds(1);
         var maxSecs = maxTime.TotalSeconds;        
         
-        return TimeSpan.FromSeconds(Math.Round(dayTime / (double)ushort.MaxValue * maxSecs, 7));
+        return TimeSpan.FromSeconds(Convert.ToInt32(dayTime / (float)ushort.MaxValue * maxSecs));
     }
 
     /// <summary>
