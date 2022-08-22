@@ -119,7 +119,8 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     [AppliedWithChunk(typeof(Chunk03101002), sinceVersion: 7)]
     public FileRef? PackDesc { get => packDesc; set => packDesc = value; }
 
-    public CGameCtnBlock? SnappedOn { get; set; }
+    public CGameCtnBlock? SnappedOnBlock { get; set; }
+    public CGameCtnAnchoredObject? SnappedOnItem { get; set; }
     public int? SnappedOnGroup { get; set; }
 
     CGameCtnChallenge? INodeDependant<CGameCtnChallenge>.DependingNode { get; set; }
