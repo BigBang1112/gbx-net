@@ -3382,7 +3382,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         public int U01;
         public Int2[]? U02;
-        public int? U03;
 
         /// <summary>
         /// Version of the chunk.
@@ -3405,32 +3404,33 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 return node;
             });
 
-            if (version >= 1)
+            if (version >= 1 && version != 5)
             {
                 U02 = r.ReadArray<Int2>();
+            }
+                
+            if (version >= 5)
+            {
+                var blockIndexes = r.ReadArray<int>(); // block indexes, -1 means itemIndexes will have the value instead
+                var usedBlocks = new CGameCtnBlock[blockIndexes.Length];
+                var blocksWithoutUnassigned = n.blocks!.Where(x => x.Flags != -1).ToArray();
 
-                if (version >= 5)
+                for (var i = 0; i < blockIndexes.Length; i++)
                 {
-                    if (version < 6)
+                    var index = blockIndexes[i];
+
+                    if (index > -1)
                     {
-                        U03 = r.ReadInt32();
+                        usedBlocks[i] = blocksWithoutUnassigned[index];
                     }
+                }
 
-                    var blockIndexes = r.ReadArray<int>(); // block indexes, -1 means itemIndexes will have the value instead
-                    var usedBlocks = new CGameCtnBlock[blockIndexes.Length];
+                var usedItems = default(CGameCtnAnchoredObject[]);
 
-                    for (var i = 0; i < blockIndexes.Length; i++)
-                    {
-                        var index = blockIndexes[i];
-
-                        if (index > -1)
-                        {
-                            usedBlocks[i] = n.blocks![index];
-                        }
-                    }
-
+                if (version >= 6)
+                {
                     var itemIndexes = r.ReadArray<int>(); // item indexes
-                    var usedItems = new CGameCtnAnchoredObject[itemIndexes.Length];
+                    usedItems = new CGameCtnAnchoredObject[itemIndexes.Length];
 
                     for (var i = 0; i < itemIndexes.Length; i++)
                     {
@@ -3441,49 +3441,47 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                             usedItems[i] = n.anchoredObjects![index];
                         }
                     }
+                }
 
-                    if (version >= 6)
+                var snapItemGroups = r.ReadArray<int>(); // snap item group - only some snapped items will delete on a block. they are consistent numbers
+
+                if (version != 6)
+                {
+                    var U07 = r.ReadArray<int>();
+
+                    if (U07.Any(x => x != -1))
                     {
-                        var snapItemGroups = r.ReadArray<int>(); // snap item group - only some snapped items will delete on a block. they are consistent numbers
-                        var U07 = r.ReadArray<int>();
-
-                        if (U07.Any(x => x != -1))
-                        {
-                            throw new NotSupportedException("U07 has something else than -1");
-                        }
-
-                        if (version >= 7)
-                        {
-                            // always the same count as anchoredObjects
-                            var snappedIndexes = r.ReadArray<int>(); // "snapped onto block/item" indexes
-
-                            for (var i = 0; i < snappedIndexes.Length; i++)
-                            {
-                                var snappedIndex = snappedIndexes[i];
-
-                                if (snappedIndex <= -1)
-                                {
-                                    continue;
-                                }
-
-                                var usedBlock = usedBlocks[snappedIndex];
-
-                                if (usedBlock is not null)
-                                {
-                                    n.anchoredObjects[i].SnappedOnBlock = usedBlock;
-                                }
-
-                                var usedItem = usedItems[snappedIndex];
-
-                                if (usedItem is not null)
-                                {
-                                    n.anchoredObjects[i].SnappedOnItem = usedItem;
-                                }
-
-                                n.anchoredObjects[i].SnappedOnGroup = snapItemGroups[snappedIndex];
-                            }
-                        }
+                        throw new NotSupportedException("U07 has something else than -1");
                     }
+                }
+
+                // always the same count as anchoredObjects
+                var snappedIndexes = r.ReadArray<int>(); // "snapped onto block/item" indexes
+
+                for (var i = 0; i < snappedIndexes.Length; i++)
+                {
+                    var snappedIndex = snappedIndexes[i];
+
+                    if (snappedIndex <= -1)
+                    {
+                        continue;
+                    }
+
+                    var usedBlock = usedBlocks[snappedIndex];
+
+                    if (usedBlock is not null)
+                    {
+                        n.anchoredObjects[i].SnappedOnBlock = usedBlock;
+                    }
+
+                    var usedItem = usedItems?[snappedIndex];
+
+                    if (usedItem is not null)
+                    {
+                        n.anchoredObjects[i].SnappedOnItem = usedItem;
+                    }
+
+                    n.anchoredObjects[i].SnappedOnGroup = snapItemGroups[snappedIndex];
                 }
             }
 
@@ -3501,117 +3499,114 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             itemW.Write(10);
             itemW.WriteNodeArray(n.anchoredObjects);
 
-            if (version >= 1)
+            if (version >= 1 && version != 5)
             {
                 itemW.WriteArray(U02);
+            }
 
-                if (version >= 5)
+            if (version >= 5)
+            {
+                var blockDict = new Dictionary<CGameCtnBlock, int>();
+
+                if (n.blocks is not null)
                 {
-                    if (version < 6)
+                    for (var i = 0; i < n.blocks.Count; i++)
                     {
-                        itemW.Write(U03.GetValueOrDefault());
-                    }
-
-                    var blockDict = new Dictionary<CGameCtnBlock, int>();
-
-                    if (n.blocks is not null)
-                    {
-                        for (var i = 0; i < n.blocks.Count; i++)
-                        {
-                            blockDict[n.blocks[i]] = i;
-                        }
-                    }
-
-                    var itemDict = new Dictionary<CGameCtnAnchoredObject, int>();
-
-                    if (n.anchoredObjects is not null)
-                    {
-                        for (var i = 0; i < n.anchoredObjects.Count; i++)
-                        {
-                            itemDict[n.anchoredObjects[i]] = i;
-                        }
-                    }
-
-                    var usedBlockIndexHashSet = new HashSet<(int blockIndex, int group)>();
-                    var usedBlockIndexList = new List<(int blockIndex, int group)>();
-                    var usedItemIndexHashSet = new HashSet<(int itemIndex, int group)>();
-                    var usedItemIndexList = new List<(int itemIndex, int group)>();
-
-                    var indiciesOnUsedBlocksAndItems = new Dictionary<(int index, int group), int>();
-                    var snappedOnIndicies = new List<int>(n.anchoredObjects?.Count ?? 0);
-
-                    foreach (var item in n.GetAnchoredObjects())
-                    {
-                        if (item.SnappedOnBlock is null && item.SnappedOnItem is null)
-                        {
-                            snappedOnIndicies.Add(-1);
-                            continue;
-                        }
-
-                        var groupIndex = item.SnappedOnGroup ?? 0;
-                        var unique = (-1, groupIndex);
-
-                        if (item.SnappedOnBlock is not null)
-                        {
-                            var blockIndex = blockDict[item.SnappedOnBlock];
-
-                            unique = (blockIndex, groupIndex);
-
-                            if (!usedBlockIndexHashSet.Contains(unique))
-                            {
-                                usedBlockIndexList.Add(unique);
-                                usedBlockIndexHashSet.Add(unique);
-
-                                if (item.SnappedOnItem is null)
-                                {
-                                    usedItemIndexList.Add((-1, groupIndex));
-                                }
-                            }
-                        }
-
-                        if (item.SnappedOnItem is not null)
-                        {
-                            var itemIndex = itemDict[item.SnappedOnItem];
-
-                            unique = (itemIndex, groupIndex);
-
-                            if (!usedItemIndexHashSet.Contains(unique))
-                            {
-                                usedItemIndexList.Add(unique);
-                                usedItemIndexHashSet.Add(unique);
-
-                                if (item.SnappedOnBlock is null)
-                                {
-                                    usedBlockIndexList.Add((-1, groupIndex));
-                                }
-                            }
-                        }
-
-                        if (indiciesOnUsedBlocksAndItems.TryGetValue(unique, out int indexOfBlockOrItemIndex))
-                        {
-                            snappedOnIndicies.Add(indexOfBlockOrItemIndex);
-                        }
-                        else
-                        {
-                            indiciesOnUsedBlocksAndItems[unique] = indiciesOnUsedBlocksAndItems.Count;
-                            snappedOnIndicies.Add(indiciesOnUsedBlocksAndItems.Count - 1);
-                        }
-                    }
-
-                    itemW.WriteArray(usedBlockIndexList.Select(x => x.blockIndex).ToArray());
-                    itemW.WriteArray(usedItemIndexList.Select(x => x.itemIndex).ToArray());
-
-                    if (version >= 6)
-                    {
-                        itemW.WriteArray(usedBlockIndexList.Select(x => x.group).ToArray());
-                        itemW.WriteArray(Enumerable.Repeat(-1, usedBlockIndexList.Count).ToArray());
-
-                        if (version >= 7)
-                        {
-                            itemW.WriteArray(snappedOnIndicies.ToArray());
-                        }
+                        blockDict[n.blocks[i]] = i;
                     }
                 }
+
+                var itemDict = new Dictionary<CGameCtnAnchoredObject, int>();
+
+                if (n.anchoredObjects is not null)
+                {
+                    for (var i = 0; i < n.anchoredObjects.Count; i++)
+                    {
+                        itemDict[n.anchoredObjects[i]] = i;
+                    }
+                }
+
+                var usedBlockIndexHashSet = new HashSet<(int blockIndex, int group)>();
+                var usedBlockIndexList = new List<(int blockIndex, int group)>();
+                var usedItemIndexHashSet = new HashSet<(int itemIndex, int group)>();
+                var usedItemIndexList = new List<(int itemIndex, int group)>();
+
+                var indiciesOnUsedBlocksAndItems = new Dictionary<(int index, int group), int>();
+                var snappedOnIndicies = new List<int>(n.anchoredObjects?.Count ?? 0);
+
+                foreach (var item in n.GetAnchoredObjects())
+                {
+                    if (item.SnappedOnBlock is null && item.SnappedOnItem is null)
+                    {
+                        snappedOnIndicies.Add(-1);
+                        continue;
+                    }
+
+                    var groupIndex = item.SnappedOnGroup ?? 0;
+                    var unique = (-1, groupIndex);
+
+                    if (item.SnappedOnBlock is not null)
+                    {
+                        var blockIndex = blockDict[item.SnappedOnBlock];
+
+                        unique = (blockIndex, groupIndex);
+
+                        if (!usedBlockIndexHashSet.Contains(unique))
+                        {
+                            usedBlockIndexList.Add(unique);
+                            usedBlockIndexHashSet.Add(unique);
+
+                            if (item.SnappedOnItem is null)
+                            {
+                                usedItemIndexList.Add((-1, groupIndex));
+                            }
+                        }
+                    }
+
+                    if (item.SnappedOnItem is not null)
+                    {
+                        var itemIndex = itemDict[item.SnappedOnItem];
+
+                        unique = (itemIndex, groupIndex);
+
+                        if (!usedItemIndexHashSet.Contains(unique))
+                        {
+                            usedItemIndexList.Add(unique);
+                            usedItemIndexHashSet.Add(unique);
+
+                            if (item.SnappedOnBlock is null)
+                            {
+                                usedBlockIndexList.Add((-1, groupIndex));
+                            }
+                        }
+                    }
+
+                    if (indiciesOnUsedBlocksAndItems.TryGetValue(unique, out int indexOfBlockOrItemIndex))
+                    {
+                        snappedOnIndicies.Add(indexOfBlockOrItemIndex);
+                    }
+                    else
+                    {
+                        indiciesOnUsedBlocksAndItems[unique] = indiciesOnUsedBlocksAndItems.Count;
+                        snappedOnIndicies.Add(indiciesOnUsedBlocksAndItems.Count - 1);
+                    }
+                }
+
+                itemW.WriteArray(usedBlockIndexList.Select(x => x.blockIndex).ToArray());
+
+                if (version >= 6)
+                {
+                    itemW.WriteArray(usedItemIndexList.Select(x => x.itemIndex).ToArray());
+                }
+
+                itemW.WriteArray(usedBlockIndexList.Select(x => x.group).ToArray());
+
+                if (version != 6)
+                {
+                    itemW.WriteArray(Enumerable.Repeat(-1, usedBlockIndexList.Count).ToArray());
+                }
+
+                itemW.WriteArray(snappedOnIndicies.ToArray());
             }
 
             w.Write((int)itemMs.Length);

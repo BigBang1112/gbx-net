@@ -224,7 +224,7 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
 
                         if (version >= 7)
                         {
-                            if ((n.flags & 0x4) == 0x4)
+                            if ((n.flags & 4) == 4)
                             {
                                 rw.FileRef(ref n.packDesc);
                             }
