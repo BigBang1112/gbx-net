@@ -3415,8 +3415,15 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                         U03 = r.ReadInt32();
                     }
                     
-                    U04 = r.ReadArray<int>();
+                    U04 = r.ReadArray<int>(); // block indexes that follow flag 21/22
                     U05 = r.ReadArray<int>();
+
+                    var usedBlocks = new CGameCtnBlock[U04.Length];
+
+                    for (var i = 0; i < U04.Length; i++)
+                    {
+                        usedBlocks[i] = n.blocks![U04[i]];
+                    }
 
                     if (version >= 6)
                     {
@@ -3425,7 +3432,18 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
                         if (version >= 7)
                         {
-                            U08 = r.ReadArray<int>();
+                            // always the same count as anchoredObjects
+                            U08 = r.ReadArray<int>(); // snapped onto block index?
+
+                            for (var i = 0; i < U08.Length; i++)
+                            {
+                                var snappedIndex = U08[i];
+
+                                if (snappedIndex > -1)
+                                {
+                                    n.anchoredObjects[i].SnappedOn = usedBlocks[snappedIndex];
+                                }
+                            }
                         }
                     }
                 }
