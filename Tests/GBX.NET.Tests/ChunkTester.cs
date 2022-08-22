@@ -1,8 +1,10 @@
-﻿using GBX.NET.Managers;
+﻿using GBX.NET.Extensions;
+using GBX.NET.Managers;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 
 namespace GBX.NET.Tests;
 
@@ -13,9 +15,11 @@ internal abstract class ChunkTester<TNode, TChunk> : IDisposable where TNode : N
     public TChunk Chunk { get; }
     public string NodeName { get; }
     public string ChunkName { get; }
-    public GameBox<TNode> Gbx { get; }
     public ZipArchive Zip { get; }
     public ZipArchiveEntry ChunkEntry { get; }
+    public int? IdVersion { get; set; }
+    public bool IdIsWritten { get; set; }
+    public List<string>? IdStrings { get; set; }
 
     public ChunkTester(string gameVersion)
     {
@@ -39,11 +43,8 @@ internal abstract class ChunkTester<TNode, TChunk> : IDisposable where TNode : N
         NodeName = Node.GetType().Name;
         ChunkName = Chunk.GetType().Name;
 
-        Gbx = new GameBox<TNode>(Node)
-        {
-            IdVersion = 3,
-            IdIsWritten = true
-        };
+        IdVersion = 3;
+        IdIsWritten = true;
 
         if (!File.Exists(GetZipPath()))
         {
@@ -56,13 +57,12 @@ internal abstract class ChunkTester<TNode, TChunk> : IDisposable where TNode : N
 
     public void SetIdState(int? version = 3, IEnumerable<string>? strings = null)
     {
-        Gbx.IdVersion = version;
-        Gbx.IdIsWritten = version.HasValue;
+        IdVersion = version;
+        IdIsWritten = version.HasValue;
 
         if (strings is not null)
         {
-            Gbx.IdStringsInReadMode.AddRange(strings);
-            Gbx.IdStringsInWriteMode.AddRange(strings);
+            IdStrings = strings.ToList();
         }
     }
 

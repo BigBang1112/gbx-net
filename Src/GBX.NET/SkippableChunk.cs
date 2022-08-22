@@ -69,12 +69,12 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
         }
 
         using var ms = new MemoryStream(Data);
-        using var r = new GameBoxReader(ms, Gbx);
+        using var r = new GameBoxReader(ms, Gbx, asyncAction: null, logger: null);
         var rw = new GameBoxReaderWriter(r);
 
         if (hasOwnIdState)
         {
-            Gbx?.ResetIdState();
+            //Gbx?.ResetIdState();
         }
 
         try

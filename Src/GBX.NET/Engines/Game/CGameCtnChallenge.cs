@@ -2435,7 +2435,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             rw.Ident(ref n.decoration);
         }
 
-        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
             rw.Ident(ref n.mapInfo!);
             rw.Int3(ref n.size);
@@ -2463,7 +2463,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             rw.EnumInt32<MapKind>(ref n.kind);
         }
 
-        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
             n.blockStock = await rw.NodeRefAsync(n.blockStock, cancellationToken);
             n.challengeParameters = await rw.NodeRefAsync(n.challengeParameters, cancellationToken);
@@ -2881,7 +2881,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupEndRace);
         }
 
-        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
             n.clipIntro = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipIntro, cancellationToken);
             n.clipGroupInGame = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupInGame, cancellationToken);
@@ -3152,8 +3152,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x03D skippable chunk (lightmaps)
     /// </summary>
-    [Chunk(0x0304303D, "lightmaps")]
-    [ChunkWithOwnIdState]
+    [Chunk(0x0304303D, "lightmaps", hasOwnIdState: true)]
     public class Chunk0304303D : SkippableChunk<CGameCtnChallenge>
     {
         private int version = 4;
@@ -3165,17 +3164,13 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version {get => version; set => version = value; }
 
         public int? LightmapCacheDataUncompressedSize { get; set; }
         public byte[]? LightmapCacheData { get; set; }
         public bool EnableWriteOfCompressedData { get; set; }
 
-        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
             rw.Boolean(ref U01);
 
@@ -3184,23 +3179,23 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 return;
             }
 
-            ReadWriteSHmsLightMapCacheSmall(n, rw, logger);
+            ReadWriteSHmsLightMapCacheSmall(n, rw);
         }
 
-        public void ReadWriteSHmsLightMapCacheSmall(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger)
+        public void ReadWriteSHmsLightMapCacheSmall(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
             if (rw.Reader is not null)
             {
-                ReadSHmsLightMapCacheSmall(n, rw.Reader, logger);
+                ReadSHmsLightMapCacheSmall(n, rw.Reader);
             }
 
             if (rw.Writer is not null)
             {
-                WriteSHmsLightMapCacheSmall(n, rw.Writer, logger);
+                WriteSHmsLightMapCacheSmall(n, rw.Writer);
             }
         }
 
-        public void ReadSHmsLightMapCacheSmall(CGameCtnChallenge n, GameBoxReader r, ILogger? logger)
+        public void ReadSHmsLightMapCacheSmall(CGameCtnChallenge n, GameBoxReader r)
         {
             version = r.ReadInt32();
 
@@ -3252,9 +3247,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 #else
                 using var zlib = new CompressedStream(ms, CompressionMode.Decompress);
 #endif
-                using var gbxr = new GameBoxReader(zlib, r.Settings, logger);
+                using var gbxr = new GameBoxReader(zlib, r);
 
-                n.lightmapCache = Parse<CHmsLightMapCache>(gbxr, 0x06022000, progress: null, logger);
+                n.lightmapCache = Parse<CHmsLightMapCache>(gbxr, 0x06022000, progress: null);
 
                 using var restMs = new MemoryStream();
                 zlib.CopyTo(restMs);
@@ -3262,7 +3257,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             }
         }
 
-        public void WriteSHmsLightMapCacheSmall(CGameCtnChallenge n, GameBoxWriter w, ILogger? logger)
+        public void WriteSHmsLightMapCacheSmall(CGameCtnChallenge n, GameBoxWriter w)
         {
             w.Write(version);
 
@@ -3298,9 +3293,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             {
 #if NET6_0_OR_GREATER
                 using var ms = new MemoryStream();
-                using var gbxw = new GameBoxWriter(ms, w.Settings, logger);
+                using var gbxw = new GameBoxWriter(ms, w);
 
-                n.lightmapCache?.Write(gbxw, logger);
+                n.lightmapCache?.Write(gbxw);
                 gbxw.Write(DataAfterLightmapCache ?? Array.Empty<byte>());
 
                 w.Write((int)ms.Length);
@@ -3374,8 +3369,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x040 skippable chunk (items)
     /// </summary>
-    [Chunk(0x03043040, "items")]
-    [ChunkWithOwnIdState]
+    [Chunk(0x03043040, "items", hasOwnIdState: true)]
     public class Chunk03043040 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private int version = 4;
@@ -3394,7 +3388,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         /// </summary>
         public int Version { get => version; set => version = value; }
 
-        public override void Read(CGameCtnChallenge n, GameBoxReader r, ILogger? logger)
+        public override void Read(CGameCtnChallenge n, GameBoxReader r)
         {
             version = r.ReadInt32();
             U01 = r.ReadInt32();
@@ -3403,7 +3397,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             _ = r.ReadInt32(); // 10
             n.anchoredObjects = r.ReadList(r =>
             {
-                var node = Parse<CGameCtnAnchoredObject>(r, classId: null, progress: null, logger)!;
+                var node = Parse<CGameCtnAnchoredObject>(r, classId: null, progress: null)!;
                 ((INodeDependant<CGameCtnChallenge>)node).DependingNode = n;
                 return node;
             });
@@ -3436,13 +3430,13 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             }
         }
 
-        public override void Write(CGameCtnChallenge n, GameBoxWriter w, ILogger? logger)
+        public override void Write(CGameCtnChallenge n, GameBoxWriter w)
         {
             w.Write(Version);
             w.Write(U01);
 
             using var itemMs = new MemoryStream();
-            using var itemW = new GameBoxWriter(itemMs, w.Settings, logger);
+            using var itemW = new GameBoxWriter(itemMs, w);
 
             itemW.Write(10);
             itemW.WriteNodeArray(n.anchoredObjects);
@@ -3514,45 +3508,38 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x043 skippable chunk (generalogies)
     /// </summary>
-    [Chunk(0x03043043, "generalogies")]
-    [ChunkWithOwnIdState]
-    public class Chunk03043043 : SkippableChunk<CGameCtnChallenge>, IVersionable
+    [Chunk(0x03043043, "generalogies", hasOwnIdState: true)]
+    public class Chunk03043043 : SkippableChunk<CGameCtnChallenge>
     {
+        public int U01;
+
         /// <summary>
         /// Version of the chunk.
         /// </summary>
         public int Version { get; set; }
 
-        public new byte[]? Data { get; set; }
-
-        public override void Read(CGameCtnChallenge n, GameBoxReader r, ILogger? logger)
+        public override void Read(CGameCtnChallenge n, GameBoxReader r)
         {
-            Version = r.ReadInt32();
+            U01 = r.ReadInt32();
             var sizeOfNodeWithClassID = r.ReadInt32();
-            Data = r.ReadBytes(sizeOfNodeWithClassID);
 
-            // Run this only when calling Genealogies property
-
-            using var ms = new MemoryStream(Data);
-            using var r2 = new GameBoxReader(ms, r.Settings, logger);
-
-            n.genealogies = r2.ReadArray(r =>
+            n.genealogies = r.ReadArray(r =>
             {
-                return Parse<CGameCtnZoneGenealogy>(r, classId: null, progress: null, logger)!;
+                return Parse<CGameCtnZoneGenealogy>(r, classId: null, progress: null)!;
             });
         }
         
-        public override void Write(CGameCtnChallenge n, GameBoxWriter w, ILogger? logger)
+        public override void Write(CGameCtnChallenge n, GameBoxWriter w)
         {
-            w.Write(Version);
+            w.Write(U01);
 
             using var ms = new MemoryStream();
-            using var w1 = new GameBoxWriter(ms, w.Settings, logger);
+            using var w1 = new GameBoxWriter(ms, w);
 
             w1.WriteArray(n.genealogies, (x, w) =>
             {
                 w.Write(0x0311D000);
-                x.Write(w, logger);
+                x.Write(w);
             });
 
             w.Write((int)ms.Length);
@@ -3754,7 +3741,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             }
         }
 
-        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
             rw.Int32(ref version);
 
@@ -3939,8 +3926,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x054 skippable chunk (embedded objects)
     /// </summary>
-    [Chunk(0x03043054, "embedded objects")]
-    [ChunkWithOwnIdState]
+    [Chunk(0x03043054, "embedded objects", hasOwnIdState: true)]
     public class Chunk03043054 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         public int U01;
@@ -3980,13 +3966,13 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             Textures = r.ReadArray(r => r.ReadString());
         }
 
-        public override void Write(CGameCtnChallenge n, GameBoxWriter w, ILogger? logger)
+        public override void Write(CGameCtnChallenge n, GameBoxWriter w)
         {
             w.Write(Version);
             w.Write(U01);
 
             using var ms = new MemoryStream();
-            using var writer = new GameBoxWriter(ms, w.Settings, logger);
+            using var writer = new GameBoxWriter(ms, w);
 
             var embedded = new List<Ident>();
 
@@ -4074,7 +4060,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         /// </summary>
         public int Version { get => version; set => version = value; }
 
-        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
             rw.Int32(0);
@@ -4204,8 +4190,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x05B skippable chunk (lightmaps) [TM2020]
     /// </summary>
-    [Chunk(0x0304305B, "lightmaps")]
-    [ChunkWithOwnIdState]
+    [Chunk(0x0304305B, "lightmaps", hasOwnIdState: true)]
     public class Chunk0304305B : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private readonly Chunk0304303D chunk0304303D = new();
@@ -4221,7 +4206,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         public bool U02;
         public bool U03;
 
-        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
 
@@ -4234,7 +4219,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 return;
             }
 
-            chunk0304303D.ReadWriteSHmsLightMapCacheSmall(n, rw, logger);
+            chunk0304303D.ReadWriteSHmsLightMapCacheSmall(n, rw);
         }
     }
 
@@ -4353,12 +4338,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             Version = r.ReadInt32();
 
-            if (n.blocks is not null)
+            foreach (var block in n.GetBlocks())
             {
-                foreach (var block in n.blocks)
-                {
-                    block.Color = (DifficultyColor)r.ReadByte();
-                }
+                block.Color = (DifficultyColor)r.ReadByte();
             }
 
             if (n.BakedBlocks is not null)
@@ -4382,12 +4364,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             w.Write(Version);
 
-            if (n.blocks is not null)
+            foreach (var block in n.GetBlocks())
             {
-                foreach (var block in n.blocks)
-                {
-                    w.Write((byte)block.Color.GetValueOrDefault());
-                }
+                w.Write((byte)block.Color.GetValueOrDefault());
             }
 
             if (n.BakedBlocks is not null)

@@ -84,7 +84,7 @@ public partial class CGameCtnMediaClipGroup : CMwNod
             });
         }
 
-        public override async Task ReadAsync(CGameCtnMediaClipGroup n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadAsync(CGameCtnMediaClipGroup n, GameBoxReader r, CancellationToken cancellationToken = default)
         {
             ClipsVersion = r.ReadInt32();
 
@@ -152,7 +152,7 @@ public partial class CGameCtnMediaClipGroup : CMwNod
             });
         }
 
-        public override async Task ReadAsync(CGameCtnMediaClipGroup n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadAsync(CGameCtnMediaClipGroup n, GameBoxReader r, CancellationToken cancellationToken = default)
         {
             ClipsVersion = r.ReadInt32();
 
@@ -231,7 +231,7 @@ public partial class CGameCtnMediaClipGroup : CMwNod
             });
         }
 
-        public override async Task ReadAsync(CGameCtnMediaClipGroup n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadAsync(CGameCtnMediaClipGroup n, GameBoxReader r, CancellationToken cancellationToken = default)
         {
             ClipsVersion = r.ReadInt32();
 

@@ -444,7 +444,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             var u04 = r.ReadInt32();
         }
 
-        public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, CancellationToken cancellationToken = default)
         {
             Version = r.ReadInt32();
 
@@ -526,7 +526,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             n.clip = r.ReadNodeRef<CGameCtnMediaClip>();
         }
 
-        public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, CancellationToken cancellationToken = default)
         {
             n.clip = await r.ReadNodeRefAsync<CGameCtnMediaClip>(cancellationToken);
         }
@@ -635,7 +635,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             n.simpleEventsDisplay = r.ReadNodeRef<CCtnMediaBlockUiTMSimpleEvtsDisplay>();
         }
 
-        public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, CancellationToken cancellationToken = default)
         {
             n.simpleEventsDisplay = await r.ReadNodeRefAsync<CCtnMediaBlockUiTMSimpleEvtsDisplay>(cancellationToken);
         }
@@ -692,7 +692,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             n.extras = r.ReadArray(r => r.ReadInt64());
         }
 
-        public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, CancellationToken cancellationToken = default)
         {
             listVersion = r.ReadInt32();
             n.ghosts = (await r.ReadArrayAsync(r => r.ReadNodeRefAsync<CGameCtnGhost>()!))!;
@@ -716,7 +716,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             n.clip = r.ReadNodeRef<CGameCtnMediaClip>();
         }
 
-        public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, CancellationToken cancellationToken = default)
         {
             n.clip = await r.ReadNodeRefAsync<CGameCtnMediaClip>(cancellationToken);
         }
@@ -782,7 +782,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             n.recordData = r.ReadNodeRef<CPlugEntRecordData>();
         }
 
-        public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, CancellationToken cancellationToken = default)
         {
             U01 = r.ReadInt32();
             U02 = r.ReadInt32();

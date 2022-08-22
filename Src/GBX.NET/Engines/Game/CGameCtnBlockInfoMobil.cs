@@ -85,7 +85,7 @@ public class CGameCtnBlockInfoMobil : CMwNod
 
         public int Version { get => version; set => version = value; }
 
-        public override void ReadWrite(CGameCtnBlockInfoMobil n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CGameCtnBlockInfoMobil n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
 

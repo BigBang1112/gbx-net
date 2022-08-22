@@ -132,7 +132,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMedia
             ReadWriteAfterGhost(n, rw);
         }
 
-        public override async Task ReadWriteAsync(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadWriteAsync(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
             ReadWriteBeforeGhost(n, rw);
             n.ghostModel = (await rw.NodeRefAsync<CGameCtnGhost>(n.ghostModel!, cancellationToken))!;
@@ -182,7 +182,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMedia
             ReadWriteAfterGhost(n, rw);
         }
 
-        public override async Task ReadWriteAsync(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadWriteAsync(CGameCtnMediaBlockGhost n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
             ReadWriteBeforeGhost(n, rw);
             n.ghostModel = (await rw.NodeRefAsync<CGameCtnGhost>(n.ghostModel!, cancellationToken))!;

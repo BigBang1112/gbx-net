@@ -61,17 +61,17 @@ public abstract class CPlugVisualIndexed : CPlugVisual3D
         public bool U01;
         public int Flags;
 
-        public override void Read(CPlugVisualIndexed n, GameBoxReader r, ILogger? logger)
+        public override void Read(CPlugVisualIndexed n, GameBoxReader r)
         {
             U01 = r.ReadBoolean();
 
             if (U01)
             {
-                n.indexBuffer = Parse<CPlugIndexBuffer>(r, 0x9057000, progress: null, logger);
+                n.indexBuffer = Parse<CPlugIndexBuffer>(r, 0x9057000, progress: null);
             }
         }
 
-        public override void Write(CPlugVisualIndexed n, GameBoxWriter w, ILogger? logger)
+        public override void Write(CPlugVisualIndexed n, GameBoxWriter w)
         {
             w.Write(U01);
 
@@ -83,7 +83,7 @@ public abstract class CPlugVisualIndexed : CPlugVisual3D
                     return;
                 }
 
-                n.indexBuffer.Write(w, logger);
+                n.indexBuffer.Write(w);
             }
         }
     }

@@ -12,13 +12,12 @@ public partial class GameBox
     /// <exception cref="IOException">An I/O error occurs.</exception>
     private static GameBox ParseHeaderWithoutProcessing(GameBoxReader reader,
                                                         IProgress<GameBoxReadProgress>? progress,
-                                                        ILogger? logger,
                                                         out Type? classType,
                                                         out bool isRefTableCompressed)
     {
         var fileName = reader.BaseStream is FileStream fs ? fs.Name : null;
 
-        var header = GameBoxHeader.Parse(reader, logger);
+        var header = GameBoxHeader.Parse(reader);
 
         //progress?.Report(new GameBoxReadProgress(header));
 
@@ -76,7 +75,7 @@ public partial class GameBox
     {
         using var r = new GameBoxReader(stream, logger: logger);
 
-        var gbx = ParseHeaderWithoutProcessing(r, progress, logger, out Type? classType, out bool isRefTableCompressed);
+        var gbx = ParseHeaderWithoutProcessing(r, progress, out Type? classType, out bool isRefTableCompressed);
 
         // I didn't see a compressed reference table yet
         // if anyone did, let me know!
@@ -107,7 +106,7 @@ public partial class GameBox
         }
 
         using var ms = new MemoryStream(header.UserData);
-        var headerR = new GameBoxReader(ms, gbx, logger: logger);
+        var headerR = new GameBoxReader(ms, gbx, asyncAction: null, logger);
 
         header.ProcessUserData(gbx.Node, classType, headerR, logger);
 
@@ -228,10 +227,10 @@ public partial class GameBox
             return gbx;
         }
 
-        using var bodyR = new GameBoxReader(stream, gbx, logger: logger);
+        using var bodyR = new GameBoxReader(stream, gbx, asyncAction: null, logger);
 
         // Body resets Id (lookback string) list
-        GameBoxBody.Read(node, header, bodyR, progress, readUncompressedBodyDirectly, logger);
+        GameBoxBody.Read(node, header, bodyR, progress, readUncompressedBodyDirectly);
 
         return gbx;
     }
@@ -509,7 +508,7 @@ public partial class GameBox
         using var bodyR = new GameBoxReader(stream, gbx, asyncAction, logger);
 
         // Body resets Id (lookback string) list
-        await GameBoxBody.ReadAsync(node, header, bodyR, readUncompressedBodyDirectly, logger, asyncAction, cancellationToken);
+        await GameBoxBody.ReadAsync(node, header, bodyR, readUncompressedBodyDirectly, asyncAction, cancellationToken);
 
         return gbx;
     }

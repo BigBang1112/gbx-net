@@ -55,12 +55,12 @@ public class CSceneMobil : CSceneObject
     [Chunk(0x0A011005)]
     public class Chunk0A011005 : Chunk<CSceneMobil>
     {
-        public override void Read(CSceneMobil n, GameBoxReader r, ILogger? logger)
+        public override void Read(CSceneMobil n, GameBoxReader r)
         {
-            n.item = Parse<CHmsItem>(r, 0x06003000, progress: null, logger, ignoreZeroIdChunk: true); // direct node
+            n.item = Parse<CHmsItem>(r, 0x06003000, progress: null, ignoreZeroIdChunk: true); // direct node
         }
 
-        public override void Write(CSceneMobil n, GameBoxWriter w, ILogger? logger)
+        public override void Write(CSceneMobil n, GameBoxWriter w)
         {
             if (n.item is null)
             {
@@ -68,7 +68,7 @@ public class CSceneMobil : CSceneObject
             }
             else
             {
-                n.item.Write(w, logger);
+                n.item.Write(w);
             }
         }
     }

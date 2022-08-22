@@ -39,7 +39,7 @@ public class CGameCtnDecorationAudio : CMwNod
             rw.DictionaryNode(ref n.musics, keyReaderWriter: (r => r.ReadId(), (x, w) => w.WriteId(x)));
         }
 
-        public override async Task ReadWriteAsync(CGameCtnDecorationAudio n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadWriteAsync(CGameCtnDecorationAudio n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
             n.sounds = await rw.DictionaryNodeAsync(n.sounds, keyReaderWriter: (r => r.ReadId(), (x, w) => w.WriteId(x)), cancellationToken: cancellationToken);
             n.musics = await rw.DictionaryNodeAsync(n.musics, keyReaderWriter: (r => r.ReadId(), (x, w) => w.WriteId(x)), cancellationToken: cancellationToken);

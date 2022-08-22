@@ -10,23 +10,32 @@ public class ChunkAttribute : Attribute
     /// Full ID of the chunk.
     /// </summary>
     public uint ID { get; }
+    
     /// <summary>
     /// If the chunk should be read immediately after finding. You should always set this to true if the chunk is skippable and contains a lookback string (or meta). This property is ignored for unskippable chunks (those inheriting <see cref="Chunk{T}"/>).
     /// </summary>
     public bool ProcessSync { get; }
+    
     /// <summary>
     /// Very short lowercase description of the chunk.
     /// </summary>
     public string Description { get; }
+
+    public bool HasOwnIdState { get; }
+
+    /// <summary>
+    /// If the chunk shouldn't be read immediately, but should be read before being written back. You should usually set this to true in cases where there's an <see cref="Id"/> in skippable chunk and <see cref="ProcessSync"/> wasn't set to true, as this fixes problems with <see cref="Id"/> indexes.
+    /// </summary>
+    private bool ParseBeforeWrite { get; set; }
 
     /// <summary>
     /// Assigns an ID to a chunk.
     /// </summary>
     /// <param name="chunkID">Full ID of the chunk.</param>
     /// <param name="description">Very short description of the chunk.</param>
-    public ChunkAttribute(uint chunkID, string description = "") : this(chunkID, false, description)
+    public ChunkAttribute(uint chunkID, string description = "", bool hasOwnIdState = false) : this(chunkID, false, description)
     {
-
+        HasOwnIdState = hasOwnIdState;
     }
 
     /// <summary>

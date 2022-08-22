@@ -281,7 +281,7 @@ public class CPlugEntRecordData : CMwNod
         public int CompressedSize { get; private set; }
         public int UncompressedSize { get; private set; }
 
-        public override void Read(CPlugEntRecordData n, GameBoxReader r, ILogger? logger)
+        public override void Read(CPlugEntRecordData n, GameBoxReader r)
         {
             Version = r.ReadInt32(); // 10
             UncompressedSize = r.ReadInt32();

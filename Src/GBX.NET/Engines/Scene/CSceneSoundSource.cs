@@ -19,9 +19,9 @@ public class CSceneSoundSource : CScenePoc
     {
         public CHmsSoundSource? U01;
 
-        public override void Read(CSceneSoundSource n, GameBoxReader r, ILogger? logger)
+        public override void Read(CSceneSoundSource n, GameBoxReader r)
         {
-            U01 = Parse<CHmsSoundSource>(r, 0x0600D000, progress: null, logger); // Gliding/AfterBurnout/Burnout
+            U01 = Parse<CHmsSoundSource>(r, 0x0600D000, progress: null); // Gliding/AfterBurnout/Burnout
         }
     }
 

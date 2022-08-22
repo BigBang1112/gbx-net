@@ -28,7 +28,7 @@ public class CControlList : CControlContainer
         private int U03;
         private int U04;
 
-        public override void ReadWrite(CControlList n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CControlList n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref U01);
             rw.Int32(ref U02);
@@ -72,7 +72,7 @@ public class CControlList : CControlContainer
         private float U09;
         private bool U10;
 
-        public override void ReadWrite(CControlList n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CControlList n, GameBoxReaderWriter rw)
         {
             rw.Single(ref U01);
             rw.Single(ref U02);

@@ -14,9 +14,9 @@ internal class ChunkWriteTester<TNode, TChunk> : ChunkTester<TNode, TChunk>, IDi
     public ChunkWriteTester(string gameVersion) : base(gameVersion)
     {
         ms = new MemoryStream();
-        writer = new GameBoxWriter(ms, gbx: Gbx);
+        writer = new GameBoxWriter(ms);
         expectedData = GetChunkData();
-        Gbx.IdIsWritten = true;
+        IdIsWritten = true;
     }
 
     public void Write()

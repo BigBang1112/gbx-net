@@ -174,7 +174,7 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
         /// </summary>
         public int Version { get => version; set => version = value; }
 
-        public override void ReadWrite(CGameCtnAnchoredObject n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CGameCtnAnchoredObject n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
             rw.Ident(ref n.itemModel!);
@@ -185,7 +185,7 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
 
             if (rw.Reader is not null)
             {
-                n.waypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(rw.Reader!, classId: null, progress: null, logger);
+                n.waypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(rw.Reader!, classId: null, progress: null);
             }
             
             if (rw.Writer is not null)
@@ -197,7 +197,7 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
                 else
                 {
                     rw.Writer.Write(0x2E009000);
-                    n.waypointSpecialProperty.Write(rw.Writer, logger);
+                    n.waypointSpecialProperty.Write(rw.Writer);
                 }
             }
 

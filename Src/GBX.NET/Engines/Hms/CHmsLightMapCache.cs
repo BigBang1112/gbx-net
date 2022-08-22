@@ -371,7 +371,7 @@ public partial class CHmsLightMapCache : CMwNod
     [Chunk(0x0602200B)]
     public class Chunk0602200B : SkippableChunk<CHmsLightMapCache>
     {
-        public override void ReadWrite(CHmsLightMapCache n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CHmsLightMapCache n, GameBoxReaderWriter rw)
         {
             rw.Array<int>(ref n.mapT3s);
         }
@@ -389,7 +389,7 @@ public partial class CHmsLightMapCache : CMwNod
     {
         public int U01;
 
-        public override void ReadWrite(CHmsLightMapCache n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CHmsLightMapCache n, GameBoxReaderWriter rw)
         {
             rw.EnumInt32<EQuality>(ref n.quality);
             rw.Int32(ref U01);
@@ -410,7 +410,7 @@ public partial class CHmsLightMapCache : CMwNod
         public bool U02;
         public ulong U03;
 
-        public override void ReadWrite(CHmsLightMapCache n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CHmsLightMapCache n, GameBoxReaderWriter rw)
         {
             rw.Boolean(ref U01);
             rw.Boolean(ref U02);
@@ -439,7 +439,7 @@ public partial class CHmsLightMapCache : CMwNod
         public int? U05;
         public string? U06;
 
-        public override void ReadWrite(CHmsLightMapCache n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CHmsLightMapCache n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
             rw.UInt64(ref U01);
@@ -481,7 +481,7 @@ public partial class CHmsLightMapCache : CMwNod
     [Chunk(0x06022016)]
     public class Chunk06022016 : SkippableChunk<CHmsLightMapCache>
     {
-        public override void ReadWrite(CHmsLightMapCache n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CHmsLightMapCache n, GameBoxReaderWriter rw)
         {
             rw.EnumInt32<EVersion>(ref n.version);
         }
@@ -497,7 +497,7 @@ public partial class CHmsLightMapCache : CMwNod
     [Chunk(0x06022017)]
     public class Chunk06022017 : SkippableChunk<CHmsLightMapCache>
     {
-        public override void ReadWrite(CHmsLightMapCache n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CHmsLightMapCache n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref n.decal2d);
             rw.Int32(ref n.decal3d);
@@ -516,7 +516,7 @@ public partial class CHmsLightMapCache : CMwNod
     {
         public ulong U01;
 
-        public override void ReadWrite(CHmsLightMapCache n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CHmsLightMapCache n, GameBoxReaderWriter rw)
         {
             rw.UInt64(ref U01);
         }
@@ -532,7 +532,7 @@ public partial class CHmsLightMapCache : CMwNod
     [Chunk(0x06022019)]
     public class Chunk06022019 : SkippableChunk<CHmsLightMapCache>
     {
-        public override void ReadWrite(CHmsLightMapCache n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CHmsLightMapCache n, GameBoxReaderWriter rw)
         {
             rw.EnumInt32<EQualityVer>(ref n.qualityVer);
         }
@@ -563,7 +563,7 @@ public partial class CHmsLightMapCache : CMwNod
         public int U08;
         public int U09;
 
-        public override void ReadWrite(CHmsLightMapCache n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CHmsLightMapCache n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
 

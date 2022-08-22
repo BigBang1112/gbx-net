@@ -32,7 +32,7 @@ public class CPlugTreeVisualMip : CPlugTree
             rw.DictionaryNode(ref n.levels!, overrideKey: true);
         }
 
-        public override async Task ReadWriteAsync(CPlugTreeVisualMip n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadWriteAsync(CPlugTreeVisualMip n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
             n.levels = (await rw.DictionaryNodeAsync(n.levels!, overrideKey: true, cancellationToken: cancellationToken))!;
         }

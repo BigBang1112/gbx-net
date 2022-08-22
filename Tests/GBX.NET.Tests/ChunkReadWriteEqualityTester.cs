@@ -18,8 +18,8 @@ internal class ChunkReadWriteEqualityTester<TNode, TChunk> : ChunkTester<TNode, 
     public void ReadWrite()
     {
         using var inputStream = new MemoryStream(InputData);
-        using var inputReader = new GameBoxReader(inputStream, gbx: Gbx);
-        using var outputWriter = new GameBoxWriter(OutputStream, gbx: Gbx);
+        using var inputReader = new GameBoxReader(inputStream);
+        using var outputWriter = new GameBoxWriter(OutputStream);
         var rw = new GameBoxReaderWriter(inputReader, outputWriter);
 
         Chunk.ReadWrite(Node, rw);
