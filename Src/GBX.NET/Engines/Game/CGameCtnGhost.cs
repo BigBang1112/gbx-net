@@ -975,9 +975,11 @@ public partial class CGameCtnGhost : CGameGhost
     [Chunk(0x0309201A)]
     public class Chunk0309201A : SkippableChunk<CGameCtnGhost>
     {
+        public int U01;
+
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
-
+            rw.Int32(ref U01);
         }
     }
 
