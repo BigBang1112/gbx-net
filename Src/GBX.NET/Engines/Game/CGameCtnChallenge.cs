@@ -3424,6 +3424,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     U04 = r.ReadArray<int>(); // block indexes that are used to do further stuff, sometimes dupe values
                     U05 = r.ReadArray<int>();
 
+                    if (U05.Any(x => x != -1))
+                    {
+                        throw new NotSupportedException("U05 has something else than -1");
+                    }
+
                     var usedBlocks = new CGameCtnBlock[U04.Length];
 
                     for (var i = 0; i < U04.Length; i++)
@@ -3435,6 +3440,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     {
                         U06 = r.ReadArray<int>(); // snap item group - only some snapped items will delete on a block. they are consistent numbers
                         U07 = r.ReadArray<int>();
+
+                        if (U07.Any(x => x != -1))
+                        {
+                            throw new NotSupportedException("U07 has something else than -1");
+                        }
 
                         if (version >= 7)
                         {
@@ -3494,7 +3504,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     }
 
                     var usedBlockIndexHashSet = new HashSet<(int blockIndex, int group)>();
-                    var indiciesOnUsedBlocks = new Dictionary<CGameCtnBlock, int>();
+                    var indiciesOnUsedBlocks = new Dictionary<(int blockIndex, int group), int>();
                     var snappedOnIndicies = new List<int>(n.anchoredObjects?.Count ?? 0);
 
                     foreach (var item in n.GetAnchoredObjects())
@@ -3508,15 +3518,17 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                         var blockIndex = blockDict[item.SnappedOn];
                         var groupIndex = item.SnappedOnGroup ?? 0;
 
-                        usedBlockIndexHashSet.Add((blockIndex, groupIndex));
+                        var unique = (blockIndex, groupIndex);
 
-                        if(indiciesOnUsedBlocks.TryGetValue(item.SnappedOn, out int indexOfBlockIndex))
+                        usedBlockIndexHashSet.Add(unique);
+
+                        if (indiciesOnUsedBlocks.TryGetValue(unique, out int indexOfBlockIndex))
                         {
                             snappedOnIndicies.Add(indexOfBlockIndex);
                         }
                         else
                         {
-                            indiciesOnUsedBlocks[item.SnappedOn] = indiciesOnUsedBlocks.Count;
+                            indiciesOnUsedBlocks[unique] = indiciesOnUsedBlocks.Count;
                             snappedOnIndicies.Add(indiciesOnUsedBlocks.Count - 1);
                         }
                     }
