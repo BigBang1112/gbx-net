@@ -9,35 +9,8 @@ namespace GBX.NET;
 /// <summary>
 /// Writes data types from GameBox serialization.
 /// </summary>
-public class GameBoxWriter : BinaryWriter, IGbxState
+public class GameBoxWriter : BinaryWriter
 {
-    private readonly GameBoxWriter? reference;
-
-    private int? idVersion;
-    private IList<string>? idStrings;
-    private SortedDictionary<int, Node?>? auxNodes;
-
-    public int? IdVersion
-    {
-        get => reference?.IdVersion ?? idVersion;
-        set
-        {
-            if (reference is null)
-            {
-                idVersion = value;
-            }
-            else
-            {
-                reference.IdVersion = value;
-            }
-        }
-    }
-
-    public IList<string> IdStrings => reference?.IdStrings ?? (idStrings ??= new List<string>());
-    public SortedDictionary<int, Node?> AuxNodes => reference?.AuxNodes ?? (auxNodes ??= new());
-
-    internal ILogger? Logger { get; }
-
     public IDRemap Remap { get; }
 
     /// <summary>
@@ -45,14 +18,21 @@ public class GameBoxWriter : BinaryWriter, IGbxState
     /// </summary>
     public GameBoxAsyncWriteAction? AsyncAction { get; }
 
+    internal ILogger? Logger { get; }
+
+    public GbxState State { get; }
+    private int? IdVersion { get => State.IdVersion; set => State.IdVersion = value; }
+    private IList<string> IdStrings => State.IdStrings;
+    private SortedDictionary<int, Node?> AuxNodes => State.AuxNodes;
+
     /// <summary>
     /// Constructs a binary writer specialized for Gbx serializing.
     /// </summary>
     /// <param name="output">The output stream.</param>
     /// <param name="logger">Logger.</param>
-    public GameBoxWriter(Stream output, ILogger? logger = null) : base(output, Encoding.UTF8, true)
+    public GameBoxWriter(Stream output, ILogger? logger = null) : this(output, default, default, logger, new())
     {
-        Logger = logger;
+        
     }
 
     /// <summary>
@@ -62,15 +42,23 @@ public class GameBoxWriter : BinaryWriter, IGbxState
     /// <param name="remap">Node ID remap mode.</param>
     /// <param name="asyncAction">Specialized executions during asynchronous writing.</param>
     /// <param name="logger">Logger.</param>
-    internal GameBoxWriter(Stream output, IDRemap remap, GameBoxAsyncWriteAction? asyncAction, ILogger? logger) : this(output)
+    internal GameBoxWriter(Stream output,
+                           IDRemap remap,
+                           GameBoxAsyncWriteAction? asyncAction,
+                           ILogger? logger,
+                           GbxState state)
+        : base(output, Encoding.UTF8, true)
     {
         Remap = remap;
         AsyncAction = asyncAction;
+        Logger = logger;
+        State = state;
     }
 
-    internal GameBoxWriter(Stream input, GameBoxWriter reference) : base(input)
+    internal GameBoxWriter(Stream input, GameBoxWriter reference)
+        : this(input, reference.Remap, reference.AsyncAction, reference.Logger, reference.State)
     {
-        this.reference = reference;
+        
     }
 
     /// <summary>
@@ -307,9 +295,10 @@ public class GameBoxWriter : BinaryWriter, IGbxState
 
     private void WriteIdVersionIfNotWritten()
     {
-        if (IdStrings.Count == 0)
+        if (IdVersion is null)
         {
-            Write(IdVersion ?? 3);
+            IdVersion = 3; // Not the bestest solution when a new Id version comes
+            Write(IdVersion.Value);
         }
     }
 

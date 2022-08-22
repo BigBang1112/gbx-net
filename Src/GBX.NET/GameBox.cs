@@ -35,7 +35,7 @@ public partial class GameBox
     public GameBoxBody? RawBody { get; private set; }
     public GameBoxBodyDebugger? Debugger { get; private set; }
 
-    internal IGbxState? State { get; set; }
+    internal GbxState? State { get; set; }
 
     public IExternalGameData? ExternalGameData { get; set; }
 
@@ -106,18 +106,18 @@ public partial class GameBox
         logger?.LogDebug("Writing the body...");
 
         using var ms = new MemoryStream();
-        using var bodyW = new GameBoxWriter(ms, remap, asyncAction: null, logger);
+        using var bodyW = new GameBoxWriter(ms, remap, asyncAction: null, logger, new());
 
         (RawBody ?? new GameBoxBody()).Write(this, bodyW);
 
         logger?.LogDebug("Writing the header...");
 
-        using var headerW = new GameBoxWriter(stream, remap, asyncAction: null, logger);
+        using var headerW = new GameBoxWriter(stream, remap, asyncAction: null, logger, new());
 
         Header.Write(Node ?? throw new ThisShouldNotHappenException(), headerW);
 
         // Num nodes
-        headerW.Write(RawBody is null ? bodyW.AuxNodes.Count + 1 : Header.NumNodes);
+        headerW.Write(RawBody is null ? bodyW.State.AuxNodes.Count + 1 : Header.NumNodes);
 
         logger?.LogDebug("Writing the reference table...");
 
@@ -142,18 +142,18 @@ public partial class GameBox
         logger?.LogDebug("Writing the body...");
 
         using var ms = new MemoryStream();
-        using var bodyW = new GameBoxWriter(ms, remap, asyncAction, logger);
+        using var bodyW = new GameBoxWriter(ms, remap, asyncAction, logger, new());
 
         await (RawBody ?? new GameBoxBody()).WriteAsync(this, bodyW, cancellationToken);
 
         logger?.LogDebug("Writing the header...");
 
-        using var headerW = new GameBoxWriter(stream, remap, asyncAction, logger);
+        using var headerW = new GameBoxWriter(stream, remap, asyncAction, logger, new());
 
         Header.Write(Node ?? throw new ThisShouldNotHappenException(), headerW);
 
         // Num nodes
-        headerW.Write(RawBody is null ? bodyW.AuxNodes.Count + 1 : Header.NumNodes);
+        headerW.Write(RawBody is null ? bodyW.State.AuxNodes.Count + 1 : Header.NumNodes);
 
         logger?.LogDebug("Writing the reference table...");
 

@@ -8,53 +8,30 @@ namespace GBX.NET;
 /// <summary>
 /// Reads data types from GameBox serialization.
 /// </summary>
-public class GameBoxReader : BinaryReader, IGbxState
+public class GameBoxReader : BinaryReader
 {
-    private readonly GameBox? gbx;
-    private readonly ILogger? logger;
-    private readonly GameBoxAsyncReadAction? asyncAction;
-
-    private readonly GameBoxReader? reference;
-
-    private int? idVersion;
-    private IList<string>? idStrings;
-    private SortedDictionary<int, Node?>? auxNodes;
-
-    public int? IdVersion
-    {
-        get => reference?.IdVersion ?? idVersion;
-        set
-        {
-            if (reference is null)
-            {
-                idVersion = value;
-            }
-            else
-            {
-                reference.IdVersion = value;
-            }
-        }
-    }
-
-    public IList<string> IdStrings => reference?.IdStrings ?? (idStrings ??= new List<string>());
-    public SortedDictionary<int, Node?> AuxNodes => reference?.AuxNodes ?? (auxNodes ??= new());
-
-    public GameBox? Gbx => reference?.Gbx ?? gbx;
-    internal ILogger? Logger => reference?.Logger ?? logger;
+    public GameBox? Gbx { get; }
 
     /// <summary>
     /// A delegate collection that gets executed throughout the asynchronous reading.
     /// </summary>
-    public GameBoxAsyncReadAction? AsyncAction => reference?.AsyncAction ?? asyncAction;
+    public GameBoxAsyncReadAction? AsyncAction { get; }
+
+    internal ILogger? Logger { get; }
+
+    public GbxState State { get; }
+    private int? IdVersion { get => State.IdVersion; set => State.IdVersion = value; }
+    private IList<string> IdStrings => State.IdStrings;
+    private SortedDictionary<int, Node?> AuxNodes => State.AuxNodes;
 
     /// <summary>
     /// Constructs a binary reader specialized for Gbx deserializing.
     /// </summary>
     /// <param name="input">The input stream.</param>
     /// <param name="logger">Logger.</param>
-    public GameBoxReader(Stream input, ILogger? logger = null) : base(input, Encoding.UTF8, true)
+    public GameBoxReader(Stream input, ILogger? logger = null) : this(input, default, default, logger, new())
     {
-        this.logger = logger;
+        
     }
 
     /// <summary>
@@ -64,15 +41,23 @@ public class GameBoxReader : BinaryReader, IGbxState
     /// <param name="gbx">Gbx for reference table and sending its object to all the nodes.</param>
     /// <param name="asyncAction">Specialized executions during asynchronous reading.</param>
     /// <param name="logger">Logger.</param>
-    internal GameBoxReader(Stream input, GameBox? gbx, GameBoxAsyncReadAction? asyncAction, ILogger? logger) : this(input, logger)
+    internal GameBoxReader(Stream input,
+                           GameBox? gbx,
+                           GameBoxAsyncReadAction? asyncAction,
+                           ILogger? logger,
+                           GbxState state)
+        : base(input, Encoding.UTF8, true)
     {
-        this.gbx = gbx;
-        this.asyncAction = asyncAction;
+        Gbx = gbx;
+        AsyncAction = asyncAction;
+        Logger = logger;
+        State = state;
     }
 
-    internal GameBoxReader(Stream input, GameBoxReader reference) : base(input)
+    internal GameBoxReader(Stream input, GameBoxReader reference)
+        : this(input, reference.Gbx, reference.AsyncAction, reference.Logger, reference.State)
     {
-        this.reference = reference;
+        
     }
 
     /// <summary>

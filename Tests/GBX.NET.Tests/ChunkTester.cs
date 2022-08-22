@@ -1,5 +1,6 @@
 ﻿using GBX.NET.Extensions;
 using GBX.NET.Managers;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,9 +18,7 @@ internal abstract class ChunkTester<TNode, TChunk> : IDisposable where TNode : N
     public string ChunkName { get; }
     public ZipArchive Zip { get; }
     public ZipArchiveEntry ChunkEntry { get; }
-    public int? IdVersion { get; set; }
-    public bool IdIsWritten { get; set; }
-    public List<string>? IdStrings { get; set; }
+    public GbxState State { get; } = new();
 
     public ChunkTester(string gameVersion)
     {
@@ -43,9 +42,6 @@ internal abstract class ChunkTester<TNode, TChunk> : IDisposable where TNode : N
         NodeName = Node.GetType().Name;
         ChunkName = Chunk.GetType().Name;
 
-        IdVersion = 3;
-        IdIsWritten = true;
-
         if (!File.Exists(GetZipPath()))
         {
             throw new FileNotFoundException($"Class ZIP file not found for {NodeName}, game version {gameVersion}.");
@@ -57,12 +53,14 @@ internal abstract class ChunkTester<TNode, TChunk> : IDisposable where TNode : N
 
     public void SetIdState(int? version = 3, IEnumerable<string>? strings = null)
     {
-        IdVersion = version;
-        IdIsWritten = version.HasValue;
+        State.IdVersion = version;
 
         if (strings is not null)
         {
-            IdStrings = strings.ToList();
+            foreach (var str in strings)
+            {
+                State.IdStrings.Add(str);
+            }
         }
     }
 

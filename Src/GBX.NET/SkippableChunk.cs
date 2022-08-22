@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Reflection;
+using System.Xml;
 
 namespace GBX.NET;
 
@@ -59,17 +60,18 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
             {
                 switch (attribute)
                 {
+                    case ChunkAttribute chunkAttribute:
+                        hasOwnIdState = chunkAttribute.HasOwnIdState;
+                        break;
                     case IgnoreChunkAttribute:
                         return;
-                    case ChunkWithOwnIdStateAttribute:
-                        hasOwnIdState = true;
-                        break;
                 }
             }
         }
 
         using var ms = new MemoryStream(Data);
-        using var r = new GameBoxReader(ms, Gbx, asyncAction: null, logger: null);
+        using var r = new GameBoxReader(ms, Gbx, asyncAction: null, logger: null,
+            hasOwnIdState || Gbx?.State is null ? new() : Gbx.State);
         var rw = new GameBoxReaderWriter(r);
 
         if (hasOwnIdState)

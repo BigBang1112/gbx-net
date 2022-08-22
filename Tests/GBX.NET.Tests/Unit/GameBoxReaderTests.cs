@@ -180,17 +180,6 @@ public class GameBoxReaderTests
         // assert
         Assert.Equal(bytes, result);
     }
-
-    // test ReadId null StateGuid
-    [Fact]
-    public void ReadId_NullStateGuid()
-    {
-        // arrange
-        using var ms = new MemoryStream();
-        using var reader = new GameBoxReader(ms);
-
-        Assert.Throws<PropertyNullException>(() => reader.ReadId());
-    }
     
     // test ReadId with version index -1
     [Fact]

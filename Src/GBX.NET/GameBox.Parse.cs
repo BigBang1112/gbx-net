@@ -106,7 +106,7 @@ public partial class GameBox
         }
 
         using var ms = new MemoryStream(header.UserData);
-        var headerR = new GameBoxReader(ms, gbx, asyncAction: null, logger);
+        var headerR = new GameBoxReader(ms, gbx, asyncAction: null, logger, new());
 
         header.ProcessUserData(gbx.Node, classType, headerR, logger);
 
@@ -227,7 +227,11 @@ public partial class GameBox
             return gbx;
         }
 
-        using var bodyR = new GameBoxReader(stream, gbx, asyncAction: null, logger);
+        var state = new GbxState();
+
+        using var bodyR = new GameBoxReader(stream, gbx, asyncAction: null, logger, state);
+
+        gbx.State = state;
 
         // Body resets Id (lookback string) list
         GameBoxBody.Read(node, header, bodyR, progress, readUncompressedBodyDirectly);
@@ -505,7 +509,11 @@ public partial class GameBox
             return gbx;
         }
 
-        using var bodyR = new GameBoxReader(stream, gbx, asyncAction, logger);
+        var state = new GbxState();
+
+        using var bodyR = new GameBoxReader(stream, gbx, asyncAction, logger, state);
+
+        gbx.State = state;
 
         // Body resets Id (lookback string) list
         await GameBoxBody.ReadAsync(node, header, bodyR, readUncompressedBodyDirectly, asyncAction, cancellationToken);
