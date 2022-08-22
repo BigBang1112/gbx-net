@@ -1372,6 +1372,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     /// <summary>
+    /// Retrieves items.
+    /// </summary>
+    /// <returns>An enumerable of items.</returns>
+    public IEnumerable<CGameCtnAnchoredObject> GetAnchoredObjects() => anchoredObjects ?? Enumerable.Empty<CGameCtnAnchoredObject>();
+
+    /// <summary>
     /// Places an item on a map.
     /// </summary>
     /// <param name="itemModel">An item model identification (name, collection and author). Only the name is required, so using <see cref="Ident(string)"/> works too.</param>
@@ -3415,7 +3421,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                         U03 = r.ReadInt32();
                     }
                     
-                    U04 = r.ReadArray<int>(); // block indexes that follow flag 21/22
+                    U04 = r.ReadArray<int>(); // block indexes that are used to do further stuff, sometimes dupe values
                     U05 = r.ReadArray<int>();
 
                     var usedBlocks = new CGameCtnBlock[U04.Length];
@@ -3427,22 +3433,25 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
                     if (version >= 6)
                     {
-                        U06 = r.ReadArray<int>();
+                        U06 = r.ReadArray<int>(); // snap item group - only some snapped items will delete on a block. they are consistent numbers
                         U07 = r.ReadArray<int>();
 
                         if (version >= 7)
                         {
                             // always the same count as anchoredObjects
-                            U08 = r.ReadArray<int>(); // snapped onto block index?
+                            U08 = r.ReadArray<int>(); // "snapped onto block" indexes
 
                             for (var i = 0; i < U08.Length; i++)
                             {
                                 var snappedIndex = U08[i];
 
-                                if (snappedIndex > -1)
+                                if (snappedIndex <= -1)
                                 {
-                                    n.anchoredObjects[i].SnappedOn = usedBlocks[snappedIndex];
+                                    continue;
                                 }
+
+                                n.anchoredObjects[i].SnappedOn = usedBlocks[snappedIndex];
+                                n.anchoredObjects[i].SnappedOnGroup = U06[snappedIndex];
                             }
                         }
                     }
@@ -3474,17 +3483,55 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                         itemW.Write(U03.GetValueOrDefault());
                     }
 
-                    itemW.WriteArray(U04);
-                    itemW.WriteArray(U05);
+                    var blockDict = new Dictionary<CGameCtnBlock, int>();
+
+                    if (n.blocks is not null)
+                    {
+                        for (var i = 0; i < n.blocks.Count; i++)
+                        {
+                            blockDict[n.blocks[i]] = i;
+                        }
+                    }
+
+                    var usedBlockIndexHashSet = new HashSet<(int blockIndex, int group)>();
+                    var indiciesOnUsedBlocks = new Dictionary<CGameCtnBlock, int>();
+                    var snappedOnIndicies = new List<int>(n.anchoredObjects?.Count ?? 0);
+
+                    foreach (var item in n.GetAnchoredObjects())
+                    {
+                        if (item.SnappedOn is null)
+                        {
+                            snappedOnIndicies.Add(-1);
+                            continue;
+                        }
+
+                        var blockIndex = blockDict[item.SnappedOn];
+                        var groupIndex = item.SnappedOnGroup ?? 0;
+
+                        usedBlockIndexHashSet.Add((blockIndex, groupIndex));
+
+                        if(indiciesOnUsedBlocks.TryGetValue(item.SnappedOn, out int indexOfBlockIndex))
+                        {
+                            snappedOnIndicies.Add(indexOfBlockIndex);
+                        }
+                        else
+                        {
+                            indiciesOnUsedBlocks[item.SnappedOn] = indiciesOnUsedBlocks.Count;
+                            snappedOnIndicies.Add(indiciesOnUsedBlocks.Count - 1);
+                        }
+                    }
+
+                    itemW.WriteArray(usedBlockIndexHashSet.Select(x => x.blockIndex).ToArray());
+                    itemW.WriteArray(Enumerable.Repeat(-1, usedBlockIndexHashSet.Count).ToArray());
 
                     if (version >= 6)
                     {
-                        itemW.WriteArray(U06);
-                        itemW.WriteArray(U07);
+                        itemW.WriteArray(usedBlockIndexHashSet.Select(x => x.group).ToArray());
+                        itemW.WriteArray(Enumerable.Repeat(-1, usedBlockIndexHashSet.Count).ToArray());
 
                         if (version >= 7)
                         {
-                            itemW.WriteArray(U08);
+                            itemW.WriteArray(snappedOnIndicies.ToArray());
                         }
                     }
                 }

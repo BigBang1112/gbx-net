@@ -120,6 +120,7 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     public FileRef? PackDesc { get => packDesc; set => packDesc = value; }
 
     public CGameCtnBlock? SnappedOn { get; set; }
+    public int? SnappedOnGroup { get; set; }
 
     CGameCtnChallenge? INodeDependant<CGameCtnChallenge>.DependingNode { get; set; }
 
