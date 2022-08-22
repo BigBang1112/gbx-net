@@ -42,21 +42,18 @@ public class GameBoxWriter : BinaryWriter
     /// <param name="remap">Node ID remap mode.</param>
     /// <param name="asyncAction">Specialized executions during asynchronous writing.</param>
     /// <param name="logger">Logger.</param>
-    internal GameBoxWriter(Stream output,
-                           IDRemap remap,
-                           GameBoxAsyncWriteAction? asyncAction,
-                           ILogger? logger,
-                           GbxState state)
+    /// <param name="state">State of <see cref="Id"/> and aux node write. Currently cannot be null.</param>
+    internal GameBoxWriter(Stream output, IDRemap remap, GameBoxAsyncWriteAction? asyncAction, ILogger? logger, GbxState state)
         : base(output, Encoding.UTF8, true)
     {
         Remap = remap;
         AsyncAction = asyncAction;
         Logger = logger;
-        State = state;
+        State = state ?? throw new ArgumentNullException(nameof(state));
     }
 
-    internal GameBoxWriter(Stream input, GameBoxWriter reference)
-        : this(input, reference.Remap, reference.AsyncAction, reference.Logger, reference.State)
+    internal GameBoxWriter(Stream input, GameBoxWriter reference, bool hasOwnIdState = false)
+        : this(input, reference.Remap, reference.AsyncAction, reference.Logger, hasOwnIdState ? new() : reference.State)
     {
         
     }
@@ -271,7 +268,6 @@ public class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.Gbx"/> is null.</exception>
     public void WriteId(string? value, bool tryParseToInt32 = false)
     {
         WriteIdVersionIfNotWritten();
@@ -347,7 +343,6 @@ public class GameBoxWriter : BinaryWriter
         WriteId(ident.Author);
     }
 
-    /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.Gbx"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write(Node? node, GameBoxRefTable.File? nodeFile = null)
@@ -577,7 +572,6 @@ public class GameBoxWriter : BinaryWriter
     }
 
     /// <exception cref="ArgumentNullException">Key in dictionary is null.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.Gbx"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void WriteDictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary, Action<TKey, GameBoxWriter>? keyWriter = null) where TValue : Node

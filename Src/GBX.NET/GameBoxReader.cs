@@ -41,11 +41,8 @@ public class GameBoxReader : BinaryReader
     /// <param name="gbx">Gbx for reference table and sending its object to all the nodes.</param>
     /// <param name="asyncAction">Specialized executions during asynchronous reading.</param>
     /// <param name="logger">Logger.</param>
-    internal GameBoxReader(Stream input,
-                           GameBox? gbx,
-                           GameBoxAsyncReadAction? asyncAction,
-                           ILogger? logger,
-                           GbxState state)
+    /// <param name="state">State of <see cref="Id"/> and aux node write. Currently cannot be null.</param>
+    internal GameBoxReader(Stream input, GameBox? gbx, GameBoxAsyncReadAction? asyncAction, ILogger? logger, GbxState state)
         : base(input, Encoding.UTF8, true)
     {
         Gbx = gbx;
@@ -54,10 +51,15 @@ public class GameBoxReader : BinaryReader
         State = state;
     }
 
-    internal GameBoxReader(Stream input, GameBoxReader reference)
-        : this(input, reference.Gbx, reference.AsyncAction, reference.Logger, reference.State)
+    internal GameBoxReader(Stream input, GameBoxReader reference, bool hasOwnIdState = false)
+        : this(input, reference.Gbx, reference.AsyncAction, reference.Logger, hasOwnIdState ? new() : reference.State)
     {
-        
+
+    }
+
+    internal GameBoxReader(GameBoxReader reference, bool hasOwnIdState = false) : this(reference.BaseStream, reference, hasOwnIdState)
+    {
+
     }
 
     /// <summary>
@@ -178,8 +180,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
-    /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
+    /// <exception cref="NotSupportedException">Gbx has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
     public Id ReadId(bool cannotBeCollection = false)
@@ -260,7 +261,6 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
     /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
@@ -657,7 +657,6 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public Node? ReadNodeRef(out GameBoxRefTable.File? nodeRefFile)
     {
         var index = ReadInt32() - 1; // GBX seems to start the index at 1
@@ -679,7 +678,7 @@ public class GameBoxReader : BinaryReader
 
         if (NodeShouldBeParsed(index))
         {
-            node = Node.Parse(this, classId: null, progress: null) ?? throw new ThisShouldNotHappenException();
+            node = Node.Parse(this, classId: null, progress: null);
         }
 
         TryGetNodeIfNullOrAssignExistingNode(index, ref node);
@@ -701,7 +700,6 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public Node? ReadNodeRef()
     {
         var node = ReadNodeRef(out GameBoxRefTable.File? nodeRefFile);
@@ -723,7 +721,6 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public T? ReadNodeRef<T>(out GameBoxRefTable.File? nodeRefFile) where T : Node
     {
         return ReadNodeRef(out nodeRefFile) as T;
@@ -737,7 +734,6 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public T? ReadNodeRef<T>() where T : Node
     {
         var node = ReadNodeRef(out GameBoxRefTable.File? nodeRefFile);
@@ -765,7 +761,6 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public async Task<Node?> ReadNodeRefAsync(CancellationToken cancellationToken = default)
     {
         var index = ReadInt32() - 1; // GBX seems to start the index at 1
@@ -812,7 +807,6 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     public async Task<T?> ReadNodeRefAsync<T>(CancellationToken cancellationToken = default) where T : Node
     {
         var node = await ReadNodeRefAsync(cancellationToken);
@@ -1785,7 +1779,6 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxReaderSettings.Gbx"/> is null.</exception>
     /// <exception cref="ArgumentException">An element with the same key already exists in the dictionary.</exception>
     public IDictionary<TKey, TValue?> ReadDictionaryNode<TKey, TValue>(
         bool overrideKey = false,

@@ -21,8 +21,6 @@ public class ChunkAttribute : Attribute
     /// </summary>
     public string Description { get; }
 
-    public bool HasOwnIdState { get; }
-
     /// <summary>
     /// If the chunk shouldn't be read immediately, but should be read before being written back. You should usually set this to true in cases where there's an <see cref="Id"/> in skippable chunk and <see cref="ProcessSync"/> wasn't set to true, as this fixes problems with <see cref="Id"/> indexes.
     /// </summary>
@@ -33,9 +31,9 @@ public class ChunkAttribute : Attribute
     /// </summary>
     /// <param name="chunkID">Full ID of the chunk.</param>
     /// <param name="description">Very short description of the chunk.</param>
-    public ChunkAttribute(uint chunkID, string description = "", bool hasOwnIdState = false) : this(chunkID, false, description)
+    public ChunkAttribute(uint chunkID, string description = "") : this(chunkID, false, description)
     {
-        HasOwnIdState = hasOwnIdState;
+        
     }
 
     /// <summary>

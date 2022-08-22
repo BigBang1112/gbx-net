@@ -60,9 +60,6 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
             {
                 switch (attribute)
                 {
-                    case ChunkAttribute chunkAttribute:
-                        hasOwnIdState = chunkAttribute.HasOwnIdState;
-                        break;
                     case IgnoreChunkAttribute:
                         return;
                 }
@@ -70,8 +67,7 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
         }
 
         using var ms = new MemoryStream(Data);
-        using var r = new GameBoxReader(ms, Gbx, asyncAction: null, logger: null,
-            hasOwnIdState || Gbx?.State is null ? new() : Gbx.State);
+        using var r = new GameBoxReader(ms, Gbx, asyncAction: null, logger: null, Gbx?.State ?? new());
         var rw = new GameBoxReaderWriter(r);
 
         if (hasOwnIdState)
