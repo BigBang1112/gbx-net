@@ -2767,7 +2767,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             if (flags == -1)
             {
-                n.blocks!.Add(new CGameCtnBlock(blockName, dir, coord: (-1, -1, -1), flags));
+                n.blocks!.Add(new CGameCtnBlock(blockName, dir, coord, flags));
                 return false;
             }
 
@@ -3381,7 +3381,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         private int version = 4;
 
         public int U01;
-        public Int2[]? U02;
+        public int[]? U02;
 
         /// <summary>
         /// Version of the chunk.
@@ -3406,7 +3406,13 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             if (version >= 1 && version != 5)
             {
-                U02 = r.ReadArray<Int2>();
+                // defines which (second element) items are deleted together with other (first element) item?
+                var itemsOnItem = r.ReadArray<Int2>();
+
+                foreach (var item in itemsOnItem)
+                {
+                    n.anchoredObjects[item.Y].PlacedOnItem = n.anchoredObjects[item.X];
+                }
             }
                 
             if (version >= 5)
@@ -3424,6 +3430,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                         usedBlocks[i] = blocksWithoutUnassigned[index];
                     }
                 }
+
+                var snapItemGroups = version >= 7 ? null : r.ReadArray<int>(); // snap item group - only some snapped items will delete on a block. they are consistent numbers
 
                 var usedItems = default(CGameCtnAnchoredObject[]);
 
@@ -3443,7 +3451,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     }
                 }
 
-                var snapItemGroups = r.ReadArray<int>(); // snap item group - only some snapped items will delete on a block. they are consistent numbers
+                snapItemGroups ??= version >= 7 ? r.ReadArray<int>() : null;
 
                 if (version != 6)
                 {
@@ -3481,7 +3489,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                         n.anchoredObjects[i].SnappedOnItem = usedItem;
                     }
 
-                    n.anchoredObjects[i].SnappedOnGroup = snapItemGroups[snappedIndex];
+                    n.anchoredObjects[i].SnappedOnGroup = snapItemGroups?[snappedIndex] ?? 0;
                 }
             }
 
@@ -3499,9 +3507,34 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             itemW.Write(10);
             itemW.WriteNodeArray(n.anchoredObjects);
 
+            var itemDict = new Dictionary<CGameCtnAnchoredObject, int>();
+
+            if (n.anchoredObjects is not null)
+            {
+                for (var i = 0; i < n.anchoredObjects.Count; i++)
+                {
+                    itemDict[n.anchoredObjects[i]] = i;
+                }
+            }
+
             if (version >= 1 && version != 5)
             {
-                itemW.WriteArray(U02);
+                var pairs = new List<Int2>();
+
+                if (n.anchoredObjects is not null)
+                {
+                    for (var i = 0; i < n.anchoredObjects.Count; i++)
+                    {
+                        var placedOnItem = n.anchoredObjects[i].PlacedOnItem;
+
+                        if (placedOnItem is not null && itemDict.TryGetValue(placedOnItem, out int index))
+                        {
+                            pairs.Add((index, i));
+                        }
+                    }
+                }
+
+                itemW.WriteList(pairs, (x, w) => w.Write(x));
             }
 
             if (version >= 5)
@@ -3513,16 +3546,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     for (var i = 0; i < n.blocks.Count; i++)
                     {
                         blockDict[n.blocks[i]] = i;
-                    }
-                }
-
-                var itemDict = new Dictionary<CGameCtnAnchoredObject, int>();
-
-                if (n.anchoredObjects is not null)
-                {
-                    for (var i = 0; i < n.anchoredObjects.Count; i++)
-                    {
-                        itemDict[n.anchoredObjects[i]] = i;
                     }
                 }
 
@@ -3594,12 +3617,20 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
                 itemW.WriteArray(usedBlockIndexList.Select(x => x.blockIndex).ToArray());
 
+                if (version < 7)
+                {
+                    itemW.WriteArray(usedBlockIndexList.Select(x => x.group).ToArray());
+                }
+
                 if (version >= 6)
                 {
                     itemW.WriteArray(usedItemIndexList.Select(x => x.itemIndex).ToArray());
                 }
 
-                itemW.WriteArray(usedBlockIndexList.Select(x => x.group).ToArray());
+                if (version >= 7)
+                {
+                    itemW.WriteArray(usedBlockIndexList.Select(x => x.group).ToArray());
+                }
 
                 if (version != 6)
                 {

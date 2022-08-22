@@ -119,8 +119,27 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     [AppliedWithChunk(typeof(Chunk03101002), sinceVersion: 7)]
     public FileRef? PackDesc { get => packDesc; set => packDesc = value; }
 
+    /// <summary>
+    /// Block that tells when that block gets deleted, this item is deleted with it. Works for TM2020 only.
+    /// </summary>
+    [NodeMember]
     public CGameCtnBlock? SnappedOnBlock { get; set; }
+
+    /// <summary>
+    /// Item that tells when that item gets deleted, this item is deleted with it. Works for TM2020 only but is more modern.
+    /// </summary>
+    [NodeMember]
     public CGameCtnAnchoredObject? SnappedOnItem { get; set; }
+
+    /// <summary>
+    /// Item that tells when that item gets deleted, this item is deleted with it. Works for ManiaPlanet, used to work in the past in TM2020 but now it likely doesn't.
+    /// </summary>
+    public CGameCtnAnchoredObject PlacedOnItem { get; set; }
+
+    /// <summary>
+    /// Group number that groups items that get deleted together. Works for TM2020 only.
+    /// </summary>
+    [NodeMember]
     public int? SnappedOnGroup { get; set; }
 
     CGameCtnChallenge? INodeDependant<CGameCtnChallenge>.DependingNode { get; set; }
