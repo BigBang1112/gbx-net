@@ -4,7 +4,7 @@
 /// A macroblock.
 /// </summary>
 /// <remarks>ID: 0x0310D000</remarks>
-[Node(0x0310D000), WritingNotSupported]
+[Node(0x0310D000)]
 [NodeExtension("Macroblock")]
 public partial class CGameCtnMacroBlockInfo : CGameCtnCollector
 {
