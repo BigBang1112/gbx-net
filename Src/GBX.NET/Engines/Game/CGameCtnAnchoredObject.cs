@@ -133,6 +133,7 @@ public class CGameCtnAnchoredObject : CMwNod
     /// <summary>
     /// Item that tells when that item gets deleted, this item is deleted with it. Works for ManiaPlanet, used to work in the past in TM2020 but now it likely doesn't.
     /// </summary>
+    [NodeMember]
     public CGameCtnAnchoredObject? PlacedOnItem { get; set; }
 
     /// <summary>
@@ -152,6 +153,9 @@ public class CGameCtnAnchoredObject : CMwNod
     /// </summary>
     [NodeMember]
     public EPhaseOffset? AnimPhaseOffset { get; set; }
+
+    [NodeMember]
+    public FileRef? ForegroundPackDesc { get; set; }
 
     #endregion
 

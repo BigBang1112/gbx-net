@@ -4678,12 +4678,34 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     #region 0x065 skippable chunk [TM2020]
 
     /// <summary>
-    /// CGameCtnChallenge 0x065 skippable chunk [TM2020]
+    /// CGameCtnChallenge 0x065 skippable chunk (foreground pack desc) [TM2020]
     /// </summary>
-    [Chunk(0x03043065), IgnoreChunk]
-    public class Chunk03043065 : SkippableChunk<CGameCtnChallenge>
+    [Chunk(0x03043065, processSync: true)]
+    public class Chunk03043065 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
+        private int version;
 
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+
+            if (version > 0)
+            {
+                throw new ChunkVersionNotSupportedException(version);
+            }
+
+            foreach (var item in n.GetAnchoredObjects())
+            {
+                var hasForegroundPackDesc = rw.Boolean(item.ForegroundPackDesc is not null, asByte: true);
+
+                if (hasForegroundPackDesc)
+                {
+                    item.ForegroundPackDesc = rw.FileRef(item.ForegroundPackDesc);
+                }
+            }
+        }
     }
 
     #endregion
