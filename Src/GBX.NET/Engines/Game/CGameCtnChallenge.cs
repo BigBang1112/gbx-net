@@ -1222,7 +1222,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             return false;
         }
-        
+
         stream.Write(thumbnail, 0, thumbnail.Length);
 
         return true;
@@ -1238,9 +1238,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             return false;
         }
-        
+
         using var fs = File.Create(fileName);
-        
+
         return ExportThumbnail(fs);
     }
 
@@ -1280,7 +1280,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     /// <returns>An enumerable of blocks.</returns>
     public IEnumerable<CGameCtnBlock> GetBlocks() => blocks ?? Enumerable.Empty<CGameCtnBlock>();
-    
+
     /// <summary>
     /// Retrieves blocks at this position.
     /// </summary>
@@ -1691,7 +1691,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
 
         File.WriteAllBytes(fileName, originalEmbedZip);
-        
+
         return true;
     }
 
@@ -1738,7 +1738,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         using var gbxOutms = new MemoryStream();
         using var gbxOutw = new GameBoxWriter(gbxOutms);
-        
+
         var basic = gbxr.ReadBytes(6); // gbx basic
 
         var classID = gbxr.ReadUInt32();
@@ -1831,12 +1831,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         var allCoords = macroBlocks.Select(x => x.Coord); // Creates an enumerable of macroblock block coords
 
         var min = new Int3(
-            allCoords.Select(x => x.GetValueOrDefault().X).Min(), 
-            allCoords.Select(x => x.GetValueOrDefault().Y).Min(), 
+            allCoords.Select(x => x.GetValueOrDefault().X).Min(),
+            allCoords.Select(x => x.GetValueOrDefault().Y).Min(),
             allCoords.Select(x => x.GetValueOrDefault().Z).Min());
         var max = new Int3(
-            allCoords.Select(x => x.GetValueOrDefault().X).Max(), 
-            allCoords.Select(x => x.GetValueOrDefault().Y).Max(), 
+            allCoords.Select(x => x.GetValueOrDefault().X).Max(),
+            allCoords.Select(x => x.GetValueOrDefault().Y).Max(),
             allCoords.Select(x => x.GetValueOrDefault().Z).Max());
         // Calculates the minimum and maximum coord, used to determine size and center of the macroblock
 
@@ -3140,7 +3140,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043036, "realtime thumbnail + comments")]
     public class Chunk03043036 : Chunk0304302D
     {
-        
+
     }
 
     #endregion
@@ -3182,13 +3182,13 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         private int version = 4;
 
         public bool U01;
-        
+
         public byte[]? DataAfterLightmapCache { get; set; }
 
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version {get => version; set => version = value; }
+        public int Version { get => version; set => version = value; }
 
         public int? LightmapCacheDataUncompressedSize { get; set; }
         public byte[]? LightmapCacheData { get; set; }
@@ -3430,7 +3430,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     n.anchoredObjects[item.Y].PlacedOnItem = n.anchoredObjects[item.X];
                 }
             }
-                
+
             if (version >= 5)
             {
                 var blockIndexes = r.ReadArray<int>(); // block indexes, -1 means itemIndexes will have the value instead
@@ -3707,7 +3707,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         }
     }
 
-#endregion
+    #endregion
 
     #region 0x043 skippable chunk (genealogies)
 
@@ -3738,7 +3738,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             r.Dispose();
         }
-        
+
         public override void Write(CGameCtnChallenge n, GameBoxWriter w)
         {
             w.Write(U01);
@@ -4592,12 +4592,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x062 skippable chunk (block color) [TM2020]
+    #region 0x062 skippable chunk (MapElemColor) [TM2020]
 
     /// <summary>
-    /// CGameCtnChallenge 0x062 skippable chunk (block color) [TM2020]
+    /// CGameCtnChallenge 0x062 skippable chunk (MapElemColor) [TM2020]
     /// </summary>
-    [Chunk(0x03043062, processSync: true, "block color")]
+    [Chunk(0x03043062, processSync: true, "MapElemColor")]
     public class Chunk03043062 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private int version;
@@ -4675,12 +4675,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x065 skippable chunk [TM2020]
+    #region 0x065 skippable chunk (foreground pack desc) [TM2020]
 
     /// <summary>
     /// CGameCtnChallenge 0x065 skippable chunk (foreground pack desc) [TM2020]
     /// </summary>
-    [Chunk(0x03043065, processSync: true)]
+    [Chunk(0x03043065, processSync: true, "foreground pack desc")]
     public class Chunk03043065 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private int version;
@@ -4723,15 +4723,44 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x068 skippable chunk [TM2020]
+    #region 0x068 skippable chunk (MapElemLmQuality) [TM2020]
 
     /// <summary>
-    /// CGameCtnChallenge 0x068 skippable chunk [TM2020]
+    /// CGameCtnChallenge 0x068 skippable chunk (MapElemLmQuality) [TM2020]
     /// </summary>
-    [Chunk(0x03043068), IgnoreChunk]
-    public class Chunk03043068 : SkippableChunk<CGameCtnChallenge>
+    [Chunk(0x03043068, processSync: true, "MapElemLmQuality")]
+    public class Chunk03043068 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
+        // It has not been 100% validated if this is lightmap quality per block/object or not, but a lot of things hint towards it
 
+        private int version;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+
+            if (version > 1)
+            {
+                throw new ChunkVersionNotSupportedException(version);
+            }
+
+            foreach (var block in n.GetBlocks())
+            {
+                block.LightmapQuality = (LightmapQuality)rw.Byte((byte)block.LightmapQuality);
+            }
+
+            foreach (var block in n.GetBakedBlocks())
+            {
+                block.LightmapQuality = (LightmapQuality)rw.Byte((byte)block.LightmapQuality);
+            }
+
+            foreach (var item in n.GetAnchoredObjects())
+            {
+                item.LightmapQuality = (LightmapQuality)rw.Byte((byte)item.LightmapQuality);
+            }
+        }
     }
 
     #endregion

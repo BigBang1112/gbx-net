@@ -217,6 +217,12 @@ public class CGameCtnBlock : CMwNod
     [NodeMember(ExactName = "MapElemColor")]
     public DifficultyColor? Color { get; set; }
 
+    /// <summary>
+    /// Lightmap quality setting of the block. Available since TM2020 Royal update or a later one.
+    /// </summary>
+    [NodeMember(ExactName = "MapElemLmQuality")]
+    public LightmapQuality LightmapQuality { get; set; }
+
     #endregion
 
     #region Static properties

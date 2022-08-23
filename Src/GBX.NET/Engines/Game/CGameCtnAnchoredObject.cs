@@ -154,8 +154,17 @@ public class CGameCtnAnchoredObject : CMwNod
     [NodeMember]
     public EPhaseOffset? AnimPhaseOffset { get; set; }
 
+    /// <summary>
+    /// The second layer of skin. Available since TM2020 Royal update or a later one.
+    /// </summary>
     [NodeMember]
     public FileRef? ForegroundPackDesc { get; set; }
+
+    /// <summary>
+    /// Lightmap quality setting of the block. Available since TM2020 Royal update or a later one.
+    /// </summary>
+    [NodeMember(ExactName = "MapElemLmQuality")]
+    public LightmapQuality LightmapQuality { get; set; }
 
     #endregion
 
