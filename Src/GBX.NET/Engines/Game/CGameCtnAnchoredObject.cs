@@ -7,6 +7,22 @@
 [Node(0x03101000)]
 public class CGameCtnAnchoredObject : CMwNod
 {
+    #region Enums
+
+    public enum EPhaseOffset
+    {
+        None,
+        One8th,
+        Two8th,
+        Three8th,
+        Four8th,
+        Five8th,
+        Six8th,
+        Seven8th
+    }
+
+    #endregion
+
     #region Fields
 
     private Ident itemModel;
@@ -19,7 +35,6 @@ public class CGameCtnAnchoredObject : CMwNod
     private float scale = 1;
     private Vec3 pivotPosition;
     private FileRef? packDesc;
-    private DifficultyColor? color;
 
     #endregion
 
@@ -97,12 +112,6 @@ public class CGameCtnAnchoredObject : CMwNod
     public float Scale { get => scale; set => scale = value; }
 
     /// <summary>
-    /// Color of the item. Available since TM® Royal update.
-    /// </summary>
-    [NodeMember]
-    public DifficultyColor? Color { get; set; }
-
-    /// <summary>
     /// Skin used on the item.
     /// </summary>
     [NodeMember]
@@ -131,6 +140,18 @@ public class CGameCtnAnchoredObject : CMwNod
     /// </summary>
     [NodeMember]
     public int? SnappedOnGroup { get; set; }
+
+    /// <summary>
+    /// Color of the item. Available since TM2020 Royal update.
+    /// </summary>
+    [NodeMember]
+    public DifficultyColor? Color { get; set; }
+
+    /// <summary>
+    /// Phase of the animation. Available since TM2020 Royal update.
+    /// </summary>
+    [NodeMember]
+    public EPhaseOffset? AnimPhaseOffset { get; set; }
 
     #endregion
 

@@ -4600,60 +4600,64 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043062, processSync: true, "block color")]
     public class Chunk03043062 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        public int Version { get; set; }
+        private int version;
 
-        public override void Read(CGameCtnChallenge n, GameBoxReader r)
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            Version = r.ReadInt32();
+            rw.Int32(ref version);
+
+            if (version > 0)
+            {
+                throw new ChunkVersionNotSupportedException(version);
+            }
 
             foreach (var block in n.GetBlocks())
             {
-                block.Color = (DifficultyColor)r.ReadByte();
+                block.Color = (DifficultyColor)rw.Byte((byte)block.Color.GetValueOrDefault());
             }
 
             foreach (var block in n.GetBakedBlocks())
             {
-                block.Color = (DifficultyColor)r.ReadByte();
+                block.Color = (DifficultyColor)rw.Byte((byte)block.Color.GetValueOrDefault());
             }
 
             foreach (var item in n.GetAnchoredObjects())
             {
-                item.Color = (DifficultyColor)r.ReadByte();
-            }
-        }
-
-        public override void Write(CGameCtnChallenge n, GameBoxWriter w)
-        {
-            w.Write(Version);
-
-            foreach (var block in n.GetBlocks())
-            {
-                w.Write((byte)block.Color.GetValueOrDefault());
-            }
-
-            foreach (var block in n.GetBakedBlocks())
-            {
-                w.Write((byte)block.Color.GetValueOrDefault());
-            }
-
-            foreach (var item in n.GetAnchoredObjects())
-            {
-                w.Write((byte)item.Color.GetValueOrDefault());
+                item.Color = (DifficultyColor)rw.Byte((byte)item.Color.GetValueOrDefault());
             }
         }
     }
 
     #endregion
 
-    #region 0x063 skippable chunk [TM2020]
+    #region 0x063 skippable chunk (AnimPhaseOffset) [TM2020]
 
     /// <summary>
-    /// CGameCtnChallenge 0x063 skippable chunk [TM2020]
+    /// CGameCtnChallenge 0x063 skippable chunk (AnimPhaseOffset) [TM2020]
     /// </summary>
-    [Chunk(0x03043063), IgnoreChunk]
-    public class Chunk03043063 : SkippableChunk<CGameCtnChallenge>
+    [Chunk(0x03043063, processSync: true, "AnimPhaseOffset")]
+    public class Chunk03043063 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
+        private int version;
 
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+
+            if (version > 0)
+            {
+                throw new ChunkVersionNotSupportedException(version);
+            }
+
+            foreach (var item in n.GetAnchoredObjects())
+            {
+                item.AnimPhaseOffset = (CGameCtnAnchoredObject.EPhaseOffset)rw.Byte((byte)item.AnimPhaseOffset.GetValueOrDefault());
+            }
+        }
     }
 
     #endregion
