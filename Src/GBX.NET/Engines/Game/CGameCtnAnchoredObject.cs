@@ -145,7 +145,7 @@ public class CGameCtnAnchoredObject : CMwNod
     /// <summary>
     /// Color of the item. Available since TM2020 Royal update.
     /// </summary>
-    [NodeMember]
+    [NodeMember(ExactName = "MapElemColor")]
     public DifficultyColor? Color { get; set; }
 
     /// <summary>
