@@ -822,6 +822,30 @@ public class GameBoxWriter : BinaryWriter
     /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public void WriteList<T>(IList<T>? list, Action<T, int, GameBoxWriter> forLoop)
+    {
+        if (forLoop is null)
+        {
+            throw new ArgumentNullException(nameof(forLoop));
+        }
+
+        if (list is null)
+        {
+            Write(0);
+            return;
+        }
+
+        Write(list.Count);
+
+        for (var i = 0; i < list.Count; i++)
+        {
+            forLoop.Invoke(list[i], i, this);
+        }
+    }
+
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="OverflowException">The number of elements in source is larger than <see cref="int.MaxValue"/>.</exception>
     public void WriteEnumerable<T>(IEnumerable<T>? enumerable, Action<T> forLoop)
     {

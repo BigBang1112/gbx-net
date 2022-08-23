@@ -223,6 +223,12 @@ public class CGameCtnBlock : CMwNod
     [NodeMember(ExactName = "MapElemLmQuality")]
     public LightmapQuality LightmapQuality { get; set; }
 
+    /// <summary>
+    /// Reference to the macroblock that placed this block. In macroblock mode, this block is then part of a selection group.
+    /// </summary>
+    [NodeMember]
+    public MacroblockInstance? MacroblockReference { get; set; }
+
     #endregion
 
     #region Static properties

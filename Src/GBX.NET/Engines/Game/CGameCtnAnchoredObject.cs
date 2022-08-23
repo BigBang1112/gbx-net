@@ -166,6 +166,12 @@ public class CGameCtnAnchoredObject : CMwNod
     [NodeMember(ExactName = "MapElemLmQuality")]
     public LightmapQuality LightmapQuality { get; set; }
 
+    /// <summary>
+    /// Reference to the macroblock that placed this item. In macroblock mode, this item is then part of a selection group.
+    /// </summary>
+    [NodeMember]
+    public MacroblockInstance? MacroblockReference { get; set; }
+
     #endregion
 
     #region Constructors

@@ -1,4 +1,5 @@
-﻿using System.IO.Compression;
+﻿using System;
+using System.IO.Compression;
 using System.Security;
 using System.Text;
 using GBX.NET.BlockInfo;
@@ -1197,6 +1198,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     public bool? HasCustomCamThumbnail { get => hasCustomCamThumbnail; set => hasCustomCamThumbnail = value; }
+
+    [NodeMember]
+    public IList<MacroblockInstance>? MacroblockInstances { get; set; }
 
     #endregion
 
@@ -4765,15 +4769,117 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x069 skippable chunk [TM2020]
+    #region 0x069 skippable chunk (macroblock instances) [TM2020]
 
     /// <summary>
-    /// CGameCtnChallenge 0x069 skippable chunk [TM2020]
+    /// CGameCtnChallenge 0x069 skippable chunk (macroblock instances) [TM2020]
     /// </summary>
-    [Chunk(0x03043069), IgnoreChunk]
-    public class Chunk03043069 : SkippableChunk<CGameCtnChallenge>
+    [Chunk(0x03043069, processSync: true, "macroblock instances")]
+    public class Chunk03043069 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
+        public int Version { get; set; }
 
+        public override void Read(CGameCtnChallenge n, GameBoxReader r)
+        {
+            Version = r.ReadInt32();
+
+            if (Version > 0)
+            {
+                throw new ChunkVersionNotSupportedException(Version);
+            }
+
+            var dict = new Dictionary<int, MacroblockInstance>();
+
+            foreach (var block in n.GetBlocks())
+            {
+                var macroblockId = r.ReadInt32();
+
+                if (macroblockId == -1)
+                {
+                    continue;
+                }
+
+                if (!dict.TryGetValue(macroblockId, out var instance))
+                {
+                    instance = new MacroblockInstance();
+                    dict[macroblockId] = instance;
+                }
+
+                block.MacroblockReference = instance;
+            }
+
+            foreach (var item in n.GetAnchoredObjects())
+            {
+                var macroblockId = r.ReadInt32();
+
+                if (macroblockId == -1)
+                {
+                    continue;
+                }
+
+                if (!dict.TryGetValue(macroblockId, out var instance))
+                {
+                    instance = new MacroblockInstance();
+                    dict[macroblockId] = instance;
+                }
+
+                item.MacroblockReference = instance;
+            }
+
+            var idFlagsPair = r.ReadArray<(int, int)>();
+
+            foreach (var (id, flags) in idFlagsPair)
+            {
+                dict[id].Flags = flags;
+            }
+
+            n.MacroblockInstances = dict.Values.ToList();
+        }
+
+        public override void Write(CGameCtnChallenge n, GameBoxWriter w)
+        {
+            w.Write(Version);
+
+            var dict = new Dictionary<MacroblockInstance, int>();
+
+            if (n.MacroblockInstances is not null)
+            {
+                for (var i = 0; i < n.MacroblockInstances.Count; i++)
+                {
+                    dict[n.MacroblockInstances[i]] = i;
+                }
+            }
+
+            foreach (var block in n.GetBlocks())
+            {
+                if (block.MacroblockReference is not null && dict.TryGetValue(block.MacroblockReference, out int index))
+                {
+                    w.Write(index);
+                }
+                else
+                {
+                    w.Write(-1);
+                }
+            }
+
+            foreach (var item in n.GetAnchoredObjects())
+            {
+                if (item.MacroblockReference is not null && dict.TryGetValue(item.MacroblockReference, out int index))
+                {
+                    w.Write(index);
+                }
+                else
+                {
+                    w.Write(-1);
+                }
+            }
+
+            w.WriteList(n.MacroblockInstances, (x, i, w) =>
+            {
+                w.Write(i);
+                w.Write(x.Flags);
+            });
+        }
     }
 
     #endregion
