@@ -1304,6 +1304,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public IEnumerable<CGameCtnBlock> GetGhostBlocks() => GetBlocks().Where(x => x.IsGhost);
 
     /// <summary>
+    /// Retrieves baked blocks.
+    /// </summary>
+    /// <returns>An enumerable of baked blocks.</returns>
+    public IEnumerable<CGameCtnBlock> GetBakedBlocks() => BakedBlocks ?? Enumerable.Empty<CGameCtnBlock>();
+
+    /// <summary>
     /// Places a block in the map.
     /// </summary>
     /// <param name="blockModel">Block model name to place. Only the name is required, so using <see cref="Ident(string)"/> works too. Full <see cref="Ident"/> can be seen in TM1.0.</param>
@@ -2798,7 +2804,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             }
 
             var block = new CGameCtnBlock(blockName, dir, coord, flags, author, skin, parameters);
-            ((INodeDependant<CGameCtnChallenge>)block).DependingNode = n;
 
             n.blocks!.Add(block);
 
@@ -3412,9 +3417,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             _ = r.ReadInt32(); // 10
             n.anchoredObjects = r.ReadList(r =>
             {
-                var node = Parse<CGameCtnAnchoredObject>(r, classId: null, progress: null)!;
-                ((INodeDependant<CGameCtnChallenge>)node).DependingNode = n;
-                return node;
+                return Parse<CGameCtnAnchoredObject>(r, classId: null, progress: null)!;
             });
 
             if (version >= 1 && version != 5)
@@ -4594,7 +4597,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x062 skippable chunk (block color) [TM2020]
     /// </summary>
-    [Chunk(0x03043062, "block color")]
+    [Chunk(0x03043062, processSync: true, "block color")]
     public class Chunk03043062 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         public int Version { get; set; }
@@ -4608,20 +4611,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 block.Color = (DifficultyColor)r.ReadByte();
             }
 
-            if (n.BakedBlocks is not null)
+            foreach (var block in n.GetBakedBlocks())
             {
-                foreach (var block in n.BakedBlocks)
-                {
-                    block.Color = (DifficultyColor)r.ReadByte();
-                }
+                block.Color = (DifficultyColor)r.ReadByte();
             }
 
-            if (n.AnchoredObjects is not null)
+            foreach (var item in n.GetAnchoredObjects())
             {
-                foreach (var item in n.AnchoredObjects)
-                {
-                    item.Color = (DifficultyColor)r.ReadByte();
-                }
+                item.Color = (DifficultyColor)r.ReadByte();
             }
         }
 
@@ -4634,20 +4631,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 w.Write((byte)block.Color.GetValueOrDefault());
             }
 
-            if (n.BakedBlocks is not null)
+            foreach (var block in n.GetBakedBlocks())
             {
-                foreach (var block in n.BakedBlocks)
-                {
-                    w.Write((byte)block.Color.GetValueOrDefault());
-                }
+                w.Write((byte)block.Color.GetValueOrDefault());
             }
 
-            if (n.AnchoredObjects is not null)
+            foreach (var item in n.GetAnchoredObjects())
             {
-                foreach (var item in n.AnchoredObjects)
-                {
-                    w.Write((byte)item.Color.GetValueOrDefault());
-                }
+                w.Write((byte)item.Color.GetValueOrDefault());
             }
         }
     }

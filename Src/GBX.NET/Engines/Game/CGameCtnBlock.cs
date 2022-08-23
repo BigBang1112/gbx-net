@@ -7,7 +7,7 @@ namespace GBX.NET.Engines.Game;
 /// </summary>
 /// <remarks>ID: 0x03057000</remarks>
 [Node(0x03057000)]
-public class CGameCtnBlock : CMwNod, INodeDependant<CGameCtnChallenge>
+public class CGameCtnBlock : CMwNod
 {
     #region Constants
 
@@ -215,18 +215,7 @@ public class CGameCtnBlock : CMwNod, INodeDependant<CGameCtnChallenge>
     /// Color of the block. Available since TM® Royal update.
     /// </summary>
     [NodeMember]
-    public DifficultyColor? Color
-    {
-        get
-        {
-            ((INodeDependant<CGameCtnChallenge>)this).DependingNode?.DiscoverChunk<CGameCtnChallenge.Chunk03043062>();
-
-            return color;
-        }
-        set => color = value;
-    }
-
-    CGameCtnChallenge? INodeDependant<CGameCtnChallenge>.DependingNode { get; set; }
+    public DifficultyColor? Color { get; set; }
 
     #endregion
 

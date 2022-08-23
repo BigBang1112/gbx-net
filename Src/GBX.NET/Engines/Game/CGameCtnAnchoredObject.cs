@@ -5,7 +5,7 @@
 /// </summary>
 /// <remarks>ID: 0x03101000</remarks>
 [Node(0x03101000)]
-public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
+public class CGameCtnAnchoredObject : CMwNod
 {
     #region Fields
 
@@ -100,17 +100,7 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     /// Color of the item. Available since TM® Royal update.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03101002))]
-    public DifficultyColor? Color
-    {
-        get
-        {
-            ((INodeDependant<CGameCtnChallenge>)this).DependingNode?.DiscoverChunk<CGameCtnChallenge.Chunk03043062>();
-
-            return color;
-        }
-        set => color = value;
-    }
+    public DifficultyColor? Color { get; set; }
 
     /// <summary>
     /// Skin used on the item.
@@ -134,15 +124,13 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     /// <summary>
     /// Item that tells when that item gets deleted, this item is deleted with it. Works for ManiaPlanet, used to work in the past in TM2020 but now it likely doesn't.
     /// </summary>
-    public CGameCtnAnchoredObject PlacedOnItem { get; set; }
+    public CGameCtnAnchoredObject? PlacedOnItem { get; set; }
 
     /// <summary>
     /// Group number that groups items that get deleted together. Works for TM2020 only.
     /// </summary>
     [NodeMember]
     public int? SnappedOnGroup { get; set; }
-
-    CGameCtnChallenge? INodeDependant<CGameCtnChallenge>.DependingNode { get; set; }
 
     #endregion
 
