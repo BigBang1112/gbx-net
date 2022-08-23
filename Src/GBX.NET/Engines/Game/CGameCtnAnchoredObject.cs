@@ -155,19 +155,19 @@ public class CGameCtnAnchoredObject : CMwNod
     public EPhaseOffset? AnimPhaseOffset { get; set; }
 
     /// <summary>
-    /// The second layer of skin. Available since TM2020 Royal update or a later one.
+    /// The second layer of skin. Available since TM2020.
     /// </summary>
     [NodeMember]
     public FileRef? ForegroundPackDesc { get; set; }
 
     /// <summary>
-    /// Lightmap quality setting of the block. Available since TM2020 Royal update or a later one.
+    /// Lightmap quality setting of the block. Available since TM2020.
     /// </summary>
     [NodeMember(ExactName = "MapElemLmQuality")]
-    public LightmapQuality LightmapQuality { get; set; }
+    public LightmapQuality? LightmapQuality { get; set; }
 
     /// <summary>
-    /// Reference to the macroblock that placed this item. In macroblock mode, this item is then part of a selection group.
+    /// Reference to the macroblock that placed this item. In macroblock mode, this item is then part of a selection group. Available since TM2020.
     /// </summary>
     [NodeMember]
     public MacroblockInstance? MacroblockReference { get; set; }

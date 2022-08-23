@@ -4752,17 +4752,17 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             foreach (var block in n.GetBlocks())
             {
-                block.LightmapQuality = (LightmapQuality)rw.Byte((byte)block.LightmapQuality);
+                block.LightmapQuality = (LightmapQuality)rw.Byte((byte)block.LightmapQuality.GetValueOrDefault());
             }
 
             foreach (var block in n.GetBakedBlocks())
             {
-                block.LightmapQuality = (LightmapQuality)rw.Byte((byte)block.LightmapQuality);
+                block.LightmapQuality = (LightmapQuality)rw.Byte((byte)block.LightmapQuality.GetValueOrDefault());
             }
 
             foreach (var item in n.GetAnchoredObjects())
             {
-                item.LightmapQuality = (LightmapQuality)rw.Byte((byte)item.LightmapQuality);
+                item.LightmapQuality = (LightmapQuality)rw.Byte((byte)item.LightmapQuality.GetValueOrDefault());
             }
         }
     }
