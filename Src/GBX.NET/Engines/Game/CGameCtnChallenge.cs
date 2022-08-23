@@ -1375,7 +1375,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Retrieves items.
     /// </summary>
     /// <returns>An enumerable of items.</returns>
-    public IEnumerable<CGameCtnAnchoredObject> GetAnchoredObjects() => anchoredObjects ?? Enumerable.Empty<CGameCtnAnchoredObject>();
+    public IEnumerable<CGameCtnAnchoredObject> GetAnchoredObjects() => AnchoredObjects ?? Enumerable.Empty<CGameCtnAnchoredObject>();
 
     /// <summary>
     /// Places an item on a map.
@@ -3153,6 +3153,19 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
+    #region 0x03A skippable chunk
+
+    /// <summary>
+    /// CGameCtnChallenge 0x03A skippable chunk
+    /// </summary>
+    [Chunk(0x0304303A), IgnoreChunk]
+    public class Chunk0304303A : SkippableChunk<CGameCtnChallenge>
+    {
+        // TODO: array of identifies that could break the parse flow
+    }
+
+    #endregion
+
     #region 0x03D skippable chunk (lightmaps)
 
     /// <summary>
@@ -3431,7 +3444,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     }
                 }
 
-                var snapItemGroups = version >= 7 ? null : r.ReadArray<int>(); // snap item group - only some snapped items will delete on a block. they are consistent numbers
+                var snapItemGroups = version < 7 ? r.ReadArray<int>() : null; // snap item group - only some snapped items will delete on a block. they are consistent numbers
 
                 var usedItems = default(CGameCtnAnchoredObject[]);
 
@@ -3490,6 +3503,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     }
 
                     n.anchoredObjects[i].SnappedOnGroup = snapItemGroups?[snappedIndex] ?? 0;
+                }
+
+                if (version >= 8)
+                {
+                    throw new ChunkVersionNotSupportedException(version);
                 }
             }
 
@@ -3647,6 +3665,19 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
+    #region 0x041 skippable chunk
+
+    /// <summary>
+    /// CGameCtnChallenge 0x041 skippable chunk
+    /// </summary>
+    [Chunk(0x03043041), IgnoreChunk]
+    public class Chunk03043041 : SkippableChunk<CGameCtnChallenge>
+    {
+        // encapsulated node something
+    }
+
+    #endregion
+
     #region 0x042 skippable chunk (author)
 
     /// <summary>
@@ -3758,6 +3789,34 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             w.Write((int)ms.Length);
             w.Write(ms.ToArray(), 0, (int)ms.Length);
+        }
+    }
+
+    #endregion
+
+    #region 0x047 skippable chunk
+
+    /// <summary>
+    /// CGameCtnChallenge 0x047 skippable chunk
+    /// </summary>
+    [Chunk(0x03043047)]
+    public class Chunk03043047 : SkippableChunk<CGameCtnChallenge>, IVersionable
+    {
+        private int version;
+
+        public string? U01;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.String(ref U01);
+
+            if (version > 0)
+            {
+                throw new ChunkVersionNotSupportedException(version);
+            }
         }
     }
 
@@ -3951,6 +4010,32 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             rw.String(ref n.objectiveTextSilver);
             rw.String(ref n.objectiveTextBronze);
         }
+    }
+
+    #endregion
+
+    #region 0x04D skippable chunk
+
+    /// <summary>
+    /// CGameCtnChallenge 0x04D skippable chunk
+    /// </summary>
+    [Chunk(0x0304304D), IgnoreChunk]
+    public class Chunk0304304D : SkippableChunk<CGameCtnChallenge>
+    {
+        // gone from code since ManiaPlanet 4
+    }
+
+    #endregion
+
+    #region 0x04E skippable chunk (trigger actions)
+
+    /// <summary>
+    /// CGameCtnChallenge 0x04E skippable chunk (trigger actions)
+    /// </summary>
+    [Chunk(0x0304304E), IgnoreChunk]
+    public class Chunk0304304E : SkippableChunk<CGameCtnChallenge>
+    {
+        // encapsulated CPlugTriggerAction array
     }
 
     #endregion

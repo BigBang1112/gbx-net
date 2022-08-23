@@ -622,12 +622,12 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #endregion
 
-    #region 0x010 chunk
+    #region 0x010 chunk (simple events display)
 
     /// <summary>
-    /// CGameCtnReplayRecord 0x010 chunk
+    /// CGameCtnReplayRecord 0x010 chunk (simple events display)
     /// </summary>
-    [Chunk(0x03093010)]
+    [Chunk(0x03093010, "simple events display")]
     public class Chunk03093010 : Chunk<CGameCtnReplayRecord>
     {
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
@@ -745,6 +745,40 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #endregion
 
+    #region 0x01A skippable chunk (scenery vortex key)
+
+    /// <summary>
+    /// CGameCtnReplayRecord 0x01A skippable chunk (scenery vortex key)
+    /// </summary>
+    [Chunk(0x0309301A, "scenery vortex key"), IgnoreChunk]
+    public class Chunk0309301A : SkippableChunk<CGameCtnReplayRecord>
+    {
+        
+    }
+
+    #endregion
+
+    #region 0x01B skippable chunk (player of interest)
+
+    /// <summary>
+    /// CGameCtnReplayRecord 0x01B skippable chunk (player of interest)
+    /// </summary>
+    [Chunk(0x0309301B, "player of interest")]
+    public class Chunk0309301B : SkippableChunk<CGameCtnReplayRecord>, IVersionable
+    {
+        public int Version { get; set; }
+
+        public (int, int)[]? U01;
+
+        public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
+        {
+            Version = r.ReadInt32();
+            U01 = r.ReadArray(r => (r.ReadInt32(), r.ReadInt32()));
+        }
+    }
+
+    #endregion
+
     #region 0x01C skippable chunk
 
     /// <summary>
@@ -755,39 +789,205 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     {
         public int Version { get; set; }
 
+        public string? U01;
+
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
         {
             Version = r.ReadInt32();
-            r.ReadString(); // CampaignSolo
+            U01 = r.ReadString(); // CampaignSolo
         }
     }
 
     #endregion
 
-    #region 0x024 chunk
+    #region 0x01D skippable chunk (InterfaceScriptInfos)
 
     /// <summary>
-    /// CGameCtnReplayRecord 0x024 chunk
+    /// CGameCtnReplayRecord 0x01D skippable chunk (InterfaceScriptInfos)
     /// </summary>
-    [Chunk(0x03093024)]
-    public class Chunk03093024 : Chunk<CGameCtnReplayRecord>
+    [Chunk(0x0309301D, "InterfaceScriptInfos"), IgnoreChunk]
+    public class Chunk0309301D : SkippableChunk<CGameCtnReplayRecord>
     {
-        public int U01;
+        
+    }
+
+    #endregion
+
+    #region 0x01E skippable chunk (actions)
+
+    /// <summary>
+    /// CGameCtnReplayRecord 0x01E skippable chunk (actions)
+    /// </summary>
+    [Chunk(0x0309301E, "actions"), IgnoreChunk]
+    public class Chunk0309301E : SkippableChunk<CGameCtnReplayRecord>
+    {
+
+    }
+
+    #endregion
+
+    #region 0x01F skippable chunk (AnchoredObjectInfos)
+
+    /// <summary>
+    /// CGameCtnReplayRecord 0x01E skippable chunk (AnchoredObjectInfos)
+    /// </summary>
+    [Chunk(0x0309301F, "AnchoredObjectInfos"), IgnoreChunk]
+    public class Chunk0309301F : SkippableChunk<CGameCtnReplayRecord>
+    {
+
+    }
+
+    #endregion
+
+    #region 0x020 skippable chunk (item skins and names)
+
+    /// <summary>
+    /// CGameCtnReplayRecord 0x020 skippable chunk (item skins and names)
+    /// </summary>
+    [Chunk(0x03093020, "item skins and names"), IgnoreChunk]
+    public class Chunk03093020 : SkippableChunk<CGameCtnReplayRecord>
+    {
+
+    }
+
+    #endregion
+
+    #region 0x021 skippable chunk
+
+    /// <summary>
+    /// CGameCtnReplayRecord 0x021 skippable chunk
+    /// </summary>
+    [Chunk(0x03093021)]
+    public class Chunk03093021 : SkippableChunk<CGameCtnReplayRecord>
+    {
+        private int version;
+
+        public bool U01;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnReplayRecord n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.Boolean(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x022 skippable chunk (TimedCamVal)
+
+    /// <summary>
+    /// CGameCtnReplayRecord 0x022 skippable chunk (TimedCamVal)
+    /// </summary>
+    [Chunk(0x03093022, "TimedCamVal"), IgnoreChunk]
+    public class Chunk03093022 : SkippableChunk<CGameCtnReplayRecord>
+    {
+        
+    }
+
+    #endregion
+
+    #region 0x023 skippable chunk (BonusBumpKey)
+
+    /// <summary>
+    /// CGameCtnReplayRecord 0x023 skippable chunk (BonusBumpKey)
+    /// </summary>
+    [Chunk(0x03093023, "BonusBumpKey"), IgnoreChunk]
+    public class Chunk03093023 : SkippableChunk<CGameCtnReplayRecord>
+    {
+
+    }
+
+    #endregion
+
+    #region 0x024 chunk (record data)
+
+    /// <summary>
+    /// CGameCtnReplayRecord 0x024 chunk (record data)
+    /// </summary>
+    [Chunk(0x03093024, "record data")]
+    public class Chunk03093024 : Chunk<CGameCtnReplayRecord>, IVersionable
+    {
         public int U02;
+
+        public int Version { get; set; }
 
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
         {
-            U01 = r.ReadInt32();
-            U02 = r.ReadInt32();
+            Version = r.ReadInt32();
+            U02 = r.ReadInt32(); // nod
             n.recordData = r.ReadNodeRef<CPlugEntRecordData>();
         }
 
         public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, CancellationToken cancellationToken = default)
         {
-            U01 = r.ReadInt32();
-            U02 = r.ReadInt32();
+            Version = r.ReadInt32();
+            U02 = r.ReadInt32(); // nod
             n.recordData = await r.ReadNodeRefAsync<CPlugEntRecordData>(cancellationToken);
         }
+    }
+
+    #endregion
+
+    #region 0x025 skippable chunk
+
+    /// <summary>
+    /// CGameCtnReplayRecord 0x025 skippable chunk
+    /// </summary>
+    [Chunk(0x03093025)]
+    public class Chunk03093025 : SkippableChunk<CGameCtnReplayRecord>, IVersionable
+    {
+        public float U01;
+        public int U02;
+
+        public int Version { get; set; }
+
+        public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
+        {
+            Version = r.ReadInt32();
+            U01 = r.ReadSingle();
+            U02 = r.ReadInt32();
+        }
+    }
+
+    #endregion
+
+    #region 0x026 skippable chunk (EntDataSceneUIdsToGhost)
+
+    /// <summary>
+    /// CGameCtnReplayRecord 0x026 skippable chunk (EntDataSceneUIdsToGhost)
+    /// </summary>
+    [Chunk(0x03093026, "EntDataSceneUIdsToGhost"), IgnoreChunk]
+    public class Chunk03093026 : SkippableChunk<CGameCtnReplayRecord>
+    {
+
+    }
+
+    #endregion
+
+    #region 0x027 skippable chunk
+
+    /// <summary>
+    /// CGameCtnReplayRecord 0x027 skippable chunk
+    /// </summary>
+    [Chunk(0x03093027), IgnoreChunk]
+    public class Chunk03093027 : SkippableChunk<CGameCtnReplayRecord>
+    {
+
+    }
+
+    #endregion
+
+    #region 0x028 skippable chunk
+
+    /// <summary>
+    /// CGameCtnReplayRecord 0x028 skippable chunk
+    /// </summary>
+    [Chunk(0x03093028), IgnoreChunk]
+    public class Chunk03093028 : SkippableChunk<CGameCtnReplayRecord>
+    {
+
     }
 
     #endregion

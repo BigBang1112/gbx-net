@@ -246,5 +246,23 @@ public partial class CGameCtnMediaClipGroup : CMwNod
 
     #endregion
 
+    #region 0x004 skippable chunk
+
+    /// <summary>
+    /// CGameCtnMediaClipGroup 0x004 skippable chunk
+    /// </summary>
+    [Chunk(0x0307A004)]
+    public class Chunk0307A004 : SkippableChunk<CGameCtnMediaClipGroup>
+    {
+        public int U01;
+
+        public override void ReadWrite(CGameCtnMediaClipGroup n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+        }
+    }
+
+    #endregion
+
     #endregion
 }

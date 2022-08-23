@@ -150,8 +150,8 @@ public abstract partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, 
                 }
             }
 
-            n.vertices = r.ReadArray(r1 => r1.ReadVec4());
-            n.triangles = r.ReadArray(r1 => r1.ReadInt3());
+            n.vertices = r.ReadArray<Vec4>();
+            n.triangles = r.ReadArray<Int3>();
 
             U01 = r.ReadInt32();
             U02 = r.ReadInt32();
@@ -163,7 +163,7 @@ public abstract partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, 
 
         public override void Write(CGameCtnMediaBlockTriangles n, GameBoxWriter w)
         {
-            w.WriteList(n.keys, (x, w1) => w1.WriteTimeSingle(x.Time));
+            w.WriteList(n.keys, (x, w) => w.WriteTimeSingle(x.Time));
             w.Write(n.keys.Count);
             w.Write(n.vertices.Length);
 
@@ -175,8 +175,8 @@ public abstract partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, 
                 }
             }
 
-            w.WriteArray(n.vertices, (x, w1) => w1.Write(x));
-            w.WriteArray(n.triangles, (x, w1) => w1.Write(x));
+            w.WriteArray(n.vertices);
+            w.WriteArray(n.triangles);
 
             w.Write(U01);
             w.Write(U02);
@@ -188,6 +188,19 @@ public abstract partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, 
     }
 
     #endregion
-    
+
+    #region 0x002 skippable chunk
+
+    /// <summary>
+    /// CGameCtnMediaBlockTriangles 0x002 skippable chunk
+    /// </summary>
+    [Chunk(0x03029002), IgnoreChunk]
+    public class Chunk03029002 : SkippableChunk<CGameCtnMediaBlockTriangles>
+    {
+        
+    }
+
+    #endregion
+
     #endregion
 }

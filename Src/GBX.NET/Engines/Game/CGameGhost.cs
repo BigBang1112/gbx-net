@@ -186,15 +186,26 @@ public partial class CGameGhost : CMwNod
     /// CGameGhost 0x006 chunk
     /// </summary>
     [Chunk(0x0303F006)]
-    public class Chunk0303F006 : Chunk<CGameGhost>
+    public class Chunk0303F006 : Chunk0303F005
     {
-        public Chunk0303F005 Chunk005 { get; } = new Chunk0303F005();
-
         public override void ReadWrite(CGameGhost n, GameBoxReaderWriter rw)
         {
             rw.Boolean(ref n.isReplaying);
-            Chunk005.ReadWrite(n, rw);
+            base.ReadWrite(n, rw);
         }
+    }
+
+    #endregion
+
+    #region 0x007 skippable chunk
+
+    /// <summary>
+    /// CGameGhost 0x007 skippable chunk
+    /// </summary>
+    [Chunk(0x0303F007), IgnoreChunk]
+    public class Chunk0303F007 : SkippableChunk<CGameGhost>
+    {
+        
     }
 
     #endregion

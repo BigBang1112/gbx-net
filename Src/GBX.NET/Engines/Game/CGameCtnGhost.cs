@@ -1048,6 +1048,32 @@ public partial class CGameCtnGhost : CGameGhost
 
     #endregion
 
+    #region 0x01F skippable chunk (OldColorHistory)
+
+    /// <summary>
+    /// CGameCtnGhost 0x01F skippable chunk (OldColorHistory)
+    /// </summary>
+    [Chunk(0x0309201F, "OldColorHistory"), IgnoreChunk]
+    public class Chunk0309201F : SkippableChunk<CGameCtnGhost>
+    {
+        
+    }
+
+    #endregion
+
+    #region 0x021 skippable chunk (OldKeyStrokes)
+
+    /// <summary>
+    /// CGameCtnGhost 0x021 skippable chunk (OldKeyStrokes)
+    /// </summary>
+    [Chunk(0x03092021, "OldKeyStrokes"), IgnoreChunk]
+    public class Chunk03092021 : SkippableChunk<CGameCtnGhost>
+    {
+
+    }
+
+    #endregion
+
     #region 0x022 skippable chunk (timed pixel array)
 
     /// <summary>
@@ -1226,6 +1252,71 @@ public partial class CGameCtnGhost : CGameGhost
             rw.String(ref n.validate_TitleId);
             rw.BigInt(ref U01, 32);
         }
+    }
+
+    #endregion
+
+    #region 0x029 skippable chunk
+
+    /// <summary>
+    /// CGameCtnGhost 0x029 skippable chunk
+    /// </summary>
+    [Chunk(0x03092029), IgnoreChunk]
+    public class Chunk03092029 : SkippableChunk<CGameCtnGhost>
+    {
+        
+    }
+
+    #endregion
+
+    #region 0x02A skippable chunk
+
+    /// <summary>
+    /// CGameCtnGhost 0x02A skippable chunk
+    /// </summary>
+    [Chunk(0x0309202A), IgnoreChunk]
+    public class Chunk0309202A : SkippableChunk<CGameCtnGhost>
+    {
+
+    }
+
+    #endregion
+
+    #region 0x02B skippable chunk
+
+    /// <summary>
+    /// CGameCtnGhost 0x02B skippable chunk
+    /// </summary>
+    [Chunk(0x0309202B), IgnoreChunk]
+    public class Chunk0309202B : SkippableChunk<CGameCtnGhost>
+    {
+
+    }
+
+    #endregion
+
+    #region 0x02C skippable chunk
+
+    /// <summary>
+    /// CGameCtnGhost 0x02C skippable chunk
+    /// </summary>
+    [Chunk(0x0309202C), IgnoreChunk]
+    public class Chunk0309202C : SkippableChunk<CGameCtnGhost>
+    {
+
+    }
+
+    #endregion
+
+    #region 0x02D skippable chunk
+
+    /// <summary>
+    /// CGameCtnGhost 0x02D skippable chunk
+    /// </summary>
+    [Chunk(0x0309202D), IgnoreChunk]
+    public class Chunk0309202D : SkippableChunk<CGameCtnGhost>
+    {
+
     }
 
     #endregion
