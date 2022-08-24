@@ -200,25 +200,13 @@ public partial class CGameCtnGhost : CGameGhost
     }
 
     [NodeMember(ExactlyNamed = true)]
-    public string? GhostLogin
-    {
-        get => ghostLogin;
-        set => ghostLogin = value;
-    }
+    public string? GhostLogin { get => ghostLogin; set => ghostLogin = value; }
 
     [NodeMember]
-    public string? SkinFile
-    {
-        get => skinFile;
-        set => skinFile = value;
-    }
+    public string? SkinFile { get => skinFile; set => skinFile = value; }
 
     [NodeMember]
-    public string? GhostUid
-    {
-        get => ghostUid;
-        set => ghostUid = value;
-    }
+    public string? GhostUid { get => ghostUid; set => ghostUid = value; }
 
     /// <summary>
     /// Duration of events in the ghost (range of detected inputs). This can be 0 if the ghost was driven in editor.
@@ -339,47 +327,23 @@ public partial class CGameCtnGhost : CGameGhost
     }
 
     [NodeMember(ExactlyNamed = true)]
-    public string? Validate_TitleId
-    {
-        get => validate_TitleId;
-        set => validate_TitleId = value;
-    }
+    public string? Validate_TitleId { get => validate_TitleId; set => validate_TitleId = value; }
 
     [NodeMember]
-    public CPlugEntRecordData? RecordData
-    {
-        get => recordData;
-        set => recordData = value;
-    }
+    public CPlugEntRecordData? RecordData { get => recordData; set => recordData = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public string? GhostTrigram
-    {
-        get => ghostTrigram;
-        set => ghostTrigram = value;
-    }
+    public string? GhostTrigram { get => ghostTrigram; set => ghostTrigram = value; }
 
     [NodeMember(ExactName = "GhostCountryPath")]
-    public string? GhostZone
-    {
-        get => ghostZone;
-        set => ghostZone = value;
-    }
+    public string? GhostZone { get => ghostZone; set => ghostZone = value; }
 
     [NodeMember]
-    public bool HasBadges
-    {
-        get => hasBadges;
-        set => hasBadges = value;
-    }
+    public bool HasBadges { get => hasBadges; set => hasBadges = value; }
 
     [NodeMember]
     [SupportsFormatting]
-    public string? GhostClubTag
-    {
-        get => ghostClubTag;
-        set => ghostClubTag = value;
-    }
+    public string? GhostClubTag { get => ghostClubTag; set => ghostClubTag = value; }
 
     #endregion
 

@@ -24,42 +24,56 @@ public partial class CGameCtnDecoration : CGameCtnCollector, CGameCtnDecoration.
     private GameBoxRefTable.File? decoMapLightMapFile;
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03038011))]
     public CGameCtnDecorationSize? DecoSize { get => decoSize; set => decoSize = value; }
     
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03038012))]
+    [AppliedWithChunk(typeof(Chunk03038019))]
     public CGameCtnDecorationAudio? DecoAudio { get => decoAudio; set => decoAudio = value; }
     
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03038013))]
     public CGameCtnDecorationMood? DecoMood { get => decoMood; set => decoMood = value; }
     
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03038014))]
     public CPlugDecoratorSolid? DecoratorSolidWarp { get => decoratorSolidWarp; set => decoratorSolidWarp = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03038015))]
     public CGameCtnDecorationTerrainModifier? TerrainModifierCovered { get => terrainModifierCovered; set => terrainModifierCovered = value; }
     
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03038016))]
     public CGameCtnDecorationTerrainModifier? TerrainModifierBase { get => terrainModifierBase; set => terrainModifierBase = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03038017))]
     public string? DecorationZoneFrontierId { get => decorationZoneFrontierId; set => decorationZoneFrontierId = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03038017), sinceVersion: 1)]
     public bool IsWaterOutsidePlayField { get => isWaterOutsidePlayField; set => isWaterOutsidePlayField = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03038018))]
     public CPlugGameSkin? VehicleFxSkin { get => vehicleFxSkin; set => vehicleFxSkin = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03038018))]
     public string? VehicleFxFolder { get => vehicleFxFolder; set => vehicleFxFolder = value; }
 
     [NodeMember(ExactName = "DecoAudio_Ambient")]
+    [AppliedWithChunk(typeof(Chunk03038019), sinceVersion: 1)]
     public CPlugSound? DecoAudioAmbient { get => decoAudioAmbient; set => decoAudioAmbient = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0303801A))]
     public CGameCtnDecorationMaterialModifiers? DecoMaterialModifiers { get => decoMaterialModifiers; set => decoMaterialModifiers = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0303801B))]
     public CGameCtnChallenge? DecoMap { get => decoMap; set => decoMap = value; }
 
     #region Constructors

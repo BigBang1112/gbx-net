@@ -5,37 +5,18 @@
 /// </summary>
 /// <remarks>ID: 0x0301B000</remarks>
 [Node(0x0301B000)]
-public class CGameCtnCollectorList : CMwNod
+public partial class CGameCtnCollectorList : CMwNod
 {
-    #region Fields
-
-    private Collector[] collectorStock;
-
-    #endregion
-
-    #region Properties
+    private IList<Collector> collectorStock;
 
     [NodeMember]
-    public Collector[] CollectorStock
-    {
-        get => collectorStock;
-        set => collectorStock = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk0301B000))]
+    public IList<Collector> CollectorStock { get => collectorStock; set => collectorStock = value; }
 
     protected CGameCtnCollectorList()
     {
-        collectorStock = null!;
+        collectorStock = Array.Empty<Collector>();
     }
-
-    #endregion
-
-    #region Chunks
-
-    #region 0x000 chunk
 
     /// <summary>
     /// CGameCtnCollectorList 0x000 chunk
@@ -45,7 +26,7 @@ public class CGameCtnCollectorList : CMwNod
     {
         public override void ReadWrite(CGameCtnCollectorList n, GameBoxReaderWriter rw)
         {
-            rw.Array(ref n.collectorStock!, r => new Collector
+            rw.List(ref n.collectorStock!, r => new Collector
             {
                 Ident = r.ReadIdent(),
                 Count = r.ReadInt32()
@@ -57,23 +38,4 @@ public class CGameCtnCollectorList : CMwNod
             });
         }
     }
-
-    #endregion
-
-    #endregion
-
-    #region Other classes
-
-    public class Collector
-    {
-        public Ident Ident { get; set; } = Ident.Empty;
-        public int Count { get; set; }
-
-        public override string ToString()
-        {
-            return $"{Count} {Ident.Id}";
-        }
-    }
-
-    #endregion
 }
