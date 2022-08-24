@@ -29,7 +29,7 @@ public class GameBoxHeader
         HeaderChunks = new();
     }
 
-    internal void Write(Node node, GameBoxWriter w, int numNodes, ILogger? logger)
+    internal void Write(Node node, GameBoxWriter w)
     {
         w.Write(GameBox.Magic, StringLengthPrefix.None);
         w.Write(Version);
@@ -48,17 +48,15 @@ public class GameBoxHeader
             w.Write((byte)UnknownByte.GetValueOrDefault('R'));
         }
 
-        w.Write(Chunk.Remap(Id, w.Settings.Remap));
+        w.Write(Chunk.Remap(Id, w.Remap));
 
         if (Version >= 6)
         {
-            WriteVersion6(node, w, logger);
+            WriteVersion6(node, w);
         }
-
-        w.Write(numNodes);
     }
 
-    private void WriteVersion6(Node node, GameBoxWriter w, ILogger? logger)
+    private void WriteVersion6(Node node, GameBoxWriter w)
     {
         var headerChunks = (node as INodeHeader)?.HeaderChunks ?? HeaderChunks;
 
@@ -69,7 +67,7 @@ public class GameBoxHeader
         }
 
         using var userDataStream = new MemoryStream();
-        using var userDataWriter = new GameBoxWriter(userDataStream, w.Settings, logger);
+        using var userDataWriter = new GameBoxWriter(userDataStream, w);
         var userDataReaderWriter = new GameBoxReaderWriter(userDataWriter);
 
         var table = new Dictionary<uint, int>();
@@ -93,7 +91,7 @@ public class GameBoxHeader
 
         foreach (IHeaderChunk chunk in headerChunks)
         {
-            w.Write(Chunk.Remap(chunk.Id, w.Settings.Remap));
+            w.Write(Chunk.Remap(chunk.Id, w.Remap));
 
             var length = table[chunk.Id];
 
@@ -120,17 +118,17 @@ public class GameBoxHeader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    public static GameBoxHeader Parse(GameBoxReader r, ILogger? logger = null)
+    public static GameBoxHeader Parse(GameBoxReader r)
     {
         if (!r.HasMagic(GameBox.Magic))
         {
             throw new NotAGbxException();
         }
 
-        logger?.LogDebug("GBX magic found");
+        r.Logger?.LogDebug("GBX magic found");
 
         var version = r.ReadInt16();
-        logger?.LogVersion(version);
+        r.Logger?.LogVersion(version);
 
         if (version < 3 || version >= 7)
         {
@@ -138,7 +136,7 @@ public class GameBoxHeader
         }
 
         var format = (GameBoxFormat)r.ReadByte();
-        logger?.LogFormat(format);
+        r.Logger?.LogFormat(format);
 
         if (format == GameBoxFormat.Text)
         {
@@ -146,34 +144,34 @@ public class GameBoxHeader
         }
 
         var compressionOfRefTable = (GameBoxCompression)r.ReadByte();
-        logger?.LogRefTableCompression(compressionOfRefTable);
+        r.Logger?.LogRefTableCompression(compressionOfRefTable);
 
         var compressionOfBody = (GameBoxCompression)r.ReadByte();
-        logger?.LogBodyCompression(compressionOfBody);
+        r.Logger?.LogBodyCompression(compressionOfBody);
 
         var unknownByte = default(char?);
 
         if (version >= 4)
         {
             unknownByte = (char)r.ReadByte();
-            logger?.LogUnknownByte(unknownByte.Value);
+            r.Logger?.LogUnknownByte(unknownByte.Value);
         }
 
         var id = Node.RemapToLatest(r.ReadUInt32());
-        logger?.LogClassId(id.ToString("X8"));
+        r.Logger?.LogClassId(id.ToString("X8"));
 
         var userData = Array.Empty<byte>();
 
         if (version >= 6)
         {
             userData = r.ReadBytes();
-            logger?.LogUserDataSize(userData.Length / 1024f);
+            r.Logger?.LogUserDataSize(userData.Length / 1024f);
         }
 
         var numNodes = r.ReadInt32();
-        logger?.LogNumberOfNodes(numNodes);
+        r.Logger?.LogNumberOfNodes(numNodes);
 
-        logger?.LogDebug("Header complete");
+        r.Logger?.LogDebug("Header complete");
 
         return new GameBoxHeader(id)
         {
@@ -299,7 +297,7 @@ public class GameBoxHeader
         }
 
         using var chunkStream = new MemoryStream(chunkData);
-        using var chunkReader = new GameBoxReader(chunkStream, r.Settings, logger: logger);
+        using var chunkReader = new GameBoxReader(chunkStream, r);
         var rw = new GameBoxReaderWriter(chunkReader);
 
         if (nodeType != chunkNodeType && !nodeType.IsSubclassOf(chunkNodeType))
@@ -349,8 +347,8 @@ public class GameBoxHeader
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public static GameBoxHeader Parse(Stream stream, ILogger? logger = null)
     {
-        using var r = new GameBoxReader(stream, logger: logger);
-        return Parse(r, logger);
+        using var r = new GameBoxReader(stream, logger);
+        return Parse(r);
     }
 
     /// <summary>

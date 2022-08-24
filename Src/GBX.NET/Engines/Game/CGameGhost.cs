@@ -8,36 +8,26 @@
 [NodeExtension("Ghost")]
 public partial class CGameGhost : CMwNod
 {
-    #region Fields
-
     private readonly Action<Task<Data?>> dataExceptionHandle;
     private bool isReplaying;
     private Task<Data?> sampleData;
 
-    #endregion
-
-    #region Properties
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0303F006))]
+    public bool IsReplaying { get => isReplaying; set => isReplaying = value; }
 
     [NodeMember]
-    public bool IsReplaying
-    {
-        get => isReplaying;
-        set => isReplaying = value;
-    }
-
-    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0303F003))]
+    [AppliedWithChunk(typeof(Chunk0303F005))]
     public Data? SampleData
     {
         get => sampleData.Result;
     }
 
-    #endregion
-
-    #region Constructors
-
     protected CGameGhost()
     {
-        sampleData = null!;
+        sampleData = Task.FromResult(default(Data));
+
         dataExceptionHandle = task =>
         {
             if (!task.IsFaulted)
@@ -58,18 +48,12 @@ public partial class CGameGhost : CMwNod
         };
     }
 
-    #endregion
-
-    #region Methods
-
     public async Task<Data?> GetSampleDataAsync()
     {
         if (sampleData is null)
             return null;
         return await sampleData;
     }
-
-    #endregion
 
     #region Chunks
 
@@ -186,15 +170,26 @@ public partial class CGameGhost : CMwNod
     /// CGameGhost 0x006 chunk
     /// </summary>
     [Chunk(0x0303F006)]
-    public class Chunk0303F006 : Chunk<CGameGhost>
+    public class Chunk0303F006 : Chunk0303F005
     {
-        public Chunk0303F005 Chunk005 { get; } = new Chunk0303F005();
-
         public override void ReadWrite(CGameGhost n, GameBoxReaderWriter rw)
         {
             rw.Boolean(ref n.isReplaying);
-            Chunk005.ReadWrite(n, rw);
+            base.ReadWrite(n, rw);
         }
+    }
+
+    #endregion
+
+    #region 0x007 skippable chunk
+
+    /// <summary>
+    /// CGameGhost 0x007 skippable chunk
+    /// </summary>
+    [Chunk(0x0303F007), IgnoreChunk]
+    public class Chunk0303F007 : SkippableChunk<CGameGhost>
+    {
+        
     }
 
     #endregion

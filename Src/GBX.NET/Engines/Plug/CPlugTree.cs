@@ -75,7 +75,7 @@ public class CPlugTree : CPlug
             rw.ListNode<CPlugTree>(ref n.children!);
         }
 
-        public override async Task ReadWriteAsync(CPlugTree n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadWriteAsync(CPlugTree n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
             rw.Int32(ref U01); // list version
             n.children = (await rw.ListNodeAsync<CPlugTree>(n.children!, cancellationToken))!;
@@ -162,7 +162,7 @@ public class CPlugTree : CPlug
             rw.NodeRef<CPlugTreeGenerator>(ref n.generator);
         }
 
-        public override async Task ReadWriteAsync(CPlugTree n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadWriteAsync(CPlugTree n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
             n.visual = await rw.NodeRefAsync<CPlugVisual>(n.visual, cancellationToken);
             rw.NodeRef<CPlug>(ref n.shader, ref n.shaderFile);

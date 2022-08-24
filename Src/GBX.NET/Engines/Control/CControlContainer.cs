@@ -43,7 +43,7 @@ public class CControlContainer : CControlBase
         public int U02;
         public int U03;
 
-        public override void ReadWrite(CControlContainer n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CControlContainer n, GameBoxReaderWriter rw)
         {
             rw.Boolean(ref n.acceptOwnControls);
             rw.Boolean(ref n.useScript);

@@ -27,9 +27,9 @@ public class CMotionPlayer : CMotion
         public bool U02;
         public Id U03;
 
-        public override void Read(CMotionPlayer n, GameBoxReader r, ILogger? logger)
+        public override void Read(CMotionPlayer n, GameBoxReader r)
         {
-            n._base = Parse<CMotionCmdBase>(r, 0x08029000, progress: null, logger);
+            n._base = Parse<CMotionCmdBase>(r, 0x08029000, progress: null);
             U01 = r.ReadInt32(); // SavePlayState?
             U02 = r.ReadBoolean(); // IsPlaying?
             U03 = r.ReadId();

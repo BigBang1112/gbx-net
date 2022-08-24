@@ -205,7 +205,7 @@ public class CPlugSolid : CPlug
             rw.NodeRef<CPlug>(ref n.tree, ref n.treeFile);
         }
 
-        public override async Task ReadWriteAsync(CPlugSolid n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadWriteAsync(CPlugSolid n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
             rw.Boolean(ref U01);
             rw.Boolean(ref U02);
@@ -312,7 +312,7 @@ public class CPlugSolid : CPlug
             rw.NodeRef<CPlug>(ref n.tree, ref n.treeFile);
         }
 
-        public override async Task ReadWriteAsync(CPlugSolid n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadWriteAsync(CPlugSolid n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
             rw.Boolean(ref U01);
             rw.Boolean(ref U02);

@@ -136,7 +136,7 @@ public class CGameCtnMediaTrack : CMwNod
             rw.Int32(ref U02);
         }
 
-        public override async Task ReadWriteAsync(CGameCtnMediaTrack n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadWriteAsync(CGameCtnMediaTrack n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
             rw.String(ref n.name!);
             rw.Int32(ref tracksVersion);

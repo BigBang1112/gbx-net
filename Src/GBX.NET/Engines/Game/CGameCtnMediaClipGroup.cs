@@ -84,7 +84,7 @@ public partial class CGameCtnMediaClipGroup : CMwNod
             });
         }
 
-        public override async Task ReadAsync(CGameCtnMediaClipGroup n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadAsync(CGameCtnMediaClipGroup n, GameBoxReader r, CancellationToken cancellationToken = default)
         {
             ClipsVersion = r.ReadInt32();
 
@@ -152,7 +152,7 @@ public partial class CGameCtnMediaClipGroup : CMwNod
             });
         }
 
-        public override async Task ReadAsync(CGameCtnMediaClipGroup n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadAsync(CGameCtnMediaClipGroup n, GameBoxReader r, CancellationToken cancellationToken = default)
         {
             ClipsVersion = r.ReadInt32();
 
@@ -231,7 +231,7 @@ public partial class CGameCtnMediaClipGroup : CMwNod
             });
         }
 
-        public override async Task ReadAsync(CGameCtnMediaClipGroup n, GameBoxReader r, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadAsync(CGameCtnMediaClipGroup n, GameBoxReader r, CancellationToken cancellationToken = default)
         {
             ClipsVersion = r.ReadInt32();
 
@@ -241,6 +241,24 @@ public partial class CGameCtnMediaClipGroup : CMwNod
             n.Clips = clips.Select((clip, index) =>
                 new ClipTrigger(clip!, triggers[index])
             ).ToList();
+        }
+    }
+
+    #endregion
+
+    #region 0x004 skippable chunk
+
+    /// <summary>
+    /// CGameCtnMediaClipGroup 0x004 skippable chunk
+    /// </summary>
+    [Chunk(0x0307A004)]
+    public class Chunk0307A004 : SkippableChunk<CGameCtnMediaClipGroup>
+    {
+        public int U01;
+
+        public override void ReadWrite(CGameCtnMediaClipGroup n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
         }
     }
 

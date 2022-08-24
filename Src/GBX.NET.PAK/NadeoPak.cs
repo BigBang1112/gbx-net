@@ -94,7 +94,7 @@ public class NadeoPak : IDisposable, IExternalGameData
                     break;
                 }
 
-                var header = GameBoxHeader.Parse(r, logger: null);
+                var header = GameBoxHeader.Parse(r);
             }
         }
     }

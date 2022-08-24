@@ -1983,4 +1983,26 @@ public class GameBoxReaderWriterTests
     }
 
     #endregion
+
+    [Fact]
+    public void TimeOfDay_ReadsWritesSameValue()
+    {
+        Parallel.For(0, ushort.MaxValue, i =>
+        {
+            using var msIn = new MemoryStream();
+            using var initW = new BinaryWriter(msIn);
+            initW.Write(i);
+            msIn.Seek(0, SeekOrigin.Begin);
+
+            using var msOut = new MemoryStream();
+
+            using var r = new GameBoxReader(msIn);
+            using var w = new GameBoxWriter(msOut);
+            var rw = new GameBoxReaderWriter(r, w);
+
+            rw.TimeOfDay();
+
+            Assert.Equal(expected: msIn.ToArray(), actual: msOut.ToArray());
+        });
+    }
 }

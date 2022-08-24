@@ -11,42 +11,53 @@ namespace GBX.NET;
 /// </summary>
 public class GameBoxWriter : BinaryWriter
 {
-    private readonly ILogger? logger;
+    public IDRemap Remap { get; }
 
-    public GameBoxWriterSettings Settings { get; }
+    /// <summary>
+    /// A delegate collection that gets executed throughout the asynchronous writing.
+    /// </summary>
+    public GameBoxAsyncWriteAction? AsyncAction { get; }
+
+    internal ILogger? Logger { get; }
+
+    public GbxState State { get; }
+    private int? IdVersion { get => State.IdVersion; set => State.IdVersion = value; }
+    private IList<string> IdStrings => State.IdStrings;
+    private SortedDictionary<int, Node?> AuxNodes => State.AuxNodes;
 
     /// <summary>
     /// Constructs a binary writer specialized for Gbx serializing.
     /// </summary>
     /// <param name="output">The output stream.</param>
-    /// <param name="gbx">Gbx that holds node references and lookback strings while writing. If null, <see cref="Node"/>, <see cref="Id"/>, or <see cref="Ident"/> cannot be written and <see cref="PropertyNullException"/> will be thrown.</param>
+    /// <param name="logger">Logger.</param>
+    public GameBoxWriter(Stream output, ILogger? logger = null) : this(output, default, default, logger, new())
+    {
+        
+    }
+
+    /// <summary>
+    /// Constructs a binary writer specialized for Gbx serializing.
+    /// </summary>
+    /// <param name="output">The output stream.</param>
     /// <param name="remap">Node ID remap mode.</param>
     /// <param name="asyncAction">Specialized executions during asynchronous writing.</param>
     /// <param name="logger">Logger.</param>
-    public GameBoxWriter(Stream output,
-                         GameBox? gbx = null,
-                         IDRemap? remap = null,
-                         GameBoxAsyncWriteAction? asyncAction = null,
-                         ILogger? logger = null) : base(output, Encoding.UTF8, true)
+    /// <param name="state">State of <see cref="Id"/> and aux node write. Currently cannot be null.</param>
+    internal GameBoxWriter(Stream output, IDRemap remap, GameBoxAsyncWriteAction? asyncAction, ILogger? logger, GbxState state)
+        : base(output, Encoding.UTF8, true)
     {
-        Settings = new GameBoxWriterSettings(gbx, remap.GetValueOrDefault(), asyncAction);
-
-        this.logger = logger;
+        Remap = remap;
+        AsyncAction = asyncAction;
+        Logger = logger;
+        State = state ?? throw new ArgumentNullException(nameof(state));
     }
 
-    /// <summary>
-    /// Constructs a binary writer specialized for Gbx serializing.
-    /// </summary>
-    /// <param name="output">The output stream.</param>
-    /// <param name="settings">Settings for the writer.</param>
-    /// <param name="logger">Logger.</param>
-    public GameBoxWriter(Stream output, GameBoxWriterSettings settings, ILogger? logger = null) : base(output, Encoding.UTF8, true)
+    internal GameBoxWriter(Stream input, GameBoxWriter reference, bool hasOwnIdState = false)
+        : this(input, reference.Remap, reference.AsyncAction, reference.Logger, hasOwnIdState ? new() : reference.State)
     {
-        Settings = settings;
-
-        this.logger = logger;
+        
     }
-    
+
     /// <summary>
     /// Writes a byte array to the underlying stream.
     /// </summary>
@@ -221,11 +232,11 @@ public class GameBoxWriter : BinaryWriter
             return;
         }
 
-        var maxTime = TimeSpan.FromDays(1) - TimeSpan.FromTicks(1);
+        var maxTime = TimeSpan.FromDays(1) - TimeSpan.FromSeconds(1);
         var maxSecs = maxTime.TotalSeconds;
         var secs = timeOfDay.Value.TotalSeconds % maxTime.TotalSeconds;
 
-        Write((ushort)(secs / maxSecs * ushort.MaxValue));
+        Write(Convert.ToInt32(secs / maxSecs * ushort.MaxValue));
     }
 
     /// <exception cref="ArgumentNullException"><paramref name="fileRef"/> is null.</exception>
@@ -257,22 +268,17 @@ public class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.Gbx"/> is null.</exception>
     public void WriteId(string? value, bool tryParseToInt32 = false)
     {
-        var gbx = Settings.GetGbxOrThrow();
-
-        WriteIdVersionIfNotWritten(gbx);
-        WriteIdAsString(value ?? "", gbx, tryParseToInt32);
+        WriteIdVersionIfNotWritten();
+        WriteIdAsString(value ?? "", tryParseToInt32);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void WriteId(Id value)
     {
-        var gbx = Settings.GetGbxOrThrow();
-
-        WriteIdVersionIfNotWritten(gbx);
+        WriteIdVersionIfNotWritten();
 
         if (value.Index.HasValue)
         {
@@ -280,21 +286,19 @@ public class GameBoxWriter : BinaryWriter
             return;
         }
 
-        WriteIdAsString(value, gbx, tryParseToInt32: false); // Could be true
+        WriteIdAsString(value, tryParseToInt32: false); // Could be true
     }
 
-    private void WriteIdVersionIfNotWritten(GameBox gbx)
+    private void WriteIdVersionIfNotWritten()
     {
-        if (gbx.IdIsWritten)
+        if (IdVersion is null)
         {
-            return;
+            IdVersion = 3; // Not the bestest solution when a new Id version comes
+            Write(IdVersion.Value);
         }
-
-        Write(gbx.IdVersion ?? 3);
-        gbx.IdIsWritten = true;
     }
 
-    private void WriteIdAsString(string value, GameBox gbx, bool tryParseToInt32)
+    private void WriteIdAsString(string value, bool tryParseToInt32)
     {
         if (value == "")
         {
@@ -308,7 +312,7 @@ public class GameBoxWriter : BinaryWriter
             return;
         }
 
-        var index = gbx.IdStringsInWriteMode.IndexOf(value);
+        var index = IdStrings.IndexOf(value);
 
         if (index != -1)
         {
@@ -325,7 +329,7 @@ public class GameBoxWriter : BinaryWriter
         Write(0x40000000);
         Write(value);
 
-        gbx.IdStringsInWriteMode.Add(value);
+        IdStrings.Add(value);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -339,18 +343,15 @@ public class GameBoxWriter : BinaryWriter
         WriteId(ident.Author);
     }
 
-    /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.Gbx"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write(Node? node, GameBoxRefTable.File? nodeFile = null)
     {
-        var gbx = Settings.GetGbxOrThrow();
-
         if (nodeFile is not null)
         {
             var nodeFileIndex = nodeFile.NodeIndex + 1;
 
-            while (gbx.AuxNodesInWriteMode.ContainsKey(nodeFileIndex))
+            while (AuxNodes.ContainsKey(nodeFileIndex))
             {
                 nodeFileIndex++;
             }
@@ -359,7 +360,7 @@ public class GameBoxWriter : BinaryWriter
 
             Write(nodeFileIndex);
             
-            gbx.AuxNodesInWriteMode.Add(nodeFileIndex, null);
+            AuxNodes.Add(nodeFileIndex, null);
 
             return;
         }
@@ -370,25 +371,25 @@ public class GameBoxWriter : BinaryWriter
             return;
         }
 
-        if (gbx.AuxNodesInWriteMode.ContainsValue(node))
+        if (AuxNodes.ContainsValue(node))
         {
-            Write(gbx.AuxNodesInWriteMode.FirstOrDefault(x => (x.Value ?? throw new Exception("Node or its external index not found")).Equals(node)).Key + 1);
+            Write(AuxNodes.FirstOrDefault(x => (x.Value ?? throw new Exception("Node or its external index not found")).Equals(node)).Key + 1);
             return;
         }
 
-        var index = gbx.AuxNodesInWriteMode.Count;
+        var index = AuxNodes.Count;
 
-        while (gbx.AuxNodesInWriteMode.ContainsKey(index))
+        while (AuxNodes.ContainsKey(index))
         {
             index++;
         }
 
-        gbx.AuxNodesInWriteMode.Add(index, node);
+        AuxNodes.Add(index, node);
 
         Write(index + 1);
-        Write(Chunk.Remap(node.Id, Settings.Remap));
+        Write(Chunk.Remap(node.Id, Remap));
 
-        node.Write(this, logger);
+        node.Write(this);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -555,11 +556,11 @@ public class GameBoxWriter : BinaryWriter
             }
 
             Write(node.Id);
-            node.Write(this, logger: logger);
+            node.Write(this);
 
-            if (logger?.IsEnabled(LogLevel.Debug) == true)
+            if (Logger?.IsEnabled(LogLevel.Debug) == true)
             {
-                logger?.LogDebug("[{className}] {current}/{count} ({time}ms)",
+                Logger?.LogDebug("[{className}] {current}/{count} ({time}ms)",
                     nodeType.FullName!.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::"),
                     counter + 1,
                     count,
@@ -571,7 +572,6 @@ public class GameBoxWriter : BinaryWriter
     }
 
     /// <exception cref="ArgumentNullException">Key in dictionary is null.</exception>
-    /// <exception cref="PropertyNullException"><see cref="GameBoxWriterSettings.Gbx"/> is null.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void WriteDictionaryNode<TKey, TValue>(IDictionary<TKey, TValue?>? dictionary, Action<TKey, GameBoxWriter>? keyWriter = null) where TValue : Node
@@ -816,6 +816,30 @@ public class GameBoxWriter : BinaryWriter
         for (var i = 0; i < list.Count; i++)
         {
             forLoop.Invoke(list[i], this);
+        }
+    }
+
+    /// <exception cref="ArgumentNullException"><paramref name="forLoop"/> is null.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public void WriteList<T>(IList<T>? list, Action<T, int, GameBoxWriter> forLoop)
+    {
+        if (forLoop is null)
+        {
+            throw new ArgumentNullException(nameof(forLoop));
+        }
+
+        if (list is null)
+        {
+            Write(0);
+            return;
+        }
+
+        Write(list.Count);
+
+        for (var i = 0; i < list.Count; i++)
+        {
+            forLoop.Invoke(list[i], i, this);
         }
     }
 

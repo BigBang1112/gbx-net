@@ -44,7 +44,7 @@ public abstract class CControlBase : CSceneToy
         public int U03;
         public int U04;
 
-        public override void ReadWrite(CControlBase n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CControlBase n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref U01);
             rw.Int32(ref U02);
@@ -65,7 +65,7 @@ public abstract class CControlBase : CSceneToy
         public int U03;
         public int U04;
 
-        public override void ReadWrite(CControlBase n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CControlBase n, GameBoxReaderWriter rw)
         {
             rw.Box(ref U01);
             rw.NodeRef<CControlLayout>(ref n.layout);
@@ -83,7 +83,7 @@ public abstract class CControlBase : CSceneToy
     {
         public string? U01;
 
-        public override void ReadWrite(CControlBase n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CControlBase n, GameBoxReaderWriter rw)
         {
             rw.String(ref U01);
         }
@@ -99,7 +99,7 @@ public abstract class CControlBase : CSceneToy
         public Node? U01;
         public int? U02;
 
-        public override void ReadWrite(CControlBase n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CControlBase n, GameBoxReaderWriter rw)
         {
             // CControlBase::CStyleSheetElem<class CControlStyle>::Archive
             rw.NodeRef(ref U01);

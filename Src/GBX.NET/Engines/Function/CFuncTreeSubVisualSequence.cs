@@ -55,12 +55,12 @@ public class CFuncTreeSubVisualSequence : CFuncTree
     [Chunk(0x05031000)]
     public class Chunk05031000 : Chunk<CFuncTreeSubVisualSequence>
     {
-        public override void Read(CFuncTreeSubVisualSequence n, GameBoxReader r, ILogger? logger)
+        public override void Read(CFuncTreeSubVisualSequence n, GameBoxReader r)
         {
-            n.subKeys = Parse<CFuncKeysNatural>(r, 0x05030000, progress: null, logger);
+            n.subKeys = Parse<CFuncKeysNatural>(r, 0x05030000, progress: null);
         }
 
-        public override void Write(CFuncTreeSubVisualSequence n, GameBoxWriter w, ILogger? logger)
+        public override void Write(CFuncTreeSubVisualSequence n, GameBoxWriter w)
         {
             if (n.subKeys is null)
             {
@@ -68,7 +68,7 @@ public class CFuncTreeSubVisualSequence : CFuncTree
                 return;
             }
 
-            n.subKeys.Write(w, logger);
+            n.subKeys.Write(w);
         }
     }
 

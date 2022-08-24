@@ -7,7 +7,7 @@ namespace GBX.NET.Engines.Game;
 /// </summary>
 /// <remarks>ID: 0x03057000</remarks>
 [Node(0x03057000)]
-public class CGameCtnBlock : CMwNod, INodeDependant<CGameCtnChallenge>
+public class CGameCtnBlock : CMwNod
 {
     #region Constants
 
@@ -212,21 +212,22 @@ public class CGameCtnBlock : CMwNod, INodeDependant<CGameCtnChallenge>
     }
 
     /// <summary>
-    /// Color of the block. Available since TM® Royal update.
+    /// Color of the block. Available since TM2020 Royal update.
+    /// </summary>
+    [NodeMember(ExactName = "MapElemColor")]
+    public DifficultyColor? Color { get; set; }
+
+    /// <summary>
+    /// Lightmap quality setting of the block. Available since TM2020.
+    /// </summary>
+    [NodeMember(ExactName = "MapElemLmQuality")]
+    public LightmapQuality? LightmapQuality { get; set; }
+
+    /// <summary>
+    /// Reference to the macroblock that placed this block. In macroblock mode, this block is then part of a selection group. Available since TM2020.
     /// </summary>
     [NodeMember]
-    public DifficultyColor? Color
-    {
-        get
-        {
-            ((INodeDependant<CGameCtnChallenge>)this).DependingNode?.DiscoverChunk<CGameCtnChallenge.Chunk03043062>();
-
-            return color;
-        }
-        set => color = value;
-    }
-
-    CGameCtnChallenge? INodeDependant<CGameCtnChallenge>.DependingNode { get; set; }
+    public MacroblockInstance? MacroblockReference { get; set; }
 
     #endregion
 

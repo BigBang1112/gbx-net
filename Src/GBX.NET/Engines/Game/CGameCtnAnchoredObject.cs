@@ -5,8 +5,24 @@
 /// </summary>
 /// <remarks>ID: 0x03101000</remarks>
 [Node(0x03101000)]
-public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
+public class CGameCtnAnchoredObject : CMwNod
 {
+    #region Enums
+
+    public enum EPhaseOffset
+    {
+        None,
+        One8th,
+        Two8th,
+        Three8th,
+        Four8th,
+        Five8th,
+        Six8th,
+        Seven8th
+    }
+
+    #endregion
+
     #region Fields
 
     private Ident itemModel;
@@ -19,7 +35,6 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     private float scale = 1;
     private Vec3 pivotPosition;
     private FileRef? packDesc;
-    private DifficultyColor? color;
 
     #endregion
 
@@ -97,29 +112,65 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
     public float Scale { get => scale; set => scale = value; }
 
     /// <summary>
-    /// Color of the item. Available since TM® Royal update.
-    /// </summary>
-    [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03101002))]
-    public DifficultyColor? Color
-    {
-        get
-        {
-            ((INodeDependant<CGameCtnChallenge>)this).DependingNode?.DiscoverChunk<CGameCtnChallenge.Chunk03043062>();
-
-            return color;
-        }
-        set => color = value;
-    }
-
-    /// <summary>
     /// Skin used on the item.
     /// </summary>
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk03101002), sinceVersion: 7)]
     public FileRef? PackDesc { get => packDesc; set => packDesc = value; }
 
-    CGameCtnChallenge? INodeDependant<CGameCtnChallenge>.DependingNode { get; set; }
+    /// <summary>
+    /// Block that tells when that block gets deleted, this item is deleted with it. Works for TM2020 only.
+    /// </summary>
+    [NodeMember]
+    public CGameCtnBlock? SnappedOnBlock { get; set; }
+
+    /// <summary>
+    /// Item that tells when that item gets deleted, this item is deleted with it. Works for TM2020 only but is more modern.
+    /// </summary>
+    [NodeMember]
+    public CGameCtnAnchoredObject? SnappedOnItem { get; set; }
+
+    /// <summary>
+    /// Item that tells when that item gets deleted, this item is deleted with it. Works for ManiaPlanet, used to work in the past in TM2020 but now it likely doesn't.
+    /// </summary>
+    [NodeMember]
+    public CGameCtnAnchoredObject? PlacedOnItem { get; set; }
+
+    /// <summary>
+    /// Group number that groups items that get deleted together. Works for TM2020 only.
+    /// </summary>
+    [NodeMember]
+    public int? SnappedOnGroup { get; set; }
+
+    /// <summary>
+    /// Color of the item. Available since TM2020 Royal update.
+    /// </summary>
+    [NodeMember(ExactName = "MapElemColor")]
+    public DifficultyColor? Color { get; set; }
+
+    /// <summary>
+    /// Phase of the animation. Available since TM2020 Royal update.
+    /// </summary>
+    [NodeMember]
+    public EPhaseOffset? AnimPhaseOffset { get; set; }
+
+    /// <summary>
+    /// The second layer of skin. Available since TM2020.
+    /// </summary>
+    [NodeMember]
+    public FileRef? ForegroundPackDesc { get; set; }
+
+    /// <summary>
+    /// Lightmap quality setting of the block. Available since TM2020.
+    /// </summary>
+    [NodeMember(ExactName = "MapElemLmQuality")]
+    public LightmapQuality? LightmapQuality { get; set; }
+
+    /// <summary>
+    /// Reference to the macroblock that placed this item. In macroblock mode, this item is then part of a selection group. Available since TM2020.
+    /// </summary>
+    [NodeMember]
+    public MacroblockInstance? MacroblockReference { get; set; }
 
     #endregion
 
@@ -174,7 +225,7 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
         /// </summary>
         public int Version { get => version; set => version = value; }
 
-        public override void ReadWrite(CGameCtnAnchoredObject n, GameBoxReaderWriter rw, ILogger? logger)
+        public override void ReadWrite(CGameCtnAnchoredObject n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
             rw.Ident(ref n.itemModel!);
@@ -185,7 +236,7 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
 
             if (rw.Reader is not null)
             {
-                n.waypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(rw.Reader!, classId: null, progress: null, logger);
+                n.waypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(rw.Reader!, classId: null, progress: null);
             }
             
             if (rw.Writer is not null)
@@ -197,7 +248,7 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
                 else
                 {
                     rw.Writer.Write(0x2E009000);
-                    n.waypointSpecialProperty.Write(rw.Writer, logger);
+                    n.waypointSpecialProperty.Write(rw.Writer);
                 }
             }
 
@@ -220,7 +271,7 @@ public class CGameCtnAnchoredObject : CMwNod, INodeDependant<CGameCtnChallenge>
 
                         if (version >= 7)
                         {
-                            if ((n.flags & 0x4) == 0x4)
+                            if ((n.flags & 4) == 4)
                             {
                                 rw.FileRef(ref n.packDesc);
                             }

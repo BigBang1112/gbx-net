@@ -26,16 +26,15 @@ public class CGameCtnChallengeParameters : CMwNod
     #region Properties
 
     [NodeMember]
-    public string Tip
-    {
-        get => tip;
-        set => tip = value;
-    }
+    [AppliedWithChunk(typeof(Chunk0305B001))]
+    public string Tip { get => tip; set => tip = value; }
 
     /// <summary>
     /// Time of the bronze medal.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0305B004))]
+    [AppliedWithChunk(typeof(Chunk0305B00A))]
     public TimeInt32? BronzeTime
     {
         get
@@ -54,6 +53,8 @@ public class CGameCtnChallengeParameters : CMwNod
     /// Time of the silver medal.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0305B004))]
+    [AppliedWithChunk(typeof(Chunk0305B00A))]
     public TimeInt32? SilverTime
     {
         get
@@ -72,6 +73,8 @@ public class CGameCtnChallengeParameters : CMwNod
     /// Time of the gold medal.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0305B004))]
+    [AppliedWithChunk(typeof(Chunk0305B00A))]
     public TimeInt32? GoldTime
     {
         get
@@ -90,6 +93,8 @@ public class CGameCtnChallengeParameters : CMwNod
     /// Time of the author medal.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0305B004))]
+    [AppliedWithChunk(typeof(Chunk0305B00A))]
     public TimeInt32? AuthorTime
     {
         get
@@ -108,16 +113,15 @@ public class CGameCtnChallengeParameters : CMwNod
     /// Usually author time or stunts score.
     /// </summary>
     [NodeMember]
-    public int? AuthorScore
-    {
-        get => authorScore;
-        set => authorScore = value;
-    }
+    [AppliedWithChunk(typeof(Chunk0305B008))]
+    public int? AuthorScore { get => authorScore; set => authorScore = value; }
 
     /// <summary>
     /// Stunts time limit.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0305B008))]
+    [AppliedWithChunk(typeof(Chunk0305B00A))]
     public TimeInt32 TimeLimit
     {
         get
@@ -133,13 +137,11 @@ public class CGameCtnChallengeParameters : CMwNod
     }
 
     [NodeMember]
-    public CGameCtnGhost? RaceValidateGhost
-    {
-        get => raceValidateGhost;
-        set => raceValidateGhost = value;
-    }
+    [AppliedWithChunk(typeof(Chunk0305B00D))]
+    public CGameCtnGhost? RaceValidateGhost { get => raceValidateGhost; set => raceValidateGhost = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0305B00E))]
     public string? MapType
     {
         get
@@ -155,6 +157,7 @@ public class CGameCtnChallengeParameters : CMwNod
     }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0305B00E))]
     public string? MapStyle
     {
         get
@@ -170,6 +173,7 @@ public class CGameCtnChallengeParameters : CMwNod
     }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0305B00E))]
     public bool IsValidatedForScriptModes
     {
         get
@@ -190,7 +194,7 @@ public class CGameCtnChallengeParameters : CMwNod
 
     protected CGameCtnChallengeParameters()
     {
-        tip = null!;
+        tip = "";
     }
 
     #endregion
@@ -242,7 +246,9 @@ public class CGameCtnChallengeParameters : CMwNod
         public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
         {
             for (var i = 0; i < 4; i++)
+            {
                 rw.String(ref n.tip!);
+            }
         }
     }
 
@@ -385,9 +391,7 @@ public class CGameCtnChallengeParameters : CMwNod
 
         public override void ReadWrite(CGameCtnChallengeParameters n, GameBoxReaderWriter rw)
         {
-            rw.Array(ref U01,
-                r => r.ReadUInt32(),
-                (x, w) => w.Write(x));
+            rw.Array(ref U01);
         }
     }
 

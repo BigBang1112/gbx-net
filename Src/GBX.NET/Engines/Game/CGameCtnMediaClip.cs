@@ -116,7 +116,7 @@ public class CGameCtnMediaClip : CMwNod
             rw.Int32(ref U01);
         }
 
-        public override async Task ReadWriteAsync(CGameCtnMediaClip n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadWriteAsync(CGameCtnMediaClip n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
             rw.Int32(ref tracksVersion);
             n.tracks = (await rw.ListNodeAsync<CGameCtnMediaTrack>(n.tracks!, cancellationToken))!;
@@ -146,7 +146,7 @@ public class CGameCtnMediaClip : CMwNod
             rw.String(ref n.name!);
         }
 
-        public override async Task ReadWriteAsync(CGameCtnMediaClip n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadWriteAsync(CGameCtnMediaClip n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
             rw.Int32(ref tracksVersion);
             n.tracks = (await rw.ListNodeAsync<CGameCtnMediaTrack>(n.tracks!, cancellationToken))!;
@@ -193,7 +193,7 @@ public class CGameCtnMediaClip : CMwNod
             rw.String(ref n.name!);
         }
 
-        public override async Task ReadWriteAsync(CGameCtnMediaClip n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadWriteAsync(CGameCtnMediaClip n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
             rw.Int32(ref tracksVersion);
             n.tracks = (await rw.ListNodeAsync<CGameCtnMediaTrack>(n.tracks!, cancellationToken))!;
@@ -341,7 +341,7 @@ public class CGameCtnMediaClip : CMwNod
             rw.Int32(ref n.localPlayerClipEntIndex, -1);
         }
 
-        public override async Task ReadWriteAsync(CGameCtnMediaClip n, GameBoxReaderWriter rw, ILogger? logger, CancellationToken cancellationToken = default)
+        public override async Task ReadWriteAsync(CGameCtnMediaClip n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
             rw.Int32(ref version);
             rw.Int32(ref tracksVersion);

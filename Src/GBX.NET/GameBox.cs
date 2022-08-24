@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Debugging;
+using GBX.NET.Extensions;
 using System.Diagnostics;
 using System.Reflection;
 
@@ -34,13 +35,7 @@ public partial class GameBox
     public GameBoxBody? RawBody { get; private set; }
     public GameBoxBodyDebugger? Debugger { get; private set; }
 
-    public int? IdVersion { get; internal set; }
-    public List<string> IdStringsInReadMode { get; } = new();
-    public List<string> IdStringsInWriteMode { get; } = new();
-    public bool IdIsWritten { get; internal set; }
-
-    public SortedDictionary<int, Node?> AuxNodesInReadMode { get; } = new();
-    public SortedDictionary<int, Node?> AuxNodesInWriteMode { get; } = new();
+    internal GbxState? State { get; set; }
 
     public IExternalGameData? ExternalGameData { get; set; }
 
@@ -110,28 +105,19 @@ public partial class GameBox
     {
         logger?.LogDebug("Writing the body...");
 
-        AuxNodesInWriteMode.Clear();
-        ResetIdState();
-
         using var ms = new MemoryStream();
-        using var bodyW = new GameBoxWriter(ms, this, remap: remap, logger: logger);
+        using var bodyW = new GameBoxWriter(ms, remap, asyncAction: null, logger, new());
 
-        (RawBody ?? new GameBoxBody()).Write(this, bodyW, logger);
+        (RawBody ?? new GameBoxBody()).Write(this, bodyW);
 
         logger?.LogDebug("Writing the header...");
 
-        ResetIdState();
+        using var headerW = new GameBoxWriter(stream, remap, asyncAction: null, logger, new());
 
-        using var headerW = new GameBoxWriter(stream, this, remap, logger: logger);
+        Header.Write(Node ?? throw new ThisShouldNotHappenException(), headerW);
 
-        if (RawBody is null)
-        {
-            Header.Write(Node!, headerW, AuxNodesInWriteMode.Count + 1, logger);
-        }
-        else
-        {
-            Header.Write(Node!, headerW, Header.NumNodes, logger);
-        }
+        // Num nodes
+        headerW.Write(RawBody is null ? bodyW.State.AuxNodes.Count + 1 : Header.NumNodes);
 
         logger?.LogDebug("Writing the reference table...");
 
@@ -147,14 +133,6 @@ public partial class GameBox
         headerW.Write(ms.ToArray());
     }
 
-    internal void ResetIdState()
-    {
-        IdVersion = null;
-        IdStringsInReadMode.Clear();
-        IdStringsInWriteMode.Clear();
-        IdIsWritten = false;
-    }
-
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="MissingLzoException"></exception>
@@ -163,27 +141,19 @@ public partial class GameBox
     {
         logger?.LogDebug("Writing the body...");
 
-        AuxNodesInWriteMode.Clear();
-
         using var ms = new MemoryStream();
-        using var bodyW = new GameBoxWriter(ms, this, remap, asyncAction, logger);
+        using var bodyW = new GameBoxWriter(ms, remap, asyncAction, logger, new());
 
-        await (RawBody ?? new GameBoxBody()).WriteAsync(this, bodyW, logger, cancellationToken);
+        await (RawBody ?? new GameBoxBody()).WriteAsync(this, bodyW, cancellationToken);
 
         logger?.LogDebug("Writing the header...");
 
-        ResetIdState();
+        using var headerW = new GameBoxWriter(stream, remap, asyncAction, logger, new());
 
-        using var headerW = new GameBoxWriter(stream, this, remap, logger: logger);
+        Header.Write(Node ?? throw new ThisShouldNotHappenException(), headerW);
 
-        if (RawBody is null)
-        {
-            Header.Write(Node!, headerW, AuxNodesInWriteMode.Count + 1, logger);
-        }
-        else
-        {
-            Header.Write(Node!, headerW, Header.NumNodes, logger);
-        }
+        // Num nodes
+        headerW.Write(RawBody is null ? bodyW.State.AuxNodes.Count + 1 : Header.NumNodes);
 
         logger?.LogDebug("Writing the reference table...");
 
