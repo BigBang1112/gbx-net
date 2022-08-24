@@ -2,7 +2,7 @@
 
 public partial class CGameCtnChallenge
 {
-    public class BotPath
+    public class BotPath : IReadableWritable
     {
         private int clan;
         private IList<Vec3>? path;
@@ -16,7 +16,7 @@ public partial class CGameCtnChallenge
         public CGameWaypointSpecialProperty? WaypointSpecialProperty { get => waypointSpecialProperty; set => waypointSpecialProperty = value; }
         public bool IsAutonomous { get => isAutonomous; set => isAutonomous = value; }
 
-        internal void ReadWrite(GameBoxReaderWriter rw)
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
             rw.Int32(ref clan);
             rw.List<Vec3>(ref path, r => r.ReadVec3(), (x, w) => w.Write(x));
