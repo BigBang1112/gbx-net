@@ -724,7 +724,7 @@ public partial class CGameCtnGhost : CGameGhost
 
     #endregion
 
-    #region 0x010 chunk
+    #region 0x010 chunk (validation map UID)
 
     /// <summary>
     /// CGameCtnGhost 0x010 chunk (validation map UID)
@@ -990,7 +990,7 @@ public partial class CGameCtnGhost : CGameGhost
     /// <summary>
     /// CGameCtnGhost 0x01B skippable chunk (race result)
     /// </summary>
-    [Chunk(0x0309201B, "race result")]
+    [Chunk(0x0309201B, "race result"), IgnoreChunk]
     public class Chunk0309201B : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         private int version;
@@ -1079,7 +1079,7 @@ public partial class CGameCtnGhost : CGameGhost
     /// <summary>
     /// CGameCtnGhost 0x022 skippable chunk (timed pixel array)
     /// </summary>
-    [Chunk(0x03092022, "timed pixel array")]
+    [Chunk(0x03092022, "timed pixel array"), IgnoreChunk]
     public class Chunk03092022 : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         private int version;
@@ -1153,7 +1153,7 @@ public partial class CGameCtnGhost : CGameGhost
     /// <summary>
     /// CGameCtnGhost 0x024 skippable chunk (match replay separators)
     /// </summary>
-    [Chunk(0x03092024, "match replay separators")]
+    [Chunk(0x03092024, "match replay separators"), IgnoreChunk]
     public class Chunk03092024 : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         private int version;
@@ -1222,7 +1222,7 @@ public partial class CGameCtnGhost : CGameGhost
     /// <summary>
     /// CGameCtnGhost 0x027 skippable chunk (timed pixel array 2)
     /// </summary>
-    [Chunk(0x03092027, "timed pixel array 2")]
+    [Chunk(0x03092027, "timed pixel array 2"), IgnoreChunk]
     public class Chunk03092027 : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         private int version;
