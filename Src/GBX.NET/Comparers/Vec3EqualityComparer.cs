@@ -2,7 +2,7 @@
 
 // Thanks! https://stackoverflow.com/a/48655058/3923447
 
-internal sealed class Vec3EqualityComparer : EqualityComparer<Vec3>
+public sealed class Vec3EqualityComparer : EqualityComparer<Vec3>
 {
     private readonly int digitThreshold;
 
