@@ -8,36 +8,26 @@
 [NodeExtension("Ghost")]
 public partial class CGameGhost : CMwNod
 {
-    #region Fields
-
     private readonly Action<Task<Data?>> dataExceptionHandle;
     private bool isReplaying;
     private Task<Data?> sampleData;
 
-    #endregion
-
-    #region Properties
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0303F006))]
+    public bool IsReplaying { get => isReplaying; set => isReplaying = value; }
 
     [NodeMember]
-    public bool IsReplaying
-    {
-        get => isReplaying;
-        set => isReplaying = value;
-    }
-
-    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0303F003))]
+    [AppliedWithChunk(typeof(Chunk0303F005))]
     public Data? SampleData
     {
         get => sampleData.Result;
     }
 
-    #endregion
-
-    #region Constructors
-
     protected CGameGhost()
     {
-        sampleData = null!;
+        sampleData = Task.FromResult(default(Data));
+
         dataExceptionHandle = task =>
         {
             if (!task.IsFaulted)
@@ -58,18 +48,12 @@ public partial class CGameGhost : CMwNod
         };
     }
 
-    #endregion
-
-    #region Methods
-
     public async Task<Data?> GetSampleDataAsync()
     {
         if (sampleData is null)
             return null;
         return await sampleData;
     }
-
-    #endregion
 
     #region Chunks
 

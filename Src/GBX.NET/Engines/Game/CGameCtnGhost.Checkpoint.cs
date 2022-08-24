@@ -12,7 +12,7 @@ public partial class CGameCtnGhost
     {
         public override string ToString()
         {
-            return $"{Time} ({(Speed.HasValue ? $"{Speed}km/h, " : "")}{StuntsScore} pts.)";
+            return $"{Time.ToTmString()} ({(Speed.HasValue ? $"{Speed}km/h, " : "")}{StuntsScore} pts.)";
         }
     }
 }
