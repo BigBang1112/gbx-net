@@ -13,7 +13,17 @@ internal class ObjFileExporter : IModelExporter, IDisposable
     private int offsetVert;
     private int offsetUv;
 
-    public ObjFileExporter(Stream objStream, Stream mtlStream, int? mergeVerticesDigitThreshold = null, string? gameDataFolderPath = null)
+    /// <summary>
+    /// Exports the crystal to .obj file.
+    /// </summary>
+    /// <param name="objStream">Stream to write OBJ content into.</param>
+    /// <param name="mtlStream">Stream to write MTL content into.</param>
+    /// <param name="mergeVerticesDigitThreshold">If set, overlapping vertices (usually between the mesh groups) will be merged. 3 or 4 give the best accuracy.</param>
+    /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>
+    public ObjFileExporter(Stream objStream,
+                           Stream mtlStream,
+                           int? mergeVerticesDigitThreshold = null,
+                           string? gameDataFolderPath = null)
     {
         objWriter = new StreamWriter(objStream);
         mtlWriter = new StreamWriter(mtlStream);
@@ -24,7 +34,7 @@ internal class ObjFileExporter : IModelExporter, IDisposable
         this.gameDataFolderPath = gameDataFolderPath;
     }
 
-    public void Export(CPlugCrystal crystal)
+    public virtual void Export(CPlugCrystal crystal)
     {
         var invariant = System.Globalization.CultureInfo.InvariantCulture;
 
@@ -183,7 +193,7 @@ internal class ObjFileExporter : IModelExporter, IDisposable
         Merge();
     }
 
-    public void Export(CPlugTree tree)
+    public virtual void Export(CPlugTree tree)
     {
         ExportRecurse(tree);
         Merge();
@@ -380,7 +390,7 @@ internal class ObjFileExporter : IModelExporter, IDisposable
         }
     }
 
-    public void Dispose()
+    public virtual void Dispose()
     {
         objWriter.Dispose();
         mtlWriter.Dispose();
