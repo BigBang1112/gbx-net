@@ -75,9 +75,19 @@ public partial class CPlugCrystal : CPlugTreeGenerator
     /// <param name="mtlStream">Stream to write MTL content into.</param>
     /// <param name="mergeVerticesDigitThreshold">If set, overlapping vertices (usually between the mesh groups) will be merged. 3 or 4 give the best accuracy.</param>
     /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>
-    public void ExportToObj(Stream objStream, Stream mtlStream, int? mergeVerticesDigitThreshold = null, string? gameDataFolderPath = null)
+    /// <param name="leaveOpen">If to keep the streams open.</param>
+    public void ExportToObj(Stream objStream,
+                            Stream mtlStream,
+                            int? mergeVerticesDigitThreshold = null,
+                            string? gameDataFolderPath = null,
+                            bool leaveOpen = false)
     {
-        using var exporter = new ObjFileExporter(objStream, mtlStream, mergeVerticesDigitThreshold, gameDataFolderPath);
+        using var exporter = new ObjFileExporter(
+            objStream,
+            mtlStream,
+            mergeVerticesDigitThreshold,
+            gameDataFolderPath,
+            leaveOpen);
 
         exporter.Export(this);
     }

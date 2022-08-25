@@ -31,14 +31,20 @@ public class CPlugSolid : CPlug
     /// <param name="objStream">Stream to write OBJ content into.</param>
     /// <param name="mtlStream">Stream to write MTL content into.</param>
     /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>
-    public void ExportToObj(Stream objStream, Stream mtlStream, string? gameDataFolderPath = null)
+    /// <param name="leaveOpen">If to keep the streams open.</param>
+    public void ExportToObj(Stream objStream, Stream mtlStream, string? gameDataFolderPath = null, bool leaveOpen = false)
     {
         if (Tree is not CPlugTree tree)
         {
             return;
         }
 
-        using var exporter = new ObjFileExporter(objStream, mtlStream, mergeVerticesDigitThreshold: null, gameDataFolderPath);
+        using var exporter = new ObjFileExporter(
+            objStream,
+            mtlStream,
+            mergeVerticesDigitThreshold: null,
+            gameDataFolderPath,
+            leaveOpen);
         
         exporter.Export(tree);
     }

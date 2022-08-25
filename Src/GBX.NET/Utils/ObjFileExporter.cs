@@ -14,19 +14,21 @@ internal class ObjFileExporter : IModelExporter, IDisposable
     private int offsetUv;
 
     /// <summary>
-    /// Exports the crystal to .obj file.
+    /// Creates an exporter to .obj file.
     /// </summary>
     /// <param name="objStream">Stream to write OBJ content into.</param>
     /// <param name="mtlStream">Stream to write MTL content into.</param>
     /// <param name="mergeVerticesDigitThreshold">If set, overlapping vertices (usually between the mesh groups) will be merged. 3 or 4 give the best accuracy.</param>
     /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>
+    /// <param name="leaveOpen">If to keep the streams open.</param>
     public ObjFileExporter(Stream objStream,
                            Stream mtlStream,
                            int? mergeVerticesDigitThreshold = null,
-                           string? gameDataFolderPath = null)
+                           string? gameDataFolderPath = null,
+                           bool leaveOpen = false)
     {
-        objWriter = new StreamWriter(objStream);
-        mtlWriter = new StreamWriter(mtlStream);
+        objWriter = new StreamWriter(objStream, leaveOpen: leaveOpen);
+        mtlWriter = new StreamWriter(mtlStream, leaveOpen: leaveOpen);
         objFaceWriter = new StringWriter();
         objUvWriter = new StringWriter();
         
