@@ -34,75 +34,71 @@ internal class ObjFileExporter : IModelExporter, IDisposable
 
         var validMaterials = new List<string>();
 
-        if (crystal.Materials is not null)
+        foreach (var mat in crystal.Materials)
         {
-            foreach (var mat in crystal.Materials)
+            if (mat is null || mat.Link is null)
             {
-                if (mat is null || mat.Link is null)
-                {
-                    continue;
-                }
-                
-                mtlWriter.WriteLine("newmtl " + mat.Link);
-
-                if (gameDataFolderPath is null)
-                {
-                    continue;
-                }
-
-                var materialPath = $"{gameDataFolderPath}/{mat.Link}.Material.Gbx";
-
-                if (!File.Exists(materialPath))
-                {
-                    continue;
-                }
-
-                var matGbx = GameBox.ParseHeader($"{gameDataFolderPath}/{mat.Link}.Material.Gbx");
-
-                var refTable = matGbx.RefTable;
-
-                if (refTable is null)
-                {
-                    continue;
-                }
-
-                var texGbxFile = refTable.Files.FirstOrDefault(x => x.FileName?.Contains("D.Texture") == true); // Needs to get diffuse, not ideal atm
-                
-                if (texGbxFile is null)
-                {
-                    continue;
-                }
-                
-                var texGbxFolder = Path.GetDirectoryName(matGbx.FileName) ?? "";
-                var textGbxPath = Path.Combine(texGbxFolder, refTable.GetRelativeFolderPathToFile(texGbxFile), texGbxFile.FileName!);
-
-                var texGbx = GameBox.ParseHeader(textGbxPath);
-
-                var texRefTable = texGbx.RefTable;
-
-                if (texRefTable is null)
-                {
-                    continue;
-                }
-
-                var texDdsFile = texRefTable.Files.FirstOrDefault(x => x.FileName?.ToLower().EndsWith(".dds") == true);
-
-                if (texDdsFile is null)
-                {
-                    continue;
-                }
-
-                var texDdsFolder = Path.GetDirectoryName(texGbx.FileName) ?? "";
-                var texDdsFilePath = Path.Combine(texDdsFolder, texRefTable.GetRelativeFolderPathToFile(texDdsFile), texDdsFile.FileName!);
-
-                mtlWriter.WriteLine($"map_Ka \"{texDdsFilePath}\"");
-                mtlWriter.WriteLine($"map_Kd \"{texDdsFilePath}\"");
-
-                mtlWriter.WriteLine("Ka 1.000 1.000 1.000");
-                mtlWriter.WriteLine("Kd 1.000 1.000 1.000");
-
-                validMaterials.Add(mat.Link);
+                continue;
             }
+                
+            mtlWriter.WriteLine("newmtl " + mat.Link);
+            validMaterials.Add(mat.Link);
+
+            if (gameDataFolderPath is null)
+            {
+                continue;
+            }
+
+            var materialPath = $"{gameDataFolderPath}/{mat.Link}.Material.Gbx";
+
+            if (!File.Exists(materialPath))
+            {
+                continue;
+            }
+
+            var matGbx = GameBox.ParseHeader($"{gameDataFolderPath}/{mat.Link}.Material.Gbx");
+
+            var refTable = matGbx.RefTable;
+
+            if (refTable is null)
+            {
+                continue;
+            }
+
+            var texGbxFile = refTable.Files.FirstOrDefault(x => x.FileName?.Contains("D.Texture") == true); // Needs to get diffuse, not ideal atm
+                
+            if (texGbxFile is null)
+            {
+                continue;
+            }
+                
+            var texGbxFolder = Path.GetDirectoryName(matGbx.FileName) ?? "";
+            var textGbxPath = Path.Combine(texGbxFolder, refTable.GetRelativeFolderPathToFile(texGbxFile), texGbxFile.FileName!);
+
+            var texGbx = GameBox.ParseHeader(textGbxPath);
+
+            var texRefTable = texGbx.RefTable;
+
+            if (texRefTable is null)
+            {
+                continue;
+            }
+
+            var texDdsFile = texRefTable.Files.FirstOrDefault(x => x.FileName?.ToLower().EndsWith(".dds") == true);
+
+            if (texDdsFile is null)
+            {
+                continue;
+            }
+
+            var texDdsFolder = Path.GetDirectoryName(texGbx.FileName) ?? "";
+            var texDdsFilePath = Path.Combine(texDdsFolder, texRefTable.GetRelativeFolderPathToFile(texDdsFile), texDdsFile.FileName!);
+
+            mtlWriter.WriteLine($"map_Ka \"{texDdsFilePath}\"");
+            mtlWriter.WriteLine($"map_Kd \"{texDdsFilePath}\"");
+
+            mtlWriter.WriteLine("Ka 1.000 1.000 1.000");
+            mtlWriter.WriteLine("Kd 1.000 1.000 1.000");
         }
 
         var positionsDict = mergeVerticesDigitThreshold.HasValue

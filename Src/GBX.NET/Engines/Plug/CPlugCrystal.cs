@@ -42,14 +42,14 @@ public partial class CPlugCrystal : CPlugTreeGenerator
 
     #region Fields
 
-    private CPlugMaterialUserInst?[]? materials;
+    private CPlugMaterialUserInst?[] materials;
 
     #endregion
 
     #region Properties
 
     [NodeMember]
-    public CPlugMaterialUserInst?[]? Materials { get => materials; set => materials = value; }
+    public CPlugMaterialUserInst?[] Materials { get => materials; set => materials = value; }
 
     [NodeMember]
     public Layer[] Layers { get; set; }
@@ -60,6 +60,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator
 
     protected CPlugCrystal()
     {
+        materials = Array.Empty<CPlugMaterialUserInst>();
         Layers = Array.Empty<Layer>();
     }
 
@@ -472,11 +473,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator
 
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CPlugCrystal n, GameBoxReaderWriter rw)
         {
