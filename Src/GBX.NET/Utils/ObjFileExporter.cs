@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Utils;
+﻿using System.Text;
+
+namespace GBX.NET.Utils;
 
 public class ObjFileExporter : IModelExporter, IDisposable
 {
@@ -27,8 +29,8 @@ public class ObjFileExporter : IModelExporter, IDisposable
                            string? gameDataFolderPath = null,
                            bool leaveOpen = false)
     {
-        objWriter = new StreamWriter(objStream, leaveOpen: leaveOpen);
-        mtlWriter = new StreamWriter(mtlStream, leaveOpen: leaveOpen);
+        objWriter = new StreamWriter(objStream, Encoding.UTF8, bufferSize: 1024, leaveOpen);
+        mtlWriter = new StreamWriter(mtlStream, Encoding.UTF8, bufferSize: 1024, leaveOpen);
         objFaceWriter = new StringWriter();
         objUvWriter = new StringWriter();
         
