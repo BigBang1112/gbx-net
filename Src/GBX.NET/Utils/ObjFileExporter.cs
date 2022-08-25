@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET.Utils;
 
-internal class ObjFileExporter : IModelExporter, IDisposable
+public class ObjFileExporter : IModelExporter, IDisposable
 {
     private readonly StreamWriter objWriter;
     private readonly StreamWriter mtlWriter;
