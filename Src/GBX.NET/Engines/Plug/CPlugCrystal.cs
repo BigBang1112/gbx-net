@@ -197,16 +197,16 @@ public partial class CPlugCrystal : CPlugTreeGenerator
             {
                 var name = r.ReadString();
 
-                if (name.Length == 0)  // If the material file exists (name != ""), it references the file instead
+                if (name.Length > 0)  // If the material file exists (name != ""), it references the file instead
                 {
-                    var material = r.ReadNodeRef<CPlugMaterialUserInst>();
-
-                    // more stuff when version <=1
-
-                    return material;
+                    return null;
                 }
 
-                return null;
+                var material = r.ReadNodeRef<CPlugMaterialUserInst>();
+
+                // more stuff when version <=1
+
+                return material;
             });
         }
     }

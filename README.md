@@ -271,6 +271,7 @@ Without these people, this project wouldn't be what it is today:
 - Kim
 - tilman
 - James Romeril
+- frolad (Juice)
 - Mika Kuijpers (TheMrMiku)
 - donadigo
 
