@@ -42,4 +42,11 @@ public class AppliedWithChunkAttribute : Attribute
     {
         UpToVersion = upToVersion;
     }
+
+    public bool Applies(Chunk chunk)
+    {
+        return chunk.GetType() == ChunkType && (chunk is not IVersionable versionable
+            || (versionable.Version >= SinceVersion && (UpToVersion is null || versionable.Version <= UpToVersion))
+        );
+    }
 }
