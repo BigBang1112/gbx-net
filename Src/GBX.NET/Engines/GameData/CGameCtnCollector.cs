@@ -70,9 +70,15 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
     [NodeMember(ExactlyNamed = true)]
     public EProdState? ProdState { get => prodState; set => prodState = value; }
 
+    /// <summary>
+    /// Icon of the collector in 2D pixel array format from all versions except icons created after April 2022 in TM2020.
+    /// </summary>
     [NodeMember]
     public Color[,]? Icon { get; set; }
 
+    /// <summary>
+    /// Icon of the collector in WebP format from TM2020 icons since April 2022 update.
+    /// </summary>
     [NodeMember]
     [WebpData]
     public byte[]? IconWebP { get; set; }
