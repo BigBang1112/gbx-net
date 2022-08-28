@@ -1,4 +1,4 @@
-﻿namespace GBX.NET.Engines.GameData;
+﻿namespace GBX.NET.Engines.Game;
 
 /// <remarks>ID: 0x03120000</remarks>
 [Node(0x03120000)]
