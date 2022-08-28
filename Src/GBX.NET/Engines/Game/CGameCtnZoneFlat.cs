@@ -13,6 +13,7 @@ public class CGameCtnZoneFlat : CGameCtnZone
     private GameBoxRefTable.File? blockInfoPylonFile;
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0305D001))]
     public CGameCtnBlockInfoFlat? BlockInfoFlat
     {
         get => blockInfoFlat = GetNodeFromRefTable(blockInfoFlat, blockInfoFlatFile) as CGameCtnBlockInfoFlat;
@@ -20,6 +21,7 @@ public class CGameCtnZoneFlat : CGameCtnZone
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0305D001))]
     public CGameCtnBlockInfoClip? BlockInfoClip
     {
         get => blockInfoClip = GetNodeFromRefTable(blockInfoClip, blockInfoClipFile) as CGameCtnBlockInfoClip;
@@ -27,6 +29,7 @@ public class CGameCtnZoneFlat : CGameCtnZone
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0305D001))]
     public CGameCtnBlockInfoRoad? BlockInfoRoad
     {
         get => blockInfoRoad = GetNodeFromRefTable(blockInfoRoad, blockInfoRoadFile) as CGameCtnBlockInfoRoad;
@@ -34,6 +37,7 @@ public class CGameCtnZoneFlat : CGameCtnZone
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0305D001))]
     public CGameCtnBlockInfoPylon? BlockInfoPylon
     {
         get => blockInfoPylon = GetNodeFromRefTable(blockInfoPylon, blockInfoPylonFile) as CGameCtnBlockInfoPylon;

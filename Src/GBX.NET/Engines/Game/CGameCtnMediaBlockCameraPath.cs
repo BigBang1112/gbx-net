@@ -8,13 +8,7 @@
 [NodeExtension("CtnMediaBlockCamPath")]
 public partial class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, CGameCtnMediaBlock.IHasKeys
 {
-    #region Fields
-
     private IList<Key> keys;
-
-    #endregion
-
-    #region Properties
 
     IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
     {
@@ -23,22 +17,16 @@ public partial class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, CG
     }
 
     [NodeMember]
-    public IList<Key> Keys
-    {
-        get => keys;
-        set => keys = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk030A1000))]
+    [AppliedWithChunk(typeof(Chunk030A1001))]
+    [AppliedWithChunk(typeof(Chunk030A1002))]
+    [AppliedWithChunk(typeof(Chunk030A1003))]
+    public IList<Key> Keys { get => keys; set => keys = value; }
 
     protected CGameCtnMediaBlockCameraPath()
     {
-        keys = null!;
+        keys = Array.Empty<Key>();
     }
-
-    #endregion
 
     #region Chunks
 
@@ -100,11 +88,7 @@ public partial class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, CG
     {
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnMediaBlockCameraPath n, GameBoxReaderWriter rw)
         {

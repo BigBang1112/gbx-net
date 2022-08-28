@@ -8,35 +8,26 @@
 [NodeExtension("GameCtnMediaBlockVehicleLight")]
 public class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {
-    #region Fields
-
     private TimeSingle start;
     private TimeSingle end = TimeSingle.FromSeconds(3);
     private int target;
 
-    #endregion
-
-    #region Properties
-
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03133000))]
     public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03133000))]
     public TimeSingle End { get => end; set => end = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03133001))]
     public int Target { get => target; set => target = value; }
-
-    #endregion
-
-    #region Constructors
 
     protected CGameCtnMediaBlockVehicleLight()
     {
 
     }
-
-    #endregion
 
     #region Chunks
 

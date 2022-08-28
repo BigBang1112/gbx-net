@@ -6,11 +6,7 @@ public partial class CGameCtnMediaBlockFxCameraBlend
     {
         private float captureWeight;
 
-        public float CaptureWeight
-        {
-            get => captureWeight;
-            set => captureWeight = value;
-        }
+        public float CaptureWeight { get => captureWeight; set => captureWeight = value; }
 
         public override void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {

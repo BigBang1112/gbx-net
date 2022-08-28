@@ -7,14 +7,8 @@
 [Node(0x03188000)]
 public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
-    #region Fields
-
     private IList<Key> keys;
     private CPlugDataTape? dataTape;
-
-    #endregion
-
-    #region Properties
 
     IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
     {
@@ -23,29 +17,17 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, CGameCtnMed
     }
 
     [NodeMember]
-    public IList<Key> Keys
-    {
-        get => keys;
-        set => keys = value;
-    }
+    [AppliedWithChunk(typeof(Chunk03188000))]
+    public IList<Key> Keys { get => keys; set => keys = value; }
 
     [NodeMember]
-    public CPlugDataTape? DataTape
-    {
-        get => dataTape;
-        set => dataTape = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk03188001))]
+    public CPlugDataTape? DataTape { get => dataTape; set => dataTape = value; }
 
     protected CGameCtnMediaBlockScenery()
     {
-        keys = null!;
+        keys = Array.Empty<Key>();
     }
-
-    #endregion
 
     #region Chunks
 
@@ -59,11 +41,7 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, CGameCtnMed
     {
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnMediaBlockScenery n, GameBoxReaderWriter rw)
         {
@@ -80,13 +58,10 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, CGameCtnMed
     public class Chunk03188001 : Chunk<CGameCtnMediaBlockScenery>, IVersionable
     {
         private int version;
-        private int U01;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int U01;
+
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnMediaBlockScenery n, GameBoxReaderWriter rw)
         {

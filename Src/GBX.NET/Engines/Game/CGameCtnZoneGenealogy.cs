@@ -20,32 +20,22 @@ public class CGameCtnZoneGenealogy : CMwNod
     #region Properties
 
     [NodeMember]
-    public string[]? ZoneIds
-    {
-        get => zoneIds;
-        set => zoneIds = value;
-    }
+    [AppliedWithChunk(typeof(Chunk0311D001))]
+    [AppliedWithChunk(typeof(Chunk0311D002))]
+    public Direction Dir { get => dir; set => dir = value; }
 
     [NodeMember]
-    public string? CurrentZoneId
-    {
-        get => currentZoneId;
-        set => currentZoneId = value;
-    }
+    [AppliedWithChunk(typeof(Chunk0311D001))]
+    [AppliedWithChunk(typeof(Chunk0311D002))]
+    public int CurrentIndex { get => currentIndex; set => currentIndex = value; }
 
     [NodeMember]
-    public Direction Dir
-    {
-        get => dir;
-        set => dir = value;
-    }
+    [AppliedWithChunk(typeof(Chunk0311D002))]
+    public string[]? ZoneIds { get => zoneIds; set => zoneIds = value; }
 
     [NodeMember]
-    public int CurrentIndex
-    {
-        get => currentIndex;
-        set => currentIndex = value;
-    }
+    [AppliedWithChunk(typeof(Chunk0311D002))]
+    public string? CurrentZoneId { get => currentZoneId; set => currentZoneId = value; }
 
     #endregion
 

@@ -25,22 +25,19 @@ public abstract partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, 
     }
 
     [NodeMember]
-    public IList<Key> Keys
-    {
-        get => keys;
-        set => keys = value;
-    }
+    [AppliedWithChunk(typeof(Chunk03029001))]
+    public IList<Key> Keys { get => keys;  set => keys = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03029001))]
     public Vec4[] Vertices
     {
         get => vertices;
         set
         {
-            if (vertices == null || value.Length != vertices.Length)
+            if (vertices is null || value.Length != vertices.Length)
             {
-                if (vertices == null)
-                    vertices = value;
+                vertices ??= value;
 
                 foreach (var key in keys)
                 {
@@ -57,19 +54,22 @@ public abstract partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, 
     }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03029001))]
     public Int3[] Triangles
     {
         get => triangles;
         set
         {
-            if (vertices == null)
+            if (vertices is null)
+            {
                 return;
+            }
 
             foreach (var int3 in value)
             {
                 if (int3.X >= vertices.Length
-                || int3.Y >= vertices.Length
-                || int3.Z >= vertices.Length)
+                 || int3.Y >= vertices.Length
+                 || int3.Z >= vertices.Length)
                     throw new Exception($"Index in {int3} is not available in vertices.");
             }
 
@@ -83,9 +83,9 @@ public abstract partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, 
 
     protected CGameCtnMediaBlockTriangles()
     {
-        keys = null!;
-        vertices = null!;
-        triangles = null!;
+        keys = Array.Empty<Key>();
+        vertices = Array.Empty<Vec4>();
+        triangles = Array.Empty<Int3>();
     }
 
     #endregion

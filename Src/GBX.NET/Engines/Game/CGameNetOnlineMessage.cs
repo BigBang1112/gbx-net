@@ -7,19 +7,36 @@
 [Node(0x03028000), WritingNotSupported]
 public class CGameNetOnlineMessage : CMwNod
 {
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03028000))]
     public string ReceiverLogin { get; set; }
+
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03028000))]
     public string SenderLogin { get; set; }
+
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03028000))]
     public string Subject { get; set; }
+
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03028000))]
     public string Message { get; set; }
+
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03028000))]
     public int Donation { get; set; }
+
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03028000))]
     public DateTime Date { get; set; }
 
     protected CGameNetOnlineMessage()
     {
-        ReceiverLogin = null!;
-        SenderLogin = null!;
-        Subject = null!;
-        Message = null!;
+        ReceiverLogin = "";
+        SenderLogin = "";
+        Subject = "";
+        Message = "";
     }
 
     public override string ToString()

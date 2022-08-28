@@ -15,18 +15,23 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector
     private IList<ObjectSpawn>? objectSpawns;
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0310D000))]
     public IList<BlockSpawn>? BlockSpawns { get => blockSpawns; set => blockSpawns = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0310D001))]
     public IList<BlockSkinSpawn>? BlockSkinSpawns { get => blockSkinSpawns; set => blockSkinSpawns = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0310D002))]
     public IList<CardEventsSpawn>? CardEventsSpawns { get => cardEventsSpawns; set => cardEventsSpawns = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0310D008))]
     public CGameCtnAutoTerrain?[]? AutoTerrains { get => autoTerrains; set => autoTerrains = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0310D00E))]
     public IList<ObjectSpawn>? ObjectSpawns { get => objectSpawns; set => objectSpawns = value; }
 
     #region Constructors

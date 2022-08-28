@@ -7,9 +7,11 @@ public class CGameCtnZone : CMwNod
     private string? surfaceId;
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0305C003))]
     public string? ZoneId { get => zoneId; set => zoneId = value; }
     
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0305C003))]
     public string? SurfaceId { get => surfaceId; set => surfaceId = value; }
 
     protected CGameCtnZone()

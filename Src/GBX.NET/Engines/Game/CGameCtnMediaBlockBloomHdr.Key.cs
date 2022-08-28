@@ -8,23 +8,9 @@ public partial class CGameCtnMediaBlockBloomHdr
         private float streaksIntensity;
         private float streaksAttenuation;
 
-        public float Intensity
-        {
-            get => intensity;
-            set => intensity = value;
-        }
-
-        public float StreaksIntensity
-        {
-            get => streaksIntensity;
-            set => streaksIntensity = value;
-        }
-
-        public float StreaksAttenuation
-        {
-            get => streaksAttenuation;
-            set => streaksAttenuation = value;
-        }
+        public float Intensity { get => intensity; set => intensity = value; }
+        public float StreaksIntensity { get => streaksIntensity; set => streaksIntensity = value; }
+        public float StreaksAttenuation { get => streaksAttenuation; set => streaksAttenuation = value; }
 
         public override void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {

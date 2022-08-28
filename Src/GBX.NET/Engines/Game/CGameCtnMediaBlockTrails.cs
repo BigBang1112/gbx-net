@@ -8,41 +8,21 @@
 [NodeExtension("GameCtnMediaBlockTrails")]
 public class CGameCtnMediaBlockTrails : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {
-    #region Fields
-
     private TimeSingle start = TimeSingle.Zero;
     private TimeSingle end = TimeSingle.FromSeconds(3);
 
-    #endregion
-
-    #region Properties
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk030A9000))]
+    public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    public TimeSingle Start
-    {
-        get => start;
-        set => start = value;
-    }
-
-    [NodeMember]
-    public TimeSingle End
-    {
-        get => end;
-        set => end = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk030A9000))]
+    public TimeSingle End { get => end; set => end = value; }
 
     protected CGameCtnMediaBlockTrails()
     {
 
     }
-
-    #endregion
-
-    #region Chunks
 
     #region 0x000 chunk
 
@@ -55,8 +35,6 @@ public class CGameCtnMediaBlockTrails : CGameCtnMediaBlock, CGameCtnMediaBlock.I
             rw.TimeSingle(ref n.end);
         }
     }
-
-    #endregion
 
     #endregion
 }

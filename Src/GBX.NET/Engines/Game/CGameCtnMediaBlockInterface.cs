@@ -8,55 +8,31 @@
 [NodeExtension("GameCtnMediaBlockInterface")]
 public class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {
-    #region Fields
-
     private TimeSingle start;
     private TimeSingle end = TimeSingle.FromSeconds(3);
     private bool showInterface;
     private string manialink;
 
-    #endregion
-
-    #region Properties
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03195000))]
+    public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    public TimeSingle Start
-    {
-        get => start;
-        set => start = value;
-    }
+    [AppliedWithChunk(typeof(Chunk03195000))]
+    public TimeSingle End { get => end; set => end = value; }
 
     [NodeMember]
-    public TimeSingle End
-    {
-        get => end;
-        set => end = value;
-    }
+    [AppliedWithChunk(typeof(Chunk03195000))]
+    public bool ShowInterface { get => showInterface; set => showInterface = value; }
 
     [NodeMember]
-    public bool ShowInterface
-    {
-        get => showInterface;
-        set => showInterface = value;
-    }
-
-    [NodeMember]
-    public string Manialink
-    {
-        get => manialink;
-        set => manialink = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk03195000))]
+    public string Manialink { get => manialink; set => manialink = value; }
 
     protected CGameCtnMediaBlockInterface()
     {
-        manialink = null!;
+        manialink = "";
     }
-
-    #endregion
 
     #region Chunks
 
@@ -67,11 +43,7 @@ public class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, CGameCtnMediaBloc
     {
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnMediaBlockInterface n, GameBoxReaderWriter rw)
         {

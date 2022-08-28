@@ -48,27 +48,34 @@ public class CGameCommonItemEntityModelEdition : CMwNod
     /// Type of the item.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E026000))]
     public EItemType ItemType { get => itemType; set => itemType = value; }
 
     /// <summary>
     /// Mesh of the item model.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E026000))]
     public CPlugCrystal MeshCrystal { get => meshCrystal; set => meshCrystal = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E026000), sinceVersion: 3)]
     public float? Mass { get => mass; set => mass = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E026000), sinceVersion: 1)]
     public string? InventoryName { get => inventoryName; set => inventoryName = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E026000), sinceVersion: 1)]
     public string? InventoryDescription { get => inventoryDescription; set => inventoryDescription = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E026000), sinceVersion: 1)]
     public int InventoryItemClass { get => inventoryItemClass; set => inventoryItemClass = value; }
     
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E026000), sinceVersion: 1)]
     public int InventoryOccupation { get => inventoryOccupation; set => inventoryOccupation = value; }
 
     #endregion
@@ -81,8 +88,6 @@ public class CGameCommonItemEntityModelEdition : CMwNod
     }
 
     #endregion
-
-    #region Chunks
 
     #region 0x000 chunk
 
@@ -118,11 +123,7 @@ public class CGameCommonItemEntityModelEdition : CMwNod
         public CMwNod? U22;
         public bool? U23;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCommonItemEntityModelEdition n, GameBoxReaderWriter rw)
         {
@@ -202,8 +203,6 @@ public class CGameCommonItemEntityModelEdition : CMwNod
             }
         }
     }
-
-    #endregion
 
     #endregion
 }

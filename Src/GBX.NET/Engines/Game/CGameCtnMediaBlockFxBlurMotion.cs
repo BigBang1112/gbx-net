@@ -8,41 +8,21 @@
 [NodeExtension("GameCtnMediaBlockFxBlurMotion")]
 public class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur, CGameCtnMediaBlock.IHasTwoKeys
 {
-    #region Fields
-
     public TimeSingle start;
     public TimeSingle end = TimeSingle.FromSeconds(3);
 
-    #endregion
-
-    #region Properties
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03082000))]
+    public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    public TimeSingle Start
-    {
-        get => start;
-        set => start = value;
-    }
-
-    [NodeMember]
-    public TimeSingle End
-    {
-        get => end;
-        set => end = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk03082000))]
+    public TimeSingle End { get => end; set => end = value; }
 
     protected CGameCtnMediaBlockFxBlurMotion()
     {
 
     }
-
-    #endregion
-
-    #region Chunks
 
     #region 0x000 chunk
 
@@ -55,8 +35,6 @@ public class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur, CGameCtn
             rw.TimeSingle(ref n.end);
         }
     }
-
-    #endregion
 
     #endregion
 }

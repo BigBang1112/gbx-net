@@ -7,8 +7,6 @@
 [Node(0x03085000)]
 public partial class CGameCtnMediaBlockTime : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
-    #region Properties
-
     IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
     {
         get => Keys.Cast<CGameCtnMediaBlock.Key>();
@@ -16,22 +14,16 @@ public partial class CGameCtnMediaBlockTime : CGameCtnMediaBlock, CGameCtnMediaB
     }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03085000))]
     public IList<Key> Keys { get; set; }
 
+    [NodeMember]
     public bool IsTM2 { get; set; }
-
-    #endregion
-
-    #region Constructors
 
     protected CGameCtnMediaBlockTime()
     {
-        Keys = null!;
+        Keys = Array.Empty<Key>();
     }
-
-    #endregion
-
-    #region Chunks
 
     #region 0x000 chunk
 
@@ -85,20 +77,18 @@ public partial class CGameCtnMediaBlockTime : CGameCtnMediaBlock, CGameCtnMediaB
                     w.WriteTimeSingle(x.Time);
                     w.Write(x.TimeValue);
                 });
-
-                return;
             }
-
-            w.WriteList(n.Keys, (x, w) =>
+            else
             {
-                w.WriteTimeSingle(x.Time);
-                w.Write(x.TimeValue);
-                w.Write(x.Tangent);
-            });
+                w.WriteList(n.Keys, (x, w) =>
+                {
+                    w.WriteTimeSingle(x.Time);
+                    w.Write(x.TimeValue);
+                    w.Write(x.Tangent);
+                });
+            }
         }
     }
-
-    #endregion
 
     #endregion
 }

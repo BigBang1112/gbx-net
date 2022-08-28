@@ -1525,7 +1525,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         anchoredObject.CreateChunk<CGameCtnAnchoredObject.Chunk03101004>();
 
         AnchoredObjects.Add(anchoredObject);
-
+        
         return anchoredObject;
     }
 
@@ -4325,8 +4325,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 for (var i = 0; i < dirs.Length; i++)
                 {
                     var dir = dirs[dirs.Length - 1 - i];
-                    if (dir == "Items"
-                    || dir == "Blocks")
+                    if (dir == "Items" || dir == "Blocks")
                     {
                         id = string.Join("\\", dirs, dirs.Length - i, i);
                         break;

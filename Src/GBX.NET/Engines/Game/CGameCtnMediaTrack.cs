@@ -43,14 +43,17 @@ public class CGameCtnMediaTrack : CMwNod
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk03078002))]
     [AppliedWithChunk(typeof(Chunk03078004))]
+    [AppliedWithChunk(typeof(Chunk03078005))]
     public bool IsKeepPlaying { get => isKeepPlaying; set => isKeepPlaying = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03078005))]
     public bool IsCycling { get => isCycling; set => isCycling = value; }
 
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk03078003))]
     [AppliedWithChunk(typeof(Chunk03078004))]
+    [AppliedWithChunk(typeof(Chunk03078005))]
     public bool IsReadOnly { get => isReadOnly; set => isReadOnly = value; }
 
     #endregion

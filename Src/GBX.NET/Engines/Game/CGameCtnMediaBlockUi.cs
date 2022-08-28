@@ -8,42 +8,28 @@
 [NodeExtension("GameCtnMediaBlockUi")]
 public class CGameCtnMediaBlockUi : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {
-    #region Fields
-
     private TimeSingle start;
     private TimeSingle end = TimeSingle.FromSeconds(3);
     private CControlList? userInterface;
 
-    #endregion
-
-    #region Properties
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0307D000))]
+    [AppliedWithChunk(typeof(Chunk0307D001))]
+    public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    public TimeSingle Start
-    {
-        get => start;
-        set => start = value;
-    }
+    [AppliedWithChunk(typeof(Chunk0307D000))]
+    [AppliedWithChunk(typeof(Chunk0307D001))]
+    public TimeSingle End { get => end; set => end = value; }
 
     [NodeMember]
-    public TimeSingle End
-    {
-        get => end;
-        set => end = value;
-    }
-
+    [AppliedWithChunk(typeof(Chunk0307D000))]
     public CControlList? UserInterface { get => userInterface; set => userInterface = value; }
-
-    #endregion
-
-    #region Constructors
 
     protected CGameCtnMediaBlockUi()
     {
 
     }
-
-    #endregion
 
     #region Chunks
 

@@ -9,16 +9,10 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
     CGameCtnMediaBlock.IHasKeys,
     CGameCtnMediaBlock.IHasTwoKeys
 {
-    #region Fields
-
     private string script;
     private IList<Key>? keys;
     private TimeSingle? start;
     private TimeSingle? end;
-
-    #endregion
-
-    #region Properties
 
     IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
     {
@@ -39,45 +33,25 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
     }
 
     [NodeMember]
-    public string Script
-    {
-        get => script;
-        set => script = value;
-    }
+    [AppliedWithChunk(typeof(Chunk03161000))]
+    public string Script { get => script; set => script = value; }
 
     [NodeMember]
-    public IList<Key>? Keys
-    {
-        get => keys;
-        set => keys = value;
-    }
+    [AppliedWithChunk(typeof(Chunk03161000), sinceVersion: 1)]
+    public IList<Key>? Keys { get => keys; set => keys = value; }
 
     [NodeMember]
-    public TimeSingle? Start
-    {
-        get => start;
-        set => start = value;
-    }
+    [AppliedWithChunk(typeof(Chunk03161000), sinceVersion: 0, upToVersion: 0)]
+    public TimeSingle? Start { get => start; set => start = value; }
 
     [NodeMember]
-    public TimeSingle? End
-    {
-        get => end;
-        set => end = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk03161000), sinceVersion: 0, upToVersion: 0)]
+    public TimeSingle? End { get => end; set => end = value; }
 
     protected CGameCtnMediaBlockCameraEffectScript()
     {
-        script = null!;
+        script = "";
     }
-
-    #endregion
-
-    #region Chunks
 
     #region 0x000 chunk
 
@@ -89,11 +63,7 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
     {
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnMediaBlockCameraEffectScript n, GameBoxReaderWriter rw)
         {
@@ -111,8 +81,6 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
             rw.ListKey(ref n.keys);
         }
     }
-
-    #endregion
 
     #endregion
 }

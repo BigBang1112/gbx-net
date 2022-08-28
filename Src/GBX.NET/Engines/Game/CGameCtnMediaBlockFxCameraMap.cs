@@ -8,39 +8,21 @@
 [NodeExtension("GameCtnMediaBlockFxCameraMap")]
 public class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {
-    #region Fields
-
     private TimeSingle start;
     private TimeSingle end = TimeSingle.FromSeconds(3);
 
-    #endregion
-
-    #region Properties
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03139000))]
+    public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    public TimeSingle Start
-    {
-        get => start;
-        set => start = value;
-    }
-
-    [NodeMember]
-    public TimeSingle End
-    {
-        get => end;
-        set => end = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk03139001))]
+    public TimeSingle End { get => end; set => end = value; }
 
     protected CGameCtnMediaBlockFxCameraMap()
     {
 
     }
-
-    #endregion
 
     #region Chunks
 
