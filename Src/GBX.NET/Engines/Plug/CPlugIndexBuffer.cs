@@ -5,13 +5,15 @@ namespace GBX.NET.Engines.Plug;
 public class CPlugIndexBuffer : CPlug
 {
     private int flags;
-    private ushort[]? indices;
+    private ushort[] indices;
 
-    public ushort[]? Indices { get => indices; set => indices = value; }
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk09057000))]
+    public ushort[] Indices { get => indices; set => indices = value; }
 
     protected CPlugIndexBuffer()
     {
-        indices = null!;
+        indices = Array.Empty<ushort>();
     }
 
     /// <summary>
@@ -23,7 +25,7 @@ public class CPlugIndexBuffer : CPlug
         public override void ReadWrite(CPlugIndexBuffer n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref n.flags);
-            rw.Array(ref n.indices);
+            rw.Array(ref n.indices!);
         }
     }
 }

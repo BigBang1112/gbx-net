@@ -10,23 +10,22 @@ public class CPlugMaterial : CPlug
     private GameBoxRefTable.File? shaderFile;
     private SDeviceMat[]? deviceMaterials;
 
-    public CPlugMaterialCustom? CustomMaterial
-    {
-        get => customMaterial; 
-        set => customMaterial = value;
-    }
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk09079007))]
+    public CPlugMaterialCustom? CustomMaterial { get => customMaterial; set => customMaterial = value; }
 
+    [NodeMember]
     public CPlug? Shader
     {
         get => shader = GetNodeFromRefTable(shader, shaderFile) as CPlug;
         set => shader = value;
     }
 
-    public SDeviceMat[]? DeviceMaterials
-    {
-        get => deviceMaterials;
-        set => deviceMaterials = value;
-    }
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk09079004))]
+    [AppliedWithChunk(typeof(Chunk09079009))]
+    [AppliedWithChunk(typeof(Chunk0907900D))]
+    public SDeviceMat[]? DeviceMaterials { get => deviceMaterials; set => deviceMaterials = value; }
 
     protected CPlugMaterial()
     {

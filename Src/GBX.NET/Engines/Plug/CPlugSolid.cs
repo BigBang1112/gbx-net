@@ -14,6 +14,7 @@ public class CPlugSolid : CPlug
     private GameBoxRefTable.File? treeFile;
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0900500D))]
     public CPlug? Tree
     {
         get => tree = GetNodeFromRefTable(tree, treeFile) as CPlug;

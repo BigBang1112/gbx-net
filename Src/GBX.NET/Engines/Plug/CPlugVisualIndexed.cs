@@ -6,9 +6,11 @@ public abstract class CPlugVisualIndexed : CPlugVisual3D
 {
     private CPlugIndexBuffer? indexBuffer;
 
-    public ushort[]? Indices
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0906A000))]
+    public ushort[] Indices
     {
-        get => indexBuffer?.Indices;
+        get => indexBuffer?.Indices ?? Array.Empty<ushort>();
         set
         {
             if (indexBuffer is not null)
@@ -17,6 +19,9 @@ public abstract class CPlugVisualIndexed : CPlugVisual3D
             }
         }
     }
+
+    [NodeMember]
+    public CPlugIndexBuffer? IndexBuffer { get => indexBuffer; set => indexBuffer = value; }
 
     protected CPlugVisualIndexed()
     {

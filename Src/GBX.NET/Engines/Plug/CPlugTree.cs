@@ -13,34 +13,23 @@ public class CPlugTree : CPlug
     private CPlugTreeGenerator? generator;
 
     [NodeMember(ExactName = "Childs")]
-    public IList<CPlugTree?> Children
-    {
-        get => children;
-        set => children = value;
-    }
+    [AppliedWithChunk(typeof(Chunk0904F006))]
+    public IList<CPlugTree?> Children { get => children; set => children = value; }
 
     [NodeMember]
-    public string? Name
-    {
-        get => name;
-        set => name = value;
-    }
+    [AppliedWithChunk(typeof(Chunk0904F00D))]
+    public string? Name { get => name; set => name = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public CPlugVisual? Visual
-    {
-        get => visual;
-        set => visual = value;
-    }
+    [AppliedWithChunk(typeof(Chunk0904F016))]
+    public CPlugVisual? Visual { get => visual; set => visual = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public CPlugSurface? Surface
-    {
-        get => surface;
-        set => surface = value;
-    }
+    [AppliedWithChunk(typeof(Chunk0904F016))]
+    public CPlugSurface? Surface { get => surface; set => surface = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0904F016))]
     public CPlug? Shader
     {
         get => shader = GetNodeFromRefTable(shader, shaderFile) as CPlug;
@@ -48,11 +37,8 @@ public class CPlugTree : CPlug
     }
 
     [NodeMember(ExactlyNamed = true)]
-    public CPlugTreeGenerator? Generator
-    {
-        get => generator;
-        set => generator = value;
-    }
+    [AppliedWithChunk(typeof(Chunk0904F016))]
+    public CPlugTreeGenerator? Generator { get => generator; set => generator = value; }
 
     protected CPlugTree()
     {
@@ -61,26 +47,34 @@ public class CPlugTree : CPlug
 
     public override string ToString() => $"{base.ToString()} {{ \"{name}\" }}";
 
+    #region Chunks
+
+    #region 0x006 chunk
+
     /// <summary>
     /// CPlugTree 0x006 chunk
     /// </summary>
     [Chunk(0x0904F006)]
     public class Chunk0904F006 : Chunk<CPlugTree>
     {
-        public int U01 = 10;
+        private int listVersion = 10;
 
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01); // list version
+            rw.Int32(ref listVersion);
             rw.ListNode<CPlugTree>(ref n.children!);
         }
 
         public override async Task ReadWriteAsync(CPlugTree n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
-            rw.Int32(ref U01); // list version
+            rw.Int32(ref listVersion);
             n.children = (await rw.ListNodeAsync<CPlugTree>(n.children!, cancellationToken))!;
         }
     }
+
+    #endregion
+
+    #region 0x00C chunk
 
     /// <summary>
     /// CPlugTree 0x00C chunk
@@ -97,6 +91,10 @@ public class CPlugTree : CPlug
         }
     }
 
+    #endregion
+
+    #region 0x00D chunk
+
     /// <summary>
     /// CPlugTree 0x00D chunk
     /// </summary>
@@ -112,6 +110,10 @@ public class CPlugTree : CPlug
         }
     }
 
+    #endregion
+
+    #region 0x011 chunk
+
     /// <summary>
     /// CPlugTree 0x011 chunk
     /// </summary>
@@ -125,6 +127,10 @@ public class CPlugTree : CPlug
             rw.NodeRef(ref U01); // FuncTree
         }
     }
+
+    #endregion
+
+    #region 0x015 chunk
 
     /// <summary>
     /// CPlugTree 0x015 chunk
@@ -145,6 +151,10 @@ public class CPlugTree : CPlug
             }
         }
     }
+
+    #endregion
+
+    #region 0x016 chunk
 
     /// <summary>
     /// CPlugTree 0x016 chunk
@@ -171,6 +181,10 @@ public class CPlugTree : CPlug
         }
     }
 
+    #endregion
+
+    #region 0x019 chunk
+
     /// <summary>
     /// CPlugTree 0x019 chunk
     /// </summary>
@@ -191,6 +205,10 @@ public class CPlugTree : CPlug
         }
     }
 
+    #endregion
+
+    #region 0x01A chunk
+
     /// <summary>
     /// CPlugTree 0x01A chunk
     /// </summary>
@@ -210,4 +228,8 @@ public class CPlugTree : CPlug
             }
         }
     }
+
+    #endregion
+
+    #endregion
 }

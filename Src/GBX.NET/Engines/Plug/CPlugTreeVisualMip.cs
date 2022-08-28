@@ -10,15 +10,16 @@ public class CPlugTreeVisualMip : CPlugTree
     private IDictionary<float, CPlugTree> levels;
 
     [NodeMember]
-    public IDictionary<float, CPlugTree> Levels
-    {
-        get => levels;
-        set => levels = value;
-    }
+    [AppliedWithChunk(typeof(Chunk09015002))]
+    public IDictionary<float, CPlugTree> Levels { get => levels; set => levels = value; }
 
     protected CPlugTreeVisualMip()
     {
+#if NET6_0_OR_GREATER
+        levels = global::System.Collections.Immutable.ImmutableDictionary.Create<float, CPlugTree>();
+#else
         levels = null!;
+#endif
     }
 
     /// <summary>

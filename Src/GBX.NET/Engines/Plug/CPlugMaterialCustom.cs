@@ -7,6 +7,8 @@
 [Node(0x0903A000), WritingNotSupported]
 public class CPlugMaterialCustom : CPlug
 {
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0903A006))]
     public SBitmap[]? Textures { get; set; }
 
     protected CPlugMaterialCustom()

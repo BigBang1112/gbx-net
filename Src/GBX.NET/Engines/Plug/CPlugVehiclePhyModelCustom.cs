@@ -4,49 +4,26 @@
 [Node(0x0911E000)]
 public class CPlugVehiclePhyModelCustom : CMwNod
 {
-    #region Fields
-
     private float accelCoef;
     private float controlCoef;
     private float gravityCoef;
 
-    #endregion
-
-    #region Properties
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0911E000))]
+    public float AccelCoef { get => accelCoef; set => accelCoef = value; }
 
     [NodeMember]
-    public float AccelCoef
-    {
-        get => accelCoef;
-        set => accelCoef = value;
-    }
+    [AppliedWithChunk(typeof(Chunk0911E000))]
+    public float ControlCoef { get => controlCoef; set => controlCoef = value; }
 
     [NodeMember]
-    public float ControlCoef
-    {
-        get => controlCoef;
-        set => controlCoef = value;
-    }
-
-    [NodeMember]
-    public float GravityCoef
-    {
-        get => gravityCoef;
-        set => gravityCoef = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk0911E000))]
+    public float GravityCoef { get => gravityCoef; set => gravityCoef = value; }
 
     protected CPlugVehiclePhyModelCustom()
     {
 
     }
-
-    #endregion
-
-    #region Chunks
 
     #region 0x000 chunk
 
@@ -58,11 +35,7 @@ public class CPlugVehiclePhyModelCustom : CMwNod
     {
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CPlugVehiclePhyModelCustom n, GameBoxReaderWriter rw)
         {
@@ -72,8 +45,6 @@ public class CPlugVehiclePhyModelCustom : CMwNod
             rw.Single(ref n.gravityCoef);
         }
     }
-
-    #endregion
 
     #endregion
 }

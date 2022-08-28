@@ -8,9 +8,11 @@ public class CPlugSkel : CMwNod
     private Joint[] joints;
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk090BA000))]
     public string? Name { get => name; set => name = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk090BA000))]
     public Joint[] Joints { get => joints; set => joints = value; }
 
     protected CPlugSkel()

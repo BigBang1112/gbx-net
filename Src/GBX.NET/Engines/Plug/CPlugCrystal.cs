@@ -49,9 +49,12 @@ public partial class CPlugCrystal : CPlugTreeGenerator
     #region Properties
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk09003003))]
     public CPlugMaterialUserInst?[] Materials { get => materials; set => materials = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk09003000))]
+    [AppliedWithChunk(typeof(Chunk09003005))]
     public Layer[] Layers { get; set; }
 
     #endregion

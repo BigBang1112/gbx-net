@@ -52,69 +52,91 @@ public class CGameObjectPhyModel : CMwNod
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 16)]
     public CMwNod? SpecialProperties { get => specialProperties; set => specialProperties = value; } // CPlugCharPhySpecialProperty
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 17)]
     public EPersistence? Persistence { get => persistence; set => persistence = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 5)]
     public EProgram? Program { get => program; set => program = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 21)]
     public CPlugSurface? MoveShapeFid { get => moveShapeFid; set => moveShapeFid = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 18)]
     public bool? CanStopEnemy { get => canStopEnemy; set => canStopEnemy = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 18)]
     public bool? CanStopEnemyBullet { get => canStopEnemyBullet; set => canStopEnemyBullet = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 19)]
     public float? ThrowSpeed { get => throwSpeed; set => throwSpeed = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 19)]
     public float? ThrowAngularSpeed { get => throwAngularSpeed; set => throwAngularSpeed = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 19)]
     public int? Armor { get => armor; set => armor = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 19)]
     public bool? HasALifeTime { get => hasALifeTime; set => hasALifeTime = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 19)]
     public int? LifeTimeDuration { get => lifeTimeDuration; set => lifeTimeDuration = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 19)]
     public float? ScaleCoefMax { get => scaleCoefMax; set => scaleCoefMax = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 19)]
     public float? StaminaSpawnCoef { get => staminaSpawnCoef; set => staminaSpawnCoef = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 19)]
     public int? TimeBeforeDome { get => timeBeforeDome; set => timeBeforeDome = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 19)]
     public bool? HealEnabled { get => healEnabled; set => healEnabled = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 19)]
     public int? HealArmorGainPerSecond { get => healArmorGainPerSecond; set => healArmorGainPerSecond = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 19)]
     public bool? ShieldEnabled { get => shieldEnabled; set => shieldEnabled = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 19)]
     public int? ShieldDomeArmor { get => shieldDomeArmor; set => shieldDomeArmor = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 23)]
     public bool? BumperEnabled { get => bumperEnabled; set => bumperEnabled = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 24)]
     public bool? MagnetEnabled { get => magnetEnabled; set => magnetEnabled = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 2)]
     public string? HitShape { get => hitShape; set => hitShape = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E006001), sinceVersion: 7)]
     public string? TriggerShape { get => triggerShape; set => triggerShape = value; }
 
     #endregion

@@ -1,6 +1,4 @@
-﻿using System.Collections.Immutable;
-
-namespace GBX.NET.Engines.GameData;
+﻿namespace GBX.NET.Engines.GameData;
 
 /// <summary>
 /// Custom block.
@@ -43,7 +41,7 @@ public class CGameBlockItem : CMwNod
         archetypeBlockInfoId = "";
         archetypeBlockInfoCollectionId = "";
 #if NET6_0_OR_GREATER
-        customizedVariants = ImmutableDictionary.Create<int, CPlugCrystal>();
+        customizedVariants = global::System.Collections.Immutable.ImmutableDictionary.Create<int, CPlugCrystal>();
 #else
         customizedVariants = null!;
 #endif

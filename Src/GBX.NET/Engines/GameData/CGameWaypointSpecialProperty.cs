@@ -7,47 +7,26 @@
 [Node(0x2E009000)]
 public class CGameWaypointSpecialProperty : CMwNod
 {
-    #region Fields
-
     private int? spawn;
     private string? tag;
     private int order;
 
-    #endregion
-
-    #region Properties
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk2E009000), sinceVersion: 1, upToVersion: 1)]
+    public int? Spawn { get => spawn; set => spawn = value; }
 
     [NodeMember]
-    public int? Spawn
-    {
-        get => spawn;
-        set => spawn = value;
-    }
+    [AppliedWithChunk(typeof(Chunk2E009000), sinceVersion: 2)]
+    public string? Tag { get => tag; set => tag = value; }
 
     [NodeMember]
-    public string? Tag
-    {
-        get => tag;
-        set => tag = value;
-    }
-
-    [NodeMember]
-    public int Order
-    {
-        get => order;
-        set => order = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk2E009000), sinceVersion: 1)]
+    public int Order { get => order; set => order = value; }
 
     protected CGameWaypointSpecialProperty()
     {
 
     }
-
-    #endregion
 
     #region Chunks
 
@@ -76,6 +55,10 @@ public class CGameWaypointSpecialProperty : CMwNod
             {
                 rw.String(ref n.tag);
                 rw.Int32(ref n.order);
+            }
+            else if (version >= 3)
+            {
+                throw new ChunkVersionNotSupportedException(version);
             }
         }
     }

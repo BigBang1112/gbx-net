@@ -8,8 +8,12 @@ public class CPlugSurface : CPlug
     private CPlugSurfaceGeom? geom;
     private SurfaceMaterial[]? materials;
 
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0900C000))]
     public CPlugSurfaceGeom? Geom { get => geom; set => geom = value; }
 
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0900C000))]
     public SurfaceMaterial[]? Materials { get => materials; set => materials = value; }
 
     protected CPlugSurface()

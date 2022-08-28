@@ -12,15 +12,19 @@ public class CPlugLight : CPlug
     private CPlugBitmap? bitmapProjector;
 
     [NodeMember(ExactName = "m_GxLightModel")]
+    [AppliedWithChunk(typeof(Chunk0901D000))]
     public GxLight? GxLightModel { get => gxLightModel; set => gxLightModel = value; }
 
     [NodeMember(ExactName = "m_FuncLight")]
+    [AppliedWithChunk(typeof(Chunk0901D000))]
     public CFuncLight? FuncLight { get => funcLight; set => funcLight = value; }
 
     [NodeMember(ExactName = "m_BitmapFlare")]
+    [AppliedWithChunk(typeof(Chunk0901D000))]
     public CPlugBitmap? BitmapFlare { get => bitmapFlare; set => bitmapFlare = value; }
 
     [NodeMember(ExactName = "m_BitmapProjector")]
+    [AppliedWithChunk(typeof(Chunk0901D000))]
     public CPlugBitmap? BitmapProjector { get => bitmapProjector; set => bitmapProjector = value; }
 
     protected CPlugLight()

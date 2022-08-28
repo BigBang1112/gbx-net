@@ -4,8 +4,6 @@
 [Node(0x2407F000)]
 public class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
 {
-    #region Enums
-
     public enum EStuntFigure
     {
         None,
@@ -48,49 +46,26 @@ public class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
         Reset
     }
 
-    #endregion
-
-    #region Fields
-
-    private float start;
-    private float end;
+    private TimeSingle start;
+    private TimeSingle end = new(3);
     private Stunt[] stunts;
 
-    #endregion
-
-    #region Properties
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk2407F000))]
+    public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    public float Start
-    {
-        get => start;
-        set => start = value;
-    }
+    [AppliedWithChunk(typeof(Chunk2407F000))]
+    public TimeSingle End { get => end; set => end = value; }
 
     [NodeMember]
-    public float End
-    {
-        get => end;
-        set => end = value;
-    }
-
-    [NodeMember]
-    public Stunt[] Stunts
-    {
-        get => stunts;
-        set => stunts = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk2407F000))]
+    public Stunt[] Stunts { get => stunts; set => stunts = value; }
 
     protected CCtnMediaBlockEventTrackMania()
     {
-        stunts = null!;
+        stunts = Array.Empty<Stunt>();
     }
-
-    #endregion
 
     #region Chunks
 
@@ -106,8 +81,8 @@ public class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
 
         public override void ReadWrite(CCtnMediaBlockEventTrackMania n, GameBoxReaderWriter rw)
         {
-            rw.Single(ref n.start);
-            rw.Single(ref n.end);
+            rw.TimeSingle(ref n.start);
+            rw.TimeSingle(ref n.end);
             rw.Boolean(ref U01);
 
             rw.Array(ref n.stunts!, (i, r) => new Stunt()
