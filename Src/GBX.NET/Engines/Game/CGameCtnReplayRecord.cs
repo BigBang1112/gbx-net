@@ -244,7 +244,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region Methods
 
-    public IEnumerable<CGameCtnGhost> GetGhosts()
+    public IEnumerable<CGameCtnGhost> GetGhosts(bool alsoInClips = true)
     {
         if (ghosts is not null)
         {
@@ -254,7 +254,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             }
         }
 
-        if (clip is not null)
+        if (alsoInClips && clip is not null)
         {
             foreach (var track in clip.Tracks)
             {
