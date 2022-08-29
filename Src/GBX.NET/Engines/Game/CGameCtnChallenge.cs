@@ -412,6 +412,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Login of the map author.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03043008))]
+    [AppliedWithChunk(typeof(Chunk03043042))]
     public string AuthorLogin
     {
         get
