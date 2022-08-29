@@ -7,7 +7,6 @@ public abstract class CPlugVisualIndexed : CPlugVisual3D
     private CPlugIndexBuffer? indexBuffer;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0906A000))]
     public ushort[] Indices
     {
         get => indexBuffer?.Indices ?? Array.Empty<ushort>();
