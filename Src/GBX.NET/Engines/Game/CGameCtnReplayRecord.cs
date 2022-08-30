@@ -32,7 +32,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     private CGameCtnMediaClip? clip;
     private CPlugEntRecordData? recordData;
     private CCtnMediaBlockEventTrackMania? events;
-    private int? eventsDuration;
+    private TimeInt32? eventsDuration;
     private ControlEntry[]? controlEntries;
     private string? game;
     private CCtnMediaBlockUiTMSimpleEvtsDisplay? simpleEventsDisplay;
@@ -232,7 +232,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk03093003))]
     [AppliedWithChunk(typeof(Chunk0309300D))]
-    public int? EventsDuration => eventsDuration;
+    public TimeInt32? EventsDuration => eventsDuration;
 
     /// <summary>
     /// Inputs (keyboard, pad, wheel) of the replay from TM1.0, TMO, Sunrise and ESWC. For inputs stored in TMU, TMUF, TMTurbo and TM2: see <see cref="CGameCtnGhost.ControlEntries"/> in <see cref="Ghosts"/>. TM2020 and Shootmania inputs aren't available in replays and ghosts. Can be null if <see cref="EventsDuration"/> is 0, which can happen when you save the replay in editor.
@@ -402,9 +402,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
         {
-            n.eventsDuration = r.ReadInt32();
+            n.eventsDuration = r.ReadTimeInt32();
 
-            if (n.eventsDuration == 0)
+            if (n.eventsDuration == TimeInt32.Zero)
                 return;
 
             U01 = r.ReadInt32();
@@ -570,9 +570,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
         {
-            n.eventsDuration = r.ReadInt32();
+            n.eventsDuration = r.ReadTimeInt32();
 
-            if (n.eventsDuration == 0)
+            if (n.eventsDuration == TimeInt32.Zero)
                 return;
 
             U01 = r.ReadInt32();
