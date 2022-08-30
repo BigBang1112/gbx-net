@@ -2447,7 +2447,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043007, "thumbnail")]
     public class Chunk03043007 : HeaderChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
+        private int version = 1;
 
         /// <summary>
         /// Version of the chunk.
