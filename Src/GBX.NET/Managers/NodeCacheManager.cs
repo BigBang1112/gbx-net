@@ -17,7 +17,7 @@ public static class NodeCacheManager
     public static ILookup<uint, uint> ReverseMappings { get; } // key: newer, value: older
     public static Dictionary<uint, string> Extensions { get; }
     public static Dictionary<int, string> CollectionIds { get; }
-    public static ConcurrentDictionary<uint, string> GbxExtensions { get; }
+    public static ConcurrentDictionary<uint, IEnumerable<string>> GbxExtensions { get; }
 
     public static ConcurrentDictionary<uint, Type> ClassTypesById { get; }
     public static ConcurrentDictionary<Type, uint> ClassIdsByType { get; }
@@ -47,34 +47,34 @@ public static class NodeCacheManager
 
     static NodeCacheManager()
     {
-        Names = new Dictionary<uint, string>();
-        Mappings = new Dictionary<uint, uint>();
-        Extensions = new Dictionary<uint, string>();
-        CollectionIds = new Dictionary<int, string>();
-        GbxExtensions = new ConcurrentDictionary<uint, string>();
+        Names = new();
+        Mappings = new();
+        Extensions = new();
+        CollectionIds = new();
+        GbxExtensions = new();
 
-        ClassTypesById = new ConcurrentDictionary<uint, Type>();
-        ClassIdsByType = new ConcurrentDictionary<Type, uint>();
-        ChunkTypesById = new ConcurrentDictionary<uint, Type>();
-        ChunkIdsByType = new ConcurrentDictionary<Type, uint>();
-        HeaderChunkTypesById = new ConcurrentDictionary<uint, Type>();
+        ClassTypesById = new();
+        ClassIdsByType = new();
+        ChunkTypesById = new();
+        ChunkIdsByType = new();
+        HeaderChunkTypesById = new();
 
-        ClassAttributesByType = new ConcurrentDictionary<Type, IEnumerable<Attribute>>();
-        ChunkAttributesById = new ConcurrentDictionary<uint, IEnumerable<Attribute>>();
-        HeaderChunkAttributesById = new ConcurrentDictionary<uint, IEnumerable<Attribute>>();
-        ChunkAttributesByType = new ConcurrentDictionary<Type, IEnumerable<Attribute>>();
+        ClassAttributesByType = new();
+        ChunkAttributesById = new();
+        HeaderChunkAttributesById = new();
+        ChunkAttributesByType = new();
 
-        ClassConstructors = new ConcurrentDictionary<uint, Func<Node>>();
-        ChunkConstructors = new ConcurrentDictionary<uint, Func<Chunk>>();
-        HeaderChunkConstructors = new ConcurrentDictionary<uint, Func<IHeaderChunk>>();
+        ClassConstructors = new();
+        ChunkConstructors = new();
+        HeaderChunkConstructors = new();
 
-        ClassTypesWithCachedChunks = new ConcurrentDictionary<Type, byte>();
-        SkippableChunks = new ConcurrentDictionary<Type, byte>();
+        ClassTypesWithCachedChunks = new();
+        SkippableChunks = new();
 
-        AsyncChunksById = new ConcurrentDictionary<uint, byte>();
-        ReadAsyncChunksById = new ConcurrentDictionary<uint, byte>();
-        WriteAsyncChunksById = new ConcurrentDictionary<uint, byte>();
-        ReadWriteAsyncChunksById = new ConcurrentDictionary<uint, byte>();
+        AsyncChunksById = new();
+        ReadAsyncChunksById = new();
+        WriteAsyncChunksById = new();
+        ReadWriteAsyncChunksById = new();
 
         DefineNames2(Names, Extensions);
         DefineMappings2(Mappings);
@@ -115,13 +115,13 @@ public static class NodeCacheManager
         }
     }
 
-    public static string? GetNodeExtension(uint classId)
+    public static IEnumerable<string> GetNodeExtensions(uint classId)
     {
         CacheClassTypesIfNotCached();
 
         GbxExtensions.TryGetValue(classId, out var extension);
 
-        return extension;
+        return extension ?? Enumerable.Empty<string>();
     }
 
     /// <summary>
@@ -180,7 +180,7 @@ public static class NodeCacheManager
             var attributes = CustomAttributeExtensions.GetCustomAttributes(type, inherit: false);
 
             var nodeAttribute = default(NodeAttribute);
-            var nodeExtensionAttribute = default(NodeExtensionAttribute);
+            var nodeExtensions = default(List<string>);
             var moreNodeAttributes = default(List<NodeAttribute>);
 
             foreach (var attribute in attributes)
@@ -200,7 +200,8 @@ public static class NodeCacheManager
 
                         break;
                     case NodeExtensionAttribute nea:
-                        nodeExtensionAttribute = nea;
+                        nodeExtensions ??= new();
+                        nodeExtensions.Add(nea.Extension);
                         break;
                 }
             }
@@ -222,9 +223,9 @@ public static class NodeCacheManager
             ClassIdsByType[type] = nodeId;
             ClassAttributesByType[type] = attributes;
 
-            if (nodeExtensionAttribute is not null)
+            if (nodeExtensions is not null)
             {
-                GbxExtensions[nodeId] = nodeExtensionAttribute.Extension;
+                GbxExtensions[nodeId] = nodeExtensions;
             }
 
             if (moreNodeAttributes is not null)
