@@ -3974,6 +3974,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             var coord = (Int3)r.ReadByte3();
             var flags = r.ReadInt32();
 
+            if (flags != -1)
+            {
+                coord -= (1, 0, 1);
+            }
+
             n.BakedBlocks!.Add(new(name, direction, coord, flags));
 
             return flags;
@@ -3991,16 +3996,23 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             w.Write(U01);
 
             w.Write(n.NbBakedBlocks.GetValueOrDefault());
-
-            if (n.BakedBlocks is not null)
+            
+            foreach (var block in n.GetBakedBlocks())
             {
-                foreach (var block in n.BakedBlocks)
+                w.WriteId(block.Name);
+                w.Write((byte)block.Direction);
+                
+                if (block.Flags != -1)
                 {
-                    w.WriteId(block.Name);
-                    w.Write((byte)block.Direction);
-                    w.Write((Byte3)block.Coord);
-                    w.Write(block.Flags);
+                    w.Write((Byte3)(block.Coord + (1, 0, 1)));
                 }
+                else
+                {
+                    w.Write((Byte3)block.Coord);
+                }
+                
+                w.Write((Byte3)block.Coord);
+                w.Write(block.Flags);
             }
 
             w.Write(U02);
