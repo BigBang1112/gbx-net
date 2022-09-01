@@ -4011,7 +4011,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     w.Write((Byte3)block.Coord);
                 }
                 
-                w.Write((Byte3)block.Coord);
                 w.Write(block.Flags);
             }
 
