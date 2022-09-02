@@ -413,6 +413,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk03043008))]
+    [AppliedWithChunk(typeof(Chunk0304300F))]
+    [AppliedWithChunk(typeof(Chunk03043013))]
+    [AppliedWithChunk(typeof(Chunk0304301F))]
     [AppliedWithChunk(typeof(Chunk03043042))]
     public string AuthorLogin
     {
