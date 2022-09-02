@@ -1317,6 +1317,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk03043027))]
+    [AppliedWithChunk(typeof(Chunk03043028))]
     public bool? HasCustomCamThumbnail { get => hasCustomCamThumbnail; set => hasCustomCamThumbnail = value; }
 
     [NodeMember]
