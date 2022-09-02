@@ -349,7 +349,7 @@ public class GameBoxWriter : BinaryWriter
     {
         if (nodeFile is not null)
         {
-            var nodeFileIndex = nodeFile.NodeIndex + 1;
+            var nodeFileIndex = nodeFile.NodeIndex;
 
             while (AuxNodes.ContainsKey(nodeFileIndex))
             {
