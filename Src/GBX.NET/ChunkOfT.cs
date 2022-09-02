@@ -87,13 +87,15 @@ public abstract class Chunk<T> : Chunk, IReadableWritableChunk where T : Node
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     public virtual Task ReadAsync(T n, GameBoxReader r, CancellationToken cancellationToken = default)
     {
-        throw new ChunkReadNotImplementedException(Id, n);
+        Read(n, r);
+        return Task.CompletedTask;
     }
 
     /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
     public virtual Task WriteAsync(T n, GameBoxWriter w, CancellationToken cancellationToken = default)
     {
-        throw new ChunkWriteNotImplementedException(Id, n);
+        Write(n, w);
+        return Task.CompletedTask;
     }
 
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
