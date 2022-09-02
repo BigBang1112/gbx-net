@@ -358,7 +358,7 @@ public class GameBoxWriter : BinaryWriter
 
             nodeFile.NodeIndex = nodeFileIndex;
 
-            Write(nodeFileIndex);
+            Write(nodeFileIndex + 1);
             
             AuxNodes.Add(nodeFileIndex, null);
 

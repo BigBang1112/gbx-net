@@ -118,10 +118,7 @@ public abstract class Node
 
     private static uint GetNodeInfoFromClassId(GameBoxReader r, uint? classId, out Node? node, out Type nodeType)
     {
-        if (classId is null)
-        {
-            classId = r.ReadUInt32();
-        }
+        classId ??= r.ReadUInt32();
 
         if (classId == uint.MaxValue)
         {
