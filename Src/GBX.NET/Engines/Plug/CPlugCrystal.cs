@@ -1,5 +1,6 @@
 ﻿using GBX.NET.Utils;
 using System.Globalization;
+using System.Text;
 
 namespace GBX.NET.Engines.Plug;
 
@@ -78,11 +79,13 @@ public partial class CPlugCrystal : CPlugTreeGenerator
     /// <param name="mtlStream">Stream to write MTL content into.</param>
     /// <param name="mergeVerticesDigitThreshold">If set, overlapping vertices (usually between the mesh groups) will be merged. 3 or 4 give the best accuracy.</param>
     /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>
+    /// <param name="encoding">Encoding to use.</param>
     /// <param name="leaveOpen">If to keep the streams open.</param>
     public void ExportToObj(Stream objStream,
                             Stream mtlStream,
                             int? mergeVerticesDigitThreshold = null,
                             string? gameDataFolderPath = null,
+                            Encoding? encoding = null,
                             bool leaveOpen = false)
     {
         using var exporter = new ObjFileExporter(
@@ -90,6 +93,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator
             mtlStream,
             mergeVerticesDigitThreshold,
             gameDataFolderPath,
+            encoding,
             leaveOpen);
 
         exporter.Export(this);

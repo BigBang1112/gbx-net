@@ -22,15 +22,17 @@ public class ObjFileExporter : IModelExporter, IDisposable
     /// <param name="mtlStream">Stream to write MTL content into.</param>
     /// <param name="mergeVerticesDigitThreshold">If set, overlapping vertices (usually between the mesh groups) will be merged. 3 or 4 give the best accuracy.</param>
     /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>
+    /// <param name="encoding">Encoding to use.</param>
     /// <param name="leaveOpen">If to keep the streams open.</param>
     public ObjFileExporter(Stream objStream,
                            Stream mtlStream,
                            int? mergeVerticesDigitThreshold = null,
                            string? gameDataFolderPath = null,
+                           Encoding? encoding = null,
                            bool leaveOpen = false)
     {
-        objWriter = new StreamWriter(objStream, Encoding.UTF8, bufferSize: 1024, leaveOpen);
-        mtlWriter = new StreamWriter(mtlStream, Encoding.UTF8, bufferSize: 1024, leaveOpen);
+        objWriter = new StreamWriter(objStream, encoding, bufferSize: 1024, leaveOpen);
+        mtlWriter = new StreamWriter(mtlStream, encoding, bufferSize: 1024, leaveOpen);
         objFaceWriter = new StringWriter();
         objUvWriter = new StringWriter();
         

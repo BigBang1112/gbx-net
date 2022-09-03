@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Utils;
+using System.Text;
 
 namespace GBX.NET.Engines.Plug;
 
@@ -32,8 +33,13 @@ public class CPlugSolid : CPlug
     /// <param name="objStream">Stream to write OBJ content into.</param>
     /// <param name="mtlStream">Stream to write MTL content into.</param>
     /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>
+    /// <param name="encoding">Encoding to use.</param>
     /// <param name="leaveOpen">If to keep the streams open.</param>
-    public void ExportToObj(Stream objStream, Stream mtlStream, string? gameDataFolderPath = null, bool leaveOpen = false)
+    public void ExportToObj(Stream objStream, 
+                            Stream mtlStream, 
+                            string? gameDataFolderPath = null,
+                            Encoding? encoding = null,
+                            bool leaveOpen = false)
     {
         if (Tree is not CPlugTree tree)
         {
@@ -45,6 +51,7 @@ public class CPlugSolid : CPlug
             mtlStream,
             mergeVerticesDigitThreshold: null,
             gameDataFolderPath,
+            encoding,
             leaveOpen);
         
         exporter.Export(tree);
