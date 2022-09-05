@@ -46,6 +46,7 @@ public class CPlugTree : CPlug
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk0904F015))]
+    [AppliedWithChunk(typeof(Chunk0904F018))]
     [AppliedWithChunk(typeof(Chunk0904F019))]
     [AppliedWithChunk(typeof(Chunk0904F01A))]
     public Iso4? Translation { get => translation; set => translation = value; }
