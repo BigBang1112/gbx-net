@@ -161,7 +161,7 @@ public class CGameCtnAnchoredObject : CMwNod
     public FileRef? ForegroundPackDesc { get; set; }
 
     /// <summary>
-    /// Lightmap quality setting of the block. Available since TM2020.
+    /// Lightmap quality setting of the item. Available since TM2020.
     /// </summary>
     [NodeMember(ExactName = "MapElemLmQuality")]
     public LightmapQuality? LightmapQuality { get; set; }
