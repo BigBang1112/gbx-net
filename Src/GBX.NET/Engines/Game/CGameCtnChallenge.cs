@@ -740,6 +740,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// All checkpoints and their map coordinates. Used by TMUF and older games.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03043017))]
     public Int3[]? Checkpoints
     {
         get
@@ -758,6 +759,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Reference to the mod (texture/resource pack) used on the map.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03043019))]
     public FileRef? ModPackDesc
     {
         get
@@ -868,6 +870,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// MediaTracker podium.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03043049))]
     public CGameCtnMediaClip? ClipPodium { get => clipPodium; set => clipPodium = value; }
 
     /// <summary>
