@@ -580,7 +580,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator
 
     public class TriggerLayer : Layer
     {
-        public Crystal? Crystal { get; init; }
+        public Crystal Crystal { get; init; }
 
         public TriggerLayer(Crystal crystal)
         {
