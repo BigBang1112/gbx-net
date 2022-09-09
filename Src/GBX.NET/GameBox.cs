@@ -162,6 +162,8 @@ public partial class GameBox
         else
             RefTable.Write(Header, headerW);
 
+        logger?.LogDebug("Copying body content...");
+
         headerW.Write(ms.ToArray());
     }
 

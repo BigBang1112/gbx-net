@@ -52,4 +52,7 @@ internal static partial class LoggerMessageGen
 
     [LoggerMessage(EventId = 17, Level = LogLevel.Warning, Message = "Discarded external node: {externalNode}")]
     public static partial void LogDiscardedExternalNode(this ILogger logger, GameBoxRefTable.File externalNode);
+
+    [LoggerMessage(EventId = 18, Level = LogLevel.Debug, Message = "{className} {current}/{count} ({time}ms)")]
+    public static partial void LogNodeArrayProgress(this ILogger logger, string className, int current, int count, double time);
 }
