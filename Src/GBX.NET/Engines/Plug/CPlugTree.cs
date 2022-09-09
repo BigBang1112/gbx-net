@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.Plug;
+﻿using GBX.NET.Engines.Function;
+
+namespace GBX.NET.Engines.Plug;
 
 /// <remarks>ID: 0x0904F000</remarks>
 [Node(0x0904F000)]
@@ -6,11 +8,13 @@ public class CPlugTree : CPlug
 {
     private IList<CPlugTree?> children;
     private string? name;
+    private CFuncTree? funcTree;
     private CPlugVisual? visual;
     private CPlugSurface? surface;
     private CPlug? shader;
     private GameBoxRefTable.File? shaderFile;
     private CPlugTreeGenerator? generator;
+    private Iso4? translation;
 
     [NodeMember(ExactName = "Childs")]
     [AppliedWithChunk(typeof(Chunk0904F006))]
@@ -35,10 +39,21 @@ public class CPlugTree : CPlug
         get => shader = GetNodeFromRefTable(shader, shaderFile) as CPlug;
         set => shader = value;
     }
-
+    
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk0904F016))]
     public CPlugTreeGenerator? Generator { get => generator; set => generator = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0904F015))]
+    [AppliedWithChunk(typeof(Chunk0904F018))]
+    [AppliedWithChunk(typeof(Chunk0904F019))]
+    [AppliedWithChunk(typeof(Chunk0904F01A))]
+    public Iso4? Translation { get => translation; set => translation = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0904F011))]
+    public CFuncTree? FuncTree { get => funcTree; set => funcTree = value; }
 
     protected CPlugTree()
     {
@@ -88,6 +103,11 @@ public class CPlugTree : CPlug
         {
             rw.Int32(ref U01);
             // could be array of Ids
+
+            if (U01 > 0)
+            {
+                throw new NotSupportedException("U01 > 0");
+            }
         }
     }
 
@@ -101,69 +121,64 @@ public class CPlugTree : CPlug
     [Chunk(0x0904F00D)]
     public class Chunk0904F00D : Chunk<CPlugTree>
     {
-        public CMwNod? U02;
+        public string? U02;
 
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
             rw.Id(ref n.name, tryParseToInt32: true);
-            rw.NodeRef(ref U02); // node
+            rw.Id(ref U02); // doesn't hint anything
         }
     }
 
     #endregion
 
-    #region 0x011 chunk
+    #region 0x011 chunk (FuncTree)
 
     /// <summary>
-    /// CPlugTree 0x011 chunk
+    /// CPlugTree 0x011 chunk (FuncTree)
     /// </summary>
-    [Chunk(0x0904F011)]
+    [Chunk(0x0904F011, "FuncTree")]
     public class Chunk0904F011 : Chunk<CPlugTree>
     {
-        public CMwNod? U01;
-
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01); // FuncTree
+            rw.NodeRef<CFuncTree>(ref n.funcTree); // FuncTree
         }
     }
 
     #endregion
 
-    #region 0x015 chunk
+    #region 0x015 chunk (translation)
 
     /// <summary>
-    /// CPlugTree 0x015 chunk
+    /// CPlugTree 0x015 chunk (translation)
     /// </summary>
-    [Chunk(0x0904F015)]
+    [Chunk(0x0904F015, "translation")]
     public class Chunk0904F015 : Chunk<CPlugTree>
     {
         public int Flags;
-        public Iso4? U01;
 
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref Flags); // DoData
+            rw.Int32(ref Flags);
 
             if ((Flags & 4) != 0)
             {
-                rw.Iso4(ref U01);
+                rw.Iso4(ref n.translation);
             }
         }
     }
 
     #endregion
 
-    #region 0x016 chunk
+    #region 0x016 chunk (properties)
 
     /// <summary>
-    /// CPlugTree 0x016 chunk
+    /// CPlugTree 0x016 chunk (properties)
     /// </summary>
-    [Chunk(0x0904F016)]
+    [Chunk(0x0904F016, "properties")]
     public class Chunk0904F016 : Chunk<CPlugTree>
     {
-        public int U03;
-
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
             rw.NodeRef<CPlugVisual>(ref n.visual); // CPlugVisual?
@@ -183,50 +198,41 @@ public class CPlugTree : CPlug
 
     #endregion
 
-    #region 0x019 chunk
+    #region 0x018 chunk (translation)
 
     /// <summary>
-    /// CPlugTree 0x019 chunk
+    /// CPlugTree 0x018 chunk (translation)
     /// </summary>
-    [Chunk(0x0904F019)]
-    public class Chunk0904F019 : Chunk<CPlugTree>
+    [Chunk(0x0904F018, "translation")]
+    public class Chunk0904F018 : Chunk0904F015
     {
-        public int Flags;
-        public Iso4 U01;
 
-        public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
-        {
-            rw.Int32(ref Flags);
-
-            if ((Flags & 4) != 0)
-            {
-                rw.Iso4(ref U01);
-            }
-        }
     }
 
     #endregion
 
-    #region 0x01A chunk
+    #region 0x019 chunk (translation)
 
     /// <summary>
-    /// CPlugTree 0x01A chunk
+    /// CPlugTree 0x019 chunk (translation)
     /// </summary>
-    [Chunk(0x0904F01A)]
-    public class Chunk0904F01A : Chunk<CPlugTree>
+    [Chunk(0x0904F019, "translation")]
+    public class Chunk0904F019 : Chunk0904F015
     {
-        public int Flags;
-        public Iso4 U01;
+        
+    }
 
-        public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
-        {
-            rw.Int32(ref Flags); // Flags?
+    #endregion
 
-            if ((Flags & 4) != 0)
-            {
-                rw.Iso4(ref U01);
-            }
-        }
+    #region 0x01A chunk (translation)
+
+    /// <summary>
+    /// CPlugTree 0x01A chunk (translation)
+    /// </summary>
+    [Chunk(0x0904F01A, "translation")]
+    public class Chunk0904F01A : Chunk0904F015
+    {
+        
     }
 
     #endregion

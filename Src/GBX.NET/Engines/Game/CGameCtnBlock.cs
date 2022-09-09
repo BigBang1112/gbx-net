@@ -12,10 +12,15 @@ public class CGameCtnBlock : CMwNod
     #region Constants
 
     private const int isGroundBit = 12;
+    private const int isClipBit = 13;
     private const int isSkinnableBit = 15;
     private const int isWaypointBit = 20;
     private const int isGhostBit = 28;
     private const int isFreeBit = 29;
+
+    private const int variantMax = 63;
+    private const int subVariantOffset = 6;
+    private const int subVariantMax = 63;
 
     #endregion
 
@@ -27,7 +32,6 @@ public class CGameCtnBlock : CMwNod
     private int flags;
     private CGameCtnBlockSkin? skin;
     private CGameWaypointSpecialProperty? waypoint;
-    private DifficultyColor? color;
 
     #endregion
 
@@ -80,6 +84,60 @@ public class CGameCtnBlock : CMwNod
     [NodeMember]
     public string? Author { get; set; } // TODO: Check behaviour
 
+    public bool HasFlags => HasValidFlags(Flags);
+
+    /// <summary>
+    /// Variant of the block. Taken from flags. Value range of 0-63.
+    /// </summary>
+    [NodeMember]
+    public byte? Variant
+    {
+        get => HasFlags ? (byte)(Flags & variantMax) : null;
+        set
+        {
+            if (HasFlags)
+            {
+                Flags = (Flags & ~variantMax) | (value ?? 0);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Subvariant of the block. Taken from flags. Value range of 0-63. Always 63 when <see cref="IsClip"/> is true.
+    /// </summary>
+    [NodeMember]
+    public byte? SubVariant
+    {
+        get => HasFlags ? (byte?)((Flags >> subVariantOffset) & subVariantMax) : null;
+        set
+        {
+            if (HasFlags)
+            {
+                Flags = (Flags & ~(subVariantMax << subVariantOffset)) | ((value ?? 0) << subVariantOffset);
+            }
+        }
+    }
+
+    /// <summary>
+    /// If the block should use the ground variant. Taken from flags.
+    /// </summary>
+    [NodeMember]
+    public bool IsGround
+    {
+        get => IsGroundBlock(Flags);
+        set => SetFlagBit(isGroundBit, value);
+    }
+
+    /// <summary>
+    /// If the block is considered as clip. Taken from flags.
+    /// </summary>
+    [NodeMember]
+    public bool IsClip
+    {
+        get => IsClipBlock(Flags);
+        set => SetFlagBit(isClipBit, value);
+    }
+
     /// <summary>
     /// Used skin on the block.
     /// </summary>
@@ -87,21 +145,17 @@ public class CGameCtnBlock : CMwNod
     public CGameCtnBlockSkin? Skin
     {
         get => skin;
-        set
-        {
-            if (Flags == -1)
-                return;
+        set => SetFlagBitAndObject(isSkinnableBit, ref skin, value);
+    }
 
-            if (value is null)
-            {
-                Flags &= ~(1 << isSkinnableBit);
-                skin = null;
-                return;
-            }
-
-            Flags |= 1 << isSkinnableBit;
-            skin = value;
-        }
+    /// <summary>
+    /// Taken from flags.
+    /// </summary>
+    [NodeMember]
+    public bool Bit17
+    {
+        get => HasFlags && IsFlagBitSet(17);
+        set => SetFlagBit(17, value);
     }
 
     /// <summary>
@@ -111,33 +165,24 @@ public class CGameCtnBlock : CMwNod
     public CGameWaypointSpecialProperty? WaypointSpecialProperty
     {
         get => waypoint;
-        set
-        {
-            if (Flags == -1)
-                return;
+        set => SetFlagBitAndObject(isWaypointBit, ref waypoint, value);
+    }
 
-            if (value is null)
-            {
-                Flags &= ~(1 << isWaypointBit);
-                waypoint = null;
-
-                return;
-            }
-
-            Flags |= 1 << isWaypointBit;
-            waypoint = value;
-        }
+    /// <summary>
+    /// Determines the hill ground variant in TM®. Taken from flags.
+    /// </summary>
+    [NodeMember]
+    public bool Bit21
+    {
+        get => HasFlags && IsFlagBitSet(21);
+        set => SetFlagBit(21, value);
     }
 
     [NodeMember]
     public bool IsGhost
     {
         get => IsGhostBlock(Flags);
-        set
-        {
-            if (value) Flags |= 1 << isGhostBit;
-            else Flags &= ~(1 << isGhostBit);
-        }
+        set => SetFlagBit(isGhostBit, value);
     }
 
     /// <summary>
@@ -147,68 +192,6 @@ public class CGameCtnBlock : CMwNod
     public bool IsFree
     {
         get => IsFreeBlock(Flags);
-    }
-
-    /// <summary>
-    /// If the block should use the ground variant. Taken from flags.
-    /// </summary>
-    [NodeMember]
-    public bool IsGround // ground: bit 12
-    {
-        get => IsGroundBlock(Flags);
-        set
-        {
-            if (value) Flags |= 1 << isGroundBit;
-            else Flags &= ~(1 << isGroundBit);
-        }
-    }
-
-    /// <summary>
-    /// Determines the hill ground variant in TM®. Taken from flags.
-    /// </summary>
-    [NodeMember]
-    public bool Bit21
-    {
-        get => Flags > -1 && (Flags & (1 << 21)) != 0;
-        set
-        {
-            if (value) Flags |= 1 << 21;
-            else Flags &= ~(1 << 21);
-        }
-    }
-
-    /// <summary>
-    /// Taken from flags.
-    /// </summary>
-    [NodeMember]
-    public bool Bit17
-    {
-        get => Flags > -1 && (Flags & (1 << 17)) != 0;
-        set
-        {
-            if (value) Flags |= 1 << 17;
-            else Flags &= ~(1 << 17);
-        }
-    }
-
-    /// <summary>
-    /// If the block is considered as clip. Taken from flags.
-    /// </summary>
-    [NodeMember]
-    public bool IsClip => Flags > -1 && ((Flags >> 6) & 63) == 63;
-
-    /// <summary>
-    /// Variant of the block. Taken from flags.
-    /// </summary>
-    [NodeMember]
-    public byte? Variant
-    {
-        get => Flags > -1 ? (byte?)(Flags & 15) : null;
-        set
-        {
-            if (value.HasValue)
-                Flags = (int)(Flags & 0xFFFFFFF0) + (value.Value & 15);
-        }
     }
 
     /// <summary>
@@ -237,7 +220,7 @@ public class CGameCtnBlock : CMwNod
     /// A type of block that seperates other blocks in ManiaPlanet. The game can sometimes crash if it isn't provided in the map file, especially in ManiaPlanet (not Trackmania®). One theory is that this block determines what blocks should be undone by Undo.
     /// </summary>
     [IgnoreDataMember]
-    public static CGameCtnBlock Unassigned1 => new("Unassigned1", Direction.East, (-1, -1, -1), -1);
+    public static CGameCtnBlock Unassigned1 => new("Unassigned1", Direction.East, (0, 0, 0), -1);
 
     #endregion
 
@@ -278,18 +261,49 @@ public class CGameCtnBlock : CMwNod
     #region Methods
 
     public override string ToString() => $"{base.ToString()} {{ {Name} {Coord} }}";
+    
+    private void SetFlagBit(int bit, bool value)
+    {
+        if (value) Flags |= 1 << bit;
+        else Flags &= ~(1 << bit);
+    }
 
-    internal static bool IsGhostBlock_WhenDefined(int flags) => (flags & (1 << isGhostBit)) != 0;
-    internal static bool IsFreeBlock_WhenDefined(int flags) => (flags & (1 << isFreeBit)) != 0;
-    internal static bool IsGroundBlock_WhenDefined(int flags) => (flags & (1 << isGroundBit)) != 0;
-    internal static bool IsWaypointBlock_WhenDefined(int flags) => (flags & (1 << isWaypointBit)) != 0;
-    internal static bool IsSkinnableBlock_WhenDefined(int flags) => (flags & (1 << isSkinnableBit)) != 0;
+    private void SetFlagBitAndObject<T>(int bit, ref T? obj, T? value)
+    {
+        if (!HasFlags)
+        {
+            return;
+        }
 
-    internal static bool IsGhostBlock(int flags) => flags > -1 && IsGhostBlock_WhenDefined(flags);
-    internal static bool IsFreeBlock(int flags) => flags > -1 && IsFreeBlock_WhenDefined(flags);
-    internal static bool IsGroundBlock(int flags) => flags > -1 && IsGroundBlock_WhenDefined(flags);
-    internal static bool IsWaypointBlock(int flags) => flags > -1 && IsWaypointBlock_WhenDefined(flags);
-    internal static bool IsSkinnableBlock(int flags) => flags > -1 && IsSkinnableBlock_WhenDefined(flags);
+        if (value is null)
+        {
+            Flags &= ~(1 << bit);
+            obj = default;
+            return;
+        }
+
+        Flags |= 1 << bit;
+        obj = value;
+    }
+    
+    public bool IsFlagBitSet(int bit) => IsFlagBitSet(Flags, bit);
+
+    private static bool HasValidFlags(int flags) => flags != -1;
+    private static bool IsFlagBitSet(int flags, int bit) => (flags & (1 << bit)) != 0;
+
+    internal static bool IsGroundBlock_WhenDefined(int flags) => IsFlagBitSet(flags, isGroundBit);
+    internal static bool IsClipBlock_WhenDefined(int flags) => IsFlagBitSet(flags, isClipBit);
+    internal static bool IsSkinnableBlock_WhenDefined(int flags) => IsFlagBitSet(flags, isSkinnableBit);
+    internal static bool IsWaypointBlock_WhenDefined(int flags) => IsFlagBitSet(flags, isWaypointBit);
+    internal static bool IsGhostBlock_WhenDefined(int flags) => IsFlagBitSet(flags, isGhostBit);
+    internal static bool IsFreeBlock_WhenDefined(int flags) => IsFlagBitSet(flags, isFreeBit);
+
+    internal static bool IsGroundBlock(int flags) => HasValidFlags(flags) && IsGroundBlock_WhenDefined(flags);
+    internal static bool IsClipBlock(int flags) => HasValidFlags(flags) && IsClipBlock_WhenDefined(flags);
+    internal static bool IsSkinnableBlock(int flags) => HasValidFlags(flags) && IsSkinnableBlock_WhenDefined(flags);
+    internal static bool IsWaypointBlock(int flags) => HasValidFlags(flags) && IsWaypointBlock_WhenDefined(flags);
+    internal static bool IsGhostBlock(int flags) => HasValidFlags(flags) && IsGhostBlock_WhenDefined(flags);
+    internal static bool IsFreeBlock(int flags) => HasValidFlags(flags) && IsFreeBlock_WhenDefined(flags);
 
     #endregion
 

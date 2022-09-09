@@ -560,11 +560,7 @@ public class GameBoxWriter : BinaryWriter
 
             if (Logger?.IsEnabled(LogLevel.Debug) == true)
             {
-                Logger?.LogDebug("[{className}] {current}/{count} ({time}ms)",
-                    nodeType.FullName!.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::"),
-                    counter + 1,
-                    count,
-                    watch.Elapsed.TotalMilliseconds);
+                Logger?.LogNodeArrayProgress(nodeType.Name, counter + 1, count, watch.Elapsed.TotalMilliseconds);
             }
 
             counter += 1;

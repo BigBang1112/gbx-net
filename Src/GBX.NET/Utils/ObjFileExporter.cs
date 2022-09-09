@@ -4,6 +4,8 @@ namespace GBX.NET.Utils;
 
 public class ObjFileExporter : IModelExporter, IDisposable
 {
+    private static readonly Encoding utf8NoBOM = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
+
     private readonly StreamWriter objWriter;
     private readonly StreamWriter mtlWriter;
     private readonly StringWriter objFaceWriter;
@@ -31,8 +33,8 @@ public class ObjFileExporter : IModelExporter, IDisposable
                            Encoding? encoding = null,
                            bool leaveOpen = false)
     {
-        objWriter = new StreamWriter(objStream, encoding, bufferSize: 1024, leaveOpen);
-        mtlWriter = new StreamWriter(mtlStream, encoding, bufferSize: 1024, leaveOpen);
+        objWriter = new StreamWriter(objStream, encoding ?? utf8NoBOM, bufferSize: 1024, leaveOpen);
+        mtlWriter = new StreamWriter(mtlStream, encoding ?? utf8NoBOM, bufferSize: 1024, leaveOpen);
         objFaceWriter = new StringWriter();
         objUvWriter = new StringWriter();
         

@@ -3,6 +3,7 @@ using System.IO.Compression;
 using System.Security;
 using System.Text;
 using GBX.NET.BlockInfo;
+using GBX.NET.Engines.Plug;
 
 namespace GBX.NET.Engines.Game;
 
@@ -205,7 +206,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     private string? buildVersion;
     private int decoBaseHeightOffset;
     private IList<BotPath>? botPaths;
-    private Dictionary<string, byte[]>? embeddedObjects;
+    private Dictionary<string, byte[]>? embeddedData;
     private byte[]? originalEmbedZip;
     private TimeSpan? dayTime;
     private bool dynamicDaylight;
@@ -740,6 +741,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// All checkpoints and their map coordinates. Used by TMUF and older games.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03043017))]
     public Int3[]? Checkpoints
     {
         get
@@ -758,6 +760,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Reference to the mod (texture/resource pack) used on the map.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03043019))]
     public FileRef? ModPackDesc
     {
         get
@@ -868,6 +871,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// MediaTracker podium.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03043049))]
     public CGameCtnMediaClip? ClipPodium { get => clipPodium; set => clipPodium = value; }
 
     /// <summary>
@@ -1242,16 +1246,16 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     /// <summary>
-    /// Embedded objects in the map. Key defines a relative path. Value is the actual embedded data, usually in GBX format.
+    /// Embedded data in the map. Key defines a relative path to the resource. Value is the actual data, usually in Gbx format, sometimes in image format.
     /// </summary>
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk03043054))]
-    public Dictionary<string, byte[]>? EmbeddedObjects
+    public Dictionary<string, byte[]>? EmbeddedData
     {
         get
         {
             DiscoverChunk<Chunk03043054>();
-            return embeddedObjects;
+            return embeddedData;
         }
     }
 
@@ -1712,38 +1716,155 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     /// <summary>
-    /// Enumerates through all of the embedded objects and yields their header data through the <see cref="GameBox"/> object.
+    /// Enumerates through all of the embedded Gbxs and yields them entirely.
     /// </summary>
-    /// <returns>An enumerable of <see cref="GameBox"/> objects with header data only.</returns>
-    public IEnumerable<GameBox> GetEmbeddedObjects()
+    /// <returns>An enumerable of <see cref="GameBox"/>.</returns>
+    public IEnumerable<GameBox> GetEmbeddedGbxs()
     {
-        if (EmbeddedObjects is null)
+        if (EmbeddedData is null)
         {
             yield break;
         }
 
-        foreach (var embed in EmbeddedObjects)
+        foreach (var embed in EmbeddedData)
         {
             using var ms = new MemoryStream(embed.Value);
-            yield return GameBox.ParseHeader(ms);
+
+            GameBox? gbx;
+
+            try
+            {
+                gbx = GameBox.Parse(ms);
+            }
+            catch
+            {
+                continue;
+            }
+
+            yield return gbx;
         }
     }
 
     /// <summary>
-    /// Extracts embed ZIP file based on the data in <see cref="EmbeddedObjects"/>. File metadata is simplified and the timestamp of extraction is used for all files. Stream must have permission to read.
+    /// Enumerates through all of the embedded Gbxs and yields their header data.
+    /// </summary>
+    /// <returns>An enumerable of <see cref="GameBox"/> with header data only.</returns>
+    public IEnumerable<GameBox> GetEmbeddedGbxHeaders()
+    {
+        if (EmbeddedData is null)
+        {
+            yield break;
+        }
+
+        foreach (var embed in EmbeddedData)
+        {
+            using var ms = new MemoryStream(embed.Value);
+
+            GameBox? gbx;
+
+            try
+            {
+                gbx = GameBox.ParseHeader(ms);
+            }
+            catch
+            {
+                continue;
+            }
+
+            yield return gbx;
+        }
+    }
+
+    /// <summary>
+    /// Enumerates through all of the embedded nodes and yields their header data.
+    /// </summary>
+    /// <returns>An enumerable of nodes with header data only.</returns>
+    public IEnumerable<Node> GetEmbeddedNodeHeaders()
+    {
+        foreach (var gbx in GetEmbeddedGbxHeaders())
+        {
+            if (gbx.Node is not null)
+            {
+                yield return gbx.Node;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Enumerates through all of the embedded items and yields their header data.
+    /// </summary>
+    /// <returns>An enumerable of <see cref="CGameItemModel"/> nodes with header data only.</returns>
+    public IEnumerable<CGameItemModel> GetEmbeddedItemModelHeaders()
+    {
+        foreach (var node in GetEmbeddedNodeHeaders())
+        {
+            if (node is CGameItemModel itemModel)
+            {
+                yield return itemModel;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Enumerates through all of the embedded nodes and yields them entirely.
+    /// </summary>
+    /// <returns>An enumerable of nodes.</returns>
+    public IEnumerable<Node> GetEmbeddedNodes()
+    {
+        foreach (var gbx in GetEmbeddedGbxs())
+        {
+            if (gbx.Node is not null)
+            {
+                yield return gbx.Node;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Enumerates through all of the embedded items and yields them entirely.
+    /// </summary>
+    /// <returns>An enumerable of <see cref="CGameItemModel"/> nodes.</returns>
+    public IEnumerable<CGameItemModel> GetEmbeddedItemModels()
+    {
+        foreach (var node in GetEmbeddedNodes())
+        {
+            if (node is CGameItemModel itemModel)
+            {
+                yield return itemModel;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Enumerates through all of the embedded materials and yields them entirely.
+    /// </summary>
+    /// <returns>An enumerable of <see cref="CPlugMaterialUserInst"/> nodes.</returns>
+    public IEnumerable<CPlugMaterialUserInst> GetEmbeddedMaterials()
+    {
+        foreach (var node in GetEmbeddedNodes())
+        {
+            if (node is CPlugMaterialUserInst mat)
+            {
+                yield return mat;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Extracts embed ZIP file based on the data in <see cref="EmbeddedData"/>. File metadata is simplified and the timestamp of extraction is used for all files. Stream must have permission to read.
     /// </summary>
     /// <param name="stream">Stream to write the ZIP data to.</param>
     /// <returns>False if there's nothing to extract, otherwise true.</returns>
     public bool ExtractEmbedZip(Stream stream)
     {
-        if (EmbeddedObjects is null || EmbeddedObjects.Count == 0)
+        if (EmbeddedData is null || EmbeddedData.Count == 0)
         {
             return false;
         }
 
         using var zip = new ZipArchive(stream, ZipArchiveMode.Create, true);
 
-        foreach (var embed in EmbeddedObjects)
+        foreach (var embed in EmbeddedData)
         {
             var entry = zip.CreateEntry(embed.Key.Replace('\\', '/'));
 
@@ -1756,10 +1877,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     /// <summary>
-    /// Extracts embed ZIP file based on the data in <see cref="EmbeddedObjects"/>. File metadata is simplified and the timestamp of extraction is used for all files.
+    /// Extracts embed ZIP file based on the data in <see cref="EmbeddedData"/>. File metadata is simplified and the timestamp of extraction is used for all files.
     /// </summary>
     /// <param name="fileName">New file to write the ZIP data to.</param>
-    /// <exception cref="MemberNullException"><see cref="EmbeddedObjects"/> is null.</exception>
+    /// <exception cref="MemberNullException"><see cref="EmbeddedData"/> is null.</exception>
     public void ExtractEmbedZip(string fileName)
     {
         using var fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
@@ -1827,7 +1948,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <param name="fileOnDisk">File to embed located on the disk.</param>
     /// <param name="relativeDirectory">Relative directory where the embed should be represented in the game, usually starts with <c>"Items/..."</c>, <c>"Blocks/..."</c> or <c>"Materials/..."</c>.</param>
     /// <param name="keepIcon">Keep the icon (chunk 0x2E001004) of the embedded GBX. Increases total embed size that is technically not needed.</param>
-    /// <exception cref="MemberNullException"><see cref="EmbeddedObjects"/> is null.</exception>
+    /// <exception cref="MemberNullException"><see cref="EmbeddedData"/> is null.</exception>
     /// <exception cref="ArgumentException"><paramref name="fileOnDisk"/> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by System.IO.Path.InvalidPathChars.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="fileOnDisk"/> is null.</exception>
     /// <exception cref="PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length.</exception>
@@ -1839,8 +1960,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <exception cref="SecurityException">The caller does not have the required permission.</exception>
     public void ImportFileToEmbed(string fileOnDisk, string relativeDirectory, bool keepIcon = false)
     {
-        if (EmbeddedObjects is null)
-            throw new MemberNullException(nameof(EmbeddedObjects));
+        if (EmbeddedData is null)
+            throw new MemberNullException(nameof(EmbeddedData));
 
         var data = File.ReadAllBytes(fileOnDisk);
 
@@ -1849,7 +1970,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             RemoveIconFromGbxData(ref data);
         }
 
-        EmbeddedObjects[relativeDirectory + "/" + Path.GetFileName(fileOnDisk)] = data;
+        EmbeddedData[relativeDirectory + "/" + Path.GetFileName(fileOnDisk)] = data;
     }
 
     private static void RemoveIconFromGbxData(ref byte[] data)
@@ -3129,7 +3250,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x028 chunk (old realtime thumbnail + comments)
     /// </summary>
-    [Chunk(0x03043028, "comments")]
+    [Chunk(0x03043028, "old realtime thumbnail + comments")]
     public class Chunk03043028 : Chunk03043027
     {
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
@@ -4286,7 +4407,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             var embedded = r.ReadArray(r => r.ReadIdent());
 
-            n.embeddedObjects = new Dictionary<string, byte[]>();
+            n.embeddedData = new Dictionary<string, byte[]>();
             n.originalEmbedZip = r.ReadBytes();
 
             if (n.originalEmbedZip.Length > 0)
@@ -4300,7 +4421,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     using var entryDataStream = new MemoryStream();
 
                     entryStream.CopyTo(entryDataStream);
-                    n.embeddedObjects[entry.Name] = entryDataStream.ToArray();
+                    n.embeddedData[entry.Name] = entryDataStream.ToArray();
                 }
             }
 
@@ -4319,20 +4440,18 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             var embedded = new List<Ident>();
 
-            foreach (var embed in n.GetEmbeddedObjects())
+            foreach (var item in n.GetEmbeddedItemModelHeaders())
             {
-                if (embed is not GameBox<CGameItemModel> gbxItem)
+                var gbxItem = item.GetGbx() ?? throw new ThisShouldNotHappenException();
+
+                if (item.Author is null)
                 {
                     continue;
                 }
 
                 if (gbxItem.FileName is null)
                 {
-                    if (gbxItem.Node.Author is not null)
-                    {
-                        embedded.Add(gbxItem.Node.Author);
-                    }
-
+                    embedded.Add(item.Author);
                     continue;
                 }
 
@@ -4349,11 +4468,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     }
                 }
 
-                var item = gbxItem.Node;
-
-                embedded.Add(new Ident(id,
-                    item.Author?.Collection ?? new Id(),
-                    item.Author?.Author ?? string.Empty));
+                embedded.Add(item.Author with { Id = id });
             }
 
             writer.WriteList(embedded, (x, w) => w.Write(x));

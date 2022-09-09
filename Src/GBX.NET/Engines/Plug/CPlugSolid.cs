@@ -237,18 +237,7 @@ public class CPlugSolid : CPlug
         public float U02;
         public float U03;
         public float U04;
-        public float U05;
-        public float U06;
-        public float U07;
-        public float U08;
-        public float U09;
-        public float U10;
-        public float U11;
-        public float U12;
-        public float U13;
-        public float U14;
-        public float U15;
-        public float U16;
+        public Iso4 U05;
 
         public override void ReadWrite(CPlugSolid n, GameBoxReaderWriter rw)
         {
@@ -257,19 +246,7 @@ public class CPlugSolid : CPlug
             rw.Single(ref U03);
             rw.Single(ref U04);
 
-            rw.Single(ref U05); // 3x3 matrix
-            rw.Single(ref U06);
-            rw.Single(ref U07);
-            rw.Single(ref U08);
-            rw.Single(ref U09);
-            rw.Single(ref U10);
-            rw.Single(ref U11);
-            rw.Single(ref U12);
-            rw.Single(ref U13);
-
-            rw.Single(ref U14);
-            rw.Single(ref U15);
-            rw.Single(ref U16);
+            rw.Iso4(ref U05);
         }
     }
 
