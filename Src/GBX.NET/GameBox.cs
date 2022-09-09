@@ -334,7 +334,7 @@ public partial class GameBox
         if (NodeCacheManager.Mappings.TryGetValue(classID.GetValueOrDefault(), out uint newerClassID))
             modernID = newerClassID;
 
-        System.Diagnostics.Debug.WriteLine("GetGameBoxType: " + modernID.ToString("x8"));
+        Debug.WriteLine("GetGameBoxType: " + modernID.ToString("x8"));
 
         // This should be optimized
         var availableClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
@@ -348,7 +348,7 @@ public partial class GameBox
     }
 
     /// <summary>
-    /// Decompresses the body part of the GBX file, also setting the header parameter so that the outputted GBX file is compatible with the game. If the file is already detected decompressed, the input is just copied over to the output.
+    /// Decompresses the body part of the GBX file, also setting the header parameter so that the outputted GBX file is compatible with the game. If the file is already detected decompressed, the input is just copied over to the output and false is returned, otherwise true.
     /// </summary>
     /// <param name="input">GBX stream to decompress.</param>
     /// <param name="output">Output GBX stream in the decompressed form.</param>
@@ -357,13 +357,13 @@ public partial class GameBox
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="VersionNotSupportedException">GBX files below version 3 are not supported.</exception>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    public static void Decompress(Stream input, Stream output)
+    public static bool Decompress(Stream input, Stream output)
     {
-        GbxCompressor.Decompress(input, output);
+        return GbxCompressor.Decompress(input, output);
     }
 
     /// <summary>
-    /// Decompresses the body part of the GBX file, also setting the header parameter so that the outputted GBX file is compatible with the game. If the file is already detected decompressed, the input is just copied over to the output.
+    /// Decompresses the body part of the GBX file, also setting the header parameter so that the outputted GBX file is compatible with the game. If the file is already detected decompressed, the input is just copied over to the output and false is returned, otherwise true.
     /// </summary>
     /// <param name="inputFileName">GBX file to decompress.</param>
     /// <param name="output">Output GBX stream in the decompressed form.</param>
@@ -379,14 +379,14 @@ public partial class GameBox
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="VersionNotSupportedException">GBX files below version 3 are not supported.</exception>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    public static void Decompress(string inputFileName, Stream output)
+    public static bool Decompress(string inputFileName, Stream output)
     {
         using var fs = File.OpenRead(inputFileName);
-        Decompress(fs, output);
+        return Decompress(fs, output);
     }
 
     /// <summary>
-    /// Decompresses the body part of the GBX file, also setting the header parameter so that the outputted GBX file is compatible with the game. If the file is already detected decompressed, the input is just copied over to the output.
+    /// Decompresses the body part of the GBX file, also setting the header parameter so that the outputted GBX file is compatible with the game. If the file is already detected decompressed, the input is just copied over to the output and false is returned, otherwise true.
     /// </summary>
     /// <param name="input">GBX stream to decompress.</param>
     /// <param name="outputFileName">Output GBX file in the decompressed form.</param>
@@ -401,14 +401,14 @@ public partial class GameBox
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="VersionNotSupportedException">GBX files below version 3 are not supported.</exception>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    public static void Decompress(Stream input, string outputFileName)
+    public static bool Decompress(Stream input, string outputFileName)
     {
         using var fs = File.Create(outputFileName);
-        Decompress(input, fs);
+        return Decompress(input, fs);
     }
 
     /// <summary>
-    /// Decompresses the body part of the GBX file, also setting the header parameter so that the outputted GBX file is compatible with the game. If the file is already detected decompressed, the input is just copied over to the output.
+    /// Decompresses the body part of the GBX file, also setting the header parameter so that the outputted GBX file is compatible with the game. If the file is already detected decompressed, the input is just copied over to the output and false is returned, otherwise true.
     /// </summary>
     /// <param name="inputFileName">GBX file to decompress.</param>
     /// <param name="outputFileName">Output GBX file in the decompressed form.</param>
@@ -424,34 +424,34 @@ public partial class GameBox
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="VersionNotSupportedException">GBX files below version 3 are not supported.</exception>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    public static void Decompress(string inputFileName, string outputFileName)
+    public static bool Decompress(string inputFileName, string outputFileName)
     {
         using var fsInput = File.OpenRead(inputFileName);
         using var fsOutput = File.Create(outputFileName);
-        Decompress(fsInput, fsOutput);
+        return Decompress(fsInput, fsOutput);
     }
     
-    public static void Compress(Stream input, Stream output)
+    public static bool Compress(Stream input, Stream output)
     {
-        GbxCompressor.Compress(input, output);
+        return GbxCompressor.Compress(input, output);
     }
-
-    public static void Compress(string inputFileName, Stream output)
+    
+    public static bool Compress(string inputFileName, Stream output)
     {
         using var fs = File.OpenRead(inputFileName);
-        Compress(fs, output);
+        return Compress(fs, output);
     }
 
-    public static void Compress(Stream input, string outputFileName)
+    public static bool Compress(Stream input, string outputFileName)
     {
         using var fs = File.Create(outputFileName);
-        Compress(input, fs);
+        return Compress(input, fs);
     }
 
-    public static void Compress(string inputFileName, string outputFileName)
+    public static bool Compress(string inputFileName, string outputFileName)
     {
         using var fsInput = File.OpenRead(inputFileName);
         using var fsOutput = File.Create(outputFileName);
-        Compress(fsInput, fsOutput);
+        return Compress(fsInput, fsOutput);
     }
 }
