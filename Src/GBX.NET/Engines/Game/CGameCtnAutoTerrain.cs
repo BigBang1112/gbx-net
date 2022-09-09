@@ -1,4 +1,4 @@
-﻿namespace GBX.NET.Engines.GameData;
+﻿namespace GBX.NET.Engines.Game;
 
 /// <remarks>ID: 0x03120000</remarks>
 [Node(0x03120000)]
@@ -8,9 +8,11 @@ public class CGameCtnAutoTerrain : CMwNod
     private CGameCtnZoneGenealogy? genealogy;
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03120001))]
     public Int3 Offset { get => offset; set => offset = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03120001))]
     public CGameCtnZoneGenealogy? Genealogy { get => genealogy; set => genealogy = value; }
 
     protected CGameCtnAutoTerrain()

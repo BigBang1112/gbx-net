@@ -7,9 +7,11 @@ public class CGameCtnZone : CMwNod
     private string? surfaceId;
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0305C003))]
     public string? ZoneId { get => zoneId; set => zoneId = value; }
     
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0305C003))]
     public string? SurfaceId { get => surfaceId; set => surfaceId = value; }
 
     protected CGameCtnZone()
@@ -34,6 +36,37 @@ public class CGameCtnZone : CMwNod
             rw.Id(ref n.zoneId);
             rw.Id(ref n.surfaceId);
             rw.Int32(ref U02);
+        }
+    }
+
+    #endregion
+
+    #region 0x004 skippable chunk
+
+    /// <summary>
+    /// CGameCtnZone 0x004 skippable chunk
+    /// </summary>
+    [Chunk(0x0305C004), IgnoreChunk]
+    public class Chunk0305C004 : SkippableChunk<CGameCtnZone>
+    {
+        
+    }
+
+    #endregion
+
+    #region 0x005 chunk
+
+    /// <summary>
+    /// CGameCtnZone 0x005 chunk
+    /// </summary>
+    [Chunk(0x0305C005)]
+    public class Chunk0305C005 : Chunk<CGameCtnZone>
+    {
+        public bool U01;
+
+        public override void ReadWrite(CGameCtnZone n, GameBoxReaderWriter rw)
+        {
+            rw.Boolean(ref U01);
         }
     }
 

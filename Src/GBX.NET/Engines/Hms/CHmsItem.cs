@@ -4,27 +4,16 @@
 [Node(0x06003000)]
 public class CHmsItem : CMwNod
 {
-    #region Fields
-
     private CPlugSolid solid;
 
-    #endregion
-
-    #region Properties
-
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk06003001))]
     public CPlugSolid Solid { get => solid; set => solid = value; }
-
-    #endregion
-
-    #region Constructors
 
     protected CHmsItem()
     {
         solid = null!;
     }
-
-    #endregion
 
     #region Chunks
 

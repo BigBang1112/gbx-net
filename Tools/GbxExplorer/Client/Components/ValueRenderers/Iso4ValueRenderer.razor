@@ -1,0 +1,139 @@
+﻿@using GBX.NET
+
+@inherits ValueRenderer
+@attribute [AppliesForType(typeof(Iso4))]
+
+@if (Value is null)
+{
+    <span class="element-box hoverable" data-title="The value doesn't exist. Click to create a value." @onclick="InitValue">null</span>
+
+    @if (nullifiedValue is not null)
+    {
+        <span class="element-box hoverable utility" data-title="Revert value that was there before." @onclick="Revert">Revert</span>
+    }
+}
+else if (Value is Iso4 iso4)
+{
+    var cannotWrite = Property?.CannotWrite() == true;
+
+    <div style="display:grid;grid-template-columns: auto auto auto;gap:0.2rem">
+        <input type="text" @bind="XX" disabled="@cannotWrite" style="min-width: 4ch; width: @(XX.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="XY" disabled="@cannotWrite" style="min-width: 4ch; width: @(XY.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="XZ" disabled="@cannotWrite" style="min-width: 4ch; width: @(XZ.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="YX" disabled="@cannotWrite" style="min-width: 4ch; width: @(YX.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="YY" disabled="@cannotWrite" style="min-width: 4ch; width: @(YY.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="YZ" disabled="@cannotWrite" style="min-width: 4ch; width: @(YZ.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="ZX" disabled="@cannotWrite" style="min-width: 4ch; width: @(ZX.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="ZY" disabled="@cannotWrite" style="min-width: 4ch; width: @(ZY.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="ZZ" disabled="@cannotWrite" style="min-width: 4ch; width: @(ZZ.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="TX" disabled="@cannotWrite" style="min-width: 4ch; width: @(TX.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="TY" disabled="@cannotWrite" style="min-width: 4ch; width: @(TY.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="TZ" disabled="@cannotWrite" style="min-width: 4ch; width: @(TZ.ToString().Length)ch;" oninput="onInputText(this)" />
+    </div>
+    
+    @if (!cannotWrite && IsNullable)
+    {
+        <span class="element-box hoverable utility" data-title="Set this member to null." @onclick="Nullify">Nullify</span>
+    }
+}
+else
+{
+    <span>Error: value is not Iso4</span>
+}
+
+@code {
+    private object? nullifiedValue;
+    
+    public override bool ShowPropertyInTree(PropertyInfo prop) => false;
+
+    public float XX
+    {
+        get => Value is Iso4 iso4 ? iso4.XX : 0;
+        set => SetAndUpdate(Value is Iso4 iso4 ? iso4 with { XX = value } : new Iso4(value, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+    }
+    
+    public float XY
+    {
+        get => Value is Iso4 iso4 ? iso4.XY : 0;
+        set => SetAndUpdate(Value is Iso4 iso4 ? iso4 with { XY = value } : new Iso4(0, value, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+    }
+
+    public float XZ
+    {
+        get => Value is Iso4 iso4 ? iso4.XZ : 0;
+        set => SetAndUpdate(Value is Iso4 iso4 ? iso4 with { XZ = value } : new Iso4(0, 0, value, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+    }
+
+    public float YX
+    {
+        get => Value is Iso4 iso4 ? iso4.YX : 0;
+        set => SetAndUpdate(Value is Iso4 iso4 ? iso4 with { YX = value } : new Iso4(0, 0, 0, value, 0, 0, 0, 0, 0, 0, 0, 0));
+    }
+
+    public float YY
+    {
+        get => Value is Iso4 iso4 ? iso4.YY : 0;
+        set => SetAndUpdate(Value is Iso4 iso4 ? iso4 with { YY = value } : new Iso4(0, 0, 0, 0, value, 0, 0, 0, 0, 0, 0, 0));
+    }
+
+    public float YZ
+    {
+        get => Value is Iso4 iso4 ? iso4.YZ : 0;
+        set => SetAndUpdate(Value is Iso4 iso4 ? iso4 with { YZ = value } : new Iso4(0, 0, 0, 0, 0, value, 0, 0, 0, 0, 0, 0));
+    }
+
+    public float ZX
+    {
+        get => Value is Iso4 iso4 ? iso4.ZX : 0;
+        set => SetAndUpdate(Value is Iso4 iso4 ? iso4 with { ZX = value } : new Iso4(0, 0, 0, 0, 0, 0, value, 0, 0, 0, 0, 0));
+    }
+
+    public float ZY
+    {
+        get => Value is Iso4 iso4 ? iso4.ZY : 0;
+        set => SetAndUpdate(Value is Iso4 iso4 ? iso4 with { ZY = value } : new Iso4(0, 0, 0, 0, 0, 0, 0, value, 0, 0, 0, 0));
+    }
+
+    public float ZZ
+    {
+        get => Value is Iso4 iso4 ? iso4.ZZ : 0;
+        set => SetAndUpdate(Value is Iso4 iso4 ? iso4 with { ZZ = value } : new Iso4(0, 0, 0, 0, 0, 0, 0, 0, value, 0, 0, 0));
+    }
+
+    public float TX
+    {
+        get => Value is Iso4 iso4 ? iso4.TX : 0;
+        set => SetAndUpdate(Value is Iso4 iso4 ? iso4 with { TX = value } : new Iso4(0, 0, 0, 0, 0, 0, 0, 0, 0, value, 0, 0));
+    }
+
+    public float TY
+    {
+        get => Value is Iso4 iso4 ? iso4.TY : 0;
+        set => SetAndUpdate(Value is Iso4 iso4 ? iso4 with { TY = value } : new Iso4(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, value, 0));
+    }
+
+    public float TZ
+    {
+        get => Value is Iso4 iso4 ? iso4.TZ : 0;
+        set => SetAndUpdate(Value is Iso4 iso4 ? iso4 with { TZ = value } : new Iso4(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, value));
+    }
+
+    private void InitValue()
+    {
+        SetAndUpdate(default(Iso4));
+    }
+
+    private void Nullify()
+    {
+        nullifiedValue = Value;
+        SetAndUpdate(null);
+        LogNullified(nullifiedValue);
+    }
+
+    private void Revert()
+    {
+        SetAndUpdate(nullifiedValue);
+        LogReversion(nullifiedValue);
+    }
+}
+

@@ -8,14 +8,8 @@
 [NodeExtension("GameCtnMediaBlockColoringBase")]
 public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
-    #region Fields
-
     private IList<Key> keys;
     private int baseIndex;
-
-    #endregion
-
-    #region Properties
 
     IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
     {
@@ -24,31 +18,17 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameC
     }
 
     [NodeMember]
-    public IList<Key> Keys
-    {
-        get => keys;
-        set => keys = value;
-    }
+    [AppliedWithChunk(typeof(Chunk03172000))]
+    public IList<Key> Keys { get => keys; set => keys = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    public int BaseIndex
-    {
-        get => baseIndex;
-        set => baseIndex = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk03172000), sinceVersion: 1)]
+    public int BaseIndex { get => baseIndex; set => baseIndex = value; }
 
     protected CGameCtnMediaBlockColoringBase()
     {
-        keys = null!;
+        keys = Array.Empty<Key>();
     }
-
-    #endregion
-
-    #region Chunks
 
     #region 0x000 chunk
 
@@ -62,11 +42,7 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameC
 
         public int U01;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnMediaBlockColoringBase n, GameBoxReaderWriter rw)
         {
@@ -81,8 +57,6 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameC
             }
         }
     }
-
-    #endregion
 
     #endregion
 }

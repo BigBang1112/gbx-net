@@ -8,47 +8,26 @@
 [NodeExtension("GameCtnMediaBlockManialink")]
 public class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {
-    #region Fields
-
     private TimeSingle start;
     private TimeSingle end = TimeSingle.FromSeconds(3);
     private string manialinkURL;
 
-    #endregion
-
-    #region Properties
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0312A001))]
+    public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    public TimeSingle Start
-    {
-        get => start;
-        set => start = value;
-    }
+    [AppliedWithChunk(typeof(Chunk0312A001))]
+    public TimeSingle End { get => end; set => end = value; }
 
     [NodeMember]
-    public TimeSingle End
-    {
-        get => end;
-        set => end = value;
-    }
-
-    [NodeMember]
-    public string ManialinkURL
-    {
-        get => manialinkURL;
-        set => manialinkURL = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk0312A001))]
+    public string ManialinkURL { get => manialinkURL; set => manialinkURL = value; }
 
     protected CGameCtnMediaBlockManialink()
     {
-        manialinkURL = null!;
+        manialinkURL = "";
     }
-
-    #endregion
 
     #region Chunks
 
@@ -61,11 +40,7 @@ public class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, CGameCtnMediaBloc
     {
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnMediaBlockManialink n, GameBoxReaderWriter rw)
         {

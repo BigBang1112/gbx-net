@@ -50,55 +50,85 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
 
     #region Properties
 
-    public HeaderChunkSet HeaderChunks { get; }
+    public HeaderChunkSet HeaderChunks { get; } = new();
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E001002))]
+    [AppliedWithChunk(typeof(Chunk2E001003))]
+    [AppliedWithChunk(typeof(Chunk2E00100B))]
     public Ident Author { get => author; set => author = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E001003))]
+    [AppliedWithChunk(typeof(Chunk2E001009))]
     public string PageName { get => pageName; set => pageName = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk2E001003), sinceVersion: 3)]
     public ECollectorFlags Flags { get => flags; set => flags = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E001003), sinceVersion: 3)]
+    [AppliedWithChunk(typeof(Chunk2E001007))]
+    [AppliedWithChunk(typeof(Chunk2E001011))]
     public int CatalogPosition { get => catalogPosition; set => catalogPosition = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E001003), sinceVersion: 7)]
+    [AppliedWithChunk(typeof(Chunk2E00100C))]
     public string? Name { get => name; set => name = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E001003), sinceVersion: 8)]
+    [AppliedWithChunk(typeof(Chunk2E001011), sinceVersion: 1)]
     public EProdState? ProdState { get => prodState; set => prodState = value; }
 
+    /// <summary>
+    /// Icon of the collector in 2D pixel array format from all versions except icons created after April 2022 in TM2020.
+    /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk2E001004))]
     public Color[,]? Icon { get; set; }
 
+    /// <summary>
+    /// Icon of the collector in WebP format from TM2020 icons since April 2022 update.
+    /// </summary>
     [NodeMember]
     [WebpData]
+    [AppliedWithChunk(typeof(Chunk2E001004))]
     public byte[]? IconWebP { get; set; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk2E001006H))]
     public long FileTime { get => fileTime; set => fileTime = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E001009))]
     public CMwNod? IconFid { get; set; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E00100D))]
     public string? Description { get => description; set => description = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E00100E))]
     public bool IconUseAutoRender { get => iconUseAutoRender; set => iconUseAutoRender = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E00100E))]
     public int IconQuarterRotationY { get => iconQuarterRotationY; set => iconQuarterRotationY = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E001008))]
+    [AppliedWithChunk(typeof(Chunk2E001010))]
     public string? SkinDirectory { get => skinDirectory; set => skinDirectory = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E001011))]
     public bool IsInternal { get => isInternal; set => isInternal = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E001011))]
     public bool IsAdvanced { get => isAdvanced; set => isAdvanced = value; }
 
     #endregion
@@ -107,10 +137,8 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
 
     protected CGameCtnCollector()
     {
-        HeaderChunks = new HeaderChunkSet();
-
         author = Ident.Empty;
-        pageName = null!;
+        pageName = "";
     }
 
     #endregion
@@ -292,7 +320,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
 
     #endregion
 
-    #region 0x006 body chunk
+    #region 0x006 chunk
 
     /// <summary>
     /// CGameCtnCollector 0x006 chunk
@@ -506,11 +534,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
     {
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {

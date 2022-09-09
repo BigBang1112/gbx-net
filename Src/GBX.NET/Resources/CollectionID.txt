@@ -22,7 +22,7 @@
 23 Lagoon256
 24 Stadium4
 25 Stadium256
-26 Stadium
+26 Stadium2020
 100 History
 101 Society
 102 Galaxy

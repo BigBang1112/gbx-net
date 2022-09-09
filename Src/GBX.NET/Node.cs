@@ -118,10 +118,7 @@ public abstract class Node
 
     private static uint GetNodeInfoFromClassId(GameBoxReader r, uint? classId, out Node? node, out Type nodeType)
     {
-        if (classId is null)
-        {
-            classId = r.ReadUInt32();
-        }
+        classId ??= r.ReadUInt32();
 
         if (classId == uint.MaxValue)
         {
@@ -705,7 +702,7 @@ public abstract class Node
         {
             counter++;
             PrepareToWriteChunk(w.Logger, counter, chunk);
-            WriteChunk(chunk, w, w.Logger);
+            WriteChunk(chunk, w);
         }
 
         WriteFacade(w);
@@ -769,7 +766,7 @@ public abstract class Node
         }
     }
 
-    private void WriteChunk(IReadableWritableChunk chunk, GameBoxWriter w, ILogger? logger)
+    private void WriteChunk(IReadableWritableChunk chunk, GameBoxWriter w)
     {
         using var ms = new MemoryStream();
 

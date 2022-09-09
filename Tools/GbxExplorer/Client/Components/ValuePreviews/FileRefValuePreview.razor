@@ -1,0 +1,112 @@
+﻿@using GBX.NET
+@using GBX.NET.Attributes
+@using System.Drawing
+
+@inject IJSRuntime JS
+
+@inherits ValuePreview
+@attribute [AppliesForType(typeof(FileRef))]
+
+@if (Value is not FileRef fileRef)
+{
+    <span style="color:gray">null</span>
+
+    return;
+}
+
+<div style="display:flex;gap:0.5rem;margin-top:0.5rem">
+    <div>Version:</div>
+    <input type="text"
+           @bind="Version"
+           style="width: 3ch" />
+</div>
+
+<div style="margin-top:0.5rem">File path:</div>
+<input type="text"
+       @bind="FilePath"
+       placeholder="(empty)"
+       style="width: 95%" />
+
+<div style="margin-top:0.5rem">Checksum:</div>
+<input type="text"
+       @bind="Checksum"
+       disabled="true"
+       placeholder="(none)"
+       style="width: 95%" />
+
+<div style="margin-top:0.5rem">Locator URL:</div>
+<input type="text"
+       @bind="LocatorUrl"
+       placeholder="(empty)"
+       style="width: 95%" />
+
+@code {
+    public byte Version
+    {
+        get => (Value as FileRef)?.Version ?? 0;
+        set
+        {
+            if (Value is not FileRef fileRef)
+            {
+                SetValue(new FileRef(value, FileRef.DefaultChecksum, "", ""));
+            }
+            else
+            {
+                SetValue(fileRef with { Version = value });
+            }
+        }
+    }
+
+    public string FilePath
+    {
+        get => (Value as FileRef)?.FilePath ?? "";
+        set
+        {
+            if (Value is not FileRef fileRef)
+            {
+                SetValue(new FileRef(3, FileRef.DefaultChecksum, value, ""));
+            }
+            else
+            {
+                SetValue(fileRef with { FilePath = value });
+            }
+        }
+    }
+
+    public string Checksum
+    {
+        get => Value is FileRef fileRef && fileRef.Checksum is not null ? BitConverter.ToString(fileRef.Checksum).Replace("-", "") : "";
+        set
+        {
+            var finalBytes = new byte[32];
+            var valBytes = Convert.FromBase64String(value);
+
+            Array.Copy(valBytes, finalBytes, valBytes.Length);
+
+            if (Value is not FileRef fileRef)
+            {
+                SetValue(new FileRef(3, finalBytes, "", ""));
+            }
+            else
+            {
+                SetValue(fileRef with { Checksum = finalBytes });
+            }
+        }
+    }
+
+    public string LocatorUrl
+    {
+        get => (Value as FileRef)?.LocatorUrl ?? "";
+        set
+        {
+            if (Value is not FileRef fileRef)
+            {
+                SetValue(new FileRef(3, FileRef.DefaultChecksum, "", value));
+            }
+            else
+            {
+                SetValue(fileRef with { LocatorUrl = value });
+            }
+        }
+    }
+}

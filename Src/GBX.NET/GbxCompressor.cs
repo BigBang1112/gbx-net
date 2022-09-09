@@ -3,7 +3,7 @@
 internal static class GbxCompressor
 {
     /// <summary>
-    /// Decompresses the body part of the GBX file, also setting the header parameter so that the outputted GBX file is compatible with the game. If the file is already detected decompressed, the input is just copied over to the output.
+    /// Decompresses the body part of the GBX file, also setting the header parameter so that the outputted GBX file is compatible with the game. If the file is already detected decompressed, the input is just copied over to the output and false is returned, otherwise true.
     /// </summary>
     /// <param name="input">GBX stream to decompress.</param>
     /// <param name="output">Output GBX stream in the decompressed form.</param>
@@ -12,7 +12,7 @@ internal static class GbxCompressor
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="VersionNotSupportedException">GBX files below version 3 are not supported.</exception>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
-    public static void Decompress(Stream input, Stream output)
+    public static bool Decompress(Stream input, Stream output)
     {
         using var r = new GameBoxReader(input);
         using var w = new GameBoxWriter(output);
@@ -27,7 +27,8 @@ internal static class GbxCompressor
         {
             w.Write(compressedBody);
             input.CopyTo(output);
-            return;
+            
+            return false;
         }
 
         w.Write('U');
@@ -40,9 +41,11 @@ internal static class GbxCompressor
         var buffer = new byte[uncompressedSize];
         Lzo.Decompress(compressedData, buffer);
         w.Write(buffer);
+
+        return true;
     }
 
-    public static void Compress(Stream input, Stream output)
+    public static bool Compress(Stream input, Stream output)
     {
         using var r = new GameBoxReader(input);
         using var w = new GameBoxWriter(output);
@@ -55,7 +58,8 @@ internal static class GbxCompressor
         if (compressedBody != 'U')
         {
             input.CopyTo(output);
-            return;
+            
+            return false;
         }
 
         w.Write('C');
@@ -68,6 +72,8 @@ internal static class GbxCompressor
         w.Write(uncompressedData.Length);
         w.Write(compressedData.Length);
         w.Write(compressedData);
+
+        return true;
     }
 
     private static void CopyRestOfTheHeader(short version, GameBoxReader r, GameBoxWriter w)

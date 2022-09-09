@@ -28,7 +28,7 @@ public partial class CGameCtnGhost : CGameGhost
     private Vec3? lightTrailColor;
     private int? stuntScore;
     private Checkpoint[]? checkpoints;
-    private int eventsDuration;
+    private TimeInt32 eventsDuration;
     private ControlEntry[]? controlEntries;
     private string? validate_ExeVersion;
     private uint validate_ExeChecksum;
@@ -244,7 +244,7 @@ public partial class CGameCtnGhost : CGameGhost
     [AppliedWithChunk(typeof(Chunk03092011))]
     [AppliedWithChunk(typeof(Chunk03092019))]
     [AppliedWithChunk(typeof(Chunk03092025))]
-    public int EventsDuration
+    public TimeInt32 EventsDuration
     {
         get
         {
@@ -411,7 +411,7 @@ public partial class CGameCtnGhost : CGameGhost
 
     protected CGameCtnGhost()
     {
-        playerModel = null!;
+        playerModel = Ident.Empty;
     }
 
     #endregion
@@ -775,9 +775,9 @@ public partial class CGameCtnGhost : CGameGhost
 
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref n.eventsDuration);
+            rw.TimeInt32(ref n.eventsDuration);
 
-            if (n.eventsDuration == 0 && !Is025Ver1) return;
+            if (n.eventsDuration == TimeInt32.Zero && !Is025Ver1) return;
 
             rw.UInt32(ref U01);
 
@@ -972,7 +972,7 @@ public partial class CGameCtnGhost : CGameGhost
         {
             base.ReadWrite(n, rw);
 
-            if (n.eventsDuration == 0 && !Is025Ver1) return;
+            if (n.eventsDuration == TimeInt32.Zero && !Is025Ver1) return;
 
             rw.Int32(ref U03);
         }
@@ -1202,7 +1202,7 @@ public partial class CGameCtnGhost : CGameGhost
             Chunk019.Is025Ver1 = version >= 1;
             Chunk019.ReadWrite(n, rw);
 
-            if (n.eventsDuration == 0 && !Chunk019.Is025Ver1) return;
+            if (n.eventsDuration == TimeInt32.Zero && !Chunk019.Is025Ver1) return;
 
             rw.Boolean(ref U01);
         }
@@ -1255,7 +1255,7 @@ public partial class CGameCtnGhost : CGameGhost
 
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
-            if (n.EventsDuration == 0)
+            if (n.EventsDuration == TimeInt32.Zero)
             {
                 return;
             }

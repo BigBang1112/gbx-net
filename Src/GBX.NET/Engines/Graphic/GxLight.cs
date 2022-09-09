@@ -4,37 +4,26 @@
 [Node(0x04001000)]
 public class GxLight : CMwNod
 {
-    #region Fields
-
     private float intensity;
     private float shadowIntensity;
     private float flareIntensity;
 
-    #endregion
-
-    #region Properties
-
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk04001008))]
     public float Intensity { get => intensity; set => intensity = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk04001008))]
     public float ShadowIntensity { get => shadowIntensity; set => shadowIntensity = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk04001008))]
     public float FlareIntensity { get => flareIntensity; set => flareIntensity = value; }
-
-    #endregion
-
-    #region Constructors
 
     protected GxLight()
     {
 
     }
-
-    #endregion
-
-    #region Chunks
 
     #region 0x008 chunk
 
@@ -66,8 +55,6 @@ public class GxLight : CMwNod
             rw.Single(ref U07);
         }
     }
-
-    #endregion
 
     #endregion
 }

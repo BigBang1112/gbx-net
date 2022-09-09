@@ -9,10 +9,10 @@ public class CGameItemPlacementParam : CMwNod
 {
     #region Constants
 
-    const int yawOnlyBit = 1;
-    const int notOnObjectBit = 2;
-    const int autoRotationBit = 3;
-    const int switchPivotManuallyBit = 4;
+    private const int yawOnlyBit = 1;
+    private const int notOnObjectBit = 2;
+    private const int autoRotationBit = 3;
+    private const int switchPivotManuallyBit = 4;
 
     #endregion
 
@@ -35,6 +35,8 @@ public class CGameItemPlacementParam : CMwNod
 
     #region Properties
 
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk2E020000))]
     public short Flags
     {
         get
@@ -50,6 +52,7 @@ public class CGameItemPlacementParam : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E020000))]
     public bool YawOnly
     {
         get => (Flags & (1 << yawOnlyBit)) != 0;
@@ -61,6 +64,7 @@ public class CGameItemPlacementParam : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E020000))]
     public bool NotOnObject
     {
         get => (Flags & (1 << notOnObjectBit)) != 0;
@@ -72,6 +76,7 @@ public class CGameItemPlacementParam : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E020000))]
     public bool AutoRotation
     {
         get => (Flags & (1 << autoRotationBit)) != 0;
@@ -83,6 +88,7 @@ public class CGameItemPlacementParam : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E020000))]
     public bool SwitchPivotManually
     {
         get => (Flags & (1 << switchPivotManuallyBit)) != 0;
@@ -94,6 +100,7 @@ public class CGameItemPlacementParam : CMwNod
     }
 
     [NodeMember(ExactName = "Cube_Center")]
+    [AppliedWithChunk(typeof(Chunk2E020000))]
     public Vec3 CubeCenter
     {
         get
@@ -109,6 +116,7 @@ public class CGameItemPlacementParam : CMwNod
     }
 
     [NodeMember(ExactName = "Cube_Size")]
+    [AppliedWithChunk(typeof(Chunk2E020000))]
     public float CubeSize
     {
         get
@@ -124,6 +132,7 @@ public class CGameItemPlacementParam : CMwNod
     }
 
     [NodeMember(ExactName = "GridSnap_HStep")]
+    [AppliedWithChunk(typeof(Chunk2E020000))]
     public float GridSnapHStep
     {
         get
@@ -139,6 +148,7 @@ public class CGameItemPlacementParam : CMwNod
     }
 
     [NodeMember(ExactName = "GridSnap_VStep")]
+    [AppliedWithChunk(typeof(Chunk2E020000))]
     public float GridSnapVStep
     {
         get
@@ -154,6 +164,7 @@ public class CGameItemPlacementParam : CMwNod
     }
 
     [NodeMember(ExactName = "GridSnap_HOffset")]
+    [AppliedWithChunk(typeof(Chunk2E020000))]
     public float GridSnapHOffset
     {
         get
@@ -169,6 +180,7 @@ public class CGameItemPlacementParam : CMwNod
     }
 
     [NodeMember(ExactName = "GridSnap_VOffset")]
+    [AppliedWithChunk(typeof(Chunk2E020000))]
     public float GridSnapVOffset
     {
         get
@@ -184,6 +196,7 @@ public class CGameItemPlacementParam : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E020000))]
     public float FlyVStep
     {
         get
@@ -199,6 +212,7 @@ public class CGameItemPlacementParam : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E020000))]
     public float FlyVOffset
     {
         get
@@ -214,6 +228,7 @@ public class CGameItemPlacementParam : CMwNod
     }
 
     [NodeMember(ExactName = "PivotSnap_Distance")]
+    [AppliedWithChunk(typeof(Chunk2E020000))]
     public float PivotSnapDistance
     {
         get
@@ -229,6 +244,7 @@ public class CGameItemPlacementParam : CMwNod
     }
 
     [NodeMember(ExactName = "Pivots_Positions")]
+    [AppliedWithChunk(typeof(Chunk2E020001))]
     public Vec3[]? PivotPositions
     {
         get
@@ -244,6 +260,7 @@ public class CGameItemPlacementParam : CMwNod
     }
 
     [NodeMember(ExactName = "PivotRotations")]
+    [AppliedWithChunk(typeof(Chunk2E020001))]
     public Quat[]? PivotRotations
     {
         get
@@ -314,6 +331,32 @@ public class CGameItemPlacementParam : CMwNod
             rw.Array<Vec3>(ref n.pivotPositions);
             rw.Array<Quat>(ref n.pivotRotations);
         }
+    }
+
+    #endregion
+
+    #region 0x003 skippable chunk
+
+    /// <summary>
+    /// CGameItemPlacementParam 0x003 skippable chunk
+    /// </summary>
+    [Chunk(0x2E020003), IgnoreChunk]
+    public class Chunk2E020003 : SkippableChunk<CGameItemPlacementParam>
+    {
+        
+    }
+
+    #endregion
+
+    #region 0x004 skippable chunk
+
+    /// <summary>
+    /// CGameItemPlacementParam 0x004 skippable chunk
+    /// </summary>
+    [Chunk(0x2E020004), IgnoreChunk]
+    public class Chunk2E020004 : SkippableChunk<CGameItemPlacementParam>
+    {
+        
     }
 
     #endregion

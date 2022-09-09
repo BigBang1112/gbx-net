@@ -8,13 +8,7 @@
 [NodeExtension("GameCtnMediaBlockFxBlurDepth")]
 public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
 {
-    #region Fields
-
     private IList<Key> keys;
-
-    #endregion
-
-    #region Properties
 
     IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
     {
@@ -23,24 +17,13 @@ public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, CGame
     }
 
     [NodeMember]
-    public IList<Key> Keys
-    {
-        get => keys;
-        set => keys = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk03081001))]
+    public IList<Key> Keys { get => keys; set => keys = value; }
 
     protected CGameCtnMediaBlockFxBlurDepth()
     {
-        keys = null!;
+        keys = Array.Empty<Key>();
     }
-
-    #endregion
-
-    #region Chunks
 
     #region 0x001 chunk
 
@@ -55,8 +38,6 @@ public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, CGame
             rw.ListKey(ref n.keys!);
         }
     }
-
-    #endregion
 
     #endregion
 }

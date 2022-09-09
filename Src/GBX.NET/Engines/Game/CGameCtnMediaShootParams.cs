@@ -35,30 +35,39 @@ public class CGameCtnMediaShootParams : CMwNod // CGameCtnMediaVideoParams
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03060001))]
     public int VideoFps { get => videoFps; set => videoFps = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03060001))]
     public int SizeX { get => sizeX; set => sizeX = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03060001))]
     public int SizeY { get => sizeY; set => sizeY = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03060001))]
     public bool Hq { get => hq; set => hq = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03060001))]
     public int HqSampleCountPerAxe { get => hqSampleCountPerAxe; set => hqSampleCountPerAxe = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03060001))]
     public bool HqSoftShadows { get => hqSoftShadows; set => hqSoftShadows = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03060001))]
     public bool HqAmbientOcc { get => hqAmbientOcc; set => hqAmbientOcc = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03060001))]
     public bool IsAudioStream { get => isAudioStream; set => isAudioStream = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03060001))]
     public EStereo3d Stereo3d { get => stereo3d; set => stereo3d = value; }
 
     #endregion

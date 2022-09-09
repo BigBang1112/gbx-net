@@ -19,10 +19,8 @@ public partial class CGameGhost : CMwNod
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk0303F003))]
     [AppliedWithChunk(typeof(Chunk0303F005))]
-    public Data? SampleData
-    {
-        get => sampleData.Result;
-    }
+    [AppliedWithChunk(typeof(Chunk0303F006))]
+    public Data? SampleData => sampleData.Result;
 
     protected CGameGhost()
     {

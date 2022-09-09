@@ -8,13 +8,7 @@
 [NodeExtension("GameCtnMediaBlockFxColors")]
 public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
 {
-    #region Fields
-
     private IList<Key> keys;
-
-    #endregion
-
-    #region Properties
 
     IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
     {
@@ -23,34 +17,54 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, CGameCtn
     }
 
     [NodeMember]
-    public IList<Key> Keys
-    {
-        get => keys;
-        set => keys = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    public IList<Key> Keys { get => keys; set => keys = value; }
 
     protected CGameCtnMediaBlockFxColors()
     {
-        keys = null!;
+        keys = Array.Empty<Key>();
     }
-
-    #endregion
 
     #region Chunks
 
-    #region 0x003 chunk
+    #region 0x000 chunk
 
-    [Chunk(0x03080003)]
-    public class Chunk03080003 : Chunk<CGameCtnMediaBlockFxColors>
+    [Chunk(0x03080000)]
+    public class Chunk03080000 : Chunk<CGameCtnMediaBlockFxColors>
     {
         public override void ReadWrite(CGameCtnMediaBlockFxColors n, GameBoxReaderWriter rw)
         {
             rw.ListKey(ref n.keys!);
         }
+    }
+
+    #endregion
+
+    #region 0x001 chunk
+
+    [Chunk(0x03080001)]
+    public class Chunk03080001 : Chunk03080000
+    {
+
+    }
+
+    #endregion
+
+    #region 0x002 chunk
+
+    [Chunk(0x03080002)]
+    public class Chunk03080002 : Chunk03080000
+    {
+
+    }
+
+    #endregion
+
+    #region 0x003 chunk
+
+    [Chunk(0x03080003)]
+    public class Chunk03080003 : Chunk03080000
+    {
+        
     }
 
     #endregion

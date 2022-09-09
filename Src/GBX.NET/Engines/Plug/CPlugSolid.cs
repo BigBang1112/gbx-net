@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Utils;
+using System.Text;
 
 namespace GBX.NET.Engines.Plug;
 
@@ -14,6 +15,7 @@ public class CPlugSolid : CPlug
     private GameBoxRefTable.File? treeFile;
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0900500D))]
     public CPlug? Tree
     {
         get => tree = GetNodeFromRefTable(tree, treeFile) as CPlug;
@@ -31,14 +33,26 @@ public class CPlugSolid : CPlug
     /// <param name="objStream">Stream to write OBJ content into.</param>
     /// <param name="mtlStream">Stream to write MTL content into.</param>
     /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>
-    public void ExportToObj(Stream objStream, Stream mtlStream, string? gameDataFolderPath = null)
+    /// <param name="encoding">Encoding to use.</param>
+    /// <param name="leaveOpen">If to keep the streams open.</param>
+    public void ExportToObj(Stream objStream, 
+                            Stream mtlStream, 
+                            string? gameDataFolderPath = null,
+                            Encoding? encoding = null,
+                            bool leaveOpen = false)
     {
         if (Tree is not CPlugTree tree)
         {
             return;
         }
 
-        using var exporter = new ObjFileExporter(objStream, mtlStream, mergeVerticesDigitThreshold: null, gameDataFolderPath);
+        using var exporter = new ObjFileExporter(
+            objStream,
+            mtlStream,
+            mergeVerticesDigitThreshold: null,
+            gameDataFolderPath,
+            encoding,
+            leaveOpen);
         
         exporter.Export(tree);
     }
@@ -223,18 +237,7 @@ public class CPlugSolid : CPlug
         public float U02;
         public float U03;
         public float U04;
-        public float U05;
-        public float U06;
-        public float U07;
-        public float U08;
-        public float U09;
-        public float U10;
-        public float U11;
-        public float U12;
-        public float U13;
-        public float U14;
-        public float U15;
-        public float U16;
+        public Iso4 U05;
 
         public override void ReadWrite(CPlugSolid n, GameBoxReaderWriter rw)
         {
@@ -243,19 +246,7 @@ public class CPlugSolid : CPlug
             rw.Single(ref U03);
             rw.Single(ref U04);
 
-            rw.Single(ref U05); // 3x3 matrix
-            rw.Single(ref U06);
-            rw.Single(ref U07);
-            rw.Single(ref U08);
-            rw.Single(ref U09);
-            rw.Single(ref U10);
-            rw.Single(ref U11);
-            rw.Single(ref U12);
-            rw.Single(ref U13);
-
-            rw.Single(ref U14);
-            rw.Single(ref U15);
-            rw.Single(ref U16);
+            rw.Iso4(ref U05);
         }
     }
 

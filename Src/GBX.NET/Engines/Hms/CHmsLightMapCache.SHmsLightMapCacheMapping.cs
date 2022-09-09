@@ -6,21 +6,29 @@ public partial class CHmsLightMapCache
 {
     public class SHmsLightMapCacheMapping : IReadableWritable, IVersionable
     {
-        public Int3 U01;
-        public Vec3 U02;
-        public Vec3 U03;
-        public int U04;
-        public int Count;
+        private Int3 u01;
+        private Vec3 u02;
+        private Vec3 u03;
+        private int u04;
+        private int count;
+        private int u09;
+
+        public Int3 U01 { get => u01; set => u01 = value; }
+        public Vec3 U02 { get => u02; set => u02 = value; }
+        public Vec3 U03 { get => u03; set => u03 = value; }
+        public int U04 { get => u04; set => u04 = value; }
+        public int Count { get => count; set => count = value; }
         public float[]? U05;
+        public int U09 { get => u09; set => u09 = value; }
+
+        public int ColorCount { get; set; }
+        public int FaceCount { get; set; }
+        public byte[]? ColorData { get; set; }
+        
         public (short, short, short, short)[]? U06;
         public (byte, byte, byte, byte)[]? U07;
         public (short, short)[]? U08;
-        public int U09;
         public uint[]? U10;
-
-        public int ColorCount;
-        public int FaceCount;
-        public byte[]? ColorData;
 
         public int Version { get; set; }
 
@@ -36,12 +44,12 @@ public partial class CHmsLightMapCache
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
             Version = rw.Int32(Version);
-            rw.Int3(ref U01); // 3 ints
-            rw.Vec3(ref U02); // 6 floats
-            rw.Vec3(ref U03);
-            rw.Int32(ref U04);
+            rw.Int3(ref u01); // 3 ints
+            rw.Vec3(ref u02); // 6 floats
+            rw.Vec3(ref u03);
+            rw.Int32(ref u04);
 
-            rw.Int32(ref Count);
+            rw.Int32(ref count);
 
             rw.Int32(ref uncompressedSize1);
             rw.Bytes(ref compressedData1);
@@ -57,7 +65,7 @@ public partial class CHmsLightMapCache
             ReadWriteCompressedArray<(byte, byte, byte, byte)>(ref U07, rw, Count, sizeOfStruct: 4);
             ReadWriteCompressedArray<(short, short)>(ref U08, rw, Count, sizeOfStruct: 4);*/
 
-            rw.Int32(ref U09);
+            rw.Int32(ref u09);
 
             if (rw.Reader is not null)
             {

@@ -1,5 +1,6 @@
 ﻿using GBX.NET.Utils;
 using System.Globalization;
+using System.Text;
 
 namespace GBX.NET.Engines.Plug;
 
@@ -42,16 +43,19 @@ public partial class CPlugCrystal : CPlugTreeGenerator
 
     #region Fields
 
-    private CPlugMaterialUserInst?[]? materials;
+    private CPlugMaterialUserInst?[] materials;
 
     #endregion
 
     #region Properties
 
     [NodeMember]
-    public CPlugMaterialUserInst?[]? Materials { get => materials; set => materials = value; }
+    [AppliedWithChunk(typeof(Chunk09003003))]
+    public CPlugMaterialUserInst?[] Materials { get => materials; set => materials = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk09003000))]
+    [AppliedWithChunk(typeof(Chunk09003005))]
     public Layer[] Layers { get; set; }
 
     #endregion
@@ -60,6 +64,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator
 
     protected CPlugCrystal()
     {
+        materials = Array.Empty<CPlugMaterialUserInst>();
         Layers = Array.Empty<Layer>();
     }
 
@@ -74,9 +79,22 @@ public partial class CPlugCrystal : CPlugTreeGenerator
     /// <param name="mtlStream">Stream to write MTL content into.</param>
     /// <param name="mergeVerticesDigitThreshold">If set, overlapping vertices (usually between the mesh groups) will be merged. 3 or 4 give the best accuracy.</param>
     /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>
-    public void ExportToObj(Stream objStream, Stream mtlStream, int? mergeVerticesDigitThreshold = null, string? gameDataFolderPath = null)
+    /// <param name="encoding">Encoding to use.</param>
+    /// <param name="leaveOpen">If to keep the streams open.</param>
+    public void ExportToObj(Stream objStream,
+                            Stream mtlStream,
+                            int? mergeVerticesDigitThreshold = null,
+                            string? gameDataFolderPath = null,
+                            Encoding? encoding = null,
+                            bool leaveOpen = false)
     {
-        using var exporter = new ObjFileExporter(objStream, mtlStream, mergeVerticesDigitThreshold, gameDataFolderPath);
+        using var exporter = new ObjFileExporter(
+            objStream,
+            mtlStream,
+            mergeVerticesDigitThreshold,
+            gameDataFolderPath,
+            encoding,
+            leaveOpen);
 
         exporter.Export(this);
     }
@@ -183,16 +201,16 @@ public partial class CPlugCrystal : CPlugTreeGenerator
             {
                 var name = r.ReadString();
 
-                if (name.Length == 0)  // If the material file exists (name != ""), it references the file instead
+                if (name.Length > 0)  // If the material file exists (name != ""), it references the file instead
                 {
-                    var material = r.ReadNodeRef<CPlugMaterialUserInst>();
-
-                    // more stuff when version <=1
-
-                    return material;
+                    return null;
                 }
 
-                return null;
+                var material = r.ReadNodeRef<CPlugMaterialUserInst>();
+
+                // more stuff when version <=1
+
+                return material;
             });
         }
     }
@@ -472,11 +490,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator
 
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CPlugCrystal n, GameBoxReaderWriter rw)
         {
@@ -566,7 +580,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator
 
     public class TriggerLayer : Layer
     {
-        public Crystal? Crystal { get; init; }
+        public Crystal Crystal { get; init; }
 
         public TriggerLayer(Crystal crystal)
         {

@@ -13,7 +13,6 @@ var logger = LoggerFactory.Create(builder =>
     {
         options.IncludeScopes = true;
         options.SingleLine = true;
-        options.TimestampFormat = "yyyy-MM-dd HH:mm:ss ";
     });
     builder.SetMinimumLevel(LogLevel.Debug);
 }).CreateLogger<Program>();
@@ -52,23 +51,26 @@ while (true)
     }
     catch (NodeNotImplementedException ex)
     {
-        var splitClassName = ex.ClassName.Split("::");
-        var engineName = splitClassName[0];
-        var className = splitClassName[1];
-
-        var objs = new string[]
+        if (ex.ClassName != "unknown class")
         {
+            var splitClassName = ex.ClassName.Split("::");
+            var engineName = splitClassName[0];
+            var className = splitClassName[1];
+
+            var objs = new string[]
+            {
             engineName,
             ex.ClassId.ToString("X8"),
             className
-        };
+            };
 
-        Console.WriteLine();
-        Console.WriteLine();
-        Console.WriteLine("Possible class structure:\n\n" + string.Format(classTxt, objs));
-        Console.WriteLine();
-        Console.WriteLine();
-
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Possible class structure:\n\n" + string.Format(classTxt, objs));
+            Console.WriteLine();
+            Console.WriteLine();
+        }
+        
         logger.LogError(ex, "Exception during parse: ");
     }
 

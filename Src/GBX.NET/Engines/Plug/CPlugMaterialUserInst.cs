@@ -42,42 +42,59 @@ public class CPlugMaterialUserInst : CMwNod
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk090FD000))]
     public string? Model { get => model; set => model = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk090FD000))]
     public string? BaseTexture { get => baseTexture; set => baseTexture = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk090FD000))]
     public string? Link { get => link; set => link = value; }
 
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk090FD000), sinceVersion: 2)]
     public Cst[]? Csts { get => csts; set => csts = value; }
+
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk090FD000), sinceVersion: 3)]
     public UvAnim[]? UvAnims { get => uvAnims; set => uvAnims = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk090FD000), sinceVersion: 7)]
     public string? HidingGroup { get => hidingGroup; set => hidingGroup = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk090FD001), sinceVersion: 3)]
     public ETexAddress TilingU { get => tilingU; set => tilingU = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk090FD001), sinceVersion: 3)]
     public ETexAddress TilingV { get => tilingV; set => tilingV = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk090FD001), sinceVersion: 3)]
     public float TextureSizeInMeters { get => textureSizeInMeters; set => textureSizeInMeters = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk090FD001), sinceVersion: 5)]
     public bool IsNatural { get => isNatural; set => isNatural = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk090FD000), sinceVersion: 6)]
     public UserTexture[]? UserTextures { get => userTextures; set => userTextures = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk090FD000), sinceVersion: 10)]
     public byte SurfaceGameplayId { get => surfaceGameplayId; set => surfaceGameplayId = value; }
     
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk090FD000))]
     public byte SurfacePhysicId { get => surfacePhysicId; set => surfacePhysicId = value; }
     
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk090FD000), sinceVersion: 11)]
     public bool IsUsingGameMaterial { get => isUsingGameMaterial; set => isUsingGameMaterial = value; }
 
     #endregion
@@ -119,11 +136,7 @@ public class CPlugMaterialUserInst : CMwNod
         /// <summary>
         /// Version 10: TM®, version 9: ManiaPlanet 2019.11.19.1850
         /// </summary>
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CPlugMaterialUserInst n, GameBoxReaderWriter rw)
         {
@@ -228,11 +241,7 @@ public class CPlugMaterialUserInst : CMwNod
         public CMwNod? U01;
         public int? U02;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CPlugMaterialUserInst n, GameBoxReaderWriter rw)
         {

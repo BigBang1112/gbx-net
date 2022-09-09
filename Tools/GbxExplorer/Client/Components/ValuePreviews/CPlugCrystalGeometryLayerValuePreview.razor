@@ -1,0 +1,22 @@
+﻿@using GBX.NET
+@using GBX.NET.Engines.Plug
+
+@inject IJSRuntime JS
+
+@inherits ValuePreview
+@attribute [AppliesForType(typeof(CPlugCrystal.GeometryLayer))]
+
+@if (Value is not CPlugCrystal.GeometryLayer geometry)
+{
+    <span style="color:gray">null</span>
+
+    return;
+}
+
+<CPlugCrystalCrystalValuePreview Value="geometry.Crystal" LayerName="@geometry.LayerName"></CPlugCrystalCrystalValuePreview>
+
+<span>@geometry.LayerName</span>
+
+@code {
+    
+}

@@ -8,14 +8,8 @@
 [NodeExtension("CtnMediaBlockTransFade")]
 public partial class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
-    #region Fields
-
     private IList<Key> keys;
     private Vec3 color;
-
-    #endregion
-
-    #region Properties
 
     IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
     {
@@ -24,31 +18,15 @@ public partial class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlock, CGam
     }
 
     [NodeMember]
-    public IList<Key> Keys
-    {
-        get => keys;
-        set => keys = value;
-    }
+    public IList<Key> Keys { get => keys; set => keys = value; }
 
     [NodeMember]
-    public Vec3 Color
-    {
-        get => color;
-        set => color = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    public Vec3 Color { get => color; set => color = value; }
 
     protected CGameCtnMediaBlockTransitionFade()
     {
-        keys = null!;
+        keys = Array.Empty<Key>();
     }
-
-    #endregion
-
-    #region Chunks
 
     #region 0x000 chunk
 
@@ -67,8 +45,6 @@ public partial class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlock, CGam
             rw.Single(ref U01);
         }
     }
-
-    #endregion
 
     #endregion
 }

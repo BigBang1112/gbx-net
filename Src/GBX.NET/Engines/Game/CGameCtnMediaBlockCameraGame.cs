@@ -49,36 +49,84 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
     #region Properties
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03084000))]
+    [AppliedWithChunk(typeof(Chunk03084001))]
+    [AppliedWithChunk(typeof(Chunk03084003))]
+    [AppliedWithChunk(typeof(Chunk03084004))]
+    [AppliedWithChunk(typeof(Chunk03084005))]
+    [AppliedWithChunk(typeof(Chunk03084006))]
+    [AppliedWithChunk(typeof(Chunk03084007))]
     public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03084000))]
+    [AppliedWithChunk(typeof(Chunk03084001))]
+    [AppliedWithChunk(typeof(Chunk03084003))]
+    [AppliedWithChunk(typeof(Chunk03084004))]
+    [AppliedWithChunk(typeof(Chunk03084005))]
+    [AppliedWithChunk(typeof(Chunk03084006))]
+    [AppliedWithChunk(typeof(Chunk03084007))]
     public TimeSingle End { get => end; set => end = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03084000))]
+    [AppliedWithChunk(typeof(Chunk03084001))]
     public EGameCam? GameCam1 { get => gameCam1; set => gameCam1 = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03084007), sinceVersion: 2)]
     public EGameCam2? GameCam2 { get => gameCam2; set => gameCam2 = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03084001))]
+    [AppliedWithChunk(typeof(Chunk03084003))]
+    [AppliedWithChunk(typeof(Chunk03084004))]
+    [AppliedWithChunk(typeof(Chunk03084005))]
+    [AppliedWithChunk(typeof(Chunk03084006))]
+    [AppliedWithChunk(typeof(Chunk03084007))]
     public int ClipEntId { get => clipEntId; set => clipEntId = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03084003))]
+    [AppliedWithChunk(typeof(Chunk03084004))]
+    [AppliedWithChunk(typeof(Chunk03084005))]
+    [AppliedWithChunk(typeof(Chunk03084006))]
+    [AppliedWithChunk(typeof(Chunk03084007), sinceVersion: 0, upToVersion: 1)]
     public string? GameCam { get => gameCam; set => gameCam = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03084004))]
+    [AppliedWithChunk(typeof(Chunk03084005))]
+    [AppliedWithChunk(typeof(Chunk03084006))]
+    [AppliedWithChunk(typeof(Chunk03084007))]
     public Vec3? CamPosition { get => camPosition; set => camPosition = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03084004))]
+    [AppliedWithChunk(typeof(Chunk03084005))]
+    [AppliedWithChunk(typeof(Chunk03084006))]
+    [AppliedWithChunk(typeof(Chunk03084007))]
     public Vec3? CamPitchYawRoll { get => camPitchYawRoll; set => camPitchYawRoll = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03084004))]
+    [AppliedWithChunk(typeof(Chunk03084005))]
+    [AppliedWithChunk(typeof(Chunk03084006))]
+    [AppliedWithChunk(typeof(Chunk03084007))]
     public float? CamFov { get => camFov; set => camFov = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03084004))]
+    [AppliedWithChunk(typeof(Chunk03084005))]
+    [AppliedWithChunk(typeof(Chunk03084006))]
+    [AppliedWithChunk(typeof(Chunk03084007))]
     public float? CamNearClipPlane { get => camNearClipPlane; set => camNearClipPlane = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03084004))]
+    [AppliedWithChunk(typeof(Chunk03084005))]
+    [AppliedWithChunk(typeof(Chunk03084006))]
+    [AppliedWithChunk(typeof(Chunk03084007))]
     public float? CamFarClipPlane { get => camFarClipPlane; set => camFarClipPlane = value; }
 
     #endregion
@@ -102,13 +150,11 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
     [Chunk(0x03084000)]
     public class Chunk03084000 : Chunk<CGameCtnMediaBlockCameraGame>
     {
-        public int U01;
-
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
         {
             rw.TimeSingle(ref n.start);
             rw.TimeSingle(ref n.end);
-            rw.Int32(ref U01);
+            rw.EnumInt32<EGameCam>(ref n.gameCam1);
         }
     }
 
@@ -120,13 +166,11 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
     /// CGameCtnMediaBlockCameraGame 0x001 chunk
     /// </summary>
     [Chunk(0x03084001)]
-    public class Chunk03084001 : Chunk<CGameCtnMediaBlockCameraGame>
+    public class Chunk03084001 : Chunk03084000
     {
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
         {
-            rw.TimeSingle(ref n.start);
-            rw.TimeSingle(ref n.end);
-            rw.EnumInt32<EGameCam>(ref n.gameCam1);
+            base.ReadWrite(n, rw);
             rw.Int32(ref n.clipEntId);
         }
     }
@@ -158,23 +202,25 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
     /// CGameCtnMediaBlockCameraGame 0x004 chunk
     /// </summary>
     [Chunk(0x03084004)]
-    public class Chunk03084004 : Chunk<CGameCtnMediaBlockCameraGame>
+    public class Chunk03084004 : Chunk03084003
     {
-        public float[]? U01;
-        public float[]? U02;
+        public float U01;
+        public float U02;
 
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
         {
-            rw.TimeSingle(ref n.start);
-            rw.TimeSingle(ref n.end);
-            rw.Id(ref n.gameCam);
-            rw.Int32(ref n.clipEntId);
+            base.ReadWrite(n, rw);
 
             // GmCamFreeVal
             // // GmLocFreeVal
-            rw.Array<float>(ref U01, count: 6);
+            rw.Vec3(ref n.camPosition);
+            rw.Vec3(ref n.camPitchYawRoll);
             // // GmLensVal
-            rw.Array<float>(ref U02, count: 5);
+            rw.Single(ref n.camFov, defaultValue: 90);
+            rw.Single(ref U01); // always 10
+            rw.Single(ref U02); // depth? 0 or 0.02
+            rw.Single(ref n.camNearClipPlane, defaultValue: -1);
+            rw.Single(ref n.camFarClipPlane, defaultValue: -1);
         }
     }
 
@@ -186,25 +232,13 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
     /// CGameCtnMediaBlockCameraGame 0x005 chunk
     /// </summary>
     [Chunk(0x03084005)]
-    public class Chunk03084005 : Chunk<CGameCtnMediaBlockCameraGame>
+    public class Chunk03084005 : Chunk03084004
     {
-        public float[]? U01;
-        public float[]? U02;
         public bool U03;
 
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
         {
-            rw.TimeSingle(ref n.start);
-            rw.TimeSingle(ref n.end);
-            rw.Id(ref n.gameCam);
-            rw.Int32(ref n.clipEntId);
-
-            // GmCamFreeVal
-            // // GmLocFreeVal
-            rw.Array<float>(ref U01, count: 6);
-            // // GmLensVal
-            rw.Array<float>(ref U02, count: 5);
-
+            base.ReadWrite(n, rw);
             rw.Boolean(ref U03);
         }
     }
@@ -217,27 +251,13 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
     /// CGameCtnMediaBlockCameraGame 0x005 chunk
     /// </summary>
     [Chunk(0x03084006)]
-    public class Chunk03084006 : Chunk<CGameCtnMediaBlockCameraGame>
+    public class Chunk03084006 : Chunk03084005
     {
-        public float[]? U01;
-        public float[]? U02;
-        public bool U03;
         public bool U04;
 
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
         {
-            rw.TimeSingle(ref n.start);
-            rw.TimeSingle(ref n.end);
-            rw.Id(ref n.gameCam);
-            rw.Int32(ref n.clipEntId);
-
-            // GmCamFreeVal
-            // // GmLocFreeVal
-            rw.Array<float>(ref U01, count: 6);
-            // // GmLensVal
-            rw.Array<float>(ref U02, count: 5);
-
-            rw.Boolean(ref U03);
+            base.ReadWrite(n, rw);
             rw.Boolean(ref U04);
         }
     }
@@ -254,12 +274,6 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
     {
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
-
         public float U01 = 10;
         public float U02 = 0; // depth? 0 or 0.02
         public bool U03;
@@ -268,13 +282,15 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
         public float U06;
         public int U07;
 
+        public int Version { get => version; set => version = value; }
+
         public override void ReadWrite(CGameCtnMediaBlockCameraGame n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
             rw.TimeSingle(ref n.start);
             rw.TimeSingle(ref n.end);
 
-            if (version <= 1)
+            if (version < 2)
             {
                 rw.Id(ref n.gameCam);
             }

@@ -1,0 +1,28 @@
+﻿@using System.Collections.Immutable
+@using System.Net.Http
+@using System.Net.Http.Json
+@using System.Reflection
+@using System.Text.Json
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@using Microsoft.AspNetCore.Components.WebAssembly.Http
+@using Microsoft.JSInterop
+@using GBX.NET.Exceptions
+@using GbxExplorer.Client
+@using GbxExplorer.Client.Attributes
+@using GbxExplorer.Client.Components
+@using GbxExplorer.Client.Components.ValueRenderers
+@using GbxExplorer.Client.Components.ValuePreviews
+@using GbxExplorer.Client.Exceptions
+@using GbxExplorer.Client.Extensions
+@using GbxExplorer.Client.Models
+@using GbxExplorer.Client.Sections
+@using GbxExplorer.Client.Services
+@using GbxExplorer.Client.Shared
+@using TmEssentials
+
+@attribute [Authorize(Roles = "Insider")]

@@ -11,8 +11,10 @@ public class CGameCtnZoneFlat : CGameCtnZone
     private GameBoxRefTable.File? blockInfoRoadFile;
     private CGameCtnBlockInfoPylon? blockInfoPylon;
     private GameBoxRefTable.File? blockInfoPylonFile;
+    private bool groundOnly;
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0305D001))]
     public CGameCtnBlockInfoFlat? BlockInfoFlat
     {
         get => blockInfoFlat = GetNodeFromRefTable(blockInfoFlat, blockInfoFlatFile) as CGameCtnBlockInfoFlat;
@@ -20,6 +22,7 @@ public class CGameCtnZoneFlat : CGameCtnZone
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0305D001))]
     public CGameCtnBlockInfoClip? BlockInfoClip
     {
         get => blockInfoClip = GetNodeFromRefTable(blockInfoClip, blockInfoClipFile) as CGameCtnBlockInfoClip;
@@ -27,6 +30,7 @@ public class CGameCtnZoneFlat : CGameCtnZone
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0305D001))]
     public CGameCtnBlockInfoRoad? BlockInfoRoad
     {
         get => blockInfoRoad = GetNodeFromRefTable(blockInfoRoad, blockInfoRoadFile) as CGameCtnBlockInfoRoad;
@@ -34,11 +38,16 @@ public class CGameCtnZoneFlat : CGameCtnZone
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0305D001))]
     public CGameCtnBlockInfoPylon? BlockInfoPylon
     {
         get => blockInfoPylon = GetNodeFromRefTable(blockInfoPylon, blockInfoPylonFile) as CGameCtnBlockInfoPylon;
         set => blockInfoPylon = value;
     }
+    
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0305D002))]
+    public bool GroundOnly { get => groundOnly; set => groundOnly = value; }
 
     protected CGameCtnZoneFlat()
     {
@@ -59,6 +68,27 @@ public class CGameCtnZoneFlat : CGameCtnZone
             rw.NodeRef<CGameCtnBlockInfoClip>(ref n.blockInfoClip, ref n.blockInfoClipFile);
             rw.NodeRef<CGameCtnBlockInfoRoad>(ref n.blockInfoRoad, ref n.blockInfoRoadFile);
             rw.NodeRef<CGameCtnBlockInfoPylon>(ref n.blockInfoPylon, ref n.blockInfoPylonFile);
+        }
+    }
+
+    #endregion
+
+    #region 0x002 chunk
+
+    /// <summary>
+    /// CGameCtnZoneFlat 0x002 chunk
+    /// </summary>
+    [Chunk(0x0305D002)]
+    public class Chunk0305D002 : SkippableChunk<CGameCtnZoneFlat>
+    {
+        public int U01;
+        public bool U02;
+
+        public override void ReadWrite(CGameCtnZoneFlat n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+            rw.Boolean(ref n.groundOnly);
+            rw.Boolean(ref U02);
         }
     }
 

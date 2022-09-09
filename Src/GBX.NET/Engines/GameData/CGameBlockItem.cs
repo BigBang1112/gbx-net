@@ -8,17 +8,12 @@
 [NodeExtension("BlockItem")]
 public class CGameBlockItem : CMwNod
 {
-    #region Fields
-
     private string archetypeBlockInfoId;
     private string archetypeBlockInfoCollectionId;
     private IDictionary<int, CPlugCrystal> customizedVariants;
 
-    #endregion
-
-    #region Properties
-
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk2E025000))]
     public string ArchetypeBlockInfoId
     {
         get => archetypeBlockInfoId;
@@ -26,6 +21,7 @@ public class CGameBlockItem : CMwNod
     }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk2E025000))]
     public string ArchetypeBlockInfoCollectionId
     {
         get => archetypeBlockInfoCollectionId;
@@ -33,26 +29,23 @@ public class CGameBlockItem : CMwNod
     }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk2E025000))]
     public IDictionary<int, CPlugCrystal> CustomizedVariants
     {
         get => customizedVariants;
         set => customizedVariants = value;
     }
 
-    #endregion
-
-    #region Constructors
-
     protected CGameBlockItem()
     {
-        archetypeBlockInfoId = null!;
-        archetypeBlockInfoCollectionId = null!;
+        archetypeBlockInfoId = "";
+        archetypeBlockInfoCollectionId = "";
+#if NET6_0_OR_GREATER
+        customizedVariants = global::System.Collections.Immutable.ImmutableDictionary.Create<int, CPlugCrystal>();
+#else
         customizedVariants = null!;
+#endif
     }
-
-    #endregion
-
-    #region Chunks
 
     #region 0x000 chunk
 
@@ -64,11 +57,7 @@ public class CGameBlockItem : CMwNod
     {
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameBlockItem n, GameBoxReaderWriter rw)
         {
@@ -78,8 +67,6 @@ public class CGameBlockItem : CMwNod
             rw.DictionaryNode(ref n.customizedVariants!);
         }
     }
-
-    #endregion
 
     #endregion
 }

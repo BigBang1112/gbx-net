@@ -1,11 +1,14 @@
 ﻿using GBX.NET;
+using GBX.NET.Engines.Game;
 using Microsoft.Extensions.Logging;
+using System.IO.Compression;
 
 if (args.Length == 0)
     return;
 
 var pattern = "*.Gbx";
 var directory = default(string?);
+var zipFile = default(string?);
 
 var argsEnumerator = args.GetEnumerator();
 
@@ -21,12 +24,23 @@ while (argsEnumerator.MoveNext())
             var inputDirectory = (string)argsEnumerator.Current;
             if (Directory.Exists(inputDirectory))
                 directory = inputDirectory;
+            if (File.Exists(inputDirectory))
+                zipFile = inputDirectory;
             break;
     }
 }
 
+var archive = default(ZipArchive);
+
 if (directory is null)
-    return;
+{
+    if (zipFile is null)
+    {
+        return;
+    }
+
+    archive = ZipFile.OpenRead(zipFile);
+}
 
 var logger = LoggerFactory.Create(builder =>
 {
@@ -35,21 +49,38 @@ var logger = LoggerFactory.Create(builder =>
         options.IncludeScopes = true;
         options.SingleLine = true;
     });
-    builder.SetMinimumLevel(LogLevel.Warning);
+    builder.SetMinimumLevel(LogLevel.Information);
 }).CreateLogger<Program>();
 
-var files = Directory.GetFiles(directory, pattern, SearchOption.AllDirectories);
+var files = directory is null ? null : Directory.GetFiles(directory, pattern, SearchOption.AllDirectories);
+var entries = zipFile is null ? null : archive?.Entries.Where(x => x.Name != "").ToList();
 var exceptionMessages = new List<string>();
 
+var length = files?.Length ?? entries?.Count;
 var successful = 0;
 
-for (var i = 0; i < files.Length; i++)
+for (var i = 0; i < length; i++)
 {
-    var fileName = files[i];
+    var fileName = files?[i];
+    var entry = entries?[i];
 
     try
     {
-        var node = GameBox.ParseNode(fileName, logger: logger);
+        //logger.LogInformation("{fileName}", fileName);
+
+        var node = default(Node);
+
+        if (fileName is not null)
+        {
+            node = GameBox.ParseNode(fileName, logger: logger);
+        }
+        else if (entry is not null)
+        {
+            using var stream = entry.Open();
+            node = GameBox.ParseNode(stream, logger: logger);
+        }
+
+        node.DiscoverChunk<CGameCtnChallenge.Chunk03043040>();
 
         if (node is null)
         {
@@ -64,15 +95,13 @@ for (var i = 0; i < files.Length; i++)
     {
         if (!exceptionMessages.Contains(ex.Message))
         {
-            Console.WriteLine(fileName);
-            Console.WriteLine(ex);
-            Console.WriteLine();
+            logger.LogError(ex, fileName ?? entry?.Name ?? "Unknown file");
 
             exceptionMessages.Add(ex.Message);
         }
     }
 
-    Console.Write("Progress: {0}/{1}/{2} ({3})", successful, i + 1, files.Length, (successful / (float)(i + 1)).ToString("P"));
+    Console.Write("Progress: {0}/{1}/{2} ({3})", successful, i + 1, length, (successful / (float)(i + 1)).ToString("P"));
     Console.CursorLeft = 0;
 }
 

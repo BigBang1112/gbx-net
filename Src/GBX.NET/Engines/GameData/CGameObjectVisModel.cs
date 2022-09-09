@@ -21,30 +21,39 @@ public class CGameObjectVisModel : CMwNod
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E007001))]
     public string? Mesh { get => mesh; set => mesh = value; }
 
     [NodeMember(ExactlyNamed = false, ExactName = "SoundRef_Spawn")]
+    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 0, upToVersion: 16)]
     public string? SoundRefSpawn { get => soundRefSpawn; set => soundRefSpawn = value; }
 
     [NodeMember(ExactlyNamed = false, ExactName = "SoundRef_Unspawn")]
+    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 0, upToVersion: 16)]
     public string? SoundRefUnspawn { get => soundRefUnspawn; set => soundRefUnspawn = value; }
 
     [NodeMember(ExactlyNamed = false, ExactName = "SoundRef_Grab")]
+    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 0, upToVersion: 16)]
     public string? SoundRefGrab { get => soundRefGrab; set => soundRefGrab = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 12)]
     public string? SmashParticleRef { get => smashParticleRef; set => smashParticleRef = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 20)]
     public string? VisEntFx { get => visEntFx; set => visEntFx = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 21)]
     public CMwNod? MeshShadedFid { get => meshShadedFid; set => meshShadedFid = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 22)]
     public Vec3? DomeShaderColor { get => domeShaderColor; set => domeShaderColor = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E007001))]
     public CPlugSolid2Model? MeshShaded { get => meshShaded; set => meshShaded = value; }
 
     #endregion

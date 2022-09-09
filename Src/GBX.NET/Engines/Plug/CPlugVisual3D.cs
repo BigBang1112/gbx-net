@@ -9,17 +9,21 @@ public abstract class CPlugVisual3D : CPlugVisual
     private Vec3[]? biTangents;
 
     [NodeMember]
-    public Vertex[] Vertices  { get => vertices; set => vertices = value; }
+    [AppliedWithChunk(typeof(Chunk0902C003))]
+    [AppliedWithChunk(typeof(Chunk0902C004))]
+    public Vertex[] Vertices { get => vertices; set => vertices = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0902C003))]
     public Vec3[]? Tangents { get => tangents; set => tangents = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0902C003))]
     public Vec3[]? BiTangents { get => biTangents; set => biTangents = value; }
 
     protected CPlugVisual3D()
     {
-        vertices = null!;
+        vertices = Array.Empty<Vertex>();
     }
 
     /// <summary>

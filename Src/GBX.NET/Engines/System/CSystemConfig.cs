@@ -76,6 +76,7 @@ public class CSystemConfig : CMwNod
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005008))]
     public string? DesiredLanguageId
     {
         get
@@ -91,6 +92,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B00502B))]
     public bool Advertising_DisabledByUser
     {
         get
@@ -106,6 +108,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B00502B))]
     public float Advertising_TunningCoef
     {
         get
@@ -121,6 +124,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005045))]
     public bool InputsAlternateMethod
     {
         get
@@ -136,6 +140,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005045))]
     public bool InputsFreezeUnusedAxes
     {
         get
@@ -151,6 +156,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005045))]
     public bool InputsEnableRumble
     {
         get
@@ -166,6 +172,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005045))]
     public bool InputsCaptureKeyboard
     {
         get
@@ -181,6 +188,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005048))]
     public bool GameProfileEnableMulti
     {
         get
@@ -196,6 +204,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005048))]
     public string? GameProfileName
     {
         get
@@ -211,6 +220,8 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B00503D))]
+    [AppliedWithChunk(typeof(Chunk0B00504A))]
     public bool IsIgnorePlayerSkins
     {
         get
@@ -226,6 +237,8 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B00503D))]
+    [AppliedWithChunk(typeof(Chunk0B00504A))]
     public bool IsSkipRollingDemo
     {
         get
@@ -241,6 +254,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B00504F))]
     public bool AudioEnabled
     {
         get
@@ -256,6 +270,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B00504F))]
     public float AudioSoundVolume
     {
         get
@@ -271,6 +286,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B00504F))]
     public float AudioMusicVolume
     {
         get
@@ -286,6 +302,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B00504F))]
     public bool AudioAllowEFX
     {
         get
@@ -301,6 +318,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B00504F))]
     public bool AudioDisableDoppler
     {
         get
@@ -316,6 +334,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B00504F))]
     public int AudioGlobalQuality
     {
         get
@@ -331,6 +350,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B00504F))]
     public string? AudioDevice_Oal
     {
         get
@@ -346,6 +366,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005056))]
     public bool AudioAllowHRTF
     {
         get
@@ -361,6 +382,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005056))]
     public int AudioDontMuteWhenApplicationUnfocused
     {
         get
@@ -376,6 +398,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005056))]
     public bool AudioSoundHdr
     {
         get
@@ -391,6 +414,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableAvatarDownload
     {
         get
@@ -406,6 +430,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableAvatarUpload
     {
         get
@@ -421,6 +446,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableAvatarLocators
     {
         get
@@ -436,6 +462,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableMapDownload
     {
         get
@@ -451,6 +478,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableMapUpload
     {
         get
@@ -466,6 +494,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableMapLocators
     {
         get
@@ -481,6 +510,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableMapModDownload
     {
         get
@@ -496,6 +526,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableMapModUpload
     {
         get
@@ -511,6 +542,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableMapModLocators
     {
         get
@@ -526,6 +558,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableMapSkinDownload
     {
         get
@@ -541,6 +574,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableMapSkinUpload
     {
         get
@@ -556,6 +590,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableMapSkinLocators
     {
         get
@@ -571,6 +606,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableTagDownload
     {
         get
@@ -586,6 +622,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableTagUpload
     {
         get
@@ -601,6 +638,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableTagLocators
     {
         get
@@ -616,6 +654,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableVehicleSkinDownload
     {
         get
@@ -631,6 +670,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableVehicleSkinUpload
     {
         get
@@ -646,6 +686,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableVehicleSkinLocators
     {
         get
@@ -661,6 +702,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableUnknownTypeDownload
     {
         get
@@ -676,6 +718,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableUnknownTypeUpload
     {
         get
@@ -691,6 +734,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005059))]
     public bool FileTransferEnableUnknownTypeLocators
     {
         get
@@ -706,6 +750,9 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005035))]
+    [AppliedWithChunk(typeof(Chunk0B005043))]
+    [AppliedWithChunk(typeof(Chunk0B005044))]
     public bool NetworkTestInternetConnection
     {
         get
@@ -721,6 +768,8 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005043))]
+    [AppliedWithChunk(typeof(Chunk0B005044))]
     public string? NetworkLastUsedMSAddress
     {
         get
@@ -736,6 +785,8 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005043))]
+    [AppliedWithChunk(typeof(Chunk0B005044))]
     public string? NetworkLastUsedMSPath
     {
         get
@@ -751,6 +802,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005039))]
     public bool NetworkUseProxy
     {
         get
@@ -766,6 +818,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005039))]
     public int NetworkServerPort
     {
         get
@@ -781,6 +834,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005039))]
     public int NetworkP2PServerPort
     {
         get
@@ -796,6 +850,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005039))]
     public int NetworkClientPort
     {
         get
@@ -811,6 +866,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005039))]
     public int NetworkServerBroadcastLength
     {
         get
@@ -826,6 +882,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005039))]
     public bool NetworkForceUseLocalAddress
     {
         get
@@ -841,6 +898,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005039))]
     public string? NetworkForceServerAddress
     {
         get
@@ -856,6 +914,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005039))]
     public int NetworkDownload
     {
         get
@@ -871,6 +930,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005039))]
     public int NetworkUpload
     {
         get
@@ -886,6 +946,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005039))]
     public bool NetworkUseNatUPnP
     {
         get
@@ -901,6 +962,8 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005034))]
+    [AppliedWithChunk(typeof(Chunk0B005052))]
     public int TmCarQuality
     {
         get
@@ -916,6 +979,7 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005052))]
     public int PlayerShadow
     {
         get
@@ -931,6 +995,8 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005034))]
+    [AppliedWithChunk(typeof(Chunk0B005052))]
     public int TmOpponents
     {
         get
@@ -946,6 +1012,8 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005034))]
+    [AppliedWithChunk(typeof(Chunk0B005052))]
     public int TmMaxOpponents
     {
         get
@@ -961,6 +1029,8 @@ public class CSystemConfig : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0B005034))]
+    [AppliedWithChunk(typeof(Chunk0B005052))]
     public int TmBackgroundQuality
     {
         get

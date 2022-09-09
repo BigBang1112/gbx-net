@@ -24,22 +24,25 @@ public class HeaderChunkSet : SortedSet<Chunk>
         return RemoveWhere(x => x is T) > 0;
     }
 
-    public T Create<T>() where T : Chunk
+    public Chunk Create(uint chunkId)
     {
-        var chunkId = NodeCacheManager.GetChunkIdByType(typeof(T));
-
         if (TryGet(chunkId, out var c))
         {
-            return c as T ?? throw new ThisShouldNotHappenException();
+            return c ?? throw new ThisShouldNotHappenException();
         }
 
         var chunk = NodeCacheManager.HeaderChunkConstructors.TryGetValue(chunkId, out var constructor)
-            ? (T)constructor()
-            : (T)Activator.CreateInstance(typeof(T))!;
+            ? constructor()
+            : throw new ThisShouldNotHappenException();
 
-        Add(chunk);
+        Add((Chunk)chunk);
 
-        return chunk;
+        return (Chunk)chunk;
+    }
+
+    public T Create<T>() where T : Chunk
+    {
+        return (T)Create(NodeCacheManager.GetChunkIdByType(typeof(T)));
     }
 
     public Chunk? Get(uint chunkId)

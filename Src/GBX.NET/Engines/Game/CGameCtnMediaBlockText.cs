@@ -23,25 +23,17 @@ public class CGameCtnMediaBlockText : CGameCtnMediaBlock, CGameCtnMediaBlock.IHa
     }
 
     [NodeMember]
-    public string Text
-    {
-        get => text;
-        set => text = value;
-    }
+    [SupportsFormatting]
+    [AppliedWithChunk(typeof(Chunk030A8001))]
+    public string Text { get => text; set => text = value; }
 
     [NodeMember]
-    public CControlEffectSimi Effect
-    {
-        get => effect;
-        set => effect = value;
-    }
+    [AppliedWithChunk(typeof(Chunk030A8001))]
+    public CControlEffectSimi Effect { get => effect; set => effect = value; }
 
     [NodeMember]
-    public Vec3 Color
-    {
-        get => color;
-        set => color = value;
-    }
+    [AppliedWithChunk(typeof(Chunk030A8002))]
+    public Vec3 Color { get => color; set => color = value; }
 
     #endregion
 

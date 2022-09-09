@@ -1,0 +1,71 @@
+﻿.chunk-button {
+    font-weight: bold;
+    border-radius: 0.4rem;
+    transition: 0.1s;
+    animation: fadeIn 0.2s;
+}
+
+    .chunk-button.header-chunk {
+        background-color: #17546344;
+    }
+
+        .chunk-button.header-chunk.hovered {
+            background-color: #175463AA;
+        }
+
+    .chunk-button.body-chunk {
+        background-color: #5E4A1644;
+    }
+
+        .chunk-button.body-chunk.hovered {
+            background-color: #5E4A16AA;
+        }
+
+    .chunk-button.body-skippable-chunk {
+        background-color: #70695844;
+    }
+
+        .chunk-button.body-skippable-chunk.hovered {
+            background-color: #706958AA;
+        }
+
+
+.chunk-name {
+    display: inline-block;
+    white-space: nowrap;
+    overflow-x: clip;
+    text-overflow: ellipsis;
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+    width: calc(100% - 3.2rem);
+}
+
+.delete {
+    padding: 0.3rem 0.6rem;
+    display: inline-block;
+    width: max-content;
+    float: right;
+    cursor: pointer;
+}
+
+    .delete:hover {
+        color: #FAA;
+    }
+
+.inner {
+    font-weight: normal;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0 0.6rem 0.3rem 0.6rem;
+    overflow: auto hidden;
+}
+
+    .inner.one-column {
+        grid-template-columns: 1fr !important;
+    }

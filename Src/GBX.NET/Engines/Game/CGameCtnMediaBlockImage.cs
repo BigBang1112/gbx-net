@@ -8,14 +8,8 @@
 [NodeExtension("GameCtnMediaBlockImage")]
 public class CGameCtnMediaBlockImage : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
-    #region Fields
-
     private CControlEffectSimi effect;
     private FileRef image;
-
-    #endregion
-
-    #region Properties
 
     IEnumerable<Key> IHasKeys.Keys
     {
@@ -23,35 +17,25 @@ public class CGameCtnMediaBlockImage : CGameCtnMediaBlock, CGameCtnMediaBlock.IH
         set
         {
             if (effect is not null)
+            {
                 effect.Keys = value.Cast<CControlEffectSimi.Key>().ToList();
+            }
         }
     }
 
     [NodeMember]
-    public CControlEffectSimi Effect
-    {
-        get => effect;
-        set => effect = value;
-    }
+    [AppliedWithChunk(typeof(Chunk030A5000))]
+    public CControlEffectSimi Effect { get => effect; set => effect = value; }
 
     [NodeMember]
-    public FileRef Image
-    {
-        get => image;
-        set => image = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk030A5000))]
+    public FileRef Image { get => image; set => image = value; }
 
     protected CGameCtnMediaBlockImage()
     {
         effect = null!;
-        image = null!;
+        image = FileRef.Default;
     }
-
-    #endregion
 
     #region Chunks
 

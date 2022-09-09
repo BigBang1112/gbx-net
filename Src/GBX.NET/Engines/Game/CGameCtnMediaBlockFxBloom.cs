@@ -8,22 +8,7 @@
 [NodeExtension("GameCtnMediaBlockFxBloom")]
 public partial class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, CGameCtnMediaBlock.IHasKeys
 {
-    #region Fields
-
     private IList<Key> keys;
-
-    #endregion
-
-    #region Constructors
-
-    protected CGameCtnMediaBlockFxBloom()
-    {
-        keys = null!;
-    }
-
-    #endregion
-
-    #region Properties
 
     IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
     {
@@ -32,15 +17,13 @@ public partial class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, CGameCtnM
     }
 
     [NodeMember]
-    public IList<Key> Keys
+    [AppliedWithChunk(typeof(Chunk03083001))]
+    public IList<Key> Keys { get => keys; set => keys = value; }
+
+    protected CGameCtnMediaBlockFxBloom()
     {
-        get => keys;
-        set => keys = value;
+        keys = Array.Empty<Key>();
     }
-
-    #endregion
-
-    #region Chunks
 
     #region 0x001 chunk
 
@@ -56,7 +39,5 @@ public partial class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, CGameCtnM
         }
     }
 
-    #endregion
-    
     #endregion
 }

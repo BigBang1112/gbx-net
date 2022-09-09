@@ -48,27 +48,34 @@ public class CGameCommonItemEntityModelEdition : CMwNod
     /// Type of the item.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E026000))]
     public EItemType ItemType { get => itemType; set => itemType = value; }
 
     /// <summary>
     /// Mesh of the item model.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E026000))]
     public CPlugCrystal MeshCrystal { get => meshCrystal; set => meshCrystal = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E026000), sinceVersion: 3)]
     public float? Mass { get => mass; set => mass = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E026000), sinceVersion: 1)]
     public string? InventoryName { get => inventoryName; set => inventoryName = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E026000), sinceVersion: 1)]
     public string? InventoryDescription { get => inventoryDescription; set => inventoryDescription = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E026000), sinceVersion: 1)]
     public int InventoryItemClass { get => inventoryItemClass; set => inventoryItemClass = value; }
-    
+
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E026000), sinceVersion: 1)]
     public int InventoryOccupation { get => inventoryOccupation; set => inventoryOccupation = value; }
 
     #endregion
@@ -81,8 +88,6 @@ public class CGameCommonItemEntityModelEdition : CMwNod
     }
 
     #endregion
-
-    #region Chunks
 
     #region 0x000 chunk
 
@@ -118,16 +123,12 @@ public class CGameCommonItemEntityModelEdition : CMwNod
         public CMwNod? U22;
         public bool? U23;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCommonItemEntityModelEdition n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
-            
+
             rw.EnumInt32<EItemType>(ref n.itemType);
             rw.NodeRef<CPlugCrystal>(ref n.meshCrystal!);
             rw.String(ref U01);
@@ -135,7 +136,7 @@ public class CGameCommonItemEntityModelEdition : CMwNod
 
             rw.Int32(ref U03); // CPlugFileImg array
             if (U03 > 0) throw new Exception("CPlugFileImg array not empty");
-            
+
             rw.Int32(ref U04); // SSpriteParam array
             if (U04 > 0) throw new Exception("SSpriteParam array not empty");
 
@@ -160,7 +161,7 @@ public class CGameCommonItemEntityModelEdition : CMwNod
             {
                 rw.Single(ref n.mass);
             }
- 
+
             rw.Boolean(ref U16);
 
             if (!U16)
@@ -204,6 +205,17 @@ public class CGameCommonItemEntityModelEdition : CMwNod
     }
 
     #endregion
+
+    #region 0x001 skippable chunk
+
+    /// <summary>
+    /// CGameCommonItemEntityModelEdition 0x001 skippable chunk
+    /// </summary>
+    [Chunk(0x2E026001), IgnoreChunk]
+    public class Chunk2E026001 : SkippableChunk<CGameCommonItemEntityModelEdition>
+    {
+        
+    }
 
     #endregion
 }

@@ -1,0 +1,226 @@
+﻿@using GBX.NET
+@using GBX.NET.Attributes
+
+@inject IGbxService GbxService
+@inject ITypeCacheService TypeCacheService
+@inject ISelectionService SelectionService
+@inject IValuePreviewService ValuePreviewService
+
+<div class="section section-preview@(Gbx is null ? " centered-note" : "")" style="overflow:hidden">
+    @if (Gbx is null)
+    {
+        <span>No *.Gbx is selected.</span>
+    }
+    else
+    {
+        <div class="tabs">
+            <div class="@(selectedPreview == 0 ? "selected" : "")" @onclick="() => selectedPreview = 0">Header preview</div>
+            <div class="@(selectedPreview == 1 ? "selected" : "")" @onclick="() => selectedPreview = 1">Value preview</div>
+        </div>
+        <div style="display:flex;align-items:center;flex-direction:column;overflow: hidden auto;">
+
+            @switch (selectedPreview)
+            {
+                case 0:
+                    var header = Gbx.Gbx.Header;
+                    var refTable = Gbx.Gbx.RefTable;
+
+                    <div class="header-grid">
+                        <div>Version</div>
+                        <div style="font-family:Source Code Pro">@header.Version</div>
+                        <div>Format</div>
+                        <div style="font-family:Source Code Pro">@header.Format</div>
+                        <div>Ref. table compression</div>
+                        <div style="font-family:Source Code Pro">@header.CompressionOfRefTable</div>
+                        <div>Body compression</div>
+                        <div style="font-family:Source Code Pro">@header.CompressionOfBody</div>
+                        <div>
+                            <span class="tooltip-small-width" data-title="Is intended to be modified and not overwriten (just a theory).">
+                                Is editable?
+                            </span>
+                        </div>
+                        @if (header.UnknownByte.HasValue)
+                        {
+                            <div style="font-family:Source Code Pro">
+                                @switch (header.UnknownByte)
+                                {
+                                    case 'R':
+                                        <span>No</span>
+                                        break;
+                                    case 'E':
+                                        <span>Yes</span>
+                                        break;
+                                }
+                            </div>
+                        }
+                        <div>
+                            Class ID
+                        </div>
+                        <div style="font-family:Source Code Pro">
+                            0x@(header.Id.ToString("X8"))
+                        </div>
+                        <div>
+                            User data size
+                        </div>
+                        <div style="font-family:Source Code Pro">
+                            @if (header.UserData.Length < 1000)
+                            {
+                                <span>@header.UserData.Length B</span>
+                            }
+                            else
+                            {
+                                <span>@(header.UserData.Length / 1000f) kB</span>
+                            }
+                        </div>
+
+                        @{
+                            var chunkList = header.GetChunkList();
+                        }
+
+                        <div>
+                            Number of header chunks
+                        </div>
+                        <div style="font-family:Source Code Pro">
+                            @chunkList.Count
+                        </div>
+
+                        @foreach (var (chunkId, size) in chunkList)
+                        {
+                            <div style="font-family:Source Code Pro">
+                                0x@(chunkId.ToString("X8"))
+                            </div>
+                            <div style="font-family:Source Code Pro">
+                                @size.Size B @(size.IsHeavy ? "(Heavy)" : "")
+                            </div>
+                        }
+
+                        <div>
+                            Number of nodes
+                        </div>
+                        <div style="font-family:Source Code Pro">
+                            @header.NumNodes
+                        </div>
+                    </div>
+
+                    @if (refTable is not null)
+                    {
+                        <hr />
+                        <div style="font-size:1.3rem">
+                            Files in reference table
+                        </div>
+                        <div style="text-align:center;font-family:Source Code Pro">
+                            <ul>
+                                @foreach (var file in refTable.Files)
+                                {
+                                    <li>@file.FileName</li>
+                                }
+                            </ul>
+                        </div>
+                    }
+
+                    break;
+
+                case 1:
+                    @if (selectedElement is not null)
+                    {
+                        var val = selectedElement.GetValue();
+                        var supposedType = selectedElement.Property?.PropertyType ?? val?.GetType();
+                        var actualType = val?.GetType() ?? selectedElement.Property?.PropertyType;
+
+                        var typeInfo = default(TypeInfoModel);
+                        var isNullable = default(bool?);
+
+                        if (supposedType is not null)
+                        {
+                            (typeInfo, isNullable) = TypeCacheService.GetTypeInfoModel(supposedType, selectedElement.Property);
+                        }
+
+                        <div>
+                            <TypeRenderer Property="selectedElement.Property" TypeInfo="typeInfo" IsNullable="isNullable" />
+                        </div>
+                        <div style="font-size: 1.7rem;font-weight:bold;">
+                            @(selectedElement.Property?.Name ?? $"#{selectedElement.Id}")
+                        </div>
+                        <div style="width:100%;display:flex;flex-direction:column;align-items:center">
+                            <DynamicComponent Type="ValuePreviewService[actualType]" Parameters="GetValuePreviewParameters(val, selectedElement.Property, selectedElement.Owner)" />
+                        </div>
+
+                        <hr />
+                    }
+
+                    var node = Gbx?.Gbx?.Node;
+
+                    @if (node is not null)
+                    {
+                        var (mainNodeTypeInfo, _) = TypeCacheService.GetTypeInfoModel(node.GetType(), property: null);
+
+                        <div style="font-size: 2rem;font-weight:bold">
+                            Main node
+                        </div>
+
+                        <div style="font-size: 1.3rem;">
+                            <TypeRenderer TypeInfo="mainNodeTypeInfo" />
+                        </div>
+
+                        <NodeValuePreview Value="node" SectionPreview="this" />
+                    }
+
+                    break;
+            }
+        
+        </div>
+    }
+</div>
+
+@code {
+    private NodeTreeElement? selectedElement;
+    private int selectedPreview;
+
+    public GbxModel? Gbx { get; set; }
+
+    [Parameter]
+    public Pages.Index? IndexPage { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Gbx = GbxService.SelectedGbx;
+        SelectionService.SelectionChanged += OnSelectionChanged;
+    }
+
+    private void OnSelectionChanged(NodeTreeElement? element)
+    {
+        selectedElement = element;
+
+        if (element is not null)
+        {
+            selectedPreview = 1;
+        }
+
+        Update();
+    }
+
+    public void Update()
+    {
+        StateHasChanged();
+    }
+
+    public void SelectGbx(GbxModel gbx)
+    {
+        Gbx = gbx;
+        Update();
+    }
+
+    public void UpdateNodeTreeExplorer()
+    {
+        IndexPage?.UpdateNodeTreeExplorer();
+    }
+
+    private Dictionary<string, object?> GetValuePreviewParameters(object? value, PropertyInfo? property, object? owner = null) => new()
+    {
+        { "Value", value },
+        { "SectionPreview", this },
+        { "Property", property },
+        { "OwnerObject", owner },
+        { "Gbx", Gbx }
+    };
+}

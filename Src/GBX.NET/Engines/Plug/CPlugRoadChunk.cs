@@ -15,13 +15,16 @@ public class CPlugRoadChunk : CMwNod
     [Chunk(0x09128000)]
     public class Chunk09128000 : Chunk<CPlugRoadChunk>, IVersionable
     {
-        public int Version { get; set; }
-        public byte[]? UnknownData { get; set; }
+        private int version;
+
+        public byte[]? U01;
+
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CPlugRoadChunk n, GameBoxReaderWriter rw)
         {
-            Version = rw.Int32(Version);
-            UnknownData = rw.Reader!.ReadUntilFacade().ToArray();
+            rw.Int32(ref version);
+            U01 = rw.Reader!.ReadUntilFacade().ToArray();
         }
     }
 }

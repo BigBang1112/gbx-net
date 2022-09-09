@@ -349,7 +349,7 @@ public class GameBoxWriter : BinaryWriter
     {
         if (nodeFile is not null)
         {
-            var nodeFileIndex = nodeFile.NodeIndex + 1;
+            var nodeFileIndex = nodeFile.NodeIndex;
 
             while (AuxNodes.ContainsKey(nodeFileIndex))
             {
@@ -358,7 +358,7 @@ public class GameBoxWriter : BinaryWriter
 
             nodeFile.NodeIndex = nodeFileIndex;
 
-            Write(nodeFileIndex);
+            Write(nodeFileIndex + 1);
             
             AuxNodes.Add(nodeFileIndex, null);
 
@@ -560,11 +560,7 @@ public class GameBoxWriter : BinaryWriter
 
             if (Logger?.IsEnabled(LogLevel.Debug) == true)
             {
-                Logger?.LogDebug("[{className}] {current}/{count} ({time}ms)",
-                    nodeType.FullName!.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::"),
-                    counter + 1,
-                    count,
-                    watch.Elapsed.TotalMilliseconds);
+                Logger?.LogNodeArrayProgress(nodeType.Name, counter + 1, count, watch.Elapsed.TotalMilliseconds);
             }
 
             counter += 1;

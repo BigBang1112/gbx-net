@@ -26,45 +26,35 @@ public class CGameCtnMediaTrack : CMwNod
     /// Name of the track.
     /// </summary>
     [NodeMember]
-    public string Name
-    {
-        get => name;
-        set => name = value;
-    }
+    [SupportsFormatting]
+    [AppliedWithChunk(typeof(Chunk03078001))]
+    public string Name { get => name; set => name = value; }
 
     /// <summary>
     /// List of blocks.
     /// </summary>
     [NodeMember]
-    public IList<CGameCtnMediaBlock> Blocks
-    {
-        get => blocks;
-        set => blocks = value;
-    }
+    [AppliedWithChunk(typeof(Chunk03078001))]
+    public IList<CGameCtnMediaBlock> Blocks { get => blocks; set => blocks = value; }
 
     /// <summary>
     /// If the track should keep playing the last block after it ends.
     /// </summary>
     [NodeMember]
-    public bool IsKeepPlaying
-    {
-        get => isKeepPlaying;
-        set => isKeepPlaying = value;
-    }
+    [AppliedWithChunk(typeof(Chunk03078002))]
+    [AppliedWithChunk(typeof(Chunk03078004))]
+    [AppliedWithChunk(typeof(Chunk03078005))]
+    public bool IsKeepPlaying { get => isKeepPlaying; set => isKeepPlaying = value; }
 
     [NodeMember]
-    public bool IsCycling
-    {
-        get => isCycling;
-        set => isCycling = value;
-    }
+    [AppliedWithChunk(typeof(Chunk03078005))]
+    public bool IsCycling { get => isCycling; set => isCycling = value; }
 
     [NodeMember]
-    public bool IsReadOnly
-    {
-        get => isReadOnly;
-        set => isReadOnly = value;
-    }
+    [AppliedWithChunk(typeof(Chunk03078003))]
+    [AppliedWithChunk(typeof(Chunk03078004))]
+    [AppliedWithChunk(typeof(Chunk03078005))]
+    public bool IsReadOnly { get => isReadOnly; set => isReadOnly = value; }
 
     #endregion
 
@@ -118,20 +108,14 @@ public class CGameCtnMediaTrack : CMwNod
     [Chunk(0x03078001, "main")]
     public class Chunk03078001 : Chunk<CGameCtnMediaTrack>
     {
-        private int tracksVersion = 10;
+        private int listVersion = 10;
 
         public int U02 = -1;
-
-        public int TracksVersion
-        {
-            get => tracksVersion;
-            set => tracksVersion = value;
-        }
 
         public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
         {
             rw.String(ref n.name!);
-            rw.Int32(ref tracksVersion);
+            rw.Int32(ref listVersion);
             rw.ListNode<CGameCtnMediaBlock>(ref n.blocks!);
             rw.Int32(ref U02);
         }
@@ -139,7 +123,7 @@ public class CGameCtnMediaTrack : CMwNod
         public override async Task ReadWriteAsync(CGameCtnMediaTrack n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
             rw.String(ref n.name!);
-            rw.Int32(ref tracksVersion);
+            rw.Int32(ref listVersion);
             n.blocks = (await rw.ListNodeAsync<CGameCtnMediaBlock>(n.blocks!, cancellationToken))!;
             rw.Int32(ref U02);
         }
@@ -183,18 +167,15 @@ public class CGameCtnMediaTrack : CMwNod
     #region 0x004 chunk (TMUF parameters)
 
     /// <summary>
-    /// CGameCtnMediaTrack 0x004 chunk (TMUF parameters). Represents <see cref="IsKeepPlaying"/> for TMF tracks. This chunk should be removed or transfered
-    /// to <see cref="Chunk03078005"/> in the new versions of ManiaPlanet with <see cref="TransferMediaTrackTo005"/>.
+    /// CGameCtnMediaTrack 0x004 chunk (TMUF parameters). Represents This chunk should be removed or transfered to <see cref="Chunk03078005"/> in the new versions of ManiaPlanet with <see cref="TransferMediaTrackTo005"/>, as ManiaPlanet corrupted backwards compatibility of this one.
     /// </summary>
     [Chunk(0x03078004, "TMUF parameters")]
     public class Chunk03078004 : Chunk<CGameCtnMediaTrack>
     {
-        public int U01;
-
         public override void ReadWrite(CGameCtnMediaTrack n, GameBoxReaderWriter rw)
         {
             rw.Boolean(ref n.isKeepPlaying);
-            rw.Int32(ref U01); // probably isReadOnly
+            rw.Boolean(ref n.isReadOnly);
         }
     }
 

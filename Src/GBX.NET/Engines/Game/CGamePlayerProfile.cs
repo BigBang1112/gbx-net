@@ -15,28 +15,18 @@ public partial class CGamePlayerProfile : CMwNod, CGamePlayerProfile.IHeader
     public HeaderChunkSet HeaderChunks { get; } = new();
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0308C000))]
     public string? OnlineLogin { get => onlineLogin; set => onlineLogin = value; }
     
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0308C000))]
     public string? OnlineSupportKey { get => onlineSupportKey; set => onlineSupportKey = value; }
 
-    public CGameNetOnlineMessage[]? Messages
-    {
-        get => messages;
-        set => messages = value;
-    }
+    public CGameNetOnlineMessage[]? Messages { get => messages; set => messages = value; }
 
-    public CInputBindingsConfig? InputBindingsConfig
-    {
-        get => inputBindingsConfig;
-        set => inputBindingsConfig = value;
-    }
+    public CInputBindingsConfig? InputBindingsConfig { get => inputBindingsConfig; set => inputBindingsConfig = value; }
 
-    public CGameLeague[]? Leagues
-    {
-        get => leagues;
-        set => leagues = value;
-    }
+    public CGameLeague[]? Leagues { get => leagues; set => leagues = value; }
 
     public string? Description
     {

@@ -7,41 +7,21 @@
 [Node(0x03145000)]
 public class CGameCtnMediaBlockShoot : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {
-    #region Fields
-
     private TimeSingle start;
     private TimeSingle end = TimeSingle.FromSeconds(3);
 
-    #endregion
-
-    #region Properties
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03145000))]
+    public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    public TimeSingle Start
-    {
-        get => start;
-        set => start = value;
-    }
-
-    [NodeMember]
-    public TimeSingle End
-    {
-        get => end;
-        set => end = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk03145000))]
+    public TimeSingle End { get => end; set => end = value; }
 
     protected CGameCtnMediaBlockShoot()
     {
 
     }
-
-    #endregion
-
-    #region Chunks
 
     #region 0x000 chunk
 
@@ -57,8 +37,6 @@ public class CGameCtnMediaBlockShoot : CGameCtnMediaBlock, CGameCtnMediaBlock.IH
             rw.TimeSingle(ref n.end);
         }
     }
-
-    #endregion
 
     #endregion
 }

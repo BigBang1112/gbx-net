@@ -5,6 +5,8 @@
 public class CGameObjectModel : CMwNod
 {
 #pragma warning disable IDE1006
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk2E01D000))]
     public uint m_InventoryParams_InventoryOccupation { get; set; }
 #pragma warning restore IDE1006
 

@@ -8,13 +8,7 @@
 [NodeExtension("GameCtnMediaBlock3dStereo")]
 public partial class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
-    #region Fields
-
     private IList<Key> keys;
-
-    #endregion
-
-    #region Properties
 
     IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
     {
@@ -23,26 +17,13 @@ public partial class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, CGameCtnMe
     }
 
     [NodeMember]
-    public IList<Key> Keys
-    {
-        get => keys;
-        set => keys = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk03024000))]
+    public IList<Key> Keys { get => keys; set => keys = value; }
 
     protected CGameCtnMediaBlock3dStereo()
     {
-        keys = null!;
+        keys = Array.Empty<Key>();
     }
-
-    #endregion
-
-    #region Chunks
-
-    #region 0x000 chunk
 
     /// <summary>
     /// CGameCtnMediaBlock3dStereo 0x000 chunk
@@ -55,8 +36,4 @@ public partial class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, CGameCtnMe
             rw.ListKey(ref n.keys!);
         }
     }
-
-    #endregion
-
-    #endregion
 }

@@ -1,0 +1,16 @@
+﻿.display {
+    justify-content: right;
+}
+
+.tree-overflow {
+    overflow: auto;
+    display: flex;
+    height: 100%;
+}
+
+
+@media (max-width: 1000px) {
+    .tree-overflow {
+        max-height: 500px;
+    }
+}

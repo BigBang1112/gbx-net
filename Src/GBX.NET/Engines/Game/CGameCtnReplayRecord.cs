@@ -32,7 +32,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     private CGameCtnMediaClip? clip;
     private CPlugEntRecordData? recordData;
     private CCtnMediaBlockEventTrackMania? events;
-    private int? eventsDuration;
+    private TimeInt32? eventsDuration;
     private ControlEntry[]? controlEntries;
     private string? game;
     private CCtnMediaBlockUiTMSimpleEvtsDisplay? simpleEventsDisplay;
@@ -41,26 +41,20 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region Properties
 
-#if DEBUG
-    /// <summary>
-    /// Shows members that are available from the GBX header (members where reading the body is not required). This method is available only in DEBUG configuration.
-    /// </summary>
-    /// <remarks>This is just a helper method that just returns THIS object, just casted as <see cref="IHeader"/>. Avoid using this method in production.</remarks>
-    public IHeader GetHeaderMembers() => this;
-#endif
-
     public HeaderChunkSet HeaderChunks { get; } = new();
 
     /// <summary>
     /// Map UID, environment, and author login of the map the replay orients in.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03093000), sinceVersion: 2)]
     public Ident? MapInfo => mapInfo;
 
     /// <summary>
     /// The record time.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03093000), sinceVersion: 2)]
     public TimeInt32? Time => time;
 
     /// <summary>
@@ -68,18 +62,21 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// </summary>
     [NodeMember]
     [SupportsFormatting]
+    [AppliedWithChunk(typeof(Chunk03093000), sinceVersion: 2)]
     public string? PlayerNickname => playerNickname;
 
     /// <summary>
     /// Login of the record owner.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03093000), sinceVersion: 6)]
     public string? PlayerLogin => playerLogin;
 
     /// <summary>
     /// Title pack the replay orients in.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03093000), sinceVersion: 8)]
     public string? TitleID
     {
         get
@@ -93,9 +90,12 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// XML replay information.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03093001))]
     public string? XML => xml;
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03093002H))]
+    [AppliedWithChunk(typeof(Chunk03093018))]
     public int? AuthorVersion
     {
         get
@@ -109,6 +109,8 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// Login of the replay creator.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03093002H))]
+    [AppliedWithChunk(typeof(Chunk03093018))]
     public string? AuthorLogin
     {
         get
@@ -123,6 +125,8 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// </summary>
     [NodeMember]
     [SupportsFormatting]
+    [AppliedWithChunk(typeof(Chunk03093002H))]
+    [AppliedWithChunk(typeof(Chunk03093018))]
     public string? AuthorNickname
     {
         get
@@ -136,6 +140,8 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// Zone of the replay creator.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03093002H))]
+    [AppliedWithChunk(typeof(Chunk03093018))]
     public string? AuthorZone
     {
         get
@@ -146,6 +152,8 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03093002H))]
+    [AppliedWithChunk(typeof(Chunk03093018))]
     public string? AuthorExtraInfo
     {
         get
@@ -159,6 +167,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// The map the replay orients in. Null if only the header was read.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03093002B))]
     public CGameCtnChallenge? Challenge
     {
         get
@@ -183,46 +192,60 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// </summary>
     /// <remarks>Some ghosts can be considered as <see cref="CGameCtnMediaBlockGhost"/>. See <see cref="Clip"/>.</remarks>
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03093004))]
+    [AppliedWithChunk(typeof(Chunk03093014))]
     public CGameCtnGhost[]? Ghosts => ghosts;
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03093014))]
     public long[]? Extras => extras;
 
     /// <summary>
     /// MediaTracker clip of the replay.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0309300C))]
+    [AppliedWithChunk(typeof(Chunk03093015))]
     public CGameCtnMediaClip? Clip => clip;
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03093024))]
     public CPlugEntRecordData? RecordData => recordData;
 
     /// <summary>
     /// Events occuring during the replay. Available in TMS and older games.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0309300E))]
     public CCtnMediaBlockEventTrackMania? Events => events;
 
     /// <summary>
     /// Events occuring during the replay. Available in TMS and older games.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03093010))]
     public CCtnMediaBlockUiTMSimpleEvtsDisplay? SimpleEventsDisplay => simpleEventsDisplay;
 
     /// <summary>
     /// Duration of events in the replay (range of detected inputs). This can be 0 if the replay was driven in editor and null if driven in TMU, TMUF, TMTurbo, TM2 and TM2020.
     /// </summary>
     [NodeMember]
-    public int? EventsDuration => eventsDuration;
+    [AppliedWithChunk(typeof(Chunk03093003))]
+    [AppliedWithChunk(typeof(Chunk0309300D))]
+    public TimeInt32? EventsDuration => eventsDuration;
 
     /// <summary>
     /// Inputs (keyboard, pad, wheel) of the replay from TM1.0, TMO, Sunrise and ESWC. For inputs stored in TMU, TMUF, TMTurbo and TM2: see <see cref="CGameCtnGhost.ControlEntries"/> in <see cref="Ghosts"/>. TM2020 and Shootmania inputs aren't available in replays and ghosts. Can be null if <see cref="EventsDuration"/> is 0, which can happen when you save the replay in editor.
     /// </summary>
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03093003))]
+    [AppliedWithChunk(typeof(Chunk0309300D))]
     public ControlEntry[]? ControlEntries => controlEntries;
 
     [NodeMember]
-    public string? Game
+    [AppliedWithChunk(typeof(Chunk03093008))]
+    [AppliedWithChunk(typeof(Chunk0309300F))]
+    public string? Game // Needs further look
     {
         get
         {
@@ -244,7 +267,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region Methods
 
-    public IEnumerable<CGameCtnGhost> GetGhosts()
+    public IEnumerable<CGameCtnGhost> GetGhosts(bool alsoInClips = true)
     {
         if (ghosts is not null)
         {
@@ -254,7 +277,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             }
         }
 
-        if (clip is not null)
+        if (alsoInClips && clip is not null)
         {
             foreach (var track in clip.Tracks)
             {
@@ -289,7 +312,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
         {
             Version = r.ReadInt32();
 
-            if (Version >= 2)
+            if (Version >= 2) // Versionings may not be exact, don't forget to adjust attributes
             {
                 n.mapInfo = r.ReadIdent();
                 n.time = r.ReadTimeInt32Nullable();
@@ -379,9 +402,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
         {
-            n.eventsDuration = r.ReadInt32();
+            n.eventsDuration = r.ReadTimeInt32();
 
-            if (n.eventsDuration == 0)
+            if (n.eventsDuration == TimeInt32.Zero)
                 return;
 
             U01 = r.ReadInt32();
@@ -547,9 +570,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
         {
-            n.eventsDuration = r.ReadInt32();
+            n.eventsDuration = r.ReadTimeInt32();
 
-            if (n.eventsDuration == 0)
+            if (n.eventsDuration == TimeInt32.Zero)
                 return;
 
             U01 = r.ReadInt32();
@@ -680,13 +703,11 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     [Chunk(0x03093014, "ghosts")]
     public class Chunk03093014 : Chunk<CGameCtnReplayRecord>
     {
-        private int listVersion;
-
         public int U01;
 
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
         {
-            listVersion = r.ReadInt32();
+            _ = r.ReadInt32(); // listVersion
             n.ghosts = r.ReadArray(r => r.ReadNodeRef<CGameCtnGhost>()!);
             U01 = r.ReadInt32();
             n.extras = r.ReadArray(r => r.ReadInt64());
@@ -694,7 +715,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
         public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, CancellationToken cancellationToken = default)
         {
-            listVersion = r.ReadInt32();
+            _ = r.ReadInt32(); // listVersion
             n.ghosts = (await r.ReadArrayAsync(r => r.ReadNodeRefAsync<CGameCtnGhost>()!))!;
             U01 = r.ReadInt32();
             n.extras = r.ReadArray(r => r.ReadInt64());

@@ -1,7 +1,11 @@
-﻿namespace GBX.NET.Utils;
+﻿using System.Text;
 
-internal class ObjFileExporter : IModelExporter, IDisposable
+namespace GBX.NET.Utils;
+
+public class ObjFileExporter : IModelExporter, IDisposable
 {
+    private static readonly Encoding utf8NoBOM = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
+
     private readonly StreamWriter objWriter;
     private readonly StreamWriter mtlWriter;
     private readonly StringWriter objFaceWriter;
@@ -13,10 +17,24 @@ internal class ObjFileExporter : IModelExporter, IDisposable
     private int offsetVert;
     private int offsetUv;
 
-    public ObjFileExporter(Stream objStream, Stream mtlStream, int? mergeVerticesDigitThreshold = null, string? gameDataFolderPath = null)
+    /// <summary>
+    /// Creates an exporter to .obj file.
+    /// </summary>
+    /// <param name="objStream">Stream to write OBJ content into.</param>
+    /// <param name="mtlStream">Stream to write MTL content into.</param>
+    /// <param name="mergeVerticesDigitThreshold">If set, overlapping vertices (usually between the mesh groups) will be merged. 3 or 4 give the best accuracy.</param>
+    /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>
+    /// <param name="encoding">Encoding to use.</param>
+    /// <param name="leaveOpen">If to keep the streams open.</param>
+    public ObjFileExporter(Stream objStream,
+                           Stream mtlStream,
+                           int? mergeVerticesDigitThreshold = null,
+                           string? gameDataFolderPath = null,
+                           Encoding? encoding = null,
+                           bool leaveOpen = false)
     {
-        objWriter = new StreamWriter(objStream);
-        mtlWriter = new StreamWriter(mtlStream);
+        objWriter = new StreamWriter(objStream, encoding ?? utf8NoBOM, bufferSize: 1024, leaveOpen);
+        mtlWriter = new StreamWriter(mtlStream, encoding ?? utf8NoBOM, bufferSize: 1024, leaveOpen);
         objFaceWriter = new StringWriter();
         objUvWriter = new StringWriter();
         
@@ -24,7 +42,7 @@ internal class ObjFileExporter : IModelExporter, IDisposable
         this.gameDataFolderPath = gameDataFolderPath;
     }
 
-    public void Export(CPlugCrystal crystal)
+    public virtual void Export(CPlugCrystal crystal)
     {
         var invariant = System.Globalization.CultureInfo.InvariantCulture;
 
@@ -34,75 +52,71 @@ internal class ObjFileExporter : IModelExporter, IDisposable
 
         var validMaterials = new List<string>();
 
-        if (crystal.Materials is not null)
+        foreach (var mat in crystal.Materials)
         {
-            foreach (var mat in crystal.Materials)
+            if (mat is null || mat.Link is null)
             {
-                if (mat is null || mat.Link is null)
-                {
-                    continue;
-                }
-                
-                mtlWriter.WriteLine("newmtl " + mat.Link);
-
-                if (gameDataFolderPath is null)
-                {
-                    continue;
-                }
-
-                var materialPath = $"{gameDataFolderPath}/{mat.Link}.Material.Gbx";
-
-                if (!File.Exists(materialPath))
-                {
-                    continue;
-                }
-
-                var matGbx = GameBox.ParseHeader($"{gameDataFolderPath}/{mat.Link}.Material.Gbx");
-
-                var refTable = matGbx.RefTable;
-
-                if (refTable is null)
-                {
-                    continue;
-                }
-
-                var texGbxFile = refTable.Files.FirstOrDefault(x => x.FileName?.Contains("D.Texture") == true); // Needs to get diffuse, not ideal atm
-                
-                if (texGbxFile is null)
-                {
-                    continue;
-                }
-                
-                var texGbxFolder = Path.GetDirectoryName(matGbx.FileName) ?? "";
-                var textGbxPath = Path.Combine(texGbxFolder, refTable.GetRelativeFolderPathToFile(texGbxFile), texGbxFile.FileName!);
-
-                var texGbx = GameBox.ParseHeader(textGbxPath);
-
-                var texRefTable = texGbx.RefTable;
-
-                if (texRefTable is null)
-                {
-                    continue;
-                }
-
-                var texDdsFile = texRefTable.Files.FirstOrDefault(x => x.FileName?.ToLower().EndsWith(".dds") == true);
-
-                if (texDdsFile is null)
-                {
-                    continue;
-                }
-
-                var texDdsFolder = Path.GetDirectoryName(texGbx.FileName) ?? "";
-                var texDdsFilePath = Path.Combine(texDdsFolder, texRefTable.GetRelativeFolderPathToFile(texDdsFile), texDdsFile.FileName!);
-
-                mtlWriter.WriteLine($"map_Ka \"{texDdsFilePath}\"");
-                mtlWriter.WriteLine($"map_Kd \"{texDdsFilePath}\"");
-
-                mtlWriter.WriteLine("Ka 1.000 1.000 1.000");
-                mtlWriter.WriteLine("Kd 1.000 1.000 1.000");
-
-                validMaterials.Add(mat.Link);
+                continue;
             }
+                
+            mtlWriter.WriteLine("newmtl " + mat.Link);
+            validMaterials.Add(mat.Link);
+
+            if (gameDataFolderPath is null)
+            {
+                continue;
+            }
+
+            var materialPath = $"{gameDataFolderPath}/{mat.Link}.Material.Gbx";
+
+            if (!File.Exists(materialPath))
+            {
+                continue;
+            }
+
+            var matGbx = GameBox.ParseHeader($"{gameDataFolderPath}/{mat.Link}.Material.Gbx");
+
+            var refTable = matGbx.RefTable;
+
+            if (refTable is null)
+            {
+                continue;
+            }
+
+            var texGbxFile = refTable.Files.FirstOrDefault(x => x.FileName?.Contains("D.Texture") == true); // Needs to get diffuse, not ideal atm
+                
+            if (texGbxFile is null)
+            {
+                continue;
+            }
+                
+            var texGbxFolder = Path.GetDirectoryName(matGbx.FileName) ?? "";
+            var textGbxPath = Path.Combine(texGbxFolder, refTable.GetRelativeFolderPathToFile(texGbxFile), texGbxFile.FileName!);
+
+            var texGbx = GameBox.ParseHeader(textGbxPath);
+
+            var texRefTable = texGbx.RefTable;
+
+            if (texRefTable is null)
+            {
+                continue;
+            }
+
+            var texDdsFile = texRefTable.Files.FirstOrDefault(x => x.FileName?.ToLower().EndsWith(".dds") == true);
+
+            if (texDdsFile is null)
+            {
+                continue;
+            }
+
+            var texDdsFolder = Path.GetDirectoryName(texGbx.FileName) ?? "";
+            var texDdsFilePath = Path.Combine(texDdsFolder, texRefTable.GetRelativeFolderPathToFile(texDdsFile), texDdsFile.FileName!);
+
+            mtlWriter.WriteLine($"map_Ka \"{texDdsFilePath}\"");
+            mtlWriter.WriteLine($"map_Kd \"{texDdsFilePath}\"");
+
+            mtlWriter.WriteLine("Ka 1.000 1.000 1.000");
+            mtlWriter.WriteLine("Kd 1.000 1.000 1.000");
         }
 
         var positionsDict = mergeVerticesDigitThreshold.HasValue
@@ -187,7 +201,7 @@ internal class ObjFileExporter : IModelExporter, IDisposable
         Merge();
     }
 
-    public void Export(CPlugTree tree)
+    public virtual void Export(CPlugTree tree)
     {
         ExportRecurse(tree);
         Merge();
@@ -384,7 +398,7 @@ internal class ObjFileExporter : IModelExporter, IDisposable
         }
     }
 
-    public void Dispose()
+    public virtual void Dispose()
     {
         objWriter.Dispose();
         mtlWriter.Dispose();

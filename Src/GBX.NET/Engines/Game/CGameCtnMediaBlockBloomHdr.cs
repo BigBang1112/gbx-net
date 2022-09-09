@@ -8,13 +8,7 @@
 [NodeExtension("GameCtnMediaBlockBloomHdr")]
 public partial class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
-    #region Fields
-
     private IList<Key> keys;
-
-    #endregion
-
-    #region Properties
 
     IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
     {
@@ -23,24 +17,33 @@ public partial class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMe
     }
 
     [NodeMember]
-    public IList<Key> Keys
-    {
-        get => keys;
-        set => keys = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk03128000))]
+    [AppliedWithChunk(typeof(Chunk03128001))]
+    [AppliedWithChunk(typeof(Chunk03128002))]
+    public IList<Key> Keys { get => keys; set => keys = value; }
 
     protected CGameCtnMediaBlockBloomHdr()
     {
-        keys = null!;
+        keys = Array.Empty<Key>();
+    }
+
+    #region Chunks
+
+    #region 0x000 chunk
+
+    /// <summary>
+    /// CGameCtnMediaBlockBloomHdr 0x000 chunk
+    /// </summary>
+    [Chunk(0x03128000)]
+    public class Chunk03128000 : Chunk<CGameCtnMediaBlockBloomHdr>
+    {
+        public override void ReadWrite(CGameCtnMediaBlockBloomHdr n, GameBoxReaderWriter rw)
+        {
+            rw.ListKey(ref n.keys!);
+        }
     }
 
     #endregion
-
-    #region Chunks
 
     #region 0x001 chunk
 
@@ -48,12 +51,9 @@ public partial class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMe
     /// CGameCtnMediaBlockBloomHdr 0x001 chunk
     /// </summary>
     [Chunk(0x03128001)]
-    public class Chunk03128001 : Chunk<CGameCtnMediaBlockBloomHdr>
+    public class Chunk03128001 : Chunk03128000
     {
-        public override void ReadWrite(CGameCtnMediaBlockBloomHdr n, GameBoxReaderWriter rw)
-        {
-            rw.ListKey(ref n.keys!);
-        }
+
     }
 
     #endregion
@@ -64,12 +64,9 @@ public partial class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMe
     /// CGameCtnMediaBlockBloomHdr 0x002 chunk
     /// </summary>
     [Chunk(0x03128002)]
-    public class Chunk03128002 : Chunk<CGameCtnMediaBlockBloomHdr>
+    public class Chunk03128002 : Chunk03128000
     {
-        public override void ReadWrite(CGameCtnMediaBlockBloomHdr n, GameBoxReaderWriter rw)
-        {
-            rw.ListKey(ref n.keys!);
-        }
+        
     }
 
     #endregion

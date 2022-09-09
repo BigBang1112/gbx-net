@@ -4,28 +4,16 @@
 [Node(0x031B7000)]
 public partial class CGameUserFileList : CMwNod
 {
-    #region Fields
-
     private IList<FileInfo> files;
 
-    #endregion
-
-    #region Properties
-
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk031B7000))]
     public IList<FileInfo> Files { get => files; set => files = value; }
-
-    #endregion
-
-    #region Constructors
 
     protected CGameUserFileList()
     {
-        files = null!;
+        files = Array.Empty<FileInfo>();
     }
-
-    #endregion
-
-    #region Chunks
 
     #region 0x000 chunk
 
@@ -47,8 +35,6 @@ public partial class CGameUserFileList : CMwNod
             rw.List<FileInfo>(ref n.files!, FileInfo.ReadWrite);
         }
     }
-
-    #endregion
 
     #endregion
 }

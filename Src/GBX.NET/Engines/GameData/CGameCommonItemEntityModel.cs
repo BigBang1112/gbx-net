@@ -8,18 +8,17 @@ public class CGameCommonItemEntityModel : CMwNod
     private CMwNod? visModel;
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E027000))]
     public CMwNod? PhyModel { get => phyModel; set => phyModel = value; }
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E027000))]
     public CMwNod? VisModel { get => visModel; set => visModel = value; }
 
     protected CGameCommonItemEntityModel()
     {
         
     }
-
-
-    #region Chunks
 
     #region 0x000 chunk
 
@@ -40,8 +39,6 @@ public class CGameCommonItemEntityModel : CMwNod
             rw.NodeRef<CMwNod>(ref n.visModel);
         }
     }
-
-    #endregion
 
     #endregion
 }

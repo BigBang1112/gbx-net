@@ -8,14 +8,8 @@
 [NodeExtension("GameCtnMediaBlockColorGrading")]
 public partial class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
-    #region Fields
-
     private FileRef image;
     private IList<Key> keys;
-
-    #endregion
-
-    #region Properties
 
     IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
     {
@@ -24,30 +18,18 @@ public partial class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, CGameC
     }
 
     [NodeMember]
-    public FileRef Image
-    {
-        get => image;
-        set => image = value;
-    }
+    [AppliedWithChunk(typeof(Chunk03186000))]
+    public FileRef Image { get => image; set => image = value; }
 
     [NodeMember]
-    public IList<Key> Keys
-    {
-        get => keys;
-        set => keys = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk03186001))]
+    public IList<Key> Keys { get => keys; set => keys = value; }
 
     protected CGameCtnMediaBlockColorGrading()
     {
-        image = null!;
-        keys = null!;
+        image = FileRef.Default;
+        keys = Array.Empty<Key>();
     }
-
-    #endregion
 
     #region Chunks
 

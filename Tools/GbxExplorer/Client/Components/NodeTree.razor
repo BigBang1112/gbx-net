@@ -1,0 +1,125 @@
+﻿@using GBX.NET;
+@using GBX.NET.Attributes;
+@using System.Collections;
+
+@inject ISelectionService SelectionService
+
+@if (Object is null)
+{
+    return;
+}
+
+<ul style="margin-left: @(Depth == 0 ? "0" : "1.5")rem;@(Depth == 0 ? " width: calc(100% - 1rem);" : "")">
+        
+    @if (ParentValueRenderer?.PreferProperties == false && ParentProperty is not null && Object is IEnumerable enumerable)
+    {
+        //cachedList ??= ;
+
+        <Virtualize Context="item" Items="enumerable.Cast<object>().Select((x, i) => (x, i)).ToList()" ItemSize="32" OverscanCount="16">
+            <li>
+                <!-- Sends the item to the tree branch, copying the depth. Counter is assigned as Id atm -->
+                <NodeTreeElement Depth="Depth" Value="item.x" Id="item.i" Tree="this" />
+            </li>
+        </Virtualize>
+    }
+    else // In case of a regular property
+    {
+        // This should be more flexible, and grouped by declaring type
+        var declaringTypeGroups = Properties
+            .OrderBy(x => x.Name)
+            .GroupBy(x => x.DeclaringType ?? throw new Exception("Declaring type is null"))
+            .ToDictionary(x => x.Key);
+
+        var sameDeclaringTypes = true;
+        var tempDeclaringType = default(Type);
+
+        foreach (var group in declaringTypeGroups)
+        {
+            if (tempDeclaringType is null)
+            {
+                tempDeclaringType = group.Key.DeclaringType;
+            }
+            else
+            {
+                if (tempDeclaringType != group.Key.DeclaringType)
+                {
+                    sameDeclaringTypes = false;
+                    break;
+                }
+            }
+        }
+
+        var type = Object.GetType();
+
+        while (type.BaseType is not null)
+        {
+            if (!declaringTypeGroups.TryGetValue(type, out var group))
+            {
+                type = type.BaseType;
+                continue;
+            }
+
+            if (declaringTypeGroups.Count > 1)
+            {
+                <li class="declaringType">
+                    @(sameDeclaringTypes || group.Key?.DeclaringType is null ? "" : $"{group.Key.DeclaringType.Name}.")@group.Key?.Name
+                </li>
+            }
+
+            foreach (var prop in group)
+            {
+                <li>
+                    <!-- Sends the property with its object owner to the tree branch, copying the depth. -->
+                    <NodeTreeElement Depth="Depth" Property="prop" Owner="Object" Tree="this"></NodeTreeElement>
+                </li>
+            }
+            
+            type = type.BaseType;
+        }
+    }
+        
+</ul>
+
+@code {
+    /// <summary>
+    /// Object to render the tree of. Can be both a property value or an enumerable.
+    /// </summary>
+    [Parameter]
+    public object? Object { get; set; }
+
+    [Parameter]
+    public int Depth { get; set; }
+
+    /// <summary>
+    /// Property "root" of the tree. Unused on enumerable case.
+    /// </summary>
+    [Parameter]
+    public PropertyInfo? ParentProperty { get; set; }
+
+    [Parameter]
+    public NodeTreeElement? Parent { get; set; }
+
+    /// <summary>
+    /// Properties to render. Unused on enumerable case.
+    /// </summary>
+    [Parameter]
+    public IEnumerable<PropertyInfo> Properties { get; set; } = Enumerable.Empty<PropertyInfo>();
+
+    /// <summary>
+    /// ValueRenderer "root" of the tree. Used to check further metadata.
+    /// </summary>
+    [Parameter]
+    public ValueRenderer? ParentValueRenderer { get; set; }
+
+    public void Update()
+    {
+        if (Parent is null)
+        {
+            StateHasChanged();
+        }
+        else
+        {
+            Parent?.Update(parent: false);
+        }
+    }
+}

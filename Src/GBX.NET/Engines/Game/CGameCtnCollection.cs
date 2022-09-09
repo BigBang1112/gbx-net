@@ -815,8 +815,8 @@ public partial class CGameCtnCollection : CMwNod, CGameCtnCollection.IHeader
             rw.EnumInt32<EBackgroundShadow>(ref n.backgroundShadow); // Boolean in the code, may bring wrong values
             rw.Single(ref n.shadowSoftSizeInWorld);
             rw.EnumInt32<EVertexLighting>(ref n.vertexLighting);
-            rw.Single(n.colorVertexMin);
-            rw.Single(n.colorVertexMax);
+            rw.Single(ref n.colorVertexMin);
+            rw.Single(ref n.colorVertexMax);
         }
     }
 

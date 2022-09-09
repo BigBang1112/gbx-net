@@ -8,13 +8,7 @@
 [NodeExtension("CtnMediaBlockCamFxShake")]
 public partial class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCameraEffect, CGameCtnMediaBlock.IHasKeys
 {
-    #region Fields
-
     private IList<Key> keys;
-
-    #endregion
-
-    #region Properties
 
     IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
     {
@@ -23,24 +17,13 @@ public partial class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCam
     }
 
     [NodeMember]
-    public IList<Key> Keys
-    {
-        get => keys;
-        set => keys = value;
-    }
-
-    #endregion
-
-    #region Constructors
+    [AppliedWithChunk(typeof(Chunk030A4000))]
+    public IList<Key> Keys { get => keys; set => keys = value; }
 
     protected CGameCtnMediaBlockCameraEffectShake()
     {
-        keys = null!;
+        keys = Array.Empty<Key>();
     }
-
-    #endregion
-
-    #region Chunks
 
     #region 0x000 chunk
 
@@ -55,8 +38,6 @@ public partial class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCam
             rw.ListKey(ref n.keys!);
         }
     }
-
-    #endregion
 
     #endregion
 }

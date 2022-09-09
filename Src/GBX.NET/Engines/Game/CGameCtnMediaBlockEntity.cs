@@ -7,27 +7,16 @@
 [Node(0x0329F000)]
 public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
 {
-    #region Fields
-
     private CPlugEntRecordData recordData;
 
-    #endregion
-
-    #region Properties
-
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0329F000))]
     public CPlugEntRecordData RecordData { get => recordData; set => recordData = value; }
-
-    #endregion
-
-    #region Constructors
 
     protected CGameCtnMediaBlockEntity()
     {
         recordData = null!;
     }
-
-    #endregion
 
     #region Chunks
 
@@ -59,11 +48,7 @@ public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
         public (string, string)[]? U16;
         public string[]? U17;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnMediaBlockEntity n, GameBoxReaderWriter rw)
         {

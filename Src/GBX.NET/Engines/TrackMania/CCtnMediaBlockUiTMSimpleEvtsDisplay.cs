@@ -28,41 +28,30 @@ public class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi
 
     #region Properties
 
-    public EDisplayMode DisplayMode
-    {
-        get => displayMode;
-        set => displayMode = value;
-    }
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk24092000))]
+    [AppliedWithChunk(typeof(Chunk24092002))]
+    public EDisplayMode DisplayMode { get => displayMode; set => displayMode = value; }
 
-    public bool StuntFigures
-    {
-        get => stuntFigures;
-        set => stuntFigures = value;
-    }
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk24092001))]
+    public bool StuntFigures { get => stuntFigures; set => stuntFigures = value; }
 
-    public bool Checkpoints
-    {
-        get => checkpoints;
-        set => checkpoints = value;
-    }
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk24092001))]
+    public bool Checkpoints { get => checkpoints; set => checkpoints = value; }
 
-    public bool EndOfRace
-    {
-        get => endOfRace;
-        set => endOfRace = value;
-    }
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk24092001))]
+    public bool EndOfRace { get => endOfRace; set => endOfRace = value; }
 
-    public bool EndOfLaps
-    {
-        get => endOfLaps;
-        set => endOfLaps = value;
-    }
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk24092001))]
+    public bool EndOfLaps { get => endOfLaps; set => endOfLaps = value; }
 
-    public bool GhostsName
-    {
-        get => ghostsName;
-        set => ghostsName = value;
-    }
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk24092001))]
+    public bool GhostsName { get => ghostsName; set => ghostsName = value; }
 
     #endregion
 

@@ -8,22 +8,7 @@
 [NodeExtension("GameCtnMediaBlockFog")]
 public partial class CGameCtnMediaBlockFog : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasKeys
 {
-    #region Fields
-
     private IList<Key> keys;
-
-    #endregion
-
-    #region Constructors
-
-    protected CGameCtnMediaBlockFog()
-    {
-        keys = null!;
-    }
-
-    #endregion
-
-    #region Properties
 
     IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
     {
@@ -32,15 +17,13 @@ public partial class CGameCtnMediaBlockFog : CGameCtnMediaBlock, CGameCtnMediaBl
     }
 
     [NodeMember]
-    public IList<Key> Keys
+    [AppliedWithChunk(typeof(Chunk03199000))]
+    public IList<Key> Keys { get => keys; set => keys = value; }
+
+    protected CGameCtnMediaBlockFog()
     {
-        get => keys;
-        set => keys = value;
+        keys = Array.Empty<Key>();
     }
-
-    #endregion
-
-    #region Chunks
 
     #region 0x000 chunk
 
@@ -52,11 +35,7 @@ public partial class CGameCtnMediaBlockFog : CGameCtnMediaBlock, CGameCtnMediaBl
     {
         private int version;
 
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnMediaBlockFog n, GameBoxReaderWriter rw)
         {
@@ -64,8 +43,6 @@ public partial class CGameCtnMediaBlockFog : CGameCtnMediaBlock, CGameCtnMediaBl
             rw.ListKey(ref n.keys!, version);
         }
     }
-
-    #endregion
 
     #endregion
 }

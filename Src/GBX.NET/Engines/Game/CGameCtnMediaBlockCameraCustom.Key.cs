@@ -27,80 +27,23 @@ public partial class CGameCtnMediaBlockCameraCustom
         public int? U07;
         public int? U08;
 
-        public Interpolation Interpolation
-        {
-            get => interpolation;
-            set => interpolation = value;
-        }
-
-        public Vec3 Position
-        {
-            get => position;
-            set => position = value;
-        }
+        public Interpolation Interpolation { get => interpolation; set => interpolation = value; }
+        public Vec3 Position { get => position; set => position = value; }
 
         /// <summary>
         /// Pitch, yaw and roll in radians.
         /// </summary>
-        public Vec3 PitchYawRoll
-        {
-            get => pitchYawRoll;
-            set => pitchYawRoll = value;
-        }
+        public Vec3 PitchYawRoll { get => pitchYawRoll; set => pitchYawRoll = value; }
 
-        public float Fov
-        {
-            get => fov;
-            set => fov = value;
-        }
-
-        public Vec3 TargetPosition
-        {
-            get => targetPosition;
-            set => targetPosition = value;
-        }
-
-        public float? NearZ
-        {
-            get => nearZ;
-            set => nearZ = value;
-        }
-
-        public int Anchor
-        {
-            get => anchor;
-            set => anchor = value;
-        }
-
-        public int Target
-        {
-            get => target;
-            set => target = value;
-        }
-
-        public bool AnchorVis
-        {
-            get => anchorVis;
-            set => anchorVis = value;
-        }
-
-        public bool AnchorRot
-        {
-            get => anchorRot;
-            set => anchorRot = value;
-        }
-
-        public InterpVal? LeftTangent
-        {
-            get => leftTangent;
-            set => leftTangent = value;
-        }
-
-        public InterpVal? RightTangent
-        {
-            get => rightTangent;
-            set => rightTangent = value;
-        }
+        public float Fov { get => fov; set => fov = value; }
+        public Vec3 TargetPosition { get => targetPosition; set => targetPosition = value; }
+        public float? NearZ { get => nearZ; set => nearZ = value; }
+        public int Anchor { get => anchor; set => anchor = value; }
+        public int Target { get => target; set => target = value; }
+        public bool AnchorVis { get => anchorVis; set => anchorVis = value; }
+        public bool AnchorRot { get => anchorRot; set => anchorRot = value; }
+        public InterpVal? LeftTangent { get => leftTangent; set => leftTangent = value; }
+        public InterpVal? RightTangent { get => rightTangent; set => rightTangent = value; }
 
         /// <exception cref="ChunkVersionNotSeenException"></exception>
         /// <exception cref="ChunkVersionNotSupportedException"></exception>
