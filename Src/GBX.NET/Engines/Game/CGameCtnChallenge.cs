@@ -3250,7 +3250,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x028 chunk (old realtime thumbnail + comments)
     /// </summary>
-    [Chunk(0x03043028, "comments")]
+    [Chunk(0x03043028, "old realtime thumbnail + comments")]
     public class Chunk03043028 : Chunk03043027
     {
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
