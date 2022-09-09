@@ -95,7 +95,7 @@ public static class NodeCacheManager
                 break;
             }
 
-            var line = stringLine.AsSpan();
+            var line = stringLine.AsSpan().TrimEnd();
 
             var spaceAtIndex = line.IndexOf(' ');
 
@@ -105,7 +105,13 @@ public static class NodeCacheManager
             }
 
             var key = line.Slice(0, spaceAtIndex);
-            var value = line.Slice(spaceAtIndex + 1);
+
+            // Hack currently, should be fine with max 2 possible values
+            var lastSpaceAtIndex = line.LastIndexOf(' ');
+            var value = lastSpaceAtIndex == spaceAtIndex
+                ? line.Slice(spaceAtIndex + 1)
+                : line.Slice(spaceAtIndex + 1, lastSpaceAtIndex - spaceAtIndex - 1);
+            //
 
 #if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
             collectionIds[int.Parse(key)] = value.ToString();
