@@ -403,7 +403,19 @@ public partial class CGameCtnGhost : CGameGhost
     /// </summary>
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk0309201D))]
-    public PlayerInputData[]? PlayerInputs { get => playerInputs; set => playerInputs = value; }
+    public PlayerInputData[]? PlayerInputs
+    {
+        get
+        {
+            DiscoverChunk<Chunk0309201D>();
+            return playerInputs;
+        }
+        set
+        {
+            DiscoverChunk<Chunk0309201D>();
+            playerInputs = value;
+        }
+    }
 
     #endregion
 
