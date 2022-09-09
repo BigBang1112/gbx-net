@@ -869,5 +869,44 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
 
     #endregion
 
+    #region 0x025 skippable chunk
+
+    /// <summary>
+    /// CGameItemModel 0x025 skippable chunk
+    /// </summary>
+    [Chunk(0x2E002025), IgnoreChunk]
+    public class Chunk2E002025 : SkippableChunk<CGameItemModel>
+    {
+        
+    }
+
+    #endregion
+
+    #region 0x026 skippable chunk
+
+    /// <summary>
+    /// CGameItemModel 0x026 skippable chunk
+    /// </summary>
+    [Chunk(0x2E002026), IgnoreChunk]
+    public class Chunk2E002026 : SkippableChunk<CGameItemModel>
+    {
+
+    }
+
+    #endregion
+
+    #region 0x027 skippable chunk
+
+    /// <summary>
+    /// CGameItemModel 0x027 skippable chunk
+    /// </summary>
+    [Chunk(0x2E002027), IgnoreChunk]
+    public class Chunk2E002027 : SkippableChunk<CGameItemModel>
+    {
+
+    }
+
+    #endregion
+
     #endregion
 }
