@@ -1,0 +1,89 @@
+﻿@using GBX.NET
+
+@inherits ValueRenderer
+@attribute [AppliesForType(typeof(Vec2))]
+
+@if (Value is null)
+{
+    <span class="element-box hoverable" data-title="The value doesn't exist. Click to create a value." @onclick="InitValue">null</span>
+    
+    @if (nullifiedValue is not null)
+    {
+        <span class="element-box hoverable utility" data-title="Revert value that was there before." @onclick="Revert">Revert</span>
+    }
+}
+else if (Value is Vec2 vec)
+{
+    var cannotWrite = Property?.CannotWrite() == true;
+
+    <span data-title="X">
+        <input type="text" @bind="X" disabled="@cannotWrite" style="min-width: 4ch; width: @(X.ToString().Length)ch;" oninput="onInputText(this)" />
+    </span>
+    <span data-title="Y">
+        <input type="text" @bind="Y" disabled="@cannotWrite" style="min-width: 4ch; width: @(Y.ToString().Length)ch;" oninput="onInputText(this)" />
+    </span>
+    @if (!cannotWrite && IsNullable)
+    {
+        <span class="element-box hoverable utility" data-title="Set this member to null." @onclick="Nullify">Nullify</span>
+    }
+}
+else
+{
+    <span>Error: value is not Vec2</span>
+}
+
+@code {
+    private object? nullifiedValue;
+    
+    public override bool ShowPropertyInTree(PropertyInfo prop) => false;
+
+    public float X
+    {
+        get => Value is Vec2 val ? val.X : 0;
+        set
+        {
+            if (Value is Vec2 val)
+            {
+                SetAndUpdate(val with { X = value }, parent: true);
+            }
+            else
+            {
+                SetAndUpdate(new Vec2(value, 0), parent: true);
+            }
+        }
+    }
+
+    public float Y
+    {
+        get => Value is Vec2 val ? val.Y : 0;
+        set
+        {
+            if (Value is Vec2 val)
+            {
+                SetAndUpdate(val with { Y = value }, parent: true);
+            }
+            else
+            {
+                SetAndUpdate(new Vec2(0, value), parent: true);
+            }
+        }
+    }
+
+    private void InitValue()
+    {
+        SetAndUpdate(default(Vec2), parent: true);
+    }
+
+    private void Nullify()
+    {
+        nullifiedValue = Value;
+        SetAndUpdate(null, parent: true);
+        LogNullified(nullifiedValue);
+    }
+
+    private void Revert()
+    {
+        SetAndUpdate(nullifiedValue, parent: true);
+        LogReversion(nullifiedValue);
+    }
+}

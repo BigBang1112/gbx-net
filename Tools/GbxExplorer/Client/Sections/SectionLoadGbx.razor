@@ -1,0 +1,69 @@
+﻿@inject IJSRuntime JS
+@inject ISettingsService Settings
+@inject ILogger Logger
+
+<div class="section section-import-gbx hoverable @(DraggedOver == true ? "hovered" : "")">
+
+    <InputFile OnChange="@OnChangeAsync"
+        @ondragenter="OnDragEnter"
+        @ondragleave="OnDragLeave"
+        @ondrop="OnDrop"
+        class="file" id="fileinput" multiple />
+
+    <div class="upload">
+        <big>&nbsp;<i class="fa-solid fa-file-arrow-up"></i>&nbsp; @ImportMessage</big>
+        <small><i class="fa-solid fa-user-shield"></i>&nbsp; The files are not going to be sent to any server.</small>
+    </div>
+
+</div>
+
+@code {
+    private const string ImportBaseMessage = "Import *.Gbx files here...";
+
+    public bool DraggedOver { get; set; }
+    public string ImportMessage { get; set; } = ImportBaseMessage;
+
+    [Parameter]
+    public EventCallback<IBrowserFile> OnImport { get; set; }
+
+    private async Task OnChangeAsync(InputFileChangeEventArgs e)
+    {
+        var files = e.GetMultipleFiles(Settings.MaxFileCountToUpload);
+
+        if (files.Count == 1)
+        {
+            Logger.LogInformation("Ready to import 1 file...");
+        }
+        else
+        {
+            Logger.LogInformation("Ready to import {count} files...", files.Count);
+        }
+
+        foreach (var file in files)
+        {
+            await OnImport.InvokeAsync(file);
+        }
+        
+        Logger.LogInformation("Import completed!");
+        
+        await JS.InvokeVoidAsync("resetFileInput");
+    }
+
+    private void OnDragEnter(DragEventArgs e)
+    {
+        DraggedOver = true;
+        ImportMessage = $"{e.DataTransfer.Items.Length} files to be imported";
+    }
+
+    private void OnDragLeave(DragEventArgs e)
+    {
+        DraggedOver = false;
+        ImportMessage = ImportBaseMessage;
+    }
+
+    private void OnDrop(DragEventArgs e)
+    {
+        DraggedOver = false;
+        ImportMessage = ImportBaseMessage;
+    }
+}

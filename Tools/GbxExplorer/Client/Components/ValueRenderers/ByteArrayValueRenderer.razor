@@ -1,0 +1,76 @@
+﻿@using GBX.NET
+@using GBX.NET.Attributes
+@using System.Collections
+
+@inherits ValueRenderer
+@attribute [AppliesForType(typeof(byte[]))]
+
+@if (Value is null)
+{
+    <span class="element-box">null</span>
+}
+else if (Value is byte[] byteArray)
+{
+    var count = byteArray.Length;
+
+    if (count > 0 && Property is not null)
+    {
+        if (Attribute.IsDefined(Property, typeof(WebpDataAttribute)))
+        {
+            <span class="element-box gbx-icon">
+                <img src="data:image/webp;base64,@Convert.ToBase64String(byteArray)" width="20" height="20" @onmouseover="() => iconHovered = true" @onmouseout="() => iconHovered = false" />
+
+                @if (iconHovered)
+                {
+                    <span style="position: relative">
+                        <img class="gbx-icon-tooltip" src="data:image/webp;base64,@Convert.ToBase64String(byteArray)" />
+                    </span>
+                }
+            </span>
+        }
+        else if (Attribute.IsDefined(Property, typeof(JpegDataAttribute)))
+        {
+            <span class="element-box gbx-icon">
+                <img src="data:image/jpeg;base64,@Convert.ToBase64String(byteArray)" style="border-radius: 0.2rem;" width="20" height="20" @onmouseover="() => iconHovered = true" @onmouseout="() => iconHovered = false" />
+
+                @if (iconHovered)
+                {
+                    <span style="position: relative">
+                        <img class="gbx-icon-tooltip" src="data:image/jpeg;base64,@Convert.ToBase64String(byteArray)" style="border-radius: 0.5rem;" />
+                    </span>
+                }
+            </span>
+        }
+    }
+    
+    @if (count == 1)
+    {
+        <span class="element-box">1 B</span>
+    }
+    else if (count == 1000)
+    {
+        <span class="element-box">1 kB</span>
+    }
+    else if (count == 1_000_000)
+    {
+        <span class="element-box">1 MB</span>
+    }
+    else if (count > 1_000_000)
+    {
+        <span class="element-box">@(count / 1_000_000f) MB</span>
+    }
+    else if (count > 1000)
+    {
+        <span class="element-box">@(count / 1000f) kB</span>
+    }
+    else
+    {
+        <span class="element-box">@count B</span>
+    }
+}
+
+@code {
+    private bool iconHovered;
+
+    public override bool ShowPropertyInTree(PropertyInfo prop) => false;
+}

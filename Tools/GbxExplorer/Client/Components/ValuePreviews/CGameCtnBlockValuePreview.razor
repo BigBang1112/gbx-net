@@ -1,0 +1,49 @@
+﻿@using GBX.NET.Engines.Game
+
+@inherits ValuePreview
+@attribute [AppliesForType(typeof(CGameCtnBlock))]
+
+@if (Value is not CGameCtnBlock block)
+{
+    <span style="color:gray">null</span>
+
+    return;
+}
+
+<div style="display: flex;align-items:center;gap:0.5rem">
+    <span>Is old block?</span>
+
+    <span class="element-box hoverable" style="padding-left:0.8rem;padding-right:0.8rem;color:#eee" @onclick="SwitchOldChunk">
+
+        @if (block.TryGetChunk<CGameCtnBlock.Chunk03057002>(out _))
+        {
+            <span><i class="fa-solid fa-check"></i></span>
+        }
+        else
+        {
+            <span style="padding-left:0.1rem;padding-right:0.1rem;"><i class="fa-solid fa-xmark"></i></span>
+        }
+
+    </span>
+</div>
+
+@code {
+    private void SwitchOldChunk()
+    {
+        if (Value is not CGameCtnBlock block)
+        {
+            return;
+        }
+
+        var chunk = block.GetChunk<CGameCtnBlock.Chunk03057002>();
+
+        if (chunk is null)
+        {
+            block.CreateChunk<CGameCtnBlock.Chunk03057002>();
+        }
+        else
+        {
+            block.RemoveChunk<CGameCtnBlock.Chunk03057002>();
+        }
+    }
+}

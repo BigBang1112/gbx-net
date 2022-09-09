@@ -1,0 +1,44 @@
+﻿@inject IGbxService GbxService
+
+<div class="section section-scripts@(selectedGbx is null ? " centered-note" : "")">
+    
+    @if (selectedGbx is null)
+    {
+        <span>No *.Gbx is selected.</span>
+    }
+    else
+    {
+        <div style="text-align: center; font-size: 1.3rem; padding-bottom: 0.3rem; font-weight: bold; overflow: hidden;">@selectedGbx.FileName</div>
+
+        @if (selectedGbx.Inheritance.HasValue)
+        {
+            <InheritanceDisplay Types="selectedGbx.Inheritance.Value" Selectable="false" OnTypeClick="OnTypeClick" />
+        }
+
+        <div style="position:absolute;left:0;right:0;bottom:1rem;text-align:center;">Scripting with Lua and Python coming soon!</div>
+    }
+    
+</div>
+
+@code {
+    private GbxModel? selectedGbx;
+
+    [Parameter]
+    public EventCallback<TypeModel> OnTypeClick { get; set; }
+
+    protected override void OnInitialized()
+    {
+        selectedGbx = GbxService.SelectedGbx;
+    }
+
+    public void Select(GbxModel gbx)
+    {
+        selectedGbx = gbx;
+        StateHasChanged();
+    }
+
+    public void Update()
+    {
+        StateHasChanged();
+    }
+}

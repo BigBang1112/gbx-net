@@ -1,0 +1,26 @@
+﻿@using GBX.NET
+@using GBX.NET.Attributes
+@using System.Reflection
+
+@inherits ValueRenderer
+@attribute [AppliesForType(typeof(Node))]
+
+@if (Value is null)
+{
+    <span class="element-box" data-title="This value cannot be modified. Custom creation of nodes will be added later.">null</span>
+}
+else
+{
+    var valueType = Value.GetType();
+
+    if (Property is not null && valueType != Property.PropertyType)
+    {
+        <span class="element-box" style="font-size: 0.8rem" data-title="This value is actually of type @(valueType.Name).">(@(valueType.Name))</span>
+    }
+}
+
+@code {
+    public static Func<PropertyInfo, bool> TreeFilterStatic { get; } = x => Attribute.IsDefined(x, typeof(NodeMemberAttribute));
+
+    public override bool ShowPropertyInTree(PropertyInfo prop) => TreeFilterStatic(prop);
+}

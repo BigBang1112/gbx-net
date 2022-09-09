@@ -1,0 +1,27 @@
+﻿.nullable {
+    color: gray;
+    font-weight: bold;
+    cursor: help;
+    transition: 0.1s;
+}
+
+    .nullable:hover {
+        color: lightgray;
+    }
+
+.type.clickable {
+    cursor: pointer;
+}
+
+    .type.clickable:hover {
+        text-decoration: underline;
+    }
+
+.array {
+    color: #EEE;
+    cursor: help;
+}
+
+    .array:hover {
+        font-weight: bold;
+    }

@@ -1,0 +1,62 @@
+﻿@using GBX.NET
+
+@inherits ValueRenderer
+@attribute [AppliesForType(typeof(Id))]
+
+@if (Value is null)
+{
+    <span class="element-box hoverable" data-title="The value doesn't exist. Click to create a value.">null</span>
+}
+else if (Value is Id id)
+{
+    var cannotWrite = Property?.CannotWrite() == true;
+    var collectionTitle = "This value is stored as ";
+
+    if (cannotWrite)
+    {
+        collectionTitle = "This value cannot be modified.";
+    }
+    else if (id.Index.HasValue)
+    {
+        collectionTitle += "ID.";
+    }
+    else
+    {
+        collectionTitle += "string.";
+    }
+    
+    <span data-title="@collectionTitle">
+        <input type="text"
+            @bind="Val"
+            disabled="@cannotWrite"
+            placeholder="(empty)"
+            style="min-width: 160px;width: @(Val?.Length)ch;max-width:512px"
+            oninput="onInputText(this)"
+            list="collectionIds" />
+        <datalist id="collectionIds">
+            @foreach(var (collId, name) in GBX.NET.Managers.NodeCacheManager.CollectionIds)
+            {
+                <option value="@collId">@name</option>
+            }
+        </datalist>
+    </span>
+}
+else
+{
+    <span>Error: value is not Id</span>
+}
+
+@code {
+    public override bool ShowPropertyInTree(PropertyInfo prop) => false;
+
+    public string Val
+    {
+        get => Value is Id id ? id : "";
+        set
+        {
+            var id = int.TryParse(value, out int collectionId) ? new Id(collectionId) : new Id(value); 
+
+            SetAndUpdate(id, parent: true);
+        }
+    }
+}

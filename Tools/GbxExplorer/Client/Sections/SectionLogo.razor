@@ -1,0 +1,21 @@
+﻿<div class="section section-logo">
+    <h1 class="gbx-heading">
+        <span>GBX.NET</span>
+        <small>EXPLORER</small>
+    </h1>
+
+    @if (version is not null)
+    {
+        <span class="version">v@(version)</span>
+    }
+
+</div>
+
+@code {
+    private string? version;
+
+    protected override void OnInitialized()
+    {
+        version = Assembly.GetExecutingAssembly().GetName().Version?.ToString();
+    }
+}
