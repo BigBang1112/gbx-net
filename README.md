@@ -2,7 +2,7 @@
 
 GBX.NET is a GameBox (.Gbx) file parser library written in C# for .NET software framework. This file type can be seen in many of the Nadeo games like TrackMania, ShootMania or Virtual Skipper.
 
-For any questions, open an issue, join [my Discord server](https://discord.gg/perAcdxscQ) or message me via DM: BigBang1112#9489.
+For any questions, open an issue, join the [GameBox Sandbox Discord server](https://discord.gg/9wAAJvKYyE) or message me via DM: BigBang1112#9489.
 
 [![Nuget](https://img.shields.io/nuget/v/GBX.NET?style=for-the-badge)](https://www.nuget.org/packages/GBX.NET/)
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/BigBang1112/gbx-net?include_prereleases&style=for-the-badge)](https://github.com/BigBang1112/gbx-net/releases)
@@ -71,60 +71,7 @@ The library also speeds up parse time by ignoring unused skippable chunks with *
 
 ## Benchmarks
 
-Maps were selected from all kinds of Trackmania official campaigns picked by the biggest file size.
-
-```
-BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19043.1889 (21H1/May2021Update)
-AMD Ryzen 7 3700X, 1 CPU, 16 logical and 8 physical cores
-.NET SDK=7.0.100-preview.6.22352.1
-  [Host]     : .NET 6.0.8 (6.0.822.36306), X64 RyuJIT  [AttachedDebugger]
-  Job-LTRNAC : .NET 6.0.8 (6.0.822.36306), X64 RyuJIT
-```
-
-| File name | Read | Read header | Write
-| --- | --- | --- | ---
-| 0_TrackMania\1.2.5 DemoSolo\DemoRaceB1 | 0,23 ms | 0,04 ms | 0,26 ms
-| 4_TrackMania United\2\snowC5 | 0,30 ms | 0,05 ms | 0,34 ms
-| 2_TrackMania Original\1.5 Demo\DemoRace3 | 0,33 ms | 0,05 ms | 0,29 ms
-| 1_TrackMania Sunrise\1.4.7\CleanLanding | 0,33 ms | 0,04 ms | 0,34 ms
-| 0_TrackMania\1.2.3\RaceF7 | 0,39 ms | 0,05 ms | 0,37 ms
-| 4_TrackMania United\2.0.8\DesertE | 0,43 ms | 0,06 ms | 0,43 ms
-| 1_TrackMania Sunrise\1.4.5\AirControl | 0,50 ms | 0,04 ms | 0,67 ms
-| 3_TrackMania Nations ESWC\1.7.5\Pro A-4 | 0,64 ms | 0,05 ms | 1,34 ms
-| 1_TrackMania Sunrise\1.4.5 Nvidia\TrialTime | 0,68 ms | 0,04 ms | 1,03 ms
-| 1_TrackMania Sunrise\1.5\TrialTime | 0,76 ms | 0,05 ms | 1,01 ms
-| 1_TrackMania Sunrise\1.4.6\LittleWalk | 0,80 ms | 0,04 ms | 1,38 ms
-| 1_TrackMania Sunrise\1.5 Demo\DemoRace1 | 0,88 ms | 0,04 ms | 1,92 ms
-| 8_Trackmania 2020\Training\cR­ç»f - 20 | 0,95 ms | 0,05 ms | 2,17 ms
-| 8_Trackmania 2020\Training\Training - 20 | 0,99 ms | 0,07 ms | 1,96 ms
-| 6_TrackMania 2\MP4\BaseValley | 1,10 ms | 0,04 ms | 2,07 ms
-| 5_TrackMania Forever\2.11.11 Nations\E02-Endurance | 1,28 ms | 0,04 ms | 2,74 ms
-| 7_TrackMania Turbo\VR\VR_Stadium_007 | 1,29 ms | 0,06 ms | 2,79 ms
-| 1_TrackMania Sunrise\1.4\Paradise Island | 1,33 ms | 0,04 ms | 4,43 ms
-| 6_TrackMania 2\MP4Valley\D13 | 1,51 ms | 0,06 ms | 3,00 ms
-| 6_TrackMania 2\MP4Lagoon\B01 | 1,63 ms | 0,06 ms | 3,02 ms
-| 6_TrackMania 2\MP3Platform\E03 - Ultimate Nightmare | 1,68 ms | 0,04 ms | 3,04 ms
-| 5_TrackMania Forever\2.11.11 United\StuntC1 | 1,76 ms | 0,03 ms | 6,35 ms
-| 5_TrackMania Forever\2.11.25\StarStadiumE | 1,81 ms | 0,04 ms | 2,42 ms
-| 7_TrackMania Turbo\Solo\100 | 1,82 ms | 0,05 ms | 3,69 ms
-| 6_TrackMania 2\MP3Valley\E01 | 1,85 ms | 0,08 ms | 3,86 ms
-| 0_TrackMania\1.1\RaceD1 | 1,94 ms | 0,04 ms | 10,93 ms
-| 0_TrackMania\1 Demo\Track6 | 1,98 ms | 0,03 ms | 10,21 ms
-| 6_TrackMania 2\MP3Stadium\E02 | 1,99 ms | 0,06 ms | 4,48 ms
-| 2_TrackMania Original\1.5\StuntsD1 | 2,14 ms | 0,04 ms | 8,96 ms
-| 0_TrackMania\1 Beta\Track6 | 2,23 ms | 0,05 ms | 10,60 ms
-| 0_TrackMania\1\PuzzleF2 | 2,28 ms | 0,05 ms | 17,25 ms
-| 6_TrackMania 2\MP3Canyon\B10 | 2,92 ms | 0,03 ms | 3,24 ms
-| 8_Trackmania 2020\Royal\NoTechLogic | 2,92 ms | 0,12 ms | 6,96 ms
-| Community\CCP#04 - ODYSSEY | 3,31 ms | 0,05 ms | 8,62 ms
-| 8_Trackmania 2020\20201001\秋季 2020 - 12 | 3,55 ms | 0,05 ms | 9,08 ms
-| 8_Trackmania 2020\20201001\Fall 2020 - 12 | 3,56 ms | 0,06 ms | 8,96 ms
-| 8_Trackmania 2020\20210401\Spring 2021 - 23 | 3,56 ms | 0,06 ms | 9,39 ms
-| 8_Trackmania 2020\20200701\Summer 2020 - 11 | 3,62 ms | 0,07 ms | 8,98 ms
-| 8_Trackmania 2020\20200701\夏季赛 2020 - 11 | 3,81 ms | 0,08 ms | 9,31 ms
-| 8_Trackmania 2020\20210101\Winter 2021 - 15 | 4,48 ms | 0,06 ms | 12,76 ms
-| 8_Trackmania 2020\20210701\Summer 2021 - 25 | 6,01 ms | 0,05 ms | 15,53 ms
-| 8_Trackmania 2020\20211001\Fall 2021 - 16 | 13,46 ms | 0,12 ms | 19,10 ms
+Coming soon!
 
 ## Dependencies
 
@@ -252,7 +199,7 @@ var silverTime = map.SilverTime; // Correct
 ## License
 
 - **The sub-library GBX.NET.LZO is licensed with [GNU General Public License v3.0](Src/GBX.NET.LZO/LICENSE.GPL-3.0-or-later.md). If you're going to use this library, please license your work under GPL-3.0-or-later.**
-- **Everything in the Samples folder is also licensed with [GNU General Public License v3.0](Samples/LICENSE.GPL-3.0-or-later.md).**
+- **GbxExplorer, and everything in the Tools and Samples folder is also licensed with [GNU General Public License v3.0](Samples/LICENSE.GPL-3.0-or-later.md).**
 - The libraries GBX.NET, GBX.NET.Imaging, GBX.NET.Json, GBX.NET.Localization and the project DocGenerator **are licensed with MIT** and you can use them much more permissively.
 - Information gathered from the project (chunk structure, parse examples, data structure, wiki information, markdown) is usable with [The Unlicense](https://unlicense.org/).
 - Font of the logo is called [Raleway](https://fonts.google.com/specimen/Raleway) licensed under [SIL Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL). You can use the logo as a part of your media.
