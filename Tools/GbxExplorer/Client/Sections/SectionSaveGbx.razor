@@ -57,7 +57,7 @@
 
                 @if (extensions is not null)
                 {
-                    if (selectedSaveMethod == 1)
+                    if (selectedSaveMethod == 1 && !extensions.Contains(customExtension))
                     {
                         customExtension = extensions.FirstOrDefault() ?? "";
                     }
