@@ -4421,7 +4421,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     using var entryDataStream = new MemoryStream();
 
                     entryStream.CopyTo(entryDataStream);
-                    n.embeddedData[entry.Name] = entryDataStream.ToArray();
+                    n.embeddedData[entry.FullName] = entryDataStream.ToArray();
                 }
             }
 
