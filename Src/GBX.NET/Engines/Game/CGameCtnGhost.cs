@@ -918,19 +918,17 @@ public partial class CGameCtnGhost : CGameGhost
 
     #endregion
 
-    #region 0x015 chunk (vehicle)
+    #region 0x015 chunk (ghost nickname)
 
     /// <summary>
-    /// CGameCtnGhost 0x015 chunk
+    /// CGameCtnGhost 0x015 chunk (ghost nickname)
     /// </summary>
-    [Chunk(0x03092015)]
+    [Chunk(0x03092015, "ghost nickname")]
     public class Chunk03092015 : Chunk<CGameCtnGhost>
     {
-        public string? U01;
-
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
-            rw.Id(ref U01);
+            rw.Id(ref n.ghostNickname);
         }
     }
 
