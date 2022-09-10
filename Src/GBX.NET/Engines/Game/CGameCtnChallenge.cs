@@ -2610,7 +2610,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043008, "author")]
     public class Chunk03043008 : HeaderChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
+        private int version = 1;
 
         /// <summary>
         /// Version of the chunk.
