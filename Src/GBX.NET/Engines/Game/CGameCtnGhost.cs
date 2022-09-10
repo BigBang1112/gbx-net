@@ -89,6 +89,7 @@ public partial class CGameCtnGhost : CGameGhost
     [AppliedWithChunk(typeof(Chunk03092003))]
     [AppliedWithChunk(typeof(Chunk03092006))]
     [AppliedWithChunk(typeof(Chunk0309200D))]
+    [AppliedWithChunk(typeof(Chunk03092015))]
     [AppliedWithChunk(typeof(Chunk03092017))]
     public string? GhostNickname
     {
