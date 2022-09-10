@@ -2610,7 +2610,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043008, "author")]
     public class Chunk03043008 : HeaderChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
+        private int version = 1;
 
         /// <summary>
         /// Version of the chunk.
@@ -4421,7 +4421,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     using var entryDataStream = new MemoryStream();
 
                     entryStream.CopyTo(entryDataStream);
-                    n.embeddedData[entry.Name] = entryDataStream.ToArray();
+                    n.embeddedData[entry.FullName] = entryDataStream.ToArray();
                 }
             }
 

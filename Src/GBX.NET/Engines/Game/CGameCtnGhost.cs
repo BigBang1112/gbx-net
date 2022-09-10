@@ -89,6 +89,7 @@ public partial class CGameCtnGhost : CGameGhost
     [AppliedWithChunk(typeof(Chunk03092003))]
     [AppliedWithChunk(typeof(Chunk03092006))]
     [AppliedWithChunk(typeof(Chunk0309200D))]
+    [AppliedWithChunk(typeof(Chunk03092015))]
     [AppliedWithChunk(typeof(Chunk03092017))]
     public string? GhostNickname
     {
@@ -403,7 +404,19 @@ public partial class CGameCtnGhost : CGameGhost
     /// </summary>
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk0309201D))]
-    public PlayerInputData[]? PlayerInputs { get => playerInputs; set => playerInputs = value; }
+    public PlayerInputData[]? PlayerInputs
+    {
+        get
+        {
+            DiscoverChunk<Chunk0309201D>();
+            return playerInputs;
+        }
+        set
+        {
+            DiscoverChunk<Chunk0309201D>();
+            playerInputs = value;
+        }
+    }
 
     #endregion
 
@@ -906,19 +919,17 @@ public partial class CGameCtnGhost : CGameGhost
 
     #endregion
 
-    #region 0x015 chunk (vehicle)
+    #region 0x015 chunk (ghost nickname)
 
     /// <summary>
-    /// CGameCtnGhost 0x015 chunk
+    /// CGameCtnGhost 0x015 chunk (ghost nickname)
     /// </summary>
-    [Chunk(0x03092015)]
+    [Chunk(0x03092015, "ghost nickname")]
     public class Chunk03092015 : Chunk<CGameCtnGhost>
     {
-        public string? U01;
-
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
-            rw.Id(ref U01);
+            rw.Id(ref n.ghostNickname);
         }
     }
 
