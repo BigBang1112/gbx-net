@@ -138,4 +138,77 @@ public class CPlugVehicleCameraRace2Model : CPlugCamControlModel
     }
 
     #endregion
+
+    #region 0x001 chunk
+
+    /// <summary>
+    /// CPlugVehicleCameraRace2Model 0x001 chunk
+    /// </summary>
+    [Chunk(0x090F6001)]
+    public class Chunk090F6001 : Chunk<CPlugVehicleCameraRace2Model>
+    {
+        public bool U01;
+
+        public override void ReadWrite(CPlugVehicleCameraRace2Model n, GameBoxReaderWriter rw)
+        {
+            rw.Boolean(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x002 chunk
+
+    /// <summary>
+    /// CPlugVehicleCameraRace2Model 0x002 chunk
+    /// </summary>
+    [Chunk(0x090F6002)]
+    public class Chunk090F6002 : Chunk<CPlugVehicleCameraRace2Model>, IVersionable
+    {
+        private int version;
+
+        public string? U01;
+        public float U02;
+        public float U03;
+        public float U04;
+        public float U05;
+        public float U06;
+        public float U07;
+        public int U08;
+        public int U09;
+        public float U10;
+        public int U11;
+        public int U12;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CPlugVehicleCameraRace2Model n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+
+            rw.Id(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+            rw.Single(ref U05);
+            rw.Single(ref U06);
+
+            if (version >= 2)
+            {
+                rw.Single(ref U07);
+                rw.Int32(ref U08);
+                rw.Int32(ref U09);
+                rw.Single(ref U10);
+                rw.Int32(ref U11);
+                rw.Int32(ref U12);
+
+                if (version >= 3)
+                {
+                    throw new ChunkVersionNotSupportedException(version);
+                }
+            }
+        }
+    }
+
+    #endregion
 }
