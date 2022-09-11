@@ -780,13 +780,13 @@
   01D CPlugBitmapRenderScene3d
   01E CSceneSoundManager
   01F CSceneMessageHandler
-  029
+  029 CSceneVehicleCarTuning
   02A
   02B
   02C CSceneMobilClouds
   02D CSceneToyBroomstick
-  02E
-  030
+  02E CSceneVehicleTuning
+  030 CSceneVehicleTunings
   031
   032
   033
