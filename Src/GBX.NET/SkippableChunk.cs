@@ -22,7 +22,7 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
 
     protected SkippableChunk()
     {
-        Data = null!;
+        Data = Array.Empty<byte>();
     }
 
     public SkippableChunk(T node, byte[] data, uint? id = null)
