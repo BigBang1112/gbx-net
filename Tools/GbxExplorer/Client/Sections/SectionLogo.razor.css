@@ -1,4 +1,13 @@
-﻿.version {
+﻿.branch {
+    color: gray;
+    position: absolute;
+    left: 0.5rem;
+    bottom: 0.5rem;
+    font-size: 0.7rem;
+    opacity: 0.75;
+}
+
+.version {
     color: gray;
     position: absolute;
     right: 0.5rem;
