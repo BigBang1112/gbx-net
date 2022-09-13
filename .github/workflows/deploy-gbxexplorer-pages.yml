@@ -44,7 +44,7 @@ jobs:
         run: dotnet publish Tools/GbxExplorer/Client -c Release --nologo -o publish
         
       - name: Create appsettings.json
-      - uses: 1arp/create-a-file-action@0.2
+        uses: 1arp/create-a-file-action@0.2
         with:
           path: publish/wwwroot
           file: appsettings.json
