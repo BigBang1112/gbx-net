@@ -1,5 +1,6 @@
 ﻿@page "/help"
 
+@inject IBaseAddressService BaseAddressService
 @inject ISettingsService SettingsService
 @inject IValueRendererService ValueRendererService
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
@@ -24,7 +25,7 @@
             <big>Export selected node to Gbx</big>
             <p>You can create new Gbx files from many of the <b>CMwNod</b>-based classes! Just click on the <b>name</b> of the class member to let GBX.NET Explorer know which node to export.</p>
         </div>
-        <a href=".." class="button" style="justify-content:center">Let's continue exploring!</a>
+        <a href="@BaseAddressService.GetRoot()" class="button" style="justify-content:center">Let's continue exploring!</a>
     </div>
 </div>
 

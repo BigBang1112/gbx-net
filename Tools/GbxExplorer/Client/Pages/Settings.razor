@@ -1,5 +1,6 @@
 ﻿@page "/settings"
 
+@inject IBaseAddressService BaseAddressService
 @inject ISettingsService SettingsService
 @inject IValueRendererService ValueRendererService
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
@@ -28,7 +29,7 @@
 
         </div>
 
-        <a href=".." class="button" style="justify-content:center" @onclick="ReturnAsync">Return</a>
+        <a href="@BaseAddressService.GetRoot()" class="button" style="justify-content:center" @onclick="ReturnAsync">Return</a>
     </div>
 </div>
 
