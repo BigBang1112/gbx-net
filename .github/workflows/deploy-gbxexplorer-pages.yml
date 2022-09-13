@@ -48,7 +48,8 @@ jobs:
           content: |
             {
               "Branch": "${{ github.ref_name }}",
-              "Commit": "${{ github.sha }}"
+              "Commit": "${{ github.sha }}",
+              "BaseAddress": "/${{ github.event.repository.name }}"
             }
           
       - name: Publish
