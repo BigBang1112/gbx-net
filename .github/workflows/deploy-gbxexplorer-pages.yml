@@ -39,6 +39,17 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x
+        
+      - name: Create appsettings.json
+        uses: 1arp/create-a-file-action@0.2
+        with:
+          path: Tools/GbxExplorer/Client/wwwroot
+          file: appsettings.json
+          content: |
+            {
+              "Branch": "${{ github.ref_name }}",
+              "Commit": "${{ github.sha }}"
+            }
           
       - name: Publish
         run: dotnet publish Tools/GbxExplorer/Client -c Release --nologo -o publish
