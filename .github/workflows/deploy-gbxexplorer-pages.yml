@@ -39,20 +39,20 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x
-          
-      - name: Publish
-        run: dotnet publish Tools/GbxExplorer/Client -c Release --nologo -o publish
         
       - name: Create appsettings.json
         uses: 1arp/create-a-file-action@0.2
         with:
-          path: publish/wwwroot
+          path: Tools/GbxExplorer/Client/wwwroot
           file: appsettings.json
           content: |
             {
               "branch": "${{ github.ref_name }}",
-              "commit": "$GITHUB_SHA"
+              "commit": "${{ github.sha }}"
             }
+          
+      - name: Publish
+        run: dotnet publish Tools/GbxExplorer/Client -c Release --nologo -o publish
         
       - name: Change base in index.html to repository name
         run: sed -i 's/<base href="\/" \/>/<base href="\/gbx-net\/" \/>/g' publish/wwwroot/index.html
