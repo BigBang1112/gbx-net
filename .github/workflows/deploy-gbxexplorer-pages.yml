@@ -47,8 +47,8 @@ jobs:
           file: appsettings.json
           content: |
             {
-              "branch": "${{ github.ref_name }}",
-              "commit": "${{ github.sha }}"
+              "Branch": "${{ github.ref_name }}",
+              "Commit": "${{ github.sha }}"
             }
           
       - name: Publish
