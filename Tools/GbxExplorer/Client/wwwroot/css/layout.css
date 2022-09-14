@@ -90,6 +90,7 @@ main {
     animation-delay: 0.15s;
     width: 100%;
     justify-content: center;
+    overflow: hidden;
 }
 
 .gbx-list-inner {
