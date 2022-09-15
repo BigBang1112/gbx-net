@@ -85,9 +85,12 @@ public partial class CGameCtnGhost
             for (var i = 0; i < ticks; i++)
             {
                 var somethingHasChanged = true;
+                var hasSteer = false;
                 var steer = default(sbyte);
-                var gas = false;
-                var brake = false;
+                var gas = default(bool?);
+                var brake = default(bool?);
+                var horn = default(bool?);
+                var isRespawn = false;
                 var zeroBitSet = false;
 
                 for (var bit = 0; bit < 13; bit++)
@@ -106,20 +109,42 @@ public partial class CGameCtnGhost
 
                         if (!zeroBitSet)
                         {
-                            position += 35;
+                            var isHorn = bits.Get(position);
+
+                            isRespawn = !isHorn;
+                            var isRespawnHorn = position + 7 <= bits.Count && isRespawn && bits.Get(position + 7);
+
+                            if (isRespawnHorn)
+                            {
+                                horn = true;
+                            }
+                            else if (isHorn)
+                            {
+                                horn = bits.Get(position + 2);
+                            }
+
+                            position += isHorn ? 3 : 35;
                             break;
                         }
                     }
                     
                     if (bit == 1 && bitSet && zeroBitSet)
                     {
-                        position++;
+                        var goToNextTick = bits.Get(position);
+
+                        if (goToNextTick)
+                        {
+                            position++;
+                        }
+
                         somethingHasChanged = false;
+
                         break; // nothing has changed
                     }
 
                     if (bit >= 2 && bit <= 9 && bitSet)
                     {
+                        hasSteer = true;
                         steer |= (sbyte)(1 << (bit - 2));
                     }
 
@@ -132,15 +157,20 @@ public partial class CGameCtnGhost
                     {
                         brake = bitSet;
                     }
+
+                    if (bit == 12 && !bitSet)
+                    {
+                        position--;
+                    }
                 }
 
                 if (somethingHasChanged)
                 {
-                    InputChanges.Add(new(TimeInt32.FromMilliseconds(i * 10), steer, gas, brake));
+                    InputChanges.Add(new(TimeInt32.FromMilliseconds(i * 10), hasSteer ? steer : null, gas, brake, horn, isRespawn));
                 }
             }
         }
 
-        public record struct InputChange(TimeInt32 Timestamp, sbyte Steer, bool Gas, bool Brake);
+        public record struct InputChange(TimeInt32 Timestamp, sbyte? Steer, bool? Gas, bool? Brake, bool? Horn, bool IsRespawn);
     }
 }
