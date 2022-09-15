@@ -35,7 +35,7 @@ public partial class CGameCtnGhost
         public TimeInt32? StartOffset { get => startOffset; set => startOffset = value; }
         public int Ticks { get => ticks; set => ticks = value; }
         public byte[]? Data { get => data; set => data = value; }
-        public IList<InputChange>? InputChanges { get; set; }
+        public IList<InputChange> InputChanges { get; set; } = Array.Empty<InputChange>();
 
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
@@ -142,10 +142,14 @@ public partial class CGameCtnGhost
 
                         break; // nothing has changed
                     }
-                    else if (bit >= 2 && bit <= 9 && bitSet)
+                    else if (bit >= 2 && bit <= 9)
                     {
                         hasSteer = true;
-                        steer |= (sbyte)(1 << (bit - 2));
+                        
+                        if (bitSet)
+                        {
+                            steer |= (sbyte)(1 << (bit - 2));
+                        }
                     }
                     else if (bit == 10)
                     {
