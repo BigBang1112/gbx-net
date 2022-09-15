@@ -55,13 +55,12 @@ public partial class CGameCtnGhost
                 return;
             }
 
-            ProcessInputs(data);
+            InputChanges = ProcessInputs(data, ticks).ToList();
         }
 
-        private void ProcessInputs(byte[] data)
+        internal static IEnumerable<InputChange> ProcessInputs(byte[] data, int ticks)
         {
             var bits = new BitArray(data);
-            InputChanges = new List<InputChange>();
 
             /*var builder = new StringBuilder();
             for (var i = 0; i < bits.Length; i++)
@@ -125,8 +124,7 @@ public partial class CGameCtnGhost
                             break;
                         }
                     }
-
-                    if (bit == 1 && bitSet && zeroBitSet)
+                    else if (bit == 1 && bitSet && zeroBitSet)
                     {
                         var goToNextTick = bits.Get(position);
 
@@ -139,24 +137,20 @@ public partial class CGameCtnGhost
 
                         break; // nothing has changed
                     }
-
-                    if (bit >= 2 && bit <= 9 && bitSet)
+                    else if (bit >= 2 && bit <= 9 && bitSet)
                     {
                         hasSteer = true;
                         steer |= (sbyte)(1 << (bit - 2));
                     }
-
-                    if (bit == 10)
+                    else if (bit == 10)
                     {
                         gas = bitSet;
                     }
-
-                    if (bit == 11)
+                    else if (bit == 11)
                     {
                         brake = bitSet;
                     }
-
-                    if (bit == 12 && !bitSet)
+                    else if (bit == 12 && !bitSet)
                     {
                         position--;
                     }
@@ -164,7 +158,7 @@ public partial class CGameCtnGhost
 
                 if (somethingHasChanged)
                 {
-                    InputChanges.Add(new(TimeInt32.FromMilliseconds(i * 10), hasSteer ? steer : null, gas, brake, horn, isRespawn));
+                    yield return new(TimeInt32.FromMilliseconds(i * 10), hasSteer ? steer : null, gas, brake, horn, isRespawn);
                 }
             }
         }
