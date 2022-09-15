@@ -20,10 +20,7 @@ public class CGameCtnMediaClipBuilderTests
     {
         CGameCtnMediaTrack.Create()
             .WithName(CGameCtnMediaTrackBuilderTests.GetSampleName())
-            .WithBlocks(CGameCtnMediaBlockText.Create()
-                .WithEffect(CControlEffectSimi.Create()
-                    .ForTMUF()
-                    .Build())
+            .WithBlocks(CGameCtnMediaBlockText.Create(CControlEffectSimi.Create().ForTMUF().Build())
                 .ForTMUF()
                 .Build())
             .ForTMUF()

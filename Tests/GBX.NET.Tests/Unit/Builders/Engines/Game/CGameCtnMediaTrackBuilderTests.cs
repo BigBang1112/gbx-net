@@ -18,10 +18,7 @@ public class CGameCtnMediaTrackBuilderTests
     public static string GetSampleName() => "Random Track 1";
     public static CGameCtnMediaBlock[] GetSampleBlocksForTMUF() => new[]
     {
-        CGameCtnMediaBlockText.Create()
-            .WithEffect(CControlEffectSimi.Create()
-                .ForTMUF()
-                .Build())
+        CGameCtnMediaBlockText.Create(CControlEffectSimi.Create().ForTMUF().Build())
             .ForTMUF()
             .Build()
     };
