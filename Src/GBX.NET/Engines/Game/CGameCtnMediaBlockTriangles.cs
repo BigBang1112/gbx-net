@@ -189,18 +189,5 @@ public abstract partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, 
 
     #endregion
 
-    #region 0x002 skippable chunk
-
-    /// <summary>
-    /// CGameCtnMediaBlockTriangles 0x002 skippable chunk
-    /// </summary>
-    [Chunk(0x03029002), IgnoreChunk]
-    public class Chunk03029002 : SkippableChunk<CGameCtnMediaBlockTriangles>
-    {
-        
-    }
-
-    #endregion
-
     #endregion
 }
