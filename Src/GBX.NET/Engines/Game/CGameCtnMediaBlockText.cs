@@ -45,7 +45,7 @@ public class CGameCtnMediaBlockText : CGameCtnMediaBlock, CGameCtnMediaBlock.IHa
         effect = null!;
     }
 
-    public static CGameCtnMediaBlockTextBuilder Create() => new();
+    public static CGameCtnMediaBlockTextBuilder Create(CControlEffectSimi effect) => new(effect);
 
     #endregion
 

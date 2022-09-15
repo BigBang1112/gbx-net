@@ -3,18 +3,17 @@
 public partial class CGameCtnMediaBlockTextBuilder : Builder
 {
     public string? Text { get; set; }
-    public CControlEffectSimi? Effect { get; set; }
+    public CControlEffectSimi Effect { get; }
     public Vec3 Color { get; set; }
+
+    public CGameCtnMediaBlockTextBuilder(CControlEffectSimi effect)
+    {
+        Effect = effect;
+    }
 
     public CGameCtnMediaBlockTextBuilder WithText(string text)
     {
         Text = text;
-        return this;
-    }
-
-    public CGameCtnMediaBlockTextBuilder WithEffect(CControlEffectSimi effect)
-    {
-        Effect = effect;
         return this;
     }
 
