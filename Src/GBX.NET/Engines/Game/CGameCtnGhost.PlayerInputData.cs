@@ -54,12 +54,17 @@ public partial class CGameCtnGhost
             {
                 return;
             }
-            
+
+            ProcessInputs(data);
+        }
+
+        private void ProcessInputs(byte[] data)
+        {
             var bits = new BitArray(data);
             InputChanges = new List<InputChange>();
 
             /*var builder = new StringBuilder();
-            for(var i = 0; i < bits.Length; i++)
+            for (var i = 0; i < bits.Length; i++)
             {
                 if (i != 0 && i % 8 == 0)
                 {
@@ -74,13 +79,6 @@ public partial class CGameCtnGhost
             Console.WriteLine(builder.ToString());*/
 
             var position = 0;
-
-            while (bits.Get(position))
-            {
-                position++;
-            }
-
-            var padding = position;
 
             for (var i = 0; i < ticks; i++)
             {
@@ -112,7 +110,7 @@ public partial class CGameCtnGhost
                             var isHorn = bits.Get(position);
 
                             isRespawn = !isHorn;
-                            var isRespawnHorn = position + 7 <= bits.Count && isRespawn && bits.Get(position + 7);
+                            var isRespawnHorn = isRespawn && position + 7 <= bits.Count && bits.Get(position + 7);
 
                             if (isRespawnHorn)
                             {
@@ -127,7 +125,7 @@ public partial class CGameCtnGhost
                             break;
                         }
                     }
-                    
+
                     if (bit == 1 && bitSet && zeroBitSet)
                     {
                         var goToNextTick = bits.Get(position);
@@ -152,7 +150,7 @@ public partial class CGameCtnGhost
                     {
                         gas = bitSet;
                     }
-                    
+
                     if (bit == 11)
                     {
                         brake = bitSet;
