@@ -55,7 +55,12 @@ public partial class CGameCtnGhost
                 return;
             }
 
-            InputChanges = ProcessInputs(data, ticks).ToList();
+            InputChanges = new List<InputChange>();
+            
+            foreach (var inputChange in ProcessInputs(data, ticks))
+            {
+                InputChanges.Add(inputChange);
+            }
         }
 
         internal static IEnumerable<InputChange> ProcessInputs(byte[] data, int ticks)
