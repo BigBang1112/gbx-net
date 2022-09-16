@@ -56,10 +56,17 @@ public partial class CGameCtnGhost
             }
 
             InputChanges = new List<InputChange>();
-            
-            foreach (var inputChange in ProcessInputs(data, ticks))
+
+            try
             {
-                InputChanges.Add(inputChange);
+                foreach (var inputChange in ProcessInputs(data, ticks))
+                {
+                    InputChanges.Add(inputChange);
+                }
+            }
+            catch (Exception ex)
+            {
+                rw.Reader.Logger?.LogWarning(ex, "Error while reading inputs!");
             }
         }
 
