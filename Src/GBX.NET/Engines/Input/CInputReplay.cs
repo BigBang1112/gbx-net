@@ -34,7 +34,7 @@ public class CInputReplay : CMwNod
 
             // CInputEventsStore::Archive
             U01 = r.ReadInt32();
-            var inputTypes = r.ReadArray<string>(r => r.ReadId());
+            var inputTypes = r.ReadArray<string>(r => r.ReadId(cannotBeCollection: true));
             var count = r.ReadInt32();
             U02 = r.ReadInt32();
             n.Events = r.ReadArray(count, r => new Event(
