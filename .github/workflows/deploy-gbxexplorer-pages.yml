@@ -55,6 +55,9 @@ jobs:
       - name: Publish
         run: dotnet publish Tools/GbxExplorer/Client -c Release --nologo -o publish
         
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
+        
       - name: Change base in index.html to repository name
         run: sed -i 's/<base href="\/" \/>/<base href="\/gbx-net\/" \/>/g' publish/wwwroot/index.html
         
