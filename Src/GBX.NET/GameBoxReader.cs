@@ -1899,7 +1899,7 @@ public class GameBoxReader : BinaryReader
     public TimeInt32? ReadTimeInt32Nullable()
     {
         var totalMilliseconds = ReadInt32();
-        if (totalMilliseconds < 0) return null;
+        if (totalMilliseconds == -1) return null;
         return new TimeInt32(totalMilliseconds);
     }
 
