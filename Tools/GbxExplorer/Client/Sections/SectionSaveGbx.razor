@@ -87,8 +87,8 @@
             </div>
             <button class="button tooltip-top"
                 @onclick="SaveAsync"
-                disabled="@(writingNotSupportedAtt is not null)"
-                data-title="@(writingNotSupportedAtt is null ? "" : $"Export of {node?.GetType().Name ?? "(unknown class)"} is not supported.")">
+                disabled="@(node is null || writingNotSupportedAtt is not null)"
+                data-title="@(node is not null && writingNotSupportedAtt is null ? "" : $"Export of {node?.GetType().Name ?? "unknown class"} is not supported.")">
                 Export to Gbx!
             </button>
         }
