@@ -3932,11 +3932,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     {
         public int U01;
 
-        /// <summary>
-        /// Version of the chunk.
-        /// </summary>
-        public int Version { get; set; }
-
         public override void Read(CGameCtnChallenge n, GameBoxReader r)
         {
             U01 = r.ReadInt32();
@@ -3978,25 +3973,21 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CGameCtnChallenge 0x044 skippable chunk (metadata)
     /// </summary>
     [Chunk(0x03043044, "metadata")]
-    public class Chunk03043044 : SkippableChunk<CGameCtnChallenge>, IVersionable
+    public class Chunk03043044 : SkippableChunk<CGameCtnChallenge>
     {
-        /// <summary>
-        /// Version of the chunk.
-        /// </summary>
-        public int Version { get; set; }
+        public int EncapsulationVersion { get; set; }
 
         public override void Read(CGameCtnChallenge n, GameBoxReader r)
         {
-            Version = r.ReadInt32();
+            EncapsulationVersion = r.ReadInt32();
             var size = r.ReadInt32();
 
-            n.scriptMetadata = new CScriptTraitsMetadata();
-            n.scriptMetadata.Read(r);
+            n.scriptMetadata = r.ReadNode<CScriptTraitsMetadata>(expectedClassId: 0x11002000);
         }
 
         public override void Write(CGameCtnChallenge n, GameBoxWriter w)
         {
-            w.Write(Version);
+            w.Write(EncapsulationVersion);
 
             using var ms = new MemoryStream();
             using var wm = new GameBoxWriter(ms);
@@ -4004,7 +3995,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             n.scriptMetadata?.Write(wm);
 
             w.Write((int)ms.Length);
-            w.Write(ms.ToArray(), 0, (int)ms.Length);
+            w.Write(ms.ToArray());
         }
     }
 
