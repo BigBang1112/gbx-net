@@ -2925,7 +2925,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         }
 
-        public Chunk0304301F(Chunk? chunk) : base()
+        public Chunk0304301F(Chunk? chunk)
         {
             is013 = chunk is Chunk03043013;
         }
