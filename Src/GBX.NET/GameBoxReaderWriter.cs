@@ -1445,7 +1445,7 @@ public partial class GameBoxReaderWriter
     public void Bytes(ref byte[]? variable, int count)
     {
         if (Reader is not null) variable = Reader.ReadBytes(count);
-        if (Writer is not null && variable is not null) Writer.Write(variable, 0, count);
+        if (Writer is not null && variable is not null) Writer.Write(variable, 0, count); // May bring trouble
     }
 
     /// <exception cref="ArgumentException">The number of decoded characters to read is greater than count. This can happen if a Unicode decoder returns fallback characters or a surrogate pair.</exception>

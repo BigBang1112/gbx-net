@@ -704,9 +704,9 @@ public class GameBoxReader : BinaryReader
     {
         var node = ReadNodeRef(out GameBoxRefTable.File? nodeRefFile);
 
-        if (nodeRefFile is not null)
+        if (Logger is not null && nodeRefFile is not null)
         {
-            Logger?.LogDiscardedExternalNode(nodeRefFile);
+            Logger.LogDiscardedExternalNode(nodeRefFile);
         }
 
         return node;
@@ -740,9 +740,9 @@ public class GameBoxReader : BinaryReader
 
         var nodeT = node as T;
 
-        if (node != nodeT)
+        if (Logger is not null && node != nodeT)
         {
-            Logger?.LogWarning("Discarded node! Check your chunk code!");
+            Logger.LogWarning("Discarded node! Check your chunk code!");
         }
 
         if (nodeRefFile is not null)
@@ -813,9 +813,9 @@ public class GameBoxReader : BinaryReader
 
         var nodeT = node as T;
 
-        if (node != nodeT)
+        if (Logger is not null && node != nodeT)
         {
-            Logger?.LogWarning("Discarded node! Check your chunk code!");
+            Logger.LogWarning("Discarded node! Check your chunk code!");
         }
 
         return nodeT;
@@ -870,6 +870,25 @@ public class GameBoxReader : BinaryReader
         nodeRefFile = allFiles.FirstOrDefault(x => x.NodeIndex == index);
 
         return nodeRefFile is not null;
+    }
+    
+    public Node? ReadNode(uint? expectedClassId = null)
+    {
+        return Node.Parse(this, expectedClassId, progress: null);
+    }
+
+    public T? ReadNode<T>(uint? expectedClassId = null) where T : Node
+    {
+        var node = ReadNode(expectedClassId);
+
+        var nodeT = node as T;
+
+        if (Logger is not null && node != nodeT)
+        {
+            Logger.LogWarning("Discarded node! Check your chunk code!");
+        }
+
+        return nodeT;
     }
 
     /// <summary>
