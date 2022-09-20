@@ -212,6 +212,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     private bool dynamicDaylight;
     private TimeInt32? dayDuration;
     private bool? hasCustomCamThumbnail;
+    private CSceneVehicleCarMarksSamples?[]? carMarksBuffer;
 
     #endregion
 
@@ -1327,6 +1328,22 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk03043069))]
     public IList<MacroblockInstance>? MacroblockInstances { get; set; }
+    
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0304303E))]
+    public CSceneVehicleCarMarksSamples?[]? CarMarksBuffer
+    {
+        get
+        {
+            DiscoverChunk<Chunk0304303E>();
+            return carMarksBuffer;
+        }
+        set
+        {
+            DiscoverChunk<Chunk0304303E>();
+            carMarksBuffer = value;
+        }
+    }
 
     #endregion
 
@@ -3566,12 +3583,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x03E skippable chunk (CSceneVehicleCarMarksSamples)
+    #region 0x03E skippable chunk (CarMarksBuffer)
 
     /// <summary>
-    /// CGameCtnChallenge 0x03E skippable chunk (CSceneVehicleCarMarksSamples)
+    /// CGameCtnChallenge 0x03E skippable chunk (CarMarksBuffer)
     /// </summary>
-    [Chunk(0x0304303E, "CSceneVehicleCarMarksSamples")]
+    [Chunk(0x0304303E, "CarMarksBuffer")]
     public class Chunk0304303E : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private int version;
@@ -3590,12 +3607,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             }
 
             rw.Int32(10);
-            rw.Int32(ref U01); // CSceneVehicleCarMarksSamples array
-
-            if (U01 > 0)
-            {
-                throw new NotSupportedException("U01 > 0");
-            }
+            rw.ArrayNode<CSceneVehicleCarMarksSamples>(ref n.carMarksBuffer);
         }
     }
 

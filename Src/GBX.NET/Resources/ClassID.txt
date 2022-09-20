@@ -842,6 +842,7 @@
   07D
   07E CSceneFxOccZCmp
   080
+  083 CSceneVehicleCarMarksSamples
   090 CSceneToyTrain
   0A4 CSceneBulletVis
   0AB CSceneWagonVis
