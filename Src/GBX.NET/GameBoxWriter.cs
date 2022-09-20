@@ -470,7 +470,17 @@ public class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteTimeInt32(ITime variable) => Write((int)variable.TotalMilliseconds);
+    public void WriteTimeInt32(ITime variable)
+    {
+        if (variable is TimeInt32 timeInt32)
+        {
+            Write(timeInt32.TotalMilliseconds);
+        }
+        else
+        {
+            Write((int)variable.TotalMilliseconds);
+        }
+    }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -482,7 +492,7 @@ public class GameBoxWriter : BinaryWriter
             return;
         }
 
-        Write((int)variable.TotalMilliseconds);
+        WriteTimeInt32(variable);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
