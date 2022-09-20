@@ -36,11 +36,38 @@ public partial class CGameCtnChallengeTests
 
         [IgnoreReadWriteEqualityTest]
         public partial void ReadAndWrite_TMUF_DataShouldEqual();
+
+        [IgnoreReadWriteEqualityTest]
+        public partial void ReadAndWrite_ManiaPlanet_2019_10_10_22_15_DataShouldEqual();
     }
 
     public partial class Chunk03043021Tests
     {
         [IgnoreReadWriteEqualityTest]
         public partial void ReadAndWrite_TMUF_DataShouldEqual();
+    }
+
+    public partial class Chunk0304303ETests
+    {
+        [IgnoreReadWriteEqualityTest]
+        public partial void ReadAndWrite_ManiaPlanet_2019_10_10_22_15_DataShouldEqual();
+    }
+
+    [IgnoreReadWriteEqualityTest]
+    public partial class Chunk03043048Tests
+    {
+
+    }
+
+    public partial class Chunk03043049Tests
+    {
+        [IgnoreReadWriteEqualityTest]
+        public partial void ReadAndWrite_ManiaPlanet_2019_10_10_22_15_DataShouldEqual();
+    }
+
+    [IgnoreReadWriteEqualityTest]
+    public partial class Chunk03043051Tests
+    {
+        
     }
 }
