@@ -110,28 +110,27 @@ public class CScriptTraitsMetadata : CMwNod
             
             return new ScriptType(type);
         }
-        
-        private ScriptTrait ReadContents(GameBoxReader r, string name, IScriptType type)
-        {
-            return new ScriptTrait(type, name, ReadContents(r, type));
-        }
 
-        private object ReadContents(GameBoxReader r, IScriptType type) => type.Type switch
+        /// <summary>
+        /// CScriptTraitsGenericContainer::ChunkContents
+        /// </summary>
+        /// <exception cref="NotSupportedException"></exception>
+        private ScriptTrait ReadContents(GameBoxReader r, string name, IScriptType type) => type.Type switch
         {
-            EScriptType.Boolean => r.ReadBoolean(asByte: Version >= 3),
-            EScriptType.Integer => r.ReadInt32(),
-            EScriptType.Real => r.ReadSingle(),
-            EScriptType.Text => r.ReadString(Version >= 3 ? StringLengthPrefix.Byte : StringLengthPrefix.Int32),
-            EScriptType.Array => ReadScriptArray(r, type),
-            EScriptType.Vec2 => r.ReadVec2(),
-            EScriptType.Vec3 => r.ReadVec3(),
-            EScriptType.Int3 => r.ReadInt3(),
-            EScriptType.Int2 => r.ReadInt2(),
-            EScriptType.Struct => ReadScriptStruct(r, type),
+            EScriptType.Boolean => new ScriptTrait<bool>(type, name, r.ReadBoolean(asByte: Version >= 3)),
+            EScriptType.Integer => new ScriptTrait<int>(type, name, r.ReadInt32()),
+            EScriptType.Real => new ScriptTrait<float>(type, name, r.ReadSingle()),
+            EScriptType.Text => new ScriptTrait<string>(type, name, r.ReadString(Version >= 3 ? StringLengthPrefix.Byte : StringLengthPrefix.Int32)),
+            EScriptType.Array => ReadScriptArray(r, name, type),
+            EScriptType.Vec2 => new ScriptTrait<Vec2>(type, name, r.ReadVec2()),
+            EScriptType.Vec3 => new ScriptTrait<Vec3>(type, name, r.ReadVec3()),
+            EScriptType.Int3 => new ScriptTrait<Int3>(type, name, r.ReadInt3()),
+            EScriptType.Int2 => new ScriptTrait<Int2>(type, name, r.ReadInt2()),
+            EScriptType.Struct => ReadScriptStruct(r, name, type),
             _ => throw new NotSupportedException($"{type} is not supported.")
         };
 
-        private object ReadScriptArray(GameBoxReader r, IScriptType type)
+        private ScriptTrait ReadScriptArray(GameBoxReader r, string name, IScriptType type)
         {
             if (type is not ScriptArrayType arrayType)
             {
@@ -152,25 +151,23 @@ public class CScriptTraitsMetadata : CMwNod
                     array[i] = valueContents;
                 }
 
-                return array;
+                return new ScriptArrayTrait(type, name, array);
             }
-            else
+
+            var dictionary = new Dictionary<ScriptTrait, ScriptTrait>(arrayFieldCount);
+
+            for (var i = 0; i < arrayFieldCount; i++)
             {
-                var dictionary = new Dictionary<ScriptTrait, ScriptTrait>(arrayFieldCount);
+                var keyContents = ReadContents(r, name: "", arrayType.KeyType);
+                var valueContents = ReadContents(r, name: "", arrayType.ValueType);
 
-                for (var i = 0; i < arrayFieldCount; i++)
-                {
-                    var keyContents = ReadContents(r, name: "", arrayType.KeyType);
-                    var valueContents = ReadContents(r, name: "", arrayType.ValueType);
-
-                    dictionary[keyContents] = valueContents;
-                }
-
-                return dictionary;
+                dictionary[keyContents] = valueContents;
             }
+
+            return new ScriptDictionaryTrait(type, name, dictionary);
         }
 
-        private object ReadScriptStruct(GameBoxReader r, IScriptType type)
+        private ScriptStructTrait ReadScriptStruct(GameBoxReader r, string name, IScriptType type)
         {
             if (Version < 4)
             {
@@ -189,7 +186,7 @@ public class CScriptTraitsMetadata : CMwNod
                 dictionary[member.Name] = ReadContents(r, member.Name, member.Type);
             }
 
-            return dictionary;
+            return new ScriptStructTrait(type, name, dictionary);
         }
     }
 
@@ -256,31 +253,28 @@ public class CScriptTraitsMetadata : CMwNod
             return Name;
         }
     }
-
-    public sealed class ScriptTrait
+    
+    public abstract class ScriptTrait
     {
         public IScriptType Type { get; }
         public string Name { get; }
-        public object Value { get; set; }
 
-        public ScriptTrait(IScriptType type, string name, object value)
+        public ScriptTrait(IScriptType type, string name)
         {
             Type = type;
             Name = name;
-            Value = value;
         }
 
         public override int GetHashCode()
         {
-            return Type.GetHashCode() * -1521134295 + Name.GetHashCode() * -1521134295 + Value.GetHashCode();
+            return Type.GetHashCode() * -1521134295 + Name.GetHashCode() * -1521134295;
         }
 
         public override bool Equals(object? obj)
         {
             return obj is ScriptTrait other
                 && Type.Equals(other.Type)
-                && Name.Equals(other.Name)
-                && Value.Equals(other.Value);
+                && Name.Equals(other.Name);
         }
 
         public override string ToString()
@@ -293,10 +287,83 @@ public class CScriptTraitsMetadata : CMwNod
                 builder.Append(Name);
             }
 
+            return builder.ToString();
+        }
+    }
+
+    public class ScriptTrait<T> : ScriptTrait where T : notnull
+    {
+        public T Value { get; set; }
+
+        public ScriptTrait(IScriptType type, string name, T value) : base(type, name)
+        {
+            Value = value;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode() + Value.GetHashCode();
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is ScriptTrait<T> other
+                && Type.Equals(other.Type)
+                && Name.Equals(other.Name)
+                && EqualityComparer<T>.Default.Equals(Value, other.Value);
+        }
+
+        public override string ToString()
+        {
+            var builder = new StringBuilder(base.ToString());
+
             builder.Append(" = ");
-            builder.Append(Value?.ToString() ?? "null");
+
+            if (Value is string str)
+            {
+                builder.Append('"');
+                builder.Append(str);
+                builder.Append('"');
+            }
+            else
+            { 
+                builder.Append(Value?.ToString() ?? "null");
+            }
 
             return builder.ToString();
+        }
+    }
+
+    /// <summary>
+    /// A simplified variant of <c>ScriptTrait&lt;Dictionary&lt;string, ScriptTrait&gt;&gt;</c>
+    /// </summary>
+    public class ScriptStructTrait : ScriptTrait<Dictionary<string, ScriptTrait>>
+    {
+        public ScriptStructTrait(IScriptType type, string name, Dictionary<string, ScriptTrait> value)
+            : base(type, name, value)
+        {
+        }
+    }
+
+    /// <summary>
+    /// A simplified variant of <c>ScriptTrait&lt;Dictionary&lt;ScriptTrait, ScriptTrait&gt;&gt;</c>
+    /// </summary>
+    public class ScriptDictionaryTrait : ScriptTrait<Dictionary<ScriptTrait, ScriptTrait>>
+    {
+        public ScriptDictionaryTrait(IScriptType type, string name, Dictionary<ScriptTrait, ScriptTrait> value)
+            : base(type, name, value)
+        {
+        }
+    }
+
+    /// <summary>
+    /// A simplified variant of <c>ScriptTrait&lt;ScriptTrait[]&gt;</c>
+    /// </summary>
+    public class ScriptArrayTrait : ScriptTrait<ScriptTrait[]>
+    {
+        public ScriptArrayTrait(IScriptType type, string name, ScriptTrait[] value)
+            : base(type, name, value)
+        {
         }
     }
 }
