@@ -31,11 +31,74 @@ public class CScriptTraitsMetadata : CMwNod
 
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk11002000))]
-    public ScriptTrait[] Traits { get; set; }
+    public IList<ScriptTrait> Traits { get; set; }
 
     protected CScriptTraitsMetadata()
 	{
         Traits = Array.Empty<ScriptTrait>();
+    }
+    
+    public void Declare(string name, bool value)
+    {
+        Remove(name);
+        Traits.Add(new ScriptTrait<bool>(new ScriptType(EScriptType.Boolean), name, value));
+    }
+
+    public void Declare(string name, int value)
+    {
+        Remove(name);
+        Traits.Add(new ScriptTrait<int>(new ScriptType(EScriptType.Integer), name, value));
+    }
+
+    public void Declare(string name, float value)
+    {
+        Remove(name);
+        Traits.Add(new ScriptTrait<float>(new ScriptType(EScriptType.Real), name, value));
+    }
+
+    public void Declare(string name, string value)
+    {
+        Remove(name);
+        Traits.Add(new ScriptTrait<string>(new ScriptType(EScriptType.Text), name, value));
+    }
+
+    public void Declare(string name, Vec2 value)
+    {
+        Remove(name);
+        Traits.Add(new ScriptTrait<Vec2>(new ScriptType(EScriptType.Vec2), name, value));
+    }
+
+    public void Declare(string name, Vec3 value)
+    {
+        Remove(name);
+        Traits.Add(new ScriptTrait<Vec3>(new ScriptType(EScriptType.Vec3), name, value));
+    }
+
+    public void Declare(string name, Int3 value)
+    {
+        Remove(name);
+        Traits.Add(new ScriptTrait<Int3>(new ScriptType(EScriptType.Int3), name, value));
+    }
+
+    public void Declare(string name, Int2 value)
+    {
+        Remove(name);
+        Traits.Add(new ScriptTrait<Int2>(new ScriptType(EScriptType.Int2), name, value));
+    }
+
+    public ScriptTrait? Get(string name)
+    {
+        return Traits.FirstOrDefault(x => x.Name == name);
+    }
+
+    public bool Remove(string name)
+    {
+        return Traits.RemoveAll(x => x.Name == name) > 0;
+    }
+
+    public void ClearMetadata()
+    {
+        Traits.Clear();
     }
 
     #region 0x000 chunk
@@ -69,13 +132,13 @@ public class CScriptTraitsMetadata : CMwNod
             var types = r.ReadArray(typeCount, ReadType);
 
             var traitCount = r.ReadByte();
-            n.Traits = new ScriptTrait[traitCount];
+            n.Traits = new List<ScriptTrait>(traitCount);
 
             for (var i = 0; i < traitCount; i++)
             {
                 var traitName = r.ReadString(StringLengthPrefix.Byte);
                 var typeIndex = r.ReadByte();
-                n.Traits[i] = ReadContents(r, traitName, types[typeIndex]);
+                n.Traits.Add(ReadContents(r, traitName, types[typeIndex]));
             }
         }
 
