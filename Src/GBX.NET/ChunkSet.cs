@@ -33,7 +33,7 @@ public class ChunkSet : SortedSet<Chunk>
 
         var chunk = NodeCacheManager.ChunkConstructors.TryGetValue(chunkId, out var constructor)
             ? constructor()
-            : throw new ThisShouldNotHappenException();
+            : (Chunk)(Activator.CreateInstance(NodeCacheManager.ChunkTypesById[chunkId]) ?? throw new ThisShouldNotHappenException());
 
         if (chunk is ISkippableChunk skippableChunk)
         {
