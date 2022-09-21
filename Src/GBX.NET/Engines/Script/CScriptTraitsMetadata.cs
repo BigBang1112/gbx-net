@@ -1,4 +1,4 @@
-﻿using System.Text;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace GBX.NET.Engines.Script;
 
@@ -54,7 +54,42 @@ public partial class CScriptTraitsMetadata : CMwNod
         Traits.Clear();
     }
 
-    #region 0x000 chunk
+    public void Declare(ScriptStructTraitBuilder valueBuilder)
+    {
+        Declare(valueBuilder.Build());
+    }
+
+    public void Declare(ScriptStructTrait value)
+    {
+        Remove(value.Name);
+        Traits.Add(value);
+    }
+
+    public void Declare(string name, IEnumerable<ScriptStructTrait> value)
+    {{
+        Remove(name);
+        Traits.Add(new ScriptArrayTrait(
+            new ScriptArrayType(new ScriptType(EScriptType.Void), new ScriptType(EScriptType.Struct)),
+            name, value.Select(x => (ScriptTrait)x).ToList()));
+    }}
+
+    public ScriptStructTrait? GetStruct(string name)
+    {
+        return Get(name) as ScriptStructTrait;
+    }
+
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+    public bool TryGetStruct(string name, [NotNullWhen(true)] out ScriptStructTrait? value)
+#else
+    public bool TryGetStruct(string name, out ScriptStructTrait? value)
+#endif
+    {
+        var val = GetStruct(name);
+        value = val ?? default!;
+        return val is not null;
+    }
+
+#region 0x000 chunk
 
     /// <summary>
     /// CScriptTraitsMetadata 0x000 chunk
@@ -378,7 +413,7 @@ public partial class CScriptTraitsMetadata : CMwNod
                 dictionary[member.Name] = ReadContents(r, member.Name, member.Type);
             }
 
-            return new ScriptStructTrait(type, name, dictionary);
+            return new ScriptStructTrait(structType, name, dictionary);
         }
 
         private void WriteScriptStruct(GameBoxWriter w, ScriptStructTrait structTrait)
@@ -395,231 +430,5 @@ public partial class CScriptTraitsMetadata : CMwNod
         }
     }
 
-    #endregion
-
-    public interface IScriptType
-    {
-        EScriptType Type { get; }
-    }
-
-    public readonly record struct ScriptType(EScriptType Type) : IScriptType
-    {
-        public override string ToString()
-        {
-            return Type.ToString();
-        }
-    }
-
-    public readonly record struct ScriptArrayType(IScriptType KeyType, IScriptType ValueType) : IScriptType
-    {
-        public EScriptType Type => EScriptType.Array;
-
-        public override string ToString()
-        {
-            var result = new StringBuilder(ValueType.ToString());
-            result.Append('[');
-            result.Append(KeyType.ToString());
-            result.Append(']');
-            return result.ToString();
-        }
-    }
-
-    public sealed class ScriptStructType : IScriptType
-    {
-        public EScriptType Type => EScriptType.Struct;
-        
-        public string Name { get; }
-        public ScriptTrait[] Members { get; }
-
-        public ScriptStructType(string name, ScriptTrait[] members)
-        {
-            Name = name;
-            Members = members;
-        }
-
-        // May not be any useful
-        public override int GetHashCode()
-        {
-            return Type.GetHashCode() * -1521134295
-                 + Name.GetHashCode() * -1521134295
-                 + Members.GetHashCode();
-        }
-
-        public override bool Equals(object? obj)
-        {
-            return obj is ScriptStructType other
-                && Type.Equals(other.Type)
-                && Name.Equals(other.Name)
-                && Members.SequenceEqual(other.Members);
-        }
-
-        public override string ToString()
-        {
-            return Name;
-        }
-    }
-    
-    public abstract class ScriptTrait
-    {
-        public IScriptType Type { get; }
-        public string Name { get; }
-
-        public ScriptTrait(IScriptType type, string name)
-        {
-            Type = type;
-            Name = name;
-        }
-
-        public override int GetHashCode()
-        {
-            return Type.GetHashCode() * -1521134295 + Name.GetHashCode() * -1521134295;
-        }
-
-        public override bool Equals(object? obj)
-        {
-            return obj is ScriptTrait other
-                && Type.Equals(other.Type)
-                && Name.Equals(other.Name);
-        }
-
-        public override string ToString()
-        {
-            var builder = new StringBuilder(Type.ToString());
-
-            if (!string.IsNullOrWhiteSpace(Name))
-            {
-                builder.Append(' ');
-                builder.Append(Name);
-            }
-
-            return builder.ToString();
-        }
-    }
-
-    public class ScriptTrait<T> : ScriptTrait where T : notnull
-    {
-        public T Value { get; set; }
-
-        public ScriptTrait(IScriptType type, string name, T value) : base(type, name)
-        {
-            Value = value;
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode() + Value.GetHashCode();
-        }
-
-        public override bool Equals(object? obj)
-        {
-            return obj is ScriptTrait<T> other
-                && Type.Equals(other.Type)
-                && Name.Equals(other.Name)
-                && EqualityComparer<T>.Default.Equals(Value, other.Value);
-        }
-
-        public override string ToString()
-        {
-            var builder = new StringBuilder(base.ToString());
-
-            builder.Append(" = ");
-
-            if (Value is string str)
-            {
-                builder.Append('"');
-                builder.Append(str);
-                builder.Append('"');
-            }
-            else
-            { 
-                builder.Append(Value?.ToString() ?? "null");
-            }
-
-            return builder.ToString();
-        }
-    }
-
-    /// <summary>
-    /// A simplified variant of <c>ScriptTrait&lt;IDictionary&lt;string, ScriptTrait&gt;&gt;</c>
-    /// </summary>
-    public class ScriptStructTrait : ScriptTrait<IDictionary<string, ScriptTrait>>
-    {
-        public ScriptStructTrait(IScriptType type, string name, IDictionary<string, ScriptTrait> value)
-            : base(type, name, value)
-        {
-        }
-
-        public override string ToString()
-        {
-            var builder = new StringBuilder(Type.ToString());
-
-            if (!string.IsNullOrWhiteSpace(Name))
-            {
-                builder.Append(' ');
-                builder.Append(Name);
-            }
-
-            builder.Append(" (");
-            builder.Append(Value.Count);
-            builder.Append(" members)");
-
-            return builder.ToString();
-        }
-    }
-
-    /// <summary>
-    /// A simplified variant of <c>ScriptTrait&lt;IDictionary&lt;ScriptTrait, ScriptTrait&gt;&gt;</c>
-    /// </summary>
-    public class ScriptDictionaryTrait : ScriptTrait<IDictionary<ScriptTrait, ScriptTrait>>
-    {
-        public ScriptDictionaryTrait(ScriptArrayType type, string name, IDictionary<ScriptTrait, ScriptTrait> value)
-            : base(type, name, value)
-        {
-        }
-
-        public override string ToString()
-        {
-            var builder = new StringBuilder(Type.ToString());
-
-            if (!string.IsNullOrWhiteSpace(Name))
-            {
-                builder.Append(' ');
-                builder.Append(Name);
-            }
-
-            builder.Append(" (");
-            builder.Append(Value.Count);
-            builder.Append(" elements)");
-
-            return builder.ToString();
-        }
-    }
-
-    /// <summary>
-    /// A simplified variant of <c>ScriptTrait&lt;IList&lt;ScriptTrait&gt&gt;</c>
-    /// </summary>
-    public class ScriptArrayTrait : ScriptTrait<IList<ScriptTrait>>
-    {
-        public ScriptArrayTrait(ScriptArrayType type, string name, IList<ScriptTrait> value)
-            : base(type, name, value)
-        {
-        }
-
-        public override string ToString()
-        {
-            var builder = new StringBuilder(Type.ToString());
-
-            if (!string.IsNullOrWhiteSpace(Name))
-            {
-                builder.Append(' ');
-                builder.Append(Name);
-            }
-
-            builder.Append(" (");
-            builder.Append(Value.Count);
-            builder.Append(" elements)");
-
-            return builder.ToString();
-        }
-    }
+#endregion
 }

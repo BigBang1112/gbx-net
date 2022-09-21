@@ -175,7 +175,6 @@ public partial class CScriptTraitsMetadata
         "Vec3" => fieldName,
         "Int3" => fieldName,
         "Int2" => fieldName,
-        "Struct" => "ScriptStructTrait",
         _ => null
     };
 }
