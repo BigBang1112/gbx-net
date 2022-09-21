@@ -117,19 +117,29 @@ public class CScriptTraitsMetadata : CMwNod
 
             if (Version < 2)
             {
-                return; // temporary
+                throw new ChunkVersionNotSupportedException(Version);
             }
 
             // CScriptTraitsGenericContainer::Archive (version = Version - 2)
-            
-            if (Version < 5)
-            {
-                return; // temporary
-            }
 
             // ArchiveWithTypeBuffer
-            var typeCount = r.ReadByte();
-            var types = r.ReadArray(typeCount, ReadType);
+            var typeOrTraitCount = Version >= 3 ? r.ReadByte() : r.ReadInt32();
+
+            if (Version < 5)
+            {
+                n.Traits = new List<ScriptTrait>(typeOrTraitCount);
+
+                for (var i = 0; i < typeOrTraitCount; i++)
+                {
+                    var traitName = r.ReadString(Version >= 3 ? StringLengthPrefix.Byte : StringLengthPrefix.Int32);
+                    var type = ReadType(r);
+                    n.Traits.Add(ReadContents(r, traitName, type));
+                }
+
+                return;
+            }
+
+            var types = r.ReadArray(typeOrTraitCount, ReadType);
 
             var traitCount = r.ReadByte();
             n.Traits = new List<ScriptTrait>(traitCount);
@@ -139,6 +149,60 @@ public class CScriptTraitsMetadata : CMwNod
                 var traitName = r.ReadString(StringLengthPrefix.Byte);
                 var typeIndex = r.ReadByte();
                 n.Traits.Add(ReadContents(r, traitName, types[typeIndex]));
+            }
+        }
+
+        public override void Write(CScriptTraitsMetadata n, GameBoxWriter w)
+        {
+            w.Write(Version);
+
+            if (Version < 2)
+            {
+                throw new ChunkVersionNotSupportedException(Version);
+            }
+            
+            if (Version < 5)
+            {
+                if (Version >= 3)
+                {
+                    w.Write((byte)n.Traits.Count);
+                }
+                else
+                {
+                    w.Write(n.Traits.Count);
+                }
+
+                foreach (var trait in n.Traits)
+                {
+                    w.Write(trait.Name, Version >= 3 ? StringLengthPrefix.Byte : StringLengthPrefix.Int32);
+                    WriteType(w, trait.Type);
+                    WriteContents(w, trait);
+                }
+
+                return;
+            }
+
+            var uniqueTypes = new Dictionary<IScriptType, int>();
+            
+            foreach (var type in n.Traits.Select(x => x.Type).Distinct())
+            {
+                uniqueTypes.Add(type, uniqueTypes.Count);
+            }
+
+            w.Write((byte)uniqueTypes.Count);
+
+            foreach (var type in uniqueTypes)
+            {
+                WriteType(w, type.Key);
+            }
+            
+            w.Write((byte)n.Traits.Count);
+            
+            foreach (var trait in n.Traits)
+            {
+                w.Write(trait.Name, StringLengthPrefix.Byte);
+                w.Write((byte)uniqueTypes[trait.Type]);
+                WriteContents(w, trait);
             }
         }
 
@@ -174,6 +238,41 @@ public class CScriptTraitsMetadata : CMwNod
             return new ScriptType(type);
         }
 
+        private void WriteType(GameBoxWriter w, IScriptType type)
+        {
+            if (Version >= 3)
+            {
+                w.Write((byte)type.Type);
+            }
+            else
+            {
+                w.Write((int)type.Type);
+            }
+            
+            switch (type)
+            {
+                case ScriptArrayType arrayType:
+                    WriteType(w, arrayType.KeyType); // CScriptType::KeyType
+                    WriteType(w, arrayType.ValueType); // CScriptType::ValueType
+                    break;
+                case ScriptStructType structType:
+                    
+                    if (Version < 4) throw new StructsNotSupportedException();
+                    
+                    w.Write((byte)structType.Members.Length); // CScriptType::StructMemberCount
+                    w.Write(structType.Name);
+                    
+                    foreach (var member in structType.Members)
+                    {
+                        w.Write(member.Name);
+                        WriteType(w, member.Type);
+                        WriteContents(w, member);
+                    }
+
+                    break;
+            }
+        }
+
         /// <summary>
         /// CScriptTraitsGenericContainer::ChunkContents
         /// </summary>
@@ -192,6 +291,48 @@ public class CScriptTraitsMetadata : CMwNod
             EScriptType.Struct => ReadScriptStruct(r, name, type),
             _ => throw new NotSupportedException($"{type} is not supported.")
         };
+
+        private void WriteContents(GameBoxWriter w, ScriptTrait trait)
+        {
+            switch (trait)
+            {
+                case ScriptTrait<bool> boolTrait:
+                    w.Write(boolTrait.Value, asByte: Version >= 3);
+                    break;
+                case ScriptTrait<int> intTrait:
+                    w.Write(intTrait.Value);
+                    break;
+                case ScriptTrait<float> floatTrait:
+                    w.Write(floatTrait.Value);
+                    break;
+                case ScriptTrait<string> stringTrait:
+                    w.Write(stringTrait.Value, Version >= 3 ? StringLengthPrefix.Byte : StringLengthPrefix.Int32);
+                    break;
+                case ScriptArrayTrait arrayTrait:
+                    WriteScriptArray(w, arrayTrait);
+                    break;
+                case ScriptDictionaryTrait dictionaryTrait:
+                    WriteScriptDictionary(w, dictionaryTrait);
+                    break;
+                case ScriptTrait<Vec2> vec2Trait:
+                    w.Write(vec2Trait.Value);
+                    break;
+                case ScriptTrait<Vec3> vec3Trait:
+                    w.Write(vec3Trait.Value);
+                    break;
+                case ScriptTrait<Int3> int3Trait:
+                    w.Write(int3Trait.Value);
+                    break;
+                case ScriptTrait<Int2> int2Trait:
+                    w.Write(int2Trait.Value);
+                    break;
+                case ScriptStructTrait structTrait:
+                    WriteScriptStruct(w, structTrait);
+                    break;
+                default:
+                    throw new NotSupportedException($"{trait.Type.Type} is not supported.");
+            }
+        }
 
         private ScriptTrait ReadScriptArray(GameBoxReader r, string name, IScriptType type)
         {
@@ -230,6 +371,41 @@ public class CScriptTraitsMetadata : CMwNod
             return new ScriptDictionaryTrait(type, name, dictionary);
         }
 
+        private void WriteScriptArray(GameBoxWriter w, ScriptArrayTrait arrayTrait)
+        {
+            if (Version >= 3)
+            {
+                w.Write((byte)arrayTrait.Value.Length);
+            }
+            else
+            {
+                w.Write(arrayTrait.Value.Length);
+            }
+
+            foreach (var trait in arrayTrait.Value)
+            {
+                WriteContents(w, trait);
+            }
+        }
+
+        private void WriteScriptDictionary(GameBoxWriter w, ScriptDictionaryTrait dictionaryTrait)
+        {
+            if (Version >= 3)
+            {
+                w.Write((byte)dictionaryTrait.Value.Count);
+            }
+            else
+            {
+                w.Write(dictionaryTrait.Value.Count);
+            }
+
+            foreach (var pair in dictionaryTrait.Value)
+            {
+                WriteContents(w, pair.Key);
+                WriteContents(w, pair.Value);
+            }
+        }
+
         private ScriptStructTrait ReadScriptStruct(GameBoxReader r, string name, IScriptType type)
         {
             if (Version < 4)
@@ -250,6 +426,19 @@ public class CScriptTraitsMetadata : CMwNod
             }
 
             return new ScriptStructTrait(type, name, dictionary);
+        }
+
+        private void WriteScriptStruct(GameBoxWriter w, ScriptStructTrait structTrait)
+        {
+            if (Version < 4)
+            {
+                throw new StructsNotSupportedException();
+            }
+
+            foreach (var member in structTrait.Value)
+            {
+                WriteContents(w, member.Value);
+            }
         }
     }
 
@@ -406,6 +595,23 @@ public class CScriptTraitsMetadata : CMwNod
             : base(type, name, value)
         {
         }
+
+        public override string ToString()
+        {
+            var builder = new StringBuilder(Type.ToString());
+
+            if (!string.IsNullOrWhiteSpace(Name))
+            {
+                builder.Append(' ');
+                builder.Append(Name);
+            }
+
+            builder.Append(" (");
+            builder.Append(Value.Count);
+            builder.Append(" members)");
+
+            return builder.ToString();
+        }
     }
 
     /// <summary>
@@ -417,6 +623,23 @@ public class CScriptTraitsMetadata : CMwNod
             : base(type, name, value)
         {
         }
+
+        public override string ToString()
+        {
+            var builder = new StringBuilder(Type.ToString());
+
+            if (!string.IsNullOrWhiteSpace(Name))
+            {
+                builder.Append(' ');
+                builder.Append(Name);
+            }
+
+            builder.Append(" (");
+            builder.Append(Value.Count);
+            builder.Append(" elements)");
+
+            return builder.ToString();
+        }
     }
 
     /// <summary>
@@ -427,6 +650,23 @@ public class CScriptTraitsMetadata : CMwNod
         public ScriptArrayTrait(IScriptType type, string name, ScriptTrait[] value)
             : base(type, name, value)
         {
+        }
+
+        public override string ToString()
+        {
+            var builder = new StringBuilder(Type.ToString());
+
+            if (!string.IsNullOrWhiteSpace(Name))
+            {
+                builder.Append(' ');
+                builder.Append(Name);
+            }
+
+            builder.Append(" (");
+            builder.Append(Value.Length);
+            builder.Append(" elements)");
+
+            return builder.ToString();
         }
     }
 }
