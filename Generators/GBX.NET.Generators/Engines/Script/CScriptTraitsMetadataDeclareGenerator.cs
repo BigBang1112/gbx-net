@@ -43,20 +43,69 @@ public partial class CScriptTraitsMetadata
                 continue;
             }
 
-            builder.AppendLine($@"    public void Declare(string name, {mapped} value)
+            builder.AppendLine($@"    /// <summary>
+    /// Declares a metadata variable as <c>{enumName}</c>.
+    /// </summary>
+    /// <param name=""name"">The name of the variable.</param>
+    /// <param name=""value"">A value of {mapped}.</param>
+    public void Declare(string name, {mapped} value)
     {{
         Remove(name);
         Traits.Add(new ScriptTrait<{mapped}>(new ScriptType(EScriptType.{enumName}), name, value));
     }}
-
+    
+    /// <summary>
+    /// Declares a metadata array variable as <c>{enumName}[Void]</c>.
+    /// </summary>
+    /// <param name=""name"">The name of the variable.</param>
+    /// <param name=""value"">Any enumerable of {mapped}. It is always reconstructed into a new list.</param>
     public void Declare(string name, IEnumerable<{mapped}> value)
     {{
         Remove(name);
         Traits.Add(new ScriptArrayTrait(
             new ScriptArrayType(new ScriptType(EScriptType.Void), new ScriptType(EScriptType.{enumName})),
-            name, value.Select(x => new ScriptTrait<{mapped}>(new ScriptType(EScriptType.{enumName}), """", x)).ToArray()));
+            name, value.Select(x => (ScriptTrait)new ScriptTrait<{mapped}>(new ScriptType(EScriptType.{enumName}), """", x)).ToList()));
     }}
 ");
+        }
+
+        foreach (var keyMember in enumScriptTypeMembers)
+        {
+            var keyEnumName = keyMember.Name;
+            var mappedKey = MapEnumToType(keyEnumName);
+
+            if (mappedKey is null)
+            {
+                continue;
+            }
+            
+            foreach (var valueMember in enumScriptTypeMembers)
+            {
+                var valueEnumName = valueMember.Name;
+                var mappedValue = MapEnumToType(valueEnumName);
+
+                if (mappedValue is null)
+                {
+                    continue;
+                }
+
+                builder.AppendLine($@"    /// <summary>
+    /// Declares a metadata associative array variable as <c>{valueEnumName}[{keyEnumName}]</c>.
+    /// </summary>
+    /// <param name=""name"">The name of the variable.</param>
+    /// <param name=""value"">Any dictionary with key of {mappedKey} and value of {mappedValue}. It is always reconstructed into a new dictionary.</param>
+    public void Declare(string name, IDictionary<{mappedKey}, {mappedValue}> value)
+    {{
+        Remove(name);
+        Traits.Add(new ScriptDictionaryTrait(
+            new ScriptArrayType(new ScriptType(EScriptType.{keyEnumName}), new ScriptType(EScriptType.{valueEnumName})),
+            name, value.ToDictionary(
+                x => (ScriptTrait)new ScriptTrait<{mappedKey}>(new ScriptType(EScriptType.{keyEnumName}), """", x.Key),
+                x => (ScriptTrait)new ScriptTrait<{mappedValue}>(new ScriptType(EScriptType.{valueEnumName}), """", x.Value)
+            )));
+    }}
+");
+            }
         }
 
         builder.AppendLine("}");
@@ -70,10 +119,10 @@ public partial class CScriptTraitsMetadata
         "Integer" => "int",
         "Real" => "float",
         "Text" => "string",
-        "Vec2" => "Vec2",
-        "Vec3" => "Vec3",
-        "Int3" => "Int3",
-        "Int2" => "Int2",
+        "Vec2" => fieldName,
+        "Vec3" => fieldName,
+        "Int3" => fieldName,
+        "Int2" => fieldName,
         _ => null
     };
 }

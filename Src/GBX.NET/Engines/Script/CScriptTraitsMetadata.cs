@@ -308,7 +308,7 @@ public partial class CScriptTraitsMetadata : CMwNod
                     array[i] = valueContents;
                 }
 
-                return new ScriptArrayTrait(type, name, array);
+                return new ScriptArrayTrait(arrayType, name, array);
             }
 
             var dictionary = new Dictionary<ScriptTrait, ScriptTrait>(arrayFieldCount);
@@ -321,7 +321,7 @@ public partial class CScriptTraitsMetadata : CMwNod
                 dictionary[keyContents] = valueContents;
             }
 
-            return new ScriptDictionaryTrait(type, name, dictionary);
+            return new ScriptDictionaryTrait(arrayType, name, dictionary);
         }
 
         private void WriteScriptArray(GameBoxWriter w, ScriptArrayTrait arrayTrait)
@@ -572,7 +572,7 @@ public partial class CScriptTraitsMetadata : CMwNod
     /// </summary>
     public class ScriptDictionaryTrait : ScriptTrait<IDictionary<ScriptTrait, ScriptTrait>>
     {
-        public ScriptDictionaryTrait(IScriptType type, string name, IDictionary<ScriptTrait, ScriptTrait> value)
+        public ScriptDictionaryTrait(ScriptArrayType type, string name, IDictionary<ScriptTrait, ScriptTrait> value)
             : base(type, name, value)
         {
         }
@@ -600,7 +600,7 @@ public partial class CScriptTraitsMetadata : CMwNod
     /// </summary>
     public class ScriptArrayTrait : ScriptTrait<IList<ScriptTrait>>
     {
-        public ScriptArrayTrait(IScriptType type, string name, IList<ScriptTrait> value)
+        public ScriptArrayTrait(ScriptArrayType type, string name, IList<ScriptTrait> value)
             : base(type, name, value)
         {
         }
