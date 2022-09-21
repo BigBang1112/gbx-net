@@ -44,6 +44,14 @@ public partial class CGameCtnChallengeTests
         public partial void ReadAndWrite_ManiaPlanet_2019_10_10_22_15_DataShouldEqual();
     }
 
+#if NETCOREAPP3_1
+    [IgnoreReadWriteEqualityTest]
+    public partial class Chunk0304303DTests
+    {
+
+    }
+#endif
+
     [IgnoreReadWriteEqualityTest]
     public partial class Chunk03043048Tests
     {
