@@ -5,7 +5,7 @@ using System.Text;
 namespace GBX.NET.Generators.Engines.Script;
 
 [Generator]
-public class CScriptTraitsMetadataDeclareGenerator : SourceGenerator
+public class CScriptTraitsMetadataMethodGenerator : SourceGenerator
 {
     public override bool Debug => false;
 
@@ -27,7 +27,11 @@ public class CScriptTraitsMetadataDeclareGenerator : SourceGenerator
             .OfType<IFieldSymbol>()
             .ToList();
 
-        var builder = new StringBuilder(@"namespace GBX.NET.Engines.Script;
+        var builder = new StringBuilder(@"using System.Diagnostics.CodeAnalysis;
+
+#nullable enable
+
+namespace GBX.NET.Engines.Script;
 
 public partial class CScriptTraitsMetadata
 {
@@ -66,6 +70,36 @@ public partial class CScriptTraitsMetadata
             new ScriptArrayType(new ScriptType(EScriptType.Void), new ScriptType(EScriptType.{enumName})),
             name, value.Select(x => (ScriptTrait)new ScriptTrait<{mapped}>(new ScriptType(EScriptType.{enumName}), """", x)).ToList()));
     }}
+
+    public {mapped}? Get{enumName}(string name)
+    {{
+        return (Get(name) as ScriptTrait<{mapped}>)?.Value;
+    }}
+
+    public bool TryGet{enumName}(string name, out {mapped} value)
+    {{
+        var val = Get{enumName}(name);
+        value = val ?? default;
+        return val is not null;
+    }}
+
+    public IList<{mapped}>? Get{enumName}Array(string name)
+    {{
+        return (Get(name) as ScriptArrayTrait)?.Value
+            .Select(x => ((ScriptTrait<{mapped}>)x).Value)
+            .ToList();
+    }}
+
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+    public bool TryGet{enumName}Array(string name, [NotNullWhen(true)] out IList<{mapped}>? value)
+#else
+    public bool TryGet{enumName}Array(string name, out IList<{mapped}> value)
+#endif
+    {{
+        var val = Get{enumName}Array(name);
+        value = val ?? default!;
+        return val is not null;
+    }}
 ");
         }
 
@@ -103,6 +137,24 @@ public partial class CScriptTraitsMetadata
                 x => (ScriptTrait)new ScriptTrait<{mappedKey}>(new ScriptType(EScriptType.{keyEnumName}), """", x.Key),
                 x => (ScriptTrait)new ScriptTrait<{mappedValue}>(new ScriptType(EScriptType.{valueEnumName}), """", x.Value)
             )));
+    }}
+
+    public IDictionary<{mappedKey}, {mappedValue}>? Get{keyEnumName}{valueEnumName}AssociativeArray(string name)
+    {{
+        return (Get(name) as ScriptDictionaryTrait)?.Value.ToDictionary(
+            x => ((ScriptTrait<{mappedKey}>)x.Key).Value,
+            x => ((ScriptTrait<{mappedValue}>)x.Value).Value);
+    }}
+
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+    public bool TryGet{keyEnumName}{valueEnumName}AssociativeArray(string name, [NotNullWhen(true)] out IDictionary<{mappedKey}, {mappedValue}>? value)
+#else
+    public bool TryGet{keyEnumName}{valueEnumName}AssociativeArray(string name, out IDictionary<{mappedKey}, {mappedValue}> value)
+#endif
+    {{
+        var val = Get{keyEnumName}{valueEnumName}AssociativeArray(name);
+        value = val ?? default!;
+        return val is not null;
     }}
 ");
             }
