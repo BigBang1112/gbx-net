@@ -67,16 +67,31 @@ public partial class CScriptTraitsMetadata : CMwNod
         Traits.Clear();
     }
 
+    /// <summary>
+    /// Declares a metadata variable as <c>Struct</c>.
+    /// </summary>
+    /// <param name="name">The name of the variable.</param>
+    /// <param name="valueBuilder">A value of Struct builder.</param>
     public void Declare(string name, ScriptStructTraitBuilder valueBuilder)
     {
         Declare(name, valueBuilder.Build());
     }
 
+    /// <summary>
+    /// Declares a metadata variable as <c>Struct</c>.
+    /// </summary>
+    /// <param name="name">The name of the variable.</param>
+    /// <param name="value">A value of Struct.</param>
     public void Declare(string name, ScriptStructTrait value)
     {
         Traits[name] = value;
     }
 
+    /// <summary>
+    /// Declares a metadata array variable as <c>Struct[Void]</c>.
+    /// </summary>
+    /// <param name="name">The name of the variable.</param>
+    /// <param name="value">Any enumerable of Struct. It is always reconstructed into a new list.</param>
     public void Declare(string name, IEnumerable<ScriptStructTrait> value)
     {
         Traits[name] = new ScriptArrayTrait(
@@ -84,39 +99,14 @@ public partial class CScriptTraitsMetadata : CMwNod
             value.Select(x => (ScriptTrait)x).ToList());
     }
 
+    /// <summary>
+    /// Declares a metadata array variable as <c>Struct[Void]</c>.
+    /// </summary>
+    /// <param name="name">The name of the variable.</param>
+    /// <param name="value">Any enumerable of Struct builder. It is always reconstructed into a new list.</param>
     public void Declare(string name, IEnumerable<ScriptStructTraitBuilder> value)
     {
         Declare(name, value.Select(x => x.Build()));
-    }
-
-    public void Declare(string name, IDictionary<string, ScriptStructTrait> value)
-    {
-        Traits[name] = new ScriptDictionaryTrait(
-            new ScriptArrayType(new ScriptType(EScriptType.Text), new ScriptType(EScriptType.Struct)),
-            value.ToDictionary(
-                x => (ScriptTrait)new ScriptTrait<string>(new ScriptType(EScriptType.Text), x.Key),
-                x => (ScriptTrait)x.Value
-            ));
-    }
-
-    public void Declare(string name, IDictionary<string, ScriptStructTraitBuilder> value)
-    {
-        Declare(name, value.Select(x => x.Value.Build()));
-    }
-
-    public void Declare(string name, IDictionary<int, ScriptStructTrait> value)
-    {
-        Traits[name] = new ScriptDictionaryTrait(
-            new ScriptArrayType(new ScriptType(EScriptType.Integer), new ScriptType(EScriptType.Struct)),
-            value.ToDictionary(
-                x => (ScriptTrait)new ScriptTrait<int>(new ScriptType(EScriptType.Integer), x.Key),
-                x => (ScriptTrait)x.Value
-            ));
-    }
-
-    public void Declare(string name, IDictionary<int, ScriptStructTraitBuilder> value)
-    {
-        Declare(name, value.Select(x => x.Value.Build()));
     }
 
     public ScriptStructTrait? GetStruct(string name)
