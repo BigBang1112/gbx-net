@@ -51,7 +51,7 @@ public partial class CScriptTraitsMetadata
     /// Declares a metadata variable as <c>{enumName}</c>.
     /// </summary>
     /// <param name=""name"">The name of the variable.</param>
-    /// <param name=""value"">A value of {mapped}.</param>
+    /// <param name=""value"">A value of <see href=""{mapped}""/>.</param>
     public void Declare(string name, {mapped} value)
     {{
         Remove(name);
@@ -62,7 +62,7 @@ public partial class CScriptTraitsMetadata
     /// Declares a metadata array variable as <c>{enumName}[Void]</c>.
     /// </summary>
     /// <param name=""name"">The name of the variable.</param>
-    /// <param name=""value"">Any enumerable of {mapped}. It is always reconstructed into a new list.</param>
+    /// <param name=""value"">Any enumerable of <see href=""{mapped}""/>. It is always reconstructed into a new list.</param>
     public void Declare(string name, IEnumerable<{mapped}> value)
     {{
         Remove(name);
@@ -127,7 +127,7 @@ public partial class CScriptTraitsMetadata
     /// Declares a metadata associative array variable as <c>{valueEnumName}[{keyEnumName}]</c>.
     /// </summary>
     /// <param name=""name"">The name of the variable.</param>
-    /// <param name=""value"">Any dictionary with key of {mappedKey} and value of {mappedValue}. It is always reconstructed into a new dictionary.</param>
+    /// <param name=""value"">Any dictionary with key of <see href=""{mappedKey}""/> and value of <see href=""{mappedValue}""/>. It is always reconstructed into a new dictionary.</param>
     public void Declare(string name, IDictionary<{mappedKey}, {mappedValue}> value)
     {{
         Remove(name);
@@ -175,6 +175,7 @@ public partial class CScriptTraitsMetadata
         "Vec3" => fieldName,
         "Int3" => fieldName,
         "Int2" => fieldName,
+        "Struct" => "ScriptStructTrait",
         _ => null
     };
 }
