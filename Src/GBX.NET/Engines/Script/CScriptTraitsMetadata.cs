@@ -2,8 +2,9 @@
 
 namespace GBX.NET.Engines.Script;
 
+/// <remarks>ID: 0x11002000</remarks>
 [Node(0x11002000)]
-public class CScriptTraitsMetadata : CMwNod
+public partial class CScriptTraitsMetadata : CMwNod
 {
     /// <summary>
     /// Type of the variable supported by ManiaScript.
@@ -36,54 +37,6 @@ public class CScriptTraitsMetadata : CMwNod
     protected CScriptTraitsMetadata()
 	{
         Traits = Array.Empty<ScriptTrait>();
-    }
-    
-    public void Declare(string name, bool value)
-    {
-        Remove(name);
-        Traits.Add(new ScriptTrait<bool>(new ScriptType(EScriptType.Boolean), name, value));
-    }
-
-    public void Declare(string name, int value)
-    {
-        Remove(name);
-        Traits.Add(new ScriptTrait<int>(new ScriptType(EScriptType.Integer), name, value));
-    }
-
-    public void Declare(string name, float value)
-    {
-        Remove(name);
-        Traits.Add(new ScriptTrait<float>(new ScriptType(EScriptType.Real), name, value));
-    }
-
-    public void Declare(string name, string value)
-    {
-        Remove(name);
-        Traits.Add(new ScriptTrait<string>(new ScriptType(EScriptType.Text), name, value));
-    }
-
-    public void Declare(string name, Vec2 value)
-    {
-        Remove(name);
-        Traits.Add(new ScriptTrait<Vec2>(new ScriptType(EScriptType.Vec2), name, value));
-    }
-
-    public void Declare(string name, Vec3 value)
-    {
-        Remove(name);
-        Traits.Add(new ScriptTrait<Vec3>(new ScriptType(EScriptType.Vec3), name, value));
-    }
-
-    public void Declare(string name, Int3 value)
-    {
-        Remove(name);
-        Traits.Add(new ScriptTrait<Int3>(new ScriptType(EScriptType.Int3), name, value));
-    }
-
-    public void Declare(string name, Int2 value)
-    {
-        Remove(name);
-        Traits.Add(new ScriptTrait<Int2>(new ScriptType(EScriptType.Int2), name, value));
     }
 
     public ScriptTrait? Get(string name)

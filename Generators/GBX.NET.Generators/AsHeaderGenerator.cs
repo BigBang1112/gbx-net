@@ -1,28 +1,16 @@
 ﻿using GBX.NET.Generators.Extensions;
 using Microsoft.CodeAnalysis;
-using System;
-using System.Diagnostics;
-
 namespace GBX.NET.Generators;
 
 [Generator]
-public class AsHeaderGenerator : ISourceGenerator
+public class AsHeaderGenerator : SourceGenerator
 {
     private const string ConstIHeader = "IHeader";
 
-    public void Initialize(GeneratorInitializationContext context)
-    {
-#if DEBUG
-        if (!Debugger.IsAttached)
-        {
-            //Debugger.Launch();
-        }
-#endif
-    }
+    public override bool Debug => false;
 
-    public void Execute(GeneratorExecutionContext context)
+    public override void Execute(GeneratorExecutionContext context)
     {
-        // GBX.NET assembly
         var enginesNamespace = context.Compilation
             .GlobalNamespace
             .NavigateToNamespace("GBX.NET.Engines") ?? throw new Exception("GBX.NET.Engines namespace not found.");
