@@ -32,21 +32,34 @@ public partial class CScriptTraitsMetadata : CMwNod
 
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk11002000))]
-    public IList<ScriptTrait> Traits { get; set; }
+    public IDictionary<string, ScriptTrait> Traits { get; set; }
 
     protected CScriptTraitsMetadata()
 	{
-        Traits = Array.Empty<ScriptTrait>();
+#if NET6_0_OR_GREATER
+        Traits = global::System.Collections.Immutable.ImmutableDictionary.Create<string, ScriptTrait>();
+#else
+        Traits = null!;
+#endif
+    }
+
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+    public bool TryGet(string name, [NotNullWhen(true)] out ScriptTrait? trait)
+#else
+    public bool TryGet(string name, out ScriptTrait trait)
+#endif
+    {
+        return Traits.TryGetValue(name, out trait!);
     }
 
     public ScriptTrait? Get(string name)
     {
-        return Traits.FirstOrDefault(x => x.Name == name);
+        return TryGet(name, out var trait) ? trait : null;
     }
 
     public bool Remove(string name)
     {
-        return Traits.RemoveAll(x => x.Name == name) > 0;
+        return Traits.Remove(name);
     }
 
     public void ClearMetadata()
@@ -54,23 +67,21 @@ public partial class CScriptTraitsMetadata : CMwNod
         Traits.Clear();
     }
 
-    public void Declare(ScriptStructTraitBuilder valueBuilder)
+    public void Declare(string name, ScriptStructTraitBuilder valueBuilder)
     {
-        Declare(valueBuilder.Build());
+        Declare(name, valueBuilder.Build());
     }
 
-    public void Declare(ScriptStructTrait value)
+    public void Declare(string name, ScriptStructTrait value)
     {
-        Remove(value.Name);
-        Traits.Add(value);
+        Traits[name] = value;
     }
 
     public void Declare(string name, IEnumerable<ScriptStructTrait> value)
     {
-        Remove(name);
-        Traits.Add(new ScriptArrayTrait(
+        Traits[name] = new ScriptArrayTrait(
             new ScriptArrayType(new ScriptType(EScriptType.Void), new ScriptType(EScriptType.Struct)),
-            name, value.Select(x => (ScriptTrait)x).ToList()));
+            value.Select(x => (ScriptTrait)x).ToList());
     }
 
     public void Declare(string name, IEnumerable<ScriptStructTraitBuilder> value)
@@ -80,13 +91,12 @@ public partial class CScriptTraitsMetadata : CMwNod
 
     public void Declare(string name, IDictionary<string, ScriptStructTrait> value)
     {
-        Remove(name);
-        Traits.Add(new ScriptDictionaryTrait(
+        Traits[name] = new ScriptDictionaryTrait(
             new ScriptArrayType(new ScriptType(EScriptType.Text), new ScriptType(EScriptType.Struct)),
-            name, value.ToDictionary(
-                x => (ScriptTrait)new ScriptTrait<string>(new ScriptType(EScriptType.Text), "", x.Key),
+            value.ToDictionary(
+                x => (ScriptTrait)new ScriptTrait<string>(new ScriptType(EScriptType.Text), x.Key),
                 x => (ScriptTrait)x.Value
-            )));
+            ));
     }
 
     public void Declare(string name, IDictionary<string, ScriptStructTraitBuilder> value)
@@ -96,13 +106,12 @@ public partial class CScriptTraitsMetadata : CMwNod
 
     public void Declare(string name, IDictionary<int, ScriptStructTrait> value)
     {
-        Remove(name);
-        Traits.Add(new ScriptDictionaryTrait(
+        Traits[name] = new ScriptDictionaryTrait(
             new ScriptArrayType(new ScriptType(EScriptType.Integer), new ScriptType(EScriptType.Struct)),
-            name, value.ToDictionary(
-                x => (ScriptTrait)new ScriptTrait<int>(new ScriptType(EScriptType.Integer), "", x.Key),
+            value.ToDictionary(
+                x => (ScriptTrait)new ScriptTrait<int>(new ScriptType(EScriptType.Integer), x.Key),
                 x => (ScriptTrait)x.Value
-            )));
+            ));
     }
 
     public void Declare(string name, IDictionary<int, ScriptStructTraitBuilder> value)
@@ -126,7 +135,7 @@ public partial class CScriptTraitsMetadata : CMwNod
         return val is not null;
     }
 
-    #region 0x000 chunk
+#region 0x000 chunk
 
     /// <summary>
     /// CScriptTraitsMetadata 0x000 chunk
@@ -152,13 +161,13 @@ public partial class CScriptTraitsMetadata : CMwNod
 
             if (Version < 5)
             {
-                n.Traits = new List<ScriptTrait>(typeOrTraitCount);
+                n.Traits = new Dictionary<string, ScriptTrait>(typeOrTraitCount);
 
                 for (var i = 0; i < typeOrTraitCount; i++)
                 {
                     var traitName = r.ReadString(Version >= 3 ? StringLengthPrefix.Byte : StringLengthPrefix.Int32);
                     var type = ReadType(r);
-                    n.Traits.Add(ReadContents(r, traitName, type));
+                    n.Traits.Add(traitName, ReadContents(r, type));
                 }
 
                 return;
@@ -167,13 +176,13 @@ public partial class CScriptTraitsMetadata : CMwNod
             var types = r.ReadArray(typeOrTraitCount, ReadType);
 
             var traitCount = r.ReadByte();
-            n.Traits = new List<ScriptTrait>(traitCount);
+            n.Traits = new Dictionary<string, ScriptTrait>(traitCount);
 
             for (var i = 0; i < traitCount; i++)
             {
                 var traitName = r.ReadString(StringLengthPrefix.Byte);
                 var typeIndex = r.ReadByte();
-                n.Traits.Add(ReadContents(r, traitName, types[typeIndex]));
+                n.Traits.Add(traitName, ReadContents(r, types[typeIndex]));
             }
         }
 
@@ -199,9 +208,9 @@ public partial class CScriptTraitsMetadata : CMwNod
 
                 foreach (var trait in n.Traits)
                 {
-                    w.Write(trait.Name, Version >= 3 ? StringLengthPrefix.Byte : StringLengthPrefix.Int32);
-                    WriteType(w, trait.Type);
-                    WriteContents(w, trait);
+                    w.Write(trait.Key, Version >= 3 ? StringLengthPrefix.Byte : StringLengthPrefix.Int32);
+                    WriteType(w, trait.Value.Type);
+                    WriteContents(w, trait.Value);
                 }
 
                 return;
@@ -209,7 +218,7 @@ public partial class CScriptTraitsMetadata : CMwNod
 
             var uniqueTypes = new Dictionary<IScriptType, int>();
             
-            foreach (var type in n.Traits.Select(x => x.Type).Distinct())
+            foreach (var type in n.Traits.Select(x => x.Value.Type).Distinct())
             {
                 uniqueTypes.Add(type, uniqueTypes.Count);
             }
@@ -225,9 +234,9 @@ public partial class CScriptTraitsMetadata : CMwNod
             
             foreach (var trait in n.Traits)
             {
-                w.Write(trait.Name, StringLengthPrefix.Byte);
-                w.Write((byte)uniqueTypes[trait.Type]);
-                WriteContents(w, trait);
+                w.Write(trait.Key, StringLengthPrefix.Byte);
+                w.Write((byte)uniqueTypes[trait.Value.Type]);
+                WriteContents(w, trait.Value);
             }
         }
 
@@ -250,12 +259,15 @@ public partial class CScriptTraitsMetadata : CMwNod
                     
                     var memberCount = r.ReadByte(); // CScriptType::StructMemberCount
                     var structName = r.ReadString();
-                    var members = r.ReadArray(memberCount, r =>
+
+                    var members = new Dictionary<string, ScriptTrait>(memberCount);
+
+                    for (var i = 0; i < memberCount; i++)
                     {
                         var memberName = r.ReadString();
                         var memberType = ReadType(r);
-                        return ReadContents(r, memberName, memberType);
-                    });
+                        members.Add(memberName, ReadContents(r, memberType));
+                    }
 
                     return new ScriptStructType(structName, members);
             }
@@ -284,14 +296,14 @@ public partial class CScriptTraitsMetadata : CMwNod
                     
                     if (Version < 4) throw new StructsNotSupportedException();
                     
-                    w.Write((byte)structType.Members.Length); // CScriptType::StructMemberCount
+                    w.Write((byte)structType.Members.Count); // CScriptType::StructMemberCount
                     w.Write(structType.Name);
                     
                     foreach (var member in structType.Members)
                     {
-                        w.Write(member.Name);
-                        WriteType(w, member.Type);
-                        WriteContents(w, member);
+                        w.Write(member.Key);
+                        WriteType(w, member.Value.Type);
+                        WriteContents(w, member.Value);
                     }
 
                     break;
@@ -302,18 +314,18 @@ public partial class CScriptTraitsMetadata : CMwNod
         /// CScriptTraitsGenericContainer::ChunkContents
         /// </summary>
         /// <exception cref="NotSupportedException"></exception>
-        private ScriptTrait ReadContents(GameBoxReader r, string name, IScriptType type) => type.Type switch
+        private ScriptTrait ReadContents(GameBoxReader r, IScriptType type) => type.Type switch
         {
-            EScriptType.Boolean => new ScriptTrait<bool>(type, name, r.ReadBoolean(asByte: Version >= 3)),
-            EScriptType.Integer => new ScriptTrait<int>(type, name, r.ReadInt32()),
-            EScriptType.Real => new ScriptTrait<float>(type, name, r.ReadSingle()),
-            EScriptType.Text => new ScriptTrait<string>(type, name, r.ReadString(Version >= 3 ? StringLengthPrefix.Byte : StringLengthPrefix.Int32)),
-            EScriptType.Array => ReadScriptArray(r, name, type),
-            EScriptType.Vec2 => new ScriptTrait<Vec2>(type, name, r.ReadVec2()),
-            EScriptType.Vec3 => new ScriptTrait<Vec3>(type, name, r.ReadVec3()),
-            EScriptType.Int3 => new ScriptTrait<Int3>(type, name, r.ReadInt3()),
-            EScriptType.Int2 => new ScriptTrait<Int2>(type, name, r.ReadInt2()),
-            EScriptType.Struct => ReadScriptStruct(r, name, type),
+            EScriptType.Boolean => new ScriptTrait<bool>(type, r.ReadBoolean(asByte: Version >= 3)),
+            EScriptType.Integer => new ScriptTrait<int>(type, r.ReadInt32()),
+            EScriptType.Real => new ScriptTrait<float>(type, r.ReadSingle()),
+            EScriptType.Text => new ScriptTrait<string>(type, r.ReadString(Version >= 3 ? StringLengthPrefix.Byte : StringLengthPrefix.Int32)),
+            EScriptType.Array => ReadScriptArray(r, type),
+            EScriptType.Vec2 => new ScriptTrait<Vec2>(type, r.ReadVec2()),
+            EScriptType.Vec3 => new ScriptTrait<Vec3>(type, r.ReadVec3()),
+            EScriptType.Int3 => new ScriptTrait<Int3>(type, r.ReadInt3()),
+            EScriptType.Int2 => new ScriptTrait<Int2>(type, r.ReadInt2()),
+            EScriptType.Struct => ReadScriptStruct(r, type),
             _ => throw new NotSupportedException($"{type} is not supported.")
         };
 
@@ -359,7 +371,7 @@ public partial class CScriptTraitsMetadata : CMwNod
             }
         }
 
-        private ScriptTrait ReadScriptArray(GameBoxReader r, string name, IScriptType type)
+        private ScriptTrait ReadScriptArray(GameBoxReader r, IScriptType type)
         {
             if (type is not ScriptArrayType arrayType)
             {
@@ -375,25 +387,25 @@ public partial class CScriptTraitsMetadata : CMwNod
 
                 for (var i = 0; i < arrayFieldCount; i++)
                 {
-                    var valueContents = ReadContents(r, name: "", arrayType.ValueType);
+                    var valueContents = ReadContents(r, arrayType.ValueType);
 
                     array[i] = valueContents;
                 }
 
-                return new ScriptArrayTrait(arrayType, name, array);
+                return new ScriptArrayTrait(arrayType, array);
             }
 
             var dictionary = new Dictionary<ScriptTrait, ScriptTrait>(arrayFieldCount);
 
             for (var i = 0; i < arrayFieldCount; i++)
             {
-                var keyContents = ReadContents(r, name: "", arrayType.KeyType);
-                var valueContents = ReadContents(r, name: "", arrayType.ValueType);
+                var keyContents = ReadContents(r, arrayType.KeyType);
+                var valueContents = ReadContents(r, arrayType.ValueType);
 
                 dictionary[keyContents] = valueContents;
             }
 
-            return new ScriptDictionaryTrait(arrayType, name, dictionary);
+            return new ScriptDictionaryTrait(arrayType, dictionary);
         }
 
         private void WriteScriptArray(GameBoxWriter w, ScriptArrayTrait arrayTrait)
@@ -431,7 +443,7 @@ public partial class CScriptTraitsMetadata : CMwNod
             }
         }
 
-        private ScriptStructTrait ReadScriptStruct(GameBoxReader r, string name, IScriptType type)
+        private ScriptStructTrait ReadScriptStruct(GameBoxReader r, IScriptType type)
         {
             if (Version < 4)
             {
@@ -443,14 +455,14 @@ public partial class CScriptTraitsMetadata : CMwNod
                 throw new Exception("EScriptType.Struct not matching ScriptStructType");
             }
             
-            var dictionary = new Dictionary<string, ScriptTrait>(structType.Members.Length);
+            var dictionary = new Dictionary<string, ScriptTrait>(structType.Members.Count);
 
             foreach (var member in structType.Members)
             {
-                dictionary[member.Name] = ReadContents(r, member.Name, member.Type);
+                dictionary[member.Key] = ReadContents(r, member.Value.Type);
             }
 
-            return new ScriptStructTrait(structType, name, dictionary);
+            return new ScriptStructTrait(structType, dictionary);
         }
 
         private void WriteScriptStruct(GameBoxWriter w, ScriptStructTrait structTrait)
@@ -467,5 +479,5 @@ public partial class CScriptTraitsMetadata : CMwNod
         }
     }
 
-    #endregion
+#endregion
 }

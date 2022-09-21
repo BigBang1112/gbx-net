@@ -9,22 +9,16 @@ public partial class CScriptTraitsMetadata
     /// </summary>
     public class ScriptStructTrait : ScriptTrait<IDictionary<string, ScriptTrait>>
     {
-        public ScriptStructTrait(ScriptStructType type, string name, IDictionary<string, ScriptTrait> value)
-            : base(type, name, value)
+        public ScriptStructTrait(ScriptStructType type, IDictionary<string, ScriptTrait> value)
+            : base(type, value)
         {
         }
         
-        public static ScriptStructTraitBuilder Create(string structName, string traitName) => new(structName, traitName);
+        public static ScriptStructTraitBuilder Create(string structName) => new(structName);
 
         public override string ToString()
         {
             var builder = new StringBuilder(Type.ToString());
-
-            if (!string.IsNullOrWhiteSpace(Name))
-            {
-                builder.Append(' ');
-                builder.Append(Name);
-            }
 
             builder.Append(" (");
             builder.Append(Value.Count);

@@ -7,9 +7,9 @@ public partial class CScriptTraitsMetadata
         public EScriptType Type => EScriptType.Struct;
         
         public string Name { get; }
-        public ScriptTrait[] Members { get; }
+        public IDictionary<string, ScriptTrait> Members { get; }
 
-        public ScriptStructType(string name, ScriptTrait[] members)
+        public ScriptStructType(string name, IDictionary<string, ScriptTrait> members)
         {
             Name = name;
             Members = members;

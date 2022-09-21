@@ -8,7 +8,7 @@ public partial class CScriptTraitsMetadata
     {
         public T Value { get; set; }
 
-        public ScriptTrait(IScriptType type, string name, T value) : base(type, name)
+        public ScriptTrait(IScriptType type, T value) : base(type)
         {
             Value = value;
         }
@@ -22,7 +22,6 @@ public partial class CScriptTraitsMetadata
         {
             return obj is ScriptTrait<T> other
                 && Type.Equals(other.Type)
-                && Name.Equals(other.Name)
                 && EqualityComparer<T>.Default.Equals(Value, other.Value);
         }
 

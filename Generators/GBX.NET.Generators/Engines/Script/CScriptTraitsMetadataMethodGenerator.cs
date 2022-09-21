@@ -54,8 +54,7 @@ public partial class CScriptTraitsMetadata
     /// <param name=""value"">A value of <see href=""{mapped}""/>.</param>
     public void Declare(string name, {mapped} value)
     {{
-        Remove(name);
-        Traits.Add(new ScriptTrait<{mapped}>(new ScriptType(EScriptType.{enumName}), name, value));
+        Traits[name] = new ScriptTrait<{mapped}>(new ScriptType(EScriptType.{enumName}), value);
     }}
     
     /// <summary>
@@ -65,10 +64,9 @@ public partial class CScriptTraitsMetadata
     /// <param name=""value"">Any enumerable of <see href=""{mapped}""/>. It is always reconstructed into a new list.</param>
     public void Declare(string name, IEnumerable<{mapped}> value)
     {{
-        Remove(name);
-        Traits.Add(new ScriptArrayTrait(
+        Traits[name] = new ScriptArrayTrait(
             new ScriptArrayType(new ScriptType(EScriptType.Void), new ScriptType(EScriptType.{enumName})),
-            name, value.Select(x => (ScriptTrait)new ScriptTrait<{mapped}>(new ScriptType(EScriptType.{enumName}), """", x)).ToList()));
+            value.Select(x => (ScriptTrait)new ScriptTrait<{mapped}>(new ScriptType(EScriptType.{enumName}), x)).ToList());
     }}
 
     public {mapped}? Get{enumName}(string name)
@@ -130,13 +128,12 @@ public partial class CScriptTraitsMetadata
     /// <param name=""value"">Any dictionary with key of <see href=""{mappedKey}""/> and value of <see href=""{mappedValue}""/>. It is always reconstructed into a new dictionary.</param>
     public void Declare(string name, IDictionary<{mappedKey}, {mappedValue}> value)
     {{
-        Remove(name);
-        Traits.Add(new ScriptDictionaryTrait(
+        Traits[name] = new ScriptDictionaryTrait(
             new ScriptArrayType(new ScriptType(EScriptType.{keyEnumName}), new ScriptType(EScriptType.{valueEnumName})),
-            name, value.ToDictionary(
-                x => (ScriptTrait)new ScriptTrait<{mappedKey}>(new ScriptType(EScriptType.{keyEnumName}), """", x.Key),
-                x => (ScriptTrait)new ScriptTrait<{mappedValue}>(new ScriptType(EScriptType.{valueEnumName}), """", x.Value)
-            )));
+            value.ToDictionary(
+                x => (ScriptTrait)new ScriptTrait<{mappedKey}>(new ScriptType(EScriptType.{keyEnumName}), x.Key),
+                x => (ScriptTrait)new ScriptTrait<{mappedValue}>(new ScriptType(EScriptType.{valueEnumName}), x.Value)
+            ));
     }}
 
     public IDictionary<{mappedKey}, {mappedValue}>? Get{keyEnumName}{valueEnumName}AssociativeArray(string name)

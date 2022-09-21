@@ -1,43 +1,29 @@
-﻿using System.Text;
-
-namespace GBX.NET.Engines.Script;
+﻿namespace GBX.NET.Engines.Script;
 
 public partial class CScriptTraitsMetadata
 {
     public abstract class ScriptTrait
     {
         public IScriptType Type { get; }
-        public string Name { get; }
 
-        public ScriptTrait(IScriptType type, string name)
+        public ScriptTrait(IScriptType type)
         {
             Type = type;
-            Name = name;
         }
 
         public override int GetHashCode()
         {
-            return Type.GetHashCode() * -1521134295 + Name.GetHashCode() * -1521134295;
+            return Type.GetHashCode() * -1521134295;
         }
 
         public override bool Equals(object? obj)
         {
-            return obj is ScriptTrait other
-                && Type.Equals(other.Type)
-                && Name.Equals(other.Name);
+            return obj is ScriptTrait other && Type.Equals(other.Type);
         }
 
         public override string ToString()
         {
-            var builder = new StringBuilder(Type.ToString());
-
-            if (!string.IsNullOrWhiteSpace(Name))
-            {
-                builder.Append(' ');
-                builder.Append(Name);
-            }
-
-            return builder.ToString();
+            return Type.ToString() ?? "";
         }
     }
 }
