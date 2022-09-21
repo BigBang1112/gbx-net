@@ -328,11 +328,11 @@ public partial class CScriptTraitsMetadata : CMwNod
         {
             if (Version >= 3)
             {
-                w.Write((byte)arrayTrait.Value.Length);
+                w.Write((byte)arrayTrait.Value.Count);
             }
             else
             {
-                w.Write(arrayTrait.Value.Length);
+                w.Write(arrayTrait.Value.Count);
             }
 
             foreach (var trait in arrayTrait.Value)
@@ -540,11 +540,11 @@ public partial class CScriptTraitsMetadata : CMwNod
     }
 
     /// <summary>
-    /// A simplified variant of <c>ScriptTrait&lt;Dictionary&lt;string, ScriptTrait&gt;&gt;</c>
+    /// A simplified variant of <c>ScriptTrait&lt;IDictionary&lt;string, ScriptTrait&gt;&gt;</c>
     /// </summary>
-    public class ScriptStructTrait : ScriptTrait<Dictionary<string, ScriptTrait>>
+    public class ScriptStructTrait : ScriptTrait<IDictionary<string, ScriptTrait>>
     {
-        public ScriptStructTrait(IScriptType type, string name, Dictionary<string, ScriptTrait> value)
+        public ScriptStructTrait(IScriptType type, string name, IDictionary<string, ScriptTrait> value)
             : base(type, name, value)
         {
         }
@@ -568,11 +568,11 @@ public partial class CScriptTraitsMetadata : CMwNod
     }
 
     /// <summary>
-    /// A simplified variant of <c>ScriptTrait&lt;Dictionary&lt;ScriptTrait, ScriptTrait&gt;&gt;</c>
+    /// A simplified variant of <c>ScriptTrait&lt;IDictionary&lt;ScriptTrait, ScriptTrait&gt;&gt;</c>
     /// </summary>
-    public class ScriptDictionaryTrait : ScriptTrait<Dictionary<ScriptTrait, ScriptTrait>>
+    public class ScriptDictionaryTrait : ScriptTrait<IDictionary<ScriptTrait, ScriptTrait>>
     {
-        public ScriptDictionaryTrait(IScriptType type, string name, Dictionary<ScriptTrait, ScriptTrait> value)
+        public ScriptDictionaryTrait(IScriptType type, string name, IDictionary<ScriptTrait, ScriptTrait> value)
             : base(type, name, value)
         {
         }
@@ -596,11 +596,11 @@ public partial class CScriptTraitsMetadata : CMwNod
     }
 
     /// <summary>
-    /// A simplified variant of <c>ScriptTrait&lt;ScriptTrait[]&gt;</c>
+    /// A simplified variant of <c>ScriptTrait&lt;IList&lt;ScriptTrait&gt&gt;</c>
     /// </summary>
-    public class ScriptArrayTrait : ScriptTrait<ScriptTrait[]>
+    public class ScriptArrayTrait : ScriptTrait<IList<ScriptTrait>>
     {
-        public ScriptArrayTrait(IScriptType type, string name, ScriptTrait[] value)
+        public ScriptArrayTrait(IScriptType type, string name, IList<ScriptTrait> value)
             : base(type, name, value)
         {
         }
@@ -616,7 +616,7 @@ public partial class CScriptTraitsMetadata : CMwNod
             }
 
             builder.Append(" (");
-            builder.Append(Value.Length);
+            builder.Append(Value.Count);
             builder.Append(" elements)");
 
             return builder.ToString();
