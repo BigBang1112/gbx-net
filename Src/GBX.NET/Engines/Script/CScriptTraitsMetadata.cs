@@ -66,12 +66,49 @@ public partial class CScriptTraitsMetadata : CMwNod
     }
 
     public void Declare(string name, IEnumerable<ScriptStructTrait> value)
-    {{
+    {
         Remove(name);
         Traits.Add(new ScriptArrayTrait(
             new ScriptArrayType(new ScriptType(EScriptType.Void), new ScriptType(EScriptType.Struct)),
             name, value.Select(x => (ScriptTrait)x).ToList()));
-    }}
+    }
+
+    public void Declare(string name, IEnumerable<ScriptStructTraitBuilder> value)
+    {
+        Declare(name, value.Select(x => x.Build()));
+    }
+
+    public void Declare(string name, IDictionary<string, ScriptStructTrait> value)
+    {
+        Remove(name);
+        Traits.Add(new ScriptDictionaryTrait(
+            new ScriptArrayType(new ScriptType(EScriptType.Text), new ScriptType(EScriptType.Struct)),
+            name, value.ToDictionary(
+                x => (ScriptTrait)new ScriptTrait<string>(new ScriptType(EScriptType.Text), "", x.Key),
+                x => (ScriptTrait)x.Value
+            )));
+    }
+
+    public void Declare(string name, IDictionary<string, ScriptStructTraitBuilder> value)
+    {
+        Declare(name, value.Select(x => x.Value.Build()));
+    }
+
+    public void Declare(string name, IDictionary<int, ScriptStructTrait> value)
+    {
+        Remove(name);
+        Traits.Add(new ScriptDictionaryTrait(
+            new ScriptArrayType(new ScriptType(EScriptType.Integer), new ScriptType(EScriptType.Struct)),
+            name, value.ToDictionary(
+                x => (ScriptTrait)new ScriptTrait<int>(new ScriptType(EScriptType.Integer), "", x.Key),
+                x => (ScriptTrait)x.Value
+            )));
+    }
+
+    public void Declare(string name, IDictionary<int, ScriptStructTraitBuilder> value)
+    {
+        Declare(name, value.Select(x => x.Value.Build()));
+    }
 
     public ScriptStructTrait? GetStruct(string name)
     {
@@ -89,7 +126,7 @@ public partial class CScriptTraitsMetadata : CMwNod
         return val is not null;
     }
 
-#region 0x000 chunk
+    #region 0x000 chunk
 
     /// <summary>
     /// CScriptTraitsMetadata 0x000 chunk
@@ -430,5 +467,5 @@ public partial class CScriptTraitsMetadata : CMwNod
         }
     }
 
-#endregion
+    #endregion
 }
