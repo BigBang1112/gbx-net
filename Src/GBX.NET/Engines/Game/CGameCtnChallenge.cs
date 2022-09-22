@@ -3501,7 +3501,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 #else
                 using var zlib = new CompressedStream(ms, CompressionMode.Decompress);
 #endif
-                using var gbxr = new GameBoxReader(zlib, r, hasOwnIdState: true);
+                using var gbxr = new GameBoxReader(zlib, r, encapsulated: true);
 
                 n.lightmapCache = Parse<CHmsLightMapCache>(gbxr, 0x06022000, progress: null);
 
@@ -3547,7 +3547,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             {
 #if NET6_0_OR_GREATER
                 using var ms = new MemoryStream();
-                using var gbxw = new GameBoxWriter(ms, w, hasOwnIdState: true);
+                using var gbxw = new GameBoxWriter(ms, w, encapsulated: true);
 
                 n.lightmapCache?.Write(gbxw);
                 gbxw.Write(DataAfterLightmapCache ?? Array.Empty<byte>());
@@ -3637,7 +3637,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             U01 = r.ReadInt32();
             var size = r.ReadInt32();
 
-            r = new GameBoxReader(r, hasOwnIdState: true);
+            r = new GameBoxReader(r, encapsulated: true);
 
             _ = r.ReadInt32(); // 10
             n.anchoredObjects = r.ReadList(r =>
@@ -3748,7 +3748,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             w.Write(U01);
 
             using var itemMs = new MemoryStream();
-            using var itemW = new GameBoxWriter(itemMs, w, hasOwnIdState: true);
+            using var itemW = new GameBoxWriter(itemMs, w, encapsulated: true);
 
             itemW.Write(10);
             itemW.WriteNodeArray(n.anchoredObjects);
@@ -3949,7 +3949,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             U01 = r.ReadInt32();
             var sizeOfNodeWithClassID = r.ReadInt32();
 
-            r = new GameBoxReader(r, hasOwnIdState: true);
+            r = new GameBoxReader(r, encapsulated: true);
 
             n.genealogies = r.ReadArray(r =>
             {
@@ -3964,7 +3964,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             w.Write(U01);
 
             using var ms = new MemoryStream();
-            using var wOwnIdState = new GameBoxWriter(ms, w, hasOwnIdState: true);
+            using var wOwnIdState = new GameBoxWriter(ms, w, encapsulated: true);
 
             wOwnIdState.WriteArray(n.genealogies, (x, w) =>
             {
@@ -4406,7 +4406,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             U01 = r.ReadInt32();
             var size = r.ReadInt32();
 
-            r = new GameBoxReader(r, hasOwnIdState: true);
+            r = new GameBoxReader(r, encapsulated: true);
 
             var embedded = r.ReadArray(r => r.ReadIdent());
 
@@ -4439,7 +4439,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             w.Write(U01);
 
             using var ms = new MemoryStream();
-            using var writer = new GameBoxWriter(ms, w, hasOwnIdState: true);
+            using var writer = new GameBoxWriter(ms, w, encapsulated: true);
 
             var embedded = new List<Ident>();
 

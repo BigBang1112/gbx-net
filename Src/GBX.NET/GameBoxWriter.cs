@@ -52,8 +52,8 @@ public class GameBoxWriter : BinaryWriter
         State = state ?? throw new ArgumentNullException(nameof(state));
     }
 
-    internal GameBoxWriter(Stream input, GameBoxWriter reference, bool hasOwnIdState = false)
-        : this(input, reference.Remap, reference.AsyncAction, reference.Logger, hasOwnIdState ? new() : reference.State)
+    internal GameBoxWriter(Stream input, GameBoxWriter reference, bool encapsulated = false)
+        : this(input, reference.Remap, reference.AsyncAction, reference.Logger, encapsulated ? new(encapsulated) : reference.State)
     {
         
     }
@@ -370,6 +370,13 @@ public class GameBoxWriter : BinaryWriter
             Write(-1);
             return;
         }
+        
+        if (State.Encapsulated)
+        {
+            Write(Chunk.Remap(node.Id, Remap));
+            node.Write(this);
+            return;
+        }
 
         if (AuxNodes.ContainsValue(node))
         {
@@ -388,7 +395,6 @@ public class GameBoxWriter : BinaryWriter
 
         Write(index + 1);
         Write(Chunk.Remap(node.Id, Remap));
-
         node.Write(this);
     }
 

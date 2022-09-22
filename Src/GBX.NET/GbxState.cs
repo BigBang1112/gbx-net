@@ -8,4 +8,11 @@ public class GbxState
     public int? IdVersion { get; internal set; }
     public IList<string> IdStrings => idStrings ??= new List<string>();
     public SortedDictionary<int, Node?> AuxNodes => auxNodes ??= new();
+
+    public bool Encapsulated { get; }
+
+    public GbxState(bool encapsulated = false)
+    {
+        Encapsulated = encapsulated;
+    }
 }

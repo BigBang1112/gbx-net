@@ -51,13 +51,13 @@ public class GameBoxReader : BinaryReader
         State = state;
     }
 
-    internal GameBoxReader(Stream input, GameBoxReader reference, bool hasOwnIdState = false)
-        : this(input, reference.Gbx, reference.AsyncAction, reference.Logger, hasOwnIdState ? new() : reference.State)
+    internal GameBoxReader(Stream input, GameBoxReader reference, bool encapsulated = false)
+        : this(input, reference.Gbx, reference.AsyncAction, reference.Logger, encapsulated ? new(encapsulated) : reference.State)
     {
 
     }
 
-    internal GameBoxReader(GameBoxReader reference, bool hasOwnIdState = false) : this(reference.BaseStream, reference, hasOwnIdState)
+    internal GameBoxReader(GameBoxReader reference, bool encapsulated = false) : this(reference.BaseStream, reference, encapsulated)
     {
 
     }
@@ -659,6 +659,12 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Node? ReadNodeRef(out GameBoxRefTable.File? nodeRefFile)
     {
+        if (State.Encapsulated)
+        {
+            nodeRefFile = null;
+            return ReadNode();
+        }
+
         var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
         // If aux node index is below 0 or the node index is part of the reference table
