@@ -11,6 +11,8 @@
         return;
     }
 
+    var skippableChunk = Chunk as ISkippableChunk;
+    var discovered = skippableChunk is null || skippableChunk.Discovered;
     var chunkType = Chunk.GetType();
     var att = default(ChunkAttribute);
 
@@ -71,7 +73,7 @@
             <span style="font-family: Source Code Pro;margin-left:0.3rem">0x@(chunkId.ToString("X3") ?? "XXX")</span>
         }
 
-        @if (Chunk is IVersionable chunkVersionable)
+        @if (Chunk is IVersionable chunkVersionable && discovered)
         {
             <span style="margin-left:0.3rem;font-family: Source Code Pro;">v@(chunkVersionable.Version)</span>
         }
@@ -99,6 +101,11 @@
         {
             var fields = chunkType.GetFields();
 
+            if (skippableChunk is not null && !skippableChunk.Discovered)
+            {
+                skippableChunk.Discover();
+            }
+            
             <div class="inner @(fields.Length == 0 && Chunk is not IVersionable ? "one-column" : "")">
 
                 @if (Chunk is IVersionable versionable)
