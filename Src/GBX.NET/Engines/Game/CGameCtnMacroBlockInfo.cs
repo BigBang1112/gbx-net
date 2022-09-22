@@ -12,6 +12,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector
     private IList<BlockSkinSpawn>? blockSkinSpawns;
     private IList<CardEventsSpawn>? cardEventsSpawns;
     private CGameCtnAutoTerrain?[]? autoTerrains;
+    private CScriptTraitsMetadata? scriptMetadata;
     private IList<ObjectSpawn>? objectSpawns;
 
     [NodeMember]
@@ -29,6 +30,25 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk0310D008))]
     public CGameCtnAutoTerrain?[]? AutoTerrains { get => autoTerrains; set => autoTerrains = value; }
+    
+    /// <summary>
+    /// Metadata written into the macroblock.
+    /// </summary>
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0310D00B))]
+    public CScriptTraitsMetadata? ScriptMetadata
+    {
+        get
+        {
+            DiscoverChunk<Chunk0310D00B>();
+            return scriptMetadata;
+        }
+        set
+        {
+            DiscoverChunk<Chunk0310D00B>();
+            scriptMetadata = value;
+        }
+    }
 
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk0310D00E))]
@@ -160,10 +180,31 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector
     /// <summary>
     /// CGameCtnMacroBlockInfo 0x00B skippable chunk (script metadata)
     /// </summary>
-    [Chunk(0x0310D00B, "script metadata"), IgnoreChunk]
+    [Chunk(0x0310D00B, "script metadata")]
     public class Chunk0310D00B : SkippableChunk<CGameCtnMacroBlockInfo>
     {
-        
+        public int EncapsulationVersion { get; set; }
+
+        public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r)
+        {
+            EncapsulationVersion = r.ReadInt32();
+            var size = r.ReadInt32();
+
+            n.scriptMetadata = r.ReadNode<CScriptTraitsMetadata>(expectedClassId: 0x11002000);
+        }
+
+        public override void Write(CGameCtnMacroBlockInfo n, GameBoxWriter w)
+        {
+            w.Write(EncapsulationVersion);
+
+            using var ms = new MemoryStream();
+            using var wm = new GameBoxWriter(ms);
+
+            n.scriptMetadata?.Write(wm);
+
+            w.Write((int)ms.Length);
+            w.Write(ms.ToArray());
+        }
     }
 
     #endregion
