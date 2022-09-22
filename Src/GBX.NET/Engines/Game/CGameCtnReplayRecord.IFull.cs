@@ -2,31 +2,75 @@
 
 public partial class CGameCtnReplayRecord
 {
-    internal interface IFull
+    /// <summary>
+    /// Interface intended for full parse of <see cref="CGameCtnReplayRecord"/> in TM1.0.
+    /// </summary>
+    public interface IFullTM10 : INodeFull<CGameCtnReplayRecord>, INodeHeader<CGameCtnReplayRecord>
     {
-        string? AuthorExtraInfo { get; }
-        string? AuthorLogin { get; }
-        string? AuthorNickname { get; }
-        int? AuthorVersion { get; }
-        string? AuthorZone { get; }
-        CGameCtnMediaClip? Clip { get; }
-        ControlEntry[]? ControlEntries { get; }
-        CCtnMediaBlockEventTrackMania? Events { get; }
-        TimeInt32? EventsDuration { get; }
-        long[]? Extras { get; }
-        string? Game { get; }
-        CGameCtnGhost[] Ghosts { get; }
-        HeaderChunkSet HeaderChunks { get; }
         CGameCtnChallenge Challenge { get; }
-        Ident? MapInfo { get; }
-        string? PlayerLogin { get; }
-        string? PlayerNickname { get; }
-        CPlugEntRecordData? RecordData { get; }
-        CCtnMediaBlockUiTMSimpleEvtsDisplay? SimpleEventsDisplay { get; }
-        TimeInt32? Time { get; }
-        string? TitleID { get; }
-        string? XML { get; }
+        ControlEntry[] ControlEntries { get; }
+        TimeInt32 EventsDuration { get; }
+        CGameCtnGhost[] Ghosts { get; }
+
+        IEnumerable<CGameCtnGhost> GetGhosts();
+    }
+    
+    /// <summary>
+    /// Interface intended for full parse of <see cref="CGameCtnReplayRecord"/> in TMS.
+    /// </summary>
+    public interface IFullTMS : IFullTM10, IHeaderTMS
+    {
+        CGameCtnMediaClip? Clip { get; }
+        CCtnMediaBlockEventTrackMania? Events { get; }
+        string Game { get; }
 
         IEnumerable<CGameCtnGhost> GetGhosts(bool alsoInClips = true);
+    }
+
+    /// <summary>
+    /// Interface intended for full parse of <see cref="CGameCtnReplayRecord"/> in TMU.
+    /// </summary>
+    public interface IFullTMU : INodeFull<CGameCtnReplayRecord>, IHeaderTMU
+    {
+        CGameCtnChallenge Challenge { get; }
+        CGameCtnMediaClip? Clip { get; }
+        CGameCtnGhost[] Ghosts { get; }
+    }
+
+    /// <summary>
+    /// Interface intended for full parse of <see cref="CGameCtnReplayRecord"/> in TMUF.
+    /// </summary>
+    public interface IFullTMUF : IFullTMU
+    {
+        long[] Extras { get; }
+    }
+
+    /// <summary>
+    /// Interface intended for full parse of <see cref="CGameCtnReplayRecord"/> in MP3 (TM2/SM).
+    /// </summary>
+    public interface IFullMP3 : IFullTMUF, IHeaderMP3
+    {
+    }
+
+    /// <summary>
+    /// Interface intended for full parse of <see cref="CGameCtnReplayRecord"/> in MP4 (TM2/SM).
+    /// </summary>
+    public interface IFullMP4 : IFullMP3, IHeaderMP4
+    {
+        CPlugEntRecordData RecordData { get; }
+    }
+
+    /// <summary>
+    /// Interface intended for full parse of <see cref="CGameCtnReplayRecord"/> in TM2020.
+    /// </summary>
+    public interface IFullTM2020 : IFullMP4, IHeaderTM2020
+    {
+    }
+
+    /// <summary>
+    /// Interface intended for full parse of <see cref="CGameCtnReplayRecord"/>.
+    /// </summary>
+    public interface IFull : IFullTMS, IFullTM2020, IHeader
+    {
     }
 }

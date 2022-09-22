@@ -253,9 +253,28 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     #endregion
 
     #region Explicit properties
+
+    Ident IHeaderTMS.MapInfo => MapInfo ?? throw new NotSupportedException();
+    string IHeaderTMS.PlayerNickname => PlayerNickname ?? throw new NotSupportedException();
+    string IHeaderTMS.XML => XML ?? throw new NotSupportedException();
+    string IHeaderTMU.PlayerLogin => PlayerLogin ?? throw new NotSupportedException();
+    int IHeaderMP3.AuthorVersion => AuthorVersion ?? throw new NotSupportedException();
+    string IHeaderMP3.AuthorLogin => AuthorLogin ?? throw new NotSupportedException();
+    string IHeaderMP3.AuthorNickname => AuthorNickname ?? throw new NotSupportedException();
+    string IHeaderMP3.AuthorZone => AuthorZone ?? throw new NotSupportedException();
+    string IHeaderMP3.AuthorExtraInfo => AuthorExtraInfo ?? throw new NotSupportedException();
+    string IHeaderMP3.TitleID => TitleID ?? throw new NotSupportedException();
+
+    CGameCtnChallenge IFullTM10.Challenge => Challenge ?? throw new NotSupportedException();
+    ControlEntry[] IFullTM10.ControlEntries => ControlEntries ?? throw new NotSupportedException();
+    TimeInt32 IFullTM10.EventsDuration => EventsDuration ?? throw new NotSupportedException();
+    CGameCtnGhost[] IFullTM10.Ghosts => Ghosts ?? throw new NotSupportedException();
+    string IFullTMS.Game => Game ?? throw new NotSupportedException();
     
-    CGameCtnChallenge IFull.Challenge => Challenge ?? throw new HeaderOnlyParseLimitationException();
-    CGameCtnGhost[] IFull.Ghosts => Ghosts ?? throw new HeaderOnlyParseLimitationException();
+    CGameCtnChallenge IFullTMU.Challenge => Challenge ?? throw new NotSupportedException();
+    CGameCtnGhost[] IFullTMU.Ghosts => Ghosts ?? throw new NotSupportedException();
+    long[] IFullTMUF.Extras => Extras ?? throw new NotSupportedException();
+    CPlugEntRecordData IFullMP4.RecordData => RecordData ?? throw new NotSupportedException();
 
     #endregion
 
@@ -294,6 +313,13 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             }
         }
     }
+
+    #endregion
+
+    #region Explicit methods
+
+    IEnumerable<CGameCtnGhost> IFullTM10.GetGhosts() => GetGhosts(alsoInClips: false);
+    IEnumerable<CGameCtnGhost> IFullTMS.GetGhosts(bool alsoInClips) => GetGhosts(alsoInClips);
 
     #endregion
 
