@@ -1,8 +1,4 @@
-﻿#if DEBUG
-using System.Diagnostics;
-#endif
-
-namespace GBX.NET.Engines.Game;
+﻿namespace GBX.NET.Engines.Game;
 
 /// <summary>
 /// A replay.
@@ -10,7 +6,7 @@ namespace GBX.NET.Engines.Game;
 /// <remarks>ID: 0x03093000</remarks>
 [Node(0x03093000), WritingNotSupported]
 [NodeExtension("Replay")]
-public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
+public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader, CGameCtnReplayRecord.IFull
 {
     #region Fields
 
@@ -256,11 +252,18 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #endregion
 
+    #region Explicit properties
+    
+    CGameCtnChallenge IFull.Challenge => Challenge ?? throw new HeaderOnlyParseLimitationException();
+    CGameCtnGhost[] IFull.Ghosts => Ghosts ?? throw new HeaderOnlyParseLimitationException();
+
+    #endregion
+
     #region Constructors
 
     protected CGameCtnReplayRecord()
     {
-        
+
     }
 
     #endregion
@@ -774,7 +777,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     [Chunk(0x0309301A, "scenery vortex key"), IgnoreChunk]
     public class Chunk0309301A : SkippableChunk<CGameCtnReplayRecord>
     {
-        
+
     }
 
     #endregion
@@ -829,7 +832,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     [Chunk(0x0309301D, "InterfaceScriptInfos"), IgnoreChunk]
     public class Chunk0309301D : SkippableChunk<CGameCtnReplayRecord>
     {
-        
+
     }
 
     #endregion
@@ -904,7 +907,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     [Chunk(0x03093022, "TimedCamVal"), IgnoreChunk]
     public class Chunk03093022 : SkippableChunk<CGameCtnReplayRecord>
     {
-        
+
     }
 
     #endregion
