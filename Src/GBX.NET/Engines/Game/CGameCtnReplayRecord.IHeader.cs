@@ -7,6 +7,7 @@ public partial class CGameCtnReplayRecord
         /// <summary>
         /// Map UID, environment, and author login of the map the replay orients in.
         /// </summary>
+        /// <exception cref="PropertyNullException"></exception>
         Ident MapInfo { get; }
 
         /// <summary>
@@ -17,11 +18,13 @@ public partial class CGameCtnReplayRecord
         /// <summary>
         /// Nickname of the record owner.
         /// </summary>
+        /// <exception cref="PropertyNullException"></exception>
         string PlayerNickname { get; }
 
         /// <summary>
         /// XML replay information.
         /// </summary>
+        /// <exception cref="PropertyNullException"></exception>
         string XML { get; }
     }
 
@@ -30,6 +33,7 @@ public partial class CGameCtnReplayRecord
         /// <summary>
         /// Login of the record owner.
         /// </summary>
+        /// <exception cref="PropertyNullException"></exception>
         string PlayerLogin { get; }
     }
 
@@ -42,25 +46,31 @@ public partial class CGameCtnReplayRecord
         /// <summary>
         /// Title pack the replay orients in.
         /// </summary>
+        /// <exception cref="PropertyNullException"></exception>
         string TitleID { get; }
 
+        /// <exception cref="PropertyNullException"></exception>
         int AuthorVersion { get; }
 
         /// <summary>
         /// Login of the replay creator.
         /// </summary>
+        /// <exception cref="PropertyNullException"></exception>
         string AuthorLogin { get; }
 
         /// <summary>
         /// Nickname of the replay creator.
         /// </summary>
+        /// <exception cref="PropertyNullException"></exception>
         string AuthorNickname { get; }
 
         /// <summary>
         /// Zone of the replay creator.
         /// </summary>
+        /// <exception cref="PropertyNullException"></exception>
         string AuthorZone { get; }
 
+        /// <exception cref="PropertyNullException"></exception>
         string AuthorExtraInfo { get; }
     }
 

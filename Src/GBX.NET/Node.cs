@@ -1096,7 +1096,7 @@ public abstract class Node
     }
 
     /// <summary>
-    /// Saves the serialized node on a disk in a GBX form.
+    /// Saves the serialized node on a disk in a Gbx form.
     /// </summary>
     /// <param name="fileName">Relative or absolute file path. Null will pick the <see cref="GameBox.FileName"/> value from <see cref="GBX"/> object instead.</param>
     /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
@@ -1115,7 +1115,7 @@ public abstract class Node
     }
 
     /// <summary>
-    /// Saves the serialized node to a stream in a GBX form.
+    /// Saves the serialized node to a stream in a Gbx form.
     /// </summary>
     /// <param name="stream">Any kind of stream that supports writing.</param>
     /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
@@ -1134,7 +1134,7 @@ public abstract class Node
     }
 
     /// <summary>
-    /// Saves the serialized node on a disk in a GBX form.
+    /// Saves the serialized node on a disk in a Gbx form.
     /// </summary>
     /// <param name="fileName">Relative or absolute file path. Null will pick the <see cref="GameBox.FileName"/> value from <see cref="GBX"/> object instead.</param>
     /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>

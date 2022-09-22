@@ -223,7 +223,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     public CCtnMediaBlockUiTMSimpleEvtsDisplay? SimpleEventsDisplay => simpleEventsDisplay;
 
     /// <summary>
-    /// Duration of events in the replay (range of detected inputs). This can be 0 if the replay was driven in editor and null if driven in TMU, TMUF, TMTurbo, TM2 and TM2020.
+    /// Duration of events in the replay (range of detected inputs). This can be <see cref="TimeInt32.Zero"/> if the replay was driven in editor and null if driven in TMU, TMUF, TMTurbo, TM2 and TM2020.
     /// </summary>
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk03093003))]
@@ -254,27 +254,26 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region Explicit properties
 
-    Ident IHeaderTMS.MapInfo => MapInfo ?? throw new NotSupportedException();
-    string IHeaderTMS.PlayerNickname => PlayerNickname ?? throw new NotSupportedException();
-    string IHeaderTMS.XML => XML ?? throw new NotSupportedException();
-    string IHeaderTMU.PlayerLogin => PlayerLogin ?? throw new NotSupportedException();
-    int IHeaderMP3.AuthorVersion => AuthorVersion ?? throw new NotSupportedException();
-    string IHeaderMP3.AuthorLogin => AuthorLogin ?? throw new NotSupportedException();
-    string IHeaderMP3.AuthorNickname => AuthorNickname ?? throw new NotSupportedException();
-    string IHeaderMP3.AuthorZone => AuthorZone ?? throw new NotSupportedException();
-    string IHeaderMP3.AuthorExtraInfo => AuthorExtraInfo ?? throw new NotSupportedException();
-    string IHeaderMP3.TitleID => TitleID ?? throw new NotSupportedException();
+    Ident IHeaderTMS.MapInfo => MapInfo ?? throw new PropertyNullException(nameof(MapInfo));
+    string IHeaderTMS.PlayerNickname => PlayerNickname ?? throw new PropertyNullException(nameof(PlayerNickname));
+    string IHeaderTMS.XML => XML ?? throw new PropertyNullException(nameof(XML));
+    string IHeaderTMU.PlayerLogin => PlayerLogin ?? throw new PropertyNullException(nameof(PlayerLogin));
+    int IHeaderMP3.AuthorVersion => AuthorVersion ?? throw new PropertyNullException(nameof(AuthorVersion));
+    string IHeaderMP3.AuthorLogin => AuthorLogin ?? throw new PropertyNullException(nameof(AuthorLogin));
+    string IHeaderMP3.AuthorNickname => AuthorNickname ?? throw new PropertyNullException(nameof(AuthorNickname));
+    string IHeaderMP3.AuthorZone => AuthorZone ?? throw new PropertyNullException(nameof(AuthorZone));
+    string IHeaderMP3.AuthorExtraInfo => AuthorExtraInfo ?? throw new PropertyNullException(nameof(AuthorExtraInfo));
+    string IHeaderMP3.TitleID => TitleID ?? throw new PropertyNullException(nameof(TitleID));
 
-    CGameCtnChallenge IFullTM10.Challenge => Challenge ?? throw new NotSupportedException();
-    ControlEntry[] IFullTM10.ControlEntries => ControlEntries ?? throw new NotSupportedException();
-    TimeInt32 IFullTM10.EventsDuration => EventsDuration ?? throw new NotSupportedException();
-    CGameCtnGhost[] IFullTM10.Ghosts => Ghosts ?? throw new NotSupportedException();
-    string IFullTMS.Game => Game ?? throw new NotSupportedException();
+    CGameCtnChallenge IFullTM10.Challenge => Challenge ?? throw new PropertyNullException(nameof(Challenge));
+    TimeInt32 IFullTM10.EventsDuration => EventsDuration ?? throw new PropertyNullException(nameof(EventsDuration));
+    CGameCtnGhost[] IFullTM10.Ghosts => Ghosts ?? throw new PropertyNullException(nameof(Ghosts));
+    string IFullTMS.Game => Game ?? throw new PropertyNullException(nameof(Game));
     
-    CGameCtnChallenge IFullTMU.Challenge => Challenge ?? throw new NotSupportedException();
-    CGameCtnGhost[] IFullTMU.Ghosts => Ghosts ?? throw new NotSupportedException();
-    long[] IFullTMUF.Extras => Extras ?? throw new NotSupportedException();
-    CPlugEntRecordData IFullMP4.RecordData => RecordData ?? throw new NotSupportedException();
+    CGameCtnChallenge IFullTMU.Challenge => Challenge ?? throw new PropertyNullException(nameof(Challenge));
+    CGameCtnGhost[] IFullTMU.Ghosts => Ghosts ?? throw new PropertyNullException(nameof(Ghosts));
+    long[] IFullTMUF.Extras => Extras ?? throw new PropertyNullException(nameof(Extras));
+    CPlugEntRecordData IFullMP4.RecordData => RecordData ?? throw new PropertyNullException(nameof(RecordData));
 
     #endregion
 
