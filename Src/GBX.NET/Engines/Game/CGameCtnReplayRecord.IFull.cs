@@ -120,5 +120,10 @@ public partial class CGameCtnReplayRecord
     /// </summary>
     public interface IFull : IFullTMS, IFullTM2020, IHeader
     {
+        /// <summary>
+        /// Duration of events in the replay (range of detected inputs). This can be <see cref="TimeInt32.Zero"/> if the replay was driven in editor and null if driven in TMU, TMUF, TMTurbo, TM2 and TM2020.
+        /// </summary>
+        new TimeInt32? EventsDuration { get; }
+        new string? Game { get; }
     }
 }
