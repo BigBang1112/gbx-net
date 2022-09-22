@@ -125,7 +125,10 @@ public partial class CScriptTraitsMetadata : CMwNod
         return val is not null;
     }
 
-#region 0x000 chunk
+    public static ScriptStructTypeBuilder DefineStruct(string name) => ScriptStructType.Create(name);
+    public static ScriptStructTraitBuilder CreateStruct(string name) => ScriptStructTrait.Create(name);
+
+    #region 0x000 chunk
 
     /// <summary>
     /// CScriptTraitsMetadata 0x000 chunk
@@ -469,5 +472,5 @@ public partial class CScriptTraitsMetadata : CMwNod
         }
     }
 
-#endregion
+    #endregion
 }
