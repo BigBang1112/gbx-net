@@ -100,9 +100,16 @@ public partial class CGameCtnReplayRecord
     }
 
     /// <summary>
+    /// Interface intended for full parse of <see cref="CGameCtnReplayRecord"/> in TMTurbo.
+    /// </summary>
+    public interface IFullTMTurbo : IFullMP3, IHeaderTMTurbo
+    {
+    }
+
+    /// <summary>
     /// Interface intended for full parse of <see cref="CGameCtnReplayRecord"/> in MP4 (TM2/SM).
     /// </summary>
-    public interface IFullMP4 : IFullMP3, IHeaderMP4
+    public interface IFullMP4 : IFullTMTurbo, IHeaderMP4
     {
         /// <exception cref="PropertyNullException"></exception>
         CPlugEntRecordData RecordData { get; }

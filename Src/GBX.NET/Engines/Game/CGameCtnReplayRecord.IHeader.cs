@@ -74,7 +74,11 @@ public partial class CGameCtnReplayRecord
         string AuthorExtraInfo { get; }
     }
 
-    public interface IHeaderMP4 : IHeaderMP3
+    public interface IHeaderTMTurbo : IHeaderMP3
+    {
+    }
+
+    public interface IHeaderMP4 : IHeaderTMTurbo
     {
     }
 
