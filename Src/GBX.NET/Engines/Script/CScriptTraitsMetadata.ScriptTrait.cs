@@ -21,6 +21,8 @@ public partial class CScriptTraitsMetadata
             return obj is ScriptTrait other && Type.Equals(other.Type);
         }
 
+        public abstract object GetValue();
+
         public override string ToString()
         {
             return Type.ToString() ?? "";

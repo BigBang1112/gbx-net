@@ -44,5 +44,10 @@ public partial class CScriptTraitsMetadata
 
             return builder.ToString();
         }
+
+        public override object GetValue()
+        {
+            return Value;
+        }
     }
 }
