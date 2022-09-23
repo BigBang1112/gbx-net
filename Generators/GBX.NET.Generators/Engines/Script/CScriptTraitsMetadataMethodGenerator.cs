@@ -98,6 +98,92 @@ public partial class CScriptTraitsMetadata
         value = val ?? default!;
         return val is not null;
     }}
+
+    /// <summary>
+    /// Declares a metadata associative array variable as <c>Struct[{enumName}]</c>.
+    /// </summary>
+    /// <param name=""name"">The name of the variable.</param>
+    /// <param name=""value"">Any dictionary with key of <see href=""{mapped}""/> and value of Struct. It is always reconstructed into a new dictionary.</param>
+    public void Declare(string name, IDictionary<{mapped}, ScriptStructTrait> value)
+    {{
+        Traits[name] = new ScriptDictionaryTrait(
+            new ScriptArrayType(new ScriptType(EScriptType.{enumName}), new ScriptType(EScriptType.Struct)),
+            value.ToDictionary(
+                x => (ScriptTrait)new ScriptTrait<{mapped}>(new ScriptType(EScriptType.{enumName}), x.Key),
+                x => (ScriptTrait)x.Value
+            ));
+    }}
+
+    /// <summary>
+    /// Declares a metadata associative array variable as <c>Struct[{enumName}]</c>.
+    /// </summary>
+    /// <param name=""name"">The name of the variable.</param>
+    /// <param name=""value"">Any dictionary with key of <see href=""{mapped}""/> and value of Struct builder. It is always reconstructed into a new dictionary.</param>
+    public void Declare(string name, IDictionary<{mapped}, ScriptStructTraitBuilder> value)
+    {{
+        Declare(name, value.ToDictionary(x => x.Key, x => x.Value.Build()));
+    }}
+
+    /// <summary>
+    /// Declares a metadata associative array variable as <c>{enumName}[Struct]</c>.
+    /// </summary>
+    /// <param name=""name"">The name of the variable.</param>
+    /// <param name=""value"">Any dictionary with key of Struct and value of <see href=""{mapped}""/>. It is always reconstructed into a new dictionary.</param>
+    public void Declare(string name, IDictionary<ScriptStructTrait, {mapped}> value)
+    {{
+        Traits[name] = new ScriptDictionaryTrait(
+            new ScriptArrayType(new ScriptType(EScriptType.Struct), new ScriptType(EScriptType.{enumName})),
+            value.ToDictionary(
+                x => (ScriptTrait)x.Key,
+                x => (ScriptTrait)new ScriptTrait<{mapped}>(new ScriptType(EScriptType.{enumName}), x.Value)
+            ));
+    }}
+
+    /// <summary>
+    /// Declares a metadata associative array variable as <c>{enumName}[Struct]</c>.
+    /// </summary>
+    /// <param name=""name"">The name of the variable.</param>
+    /// <param name=""value"">Any dictionary with key of Struct builder and value of <see href=""{mapped}""/>. It is always reconstructed into a new dictionary.</param>
+    public void Declare(string name, IDictionary<ScriptStructTraitBuilder, {mapped}> value)
+    {{
+        Declare(name, value.ToDictionary(x => x.Key.Build(), x => x.Value));
+    }}
+
+    public IDictionary<ScriptStructTrait, {mapped}>? GetStruct{enumName}AssociativeArray(string name)
+    {{
+        return (Get(name) as ScriptDictionaryTrait)?.Value.ToDictionary(
+            x => (ScriptStructTrait)x.Key,
+            x => ((ScriptTrait<{mapped}>)x.Value).Value);
+    }}
+
+    public IDictionary<{mapped}, ScriptStructTrait>? Get{enumName}StructAssociativeArray(string name)
+    {{
+        return (Get(name) as ScriptDictionaryTrait)?.Value.ToDictionary(
+            x => ((ScriptTrait<{mapped}>)x.Key).Value,
+            x => (ScriptStructTrait)x.Value);
+    }}
+
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+    public bool TryGetStruct{enumName}AssociativeArray(string name, [NotNullWhen(true)] out IDictionary<ScriptStructTrait, {mapped}>? value)
+#else
+    public bool TryGetStruct{enumName}AssociativeArray(string name, out IDictionary<ScriptStructTrait, {mapped}> value)
+#endif
+    {{
+        var val = GetStruct{enumName}AssociativeArray(name);
+        value = val ?? default!;
+        return val is not null;
+    }}
+
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+    public bool TryGet{enumName}StructAssociativeArray(string name, [NotNullWhen(true)] out IDictionary<{mapped}, ScriptStructTrait>? value)
+#else
+    public bool TryGet{enumName}StructAssociativeArray(string name, out IDictionary<{mapped}, ScriptStructTrait> value)
+#endif
+    {{
+        var val = Get{enumName}StructAssociativeArray(name);
+        value = val ?? default!;
+        return val is not null;
+    }}
 ");
         }
 
@@ -110,57 +196,6 @@ public partial class CScriptTraitsMetadata
             {
                 continue;
             }
-
-            builder.AppendLine($@"    /// <summary>
-    /// Declares a metadata associative array variable as <c>Struct[{keyEnumName}]</c>.
-    /// </summary>
-    /// <param name=""name"">The name of the variable.</param>
-    /// <param name=""value"">Any dictionary with key of <see href=""{mappedKey}""/> and value of Struct. It is always reconstructed into a new dictionary.</param>
-    public void Declare(string name, IDictionary<{mappedKey}, ScriptStructTrait> value)
-    {{
-        Traits[name] = new ScriptDictionaryTrait(
-            new ScriptArrayType(new ScriptType(EScriptType.{keyEnumName}), new ScriptType(EScriptType.Struct)),
-            value.ToDictionary(
-                x => (ScriptTrait)new ScriptTrait<{mappedKey}>(new ScriptType(EScriptType.{keyEnumName}), x.Key),
-                x => (ScriptTrait)x.Value
-            ));
-    }}
-
-    /// <summary>
-    /// Declares a metadata associative array variable as <c>Struct[{keyEnumName}]</c>.
-    /// </summary>
-    /// <param name=""name"">The name of the variable.</param>
-    /// <param name=""value"">Any dictionary with key of <see href=""{mappedKey}""/> and value of Struct builder. It is always reconstructed into a new dictionary.</param>
-    public void Declare(string name, IDictionary<{mappedKey}, ScriptStructTraitBuilder> value)
-    {{
-        Declare(name, value.ToDictionary(x => x.Key, x => x.Value.Build()));
-    }}
-
-    /// <summary>
-    /// Declares a metadata associative array variable as <c>{keyEnumName}[Struct]</c>.
-    /// </summary>
-    /// <param name=""name"">The name of the variable.</param>
-    /// <param name=""value"">Any dictionary with key of Struct and value of <see href=""{mappedKey}""/>. It is always reconstructed into a new dictionary.</param>
-    public void Declare(string name, IDictionary<ScriptStructTrait, {mappedKey}> value)
-    {{
-        Traits[name] = new ScriptDictionaryTrait(
-            new ScriptArrayType(new ScriptType(EScriptType.Struct), new ScriptType(EScriptType.{keyEnumName})),
-            value.ToDictionary(
-                x => (ScriptTrait)x.Key,
-                x => (ScriptTrait)new ScriptTrait<{mappedKey}>(new ScriptType(EScriptType.{keyEnumName}), x.Value)
-            ));
-    }}
-
-    /// <summary>
-    /// Declares a metadata associative array variable as <c>{keyEnumName}[Struct]</c>.
-    /// </summary>
-    /// <param name=""name"">The name of the variable.</param>
-    /// <param name=""value"">Any dictionary with key of Struct builder and value of <see href=""{mappedKey}""/>. It is always reconstructed into a new dictionary.</param>
-    public void Declare(string name, IDictionary<ScriptStructTraitBuilder, {mappedKey}> value)
-    {{
-        Declare(name, value.ToDictionary(x => x.Key.Build(), x => x.Value));
-    }}
-");
             
             foreach (var valueMember in enumScriptTypeMembers)
             {
