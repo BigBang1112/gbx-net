@@ -308,6 +308,21 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public void Int32(ref int? variable, int defaultValue = default) => variable = Int32(variable, defaultValue);
 
+    public int? Int32Nullable(int? variable)
+    {
+        if (Reader is not null)
+        {
+            variable = Reader.ReadInt32();
+            if (variable == -1) variable = null;
+        }
+        
+        Writer?.Write(variable ?? -1);
+
+        return variable;
+    }
+    
+    public void Int32Nullable(ref int? variable) => variable = Int32(variable);
+
     /// <summary>
     /// Reads or writes a <see cref="long"/>.
     /// </summary>
