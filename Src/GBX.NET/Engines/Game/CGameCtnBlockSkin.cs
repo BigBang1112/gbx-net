@@ -9,8 +9,8 @@ public class CGameCtnBlockSkin : CMwNod
 {
     #region Fields
 
-    private string? text;
-    private FileRef? packDesc;
+    private string text = "";
+    private FileRef packDesc = FileRef.Default;
     private FileRef? parentPackDesc;
     private FileRef? foregroundPackDesc;
 
@@ -22,12 +22,12 @@ public class CGameCtnBlockSkin : CMwNod
     [AppliedWithChunk(typeof(Chunk03059000))]
     [AppliedWithChunk(typeof(Chunk03059001))]
     [AppliedWithChunk(typeof(Chunk03059002))]
-    public string? Text { get => text; set => text = value; }
+    public string Text { get => text; set => text = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk03059001))]
     [AppliedWithChunk(typeof(Chunk03059002))]
-    public FileRef? PackDesc { get => packDesc; set => packDesc = value; }
+    public FileRef PackDesc { get => packDesc; set => packDesc = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk03059002))]
@@ -65,7 +65,7 @@ public class CGameCtnBlockSkin : CMwNod
 
         public override void ReadWrite(CGameCtnBlockSkin n, GameBoxReaderWriter rw)
         {
-            rw.String(ref n.text);
+            rw.String(ref n.text!);
             rw.String(ref U01);
         }
     }
@@ -82,8 +82,8 @@ public class CGameCtnBlockSkin : CMwNod
     {
         public override void ReadWrite(CGameCtnBlockSkin n, GameBoxReaderWriter rw)
         {
-            rw.String(ref n.text);
-            rw.FileRef(ref n.packDesc);
+            rw.String(ref n.text!);
+            rw.FileRef(ref n.packDesc!);
         }
     }
 
@@ -99,8 +99,8 @@ public class CGameCtnBlockSkin : CMwNod
     {
         public override void ReadWrite(CGameCtnBlockSkin n, GameBoxReaderWriter rw)
         {
-            rw.String(ref n.text);
-            rw.FileRef(ref n.packDesc);
+            rw.String(ref n.text!);
+            rw.FileRef(ref n.packDesc!);
             rw.FileRef(ref n.parentPackDesc);
         }
     }
