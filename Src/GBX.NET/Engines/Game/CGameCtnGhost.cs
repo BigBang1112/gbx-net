@@ -621,7 +621,7 @@ public partial class CGameCtnGhost : CGameGhost
     {
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref n.respawns);
+            rw.Int32Nullable(ref n.respawns);
         }
     }
 
@@ -653,7 +653,7 @@ public partial class CGameCtnGhost : CGameGhost
     {
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref n.stuntScore);
+            rw.Int32Nullable(ref n.stuntScore);
         }
     }
 
