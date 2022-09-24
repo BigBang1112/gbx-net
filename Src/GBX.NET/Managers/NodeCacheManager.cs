@@ -11,8 +11,6 @@ public static class NodeCacheManager
     private static readonly Assembly assembly = typeof(NodeCacheManager).Assembly;
 
     public static bool ClassesAreCached { get; internal set; }
-    
-    public static ConcurrentDictionary<uint, IEnumerable<string>> GbxExtensions { get; }
 
     public static ConcurrentDictionary<uint, Type> ChunkTypesById { get; }
     public static ConcurrentDictionary<Type, uint> ChunkIdsByType { get; }
@@ -38,9 +36,7 @@ public static class NodeCacheManager
     public static ConcurrentDictionary<uint, byte> ReadWriteAsyncChunksById { get; }
 
     static NodeCacheManager()
-    {
-        GbxExtensions = new();
-        
+    {        
         ChunkTypesById = new();
         ChunkIdsByType = new();
         HeaderChunkTypesById = new();
@@ -61,15 +57,6 @@ public static class NodeCacheManager
         ReadAsyncChunksById = new();
         WriteAsyncChunksById = new();
         ReadWriteAsyncChunksById = new();
-    }
-
-    public static IEnumerable<string> GetNodeExtensions(uint classId)
-    {
-        CacheClassTypesIfNotCached();
-
-        GbxExtensions.TryGetValue(classId, out var extension);
-
-        return extension ?? Enumerable.Empty<string>();
     }
 
     /// <summary>
@@ -131,7 +118,6 @@ public static class NodeCacheManager
             var attributes = CustomAttributeExtensions.GetCustomAttributes(type, inherit: false);
 
             var nodeAttribute = default(NodeAttribute);
-            var nodeExtensions = default(List<string>);
             var moreNodeAttributes = default(List<NodeAttribute>);
 
             foreach (var attribute in attributes)
@@ -150,10 +136,6 @@ public static class NodeCacheManager
                         nodeAttribute = na;
 
                         break;
-                    case NodeExtensionAttribute nea:
-                        nodeExtensions ??= new();
-                        nodeExtensions.Add(nea.Extension);
-                        break;
                 }
             }
 
@@ -171,11 +153,6 @@ public static class NodeCacheManager
 
             var nodeId = nodeAttribute.ID;
             ClassAttributesByType[type] = attributes;
-
-            if (nodeExtensions is not null)
-            {
-                GbxExtensions[nodeId] = nodeExtensions;
-            }
         }
 
         ClassesAreCached = true;

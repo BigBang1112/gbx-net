@@ -18,7 +18,7 @@ public class GbxModel : GbxModelBase
         Gbx = gbx;
         FileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
 
-        if (NodeCacheManager.GbxExtensions.ContainsKey(gbx.Header.Id))
+        if (NodeManager.GetGbxExtensions(gbx.Header.Id).Any())
         {
             FileNameWithoutExtension = Path.GetFileNameWithoutExtension(FileNameWithoutExtension);
             OfficialExtension = GetNodeExtension(fileName);

@@ -18,7 +18,7 @@
 
         if (selectedSaveMethod == 0)
         {
-            _ = NodeCacheManager.GbxExtensions.TryGetValue(selectedGbx.Gbx.Header.Id, out extensions);
+            extensions = NodeManager.GetGbxExtensions(selectedGbx.Gbx.Header.Id);
         }
         else if (element is not null)
         {
@@ -26,7 +26,7 @@
 
             if (type is not null && NodeManager.ClassIdsByType.TryGetValue(type, out uint classId))
             {
-                _ = NodeCacheManager.GbxExtensions.TryGetValue(classId, out extensions);
+                extensions = NodeManager.GetGbxExtensions(classId);
             }
         }
 

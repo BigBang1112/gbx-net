@@ -45,6 +45,7 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
             
             var classId = default(uint?);
             var moreClassIds = default(List<uint>);
+            var nodeExtensions = default(List<string>);
 
             foreach (var att in attributes)
             {
@@ -61,6 +62,10 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
                         moreClassIds ??= new();
                         moreClassIds.Add(Convert.ToUInt32(att.ConstructorArguments.First().Value));
                         
+                        break;
+                    case "NodeExtensionAttribute":
+                        nodeExtensions ??= new();
+                        nodeExtensions.Add(Convert.ToString(att.ConstructorArguments.First().Value));
                         break;
                 }
             }
@@ -88,11 +93,15 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
                 }
             }
 
-            engineTypeDetailedList.Add(new(engineType, classId.Value, moreClassIds ?? Enumerable.Empty<uint>()));
+            engineTypeDetailedList.Add(new(engineType,
+                classId.Value, moreClassIds ?? Enumerable.Empty<uint>(),
+                nodeExtensions ?? Enumerable.Empty<string>()));
         }
 
         builder.AppendLine("        _ => null");
         builder.AppendLine("    };");
+
+        builder.AppendLine();
         
         builder.AppendLine("    public static IReadOnlyDictionary<Type, uint> ClassIdsByType { get; } = new Dictionary<Type, uint>");
         builder.AppendLine("    {");
@@ -111,10 +120,42 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
         
         builder.AppendLine("    };");
 
+        builder.AppendLine();
+
+        builder.AppendLine("    public static IEnumerable<string> GetGbxExtensions(uint classId)");
+        builder.AppendLine("    {");
+        builder.AppendLine("        switch (classId)");
+        builder.AppendLine("        {");
+
+        foreach (var engineTypeDetailed in engineTypeDetailedList)
+        {
+            if (!engineTypeDetailed.NodeExtensions.Any())
+            {
+                continue;
+            }
+
+            builder.Append("            case ");
+            builder.Append(engineTypeDetailed.ClassId);
+            builder.AppendLine(":");
+
+            foreach (var extension in engineTypeDetailed.NodeExtensions)
+            {
+                builder.Append("                yield return \"");
+                builder.Append(extension);
+                builder.AppendLine("\";");
+            }
+            
+            builder.AppendLine("                break;");
+        }
+        builder.AppendLine("        }");
+        builder.AppendLine("    }");
+
         builder.AppendLine("}");
 
         context.AddSource("NodeManager.ClassAndChunk.g.cs", builder.ToString());
     }
 
-    public record EngineType(INamedTypeSymbol TypeSymbol, uint ClassId, IEnumerable<uint> MoreClassIds);
+    public record EngineType(INamedTypeSymbol TypeSymbol,
+        uint ClassId, IEnumerable<uint> MoreClassIds,
+        IEnumerable<string> NodeExtensions);
 }
