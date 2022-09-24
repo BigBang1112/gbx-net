@@ -20,6 +20,12 @@ public class NodeManagerCollectionsIdsGenerator : SourceGenerator
         mappingBuilder.AppendLine("    public static string? GetCollectionName(int collectionId) => collectionId switch");
         mappingBuilder.AppendLine("    {");
 
+        var dictionaryBuilder = new StringBuilder("namespace GBX.NET;\n\n#nullable enable\n\n");
+        dictionaryBuilder.AppendLine("public static partial class NodeManager");
+        dictionaryBuilder.AppendLine("{");
+        dictionaryBuilder.AppendLine("    public static IReadOnlyDictionary<int, string> CollectionIds { get; } = new Dictionary<int, string>");
+        dictionaryBuilder.AppendLine("    {");
+
         foreach (var textLine in collectionIdFileContents.Lines)
         {
             var stringLine = textLine.ToString();
@@ -52,6 +58,12 @@ public class NodeManagerCollectionsIdsGenerator : SourceGenerator
             mappingBuilder.Append(" => \"");
             mappingBuilder.Append(value.ToString());
             mappingBuilder.Append("\",\n");
+
+            dictionaryBuilder.Append("        { ");
+            dictionaryBuilder.Append(key.ToString());
+            dictionaryBuilder.Append(", \"");
+            dictionaryBuilder.Append(value.ToString());
+            dictionaryBuilder.AppendLine("\" },");
         }
 
         mappingBuilder.AppendLine("        _ => null");
@@ -59,5 +71,10 @@ public class NodeManagerCollectionsIdsGenerator : SourceGenerator
         mappingBuilder.AppendLine("}");
 
         context.AddSource("NodeManager.CollectionIds.g.cs", mappingBuilder.ToString());
+
+        dictionaryBuilder.AppendLine("    };");
+        dictionaryBuilder.AppendLine("}");
+
+        context.AddSource("NodeManager.CollectionIdsDict.g.cs", dictionaryBuilder.ToString());
     }
 }

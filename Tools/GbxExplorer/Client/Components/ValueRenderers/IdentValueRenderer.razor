@@ -43,7 +43,7 @@ else if (Value is Ident ident)
             oninput="onInputText(this)"
             list="collectionIds" />
         <datalist id="collectionIds">
-            @foreach(var (id, name) in GBX.NET.Managers.NodeCacheManager.CollectionIds)
+            @foreach(var (id, name) in GBX.NET.NodeManager.CollectionIds)
             {
                 <option value="@id">@name</option>
             }
