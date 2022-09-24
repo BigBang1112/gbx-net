@@ -42,8 +42,11 @@
 		<Using Include="GBX.NET.Engines.Function" />
 		<Using Include="GBX.NET.Engines.Game" />
 		<Using Include="GBX.NET.Engines.GameData" />
+		<Using Include="GBX.NET.Engines.Graphic" />
 		<Using Include="GBX.NET.Engines.Hms" />
 		<Using Include="GBX.NET.Engines.Input" />
+		<Using Include="GBX.NET.Engines.Meta" />
+		<Using Include="GBX.NET.Engines.Motion" />
 		<Using Include="GBX.NET.Engines.MwFoundations" />
 		<Using Include="GBX.NET.Engines.Plug" />
 		<Using Include="GBX.NET.Engines.Scene" />

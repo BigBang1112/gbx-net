@@ -14,9 +14,6 @@ public static class NodeCacheManager
     
     public static ConcurrentDictionary<uint, IEnumerable<string>> GbxExtensions { get; }
 
-    public static ConcurrentDictionary<uint, Type> ClassTypesById { get; }
-    public static ConcurrentDictionary<Type, uint> ClassIdsByType { get; }
-
     public static ConcurrentDictionary<uint, Type> ChunkTypesById { get; }
     public static ConcurrentDictionary<Type, uint> ChunkIdsByType { get; }
 
@@ -43,9 +40,7 @@ public static class NodeCacheManager
     static NodeCacheManager()
     {
         GbxExtensions = new();
-
-        ClassTypesById = new();
-        ClassIdsByType = new();
+        
         ChunkTypesById = new();
         ChunkIdsByType = new();
         HeaderChunkTypesById = new();
@@ -100,7 +95,10 @@ public static class NodeCacheManager
     {
         CacheClassTypesIfNotCached();
 
-        var classId = GetClassIdByType(typeof(T)) ?? throw new Exception("Node cannot be instantiated.");
+        if (!NodeManager.ClassIdsByType.TryGetValue(typeof(T), out uint classId))
+        {
+            throw new Exception("Node cannot be instantiated.");
+        }
 
         return (T)GetClassConstructor(classId)();
     }
@@ -172,49 +170,15 @@ public static class NodeCacheManager
             }
 
             var nodeId = nodeAttribute.ID;
-            ClassTypesById[nodeId] = type;
-            ClassIdsByType[type] = nodeId;
             ClassAttributesByType[type] = attributes;
 
             if (nodeExtensions is not null)
             {
                 GbxExtensions[nodeId] = nodeExtensions;
             }
-
-            if (moreNodeAttributes is not null)
-            {
-                foreach (var att in moreNodeAttributes)
-                {
-                    ClassTypesById[att.ID] = type;
-                }
-            }
         }
 
         ClassesAreCached = true;
-    }
-
-    internal static Type? GetClassTypeById(uint id)
-    {
-        CacheClassTypesIfNotCached();
-
-        if (ClassTypesById.TryGetValue(id, out var cachedType))
-        {
-            return cachedType;
-        }
-
-        return null;
-    }
-
-    internal static uint? GetClassIdByType(Type type)
-    {
-        CacheClassTypesIfNotCached();
-
-        if (ClassIdsByType.TryGetValue(type, out var cachedId))
-        {
-            return cachedId;
-        }
-
-        return null;
     }
 
     internal static Type? GetHeaderChunkTypeById(Type classType, uint chunkId)
@@ -403,10 +367,7 @@ public static class NodeCacheManager
             return cachedConstructor;
         }
 
-        if (!ClassTypesById.TryGetValue(id, out var cachedType))
-        {
-            throw new ThisShouldNotHappenException();
-        }
+        var cachedType = NodeManager.GetClassTypeById(id) ?? throw new ThisShouldNotHappenException();
 
         var constructor = CreateConstructor<Node>(cachedType);
 

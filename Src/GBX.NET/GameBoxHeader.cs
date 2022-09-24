@@ -260,7 +260,7 @@ public class GameBoxHeader
         // Chunk data can be always read
         var chunkData = r.ReadBytes(size);
 
-        var chunkNodeType = NodeCacheManager.GetClassTypeById(classId);
+        var chunkNodeType = NodeManager.GetClassTypeById(classId);
 
         if (chunkNodeType is null)
         {

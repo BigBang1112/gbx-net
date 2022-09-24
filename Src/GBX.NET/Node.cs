@@ -53,7 +53,7 @@ public abstract class Node
 
     private uint GetId()
     {
-        return NodeCacheManager.GetClassIdByType(GetType()) ?? throw new ThisShouldNotHappenException();
+        return NodeManager.ClassIdsByType[GetType()];
     }
 
     /// <summary>
@@ -132,7 +132,7 @@ public abstract class Node
 
         var id = classId.Value;
 
-        nodeType = NodeCacheManager.GetClassTypeById(id)!;
+        nodeType = NodeManager.GetClassTypeById(id)!;
 
         if (nodeType is null)
         {
@@ -167,7 +167,7 @@ public abstract class Node
         {
             var baseType = nodeType.BaseType ?? throw new ThisShouldNotHappenException();
                 
-            var parentClassId = NodeCacheManager.GetClassIdByType(baseType) ?? throw new ThisShouldNotHappenException();
+            var parentClassId = NodeManager.ClassIdsByType[baseType];
 
             if (parentClassId == 0x07031000)
             {

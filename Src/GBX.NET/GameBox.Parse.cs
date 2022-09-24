@@ -33,7 +33,7 @@ public partial class GameBox
             isRefTableCompressed = true;
         }
 
-        classType = NodeCacheManager.GetClassTypeById(header.Id);
+        classType = NodeManager.GetClassTypeById(header.Id);
 
         if (classType is null)
         {
