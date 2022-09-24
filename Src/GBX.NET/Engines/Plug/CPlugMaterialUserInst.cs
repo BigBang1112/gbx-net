@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.Plug;
+﻿using System.Drawing;
+
+namespace GBX.NET.Engines.Plug;
 
 /// <summary>
 /// Material referenced in user creation.
@@ -25,6 +27,7 @@ public class CPlugMaterialUserInst : CMwNod
     private string? model;
     private string? baseTexture;
     private string? link;
+    private int[]? color;
     private Cst[]? csts;
     private UvAnim[]? uvAnims;
     private string? hidingGroup;
@@ -56,6 +59,10 @@ public class CPlugMaterialUserInst : CMwNod
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk090FD000), sinceVersion: 2)]
     public Cst[]? Csts { get => csts; set => csts = value; }
+
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk090FD000), sinceVersion: 2)]
+    public int[]? Color { get => color; set => color = value; }
 
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk090FD000), sinceVersion: 3)]
@@ -130,7 +137,6 @@ public class CPlugMaterialUserInst : CMwNod
         private int version;
 
         public string? U01;
-        public int[]? U06;
         public string[]? U07;
 
         /// <summary>
@@ -187,7 +193,7 @@ public class CPlugMaterialUserInst : CMwNod
                         w.Write(x.U03);
                     });
 
-                    rw.Array<int>(ref U06);
+                    rw.Array<int>(ref n.color);
 
                     if (version >= 3)
                     {
