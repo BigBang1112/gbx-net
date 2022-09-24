@@ -64,9 +64,9 @@ public abstract class Node
     {
         var type = GetType();
 
-        if (NodeCacheManager.Names.TryGetValue(Id, out string? name))
+        if (NodeManager.TryGetName(Id, out string? name))
         {
-            return name;
+            return name!;
         }
 
         return type.FullName?.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::") ?? string.Empty;
@@ -1185,7 +1185,7 @@ public abstract class Node
 
     public static uint RemapToLatest(uint id)
     {
-        while (NodeCacheManager.Mappings.TryGetValue(id, out var newId))
+        while (NodeManager.TryGetMapping(id, out var newId))
         {
             id = newId;
         }

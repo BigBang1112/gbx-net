@@ -11,12 +11,7 @@ public static class NodeCacheManager
     private static readonly Assembly assembly = typeof(NodeCacheManager).Assembly;
 
     public static bool ClassesAreCached { get; internal set; }
-
-    public static Dictionary<uint, string> Names { get; }
-    public static Dictionary<uint, uint> Mappings { get; } // key: older, value: newer
-    public static ILookup<uint, uint> ReverseMappings { get; } // key: newer, value: older
-    public static Dictionary<uint, string> Extensions { get; }
-    public static Dictionary<int, string> CollectionIds { get; }
+    
     public static ConcurrentDictionary<uint, IEnumerable<string>> GbxExtensions { get; }
 
     public static ConcurrentDictionary<uint, Type> ClassTypesById { get; }
@@ -47,10 +42,6 @@ public static class NodeCacheManager
 
     static NodeCacheManager()
     {
-        Names = new();
-        Mappings = new();
-        Extensions = new();
-        CollectionIds = new();
         GbxExtensions = new();
 
         ClassTypesById = new();
@@ -75,50 +66,6 @@ public static class NodeCacheManager
         ReadAsyncChunksById = new();
         WriteAsyncChunksById = new();
         ReadWriteAsyncChunksById = new();
-
-        DefineNames2(Names, Extensions);
-        DefineMappings2(Mappings);
-        ReverseMappings = Mappings.ToLookup(x => x.Value, x => x.Key);
-        DefineCollectionIds(CollectionIds);
-    }
-
-    private static void DefineCollectionIds(IDictionary<int, string> collectionIds)
-    {
-        using var reader = new StringReader(Resources.CollectionID);
-
-        while (true)
-        {
-            var stringLine = reader.ReadLine();
-
-            if (stringLine is null)
-            {
-                break;
-            }
-
-            var line = stringLine.AsSpan().TrimEnd();
-
-            var spaceAtIndex = line.IndexOf(' ');
-
-            if (spaceAtIndex == -1)
-            {
-                continue;
-            }
-
-            var key = line.Slice(0, spaceAtIndex);
-
-            // Hack currently, should be fine with max 2 possible values
-            var lastSpaceAtIndex = line.LastIndexOf(' ');
-            var value = lastSpaceAtIndex == spaceAtIndex
-                ? line.Slice(spaceAtIndex + 1)
-                : line.Slice(spaceAtIndex + 1, lastSpaceAtIndex - spaceAtIndex - 1);
-            //
-
-#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
-            collectionIds[int.Parse(key)] = value.ToString();
-#else
-            collectionIds[int.Parse(key.ToString())] = value.ToString();
-#endif
-        }
     }
 
     public static IEnumerable<string> GetNodeExtensions(uint classId)
@@ -475,226 +422,9 @@ public static class NodeCacheManager
         return lambda.Compile();
     }
 
-    internal static void DefineNames(IDictionary<uint, string> names, IDictionary<uint, string> extensions)
-    {
-        using var reader = new StringReader(Resources.ClassID);
-
-        var en = "";
-        var engineName = "";
-
-        while (true)
-        {
-            var line = reader.ReadLine();
-
-            if (line is null)
-            {
-                break;
-            }
-
-            var ch = "000";
-
-            var className = "";
-
-            if (!line.StartsWith("  "))
-            {
-                en = line.Substring(0, 2);
-                if (line.Length - 3 > 0) engineName = line.Substring(3);
-                continue;
-            }
-
-            var cl = line.Substring(2, 3);
-            if (line.Length - 6 > 0) className = line.Substring(6);
-
-            var classIDString = $"{en}{cl}{ch}";
-
-            var extension = default(string);
-
-            var classNameSplit = className.Split(' ');
-
-            if (classNameSplit.Length > 1)
-            {
-                className = classNameSplit[0];
-                extension = classNameSplit[1];
-            }
-
-            if (uint.TryParse(classIDString, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint classID))
-            {
-                names[classID] = engineName + "::" + className;
-                if (extension != null)
-                    extensions[classID] = extension;
-
-                continue;
-            }
-
-            //Debug.WriteLine($"Invalid class ID {classIDString}, skipping");
-        }
-
-        //Debug.WriteLine("Classes named in " + watch.Elapsed.TotalMilliseconds + "ms");
-    }
-
-    internal static void DefineNames2(IDictionary<uint, string> names, IDictionary<uint, string> extensions)
-    {
-        var watch = Stopwatch.StartNew();
-
-        using var reader = new StringReader(Resources.ClassID);
-
-        var classIdSpan = new Span<char>(new[] { '0', '0', '0', '0', '0', '0', '0', '0' });
-        var engineNameSpan = new ReadOnlySpan<char>();
-
-        while (true)
-        {
-            var stringLine = reader.ReadLine();
-
-            if (stringLine is null)
-            {
-                break;
-            }
-
-            var line = stringLine.AsSpan();
-
-#if NET462 || NETSTANDARD2_0
-            if (!line.StartsWith(new ReadOnlySpan<char>(new char[] { ' ', ' ' })))
-#else
-            if (!line.StartsWith("  "))
-#endif
-            {
-                var engine = line.Slice(0, 2);
-                classIdSpan[0] = engine[0];
-                classIdSpan[1] = engine[1];
-
-                if (line.Length > 3)
-                {
-                    engineNameSpan = line.Slice(3, line.Length - 3);
-                }
-
-                continue;
-            }
-
-            var classIdPart = line.Slice(2, 3);
-
-            for (var i = 0; i < 3; i++)
-            {
-                classIdSpan[2 + i] = classIdPart[i];
-            }
-
-            var classNameWithExtensionSpan = new ReadOnlySpan<char>();
-
-            if (line.Length <= 6)
-            {
-                continue;
-            }
-
-            classNameWithExtensionSpan = line.Slice(6, line.Length - 6);
-            var classNameWithExtensionSpaceIndex = classNameWithExtensionSpan.IndexOf(' ');
-            var noExtension = classNameWithExtensionSpaceIndex == -1;
-
-            var classNameSpan = noExtension
-                ? classNameWithExtensionSpan
-                : classNameWithExtensionSpan.Slice(0, classNameWithExtensionSpaceIndex);
-
-            var extensionSpan = noExtension
-                ? new ReadOnlySpan<char>()
-                : classNameWithExtensionSpan.Slice(classNameWithExtensionSpaceIndex + 1,
-                    length: classNameWithExtensionSpan.Length - classNameWithExtensionSpaceIndex - 1);
-
-#if NET462 || NETSTANDARD2_0
-            if (!uint.TryParse(classIdSpan.ToString(), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint classID))
-#else
-            if (!uint.TryParse(classIdSpan, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint classID))
-#endif
-            {
-                continue;
-            }
-
-#if NET6_0_OR_GREATER
-            var fullName = string.Concat(engineNameSpan, "::", classNameSpan); // .NET Core 3+
-#else
-            var fullNameSpan = new Span<char>(new char[engineNameSpan.Length + 2 + classNameSpan.Length]);
-                
-            var ii = 0;
-            engineNameSpan.CopyTo(fullNameSpan.Slice(ii, engineNameSpan.Length));
-            ii += engineNameSpan.Length;
-
-            new ReadOnlySpan<char>(new char[] { ':', ':' }).CopyTo(fullNameSpan.Slice(ii, 2));
-            ii += 2;
-
-            classNameSpan.CopyTo(fullNameSpan.Slice(ii, classNameSpan.Length));
-
-            var fullName = fullNameSpan.ToString();
-#endif
-
-            names.Add(classID, fullName);
-
-            if (!extensionSpan.IsEmpty)
-                extensions.Add(classID, extensionSpan.ToString());
-
-            //Debug.WriteLine($"Invalid class ID {classIdSpan}, skipping");
-        }
-
-        //Debug.WriteLine("Classes named in " + watch.Elapsed.TotalMilliseconds + "ms");
-    }
-
-    internal static void DefineMappings(Dictionary<uint, uint> mappings)
-    {
-        using var reader = new StringReader(Resources.ClassIDMappings);
-
-        string? line;
-        while ((line = reader.ReadLine()) is not null)
-        {
-            var valueKey = line.Split(new string[] { " -> " }, StringSplitOptions.None);
-
-            if (valueKey.Length != 2)
-                continue;
-
-            if (!uint.TryParse(valueKey[0], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint key)
-            || !uint.TryParse(valueKey[1], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint value))
-                continue;
-
-            if (mappings.ContainsValue(key)) // Virtual Skipper solution
-                mappings[mappings.FirstOrDefault(x => x.Value == key).Key] = value;
-            mappings[key] = value;
-        }
-    }
-
     internal static void DefineMappings2(Dictionary<uint, uint> mappings)
     {
-        using var reader = new StringReader(Resources.ClassIDMappings);
-
-        while (true)
-        {
-            var stringLine = reader.ReadLine();
-
-            if (stringLine is null)
-            {
-                break;
-            }
-
-            if (stringLine == "")
-            {
-                continue;
-            }
-
-            var line = stringLine.AsSpan();
-
-            var from = line.Slice(0, 8);
-            var to = line.Slice(12, 8);
-
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
-            if (!uint.TryParse(from, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint key)
-            || !uint.TryParse(to, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint value))
-            {
-                continue;
-            }
-#else
-            if (!uint.TryParse(from.ToString(), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint key)
-            || !uint.TryParse(to.ToString(), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint value))
-            {
-                continue;
-            }
-#endif
-
-            mappings.Add(key, value);
-        }
+        
     }
 
     private static bool IsClassFromEngines(Type t)

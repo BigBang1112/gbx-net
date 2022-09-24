@@ -18,7 +18,6 @@ public class NodeNotImplementedException : Exception
 
     private static string GetClassName(uint classId)
     {
-        NodeCacheManager.Names.TryGetValue(classId, out var className);
-        return className ?? "unknown class";
+        return NodeManager.GetName(classId) ?? "unknown class";
     }
 }

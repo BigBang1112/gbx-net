@@ -57,7 +57,7 @@ public class CPlugEntRecordData : CMwNod
         var objects = r.ReadArray<object>(r =>
         {
             var nodeId = r.ReadUInt32();
-            NodeCacheManager.Names.TryGetValue(nodeId, out string? nodeName);
+            var nodeName = NodeManager.GetName(nodeId);
 
             return new
             {
@@ -84,7 +84,7 @@ public class CPlugEntRecordData : CMwNod
                 if (version >= 4)
                 {
                     clas = r.ReadUInt32();
-                    NodeCacheManager.Names.TryGetValue(clas.Value, out clasName);
+                    clasName = NodeManager.GetName(clas.Value);
                 }
 
                 return new

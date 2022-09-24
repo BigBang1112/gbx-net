@@ -264,9 +264,7 @@ public class GameBoxHeader
 
         if (chunkNodeType is null)
         {
-            NodeCacheManager.Names.TryGetValue(classId, out var className);
-
-            logger?.LogHeaderChunkNodeNotImplemented(classId.ToString("X8"), className ?? "unknown class");
+            logger?.LogHeaderChunkNodeNotImplemented(classId.ToString("X8"), NodeManager.GetName(classId) ?? "unknown class");
 
             return new HeaderChunk(chunkId, chunkData, isHeavy);
         }

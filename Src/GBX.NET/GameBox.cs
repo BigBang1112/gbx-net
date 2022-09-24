@@ -333,7 +333,7 @@ public partial class GameBox
             return null;
 
         var modernID = classID.GetValueOrDefault();
-        if (NodeCacheManager.Mappings.TryGetValue(classID.GetValueOrDefault(), out uint newerClassID))
+        if (NodeManager.TryGetMapping(classID.GetValueOrDefault(), out uint newerClassID))
             modernID = newerClassID;
 
         Debug.WriteLine("GetGameBoxType: " + modernID.ToString("x8"));
