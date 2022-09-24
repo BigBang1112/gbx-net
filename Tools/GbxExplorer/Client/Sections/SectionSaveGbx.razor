@@ -24,7 +24,7 @@
         {
             var type = element.GetValue()?.GetType() ?? element.Property?.PropertyType;
 
-            if (type is not null && NodeCacheManager.ClassIdsByType.TryGetValue(type, out uint classId))
+            if (type is not null && NodeManager.ClassIdsByType.TryGetValue(type, out uint classId))
             {
                 _ = NodeCacheManager.GbxExtensions.TryGetValue(classId, out extensions);
             }

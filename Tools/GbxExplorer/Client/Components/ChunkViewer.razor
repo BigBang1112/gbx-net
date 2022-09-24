@@ -51,7 +51,7 @@
             var classType = chunkType.GetGenericArguments()[0];
             var name = classType.Name;
 
-            if (GBX.NET.Managers.NodeCacheManager.ClassIdsByType.TryGetValue(classType, out uint classId)
+            if (GBX.NET.NodeManager.ClassIdsByType.TryGetValue(classType, out uint classId)
                 && (classId & 0xFFFFF000) == (Chunk.Id & 0xFFFFF000))
             {
                 <span>@name</span>
