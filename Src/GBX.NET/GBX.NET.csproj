@@ -59,24 +59,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Compile Update="Resources.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>Resources.resx</DependentUpon>
-		</Compile>
-
-		<EmbeddedResource Update="Resources.resx">
-			<Generator>ResXFileCodeGenerator</Generator>
-			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
-	</ItemGroup>
-
-	<ItemGroup>
+		<Folder Include="Builders\Engines\Script\" />
 		<Folder Include="Engines\Audio\" />
 		<Folder Include="Engines\Net\" />
 		<Folder Include="Engines\VirtualSkipper\" />
 		<Folder Include="Engines\Vision\" />
 		<Folder Include="Engines\Xml\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<AdditionalFiles Include="Resources/ClassID.txt"/>
+		<AdditionalFiles Include="Resources/ClassIDMappings.txt"/>
+		<AdditionalFiles Include="Resources/CollectionID.txt"/>
 	</ItemGroup>
 
 	<ItemGroup>
