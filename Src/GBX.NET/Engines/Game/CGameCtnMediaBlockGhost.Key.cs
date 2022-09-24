@@ -4,14 +4,14 @@ public partial class CGameCtnMediaBlockGhost
 {
     public new class Key : CGameCtnMediaBlock.Key
     {
-        private float unknown;
+        private float lightIntensity;
 
-        public float Unknown { get => unknown; set => unknown = value; }
+        public float LightIntensity { get => lightIntensity; set => lightIntensity = value; }
 
         public override void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
             base.ReadWrite(rw, version);
-            rw.Single(ref unknown);
+            rw.Single(ref lightIntensity);
         }
     }
 }
