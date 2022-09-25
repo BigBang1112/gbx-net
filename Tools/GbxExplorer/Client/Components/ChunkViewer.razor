@@ -14,9 +14,8 @@
     var skippableChunk = Chunk as ISkippableChunk;
     var discovered = skippableChunk is null || skippableChunk.Discovered;
     var chunkType = Chunk.GetType();
-    var att = default(ChunkAttribute);
     
-    _ = NodeManager.ChunkAttributesByType.TryGetValue(chunkType, out var atts);
+    var hasAttributes = NodeManager.ChunkAttributesByType.TryGetValue(chunkType, out var atts);
 
     string boxClass;
 
@@ -32,8 +31,8 @@
     {
         boxClass = "body-chunk";
     }
-
-    var chunkId = att?.GetChunkPart() ?? (Chunk.Id & 0xFFF);
+    
+    var chunkId = Chunk.Id & 0xFFF;
     var isSameBaseId = true;
 }
 
@@ -43,7 +42,7 @@
         @onmouseover="() => over = true"
         @onmouseout="() => over = false">
 
-        @if (att is null && chunkType.IsGenericType)
+        @if (!hasAttributes && chunkType.IsGenericType)
         {
             var classType = chunkType.GetGenericArguments()[0];
             var name = classType.Name;
@@ -75,12 +74,12 @@
             <span style="margin-left:0.3rem;font-family: Source Code Pro;">v@(chunkVersionable.Version)</span>
         }
 
-        @if (!string.IsNullOrWhiteSpace(att?.Description))
+        @if (!string.IsNullOrWhiteSpace(atts.Description))
         {
-            <span style="margin-left:0.3rem">(@att.Description)</span>
+            <span style="margin-left:0.3rem">(@atts.Description)</span>
         }
-
-        @if (att is null)
+        
+        @if (!hasAttributes)
         {
             <span style="margin-left:0.3rem;color:#FFB70F">(UNKNOWN)</span>
         }
@@ -90,7 +89,7 @@
 
     @if (OpenChunkService.OpenedChunks.Contains(chunkType))
     {
-        if (att is null)
+        if (!hasAttributes)
         {
             // nastavení unknown chunků
         }
