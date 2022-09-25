@@ -31,7 +31,7 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
             })
             .ToList();
 
-        var builder = new StringBuilder("namespace GBX.NET;\n\n");
+        var builder = new StringBuilder("namespace GBX.NET;\n\n#nullable enable\n\n");
         builder.AppendLine("public static partial class NodeManager");
         builder.AppendLine("{");
 
@@ -69,7 +69,7 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
 
         builder.AppendLine();
         
-        builder.AppendLine("    public readonly record struct ChunkAttributes(string Description, bool ProcessSync, bool Ignore, bool AutoReadWrite);");
+        builder.AppendLine("    public sealed record ChunkAttributes(string Description, bool ProcessSync, bool Ignore, bool AutoReadWrite);");
         builder.AppendLine();
         builder.AppendLine("    public static IReadOnlyDictionary<uint, ChunkAttributes> ChunkAttributesById { get; } = new Dictionary<uint, ChunkAttributes>");
         builder.AppendLine("    {");
@@ -110,27 +110,6 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
                 builder.Append("        { ");
                 builder.Append(chunkType.ChunkId);
                 builder.Append(", ");
-                GenerateChunkAttributesCtor(builder, chunkType);
-                builder.AppendLine(" },");
-            }
-        }
-
-        builder.AppendLine("    };");
-
-        builder.AppendLine();
-
-        builder.AppendLine("    public static IReadOnlyDictionary<Type, ChunkAttributes> ChunkAttributesByType { get; } = new Dictionary<Type, ChunkAttributes>");
-        builder.AppendLine("    {");
-
-        foreach (var engineType in engineTypeDetailedList)
-        {
-            foreach (var chunkType in engineType.ChunkTypes)
-            {
-                builder.Append("        { typeof(");
-                builder.Append(engineType.TypeSymbol.Name);
-                builder.Append('.');
-                builder.Append(chunkType.TypeSymbol.Name);
-                builder.Append("), ");
                 GenerateChunkAttributesCtor(builder, chunkType);
                 builder.AppendLine(" },");
             }
@@ -697,13 +676,13 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
         builder.AppendLine("    }");
     }
 
-    public record EngineType(INamedTypeSymbol TypeSymbol, uint ClassId,
+    public sealed record EngineType(INamedTypeSymbol TypeSymbol, uint ClassId,
         IEnumerable<uint> MoreClassIds, IEnumerable<string> NodeExtensions, bool WritingNotSupported)
     {
         public List<ChunkType> ChunkTypes { get; } = new();
     }
 
-    public record ChunkType(INamedTypeSymbol TypeSymbol, uint ChunkId,
+    public sealed record ChunkType(INamedTypeSymbol TypeSymbol, uint ChunkId,
         string Description, bool IsHeaderChunk, bool IsSkippableChunk,
         bool ProcessSync, bool Ignore, bool AutoReadWrite,
         bool OverridesReadAsync, bool OverridesWriteAsync, bool OverridesReadWriteAsync);

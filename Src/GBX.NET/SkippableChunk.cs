@@ -54,7 +54,7 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
 
         var hasOwnIdState = false;
 
-        if (NodeManager.ChunkAttributesByType.TryGetValue(GetType(), out var atts) && atts.Ignore)
+        if (NodeManager.ChunkAttributesById.TryGetValue(Id, out var atts) && atts.Ignore)
         {
             return;
         }
@@ -109,7 +109,7 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
     {
         var nodeName = typeof(T).Name;
         
-        if (!NodeManager.ChunkAttributesByType.TryGetValue(GetType(), out var atts))
+        if (!NodeManager.ChunkAttributesById.TryGetValue(Id, out var atts))
         {
             return $"{nodeName} unknown skippable chunk 0x{Id:X8}";
         }

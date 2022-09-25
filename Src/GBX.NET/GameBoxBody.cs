@@ -176,7 +176,7 @@ public class GameBoxBody
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     private static void ReadMainNode(Node node, GameBoxReader reader, IProgress<GameBoxReadProgress>? progress)
     {
-        Node.Parse(node, node.GetType(), reader, progress);
+        Node.Parse(node, node.Id, reader, progress);
 
         /*using var ms = new MemoryStream();
         var s = reader.BaseStream;
@@ -251,7 +251,7 @@ public class GameBoxBody
                                                 GameBoxReader reader,
                                                 CancellationToken cancellationToken)
     {
-        await Node.ParseAsync(node, node.GetType(), reader, cancellationToken);
+        await Node.ParseAsync(node, node.Id, reader, cancellationToken);
 
         // Maybe not needed
         /*using var ms = new MemoryStream();
