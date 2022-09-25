@@ -15,7 +15,7 @@
     var discovered = skippableChunk is null || skippableChunk.Discovered;
     var chunkType = Chunk.GetType();
     
-    var hasAttributes = NodeManager.ChunkAttributesByType.TryGetValue(chunkType, out var atts);
+    var hasAttributes = NodeManager.ChunkAttributesById.TryGetValue(Chunk.Id, out var atts);
 
     string boxClass;
 
