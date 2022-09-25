@@ -60,10 +60,6 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
         GemerateGetHeaderChunkTypeById(builder, engineTypeDetailedList);
 
         builder.AppendLine();
-
-        GenerateHeaderChunkIdsByType(builder, engineTypeDetailedList);
-
-        builder.AppendLine();
         
         GenerateWritingNotSupportedClassTypes(builder, engineTypeDetailedList);
 
@@ -336,33 +332,6 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
         builder.AppendLine("    };");
     }
 
-    private static void GenerateHeaderChunkIdsByType(StringBuilder builder, List<EngineType> engineTypeDetailedList)
-    {
-        builder.AppendLine("    public static IReadOnlyDictionary<Type, uint> HeaderChunkIdsByType { get; } = new Dictionary<Type, uint>");
-        builder.AppendLine("    {");
-
-        foreach (var engineType in engineTypeDetailedList)
-        {
-            foreach (var chunkType in engineType.ChunkTypes)
-            {
-                if (!chunkType.IsHeaderChunk)
-                {
-                    continue;
-                }
-
-                builder.Append("        { typeof(");
-                builder.Append(engineType.TypeSymbol.Name);
-                builder.Append('.');
-                builder.Append(chunkType.TypeSymbol.Name);
-                builder.Append("), ");
-                builder.Append(chunkType.ChunkId);
-                builder.AppendLine(" },");
-            }
-        }
-
-        builder.AppendLine("    };");
-    }
-
     private static void GemerateGetHeaderChunkTypeById(StringBuilder builder, List<EngineType> engineTypeDetailedList)
     {
         builder.AppendLine("    public static Type? GetHeaderChunkTypeById(uint chunkId) => chunkId switch");
@@ -400,11 +369,6 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
         {
             foreach (var chunkType in engineType.ChunkTypes)
             {
-                if (chunkType.IsHeaderChunk)
-                {
-                    continue;
-                }
-
                 builder.Append("        { typeof(");
                 builder.Append(engineType.TypeSymbol.Name);
                 builder.Append('.');

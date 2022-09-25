@@ -24,7 +24,7 @@ public class HeaderChunk<T> : Chunk<T>, IHeaderChunk where T : CMwNod
 
     protected override uint GetId()
     {
-        return id ?? NodeManager.HeaderChunkIdsByType[GetType()];
+        return id ?? NodeManager.ChunkIdsByType[GetType()];
     }
 
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>

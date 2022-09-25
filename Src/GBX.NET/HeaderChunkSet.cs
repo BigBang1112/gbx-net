@@ -40,7 +40,7 @@ public class HeaderChunkSet : SortedSet<Chunk>
 
     public T Create<T>() where T : Chunk
     {
-        return (T)Create(NodeManager.HeaderChunkIdsByType[typeof(T)]);
+        return (T)Create(NodeManager.ChunkIdsByType[typeof(T)]);
     }
 
     public Chunk? Get(uint chunkId)

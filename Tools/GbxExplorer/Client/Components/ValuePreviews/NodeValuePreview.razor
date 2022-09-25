@@ -31,17 +31,32 @@
 
     @foreach (var chunkType in chunksPossToAdd)
     {
-        if (!NodeManager.ChunkIdsByType.TryGetValue(chunkType, out uint chunkId)
-         || !NodeManager.ChunkAttributesById.TryGetValue(chunkId, out var atts)
-         || !NodeManager.HeaderChunkAttributesById.TryGetValue(chunkId, out atts))
+        if (!NodeManager.ChunkIdsByType.TryGetValue(chunkType, out uint chunkId))
         {
             continue;
         }
+
+        var atts = default(NodeManager.ChunkAttributes);
         
         var isHeader = typeof(IHeaderChunk).IsAssignableFrom(chunkType);
 
+        if (isHeader)
+        {
+            if (!NodeManager.HeaderChunkAttributesById.TryGetValue(chunkId, out atts))
+            {
+                continue;
+            }
+        }
+        else
+        {
+            if (!NodeManager.ChunkAttributesById.TryGetValue(chunkId, out atts))
+            {
+                continue;
+            }
+        }
+
         <option value="@chunkId @isHeader">
-            @chunkType.DeclaringType?.Name 0x@(chunkId.ToString("X3") ?? "XXX"
+            @chunkType.DeclaringType?.Name 0x@((chunkId & 0xFFF).ToString("X3") ?? "XXX"
         ) @(isHeader ? "header " : "")chunk @(string.IsNullOrWhiteSpace(atts.Description) ? "" : $"({atts.Description})")
         </option>
     }
