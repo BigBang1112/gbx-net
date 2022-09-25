@@ -349,14 +349,14 @@ public abstract class Node
         {
             if (chunkAttributes.AutoReadWrite)
             {
-                // Why does it have to be IChunk?
-                ((IReadableWritableChunk)chunk).ReadWrite(node, gbxrw);
-            }
-            else
-            {
                 var unknown = new GameBoxWriter(chunk.Unknown);
                 var unknownData = r.ReadUntilFacade().ToArray();
                 unknown.Write(unknownData);
+            }
+            else
+            {
+                // Why does it have to be IChunk?
+                ((IReadableWritableChunk)chunk).ReadWrite(node, gbxrw);
             }
         }
         catch (EndOfStreamException) // May not be needed
