@@ -13,7 +13,7 @@
     }
     else
     {
-        var extensions = default(IEnumerable<string>);
+        var extensions = Enumerable.Empty<string>();
 
         if (selectedSaveMethod == 0)
         {
@@ -49,7 +49,7 @@
 
             <div class="save-params">
 
-                @if (extensions is not null)
+                @if (extensions.Any())
                 {
                     if (selectedSaveMethod == 1 && !extensions.Contains(customExtension))
                     {
@@ -58,7 +58,7 @@
 
                     <input type="text" style="min-width:6rem;" @bind="FileName" />
                     <div>.</div>
-                    <select @bind="Extension">
+                    <select @bind="Extension" disabled="@(extensions.Count() == 1)">
                         @foreach (var ext in extensions)
                         {
                             <option value="@ext">@ext</option>
