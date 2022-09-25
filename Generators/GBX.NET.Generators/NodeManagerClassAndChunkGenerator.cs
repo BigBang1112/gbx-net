@@ -157,6 +157,18 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
             builder.Append(" => new ");
             builder.Append(engineType.TypeSymbol.Name);
             builder.AppendLine("(),");
+
+            if (engineType.MoreClassIds is not null)
+            {
+                foreach (var id in engineType.MoreClassIds)
+                {
+                    builder.Append("        ");
+                    builder.Append(id);
+                    builder.Append(" => new ");
+                    builder.Append(engineType.TypeSymbol.Name);
+                    builder.AppendLine("(),");
+                }
+            }
         }
 
         builder.AppendLine("        _ => null");
