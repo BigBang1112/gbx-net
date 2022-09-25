@@ -18,13 +18,9 @@ public partial class CGameCtnMediaBlockGhostBuilder : Builder
 
     public TMUF ForTMUF() => new(this, NewNode());
 
-    internal CGameCtnMediaBlockGhost NewNode()
+    internal CGameCtnMediaBlockGhost NewNode() => new()
     {
-        var node = NodeCacheManager.GetNodeInstance<CGameCtnMediaBlockGhost>(0x030E5000);
-
-        node.GhostModel = GhostModel;
-        node.StartOffset = StartOffset;
-
-        return node;
-    }
+        GhostModel = GhostModel,
+        StartOffset = StartOffset
+    };
 }

@@ -3,7 +3,7 @@
 [Node(0x03121000)]
 public class CGameCtnSolidDecals : CMwNod
 {
-    protected CGameCtnSolidDecals()
+    internal CGameCtnSolidDecals()
     {
 
     }

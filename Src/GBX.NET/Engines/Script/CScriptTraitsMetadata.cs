@@ -34,7 +34,7 @@ public partial class CScriptTraitsMetadata : CMwNod
     [AppliedWithChunk(typeof(Chunk11002000))]
     public IDictionary<string, ScriptTrait> Traits { get; set; }
 
-    protected CScriptTraitsMetadata()
+    internal CScriptTraitsMetadata()
 	{
 #if NET6_0_OR_GREATER
         Traits = global::System.Collections.Immutable.ImmutableDictionary.Create<string, ScriptTrait>();

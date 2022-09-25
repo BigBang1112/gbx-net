@@ -59,7 +59,7 @@ public class CGameCtnDecorationMood : CMwNod
     [AppliedWithChunk(typeof(Chunk0303A002))]
     public bool BackgroundIsLocallyLighted { get => backgroundIsLocallyLighted; set => backgroundIsLocallyLighted = value; }
 
-    protected CGameCtnDecorationMood()
+    internal CGameCtnDecorationMood()
     {
 
     }

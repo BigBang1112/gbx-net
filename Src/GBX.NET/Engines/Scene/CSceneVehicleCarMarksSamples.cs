@@ -22,7 +22,7 @@ public class CSceneVehicleCarMarksSamples : CMwNod
     [AppliedWithChunk(typeof(Chunk0A083004))]
     public bool Disabled { get => disabled; set => disabled = value; }
 
-    protected CSceneVehicleCarMarksSamples()
+    internal CSceneVehicleCarMarksSamples()
 	{
         
 	}

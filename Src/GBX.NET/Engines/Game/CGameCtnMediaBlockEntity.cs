@@ -13,7 +13,7 @@ public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
     [AppliedWithChunk(typeof(Chunk0329F000))]
     public CPlugEntRecordData RecordData { get => recordData; set => recordData = value; }
 
-    protected CGameCtnMediaBlockEntity()
+    internal CGameCtnMediaBlockEntity()
     {
         recordData = null!;
     }

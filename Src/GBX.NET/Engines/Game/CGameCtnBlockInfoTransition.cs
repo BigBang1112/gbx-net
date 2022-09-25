@@ -4,7 +4,7 @@
 [NodeExtension("EDTransition")]
 public class CGameCtnBlockInfoTransition : CGameCtnBlockInfo
 {
-    protected CGameCtnBlockInfoTransition()
+    internal CGameCtnBlockInfoTransition()
     {
 
     }

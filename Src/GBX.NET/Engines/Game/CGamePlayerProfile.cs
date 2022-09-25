@@ -44,7 +44,7 @@ public partial class CGamePlayerProfile : CMwNod, CGamePlayerProfile.IHeader
 
     #region Constructors
 
-    protected CGamePlayerProfile()
+    internal CGamePlayerProfile()
     {
 
     }

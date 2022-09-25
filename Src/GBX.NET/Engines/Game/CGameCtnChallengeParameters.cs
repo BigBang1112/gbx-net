@@ -192,7 +192,7 @@ public class CGameCtnChallengeParameters : CMwNod
 
     #region Constructors
 
-    protected CGameCtnChallengeParameters()
+    internal CGameCtnChallengeParameters()
     {
         tip = "";
     }

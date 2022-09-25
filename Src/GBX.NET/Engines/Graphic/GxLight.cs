@@ -20,7 +20,7 @@ public class GxLight : CMwNod
     [AppliedWithChunk(typeof(Chunk04001008))]
     public float FlareIntensity { get => flareIntensity; set => flareIntensity = value; }
 
-    protected GxLight()
+    internal GxLight()
     {
 
     }

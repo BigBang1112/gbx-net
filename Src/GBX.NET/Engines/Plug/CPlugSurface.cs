@@ -16,7 +16,7 @@ public class CPlugSurface : CPlug
     [AppliedWithChunk(typeof(Chunk0900C000))]
     public SurfaceMaterial[]? Materials { get => materials; set => materials = value; }
 
-    protected CPlugSurface()
+    internal CPlugSurface()
     {
 
     }

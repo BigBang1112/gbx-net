@@ -60,7 +60,7 @@ public class CGameObjectVisModel : CMwNod
 
     #region Constructors
 
-    protected CGameObjectVisModel()
+    internal CGameObjectVisModel()
     {
         
     }

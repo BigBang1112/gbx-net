@@ -46,12 +46,7 @@
                 _ => null
             };
 
-            var writingNotSupportedAtt = default(WritingNotSupportedAttribute);
-
-            if (node is not null && NodeCacheManager.ClassAttributesByType.TryGetValue(node.GetType(), out var atts))
-            {
-                writingNotSupportedAtt = atts.OfType<WritingNotSupportedAttribute>().FirstOrDefault();
-            }
+            var writingNotSupported = node is not null && NodeManager.WritingNotSupportedClassTypes.Contains(node.GetType());
 
             <div class="save-params">
 
@@ -87,8 +82,8 @@
             </div>
             <button class="button tooltip-top"
                 @onclick="SaveAsync"
-                disabled="@(node is null || writingNotSupportedAtt is not null)"
-                data-title="@(node is not null && writingNotSupportedAtt is null ? "" : $"Export of {node?.GetType().Name ?? "unknown class"} is not supported.")">
+            disabled="@(node is null || writingNotSupported)"
+            data-title="@(node is not null && !writingNotSupported ? "" : $"Export of {node?.GetType().Name ?? "unknown class"} is not supported.")">
                 Export to Gbx!
             </button>
         }

@@ -7,7 +7,7 @@
 [Node(0x09002000)]
 public abstract class CPlugShader : CPlug
 {
-    protected CPlugShader()
+    internal CPlugShader()
     {
 
     }

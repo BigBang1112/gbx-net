@@ -10,7 +10,7 @@ public abstract class CPlugCamControlModel : CMwNod
     [AppliedWithChunk(typeof(Chunk0910C000))]
     public CPlugCamShakeModel? Shake { get => shake; set => shake = value; }
 
-    protected CPlugCamControlModel()
+    internal CPlugCamControlModel()
     {
 
     }

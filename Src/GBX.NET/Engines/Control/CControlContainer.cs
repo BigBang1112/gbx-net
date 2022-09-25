@@ -25,7 +25,7 @@ public class CControlContainer : CControlBase
 
     #region Constructors
 
-    protected CControlContainer()
+    internal CControlContainer()
     {
 
     }

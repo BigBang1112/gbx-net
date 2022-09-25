@@ -10,7 +10,7 @@ public class CSceneVehicleTunings : CMwNod
     [AppliedWithChunk(typeof(Chunk0A030000))]
     public CSceneVehicleCarTuning[] Tuning { get => tuning; set => tuning = value; }
 
-    protected CSceneVehicleTunings()
+    internal CSceneVehicleTunings()
     {
         tuning = Array.Empty<CSceneVehicleCarTuning>();
     }

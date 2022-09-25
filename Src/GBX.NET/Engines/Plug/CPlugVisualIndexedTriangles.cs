@@ -4,7 +4,7 @@
 [Node(0x0901E000)]
 public class CPlugVisualIndexedTriangles : CPlugVisualIndexed
 {
-    protected CPlugVisualIndexedTriangles()
+    internal CPlugVisualIndexedTriangles()
     {
 
     }

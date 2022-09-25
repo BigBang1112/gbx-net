@@ -4,7 +4,7 @@
 [Node(0x04006000)]
 public class GxLightNotAmbient : GxLight
 {
-    protected GxLightNotAmbient()
+    internal GxLightNotAmbient()
     {
 
     }

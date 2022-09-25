@@ -15,7 +15,7 @@ public class CGameCtnAutoTerrain : CMwNod
     [AppliedWithChunk(typeof(Chunk03120001))]
     public CGameCtnZoneGenealogy? Genealogy { get => genealogy; set => genealogy = value; }
 
-    protected CGameCtnAutoTerrain()
+    internal CGameCtnAutoTerrain()
     {
 
     }

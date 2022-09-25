@@ -67,7 +67,7 @@ public class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
     [AppliedWithChunk(typeof(Chunk2407F003))]
     public Event[] Events { get => events; set => events = value; }
 
-    protected CCtnMediaBlockEventTrackMania()
+    internal CCtnMediaBlockEventTrackMania()
     {
         stunts = Array.Empty<Stunt>();
         events = Array.Empty<Event>();

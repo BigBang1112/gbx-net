@@ -82,7 +82,7 @@ public class CGameCommonItemEntityModelEdition : CMwNod
 
     #region Constructors
 
-    protected CGameCommonItemEntityModelEdition()
+    internal CGameCommonItemEntityModelEdition()
     {
         meshCrystal = null!;
     }

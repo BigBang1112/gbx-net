@@ -138,10 +138,8 @@ public abstract class Node
         {
             throw new NodeNotImplementedException(id);
         }
-
-        var constructor = NodeCacheManager.GetClassConstructor(id);
-
-        node = constructor();
+        
+        node = NodeManager.GetNewNode(id);
 
         return classId.Value;
     }
@@ -286,10 +284,10 @@ public abstract class Node
 
         var chunkId = Chunk.Remap(originalChunkId);
 
-        var chunkClass = NodeCacheManager.GetChunkTypeById(nodeType, chunkId);
+        var chunkClass = NodeManager.GetChunkTypeById(chunkId);
 
         var reflected = chunkClass is not null;
-        var skippable = reflected && NodeCacheManager.SkippableChunks.ContainsKey(chunkClass!);
+        var skippable = reflected && NodeManager.IsSkippableChunk(chunkId);
 
         Chunk chunk;
 
@@ -328,21 +326,14 @@ public abstract class Node
 
     private static Chunk ReadUnskippableChunk(Node node, GameBoxReader r, uint chunkId)
     {
-        if (!NodeCacheManager.ChunkConstructors.TryGetValue(chunkId, out Func<Chunk>? constructor))
-        {
-            throw new ThisShouldNotHappenException();
-        }
-
-        var chunk = constructor();
+        var chunk = NodeManager.GetNewChunk(chunkId) ?? throw new ThisShouldNotHappenException();
         chunk.OnLoad(); // The chunk is immediately activated, but is not parsed at this state
 
         var gbxrw = new GameBoxReaderWriter(r);
 
-        TryGetChunkAttributes(chunkId, out _,
-            out IgnoreChunkAttribute? ignoreChunkAttribute,
-            out AutoReadWriteChunkAttribute? autoReadWriteChunkAttribute);
+        var chunkAttributes = NodeManager.ChunkAttributesById[chunkId];
 
-        if (ignoreChunkAttribute is not null)
+        if (chunkAttributes.Ignore)
         {
             throw new IgnoredUnskippableChunkException(node, chunkId);
         }
@@ -356,7 +347,7 @@ public abstract class Node
 
         try
         {
-            if (autoReadWriteChunkAttribute is null)
+            if (chunkAttributes.AutoReadWrite)
             {
                 // Why does it have to be IChunk?
                 ((IReadableWritableChunk)chunk).ReadWrite(node, gbxrw);
@@ -379,37 +370,6 @@ public abstract class Node
         }
 
         return chunk;
-    }
-
-    private static void TryGetChunkAttributes(uint chunkId,
-                                              out ChunkAttribute? chunkAttribute,
-                                              out IgnoreChunkAttribute? ignoreChunkAttribute,
-                                              out AutoReadWriteChunkAttribute? autoReadWriteChunkAttribute)
-    {
-        if (!NodeCacheManager.ChunkAttributesById.TryGetValue(chunkId, out IEnumerable<Attribute>? attributes))
-        {
-            throw new ThisShouldNotHappenException();
-        }
-
-        chunkAttribute = null;
-        ignoreChunkAttribute = null;
-        autoReadWriteChunkAttribute = null;
-
-        foreach (var att in attributes)
-        {
-            switch (att)
-            {
-                case ChunkAttribute chunkAtt:
-                    chunkAttribute = chunkAtt;
-                    break;
-                case IgnoreChunkAttribute ignoreChunkAtt:
-                    ignoreChunkAttribute = ignoreChunkAtt;
-                    break;
-                case AutoReadWriteChunkAttribute autoReadWriteChunkAtt:
-                    autoReadWriteChunkAttribute = autoReadWriteChunkAtt;
-                    break;
-            }
-        }
     }
 
     private static async Task<(bool moreChunks, uint? previousChunkId, Chunk? chunk)> IterateChunksAsync(
@@ -440,10 +400,10 @@ public abstract class Node
 
         chunkId = Chunk.Remap(chunkId);
 
-        var chunkClass = NodeCacheManager.GetChunkTypeById(nodeType, chunkId);
+        var chunkClass = NodeManager.GetChunkTypeById(chunkId);
 
         var reflected = chunkClass is not null;
-        var skippable = reflected && NodeCacheManager.SkippableChunks.ContainsKey(chunkClass!);
+        var skippable = reflected && NodeManager.IsSkippableChunk(chunkId);
 
         Chunk chunk;
 
@@ -482,21 +442,14 @@ public abstract class Node
         uint chunkId,
         CancellationToken cancellationToken)
     {
-        if (!NodeCacheManager.ChunkConstructors.TryGetValue(chunkId, out Func<Chunk>? constructor))
-        {
-            throw new ThisShouldNotHappenException();
-        }
-
-        var chunk = constructor();
+        var chunk = NodeManager.GetNewChunk(chunkId) ?? throw new ThisShouldNotHappenException();
         chunk.OnLoad(); // The chunk is immediately activated, but may not be yet parsed at this state
 
         var gbxrw = new GameBoxReaderWriter(r);
 
-        TryGetChunkAttributes(chunkId, out _,
-            out IgnoreChunkAttribute? ignoreChunkAttribute,
-            out AutoReadWriteChunkAttribute? autoReadWriteChunkAttribute);
+        var chunkAttributes = NodeManager.ChunkAttributesById[chunkId];
 
-        if (ignoreChunkAttribute is not null)
+        if (chunkAttributes.Ignore)
         {
             throw new IgnoredUnskippableChunkException(node, chunkId);
         }
@@ -510,7 +463,7 @@ public abstract class Node
 
         try
         {
-            if (autoReadWriteChunkAttribute is null)
+            if (chunkAttributes.AutoReadWrite)
             {
                 await WriteChunkWithReadWriteAsync(node, (IReadableWritableChunk)chunk, gbxrw, cancellationToken);
             }
@@ -617,22 +570,8 @@ public abstract class Node
 
     private static Chunk CreateKnownSkippableChunk(Node node, uint chunkId, byte[] chunkData, GameBoxReader reader)
     {
-        TryGetChunkAttributes(chunkId,
-            out ChunkAttribute? chunkAttribute,
-            out IgnoreChunkAttribute? ignoreChunkAttribute,
-            out AutoReadWriteChunkAttribute? autoReadWriteChunkAttribute);
-
-        if (chunkAttribute is null)
-        {
-            throw new ThisShouldNotHappenException();
-        }
-
-        if (!NodeCacheManager.ChunkConstructors.TryGetValue(chunkId, out Func<Chunk>? constructor))
-        {
-            throw new ThisShouldNotHappenException();
-        }
-
-        var chunk = constructor();
+        var chunkAttributes = NodeManager.ChunkAttributesById[chunkId];
+        var chunk = NodeManager.GetNewChunk(chunkId) ?? throw new ThisShouldNotHappenException();
 
         var skippableChunk = (ISkippableChunk)chunk;
         skippableChunk.Data = chunkData;
@@ -645,11 +584,11 @@ public abstract class Node
         }
 
         // If the chunk should be taken as "activated" (not necessarily to be immediately parsed)
-        if (ignoreChunkAttribute is null)
+        if (!chunkAttributes.Ignore)
         {
             chunk.OnLoad();
 
-            if (chunkAttribute.ProcessSync)
+            if (chunkAttributes.ProcessSync)
             {
                 using var ms = new MemoryStream(chunkData);
                 using var r = new GameBoxReader(ms, reader);
@@ -752,17 +691,9 @@ public abstract class Node
 
     private static void ThrowIfWritingIsNotSupported(Type nodeType)
     {
-        if (!NodeCacheManager.ClassAttributesByType.TryGetValue(nodeType, out var classAttributes))
+        if (NodeManager.WritingNotSupportedClassTypes.Contains(nodeType))
         {
-            return;
-        }
-
-        foreach (var attribute in classAttributes)
-        {
-            if (attribute is WritingNotSupportedAttribute)
-            {
-                throw new NotSupportedException($"Writing of {nodeType.Name} is not supported.");
-            }
+            throw new NotSupportedException($"Writing is not supported for {nodeType.Name}.");
         }
     }
 
@@ -840,9 +771,9 @@ public abstract class Node
                                                            GameBoxReaderWriter rw,
                                                            CancellationToken cancellationToken)
     {
-        if (NodeCacheManager.AsyncChunksById.ContainsKey(chunk.Id))
+        if (NodeManager.IsAsyncChunk(chunk.Id))
         {
-            if (NodeCacheManager.ReadWriteAsyncChunksById.ContainsKey(chunk.Id) || NodeCacheManager.ReadAsyncChunksById.ContainsKey(chunk.Id))
+            if (NodeManager.IsReadWriteAsyncChunk(chunk.Id) || NodeManager.IsReadAsyncChunk(chunk.Id))
             {
                 await chunk.ReadWriteAsync(node, rw, cancellationToken);
                 return;
@@ -945,20 +876,7 @@ public abstract class Node
 
     private static bool IsIgnorableChunk(Type chunkType)
     {
-        if (!NodeCacheManager.ChunkAttributesByType.TryGetValue(chunkType, out IEnumerable<Attribute>? attributes))
-        {
-            return false;
-        }
-
-        foreach (var attribute in attributes)
-        {
-            if (attribute is AutoReadWriteChunkAttribute || attribute is IgnoreChunkAttribute)
-            {
-                return true;
-            }
-        }
-
-        return false;
+        return NodeManager.ChunkAttributesByType[chunkType].Ignore;
     }
 
     public T? GetChunk<T>() where T : Chunk

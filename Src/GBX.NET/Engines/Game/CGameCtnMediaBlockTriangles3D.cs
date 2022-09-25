@@ -8,7 +8,7 @@
 [NodeExtension("GameCtnMediaBlockTriangles3D")]
 public class CGameCtnMediaBlockTriangles3D : CGameCtnMediaBlockTriangles
 {
-    protected CGameCtnMediaBlockTriangles3D()
+    internal CGameCtnMediaBlockTriangles3D()
     {
 
     }

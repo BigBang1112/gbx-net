@@ -22,7 +22,7 @@ public abstract class CPlugVisualIndexed : CPlugVisual3D
     [NodeMember]
     public CPlugIndexBuffer? IndexBuffer { get => indexBuffer; set => indexBuffer = value; }
 
-    protected CPlugVisualIndexed()
+    internal CPlugVisualIndexed()
     {
         
     }

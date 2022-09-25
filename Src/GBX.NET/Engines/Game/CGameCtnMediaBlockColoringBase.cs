@@ -25,7 +25,7 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameC
     [AppliedWithChunk(typeof(Chunk03172000), sinceVersion: 1)]
     public int BaseIndex { get => baseIndex; set => baseIndex = value; }
 
-    protected CGameCtnMediaBlockColoringBase()
+    internal CGameCtnMediaBlockColoringBase()
     {
         keys = Array.Empty<Key>();
     }

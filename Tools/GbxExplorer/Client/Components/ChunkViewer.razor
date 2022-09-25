@@ -15,11 +15,8 @@
     var discovered = skippableChunk is null || skippableChunk.Discovered;
     var chunkType = Chunk.GetType();
     var att = default(ChunkAttribute);
-
-    if (GBX.NET.Managers.NodeCacheManager.ChunkAttributesByType.TryGetValue(chunkType, out var atts))
-    {
-        att = atts.FirstOrDefault(x => x is ChunkAttribute) as ChunkAttribute;
-    }
+    
+    _ = NodeManager.ChunkAttributesByType.TryGetValue(chunkType, out var atts);
 
     string boxClass;
 

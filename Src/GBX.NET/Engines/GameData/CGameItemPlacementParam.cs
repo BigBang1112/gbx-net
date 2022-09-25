@@ -279,7 +279,7 @@ public class CGameItemPlacementParam : CMwNod
 
     #region Constructors
 
-    protected CGameItemPlacementParam()
+    internal CGameItemPlacementParam()
     {
 
     }

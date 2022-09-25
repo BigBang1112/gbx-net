@@ -3,7 +3,7 @@
 [Node(0x0315D000)]
 public class CGameCtnBlockInfoVariantAir : CGameCtnBlockInfoVariant
 {
-    protected CGameCtnBlockInfoVariantAir()
+    internal CGameCtnBlockInfoVariantAir()
     {
 
     }

@@ -1,14 +1,5 @@
-﻿using GBX.NET.Builders;
-using GBX.NET.Builders.Engines.Game;
-using GBX.NET.Engines.Control;
+﻿using GBX.NET.Builders.Engines.Game;
 using GBX.NET.Engines.Game;
-using GBX.NET.Managers;
-using GBX.NET.Tests.Unit.Builders.Engines.Control;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TmEssentials;
 using Xunit;
 
@@ -20,7 +11,7 @@ public class CGameCtnMediaBlockGhostBuilderTests
 
     private static CGameCtnMediaBlockGhostBuilder NewBuilder()
     {
-        return new CGameCtnMediaBlockGhostBuilder(NodeCacheManager.GetNodeInstance<CGameCtnGhost>(0x03092000));
+        return new CGameCtnMediaBlockGhostBuilder(new CGameCtnGhost());
     }
 
     [Fact]
@@ -37,7 +28,7 @@ public class CGameCtnMediaBlockGhostBuilderTests
     [Fact]
     public void NewNode_ShouldReturnInstance()
     {
-        var expected = NodeCacheManager.GetNodeInstance<CGameCtnMediaBlockGhost>();
+        var expected = new CGameCtnMediaBlockGhost();
 
         var actual = NewBuilder().NewNode();
 

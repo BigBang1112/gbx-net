@@ -53,7 +53,7 @@ public partial class CGamePlayerScore : CMwNod // Did CGameScriptDebugger stole 
     [AppliedWithChunk(typeof(Chunk0308D012))]
     public LadderMatchResult[]? LadderMatchResults { get; private set; }
 
-    protected CGamePlayerScore()
+    internal CGamePlayerScore()
     {
 
     }

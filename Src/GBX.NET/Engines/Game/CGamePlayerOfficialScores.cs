@@ -8,7 +8,7 @@ public partial class CGamePlayerOfficialScores : CMwNod
     [AppliedWithChunk(typeof(Chunk03095001))]
     public FilteredPlayerRank[]? FilteredPlayerRanks { get; private set; }
 
-    protected CGamePlayerOfficialScores()
+    internal CGamePlayerOfficialScores()
     {
 
     }

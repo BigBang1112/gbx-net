@@ -41,9 +41,9 @@ public partial class CGameCtnMediaBlockColoringCapturable : CGameCtnMediaBlock, 
 
     #region Constructors
 
-    protected CGameCtnMediaBlockColoringCapturable()
+    internal CGameCtnMediaBlockColoringCapturable()
     {
-        keys = null!;
+        keys = Array.Empty<Key>();
     }
 
     #endregion

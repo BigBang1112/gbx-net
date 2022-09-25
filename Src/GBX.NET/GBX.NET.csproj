@@ -37,7 +37,6 @@
 		<Using Include="GBX.NET.Attributes" />
 		<Using Include="GBX.NET.Exceptions" />
 		<Using Include="GBX.NET.Extensions" />
-		<Using Include="GBX.NET.Managers" />
 		<Using Include="GBX.NET.Engines.Control" />
 		<Using Include="GBX.NET.Engines.Function" />
 		<Using Include="GBX.NET.Engines.Game" />
@@ -71,9 +70,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<AdditionalFiles Include="Resources/ClassID.txt"/>
-		<AdditionalFiles Include="Resources/ClassIDMappings.txt"/>
-		<AdditionalFiles Include="Resources/CollectionID.txt"/>
+		<AdditionalFiles Include="Resources/ClassID.txt" />
+		<AdditionalFiles Include="Resources/ClassIDMappings.txt" />
+		<AdditionalFiles Include="Resources/CollectionID.txt" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -22,7 +22,7 @@ public partial class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMe
     [AppliedWithChunk(typeof(Chunk03128002))]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
-    protected CGameCtnMediaBlockBloomHdr()
+    internal CGameCtnMediaBlockBloomHdr()
     {
         keys = Array.Empty<Key>();
     }

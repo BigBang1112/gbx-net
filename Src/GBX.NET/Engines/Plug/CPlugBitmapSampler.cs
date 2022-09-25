@@ -7,7 +7,7 @@
 [Node(0x0907E000)]
 public class CPlugBitmapSampler : CPlug
 {
-    protected CPlugBitmapSampler()
+    internal CPlugBitmapSampler()
     {
 
     }

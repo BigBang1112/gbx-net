@@ -14,7 +14,7 @@ public class CGameCtnMediaBlockGhostTests
         GameBuilder<CGameCtnMediaBlockGhostBuilder, CGameCtnMediaBlockGhost>> func, int startOffset)
     {
         // Instead of GetNodeInstance, use builder of CGameCtnGhost instead (once available)
-        var builder = new CGameCtnMediaBlockGhostBuilder(Managers.NodeCacheManager.GetNodeInstance<CGameCtnGhost>())
+        var builder = new CGameCtnMediaBlockGhostBuilder(new CGameCtnGhost())
             .WithStartOffset(startOffset);
         return func.Invoke(builder).Build();
     }

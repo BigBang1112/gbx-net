@@ -22,7 +22,7 @@ public class CPlugSolid : CPlug
         set => tree = value;
     }
 
-    protected CPlugSolid()
+    internal CPlugSolid()
     {
 
     }

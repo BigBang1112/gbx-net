@@ -44,7 +44,7 @@ public abstract class CPlugVisual : CPlug
         set => texCoords = value;
     }
 
-    protected CPlugVisual()
+    internal CPlugVisual()
     {
     }
 

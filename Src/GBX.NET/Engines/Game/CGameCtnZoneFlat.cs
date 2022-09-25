@@ -49,7 +49,7 @@ public class CGameCtnZoneFlat : CGameCtnZone
     [AppliedWithChunk(typeof(Chunk0305D002))]
     public bool GroundOnly { get => groundOnly; set => groundOnly = value; }
 
-    protected CGameCtnZoneFlat()
+    internal CGameCtnZoneFlat()
     {
 
     }

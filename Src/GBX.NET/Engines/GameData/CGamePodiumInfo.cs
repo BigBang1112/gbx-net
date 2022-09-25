@@ -14,7 +14,7 @@ public class CGamePodiumInfo : CMwNod
     [AppliedWithChunk(typeof(Chunk03168000))]
     public ExternalNode<CMwNod>[] MediaClipFids { get => mediaClipFids; set => mediaClipFids = value; }
 
-    protected CGamePodiumInfo()
+    internal CGamePodiumInfo()
     {
         mediaClipFids = Array.Empty<ExternalNode<CMwNod>>();
     }

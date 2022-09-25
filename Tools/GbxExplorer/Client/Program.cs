@@ -1,4 +1,3 @@
-using GBX.NET.Managers;
 using GbxExplorer.Client;
 using GbxExplorer.Client.Sections;
 using GbxExplorer.Client.Services;
@@ -11,8 +10,6 @@ using Microsoft.AspNetCore.Components.Authorization;
 CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
 
 GBX.NET.Lzo.SetLzo(typeof(GBX.NET.LZO.MiniLZO));
-
-NodeCacheManager.CacheClassTypesIfNotCached();
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");

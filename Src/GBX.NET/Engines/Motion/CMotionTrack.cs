@@ -4,7 +4,7 @@
 [Node(0x08033000)]
 public class CMotionTrack : CMwCmdContainer
 {
-    protected CMotionTrack()
+    internal CMotionTrack()
     {
         
     }

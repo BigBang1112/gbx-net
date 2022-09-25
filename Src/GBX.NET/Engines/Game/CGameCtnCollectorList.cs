@@ -13,7 +13,7 @@ public partial class CGameCtnCollectorList : CMwNod
     [AppliedWithChunk(typeof(Chunk0301B000))]
     public IList<Collector> CollectorStock { get => collectorStock; set => collectorStock = value; }
 
-    protected CGameCtnCollectorList()
+    internal CGameCtnCollectorList()
     {
         collectorStock = Array.Empty<Collector>();
     }

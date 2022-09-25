@@ -4,7 +4,7 @@
 [Node(0x09159000)]
 public class CPlugStaticObjectModel : CMwNod
 {
-    protected CPlugStaticObjectModel()
+    internal CPlugStaticObjectModel()
     {
 
     }

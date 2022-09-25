@@ -8,7 +8,7 @@ public class CGameCtnDecorationAudio : CMwNod
     private CPlugAudioEnvironment? audioEnvOutsideOpen;
     private CPlugAudioEnvironment? audioEnvOutsideEnclosed;
 
-    protected CGameCtnDecorationAudio()
+    internal CGameCtnDecorationAudio()
     {
         
     }

@@ -71,7 +71,7 @@ public partial class CGameCtnMediaBlockSound : CGameCtnMediaBlock, CGameCtnMedia
 
     #region Constructors
 
-    protected CGameCtnMediaBlockSound()
+    internal CGameCtnMediaBlockSound()
     {
         sound = FileRef.Default;
         keys = Array.Empty<Key>();

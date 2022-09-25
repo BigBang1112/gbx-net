@@ -376,7 +376,7 @@ public partial class CHmsLightMapCache : CMwNod
 
     #region Constructors
 
-    protected CHmsLightMapCache()
+    internal CHmsLightMapCache()
     {
 
     }
@@ -447,7 +447,7 @@ public partial class CHmsLightMapCache : CMwNod
     /// <summary>
     /// CHmsLightMapCache 0x015 skippable chunk
     /// </summary>
-    [Chunk(0x06022015, processSync: true)] // does processSync need to be set?
+    [Chunk(0x06022015, ProcessSync = true)] // does processSync need to be set?
     public class Chunk06022015 : SkippableChunk<CHmsLightMapCache>, IVersionable
     {
         private int version;

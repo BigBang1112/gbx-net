@@ -34,7 +34,7 @@ public class CGameLeague : CMwNod
     [AppliedWithChunk(typeof(Chunk0308E001))]
     public string FlagUrl { get => flagUrl; set => flagUrl = value; }
 
-    protected CGameLeague()
+    internal CGameLeague()
     {
         path = "";
         name = "";

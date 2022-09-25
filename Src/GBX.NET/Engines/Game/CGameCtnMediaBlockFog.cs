@@ -20,7 +20,7 @@ public partial class CGameCtnMediaBlockFog : CGameCtnMediaBlock, CGameCtnMediaBl
     [AppliedWithChunk(typeof(Chunk03199000))]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
-    protected CGameCtnMediaBlockFog()
+    internal CGameCtnMediaBlockFog()
     {
         keys = Array.Empty<Key>();
     }

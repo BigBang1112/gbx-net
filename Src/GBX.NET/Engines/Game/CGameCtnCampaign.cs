@@ -229,7 +229,7 @@ public class CGameCtnCampaign : CMwNod
 
     #region Constructors
 
-    protected CGameCtnCampaign()
+    internal CGameCtnCampaign()
     {
         mapGroups = Array.Empty<CGameCtnChallengeGroup>();
     }

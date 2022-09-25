@@ -20,7 +20,7 @@ public partial class CGameCtnMediaBlockTime : CGameCtnMediaBlock, CGameCtnMediaB
     [NodeMember]
     public bool IsTM2 { get; set; }
 
-    protected CGameCtnMediaBlockTime()
+    internal CGameCtnMediaBlockTime()
     {
         Keys = Array.Empty<Key>();
     }

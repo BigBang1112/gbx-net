@@ -67,9 +67,9 @@ public partial class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHa
 
     #region Constructors
 
-    protected CControlEffectSimi()
+    internal CControlEffectSimi()
     {
-        keys = null!;
+        keys = Array.Empty<Key>();
     }
 
     #endregion

@@ -110,7 +110,6 @@ public class GameBoxHeader
     /// Parses the common Gbx header.
     /// </summary>
     /// <param name="r">Reader.</param>
-    /// <param name="logger">Logger.</param>
     /// <returns>An immutable <see cref="GameBoxHeader"/> object.</returns>
     /// <exception cref="NotAGbxException">The stream is not a Gbx stream nor starting at the correct position.</exception>
     /// <exception cref="VersionNotSupportedException">Version of Gbx below 3 is not supported.</exception>
@@ -269,9 +268,9 @@ public class GameBoxHeader
             return new HeaderChunk(chunkId, chunkData, isHeavy);
         }
 
-        var headerChunkType = NodeCacheManager.GetHeaderChunkTypeById(chunkNodeType, chunkId);
+        var headerChunk = NodeManager.GetNewHeaderChunk(chunkId);
 
-        if (headerChunkType is null)
+        if (headerChunk is null)
         {
             var genericHeaderChunkType = typeof(HeaderChunk<>).MakeGenericType(chunkNodeType);
 
@@ -285,7 +284,6 @@ public class GameBoxHeader
             return chunk;
         }
 
-        var headerChunk = NodeCacheManager.HeaderChunkConstructors[chunkId]();
         headerChunk.Data = chunkData;
         headerChunk.IsHeavy = isHeavy;
 

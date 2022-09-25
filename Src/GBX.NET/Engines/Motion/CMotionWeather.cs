@@ -4,7 +4,7 @@
 [Node(0x08054000)]
 public class CMotionWeather : CMotion
 {
-    protected CMotionWeather()
+    internal CMotionWeather()
     {
 
     }

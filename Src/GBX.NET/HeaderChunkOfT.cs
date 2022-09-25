@@ -11,7 +11,7 @@ public class HeaderChunk<T> : Chunk<T>, IHeaderChunk where T : CMwNod
 
     public HeaderChunk()
     {
-        Data = null!;
+        Data = Array.Empty<byte>();
     }
 
     public HeaderChunk(byte[] data, uint? id = null, bool isHeavy = false)
@@ -24,7 +24,7 @@ public class HeaderChunk<T> : Chunk<T>, IHeaderChunk where T : CMwNod
 
     protected override uint GetId()
     {
-        return id ?? NodeCacheManager.GetChunkIdByType(typeof(T), GetType());
+        return id ?? NodeManager.HeaderChunkIdsByType[GetType()];
     }
 
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>

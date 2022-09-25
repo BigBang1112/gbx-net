@@ -7,7 +7,7 @@ public class CGameCtnZoneFrontier : CGameCtnZone
     private string? parentZoneId;
     private string? childZoneId;
 
-    protected CGameCtnZoneFrontier()
+    internal CGameCtnZoneFrontier()
     {
         
     }

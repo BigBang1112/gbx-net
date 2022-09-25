@@ -34,7 +34,7 @@ public class CPlugEntRecordData : CMwNod
         }
     }
 
-    protected CPlugEntRecordData()
+    internal CPlugEntRecordData()
     {
         
     }

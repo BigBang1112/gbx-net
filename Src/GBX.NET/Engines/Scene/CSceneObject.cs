@@ -4,7 +4,7 @@
 [Node(0x0A005000)]
 public abstract class CSceneObject : CMwNod
 {
-    protected CSceneObject()
+    internal CSceneObject()
     {
 
     }

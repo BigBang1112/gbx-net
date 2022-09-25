@@ -82,7 +82,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMedia
 
     #region Constructors
 
-    protected CGameCtnMediaBlockGhost()
+    internal CGameCtnMediaBlockGhost()
     {
         ghostModel = null!;
     }

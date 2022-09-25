@@ -24,7 +24,7 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, CGameCtnMed
     [AppliedWithChunk(typeof(Chunk03188001))]
     public CPlugDataTape? DataTape { get => dataTape; set => dataTape = value; }
 
-    protected CGameCtnMediaBlockScenery()
+    internal CGameCtnMediaBlockScenery()
     {
         keys = Array.Empty<Key>();
     }

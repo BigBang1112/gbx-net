@@ -226,7 +226,7 @@ public class CGameCtnBlock : CMwNod
 
     #region Constructors
 
-    protected CGameCtnBlock()
+    internal CGameCtnBlock()
     {
         blockModel = Ident.Empty;
     }

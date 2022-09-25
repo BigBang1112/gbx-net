@@ -37,7 +37,7 @@ public class CGameCtnChallengeGroup : CMwNod
 
     #region Constructors
 
-    protected CGameCtnChallengeGroup()
+    internal CGameCtnChallengeGroup()
     {
 
     }

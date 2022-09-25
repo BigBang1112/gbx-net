@@ -60,10 +60,10 @@ public class CGameCtnMediaTrack : CMwNod
 
     #region Constructors
 
-    protected CGameCtnMediaTrack()
+    internal CGameCtnMediaTrack()
     {
-        name = null!;
-        blocks = null!;
+        name = "";
+        blocks = Array.Empty<CGameCtnMediaBlock>();
     }
 
     public static CGameCtnMediaTrackBuilder Create() => new();

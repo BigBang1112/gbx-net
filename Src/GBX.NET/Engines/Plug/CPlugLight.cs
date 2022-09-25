@@ -27,7 +27,7 @@ public class CPlugLight : CPlug
     [AppliedWithChunk(typeof(Chunk0901D000))]
     public CPlugBitmap? BitmapProjector { get => bitmapProjector; set => bitmapProjector = value; }
 
-    protected CPlugLight()
+    internal CPlugLight()
     {
 
     }

@@ -3,7 +3,7 @@
 [Node(0x0303C000)]
 public class CGameCtnDecorationTerrainModifier : CMwNod
 {
-    protected CGameCtnDecorationTerrainModifier()
+    internal CGameCtnDecorationTerrainModifier()
     {
 
     }

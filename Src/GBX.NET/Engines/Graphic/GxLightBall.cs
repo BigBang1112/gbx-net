@@ -4,7 +4,7 @@
 [Node(0x04002000)]
 public class GxLightBall : GxLightPoint
 {
-    protected GxLightBall()
+    internal GxLightBall()
     {
 
     }

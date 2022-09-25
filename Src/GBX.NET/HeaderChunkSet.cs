@@ -31,9 +31,7 @@ public class HeaderChunkSet : SortedSet<Chunk>
             return c ?? throw new ThisShouldNotHappenException();
         }
 
-        var chunk = NodeCacheManager.HeaderChunkConstructors.TryGetValue(chunkId, out var constructor)
-            ? constructor()
-            : throw new ThisShouldNotHappenException();
+        var chunk = NodeManager.GetNewHeaderChunk(chunkId) ?? throw new Exception("Chunk ID does not exist.");
 
         Add((Chunk)chunk);
 
@@ -42,7 +40,7 @@ public class HeaderChunkSet : SortedSet<Chunk>
 
     public T Create<T>() where T : Chunk
     {
-        return (T)Create(NodeCacheManager.GetChunkIdByType(typeof(T)));
+        return (T)Create(NodeManager.HeaderChunkIdsByType[typeof(T)]);
     }
 
     public Chunk? Get(uint chunkId)

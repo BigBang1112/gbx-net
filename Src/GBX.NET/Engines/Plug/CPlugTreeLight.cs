@@ -15,7 +15,7 @@ public class CPlugTreeLight : CPlugTree
         set => plugLight = value;
     }
 
-    protected CPlugTreeLight()
+    internal CPlugTreeLight()
     {
 
     }

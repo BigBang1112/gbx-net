@@ -41,7 +41,7 @@ public class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant
 
     #region Constructors
 
-    protected CGameCtnBlockInfoVariantGround()
+    internal CGameCtnBlockInfoVariantGround()
     {
 
     }

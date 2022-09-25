@@ -21,7 +21,7 @@ public class CFuncShaderLayerUV : CFuncShader
 
     #region Constructors
 
-    protected CFuncShaderLayerUV()
+    internal CFuncShaderLayerUV()
     {
 
     }

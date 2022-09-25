@@ -25,7 +25,7 @@ public partial class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, CGameC
     [AppliedWithChunk(typeof(Chunk03186001))]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
-    protected CGameCtnMediaBlockColorGrading()
+    internal CGameCtnMediaBlockColorGrading()
     {
         image = FileRef.Default;
         keys = Array.Empty<Key>();

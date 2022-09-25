@@ -4,7 +4,7 @@
 [Node(0x09128000)]
 public class CPlugRoadChunk : CMwNod
 {
-    protected CPlugRoadChunk()
+    internal CPlugRoadChunk()
     {
 
     }

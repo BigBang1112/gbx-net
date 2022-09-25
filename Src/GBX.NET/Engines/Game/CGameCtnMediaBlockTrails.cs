@@ -19,7 +19,7 @@ public class CGameCtnMediaBlockTrails : CGameCtnMediaBlock, CGameCtnMediaBlock.I
     [AppliedWithChunk(typeof(Chunk030A9000))]
     public TimeSingle End { get => end; set => end = value; }
 
-    protected CGameCtnMediaBlockTrails()
+    internal CGameCtnMediaBlockTrails()
     {
 
     }

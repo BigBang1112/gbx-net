@@ -7,7 +7,7 @@
 [Node(0x03077000)]
 public abstract partial class CGameCtnMediaBlock : CMwNod
 {
-    protected CGameCtnMediaBlock()
+    internal CGameCtnMediaBlock()
     {
 
     }

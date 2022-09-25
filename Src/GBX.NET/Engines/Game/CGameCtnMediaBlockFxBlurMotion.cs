@@ -19,7 +19,7 @@ public class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur, CGameCtn
     [AppliedWithChunk(typeof(Chunk03082000))]
     public TimeSingle End { get => end; set => end = value; }
 
-    protected CGameCtnMediaBlockFxBlurMotion()
+    internal CGameCtnMediaBlockFxBlurMotion()
     {
 
     }

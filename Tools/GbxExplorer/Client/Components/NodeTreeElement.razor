@@ -189,7 +189,7 @@
                         <span>, </span>
                     }
 
-                    @if (!GBX.NET.Managers.NodeCacheManager.ChunkIdsByType.TryGetValue(appliedAtt.ChunkType, out uint chunkId))
+                    @if (!GBX.NET.NodeManager.ChunkIdsByType.TryGetValue(appliedAtt.ChunkType, out uint chunkId))
                     {
                         continue;
                     }

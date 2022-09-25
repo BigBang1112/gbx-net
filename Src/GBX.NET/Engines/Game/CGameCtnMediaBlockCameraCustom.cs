@@ -31,7 +31,7 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
     [AppliedWithChunk(typeof(Chunk030A2006))]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
-    protected CGameCtnMediaBlockCameraCustom()
+    internal CGameCtnMediaBlockCameraCustom()
     {
         keys = Array.Empty<Key>();
     }

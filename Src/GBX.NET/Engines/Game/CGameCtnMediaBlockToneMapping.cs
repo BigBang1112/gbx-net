@@ -24,7 +24,7 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCt
     [AppliedWithChunk(typeof(Chunk03127004))]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
-    protected CGameCtnMediaBlockToneMapping()
+    internal CGameCtnMediaBlockToneMapping()
     {
         keys = Array.Empty<Key>();
     }

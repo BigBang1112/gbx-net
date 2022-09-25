@@ -4,7 +4,7 @@
 [Node(0x09026000)]
 public class CPlugShaderApply : CPlugShaderGeneric
 {
-    protected CPlugShaderApply()
+    internal CPlugShaderApply()
     {
 
     }

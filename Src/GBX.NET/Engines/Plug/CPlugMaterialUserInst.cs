@@ -108,7 +108,7 @@ public class CPlugMaterialUserInst : CMwNod
 
     #region Constructors
 
-    protected CPlugMaterialUserInst()
+    internal CPlugMaterialUserInst()
     {
 
     }

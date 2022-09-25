@@ -181,7 +181,7 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
     [AppliedWithChunk(typeof(Chunk0315B00A), sinceVersion: 2)] // they could be above ver. 2 but they wont be available here
     public Iso4 CompoundLoc { get => compoundLoc; set => compoundLoc = value; }
 
-    protected CGameCtnBlockInfoVariant()
+    internal CGameCtnBlockInfoVariant()
     {
 
     }

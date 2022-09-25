@@ -50,7 +50,7 @@ public class CGameCtnZoneGenealogy : CMwNod
 
     #region Constructors
 
-    protected CGameCtnZoneGenealogy()
+    internal CGameCtnZoneGenealogy()
     {
 
     }

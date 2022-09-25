@@ -10,7 +10,7 @@ public partial class CGameUserFileList : CMwNod
     [AppliedWithChunk(typeof(Chunk031B7000))]
     public IList<FileInfo> Files { get => files; set => files = value; }
 
-    protected CGameUserFileList()
+    internal CGameUserFileList()
     {
         files = Array.Empty<FileInfo>();
     }

@@ -10,7 +10,7 @@ public abstract class CScenePoc : CSceneObject
     [AppliedWithChunk(typeof(Chunk0A009000))]
     public bool IsActive { get => isActive; set => isActive = value; }
 
-    protected CScenePoc()
+    internal CScenePoc()
     {
         
     }

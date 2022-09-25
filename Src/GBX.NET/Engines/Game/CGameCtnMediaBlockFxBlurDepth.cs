@@ -20,7 +20,7 @@ public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, CGame
     [AppliedWithChunk(typeof(Chunk03081001))]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
-    protected CGameCtnMediaBlockFxBlurDepth()
+    internal CGameCtnMediaBlockFxBlurDepth()
     {
         keys = Array.Empty<Key>();
     }

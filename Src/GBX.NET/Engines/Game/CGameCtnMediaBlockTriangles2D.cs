@@ -10,7 +10,7 @@ namespace GBX.NET.Engines.Game;
 [NodeExtension("GameCtnMediaBlockTriangles2D")]
 public class CGameCtnMediaBlockTriangles2D : CGameCtnMediaBlockTriangles
 {
-    protected CGameCtnMediaBlockTriangles2D()
+    internal CGameCtnMediaBlockTriangles2D()
     {
 
     }

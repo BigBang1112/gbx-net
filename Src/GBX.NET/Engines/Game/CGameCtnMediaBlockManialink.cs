@@ -24,7 +24,7 @@ public class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, CGameCtnMediaBloc
     [AppliedWithChunk(typeof(Chunk0312A001))]
     public string ManialinkURL { get => manialinkURL; set => manialinkURL = value; }
 
-    protected CGameCtnMediaBlockManialink()
+    internal CGameCtnMediaBlockManialink()
     {
         manialinkURL = "";
     }

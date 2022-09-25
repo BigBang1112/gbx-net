@@ -45,7 +45,7 @@ public class CFuncKeysReal : CFuncKeys
     [AppliedWithChunk(typeof(Chunk0501A002))]
     public float ForcedTangentMaxX { get => forcedTangentMaxX; set => forcedTangentMaxX = value; }
 
-    protected CFuncKeysReal()
+    internal CFuncKeysReal()
     {
 
     }

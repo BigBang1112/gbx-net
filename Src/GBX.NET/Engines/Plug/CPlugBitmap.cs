@@ -8,7 +8,7 @@
 [NodeExtension("Texture")]
 public class CPlugBitmap : CPlug
 {
-    protected CPlugBitmap()
+    internal CPlugBitmap()
     {
 
     }

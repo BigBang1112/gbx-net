@@ -57,7 +57,7 @@ public class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi
 
     #region Constructors
 
-    protected CCtnMediaBlockUiTMSimpleEvtsDisplay()
+    internal CCtnMediaBlockUiTMSimpleEvtsDisplay()
     {
 
     }

@@ -441,7 +441,7 @@ public partial class CGameCtnCollection : CMwNod, CGameCtnCollection.IHeader
 
     #region Constructors
 
-    protected CGameCtnCollection()
+    internal CGameCtnCollection()
     {
 
     }

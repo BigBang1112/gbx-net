@@ -27,7 +27,7 @@ public class CPlugMaterial : CPlug
     [AppliedWithChunk(typeof(Chunk0907900D))]
     public SDeviceMat[]? DeviceMaterials { get => deviceMaterials; set => deviceMaterials = value; }
 
-    protected CPlugMaterial()
+    internal CPlugMaterial()
     {
 
     }

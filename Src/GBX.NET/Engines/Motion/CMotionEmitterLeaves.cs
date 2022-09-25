@@ -3,7 +3,7 @@
 [Node(0x804C000)]
 public class CMotionEmitterLeaves : CMotion
 {
-    protected CMotionEmitterLeaves()
+    internal CMotionEmitterLeaves()
     {
 
     }

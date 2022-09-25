@@ -99,7 +99,7 @@ public class CGameCtnBlockInfoClip : CGameCtnBlockInfo
         }
     }
 
-    protected CGameCtnBlockInfoClip()
+    internal CGameCtnBlockInfoClip()
     {
 
     }

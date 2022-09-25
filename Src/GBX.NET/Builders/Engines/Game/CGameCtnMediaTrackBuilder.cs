@@ -45,12 +45,16 @@ public partial class CGameCtnMediaTrackBuilder : Builder
 
     internal CGameCtnMediaTrack NewNode()
     {
-        var node = NodeCacheManager.GetNodeInstance<CGameCtnMediaTrack>(0x03078000);
-        node.Name = Name ?? "Unnamed track";
-        node.Blocks = Blocks ?? new List<CGameCtnMediaBlock>();
-        node.IsKeepPlaying = IsKeepPlaying;
-        node.IsReadOnly = IsReadOnly;
+        var node = new CGameCtnMediaTrack
+        {
+            Name = Name ?? "Unnamed track",
+            Blocks = Blocks ?? new List<CGameCtnMediaBlock>(),
+            IsKeepPlaying = IsKeepPlaying,
+            IsReadOnly = IsReadOnly
+        };
+        
         node.CreateChunk<CGameCtnMediaTrack.Chunk03078001>();
+        
         return node;
     }
 }

@@ -23,7 +23,7 @@ public class CGameWaypointSpecialProperty : CMwNod
     [AppliedWithChunk(typeof(Chunk2E009000), sinceVersion: 1)]
     public int Order { get => order; set => order = value; }
 
-    protected CGameWaypointSpecialProperty()
+    internal CGameWaypointSpecialProperty()
     {
 
     }

@@ -23,7 +23,7 @@ public partial class CGameCtnMediaBlockTransitionFade : CGameCtnMediaBlock, CGam
     [NodeMember]
     public Vec3 Color { get => color; set => color = value; }
 
-    protected CGameCtnMediaBlockTransitionFade()
+    internal CGameCtnMediaBlockTransitionFade()
     {
         keys = Array.Empty<Key>();
     }

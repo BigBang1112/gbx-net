@@ -4,7 +4,7 @@
 [Node(0x09009000)]
 public class CPlugVisualIndexedLines : CPlugVisualIndexed
 {
-    protected CPlugVisualIndexedLines()
+    internal CPlugVisualIndexedLines()
     {
 
     }

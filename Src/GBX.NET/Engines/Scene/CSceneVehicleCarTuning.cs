@@ -3,7 +3,7 @@
 [Node(0x0A029000)]
 public class CSceneVehicleCarTuning : CSceneVehicleTuning
 {
-    protected CSceneVehicleCarTuning()
+    internal CSceneVehicleCarTuning()
     {
 
     }

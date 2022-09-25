@@ -13,7 +13,7 @@ public class CSceneMessageHandler : CMwNod
     
     public GameBoxRefTable.File? ScriptFile => scriptFile;
 
-    protected CSceneMessageHandler()
+    internal CSceneMessageHandler()
     {
 
     }

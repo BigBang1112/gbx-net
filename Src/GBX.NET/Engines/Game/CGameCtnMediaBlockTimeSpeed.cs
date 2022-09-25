@@ -20,7 +20,7 @@ public partial class CGameCtnMediaBlockTimeSpeed : CGameCtnMediaBlock, CGameCtnM
     [AppliedWithChunk(typeof(Chunk03129000))]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
-    protected CGameCtnMediaBlockTimeSpeed()
+    internal CGameCtnMediaBlockTimeSpeed()
     {
         keys = Array.Empty<Key>();
     }

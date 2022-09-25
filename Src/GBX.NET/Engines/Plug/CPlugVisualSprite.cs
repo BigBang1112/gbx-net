@@ -4,7 +4,7 @@
 [Node(0x09010000)]
 public class CPlugVisualSprite : CPlugVisual3D
 {
-    protected CPlugVisualSprite()
+    internal CPlugVisualSprite()
     {
 
     }

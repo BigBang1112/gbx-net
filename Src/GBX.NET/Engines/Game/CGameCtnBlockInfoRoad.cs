@@ -19,7 +19,7 @@ public class CGameCtnBlockInfoRoad : CGameCtnBlockInfo
         set => slope = value;
     }
 
-    protected CGameCtnBlockInfoRoad()
+    internal CGameCtnBlockInfoRoad()
     {
 
     }

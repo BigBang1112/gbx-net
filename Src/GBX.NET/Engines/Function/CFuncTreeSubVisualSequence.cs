@@ -38,7 +38,7 @@ public class CFuncTreeSubVisualSequence : CFuncTree
 
     #region Constructors
 
-    protected CFuncTreeSubVisualSequence()
+    internal CFuncTreeSubVisualSequence()
     {
 
     }

@@ -3,7 +3,7 @@
 [Node(0x0A02E000)]
 public class CSceneVehicleTuning : CMwNod
 {
-	protected CSceneVehicleTuning()
+    internal CSceneVehicleTuning()
 	{
         
 	}

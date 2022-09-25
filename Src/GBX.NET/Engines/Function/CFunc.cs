@@ -5,7 +5,7 @@
 [NodeExtension("Func")]
 public abstract class CFunc : CMwNod
 {
-    protected CFunc()
+    internal CFunc()
     {
         
     }

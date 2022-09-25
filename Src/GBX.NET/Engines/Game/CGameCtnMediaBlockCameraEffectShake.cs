@@ -20,7 +20,7 @@ public partial class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCam
     [AppliedWithChunk(typeof(Chunk030A4000))]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
-    protected CGameCtnMediaBlockCameraEffectShake()
+    internal CGameCtnMediaBlockCameraEffectShake()
     {
         keys = Array.Empty<Key>();
     }

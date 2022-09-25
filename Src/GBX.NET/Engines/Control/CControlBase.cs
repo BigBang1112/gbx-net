@@ -25,7 +25,7 @@ public abstract class CControlBase : CSceneToy
 
     #region Constructors
 
-    protected CControlBase()
+    internal CControlBase()
     {
 
     }

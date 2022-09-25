@@ -1,5 +1,4 @@
 ﻿using GBX.NET;
-using GBX.NET.Managers;
 using System.Collections.Immutable;
 
 namespace GbxExplorer.Client.Models;

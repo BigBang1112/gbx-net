@@ -14,11 +14,10 @@ public class CHmsSoundSource : CMwNod
     public CMwNod? AudioSound { get => audioSound; set => audioSound = value; }
     public GameBoxRefTable.File? AudioSoundFile { get => audioSoundFile; set => audioSoundFile = value; }
 
-    protected CHmsSoundSource()
+    internal CHmsSoundSource()
     {
 
     }
-
 
     #region 0x000 chunk (AudioSound)
 

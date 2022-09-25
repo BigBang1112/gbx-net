@@ -21,7 +21,7 @@ public partial class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, CGameCt
     [AppliedWithChunk(typeof(Chunk030A6001))]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
-    protected CGameCtnMediaBlockMusicEffect()
+    internal CGameCtnMediaBlockMusicEffect()
     {
         keys = Array.Empty<Key>();
     }

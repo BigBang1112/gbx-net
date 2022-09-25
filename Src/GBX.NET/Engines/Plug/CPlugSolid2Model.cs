@@ -4,7 +4,7 @@
 [Node(0x090BB000)]
 public class CPlugSolid2Model : CMwNod
 {
-    protected CPlugSolid2Model()
+    internal CPlugSolid2Model()
     {
         
     }

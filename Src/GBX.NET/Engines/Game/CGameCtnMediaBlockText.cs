@@ -39,9 +39,9 @@ public class CGameCtnMediaBlockText : CGameCtnMediaBlock, CGameCtnMediaBlock.IHa
 
     #region Constructors
 
-    protected CGameCtnMediaBlockText()
+    internal CGameCtnMediaBlockText()
     {
-        text = null!;
+        text = "";
         effect = null!;
     }
 

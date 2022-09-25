@@ -47,7 +47,7 @@ public abstract class CFuncPlug : CFunc
 
     #region Constructors
 
-    protected CFuncPlug()
+    internal CFuncPlug()
     {
 
     }

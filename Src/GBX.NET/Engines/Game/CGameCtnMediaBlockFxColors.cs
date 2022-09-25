@@ -19,7 +19,7 @@ public partial class CGameCtnMediaBlockFxColors : CGameCtnMediaBlockFx, CGameCtn
     [NodeMember]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
-    protected CGameCtnMediaBlockFxColors()
+    internal CGameCtnMediaBlockFxColors()
     {
         keys = Array.Empty<Key>();
     }

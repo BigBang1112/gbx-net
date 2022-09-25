@@ -41,7 +41,7 @@ public partial class CGameCtnMediaClipGroup : CMwNod
 
     #region Constructors
 
-    protected CGameCtnMediaClipGroup()
+    internal CGameCtnMediaClipGroup()
     {
         Clips = Array.Empty<ClipTrigger>();
     }

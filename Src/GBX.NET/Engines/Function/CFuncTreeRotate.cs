@@ -26,7 +26,7 @@ public class CFuncTreeRotate : CFuncTree
 
     #region Constuctors
 
-    protected CFuncTreeRotate()
+    internal CFuncTreeRotate()
     {
 
     }

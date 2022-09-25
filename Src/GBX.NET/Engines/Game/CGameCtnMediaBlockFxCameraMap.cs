@@ -19,7 +19,7 @@ public class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, CGameCtnMediaBl
     [AppliedWithChunk(typeof(Chunk03139001))]
     public TimeSingle End { get => end; set => end = value; }
 
-    protected CGameCtnMediaBlockFxCameraMap()
+    internal CGameCtnMediaBlockFxCameraMap()
     {
 
     }

@@ -18,7 +18,7 @@ public class CFuncKeysNatural : CFuncKeys
 
     #endregion
 
-    protected CFuncKeysNatural()
+    internal CFuncKeysNatural()
     {
         
     }

@@ -143,7 +143,7 @@ public class CGameObjectPhyModel : CMwNod
 
     #region Constructors
 
-    protected CGameObjectPhyModel()
+    internal CGameObjectPhyModel()
     {
 
     }

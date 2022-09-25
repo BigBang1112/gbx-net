@@ -10,7 +10,7 @@ public class CGameObjectModel : CMwNod
     public uint m_InventoryParams_InventoryOccupation { get; set; }
 #pragma warning restore IDE1006
 
-    protected CGameObjectModel()
+    internal CGameObjectModel()
     {
 
     }

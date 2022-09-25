@@ -1049,7 +1049,7 @@ public class CSystemConfig : CMwNod
 
     #region Constructors
 
-    protected CSystemConfig()
+    internal CSystemConfig()
     {
 
     }

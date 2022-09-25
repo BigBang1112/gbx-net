@@ -7,7 +7,7 @@
 [Node(0x090CE000)]
 public class CPlugDataTape : CMwNod
 {
-    protected CPlugDataTape()
+    internal CPlugDataTape()
     {
 
     }

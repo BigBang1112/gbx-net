@@ -7,7 +7,7 @@
 [Node(0x0307E000)]
 public abstract class CGameCtnMediaBlockFx : CGameCtnMediaBlock
 {
-    protected CGameCtnMediaBlockFx()
+    internal CGameCtnMediaBlockFx()
     {
 
     }

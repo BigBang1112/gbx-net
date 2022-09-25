@@ -23,7 +23,7 @@ public partial class CGameCtnMediaBlockOpponentVisibility : CGameCtnMediaBlock, 
     [AppliedWithChunk(typeof(Chunk0338B001))]
     public EVisibility Visibility { get => visibility; set => visibility = value; }
 
-    protected CGameCtnMediaBlockOpponentVisibility()
+    internal CGameCtnMediaBlockOpponentVisibility()
     {
 
     }

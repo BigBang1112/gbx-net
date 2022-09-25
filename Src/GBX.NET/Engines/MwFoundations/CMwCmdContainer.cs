@@ -4,7 +4,7 @@
 [Node(0x01093000)]
 public class CMwCmdContainer : CMwNod
 {
-    protected CMwCmdContainer()
+    internal CMwCmdContainer()
     {
         
     }

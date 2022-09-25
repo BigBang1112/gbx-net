@@ -24,7 +24,7 @@ public class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock, CGameCtnMediaB
     [AppliedWithChunk(typeof(Chunk03133001))]
     public int Target { get => target; set => target = value; }
 
-    protected CGameCtnMediaBlockVehicleLight()
+    internal CGameCtnMediaBlockVehicleLight()
     {
 
     }

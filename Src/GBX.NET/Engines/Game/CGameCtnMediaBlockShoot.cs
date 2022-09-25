@@ -18,7 +18,7 @@ public class CGameCtnMediaBlockShoot : CGameCtnMediaBlock, CGameCtnMediaBlock.IH
     [AppliedWithChunk(typeof(Chunk03145000))]
     public TimeSingle End { get => end; set => end = value; }
 
-    protected CGameCtnMediaBlockShoot()
+    internal CGameCtnMediaBlockShoot()
     {
 
     }

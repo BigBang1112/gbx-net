@@ -22,7 +22,7 @@ public partial class CGameCtnMediaBlockDOF : CGameCtnMediaBlock, CGameCtnMediaBl
     [AppliedWithChunk(typeof(Chunk03126002))]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
-    protected CGameCtnMediaBlockDOF()
+    internal CGameCtnMediaBlockDOF()
     {
         keys = Array.Empty<Key>();
     }

@@ -55,7 +55,7 @@ public class CPlugTree : CPlug
     [AppliedWithChunk(typeof(Chunk0904F011))]
     public CFuncTree? FuncTree { get => funcTree; set => funcTree = value; }
 
-    protected CPlugTree()
+    internal CPlugTree()
     {
         children = Array.Empty<CPlugTree>();
     }

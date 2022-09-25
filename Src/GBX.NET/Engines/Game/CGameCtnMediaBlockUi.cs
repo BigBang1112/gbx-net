@@ -26,7 +26,7 @@ public class CGameCtnMediaBlockUi : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasT
     [AppliedWithChunk(typeof(Chunk0307D000))]
     public CControlList? UserInterface { get => userInterface; set => userInterface = value; }
 
-    protected CGameCtnMediaBlockUi()
+    internal CGameCtnMediaBlockUi()
     {
 
     }

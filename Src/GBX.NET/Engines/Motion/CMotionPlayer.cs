@@ -15,7 +15,7 @@ public class CMotionPlayer : CMotion
     [AppliedWithChunk(typeof(Chunk08034004))]
     public CMotionTrack?[]? Tracks { get => tracks; set => tracks = value; }
 
-    protected CMotionPlayer()
+    internal CMotionPlayer()
     {
 
     }

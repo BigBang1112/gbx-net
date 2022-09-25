@@ -22,7 +22,7 @@ public class CGameCtnBlockInfoPylon : CGameCtnBlockInfo
     private EPylonPlacement pylonPlacement;
     private int blockHeightOffset;
 
-    protected CGameCtnBlockInfoPylon()
+    internal CGameCtnBlockInfoPylon()
     {
         
     }

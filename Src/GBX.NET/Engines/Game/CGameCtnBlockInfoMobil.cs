@@ -35,7 +35,7 @@ public class CGameCtnBlockInfoMobil : CMwNod
     [AppliedWithChunk(typeof(Chunk03122004))]
     public CGameCtnBlockInfoMobilLink[]? DynaLinks { get => dynaLinks; set => dynaLinks = value; }
 
-    protected CGameCtnBlockInfoMobil()
+    internal CGameCtnBlockInfoMobil()
     {
 
     }

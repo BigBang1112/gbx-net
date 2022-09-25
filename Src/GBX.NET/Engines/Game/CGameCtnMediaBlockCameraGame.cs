@@ -133,7 +133,7 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
 
     #region Constructors
 
-    protected CGameCtnMediaBlockCameraGame()
+    internal CGameCtnMediaBlockCameraGame()
     {
 
     }

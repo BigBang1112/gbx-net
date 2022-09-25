@@ -3,7 +3,7 @@
 [Node(0x0A003000)]
 public class CSceneLayout : CMwNod
 {
-    protected CSceneLayout()
+    internal CSceneLayout()
     {
         
     }

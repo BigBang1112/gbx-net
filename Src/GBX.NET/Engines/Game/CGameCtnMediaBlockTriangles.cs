@@ -81,7 +81,7 @@ public abstract partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, 
 
     #region Constructors
 
-    protected CGameCtnMediaBlockTriangles()
+    internal CGameCtnMediaBlockTriangles()
     {
         keys = Array.Empty<Key>();
         vertices = Array.Empty<Vec4>();

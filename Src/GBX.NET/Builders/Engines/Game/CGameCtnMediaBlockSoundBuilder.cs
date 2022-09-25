@@ -43,15 +43,11 @@ public partial class CGameCtnMediaBlockSoundBuilder : Builder
     public TM2 ForTM2() => new(this, NewNode());
     public TM2020 ForTM2020() => new(this, NewNode());
 
-    internal CGameCtnMediaBlockSound NewNode()
+    internal CGameCtnMediaBlockSound NewNode() => new()
     {
-        var node = NodeCacheManager.GetNodeInstance<CGameCtnMediaBlockSound>(0x030A7000);
-
-        node.Sound = Sound ?? FileRef.Default;
-        node.Keys = Keys ?? new List<CGameCtnMediaBlockSound.Key>();
-        node.PlayCount = PlayCount;
-        node.IsLooping = IsLooping;
-
-        return node;
-    }
+        Sound = Sound ?? FileRef.Default,
+        Keys = Keys ?? new List<CGameCtnMediaBlockSound.Key>(),
+        PlayCount = PlayCount,
+        IsLooping = IsLooping
+    };
 }

@@ -21,10 +21,14 @@ public partial class CGameCtnMediaBlockTriangles2DBuilder : Builder
 
     internal CGameCtnMediaBlockTriangles2D NewNode()
     {
-        var node = NodeCacheManager.GetNodeInstance<CGameCtnMediaBlockTriangles2D>(0x0304B000);
-        node.Vertices = Vertices;
-        node.Triangles = Triangles ?? Array.Empty<Int3>();
+        var node = new CGameCtnMediaBlockTriangles2D
+        {
+            Vertices = Vertices,
+            Triangles = Triangles ?? Array.Empty<Int3>()
+        };
+        
         node.CreateChunk<CGameCtnMediaBlockTriangles.Chunk03029001>();
+        
         return node;
     }
 }

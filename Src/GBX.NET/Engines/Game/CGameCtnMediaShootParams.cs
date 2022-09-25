@@ -72,7 +72,7 @@ public class CGameCtnMediaShootParams : CMwNod // CGameCtnMediaVideoParams
 
     #endregion
 
-    protected CGameCtnMediaShootParams()
+    internal CGameCtnMediaShootParams()
     {
 
     }

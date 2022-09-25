@@ -33,7 +33,7 @@ public class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMediaBlock
     [AppliedWithChunk(typeof(Chunk03166000))]
     public bool AutoZoom { get => autoZoom; set => autoZoom = value; }
 
-    protected CGameCtnMediaBlockCameraEffectInertialTracking()
+    internal CGameCtnMediaBlockCameraEffectInertialTracking()
     {
 
     }

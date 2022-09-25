@@ -5,7 +5,7 @@
 [NodeExtension("FuncTree")]
 public abstract class CFuncTree : CFuncPlug
 {
-    protected CFuncTree()
+    internal CFuncTree()
     {
 
     }

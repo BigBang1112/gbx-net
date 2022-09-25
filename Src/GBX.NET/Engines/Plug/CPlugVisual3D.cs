@@ -21,7 +21,7 @@ public abstract class CPlugVisual3D : CPlugVisual
     [AppliedWithChunk(typeof(Chunk0902C003))]
     public Vec3[]? BiTangents { get => biTangents; set => biTangents = value; }
 
-    protected CPlugVisual3D()
+    internal CPlugVisual3D()
     {
         vertices = Array.Empty<Vertex>();
     }

@@ -21,7 +21,7 @@ public class CSceneMobil : CSceneObject
     [AppliedWithChunk(typeof(Chunk0A011006))]
     public CSceneMessageHandler? MessageHandler { get => messageHandler; set => messageHandler = value; }
 
-    protected CSceneMobil()
+    internal CSceneMobil()
     {
         
     }

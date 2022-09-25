@@ -10,7 +10,7 @@ public class CHmsItem : CMwNod
     [AppliedWithChunk(typeof(Chunk06003001))]
     public CPlugSolid Solid { get => solid; set => solid = value; }
 
-    protected CHmsItem()
+    internal CHmsItem()
     {
         solid = null!;
     }

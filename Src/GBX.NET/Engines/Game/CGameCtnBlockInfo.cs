@@ -171,7 +171,7 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
         set => pillar = value;
     }
 
-    protected CGameCtnBlockInfo()
+    internal CGameCtnBlockInfo()
     {
 
     }

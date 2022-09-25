@@ -3,7 +3,7 @@
 [Node(0x03047000)]
 public class CGameHighScore : CMwNod
 {
-    protected CGameHighScore()
+    internal CGameHighScore()
     {
 
     }

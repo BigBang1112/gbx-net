@@ -1,14 +1,7 @@
-﻿using GBX.NET.Builders;
-using GBX.NET.Builders.Engines.Game;
-using GBX.NET.Engines.Control;
+﻿using GBX.NET.Builders.Engines.Game;
 using GBX.NET.Engines.Game;
-using GBX.NET.Managers;
-using GBX.NET.Tests.Unit.Builders.Engines.Control;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace GBX.NET.Tests.Unit.Builders.Engines.Game;
@@ -91,7 +84,7 @@ public class CGameCtnMediaBlockSoundBuilderTests
     [Fact]
     public void NewNode_ShouldReturnInstance()
     {
-        var expected = NodeCacheManager.GetNodeInstance<CGameCtnMediaBlockSound>(0x030A7000);
+        var expected = new CGameCtnMediaBlockSound();
 
         var actual = new CGameCtnMediaBlockSoundBuilder().NewNode();
 

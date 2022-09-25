@@ -78,7 +78,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, CGameCtnDecoration.
 
     #region Constructors
 
-    protected CGameCtnDecoration()
+    internal CGameCtnDecoration()
     {
 
     }

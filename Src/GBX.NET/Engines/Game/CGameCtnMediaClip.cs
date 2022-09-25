@@ -67,7 +67,7 @@ public class CGameCtnMediaClip : CMwNod
 
     #region Constructors
 
-    protected CGameCtnMediaClip()
+    internal CGameCtnMediaClip()
     {
         name = "";
         tracks = Array.Empty<CGameCtnMediaTrack>();

@@ -36,7 +36,7 @@ public class CGameBlockItem : CMwNod
         set => customizedVariants = value;
     }
 
-    protected CGameBlockItem()
+    internal CGameBlockItem()
     {
         archetypeBlockInfoId = "";
         archetypeBlockInfoCollectionId = "";

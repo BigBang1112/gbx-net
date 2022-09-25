@@ -62,7 +62,7 @@ public partial class CPlugCrystal : CPlugTreeGenerator
 
     #region Constructors
 
-    protected CPlugCrystal()
+    internal CPlugCrystal()
     {
         materials = Array.Empty<CPlugMaterialUserInst>();
         Layers = Array.Empty<Layer>();

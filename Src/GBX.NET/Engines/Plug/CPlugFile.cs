@@ -7,7 +7,7 @@
 [Node(0x09020000)]
 public abstract class CPlugFile : CPlug
 {
-    protected CPlugFile()
+    internal CPlugFile()
     {
 
     }

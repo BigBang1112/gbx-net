@@ -176,7 +176,7 @@ public class CGameCtnAnchoredObject : CMwNod
 
     #region Constructors
 
-    protected CGameCtnAnchoredObject()
+    internal CGameCtnAnchoredObject()
     {
         itemModel = Ident.Empty;
     }

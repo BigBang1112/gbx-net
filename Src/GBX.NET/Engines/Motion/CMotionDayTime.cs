@@ -4,7 +4,7 @@
 [Node(0x08055000)]
 public class CMotionDayTime : CMotion
 {
-    protected CMotionDayTime()
+    internal CMotionDayTime()
     {
 
     }

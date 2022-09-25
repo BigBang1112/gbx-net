@@ -7,7 +7,7 @@
 [Node(0x01001000)]
 public class CMwNod : Node
 {
-    protected CMwNod()
+    internal CMwNod()
     {
 
     }

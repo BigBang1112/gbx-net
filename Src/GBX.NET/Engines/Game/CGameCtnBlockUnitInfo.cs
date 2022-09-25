@@ -88,7 +88,7 @@ public class CGameCtnBlockUnitInfo : CMwNod
 
     #region Constructors
 
-    protected CGameCtnBlockUnitInfo()
+    internal CGameCtnBlockUnitInfo()
     {
 
     }

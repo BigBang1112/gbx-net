@@ -9,7 +9,7 @@ public class CPlugVisualGrid : CPlugVisual3D
     private float rangeX;
     private float rangeZ;
 
-    protected CPlugVisualGrid()
+    internal CPlugVisualGrid()
     {
         
     }

@@ -135,7 +135,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
 
     #region Constructors
 
-    protected CGameCtnCollector()
+    internal CGameCtnCollector()
     {
         author = Ident.Empty;
         pageName = "";

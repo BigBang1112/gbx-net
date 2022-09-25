@@ -4,7 +4,7 @@
 [Node(0x0902B000)]
 public class CPlug : CMwNod
 {
-    protected CPlug()
+    internal CPlug()
     {
 
     }

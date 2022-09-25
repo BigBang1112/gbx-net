@@ -20,8 +20,8 @@ public abstract class CFuncKeys : CFunc
     #endregion
 
     #region Constructors
-    
-    protected CFuncKeys()
+
+    internal CFuncKeys()
     {
 
     }

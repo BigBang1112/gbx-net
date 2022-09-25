@@ -29,7 +29,7 @@ public class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, CGameCtnMediaBloc
     [AppliedWithChunk(typeof(Chunk03195000))]
     public string Manialink { get => manialink; set => manialink = value; }
 
-    protected CGameCtnMediaBlockInterface()
+    internal CGameCtnMediaBlockInterface()
     {
         manialink = "";
     }

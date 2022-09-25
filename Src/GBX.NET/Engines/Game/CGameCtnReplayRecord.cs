@@ -279,7 +279,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     #region Constructors
 
-    protected CGameCtnReplayRecord()
+    internal CGameCtnReplayRecord()
     {
 
     }

@@ -11,7 +11,7 @@ public class CPlugMaterialCustom : CPlug
     [AppliedWithChunk(typeof(Chunk0903A006))]
     public SBitmap[]? Textures { get; set; }
 
-    protected CPlugMaterialCustom()
+    internal CPlugMaterialCustom()
     {
 
     }

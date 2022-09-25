@@ -215,7 +215,7 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
 
     #region Constructors
 
-    protected CGameItemModel()
+    internal CGameItemModel()
     {
 
     }

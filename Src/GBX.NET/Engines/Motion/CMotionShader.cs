@@ -4,7 +4,7 @@
 [Node(0x0802B000)]
 public class CMotionShader : CMotionTrack
 {
-    protected CMotionShader()
+    internal CMotionShader()
     {
 
     }

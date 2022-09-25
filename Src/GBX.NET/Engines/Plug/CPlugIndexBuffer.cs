@@ -11,7 +11,7 @@ public class CPlugIndexBuffer : CPlug
     [AppliedWithChunk(typeof(Chunk09057000))]
     public ushort[] Indices { get => indices; set => indices = value; }
 
-    protected CPlugIndexBuffer()
+    internal CPlugIndexBuffer()
     {
         indices = Array.Empty<ushort>();
     }

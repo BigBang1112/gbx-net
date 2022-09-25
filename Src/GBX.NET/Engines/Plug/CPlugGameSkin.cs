@@ -4,7 +4,7 @@
 [Node(0x090F4000)]
 public class CPlugGameSkin : CMwNod
 {
-    protected CPlugGameSkin()
+    internal CPlugGameSkin()
     {
 
     }

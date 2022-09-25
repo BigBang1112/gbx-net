@@ -31,7 +31,7 @@ public class CGameNetOnlineMessage : CMwNod
     [AppliedWithChunk(typeof(Chunk03028000))]
     public DateTime Date { get; set; }
 
-    protected CGameNetOnlineMessage()
+    internal CGameNetOnlineMessage()
     {
         ReceiverLogin = "";
         SenderLogin = "";

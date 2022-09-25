@@ -29,7 +29,7 @@ public class CGameCtnDecorationSize : CMwNod
         set => scene = value;
     }
 
-    protected CGameCtnDecorationSize()
+    internal CGameCtnDecorationSize()
     {
 
     }

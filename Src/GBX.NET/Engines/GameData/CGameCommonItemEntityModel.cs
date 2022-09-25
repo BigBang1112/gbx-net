@@ -15,7 +15,7 @@ public class CGameCommonItemEntityModel : CMwNod
     [AppliedWithChunk(typeof(Chunk2E027000))]
     public CMwNod? VisModel { get => visModel; set => visModel = value; }
 
-    protected CGameCommonItemEntityModel()
+    internal CGameCommonItemEntityModel()
     {
         
     }
@@ -35,6 +35,12 @@ public class CGameCommonItemEntityModel : CMwNod
         public override void ReadWrite(CGameCommonItemEntityModel n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
+
+            if (version >= 4)
+            {
+
+            }
+
             rw.NodeRef<CMwNod>(ref n.phyModel);
             rw.NodeRef<CMwNod>(ref n.visModel);
         }

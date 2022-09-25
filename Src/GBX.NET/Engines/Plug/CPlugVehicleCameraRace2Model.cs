@@ -6,7 +6,7 @@
 [NodeExtension("VehicleCameraRace2Model")]
 public class CPlugVehicleCameraRace2Model : CPlugCamControlModel
 {
-    protected CPlugVehicleCameraRace2Model()
+    internal CPlugVehicleCameraRace2Model()
     {
 
     }

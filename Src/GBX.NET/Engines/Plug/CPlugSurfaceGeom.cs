@@ -6,7 +6,7 @@ namespace GBX.NET.Engines.Plug;
 [Node(0x0900F000), WritingNotSupported]
 public class CPlugSurfaceGeom : CPlugSurface
 {
-    protected CPlugSurfaceGeom()
+    internal CPlugSurfaceGeom()
     {
 
     }

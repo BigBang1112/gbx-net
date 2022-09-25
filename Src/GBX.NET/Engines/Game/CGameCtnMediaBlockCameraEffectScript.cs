@@ -48,7 +48,7 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
     [AppliedWithChunk(typeof(Chunk03161000), sinceVersion: 0, upToVersion: 0)]
     public TimeSingle? End { get => end; set => end = value; }
 
-    protected CGameCtnMediaBlockCameraEffectScript()
+    internal CGameCtnMediaBlockCameraEffectScript()
     {
         script = "";
     }

@@ -15,7 +15,7 @@ public class CPlugSkel : CMwNod
     [AppliedWithChunk(typeof(Chunk090BA000))]
     public Joint[] Joints { get => joints; set => joints = value; }
 
-    protected CPlugSkel()
+    internal CPlugSkel()
     {
         joints = Array.Empty<Joint>();
     }

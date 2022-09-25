@@ -1,5 +1,4 @@
 ﻿using GBX.NET.Engines.MwFoundations;
-using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
 using System.IO.Compression;
 using System.Text;

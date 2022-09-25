@@ -97,7 +97,7 @@ public partial class GameBox
             return gbx;
         }
 
-        gbx.Node = NodeCacheManager.GetClassConstructor(header.Id)();
+        gbx.Node = NodeManager.GetNewNode(header.Id) ?? throw new ThisShouldNotHappenException();
         gbx.Node.SetGbx(gbx);
 
         if (header.UserData.Length == 0)

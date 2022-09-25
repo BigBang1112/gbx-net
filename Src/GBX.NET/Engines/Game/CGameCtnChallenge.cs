@@ -1349,7 +1349,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #region Constructors
 
-    protected CGameCtnChallenge()
+    internal CGameCtnChallenge()
     {
         mapInfo = Ident.Empty;
         mapName = "";
@@ -4046,7 +4046,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x048 skippable chunk (baked blocks)
     /// </summary>
-    [Chunk(0x03043048, processSync: true, "baked blocks")]
+    [Chunk(0x03043048, "baked blocks", ProcessSync = true)]
     public class Chunk03043048 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         public int U01;
@@ -4785,7 +4785,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x062 skippable chunk (MapElemColor) [TM2020]
     /// </summary>
-    [Chunk(0x03043062, processSync: true, "MapElemColor")]
+    [Chunk(0x03043062, "MapElemColor", ProcessSync = true)]
     public class Chunk03043062 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private int version;
@@ -4825,7 +4825,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x063 skippable chunk (AnimPhaseOffset) [TM2020]
     /// </summary>
-    [Chunk(0x03043063, processSync: true, "AnimPhaseOffset")]
+    [Chunk(0x03043063, "AnimPhaseOffset", ProcessSync = true)]
     public class Chunk03043063 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private int version;
@@ -4868,7 +4868,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x065 skippable chunk (foreground pack desc) [TM2020]
     /// </summary>
-    [Chunk(0x03043065, processSync: true, "foreground pack desc")]
+    [Chunk(0x03043065, "foreground pack desc", ProcessSync = true)]
     public class Chunk03043065 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private int version;
@@ -4916,7 +4916,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x068 skippable chunk (MapElemLmQuality) [TM2020]
     /// </summary>
-    [Chunk(0x03043068, processSync: true, "MapElemLmQuality")]
+    [Chunk(0x03043068, "MapElemLmQuality", ProcessSync = true)]
     public class Chunk03043068 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         // It has not been 100% validated if this is lightmap quality per block/object or not, but a lot of things hint towards it
@@ -4958,7 +4958,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x069 skippable chunk (macroblock instances) [TM2020]
     /// </summary>
-    [Chunk(0x03043069, processSync: true, "macroblock instances")]
+    [Chunk(0x03043069, "macroblock instances", ProcessSync = true)]
     public class Chunk03043069 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         public int Version { get; set; }

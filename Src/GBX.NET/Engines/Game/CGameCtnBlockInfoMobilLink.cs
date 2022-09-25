@@ -11,7 +11,7 @@ public class CGameCtnBlockInfoMobilLink : CMwNod
     public int U03 { get; set; }
     public int? U04 { get; set; }
 
-    protected CGameCtnBlockInfoMobilLink()
+    internal CGameCtnBlockInfoMobilLink()
     {
         
     }

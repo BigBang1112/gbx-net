@@ -6,7 +6,7 @@ public class CGameCampaignPlayerScores : CMwNod
     [NodeMember]
     public string? CampaignId { get; private set; }
 
-    protected CGameCampaignPlayerScores()
+    internal CGameCampaignPlayerScores()
     {
 
     }

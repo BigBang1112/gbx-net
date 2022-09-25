@@ -4,7 +4,7 @@
 [Node(0x09012000)]
 public class CPlugBitmapApply : CPlugBitmapAddress
 {
-    protected CPlugBitmapApply()
+    internal CPlugBitmapApply()
     {
 
     }

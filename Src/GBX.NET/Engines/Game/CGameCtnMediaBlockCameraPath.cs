@@ -23,7 +23,7 @@ public partial class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, CG
     [AppliedWithChunk(typeof(Chunk030A1003))]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
-    protected CGameCtnMediaBlockCameraPath()
+    internal CGameCtnMediaBlockCameraPath()
     {
         keys = Array.Empty<Key>();
     }

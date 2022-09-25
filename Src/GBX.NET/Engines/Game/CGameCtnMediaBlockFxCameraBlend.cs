@@ -20,7 +20,7 @@ public partial class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, CGame
     [AppliedWithChunk(typeof(Chunk0316D000))]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
-    protected CGameCtnMediaBlockFxCameraBlend()
+    internal CGameCtnMediaBlockFxCameraBlend()
     {
         keys = Array.Empty<Key>();
     }

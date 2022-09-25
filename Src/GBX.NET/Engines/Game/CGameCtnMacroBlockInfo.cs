@@ -90,7 +90,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector
 
     #region Constructors
 
-    protected CGameCtnMacroBlockInfo()
+    internal CGameCtnMacroBlockInfo()
     {
 
     }

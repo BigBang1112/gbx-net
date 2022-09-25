@@ -31,7 +31,7 @@ public class CGameCtnMediaBlockImage : CGameCtnMediaBlock, CGameCtnMediaBlock.IH
     [AppliedWithChunk(typeof(Chunk030A5000))]
     public FileRef Image { get => image; set => image = value; }
 
-    protected CGameCtnMediaBlockImage()
+    internal CGameCtnMediaBlockImage()
     {
         effect = null!;
         image = FileRef.Default;

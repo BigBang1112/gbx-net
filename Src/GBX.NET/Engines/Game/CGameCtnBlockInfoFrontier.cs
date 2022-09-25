@@ -5,7 +5,7 @@
 [NodeExtension("TMEDFrontier")]
 public class CGameCtnBlockInfoFrontier : CGameCtnBlockInfo
 {
-    protected CGameCtnBlockInfoFrontier()
+    internal CGameCtnBlockInfoFrontier()
     {
         
     }

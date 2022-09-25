@@ -22,7 +22,7 @@ public partial class CGameGhost : CMwNod
     [AppliedWithChunk(typeof(Chunk0303F006))]
     public Data? SampleData => sampleData.Result;
 
-    protected CGameGhost()
+    internal CGameGhost()
     {
         sampleData = Task.FromResult(default(Data));
 

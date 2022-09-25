@@ -44,7 +44,7 @@ public class CGameCtnBlockSkin : CMwNod
 
     #region Constructors
 
-    protected CGameCtnBlockSkin()
+    internal CGameCtnBlockSkin()
     {
 
     }

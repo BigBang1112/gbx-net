@@ -4,7 +4,7 @@
 [Node(0x0400A000)]
 public class GxLightFrustum : GxLightBall
 {
-    protected GxLightFrustum()
+    internal GxLightFrustum()
     {
 
     }

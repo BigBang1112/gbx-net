@@ -12,7 +12,7 @@ public class CInputBindingsConfig : CMwNod
     public ReadOnlyCollection<string> Devices { get; private set; }
     public IList<Binding> Bindings { get; private set; }
 
-    protected CInputBindingsConfig()
+    internal CInputBindingsConfig()
     {
         Devices = null!;
         Bindings = null!;
