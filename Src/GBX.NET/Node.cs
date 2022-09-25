@@ -104,14 +104,14 @@ public abstract class Node
                                 IProgress<GameBoxReadProgress>? progress,
                                 bool ignoreZeroIdChunk = false)
     {
-        var actualClassId = GetNodeInfoFromClassId(r, classId, out Node? node);
+        _ = GetNodeInfoFromClassId(r, classId, out Node? node);
 
         if (node is null)
         {
             return null;
         }
 
-        Parse(node, actualClassId, r, progress, ignoreZeroIdChunk);
+        Parse(node, r, progress, ignoreZeroIdChunk);
 
         return node;
     }
@@ -140,7 +140,6 @@ public abstract class Node
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     internal static void Parse(Node node,
-                               uint classId,
                                GameBoxReader r,
                                IProgress<GameBoxReadProgress>? progress,
                                bool ignoreZeroIdChunk = false)
@@ -149,7 +148,7 @@ public abstract class Node
         
         var stopwatch = Stopwatch.StartNew();
 
-        using var scope = r.Logger?.BeginScope("{name}", NodeManager.GetName(classId));
+        using var scope = r.Logger?.BeginScope("{name}", node.GetType().Name);
 
         var previousChunkId = default(uint?);
 
@@ -203,19 +202,18 @@ public abstract class Node
 
         r.AsyncAction?.OnReadNode?.Invoke(r, realClassId);
 
-        await ParseAsync(node, realClassId, r, cancellationToken);
+        await ParseAsync(node, r, cancellationToken);
 
         return node;
     }
 
     internal static async Task ParseAsync(Node node,
-                                          uint classId,
                                           GameBoxReader r,
                                           CancellationToken cancellationToken = default)
     {
         var stopwatch = Stopwatch.StartNew();
 
-        using var scope = r.Logger?.BeginScope("{name} (async)", NodeManager.GetName(classId));
+        using var scope = r.Logger?.BeginScope("{name} (async)", node.GetType().Name);
 
         cancellationToken.ThrowIfCancellationRequested();
 
@@ -458,13 +456,13 @@ public abstract class Node
         {
             if (chunkAttributes.AutoReadWrite)
             {
-                await WriteChunkWithReadWriteAsync(node, (IReadableWritableChunk)chunk, gbxrw, cancellationToken);
-            }
-            else
-            {
                 var unknown = new GameBoxWriter(chunk.Unknown);
                 var unknownData = r.ReadUntilFacade().ToArray();
                 unknown.Write(unknownData);
+            }
+            else
+            {
+                await WriteChunkWithReadWriteAsync(node, (IReadableWritableChunk)chunk, gbxrw, cancellationToken);
             }
         }
         catch (EndOfStreamException) // May not be needed

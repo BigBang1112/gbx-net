@@ -14,24 +14,31 @@
     var skippableChunk = Chunk as ISkippableChunk;
     var discovered = skippableChunk is null || skippableChunk.Discovered;
     var chunkType = Chunk.GetType();
-    
-    var hasAttributes = NodeManager.ChunkAttributesById.TryGetValue(Chunk.Id, out var atts);
+
+    var atts = default(NodeManager.ChunkAttributes);
 
     string boxClass;
 
     if (typeof(IHeaderChunk).IsAssignableFrom(chunkType))
     {
+        _ = NodeManager.HeaderChunkAttributesById.TryGetValue(Chunk.Id, out atts);
+        
         boxClass = "header-chunk";
-    }
-    else if (typeof(ISkippableChunk).IsAssignableFrom(chunkType))
-    {
-        boxClass = "body-skippable-chunk";
     }
     else
     {
-        boxClass = "body-chunk";
+        _ = NodeManager.ChunkAttributesById.TryGetValue(Chunk.Id, out atts);
+
+        if (typeof(ISkippableChunk).IsAssignableFrom(chunkType))
+        {
+            boxClass = "body-skippable-chunk";
+        }
+        else
+        {
+            boxClass = "body-chunk";
+        }
     }
-    
+
     var chunkId = Chunk.Id & 0xFFF;
     var isSameBaseId = true;
 }
@@ -42,7 +49,7 @@
         @onmouseover="() => over = true"
         @onmouseout="() => over = false">
 
-        @if (!hasAttributes && chunkType.IsGenericType)
+        @if (atts is not null && chunkType.IsGenericType)
         {
             var classType = chunkType.GetGenericArguments()[0];
             var name = classType.Name;
@@ -74,12 +81,12 @@
             <span style="margin-left:0.3rem;font-family: Source Code Pro;">v@(chunkVersionable.Version)</span>
         }
 
-        @if (!string.IsNullOrWhiteSpace(atts.Description))
+        @if (!string.IsNullOrWhiteSpace(atts?.Description))
         {
             <span style="margin-left:0.3rem">(@atts.Description)</span>
         }
         
-        @if (!hasAttributes)
+        @if (atts is null)
         {
             <span style="margin-left:0.3rem;color:#FFB70F">(UNKNOWN)</span>
         }
@@ -89,7 +96,7 @@
 
     @if (OpenChunkService.OpenedChunks.Contains(chunkType))
     {
-        if (!hasAttributes)
+        if (atts is null)
         {
             // nastavení unknown chunků
         }

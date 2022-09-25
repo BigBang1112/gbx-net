@@ -31,7 +31,9 @@
 
     @foreach (var chunkType in chunksPossToAdd)
     {
-        if (!NodeManager.ChunkIdsByType.TryGetValue(chunkType, out uint chunkId) || !NodeManager.ChunkAttributesById.TryGetValue(chunkId, out var atts))
+        if (!NodeManager.ChunkIdsByType.TryGetValue(chunkType, out uint chunkId)
+         || !NodeManager.ChunkAttributesById.TryGetValue(chunkId, out var atts)
+         || !NodeManager.HeaderChunkAttributesById.TryGetValue(chunkId, out atts))
         {
             continue;
         }
