@@ -222,6 +222,8 @@ public class ObjFileExporter : IModelExporter, IDisposable
 
     private void ExportRecurse(CPlugTree tree)
     {
+        var invariant = System.Globalization.CultureInfo.InvariantCulture;
+
         foreach (var t in tree.Children)
         {
             if (t is null)
@@ -261,7 +263,10 @@ public class ObjFileExporter : IModelExporter, IDisposable
 
         foreach (var v in indexed.Vertices)
         {
-            objWriter.WriteLine("v {0} {1} {2}", v.Position.X, v.Position.Y, v.Position.Z);
+            objWriter.WriteLine("v {0} {1} {2}",
+                v.Position.X.ToString(invariant),
+                v.Position.Y.ToString(invariant),
+                v.Position.Z.ToString(invariant));
             //objNormalWriter.WriteLine("vn {0} {1} {2}", vertex.U01.X, vertex.U01.Y, vertex.U01.Z);
         }
 
@@ -273,7 +278,9 @@ public class ObjFileExporter : IModelExporter, IDisposable
             {
                 foreach (var uv in texCoords)
                 {
-                    objUvWriter.WriteLine("vt {0} {1}", uv.X, uv.Y);
+                    objUvWriter.WriteLine("vt {0} {1}",
+                        uv.X.ToString(invariant),
+                        uv.Y.ToString(invariant));
                 }
             }
         }
@@ -343,10 +350,7 @@ public class ObjFileExporter : IModelExporter, IDisposable
 
         var diffuse = textures.FirstOrDefault(x => x.Name == "Diffuse" || x.Name == "Blend3" || x.Name.StartsWith("Soil"))?.Bitmap;
 
-        if (diffuse is null)
-        {
-            diffuse = textures.FirstOrDefault()?.Bitmap;
-        }
+        diffuse ??= textures.FirstOrDefault()?.Bitmap;
 
         if (diffuse is null)
         {
