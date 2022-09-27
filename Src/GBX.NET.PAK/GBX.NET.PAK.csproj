@@ -11,6 +11,7 @@
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		
 		<Version>1.1.0</Version>
 		<PackageReleaseNotes></PackageReleaseNotes>
