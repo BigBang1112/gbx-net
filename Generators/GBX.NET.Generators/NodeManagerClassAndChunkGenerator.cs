@@ -1,7 +1,6 @@
 ﻿using GBX.NET.Generators.Extensions;
 using Microsoft.CodeAnalysis;
 using System.Text;
-using static GBX.NET.Generators.NodeManagerClassAndChunkGenerator;
 
 namespace GBX.NET.Generators;
 
@@ -39,182 +38,53 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
 
         GenerateGetClassTypeById(engineTypes, builder, engineTypeDetailedList);
 
-        builder.AppendLine();
-
-        GenerateClassIdsByType(builder, engineTypeDetailedList);
-
-        builder.AppendLine();
-
-        GenerateGetGbxExtensions(builder, engineTypeDetailedList);
-
-        builder.AppendLine();
-
-        GenerateGetChunkTypeById(builder, engineTypeDetailedList);
-
-        builder.AppendLine();
-
-        GenerateChunkIdsByType(builder, engineTypeDetailedList);
-
-        builder.AppendLine();
-
-        GemerateGetHeaderChunkTypeById(builder, engineTypeDetailedList);
-
-        builder.AppendLine();
-        
-        GenerateWritingNotSupportedClassTypes(builder, engineTypeDetailedList);
-
-        builder.AppendLine();
-        
-        builder.AppendLine("    public sealed record ChunkAttributes(string Description, bool ProcessSync, bool Ignore, bool AutoReadWrite);");
-        builder.AppendLine();
-        builder.AppendLine("    public static IReadOnlyDictionary<uint, ChunkAttributes> ChunkAttributesById { get; } = new Dictionary<uint, ChunkAttributes>");
-        builder.AppendLine("    {");
-
-        foreach (var engineType in engineTypeDetailedList)
+        foreach (var generator in Generate(builder))
         {
-            foreach (var chunkType in engineType.ChunkTypes)
-            {
-                if (chunkType.IsHeaderChunk)
-                {
-                    continue;
-                }
-
-                builder.Append("        { ");
-                builder.Append(chunkType.ChunkId);
-                builder.Append(", ");
-                GenerateChunkAttributesCtor(builder, chunkType);
-                builder.AppendLine(" },");
-            }
+            builder.AppendLine();
+            generator(builder, engineTypeDetailedList);
         }
 
-        builder.AppendLine("    };");
+        builder.AppendLine("}");
+
+        context.AddSource("NodeManager.ClassAndChunk.g.cs", builder.ToString());
+    }
+
+    private static IEnumerable<Action<StringBuilder, IEnumerable<EngineType>>> Generate(StringBuilder builder)
+    {
+        yield return GenerateGetGbxExtensions;
+        yield return GenerateGetChunkTypeById;
+        yield return GemerateGetHeaderChunkTypeById;
+        yield return GenerateGetNewChunk;
+        yield return GenerateGetNewNode;
+        yield return GenerateGetNewHeaderChunk;
+        yield return GenerateIsSkippableChunk;
+        yield return GenerateIsAsyncChunk;
+        yield return GenerateIsReadAsyncChunk;
+        yield return GenerateIsWriteAsyncChunk;
+        yield return GenerateIsReadWriteAsyncChunk;
 
         builder.AppendLine();
+        builder.AppendLine("    static NodeManager()");
+        builder.AppendLine("    {");
 
-        builder.AppendLine("    public static IReadOnlyDictionary<uint, ChunkAttributes> HeaderChunkAttributesById { get; } = new Dictionary<uint, ChunkAttributes>");
+        yield return GenerateClassIdsByType;
+        yield return GenerateChunkIdsByType;
+        yield return GenerateWritingNotSupportedClassTypes;
+        yield return GenerateChunkAttributesById;
+        yield return GenerateHeaderChunkAttributesById;
+
+        builder.AppendLine("    }");
+    }
+
+    private static void GenerateIsReadWriteAsyncChunk(StringBuilder builder, IEnumerable<EngineType> engineTypeDetailedList)
+    {
+        builder.AppendLine("    public static partial bool IsReadWriteAsyncChunk(uint chunkId) => chunkId switch");
         builder.AppendLine("    {");
 
         foreach (var engineType in engineTypeDetailedList)
         {
-            foreach (var chunkType in engineType.ChunkTypes)
+            foreach (var chunkType in engineType.ChunkTypes.Where(x => x.OverridesReadWriteAsync))
             {
-                if (!chunkType.IsHeaderChunk)
-                {
-                    continue;
-                }
-
-                builder.Append("        { ");
-                builder.Append(chunkType.ChunkId);
-                builder.Append(", ");
-                GenerateChunkAttributesCtor(builder, chunkType);
-                builder.AppendLine(" },");
-            }
-        }
-
-        builder.AppendLine("    };");
-
-        builder.AppendLine();
-
-        builder.AppendLine("    public static Chunk? GetNewChunk(uint chunkId) => chunkId switch");
-        builder.AppendLine("    {");
-
-        foreach (var engineType in engineTypeDetailedList)
-        {
-            foreach (var chunkType in engineType.ChunkTypes)
-            {
-                if (chunkType.IsHeaderChunk)
-                {
-                    continue;
-                }
-
-                builder.Append("        ");
-                builder.Append(chunkType.ChunkId);
-                builder.Append(" => new ");
-                builder.Append(engineType.TypeSymbol.Name);
-                builder.Append('.');
-                builder.Append(chunkType.TypeSymbol.Name);
-                builder.AppendLine("(),");
-            }
-        }
-
-        builder.AppendLine("        _ => null");
-        builder.AppendLine("    };");
-
-        builder.AppendLine();
-
-        builder.AppendLine("    public static Node? GetNewNode(uint classId) => classId switch");
-        builder.AppendLine("    {");
-
-        foreach (var engineType in engineTypeDetailedList)
-        {
-            if (engineType.TypeSymbol.IsAbstract)
-            {
-                continue;
-            }
-
-            builder.Append("        ");
-            builder.Append(engineType.ClassId);
-            builder.Append(" => new ");
-            builder.Append(engineType.TypeSymbol.Name);
-            builder.AppendLine("(),");
-
-            if (engineType.MoreClassIds is not null)
-            {
-                foreach (var id in engineType.MoreClassIds)
-                {
-                    builder.Append("        ");
-                    builder.Append(id);
-                    builder.Append(" => new ");
-                    builder.Append(engineType.TypeSymbol.Name);
-                    builder.AppendLine("(),");
-                }
-            }
-        }
-
-        builder.AppendLine("        _ => null");
-        builder.AppendLine("    };");
-
-        builder.AppendLine();
-
-        builder.AppendLine("    public static IHeaderChunk? GetNewHeaderChunk(uint chunkId) => chunkId switch");
-        builder.AppendLine("    {");
-
-        foreach (var engineType in engineTypeDetailedList)
-        {
-            foreach (var chunkType in engineType.ChunkTypes)
-            {
-                if (!chunkType.IsHeaderChunk)
-                {
-                    continue;
-                }
-
-                builder.Append("        ");
-                builder.Append(chunkType.ChunkId);
-                builder.Append(" => new ");
-                builder.Append(engineType.TypeSymbol.Name);
-                builder.Append('.');
-                builder.Append(chunkType.TypeSymbol.Name);
-                builder.AppendLine("(),");
-            }
-        }
-
-        builder.AppendLine("        _ => null");
-        builder.AppendLine("    };");
-
-        builder.AppendLine();
-
-        builder.AppendLine("    public static bool IsSkippableChunk(uint chunkId) => chunkId switch");
-        builder.AppendLine("    {");
-
-        foreach (var engineType in engineTypeDetailedList)
-        {
-            foreach (var chunkType in engineType.ChunkTypes)
-            {
-                if (!chunkType.IsSkippableChunk)
-                {
-                    continue;
-                }
-
                 builder.Append("        ");
                 builder.Append(chunkType.ChunkId);
                 builder.AppendLine(" => true,");
@@ -223,21 +93,17 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
 
         builder.AppendLine("        _ => false");
         builder.AppendLine("    };");
+    }
 
-        builder.AppendLine();
-
-        builder.AppendLine("    public static bool IsAsyncChunk(uint chunkId) => chunkId switch");
+    private static void GenerateIsWriteAsyncChunk(StringBuilder builder, IEnumerable<EngineType> engineTypeDetailedList)
+    {
+        builder.AppendLine("    public static partial bool IsWriteAsyncChunk(uint chunkId) => chunkId switch");
         builder.AppendLine("    {");
 
         foreach (var engineType in engineTypeDetailedList)
         {
-            foreach (var chunkType in engineType.ChunkTypes)
+            foreach (var chunkType in engineType.ChunkTypes.Where(x => x.OverridesWriteAsync))
             {
-                if (!chunkType.OverridesReadAsync && !chunkType.OverridesWriteAsync && !chunkType.OverridesReadWriteAsync)
-                {
-                    continue;
-                }
-
                 builder.Append("        ");
                 builder.Append(chunkType.ChunkId);
                 builder.AppendLine(" => true,");
@@ -246,10 +112,11 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
 
         builder.AppendLine("        _ => false");
         builder.AppendLine("    };");
+    }
 
-        builder.AppendLine();
-
-        builder.AppendLine("    public static bool IsReadAsyncChunk(uint chunkId) => chunkId switch");
+    private static void GenerateIsReadAsyncChunk(StringBuilder builder, IEnumerable<EngineType> engineTypeDetailedList)
+    {
+        builder.AppendLine("    public static partial bool IsReadAsyncChunk(uint chunkId) => chunkId switch");
         builder.AppendLine("    {");
 
         foreach (var engineType in engineTypeDetailedList)
@@ -269,16 +136,22 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
 
         builder.AppendLine("        _ => false");
         builder.AppendLine("    };");
+    }
 
-        builder.AppendLine();
-
-        builder.AppendLine("    public static bool IsWriteAsyncChunk(uint chunkId) => chunkId switch");
+    private static void GenerateIsAsyncChunk(StringBuilder builder, IEnumerable<EngineType> engineTypeDetailedList)
+    {
+        builder.AppendLine("    public static partial bool IsAsyncChunk(uint chunkId) => chunkId switch");
         builder.AppendLine("    {");
 
         foreach (var engineType in engineTypeDetailedList)
         {
-            foreach (var chunkType in engineType.ChunkTypes.Where(x => x.OverridesWriteAsync))
+            foreach (var chunkType in engineType.ChunkTypes)
             {
+                if (!chunkType.OverridesReadAsync && !chunkType.OverridesWriteAsync && !chunkType.OverridesReadWriteAsync)
+                {
+                    continue;
+                }
+
                 builder.Append("        ");
                 builder.Append(chunkType.ChunkId);
                 builder.AppendLine(" => true,");
@@ -287,16 +160,22 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
 
         builder.AppendLine("        _ => false");
         builder.AppendLine("    };");
-        
-        builder.AppendLine();
+    }
 
-        builder.AppendLine("    public static bool IsReadWriteAsyncChunk(uint chunkId) => chunkId switch");
+    private static void GenerateIsSkippableChunk(StringBuilder builder, IEnumerable<EngineType> engineTypeDetailedList)
+    {
+        builder.AppendLine("    public static partial bool IsSkippableChunk(uint chunkId) => chunkId switch");
         builder.AppendLine("    {");
 
         foreach (var engineType in engineTypeDetailedList)
         {
-            foreach (var chunkType in engineType.ChunkTypes.Where(x => x.OverridesReadWriteAsync))
+            foreach (var chunkType in engineType.ChunkTypes)
             {
+                if (!chunkType.IsSkippableChunk)
+                {
+                    continue;
+                }
+
                 builder.Append("        ");
                 builder.Append(chunkType.ChunkId);
                 builder.AppendLine(" => true,");
@@ -305,10 +184,147 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
 
         builder.AppendLine("        _ => false");
         builder.AppendLine("    };");
-        
-        builder.AppendLine("}");
+    }
 
-        context.AddSource("NodeManager.ClassAndChunk.g.cs", builder.ToString());
+    private static void GenerateGetNewHeaderChunk(StringBuilder builder, IEnumerable<EngineType> engineTypeDetailedList)
+    {
+        builder.AppendLine("    public static partial IHeaderChunk? GetNewHeaderChunk(uint chunkId) => chunkId switch");
+        builder.AppendLine("    {");
+
+        foreach (var engineType in engineTypeDetailedList)
+        {
+            foreach (var chunkType in engineType.ChunkTypes)
+            {
+                if (!chunkType.IsHeaderChunk)
+                {
+                    continue;
+                }
+
+                builder.Append("        ");
+                builder.Append(chunkType.ChunkId);
+                builder.Append(" => new ");
+                builder.Append(engineType.TypeSymbol.Name);
+                builder.Append('.');
+                builder.Append(chunkType.TypeSymbol.Name);
+                builder.AppendLine("(),");
+            }
+        }
+
+        builder.AppendLine("        _ => null");
+        builder.AppendLine("    };");
+    }
+
+    private static void GenerateGetNewNode(StringBuilder builder, IEnumerable<EngineType> engineTypeDetailedList)
+    {
+        builder.AppendLine("    public static partial Node? GetNewNode(uint classId) => classId switch");
+        builder.AppendLine("    {");
+
+        foreach (var engineType in engineTypeDetailedList)
+        {
+            if (engineType.TypeSymbol.IsAbstract)
+            {
+                continue;
+            }
+
+            builder.Append("        ");
+            builder.Append(engineType.ClassId);
+            builder.Append(" => new ");
+            builder.Append(engineType.TypeSymbol.Name);
+            builder.AppendLine("(),");
+            
+            if (engineType.MoreClassIds is not null)
+            {
+                foreach (var id in engineType.MoreClassIds)
+                {
+                    builder.Append("        ");
+                    builder.Append(id);
+                    builder.Append(" => new ");
+                    builder.Append(engineType.TypeSymbol.Name);
+                    builder.AppendLine("(),");
+                }
+            }
+        }
+
+        builder.AppendLine("        _ => null");
+        builder.AppendLine("    };");
+    }
+
+    private static void GenerateGetNewChunk(StringBuilder builder, IEnumerable<EngineType> engineTypeDetailedList)
+    {
+        builder.AppendLine("    public static partial Chunk? GetNewChunk(uint chunkId) => chunkId switch");
+        builder.AppendLine("    {");
+
+        foreach (var engineType in engineTypeDetailedList)
+        {
+            foreach (var chunkType in engineType.ChunkTypes)
+            {
+                if (chunkType.IsHeaderChunk)
+                {
+                    continue;
+                }
+
+                builder.Append("        ");
+                builder.Append(chunkType.ChunkId);
+                builder.Append(" => new ");
+                builder.Append(engineType.TypeSymbol.Name);
+                builder.Append('.');
+                builder.Append(chunkType.TypeSymbol.Name);
+                builder.AppendLine("(),");
+            }
+        }
+
+        builder.AppendLine("        _ => null");
+        builder.AppendLine("    };");
+    }
+
+    private static void GenerateHeaderChunkAttributesById(StringBuilder builder, IEnumerable<EngineType> engineTypeDetailedList)
+    {
+        builder.AppendLine("        HeaderChunkAttributesById = new Dictionary<uint, ChunkAttributes>");
+        builder.AppendLine("        {");
+
+        foreach (var engineType in engineTypeDetailedList)
+        {
+            foreach (var chunkType in engineType.ChunkTypes)
+            {
+                if (!chunkType.IsHeaderChunk)
+                {
+                    continue;
+                }
+
+                builder.Append("            { ");
+                builder.Append(chunkType.ChunkId);
+                builder.Append(", ");
+                GenerateChunkAttributesCtor(builder, chunkType);
+                builder.AppendLine(" },");
+            }
+        }
+
+        builder.AppendLine("        };");
+    }
+
+    private static void GenerateChunkAttributesById(StringBuilder builder, IEnumerable<EngineType> engineTypeDetailedList)
+    {
+        builder.AppendLine("        ChunkAttributesById = new Dictionary<uint, ChunkAttributes>");
+        builder.AppendLine("        {");
+
+        foreach (var engineType in engineTypeDetailedList)
+        {
+            foreach (var chunkType in engineType.ChunkTypes)
+            {
+                if (chunkType.IsHeaderChunk)
+                {
+                    continue;
+                }
+
+                builder.Append("            { ");
+                builder.Append(chunkType.ChunkId);
+                builder.Append(", ");
+                GenerateChunkAttributesCtor(builder, chunkType);
+                builder.AppendLine(" },");
+            }
+        }
+
+        builder.AppendLine("        };");
     }
 
     private static void GenerateChunkAttributesCtor(StringBuilder builder, ChunkType chunkType)
@@ -324,10 +340,10 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
         builder.Append(')');
     }
 
-    private static void GenerateWritingNotSupportedClassTypes(StringBuilder builder, List<EngineType> engineTypeDetailedList)
+    private static void GenerateWritingNotSupportedClassTypes(StringBuilder builder, IEnumerable<EngineType> engineTypeDetailedList)
     {
-        builder.AppendLine("    public static IReadOnlyCollection<Type> WritingNotSupportedClassTypes { get; } = new HashSet<Type>");
-        builder.AppendLine("    {");
+        builder.AppendLine("        WritingNotSupportedClassTypes = new HashSet<Type>");
+        builder.AppendLine("        {");
 
         foreach (var engineType in engineTypeDetailedList)
         {
@@ -336,17 +352,17 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
                 continue;
             }
 
-            builder.Append("        typeof(");
+            builder.Append("            typeof(");
             builder.Append(engineType.TypeSymbol.Name);
             builder.AppendLine("),");
         }
 
-        builder.AppendLine("    };");
+        builder.AppendLine("        };");
     }
 
-    private static void GemerateGetHeaderChunkTypeById(StringBuilder builder, List<EngineType> engineTypeDetailedList)
+    private static void GemerateGetHeaderChunkTypeById(StringBuilder builder, IEnumerable<EngineType> engineTypeDetailedList)
     {
-        builder.AppendLine("    public static Type? GetHeaderChunkTypeById(uint chunkId) => chunkId switch");
+        builder.AppendLine("    public static partial Type? GetHeaderChunkTypeById(uint chunkId) => chunkId switch");
         builder.AppendLine("    {");
 
         foreach (var engineType in engineTypeDetailedList)
@@ -372,16 +388,16 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
         builder.AppendLine("    };");
     }
 
-    private static void GenerateChunkIdsByType(StringBuilder builder, List<EngineType> engineTypeDetailedList)
+    private static void GenerateChunkIdsByType(StringBuilder builder, IEnumerable<EngineType> engineTypeDetailedList)
     {
-        builder.AppendLine("    public static IReadOnlyDictionary<Type, uint> ChunkIdsByType { get; } = new Dictionary<Type, uint>");
-        builder.AppendLine("    {");
+        builder.AppendLine("        ChunkIdsByType = new Dictionary<Type, uint>");
+        builder.AppendLine("        {");
 
         foreach (var engineType in engineTypeDetailedList)
         {
             foreach (var chunkType in engineType.ChunkTypes)
             {
-                builder.Append("        { typeof(");
+                builder.Append("            { typeof(");
                 builder.Append(engineType.TypeSymbol.Name);
                 builder.Append('.');
                 builder.Append(chunkType.TypeSymbol.Name);
@@ -391,12 +407,12 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
             }
         }
 
-        builder.AppendLine("    };");
+        builder.AppendLine("        };");
     }
 
-    private static void GenerateGetChunkTypeById(StringBuilder builder, List<EngineType> engineTypeDetailedList)
+    private static void GenerateGetChunkTypeById(StringBuilder builder, IEnumerable<EngineType> engineTypeDetailedList)
     {
-        builder.AppendLine("    public static Type? GetChunkTypeById(uint chunkId) => chunkId switch");
+        builder.AppendLine("    public static partial Type? GetChunkTypeById(uint chunkId) => chunkId switch");
         builder.AppendLine("    {");
 
         foreach (var engineType in engineTypeDetailedList)
@@ -496,7 +512,7 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
                             break;
                     }
                 }
-                
+
                 engineType.ChunkTypes.Add(new(
                     chunkTypeSymbol,
                     chunkId.Value,
@@ -531,7 +547,7 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
 
     private static void GenerateGetClassTypeById(List<INamedTypeSymbol> engineTypes, StringBuilder builder, List<EngineType> engineTypeDetailedList)
     {
-        builder.AppendLine("    public static Type? GetClassTypeById(uint classId) => classId switch");
+        builder.AppendLine("    public static partial Type? GetClassTypeById(uint classId) => classId switch");
         builder.AppendLine("    {");
 
         foreach (var engineType in engineTypes)
@@ -601,29 +617,29 @@ public class NodeManagerClassAndChunkGenerator : SourceGenerator
         builder.AppendLine("    };");
     }
 
-    private static void GenerateClassIdsByType(StringBuilder builder, List<EngineType> engineTypeDetailedList)
+    private static void GenerateClassIdsByType(StringBuilder builder, IEnumerable<EngineType> engineTypeDetailedList)
     {
-        builder.AppendLine("    public static IReadOnlyDictionary<Type, uint> ClassIdsByType { get; } = new Dictionary<Type, uint>");
-        builder.AppendLine("    {");
+        builder.AppendLine("        ClassIdsByType = new Dictionary<Type, uint>");
+        builder.AppendLine("        {");
 
         foreach (var engineTypeDetailed in engineTypeDetailedList)
         {
             var engineType = engineTypeDetailed.TypeSymbol;
             var id = engineTypeDetailed.ClassId;
 
-            builder.Append("        { typeof(");
+            builder.Append("            { typeof(");
             builder.Append(engineType.Name);
             builder.Append("), ");
             builder.Append(id);
             builder.AppendLine(" },");
         }
 
-        builder.AppendLine("    };");
+        builder.AppendLine("        };");
     }
 
-    private static void GenerateGetGbxExtensions(StringBuilder builder, List<EngineType> engineTypeDetailedList)
+    private static void GenerateGetGbxExtensions(StringBuilder builder, IEnumerable<EngineType> engineTypeDetailedList)
     {
-        builder.AppendLine("    public static IEnumerable<string> GetGbxExtensions(uint classId)");
+        builder.AppendLine("    public static partial IEnumerable<string> GetGbxExtensions(uint classId)");
         builder.AppendLine("    {");
         builder.AppendLine("        switch (classId)");
         builder.AppendLine("        {");
