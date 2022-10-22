@@ -122,6 +122,13 @@ public partial class CGameCtnGhost
                         }
 
                         var isHorn = bits.Get(position);
+                        var isMouse = isHorn && bits.Get(position); // mouse indicates 11 after the zero bit
+
+                        if (isMouse)
+                        {
+                            position += 31;
+                            break;
+                        }
 
                         isRespawn = !isHorn;
                         var isRespawnHorn = isRespawn && position + 7 <= bits.Count && bits.Get(position + 7);
