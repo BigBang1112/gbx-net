@@ -115,39 +115,43 @@ public partial class CGameCtnGhost
                     if (bit == 0)
                     {
                         zeroBitSet = bitSet;
-
-                        if (!zeroBitSet)
+                        
+                        if (zeroBitSet)
                         {
-                            var isHorn = bits.Get(position);
-
-                            isRespawn = !isHorn;
-                            var isRespawnHorn = isRespawn && position + 7 <= bits.Count && bits.Get(position + 7);
-
-                            if (isRespawnHorn)
-                            {
-                                horn = true;
-                            }
-                            else if (isHorn)
-                            {
-                                horn = bits.Get(position + 2);
-                            }
-
-                            position += isHorn ? 3 : 35;
-                            break;
+                            continue;
                         }
+
+                        var isHorn = bits.Get(position);
+
+                        isRespawn = !isHorn;
+                        var isRespawnHorn = isRespawn && position + 7 <= bits.Count && bits.Get(position + 7);
+
+                        if (isRespawnHorn)
+                        {
+                            horn = true;
+                        }
+                        else if (isHorn)
+                        {
+                            horn = bits.Get(position + 2);
+                        }
+
+                        position += isHorn ? 3 : 35;
+                        break;
                     }
                     else if (bit == 1 && bitSet && zeroBitSet)
                     {
+                        somethingHasChanged = false;
+                        
                         var goToNextTick = bits.Get(position);
 
                         if (goToNextTick)
                         {
                             position++;
+                            break; // nothing has changed
                         }
 
-                        somethingHasChanged = false;
-
-                        break; // nothing has changed
+                        bit = -1; // This line makes the different events merge into the same tick
+                        continue;
                     }
                     else if (bit >= 2 && bit <= 9)
                     {
@@ -168,6 +172,7 @@ public partial class CGameCtnGhost
                     }
                     else if (bit == 12 && !bitSet)
                     {
+                        bit = -1; // This line makes the different events merge into the same tick
                         position--;
                     }
                 }
