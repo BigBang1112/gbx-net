@@ -245,6 +245,7 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
         public int U01;
         public int U02;
         public int U03;
+        public int U04;
 
         public int Version { get => version; set => version = value; }
 
@@ -258,12 +259,14 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
 
             if (version >= 2)
             {
-                rw.Int32(ref U02);
+                rw.Int32(ref U02); // HelperSolidFid?
                 rw.Int32(ref U03); // FacultativeHelperSolidFid?
-            }
 
-            // HelperSolidFid?
-            // FacultativeHelperSolidFid?
+                if (version >= 3)
+                {
+                    rw.Int32(ref U04);
+                }
+            }
         }
     }
 
@@ -275,8 +278,8 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
         public CMwNod? U01;
         public int U02;
         public CMwNod? U03;
-        public int U04;
-        public int U05;
+        public CMwNod? U04;
+        public CMwNod? U05;
 
         public int Version { get => version; set => version = value; }
 
@@ -291,6 +294,12 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
 
             rw.NodeRef<CMwNod>(ref n.screenInteractionTriggerSolid, ref n.screenInteractionTriggerSolidFile);
             rw.NodeRef<CMwNod>(ref n.waypointTriggerSolid, ref n.waypointTriggerSolidFile);
+
+            if (version >= 11)
+            {
+                rw.NodeRef(ref U04);
+                rw.NodeRef(ref U05);
+            }
 
             if (version < 9)
             {
@@ -324,12 +333,6 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
                                     if (version >= 10)
                                     {
                                         rw.ArrayNode<CPlugEntitySpawner>(ref n.entitySpawners);
-
-                                        if (version >= 11)
-                                        {
-                                            rw.Int32(ref U04);
-                                            rw.Int32(ref U05);
-                                        }
                                     }
                                 }
                             }
@@ -344,9 +347,6 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
     public class Chunk0315B007 : Chunk<CGameCtnBlockInfoVariant>, IVersionable
     {
         private int version;
-
-        public int U01;
-        public int U02;
 
         public int Version { get => version; set => version = value; }
 
@@ -446,7 +446,11 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
             else
             {
                 rw.NodeRef<CGameObjectPhyCompoundModel>(ref n.compoundModel);
-                rw.Iso4(ref n.compoundLoc);
+
+                if (version < 3) // Perhaps?
+                {
+                    rw.Iso4(ref n.compoundLoc);
+                }
             }
         }
     }
@@ -468,7 +472,19 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
 
             if (U01 > 0)
             {
-                throw new Exception("U01 > 0");
+                rw.Int32();
+                rw.Array<Int3>();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+
+                if (version > 0)
+                {
+                    var id = rw.Id();
+                }
             } 
         }
     }
@@ -494,6 +510,23 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
             }
         }
     }
+
+    #region 0x00D chunk
+
+    /// <summary>
+    /// CGameCtnBlockInfoVariant 0x00D chunk
+    /// </summary>
+    [Chunk(0x0315B00D)]
+    public class Chunk0315B00D : Chunk<CGameCtnBlockInfoVariant>
+    {
+        public override void ReadWrite(CGameCtnBlockInfoVariant n, GameBoxReaderWriter rw)
+        {
+            rw.Int32();
+            rw.Int32();
+        }
+    }
+
+    #endregion
 
     public class PlacedPillarParam : IReadableWritable
     {

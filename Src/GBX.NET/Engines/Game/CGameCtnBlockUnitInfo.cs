@@ -258,7 +258,7 @@ public class CGameCtnBlockUnitInfo : CMwNod
 
         public override void Read(CGameCtnBlockUnitInfo n, GameBoxReader r)
         {
-            U01 = new ExternalNode<CMwNod>[n.clips?.Length ?? 0]; // or pylons?
+            U01 = new ExternalNode<CMwNod>[4]; // or pylons?
 
             for (var i = 0; i < U01.Length; i++)
             {
@@ -394,6 +394,59 @@ public class CGameCtnBlockUnitInfo : CMwNod
             rw.NodeRef<CGameCtnBlockInfoClip>(ref n.topClip, ref n.topClipFile);
             rw.EnumInt32<Direction>(ref n.bottomClipDir);
             rw.EnumInt32<Direction>(ref n.topClipDir);
+        }
+    }
+
+    #endregion
+
+    #region 0x00C chunk
+
+    /// <summary>
+    /// CGameCtnBlockUnitInfo 0x00C chunk
+    /// </summary>
+    [Chunk(0x0303600C)]
+    public class Chunk0303600C : Chunk<CGameCtnBlockUnitInfo>, IVersionable
+    {
+        private int version;
+
+        public int Version { get => version; set => version = value; }
+
+        public Node?[]? Clips;
+        public short? U01;
+        public short? U02;
+        public int? U03;
+        public int? U04;
+
+        public override void Read(CGameCtnBlockUnitInfo n, GameBoxReader r)
+        {
+            var version = r.ReadInt32();
+
+            if (version == 0)
+            {
+                //rw.Int16();
+                throw new ChunkVersionNotSupportedException(version);
+            }
+
+            var clipCountBits = r.ReadInt32();
+            var clipCount = (clipCountBits >> 9 & 7)
+                + (clipCountBits >> 15 & 7)
+                + (clipCountBits >> 12 & 7)
+                + (clipCountBits >> 6 & 7)
+                + (clipCountBits >> 3 & 7)
+                + (clipCountBits & 7);
+            
+            var clips = r.ReadArray(clipCount, r => r.ReadNodeRef());
+
+            if (version >= 2)
+            {
+                U01 = r.ReadInt16();
+                U02 = r.ReadInt16();
+            }
+            else
+            {
+                U03 = r.ReadInt32();
+                U04 = r.ReadInt32();
+            }
         }
     }
 

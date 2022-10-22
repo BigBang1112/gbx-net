@@ -143,7 +143,32 @@ public class CGameCtnBlockInfoMobil : CMwNod
 
                                         if (version >= 16)
                                         {
-                                            throw new ChunkVersionNotSupportedException(version);
+                                            rw.Int32(); // node ref (file likely)
+
+                                            if (version >= 17)
+                                            {
+                                                rw.Int32(); // node ref
+
+                                                if (version >= 18)
+                                                {
+                                                    rw.Int32(); // node ref (file likely)
+
+                                                    rw.Byte();
+                                                    rw.Int32();
+                                                    rw.Int32();
+                                                    rw.Int32();
+                                                    rw.Int32();
+                                                    rw.Int32();
+                                                    rw.Int32();
+                                                    rw.Int32();
+                                                    rw.Int32();
+
+                                                    if (version >= 24)
+                                                    {
+                                                        throw new ChunkVersionNotSupportedException(version);
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
