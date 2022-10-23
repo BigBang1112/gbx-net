@@ -470,8 +470,24 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
             rw.Int32(ref version);
             rw.NodeRef<CPlugSound>(ref n.sound1, ref n.sound1File);
             rw.NodeRef<CPlugSound>(ref n.sound2, ref n.sound2File);
-            rw.Iso4(ref n.sound1Loc);
-            rw.Iso4(ref n.sound2Loc);
+            
+            if (version < 3)
+            {
+                rw.Iso4(ref n.sound1Loc);
+                rw.Iso4(ref n.sound2Loc);
+            }
+            else
+            {
+                if (n.sound1 is not null || n.sound1File is not null)
+                {
+                    rw.Iso4(ref n.sound1Loc);
+                }
+
+                if (n.sound2 is not null || n.sound2File is not null)
+                {
+                    rw.Iso4(ref n.sound2Loc);
+                }
+            }
         }
     }
 
@@ -510,11 +526,18 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
 
         public int Version { get => version; set => version = value; }
 
+        public byte? U01;
+
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
             rw.Boolean(ref n.isPillar, asByte: true);
             rw.EnumByte<EMultiDir>(ref n.pillarShapeMultiDir);
+
+            if (version >= 1)
+            {
+                rw.Byte(ref U01);
+            }
         }
     }
 
