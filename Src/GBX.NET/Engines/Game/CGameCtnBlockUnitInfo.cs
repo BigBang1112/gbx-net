@@ -15,8 +15,14 @@ public class CGameCtnBlockUnitInfo : CMwNod
     private GameBoxRefTable.File? bottomClipFile;
     private CGameCtnBlockInfoClip? topClip;
     private GameBoxRefTable.File? topClipFile;
-    private Direction bottomClipDir;
-    private Direction topClipDir;
+    private Direction? bottomClipDir;
+    private Direction? topClipDir;
+    private int? clipCountNorth;
+    private int? clipCountEast;
+    private int? clipCountSouth;
+    private int? clipCountWest;
+    private int? clipCountTop;
+    private int? clipCountBottom;
 
     #endregion
 
@@ -78,11 +84,35 @@ public class CGameCtnBlockUnitInfo : CMwNod
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk0303600B))]
-    public Direction BottomClipDir { get => bottomClipDir; set => bottomClipDir = value; }
+    public Direction? BottomClipDir { get => bottomClipDir; set => bottomClipDir = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk0303600B))]
-    public Direction TopClipDir { get => topClipDir; set => topClipDir = value; }
+    public Direction? TopClipDir { get => topClipDir; set => topClipDir = value; }
+
+    [NodeMember(ExactName = "ClipCount_North")]
+    [AppliedWithChunk(typeof(Chunk0303600C))]
+    public int? ClipCountNorth { get => clipCountNorth; set => clipCountNorth = value; }
+    
+    [NodeMember(ExactName = "ClipCount_East")]
+    [AppliedWithChunk(typeof(Chunk0303600C))]
+    public int? ClipCountEast { get => clipCountEast; set => clipCountEast = value; }
+    
+    [NodeMember(ExactName = "ClipCount_South")]
+    [AppliedWithChunk(typeof(Chunk0303600C))]
+    public int? ClipCountSouth { get => clipCountSouth; set => clipCountSouth = value; }
+    
+    [NodeMember(ExactName = "ClipCount_West")]
+    [AppliedWithChunk(typeof(Chunk0303600C))]
+    public int? ClipCountWest { get => clipCountWest; set => clipCountWest = value; }
+    
+    [NodeMember(ExactName = "ClipCount_Top")]
+    [AppliedWithChunk(typeof(Chunk0303600C))]
+    public int? ClipCountTop { get => clipCountTop; set => clipCountTop = value; }
+    
+    [NodeMember(ExactName = "ClipCount_Bottom")]
+    [AppliedWithChunk(typeof(Chunk0303600C))]
+    public int? ClipCountBottom { get => clipCountBottom; set => clipCountBottom = value; }
 
     #endregion
 
@@ -410,8 +440,7 @@ public class CGameCtnBlockUnitInfo : CMwNod
         private int version;
 
         public int Version { get => version; set => version = value; }
-
-        public ExternalNode<CMwNod>[]? Clips;
+        
         public short? U01;
         public short? U02;
         public int? U03;
@@ -428,15 +457,23 @@ public class CGameCtnBlockUnitInfo : CMwNod
             }
 
             var clipCountBits = r.ReadInt32();
-            var clipCount = (clipCountBits >> 9 & 7)
-                + (clipCountBits >> 15 & 7)
-                + (clipCountBits >> 12 & 7)
-                + (clipCountBits >> 6 & 7)
-                + (clipCountBits >> 3 & 7)
-                + (clipCountBits & 7);
             
-            Clips = r.ReadExternalNodeArray<CMwNod>(clipCount);
+            n.clipCountNorth = clipCountBits & 7;
+            n.clipCountEast = clipCountBits >> 3 & 7;
+            n.clipCountSouth = clipCountBits >> 6 & 7;
+            n.clipCountWest = clipCountBits >> 9 & 7;
+            n.clipCountTop = clipCountBits >> 12 & 7;
+            n.clipCountBottom = clipCountBits >> 15 & 7;
 
+            var clipCount = n.clipCountNorth
+                + n.clipCountEast
+                + n.clipCountSouth
+                + n.clipCountWest
+                + n.clipCountTop
+                + n.clipCountBottom;
+            
+            n.clips = r.ReadExternalNodeArray<CGameCtnBlockInfoClip>(clipCount.GetValueOrDefault());
+            
             if (version >= 2)
             {
                 U01 = r.ReadInt16();
