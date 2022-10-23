@@ -60,6 +60,7 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
     private string? name;
     private CGameObjectPhyCompoundModel? compoundModel;
     private Iso4 compoundLoc;
+    private WaterArchive[]? waterVolumes;
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk0315B002))]
@@ -180,6 +181,10 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk0315B00A), sinceVersion: 2)] // they could be above ver. 2 but they wont be available here
     public Iso4 CompoundLoc { get => compoundLoc; set => compoundLoc = value; }
+
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0315B00B))]
+    public WaterArchive[]? WaterVolumes { get => waterVolumes; set => waterVolumes = value; }
 
     internal CGameCtnBlockInfoVariant()
     {
@@ -460,32 +465,12 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
     {
         private int version;
 
-        public int U01;
-
         public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
-            
-            rw.Int32(ref U01);
-
-            if (U01 > 0)
-            {
-                rw.Int32();
-                rw.Array<Int3>();
-                rw.Int32();
-                rw.Int32();
-                rw.Int32();
-                rw.Int32();
-                rw.Int32();
-                rw.Int32();
-
-                if (version > 0)
-                {
-                    var id = rw.Id();
-                }
-            } 
+            rw.ArrayArchive<WaterArchive>(ref n.waterVolumes, version);
         }
     }
 
@@ -563,6 +548,48 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
         {
             base.ReadWrite(rw, version);
             rw.Byte(ref u06);
+        }
+    }
+
+    public class WaterArchive : IReadableWritable
+    {
+        private (Int3, Int3)[]? u01;
+        private float u02;
+        private float u03;
+        private float u04;
+        private float u05;
+        private float u06;
+        private float u07;
+        private float u08;
+        private string? u09;
+
+        public (Int3, Int3)[]? U01 { get => u01; set => u01 = value; }
+        public float U02 { get => u02; set => u02 = value; }
+        public float U03 { get => u03; set => u03 = value; }
+        public float U04 { get => u04; set => u04 = value; }
+        public float U05 { get => u05; set => u05 = value; }
+        public float U06 { get => u06; set => u06 = value; }
+        public float U07 { get => u07; set => u07 = value; }
+        public float U08 { get => u08; set => u08 = value; }
+        public string? U09 { get => u09; set => u09 = value; }
+
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+        {
+            rw.Array<(Int3, Int3)>(ref u01,
+                r => (r.ReadInt3(), r.ReadInt3()),
+                (x, w) => { w.Write(x.Item1); w.Write(x.Item2); });
+            rw.Single(ref u02);
+            rw.Single(ref u03);
+            rw.Single(ref u04);
+            rw.Single(ref u05);
+            rw.Single(ref u06);
+            rw.Single(ref u07);
+            rw.Single(ref u08);
+
+            if (version > 0)
+            {
+                rw.Id(ref u09);
+            }
         }
     }
 }
