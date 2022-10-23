@@ -284,7 +284,9 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
         public int U02;
         public CMwNod? U03;
         public CMwNod? U04;
+        public GameBoxRefTable.File? U04file;
         public CMwNod? U05;
+        public GameBoxRefTable.File? U05file;
 
         public int Version { get => version; set => version = value; }
 
@@ -302,8 +304,8 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
 
             if (version >= 11)
             {
-                rw.NodeRef(ref U04);
-                rw.NodeRef(ref U05);
+                rw.NodeRef(ref U04, ref U04file); // WaypointTriggerShape?
+                rw.NodeRef(ref U05, ref U05file); // ScreenInteractionTriggerShape?
             }
 
             if (version < 9)
@@ -504,10 +506,13 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
     [Chunk(0x0315B00D)]
     public class Chunk0315B00D : Chunk<CGameCtnBlockInfoVariant>
     {
+        public int U01;
+        public int U02;
+
         public override void ReadWrite(CGameCtnBlockInfoVariant n, GameBoxReaderWriter rw)
         {
-            rw.Int32();
-            rw.Int32();
+            rw.Int32(ref U01);
+            rw.Int32(ref U02);
         }
     }
 
