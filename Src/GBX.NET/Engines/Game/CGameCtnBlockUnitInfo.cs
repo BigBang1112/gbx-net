@@ -411,7 +411,7 @@ public class CGameCtnBlockUnitInfo : CMwNod
 
         public int Version { get => version; set => version = value; }
 
-        public Node?[]? Clips;
+        public ExternalNode<CMwNod>[]? Clips;
         public short? U01;
         public short? U02;
         public int? U03;
@@ -435,7 +435,7 @@ public class CGameCtnBlockUnitInfo : CMwNod
                 + (clipCountBits >> 3 & 7)
                 + (clipCountBits & 7);
             
-            var clips = r.ReadArray(clipCount, r => r.ReadNodeRef());
+            Clips = r.ReadExternalNodeArray<CMwNod>(clipCount);
 
             if (version >= 2)
             {
