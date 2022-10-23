@@ -31,6 +31,11 @@ public partial class GameBox
     /// </summary>
     public static bool SeekForRawChunkData { get; set; }
 
+    /// <summary>
+    /// Solves the occasional bug with OpenPlanet extraction where the header chunks are not properly written into the Gbx, while the length of this data section is still set to a non-zero value.
+    /// </summary>
+    public static bool OpenPlanetHookExtractMode { get; set; }
+
     public Node? Node { get; private set; }
     public GameBoxBody? RawBody { get; private set; }
     public GameBoxBodyDebugger? Debugger { get; private set; }

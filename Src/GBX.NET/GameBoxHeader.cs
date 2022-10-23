@@ -163,7 +163,8 @@ public class GameBoxHeader
 
         if (version >= 6)
         {
-            userData = r.ReadBytes();
+            userData = GameBox.OpenPlanetHookExtractMode ? new byte[r.ReadInt32()] : r.ReadBytes();
+            
             r.Logger?.LogUserDataSize(userData.Length / 1024f);
         }
 
