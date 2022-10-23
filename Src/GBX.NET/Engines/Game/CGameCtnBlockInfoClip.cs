@@ -165,6 +165,8 @@ public class CGameCtnBlockInfoClip : CGameCtnBlockInfo
 
         public int Version { get => version; set => version = value; }
 
+        public byte? U01;
+
         public override void ReadWrite(CGameCtnBlockInfoClip n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
@@ -173,6 +175,11 @@ public class CGameCtnBlockInfoClip : CGameCtnBlockInfo
             if (version >= 1)
             {
                 rw.EnumInt32<EMultiDir>(ref n.topBottomMultiDir);
+
+                if (version >= 2)
+                {
+                    rw.Byte(ref U01);
+                }
             }
         }
     }
