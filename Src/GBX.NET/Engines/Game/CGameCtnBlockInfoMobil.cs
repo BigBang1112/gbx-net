@@ -81,7 +81,18 @@ public class CGameCtnBlockInfoMobil : CMwNod
         public CMwNod? U14;
         public int? U15;
         public int? U16;
-        public int[]? U17;
+        public int? U17;
+        public int? U18;
+        public int? U19;
+        public byte? U20;
+        public int? U21;
+        public int? U22;
+        public int? U23;
+        public int? U24;
+        public int? U25;
+        public int? U26;
+        public CMwNod?[]? U27;
+        public int? U28;
 
         public int Version { get => version; set => version = value; }
 
@@ -143,25 +154,25 @@ public class CGameCtnBlockInfoMobil : CMwNod
 
                                         if (version >= 16)
                                         {
-                                            rw.Int32(); // node ref (file likely)
-
+                                            rw.Int32(ref U17); // node ref (file likely)
+                                            
                                             if (version >= 17)
                                             {
-                                                rw.Int32(); // node ref
+                                                rw.Int32(ref U18); // node ref
 
                                                 if (version >= 18)
                                                 {
-                                                    rw.Int32(); // node ref (file likely)
+                                                    rw.Int32(ref U19); // node ref (file likely)
 
-                                                    rw.Byte();
-                                                    rw.Int32();
-                                                    rw.Int32();
-                                                    rw.Int32();
-                                                    rw.Int32();
-                                                    rw.Int32();
-                                                    rw.Int32();
-                                                    rw.Int32();
-                                                    rw.Int32();
+                                                    rw.Byte(ref U20);
+                                                    rw.Int32(ref U21);
+                                                    rw.Int32(ref U22);
+                                                    rw.Int32(ref U23);
+                                                    rw.Int32(ref U24);
+                                                    rw.Int32(ref U25);
+                                                    rw.Int32(ref U26);
+                                                    rw.ArrayNode<CMwNod>(ref U27);
+                                                    rw.Int32(ref U28);
 
                                                     if (version >= 24)
                                                     {

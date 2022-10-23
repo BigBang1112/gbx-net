@@ -751,6 +751,7 @@
   11E CPlugVehiclePhyModelCustom
   11F CPlugEntRecordData
   159 CPlugStaticObjectModel
+  160 CPlugPlacementPatch
 0A Scene
   000 CSceneEngine
   001 CScene
