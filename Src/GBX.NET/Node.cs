@@ -133,6 +133,11 @@ public abstract class Node
         
         node = NodeManager.GetNewNode(id);
 
+        if (node is null)
+        {
+            throw new NodeNotImplementedException(id);
+        }
+
         return classId.Value;
     }
 
