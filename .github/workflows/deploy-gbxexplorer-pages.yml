@@ -77,10 +77,20 @@ jobs:
           submodules: recursive
           
       - name: Clone wiki
-        run: git clone https://github.com/BigBang1112/gbx-net.wiki.git wiki
-          
-      - name: Copy wiki to articles
-        run: cp -r wiki/* Docs/articles
+        run: git clone https://github.com/BigBang1112/gbx-net.wiki.git Docs/wiki
+        
+      - name: Create global.json
+        uses: 1arp/create-a-file-action@0.2
+        with:
+          path: Docs
+          file: global.json
+          content: |
+            {
+              "_gitContribute": {
+                "repo": "https://github.com/BigBang1112/gbx-net",
+                "branch": "${{ github.ref_name }}"
+              }
+            }
   
       - name: Generate docs
         uses: nikeee/docfx-action@v1.0.0
