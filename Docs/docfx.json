@@ -51,7 +51,7 @@
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [
-      "default"
+      "default", "templates/DiscordFX/discordfx"
     ],
     "postProcessors": [],
     "markdownEngineName": "markdig",
