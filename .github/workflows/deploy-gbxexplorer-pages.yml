@@ -76,14 +76,11 @@ jobs:
         with:
           submodules: recursive
           
-      - name: Checkout wiki
-        uses: actions/checkout@master
-        with:
-          repository: BigBang1112/gbx-net.wiki
-          ref: refs/heads/release
+      - name: Clone wiki
+        run: git clone gbx-net.wiki.git wiki
           
       - name: Copy wiki to articles
-        run: cp -r gbx-net.wiki/* Docs/articles
+        run: cp -r wiki/* Docs/articles
   
       - name: Generate docs
         uses: nikeee/docfx-action@v1.0.0
