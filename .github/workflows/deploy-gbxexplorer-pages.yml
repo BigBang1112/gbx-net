@@ -97,7 +97,7 @@ jobs:
       - name: Generate docs
         uses: nikeee/docfx-action@v1.0.0
         with:
-          args: Docs/docfx.json --globalMetadataFiles Docs/global.json
+          args: Docs/docfx.json --globalMetadataFiles global.json
       
       - name: Copy docs to root
         run: cp -r Docs/_site docs
