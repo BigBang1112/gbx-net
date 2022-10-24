@@ -60,11 +60,12 @@ jobs:
       - name: Add .nojekyll file
         run: touch publish/wwwroot/.nojekyll
         
-      - name: Cache app
-        uses: actions/cache@v3.0.11
+      - name: Upload app artifact
+        uses: actions/upload-artifact@v3.1.0
         with:
+          name: app
           path: publish/wwwroot
-          key: gbxexplorer
+          retention-days: 1
           
   build-docs:
   
@@ -82,12 +83,13 @@ jobs:
       
       - name: Copy docs to wwwroot
         run: mkdir -p publish/wwwroot/docs && cp -r Docs/_site publish/wwwroot/docs
-        
-      - name: Cache docs
-        uses: actions/cache@v3.0.11
+
+      - name: Upload docs artifact
+        uses: actions/upload-artifact@v3.1.0
         with:
+          name: app
           path: publish/wwwroot/docs
-          key: docs
+          retention-days: 1
   
   deploy:
     needs: [build-gbxexplorer, build-docs]
@@ -99,18 +101,16 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-        
-      - name: Get app
-        uses: actions/cache@v3.0.11
+      - name: Download app artifact
+        uses: actions/download-artifact@v3.0.0
         with:
-          path: publish/wwwroot
-          key: gbxexplorer
-        
-      - name: Get docs
-        uses: actions/cache@v3.0.11
+          name: app
+          
+      - name: Download docs artifact
+        uses: actions/download-artifact@v3.0.0
         with:
-          path: publish/wwwroot/docs
-          key: docs
+          name: docs
+          path: docs
         
       - name: Setup Pages
         uses: actions/configure-pages@v2
@@ -118,7 +118,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: publish/wwwroot
+          path: .
           
       - name: Deploy to GitHub Pages
         id: deployment
