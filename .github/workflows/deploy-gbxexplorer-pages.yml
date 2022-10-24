@@ -79,7 +79,7 @@ jobs:
       - name: Clone wiki
         run: |
           git clone https://github.com/BigBang1112/gbx-net.wiki.git wiki
-          cp -r wiki Docs/wiki
+          cp -r wiki/* Docs/wiki
         
       - name: Create global.json
         uses: 1arp/create-a-file-action@0.2
@@ -97,7 +97,7 @@ jobs:
       - name: Generate docs
         uses: nikeee/docfx-action@v1.0.0
         with:
-          args: Docs/docfx.json
+          args: Docs/docfx.json --globalMetadataFiles Docs/global.json
       
       - name: Copy docs to root
         run: cp -r Docs/_site docs
