@@ -2117,12 +2117,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             var blockCenter = new Vec3();
             // Temporary center variable whose rule is to properly position blocks over size of 1x1
 
-            if (BlockInfoManager.BlockModels.TryGetValue(block.Name, out BlockModel model)) // Get quick block information if available
+            if (BlockInfoManager.BlockModels.TryGetValue(block.Name, out BlockModel? model)) // Get quick block information if available
             {
                 var blockUnits = block.IsGround ? model.Ground : model.Air;
                 // Use the block units from what the block actually pretends to be placed on
 
-                if (blockUnits.Length > 1) // Optimization for blocks that are simple 1x1 size
+                if (blockUnits?.Length > 1) // Optimization for blocks that are simple 1x1 size
                 {
                     var blockAllCoords = Array.ConvertAll(blockUnits.Select(x => x.Coord).ToArray(), x => (Int3)x); // Gets the coords in Int3 type
 
