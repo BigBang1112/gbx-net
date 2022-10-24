@@ -21,20 +21,16 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-      
+
+  build-gbxexplorer:
+  
     runs-on: ubuntu-latest
     
     steps:
-    
       - uses: actions/checkout@v3
         with:
           submodules: recursive
-          
+    
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
@@ -64,13 +60,63 @@ jobs:
       - name: Add .nojekyll file
         run: touch publish/wwwroot/.nojekyll
         
+      - name: Upload app artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: app
+          path: publish/wwwroot
+          retention-days: 1
+          
+  build-docs:
+  
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+          
+      - name: Clone wiki
+        run: git clone https://github.com/BigBang1112/gbx-net.wiki.git wiki
+          
+      - name: Copy wiki to articles
+        run: cp -r wiki/* Docs/articles
+  
       - name: Generate docs
         uses: nikeee/docfx-action@v1.0.0
         with:
           args: Docs/docfx.json
       
-      - name: Copy docs to wwwroot
-        run: cp -r Docs/_site publish/wwwroot/docs
+      - name: Copy docs to root
+        run: cp -r Docs/_site docs
+
+      - name: Upload docs artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: docs
+          path: docs
+          retention-days: 1
+  
+  deploy:
+    needs: [build-gbxexplorer, build-docs]
+  
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+      
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Download app artifact
+        uses: actions/download-artifact@v3.0.0
+        with:
+          name: app
+          
+      - name: Download docs artifact
+        uses: actions/download-artifact@v3.0.0
+        with:
+          name: docs
+          path: docs
         
       - name: Setup Pages
         uses: actions/configure-pages@v2
@@ -78,8 +124,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          # Upload entire repository
-          path: publish/wwwroot
+          path: .
           
       - name: Deploy to GitHub Pages
         id: deployment
