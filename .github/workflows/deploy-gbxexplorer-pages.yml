@@ -75,6 +75,14 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: recursive
+          
+      - name: Checkout wiki
+        uses: actions/checkout@master
+        with:
+          repository: BigBang1112/gbx-net.wiki.git
+          
+      - name: Copy wiki to articles
+        run: cp -r gbx-net.wiki/* Docs/articles
   
       - name: Generate docs
         uses: nikeee/docfx-action@v1.0.0
