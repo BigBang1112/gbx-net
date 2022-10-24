@@ -79,7 +79,8 @@ jobs:
       - name: Checkout wiki
         uses: actions/checkout@master
         with:
-          repository: BigBang1112/gbx-net.wiki.git
+          repository: BigBang1112/gbx-net.wiki
+          ref: refs/heads/release
           
       - name: Copy wiki to articles
         run: cp -r gbx-net.wiki/* Docs/articles
