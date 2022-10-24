@@ -81,14 +81,14 @@ jobs:
         with:
           args: Docs/docfx.json
       
-      - name: Copy docs to wwwroot
-        run: mkdir -p publish/wwwroot/docs && cp -r Docs/_site publish/wwwroot/docs
+      - name: Copy docs to root
+        run: cp -r Docs/_site docs
 
       - name: Upload docs artifact
         uses: actions/upload-artifact@v3.1.0
         with:
           name: docs
-          path: publish/wwwroot/docs
+          path: docs
           retention-days: 1
   
   deploy:
