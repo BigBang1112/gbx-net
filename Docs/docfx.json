@@ -47,8 +47,14 @@
         ]
       }
     ],
+    "globalMetadata": {
+      "_appTitle": "GBX.NET Documentation",
+      "_appFooter": "© 2022 Petr 'BigBang1112' Pivoňka",
+	    "_appLogoPath": "images/logo.png",
+	    "_appFaviconPath": "images/favicon.ico"
+    },
     "dest": "_site",
-    "globalMetadataFiles": [],
+    "globalMetadataFiles": ["global.json"],
     "fileMetadataFiles": [],
     "template": [
       "default", "templates/DiscordFX/discordfx"
