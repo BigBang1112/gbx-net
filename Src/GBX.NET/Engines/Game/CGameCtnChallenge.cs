@@ -4107,6 +4107,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 coord -= (1, 0, 1);
             }
 
+            if (CGameCtnBlock.IsFreeBlock(flags))
+            {
+                coord -= (0, 1, 0);
+            }
+
             n.BakedBlocks!.Add(new(name, direction, coord, flags));
 
             return flags;
@@ -4129,15 +4134,20 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             {
                 w.WriteId(block.Name);
                 w.Write((byte)block.Direction);
-                
+
+                var coord = block.Coord;
+
                 if (block.Flags != -1)
                 {
-                    w.Write((Byte3)(block.Coord + (1, 0, 1)));
+                    coord += (1, 0, 1);
                 }
-                else
+
+                if (CGameCtnBlock.IsFreeBlock(block.Flags))
                 {
-                    w.Write((Byte3)block.Coord);
+                    coord += (0, 1, 0);
                 }
+
+                w.Write((Byte3)coord);
                 
                 w.Write(block.Flags);
             }
@@ -4729,7 +4739,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x05F skippable chunk (free blocks) [TM®️]
     /// </summary>
-    [Chunk(0x0304305F, "free blocks"), IgnoreChunk]
+    [Chunk(0x0304305F, "free blocks", ProcessSync = true)]
     public class Chunk0304305F : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private int version;
@@ -4743,12 +4753,16 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             rw.Int32(ref version);
 
-            // for each block
-            //   Vec3 AbsolutePositionInMap
-            //   Vec3 PitchYawRoll
-            //   for each clip
-            //     Vec3 AbsolutePositionInMap of clip
-            //     Vec3 PitchYawRoll of clip
+            if (version > 1)
+            {
+                throw new ChunkVersionNotSupportedException(version);
+            }
+
+            foreach (var block in n.GetBlocks().Concat(n.GetBakedBlocks()).Where(x => x.IsFree))
+            {
+                block.AbsolutePositionInMap = rw.Vec3(block.AbsolutePositionInMap);
+                block.PitchYawRoll = rw.Vec3(block.PitchYawRoll);
+            }
         }
     }
 
