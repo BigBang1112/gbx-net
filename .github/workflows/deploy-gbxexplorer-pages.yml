@@ -64,6 +64,13 @@ jobs:
       - name: Add .nojekyll file
         run: touch publish/wwwroot/.nojekyll
         
+      - name: Generate docs
+        with:
+          args: Docs/docfx.json
+      
+      - name: Copy docs to wwwroot
+        run: cp -r Docs/_site publish/wwwroot/docs
+        
       - name: Setup Pages
         uses: actions/configure-pages@v2
         
