@@ -81,7 +81,7 @@ jobs:
           args: Docs/docfx.json
       
       - name: Copy docs to wwwroot
-        run: cp -r Docs/_site publish/wwwroot/docs
+        run: mkdir -p publish/wwwroot/docs && cp -r Docs/_site publish/wwwroot/docs
         
       - name: Cache docs
         uses: actions/cache@v3.0.11
