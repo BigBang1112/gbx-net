@@ -59,11 +59,13 @@ jobs:
         
       - name: Add .nojekyll file
         run: touch publish/wwwroot/.nojekyll
-  
+        
       - name: Upload app artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-artifact@v3.1.0
         with:
-          path: .
+          name: app
+          path: publish/wwwroot
+          retention-days: 1
           
   build-docs:
   
@@ -81,11 +83,13 @@ jobs:
       
       - name: Copy docs to root
         run: cp -r Docs/_site docs
-        
+
       - name: Upload docs artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-artifact@v3.1.0
         with:
-          path: .
+          name: docs
+          path: docs
+          retention-days: 1
   
   deploy:
     needs: [build-gbxexplorer, build-docs]
@@ -97,8 +101,24 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: Download app artifact
+        uses: actions/download-artifact@v3.0.0
+        with:
+          name: app
+          
+      - name: Download docs artifact
+        uses: actions/download-artifact@v3.0.0
+        with:
+          name: docs
+          path: docs
+        
       - name: Setup Pages
         uses: actions/configure-pages@v2
+        
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: .
           
       - name: Deploy to GitHub Pages
         id: deployment
