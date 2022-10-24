@@ -9,6 +9,6 @@ public class IgnoredUnskippableChunkException : Exception
 
     private static string GetMessage(Node node, uint chunkId)
     {
-        return $"Chunk 0x{chunkId & 0xFFF:x3} from class {node} is known but its content is unknown to read.";
+        return $"Chunk 0x{chunkId & 0xFFF:X3} from class {node.GetType().Name} is known but its content is unknown to read.";
     }
 }

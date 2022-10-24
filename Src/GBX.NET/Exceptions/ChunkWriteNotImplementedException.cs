@@ -12,7 +12,7 @@ public class ChunkWriteNotImplementedException : Exception
 
     private static string GetMessage(uint id, Node node)
     {
-        return $"Chunk 0x{id & 0xFFF:x3} from class {node} doesn't support Write.";
+        return $"Chunk 0x{id & 0xFFF:X3} from class {node.GetType().Name} doesn't support Write.";
     }
 
     public ChunkWriteNotImplementedException(string? message) : base(message)
