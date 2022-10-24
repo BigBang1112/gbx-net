@@ -87,7 +87,7 @@ jobs:
       - name: Upload docs artifact
         uses: actions/upload-artifact@v3.1.0
         with:
-          name: app
+          name: docs
           path: publish/wwwroot/docs
           retention-days: 1
   
