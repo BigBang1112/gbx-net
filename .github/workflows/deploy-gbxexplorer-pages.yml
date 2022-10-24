@@ -100,13 +100,24 @@ jobs:
     
     steps:
         
+      - name: Get app
+        uses: actions/cache@v3.0.11
+        with:
+          path: publish/wwwroot
+          key: gbxexplorer
+        
+      - name: Get docs
+        uses: actions/cache@v3.0.11
+        with:
+          path: publish/wwwroot/docs
+          key: docs
+        
       - name: Setup Pages
         uses: actions/configure-pages@v2
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          # Upload entire repository
           path: publish/wwwroot
           
       - name: Deploy to GitHub Pages
