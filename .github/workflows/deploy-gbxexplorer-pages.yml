@@ -65,6 +65,7 @@ jobs:
         run: touch publish/wwwroot/.nojekyll
         
       - name: Generate docs
+        uses: nikeee/docfx-action@v1.0.0
         with:
           args: Docs/docfx.json
       
