@@ -4753,7 +4753,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             rw.Int32(ref version);
 
-            if (version > 1)
+            if (version > 0)
             {
                 throw new ChunkVersionNotSupportedException(version);
             }
