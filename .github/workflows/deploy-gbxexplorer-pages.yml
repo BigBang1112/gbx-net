@@ -77,7 +77,7 @@ jobs:
           submodules: recursive
           
       - name: Clone wiki
-        run: git clone https://github.com/BigBang1112/gbx-net.wiki.git wiki && cp wiki Docs/wiki
+        run: git clone https://github.com/BigBang1112/gbx-net.wiki.git wiki && cp -r wiki Docs/wiki
         
       - name: Create global.json
         uses: 1arp/create-a-file-action@0.2
