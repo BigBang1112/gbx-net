@@ -76,10 +76,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Include="Engines\Plug\CPlugVisual_New.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
 		<PackageReference Include="TmEssentials" Version="2.3.1" />
 		<ProjectReference Include="..\..\Generators\GBX.NET.Generators\GBX.NET.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
