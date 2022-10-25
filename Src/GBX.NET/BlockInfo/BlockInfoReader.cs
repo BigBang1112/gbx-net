@@ -12,7 +12,7 @@ public sealed class BlockInfoReader : BinaryReader
     {
         var index = ReadUInt16();
 
-        if (index != 0 && strings.TryGetValue(index, out string str))
+        if (index != 0 && strings.TryGetValue(index, out string? str))
         {
             return str;
         }

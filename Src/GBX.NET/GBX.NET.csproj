@@ -11,7 +11,7 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 
-		<Version>1.0.1</Version>
+		<Version>1.1.0-alpha1</Version>
 		<PackageReleaseNotes></PackageReleaseNotes>
 
 		<TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
@@ -73,6 +73,10 @@
 		<AdditionalFiles Include="Resources/ClassID.txt" />
 		<AdditionalFiles Include="Resources/ClassIDMappings.txt" />
 		<AdditionalFiles Include="Resources/CollectionID.txt" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Engines\Plug\CPlugVisual_New.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
