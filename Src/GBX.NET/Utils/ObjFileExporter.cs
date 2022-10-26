@@ -276,11 +276,11 @@ public class ObjFileExporter : IModelExporter, IDisposable
 
             if (texCoords is not null)
             {
-                foreach (var uv in texCoords)
+                foreach (var tex in texCoords)
                 {
                     objUvWriter.WriteLine("vt {0} {1}",
-                        uv.X.ToString(invariant),
-                        uv.Y.ToString(invariant));
+                        tex.UV.X.ToString(invariant),
+                        tex.UV.Y.ToString(invariant));
                 }
             }
         }
@@ -319,7 +319,7 @@ public class ObjFileExporter : IModelExporter, IDisposable
 
         if (indexed.TexCoords is not null && indexed.TexCoords.Length > 0)
         {
-            offsetUv += indexed.TexCoords[0].Length;
+            offsetUv += indexed.TexCoords[0].Count;
         }
     }
 

@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.Plug;
+﻿using System.Collections;
+
+namespace GBX.NET.Engines.Plug;
 
 /// <remarks>ID: 0x09006000</remarks>
 [Node(0x09006000)]
@@ -23,7 +25,7 @@ public abstract class CPlugVisual : CPlug
 
     private VisualFlags flags;
     private int count;
-    private Vec2[][]? texCoords;
+    private TexCoordSet[]? texCoords;
     private Int3[]? indices;
 
     public VisualFlags Flags
@@ -38,7 +40,7 @@ public abstract class CPlugVisual : CPlug
         set => count = value;
     }
 
-    public Vec2[][]? TexCoords
+    public TexCoordSet[]? TexCoords
     {
         get => texCoords;
         set => texCoords = value;
@@ -154,27 +156,7 @@ public abstract class CPlugVisual : CPlug
             n.SetFlag(VisualFlags.SkinFlag3, (SkinFlags & 4) != 0);
             n.count = r.ReadInt32();
 
-            n.texCoords = r.ReadArray(NumTexCoordSets, r =>
-            {
-                var version = r.ReadInt32();
-
-                return r.ReadArray<Vec2>(n.count, r =>
-                {
-                    var uv = r.ReadVec2();
-
-                    if (version >= 1)
-                    {
-                        var u01 = r.ReadInt32();
-
-                        if (version >= 2)
-                        {
-                            var u02 = r.ReadInt32();
-                        }
-                    }
-
-                    return uv;
-                });
-            });
+            n.texCoords = r.ReadArray(NumTexCoordSets, r => TexCoordSet.Read(r, n));
 
             if (SkinFlags != 0)
             {
@@ -221,27 +203,7 @@ public abstract class CPlugVisual : CPlug
             // vertex streams
             var vertStreams = r.ReadArray(r => r.ReadNodeRef());
 
-            n.texCoords = r.ReadArray(NumTexCoordSets, r =>
-            {
-                var version = r.ReadInt32();
-
-                return r.ReadArray<Vec2>(n.count, r =>
-                {
-                    var uv = r.ReadVec2();
-
-                    if (version >= 1)
-                    {
-                        var u01 = r.ReadInt32();
-
-                        if (version >= 2)
-                        {
-                            var u02 = r.ReadInt32();
-                        }
-                    }
-
-                    return uv;
-                });
-            });
+            n.texCoords = r.ReadArray(NumTexCoordSets, r => TexCoordSet.Read(r, n));
 
             if (SkinFlags != 0)
             {
@@ -295,27 +257,7 @@ public abstract class CPlugVisual : CPlug
 
             var vertStreams = r.ReadArray(r => r.ReadNodeRef()); // vertex streams
 
-            n.texCoords = r.ReadArray(numTexCoordSets, r =>
-            {
-                var version = r.ReadInt32();
-
-                return r.ReadArray<Vec2>(n.count, r =>
-                {
-                    var uv = r.ReadVec2();
-
-                    if (version >= 1)
-                    {
-                        var u01 = r.ReadInt32();
-
-                        if (version >= 2)
-                        {
-                            var u02 = r.ReadInt32();
-                        }
-                    }
-
-                    return uv;
-                });
-            });
+            n.texCoords = r.ReadArray(numTexCoordSets, r => TexCoordSet.Read(r, n));
 
             n.SetFlag(VisualFlags.UnknownFlag8, r.ReadBoolean());
 
@@ -356,27 +298,7 @@ public abstract class CPlugVisual : CPlug
             n.count = r.ReadInt32();
             r.ReadArray(r => r.ReadNodeRef());
             
-            n.texCoords = r.ReadArray(numTexCoordSets, r =>
-            {
-                var version = r.ReadInt32();
-
-                return r.ReadArray<Vec2>(n.count, r =>
-                {
-                    var uv = r.ReadVec2();
-
-                    if (version >= 1)
-                    {
-                        var u01 = r.ReadInt32();
-
-                        if (version >= 2)
-                        {
-                            var u02 = r.ReadInt32();
-                        }
-                    }
-
-                    return uv;
-                });
-            });
+            n.texCoords = r.ReadArray(numTexCoordSets, r => TexCoordSet.Read(r, n));
             
             if (n.flags.HasFlag(VisualFlags.SkinFlag1) || n.flags.HasFlag(VisualFlags.SkinFlag2) || n.flags.HasFlag(VisualFlags.SkinFlag3))
             {
@@ -403,27 +325,7 @@ public abstract class CPlugVisual : CPlug
             n.count = r.ReadInt32();
             var vertexStreams = r.ReadArray(r => r.ReadNodeRef());
             
-            n.texCoords = r.ReadArray(NumTexCoordSets, r =>
-            {
-                var version = r.ReadInt32();
-
-                return r.ReadArray<Vec2>(n.count, r =>
-                {
-                    var uv = r.ReadVec2();
-
-                    if (version >= 1)
-                    {
-                        var u01 = r.ReadInt32();
-
-                        if (version >= 2)
-                        {
-                            var u02 = r.ReadInt32();
-                        }
-                    }
-
-                    return uv;
-                });
-            });
+            n.texCoords = r.ReadArray(NumTexCoordSets, r => TexCoordSet.Read(r, n));
             
             if (n.flags.HasFlag(VisualFlags.SkinFlag1) || n.flags.HasFlag(VisualFlags.SkinFlag2) || n.flags.HasFlag(VisualFlags.SkinFlag3))
             {
@@ -456,40 +358,7 @@ public abstract class CPlugVisual : CPlug
             n.count = r.ReadInt32();
             var vertexStreams = r.ReadArray(r => r.ReadNodeRef());
 
-            n.texCoords = r.ReadArray(NumTexCoordSets, r =>
-            {
-                var version = r.ReadInt32();
-
-                if (version >= 3)
-                {
-                    var u301 = r.ReadInt32();
-                    var u302 = r.ReadInt32();
-                }
-
-                return r.ReadArray<Vec2>(n.count, r =>
-                {
-                    if (version >= 3)
-                    {
-                        return r.ReadVec2();
-                    }
-                    else
-                    {
-                        var uv = r.ReadVec2();
-                        
-                        if (version >= 1)
-                        {
-                            var u01 = r.ReadInt32();
-
-                            if (version >= 2)
-                            {
-                                var u02 = r.ReadInt32();
-                            }
-                        }
-
-                        return uv;
-                    }
-                });
-            });
+            n.texCoords = r.ReadArray(NumTexCoordSets, r => TexCoordSet.Read(r, n));
 
             if (((int)n.flags & 7) != 0)
             {
@@ -532,4 +401,78 @@ public abstract class CPlugVisual : CPlug
     }
 
     #endregion
+
+    public readonly record struct TexCoord(Vec2 UV, int? U01, int? U02)
+    {
+        public static TexCoord Read(GameBoxReader r, int version)
+        {
+            var uv = r.ReadVec2();
+            var u01 = default(int?);
+            var u02 = default(int?);
+
+            if (version < 3 && version >= 1)
+            {
+                u01 = r.ReadInt32();
+
+                if (version >= 2)
+                {
+                    u02 = r.ReadInt32();
+                }
+            }
+
+            return new TexCoord(uv, u01, u02);
+        }
+    }
+
+    public class TexCoordSet : IVersionable, IReadOnlyCollection<TexCoord>
+    {
+        private readonly TexCoord[] texCoords;
+
+        public int Version { get; set; }
+        public int? U01 { get; set; }
+        public int? U02 { get; set; }
+
+        public int Count => texCoords.Length;
+
+        public TexCoordSet(int version, TexCoord[] texCoords, int? u01, int? u02)
+        {
+            this.texCoords = texCoords;
+            
+            Version = version;
+            U01 = u01;
+            U02 = u02;
+        }
+
+        public static TexCoordSet Read(GameBoxReader r, CPlugVisual n)
+        {
+            var version = r.ReadInt32();
+            var u01 = default(int?);
+            var u02 = default(int?);
+
+            if (version >= 3)
+            {
+                u01 = r.ReadInt32();
+                u02 = r.ReadInt32();
+            }
+
+            var texCoords = new TexCoord[n.count];
+
+            for (var i = 0; i < n.count; i++)
+            {
+                texCoords[i] = TexCoord.Read(r, version);
+            }
+
+            return new TexCoordSet(version, texCoords, u01, u02);
+        }
+
+        public IEnumerator<TexCoord> GetEnumerator()
+        {
+            return (IEnumerator<TexCoord>)texCoords.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return texCoords.GetEnumerator();
+        }
+    }
 }
