@@ -136,9 +136,9 @@ void ProcessFile(string fileName)
 
             if (texCoords is not null)
             {
-                foreach (var uv in texCoords)
+                foreach (var tex in texCoords)
                 {
-                    texWriter.WriteLine("vt {0} {1}", uv.X, uv.Y);
+                    texWriter.WriteLine("vt {0} {1}", tex.UV.X, tex.UV.Y);
                 }
             }
         }
@@ -165,7 +165,7 @@ void ProcessFile(string fileName)
         offsetVert += indexed.Vertices.Length;
 
         if (indexed.TexCoords is not null && indexed.TexCoords.Length > 0)
-            offsetUv += indexed.TexCoords[0].Length;
+            offsetUv += indexed.TexCoords[0].Count;
     }
 
     void WriteMaterial(CPlugMaterial? material)
