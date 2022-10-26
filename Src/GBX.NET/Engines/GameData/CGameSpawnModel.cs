@@ -1,6 +1,8 @@
 ﻿namespace GBX.NET.Engines.GameData;
 
+/// <remarks>ID: 0x2E00E000</remarks>
 [Node(0x2E00E000)]
+[NodeExtension("Spawn")]
 public class CGameSpawnModel : CMwNod
 {
     private Iso4 loc;
