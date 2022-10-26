@@ -16,6 +16,7 @@ public class CPlugSolid : CPlug
 
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk0900500D))]
+    [AppliedWithChunk(typeof(Chunk09005011))]
     public CPlug? Tree
     {
         get => tree = GetNodeFromRefTable(tree, treeFile) as CPlug;
