@@ -401,7 +401,7 @@ public abstract class CPlugVisual : CPlug
             n.ConvertChunkFlagsToFlags(r.ReadInt32());
             NumTexCoordSets = r.ReadInt32();
             n.count = r.ReadInt32();
-            r.ReadArray(r => r.ReadNodeRef());
+            var vertexStreams = r.ReadArray(r => r.ReadNodeRef());
             
             n.texCoords = r.ReadArray(NumTexCoordSets, r =>
             {
@@ -435,4 +435,101 @@ public abstract class CPlugVisual : CPlug
             r.ReadArray(r => r.ReadBytes(20));
         }
     }
+
+    #region 0x00F chunk
+
+    /// <summary>
+    /// CPlugVisual 0x00F chunk
+    /// </summary>
+    [Chunk(0x0900600F)]
+    public class Chunk0900600F : Chunk<CPlugVisual>, IVersionable
+    {
+        public int NumTexCoordSets;
+
+        public int Version { get; set; }
+
+        public override void Read(CPlugVisual n, GameBoxReader r)
+        {
+            Version = r.ReadInt32();
+            n.ConvertChunkFlagsToFlags(r.ReadInt32());
+            NumTexCoordSets = r.ReadInt32(); // texcoord count
+            n.count = r.ReadInt32();
+            var vertexStreams = r.ReadArray(r => r.ReadNodeRef());
+
+            n.texCoords = r.ReadArray(NumTexCoordSets, r =>
+            {
+                var version = r.ReadInt32();
+
+                if (version >= 3)
+                {
+                    var u301 = r.ReadInt32();
+                    var u302 = r.ReadInt32();
+                }
+
+                return r.ReadArray<Vec2>(n.count, r =>
+                {
+                    if (version >= 3)
+                    {
+                        return r.ReadVec2();
+                    }
+                    else
+                    {
+                        var uv = r.ReadVec2();
+                        
+                        if (version >= 1)
+                        {
+                            var u01 = r.ReadInt32();
+
+                            if (version >= 2)
+                            {
+                                var u02 = r.ReadInt32();
+                            }
+                        }
+
+                        return uv;
+                    }
+                });
+            });
+
+            if (((int)n.flags & 7) != 0)
+            {
+                // CPlugVisual::ArchiveSkinData
+                throw new NotSupportedException("CPlugVisual::ArchiveSkinData");
+            }
+
+            var box = r.ReadBox();
+            var SBitmapElemToPackCount = r.ReadInt32();
+
+            if (Version >= 5)
+            {
+                var ushortArray = r.ReadArray<ushort>();
+            }
+        }
+    }
+
+    #endregion
+
+    #region 0x010 chunk
+
+    /// <summary>
+    /// CPlugVisual 0x010 chunk
+    /// </summary>
+    [Chunk(0x09006010)]
+    public class Chunk09006010 : Chunk<CPlugVisual>, IVersionable
+    {
+        public int Version { get; set; }
+
+        public override void Read(CPlugVisual n, GameBoxReader r)
+        {
+            Version = r.ReadInt32();
+            var morphCount = r.ReadInt32();
+
+            if (morphCount > 0)
+            {
+                throw new NotSupportedException("morphCount > 0");
+            }
+        }
+    }
+
+    #endregion
 }
