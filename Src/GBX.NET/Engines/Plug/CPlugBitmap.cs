@@ -180,6 +180,24 @@ public class CPlugBitmap : CPlug
         }
     }
 
+    #region 0x023 chunk
+
+    /// <summary>
+    /// CPlugBitmap 0x023 chunk
+    /// </summary>
+    [Chunk(0x09011023)]
+    public class Chunk09011023 : Chunk<CPlugBitmap>
+    {
+        public uint U01;
+
+        public override void ReadWrite(CPlugBitmap n, GameBoxReaderWriter rw)
+        {
+            rw.UInt32(ref U01);
+        }
+    }
+
+    #endregion
+
     /// <summary>
     /// CPlugBitmap 0x024 chunk
     /// </summary>
@@ -193,4 +211,184 @@ public class CPlugBitmap : CPlug
             rw.Int32(ref U01);
         }
     }
+
+    #region 0x025 chunk
+
+    /// <summary>
+    /// CPlugBitmap 0x025 chunk
+    /// </summary>
+    [Chunk(0x09011025)]
+    public class Chunk09011025 : Chunk<CPlugBitmap>
+    {
+        public Vec2 U01;
+        public Vec2 U02;
+        public float U03;
+        public uint U04;
+
+        public override void ReadWrite(CPlugBitmap n, GameBoxReaderWriter rw)
+        {
+            rw.Vec2(ref U01);
+            rw.Vec2(ref U02);
+            rw.Single(ref U03);
+            rw.UInt32(ref U04); // DoMask
+        }
+    }
+
+    #endregion
+
+    #region 0x028 chunk
+
+    /// <summary>
+    /// CPlugBitmap 0x028 chunk
+    /// </summary>
+    [Chunk(0x09011028)]
+    public class Chunk09011028 : Chunk<CPlugBitmap>
+    {
+        public Int2 U01;
+
+        public override void ReadWrite(CPlugBitmap n, GameBoxReaderWriter rw)
+        {
+            rw.Int2(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x02A chunk
+
+    /// <summary>
+    /// CPlugBitmap 0x02A chunk
+    /// </summary>
+    [Chunk(0x0901102A)]
+    public class Chunk0901102A : Chunk<CPlugBitmap>
+    {
+        public Node? U01;
+
+        public override void ReadWrite(CPlugBitmap n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x02B chunk
+
+    /// <summary>
+    /// CPlugBitmap 0x02B chunk
+    /// </summary>
+    [Chunk(0x0901102B)]
+    public class Chunk0901102B : Chunk<CPlugBitmap>
+    {
+        public Node? U01;
+
+        public override void ReadWrite(CPlugBitmap n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x02C chunk
+
+    /// <summary>
+    /// CPlugBitmap 0x02C chunk
+    /// </summary>
+    [Chunk(0x0901102C)]
+    public class Chunk0901102C : Chunk<CPlugBitmap>
+    {
+        public Node? U01;
+
+        public override void ReadWrite(CPlugBitmap n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x02D chunk
+
+    /// <summary>
+    /// CPlugBitmap 0x02D chunk
+    /// </summary>
+    [Chunk(0x0901102D)]
+    public class Chunk0901102D : Chunk<CPlugBitmap>, IVersionable
+    {
+        private int version;
+
+        public int U01;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CPlugBitmap n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.Int32(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x030 chunk
+
+    /// <summary>
+    /// CPlugBitmap 0x030 chunk
+    /// </summary>
+    [Chunk(0x09011030)]
+    public class Chunk09011030 : Chunk<CPlugBitmap>, IVersionable
+    {
+        private int version;
+
+        public int U01;
+        public Int3 U02;
+        public float U03;
+        public float U04;
+        public float U05;
+        public uint U06;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CPlugBitmap n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.Int32(ref U01); // texture node?
+
+            if (version >= 1)
+            {
+                rw.Int3(ref U02); // DoData
+            }
+
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+            rw.Single(ref U05);
+            rw.UInt32(ref U06); // DoMask
+        }
+    }
+
+    #endregion
+
+    #region 0x032 chunk
+
+    /// <summary>
+    /// CPlugBitmap 0x032 chunk
+    /// </summary>
+    [Chunk(0x09011032)]
+    public class Chunk09011032 : Chunk<CPlugBitmap>
+    {
+        private int version;
+
+        public uint U01;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CPlugBitmap n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.UInt32(ref U01); // DoData
+        }
+    }
+
+    #endregion
 }
