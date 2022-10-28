@@ -467,7 +467,7 @@ public abstract class CPlugVisual : CPlug
 
         public IEnumerator<TexCoord> GetEnumerator()
         {
-            return (IEnumerator<TexCoord>)texCoords.GetEnumerator();
+            return ((IEnumerable<TexCoord>)texCoords).GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
