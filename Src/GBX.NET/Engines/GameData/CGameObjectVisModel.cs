@@ -94,6 +94,7 @@ public class CGameObjectVisModel : CMwNod
         public CMwNod? U13;
         public CMwNod? U14;
         public CMwNod? U15;
+        public CMwNod? U16;
 
         public int Version { get => version; set => version = value; }
 
@@ -108,6 +109,11 @@ public class CGameObjectVisModel : CMwNod
             }
 
             rw.String(ref n.mesh);
+
+            if (version < 18)
+            {
+                rw.NodeRef(ref U16); // CPlugAnimFile
+            }
 
             rw.NodeRef<CPlugSolid2Model>(ref n.meshShaded);
 
