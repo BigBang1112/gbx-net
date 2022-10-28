@@ -10,6 +10,9 @@ public class CGameObjectVisModel : CMwNod
     private string? soundRefSpawn;
     private string? soundRefUnspawn;
     private string? soundRefGrab;
+    private string? soundRefSmashed;
+    private string? soundRefPermanent;
+    private Iso4? soundLocPermanent;
     private string? smashParticleRef;
     private string? visEntFx;
     private CMwNod? meshShadedFid;
@@ -24,17 +27,104 @@ public class CGameObjectVisModel : CMwNod
     [AppliedWithChunk(typeof(Chunk2E007001))]
     public string? Mesh { get => mesh; set => mesh = value; }
 
-    [NodeMember(ExactlyNamed = false, ExactName = "SoundRef_Spawn")]
+    [NodeMember(ExactName = "SoundRef_Spawn")]
     [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 0, upToVersion: 16)]
-    public string? SoundRefSpawn { get => soundRefSpawn; set => soundRefSpawn = value; }
+    [AppliedWithChunk(typeof(Chunk2E007002))]
+    public string? SoundRefSpawn
+    {
+        get
+        {
+            DiscoverChunk<Chunk2E007002>();
+            return soundRefSpawn;
+        }
+        set
+        {
+            DiscoverChunk<Chunk2E007002>();
+            soundRefSpawn = value;
+        }
+    }
 
-    [NodeMember(ExactlyNamed = false, ExactName = "SoundRef_Unspawn")]
+    [NodeMember(ExactName = "SoundRef_Unspawn")]
     [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 0, upToVersion: 16)]
-    public string? SoundRefUnspawn { get => soundRefUnspawn; set => soundRefUnspawn = value; }
+    [AppliedWithChunk(typeof(Chunk2E007002))]
+    public string? SoundRefUnspawn
+    {
+        get
+        {
+            DiscoverChunk<Chunk2E007002>();
+            return soundRefUnspawn;
+        }
+        set
+        {
+            DiscoverChunk<Chunk2E007002>();
+            soundRefUnspawn = value;
+        }
+    }
 
-    [NodeMember(ExactlyNamed = false, ExactName = "SoundRef_Grab")]
+    [NodeMember(ExactName = "SoundRef_Grab")]
     [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 0, upToVersion: 16)]
-    public string? SoundRefGrab { get => soundRefGrab; set => soundRefGrab = value; }
+    [AppliedWithChunk(typeof(Chunk2E007002))]
+    public string? SoundRefGrab
+    {
+        get
+        {
+            DiscoverChunk<Chunk2E007002>();
+            return soundRefGrab;
+        }
+        set
+        {
+            DiscoverChunk<Chunk2E007002>();
+            soundRefGrab = value;
+        }
+    }
+
+    [NodeMember(ExactName = "SoundRef_Smashed")]
+    [AppliedWithChunk(typeof(Chunk2E007002))]
+    public string? SoundRefSmashed
+    {
+        get
+        {
+            DiscoverChunk<Chunk2E007002>();
+            return soundRefSmashed;
+        }
+        set
+        {
+            DiscoverChunk<Chunk2E007002>();
+            soundRefSmashed = value;
+        }
+    }
+
+    [NodeMember(ExactName = "SoundRef_Permanent")]
+    [AppliedWithChunk(typeof(Chunk2E007002))]
+    public string? SoundRefPermanent
+    {
+        get
+        {
+            DiscoverChunk<Chunk2E007002>();
+            return soundRefPermanent;
+        }
+        set
+        {
+            DiscoverChunk<Chunk2E007002>();
+            soundRefPermanent = value;
+        }
+    }
+
+    [NodeMember(ExactName = "SoundLoc_Permanent")]
+    [AppliedWithChunk(typeof(Chunk2E007002))]
+    public Iso4? SoundLocPermanent
+    {
+        get
+        {
+            DiscoverChunk<Chunk2E007002>();
+            return soundLocPermanent;
+        }
+        set
+        {
+            DiscoverChunk<Chunk2E007002>();
+            soundLocPermanent = value;
+        }
+    }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 12)]
@@ -178,6 +268,32 @@ public class CGameObjectVisModel : CMwNod
                     }
                 }
             }
+        }
+    }
+
+    #endregion
+
+    #region 0x002 skippable chunk
+
+    /// <summary>
+    /// CGameObjectVisModel 0x002 skippable chunk
+    /// </summary>
+    [Chunk(0x2E007002)]
+    public class Chunk2E007002 : SkippableChunk<CGameObjectVisModel>, IVersionable
+    {
+        private int version;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameObjectVisModel n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.String(ref n.soundRefSpawn);
+            rw.String(ref n.soundRefUnspawn);
+            rw.String(ref n.soundRefGrab);
+            rw.String(ref n.soundRefSmashed);
+            rw.String(ref n.soundRefPermanent);
+            rw.Iso4(ref n.soundLocPermanent);
         }
     }
 
