@@ -203,43 +203,7 @@ public class CGameCtnBlockInfoMobil : CMwNod
         {
             rw.Int32(ref version);
             rw.Int32(ref listVersion);
-
-            rw.Array(ref n.dynaLinks, r =>
-            {
-                var u01 = r.ReadInt32();
-                var u02 = r.ReadInt32();
-                var u03 = r.ReadInt32();
-                var socketId = r.ReadId();
-                var model = r.ReadNodeRef<CGameObjectModel>();
-
-                var u04 = default(int?);
-
-                if (u03 == 0) // May still not be perfect
-                {
-                    u04 = r.ReadInt32();
-                }
-
-                return new CGameCtnBlockInfoMobilLink(socketId, model)
-                {
-                    U01 = u01,
-                    U02 = u02,
-                    U03 = u03,
-                    U04 = u04
-                };
-            },
-            (x, w) =>
-            {
-                w.Write(x.U01);
-                w.Write(x.U02);
-                w.Write(x.U03);
-                w.WriteId(x.SocketId);
-                w.Write(x.Model);
-
-                if (x.U03 == 0) // Still not perfect
-                {
-                    w.Write(x.U04.GetValueOrDefault());
-                }
-            });
+            rw.ArrayNode<CGameCtnBlockInfoMobilLink>(ref n.dynaLinks!);
         }
     }
 }
