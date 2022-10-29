@@ -150,17 +150,15 @@ public abstract class Node
                                bool ignoreZeroIdChunk = false)
     {
         node.gbxForRefTable = r.Gbx;
-        
+
         var stopwatch = Stopwatch.StartNew();
 
         using var scope = r.Logger?.BeginScope("{name}", node.GetType().Name);
 
-        var previousChunkId = default(uint?);
-
         if (r.BaseStream is IXorTrickStream cryptedStream)
         {
             var baseType = node.GetType().BaseType ?? throw new ThisShouldNotHappenException();
-                
+
             var parentClassId = NodeManager.ClassIdsByType[baseType];
 
             if (parentClassId == 0x07031000)
@@ -183,14 +181,21 @@ public abstract class Node
             cryptedStream.InitializeXorTrick(parentClassIDBytes, 0, 4);
         }
 
-        while (IterateChunks(node, r, progress, ref previousChunkId, ignoreZeroIdChunk))
-        {
-            // Iterates through chunks until false is returned
-        }
+        node.ReadChunkData(r, progress, ignoreZeroIdChunk);
 
         stopwatch.Stop();
 
         r.Logger?.LogNodeComplete(time: stopwatch.Elapsed.TotalMilliseconds);
+    }
+
+    protected virtual void ReadChunkData(GameBoxReader r, IProgress<GameBoxReadProgress>? progress, bool ignoreZeroIdChunk)
+    {
+        var previousChunkId = default(uint?);
+
+        while (IterateChunks(this, r, progress, ref previousChunkId, ignoreZeroIdChunk))
+        {
+            // Iterates through chunks until false is returned
+        }
     }
 
     /// <exception cref="NodeNotImplementedException">Auxiliary node is not implemented and is not parseable.</exception>
@@ -221,13 +226,21 @@ public abstract class Node
         using var scope = r.Logger?.BeginScope("{name} (async)", node.GetType().Name);
 
         cancellationToken.ThrowIfCancellationRequested();
+        await node.ReadChunkDataAsync(r, cancellationToken);
 
+        stopwatch.Stop();
+
+        r.Logger?.LogNodeComplete(time: stopwatch.Elapsed.TotalMilliseconds);
+    }
+
+    protected virtual async Task ReadChunkDataAsync(GameBoxReader r, CancellationToken cancellationToken)
+    {
         var previousChunkId = default(uint?);
 
         while (true)
         {
             // Iterates through chunks until false is returned
-            (var moreChunks, previousChunkId, var chunk) = await IterateChunksAsync(node, r, previousChunkId, cancellationToken);
+            (var moreChunks, previousChunkId, var chunk) = await IterateChunksAsync(this, r, previousChunkId, cancellationToken);
 
             if (!moreChunks)
             {
@@ -238,15 +251,11 @@ public abstract class Node
 
             if (asyncAction is not null && asyncAction.AfterChunkIteration is not null)
             {
-                await asyncAction.AfterChunkIteration(node, chunk);
+                await asyncAction.AfterChunkIteration(this, chunk);
             }
 
             cancellationToken.ThrowIfCancellationRequested();
         }
-
-        stopwatch.Stop();
-
-        r.Logger?.LogNodeComplete(time: stopwatch.Elapsed.TotalMilliseconds);
     }
 
     private static bool IterateChunks(Node node,
@@ -629,6 +638,13 @@ public abstract class Node
 
         using var scope = w.Logger?.BeginScope("{name}", nodeType.Name);
 
+        WriteChunkData(w);
+
+        w.Logger?.LogNodeComplete(stopwatch.Elapsed.TotalMilliseconds);
+    }
+
+    protected virtual void WriteChunkData(GameBoxWriter w)
+    {
         var counter = 0;
 
         foreach (IReadableWritableChunk chunk in Chunks)
@@ -639,8 +655,6 @@ public abstract class Node
         }
 
         WriteFacade(w);
-
-        w.Logger?.LogNodeComplete(stopwatch.Elapsed.TotalMilliseconds);
     }
 
     public async Task WriteAsync(GameBoxWriter w, CancellationToken cancellationToken)
@@ -655,8 +669,15 @@ public abstract class Node
 
         using var scope = w.Logger?.BeginScope("{name}", nodeType.Name);
 
-        var counter = 0;
+        await WriteChunkDataAsync(w, cancellationToken);
 
+        w.Logger?.LogNodeComplete(stopwatch.Elapsed.TotalMilliseconds);
+    }
+
+    protected virtual async Task WriteChunkDataAsync(GameBoxWriter w, CancellationToken cancellationToken)
+    {
+        var counter = 0;
+        
         foreach (IReadableWritableChunk chunk in Chunks)
         {
             counter++;
@@ -674,8 +695,6 @@ public abstract class Node
         }
 
         WriteFacade(w);
-
-        w.Logger?.LogNodeComplete(stopwatch.Elapsed.TotalMilliseconds);
     }
 
     private static void WriteFacade(GameBoxWriter w)
