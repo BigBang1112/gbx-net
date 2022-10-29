@@ -389,7 +389,7 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
 
             if (version < 2)
             {
-                rw.Vec3(n.spawnTrans);
+                rw.Vec3(ref n.spawnTrans);
                 rw.Single(ref n.spawnYaw);
                 rw.Single(ref n.spawnPitch);
             }
