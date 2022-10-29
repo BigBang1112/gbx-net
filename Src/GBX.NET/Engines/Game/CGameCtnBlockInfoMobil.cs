@@ -4,12 +4,27 @@
 [Node(0x03122000)]
 public class CGameCtnBlockInfoMobil : CMwNod
 {
+    private bool hasGeomTransformation;
+    private Vec3? geomTranslation;
+    private Vec3? geomRotation;
     private CGameCtnSolidDecals?[]? solidDecals;
     private CGameCtnBlockInfoMobilLink[]? dynaLinks;
     private CPlugSolid? solidFid;
     private GameBoxRefTable.File? solidFidFile;
     private CPlugPrefab? prefabFid;
     private GameBoxRefTable.File? prefabFidFile;
+
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk03122003), sinceVersion: 1)]
+    public bool HasGeomTransformation { get => hasGeomTransformation; set => hasGeomTransformation = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03122003), sinceVersion: 1)]
+    public Vec3? GeomTranslation { get => geomTranslation; set => geomTranslation = value; }
+    
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk03122003), sinceVersion: 1)]
+    public Vec3? GeomRotation { get => geomRotation; set => geomRotation = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk03122002))]
@@ -68,9 +83,7 @@ public class CGameCtnBlockInfoMobil : CMwNod
         public CMwNod? U02;
         public int U03;
         public byte? U04;
-        public float? U05;
-        public float? U06;
-        public float? U07;
+        public Vec3? U05;
         public float? U08;
         public float? U09;
         public float? U10;
@@ -111,16 +124,12 @@ public class CGameCtnBlockInfoMobil : CMwNod
 
             if (version >= 1)
             {
-                rw.Byte(ref U04);
+                rw.Boolean(ref n.hasGeomTransformation);
 
-                if (U04 != 0)
+                if (n.hasGeomTransformation)
                 {
-                    rw.Single(ref U05);
-                    rw.Single(ref U06);
-                    rw.Single(ref U07);
-                    rw.Single(ref U08);
-                    rw.Single(ref U09);
-                    rw.Single(ref U10);
+                    rw.Vec3(ref n.geomTranslation);
+                    rw.Vec3(ref n.geomRotation);
                 }
 
                 if (version >= 2)
