@@ -13,7 +13,8 @@ public class ObjFileExporter : IModelExporter, IDisposable
     
     private readonly int? mergeVerticesDigitThreshold;
     private readonly string? gameDataFolderPath;
-
+    private readonly bool corruptedMaterials;
+    
     private int offsetVert;
     private int offsetUv;
 
@@ -26,12 +27,14 @@ public class ObjFileExporter : IModelExporter, IDisposable
     /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>
     /// <param name="encoding">Encoding to use.</param>
     /// <param name="leaveOpen">If to keep the streams open.</param>
+    /// <param name="corruptedMaterials">If to use a different way to handle corrupted material files (via header reference table, to avoid body parse). Exists due to TMTurbo problems. Can give much less accurate results.</param>
     public ObjFileExporter(Stream objStream,
                            Stream mtlStream,
                            int? mergeVerticesDigitThreshold = null,
                            string? gameDataFolderPath = null,
                            Encoding? encoding = null,
-                           bool leaveOpen = false)
+                           bool leaveOpen = false,
+                           bool corruptedMaterials = false)
     {
         objWriter = new StreamWriter(objStream, encoding ?? utf8NoBOM, bufferSize: 1024, leaveOpen);
         mtlWriter = new StreamWriter(mtlStream, encoding ?? utf8NoBOM, bufferSize: 1024, leaveOpen);
@@ -40,6 +43,7 @@ public class ObjFileExporter : IModelExporter, IDisposable
         
         this.mergeVerticesDigitThreshold = mergeVerticesDigitThreshold;
         this.gameDataFolderPath = gameDataFolderPath;
+        this.corruptedMaterials = corruptedMaterials;
     }
 
     public virtual void Export(CPlugCrystal crystal)
@@ -201,10 +205,22 @@ public class ObjFileExporter : IModelExporter, IDisposable
         Merge();
     }
 
+    internal virtual void Export(CPlugTree tree, CPlugSolid? mainNode)
+    {
+        var gbx = default(GameBox);
+
+        if (corruptedMaterials)
+        {
+            gbx = mainNode?.GetGbx();
+        }
+
+        ExportRecurse(tree, gbx);
+        Merge();
+    }
+
     public virtual void Export(CPlugTree tree)
     {
-        ExportRecurse(tree);
-        Merge();
+        Export(tree, mainNode: null);
     }
 
     private void Merge()
@@ -220,7 +236,7 @@ public class ObjFileExporter : IModelExporter, IDisposable
 #endif
     }
 
-    private void ExportRecurse(CPlugTree tree)
+    private void ExportRecurse(CPlugTree tree, GameBox? gbx)
     {
         var invariant = System.Globalization.CultureInfo.InvariantCulture;
 
@@ -231,14 +247,14 @@ public class ObjFileExporter : IModelExporter, IDisposable
                 continue;
             }
 
-            ExportRecurse(t);
+            ExportRecurse(t, gbx);
         }
 
         if (tree is CPlugTreeVisualMip mip)
         {
             foreach (var t in mip.Levels)
             {
-                ExportRecurse(t.Value);
+                ExportRecurse(t.Value, gbx);
             }
         }
 
@@ -251,7 +267,11 @@ public class ObjFileExporter : IModelExporter, IDisposable
 
         objFaceWriter.WriteLine($"\no {tree.Name}");
 
-        if (tree.Shader is CPlugMaterial material)
+        if (corruptedMaterials)
+        {
+            WriteCorruptedMaterialToMtl(tree, gbx);
+        }
+        else if (tree.Shader is CPlugMaterial material)
         {
             WriteMaterialToMtl(material);
         }
@@ -323,6 +343,42 @@ public class ObjFileExporter : IModelExporter, IDisposable
         }
     }
 
+    private void WriteCorruptedMaterialToMtl(CPlugTree tree, GameBox? gbx)
+    {
+        if (tree.ShaderFile is null || gbx is null)
+        {
+            return;
+        }
+
+        objFaceWriter.WriteLine("usemtl " + tree.ShaderFile.FileName);
+        mtlWriter.WriteLine("newmtl " + tree.ShaderFile.FileName);
+
+        var materialFullFileName = Path.Combine(Path.GetDirectoryName(gbx.FileName),
+            gbx.RefTable?.GetRelativeFolderPathToFile(tree.ShaderFile),
+            tree.ShaderFile.FileName);
+
+        if (!File.Exists(materialFullFileName))
+        {
+            return;
+        }
+        var matRefTable = GameBox.ParseHeader(materialFullFileName).RefTable ?? throw new Exception();
+        var diffuseFile = matRefTable.Files
+            .FirstOrDefault(x => x.FileName?.EndsWith("D.Texture.gbx", StringComparison.OrdinalIgnoreCase) == true);
+
+        if (diffuseFile is null)
+        {
+            return;
+        }
+        
+        var textureFullFileName = Path.Combine(Path.GetDirectoryName(materialFullFileName),
+            matRefTable.GetRelativeFolderPathToFile(diffuseFile), diffuseFile.FileName);
+
+        if (GameBox.ParseNode(textureFullFileName) is CPlugBitmap texture)
+        {
+            WriteTextureForMaterial(texture);
+        }
+    }
+
     private void WriteMaterialToMtl(CPlugMaterial material)
     {
         if (material.CustomMaterial is null)
@@ -357,6 +413,11 @@ public class ObjFileExporter : IModelExporter, IDisposable
             return;
         }
 
+        WriteTextureForMaterial(diffuse);
+    }
+
+    private void WriteTextureForMaterial(CPlugBitmap diffuse)
+    {
         var gbx = diffuse.GetGbx();
 
         if (gbx is null)
@@ -390,6 +451,11 @@ public class ObjFileExporter : IModelExporter, IDisposable
             var fullTextureFileName = gameDataFolderPath is null
                 ? Path.Combine(textureDirectory, textureFile.FileName)
                 : Path.Combine(gameDataFolderPath, textureDirectory, textureFile.FileName);
+
+            if (corruptedMaterials)
+            {
+                fullTextureFileName = Path.Combine(Path.GetDirectoryName(gbx.FileName), textureDirectory, textureFile.FileName);
+            }
 
             fullTextureFileName = fullTextureFileName.Replace('\\', '/');
 

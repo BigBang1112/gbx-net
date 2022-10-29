@@ -40,6 +40,8 @@ public class CPlugTree : CPlug
         set => shader = value;
     }
     
+    public GameBoxRefTable.File? ShaderFile { get => shaderFile; set => shaderFile = value; }
+
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk0904F016))]
     public CPlugTreeGenerator? Generator { get => generator; set => generator = value; }

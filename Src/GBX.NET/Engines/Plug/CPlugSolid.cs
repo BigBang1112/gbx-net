@@ -36,11 +36,13 @@ public class CPlugSolid : CPlug
     /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>
     /// <param name="encoding">Encoding to use.</param>
     /// <param name="leaveOpen">If to keep the streams open.</param>
+    /// <param name="corruptedMaterials">If to use a different way to handle corrupted material files (via header reference table, to avoid body parse). Exists due to TMTurbo problems. Can give much less accurate results.</param>
     public void ExportToObj(Stream objStream, 
                             Stream mtlStream, 
                             string? gameDataFolderPath = null,
                             Encoding? encoding = null,
-                            bool leaveOpen = false)
+                            bool leaveOpen = false,
+                            bool corruptedMaterials = false)
     {
         if (Tree is not CPlugTree tree)
         {
@@ -53,9 +55,10 @@ public class CPlugSolid : CPlug
             mergeVerticesDigitThreshold: null,
             gameDataFolderPath,
             encoding,
-            leaveOpen);
+            leaveOpen,
+            corruptedMaterials);
         
-        exporter.Export(tree);
+        exporter.Export(tree, this);
     }
 
     /// <summary>
