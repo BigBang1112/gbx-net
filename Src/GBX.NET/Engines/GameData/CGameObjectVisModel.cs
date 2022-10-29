@@ -196,6 +196,7 @@ public class CGameObjectVisModel : CMwNod
         public CMwNod? U15;
         public CMwNod? U16;
         public GameBoxRefTable.File? U16File;
+        public string? U17;
 
         public int Version { get => version; set => version = value; }
 
@@ -248,32 +249,37 @@ public class CGameObjectVisModel : CMwNod
                         rw.Int32(ref U08); // CPlugFileImg array
                         rw.Int32(ref U09); // SSpriteParam array
 
-                        if (version >= 16)
+                        if (version >= 14)
                         {
-                            rw.NodeRef(ref U10);
-                            rw.NodeRef(ref U11);
+                            rw.String(ref U17);
 
-                            if (version >= 19)
+                            if (version >= 16)
                             {
-                                rw.Single(ref U12);
+                                rw.NodeRef(ref U10);
+                                rw.NodeRef(ref U11);
 
-                                if (version >= 20)
+                                if (version >= 19)
                                 {
-                                    rw.String(ref n.visEntFx);
-                                    // if empty then maybe nodref? proly not
+                                    rw.Single(ref U12);
 
-                                    if (string.IsNullOrEmpty(n.visEntFx))
+                                    if (version >= 20)
                                     {
-                                        rw.NodeRef(ref U13);
-                                    }
+                                        rw.String(ref n.visEntFx);
+                                        // if empty then maybe nodref? proly not
 
-                                    if (version >= 21)
-                                    {
-                                        rw.NodeRef(ref n.meshShadedFid);
-
-                                        if (version >= 22)
+                                        if (string.IsNullOrEmpty(n.visEntFx))
                                         {
-                                            rw.Vec3(ref n.domeShaderColor);
+                                            rw.NodeRef(ref U13);
+                                        }
+
+                                        if (version >= 21)
+                                        {
+                                            rw.NodeRef(ref n.meshShadedFid);
+
+                                            if (version >= 22)
+                                            {
+                                                rw.Vec3(ref n.domeShaderColor);
+                                            }
                                         }
                                     }
                                 }
