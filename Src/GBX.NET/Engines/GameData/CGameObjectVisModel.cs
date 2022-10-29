@@ -18,6 +18,8 @@ public class CGameObjectVisModel : CMwNod
     private CMwNod? meshShadedFid;
     private Vec3? domeShaderColor;
     private CPlugSolid2Model? meshShaded;
+    private GameBoxRefTable.File? meshShadedFile;
+    private CPlugAnimLocSimple? locAnim;
 
     #endregion
 
@@ -144,7 +146,15 @@ public class CGameObjectVisModel : CMwNod
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk2E007001))]
-    public CPlugSolid2Model? MeshShaded { get => meshShaded; set => meshShaded = value; }
+    public CPlugSolid2Model? MeshShaded
+    {
+        get => meshShaded = GetNodeFromRefTable(meshShaded, meshShadedFile) as CPlugSolid2Model;
+        set => meshShaded = value;
+    }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 2)]
+    public CPlugAnimLocSimple? LocAnim { get => locAnim; set => locAnim = value; }
 
     #endregion
 
@@ -185,6 +195,7 @@ public class CGameObjectVisModel : CMwNod
         public CMwNod? U14;
         public CMwNod? U15;
         public CMwNod? U16;
+        public GameBoxRefTable.File? U16File;
 
         public int Version { get => version; set => version = value; }
 
@@ -200,16 +211,19 @@ public class CGameObjectVisModel : CMwNod
 
             rw.String(ref n.mesh);
 
-            if (version < 18)
+            if (string.IsNullOrEmpty(n.mesh))
+            {
+                rw.NodeRef<CPlugSolid2Model>(ref n.meshShaded, ref n.meshShadedFile);
+            }
+
+            if (version < 18) // CPlugParticleEmitterModel?
             {
                 rw.NodeRef(ref U16); // CPlugAnimFile
             }
 
-            rw.NodeRef<CPlugSolid2Model>(ref n.meshShaded);
-
-            if (version >= 7) // Condition not seen in code
+            if (version >= 2)
             {
-                rw.NodeRef(ref U02);
+                rw.NodeRef<CPlugAnimLocSimple>(ref n.locAnim);
             }
 
             rw.Int32(ref U03); // SPlugLightBallStateSimple array
