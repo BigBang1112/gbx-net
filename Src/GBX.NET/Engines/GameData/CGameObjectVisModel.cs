@@ -2,6 +2,7 @@
 
 /// <remarks>ID: 0x2E007000</remarks>
 [Node(0x2E007000)]
+[NodeExtension("GameObjectVisModel")]
 public class CGameObjectVisModel : CMwNod
 {
     #region Fields
