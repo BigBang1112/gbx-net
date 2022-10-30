@@ -124,7 +124,7 @@ public class CGameCtnBlockInfoMobil : CMwNod
 
             if (version >= 1)
             {
-                rw.Boolean(ref n.hasGeomTransformation);
+                rw.Boolean(ref n.hasGeomTransformation, asByte: true);
 
                 if (n.hasGeomTransformation)
                 {
