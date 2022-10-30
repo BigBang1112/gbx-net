@@ -1,49 +1,80 @@
-﻿namespace GBX.NET.Engines.Plug;
+﻿using GBX.NET.Utils;
+using System.Text;
+
+namespace GBX.NET.Engines.Plug;
 
 /// <remarks>ID: 0x090BB000</remarks>
 [Node(0x090BB000)]
 [NodeExtension("Solid2")]
 public class CPlugSolid2Model : CMwNod
 {
-    private ShadedGeom[]? shadedGeoms;
-    private CPlugVisual?[]? visuals;
-    private ExternalNode<CPlugMaterial>[]? materials;
-    private Light[]? lights;
-    private CPlugMaterialUserInst?[]? materialUserInsts;
-    private CPlugLightUserModel?[]? lightUserModels;
-    private LightInst[]? lightInsts;
+    private ShadedGeom[] shadedGeoms = Array.Empty<ShadedGeom>();
+    private CPlugVisual?[] visuals = Array.Empty<CPlugVisual>();
+    private ExternalNode<CPlugMaterial>[] materials = Array.Empty<ExternalNode<CPlugMaterial>>();
+    private Light[] lights = Array.Empty<Light>();
+    private CPlugMaterialUserInst?[] materialUserInsts = Array.Empty<CPlugMaterialUserInst>();
+    private CPlugLightUserModel?[] lightUserModels = Array.Empty<CPlugLightUserModel>();
+    private LightInst[] lightInsts = Array.Empty<LightInst>();
 
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk090BB000))]
-    public ShadedGeom[]? ShadedGeoms { get => shadedGeoms; set => shadedGeoms = value; }
+    public ShadedGeom[] ShadedGeoms { get => shadedGeoms; set => shadedGeoms = value; }
 
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk090BB000), sinceVersion: 6)]
-    public CPlugVisual?[]? Visuals { get => visuals; set => visuals = value; }
+    public CPlugVisual?[] Visuals { get => visuals; set => visuals = value; }
 
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk090BB000))]
-    public ExternalNode<CPlugMaterial>[]? Materials { get => materials; private set => materials = value; }
+    public ExternalNode<CPlugMaterial>[] Materials { get => materials; private set => materials = value; }
 
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk090BB000), sinceVersion: 8)]
-    public Light[]? Lights { get => lights; set => lights = value; }
+    public Light[] Lights { get => lights; set => lights = value; }
     
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk090BB000))]
-    public CPlugMaterialUserInst?[]? MaterialUserInsts { get => materialUserInsts; set => materialUserInsts = value; }
+    public CPlugMaterialUserInst?[] MaterialUserInsts { get => materialUserInsts; set => materialUserInsts = value; }
     
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk090BB000), sinceVersion: 10)]
-    public CPlugLightUserModel?[]? LightUserModels { get => lightUserModels; set => lightUserModels = value; }
+    public CPlugLightUserModel?[] LightUserModels { get => lightUserModels; set => lightUserModels = value; }
     
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk090BB000), sinceVersion: 10)]
-    public LightInst[]? LightInsts { get => lightInsts; set => lightInsts = value; }
+    public LightInst[] LightInsts { get => lightInsts; set => lightInsts = value; }
 
     internal CPlugSolid2Model()
     {
 
+    }
+
+    /// <summary>
+    /// Exports the solid to .obj file.
+    /// </summary>
+    /// <param name="objStream">Stream to write OBJ content into.</param>
+    /// <param name="mtlStream">Stream to write MTL content into.</param>
+    /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>
+    /// <param name="encoding">Encoding to use.</param>
+    /// <param name="leaveOpen">If to keep the streams open.</param>
+    /// <param name="corruptedMaterials">If to use a different way to handle corrupted material files (via header reference table, to avoid body parse). Exists due to TMTurbo problems. Can give much less accurate results.</param>
+    public void ExportToObj(Stream objStream,
+                            Stream mtlStream,
+                            string? gameDataFolderPath = null,
+                            Encoding? encoding = null,
+                            bool leaveOpen = false,
+                            bool corruptedMaterials = false)
+    {
+        using var exporter = new ObjFileExporter(
+            objStream,
+            mtlStream,
+            mergeVerticesDigitThreshold: null,
+            gameDataFolderPath,
+            encoding,
+            leaveOpen,
+            corruptedMaterials);
+
+        exporter.Export(this);
     }
 
     #region Chunks
@@ -81,18 +112,18 @@ public class CPlugSolid2Model : CMwNod
         {
             rw.Int32(ref version);
             rw.Id(ref U01);
-            rw.ArrayArchive<ShadedGeom>(ref n.shadedGeoms, version);
+            rw.ArrayArchive<ShadedGeom>(ref n.shadedGeoms!, version);
 
             if (version >= 6)
             {
                 rw.Int32(10); // listVersion
-                rw.ArrayNode<CPlugVisual>(ref n.visuals);
+                rw.ArrayNode<CPlugVisual>(ref n.visuals!);
             }
 
             rw.ArrayId(ref U02);
 
             rw.Int32(10); // listVersion
-            rw.ArrayNode<CPlugMaterial>(ref n.materials);
+            rw.ArrayNode<CPlugMaterial>(ref n.materials!);
 
             rw.NodeRef(ref U03);
 
@@ -131,7 +162,7 @@ public class CPlugSolid2Model : CMwNod
 
                                     if (version >= 8)
                                     {
-                                        rw.ArrayArchive<Light>(ref n.lights);
+                                        rw.ArrayArchive<Light>(ref n.lights!);
                                     }
                                 }
                             }
@@ -142,13 +173,13 @@ public class CPlugSolid2Model : CMwNod
 
             if (version < 16)
             {
-                rw.ArrayNode<CPlugMaterialUserInst>(ref n.materialUserInsts);
+                rw.ArrayNode<CPlugMaterialUserInst>(ref n.materialUserInsts!);
             }
 
             if (version >= 10)
             {
-                rw.ArrayNode<CPlugLightUserModel>(ref n.lightUserModels);
-                rw.ArrayArchive<LightInst>(ref n.lightInsts);
+                rw.ArrayNode<CPlugLightUserModel>(ref n.lightUserModels!);
+                rw.ArrayArchive<LightInst>(ref n.lightInsts!);
 
                 if (version >= 11)
                 {
@@ -168,7 +199,7 @@ public class CPlugSolid2Model : CMwNod
 
                                 if (version >= 15)
                                 {
-                                    rw.Array(ref n.materialUserInsts, r =>
+                                    rw.Array(ref n.materialUserInsts!, r =>
                                     {
                                         var name = r.ReadString();
 

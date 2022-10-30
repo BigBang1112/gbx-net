@@ -1,9 +1,11 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 
 namespace GBX.NET.Utils;
 
 public class ObjFileExporter : IModelExporter, IDisposable
 {
+    private static readonly CultureInfo invariant = CultureInfo.InvariantCulture;
     private static readonly Encoding utf8NoBOM = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
 
     private readonly StreamWriter objWriter;
@@ -223,6 +225,25 @@ public class ObjFileExporter : IModelExporter, IDisposable
         Export(tree, mainNode: null);
     }
 
+    public virtual void Export(CPlugSolid2Model solid2)
+    {
+        for (var i = 0; i < solid2.Visuals.Length; i++)
+        {
+            var visual = solid2.Visuals[i];
+
+            if (visual is null)
+            {
+                continue;
+            }
+            
+            var material = solid2.Materials[i];
+
+            WriteVisualWithMaterial(i.ToString(), visual, material.Node, material.File, solid2.GetGbx());
+        }
+
+        Merge();
+    }
+
     private void Merge()
     {
         objWriter.WriteLine();
@@ -238,8 +259,6 @@ public class ObjFileExporter : IModelExporter, IDisposable
 
     private void ExportRecurse(CPlugTree tree, GameBox? gbx)
     {
-        var invariant = System.Globalization.CultureInfo.InvariantCulture;
-
         foreach (var t in tree.Children)
         {
             if (t is null)
@@ -264,14 +283,20 @@ public class ObjFileExporter : IModelExporter, IDisposable
         {
             return;
         }
+        
+        WriteVisualWithMaterial(tree.Name, visual, corruptedMaterials ? null : tree.Shader as CPlugMaterial, tree.ShaderFile, gbx);
+    }
 
-        objFaceWriter.WriteLine($"\no {tree.Name}");
+    private void WriteVisualWithMaterial(string? visualName,
+        CPlugVisual visual, CPlugMaterial? material, GameBoxRefTable.File? materialFile, GameBox? gbx)
+    {
+        objFaceWriter.WriteLine($"\no {visualName}");
 
         if (corruptedMaterials)
         {
-            WriteCorruptedMaterialToMtl(tree, gbx);
+            WriteCorruptedMaterialToMtl(materialFile, gbx);
         }
-        else if (tree.Shader is CPlugMaterial material)
+        else if (material is not null)
         {
             WriteMaterialToMtl(material);
         }
@@ -343,19 +368,19 @@ public class ObjFileExporter : IModelExporter, IDisposable
         }
     }
 
-    private void WriteCorruptedMaterialToMtl(CPlugTree tree, GameBox? gbx)
+    private void WriteCorruptedMaterialToMtl(GameBoxRefTable.File? materialFile, GameBox? gbx)
     {
-        if (tree.ShaderFile is null || gbx is null)
+        if (materialFile is null || gbx is null)
         {
             return;
         }
 
-        objFaceWriter.WriteLine("usemtl " + tree.ShaderFile.FileName);
-        mtlWriter.WriteLine("newmtl " + tree.ShaderFile.FileName);
+        objFaceWriter.WriteLine("usemtl " + materialFile.FileName);
+        mtlWriter.WriteLine("newmtl " + materialFile.FileName);
 
         var materialFullFileName = Path.Combine(Path.GetDirectoryName(gbx.FileName),
-            gbx.RefTable?.GetRelativeFolderPathToFile(tree.ShaderFile),
-            tree.ShaderFile.FileName);
+            gbx.RefTable?.GetRelativeFolderPathToFile(materialFile),
+            materialFile.FileName);
 
         if (!File.Exists(materialFullFileName))
         {
