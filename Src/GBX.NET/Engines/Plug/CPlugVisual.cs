@@ -28,18 +28,33 @@ public abstract class CPlugVisual : CPlug
     private TexCoordSet[]? texCoords;
     private Int3[]? indices;
 
+    [NodeMember]
     public VisualFlags Flags
     {
         get => flags;
         set => flags = value;
     }
 
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk09006008))]
+    [AppliedWithChunk(typeof(Chunk0900600A))]
+    [AppliedWithChunk(typeof(Chunk0900600C))]
+    [AppliedWithChunk(typeof(Chunk0900600D))]
+    [AppliedWithChunk(typeof(Chunk0900600E))]
+    [AppliedWithChunk(typeof(Chunk0900600F))]
     public int Count
     {
         get => count;
         set => count = value;
     }
 
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk09006008))]
+    [AppliedWithChunk(typeof(Chunk0900600A))]
+    [AppliedWithChunk(typeof(Chunk0900600C))]
+    [AppliedWithChunk(typeof(Chunk0900600D))]
+    [AppliedWithChunk(typeof(Chunk0900600E))]
+    [AppliedWithChunk(typeof(Chunk0900600F))]
     public TexCoordSet[]? TexCoords
     {
         get => texCoords;
