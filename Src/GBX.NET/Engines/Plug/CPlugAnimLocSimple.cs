@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace GBX.NET.Engines.Plug;
+﻿namespace GBX.NET.Engines.Plug;
 
 /// <remarks>ID: 0x090F8000</remarks>
 [Node(0x090F8000)]
@@ -71,23 +69,23 @@ public class CPlugAnimLocSimple : CMwNod
             rw.Int32(ref versionOld);
             rw.Int32(ref version);
 
-            rw.Int32(n.rotPeriod);
-            rw.Int32(n.transPeriod);
-            rw.Single(n.transY);
+            rw.Int32(ref n.rotPeriod);
+            rw.Int32(ref n.transPeriod);
+            rw.Single(ref n.transY);
 
             if (version >= 1)
             {
-                rw.Int32(n.axis);
+                rw.Int32(ref n.axis);
 
                 if (version >= 2)
                 {
-                    rw.Int32(n.rotPeriodMax);
-                    rw.Int32(n.transPeriodMax);
+                    rw.Int32(ref n.rotPeriodMax);
+                    rw.Int32(ref n.transPeriodMax);
 
                     if (version >= 3)
                     {
-                        rw.Byte(n.rotFunc);
-                        rw.Single(n.rotAngle);
+                        rw.Byte(ref n.rotFunc);
+                        rw.Single(ref n.rotAngle);
                     }
                 }
             }
