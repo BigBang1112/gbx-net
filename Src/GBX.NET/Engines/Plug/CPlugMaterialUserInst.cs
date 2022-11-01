@@ -24,6 +24,7 @@ public class CPlugMaterialUserInst : CMwNod
 
     #region Fields
 
+    private string? materialName;
     private string? model;
     private string? baseTexture;
     private string? link;
@@ -43,6 +44,10 @@ public class CPlugMaterialUserInst : CMwNod
     #endregion
 
     #region Properties
+
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk090FD000))]
+    public string? MaterialName { get => materialName; set => materialName = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk090FD000))]
@@ -135,8 +140,7 @@ public class CPlugMaterialUserInst : CMwNod
     public class Chunk090FD000 : Chunk<CPlugMaterialUserInst>, IVersionable
     {
         private int version;
-
-        public string? U01;
+        
         public string[]? U07;
 
         /// <summary>
@@ -153,7 +157,7 @@ public class CPlugMaterialUserInst : CMwNod
                 rw.Boolean(ref n.isUsingGameMaterial, asByte: true);
             }
 
-            rw.Id(ref U01);
+            rw.Id(ref n.materialName);
             rw.Id(ref n.model);
             rw.String(ref n.baseTexture);
 
