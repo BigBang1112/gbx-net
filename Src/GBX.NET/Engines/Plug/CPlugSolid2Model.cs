@@ -15,6 +15,7 @@ public class CPlugSolid2Model : CMwNod
     private CPlugMaterialUserInst?[] materialUserInsts = Array.Empty<CPlugMaterialUserInst>();
     private CPlugLightUserModel?[] lightUserModels = Array.Empty<CPlugLightUserModel>();
     private LightInst[] lightInsts = Array.Empty<LightInst>();
+    private PreLightGen? preLightGenerator;
 
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk090BB000))]
@@ -43,6 +44,10 @@ public class CPlugSolid2Model : CMwNod
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk090BB000), sinceVersion: 10)]
     public LightInst[] LightInsts { get => lightInsts; set => lightInsts = value; }
+
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk090BB000), sinceVersion: 3)]
+    public PreLightGen? PreLightGenerator { get => preLightGenerator; set => preLightGenerator = value; }
 
     internal CPlugSolid2Model()
     {
@@ -137,10 +142,10 @@ public class CPlugSolid2Model : CMwNod
 
                     if (version >= 3)
                     {
-                        if (rw.Boolean())
+                        if (rw.Boolean(n.preLightGenerator is not null))
                         {
                             // SPlugSolidPreLightGen::Archive
-                            throw new Exception("SPlugSolidPreLightGen::Archive missing");
+                            rw.Archive<PreLightGen>(ref n.preLightGenerator);
                         }
 
                         if (version >= 4)
@@ -372,6 +377,67 @@ public class CPlugSolid2Model : CMwNod
         {
             rw.Int32(ref u01);
             rw.Int32(ref u02);
+        }
+    }
+
+    public class PreLightGen : IReadableWritable
+    {
+        private int v;
+        private int u01;
+        private float u02;
+        private bool u03;
+        private float u04;
+        private float u05;
+        private float u06;
+        private float u07;
+        private float u08;
+        private float u09;
+        private float u10;
+        private float u11;
+        private int u12;
+        private int u13;
+        private Box[] u14 = Array.Empty<Box>();
+        private (int, int, int, int)[]? uvGroups;
+
+        public int Version { get => v; set => v = value; }
+        public int U01 { get => u01; set => u01 = value; }
+        public float U02 { get => u02; set => u02 = value; }
+        public bool U03 { get => u03; set => u03 = value; }
+        public float U04 { get => u04; set => u04 = value; }
+        public float U05 { get => u05; set => u05 = value; }
+        public float U06 { get => u06; set => u06 = value; }
+        public float U07 { get => u07; set => u07 = value; }
+        public float U08 { get => u08; set => u08 = value; }
+        public float U09 { get => u09; set => u09 = value; }
+        public float U10 { get => u10; set => u10 = value; }
+        public float U11 { get => u11; set => u11 = value; }
+        public int U12 { get => u12; set => u12 = value; }
+        public int U13 { get => u13; set => u13 = value; }
+        public Box[] U14 { get => u14; set => u14 = value; }
+        public (int, int, int, int)[]? UvGroups { get => uvGroups; set => uvGroups = value; }
+
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+        {
+            rw.Int32(ref v);
+            rw.Int32(ref u01);
+            rw.Single(ref u02);
+            rw.Boolean(ref u03);
+            rw.Single(ref u04);
+            rw.Single(ref u05);
+            rw.Single(ref u06);
+            rw.Single(ref u07);
+            rw.Single(ref u08);
+            rw.Single(ref u09);
+            rw.Single(ref u10);
+            rw.Single(ref u11);
+            rw.Int32(ref u12);
+            rw.Int32(ref u13);
+            rw.Array<Box>(ref u14!);
+
+            if (v >= 1)
+            {
+                rw.Array(ref uvGroups);
+            }
         }
     }
 }
