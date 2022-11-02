@@ -5,6 +5,7 @@ namespace GBX.NET.Engines.Plug;
 
 /// <remarks>ID: 0x090BB000</remarks>
 [Node(0x090BB000)]
+[NodeExtension("Mesh")]
 [NodeExtension("Solid2")]
 public class CPlugSolid2Model : CMwNod
 {
