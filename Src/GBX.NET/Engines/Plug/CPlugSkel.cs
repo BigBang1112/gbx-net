@@ -17,11 +17,11 @@ public class CPlugSkel : CMwNod
     [AppliedWithChunk(typeof(Chunk090BA000))]
     public Joint[] Joints { get => joints; set => joints = value; }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk090BA000), sinceVersion: 6)]
     public Socket[] Sockets { get => sockets; set => sockets = value; }
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk090BA000), sinceVersion: 14)]
     public JointExpr[] JointExprs { get => jointExprs; set => jointExprs = value; }
 
@@ -45,6 +45,7 @@ public class CPlugSkel : CMwNod
         public bool U03;
         public bool U04;
         public int[]? U05;
+        private byte[]? U06;
 
         public int Version { get => version; set => version = value; }
 
@@ -87,7 +88,7 @@ public class CPlugSkel : CMwNod
 
                             if (version >= 13)
                             {
-                                var bra = rw.Bytes();
+                                rw.Bytes(ref U06);
 
                                 if (version >= 14)
                                 {
