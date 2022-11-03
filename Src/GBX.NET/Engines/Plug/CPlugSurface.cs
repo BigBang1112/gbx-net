@@ -6,7 +6,9 @@
 public class CPlugSurface : CPlug
 {
     private CPlugSurfaceGeom? geom;
-    private SurfaceMaterial[]? materials;
+    private SurfMaterial[]? materials;
+    private ISurf? surf;
+    private CPlugSkel? skel;
 
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk0900C000))]
@@ -14,18 +16,46 @@ public class CPlugSurface : CPlug
 
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk0900C000))]
-    public SurfaceMaterial[]? Materials { get => materials; set => materials = value; }
+    public SurfMaterial[]? Materials { get => materials; set => materials = value; }
+
+    [NodeMember(ExactName = "m_GmSurf")]
+    [AppliedWithChunk(typeof(Chunk0900C003))]
+    public ISurf? Surf { get => surf; set => surf = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk0900C003), sinceVersion: 1)]
+    public CPlugSkel? Skel { get => skel; set => skel = value; }
 
     internal CPlugSurface()
     {
 
     }
 
-    public class SurfaceMaterial // CPlugMaterial
+    private static void ArchiveSurf(ref ISurf? surf, GameBoxReaderWriter rw)
     {
-        public bool containsMaterial;
-        public CMwNod? material;
-        public ushort? defaultMaterialIndex; // set if containsMaterial is false
+        // 0 - Sphere
+        // 1 - Ellipsoid
+        // 6 - Box (Primitive)
+        // 7 - Mesh
+        // 8 - VCylinder (Primitive)
+        // 9 - MultiSphere (Primitive)
+        // 10 - ConvexPolyhedron
+        // 11 - Capsule (Primitive)
+        // 12 - Circle (Non3d)
+        // 13 - Compound
+        // 14 - SphereLocated (Primitive)
+        // 15 - CompoundInstance
+        // 16 - Cylinder (Primitive)
+        // 17 - SphericalShell
+        var surfId = rw.Int32(surf?.Id, defaultValue: -1);
+
+        surf = surfId switch // ArchiveGmSurf
+        {
+            7 => rw.Archive(surf as Mesh), // Mesh
+            13 => rw.Archive(surf as Compound), // Compound
+            -1 => null,
+            _ => throw new NotSupportedException("Unknown surf type: " + surfId)
+        };
     }
 
     /// <summary>
@@ -46,21 +76,7 @@ public class CPlugSurface : CPlug
 
             rw.NodeRef(ref n.geom);
 
-            rw.Array(n.materials, (rw, x) =>
-            {
-                rw.Boolean(ref x.containsMaterial);
-
-                if (x.containsMaterial)
-                {
-                    rw.NodeRef(x.material);
-                }
-                else
-                {
-                    rw.UInt16(x.defaultMaterialIndex);
-
-                    // sometimes there could be node ref?
-                }
-            });
+            rw.ArrayArchive<SurfMaterial>(n.materials);
         }
     }
 
@@ -87,9 +103,8 @@ public class CPlugSurface : CPlug
         private int version;
 
         public int U01;
-        public int U02;
-        public int U03;
-        
+        public byte[]? U02;
+
         public int U06;
 
         public int Version { get => version; set => version = value; }
@@ -103,47 +118,146 @@ public class CPlugSurface : CPlug
                 rw.Int32(ref U01);
             }
 
-            rw.Int32(ref U02); // ArchiveGmSurf?
+            ArchiveSurf(ref n.surf, rw);
 
-            rw.Int32(ref U03); // ArchiveMaterials?
+            rw.ArrayArchive<SurfMaterial>(ref n.materials); // ArchiveMaterials
+            rw.Bytes(ref U02);
 
-            var wat = rw.Array<Vec3>();
-            
-            var nice = rw.Array(null, r =>
+            if (version >= 1)
             {
-                return (r.ReadSingle(),
-                    r.ReadSingle(),
-                    r.ReadSingle(),
-                    r.ReadSingle(),
-                    r.ReadInt3(),
-                    r.ReadUInt16(),
-                    r.ReadByte(),
-                    r.ReadByte());
-            }, (x, w) => { });
+                rw.NodeRef<CPlugSkel>(ref n.skel);
+            }
+        }
+    }
 
-            var U04 = rw.Int32();
+    public class SurfMaterial : IReadableWritable
+    {
+        private CPlugMaterial? material;
+        private ushort? surfaceId;
 
-            var U05 = rw.Array(null, r =>
+        public CPlugMaterial? Mat { get => material; set => material = value; }
+        public ushort? SurfaceId { get => surfaceId; set => surfaceId = value; }
+
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+        {
+            if (rw.Boolean(material is not null))
             {
-                return (r.ReadVec3(),
-                    r.ReadVec3(),
-                    r.ReadInt32());
-            }, (x, w) => { });
-
-            /*var gdsg = rw.Reader.ReadArray<object>(r =>
+                rw.NodeRef(ref material);
+            }
+            else
             {
-                var u01 = r.ReadBoolean();
+                rw.UInt16(ref surfaceId);
+            }
+        }
+    }
 
-                if (!u01)
+    public interface ISurf : IReadableWritable
+    {
+        int Id { get; }
+    }
+
+    public class Mesh : ISurf
+    {
+        public int Id => 7;
+
+        private int v;
+        private Vec3[] vertices = Array.Empty<Vec3>();
+        private (Int3, int)[] triangles = Array.Empty<(Int3, int)>();
+        private (Vec4, Int3, ushort, byte, byte)[] cookedTriangles = Array.Empty<(Vec4, Int3, ushort, byte, byte)>();
+        private AABBTreeCell[] aABBTree = Array.Empty<AABBTreeCell>();
+
+        public int Version { get => v; set => v = value; }
+        public Vec3[] Vertices { get => vertices; set => vertices = value; }
+        public (Int3, int)[] Triangles { get => triangles; set => triangles = value; }
+        public AABBTreeCell[] AABBTree { get => aABBTree; set => aABBTree = value; }
+
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+        {
+            rw.Int32(ref v);
+
+            switch (v)
+            {
+                case 5:
+                    rw.Array<Vec3>(ref vertices!);
+                    rw.Array(ref cookedTriangles!, // GmSurfMeshCookedTri
+                        r => (r.ReadVec4(),
+                            r.ReadInt3(),
+                            r.ReadUInt16(),
+                            r.ReadByte(),
+                            r.ReadByte()),
+                        (x, w) =>
+                        {
+                            w.Write(x.Item1);
+                            w.Write(x.Item2);
+                            w.Write(x.Item3);
+                            w.Write(x.Item4);
+                            w.Write(x.Item5);
+                        });
+                    rw.Int32(1);
+                    rw.ArrayArchive<AABBTreeCell>(ref aABBTree!);
+                    break;
+                case 6:
+                    rw.Array<Vec3>(ref vertices!);
+                    rw.Array<(Int3, int)>(ref triangles!, // GmSurfMeshTri
+                        r => (r.ReadInt3(), r.ReadInt32()),
+                        (x, w) => { w.Write(x.Item1); w.Write(x.Item2); });
+                    break;
+                default:
+                    throw new VersionNotSupportedException(v);
+            }
+        }
+
+        public class AABBTreeCell : IReadableWritable
+        {
+            public Vec3 U01;
+            public Vec3 U02;
+            public int U03;
+
+            public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+            {
+                rw.Vec3(ref U01);
+                rw.Vec3(ref U02);
+                rw.Int32(ref U03);
+            }
+        }
+    }
+
+    public class Compound : ISurf
+    {
+        private ISurf[] surfaces = Array.Empty<ISurf>();
+        private Iso4[] u01 = Array.Empty<Iso4>();
+        private ushort[] u02 = Array.Empty<ushort>();
+
+        public int Id => 13;
+
+        public ISurf[] Surfaces { get => surfaces; set => surfaces = value; }
+        public Iso4[] U01 { get => u01; set => u01 = value; }
+        public ushort[] U02 { get => u02; set => u02 = value; }
+
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+        {
+            var length = rw.Reader?.ReadInt32() ?? surfaces?.Length ?? 0;
+            rw.Writer?.Write(length);
+
+            if (rw.Reader is not null)
+            {
+                surfaces = new ISurf[length];
+            }
+
+            if (surfaces is not null)
+            {
+                for (int i = 0; i < length; i++)
                 {
-                    var u02 = r.ReadInt16();
-                    var u03 = r.ReadInt32();
-                    var u04 = r.ReadUInt64();
-                    var nice = r.ReadNodeRef();
+                    ArchiveSurf(ref surfaces[i]!, rw);
                 }
+            }
 
-                return null;
-            });*/
+            rw.Array<Iso4>(ref u01!, length);
+
+            //if (version >= 1) // Pass version?
+            //{
+                rw.Array<ushort>(ref u02!);
+            //}
         }
     }
 }
