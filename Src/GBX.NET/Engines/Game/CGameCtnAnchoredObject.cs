@@ -233,24 +233,7 @@ public class CGameCtnAnchoredObject : CMwNod
             rw.Byte3(ref n.blockUnitCoord);
             rw.Id(ref n.anchorTreeId!);
             rw.Vec3(ref n.absolutePositionInMap);
-
-            if (rw.Reader is not null)
-            {
-                n.waypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(rw.Reader!, classId: null, progress: null);
-            }
-            
-            if (rw.Writer is not null)
-            {
-                if (n.waypointSpecialProperty is null)
-                {
-                    rw.Writer.Write(-1);
-                }
-                else
-                {
-                    rw.Writer.Write(0x2E009000);
-                    n.waypointSpecialProperty.Write(rw.Writer);
-                }
-            }
+            rw.NodeRef(ref n.waypointSpecialProperty);
 
             if (version < 5)
             {
