@@ -1671,6 +1671,26 @@ public partial class GameBoxReaderWriter
         array = ArrayArchive(array, version, shortLength);
     }
 
+    public T[]? ArrayArchiveWithGbx<T>(T[]? array, bool shortLength = false) where T : IReadableWritableWithGbx, new()
+    {
+        return Array(array, (rw, x) => x.ReadWrite(rw, Reader?.Gbx), shortLength);
+    }
+
+    public void ArrayArchiveWithGbx<T>(ref T[]? array, bool shortLength = false) where T : IReadableWritableWithGbx, new()
+    {
+        array = ArrayArchiveWithGbx(array, shortLength);
+    }
+
+    public T[]? ArrayArchiveWithGbx<T>(T[]? array, int version, bool shortLength = false) where T : IReadableWritableWithGbx, new()
+    {
+        return Array(array, (rw, x) => x.ReadWrite(rw, Reader?.Gbx, version), shortLength);
+    }
+
+    public void ArrayArchiveWithGbx<T>(ref T[]? array, int version, bool shortLength = false) where T : IReadableWritableWithGbx, new()
+    {
+        array = ArrayArchiveWithGbx(array, version, shortLength);
+    }
+
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
