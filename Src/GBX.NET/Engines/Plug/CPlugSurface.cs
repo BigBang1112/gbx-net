@@ -16,6 +16,7 @@ public class CPlugSurface : CPlug
 
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk0900C000))]
+    [AppliedWithChunk(typeof(Chunk0900C003))]
     public SurfMaterial[]? Materials { get => materials; set => materials = value; }
 
     [NodeMember(ExactName = "m_GmSurf")]
