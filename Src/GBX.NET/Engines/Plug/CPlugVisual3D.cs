@@ -79,15 +79,15 @@ public abstract class CPlugVisual3D : CPlugVisual
             int numElems = r.ReadInt32();
             if (numElems != 0 && numElems != n.Count)
             {
-                throw new InvalidDataException(String.Format("num tangents is not equal to num vertices ({0} != {1})", numElems, n.Count));
+                throw new InvalidDataException(string.Format("num tangents is not equal to num vertices ({0} != {1})", numElems, n.Count));
             }
             r.ReadBytes(numElems * numBytesPerTangent);
         }
         
         public override void Read(CPlugVisual3D n, GameBoxReader r)
         {
-            var u02 = !n.Flags.HasFlag(VisualFlags.UnknownFlag22) || n.Flags.HasFlag(VisualFlags.HasVertexNormals);
-            var u03 = !n.Flags.HasFlag(VisualFlags.UnknownFlag22) || n.Flags.HasFlag(VisualFlags.UnknownFlag8);
+            var u02 = !n.IsFlagBitSet(22) || n.HasVertexNormals;
+            var u03 = !n.IsFlagBitSet(22) || n.IsFlagBitSet(8);
 
             // Console.WriteLine("numBytesPerVertex={0}", numBytesPerVertex);
             n.vertices = r.ReadArray(n.Count, r =>
@@ -100,7 +100,7 @@ public abstract class CPlugVisual3D : CPlugVisual
 
                 if (u02)
                 {
-                    if (n.Flags.HasFlag(VisualFlags.UnknownFlag20))
+                    if (n.IsFlagBitSet(20))
                     {
                         vertU01 = r.ReadInt32();
                     }
@@ -112,7 +112,7 @@ public abstract class CPlugVisual3D : CPlugVisual
 
                 if (u03)
                 {
-                    if (n.Flags.HasFlag(VisualFlags.UnknownFlag21))
+                    if (n.IsFlagBitSet(21))
                     {
                         vertU03 = r.ReadInt32();
                     }
