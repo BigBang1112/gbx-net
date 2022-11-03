@@ -181,7 +181,7 @@
                     : selectedGbx.FileNameWithoutExtension + "." + selectedGbx.OfficialExtension + ".Gbx";
                 break;
             case 1:
-                fileName = customExtension is null
+                fileName = string.IsNullOrEmpty(customExtension)
                     ? customFileName + ".Gbx"
                     : customFileName + "." + customExtension + ".Gbx";
 
