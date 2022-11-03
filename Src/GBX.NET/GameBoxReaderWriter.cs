@@ -1591,15 +1591,25 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="forLoopReadWrite"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Array count is negative.</exception>
-    public T[]? Array<T>(T[]? array, Action<GameBoxReaderWriter, T> forLoopReadWrite) where T : new()
+    public T[]? Array<T>(T[]? array, Action<GameBoxReaderWriter, T> forLoopReadWrite, bool shortLength = false) where T : new()
     {
         if (forLoopReadWrite is null)
         {
             throw new ArgumentNullException(nameof(forLoopReadWrite));
         }
 
-        var length = Reader?.ReadInt32() ?? array?.Length ?? 0;
-        Writer?.Write(length);
+        int length;
+
+        if (shortLength)
+        {
+            length = Reader?.ReadUInt16() ?? array?.Length ?? 0;
+            Writer?.Write((ushort)length);
+        }
+        else
+        {
+            length = Reader?.ReadInt32() ?? array?.Length ?? 0;
+            Writer?.Write(length);
+        }
 
         if (Reader is not null)
         {
@@ -1636,29 +1646,29 @@ public partial class GameBoxReaderWriter
         return array;
     }
 
-    public void Array<T>(ref T[]? array, Action<GameBoxReaderWriter, T> forLoopReadWrite) where T : new()
+    public void Array<T>(ref T[]? array, Action<GameBoxReaderWriter, T> forLoopReadWrite, bool shortLength = false) where T : new()
     {
-        array = Array(array, forLoopReadWrite);
+        array = Array(array, forLoopReadWrite, shortLength);
     }
 
-    public T[]? ArrayArchive<T>(T[]? array) where T : IReadableWritable, new()
+    public T[]? ArrayArchive<T>(T[]? array, bool shortLength = false) where T : IReadableWritable, new()
     {
-        return Array(array, (rw, x) => x.ReadWrite(rw));
+        return Array(array, (rw, x) => x.ReadWrite(rw), shortLength);
     }
 
-    public void ArrayArchive<T>(ref T[]? array) where T : IReadableWritable, new()
+    public void ArrayArchive<T>(ref T[]? array, bool shortLength = false) where T : IReadableWritable, new()
     {
-        array = ArrayArchive(array);
+        array = ArrayArchive(array, shortLength);
     }
 
-    public T[]? ArrayArchive<T>(T[]? array, int version) where T : IReadableWritable, new()
+    public T[]? ArrayArchive<T>(T[]? array, int version, bool shortLength = false) where T : IReadableWritable, new()
     {
-        return Array(array, (rw, x) => x.ReadWrite(rw, version));
+        return Array(array, (rw, x) => x.ReadWrite(rw, version), shortLength);
     }
 
-    public void ArrayArchive<T>(ref T[]? array, int version) where T : IReadableWritable, new()
+    public void ArrayArchive<T>(ref T[]? array, int version, bool shortLength = false) where T : IReadableWritable, new()
     {
-        array = ArrayArchive(array, version);
+        array = ArrayArchive(array, version, shortLength);
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -2735,11 +2745,7 @@ public partial class GameBoxReaderWriter
         throw new ThisShouldNotHappenException();
     }
 
-    /// <summary>
-    /// Reads or writes a comprehensive binary component, usually in a way it's defined in the game code.
-    /// </summary>
-    /// <remarks>Binary component has to be defined with the <see cref="IReadableWritable"/> interface.</remarks>
-    public void Archive<T>(ref T? obj, int version = 0) where T : IReadableWritable, new()
+    public T? Archive<T>(T? obj, int version = 0) where T : IReadableWritable, new()
     {
         if (obj is null)
         {
@@ -2750,5 +2756,16 @@ public partial class GameBoxReaderWriter
         }
 
         obj?.ReadWrite(this, version);
+
+        return obj;
+    }
+
+    /// <summary>
+    /// Reads or writes a comprehensive binary component, usually in a way it's defined in the game code.
+    /// </summary>
+    /// <remarks>Binary component has to be defined with the <see cref="IReadableWritable"/> interface.</remarks>
+    public void Archive<T>(ref T? obj, int version = 0) where T : IReadableWritable, new()
+    {
+        obj = Archive(obj, version);
     }
 }
