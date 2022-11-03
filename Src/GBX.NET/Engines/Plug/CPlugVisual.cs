@@ -11,27 +11,22 @@ public abstract class CPlugVisual : CPlug
     private const int isIndexationStaticBit = 5;
     private const int hasVertexNormalsBit = 7;
 
-    [Flags]
-    public enum VisualFlags
-    {
-        SkinFlag1 = (1 << 0),
-        SkinFlag2 = (1 << 1),
-        SkinFlag3 = (1 << 2),
-        IsGeometryStatic = (1 << 3),
-        IsIndexationStatic = (1 << 5),
-        HasVertexNormals = (1 << 7),
-        UnknownFlag8 = (1 << 8),
-        UnknownFlag20 = (1 << 20),
-        UnknownFlag21 = (1 << 21),
-        UnknownFlag22 = (1 << 22)
-    }
-
     private Split[] splits = Array.Empty<Split>();
-    private Int3[]? indices;
+    private Int3[]? subVisuals;
+    
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk09006005))]
+    public Int3[]? SubVisuals { get => subVisuals; set => subVisuals = value; }
 
     protected int Count { get; set; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk09006008))]
+    [AppliedWithChunk(typeof(Chunk0900600A))]
+    [AppliedWithChunk(typeof(Chunk0900600C))]
+    [AppliedWithChunk(typeof(Chunk0900600D))]
+    [AppliedWithChunk(typeof(Chunk0900600E))]
+    [AppliedWithChunk(typeof(Chunk0900600F))]
     public int Flags { get; set; }
 
     [NodeMember]
@@ -65,6 +60,11 @@ public abstract class CPlugVisual : CPlug
     public TexCoordSet[] TexCoords { get; set; } = Array.Empty<TexCoordSet>();
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0900600A))]
+    [AppliedWithChunk(typeof(Chunk0900600C))]
+    [AppliedWithChunk(typeof(Chunk0900600D))]
+    [AppliedWithChunk(typeof(Chunk0900600E))]
+    [AppliedWithChunk(typeof(Chunk0900600F))]
     public CPlugVertexStream[] VertexStreams { get; set; } = Array.Empty<CPlugVertexStream>();
 
     [NodeMember]
@@ -72,6 +72,8 @@ public abstract class CPlugVisual : CPlug
     public Split[] Splits { get => splits; set => splits = value; }
 
     [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0900600E))]
+    [AppliedWithChunk(typeof(Chunk0900600F))]
     public BitmapElemToPack[] BitmapElemToPacks { get; set; } = Array.Empty<BitmapElemToPack>();
 
     internal CPlugVisual()
@@ -117,12 +119,7 @@ public abstract class CPlugVisual : CPlug
     [Chunk(0x09006001)]
     public class Chunk09006001 : Chunk<CPlugVisual>
     {
-        public string U01;
-
-        public Chunk09006001()
-        {
-            U01 = "";
-        }
+        public string U01 = "";
 
         public override void ReadWrite(CPlugVisual n, GameBoxReaderWriter rw)
         {
@@ -152,7 +149,7 @@ public abstract class CPlugVisual : CPlug
     {
         public override void ReadWrite(CPlugVisual n, GameBoxReaderWriter rw)
         {
-            rw.Array<Int3>(ref n.indices); // SSubVisual?
+            rw.Array<Int3>(ref n.subVisuals); // SSubVisual?
         }
     }
 
