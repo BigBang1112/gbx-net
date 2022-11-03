@@ -7,6 +7,10 @@ public class CPlugCloudsParam : CMwNod
 {
     private Vec2[]? points;
 
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk09182001))]
+    public Vec2[]? Points { get => points; set => points = value; }
+
     internal CPlugCloudsParam()
     {
 
