@@ -121,7 +121,7 @@ public class CPlugSurface : CPlug
 
             ArchiveSurf(ref n.surf, rw);
 
-            rw.ArrayArchive<SurfMaterial>(ref n.materials); // ArchiveMaterials
+            rw.ArrayArchiveWithGbx<SurfMaterial>(ref n.materials); // ArchiveMaterials
             rw.Bytes(ref U02);
 
             if (version >= 1)
@@ -131,19 +131,32 @@ public class CPlugSurface : CPlug
         }
     }
 
-    public class SurfMaterial : IReadableWritable
+    public class SurfMaterial : IReadableWritableWithGbx
     {
+        private GameBox? gbx;
         private CPlugMaterial? material;
+        private GameBoxRefTable.File? materialFile;
         private ushort? surfaceId;
 
-        public CPlugMaterial? Mat { get => material; set => material = value; }
+        public CPlugMaterial? Material
+        {
+            get => material = GetNodeFromRefTable(gbx, material, materialFile) as CPlugMaterial;
+            set => material = value;
+        }
+        
         public ushort? SurfaceId { get => surfaceId; set => surfaceId = value; }
+
+        public void ReadWrite(GameBoxReaderWriter rw, GameBox? gbx, int version = 0)
+        {
+            this.gbx ??= gbx;
+            ReadWrite(rw, version);
+        }
 
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
             if (rw.Boolean(material is not null))
             {
-                rw.NodeRef(ref material);
+                rw.NodeRef(ref material, ref materialFile);
             }
             else
             {
