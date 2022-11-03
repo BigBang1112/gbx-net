@@ -753,6 +753,7 @@
   11F CPlugEntRecordData
   159 CPlugStaticObjectModel
   160 CPlugPlacementPatch
+  182 CPlugCloudsParam
 0A Scene
   000 CSceneEngine
   001 CScene
