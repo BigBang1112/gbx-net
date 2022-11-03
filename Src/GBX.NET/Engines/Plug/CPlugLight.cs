@@ -1,6 +1,4 @@
-﻿using GBX.NET.Engines.Graphic;
-
-namespace GBX.NET.Engines.Plug;
+﻿namespace GBX.NET.Engines.Plug;
 
 /// <remarks>ID: 0x0901D000</remarks>
 [Node(0x0901D000)]
