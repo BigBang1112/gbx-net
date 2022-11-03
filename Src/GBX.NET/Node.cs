@@ -74,21 +74,26 @@ public abstract class Node
 
     protected internal Node? GetNodeFromRefTable(Node? nodeAtTheMoment, GameBoxRefTable.File? nodeFile)
     {
-        if (nodeAtTheMoment is not null || nodeFile is null || gbxForRefTable is null)
+        return GetNodeFromRefTable(gbxForRefTable, nodeAtTheMoment, nodeFile);
+    }
+
+    internal static Node? GetNodeFromRefTable(GameBox? gbx, Node? nodeAtTheMoment, GameBoxRefTable.File? nodeFile)
+    {
+        if (nodeAtTheMoment is not null || nodeFile is null || gbx is null)
         {
             return nodeAtTheMoment;
         }
 
-        var refTable = gbxForRefTable.RefTable;
+        var refTable = gbx.RefTable;
 
         if (refTable is null)
         {
             return nodeAtTheMoment;
         }
 
-        var fileName = gbxForRefTable.PakFileName ?? gbxForRefTable.FileName;
+        var fileName = gbx.PakFileName ?? gbx.FileName;
 
-        return refTable.GetNode(nodeAtTheMoment, nodeFile, fileName, gbxForRefTable?.ExternalGameData);
+        return refTable.GetNode(nodeAtTheMoment, nodeFile, fileName, gbx?.ExternalGameData);
     }
 
     internal static T? Parse<T>(GameBoxReader r, uint? classId, IProgress<GameBoxReadProgress>? progress, bool ignoreZeroIdChunk = false) where T : Node
