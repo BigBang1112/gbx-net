@@ -2788,4 +2788,14 @@ public partial class GameBoxReaderWriter
     {
         obj = Archive(obj, version);
     }
+
+    public void VersionInt32(IVersionable versionable)
+    {
+        versionable.Version = Int32(versionable.Version);
+    }
+
+    public void VersionByte(IVersionable versionable)
+    {
+        versionable.Version = Byte(versionable.Version);
+    }
 }
