@@ -191,7 +191,7 @@ public class CPlugMaterialUserInst : CMwNod
 
                     if (version >= 3)
                     {
-                        rw.ArrayArchive<UvAnim>(ref n.uvAnims);
+                        rw.ArrayArchive<UvAnim>(ref n.uvAnims, version);
 
                         if (version >= 4)
                         {
@@ -300,8 +300,8 @@ public class CPlugMaterialUserInst : CMwNod
 
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
-            rw.String(ref u01!);
-            rw.String(ref u02!);
+            rw.Id(ref u01!);
+            rw.Id(ref u02!);
             rw.Int32(ref u03);
         }
     }
