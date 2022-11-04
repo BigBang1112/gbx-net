@@ -203,8 +203,10 @@ public abstract class CPlugVisual : CPlug
             n.Flags |= skinFlags;
 
             n.Count = r.ReadInt32();
+            
+            var type = GetType();
 
-            if (GetType() != typeof(Chunk09006008))
+            if (type != typeof(Chunk09006008))
             {
                 n.VertexStreams = r.ReadArray(r => r.ReadNodeRef<CPlugVertexStream>() ?? throw new Exception("Null VertexStream"));
             }
@@ -219,7 +221,10 @@ public abstract class CPlugVisual : CPlug
 
             n.SetFlagBit(8, r.ReadBoolean());
             
-            U01 = r.ReadArray<Iso4>();
+            if (type == typeof(Chunk09006008))
+            {
+                U01 = r.ReadArray<Iso4>();
+            }
         }
 
         public override void Write(CPlugVisual n, GameBoxWriter w)
@@ -234,7 +239,9 @@ public abstract class CPlugVisual : CPlug
 
             w.Write(n.Count);
 
-            if (GetType() != typeof(Chunk09006008))
+            var type = GetType();
+            
+            if (type != typeof(Chunk09006008))
             {
                 w.WriteArray(n.VertexStreams, (x, w) => w.Write(x));
             }
@@ -252,7 +259,10 @@ public abstract class CPlugVisual : CPlug
 
             w.Write(n.IsFlagBitSet(8));
 
-            w.WriteArray(U01);
+            if (type == typeof(Chunk09006008))
+            {
+                w.WriteArray(U01);
+            }
         }
     }
 
