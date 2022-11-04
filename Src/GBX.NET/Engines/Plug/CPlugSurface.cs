@@ -201,8 +201,9 @@ public class CPlugSurface : CPlug
         public int Version { get => v; set => v = value; }
         public Vec3[] Vertices { get => vertices; set => vertices = value; }
         public (Int3, int)[] Triangles { get => triangles; set => triangles = value; }
+        public (Vec4, Int3, ushort, byte, byte)[] CookedTriangles { get => cookedTriangles; set => cookedTriangles = value; }
         public AABBTreeCell[] AABBTree { get => aABBTree; set => aABBTree = value; }
-
+        
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
             rw.Int32(ref v);
