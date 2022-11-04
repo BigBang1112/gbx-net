@@ -18,7 +18,7 @@ public abstract class CPlugVisual : CPlug
     [AppliedWithChunk(typeof(Chunk09006005))]
     public Int3[]? SubVisuals { get => subVisuals; set => subVisuals = value; }
 
-    protected int Count { get; set; }
+    protected int Count { get; private set; }
 
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk09006008))]
