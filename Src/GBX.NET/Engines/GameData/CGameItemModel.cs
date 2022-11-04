@@ -4,7 +4,7 @@
 /// An item model, custom block, vehicle, etc.
 /// </summary>
 /// <remarks>ID: 0x0x2E002000</remarks>
-[Node(0x2E002000), WritingNotSupported]
+[Node(0x2E002000)]
 [NodeExtension("Item")]
 [NodeExtension("Block")]
 public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader // CGameCustomBlockModel but it's here instead
