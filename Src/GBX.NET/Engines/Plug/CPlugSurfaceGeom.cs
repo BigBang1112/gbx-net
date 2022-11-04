@@ -91,60 +91,26 @@ public class CPlugSurfaceGeom : CPlugSurface
     [Chunk(0x0900F004)]
     public class Chunk0900F004 : Chunk<CPlugSurfaceGeom>
     {
-        public override void Read(CPlugSurfaceGeom n, GameBoxReader r)
+        public string U01 = "";
+        public NET.Box U02;
+        public int U03;
+        public ushort U04;
+
+        public override void ReadWrite(CPlugSurfaceGeom n, GameBoxReaderWriter rw)
         {
-            var u01 = r.ReadId();
-            var u02 = r.ReadBox();
-            var u03 = r.ReadInt32();
+            rw.Id(ref U01!);
+            rw.Box(ref U02);
 
-            if (r.BaseStream is IXorTrickStream cryptedStream)
+            if (rw.Reader is not null && rw.Reader.BaseStream is IXorTrickStream cryptedStream)
             {
-                cryptedStream.InitializeXorTrick(BitConverter.GetBytes(u02.X - u02.X2), 0, 4);
+                cryptedStream.InitializeXorTrick(BitConverter.GetBytes(U02.X - U02.X2), 0, 4);
             }
 
-            switch (u03)
-            {
-                case 7:
-                    // SurfMesh
-                    var u04 = r.ReadInt32();
+            var surf = n.Surf;
+            ArchiveSurf(ref surf, rw);
+            n.Surf = surf;
 
-                    switch (u04)
-                    {
-                        case 1:
-                        case 2:
-                        case 3:
-                            // Array of Vec3
-                            r.ReadArray<Vec3>();
-                            // Array of STriangle
-                            r.ReadArray(r => r.ReadBytes(32));
-
-                            // SMeshOctreeCell (GmOctree)
-                            var type = r.ReadInt32();
-
-                            switch (type)
-                            {
-                                case 1:
-                                    uint version = r.ReadUInt32();
-                                    uint size = r.ReadUInt32();
-                                    break;
-                                case 3:
-                                    r.ReadArray(r => r.ReadBytes(32));
-                                    break;
-                                default:
-                                    throw new NotImplementedException();
-                            }
-
-                            break;
-                        default:
-                            throw new NotImplementedException();
-                    }
-
-                    break;
-                default:
-                    throw new NotImplementedException();
-            }
-
-            r.ReadUInt16();
+            rw.UInt16(ref U04);
         }
     }
 

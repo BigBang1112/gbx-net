@@ -21,6 +21,7 @@ public class CPlugSurface : CPlug
 
     [NodeMember(ExactName = "m_GmSurf")]
     [AppliedWithChunk(typeof(Chunk0900C003))]
+    [AppliedWithChunk(typeof(CPlugSurfaceGeom.Chunk0900F004))]
     public ISurf? Surf { get => surf; set => surf = value; }
 
     [NodeMember(ExactlyNamed = true)]
@@ -32,7 +33,7 @@ public class CPlugSurface : CPlug
 
     }
 
-    private static void ArchiveSurf(ref ISurf? surf, GameBoxReaderWriter rw)
+    protected static void ArchiveSurf(ref ISurf? surf, GameBoxReaderWriter rw)
     {
         // 0 - Sphere
         // 1 - Ellipsoid
@@ -196,13 +197,15 @@ public class CPlugSurface : CPlug
         private Vec3[] vertices = Array.Empty<Vec3>();
         private (Int3, int)[] triangles = Array.Empty<(Int3, int)>();
         private (Vec4, Int3, ushort, byte, byte)[] cookedTriangles = Array.Empty<(Vec4, Int3, ushort, byte, byte)>();
-        private AABBTreeCell[] aABBTree = Array.Empty<AABBTreeCell>();
+        private AABBTreeCell[]? aABBTree;
+        private int? meshOctreeCellVersion;
+        private (int, Vec3, Vec3, int)[]? meshOctreeCells;
 
         public int Version { get => v; set => v = value; }
         public Vec3[] Vertices { get => vertices; set => vertices = value; }
         public (Int3, int)[] Triangles { get => triangles; set => triangles = value; }
         public (Vec4, Int3, ushort, byte, byte)[] CookedTriangles { get => cookedTriangles; set => cookedTriangles = value; }
-        public AABBTreeCell[] AABBTree { get => aABBTree; set => aABBTree = value; }
+        public AABBTreeCell[]? AABBTree { get => aABBTree; set => aABBTree = value; }
         
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
@@ -210,6 +213,42 @@ public class CPlugSurface : CPlug
 
             switch (v)
             {
+                case 1:
+                case 2:
+                case 3:
+                    rw.Array<Vec3>(ref vertices!);
+                    rw.Array(ref cookedTriangles!,
+                        r => (r.ReadVec4(),
+                            r.ReadInt3(),
+                            r.ReadUInt16(),
+                            r.ReadByte(),
+                            r.ReadByte()),
+                        (x, w) =>
+                        {
+                            w.Write(x.Item1);
+                            w.Write(x.Item2);
+                            w.Write(x.Item3);
+                            w.Write(x.Item4);
+                            w.Write(x.Item5);
+                        });
+
+
+                    rw.Int32(ref meshOctreeCellVersion);
+                    rw.Array(ref meshOctreeCells, r =>
+                    {
+                        return (r.ReadInt32(),
+                            r.ReadVec3(),
+                            r.ReadVec3(),
+                            r.ReadInt32());
+                    }, (x, w) =>
+                    {
+                        w.Write(x.Item1);
+                        w.Write(x.Item2);
+                        w.Write(x.Item3);
+                        w.Write(x.Item4);
+                    });
+
+                    break;
                 case 5:
                     rw.Array<Vec3>(ref vertices!);
                     rw.Array(ref cookedTriangles!, // GmSurfMeshCookedTri
