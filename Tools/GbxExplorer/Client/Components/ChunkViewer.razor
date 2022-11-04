@@ -49,7 +49,7 @@
         @onmouseover="() => over = true"
         @onmouseout="() => over = false">
 
-        @if (atts is not null && chunkType.IsGenericType)
+        @if (chunkType.IsGenericType)
         {
             var classType = chunkType.GetGenericArguments()[0];
             var name = classType.Name;
