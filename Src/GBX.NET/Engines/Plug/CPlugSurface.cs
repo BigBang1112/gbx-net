@@ -52,6 +52,7 @@ public class CPlugSurface : CPlug
 
         surf = surfId switch // ArchiveGmSurf
         {
+            6 => rw.Archive(surf as Box),
             7 => rw.Archive(surf as Mesh), // Mesh
             13 => rw.Archive(surf as Compound), // Compound
             -1 => null,
@@ -168,6 +169,23 @@ public class CPlugSurface : CPlug
     public interface ISurf : IReadableWritable
     {
         int Id { get; }
+    }
+
+    public class Box : ISurf
+    {
+        private NET.Box transform;
+        private short u01;
+
+        public int Id => 6;
+
+        public NET.Box Transform { get => transform; set => transform = value; }
+        public short U01 { get => u01; set => u01 = value; }
+
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+        {
+            rw.Box(ref transform);
+            rw.Int16(ref u01);
+        }
     }
 
     public class Mesh : ISurf
