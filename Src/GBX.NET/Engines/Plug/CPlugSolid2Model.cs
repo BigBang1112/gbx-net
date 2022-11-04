@@ -177,7 +177,7 @@ public class CPlugSolid2Model : CMwNod
                 }
             }
 
-            if (version < 16)
+            if (version >= 8 && version < 16)
             {
                 rw.ArrayNode<CPlugMaterialUserInst>(ref n.materialUserInsts!);
             }
