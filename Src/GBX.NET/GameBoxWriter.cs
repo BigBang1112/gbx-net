@@ -350,20 +350,27 @@ public class GameBoxWriter : BinaryWriter
         if (nodeFile is not null)
         {
             var nodeFileIndex = nodeFile.NodeIndex;
+            var alreadyAdded = false;
 
             while (AuxNodes.TryGetValue(nodeFileIndex, out Node? alreadyAddedNode))
             {
-                if (node != alreadyAddedNode)
+                if (node == alreadyAddedNode)
                 {
-                    nodeFileIndex++;
+                    alreadyAdded = true;
+                    break;
                 }
+
+                nodeFileIndex++;
             }
 
             nodeFile.NodeIndex = nodeFileIndex;
 
             Write(nodeFileIndex + 1);
-            
-            AuxNodes.Add(nodeFileIndex, null);
+
+            if (!alreadyAdded)
+            {
+                AuxNodes.Add(nodeFileIndex, null);
+            }
 
             return;
         }
