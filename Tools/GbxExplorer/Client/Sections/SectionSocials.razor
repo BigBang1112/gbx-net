@@ -1,5 +1,7 @@
-﻿<div class="section section-socials">
-    <a class="button button-social" href="https://github.com/BigBang1112/gbx-net" target=”_blank”>
+﻿@inject IConfiguration Config
+
+<div class="section section-socials">
+    <a class="button button-social" href="https://github.com/BigBang1112/gbx-net/tree/@branch" target=”_blank”>
         <img src="img/github-small.png" />
         <span>GitHub</span>
     </a>
@@ -18,5 +20,10 @@
 </div>
 
 @code {
+    private string branch = "master";
 
+    protected override void OnInitialized()
+    {
+        branch = Config["Branch"];
+    }
 }
