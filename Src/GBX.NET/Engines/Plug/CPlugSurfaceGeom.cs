@@ -1,11 +1,35 @@
-﻿using System.Diagnostics;
-
-namespace GBX.NET.Engines.Plug;
+﻿namespace GBX.NET.Engines.Plug;
 
 /// <remarks>ID: 0x0900F000</remarks>
-[Node(0x0900F000), WritingNotSupported]
+[Node(0x0900F000)]
 public class CPlugSurfaceGeom : CPlugSurface
 {
+    private int type;
+    private Vec3[] vertices = Array.Empty<Vec3>();
+    private (Vec4, Int3, ushort, byte, byte)[]? triangles;
+    private int meshOctreeCellVersion;
+    private (int, Vec3, Vec3, int)[]? meshOctreeCells;
+
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0900F002))]
+    public int Type { get => type; set => type = value; }
+    
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0900F002))]
+    public Vec3[] Vertices { get => vertices; set => vertices = value; }
+    
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0900F002))]
+    public (Vec4, Int3, ushort, byte, byte)[]? Triangles { get => triangles; set => triangles = value; }
+
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0900F002))]
+    public int MeshOctreeCellVersion { get => meshOctreeCellVersion; set => meshOctreeCellVersion = value; }
+    
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0900F002))]
+    public (int, Vec3, Vec3, int)[]? MeshOctreeCells { get => meshOctreeCells; set => meshOctreeCells = value; }
+
     internal CPlugSurfaceGeom()
     {
 
@@ -19,38 +43,41 @@ public class CPlugSurfaceGeom : CPlugSurface
     [Chunk(0x0900F002)]
     public class Chunk0900F002 : Chunk<CPlugSurfaceGeom>
     {
-        public int U01;
-        public Vec3[]? U02;
-        public object? U03;
-        public int U04;
-        public object? U05;
-
         public override void ReadWrite(CPlugSurfaceGeom n, GameBoxReaderWriter rw)
         {
-            U01 = rw.Int32();
-            U02 = rw.Array<Vec3>();
+            rw.Int32(ref n.type); // Only 3 is known
+            rw.Array<Vec3>(ref n.vertices!);
 
-            U03 = rw.Array(null, r =>
+            rw.Array(ref n.triangles, r => // STriangle array?
             {
-                return (r.ReadSingle(),
-                    r.ReadSingle(),
-                    r.ReadSingle(),
-                    r.ReadSingle(),
+                return (r.ReadVec4(),
                     r.ReadInt3(),
                     r.ReadUInt16(),
                     r.ReadByte(),
                     r.ReadByte());
-            }, (x, w) => { });
+            }, (x, w) =>
+            {
+                w.Write(x.Item1);
+                w.Write(x.Item2);
+                w.Write(x.Item3);
+                w.Write(x.Item4);
+                w.Write(x.Item5);
+            });
 
-            U04 = rw.Int32();
-
-            U05 = rw.Array(null, r =>
+            rw.Int32(ref n.meshOctreeCellVersion);
+            rw.Array(ref n.meshOctreeCells, r =>
             {
                 return (r.ReadInt32(),
                     r.ReadVec3(),
                     r.ReadVec3(),
                     r.ReadInt32());
-            }, (x, w) => { });
+            }, (x, w) =>
+            {
+                w.Write(x.Item1);
+                w.Write(x.Item2);
+                w.Write(x.Item3);
+                w.Write(x.Item4);
+            });
         }
     }
 
