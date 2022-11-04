@@ -64,6 +64,21 @@ public abstract class CPlugVisual3D : CPlugVisual
             n.tangents = r.ReadArray<Vec3>();
             n.biTangents = r.ReadArray<Vec3>();
         }
+
+        public override void Write(CPlugVisual3D n, GameBoxWriter w)
+        {
+            for (int i = 0; i < n.Count; i++)
+            {
+                var v = n.vertices[i];
+                w.Write(v.Position);
+                w.Write(v.Normal.GetValueOrDefault());
+                w.Write(v.U02.GetValueOrDefault());
+                w.Write(v.U03.GetValueOrDefault());
+            }
+
+            w.WriteArray<Vec3>(n.tangents);
+            w.WriteArray<Vec3>(n.biTangents);
+        }
     }
 
     /// <summary>
