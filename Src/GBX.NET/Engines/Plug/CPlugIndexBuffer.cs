@@ -9,6 +9,10 @@ public class CPlugIndexBuffer : CPlug
 
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk09057000))]
+    public int Flags { get => flags; set => flags = value; }
+    
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk09057000))]
     public ushort[] Indices { get => indices; set => indices = value; }
 
     internal CPlugIndexBuffer()
