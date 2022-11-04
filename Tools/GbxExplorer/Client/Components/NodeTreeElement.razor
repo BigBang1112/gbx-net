@@ -79,10 +79,11 @@
     }
 
     // Selection speciality when dealing with closing expanded properties and enumerables
-    if (Property is not null && SelectionService.Element?.Property == Property)
+    // This if statement can cause infinite loop in some cases
+    /*if (Property is not null && SelectionService.Element?.Property == Property)
     {
         SelectionService.Element = this;
-    }
+    }*/
 
     if (Value is not null && SelectionService.Element?.Value == Value)
     {
