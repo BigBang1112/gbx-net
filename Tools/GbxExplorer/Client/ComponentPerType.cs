@@ -13,7 +13,7 @@ public static class ComponentPerType
             return typeof(T);
         }
 
-        if (type.IsGenericType)
+        if (type.IsGenericType && type.Name != "KeyValuePair`2")
         {
             var genericType = type.GetGenericTypeDefinition();
 
