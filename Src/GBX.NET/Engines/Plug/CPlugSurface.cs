@@ -1,4 +1,7 @@
-﻿namespace GBX.NET.Engines.Plug;
+﻿using GBX.NET.Utils;
+using System.Text;
+
+namespace GBX.NET.Engines.Plug;
 
 /// <remarks>ID: 0x0900C000</remarks>
 [Node(0x0900C000)]
@@ -32,6 +35,23 @@ public class CPlugSurface : CPlug
     internal CPlugSurface()
     {
 
+    }
+
+    /// <summary>
+    /// Exports the surface to .obj file.
+    /// </summary>
+    /// <param name="objStream">Stream to write OBJ content into.</param>
+    /// <param name="encoding">Encoding to use.</param>
+    /// <param name="leaveOpen">If to keep the streams open.</param>
+    public void ExportToObj(Stream objStream, Encoding? encoding = null, bool leaveOpen = false)
+    {
+        using var exporter = new ObjFileExporter(
+            objStream,
+            mtlStream: null,
+            encoding: encoding,
+            leaveOpen: leaveOpen);
+
+        exporter.Export(this);
     }
 
     protected static void ArchiveSurf(ref ISurf? surf, GameBoxReaderWriter rw)

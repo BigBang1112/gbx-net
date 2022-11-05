@@ -9,7 +9,7 @@ public class ObjFileExporter : IModelExporter, IDisposable
     private static readonly Encoding utf8NoBOM = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
 
     private readonly StreamWriter objWriter;
-    private readonly StreamWriter mtlWriter;
+    private readonly StreamWriter? mtlWriter;
     private readonly StringWriter objFaceWriter;
     private readonly StringWriter objUvWriter;
     
@@ -31,7 +31,7 @@ public class ObjFileExporter : IModelExporter, IDisposable
     /// <param name="leaveOpen">If to keep the streams open.</param>
     /// <param name="corruptedMaterials">If to use a different way to handle corrupted material files (via header reference table, to avoid body parse). Exists due to TMTurbo problems. Can give much less accurate results.</param>
     public ObjFileExporter(Stream objStream,
-                           Stream mtlStream,
+                           Stream? mtlStream,
                            int? mergeVerticesDigitThreshold = null,
                            string? gameDataFolderPath = null,
                            Encoding? encoding = null,
@@ -39,7 +39,12 @@ public class ObjFileExporter : IModelExporter, IDisposable
                            bool corruptedMaterials = false)
     {
         objWriter = new StreamWriter(objStream, encoding ?? utf8NoBOM, bufferSize: 1024, leaveOpen);
-        mtlWriter = new StreamWriter(mtlStream, encoding ?? utf8NoBOM, bufferSize: 1024, leaveOpen);
+
+        if (mtlStream is not null)
+        {
+            mtlWriter = new StreamWriter(mtlStream, encoding ?? utf8NoBOM, bufferSize: 1024, leaveOpen);
+        }
+        
         objFaceWriter = new StringWriter();
         objUvWriter = new StringWriter();
         
@@ -52,9 +57,9 @@ public class ObjFileExporter : IModelExporter, IDisposable
     {
         var invariant = System.Globalization.CultureInfo.InvariantCulture;
 
-        mtlWriter.WriteLine("newmtl _Nothing");
-        mtlWriter.WriteLine("Ka 1.000 1.000 1.000");
-        mtlWriter.WriteLine("Kd 1.000 1.000 1.000");
+        mtlWriter?.WriteLine("newmtl _Nothing");
+        mtlWriter?.WriteLine("Ka 1.000 1.000 1.000");
+        mtlWriter?.WriteLine("Kd 1.000 1.000 1.000");
 
         var validMaterials = new List<string>();
 
@@ -65,7 +70,7 @@ public class ObjFileExporter : IModelExporter, IDisposable
                 continue;
             }
                 
-            mtlWriter.WriteLine("newmtl " + mat.MaterialUserInst.Link);
+            mtlWriter?.WriteLine("newmtl " + mat.MaterialUserInst.Link);
             validMaterials.Add(mat.MaterialUserInst.Link);
 
             if (gameDataFolderPath is null)
@@ -118,11 +123,11 @@ public class ObjFileExporter : IModelExporter, IDisposable
             var texDdsFolder = Path.GetDirectoryName(texGbx.FileName) ?? "";
             var texDdsFilePath = Path.Combine(texDdsFolder, texRefTable.GetRelativeFolderPathToFile(texDdsFile), texDdsFile.FileName!);
 
-            mtlWriter.WriteLine($"map_Ka \"{texDdsFilePath}\"");
-            mtlWriter.WriteLine($"map_Kd \"{texDdsFilePath}\"");
+            mtlWriter?.WriteLine($"map_Ka \"{texDdsFilePath}\"");
+            mtlWriter?.WriteLine($"map_Kd \"{texDdsFilePath}\"");
 
-            mtlWriter.WriteLine("Ka 1.000 1.000 1.000");
-            mtlWriter.WriteLine("Kd 1.000 1.000 1.000");
+            mtlWriter?.WriteLine("Ka 1.000 1.000 1.000");
+            mtlWriter?.WriteLine("Kd 1.000 1.000 1.000");
         }
 
         var positionsDict = mergeVerticesDigitThreshold.HasValue
@@ -243,6 +248,26 @@ public class ObjFileExporter : IModelExporter, IDisposable
         }
 
         Merge();
+    }
+    
+    public virtual void Export(CPlugSurface surface)
+    {
+        if (surface.Surf is not CPlugSurface.Mesh mesh)
+        {
+            return;
+        }
+
+        foreach (var v in mesh.Vertices)
+        {
+            objWriter.WriteLine("v {0} {1} {2}", v.X.ToString(invariant), v.Y.ToString(invariant), v.Z.ToString(invariant));
+        }
+
+        objWriter.WriteLine();
+
+        foreach (var (_, t, _, _, _) in mesh.CookedTriangles)
+        {
+            objWriter.WriteLine("f {0} {1} {2}", t.X + 1, t.Y + 1, t.Z + 1);
+        }
     }
 
     private void Merge()
@@ -377,7 +402,7 @@ public class ObjFileExporter : IModelExporter, IDisposable
         }
 
         objFaceWriter.WriteLine("usemtl " + materialFile.FileName);
-        mtlWriter.WriteLine("newmtl " + materialFile.FileName);
+        mtlWriter?.WriteLine("newmtl " + materialFile.FileName);
 
         var materialFullFileName = Path.Combine(Path.GetDirectoryName(gbx.FileName),
             gbx.RefTable?.GetRelativeFolderPathToFile(materialFile),
@@ -416,7 +441,7 @@ public class ObjFileExporter : IModelExporter, IDisposable
             Path.GetFileNameWithoutExtension(material.GetGbx()!.PakFileName));
 
         objFaceWriter.WriteLine("usemtl " + materialName);
-        mtlWriter.WriteLine("newmtl " + materialName);
+        mtlWriter?.WriteLine("newmtl " + materialName);
 
         if (material.CustomMaterial is null)
         {
@@ -466,8 +491,8 @@ public class ObjFileExporter : IModelExporter, IDisposable
             return;
         }
 
-        mtlWriter.WriteLine("Ka 1.000 1.000 1.000");
-        mtlWriter.WriteLine("Kd 1.000 1.000 1.000");
+        mtlWriter?.WriteLine("Ka 1.000 1.000 1.000");
+        mtlWriter?.WriteLine("Kd 1.000 1.000 1.000");
 
         try
         {
@@ -485,8 +510,8 @@ public class ObjFileExporter : IModelExporter, IDisposable
 
             fullTextureFileName = fullTextureFileName.Replace('\\', '/');
 
-            mtlWriter.WriteLine($"map_Ka \"{fullTextureFileName}\"");
-            mtlWriter.WriteLine($"map_Kd \"{fullTextureFileName}\"");
+            mtlWriter?.WriteLine($"map_Ka \"{fullTextureFileName}\"");
+            mtlWriter?.WriteLine($"map_Kd \"{fullTextureFileName}\"");
         }
         catch (Exception ex)
         {
@@ -497,7 +522,7 @@ public class ObjFileExporter : IModelExporter, IDisposable
     public virtual void Dispose()
     {
         objWriter.Dispose();
-        mtlWriter.Dispose();
+        mtlWriter?.Dispose();
         objFaceWriter.Dispose();
         objUvWriter.Dispose();
     }
