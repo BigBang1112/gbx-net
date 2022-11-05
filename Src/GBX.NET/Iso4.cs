@@ -152,6 +152,11 @@ public readonly record struct Iso4(float XX, float XY, float XZ,
     {
         var normalizedColumnX = new Vec3(XX, YX, ZX).GetNormalized();
 
+        if (normalizedColumnX == Vec3.Zero)
+        {
+            normalizedColumnX = new(1, 0, 0);
+        }
+
         return new Iso4(normalizedColumnX.X, XY, XZ,
                         normalizedColumnX.Y, YY, YZ,
                         normalizedColumnX.Z, ZY, ZZ,
@@ -162,6 +167,11 @@ public readonly record struct Iso4(float XX, float XY, float XZ,
     {
         var normalizedColumnY = new Vec3(XY, YY, ZY).GetNormalized();
 
+        if (normalizedColumnY == Vec3.Zero)
+        {
+            normalizedColumnY = new(0, 1, 0);
+        }
+
         return new Iso4(XX, normalizedColumnY.X, XZ,
                         YX, normalizedColumnY.Y, YZ,
                         ZX, normalizedColumnY.Z, ZZ,
@@ -171,6 +181,11 @@ public readonly record struct Iso4(float XX, float XY, float XZ,
     public Iso4 SetScaleZ(float value)
     {
         var normalizedColumnZ = new Vec3(XZ, YZ, ZZ).GetNormalized();
+
+        if (normalizedColumnZ == Vec3.Zero)
+        {
+            normalizedColumnZ = new(0, 0, 1);
+        }
 
         return new Iso4(XX, XY, normalizedColumnZ.X,
                         YX, YY, normalizedColumnZ.Y,
