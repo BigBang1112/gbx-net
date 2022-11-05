@@ -21,6 +21,7 @@ public class CPlugSurface : CPlug
 
     [NodeMember(ExactName = "m_GmSurf")]
     [AppliedWithChunk(typeof(Chunk0900C003))]
+    [AppliedWithChunk(typeof(CPlugSurfaceGeom.Chunk0900F002))]
     [AppliedWithChunk(typeof(CPlugSurfaceGeom.Chunk0900F004))]
     public ISurf? Surf { get => surf; set => surf = value; }
 
@@ -206,7 +207,9 @@ public class CPlugSurface : CPlug
         public (Int3, int)[] Triangles { get => triangles; set => triangles = value; }
         public (Vec4, Int3, ushort, byte, byte)[] CookedTriangles { get => cookedTriangles; set => cookedTriangles = value; }
         public AABBTreeCell[]? AABBTree { get => aABBTree; set => aABBTree = value; }
-        
+        public int? MeshOctreeCellVersion { get => meshOctreeCellVersion; set => meshOctreeCellVersion = value; }
+        public (int, Vec3, Vec3, int)[]? MeshOctreeCells { get => meshOctreeCells; set => meshOctreeCells = value; }
+
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
             rw.Int32(ref v);
@@ -231,7 +234,6 @@ public class CPlugSurface : CPlug
                             w.Write(x.Item4);
                             w.Write(x.Item5);
                         });
-
 
                     rw.Int32(ref meshOctreeCellVersion);
                     rw.Array(ref meshOctreeCells, r =>
