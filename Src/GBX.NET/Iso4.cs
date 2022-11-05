@@ -94,4 +94,92 @@ public readonly record struct Iso4(float XX, float XY, float XZ,
     {
         return new Vec3(GetScaleX(), GetScaleY(), GetScaleZ());
     }
+
+    public Vec3 GetPosition()
+    {
+        return new Vec3(TX, TY, TZ);
+    }
+
+    public Iso4 ScaleX(float value)
+    {
+        return new Iso4(XX * value, XY, XZ,
+                        YX * value, YY, YZ,
+                        ZX * value, ZY, ZZ,
+                        TX, TY, TZ);
+    }
+
+    public Iso4 ScaleY(float value)
+    {
+        return new Iso4(XX, XY * value, XZ,
+                        YX, YY * value, YZ,
+                        ZX, ZY * value, ZZ,
+                        TX, TY, TZ);
+    }
+
+    public Iso4 ScaleZ(float value)
+    {
+        return new Iso4(XX, XY, XZ * value,
+                        YX, YY, YZ * value,
+                        ZX, ZY, ZZ * value,
+                        TX, TY, TZ);
+    }
+
+    public Iso4 Scale(float value)
+    {
+        return new Iso4(XX * value, XY * value, XZ * value,
+                        YX * value, YY * value, YZ * value,
+                        ZX * value, ZY * value, ZZ * value,
+                        TX, TY, TZ);
+    }
+
+    public Iso4 Translate(Vec3 translation)
+    {
+        return new Iso4(XX, XY, XZ,
+                        YX, YY, YZ,
+                        ZX, ZY, ZZ,
+                        TX + translation.X, TY + translation.Y, TZ + translation.Z);
+    }
+
+    public Iso4 Translate(float x, float y, float z)
+    {
+        return new Iso4(XX, XY, XZ,
+                        YX, YY, YZ,
+                        ZX, ZY, ZZ,
+                        TX + x, TY + y, TZ + z);
+    }
+
+    public Iso4 SetScaleX(float value)
+    {
+        var normalizedColumnX = new Vec3(XX, YX, ZX).GetNormalized();
+
+        return new Iso4(normalizedColumnX.X, XY, XZ,
+                        normalizedColumnX.Y, YY, YZ,
+                        normalizedColumnX.Z, ZY, ZZ,
+                        TX, TY, TZ).ScaleX(value);
+    }
+
+    public Iso4 SetScaleY(float value)
+    {
+        var normalizedColumnY = new Vec3(XY, YY, ZY).GetNormalized();
+
+        return new Iso4(XX, normalizedColumnY.X, XZ,
+                        YX, normalizedColumnY.Y, YZ,
+                        ZX, normalizedColumnY.Z, ZZ,
+                        TX, TY, TZ).ScaleY(value);
+    }
+
+    public Iso4 SetScaleZ(float value)
+    {
+        var normalizedColumnZ = new Vec3(XZ, YZ, ZZ).GetNormalized();
+
+        return new Iso4(XX, XY, normalizedColumnZ.X,
+                        YX, YY, normalizedColumnZ.Y,
+                        ZX, ZY, normalizedColumnZ.Z,
+                        TX, TY, TZ).ScaleZ(value);
+    }
+
+    public Iso4 SetScale(float value)
+    {
+        return ScaleX(value).ScaleY(value).ScaleZ(value);
+    }
 }

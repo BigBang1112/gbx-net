@@ -160,19 +160,19 @@ else
     public float ScaleX
     {
         get => Value is Iso4 iso4 ? iso4.GetScaleX() : default;
-        set { }
+        set => SetAndUpdate(Value is Iso4 iso4 ? iso4.SetScaleX(value) : new Iso4().SetScaleX(value));
     }
 
     public float ScaleY
     {
         get => Value is Iso4 iso4 ? iso4.GetScaleY() : default;
-        set { }
+        set => SetAndUpdate(Value is Iso4 iso4 ? iso4.SetScaleY(value) : new Iso4().SetScaleY(value));
     }
 
     public float ScaleZ
     {
         get => Value is Iso4 iso4 ? iso4.GetScaleZ() : default;
-        set { }
+        set => SetAndUpdate(Value is Iso4 iso4 ? iso4.SetScaleZ(value) : new Iso4().SetScaleZ(value));
     }
 
     private void InitValue()
