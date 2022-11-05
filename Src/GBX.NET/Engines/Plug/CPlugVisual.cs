@@ -221,7 +221,7 @@ public abstract class CPlugVisual : CPlug
 
             n.SetFlagBit(8, r.ReadBoolean());
             
-            if (type == typeof(Chunk09006008))
+            if (type != typeof(Chunk0900600C))
             {
                 U01 = r.ReadArray<Iso4>();
             }
@@ -259,7 +259,7 @@ public abstract class CPlugVisual : CPlug
 
             w.Write(n.IsFlagBitSet(8));
 
-            if (type == typeof(Chunk09006008))
+            if (type != typeof(Chunk0900600C))
             {
                 w.WriteArray(U01);
             }
