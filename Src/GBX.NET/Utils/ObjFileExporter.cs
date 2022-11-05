@@ -60,27 +60,27 @@ public class ObjFileExporter : IModelExporter, IDisposable
 
         foreach (var mat in crystal.Materials)
         {
-            if (mat is null || mat.Link is null)
+            if (mat.MaterialUserInst is null || mat.MaterialUserInst.Link is null)
             {
                 continue;
             }
                 
-            mtlWriter.WriteLine("newmtl " + mat.Link);
-            validMaterials.Add(mat.Link);
+            mtlWriter.WriteLine("newmtl " + mat.MaterialUserInst.Link);
+            validMaterials.Add(mat.MaterialUserInst.Link);
 
             if (gameDataFolderPath is null)
             {
                 continue;
             }
 
-            var materialPath = $"{gameDataFolderPath}/{mat.Link}.Material.Gbx";
+            var materialPath = $"{gameDataFolderPath}/{mat.MaterialUserInst.Link}.Material.Gbx";
 
             if (!File.Exists(materialPath))
             {
                 continue;
             }
 
-            var matGbx = GameBox.ParseHeader($"{gameDataFolderPath}/{mat.Link}.Material.Gbx");
+            var matGbx = GameBox.ParseHeader($"{gameDataFolderPath}/{mat.MaterialUserInst.Link}.Material.Gbx");
 
             var refTable = matGbx.RefTable;
 
@@ -167,7 +167,8 @@ public class ObjFileExporter : IModelExporter, IDisposable
 
                 foreach (var face in faceGroup)
                 {
-                    var thisMaterial = face.Material?.Link is not null && validMaterials.Contains(face.Material.Link) ? face.Material.Link : "_Nothing";
+                    var thisMaterial = face.Material?.MaterialUserInst?.Link is not null && validMaterials.Contains(face.Material.MaterialUserInst.Link)
+                        ? face.Material.MaterialUserInst.Link : "_Nothing";
 
                     if (currentMat != thisMaterial)
                     {

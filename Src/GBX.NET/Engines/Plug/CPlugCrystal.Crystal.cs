@@ -10,7 +10,7 @@ public partial class CPlugCrystal
         public Face[] Faces { get; set; } = Array.Empty<Face>();
         public Group[] Groups { get; set; } = Array.Empty<Group>();
 
-        public static Crystal Read(GameBoxReader r, CPlugMaterialUserInst?[]? materials)
+        public static Crystal Read(GameBoxReader r, Material[] materials)
         {
             var version = r.ReadInt32(); // up to 32 supported
             var u06 = r.ReadInt32(); // 4
@@ -142,7 +142,7 @@ public partial class CPlugCrystal
 
                     var groupIndex = version >= 33 ? r.ReadOptimizedInt(groups.Length) : r.ReadInt32();
 
-                    var material = materialIndex != -1 ? materials?[materialIndex] : null;
+                    var material = materialIndex == -1 ? null : materials[materialIndex];
 
                     return new Face(verts, groups[groupIndex], material);
                 });
