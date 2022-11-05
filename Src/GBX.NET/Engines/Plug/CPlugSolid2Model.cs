@@ -58,6 +58,25 @@ public class CPlugSolid2Model : CMwNod
     /// <summary>
     /// Exports the solid to .obj file.
     /// </summary>
+    /// <param name="fileNameWithoutExtension">File name to write OBJ and MTL content into (separately). The files will be automatically suffixed with ".obj" and ".mtl".</param>
+    /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>
+    /// <param name="encoding">Encoding to use.</param>
+    /// <param name="leaveOpen">If to keep the streams open.</param>
+    /// <param name="corruptedMaterials">If to use a different way to handle corrupted material files (via header reference table, to avoid body parse). Exists due to TMTurbo problems. Can give much less accurate results.</param>
+    public void ExportToObj(string fileNameWithoutExtension,
+                            string? gameDataFolderPath = null,
+                            Encoding? encoding = null,
+                            bool leaveOpen = false,
+                            bool corruptedMaterials = false)
+    {
+        using var objStream = File.Create(fileNameWithoutExtension + ".obj");
+        using var mtlStream = File.Create(fileNameWithoutExtension + ".mtl");
+        ExportToObj(objStream, mtlStream, gameDataFolderPath, encoding, leaveOpen, corruptedMaterials);
+    }
+
+    /// <summary>
+    /// Exports the solid to .obj file.
+    /// </summary>
     /// <param name="objStream">Stream to write OBJ content into.</param>
     /// <param name="mtlStream">Stream to write MTL content into.</param>
     /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>

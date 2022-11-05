@@ -40,6 +40,18 @@ public class CPlugSurface : CPlug
     /// <summary>
     /// Exports the surface to .obj file.
     /// </summary>
+    /// <param name="fileNameWithoutExtension">File name to write OBJ content into. It will be automatically suffixed with ".obj".</param>
+    /// <param name="encoding">Encoding to use.</param>
+    /// <param name="leaveOpen">If to keep the streams open.</param>
+    public void ExportToObj(string fileNameWithoutExtension, Encoding? encoding = null, bool leaveOpen = false)
+    {
+        using var objStream = File.Create(fileNameWithoutExtension + ".obj");
+        ExportToObj(objStream, encoding, leaveOpen);
+    }
+
+    /// <summary>
+    /// Exports the surface to .obj file.
+    /// </summary>
     /// <param name="objStream">Stream to write OBJ content into.</param>
     /// <param name="encoding">Encoding to use.</param>
     /// <param name="leaveOpen">If to keep the streams open.</param>

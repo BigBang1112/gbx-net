@@ -81,6 +81,25 @@ public partial class CPlugCrystal : CPlugTreeGenerator
         exporter.Export(this);
     }
 
+    /// <summary>
+    /// Exports the crystal to .obj file.
+    /// </summary>
+    /// <param name="fileNameWithoutExtension">File name to write OBJ and MTL content into (separately). The files will be automatically suffixed with ".obj" and ".mtl".</param>
+    /// <param name="mergeVerticesDigitThreshold">If set, overlapping vertices (usually between the mesh groups) will be merged. 3 or 4 give the best accuracy.</param>
+    /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>
+    /// <param name="encoding">Encoding to use.</param>
+    /// <param name="leaveOpen">If to keep the streams open.</param>
+    public void ExportToObj(string fileNameWithoutExtension,
+                            int? mergeVerticesDigitThreshold = null,
+                            string? gameDataFolderPath = null,
+                            Encoding? encoding = null,
+                            bool leaveOpen = false)
+    {
+        using var objStream = File.Create(fileNameWithoutExtension + ".obj");
+        using var mtlStream = File.Create(fileNameWithoutExtension + ".mtl");
+        ExportToObj(objStream, mtlStream, mergeVerticesDigitThreshold, gameDataFolderPath, encoding, leaveOpen);
+    }
+
     private static GeometryLayer ReadGeometryLayer(GameBoxReader r,
                                                    Material[] materials,
                                                    string layerId,
