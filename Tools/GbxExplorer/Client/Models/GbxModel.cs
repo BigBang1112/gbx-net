@@ -38,7 +38,15 @@ public class GbxModel : GbxModelBase
             return null;
         }
 
-        return extensionSplit[extensionSplit.Length - 2];
+        var extensionWithSpaces = extensionSplit[extensionSplit.Length - 2];
+        var indexOfFirstSpace = extensionWithSpaces.IndexOf(' ');
+
+        if (indexOfFirstSpace == -1)
+        {
+            return extensionWithSpaces;
+        }
+
+        return extensionWithSpaces.Substring(0, indexOfFirstSpace);
     }
 
     private static IEnumerable<Type> GetInheritance(Node node)
