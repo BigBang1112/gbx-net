@@ -41,6 +41,11 @@ public class HeaderChunk<T> : Chunk<T>, IHeaderChunk where T : CMwNod
         return $"{typeof(T).Name} header chunk 0x{Id:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}";
     }
 
+    public override void Write(T n, GameBoxWriter w)
+    {
+        Write(w);
+    }
+
     public void Write(GameBoxWriter w)
     {
         w.Write(Data);
