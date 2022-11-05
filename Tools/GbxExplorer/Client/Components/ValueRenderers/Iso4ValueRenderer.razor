@@ -16,19 +16,40 @@ else if (Value is Iso4 iso4)
 {
     var cannotWrite = Property?.CannotWrite() == true;
 
-    <div style="display:grid;grid-template-columns: auto auto auto;gap:0.2rem">
-        <input type="text" @bind="XX" disabled="@cannotWrite" style="min-width: 4ch; width: @(XX.ToString().Length)ch;" oninput="onInputText(this)" />
-        <input type="text" @bind="XY" disabled="@cannotWrite" style="min-width: 4ch; width: @(XY.ToString().Length)ch;" oninput="onInputText(this)" />
-        <input type="text" @bind="XZ" disabled="@cannotWrite" style="min-width: 4ch; width: @(XZ.ToString().Length)ch;" oninput="onInputText(this)" />
-        <input type="text" @bind="YX" disabled="@cannotWrite" style="min-width: 4ch; width: @(YX.ToString().Length)ch;" oninput="onInputText(this)" />
-        <input type="text" @bind="YY" disabled="@cannotWrite" style="min-width: 4ch; width: @(YY.ToString().Length)ch;" oninput="onInputText(this)" />
-        <input type="text" @bind="YZ" disabled="@cannotWrite" style="min-width: 4ch; width: @(YZ.ToString().Length)ch;" oninput="onInputText(this)" />
-        <input type="text" @bind="ZX" disabled="@cannotWrite" style="min-width: 4ch; width: @(ZX.ToString().Length)ch;" oninput="onInputText(this)" />
-        <input type="text" @bind="ZY" disabled="@cannotWrite" style="min-width: 4ch; width: @(ZY.ToString().Length)ch;" oninput="onInputText(this)" />
-        <input type="text" @bind="ZZ" disabled="@cannotWrite" style="min-width: 4ch; width: @(ZZ.ToString().Length)ch;" oninput="onInputText(this)" />
-        <input type="text" @bind="TX" disabled="@cannotWrite" style="min-width: 4ch; width: @(TX.ToString().Length)ch;" oninput="onInputText(this)" />
-        <input type="text" @bind="TY" disabled="@cannotWrite" style="min-width: 4ch; width: @(TY.ToString().Length)ch;" oninput="onInputText(this)" />
-        <input type="text" @bind="TZ" disabled="@cannotWrite" style="min-width: 4ch; width: @(TZ.ToString().Length)ch;" oninput="onInputText(this)" />
+    <div class="iso-grid">
+        <input type="text" @bind="XX" disabled="@cannotWrite" style="width: @(XX.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="XY" disabled="@cannotWrite" style="width: @(XY.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="XZ" disabled="@cannotWrite" style="width: @(XZ.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="YX" disabled="@cannotWrite" style="width: @(YX.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="YY" disabled="@cannotWrite" style="width: @(YY.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="YZ" disabled="@cannotWrite" style="width: @(YZ.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="ZX" disabled="@cannotWrite" style="width: @(ZX.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="ZY" disabled="@cannotWrite" style="width: @(ZY.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="ZZ" disabled="@cannotWrite" style="width: @(ZZ.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="TX" disabled="@cannotWrite" style="width: @(TX.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="TY" disabled="@cannotWrite" style="width: @(TY.ToString().Length)ch;" oninput="onInputText(this)" />
+        <input type="text" @bind="TZ" disabled="@cannotWrite" style="width: @(TZ.ToString().Length)ch;" oninput="onInputText(this)" />
+    </div>
+
+    <div class="pitch-yaw-roll-grid">
+        <span>Pitch:</span>
+        <input type="text" @bind="Pitch" disabled="@cannotWrite" style="width: @(Pitch.ToString().Length)ch;" oninput="onInputText(this)" />
+        <span>Yaw:</span>
+        <input type="text" @bind="Yaw" disabled="@cannotWrite" style="width: @(Yaw.ToString().Length)ch;" oninput="onInputText(this)" />
+        <span>Roll:</span>
+        <input type="text" @bind="Roll" disabled="@cannotWrite" style="width: @(Roll.ToString().Length)ch;" oninput="onInputText(this)" />
+        <span>Position</span>
+        <span>&nbsp;</span>
+    </div>
+
+    <div class="pitch-yaw-roll-grid">
+        <span>Scale X:</span>
+        <input type="text" @bind="ScaleX" disabled="@cannotWrite" style="width: @(ScaleX.ToString().Length)ch;" oninput="onInputText(this)" />
+        <span>Scale Y:</span>
+        <input type="text" @bind="ScaleY" disabled="@cannotWrite" style="width: @(ScaleY.ToString().Length)ch;" oninput="onInputText(this)" />
+        <span>Scale Z:</span>
+        <input type="text" @bind="ScaleZ" disabled="@cannotWrite" style="width: @(ScaleZ.ToString().Length)ch;" oninput="onInputText(this)" />
+        <span>&nbsp;</span>
     </div>
     
     @if (!cannotWrite && IsNullable)
@@ -43,7 +64,7 @@ else
 
 @code {
     private object? nullifiedValue;
-    
+
     public override bool ShowPropertyInTree(PropertyInfo prop) => false;
 
     public float XX
@@ -51,7 +72,7 @@ else
         get => Value is Iso4 iso4 ? iso4.XX : 0;
         set => SetAndUpdate(Value is Iso4 iso4 ? iso4 with { XX = value } : new Iso4(value, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
     }
-    
+
     public float XY
     {
         get => Value is Iso4 iso4 ? iso4.XY : 0;
@@ -116,6 +137,42 @@ else
     {
         get => Value is Iso4 iso4 ? iso4.TZ : 0;
         set => SetAndUpdate(Value is Iso4 iso4 ? iso4 with { TZ = value } : new Iso4(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, value));
+    }
+
+    public float Pitch
+    {
+        get => Value is Iso4 iso4 ? iso4.GetPitch(inDegrees: true) : default;
+        set { }
+    }
+
+    public float Yaw
+    {
+        get => Value is Iso4 iso4 ? iso4.GetYaw(inDegrees: true) : default;
+        set { }
+    }
+
+    public float Roll
+    {
+        get => Value is Iso4 iso4 ? iso4.GetRoll(inDegrees: true) : default;
+        set { }
+    }
+
+    public float ScaleX
+    {
+        get => Value is Iso4 iso4 ? iso4.GetScaleX() : default;
+        set { }
+    }
+
+    public float ScaleY
+    {
+        get => Value is Iso4 iso4 ? iso4.GetScaleY() : default;
+        set { }
+    }
+
+    public float ScaleZ
+    {
+        get => Value is Iso4 iso4 ? iso4.GetScaleZ() : default;
+        set { }
     }
 
     private void InitValue()
