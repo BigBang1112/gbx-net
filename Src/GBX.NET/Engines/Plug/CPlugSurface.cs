@@ -63,7 +63,7 @@ public class CPlugSurface : CPlug
             encoding: encoding,
             leaveOpen: leaveOpen);
 
-        exporter.Export(this);
+        exporter.Export(Geom ?? this);
     }
 
     protected static void ArchiveSurf(ref ISurf? surf, GameBoxReaderWriter rw)
@@ -86,6 +86,8 @@ public class CPlugSurface : CPlug
 
         surf = surfId switch // ArchiveGmSurf
         {
+            0 => rw.Archive((Sphere)(surf ?? new Sphere())),
+            1 => rw.Archive((Ellipsoid)(surf ?? new Ellipsoid())),
             6 => rw.Archive(surf as Box),
             7 => rw.Archive(surf as Mesh), // Mesh
             13 => rw.Archive(surf as Compound), // Compound
@@ -364,6 +366,34 @@ public class CPlugSurface : CPlug
             //{
                 rw.Array<ushort>(ref u02!);
             //}
+        }
+    }
+
+    public struct Sphere : ISurf
+    {
+        private float size;
+
+        public int Id => 0;
+
+        public float Size { get => size; set => size = value; }
+
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+        {
+            rw.Single(ref size);
+        }
+    }
+
+    public struct Ellipsoid : ISurf
+    {
+        private Vec3 size;
+
+        public int Id => 1;
+
+        public Vec3 Size { get => size; set => size = value; }
+
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+        {
+            rw.Vec3(ref size);
         }
     }
 }
