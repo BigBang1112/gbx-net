@@ -1611,6 +1611,16 @@ public partial class GameBoxReaderWriter
             Writer?.Write(length);
         }
 
+        return Array(array, forLoopReadWrite, length);
+    }
+
+    public T[]? Array<T>(T[]? array, Action<GameBoxReaderWriter, T> forLoopReadWrite, int length) where T : new()
+    {
+        if (forLoopReadWrite is null)
+        {
+            throw new ArgumentNullException(nameof(forLoopReadWrite));
+        }
+
         if (Reader is not null)
         {
             array = new T[length];
@@ -1669,6 +1679,16 @@ public partial class GameBoxReaderWriter
     public void ArrayArchive<T>(ref T[]? array, int version, bool shortLength = false) where T : IReadableWritable, new()
     {
         array = ArrayArchive(array, version, shortLength);
+    }
+
+    public T[]? ArrayArchive<T>(T[]? array, int version, int length) where T : IReadableWritable, new()
+    {
+        return Array(array, (rw, x) => x.ReadWrite(rw, version), length);
+    }
+
+    public void ArrayArchive<T>(ref T[]? array, int version, int length) where T : IReadableWritable, new()
+    {
+        array = ArrayArchive(array, version, length);
     }
 
     public T[]? ArrayArchiveWithGbx<T>(T[]? array, bool shortLength = false) where T : IReadableWritableWithGbx, new()
