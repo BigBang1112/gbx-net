@@ -354,7 +354,7 @@ public class GameBoxWriter : BinaryWriter
 
             while (AuxNodes.TryGetValue(nodeFileIndex, out Node? alreadyAddedNode))
             {
-                if (node == alreadyAddedNode)
+                if (alreadyAddedNode is null || node == alreadyAddedNode)
                 {
                     alreadyAdded = true;
                     break;
