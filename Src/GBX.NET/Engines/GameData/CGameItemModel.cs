@@ -652,7 +652,7 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
         private int version;
 
         public int U01;
-        public int U02;
+        public string? U02;
         public int U03;
 
         public int Version { get => version; set => version = value; }
@@ -669,7 +669,7 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
 
             if (version >= 6)
             {
-                rw.Int32(ref U02); // SkinDirNameCustom
+                rw.String(ref U02); // SkinDirNameCustom
 
                 if (version >= 7)
                 {
