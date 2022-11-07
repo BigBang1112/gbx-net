@@ -45,7 +45,9 @@ public class CPlugSkel : CMwNod
         public bool U03;
         public bool U04;
         public int[]? U05;
-        private byte[]? U06;
+        public byte[]? U06;
+        public byte? U07;
+        public int? U08;
 
         public int Version { get => version; set => version = value; }
 
@@ -90,17 +92,23 @@ public class CPlugSkel : CMwNod
                             {
                                 rw.Bytes(ref U06);
 
-                                if (version >= 14)
+                                if (version >= 14 && version < 17)
                                 {
                                     // some array
-                                    // then NPlugSkel::ArchiveJointExprs
                                     rw.Int32(0);
+                                    // then NPlugSkel::ArchiveJointExprs
                                     rw.ArrayArchive<JointExpr>(ref n.jointExprs!);
 
                                     if (version >= 15)
                                     {
                                         throw new ChunkVersionNotSupportedException(version);
                                     }
+                                }
+
+                                if (version >= 17)
+                                {
+                                    rw.Byte(ref U07);
+                                    rw.Int32(ref U08);
                                 }
                             }
                         }
