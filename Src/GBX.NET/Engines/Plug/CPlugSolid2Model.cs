@@ -14,6 +14,7 @@ public class CPlugSolid2Model : CMwNod
     private ExternalNode<CPlugMaterial>[] materials = Array.Empty<ExternalNode<CPlugMaterial>>();
     private Light[] lights = Array.Empty<Light>();
     private CPlugMaterialUserInst?[] materialUserInsts = Array.Empty<CPlugMaterialUserInst>();
+    private Material[] customMaterials = Array.Empty<Material>();
     private CPlugLightUserModel?[] lightUserModels = Array.Empty<CPlugLightUserModel>();
     private LightInst[] lightInsts = Array.Empty<LightInst>();
     private PreLightGen? preLightGenerator;
@@ -37,7 +38,11 @@ public class CPlugSolid2Model : CMwNod
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk090BB000))]
     public CPlugMaterialUserInst?[] MaterialUserInsts { get => materialUserInsts; set => materialUserInsts = value; }
-    
+
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk090BB000))]
+    public Material[] CustomMaterials { get => customMaterials; set => customMaterials = value; }
+
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk090BB000), sinceVersion: 10)]
     public CPlugLightUserModel?[] LightUserModels { get => lightUserModels; set => lightUserModels = value; }
@@ -147,8 +152,13 @@ public class CPlugSolid2Model : CMwNod
 
             rw.ArrayId(ref U02);
 
-            rw.Int32(10); // listVersion
-            rw.ArrayNode<CPlugMaterial>(ref n.materials!);
+            var materialCount = version >= 29 ? rw.Int32(n.customMaterials.Length) : 0;
+
+            if (materialCount == 0)
+            {
+                rw.Int32(10); // listVersion
+                rw.ArrayNode<CPlugMaterial>(ref n.materials!);
+            }
 
             rw.NodeRef(ref U03);
 
@@ -224,37 +234,79 @@ public class CPlugSolid2Model : CMwNod
 
                                 if (version >= 15)
                                 {
-                                    rw.Array(ref n.materialUserInsts!, r =>
+                                    if (version == 32)
                                     {
-                                        var name = r.ReadString();
+                                        rw.Int32();
+                                    }
 
-                                        if (name.Length > 0)  // If the material file exists (name != ""), it references the file instead
-                                        {
-                                            return null;
-                                        }
-
-                                        var material = r.ReadNodeRef<CPlugMaterialUserInst>();
-
-                                        return material;
-                                    }, (x, w) =>
+                                    if (version >= 16 && version < 21)
                                     {
-                                        w.Write("");
+                                        rw.ArrayArchive<Material>(ref n.customMaterials!, version);
+                                    }
+                                    
+                                    if (version > 20 && version < 29)
+                                    {
+                                        rw.ArrayNode<CPlugMaterialUserInst>(ref n.materialUserInsts!);
+                                    }
 
-                                        if (x is null)
-                                        {
-                                            throw new NotSupportedException();
-                                        }
-
-                                        w.Write(x);
-                                    });
-
+                                    if (version != 20)
+                                    {
+                                        rw.ArrayArchive<Material>(ref n.customMaterials!, version, materialCount);
+                                    }
+                                    
                                     if (version >= 17)
                                     {
-                                        rw.Array<Box>(ref U14);
+                                        if (version < 21)
+                                        {
+                                            rw.Array<Box>(ref U14);
+                                        }
+                                        
+                                        if (version >= 34)
+                                        {
+                                            rw.Int32();
+                                        }
 
                                         if (version >= 20)
                                         {
                                             rw.ArrayId(ref U15);
+
+                                            if (version >= 22)
+                                            {
+                                                var xx = rw.Int32(); // array
+
+                                                if (version >= 23) // Guess
+                                                {
+                                                    var xxx = rw.Int32(); // array
+                                                    var xxxx = rw.Int32(); // array
+
+                                                    if (version >= 24)
+                                                    {
+                                                        var wtf = rw.Int32();
+
+                                                        if (version >= 25)
+                                                        {
+                                                            rw.NodeRef();
+                                                            rw.Single();
+                                                            rw.Single();
+
+                                                            if (version >= 27)
+                                                            {
+                                                                rw.Id();
+
+                                                                if (version >= 32)
+                                                                {
+                                                                    rw.Int32();
+
+                                                                    if (version >= 34)
+                                                                    {
+                                                                        rw.Int32();
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -276,11 +328,13 @@ public class CPlugSolid2Model : CMwNod
         private int u02;
         private int u03;
         private int? u04;
+        private int? u05;
 
         public int U01 { get => u01; set => u01 = value; }
         public int U02 { get => u02; set => u02 = value; }
         public int U03 { get => u03; set => u03 = value; }
         public int? U04 { get => u04; set => u04 = value; }
+        public int? U05 { get => u05; set => u05 = value; }
 
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
@@ -291,6 +345,11 @@ public class CPlugSolid2Model : CMwNod
             if (version >= 1)
             {
                 rw.Int32(ref u04);
+
+                if (version >= 32)
+                {
+                    rw.Int32(ref u05);
+                }
             }
         }
     }
@@ -301,49 +360,39 @@ public class CPlugSolid2Model : CMwNod
         private bool u02 = true;
         private Node? u03;
         private string? u04;
-        private float u05;
-        private float u06;
-        private float u07;
-        private float u08;
-        private float u09;
-        private float u10;
-        private float u11;
-        private float u12;
-        private float u13;
-        private float u14;
-        private float u15;
+        private Iso4 u05;
+        private int u06;
+        private int u07;
+        private int u08;
+        private int u09;
+        private int u10;
+        private int u11;
+        private int u12;
+        private int u13;
+        private int u14;
+        private bool u15;
         private float u16;
-        private bool u17;
-        private bool u18;
-        private bool u19;
-        private bool u20;
-        private float? u21;
-        private float? u22;
-        private float? u23;
+        private float u17;
+        private float u18;
 
         public string U01 { get => u01; set => u01 = value; }
         public bool U02 { get => u02; set => u02 = value; }
         public Node? U03 { get => u03; set => u03 = value; }
         public string? U04 { get => u04; set => u04 = value; }
-        public float U05 { get => u05; set => u05 = value; }
-        public float U06 { get => u06; set => u06 = value; }
-        public float U07 { get => u07; set => u07 = value; }
-        public float U08 { get => u08; set => u08 = value; }
-        public float U09 { get => u09; set => u09 = value; }
-        public float U10 { get => u10; set => u10 = value; }
-        public float U11 { get => u11; set => u11 = value; }
-        public float U12 { get => u12; set => u12 = value; }
-        public float U13 { get => u13; set => u13 = value; }
-        public float U14 { get => u14; set => u14 = value; }
-        public float U15 { get => u15; set => u15 = value; }
+        public Iso4 U05 { get => u05; set => u05 = value; }
+        public int U06 { get => u06; set => u06 = value; }
+        public int U07 { get => u07; set => u07 = value; }
+        public int U08 { get => u08; set => u08 = value; }
+        public int U09 { get => u09; set => u09 = value; }
+        public int U10 { get => u10; set => u10 = value; }
+        public int U11 { get => u11; set => u11 = value; }
+        public int U12 { get => u12; set => u12 = value; }
+        public int U13 { get => u13; set => u13 = value; }
+        public int U14 { get => u14; set => u14 = value; }
+        public bool U15 { get => u15; set => u15 = value; }
         public float U16 { get => u16; set => u16 = value; }
-        public bool U17 { get => u17; set => u17 = value; }
-        public bool U18 { get => u18; set => u18 = value; }
-        public bool U19 { get => u19; set => u19 = value; }
-        public bool U20 { get => u20; set => u20 = value; }
-        public float? U21 { get => u21; set => u21 = value; }
-        public float? U22 { get => u22; set => u22 = value; }
-        public float? U23 { get => u23; set => u23 = value; }
+        public float U17 { get => u17; set => u17 = value; }
+        public float U18 { get => u18; set => u18 = value; }
 
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
@@ -359,28 +408,32 @@ public class CPlugSolid2Model : CMwNod
                 rw.String(ref u04);
             }
 
-            rw.Single(ref u05);
-            rw.Single(ref u06);
-            rw.Single(ref u07);
-            rw.Single(ref u08);
-            rw.Single(ref u09);
-            rw.Single(ref u10);
-            rw.Single(ref u11);
-            rw.Single(ref u12);
-            rw.Single(ref u13);
-            rw.Single(ref u14);
-            rw.Single(ref u15);
-            rw.Single(ref u16);
-            rw.Boolean(ref u17);
-            rw.Boolean(ref u18);
-            rw.Boolean(ref u19);
-            rw.Boolean(ref u20);
+            rw.Iso4(ref u05);
+            rw.Int32(ref u06);
+            rw.Int32(ref u07);
+            rw.Int32(ref u08);
+            rw.Int32(ref u09);
+            rw.Int32(ref u10);
+            rw.Int32(ref u11);
 
-            if (u20)
+            if (version >= 26)
             {
-                rw.Single(ref u21);
-                rw.Single(ref u22);
-                rw.Single(ref u23);
+                rw.Int32(ref u12);
+                rw.Int32(ref u13);
+                rw.Int32(ref u14);
+            }
+            else
+            {
+                // u12 and u13 is 0
+            }
+
+            rw.Boolean(ref u15);
+            
+            if (u15)
+            {
+                rw.Single(ref u16);
+                rw.Single(ref u17);
+                rw.Single(ref u18);
             }
         }
     }
@@ -457,6 +510,25 @@ public class CPlugSolid2Model : CMwNod
             if (v >= 1)
             {
                 rw.Array(ref uvGroups);
+            }
+        }
+    }
+
+    public class Material : IReadableWritable
+    {
+        private string materialName = "";
+        private CPlugMaterialUserInst? materialUserInst;
+
+        public string MaterialName { get => materialName; set => materialName = value; }
+        public CPlugMaterialUserInst? MaterialUserInst { get => materialUserInst; set => materialUserInst = value; }
+
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+        {
+            rw.String(ref materialName!);
+
+            if (materialName.Length == 0)
+            {
+                rw.NodeRef<CPlugMaterialUserInst>(ref materialUserInst);
             }
         }
     }
