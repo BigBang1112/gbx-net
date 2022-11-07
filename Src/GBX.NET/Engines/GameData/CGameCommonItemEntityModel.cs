@@ -6,6 +6,7 @@ public class CGameCommonItemEntityModel : CMwNod
 {
     private CMwNod? phyModel;
     private CMwNod? visModel;
+    private CMwNod? staticObject;
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk2E027000))]
@@ -14,6 +15,10 @@ public class CGameCommonItemEntityModel : CMwNod
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk2E027000))]
     public CMwNod? VisModel { get => visModel; set => visModel = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk(typeof(Chunk2E027000), sinceVersion: 4)]
+    public CMwNod? StaticObject { get => staticObject; set => staticObject = value; }
 
     internal CGameCommonItemEntityModel()
     {
@@ -38,7 +43,8 @@ public class CGameCommonItemEntityModel : CMwNod
 
             if (version >= 4)
             {
-
+                rw.NodeRef<CMwNod>(ref n.staticObject);
+                return;
             }
 
             rw.NodeRef<CMwNod>(ref n.phyModel);
