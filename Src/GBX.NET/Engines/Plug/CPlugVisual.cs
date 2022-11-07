@@ -414,6 +414,8 @@ public abstract class CPlugVisual : CPlug
     public class Chunk0900600F : Chunk0900600E, IVersionable
     {
         public ushort[]? U02;
+        public int? U03;
+        public int? U04;
 
         public int Version { get; set; }
 
@@ -426,6 +428,19 @@ public abstract class CPlugVisual : CPlug
             if (Version >= 5)
             {
                 U02 = r.ReadArray<ushort>();
+
+                if (Version >= 6)
+                {
+                    U03 = r.ReadInt32();
+                    U04 = r.ReadInt32();
+
+                    n.Count = 0; // Extremely odd
+
+                    if (U04 > 0)
+                    {
+                        throw new NotSupportedException("U04 > 0");
+                    }
+                }
             }
         }
 
@@ -438,6 +453,17 @@ public abstract class CPlugVisual : CPlug
             if (Version >= 5)
             {
                 w.WriteArray(U02);
+
+                if (Version >= 6)
+                {
+                    w.Write(U03.GetValueOrDefault());
+                    w.Write(U04.GetValueOrDefault());
+
+                    if (U04 > 0)
+                    {
+                        throw new NotSupportedException("U04 > 0");
+                    }
+                }
             }
         }
     }
