@@ -32,4 +32,21 @@ public class CPlugIndexBuffer : CPlug
             rw.Array(ref n.indices!);
         }
     }
+
+    #region 0x001 chunk
+
+    /// <summary>
+    /// CPlugIndexBuffer 0x001 chunk
+    /// </summary>
+    [Chunk(0x09057001)]
+    public class Chunk09057001 : Chunk<CPlugIndexBuffer>
+    {
+        public override void ReadWrite(CPlugIndexBuffer n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref n.flags);
+            rw.Array(ref n.indices!);
+        }
+    }
+
+    #endregion
 }
