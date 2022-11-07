@@ -130,7 +130,7 @@ public partial class CPlugCrystal
                     {
                         if (version >= 33)
                         {
-                            materialIndex = materials is null
+                            materialIndex = materials.Length == 0
                                 ? r.ReadInt32()
                                 : r.ReadOptimizedInt(materials.Length);
                         }
@@ -142,7 +142,7 @@ public partial class CPlugCrystal
 
                     var groupIndex = version >= 33 ? r.ReadOptimizedInt(groups.Length) : r.ReadInt32();
 
-                    var material = materialIndex == -1 ? null : materials[materialIndex];
+                    var material = materials.Length == 0 || materialIndex == -1 ? null : materials[materialIndex];
 
                     return new Face(verts, groups[groupIndex], material);
                 });
