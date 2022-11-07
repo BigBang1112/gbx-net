@@ -135,6 +135,18 @@ public class CPlugSolid2Model : CMwNod
         public string? U13;
         public Box[]? U14;
         public string[]? U15;
+        public int? U16;
+        public int? U17;
+        public int? U18;
+        public int? U19;
+        public int? U20;
+        public int? U21;
+        public Node? U22;
+        public float? U23;
+        public float? U24;
+        public string? U25;
+        public int? U26;
+        public int? U27;
 
         public int Version { get => version; set => version = value; }
 
@@ -236,7 +248,7 @@ public class CPlugSolid2Model : CMwNod
                                 {
                                     if (version == 32)
                                     {
-                                        rw.Int32();
+                                        rw.Int32(ref U16);
                                     }
 
                                     if (version >= 16 && version < 21)
@@ -263,7 +275,7 @@ public class CPlugSolid2Model : CMwNod
                                         
                                         if (version >= 34)
                                         {
-                                            rw.Int32();
+                                            rw.Int32(ref U17);
                                         }
 
                                         if (version >= 20)
@@ -272,34 +284,34 @@ public class CPlugSolid2Model : CMwNod
 
                                             if (version >= 22)
                                             {
-                                                var xx = rw.Int32(); // array
-
+                                                rw.Int32(ref U18); // array
+                                                
                                                 if (version >= 23) // Guess
                                                 {
-                                                    var xxx = rw.Int32(); // array
-                                                    var xxxx = rw.Int32(); // array
+                                                    rw.Int32(ref U19); // array
+                                                    rw.Int32(ref U20); // array
 
                                                     if (version >= 24)
                                                     {
-                                                        var wtf = rw.Int32();
-
+                                                        rw.Int32(ref U21);
+                                                        
                                                         if (version >= 25)
                                                         {
-                                                            rw.NodeRef();
-                                                            rw.Single();
-                                                            rw.Single();
-
+                                                            rw.NodeRef(ref U22);
+                                                            rw.Single(ref U23);
+                                                            rw.Single(ref U24);
+                                                            
                                                             if (version >= 27)
                                                             {
-                                                                rw.Id();
+                                                                rw.Id(ref U25);
 
                                                                 if (version >= 32)
                                                                 {
-                                                                    rw.Int32();
+                                                                    rw.Int32(ref U26);
 
                                                                     if (version >= 34)
                                                                     {
-                                                                        rw.Int32();
+                                                                        rw.Int32(ref U27);
                                                                     }
                                                                 }
                                                             }
