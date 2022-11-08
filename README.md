@@ -47,7 +47,7 @@ Here are some of the useful classes/types to start with:
 To build the solution:
 - Installing Visual Studio 2022 with default .NET tools and **.NET Framework 4.6.2 Targeting Pack** is the easiest option.
 - JetBrains Rider also works as it should. Visual Studio Code may work with a bit more setup.
-- Make sure you have all the needed targetting packs installed (currently .NET 6.0, .NET Standard 2.1, .NET Standard 2.0, and .NET Framework 4.6.2).
+- Make sure you have all the needed targetting packs installed (currently **.NET 7.0**, .NET 6.0, .NET Standard 2.1, .NET Standard 2.0, and .NET Framework 4.6.2).
 
 *(reminder: you can just use the NuGet packages in any IDE or text editor that supports them)*
 

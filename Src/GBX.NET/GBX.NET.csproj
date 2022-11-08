@@ -14,7 +14,7 @@
 		<Version>1.1.0-alpha1</Version>
 		<PackageReleaseNotes></PackageReleaseNotes>
 
-		<TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
+		<TargetFrameworks>net7.0;net6.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
 		<LangVersion>11</LangVersion>
 		<Platforms>AnyCPU;x64;x86</Platforms>
 
