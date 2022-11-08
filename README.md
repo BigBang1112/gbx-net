@@ -42,7 +42,7 @@ Here are some of the useful classes/types to start with:
 ## Compatibility and build
 
 - GBX.NET is compatible down to **.NET Standard 2.0** and **.NET Framework 4.6.2**.
-- Current C# language version is **10**.
+- Current C# language version is **11**.
 
 To build the solution:
 - Installing Visual Studio 2022 with default .NET tools and **.NET Framework 4.6.2 Targeting Pack** is the easiest option.

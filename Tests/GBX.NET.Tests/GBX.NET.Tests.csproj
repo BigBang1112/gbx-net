@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;netcoreapp3.1;net462</TargetFrameworks>
-		<LangVersion>10</LangVersion>
+		<LangVersion>11</LangVersion>
 
 		<IsPackable>false</IsPackable>
 		<Nullable>enable</Nullable>
@@ -46,6 +46,11 @@
 		<Content Include="..\..\ExampleFiles\**">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="TestData\Chunks\CGameCtnChallenge.2015-06-18_15_10.zip" />
+	  <None Remove="TestData\Chunks\CGameCtnChallenge.2019-10-10_22_15.zip" />
 	</ItemGroup>
 
 </Project>

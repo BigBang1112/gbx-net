@@ -14,7 +14,7 @@
 		<PackageReleaseNotes>Update to C# 10.</PackageReleaseNotes>
 
 		<TargetFrameworks>net6.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
-		<LangVersion>10</LangVersion>
+		<LangVersion>11</LangVersion>
 		<Platforms>AnyCPU;x64;x86</Platforms>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
