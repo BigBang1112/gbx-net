@@ -26,10 +26,4 @@
 		<ProjectReference Include="..\..\Src\GBX.NET\GBX.NET.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <None Update="TM2020Inputs.dat">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	</ItemGroup>
-
 </Project>
