@@ -84,32 +84,42 @@ public class CPlugSkel : CMwNod
                             throw new Exception("U04 == true");
                         }
 
-                        if (version >= 11)
+                        if (version >= 10)
                         {
-                            rw.Array<int>(ref U05);
-
-                            if (version >= 13)
+                            if (version >= 16)
                             {
                                 rw.Bytes(ref U06);
 
-                                if (version >= 14 && version < 17)
+                                if (version >= 18)
+                                {
+                                    rw.Bytes(ref U06);
+                                }
+                            }
+                            else
+                            {
+                                rw.Array<int>(ref U05);
+                            }
+
+                            if (version >= 13)
+                            {
+                                if (version < 16)
+                                {
+                                    rw.Bytes(ref U06);
+                                }
+
+                                if (version == 14)
                                 {
                                     // some array
                                     rw.Int32(0);
                                     // then NPlugSkel::ArchiveJointExprs
                                     rw.ArrayArchive<JointExpr>(ref n.jointExprs!);
-
-                                    if (version >= 15)
-                                    {
-                                        throw new ChunkVersionNotSupportedException(version);
-                                    }
                                 }
+                            }
 
-                                if (version >= 17)
-                                {
-                                    rw.Byte(ref U07);
-                                    rw.Int32(ref U08);
-                                }
+                            if (version >= 17)
+                            {
+                                rw.Byte(ref U07);
+                                rw.Int32(ref U08);
                             }
                         }
                     }
