@@ -12,6 +12,7 @@ public class CPlugSurface : CPlug
     private SurfMaterial[]? materials;
     private ISurf? surf;
     private CPlugSkel? skel;
+    private int surfVersion;
 
     [NodeMember]
     [AppliedWithChunk(typeof(Chunk0900C000))]
@@ -31,6 +32,10 @@ public class CPlugSurface : CPlug
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk(typeof(Chunk0900C003), sinceVersion: 1)]
     public CPlugSkel? Skel { get => skel; set => skel = value; }
+
+    [NodeMember]
+    [AppliedWithChunk(typeof(Chunk0900C003), sinceVersion: 1)]
+    public int SurfVersion { get => surfVersion; set => surfVersion = value; }
 
     internal CPlugSurface()
     {
@@ -66,7 +71,7 @@ public class CPlugSurface : CPlug
         exporter.Export(Geom ?? this);
     }
 
-    protected static void ArchiveSurf(ref ISurf? surf, GameBoxReaderWriter rw)
+    protected static void ArchiveSurf(ref ISurf? surf, GameBoxReaderWriter rw, int surfVersion = 0, int chunkVersion = 0)
     {
         // 0 - Sphere
         // 1 - Ellipsoid
@@ -90,10 +95,15 @@ public class CPlugSurface : CPlug
             1 => rw.Archive((Ellipsoid)(surf ?? new Ellipsoid())),
             6 => rw.Archive(surf as Box),
             7 => rw.Archive(surf as Mesh), // Mesh
-            13 => rw.Archive(surf as Compound), // Compound
+            13 => rw.Archive(surf as Compound, chunkVersion), // Compound
             -1 => null,
             _ => throw new NotSupportedException("Unknown surf type: " + surfId)
         };
+
+        if (surf is not null && surfVersion >= 2)
+        {
+            surf.U01 = rw.Vec3(surf.U01);
+        }
     }
 
     /// <summary>
@@ -153,12 +163,13 @@ public class CPlugSurface : CPlug
 
             if (version >= 2)
             {
-                rw.Int32(ref U01);
+                rw.Int32(ref n.surfVersion);
             }
 
-            ArchiveSurf(ref n.surf, rw);
+            ArchiveSurf(ref n.surf, rw, n.surfVersion, version);
 
             rw.ArrayArchiveWithGbx<SurfMaterial>(ref n.materials); // ArchiveMaterials
+            
             rw.Bytes(ref U02);
 
             if (version >= 1)
@@ -205,28 +216,31 @@ public class CPlugSurface : CPlug
     public interface ISurf : IReadableWritable
     {
         int Id { get; }
+        Vec3? U01 { get; set; }
     }
 
     public class Box : ISurf
     {
         private NET.Box transform;
-        private short u01;
+        private short u02;
 
         public int Id => 6;
+        public Vec3? U01 { get; set; }
 
         public NET.Box Transform { get => transform; set => transform = value; }
-        public short U01 { get => u01; set => u01 = value; }
+        public short U02 { get => u02; set => u02 = value; }
 
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
             rw.Box(ref transform);
-            rw.Int16(ref u01);
+            rw.Int16(ref u02);
         }
     }
 
     public class Mesh : ISurf
     {
         public int Id => 7;
+        public Vec3? U01 { get; set; }
 
         private int v;
         private Vec3[] vertices = Array.Empty<Vec3>();
@@ -305,6 +319,7 @@ public class CPlugSurface : CPlug
                     rw.ArrayArchive<AABBTreeCell>(ref aABBTree!);
                     break;
                 case 6:
+                case 7:
                     rw.Array<Vec3>(ref vertices!);
                     rw.Array<(Int3, int)>(ref triangles!, // GmSurfMeshTri
                         r => (r.ReadInt3(), r.ReadInt32()),
@@ -333,14 +348,15 @@ public class CPlugSurface : CPlug
     public class Compound : ISurf
     {
         private ISurf[] surfaces = Array.Empty<ISurf>();
-        private Iso4[] u01 = Array.Empty<Iso4>();
-        private ushort[] u02 = Array.Empty<ushort>();
+        private Iso4[] u02 = Array.Empty<Iso4>();
+        private ushort[] u03 = Array.Empty<ushort>();
 
         public int Id => 13;
+        public Vec3? U01 { get; set; }
 
         public ISurf[] Surfaces { get => surfaces; set => surfaces = value; }
-        public Iso4[] U01 { get => u01; set => u01 = value; }
-        public ushort[] U02 { get => u02; set => u02 = value; }
+        public Iso4[] U02 { get => u02; set => u02 = value; }
+        public ushort[] U03 { get => u03; set => u03 = value; }
 
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
@@ -360,12 +376,12 @@ public class CPlugSurface : CPlug
                 }
             }
 
-            rw.Array<Iso4>(ref u01!, length);
+            rw.Array<Iso4>(ref u02!, length);
 
-            //if (version >= 1) // Pass version?
-            //{
-                rw.Array<ushort>(ref u02!);
-            //}
+            if (version >= 1 && (length > 0 || version >= 2)) // I made this up kinda
+            {
+                rw.Array<ushort>(ref u03!);
+            }
         }
     }
 
@@ -374,6 +390,7 @@ public class CPlugSurface : CPlug
         private float size;
 
         public int Id => 0;
+        public Vec3? U01 { get; set; }
 
         public float Size { get => size; set => size = value; }
 
@@ -388,6 +405,7 @@ public class CPlugSurface : CPlug
         private Vec3 size;
 
         public int Id => 1;
+        public Vec3? U01 { get; set; }
 
         public Vec3 Size { get => size; set => size = value; }
 
