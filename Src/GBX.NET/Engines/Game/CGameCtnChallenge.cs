@@ -3107,6 +3107,29 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
+    #region 0x020 chunk (legacy legacy mediatracker)
+
+    /// <summary>
+    /// CGameCtnChallenge 0x020 chunk (legacy legacy mediatracker)
+    /// </summary>
+    [Chunk(0x03043020, "legacy legacy mediatracker")]
+    public class Chunk03043020 : Chunk<CGameCtnChallenge>
+    {
+        public Node? U01;
+        public Node? U02;
+
+        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef<CGameCtnMediaClip>(ref n.clipIntro);
+            rw.NodeRef(ref U01);
+            rw.NodeRef(ref U02);
+            rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupInGame);
+            rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupEndRace);
+        }
+    }
+
+    #endregion
+
     #region 0x021 chunk (legacy mediatracker)
 
     /// <summary>
