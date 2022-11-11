@@ -389,6 +389,8 @@ public abstract class Node
         uint? previousChunkId,
         CancellationToken cancellationToken)
     {
+        cancellationToken.ThrowIfCancellationRequested();
+
         var stream = r.BaseStream;
         var canSeek = stream.CanSeek;
 
@@ -434,7 +436,7 @@ public abstract class Node
                 throw new ChunkParseException(chunkId, previousChunkId);
             }
 
-            chunk = ReadSkippableChunk(node, r, chunkId, reflected);
+            chunk = await ReadSkippableChunkAsync(node, r, chunkId, reflected, cancellationToken);
         }
         else // Known or unskippable chunk
         {
@@ -553,6 +555,25 @@ public abstract class Node
                                             bool reflected)
     {
         var chunkData = r.ReadBytes();
+
+        return reflected
+            ? CreateKnownSkippableChunk(node, chunkId, chunkData, r)
+            : CreateUnknownSkippableChunk(node, chunkId, chunkData, r.Logger);
+    }
+
+    private static async Task<Chunk> ReadSkippableChunkAsync(Node node,
+                                                             GameBoxReader r,
+                                                             uint chunkId,
+                                                             bool reflected,
+                                                             CancellationToken cancellationToken)
+    {
+        var chunkData = new byte[r.ReadInt32()];
+        var read = await r.BaseStream.ReadAsync(chunkData, 0, chunkData.Length, cancellationToken);
+
+        if (read != chunkData.Length)
+        {
+            throw new EndOfStreamException();
+        }
 
         return reflected
             ? CreateKnownSkippableChunk(node, chunkId, chunkData, r)
