@@ -119,59 +119,24 @@ public class GameBoxHeader
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public static GameBoxHeader Parse(GameBoxReader r)
     {
-        if (!r.HasMagic(GameBox.Magic))
-        {
-            throw new NotAGbxException();
-        }
-
-        r.Logger?.LogDebug("GBX magic found");
-
-        var version = r.ReadInt16();
-        r.Logger?.LogVersion(version);
-
-        if (version < 3 || version >= 7)
-        {
-            throw new VersionNotSupportedException(version);
-        }
-
-        var format = (GameBoxFormat)r.ReadByte();
-        r.Logger?.LogFormat(format);
-
-        if (format == GameBoxFormat.Text)
-        {
-            throw new TextFormatNotSupportedException();
-        }
-
-        var compressionOfRefTable = (GameBoxCompression)r.ReadByte();
-        r.Logger?.LogRefTableCompression(compressionOfRefTable);
-
-        var compressionOfBody = (GameBoxCompression)r.ReadByte();
-        r.Logger?.LogBodyCompression(compressionOfBody);
-
-        var unknownByte = default(char?);
-
-        if (version >= 4)
-        {
-            unknownByte = (char)r.ReadByte();
-            r.Logger?.LogUnknownByte(unknownByte.Value);
-        }
-
-        var id = Node.RemapToLatest(r.ReadUInt32());
-        r.Logger?.LogClassId(id.ToString("X8"));
+        ParseUntilClassId(r,
+            out short version,
+            out GameBoxFormat format,
+            out GameBoxCompression compressionOfRefTable,
+            out GameBoxCompression compressionOfBody,
+            out char? unknownByte,
+            out uint id);
 
         var userData = Array.Empty<byte>();
 
         if (version >= 6)
         {
             userData = GameBox.OpenPlanetHookExtractMode ? new byte[r.ReadInt32()] : r.ReadBytes();
-            
+
             r.Logger?.LogUserDataSize(userData.Length / 1024f);
         }
 
-        var numNodes = r.ReadInt32();
-        r.Logger?.LogNumberOfNodes(numNodes);
-
-        r.Logger?.LogDebug("Header complete");
+        ParseRestOfHeader(r, out int numNodes);
 
         return new GameBoxHeader(id)
         {
@@ -183,6 +148,130 @@ public class GameBoxHeader
             UserData = userData,
             NumNodes = numNodes
         };
+    }
+
+    internal static async Task<GameBoxHeader> ParseAsync(GameBoxReader r, GameBoxAsyncReadAction? asyncAction, CancellationToken cancellationToken)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+        
+        ParseUntilClassId(r,
+            out short version,
+            out GameBoxFormat format,
+            out GameBoxCompression compressionOfRefTable,
+            out GameBoxCompression compressionOfBody,
+            out char? unknownByte,
+            out uint id);
+
+        if (asyncAction?.AfterClassId is not null)
+        {
+            await asyncAction.AfterClassId(id, cancellationToken);
+        }
+
+        var userData = Array.Empty<byte>();
+
+        if (version >= 6)
+        {
+            userData = new byte[r.ReadInt32()];
+
+            if (!GameBox.OpenPlanetHookExtractMode)
+            {
+                var read = await r.BaseStream.ReadAsync(userData, 0, userData.Length, cancellationToken);
+
+                if (read != userData.Length)
+                {
+                    throw new EndOfStreamException();
+                }
+            }
+
+            r.Logger?.LogUserDataSize(userData.Length / 1024f);
+        }
+
+        ParseRestOfHeader(r, out int numNodes);
+
+        return new GameBoxHeader(id)
+        {
+            Version = version,
+            Format = format,
+            CompressionOfRefTable = compressionOfRefTable,
+            CompressionOfBody = compressionOfBody,
+            UnknownByte = unknownByte,
+            UserData = userData,
+            NumNodes = numNodes
+        };
+    }
+
+    private static void ParseUntilClassId(GameBoxReader r, out short version, out GameBoxFormat format, out GameBoxCompression compressionOfRefTable, out GameBoxCompression compressionOfBody, out char? unknownByte, out uint id)
+    {
+        if (!r.HasMagic(GameBox.Magic))
+        {
+            throw new NotAGbxException();
+        }
+
+        r.Logger?.LogDebug("GBX magic found");
+
+        version = r.ReadInt16();
+        r.Logger?.LogVersion(version);
+
+        if (version < 3 || version >= 7)
+        {
+            throw new VersionNotSupportedException(version);
+        }
+
+        format = (GameBoxFormat)r.ReadByte();
+        r.Logger?.LogFormat(format);
+
+        switch (format)
+        {
+            case GameBoxFormat.Byte:
+                break;
+            case GameBoxFormat.Text:
+                throw new TextFormatNotSupportedException();
+            default:
+                throw new InvalidDataException($"Unknown format: {format}");
+        }
+
+        compressionOfRefTable = (GameBoxCompression)r.ReadByte();
+        r.Logger?.LogRefTableCompression(compressionOfRefTable);
+
+        switch (compressionOfRefTable)
+        {
+            case GameBoxCompression.Uncompressed:
+            case GameBoxCompression.Compressed:
+                break;
+            default:
+                throw new InvalidDataException($"Unknown ref. table compression: {compressionOfRefTable}");
+        }
+
+        compressionOfBody = (GameBoxCompression)r.ReadByte();
+        r.Logger?.LogBodyCompression(compressionOfBody);
+
+        switch (compressionOfBody)
+        {
+            case GameBoxCompression.Uncompressed:
+            case GameBoxCompression.Compressed:
+                break;
+            default:
+                throw new InvalidDataException($"Unknown body compression: {compressionOfBody}");
+        }
+
+        unknownByte = default;
+        
+        if (version >= 4)
+        {
+            unknownByte = (char)r.ReadByte();
+            r.Logger?.LogUnknownByte(unknownByte.Value);
+        }
+
+        id = Node.RemapToLatest(r.ReadUInt32());
+        r.Logger?.LogClassId(id.ToString("X8"));
+    }
+
+    private static void ParseRestOfHeader(GameBoxReader r, out int numNodes)
+    {
+        numNodes = r.ReadInt32();
+        r.Logger?.LogNumberOfNodes(numNodes);
+
+        r.Logger?.LogDebug("Header complete");
     }
 
     public IDictionary<uint, HeaderChunkSize> GetChunkList()
