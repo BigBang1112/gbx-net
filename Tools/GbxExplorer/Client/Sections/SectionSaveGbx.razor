@@ -241,7 +241,7 @@
         }
 
         Logger.LogInformation("Downloading the file...");
-        DownloadService.Download(fileName, ms);
+        await DownloadService.DownloadAsync(fileName, ms);
     }
 
     private void SelectionChanged(NodeTreeElement? element)
