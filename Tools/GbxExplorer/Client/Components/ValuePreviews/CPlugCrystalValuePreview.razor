@@ -16,7 +16,7 @@
         )</span>
     </div>
 
-    <button class="button" @onclick="ExportToObj"
+    <button class="button" @onclick="ExportToObjAsync"
         style="width:100%;justify-content:center;margin-bottom:0.5rem">Export to .obj file</button>
 }
 
@@ -164,7 +164,7 @@
         await JS.InvokeVoidAsync("createMesh", distance * 1.5f + height * 0.25f, height * 0.5f);
     }
 
-    private void ExportToObj()
+    private async Task ExportToObjAsync()
     {
         if (Property?.GetValue(OwnerObject) is not CPlugCrystal crystal)
         {
@@ -199,6 +199,6 @@
             }
         }
 
-        DownloadService.Download(fileName + ".zip", ms);
+        await DownloadService.DownloadAsync(fileName + ".zip", ms);
     }
 }
