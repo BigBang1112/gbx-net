@@ -294,7 +294,7 @@
             }
         }
 
-        DownloadService.Download($"{faultyGbx.FileName}.log.txt", ms.ToArray());
+        await DownloadService.DownloadAsync($"{faultyGbx.FileName}.log.txt", ms);
     }
 
     private async Task DownloadLogAsync()
@@ -322,7 +322,7 @@
             }
         }
 
-        DownloadService.Download($"log.txt", ms.ToArray());
+        await DownloadService.DownloadAsync("log.txt", ms);
     }
 
     private Task WriteIntroAsync(StreamWriter writer)
