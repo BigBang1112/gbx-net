@@ -82,11 +82,29 @@ public static class CGameCtnChallengeExtensions
     {
         var bitmap = new Bitmap(stream);
 
-        using var ms = new MemoryStream();
-        
-        SaveAsJpeg(ms, bitmap);
+        if (bitmap.RawFormat != ImageFormat.Jpeg)
+        {
+            using var resavedJpegMs = new MemoryStream();
+            
+            SaveAsJpeg(resavedJpegMs, bitmap);
 
-        node.Thumbnail = ms.ToArray();
+            node.Thumbnail = resavedJpegMs.ToArray();
+
+            return bitmap;
+        }
+        
+        if (stream is MemoryStream ms)
+        {
+            node.Thumbnail = ms.ToArray();
+            
+            return bitmap;
+        }
+
+        using var jpegMs = new MemoryStream();
+
+        stream.CopyTo(jpegMs);
+        
+        node.Thumbnail = jpegMs.ToArray();
 
         return bitmap;
     }
