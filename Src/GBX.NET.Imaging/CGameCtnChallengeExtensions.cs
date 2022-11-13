@@ -81,30 +81,13 @@ public static class CGameCtnChallengeExtensions
     public static Bitmap ImportThumbnail(this CGameCtnChallenge node, Stream stream)
     {
         var bitmap = new Bitmap(stream);
+        bitmap.RotateFlip(RotateFlipType.Rotate180FlipX);
 
-        if (bitmap.RawFormat != ImageFormat.Jpeg)
-        {
-            using var resavedJpegMs = new MemoryStream();
-            
-            SaveAsJpeg(resavedJpegMs, bitmap);
-
-            node.Thumbnail = resavedJpegMs.ToArray();
-
-            return bitmap;
-        }
+        using var ms = new MemoryStream();
         
-        if (stream is MemoryStream ms)
-        {
-            node.Thumbnail = ms.ToArray();
-            
-            return bitmap;
-        }
-
-        using var jpegMs = new MemoryStream();
-
-        stream.CopyTo(jpegMs);
+        SaveAsJpeg(ms, bitmap);
         
-        node.Thumbnail = jpegMs.ToArray();
+        node.Thumbnail = ms.ToArray();
 
         return bitmap;
     }
