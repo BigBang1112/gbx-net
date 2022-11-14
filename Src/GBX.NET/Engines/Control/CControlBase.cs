@@ -14,11 +14,11 @@ public abstract class CControlBase : CSceneToy
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0700100C))]
+    [AppliedWithChunk<Chunk0700100C>]
     public string? StackText { get => stackText; set => stackText = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0700100E))]
+    [AppliedWithChunk<Chunk0700100E>]
     public CControlLayout? Layout { get => layout; set => layout = value; }
 
     #endregion

@@ -224,7 +224,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Time of the bronze medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 1)]
     public TimeInt32? TMObjective_BronzeTime
     {
         get => ChallengeParameters is null ? bronzeTime : ChallengeParameters.BronzeTime;
@@ -243,7 +243,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Time of the silver medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 1)]
     public TimeInt32? TMObjective_SilverTime
     {
         get => ChallengeParameters is null ? silverTime : ChallengeParameters.SilverTime;
@@ -262,7 +262,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Time of the gold medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 1)]
     public TimeInt32? TMObjective_GoldTime
     {
         get => ChallengeParameters is null ? goldTime : ChallengeParameters.GoldTime;
@@ -281,7 +281,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Time of the author medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 1)]
     public TimeInt32? TMObjective_AuthorTime
     {
         get => ChallengeParameters is null ? authorTime : ChallengeParameters.AuthorTime;
@@ -300,14 +300,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Display cost of the track (or copper cost) explaining the performance of the map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 4)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 4)]
     public int? Cost { get => cost; set => cost = value; }
 
     /// <summary>
     /// Usually author time or stunts score. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 10)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 10)]
     public int? AuthorScore
     {
         get => ChallengeParameters is null ? authorScore : ChallengeParameters.AuthorScore;
@@ -326,7 +326,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// In which editor settings the map was made.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 11)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 11)]
     public EditorMode Editor { get => editor; set => editor = value; }
 
     /// <summary>
@@ -345,7 +345,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// If the map is a multilap.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 5)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 5)]
     public bool? TMObjective_IsLapRace
     {
         get
@@ -364,7 +364,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Number of laps.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 13)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 13)]
     public int? TMObjective_NbLaps
     {
         get
@@ -383,27 +383,27 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Number of checkpoints.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 13)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 13)]
     public int? NbCheckpoints { get => nbCheckpoints; set => nbCheckpoints = value; }
 
     /// <summary>
     /// Map UID, environment, and author login.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 0, upToVersion: 2)]
-    [AppliedWithChunk(typeof(Chunk0304300F))]
-    [AppliedWithChunk(typeof(Chunk03043013))]
-    [AppliedWithChunk(typeof(Chunk0304301F))]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 0, upToVersion: 2)]
+    [AppliedWithChunk<Chunk0304300F>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
     public Ident MapInfo { get => mapInfo; set => mapInfo = value; }
 
     /// <summary>
     /// The map's UID.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 0, upToVersion: 2)]
-    [AppliedWithChunk(typeof(Chunk03043003))]
-    [AppliedWithChunk(typeof(Chunk03043013))]
-    [AppliedWithChunk(typeof(Chunk0304301F))]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 0, upToVersion: 2)]
+    [AppliedWithChunk<Chunk03043003>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
     public string MapUid
     {
         get => mapInfo.Id;
@@ -414,11 +414,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Login of the map author.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043008))]
-    [AppliedWithChunk(typeof(Chunk0304300F))]
-    [AppliedWithChunk(typeof(Chunk03043013))]
-    [AppliedWithChunk(typeof(Chunk0304301F))]
-    [AppliedWithChunk(typeof(Chunk03043042))]
+    [AppliedWithChunk<Chunk03043008>]
+    [AppliedWithChunk<Chunk0304300F>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
+    [AppliedWithChunk<Chunk03043042>]
     public string AuthorLogin
     {
         get
@@ -447,21 +447,21 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// The map's intended use or state, defined in the header. This defines the visibility in the the map browser.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003))]
+    [AppliedWithChunk<Chunk03043003>]
     public MapKind KindInHeader { get => kindInHeader; set => kindInHeader = value; }
 
     /// <summary>
     /// The map's intended use or state, defined in the body. This defines general validity.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043011))]
+    [AppliedWithChunk<Chunk03043011>]
     public MapKind Kind { get => kind; set => kind = value; }
 
     /// <summary>
     /// Password of the map used by older maps.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk03043003>(sinceVersion: 1)]
     public string? Password
     {
         get
@@ -480,17 +480,17 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// The map's decoration (time of the day or scenery)
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003), sinceVersion: 2)]
-    [AppliedWithChunk(typeof(Chunk0304300F))]
-    [AppliedWithChunk(typeof(Chunk03043013))]
-    [AppliedWithChunk(typeof(Chunk0304301F))]
+    [AppliedWithChunk<Chunk03043003>(sinceVersion: 2)]
+    [AppliedWithChunk<Chunk0304300F>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
     public Ident? Decoration { get => decoration; set => decoration = value; }
 
     /// <summary>
     /// Name of the map type script.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003), sinceVersion: 6)]
+    [AppliedWithChunk<Chunk03043003>(sinceVersion: 6)]
     public string? MapType
     {
         get => ChallengeParameters is null ? mapType : ChallengeParameters.MapType;
@@ -509,7 +509,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Style of the map (Fullspeed, LOL, Tech), usually unused and defined by user.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003), sinceVersion: 6)]
+    [AppliedWithChunk<Chunk03043003>(sinceVersion: 6)]
     public string? MapStyle
     {
         get => ChallengeParameters is null ? mapStyle : ChallengeParameters.MapStyle;
@@ -528,21 +528,21 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// UID of the lightmap data stored in cache.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003), sinceVersion: 8)]
+    [AppliedWithChunk<Chunk03043003>(sinceVersion: 8)]
     public ulong? LightmapCacheUID { get => lightmapCacheUID; set => lightmapCacheUID = value; }
 
     /// <summary>
     /// Version of the lightmap calculation.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003), sinceVersion: 9)]
+    [AppliedWithChunk<Chunk03043003>(sinceVersion: 9)]
     public byte? LightmapVersion { get => lightmapVersion; set => lightmapVersion = value; }
 
     /// <summary>
     /// XML track information and dependencies.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043005))]
+    [AppliedWithChunk<Chunk03043005>]
     public string? XML { get => xml; set => xml = value; }
 
     /// <summary>
@@ -550,7 +550,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     [JpegData]
-    [AppliedWithChunk(typeof(Chunk03043007), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk03043007>(sinceVersion: 1)]
     public byte[]? Thumbnail { get => thumbnail; set => thumbnail = value; }
 
     /// <summary>
@@ -567,26 +567,26 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Origin of the map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003), sinceVersion: 3)]
-    [AppliedWithChunk(typeof(Chunk03043023))]
-    [AppliedWithChunk(typeof(Chunk03043025))]
+    [AppliedWithChunk<Chunk03043003>(sinceVersion: 3)]
+    [AppliedWithChunk<Chunk03043023>]
+    [AppliedWithChunk<Chunk03043025>]
     public Vec2? MapCoordOrigin { get => mapCoordOrigin; set => mapCoordOrigin = value; }
 
     /// <summary>
     /// Target of the map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003), sinceVersion: 4)]
-    [AppliedWithChunk(typeof(Chunk03043023))]
-    [AppliedWithChunk(typeof(Chunk03043025))]
+    [AppliedWithChunk<Chunk03043003>(sinceVersion: 4)]
+    [AppliedWithChunk<Chunk03043023>]
+    [AppliedWithChunk<Chunk03043025>]
     public Vec2? MapCoordTarget { get => mapCoordTarget; set => mapCoordTarget = value; }
 
     /// <summary>
     /// Title pack the map was built in.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003), sinceVersion: 11)]
-    [AppliedWithChunk(typeof(Chunk03043051))]
+    [AppliedWithChunk<Chunk03043003>(sinceVersion: 11)]
+    [AppliedWithChunk<Chunk03043051>]
     public string? TitleID
     {
         get
@@ -605,7 +605,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Executable (game's) build version the map was built in.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043051))]
+    [AppliedWithChunk<Chunk03043051>]
     public string? BuildVersion
     {
         get
@@ -625,9 +625,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     [SupportsFormatting]
-    [AppliedWithChunk(typeof(Chunk03043007), sinceVersion: 1)]
-    [AppliedWithChunk(typeof(Chunk03043028))]
-    [AppliedWithChunk(typeof(Chunk0304302D))]
+    [AppliedWithChunk<Chunk03043007>(sinceVersion: 1)]
+    [AppliedWithChunk<Chunk03043028>]
+    [AppliedWithChunk<Chunk0304302D>]
     public string? Comments
     {
         get
@@ -643,8 +643,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043008))]
-    [AppliedWithChunk(typeof(Chunk03043042))]
+    [AppliedWithChunk<Chunk03043008>]
+    [AppliedWithChunk<Chunk03043042>]
     public int? AuthorVersion
     {
         get
@@ -664,8 +664,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     [SupportsFormatting]
-    [AppliedWithChunk(typeof(Chunk03043008))]
-    [AppliedWithChunk(typeof(Chunk03043042))]
+    [AppliedWithChunk<Chunk03043008>]
+    [AppliedWithChunk<Chunk03043042>]
     public string? AuthorNickname
     {
         get
@@ -684,8 +684,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Zone of the map author.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043008))]
-    [AppliedWithChunk(typeof(Chunk03043042))]
+    [AppliedWithChunk<Chunk03043008>]
+    [AppliedWithChunk<Chunk03043042>]
     public string? AuthorZone
     {
         get
@@ -701,8 +701,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043008))]
-    [AppliedWithChunk(typeof(Chunk03043042))]
+    [AppliedWithChunk<Chunk03043008>]
+    [AppliedWithChunk<Chunk03043042>]
     public string? AuthorExtraInfo
     {
         get
@@ -721,28 +721,28 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// The car's name, environment and author used on the map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304300D))]
+    [AppliedWithChunk<Chunk0304300D>]
     public Ident? PlayerModel { get => playerModel; set => playerModel = value; }
 
     /// <summary>
     /// Map parameters.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043011))]
+    [AppliedWithChunk<Chunk03043011>]
     public CGameCtnChallengeParameters? ChallengeParameters { get => challengeParameters; set => challengeParameters = value; }
 
     /// <summary>
     /// List of available puzzle pieces.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043011))]
+    [AppliedWithChunk<Chunk03043011>]
     public CGameCtnCollectorList? BlockStock { get => blockStock; set => blockStock = value; }
 
     /// <summary>
     /// All checkpoints and their map coordinates. Used by TMUF and older games.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043017))]
+    [AppliedWithChunk<Chunk03043017>]
     public Int3[]? Checkpoints
     {
         get
@@ -761,7 +761,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Reference to the mod (texture/resource pack) used on the map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043019))]
+    [AppliedWithChunk<Chunk03043019>]
     public FileRef? ModPackDesc
     {
         get
@@ -780,7 +780,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Map type in which the track was validated in.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 7)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 7)]
     public PlayMode? Mode
     {
         get
@@ -799,22 +799,22 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Size of the map in block coordinates.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304300F))]
-    [AppliedWithChunk(typeof(Chunk03043013))]
-    [AppliedWithChunk(typeof(Chunk0304301F))]
+    [AppliedWithChunk<Chunk0304300F>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
     public Int3? Size { get => size; set => size = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304300F))]
+    [AppliedWithChunk<Chunk0304300F>]
     public bool? NeedUnlock { get => needUnlock; set => needUnlock = value; }
 
     /// <summary>
     /// List of all blocks on the map. Can be null when only the header was read, or simply when <see cref="Chunk0304300F"/>, <see cref="Chunk03043013"/>, or <see cref="Chunk0304301F"/> is missing.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304300F))]
-    [AppliedWithChunk(typeof(Chunk03043013))]
-    [AppliedWithChunk(typeof(Chunk0304301F))]
+    [AppliedWithChunk<Chunk0304300F>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
     public IList<CGameCtnBlock>? Blocks { get => blocks; set => blocks = value; }
 
     /// <summary>
@@ -824,7 +824,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public int? NbBlocks => Blocks?.Count(x => x.Flags != -1);
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043048))]
+    [AppliedWithChunk<Chunk03043048>]
     public IList<CGameCtnBlock>? BakedBlocks { get; set; }
 
     /// <summary>
@@ -834,59 +834,59 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public int? NbBakedBlocks => BakedBlocks?.Count(x => x.Flags != -1);
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043048))]
+    [AppliedWithChunk<Chunk03043048>]
     public SBakedClipsAdditionalData[]? BakedClipsAdditionalData { get; set; }
 
     /// <summary>
     /// MediaTracker intro.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043021))]
-    [AppliedWithChunk(typeof(Chunk03043049))]
+    [AppliedWithChunk<Chunk03043021>]
+    [AppliedWithChunk<Chunk03043049>]
     public CGameCtnMediaClip? ClipIntro { get => clipIntro; set => clipIntro = value; }
 
     /// <summary>
     /// MediaTracker ingame.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043021))]
-    [AppliedWithChunk(typeof(Chunk03043049))]
+    [AppliedWithChunk<Chunk03043021>]
+    [AppliedWithChunk<Chunk03043049>]
     public CGameCtnMediaClipGroup? ClipGroupInGame { get => clipGroupInGame; set => clipGroupInGame = value; }
 
     /// <summary>
     /// MediaTracker end race.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043021))]
-    [AppliedWithChunk(typeof(Chunk03043049))]
+    [AppliedWithChunk<Chunk03043021>]
+    [AppliedWithChunk<Chunk03043049>]
     public CGameCtnMediaClipGroup? ClipGroupEndRace { get => clipGroupEndRace; set => clipGroupEndRace = value; }
 
     /// <summary>
     /// MediaTracker ambiance.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043049), sinceVersion: 2)]
+    [AppliedWithChunk<Chunk03043049>(sinceVersion: 2)]
     public CGameCtnMediaClip? ClipAmbiance { get => clipAmbiance; set => clipAmbiance = value; }
 
     /// <summary>
     /// MediaTracker podium.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043049))]
+    [AppliedWithChunk<Chunk03043049>]
     public CGameCtnMediaClip? ClipPodium { get => clipPodium; set => clipPodium = value; }
 
     /// <summary>
     /// Reference to the custom music used on the map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043024))]
+    [AppliedWithChunk<Chunk03043024>]
     public FileRef? CustomMusicPackDesc { get => customMusicPackDesc; set => customMusicPackDesc = value; }
 
     /// <summary>
     /// Hashed password of the map, if it's password protected.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043029))]
+    [AppliedWithChunk<Chunk03043029>]
     public byte[]? HashedPassword
     {
         get
@@ -905,7 +905,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CRC32 of the map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043029))]
+    [AppliedWithChunk<Chunk03043029>]
     public uint? CRC32
     {
         get
@@ -924,10 +924,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Position of the thumbnail camera.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043027))]
-    [AppliedWithChunk(typeof(Chunk03043028))]
-    [AppliedWithChunk(typeof(Chunk0304302D))]
-    [AppliedWithChunk(typeof(Chunk03043036))]
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
     public Vec3? ThumbnailPosition
     {
         get
@@ -946,10 +946,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Pitch, yaw and roll of the thumbnail camera in radians.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043027))]
-    [AppliedWithChunk(typeof(Chunk03043028))]
-    [AppliedWithChunk(typeof(Chunk0304302D))]
-    [AppliedWithChunk(typeof(Chunk03043036))]
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
     public Vec3? ThumbnailPitchYawRoll
     {
         get
@@ -968,10 +968,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Thumbnail camera FOV.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043027))]
-    [AppliedWithChunk(typeof(Chunk03043028))]
-    [AppliedWithChunk(typeof(Chunk0304302D))]
-    [AppliedWithChunk(typeof(Chunk03043036))]
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
     public float? ThumbnailFOV
     {
         get
@@ -987,10 +987,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043027))]
-    [AppliedWithChunk(typeof(Chunk03043028))]
-    [AppliedWithChunk(typeof(Chunk0304302D))]
-    [AppliedWithChunk(typeof(Chunk03043036))]
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
     public float? ThumbnailNearClipPlane
     {
         get
@@ -1006,10 +1006,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043027))]
-    [AppliedWithChunk(typeof(Chunk03043028))]
-    [AppliedWithChunk(typeof(Chunk0304302D))]
-    [AppliedWithChunk(typeof(Chunk03043036))]
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
     public float? ThumbnailFarClipPlane
     {
         get
@@ -1027,8 +1027,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// List of all the available lightmap frames. Each frame can contain up to 3 different variants in either JPEG or WEBP format.
     /// </summary>
-    [AppliedWithChunk(typeof(Chunk0304303D))]
-    [AppliedWithChunk(typeof(Chunk0304305B))]
+    [AppliedWithChunk<Chunk0304303D>]
+    [AppliedWithChunk<Chunk0304305B>]
     public List<List<EmbeddedFile>>? LightmapFrames
     {
         get
@@ -1047,8 +1047,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Lightmap cache information.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304303D))]
-    [AppliedWithChunk(typeof(Chunk0304305B))]
+    [AppliedWithChunk<Chunk0304303D>]
+    [AppliedWithChunk<Chunk0304305B>]
     public CHmsLightMapCache? LightmapCache
     {
         get
@@ -1067,15 +1067,15 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// If the map has at least 1 lightmap frame.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304303D))]
-    [AppliedWithChunk(typeof(Chunk0304305B))]
+    [AppliedWithChunk<Chunk0304303D>]
+    [AppliedWithChunk<Chunk0304305B>]
     public bool HasLightmaps => lightmapFrames?.Count > 0;
 
     /// <summary>
     /// List of all items and objects placed on the map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043040))]
+    [AppliedWithChunk<Chunk03043040>]
     public IList<CGameCtnAnchoredObject>? AnchoredObjects
     {
         get
@@ -1091,7 +1091,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043043))]
+    [AppliedWithChunk<Chunk03043043>]
     public CGameCtnZoneGenealogy[]? Genealogies
     {
         get
@@ -1110,7 +1110,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Metadata written into the map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043044))]
+    [AppliedWithChunk<Chunk03043044>]
     public CScriptTraitsMetadata? ScriptMetadata
     {
         get
@@ -1126,7 +1126,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304304B))]
+    [AppliedWithChunk<Chunk0304304B>]
     public string? ObjectiveTextAuthor
     {
         get
@@ -1142,7 +1142,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304304B))]
+    [AppliedWithChunk<Chunk0304304B>]
     public string? ObjectiveTextGold
     {
         get
@@ -1158,7 +1158,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304304B))]
+    [AppliedWithChunk<Chunk0304304B>]
     public string? ObjectiveTextSilver
     {
         get
@@ -1174,7 +1174,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304304B))]
+    [AppliedWithChunk<Chunk0304304B>]
     public string? ObjectiveTextBronze
     {
         get
@@ -1193,7 +1193,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// List of offzones defined on the map, constructed with cubes made from start-to-end coordinates.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043050))]
+    [AppliedWithChunk<Chunk03043050>]
     public IList<(Int3 start, Int3 end)>? Offzones
     {
         get
@@ -1212,7 +1212,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Minimum Y value of <see cref="Blocks"/>.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043052))]
+    [AppliedWithChunk<Chunk03043052>]
     public int DecoBaseHeightOffset
     {
         get
@@ -1231,7 +1231,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Bot paths defined on the (Shootmania) map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043053))]
+    [AppliedWithChunk<Chunk03043053>]
     public IList<BotPath>? BotPaths
     {
         get
@@ -1250,7 +1250,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Embedded data in the map. Key defines a relative path to the resource. Value is the actual data, usually in Gbx format, sometimes in image format.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043054))]
+    [AppliedWithChunk<Chunk03043054>]
     public Dictionary<string, byte[]>? EmbeddedData
     {
         get
@@ -1264,7 +1264,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Exact time of the day in the map. Available since ManiaPlanet 4.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043056))]
+    [AppliedWithChunk<Chunk03043056>]
     public TimeSpan? DayTime
     {
         get
@@ -1283,7 +1283,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// If the map uses dynamic daylight cycle. Available since ManiaPlanet 4.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043056))]
+    [AppliedWithChunk<Chunk03043056>]
     public bool DynamicDaylight
     {
         get
@@ -1302,7 +1302,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Duration of the day defined in real time. Available since ManiaPlanet 4.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043056))]
+    [AppliedWithChunk<Chunk03043056>]
     public TimeInt32? DayDuration
     {
         get
@@ -1321,16 +1321,16 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// If the thumbnail camera was customized. Only relevant up to TMUF.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043027))]
-    [AppliedWithChunk(typeof(Chunk03043028))]
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
     public bool? HasCustomCamThumbnail { get => hasCustomCamThumbnail; set => hasCustomCamThumbnail = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043069))]
+    [AppliedWithChunk<Chunk03043069>]
     public IList<MacroblockInstance>? MacroblockInstances { get; set; }
     
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0304303E))]
+    [AppliedWithChunk<Chunk0304303E>]
     public CSceneVehicleCarMarksSamples?[]? CarMarksBuffer
     {
         get

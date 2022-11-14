@@ -25,11 +25,11 @@ public abstract partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, 
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03029001))]
+    [AppliedWithChunk<Chunk03029001>]
     public IList<Key> Keys { get => keys;  set => keys = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03029001))]
+    [AppliedWithChunk<Chunk03029001>]
     public Vec4[] Vertices
     {
         get => vertices;
@@ -54,7 +54,7 @@ public abstract partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, 
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03029001))]
+    [AppliedWithChunk<Chunk03029001>]
     public Int3[] Triangles
     {
         get => triangles;

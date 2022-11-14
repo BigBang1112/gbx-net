@@ -11,7 +11,7 @@ public class CGamePodiumInfo : CMwNod
     private ExternalNode<CMwNod>[] mediaClipFids;
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03168000))]
+    [AppliedWithChunk<Chunk03168000>]
     public ExternalNode<CMwNod>[] MediaClipFids { get => mediaClipFids; set => mediaClipFids = value; }
 
     internal CGamePodiumInfo()

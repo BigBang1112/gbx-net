@@ -17,7 +17,7 @@ public partial class CGameCtnMediaBlockFxBloom : CGameCtnMediaBlockFx, CGameCtnM
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03083001))]
+    [AppliedWithChunk<Chunk03083001>]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
     internal CGameCtnMediaBlockFxBloom()

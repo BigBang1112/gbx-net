@@ -17,7 +17,7 @@ public partial class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, CGameCtnMe
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03024000))]
+    [AppliedWithChunk<Chunk03024000>]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
     internal CGameCtnMediaBlock3dStereo()

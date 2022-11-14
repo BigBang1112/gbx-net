@@ -13,7 +13,7 @@ public class CFuncKeysNatural : CFuncKeys
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk05030000))]
+    [AppliedWithChunk<Chunk05030000>]
     public int[]? Naturals { get => naturals; set => naturals = value; }
 
     #endregion

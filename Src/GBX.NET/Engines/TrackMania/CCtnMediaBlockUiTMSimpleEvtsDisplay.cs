@@ -29,28 +29,28 @@ public class CCtnMediaBlockUiTMSimpleEvtsDisplay : CGameCtnMediaBlockUi
     #region Properties
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk24092000))]
-    [AppliedWithChunk(typeof(Chunk24092002))]
+    [AppliedWithChunk<Chunk24092000>]
+    [AppliedWithChunk<Chunk24092002>]
     public EDisplayMode DisplayMode { get => displayMode; set => displayMode = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk24092001))]
+    [AppliedWithChunk<Chunk24092001>]
     public bool StuntFigures { get => stuntFigures; set => stuntFigures = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk24092001))]
+    [AppliedWithChunk<Chunk24092001>]
     public bool Checkpoints { get => checkpoints; set => checkpoints = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk24092001))]
+    [AppliedWithChunk<Chunk24092001>]
     public bool EndOfRace { get => endOfRace; set => endOfRace = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk24092001))]
+    [AppliedWithChunk<Chunk24092001>]
     public bool EndOfLaps { get => endOfLaps; set => endOfLaps = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk24092001))]
+    [AppliedWithChunk<Chunk24092001>]
     public bool GhostsName { get => ghostsName; set => ghostsName = value; }
 
     #endregion

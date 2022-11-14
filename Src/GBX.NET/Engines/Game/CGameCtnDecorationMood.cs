@@ -16,47 +16,47 @@ public class CGameCtnDecorationMood : CMwNod
     private bool backgroundIsLocallyLighted;
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0303A000))]
+    [AppliedWithChunk<Chunk0303A000>]
     public float Latitude { get => latitude; set => latitude = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0303A000))]
+    [AppliedWithChunk<Chunk0303A000>]
     public float Longitude { get => longitude; set => longitude = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0303A000))]
+    [AppliedWithChunk<Chunk0303A000>]
     public float DeltaGMT { get => deltaGMT; set => deltaGMT = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0303A001))]
+    [AppliedWithChunk<Chunk0303A001>]
     public float RemappedStartDayTime { get => remappedStartDayTime; set => remappedStartDayTime = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0303A001))]
+    [AppliedWithChunk<Chunk0303A001>]
     public CPlugGameSkin? Remapping { get => remapping; set => remapping = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0303A001))]
+    [AppliedWithChunk<Chunk0303A001>]
     public string? RemapFolder { get => remapFolder; set => remapFolder = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0303A002))]
+    [AppliedWithChunk<Chunk0303A002>]
     public int ShadowCountCarHuman { get => shadowCountCarHuman; set => shadowCountCarHuman = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0303A002))]
+    [AppliedWithChunk<Chunk0303A002>]
     public int ShadowCountCarOpponent { get => shadowCountCarOpponent; set => shadowCountCarOpponent = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0303A002))]
+    [AppliedWithChunk<Chunk0303A002>]
     public float ShadowCarIntensity { get => shadowCarIntensity; set => shadowCarIntensity = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0303A002))]
+    [AppliedWithChunk<Chunk0303A002>]
     public bool ShadowScene { get => shadowScene; set => shadowScene = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0303A002))]
+    [AppliedWithChunk<Chunk0303A002>]
     public bool BackgroundIsLocallyLighted { get => backgroundIsLocallyLighted; set => backgroundIsLocallyLighted = value; }
 
     internal CGameCtnDecorationMood()

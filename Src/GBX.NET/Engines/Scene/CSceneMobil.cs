@@ -10,15 +10,15 @@ public class CSceneMobil : CSceneObject
     private CSceneMessageHandler? messageHandler;
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0A011005))]
+    [AppliedWithChunk<Chunk0A011005>]
     public CHmsItem? Item { get => item; set => item = value; }
     
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0A011003))]
+    [AppliedWithChunk<Chunk0A011003>]
     public CSceneObjectLink?[]? ObjectLink { get => objectLink; set => objectLink = value; }
     
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0A011006))]
+    [AppliedWithChunk<Chunk0A011006>]
     public CSceneMessageHandler? MessageHandler { get => messageHandler; set => messageHandler = value; }
 
     internal CSceneMobil()

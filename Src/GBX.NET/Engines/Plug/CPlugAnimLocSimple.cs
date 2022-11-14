@@ -14,35 +14,35 @@ public class CPlugAnimLocSimple : CMwNod
     private float rotAngle;
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090F8000))]
+    [AppliedWithChunk<Chunk090F8000>]
     public int RotPeriod { get => rotPeriod; set => rotPeriod = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090F8000))]
+    [AppliedWithChunk<Chunk090F8000>]
     public int TransPeriod { get => transPeriod; set => transPeriod = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090F8000))]
+    [AppliedWithChunk<Chunk090F8000>]
     public float TransY { get => transY; set => transY = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090F8000), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk090F8000>(sinceVersion: 1)]
     public int Axis { get => axis; set => axis = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090F8000), sinceVersion: 2)]
+    [AppliedWithChunk<Chunk090F8000>(sinceVersion: 2)]
     public int RotPeriodMax { get => rotPeriodMax; set => rotPeriodMax = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090F8000), sinceVersion: 2)]
+    [AppliedWithChunk<Chunk090F8000>(sinceVersion: 2)]
     public int TransPeriodMax { get => transPeriodMax; set => transPeriodMax = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090F8000), sinceVersion: 3)]
+    [AppliedWithChunk<Chunk090F8000>(sinceVersion: 3)]
     public byte RotFunc { get => rotFunc; set => rotFunc = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090F8000), sinceVersion: 3)]
+    [AppliedWithChunk<Chunk090F8000>(sinceVersion: 3)]
     public float RotAngle { get => rotAngle; set => rotAngle = value; }
 
     internal CPlugAnimLocSimple()

@@ -9,15 +9,15 @@ public class CPlugVehiclePhyModelCustom : CMwNod
     private float gravityCoef;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0911E000))]
+    [AppliedWithChunk<Chunk0911E000>]
     public float AccelCoef { get => accelCoef; set => accelCoef = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0911E000))]
+    [AppliedWithChunk<Chunk0911E000>]
     public float ControlCoef { get => controlCoef; set => controlCoef = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0911E000))]
+    [AppliedWithChunk<Chunk0911E000>]
     public float GravityCoef { get => gravityCoef; set => gravityCoef = value; }
 
     internal CPlugVehiclePhyModelCustom()

@@ -7,7 +7,7 @@ public class CSceneVehicleTunings : CMwNod
     private CSceneVehicleCarTuning[] tuning;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0A030000))]
+    [AppliedWithChunk<Chunk0A030000>]
     public CSceneVehicleCarTuning[] Tuning { get => tuning; set => tuning = value; }
 
     internal CSceneVehicleTunings()

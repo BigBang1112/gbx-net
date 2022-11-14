@@ -7,7 +7,7 @@ public partial class CGameUserFileList : CMwNod
     private IList<FileInfo> files;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk031B7000))]
+    [AppliedWithChunk<Chunk031B7000>]
     public IList<FileInfo> Files { get => files; set => files = value; }
 
     internal CGameUserFileList()

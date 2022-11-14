@@ -17,11 +17,11 @@ public partial class CGameCtnMediaBlockScenery : CGameCtnMediaBlock, CGameCtnMed
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03188000))]
+    [AppliedWithChunk<Chunk03188000>]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03188001))]
+    [AppliedWithChunk<Chunk03188001>]
     public CPlugDataTape? DataTape { get => dataTape; set => dataTape = value; }
 
     internal CGameCtnMediaBlockScenery()

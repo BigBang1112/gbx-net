@@ -29,23 +29,23 @@ public class CGameCtnBlockUnitInfo : CMwNod
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03036000))]
+    [AppliedWithChunk<Chunk03036000>]
     public int PlacePylons { get => placePylons; set => placePylons = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03036004))]
+    [AppliedWithChunk<Chunk03036004>]
     public int AcceptPylons { get => acceptPylons; set => acceptPylons = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03036000))]
+    [AppliedWithChunk<Chunk03036000>]
     public Int3 RelativeOffset { get => relativeOffset; set => relativeOffset = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03036000))]
+    [AppliedWithChunk<Chunk03036000>]
     public ExternalNode<CGameCtnBlockInfoClip>[]? Clips { get => clips; set => clips = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03036002))]
+    [AppliedWithChunk<Chunk03036002>]
     public bool Underground
     {
         get
@@ -61,12 +61,12 @@ public class CGameCtnBlockUnitInfo : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03036005))]
+    [AppliedWithChunk<Chunk03036005>]
     public string? TerrainModifierId { get => terrainModifierId; set => terrainModifierId = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03036008))]
-    [AppliedWithChunk(typeof(Chunk0303600B))]
+    [AppliedWithChunk<Chunk03036008>]
+    [AppliedWithChunk<Chunk0303600B>]
     public CGameCtnBlockInfoClip? BottomClip
     {
         get => bottomClip = GetNodeFromRefTable(bottomClip, bottomClipFile) as CGameCtnBlockInfoClip;
@@ -74,8 +74,8 @@ public class CGameCtnBlockUnitInfo : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03036008))]
-    [AppliedWithChunk(typeof(Chunk0303600B))]
+    [AppliedWithChunk<Chunk03036008>]
+    [AppliedWithChunk<Chunk0303600B>]
     public CGameCtnBlockInfoClip? TopClip
     {
         get => topClip = GetNodeFromRefTable(topClip, topClipFile) as CGameCtnBlockInfoClip;
@@ -83,35 +83,35 @@ public class CGameCtnBlockUnitInfo : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0303600B))]
+    [AppliedWithChunk<Chunk0303600B>]
     public Direction? BottomClipDir { get => bottomClipDir; set => bottomClipDir = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0303600B))]
+    [AppliedWithChunk<Chunk0303600B>]
     public Direction? TopClipDir { get => topClipDir; set => topClipDir = value; }
 
     [NodeMember(ExactName = "Clips_North")]
-    [AppliedWithChunk(typeof(Chunk0303600C))]
+    [AppliedWithChunk<Chunk0303600C>]
     public ExternalNode<CGameCtnBlockInfoClip>[]? ClipsNorth { get => clipsNorth; set => clipsNorth = value; }
     
     [NodeMember(ExactName = "Clips_East")]
-    [AppliedWithChunk(typeof(Chunk0303600C))]
+    [AppliedWithChunk<Chunk0303600C>]
     public ExternalNode<CGameCtnBlockInfoClip>[]? ClipsEast { get => clipsEast; set => clipsEast = value; }
     
     [NodeMember(ExactName = "Clips_South")]
-    [AppliedWithChunk(typeof(Chunk0303600C))]
+    [AppliedWithChunk<Chunk0303600C>]
     public ExternalNode<CGameCtnBlockInfoClip>[]? ClipsSouth { get => clipsSouth; set => clipsSouth = value; }
     
     [NodeMember(ExactName = "Clips_West")]
-    [AppliedWithChunk(typeof(Chunk0303600C))]
+    [AppliedWithChunk<Chunk0303600C>]
     public ExternalNode<CGameCtnBlockInfoClip>[]? ClipsWest { get => clipsWest; set => clipsWest = value; }
     
     [NodeMember(ExactName = "Clips_Top")]
-    [AppliedWithChunk(typeof(Chunk0303600C))]
+    [AppliedWithChunk<Chunk0303600C>]
     public ExternalNode<CGameCtnBlockInfoClip>[]? ClipsTop { get => clipsTop; set => clipsTop = value; }
     
     [NodeMember(ExactName = "Clips_Bottom")]
-    [AppliedWithChunk(typeof(Chunk0303600C))]
+    [AppliedWithChunk<Chunk0303600C>]
     public ExternalNode<CGameCtnBlockInfoClip>[]? ClipsBottom { get => clipsBottom; set => clipsBottom = value; }
 
     #endregion

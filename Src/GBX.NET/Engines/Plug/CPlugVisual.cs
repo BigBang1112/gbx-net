@@ -15,18 +15,18 @@ public abstract class CPlugVisual : CPlug
     private Int3[]? subVisuals;
     
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk09006005))]
+    [AppliedWithChunk<Chunk09006005>]
     public Int3[]? SubVisuals { get => subVisuals; set => subVisuals = value; }
 
     protected int Count { get; private set; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk09006008))]
-    [AppliedWithChunk(typeof(Chunk0900600A))]
-    [AppliedWithChunk(typeof(Chunk0900600C))]
-    [AppliedWithChunk(typeof(Chunk0900600D))]
-    [AppliedWithChunk(typeof(Chunk0900600E))]
-    [AppliedWithChunk(typeof(Chunk0900600F))]
+    [AppliedWithChunk<Chunk09006008>]
+    [AppliedWithChunk<Chunk0900600A>]
+    [AppliedWithChunk<Chunk0900600C>]
+    [AppliedWithChunk<Chunk0900600D>]
+    [AppliedWithChunk<Chunk0900600E>]
+    [AppliedWithChunk<Chunk0900600F>]
     public int Flags { get; set; }
 
     [NodeMember]
@@ -51,29 +51,29 @@ public abstract class CPlugVisual : CPlug
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk09006008))]
-    [AppliedWithChunk(typeof(Chunk0900600A))]
-    [AppliedWithChunk(typeof(Chunk0900600C))]
-    [AppliedWithChunk(typeof(Chunk0900600D))]
-    [AppliedWithChunk(typeof(Chunk0900600E))]
-    [AppliedWithChunk(typeof(Chunk0900600F))]
+    [AppliedWithChunk<Chunk09006008>]
+    [AppliedWithChunk<Chunk0900600A>]
+    [AppliedWithChunk<Chunk0900600C>]
+    [AppliedWithChunk<Chunk0900600D>]
+    [AppliedWithChunk<Chunk0900600E>]
+    [AppliedWithChunk<Chunk0900600F>]
     public TexCoordSet[] TexCoords { get; set; } = Array.Empty<TexCoordSet>();
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0900600A))]
-    [AppliedWithChunk(typeof(Chunk0900600C))]
-    [AppliedWithChunk(typeof(Chunk0900600D))]
-    [AppliedWithChunk(typeof(Chunk0900600E))]
-    [AppliedWithChunk(typeof(Chunk0900600F))]
+    [AppliedWithChunk<Chunk0900600A>]
+    [AppliedWithChunk<Chunk0900600C>]
+    [AppliedWithChunk<Chunk0900600D>]
+    [AppliedWithChunk<Chunk0900600E>]
+    [AppliedWithChunk<Chunk0900600F>]
     public CPlugVertexStream[] VertexStreams { get; set; } = Array.Empty<CPlugVertexStream>();
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0900600B))]
+    [AppliedWithChunk<Chunk0900600B>]
     public Split[] Splits { get => splits; set => splits = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0900600E))]
-    [AppliedWithChunk(typeof(Chunk0900600F))]
+    [AppliedWithChunk<Chunk0900600E>]
+    [AppliedWithChunk<Chunk0900600F>]
     public BitmapElemToPack[] BitmapElemToPacks { get; set; } = Array.Empty<BitmapElemToPack>();
 
     internal CPlugVisual()

@@ -44,12 +44,12 @@ public partial class CPlugCrystal : CPlugTreeGenerator
     private Material[] materials = Array.Empty<Material>();
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk09003003))]
+    [AppliedWithChunk<Chunk09003003>]
     public Material[] Materials { get => materials; set => materials = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk09003000))]
-    [AppliedWithChunk(typeof(Chunk09003005))]
+    [AppliedWithChunk<Chunk09003000>]
+    [AppliedWithChunk<Chunk09003005>]
     public Layer[] Layers { get; set; } = Array.Empty<Layer>();
 
     #region Methods

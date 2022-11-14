@@ -10,19 +10,19 @@ public class CPlugSkel : CMwNod
     private JointExpr[] jointExprs = Array.Empty<JointExpr>();
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090BA000))]
+    [AppliedWithChunk<Chunk090BA000>]
     public string? Name { get => name; set => name = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk090BA000))]
+    [AppliedWithChunk<Chunk090BA000>]
     public Joint[] Joints { get => joints; set => joints = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090BA000), sinceVersion: 6)]
+    [AppliedWithChunk<Chunk090BA000>(sinceVersion: 6)]
     public Socket[] Sockets { get => sockets; set => sockets = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090BA000), sinceVersion: 14)]
+    [AppliedWithChunk<Chunk090BA000>(sinceVersion: 14)]
     public JointExpr[] JointExprs { get => jointExprs; set => jointExprs = value; }
 
     internal CPlugSkel()

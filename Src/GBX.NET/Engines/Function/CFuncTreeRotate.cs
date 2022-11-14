@@ -15,11 +15,11 @@ public class CFuncTreeRotate : CFuncTree
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0501E001))]
+    [AppliedWithChunk<Chunk0501E001>]
     public float AngleMin { get => angleMin; set => angleMin = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0501E001))]
+    [AppliedWithChunk<Chunk0501E001>]
     public float AngleMax { get => angleMax; set => angleMax = value; }
 
     #endregion

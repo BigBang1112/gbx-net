@@ -17,7 +17,7 @@ public partial class CGameCtnMediaBlockFxBlurDepth : CGameCtnMediaBlockFx, CGame
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03081001))]
+    [AppliedWithChunk<Chunk03081001>]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
     internal CGameCtnMediaBlockFxBlurDepth()

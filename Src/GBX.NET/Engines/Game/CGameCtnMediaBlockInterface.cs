@@ -14,19 +14,19 @@ public class CGameCtnMediaBlockInterface : CGameCtnMediaBlock, CGameCtnMediaBloc
     private string manialink;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03195000))]
+    [AppliedWithChunk<Chunk03195000>]
     public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03195000))]
+    [AppliedWithChunk<Chunk03195000>]
     public TimeSingle End { get => end; set => end = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03195000))]
+    [AppliedWithChunk<Chunk03195000>]
     public bool ShowInterface { get => showInterface; set => showInterface = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03195000))]
+    [AppliedWithChunk<Chunk03195000>]
     public string Manialink { get => manialink; set => manialink = value; }
 
     internal CGameCtnMediaBlockInterface()

@@ -10,7 +10,7 @@ public partial class CGameCtnCollectorList : CMwNod
     private IList<Collector> collectorStock;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0301B000))]
+    [AppliedWithChunk<Chunk0301B000>]
     public IList<Collector> CollectorStock { get => collectorStock; set => collectorStock = value; }
 
     internal CGameCtnCollectorList()

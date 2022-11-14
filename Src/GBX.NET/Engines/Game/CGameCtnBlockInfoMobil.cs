@@ -15,23 +15,23 @@ public class CGameCtnBlockInfoMobil : CMwNod
     private GameBoxRefTable.File? prefabFidFile;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03122003), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk03122003>(sinceVersion: 1)]
     public bool HasGeomTransformation { get => hasGeomTransformation; set => hasGeomTransformation = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03122003), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk03122003>(sinceVersion: 1)]
     public Vec3? GeomTranslation { get => geomTranslation; set => geomTranslation = value; }
     
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03122003), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk03122003>(sinceVersion: 1)]
     public Vec3? GeomRotation { get => geomRotation; set => geomRotation = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03122002))]
+    [AppliedWithChunk<Chunk03122002>]
     public CGameCtnSolidDecals?[]? SolidDecals { get => solidDecals; set => solidDecals = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03122003), sinceVersion: 2)]
+    [AppliedWithChunk<Chunk03122003>(sinceVersion: 2)]
     public CPlugSolid? SolidFid
     {
         get => solidFid = GetNodeFromRefTable(solidFid, solidFidFile) as CPlugSolid;
@@ -39,7 +39,7 @@ public class CGameCtnBlockInfoMobil : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03122003), sinceVersion: 3)]
+    [AppliedWithChunk<Chunk03122003>(sinceVersion: 3)]
     public CPlugPrefab? PrefabFid
     {
         get => prefabFid = GetNodeFromRefTable(prefabFid, prefabFidFile) as CPlugPrefab;
@@ -47,7 +47,7 @@ public class CGameCtnBlockInfoMobil : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03122004))]
+    [AppliedWithChunk<Chunk03122004>]
     public CGameCtnBlockInfoMobilLink[]? DynaLinks { get => dynaLinks; set => dynaLinks = value; }
 
     internal CGameCtnBlockInfoMobil()

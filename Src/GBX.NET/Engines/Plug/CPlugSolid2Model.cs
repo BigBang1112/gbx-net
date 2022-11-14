@@ -20,39 +20,39 @@ public class CPlugSolid2Model : CMwNod
     private PreLightGen? preLightGenerator;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk090BB000))]
+    [AppliedWithChunk<Chunk090BB000>]
     public ShadedGeom[] ShadedGeoms { get => shadedGeoms; set => shadedGeoms = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk090BB000), sinceVersion: 6)]
+    [AppliedWithChunk<Chunk090BB000>(sinceVersion: 6)]
     public CPlugVisual?[] Visuals { get => visuals; set => visuals = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk090BB000))]
+    [AppliedWithChunk<Chunk090BB000>]
     public ExternalNode<CPlugMaterial>[] Materials { get => materials; private set => materials = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk090BB000), sinceVersion: 8)]
+    [AppliedWithChunk<Chunk090BB000>(sinceVersion: 8)]
     public Light[] Lights { get => lights; set => lights = value; }
     
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk090BB000))]
+    [AppliedWithChunk<Chunk090BB000>]
     public CPlugMaterialUserInst?[] MaterialUserInsts { get => materialUserInsts; set => materialUserInsts = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk090BB000))]
+    [AppliedWithChunk<Chunk090BB000>]
     public Material[] CustomMaterials { get => customMaterials; set => customMaterials = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk090BB000), sinceVersion: 10)]
+    [AppliedWithChunk<Chunk090BB000>(sinceVersion: 10)]
     public CPlugLightUserModel?[] LightUserModels { get => lightUserModels; set => lightUserModels = value; }
     
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk090BB000), sinceVersion: 10)]
+    [AppliedWithChunk<Chunk090BB000>(sinceVersion: 10)]
     public LightInst[] LightInsts { get => lightInsts; set => lightInsts = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk090BB000), sinceVersion: 3)]
+    [AppliedWithChunk<Chunk090BB000>(sinceVersion: 3)]
     public PreLightGen? PreLightGenerator { get => preLightGenerator; set => preLightGenerator = value; }
 
     internal CPlugSolid2Model()

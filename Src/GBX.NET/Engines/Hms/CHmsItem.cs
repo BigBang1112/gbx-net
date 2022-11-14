@@ -7,7 +7,7 @@ public class CHmsItem : CMwNod
     private CPlugSolid solid;
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk06003001))]
+    [AppliedWithChunk<Chunk06003001>]
     public CPlugSolid Solid { get => solid; set => solid = value; }
 
     internal CHmsItem()

@@ -25,10 +25,10 @@ public partial class CGameCtnMediaBlockCameraCustom : CGameCtnMediaBlockCamera, 
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk030A2001))]
-    [AppliedWithChunk(typeof(Chunk030A2002))]
-    [AppliedWithChunk(typeof(Chunk030A2005))]
-    [AppliedWithChunk(typeof(Chunk030A2006))]
+    [AppliedWithChunk<Chunk030A2001>]
+    [AppliedWithChunk<Chunk030A2002>]
+    [AppliedWithChunk<Chunk030A2005>]
+    [AppliedWithChunk<Chunk030A2006>]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
     internal CGameCtnMediaBlockCameraCustom()

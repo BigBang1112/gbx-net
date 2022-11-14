@@ -17,7 +17,7 @@ public class CGameCtnChallengeGroup : CMwNod
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0308F002))]
+    [AppliedWithChunk<Chunk0308F002>]
     public string? Name
     {
         get => name;
@@ -25,8 +25,8 @@ public class CGameCtnChallengeGroup : CMwNod
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0308F006))]
-    [AppliedWithChunk(typeof(Chunk0308F00B))]
+    [AppliedWithChunk<Chunk0308F006>]
+    [AppliedWithChunk<Chunk0308F00B>]
     public MapInfo[]? MapInfos
     {
         get => mapInfos;

@@ -12,11 +12,11 @@ public class CGameCtnMediaBlockFxCameraMap : CGameCtnMediaBlock, CGameCtnMediaBl
     private TimeSingle end = TimeSingle.FromSeconds(3);
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03139000))]
+    [AppliedWithChunk<Chunk03139000>]
     public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03139001))]
+    [AppliedWithChunk<Chunk03139001>]
     public TimeSingle End { get => end; set => end = value; }
 
     internal CGameCtnMediaBlockFxCameraMap()

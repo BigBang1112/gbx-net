@@ -17,7 +17,7 @@ public partial class CGameCtnMediaBlockCameraEffectShake : CGameCtnMediaBlockCam
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk030A4000))]
+    [AppliedWithChunk<Chunk030A4000>]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
     internal CGameCtnMediaBlockCameraEffectShake()

@@ -7,7 +7,7 @@ public class GxLightPoint : GxLightNotAmbient
     private float flareSize;
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk04003003))]
+    [AppliedWithChunk<Chunk04003003>]
     public float FlareSize { get => flareSize; set => flareSize = value; }
 
     internal GxLightPoint()

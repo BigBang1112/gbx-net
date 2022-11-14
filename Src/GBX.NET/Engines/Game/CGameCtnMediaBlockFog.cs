@@ -17,7 +17,7 @@ public partial class CGameCtnMediaBlockFog : CGameCtnMediaBlock, CGameCtnMediaBl
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03199000))]
+    [AppliedWithChunk<Chunk03199000>]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
     internal CGameCtnMediaBlockFog()

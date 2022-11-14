@@ -13,17 +13,17 @@ public class CGameCtnMediaBlockUi : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasT
     private CControlList? userInterface;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0307D000))]
-    [AppliedWithChunk(typeof(Chunk0307D001))]
+    [AppliedWithChunk<Chunk0307D000>]
+    [AppliedWithChunk<Chunk0307D001>]
     public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0307D000))]
-    [AppliedWithChunk(typeof(Chunk0307D001))]
+    [AppliedWithChunk<Chunk0307D000>]
+    [AppliedWithChunk<Chunk0307D001>]
     public TimeSingle End { get => end; set => end = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0307D000))]
+    [AppliedWithChunk<Chunk0307D000>]
     public CControlList? UserInterface { get => userInterface; set => userInterface = value; }
 
     internal CGameCtnMediaBlockUi()

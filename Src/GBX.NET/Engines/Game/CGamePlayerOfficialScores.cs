@@ -4,8 +4,8 @@
 public partial class CGamePlayerOfficialScores : CMwNod
 {
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03095000))]
-    [AppliedWithChunk(typeof(Chunk03095001))]
+    [AppliedWithChunk<Chunk03095000>]
+    [AppliedWithChunk<Chunk03095001>]
     public FilteredPlayerRank[]? FilteredPlayerRanks { get; private set; }
 
     internal CGamePlayerOfficialScores()

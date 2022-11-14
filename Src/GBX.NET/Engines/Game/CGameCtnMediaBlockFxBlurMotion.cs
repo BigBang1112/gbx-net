@@ -12,11 +12,11 @@ public class CGameCtnMediaBlockFxBlurMotion : CGameCtnMediaBlockFxBlur, CGameCtn
     public TimeSingle end = TimeSingle.FromSeconds(3);
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03082000))]
+    [AppliedWithChunk<Chunk03082000>]
     public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03082000))]
+    [AppliedWithChunk<Chunk03082000>]
     public TimeSingle End { get => end; set => end = value; }
 
     internal CGameCtnMediaBlockFxBlurMotion()

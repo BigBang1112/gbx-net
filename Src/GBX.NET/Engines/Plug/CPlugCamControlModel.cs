@@ -7,7 +7,7 @@ public abstract class CPlugCamControlModel : CMwNod
     private CPlugCamShakeModel? shake;
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0910C000))]
+    [AppliedWithChunk<Chunk0910C000>]
     public CPlugCamShakeModel? Shake { get => shake; set => shake = value; }
 
     internal CPlugCamControlModel()

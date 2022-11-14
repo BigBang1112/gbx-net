@@ -18,26 +18,26 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector
     private CGameCtnMediaClipGroup? clipGroupEndRace;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0310D000))]
+    [AppliedWithChunk<Chunk0310D000>]
     public IList<BlockSpawn>? BlockSpawns { get => blockSpawns; set => blockSpawns = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0310D001))]
+    [AppliedWithChunk<Chunk0310D001>]
     public IList<BlockSkinSpawn>? BlockSkinSpawns { get => blockSkinSpawns; set => blockSkinSpawns = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0310D002))]
+    [AppliedWithChunk<Chunk0310D002>]
     public IList<CardEventsSpawn>? CardEventsSpawns { get => cardEventsSpawns; set => cardEventsSpawns = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0310D008))]
+    [AppliedWithChunk<Chunk0310D008>]
     public CGameCtnAutoTerrain?[]? AutoTerrains { get => autoTerrains; set => autoTerrains = value; }
     
     /// <summary>
     /// Metadata written into the macroblock.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0310D00B))]
+    [AppliedWithChunk<Chunk0310D00B>]
     public CScriptTraitsMetadata? ScriptMetadata
     {
         get
@@ -53,11 +53,11 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0310D00E))]
+    [AppliedWithChunk<Chunk0310D00E>]
     public IList<ObjectSpawn>? ObjectSpawns { get => objectSpawns; set => objectSpawns = value; }
     
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0310D011))]
+    [AppliedWithChunk<Chunk0310D011>]
     public CGameCtnMediaClipGroup? ClipGroupInGame
     {
         get
@@ -73,7 +73,7 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0310D011))]
+    [AppliedWithChunk<Chunk0310D011>]
     public CGameCtnMediaClipGroup? ClipGroupEndRace
     {
         get

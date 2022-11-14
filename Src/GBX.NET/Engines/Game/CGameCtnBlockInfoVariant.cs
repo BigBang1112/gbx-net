@@ -63,31 +63,31 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
     private WaterArchive[]? waterVolumes;
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B002))]
+    [AppliedWithChunk<Chunk0315B002>]
     public EMultiDir MultiDir { get => multiDir; set => multiDir = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B003))]
+    [AppliedWithChunk<Chunk0315B003>]
     public int SymmetricalVariantIndex { get => symmetricalVariantIndex; set => symmetricalVariantIndex = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B003))]
+    [AppliedWithChunk<Chunk0315B003>]
     public ECardinalDir CardinalDir { get => cardinalDir; set => cardinalDir = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B003), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk0315B003>(sinceVersion: 1)]
     public EVariantBaseType VariantBaseType { get => variantBaseType; set => variantBaseType = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B003), sinceVersion: 2)]
+    [AppliedWithChunk<Chunk0315B003>(sinceVersion: 2)]
     public byte NoPillarBelowIndex { get => noPillarBelowIndex; set => noPillarBelowIndex = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0315B005))]
+    [AppliedWithChunk<Chunk0315B005>]
     public CGameCtnBlockInfoMobil?[][]? Mobils { get => mobils; set => mobils = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B006))]
+    [AppliedWithChunk<Chunk0315B006>]
     public CMwNod? ScreenInteractionTriggerSolid
     {
         get => screenInteractionTriggerSolid = GetNodeFromRefTable(screenInteractionTriggerSolid, screenInteractionTriggerSolidFile) as CMwNod;
@@ -95,7 +95,7 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B006))]
+    [AppliedWithChunk<Chunk0315B006>]
     public CMwNod? WaypointTriggerSolid
     {
         get => waypointTriggerSolid = GetNodeFromRefTable(waypointTriggerSolid, waypointTriggerSolidFile) as CMwNod;
@@ -103,19 +103,19 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B006), sinceVersion: 2)]
+    [AppliedWithChunk<Chunk0315B006>(sinceVersion: 2)]
     public CGameGateModel? Gate { get => gate; set => gate = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B006), sinceVersion: 3)]
+    [AppliedWithChunk<Chunk0315B006>(sinceVersion: 3)]
     public CGameTeleporterModel? Teleporter { get => teleporter; set => teleporter = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B006), sinceVersion: 6)]
+    [AppliedWithChunk<Chunk0315B006>(sinceVersion: 6)]
     public CGameTurbineModel? Turbine { get => turbine; set => turbine = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B006), sinceVersion: 7)]
+    [AppliedWithChunk<Chunk0315B006>(sinceVersion: 7)]
     public CPlugFlockModel? FlockModel
     {
         get => flockModel = GetNodeFromRefTable(flockModel, flockModelFile) as CPlugFlockModel;
@@ -123,7 +123,7 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B006), sinceVersion: 8)]
+    [AppliedWithChunk<Chunk0315B006>(sinceVersion: 8)]
     public CGameSpawnModel? SpawnModel
     {
         get => spawnModel = GetNodeFromRefTable(spawnModel, spawnModelFile) as CGameSpawnModel;
@@ -131,59 +131,59 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B006), sinceVersion: 10)]
+    [AppliedWithChunk<Chunk0315B006>(sinceVersion: 10)]
     public CPlugEntitySpawner?[]? EntitySpawners { get => entitySpawners; set => entitySpawners = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B007))]
+    [AppliedWithChunk<Chunk0315B007>]
     public CPlugProbe? Probe { get => probe; set => probe = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B008))]
+    [AppliedWithChunk<Chunk0315B008>]
     public CGameCtnBlockUnitInfo?[]? BlockUnitModels { get => blockUnitModels; set => blockUnitModels = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B008))]
+    [AppliedWithChunk<Chunk0315B008>]
     public bool HasManualSymmetryH { get => hasManualSymmetryH; set => hasManualSymmetryH = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B008))]
+    [AppliedWithChunk<Chunk0315B008>]
     public bool HasManualSymmetryV { get => hasManualSymmetryV; set => hasManualSymmetryV = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B008))]
+    [AppliedWithChunk<Chunk0315B008>]
     public bool HasManualSymmetryD1 { get => hasManualSymmetryD1; set => hasManualSymmetryD1 = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B008))]
+    [AppliedWithChunk<Chunk0315B008>]
     public bool HasManualSymmetryD2 { get => hasManualSymmetryD2; set => hasManualSymmetryD2 = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B008), sinceVersion: 0, upToVersion: 1)] // version 2+ exist but they are not currently retrievable
+    [AppliedWithChunk<Chunk0315B008>(sinceVersion: 0, upToVersion: 1)] // version 2+ exist but they are not currently retrievable
     public Vec3 SpawnTrans { get => spawnTrans; set => spawnTrans = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B008), sinceVersion: 0, upToVersion: 1)] // version 2+ exist but they are not currently retrievable
+    [AppliedWithChunk<Chunk0315B008>(sinceVersion: 0, upToVersion: 1)] // version 2+ exist but they are not currently retrievable
     public float SpawnYaw { get => spawnYaw; set => spawnYaw = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B008), sinceVersion: 0, upToVersion: 1)] // version 2+ exist but they are not currently retrievable
+    [AppliedWithChunk<Chunk0315B008>(sinceVersion: 0, upToVersion: 1)] // version 2+ exist but they are not currently retrievable
     public float SpawnPitch { get => spawnPitch; set => spawnPitch = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B008))]
+    [AppliedWithChunk<Chunk0315B008>]
     public string? Name { get => name; set => name = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B00A), sinceVersion: 2)] // they could be above ver. 2 but they wont be available here
+    [AppliedWithChunk<Chunk0315B00A>(sinceVersion: 2)] // they could be above ver. 2 but they wont be available here
     public CGameObjectPhyCompoundModel? CompoundModel { get => compoundModel; set => compoundModel = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315B00A), sinceVersion: 2)] // they could be above ver. 2 but they wont be available here
+    [AppliedWithChunk<Chunk0315B00A>(sinceVersion: 2)] // they could be above ver. 2 but they wont be available here
     public Iso4 CompoundLoc { get => compoundLoc; set => compoundLoc = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0315B00B))]
+    [AppliedWithChunk<Chunk0315B00B>]
     public WaterArchive[]? WaterVolumes { get => waterVolumes; set => waterVolumes = value; }
 
     internal CGameCtnBlockInfoVariant()

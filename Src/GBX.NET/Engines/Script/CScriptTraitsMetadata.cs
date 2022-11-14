@@ -31,7 +31,7 @@ public partial class CScriptTraitsMetadata : CMwNod
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk11002000))]
+    [AppliedWithChunk<Chunk11002000>]
     public IDictionary<string, ScriptTrait> Traits { get; set; }
 
     internal CScriptTraitsMetadata()

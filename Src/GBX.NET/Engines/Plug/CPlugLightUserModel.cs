@@ -16,43 +16,43 @@ public class CPlugLightUserModel : CMwNod
     private bool nightOnly;
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090F9000))]
+    [AppliedWithChunk<Chunk090F9000>]
     public Vec3 Color { get => color; set => color = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090F9000))]
+    [AppliedWithChunk<Chunk090F9000>]
     public float Intensity { get => intensity; set => intensity = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090F9000))]
+    [AppliedWithChunk<Chunk090F9000>]
     public float Distance { get => distance; set => distance = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090F9000))]
+    [AppliedWithChunk<Chunk090F9000>]
     public float PointEmissionRadius { get => pointEmissionRadius; set => pointEmissionRadius = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090F9000))]
+    [AppliedWithChunk<Chunk090F9000>]
     public float PointEmissionLength { get => pointEmissionLength; set => pointEmissionLength = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090F9000))]
+    [AppliedWithChunk<Chunk090F9000>]
     public float SpotInnerAngle { get => spotInnerAngle; set => spotInnerAngle = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090F9000))]
+    [AppliedWithChunk<Chunk090F9000>]
     public float SpotOuterAngle { get => spotOuterAngle; set => spotOuterAngle = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090F9000))]
+    [AppliedWithChunk<Chunk090F9000>]
     public float SpotEmissionSizeX { get => spotEmissionSizeX; set => spotEmissionSizeX = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090F9000))]
+    [AppliedWithChunk<Chunk090F9000>]
     public float SpotEmissionSizeY { get => spotEmissionSizeY; set => spotEmissionSizeY = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090F9000), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk090F9000>(sinceVersion: 1)]
     public bool NightOnly { get => nightOnly; set => nightOnly = value; }
 
     internal CPlugLightUserModel()

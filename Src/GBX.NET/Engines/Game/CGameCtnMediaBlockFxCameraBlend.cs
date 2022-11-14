@@ -17,7 +17,7 @@ public partial class CGameCtnMediaBlockFxCameraBlend : CGameCtnMediaBlock, CGame
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0316D000))]
+    [AppliedWithChunk<Chunk0316D000>]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
     internal CGameCtnMediaBlockFxCameraBlend()

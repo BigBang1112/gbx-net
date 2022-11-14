@@ -52,19 +52,19 @@ public class CCtnMediaBlockEventTrackMania : CGameCtnMediaBlock
     private Event[] events;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk2407F000))]
+    [AppliedWithChunk<Chunk2407F000>]
     public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk2407F000))]
+    [AppliedWithChunk<Chunk2407F000>]
     public TimeSingle End { get => end; set => end = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk2407F000))]
+    [AppliedWithChunk<Chunk2407F000>]
     public Stunt[] Stunts { get => stunts; set => stunts = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk2407F003))]
+    [AppliedWithChunk<Chunk2407F003>]
     public Event[] Events { get => events; set => events = value; }
 
     internal CCtnMediaBlockEventTrackMania()

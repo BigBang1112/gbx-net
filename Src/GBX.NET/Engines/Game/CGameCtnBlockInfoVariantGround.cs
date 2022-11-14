@@ -26,15 +26,15 @@ public class CGameCtnBlockInfoVariantGround : CGameCtnBlockInfoVariant
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315C001))]
+    [AppliedWithChunk<Chunk0315C001>]
     public CGameCtnAutoTerrain?[]? AutoTerrains { get => autoTerrains; set => autoTerrains = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315C001))]
+    [AppliedWithChunk<Chunk0315C001>]
     public int AutoTerrainHeightOffset { get => autoTerrainHeightOffset; set => autoTerrainHeightOffset = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0315C001))]
+    [AppliedWithChunk<Chunk0315C001>]
     public EAutoTerrainPlaceType AutoTerrainPlaceType { get => autoTerrainPlaceType; set => autoTerrainPlaceType = value; }
 
     #endregion

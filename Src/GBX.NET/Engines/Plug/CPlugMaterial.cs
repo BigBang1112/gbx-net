@@ -11,7 +11,7 @@ public class CPlugMaterial : CPlug
     private SDeviceMat[]? deviceMaterials;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk09079007))]
+    [AppliedWithChunk<Chunk09079007>]
     public CPlugMaterialCustom? CustomMaterial { get => customMaterial; set => customMaterial = value; }
 
     [NodeMember]
@@ -22,9 +22,9 @@ public class CPlugMaterial : CPlug
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk09079004))]
-    [AppliedWithChunk(typeof(Chunk09079009))]
-    [AppliedWithChunk(typeof(Chunk0907900D))]
+    [AppliedWithChunk<Chunk09079004>]
+    [AppliedWithChunk<Chunk09079009>]
+    [AppliedWithChunk<Chunk0907900D>]
     public SDeviceMat[]? DeviceMaterials { get => deviceMaterials; set => deviceMaterials = value; }
 
     internal CPlugMaterial()

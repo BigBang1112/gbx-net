@@ -15,23 +15,23 @@ public class CGameLeague : CMwNod
     private string flagUrl;
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0308E001))]
+    [AppliedWithChunk<Chunk0308E001>]
     public string Path { get => path; set => path = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0308E001))]
+    [AppliedWithChunk<Chunk0308E001>]
     public string Name { get => name; set => name = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0308E001))]
+    [AppliedWithChunk<Chunk0308E001>]
     public string Description { get => description; set => description = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0308E001))]
+    [AppliedWithChunk<Chunk0308E001>]
     public string Login { get => login; set => login = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0308E001))]
+    [AppliedWithChunk<Chunk0308E001>]
     public string FlagUrl { get => flagUrl; set => flagUrl = value; }
 
     internal CGameLeague()

@@ -33,19 +33,19 @@ public partial class CGameCtnMediaBlockCameraEffectScript : CGameCtnMediaBlockCa
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03161000))]
+    [AppliedWithChunk<Chunk03161000>]
     public string Script { get => script; set => script = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03161000), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk03161000>(sinceVersion: 1)]
     public IList<Key>? Keys { get => keys; set => keys = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03161000), sinceVersion: 0, upToVersion: 0)]
+    [AppliedWithChunk<Chunk03161000>(sinceVersion: 0, upToVersion: 0)]
     public TimeSingle? Start { get => start; set => start = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03161000), sinceVersion: 0, upToVersion: 0)]
+    [AppliedWithChunk<Chunk03161000>(sinceVersion: 0, upToVersion: 0)]
     public TimeSingle? End { get => end; set => end = value; }
 
     internal CGameCtnMediaBlockCameraEffectScript()

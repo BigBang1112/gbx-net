@@ -10,7 +10,7 @@ public class CPlugTreeVisualMip : CPlugTree
     private IDictionary<float, CPlugTree> levels;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk09015002))]
+    [AppliedWithChunk<Chunk09015002>]
     public IDictionary<float, CPlugTree> Levels { get => levels; set => levels = value; }
 
     internal CPlugTreeVisualMip()

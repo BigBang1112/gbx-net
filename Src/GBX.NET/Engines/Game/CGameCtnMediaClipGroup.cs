@@ -32,9 +32,9 @@ public partial class CGameCtnMediaClipGroup : CMwNod
     /// List of MediaTracker clips.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0307A001))]
-    [AppliedWithChunk(typeof(Chunk0307A002))]
-    [AppliedWithChunk(typeof(Chunk0307A003))]
+    [AppliedWithChunk<Chunk0307A001>]
+    [AppliedWithChunk<Chunk0307A002>]
+    [AppliedWithChunk<Chunk0307A003>]
     public IList<ClipTrigger> Clips { get; set; }
 
     #endregion

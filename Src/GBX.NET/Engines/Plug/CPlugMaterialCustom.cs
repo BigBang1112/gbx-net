@@ -8,7 +8,7 @@
 public class CPlugMaterialCustom : CPlug
 {
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0903A006))]
+    [AppliedWithChunk<Chunk0903A006>]
     public SBitmap[]? Textures { get; set; }
 
     internal CPlugMaterialCustom()

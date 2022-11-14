@@ -23,39 +23,39 @@ public class CGameObjectModel : CMwNod
     private string? scriptId;
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E01D000))]
+    [AppliedWithChunk<Chunk2E01D000>]
     public CGameObjectPhyModel? Phy { get => phy; set => phy = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E01D000))]
+    [AppliedWithChunk<Chunk2E01D000>]
     public CGameObjectVisModel? Vis { get => vis; set => vis = value; }
 
     [NodeMember(ExactName = "m_InventoryParams_InventoryName")]
-    [AppliedWithChunk(typeof(Chunk2E01D000), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk2E01D000>(sinceVersion: 1)]
     public string? InventoryName { get => inventoryName; set => inventoryName = value; }
     
     [NodeMember(ExactName = "m_InventoryParams_InventoryDescription")]
-    [AppliedWithChunk(typeof(Chunk2E01D000), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk2E01D000>(sinceVersion: 1)]
     public string? InventoryDescription { get => inventoryDescription; set => inventoryDescription = value; }
 
     [NodeMember(ExactName = "m_InventoryParams_InventoryItemClass")]
-    [AppliedWithChunk(typeof(Chunk2E01D000), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk2E01D000>(sinceVersion: 1)]
     public EGameInventoryItemClass? InventoryItemClass { get => inventoryItemClass; set => inventoryItemClass = value; }
 
     [NodeMember(ExactName = "m_InventoryParams_InventoryOccupation")]
-    [AppliedWithChunk(typeof(Chunk2E01D000), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk2E01D000>(sinceVersion: 1)]
     public int? InventoryOccupation { get => inventoryOccupation; set => inventoryOccupation = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E01D000), sinceVersion: 2)]
+    [AppliedWithChunk<Chunk2E01D000>(sinceVersion: 2)]
     public CGameObjectModel? SlaveHealDome { get => slaveHealDome; set => slaveHealDome = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E01D000), sinceVersion: 3)]
+    [AppliedWithChunk<Chunk2E01D000>(sinceVersion: 3)]
     public CGameObjectModel? SlaveShieldDome { get => slaveShieldDome; set => slaveShieldDome = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E01D000), sinceVersion: 4)]
+    [AppliedWithChunk<Chunk2E01D000>(sinceVersion: 4)]
     public string? ScriptId { get => scriptId; set => scriptId = value; }
 
     internal CGameObjectModel()

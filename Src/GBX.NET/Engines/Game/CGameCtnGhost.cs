@@ -47,11 +47,11 @@ public partial class CGameCtnGhost : CGameGhost
     #region Properties
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03092000))]
-    [AppliedWithChunk(typeof(Chunk03092003))]
-    [AppliedWithChunk(typeof(Chunk03092006))]
-    [AppliedWithChunk(typeof(Chunk0309200D))]
-    [AppliedWithChunk(typeof(Chunk03092018))]
+    [AppliedWithChunk<Chunk03092000>]
+    [AppliedWithChunk<Chunk03092003>]
+    [AppliedWithChunk<Chunk03092006>]
+    [AppliedWithChunk<Chunk0309200D>]
+    [AppliedWithChunk<Chunk03092018>]
     public Ident PlayerModel
     {
         get
@@ -67,8 +67,8 @@ public partial class CGameCtnGhost : CGameGhost
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03092000))]
-    [AppliedWithChunk(typeof(Chunk03092017))]
+    [AppliedWithChunk<Chunk03092000>]
+    [AppliedWithChunk<Chunk03092017>]
     public IList<FileRef>? SkinPackDescs
     {
         get
@@ -85,12 +85,12 @@ public partial class CGameCtnGhost : CGameGhost
 
     [NodeMember(ExactlyNamed = true)]
     [SupportsFormatting]
-    [AppliedWithChunk(typeof(Chunk03092000))]
-    [AppliedWithChunk(typeof(Chunk03092003))]
-    [AppliedWithChunk(typeof(Chunk03092006))]
-    [AppliedWithChunk(typeof(Chunk0309200D))]
-    [AppliedWithChunk(typeof(Chunk03092015))]
-    [AppliedWithChunk(typeof(Chunk03092017))]
+    [AppliedWithChunk<Chunk03092000>]
+    [AppliedWithChunk<Chunk03092003>]
+    [AppliedWithChunk<Chunk03092006>]
+    [AppliedWithChunk<Chunk0309200D>]
+    [AppliedWithChunk<Chunk03092015>]
+    [AppliedWithChunk<Chunk03092017>]
     public string? GhostNickname
     {
         get
@@ -106,8 +106,8 @@ public partial class CGameCtnGhost : CGameGhost
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03092000))]
-    [AppliedWithChunk(typeof(Chunk03092017))]
+    [AppliedWithChunk<Chunk03092000>]
+    [AppliedWithChunk<Chunk03092017>]
     public string? GhostAvatarName
     {
         get
@@ -123,7 +123,7 @@ public partial class CGameCtnGhost : CGameGhost
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03092000), sinceVersion: 2)]
+    [AppliedWithChunk<Chunk03092000>(sinceVersion: 2)]
     public string? RecordingContext
     {
         get
@@ -139,7 +139,7 @@ public partial class CGameCtnGhost : CGameGhost
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03092005))]
+    [AppliedWithChunk<Chunk03092005>]
     public TimeInt32? RaceTime
     {
         get
@@ -155,7 +155,7 @@ public partial class CGameCtnGhost : CGameGhost
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03092008))]
+    [AppliedWithChunk<Chunk03092008>]
     public int? Respawns
     {
         get
@@ -171,9 +171,9 @@ public partial class CGameCtnGhost : CGameGhost
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03092000))]
-    [AppliedWithChunk(typeof(Chunk03092007))]
-    [AppliedWithChunk(typeof(Chunk03092009))]
+    [AppliedWithChunk<Chunk03092000>]
+    [AppliedWithChunk<Chunk03092007>]
+    [AppliedWithChunk<Chunk03092009>]
     public Vec3? LightTrailColor
     {
         get
@@ -189,7 +189,7 @@ public partial class CGameCtnGhost : CGameGhost
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0309200A))]
+    [AppliedWithChunk<Chunk0309200A>]
     public int? StuntScore
     {
         get
@@ -208,8 +208,8 @@ public partial class CGameCtnGhost : CGameGhost
     /// Checkpoints driven by the ghost. In some cases, they may not be in order.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03092004))]
-    [AppliedWithChunk(typeof(Chunk0309200B))]
+    [AppliedWithChunk<Chunk03092004>]
+    [AppliedWithChunk<Chunk0309200B>]
     public Checkpoint[]? Checkpoints
     {
         get
@@ -225,26 +225,26 @@ public partial class CGameCtnGhost : CGameGhost
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0309200F))]
+    [AppliedWithChunk<Chunk0309200F>]
     public string? GhostLogin { get => ghostLogin; set => ghostLogin = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03092003))]
-    [AppliedWithChunk(typeof(Chunk03092006))]
-    [AppliedWithChunk(typeof(Chunk0309200D))]
+    [AppliedWithChunk<Chunk03092003>]
+    [AppliedWithChunk<Chunk03092006>]
+    [AppliedWithChunk<Chunk0309200D>]
     public string? SkinFile { get => skinFile; set => skinFile = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0309200E))]
+    [AppliedWithChunk<Chunk0309200E>]
     public string? GhostUid { get => ghostUid; set => ghostUid = value; }
 
     /// <summary>
     /// Duration of events in the ghost (range of detected inputs). This can be 0 if the ghost was driven in editor.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03092011))]
-    [AppliedWithChunk(typeof(Chunk03092019))]
-    [AppliedWithChunk(typeof(Chunk03092025))]
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
     public TimeInt32 EventsDuration
     {
         get
@@ -263,9 +263,9 @@ public partial class CGameCtnGhost : CGameGhost
     /// Inputs (keyboard, pad, wheel) of the ghost from TMU, TMUF, TMTurbo and TM2. TMTurbo stores the keyboard inputs as <see cref="ControlEntryAnalog"/>. For inputs stored in TM1.0, TMO, Sunrise and ESWC: see <see cref="CGameCtnReplayRecord.ControlEntries"/>. TM2020 and Shootmania inputs aren't available in replays and ghosts. Can be null if <see cref="EventsDuration"/> is 0, which can happen when you save the replay in editor.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03092011))]
-    [AppliedWithChunk(typeof(Chunk03092019))]
-    [AppliedWithChunk(typeof(Chunk03092025))]
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
     public ControlEntry[]? ControlEntries
     {
         get
@@ -281,9 +281,9 @@ public partial class CGameCtnGhost : CGameGhost
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03092011))]
-    [AppliedWithChunk(typeof(Chunk03092019))]
-    [AppliedWithChunk(typeof(Chunk03092025))]
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
     public string? Validate_ExeVersion
     {
         get
@@ -299,9 +299,9 @@ public partial class CGameCtnGhost : CGameGhost
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03092011))]
-    [AppliedWithChunk(typeof(Chunk03092019))]
-    [AppliedWithChunk(typeof(Chunk03092025))]
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
     public uint Validate_ExeChecksum
     {
         get
@@ -317,9 +317,9 @@ public partial class CGameCtnGhost : CGameGhost
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03092011))]
-    [AppliedWithChunk(typeof(Chunk03092019))]
-    [AppliedWithChunk(typeof(Chunk03092025))]
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
     public int Validate_OsKind
     {
         get
@@ -335,9 +335,9 @@ public partial class CGameCtnGhost : CGameGhost
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03092011))]
-    [AppliedWithChunk(typeof(Chunk03092019))]
-    [AppliedWithChunk(typeof(Chunk03092025))]
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
     public int Validate_CpuKind
     {
         get
@@ -353,9 +353,9 @@ public partial class CGameCtnGhost : CGameGhost
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03092011))]
-    [AppliedWithChunk(typeof(Chunk03092019))]
-    [AppliedWithChunk(typeof(Chunk03092025))]
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
     public string? Validate_RaceSettings
     {
         get
@@ -371,39 +371,39 @@ public partial class CGameCtnGhost : CGameGhost
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03092010))]
+    [AppliedWithChunk<Chunk03092010>]
     public string? Validate_ChallengeUid { get => validate_ChallengeUid; set => validate_ChallengeUid = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03092028))]
+    [AppliedWithChunk<Chunk03092028>]
     public string? Validate_TitleId { get => validate_TitleId; set => validate_TitleId = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03092000), sinceVersion: 5)]
+    [AppliedWithChunk<Chunk03092000>(sinceVersion: 5)]
     public CPlugEntRecordData? RecordData { get => recordData; set => recordData = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03092000), sinceVersion: 6)]
+    [AppliedWithChunk<Chunk03092000>(sinceVersion: 6)]
     public string? GhostTrigram { get => ghostTrigram; set => ghostTrigram = value; }
 
     [NodeMember(ExactName = "GhostCountryPath")]
-    [AppliedWithChunk(typeof(Chunk03092000), sinceVersion: 7)]
+    [AppliedWithChunk<Chunk03092000>(sinceVersion: 7)]
     public string? GhostZone { get => ghostZone; set => ghostZone = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03092000))]
+    [AppliedWithChunk<Chunk03092000>]
     public bool HasBadges { get => hasBadges; set => hasBadges = value; }
 
     [NodeMember]
     [SupportsFormatting]
-    [AppliedWithChunk(typeof(Chunk03092000), sinceVersion: 8)]
+    [AppliedWithChunk<Chunk03092000>(sinceVersion: 8)]
     public string? GhostClubTag { get => ghostClubTag; set => ghostClubTag = value; }
 
     /// <summary>
     /// These are the Shootmania and TM2020 inputs but don't get jump-excited, the values are unknown.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0309201D))]
+    [AppliedWithChunk<Chunk0309201D>]
     public PlayerInputData[]? PlayerInputs
     {
         get

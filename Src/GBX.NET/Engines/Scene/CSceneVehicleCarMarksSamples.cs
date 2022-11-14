@@ -11,15 +11,15 @@ public class CSceneVehicleCarMarksSamples : CMwNod
     private bool disabled;
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0A083002))]
+    [AppliedWithChunk<Chunk0A083002>]
     public uint[]? Stops { get => stops; set => stops = value; }
     
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0A083003))]
+    [AppliedWithChunk<Chunk0A083003>]
     public string? Name { get => name; set => name = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0A083004))]
+    [AppliedWithChunk<Chunk0A083004>]
     public bool Disabled { get => disabled; set => disabled = value; }
 
     internal CSceneVehicleCarMarksSamples()

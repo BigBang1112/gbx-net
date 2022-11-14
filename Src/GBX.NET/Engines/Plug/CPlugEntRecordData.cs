@@ -15,7 +15,7 @@ public class CPlugEntRecordData : CMwNod
     public byte[]? Data { get; set; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0911F000))]
+    [AppliedWithChunk<Chunk0911F000>]
     public ObservableCollection<Sample>? Samples
     {
         get

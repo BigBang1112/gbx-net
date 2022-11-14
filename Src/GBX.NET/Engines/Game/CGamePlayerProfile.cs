@@ -15,11 +15,11 @@ public partial class CGamePlayerProfile : CMwNod, CGamePlayerProfile.IHeader
     public HeaderChunkSet HeaderChunks { get; } = new();
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0308C000))]
+    [AppliedWithChunk<Chunk0308C000>]
     public string? OnlineLogin { get => onlineLogin; set => onlineLogin = value; }
     
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0308C000))]
+    [AppliedWithChunk<Chunk0308C000>]
     public string? OnlineSupportKey { get => onlineSupportKey; set => onlineSupportKey = value; }
 
     public CGameNetOnlineMessage[]? Messages { get => messages; set => messages = value; }

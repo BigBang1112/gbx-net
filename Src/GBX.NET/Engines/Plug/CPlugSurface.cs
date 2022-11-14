@@ -15,26 +15,26 @@ public class CPlugSurface : CPlug
     private int surfVersion;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0900C000))]
+    [AppliedWithChunk<Chunk0900C000>]
     public CPlugSurfaceGeom? Geom { get => geom; set => geom = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0900C000))]
-    [AppliedWithChunk(typeof(Chunk0900C003))]
+    [AppliedWithChunk<Chunk0900C000>]
+    [AppliedWithChunk<Chunk0900C003>]
     public SurfMaterial[]? Materials { get => materials; set => materials = value; }
 
     [NodeMember(ExactName = "m_GmSurf")]
-    [AppliedWithChunk(typeof(Chunk0900C003))]
-    [AppliedWithChunk(typeof(CPlugSurfaceGeom.Chunk0900F002))]
-    [AppliedWithChunk(typeof(CPlugSurfaceGeom.Chunk0900F004))]
+    [AppliedWithChunk<Chunk0900C003>]
+    [AppliedWithChunk<CPlugSurfaceGeom.Chunk0900F002>]
+    [AppliedWithChunk<CPlugSurfaceGeom.Chunk0900F004>]
     public ISurf? Surf { get => surf; set => surf = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0900C003), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk0900C003>(sinceVersion: 1)]
     public CPlugSkel? Skel { get => skel; set => skel = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0900C003), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk0900C003>(sinceVersion: 1)]
     public int SurfVersion { get => surfVersion; set => surfVersion = value; }
 
     internal CPlugSurface()

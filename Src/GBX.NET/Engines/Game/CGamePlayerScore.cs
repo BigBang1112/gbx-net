@@ -6,51 +6,51 @@
 public partial class CGamePlayerScore : CMwNod // Did CGameScriptDebugger stole ID of this class? xD
 {
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0308D004))]
+    [AppliedWithChunk<Chunk0308D004>]
     public string? PlayerName { get; private set; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0308D004))]
+    [AppliedWithChunk<Chunk0308D004>]
     public string? PlayerDisplayName { get; private set; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0308D004))]
+    [AppliedWithChunk<Chunk0308D004>]
     public int ScoresVersion { get; private set; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0308D004))]
+    [AppliedWithChunk<Chunk0308D004>]
     public Score[]? Scores { get; private set; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0308D006))]
+    [AppliedWithChunk<Chunk0308D006>]
     public int SurvivalScoresVersion { get; private set; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0308D006))]
+    [AppliedWithChunk<Chunk0308D006>]
     public SurvivalScore[]? SurvivalScores { get; private set; }
     
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0308D008))]
+    [AppliedWithChunk<Chunk0308D008>]
     public PlayerCampaignSkillScore[]? PlayerCampaignSkillScores { get; private set; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0308D00F))]
+    [AppliedWithChunk<Chunk0308D00F>]
     public CGamePlayerOfficialScores? PlayerOfficialScores { get; private set; }
     
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0308D00F))]
+    [AppliedWithChunk<Chunk0308D00F>]
     public TrainingMedalsScore[]? TrainingMedalsScores { get; private set; }
     
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0308D00F))]
+    [AppliedWithChunk<Chunk0308D00F>]
     public CGameCampaignPlayerScores?[]? CampaignPlayerScores { get; private set; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0308D010))]
+    [AppliedWithChunk<Chunk0308D010>]
     public CampaignRecordsState[]? CampaignRecordsStates { get; private set; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0308D012))]
+    [AppliedWithChunk<Chunk0308D012>]
     public LadderMatchResult[]? LadderMatchResults { get; private set; }
 
     internal CGamePlayerScore()

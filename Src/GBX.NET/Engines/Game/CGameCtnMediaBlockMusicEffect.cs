@@ -17,8 +17,8 @@ public partial class CGameCtnMediaBlockMusicEffect : CGameCtnMediaBlock, CGameCt
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk030A6000))]
-    [AppliedWithChunk(typeof(Chunk030A6001))]
+    [AppliedWithChunk<Chunk030A6000>]
+    [AppliedWithChunk<Chunk030A6001>]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
     internal CGameCtnMediaBlockMusicEffect()

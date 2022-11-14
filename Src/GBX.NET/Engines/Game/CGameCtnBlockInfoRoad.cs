@@ -12,7 +12,7 @@ public class CGameCtnBlockInfoRoad : CGameCtnBlockInfo
     private GameBoxRefTable.File? slopeFile;
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03052000))]
+    [AppliedWithChunk<Chunk03052000>]
     public CGameCtnBlockInfoSlope? Slope
     {
         get => slope = GetNodeFromRefTable(slope, slopeFile) as CGameCtnBlockInfoSlope;

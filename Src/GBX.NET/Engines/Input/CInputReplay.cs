@@ -7,7 +7,7 @@
 public class CInputReplay : CMwNod
 {
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk1300D000))]
+    [AppliedWithChunk<Chunk1300D000>]
     public Event[] Events { get; set; }
 
     internal CInputReplay()

@@ -8,7 +8,7 @@ public class CSceneMessageHandler : CMwNod
     private GameBoxRefTable.File? scriptFile;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0A01F001))]
+    [AppliedWithChunk<Chunk0A01F001>]
     public CMwNod? Script { get => script; set => script = value; }
     
     public GameBoxRefTable.File? ScriptFile => scriptFile;

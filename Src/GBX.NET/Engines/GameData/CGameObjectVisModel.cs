@@ -27,12 +27,12 @@ public class CGameObjectVisModel : CMwNod
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E007001))]
+    [AppliedWithChunk<Chunk2E007001>]
     public string? Mesh { get => mesh; set => mesh = value; }
 
     [NodeMember(ExactName = "SoundRef_Spawn")]
-    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 0, upToVersion: 16)]
-    [AppliedWithChunk(typeof(Chunk2E007002))]
+    [AppliedWithChunk<Chunk2E007001>(sinceVersion: 0, upToVersion: 16)]
+    [AppliedWithChunk<Chunk2E007002>]
     public string? SoundRefSpawn
     {
         get
@@ -48,8 +48,8 @@ public class CGameObjectVisModel : CMwNod
     }
 
     [NodeMember(ExactName = "SoundRef_Unspawn")]
-    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 0, upToVersion: 16)]
-    [AppliedWithChunk(typeof(Chunk2E007002))]
+    [AppliedWithChunk<Chunk2E007001>(sinceVersion: 0, upToVersion: 16)]
+    [AppliedWithChunk<Chunk2E007002>]
     public string? SoundRefUnspawn
     {
         get
@@ -65,8 +65,8 @@ public class CGameObjectVisModel : CMwNod
     }
 
     [NodeMember(ExactName = "SoundRef_Grab")]
-    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 0, upToVersion: 16)]
-    [AppliedWithChunk(typeof(Chunk2E007002))]
+    [AppliedWithChunk<Chunk2E007001>(sinceVersion: 0, upToVersion: 16)]
+    [AppliedWithChunk<Chunk2E007002>]
     public string? SoundRefGrab
     {
         get
@@ -82,7 +82,7 @@ public class CGameObjectVisModel : CMwNod
     }
 
     [NodeMember(ExactName = "SoundRef_Smashed")]
-    [AppliedWithChunk(typeof(Chunk2E007002))]
+    [AppliedWithChunk<Chunk2E007002>]
     public string? SoundRefSmashed
     {
         get
@@ -98,7 +98,7 @@ public class CGameObjectVisModel : CMwNod
     }
 
     [NodeMember(ExactName = "SoundRef_Permanent")]
-    [AppliedWithChunk(typeof(Chunk2E007002))]
+    [AppliedWithChunk<Chunk2E007002>]
     public string? SoundRefPermanent
     {
         get
@@ -114,7 +114,7 @@ public class CGameObjectVisModel : CMwNod
     }
 
     [NodeMember(ExactName = "SoundLoc_Permanent")]
-    [AppliedWithChunk(typeof(Chunk2E007002))]
+    [AppliedWithChunk<Chunk2E007002>]
     public Iso4? SoundLocPermanent
     {
         get
@@ -130,23 +130,23 @@ public class CGameObjectVisModel : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 12)]
+    [AppliedWithChunk<Chunk2E007001>(sinceVersion: 12)]
     public string? SmashParticleRef { get => smashParticleRef; set => smashParticleRef = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 20)]
+    [AppliedWithChunk<Chunk2E007001>(sinceVersion: 20)]
     public string? VisEntFx { get => visEntFx; set => visEntFx = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 21)]
+    [AppliedWithChunk<Chunk2E007001>(sinceVersion: 21)]
     public CMwNod? MeshShadedFid { get => meshShadedFid; set => meshShadedFid = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 22)]
+    [AppliedWithChunk<Chunk2E007001>(sinceVersion: 22)]
     public Vec3? DomeShaderColor { get => domeShaderColor; set => domeShaderColor = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E007001))]
+    [AppliedWithChunk<Chunk2E007001>]
     public CPlugSolid2Model? MeshShaded
     {
         get => meshShaded = GetNodeFromRefTable(meshShaded, meshShadedFile) as CPlugSolid2Model;
@@ -154,7 +154,7 @@ public class CGameObjectVisModel : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 2)]
+    [AppliedWithChunk<Chunk2E007001>(sinceVersion: 2)]
     public CPlugAnimLocSimple? LocAnim { get => locAnim; set => locAnim = value; }
 
     #endregion

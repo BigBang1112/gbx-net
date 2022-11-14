@@ -20,29 +20,29 @@ public class CFuncKeysReal : CFuncKeys
     private float forcedTangentMaxX;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0501A001))]
-    [AppliedWithChunk(typeof(Chunk0501A002))]
+    [AppliedWithChunk<Chunk0501A001>]
+    [AppliedWithChunk<Chunk0501A002>]
     public float[]? Ys { get => ys; set => ys = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0501A001))]
-    [AppliedWithChunk(typeof(Chunk0501A002))]
+    [AppliedWithChunk<Chunk0501A001>]
+    [AppliedWithChunk<Chunk0501A002>]
     public ERealInterp RealInterp { get => realInterp; set => realInterp = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0501A002))]
+    [AppliedWithChunk<Chunk0501A002>]
     public bool ForceTangentMinX { get => forceTangentMinX; set => forceTangentMinX = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0501A002))]
+    [AppliedWithChunk<Chunk0501A002>]
     public bool ForceTangentMaxX { get => forceTangentMaxX; set => forceTangentMaxX = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0501A002))]
+    [AppliedWithChunk<Chunk0501A002>]
     public float ForcedTangentMinX { get => forcedTangentMinX; set => forcedTangentMinX = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0501A002))]
+    [AppliedWithChunk<Chunk0501A002>]
     public float ForcedTangentMaxX { get => forcedTangentMaxX; set => forcedTangentMaxX = value; }
 
     internal CFuncKeysReal()

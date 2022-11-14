@@ -17,9 +17,9 @@ public partial class CGameCtnMediaBlockDOF : CGameCtnMediaBlock, CGameCtnMediaBl
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03126000))]
-    [AppliedWithChunk(typeof(Chunk03126001))]
-    [AppliedWithChunk(typeof(Chunk03126002))]
+    [AppliedWithChunk<Chunk03126000>]
+    [AppliedWithChunk<Chunk03126001>]
+    [AppliedWithChunk<Chunk03126002>]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
     internal CGameCtnMediaBlockDOF()

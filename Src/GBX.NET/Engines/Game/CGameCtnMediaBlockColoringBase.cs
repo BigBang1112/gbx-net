@@ -18,11 +18,11 @@ public partial class CGameCtnMediaBlockColoringBase : CGameCtnMediaBlock, CGameC
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03172000))]
+    [AppliedWithChunk<Chunk03172000>]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03172000), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk03172000>(sinceVersion: 1)]
     public int BaseIndex { get => baseIndex; set => baseIndex = value; }
 
     internal CGameCtnMediaBlockColoringBase()

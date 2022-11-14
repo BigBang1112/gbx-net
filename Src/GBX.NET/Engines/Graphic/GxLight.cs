@@ -9,15 +9,15 @@ public class GxLight : CMwNod
     private float flareIntensity;
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk04001008))]
+    [AppliedWithChunk<Chunk04001008>]
     public float Intensity { get => intensity; set => intensity = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk04001008))]
+    [AppliedWithChunk<Chunk04001008>]
     public float ShadowIntensity { get => shadowIntensity; set => shadowIntensity = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk04001008))]
+    [AppliedWithChunk<Chunk04001008>]
     public float FlareIntensity { get => flareIntensity; set => flareIntensity = value; }
 
     internal GxLight()

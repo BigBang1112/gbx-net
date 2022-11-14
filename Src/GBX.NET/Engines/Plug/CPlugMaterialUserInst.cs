@@ -46,67 +46,67 @@ public class CPlugMaterialUserInst : CMwNod
     #region Properties
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk090FD000))]
+    [AppliedWithChunk<Chunk090FD000>]
     public string? MaterialName { get => materialName; set => materialName = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090FD000))]
+    [AppliedWithChunk<Chunk090FD000>]
     public string? Model { get => model; set => model = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090FD000))]
+    [AppliedWithChunk<Chunk090FD000>]
     public string? BaseTexture { get => baseTexture; set => baseTexture = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090FD000))]
+    [AppliedWithChunk<Chunk090FD000>]
     public string? Link { get => link; set => link = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk090FD000), sinceVersion: 2)]
+    [AppliedWithChunk<Chunk090FD000>(sinceVersion: 2)]
     public Cst[]? Csts { get => csts; set => csts = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk090FD000), sinceVersion: 2)]
+    [AppliedWithChunk<Chunk090FD000>(sinceVersion: 2)]
     public int[]? Color { get => color; set => color = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk090FD000), sinceVersion: 3)]
+    [AppliedWithChunk<Chunk090FD000>(sinceVersion: 3)]
     public UvAnim[]? UvAnims { get => uvAnims; set => uvAnims = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090FD000), sinceVersion: 7)]
+    [AppliedWithChunk<Chunk090FD000>(sinceVersion: 7)]
     public string? HidingGroup { get => hidingGroup; set => hidingGroup = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090FD001), sinceVersion: 3)]
+    [AppliedWithChunk<Chunk090FD001>(sinceVersion: 3)]
     public ETexAddress TilingU { get => tilingU; set => tilingU = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090FD001), sinceVersion: 3)]
+    [AppliedWithChunk<Chunk090FD001>(sinceVersion: 3)]
     public ETexAddress TilingV { get => tilingV; set => tilingV = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090FD001), sinceVersion: 3)]
+    [AppliedWithChunk<Chunk090FD001>(sinceVersion: 3)]
     public float TextureSizeInMeters { get => textureSizeInMeters; set => textureSizeInMeters = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090FD001), sinceVersion: 5)]
+    [AppliedWithChunk<Chunk090FD001>(sinceVersion: 5)]
     public bool IsNatural { get => isNatural; set => isNatural = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk090FD000), sinceVersion: 6)]
+    [AppliedWithChunk<Chunk090FD000>(sinceVersion: 6)]
     public UserTexture[]? UserTextures { get => userTextures; set => userTextures = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk090FD000), sinceVersion: 10)]
+    [AppliedWithChunk<Chunk090FD000>(sinceVersion: 10)]
     public byte SurfaceGameplayId { get => surfaceGameplayId; set => surfaceGameplayId = value; }
     
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk090FD000))]
+    [AppliedWithChunk<Chunk090FD000>]
     public byte SurfacePhysicId { get => surfacePhysicId; set => surfacePhysicId = value; }
     
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090FD000), sinceVersion: 11)]
+    [AppliedWithChunk<Chunk090FD000>(sinceVersion: 11)]
     public bool IsUsingGameMaterial { get => isUsingGameMaterial; set => isUsingGameMaterial = value; }
 
     #endregion
