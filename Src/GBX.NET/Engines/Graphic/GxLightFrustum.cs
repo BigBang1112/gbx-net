@@ -26,6 +26,8 @@ public class GxLightFrustum : GxLightBall
 
         public override void ReadWrite(GxLightFrustum n, GameBoxReaderWriter rw)
         {
+            // May be incorrect
+
             rw.Int32(ref U01);
             rw.Int32(ref U02);
             rw.Int32(ref U03);
@@ -36,4 +38,36 @@ public class GxLightFrustum : GxLightBall
             rw.Int32(ref U08);
         }
     }
+
+    #region 0x006 chunk
+
+    /// <summary>
+    /// GxLightFrustum 0x006 chunk
+    /// </summary>
+    [Chunk(0x0400A006)]
+    public class Chunk0400A006 : Chunk<GxLightFrustum>
+    {
+        public bool U01;
+        public Box? U02;
+        public byte[]? U03;
+        public uint U04;
+
+        public override void ReadWrite(GxLightFrustum n, GameBoxReaderWriter rw)
+        {
+            // GmFrustum::ArchiveFrustum
+            rw.Boolean(ref U01);
+
+            if (U01)
+            {
+                rw.Box(ref U02);
+            }
+
+            rw.Bytes(ref U03, 24); // DoData
+            //
+
+            rw.UInt32(ref U04); // DoData
+        }
+    }
+
+    #endregion
 }
