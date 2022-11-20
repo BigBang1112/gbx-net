@@ -1,6 +1,4 @@
-﻿using GBX.NET.Engines.Function;
-
-namespace GBX.NET.Engines.Plug;
+﻿namespace GBX.NET.Engines.Plug;
 
 /// <remarks>ID: 0x0904F000</remarks>
 [Node(0x0904F000)]
@@ -14,6 +12,7 @@ public class CPlugTree : CPlug
     private CPlug? shader;
     private GameBoxRefTable.File? shaderFile;
     private CPlugTreeGenerator? generator;
+    private int? flags;
     private Iso4? translation;
 
     [NodeMember(ExactName = "Childs")]
@@ -56,6 +55,13 @@ public class CPlugTree : CPlug
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk0904F011>]
     public CFuncTree? FuncTree { get => funcTree; set => funcTree = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0904F015>]
+    [AppliedWithChunk<Chunk0904F018>]
+    [AppliedWithChunk<Chunk0904F019>]
+    [AppliedWithChunk<Chunk0904F01A>]
+    public int? Flags { get => flags; set => flags = value; }
 
     internal CPlugTree()
     {
@@ -158,13 +164,11 @@ public class CPlugTree : CPlug
     [Chunk(0x0904F015, "translation")]
     public class Chunk0904F015 : Chunk<CPlugTree>
     {
-        public int Flags;
-
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref Flags);
+            rw.Int32(ref n.flags);
 
-            if ((Flags & 4) != 0)
+            if ((n.flags & 4) != 0)
             {
                 rw.Iso4(ref n.translation);
             }
