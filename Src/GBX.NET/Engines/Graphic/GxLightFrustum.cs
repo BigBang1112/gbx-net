@@ -49,23 +49,16 @@ public class GxLightFrustum : GxLightBall
     {
         public bool U01;
         public Box? U02;
-        public byte[]? U03;
-        public uint U04;
+        public uint U03;
 
         public override void ReadWrite(GxLightFrustum n, GameBoxReaderWriter rw)
         {
             // GmFrustum::ArchiveFrustum
             rw.Boolean(ref U01);
-
-            if (U01)
-            {
-                rw.Box(ref U02);
-            }
-
-            rw.Bytes(ref U03, 24); // DoData
+            rw.Box(ref U02); // 24 regular bytes if U01 is false
             //
-
-            rw.UInt32(ref U04); // DoData
+            
+            rw.UInt32(ref U03); // DoData
         }
     }
 
