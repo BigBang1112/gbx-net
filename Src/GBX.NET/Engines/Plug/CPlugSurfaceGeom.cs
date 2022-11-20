@@ -17,9 +17,15 @@ public class CPlugSurfaceGeom : CPlugSurface
     [Chunk(0x0900F002)]
     public class Chunk0900F002 : Chunk<CPlugSurfaceGeom>
     {
+        public ushort U01;
+
         public override void ReadWrite(CPlugSurfaceGeom n, GameBoxReaderWriter rw)
         {
-            n.Surf = rw.Archive(n.Surf as Mesh);
+            var surf = n.Surf;
+            ArchiveSurf(ref surf, rw);
+            n.Surf = surf;
+
+            rw.UInt16(ref U01);
         }
     }
 
