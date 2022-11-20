@@ -346,6 +346,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     [AppliedWithChunk<Chunk03043002>(sinceVersion: 5)]
+    [AppliedWithChunk<Chunk03043018>]
     public bool? TMObjective_IsLapRace
     {
         get
@@ -365,6 +366,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     [AppliedWithChunk<Chunk03043002>(sinceVersion: 13)]
+    [AppliedWithChunk<Chunk03043018>]
     public int? TMObjective_NbLaps
     {
         get
