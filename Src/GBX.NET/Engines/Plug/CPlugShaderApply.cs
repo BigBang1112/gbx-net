@@ -2,12 +2,15 @@
 
 /// <remarks>ID: 0x09026000</remarks>
 [Node(0x09026000)]
+[Node(0x09063000)]
 public class CPlugShaderApply : CPlugShaderGeneric
 {
     internal CPlugShaderApply()
     {
 
     }
+
+    #region 0x026 class
 
     #region 0x001 chunk
 
@@ -189,6 +192,34 @@ public class CPlugShaderApply : CPlugShaderGeneric
             rw.NodeRef(ref U01);
         }
     }
+
+    #endregion
+
+    #endregion
+
+    #region 0x063 class
+
+    #region 0x002 chunk
+
+    /// <summary>
+    /// CPlugShaderApply 0x002 chunk
+    /// </summary>
+    [Chunk(0x09063002)]
+    public class Chunk09063002 : Chunk<CPlugShaderApply>
+    {
+        public uint U01;
+        public int U02;
+        public int[]? U03;
+
+        public override void ReadWrite(CPlugShaderApply n, GameBoxReaderWriter rw)
+        {
+            rw.UInt32(ref U01); // DoData
+            rw.Int32(ref U02);
+            rw.Array<int>(ref U03, count: 5); // CPlugBitmapAddresses
+        }
+    }
+
+    #endregion
 
     #endregion
 }
