@@ -2,12 +2,15 @@
 
 /// <remarks>ID: 0x0900F000</remarks>
 [Node(0x0900F000)]
+[Node(0x0900D000)]
 public class CPlugSurfaceGeom : CPlugSurface
 {
     internal CPlugSurfaceGeom()
     {
 
     }
+
+    #region 0x00F class
 
     #region 0x002 chunk
 
@@ -61,6 +64,28 @@ public class CPlugSurfaceGeom : CPlugSurface
             rw.UInt16(ref U04);
         }
     }
+
+    #endregion
+
+    #endregion
+
+    #region 0x00D class
+
+    #region 0x002 chunk
+
+    /// <summary>
+    /// CPlugSurfaceGeom 0x002 chunk
+    /// </summary>
+    [Chunk(0x0900D002)]
+    public class Chunk0900D002 : Chunk<CPlugSurfaceGeom>
+    {
+        public override void ReadWrite(CPlugSurfaceGeom n, GameBoxReaderWriter rw)
+        {
+            n.Surf = rw.Archive(n.Surf as Mesh);
+        }
+    }
+
+    #endregion
 
     #endregion
 }
