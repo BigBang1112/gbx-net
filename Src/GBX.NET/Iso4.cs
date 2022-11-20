@@ -6,6 +6,7 @@ public readonly record struct Iso4(float XX, float XY, float XZ,
                                    float TX, float TY, float TZ)
 {
     public static readonly Iso4 Zero = new();
+    public static readonly Iso4 Identity = new(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0);
 
     public float GetPitch(bool inDegrees = false)
     {
