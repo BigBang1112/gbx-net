@@ -10,6 +10,7 @@ public class GxLight : CMwNod
     private float flareIntensity;
 
     [NodeMember]
+    [AppliedWithChunk<Chunk04001008>]
     [AppliedWithChunk<Chunk04001009>]
     public Vec3 Color { get => color; set => color = value; }
 
@@ -41,9 +42,6 @@ public class GxLight : CMwNod
     [Chunk(0x04001008)]
     public class Chunk04001008 : Chunk<GxLight>
     {
-        public float U01;
-        public float U02;
-        public float U03;
         public uint U04;
         public float U05;
         public float U06;
@@ -72,9 +70,6 @@ public class GxLight : CMwNod
     [Chunk(0x04001009)]
     public class Chunk04001009 : Chunk<GxLight>
     {
-        public float U01;
-        public float U02;
-        public float U03;
         public uint U04;
         public float U05;
         public float U06;
