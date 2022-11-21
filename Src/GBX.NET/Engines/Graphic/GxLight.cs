@@ -4,9 +4,14 @@
 [Node(0x04001000)]
 public class GxLight : CMwNod
 {
+    private Vec3 color;
     private float intensity;
     private float shadowIntensity;
     private float flareIntensity;
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk04001009>]
+    public Vec3 Color { get => color; set => color = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk04001008>]
@@ -46,9 +51,7 @@ public class GxLight : CMwNod
 
         public override void ReadWrite(GxLight n, GameBoxReaderWriter rw)
         {
-            rw.Single(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
+            rw.Vec3(ref n.color);
             rw.Single(ref n.intensity);
             rw.UInt32(ref U04); // DoData
             rw.Single(ref n.shadowIntensity);
@@ -82,9 +85,7 @@ public class GxLight : CMwNod
 
         public override void ReadWrite(GxLight n, GameBoxReaderWriter rw)
         {
-            rw.Single(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
+            rw.Vec3(ref n.color);
             rw.UInt32(ref U04); // DoData
             rw.Single(ref n.intensity);
             rw.Single(ref U05);
