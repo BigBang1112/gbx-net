@@ -48,7 +48,7 @@ public static class Cry
         using var w = new GameBoxWriter(stream);
         
         w.Write(uncompressedData.Length);
-        w.Write(Lzo.Compress(uncompressedData));
+        w.WriteByteArray(Lzo.Compress(uncompressedData));
     }
 
     public static void Encrypt(string fileName, string contents)
