@@ -4,7 +4,9 @@ namespace GBX.NET.PAK;
 
 public static class Cry
 {
-    public static unsafe string Parse(Stream stream)
+    private const ulong Key = 0xCF08317C90460052;
+
+    public static unsafe string Decrypt(Stream stream)
     {
         using var r = new GameBoxReader(stream);
         var uncompressedSize = r.ReadInt32();
@@ -14,9 +16,8 @@ public static class Cry
 
         Lzo.Decompress(compressedData, uncompressedData);
         
-        var key = 0xCF08317C90460052;
         var shift = uncompressedSize & 0x3F;
-        var rotkey = (key << shift) | (key >> (64 - shift));
+        var rotkey = (Key << shift) | (Key >> (64 - shift));
         
         for (int i = 0; i < uncompressedSize; i++)
         {
@@ -26,9 +27,33 @@ public static class Cry
         return Encoding.ASCII.GetString(uncompressedData);
     }
 
-    public static string Parse(string fileName)
+    public static string Decrypt(string fileName)
     {
         using var fs = File.OpenRead(fileName);
-        return Parse(fs);
+        return Decrypt(fs);
+    }
+    
+    public static unsafe void Encrypt(Stream stream, string contents)
+    {
+        var uncompressedData = Encoding.ASCII.GetBytes(contents);
+
+        var shift = uncompressedData.Length & 0x3F;
+        var rotkey = (Key << shift) | (Key >> (64 - shift));
+
+        for (int i = 0; i < uncompressedData.Length; i++)
+        {
+            uncompressedData[i] ^= *((byte*)&rotkey + (i & 0x7));
+        }
+
+        using var w = new GameBoxWriter(stream);
+        
+        w.Write(uncompressedData.Length);
+        w.Write(Lzo.Compress(uncompressedData));
+    }
+
+    public static void Encrypt(string fileName, string contents)
+    {
+        using var fs = File.Create(fileName);
+        Encrypt(fs, contents);
     }
 }
