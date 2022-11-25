@@ -455,9 +455,9 @@ public class ObjFileExporter : IModelExporter, IDisposable
             return;
         }
 
-        var diffuse = textures.FirstOrDefault(x => x.Name == "Diffuse" || x.Name == "Blend3" || x.Name.StartsWith("Soil"))?.Bitmap;
+        var diffuse = textures.FirstOrDefault(x => x.Name == "Diffuse" || x.Name == "Blend3" || x.Name.StartsWith("Soil"))?.Texture;
 
-        diffuse ??= textures.FirstOrDefault()?.Bitmap;
+        diffuse ??= textures.FirstOrDefault()?.Texture;
 
         if (diffuse is null)
         {
