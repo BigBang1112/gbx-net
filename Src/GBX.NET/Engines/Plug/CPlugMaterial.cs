@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 /// <remarks>ID: 0x09079000</remarks>
-[Node(0x09079000), WritingNotSupported]
+[Node(0x09079000)]
 [NodeExtension("Material")]
 public class CPlugMaterial : CPlug
 {
