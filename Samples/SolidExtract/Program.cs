@@ -187,10 +187,10 @@ void ProcessFile(string fileName)
         if (textures is null)
             return;
 
-        var diffuse = textures.FirstOrDefault(x => x.Name == "Diffuse")?.Bitmap;
+        var diffuse = textures.FirstOrDefault(x => x.Name == "Diffuse")?.Texture;
 
         if (diffuse is null)
-            diffuse = textures.FirstOrDefault()?.Bitmap;
+            diffuse = textures.FirstOrDefault()?.Texture;
 
         if (diffuse is null)
             return;
