@@ -132,6 +132,7 @@ public class CPlugBitmap : CPlug
     {
         public ulong U01;
         public int U05;
+        public Node? U06;
         
         public override void ReadWrite(CPlugBitmap n, GameBoxReaderWriter rw)
         {
@@ -141,6 +142,11 @@ public class CPlugBitmap : CPlug
             rw.Single(ref n.bumpScaleFactor);
             rw.Single(ref n.mipMapLodBiasDefault);
             rw.Int32(ref U05);
+
+            if (n.image is CPlugFileGen)
+            {
+                rw.NodeRef(ref U06);
+            }
         }
     }
 
