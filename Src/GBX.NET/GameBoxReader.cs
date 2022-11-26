@@ -422,6 +422,26 @@ public class GameBoxReader : BinaryReader
                         TZ: ReadSingle());
     }
 
+    public Mat4 ReadMat4()
+    {
+        return new Mat4(XX: ReadSingle(),
+                        XY: ReadSingle(),
+                        XZ: ReadSingle(),
+                        XW: ReadSingle(),
+                        YX: ReadSingle(),
+                        YY: ReadSingle(),
+                        YZ: ReadSingle(),
+                        YW: ReadSingle(),
+                        ZX: ReadSingle(),
+                        ZY: ReadSingle(),
+                        ZZ: ReadSingle(),
+                        ZW: ReadSingle(),
+                        WX: ReadSingle(),
+                        WY: ReadSingle(),
+                        WZ: ReadSingle(),
+                        WW: ReadSingle());
+    }
+
     public TimeSpan? ReadTimeOfDay()
     {
         var dayTime = ReadUInt32();
