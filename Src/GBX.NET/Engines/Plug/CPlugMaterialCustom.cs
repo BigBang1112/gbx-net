@@ -197,7 +197,13 @@ public class CPlugMaterialCustom : CPlug
                 U03 = rw.Reader.ReadArray(count2, r => r.ReadArray<float>(count1));
             }
 
-            rw.Writer?.WriteArray(U03, (x, w) => w.WriteArray(x));
+            if (rw.Writer is not null)
+            {
+                for (var i = 0; i < count2; i++)
+                {
+                    rw.Writer.WriteArray_NoPrefix(U03[i]);
+                }
+            }
         }
     }
 }
