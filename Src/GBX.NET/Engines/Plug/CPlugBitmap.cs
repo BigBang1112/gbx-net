@@ -131,9 +131,6 @@ public class CPlugBitmap : CPlug
     public class Chunk09011018 : Chunk<CPlugBitmap>
     {
         public ulong U01;
-        public float U02;
-        public float U03;
-        public float U04;
         public int U05;
         
         public override void ReadWrite(CPlugBitmap n, GameBoxReaderWriter rw)
