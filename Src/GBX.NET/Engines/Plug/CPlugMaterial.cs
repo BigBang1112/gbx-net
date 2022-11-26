@@ -249,16 +249,8 @@ public class CPlugMaterial : CPlug
                     rw.Byte(ref u06);
                     
                     rw.Boolean(ref u03);
+                    rw.NodeRef(ref shader1, ref shader1File); // u03 == true: external node, false: internal node
 
-                    if (u03.GetValueOrDefault())
-                    {
-                        rw.Int32(ref u07);
-                    }
-                    else
-                    {
-                        rw.NodeRef(ref shader1, ref shader1File);
-                    }
-                    
                     rw.NodeRef(ref shader2, ref shader2File);
                     rw.NodeRef(ref shader3, ref shader3File);
                     break;
