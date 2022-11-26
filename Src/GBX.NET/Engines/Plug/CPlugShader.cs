@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GBX.NET.Engines.Plug;
+﻿namespace GBX.NET.Engines.Plug;
 
 /// <summary>
 /// Shader.

@@ -3,6 +3,7 @@
 /// <remarks>ID: 0x09026000</remarks>
 [Node(0x09026000)]
 [Node(0x09063000)]
+[NodeExtension("Shader")]
 public class CPlugShaderApply : CPlugShaderGeneric
 {
     private CPlugBitmapAddress?[]? bitmapAddresses;
