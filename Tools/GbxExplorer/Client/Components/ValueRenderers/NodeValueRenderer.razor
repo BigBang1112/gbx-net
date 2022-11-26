@@ -7,7 +7,28 @@
 
 @if (Value is null)
 {
-    <span class="element-box" data-title="This value cannot be modified. Custom creation of nodes will be added later.">null</span>
+    var fileVal = default(object);
+
+    @if (Owner is not null && Property is not null)
+    {
+        var fileProp = Owner.GetType().GetProperty(Property.Name + "File");
+        fileVal = fileProp?.GetValue(Owner);
+
+        if (fileVal is null)
+        {
+            var fileField = Owner.GetType().GetField(char.ToLower(Property.Name[0]) + Property.Name.Substring(1) + "File", BindingFlags.NonPublic | BindingFlags.Instance);
+            fileVal = fileField?.GetValue(Owner);
+        }
+    }
+
+    if (fileVal is null)
+    {
+        <span class="element-box" data-title="This value cannot be modified. Custom creation of nodes will be added later.">null</span>
+    }
+    else
+    {
+        <span class="element-box" data-title="This value cannot be modified. Custom creation of nodes will be added later.">@(fileVal.ToString())</span>
+    }
 }
 else
 {
