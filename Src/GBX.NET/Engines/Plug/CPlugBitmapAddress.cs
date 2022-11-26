@@ -46,15 +46,27 @@ public class CPlugBitmapAddress : CPlugBitmapSampler
     [Chunk(0x09047007)]
     public class Chunk09047007 : Chunk<CPlugBitmapAddress>
     {
-        public int U01;
+        public uint U01;
         public int U02;
         public byte U03;
+        public Box? U04;
+        public Mat4? U05;
 
         public override void ReadWrite(CPlugBitmapAddress n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.UInt32(ref U01); // DoData
             rw.Int32(ref U02);
             rw.Byte(ref U03);
+
+            if (U03 == 1)
+            {
+                rw.Box(ref U04); // Iso3 in reality
+            }
+
+            if (U03 == 2)
+            {
+                rw.Mat4(ref U05);
+            }
         }
     }
 
@@ -73,4 +85,22 @@ public class CPlugBitmapAddress : CPlugBitmapSampler
             rw.Single(ref U02);
         }
     }
+
+    #region 0x009 chunk
+
+    /// <summary>
+    /// CPlugBitmapAddress 0x009 chunk
+    /// </summary>
+    [Chunk(0x09047009)]
+    public class Chunk09047009 : Chunk<CPlugBitmapAddress>
+    {
+        public float U01;
+
+        public override void ReadWrite(CPlugBitmapAddress n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+        }
+    }
+
+    #endregion
 }

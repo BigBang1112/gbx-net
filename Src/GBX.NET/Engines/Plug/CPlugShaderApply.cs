@@ -5,6 +5,10 @@
 [Node(0x09063000)]
 public class CPlugShaderApply : CPlugShaderGeneric
 {
+    private CPlugBitmapAddress?[]? bitmapAddresses;
+
+    public CPlugBitmapAddress?[]? BitmapAddresses { get => bitmapAddresses; set => bitmapAddresses = value; }
+
     internal CPlugShaderApply()
     {
 
@@ -49,7 +53,7 @@ public class CPlugShaderApply : CPlugShaderGeneric
         public override void ReadWrite(CPlugShaderApply n, GameBoxReaderWriter rw)
         {
             // array of CPlugBitmapAddress
-            rw.Int32(ref U01);
+            rw.ArrayNode<CPlugBitmapAddress>(ref n.bitmapAddresses);
         }
     }
 

@@ -49,12 +49,30 @@ public class CPlugBitmap : CPlug
     /// <summary>
     /// CPlugBitmap 0x018 chunk
     /// </summary>
-    [Chunk(0x09011018), AutoReadWriteChunk]
+    [Chunk(0x09011018)]
     public class Chunk09011018 : Chunk<CPlugBitmap>
     {
+        public Node? TextureFile;
+        public GameBoxRefTable.File? TextureFileIndex;
+        public ulong U01;
+        public float U02;
+        public float U03;
+        public float U04;
+        public int U05;
+        
         public override void ReadWrite(CPlugBitmap n, GameBoxReaderWriter rw)
         {
-            // Weird structure in TMS, TMNESWC, TMNF and TMTurbo
+            rw.NodeRef(ref TextureFile, ref TextureFileIndex);
+            rw.UInt64(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+            rw.Int32(ref U05);
+
+            if (U05 != 0)
+            {
+                throw new Exception("U05 != 0");
+            }
         }
     }
 
@@ -154,30 +172,9 @@ public class CPlugBitmap : CPlug
     /// CPlugBitmap 0x022 chunk
     /// </summary>
     [Chunk(0x09011022)]
-    public class Chunk09011022 : Chunk<CPlugBitmap>
+    public class Chunk09011022 : Chunk09011018
     {
-        public Node? TextureFile;
-        public GameBoxRefTable.File? TextureFileIndex;
-        public ulong U01;
-        public float U02;
-        public float U03;
-        public float U04;
-        public int U05;
-
-        public override void ReadWrite(CPlugBitmap n, GameBoxReaderWriter rw)
-        {
-            rw.NodeRef(ref TextureFile, ref TextureFileIndex);
-            rw.UInt64(ref U01);
-            rw.Single(ref U02);
-            rw.Single(ref U03);
-            rw.Single(ref U04);
-            rw.Int32(ref U05);
-
-            if (U05 != 0)
-            {
-                throw new Exception("U05 != 0");
-            }
-        }
+        
     }
 
     #region 0x023 chunk

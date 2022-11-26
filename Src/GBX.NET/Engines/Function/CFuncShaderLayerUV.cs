@@ -69,6 +69,25 @@ public class CFuncShaderLayerUV : CFuncShader
 
     #endregion
 
+    #region 0x00A chunk
+
+    /// <summary>
+    /// CFuncShaderLayerUV 0x00A chunk
+    /// </summary>
+    [Chunk(0x0501500A)]
+    public class Chunk0501500A : Chunk05015009
+    {
+        public Vec2 U03;
+
+        public override void ReadWrite(CFuncShaderLayerUV n, GameBoxReaderWriter rw)
+        {
+            base.ReadWrite(n, rw);
+            rw.Vec2(ref U03);
+        }
+    }
+
+    #endregion
+
     #region 0x00D chunk
 
     /// <summary>
@@ -106,6 +125,48 @@ public class CFuncShaderLayerUV : CFuncShader
         {
             rw.Int32(ref U01);
             rw.Int32(ref U02);
+        }
+    }
+
+    #endregion
+
+    #region 0x015 chunk
+
+    /// <summary>
+    /// CFuncShaderLayerUV 0x015 chunk
+    /// </summary>
+    [Chunk(0x05015015)]
+    public class Chunk05015015 : Chunk<CFuncShaderLayerUV>
+    {
+        public int U01;
+        public int U02;
+        public int U03;
+        public int U04;
+
+        public override void ReadWrite(CFuncShaderLayerUV n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+            rw.Int32(ref U02);
+            rw.Int32(ref U03);
+            rw.Int32(ref U04); // should be bool but it isnt?
+        }
+    }
+
+    #endregion
+
+    #region 0x016 chunk
+
+    /// <summary>
+    /// CFuncShaderLayerUV 0x016 chunk
+    /// </summary>
+    [Chunk(0x05015016)]
+    public class Chunk05015016 : Chunk<CFuncShaderLayerUV>
+    {
+        public uint U01;
+        
+        public override void ReadWrite(CFuncShaderLayerUV n, GameBoxReaderWriter rw)
+        {
+            rw.UInt32(ref U01); // DoData
         }
     }
 

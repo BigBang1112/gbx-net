@@ -71,4 +71,28 @@ public class CPlugBitmapSampler : CPlug
             rw.Single(ref U04);
         }
     }
+
+    #region 0x008 chunk
+
+    /// <summary>
+    /// CPlugBitmapSampler 0x008 chunk
+    /// </summary>
+    [Chunk(0x0907E008)]
+    public class Chunk0907E008 : Chunk<CPlugBitmapSampler>
+    {
+        public string? U01;
+        public CMwNod? U02;
+        public uint? U03;
+        public float? U04;
+        
+        public override void ReadWrite(CPlugBitmapSampler n, GameBoxReaderWriter rw)
+        {
+            rw.Id(ref U01);
+            rw.NodeRef(ref U02);
+            rw.UInt32(ref U03); // DoData
+            rw.Single(ref U04);
+        }
+    }
+
+    #endregion
 }

@@ -23,19 +23,13 @@ public abstract class CPlugShader : CPlug
     public class Chunk09002007 : Chunk<CPlugShader>
     {
         public Node? U01;
-        public int U02;
+        public CMwNod?[]? U02;
         public Node? U03;
 
         public override void ReadWrite(CPlugShader n, GameBoxReaderWriter rw)
         {
             rw.NodeRef(ref U01);
-            rw.Int32(ref U02); // CPlugShaderPass array
-            
-            if (U02 > 0)
-            {
-                throw new Exception("U02 > 0");
-            }
-
+            rw.ArrayNode<CMwNod>(ref U02); // CPlugShaderPass array
             rw.NodeRef(ref U03);
         }
     }
@@ -46,19 +40,14 @@ public abstract class CPlugShader : CPlug
     /// CPlugShader 0x00E chunk
     /// </summary>
     [Chunk(0x0900200E)]
-    public class Chunk0900200E : Chunk<CPlugShader>
+    public class Chunk0900200E : Chunk09002007
     {
-        public int U01;
-        public int U02;
-        public int U03;
-        public int U04;
+        public CMwNod?[]? U04;
 
         public override void ReadWrite(CPlugShader n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-            rw.Int32(ref U04);
+            base.ReadWrite(n, rw);
+            rw.ArrayNode<CMwNod>(ref U04);
         }
     }
 
