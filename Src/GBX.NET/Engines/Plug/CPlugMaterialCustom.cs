@@ -103,7 +103,7 @@ public class CPlugMaterialCustom : CPlug
                 r => (r.ReadId(), r.ReadBoolean()),
                 (x, w) =>
                 {
-                    w.Write(x.Item1);
+                    w.WriteId(x.Item1);
                     w.Write(x.Item2);
                 });
         }
