@@ -8,6 +8,9 @@ public class CPlugShaderApply : CPlugShaderGeneric
 {
     private CPlugBitmapAddress?[]? bitmapAddresses;
 
+    [NodeMember]
+    [AppliedWithChunk<Chunk09026002>]
+    [AppliedWithChunk<Chunk0902600C>]
     public CPlugBitmapAddress?[]? BitmapAddresses { get => bitmapAddresses; set => bitmapAddresses = value; }
 
     internal CPlugShaderApply()
@@ -148,12 +151,10 @@ public class CPlugShaderApply : CPlugShaderGeneric
     {
         private int listVersion;
 
-        public CPlugBitmapAddress?[]? U01;
-
         public override void ReadWrite(CPlugShaderApply n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref listVersion);
-            rw.ArrayNode<CPlugBitmapAddress>(ref U01);
+            rw.ArrayNode<CPlugBitmapAddress>(ref n.bitmapAddresses); // May not be correct
         }
     }
 
