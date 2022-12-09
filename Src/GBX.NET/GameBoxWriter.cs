@@ -409,11 +409,19 @@ public class GameBoxWriter : BinaryWriter
             node.Write(this);
             return;
         }
-
-        if (AuxNodes.ContainsValue(node))
+        
+        foreach (var pair in AuxNodes) // This is not super efficient
         {
-            Write(AuxNodes.FirstOrDefault(x => (x.Value ?? throw new Exception("Node or its external index not found")).Equals(node)).Key + 1);
-            return;
+            if (pair.Value is null)
+            {
+                continue;
+            }
+
+            if (pair.Value.Equals(node))
+            {
+                Write(pair.Key + 1);
+                return;
+            }
         }
 
         var index = AuxNodes.Count;
