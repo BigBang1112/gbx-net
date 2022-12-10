@@ -313,6 +313,23 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
         }
     }
 
+    public GameBox<CGameCtnChallenge>? GetChallengeHeader()
+    {
+        if (challengeData is null)
+        {
+            return null;
+        }
+
+        using var ms = new MemoryStream(challengeData);
+        
+        return GameBox.ParseHeader<CGameCtnChallenge>(ms);
+    }
+
+    public CGameCtnChallenge? GetChallengeHeaderNode()
+    {
+        return GetChallengeHeader()?.Node;
+    }
+
     #endregion
 
     #region Explicit methods
