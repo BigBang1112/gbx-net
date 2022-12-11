@@ -1,14 +1,7 @@
-﻿using GBX.NET.Builders;
-using GBX.NET.Builders.Engines.Game;
+﻿using GBX.NET.Builders.Engines.Game;
 using GBX.NET.Engines.Control;
 using GBX.NET.Engines.Game;
-using GBX.NET.Managers;
 using GBX.NET.Tests.Unit.Builders.Engines.Control;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace GBX.NET.Tests.Unit.Builders.Engines.Game;
@@ -28,21 +21,10 @@ public class CGameCtnMediaBlockTextBuilderTests
     {
         var expected = GetSampleText();
 
-        var builder = new CGameCtnMediaBlockTextBuilder()
+        var builder = new CGameCtnMediaBlockTextBuilder(null!)
             .WithText(expected);
 
         Assert.Equal(expected, actual: builder.Text);
-    }
-
-    [Fact]
-    public void WithEffect_ShouldSetEffect()
-    {
-        var expected = GetSampleEffect();
-
-        var builder = new CGameCtnMediaBlockTextBuilder()
-             .WithEffect(expected);
-
-        Assert.Equal(expected, actual: builder.Effect);
     }
 
     [Fact]
@@ -50,7 +32,7 @@ public class CGameCtnMediaBlockTextBuilderTests
     {
         var expected = GetSampleColor();
 
-        var builder = new CGameCtnMediaBlockTextBuilder()
+        var builder = new CGameCtnMediaBlockTextBuilder(null!)
              .WithColor(expected);
 
         Assert.Equal(expected, actual: builder.Color);
@@ -59,9 +41,9 @@ public class CGameCtnMediaBlockTextBuilderTests
     [Fact]
     public void NewNode_ShouldReturnInstance()
     {
-        var expected = NodeCacheManager.GetNodeInstance<CGameCtnMediaBlockText>(0x030A8000);
+        var expected = new CGameCtnMediaBlockText();
 
-        var actual = new CGameCtnMediaBlockTextBuilder().NewNode();
+        var actual = new CGameCtnMediaBlockTextBuilder(null!).NewNode();
 
         Assert.Equal(expected.Id, actual.Id);
     }
@@ -73,7 +55,7 @@ public class CGameCtnMediaBlockTextBuilderTests
         var expectedEffect = GetSampleEffect();
         var expectedColor = new Vec3(1, 1, 1);
 
-        var node = new CGameCtnMediaBlockTextBuilder { Text = expectedText, Effect = expectedEffect, Color = expectedColor }
+        var node = new CGameCtnMediaBlockTextBuilder(expectedEffect) { Text = expectedText, Color = expectedColor }
             .NewNode();
 
         Assert.Equal(expectedText, actual: node.Text);
@@ -84,7 +66,7 @@ public class CGameCtnMediaBlockTextBuilderTests
     [Fact]
     public void NewNode_ShouldSetDefaultValues()
     {
-        var node = new CGameCtnMediaBlockTextBuilder().NewNode();
+        var node = new CGameCtnMediaBlockTextBuilder(null!).NewNode();
 
         Assert.NotNull(node.Text);
     }
@@ -92,7 +74,7 @@ public class CGameCtnMediaBlockTextBuilderTests
     [Fact]
     public void TMSX_Build_ShouldHaveSpecifics()
     {
-        var node = new CGameCtnMediaBlockTextBuilder().ForTMSX().Build();
+        var node = new CGameCtnMediaBlockTextBuilder(null!).ForTMSX().Build();
 
         Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8001>());
         Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8002>());
@@ -103,7 +85,7 @@ public class CGameCtnMediaBlockTextBuilderTests
     [Fact]
     public void TMU_Build_ShouldHaveSpecifics()
     {
-        var node = new CGameCtnMediaBlockTextBuilder().ForTMU().Build();
+        var node = new CGameCtnMediaBlockTextBuilder(null!).ForTMU().Build();
 
         Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8001>());
         Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8002>());
@@ -113,7 +95,7 @@ public class CGameCtnMediaBlockTextBuilderTests
     [Fact]
     public void TMUF_Build_ShouldHaveSpecifics()
     {
-        var node = new CGameCtnMediaBlockTextBuilder().ForTMUF().Build();
+        var node = new CGameCtnMediaBlockTextBuilder(null!).ForTMUF().Build();
 
         Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8001>());
         Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8002>());
@@ -123,7 +105,7 @@ public class CGameCtnMediaBlockTextBuilderTests
     [Fact]
     public void TM2_Build_ShouldHaveSpecifics()
     {
-        var node = new CGameCtnMediaBlockTextBuilder().ForTM2().Build();
+        var node = new CGameCtnMediaBlockTextBuilder(null!).ForTM2().Build();
 
         Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8001>());
         Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8002>());
@@ -133,7 +115,7 @@ public class CGameCtnMediaBlockTextBuilderTests
     [Fact]
     public void TM2020_Build_ShouldHaveSpecifics()
     {
-        var node = new CGameCtnMediaBlockTextBuilder().ForTM2020().Build();
+        var node = new CGameCtnMediaBlockTextBuilder(null!).ForTM2020().Build();
 
         Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8001>());
         Assert.NotNull(node.GetChunk<CGameCtnMediaBlockText.Chunk030A8002>());

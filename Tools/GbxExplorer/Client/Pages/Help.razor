@@ -1,15 +1,17 @@
 ﻿@page "/help"
 
+@inject IBaseAddressService BaseAddressService
 @inject ISettingsService SettingsService
 @inject IValueRendererService ValueRendererService
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+@inject IConfiguration Config
 
 <div class="centered-container">
     <div class="section help">
         <div style="font-size:1.7rem;font-weight:bold;text-align:center">Help, tips, and tricks</div>
         <div>
             <p class="centered">Gbx is a file format of a <a href="https://en.wikipedia.org/wiki/Serialization" target="_blank">serialized</a> object taken from the Nadeo game engine (GameBox / GbxGame).</p>
-            <big>List of supported Gbx files in GBX.NET Explorer is available <a href="https://github.com/BigBang1112/gbx-net/blob/master/SUPPORTED_GBX_FILE_TYPES.md" target="_blank">here</a>.</big>
+            <big>List of supported Gbx files in GBX.NET Explorer is available <a href="https://github.com/BigBang1112/gbx-net/blob/@(Config["Branch"] ?? "master")/SUPPORTED_GBX_FILE_TYPES.md" target="_blank">here</a>.</big>
             <big style="font-size: 2rem">Node = Object</big>
             <p class="centered">The engine calls its objects <b>"nodes"</b> so this standard was acquired in the application.</p>
             <p class="centered"><b>Main node</b> is the root object of the Gbx file.</p>
@@ -24,7 +26,7 @@
             <big>Export selected node to Gbx</big>
             <p>You can create new Gbx files from many of the <b>CMwNod</b>-based classes! Just click on the <b>name</b> of the class member to let GBX.NET Explorer know which node to export.</p>
         </div>
-        <a href="/" class="button" style="justify-content:center">Let's continue exploring!</a>
+        <a href="@BaseAddressService.GetRoot()" class="button" style="justify-content:center">Let's continue exploring!</a>
     </div>
 </div>
 

@@ -14,7 +14,7 @@ public class CGameCtnZoneFlat : CGameCtnZone
     private bool groundOnly;
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0305D001))]
+    [AppliedWithChunk<Chunk0305D001>]
     public CGameCtnBlockInfoFlat? BlockInfoFlat
     {
         get => blockInfoFlat = GetNodeFromRefTable(blockInfoFlat, blockInfoFlatFile) as CGameCtnBlockInfoFlat;
@@ -22,7 +22,7 @@ public class CGameCtnZoneFlat : CGameCtnZone
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0305D001))]
+    [AppliedWithChunk<Chunk0305D001>]
     public CGameCtnBlockInfoClip? BlockInfoClip
     {
         get => blockInfoClip = GetNodeFromRefTable(blockInfoClip, blockInfoClipFile) as CGameCtnBlockInfoClip;
@@ -30,7 +30,7 @@ public class CGameCtnZoneFlat : CGameCtnZone
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0305D001))]
+    [AppliedWithChunk<Chunk0305D001>]
     public CGameCtnBlockInfoRoad? BlockInfoRoad
     {
         get => blockInfoRoad = GetNodeFromRefTable(blockInfoRoad, blockInfoRoadFile) as CGameCtnBlockInfoRoad;
@@ -38,7 +38,7 @@ public class CGameCtnZoneFlat : CGameCtnZone
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0305D001))]
+    [AppliedWithChunk<Chunk0305D001>]
     public CGameCtnBlockInfoPylon? BlockInfoPylon
     {
         get => blockInfoPylon = GetNodeFromRefTable(blockInfoPylon, blockInfoPylonFile) as CGameCtnBlockInfoPylon;
@@ -46,10 +46,10 @@ public class CGameCtnZoneFlat : CGameCtnZone
     }
     
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0305D002))]
+    [AppliedWithChunk<Chunk0305D002>]
     public bool GroundOnly { get => groundOnly; set => groundOnly = value; }
 
-    protected CGameCtnZoneFlat()
+    internal CGameCtnZoneFlat()
     {
 
     }

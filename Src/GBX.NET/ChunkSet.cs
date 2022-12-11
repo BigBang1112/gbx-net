@@ -31,10 +31,8 @@ public class ChunkSet : SortedSet<Chunk>
             return c ?? throw new ThisShouldNotHappenException();
         }
 
-        var chunk = NodeCacheManager.ChunkConstructors.TryGetValue(chunkId, out var constructor)
-            ? constructor()
-            : throw new ThisShouldNotHappenException();
-
+        var chunk = NodeManager.GetNewChunk(chunkId) ?? throw new Exception("Chunk ID does not exist.");
+        
         if (chunk is ISkippableChunk skippableChunk)
         {
             skippableChunk.Discovered = true;
@@ -47,7 +45,7 @@ public class ChunkSet : SortedSet<Chunk>
 
     public T Create<T>() where T : Chunk
     {
-        return (T)Create(NodeCacheManager.GetChunkIdByType(typeof(T)));
+        return (T)Create(NodeManager.ChunkIdsByType[typeof(T)]);
     }
 
     public Chunk? Get(uint chunkId)

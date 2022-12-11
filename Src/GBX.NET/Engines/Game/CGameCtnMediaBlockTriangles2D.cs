@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.Game;
+﻿using GBX.NET.Builders.Engines.Game;
+
+namespace GBX.NET.Engines.Game;
 
 /// <summary>
 /// MediaTracker block - 2D triangles.
@@ -8,8 +10,11 @@
 [NodeExtension("GameCtnMediaBlockTriangles2D")]
 public class CGameCtnMediaBlockTriangles2D : CGameCtnMediaBlockTriangles
 {
-    protected CGameCtnMediaBlockTriangles2D()
+    internal CGameCtnMediaBlockTriangles2D()
     {
 
     }
+
+    /// <param name="vertices">Array of vertex colors.</param>
+    public static CGameCtnMediaBlockTriangles2DBuilder Create(Vec4[] vertices) => new(vertices);
 }

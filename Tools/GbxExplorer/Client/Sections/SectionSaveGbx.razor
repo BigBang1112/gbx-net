@@ -1,6 +1,5 @@
 ﻿@using GBX.NET
 @using GBX.NET.Attributes
-@using GBX.NET.Managers
 
 @inject IGbxService GbxService
 @inject IDownloadStreamService DownloadService
@@ -14,19 +13,19 @@
     }
     else
     {
-        var extensions = default(IEnumerable<string>);
+        var extensions = Enumerable.Empty<string>();
 
         if (selectedSaveMethod == 0)
         {
-            _ = NodeCacheManager.GbxExtensions.TryGetValue(selectedGbx.Gbx.Header.Id, out extensions);
+            extensions = NodeManager.GetGbxExtensions(selectedGbx.Gbx.Header.Id);
         }
         else if (element is not null)
         {
             var type = element.GetValue()?.GetType() ?? element.Property?.PropertyType;
 
-            if (type is not null && NodeCacheManager.ClassIdsByType.TryGetValue(type, out uint classId))
+            if (type is not null && NodeManager.ClassIdsByType.TryGetValue(type, out uint classId))
             {
-                _ = NodeCacheManager.GbxExtensions.TryGetValue(classId, out extensions);
+                extensions = NodeManager.GetGbxExtensions(classId);
             }
         }
 
@@ -46,16 +45,11 @@
                 _ => null
             };
 
-            var writingNotSupportedAtt = default(WritingNotSupportedAttribute);
-
-            if (node is not null && NodeCacheManager.ClassAttributesByType.TryGetValue(node.GetType(), out var atts))
-            {
-                writingNotSupportedAtt = atts.OfType<WritingNotSupportedAttribute>().FirstOrDefault();
-            }
+            var writingNotSupported = node is not null && NodeManager.WritingNotSupportedClassTypes.Contains(node.GetType());
 
             <div class="save-params">
 
-                @if (extensions is not null)
+                @if (extensions.Any())
                 {
                     if (selectedSaveMethod == 1 && !extensions.Contains(customExtension))
                     {
@@ -64,7 +58,7 @@
 
                     <input type="text" style="min-width:6rem;" @bind="FileName" />
                     <div>.</div>
-                    <select @bind="Extension">
+                    <select @bind="Extension" disabled="@(extensions.Count() == 1)">
                         @foreach (var ext in extensions)
                         {
                             <option value="@ext">@ext</option>
@@ -79,7 +73,7 @@
                 <div>.Gbx</div>
             </div>
             <div style="text-align: center">
-                Export for TMS/TMESWC/TM1.0?
+                Export for TMS/TMNESWC/TM1.0?
                 <select style="margin-left:0.5rem" @bind="SaveOption">
                     <option value="0">No</option>
                     <option value="1">Yes</option>
@@ -87,8 +81,8 @@
             </div>
             <button class="button tooltip-top"
                 @onclick="SaveAsync"
-                disabled="@(writingNotSupportedAtt is not null)"
-                data-title="@(writingNotSupportedAtt is null ? "" : $"Export of {node?.GetType().Name ?? "(unknown class)"} is not supported.")">
+            disabled="@(node is null || writingNotSupported)"
+            data-title="@(node is not null && !writingNotSupported ? "" : $"Export of {node?.GetType().Name ?? "unknown class"} is not supported.")">
                 Export to Gbx!
             </button>
         }
@@ -187,7 +181,7 @@
                     : selectedGbx.FileNameWithoutExtension + "." + selectedGbx.OfficialExtension + ".Gbx";
                 break;
             case 1:
-                fileName = customExtension is null
+                fileName = string.IsNullOrEmpty(customExtension)
                     ? customFileName + ".Gbx"
                     : customFileName + "." + customExtension + ".Gbx";
 
@@ -247,7 +241,7 @@
         }
 
         Logger.LogInformation("Downloading the file...");
-        DownloadService.Download(fileName, ms);
+        await DownloadService.DownloadAsync(fileName, ms);
     }
 
     private void SelectionChanged(NodeTreeElement? element)

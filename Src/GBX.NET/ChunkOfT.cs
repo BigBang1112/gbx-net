@@ -9,7 +9,7 @@ public abstract class Chunk<T> : Chunk, IReadableWritableChunk where T : Node
 
     protected override uint GetId()
     {
-        return NodeCacheManager.GetChunkIdByType(typeof(T), GetType());
+        return NodeManager.ChunkIdsByType[GetType()];
     }
 
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
@@ -115,9 +115,15 @@ public abstract class Chunk<T> : Chunk, IReadableWritableChunk where T : Node
 
     public override string ToString()
     {
-        var att = NodeCacheManager.ChunkAttributesByType[GetType()]
-            .FirstOrDefault(x => x is ChunkAttribute) as ChunkAttribute;
-        var desc = att?.Description;
+        _ = NodeManager.ChunkAttributesById.TryGetValue(Id, out var att)
+            || NodeManager.HeaderChunkAttributesById.TryGetValue(Id, out att);
+
+        if (att is null)
+        {
+            return $"{typeof(T).Name} chunk 0x{Id:X8}";
+        }
+
+        var desc = att.Description;
         var version = (this as IVersionable)?.Version;
         return $"{typeof(T).Name} chunk 0x{Id:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(version is null ? "" : $" [v{version}]")}";
     }

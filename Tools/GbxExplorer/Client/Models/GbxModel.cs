@@ -1,5 +1,4 @@
 ﻿using GBX.NET;
-using GBX.NET.Managers;
 using System.Collections.Immutable;
 
 namespace GbxExplorer.Client.Models;
@@ -18,7 +17,7 @@ public class GbxModel : GbxModelBase
         Gbx = gbx;
         FileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
 
-        if (NodeCacheManager.GbxExtensions.ContainsKey(gbx.Header.Id))
+        if (NodeManager.GetGbxExtensions(gbx.Header.Id).Any())
         {
             FileNameWithoutExtension = Path.GetFileNameWithoutExtension(FileNameWithoutExtension);
             OfficialExtension = GetNodeExtension(fileName);
@@ -39,7 +38,15 @@ public class GbxModel : GbxModelBase
             return null;
         }
 
-        return extensionSplit[extensionSplit.Length - 2];
+        var extensionWithSpaces = extensionSplit[extensionSplit.Length - 2];
+        var indexOfFirstSpace = extensionWithSpaces.IndexOf(' ');
+
+        if (indexOfFirstSpace == -1)
+        {
+            return extensionWithSpaces;
+        }
+
+        return extensionWithSpaces.Substring(0, indexOfFirstSpace);
     }
 
     private static IEnumerable<Type> GetInheritance(Node node)

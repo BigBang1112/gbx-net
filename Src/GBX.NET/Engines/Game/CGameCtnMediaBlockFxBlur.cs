@@ -7,7 +7,7 @@
 [Node(0x0307F000)]
 public abstract class CGameCtnMediaBlockFxBlur : CGameCtnMediaBlockFx
 {
-    protected CGameCtnMediaBlockFxBlur()
+    internal CGameCtnMediaBlockFxBlur()
     {
 
     }

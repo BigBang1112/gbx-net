@@ -22,25 +22,25 @@ public class CGameCtnBlockInfoPylon : CGameCtnBlockInfo
     private EPylonPlacement pylonPlacement;
     private int blockHeightOffset;
 
-    protected CGameCtnBlockInfoPylon()
+    internal CGameCtnBlockInfoPylon()
     {
         
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03055002))]
+    [AppliedWithChunk<Chunk03055002>]
     public float PylonOffset { get => pylonOffset; set => pylonOffset = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03055002))]
+    [AppliedWithChunk<Chunk03055002>]
     public EPylonAmount PylonAmount { get => pylonAmount; set => pylonAmount = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03055002))]
+    [AppliedWithChunk<Chunk03055002>]
     public EPylonPlacement PylonPlacement { get => pylonPlacement; set => pylonPlacement = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03055002))]
+    [AppliedWithChunk<Chunk03055002>]
     public int BlockHeightOffset { get => blockHeightOffset; set => blockHeightOffset = value; }
 
     #region 0x000 chunk

@@ -27,25 +27,27 @@ Here are some of the useful classes/types to start with:
 | Item.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.cs) | Yes | No
 | Block.Gbx | [CGameItemModel](Src/GBX.NET/Engines/GameData/CGameItemModel.cs) | Yes | No
 | Mat.Gbx | [CPlugMaterialUserInst](Src/GBX.NET/Engines/Plug/CPlugMaterialUserInst.cs) | Yes | Yes
+| Mesh.Gbx | [CPlugSolid2Model](Src/GBX.NET/Engines/Plug/CPlugSolid2Model.cs) | Yes<sup>2</sup> | Yes<sup>2</sup>
+| Shape.Gbx | [CPlugSurface](Src/GBX.NET/Engines/Plug/CPlugSurface.cs) | Yes | Yes
 | Macroblock.Gbx | [CGameCtnMacroBlockInfo](Src/GBX.NET/Engines/Game/CGameCtnMacroBlockInfo.cs) | Yes | Yes
 | LightMapCache.Gbx | [CHmsLightMapCache](Src/GBX.NET/Engines/Hms/CHmsLightMapCache.cs) | Yes | Yes
 | SystemConfig.Gbx | [CSystemConfig](Src/GBX.NET/Engines/System/CSystemConfig.cs) | Yes | Yes
 | Scores.Gbx | [CGamePlayerScore](Src/GBX.NET/Engines/Game/CGamePlayerScore.cs) | Yes | No
 
 - <sup>1</sup>Safety reasons. Consider extracting `CGameCtnGhost` from `CGameCtnReplayRecord`, transfer it over to `CGameCtnMediaBlockGhost`, add it to `CGameCtnMediaClip`, and save it as `.Clip.Gbx`, which you can then import in MediaTracker.
-- <sup>2</sup>Only up to TMUF.
+- <sup>2</sup>May not have perfect support for the `CPlugVisual3D` objects inside and TM2020 could be generally unstable as well.
 
 **Full list of supported file types is available in the [SUPPORTED GBX FILE TYPES](SUPPORTED_GBX_FILE_TYPES.md)**.
 
 ## Compatibility and build
 
 - GBX.NET is compatible down to **.NET Standard 2.0** and **.NET Framework 4.6.2**.
-- Current C# language version is **10**.
+- Current C# language version is **11**.
 
 To build the solution:
-- Installing Visual Studio 2022 with default .NET tools and **.NET Framework 4.6.2 Targeting Pack** is the easiest option.
+- Installing Visual Studio 2022 with default .NET tools, **.NET WebAssembly Build Tools**, and **.NET Framework 4.6.2 Targeting Pack** is the easiest option.
 - JetBrains Rider also works as it should. Visual Studio Code may work with a bit more setup.
-- Make sure you have all the needed targetting packs installed (currently .NET 6.0, .NET Standard 2.1, .NET Standard 2.0, and .NET Framework 4.6.2).
+- Make sure you have all the needed targetting packs installed (currently **.NET 7.0**, .NET 6.0, .NET Standard 2.1, .NET Standard 2.0, and .NET Framework 4.6.2).
 
 *(reminder: you can just use the NuGet packages in any IDE or text editor that supports them)*
 
@@ -57,10 +59,11 @@ Through the Gbx format, internal game objects (called **nodes**) are being seria
 
 Nodes inherit `CMwNod` or other class that inherits `CMwNod` and each node class has a `NodeAttribute` with its **latest ID** and a **protected constructor**. Chunks inherit the `Chunk<T>`/`SkippableChunk<T>`/`HeaderChunk<T>` class based on the behaviour and each chunk class has a `ChunkAttribute` with its **latest ID**.
 
-Node caching is being done to increase the performance of reflection that handles the rules above (applies to both reading and writing):
+To keep the code clean while also performant, the library includes a source generated layer on top for effective reading and writing with minimal cold start.
 
-- All nodes are cached when calling the `NodeCacheManager.GetClassTypeById` (reading) or `NodeCacheManager.GetClassIdByType` (writing) for the first time - using the `NodeCacheManager.CacheClassTypesIfNotCached()` method, causing a slight delay on the first parse (rougly between 7-20 ms) and additional 1MB usage of memory. This may increase very slightly with future library additions.
-- *Selective chunk caching* only caches the chunk types and their attributes when a "new" node type appears during reading/writing. This was done to improve the delay of node caching and to value memory usage to things that are needed. Not caching the chunk types together with node types (at the same time) improves the performance by around 80%.
+- Better performance than reflection (mainly due to minimal cold start)
+- `Parse...()` methods are thread safe.
+- Con: Library is larger due to generated code (not a short one).
 
 The library also speeds up parse time by ignoring unused skippable chunks with *discover* feature:
 

@@ -51,13 +51,13 @@ public class GameBoxReader : BinaryReader
         State = state;
     }
 
-    internal GameBoxReader(Stream input, GameBoxReader reference, bool hasOwnIdState = false)
-        : this(input, reference.Gbx, reference.AsyncAction, reference.Logger, hasOwnIdState ? new() : reference.State)
+    internal GameBoxReader(Stream input, GameBoxReader reference, bool encapsulated = false)
+        : this(input, reference.Gbx, reference.AsyncAction, reference.Logger, encapsulated ? new(encapsulated) : reference.State)
     {
 
     }
 
-    internal GameBoxReader(GameBoxReader reference, bool hasOwnIdState = false) : this(reference.BaseStream, reference, hasOwnIdState)
+    internal GameBoxReader(GameBoxReader reference, bool encapsulated = false) : this(reference.BaseStream, reference, encapsulated)
     {
 
     }
@@ -422,6 +422,26 @@ public class GameBoxReader : BinaryReader
                         TZ: ReadSingle());
     }
 
+    public Mat4 ReadMat4()
+    {
+        return new Mat4(XX: ReadSingle(),
+                        XY: ReadSingle(),
+                        XZ: ReadSingle(),
+                        XW: ReadSingle(),
+                        YX: ReadSingle(),
+                        YY: ReadSingle(),
+                        YZ: ReadSingle(),
+                        YW: ReadSingle(),
+                        ZX: ReadSingle(),
+                        ZY: ReadSingle(),
+                        ZZ: ReadSingle(),
+                        ZW: ReadSingle(),
+                        WX: ReadSingle(),
+                        WY: ReadSingle(),
+                        WZ: ReadSingle(),
+                        WW: ReadSingle());
+    }
+
     public TimeSpan? ReadTimeOfDay()
     {
         var dayTime = ReadUInt32();
@@ -659,6 +679,12 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public Node? ReadNodeRef(out GameBoxRefTable.File? nodeRefFile)
     {
+        if (State.Encapsulated)
+        {
+            nodeRefFile = null;
+            return ReadNode();
+        }
+
         var index = ReadInt32() - 1; // GBX seems to start the index at 1
 
         // If aux node index is below 0 or the node index is part of the reference table
@@ -704,9 +730,9 @@ public class GameBoxReader : BinaryReader
     {
         var node = ReadNodeRef(out GameBoxRefTable.File? nodeRefFile);
 
-        if (nodeRefFile is not null)
+        if (Logger is not null && nodeRefFile is not null)
         {
-            Logger?.LogDiscardedExternalNode(nodeRefFile);
+            Logger.LogDiscardedExternalNode(nodeRefFile);
         }
 
         return node;
@@ -740,9 +766,9 @@ public class GameBoxReader : BinaryReader
 
         var nodeT = node as T;
 
-        if (node != nodeT)
+        if (Logger is not null && node != nodeT)
         {
-            Logger?.LogWarning("Discarded node! Check your chunk code!");
+            Logger.LogWarning("Discarded node! Check your chunk code!");
         }
 
         if (nodeRefFile is not null)
@@ -813,9 +839,9 @@ public class GameBoxReader : BinaryReader
 
         var nodeT = node as T;
 
-        if (node != nodeT)
+        if (Logger is not null && node != nodeT)
         {
-            Logger?.LogWarning("Discarded node! Check your chunk code!");
+            Logger.LogWarning("Discarded node! Check your chunk code!");
         }
 
         return nodeT;
@@ -870,6 +896,25 @@ public class GameBoxReader : BinaryReader
         nodeRefFile = allFiles.FirstOrDefault(x => x.NodeIndex == index);
 
         return nodeRefFile is not null;
+    }
+    
+    public Node? ReadNode(uint? expectedClassId = null)
+    {
+        return Node.Parse(this, expectedClassId, progress: null);
+    }
+
+    public T? ReadNode<T>(uint? expectedClassId = null) where T : Node
+    {
+        var node = ReadNode(expectedClassId);
+
+        var nodeT = node as T;
+
+        if (Logger is not null && node != nodeT)
+        {
+            Logger.LogWarning("Discarded node! Check your chunk code!");
+        }
+
+        return nodeT;
     }
 
     /// <summary>
@@ -1899,7 +1944,7 @@ public class GameBoxReader : BinaryReader
     public TimeInt32? ReadTimeInt32Nullable()
     {
         var totalMilliseconds = ReadInt32();
-        if (totalMilliseconds < 0) return null;
+        if (totalMilliseconds == -1) return null;
         return new TimeInt32(totalMilliseconds);
     }
 

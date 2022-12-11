@@ -22,7 +22,7 @@ public abstract class CPlugVisualIndexed : CPlugVisual3D
     [NodeMember]
     public CPlugIndexBuffer? IndexBuffer { get => indexBuffer; set => indexBuffer = value; }
 
-    protected CPlugVisualIndexed()
+    internal CPlugVisualIndexed()
     {
         
     }
@@ -63,7 +63,6 @@ public abstract class CPlugVisualIndexed : CPlugVisual3D
     public class Chunk0906A001 : Chunk<CPlugVisualIndexed>
     {
         public bool U01;
-        public int Flags;
 
         public override void Read(CPlugVisualIndexed n, GameBoxReader r)
         {
@@ -71,7 +70,7 @@ public abstract class CPlugVisualIndexed : CPlugVisual3D
 
             if (U01)
             {
-                n.indexBuffer = Parse<CPlugIndexBuffer>(r, 0x9057000, progress: null);
+                n.indexBuffer = r.ReadNode<CPlugIndexBuffer>(0x09057000);
             }
         }
 
@@ -86,7 +85,7 @@ public abstract class CPlugVisualIndexed : CPlugVisual3D
                     w.Write(-1);
                     return;
                 }
-
+                
                 n.indexBuffer.Write(w);
             }
         }

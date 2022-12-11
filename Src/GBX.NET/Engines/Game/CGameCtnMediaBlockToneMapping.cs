@@ -17,14 +17,14 @@ public partial class CGameCtnMediaBlockToneMapping : CGameCtnMediaBlock, CGameCt
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03127000))]
-    [AppliedWithChunk(typeof(Chunk03127001))]
-    [AppliedWithChunk(typeof(Chunk03127002))]
-    [AppliedWithChunk(typeof(Chunk03127003))]
-    [AppliedWithChunk(typeof(Chunk03127004))]
+    [AppliedWithChunk<Chunk03127000>]
+    [AppliedWithChunk<Chunk03127001>]
+    [AppliedWithChunk<Chunk03127002>]
+    [AppliedWithChunk<Chunk03127003>]
+    [AppliedWithChunk<Chunk03127004>]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
-    protected CGameCtnMediaBlockToneMapping()
+    internal CGameCtnMediaBlockToneMapping()
     {
         keys = Array.Empty<Key>();
     }

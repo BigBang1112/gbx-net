@@ -14,26 +14,26 @@ public class CGameCtnMediaBlockCameraEffectInertialTracking : CGameCtnMediaBlock
     private bool autoZoom;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03166000))]
+    [AppliedWithChunk<Chunk03166000>]
     public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03166000))]
+    [AppliedWithChunk<Chunk03166000>]
     public TimeSingle End { get => end; set => end = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03166000))]
+    [AppliedWithChunk<Chunk03166000>]
     public bool Tracking { get => tracking; set => tracking = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03166000))]
+    [AppliedWithChunk<Chunk03166000>]
     public bool AutoFocus { get => autoFocus; set => autoFocus = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03166000))]
+    [AppliedWithChunk<Chunk03166000>]
     public bool AutoZoom { get => autoZoom; set => autoZoom = value; }
 
-    protected CGameCtnMediaBlockCameraEffectInertialTracking()
+    internal CGameCtnMediaBlockCameraEffectInertialTracking()
     {
 
     }

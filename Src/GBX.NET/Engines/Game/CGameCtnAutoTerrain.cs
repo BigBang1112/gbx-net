@@ -8,14 +8,14 @@ public class CGameCtnAutoTerrain : CMwNod
     private CGameCtnZoneGenealogy? genealogy;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03120001))]
+    [AppliedWithChunk<Chunk03120001>]
     public Int3 Offset { get => offset; set => offset = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03120001))]
+    [AppliedWithChunk<Chunk03120001>]
     public CGameCtnZoneGenealogy? Genealogy { get => genealogy; set => genealogy = value; }
 
-    protected CGameCtnAutoTerrain()
+    internal CGameCtnAutoTerrain()
     {
 
     }

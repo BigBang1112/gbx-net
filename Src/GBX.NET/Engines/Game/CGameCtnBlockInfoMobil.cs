@@ -4,6 +4,9 @@
 [Node(0x03122000)]
 public class CGameCtnBlockInfoMobil : CMwNod
 {
+    private bool hasGeomTransformation;
+    private Vec3? geomTranslation;
+    private Vec3? geomRotation;
     private CGameCtnSolidDecals?[]? solidDecals;
     private CGameCtnBlockInfoMobilLink[]? dynaLinks;
     private CPlugSolid? solidFid;
@@ -11,12 +14,24 @@ public class CGameCtnBlockInfoMobil : CMwNod
     private CPlugPrefab? prefabFid;
     private GameBoxRefTable.File? prefabFidFile;
 
+    [NodeMember]
+    [AppliedWithChunk<Chunk03122003>(sinceVersion: 1)]
+    public bool HasGeomTransformation { get => hasGeomTransformation; set => hasGeomTransformation = value; }
+
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03122002))]
+    [AppliedWithChunk<Chunk03122003>(sinceVersion: 1)]
+    public Vec3? GeomTranslation { get => geomTranslation; set => geomTranslation = value; }
+    
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk03122003>(sinceVersion: 1)]
+    public Vec3? GeomRotation { get => geomRotation; set => geomRotation = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk03122002>]
     public CGameCtnSolidDecals?[]? SolidDecals { get => solidDecals; set => solidDecals = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03122003), sinceVersion: 2)]
+    [AppliedWithChunk<Chunk03122003>(sinceVersion: 2)]
     public CPlugSolid? SolidFid
     {
         get => solidFid = GetNodeFromRefTable(solidFid, solidFidFile) as CPlugSolid;
@@ -24,7 +39,7 @@ public class CGameCtnBlockInfoMobil : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03122003), sinceVersion: 3)]
+    [AppliedWithChunk<Chunk03122003>(sinceVersion: 3)]
     public CPlugPrefab? PrefabFid
     {
         get => prefabFid = GetNodeFromRefTable(prefabFid, prefabFidFile) as CPlugPrefab;
@@ -32,10 +47,10 @@ public class CGameCtnBlockInfoMobil : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03122004))]
+    [AppliedWithChunk<Chunk03122004>]
     public CGameCtnBlockInfoMobilLink[]? DynaLinks { get => dynaLinks; set => dynaLinks = value; }
 
-    protected CGameCtnBlockInfoMobil()
+    internal CGameCtnBlockInfoMobil()
     {
 
     }
@@ -68,9 +83,7 @@ public class CGameCtnBlockInfoMobil : CMwNod
         public CMwNod? U02;
         public int U03;
         public byte? U04;
-        public float? U05;
-        public float? U06;
-        public float? U07;
+        public Vec3? U05;
         public float? U08;
         public float? U09;
         public float? U10;
@@ -81,7 +94,18 @@ public class CGameCtnBlockInfoMobil : CMwNod
         public CMwNod? U14;
         public int? U15;
         public int? U16;
-        public int[]? U17;
+        public int? U17;
+        public int? U18;
+        public int? U19;
+        public byte? U20;
+        public int? U21;
+        public int? U22;
+        public int? U23;
+        public int? U24;
+        public int? U25;
+        public int? U26;
+        public CMwNod?[]? U27;
+        public int? U28;
 
         public int Version { get => version; set => version = value; }
 
@@ -100,16 +124,12 @@ public class CGameCtnBlockInfoMobil : CMwNod
 
             if (version >= 1)
             {
-                rw.Byte(ref U04);
+                rw.Boolean(ref n.hasGeomTransformation, asByte: true);
 
-                if (U04 != 0)
+                if (n.hasGeomTransformation)
                 {
-                    rw.Single(ref U05);
-                    rw.Single(ref U06);
-                    rw.Single(ref U07);
-                    rw.Single(ref U08);
-                    rw.Single(ref U09);
-                    rw.Single(ref U10);
+                    rw.Vec3(ref n.geomTranslation);
+                    rw.Vec3(ref n.geomRotation);
                 }
 
                 if (version >= 2)
@@ -143,7 +163,32 @@ public class CGameCtnBlockInfoMobil : CMwNod
 
                                         if (version >= 16)
                                         {
-                                            throw new ChunkVersionNotSupportedException(version);
+                                            rw.Int32(ref U17); // node ref (file likely)
+                                            
+                                            if (version >= 17)
+                                            {
+                                                rw.Int32(ref U18); // node ref
+
+                                                if (version >= 18)
+                                                {
+                                                    rw.Int32(ref U19); // node ref (file likely)
+
+                                                    rw.Byte(ref U20);
+                                                    rw.Int32(ref U21);
+                                                    rw.Int32(ref U22);
+                                                    rw.Int32(ref U23);
+                                                    rw.Int32(ref U24);
+                                                    rw.Int32(ref U25);
+                                                    rw.Int32(ref U26);
+                                                    rw.ArrayNode<CMwNod>(ref U27);
+                                                    rw.Int32(ref U28);
+
+                                                    if (version >= 24)
+                                                    {
+                                                        throw new ChunkVersionNotSupportedException(version);
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -167,43 +212,7 @@ public class CGameCtnBlockInfoMobil : CMwNod
         {
             rw.Int32(ref version);
             rw.Int32(ref listVersion);
-
-            rw.Array(ref n.dynaLinks, r =>
-            {
-                var u01 = r.ReadInt32();
-                var u02 = r.ReadInt32();
-                var u03 = r.ReadInt32();
-                var socketId = r.ReadId();
-                var model = r.ReadNodeRef<CGameObjectModel>();
-
-                var u04 = default(int?);
-
-                if (u03 == 0) // May still not be perfect
-                {
-                    u04 = r.ReadInt32();
-                }
-
-                return new CGameCtnBlockInfoMobilLink(socketId, model)
-                {
-                    U01 = u01,
-                    U02 = u02,
-                    U03 = u03,
-                    U04 = u04
-                };
-            },
-            (x, w) =>
-            {
-                w.Write(x.U01);
-                w.Write(x.U02);
-                w.Write(x.U03);
-                w.WriteId(x.SocketId);
-                w.Write(x.Model);
-
-                if (x.U03 == 0) // Still not perfect
-                {
-                    w.Write(x.U04.GetValueOrDefault());
-                }
-            });
+            rw.ArrayNode<CGameCtnBlockInfoMobilLink>(ref n.dynaLinks!);
         }
     }
 }

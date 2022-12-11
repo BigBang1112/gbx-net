@@ -308,6 +308,21 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     public void Int32(ref int? variable, int defaultValue = default) => variable = Int32(variable, defaultValue);
 
+    public int? Int32Nullable(int? variable)
+    {
+        if (Reader is not null)
+        {
+            variable = Reader.ReadInt32();
+            if (variable == -1) variable = null;
+        }
+        
+        Writer?.Write(variable ?? -1);
+
+        return variable;
+    }
+    
+    public void Int32Nullable(ref int? variable) => variable = Int32(variable);
+
     /// <summary>
     /// Reads or writes a <see cref="long"/>.
     /// </summary>
@@ -1171,6 +1186,56 @@ public partial class GameBoxReaderWriter
     public void Iso4(ref Iso4? variable, Iso4 defaultValue = default) => variable = Iso4(variable, defaultValue);
 
     /// <summary>
+    /// Reads or writes an <see cref="NET.Mat4"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public Mat4 Mat4(Mat4 variable = default)
+    {
+        if (Reader is not null) variable = Reader.ReadMat4();
+        if (Writer is not null) Writer.Write(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="NET.Mat4"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public Mat4? Mat4(Mat4? variable, Mat4 defaultValue = default)
+    {
+        if (Reader is not null) variable = Reader.ReadMat4();
+        if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes an <see cref="NET.Mat4"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void Mat4(ref Mat4 variable) => variable = Mat4(variable);
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="NET.Mat4"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void Mat4(ref Mat4? variable, Mat4 defaultValue = default) => variable = Mat4(variable, defaultValue);
+
+    /// <summary>
     /// Reads or writes a nullable time of day using <see cref="TimeSpan"/>.
     /// </summary>
     /// <param name="variable">Variable to write.Ignored in read mode.</param>
@@ -1445,7 +1510,7 @@ public partial class GameBoxReaderWriter
     public void Bytes(ref byte[]? variable, int count)
     {
         if (Reader is not null) variable = Reader.ReadBytes(count);
-        if (Writer is not null && variable is not null) Writer.Write(variable, 0, count);
+        if (Writer is not null && variable is not null) Writer.Write(variable, 0, count); // May bring trouble
     }
 
     /// <exception cref="ArgumentException">The number of decoded characters to read is greater than count. This can happen if a Unicode decoder returns fallback characters or a surrogate pair.</exception>
@@ -1576,15 +1641,35 @@ public partial class GameBoxReaderWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="forLoopReadWrite"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Array count is negative.</exception>
-    public T[]? Array<T>(T[]? array, Action<GameBoxReaderWriter, T> forLoopReadWrite) where T : new()
+    public T[]? Array<T>(T[]? array, Action<GameBoxReaderWriter, T> forLoopReadWrite, bool shortLength = false) where T : new()
     {
         if (forLoopReadWrite is null)
         {
             throw new ArgumentNullException(nameof(forLoopReadWrite));
         }
 
-        var length = Reader?.ReadInt32() ?? array?.Length ?? 0;
-        Writer?.Write(length);
+        int length;
+
+        if (shortLength)
+        {
+            length = Reader?.ReadUInt16() ?? array?.Length ?? 0;
+            Writer?.Write((ushort)length);
+        }
+        else
+        {
+            length = Reader?.ReadInt32() ?? array?.Length ?? 0;
+            Writer?.Write(length);
+        }
+
+        return Array(array, forLoopReadWrite, length);
+    }
+
+    public T[]? Array<T>(T[]? array, Action<GameBoxReaderWriter, T> forLoopReadWrite, int length) where T : new()
+    {
+        if (forLoopReadWrite is null)
+        {
+            throw new ArgumentNullException(nameof(forLoopReadWrite));
+        }
 
         if (Reader is not null)
         {
@@ -1621,29 +1706,59 @@ public partial class GameBoxReaderWriter
         return array;
     }
 
-    public void Array<T>(ref T[]? array, Action<GameBoxReaderWriter, T> forLoopReadWrite) where T : new()
+    public void Array<T>(ref T[]? array, Action<GameBoxReaderWriter, T> forLoopReadWrite, bool shortLength = false) where T : new()
     {
-        array = Array(array, forLoopReadWrite);
+        array = Array(array, forLoopReadWrite, shortLength);
     }
 
-    public T[]? ArrayArchive<T>(T[]? array) where T : IReadableWritable, new()
+    public T[]? ArrayArchive<T>(T[]? array, bool shortLength = false) where T : IReadableWritable, new()
     {
-        return Array(array, (rw, x) => x.ReadWrite(rw));
+        return Array(array, (rw, x) => x.ReadWrite(rw), shortLength);
     }
 
-    public void ArrayArchive<T>(ref T[]? array) where T : IReadableWritable, new()
+    public void ArrayArchive<T>(ref T[]? array, bool shortLength = false) where T : IReadableWritable, new()
     {
-        array = ArrayArchive(array);
+        array = ArrayArchive(array, shortLength);
     }
 
-    public T[]? ArrayArchive<T>(T[]? array, int version) where T : IReadableWritable, new()
+    public T[]? ArrayArchive<T>(T[]? array, int version, bool shortLength = false) where T : IReadableWritable, new()
     {
-        return Array(array, (rw, x) => x.ReadWrite(rw, version));
+        return Array(array, (rw, x) => x.ReadWrite(rw, version), shortLength);
     }
 
-    public void ArrayArchive<T>(ref T[]? array, int version) where T : IReadableWritable, new()
+    public void ArrayArchive<T>(ref T[]? array, int version, bool shortLength = false) where T : IReadableWritable, new()
     {
-        array = ArrayArchive(array, version);
+        array = ArrayArchive(array, version, shortLength);
+    }
+
+    public T[]? ArrayArchive<T>(T[]? array, int version, int length) where T : IReadableWritable, new()
+    {
+        return Array(array, (rw, x) => x.ReadWrite(rw, version), length);
+    }
+
+    public void ArrayArchive<T>(ref T[]? array, int version, int length) where T : IReadableWritable, new()
+    {
+        array = ArrayArchive(array, version, length);
+    }
+
+    public T[]? ArrayArchiveWithGbx<T>(T[]? array, bool shortLength = false) where T : IReadableWritableWithGbx, new()
+    {
+        return Array(array, (rw, x) => x.ReadWrite(rw, Reader?.Gbx), shortLength);
+    }
+
+    public void ArrayArchiveWithGbx<T>(ref T[]? array, bool shortLength = false) where T : IReadableWritableWithGbx, new()
+    {
+        array = ArrayArchiveWithGbx(array, shortLength);
+    }
+
+    public T[]? ArrayArchiveWithGbx<T>(T[]? array, int version, bool shortLength = false) where T : IReadableWritableWithGbx, new()
+    {
+        return Array(array, (rw, x) => x.ReadWrite(rw, Reader?.Gbx, version), shortLength);
+    }
+
+    public void ArrayArchiveWithGbx<T>(ref T[]? array, int version, bool shortLength = false) where T : IReadableWritableWithGbx, new()
+    {
+        array = ArrayArchiveWithGbx(array, version, shortLength);
     }
 
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
@@ -2720,11 +2835,7 @@ public partial class GameBoxReaderWriter
         throw new ThisShouldNotHappenException();
     }
 
-    /// <summary>
-    /// Reads or writes a comprehensive binary component, usually in a way it's defined in the game code.
-    /// </summary>
-    /// <remarks>Binary component has to be defined with the <see cref="IReadableWritable"/> interface.</remarks>
-    public void Archive<T>(ref T? obj, int version = 0) where T : IReadableWritable, new()
+    public T? Archive<T>(T? obj, int version = 0) where T : IReadableWritable, new()
     {
         if (obj is null)
         {
@@ -2735,5 +2846,26 @@ public partial class GameBoxReaderWriter
         }
 
         obj?.ReadWrite(this, version);
+
+        return obj;
+    }
+
+    /// <summary>
+    /// Reads or writes a comprehensive binary component, usually in a way it's defined in the game code.
+    /// </summary>
+    /// <remarks>Binary component has to be defined with the <see cref="IReadableWritable"/> interface.</remarks>
+    public void Archive<T>(ref T? obj, int version = 0) where T : IReadableWritable, new()
+    {
+        obj = Archive(obj, version);
+    }
+
+    public void VersionInt32(IVersionable versionable)
+    {
+        versionable.Version = Int32(versionable.Version);
+    }
+
+    public void VersionByte(IVersionable versionable)
+    {
+        versionable.Version = Byte(versionable.Version);
     }
 }

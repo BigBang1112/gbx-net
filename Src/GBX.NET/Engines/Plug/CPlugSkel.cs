@@ -5,19 +5,29 @@
 public class CPlugSkel : CMwNod
 {
     private string? name;
-    private Joint[] joints;
+    private Joint[] joints = Array.Empty<Joint>();
+    private Socket[] sockets = Array.Empty<Socket>();
+    private JointExpr[] jointExprs = Array.Empty<JointExpr>();
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk090BA000))]
+    [AppliedWithChunk<Chunk090BA000>]
     public string? Name { get => name; set => name = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk090BA000))]
+    [AppliedWithChunk<Chunk090BA000>]
     public Joint[] Joints { get => joints; set => joints = value; }
 
-    protected CPlugSkel()
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk090BA000>(sinceVersion: 6)]
+    public Socket[] Sockets { get => sockets; set => sockets = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk090BA000>(sinceVersion: 14)]
+    public JointExpr[] JointExprs { get => jointExprs; set => jointExprs = value; }
+
+    internal CPlugSkel()
     {
-        joints = Array.Empty<Joint>();
+        
     }
 
     #region Chunks
@@ -32,78 +42,87 @@ public class CPlugSkel : CMwNod
     {
         private int version;
 
+        public bool U03;
+        public bool U04;
+        public int[]? U05;
+        public byte[]? U06;
+        public byte? U07;
+        public int? U08;
+
         public int Version { get => version; set => version = value; }
 
-        public override void Read(CPlugSkel n, GameBoxReader r)
+        public override void ReadWrite(CPlugSkel n, GameBoxReaderWriter rw)
         {
-            version = r.ReadInt32();
-            n.name = r.ReadId();
-            n.joints = new Joint[r.ReadUInt16()];
-
-            for (var i = 0; i < n.joints.Length; i++)
-            {
-                var name = r.ReadId();
-                var parentIndex = r.ReadInt16();
-                var globalJoint = default(Quat?);
-                var u01 = default(Vec3?);
-                var u02 = default(Iso4?);
-
-                if (version < 15)
-                {
-                    globalJoint = r.ReadQuat();
-                    u01 = r.ReadVec3();
-                }
-
-                if (version >= 1)
-                {
-                    u02 = r.ReadIso4();
-                }
-
-                n.joints[i] = new()
-                {
-                    Name = name,
-                    ParentIndex = parentIndex,
-                    GlobalJoint = globalJoint,
-                    U01 = u01,
-                    U02 = u02
-                };
-            }
+            rw.Int32(ref version);
+            rw.Id(ref n.name);
+            rw.ArrayArchive<Joint>(ref n.joints!, version, shortLength: true);
 
             if (version >= 2)
             {
-                var u03 = r.ReadBoolean();
+                rw.Boolean(ref U03);
 
-                if (u03)
+                if (U03)
                 {
                     throw new Exception("u03 == true");
                 }
 
                 if (version >= 6)
                 {
-                    var u04 = r.ReadInt32(); // SPlugSkelSocket array
+                    rw.ArrayArchive<Socket>(ref n.sockets!, version); // SPlugSkelSocket array
 
                     if (version >= 9)
                     {
-                        var u05 = r.ReadBoolean();
+                        rw.Boolean(ref U04);
 
-                        if (u05)
+                        if (U04)
                         {
-                            throw new Exception("u03 == true");
+                            /*var u07 = r.ReadArray(r => r.ReadId());
+                            var u08 = r.ReadArray<ulong>();
+                            var u09 = r.ReadArray<ulong>();
+                            var u10 = r.ReadArray<Quat>();*/
+
+                            throw new Exception("U04 == true");
                         }
 
-                        if (version >= 11)
+                        if (version >= 10)
                         {
-                            var u06 = r.ReadArray<int>();
-
-                            if (version >= 14)
+                            if (version >= 16)
                             {
-                                // some array
-                                // then NPlugSkel::ArchiveJointExprs
-                                throw new ChunkVersionNotSupportedException(version);
+                                rw.Bytes(ref U06);
+
+                                if (version >= 18)
+                                {
+                                    rw.Bytes(ref U06);
+                                }
+                            }
+                            else
+                            {
+                                rw.Array<int>(ref U05);
+                            }
+
+                            if (version >= 13)
+                            {
+                                if (version < 16)
+                                {
+                                    rw.Bytes(ref U06);
+                                }
+
+                                if (version == 14)
+                                {
+                                    // some array
+                                    rw.Int32(0);
+                                    // then NPlugSkel::ArchiveJointExprs
+                                    rw.ArrayArchive<JointExpr>(ref n.jointExprs!);
+                                }
+                            }
+
+                            if (version >= 17)
+                            {
+                                rw.Byte(ref U07);
+                                rw.Int32(ref U08);
                             }
                         }
                     }
-                    
                 }
             }
         }
@@ -113,12 +132,61 @@ public class CPlugSkel : CMwNod
 
     #endregion
 
-    public class Joint
+    public class Joint : IReadableWritable
     {
-        public string? Name { get; set; }
-        public short ParentIndex { get; set; }
-        public Quat? GlobalJoint { get; set; }
-        public Vec3? U01 { get; set; }
-        public Iso4? U02 { get; set; }
+        private string? name;
+        private short parentIndex;
+        private Quat? globalJoint;
+        private Vec3? u01;
+        private Iso4? u02;
+
+        public string? Name { get => name; set => name = value; }
+        public short ParentIndex { get => parentIndex; set => parentIndex = value; }
+        public Quat? GlobalJoint { get => globalJoint; set => globalJoint = value; }
+        public Vec3? U01 { get => u01; set => u01 = value; }
+        public Iso4? U02 { get => u02; set => u02 = value; }
+
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+        {
+            rw.Id(ref name);
+            rw.Int16(ref parentIndex);
+
+            if (version < 15)
+            {
+                rw.Quat(ref globalJoint);
+                rw.Vec3(ref u01);
+            }
+
+            if (version >= 1)
+            {
+                rw.Iso4(ref u02);
+            }
+        }
+    }
+
+    public class Socket : IReadableWritable
+    {
+        private string? name;
+        private short u01;
+        private Iso4 u02;
+
+        public string? Name { get => name; set => name = value; }
+        public short U01 { get => u01; set => u01 = value; }
+        public Iso4 U02 { get => u02; set => u02 = value; }
+
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+        {
+            rw.Id(ref name);
+            rw.Int16(ref u01);
+            rw.Iso4(ref u02);
+        }
+    }
+
+    public class JointExpr : IReadableWritable
+    {
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

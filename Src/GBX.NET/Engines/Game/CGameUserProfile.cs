@@ -7,7 +7,7 @@
 [Node(0x031CC000)]
 public class CGameUserProfile : CMwNod
 {
-    protected CGameUserProfile()
+    internal CGameUserProfile()
     {
 
     }

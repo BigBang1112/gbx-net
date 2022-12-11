@@ -12,14 +12,14 @@ public class CGameCtnMediaBlockTrails : CGameCtnMediaBlock, CGameCtnMediaBlock.I
     private TimeSingle end = TimeSingle.FromSeconds(3);
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk030A9000))]
+    [AppliedWithChunk<Chunk030A9000>]
     public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk030A9000))]
+    [AppliedWithChunk<Chunk030A9000>]
     public TimeSingle End { get => end; set => end = value; }
 
-    protected CGameCtnMediaBlockTrails()
+    internal CGameCtnMediaBlockTrails()
     {
 
     }

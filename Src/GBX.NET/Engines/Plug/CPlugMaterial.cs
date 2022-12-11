@@ -1,17 +1,17 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 /// <remarks>ID: 0x09079000</remarks>
-[Node(0x09079000), WritingNotSupported]
+[Node(0x09079000)]
 [NodeExtension("Material")]
 public class CPlugMaterial : CPlug
 {
     private CPlugMaterialCustom? customMaterial;
     private CPlug? shader;
     private GameBoxRefTable.File? shaderFile;
-    private SDeviceMat[]? deviceMaterials;
+    private DeviceMat[]? deviceMaterials;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk09079007))]
+    [AppliedWithChunk<Chunk09079007>]
     public CPlugMaterialCustom? CustomMaterial { get => customMaterial; set => customMaterial = value; }
 
     [NodeMember]
@@ -22,12 +22,12 @@ public class CPlugMaterial : CPlug
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk09079004))]
-    [AppliedWithChunk(typeof(Chunk09079009))]
-    [AppliedWithChunk(typeof(Chunk0907900D))]
-    public SDeviceMat[]? DeviceMaterials { get => deviceMaterials; set => deviceMaterials = value; }
+    [AppliedWithChunk<Chunk09079004>]
+    [AppliedWithChunk<Chunk09079009>]
+    [AppliedWithChunk<Chunk0907900D>]
+    public DeviceMat[]? DeviceMaterials { get => deviceMaterials; set => deviceMaterials = value; }
 
-    protected CPlugMaterial()
+    internal CPlugMaterial()
     {
 
     }
@@ -66,23 +66,9 @@ public class CPlugMaterial : CPlug
     [Chunk(0x09079004)]
     public class Chunk09079004 : Chunk<CPlugMaterial>
     {
-        public override void Read(CPlugMaterial n, GameBoxReader r)
+        public override void ReadWrite(CPlugMaterial n, GameBoxReaderWriter rw)
         {
-            n.deviceMaterials = r.ReadArray(r =>
-            {
-                var u01 = r.ReadInt16();
-                var u02 = r.ReadInt16();
-                var u03 = r.ReadInt32();
-
-                var shader1 = r.ReadNodeRef<CPlugShader>();
-
-                return new SDeviceMat(n, shader1)
-                {
-                    U01 = u01,
-                    U02 = u02,
-                    U03 = u03
-                };
-            });
+            rw.ArrayArchiveWithGbx(ref n.deviceMaterials, version: 4);
         }
     }
 
@@ -104,37 +90,16 @@ public class CPlugMaterial : CPlug
     [Chunk(0x09079009)]
     public class Chunk09079009 : Chunk<CPlugMaterial>
     {
-        public CPlug? U01;
-        public object[]? U02;
-        public CMwNod? U03;
-        public CMwNod? U04;
-
-        public override void Read(CPlugMaterial n, GameBoxReader r)
+        public override void ReadWrite(CPlugMaterial n, GameBoxReaderWriter rw)
         {
-            _ = r.ReadNodeRef<CPlug>(out n.shaderFile);
+            rw.NodeRef(ref n.shader, ref n.shaderFile);
 
             if (n.shaderFile is not null)
             {
                 return;
             }
 
-            n.deviceMaterials = r.ReadArray(r =>
-            {
-                var u01 = r.ReadInt16();
-                var u02 = r.ReadInt16();
-                var u03 = r.ReadInt32();
-
-                _ = r.ReadNodeRef<CPlugShader>(out GameBoxRefTable.File? shader1File);
-                _ = r.ReadNodeRef<CPlugShader>(out GameBoxRefTable.File? shader2File);
-                _ = r.ReadNodeRef<CPlugShader>(out GameBoxRefTable.File? shader3File);
-
-                return new SDeviceMat(n, shader1File, shader2File, shader3File)
-                {
-                    U01 = u01,
-                    U02 = u02,
-                    U03 = u03
-                };
-            });
+            rw.ArrayArchiveWithGbx(ref n.deviceMaterials, version: 9);
         }
     }
 
@@ -158,47 +123,20 @@ public class CPlugMaterial : CPlug
     [Chunk(0x0907900D)]
     public class Chunk0907900D : Chunk<CPlugMaterial>
     {
-        public Node? U01;
-        public GameBoxRefTable.File? U01File;
         public int[]? U02;
 
-        public override void Read(CPlugMaterial n, GameBoxReader r)
+        public override void ReadWrite(CPlugMaterial n, GameBoxReaderWriter rw)
         {
-            U01 = r.ReadNodeRef(out U01File);
+            rw.NodeRef(ref n.shader, ref n.shaderFile);
 
-            if (U01 is not null || U01File is not null)
+            if (n.shaderFile is not null)
             {
                 return;
             }
-            
-            n.deviceMaterials = r.ReadArray(r =>
-            {
-                // UPlugRenderDevice
-                var u01 = r.ReadInt16();
-                var u02 = r.ReadByte();
-                var u03 = r.ReadByte();
-                //
 
-                var u04 = r.ReadBoolean();
+            rw.ArrayArchiveWithGbx(ref n.deviceMaterials, version: 0xD);
 
-                var shader = default(CPlugShader);
-
-                if (!u04)
-                {
-                    shader = r.ReadNodeRef<CPlugShader>();
-                }
-                else
-                {
-                    var u08 = r.ReadInt32();
-                }
-
-                var u06 = r.ReadInt32();
-                var u07 = r.ReadInt32();
-
-                return new SDeviceMat(n, shader);
-            });
-
-            U02 = r.ReadArray<int>();
+            rw.Array<int>(ref U02);
         }
     }
 
@@ -230,51 +168,93 @@ public class CPlugMaterial : CPlug
         }
     }
 
-    public class SDeviceMat
+    public class DeviceMat : IReadableWritableWithGbx
     {
-        private readonly Node node;
+        private Node? node;
+
+        private short? u01;
+        private short? u02;
+        private bool? u03;
+        private short? u04;
+        private byte? u05;
+        private byte? u06;
+        private int? u07;
 
         private CPlugShader? shader1;
-        private readonly GameBoxRefTable.File? shader1File;
+        private GameBoxRefTable.File? shader1File;
         private CPlugShader? shader2;
-        private readonly GameBoxRefTable.File? shader2File;
+        private GameBoxRefTable.File? shader2File;
         private CPlugShader? shader3;
-        private readonly GameBoxRefTable.File? shader3File;
+        private GameBoxRefTable.File? shader3File;
 
-        public short U01 { get; set; }
-        public short U02 { get; set; }
-        public int U03 { get; set; }
+        public short? U01 { get => u01; set => u01 = value; }
+        public short? U02 { get => u02; set => u02 = value; }
+        public bool? U03 { get => u03; set => u03 = value; }
+        public short? U04 { get => u04; set => u04 = value; }
+        public byte? U05 { get => u05; set => u05 = value; }
+        public byte? U06 { get => u06; set => u06 = value; }
+        public int? U07 { get => u07; set => u07 = value; }
 
         public CPlugShader? Shader1
         {
-            get => shader1 = node.GetNodeFromRefTable(shader1, shader1File) as CPlugShader;
+            get => shader1 = node?.GetNodeFromRefTable(shader1, shader1File) as CPlugShader;
             set => shader1 = value;
         }
 
         public CPlugShader? Shader2
         {
-            get => shader2 = node.GetNodeFromRefTable(shader2, shader2File) as CPlugShader;
+            get => shader2 = node?.GetNodeFromRefTable(shader2, shader2File) as CPlugShader;
             set => shader2 = value;
         }
 
         public CPlugShader? Shader3
         {
-            get => shader3 = node.GetNodeFromRefTable(shader3, shader3File) as CPlugShader;
+            get => shader3 = node?.GetNodeFromRefTable(shader3, shader3File) as CPlugShader;
             set => shader3 = value;
         }
-        
-        public SDeviceMat(Node node, CPlugShader? shader1)
+
+        public void ReadWrite(GameBoxReaderWriter rw, GameBox? gbx, int version = 0)
         {
-            this.node = node;
-            this.shader1 = shader1;
+            node = gbx?.Node;
+            ReadWrite(rw, version);
         }
 
-        public SDeviceMat(Node node, GameBoxRefTable.File? shader1File, GameBoxRefTable.File? shader2File, GameBoxRefTable.File? shader3File)
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
-            this.node = node;
-            this.shader1File = shader1File;
-            this.shader2File = shader2File;
-            this.shader3File = shader3File;
+            switch (version)
+            {
+                case 0:
+                    rw.Int16(ref u01);
+                    rw.Int16(ref u02);
+                    rw.NodeRef(ref shader1, ref shader1File);
+                    break;
+                case 4:
+                case 8:
+                    rw.Int16(ref u01);
+                    rw.Int16(ref u02);
+                    rw.Boolean(ref u03);
+                    rw.NodeRef(ref shader1, ref shader1File);
+                    break;
+                case 9:
+                case 0xC:
+                    rw.Int16(ref u01);
+                    rw.Int16(ref u02);
+                    rw.Boolean(ref u03);
+                    rw.NodeRef(ref shader1, ref shader1File);
+                    rw.NodeRef(ref shader2, ref shader2File);
+                    break;
+                case 0xD:
+                    rw.Int16(ref u04);
+                    rw.Byte(ref u05);
+                    rw.Byte(ref u06);
+                    
+                    rw.Boolean(ref u03);
+                    rw.NodeRef(ref shader1, ref shader1File); // u03 == true: external node, false: internal node
+
+                    rw.NodeRef(ref shader2, ref shader2File);
+                    rw.NodeRef(ref shader3, ref shader3File);
+                    break;
+            }
         }
     }
 }

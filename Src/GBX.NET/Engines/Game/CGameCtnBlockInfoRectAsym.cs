@@ -5,7 +5,7 @@
 [NodeExtension("TMEDRectAsym")]
 public class CGameCtnBlockInfoRectAsym : CGameCtnBlockInfo
 {
-    protected CGameCtnBlockInfoRectAsym()
+    internal CGameCtnBlockInfoRectAsym()
     {
         
     }

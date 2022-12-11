@@ -8,10 +8,14 @@ public class CPlugIndexBuffer : CPlug
     private ushort[] indices;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk09057000))]
+    [AppliedWithChunk<Chunk09057000>]
+    public int Flags { get => flags; set => flags = value; }
+    
+    [NodeMember]
+    [AppliedWithChunk<Chunk09057000>]
     public ushort[] Indices { get => indices; set => indices = value; }
 
-    protected CPlugIndexBuffer()
+    internal CPlugIndexBuffer()
     {
         indices = Array.Empty<ushort>();
     }
@@ -28,4 +32,21 @@ public class CPlugIndexBuffer : CPlug
             rw.Array(ref n.indices!);
         }
     }
+
+    #region 0x001 chunk
+
+    /// <summary>
+    /// CPlugIndexBuffer 0x001 chunk
+    /// </summary>
+    [Chunk(0x09057001)]
+    public class Chunk09057001 : Chunk<CPlugIndexBuffer>
+    {
+        public override void ReadWrite(CPlugIndexBuffer n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref n.flags);
+            rw.Array(ref n.indices!);
+        }
+    }
+
+    #endregion
 }

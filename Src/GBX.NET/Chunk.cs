@@ -47,7 +47,7 @@ public abstract class Chunk : IComparable<Chunk>
                 {
                     var newClassPart = classPart;
 
-                    while (NodeCacheManager.Mappings.TryGetValue(newClassPart, out uint newID))
+                    while (NodeManager.TryGetMapping(newClassPart, out uint newID))
                     {
                         newClassPart = newID;
                     }
@@ -61,9 +61,9 @@ public abstract class Chunk : IComparable<Chunk>
                         return 0x2400A000 + chunkPart;
                     }
 
-                    if (NodeCacheManager.Mappings.ContainsValue(classPart))
+                    if (NodeManager.TryGetReverseMapping(classPart, out uint prevId))
                     {
-                        return NodeCacheManager.Mappings.Last(x => x.Value == classPart).Key + chunkPart;
+                        return prevId + chunkPart;
                     }
 
                     return chunkID;

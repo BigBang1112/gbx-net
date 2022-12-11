@@ -11,14 +11,14 @@ public class CGameCtnMediaBlockShoot : CGameCtnMediaBlock, CGameCtnMediaBlock.IH
     private TimeSingle end = TimeSingle.FromSeconds(3);
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03145000))]
+    [AppliedWithChunk<Chunk03145000>]
     public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03145000))]
+    [AppliedWithChunk<Chunk03145000>]
     public TimeSingle End { get => end; set => end = value; }
 
-    protected CGameCtnMediaBlockShoot()
+    internal CGameCtnMediaBlockShoot()
     {
 
     }

@@ -91,7 +91,15 @@ public partial class {type.Name}Tests
     {
         foreach (var typeMember in type.GetTypeMembers())
         {
-            if (typeMember.BaseType?.Name != "Chunk" && typeMember.BaseType?.Name != "HeaderChunk")
+            // Does not work good for inheritance
+            if (typeMember.BaseType?.Name != "Chunk"
+             && typeMember.BaseType?.Name != "HeaderChunk"
+             && typeMember.BaseType?.Name != "SkippableChunk")
+            {
+                continue;
+            }
+
+            if (typeMember.GetAttributes().Any(x => x.AttributeClass?.Name == "IgnoreChunkAttribute"))
             {
                 continue;
             }
@@ -134,7 +142,7 @@ public partial class {type.Name}Tests
                 continue;
             }
 
-            var methodName = $"ReadAndWrite_{version.Name}_DataShouldEqual";
+            var methodName = $"ReadAndWrite_{version.Name.Replace('-', '_')}_DataShouldEqual";
 
             var manualTestMethod = existingChunkTestsType?.GetMembers()
                 .OfType<IMethodSymbol>()

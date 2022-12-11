@@ -7,7 +7,7 @@
 [Node(0x030A3000)]
 public abstract class CGameCtnMediaBlockCameraEffect : CGameCtnMediaBlock
 {
-    protected CGameCtnMediaBlockCameraEffect()
+    internal CGameCtnMediaBlockCameraEffect()
     {
 
     }

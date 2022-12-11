@@ -305,3 +305,19 @@ select * {
     max-width: 256px;
     max-height: 256px;
 }
+
+.progress-bar {
+    width: 300px;
+    background: #4442;
+    border-radius: 3px;
+}
+
+.progress-bar-fill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--blazor-load-percentage, 0%);
+    height: 2rem;
+    background: var(--button-blue);
+    border-radius: 3px;
+}

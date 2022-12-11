@@ -11,7 +11,7 @@ public class HeaderChunk<T> : Chunk<T>, IHeaderChunk where T : CMwNod
 
     public HeaderChunk()
     {
-        Data = null!;
+        Data = Array.Empty<byte>();
     }
 
     public HeaderChunk(byte[] data, uint? id = null, bool isHeavy = false)
@@ -24,7 +24,7 @@ public class HeaderChunk<T> : Chunk<T>, IHeaderChunk where T : CMwNod
 
     protected override uint GetId()
     {
-        return id ?? NodeCacheManager.GetChunkIdByType(typeof(T), GetType());
+        return id ?? NodeManager.ChunkIdsByType[GetType()];
     }
 
     /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
@@ -39,6 +39,11 @@ public class HeaderChunk<T> : Chunk<T>, IHeaderChunk where T : CMwNod
     {
         var desc = GetType().GetCustomAttribute<ChunkAttribute>()?.Description;
         return $"{typeof(T).Name} header chunk 0x{Id:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}";
+    }
+
+    public override void Write(T n, GameBoxWriter w)
+    {
+        Write(w);
     }
 
     public void Write(GameBoxWriter w)

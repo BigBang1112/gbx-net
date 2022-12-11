@@ -49,91 +49,91 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
     #region Properties
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03084000))]
-    [AppliedWithChunk(typeof(Chunk03084001))]
-    [AppliedWithChunk(typeof(Chunk03084003))]
-    [AppliedWithChunk(typeof(Chunk03084004))]
-    [AppliedWithChunk(typeof(Chunk03084005))]
-    [AppliedWithChunk(typeof(Chunk03084006))]
-    [AppliedWithChunk(typeof(Chunk03084007))]
+    [AppliedWithChunk<Chunk03084000>]
+    [AppliedWithChunk<Chunk03084001>]
+    [AppliedWithChunk<Chunk03084003>]
+    [AppliedWithChunk<Chunk03084004>]
+    [AppliedWithChunk<Chunk03084005>]
+    [AppliedWithChunk<Chunk03084006>]
+    [AppliedWithChunk<Chunk03084007>]
     public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03084000))]
-    [AppliedWithChunk(typeof(Chunk03084001))]
-    [AppliedWithChunk(typeof(Chunk03084003))]
-    [AppliedWithChunk(typeof(Chunk03084004))]
-    [AppliedWithChunk(typeof(Chunk03084005))]
-    [AppliedWithChunk(typeof(Chunk03084006))]
-    [AppliedWithChunk(typeof(Chunk03084007))]
+    [AppliedWithChunk<Chunk03084000>]
+    [AppliedWithChunk<Chunk03084001>]
+    [AppliedWithChunk<Chunk03084003>]
+    [AppliedWithChunk<Chunk03084004>]
+    [AppliedWithChunk<Chunk03084005>]
+    [AppliedWithChunk<Chunk03084006>]
+    [AppliedWithChunk<Chunk03084007>]
     public TimeSingle End { get => end; set => end = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03084000))]
-    [AppliedWithChunk(typeof(Chunk03084001))]
+    [AppliedWithChunk<Chunk03084000>]
+    [AppliedWithChunk<Chunk03084001>]
     public EGameCam? GameCam1 { get => gameCam1; set => gameCam1 = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03084007), sinceVersion: 2)]
+    [AppliedWithChunk<Chunk03084007>(sinceVersion: 2)]
     public EGameCam2? GameCam2 { get => gameCam2; set => gameCam2 = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03084001))]
-    [AppliedWithChunk(typeof(Chunk03084003))]
-    [AppliedWithChunk(typeof(Chunk03084004))]
-    [AppliedWithChunk(typeof(Chunk03084005))]
-    [AppliedWithChunk(typeof(Chunk03084006))]
-    [AppliedWithChunk(typeof(Chunk03084007))]
+    [AppliedWithChunk<Chunk03084001>]
+    [AppliedWithChunk<Chunk03084003>]
+    [AppliedWithChunk<Chunk03084004>]
+    [AppliedWithChunk<Chunk03084005>]
+    [AppliedWithChunk<Chunk03084006>]
+    [AppliedWithChunk<Chunk03084007>]
     public int ClipEntId { get => clipEntId; set => clipEntId = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03084003))]
-    [AppliedWithChunk(typeof(Chunk03084004))]
-    [AppliedWithChunk(typeof(Chunk03084005))]
-    [AppliedWithChunk(typeof(Chunk03084006))]
-    [AppliedWithChunk(typeof(Chunk03084007), sinceVersion: 0, upToVersion: 1)]
+    [AppliedWithChunk<Chunk03084003>]
+    [AppliedWithChunk<Chunk03084004>]
+    [AppliedWithChunk<Chunk03084005>]
+    [AppliedWithChunk<Chunk03084006>]
+    [AppliedWithChunk<Chunk03084007>(sinceVersion: 0, upToVersion: 1)]
     public string? GameCam { get => gameCam; set => gameCam = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03084004))]
-    [AppliedWithChunk(typeof(Chunk03084005))]
-    [AppliedWithChunk(typeof(Chunk03084006))]
-    [AppliedWithChunk(typeof(Chunk03084007))]
+    [AppliedWithChunk<Chunk03084004>]
+    [AppliedWithChunk<Chunk03084005>]
+    [AppliedWithChunk<Chunk03084006>]
+    [AppliedWithChunk<Chunk03084007>]
     public Vec3? CamPosition { get => camPosition; set => camPosition = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03084004))]
-    [AppliedWithChunk(typeof(Chunk03084005))]
-    [AppliedWithChunk(typeof(Chunk03084006))]
-    [AppliedWithChunk(typeof(Chunk03084007))]
+    [AppliedWithChunk<Chunk03084004>]
+    [AppliedWithChunk<Chunk03084005>]
+    [AppliedWithChunk<Chunk03084006>]
+    [AppliedWithChunk<Chunk03084007>]
     public Vec3? CamPitchYawRoll { get => camPitchYawRoll; set => camPitchYawRoll = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03084004))]
-    [AppliedWithChunk(typeof(Chunk03084005))]
-    [AppliedWithChunk(typeof(Chunk03084006))]
-    [AppliedWithChunk(typeof(Chunk03084007))]
+    [AppliedWithChunk<Chunk03084004>]
+    [AppliedWithChunk<Chunk03084005>]
+    [AppliedWithChunk<Chunk03084006>]
+    [AppliedWithChunk<Chunk03084007>]
     public float? CamFov { get => camFov; set => camFov = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03084004))]
-    [AppliedWithChunk(typeof(Chunk03084005))]
-    [AppliedWithChunk(typeof(Chunk03084006))]
-    [AppliedWithChunk(typeof(Chunk03084007))]
+    [AppliedWithChunk<Chunk03084004>]
+    [AppliedWithChunk<Chunk03084005>]
+    [AppliedWithChunk<Chunk03084006>]
+    [AppliedWithChunk<Chunk03084007>]
     public float? CamNearClipPlane { get => camNearClipPlane; set => camNearClipPlane = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03084004))]
-    [AppliedWithChunk(typeof(Chunk03084005))]
-    [AppliedWithChunk(typeof(Chunk03084006))]
-    [AppliedWithChunk(typeof(Chunk03084007))]
+    [AppliedWithChunk<Chunk03084004>]
+    [AppliedWithChunk<Chunk03084005>]
+    [AppliedWithChunk<Chunk03084006>]
+    [AppliedWithChunk<Chunk03084007>]
     public float? CamFarClipPlane { get => camFarClipPlane; set => camFarClipPlane = value; }
 
     #endregion
 
     #region Constructors
 
-    protected CGameCtnMediaBlockCameraGame()
+    internal CGameCtnMediaBlockCameraGame()
     {
 
     }

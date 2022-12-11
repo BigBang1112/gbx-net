@@ -6,7 +6,7 @@
 [NodeExtension("TMEDClassic")]
 public class CGameCtnBlockInfoClassic : CGameCtnBlockInfo
 {
-    protected CGameCtnBlockInfoClassic()
+    internal CGameCtnBlockInfoClassic()
     {
 
     }

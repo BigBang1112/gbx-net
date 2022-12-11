@@ -1,12 +1,7 @@
-﻿using GBX.NET.Builders;
-using GBX.NET.Builders.Engines.Control;
+﻿using GBX.NET.Builders.Engines.Control;
 using GBX.NET.Engines.Control;
-using GBX.NET.Managers;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace GBX.NET.Tests.Unit.Builders.Engines.Control;
@@ -69,7 +64,7 @@ public class CControlEffectSimiBuilderTests
     [Fact]
     public void NewNode_ShouldReturnInstance()
     {
-        var expected = NodeCacheManager.GetNodeInstance<CControlEffectSimi>(0x07010000);
+        var expected = new CControlEffectSimi();
 
         var actual = new CControlEffectSimiBuilder().NewNode();
 

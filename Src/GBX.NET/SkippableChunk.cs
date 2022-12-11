@@ -22,7 +22,7 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
 
     protected SkippableChunk()
     {
-        Data = null!;
+        Data = Array.Empty<byte>();
     }
 
     public SkippableChunk(T node, byte[] data, uint? id = null)
@@ -54,16 +54,9 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
 
         var hasOwnIdState = false;
 
-        if (NodeCacheManager.ChunkAttributesByType.TryGetValue(GetType(), out IEnumerable<Attribute>? chunkAttributes))
+        if (NodeManager.ChunkAttributesById.TryGetValue(Id, out var atts) && atts.Ignore)
         {
-            foreach (var attribute in chunkAttributes)
-            {
-                switch (attribute)
-                {
-                    case IgnoreChunkAttribute:
-                        return;
-                }
-            }
+            return;
         }
 
         using var ms = new MemoryStream(Data);
@@ -114,35 +107,16 @@ public class SkippableChunk<T> : Chunk<T>, ISkippableChunk where T : Node
 
     public override string ToString()
     {
-        var chunkAttribute = default(ChunkAttribute);
-        var ignoreChunkAttribute = default(IgnoreChunkAttribute);
-
-        if (NodeCacheManager.ChunkAttributesByType.TryGetValue(GetType(), out IEnumerable<Attribute>? chunkAttributes))
-        {
-            foreach (var attribute in chunkAttributes)
-            {
-                switch (attribute)
-                {
-                    case ChunkAttribute chunkAtt:
-                        chunkAttribute = chunkAtt;
-                        break;
-                    case IgnoreChunkAttribute ignoreChunkAtt:
-                        ignoreChunkAttribute = ignoreChunkAtt;
-                        break;
-                }
-            }
-        }
-
         var nodeName = typeof(T).Name;
-
-        if (chunkAttribute is null)
+        
+        if (!NodeManager.ChunkAttributesById.TryGetValue(Id, out var atts))
         {
             return $"{nodeName} unknown skippable chunk 0x{Id:X8}";
         }
         
-        var desc = chunkAttribute.Description;
+        var desc = atts.Description;
         var version = (this as IVersionable)?.Version;
 
-        return $"{nodeName} skippable chunk 0x{Id:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(ignoreChunkAttribute is null ? "" : " [ignored]")}{(version is null ? "" : $" [v{version}]")}";
+        return $"{nodeName} skippable chunk 0x{Id:X8}{(string.IsNullOrEmpty(desc) ? "" : $" ({desc})")}{(atts.Ignore ? " [ignored]" : "")}{(version is null ? "" : $" [v{version}]")}";
     }
 }

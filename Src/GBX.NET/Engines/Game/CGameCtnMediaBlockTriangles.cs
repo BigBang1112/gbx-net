@@ -25,11 +25,11 @@ public abstract partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, 
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03029001))]
+    [AppliedWithChunk<Chunk03029001>]
     public IList<Key> Keys { get => keys;  set => keys = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03029001))]
+    [AppliedWithChunk<Chunk03029001>]
     public Vec4[] Vertices
     {
         get => vertices;
@@ -54,7 +54,7 @@ public abstract partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, 
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03029001))]
+    [AppliedWithChunk<Chunk03029001>]
     public Int3[] Triangles
     {
         get => triangles;
@@ -81,7 +81,7 @@ public abstract partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, 
 
     #region Constructors
 
-    protected CGameCtnMediaBlockTriangles()
+    internal CGameCtnMediaBlockTriangles()
     {
         keys = Array.Empty<Key>();
         vertices = Array.Empty<Vec4>();
@@ -185,19 +185,6 @@ public abstract partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, 
             w.Write(U05);
             w.Write(U06);
         }
-    }
-
-    #endregion
-
-    #region 0x002 skippable chunk
-
-    /// <summary>
-    /// CGameCtnMediaBlockTriangles 0x002 skippable chunk
-    /// </summary>
-    [Chunk(0x03029002), IgnoreChunk]
-    public class Chunk03029002 : SkippableChunk<CGameCtnMediaBlockTriangles>
-    {
-        
     }
 
     #endregion

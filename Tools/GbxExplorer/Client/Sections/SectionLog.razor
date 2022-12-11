@@ -22,7 +22,7 @@
             <b style="margin-right: 0.4rem">WARN:</b>
         }
 
-        <span>@UpfrontMessage.Message</span>
+        <span><LogScope Scope="UpfrontMessage.Scope" />@UpfrontMessage.Message</span>
     }
     
 </div>
@@ -294,7 +294,7 @@
             }
         }
 
-        DownloadService.Download($"{faultyGbx.FileName}.log.txt", ms.ToArray());
+        await DownloadService.DownloadAsync($"{faultyGbx.FileName}.log.txt", ms);
     }
 
     private async Task DownloadLogAsync()
@@ -322,7 +322,7 @@
             }
         }
 
-        DownloadService.Download($"log.txt", ms.ToArray());
+        await DownloadService.DownloadAsync("log.txt", ms);
     }
 
     private Task WriteIntroAsync(StreamWriter writer)

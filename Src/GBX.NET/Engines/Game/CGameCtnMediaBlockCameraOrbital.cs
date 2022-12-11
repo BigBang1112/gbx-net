@@ -4,7 +4,7 @@
 [Node(0x030A0000)]
 public class CGameCtnMediaBlockCameraOrbital : CGameCtnMediaBlock
 {
-    protected CGameCtnMediaBlockCameraOrbital()
+    internal CGameCtnMediaBlockCameraOrbital()
     {
 
     }

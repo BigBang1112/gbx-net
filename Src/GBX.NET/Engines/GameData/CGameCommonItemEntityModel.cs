@@ -6,16 +6,21 @@ public class CGameCommonItemEntityModel : CMwNod
 {
     private CMwNod? phyModel;
     private CMwNod? visModel;
+    private CMwNod? staticObject;
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E027000))]
+    [AppliedWithChunk<Chunk2E027000>]
     public CMwNod? PhyModel { get => phyModel; set => phyModel = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E027000))]
+    [AppliedWithChunk<Chunk2E027000>]
     public CMwNod? VisModel { get => visModel; set => visModel = value; }
 
-    protected CGameCommonItemEntityModel()
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk2E027000>(sinceVersion: 4)]
+    public CMwNod? StaticObject { get => staticObject; set => staticObject = value; }
+
+    internal CGameCommonItemEntityModel()
     {
         
     }
@@ -35,6 +40,13 @@ public class CGameCommonItemEntityModel : CMwNod
         public override void ReadWrite(CGameCommonItemEntityModel n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
+
+            if (version >= 4)
+            {
+                rw.NodeRef<CMwNod>(ref n.staticObject);
+                return;
+            }
+
             rw.NodeRef<CMwNod>(ref n.phyModel);
             rw.NodeRef<CMwNod>(ref n.visModel);
         }

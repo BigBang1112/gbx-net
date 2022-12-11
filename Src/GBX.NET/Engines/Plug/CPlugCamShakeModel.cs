@@ -4,7 +4,7 @@
 [Node(0x0910B000)]
 public class CPlugCamShakeModel : CMwNod
 {
-    protected CPlugCamShakeModel()
+    internal CPlugCamShakeModel()
     {
 
     }

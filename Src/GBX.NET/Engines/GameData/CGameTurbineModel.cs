@@ -3,7 +3,7 @@
 [Node(0x2E010000)]
 public class CGameTurbineModel : CMwNod
 {
-    protected CGameTurbineModel()
+    internal CGameTurbineModel()
     {
 
     }

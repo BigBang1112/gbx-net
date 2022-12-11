@@ -44,53 +44,53 @@ public class CGameCtnAnchoredObject : CMwNod
     /// Name of the item with collection and author
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03101002))]
+    [AppliedWithChunk<Chunk03101002>]
     public Ident ItemModel { get => itemModel; set => itemModel = value; }
 
     /// <summary>
     /// Pitch, yaw and roll of the item in radians.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03101002))]
+    [AppliedWithChunk<Chunk03101002>]
     public Vec3 PitchYawRoll { get => pitchYawRoll; set => pitchYawRoll = value; }
 
     /// <summary>
     /// Block coordinates that the item is approximately located in. It doesn't have to be provided most of the time.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03101002))]
+    [AppliedWithChunk<Chunk03101002>]
     public Byte3 BlockUnitCoord { get => blockUnitCoord; set => blockUnitCoord = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03101002))]
+    [AppliedWithChunk<Chunk03101002>]
     public string AnchorTreeId { get => anchorTreeId; set => anchorTreeId = value; }
 
     /// <summary>
     /// The X, Y and Z position in the real world space of the item.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03101002))]
+    [AppliedWithChunk<Chunk03101002>]
     public Vec3 AbsolutePositionInMap { get => absolutePositionInMap; set => absolutePositionInMap = value; }
 
     /// <summary>
     /// If the item is a waypoint, contains inner waypoint info, otherwise null.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03101002))]
+    [AppliedWithChunk<Chunk03101002>]
     public CGameWaypointSpecialProperty? WaypointSpecialProperty { get => waypointSpecialProperty; set => waypointSpecialProperty = value; }
 
     /// <summary>
     /// Flags of the item.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03101002), sinceVersion: 4)]
+    [AppliedWithChunk<Chunk03101002>(sinceVersion: 4)]
     public short Flags { get => flags; set => flags = value; }
 
     /// <summary>
     /// Variant index of the item. Taken from flags.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03101002), sinceVersion: 4)]
+    [AppliedWithChunk<Chunk03101002>(sinceVersion: 4)]
     public int Variant
     {
         get => (flags >> 8) & 15;
@@ -101,21 +101,21 @@ public class CGameCtnAnchoredObject : CMwNod
     /// Pivot position of the item. Useful for making rotations around a different point than center.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03101002), sinceVersion: 5)]
+    [AppliedWithChunk<Chunk03101002>(sinceVersion: 5)]
     public Vec3 PivotPosition { get => pivotPosition; set => pivotPosition = value; }
 
     /// <summary>
     /// Scale of the item. This value currently doesn't have any effect.
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03101002), sinceVersion: 6)]
+    [AppliedWithChunk<Chunk03101002>(sinceVersion: 6)]
     public float Scale { get => scale; set => scale = value; }
 
     /// <summary>
     /// Skin used on the item.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03101002), sinceVersion: 7)]
+    [AppliedWithChunk<Chunk03101002>(sinceVersion: 7)]
     public FileRef? PackDesc { get => packDesc; set => packDesc = value; }
 
     /// <summary>
@@ -176,7 +176,7 @@ public class CGameCtnAnchoredObject : CMwNod
 
     #region Constructors
 
-    protected CGameCtnAnchoredObject()
+    internal CGameCtnAnchoredObject()
     {
         itemModel = Ident.Empty;
     }
@@ -233,24 +233,7 @@ public class CGameCtnAnchoredObject : CMwNod
             rw.Byte3(ref n.blockUnitCoord);
             rw.Id(ref n.anchorTreeId!);
             rw.Vec3(ref n.absolutePositionInMap);
-
-            if (rw.Reader is not null)
-            {
-                n.waypointSpecialProperty = Parse<CGameWaypointSpecialProperty>(rw.Reader!, classId: null, progress: null);
-            }
-            
-            if (rw.Writer is not null)
-            {
-                if (n.waypointSpecialProperty is null)
-                {
-                    rw.Writer.Write(-1);
-                }
-                else
-                {
-                    rw.Writer.Write(0x2E009000);
-                    n.waypointSpecialProperty.Write(rw.Writer);
-                }
-            }
+            rw.NodeRef(ref n.waypointSpecialProperty);
 
             if (version < 5)
             {

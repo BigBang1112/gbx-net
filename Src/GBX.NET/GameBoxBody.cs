@@ -78,6 +78,8 @@ public class GameBoxBody
                                                GameBoxAsyncReadAction? asyncAction,
                                                CancellationToken cancellationToken)
     {
+        cancellationToken.ThrowIfCancellationRequested();
+
         reader.Logger?.LogDebug("Reading the body...");
 
         switch (header.CompressionOfBody)
@@ -176,7 +178,7 @@ public class GameBoxBody
     /// <exception cref="IgnoredUnskippableChunkException">Chunk is known but its content is unknown to read.</exception>
     private static void ReadMainNode(Node node, GameBoxReader reader, IProgress<GameBoxReadProgress>? progress)
     {
-        Node.Parse(node, node.GetType(), reader, progress);
+        Node.Parse(node, reader, progress);
 
         /*using var ms = new MemoryStream();
         var s = reader.BaseStream;
@@ -197,6 +199,8 @@ public class GameBoxBody
                                                 GbxState state,
                                                 CancellationToken cancellationToken)
     {
+        cancellationToken.ThrowIfCancellationRequested();
+        
         var buffer = new byte[uncompressedSize];
 
         if (asyncAction is not null && asyncAction.BeforeLzoDecompression is not null)
@@ -250,8 +254,8 @@ public class GameBoxBody
     private static async Task ReadMainNodeAsync(Node node,
                                                 GameBoxReader reader,
                                                 CancellationToken cancellationToken)
-    {
-        await Node.ParseAsync(node, node.GetType(), reader, cancellationToken);
+    {        
+        await Node.ParseAsync(node, reader, cancellationToken);
 
         // Maybe not needed
         /*using var ms = new MemoryStream();
@@ -269,17 +273,13 @@ public class GameBoxBody
 
     public static GameBoxBody ParseRaw(GameBoxCompression bodyCompression, GameBoxReader r)
     {
-        byte[]? rawData;
-
         if (bodyCompression == GameBoxCompression.Uncompressed)
         {
-            rawData = r.ReadToEnd();
-
-            return new GameBoxBody { RawData = rawData };
+            return new GameBoxBody { RawData = r.ReadToEnd() };
         }
 
         var uncompressedSize = r.ReadInt32();
-        rawData = r.ReadBytes();
+        var rawData = r.ReadBytes();
 
         return new GameBoxBody
         {

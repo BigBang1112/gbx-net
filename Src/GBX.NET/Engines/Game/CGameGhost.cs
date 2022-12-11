@@ -13,16 +13,16 @@ public partial class CGameGhost : CMwNod
     private Task<Data?> sampleData;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0303F006))]
+    [AppliedWithChunk<Chunk0303F006>]
     public bool IsReplaying { get => isReplaying; set => isReplaying = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0303F003))]
-    [AppliedWithChunk(typeof(Chunk0303F005))]
-    [AppliedWithChunk(typeof(Chunk0303F006))]
+    [AppliedWithChunk<Chunk0303F003>]
+    [AppliedWithChunk<Chunk0303F005>]
+    [AppliedWithChunk<Chunk0303F006>]
     public Data? SampleData => sampleData.Result;
 
-    protected CGameGhost()
+    internal CGameGhost()
     {
         sampleData = Task.FromResult(default(Data));
 

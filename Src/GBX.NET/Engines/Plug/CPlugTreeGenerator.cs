@@ -4,7 +4,7 @@
 [Node(0x09051000)]
 public abstract class CPlugTreeGenerator : CPlug
 {
-    protected CPlugTreeGenerator()
+    internal CPlugTreeGenerator()
     {
 
     }

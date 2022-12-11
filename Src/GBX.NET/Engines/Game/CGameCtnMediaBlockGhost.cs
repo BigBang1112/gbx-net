@@ -44,45 +44,45 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMedia
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk030E5001))]
-    [AppliedWithChunk(typeof(Chunk030E5002), sinceVersion: 0, upToVersion: 2)]
+    [AppliedWithChunk<Chunk030E5001>]
+    [AppliedWithChunk<Chunk030E5002>(sinceVersion: 0, upToVersion: 2)]
     public TimeSingle? Start { get => start; set => start = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk030E5001))]
-    [AppliedWithChunk(typeof(Chunk030E5002), sinceVersion: 0, upToVersion: 2)]
+    [AppliedWithChunk<Chunk030E5001>]
+    [AppliedWithChunk<Chunk030E5002>(sinceVersion: 0, upToVersion: 2)]
     public TimeSingle? End { get => end; set => end = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk030E5002), sinceVersion: 3)]
+    [AppliedWithChunk<Chunk030E5002>(sinceVersion: 3)]
     public IList<Key>? Keys { get => keys; set => keys = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk030E5001))]
+    [AppliedWithChunk<Chunk030E5001>]
     public CGameCtnGhost GhostModel { get => ghostModel; set => ghostModel = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk030E5001))]
-    [AppliedWithChunk(typeof(Chunk030E5002))]
+    [AppliedWithChunk<Chunk030E5001>]
+    [AppliedWithChunk<Chunk030E5002>]
     public float StartOffset { get => startOffset; set => startOffset = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk030E5002))]
+    [AppliedWithChunk<Chunk030E5002>]
     public bool NoDamage { get => noDamage; set => noDamage = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk030E5002))]
+    [AppliedWithChunk<Chunk030E5002>]
     public bool ForceLight { get => forceLight; set => forceLight = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk030E5002))]
+    [AppliedWithChunk<Chunk030E5002>]
     public bool ForceHue { get => forceHue; set => forceHue = value; }
 
     #endregion
 
     #region Constructors
 
-    protected CGameCtnMediaBlockGhost()
+    internal CGameCtnMediaBlockGhost()
     {
         ghostModel = null!;
     }

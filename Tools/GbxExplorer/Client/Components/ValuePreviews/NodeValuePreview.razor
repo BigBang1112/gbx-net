@@ -31,16 +31,34 @@
 
     @foreach (var chunkType in chunksPossToAdd)
     {
-        if (!GBX.NET.Managers.NodeCacheManager.ChunkAttributesByType.TryGetValue(chunkType, out var atts))
+        if (!NodeManager.ChunkIdsByType.TryGetValue(chunkType, out uint chunkId))
         {
             continue;
         }
+
+        var atts = default(NodeManager.ChunkAttributes);
         
-        var att = (ChunkAttribute)atts.First(x => x is ChunkAttribute);
         var isHeader = typeof(IHeaderChunk).IsAssignableFrom(chunkType);
 
-        <option value="@att.ID @isHeader">@chunkType.DeclaringType?.Name 0x@(att.GetChunkPart().ToString("X3") ?? "XXX"
-            ) @(isHeader ? "header " : "")chunk @(string.IsNullOrWhiteSpace(att.Description) ? "" : $"({att.Description})")</option>
+        if (isHeader)
+        {
+            if (!NodeManager.HeaderChunkAttributesById.TryGetValue(chunkId, out atts))
+            {
+                continue;
+            }
+        }
+        else
+        {
+            if (!NodeManager.ChunkAttributesById.TryGetValue(chunkId, out atts))
+            {
+                continue;
+            }
+        }
+
+        <option value="@chunkId @isHeader">
+            @chunkType.DeclaringType?.Name 0x@((chunkId & 0xFFF).ToString("X3") ?? "XXX"
+        ) @(isHeader ? "header " : "")chunk @(string.IsNullOrWhiteSpace(atts.Description) ? "" : $"({atts.Description})")
+        </option>
     }
 
 </select>

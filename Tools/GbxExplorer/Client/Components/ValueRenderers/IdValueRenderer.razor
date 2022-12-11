@@ -34,7 +34,7 @@ else if (Value is Id id)
             oninput="onInputText(this)"
             list="collectionIds" />
         <datalist id="collectionIds">
-            @foreach(var (collId, name) in GBX.NET.Managers.NodeCacheManager.CollectionIds)
+            @foreach(var (collId, name) in GBX.NET.NodeManager.CollectionIds)
             {
                 <option value="@collId">@name</option>
             }

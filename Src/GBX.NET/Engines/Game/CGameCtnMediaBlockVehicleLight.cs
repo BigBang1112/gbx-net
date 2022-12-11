@@ -13,18 +13,18 @@ public class CGameCtnMediaBlockVehicleLight : CGameCtnMediaBlock, CGameCtnMediaB
     private int target;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03133000))]
+    [AppliedWithChunk<Chunk03133000>]
     public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03133000))]
+    [AppliedWithChunk<Chunk03133000>]
     public TimeSingle End { get => end; set => end = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03133001))]
+    [AppliedWithChunk<Chunk03133001>]
     public int Target { get => target; set => target = value; }
 
-    protected CGameCtnMediaBlockVehicleLight()
+    internal CGameCtnMediaBlockVehicleLight()
     {
 
     }

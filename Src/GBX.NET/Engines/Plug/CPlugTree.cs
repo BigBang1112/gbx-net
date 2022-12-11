@@ -1,6 +1,4 @@
-﻿using GBX.NET.Engines.Function;
-
-namespace GBX.NET.Engines.Plug;
+﻿namespace GBX.NET.Engines.Plug;
 
 /// <remarks>ID: 0x0904F000</remarks>
 [Node(0x0904F000)]
@@ -14,48 +12,58 @@ public class CPlugTree : CPlug
     private CPlug? shader;
     private GameBoxRefTable.File? shaderFile;
     private CPlugTreeGenerator? generator;
+    private int? flags;
     private Iso4? translation;
 
     [NodeMember(ExactName = "Childs")]
-    [AppliedWithChunk(typeof(Chunk0904F006))]
+    [AppliedWithChunk<Chunk0904F006>]
     public IList<CPlugTree?> Children { get => children; set => children = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0904F00D))]
+    [AppliedWithChunk<Chunk0904F00D>]
     public string? Name { get => name; set => name = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0904F016))]
+    [AppliedWithChunk<Chunk0904F016>]
     public CPlugVisual? Visual { get => visual; set => visual = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0904F016))]
+    [AppliedWithChunk<Chunk0904F016>]
     public CPlugSurface? Surface { get => surface; set => surface = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0904F016))]
+    [AppliedWithChunk<Chunk0904F016>]
     public CPlug? Shader
     {
         get => shader = GetNodeFromRefTable(shader, shaderFile) as CPlug;
         set => shader = value;
     }
     
+    public GameBoxRefTable.File? ShaderFile { get => shaderFile; set => shaderFile = value; }
+
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0904F016))]
+    [AppliedWithChunk<Chunk0904F016>]
     public CPlugTreeGenerator? Generator { get => generator; set => generator = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0904F015))]
-    [AppliedWithChunk(typeof(Chunk0904F018))]
-    [AppliedWithChunk(typeof(Chunk0904F019))]
-    [AppliedWithChunk(typeof(Chunk0904F01A))]
+    [AppliedWithChunk<Chunk0904F015>]
+    [AppliedWithChunk<Chunk0904F018>]
+    [AppliedWithChunk<Chunk0904F019>]
+    [AppliedWithChunk<Chunk0904F01A>]
     public Iso4? Translation { get => translation; set => translation = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0904F011))]
+    [AppliedWithChunk<Chunk0904F011>]
     public CFuncTree? FuncTree { get => funcTree; set => funcTree = value; }
 
-    protected CPlugTree()
+    [NodeMember]
+    [AppliedWithChunk<Chunk0904F015>]
+    [AppliedWithChunk<Chunk0904F018>]
+    [AppliedWithChunk<Chunk0904F019>]
+    [AppliedWithChunk<Chunk0904F01A>]
+    public int? Flags { get => flags; set => flags = value; }
+
+    internal CPlugTree()
     {
         children = Array.Empty<CPlugTree>();
     }
@@ -156,13 +164,11 @@ public class CPlugTree : CPlug
     [Chunk(0x0904F015, "translation")]
     public class Chunk0904F015 : Chunk<CPlugTree>
     {
-        public int Flags;
-
         public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref Flags);
+            rw.Int32(ref n.flags);
 
-            if ((Flags & 4) != 0)
+            if ((n.flags & 4) != 0)
             {
                 rw.Iso4(ref n.translation);
             }

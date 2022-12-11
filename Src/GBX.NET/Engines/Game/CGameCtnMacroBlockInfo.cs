@@ -12,31 +12,85 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector
     private IList<BlockSkinSpawn>? blockSkinSpawns;
     private IList<CardEventsSpawn>? cardEventsSpawns;
     private CGameCtnAutoTerrain?[]? autoTerrains;
+    private CScriptTraitsMetadata? scriptMetadata;
     private IList<ObjectSpawn>? objectSpawns;
+    private CGameCtnMediaClipGroup? clipGroupInGame;
+    private CGameCtnMediaClipGroup? clipGroupEndRace;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0310D000))]
+    [AppliedWithChunk<Chunk0310D000>]
     public IList<BlockSpawn>? BlockSpawns { get => blockSpawns; set => blockSpawns = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0310D001))]
+    [AppliedWithChunk<Chunk0310D001>]
     public IList<BlockSkinSpawn>? BlockSkinSpawns { get => blockSkinSpawns; set => blockSkinSpawns = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0310D002))]
+    [AppliedWithChunk<Chunk0310D002>]
     public IList<CardEventsSpawn>? CardEventsSpawns { get => cardEventsSpawns; set => cardEventsSpawns = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0310D008))]
+    [AppliedWithChunk<Chunk0310D008>]
     public CGameCtnAutoTerrain?[]? AutoTerrains { get => autoTerrains; set => autoTerrains = value; }
+    
+    /// <summary>
+    /// Metadata written into the macroblock.
+    /// </summary>
+    [NodeMember]
+    [AppliedWithChunk<Chunk0310D00B>]
+    public CScriptTraitsMetadata? ScriptMetadata
+    {
+        get
+        {
+            DiscoverChunk<Chunk0310D00B>();
+            return scriptMetadata;
+        }
+        set
+        {
+            DiscoverChunk<Chunk0310D00B>();
+            scriptMetadata = value;
+        }
+    }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0310D00E))]
+    [AppliedWithChunk<Chunk0310D00E>]
     public IList<ObjectSpawn>? ObjectSpawns { get => objectSpawns; set => objectSpawns = value; }
+    
+    [NodeMember]
+    [AppliedWithChunk<Chunk0310D011>]
+    public CGameCtnMediaClipGroup? ClipGroupInGame
+    {
+        get
+        {
+            DiscoverChunk<Chunk0310D011>();
+            return clipGroupInGame;
+        }
+        set
+        {
+            DiscoverChunk<Chunk0310D011>();
+            clipGroupInGame = value;
+        }
+    }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0310D011>]
+    public CGameCtnMediaClipGroup? ClipGroupEndRace
+    {
+        get
+        {
+            DiscoverChunk<Chunk0310D011>();
+            return clipGroupEndRace;
+        }
+        set
+        {
+            DiscoverChunk<Chunk0310D011>();
+            clipGroupEndRace = value;
+        }
+    }
 
     #region Constructors
 
-    protected CGameCtnMacroBlockInfo()
+    internal CGameCtnMacroBlockInfo()
     {
 
     }
@@ -160,8 +214,42 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector
     /// <summary>
     /// CGameCtnMacroBlockInfo 0x00B skippable chunk (script metadata)
     /// </summary>
-    [Chunk(0x0310D00B, "script metadata"), IgnoreChunk]
+    [Chunk(0x0310D00B, "script metadata")]
     public class Chunk0310D00B : SkippableChunk<CGameCtnMacroBlockInfo>
+    {
+        public int EncapsulationVersion { get; set; }
+
+        public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r)
+        {
+            EncapsulationVersion = r.ReadInt32();
+            var size = r.ReadInt32();
+
+            n.scriptMetadata = r.ReadNode<CScriptTraitsMetadata>(expectedClassId: 0x11002000);
+        }
+
+        public override void Write(CGameCtnMacroBlockInfo n, GameBoxWriter w)
+        {
+            w.Write(EncapsulationVersion);
+
+            using var ms = new MemoryStream();
+            using var wm = new GameBoxWriter(ms);
+
+            n.scriptMetadata?.Write(wm);
+
+            w.Write((int)ms.Length);
+            w.Write(ms.ToArray());
+        }
+    }
+
+    #endregion
+
+    #region 0x00C skippable chunk (splines)
+
+    /// <summary>
+    /// CGameCtnMacroBlockInfo 0x00C skippable chunk (splines)
+    /// </summary>
+    [Chunk(0x0310D00C, "splines"), IgnoreChunk]
+    public class Chunk0310D00C : SkippableChunk<CGameCtnMacroBlockInfo>
     {
         
     }
@@ -233,6 +321,84 @@ public partial class CGameCtnMacroBlockInfo : CGameCtnCollector
     }
 
     #endregion
-    
+
+    #region 0x010 skippable chunk
+
+    /// <summary>
+    /// CGameCtnMacroBlockInfo 0x010 skippable chunk
+    /// </summary>
+    [Chunk(0x0310D010)]
+    public class Chunk0310D010 : SkippableChunk<CGameCtnMacroBlockInfo>, IVersionable
+    {
+        private int version;
+        
+        public int U01;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameCtnMacroBlockInfo n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.Int32(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x011 skippable chunk (clips)
+
+    /// <summary>
+    /// CGameCtnMacroBlockInfo 0x011 skippable chunk (clips)
+    /// </summary>
+    [Chunk(0x0310D011, "clips")]
+    public class Chunk0310D011 : SkippableChunk<CGameCtnMacroBlockInfo>, IVersionable
+    {
+        private int version;
+
+        public int Version { get => version; set => version = value; }
+
+        public Int3 U01;
+        public Int3 U02;
+
+        public int EncapsulationVersion { get; set; }
+
+        public override void Read(CGameCtnMacroBlockInfo n, GameBoxReader r)
+        {
+            Version = r.ReadInt32();
+            EncapsulationVersion = r.ReadInt32();
+            var size = r.ReadInt32();
+
+            r = new GameBoxReader(r, encapsulated: true);
+
+            U01 = r.ReadInt3();
+            U02 = r.ReadInt3();
+
+            n.clipGroupInGame = r.ReadNodeRef<CGameCtnMediaClipGroup>();
+            n.clipGroupEndRace = r.ReadNodeRef<CGameCtnMediaClipGroup>();
+
+            r.Dispose();
+        }
+
+        public override void Write(CGameCtnMacroBlockInfo n, GameBoxWriter w)
+        {
+            w.Write(Version);
+            w.Write(EncapsulationVersion);
+
+            using var ms = new MemoryStream();
+            using var wm = new GameBoxWriter(ms, w, encapsulated: true);
+
+            wm.Write(U01);
+            wm.Write(U02);
+            
+            wm.Write(n.clipGroupInGame);
+            wm.Write(n.clipGroupEndRace);
+
+            w.Write((int)ms.Length);
+            w.Write(ms.ToArray());
+        }
+    }
+
+    #endregion
+
     #endregion
 }

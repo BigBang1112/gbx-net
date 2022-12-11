@@ -28,7 +28,7 @@ public readonly record struct Id
     /// <summary>
     /// Constructs an <see cref="Id"/> struct from an ID reprentation.
     /// </summary>
-    /// <param name="collectionId">A collection ID from the <see cref="Resources.CollectionID"/> list (specified ID doesn't have to be available in the list).</param>
+    /// <param name="collectionId">A collection ID from the collection ID list (specified ID doesn't have to be available in the list).</param>
     public Id(int collectionId)
     {
         Index = collectionId;
@@ -53,7 +53,7 @@ public readonly record struct Id
     /// <summary>
     /// Converts the <see cref="Id"/> to string, also into its readable form if the <see cref="Id"/> is presented by collection ID.
     /// </summary>
-    /// <returns>If collection is ID-represented, the ID is converted to <see cref="string"/> based from the <see cref="Resources.CollectionID"/> list. If it's string-represented, <see cref="String"/> is returned instead.</returns>
+    /// <returns>If collection is ID-represented, the ID is converted to <see cref="string"/> based from the collection ID list. If it's string-represented, <see cref="String"/> is returned instead.</returns>
     public override string ToString()
     {
         if (Index is null)
@@ -61,9 +61,9 @@ public readonly record struct Id
             return String ?? "";
         }
 
-        if (NodeCacheManager.CollectionIds.TryGetValue(Index.Value, out string? value))
+        if (NodeManager.TryGetCollectionName(Index.Value, out string? value))
         {
-            return value;
+            return value!;
         }
 
         return Index.Value.ToString();

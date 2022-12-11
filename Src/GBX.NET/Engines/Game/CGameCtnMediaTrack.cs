@@ -27,43 +27,43 @@ public class CGameCtnMediaTrack : CMwNod
     /// </summary>
     [NodeMember]
     [SupportsFormatting]
-    [AppliedWithChunk(typeof(Chunk03078001))]
+    [AppliedWithChunk<Chunk03078001>]
     public string Name { get => name; set => name = value; }
 
     /// <summary>
     /// List of blocks.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03078001))]
+    [AppliedWithChunk<Chunk03078001>]
     public IList<CGameCtnMediaBlock> Blocks { get => blocks; set => blocks = value; }
 
     /// <summary>
     /// If the track should keep playing the last block after it ends.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03078002))]
-    [AppliedWithChunk(typeof(Chunk03078004))]
-    [AppliedWithChunk(typeof(Chunk03078005))]
+    [AppliedWithChunk<Chunk03078002>]
+    [AppliedWithChunk<Chunk03078004>]
+    [AppliedWithChunk<Chunk03078005>]
     public bool IsKeepPlaying { get => isKeepPlaying; set => isKeepPlaying = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03078005))]
+    [AppliedWithChunk<Chunk03078005>]
     public bool IsCycling { get => isCycling; set => isCycling = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03078003))]
-    [AppliedWithChunk(typeof(Chunk03078004))]
-    [AppliedWithChunk(typeof(Chunk03078005))]
+    [AppliedWithChunk<Chunk03078003>]
+    [AppliedWithChunk<Chunk03078004>]
+    [AppliedWithChunk<Chunk03078005>]
     public bool IsReadOnly { get => isReadOnly; set => isReadOnly = value; }
 
     #endregion
 
     #region Constructors
 
-    protected CGameCtnMediaTrack()
+    internal CGameCtnMediaTrack()
     {
-        name = null!;
-        blocks = null!;
+        name = "";
+        blocks = Array.Empty<CGameCtnMediaBlock>();
     }
 
     public static CGameCtnMediaTrackBuilder Create() => new();

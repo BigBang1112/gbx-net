@@ -18,27 +18,27 @@ public class CFuncTreeSubVisualSequence : CFuncTree
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk05031000))]
-    [AppliedWithChunk(typeof(Chunk05031002))]
+    [AppliedWithChunk<Chunk05031000>]
+    [AppliedWithChunk<Chunk05031002>]
     public CFuncKeysNatural? SubKeys { get => subKeys; set => subKeys = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk05031003))]
+    [AppliedWithChunk<Chunk05031003>]
     public bool SimpleModeIsLooping { get => simpleModeIsLooping; set => simpleModeIsLooping = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk05031003))]
+    [AppliedWithChunk<Chunk05031003>]
     public int SimpleModeStartIndex { get => simpleModeStartIndex; set => simpleModeStartIndex = value; }
     
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk05031003))]
+    [AppliedWithChunk<Chunk05031003>]
     public int SimpleModeEndIndex { get => simpleModeEndIndex; set => simpleModeEndIndex = value; }
 
     #endregion
 
     #region Constructors
 
-    protected CFuncTreeSubVisualSequence()
+    internal CFuncTreeSubVisualSequence()
     {
 
     }

@@ -192,7 +192,14 @@ public class CGameCtnBlock : CMwNod
     public bool IsFree
     {
         get => IsFreeBlock(Flags);
+        set => SetFlagBit(isFreeBit, value);
     }
+
+    [NodeMember]
+    public Vec3? AbsolutePositionInMap { get; set; }
+
+    [NodeMember]
+    public Vec3? PitchYawRoll { get; set; }
 
     /// <summary>
     /// Color of the block. Available since TM2020 Royal update.
@@ -226,7 +233,7 @@ public class CGameCtnBlock : CMwNod
 
     #region Constructors
 
-    protected CGameCtnBlock()
+    internal CGameCtnBlock()
     {
         blockModel = Ident.Empty;
     }

@@ -4,7 +4,7 @@
 [Node(0x08001000)]
 public abstract class CMotion : CMwNod
 {
-    protected CMotion()
+    internal CMotion()
     {
 
     }

@@ -1,4 +1,5 @@
 ﻿@inject ITypeCacheService TypeCacheService
+@inject IConfiguration Config
 
 @{
     if (TypeInfo is null)
@@ -55,7 +56,7 @@ else
     {
         if (TypeInfo.IsNodeType && !string.IsNullOrEmpty(TypeInfo.Engine))
         {
-            <a class="type clickable" href="https://github.com/BigBang1112/gbx-net/blob/master/Src/GBX.NET/Engines/@(TypeInfo.Engine)/@(TypeInfo.Name).cs" target="_blank" style="color: #@GetTypeColor(TypeInfo.ElementType);">@TypeInfo.Name</a>
+            <a class="type clickable" href="https://github.com/BigBang1112/gbx-net/blob/@(Config["Branch"] ?? "master")/Src/GBX.NET/Engines/@(TypeInfo.Engine)/@(TypeInfo.Name).cs" target="_blank" style="color: #@GetTypeColor(TypeInfo.ElementType);">@TypeInfo.Name</a>
         }
         else
         {

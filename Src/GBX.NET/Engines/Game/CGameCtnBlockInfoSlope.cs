@@ -3,7 +3,7 @@
 [Node(0x03054000)]
 public class CGameCtnBlockInfoSlope : CGameCtnBlockInfo
 {
-    protected CGameCtnBlockInfoSlope()
+    internal CGameCtnBlockInfoSlope()
     {
         
     }

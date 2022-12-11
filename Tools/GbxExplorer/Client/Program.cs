@@ -1,4 +1,3 @@
-using GBX.NET.Managers;
 using GbxExplorer.Client;
 using GbxExplorer.Client.Sections;
 using GbxExplorer.Client.Services;
@@ -11,8 +10,6 @@ using Microsoft.AspNetCore.Components.Authorization;
 CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
 
 GBX.NET.Lzo.SetLzo(typeof(GBX.NET.LZO.MiniLZO));
-
-NodeCacheManager.CacheClassTypesIfNotCached();
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -34,6 +31,7 @@ builder.Services.AddSingleton<IValuePreviewService, ValuePreviewService>();
 builder.Services.AddSingleton<ITypeCacheService, TypeCacheService>();
 builder.Services.AddSingleton<ISelectionService, SelectionService>();
 builder.Services.AddSingleton<IOpenChunkService, OpenChunkService>();
+builder.Services.AddSingleton<IBaseAddressService, BaseAddressService>();
 builder.Services.AddSingleton<MemoryLog>();
 
 await builder.Build().RunAsync();

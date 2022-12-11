@@ -3,7 +3,7 @@
 [Node(0x09123000)]
 public class CPlugEntitySpawner : CMwNod
 {
-    protected CPlugEntitySpawner()
+    internal CPlugEntitySpawner()
     {
 
     }

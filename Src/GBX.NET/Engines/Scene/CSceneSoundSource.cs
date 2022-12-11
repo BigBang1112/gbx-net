@@ -4,7 +4,7 @@
 [Node(0x0A00E000)]
 public class CSceneSoundSource : CScenePoc
 {
-    protected CSceneSoundSource()
+    internal CSceneSoundSource()
     {
 
     }

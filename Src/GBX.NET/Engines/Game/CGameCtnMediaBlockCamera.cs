@@ -8,7 +8,7 @@
 [NodeExtension("GameCtnMediaBlockCamGame")]
 public abstract class CGameCtnMediaBlockCamera : CGameCtnMediaBlock
 {
-    protected CGameCtnMediaBlockCamera()
+    internal CGameCtnMediaBlockCamera()
     {
 
     }

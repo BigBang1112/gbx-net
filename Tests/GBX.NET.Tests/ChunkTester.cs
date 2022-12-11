@@ -1,5 +1,4 @@
 ﻿using GBX.NET.Extensions;
-using GBX.NET.Managers;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
@@ -23,7 +22,7 @@ internal abstract class ChunkTester<TNode, TChunk> : IDisposable where TNode : N
     public ChunkTester(string gameVersion)
     {
         GameVersion = gameVersion;
-        Node = NodeCacheManager.GetNodeInstance<TNode>();
+        Node = Activator.CreateInstance(typeof(TNode), true) as TNode ?? throw new Exception("Activator.CreateInstance failed.");
 
         if (typeof(TChunk).GetInterface(nameof(IHeaderChunk)) is not null)
         {

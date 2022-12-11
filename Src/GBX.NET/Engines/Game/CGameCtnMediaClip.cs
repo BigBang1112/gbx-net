@@ -27,47 +27,47 @@ public class CGameCtnMediaClip : CMwNod
     /// </summary>
     [NodeMember]
     [SupportsFormatting]
-    [AppliedWithChunk(typeof(Chunk03079002))]
-    [AppliedWithChunk(typeof(Chunk03079003))]
-    [AppliedWithChunk(typeof(Chunk03079005))]
-    [AppliedWithChunk(typeof(Chunk0307900D))]
+    [AppliedWithChunk<Chunk03079002>]
+    [AppliedWithChunk<Chunk03079003>]
+    [AppliedWithChunk<Chunk03079005>]
+    [AppliedWithChunk<Chunk0307900D>]
     public string Name { get => name; set => name = value; }
 
     /// <summary>
     /// List of MediaTracker tracks.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03079002))]
-    [AppliedWithChunk(typeof(Chunk03079003))]
-    [AppliedWithChunk(typeof(Chunk03079005))]
-    [AppliedWithChunk(typeof(Chunk0307900D))]
+    [AppliedWithChunk<Chunk03079002>]
+    [AppliedWithChunk<Chunk03079003>]
+    [AppliedWithChunk<Chunk03079005>]
+    [AppliedWithChunk<Chunk0307900D>]
     public IList<CGameCtnMediaTrack> Tracks { get => tracks; set => tracks = value; }
 
     /// <summary>
     /// Stop the clip when player respawns.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0307900D))]
+    [AppliedWithChunk<Chunk0307900D>]
     public bool StopWhenRespawn { get => stopWhenRespawn; set => stopWhenRespawn = value; }
 
     /// <summary>
     /// Stop the clip when player leaves the trigger.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0307900A))]
-    [AppliedWithChunk(typeof(Chunk0307900D))]
+    [AppliedWithChunk<Chunk0307900A>]
+    [AppliedWithChunk<Chunk0307900D>]
     public bool StopWhenLeave { get => stopWhenLeave; set => stopWhenLeave = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03079007))]
-    [AppliedWithChunk(typeof(Chunk0307900D))]
+    [AppliedWithChunk<Chunk03079007>]
+    [AppliedWithChunk<Chunk0307900D>]
     public int? LocalPlayerClipEntIndex { get => localPlayerClipEntIndex; set => localPlayerClipEntIndex = value; }
 
     #endregion
 
     #region Constructors
 
-    protected CGameCtnMediaClip()
+    internal CGameCtnMediaClip()
     {
         name = "";
         tracks = Array.Empty<CGameCtnMediaTrack>();

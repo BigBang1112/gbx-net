@@ -13,7 +13,14 @@ else if (Value is CPlugMaterialUserInst mat)
 {
     @if (string.IsNullOrEmpty(mat.Link))
     {
-        <span class="element-box" data-title="This material has no link.">(no link)</span>
+        @if (string.IsNullOrEmpty(mat.MaterialName))
+        {
+            <span class="element-box" data-title="This material has no link.">(no link)</span>
+        }
+        else
+        {
+            <span class="element-box" data-title="This material is custom.">@mat.MaterialName</span>
+        }
     }
     else
     {

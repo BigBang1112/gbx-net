@@ -21,27 +21,38 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-      
+
+  build-gbxexplorer:
+  
     runs-on: ubuntu-latest
     
     steps:
-    
       - uses: actions/checkout@v3
         with:
           submodules: recursive
-          
+    
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: 7.0.x
+        
+      - name: Create appsettings.json
+        uses: 1arp/create-a-file-action@0.2
+        with:
+          path: Tools/GbxExplorer/Client/wwwroot
+          file: appsettings.json
+          content: |
+            {
+              "Branch": "${{ github.ref_name }}",
+              "Commit": "${{ github.sha }}",
+              "BaseAddress": "/${{ github.event.repository.name }}"
+            }
           
       - name: Publish
         run: dotnet publish Tools/GbxExplorer/Client -c Release --nologo -o publish
+        
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
         
       - name: Change base in index.html to repository name
         run: sed -i 's/<base href="\/" \/>/<base href="\/gbx-net\/" \/>/g' publish/wwwroot/index.html
@@ -49,14 +60,83 @@ jobs:
       - name: Add .nojekyll file
         run: touch publish/wwwroot/.nojekyll
         
+      - name: Upload app artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: app
+          path: publish/wwwroot
+          retention-days: 1
+          
+  build-docs:
+  
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+          
+      - name: Clone wiki
+        run: |
+          git clone https://github.com/BigBang1112/gbx-net.wiki.git wiki
+          cp -r wiki/* Docs/wiki
+        
+      - name: Create global.json
+        uses: 1arp/create-a-file-action@0.2
+        with:
+          path: Docs
+          file: global.json
+          content: |
+            {
+              "_gitContribute": {
+                "repo": "https://github.com/BigBang1112/gbx-net",
+                "branch": "${{ github.ref_name }}"
+              }
+            }
+  
+      - name: Generate docs
+        uses: nikeee/docfx-action@v1.0.0
+        with:
+          args: Docs/docfx.json --globalMetadataFiles global.json
+      
+      - name: Copy docs to root
+        run: cp -r Docs/_site docs
+
+      - name: Upload docs artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: docs
+          path: docs
+          retention-days: 1
+  
+  deploy:
+    needs: [build-gbxexplorer, build-docs]
+  
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+      
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Download app artifact
+        uses: actions/download-artifact@v3.0.0
+        with:
+          name: app
+          
+      - name: Download docs artifact
+        uses: actions/download-artifact@v3.0.0
+        with:
+          name: docs
+          path: docs
+        
       - name: Setup Pages
         uses: actions/configure-pages@v2
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          # Upload entire repository
-          path: publish
+          path: .
           
       - name: Deploy to GitHub Pages
         id: deployment

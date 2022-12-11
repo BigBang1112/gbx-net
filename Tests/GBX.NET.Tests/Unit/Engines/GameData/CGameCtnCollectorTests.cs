@@ -1,8 +1,5 @@
 ﻿using GBX.NET.Engines.GameData;
-using GBX.NET.Managers;
 using System.Drawing;
-using System.IO;
-using System.Text;
 using Xunit;
 
 namespace GBX.NET.Tests.Unit.Engines.GameData;

@@ -1,15 +1,16 @@
-﻿using System.Diagnostics;
-
-namespace GBX.NET.Engines.Plug;
+﻿namespace GBX.NET.Engines.Plug;
 
 /// <remarks>ID: 0x0900F000</remarks>
-[Node(0x0900F000), WritingNotSupported]
+[Node(0x0900F000)]
+[Node(0x0900D000)]
 public class CPlugSurfaceGeom : CPlugSurface
 {
-    protected CPlugSurfaceGeom()
+    internal CPlugSurfaceGeom()
     {
 
     }
+
+    #region 0x00F class
 
     #region 0x002 chunk
 
@@ -19,38 +20,15 @@ public class CPlugSurfaceGeom : CPlugSurface
     [Chunk(0x0900F002)]
     public class Chunk0900F002 : Chunk<CPlugSurfaceGeom>
     {
-        public int U01;
-        public Vec3[]? U02;
-        public object? U03;
-        public int U04;
-        public object? U05;
+        public ushort U01;
 
         public override void ReadWrite(CPlugSurfaceGeom n, GameBoxReaderWriter rw)
         {
-            U01 = rw.Int32();
-            U02 = rw.Array<Vec3>();
+            var surf = n.Surf;
+            ArchiveSurf(ref surf, rw);
+            n.Surf = surf;
 
-            U03 = rw.Array(null, r =>
-            {
-                return (r.ReadSingle(),
-                    r.ReadSingle(),
-                    r.ReadSingle(),
-                    r.ReadSingle(),
-                    r.ReadInt3(),
-                    r.ReadUInt16(),
-                    r.ReadByte(),
-                    r.ReadByte());
-            }, (x, w) => { });
-
-            U04 = rw.Int32();
-
-            U05 = rw.Array(null, r =>
-            {
-                return (r.ReadInt32(),
-                    r.ReadVec3(),
-                    r.ReadVec3(),
-                    r.ReadInt32());
-            }, (x, w) => { });
+            rw.UInt16(ref U01);
         }
     }
 
@@ -64,62 +42,50 @@ public class CPlugSurfaceGeom : CPlugSurface
     [Chunk(0x0900F004)]
     public class Chunk0900F004 : Chunk<CPlugSurfaceGeom>
     {
-        public override void Read(CPlugSurfaceGeom n, GameBoxReader r)
+        public string U01 = "";
+        public NET.Box U02;
+        public int U03;
+        public ushort U04;
+
+        public override void ReadWrite(CPlugSurfaceGeom n, GameBoxReaderWriter rw)
         {
-            var u01 = r.ReadId();
-            var u02 = r.ReadBox();
-            var u03 = r.ReadInt32();
+            rw.Id(ref U01!);
+            rw.Box(ref U02);
 
-            if (r.BaseStream is IXorTrickStream cryptedStream)
+            if (rw.Reader is not null && rw.Reader.BaseStream is IXorTrickStream cryptedStream)
             {
-                cryptedStream.InitializeXorTrick(BitConverter.GetBytes(u02.X - u02.X2), 0, 4);
+                cryptedStream.InitializeXorTrick(BitConverter.GetBytes(U02.X - U02.X2), 0, 4);
             }
 
-            switch (u03)
-            {
-                case 7:
-                    // SurfMesh
-                    var u04 = r.ReadInt32();
+            var surf = n.Surf;
+            ArchiveSurf(ref surf, rw);
+            n.Surf = surf;
 
-                    switch (u04)
-                    {
-                        case 1:
-                        case 2:
-                        case 3:
-                            // Array of Vec3
-                            r.ReadArray<Vec3>();
-                            // Array of STriangle
-                            r.ReadArray(r => r.ReadBytes(32));
-
-                            // SMeshOctreeCell (GmOctree)
-                            var type = r.ReadInt32();
-
-                            switch (type)
-                            {
-                                case 1:
-                                    uint version = r.ReadUInt32();
-                                    uint size = r.ReadUInt32();
-                                    break;
-                                case 3:
-                                    r.ReadArray(r => r.ReadBytes(32));
-                                    break;
-                                default:
-                                    throw new NotImplementedException();
-                            }
-
-                            break;
-                        default:
-                            throw new NotImplementedException();
-                    }
-
-                    break;
-                default:
-                    throw new NotImplementedException();
-            }
-
-            r.ReadUInt16();
+            rw.UInt16(ref U04);
         }
     }
+
+    #endregion
+
+    #endregion
+
+    #region 0x00D class
+
+    #region 0x002 chunk
+
+    /// <summary>
+    /// CPlugSurfaceGeom 0x002 chunk
+    /// </summary>
+    [Chunk(0x0900D002)]
+    public class Chunk0900D002 : Chunk<CPlugSurfaceGeom>
+    {
+        public override void ReadWrite(CPlugSurfaceGeom n, GameBoxReaderWriter rw)
+        {
+            n.Surf = rw.Archive(n.Surf as Mesh);
+        }
+    }
+
+    #endregion
 
     #endregion
 }

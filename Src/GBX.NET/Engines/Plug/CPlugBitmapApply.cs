@@ -4,7 +4,7 @@
 [Node(0x09012000)]
 public class CPlugBitmapApply : CPlugBitmapAddress
 {
-    protected CPlugBitmapApply()
+    internal CPlugBitmapApply()
     {
 
     }
@@ -24,4 +24,22 @@ public class CPlugBitmapApply : CPlugBitmapAddress
             rw.Int32(ref U02);
         }
     }
+
+    #region 0x004 chunk
+
+    /// <summary>
+    /// CPlugBitmapApply 0x004 chunk
+    /// </summary>
+    [Chunk(0x09012004)]
+    public class Chunk09012004 : Chunk<CPlugBitmapApply>
+    {
+        public uint U01;
+        
+        public override void ReadWrite(CPlugBitmapApply n, GameBoxReaderWriter rw)
+        {
+            rw.UInt32(ref U01); // DoData
+        }
+    }
+
+    #endregion
 }

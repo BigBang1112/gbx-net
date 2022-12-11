@@ -52,8 +52,8 @@ public class GameBoxWriter : BinaryWriter
         State = state ?? throw new ArgumentNullException(nameof(state));
     }
 
-    internal GameBoxWriter(Stream input, GameBoxWriter reference, bool hasOwnIdState = false)
-        : this(input, reference.Remap, reference.AsyncAction, reference.Logger, hasOwnIdState ? new() : reference.State)
+    internal GameBoxWriter(Stream input, GameBoxWriter reference, bool encapsulated = false)
+        : this(input, reference.Remap, reference.AsyncAction, reference.Logger, encapsulated ? new(encapsulated) : reference.State)
     {
         
     }
@@ -196,6 +196,28 @@ public class GameBoxWriter : BinaryWriter
         Write(value.TX);
         Write(value.TY);
         Write(value.TZ);
+    }
+
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public void Write(Mat4 value)
+    {
+        Write(value.XX);
+        Write(value.XY);
+        Write(value.XZ);
+        Write(value.XW);
+        Write(value.YX);
+        Write(value.YY);
+        Write(value.YZ);
+        Write(value.YW);
+        Write(value.ZX);
+        Write(value.ZY);
+        Write(value.ZZ);
+        Write(value.ZW);
+        Write(value.WX);
+        Write(value.WY);
+        Write(value.WZ);
+        Write(value.WW);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -350,17 +372,27 @@ public class GameBoxWriter : BinaryWriter
         if (nodeFile is not null)
         {
             var nodeFileIndex = nodeFile.NodeIndex;
+            var alreadyAdded = false;
 
-            while (AuxNodes.ContainsKey(nodeFileIndex))
+            while (AuxNodes.TryGetValue(nodeFileIndex, out Node? alreadyAddedNode))
             {
+                if (alreadyAddedNode is null || node == alreadyAddedNode)
+                {
+                    alreadyAdded = true;
+                    break;
+                }
+
                 nodeFileIndex++;
             }
 
             nodeFile.NodeIndex = nodeFileIndex;
 
             Write(nodeFileIndex + 1);
-            
-            AuxNodes.Add(nodeFileIndex, null);
+
+            if (!alreadyAdded)
+            {
+                AuxNodes.Add(nodeFileIndex, null);
+            }
 
             return;
         }
@@ -370,11 +402,26 @@ public class GameBoxWriter : BinaryWriter
             Write(-1);
             return;
         }
-
-        if (AuxNodes.ContainsValue(node))
+        
+        if (State.Encapsulated)
         {
-            Write(AuxNodes.FirstOrDefault(x => (x.Value ?? throw new Exception("Node or its external index not found")).Equals(node)).Key + 1);
+            Write(Chunk.Remap(node.Id, Remap));
+            node.Write(this);
             return;
+        }
+        
+        foreach (var pair in AuxNodes) // This is not super efficient
+        {
+            if (pair.Value is null)
+            {
+                continue;
+            }
+
+            if (pair.Value.Equals(node))
+            {
+                Write(pair.Key + 1);
+                return;
+            }
         }
 
         var index = AuxNodes.Count;
@@ -388,7 +435,6 @@ public class GameBoxWriter : BinaryWriter
 
         Write(index + 1);
         Write(Chunk.Remap(node.Id, Remap));
-
         node.Write(this);
     }
 
@@ -470,7 +516,17 @@ public class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteTimeInt32(ITime variable) => Write((int)variable.TotalMilliseconds);
+    public void WriteTimeInt32(ITime variable)
+    {
+        if (variable is TimeInt32 timeInt32)
+        {
+            Write(timeInt32.TotalMilliseconds);
+        }
+        else
+        {
+            Write((int)variable.TotalMilliseconds);
+        }
+    }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -482,7 +538,7 @@ public class GameBoxWriter : BinaryWriter
             return;
         }
 
-        Write((int)variable.TotalMilliseconds);
+        WriteTimeInt32(variable);
     }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>

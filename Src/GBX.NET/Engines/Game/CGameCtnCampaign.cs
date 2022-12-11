@@ -63,15 +63,15 @@ public class CGameCtnCampaign : CMwNod
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03090000))]
+    [AppliedWithChunk<Chunk03090000>]
     public CGameCtnChallengeGroup[] MapGroups { get => mapGroups; set => mapGroups = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03090006))]
+    [AppliedWithChunk<Chunk03090006>]
     public string? CampaignId { get => campaignId; set => campaignId = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03090009))]
+    [AppliedWithChunk<Chunk03090009>]
     public string? CollectionId
     {
         get
@@ -87,7 +87,7 @@ public class CGameCtnCampaign : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0309000A))]
+    [AppliedWithChunk<Chunk0309000A>]
     public int Index
     {
         get
@@ -103,7 +103,7 @@ public class CGameCtnCampaign : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0309000B))]
+    [AppliedWithChunk<Chunk0309000B>]
     public string? UnlockedByCampaign
     {
         get
@@ -119,7 +119,7 @@ public class CGameCtnCampaign : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0309000C))]
+    [AppliedWithChunk<Chunk0309000C>]
     public string? IconId
     {
         get
@@ -135,12 +135,12 @@ public class CGameCtnCampaign : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0309000E))]
+    [AppliedWithChunk<Chunk0309000E>]
     public ERequiredPlayersCount RequiredPlayersCount { get => requiredPlayersCount; set => requiredPlayersCount = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03090004))]
-    [AppliedWithChunk(typeof(Chunk0309000F))]
+    [AppliedWithChunk<Chunk03090004>]
+    [AppliedWithChunk<Chunk0309000F>]
     public string? Name
     {
         get
@@ -156,8 +156,8 @@ public class CGameCtnCampaign : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03090004))]
-    [AppliedWithChunk(typeof(Chunk0309000F))]
+    [AppliedWithChunk<Chunk03090004>]
+    [AppliedWithChunk<Chunk0309000F>]
     public EType Type
     {
         get
@@ -173,8 +173,8 @@ public class CGameCtnCampaign : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0309000D))]
-    [AppliedWithChunk(typeof(Chunk0309000F))]
+    [AppliedWithChunk<Chunk0309000D>]
+    [AppliedWithChunk<Chunk0309000F>]
     public EUnlockType UnlockType
     {
         get
@@ -190,11 +190,11 @@ public class CGameCtnCampaign : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03090010))]
+    [AppliedWithChunk<Chunk03090010>]
     public string? ModeScriptName { get => modeScriptName; set => modeScriptName = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03090012), sinceVersion: 0, upToVersion: 1)]
+    [AppliedWithChunk<Chunk03090012>(sinceVersion: 0, upToVersion: 1)]
     public string? ScoreContext
     {
         get
@@ -210,7 +210,7 @@ public class CGameCtnCampaign : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk03090012))]
+    [AppliedWithChunk<Chunk03090012>]
     public bool OfficialRecordEnabled
     {
         get
@@ -229,7 +229,7 @@ public class CGameCtnCampaign : CMwNod
 
     #region Constructors
 
-    protected CGameCtnCampaign()
+    internal CGameCtnCampaign()
     {
         mapGroups = Array.Empty<CGameCtnChallengeGroup>();
     }

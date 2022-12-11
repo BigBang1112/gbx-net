@@ -11,30 +11,35 @@
         return;
     }
 
+    var skippableChunk = Chunk as ISkippableChunk;
+    var discovered = skippableChunk is null || skippableChunk.Discovered;
     var chunkType = Chunk.GetType();
-    var att = default(ChunkAttribute);
 
-    if (GBX.NET.Managers.NodeCacheManager.ChunkAttributesByType.TryGetValue(chunkType, out var atts))
-    {
-        att = atts.FirstOrDefault(x => x is ChunkAttribute) as ChunkAttribute;
-    }
+    var atts = default(NodeManager.ChunkAttributes);
 
     string boxClass;
 
     if (typeof(IHeaderChunk).IsAssignableFrom(chunkType))
     {
+        _ = NodeManager.HeaderChunkAttributesById.TryGetValue(Chunk.Id, out atts);
+        
         boxClass = "header-chunk";
-    }
-    else if (typeof(ISkippableChunk).IsAssignableFrom(chunkType))
-    {
-        boxClass = "body-skippable-chunk";
     }
     else
     {
-        boxClass = "body-chunk";
+        _ = NodeManager.ChunkAttributesById.TryGetValue(Chunk.Id, out atts);
+
+        if (typeof(ISkippableChunk).IsAssignableFrom(chunkType))
+        {
+            boxClass = "body-skippable-chunk";
+        }
+        else
+        {
+            boxClass = "body-chunk";
+        }
     }
 
-    var chunkId = att?.GetChunkPart() ?? (Chunk.Id & 0xFFF);
+    var chunkId = Chunk.Id & 0xFFF;
     var isSameBaseId = true;
 }
 
@@ -44,12 +49,12 @@
         @onmouseover="() => over = true"
         @onmouseout="() => over = false">
 
-        @if (att is null && chunkType.IsGenericType)
+        @if (chunkType.IsGenericType)
         {
             var classType = chunkType.GetGenericArguments()[0];
             var name = classType.Name;
 
-            if (GBX.NET.Managers.NodeCacheManager.ClassIdsByType.TryGetValue(classType, out uint classId)
+            if (GBX.NET.NodeManager.ClassIdsByType.TryGetValue(classType, out uint classId)
                 && (classId & 0xFFFFF000) == (Chunk.Id & 0xFFFFF000))
             {
                 <span>@name</span>
@@ -71,17 +76,17 @@
             <span style="font-family: Source Code Pro;margin-left:0.3rem">0x@(chunkId.ToString("X3") ?? "XXX")</span>
         }
 
-        @if (Chunk is IVersionable chunkVersionable)
+        @if (Chunk is IVersionable chunkVersionable && discovered)
         {
             <span style="margin-left:0.3rem;font-family: Source Code Pro;">v@(chunkVersionable.Version)</span>
         }
 
-        @if (!string.IsNullOrWhiteSpace(att?.Description))
+        @if (!string.IsNullOrWhiteSpace(atts?.Description))
         {
-            <span style="margin-left:0.3rem">(@att.Description)</span>
+            <span style="margin-left:0.3rem">(@atts.Description)</span>
         }
-
-        @if (att is null)
+        
+        @if (atts is null)
         {
             <span style="margin-left:0.3rem;color:#FFB70F">(UNKNOWN)</span>
         }
@@ -91,7 +96,7 @@
 
     @if (OpenChunkService.OpenedChunks.Contains(chunkType))
     {
-        if (att is null)
+        if (atts is null)
         {
             // nastavení unknown chunků
         }
@@ -99,6 +104,11 @@
         {
             var fields = chunkType.GetFields();
 
+            if (skippableChunk is not null && !skippableChunk.Discovered)
+            {
+                skippableChunk.Discover();
+            }
+            
             <div class="inner @(fields.Length == 0 && Chunk is not IVersionable ? "one-column" : "")">
 
                 @if (Chunk is IVersionable versionable)

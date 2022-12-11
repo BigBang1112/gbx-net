@@ -8,14 +8,14 @@ public class CPlugTreeLight : CPlugTree
     private GameBoxRefTable.File? plugLightFile;
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk09062004))]
+    [AppliedWithChunk<Chunk09062004>]
     public CPlugLight? PlugLight
     {
         get => plugLight = GetNodeFromRefTable(plugLight, plugLightFile) as CPlugLight;
         set => plugLight = value;
     }
 
-    protected CPlugTreeLight()
+    internal CPlugTreeLight()
     {
 
     }

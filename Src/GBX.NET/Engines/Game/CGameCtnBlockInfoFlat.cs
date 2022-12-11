@@ -5,7 +5,7 @@
 [NodeExtension("TMEDFlat")]
 public class CGameCtnBlockInfoFlat : CGameCtnBlockInfo
 {
-    protected CGameCtnBlockInfoFlat()
+    internal CGameCtnBlockInfoFlat()
     {
 
     }

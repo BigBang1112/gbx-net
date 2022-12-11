@@ -5,8 +5,8 @@
 public class CControlList : CControlContainer
 {
     #region Constructors
-    
-    protected CControlList()
+
+    internal CControlList()
     {
 
     }

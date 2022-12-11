@@ -12,18 +12,18 @@ public partial class CGameCtnMediaBlockOpponentVisibility : CGameCtnMediaBlock, 
     private EVisibility visibility;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0338B000))]
+    [AppliedWithChunk<Chunk0338B000>]
     public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0338B000))]
+    [AppliedWithChunk<Chunk0338B000>]
     public TimeSingle End { get => end; set => end = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0338B001))]
+    [AppliedWithChunk<Chunk0338B001>]
     public EVisibility Visibility { get => visibility; set => visibility = value; }
 
-    protected CGameCtnMediaBlockOpponentVisibility()
+    internal CGameCtnMediaBlockOpponentVisibility()
     {
 
     }

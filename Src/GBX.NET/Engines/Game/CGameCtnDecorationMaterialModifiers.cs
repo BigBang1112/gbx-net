@@ -3,7 +3,7 @@
 [Node(0x03271000)]
 public class CGameCtnDecorationMaterialModifiers : CMwNod
 {
-    protected CGameCtnDecorationMaterialModifiers()
+    internal CGameCtnDecorationMaterialModifiers()
     {
 
     }

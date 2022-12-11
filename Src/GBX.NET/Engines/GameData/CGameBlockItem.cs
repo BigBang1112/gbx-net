@@ -13,7 +13,7 @@ public class CGameBlockItem : CMwNod
     private IDictionary<int, CPlugCrystal> customizedVariants;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk2E025000))]
+    [AppliedWithChunk<Chunk2E025000>]
     public string ArchetypeBlockInfoId
     {
         get => archetypeBlockInfoId;
@@ -21,7 +21,7 @@ public class CGameBlockItem : CMwNod
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk2E025000))]
+    [AppliedWithChunk<Chunk2E025000>]
     public string ArchetypeBlockInfoCollectionId
     {
         get => archetypeBlockInfoCollectionId;
@@ -29,14 +29,14 @@ public class CGameBlockItem : CMwNod
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk2E025000))]
+    [AppliedWithChunk<Chunk2E025000>]
     public IDictionary<int, CPlugCrystal> CustomizedVariants
     {
         get => customizedVariants;
         set => customizedVariants = value;
     }
 
-    protected CGameBlockItem()
+    internal CGameBlockItem()
     {
         archetypeBlockInfoId = "";
         archetypeBlockInfoCollectionId = "";

@@ -17,12 +17,12 @@ public partial class CGameCtnMediaBlockBloomHdr : CGameCtnMediaBlock, CGameCtnMe
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03128000))]
-    [AppliedWithChunk(typeof(Chunk03128001))]
-    [AppliedWithChunk(typeof(Chunk03128002))]
+    [AppliedWithChunk<Chunk03128000>]
+    [AppliedWithChunk<Chunk03128001>]
+    [AppliedWithChunk<Chunk03128002>]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
-    protected CGameCtnMediaBlockBloomHdr()
+    internal CGameCtnMediaBlockBloomHdr()
     {
         keys = Array.Empty<Key>();
     }

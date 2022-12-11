@@ -4,7 +4,7 @@
 [Node(0x08029000)]
 public class CMotionCmdBase : CMwCmd
 {
-    protected CMotionCmdBase()
+    internal CMotionCmdBase()
     {
         
     }

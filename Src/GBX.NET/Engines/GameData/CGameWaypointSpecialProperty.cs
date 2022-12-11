@@ -12,18 +12,18 @@ public class CGameWaypointSpecialProperty : CMwNod
     private int order;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk2E009000), sinceVersion: 1, upToVersion: 1)]
+    [AppliedWithChunk<Chunk2E009000>(sinceVersion: 1, upToVersion: 1)]
     public int? Spawn { get => spawn; set => spawn = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk2E009000), sinceVersion: 2)]
+    [AppliedWithChunk<Chunk2E009000>(sinceVersion: 2)]
     public string? Tag { get => tag; set => tag = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk2E009000), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk2E009000>(sinceVersion: 1)]
     public int Order { get => order; set => order = value; }
 
-    protected CGameWaypointSpecialProperty()
+    internal CGameWaypointSpecialProperty()
     {
 
     }

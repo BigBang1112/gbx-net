@@ -8,14 +8,14 @@ public class CMotionPlayer : CMotion
     private CMotionTrack?[]? tracks;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk08034004))]
+    [AppliedWithChunk<Chunk08034004>]
     public CMotionCmdBase? Base { get => _base; set => _base = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk08034004))]
+    [AppliedWithChunk<Chunk08034004>]
     public CMotionTrack?[]? Tracks { get => tracks; set => tracks = value; }
 
-    protected CMotionPlayer()
+    internal CMotionPlayer()
     {
 
     }

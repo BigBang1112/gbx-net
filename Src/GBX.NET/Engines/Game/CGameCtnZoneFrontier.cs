@@ -7,21 +7,21 @@ public class CGameCtnZoneFrontier : CGameCtnZone
     private string? parentZoneId;
     private string? childZoneId;
 
-    protected CGameCtnZoneFrontier()
+    internal CGameCtnZoneFrontier()
     {
         
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0305E001))]
+    [AppliedWithChunk<Chunk0305E001>]
     public CGameCtnBlockInfoFrontier? BlockInfoFrontier { get => blockInfoFrontier; set => blockInfoFrontier = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0305E001))]
+    [AppliedWithChunk<Chunk0305E001>]
     public string? ParentZoneId { get => parentZoneId; set => parentZoneId = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0305E001))]
+    [AppliedWithChunk<Chunk0305E001>]
     public string? ChildZoneId { get => childZoneId; set => childZoneId = value; }
 
     #region 0x001 chunk

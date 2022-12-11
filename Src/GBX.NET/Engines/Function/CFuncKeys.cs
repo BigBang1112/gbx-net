@@ -14,14 +14,14 @@ public abstract class CFuncKeys : CFunc
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk05002001))]
+    [AppliedWithChunk<Chunk05002001>]
     public float[]? Xs { get => xs; set => xs = value; }
 
     #endregion
 
     #region Constructors
-    
-    protected CFuncKeys()
+
+    internal CFuncKeys()
     {
 
     }

@@ -8,17 +8,16 @@ public class CHmsSoundSource : CMwNod
     private GameBoxRefTable.File? audioSoundFile;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0600D000))]
-    [AppliedWithChunk(typeof(Chunk0600D002))]
-    [AppliedWithChunk(typeof(Chunk0600D005))]
+    [AppliedWithChunk<Chunk0600D000>]
+    [AppliedWithChunk<Chunk0600D002>]
+    [AppliedWithChunk<Chunk0600D005>]
     public CMwNod? AudioSound { get => audioSound; set => audioSound = value; }
     public GameBoxRefTable.File? AudioSoundFile { get => audioSoundFile; set => audioSoundFile = value; }
 
-    protected CHmsSoundSource()
+    internal CHmsSoundSource()
     {
 
     }
-
 
     #region 0x000 chunk (AudioSound)
 

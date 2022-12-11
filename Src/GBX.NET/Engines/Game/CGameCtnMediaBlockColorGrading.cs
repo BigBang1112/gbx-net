@@ -18,14 +18,14 @@ public partial class CGameCtnMediaBlockColorGrading : CGameCtnMediaBlock, CGameC
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03186000))]
+    [AppliedWithChunk<Chunk03186000>]
     public FileRef Image { get => image; set => image = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03186001))]
+    [AppliedWithChunk<Chunk03186001>]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
-    protected CGameCtnMediaBlockColorGrading()
+    internal CGameCtnMediaBlockColorGrading()
     {
         image = FileRef.Default;
         keys = Array.Empty<Key>();

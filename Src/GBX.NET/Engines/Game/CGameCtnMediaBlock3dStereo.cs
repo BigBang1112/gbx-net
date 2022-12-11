@@ -17,10 +17,10 @@ public partial class CGameCtnMediaBlock3dStereo : CGameCtnMediaBlock, CGameCtnMe
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03024000))]
+    [AppliedWithChunk<Chunk03024000>]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
-    protected CGameCtnMediaBlock3dStereo()
+    internal CGameCtnMediaBlock3dStereo()
     {
         keys = Array.Empty<Key>();
     }

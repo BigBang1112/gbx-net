@@ -1,14 +1,7 @@
-﻿using GBX.NET.Builders;
-using GBX.NET.Builders.Engines.Game;
+﻿using GBX.NET.Builders.Engines.Game;
 using GBX.NET.Engines.Control;
 using GBX.NET.Engines.Game;
-using GBX.NET.Managers;
-using GBX.NET.Tests.Unit.Builders.Engines.Control;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace GBX.NET.Tests.Unit.Builders.Engines.Game;
@@ -18,10 +11,7 @@ public class CGameCtnMediaTrackBuilderTests
     public static string GetSampleName() => "Random Track 1";
     public static CGameCtnMediaBlock[] GetSampleBlocksForTMUF() => new[]
     {
-        CGameCtnMediaBlockText.Create()
-            .WithEffect(CControlEffectSimi.Create()
-                .ForTMUF()
-                .Build())
+        CGameCtnMediaBlockText.Create(CControlEffectSimi.Create().ForTMUF().Build())
             .ForTMUF()
             .Build()
     };
@@ -80,7 +70,7 @@ public class CGameCtnMediaTrackBuilderTests
     [Fact]
     public void NewNode_ShouldReturnInstance()
     {
-        var expected = NodeCacheManager.GetNodeInstance<CGameCtnMediaTrack>(0x03078000);
+        var expected = new CGameCtnMediaTrack();
 
         var actual = new CGameCtnMediaTrackBuilder().NewNode();
 

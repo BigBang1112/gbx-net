@@ -5,6 +5,7 @@
 /// </summary>
 public interface INodeHeader
 {
+    uint Id { get; }
     public HeaderChunkSet HeaderChunks { get; }
     GameBox? GetGbx();
 }

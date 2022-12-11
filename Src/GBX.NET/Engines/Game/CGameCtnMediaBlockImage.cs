@@ -24,14 +24,14 @@ public class CGameCtnMediaBlockImage : CGameCtnMediaBlock, CGameCtnMediaBlock.IH
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk030A5000))]
+    [AppliedWithChunk<Chunk030A5000>]
     public CControlEffectSimi Effect { get => effect; set => effect = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk030A5000))]
+    [AppliedWithChunk<Chunk030A5000>]
     public FileRef Image { get => image; set => image = value; }
 
-    protected CGameCtnMediaBlockImage()
+    internal CGameCtnMediaBlockImage()
     {
         effect = null!;
         image = FileRef.Default;

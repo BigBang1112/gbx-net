@@ -17,13 +17,13 @@ public partial class CGameCtnMediaBlockCameraPath : CGameCtnMediaBlockCamera, CG
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk030A1000))]
-    [AppliedWithChunk(typeof(Chunk030A1001))]
-    [AppliedWithChunk(typeof(Chunk030A1002))]
-    [AppliedWithChunk(typeof(Chunk030A1003))]
+    [AppliedWithChunk<Chunk030A1000>]
+    [AppliedWithChunk<Chunk030A1001>]
+    [AppliedWithChunk<Chunk030A1002>]
+    [AppliedWithChunk<Chunk030A1003>]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
-    protected CGameCtnMediaBlockCameraPath()
+    internal CGameCtnMediaBlockCameraPath()
     {
         keys = Array.Empty<Key>();
     }

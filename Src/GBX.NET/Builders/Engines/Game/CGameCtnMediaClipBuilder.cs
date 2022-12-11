@@ -29,11 +29,9 @@ public partial class CGameCtnMediaClipBuilder : Builder
     public TM2 ForTM2() => new(this, NewNode());
     public TM2020 ForTM2020() => new(this, NewNode());
 
-    internal CGameCtnMediaClip NewNode()
+    internal CGameCtnMediaClip NewNode() => new()
     {
-        var node = NodeCacheManager.GetNodeInstance<CGameCtnMediaClip>(0x03079000);
-        node.Name = Name ?? "Unnamed clip";
-        node.Tracks = Tracks ?? new List<CGameCtnMediaTrack>();
-        return node;
-    }
+        Name = Name ?? "Unnamed clip",
+        Tracks = Tracks ?? new List<CGameCtnMediaTrack>()
+    };
 }

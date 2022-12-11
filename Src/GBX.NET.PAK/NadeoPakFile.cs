@@ -1,5 +1,4 @@
 ﻿using GBX.NET.Engines.MwFoundations;
-using GBX.NET.Managers;
 using Microsoft.Extensions.Logging;
 using System.IO.Compression;
 using System.Text;
@@ -55,12 +54,12 @@ public class NadeoPakFile
         ClassID = classID;
         Flags = flags;
 
-        IsGbx = !NodeCacheManager.Extensions.TryGetValue(ClassID, out _);
+        IsGbx = !NodeManager.TryGetExtension(ClassID, out _);
     }
 
     public string? GetClassName()
     {
-        if (NodeCacheManager.Names.TryGetValue(ClassID, out string? className))
+        if (NodeManager.TryGetName(ClassID, out string? className))
             return className;
         return null;
     }

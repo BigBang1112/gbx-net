@@ -4,7 +4,7 @@
 [Node(0x0904A000)]
 public abstract class CPlugVisual2D : CPlugVisual
 {
-    protected CPlugVisual2D()
+    internal CPlugVisual2D()
     {
 
     }

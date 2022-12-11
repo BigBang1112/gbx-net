@@ -29,11 +29,9 @@ public partial class CControlEffectSimiBuilder : Builder
     public TM2 ForTM2() => new(this, NewNode());
     public TM2020 ForTM2020() => new(this, NewNode());
 
-    internal CControlEffectSimi NewNode()
+    internal CControlEffectSimi NewNode() => new()
     {
-        var node = NodeCacheManager.GetNodeInstance<CControlEffectSimi>(0x07010000);
-        node.Keys = Keys ?? new List<CControlEffectSimi.Key>();
-        node.Centered = IsCentered;
-        return node;
-    }
+        Keys = Keys ?? new List<CControlEffectSimi.Key>(),
+        Centered = IsCentered
+    };
 }

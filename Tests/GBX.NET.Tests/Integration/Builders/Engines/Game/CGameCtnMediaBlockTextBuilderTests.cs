@@ -21,9 +21,8 @@ public class CGameCtnMediaBlockTextBuilderTests
     private static CGameCtnMediaBlockText BuildNode(Func<CGameCtnMediaBlockTextBuilder,
         GameBuilder<CGameCtnMediaBlockTextBuilder, CGameCtnMediaBlockText>> func, string text, CControlEffectSimi effect, Vec3 color)
     {
-        var builder = new CGameCtnMediaBlockTextBuilder()
+        var builder = new CGameCtnMediaBlockTextBuilder(effect)
             .WithText(text)
-            .WithEffect(effect)
             .WithColor(color);
         return func.Invoke(builder).Build();
     }

@@ -1,5 +1,4 @@
 ﻿using GBX.NET.Exceptions;
-using GBX.NET.Managers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;

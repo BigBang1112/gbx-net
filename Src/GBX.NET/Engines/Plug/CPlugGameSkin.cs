@@ -4,7 +4,7 @@
 [Node(0x090F4000)]
 public class CPlugGameSkin : CMwNod
 {
-    protected CPlugGameSkin()
+    internal CPlugGameSkin()
     {
 
     }
@@ -85,7 +85,7 @@ public class CPlugGameSkin : CMwNod
 
                         if (version >= 3)
                         {
-                            w.Write(U05[i].U05);
+                            //w.Write(U05[i].U05);
                         }
                         
                         w.Write(U05[i].U03);

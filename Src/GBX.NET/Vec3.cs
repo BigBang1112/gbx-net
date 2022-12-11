@@ -18,6 +18,12 @@ public readonly record struct Vec3(float X, float Y, float Z) : IVec
 
     public float GetSqrMagnitude() => X * X + Y * Y + Z * Z;
 
+    public Vec3 GetNormalized()
+    {
+        var magnitude = GetMagnitude();
+        return magnitude == 0 ? this : this / magnitude;
+    }
+
     public override string ToString()
     {
         var c = CultureInfo.InvariantCulture;
@@ -65,6 +71,8 @@ public readonly record struct Vec3(float X, float Y, float Z) : IVec
     public static Vec3 operator *(Int2 a, Vec3 b) => b * a;
     public static Vec3 operator *(int a, Vec3 b) => b * a;
     public static Vec3 operator *(float a, Vec3 b) => b * a;
+    
+    public static Vec3 operator /(Vec3 a, float b) => new(a.X / b, a.Y / b, a.Z / b);
 
     public static implicit operator Vec3(Int3 a) => new(a.X, a.Y, a.Z);
     public static implicit operator Vec3((float X, float Y, float Z) v) => new(v.X, v.Y, v.Z);

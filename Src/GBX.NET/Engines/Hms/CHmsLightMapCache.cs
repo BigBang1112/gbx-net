@@ -36,7 +36,7 @@ public partial class CHmsLightMapCache : CMwNod
     #region Properties
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0602200B))]
+    [AppliedWithChunk<Chunk0602200B>]
     public int[]? MapT3s
     {
         get
@@ -56,7 +56,7 @@ public partial class CHmsLightMapCache : CMwNod
     /// </summary>
     /// <remarks>Exact name of this member is m_Quality.</remarks>
     [NodeMember(ExactName = "m_Quality")]
-    [AppliedWithChunk(typeof(Chunk0602200F))]
+    [AppliedWithChunk<Chunk0602200F>]
     public EQuality Quality
     {
         get
@@ -73,7 +73,7 @@ public partial class CHmsLightMapCache : CMwNod
 
     /// <remarks>Exact name of this member is m_Id_IdCollection.</remarks>
     [NodeMember(ExactName = "m_Id_IdCollection")]
-    [AppliedWithChunk(typeof(Chunk06022015))]
+    [AppliedWithChunk<Chunk06022015>]
     public Id? Collection
     {
         get
@@ -90,7 +90,7 @@ public partial class CHmsLightMapCache : CMwNod
 
     /// <remarks>Exact name of this member is m_Id_IdDecoration.</remarks>
     [NodeMember(ExactName = "m_Id_IdDecoration")]
-    [AppliedWithChunk(typeof(Chunk06022015))]
+    [AppliedWithChunk<Chunk06022015>]
     public string? Decoration
     {
         get
@@ -107,7 +107,7 @@ public partial class CHmsLightMapCache : CMwNod
 
     /// <remarks>Exact name of this member is m_Version.</remarks>
     [NodeMember(ExactName = "m_Version")]
-    [AppliedWithChunk(typeof(Chunk06022016))]
+    [AppliedWithChunk<Chunk06022016>]
     public EVersion? Version
     {
         get
@@ -124,7 +124,7 @@ public partial class CHmsLightMapCache : CMwNod
 
     /// <remarks>Exact name of this member is cDecal2d.</remarks>
     [NodeMember(ExactName = "cDecal2d")]
-    [AppliedWithChunk(typeof(Chunk06022017))]
+    [AppliedWithChunk<Chunk06022017>]
     public int? Decal2d
     {
         get
@@ -141,7 +141,7 @@ public partial class CHmsLightMapCache : CMwNod
 
     /// <remarks>Exact name of this member is cDecal3d.</remarks>
     [NodeMember(ExactName = "cDecal3d")]
-    [AppliedWithChunk(typeof(Chunk06022017))]
+    [AppliedWithChunk<Chunk06022017>]
     public int? Decal3d
     {
         get
@@ -158,7 +158,7 @@ public partial class CHmsLightMapCache : CMwNod
 
     /// <remarks>Exact name of this member is m_QualityVer.</remarks>
     [NodeMember(ExactName = "m_QualityVer")]
-    [AppliedWithChunk(typeof(Chunk06022019))]
+    [AppliedWithChunk<Chunk06022019>]
     public EQualityVer? QualityVer
     {
         get
@@ -174,7 +174,7 @@ public partial class CHmsLightMapCache : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0602201A))]
+    [AppliedWithChunk<Chunk0602201A>]
     public int? AmbSamples
     {
         get
@@ -190,7 +190,7 @@ public partial class CHmsLightMapCache : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0602201A))]
+    [AppliedWithChunk<Chunk0602201A>]
     public int? DirSamples
     {
         get
@@ -206,7 +206,7 @@ public partial class CHmsLightMapCache : CMwNod
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0602201A))]
+    [AppliedWithChunk<Chunk0602201A>]
     public int? PntSamples
     {
         get
@@ -223,7 +223,7 @@ public partial class CHmsLightMapCache : CMwNod
 
     /// <remarks>Exact name of this member is m_SortMode.</remarks>
     [NodeMember(ExactName = "m_SortMode")]
-    [AppliedWithChunk(typeof(Chunk0602201A))]
+    [AppliedWithChunk<Chunk0602201A>]
     public ESortMode? SortMode
     {
         get
@@ -240,7 +240,7 @@ public partial class CHmsLightMapCache : CMwNod
 
     /// <remarks>Exact name of this member is m_AllocMode.</remarks>
     [NodeMember(ExactName = "m_AllocMode")]
-    [AppliedWithChunk(typeof(Chunk0602201A))]
+    [AppliedWithChunk<Chunk0602201A>]
     public EAllocMode? AllocMode
     {
         get
@@ -257,7 +257,7 @@ public partial class CHmsLightMapCache : CMwNod
 
     /// <remarks>Exact name of this member is m_CompressMode.</remarks>
     [NodeMember(ExactName = "m_CompressMode")]
-    [AppliedWithChunk(typeof(Chunk0602201A))]
+    [AppliedWithChunk<Chunk0602201A>]
     public ECompressMode? CompressMode
     {
         get
@@ -274,7 +274,7 @@ public partial class CHmsLightMapCache : CMwNod
 
     /// <remarks>Exact name of this member is m_Bump.</remarks>
     [NodeMember(ExactName = "m_Bump")]
-    [AppliedWithChunk(typeof(Chunk0602201A), sinceVersion: 6)]
+    [AppliedWithChunk<Chunk0602201A>(sinceVersion: 6)]
     public EBump? Bump
     {
         get
@@ -290,7 +290,7 @@ public partial class CHmsLightMapCache : CMwNod
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0602201A))]
+    [AppliedWithChunk<Chunk0602201A>]
     public SMap[]? Maps
     {
         get
@@ -307,7 +307,7 @@ public partial class CHmsLightMapCache : CMwNod
 
     /// <remarks>Exact name of this member is m_SpriteOriginY_WasWronglyTop.</remarks>
     [NodeMember(ExactName = "m_SpriteOriginY_WasWronglyTop")]
-    [AppliedWithChunk(typeof(Chunk0602201A))]
+    [AppliedWithChunk<Chunk0602201A>]
     public bool SpriteOriginYWasWronglyTop
     {
         get
@@ -323,7 +323,7 @@ public partial class CHmsLightMapCache : CMwNod
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0602201A))]
+    [AppliedWithChunk<Chunk0602201A>]
     public SHmsLightMapCacheMapping? Mapping
     {
         get
@@ -340,7 +340,7 @@ public partial class CHmsLightMapCache : CMwNod
 
     /// <remarks>Exact name of this member is m_GpuPlatform.</remarks>
     [NodeMember(ExactName = "m_GpuPlatform")]
-    [AppliedWithChunk(typeof(Chunk0602201A), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk0602201A>(sinceVersion: 1)]
     public EPlugGpuPlatform? GpuPlatform
     {
         get
@@ -357,7 +357,7 @@ public partial class CHmsLightMapCache : CMwNod
 
     /// <remarks>Exact name of this member is m_AllocatedTexelByMeter.</remarks>
     [NodeMember(ExactName = "m_AllocatedTexelByMeter")]
-    [AppliedWithChunk(typeof(Chunk0602201A), sinceVersion: 5)]
+    [AppliedWithChunk<Chunk0602201A>(sinceVersion: 5)]
     public float? AllocatedTexelByMeter
     {
         get
@@ -376,7 +376,7 @@ public partial class CHmsLightMapCache : CMwNod
 
     #region Constructors
 
-    protected CHmsLightMapCache()
+    internal CHmsLightMapCache()
     {
 
     }
@@ -447,7 +447,7 @@ public partial class CHmsLightMapCache : CMwNod
     /// <summary>
     /// CHmsLightMapCache 0x015 skippable chunk
     /// </summary>
-    [Chunk(0x06022015, processSync: true)] // does processSync need to be set?
+    [Chunk(0x06022015, ProcessSync = true)] // does processSync need to be set?
     public class Chunk06022015 : SkippableChunk<CHmsLightMapCache>, IVersionable
     {
         private int version;

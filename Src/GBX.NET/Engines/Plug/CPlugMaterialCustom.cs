@@ -4,14 +4,21 @@
 /// Custom material.
 /// </summary>
 /// <remarks>ID: 0x0903A000</remarks>
-[Node(0x0903A000), WritingNotSupported]
+[Node(0x0903A000)]
 public class CPlugMaterialCustom : CPlug
 {
-    [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0903A006))]
-    public SBitmap[]? Textures { get; set; }
+    private Bitmap[]? textures;
+    private GpuFx[]? gpuFxs;
 
-    protected CPlugMaterialCustom()
+    [NodeMember]
+    [AppliedWithChunk<Chunk0903A006>]
+    public Bitmap[]? Textures { get => textures; set => textures = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0903A006>]
+    public GpuFx[]? GpuFxs { get => gpuFxs; set => gpuFxs = value; }
+
+    internal CPlugMaterialCustom()
     {
 
     }
@@ -36,17 +43,9 @@ public class CPlugMaterialCustom : CPlug
     [Chunk(0x0903A006)]
     public class Chunk0903A006 : Chunk<CPlugMaterialCustom>
     {
-        public override void Read(CPlugMaterialCustom n, GameBoxReader r)
+        public override void ReadWrite(CPlugMaterialCustom n, GameBoxReaderWriter rw)
         {
-            n.Textures = r.ReadArray(r =>
-            {
-                var name = r.ReadId();
-                var u01 = r.ReadInt32();
-
-                _ = r.ReadNodeRef<CPlugBitmap>(out GameBoxRefTable.File? bitmapFile);
-
-                return new SBitmap(n, name, u01, bitmapFile);
-            });
+            rw.ArrayArchiveWithGbx<Bitmap>(ref n.textures);
         }
     }
 
@@ -56,29 +55,12 @@ public class CPlugMaterialCustom : CPlug
     [Chunk(0x0903A00A)]
     public class Chunk0903A00A : Chunk<CPlugMaterialCustom>
     {
-        public object? U01;
-
-        public override void Read(CPlugMaterialCustom n, GameBoxReader r)
+        public override void ReadWrite(CPlugMaterialCustom n, GameBoxReaderWriter rw)
         {
-            U01 = r.ReadArray(2, (i, r) =>
+            for (var i = 0; i < 2; i++)
             {
-                return r.ReadArray(r =>
-                {
-                    var u01 = r.ReadId();
-                    var count1 = r.ReadInt32();
-                    var count2 = r.ReadInt32();
-                    var u02 = r.ReadBoolean();
-
-                    var u03 = r.ReadArray(count2, r => r.ReadArray<float>(count1));
-
-                    return new
-                    {
-                        u01,
-                        u02,
-                        u03
-                    };
-                });
-            });
+                rw.ArrayArchive<GpuFx>(ref n.gpuFxs);
+            }
         }
     }
 
@@ -88,15 +70,20 @@ public class CPlugMaterialCustom : CPlug
     [Chunk(0x0903A00B)]
     public class Chunk0903A00B : Chunk<CPlugMaterialCustom>
     {
-        public override void Read(CPlugMaterialCustom n, GameBoxReader r)
-        {
-            var flags = r.ReadInt32();
-            var u01 = r.ReadUInt64();
+        public uint Flags;
+        public ulong U01;
+        public short? U02;
+        public short? U03;
 
-            if ((flags & 1) != 0) // SPlugVisibleFilter
+        public override void ReadWrite(CPlugMaterialCustom n, GameBoxReaderWriter rw)
+        {
+            rw.UInt32(ref Flags);
+            rw.UInt64(ref U01);
+
+            if ((Flags & 1) != 0) // SPlugVisibleFilter
             {
-                var u02 = r.ReadInt16();
-                var u03 = r.ReadInt16();
+                rw.Int16(ref U02);
+                rw.Int16(ref U03);
             }
         }
     }
@@ -112,11 +99,11 @@ public class CPlugMaterialCustom : CPlug
         public override void ReadWrite(CPlugMaterialCustom n, GameBoxReaderWriter rw)
         {
             // array of SPlugGpuParamSkipSampler
-            rw.Array(ref GpuParamSkipSamplers, 
+            rw.Array(ref GpuParamSkipSamplers,
                 r => (r.ReadId(), r.ReadBoolean()),
                 (x, w) =>
                 {
-                    w.Write(x.Item1);
+                    w.WriteId(x.Item1);
                     w.Write(x.Item2);
                 });
         }
@@ -148,33 +135,75 @@ public class CPlugMaterialCustom : CPlug
         }
     }
 
-    public class SBitmap
+    public class Bitmap : IReadableWritableWithGbx
     {
-        private Node node;
-        private CPlugBitmap? bitmap;
-        private GameBoxRefTable.File? bitmapFile;
+        private Node? node;
 
-        public string Name { get; set; }
-        public int U01 { get; set; }
+        private string name = "";
+        private int u01;
+        private CPlugBitmap? texture;
+        private GameBoxRefTable.File? textureFile;
 
-        public CPlugBitmap? Bitmap
+        public string Name { get => name; set => name = value; }
+        public int U01 { get => u01; set => u01 = value; }
+
+        public CPlugBitmap? Texture
         {
-            get => bitmap = node.GetNodeFromRefTable(bitmap, bitmapFile) as CPlugBitmap;
-            set => bitmap = value;
+            get => texture = node?.GetNodeFromRefTable(texture, textureFile) as CPlugBitmap;
+            set => texture = value;
         }
 
-        public SBitmap(Node node, string name, int u01, GameBoxRefTable.File? bitmapFile)
+        public void ReadWrite(GameBoxReaderWriter rw, GameBox? gbx, int version = 0)
         {
-            Name = name;
-            U01 = u01;
+            node = gbx?.Node;
+            ReadWrite(rw, version);
+        }
 
-            this.node = node;
-            this.bitmapFile = bitmapFile;
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+        {
+            rw.Id(ref name!);
+            rw.Int32(ref u01);
+            rw.NodeRef(ref texture, ref textureFile);
         }
 
         public override string ToString()
         {
             return Name;
+        }
+    }
+
+    public class GpuFx : IReadableWritable
+    {
+        private string u01 = "";
+        private int count1;
+        private int count2;
+        private bool u02;
+
+        public string U01 { get => u01; set => u01 = value; }
+        public int Count1 { get => count1; set => count1 = value; }
+        public int Count2 { get => count2; set => count2 = value; }
+        public bool U02 { get => u02; set => u02 = value; }
+        public float[][] U03 { get; set; } = Array.Empty<float[]>();
+
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+        {
+            rw.Id(ref u01!);
+            rw.Int32(ref count1);
+            rw.Int32(ref count2);
+            rw.Boolean(ref u02);
+
+            if (rw.Reader is not null)
+            {
+                U03 = rw.Reader.ReadArray(count2, r => r.ReadArray<float>(count1));
+            }
+
+            if (rw.Writer is not null)
+            {
+                for (var i = 0; i < count2; i++)
+                {
+                    rw.Writer.WriteArray_NoPrefix(U03[i]);
+                }
+            }
         }
     }
 }

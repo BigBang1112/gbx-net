@@ -9,25 +9,25 @@ public class CPlugVisualGrid : CPlugVisual3D
     private float rangeX;
     private float rangeZ;
 
-    protected CPlugVisualGrid()
+    internal CPlugVisualGrid()
     {
         
     }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0903B000))]
+    [AppliedWithChunk<Chunk0903B000>]
     public int NbPointX { get => nbPointX; set => nbPointX = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0903B000))]
+    [AppliedWithChunk<Chunk0903B000>]
     public int NbPointZ { get => nbPointZ; set => nbPointZ = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0903B000))]
+    [AppliedWithChunk<Chunk0903B000>]
     public float RangeX { get => rangeX; set => rangeX = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk0903B000))]
+    [AppliedWithChunk<Chunk0903B000>]
     public float RangeZ { get => rangeZ; set => rangeZ = value; }
 
     /// <summary>

@@ -14,13 +14,13 @@ public partial class CGameCtnMediaBlockTime : CGameCtnMediaBlock, CGameCtnMediaB
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03085000))]
+    [AppliedWithChunk<Chunk03085000>]
     public IList<Key> Keys { get; set; }
 
     [NodeMember]
     public bool IsTM2 { get; set; }
 
-    protected CGameCtnMediaBlockTime()
+    internal CGameCtnMediaBlockTime()
     {
         Keys = Array.Empty<Key>();
     }

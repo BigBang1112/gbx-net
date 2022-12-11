@@ -2,6 +2,7 @@
 
 /// <remarks>ID: 0x2E007000</remarks>
 [Node(0x2E007000)]
+[NodeExtension("GameObjectVisModel")]
 public class CGameObjectVisModel : CMwNod
 {
     #region Fields
@@ -10,57 +11,157 @@ public class CGameObjectVisModel : CMwNod
     private string? soundRefSpawn;
     private string? soundRefUnspawn;
     private string? soundRefGrab;
+    private string? soundRefSmashed;
+    private string? soundRefPermanent;
+    private Iso4? soundLocPermanent;
     private string? smashParticleRef;
     private string? visEntFx;
     private CMwNod? meshShadedFid;
     private Vec3? domeShaderColor;
     private CPlugSolid2Model? meshShaded;
+    private GameBoxRefTable.File? meshShadedFile;
+    private CPlugAnimLocSimple? locAnim;
 
     #endregion
 
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E007001))]
+    [AppliedWithChunk<Chunk2E007001>]
     public string? Mesh { get => mesh; set => mesh = value; }
 
-    [NodeMember(ExactlyNamed = false, ExactName = "SoundRef_Spawn")]
-    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 0, upToVersion: 16)]
-    public string? SoundRefSpawn { get => soundRefSpawn; set => soundRefSpawn = value; }
+    [NodeMember(ExactName = "SoundRef_Spawn")]
+    [AppliedWithChunk<Chunk2E007001>(sinceVersion: 0, upToVersion: 16)]
+    [AppliedWithChunk<Chunk2E007002>]
+    public string? SoundRefSpawn
+    {
+        get
+        {
+            DiscoverChunk<Chunk2E007002>();
+            return soundRefSpawn;
+        }
+        set
+        {
+            DiscoverChunk<Chunk2E007002>();
+            soundRefSpawn = value;
+        }
+    }
 
-    [NodeMember(ExactlyNamed = false, ExactName = "SoundRef_Unspawn")]
-    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 0, upToVersion: 16)]
-    public string? SoundRefUnspawn { get => soundRefUnspawn; set => soundRefUnspawn = value; }
+    [NodeMember(ExactName = "SoundRef_Unspawn")]
+    [AppliedWithChunk<Chunk2E007001>(sinceVersion: 0, upToVersion: 16)]
+    [AppliedWithChunk<Chunk2E007002>]
+    public string? SoundRefUnspawn
+    {
+        get
+        {
+            DiscoverChunk<Chunk2E007002>();
+            return soundRefUnspawn;
+        }
+        set
+        {
+            DiscoverChunk<Chunk2E007002>();
+            soundRefUnspawn = value;
+        }
+    }
 
-    [NodeMember(ExactlyNamed = false, ExactName = "SoundRef_Grab")]
-    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 0, upToVersion: 16)]
-    public string? SoundRefGrab { get => soundRefGrab; set => soundRefGrab = value; }
+    [NodeMember(ExactName = "SoundRef_Grab")]
+    [AppliedWithChunk<Chunk2E007001>(sinceVersion: 0, upToVersion: 16)]
+    [AppliedWithChunk<Chunk2E007002>]
+    public string? SoundRefGrab
+    {
+        get
+        {
+            DiscoverChunk<Chunk2E007002>();
+            return soundRefGrab;
+        }
+        set
+        {
+            DiscoverChunk<Chunk2E007002>();
+            soundRefGrab = value;
+        }
+    }
+
+    [NodeMember(ExactName = "SoundRef_Smashed")]
+    [AppliedWithChunk<Chunk2E007002>]
+    public string? SoundRefSmashed
+    {
+        get
+        {
+            DiscoverChunk<Chunk2E007002>();
+            return soundRefSmashed;
+        }
+        set
+        {
+            DiscoverChunk<Chunk2E007002>();
+            soundRefSmashed = value;
+        }
+    }
+
+    [NodeMember(ExactName = "SoundRef_Permanent")]
+    [AppliedWithChunk<Chunk2E007002>]
+    public string? SoundRefPermanent
+    {
+        get
+        {
+            DiscoverChunk<Chunk2E007002>();
+            return soundRefPermanent;
+        }
+        set
+        {
+            DiscoverChunk<Chunk2E007002>();
+            soundRefPermanent = value;
+        }
+    }
+
+    [NodeMember(ExactName = "SoundLoc_Permanent")]
+    [AppliedWithChunk<Chunk2E007002>]
+    public Iso4? SoundLocPermanent
+    {
+        get
+        {
+            DiscoverChunk<Chunk2E007002>();
+            return soundLocPermanent;
+        }
+        set
+        {
+            DiscoverChunk<Chunk2E007002>();
+            soundLocPermanent = value;
+        }
+    }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 12)]
+    [AppliedWithChunk<Chunk2E007001>(sinceVersion: 12)]
     public string? SmashParticleRef { get => smashParticleRef; set => smashParticleRef = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 20)]
+    [AppliedWithChunk<Chunk2E007001>(sinceVersion: 20)]
     public string? VisEntFx { get => visEntFx; set => visEntFx = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 21)]
+    [AppliedWithChunk<Chunk2E007001>(sinceVersion: 21)]
     public CMwNod? MeshShadedFid { get => meshShadedFid; set => meshShadedFid = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E007001), sinceVersion: 22)]
+    [AppliedWithChunk<Chunk2E007001>(sinceVersion: 22)]
     public Vec3? DomeShaderColor { get => domeShaderColor; set => domeShaderColor = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk(typeof(Chunk2E007001))]
-    public CPlugSolid2Model? MeshShaded { get => meshShaded; set => meshShaded = value; }
+    [AppliedWithChunk<Chunk2E007001>]
+    public CPlugSolid2Model? MeshShaded
+    {
+        get => meshShaded = GetNodeFromRefTable(meshShaded, meshShadedFile) as CPlugSolid2Model;
+        set => meshShaded = value;
+    }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk2E007001>(sinceVersion: 2)]
+    public CPlugAnimLocSimple? LocAnim { get => locAnim; set => locAnim = value; }
 
     #endregion
 
     #region Constructors
 
-    protected CGameObjectVisModel()
+    internal CGameObjectVisModel()
     {
         
     }
@@ -94,6 +195,9 @@ public class CGameObjectVisModel : CMwNod
         public CMwNod? U13;
         public CMwNod? U14;
         public CMwNod? U15;
+        public CMwNod? U16;
+        public GameBoxRefTable.File? U16File;
+        public string? U17;
 
         public int Version { get => version; set => version = value; }
 
@@ -109,11 +213,19 @@ public class CGameObjectVisModel : CMwNod
 
             rw.String(ref n.mesh);
 
-            rw.NodeRef<CPlugSolid2Model>(ref n.meshShaded);
-
-            if (version >= 7) // Condition not seen in code
+            if (string.IsNullOrEmpty(n.mesh))
             {
-                rw.NodeRef(ref U02);
+                rw.NodeRef<CPlugSolid2Model>(ref n.meshShaded, ref n.meshShadedFile);
+            }
+
+            if (version < 18) // CPlugParticleEmitterModel?
+            {
+                rw.NodeRef(ref U16); // CPlugAnimFile
+            }
+
+            if (version >= 2)
+            {
+                rw.NodeRef<CPlugAnimLocSimple>(ref n.locAnim);
             }
 
             rw.Int32(ref U03); // SPlugLightBallStateSimple array
@@ -138,32 +250,37 @@ public class CGameObjectVisModel : CMwNod
                         rw.Int32(ref U08); // CPlugFileImg array
                         rw.Int32(ref U09); // SSpriteParam array
 
-                        if (version >= 16)
+                        if (version >= 14)
                         {
-                            rw.NodeRef(ref U10);
-                            rw.NodeRef(ref U11);
+                            rw.String(ref U17);
 
-                            if (version >= 19)
+                            if (version >= 16)
                             {
-                                rw.Single(ref U12);
+                                rw.NodeRef(ref U10);
+                                rw.NodeRef(ref U11);
 
-                                if (version >= 20)
+                                if (version >= 19)
                                 {
-                                    rw.String(ref n.visEntFx);
-                                    // if empty then maybe nodref? proly not
+                                    rw.Single(ref U12);
 
-                                    if (string.IsNullOrEmpty(n.visEntFx))
+                                    if (version >= 20)
                                     {
-                                        rw.NodeRef(ref U13);
-                                    }
+                                        rw.String(ref n.visEntFx);
+                                        // if empty then maybe nodref? proly not
 
-                                    if (version >= 21)
-                                    {
-                                        rw.NodeRef(ref n.meshShadedFid);
-
-                                        if (version >= 22)
+                                        if (string.IsNullOrEmpty(n.visEntFx))
                                         {
-                                            rw.Vec3(ref n.domeShaderColor);
+                                            rw.NodeRef(ref U13);
+                                        }
+
+                                        if (version >= 21)
+                                        {
+                                            rw.NodeRef(ref n.meshShadedFid);
+
+                                            if (version >= 22)
+                                            {
+                                                rw.Vec3(ref n.domeShaderColor);
+                                            }
                                         }
                                     }
                                 }
@@ -172,6 +289,32 @@ public class CGameObjectVisModel : CMwNod
                     }
                 }
             }
+        }
+    }
+
+    #endregion
+
+    #region 0x002 skippable chunk
+
+    /// <summary>
+    /// CGameObjectVisModel 0x002 skippable chunk
+    /// </summary>
+    [Chunk(0x2E007002)]
+    public class Chunk2E007002 : SkippableChunk<CGameObjectVisModel>, IVersionable
+    {
+        private int version;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameObjectVisModel n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.String(ref n.soundRefSpawn);
+            rw.String(ref n.soundRefUnspawn);
+            rw.String(ref n.soundRefGrab);
+            rw.String(ref n.soundRefSmashed);
+            rw.String(ref n.soundRefPermanent);
+            rw.Iso4(ref n.soundLocPermanent);
         }
     }
 

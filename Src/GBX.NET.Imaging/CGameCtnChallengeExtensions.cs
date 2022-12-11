@@ -44,16 +44,21 @@ public static class CGameCtnChallengeExtensions
 
         if (format == ImageFormat.Jpeg)
         {
-            var encoding = new EncoderParameters(1);
-            encoding.Param[0] = new EncoderParameter(Encoder.Quality, 90L);
-            var encoder = ImageCodecInfo.GetImageDecoders().Where(x => x.FormatID == ImageFormat.Jpeg.Guid).First();
-
-            thumbnail.Save(stream, encoder, encoding);
+            SaveAsJpeg(stream, thumbnail);
         }
         else
         {
             thumbnail.Save(stream, format);
         }
+    }
+
+    private static void SaveAsJpeg(Stream stream, Bitmap thumbnail)
+    {
+        var encoding = new EncoderParameters(1);
+        encoding.Param[0] = new EncoderParameter(Encoder.Quality, 90L);
+        var encoder = ImageCodecInfo.GetImageDecoders().Where(x => x.FormatID == ImageFormat.Jpeg.Guid).First();
+
+        thumbnail.Save(stream, encoder, encoding);
     }
 
     /// <summary>
@@ -76,10 +81,12 @@ public static class CGameCtnChallengeExtensions
     public static Bitmap ImportThumbnail(this CGameCtnChallenge node, Stream stream)
     {
         var bitmap = new Bitmap(stream);
+        bitmap.RotateFlip(RotateFlipType.Rotate180FlipX);
 
         using var ms = new MemoryStream();
-
-        ExportThumbnail(node, ms, ImageFormat.Jpeg);
+        
+        SaveAsJpeg(ms, bitmap);
+        
         node.Thumbnail = ms.ToArray();
 
         return bitmap;

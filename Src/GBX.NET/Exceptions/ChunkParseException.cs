@@ -22,8 +22,7 @@ public class ChunkParseException : Exception
 
     private static string GetClassNameFromChunkId(uint chunkId)
     {
-        NodeCacheManager.Names.TryGetValue(chunkId & 0xFFFFF000, out string? className);
-        return className ?? "unknown class";
+        return NodeManager.GetName(chunkId & 0xFFFFF000) ?? "unknown class";
     }
 
     private static string GetClassNameFromPreviousChunkId(uint? previousChunkId)
@@ -32,8 +31,7 @@ public class ChunkParseException : Exception
         {
             return "not a class";
         }
-
-        NodeCacheManager.Names.TryGetValue(previousChunkId.Value & 0xFFFFF000, out string? previousClassName);
-        return previousClassName ?? "unknown class";
+        
+        return NodeManager.GetName(previousChunkId.Value & 0xFFFFF000) ?? "unknown class";
     }
 }

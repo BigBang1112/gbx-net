@@ -4,7 +4,7 @@
 [Node(0x0A014000)] // Superb
 public class CSceneObjectLink : CMwNod
 {
-    protected CSceneObjectLink()
+    internal CSceneObjectLink()
     {
         
     }

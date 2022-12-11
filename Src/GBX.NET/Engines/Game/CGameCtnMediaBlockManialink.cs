@@ -13,18 +13,18 @@ public class CGameCtnMediaBlockManialink : CGameCtnMediaBlock, CGameCtnMediaBloc
     private string manialinkURL;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0312A001))]
+    [AppliedWithChunk<Chunk0312A001>]
     public TimeSingle Start { get => start; set => start = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0312A001))]
+    [AppliedWithChunk<Chunk0312A001>]
     public TimeSingle End { get => end; set => end = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0312A001))]
+    [AppliedWithChunk<Chunk0312A001>]
     public string ManialinkURL { get => manialinkURL; set => manialinkURL = value; }
 
-    protected CGameCtnMediaBlockManialink()
+    internal CGameCtnMediaBlockManialink()
     {
         manialinkURL = "";
     }

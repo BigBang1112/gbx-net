@@ -4,7 +4,7 @@
 [Node(0x01005000)]
 public abstract class CMwCmd : CMwNod
 {
-    protected CMwCmd()
+    internal CMwCmd()
     {
 
     }

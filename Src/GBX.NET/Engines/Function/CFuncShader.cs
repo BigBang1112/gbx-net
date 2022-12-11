@@ -4,7 +4,7 @@
 [Node(0x05011000)]
 public abstract class CFuncShader : CFuncPlug
 {
-    protected CFuncShader()
+    internal CFuncShader()
     {
 
     }

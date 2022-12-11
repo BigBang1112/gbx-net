@@ -3,18 +3,17 @@
 public partial class CGameCtnMediaBlockTextBuilder : Builder
 {
     public string? Text { get; set; }
-    public CControlEffectSimi? Effect { get; set; }
+    public CControlEffectSimi Effect { get; }
     public Vec3 Color { get; set; }
+
+    public CGameCtnMediaBlockTextBuilder(CControlEffectSimi effect)
+    {
+        Effect = effect;
+    }
 
     public CGameCtnMediaBlockTextBuilder WithText(string text)
     {
         Text = text;
-        return this;
-    }
-
-    public CGameCtnMediaBlockTextBuilder WithEffect(CControlEffectSimi effect)
-    {
-        Effect = effect;
         return this;
     }
 
@@ -32,12 +31,16 @@ public partial class CGameCtnMediaBlockTextBuilder : Builder
 
     internal CGameCtnMediaBlockText NewNode()
     {
-        var node = NodeCacheManager.GetNodeInstance<CGameCtnMediaBlockText>(0x030A8000);
-        node.Text = Text ?? string.Empty;
-        node.Effect = Effect!;
-        node.Color = Color;
+        var node = new CGameCtnMediaBlockText
+        {
+            Text = Text ?? string.Empty,
+            Effect = Effect,
+            Color = Color
+        };
+        
         node.CreateChunk<CGameCtnMediaBlockText.Chunk030A8001>();
         node.CreateChunk<CGameCtnMediaBlockText.Chunk030A8002>();
+        
         return node;
     }
 }

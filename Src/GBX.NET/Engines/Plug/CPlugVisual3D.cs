@@ -9,19 +9,19 @@ public abstract class CPlugVisual3D : CPlugVisual
     private Vec3[]? biTangents;
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0902C003))]
-    [AppliedWithChunk(typeof(Chunk0902C004))]
+    [AppliedWithChunk<Chunk0902C003>]
+    [AppliedWithChunk<Chunk0902C004>]
     public Vertex[] Vertices { get => vertices; set => vertices = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0902C003))]
+    [AppliedWithChunk<Chunk0902C003>]
     public Vec3[]? Tangents { get => tangents; set => tangents = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0902C003))]
+    [AppliedWithChunk<Chunk0902C003>]
     public Vec3[]? BiTangents { get => biTangents; set => biTangents = value; }
 
-    protected CPlugVisual3D()
+    internal CPlugVisual3D()
     {
         vertices = Array.Empty<Vertex>();
     }
@@ -64,6 +64,21 @@ public abstract class CPlugVisual3D : CPlugVisual
             n.tangents = r.ReadArray<Vec3>();
             n.biTangents = r.ReadArray<Vec3>();
         }
+
+        public override void Write(CPlugVisual3D n, GameBoxWriter w)
+        {
+            for (int i = 0; i < n.Count; i++)
+            {
+                var v = n.vertices[i];
+                w.Write(v.Position);
+                w.Write(v.Normal.GetValueOrDefault());
+                w.Write(v.U02.GetValueOrDefault());
+                w.Write(v.U03.GetValueOrDefault());
+            }
+
+            w.WriteArray<Vec3>(n.tangents);
+            w.WriteArray<Vec3>(n.biTangents);
+        }
     }
 
     /// <summary>
@@ -72,22 +87,15 @@ public abstract class CPlugVisual3D : CPlugVisual
     [Chunk(0x0902C004)]
     public class Chunk0902C004 : Chunk<CPlugVisual3D>
     {
-        void TODOSkipTangents(CPlugVisual3D n, GameBoxReader r)
-        {
-            // this is some weird bit trickery...
-            int numBytesPerTangent = (~(byte)((uint)n.Flags >> 17) & 8) | 4;
-            int numElems = r.ReadInt32();
-            if (numElems != 0 && numElems != n.Count)
-            {
-                throw new InvalidDataException(String.Format("num tangents is not equal to num vertices ({0} != {1})", numElems, n.Count));
-            }
-            r.ReadBytes(numElems * numBytesPerTangent);
-        }
-        
+        public int Tangents1Count { get; set; }
+        public byte[]? Tangents1 { get; set; }
+        public int Tangents2Count { get; set; }
+        public byte[]? Tangents2 { get; set; }
+
         public override void Read(CPlugVisual3D n, GameBoxReader r)
         {
-            var u02 = !n.Flags.HasFlag(VisualFlags.UnknownFlag22) || n.Flags.HasFlag(VisualFlags.HasVertexNormals);
-            var u03 = !n.Flags.HasFlag(VisualFlags.UnknownFlag22) || n.Flags.HasFlag(VisualFlags.UnknownFlag8);
+            var u01 = !n.IsFlagBitSet(22) || n.HasVertexNormals;
+            var u02 = !n.IsFlagBitSet(22) || n.IsFlagBitSet(8);
 
             // Console.WriteLine("numBytesPerVertex={0}", numBytesPerVertex);
             n.vertices = r.ReadArray(n.Count, r =>
@@ -98,9 +106,9 @@ public abstract class CPlugVisual3D : CPlugVisual
                 var vertU03 = default(int?);
                 var vertU04 = default(Vec4?);
 
-                if (u02)
+                if (u01)
                 {
-                    if (n.Flags.HasFlag(VisualFlags.UnknownFlag20))
+                    if (n.IsFlagBitSet(20))
                     {
                         vertU01 = r.ReadInt32();
                     }
@@ -110,9 +118,9 @@ public abstract class CPlugVisual3D : CPlugVisual
                     }
                 }
 
-                if (u03)
+                if (u02)
                 {
-                    if (n.Flags.HasFlag(VisualFlags.UnknownFlag21))
+                    if (n.IsFlagBitSet(21))
                     {
                         vertU03 = r.ReadInt32();
                     }
@@ -132,19 +140,67 @@ public abstract class CPlugVisual3D : CPlugVisual
                 };
             });
 
-            /*var list = new Vertex[n.Count];
+            (Tangents1Count, Tangents1) = ReadTangents(n, r);
+            (Tangents2Count, Tangents2) = ReadTangents(n, r);
+        }
 
-            for(var i = 0; i < n.Count; i++)
+        public override void Write(CPlugVisual3D n, GameBoxWriter w)
+        {
+            var u01 = !n.IsFlagBitSet(22) || n.HasVertexNormals;
+            var u02 = !n.IsFlagBitSet(22) || n.IsFlagBitSet(8);
+            
+            for (var i = 0; i < n.Count; i++)
             {
-                list[i] = new Vertex(r.ReadVec3(), default, default, default);
-                r.ReadInt32();
-                r.ReadInt32();
-            }*/
+                var v = n.vertices[i];
+                w.Write(v.Position);
 
-            //n.vertices = verts;
+                if (u01)
+                {
+                    if (n.IsFlagBitSet(20))
+                    {
+                        w.Write(v.U04.GetValueOrDefault());
+                    }
+                    else
+                    {
+                        w.Write(v.U05.GetValueOrDefault());
+                    }
+                }
 
-            TODOSkipTangents(n, r);
-            TODOSkipTangents(n, r);
+                if (u02)
+                {
+                    if (n.IsFlagBitSet(21))
+                    {
+                        w.Write(v.U06.GetValueOrDefault());
+                    }
+                    else
+                    {
+                        w.Write(v.U07.GetValueOrDefault());
+                    }
+                }
+            }
+
+            WriteTangents(w, Tangents1Count, Tangents1);
+            WriteTangents(w, Tangents2Count, Tangents2);
+        }
+
+        private static (int, byte[]) ReadTangents(CPlugVisual3D n, GameBoxReader r)
+        {
+            // this is some weird bit trickery...
+            var numBytesPerTangent = (~(byte)((uint)n.Flags >> 17) & 8) | 4;
+            var numElems = r.ReadInt32();
+            
+            if (numElems != 0 && numElems != n.Count)
+            {
+                throw new InvalidDataException($"num tangents is not equal to num vertices ({numElems} != {n.Count})");
+            }
+            
+            return (numElems, r.ReadBytes(numElems * numBytesPerTangent));
+        }
+
+        private static void WriteTangents(GameBoxWriter w, int tangentsCount, byte[]? tangents)
+        {
+            w.Write(tangentsCount);
+            w.Write(tangents);
         }
     }
 

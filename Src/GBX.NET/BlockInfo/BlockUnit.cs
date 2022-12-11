@@ -1,7 +1,12 @@
 ﻿namespace GBX.NET.BlockInfo;
 
-public struct BlockUnit
+public class BlockUnit
 {
-    public int[] Coord { get; set; }
-    public string[] Clips { get; set; }
+    public Int3 Coord { get; set; }
+    public string[]? NorthClips { get; set; }
+    public string[]? EastClips { get; set; }
+    public string[]? SouthClips { get; set; }
+    public string[]? WestClips { get; set; }
+    public string[]? TopClips { get; set; }
+    public string[]? BottomClips { get; set; }
 }

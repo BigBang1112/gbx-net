@@ -212,6 +212,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     private bool dynamicDaylight;
     private TimeInt32? dayDuration;
     private bool? hasCustomCamThumbnail;
+    private CSceneVehicleCarMarksSamples?[]? carMarksBuffer;
 
     #endregion
 
@@ -223,7 +224,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Time of the bronze medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 1)]
     public TimeInt32? TMObjective_BronzeTime
     {
         get => ChallengeParameters is null ? bronzeTime : ChallengeParameters.BronzeTime;
@@ -242,7 +243,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Time of the silver medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 1)]
     public TimeInt32? TMObjective_SilverTime
     {
         get => ChallengeParameters is null ? silverTime : ChallengeParameters.SilverTime;
@@ -261,7 +262,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Time of the gold medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 1)]
     public TimeInt32? TMObjective_GoldTime
     {
         get => ChallengeParameters is null ? goldTime : ChallengeParameters.GoldTime;
@@ -280,7 +281,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Time of the author medal. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 1)]
     public TimeInt32? TMObjective_AuthorTime
     {
         get => ChallengeParameters is null ? authorTime : ChallengeParameters.AuthorTime;
@@ -299,14 +300,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Display cost of the track (or copper cost) explaining the performance of the map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 4)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 4)]
     public int? Cost { get => cost; set => cost = value; }
 
     /// <summary>
     /// Usually author time or stunts score. If <see cref="ChallengeParameters"/> is available, it uses the value from there instead.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 10)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 10)]
     public int? AuthorScore
     {
         get => ChallengeParameters is null ? authorScore : ChallengeParameters.AuthorScore;
@@ -325,7 +326,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// In which editor settings the map was made.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 11)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 11)]
     public EditorMode Editor { get => editor; set => editor = value; }
 
     /// <summary>
@@ -344,7 +345,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// If the map is a multilap.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 5)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 5)]
+    [AppliedWithChunk<Chunk03043018>]
     public bool? TMObjective_IsLapRace
     {
         get
@@ -363,7 +365,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Number of laps.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 13)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 13)]
+    [AppliedWithChunk<Chunk03043018>]
     public int? TMObjective_NbLaps
     {
         get
@@ -382,27 +385,27 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Number of checkpoints.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 13)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 13)]
     public int? NbCheckpoints { get => nbCheckpoints; set => nbCheckpoints = value; }
 
     /// <summary>
     /// Map UID, environment, and author login.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 0, upToVersion: 2)]
-    [AppliedWithChunk(typeof(Chunk0304300F))]
-    [AppliedWithChunk(typeof(Chunk03043013))]
-    [AppliedWithChunk(typeof(Chunk0304301F))]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 0, upToVersion: 2)]
+    [AppliedWithChunk<Chunk0304300F>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
     public Ident MapInfo { get => mapInfo; set => mapInfo = value; }
 
     /// <summary>
     /// The map's UID.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 0, upToVersion: 2)]
-    [AppliedWithChunk(typeof(Chunk03043003))]
-    [AppliedWithChunk(typeof(Chunk03043013))]
-    [AppliedWithChunk(typeof(Chunk0304301F))]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 0, upToVersion: 2)]
+    [AppliedWithChunk<Chunk03043003>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
     public string MapUid
     {
         get => mapInfo.Id;
@@ -413,11 +416,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Login of the map author.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043008))]
-    [AppliedWithChunk(typeof(Chunk0304300F))]
-    [AppliedWithChunk(typeof(Chunk03043013))]
-    [AppliedWithChunk(typeof(Chunk0304301F))]
-    [AppliedWithChunk(typeof(Chunk03043042))]
+    [AppliedWithChunk<Chunk03043008>]
+    [AppliedWithChunk<Chunk0304300F>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
+    [AppliedWithChunk<Chunk03043042>]
     public string AuthorLogin
     {
         get
@@ -446,21 +449,21 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// The map's intended use or state, defined in the header. This defines the visibility in the the map browser.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003))]
+    [AppliedWithChunk<Chunk03043003>]
     public MapKind KindInHeader { get => kindInHeader; set => kindInHeader = value; }
 
     /// <summary>
     /// The map's intended use or state, defined in the body. This defines general validity.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043011))]
+    [AppliedWithChunk<Chunk03043011>]
     public MapKind Kind { get => kind; set => kind = value; }
 
     /// <summary>
     /// Password of the map used by older maps.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk03043003>(sinceVersion: 1)]
     public string? Password
     {
         get
@@ -479,17 +482,17 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// The map's decoration (time of the day or scenery)
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003), sinceVersion: 2)]
-    [AppliedWithChunk(typeof(Chunk0304300F))]
-    [AppliedWithChunk(typeof(Chunk03043013))]
-    [AppliedWithChunk(typeof(Chunk0304301F))]
+    [AppliedWithChunk<Chunk03043003>(sinceVersion: 2)]
+    [AppliedWithChunk<Chunk0304300F>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
     public Ident? Decoration { get => decoration; set => decoration = value; }
 
     /// <summary>
     /// Name of the map type script.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003), sinceVersion: 6)]
+    [AppliedWithChunk<Chunk03043003>(sinceVersion: 6)]
     public string? MapType
     {
         get => ChallengeParameters is null ? mapType : ChallengeParameters.MapType;
@@ -508,7 +511,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Style of the map (Fullspeed, LOL, Tech), usually unused and defined by user.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003), sinceVersion: 6)]
+    [AppliedWithChunk<Chunk03043003>(sinceVersion: 6)]
     public string? MapStyle
     {
         get => ChallengeParameters is null ? mapStyle : ChallengeParameters.MapStyle;
@@ -527,21 +530,21 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// UID of the lightmap data stored in cache.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003), sinceVersion: 8)]
+    [AppliedWithChunk<Chunk03043003>(sinceVersion: 8)]
     public ulong? LightmapCacheUID { get => lightmapCacheUID; set => lightmapCacheUID = value; }
 
     /// <summary>
     /// Version of the lightmap calculation.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003), sinceVersion: 9)]
+    [AppliedWithChunk<Chunk03043003>(sinceVersion: 9)]
     public byte? LightmapVersion { get => lightmapVersion; set => lightmapVersion = value; }
 
     /// <summary>
     /// XML track information and dependencies.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043005))]
+    [AppliedWithChunk<Chunk03043005>]
     public string? XML { get => xml; set => xml = value; }
 
     /// <summary>
@@ -549,7 +552,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     [JpegData]
-    [AppliedWithChunk(typeof(Chunk03043007), sinceVersion: 1)]
+    [AppliedWithChunk<Chunk03043007>(sinceVersion: 1)]
     public byte[]? Thumbnail { get => thumbnail; set => thumbnail = value; }
 
     /// <summary>
@@ -566,26 +569,26 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Origin of the map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003), sinceVersion: 3)]
-    [AppliedWithChunk(typeof(Chunk03043023))]
-    [AppliedWithChunk(typeof(Chunk03043025))]
+    [AppliedWithChunk<Chunk03043003>(sinceVersion: 3)]
+    [AppliedWithChunk<Chunk03043023>]
+    [AppliedWithChunk<Chunk03043025>]
     public Vec2? MapCoordOrigin { get => mapCoordOrigin; set => mapCoordOrigin = value; }
 
     /// <summary>
     /// Target of the map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003), sinceVersion: 4)]
-    [AppliedWithChunk(typeof(Chunk03043023))]
-    [AppliedWithChunk(typeof(Chunk03043025))]
+    [AppliedWithChunk<Chunk03043003>(sinceVersion: 4)]
+    [AppliedWithChunk<Chunk03043023>]
+    [AppliedWithChunk<Chunk03043025>]
     public Vec2? MapCoordTarget { get => mapCoordTarget; set => mapCoordTarget = value; }
 
     /// <summary>
     /// Title pack the map was built in.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043003), sinceVersion: 11)]
-    [AppliedWithChunk(typeof(Chunk03043051))]
+    [AppliedWithChunk<Chunk03043003>(sinceVersion: 11)]
+    [AppliedWithChunk<Chunk03043051>]
     public string? TitleID
     {
         get
@@ -604,7 +607,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Executable (game's) build version the map was built in.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043051))]
+    [AppliedWithChunk<Chunk03043051>]
     public string? BuildVersion
     {
         get
@@ -624,9 +627,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     [SupportsFormatting]
-    [AppliedWithChunk(typeof(Chunk03043007), sinceVersion: 1)]
-    [AppliedWithChunk(typeof(Chunk03043028))]
-    [AppliedWithChunk(typeof(Chunk0304302D))]
+    [AppliedWithChunk<Chunk03043007>(sinceVersion: 1)]
+    [AppliedWithChunk<Chunk03043028>]
+    [AppliedWithChunk<Chunk0304302D>]
     public string? Comments
     {
         get
@@ -642,8 +645,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043008))]
-    [AppliedWithChunk(typeof(Chunk03043042))]
+    [AppliedWithChunk<Chunk03043008>]
+    [AppliedWithChunk<Chunk03043042>]
     public int? AuthorVersion
     {
         get
@@ -663,8 +666,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     [SupportsFormatting]
-    [AppliedWithChunk(typeof(Chunk03043008))]
-    [AppliedWithChunk(typeof(Chunk03043042))]
+    [AppliedWithChunk<Chunk03043008>]
+    [AppliedWithChunk<Chunk03043042>]
     public string? AuthorNickname
     {
         get
@@ -683,8 +686,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Zone of the map author.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043008))]
-    [AppliedWithChunk(typeof(Chunk03043042))]
+    [AppliedWithChunk<Chunk03043008>]
+    [AppliedWithChunk<Chunk03043042>]
     public string? AuthorZone
     {
         get
@@ -700,8 +703,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043008))]
-    [AppliedWithChunk(typeof(Chunk03043042))]
+    [AppliedWithChunk<Chunk03043008>]
+    [AppliedWithChunk<Chunk03043042>]
     public string? AuthorExtraInfo
     {
         get
@@ -720,28 +723,28 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// The car's name, environment and author used on the map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304300D))]
+    [AppliedWithChunk<Chunk0304300D>]
     public Ident? PlayerModel { get => playerModel; set => playerModel = value; }
 
     /// <summary>
     /// Map parameters.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043011))]
+    [AppliedWithChunk<Chunk03043011>]
     public CGameCtnChallengeParameters? ChallengeParameters { get => challengeParameters; set => challengeParameters = value; }
 
     /// <summary>
     /// List of available puzzle pieces.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043011))]
+    [AppliedWithChunk<Chunk03043011>]
     public CGameCtnCollectorList? BlockStock { get => blockStock; set => blockStock = value; }
 
     /// <summary>
     /// All checkpoints and their map coordinates. Used by TMUF and older games.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043017))]
+    [AppliedWithChunk<Chunk03043017>]
     public Int3[]? Checkpoints
     {
         get
@@ -760,7 +763,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Reference to the mod (texture/resource pack) used on the map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043019))]
+    [AppliedWithChunk<Chunk03043019>]
     public FileRef? ModPackDesc
     {
         get
@@ -779,7 +782,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Map type in which the track was validated in.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043002), sinceVersion: 7)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 7)]
     public PlayMode? Mode
     {
         get
@@ -798,22 +801,22 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Size of the map in block coordinates.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304300F))]
-    [AppliedWithChunk(typeof(Chunk03043013))]
-    [AppliedWithChunk(typeof(Chunk0304301F))]
+    [AppliedWithChunk<Chunk0304300F>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
     public Int3? Size { get => size; set => size = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304300F))]
+    [AppliedWithChunk<Chunk0304300F>]
     public bool? NeedUnlock { get => needUnlock; set => needUnlock = value; }
 
     /// <summary>
     /// List of all blocks on the map. Can be null when only the header was read, or simply when <see cref="Chunk0304300F"/>, <see cref="Chunk03043013"/>, or <see cref="Chunk0304301F"/> is missing.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304300F))]
-    [AppliedWithChunk(typeof(Chunk03043013))]
-    [AppliedWithChunk(typeof(Chunk0304301F))]
+    [AppliedWithChunk<Chunk0304300F>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
     public IList<CGameCtnBlock>? Blocks { get => blocks; set => blocks = value; }
 
     /// <summary>
@@ -823,7 +826,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public int? NbBlocks => Blocks?.Count(x => x.Flags != -1);
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043048))]
+    [AppliedWithChunk<Chunk03043048>]
     public IList<CGameCtnBlock>? BakedBlocks { get; set; }
 
     /// <summary>
@@ -833,59 +836,59 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public int? NbBakedBlocks => BakedBlocks?.Count(x => x.Flags != -1);
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043048))]
+    [AppliedWithChunk<Chunk03043048>]
     public SBakedClipsAdditionalData[]? BakedClipsAdditionalData { get; set; }
 
     /// <summary>
     /// MediaTracker intro.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043021))]
-    [AppliedWithChunk(typeof(Chunk03043049))]
+    [AppliedWithChunk<Chunk03043021>]
+    [AppliedWithChunk<Chunk03043049>]
     public CGameCtnMediaClip? ClipIntro { get => clipIntro; set => clipIntro = value; }
 
     /// <summary>
     /// MediaTracker ingame.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043021))]
-    [AppliedWithChunk(typeof(Chunk03043049))]
+    [AppliedWithChunk<Chunk03043021>]
+    [AppliedWithChunk<Chunk03043049>]
     public CGameCtnMediaClipGroup? ClipGroupInGame { get => clipGroupInGame; set => clipGroupInGame = value; }
 
     /// <summary>
     /// MediaTracker end race.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043021))]
-    [AppliedWithChunk(typeof(Chunk03043049))]
+    [AppliedWithChunk<Chunk03043021>]
+    [AppliedWithChunk<Chunk03043049>]
     public CGameCtnMediaClipGroup? ClipGroupEndRace { get => clipGroupEndRace; set => clipGroupEndRace = value; }
 
     /// <summary>
     /// MediaTracker ambiance.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043049), sinceVersion: 2)]
+    [AppliedWithChunk<Chunk03043049>(sinceVersion: 2)]
     public CGameCtnMediaClip? ClipAmbiance { get => clipAmbiance; set => clipAmbiance = value; }
 
     /// <summary>
     /// MediaTracker podium.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043049))]
+    [AppliedWithChunk<Chunk03043049>]
     public CGameCtnMediaClip? ClipPodium { get => clipPodium; set => clipPodium = value; }
 
     /// <summary>
     /// Reference to the custom music used on the map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043024))]
+    [AppliedWithChunk<Chunk03043024>]
     public FileRef? CustomMusicPackDesc { get => customMusicPackDesc; set => customMusicPackDesc = value; }
 
     /// <summary>
     /// Hashed password of the map, if it's password protected.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043029))]
+    [AppliedWithChunk<Chunk03043029>]
     public byte[]? HashedPassword
     {
         get
@@ -904,7 +907,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CRC32 of the map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043029))]
+    [AppliedWithChunk<Chunk03043029>]
     public uint? CRC32
     {
         get
@@ -923,10 +926,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Position of the thumbnail camera.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043027))]
-    [AppliedWithChunk(typeof(Chunk03043028))]
-    [AppliedWithChunk(typeof(Chunk0304302D))]
-    [AppliedWithChunk(typeof(Chunk03043036))]
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
     public Vec3? ThumbnailPosition
     {
         get
@@ -945,10 +948,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Pitch, yaw and roll of the thumbnail camera in radians.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043027))]
-    [AppliedWithChunk(typeof(Chunk03043028))]
-    [AppliedWithChunk(typeof(Chunk0304302D))]
-    [AppliedWithChunk(typeof(Chunk03043036))]
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
     public Vec3? ThumbnailPitchYawRoll
     {
         get
@@ -967,10 +970,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Thumbnail camera FOV.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043027))]
-    [AppliedWithChunk(typeof(Chunk03043028))]
-    [AppliedWithChunk(typeof(Chunk0304302D))]
-    [AppliedWithChunk(typeof(Chunk03043036))]
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
     public float? ThumbnailFOV
     {
         get
@@ -986,10 +989,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043027))]
-    [AppliedWithChunk(typeof(Chunk03043028))]
-    [AppliedWithChunk(typeof(Chunk0304302D))]
-    [AppliedWithChunk(typeof(Chunk03043036))]
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
     public float? ThumbnailNearClipPlane
     {
         get
@@ -1005,10 +1008,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043027))]
-    [AppliedWithChunk(typeof(Chunk03043028))]
-    [AppliedWithChunk(typeof(Chunk0304302D))]
-    [AppliedWithChunk(typeof(Chunk03043036))]
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
+    [AppliedWithChunk<Chunk0304302D>]
+    [AppliedWithChunk<Chunk03043036>]
     public float? ThumbnailFarClipPlane
     {
         get
@@ -1026,8 +1029,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// List of all the available lightmap frames. Each frame can contain up to 3 different variants in either JPEG or WEBP format.
     /// </summary>
-    [AppliedWithChunk(typeof(Chunk0304303D))]
-    [AppliedWithChunk(typeof(Chunk0304305B))]
+    [AppliedWithChunk<Chunk0304303D>]
+    [AppliedWithChunk<Chunk0304305B>]
     public List<List<EmbeddedFile>>? LightmapFrames
     {
         get
@@ -1046,8 +1049,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Lightmap cache information.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304303D))]
-    [AppliedWithChunk(typeof(Chunk0304305B))]
+    [AppliedWithChunk<Chunk0304303D>]
+    [AppliedWithChunk<Chunk0304305B>]
     public CHmsLightMapCache? LightmapCache
     {
         get
@@ -1066,15 +1069,15 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// If the map has at least 1 lightmap frame.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304303D))]
-    [AppliedWithChunk(typeof(Chunk0304305B))]
+    [AppliedWithChunk<Chunk0304303D>]
+    [AppliedWithChunk<Chunk0304305B>]
     public bool HasLightmaps => lightmapFrames?.Count > 0;
 
     /// <summary>
     /// List of all items and objects placed on the map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043040))]
+    [AppliedWithChunk<Chunk03043040>]
     public IList<CGameCtnAnchoredObject>? AnchoredObjects
     {
         get
@@ -1090,7 +1093,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043043))]
+    [AppliedWithChunk<Chunk03043043>]
     public CGameCtnZoneGenealogy[]? Genealogies
     {
         get
@@ -1109,7 +1112,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Metadata written into the map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043044))]
+    [AppliedWithChunk<Chunk03043044>]
     public CScriptTraitsMetadata? ScriptMetadata
     {
         get
@@ -1125,7 +1128,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304304B))]
+    [AppliedWithChunk<Chunk0304304B>]
     public string? ObjectiveTextAuthor
     {
         get
@@ -1141,7 +1144,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304304B))]
+    [AppliedWithChunk<Chunk0304304B>]
     public string? ObjectiveTextGold
     {
         get
@@ -1157,7 +1160,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304304B))]
+    [AppliedWithChunk<Chunk0304304B>]
     public string? ObjectiveTextSilver
     {
         get
@@ -1173,7 +1176,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk0304304B))]
+    [AppliedWithChunk<Chunk0304304B>]
     public string? ObjectiveTextBronze
     {
         get
@@ -1192,7 +1195,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// List of offzones defined on the map, constructed with cubes made from start-to-end coordinates.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043050))]
+    [AppliedWithChunk<Chunk03043050>]
     public IList<(Int3 start, Int3 end)>? Offzones
     {
         get
@@ -1211,7 +1214,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Minimum Y value of <see cref="Blocks"/>.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043052))]
+    [AppliedWithChunk<Chunk03043052>]
     public int DecoBaseHeightOffset
     {
         get
@@ -1230,7 +1233,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Bot paths defined on the (Shootmania) map.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043053))]
+    [AppliedWithChunk<Chunk03043053>]
     public IList<BotPath>? BotPaths
     {
         get
@@ -1249,7 +1252,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Embedded data in the map. Key defines a relative path to the resource. Value is the actual data, usually in Gbx format, sometimes in image format.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043054))]
+    [AppliedWithChunk<Chunk03043054>]
     public Dictionary<string, byte[]>? EmbeddedData
     {
         get
@@ -1263,7 +1266,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Exact time of the day in the map. Available since ManiaPlanet 4.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043056))]
+    [AppliedWithChunk<Chunk03043056>]
     public TimeSpan? DayTime
     {
         get
@@ -1282,7 +1285,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// If the map uses dynamic daylight cycle. Available since ManiaPlanet 4.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043056))]
+    [AppliedWithChunk<Chunk03043056>]
     public bool DynamicDaylight
     {
         get
@@ -1301,7 +1304,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Duration of the day defined in real time. Available since ManiaPlanet 4.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043056))]
+    [AppliedWithChunk<Chunk03043056>]
     public TimeInt32? DayDuration
     {
         get
@@ -1320,19 +1323,35 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// If the thumbnail camera was customized. Only relevant up to TMUF.
     /// </summary>
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043027))]
-    [AppliedWithChunk(typeof(Chunk03043028))]
+    [AppliedWithChunk<Chunk03043027>]
+    [AppliedWithChunk<Chunk03043028>]
     public bool? HasCustomCamThumbnail { get => hasCustomCamThumbnail; set => hasCustomCamThumbnail = value; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03043069))]
+    [AppliedWithChunk<Chunk03043069>]
     public IList<MacroblockInstance>? MacroblockInstances { get; set; }
+    
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk0304303E>]
+    public CSceneVehicleCarMarksSamples?[]? CarMarksBuffer
+    {
+        get
+        {
+            DiscoverChunk<Chunk0304303E>();
+            return carMarksBuffer;
+        }
+        set
+        {
+            DiscoverChunk<Chunk0304303E>();
+            carMarksBuffer = value;
+        }
+    }
 
     #endregion
 
     #region Constructors
 
-    protected CGameCtnChallenge()
+    internal CGameCtnChallenge()
     {
         mapInfo = Ident.Empty;
         mapName = "";
@@ -2100,12 +2119,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             var blockCenter = new Vec3();
             // Temporary center variable whose rule is to properly position blocks over size of 1x1
 
-            if (BlockInfoManager.BlockModels.TryGetValue(block.Name, out BlockModel model)) // Get quick block information if available
+            if (BlockInfoManager.BlockModels.TryGetValue(block.Name, out BlockModel? model)) // Get quick block information if available
             {
                 var blockUnits = block.IsGround ? model.Ground : model.Air;
                 // Use the block units from what the block actually pretends to be placed on
 
-                if (blockUnits.Length > 1) // Optimization for blocks that are simple 1x1 size
+                if (blockUnits?.Length > 1) // Optimization for blocks that are simple 1x1 size
                 {
                     var blockAllCoords = Array.ConvertAll(blockUnits.Select(x => x.Coord).ToArray(), x => (Int3)x); // Gets the coords in Int3 type
 
@@ -2200,12 +2219,10 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043001, "Virtual Skipper")]
     public class Chunk03043001 : HeaderChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
-
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; }
 
         public BoatName BoatName { get; set; }
         public string? Boat { get; set; }
@@ -2243,9 +2260,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Byte(ref version);
+            rw.VersionByte(this);
 
-            if (version < 1)
+            if (Version < 1)
             {
                 rw.Ident(ref n.mapInfo!);
                 rw.String(ref n.mapName!);
@@ -2254,18 +2271,18 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             U01 = rw.Boolean(U01);
             U02 = rw.Int32(U02);
 
-            if (version < 1)
+            if (Version < 1)
                 U03 = rw.Byte(U03.GetValueOrDefault());
 
             U04 = rw.Byte(U04);
 
-            if (version < 9)
+            if (Version < 9)
                 BoatName = (BoatName)rw.Byte((byte)BoatName);
 
-            if (version >= 9)
+            if (Version >= 9)
                 Boat = rw.Id(Boat);
 
-            if (version >= 12)
+            if (Version >= 12)
                 BoatAuthor = rw.Id(BoatAuthor);
 
             RaceMode = (RaceMode)rw.Byte((byte)RaceMode);
@@ -2277,49 +2294,49 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             StartDelay = (StartDelay)rw.Byte((byte)StartDelay);
             StartTime = rw.Int32(StartTime);
 
-            if (version >= 2)
+            if (Version >= 2)
             {
                 TimeLimit = TimeInt32.FromMilliseconds(rw.Int32((int)TimeLimit.TotalMilliseconds));
                 NoPenalty = rw.Boolean(NoPenalty);
                 InflPenalty = rw.Boolean(InflPenalty);
                 FinishFirst = rw.Boolean(FinishFirst);
 
-                if (version >= 3)
+                if (Version >= 3)
                 {
                     NbAIs = rw.Byte(NbAIs);
 
-                    if (version >= 4)
+                    if (Version >= 4)
                     {
                         CourseLength = rw.Single(CourseLength);
 
-                        if (version >= 5)
+                        if (Version >= 5)
                         {
                             WindShiftAngle = rw.Int32(WindShiftAngle);
                             U07 = rw.Byte(U07);
 
-                            if (version == 6 || version == 7)
+                            if (Version == 6 || Version == 7)
                             {
                                 U08 = rw.Boolean(U08);
                                 U09 = rw.String(U09);
                             }
 
-                            if (version >= 7)
+                            if (Version >= 7)
                             {
                                 ExactWind = !rw.Boolean(!ExactWind);
 
-                                if (version >= 10)
+                                if (Version >= 10)
                                 {
                                     SpawnPoints = rw.Int32(SpawnPoints);
 
-                                    if (version >= 11)
+                                    if (Version >= 11)
                                     {
                                         AILevel = (AILevel)rw.Byte((byte)AILevel);
 
-                                        if (version >= 13)
+                                        if (Version >= 13)
                                         {
                                             SmallShifts = rw.Boolean(SmallShifts);
 
-                                            if (version >= 14)
+                                            if (Version >= 14)
                                             {
                                                 NoRules = rw.Boolean(NoRules);
                                                 StartSailUp = rw.Boolean(StartSailUp);
@@ -2345,8 +2362,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043002, "map info")]
     public class Chunk03043002 : HeaderChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
-
         public bool U01;
         public byte U02;
         public int? U03;
@@ -2356,13 +2371,13 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         /// <summary>
         /// Version of the chunk. TM1.0 starts with version 3.
         /// </summary>
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Byte(ref version);
+            rw.VersionByte(this);
 
-            if (version < 3)
+            if (Version < 3)
             {
                 rw.Ident(ref n.mapInfo!);
                 rw.String(ref n.mapName!);
@@ -2370,57 +2385,57 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             rw.Boolean(ref U01);
 
-            if (version >= 1)
+            if (Version >= 1)
             {
                 rw.TimeInt32Nullable(ref n.bronzeTime);
                 rw.TimeInt32Nullable(ref n.silverTime);
                 rw.TimeInt32Nullable(ref n.goldTime);
                 rw.TimeInt32Nullable(ref n.authorTime);
 
-                if (version == 2)
+                if (Version == 2)
                     rw.Byte(ref U02);
 
-                if (version >= 4)
+                if (Version >= 4)
                 {
                     rw.Int32(ref n.cost);
 
-                    if (version >= 5)
+                    if (Version >= 5)
                     {
                         rw.Boolean(ref n.isLapRace);
 
-                        if (version == 6)
+                        if (Version == 6)
                             rw.Int32(ref U03);
 
-                        if (version >= 7)
+                        if (Version >= 7)
                         {
                             rw.EnumInt32<PlayMode>(ref n.mode);
 
-                            if (version >= 9)
+                            if (Version >= 9)
                             {
                                 rw.Int32(ref U04);
 
-                                if (version >= 10)
+                                if (Version >= 10)
                                 {
                                     rw.Int32(ref n.authorScore);
 
-                                    if (version >= 11)
+                                    if (Version >= 11)
                                     {
                                         rw.EnumInt32<EditorMode>(ref n.editor);
 
-                                        if (version >= 12)
+                                        if (Version >= 12)
                                         {
                                             rw.Int32(ref U05);
 
-                                            if (version >= 13)
+                                            if (Version >= 13)
                                             {
                                                 rw.Int32(ref n.nbCheckpoints);
 
                                                 // Trick to keep the same value when the body is read, as body stores something different
                                                 n.nbLaps = rw.Int32(n.isLapRace.GetValueOrDefault() ? n.nbLaps : 1, defaultValue: 3);
 
-                                                if (version >= 14)
+                                                if (Version >= 14)
                                                 {
-                                                    throw new VersionNotSupportedException(version);
+                                                    throw new VersionNotSupportedException(Version);
                                                 }
                                             }
                                         }
@@ -2444,8 +2459,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043003, "common")]
     public class Chunk03043003 : HeaderChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
-
         public byte[] U01 = new byte[16];
         public int U02;
         public uint? U03;
@@ -2453,59 +2466,59 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Byte(ref version);
+            rw.VersionByte(this);
             rw.Ident(ref n.mapInfo!);
             rw.String(ref n.mapName!);
             rw.EnumByte<MapKind>(ref n.kindInHeader);
 
-            if (version >= 1)
+            if (Version >= 1)
             {
                 rw.UInt32(ref U03); // 'Locked' but actually not
                 rw.String(ref n.password);
 
-                if (version >= 2)
+                if (Version >= 2)
                 {
                     rw.Ident(ref n.decoration);
 
-                    if (version >= 3)
+                    if (Version >= 3)
                     {
                         rw.Vec2(ref n.mapCoordOrigin);
 
-                        if (version >= 4)
+                        if (Version >= 4)
                         {
                             rw.Vec2(ref n.mapCoordTarget);
 
-                            if (version >= 5)
+                            if (Version >= 5)
                             {
                                 rw.Bytes(ref U01!, 16);
 
-                                if (version >= 6)
+                                if (Version >= 6)
                                 {
                                     rw.String(ref n.mapType);
                                     rw.String(ref n.mapStyle);
 
-                                    if (version <= 8)
+                                    if (Version <= 8)
                                         rw.Int32(ref U02);
 
-                                    if (version >= 8)
+                                    if (Version >= 8)
                                     {
                                         rw.UInt64(ref n.lightmapCacheUID);
 
-                                        if (version >= 9)
+                                        if (Version >= 9)
                                         {
                                             rw.Byte(ref n.lightmapVersion);
 
-                                            if (version >= 11)
+                                            if (Version >= 11)
                                             {
                                                 rw.Id(ref n.titleID);
 
-                                                if (version >= 12)
+                                                if (Version >= 12)
                                                 {
-                                                    throw new VersionNotSupportedException(version);
+                                                    throw new VersionNotSupportedException(Version);
                                                 }
                                             }
                                         }
@@ -2529,20 +2542,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043004, "version")]
     public class Chunk03043004 : HeaderChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
-
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version
-        {
-            get => version;
-            set => version = value;
-        }
+        public int Version { get; set; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
         }
     }
 
@@ -2572,18 +2579,16 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043007, "thumbnail")]
     public class Chunk03043007 : HeaderChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version = 1;
-
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; } = 1;
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
 
-            if (version == 0)
+            if (Version == 0)
             {
                 return;
             }
@@ -2610,16 +2615,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043008, "author")]
     public class Chunk03043008 : HeaderChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version = 1;
-
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; } = 1;
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
             rw.Int32(ref n.authorVersion);
             rw.String(ref n.authorLogin!);
             rw.String(ref n.authorNickname);
@@ -2841,6 +2844,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             rw.NodeRef(ref U01); // assert: '!ReplayRecord || !ReplayRecord->m_Challenge' failed.
         }
+
+        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
+        {
+            U01 = await rw.NodeRefAsync(U01, cancellationToken);
+        }
     }
 
     #endregion
@@ -2898,6 +2906,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             rw.NodeRef(ref U01); // assert: '!ReplayRecord || !ReplayRecord->m_Challenge' failed.
         }
+
+        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
+        {
+            U01 = await rw.NodeRefAsync(U01, cancellationToken);
+        }
     }
 
     #endregion
@@ -2911,21 +2924,20 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public class Chunk0304301F : Chunk<CGameCtnChallenge>, IVersionable
     {
         private readonly bool is013;
-        private int version;
 
         public bool NeedUnlock { get; set; }
 
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; }
 
         public Chunk0304301F() : this(null)
         {
 
         }
 
-        public Chunk0304301F(Chunk? chunk) : base()
+        public Chunk0304301F(Chunk? chunk)
         {
             is013 = chunk is Chunk03043013;
         }
@@ -2940,12 +2952,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             if (!is013)
             {
-                version = r.ReadInt32();
+                Version = r.ReadInt32();
             }
 
-            if (version > 6)
+            if (Version > 6)
             {
-                throw new ChunkVersionNotSupportedException(version);
+                throw new ChunkVersionNotSupportedException(Version);
             }
 
             var nbBlocks = r.ReadInt32();
@@ -2954,7 +2966,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             for (var i = 0; i < nbBlocks; i++)
             {
-                var isNormalBlock = ReadAndAddBlock(n, r, version);
+                var isNormalBlock = ReadAndAddBlock(n, r, Version);
 
                 if (isNormalBlock)
                 {
@@ -2966,7 +2978,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             while ((r.PeekUInt32() & 0xC0000000) > 0)
             {
-                ReadAndAddBlock(n, r, version);
+                ReadAndAddBlock(n, r, Version);
             }
         }
 
@@ -3033,7 +3045,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
             if (!is013)
             {
-                w.Write(version);
+                w.Write(Version);
             }
 
             w.Write(n.NbBlocks.GetValueOrDefault());
@@ -3050,7 +3062,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
                 var coord = x.Coord;
 
-                if (version >= 6 && x.Flags != -1)
+                if (Version >= 6 && x.Flags != -1)
                 {
                     coord += (1, 0, 1);
                 }
@@ -3062,11 +3074,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
                 w.Write((Byte3)coord);
 
-                switch (version)
+                switch (Version)
                 {
                     case 0: w.Write((short)x.Flags); break;
                     case > 0: w.Write(x.Flags); break;
-                    default: throw new ChunkVersionNotSupportedException(version);
+                    default: throw new ChunkVersionNotSupportedException(Version);
                 }
 
                 if (x.Flags == -1)
@@ -3085,6 +3097,38 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     w.Write(x.WaypointSpecialProperty);
                 }
             }
+        }
+    }
+
+    #endregion
+
+    #region 0x020 chunk (legacy legacy mediatracker)
+
+    /// <summary>
+    /// CGameCtnChallenge 0x020 chunk (legacy legacy mediatracker)
+    /// </summary>
+    [Chunk(0x03043020, "legacy legacy mediatracker")]
+    public class Chunk03043020 : Chunk<CGameCtnChallenge>
+    {
+        public Node? U01;
+        public Node? U02;
+
+        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef<CGameCtnMediaClip>(ref n.clipIntro);
+            rw.NodeRef(ref U01);
+            rw.NodeRef(ref U02);
+            rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupInGame);
+            rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupEndRace);
+        }
+
+        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
+        {
+            n.clipIntro = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipIntro, cancellationToken);
+            U01 = await rw.NodeRefAsync(U01, cancellationToken);
+            U02 = await rw.NodeRefAsync(U02, cancellationToken);
+            n.clipGroupInGame = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupInGame, cancellationToken);
+            n.clipGroupEndRace = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupEndRace, cancellationToken);
         }
     }
 
@@ -3193,15 +3237,16 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     {
         private CMwNod? clipGlobal;
 
-        public CMwNod? ClipGlobal
-        {
-            get => clipGlobal;
-            set => clipGlobal = value;
-        }
+        public CMwNod? ClipGlobal { get => clipGlobal; set => clipGlobal = value; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
             rw.NodeRef(ref clipGlobal);
+        }
+
+        public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
+        {
+            clipGlobal = await rw.NodeRefAsync(clipGlobal, cancellationToken);
         }
     }
 
@@ -3392,8 +3437,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x0304303D, "lightmaps")]
     public class Chunk0304303D : SkippableChunk<CGameCtnChallenge>
     {
-        private int version = 4;
-
         public bool U01;
 
         public byte[]? DataAfterLightmapCache { get; set; }
@@ -3401,7 +3444,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; } = 4;
 
         public int? LightmapCacheDataUncompressedSize { get; set; }
         public byte[]? LightmapCacheData { get; set; }
@@ -3434,9 +3477,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         public void ReadSHmsLightMapCacheSmall(CGameCtnChallenge n, GameBoxReader r)
         {
-            version = r.ReadInt32();
+            Version = r.ReadInt32();
 
-            if (version >= 5)
+            if (Version >= 5)
             {
                 var frameCount = r.ReadInt32();
                 n.lightmapFrames = new List<List<EmbeddedFile>>(frameCount);
@@ -3452,7 +3495,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 };
             }
 
-            if (version < 2)
+            if (Version < 2)
             {
                 return;
             }
@@ -3461,12 +3504,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             {
                 frame.Add(EmbeddedFile.Parse(r.ReadBytes()));
 
-                if (version >= 3)
+                if (Version >= 3)
                 {
                     frame.Add(EmbeddedFile.Parse(r.ReadBytes()));
                 }
 
-                if (version >= 6)
+                if (Version >= 6)
                 {
                     frame.Add(EmbeddedFile.Parse(r.ReadBytes()));
                 }
@@ -3484,7 +3527,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 #else
                 using var zlib = new CompressedStream(ms, CompressionMode.Decompress);
 #endif
-                using var gbxr = new GameBoxReader(zlib, r, hasOwnIdState: true);
+                using var gbxr = new GameBoxReader(zlib, r, encapsulated: true);
 
                 n.lightmapCache = Parse<CHmsLightMapCache>(gbxr, 0x06022000, progress: null);
 
@@ -3496,14 +3539,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         public void WriteSHmsLightMapCacheSmall(CGameCtnChallenge n, GameBoxWriter w)
         {
-            w.Write(version);
+            w.Write(Version);
 
-            if (version >= 5)
+            if (Version >= 5)
             {
                 w.Write(n.lightmapFrames?.Count ?? 0);
             }
 
-            if (version < 2 || n.lightmapFrames is null)
+            if (Version < 2 || n.lightmapFrames is null)
             {
                 return;
             }
@@ -3513,13 +3556,13 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 w.Write(frame[0].Data.Length);
                 w.Write(frame[0].Data);
 
-                if (version >= 3)
+                if (Version >= 3)
                 {
                     w.Write(frame[1].Data.Length);
                     w.Write(frame[1].Data);
                 }
 
-                if (version >= 6)
+                if (Version >= 6)
                 {
                     w.Write(frame[2].Data.Length);
                     w.Write(frame[2].Data);
@@ -3530,7 +3573,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             {
 #if NET6_0_OR_GREATER
                 using var ms = new MemoryStream();
-                using var gbxw = new GameBoxWriter(ms, w, hasOwnIdState: true);
+                using var gbxw = new GameBoxWriter(ms, w, encapsulated: true);
 
                 n.lightmapCache?.Write(gbxw);
                 gbxw.Write(DataAfterLightmapCache ?? Array.Empty<byte>());
@@ -3566,36 +3609,29 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
-    #region 0x03E skippable chunk (CSceneVehicleCarMarksSamples)
+    #region 0x03E skippable chunk (CarMarksBuffer)
 
     /// <summary>
-    /// CGameCtnChallenge 0x03E skippable chunk (CSceneVehicleCarMarksSamples)
+    /// CGameCtnChallenge 0x03E skippable chunk (CarMarksBuffer)
     /// </summary>
-    [Chunk(0x0304303E, "CSceneVehicleCarMarksSamples")]
+    [Chunk(0x0304303E, "CarMarksBuffer")]
     public class Chunk0304303E : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
-
         public int U01;
 
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
 
-            if (version > 0)
+            if (Version > 0)
             {
-                throw new ChunkVersionNotSupportedException(version);
+                throw new ChunkVersionNotSupportedException(Version);
             }
 
             rw.Int32(10);
-            rw.Int32(ref U01); // CSceneVehicleCarMarksSamples array
-
-            if (U01 > 0)
-            {
-                throw new NotSupportedException("U01 > 0");
-            }
+            rw.ArrayNode<CSceneVehicleCarMarksSamples>(ref n.carMarksBuffer);
         }
     }
 
@@ -3609,23 +3645,21 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043040, "items")]
     public class Chunk03043040 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version = 4;
-
         public int U01;
         public int[]? U02;
 
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; } = 4;
 
         public override void Read(CGameCtnChallenge n, GameBoxReader r)
         {
-            version = r.ReadInt32();
+            Version = r.ReadInt32();
             U01 = r.ReadInt32();
             var size = r.ReadInt32();
 
-            r = new GameBoxReader(r, hasOwnIdState: true);
+            r = new GameBoxReader(r, encapsulated: true);
 
             _ = r.ReadInt32(); // 10
             n.anchoredObjects = r.ReadList(r =>
@@ -3633,7 +3667,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 return Parse<CGameCtnAnchoredObject>(r, classId: null, progress: null)!;
             });
 
-            if (version >= 1 && version != 5)
+            if (Version >= 1 && Version != 5)
             {
                 // defines which (second element) items are deleted together with other (first element) item?
                 var itemsOnItem = r.ReadArray<Int2>();
@@ -3644,7 +3678,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 }
             }
 
-            if (version >= 5)
+            if (Version >= 5)
             {
                 var blockIndexes = r.ReadArray<int>(); // block indexes, -1 means itemIndexes will have the value instead
                 var usedBlocks = new CGameCtnBlock[blockIndexes.Length];
@@ -3660,11 +3694,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     }
                 }
 
-                var snapItemGroups = version < 7 ? r.ReadArray<int>() : null; // snap item group - only some snapped items will delete on a block. they are consistent numbers
+                var snapItemGroups = Version < 7 ? r.ReadArray<int>() : null; // snap item group - only some snapped items will delete on a block. they are consistent numbers
 
                 var usedItems = default(CGameCtnAnchoredObject[]);
 
-                if (version >= 6)
+                if (Version >= 6)
                 {
                     var itemIndexes = r.ReadArray<int>(); // item indexes
                     usedItems = new CGameCtnAnchoredObject[itemIndexes.Length];
@@ -3680,9 +3714,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     }
                 }
 
-                snapItemGroups ??= version >= 7 ? r.ReadArray<int>() : null;
+                snapItemGroups ??= Version >= 7 ? r.ReadArray<int>() : null;
 
-                if (version != 6)
+                if (Version != 6)
                 {
                     var U07 = r.ReadArray<int>();
 
@@ -3721,9 +3755,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     n.anchoredObjects[i].SnappedOnGroup = snapItemGroups?[snappedIndex] ?? 0;
                 }
 
-                if (version >= 8)
+                if (Version >= 8)
                 {
-                    throw new ChunkVersionNotSupportedException(version);
+                    throw new ChunkVersionNotSupportedException(Version);
                 }
             }
 
@@ -3736,7 +3770,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             w.Write(U01);
 
             using var itemMs = new MemoryStream();
-            using var itemW = new GameBoxWriter(itemMs, w, hasOwnIdState: true);
+            using var itemW = new GameBoxWriter(itemMs, w, encapsulated: true);
 
             itemW.Write(10);
             itemW.WriteNodeArray(n.anchoredObjects);
@@ -3751,7 +3785,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 }
             }
 
-            if (version >= 1 && version != 5)
+            if (Version >= 1 && Version != 5)
             {
                 var pairs = new List<Int2>();
 
@@ -3771,7 +3805,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 itemW.WriteList(pairs, (x, w) => w.Write(x));
             }
 
-            if (version >= 5)
+            if (Version >= 5)
             {
                 var blockDict = new Dictionary<CGameCtnBlock, int>();
 
@@ -3851,22 +3885,22 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
                 itemW.WriteArray(usedBlockIndexList.Select(x => x.blockIndex).ToArray());
 
-                if (version < 7)
+                if (Version < 7)
                 {
                     itemW.WriteArray(usedBlockIndexList.Select(x => x.group).ToArray());
                 }
 
-                if (version >= 6)
+                if (Version >= 6)
                 {
                     itemW.WriteArray(usedItemIndexList.Select(x => x.itemIndex).ToArray());
                 }
 
-                if (version >= 7)
+                if (Version >= 7)
                 {
                     itemW.WriteArray(usedBlockIndexList.Select(x => x.group).ToArray());
                 }
 
-                if (version != 6)
+                if (Version != 6)
                 {
                     itemW.WriteArray(Enumerable.Repeat(-1, usedBlockIndexList.Count).ToArray());
                 }
@@ -3902,16 +3936,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043042, "author")]
     public class Chunk03043042 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version = 1;
-
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; } = 1;
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
             rw.Int32(ref n.authorVersion);
             rw.String(ref n.authorLogin!); // according to asserts, login must be larger than 0 and maybe equal to the MapInfo.Author
             rw.String(ref n.authorNickname);
@@ -3932,17 +3964,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     {
         public int U01;
 
-        /// <summary>
-        /// Version of the chunk.
-        /// </summary>
-        public int Version { get; set; }
-
         public override void Read(CGameCtnChallenge n, GameBoxReader r)
         {
             U01 = r.ReadInt32();
             var sizeOfNodeWithClassID = r.ReadInt32();
 
-            r = new GameBoxReader(r, hasOwnIdState: true);
+            r = new GameBoxReader(r, encapsulated: true);
 
             n.genealogies = r.ReadArray(r =>
             {
@@ -3957,7 +3984,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             w.Write(U01);
 
             using var ms = new MemoryStream();
-            using var wOwnIdState = new GameBoxWriter(ms, w, hasOwnIdState: true);
+            using var wOwnIdState = new GameBoxWriter(ms, w, encapsulated: true);
 
             wOwnIdState.WriteArray(n.genealogies, (x, w) =>
             {
@@ -3978,25 +4005,21 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CGameCtnChallenge 0x044 skippable chunk (metadata)
     /// </summary>
     [Chunk(0x03043044, "metadata")]
-    public class Chunk03043044 : SkippableChunk<CGameCtnChallenge>, IVersionable
+    public class Chunk03043044 : SkippableChunk<CGameCtnChallenge>
     {
-        /// <summary>
-        /// Version of the chunk.
-        /// </summary>
-        public int Version { get; set; }
+        public int EncapsulationVersion { get; set; }
 
         public override void Read(CGameCtnChallenge n, GameBoxReader r)
         {
-            Version = r.ReadInt32();
+            EncapsulationVersion = r.ReadInt32();
             var size = r.ReadInt32();
 
-            n.scriptMetadata = new CScriptTraitsMetadata();
-            n.scriptMetadata.Read(r);
+            n.scriptMetadata = r.ReadNode<CScriptTraitsMetadata>(expectedClassId: 0x11002000);
         }
 
         public override void Write(CGameCtnChallenge n, GameBoxWriter w)
         {
-            w.Write(Version);
+            w.Write(EncapsulationVersion);
 
             using var ms = new MemoryStream();
             using var wm = new GameBoxWriter(ms);
@@ -4004,7 +4027,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             n.scriptMetadata?.Write(wm);
 
             w.Write((int)ms.Length);
-            w.Write(ms.ToArray(), 0, (int)ms.Length);
+            w.Write(ms.ToArray());
         }
     }
 
@@ -4018,20 +4041,18 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043047)]
     public class Chunk03043047 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
-
         public string? U01;
 
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
             rw.String(ref U01);
 
-            if (version > 0)
+            if (Version > 0)
             {
-                throw new ChunkVersionNotSupportedException(version);
+                throw new ChunkVersionNotSupportedException(Version);
             }
         }
     }
@@ -4043,7 +4064,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x048 skippable chunk (baked blocks)
     /// </summary>
-    [Chunk(0x03043048, processSync: true, "baked blocks")]
+    [Chunk(0x03043048, "baked blocks", ProcessSync = true)]
     public class Chunk03043048 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         public int U01;
@@ -4104,6 +4125,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 coord -= (1, 0, 1);
             }
 
+            if (CGameCtnBlock.IsFreeBlock(flags))
+            {
+                coord -= (0, 1, 0);
+            }
+
             n.BakedBlocks!.Add(new(name, direction, coord, flags));
 
             return flags;
@@ -4126,15 +4152,20 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             {
                 w.WriteId(block.Name);
                 w.Write((byte)block.Direction);
-                
+
+                var coord = block.Coord;
+
                 if (block.Flags != -1)
                 {
-                    w.Write((Byte3)(block.Coord + (1, 0, 1)));
+                    coord += (1, 0, 1);
                 }
-                else
+
+                if (CGameCtnBlock.IsFreeBlock(block.Flags))
                 {
-                    w.Write((Byte3)block.Coord);
+                    coord += (0, 1, 0);
                 }
+
+                w.Write((Byte3)coord);
                 
                 w.Write(block.Flags);
             }
@@ -4162,13 +4193,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043049, "mediatracker")]
     public class Chunk03043049 : Chunk<CGameCtnChallenge>, IVersionable
     {
-        private int version = 2;
         private Int3 triggerSize = (3, 1, 3);
 
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; } = 2;
 
         /// <summary>
         /// Trigger size per coord.
@@ -4177,19 +4207,19 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
 
             rw.NodeRef<CGameCtnMediaClip>(ref n.clipIntro);
             rw.NodeRef<CGameCtnMediaClip>(ref n.clipPodium);
             rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupInGame);
             rw.NodeRef<CGameCtnMediaClipGroup>(ref n.clipGroupEndRace);
 
-            if (version >= 2)
+            if (Version >= 2)
             {
                 rw.NodeRef<CGameCtnMediaClip>(ref n.clipAmbiance);
             }
 
-            if (version >= 1)
+            if (Version >= 1)
             {
                 rw.Int3(ref triggerSize);
             }
@@ -4197,16 +4227,20 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         public override async Task ReadWriteAsync(CGameCtnChallenge n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
 
             n.clipIntro = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipIntro, cancellationToken);
             n.clipPodium = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipPodium, cancellationToken);
             n.clipGroupInGame = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupInGame, cancellationToken);
             n.clipGroupEndRace = await rw.NodeRefAsync<CGameCtnMediaClipGroup>(n.clipGroupEndRace, cancellationToken);
-
-            if (version >= 2)
+            
+            if (Version >= 2)
             {
                 n.clipAmbiance = await rw.NodeRefAsync<CGameCtnMediaClip>(n.clipAmbiance, cancellationToken);
+            }
+
+            if (Version >= 1)
+            {
                 rw.Int3(ref triggerSize);
             }
         }
@@ -4280,19 +4314,18 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043050, "offzones")]
     public class Chunk03043050 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
         private Vec3 triggerSize = (3, 1, 3);
 
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; }
 
         public Vec3 TriggerSize { get => triggerSize; set => triggerSize = value; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
             rw.Vec3(ref triggerSize);
 
             rw.List(ref n.offzones,
@@ -4315,17 +4348,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043051, "title info")]
     public class Chunk03043051 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
-
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
-
+            rw.VersionInt32(this);
             rw.Id(ref n.titleID);
             rw.String(ref n.buildVersion);
         }
@@ -4341,16 +4371,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043052, "deco height")]
     public class Chunk03043052 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
-
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
             rw.Int32(ref n.decoBaseHeightOffset);
         }
     }
@@ -4365,16 +4393,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043053, "bot paths")]
     public class Chunk03043053 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
-
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
             rw.ListArchive(ref n.botPaths);
         }
     }
@@ -4403,7 +4429,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             U01 = r.ReadInt32();
             var size = r.ReadInt32();
 
-            r = new GameBoxReader(r, hasOwnIdState: true);
+            r = new GameBoxReader(r, encapsulated: true);
 
             var embedded = r.ReadArray(r => r.ReadIdent());
 
@@ -4436,7 +4462,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             w.Write(U01);
 
             using var ms = new MemoryStream();
-            using var writer = new GameBoxWriter(ms, w, hasOwnIdState: true);
+            using var writer = new GameBoxWriter(ms, w, encapsulated: true);
 
             var embedded = new List<Ident>();
 
@@ -4510,16 +4536,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043056, "light settings")]
     public class Chunk03043056 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version = 3;
-
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; } = 3;
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
             rw.Int32(0);
             rw.TimeOfDay(ref n.dayTime);
             rw.Int32(0);
@@ -4549,17 +4573,15 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// CGameCtnChallenge 0x058 skippable chunk (SubMapsInfos)
     /// </summary>
     [Chunk(0x03043058, "SubMapsInfos")]
-    public class Chunk03043058 : SkippableChunk<CGameCtnChallenge>
+    public class Chunk03043058 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
-
         public int U01;
 
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
             rw.Int32(ref U01);
 
             if (U01 > 0)
@@ -4579,8 +4601,6 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     [Chunk(0x03043059)]
     public class Chunk03043059 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
-
         public Vec3 U01;
         public bool? U02;
         public float? U03;
@@ -4589,20 +4609,20 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version); // 3
+            rw.VersionInt32(this); // 3
 
             rw.Vec3(ref U01);
 
-            if (version == 0)
+            if (Version == 0)
             {
-                throw new VersionNotSupportedException(version);
+                throw new ChunkVersionNotSupportedException(Version);
             }
 
-            if (version >= 1)
+            if (Version >= 1)
             {
                 rw.Boolean(ref U02);
 
@@ -4611,7 +4631,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     throw new NotSupportedException("U02 == true");
                 }
 
-                if (version >= 3)
+                if (Version >= 3)
                 {
                     rw.Single(ref U03);
                     rw.Single(ref U04);
@@ -4651,13 +4671,11 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public class Chunk0304305B : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         private readonly Chunk0304303D chunk0304303D = new();
-
-        private int version;
-
+        
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; }
 
         public bool U01;
         public bool U02;
@@ -4665,7 +4683,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
 
             rw.Boolean(ref U01);
             rw.Boolean(ref U02);
@@ -4726,26 +4744,28 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x05F skippable chunk (free blocks) [TM®️]
     /// </summary>
-    [Chunk(0x0304305F, "free blocks"), IgnoreChunk]
+    [Chunk(0x0304305F, "free blocks", ProcessSync = true)]
     public class Chunk0304305F : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
-
         /// <summary>
         /// Version of the chunk.
         /// </summary>
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
 
-            // for each block
-            //   Vec3 AbsolutePositionInMap
-            //   Vec3 PitchYawRoll
-            //   for each clip
-            //     Vec3 AbsolutePositionInMap of clip
-            //     Vec3 PitchYawRoll of clip
+            if (Version > 0)
+            {
+                throw new ChunkVersionNotSupportedException(Version);
+            }
+
+            foreach (var block in n.GetBlocks().Concat(n.GetBakedBlocks()).Where(x => x.IsFree))
+            {
+                block.AbsolutePositionInMap = rw.Vec3(block.AbsolutePositionInMap);
+                block.PitchYawRoll = rw.Vec3(block.PitchYawRoll);
+            }
         }
     }
 
@@ -4782,20 +4802,18 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x062 skippable chunk (MapElemColor) [TM2020]
     /// </summary>
-    [Chunk(0x03043062, processSync: true, "MapElemColor")]
+    [Chunk(0x03043062, "MapElemColor", ProcessSync = true)]
     public class Chunk03043062 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
-
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
 
-            if (version > 0)
+            if (Version > 0)
             {
-                throw new ChunkVersionNotSupportedException(version);
+                throw new ChunkVersionNotSupportedException(Version);
             }
 
             foreach (var block in n.GetBlocks())
@@ -4822,20 +4840,18 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x063 skippable chunk (AnimPhaseOffset) [TM2020]
     /// </summary>
-    [Chunk(0x03043063, processSync: true, "AnimPhaseOffset")]
+    [Chunk(0x03043063, "AnimPhaseOffset", ProcessSync = true)]
     public class Chunk03043063 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
-
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
 
-            if (version > 0)
+            if (Version > 0)
             {
-                throw new ChunkVersionNotSupportedException(version);
+                throw new ChunkVersionNotSupportedException(Version);
             }
 
             foreach (var item in n.GetAnchoredObjects())
@@ -4865,20 +4881,18 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x065 skippable chunk (foreground pack desc) [TM2020]
     /// </summary>
-    [Chunk(0x03043065, processSync: true, "foreground pack desc")]
+    [Chunk(0x03043065, "foreground pack desc", ProcessSync = true)]
     public class Chunk03043065 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
-        private int version;
-
-        public int Version { get => version; set => version = value; }
+        public int Version { get; set; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
 
-            if (version > 0)
+            if (Version > 0)
             {
-                throw new ChunkVersionNotSupportedException(version);
+                throw new ChunkVersionNotSupportedException(Version);
             }
 
             foreach (var item in n.GetAnchoredObjects())
@@ -4913,22 +4927,20 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x068 skippable chunk (MapElemLmQuality) [TM2020]
     /// </summary>
-    [Chunk(0x03043068, processSync: true, "MapElemLmQuality")]
+    [Chunk(0x03043068, "MapElemLmQuality", ProcessSync = true)]
     public class Chunk03043068 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         // It has not been 100% validated if this is lightmap quality per block/object or not, but a lot of things hint towards it
-
-        private int version;
-
-        public int Version { get => version; set => version = value; }
+        
+        public int Version { get; set; }
 
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.VersionInt32(this);
 
-            if (version > 1)
+            if (Version > 1)
             {
-                throw new ChunkVersionNotSupportedException(version);
+                throw new ChunkVersionNotSupportedException(Version);
             }
 
             foreach (var block in n.GetBlocks())
@@ -4955,7 +4967,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// <summary>
     /// CGameCtnChallenge 0x069 skippable chunk (macroblock instances) [TM2020]
     /// </summary>
-    [Chunk(0x03043069, processSync: true, "macroblock instances")]
+    [Chunk(0x03043069, "macroblock instances", ProcessSync = true)]
     public class Chunk03043069 : SkippableChunk<CGameCtnChallenge>, IVersionable
     {
         public int Version { get; set; }

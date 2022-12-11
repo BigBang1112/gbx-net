@@ -17,10 +17,10 @@ public partial class CGameCtnMediaBlockDirtyLens : CGameCtnMediaBlock, CGameCtnM
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03165000))]
+    [AppliedWithChunk<Chunk03165000>]
     public IList<Key> Keys { get => keys; set => keys = value; }
 
-    protected CGameCtnMediaBlockDirtyLens()
+    internal CGameCtnMediaBlockDirtyLens()
     {
         keys = Array.Empty<Key>();
     }

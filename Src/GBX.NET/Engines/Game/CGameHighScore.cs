@@ -3,29 +3,29 @@
 [Node(0x03047000)]
 public class CGameHighScore : CMwNod
 {
-    protected CGameHighScore()
+    internal CGameHighScore()
     {
 
     }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03047002))]
+    [AppliedWithChunk<Chunk03047002>]
     public TimeInt32? Time { get; private set; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03047002))]
+    [AppliedWithChunk<Chunk03047002>]
     public int Rank { get; private set; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03047002))]
+    [AppliedWithChunk<Chunk03047002>]
     public int Count { get; private set; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03047002))]
+    [AppliedWithChunk<Chunk03047002>]
     public string? Name { get; private set; }
 
     [NodeMember]
-    [AppliedWithChunk(typeof(Chunk03047002))]
+    [AppliedWithChunk<Chunk03047002>]
     public string? Score { get; private set; }
 
     #region 0x002 chunk
