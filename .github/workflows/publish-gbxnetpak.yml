@@ -48,6 +48,6 @@ jobs:
         name: build
       
     - name: Publish the GBX.NET.PAK package to nuget.org
-      run: dotnet nuget push GBX.NET.PAK/bin/Release/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+      run: dotnet nuget push Src/GBX.NET.PAK/bin/Release/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
     - name: Publish the GBX.NET.PAK package to github.com
-      run: dotnet nuget push GBX.NET.PAK/bin/Release/*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/bigbang1112/index.json --skip-duplicate
+      run: dotnet nuget push Src/GBX.NET.PAK/bin/Release/*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/bigbang1112/index.json --skip-duplicate
