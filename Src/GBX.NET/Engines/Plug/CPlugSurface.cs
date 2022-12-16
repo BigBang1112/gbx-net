@@ -222,18 +222,15 @@ public class CPlugSurface : CPlug
     public class Box : ISurf
     {
         private NET.Box transform;
-        private short u02;
 
         public int Id => 6;
         public Vec3? U01 { get; set; }
 
         public NET.Box Transform { get => transform; set => transform = value; }
-        public short U02 { get => u02; set => u02 = value; }
 
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
             rw.Box(ref transform);
-            rw.Int16(ref u02);
         }
     }
 
