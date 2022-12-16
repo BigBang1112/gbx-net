@@ -181,26 +181,40 @@ public class NadeoPakFile
 
     public string GetFullFileName()
     {
-        if (Folder == null) return Name;
-
-        var currentParent = Folder;
-        var folders = new List<string>
-        {
-            Name
-        };
-
-        while (currentParent != null)
-        {
-            folders.Insert(0, currentParent.Name);
-            currentParent = currentParent.Parent;
-        }
-
-        return Path.Combine(folders.ToArray());
+        return Path.Combine(GetDirectoryName(), Name);
     }
 
-    public string? GetFullDirectoryName()
+    /// <summary>
+    /// Gets the directory name (relative to the PAK file), also including directories in <see cref="Name"/>.
+    /// </summary>
+    /// <returns>A full directory name.</returns>
+    public string GetFullDirectoryName()
     {
-        return Path.GetDirectoryName(GetFullFileName());
+        return Path.GetDirectoryName(GetFullFileName()) ?? "";
+    }
+
+    /// <summary>
+    /// Gets the directory name (relative to the PAK file), not part of the <see cref="Name"/> itself.
+    /// </summary>
+    /// <returns></returns>
+    public string GetDirectoryName()
+    {
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        return string.Join(Path.DirectorySeparatorChar, GetParentDirectories().Reverse());
+#else
+        return Path.Combine(GetParentDirectories().Reverse().ToArray());
+#endif
+    }
+
+    private IEnumerable<string> GetParentDirectories()
+    {
+        var currentParent = Folder;
+        
+        while (currentParent is not null)
+        {
+            yield return currentParent.Name;
+            currentParent = currentParent.Parent;
+        }
     }
 
     public string GetFileName()
