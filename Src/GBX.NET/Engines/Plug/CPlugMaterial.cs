@@ -200,18 +200,21 @@ public class CPlugMaterial : CPlug
             get => shader1 = node?.GetNodeFromRefTable(shader1, shader1File) as CPlugShader;
             set => shader1 = value;
         }
+        public GameBoxRefTable.File? Shader1File { get => shader1File; set => shader1File = value; }
 
         public CPlugShader? Shader2
         {
             get => shader2 = node?.GetNodeFromRefTable(shader2, shader2File) as CPlugShader;
             set => shader2 = value;
         }
+        public GameBoxRefTable.File? Shader2File { get => shader2File; set => shader2File = value; }
 
         public CPlugShader? Shader3
         {
             get => shader3 = node?.GetNodeFromRefTable(shader3, shader3File) as CPlugShader;
             set => shader3 = value;
         }
+        public GameBoxRefTable.File? Shader3File { get => shader3File; set => shader3File = value; }
 
         public void ReadWrite(GameBoxReaderWriter rw, GameBox? gbx, int version = 0)
         {
