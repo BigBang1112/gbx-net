@@ -371,28 +371,20 @@ public class GameBoxWriter : BinaryWriter
     {
         if (nodeFile is not null)
         {
-            var nodeFileIndex = nodeFile.NodeIndex;
-            var alreadyAdded = false;
-
-            while (AuxNodes.TryGetValue(nodeFileIndex, out Node? alreadyAddedNode))
+            foreach (var pair in State.ExtAuxNodes)
             {
-                if (alreadyAddedNode is null || node == alreadyAddedNode)
+                if (pair.Value == nodeFile)
                 {
-                    alreadyAdded = true;
-                    break;
+                    Write(pair.Key + 1);
+                    return;
                 }
-
-                nodeFileIndex++;
             }
 
-            nodeFile.NodeIndex = nodeFileIndex;
+            var i = AuxNodes.Count + State.ExtAuxNodes.Count;
+            nodeFile.NodeIndex = i;
+            State.ExtAuxNodes[i] = nodeFile;
 
-            Write(nodeFileIndex + 1);
-
-            if (!alreadyAdded)
-            {
-                AuxNodes.Add(nodeFileIndex, null);
-            }
+            Write(i + 1);
 
             return;
         }
@@ -424,12 +416,7 @@ public class GameBoxWriter : BinaryWriter
             }
         }
 
-        var index = AuxNodes.Count;
-
-        while (AuxNodes.ContainsKey(index))
-        {
-            index++;
-        }
+        var index = AuxNodes.Count + State.ExtAuxNodes.Count;
 
         AuxNodes.Add(index, node);
 
