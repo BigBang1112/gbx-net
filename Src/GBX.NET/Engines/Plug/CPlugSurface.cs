@@ -124,7 +124,7 @@ public class CPlugSurface : CPlug
 
             rw.NodeRef(ref n.geom);
 
-            rw.ArrayArchive<SurfMaterial>(n.materials);
+            rw.ArrayArchiveWithGbx<SurfMaterial>(ref n.materials);
         }
     }
 
@@ -202,7 +202,7 @@ public class CPlugSurface : CPlug
 
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
-            if (rw.Boolean(material is not null))
+            if (rw.Boolean(material is not null || materialFile is not null))
             {
                 rw.NodeRef(ref material, ref materialFile);
             }
