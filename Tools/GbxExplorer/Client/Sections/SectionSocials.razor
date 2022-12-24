@@ -20,10 +20,15 @@
 </div>
 
 @code {
-    private string branch = "master";
+    private string? branch;
 
     protected override void OnInitialized()
     {
         branch = Config["Branch"];
+
+        if (string.IsNullOrWhiteSpace(branch))
+        {
+            branch = "master";
+        }
     }
 }
