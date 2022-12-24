@@ -89,6 +89,23 @@ public partial class CControlEffectSimi : CControlEffect, CGameCtnMediaBlock.IHa
 
     #region Chunks
 
+    #region 0x001 chunk
+
+    /// <summary>
+    /// CControlEffectSimi 0x001 chunk
+    /// </summary>
+    [Chunk(0x07010001)]
+    public class Chunk07010001 : Chunk<CControlEffectSimi>
+    {
+        public override void ReadWrite(CControlEffectSimi n, GameBoxReaderWriter rw)
+        {
+            rw.List<Key>(ref n.keys!, (rw, x) => x.ReadWrite(rw, version: 1));
+            rw.Boolean(ref n.centered);
+        }
+    }
+
+    #endregion
+
     #region 0x002 chunk
 
     /// <summary>
