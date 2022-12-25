@@ -14,6 +14,6 @@ public partial class CGameCtnCollector
         public EProdState? ProdState { get; set; }
         public Color[,]? Icon { get; set; }
         public byte[]? IconWebP { get; set; }
-        public long FileTime { get; set; }
+        public ulong FileTime { get; set; }
     }
 }
