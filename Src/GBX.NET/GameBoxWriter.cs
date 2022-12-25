@@ -984,4 +984,9 @@ public class GameBoxWriter : BinaryWriter
     {
         WriteArray(array, (x, w) => w.Write(x.Node, x.File));
     }
+
+    public void Write(DateTime variable)
+    {
+        Write(variable.ToFileTimeUtc());
+    }
 }

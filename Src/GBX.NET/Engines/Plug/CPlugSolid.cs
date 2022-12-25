@@ -15,7 +15,7 @@ public class CPlugSolid : CPlug
     private CPlug? tree;
     private GameBoxRefTable.File? treeFile;
     private PreLightGen? solidPreLightGen;
-    private ulong fileWriteTime;
+    private DateTime? fileWriteTime;
 
     [NodeMember(ExactlyNamed = true)]
     public int TypeAndIndex { get => typeAndIndex; set => typeAndIndex = value; }
@@ -35,7 +35,7 @@ public class CPlugSolid : CPlug
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk09005017>]
-    public ulong FileWriteTime { get => fileWriteTime; set => fileWriteTime = value; }
+    public DateTime? FileWriteTime { get => fileWriteTime; set => fileWriteTime = value; }
 
     internal CPlugSolid()
     {
@@ -387,7 +387,7 @@ public class CPlugSolid : CPlug
 
             if (version >= 2)
             {
-                rw.UInt64(ref n.fileWriteTime);
+                rw.FileTime(ref n.fileWriteTime);
             }
         }
     }

@@ -2093,4 +2093,9 @@ public class GameBoxReader : BinaryReader
     {
         return ReadExternalNodeArray<T>(length: ReadInt32());
     }
+
+    public DateTime ReadFileTime()
+    {
+        return DateTime.FromFileTimeUtc(ReadInt64());
+    }
 }
