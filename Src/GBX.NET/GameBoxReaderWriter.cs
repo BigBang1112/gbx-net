@@ -1186,6 +1186,56 @@ public partial class GameBoxReaderWriter
     public void Iso4(ref Iso4? variable, Iso4 defaultValue = default) => variable = Iso4(variable, defaultValue);
 
     /// <summary>
+    /// Reads or writes an <see cref="NET.Mat3"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned.</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public Mat3 Mat3(Mat3 variable = default)
+    {
+        if (Reader is not null) variable = Reader.ReadMat3();
+        if (Writer is not null) Writer.Write(variable);
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="NET.Mat3"/>.
+    /// </summary>
+    /// <param name="variable">Variable to write. If null, <paramref name="defaultValue"/> is written. Ignored in read mode.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <returns>Value read in read mode. In write mode, <paramref name="variable"/> is returned (including null).</returns>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public Mat3? Mat3(Mat3? variable, Mat3 defaultValue = default)
+    {
+        if (Reader is not null) variable = Reader.ReadMat3();
+        if (Writer is not null) Writer.Write(variable.GetValueOrDefault(defaultValue));
+        return variable;
+    }
+
+    /// <summary>
+    /// Reads or writes an <see cref="NET.Mat3"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged).</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void Mat3(ref Mat3 variable) => variable = Mat3(variable);
+
+    /// <summary>
+    /// Reads or writes a nullable <see cref="NET.Mat3"/> through reference.
+    /// </summary>
+    /// <param name="variable">Variable to read or write. Read mode sets <paramref name="variable"/>, write mode uses <paramref name="variable"/> to write the value (keeping <paramref name="variable"/> unchanged). If <paramref name="variable"/> is null, <paramref name="defaultValue"/> is written instead.</param>
+    /// <param name="defaultValue">Value written when <paramref name="variable"/> is null. Ignored in read mode.</param>
+    /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    public void Mat3(ref Mat3? variable, Mat3 defaultValue = default) => variable = Mat3(variable, defaultValue);
+
+    /// <summary>
     /// Reads or writes an <see cref="NET.Mat4"/>.
     /// </summary>
     /// <param name="variable">Variable to write. Ignored in read mode.</param>
