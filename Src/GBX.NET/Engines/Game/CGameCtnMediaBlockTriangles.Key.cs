@@ -31,7 +31,7 @@ public abstract partial class CGameCtnMediaBlockTriangles
         public Key(CGameCtnMediaBlockTriangles node)
         {
             this.node = node;
-            positions = new Vec3[node.vertices?.Length ?? 0];
+            positions = new Vec3[node.vertices.Length];
         }
     }
 }

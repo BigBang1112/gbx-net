@@ -10,9 +10,9 @@ public abstract partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, 
 {
     #region Fields
 
-    private IList<Key> keys;
-    private Vec4[] vertices;
-    private Int3[] triangles;
+    private IList<Key> keys = Array.Empty<Key>();
+    private Vec4[] vertices = Array.Empty<Vec4>();
+    private Int3[] triangles = Array.Empty<Int3>();
 
     #endregion
 
@@ -83,9 +83,7 @@ public abstract partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, 
 
     internal CGameCtnMediaBlockTriangles()
     {
-        keys = Array.Empty<Key>();
-        vertices = Array.Empty<Vec4>();
-        triangles = Array.Empty<Int3>();
+        
     }
 
     #endregion
