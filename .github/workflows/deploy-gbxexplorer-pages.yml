@@ -81,12 +81,6 @@ jobs:
         uses: actions/download-artifact@v3.0.0
         with:
           name: app
-          
-      - name: Download docs artifact
-        uses: actions/download-artifact@v3.0.0
-        with:
-          name: docs
-          path: docs
         
       - name: Setup Pages
         uses: actions/configure-pages@v2
