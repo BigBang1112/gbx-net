@@ -5,5 +5,5 @@ public readonly record struct Mat4(float XX, float XY, float XZ, float XW,
                                    float ZX, float ZY, float ZZ, float ZW,
                                    float WX, float WY, float WZ, float WW)
 {
-    public static readonly Iso4 Zero = new();
+    public static readonly Mat4 Zero = new();
 }
