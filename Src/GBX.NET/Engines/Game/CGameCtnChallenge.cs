@@ -4470,14 +4470,14 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             {
                 var gbxItem = item.GetGbx() ?? throw new ThisShouldNotHappenException();
 
-                if (item.Author is null)
+                if (item.Ident is null)
                 {
                     continue;
                 }
 
                 if (gbxItem.FileName is null)
                 {
-                    embedded.Add(item.Author);
+                    embedded.Add(item.Ident);
                     continue;
                 }
 
@@ -4494,7 +4494,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                     }
                 }
 
-                embedded.Add(item.Author with { Id = id });
+                embedded.Add(item.Ident with { Id = id });
             }
 
             writer.WriteList(embedded, (x, w) => w.Write(x));

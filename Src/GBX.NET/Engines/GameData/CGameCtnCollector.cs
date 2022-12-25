@@ -32,7 +32,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
 
     #region Fields
 
-    private Ident author;
+    private Ident ident;
     private string pageName;
     private ECollectorFlags flags;
     private int catalogPosition;
@@ -56,7 +56,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
     [AppliedWithChunk<Chunk2E001002>]
     [AppliedWithChunk<Chunk2E001003>]
     [AppliedWithChunk<Chunk2E00100B>]
-    public Ident Author { get => author; set => author = value; }
+    public Ident Ident { get => ident; set => ident = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E001003>]
@@ -137,7 +137,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
 
     internal CGameCtnCollector()
     {
-        author = Ident.Empty;
+        ident = Ident.Empty;
         pageName = "";
     }
 
@@ -155,7 +155,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
     {
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.Ident(ref n.author!);
+            rw.Ident(ref n.ident!);
         }
     }
 
@@ -182,7 +182,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
 
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.Ident(ref n.author!);
+            rw.Ident(ref n.ident!);
             rw.Int32(ref version); // Id but filtered, technically
             rw.String(ref n.pageName!);
 
@@ -439,7 +439,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
     {
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.Ident(ref n.author!); // It may be called Ident
+            rw.Ident(ref n.ident!); // It may be called Ident
         }
     }
 

@@ -98,7 +98,7 @@ public class CGameCtnCollectorTests
             chunkTester.ReadWriteWithReader();
 
             // Assert
-            Assert.Equal(expected: new("", "Stadium", "bigbang1112"), actual: chunkTester.Node.Author);
+            Assert.Equal(expected: new("", "Stadium", "bigbang1112"), actual: chunkTester.Node.Ident);
         }
         
         [Fact]
@@ -113,7 +113,7 @@ public class CGameCtnCollectorTests
             chunkTester.ReadWriteWithReader();
 
             // Assert
-            Assert.Equal(expected: new("", new(26), "akPfIM0aSzuHuaaDWptBbQ"), actual: chunkTester.Node.Author);
+            Assert.Equal(expected: new("", new(26), "akPfIM0aSzuHuaaDWptBbQ"), actual: chunkTester.Node.Ident);
         }
 
         [Fact]
@@ -124,7 +124,7 @@ public class CGameCtnCollectorTests
                 = new(GameVersions.ManiaPlanet_Latest);
             chunkTester.SetIdState(version: 3);
 
-            chunkTester.Node.Author = new("", "Stadium", "bigbang1112");
+            chunkTester.Node.Ident = new("", "Stadium", "bigbang1112");
 
             // Act
             chunkTester.ReadWriteWithWriter();
@@ -141,7 +141,7 @@ public class CGameCtnCollectorTests
                 = new(GameVersions.Trackmania2020_2022_7_6);
             chunkTester.SetIdState(version: 3);
 
-            chunkTester.Node.Author = new("", new(26), "akPfIM0aSzuHuaaDWptBbQ");
+            chunkTester.Node.Ident = new("", new(26), "akPfIM0aSzuHuaaDWptBbQ");
 
             // Act
             chunkTester.ReadWriteWithWriter();
