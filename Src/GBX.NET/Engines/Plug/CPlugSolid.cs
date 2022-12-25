@@ -11,10 +11,16 @@ namespace GBX.NET.Engines.Plug;
 [NodeExtension("Solid")]
 public class CPlugSolid : CPlug
 {
+    private int typeAndIndex;
     private CPlug? tree;
     private GameBoxRefTable.File? treeFile;
+    private PreLightGen? solidPreLightGen;
+    private ulong fileWriteTime;
 
-    [NodeMember]
+    [NodeMember(ExactlyNamed = true)]
+    public int TypeAndIndex { get => typeAndIndex; set => typeAndIndex = value; }
+    
+    [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk0900500D>]
     [AppliedWithChunk<Chunk09005011>]
     public CPlug? Tree
@@ -22,6 +28,14 @@ public class CPlugSolid : CPlug
         get => tree = GetNodeFromRefTable(tree, treeFile) as CPlug;
         set => tree = value;
     }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk09005017>]
+    public PreLightGen? SolidPreLightGen { get => solidPreLightGen; set => solidPreLightGen = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk09005017>]
+    public ulong FileWriteTime { get => fileWriteTime; set => fileWriteTime = value; }
 
     internal CPlugSolid()
     {
@@ -86,11 +100,9 @@ public class CPlugSolid : CPlug
     [Chunk(0x09005000)]
     public class Chunk09005000 : Chunk<CPlugSolid>
     {
-        public int U01;
-
         public override void ReadWrite(CPlugSolid n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.Int32(ref n.typeAndIndex);
         }
     }
 
@@ -107,15 +119,7 @@ public class CPlugSolid : CPlug
         public float U05;
         public float U06;
 
-        public float U07;
-        public float U08;
-        public float U09;
-        public float U10;
-        public float U11;
-        public float U12;
-        public float U13;
-        public float U14;
-        public float U15;
+        public Mat3 U07;
 
         public override void ReadWrite(CPlugSolid n, GameBoxReaderWriter rw)
         {
@@ -126,15 +130,7 @@ public class CPlugSolid : CPlug
             rw.Single(ref U05);
             rw.Single(ref U06);
 
-            rw.Single(ref U07);
-            rw.Single(ref U08);
-            rw.Single(ref U09);
-            rw.Single(ref U10);
-            rw.Single(ref U11);
-            rw.Single(ref U12);
-            rw.Single(ref U13);
-            rw.Single(ref U14);
-            rw.Single(ref U15);
+            rw.Mat3(ref U07);
         }
     }
 
@@ -184,45 +180,30 @@ public class CPlugSolid : CPlug
     [Chunk(0x0900500C)]
     public class Chunk0900500C : Chunk<CPlugSolid>
     {
-        public bool U01;
-        public bool U02;
-        public bool U03;
-        public bool U04;
-        public bool U05;
-        public bool U06;
-        public bool U07;
-        public bool U08;
-        public bool U09;
-        public bool U10;
-        public float U11;
-        public int U12;
-        public float U13;
-        public float U14;
-        public float U15;
-        public float U16;
-        public int U17;
-        public int U18;
+        public bool U01; // always false
+        public float U02; // always zero
+        public int U03; // always zero
 
         public override void ReadWrite(CPlugSolid n, GameBoxReaderWriter rw)
         {
             rw.Boolean(ref U01);
-            rw.Boolean(ref U02);
-            rw.Boolean(ref U03);
-            rw.Boolean(ref U04);
-            rw.Boolean(ref U05);
-            rw.Boolean(ref U06);
-            rw.Boolean(ref U07);
-            rw.Boolean(ref U08);
-            rw.Boolean(ref U09);
-            rw.Boolean(ref U10);
-            rw.Single(ref U11);
-            rw.Int32(ref U12);
-            rw.Single(ref U13);
-            rw.Single(ref U14);
-            rw.Single(ref U15);
-            rw.Single(ref U16);
-            rw.Int32(ref U17);
-            rw.Int32(ref U18);
+            rw.Boolean(ref U01);
+            rw.Boolean(ref U01);
+            rw.Boolean(ref U01);
+            rw.Boolean(ref U01);
+            rw.Boolean(ref U01);
+            rw.Boolean(ref U01);
+            rw.Boolean(ref U01);
+            rw.Boolean(ref U01);
+            rw.Boolean(ref U01);
+            rw.Single(ref U02);
+            rw.Int32(ref U03);
+            rw.Single(ref U02);
+            rw.Single(ref U02);
+            rw.Single(ref U02);
+            rw.Single(ref U02);
+            rw.Int32(ref U03);
+            rw.Int32(ref U03);
         }
     }
 
@@ -264,7 +245,7 @@ public class CPlugSolid : CPlug
 
         public override void ReadWrite(CPlugSolid n, GameBoxReaderWriter rw)
         {
-            rw.Single(ref U01);
+            rw.Single(ref U01); // probably related to CPlugPhysicalObject::SetComPos
             rw.Single(ref U02);
             rw.Single(ref U03);
             rw.Single(ref U04);
@@ -299,7 +280,7 @@ public class CPlugSolid : CPlug
 
         public override void ReadWrite(CPlugSolid n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01);
+            rw.NodeRef(ref U01); // CSceneVehicleEnvironment
         }
     }
 
@@ -323,7 +304,7 @@ public class CPlugSolid : CPlug
                 rw.Boolean(ref U03);
             }
 
-            rw.NodeRef<CPlug>(ref n.tree, ref n.treeFile);
+            rw.NodeRef<CPlug>(ref n.tree, ref n.treeFile); // only of U02 is false?
         }
 
         public override async Task ReadWriteAsync(CPlugSolid n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
@@ -336,7 +317,7 @@ public class CPlugSolid : CPlug
                 rw.Boolean(ref U03);
             }
             
-            n.tree = await rw.NodeRefAsync<CPlug>(n.tree, cancellationToken);
+            n.tree = await rw.NodeRefAsync<CPlug>(n.tree, cancellationToken); // only of U02 is false?
         }
     }
 
@@ -350,16 +331,16 @@ public class CPlugSolid : CPlug
 
         public override void ReadWrite(CPlugSolid n, GameBoxReaderWriter rw)
         {
-            rw.Byte(ref U01);
+            rw.Byte(ref U01); // relates ti SolidPreLightGen
         }
     }
 
-    #region 0x017 chunk
+    #region 0x017 chunk (SolidPreLightGen)
 
     /// <summary>
-    /// CPlugSolid 0x017 chunk
+    /// CPlugSolid 0x017 chunk (SolidPreLightGen)
     /// </summary>
-    [Chunk(0x09005017)]
+    [Chunk(0x09005017, "SolidPreLightGen")]
     public class Chunk09005017 : Chunk<CPlugSolid>, IVersionable
     {
         private int version = 3;
@@ -371,7 +352,6 @@ public class CPlugSolid : CPlug
         public Rect U05;
         public Int2 U06;
         public Box U07;
-        public ulong U08;
         public bool U09;
         public PreLightGen? U10;
 
@@ -387,7 +367,7 @@ public class CPlugSolid : CPlug
 
                 if (U09)
                 {
-                    rw.Archive<PreLightGen>(ref U10);
+                    rw.Archive<PreLightGen>(ref n.solidPreLightGen);
                 }
             }
             else
@@ -407,7 +387,7 @@ public class CPlugSolid : CPlug
 
             if (version >= 2)
             {
-                rw.UInt64(ref U08);
+                rw.UInt64(ref n.fileWriteTime);
             }
         }
     }
@@ -426,14 +406,14 @@ public class CPlugSolid : CPlug
         private int listVersion1 = 10;
         private int listVersion2 = 10;
 
-        private CPlugSound?[]? U01;
-        private CPlugParticleEmitterModel?[]? U02;
-        private LocatedInstance[]? U03;
-        private LocatedInstance[]? U04;
-        private int U05;
-        private string[]? U06;
-        private Iso4[]? U07;
-        private string? U08;
+        public CPlugSound?[]? U01;
+        public CPlugParticleEmitterModel?[]? U02;
+        public LocatedInstance[]? U03;
+        public LocatedInstance[]? U04;
+        public int U05;
+        public string[]? U06;
+        public Iso4[]? U07;
+        public string? U08;
 
         public int Version { get => version; set => version = value; }
 
