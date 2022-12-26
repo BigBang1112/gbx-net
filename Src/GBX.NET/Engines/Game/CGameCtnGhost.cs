@@ -913,7 +913,7 @@ public partial class CGameCtnGhost : CGameGhost
 
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.Int32(ref U01); // some validation version
         }
     }
 
