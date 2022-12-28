@@ -198,6 +198,7 @@ public partial class CGameCtnGhost
             public TimeInt32 Timestamp => new(Tick * 10);
 
             public bool? FreeLook => States is null ? null : (States & 4) != 0;
+            public bool? Camera2 => States is null ? null : (States & 32) != 0;
             public bool? Jump => States is null ? null : (States & 128) != 0;
             public bool? Action => States is null ? null : (States & 257) != 0;
             public bool? ActionSlot1 => States is null ? null : (States & 1024) != 0;
