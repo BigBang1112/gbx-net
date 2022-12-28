@@ -130,15 +130,9 @@ public partial class CGameCtnGhost
                     {
                         var onlyTriggerAndAction = r.ReadBit();
 
-                        if (onlyTriggerAndAction)
-                        {
-                            isAction = r.ReadBit();
-                            isGunTrigger = r.ReadBit();
-                        }
-                        else
-                        {
-                            states = r.ReadInt32();
-                        }
+                        states = onlyTriggerAndAction
+                            ? r.Read2Bit()
+                            : r.ReadInt32();
 
                         different = true;
                     }
@@ -146,7 +140,7 @@ public partial class CGameCtnGhost
 
                 if (different)
                 {
-                    yield return new ShootmaniaInputChange(i, mouseAccuX, mouseAccuY, strafe, walk, vertical, isAction, isGunTrigger, states);
+                    yield return new ShootmaniaInputChange(i, mouseAccuX, mouseAccuY, strafe, walk, vertical, states);
                 }
             }
 
@@ -191,16 +185,15 @@ public partial class CGameCtnGhost
                                                    EStrafe? Strafe,
                                                    EWalk? Walk,
                                                    byte? Vertical,
-                                                   bool? IsAction,
-                                                   bool? IsGunTrigger,
                                                    int? States) : IInputChange
         {
             public TimeInt32 Timestamp => new(Tick * 10);
 
+            public bool? IsGunTrigger => States is null ? null : (States & 2) != 0;
             public bool? FreeLook => States is null ? null : (States & 4) != 0;
             public bool? Camera2 => States is null ? null : (States & 32) != 0;
             public bool? Jump => States is null ? null : (States & 128) != 0;
-            public bool? Action => States is null ? null : (States & 257) != 0;
+            public bool? IsAction => States is null ? null : (States & 257) != 0;
             public bool? ActionSlot1 => States is null ? null : (States & 1024) != 0;
             public bool? ActionSlot2 => States is null ? null : (States & 2048) != 0;
             public bool? ActionSlot3 => States is null ? null : (States & 4096) != 0;
