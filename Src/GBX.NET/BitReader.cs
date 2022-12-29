@@ -21,11 +21,11 @@ public class BitReader
         return result;
     }
 
-    public long ReadNumber(int bits)
+    public ulong ReadNumber(int bits)
     {
-        var result = 0;
+        ulong result = 0;
         for (var i = 0; i < bits; i++)
-            result |= (ReadBit() ? 1 : 0) << i;
+            result |= (ulong)(ReadBit() ? 1 : 0) << i;
         return result;
     }
 

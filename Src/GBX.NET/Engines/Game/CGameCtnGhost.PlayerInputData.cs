@@ -3,6 +3,7 @@
 //
 // Massive thanks to Mystixor and Shweetz for many of the findings!!!
 // Without these guys, this would've stayed a mystery.
+// Even though the solution was read out of the game code in the end, they gave the important hint.
 //
 
 public partial class CGameCtnGhost
@@ -10,7 +11,6 @@ public partial class CGameCtnGhost
     /// <summary>
     /// Set of inputs.
     /// </summary>
-    /// <remarks>Massive thanks to Mystixor and Shweetz for many of the findings!!!</remarks>
     public class PlayerInputData : IReadableWritable
     {
         public enum EVersion
@@ -153,7 +153,7 @@ public partial class CGameCtnGhost
             {
                 var different = false;
 
-                var states = default(long?);
+                var states = default(ulong?);
                 var mouseAccuX = default(short?);
                 var mouseAccuY = default(short?);
                 var steer = default(sbyte?);
@@ -168,7 +168,7 @@ public partial class CGameCtnGhost
 
                     states = onlySomething
                         ? r.Read2Bit()
-                        : r.ReadNumber(version is EVersion._2020_04_08 ? 33 : 34);
+                        : r.ReadNumber(bits: version is EVersion._2020_04_08 ? 33 : 34);
 
                     different = true;
                 }
@@ -183,7 +183,11 @@ public partial class CGameCtnGhost
                     different = true;
                 }
 
-                if (i > 0 || sameMouse) // This check is a bit weird, may not work for StormMan gameplay
+                // This check is a bit weird, may not work for StormMan gameplay
+                // If starting with horn on, it is included on first tick
+                // If mouse is not plugged, it is also included
+                // In code, this check is presented as '(X - 2 & 0xfffffffd) == 0'
+                if ((i == 0 && ((states.GetValueOrDefault() & 64) != 0)) || sameMouse)
                 {
                     var sameValue = r.ReadBit();
 
@@ -201,6 +205,13 @@ public partial class CGameCtnGhost
                 {
                     yield return new TrackmaniaInputChange(i, states, mouseAccuX, mouseAccuY, steer, gas, brake);
                 }
+            }
+
+            var theRest = r.ReadToEnd();
+
+            if (theRest.Any(x => x != 0))
+            {
+                throw new Exception("Input buffer not cleared out completely");
             }
         }
 
@@ -225,7 +236,7 @@ public partial class CGameCtnGhost
             int Tick { get; }
             short? MouseAccuX { get; }
             short? MouseAccuY { get; }
-            long? States { get; }
+            ulong? States { get; }
 
             TimeInt32 Timestamp { get; }
         }
@@ -236,7 +247,7 @@ public partial class CGameCtnGhost
                                                    EStrafe? Strafe,
                                                    EWalk? Walk,
                                                    byte? Vertical,
-                                                   long? States) : IInputChange
+                                                   int? States) : IInputChange
         {
             public TimeInt32 Timestamp => new(Tick * 10);
 
@@ -255,10 +266,12 @@ public partial class CGameCtnGhost
             public bool? Menu => States is null ? null : (States & 65536) != 0;
             public bool? Horn => States is null ? null : (States & 1048576) != 0;
             public bool? Respawn => States is null ? null : (States & 2097152) != 0;
+
+            ulong? IInputChange.States => States is null ? null : (ulong)States;
         }
 
         public record struct TrackmaniaInputChange(int Tick,
-                                                   long? States,
+                                                   ulong? States,
                                                    short? MouseAccuX,
                                                    short? MouseAccuY,
                                                    sbyte? Steer,
@@ -266,6 +279,20 @@ public partial class CGameCtnGhost
                                                    bool? Brake) : IInputChange
         {
             public TimeInt32 Timestamp { get; } = new(Tick * 10);
+
+            public bool? Respawn => States is null ? null : (States & 2147483648) != 0;
+            public bool? Horn
+            {
+                get
+                {
+                    if (States is null)
+                    {
+                        return null;
+                    }
+
+                    return (States & (ulong)(Tick == 0 ? 64 : 2)) != 0;
+                }
+            }
         }
     }
 }
