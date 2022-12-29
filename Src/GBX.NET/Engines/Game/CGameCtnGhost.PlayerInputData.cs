@@ -183,7 +183,7 @@ public partial class CGameCtnGhost
                     different = true;
                 }
 
-                if (i > 0) // This check is a bit weird, may not work for StormMan gameplay
+                if (i > 0 || sameMouse) // This check is a bit weird, may not work for StormMan gameplay
                 {
                     var sameValue = r.ReadBit();
 
@@ -201,13 +201,6 @@ public partial class CGameCtnGhost
                 {
                     yield return new TrackmaniaInputChange(i, states, mouseAccuX, mouseAccuY, steer, gas, brake);
                 }
-            }
-
-            var theRest = r.ReadToEnd();
-
-            if (theRest.Any(x => x != 0))
-            {
-                throw new Exception("Input buffer not cleared out completely");
             }
         }
 
