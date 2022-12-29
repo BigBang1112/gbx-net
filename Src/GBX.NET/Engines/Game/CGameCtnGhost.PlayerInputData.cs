@@ -84,8 +84,6 @@ public partial class CGameCtnGhost
                 var strafe = default(EStrafe?);
                 var walk = default(EWalk?);
                 var vertical = default(byte?);
-                var isAction = default(bool?);
-                var isGunTrigger = default(bool?);
                 var states = default(int?);
 
                 var sameMouse = r.ReadBit();
@@ -157,12 +155,6 @@ public partial class CGameCtnGhost
             yield break;
         }
 
-        public interface IInputChange
-        {
-            int Tick { get; }
-            TimeInt32 Timestamp { get; }
-        }
-
         public enum EStrafe : byte
         {
             None,
@@ -179,6 +171,12 @@ public partial class CGameCtnGhost
             Backward
         }
 
+        public interface IInputChange
+        {
+            int Tick { get; }
+            TimeInt32 Timestamp { get; }
+        }
+
         public record struct ShootmaniaInputChange(int Tick,
                                                    short? MouseAccuX,
                                                    short? MouseAccuY,
@@ -191,6 +189,7 @@ public partial class CGameCtnGhost
 
             public bool? IsGunTrigger => States is null ? null : (States & 2) != 0;
             public bool? FreeLook => States is null ? null : (States & 4) != 0;
+            public bool? Fly => States is null ? null : (States & 8) != 0;
             public bool? Camera2 => States is null ? null : (States & 32) != 0;
             public bool? Jump => States is null ? null : (States & 128) != 0;
             public bool? IsAction => States is null ? null : (States & 257) != 0;
