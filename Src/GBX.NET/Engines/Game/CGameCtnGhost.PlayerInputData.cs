@@ -326,7 +326,7 @@ public partial class CGameCtnGhost
                         return null; // TODO
                     }
                     
-                    return (States & 2) != 0;
+                    return States == 2;
                 }
             }
         }
