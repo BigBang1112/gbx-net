@@ -24,8 +24,15 @@ public class BitReader
     public ulong ReadNumber(int bits)
     {
         ulong result = 0;
+
+        var dataSpan = data.AsSpan();
+        
         for (var i = 0; i < bits; i++)
-            result |= (ulong)(ReadBit() ? 1 : 0) << i;
+        {
+            result |= (ulong)(dataSpan[Position / 8] & (1 << (Position % 8))) << i;
+            Position++;
+        }
+        
         return result;
     }
 
