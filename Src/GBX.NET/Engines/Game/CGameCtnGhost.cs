@@ -1343,5 +1343,18 @@ public partial class CGameCtnGhost : CGameGhost
 
     #endregion
 
+    #region 0x02E skippable chunk
+
+    /// <summary>
+    /// CGameCtnGhost 0x02E skippable chunk
+    /// </summary>
+    [Chunk(0x0309202E), IgnoreChunk]
+    public class Chunk0309202E : SkippableChunk<CGameCtnGhost>
+    {
+
+    }
+
+    #endregion
+
     #endregion
 }
