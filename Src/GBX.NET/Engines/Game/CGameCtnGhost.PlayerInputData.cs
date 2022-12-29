@@ -90,8 +90,8 @@ public partial class CGameCtnGhost
             {
                 var different = false;
 
-                var mouseAccuX = default(short?);
-                var mouseAccuY = default(short?);
+                var mouseAccuX = default(ushort?);
+                var mouseAccuY = default(ushort?);
                 var strafe = default(EStrafe?);
                 var walk = default(EWalk?);
                 var vertical = default(byte?);
@@ -101,8 +101,8 @@ public partial class CGameCtnGhost
 
                 if (!sameMouse)
                 {
-                    mouseAccuX = r.ReadInt16();
-                    mouseAccuY = r.ReadInt16();
+                    mouseAccuX = r.ReadUInt16();
+                    mouseAccuY = r.ReadUInt16();
 
                     different = true;
                 }
@@ -172,8 +172,8 @@ public partial class CGameCtnGhost
                 var different = false;
 
                 var states = default(ulong?);
-                var mouseAccuX = default(short?);
-                var mouseAccuY = default(short?);
+                var mouseAccuX = default(ushort?);
+                var mouseAccuY = default(ushort?);
                 var steer = default(sbyte?);
                 var gas = default(bool?);
                 var brake = default(bool?);
@@ -202,8 +202,8 @@ public partial class CGameCtnGhost
 
                     if (!sameMouse)
                     {
-                        mouseAccuX = r.ReadInt16();
-                        mouseAccuY = r.ReadInt16();
+                        mouseAccuX = r.ReadUInt16();
+                        mouseAccuY = r.ReadUInt16();
 
                         different = true;
                     }
@@ -229,7 +229,7 @@ public partial class CGameCtnGhost
                 }
                 catch (IndexOutOfRangeException)
                 {
-                    
+
                 }
 
                 if (different)
@@ -265,16 +265,16 @@ public partial class CGameCtnGhost
         public interface IInputChange
         {
             int Tick { get; }
-            short? MouseAccuX { get; }
-            short? MouseAccuY { get; }
+            ushort? MouseAccuX { get; }
+            ushort? MouseAccuY { get; }
             ulong? States { get; }
 
             TimeInt32 Timestamp { get; }
         }
 
         public readonly record struct ShootmaniaInputChange(int Tick,
-                                                            short? MouseAccuX,
-                                                            short? MouseAccuY,
+                                                            ushort? MouseAccuX,
+                                                            ushort? MouseAccuY,
                                                             EStrafe? Strafe,
                                                             EWalk? Walk,
                                                             byte? Vertical,
@@ -303,8 +303,8 @@ public partial class CGameCtnGhost
 
         public readonly record struct TrackmaniaInputChange(int Tick,
                                                             ulong? States,
-                                                            short? MouseAccuX,
-                                                            short? MouseAccuY,
+                                                            ushort? MouseAccuX,
+                                                            ushort? MouseAccuY,
                                                             sbyte? Steer,
                                                             bool? Gas,
                                                             bool? Brake) : IInputChange
@@ -320,12 +320,12 @@ public partial class CGameCtnGhost
                     {
                         return null;
                     }
-                    
+
                     if (Tick < 2)
                     {
                         return null; // TODO
                     }
-                    
+
                     return States == 2;
                 }
             }

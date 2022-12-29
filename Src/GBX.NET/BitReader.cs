@@ -60,6 +60,11 @@ public class BitReader
         return (short)ReadNumber(bits: 16);
     }
 
+    public ushort ReadUInt16()
+    {
+        return (ushort)ReadNumber(bits: 16);
+    }
+
     public int ReadInt32()
     {
         return (int)ReadNumber(bits: 32);
