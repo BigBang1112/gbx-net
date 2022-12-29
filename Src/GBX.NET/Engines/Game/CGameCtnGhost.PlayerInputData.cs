@@ -178,56 +178,58 @@ public partial class CGameCtnGhost
                 var gas = default(bool?);
                 var brake = default(bool?);
 
-                var sameState = r.ReadBit();
-
-                if (!sameState)
+                try
                 {
-                    var onlySomething = r.ReadBit();
+                    var sameState = r.ReadBit();
 
-                    states = onlySomething
-                        ? r.Read2Bit()
-                        : r.ReadNumber(bits: version is EVersion._2020_04_08 ? 33 : 34);
-
-                    if (!started)
+                    if (!sameState)
                     {
-                        started = (states & 2) != 0;
-                    }
-                    
-                    different = true;
-                }
+                        var onlySomething = r.ReadBit();
 
-                var sameMouse = r.ReadBit();
+                        states = onlySomething
+                            ? r.Read2Bit()
+                            : r.ReadNumber(bits: version is EVersion._2020_04_08 ? 33 : 34);
 
-                if (!sameMouse)
-                {
-                    mouseAccuX = r.ReadInt16();
-                    mouseAccuY = r.ReadInt16();
-
-                    different = true;
-                }
-
-                // This check is a bit weird, may not work for StormMan gameplay
-                // If starting with horn on, it is included on first tick
-                // If mouse is not plugged, it is also included
-                // In code, this check is presented as '(X - 2 & 0xfffffffd) == 0'
-
-                if (r.Position < r.Length)
-                {
-                    yield break;
-                }
-
-                if (started)
-                {
-                    var sameValue = r.ReadBit();
-
-                    if (!sameValue)
-                    {
-                        steer = r.ReadSByte();
-                        gas = r.ReadBit();
-                        brake = r.ReadBit();
+                        if (!started)
+                        {
+                            started = (states & 2) != 0;
+                        }
 
                         different = true;
                     }
+
+                    var sameMouse = r.ReadBit();
+
+                    if (!sameMouse)
+                    {
+                        mouseAccuX = r.ReadInt16();
+                        mouseAccuY = r.ReadInt16();
+
+                        different = true;
+                    }
+
+                    // This check is a bit weird, may not work for StormMan gameplay
+                    // If starting with horn on, it is included on first tick
+                    // If mouse is not plugged, it is also included
+                    // In code, this check is presented as '(X - 2 & 0xfffffffd) == 0'
+
+                    if (started)
+                    {
+                        var sameValue = r.ReadBit();
+
+                        if (!sameValue)
+                        {
+                            steer = r.ReadSByte();
+                            gas = r.ReadBit();
+                            brake = r.ReadBit();
+
+                            different = true;
+                        }
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    
                 }
 
                 if (different)
@@ -270,7 +272,7 @@ public partial class CGameCtnGhost
             TimeInt32 Timestamp { get; }
         }
 
-        public record struct ShootmaniaInputChange(int Tick,
+        public readonly record struct ShootmaniaInputChange(int Tick,
                                                    short? MouseAccuX,
                                                    short? MouseAccuY,
                                                    EStrafe? Strafe,
@@ -299,7 +301,7 @@ public partial class CGameCtnGhost
             ulong? IInputChange.States => States is null ? null : (ulong)States;
         }
 
-        public record struct TrackmaniaInputChange(int Tick,
+        public readonly record struct TrackmaniaInputChange(int Tick,
                                                    ulong? States,
                                                    short? MouseAccuX,
                                                    short? MouseAccuY,
