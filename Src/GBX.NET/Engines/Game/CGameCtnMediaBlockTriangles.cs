@@ -185,6 +185,24 @@ public abstract partial class CGameCtnMediaBlockTriangles : CGameCtnMediaBlock, 
         }
     }
 
+    #region 0x002 chunk
+
+    /// <summary>
+    /// CGameCtnMediaBlockTriangles 0x002 skippable chunk
+    /// </summary>
+    [Chunk(0x03029002)]
+    public class Chunk03029002 : SkippableChunk<CGameCtnMediaBlockTriangles>
+    {
+        public int U01;
+
+        public override void ReadWrite(CGameCtnMediaBlockTriangles n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+        }
+    }
+
+    #endregion
+
     #endregion
 
     #endregion
