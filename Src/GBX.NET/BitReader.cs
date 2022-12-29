@@ -14,23 +14,27 @@ public class BitReader
         Length = data.Length * 8;
     }
 
-    public bool ReadBit()
+    private bool ReadBit(ReadOnlySpan<byte> data)
     {
         var result = (data[Position / 8] & (1 << (Position % 8))) != 0;
         Position++;
         return result;
     }
 
+    public bool ReadBit()
+    {
+        return ReadBit(data);
+    }
+
     public ulong ReadNumber(int bits)
     {
         ulong result = 0;
 
-        var dataSpan = data.AsSpan();
-        
+        ReadOnlySpan<byte> dataSpan = data;
+
         for (var i = 0; i < bits; i++)
         {
-            result |= (ulong)(dataSpan[Position / 8] & (1 << (Position % 8))) << i;
-            Position++;
+            result |= (ulong)(ReadBit(dataSpan) ? 1 : 0) << i;
         }
         
         return result;
