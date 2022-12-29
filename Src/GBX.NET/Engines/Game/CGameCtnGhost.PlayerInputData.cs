@@ -187,7 +187,8 @@ public partial class CGameCtnGhost
                 // If starting with horn on, it is included on first tick
                 // If mouse is not plugged, it is also included
                 // In code, this check is presented as '(X - 2 & 0xfffffffd) == 0'
-                if ((i == 0 && ((states.GetValueOrDefault() & 64) != 0)) || sameMouse)
+
+                if (states.HasValue || i > 0)
                 {
                     var sameValue = r.ReadBit();
 
@@ -281,18 +282,7 @@ public partial class CGameCtnGhost
             public TimeInt32 Timestamp { get; } = new(Tick * 10);
 
             public bool? Respawn => States is null ? null : (States & 2147483648) != 0;
-            public bool? Horn
-            {
-                get
-                {
-                    if (States is null)
-                    {
-                        return null;
-                    }
-
-                    return (States & (ulong)(Tick == 0 ? 64 : 2)) != 0;
-                }
-            }
+            public bool? Horn => null;
         }
     }
 }
