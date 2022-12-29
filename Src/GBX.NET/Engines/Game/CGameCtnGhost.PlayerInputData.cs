@@ -188,7 +188,7 @@ public partial class CGameCtnGhost
                 // If mouse is not plugged, it is also included
                 // In code, this check is presented as '(X - 2 & 0xfffffffd) == 0'
 
-                if (states.HasValue || i > 1)
+                if (states.HasValue || i > 0)
                 {
                     var sameValue = r.ReadBit();
 
