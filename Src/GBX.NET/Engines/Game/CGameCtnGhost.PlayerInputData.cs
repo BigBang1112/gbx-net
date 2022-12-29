@@ -273,12 +273,12 @@ public partial class CGameCtnGhost
         }
 
         public readonly record struct ShootmaniaInputChange(int Tick,
-                                                   short? MouseAccuX,
-                                                   short? MouseAccuY,
-                                                   EStrafe? Strafe,
-                                                   EWalk? Walk,
-                                                   byte? Vertical,
-                                                   int? States) : IInputChange
+                                                            short? MouseAccuX,
+                                                            short? MouseAccuY,
+                                                            EStrafe? Strafe,
+                                                            EWalk? Walk,
+                                                            byte? Vertical,
+                                                            int? States) : IInputChange
         {
             public TimeInt32 Timestamp => new(Tick * 10);
 
@@ -302,17 +302,33 @@ public partial class CGameCtnGhost
         }
 
         public readonly record struct TrackmaniaInputChange(int Tick,
-                                                   ulong? States,
-                                                   short? MouseAccuX,
-                                                   short? MouseAccuY,
-                                                   sbyte? Steer,
-                                                   bool? Gas,
-                                                   bool? Brake) : IInputChange
+                                                            ulong? States,
+                                                            short? MouseAccuX,
+                                                            short? MouseAccuY,
+                                                            sbyte? Steer,
+                                                            bool? Gas,
+                                                            bool? Brake) : IInputChange
         {
             public TimeInt32 Timestamp { get; } = new(Tick * 10);
 
             public bool? Respawn => States is null ? null : (States & 2147483648) != 0;
-            public bool? Horn => null;
+            public bool? Horn
+            {
+                get
+                {
+                    if (States is null)
+                    {
+                        return null;
+                    }
+                    
+                    if (Tick < 2)
+                    {
+                        return null; // TODO
+                    }
+                    
+                    return (States & 2) != 0;
+                }
+            }
         }
     }
 }
