@@ -27,12 +27,30 @@ public partial class CGameCtnGhost
         private int ticks;
         private byte[] data = Array.Empty<byte>();
 
+        private IList<IInputChange>? inputChanges;
+
         public EVersion Version { get => version; set => version = value; }
         public int U02 { get => u02; set => u02 = value; }
         public TimeInt32? StartOffset { get => startOffset; set => startOffset = value; }
         public int Ticks { get => ticks; set => ticks = value; }
         public byte[] Data { get => data; set => data = value; }
-        public IList<IInputChange> InputChanges { get; set; } = Array.Empty<IInputChange>();
+
+        public IList<IInputChange> InputChanges
+        {
+            get
+            {
+                if (inputChanges is null)
+                {
+                    var inputEnumerable = version is <= EVersion._2017_09_12
+                        ? ProcessShootmaniaInputs()
+                        : ProcessTrackmaniaInputs();
+
+                    inputChanges = inputEnumerable.ToArray();
+                }
+
+                return inputChanges;
+            }
+        }
 
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
@@ -46,29 +64,6 @@ public partial class CGameCtnGhost
 
             rw.Int32(ref ticks);
             rw.Bytes(ref data!);
-
-            if (rw.Reader is null)
-            {
-                return;
-            }
-
-            InputChanges = new List<IInputChange>();
-
-            try
-            {
-                var inputChanges = Version is <= EVersion._2017_09_12
-                    ? ProcessShootmaniaInputs()
-                    : ProcessTrackmaniaInputs();
-
-                foreach (var inputChange in inputChanges)
-                {
-                    InputChanges.Add(inputChange);
-                }
-            }
-            catch (Exception ex)
-            {
-                rw.Reader.Logger?.LogWarning(ex, "Error while reading inputs!");
-            }
         }
 
         internal IEnumerable<IInputChange> ProcessShootmaniaInputs()
@@ -149,10 +144,71 @@ public partial class CGameCtnGhost
                 throw new Exception("Input buffer not cleared out completely");
             }
         }
-        
+
         internal IEnumerable<IInputChange> ProcessTrackmaniaInputs()
         {
-            yield break;
+            var r = new BitReader(data);
+
+            for (var i = 0; i < ticks; i++)
+            {
+                var different = false;
+
+                var states = default(long?);
+                var mouseAccuX = default(short?);
+                var mouseAccuY = default(short?);
+                var steer = default(sbyte?);
+                var gas = default(bool?);
+                var brake = default(bool?);
+
+                var sameState = r.ReadBit();
+
+                if (!sameState)
+                {
+                    var onlySomething = r.ReadBit();
+
+                    states = onlySomething
+                        ? r.Read2Bit()
+                        : r.ReadNumber(version is EVersion._2020_04_08 ? 33 : 34);
+
+                    different = true;
+                }
+
+                var sameMouse = r.ReadBit();
+
+                if (!sameMouse)
+                {
+                    mouseAccuX = r.ReadInt16();
+                    mouseAccuY = r.ReadInt16();
+
+                    different = true;
+                }
+
+                if (i > 0) // This check is a bit weird, may not work for StormMan gameplay
+                {
+                    var sameValue = r.ReadBit();
+
+                    if (!sameValue)
+                    {
+                        steer = r.ReadSByte();
+                        gas = r.ReadBit();
+                        brake = r.ReadBit();
+
+                        different = true;
+                    }
+                }
+
+                if (different)
+                {
+                    yield return new TrackmaniaInputChange(i, states, mouseAccuX, mouseAccuY, steer, gas, brake);
+                }
+            }
+
+            var theRest = r.ReadToEnd();
+
+            if (theRest.Any(x => x != 0))
+            {
+                throw new Exception("Input buffer not cleared out completely");
+            }
         }
 
         public enum EStrafe : byte
@@ -174,6 +230,10 @@ public partial class CGameCtnGhost
         public interface IInputChange
         {
             int Tick { get; }
+            short? MouseAccuX { get; }
+            short? MouseAccuY { get; }
+            long? States { get; }
+
             TimeInt32 Timestamp { get; }
         }
 
@@ -183,7 +243,7 @@ public partial class CGameCtnGhost
                                                    EStrafe? Strafe,
                                                    EWalk? Walk,
                                                    byte? Vertical,
-                                                   int? States) : IInputChange
+                                                   long? States) : IInputChange
         {
             public TimeInt32 Timestamp => new(Tick * 10);
 
@@ -204,7 +264,13 @@ public partial class CGameCtnGhost
             public bool? Respawn => States is null ? null : (States & 2097152) != 0;
         }
 
-        public record struct TrackmaniaInputChange(int Tick) : IInputChange
+        public record struct TrackmaniaInputChange(int Tick,
+                                                   long? States,
+                                                   short? MouseAccuX,
+                                                   short? MouseAccuY,
+                                                   sbyte? Steer,
+                                                   bool? Gas,
+                                                   bool? Brake) : IInputChange
         {
             public TimeInt32 Timestamp { get; } = new(Tick * 10);
         }

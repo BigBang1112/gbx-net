@@ -21,7 +21,7 @@ public class BitReader
         return result;
     }
 
-    public int ReadNumber(int bits)
+    public long ReadNumber(int bits)
     {
         var result = 0;
         for (var i = 0; i < bits; i++)
@@ -51,7 +51,7 @@ public class BitReader
 
     public int ReadInt32()
     {
-        return ReadNumber(bits: 32);
+        return (int)ReadNumber(bits: 32);
     }
 
     // ReadToEnd through bits
