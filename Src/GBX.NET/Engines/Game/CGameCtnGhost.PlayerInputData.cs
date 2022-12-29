@@ -45,6 +45,22 @@ public partial class CGameCtnGhost
                         ? ProcessShootmaniaInputs()
                         : ProcessTrackmaniaInputs();
 
+#if DEBUG
+                    var testList = new List<IInputChange>();
+
+                    try
+                    {
+                        foreach (var input in inputEnumerable)
+                        {
+                            testList.Add(input);
+                        }
+                    }
+                    catch
+                    {
+
+                    }
+#endif
+
                     inputChanges = inputEnumerable.ToArray();
                 }
 
@@ -149,6 +165,8 @@ public partial class CGameCtnGhost
         {
             var r = new BitReader(data);
 
+            var started = false;
+
             for (var i = 0; i < ticks; i++)
             {
                 var different = false;
@@ -170,6 +188,11 @@ public partial class CGameCtnGhost
                         ? r.Read2Bit()
                         : r.ReadNumber(bits: version is EVersion._2020_04_08 ? 33 : 34);
 
+                    if (!started)
+                    {
+                        started = (states & 2) != 0;
+                    }
+                    
                     different = true;
                 }
 
@@ -188,7 +211,12 @@ public partial class CGameCtnGhost
                 // If mouse is not plugged, it is also included
                 // In code, this check is presented as '(X - 2 & 0xfffffffd) == 0'
 
-                if (states.HasValue || i > 0)
+                if (r.Position < r.Length)
+                {
+                    yield break;
+                }
+
+                if (started)
                 {
                     var sameValue = r.ReadBit();
 
