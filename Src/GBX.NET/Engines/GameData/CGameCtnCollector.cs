@@ -32,7 +32,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
 
     #region Fields
 
-    private Ident author;
+    private Ident ident;
     private string pageName;
     private ECollectorFlags flags;
     private int catalogPosition;
@@ -44,7 +44,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
     private string? skinDirectory;
     private bool isInternal;
     private bool isAdvanced;
-    private long fileTime;
+    private ulong fileTime;
 
     #endregion
 
@@ -56,7 +56,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
     [AppliedWithChunk<Chunk2E001002>]
     [AppliedWithChunk<Chunk2E001003>]
     [AppliedWithChunk<Chunk2E00100B>]
-    public Ident Author { get => author; set => author = value; }
+    public Ident Ident { get => ident; set => ident = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E001003>]
@@ -100,7 +100,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
 
     [NodeMember]
     [AppliedWithChunk<Chunk2E001006H>]
-    public long FileTime { get => fileTime; set => fileTime = value; }
+    public ulong FileTime { get => fileTime; set => fileTime = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E001009>]
@@ -137,7 +137,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
 
     internal CGameCtnCollector()
     {
-        author = Ident.Empty;
+        ident = Ident.Empty;
         pageName = "";
     }
 
@@ -155,7 +155,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
     {
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.Ident(ref n.author!);
+            rw.Ident(ref n.ident!);
         }
     }
 
@@ -173,8 +173,8 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
 
         public int Version { get => version; set => version = value; }
 
-        public int U01;
-        public int U02;
+        public string U01 = "";
+        public string? U02;
         public int U03;
         public byte U04;
         public int U05;
@@ -182,18 +182,18 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
 
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.Ident(ref n.author!);
-            rw.Int32(ref version);
+            rw.Ident(ref n.ident!);
+            rw.Int32(ref version); // Id but filtered, technically
             rw.String(ref n.pageName!);
 
             if (version == 5)
             {
-                rw.Int32(ref U01);
+                rw.Id(ref U01!);
             }
 
             if (version >= 4)
             {
-                rw.Int32(ref U02); // Id?
+                rw.Id(ref U02);
             }
 
             if (version >= 3)
@@ -314,7 +314,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
     {
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.Int64(ref n.fileTime);
+            rw.UInt64(ref n.fileTime); // SHeaderLightMap
         }
     }
 
@@ -439,7 +439,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
     {
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.Ident(ref n.author!);
+            rw.Ident(ref n.ident!); // It may be called Ident
         }
     }
 
@@ -505,7 +505,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
         private int version;
 
         public CMwNod? U01;
-        public int U02;
+        public CMwNod? U02;
 
         public int Version { get => version; set => version = value; }
 
@@ -515,9 +515,9 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
             rw.NodeRef(ref U01);
             rw.String(ref n.skinDirectory);
 
-            if (version >= 2 && n.skinDirectory!.Length == 0)
+            if (version >= 2 && (n.skinDirectory is null || n.skinDirectory.Length == 0))
             {
-                rw.Int32(ref U02); // -1
+                rw.NodeRef(ref U02);
             }
         }
     }

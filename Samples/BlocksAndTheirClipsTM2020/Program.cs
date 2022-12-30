@@ -32,7 +32,7 @@ foreach (var blockInfoFile in Directory.EnumerateFiles(blockFolder, "*.*", Searc
             Ground = CreateVariant(blockInfo.VariantBaseGround)
         };
 
-        dict.Add(blockInfo.Author.Id, block);
+        dict.Add(blockInfo.Ident.Id, block);
     }
     catch (NotAGbxException)
     {

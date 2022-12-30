@@ -200,6 +200,21 @@ public class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
+    public void Write(Mat3 value)
+    {
+        Write(value.XX);
+        Write(value.XY);
+        Write(value.XZ);
+        Write(value.YX);
+        Write(value.YY);
+        Write(value.YZ);
+        Write(value.ZX);
+        Write(value.ZY);
+        Write(value.ZZ);
+    }
+
+    /// <exception cref="IOException">An I/O error occurs.</exception>
+    /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write(Mat4 value)
     {
         Write(value.XX);
@@ -371,28 +386,20 @@ public class GameBoxWriter : BinaryWriter
     {
         if (nodeFile is not null)
         {
-            var nodeFileIndex = nodeFile.NodeIndex;
-            var alreadyAdded = false;
-
-            while (AuxNodes.TryGetValue(nodeFileIndex, out Node? alreadyAddedNode))
+            foreach (var pair in State.ExtAuxNodes)
             {
-                if (alreadyAddedNode is null || node == alreadyAddedNode)
+                if (pair.Value == nodeFile)
                 {
-                    alreadyAdded = true;
-                    break;
+                    Write(pair.Key + 1);
+                    return;
                 }
-
-                nodeFileIndex++;
             }
 
-            nodeFile.NodeIndex = nodeFileIndex;
+            var i = AuxNodes.Count + State.ExtAuxNodes.Count;
+            nodeFile.NodeIndex = i;
+            State.ExtAuxNodes[i] = nodeFile;
 
-            Write(nodeFileIndex + 1);
-
-            if (!alreadyAdded)
-            {
-                AuxNodes.Add(nodeFileIndex, null);
-            }
+            Write(i + 1);
 
             return;
         }
@@ -424,12 +431,7 @@ public class GameBoxWriter : BinaryWriter
             }
         }
 
-        var index = AuxNodes.Count;
-
-        while (AuxNodes.ContainsKey(index))
-        {
-            index++;
-        }
+        var index = AuxNodes.Count + State.ExtAuxNodes.Count;
 
         AuxNodes.Add(index, node);
 
@@ -981,5 +983,10 @@ public class GameBoxWriter : BinaryWriter
     public void WriteExternalNodeArray<T>(ExternalNode<T>[]? array) where T : Node
     {
         WriteArray(array, (x, w) => w.Write(x.Node, x.File));
+    }
+
+    public void Write(DateTime variable)
+    {
+        Write(variable.ToFileTimeUtc());
     }
 }

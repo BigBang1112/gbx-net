@@ -16,7 +16,7 @@ public partial class CGameGhost : CMwNod
     [AppliedWithChunk<Chunk0303F006>]
     public bool IsReplaying { get => isReplaying; set => isReplaying = value; }
 
-    [NodeMember]
+    [NodeMember(ExactName = "TM_Data")]
     [AppliedWithChunk<Chunk0303F003>]
     [AppliedWithChunk<Chunk0303F005>]
     [AppliedWithChunk<Chunk0303F006>]
@@ -92,7 +92,7 @@ public partial class CGameGhost : CMwNod
 
                 ghostData.ReadSamples(ms, numSamples: Samples?.Length ?? 0, sizePerSample: 56);
 
-                if (ghostData.NodeID == uint.MaxValue)
+                if (ghostData.SavedMobilClassId == uint.MaxValue)
                     return null;
 
                 return ghostData;
@@ -149,7 +149,7 @@ public partial class CGameGhost : CMwNod
                     using var ms = new MemoryStream(Data);
                     ghostData.Read(ms, compressed: true);
 
-                    if (ghostData.NodeID == uint.MaxValue)
+                    if (ghostData.SavedMobilClassId == uint.MaxValue)
                         return null;
 
                     return ghostData;

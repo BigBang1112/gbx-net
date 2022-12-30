@@ -4,6 +4,12 @@
 [Node(0x0A005000)]
 public abstract class CSceneObject : CMwNod
 {
+    private CMotion? motion;
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk0A005003>]
+    public CMotion? Motion { get => motion; set => motion = value; }
+
     internal CSceneObject()
     {
 
@@ -33,7 +39,7 @@ public abstract class CSceneObject : CMwNod
 
         public override void ReadWrite(CSceneObject n, GameBoxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
+            rw.Boolean(ref U01); // same as 0x004 U01
         }
     }
 
@@ -43,11 +49,9 @@ public abstract class CSceneObject : CMwNod
     [Chunk(0x0A005003)]
     public class Chunk0A005003 : Chunk<CSceneObject>
     {
-        public CMwNod? U01;
-
         public override void ReadWrite(CSceneObject n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01); // CMotion?
+            rw.NodeRef(ref n.motion);
         }
     }
 
@@ -61,7 +65,7 @@ public abstract class CSceneObject : CMwNod
 
         public override void ReadWrite(CSceneObject n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.Int32(ref U01); // same as 0x002 U01
         }
     }
 }

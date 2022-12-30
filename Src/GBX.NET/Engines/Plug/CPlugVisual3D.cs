@@ -96,8 +96,10 @@ public abstract class CPlugVisual3D : CPlugVisual
         {
             var u01 = !n.IsFlagBitSet(22) || n.HasVertexNormals;
             var u02 = !n.IsFlagBitSet(22) || n.IsFlagBitSet(8);
+            var u03 = n.IsFlagBitSet(20);
+            var u04 = n.IsFlagBitSet(21);
+            var isSprite = n is CPlugVisualSprite;
 
-            // Console.WriteLine("numBytesPerVertex={0}", numBytesPerVertex);
             n.vertices = r.ReadArray(n.Count, r =>
             {
                 var pos = r.ReadVec3();
@@ -108,7 +110,7 @@ public abstract class CPlugVisual3D : CPlugVisual
 
                 if (u01)
                 {
-                    if (n.IsFlagBitSet(20))
+                    if (u03)
                     {
                         vertU01 = r.ReadInt32();
                     }
@@ -120,7 +122,7 @@ public abstract class CPlugVisual3D : CPlugVisual
 
                 if (u02)
                 {
-                    if (n.IsFlagBitSet(21))
+                    if (u04)
                     {
                         vertU03 = r.ReadInt32();
                     }
@@ -129,6 +131,15 @@ public abstract class CPlugVisual3D : CPlugVisual
                         vertU04 = r.ReadVec4();
                     }
                 }
+                
+                var vertU05 = default(float?);
+                var vertU06 = default(int?);
+
+                if (isSprite)
+                {
+                    vertU05 = r.ReadSingle();
+                    vertU06 = r.ReadInt32();
+                }
 
                 return new Vertex
                 {
@@ -136,7 +147,9 @@ public abstract class CPlugVisual3D : CPlugVisual
                     U04 = vertU01,
                     U05 = vertU02,
                     U06 = vertU03,
-                    U07 = vertU04
+                    U07 = vertU04,
+                    U08 = vertU05,
+                    U09 = vertU06,
                 };
             });
 
@@ -148,7 +161,10 @@ public abstract class CPlugVisual3D : CPlugVisual
         {
             var u01 = !n.IsFlagBitSet(22) || n.HasVertexNormals;
             var u02 = !n.IsFlagBitSet(22) || n.IsFlagBitSet(8);
-            
+            var u03 = n.IsFlagBitSet(20);
+            var u04 = n.IsFlagBitSet(21);
+            var isSprite = n is CPlugVisualSprite;
+
             for (var i = 0; i < n.Count; i++)
             {
                 var v = n.vertices[i];
@@ -156,7 +172,7 @@ public abstract class CPlugVisual3D : CPlugVisual
 
                 if (u01)
                 {
-                    if (n.IsFlagBitSet(20))
+                    if (u03)
                     {
                         w.Write(v.U04.GetValueOrDefault());
                     }
@@ -168,7 +184,7 @@ public abstract class CPlugVisual3D : CPlugVisual
 
                 if (u02)
                 {
-                    if (n.IsFlagBitSet(21))
+                    if (u04)
                     {
                         w.Write(v.U06.GetValueOrDefault());
                     }
@@ -176,6 +192,12 @@ public abstract class CPlugVisual3D : CPlugVisual
                     {
                         w.Write(v.U07.GetValueOrDefault());
                     }
+                }
+
+                if (isSprite)
+                {
+                    w.Write(v.U08.GetValueOrDefault());
+                    w.Write(v.U09.GetValueOrDefault());
                 }
             }
 
@@ -204,7 +226,7 @@ public abstract class CPlugVisual3D : CPlugVisual
         }
     }
 
-    public readonly record struct Vertex(Vec3 Position, Vec3? Normal, Vec3? U02, float? U03, int? U04, Vec3? U05, int? U06, Vec4? U07)
+    public readonly record struct Vertex(Vec3 Position, Vec3? Normal, Vec3? U02, float? U03, int? U04, Vec3? U05, int? U06, Vec4? U07, float? U08, int? U09)
     {
         public override string ToString() => Position.ToString();
     }

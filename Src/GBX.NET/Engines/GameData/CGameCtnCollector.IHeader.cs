@@ -6,7 +6,7 @@ public partial class CGameCtnCollector
 {
     public interface IHeader : INodeHeader<CGameCtnCollector>
     {
-        public Ident Author { get; set; }
+        public Ident Ident { get; set; }
         public string PageName { get; set; }
         public ECollectorFlags Flags { get; set; }
         public int CatalogPosition { get; set; }
@@ -14,6 +14,6 @@ public partial class CGameCtnCollector
         public EProdState? ProdState { get; set; }
         public Color[,]? Icon { get; set; }
         public byte[]? IconWebP { get; set; }
-        public long FileTime { get; set; }
+        public ulong FileTime { get; set; }
     }
 }

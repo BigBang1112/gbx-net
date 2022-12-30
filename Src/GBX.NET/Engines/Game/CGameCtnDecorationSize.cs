@@ -6,6 +6,7 @@ public class CGameCtnDecorationSize : CMwNod
     private Vec2 editionZoneMin;
     private Vec2 editionZoneMax;
     private int baseHeightBase;
+    private Int3 size;
     private CSceneLayout? scene;
     private GameBoxRefTable.File? sceneFile;
 
@@ -20,6 +21,10 @@ public class CGameCtnDecorationSize : CMwNod
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk0303B001>]
     public int BaseHeightBase { get => baseHeightBase; set => baseHeightBase = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0303B001>]
+    public Int3 Size { get => size; set => size = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk0303B001>]
@@ -62,16 +67,10 @@ public class CGameCtnDecorationSize : CMwNod
     [Chunk(0x0303B001)]
     public class Chunk0303B001 : Chunk<CGameCtnDecorationSize>
     {
-        public int U01;
-        public int U02;
-        public int U03;
-
         public override void ReadWrite(CGameCtnDecorationSize n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref n.baseHeightBase);
-            rw.Int32(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
+            rw.Int3(ref n.size);
             rw.NodeRef<CSceneLayout>(ref n.scene, ref n.sceneFile);
         }
     }

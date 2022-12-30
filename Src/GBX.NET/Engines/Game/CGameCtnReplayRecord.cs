@@ -754,8 +754,8 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
         {
             _ = r.ReadInt32(); // listVersion
             n.ghosts = r.ReadArray(r => r.ReadNodeRef<CGameCtnGhost>()!);
-            U01 = r.ReadInt32();
-            n.extras = r.ReadArray(r => r.ReadInt64());
+            U01 = r.ReadInt32(); // always zero
+            n.extras = r.ReadArray(r => r.ReadInt64()); // SOldShowTime
         }
 
         public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, CancellationToken cancellationToken = default)
@@ -900,7 +900,17 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     [Chunk(0x0309301F, "AnchoredObjectInfos"), IgnoreChunk]
     public class Chunk0309301F : SkippableChunk<CGameCtnReplayRecord>
     {
-
+        /*
+         * version 1: SOldGameCtnReplayRecord_AnchoredObjectInfos array
+         * - bool
+         * - int
+         * - float
+         * - float
+         * - float
+         * - int
+         * 
+         * version 2: noderef CGameReplayObjectVisData m_Scenery_Objects_Deprecated
+         */
     }
 
     #endregion

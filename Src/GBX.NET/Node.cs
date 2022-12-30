@@ -483,7 +483,7 @@ public abstract class Node
             }
             else
             {
-                await WriteChunkWithReadWriteAsync(node, (IReadableWritableChunk)chunk, gbxrw, cancellationToken);
+                await ReadWriteChunkAsync(node, (IReadableWritableChunk)chunk, gbxrw, cancellationToken);
             }
         }
         catch (EndOfStreamException) // May not be needed
@@ -802,13 +802,13 @@ public abstract class Node
             return;
         }
 
-        await WriteChunkWithReadWriteAsync(chunk, rw, cancellationToken);
+        await ReadWriteChunkAsync(chunk, rw, cancellationToken);
     }
 
-    private static async Task WriteChunkWithReadWriteAsync(Node node,
-                                                           IReadableWritableChunk chunk,
-                                                           GameBoxReaderWriter rw,
-                                                           CancellationToken cancellationToken)
+    private static async Task ReadWriteChunkAsync(Node node,
+                                                  IReadableWritableChunk chunk,
+                                                  GameBoxReaderWriter rw,
+                                                  CancellationToken cancellationToken)
     {
         if (NodeManager.IsAsyncChunk(chunk.Id))
         {
@@ -824,11 +824,11 @@ public abstract class Node
         chunk.ReadWrite(node, rw);
     }
 
-    private async Task WriteChunkWithReadWriteAsync(IReadableWritableChunk chunk,
-                                                    GameBoxReaderWriter rw,
-                                                    CancellationToken cancellationToken)
+    private async Task ReadWriteChunkAsync(IReadableWritableChunk chunk,
+                                           GameBoxReaderWriter rw,
+                                           CancellationToken cancellationToken)
     {
-        await WriteChunkWithReadWriteAsync(this, chunk, rw, cancellationToken);
+        await ReadWriteChunkAsync(this, chunk, rw, cancellationToken);
     }
 
     private void WriteSkippableChunk(ISkippableChunk skippableChunk,
@@ -894,7 +894,7 @@ public abstract class Node
 
         try
         {
-            await WriteChunkWithReadWriteAsync(skippableChunk, rw, cancellationToken);
+            await ReadWriteChunkAsync(skippableChunk, rw, cancellationToken);
         }
         catch (ChunkWriteNotImplementedException)
         {

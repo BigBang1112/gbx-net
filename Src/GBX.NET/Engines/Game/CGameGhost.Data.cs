@@ -28,7 +28,7 @@ public partial class CGameGhost
 
         public ObservableCollection<Sample> Samples { get; private set; }
         public CompressionLevel Compression { get; set; }
-        public uint NodeID { get; set; }
+        public uint SavedMobilClassId { get; set; }
 
         public Data()
         {
@@ -86,51 +86,60 @@ public partial class CGameGhost
         /// <param name="r">Reader.</param>
         public void Read(GameBoxReader r)
         {
-            NodeID = r.ReadUInt32(); // CSceneVehicleCar or CSceneMobilCharVis
-
-            if (NodeID != uint.MaxValue)
+            SavedMobilClassId = r.ReadUInt32(); // CSceneVehicleCar or CSceneMobilCharVis
+            
+            if (SavedMobilClassId == uint.MaxValue)
             {
-                var bSkipList2 = r.ReadBoolean();
-                var u01 = r.ReadInt32();
-                SamplePeriod = TimeInt32.FromMilliseconds(r.ReadInt32());
-                var u02 = r.ReadInt32();
+                return;
+            }
 
-                var sampleData = r.ReadBytes();
+            var bSkipList2 = r.ReadBoolean(); // IsFixedTimeStep
+            var u01 = r.ReadInt32();
+            SamplePeriod = TimeInt32.FromMilliseconds(r.ReadInt32()); // SavedPeriod
+            var u02 = r.ReadInt32();
+            
+            var sampleData = r.ReadBytes(); // CGameGhostTMData::ArchiveStateBuffer
+            
+            // CGameGhostTMData::ArchiveStateOffsets
+            var sizePerSample = -1;
+            var sampleSizes = default(int[]);
 
-                int sizePerSample = -1;
-                int[]? sampleSizes = null;
-
-                var numSamples = r.ReadInt32();
-                if (numSamples > 0)
+            var numSamples = r.ReadInt32(); // StateOffsets count
+            
+            if (numSamples > 0)
+            {
+                var firstSampleOffset = r.ReadInt32();
+                
+                if (numSamples > 1)
                 {
-                    var firstSampleOffset = r.ReadInt32();
-                    if (numSamples > 1)
+                    sizePerSample = r.ReadInt32();
+                    
+                    if (sizePerSample == -1)
                     {
-                        sizePerSample = r.ReadInt32();
-                        if (sizePerSample == -1)
-                        {
-                            sampleSizes = r.ReadArray<int>(numSamples - 1);
-                        }
+                        sampleSizes = r.ReadArray<int>(numSamples - 1);
                     }
                 }
+            }
+            //
 
-                int[]? sampleTimes = null;
+            // CGameGhostTMData::ArchiveStateTimes
+            var sampleTimes = default(int[]);
 
-                if (!bSkipList2)
-                {
-                    sampleTimes = r.ReadArray<int>();
-                }
+            if (!bSkipList2)
+            {
+                sampleTimes = r.ReadArray<int>();
+            }
+            //
 
-                if (numSamples > 0)
-                {
-                    using var mssd = new MemoryStream(sampleData);
-                    ReadSamples(mssd, numSamples, sizePerSample, sampleSizes, sampleTimes);
-                }
-                else
-                {
-                    Samples = new ObservableCollection<Sample>();
-                    Samples.CollectionChanged += Samples_CollectionChanged;
-                }
+            if (numSamples > 0)
+            {
+                using var mssd = new MemoryStream(sampleData);
+                ReadSamples(mssd, numSamples, sizePerSample, sampleSizes, sampleTimes);
+            }
+            else
+            {
+                Samples = new ObservableCollection<Sample>();
+                Samples.CollectionChanged += Samples_CollectionChanged;
             }
         }
 
@@ -156,7 +165,7 @@ public partial class CGameGhost
 
                 var time = sampleTimes?[i];
 
-                switch (NodeID)
+                switch (SavedMobilClassId)
                 {
                     case 0x0A02B000: // CSceneVehicleCar
                         {

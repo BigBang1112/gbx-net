@@ -124,7 +124,7 @@ public class CPlugSurface : CPlug
 
             rw.NodeRef(ref n.geom);
 
-            rw.ArrayArchive<SurfMaterial>(n.materials);
+            rw.ArrayArchiveWithGbx<SurfMaterial>(ref n.materials);
         }
     }
 
@@ -202,7 +202,7 @@ public class CPlugSurface : CPlug
 
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
-            if (rw.Boolean(material is not null))
+            if (rw.Boolean(material is not null || materialFile is not null))
             {
                 rw.NodeRef(ref material, ref materialFile);
             }
@@ -222,18 +222,15 @@ public class CPlugSurface : CPlug
     public class Box : ISurf
     {
         private NET.Box transform;
-        private short u02;
 
         public int Id => 6;
         public Vec3? U01 { get; set; }
 
         public NET.Box Transform { get => transform; set => transform = value; }
-        public short U02 { get => u02; set => u02 = value; }
 
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
             rw.Box(ref transform);
-            rw.Int16(ref u02);
         }
     }
 

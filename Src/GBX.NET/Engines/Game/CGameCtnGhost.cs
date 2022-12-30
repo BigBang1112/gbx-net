@@ -913,7 +913,7 @@ public partial class CGameCtnGhost : CGameGhost
 
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.Int32(ref U01); // some validation version
         }
     }
 
@@ -1337,6 +1337,19 @@ public partial class CGameCtnGhost : CGameGhost
     /// </summary>
     [Chunk(0x0309202D), IgnoreChunk]
     public class Chunk0309202D : SkippableChunk<CGameCtnGhost>
+    {
+
+    }
+
+    #endregion
+
+    #region 0x02E skippable chunk
+
+    /// <summary>
+    /// CGameCtnGhost 0x02E skippable chunk
+    /// </summary>
+    [Chunk(0x0309202E), IgnoreChunk]
+    public class Chunk0309202E : SkippableChunk<CGameCtnGhost>
     {
 
     }

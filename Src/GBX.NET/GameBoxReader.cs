@@ -422,6 +422,19 @@ public class GameBoxReader : BinaryReader
                         TZ: ReadSingle());
     }
 
+    public Mat3 ReadMat3()
+    {
+        return new Mat3(XX: ReadSingle(),
+                        XY: ReadSingle(),
+                        XZ: ReadSingle(),
+                        YX: ReadSingle(),
+                        YY: ReadSingle(),
+                        YZ: ReadSingle(),
+                        ZX: ReadSingle(),
+                        ZY: ReadSingle(),
+                        ZZ: ReadSingle());
+    }
+
     public Mat4 ReadMat4()
     {
         return new Mat4(XX: ReadSingle(),
@@ -2079,5 +2092,10 @@ public class GameBoxReader : BinaryReader
     public ExternalNode<T>[] ReadExternalNodeArray<T>() where T : Node
     {
         return ReadExternalNodeArray<T>(length: ReadInt32());
+    }
+
+    public DateTime ReadFileTime()
+    {
+        return DateTime.FromFileTimeUtc(ReadInt64());
     }
 }

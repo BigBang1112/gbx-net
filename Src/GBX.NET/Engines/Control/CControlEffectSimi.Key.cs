@@ -41,18 +41,28 @@ public partial class CControlEffectSimi
         {
             base.ReadWrite(rw, version);
 
+            // GmSimi2::Archive
             rw.Vec2(ref position);
             rw.Single(ref rotation);
             rw.Vec2(ref scale);
-            rw.Single(ref opacity);
-            rw.Single(ref depth);
+            //
 
-            if (version != 2)
+            if (version >= 1)
             {
-                rw.Single(ref U01);
-                rw.Single(ref isContinuousEffect);
-                rw.Single(ref U02);
-                rw.Single(ref U03);
+                rw.Single(ref opacity);
+
+                if (version >= 2)
+                {
+                    rw.Single(ref depth);
+
+                    if (version >= 3)
+                    {
+                        rw.Single(ref U01);
+                        rw.Single(ref isContinuousEffect);
+                        rw.Single(ref U02);
+                        rw.Single(ref U03);
+                    }
+                }
             }
         }
     }
