@@ -400,7 +400,7 @@ public partial class CGameCtnGhost : CGameGhost
     public string? GhostClubTag { get => ghostClubTag; set => ghostClubTag = value; }
 
     /// <summary>
-    /// These are the Shootmania and TM2020 inputs but don't get jump-excited, the values are unknown.
+    /// Shootmania and TM2020 inputs.
     /// </summary>
     [NodeMember]
     [AppliedWithChunk<Chunk0309201D>]
