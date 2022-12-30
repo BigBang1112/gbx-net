@@ -268,6 +268,8 @@ public partial class CGameCtnGhost
             ushort? MouseAccuX { get; }
             ushort? MouseAccuY { get; }
             ulong? States { get; }
+            bool? Respawn { get; }
+            bool? Horn { get; }
 
             TimeInt32 Timestamp { get; }
         }
