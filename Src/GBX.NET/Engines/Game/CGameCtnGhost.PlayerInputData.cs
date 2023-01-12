@@ -313,6 +313,12 @@ public partial class CGameCtnGhost
         {
             public TimeInt32 Timestamp { get; } = new(Tick * 10);
 
+            public bool? ActionSlot1 => States is null ? null : (States & 32896) != 0;
+            public bool? ActionSlot2 => States is null ? null : (States & 132096) != 0;
+            public bool? ActionSlot3 => States is null ? null : (States & 524288) != 0;
+            public bool? ActionSlot4 => States is null ? null : (States & 2097152) != 0;
+            public bool? ActionSlot5 => States is null ? null : (States & 8388608) != 0;
+
             public bool? Respawn => States is null ? null : (States & 2147483648) != 0;
             public bool? Horn
             {
@@ -331,6 +337,7 @@ public partial class CGameCtnGhost
                     return States == 2;
                 }
             }
+            
         }
     }
 }
