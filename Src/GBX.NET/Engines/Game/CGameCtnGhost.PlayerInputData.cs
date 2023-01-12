@@ -240,7 +240,7 @@ public partial class CGameCtnGhost
                 }
                 catch (IndexOutOfRangeException)
                 {
-
+                    // TM2020 moment
                 }
 
                 if (different)
@@ -325,12 +325,17 @@ public partial class CGameCtnGhost
         {
             public TimeInt32 Timestamp { get; } = new(Tick * 10);
 
-            public bool? FreeLook => States is null ? null : (States & 8192) != 0;
-            public bool? ActionSlot2 => States is null ? null : (States & 32896) != 0;
-            public bool? ActionSlot4 => States is null ? null : (States & 132096) != 0;
-            public bool? ActionSlot6 => States is null ? null : (States & 524288) != 0;
-            public bool? ActionSlot8 => States is null ? null : (States & 2097152) != 0;
-            public bool? ActionSlot0 => States is null ? null : (States & 8388608) != 0;
+            public bool? FreeLook => States is null ? null : (States & 8192) != 0; // bit 13
+            public bool? ActionSlot1 => States is null ? null : (States & (1 << 14)) != 0;
+            public bool? ActionSlot2 => States is null ? null : (States & 32896) != 0; // bit 15 (and bit 7?)
+            public bool? ActionSlot3 => States is null ? null : (States & (1 << 16)) != 0;
+            public bool? ActionSlot4 => States is null ? null : (States & 132096) != 0; // bit 17 (and bit 7?)
+            public bool? ActionSlot5 => States is null ? null : (States & (1 << 18)) != 0;
+            public bool? ActionSlot6 => States is null ? null : (States & 524288) != 0; // bit 19
+            public bool? ActionSlot7 => States is null ? null : (States & (1 << 20)) != 0;
+            public bool? ActionSlot8 => States is null ? null : (States & 2097152) != 0; // bit 21
+            public bool? ActionSlot9 => States is null ? null : (States & (1 << 22)) != 0;
+            public bool? ActionSlot0 => States is null ? null : (States & 8388608) != 0; // bit 23
             public bool? Respawn => States is null ? null : (States & 2147483648) != 0;
             public bool? SecondaryRespawn => States is null ? null : (States & 8589934592) != 0;
         }
