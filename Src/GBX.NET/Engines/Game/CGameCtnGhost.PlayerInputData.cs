@@ -177,6 +177,7 @@ public partial class CGameCtnGhost
                 var steer = default(sbyte?);
                 var gas = default(bool?);
                 var brake = default(bool?);
+                var horn = default(bool?);
 
                 try
                 {
@@ -190,9 +191,19 @@ public partial class CGameCtnGhost
                             ? r.Read2Bit()
                             : r.ReadNumber(bits: version is EVersion._2020_04_08 ? 33 : 34);
 
-                        if (!started)
+                        if (started)
+                        {
+                            if (states == 0) // 0 only appears for the horn key RELEASE
+                            {
+                                horn = false;
+                            }
+
+                            // the issue here is that horn can never be true throughout the run
+                        }
+                        else
                         {
                             started = (states & 2) != 0;
+                            horn = (states & 64) != 0; // a weird bit that can appear sometimes during the run too
                         }
 
                         different = true;
@@ -229,12 +240,12 @@ public partial class CGameCtnGhost
                 }
                 catch (IndexOutOfRangeException)
                 {
-
+                    // TM2020 moment
                 }
 
                 if (different)
                 {
-                    yield return new TrackmaniaInputChange(i, states, mouseAccuX, mouseAccuY, steer, gas, brake);
+                    yield return new TrackmaniaInputChange(i, states, mouseAccuX, mouseAccuY, steer, gas, brake, horn);
                 }
             }
 
@@ -309,34 +320,22 @@ public partial class CGameCtnGhost
                                                             ushort? MouseAccuY,
                                                             sbyte? Steer,
                                                             bool? Gas,
-                                                            bool? Brake) : IInputChange
+                                                            bool? Brake,
+                                                            bool? Horn = null) : IInputChange
         {
             public TimeInt32 Timestamp { get; } = new(Tick * 10);
-            
-            public bool? Horn
-            {
-                get
-                {
-                    if (States is null)
-                    {
-                        return null;
-                    }
 
-                    if (Tick < 2)
-                    {
-                        return null; // TODO
-                    }
-
-                    return States == 2;
-                }
-            }
-
-            public bool? FreeLook => States is null ? null : (States & 8192) != 0;
-            public bool? ActionSlot1 => States is null ? null : (States & 32896) != 0;
-            public bool? ActionSlot2 => States is null ? null : (States & 132096) != 0;
-            public bool? ActionSlot3 => States is null ? null : (States & 524288) != 0;
-            public bool? ActionSlot4 => States is null ? null : (States & 2097152) != 0;
-            public bool? ActionSlot5 => States is null ? null : (States & 8388608) != 0;
+            public bool? FreeLook => States is null ? null : (States & 8192) != 0; // bit 13
+            public bool? ActionSlot1 => States is null ? null : (States & (1 << 14)) != 0;
+            public bool? ActionSlot2 => States is null ? null : (States & 32896) != 0; // bit 15 (and bit 7?)
+            public bool? ActionSlot3 => States is null ? null : (States & (1 << 16)) != 0;
+            public bool? ActionSlot4 => States is null ? null : (States & 132096) != 0; // bit 17 (and bit 7?)
+            public bool? ActionSlot5 => States is null ? null : (States & (1 << 18)) != 0;
+            public bool? ActionSlot6 => States is null ? null : (States & 524288) != 0; // bit 19
+            public bool? ActionSlot7 => States is null ? null : (States & (1 << 20)) != 0;
+            public bool? ActionSlot8 => States is null ? null : (States & 2097152) != 0; // bit 21
+            public bool? ActionSlot9 => States is null ? null : (States & (1 << 22)) != 0;
+            public bool? ActionSlot0 => States is null ? null : (States & 8388608) != 0; // bit 23
             public bool? Respawn => States is null ? null : (States & 2147483648) != 0;
             public bool? SecondaryRespawn => States is null ? null : (States & 8589934592) != 0;
         }
