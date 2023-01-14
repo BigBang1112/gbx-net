@@ -194,6 +194,7 @@ public class CGameObjectVisModel : CMwNod
         public float? U12;
         public CMwNod? U13;
         public CMwNod? U14;
+        public GameBoxRefTable.File? U14File;
         public CMwNod? U15;
         public CMwNod? U16;
         public GameBoxRefTable.File? U16File;
@@ -207,15 +208,16 @@ public class CGameObjectVisModel : CMwNod
 
             if (version < 9)
             {
-                rw.NodeRef(ref U14);
-                rw.NodeRef(ref U15);
+                rw.NodeRef(ref U14, ref U14File);
             }
-
-            rw.String(ref n.mesh);
-
-            if (string.IsNullOrEmpty(n.mesh))
+            else
             {
-                rw.NodeRef<CPlugSolid2Model>(ref n.meshShaded, ref n.meshShadedFile);
+                rw.String(ref n.mesh);
+
+                if (string.IsNullOrEmpty(n.mesh))
+                {
+                    rw.NodeRef<CPlugSolid2Model>(ref n.meshShaded, ref n.meshShadedFile);
+                }
             }
 
             if (version < 18) // CPlugParticleEmitterModel?
@@ -225,10 +227,15 @@ public class CGameObjectVisModel : CMwNod
 
             if (version >= 2)
             {
-                rw.NodeRef<CPlugAnimLocSimple>(ref n.locAnim);
-            }
+                if (version < 9)
+                {
+                    rw.String(ref n.mesh);
+                }
 
-            rw.Int32(ref U03); // SPlugLightBallStateSimple array
+                rw.NodeRef<CPlugAnimLocSimple>(ref n.locAnim);
+
+                rw.Int32(ref U03); // SPlugLightBallStateSimple array
+            }
 
             if (version < 17)
             {
