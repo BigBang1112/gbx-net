@@ -660,20 +660,32 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
         public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
-            rw.String(ref n.archetypeRef!);
 
-            if (n.archetypeRef.Length == 0)
+            if (version < 3)
             {
-                rw.Int32(ref U01);
+                throw new ChunkVersionNotSupportedException(version);
             }
 
-            if (version >= 6)
+            if (version >= 2)
             {
-                rw.String(ref U02); // SkinDirNameCustom
+                rw.String(ref n.archetypeRef!);
 
-                if (version >= 7)
+                if (version >= 5)
                 {
-                    rw.Int32(ref U03); // -1
+                    if (n.archetypeRef.Length == 0)
+                    {
+                        rw.Int32(ref U01);
+                    }
+
+                    if (version >= 6)
+                    {
+                        rw.String(ref U02); // SkinDirNameCustom
+
+                        if (version >= 7)
+                        {
+                            rw.Int32(ref U03); // -1
+                        }
+                    }
                 }
             }
         }
@@ -816,6 +828,33 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
         {
             rw.Int32(ref version);
             rw.Int32(ref U02); // SItemGroupElement array with Iso4 and CMwNodDataRef
+        }
+    }
+
+    #endregion
+    
+    #region 0x022 skippable chunk
+
+    /// <summary>
+    /// CGameItemModel 0x022 skippable chunk
+    /// </summary>
+    [Chunk(0x2E002022)]
+    public class Chunk2E002022 : SkippableChunk<CGameItemModel>, IVersionable
+    {
+        private int version;
+        
+        public string[]? U01;
+        public ushort[]? U02;
+
+        public int Version { get => version; set => version = value; }
+
+        public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref version);
+            rw.Int32(10);
+            rw.ArrayId(ref U01);
+            rw.Int32(10);
+            rw.Array<ushort>(ref U02);
         }
     }
 
