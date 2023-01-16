@@ -377,7 +377,7 @@
   0E8 CGameManialinkFileEntry
   0E9 CGameNetDataDownload
   0EA CGameCampaignPlayerScores
-  0EB CGameLoadProgress
+  0EB CGameCtnMediaBlockSpectators
   0EC CGameNetFormBuddy
   0ED CGameLadderScoresComputer
   0EE CGameLadderScores
