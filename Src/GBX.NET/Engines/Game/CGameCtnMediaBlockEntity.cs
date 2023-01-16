@@ -22,6 +22,8 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMedi
     private IList<FileRef> skinNames = Array.Empty<FileRef>();
     private int? badgeVersion;
     private Badge? badge;
+    private string? skinOptions;
+    private string? ghostName;
 
     IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
     {
@@ -101,6 +103,14 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMedi
     [AppliedWithChunk<Chunk0329F000>(sinceVersion: 3)]
     public Badge? Badge { get => badge; set => badge = value; }
 
+    [NodeMember]
+    [AppliedWithChunk<Chunk0329F002>]
+    public string? SkinOptions { get => skinOptions; set => skinOptions = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0329F000>(sinceVersion: 7)]
+    public string? GhostName { get => ghostName; set => ghostName = value; }
+
     internal CGameCtnMediaBlockEntity()
     {
         recordData = null!;
@@ -178,7 +188,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMedi
 
                         if (version >= 7)
                         {
-                            rw.String(ref U11);
+                            rw.String(ref n.ghostName);
 
                             if (version >= 8)
                             {
@@ -198,19 +208,17 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMedi
 
     #endregion
 
-    #region 0x002 chunk
+    #region 0x002 chunk (SkinOptions)
 
     /// <summary>
-    /// CGameCtnMediaBlockEntity 0x002 chunk
+    /// CGameCtnMediaBlockEntity 0x002 chunk (SkinOptions)
     /// </summary>
-    [Chunk(0x0329F002)]
+    [Chunk(0x0329F002, "SkinOptions")]
     public class Chunk0329F002 : Chunk<CGameCtnMediaBlockEntity>
     {
-        public int U01;
-
         public override void ReadWrite(CGameCtnMediaBlockEntity n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.String(ref n.skinOptions);
         }
     }
 
