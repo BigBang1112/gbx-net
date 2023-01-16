@@ -4133,7 +4133,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
             var author = default(string?);
             var skin = default(CGameCtnBlockSkin?);
 
-            if (CGameCtnBlock.IsSkinnableBlock_WhenDefined(flags))
+            if (CGameCtnBlock.IsSkinnableBlock(flags))
             {
                 author = r.ReadId();
                 skin = r.ReadNodeRef<CGameCtnBlockSkin>();
@@ -4178,7 +4178,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 
                 w.Write(block.Flags);
 
-                if (CGameCtnBlock.IsSkinnableBlock_WhenDefined(block.Flags))
+                if (CGameCtnBlock.IsSkinnableBlock(block.Flags))
                 {
                     w.WriteId(block.Author);
                     w.Write(block.Skin);
