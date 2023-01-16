@@ -39,7 +39,7 @@ public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
         public Vec3? U07;
         public Ident? U08;
         public Vec3? U09;
-        public int? U10;
+        public FileRef[]? U10;
         public bool? U11;
         public int? U12;
         public Vec3 U13;
@@ -76,7 +76,7 @@ public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
                 {
                     rw.Ident(ref U08);
                     rw.Vec3(ref U09);
-                    rw.Int32(ref U10); // array of PackDesc?
+                    rw.Array(ref U10, r => r.ReadFileRef(), (x, w) => w.Write(x)); // array of PackDesc?
                     rw.Boolean(ref U11);
 
                     if (U11 == true)
