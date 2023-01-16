@@ -5,11 +5,12 @@
 /// </summary>
 /// <remarks>ID: 0x0329F000</remarks>
 [Node(0x0329F000)]
-public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
+public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys, CGameCtnMediaBlock.IHasKeys
 {
     private CPlugEntRecordData recordData;
-    private TimeSingle start;
-    private TimeSingle end;
+    private TimeSingle? start;
+    private TimeSingle? end;
+    private IList<Key>? keys;
     private TimeSingle startOffset;
     private int[] noticeRecords = Array.Empty<int>();
     private bool noDamage;
@@ -22,17 +23,39 @@ public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMediaBlock.I
     private int? badgeVersion;
     private Badge? badge;
 
+    IEnumerable<CGameCtnMediaBlock.Key> IHasKeys.Keys
+    {
+        get => keys?.Cast<CGameCtnMediaBlock.Key>() ?? Enumerable.Empty<CGameCtnMediaBlock.Key>();
+        set => keys = value.Cast<Key>().ToList();
+    }
+
+    TimeSingle IHasTwoKeys.Start
+    {
+        get => start.GetValueOrDefault();
+        set => start = value;
+    }
+
+    TimeSingle IHasTwoKeys.End
+    {
+        get => end.GetValueOrDefault(start.GetValueOrDefault() + TimeSingle.FromSeconds(3));
+        set => end = value;
+    }
+
     [NodeMember(ExactName = "EntRecordData")]
     [AppliedWithChunk<Chunk0329F000>]
     public CPlugEntRecordData RecordData { get => recordData; set => recordData = value; }
 
     [NodeMember]
-    [AppliedWithChunk<Chunk0329F000>]
-    public TimeSingle Start { get => start; set => start = value; }
+    [AppliedWithChunk<Chunk0329F000>(sinceVersion: 0, upToVersion: 3)]
+    public TimeSingle? Start { get => start; set => start = value; }
 
     [NodeMember]
-    [AppliedWithChunk<Chunk0329F000>]
-    public TimeSingle End { get => end; set => end = value; }
+    [AppliedWithChunk<Chunk0329F000>(sinceVersion: 0, upToVersion: 3)]
+    public TimeSingle? End { get => end; set => end = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0329F000>(sinceVersion: 4)]
+    public IList<Key>? Keys { get => keys; set => keys = value; }
 
     [NodeMember]
     [AppliedWithChunk<Chunk0329F000>]
@@ -97,6 +120,9 @@ public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMediaBlock.I
 
         public bool? U04;
         public Vec3? U09;
+        public float U10 = -1;
+        public string? U11;
+        public int? U12;
 
         public int Version { get => version; set => version = value; }
 
@@ -105,14 +131,12 @@ public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMediaBlock.I
             rw.Int32(ref version);
             rw.NodeRef<CPlugEntRecordData>(ref n.recordData!);
 
-            if (version > 3)
+            if (version < 4)
             {
-                rw.UntilFacade(Unknown);
-                return;
+                rw.TimeSingle(ref n.start); // according to getters setters
+                rw.TimeSingle(ref n.end); // according to getters setters
             }
-
-            rw.TimeSingle(ref n.start); // according to getters setters
-            rw.TimeSingle(ref n.end); // according to getters setters
+            
             rw.TimeSingle(ref n.startOffset);
             rw.Array<int>(ref n.noticeRecords!); // SPlugEntRecord array
 
@@ -122,8 +146,12 @@ public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMediaBlock.I
                 rw.Boolean(ref U04);
                 rw.Boolean(ref n.forceLight);
                 rw.Boolean(ref n.forceHue);
-                rw.Vec3(ref n.lightTrailColor);
 
+                if (version < 6)
+                {
+                    rw.Vec3(ref n.lightTrailColor);
+                }
+                
                 if (version >= 3)
                 {
                     // SGamePlayerMobilAppearanceParams::Archive
@@ -138,6 +166,31 @@ public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMediaBlock.I
                         rw.Archive<Badge>(ref n.badge, n.badgeVersion.GetValueOrDefault()); // NGameBadge::BadgeArchive
                     }
                     //
+
+                    if (version >= 4)
+                    {
+                        rw.ListKey(ref n.keys, version);
+
+                        if (version == 5)
+                        {
+                            rw.Single(ref U10);
+                        }
+
+                        if (version >= 7)
+                        {
+                            rw.String(ref U11);
+
+                            if (version >= 8)
+                            {
+                                rw.Int32(ref U12);
+
+                                if (version >= 9)
+                                {
+                                    rw.UntilFacade(Unknown); // Temporary
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -146,4 +199,34 @@ public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMediaBlock.I
     #endregion
 
     #endregion
+
+    public new class Key : CGameCtnMediaBlock.Key
+    {
+        private int u01;
+        private int u02;
+        private int u03;
+        private int u04;
+        private int u05;
+
+        public int U01 { get => u01; set => u01 = value; }
+        public int U02 { get => u02; set => u02 = value; }
+        public int U03 { get => u03; set => u03 = value; }
+        public int U04 { get => u04; set => u04 = value; }
+        public int U05 { get => u05; set => u05 = value; }
+
+        public override void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+        {
+            base.ReadWrite(rw, version);
+
+            rw.Int32(ref u01);
+
+            if (version >= 6)
+            {
+                rw.Int32(ref u02);
+                rw.Int32(ref u03);
+                rw.Int32(ref u04);
+                rw.Int32(ref u05);
+            }
+        }
+    }
 }
