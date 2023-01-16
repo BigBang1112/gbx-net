@@ -5,13 +5,78 @@
 /// </summary>
 /// <remarks>ID: 0x0329F000</remarks>
 [Node(0x0329F000)]
-public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
+public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMediaBlock.IHasTwoKeys
 {
     private CPlugEntRecordData recordData;
+    private TimeSingle start;
+    private TimeSingle end;
+    private TimeSingle startOffset;
+    private int[] noticeRecords = Array.Empty<int>();
+    private bool noDamage;
+    private bool forceLight;
+    private bool forceHue;
+    private Vec3 lightTrailColor = (1, 0, 0);
+    private Ident? playerModel;
+    private bool hasBadges;
+    private IList<FileRef> skinNames = Array.Empty<FileRef>();
+    private int? badgeVersion;
+    private Badge? badge;
+
+    [NodeMember(ExactName = "EntRecordData")]
+    [AppliedWithChunk<Chunk0329F000>]
+    public CPlugEntRecordData RecordData { get => recordData; set => recordData = value; }
 
     [NodeMember]
     [AppliedWithChunk<Chunk0329F000>]
-    public CPlugEntRecordData RecordData { get => recordData; set => recordData = value; }
+    public TimeSingle Start { get => start; set => start = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0329F000>]
+    public TimeSingle End { get => end; set => end = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0329F000>]
+    public TimeSingle StartOffset { get => startOffset; set => startOffset = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk0329F000>]
+    public int[] NoticeRecords { get => noticeRecords; set => noticeRecords = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0329F000>(sinceVersion: 2)]
+    public bool NoDamage { get => noDamage; set => noDamage = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0329F000>(sinceVersion: 2)]
+    public bool ForceLight { get => forceLight; set => forceLight = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0329F000>(sinceVersion: 2)]
+    public bool ForceHue { get => forceHue; set => forceHue = value; }
+    
+    [NodeMember]
+    [AppliedWithChunk<Chunk0329F000>(sinceVersion: 2)]
+    public Vec3 LightTrailColor { get => lightTrailColor; set => lightTrailColor = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0329F000>(sinceVersion: 3)]
+    public Ident? PlayerModel { get => playerModel; set => playerModel = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0329F000>(sinceVersion: 3)]
+    public IList<FileRef> SkinNames { get => skinNames; set => skinNames = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0329F000>(sinceVersion: 3)]
+    public bool HasBadges { get => hasBadges; set => hasBadges = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0329F000>(sinceVersion: 3)]
+    public int? BadgeVersion { get => badgeVersion; set => badgeVersion = value; }
+    
+    [NodeMember]
+    [AppliedWithChunk<Chunk0329F000>(sinceVersion: 3)]
+    public Badge? Badge { get => badge; set => badge = value; }
 
     internal CGameCtnMediaBlockEntity()
     {
@@ -30,18 +95,8 @@ public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
     {
         private int version;
 
-        public Vec3 U01;
-        public int[]? U02;
-        public bool? U03;
         public bool? U04;
-        public bool? U05;
-        public bool? U06;
-        public Vec3? U07;
-        public Ident? U08;
         public Vec3? U09;
-        public FileRef[]? U10;
-        public bool? U11;
-        public int? U12;
         public Vec3 U13;
         public int U14;
         public string? U15;
@@ -61,46 +116,33 @@ public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock
                 return;
             }
 
-            rw.Vec3(ref U01);
-            rw.Array<int>(ref U02);
+            rw.TimeSingle(ref n.start); // according to getters setters
+            rw.TimeSingle(ref n.end); // according to getters setters
+            rw.TimeSingle(ref n.startOffset);
+            rw.Array<int>(ref n.noticeRecords!); // SPlugEntRecord array
 
             if (version >= 2)
             {
-                rw.Boolean(ref U03);
+                rw.Boolean(ref n.noDamage); // ComputeDamageStatesFromDamageZoneAmounts?
                 rw.Boolean(ref U04);
-                rw.Boolean(ref U05);
-                rw.Boolean(ref U06);
-                rw.Vec3(ref U07);
+                rw.Boolean(ref n.forceLight);
+                rw.Boolean(ref n.forceHue);
+                rw.Vec3(ref n.lightTrailColor);
 
                 if (version >= 3)
                 {
-                    rw.Ident(ref U08);
-                    rw.Vec3(ref U09);
-                    rw.Array(ref U10, r => r.ReadFileRef(), (x, w) => w.Write(x)); // array of PackDesc?
-                    rw.Boolean(ref U11);
+                    // SGamePlayerMobilAppearanceParams::Archive
+                    rw.Ident(ref n.playerModel);
+                    rw.Vec3(ref U09); // some rgb
+                    rw.ListFileRef(ref n.skinNames!); // Name assumed from getter
+                    rw.Boolean(ref n.hasBadges);
 
-                    if (U11 == true)
+                    if (n.hasBadges)
                     {
-                        rw.Int32(ref U12);
-
-                        // NGameBadge::BadgeArchive
-                        rw.Vec3(ref U13);
-
-                        if (U12 == 0)
-                        {
-                            rw.Int32(ref U14);
-                            rw.String(ref U15);
-                        }
-
-                        rw.Array(ref U16, (i, r) => (r.ReadString(), r.ReadString()),
-                        (x, w) =>
-                        {
-                            w.Write(x.Item1);
-                            w.Write(x.Item2);
-                        });
-
-                        rw.ArrayString(ref U17);
+                        rw.Int32(ref n.badgeVersion);
+                        rw.Archive<Badge>(ref n.badge, n.badgeVersion.GetValueOrDefault()); // NGameBadge::BadgeArchive
                     }
+                    //
                 }
             }
         }
