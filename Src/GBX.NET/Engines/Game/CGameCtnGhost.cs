@@ -25,7 +25,7 @@ public partial class CGameCtnGhost : CGameGhost
     private string? ghostUid;
     private TimeInt32? raceTime;
     private int? respawns;
-    private Vec3? lightTrailColor;
+    private Vec3 lightTrailColor = (1, 0, 0);
     private int? stuntScore;
     private Checkpoint[]? checkpoints;
     private TimeInt32 eventsDuration;
@@ -38,6 +38,8 @@ public partial class CGameCtnGhost : CGameGhost
     private string? validate_ChallengeUid;
     private string? validate_TitleId;
     private bool hasBadges;
+    private int? badgeVersion;
+    private Badge? badge;
     private string? skinFile;
     private string? ghostClubTag;
     private PlayerInputData[]? playerInputs;
@@ -174,7 +176,7 @@ public partial class CGameCtnGhost : CGameGhost
     [AppliedWithChunk<Chunk03092000>]
     [AppliedWithChunk<Chunk03092007>]
     [AppliedWithChunk<Chunk03092009>]
-    public Vec3? LightTrailColor
+    public Vec3 LightTrailColor
     {
         get
         {
@@ -395,6 +397,14 @@ public partial class CGameCtnGhost : CGameGhost
     public bool HasBadges { get => hasBadges; set => hasBadges = value; }
 
     [NodeMember]
+    [AppliedWithChunk<Chunk03092000>]
+    public int? BadgeVersion { get => badgeVersion; set => badgeVersion = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk03092000>]
+    public Badge? Badge { get => badge; set => badge = value; }
+
+    [NodeMember]
     [SupportsFormatting]
     [AppliedWithChunk<Chunk03092000>(sinceVersion: 8)]
     public string? GhostClubTag { get => ghostClubTag; set => ghostClubTag = value; }
@@ -454,6 +464,8 @@ public partial class CGameCtnGhost : CGameGhost
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
+            
+            // SGamePlayerMobilAppearanceParams::Archive
             rw.Ident(ref n.playerModel!);
             rw.Vec3(ref n.lightTrailColor);
             rw.ListFileRef(ref n.skinPackDescs);
@@ -461,17 +473,10 @@ public partial class CGameCtnGhost : CGameGhost
 
             if (n.hasBadges)
             {
-                rw.Int32(ref U05);
-                rw.Vec3(ref U06);
-                rw.Array(ref U07,
-                    (i, r) => (r.ReadString(), r.ReadString()),
-                    (x, w) =>
-                    {
-                        w.Write(x.Item1);
-                        w.Write(x.Item2);
-                    });
-                rw.ArrayString(ref U08);
+                rw.Int32(ref n.badgeVersion);
+                rw.Archive<Badge>(ref n.badge, n.badgeVersion.GetValueOrDefault()); // NGameBadge::BadgeArchive
             }
+            //
 
             rw.String(ref n.ghostNickname);
             rw.String(ref n.ghostAvatarName);
