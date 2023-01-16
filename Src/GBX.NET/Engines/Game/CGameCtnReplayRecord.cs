@@ -32,6 +32,10 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     private ControlEntry[]? controlEntries;
     private string? game;
     private CCtnMediaBlockUiTMSimpleEvtsDisplay? simpleEventsDisplay;
+    private CGameCtnMediaBlockScenery.Key[] sceneryVortexKeys;
+    private int sceneryCapturableCount;
+    private string? playgroundScript;
+    private InterfaceScriptInfo[] interfaceScriptInfos;
 
     #endregion
 
@@ -71,7 +75,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// <summary>
     /// Title pack the replay orients in.
     /// </summary>
-    [NodeMember]
+    [NodeMember(ExactName = "TitleId")]
     [AppliedWithChunk<Chunk03093000>(sinceVersion: 8)]
     public string? TitleID
     {
@@ -249,6 +253,53 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             return game;
         }
     }
+
+
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0309301A>]
+    public CGameCtnMediaBlockScenery.Key[] SceneryVortexKeys
+    {
+        get
+        {
+            DiscoverChunk<Chunk0309301A>();
+            return sceneryVortexKeys;
+        }
+    }
+
+    [NodeMember(ExactName = "Scenery_CapturableCount")]
+    [AppliedWithChunk<Chunk0309301A>]
+    public int SceneryCapturableCount
+    {
+        get
+        {
+            DiscoverChunk<Chunk0309301A>();
+            return sceneryCapturableCount;
+        }
+    }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0309301C>]
+    public string? PlaygroundScript
+    {
+        get
+        {
+            DiscoverChunk<Chunk0309301C>();
+            return playgroundScript;
+        }
+    }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0309301D>]
+    public InterfaceScriptInfo[] InterfaceScriptInfos
+    {
+        get
+        {
+            DiscoverChunk<Chunk0309301D>();
+            return interfaceScriptInfos;
+        }
+    }
+
 
     #endregion
 
@@ -508,8 +559,8 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             var u02 = r.ReadInt32();
             n.ghosts = r.ReadArray(r => r.ReadNodeRef<CGameCtnGhost>()!);
 
-            var u03 = r.ReadInt32(); // millisecond length of something (usually record time + 0.5s)
-            var u04 = r.ReadInt32();
+            var u03 = r.ReadInt32(); // CGameReplayObjectVisData something, millisecond length of something (usually record time + 0.5s)
+            var u04 = r.ReadInt32(); // SOldShowTime
         }
 
         public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, CancellationToken cancellationToken = default)
@@ -575,7 +626,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
         {
             n.game = r.ReadString();
-            U01 = r.ReadInt32();
+            U01 = r.ReadInt32(); // SOldCutKey2
         }
     }
 
@@ -748,21 +799,19 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     [Chunk(0x03093014, "ghosts")]
     public class Chunk03093014 : Chunk<CGameCtnReplayRecord>
     {
-        public int U01;
-
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
         {
-            _ = r.ReadInt32(); // listVersion
+            r.ReadInt32(); // listVersion
             n.ghosts = r.ReadArray(r => r.ReadNodeRef<CGameCtnGhost>()!);
-            U01 = r.ReadInt32(); // always zero
-            n.extras = r.ReadArray(r => r.ReadInt64()); // SOldShowTime
+            r.ReadInt32(); // always zero
+            n.extras = r.ReadArray(r => r.ReadInt64()); // SOldShowTime array
         }
 
         public override async Task ReadAsync(CGameCtnReplayRecord n, GameBoxReader r, CancellationToken cancellationToken = default)
         {
-            _ = r.ReadInt32(); // listVersion
+            r.ReadInt32(); // listVersion
             n.ghosts = (await r.ReadArrayAsync(r => r.ReadNodeRefAsync<CGameCtnGhost>()!))!;
-            U01 = r.ReadInt32();
+            r.ReadInt32();
             n.extras = r.ReadArray(r => r.ReadInt64());
         }
     }
@@ -816,10 +865,29 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// <summary>
     /// CGameCtnReplayRecord 0x01A skippable chunk (scenery vortex key)
     /// </summary>
-    [Chunk(0x0309301A, "scenery vortex key"), IgnoreChunk]
+    [Chunk(0x0309301A, "scenery vortex key")]
     public class Chunk0309301A : SkippableChunk<CGameCtnReplayRecord>
     {
+        public float U01;
+        public Node? U02;
 
+        public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
+        {
+            r.ReadInt32(); // always 0
+
+            n.sceneryVortexKeys = r.ReadArray(r => new CGameCtnMediaBlockScenery.Key
+            {
+                Time = r.ReadTimeSingle(),
+                U01 = r.ReadSingle(),
+                U02 = r.ReadSingle(),
+                U03 = r.ReadSingle()
+            });
+            
+            U01 = r.ReadSingle();
+            U02 = r.ReadNodeRef(); // CGameReplayObjectVisData
+            
+            n.sceneryCapturableCount = r.ReadInt32();
+        }
     }
 
     #endregion
@@ -855,12 +923,10 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     {
         public int Version { get; set; }
 
-        public string? U01;
-
         public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
         {
             Version = r.ReadInt32();
-            U01 = r.ReadString(); // CampaignSolo
+            n.playgroundScript = r.ReadString(); // CampaignSolo
         }
     }
 
@@ -871,10 +937,24 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// <summary>
     /// CGameCtnReplayRecord 0x01D skippable chunk (InterfaceScriptInfos)
     /// </summary>
-    [Chunk(0x0309301D, "InterfaceScriptInfos"), IgnoreChunk]
-    public class Chunk0309301D : SkippableChunk<CGameCtnReplayRecord>
+    [Chunk(0x0309301D, "InterfaceScriptInfos")]
+    public class Chunk0309301D : SkippableChunk<CGameCtnReplayRecord>, IVersionable
     {
+        public int Version { get; set; }
+        
+        public override void Read(CGameCtnReplayRecord n, GameBoxReader r)
+        {
+            Version = r.ReadInt32();
 
+            if (Version > 0)
+            {
+                throw new ChunkVersionNotSupportedException(Version);
+            }
+
+            n.interfaceScriptInfos = r.ReadArray(r => new InterfaceScriptInfo(
+                U01: r.ReadArray(r => r.ReadString()),
+                U02: r.ReadInt32()));
+        }
     }
 
     #endregion
@@ -1067,6 +1147,6 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     }
 
     #endregion
-
+    
     #endregion
 }
