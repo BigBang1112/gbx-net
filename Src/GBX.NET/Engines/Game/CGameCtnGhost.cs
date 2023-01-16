@@ -450,14 +450,9 @@ public partial class CGameCtnGhost : CGameGhost
     public class Chunk03092000 : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         private int version;
-
-        public Vec3 U01;
+        
         public bool U03;
         public int[]? U04;
-        public int U05;
-        public Vec3 U06;
-        public (string value, string key)[]? U07;
-        public string[]? U08;
 
         public int Version { get => version; set => version = value; }
 

@@ -97,11 +97,6 @@ public class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMediaBlock.I
 
         public bool? U04;
         public Vec3? U09;
-        public Vec3 U13;
-        public int U14;
-        public string? U15;
-        public (string, string)[]? U16;
-        public string[]? U17;
 
         public int Version { get => version; set => version = value; }
 
