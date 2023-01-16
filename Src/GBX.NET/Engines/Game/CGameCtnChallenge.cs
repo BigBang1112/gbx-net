@@ -4130,7 +4130,16 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 coord -= (0, 1, 0);
             }
 
-            n.BakedBlocks!.Add(new(name, direction, coord, flags));
+            var author = default(string?);
+            var skin = default(CGameCtnBlockSkin?);
+
+            if (CGameCtnBlock.IsSkinnableBlock_WhenDefined(flags))
+            {
+                author = r.ReadId();
+                skin = r.ReadNodeRef<CGameCtnBlockSkin>();
+            }
+
+            n.BakedBlocks!.Add(new(name, direction, coord, flags, author, skin));
 
             return flags;
         }
@@ -4168,6 +4177,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 w.Write((Byte3)coord);
                 
                 w.Write(block.Flags);
+
+                if (CGameCtnBlock.IsSkinnableBlock_WhenDefined(block.Flags))
+                {
+                    w.WriteId(block.Author);
+                    w.Write(block.Skin);
+                }
             }
 
             w.Write(U02);
