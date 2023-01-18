@@ -11,7 +11,7 @@
 
 <ul style="margin-left: @(Depth == 0 ? "0" : "1.5")rem;@(Depth == 0 ? " width: calc(100% - 1rem);" : "")">
         
-    @if (ParentValueRenderer?.PreferProperties == false && ParentProperty is not null && Object is IEnumerable enumerable)
+    @if (ParentValueRenderer?.PreferProperties == false && Object is IEnumerable enumerable)
     {
         //cachedList ??= ;
 
