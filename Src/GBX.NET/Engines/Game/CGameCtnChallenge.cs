@@ -443,6 +443,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     [SupportsFormatting]
+    [AppliedWithChunk<Chunk03043001>(sinceVersion: 0, upToVersion: 0)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 0, upToVersion: 2)]
+    [AppliedWithChunk<Chunk03043003>]
+    [AppliedWithChunk<Chunk03043012>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
     public string MapName { get => mapName; set => mapName = value; }
 
     /// <summary>
