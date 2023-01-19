@@ -60,7 +60,7 @@ public class GameBoxHeader
     {
         var headerChunks = (node as INodeHeader)?.HeaderChunks ?? HeaderChunks;
 
-        if (headerChunks is null)
+        if (headerChunks is null || headerChunks.Count == 0)
         {
             w.Write(0);
             return;
