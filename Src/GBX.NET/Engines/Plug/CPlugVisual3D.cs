@@ -1,7 +1,7 @@
 ﻿namespace GBX.NET.Engines.Plug;
 
 /// <remarks>ID: 0x0902C000</remarks>
-[Node(0x0902C000), WritingNotSupported]
+[Node(0x0902C000)]
 public abstract class CPlugVisual3D : CPlugVisual
 {
     private Vertex[] vertices;

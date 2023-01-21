@@ -683,7 +683,7 @@ public abstract class Node
         WriteFacade(w);
     }
 
-    public async Task WriteAsync(GameBoxWriter w, CancellationToken cancellationToken)
+    internal async Task WriteAsync(GameBoxWriter w, CancellationToken cancellationToken)
     {
         var stopwatch = Stopwatch.StartNew();
 

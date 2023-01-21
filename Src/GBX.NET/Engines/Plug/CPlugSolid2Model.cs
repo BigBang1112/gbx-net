@@ -336,27 +336,27 @@ public class CPlugSolid2Model : CMwNod
 
     public class ShadedGeom : IReadableWritable
     {
-        private int u01;
-        private int u02;
+        private int visualIndex;
+        private int materialIndex;
         private int u03;
-        private int? u04;
+        private int? lod;
         private int? u05;
 
-        public int U01 { get => u01; set => u01 = value; }
-        public int U02 { get => u02; set => u02 = value; }
+        public int VisualIndex { get => visualIndex; set => visualIndex = value; }
+        public int MaterialIndex { get => materialIndex; set => materialIndex = value; }
         public int U03 { get => u03; set => u03 = value; }
-        public int? U04 { get => u04; set => u04 = value; }
+        public int? Lod { get => lod; set => lod = value; }
         public int? U05 { get => u05; set => u05 = value; }
 
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
-            rw.Int32(ref u01);
-            rw.Int32(ref u02);
+            rw.Int32(ref visualIndex);
+            rw.Int32(ref materialIndex);
             rw.Int32(ref u03);
 
             if (version >= 1)
             {
-                rw.Int32(ref u04);
+                rw.Int32(ref lod, defaultValue: -1);
 
                 if (version >= 32)
                 {

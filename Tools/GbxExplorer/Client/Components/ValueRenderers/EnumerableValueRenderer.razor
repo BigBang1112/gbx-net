@@ -26,5 +26,9 @@ else
 }
 
 @code {
-    public override bool ShowPropertyInTree(PropertyInfo prop) => false;
+    public override bool ShowPropertyInTree(PropertyInfo prop)
+    {
+        // Lmao I hate myself
+        return prop.DeclaringType?.Assembly.FullName?.StartsWith("GBX.NET") == true;
+    }
 }

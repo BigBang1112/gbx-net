@@ -373,12 +373,11 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
     [Chunk(0x2E001008)]
     public class Chunk2E001008 : Chunk<CGameCtnCollector>
     {
-        public byte U01;
+        public Node? U01;
 
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
-            rw.Byte(ref U01); // 0
-            rw.String(ref n.skinDirectory);
+            rw.NodeRef(ref U01);
         }
     }
 

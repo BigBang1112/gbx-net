@@ -443,6 +443,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     [SupportsFormatting]
+    [AppliedWithChunk<Chunk03043001>(sinceVersion: 0, upToVersion: 0)]
+    [AppliedWithChunk<Chunk03043002>(sinceVersion: 0, upToVersion: 2)]
+    [AppliedWithChunk<Chunk03043003>]
+    [AppliedWithChunk<Chunk03043012>]
+    [AppliedWithChunk<Chunk03043013>]
+    [AppliedWithChunk<Chunk0304301F>]
     public string MapName { get => mapName; set => mapName = value; }
 
     /// <summary>
@@ -4130,7 +4136,16 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 coord -= (0, 1, 0);
             }
 
-            n.BakedBlocks!.Add(new(name, direction, coord, flags));
+            var author = default(string?);
+            var skin = default(CGameCtnBlockSkin?);
+
+            if (CGameCtnBlock.IsSkinnableBlock(flags))
+            {
+                author = r.ReadId();
+                skin = r.ReadNodeRef<CGameCtnBlockSkin>();
+            }
+
+            n.BakedBlocks!.Add(new(name, direction, coord, flags, author, skin));
 
             return flags;
         }
@@ -4168,6 +4183,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
                 w.Write((Byte3)coord);
                 
                 w.Write(block.Flags);
+
+                if (CGameCtnBlock.IsSkinnableBlock(block.Flags))
+                {
+                    w.WriteId(block.Author);
+                    w.Write(block.Skin);
+                }
             }
 
             w.Write(U02);

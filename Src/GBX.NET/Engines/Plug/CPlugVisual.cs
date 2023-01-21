@@ -248,7 +248,7 @@ public abstract class CPlugVisual : CPlug
 
             for (var i = 0; i < n.TexCoords.Length; i++)
             {
-                n.TexCoords[i].Write(w, n);
+                n.TexCoords[i].Write(w);
             }
 
             if (skinFlags != 0)
@@ -365,7 +365,7 @@ public abstract class CPlugVisual : CPlug
 
             for (var i = 0; i < n.TexCoords.Length; i++)
             {
-                n.TexCoords[i].Write(w, n);
+                n.TexCoords[i].Write(w);
             }
 
             if ((n.Flags & 7) != 0)
@@ -395,7 +395,7 @@ public abstract class CPlugVisual : CPlug
         public override void Read(CPlugVisual n, GameBoxReader r)
         {
             base.Read(n, r);
-            n.BitmapElemToPacks = r.ReadArray(r => BitmapElemToPack.Read(r));
+            n.BitmapElemToPacks = r.ReadArray(BitmapElemToPack.Read);
         }
 
         public override void Write(CPlugVisual n, GameBoxWriter w)
@@ -538,55 +538,99 @@ public abstract class CPlugVisual : CPlug
         private readonly TexCoord[] texCoords;
 
         public int Version { get; set; }
-        public int? U01 { get; set; }
-        public int? U02 { get; set; }
+        public int? Flags { get; set; }
+        public float[]? U01 { get; set; }
 
         public int Count => texCoords.Length;
         
-        public TexCoordSet(int version, TexCoord[] texCoords, int? u01, int? u02)
+        public TexCoordSet(int version, TexCoord[] texCoords, int? flags, float[]? u01)
         {
             this.texCoords = texCoords;
 
             Version = version;
+            Flags = flags;
             U01 = u01;
-            U02 = u02;
         }
 
         public static TexCoordSet Read(GameBoxReader r, CPlugVisual n)
         {
             var version = r.ReadInt32();
-            var u01 = default(int?);
-            var u02 = default(int?);
+            var flags = default(int?);
+            
+            var count = n.Count;
 
             if (version >= 3)
             {
-                u01 = r.ReadInt32();
-                u02 = r.ReadInt32();
+                var actualCount = r.ReadInt32();
+
+                if (actualCount != count)
+                {
+                    throw new InvalidDataException("TexCoord actualCount != count");
+                }
+
+                flags = r.ReadInt32();
+
+                if ((byte)flags > 2)
+                {
+                    throw new InvalidDataException("TexCoord flags kind > 2");
+                }
             }
+            
+            var texCoords = new TexCoord[count];
 
-            var texCoords = new TexCoord[n.Count];
-
-            for (var i = 0; i < n.Count; i++)
+            for (var i = 0; i < count; i++)
             {
                 texCoords[i] = TexCoord.Read(r, version);
             }
 
-            return new TexCoordSet(version, texCoords, u01, u02);
+            var u01 = default(float[]);
+
+            if (flags.HasValue)
+            {
+                u01 = r.ReadArray<float>(count * flags.Value & 0xFF);
+            }
+
+            return new TexCoordSet(version, texCoords, flags, u01);
         }
 
-        public void Write(GameBoxWriter w, CPlugVisual n)
+        public void Write(GameBoxWriter w)
         {
             w.Write(Version);
-            
+
             if (Version >= 3)
             {
-                w.Write(U01.GetValueOrDefault());
-                w.Write(U02.GetValueOrDefault());
+                var flags = Flags.GetValueOrDefault(256);
+
+                w.Write(Count);
+                w.Write(flags);
+
+                if ((byte)flags > 2)
+                {
+                    throw new InvalidDataException("TexCoord flags kind > 2");
+                }
             }
 
             for (int i = 0; i < texCoords.Length; i++)
             {
                 texCoords[i].Write(w, Version);
+            }
+
+            if (Flags.HasValue)
+            {
+                var expectedLength = Count * Flags.Value & 0xFF;
+
+                var u01 = U01;
+
+                if (u01 is null)
+                {
+                    u01 = new float[expectedLength];
+                }
+                else
+                {
+                    Array.Resize(ref u01, expectedLength);
+                }
+
+                w.WriteArray_NoPrefix(u01);
             }
         }
 

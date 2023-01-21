@@ -190,6 +190,7 @@ public class CGameObjectPhyModel : CMwNod
         public CMwNod? U28;
         public CMwNod? U29;
         public CMwNod? U30;
+        public GameBoxRefTable.File? U30File;
         public CMwNod? U31;
         public CMwNod? U32;
 
@@ -201,7 +202,7 @@ public class CGameObjectPhyModel : CMwNod
 
             if (version < 11)
             {
-                rw.NodeRef(ref U30); // MoveShape
+                rw.NodeRef(ref U30, ref U30File); // MoveShape
                 rw.NodeRef(ref U31); // HitShape
                 rw.NodeRef(ref U32); // TriggerShape
             }

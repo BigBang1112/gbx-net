@@ -10,8 +10,63 @@
 }
 
 <ul style="margin-left: @(Depth == 0 ? "0" : "1.5")rem;@(Depth == 0 ? " width: calc(100% - 1rem);" : "")">
-        
-    @if (ParentValueRenderer?.PreferProperties == false && ParentProperty is not null && Object is IEnumerable enumerable)
+
+    @{
+    // This should be more flexible, and grouped by declaring type
+    var declaringTypeGroups = Properties
+        .OrderBy(x => x.Name)
+        .GroupBy(x => x.DeclaringType ?? throw new Exception("Declaring type is null"))
+        .ToDictionary(x => x.Key);
+
+    var sameDeclaringTypes = true;
+    var tempDeclaringType = default(Type);
+
+    foreach (var group in declaringTypeGroups)
+    {
+        if (tempDeclaringType is null)
+        {
+            tempDeclaringType = group.Key.DeclaringType;
+        }
+        else
+        {
+            if (tempDeclaringType != group.Key.DeclaringType)
+            {
+                sameDeclaringTypes = false;
+                break;
+            }
+        }
+    }
+
+    var type = Object.GetType();
+    }
+
+    @while (type.BaseType is not null)
+    {
+        if (!declaringTypeGroups.TryGetValue(type, out var group))
+        {
+            type = type.BaseType;
+            continue;
+        }
+
+        if (declaringTypeGroups.Count > 1)
+        {
+            <li class="declaringType">
+                @(sameDeclaringTypes || group.Key?.DeclaringType is null ? "" : $"{group.Key.DeclaringType.Name}.")@group.Key?.Name
+            </li>
+        }
+
+        foreach (var prop in group)
+        {
+            <li>
+                <!-- Sends the property with its object owner to the tree branch, copying the depth. -->
+                <NodeTreeElement Depth="Depth" Property="prop" Owner="Object" Tree="this"></NodeTreeElement>
+            </li>
+        }
+            
+        type = type.BaseType;
+    }
+
+    @if (ParentValueRenderer?.PreferProperties == false && Object is IEnumerable enumerable)
     {
         //cachedList ??= ;
 
@@ -21,61 +76,6 @@
                 <NodeTreeElement Depth="Depth" Value="item.x" Id="item.i" Tree="this" />
             </li>
         </Virtualize>
-    }
-    else // In case of a regular property
-    {
-        // This should be more flexible, and grouped by declaring type
-        var declaringTypeGroups = Properties
-            .OrderBy(x => x.Name)
-            .GroupBy(x => x.DeclaringType ?? throw new Exception("Declaring type is null"))
-            .ToDictionary(x => x.Key);
-
-        var sameDeclaringTypes = true;
-        var tempDeclaringType = default(Type);
-
-        foreach (var group in declaringTypeGroups)
-        {
-            if (tempDeclaringType is null)
-            {
-                tempDeclaringType = group.Key.DeclaringType;
-            }
-            else
-            {
-                if (tempDeclaringType != group.Key.DeclaringType)
-                {
-                    sameDeclaringTypes = false;
-                    break;
-                }
-            }
-        }
-
-        var type = Object.GetType();
-
-        while (type.BaseType is not null)
-        {
-            if (!declaringTypeGroups.TryGetValue(type, out var group))
-            {
-                type = type.BaseType;
-                continue;
-            }
-
-            if (declaringTypeGroups.Count > 1)
-            {
-                <li class="declaringType">
-                    @(sameDeclaringTypes || group.Key?.DeclaringType is null ? "" : $"{group.Key.DeclaringType.Name}.")@group.Key?.Name
-                </li>
-            }
-
-            foreach (var prop in group)
-            {
-                <li>
-                    <!-- Sends the property with its object owner to the tree branch, copying the depth. -->
-                    <NodeTreeElement Depth="Depth" Property="prop" Owner="Object" Tree="this"></NodeTreeElement>
-                </li>
-            }
-            
-            type = type.BaseType;
-        }
     }
         
 </ul>

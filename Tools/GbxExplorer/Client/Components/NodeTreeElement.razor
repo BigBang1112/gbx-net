@@ -120,6 +120,7 @@
     @{
         var props = Enumerable.Empty<PropertyInfo>();
         var collection = value as ICollection;
+        var enumerable = value as IEnumerable;
     }
 
     </span>
@@ -131,7 +132,7 @@
             .Where(x => x.GetGetMethod()?.IsStatic == false)
             .Where(ValueRenderer.ShowPropertyInTree);
 
-        if ((ValueRenderer.PreferProperties == false && collection?.Count > 0) || (collection is null && props.Any()))
+        if ((ValueRenderer.PreferProperties == false && (collection?.Count > 0 || enumerable?.OfType<object>().Any() == true)) || (collection is null && props.Any()))
         {
             <span class="member-name @(isNotIncluded ? "not-included-member" : "")" @onclick="async () => await OnExpandAsync()">
 
