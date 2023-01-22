@@ -21,6 +21,13 @@ public partial class CGameCtnGhost
             _2020_07_20 = 12
         }
 
+        private enum EStart
+        {
+            NotStarted,
+            Character,
+            Vehicle,
+        }
+
         private EVersion version; // 8 in shootmania, 12 in tm2020
         private int u02;
         private TimeInt32? startOffset;
@@ -165,7 +172,7 @@ public partial class CGameCtnGhost
         {
             var r = new BitReader(data);
 
-            var started = false;
+            var started = EStart.NotStarted;
 
             for (var i = 0; i < ticks; i++)
             {
@@ -178,6 +185,7 @@ public partial class CGameCtnGhost
                 var gas = default(bool?);
                 var brake = default(bool?);
                 var horn = default(bool?);
+                var characterState = default(byte?);
 
                 try
                 {
@@ -191,16 +199,16 @@ public partial class CGameCtnGhost
                             ? r.Read2Bit()
                             : r.ReadNumber(bits: version is EVersion._2020_04_08 ? 33 : 34);
 
-                        if (started)
+                        if (started is EStart.NotStarted)
+                        {
+                            started = (EStart)(states & 3);
+                            horn = (states & 64) != 0; // a weird bit that can appear sometimes during the run too
+                        }
+                        else
                         {
                             horn = onlyHorn
                                 ? (states & 2) != 0
                                 : (states & 64) != 0;
-                        }
-                        else
-                        {
-                            started = (states & 2) != 0;
-                            horn = (states & 64) != 0; // a weird bit that can appear sometimes during the run too
                         }
 
                         different = true;
@@ -221,18 +229,37 @@ public partial class CGameCtnGhost
                     // If mouse is not plugged, it is also included
                     // In code, this check is presented as '(X - 2 & 0xfffffffd) == 0'
 
-                    if (started)
+                    switch (started)
                     {
-                        var sameValue = r.ReadBit();
+                        case EStart.Vehicle:
+                            var sameVehicleValue = r.ReadBit();
 
-                        if (!sameValue)
-                        {
-                            steer = r.ReadSByte();
-                            gas = r.ReadBit();
-                            brake = r.ReadBit();
+                            if (!sameVehicleValue)
+                            {
+                                steer = r.ReadSByte();
+                                gas = r.ReadBit();
+                                brake = r.ReadBit();
 
-                            different = true;
-                        }
+                                different = true;
+                            }
+
+                            break;
+
+                        case EStart.Character:
+                            var sameCharacterValue = r.ReadBit();
+
+                            if (!sameCharacterValue)
+                            {
+                                // Strafe2
+                                // Walk2
+                                // Vertical2
+                                // Horiz2
+                                characterState = r.ReadByte();
+
+                                different = true;
+                            }
+
+                            break;
                     }
                 }
                 catch (IndexOutOfRangeException)
@@ -242,7 +269,7 @@ public partial class CGameCtnGhost
 
                 if (different)
                 {
-                    yield return new TrackmaniaInputChange(i, states, mouseAccuX, mouseAccuY, steer, gas, brake, horn);
+                    yield return new TrackmaniaInputChange(i, states, mouseAccuX, mouseAccuY, steer, gas, brake, horn, characterState);
                 }
             }
 
@@ -318,7 +345,8 @@ public partial class CGameCtnGhost
                                                             sbyte? Steer,
                                                             bool? Gas,
                                                             bool? Brake,
-                                                            bool? Horn = null) : IInputChange
+                                                            bool? Horn = null,
+                                                            byte? CharacterState = null) : IInputChange
         {
             public TimeInt32 Timestamp { get; } = new(Tick * 10);
 
