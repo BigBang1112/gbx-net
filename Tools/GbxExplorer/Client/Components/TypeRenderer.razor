@@ -8,6 +8,15 @@
     }
 }
 
+@if (TypeInfo.ElementType.DeclaringType is not null && (Property is null || Property.DeclaringType != TypeInfo.ElementType.DeclaringType))
+{
+    var (newTypeInfo, _) = TypeCacheService.GetTypeInfoModel(TypeInfo.ElementType.DeclaringType, null);
+
+    <TypeRenderer TypeInfo="newTypeInfo" Property="Property"/>
+
+    <span>.</span>
+}
+
 @if (TypeInfo.StandardName is not null)
 {
     <span class="type" style="color: #59B9FF;" data-title="@TypeInfo.Name">@TypeInfo.StandardName</span>
