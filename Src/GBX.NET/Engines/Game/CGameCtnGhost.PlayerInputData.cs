@@ -193,14 +193,9 @@ public partial class CGameCtnGhost
 
                         if (started)
                         {
-                            if (onlyHorn && states == 2)
-                            {
-                                horn = true;
-                            }
-                            else if (states == 0) // 0 only appears for the horn key RELEASE
-                            {
-                                horn = false;
-                            }
+                            horn = onlyHorn
+                                ? (states & 2) != 0
+                                : (states & 64) != 0;
                         }
                         else
                         {
