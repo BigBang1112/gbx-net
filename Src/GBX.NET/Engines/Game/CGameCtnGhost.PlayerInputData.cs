@@ -204,7 +204,7 @@ public partial class CGameCtnGhost
                             started = (EStart)(states & 3);
                             horn = (states & 64) != 0; // a weird bit that can appear sometimes during the run too
                         }
-                        else
+                        else if (started is EStart.Vehicle)
                         {
                             horn = onlyHorn
                                 ? (states & 2) != 0
@@ -305,6 +305,12 @@ public partial class CGameCtnGhost
             ulong? States { get; }
             bool? Respawn { get; }
             bool? Horn { get; }
+
+            bool? FreeLook { get; }
+            bool? ActionSlot1 { get; }
+            bool? ActionSlot2 { get; }
+            bool? ActionSlot3 { get; }
+            bool? ActionSlot4 { get; }
 
             TimeInt32 Timestamp { get; }
         }
