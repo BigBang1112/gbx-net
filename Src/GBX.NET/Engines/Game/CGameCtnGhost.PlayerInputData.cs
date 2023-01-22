@@ -185,7 +185,7 @@ public partial class CGameCtnGhost
                 var gas = default(bool?);
                 var brake = default(bool?);
                 var horn = default(bool?);
-                var characterState = default(byte?);
+                var characterStates = default(byte?);
 
                 try
                 {
@@ -254,7 +254,7 @@ public partial class CGameCtnGhost
                                 // Walk2
                                 // Vertical2
                                 // Horiz2
-                                characterState = r.ReadByte();
+                                characterStates = r.ReadByte();
 
                                 different = true;
                             }
@@ -269,7 +269,7 @@ public partial class CGameCtnGhost
 
                 if (different)
                 {
-                    yield return new TrackmaniaInputChange(i, states, mouseAccuX, mouseAccuY, steer, gas, brake, horn, characterState);
+                    yield return new TrackmaniaInputChange(i, states, mouseAccuX, mouseAccuY, steer, gas, brake, horn, characterStates);
                 }
             }
 
@@ -312,6 +312,10 @@ public partial class CGameCtnGhost
             bool? ActionSlot3 { get; }
             bool? ActionSlot4 { get; }
 
+            EStrafe? Strafe { get; }
+            EWalk? Walk { get; }
+            byte? Vertical { get; }
+
             TimeInt32 Timestamp { get; }
         }
 
@@ -352,7 +356,7 @@ public partial class CGameCtnGhost
                                                             bool? Gas,
                                                             bool? Brake,
                                                             bool? Horn = null,
-                                                            byte? CharacterState = null) : IInputChange
+                                                            byte? CharacterStates = null) : IInputChange
         {
             public TimeInt32 Timestamp { get; } = new(Tick * 10);
 
@@ -369,6 +373,12 @@ public partial class CGameCtnGhost
             public bool? ActionSlot0 => States is null ? null : (States & 8388608) != 0; // bit 23
             public bool? Respawn => States is null ? null : (States & 2147483648) != 0;
             public bool? SecondaryRespawn => States is null ? null : (States & 8589934592) != 0;
+            
+            public EStrafe? Strafe => CharacterStates is null ? null : (EStrafe)(CharacterStates & 3);
+            public EWalk? Walk => CharacterStates is null ? null : (EWalk)((CharacterStates >> 2) & 3);
+            public byte? Vertical => CharacterStates is null ? null : (byte)((CharacterStates >> 4) & 3);
+            public byte? Horizontal => CharacterStates is null ? null : (byte)((CharacterStates >> 6) & 3);
+
         }
     }
 }
