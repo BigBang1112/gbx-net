@@ -185,20 +185,22 @@ public partial class CGameCtnGhost
 
                     if (!sameState)
                     {
-                        var onlySomething = r.ReadBit();
+                        var onlyHorn = r.ReadBit();
 
-                        states = onlySomething
+                        states = onlyHorn
                             ? r.Read2Bit()
                             : r.ReadNumber(bits: version is EVersion._2020_04_08 ? 33 : 34);
 
                         if (started)
                         {
-                            if (states == 0) // 0 only appears for the horn key RELEASE
+                            if (onlyHorn && states == 2)
+                            {
+                                horn = true;
+                            }
+                            else if (states == 0) // 0 only appears for the horn key RELEASE
                             {
                                 horn = false;
                             }
-
-                            // the issue here is that horn can never be true throughout the run
                         }
                         else
                         {
