@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.Game;
+﻿using GBX.NET.Inputs;
+
+namespace GBX.NET.Engines.Game;
 
 /// <summary>
 /// A replay.
@@ -32,10 +34,11 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     private ControlEntry[]? controlEntries;
     private string? game;
     private CCtnMediaBlockUiTMSimpleEvtsDisplay? simpleEventsDisplay;
-    private CGameCtnMediaBlockScenery.Key[] sceneryVortexKeys;
+    private CGameCtnMediaBlockScenery.Key[] sceneryVortexKeys = Array.Empty<CGameCtnMediaBlockScenery.Key>();
     private int sceneryCapturableCount;
     private string? playgroundScript;
-    private InterfaceScriptInfo[] interfaceScriptInfos;
+    private InterfaceScriptInfo[] interfaceScriptInfos = Array.Empty<InterfaceScriptInfo>();
+    private IInput[]? inputs;
 
     #endregion
 
@@ -194,11 +197,11 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk03093004>]
     [AppliedWithChunk<Chunk03093014>]
-    public CGameCtnGhost[]? Ghosts => ghosts;
+    public IReadOnlyCollection<CGameCtnGhost>? Ghosts => ghosts;
 
     [NodeMember]
     [AppliedWithChunk<Chunk03093014>]
-    public long[]? Extras => extras;
+    public IReadOnlyCollection<long>? Extras => extras;
 
     /// <summary>
     /// MediaTracker clip of the replay.
@@ -237,10 +240,8 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// <summary>
     /// Inputs (keyboard, pad, wheel) of the replay from TM1.0, TMO, Sunrise and ESWC. For inputs stored in TMU, TMUF, TMTurbo and TM2: see <see cref="CGameCtnGhost.ControlEntries"/> in <see cref="Ghosts"/>. TM2020 and Shootmania inputs aren't available in replays and ghosts. Can be null if <see cref="EventsDuration"/> is 0, which can happen when you save the replay in editor.
     /// </summary>
-    [NodeMember]
-    [AppliedWithChunk<Chunk03093003>]
-    [AppliedWithChunk<Chunk0309300D>]
-    public ControlEntry[]? ControlEntries => controlEntries;
+    [Obsolete("Use Inputs instead. ControlEntries are going to be removed in 1.3")]
+    public IReadOnlyCollection<ControlEntry>? ControlEntries => controlEntries;
 
     [NodeMember]
     [AppliedWithChunk<Chunk03093008>]
@@ -299,7 +300,14 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             return interfaceScriptInfos;
         }
     }
-
+    
+    /// <summary>
+    /// Inputs (keyboard, pad, wheel) of the replay from TM1.0, TMO, Sunrise and ESWC. For inputs stored in TMU, TMUF, TMTurbo and TM2: see <see cref="CGameCtnGhost.ControlEntries"/> in <see cref="Ghosts"/>. TM2020 and Shootmania inputs aren't available in replays and ghosts. Can be null if <see cref="EventsDuration"/> is 0, which can happen when you save the replay in editor.
+    /// </summary>
+    [NodeMember]
+    [AppliedWithChunk<Chunk03093003>]
+    [AppliedWithChunk<Chunk0309300D>]
+    public IReadOnlyCollection<IInput>? Inputs => inputs;
 
     #endregion
 
@@ -318,12 +326,12 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     CGameCtnChallenge IFullTM10.Challenge => Challenge ?? throw new PropertyNullException(nameof(Challenge));
     TimeInt32 IFullTM10.EventsDuration => EventsDuration ?? throw new PropertyNullException(nameof(EventsDuration));
-    CGameCtnGhost[] IFullTM10.Ghosts => Ghosts ?? throw new PropertyNullException(nameof(Ghosts));
+    IReadOnlyCollection<CGameCtnGhost> IFullTM10.Ghosts => Ghosts ?? throw new PropertyNullException(nameof(Ghosts));
     string IFullTMS.Game => Game ?? throw new PropertyNullException(nameof(Game));
     
     CGameCtnChallenge IFullTMU.Challenge => Challenge ?? throw new PropertyNullException(nameof(Challenge));
-    CGameCtnGhost[] IFullTMU.Ghosts => Ghosts ?? throw new PropertyNullException(nameof(Ghosts));
-    long[] IFullTMUF.Extras => Extras ?? throw new PropertyNullException(nameof(Extras));
+    IReadOnlyCollection<CGameCtnGhost> IFullTMU.Ghosts => Ghosts ?? throw new PropertyNullException(nameof(Ghosts));
+    IReadOnlyCollection<long> IFullTMUF.Extras => Extras ?? throw new PropertyNullException(nameof(Extras));
     CPlugEntRecordData IFullMP4.RecordData => RecordData ?? throw new PropertyNullException(nameof(RecordData));
 
     #endregion
@@ -501,23 +509,26 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             n.eventsDuration = r.ReadTimeInt32();
 
             if (n.eventsDuration == TimeInt32.Zero)
+            {
                 return;
+            }
 
             U01 = r.ReadInt32();
 
             // All control names available in the game
-            var controlNames = r.ReadArray(r1 =>
+            var controlNames = r.ReadArray(r =>
             {
                 // Maybe bindings
-                r1.ReadInt32();
-                r1.ReadInt32();
+                r.ReadInt32();
+                r.ReadInt32();
 
-                return r1.ReadString(); // Input name
+                return r.ReadString(); // Input name
             });
 
             var numEntries = r.ReadInt32() - 1;
 
             n.controlEntries = new ControlEntry[numEntries];
+            n.inputs = new IInput[numEntries];
 
             for (var i = 0; i < numEntries; i++)
             {
@@ -531,6 +542,16 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
                 {
                     "Steer (analog)" => new ControlEntryAnalog(name, time, data), // Data is bugged
                     _ => new ControlEntry(name, time, data),
+                };
+
+                n.inputs[i] = name switch
+                {
+                    "Accelerate" => new Accelerate(time, data != 0),
+                    "Brake" => new Brake(time, data != 0),
+                    "Steer (analog)" => new SteerOld(time, BitConverter.ToSingle(BitConverter.GetBytes(data), 0)),
+                    "Steer left" => new SteerLeft(time, data != 0),
+                    "Steer right" => new SteerRight(time, data != 0),
+                    _ => new UnknownInput(time, name, data),
                 };
             }
 
@@ -669,16 +690,19 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             n.eventsDuration = r.ReadTimeInt32();
 
             if (n.eventsDuration == TimeInt32.Zero)
+            {
                 return;
+            }
 
             U01 = r.ReadInt32();
 
-            var controlNames = r.ReadArray(r1 => r1.ReadId());
+            var controlNames = r.ReadArray(r => r.ReadId());
 
             var numEntries = r.ReadInt32();
             U02 = r.ReadInt32();
 
             n.controlEntries = new ControlEntry[numEntries];
+            n.inputs = new IInput[numEntries];
 
             for (var i = 0; i < numEntries; i++)
             {
@@ -694,6 +718,8 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
                       => new ControlEntryAnalog(name, time, data),
                     _ => new ControlEntry(name, time, data),
                 };
+
+                n.inputs[i] = NET.Inputs.Input.Parse(time, name, data);
             }
         }
     }

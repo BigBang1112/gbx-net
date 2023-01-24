@@ -1,4 +1,4 @@
-﻿using GBX.NET.Exceptions;
+﻿using GBX.NET.Inputs;
 using System.Numerics;
 
 namespace GBX.NET.Engines.Game;
@@ -43,6 +43,7 @@ public partial class CGameCtnGhost : CGameGhost
     private string? skinFile;
     private string? ghostClubTag;
     private PlayerInputData[]? playerInputs;
+    private IReadOnlyCollection<IInput>? inputs;
 
     #endregion
 
@@ -264,10 +265,7 @@ public partial class CGameCtnGhost : CGameGhost
     /// <summary>
     /// Inputs (keyboard, pad, wheel) of the ghost from TMU, TMUF, TMTurbo and TM2. TMTurbo stores the keyboard inputs as <see cref="ControlEntryAnalog"/>. For inputs stored in TM1.0, TMO, Sunrise and ESWC: see <see cref="CGameCtnReplayRecord.ControlEntries"/>. TM2020 and Shootmania inputs aren't available in replays and ghosts. Can be null if <see cref="EventsDuration"/> is 0, which can happen when you save the replay in editor.
     /// </summary>
-    [NodeMember]
-    [AppliedWithChunk<Chunk03092011>]
-    [AppliedWithChunk<Chunk03092019>]
-    [AppliedWithChunk<Chunk03092025>]
+    [Obsolete("Use Inputs instead. ControlEntries are going to be removed in 1.3")]
     public ControlEntry[]? ControlEntries
     {
         get
@@ -425,6 +423,24 @@ public partial class CGameCtnGhost : CGameGhost
         {
             DiscoverChunk<Chunk0309201D>();
             playerInputs = value;
+        }
+    }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk03092011>]
+    [AppliedWithChunk<Chunk03092019>]
+    [AppliedWithChunk<Chunk03092025>]
+    public IReadOnlyCollection<IInput>? Inputs
+    {
+        get
+        {
+            DiscoverChunk<Chunk03092025>();
+            return inputs;
+        }
+        set
+        {
+            DiscoverChunk<Chunk03092025>();
+            inputs = value;
         }
     }
 
@@ -790,65 +806,21 @@ public partial class CGameCtnGhost : CGameGhost
         {
             rw.TimeInt32(ref n.eventsDuration);
 
-            if (n.eventsDuration == TimeInt32.Zero && !Is025Ver1) return;
+            if (n.eventsDuration == TimeInt32.Zero && !Is025Ver1)
+            {
+                return;
+            }
 
             rw.UInt32(ref U01);
 
             if (rw.Reader is not null)
             {
-                var r = rw.Reader;
-
-                var controlNames = r.ReadArray(r1 => r1.ReadId());
-
-                var numEntries = r.ReadInt32();
-                U02 = r.ReadInt32();
-
-                n.ControlEntries = new ControlEntry[numEntries];
-
-                for (var i = 0; i < numEntries; i++)
-                {
-                    var time = TimeInt32.FromMilliseconds(r.ReadInt32() - 100000);
-                    var controlNameIndex = r.ReadByte();
-                    var data = r.ReadUInt32();
-
-                    var name = controlNames[controlNameIndex];
-
-                    n.ControlEntries[i] = (string)name switch
-                    {
-                        "Steer" or "Gas" or "AccelerateReal" or "BrakeReal"
-                          => new ControlEntryAnalog(name, time, data),
-                        _ => new ControlEntry(name, time, data),
-                    };
-                }
+                ReadInputs(n, rw.Reader);
             }
-            
+
             if (rw.Writer is not null)
             {
-                var w = rw.Writer;
-
-                var controlNames = new List<string>();
-
-                if (n.ControlEntries != null)
-                {
-                    foreach (var entry in n.ControlEntries)
-                        if (!controlNames.Contains(entry.Name))
-                            controlNames.Add(entry.Name);
-                }
-
-                w.WriteList(controlNames, (x, w) => w.WriteId(x));
-
-                w.Write(n.ControlEntries?.Length ?? 0);
-                w.Write(U02);
-
-                if (n.ControlEntries != null)
-                {
-                    foreach (var entry in n.ControlEntries)
-                    {
-                        w.Write(entry.Time.TotalMilliseconds + 100000);
-                        w.Write((byte)controlNames.IndexOf(entry.Name));
-                        w.Write(entry.Data);
-                    }
-                }
+                WriteInputs(n, rw.Writer);
             }
 
             rw.String(ref n.validate_ExeVersion);
@@ -856,6 +828,68 @@ public partial class CGameCtnGhost : CGameGhost
             rw.Int32(ref n.validate_OsKind);
             rw.Int32(ref n.validate_CpuKind);
             rw.String(ref n.validate_RaceSettings);
+        }
+
+        private void ReadInputs(CGameCtnGhost n, GameBoxReader r)
+        {
+            var controlNames = r.ReadArray(r => r.ReadId());
+
+            var numEntries = r.ReadInt32();
+            U02 = r.ReadInt32();
+
+            n.controlEntries = new ControlEntry[numEntries];
+
+            var inputs = new IInput[numEntries];
+            n.inputs = inputs; // as n.inputs is IReadOnlyCollection
+
+            for (var i = 0; i < numEntries; i++)
+            {
+                var time = TimeInt32.FromMilliseconds(r.ReadInt32() - 100000);
+                var controlNameIndex = r.ReadByte();
+                var data = r.ReadUInt32();
+
+                var name = (string)controlNames[controlNameIndex];
+
+                n.controlEntries[i] = name switch
+                {
+                    "Steer" or "Gas" or "AccelerateReal" or "BrakeReal"
+                      => new ControlEntryAnalog(name, time, data),
+                    _ => new ControlEntry(name, time, data),
+                };
+
+                inputs[i] = NET.Inputs.Input.Parse(time, name, data);
+            }
+        }
+
+        private void WriteInputs(CGameCtnGhost n, GameBoxWriter w)
+        {
+            var controlNames = new List<string>();
+
+            if (n.controlEntries is not null)
+            {
+                foreach (var entry in n.controlEntries)
+                {
+                    if (!controlNames.Contains(entry.Name))
+                    {
+                        controlNames.Add(entry.Name);
+                    }
+                }
+            }
+
+            w.WriteList(controlNames, (x, w) => w.WriteId(x));
+
+            w.Write(n.controlEntries?.Length ?? 0);
+            w.Write(U02);
+
+            if (n.controlEntries is not null)
+            {
+                foreach (var entry in n.controlEntries)
+                {
+                    w.Write(entry.Time.TotalMilliseconds + 100000);
+                    w.Write((byte)controlNames.IndexOf(entry.Name));
+                    w.Write(entry.Data);
+                }
+            }
         }
     }
 
@@ -983,7 +1017,10 @@ public partial class CGameCtnGhost : CGameGhost
         {
             base.ReadWrite(n, rw);
 
-            if (n.eventsDuration == TimeInt32.Zero && !Is025Ver1) return;
+            if (n.eventsDuration == TimeInt32.Zero && !Is025Ver1)
+            {
+                return;
+            }
 
             rw.Int32(ref U03);
         }
@@ -1213,7 +1250,10 @@ public partial class CGameCtnGhost : CGameGhost
             Chunk019.Is025Ver1 = version >= 1;
             Chunk019.ReadWrite(n, rw);
 
-            if (n.eventsDuration == TimeInt32.Zero && !Chunk019.Is025Ver1) return;
+            if (n.eventsDuration == TimeInt32.Zero && !Chunk019.Is025Ver1)
+            {
+                return;
+            }
 
             rw.Boolean(ref U01);
         }

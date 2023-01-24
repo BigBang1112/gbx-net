@@ -12,23 +12,23 @@ public partial class CGameCtnReplayRecord
         /// </summary>
         /// <exception cref="PropertyNullException"></exception>
         CGameCtnChallenge Challenge { get; }
-        
+
         /// <summary>
         /// Inputs (keyboard, pad, wheel) of the replay. Can be null if <see cref="EventsDuration"/> is 0, which can happen when you save the replay in editor.
         /// </summary>
-        ControlEntry[]? ControlEntries { get; }
+        IReadOnlyCollection<ControlEntry>? ControlEntries { get; }
         
         /// <summary>
         /// Duration of events in the replay (range of detected inputs). This can be <see cref="TimeInt32.Zero"/> if the replay was driven in editor.
         /// </summary>
         /// <exception cref="PropertyNullException"></exception>
         TimeInt32 EventsDuration { get; }
-        
+
         /// <summary>
         /// Ghosts in the replay.
         /// </summary>
         /// <exception cref="PropertyNullException"></exception>
-        CGameCtnGhost[] Ghosts { get; }
+        IReadOnlyCollection<CGameCtnGhost> Ghosts { get; }
 
         IEnumerable<CGameCtnGhost> GetGhosts();
     }
@@ -74,13 +74,13 @@ public partial class CGameCtnReplayRecord
         /// MediaTracker clip of the replay.
         /// </summary>
         CGameCtnMediaClip? Clip { get; }
-        
+
         /// <summary>
         /// Ghosts in the replay.
         /// </summary>
         /// <remarks>Some ghosts can be considered as <see cref="CGameCtnMediaBlockGhost"/>. See <see cref="Clip"/>.</remarks>
         /// <exception cref="PropertyNullException"></exception>
-        CGameCtnGhost[] Ghosts { get; }
+        IReadOnlyCollection<CGameCtnGhost> Ghosts { get; }
     }
 
     /// <summary>
@@ -89,7 +89,7 @@ public partial class CGameCtnReplayRecord
     public interface IFullTMUF : IFullTMU, IHeaderTMUF
     {
         /// <exception cref="PropertyNullException"></exception>
-        long[] Extras { get; }
+        IReadOnlyCollection<long> Extras { get; }
     }
 
     /// <summary>
