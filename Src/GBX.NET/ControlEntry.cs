@@ -3,6 +3,7 @@
 /// <summary>
 /// Input from an input device.
 /// </summary>
+[Obsolete("Use GBX.NET.Inputs.IInput instead")]
 public record ControlEntry(string Name, TimeInt32 Time, uint Data)
 {
     public bool IsEnabled => Data != 0;
