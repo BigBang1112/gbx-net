@@ -9,8 +9,8 @@ internal static class UInt32Extensions
 
         return dir switch
         {
-            0xFF => ushort.MaxValue - val,
-            1 => -ushort.MaxValue,
+            0xFF => ushort.MaxValue + 1 - val,
+            1 => -ushort.MaxValue - 1,
             _ => val * -1 * (int)(dir + 1)
         };
     }
