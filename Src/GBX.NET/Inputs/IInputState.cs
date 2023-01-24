@@ -2,5 +2,5 @@
 
 public interface IInputState : IInput
 {
-    bool Enabled { get; }
+    bool Pressed { get; }
 }
