@@ -4,14 +4,14 @@ internal static class UInt32Extensions
 {
     public static int ToInputValue(this uint data)
     {
-        var dir = data >> 16;
+        var dir = (data >> 16) & 0xFF;
         var val = (int)(data & 0xFFFF);
 
-        if (dir == 0xFF)
+        return dir switch
         {
-            return val;
-        }
-
-        return val * -1 * (int)(dir + 1);
+            0xFF => ushort.MaxValue - val,
+            1 => -ushort.MaxValue,
+            _ => val * -1 * (int)(dir + 1)
+        };
     }
 }
