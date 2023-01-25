@@ -344,6 +344,7 @@ public partial class CGameCtnGhost
             public bool? Menu => States is null ? null : (States & 65536) != 0;
             public bool? Horn => States is null ? null : (States & 1048576) != 0;
             public bool? Respawn => States is null ? null : (States & 2097152) != 0;
+            public bool? GiveUp => States is null ? null : (States & (1 << 26)) != 0;
 
             ulong? IInputChange.States => States is null ? null : (ulong)States;
         }
