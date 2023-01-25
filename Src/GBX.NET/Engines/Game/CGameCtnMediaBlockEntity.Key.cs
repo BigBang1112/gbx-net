@@ -38,7 +38,7 @@ public partial class CGameCtnMediaBlockEntity
                 rw.Int32(ref u03);
                 rw.Single(ref trailIntensity);
 
-                if (version >= 8)
+                if (version >= 9)
                 {
                     rw.Single(ref selfIllumIntensity);
                 }
