@@ -89,6 +89,11 @@ public partial class CGameCtnGhost
                         ? ProcessShootmaniaInputs()
                         : ProcessTrackmaniaInputs();
 
+                    if (inputEnumerable is IReadOnlyCollection<IInput> collection)
+                    {
+                        inputs = collection;
+                        return inputs;
+                    }
 #if DEBUG
                     var testList = new List<IInput>();
 
