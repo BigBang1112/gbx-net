@@ -257,7 +257,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     [NodeMember]
     [AppliedWithChunk<Chunk0309301A>]
-    public CGameCtnMediaBlockScenery.Key[] SceneryVortexKeys
+    public IReadOnlyCollection<CGameCtnMediaBlockScenery.Key> SceneryVortexKeys
     {
         get
         {
@@ -290,7 +290,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
     [NodeMember]
     [AppliedWithChunk<Chunk0309301D>]
-    public InterfaceScriptInfo[] InterfaceScriptInfos
+    public IReadOnlyCollection<InterfaceScriptInfo> InterfaceScriptInfos
     {
         get
         {
