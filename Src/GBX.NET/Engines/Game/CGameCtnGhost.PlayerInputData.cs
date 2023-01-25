@@ -396,16 +396,21 @@ public partial class CGameCtnGhost
                         }
                         else
                         {
-                            if (StateIsDifferent(bit: 6, out bool horn, states, prevStates))
+                            if (StateIsDifferent(bit: 6, out bool hornOrAction, states, prevStates))
                             {
                                 if (started is EStart.Vehicle)
                                 {
-                                    inputs.Add(new Horn(time, horn));
+                                    inputs.Add(new Horn(time, hornOrAction));
                                 }
                                 else if (started is EStart.Character)
                                 {
-                                    // Action or GunTrigger?
+                                    inputs.Add(new Inputs.Action(time, hornOrAction));
                                 }
+                            }
+
+                            if (StateIsDifferent(bit: 10, out bool camera2, states, prevStates))
+                            {
+                                inputs.Add(new Camera2(time, camera2));
                             }
 
                             if (StateIsDifferent(bit: 12, out bool jump, states, prevStates))
