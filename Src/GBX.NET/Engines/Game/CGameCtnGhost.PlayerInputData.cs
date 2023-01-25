@@ -408,6 +408,11 @@ public partial class CGameCtnGhost
                                 }
                             }
 
+                            if (StateIsDifferent(bit: 12, out bool jump, states, prevStates))
+                            {
+                                inputs.Add(new Jump(time, jump));
+                            }
+
                             if (StateIsDifferent(bit: 13, out bool freeLook, states, prevStates))
                             {
                                 inputs.Add(new FreeLook(time, freeLook));
