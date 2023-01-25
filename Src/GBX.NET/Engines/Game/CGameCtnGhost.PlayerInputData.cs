@@ -352,6 +352,9 @@ public partial class CGameCtnGhost
             
             var prevStatesFull = default(ulong?);
             var prevStates2Bit = default(byte?);
+            var prevHorn = default(bool);
+            var prevGunTrigger = default(bool);
+            var prevAction = default(bool);
             var prevSteer = default(sbyte);
             var prevAccel = default(bool);
             var prevBrake = default(bool);
@@ -380,21 +383,24 @@ public partial class CGameCtnGhost
                             {
                                 if (started is EStart.Vehicle)
                                 {
-                                    if (StateIsDifferent(bit: 1, out bool horn2Bit, states, prevStates2Bit))
+                                    if (StateIsDifferent(bit: 1, out bool horn2Bit, states, prevStates2Bit) && horn2Bit != prevHorn)
                                     {
                                         inputs.Add(new Horn(time, horn2Bit));
+                                        prevHorn = horn2Bit;
                                     }
                                 }
                                 else if (started is EStart.Character)
                                 {
-                                    if (StateIsDifferent(bit: 0, out bool gunTrigger, states, prevStates2Bit))
+                                    if (StateIsDifferent(bit: 0, out bool gunTrigger, states, prevStates2Bit) && gunTrigger != prevGunTrigger)
                                     {
                                         inputs.Add(new GunTrigger(time, gunTrigger));
+                                        prevGunTrigger = gunTrigger;
                                     }
 
-                                    if (StateIsDifferent(bit: 1, out bool action, states, prevStates2Bit))
+                                    if (StateIsDifferent(bit: 1, out bool action, states, prevStates2Bit) && action != prevAction)
                                     {
                                         inputs.Add(new Inputs.Action(time, action));
+                                        prevAction = action;
                                     }
                                 }
 
@@ -414,21 +420,24 @@ public partial class CGameCtnGhost
 
                                 if (started is EStart.Character)
                                 {
-                                    if (StateIsDifferent(bit: 5, out bool gunTrigger, states, prevStatesFull))
+                                    if (StateIsDifferent(bit: 5, out bool gunTrigger, states, prevStatesFull) && gunTrigger != prevGunTrigger)
                                     {
                                         inputs.Add(new GunTrigger(time, gunTrigger));
+                                        prevGunTrigger = gunTrigger;
                                     }
                                 }
 
                                 if (StateIsDifferent(bit: 6, out bool hornOrAction, states, prevStatesFull))
                                 {
-                                    if (started is EStart.Vehicle)
+                                    if (started is EStart.Vehicle && hornOrAction != prevHorn)
                                     {
                                         inputs.Add(new Horn(time, hornOrAction));
+                                        prevHorn = hornOrAction;
                                     }
-                                    else if (started is EStart.Character)
+                                    else if (started is EStart.Character && hornOrAction != prevAction)
                                     {
                                         inputs.Add(new Inputs.Action(time, hornOrAction));
+                                        prevAction = hornOrAction;
                                     }
                                 }
 
