@@ -955,9 +955,14 @@ public class GameBoxReader : BinaryReader
 
         var l = length * (lengthInBytes ? 1 : TypeSize<T>.Size);
 
-        if (l > 1_500_000 || l < 0)
+        if (l < 0 || l > 0x10000000) // ~268MB
         {
-            throw new Exception($"Length is too big to handle on the stack ({(l < 0 ? length : l)}).");
+            throw new Exception($"Length is too big to handle ({(l < 0 ? length : l)}).");
+        }
+
+        if (l > 1_500_000)
+        {
+            return MemoryMarshal.Cast<byte, T>(ReadBytes(l)).ToArray();
         }
 
 #if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
