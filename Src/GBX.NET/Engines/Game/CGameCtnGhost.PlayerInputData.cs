@@ -383,12 +383,12 @@ public partial class CGameCtnGhost
                             }
                             else if (started is EStart.Character)
                             {
-                                if (StateIsDifferent(bit: 1, out bool gunTrigger, states, prevStates))
+                                if (StateIsDifferent(bit: 0, out bool gunTrigger, states, prevStates))
                                 {
                                     inputs.Add(new GunTrigger(time, gunTrigger));
                                 }
                                 
-                                if (StateIsDifferent(bit: 2, out bool action, states, prevStates))
+                                if (StateIsDifferent(bit: 1, out bool action, states, prevStates))
                                 {
                                     inputs.Add(new Inputs.Action(time, action));
                                 }
