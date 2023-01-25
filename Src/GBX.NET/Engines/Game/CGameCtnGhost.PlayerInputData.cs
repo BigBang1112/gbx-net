@@ -447,7 +447,7 @@ public partial class CGameCtnGhost
                                     }
                                 }
 
-                                if (StateIsDifferent(bit: 10, out bool camera2, states, prevStatesFull))
+                                if (started is EStart.Character && StateIsDifferent(bit: 10, out bool camera2, states, prevStatesFull))
                                 {
                                     inputs.Add(new Camera2(time, camera2));
                                 }
