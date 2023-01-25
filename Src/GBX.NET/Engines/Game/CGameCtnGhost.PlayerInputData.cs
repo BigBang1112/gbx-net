@@ -147,7 +147,7 @@ public partial class CGameCtnGhost
 
         private static bool StateIsDifferent(int bit, out bool result, ulong states, ulong? prevStates)
         {
-            var mask = (ulong)0 << bit;
+            var mask = (ulong)1 << bit;
             return StateIsDifferentWithMask(mask, out result, states, prevStates);
         }
 
