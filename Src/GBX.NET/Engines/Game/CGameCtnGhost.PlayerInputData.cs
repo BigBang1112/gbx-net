@@ -178,6 +178,8 @@ public partial class CGameCtnGhost
             var prevVertical = default(byte);
             var prevStatesFull = default(int?);
             var prevStates2Bit = default(byte?);
+            var prevAction = default(bool);
+            var prevGunTrigger = default(bool);
 
             for (var i = 0; i < ticks; i++)
             {
@@ -247,14 +249,16 @@ public partial class CGameCtnGhost
 
                             if (states != prevStates2Bit)
                             {
-                                if (StateIsDifferent(bit: 0, out bool actionFrom2bit, states, prevStates2Bit))
+                                if (StateIsDifferent(bit: 0, out bool action, states, prevStates2Bit) && action != prevAction)
                                 {
-                                    yield return new Inputs.Action(time, actionFrom2bit);
+                                    yield return new Inputs.Action(time, action);
+                                    prevAction = action;
                                 }
 
-                                if (StateIsDifferent(bit: 1, out bool gunTrigger, states, prevStates2Bit))
+                                if (StateIsDifferent(bit: 1, out bool gunTrigger, states, prevStates2Bit) && gunTrigger != prevGunTrigger)
                                 {
                                     yield return new GunTrigger(time, gunTrigger);
+                                    prevGunTrigger = gunTrigger;
                                 }
 
                                 prevStates2Bit = states;
@@ -266,9 +270,10 @@ public partial class CGameCtnGhost
 
                             if (states != prevStatesFull)
                             {
-                                if (StateIsDifferent(bit: 1, out bool gunTrigger, states, prevStatesFull))
+                                if (StateIsDifferent(bit: 1, out bool gunTrigger, states, prevStatesFull) && gunTrigger != prevGunTrigger)
                                 {
                                     yield return new GunTrigger(time, gunTrigger);
+                                    prevGunTrigger = gunTrigger;
                                 }
 
                                 if (StateIsDifferent(bit: 2, out bool freeLook, states, prevStatesFull))
@@ -291,9 +296,10 @@ public partial class CGameCtnGhost
                                     yield return new Jump(time, jump);
                                 }
 
-                                if (StateIsDifferent(bit: 8, out bool action, states, prevStatesFull))
+                                if (StateIsDifferent(bit: 8, out bool action, states, prevStatesFull) && action != prevAction)
                                 {
                                     yield return new Inputs.Action(time, action);
+                                    prevAction = action;
                                 }
 
                                 for (var j = 0; j < 4; j++) // 4 action slots
