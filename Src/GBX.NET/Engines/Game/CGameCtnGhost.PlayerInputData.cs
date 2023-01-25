@@ -362,7 +362,7 @@ public partial class CGameCtnGhost
                             ? r.Read2Bit()
                             : r.ReadNumber(bits: version is EVersion._2020_04_08 ? 33 : 34);
 
-                        if (states == prevStates || onlyHorn == prevOnlyHorn)
+                        if (states == prevStates && onlyHorn == prevOnlyHorn)
                         {
                             continue;
                         }
