@@ -150,7 +150,7 @@ public partial class CScriptTraitsMetadata : CMwNod
             // CScriptTraitsGenericContainer::Archive (version = Version - 2)
 
             // ArchiveWithTypeBuffer
-            var typeOrTraitCount = Version >= 3 ? r.ReadByte() : r.ReadInt32();
+            var typeOrTraitCount = Version >= 3 ? r.ReadSmallLen() : r.ReadInt32();
 
             if (Version < 5)
             {
@@ -158,7 +158,7 @@ public partial class CScriptTraitsMetadata : CMwNod
 
                 for (var i = 0; i < typeOrTraitCount; i++)
                 {
-                    var traitName = r.ReadString(Version >= 3 ? StringLengthPrefix.Byte : StringLengthPrefix.Int32);
+                    var traitName = Version >= 3 ? r.ReadSmallString() : r.ReadString();
                     var type = ReadType(r);
                     n.Traits.Add(traitName, ReadContents(r, type));
                 }
@@ -168,13 +168,13 @@ public partial class CScriptTraitsMetadata : CMwNod
 
             var types = r.ReadArray(typeOrTraitCount, ReadType);
 
-            var traitCount = r.ReadByte();
+            var traitCount = r.ReadSmallLen();
             n.Traits = new Dictionary<string, ScriptTrait>(traitCount);
 
             for (var i = 0; i < traitCount; i++)
             {
-                var traitName = r.ReadString(StringLengthPrefix.Byte);
-                var typeIndex = r.ReadByte();
+                var traitName = r.ReadSmallString();
+                var typeIndex = r.ReadSmallLen();
                 n.Traits.Add(traitName, ReadContents(r, types[typeIndex]));
             }
         }
@@ -192,7 +192,7 @@ public partial class CScriptTraitsMetadata : CMwNod
             {
                 if (Version >= 3)
                 {
-                    w.Write((byte)n.Traits.Count);
+                    w.WriteSmallLen(n.Traits.Count);
                 }
                 else
                 {
@@ -201,7 +201,15 @@ public partial class CScriptTraitsMetadata : CMwNod
 
                 foreach (var trait in n.Traits)
                 {
-                    w.Write(trait.Key, Version >= 3 ? StringLengthPrefix.Byte : StringLengthPrefix.Int32);
+                    if (Version >= 3)
+                    {
+                        w.WriteSmallString(trait.Key);
+                    }
+                    else
+                    {
+                        w.Write(trait.Key);
+                    }
+                    
                     WriteType(w, trait.Value.Type);
                     WriteContents(w, trait.Value);
                 }
@@ -216,19 +224,19 @@ public partial class CScriptTraitsMetadata : CMwNod
                 uniqueTypes.Add(type, uniqueTypes.Count);
             }
 
-            w.Write((byte)uniqueTypes.Count);
+            w.WriteSmallLen(uniqueTypes.Count);
 
             foreach (var type in uniqueTypes)
             {
                 WriteType(w, type.Key);
             }
             
-            w.Write((byte)n.Traits.Count);
+            w.WriteSmallLen(n.Traits.Count);
             
             foreach (var trait in n.Traits)
             {
-                w.Write(trait.Key, StringLengthPrefix.Byte);
-                w.Write((byte)uniqueTypes[trait.Value.Type]);
+                w.WriteSmallString(trait.Key);
+                w.WriteSmallLen(uniqueTypes[trait.Value.Type]);
                 WriteContents(w, trait.Value);
             }
         }
@@ -312,7 +320,7 @@ public partial class CScriptTraitsMetadata : CMwNod
             EScriptType.Boolean => new ScriptTrait<bool>(type, r.ReadBoolean(asByte: Version >= 3)),
             EScriptType.Integer => new ScriptTrait<int>(type, r.ReadInt32()),
             EScriptType.Real => new ScriptTrait<float>(type, r.ReadSingle()),
-            EScriptType.Text => new ScriptTrait<string>(type, r.ReadString(Version >= 3 ? StringLengthPrefix.Byte : StringLengthPrefix.Int32)),
+            EScriptType.Text => new ScriptTrait<string>(type, Version >= 3 ? r.ReadSmallString() : r.ReadString()),
             EScriptType.Array => ReadScriptArray(r, type),
             EScriptType.Vec2 => new ScriptTrait<Vec2>(type, r.ReadVec2()),
             EScriptType.Vec3 => new ScriptTrait<Vec3>(type, r.ReadVec3()),
@@ -336,7 +344,14 @@ public partial class CScriptTraitsMetadata : CMwNod
                     w.Write(floatTrait.Value);
                     break;
                 case ScriptTrait<string> stringTrait:
-                    w.Write(stringTrait.Value, Version >= 3 ? StringLengthPrefix.Byte : StringLengthPrefix.Int32);
+                    if (Version >= 3)
+                    {
+                        w.WriteSmallString(stringTrait.Value);
+                    }
+                    else
+                    {
+                        w.Write(stringTrait.Value);
+                    }
                     break;
                 case ScriptArrayTrait arrayTrait:
                     WriteScriptArray(w, arrayTrait);
@@ -371,7 +386,7 @@ public partial class CScriptTraitsMetadata : CMwNod
                 throw new Exception("EScriptType.Array not matching ScriptArrayType");
             }
 
-            var arrayFieldCount = Version >= 3 ? r.ReadByte() : r.ReadInt32();
+            var arrayFieldCount = Version >= 3 ? r.ReadSmallLen() : r.ReadInt32();
             var isRegularArray = arrayType.KeyType.Type == EScriptType.Void;
 
             if (isRegularArray)
@@ -405,7 +420,7 @@ public partial class CScriptTraitsMetadata : CMwNod
         {
             if (Version >= 3)
             {
-                w.Write((byte)arrayTrait.Value.Count);
+                w.WriteSmallLen(arrayTrait.Value.Count);
             }
             else
             {
@@ -422,7 +437,7 @@ public partial class CScriptTraitsMetadata : CMwNod
         {
             if (Version >= 3)
             {
-                w.Write((byte)dictionaryTrait.Value.Count);
+                w.WriteSmallLen(dictionaryTrait.Value.Count);
             }
             else
             {

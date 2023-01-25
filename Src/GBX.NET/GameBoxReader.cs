@@ -2098,4 +2098,22 @@ public class GameBoxReader : BinaryReader
     {
         return DateTime.FromFileTimeUtc(ReadInt64());
     }
+
+    public int ReadSmallLen()
+    {
+        var firstByte = ReadByte();
+        var secondUInt16 = default(ushort);
+
+        if (firstByte > 127)
+        {
+            secondUInt16 = ReadUInt16();
+        }
+        
+        return firstByte & 0x7f | secondUInt16 << 7;
+    }
+
+    public string ReadSmallString()
+    {
+        return ReadString(ReadSmallLen());
+    }
 }
