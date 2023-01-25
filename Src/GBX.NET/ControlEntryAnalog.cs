@@ -3,7 +3,7 @@
 /// <summary>
 /// A control entry with an additional <see cref="float"/> value.
 /// </summary>
-[Obsolete("Use GBX.NET.Inputs.IInputReal instead")]
+[Obsolete("Use GBX.NET.Inputs.IInputReal instead. Class will be removed in 1.3.0")]
 public record ControlEntryAnalog : ControlEntry
 {
     public float Value

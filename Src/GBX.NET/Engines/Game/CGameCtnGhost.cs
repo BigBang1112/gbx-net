@@ -265,7 +265,7 @@ public partial class CGameCtnGhost : CGameGhost
     /// <summary>
     /// Inputs (keyboard, pad, wheel) of the ghost from TMU, TMUF, TMTurbo and TM2. TMTurbo stores the keyboard inputs as <see cref="ControlEntryAnalog"/>. For inputs stored in TM1.0, TMO, Sunrise and ESWC: see <see cref="CGameCtnReplayRecord.ControlEntries"/>. TM2020 and Shootmania inputs are available in <see cref="PlayerInputs"/>. Can be null if <see cref="EventsDuration"/> is 0, which can happen when you save the replay in editor.
     /// </summary>
-    [Obsolete("Use Inputs instead. ControlEntries are going to be removed in 1.3")]
+    [Obsolete("Use Inputs instead. Property will be removed in 1.3.0")]
     public ControlEntry[]? ControlEntries
     {
         get
