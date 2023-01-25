@@ -396,6 +396,14 @@ public partial class CGameCtnGhost
                         }
                         else
                         {
+                            if (started is EStart.Character)
+                            {
+                                if (StateIsDifferent(bit: 5, out bool gunTrigger, states, prevStates))
+                                {
+                                    inputs.Add(new GunTrigger(time, gunTrigger));
+                                }
+                            }
+                            
                             if (StateIsDifferent(bit: 6, out bool hornOrAction, states, prevStates))
                             {
                                 if (started is EStart.Vehicle)
