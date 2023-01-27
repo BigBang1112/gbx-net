@@ -307,6 +307,8 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     [AppliedWithChunk<Chunk0309300D>]
     public IReadOnlyCollection<IInput>? Inputs => inputs;
 
+    public byte[]? ChallengeData { get => challengeData; set => challengeData = value; }
+
     #endregion
 
     #region Explicit properties
