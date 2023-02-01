@@ -3,11 +3,19 @@
 [Node(0x03192000)]
 public class CGameCtnBlockInfoMobilLink : CMwNod
 {
+    [NodeMember(ExactlyNamed = true)]
     public Id SocketId { get; set; }
+
+    [NodeMember(ExactlyNamed = true)]
     public CGameObjectModel? Model { get; set; }
-    
+
+    [NodeMember]
     public int Version { get; set; }
+    
+    [NodeMember]
     public Node? U04 { get; set; }
+    
+    [NodeMember]
     public GameBoxRefTable.File? U04File { get; set; }
 
     internal CGameCtnBlockInfoMobilLink()

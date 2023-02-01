@@ -989,4 +989,22 @@ public class GameBoxWriter : BinaryWriter
     {
         Write(variable.ToFileTimeUtc());
     }
+
+    public void WriteSmallLen(int value)
+    {
+        if (value < 128)
+        {
+            Write((byte)value);
+            return;
+        }
+        
+        Write((byte)value | 0x80);
+        Write((ushort)(value >> 7));
+    }
+
+    public void WriteSmallString(string value)
+    {
+        WriteSmallLen(value.Length);
+        Write(value, StringLengthPrefix.None);
+    }
 }
