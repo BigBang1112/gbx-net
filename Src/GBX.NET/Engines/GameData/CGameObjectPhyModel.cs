@@ -222,7 +222,7 @@ public class CGameObjectPhyModel : CMwNod
     {
         private int version;
 
-        public Node? U01;
+        public CMwNod? U01;
         public CMwNod? U03;
         public Iso4? U09;
         public string? U14;
@@ -313,7 +313,10 @@ public class CGameObjectPhyModel : CMwNod
                                         rw.String(ref n.actionModel);
                                     }
 
-                                    rw.ArrayNode(ref n.actions); // sometimes maybe not available at all?
+                                    if (string.IsNullOrEmpty(n.actionModel))
+                                    {
+                                        rw.ArrayNode(ref n.actions); // sometimes maybe not available at all?
+                                    }
 
                                     if (version < 11)
                                     {
@@ -324,19 +327,18 @@ public class CGameObjectPhyModel : CMwNod
 
                                     if (version >= 21)
                                     {
-                                        rw.NodeRef(ref U01); // VisModel, Solid, socket?
+                                        rw.NodeRef(ref U01); // ???
                                     }
 
                                     if (version >= 11)
                                     {
-                                        if (U01 is null)
+                                        if (string.IsNullOrEmpty(n.moveShape))
                                         {
                                             rw.NodeRef<CPlugSurface>(ref n.moveShapeFid, ref n.moveShapeFidFile);
                                         }
                                         else
                                         {
-                                            // some fid stuff probably, prefer to throw before tested
-                                            throw new Exception("U01 not null");
+                                            // Something is there but without it it works? xd
                                         }
 
                                         if (string.IsNullOrEmpty(n.hitShape))
