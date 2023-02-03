@@ -5,6 +5,8 @@
 /// </summary>
 public readonly record struct Id
 {
+    public static readonly Id Empty = new();
+
     /// <summary>
     /// Represents an ID of the collection. Null if the <see cref="Id"/> is string-defined.
     /// </summary>
@@ -13,7 +15,7 @@ public readonly record struct Id
     /// <summary>
     /// Represents the string of the <see cref="Id"/>. Null if the <see cref="Id"/> is presented as a collection ID.
     /// </summary>
-    public string? String { get; }
+    public string String { get; } = "";
 
     /// <summary>
     /// Constructs an <see cref="Id"/> struct from a string representation.
@@ -32,7 +34,6 @@ public readonly record struct Id
     public Id(int collectionId)
     {
         Index = collectionId;
-        String = null;
     }
 
     public Int3 GetBlockSize() => ToString() switch
@@ -58,7 +59,7 @@ public readonly record struct Id
     {
         if (Index is null)
         {
-            return String ?? "";
+            return String;
         }
 
         if (NodeManager.TryGetCollectionName(Index.Value, out string? value))
