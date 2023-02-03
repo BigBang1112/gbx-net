@@ -90,6 +90,7 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
     private string? defaultWeaponName;
     private CMwNod? phyModelCustom;
     private CMwNod? visModelCustom;
+    private CGameActionModel?[]? actions;
     private CMwNod? entityModelEdition;
     private CMwNod? entityModel;
     private EDefaultCam? defaultCam;
@@ -154,6 +155,10 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E002019>]
     public CMwNod? VisModelCustom { get => visModelCustom; set => visModelCustom = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk2E002019>(sinceVersion: 6)]
+    public CGameActionModel?[]? Actions { get => actions; set => actions = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E002019>(sinceVersion: 7)]
@@ -496,7 +501,7 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
 
                         if (version >= 6)
                         {
-                            rw.Int32(ref U01); // Actions
+                            rw.ArrayNode<CGameActionModel>(ref n.actions); // Actions
 
                             if (version >= 7)
                             {
