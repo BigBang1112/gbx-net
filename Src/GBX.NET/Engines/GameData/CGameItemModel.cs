@@ -474,7 +474,9 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
         {
             rw.Int32(ref version);
 
-            if ((n.ItemTypeE == EItemType.StaticObject && version < 9) || (n.ItemTypeE == EItemType.Vehicle && version < 10))
+            var itemTypeVersion = GetItemTypeVersion((int)n.itemType);
+
+            if (itemTypeVersion.HasValue && version < itemTypeVersion)
             {
                 rw.NodeRef<CMwNod>(ref n.phyModelCustom);
                 rw.NodeRef<CMwNod>(ref n.visModelCustom);
@@ -521,6 +523,15 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
                 }
             }
         }
+
+        private static int? GetItemTypeVersion(int itemType) => itemType switch
+        {
+            1 or 2 => 9,
+            4 => 10,
+            5 => 9,
+            11 => null,
+            _ => 12
+        };
     }
 
     #endregion
