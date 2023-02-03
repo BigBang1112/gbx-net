@@ -211,6 +211,12 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
     [AppliedWithChunk<Chunk2E00201F>(sinceVersion: 6)]
     public bool DisableLightmap { get => disableLightmap; set => disableLightmap = value; }
 
+    [NodeMember(ExactlyNamed = true)]
+    public bool IsCommonItemType => (((int)ItemType - 1 & 0xfffffffa) == 0) && ((int)ItemType != 6);
+
+    [NodeMember(ExactlyNamed = true)]
+    public bool IsDynamicItemType => ((int)ItemType < 0xd) && ((0x161cU >> ((int)ItemType & 0x1f) & 1) != 0);
+
     #endregion
 
     #region Constructors
@@ -219,6 +225,12 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
     {
 
     }
+
+    #endregion
+
+    #region Methods
+
+    
 
     #endregion
 
