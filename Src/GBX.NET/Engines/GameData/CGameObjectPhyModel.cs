@@ -225,14 +225,9 @@ public class CGameObjectPhyModel : CMwNod
         public Node? U01;
         public CMwNod? U03;
         public Iso4? U09;
-        public string? U11;
-        public CMwNod? U12;
-        public CMwNod? U13;
         public string? U14;
         public CMwNod? U15;
-        public int? U16;
         public bool U17;
-        public CMwNod? U18;
         public int? U19;
         public bool? U20;
         public bool? U21;
@@ -241,13 +236,6 @@ public class CGameObjectPhyModel : CMwNod
         public bool? U24;
         public bool U25 = true;
         public CMwNod? U26;
-        public CMwNod? U27;
-        public CMwNod? U28;
-        public CMwNod? U29;
-        public CMwNod? U30;
-        public GameBoxRefTable.File? U30File;
-        public CMwNod? U31;
-        public CMwNod? U32;
 
         public int Version { get => version; set => version = value; }
 
