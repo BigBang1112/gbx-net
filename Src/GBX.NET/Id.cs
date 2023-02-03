@@ -15,7 +15,7 @@ public readonly record struct Id
     /// <summary>
     /// Represents the string of the <see cref="Id"/>. Null if the <see cref="Id"/> is presented as a collection ID.
     /// </summary>
-    public string String { get; } = "";
+    public string? String { get; }
 
     /// <summary>
     /// Constructs an <see cref="Id"/> struct from a string representation.
@@ -23,7 +23,6 @@ public readonly record struct Id
     /// <param name="str">An Id string.</param>
     public Id(string str)
     {
-        Index = null;
         String = str;
     }
 
@@ -59,7 +58,7 @@ public readonly record struct Id
     {
         if (Index is null)
         {
-            return String;
+            return String ?? "";
         }
 
         if (NodeManager.TryGetCollectionName(Index.Value, out string? value))
