@@ -10,6 +10,10 @@ namespace GBX.NET;
 /// </summary>
 public class GameBoxReader : BinaryReader
 {
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+    private string? previousString;
+#endif
+
     public GameBox? Gbx { get; }
 
     /// <summary>
@@ -44,7 +48,7 @@ public class GameBoxReader : BinaryReader
     /// <param name="state">State of <see cref="Id"/> and aux node write. Currently cannot be null.</param>
     internal GameBoxReader(Stream input, GameBox? gbx, GameBoxAsyncReadAction? asyncAction, ILogger? logger, GbxState state)
         : base(input, Encoding.UTF8, true)
-    {
+    {        
         Gbx = gbx;
         AsyncAction = asyncAction;
         Logger = logger;
@@ -126,7 +130,7 @@ public class GameBoxReader : BinaryReader
             _ => throw new ArgumentException("Can't read string without knowing its length."),
         };
 
-        if (length < 0)
+        if (length < 0 || length > 0x10000000) // ~268MB
         {
             throw new StringLengthOutOfRangeException(length);
         }
@@ -159,10 +163,30 @@ public class GameBoxReader : BinaryReader
         {
             return "";
         }
+        
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        Span<byte> bytes = stackalloc byte[length];
 
+        if (Read(bytes) != length)
+        {
+            throw new EndOfStreamException();
+        }
+        
+        Span<char> chars = stackalloc char[length];
+
+        _ = Encoding.UTF8.GetChars(bytes, chars);
+        
+        if (previousString is not null && MemoryExtensions.Equals(chars, previousString, StringComparison.Ordinal))
+        {
+            return previousString;
+        }
+        
+        return previousString = chars.ToString();
+#else
         return Encoding.UTF8.GetString(ReadBytes(length));
+#endif
     }
-
+    
     /// <summary>
     /// First reads an <see cref="int"/> representing the length, then reads the sequence of bytes.
     /// </summary>
