@@ -15,13 +15,13 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
     {
         Undefined = 0,
         /// <summary>
-        /// Formerly StaticObject
+        /// Also known as Ornament
         /// </summary>
-        Ornament = 1,
+        StaticObject = 1,
         /// <summary>
-        /// Formerly DynaObject
+        /// Also known as PickUp
         /// </summary>
-        PickUp = 2,
+        DynaObject = 2,
         Character = 3,
         Vehicle = 4,
         Spot = 5,
@@ -459,7 +459,7 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
         {
             rw.Int32(ref version);
 
-            if ((n.ItemTypeE == EItemType.Ornament && version < 9) || (n.ItemTypeE == EItemType.Vehicle && version < 10))
+            if ((n.ItemTypeE == EItemType.StaticObject && version < 9) || (n.ItemTypeE == EItemType.Vehicle && version < 10))
             {
                 rw.NodeRef<CMwNod>(ref n.phyModelCustom);
                 rw.NodeRef<CMwNod>(ref n.visModelCustom);
