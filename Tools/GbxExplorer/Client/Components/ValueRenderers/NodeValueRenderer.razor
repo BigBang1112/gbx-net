@@ -41,7 +41,7 @@ else
 }
 
 @code {
-    public static Func<PropertyInfo, bool> TreeFilterStatic { get; } = x => Attribute.IsDefined(x, typeof(NodeMemberAttribute));
+    public static Func<PropertyInfo, bool> TreeFilterStatic { get; } = x => typeof(IReadableWritable).IsAssignableFrom(x.DeclaringType) || Attribute.IsDefined(x, typeof(NodeMemberAttribute));
 
     public override bool ShowPropertyInTree(PropertyInfo prop) => TreeFilterStatic(prop);
 }
