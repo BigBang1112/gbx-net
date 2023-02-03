@@ -217,6 +217,9 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
     [NodeMember(ExactlyNamed = true)]
     public bool IsDynamicItemType => ((int)ItemType < 0xd) && ((0x161cU >> ((int)ItemType & 0x1f) & 1) != 0);
 
+    [NodeMember(ExactlyNamed = true)]
+    public bool IsStaticItemType => ((int)ItemType < 0xc) && ((0x922U >> ((int)ItemType & 0x1f) & 1) != 0);
+
     #endregion
 
     #region Constructors
