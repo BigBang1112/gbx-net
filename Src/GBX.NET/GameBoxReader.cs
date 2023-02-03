@@ -10,9 +10,11 @@ namespace GBX.NET;
 /// </summary>
 public class GameBoxReader : BinaryReader
 {
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+/* Later
+ * 
+ * #if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
     private string? previousString;
-#endif
+#endif*/
 
     public GameBox? Gbx { get; }
 
@@ -171,8 +173,10 @@ public class GameBoxReader : BinaryReader
         {
             throw new EndOfStreamException();
         }
-        
-        Span<char> chars = stackalloc char[length];
+
+        /* Chars are different length than bytes
+         * 
+         * Span<char> chars = stackalloc char[length];
 
         _ = Encoding.UTF8.GetChars(bytes, chars);
         
@@ -181,7 +185,9 @@ public class GameBoxReader : BinaryReader
             return previousString;
         }
         
-        return previousString = chars.ToString();
+        return previousString = chars.ToString(); */
+
+        return Encoding.UTF8.GetString(bytes);
 #else
         return Encoding.UTF8.GetString(ReadBytes(length));
 #endif
