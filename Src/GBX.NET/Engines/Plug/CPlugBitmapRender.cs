@@ -106,6 +106,24 @@ public abstract class CPlugBitmapRender : CPlug
 
     #endregion
 
+    #region 0x00D chunk
+
+    /// <summary>
+    /// CPlugBitmapRender 0x00D chunk
+    /// </summary>
+    [Chunk(0x0908600D)]
+    public class Chunk0908600D : Chunk<CPlugBitmapRender>
+    {
+        public uint U01;
+
+        public override void ReadWrite(CPlugBitmapRender n, GameBoxReaderWriter rw)
+        {
+            rw.UInt32(ref U01); // DoData
+        }
+    }
+
+    #endregion
+
     #region 0x00E chunk
 
     /// <summary>
