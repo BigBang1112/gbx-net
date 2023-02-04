@@ -192,19 +192,12 @@ public partial class CPlugSolid2Model : CMwNod
                 rw.Int32(10); // listVersion
                 rw.ArrayNode<CPlugVisual>(ref n.visuals!);
 
-                if (n.visuals.Length > 0)
-                {
-                    foreach (var geom in n.shadedGeoms)
-                    {
-                        if (geom.VisualIndex < n.visuals.Length)
-                        {
-                            geom.Visual = n.visuals[geom.VisualIndex];
-                        }
-                    }
-                }
+                ApplyToGeoms(n, n.visuals, x => x.VisualIndex, (x, y) => x.Visual = y);
             }
 
             rw.ArrayId(ref n.materialIds!); // MaterialIds
+
+            ApplyToGeoms(n, n.materialIds, x => x.MaterialIndex, (x, y) => x.MaterialId = y);
 
             var materialCount = version >= 29 ? rw.Int32(n.materialInsts.Length) : 0;
 
@@ -213,16 +206,7 @@ public partial class CPlugSolid2Model : CMwNod
                 rw.Int32(10); // listVersion
                 rw.ArrayNode<CPlugMaterial>(ref n.materials!);
 
-                if (n.materials.Length > 0)
-                {
-                    foreach (var geom in n.shadedGeoms)
-                    {
-                        if (geom.MaterialIndex < n.materials.Length)
-                        {
-                            geom.Material = n.materials[geom.MaterialIndex];
-                        }
-                    }
-                }
+                ApplyToGeoms(n, n.materials, x => x.MaterialIndex, (x, y) => x.Material = y);
             }
 
             rw.NodeRef<CPlugSkel>(ref n.skel, ref n.skelFile);
@@ -268,16 +252,7 @@ public partial class CPlugSolid2Model : CMwNod
                                         {
                                             rw.ArrayNode<CPlugMaterialUserInst>(ref n.materialInsts!);
 
-                                            if (n.materialInsts.Length > 0)
-                                            {
-                                                foreach (var geom in n.shadedGeoms)
-                                                {
-                                                    if (geom.MaterialIndex < n.materialInsts.Length)
-                                                    {
-                                                        geom.MaterialInst = n.materialInsts[geom.MaterialIndex];
-                                                    }
-                                                }
-                                            }
+                                            ApplyToGeoms(n, n.materialInsts, x => x.MaterialIndex, (x, y) => x.MaterialInst = y);
                                         }
 
                                         if (version >= 10)
@@ -320,16 +295,7 @@ public partial class CPlugSolid2Model : CMwNod
 
                                                                 rw.ArrayArchive<Material>(ref n.customMaterials!, version, materialCount);
 
-                                                                if (n.customMaterials.Length > 0)
-                                                                {
-                                                                    foreach (var geom in n.shadedGeoms)
-                                                                    {
-                                                                        if (geom.MaterialIndex < n.customMaterials.Length)
-                                                                        {
-                                                                            geom.CustomMaterial = n.customMaterials[geom.MaterialIndex];
-                                                                        }
-                                                                    }
-                                                                }
+                                                                ApplyToGeoms(n, n.customMaterials, x => x.MaterialIndex, (x, y) => x.CustomMaterial = y);
 
                                                                 if (version >= 17)
                                                                 {
@@ -411,7 +377,25 @@ public partial class CPlugSolid2Model : CMwNod
                         }
                     }
                 }
-            }            
+            }
+        }
+
+        private static void ApplyToGeoms<T>(CPlugSolid2Model n, T[] array, Func<ShadedGeom, int> indexFunc, Action<ShadedGeom, T> setFunc)
+        {
+            if (array.Length == 0)
+            {
+                return;
+            }
+            
+            foreach (var geom in n.shadedGeoms)
+            {
+                var i = indexFunc(geom);
+
+                if (i < array.Length)
+                {
+                    setFunc(geom, array[i]);
+                }
+            }
         }
     }
 

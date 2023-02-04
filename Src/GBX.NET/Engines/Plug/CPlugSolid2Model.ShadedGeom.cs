@@ -19,6 +19,7 @@ public partial class CPlugSolid2Model
         public ExternalNode<CPlugMaterial>? Material { get; internal set; }
         public CPlugMaterialUserInst? MaterialInst { get; internal set; }
         public Material? CustomMaterial { get; internal set; }
+        public string? MaterialId { get; internal set; }
 
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
