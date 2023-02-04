@@ -130,6 +130,30 @@ public class CFuncShaderLayerUV : CFuncShader
 
     #endregion
 
+    #region 0x014 chunk
+
+    /// <summary>
+    /// CFuncShaderLayerUV 0x014 chunk
+    /// </summary>
+    [Chunk(0x05015014)]
+    public class Chunk05015014 : Chunk<CFuncShaderLayerUV>
+    {
+        public float U01;
+        public float U02;
+        public float U03;
+        public float U04;
+
+        public override void ReadWrite(CFuncShaderLayerUV n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+        }
+    }
+
+    #endregion
+
     #region 0x015 chunk
 
     /// <summary>
