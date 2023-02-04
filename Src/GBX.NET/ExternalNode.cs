@@ -13,6 +13,16 @@ public record ExternalNode<T>(T? Node, GameBoxRefTable.File? File) where T : Nod
             return "Empty";
         }
 
+        if (Node is not null)
+        {
+            return Node.ToString();
+        }
+
+        if (File is not null)
+        {
+            return File.ToString();
+        }
+
         return base.ToString() ?? "";
     }
 }
