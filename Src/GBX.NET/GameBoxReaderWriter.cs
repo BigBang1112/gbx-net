@@ -1861,6 +1861,26 @@ public partial class GameBoxReaderWriter
         array = ArrayArchiveWithGbx(array, version, shortLength);
     }
 
+    public T[]? ArrayArchiveWithNode<T, TNode>(T[]? array, TNode node, bool shortLength = false) where T : IReadableWritableWithNode<TNode>, new() where TNode : Node
+    {
+        return Array(array, (rw, x) => x.ReadWrite(rw, node), shortLength);
+    }
+
+    public void ArrayArchiveWithNode<T, TNode>(ref T[]? array, TNode node, bool shortLength = false) where T : IReadableWritableWithNode<TNode>, new() where TNode : Node
+    {
+        array = ArrayArchiveWithNode(array, node, shortLength);
+    }
+
+    public T[]? ArrayArchiveWithNode<T, TNode>(T[]? array, TNode node, int version, bool shortLength = false) where T : IReadableWritableWithNode<TNode>, new() where TNode : Node
+    {
+        return Array(array, (rw, x) => x.ReadWrite(rw, node, version), shortLength);
+    }
+
+    public void ArrayArchiveWithNode<T, TNode>(ref T[]? array, TNode node, int version, bool shortLength = false) where T : IReadableWritableWithNode<TNode>, new() where TNode : Node
+    {
+        array = ArrayArchiveWithNode(array, node, version, shortLength);
+    }
+
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
@@ -2967,5 +2987,10 @@ public partial class GameBoxReaderWriter
     public void VersionByte(IVersionable versionable)
     {
         versionable.Version = Byte(versionable.Version);
+    }
+
+    internal void String(ref object materialsFolderName)
+    {
+        throw new NotImplementedException();
     }
 }
