@@ -192,9 +192,15 @@ public partial class CPlugSolid2Model : CMwNod
                 rw.Int32(10); // listVersion
                 rw.ArrayNode<CPlugVisual>(ref n.visuals!);
 
-                foreach (var geom in n.shadedGeoms)
+                if (n.visuals.Length > 0)
                 {
-                    geom.Visual = n.visuals[geom.VisualIndex];
+                    foreach (var geom in n.shadedGeoms)
+                    {
+                        if (geom.VisualIndex >= n.visuals.Length)
+                        {
+                            geom.Visual = n.visuals[geom.VisualIndex];
+                        }
+                    }
                 }
             }
 
@@ -207,9 +213,15 @@ public partial class CPlugSolid2Model : CMwNod
                 rw.Int32(10); // listVersion
                 rw.ArrayNode<CPlugMaterial>(ref n.materials!);
 
-                foreach (var geom in n.shadedGeoms)
+                if (n.materials.Length > 0)
                 {
-                    geom.Material = n.materials[geom.MaterialIndex];
+                    foreach (var geom in n.shadedGeoms)
+                    {
+                        if (geom.MaterialIndex >= n.materials.Length)
+                        {
+                            geom.Material = n.materials[geom.MaterialIndex];
+                        }
+                    }
                 }
             }
 
@@ -263,9 +275,15 @@ public partial class CPlugSolid2Model : CMwNod
             {
                 rw.ArrayNode<CPlugMaterialUserInst>(ref n.materialInsts!);
 
-                foreach (var geom in n.shadedGeoms)
+                if (n.materialInsts.Length > 0)
                 {
-                    geom.MaterialInst = n.materialInsts[geom.MaterialIndex];
+                    foreach (var geom in n.shadedGeoms)
+                    {
+                        if (geom.MaterialIndex >= n.materialInsts.Length)
+                        {
+                            geom.MaterialInst = n.materialInsts[geom.MaterialIndex];
+                        }
+                    }
                 }
             }
 
@@ -309,9 +327,15 @@ public partial class CPlugSolid2Model : CMwNod
 
                                     rw.ArrayArchive<Material>(ref n.customMaterials!, version, materialCount);
 
-                                    foreach (var geom in n.shadedGeoms)
+                                    if (n.customMaterials.Length > 0)
                                     {
-                                        geom.CustomMaterial = n.customMaterials[geom.MaterialIndex];
+                                        foreach (var geom in n.shadedGeoms)
+                                        {
+                                            if (geom.MaterialIndex >= n.customMaterials.Length)
+                                            {
+                                                geom.CustomMaterial = n.customMaterials[geom.MaterialIndex];
+                                            }
+                                        }
                                     }
 
                                     if (version >= 17)
