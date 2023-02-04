@@ -263,140 +263,140 @@ public partial class CPlugSolid2Model : CMwNod
                                     if (version >= 8)
                                     {
                                         rw.ArrayArchive<Light>(ref n.lights!);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
 
-            if (version < 16)
-            {
-                rw.ArrayNode<CPlugMaterialUserInst>(ref n.materialInsts!);
-
-                if (n.materialInsts.Length > 0)
-                {
-                    foreach (var geom in n.shadedGeoms)
-                    {
-                        if (geom.MaterialIndex < n.materialInsts.Length)
-                        {
-                            geom.MaterialInst = n.materialInsts[geom.MaterialIndex];
-                        }
-                    }
-                }
-            }
-
-            if (version >= 10)
-            {
-                rw.ArrayNode<CPlugLightUserModel>(ref n.lightUserModels!);
-                rw.ArrayArchive<LightInst>(ref n.lightInsts!);
-
-                if (version >= 11)
-                {
-                    rw.Int32(ref n.damageZone);
-
-                    if (version >= 12)
-                    {
-                        rw.UInt32(ref n.flags); // DoData
-
-                        if (version < 28)
-                        {
-                            // Flags are adjusted
-                        }
-
-                        if (version >= 13)
-                        {
-                            rw.Int32(ref U12); // fake occ something?
-
-                            if (version >= 14)
-                            {
-                                rw.String(ref U13!);
-
-                                if (version >= 15)
-                                {
-                                    if (version < 29)
-                                    {
-                                        rw.Int32(ref materialCount);
-                                    }
-
-                                    if (version >= 30)
-                                    {
-                                        rw.Int32(ref U14);
-                                    }
-
-                                    rw.ArrayArchive<Material>(ref n.customMaterials!, version, materialCount);
-
-                                    if (n.customMaterials.Length > 0)
-                                    {
-                                        foreach (var geom in n.shadedGeoms)
+                                        if (version < 16)
                                         {
-                                            if (geom.MaterialIndex < n.customMaterials.Length)
+                                            rw.ArrayNode<CPlugMaterialUserInst>(ref n.materialInsts!);
+
+                                            if (n.materialInsts.Length > 0)
                                             {
-                                                geom.CustomMaterial = n.customMaterials[geom.MaterialIndex];
+                                                foreach (var geom in n.shadedGeoms)
+                                                {
+                                                    if (geom.MaterialIndex < n.materialInsts.Length)
+                                                    {
+                                                        geom.MaterialInst = n.materialInsts[geom.MaterialIndex];
+                                                    }
+                                                }
                                             }
                                         }
-                                    }
 
-                                    if (version >= 17)
-                                    {
-                                        if (version < 21)
+                                        if (version >= 10)
                                         {
-                                            rw.Array<Box>(ref U15);
-                                        }
+                                            rw.ArrayNode<CPlugLightUserModel>(ref n.lightUserModels!);
+                                            rw.ArrayArchive<LightInst>(ref n.lightInsts!);
 
-                                        if (version >= 20)
-                                        {
-                                            rw.ArrayId(ref U16); // slightly related to skels and joints
-
-                                            // END OF MP4
-
-                                            if (version >= 22)
+                                            if (version >= 11)
                                             {
-                                                rw.Array<int>(ref U17);
+                                                rw.Int32(ref n.damageZone);
 
-                                                if (version >= 23)
+                                                if (version >= 12)
                                                 {
-                                                    rw.Int32(ref U18); // array
+                                                    rw.UInt32(ref n.flags); // DoData
 
-                                                    if (U18 > 0)
+                                                    if (version < 28)
                                                     {
-                                                        throw new Exception("U18 > 0");
+                                                        // Flags are adjusted
                                                     }
 
-                                                    rw.Array<int>(ref U19);
-                                                    
-                                                    if (version >= 24)
+                                                    if (version >= 13)
                                                     {
-                                                        rw.Int32(ref U20);
+                                                        rw.Int32(ref U12); // fake occ something?
 
-                                                        if (version >= 25)
+                                                        if (version >= 14)
                                                         {
-                                                            rw.NodeRef(ref U21);
-                                                            rw.Single(ref U22);
-                                                            rw.Single(ref U23);
+                                                            rw.String(ref U13!);
 
-                                                            if (version >= 27)
+                                                            if (version >= 15)
                                                             {
-                                                                rw.Id(ref U24);
-
-                                                                if (version >= 31)
+                                                                if (version < 29)
                                                                 {
-                                                                    rw.Int32(ref U25); // array of 2 int-sized values
+                                                                    rw.Int32(ref materialCount);
+                                                                }
 
-                                                                    if (U25 > 0)
+                                                                if (version >= 30)
+                                                                {
+                                                                    rw.Int32(ref U14);
+                                                                }
+
+                                                                rw.ArrayArchive<Material>(ref n.customMaterials!, version, materialCount);
+
+                                                                if (n.customMaterials.Length > 0)
+                                                                {
+                                                                    foreach (var geom in n.shadedGeoms)
                                                                     {
-                                                                        throw new Exception("U25 > 0");
+                                                                        if (geom.MaterialIndex < n.customMaterials.Length)
+                                                                        {
+                                                                            geom.CustomMaterial = n.customMaterials[geom.MaterialIndex];
+                                                                        }
+                                                                    }
+                                                                }
+
+                                                                if (version >= 17)
+                                                                {
+                                                                    if (version < 21)
+                                                                    {
+                                                                        rw.Array<Box>(ref U15);
                                                                     }
 
-                                                                    if (version >= 33)
+                                                                    if (version >= 20)
                                                                     {
-                                                                        if (version < 34)
-                                                                        {
-                                                                            rw.Int32(0);
-                                                                        }
+                                                                        rw.ArrayId(ref U16); // slightly related to skels and joints
 
-                                                                        rw.Array<(int, int, int, int, int)>(ref U26);
+                                                                        // END OF MP4
+
+                                                                        if (version >= 22)
+                                                                        {
+                                                                            rw.Array<int>(ref U17);
+
+                                                                            if (version >= 23)
+                                                                            {
+                                                                                rw.Int32(ref U18); // array
+
+                                                                                if (U18 > 0)
+                                                                                {
+                                                                                    throw new Exception("U18 > 0");
+                                                                                }
+
+                                                                                rw.Array<int>(ref U19);
+
+                                                                                if (version >= 24)
+                                                                                {
+                                                                                    rw.Int32(ref U20);
+
+                                                                                    if (version >= 25)
+                                                                                    {
+                                                                                        rw.NodeRef(ref U21);
+                                                                                        rw.Single(ref U22);
+                                                                                        rw.Single(ref U23);
+
+                                                                                        if (version >= 27)
+                                                                                        {
+                                                                                            rw.Id(ref U24);
+
+                                                                                            if (version >= 31)
+                                                                                            {
+                                                                                                rw.Int32(ref U25); // array of 2 int-sized values
+
+                                                                                                if (U25 > 0)
+                                                                                                {
+                                                                                                    throw new Exception("U25 > 0");
+                                                                                                }
+
+                                                                                                if (version >= 33)
+                                                                                                {
+                                                                                                    if (version < 34)
+                                                                                                    {
+                                                                                                        rw.Int32(0);
+                                                                                                    }
+
+                                                                                                    rw.Array<(int, int, int, int, int)>(ref U26);
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     }
                                                                 }
                                                             }
@@ -411,7 +411,7 @@ public partial class CPlugSolid2Model : CMwNod
                         }
                     }
                 }
-            }
+            }            
         }
     }
 

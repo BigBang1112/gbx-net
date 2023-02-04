@@ -22,10 +22,12 @@ public partial class CPlugSolid2Model
         private float u16;
         private float u17;
         private float u18;
+        private GameBoxRefTable.File? u03File;
 
         public string U01 { get => u01; set => u01 = value; }
         public bool U02 { get => u02; set => u02 = value; }
         public CPlugLight? U03 { get => u03; set => u03 = value; }
+        public GameBoxRefTable.File? U03File { get => u03File; set => u03File = value; }
         public string? U04 { get => u04; set => u04 = value; }
         public Iso4 U05 { get => u05; set => u05 = value; }
         public int U06 { get => u06; set => u06 = value; }
@@ -49,7 +51,7 @@ public partial class CPlugSolid2Model
 
             if (u02)
             {
-                rw.NodeRef<CPlugLight>(ref u03); // CPlugLight external
+                rw.NodeRef<CPlugLight>(ref u03, ref u03File); // CPlugLight external
             }
             else
             {
