@@ -242,9 +242,12 @@ public class CPlugMaterial : CPlug
                 case 0xC:
                     rw.Int16(ref u01);
                     rw.Int16(ref u02);
+
                     rw.Boolean(ref u03);
-                    rw.NodeRef(ref shader1, ref shader1File);
+                    rw.NodeRef(ref shader1, ref shader1File); // u03 == true: external node, false: internal node
+
                     rw.NodeRef(ref shader2, ref shader2File);
+                    rw.NodeRef(ref shader3, ref shader3File);
                     break;
                 case 0xD:
                     rw.Int16(ref u04);
