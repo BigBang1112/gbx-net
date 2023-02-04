@@ -196,7 +196,7 @@ public partial class CPlugSolid2Model : CMwNod
                 {
                     foreach (var geom in n.shadedGeoms)
                     {
-                        if (geom.VisualIndex >= n.visuals.Length)
+                        if (geom.VisualIndex < n.visuals.Length)
                         {
                             geom.Visual = n.visuals[geom.VisualIndex];
                         }
@@ -217,7 +217,7 @@ public partial class CPlugSolid2Model : CMwNod
                 {
                     foreach (var geom in n.shadedGeoms)
                     {
-                        if (geom.MaterialIndex >= n.materials.Length)
+                        if (geom.MaterialIndex < n.materials.Length)
                         {
                             geom.Material = n.materials[geom.MaterialIndex];
                         }
@@ -279,7 +279,7 @@ public partial class CPlugSolid2Model : CMwNod
                 {
                     foreach (var geom in n.shadedGeoms)
                     {
-                        if (geom.MaterialIndex >= n.materialInsts.Length)
+                        if (geom.MaterialIndex < n.materialInsts.Length)
                         {
                             geom.MaterialInst = n.materialInsts[geom.MaterialIndex];
                         }
@@ -331,7 +331,7 @@ public partial class CPlugSolid2Model : CMwNod
                                     {
                                         foreach (var geom in n.shadedGeoms)
                                         {
-                                            if (geom.MaterialIndex >= n.customMaterials.Length)
+                                            if (geom.MaterialIndex < n.customMaterials.Length)
                                             {
                                                 geom.CustomMaterial = n.customMaterials[geom.MaterialIndex];
                                             }
