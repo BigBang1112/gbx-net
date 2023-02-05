@@ -9,6 +9,7 @@ public class CPlugShaderApply : CPlugShaderGeneric
     private ExternalNode<CPlugBitmapAddress>[]? bitmapAddresses;
 
     [NodeMember]
+    [AppliedWithChunk<Chunk09026001>]
     [AppliedWithChunk<Chunk09026002>]
     [AppliedWithChunk<Chunk0902600C>]
     public ExternalNode<CPlugBitmapAddress>[]? BitmapAddresses { get => bitmapAddresses; set => bitmapAddresses = value; }
