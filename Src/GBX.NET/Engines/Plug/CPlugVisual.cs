@@ -13,7 +13,7 @@ public abstract class CPlugVisual : CPlug
 
     private Split[] splits = Array.Empty<Split>();
     private Int3[]? subVisuals;
-    
+
     [NodeMember]
     [AppliedWithChunk<Chunk09006005>]
     public Int3[]? SubVisuals { get => subVisuals; set => subVisuals = value; }
@@ -75,6 +75,13 @@ public abstract class CPlugVisual : CPlug
     [AppliedWithChunk<Chunk0900600E>]
     [AppliedWithChunk<Chunk0900600F>]
     public BitmapElemToPack[] BitmapElemToPacks { get; set; } = Array.Empty<BitmapElemToPack>();
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0900600C>]
+    [AppliedWithChunk<Chunk0900600D>]
+    [AppliedWithChunk<Chunk0900600E>]
+    [AppliedWithChunk<Chunk0900600F>]
+    public Box BoundingBox { get; set; }
 
     internal CPlugVisual()
     {
@@ -304,18 +311,16 @@ public abstract class CPlugVisual : CPlug
     [Chunk(0x0900600C)]
     public class Chunk0900600C : Chunk09006008
     {
-        public Box U02;
-
         public override void Read(CPlugVisual n, GameBoxReader r)
         {
             base.Read(n, r);
-            U02 = r.ReadBox(); // ArchiveABox
+            n.BoundingBox = r.ReadBox(); // ArchiveABox
         }
 
         public override void Write(CPlugVisual n, GameBoxWriter w)
         {
             base.Write(n, w);
-            w.Write(U02);
+            w.Write(n.BoundingBox);
         }
     }
 
@@ -325,8 +330,6 @@ public abstract class CPlugVisual : CPlug
     [Chunk(0x0900600D)]
     public class Chunk0900600D : Chunk<CPlugVisual>
     {
-        public Box U01;
-
         public override void Read(CPlugVisual n, GameBoxReader r)
         {
             n.ConvertChunkFlagsToFlags(r.ReadInt32());
@@ -351,7 +354,7 @@ public abstract class CPlugVisual : CPlug
                 }
             }
             
-            U01 = r.ReadBox(); // ArchiveABox
+            n.BoundingBox = r.ReadBox(); // ArchiveABox
         }
 
         public override void Write(CPlugVisual n, GameBoxWriter w)
@@ -382,7 +385,7 @@ public abstract class CPlugVisual : CPlug
                 }
             }
 
-            w.Write(U01);
+            w.Write(n.BoundingBox);
         }
     }
 
@@ -649,17 +652,17 @@ public abstract class CPlugVisual : CPlug
     {
         private int u01;
         private int u02;
-        private Box u03;
+        private Box boundingBox;
 
         public int U01 { get => u01; set => u01 = value; }
         public int U02 { get => u02; set => u02 = value; }
-        public Box U03 { get => u03; set => u03 = value; }
+        public Box BoundingBox { get => boundingBox; set => boundingBox = value; }
 
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
             rw.Int32(ref u01);
             rw.Int32(ref u02);
-            rw.Box(ref u03);
+            rw.Box(ref boundingBox);
         }
     }
 
