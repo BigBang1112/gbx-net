@@ -15,13 +15,13 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
     {
         Undefined = 0,
         /// <summary>
-        /// Also known as Ornament
+        /// StaticObject
         /// </summary>
-        StaticObject = 1,
+        Ornament = 1,
         /// <summary>
-        /// Also known as PickUp
+        /// DynaObject
         /// </summary>
-        DynaObject = 2,
+        PickUp = 2,
         Character = 3,
         Vehicle = 4,
         Spot = 5,
