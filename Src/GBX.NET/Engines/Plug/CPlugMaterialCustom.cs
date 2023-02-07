@@ -9,6 +9,7 @@ public class CPlugMaterialCustom : CPlug
 {
     private Bitmap[]? textures;
     private GpuFx[]? gpuFxs;
+    private BitmapSkip[]? skipSamplers;
 
     [NodeMember]
     [AppliedWithChunk<Chunk0903A006>]
@@ -17,6 +18,10 @@ public class CPlugMaterialCustom : CPlug
     [NodeMember]
     [AppliedWithChunk<Chunk0903A006>]
     public GpuFx[]? GpuFxs { get => gpuFxs; set => gpuFxs = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0903A00C>]
+    public BitmapSkip[]? SkipSamplers { get => skipSamplers; set => skipSamplers = value; }
 
     internal CPlugMaterialCustom()
     {
@@ -94,18 +99,10 @@ public class CPlugMaterialCustom : CPlug
     [Chunk(0x0903A00C)]
     public class Chunk0903A00C : Chunk<CPlugMaterialCustom>
     {
-        public (string, bool)[]? GpuParamSkipSamplers;
-
         public override void ReadWrite(CPlugMaterialCustom n, GameBoxReaderWriter rw)
         {
-            // array of SPlugGpuParamSkipSampler
-            rw.Array(ref GpuParamSkipSamplers,
-                r => (r.ReadId(), r.ReadBoolean()),
-                (x, w) =>
-                {
-                    w.WriteId(x.Item1);
-                    w.Write(x.Item2);
-                });
+            // array of SPlugGpuParamSkipSampler/SBitmapSkip
+            rw.ArrayArchive(ref n.skipSamplers);
         }
     }
 
@@ -204,6 +201,26 @@ public class CPlugMaterialCustom : CPlug
                     rw.Writer.WriteArray_NoPrefix(U03[i]);
                 }
             }
+        }
+    }
+
+    public class BitmapSkip : IReadableWritable
+    {
+        private string name = "";
+        private bool u01;
+
+        public string Name { get => name; set => name = value; }
+        public bool U01 { get => u01; set => u01 = value; }
+
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+        {
+            rw.Id(ref name!);
+            rw.Boolean(ref u01);
+        }
+
+        public override string ToString()
+        {
+            return $"{name}: {u01}";
         }
     }
 }

@@ -21,12 +21,13 @@ public abstract class CPlugShader : CPlug
     public class Chunk09002007 : Chunk<CPlugShader>
     {
         public Node? U01;
+        public GameBoxRefTable.File? U01File;
         public CMwNod?[]? U02;
         public Node? U03;
 
         public override void ReadWrite(CPlugShader n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01);
+            rw.NodeRef(ref U01, ref U01File);
             rw.ArrayNode<CMwNod>(ref U02); // CPlugShaderPass array
             rw.NodeRef(ref U03);
         }
