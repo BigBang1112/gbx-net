@@ -183,7 +183,6 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
         public int U02;
         public int U03;
         public int U04;
-        public bool U05;
         public int U06;
         public int U07;
         public byte U12;
@@ -194,13 +193,13 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
             // ChunkCrypted_Base
-            rw.Id(ref U01);
-            rw.Int32(ref U02);
-            rw.Int32(ref U03);
-            rw.Int32(ref U04);
-            rw.Boolean(ref U05);
-            rw.Int32(ref U06);
-            rw.Int32(ref U07);
+            rw.Id(ref U01); // Ident.Id but why it's in CGameCtnBlockInfo?? xd
+            rw.Int32(ref U02); // always 0?
+            rw.Int32(ref U03); // always 0?
+            rw.Int32(ref U04); // always 0?
+            rw.Boolean(ref n.isPillar); 
+            rw.Int32(ref U06); // always 0?
+            rw.Int32(ref U07); // always 0?
             //
 
             rw.NodeRef<CGameCtnBlockInfoClassic>(ref n.pillar, ref n.pillarFile);
@@ -216,10 +215,10 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
                 (i, r) => r.ReadExternalNodeArray<CSceneMobil>(),
                 (x, w) => w.WriteExternalNodeArray(x));
 
-            rw.Byte(ref U12);
-            rw.Int32(ref U13);
-            rw.Int16(ref U14);
-            rw.Int16(ref U15);
+            rw.Byte(ref U12); // always 0?
+            rw.Int32(ref U13); // always 0?
+            rw.Int16(ref U14); // always 0?
+            rw.Int16(ref U15); // always 0?
         }
     }
 
@@ -269,7 +268,7 @@ public abstract class CGameCtnBlockInfo : CGameCtnCollector
 
         public override void ReadWrite(CGameCtnBlockInfo n, GameBoxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
+            rw.Boolean(ref U01); // something with replacing?
         }
     }
 

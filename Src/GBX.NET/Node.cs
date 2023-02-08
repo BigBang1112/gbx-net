@@ -76,7 +76,7 @@ public abstract class Node
     {
         if (nodesAtTheMoment is null)
         {
-            return nodesAtTheMoment;
+            return null;
         }
 
         for (var i = 0; i < nodesAtTheMoment.Length; i++)

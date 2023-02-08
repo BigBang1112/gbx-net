@@ -44,7 +44,7 @@ public class CGameCtnBlockUnitInfo : CMwNod
     [AppliedWithChunk<Chunk03036000>]
     public ExternalNode<CGameCtnBlockInfoClip>[]? Clips
     {
-        get => GetNodesFromRefTable(clips);
+        get => clips = GetNodesFromRefTable(clips);
         set => clips = value;
     }
 
