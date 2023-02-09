@@ -165,8 +165,13 @@ public class GameBoxReader : BinaryReader
         {
             return "";
         }
-        
+
 #if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        if (length > 1_500_000)
+        {
+            return Encoding.UTF8.GetString(ReadBytes(length));
+        }
+
         Span<byte> bytes = stackalloc byte[length];
 
         if (Read(bytes) != length)
