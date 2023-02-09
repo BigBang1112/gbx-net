@@ -81,7 +81,14 @@ public abstract class Node
 
         for (var i = 0; i < nodesAtTheMoment.Length; i++)
         {
-            nodesAtTheMoment[i] = GetNodeFromRefTable(nodesAtTheMoment[i]);
+            try
+            {
+                nodesAtTheMoment[i] = GetNodeFromRefTable(nodesAtTheMoment[i]);
+            }
+            catch
+            {
+                
+            }
         }
 
         return nodesAtTheMoment;
