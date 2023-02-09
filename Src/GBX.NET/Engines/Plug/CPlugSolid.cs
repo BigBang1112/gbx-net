@@ -377,7 +377,7 @@ public class CPlugSolid : CPlug
                 rw.Boolean(ref U03);
                 rw.Rect(ref U04);
                 rw.Rect(ref U05);
-                rw.Int2(ref U06);
+                rw.Int2(ref U06);  // sprite count def
 
                 if (version >= 1)
                 {
@@ -465,6 +465,7 @@ public class CPlugSolid : CPlug
         private int u12;
         private int u13;
         private Box[]? u14;
+        private (float, float, float, float, float)[]? u15;
 
         public int Version { get => v; set => v = value; }
         
@@ -482,6 +483,7 @@ public class CPlugSolid : CPlug
         public int U12 { get => u12; set => u12 = value; }
         public int U13 { get => u13; set => u13 = value; }
         public Box[]? U14 { get => u14; set => u14 = value; }
+        public (float, float, float, float, float)[]? U15 { get => u15; set => u15 = value; }
 
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
@@ -497,14 +499,14 @@ public class CPlugSolid : CPlug
             rw.Single(ref u09);
             rw.Single(ref u10);
             rw.Single(ref u11);
-            rw.Int32(ref u12);
+            rw.Int32(ref u12); // sprite count def
             rw.Int32(ref u13);
             rw.Array<Box>(ref u14);
             
             if (v >= 1)
             {
                 // UvGroup array
-                throw new VersionNotSupportedException(v);
+                rw.Array<(float, float, float, float, float)>(ref u15);
             }
         }
     }
