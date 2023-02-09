@@ -465,7 +465,7 @@ public class CPlugSolid : CPlug
         private int u12;
         private int u13;
         private Box[]? u14;
-        private (float, float, float, float, float)[]? u15;
+        private UvGroup[]? u15;
 
         public int Version { get => v; set => v = value; }
         
@@ -483,7 +483,7 @@ public class CPlugSolid : CPlug
         public int U12 { get => u12; set => u12 = value; }
         public int U13 { get => u13; set => u13 = value; }
         public Box[]? U14 { get => u14; set => u14 = value; }
-        public (float, float, float, float, float)[]? U15 { get => u15; set => u15 = value; }
+        public UvGroup[]? U15 { get => u15; set => u15 = value; }
 
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
@@ -505,10 +505,11 @@ public class CPlugSolid : CPlug
             
             if (v >= 1)
             {
-                // UvGroup array
-                rw.Array<(float, float, float, float, float)>(ref u15);
+                rw.Array<UvGroup>(ref u15);
             }
         }
+
+        public readonly record struct UvGroup(float U01, float U02, float U03, float U04, float U05);
     }
 
     public class LocatedInstance : IReadableWritable
