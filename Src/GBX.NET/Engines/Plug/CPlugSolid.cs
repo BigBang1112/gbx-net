@@ -180,30 +180,45 @@ public class CPlugSolid : CPlug
     [Chunk(0x0900500C)]
     public class Chunk0900500C : Chunk<CPlugSolid>
     {
-        public bool U01; // always false
-        public float U02; // always zero
-        public int U03; // always zero
+        public bool U01;
+        public bool U02;
+        public bool U03;
+        public bool U04;
+        public bool U05;
+        public bool U06;
+        public bool U07;
+        public bool U08;
+        public bool U09;
+        public bool U10;
+        public float U11;
+        public int U12;
+        public float U13;
+        public float U14;
+        public float U15;
+        public float U16;
+        public int U17;
+        public int U18;
 
         public override void ReadWrite(CPlugSolid n, GameBoxReaderWriter rw)
         {
             rw.Boolean(ref U01);
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U01);
-            rw.Single(ref U02);
-            rw.Int32(ref U03);
-            rw.Single(ref U02);
-            rw.Single(ref U02);
-            rw.Single(ref U02);
-            rw.Single(ref U02);
-            rw.Int32(ref U03);
-            rw.Int32(ref U03);
+            rw.Boolean(ref U02);
+            rw.Boolean(ref U03);
+            rw.Boolean(ref U04);
+            rw.Boolean(ref U05);
+            rw.Boolean(ref U06);
+            rw.Boolean(ref U07);
+            rw.Boolean(ref U08);
+            rw.Boolean(ref U09);
+            rw.Boolean(ref U10);
+            rw.Single(ref U11);
+            rw.Int32(ref U12);
+            rw.Single(ref U13);
+            rw.Single(ref U14);
+            rw.Single(ref U15);
+            rw.Single(ref U16);
+            rw.Int32(ref U17);
+            rw.Int32(ref U18);
         }
     }
 
