@@ -122,7 +122,7 @@ public partial class GameBox
         Header.Write(Node ?? throw new ThisShouldNotHappenException(), headerW);
 
         // Num nodes
-        headerW.Write(RawBody is null ? bodyW.State.AuxNodes.Count + 1 : Header.NumNodes);
+        headerW.Write(RawBody is null ? bodyW.State.AuxNodes.Count + bodyW.State.ExtAuxNodes.Count + 1 : Header.NumNodes);
 
         logger?.LogDebug("Writing the reference table...");
 
@@ -158,7 +158,7 @@ public partial class GameBox
         Header.Write(Node ?? throw new ThisShouldNotHappenException(), headerW);
 
         // Num nodes
-        headerW.Write(RawBody is null ? bodyW.State.AuxNodes.Count + 1 : Header.NumNodes);
+        headerW.Write(RawBody is null ? bodyW.State.AuxNodes.Count + bodyW.State.ExtAuxNodes.Count + 1 : Header.NumNodes);
 
         logger?.LogDebug("Writing the reference table...");
 
