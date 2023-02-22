@@ -312,12 +312,12 @@ public partial class CGameCtnGhost
 
                                 if (StateIsDifferentWithMask(16896, out bool use1, states, prevStatesFull))
                                 {
-                                    yield return new ActionSlot(time, 1, use1);
+                                    yield return new Use(time, 1, use1);
                                 }
 
                                 if (StateIsDifferentWithMask(32832, out bool use2, states, prevStatesFull))
                                 {
-                                    yield return new ActionSlot(time, 2, use2);
+                                    yield return new Use(time, 2, use2);
                                 }
 
                                 if (StateIsDifferent(bit: 16, out bool menu, states, prevStatesFull))
