@@ -379,7 +379,7 @@ public partial class CGameCtnGhost
 
             for (var i = 0; i < ticks; i++)
             {
-                var time = new TimeInt32(i * 10);
+                var time = new TimeInt32(i * 10) + StartOffset.GetValueOrDefault();
                 
                 try
                 {
