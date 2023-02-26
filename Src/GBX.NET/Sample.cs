@@ -144,6 +144,11 @@ public class Sample
     public bool RLSlipCoef { get; set; }
     public bool RRSlipCoef { get; set; }
 
+    public float FLWheelRot { get; set; }
+    public float FRWheelRot { get; set; }
+    public float RLWheelRot { get; set; }
+    public float RRWheelRot { get; set; }
+
     public float WetnessValue { get; set; }
     public bool IsGroundContact { get; set; }
     public bool IsReactorGroundMode { get; set; }
@@ -158,11 +163,6 @@ public class Sample
     public float TurboTime { get; set; }
 
     public float SimulationTimeCoef { get; set; }
-
-    public float FLWheelRot { get; set; }
-    public float FRWheelRot { get; set; }
-    public float RLWheelRot { get; set; }
-    public float RRWheelRot { get; set; }
     
     public float SideSpeed { get; set; }
     public bool IsTopContact { get; set; }

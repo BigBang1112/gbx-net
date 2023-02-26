@@ -358,17 +358,11 @@ public class CPlugEntRecordData : CMwNod
 
                             sample.SimulationTimeCoef = SimulationTimeCoefByte / 255f;
 
-
-                            // ReactorAirControl [1,0,-1] = (Accell,None,Brake), (Left,None,Right)
+                            // ReactorAirControl
+                            // [1,0,-1] = (Accell,None,Brake), (Left,None,Right)
                             bufferMs.Position = 90;
                             var boosterAirControlByte = bufferR.ReadByte();
 
-                            // ReactorInputsX
-                            // Check if reactorAirControl should be enabled.
-                            //if (!sample.IsGroundContact 
-                            //    & sample.ReactorBoostLvl != ESceneVehicleVisReactorBoostLvl.None
-                            //    & sample.ReactorBoostType != ESceneVehicleVisReactorBoostType.None) 
-                            //{
                             var maskPedalNone = 0x10;   // 00010000
                             var maskPedalAccel = 0x20;  // 00100000
                             var maskSteerNone = 0x40;   // 01000000
