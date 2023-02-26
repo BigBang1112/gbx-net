@@ -164,7 +164,6 @@ public class Sample
     public float RLWheelRot { get; set; }
     public float RRWheelRot { get; set; }
     
-    public float FLSteerAngle { get; set; }
     public float SideSpeed { get; set; }
     public bool IsTopContact { get; set; }
 
