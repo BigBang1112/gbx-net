@@ -192,6 +192,206 @@ public class CPlugEntRecordData : CMwNod
                             sample.Speed = speed * 3.6f;
                             sample.Velocity = velocity;
 
+                            // ICE
+                            bufferMs.Position = 81;
+                            var FLIceByte = bufferR.ReadByte();
+                            bufferMs.Position = 82;
+                            var FRIceByte = bufferR.ReadByte();
+                            bufferMs.Position = 83;
+                            var RRIceByte = bufferR.ReadByte();
+                            bufferMs.Position = 84;
+                            var RLIceByte = bufferR.ReadByte();
+
+                            sample.FLIcing = FLIceByte / 255f;
+                            sample.FRIcing = FRIceByte / 255f;
+                            sample.RRIcing = RRIceByte / 255f;
+                            sample.RLIcing = RLIceByte / 255f;
+
+                            // DIRT
+                            bufferMs.Position = 93;
+                            var FLDirtByte = bufferR.ReadByte();
+                            bufferMs.Position = 95;
+                            var FRDirtByte = bufferR.ReadByte();
+                            bufferMs.Position = 97;
+                            var RRDirtByte = bufferR.ReadByte();
+                            bufferMs.Position = 99;
+                            var RLDirtByte = bufferR.ReadByte();
+
+                            sample.FLDirt = FLDirtByte / 255f;
+                            sample.FRDirt = FRDirtByte / 255f;
+                            sample.RRDirt = RRDirtByte / 255f;
+                            sample.RLDirt = RLDirtByte / 255f;
+
+                            // GroundContactMaterial
+                            bufferMs.Position = 24;
+                            var FLGroundContactMaterialByte = bufferR.ReadByte();
+                            bufferMs.Position = 26;
+                            var FRGroundContactMaterialByte = bufferR.ReadByte();
+                            bufferMs.Position = 28;
+                            var RRGroundContactMaterialByte = bufferR.ReadByte();
+                            bufferMs.Position = 30;
+                            var RLGroundContactMaterialByte = bufferR.ReadByte();
+
+                            sample.FLGroundContactMaterial = (EPlugSurfaceMaterialId)FLGroundContactMaterialByte;
+                            sample.FRGroundContactMaterial = (EPlugSurfaceMaterialId)FRGroundContactMaterialByte;
+                            sample.RRGroundContactMaterial = (EPlugSurfaceMaterialId)RRGroundContactMaterialByte;
+                            sample.RLGroundContactMaterial = (EPlugSurfaceMaterialId)RLGroundContactMaterialByte;
+
+                            // DampenLen
+                            bufferMs.Position = 23;
+                            var FLDampenLenByte = bufferR.ReadByte();
+                            bufferMs.Position = 25;
+                            var FRDampenLenByte = bufferR.ReadByte();
+                            bufferMs.Position = 27;
+                            var RRDampenLenByte = bufferR.ReadByte();
+                            bufferMs.Position = 29;
+                            var RLDampenLenByte = bufferR.ReadByte();
+
+                            // Multiply by 4 instead of 2 as it matches value given by openplanet CSceneVehicleVisState
+                            sample.FLDampenLen = ((FLDampenLenByte / 255f) - 0.5f) * 4;
+                            sample.FRDampenLen = ((FRDampenLenByte / 255f) - 0.5f) * 4;
+                            sample.RRDampenLen = ((RRDampenLenByte / 255f) - 0.5f) * 4;
+                            sample.RLDampenLen = ((RLDampenLenByte / 255f) - 0.5f) * 4;
+
+                            // SlipCoef
+                            bufferMs.Position = 32;
+                            var SlipCoefByte1 = bufferR.ReadByte();
+                            bufferMs.Position = 33;
+                            var SlipCoefByte2 = bufferR.ReadByte();
+
+                            byte maskFR = 0x1;  // 00000001
+                            byte maskRR = 0x4;  // 00000100
+                            byte maskRL = 0x10; // 00010000
+                            byte maskFL = 0x40; // 01000000
+
+                            // Nadeo uses two bytes for some reason
+                            // FLSlip is unique in that it is located at the 7th bit of SlipCoefByte1.
+                            // The 7th bit of SlipCoefByte2 is used too, however it appears to not be correlated with anything.
+                            sample.FLSlipCoef = (SlipCoefByte1 & maskFL) != 0;
+                            sample.FRSlipCoef = (SlipCoefByte2 & maskFR) != 0;
+                            sample.RRSlipCoef = (SlipCoefByte2 & maskRR) != 0;
+                            sample.RLSlipCoef = (SlipCoefByte2 & maskRL) != 0;
+
+                            // WheelRotation
+                            bufferMs.Position = 6;
+                            var FLWheelRotationByte = bufferR.ReadByte();
+                            bufferMs.Position = 7;
+                            var FLWheelRotationCountByte = bufferR.ReadByte();
+                            bufferMs.Position = 8;
+                            var FRWheelRotationByte = bufferR.ReadByte();
+                            bufferMs.Position = 9;
+                            var FRWheelRotationCountByte = bufferR.ReadByte();
+                            bufferMs.Position = 10;
+                            var RRWheelRotationByte = bufferR.ReadByte();
+                            bufferMs.Position = 11;
+                            var RRWheelRotationCountByte = bufferR.ReadByte();
+                            bufferMs.Position = 12;
+                            var RLWheelRotationByte = bufferR.ReadByte();
+                            bufferMs.Position = 13;
+                            var RLWheelRotationCountByte = bufferR.ReadByte();
+
+                            var tau = (float)Math.PI *2;
+                            sample.FLWheelRot = (FLWheelRotationByte / 255f * tau) + (FLWheelRotationCountByte * tau);
+                            sample.FRWheelRot = (FRWheelRotationByte / 255f * tau) + (FRWheelRotationCountByte * tau);
+                            sample.RRWheelRot = (RRWheelRotationByte / 255f * tau) + (RRWheelRotationCountByte * tau);
+                            sample.RLWheelRot = (RLWheelRotationByte / 255f * tau) + (RLWheelRotationCountByte * tau);
+
+                            // Water
+                            bufferMs.Position = 101;
+                            var waterByte = bufferR.ReadByte();
+
+                            sample.WetnessValue = waterByte / 255f;
+
+                            // IsGroundContact, IsReactorGroundMode, ReactorState
+                            bufferMs.Position = 89;
+                            var groundModeByte = bufferR.ReadByte();
+
+                            var maskIsGroundMode = 0x1;         // 00000001
+                            var maskIsReactorGroundMode = 0x4;  // 00000010
+                            var maskIsReactorUp = 0x8;          // 00001000
+                            var maskIsReactorDown = 0x10;       // 00010000
+                            var maskReactorLvl1 = 0x20;         // 00100000
+                            var maskReactorLvl2 = 0x40;         // 01000000 
+                            //var maskSlowMo = 0x80;              // 10000000 // Can use SimulationTimeCoef instead
+
+                            sample.IsGroundContact = (groundModeByte & maskIsGroundMode) != 0;
+                            sample.IsReactorGroundMode = (groundModeByte & maskIsReactorGroundMode) != 0;
+
+                            var isReactorUp = (groundModeByte & maskIsReactorUp) != 0;
+                            var isReactorDown = (groundModeByte & maskIsReactorDown) != 0;
+
+                            var isReactorLvl1 = (groundModeByte & maskReactorLvl1) != 0;
+                            var isReactorLvl2 = (groundModeByte & maskReactorLvl2) != 0;
+
+                            //var isSlowMo = (groundModeByte & maskSlowMo) != 0;
+
+                            if (isReactorLvl1)
+                                sample.ReactorBoostLvl = ESceneVehicleVisReactorBoostLvl.Lvl1;
+                            else if (isReactorLvl2)
+                                sample.ReactorBoostLvl = ESceneVehicleVisReactorBoostLvl.Lvl2;
+                            else
+                                sample.ReactorBoostLvl = ESceneVehicleVisReactorBoostLvl.None;
+
+                            if (isReactorUp && isReactorDown)
+                                sample.ReactorBoostType = ESceneVehicleVisReactorBoostType.UpAndDown;
+                            else if (isReactorUp)
+                                sample.ReactorBoostType = ESceneVehicleVisReactorBoostType.Up;
+                            else if (isReactorDown)
+                                sample.ReactorBoostType = ESceneVehicleVisReactorBoostType.Down;
+                            else
+                                sample.ReactorBoostType = ESceneVehicleVisReactorBoostType.None;
+
+                            // Turbo
+                            bufferMs.Position = 31;
+                            var isTurboByte = bufferR.ReadByte();
+                            bufferMs.Position = 21;
+                            var turboTimeByte = bufferR.ReadByte();
+
+                            var maskIsTurbo = 0x82; // 10000010
+
+                            sample.IsTurbo = (isTurboByte & maskIsTurbo) != 0;
+                            sample.TurboTime = turboTimeByte / 255f;
+
+                            // SimulationTimeCoef (SlowMo)
+                            bufferMs.Position = 102;
+                            var SimulationTimeCoefByte = bufferR.ReadByte();
+
+                            sample.SimulationTimeCoef = SimulationTimeCoefByte / 255f;
+
+                            // ReactorAirControl
+                            // [1,0,-1] = (Accell,None,Brake), (Left,None,Right)
+                            bufferMs.Position = 90;
+                            var boosterAirControlByte = bufferR.ReadByte();
+
+                            var maskPedalNone = 0x10;   // 00010000
+                            var maskPedalAccel = 0x20;  // 00100000
+                            var maskSteerNone = 0x40;   // 01000000
+                            var maskSteerLeft = 0x80;   // 10000000
+
+                            var isAirControlPedalAccel = (boosterAirControlByte & maskPedalAccel) != 0;
+                            var isAirControlPedalNone = (boosterAirControlByte & maskPedalNone) != 0;
+
+                            sample.ReactorAirControlPedal = isAirControlPedalAccel ? 1 : isAirControlPedalNone ? 0 : -1;
+
+                            var isAirControlSteerLeft = (boosterAirControlByte & maskSteerLeft) != 0;
+                            var isAirControlSteerNone = (boosterAirControlByte & maskSteerNone) != 0;
+
+                            sample.ReactorAirControlSteer = isAirControlSteerLeft ? 1 : isAirControlSteerNone ? 0 : -1;
+
+                            // IsTopContact
+                            bufferMs.Position = 76;
+                            var vechicleStateByte = bufferR.ReadByte();
+
+                            var maskIsTopContact = 0x20;
+                            //var maskIsReactor = 0x10; 
+
+                            sample.IsTopContact = (vechicleStateByte & maskIsTopContact) != 0;
+
+                            // SideSpeed
+                            bufferMs.Position = 2;
+                            float sideSpeedInt = bufferR.ReadUInt16();
+                            sample.SideSpeed = (float)((float)((sideSpeedInt / 65536.0) - 0.5) * 2000.0);
+
                             break;
                         }
                     case 10:
