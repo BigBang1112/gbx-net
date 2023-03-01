@@ -80,6 +80,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// </summary>
     [NodeMember(ExactName = "TitleId")]
     [AppliedWithChunk<Chunk03093000>(sinceVersion: 8)]
+    [AppliedWithChunk<Chunk03093018>]
     public string? TitleID
     {
         get
