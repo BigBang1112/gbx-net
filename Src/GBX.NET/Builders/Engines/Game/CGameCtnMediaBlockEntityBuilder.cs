@@ -17,7 +17,7 @@ public partial class CGameCtnMediaBlockEntityBuilder : Builder
         return this;
     }
 
-    public CGameCtnMediaBlockEntityBuilder WithNoticeRecords(int[] noticeRecords)
+    public CGameCtnMediaBlockEntityBuilder WithNoticeRecords(params int[] noticeRecords)
     {
         NoticeRecords = noticeRecords;
         return this;
