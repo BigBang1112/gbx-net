@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.Game;
+﻿using GBX.NET.Builders.Engines.Game;
+
+namespace GBX.NET.Engines.Game;
 
 /// <summary>
 /// MediaTracker block - Entity.
@@ -116,6 +118,8 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMedi
         recordData = null!;
     }
 
+    public static CGameCtnMediaBlockEntityBuilder Create(CPlugEntRecordData recordData) => new(recordData);
+
     #region Chunks
 
     #region 0x000 chunk
@@ -166,7 +170,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMedi
                 {
                     // SGamePlayerMobilAppearanceParams::Archive
                     rw.Ident(ref n.playerModel);
-                    rw.Vec3(ref U09); // some rgb
+                    rw.Vec3(ref U09); // some rgb, new light trail color?
                     rw.ListFileRef(ref n.skinNames!); // Name assumed from getter
                     rw.Boolean(ref n.hasBadges);
 
