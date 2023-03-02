@@ -4,30 +4,22 @@ public partial class CGameCtnMediaBlockEntityBuilder
 {
     public class TM2020 : GameBuilder<CGameCtnMediaBlockEntityBuilder, CGameCtnMediaBlockEntity>
     {
-        public TimeSingle Start { get; set; }
-        public TimeSingle End { get; set; } = TimeSingle.FromSeconds(3);
+        public IList<CGameCtnMediaBlockEntity.Key>? Keys { get; set; }
         public Ident? PlayerModel { get; set; }
 
         public TM2020(CGameCtnMediaBlockEntityBuilder baseBuilder, CGameCtnMediaBlockEntity node) : base(baseBuilder, node)
         {
         }
 
-        public TM2020 StartingAt(TimeSingle start)
+        public TM2020 WithKeys(IList<CGameCtnMediaBlockEntity.Key> keys)
         {
-            Start = start;
+            Keys = keys;
             return this;
         }
 
-        public TM2020 EndingAt(TimeSingle end)
+        public TM2020 WithKeys(params CGameCtnMediaBlockEntity.Key[] keys)
         {
-            End = end;
-            return this;
-        }
-
-        public TM2020 WithTimeRange(TimeSingle start, TimeSingle end)
-        {
-            Start = start;
-            End = end;
+            Keys = keys;
             return this;
         }
 
@@ -44,11 +36,10 @@ public partial class CGameCtnMediaBlockEntityBuilder
                 throw new Exception("Chunk 0x0329F000 is missing.");
             }
 
-            chunk.Version = 3;
+            chunk.Version = 6;
 
             Node.PlayerModel = PlayerModel ?? ("CarSport", 10003, "Nadeo");
-            Node.Start = Start;
-            Node.End = End;
+            Node.Keys = Keys ?? new List<CGameCtnMediaBlockEntity.Key>();
 
             return Node;
         }
