@@ -25,6 +25,7 @@ public class CGameCtnMediaBlockCameraGameBuilder : Builder
     }
 
     public TMUF ForTMUF() => new(this, NewNode());
+    public TM2020 ForTM2020() => new(this, NewNode());
 
     internal CGameCtnMediaBlockCameraGame NewNode() => new()
     {
@@ -60,6 +61,39 @@ public class CGameCtnMediaBlockCameraGameBuilder : Builder
 
             Node.ClipEntId = ClipEntId;
             Node.GameCam1 = GameCam;
+
+            return Node;
+        }
+    }
+
+    public class TM2020 : GameBuilder<CGameCtnMediaBlockCameraGameBuilder, CGameCtnMediaBlockCameraGame>
+    {
+        public int ClipEntId { get; set; }
+        public CGameCtnMediaBlockCameraGame.EGameCam2 GameCam { get; set; }
+
+        public TM2020(CGameCtnMediaBlockCameraGameBuilder baseBuilder, CGameCtnMediaBlockCameraGame node) : base(baseBuilder, node)
+        {
+
+        }
+
+        public TM2020 WithClipEntId(int id)
+        {
+            ClipEntId = id;
+            return this;
+        }
+
+        public TM2020 WithGameCam(CGameCtnMediaBlockCameraGame.EGameCam2 cam)
+        {
+            GameCam = cam;
+            return this;
+        }
+
+        public override CGameCtnMediaBlockCameraGame Build()
+        {
+            Node.CreateChunk<CGameCtnMediaBlockCameraGame.Chunk03084007>().Version = 2;
+
+            Node.ClipEntId = ClipEntId;
+            Node.GameCam2 = GameCam;
 
             return Node;
         }
