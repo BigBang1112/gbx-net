@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET.Engines.Scene;
 
-public class CSceneVehicleVis
+public partial class CSceneVehicleVis
 {
     public enum ReactorBoostLvl
     {
