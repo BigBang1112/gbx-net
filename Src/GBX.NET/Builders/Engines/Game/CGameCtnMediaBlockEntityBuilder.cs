@@ -8,7 +8,7 @@ public partial class CGameCtnMediaBlockEntityBuilder : Builder
 
     public CGameCtnMediaBlockEntityBuilder(CPlugEntRecordData recordData)
     {
-        RecordData = recordData;
+        RecordData = recordData ?? throw new ArgumentNullException(nameof(recordData));
     }
 
     public CGameCtnMediaBlockEntityBuilder WithStartOffset(TimeSingle startOffset)

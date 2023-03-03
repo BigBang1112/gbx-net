@@ -183,7 +183,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMedi
 
                     if (version >= 4)
                     {
-                        rw.ListKey(ref n.keys, version);
+                        rw.ListKey<Key>(ref n.keys, version);
 
                         if (version == 5)
                         {

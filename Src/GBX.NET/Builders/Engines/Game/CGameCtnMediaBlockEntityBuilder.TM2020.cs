@@ -6,6 +6,7 @@ public partial class CGameCtnMediaBlockEntityBuilder
     {
         public IList<CGameCtnMediaBlockEntity.Key>? Keys { get; set; }
         public Ident? PlayerModel { get; set; }
+        public string? GhostName { get; set; }
 
         public TM2020(CGameCtnMediaBlockEntityBuilder baseBuilder, CGameCtnMediaBlockEntity node) : base(baseBuilder, node)
         {
@@ -29,6 +30,12 @@ public partial class CGameCtnMediaBlockEntityBuilder
             return this;
         }
 
+        public TM2020 WithGhostName(string ghostName)
+        {
+            GhostName = ghostName;
+            return this;
+        }
+
         public override CGameCtnMediaBlockEntity Build()
         {
             if (!Node.TryGetChunk<CGameCtnMediaBlockEntity.Chunk0329F000>(out var chunk))
@@ -36,10 +43,11 @@ public partial class CGameCtnMediaBlockEntityBuilder
                 throw new Exception("Chunk 0x0329F000 is missing.");
             }
 
-            chunk.Version = 6;
+            chunk.Version = 7;
 
             Node.PlayerModel = PlayerModel ?? ("CarSport", 10003, "Nadeo");
             Node.Keys = Keys ?? new List<CGameCtnMediaBlockEntity.Key>();
+            Node.GhostName = GhostName ?? "Ghost";
 
             return Node;
         }
