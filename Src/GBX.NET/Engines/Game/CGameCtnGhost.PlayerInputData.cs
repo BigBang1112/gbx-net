@@ -45,7 +45,7 @@ public partial class CGameCtnGhost
         public int Ticks { get => ticks; set => ticks = value; }
         public byte[] Data { get => data; set => data = value; }
 
-        [Obsolete("Use Inputs instead. Property will be removed in 1.3.0.")]
+        [Obsolete("Use Inputs instead. Property will be removed in 1.3.0")]
         public IList<IInputChange> InputChanges
         {
             get

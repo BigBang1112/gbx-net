@@ -4,13 +4,22 @@ public partial class CGameGhost
 {
     public partial class Data
     {
-        public class Sample : NET.Sample
+        public class Sample
         {
             private Data? owner;
 
-            public Sample(byte[] data) : base(data)
+            public TimeInt32? Timestamp { get; set; }
+            public byte[] Data { get; }
+            
+            public byte? BufferType { get; set; }
+            public Vec3 Position { get; set; }
+            public Quat Rotation { get; set; }
+            public float Speed { get; set; }
+            public Vec3 Velocity { get; set; }
+
+            public Sample(byte[] data)
             {
-                
+                Data = data;
             }
 
             internal void AssignTo(Data? ghostData)

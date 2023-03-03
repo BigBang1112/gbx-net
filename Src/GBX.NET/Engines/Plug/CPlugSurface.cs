@@ -6,7 +6,7 @@ namespace GBX.NET.Engines.Plug;
 /// <remarks>ID: 0x0900C000</remarks>
 [Node(0x0900C000)]
 [NodeExtension("Shape")]
-public class CPlugSurface : CPlug
+public partial class CPlugSurface : CPlug
 {
     private CPlugSurfaceGeom? geom;
     private SurfMaterial[]? materials;

@@ -1093,3 +1093,4 @@
   062 SSceneDestructibleVisGroupState
   065 SSceneRopeVisEnt
   06E SSceneDestructibleVisState
+  0CB NSceneDynaVis_SMgr
