@@ -71,4 +71,22 @@ public class CGameCtnZone : CMwNod
     }
 
     #endregion
+
+    #region 0x006 chunk
+
+    /// <summary>
+    /// CGameCtnZone 0x006 chunk
+    /// </summary>
+    [Chunk(0x0305C006)]
+    public class Chunk0305C006 : Chunk<CGameCtnZone>
+    {
+        public bool U01;
+        
+        public override void ReadWrite(CGameCtnZone n, GameBoxReaderWriter rw)
+        {
+            rw.Boolean(ref U01);
+        }
+    }
+
+    #endregion
 }
