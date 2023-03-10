@@ -29,6 +29,22 @@ public partial class CSceneVehicleCar
         public byte U25 { get; set; }
         public float U26 { get; set; }
         public byte U27 { get; set; }
+        public float? U28 { get; set; }
+        public Vec4? U33 { get; set; }
+        public Vec4? U34 { get; set; }
+        public float? U35 { get; set; }
+        public (Vec3, Quat)[]? U35_1 { get; set; }
+        public bool? U36_1 { get; set; }
+        public bool? U36_2 { get; set; }
+        public bool? U36_3 { get; set; }
+        public bool? U36_4 { get; set; }
+        public bool? U36_5 { get; set; }
+        public float? U37_1 { get; set; }
+        public bool? U37_2 { get; set; }
+        public int? U37_3 { get; set; }
+        public float? U38 { get; set; }
+        public byte? U39 { get; set; }
+        public float? U40 { get; set; }
 
         internal Sample(TimeInt32 time, byte[] data) : base(time, data)
         {
@@ -47,9 +63,14 @@ public partial class CSceneVehicleCar
             Rotation = r.ReadQuat6();
             Velocity = r.ReadVec3_4();
             U01 = r.ReadVec3_4();
-            
+
             //
-            
+
+            if (version == 13)
+            {
+                throw new Exception("Two bytes here");
+            }
+
             if (version >= 8)
             {
                 U02 = r.ReadUInt16() / 65535f * 11000 - 1000;
@@ -66,7 +87,7 @@ public partial class CSceneVehicleCar
                 var unknownValue1 = U09 + U10; // clamped between 0-1
                 var unknownCondition = U09 < U10;
 
-                var unavailableVal = r.ReadUInt16();
+                var unavailableVal = r.ReadUInt16(); // should be saved, not always zero
 
                 U13 = r.ReadByte() / 255f * 2 - 1;
                 U14 = r.ReadByte() / 255f * 2 - 1;
@@ -101,6 +122,73 @@ public partial class CSceneVehicleCar
                 U26 = (r.ReadByte() & 0x40) == 0 ? 0 : 1;
 
                 U27 = r.ReadByte(); // similar to U26, some form of flags
+
+                if (version >= 9)
+                {
+                    U28 = r.ReadByte() / 255f;
+
+                    if (version >= 10)
+                    {
+                        var unavailableVal2 = r.ReadUInt32();
+                        
+                        if (unavailableVal2 != 0)
+                        {
+                            throw new Exception();
+                        }
+
+                        var u33 = r.ReadByte();
+                        U33 = new Vec4((u33 & 3) * (1 / 3f), ((u33 >> 2) & 3) * (1 / 3f), ((u33 >> 4) & 3) * (1 / 3f), ((u33 >> 6) & 3) * (1 / 3f));
+
+                        var u34 = r.ReadByte();
+                        U34 = new Vec4((u34 & 3) * (1 / 3f), ((u34 >> 2) & 3) * (1 / 3f), ((u34 >> 4) & 3) * (1 / 3f), ((u34 >> 6) & 3) * (1 / 3f));
+
+                        var u35 = r.ReadByte();
+                        U35 = (u34 & 3) * (1 / 3f);
+
+                        if (version >= 11)
+                        {
+                            if (version >= 14)
+                            {
+                                var u36 = r.ReadByte();
+                                U36_1 = Convert.ToBoolean(u36 & 1);
+                                U36_2 = Convert.ToBoolean(u36 >> 1 & 1);
+                                U36_3 = Convert.ToBoolean(u36 >> 2 & 1);
+                                U36_4 = Convert.ToBoolean(u36 >> 3 & 1);
+                                U36_5 = Convert.ToBoolean(u36 >> 4 & 1);
+
+                                var u37 = r.ReadByte();
+                                U37_1 = (u37 & 3) * (1 / 3f);
+                                U37_2 = Convert.ToBoolean(u37 >> 3 & 1);
+                                U37_3 = u37 >> 4;
+
+                                if (version >= 15)
+                                {
+                                    U38 = r.ReadByte() / 255f * 5;
+
+                                    if (version >= 16)
+                                    {
+                                        U39 = r.ReadByte();
+                                        U40 = r.ReadByte() / 255f;
+                                    }
+                                }
+                            }
+
+                            var count = u35 >> 2 & 7;
+
+                            if (version == 11 && count > 4)
+                            {
+                                count = 4;
+                            }
+
+                            U35_1 = new (Vec3, Quat)[count];
+
+                            for (var i = 0; i < count; i++)
+                            {
+                                U35_1[i] = (r.ReadVec3(), r.ReadQuat6());
+                            }
+                        }
+                    }
+                }
             }
         }
     }
