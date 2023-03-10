@@ -14,21 +14,32 @@ public partial class CSceneVehicleCar
         public float U08 { get; set; }
         public float U09 { get; set; }
         public float U10 { get; set; }
+        public float U09_U10_1 { get; set; }
+        public bool U09_U10_2 { get; set; }
+        public ushort U11 { get; set; }
         public float U13 { get; set; }
         public float U14 { get; set; }
         public float U15 { get; set; }
         public float U16 { get; set; }
         public float U17 { get; set; }
-        public byte U18 { get; set; }
+        public CPlugSurface.MaterialId FLGroundContactMaterial { get; set; }
         public float U19 { get; set; }
-        public byte U20 { get; set; }
+        public CPlugSurface.MaterialId FRGroundContactMaterial { get; set; }
         public float U21 { get; set; }
-        public byte U22 { get; set; }
+        public CPlugSurface.MaterialId RRGroundContactMaterial { get; set; }
         public float U23 { get; set; }
-        public byte U24 { get; set; }
+        public CPlugSurface.MaterialId RLGroundContactMaterial { get; set; }
         public byte U25 { get; set; }
         public float U26 { get; set; }
         public byte U27 { get; set; }
+        public float U27_1 { get; set; }
+        public bool U27_2 { get; set; }
+        public float U27_3 { get; set; }
+        public bool U27_4 { get; set; }
+        public float U27_5 { get; set; }
+        public bool U27_6 { get; set; }
+        public int U27_7 { get; set; }
+        public float U27_8 { get; set; }
         public float? U28 { get; set; }
         public Vec4? U33 { get; set; }
         public Vec4? U34 { get; set; }
@@ -64,7 +75,12 @@ public partial class CSceneVehicleCar
             Velocity = r.ReadVec3_4();
             U01 = r.ReadVec3_4();
 
-            //
+            // CSceneVehicleVis_RestoreStaticState
+
+            if (version < 8)
+            {
+                throw new VersionNotSupportedException(version);
+            }
 
             if (version == 13)
             {
@@ -83,11 +99,10 @@ public partial class CSceneVehicleCar
                 U08 = r.ReadByte() / 255f * 2 - 1;
                 U09 = r.ReadByte() / 255f;
                 U10 = r.ReadByte() / 255f;
+                U09_U10_1 = U09 + U10; // clamped between 0-1
+                U09_U10_2 = U09 < U10;
 
-                var unknownValue1 = U09 + U10; // clamped between 0-1
-                var unknownCondition = U09 < U10;
-
-                var unavailableVal = r.ReadUInt16(); // should be saved, not always zero
+                U11 = r.ReadUInt16(); // it should be always 0 but sometimes it isnt
 
                 U13 = r.ReadByte() / 255f * 2 - 1;
                 U14 = r.ReadByte() / 255f * 2 - 1;
@@ -97,31 +112,37 @@ public partial class CSceneVehicleCar
 #else
                 U16 = r.ReadByte() / 255f * (float)Math.PI * 2 - (float)Math.PI;
 #endif
-                U17 = r.ReadByte() / 255f * 4 - 2;
                 
-                U18 = r.ReadByte();
-                var u18Condition = U18 == 0xd;
+                U17 = r.ReadByte() / 255f * 4 - 2; // FLDampenLenByte?
+                FLGroundContactMaterial = (CPlugSurface.MaterialId)r.ReadByte();
+                // + condition "in water"
                 
-                U19 = r.ReadByte() / 255f * 4 - 2;
-                
-                U20 = r.ReadByte();
-                var u20Condition = U20 == 0xd;
-                
-                U21 = r.ReadByte() / 255f * 4 - 2;
-                
-                U22 = r.ReadByte();
-                var u22Condition = U22 == 0xd;
-                
-                U23 = r.ReadByte() / 255f * 4 - 2;
+                U19 = r.ReadByte() / 255f * 4 - 2; // FRDampenLenByte?
+                FRGroundContactMaterial = (CPlugSurface.MaterialId)r.ReadByte();
+                // + condition "in water"
 
-                U24 = r.ReadByte();
-                var u24Condition = U24 == 0xd;
-                
+                U21 = r.ReadByte() / 255f * 4 - 2; // RRDampenLenByte?
+                RRGroundContactMaterial = (CPlugSurface.MaterialId)r.ReadByte();
+                // + condition "in water"
+
+                U23 = r.ReadByte() / 255f * 4 - 2; // RLDampenLenByte?
+                RLGroundContactMaterial = (CPlugSurface.MaterialId)r.ReadByte();
+                // + condition "in water"
+
                 U25 = r.ReadByte(); // first 3 bits are relevant
 
                 U26 = (r.ReadByte() & 0x40) == 0 ? 0 : 1;
+                // (this->U26 >> 7)
 
                 U27 = r.ReadByte(); // similar to U26, some form of flags
+                U27_1 = (U27 & 1) == 0 ? 0 : 1f;
+                U27_2 = Convert.ToBoolean((U27 >> 1) & 1);
+                U27_3 = (U27 & 4) == 0 ? 0 : 1f;
+                U27_4 = Convert.ToBoolean((U27 >> 3) & 1);
+                U27_5 = (U27 & 0x10) == 0 ? 0 : 1f;
+                U27_6 = Convert.ToBoolean((U27 >> 5) & 1);
+                U27_7 = U27 >> 7;
+                U27_8 = ((U27 & 0x40) == 0 ? -1f : 1f) * 5000f;
 
                 if (version >= 9)
                 {
@@ -137,10 +158,10 @@ public partial class CSceneVehicleCar
                         }
 
                         var u33 = r.ReadByte();
-                        U33 = new Vec4((u33 & 3) * (1 / 3f), ((u33 >> 2) & 3) * (1 / 3f), ((u33 >> 4) & 3) * (1 / 3f), ((u33 >> 6) & 3) * (1 / 3f));
+                        U33 = new Vec4((u33 & 3) / 3f, ((u33 >> 2) & 3) * (1 / 3f), ((u33 >> 4) & 3) * (1 / 3f), ((u33 >> 6) & 3) * (1 / 3f));
 
                         var u34 = r.ReadByte();
-                        U34 = new Vec4((u34 & 3) * (1 / 3f), ((u34 >> 2) & 3) * (1 / 3f), ((u34 >> 4) & 3) * (1 / 3f), ((u34 >> 6) & 3) * (1 / 3f));
+                        U34 = new Vec4((u34 & 3) / 3f, ((u34 >> 2) & 3) / 3f, ((u34 >> 4) & 3) / 3f, ((u34 >> 6) & 3) / 3f);
 
                         var u35 = r.ReadByte();
                         U35 = (u34 & 3) * (1 / 3f);
