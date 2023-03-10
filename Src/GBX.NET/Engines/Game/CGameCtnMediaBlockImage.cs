@@ -37,6 +37,19 @@ public class CGameCtnMediaBlockImage : CGameCtnMediaBlock, CGameCtnMediaBlock.IH
         image = FileRef.Default;
     }
 
+    public static CGameCtnMediaBlockImage Create(CControlEffectSimi effect, FileRef image)
+    {
+        var block = new CGameCtnMediaBlockImage
+        {
+            effect = effect,
+            image = image
+        };
+
+        block.CreateChunk<Chunk030A5000>();
+
+        return block;
+    }
+
     #region Chunks
 
     #region 0x000 chunk
