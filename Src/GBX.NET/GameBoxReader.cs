@@ -523,8 +523,8 @@ public class GameBoxReader : BinaryReader
 
 #if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
 
-        var angle = ReadUInt16() / (float)ushort.MaxValue * MathF.PI;
-        var axisHeading = ReadInt16() / (float)short.MaxValue * MathF.PI;
+        var angle = ReadUInt16() * MathF.PI / ushort.MaxValue;
+        var axisHeading = ReadInt16() * MathF.PI / short.MaxValue;
         var axisPitch = ReadInt16() / (float)short.MaxValue * MathF.PI / 2;
         var speed = (float)Math.Exp(ReadInt16() / 1000.0);
         var velocityHeading = ReadSByte() / (float)sbyte.MaxValue * MathF.PI;
@@ -2155,5 +2155,73 @@ public class GameBoxReader : BinaryReader
     public string ReadSmallString()
     {
         return ReadString(ReadSmallLen());
+    }
+
+    /// <summary>
+    /// Reads a 2-byte <see cref="Vec3"/>.
+    /// </summary>
+    /// <returns></returns>
+    public Vec3 ReadVec3Unit2()
+    {
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
+        var axisHeading = ReadByte() * MathF.PI / sbyte.MaxValue;
+        var axisPitch = ReadByte() * (MathF.PI / 2) / sbyte.MaxValue;
+
+        return new Vec3(MathF.Cos(axisHeading) * MathF.Cos(axisPitch), MathF.Sin(axisHeading) * MathF.Cos(axisPitch), MathF.Sin(axisPitch));
+#else
+        var axisHeading = ReadByte() * Math.PI / sbyte.MaxValue;
+        var axisPitch = ReadByte() * (Math.PI / 2) / sbyte.MaxValue;
+
+        return new Vec3((float)(Math.Cos(axisHeading) * Math.Cos(axisPitch)), (float)(Math.Sin(axisHeading) * Math.Cos(axisPitch)), (float)Math.Sin(axisPitch));
+#endif
+    }
+
+    /// <summary>
+    /// Reads a 4-byte <see cref="Vec3"/>.
+    /// </summary>
+    /// <returns></returns>
+    public Vec3 ReadVec3Unit4()
+    {
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
+        var axisHeading = ReadInt16() * MathF.PI / short.MaxValue;
+        var axisPitch = ReadInt16() * (MathF.PI / 2) / short.MaxValue;
+
+        return new Vec3(MathF.Cos(axisHeading) * MathF.Cos(axisPitch), MathF.Sin(axisHeading) * MathF.Cos(axisPitch), MathF.Sin(axisPitch));
+#else
+        var axisHeading = ReadInt16() * Math.PI / short.MaxValue;
+        var axisPitch = ReadInt16() * (Math.PI / 2) / short.MaxValue;
+
+        return new Vec3((float)(Math.Cos(axisHeading) * Math.Cos(axisPitch)), (float)(Math.Sin(axisHeading) * Math.Cos(axisPitch)), (float)Math.Sin(axisPitch));
+#endif
+    }
+
+    /// <summary>
+    /// Reads a 6-byte <see cref="Quat"/>.
+    /// </summary>
+    /// <returns></returns>
+    public Quat ReadQuat6()
+    {
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
+        var angle = ReadUInt16() * MathF.PI / ushort.MaxValue;
+        var axis = ReadVec3Unit4();
+        
+        return new Quat(axis, MathF.Cos(angle)) * MathF.Sin(angle);
+#else
+        var angle = ReadUInt16() * Math.PI / ushort.MaxValue;
+        var axis = ReadVec3Unit4();
+
+        return new Quat(axis, (float)Math.Cos(angle)) * (float)Math.Sin(angle);
+#endif
+    }
+    
+    public Vec3 ReadVec3_4()
+    {
+        var mag16 = ReadInt16();
+
+        var mag = mag16 == short.MinValue
+            ? 0
+            : (float)Math.Exp(mag16 / 1000.0);
+
+        return ReadVec3Unit2() * mag;
     }
 }

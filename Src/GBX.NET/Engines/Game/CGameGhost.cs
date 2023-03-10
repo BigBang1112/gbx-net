@@ -88,10 +88,6 @@ public partial class CGameGhost : CMwNod
                     SamplePeriod = TimeInt32.FromMilliseconds(SamplePeriod)
                 };
 
-                using var ms = new MemoryStream(Data);
-
-                ghostData.ReadSamples(ms, numSamples: Samples?.Length ?? 0, sizePerSample: 56);
-
                 if (ghostData.SavedMobilClassId == uint.MaxValue)
                     return null;
 

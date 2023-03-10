@@ -49,8 +49,8 @@ public partial class CSceneVehicleVis
         public bool IsGroundContact { get; set; }
         public bool IsReactorGroundMode { get; set; }
 
-        public CSceneVehicleVis.ReactorBoostLvl ReactorBoostLvl { get; set; }
-        public CSceneVehicleVis.ReactorBoostType ReactorBoostType { get; set; }
+        public ReactorBoostLvl ReactorBoostLvl { get; set; }
+        public ReactorBoostType ReactorBoostType { get; set; }
 
         public int ReactorAirControlSteer { get; set; }
         public int ReactorAirControlPedal { get; set; }
@@ -62,6 +62,10 @@ public partial class CSceneVehicleVis
 
         public float SideSpeed { get; set; }
         public bool IsTopContact { get; set; }
+        
+        internal EntRecordDelta(TimeInt32 time, byte[] data) : base(time, data)
+        {
+        }
 
         public override void Read(MemoryStream ms, GameBoxReader r)
         {
@@ -234,20 +238,20 @@ public partial class CSceneVehicleVis
             //var isSlowMo = (groundModeByte & maskSlowMo) != 0;
 
             if (isReactorLvl1)
-                ReactorBoostLvl = CSceneVehicleVis.ReactorBoostLvl.Lvl1;
+                ReactorBoostLvl = ReactorBoostLvl.Lvl1;
             else if (isReactorLvl2)
-                ReactorBoostLvl = CSceneVehicleVis.ReactorBoostLvl.Lvl2;
+                ReactorBoostLvl = ReactorBoostLvl.Lvl2;
             else
-                ReactorBoostLvl = CSceneVehicleVis.ReactorBoostLvl.None;
+                ReactorBoostLvl = ReactorBoostLvl.None;
 
             if (isReactorUp && isReactorDown)
-                ReactorBoostType = CSceneVehicleVis.ReactorBoostType.UpAndDown;
+                ReactorBoostType = ReactorBoostType.UpAndDown;
             else if (isReactorUp)
-                ReactorBoostType = CSceneVehicleVis.ReactorBoostType.Up;
+                ReactorBoostType = ReactorBoostType.Up;
             else if (isReactorDown)
-                ReactorBoostType = CSceneVehicleVis.ReactorBoostType.Down;
+                ReactorBoostType = ReactorBoostType.Down;
             else
-                ReactorBoostType = CSceneVehicleVis.ReactorBoostType.None;
+                ReactorBoostType = ReactorBoostType.None;
 
             // Turbo
             ms.Position = 31;

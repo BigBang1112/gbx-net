@@ -202,21 +202,14 @@ public class CPlugEntRecordData : CMwNod
 
         EntRecordDelta? delta = desc.ClassId switch
         {
-            0x0A018000 => new CSceneVehicleVis.EntRecordDelta(),
+            0x0A018000 => new CSceneVehicleVis.EntRecordDelta(time, data),
             _ => null
         };
 
         if (delta is null)
         {
-            return new()
-            {
-                Time = time,
-                Data = data
-            };
+            return new(time, data);
         }
-
-        delta.Time = time;
-        delta.Data = data;
 
         if (data.Length > 0)
         {
@@ -337,8 +330,14 @@ public class CPlugEntRecordData : CMwNod
 
     public class EntRecordDelta
     {
-        public TimeInt32 Time { get; set; }
-        public byte[] Data { get; set; } = Array.Empty<byte>();
+        public TimeInt32 Time { get; }
+        public byte[] Data { get; }
+
+        internal EntRecordDelta(TimeInt32 time, byte[] data)
+        {
+            Time = time;
+            Data = data;
+        }
 
         public override string ToString()
         {
