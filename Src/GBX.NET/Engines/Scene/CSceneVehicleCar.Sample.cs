@@ -4,7 +4,6 @@ public partial class CSceneVehicleCar
 {
     public class Sample : CGameGhost.Data.Sample
     {
-        public Vec3 U01 { get; set; }
         public float U02 { get; set; }
         public float U03 { get; set; }
         public float U04 { get; set; }
@@ -14,8 +13,8 @@ public partial class CSceneVehicleCar
         public float U08 { get; set; }
         public float U09 { get; set; }
         public float U10 { get; set; }
-        public float U09_U10_1 { get; set; }
-        public bool U09_U10_2 { get; set; }
+        public float U09_U10_1 => U09 + U10; // clamped between 0-1
+        public bool U09_U10_2 => U09 < U10;
         public ushort U11 { get; set; }
         public float U13 { get; set; }
         public float U14 { get; set; }
@@ -32,14 +31,14 @@ public partial class CSceneVehicleCar
         public byte U25 { get; set; }
         public float U26 { get; set; }
         public byte U27 { get; set; }
-        public float U27_1 { get; set; }
-        public bool U27_2 { get; set; }
-        public float U27_3 { get; set; }
-        public bool U27_4 { get; set; }
-        public float U27_5 { get; set; }
-        public bool U27_6 { get; set; }
-        public int U27_7 { get; set; }
-        public float U27_8 { get; set; }
+        public float U27_1 => (U27 & 1) == 0 ? 0 : 1f;
+        public bool U27_2 => Convert.ToBoolean((U27 >> 1) & 1);
+        public float U27_3 => (U27 & 4) == 0 ? 0 : 1f;
+        public bool U27_4 => Convert.ToBoolean((U27 >> 3) & 1);
+        public float U27_5 => (U27 & 0x10) == 0 ? 0 : 1f;
+        public bool U27_6 => Convert.ToBoolean((U27 >> 5) & 1);
+        public int U27_7 => U27 >> 7;
+        public float U27_8 => ((U27 & 0x40) == 0 ? -1f : 1f) * 5000f;
         public float? U28 { get; set; }
         public Vec4? U33 { get; set; }
         public Vec4? U34 { get; set; }
@@ -73,7 +72,7 @@ public partial class CSceneVehicleCar
             Position = r.ReadVec3();
             Rotation = r.ReadQuat6();
             Velocity = r.ReadVec3_4();
-            U01 = r.ReadVec3_4();
+            AngularVelocity = r.ReadVec3_4();
 
             // CSceneVehicleVis_RestoreStaticState
 
@@ -99,8 +98,6 @@ public partial class CSceneVehicleCar
                 U08 = r.ReadByte() / 255f * 2 - 1;
                 U09 = r.ReadByte() / 255f;
                 U10 = r.ReadByte() / 255f;
-                U09_U10_1 = U09 + U10; // clamped between 0-1
-                U09_U10_2 = U09 < U10;
 
                 U11 = r.ReadUInt16(); // it should be always 0 but sometimes it isnt
 
@@ -135,14 +132,6 @@ public partial class CSceneVehicleCar
                 // (this->U26 >> 7)
 
                 U27 = r.ReadByte(); // similar to U26, some form of flags
-                U27_1 = (U27 & 1) == 0 ? 0 : 1f;
-                U27_2 = Convert.ToBoolean((U27 >> 1) & 1);
-                U27_3 = (U27 & 4) == 0 ? 0 : 1f;
-                U27_4 = Convert.ToBoolean((U27 >> 3) & 1);
-                U27_5 = (U27 & 0x10) == 0 ? 0 : 1f;
-                U27_6 = Convert.ToBoolean((U27 >> 5) & 1);
-                U27_7 = U27 >> 7;
-                U27_8 = ((U27 & 0x40) == 0 ? -1f : 1f) * 5000f;
 
                 if (version >= 9)
                 {
@@ -158,13 +147,13 @@ public partial class CSceneVehicleCar
                         }
 
                         var u33 = r.ReadByte();
-                        U33 = new Vec4((u33 & 3) / 3f, ((u33 >> 2) & 3) * (1 / 3f), ((u33 >> 4) & 3) * (1 / 3f), ((u33 >> 6) & 3) * (1 / 3f));
+                        U33 = new Vec4((u33 & 3) / 3f, ((u33 >> 2) & 3) / 3f, ((u33 >> 4) & 3) / 3f, ((u33 >> 6) & 3) / 3f);
 
                         var u34 = r.ReadByte();
                         U34 = new Vec4((u34 & 3) / 3f, ((u34 >> 2) & 3) / 3f, ((u34 >> 4) & 3) / 3f, ((u34 >> 6) & 3) / 3f);
 
                         var u35 = r.ReadByte();
-                        U35 = (u34 & 3) * (1 / 3f);
+                        U35 = (u34 & 3) / 3f;
 
                         if (version >= 11)
                         {
@@ -178,7 +167,7 @@ public partial class CSceneVehicleCar
                                 U36_5 = Convert.ToBoolean(u36 >> 4 & 1);
 
                                 var u37 = r.ReadByte();
-                                U37_1 = (u37 & 3) * (1 / 3f);
+                                U37_1 = (u37 & 3) / 3f;
                                 U37_2 = Convert.ToBoolean(u37 >> 3 & 1);
                                 U37_3 = u37 >> 4;
 

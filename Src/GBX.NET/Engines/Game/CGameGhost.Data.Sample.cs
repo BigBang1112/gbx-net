@@ -13,6 +13,7 @@ public partial class CGameGhost
             public Quat Rotation { get; set; }
             public float Speed => Velocity.GetMagnitude();
             public Vec3 Velocity { get; set; }
+            public Vec3 AngularVelocity { get; set; }
 
             internal Sample(TimeInt32 time, byte[] data)
             {
