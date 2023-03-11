@@ -4,8 +4,9 @@ public partial class CSceneVehicleCar
 {
     public class Sample : CGameGhost.Data.Sample
     {
-        public float U02 { get; set; }
+        public float Speed { get; set; }
         public float U03 { get; set; }
+        public float RPM { get; set; }
         public float U04 { get; set; }
         public float U05 { get; set; }
         public float U06 { get; set; }
@@ -88,16 +89,16 @@ public partial class CSceneVehicleCar
 
             if (version >= 8)
             {
-                U02 = r.ReadUInt16() / 65535f * 11000 - 1000;
-                U03 = r.ReadUInt16() / 65535f * 2000 - 1000; // rpm?
-                U03 = r.ReadUInt16() / 65535f * 30000; // rpm?
+                Speed = (r.ReadUInt16() / 65535f * 11000 - 1000) * 3.6f;
+                U03 = r.ReadUInt16() / 65535f * 2000 - 1000;
+                RPM = r.ReadUInt16() / 65535f * 30000;
                 U04 = r.ReadUInt16() / 65535f * 1608.495f;
                 U05 = r.ReadUInt16() / 65535f * 1608.495f;
                 U06 = r.ReadUInt16() / 65535f * 1608.495f;
                 U07 = r.ReadUInt16() / 65535f * 1608.495f;
                 U08 = r.ReadByte() / 255f * 2 - 1;
-                U09 = r.ReadByte() / 255f;
-                U10 = r.ReadByte() / 255f;
+                U09 = r.ReadByte() / 255f; // acceleration something
+                U10 = r.ReadByte() / 255f; // release something
 
                 U11 = r.ReadUInt16(); // it should be always 0 but sometimes it isnt
 
@@ -145,6 +146,8 @@ public partial class CSceneVehicleCar
                         {
                             throw new Exception();
                         }
+                        
+                        // damage amount
 
                         var u33 = r.ReadByte();
                         U33 = new Vec4((u33 & 3) / 3f, ((u33 >> 2) & 3) / 3f, ((u33 >> 4) & 3) / 3f, ((u33 >> 6) & 3) / 3f);

@@ -189,7 +189,7 @@ public partial class CGameGhost
 
         /// <summary>
         /// Linearly interpolates <see cref="Sample.Position"/>, <see cref="Sample.Rotation"/>,
-        /// <see cref="Sample.Speed"/> and <see cref="Sample.Velocity"/> between two samples. Unknown data is taken from sample A.
+        /// <see cref="Sample.VelocitySpeed"/> and <see cref="Sample.Velocity"/> between two samples. Unknown data is taken from sample A.
         /// </summary>
         /// <param name="timestamp">Any timestamp between the range of samples.</param>
         /// <returns>A new instance of <see cref="Sample"/> that has been linearly interpolated (<see cref="Sample.Time"/> will be null)
