@@ -10,9 +10,7 @@ public readonly record struct Vec3(float X, float Y, float Z) : IVec
 
 #if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
     public float GetMagnitude() => MathF.Sqrt(GetSqrMagnitude());
-#endif
-
-#if NETSTANDARD2_0 || NET462_OR_GREATER
+#else
     public float GetMagnitude() => (float)Math.Sqrt(GetSqrMagnitude());
 #endif
 

@@ -8,42 +8,40 @@ public partial class CGameGhost
 {
     public partial class Data
     {
-        private TimeInt32 samplePeriod;
-
         /// <summary>
         /// How much time is between each sample.
         /// </summary>
-        public TimeInt32 SamplePeriod
-        {
-            get => samplePeriod;
-            set
-            {
-                samplePeriod = value;
-
-                if (Samples != null)
-                    foreach (var sample in Samples)
-                        sample.UpdateTimestamp();
-            }
-        }
+        public TimeInt32 SamplePeriod { get; set; }
 
         public ObservableCollection<Sample> Samples { get; private set; }
         public CompressionLevel Compression { get; set; }
         public uint SavedMobilClassId { get; set; }
 
+        // CSceneVehicleVis_RestoreStaticState
+        // 2 = SVehicleSimpleState_ReplayAfter211003 - 22 bytes
+        // 4 = SVehicleSimpleState_ReplayAfter040104 - 28 bytes
+        // 5 = SVehicleSimpleState_ReplayAfter100205 - 30 bytes
+        // 7 = SVehicleSimpleState_ReplayAfter100205 - 30 bytes
+        // 8 = SVehicleSimpleState_ReplayAfter081205 - 34 bytes
+        // 9 = SVehicleSimpleState_ReplayAfter081205 - 35 bytes
+        // 10 = SVehicleSimpleState_ReplayAfter230211 - 42 bytes
+        // 11 = SVehicleSimpleState_ReplayAfter230211 - 42 bytes
+        // 12 = SVehicleSimpleState_ReplayAfter230211 - 42 bytes + something
+        // 13 = SVehicleSimpleNetState - 2 bytes
+        // 14 = SVehicleSimpleState_ReplayAfter270115 - 44 bytes
+        // 15 = SVehicleSimpleState_ReplayAfter270115 - 45 bytes
+        // 16 = SVehicleSimpleState_ReplayAfter160216 - 47 bytes
+
+        // NSceneMgr_Vehicle::StateArchive
+        // 17 = SVehicleSimpleState_ReplayAfter100117
+        // 18 = SVehicleSimpleState_ReplayAfter111217
+        // 19 = SVehicleSimpleState_ReplayAfter111217 + 1 more byte
+        // 20 = SVehicleSimpleState_ReplayAfter2018_03_09
+        public int Version { get; set; }
+
         public Data()
         {
             Samples = new ObservableCollection<Sample>();
-        }
-
-        private void Samples_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.OldItems != null)
-                foreach (Sample sample in e.OldItems)
-                    sample.AssignTo(null);
-
-            if (e.NewStartingIndex != Samples.Count - 1)
-                foreach (var sample in Samples.Skip(e.NewStartingIndex))
-                    sample.AssignTo(this);
         }
 
         /// <summary>
@@ -93,12 +91,12 @@ public partial class CGameGhost
                 return;
             }
 
-            var bSkipList2 = r.ReadBoolean(); // IsFixedTimeStep
+            var isFixedTimeStep = r.ReadBoolean(); // IsFixedTimeStep
             var u01 = r.ReadInt32();
             SamplePeriod = TimeInt32.FromMilliseconds(r.ReadInt32()); // SavedPeriod
-            var u02 = r.ReadInt32();
+            Version = r.ReadInt32();
             
-            var sampleData = r.ReadBytes(); // CGameGhostTMData::ArchiveStateBuffer
+            var stateBuffer = r.ReadBytes(); // CGameGhostTMData::ArchiveStateBuffer
             
             // CGameGhostTMData::ArchiveStateOffsets
             var sizePerSample = -1;
@@ -125,94 +123,56 @@ public partial class CGameGhost
             // CGameGhostTMData::ArchiveStateTimes
             var sampleTimes = default(int[]);
 
-            if (!bSkipList2)
+            if (!isFixedTimeStep)
             {
                 sampleTimes = r.ReadArray<int>();
             }
             //
-
-            if (numSamples > 0)
-            {
-                using var mssd = new MemoryStream(sampleData);
-                ReadSamples(mssd, numSamples, sizePerSample, sampleSizes, sampleTimes);
-            }
-            else
-            {
-                Samples = new ObservableCollection<Sample>();
-                Samples.CollectionChanged += Samples_CollectionChanged;
-            }
-        }
-
-        public void ReadSamples(MemoryStream ms, int numSamples, int sizePerSample, int[]? sizesPerSample = null, int[]? sampleTimes = null)
-        {
+            
             Samples = new ObservableCollection<Sample>();
-            Samples.CollectionChanged += Samples_CollectionChanged;
 
-            using var r = new GameBoxReader(ms);
+            if (numSamples <= 0)
+            {
+                return;
+            }
+            
+            using var stateBufferMs = new MemoryStream(stateBuffer);
+            using var stateBufferR = new GameBoxReader(stateBufferMs);
 
             for (var i = 0; i < numSamples; i++)
             {
                 var sampleData = sizePerSample switch
                 {
-                    -1 => GetSampleDataFromDifferentSizes(r, numSamples, sizesPerSample, i),
-                    _  => r.ReadBytes(sizePerSample)
+                    -1 => GetSampleDataFromDifferentSizes(stateBufferR, numSamples, sampleSizes, i),
+                    _ => stateBufferR.ReadBytes(sizePerSample)
                 };
 
-                var sample = new Sample(sampleData);
 
-                using var bufferMs = new MemoryStream(sampleData);
-                using var bufferR = new GameBoxReader(bufferMs);
+                var time = new TimeInt32(sampleTimes?[i] ?? i * SamplePeriod.Milliseconds);
 
-                var time = sampleTimes?[i];
-
-                switch (SavedMobilClassId)
+                Sample? sample = SavedMobilClassId switch
                 {
-                    case 0x0A02B000: // CSceneVehicleCar
-                        {
-                            var (position, rotation, speed, velocity) = bufferR.ReadTransform();
+                    0x0A02B000 => new CSceneVehicleCar.Sample(time, sampleData),
+                    0x0A401000 => new CSceneMobilCharVis.Sample(time, sampleData),
+                    _ => null
+                };
 
-                            sample.Position = position;
-                            sample.Rotation = rotation;
-                            sample.Speed = speed * 3.6f;
-                            sample.Velocity = velocity;
+                if (sample is null)
+                {
+                    continue;
+                }
 
-                            break;
-                        }
-                    case 0x0A401000: // CSceneMobilCharVis
-                        var bufferType = r.ReadByte();
+                if (sampleData.Length > 0)
+                {
+                    using var sampleMs = new MemoryStream(sampleData);
+                    using var sampleR = new GameBoxReader(sampleMs);
 
-                        switch (bufferType)
-                        {
-                            case 0:
-                                {
-                                    bufferMs.Position = 14;
+                    sample.Read(sampleMs, sampleR, Version);
 
-                                    var (position, rotation, speed, velocity) = bufferR.ReadTransform();
-
-                                    sample.Position = position;
-                                    sample.Rotation = rotation;
-                                    sample.Speed = speed * 3.6f;
-                                    sample.Velocity = velocity;
-
-                                    break;
-                                }
-                            case 1:
-                                break;
-                            default:
-                                break;
-                        }
-
-                        sample.BufferType = bufferType;
-
-                        break;
-                    default:
-                        sample.BufferType = null;
-                        break;
+                    var sampleProgress = (int)sampleMs.Position;
                 }
 
                 Samples.Add(sample);
-
-                sample.AssignTo(this);
             }
         }
 
@@ -228,20 +188,20 @@ public partial class CGameGhost
         }
 
         /// <summary>
-        /// Linearly interpolates <see cref="NET.Sample.Position"/>, <see cref="NET.Sample.Rotation"/> (<see cref="NET.Sample.PitchYawRoll"/>),
-        /// <see cref="NET.Sample.Speed"/> and <see cref="NET.Sample.Velocity"/> between two samples. Unknown data is taken from sample A.
+        /// Linearly interpolates <see cref="Sample.Position"/>, <see cref="Sample.Rotation"/>,
+        /// <see cref="Sample.Speed"/> and <see cref="Sample.Velocity"/> between two samples. Unknown data is taken from sample A.
         /// </summary>
         /// <param name="timestamp">Any timestamp between the range of samples.</param>
-        /// <returns>A new instance of <see cref="Sample"/> that has been linearly interpolated (<see cref="NET.Sample.Timestamp"/> will be null)
+        /// <returns>A new instance of <see cref="Sample"/> that has been linearly interpolated (<see cref="Sample.Time"/> will be null)
         /// or a reference to an existing sample if <paramref name="timestamp"/> matches an existing sample timestamp.
         /// Also returns null if there are no samples, or if <paramref name="timestamp"/> is outside of the sample range,
         /// or <see cref="SamplePeriod"/> is lower or equal to 0.</returns>
         public Sample? GetSampleLerp(TimeSingle timestamp)
         {
-            if (Samples is null || Samples.Count == 0 || samplePeriod.Ticks <= 0)
+            if (Samples is null || Samples.Count == 0 || SamplePeriod.Ticks <= 0)
                 return null;
 
-            var sampleKey = timestamp.TotalMilliseconds / samplePeriod.TotalMilliseconds;
+            var sampleKey = timestamp.TotalMilliseconds / SamplePeriod.TotalMilliseconds;
             var a = Samples.ElementAtOrDefault((int)Math.Floor(sampleKey)); // Sample A
             var b = Samples.ElementAtOrDefault((int)Math.Ceiling(sampleKey)); // Sample B
 
@@ -253,11 +213,10 @@ public partial class CGameGhost
 
             var t = (float)(sampleKey - Math.Floor(sampleKey));
 
-            return new Sample(a.Data)
+            return new Sample(timestamp, a.Data)
             {
                 Position = AdditionalMath.Lerp(a.Position, b.Position, t),
                 Rotation = AdditionalMath.Lerp(a.Rotation, b.Rotation, t),
-                Speed = AdditionalMath.Lerp(a.Speed, b.Speed, t),
                 Velocity = AdditionalMath.Lerp(a.Velocity, b.Velocity, t)
             };
         }
