@@ -236,23 +236,36 @@ public class CPlugEntRecordData : CMwNod
         {
             Version = r.ReadInt32(); // 10
 
-            n.uncompressedSize = r.ReadInt32();
-            n.data = r.ReadBytes();
+            if (Version >= 5)
+            {
+                n.uncompressedSize = r.ReadInt32();
+                n.data = r.ReadBytes();
+                
+                using var ms = new MemoryStream(n.data);
+                using var compressed = new CompressedStream(ms, CompressionMode.Decompress);
+                using var rr = new GameBoxReader(compressed);
+                var rw = new GameBoxReaderWriter(rr);
 
-            using var ms = new MemoryStream(n.Data);
-            using var cs = new CompressedStream(ms, CompressionMode.Decompress);
-            using var rData = new GameBoxReader(cs);
-
-            var rw = new GameBoxReaderWriter(rData);
-
-            n.ReadWriteData(rw, Version);
+                n.ReadWriteData(rw, Version);
+            }
+            else
+            {
+                var rw = new GameBoxReaderWriter(r);
+                n.ReadWriteData(rw, Version);
+            }
         }
 
         public override void Write(CPlugEntRecordData n, GameBoxWriter w)
         {
             w.Write(Version);
+
+            if (Version < 5)
+            {
+                throw new VersionNotSupportedException(Version);
+            }
+
             w.Write(n.uncompressedSize);
-            w.WriteByteArray(n.Data);
+            w.WriteByteArray(n.data);
         }
     }
 
