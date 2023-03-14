@@ -44,7 +44,7 @@ public partial class CSceneVehicleCar
         public Vec4? U33 { get; set; }
         public Vec4? U34 { get; set; }
         public float? U35 { get; set; }
-        public (Vec3, Quat)[]? U35_1 { get; set; }
+        public (Vec3, Quat, byte)[]? U35_1 { get; set; }
         public bool? U36_1 { get; set; }
         public bool? U36_2 { get; set; }
         public bool? U36_3 { get; set; }
@@ -156,7 +156,7 @@ public partial class CSceneVehicleCar
                         U34 = new Vec4((u34 & 3) / 3f, ((u34 >> 2) & 3) / 3f, ((u34 >> 4) & 3) / 3f, ((u34 >> 6) & 3) / 3f);
 
                         var u35 = r.ReadByte();
-                        U35 = (u34 & 3) / 3f;
+                        U35 = (u35 & 3) / 3f;
 
                         if (version >= 11)
                         {
@@ -193,15 +193,20 @@ public partial class CSceneVehicleCar
                                 count = 4;
                             }
 
-                            U35_1 = new (Vec3, Quat)[count];
-
+                            U35_1 = new (Vec3, Quat, byte)[count];
+                            
                             for (var i = 0; i < count; i++)
                             {
-                                U35_1[i] = (r.ReadVec3(), r.ReadQuat6());
+                                U35_1[i] = (r.ReadVec3(), r.ReadQuat6(), r.ReadByte());
                             }
                         }
                     }
                 }
+            }
+
+            if (ms.Position != ms.Length)
+            {
+                throw new Exception("Not all bytes were read");
             }
         }
     }
