@@ -829,7 +829,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Number of actual blocks on the map (doesn't include Unassigned1 and other blocks with <see cref="CGameCtnBlock.Flags"/> equal to -1).
     /// </summary>
     [NodeMember]
-    public int? NbBlocks => Blocks?.Count(x => x.Flags != -1);
+    public int? NbBlocks => Blocks?.Count(x => x.Name != "Unassigned1"); // in some Maniaplanet 3 maps, Unassigned1 blocks can have Flags == 0, so it is safer to compare with string
 
     [NodeMember]
     [AppliedWithChunk<Chunk03043048>]
