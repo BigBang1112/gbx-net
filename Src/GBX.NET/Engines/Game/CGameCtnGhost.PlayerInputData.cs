@@ -424,81 +424,78 @@ public partial class CGameCtnGhost
                         else
                         {
                             var states = r.ReadNumber(bits: version is EVersion._2020_04_08 ? 33 : 34);
-
-                            if (states != prevStatesFull)
+                            
+                            if (started is EStart.NotStarted)
                             {
-                                if (started is EStart.NotStarted)
-                                {
-                                    started = (EStart)(states & 3);
-                                }
-
-                                if (started is EStart.Character)
-                                {
-                                    if (StateIsDifferent(bit: 5, out bool gunTrigger, states, prevStatesFull) && gunTrigger != prevGunTrigger)
-                                    {
-                                        inputs.Add(new GunTrigger(time, gunTrigger));
-                                        prevGunTrigger = gunTrigger;
-                                    }
-                                }
-
-                                if (StateIsDifferent(bit: 6, out bool hornOrAction, states, prevStatesFull))
-                                {
-                                    if (started is EStart.Vehicle && hornOrAction != prevHorn)
-                                    {
-                                        inputs.Add(new Horn(time, hornOrAction));
-                                        prevHorn = hornOrAction;
-                                    }
-                                    else if (started is EStart.Character && hornOrAction != prevAction)
-                                    {
-                                        inputs.Add(new Inputs.Action(time, hornOrAction));
-                                        prevAction = hornOrAction;
-                                    }
-                                }
-
-                                if (started is EStart.Character && StateIsDifferent(bit: 10, out bool camera2, states, prevStatesFull))
-                                {
-                                    inputs.Add(new Camera2(time, camera2));
-                                }
-
-                                if (StateIsDifferent(bit: 12, out bool jump, states, prevStatesFull))
-                                {
-                                    inputs.Add(new Jump(time, jump));
-                                }
-
-                                if (StateIsDifferent(bit: 13, out bool freeLook, states, prevStatesFull))
-                                {
-                                    inputs.Add(new FreeLook(time, freeLook));
-                                }
-
-                                for (var j = 0; j < 9; j++) // 9 action slots
-                                {
-                                    // Action slots 2 and 4 have an additional bit 7 usage, which is ignored here
-
-                                    if (StateIsDifferent(bit: 14 + j, out bool actionSlot, states, prevStatesFull))
-                                    {
-                                        inputs.Add(new ActionSlot(time, (byte)(1 + j), actionSlot));
-                                    }
-                                }
-
-                                // + 1 action slot 0
-
-                                if (StateIsDifferent(bit: 23, out bool actionSlot0, states, prevStatesFull))
-                                {
-                                    inputs.Add(new ActionSlot(time, 0, actionSlot0));
-                                }
-
-                                if (StateIsDifferent(bit: 31, out bool _, states, prevStatesFull))
-                                {
-                                    inputs.Add(new RespawnTM2020(time));
-                                }
-
-                                if (StateIsDifferent(bit: 33, out bool _, states, prevStatesFull))
-                                {
-                                    inputs.Add(new SecondaryRespawn(time));
-                                }
-
-                                prevStatesFull = states;
+                                started = (EStart)(states & 3);
                             }
+
+                            if (started is EStart.Character)
+                            {
+                                if (StateIsDifferent(bit: 5, out bool gunTrigger, states, prevStatesFull) && gunTrigger != prevGunTrigger)
+                                {
+                                    inputs.Add(new GunTrigger(time, gunTrigger));
+                                    prevGunTrigger = gunTrigger;
+                                }
+                            }
+
+                            if (StateIsDifferent(bit: 6, out bool hornOrAction, states, prevStatesFull))
+                            {
+                                if (started is EStart.Vehicle && hornOrAction != prevHorn)
+                                {
+                                    inputs.Add(new Horn(time, hornOrAction));
+                                    prevHorn = hornOrAction;
+                                }
+                                else if (started is EStart.Character && hornOrAction != prevAction)
+                                {
+                                    inputs.Add(new Inputs.Action(time, hornOrAction));
+                                    prevAction = hornOrAction;
+                                }
+                            }
+
+                            if (started is EStart.Character && StateIsDifferent(bit: 10, out bool camera2, states, prevStatesFull))
+                            {
+                                inputs.Add(new Camera2(time, camera2));
+                            }
+
+                            if (StateIsDifferent(bit: 12, out bool jump, states, prevStatesFull))
+                            {
+                                inputs.Add(new Jump(time, jump));
+                            }
+
+                            if (StateIsDifferent(bit: 13, out bool freeLook, states, prevStatesFull))
+                            {
+                                inputs.Add(new FreeLook(time, freeLook));
+                            }
+
+                            for (var j = 0; j < 9; j++) // 9 action slots
+                            {
+                                // Action slots 2 and 4 have an additional bit 7 usage, which is ignored here
+
+                                if (StateIsDifferent(bit: 14 + j, out bool actionSlot, states, prevStatesFull))
+                                {
+                                    inputs.Add(new ActionSlot(time, (byte)(1 + j), actionSlot));
+                                }
+                            }
+
+                            // + 1 action slot 0
+
+                            if (StateIsDifferent(bit: 23, out bool actionSlot0, states, prevStatesFull))
+                            {
+                                inputs.Add(new ActionSlot(time, 0, actionSlot0));
+                            }
+
+                            if (((states >> 31) & 1) != 0)
+                            {
+                                inputs.Add(new RespawnTM2020(time));
+                            }
+
+                            if (((states >> 33) & 1) != 0)
+                            {
+                                inputs.Add(new SecondaryRespawn(time));
+                            }
+
+                            prevStatesFull = states;
                         }
                     }
 
