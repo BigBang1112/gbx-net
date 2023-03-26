@@ -1,6 +1,7 @@
 ﻿namespace GBX.NET.Engines.Scene;
 
 [Node(0x0A029000)]
+[NodeExtension("VehicleTuning")]
 public class CSceneVehicleCarTuning : CSceneVehicleTuning
 {
     private string name = "";
@@ -23,6 +24,10 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
     private CFuncKeysReal? lateralSpeed;
     private CFuncKeysReal? burnoutRollover;
     private CFuncKeysReal? donutRollover;
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A029001>]
+    public string Name { get => name; set => name = value; }
 
     [NodeMember]
     [AppliedWithChunk<Chunk0A029024>]
