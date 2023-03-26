@@ -5,10 +5,15 @@
 public class CSceneVehicleTunings : CMwNod
 {
     private CSceneVehicleCarTuning[] tuning;
+    private int tuningIndex;
 
     [NodeMember]
     [AppliedWithChunk<Chunk0A030000>]
     public CSceneVehicleCarTuning[] Tuning { get => tuning; set => tuning = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A030000>]
+    public int TuningIndex { get => tuningIndex; set => tuningIndex = value; }
 
     internal CSceneVehicleTunings()
     {
@@ -23,13 +28,11 @@ public class CSceneVehicleTunings : CMwNod
     [Chunk(0x0A030000)]
     public class Chunk0A030000 : Chunk<CSceneVehicleTunings>
     {
-        public int U01;
-
         public override void ReadWrite(CSceneVehicleTunings n, GameBoxReaderWriter rw)
         {
             rw.Int32(10);
             rw.ArrayNode(ref n.tuning!);
-            rw.Int32(ref U01);
+            rw.Int32(ref n.tuningIndex);
         }
     }
 

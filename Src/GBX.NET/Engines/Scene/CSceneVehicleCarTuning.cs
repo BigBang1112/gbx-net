@@ -3,6 +3,103 @@
 [Node(0x0A029000)]
 public class CSceneVehicleCarTuning : CSceneVehicleTuning
 {
+    private string name = "";
+    private CFuncKeysReal? accel;
+    private CFuncKeysReal? maxSideFriction;
+    private CFuncKeysReal? rolloverLateral;
+    private CFuncKeysReal? lateralContactSlowDown;
+    private CFuncKeysReal? steerSlowDown;
+    private CFuncKeysReal? steerDriveTorque;
+    private CFuncKeysReal? steerRadius;
+    private CFuncKeysReal? maxFrictionTorque;
+    private CFuncKeysReal? maxFrictionForce;
+    private CFuncKeysReal? slippingAccel;
+    private CFuncKeysReal? steerCoef;
+    private CFuncKeysReal? smoothInputSteerDuration;
+    private CFuncKeysReal? modulation;
+    private CFuncKeysReal? burnoutRadius;
+    private CFuncKeysReal? rolloverLateralRatio;
+    private CFuncKeysReal? rearGearAccel;
+    private CFuncKeysReal? lateralSpeed;
+    private CFuncKeysReal? burnoutRollover;
+    private CFuncKeysReal? donutRollover;
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A029024>]
+    public CFuncKeysReal? Accel { get => accel; set => accel = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A029028>]
+    public CFuncKeysReal? MaxSideFriction { get => maxSideFriction; set => maxSideFriction = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A029029>]
+    public CFuncKeysReal? RolloverLateral { get => rolloverLateral; set => rolloverLateral = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A02902A>]
+    public CFuncKeysReal? LateralContactSlowDown { get => lateralContactSlowDown; set => lateralContactSlowDown = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A02902B>]
+    public CFuncKeysReal? SteerSlowDown { get => steerSlowDown; set => steerSlowDown = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A029030>]
+    public CFuncKeysReal? SteerDriveTorque { get => steerDriveTorque; set => steerDriveTorque = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A029036>]
+    public CFuncKeysReal? SteerRadius { get => steerRadius; set => steerRadius = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A029037>]
+    public CFuncKeysReal? MaxFrictionTorque { get => maxFrictionTorque; set => maxFrictionTorque = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A029038>]
+    public CFuncKeysReal? MaxFrictionForce { get => maxFrictionForce; set => maxFrictionForce = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A02903D>]
+    public CFuncKeysReal? SlippingAccel { get => slippingAccel; set => slippingAccel = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A02903F>]
+    public CFuncKeysReal? SteerCoef { get => steerCoef; set => steerCoef = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A029040>]
+    public CFuncKeysReal? SmoothInputSteerDuration { get => smoothInputSteerDuration; set => smoothInputSteerDuration = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A029049>]
+    public CFuncKeysReal? Modulation { get => modulation; set => modulation = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A02904F>]
+    public CFuncKeysReal? BurnoutRadius { get => burnoutRadius; set => burnoutRadius = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A029052>]
+    public CFuncKeysReal? RolloverLateralRatio { get => rolloverLateralRatio; set => rolloverLateralRatio = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A02905D>]
+    public CFuncKeysReal? RearGearAccel { get => rearGearAccel; set => rearGearAccel = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A02905D>]
+    public CFuncKeysReal? LateralSpeed { get => lateralSpeed; set => lateralSpeed = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A02905D>]
+    public CFuncKeysReal? BurnoutRollover { get => burnoutRollover; set => burnoutRollover = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk0A02905D>]
+    public CFuncKeysReal? DonutRollover { get => donutRollover; set => donutRollover = value; }
+
     internal CSceneVehicleCarTuning()
     {
 
@@ -56,11 +153,9 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
     [Chunk(0x0A029001)]
     public class Chunk0A029001 : Chunk<CSceneVehicleCarTuning>
     {
-        public string? U01;
-
         public override void ReadWrite(CSceneVehicleCarTuning n, GameBoxReaderWriter rw)
         {
-            rw.Id(ref U01);
+            rw.Id(ref n.name!);
         }
     }
 
@@ -554,11 +649,9 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
     [Chunk(0x0A029024)]
     public class Chunk0A029024 : Chunk<CSceneVehicleCarTuning>
     {
-        public CFuncKeysReal? U01;
-
         public override void ReadWrite(CSceneVehicleCarTuning n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01);
+            rw.NodeRef<CFuncKeysReal>(ref n.accel);
         }
     }
 
@@ -617,7 +710,6 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
     public class Chunk0A029028 : Chunk<CSceneVehicleCarTuning>
     {
         public float U01;
-        public CFuncKeysReal? U02;
         public float U03;
         public float U04;
         public float U05;
@@ -626,7 +718,7 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
         public override void ReadWrite(CSceneVehicleCarTuning n, GameBoxReaderWriter rw)
         {
             rw.Single(ref U01);
-            rw.NodeRef(ref U02);
+            rw.NodeRef<CFuncKeysReal>(ref n.maxSideFriction);
             rw.Single(ref U03);
             rw.Single(ref U04);
             rw.Single(ref U05);
@@ -645,12 +737,11 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
     public class Chunk0A029029 : Chunk<CSceneVehicleCarTuning>
     {
         public float U01;
-        public CFuncKeysReal? U02;
 
         public override void ReadWrite(CSceneVehicleCarTuning n, GameBoxReaderWriter rw)
         {
             rw.Single(ref U01);
-            rw.NodeRef(ref U02);
+            rw.NodeRef<CFuncKeysReal>(ref n.rolloverLateral);
         }
     }
 
@@ -664,11 +755,9 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
     [Chunk(0x0A02902A)]
     public class Chunk0A02902A : Chunk<CSceneVehicleCarTuning>
     {
-        public CFuncKeysReal? U01;
-
         public override void ReadWrite(CSceneVehicleCarTuning n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01);
+            rw.NodeRef<CFuncKeysReal>(ref n.lateralContactSlowDown);
         }
     }
 
@@ -682,14 +771,13 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
     [Chunk(0x0A02902B)]
     public class Chunk0A02902B : Chunk<CSceneVehicleCarTuning>
     {
-        public CFuncKeysReal? U01;
         public float U02;
         public float U03;
         public int U04;
 
         public override void ReadWrite(CSceneVehicleCarTuning n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01);
+            rw.NodeRef<CFuncKeysReal>(ref n.steerSlowDown);
             rw.Single(ref U02);
             rw.Single(ref U03);
             rw.Int32(ref U04);
@@ -772,11 +860,9 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
     [Chunk(0x0A029030)]
     public class Chunk0A029030 : Chunk<CSceneVehicleCarTuning>
     {
-        public CFuncKeysReal? U01;
-
         public override void ReadWrite(CSceneVehicleCarTuning n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01);
+            rw.NodeRef<CFuncKeysReal>(ref n.steerDriveTorque);
         }
     }
 
@@ -899,14 +985,13 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
         public float U01;
         public float U02;
         public float U03;
-        public CFuncKeysReal? U04;
 
         public override void ReadWrite(CSceneVehicleCarTuning n, GameBoxReaderWriter rw)
         {
             rw.Single(ref U01);
             rw.Single(ref U02);
             rw.Single(ref U03);
-            rw.NodeRef(ref U04);
+            rw.NodeRef<CFuncKeysReal>(ref n.steerRadius);
         }
     }
 
@@ -920,11 +1005,9 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
     [Chunk(0x0A029037)]
     public class Chunk0A029037 : Chunk<CSceneVehicleCarTuning>
     {
-        public CFuncKeysReal? U01;
-
         public override void ReadWrite(CSceneVehicleCarTuning n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01);
+            rw.NodeRef<CFuncKeysReal>(ref n.maxFrictionTorque);
         }
     }
 
@@ -939,14 +1022,13 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
     public class Chunk0A029038 : Chunk<CSceneVehicleCarTuning>
     {
         public float U01;
-        public CFuncKeysReal? U02;
         public float U03;
         public float U04;
 
         public override void ReadWrite(CSceneVehicleCarTuning n, GameBoxReaderWriter rw)
         {
             rw.Single(ref U01);
-            rw.NodeRef(ref U02);
+            rw.NodeRef<CFuncKeysReal>(ref n.maxFrictionForce);
             rw.Single(ref U03);
             rw.Single(ref U04);
         }
@@ -1038,11 +1120,9 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
     [Chunk(0x0A02903D)]
     public class Chunk0A02903D : Chunk<CSceneVehicleCarTuning>
     {
-        public CFuncKeysReal? U01;
-
         public override void ReadWrite(CSceneVehicleCarTuning n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01);
+            rw.NodeRef<CFuncKeysReal>(ref n.slippingAccel);
         }
     }
 
@@ -1074,11 +1154,9 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
     [Chunk(0x0A02903F)]
     public class Chunk0A02903F : Chunk<CSceneVehicleCarTuning>
     {
-        public CFuncKeysReal? U01;
-
         public override void ReadWrite(CSceneVehicleCarTuning n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01);
+            rw.NodeRef<CFuncKeysReal>(ref n.steerCoef);
         }
     }
 
@@ -1092,11 +1170,9 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
     [Chunk(0x0A029040)]
     public class Chunk0A029040 : Chunk<CSceneVehicleCarTuning>
     {
-        public CFuncKeysReal? U01;
-
         public override void ReadWrite(CSceneVehicleCarTuning n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01);
+            rw.NodeRef<CFuncKeysReal>(ref n.smoothInputSteerDuration);
         }
     }
 
@@ -1248,11 +1324,9 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
     [Chunk(0x0A029049)]
     public class Chunk0A029049 : Chunk<CSceneVehicleCarTuning>
     {
-        public CFuncKeysReal? U01;
-
         public override void ReadWrite(CSceneVehicleCarTuning n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01);
+            rw.NodeRef<CFuncKeysReal>(ref n.modulation);
         }
     }
 
@@ -1305,12 +1379,11 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
     public class Chunk0A02904F : Chunk<CSceneVehicleCarTuning>
     {
         public float U01;
-        public CFuncKeysReal? U02;
 
         public override void ReadWrite(CSceneVehicleCarTuning n, GameBoxReaderWriter rw)
         {
             rw.Single(ref U01);
-            rw.NodeRef(ref U02);
+            rw.NodeRef<CFuncKeysReal>(ref n.burnoutRadius);
         }
     }
 
@@ -1342,11 +1415,9 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
     [Chunk(0x0A029052)]
     public class Chunk0A029052 : Chunk<CSceneVehicleCarTuning>
     {
-        public CFuncKeysReal? U01;
-
         public override void ReadWrite(CSceneVehicleCarTuning n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref U01);
+            rw.NodeRef<CFuncKeysReal>(ref n.rolloverLateralRatio);
         }
     }
 
@@ -1524,8 +1595,6 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
     {
         public float U01;
         public float U02;
-        public CFuncKeysReal? U03;
-        public CFuncKeysReal? U04;
         public float U05;
         public float U06;
         public float U07;
@@ -1543,8 +1612,6 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
         public float U19;
         public float U20;
         public float U21;
-        public CFuncKeysReal? U22;
-        public CFuncKeysReal? U23;
         public float U24;
         public float U25;
         public float U26;
@@ -1560,8 +1627,8 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
         {
             rw.Single(ref U01);
             rw.Single(ref U02);
-            rw.NodeRef(ref U03);
-            rw.NodeRef(ref U04);
+            rw.NodeRef<CFuncKeysReal>(ref n.rearGearAccel);
+            rw.NodeRef<CFuncKeysReal>(ref n.lateralSpeed);
             rw.Single(ref U05);
             rw.Single(ref U06);
             rw.Single(ref U07);
@@ -1579,8 +1646,8 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
             rw.Single(ref U19);
             rw.Single(ref U20);
             rw.Single(ref U21);
-            rw.NodeRef(ref U22);
-            rw.NodeRef(ref U23);
+            rw.NodeRef<CFuncKeysReal>(ref n.burnoutRollover);
+            rw.NodeRef<CFuncKeysReal>(ref n.donutRollover);
             rw.Single(ref U24);
             rw.Single(ref U25);
             rw.Single(ref U26);
