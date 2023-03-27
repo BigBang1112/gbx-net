@@ -7,7 +7,7 @@ public abstract class CFuncKeys : CFunc
 {
     #region Fields
 
-    private float[]? xs;
+    private float[] xs = Array.Empty<float>();
 
     #endregion
 
@@ -15,7 +15,7 @@ public abstract class CFuncKeys : CFunc
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk05002001>]
-    public float[]? Xs { get => xs; set => xs = value; }
+    public float[] Xs { get => xs; set => xs = value; }
 
     #endregion
 
@@ -40,7 +40,7 @@ public abstract class CFuncKeys : CFunc
     {
         public override void ReadWrite(CFuncKeys n, GameBoxReaderWriter rw)
         {
-            rw.Array<float>(ref n.xs);
+            rw.Array<float>(ref n.xs!);
         }
     }
 
