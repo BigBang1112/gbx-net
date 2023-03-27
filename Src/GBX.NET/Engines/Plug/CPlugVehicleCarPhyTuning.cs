@@ -651,7 +651,7 @@ public class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning
     {
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef(ref n.accel);
+            rw.NodeRef<CFuncKeysReal>(ref n.accel);
         }
     }
 
@@ -1738,6 +1738,378 @@ public class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
         {
             rw.NodeRef(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x062 chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x062 chunk
+    /// </summary>
+    [Chunk(0x090ED062)]
+    public class Chunk090ED062 : Chunk<CPlugVehicleCarPhyTuning>
+    {
+        public float U01;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x063 chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x063 chunk
+    /// </summary>
+    [Chunk(0x090ED063)]
+    public class Chunk090ED063 : Chunk<CPlugVehicleCarPhyTuning>
+    {
+        public float U01;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x064 chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x064 chunk
+    /// </summary>
+    [Chunk(0x090ED064)]
+    public class Chunk090ED064 : Chunk<CPlugVehicleCarPhyTuning>
+    {
+        public float U01;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x065 chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x065 chunk
+    /// </summary>
+    [Chunk(0x090ED065)]
+    public class Chunk090ED065 : Chunk<CPlugVehicleCarPhyTuning>
+    {
+        public float U01;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x066 chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x066 chunk
+    /// </summary>
+    [Chunk(0x090ED066)]
+    public class Chunk090ED066 : Chunk<CPlugVehicleCarPhyTuning>
+    {
+        public float U01;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x06A chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x06A chunk
+    /// </summary>
+    [Chunk(0x090ED06A)]
+    public class Chunk090ED06A : Chunk<CPlugVehicleCarPhyTuning>
+    {
+        public float U01;
+        public float U02;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+        }
+    }
+
+    #endregion
+
+    #region 0x06E chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x06E chunk
+    /// </summary>
+    [Chunk(0x090ED06E)]
+    public class Chunk090ED06E : Chunk<CPlugVehicleCarPhyTuning>
+    {
+        public float U01;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x072 chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x072 chunk
+    /// </summary>
+    [Chunk(0x090ED072)]
+    public class Chunk090ED072 : Chunk<CPlugVehicleCarPhyTuning>
+    {
+        public float U01;
+        public float U02;
+        public float U03;
+        public int U04;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.Int32(ref U04);
+        }
+    }
+
+    #endregion
+
+    #region 0x077 chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x077 chunk
+    /// </summary>
+    [Chunk(0x090ED077)]
+    public class Chunk090ED077 : Chunk<CPlugVehicleCarPhyTuning>
+    {
+        public float U01;
+        public float U02;
+        public float U03;
+        public float U04;
+        public CFuncKeysReal? U05;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+            rw.NodeRef<CFuncKeysReal>(ref U05);
+        }
+    }
+
+    #endregion
+
+    #region 0x078 chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x078 chunk
+    /// </summary>
+    [Chunk(0x090ED078)]
+    public class Chunk090ED078 : Chunk<CPlugVehicleCarPhyTuning>
+    {
+        public float U01;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x079 chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x079 chunk
+    /// </summary>
+    [Chunk(0x090ED079)]
+    public class Chunk090ED079 : Chunk<CPlugVehicleCarPhyTuning>
+    {
+        public bool U01;
+        public CFuncKeysReal? U02;
+        public CFuncKeysReal? U03;
+        public float U04;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.Boolean(ref U01);
+            rw.NodeRef<CFuncKeysReal>(ref U02);
+            rw.NodeRef<CFuncKeysReal>(ref U03);
+            rw.Single(ref U04);
+        }
+    }
+
+    #endregion
+
+    #region 0x07D chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x07D chunk
+    /// </summary>
+    [Chunk(0x090ED07D)]
+    public class Chunk090ED07D : Chunk<CPlugVehicleCarPhyTuning>
+    {
+        public int U01;
+        public float U02;
+        public float U03;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+        }
+    }
+
+    #endregion
+
+    #region 0x082 chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x082 chunk
+    /// </summary>
+    [Chunk(0x090ED082)]
+    public class Chunk090ED082 : Chunk<CPlugVehicleCarPhyTuning>
+    {
+        public bool U01;
+        public CFuncKeysReal? U02;
+        public CFuncKeysReal? U03;
+        public CFuncKeysReal? U04;
+        public CFuncKeysReal? U05;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.Boolean(ref U01);
+            rw.NodeRef<CFuncKeysReal>(ref U02);
+            rw.NodeRef<CFuncKeysReal>(ref U03);
+            rw.NodeRef<CFuncKeysReal>(ref U04);
+            rw.NodeRef<CFuncKeysReal>(ref U05);
+        }
+    }
+
+    #endregion
+
+    #region 0x084 chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x084 chunk
+    /// </summary>
+    [Chunk(0x090ED084)]
+    public class Chunk090ED084 : Chunk<CPlugVehicleCarPhyTuning>
+    {
+        public float U01;
+        public float U02;
+        public float U03;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+        }
+    }
+
+    #endregion
+
+    #region 0x085 chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x085 chunk
+    /// </summary>
+    [Chunk(0x090ED085)]
+    public class Chunk090ED085 : Chunk<CPlugVehicleCarPhyTuning>
+    {
+        public bool U01;
+        public float U02;
+        public float U03;
+        public float U04;
+        public float U05;
+        public float U06;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.Boolean(ref U01);
+            rw.Single(ref U02);
+            rw.Single(ref U03);
+            rw.Single(ref U04);
+            rw.Single(ref U05);
+            rw.Single(ref U06);
+        }
+    }
+
+    #endregion
+
+    #region 0x086 chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x086 chunk
+    /// </summary>
+    [Chunk(0x090ED086)]
+    public class Chunk090ED086 : Chunk<CPlugVehicleCarPhyTuning>
+    {
+        public float U01;
+        public float U02;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+            rw.Single(ref U02);
+        }
+    }
+
+    #endregion
+
+    #region 0x088 chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x088 chunk
+    /// </summary>
+    [Chunk(0x090ED088)]
+    public class Chunk090ED088 : Chunk<CPlugVehicleCarPhyTuning>
+    {
+        public float U01;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x089 chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x089 chunk
+    /// </summary>
+    [Chunk(0x090ED089)]
+    public class Chunk090ED089 : Chunk<CPlugVehicleCarPhyTuning>
+    {
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            throw new Exception("TODO 0x089");
         }
     }
 

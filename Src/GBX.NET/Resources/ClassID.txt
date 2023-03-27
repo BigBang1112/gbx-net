@@ -742,6 +742,9 @@
   0DB CPlugFileWebP .webp
   0E7 CPlugVehicleVisModel
   0EA CPlugVehiclePhyModel
+  0EB CPlugVehiclePhyTuning
+  0EC CPlugVehiclePhyTunings
+  0ED CPlugVehicleCarPhyTuning
   0EF CPlugVehicleCameraRace3Model
   0F4 CPlugGameSkin
   0F6 CPlugVehicleCameraRace2Model
