@@ -3043,13 +3043,14 @@ public class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning
     public class Chunk090ED09A : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
         public CPlugVehicleGearBox? U01;
+        public GameBoxRefTable.File? U01File;
 
         public int Version { get; set; }
 
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
         {
             rw.VersionInt32(this);
-            rw.NodeRef<CPlugVehicleGearBox>(ref U01);
+            rw.NodeRef<CPlugVehicleGearBox>(ref U01, ref U01File);
         }
     }
 
@@ -3153,11 +3154,410 @@ public class CPlugVehicleCarPhyTuning : CPlugVehiclePhyTuning
     /// CPlugVehicleCarPhyTuning 0x09C chunk
     /// </summary>
     [Chunk(0x090ED09C)]
-    public class Chunk090ED09C : Chunk<CPlugVehicleCarPhyTuning>
+    public class Chunk090ED09C : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
     {
+        public float U01;
+
+        public int Version { get; set; } = 20;
+
         public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
         {
-            throw new Exception("TODO 0x09C");
+            rw.VersionInt32(this);
+            
+            if (Version < 0x12)
+            {
+                rw.Single(ref U01);
+            }
+            else
+            {
+                rw.NodeRef<CFuncKeysReal>();
+                rw.NodeRef<CFuncKeysReal>();
+                rw.NodeRef<CFuncKeysReal>();
+            }
+
+            rw.Single();
+            rw.Single();
+            rw.NodeRef<CFuncKeysReal>();
+            rw.NodeRef<CFuncKeysReal>();
+            rw.NodeRef<CFuncKeysReal>();
+            rw.NodeRef<CFuncKeysReal>();
+            rw.NodeRef<CFuncKeysReal>();
+            
+            if (Version >= 1)
+            {
+                rw.NodeRef<CFuncKeysReal>();
+                rw.NodeRef<CFuncKeysReal>();
+            }
+            
+            if (Version >= 2)
+            {
+                rw.Single();
+            }
+            
+            if (Version == 3)
+            {
+                rw.Single();
+            }
+            
+            if (Version >= 4)
+            {
+                rw.NodeRef<CFuncKeysReal>();
+
+                if (Version >= 5)
+                {
+                    rw.Single();
+                    rw.NodeRef<CFuncKeysReal>();
+                    rw.Single();
+
+                    rw.Single();
+                    if (Version < 0xe)
+                    {
+                        // above * 10000.0
+                    }
+
+                    rw.Single();
+                    if (Version < 0xe)
+                    {
+                        // above * 100.0
+                    }
+
+                    if (Version >= 6)
+                    {
+                        rw.Single();
+
+                        if (Version >= 7)
+                        {
+                            rw.Int32();
+                            rw.NodeRef<CFuncKeysReal>();
+
+                            if (Version >= 8)
+                            {
+                                rw.NodeRef<CFuncKeysReal>();
+
+                                if (Version >= 9)
+                                {
+                                    rw.Single();
+                                    if (Version < 0xe)
+                                    {
+                                        // above * 10000.0
+                                    }
+
+                                    if (Version >= 10)
+                                    {
+                                        rw.Single();
+
+                                        if (Version >= 11)
+                                        {
+                                            rw.NodeRef<CFuncKeysReal>();
+                                            rw.NodeRef<CFuncKeysReal>();
+
+                                            if (Version >= 12)
+                                            {
+                                                rw.NodeRef<CFuncKeysReal>();
+
+                                                if (Version >= 13)
+                                                {
+                                                    rw.NodeRef<CFuncKeysReal>();
+
+                                                    if (Version >= 15)
+                                                    {
+                                                        rw.Single();
+
+                                                        if (Version >= 16)
+                                                        {
+                                                            rw.Single();
+
+                                                            if (Version >= 19)
+                                                            {
+                                                                rw.NodeRef<CFuncKeysReal>();
+
+                                                                if (Version >= 20)
+                                                                {
+                                                                    rw.Single();
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #endregion
+
+    #region 0x09D chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x09D chunk
+    /// </summary>
+    [Chunk(0x090ED09D)]
+    public class Chunk090ED09D : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
+    {
+        public bool? U01;
+        public float? U02;
+        public float? U03;
+        public float U04;
+        public float U05;
+        public bool? U06;
+        public float U07;
+        public float U08;
+        public float? U09;
+
+        public int Version { get; set; } = 19;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+            
+            if (Version == 0)
+            {
+                rw.Boolean(ref U01);
+                rw.Single(ref U02);
+                rw.Single(ref U03);
+                rw.Single(ref U04);
+                rw.Single(ref U05);
+                rw.Boolean(ref U06);
+                rw.Single(ref U07);
+                rw.Single(ref U08);
+            }
+            else
+            {
+                rw.NodeRef<CFuncKeysReal>();
+                rw.Single(ref U05);
+                rw.NodeRef<CFuncKeysReal>();
+                rw.Single(ref U09);
+                rw.Single(ref U08);
+                rw.Single(ref U04);
+                rw.Single(ref U07);
+                rw.NodeRef<CFuncKeysReal>();
+                rw.NodeRef<CFuncKeysReal>();
+            }
+            
+            if (1 < Version)
+            {
+                rw.NodeRef<CFuncKeysReal>();
+            }
+            if (2 < Version)
+            {
+                rw.NodeRef<CFuncKeysReal>();
+                rw.NodeRef<CFuncKeysReal>();
+            }
+            if (3 < Version)
+            {
+                rw.Single();
+                rw.Single();
+            }
+            if (4 < Version)
+            {
+                rw.Single();
+                rw.NodeRef<CFuncKeysReal>();
+                rw.NodeRef<CFuncKeysReal>();
+                rw.NodeRef<CFuncKeysReal>();
+                rw.NodeRef<CFuncKeysReal>();
+            }
+            if (5 < Version)
+            {
+                rw.NodeRef<CFuncKeysReal>();
+            }
+            
+            if (7 < Version)
+            {
+                rw.Single();
+                rw.NodeRef<CFuncKeysReal>();
+            }
+            if (8 < Version)
+            {
+                rw.Single();
+                rw.Single();
+                rw.Single();
+            }
+            if (9 < Version)
+            {
+                rw.NodeRef<CFuncKeysReal>();
+            }
+            if (10 < Version)
+            {
+                rw.Single();
+            }
+            if (0xb < Version)
+            {
+                rw.NodeRef<CFuncKeysReal>();
+            }
+            if (0xc < Version)
+            {
+                rw.NodeRef<CFuncKeysReal>();
+            }
+            if (0xd < Version)
+            {
+                rw.NodeRef<CFuncKeysReal>();
+            }
+            if (0xe < Version)
+            {
+                rw.Single();
+                rw.Int32();
+            }
+            if (0xf < Version)
+            {
+                rw.Single();
+            }
+            if (0x10 < Version)
+            {
+                rw.Single();
+            }
+            if (0x11 < Version)
+            {
+                rw.NodeRef<CFuncKeysReal>();
+            }
+            if (0x12 < Version)
+            {
+                rw.Boolean();
+            }
+        }
+    }
+
+    #endregion
+
+    #region 0x09E chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x09E chunk
+    /// </summary>
+    [Chunk(0x090ED09E)]
+    public class Chunk090ED09E : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
+    {
+        public int Version { get; set; } = 5;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            rw.Single();
+            rw.Single();
+            rw.Single();
+
+            if (Version != 0)
+            {
+                rw.Single();
+            }
+            if (1 < Version)
+            {
+                rw.Int32();
+                rw.Single();
+            }
+            if (2 < Version)
+            {
+                rw.Single();
+            }
+            if (3 < Version)
+            {
+                rw.Single();
+                rw.NodeRef<CFuncKeysReal>();
+                rw.Single();
+            }
+
+            if (Version >= 5)
+            {
+                rw.Single();
+            }
+        }
+    }
+
+    #endregion
+
+    #region 0x09F chunk
+
+    /// <summary>
+    /// CPlugVehicleCarPhyTuning 0x09F chunk
+    /// </summary>
+    [Chunk(0x090ED09F)]
+    public class Chunk090ED09F : Chunk<CPlugVehicleCarPhyTuning>, IVersionable
+    {
+        public int Version { get; set; } = 13;
+
+        public override void ReadWrite(CPlugVehicleCarPhyTuning n, GameBoxReaderWriter rw)
+        {
+            rw.VersionInt32(this);
+
+            rw.NodeRef<CFuncKeysReal>();
+            rw.Single();
+            rw.Single();
+            rw.Single();
+            if (Version != 0)
+            {
+                rw.Single();
+            }
+            if (1 < Version)
+            {
+                rw.NodeRef<CFuncKeysReal>();
+            }
+            if (2 < Version)
+            {
+                rw.NodeRef<CFuncKeysReal>();
+            }
+            if (3 < Version)
+            {
+                rw.Single();
+                rw.Single();
+                rw.Single();
+                rw.Single();
+                rw.Single();
+                rw.Single();
+            }
+            if (4 < Version)
+            {
+                rw.Single();
+            }
+            if (5 < Version)
+            {
+                rw.NodeRef<CFuncKeysReal>();
+            }
+            if (6 < Version)
+            {
+                rw.Single();
+                rw.NodeRef<CFuncKeysReal>();
+                rw.NodeRef<CFuncKeysReal>();
+                rw.Single();
+            }
+            if (7 < Version)
+            {
+                rw.Single();
+                rw.Single();
+                rw.Single();
+                rw.Single();
+            }
+            if (8 < Version)
+            {
+                rw.Vec3();
+                rw.Vec3();
+            }
+            if (9 < Version)
+            {
+                rw.NodeRef<CFuncKeysReal>();
+            }
+            if (10 < Version)
+            {
+                rw.NodeRef<CFuncKeysReal>();
+            }
+            if (0xb < Version)
+            {
+                rw.Boolean();
+            }
+            if (0xc < Version)
+            {
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+                rw.Int32();
+            }
         }
     }
 
