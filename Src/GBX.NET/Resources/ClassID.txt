@@ -748,6 +748,7 @@
   0EF CPlugVehicleCameraRace3Model
   0F4 CPlugGameSkin
   0F6 CPlugVehicleCameraRace2Model
+  0F7 CPlugVehicleCameraInternalModel
   0F8 CPlugAnimLocSimple
   0F9 CPlugLightUserModel
   108 CPlugFileWebM .webm
