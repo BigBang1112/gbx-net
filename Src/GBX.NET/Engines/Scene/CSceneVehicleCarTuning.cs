@@ -1729,4 +1729,22 @@ public class CSceneVehicleCarTuning : CSceneVehicleTuning
     }
 
     #endregion
+
+    #region 0x061 chunk
+
+    /// <summary>
+    /// CSceneVehicleCarTuning 0x061 chunk
+    /// </summary>
+    [Chunk(0x0A029061)]
+    public class Chunk0A029061 : Chunk<CSceneVehicleCarTuning>
+    {
+        public Node? U01;
+
+        public override void ReadWrite(CSceneVehicleCarTuning n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef(ref U01);
+        }
+    }
+
+    #endregion
 }
