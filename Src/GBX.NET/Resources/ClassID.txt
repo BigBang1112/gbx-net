@@ -1087,6 +1087,7 @@
   019 CGameModulePlaygroundHudModel
   01A CGameModuleMenuPageModel
   01B CGameEditorModel
+  01C CGameVehicleModel
   020 CGameItemPlacementParam
   024 CGamePixelArtModel
   025 CGameBlockItem
