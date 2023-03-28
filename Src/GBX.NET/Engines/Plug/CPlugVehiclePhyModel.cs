@@ -78,6 +78,8 @@ public class CPlugVehiclePhyModel : CMwNod
     [Chunk(0x090EA008)]
     public class Chunk090EA008 : Chunk<CPlugVehiclePhyModel>, IVersionable
     {
+        public Vec3[]? U01;
+
         public int Version { get; set; } = 8;
 
         public override void ReadWrite(CPlugVehiclePhyModel n, GameBoxReaderWriter rw)
@@ -93,7 +95,9 @@ public class CPlugVehiclePhyModel : CMwNod
 
             if (Version >= 6)
             {
-                if (rw.Array<Vec3>()?.Length > 4)
+                rw.Array<Vec3>(ref U01);
+
+                if (U01?.Length > 4)
                 {
                     throw new Exception("Invalid array length");
                 }
