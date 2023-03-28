@@ -45,6 +45,8 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
     private bool isInternal;
     private bool isAdvanced;
     private ulong fileTime;
+    private CMwNod? iconFid;
+    private GameBoxRefTable.File? iconFidFile;
 
     #endregion
 
@@ -104,7 +106,11 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E001009>]
-    public CMwNod? IconFid { get; set; }
+    public CMwNod? IconFid
+    {
+        get => iconFid = GetNodeFromRefTable(iconFid, iconFidFile) as CMwNod;
+        set => iconFid = value;
+    }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E00100D>]
@@ -401,7 +407,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
 
             if (hasIconFid)
             {
-                n.IconFid = rw.NodeRef(n.IconFid);
+                rw.NodeRef(ref n.iconFid, ref n.iconFidFile);
             }
 
             rw.Id(ref U01);
@@ -504,6 +510,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
         private int version;
 
         public CMwNod? U01;
+        private GameBoxRefTable.File? U01File;
         public CMwNod? U02;
 
         public int Version { get => version; set => version = value; }
@@ -511,7 +518,7 @@ public partial class CGameCtnCollector : CMwNod, CGameCtnCollector.IHeader
         public override void ReadWrite(CGameCtnCollector n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
-            rw.NodeRef(ref U01);
+            rw.NodeRef(ref U01, ref U01File); // skin direct reference inside pak
             rw.String(ref n.skinDirectory);
 
             if (version >= 2 && (n.skinDirectory is null || n.skinDirectory.Length == 0))

@@ -80,7 +80,7 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
     private EItemType itemType;
     private EItemType itemTypeE;
     private CMwNod?[]? nadeoSkinFids;
-    private CMwNod?[]? cameras;
+    private ExternalNode<CMwNod>[]? cameras;
     private CMwNod? raceInterfaceFid;
     private Vec3 groundPoint;
     private float painterGroundMargin;
@@ -115,7 +115,7 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E002009>]
-    public CMwNod?[]? Cameras { get => cameras; set => cameras = value; }
+    public ExternalNode<CMwNod>[]? Cameras { get => cameras; set => cameras = value; }
 
     [NodeMember]
     [AppliedWithChunk<Chunk2E00200C>]
