@@ -7,6 +7,7 @@
 [Node(0x2E002000)]
 [NodeExtension("Item")]
 [NodeExtension("Block")]
+[NodeExtension("ObjectInfo")]
 public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader // CGameCustomBlockModel but it's here instead
 {
     #region Enums
