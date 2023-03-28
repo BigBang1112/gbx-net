@@ -96,6 +96,7 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
     private EDefaultCam? defaultCam;
     private CGameItemPlacementParam? defaultPlacement;
     private string? archetypeRef;
+    private CGameItemModel? archetypeRefNode;
     private string? iconFid;
     private EWaypointType waypointType;
     private bool disableLightmap;
@@ -203,6 +204,10 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E00201E>]
     public string? ArchetypeRef { get => archetypeRef; set => archetypeRef = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk2E00201E>]
+    public CGameItemModel? ArchetypeRefNode { get => archetypeRefNode; set => archetypeRefNode = value; }
 
     [NodeMember] // Idk
     [AppliedWithChunk<Chunk2E002020>]
@@ -681,8 +686,7 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
     public class Chunk2E00201E : Chunk<CGameItemModel>
     {
         private int version;
-
-        public int U01;
+        
         public string? U02;
         public int U03;
 
@@ -705,7 +709,7 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
                 {
                     if (n.archetypeRef.Length == 0)
                     {
-                        rw.Int32(ref U01);
+                        rw.NodeRef<CGameItemModel>(ref n.archetypeRefNode);
                     }
 
                     if (version >= 6)
