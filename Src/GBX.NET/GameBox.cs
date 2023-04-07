@@ -1,7 +1,4 @@
 ﻿using GBX.NET.Debugging;
-using GBX.NET.Extensions;
-using System.Diagnostics;
-using System.Reflection;
 
 namespace GBX.NET;
 
@@ -277,7 +274,7 @@ public partial class GameBox
 
         if (version < 3)
             return null;
-
+        
         reader.ReadBytes(3);
 
         if (version >= 4)
@@ -308,6 +305,18 @@ public partial class GameBox
         return ReadNodeID(fs);
     }
 
+    private static Type? ReadNodeType(GameBoxReader reader)
+    {
+        var classId = ReadNodeID(reader);
+
+        if (classId.HasValue)
+        {
+            return NodeManager.GetClassTypeById(Node.RemapToLatest(classId.Value));
+        }
+
+        return null;
+    }
+
     /// <summary>
     /// Reads the type of the main node from GBX file.
     /// </summary>
@@ -328,30 +337,6 @@ public partial class GameBox
     {
         using var r = new GameBoxReader(stream);
         return ReadNodeType(r);
-    }
-
-    private static Type? ReadNodeType(GameBoxReader reader)
-    {
-        var classID = ReadNodeID(reader);
-
-        if (!classID.HasValue)
-            return null;
-
-        var modernID = classID.GetValueOrDefault();
-        if (NodeManager.TryGetMapping(classID.GetValueOrDefault(), out uint newerClassID))
-            modernID = newerClassID;
-
-        Debug.WriteLine("GetGameBoxType: " + modernID.ToString("x8"));
-
-        // This should be optimized
-        var availableClass = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass
-                && x.Namespace?.StartsWith("GBX.NET.Engines") == true && x.IsSubclassOf(typeof(CMwNod))
-                && x.GetCustomAttribute<NodeAttribute>()?.ID == modernID).FirstOrDefault();
-
-        if (availableClass is null)
-            return null;
-
-        return typeof(GameBox<>).MakeGenericType(availableClass);
     }
 
     /// <summary>
