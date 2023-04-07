@@ -26,6 +26,7 @@ public class GameBoxReader : BinaryReader
     internal ILogger? Logger { get; }
 
     public GbxState State { get; }
+
     private int? IdVersion { get => State.IdVersion; set => State.IdVersion = value; }
     private IList<string> IdStrings => State.IdStrings;
     private SortedDictionary<int, Node?> AuxNodes => State.AuxNodes;
@@ -121,7 +122,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentException"><paramref name="readPrefix"/> is <see cref="StringLengthPrefix.None"/>.</exception>
-    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
+    /// <exception cref="StringLengthOutOfRangeException">String length is too big.</exception>
     /// <returns>The string being read.</returns>
     public string ReadString(StringLengthPrefix readPrefix)
     {
@@ -131,11 +132,6 @@ public class GameBoxReader : BinaryReader
             StringLengthPrefix.Int32 => ReadInt32(),
             _ => throw new ArgumentException("Can't read string without knowing its length."),
         };
-
-        if (length < 0 || length > 0x10000000) // ~268MB
-        {
-            throw new StringLengthOutOfRangeException(length);
-        }
 
         return ReadString(length);
     }
@@ -147,7 +143,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
+    /// <exception cref="StringLengthOutOfRangeException">String length is too big.</exception>
     public override string ReadString() => ReadString(readPrefix: StringLengthPrefix.Int32);
 
     /// <summary>
@@ -159,11 +155,17 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="length"/> is negative.</exception>
+    /// <exception cref="LengthLimitException">String length is too big.</exception>
     public string ReadString(int length)
     {
         if (length == 0)
         {
             return "";
+        }
+
+        if (length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(length);
         }
 
 #if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
@@ -197,7 +199,7 @@ public class GameBoxReader : BinaryReader
         return Encoding.UTF8.GetString(ReadBytes(length));
 #endif
     }
-    
+
     /// <summary>
     /// First reads an <see cref="int"/> representing the length, then reads the sequence of bytes.
     /// </summary>
@@ -206,7 +208,17 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
     /// <returns>A byte array.</returns>
-    public byte[] ReadBytes() => ReadBytes(count: ReadInt32());
+    public byte[] ReadBytes()
+    {
+        var length = ReadInt32();
+
+        if (length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(length);
+        }
+
+        return ReadBytes(length);
+    }
 
     /// <summary>
     /// First reads the <see cref="int"/> of the Id version, if not read yet, considering the information from state. Then reads an <see cref="int"/> (index) that holds the flags of the representing <see cref="string"/>. If the first 30 bits are 0, a fresh <see cref="string"/> is also read.
@@ -216,13 +228,18 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="NotSupportedException">Gbx has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
-    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
+    /// <exception cref="LengthLimitException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
     public Id ReadId(bool cannotBeCollection = false)
     {
         if (IdVersion is null)
         {
             IdVersion = ReadInt32();
+
+            if (IdVersion < 3)
+            {
+                throw new VersionNotSupportedException(IdVersion.Value);
+            }
 
             // Edge-case scenario where Id doesn't have a version for whatever reason (can be multiple)
             if ((IdVersion & 0xC0000000) > 10)
@@ -297,7 +314,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="NotSupportedException">GBX has the first Id presented without a version. Solution exists, but the stream does not support seeking.</exception>
-    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
+    /// <exception cref="LengthLimitException">String length is negative.</exception>
     /// <exception cref="CorruptedIdException">The Id index is not matching any known values.</exception>
     public Ident ReadIdent()
     {
@@ -314,7 +331,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="StringLengthOutOfRangeException">String length is negative.</exception>
+    /// <exception cref="LengthLimitException">String length is negative.</exception>
     public FileRef ReadFileRef()
     {
         var version = ReadByte();
@@ -517,6 +534,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
+    [Obsolete]
     public (Vec3 position, Quat rotation, float speed, Vec3 velocity) ReadTransform()
     {
         var pos = ReadVec3();
@@ -975,7 +993,7 @@ public class GameBoxReader : BinaryReader
     /// <exception cref="EndOfStreamException">The end of the stream is reached.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="IOException">An I/O error occurs.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Length is negative.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Length is not valid.</exception>
     public T[] ReadArray<T>(int length, bool lengthInBytes = false) where T : struct
     {
         if (length == 0)
@@ -985,7 +1003,7 @@ public class GameBoxReader : BinaryReader
 
         if (length < 0)
         {
-            throw new ArgumentOutOfRangeException(nameof(length), "Length is negative.");
+            throw new ArgumentOutOfRangeException(nameof(length), "Length is not valid.");
         }
 
         var l = length * (lengthInBytes ? 1 : TypeSize<T>.Size);
@@ -1037,6 +1055,11 @@ public class GameBoxReader : BinaryReader
             throw new ArgumentOutOfRangeException(nameof(length), "Length is negative.");
         }
 
+        if (length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(length);
+        }
+
         return (uint)determineFrom.GetValueOrDefault(length) switch
         {
             >= ushort.MaxValue => ReadArray<int>(length),
@@ -1074,6 +1097,11 @@ public class GameBoxReader : BinaryReader
         if (length < 0)
         {
             throw new ArgumentOutOfRangeException(nameof(length), "Length is negative.");
+        }
+
+        if (length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(length);
         }
 
         var result = new T[length];
@@ -1190,6 +1218,11 @@ public class GameBoxReader : BinaryReader
             throw new ArgumentOutOfRangeException(nameof(length));
         }
 
+        if (length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(length);
+        }
+
         var result = new T[length];
 
         for (var i = 0; i < length; i++)
@@ -1247,6 +1280,11 @@ public class GameBoxReader : BinaryReader
             throw new ArgumentOutOfRangeException(nameof(length));
         }
 
+        if (length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(length);
+        }
+
         var result = new T[length];
 
         for (var i = 0; i < length; i++)
@@ -1302,6 +1340,11 @@ public class GameBoxReader : BinaryReader
         if (length < 0)
         {
             throw new ArgumentOutOfRangeException(nameof(length));
+        }
+
+        if (length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(length);
         }
 
         var result = new T[length];
@@ -1504,6 +1547,17 @@ public class GameBoxReader : BinaryReader
             throw new ArgumentNullException(nameof(forLoop));
         }
 
+        // In theory it doesn't have to be there, but it ensures that the parse can crash as soon as something weird happens
+        if (length < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(length));
+        }
+
+        if (length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(length);
+        }
+
         for (var i = 0; i < length; i++)
         {
             yield return forLoop.Invoke(this);
@@ -1548,6 +1602,17 @@ public class GameBoxReader : BinaryReader
         if (forLoop is null)
         {
             throw new ArgumentNullException(nameof(forLoop));
+        }
+
+        // In theory it doesn't have to be there, but it ensures that the parse can crash as soon as something weird happens
+        if (length < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(length));
+        }
+
+        if (length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(length);
         }
 
         for (var i = 0; i < length; i++)
@@ -1596,6 +1661,17 @@ public class GameBoxReader : BinaryReader
             throw new ArgumentNullException(nameof(forLoop));
         }
 
+        // In theory it doesn't have to be there, but it ensures that the parse can crash as soon as something weird happens
+        if (length < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(length));
+        }
+
+        if (length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(length);
+        }
+
         for (var i = 0; i < length; i++)
         {
             yield return forLoop.Invoke(i, this);
@@ -1642,6 +1718,17 @@ public class GameBoxReader : BinaryReader
         if (forLoop is null)
         {
             throw new ArgumentNullException(nameof(forLoop));
+        }
+
+        // In theory it doesn't have to be there, but it ensures that the parse can crash as soon as something weird happens
+        if (length < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(length));
+        }
+
+        if (length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(length);
         }
 
         for (var i = 0; i < length; i++)
@@ -1815,6 +1902,11 @@ public class GameBoxReader : BinaryReader
             throw new ArgumentNullException(nameof(forLoop));
         }
 
+        if (length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(length);
+        }
+
         var list = new List<T>(length);
 
         for (var i = 0; i < length; i++)
@@ -1845,6 +1937,11 @@ public class GameBoxReader : BinaryReader
     public IDictionary<TKey, TValue> ReadDictionary<TKey, TValue>(bool overrideKey = false) where TKey : notnull
     {
         var length = ReadInt32();
+
+        if (length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(length);
+        }
 
         var dictionary = new Dictionary<TKey, TValue>(length);
 
@@ -1885,6 +1982,11 @@ public class GameBoxReader : BinaryReader
     {
         var length = ReadInt32();
 
+        if (length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(length);
+        }
+
         var dictionary = new Dictionary<TKey, TValue?>(length);
 
         for (var i = 0; i < length; i++)
@@ -1905,6 +2007,11 @@ public class GameBoxReader : BinaryReader
         where TKey : notnull where TValue : Node
     {
         var length = ReadInt32();
+
+        if (length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(length);
+        }
 
         var dictionary = new Dictionary<TKey, TValue?>(length);
 
@@ -1951,6 +2058,11 @@ public class GameBoxReader : BinaryReader
     public Span<T> ReadSpan<T>(int length, bool lengthInBytes = false) where T : struct
     {
         var l = length * (lengthInBytes ? 1 : Marshal.SizeOf<T>());
+
+        if (length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(length);
+        }
 
 #if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
         var bytes = new byte[l];
@@ -2149,7 +2261,7 @@ public class GameBoxReader : BinaryReader
             secondUInt16 = ReadUInt16();
         }
         
-        return firstByte & 0x7f | secondUInt16 << 7;
+        return firstByte & 127 | secondUInt16 << 7;
     }
 
     public string ReadSmallString()
@@ -2220,7 +2332,11 @@ public class GameBoxReader : BinaryReader
 
         var mag = mag16 == short.MinValue
             ? 0
+#if NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
+            : MathF.Exp(mag16 / 1000f);
+#else
             : (float)Math.Exp(mag16 / 1000.0);
+#endif
 
         return ReadVec3Unit2() * mag;
     }

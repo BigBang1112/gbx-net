@@ -16,12 +16,27 @@ public static class Lzo
 
     public static void Decompress(byte[] input, byte[] output)
     {
+        if (input.Length > 0x10000000)
+        {
+            throw new LengthLimitException(input.Length);
+        }
+        
+        if (output.Length > 0x10000000)
+        {
+            throw new LengthLimitException(output.Length);
+        }
+
         CheckForLzo();
         methodLzoDecompress!.Invoke(null, new object[] { input, output });
     }
 
     public static byte[] Compress(byte[] data)
     {
+        if (data.Length > 0x10000000)
+        {
+            throw new LengthLimitException(data.Length);
+        }
+
         CheckForLzo();
         return (byte[])methodLzoCompress!.Invoke(null, new object[] { data })!;
     }
