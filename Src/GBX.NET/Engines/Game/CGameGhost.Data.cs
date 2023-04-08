@@ -43,6 +43,9 @@ public partial class CGameGhost
         // 20 = SVehicleSimpleState_ReplayAfter2018_03_09
         public int Version { get; set; }
 
+        public int? U01 { get; set; }
+        public int[]? Offsets { get; set; }
+
         public Data(byte[] ghostData, bool isOldData)
         {
             GhostData = ghostData;
@@ -61,12 +64,38 @@ public partial class CGameGhost
 
             using var ms = new MemoryStream(GhostData);
 
-            if (IsOldData)
+            if (!IsOldData)
             {
-                throw new NotSupportedException("Old ghost data is not supported.");
+                Read(ms, compressed: true);
+                return;
             }
-            
-            Read(ms, compressed: true);
+
+            if (Offsets is null)
+            {
+                throw new NotSupportedException("This type of ghost data is not supported.");
+            }
+
+            SavedMobilClassId = 0x0A02B000;
+
+            if (Offsets.Length > 0)
+            {
+                Samples = new ObservableCollection<Sample>();
+
+                using var r = new GameBoxReader(ms);
+
+                var prevOffset = Offsets[0];
+
+                for (int i = 1; i < Offsets.Length; i++)
+                {
+                    var offset = Offsets[i - 1];
+
+                    Samples.Add(ReadSample(i - 1, sampleData: r.ReadBytes(offset - prevOffset)));
+
+                    prevOffset = offset;
+                }
+
+                Samples.Add(ReadSample(Offsets.Length - 1, sampleData: r.ReadBytes((int)r.BaseStream.Length - Offsets[Offsets.Length - 1])));
+            }
         }
 
         /// <summary>
@@ -109,36 +138,36 @@ public partial class CGameGhost
         private void Read(GameBoxReader r)
         {
             SavedMobilClassId = r.ReadUInt32(); // CSceneVehicleCar or CSceneMobilCharVis
-            
+
             if (SavedMobilClassId == uint.MaxValue)
             {
                 return;
             }
 
             IsFixedTimeStep = r.ReadBoolean(); // IsFixedTimeStep
-            var u01 = r.ReadInt32();
-            SamplePeriod = TimeInt32.FromMilliseconds(r.ReadInt32()); // SavedPeriod
+            U01 = r.ReadInt32();
+            SamplePeriod = r.ReadTimeInt32(); // SavedPeriod
             Version = r.ReadInt32();
-            
+
             var stateBuffer = r.ReadBytes(); // CGameGhostTMData::ArchiveStateBuffer
-            
+
             // CGameGhostTMData::ArchiveStateOffsets
             var sizePerSample = -1;
             var sampleSizes = default(int[]);
 
             var numSamples = r.ReadInt32(); // StateOffsets count
-            
+
             if (numSamples > 0)
             {
                 var firstSampleOffset = r.ReadInt32();
-                
+
                 if (numSamples > 1)
                 {
                     sizePerSample = r.ReadInt32();
-                    
+
                     if (sizePerSample == -1)
                     {
-                        sampleSizes = r.ReadArray<int>(numSamples - 1);
+                        sampleSizes = r.ReadArray<int>(numSamples - 1); // state offset deltas
                     }
                 }
             }
@@ -152,14 +181,14 @@ public partial class CGameGhost
                 sampleTimes = r.ReadArray<int>();
             }
             //
-            
+
             Samples = new ObservableCollection<Sample>();
 
             if (numSamples <= 0)
             {
                 return;
             }
-            
+
             using var stateBufferMs = new MemoryStream(stateBuffer);
             using var stateBufferR = new GameBoxReader(stateBufferMs);
 
@@ -170,33 +199,35 @@ public partial class CGameGhost
                     -1 => GetSampleDataFromDifferentSizes(stateBufferR, numSamples, sampleSizes, i),
                     _ => stateBufferR.ReadBytes(sizePerSample)
                 };
-
-                var time = new TimeInt32(sampleTimes?[i] ?? i * SamplePeriod.Milliseconds);
-
-                Sample? sample = SavedMobilClassId switch
-                {
-                    0x0A02B000 => new CSceneVehicleCar.Sample(time, sampleData),
-                    0x0A401000 => new CSceneMobilCharVis.Sample(time, sampleData),
-                    _ => null
-                };
-
-                if (sample is null)
-                {
-                    continue;
-                }
-
-                if (sampleData.Length > 0)
-                {
-                    using var sampleMs = new MemoryStream(sampleData);
-                    using var sampleR = new GameBoxReader(sampleMs);
-
-                    sample.Read(sampleMs, sampleR, Version);
-
-                    var sampleProgress = (int)sampleMs.Position;
-                }
-
-                Samples.Add(sample);
+                
+                Samples.Add(ReadSample(i, sampleData, sampleTimes));
             }
+        }
+
+        private Sample ReadSample(int i, byte[] sampleData, int[]? sampleTimes = null)
+        {
+            var time = new TimeInt32(sampleTimes?[i] ?? i * SamplePeriod.Milliseconds);
+
+            Sample sample = SavedMobilClassId switch
+            {
+                0x0A02B000 => new CSceneVehicleCar.Sample(time, sampleData),
+                0x0A401000 => new CSceneMobilCharVis.Sample(time, sampleData),
+                _ => throw new NotSupportedException($"Class ID 0x{SavedMobilClassId:X8} is not supported.")
+            };
+
+            if (sampleData.Length == 0)
+            {
+                return sample;
+            }
+            
+            using var sampleMs = new MemoryStream(sampleData);
+            using var sampleR = new GameBoxReader(sampleMs);
+
+            sample.Read(sampleMs, sampleR, Version);
+
+            var sampleProgress = (int)sampleMs.Position;
+
+            return sample;
         }
 
         private static byte[] GetSampleDataFromDifferentSizes(GameBoxReader reader, int numSamples, int[]? sizesPerSample, int i)

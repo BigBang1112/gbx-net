@@ -50,23 +50,21 @@ public partial class CGameGhost : CMwNod
     [Chunk(0x0303F003)]
     public class Chunk0303F003 : Chunk<CGameGhost>
     {
-        public int[]? Packets;
-        public int U03;
-
         public byte[] Data { get; set; } = Array.Empty<byte>();
-        public int[]? Samples { get; set; }
+        
+        public int[]? Times;
 
         public override void ReadWrite(CGameGhost n, GameBoxReaderWriter rw)
         {
             Data = rw.Bytes(Data)!;
-            Samples = rw.Array(Samples);
 
             n.sampleData = new Data(Data, isOldData: true);
 
-            rw.Array(ref Packets);
+            n.sampleData.Offsets = rw.Array(n.sampleData.Offsets);
+            rw.Array(ref Times);
             n.sampleData.IsFixedTimeStep = rw.Boolean(n.sampleData.IsFixedTimeStep);
             n.sampleData.SamplePeriod = rw.TimeInt32(n.sampleData.SamplePeriod);
-            rw.Int32(ref U03);
+            n.sampleData.Version = rw.Int32(n.sampleData.Version);
         }
     }
 

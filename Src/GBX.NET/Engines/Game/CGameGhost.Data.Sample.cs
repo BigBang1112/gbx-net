@@ -26,7 +26,7 @@ public partial class CGameGhost
                 return $"{Time}, {Data.Length} bytes";
             }
 
-            public virtual void Read(MemoryStream ms, GameBoxReader r, int version)
+            internal virtual void Read(MemoryStream ms, GameBoxReader r, int version)
             {
 
             }
