@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.IO.Compression;
 
 namespace GBX.NET.Engines.Game;
@@ -8,6 +7,10 @@ public partial class CGameGhost
 {
     public partial class Data
     {
+        public byte[] GhostData { get; }
+        public bool IsOldData { get; }
+        public bool SamplesRequested { get; private set; }
+
         /// <summary>
         /// How much time is between each sample.
         /// </summary>
@@ -16,6 +19,7 @@ public partial class CGameGhost
         public ObservableCollection<Sample> Samples { get; private set; }
         public CompressionLevel Compression { get; set; }
         public uint SavedMobilClassId { get; set; }
+        public bool IsFixedTimeStep { get; set; }
 
         // CSceneVehicleVis_RestoreStaticState
         // 2 = SVehicleSimpleState_ReplayAfter211003 - 22 bytes
@@ -39,9 +43,30 @@ public partial class CGameGhost
         // 20 = SVehicleSimpleState_ReplayAfter2018_03_09
         public int Version { get; set; }
 
-        public Data()
+        public Data(byte[] ghostData, bool isOldData)
         {
+            GhostData = ghostData;
+            IsOldData = isOldData;
             Samples = new ObservableCollection<Sample>();
+        }
+
+        internal void Parse()
+        {
+            if (SamplesRequested)
+            {
+                return;
+            }
+
+            SamplesRequested = true;
+
+            using var ms = new MemoryStream(GhostData);
+
+            if (IsOldData)
+            {
+                throw new NotSupportedException("Old ghost data is not supported.");
+            }
+            
+            Read(ms, compressed: true);
         }
 
         /// <summary>
@@ -49,12 +74,11 @@ public partial class CGameGhost
         /// </summary>
         /// <param name="stream">Stream to read from.</param>
         /// <param name="compressed">If stream contains compressed data.</param>
-        public void Read(Stream stream, bool compressed)
+        private void Read(Stream stream, bool compressed)
         {
             if (compressed)
             {
                 using var zlib = new CompressedStream(stream, CompressionMode.Decompress);
-
                 using var r = new GameBoxReader(zlib);
 
                 Read(r);
@@ -72,7 +96,7 @@ public partial class CGameGhost
         /// Read uncompressed ghost data from <see cref="Stream"/>.
         /// </summary>
         /// <param name="stream">Stream to read from.</param>
-        public void Read(Stream stream)
+        private void Read(Stream stream)
         {
             using var r = new GameBoxReader(stream);
             Read(r);
@@ -82,7 +106,7 @@ public partial class CGameGhost
         /// Read uncompressed ghost data with <see cref="GameBoxReader"/>.
         /// </summary>
         /// <param name="r">Reader.</param>
-        public void Read(GameBoxReader r)
+        private void Read(GameBoxReader r)
         {
             SavedMobilClassId = r.ReadUInt32(); // CSceneVehicleCar or CSceneMobilCharVis
             
@@ -91,7 +115,7 @@ public partial class CGameGhost
                 return;
             }
 
-            var isFixedTimeStep = r.ReadBoolean(); // IsFixedTimeStep
+            IsFixedTimeStep = r.ReadBoolean(); // IsFixedTimeStep
             var u01 = r.ReadInt32();
             SamplePeriod = TimeInt32.FromMilliseconds(r.ReadInt32()); // SavedPeriod
             Version = r.ReadInt32();
@@ -123,7 +147,7 @@ public partial class CGameGhost
             // CGameGhostTMData::ArchiveStateTimes
             var sampleTimes = default(int[]);
 
-            if (!isFixedTimeStep)
+            if (!IsFixedTimeStep)
             {
                 sampleTimes = r.ReadArray<int>();
             }
@@ -146,7 +170,6 @@ public partial class CGameGhost
                     -1 => GetSampleDataFromDifferentSizes(stateBufferR, numSamples, sampleSizes, i),
                     _ => stateBufferR.ReadBytes(sizePerSample)
                 };
-
 
                 var time = new TimeInt32(sampleTimes?[i] ?? i * SamplePeriod.Milliseconds);
 
