@@ -128,7 +128,7 @@ public class GameBoxReaderTests
         using var ms = new MemoryStream(BitConverter.GetBytes(-text.Length).Concat(Encoding.UTF8.GetBytes(text)).ToArray());
         using var reader = new GameBoxReader(ms);
 
-        Assert.Throws<StringLengthOutOfRangeException>(() => reader.ReadString(StringLengthPrefix.Int32));
+        Assert.Throws<ArgumentOutOfRangeException>(() => reader.ReadString(StringLengthPrefix.Int32));
     }
 
     // test ReadString no params
