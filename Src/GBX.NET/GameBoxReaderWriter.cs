@@ -585,7 +585,7 @@ public partial class GameBoxReaderWriter
     public BigInteger BigInt(BigInteger variable, int byteLength)
     {
         if (Reader is not null) variable = Reader.ReadBigInt(byteLength);
-        if (Writer is not null) Writer.WriteBigInt(variable);
+        if (Writer is not null) Writer.WriteBigInt(variable, byteLength);
         return variable;
     }
 
@@ -602,7 +602,7 @@ public partial class GameBoxReaderWriter
     public BigInteger? BigInt(BigInteger? variable, int byteLength, BigInteger defaultValue = default)
     {
         if (Reader is not null) variable = Reader.ReadBigInt(byteLength);
-        if (Writer is not null) Writer.WriteBigInt(variable.GetValueOrDefault(defaultValue));
+        if (Writer is not null) Writer.WriteBigInt(variable.GetValueOrDefault(defaultValue), byteLength);
         return variable;
     }
 

@@ -447,7 +447,27 @@ public class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteBigInt(BigInteger bigInteger) => Write(bigInteger.ToByteArray());
+    public void WriteBigInt(BigInteger bigInteger, int byteLength)
+    {
+        var bytes = bigInteger.ToByteArray();
+        
+        if (bytes.Length == byteLength)
+        {
+            // No padding necessary
+            Write(bytes);
+        }
+        
+        if (bytes.Length > byteLength)
+        {
+            throw new ArgumentException($"Value too large to fit in {byteLength} bytes");
+        }
+        
+        // Pad with leading zeros
+        var paddedBytes = new byte[byteLength];
+        Array.Copy(bytes, 0, paddedBytes, byteLength - bytes.Length, bytes.Length);
+        
+        Write(paddedBytes);
+    }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
