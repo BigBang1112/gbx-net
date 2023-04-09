@@ -455,6 +455,7 @@ public class GameBoxWriter : BinaryWriter
         {
             // No padding necessary
             Write(bytes);
+            return;
         }
         
         if (bytes.Length > byteLength)
