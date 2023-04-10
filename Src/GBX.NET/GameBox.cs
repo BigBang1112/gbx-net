@@ -260,6 +260,21 @@ public partial class GameBox
     }
 
     /// <summary>
+    /// Changes the compression of the body to apply on saving. This is not supported for header-only parses.
+    /// </summary>
+    /// <param name="compression">Compression type.</param>
+    /// <exception cref="HeaderOnlyParseLimitationException"></exception>
+    public void ChangeBodyCompression(GameBoxCompression compression)
+    {
+        if (RawBody is null)
+        {
+            Header.CompressionOfBody = compression;
+        }
+        
+        throw new HeaderOnlyParseLimitationException("Compression cannot be changed with RawBody parse.");
+    }
+
+    /// <summary>
     /// Implicitly casts <see cref="GameBox"/> to its <see cref="Node"/>.
     /// </summary>
     /// <param name="gbx"></param>
