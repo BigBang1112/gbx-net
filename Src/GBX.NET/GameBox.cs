@@ -266,12 +266,12 @@ public partial class GameBox
     /// <exception cref="HeaderOnlyParseLimitationException"></exception>
     public void ChangeBodyCompression(GameBoxCompression compression)
     {
-        if (RawBody is null)
+        if (RawBody is not null)
         {
-            Header.CompressionOfBody = compression;
+            throw new HeaderOnlyParseLimitationException("Compression cannot be changed with RawBody parse.");
         }
-        
-        throw new HeaderOnlyParseLimitationException("Compression cannot be changed with RawBody parse.");
+
+        Header.CompressionOfBody = compression;
     }
 
     /// <summary>
