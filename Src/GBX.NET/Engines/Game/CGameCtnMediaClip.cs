@@ -84,6 +84,20 @@ public class CGameCtnMediaClip : CMwNod
         return $"{base.ToString()} {{ \"{(string.IsNullOrEmpty(Name) ? "Unnamed clip" : Name)}\" }}";
     }
 
+    public IEnumerable<CGameCtnGhost> GetGhosts()
+    {
+        foreach (var track in Tracks)
+        {
+            foreach (var block in track.Blocks)
+            {
+                if (block is CGameCtnMediaBlockGhost ghostBlock)
+                {
+                    yield return ghostBlock.GhostModel;
+                }
+            }
+        }
+    }
+
     #endregion
 
     #region Chunks
