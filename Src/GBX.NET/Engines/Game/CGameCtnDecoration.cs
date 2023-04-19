@@ -6,9 +6,11 @@
 public partial class CGameCtnDecoration : CGameCtnCollector, CGameCtnDecoration.IHeader
 {
     private CGameCtnDecorationSize? decoSize;
+    private GameBoxRefTable.File? decoSizeFile;
     private CGameCtnDecorationAudio? decoAudio;
     private GameBoxRefTable.File? decoAudioFile;
     private CGameCtnDecorationMood? decoMood;
+    private GameBoxRefTable.File? decoMoodFile;
     private CPlugDecoratorSolid? decoratorSolidWarp;
     private CGameCtnDecorationTerrainModifier? terrainModifierCovered;
     private CGameCtnDecorationTerrainModifier? terrainModifierBase;
@@ -120,7 +122,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, CGameCtnDecoration.
     {
         public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnDecorationSize>(ref n.decoSize);
+            rw.NodeRef<CGameCtnDecorationSize>(ref n.decoSize, ref n.decoSizeFile);
         }
     }
 
@@ -150,11 +152,9 @@ public partial class CGameCtnDecoration : CGameCtnCollector, CGameCtnDecoration.
     [Chunk(0x03038013, "DecoMood")]
     public class Chunk03038013 : Chunk<CGameCtnDecoration>
     {
-        public int U01;
-
         public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnDecorationMood>(ref n.decoMood);
+            rw.NodeRef<CGameCtnDecorationMood>(ref n.decoMood, ref n.decoMoodFile);
         }
     }
 

@@ -15,7 +15,9 @@ public class CGameCtnDecorationMood : CMwNod
     private bool shadowScene;
     private bool backgroundIsLocallyLighted;
     private CHmsLightMap? hmsLightMap;
+    private GameBoxRefTable.File? hmsLightMapFile;
     private CHmsAmbientOcc? hmsAmbientOcc;
+    private GameBoxRefTable.File? hmsAmbientOccFile;
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk0303A000>]
@@ -63,11 +65,19 @@ public class CGameCtnDecorationMood : CMwNod
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk0303A004>]
-    public CHmsLightMap? HmsLightMap { get => hmsLightMap; set => hmsLightMap = value; }
+    public CHmsLightMap? HmsLightMap
+    {
+        get => hmsLightMap = GetNodeFromRefTable(hmsLightMap, hmsLightMapFile) as CHmsLightMap;
+        set => hmsLightMap = value;
+    }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk0303A005>]
-    public CHmsAmbientOcc? HmsAmbientOcc { get => hmsAmbientOcc; set => hmsAmbientOcc = value; }
+    public CHmsAmbientOcc? HmsAmbientOcc
+    {
+        get => hmsAmbientOcc = GetNodeFromRefTable(hmsAmbientOcc, hmsAmbientOccFile) as CHmsAmbientOcc;
+        set => hmsAmbientOcc = value;
+    }
 
     internal CGameCtnDecorationMood()
     {
