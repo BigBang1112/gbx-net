@@ -173,7 +173,7 @@ public class CGameCtnDecorationMood : CMwNod
     {
         public override void ReadWrite(CGameCtnDecorationMood n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef<CHmsLightMap>(ref n.hmsLightMap);
+            rw.NodeRef<CHmsLightMap>(ref n.hmsLightMap, ref n.hmsLightMapFile);
         }
     }
 
@@ -189,7 +189,7 @@ public class CGameCtnDecorationMood : CMwNod
     {
         public override void ReadWrite(CGameCtnDecorationMood n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef<CHmsAmbientOcc>(ref n.hmsAmbientOcc);
+            rw.NodeRef<CHmsAmbientOcc>(ref n.hmsAmbientOcc, ref n.hmsAmbientOccFile);
         }
     }
 
