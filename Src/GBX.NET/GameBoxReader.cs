@@ -163,6 +163,11 @@ public class GameBoxReader : BinaryReader
             return "";
         }
 
+        if (length < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(length), "Length cannot be negative.");
+        }
+
         if (length > 0x10000000) // ~268MB
         {
             throw new LengthLimitException(length);
