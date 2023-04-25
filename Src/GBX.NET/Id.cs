@@ -37,10 +37,10 @@ public readonly record struct Id
 
     public Int3 GetBlockSize() => ToString() switch
     {
-        "Desert" or "Speed" or "Snow" or "Alpine" or "Rally" => (32, 16, 32),
-        "Island" => (64, 8, 64),
-        "Bay" or "Stadium" or "Valley" or "Lagoon" or "Stadium2020" => (32, 8, 32),
         "Coast" => (16, 4, 16),
+        "Desert" or "Speed" or "Snow" or "Alpine" => (32, 16, 32),
+        "Rally" or "Bay" or "Stadium" or "Valley" or "Lagoon" or "Stadium2020" => (32, 8, 32),
+        "Island" => (64, 8, 64),
         "Canyon" => (64, 16, 64),
         _ => throw new NotSupportedException("Block size not supported for this collection"),
     };
