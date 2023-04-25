@@ -357,5 +357,18 @@ public class CGameCtnMediaClip : CMwNod
 
     #endregion
 
+    #region 0x00E skippable chunk
+
+    /// <summary>
+    /// CGameCtnMediaClip 0x00E skippable chunk
+    /// </summary>
+    [Chunk(0x0307900E), IgnoreChunk]
+    public class Chunk0307900E : SkippableChunk<CGameCtnMediaClip>
+    {
+
+    }
+
+    #endregion
+
     #endregion
 }
