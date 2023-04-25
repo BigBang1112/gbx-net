@@ -25,7 +25,7 @@ public class CGameCtnDecorationTerrainModifier : CMwNod
     [AppliedWithChunk<Chunk0303C000>]
     public string? RemapFolder { get => remapFolder; set => remapFolder = value; }
 
-    [NodeMember(ExactlyNamed = true)]
+    [NodeMember(ExactName = "Id")]
     [AppliedWithChunk<Chunk0303C001>]
     public string? IdName { get => idName; set => idName = value; }
 
