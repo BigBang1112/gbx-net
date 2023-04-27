@@ -100,58 +100,61 @@ public abstract class CPlugVisual3D : CPlugVisual
             var u04 = n.IsFlagBitSet(21);
             var isSprite = n is CPlugVisualSprite;
 
-            n.vertices = r.ReadArray(n.Count, r =>
+            if (n.VertexStreams.Length == 0)
             {
-                var pos = r.ReadVec3();
-                var vertU01 = default(int?);
-                var vertU02 = default(Vec3?);
-                var vertU03 = default(int?);
-                var vertU04 = default(Vec4?);
-
-                if (u01)
+                n.vertices = r.ReadArray(n.Count, r =>
                 {
-                    if (u03)
-                    {
-                        vertU01 = r.ReadInt32();
-                    }
-                    else
-                    {
-                        vertU02 = r.ReadVec3();
-                    }
-                }
+                    var pos = r.ReadVec3();
+                    var vertU01 = default(int?);
+                    var vertU02 = default(Vec3?);
+                    var vertU03 = default(int?);
+                    var vertU04 = default(Vec4?);
 
-                if (u02)
-                {
-                    if (u04)
+                    if (u01)
                     {
-                        vertU03 = r.ReadInt32();
+                        if (u03)
+                        {
+                            vertU01 = r.ReadInt32();
+                        }
+                        else
+                        {
+                            vertU02 = r.ReadVec3();
+                        }
                     }
-                    else
+
+                    if (u02)
                     {
-                        vertU04 = r.ReadVec4();
+                        if (u04)
+                        {
+                            vertU03 = r.ReadInt32();
+                        }
+                        else
+                        {
+                            vertU04 = r.ReadVec4();
+                        }
                     }
-                }
-                
-                var vertU05 = default(float?);
-                var vertU06 = default(int?);
 
-                if (isSprite)
-                {
-                    vertU05 = r.ReadSingle();
-                    vertU06 = r.ReadInt32();
-                }
+                    var vertU05 = default(float?);
+                    var vertU06 = default(int?);
 
-                return new Vertex
-                {
-                    Position = pos,
-                    U04 = vertU01,
-                    U05 = vertU02,
-                    U06 = vertU03,
-                    U07 = vertU04,
-                    U08 = vertU05,
-                    U09 = vertU06,
-                };
-            });
+                    if (isSprite)
+                    {
+                        vertU05 = r.ReadSingle();
+                        vertU06 = r.ReadInt32();
+                    }
+
+                    return new Vertex
+                    {
+                        Position = pos,
+                        U04 = vertU01,
+                        U05 = vertU02,
+                        U06 = vertU03,
+                        U07 = vertU04,
+                        U08 = vertU05,
+                        U09 = vertU06,
+                    };
+                });
+            }
 
             (Tangents1Count, Tangents1) = ReadTangents(n, r);
             (Tangents2Count, Tangents2) = ReadTangents(n, r);
@@ -165,39 +168,42 @@ public abstract class CPlugVisual3D : CPlugVisual
             var u04 = n.IsFlagBitSet(21);
             var isSprite = n is CPlugVisualSprite;
 
-            for (var i = 0; i < n.Count; i++)
+            if (n.VertexStreams.Length == 0)
             {
-                var v = n.vertices[i];
-                w.Write(v.Position);
-
-                if (u01)
+                for (var i = 0; i < n.Count; i++)
                 {
-                    if (u03)
-                    {
-                        w.Write(v.U04.GetValueOrDefault());
-                    }
-                    else
-                    {
-                        w.Write(v.U05.GetValueOrDefault());
-                    }
-                }
+                    var v = n.vertices[i];
+                    w.Write(v.Position);
 
-                if (u02)
-                {
-                    if (u04)
+                    if (u01)
                     {
-                        w.Write(v.U06.GetValueOrDefault());
+                        if (u03)
+                        {
+                            w.Write(v.U04.GetValueOrDefault());
+                        }
+                        else
+                        {
+                            w.Write(v.U05.GetValueOrDefault());
+                        }
                     }
-                    else
-                    {
-                        w.Write(v.U07.GetValueOrDefault());
-                    }
-                }
 
-                if (isSprite)
-                {
-                    w.Write(v.U08.GetValueOrDefault());
-                    w.Write(v.U09.GetValueOrDefault());
+                    if (u02)
+                    {
+                        if (u04)
+                        {
+                            w.Write(v.U06.GetValueOrDefault());
+                        }
+                        else
+                        {
+                            w.Write(v.U07.GetValueOrDefault());
+                        }
+                    }
+
+                    if (isSprite)
+                    {
+                        w.Write(v.U08.GetValueOrDefault());
+                        w.Write(v.U09.GetValueOrDefault());
+                    }
                 }
             }
 
