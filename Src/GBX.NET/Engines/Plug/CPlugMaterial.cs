@@ -168,6 +168,34 @@ public class CPlugMaterial : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugMaterial 0x010 chunk
+    /// </summary>
+    [Chunk(0x09079010)]
+    public class Chunk09079010 : Chunk<CPlugMaterial>
+    {
+        public float U01;
+
+        public override void ReadWrite(CPlugMaterial n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+        }
+    }
+
+    /// <summary>
+    /// CPlugMaterial 0x011 chunk
+    /// </summary>
+    [Chunk(0x09079011)]
+    public class Chunk09079011 : Chunk<CPlugMaterial>
+    {
+        public string[] U01 = Array.Empty<string>();
+
+        public override void ReadWrite(CPlugMaterial n, GameBoxReaderWriter rw)
+        {
+            rw.ArrayId(ref U01!);
+        }
+    }
+
     public class DeviceMat : IReadableWritableWithGbx
     {
         private Node? node;
