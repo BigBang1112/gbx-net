@@ -415,7 +415,7 @@ public class CPlugSolid : CPlug
     /// CPlugSolid 0x019 chunk
     /// </summary>
     [Chunk(0x09005019)]
-    public class Chunk09005019 : Chunk<CPlugSolid>
+    public class Chunk09005019 : Chunk<CPlugSolid>, IVersionable
     {
         private int version;
         private int listVersion1 = 10;
@@ -458,6 +458,19 @@ public class CPlugSolid : CPlug
                 }
             }
         }
+    }
+
+    #endregion
+
+    #region 0x01A chunk
+
+    /// <summary>
+    /// CPlugSolid 0x01A chunk (lod normal map)
+    /// </summary>
+    [Chunk(0x0900501A, "lod normal map"), IgnoreChunk]
+    public class Chunk0900501A : SkippableChunk<CPlugSolid>
+    {
+        
     }
 
     #endregion
