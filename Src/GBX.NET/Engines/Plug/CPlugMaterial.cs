@@ -196,6 +196,45 @@ public class CPlugMaterial : CPlug
         }
     }
 
+    #region 0x012 skippable chunk
+
+    /// <summary>
+    /// CPlugMaterial 0x012 skippable chunk
+    /// </summary>
+    [Chunk(0x09079012), IgnoreChunk]
+    public class Chunk09079012 : SkippableChunk<CPlugMaterial>
+    {
+
+    }
+
+    #endregion
+
+    #region 0x013 skippable chunk
+
+    /// <summary>
+    /// CPlugMaterial 0x013 skippable chunk
+    /// </summary>
+    [Chunk(0x09079013), IgnoreChunk]
+    public class Chunk09079013 : SkippableChunk<CPlugMaterial>
+    {
+
+    }
+
+    #endregion
+
+    #region 0x014 skippable chunk
+
+    /// <summary>
+    /// CPlugMaterial 0x014 skippable chunk
+    /// </summary>
+    [Chunk(0x09079014), IgnoreChunk]
+    public class Chunk09079014 : SkippableChunk<CPlugMaterial>
+    {
+
+    }
+
+    #endregion
+
     public class DeviceMat : IReadableWritableWithGbx
     {
         private Node? node;
