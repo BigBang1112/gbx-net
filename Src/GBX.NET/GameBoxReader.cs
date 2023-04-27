@@ -2345,4 +2345,14 @@ public class GameBoxReader : BinaryReader
 
         return ReadVec3Unit2() * mag;
     }
+
+    public Vec3 ReadVec3_10b()
+    {
+        var val = ReadInt32();
+
+        return new Vec3(
+            (val & 0x3FF) / (float)0x1FF,
+            ((val >> 10) & 0x3FF) / (float)0x1FF,
+            ((val >> 20) & 0x3FF) / (float)0x1FF);
+    }
 }

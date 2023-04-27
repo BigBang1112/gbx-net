@@ -1097,4 +1097,9 @@ public class GameBoxWriter : BinaryWriter
         WriteSmallLen(value.Length);
         Write(value, StringLengthPrefix.None);
     }
+    
+    public void WriteVec3_10b(Vec3 value)
+    {
+        Write((int)(value.X * 0x1FF) + ((int)(value.Y * 0x1FF) << 10) + ((int)(value.Z * 0x1FF) << 20));
+    }
 }

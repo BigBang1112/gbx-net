@@ -2989,8 +2989,9 @@ public partial class GameBoxReaderWriter
         versionable.Version = Byte(versionable.Version);
     }
 
-    internal void String(ref object materialsFolderName)
+    public void ArrayVec3_10b(ref Vec3[]? array, int count)
     {
-        throw new NotImplementedException();
+        if (Reader is not null) array = Reader.ReadArray(count, r => Reader.ReadVec3_10b());
+        if (Writer is not null) Writer.WriteArray(array, (x, w) => w.WriteVec3_10b(x));
     }
 }
