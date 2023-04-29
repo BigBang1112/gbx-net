@@ -29,8 +29,12 @@ public partial class CGameCtnDecoration : CGameCtnCollector, CGameCtnDecoration.
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk03038011>]
-    public CGameCtnDecorationSize? DecoSize { get => decoSize; set => decoSize = value; }
-    
+    public CGameCtnDecorationSize? DecoSize
+    {
+        get => decoSize = GetNodeFromRefTable(decoSize, decoSizeFile) as CGameCtnDecorationSize;
+        set => decoSize = value;
+    }
+
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk03038012>]
     [AppliedWithChunk<Chunk03038019>]
