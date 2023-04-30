@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET;
 
-public enum GameVersion
+public enum GameEdition
 {
     TM10 = 1000,
     TMS = 2000,
