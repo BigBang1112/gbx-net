@@ -2322,15 +2322,15 @@ public class GameBoxReader : BinaryReader
         var angle = ReadUInt16() * MathF.PI / ushort.MaxValue;
         var axis = ReadVec3Unit4();
         
-        return new Quat(axis, MathF.Cos(angle)) * MathF.Sin(angle);
+        return new Quat(axis * MathF.Sin(angle), MathF.Cos(angle));
 #else
         var angle = ReadUInt16() * Math.PI / ushort.MaxValue;
         var axis = ReadVec3Unit4();
 
-        return new Quat(axis, (float)Math.Cos(angle)) * (float)Math.Sin(angle);
+        return new Quat(axis * (float)Math.Sin(angle), (float)Math.Cos(angle));
 #endif
     }
-    
+
     public Vec3 ReadVec3_4()
     {
         var mag16 = ReadInt16();
