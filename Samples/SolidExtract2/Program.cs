@@ -1,10 +1,27 @@
 ﻿using GBX.NET;
 using GBX.NET.Engines.Plug;
 
-var files = new[] { "*.Solid.Gbx", "*.Solid2.Gbx" }
-    .SelectMany(x => Directory.EnumerateFiles(args[0], x, SearchOption.AllDirectories));
+IEnumerable<string> files;
+var gameDataFolder = default(string);
 
-var gameDataFolder = args.ElementAtOrDefault(1);
+if (args.Length == 0)
+{
+    Console.WriteLine("Please drag and drop a file or folder onto this executable.");
+    return;
+}
+
+if (File.Exists(args[0]))
+{
+    files = new[] { args[0] };
+}
+else
+{
+    files = new[] { "*.Solid.Gbx", "*.Solid2.Gbx" }
+        .SelectMany(x => Directory.EnumerateFiles(args[0], x, SearchOption.AllDirectories));
+
+    gameDataFolder = args.ElementAtOrDefault(1);
+}
+
 
 foreach (var filePath in files)
 {
