@@ -14,6 +14,10 @@ public class CGameCtnDecorationMood : CMwNod
     private float shadowCarIntensity;
     private bool shadowScene;
     private bool backgroundIsLocallyLighted;
+    private CHmsLightMap? hmsLightMap;
+    private GameBoxRefTable.File? hmsLightMapFile;
+    private CHmsAmbientOcc? hmsAmbientOcc;
+    private GameBoxRefTable.File? hmsAmbientOccFile;
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk0303A000>]
@@ -58,6 +62,22 @@ public class CGameCtnDecorationMood : CMwNod
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk0303A002>]
     public bool BackgroundIsLocallyLighted { get => backgroundIsLocallyLighted; set => backgroundIsLocallyLighted = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk0303A004>]
+    public CHmsLightMap? HmsLightMap
+    {
+        get => hmsLightMap = GetNodeFromRefTable(hmsLightMap, hmsLightMapFile) as CHmsLightMap;
+        set => hmsLightMap = value;
+    }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk0303A005>]
+    public CHmsAmbientOcc? HmsAmbientOcc
+    {
+        get => hmsAmbientOcc = GetNodeFromRefTable(hmsAmbientOcc, hmsAmbientOccFile) as CHmsAmbientOcc;
+        set => hmsAmbientOcc = value;
+    }
 
     internal CGameCtnDecorationMood()
     {
@@ -138,6 +158,38 @@ public class CGameCtnDecorationMood : CMwNod
         public override void ReadWrite(CGameCtnDecorationMood n, GameBoxReaderWriter rw)
         {
             rw.Boolean(ref U01);
+        }
+    }
+
+    #endregion
+
+    #region 0x004 chunk
+
+    /// <summary>
+    /// CGameCtnDecorationMood 0x004 chunk
+    /// </summary>
+    [Chunk(0x0303A004)]
+    public class Chunk0303A004 : Chunk<CGameCtnDecorationMood>
+    {
+        public override void ReadWrite(CGameCtnDecorationMood n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef<CHmsLightMap>(ref n.hmsLightMap, ref n.hmsLightMapFile);
+        }
+    }
+
+    #endregion
+
+    #region 0x005 chunk
+
+    /// <summary>
+    /// CGameCtnDecorationMood 0x005 chunk
+    /// </summary>
+    [Chunk(0x0303A005)]
+    public class Chunk0303A005 : Chunk<CGameCtnDecorationMood>
+    {
+        public override void ReadWrite(CGameCtnDecorationMood n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef<CHmsAmbientOcc>(ref n.hmsAmbientOcc, ref n.hmsAmbientOccFile);
         }
     }
 

@@ -59,6 +59,7 @@ public partial class CGameCtnMediaBlockGhost : CGameCtnMediaBlock, CGameCtnMedia
 
     [NodeMember]
     [AppliedWithChunk<Chunk030E5001>]
+    [AppliedWithChunk<Chunk030E5002>]
     public CGameCtnGhost GhostModel { get => ghostModel; set => ghostModel = value; }
 
     [NodeMember]

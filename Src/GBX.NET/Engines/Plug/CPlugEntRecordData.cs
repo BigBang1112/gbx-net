@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.IO.Compression;
+﻿using System.IO.Compression;
 
 namespace GBX.NET.Engines.Plug;
 
@@ -10,265 +9,219 @@ namespace GBX.NET.Engines.Plug;
 [Node(0x0911F000)]
 public class CPlugEntRecordData : CMwNod
 {
-    private ObservableCollection<Sample>? samples;
+    private int uncompressedSize;
+    private byte[] data = Array.Empty<byte>();
 
-    public byte[]? Data { get; set; }
+    private TimeInt32 start;
+    private TimeInt32 end;
+    private EntRecordDesc[] entRecordDescs = Array.Empty<EntRecordDesc>();
+    private NoticeRecordDesc[] noticeRecordDescs = Array.Empty<NoticeRecordDesc>();
+    private IList<EntRecordListElem> entList = Array.Empty<EntRecordListElem>();
+    private IList<NoticeRecordListElem> bulkNoticeList = Array.Empty<NoticeRecordListElem>();
+    private IList<CustomModulesDeltaList> customModulesDeltaLists = Array.Empty<CustomModulesDeltaList>();
 
     [NodeMember]
-    [AppliedWithChunk<Chunk0911F000>]
-    public ObservableCollection<Sample>? Samples
-    {
-        get
-        {
-            if (samples is null)
-            {
-                var chunkVersion = GetChunk<Chunk0911F000>()?.Version;
+    public byte[] Data { get => data; set => data = value; }
 
-                if (chunkVersion.HasValue)
-                {
-                    samples = ReadSamples(chunkVersion.Value);
-                }
-            }
+    [NodeMember]
+    public TimeInt32 Start { get => start; }
 
-            return samples;
-        }
-    }
+    [NodeMember]
+    public TimeInt32 End { get => end; }
+
+    [NodeMember]
+    public EntRecordDesc[] EntRecordDescs { get => entRecordDescs; }
+
+    [NodeMember]
+    public NoticeRecordDesc[] NoticeRecordDescs { get => noticeRecordDescs; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public IList<EntRecordListElem> EntList { get => entList; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public IList<NoticeRecordListElem> BulkNoticeList { get => bulkNoticeList; }
+
+    [NodeMember]
+    public IList<CustomModulesDeltaList> CustomModulesDeltaLists { get => customModulesDeltaLists; }
 
     internal CPlugEntRecordData()
     {
-        
+
     }
 
-    private ObservableCollection<Sample> ReadSamples(int version)
+    private void ReadWriteData(GameBoxReaderWriter rw, int version)
     {
-        if (Data is null)
+        if (version >= 1)
         {
-            throw new Exception();
+            rw.TimeInt32(ref start); // COULD BE WRONG
+            rw.TimeInt32(ref end); // COULD BE WRONG
         }
 
-        var samples = new ObservableCollection<Sample>();
-
-        using var ms = new MemoryStream(Data);
-        using var cs = new CompressedStream(ms, CompressionMode.Decompress);
-        using var r = new GameBoxReader(cs);
-
-        var u01 = r.ReadInt32();
-        var ghostLength = r.ReadInt32(); // milliseconds
-        var objects = r.ReadArray<object>(r =>
-        {
-            var nodeId = r.ReadUInt32();
-            var nodeName = NodeManager.GetName(nodeId);
-
-            return new
-            {
-                nodeId,
-                nodeName,
-                obj_u01 = r.ReadInt32(),
-                obj_u02 = r.ReadInt32(),
-                obj_u03 = r.ReadInt32(),
-                mwbuffer = r.ReadInt32(),
-                obj_u05 = r.ReadInt32()
-            };
-        });
+        rw.ArrayArchive<EntRecordDesc>(ref entRecordDescs!);
 
         if (version >= 2)
         {
-            var objcts2 = r.ReadArray<object>(r =>
+            rw.ArrayArchive<NoticeRecordDesc>(ref noticeRecordDescs!, version);
+        }
+
+        if (rw.Reader is not null)
+        {
+            entList = ReadEntList(rw.Reader, version).ToList();
+
+            if (version >= 3)
             {
-                var u02 = r.ReadInt32();
-                var u03 = r.ReadInt32();
+                bulkNoticeList = ReadBulkNoticeList(rw.Reader).ToList();
 
-                uint? clas = null;
-                string? clasName = null;
+                // custom modules
+                customModulesDeltaLists = ReadCustomModulesDeltaLists(rw.Reader, version).ToList();
+            }
+        }
 
-                if (version >= 4)
-                {
-                    clas = r.ReadUInt32();
-                    clasName = NodeManager.GetName(clas.Value);
-                }
+        if (rw.Writer is not null)
+        {
+            throw new NotSupportedException("Write is not supported");
+        }
+    }
 
-                return new
-                {
-                    u02,
-                    u03,
-                    clas,
-                    clasName
-                };
+    private static IEnumerable<CustomModulesDeltaList> ReadCustomModulesDeltaLists(GameBoxReader r, int version)
+    {
+        var deltaListCount = version >= 8 ? r.ReadInt32() : 1;
+
+        if (deltaListCount == 0)
+        {
+            yield break;
+        }
+
+        if (version >= 7)
+        {
+            for (var i = 0; i < deltaListCount; i++)
+            {
+                yield return ReadCustomModulesDeltaList(r, version);
+            }
+        }
+    }
+
+    private static CustomModulesDeltaList ReadCustomModulesDeltaList(GameBoxReader r, int version)
+    {
+        var deltas = new List<CustomModulesDelta>();
+
+        while (r.ReadBoolean(asByte: true))
+        {
+            var u01 = r.ReadInt32();
+            var data = r.ReadBytes(); // MwBuffer
+            var u02 = version >= 9 ? r.ReadBytes() : Array.Empty<byte>();
+
+            deltas.Add(new()
+            {
+                U01 = u01,
+                Data = data,
+                U02 = u02
             });
         }
 
-        var u04 = r.ReadByte();
-        while (u04 != 0)
+        var period = version >= 10 ? r.ReadInt32() : default(int?);
+
+        return new CustomModulesDeltaList
         {
-            var bufferType = r.ReadInt32();
-            var u06 = r.ReadInt32();
-            var u07 = r.ReadInt32();
-            var ghostLengthFinish = r.ReadInt32(); // ms
+            Deltas = deltas,
+            Period = period
+        };
+    }
 
-            if (version < 6)
+    private static IEnumerable<NoticeRecordListElem> ReadBulkNoticeList(GameBoxReader r)
+    {
+        while (r.ReadBoolean(asByte: true))
+        {
+            yield return new()
             {
-                // temp_79f24995b2b->field_0x28 = temp_79f24995b2b->field_0xc
-            }
-            else
+                U01 = r.ReadInt32(),
+                U02 = r.ReadInt32(),
+                Data = r.ReadBytes()
+            };
+        }
+    }
+
+    private IEnumerable<EntRecordListElem> ReadEntList(GameBoxReader r, int version)
+    {
+        var hasNextElem = r.ReadBoolean(asByte: true);
+
+        while (hasNextElem)
+        {
+            var type = r.ReadInt32();
+            var u01 = r.ReadInt32();
+            var u02 = r.ReadInt32(); // start?
+            var u03 = r.ReadInt32(); // end? ghostLengthFinish ms
+
+            var u04 = version >= 6 ? r.ReadInt32() : u01;
+
+            var samples = ReadEntRecordDeltas(r, entRecordDescs[type]).ToList();
+
+            hasNextElem = r.ReadBoolean(asByte: true);
+
+            IList<EntRecordDelta2> samples2 = version >= 2 ? ReadEntRecordDeltas2(r).ToList() : Array.Empty<EntRecordDelta2>();
+
+            yield return new EntRecordListElem
             {
-                var u08 = r.ReadInt32();
-            }
+                Type = type,
+                U01 = u01,
+                U02 = u02,
+                U03 = u03,
+                U04 = u04,
+                Samples = samples,
+                Samples2 = samples2
+            };
+        }
+    }
 
-            // Reads byte on every loop until the byte is 0, should be 1 otherwise
-            for (byte x; (x = r.ReadByte()) != 0;)
+    private static IEnumerable<EntRecordDelta2> ReadEntRecordDeltas2(GameBoxReader r)
+    {
+        while (r.ReadBoolean(asByte: true))
+        {
+            yield return new()
             {
-                var timestamp = r.ReadInt32();
-                var buffer = r.ReadBytes(); // MwBuffer
+                Type = r.ReadInt32(),
+                Time = r.ReadTimeInt32(),
+                Data = r.ReadBytes()
+            };
+        }
+    }
 
-                if (buffer.Length == 0)
-                {
-                    continue;
-                }
+    private static IEnumerable<EntRecordDelta> ReadEntRecordDeltas(GameBoxReader r, EntRecordDesc desc)
+    {
+        // Reads byte on every loop until the byte is 0, should be 1 otherwise
+        while (r.ReadBoolean(asByte: true))
+        {
+            yield return ReadEntRecordDelta(r, desc);
+        }
+    }
 
-                using var bufferMs = new MemoryStream(buffer);
-                using var bufferR = new GameBoxReader(bufferMs);
+    private static EntRecordDelta ReadEntRecordDelta(GameBoxReader r, EntRecordDesc desc)
+    {
+        var time = r.ReadTimeInt32();
+        var data = r.ReadBytes(); // MwBuffer
 
-                var sampleProgress = (int)bufferMs.Position;
+        EntRecordDelta? delta = desc.ClassId switch
+        {
+            0x0A018000 => new CSceneVehicleVis.EntRecordDelta(time, data),
+            _ => null
+        };
 
-                var sample = new Sample(buffer)
-                {
-                    BufferType = (byte)bufferType
-                };
-
-                switch (bufferType)
-                {
-                    case 0:
-                        break;
-                    case 2:
-                        {
-                            bufferMs.Position = 5;
-
-                            var (position, rotation, speed, velocity) = bufferR.ReadTransform(); // Only position matches
-
-                            sample.Timestamp = TimeInt32.FromMilliseconds(timestamp);
-                            sample.Position = position;
-                            sample.Rotation = rotation;
-                            sample.Speed = speed * 3.6f;
-                            sample.Velocity = velocity;
-
-                            break;
-                        }
-                    case 4:
-                    case 6:
-                        {
-                            bufferMs.Position = 5;
-                            var rpmByte = bufferR.ReadByte();
-
-                            bufferMs.Position = 14;
-                            var steerByte = bufferR.ReadByte();
-                            var steer = ((steerByte / 255f) - 0.5f) * 2;
-
-                            bufferMs.Position = 91;
-                            var gearByte = bufferR.ReadByte();
-                            var gear = gearByte / 5f;
-
-                            sample.Gear = gear;
-                            sample.RPM = rpmByte;
-                            sample.Steer = steer;
-
-                            bufferMs.Position = 15;
-                            var u15 = bufferR.ReadByte();
-
-                            bufferMs.Position = 18;
-                            var brakeByte = bufferR.ReadByte();
-                            var brake = brakeByte / 255f;
-                            var gas = u15 / 255f + brake;
-
-                            sample.Brake = brake;
-                            sample.Gas = gas;
-
-                            bufferMs.Position = 47;
-
-                            var (position, rotation, speed, velocity) = bufferR.ReadTransform();
-
-                            sample.Timestamp = TimeInt32.FromMilliseconds(timestamp);
-                            sample.Position = position;
-                            sample.Rotation = rotation;
-                            sample.Speed = speed * 3.6f;
-                            sample.Velocity = velocity;
-
-                            break;
-                        }
-                    case 10:
-                        break;
-                    default:
-                        break;
-                }
-
-                samples.Add(sample);
-            }
-
-            u04 = r.ReadByte();
-
-            if (version >= 2)
-            {
-                while (r.ReadByte() != 0)
-                {
-                    var type = r.ReadInt32();
-                    var timestamp = r.ReadInt32();
-                    var buffer = r.ReadBytes(); // MwBuffer
-                }
-            }
+        if (delta is null)
+        {
+            return new(time, data);
         }
 
-        if (version >= 3)
+        if (data.Length > 0)
         {
-            while (r.ReadByte() != 0)
-            {
-                var u19 = r.ReadInt32();
-                var u20 = r.ReadInt32();
-                var u21 = r.ReadBytes(); // MwBuffer
-            }
+            using var ms = new MemoryStream(data);
+            using var rr = new GameBoxReader(ms);
 
-            if (version == 7)
-            {
-                while (r.ReadByte() != 0)
-                {
-                    var u23 = r.ReadInt32();
-                    var u24 = r.ReadBytes(); // MwBuffer
-                }
-            }
+            delta.Read(ms, rr);
 
-            if (version >= 8)
-            {
-                var u23 = r.ReadInt32();
-
-                if (u23 == 0)
-                {
-                    return samples;
-                }
-
-                if (version == 8)
-                {
-                    while (r.ReadByte() != 0)
-                    {
-                        var u25 = r.ReadInt32();
-                        var u26 = r.ReadBytes(); // MwBuffer
-                    }
-                }
-                else
-                {
-                    while (r.ReadByte() != 0)
-                    {
-                        var u28 = r.ReadInt32();
-                        var u29 = r.ReadBytes(); // MwBuffer
-                        var u30 = r.ReadBytes(); // MwBuffer
-                    }
-
-                    if (version >= 10)
-                    {
-                        var period = r.ReadInt32();
-                    }
-                }
-            }
+            var sampleProgress = (int)ms.Position;
         }
 
-        return samples;
+        return delta;
     }
 
     /// <summary>
@@ -276,26 +229,169 @@ public class CPlugEntRecordData : CMwNod
     /// </summary>
     [Chunk(0x0911F000)]
     public class Chunk0911F000 : Chunk<CPlugEntRecordData>, IVersionable
-    {       
+    {
         public int Version { get; set; }
-
-        public int CompressedSize { get; private set; }
-        public int UncompressedSize { get; private set; }
 
         public override void Read(CPlugEntRecordData n, GameBoxReader r)
         {
             Version = r.ReadInt32(); // 10
-            UncompressedSize = r.ReadInt32();
-            CompressedSize = r.ReadInt32();
-            n.Data = r.ReadBytes(CompressedSize);
+
+            if (Version >= 5)
+            {
+                n.uncompressedSize = r.ReadInt32();
+                n.data = r.ReadBytes();
+                
+                using var ms = new MemoryStream(n.data);
+                using var compressed = new CompressedStream(ms, CompressionMode.Decompress);
+                using var rr = new GameBoxReader(compressed);
+                var rw = new GameBoxReaderWriter(rr);
+
+                n.ReadWriteData(rw, Version);
+            }
+            else
+            {
+                var rw = new GameBoxReaderWriter(r);
+                n.ReadWriteData(rw, Version);
+            }
         }
 
         public override void Write(CPlugEntRecordData n, GameBoxWriter w)
         {
             w.Write(Version);
-            w.Write(UncompressedSize);
-            w.Write(CompressedSize);
-            w.Write(n.Data);
+
+            if (Version < 5)
+            {
+                throw new VersionNotSupportedException(Version);
+            }
+
+            w.Write(n.uncompressedSize);
+            w.WriteByteArray(n.data);
         }
+    }
+
+    public class EntRecordDesc : IReadableWritable
+    {
+        private uint classId;
+        private int u01;
+        private int u02;
+        private int u03;
+        private byte[] u04 = Array.Empty<byte>();
+        private int u05;
+
+        public uint ClassId { get => classId; set => classId = value; }
+        public int U01 { get => u01; set => u01 = value; }
+        public int U02 { get => u02; set => u02 = value; }
+        public int U03 { get => u03; set => u03 = value; }
+        public byte[] U04 { get => u04; set => u04 = value; }
+        public int U05 { get => u05; set => u05 = value; }
+
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+        {
+            rw.UInt32(ref classId);
+            rw.Int32(ref u01);
+            rw.Int32(ref u02);
+            rw.Int32(ref u03);
+            rw.Bytes(ref u04!);
+            rw.Int32(ref u05);
+        }
+
+        public override string ToString()
+        {
+            return $"{NodeManager.GetName(classId)} (0x{classId:X8})";
+        }
+    }
+
+    public class NoticeRecordDesc : IReadableWritable
+    {
+        private int u01;
+        private int u02;
+        private uint? classId;
+
+        public int U01 { get => u01; set => u01 = value; }
+        public int U02 { get => u02; set => u02 = value; }
+        public uint? ClassId { get => classId; set => classId = value; }
+
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+        {
+            rw.Int32(ref u01);
+            rw.Int32(ref u02);
+
+            if (version >= 4)
+            {
+                rw.UInt32(ref classId);
+            }
+        }
+
+        public override string ToString()
+        {
+            return classId.HasValue
+                ? $"{NodeManager.GetName(classId.Value)} (0x{classId.Value:X8}) {U01}, {U02}"
+                : $"{U01}, {U02}";
+        }
+    }
+
+    public class EntRecordListElem
+    {
+        public int Type { get; set; }
+        public int U01 { get; set; }
+        public int U02 { get; set; }
+        public int U03 { get; set; }
+        public int U04 { get; set; }
+        public IList<EntRecordDelta> Samples { get; set; } = Array.Empty<EntRecordDelta>();
+        public IList<EntRecordDelta2> Samples2 { get; set; } = Array.Empty<EntRecordDelta2>();
+    }
+
+    public class EntRecordDelta
+    {
+        public TimeInt32 Time { get; }
+        public byte[] Data { get; }
+
+        internal EntRecordDelta(TimeInt32 time, byte[] data)
+        {
+            Time = time;
+            Data = data;
+        }
+
+        public override string ToString()
+        {
+            return $"{Time}, {Data.Length} bytes";
+        }
+
+        public virtual void Read(MemoryStream ms, GameBoxReader r)
+        {
+            
+        }
+    }
+
+    public class EntRecordDelta2
+    {
+        public TimeInt32 Time { get; set; }
+        public int Type { get; set; }
+        public byte[] Data { get; set; } = Array.Empty<byte>();
+
+        public override string ToString()
+        {
+            return $"{Time}, type {Type}, {Data.Length} bytes";
+        }
+    }
+
+    public class NoticeRecordListElem
+    {
+        public int U01 { get; set; }
+        public int U02 { get; set; }
+        public byte[] Data { get; set; } = Array.Empty<byte>();
+    }
+
+    public class CustomModulesDeltaList
+    {
+        public IList<CustomModulesDelta> Deltas { get; set; } = Array.Empty<CustomModulesDelta>();
+        public int? Period { get; set; }
+    }
+
+    public class CustomModulesDelta
+    {
+        public int U01 { get; set; }
+        public byte[] Data { get; set; } = Array.Empty<byte>();
+        public byte[] U02 { get; set; } = Array.Empty<byte>();
     }
 }

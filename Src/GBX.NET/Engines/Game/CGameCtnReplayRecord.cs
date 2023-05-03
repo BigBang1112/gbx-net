@@ -80,6 +80,7 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// </summary>
     [NodeMember(ExactName = "TitleId")]
     [AppliedWithChunk<Chunk03093000>(sinceVersion: 8)]
+    [AppliedWithChunk<Chunk03093018>]
     public string? TitleID
     {
         get
@@ -359,15 +360,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
         if (alsoInClips && clip is not null)
         {
-            foreach (var track in clip.Tracks)
+            foreach (var ghost in clip.GetGhosts())
             {
-                foreach (var block in track.Blocks)
-                {
-                    if (block is CGameCtnMediaBlockGhost ghostBlock)
-                    {
-                        yield return ghostBlock.GhostModel;
-                    }
-                }
+                yield return ghost;
             }
         }
     }

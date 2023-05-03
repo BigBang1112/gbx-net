@@ -1,4 +1,6 @@
-﻿namespace GBX.NET.Engines.Game;
+﻿using GBX.NET.Builders.Engines.Game;
+
+namespace GBX.NET.Engines.Game;
 
 /// <summary>
 /// MediaTracker block - Camera ingame.
@@ -137,6 +139,8 @@ public class CGameCtnMediaBlockCameraGame : CGameCtnMediaBlockCamera, CGameCtnMe
     {
 
     }
+
+    public static CGameCtnMediaBlockCameraGameBuilder Create() => new();
 
     #endregion
 

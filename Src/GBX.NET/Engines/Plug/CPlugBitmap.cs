@@ -220,6 +220,24 @@ public class CPlugBitmap : CPlug
         }
     }
 
+    #region 0x01F chunk
+
+    /// <summary>
+    /// CPlugBitmap 0x01F chunk
+    /// </summary>
+    [Chunk(0x0901101F)]
+    public class Chunk0901101F : Chunk<CPlugBitmap>
+    {
+        public uint U01;
+
+        public override void ReadWrite(CPlugBitmap n, GameBoxReaderWriter rw)
+        {
+            rw.UInt32(ref U01);
+        }
+    }
+
+    #endregion
+
     /// <summary>
     /// CPlugBitmap 0x020 chunk
     /// </summary>

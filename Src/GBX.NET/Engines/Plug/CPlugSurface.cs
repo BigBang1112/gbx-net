@@ -6,7 +6,7 @@ namespace GBX.NET.Engines.Plug;
 /// <remarks>ID: 0x0900C000</remarks>
 [Node(0x0900C000)]
 [NodeExtension("Shape")]
-public class CPlugSurface : CPlug
+public partial class CPlugSurface : CPlug
 {
     private CPlugSurfaceGeom? geom;
     private SurfMaterial[]? materials;
@@ -92,7 +92,7 @@ public class CPlugSurface : CPlug
         surf = surfId switch // ArchiveGmSurf
         {
             0 => rw.Archive((Sphere)(surf ?? new Sphere())),
-            1 => rw.Archive((Ellipsoid)(surf ?? new Ellipsoid())),
+            1 => rw.Archive((Ellipsoid)(surf ?? new Ellipsoid()), chunkVersion),
             6 => rw.Archive(surf as Box),
             7 => rw.Archive(surf as Mesh), // Mesh
             13 => rw.Archive(surf as Compound, chunkVersion), // Compound
@@ -369,7 +369,7 @@ public class CPlugSurface : CPlug
             {
                 for (int i = 0; i < length; i++)
                 {
-                    ArchiveSurf(ref surfaces[i]!, rw);
+                    ArchiveSurf(ref surfaces[i]!, rw, chunkVersion: version);
                 }
             }
 
@@ -400,15 +400,22 @@ public class CPlugSurface : CPlug
     public struct Ellipsoid : ISurf
     {
         private Vec3 size;
+        private ushort u02;
 
         public int Id => 1;
         public Vec3? U01 { get; set; }
+        public ushort U02 { get => u02; set => u02 = value; }
 
         public Vec3 Size { get => size; set => size = value; }
 
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
             rw.Vec3(ref size);
+
+            if (version >= 2) // Hack
+            {
+                rw.UInt16(ref u02);
+            }
         }
     }
 }

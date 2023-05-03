@@ -84,6 +84,20 @@ public class CGameCtnMediaClip : CMwNod
         return $"{base.ToString()} {{ \"{(string.IsNullOrEmpty(Name) ? "Unnamed clip" : Name)}\" }}";
     }
 
+    public IEnumerable<CGameCtnGhost> GetGhosts()
+    {
+        foreach (var track in Tracks)
+        {
+            foreach (var block in track.Blocks)
+            {
+                if (block is CGameCtnMediaBlockGhost ghostBlock)
+                {
+                    yield return ghostBlock.GhostModel;
+                }
+            }
+        }
+    }
+
     #endregion
 
     #region Chunks
@@ -339,6 +353,19 @@ public class CGameCtnMediaClip : CMwNod
             rw.Single(ref U06);
             rw.Int32(ref n.localPlayerClipEntIndex, -1);
         }
+    }
+
+    #endregion
+
+    #region 0x00E skippable chunk
+
+    /// <summary>
+    /// CGameCtnMediaClip 0x00E skippable chunk
+    /// </summary>
+    [Chunk(0x0307900E), IgnoreChunk]
+    public class Chunk0307900E : SkippableChunk<CGameCtnMediaClip>
+    {
+
     }
 
     #endregion

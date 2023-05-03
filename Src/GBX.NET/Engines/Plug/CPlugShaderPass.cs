@@ -58,6 +58,46 @@ public class CPlugShaderPass : CPlug
 
     #endregion
 
+    #region 0x008 chunk
+
+    /// <summary>
+    /// CPlugShaderPass 0x008 chunk
+    /// </summary>
+    [Chunk(0x09067008)]
+    public class Chunk09067008 : Chunk<CPlugShaderPass>
+    {
+        public Node? U01;
+        public GameBoxRefTable.File? U01file;
+        public GpuLoadFx[]? GpuLoadFxs1;
+        public Vec4[]? U02;
+
+        public Node? U03;
+        public GameBoxRefTable.File? U03file;
+        public GpuLoadFx[]? GpuLoadFxs2;
+        public Vec4[]? U04;
+
+        public override void ReadWrite(CPlugShaderPass n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef(ref U01, ref U01file);
+
+            if (U01 is not null || U01file is not null)
+            {
+                rw.ArrayArchive<GpuLoadFx>(ref GpuLoadFxs1);
+                rw.Array<Vec4>(ref U02);
+            }
+
+            rw.NodeRef(ref U03, ref U03file);
+
+            if (U03 is not null || U03file is not null)
+            {
+                rw.ArrayArchive<GpuLoadFx>(ref GpuLoadFxs2);
+                rw.Array<Vec4>(ref U04);
+            }
+        }
+    }
+
+    #endregion
+
     #region 0x00A chunk
 
     /// <summary>

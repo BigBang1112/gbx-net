@@ -180,30 +180,45 @@ public class CPlugSolid : CPlug
     [Chunk(0x0900500C)]
     public class Chunk0900500C : Chunk<CPlugSolid>
     {
-        public bool U01; // always false
-        public float U02; // always zero
-        public int U03; // always zero
+        public bool U01;
+        public bool U02;
+        public bool U03;
+        public bool U04;
+        public bool U05;
+        public bool U06;
+        public bool U07;
+        public bool U08;
+        public bool U09;
+        public bool U10;
+        public float U11;
+        public int U12;
+        public float U13;
+        public float U14;
+        public float U15;
+        public float U16;
+        public int U17;
+        public int U18;
 
         public override void ReadWrite(CPlugSolid n, GameBoxReaderWriter rw)
         {
             rw.Boolean(ref U01);
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U01);
-            rw.Single(ref U02);
-            rw.Int32(ref U03);
-            rw.Single(ref U02);
-            rw.Single(ref U02);
-            rw.Single(ref U02);
-            rw.Single(ref U02);
-            rw.Int32(ref U03);
-            rw.Int32(ref U03);
+            rw.Boolean(ref U02);
+            rw.Boolean(ref U03);
+            rw.Boolean(ref U04);
+            rw.Boolean(ref U05);
+            rw.Boolean(ref U06);
+            rw.Boolean(ref U07);
+            rw.Boolean(ref U08);
+            rw.Boolean(ref U09);
+            rw.Boolean(ref U10);
+            rw.Single(ref U11);
+            rw.Int32(ref U12);
+            rw.Single(ref U13);
+            rw.Single(ref U14);
+            rw.Single(ref U15);
+            rw.Single(ref U16);
+            rw.Int32(ref U17);
+            rw.Int32(ref U18);
         }
     }
 
@@ -377,7 +392,7 @@ public class CPlugSolid : CPlug
                 rw.Boolean(ref U03);
                 rw.Rect(ref U04);
                 rw.Rect(ref U05);
-                rw.Int2(ref U06);
+                rw.Int2(ref U06);  // sprite count def
 
                 if (version >= 1)
                 {
@@ -400,7 +415,7 @@ public class CPlugSolid : CPlug
     /// CPlugSolid 0x019 chunk
     /// </summary>
     [Chunk(0x09005019)]
-    public class Chunk09005019 : Chunk<CPlugSolid>
+    public class Chunk09005019 : Chunk<CPlugSolid>, IVersionable
     {
         private int version;
         private int listVersion1 = 10;
@@ -447,6 +462,19 @@ public class CPlugSolid : CPlug
 
     #endregion
 
+    #region 0x01A chunk
+
+    /// <summary>
+    /// CPlugSolid 0x01A chunk (lod normal map)
+    /// </summary>
+    [Chunk(0x0900501A, "lod normal map"), IgnoreChunk]
+    public class Chunk0900501A : SkippableChunk<CPlugSolid>
+    {
+        
+    }
+
+    #endregion
+
     public class PreLightGen : IReadableWritable
     {
         private int v = 1;
@@ -465,6 +493,7 @@ public class CPlugSolid : CPlug
         private int u12;
         private int u13;
         private Box[]? u14;
+        private UvGroup[]? u15;
 
         public int Version { get => v; set => v = value; }
         
@@ -482,6 +511,7 @@ public class CPlugSolid : CPlug
         public int U12 { get => u12; set => u12 = value; }
         public int U13 { get => u13; set => u13 = value; }
         public Box[]? U14 { get => u14; set => u14 = value; }
+        public UvGroup[]? U15 { get => u15; set => u15 = value; }
 
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
         {
@@ -497,16 +527,17 @@ public class CPlugSolid : CPlug
             rw.Single(ref u09);
             rw.Single(ref u10);
             rw.Single(ref u11);
-            rw.Int32(ref u12);
+            rw.Int32(ref u12); // sprite count def
             rw.Int32(ref u13);
             rw.Array<Box>(ref u14);
             
             if (v >= 1)
             {
-                // UvGroup array
-                throw new VersionNotSupportedException(v);
+                rw.Array<UvGroup>(ref u15);
             }
         }
+
+        public readonly record struct UvGroup(float U01, float U02, float U03, float U04, float U05);
     }
 
     public class LocatedInstance : IReadableWritable

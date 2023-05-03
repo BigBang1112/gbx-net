@@ -1,0 +1,20 @@
+﻿@using GBX.NET
+@using GBX.NET.Engines.Plug;
+
+@inherits NodeValueRenderer
+@attribute [AppliesForType(typeof(CPlugVehicleCarPhyTuning))]
+
+@if (Value is null)
+{
+    <span class="element-box" data-title="This value cannot be modified. Custom creation of nodes will be added later.">null</span>
+}
+else if (Value is CPlugVehicleCarPhyTuning tuning)
+{
+    var valueType = Value.GetType();
+
+    <span class="element-box" style="font-size: 0.8rem">@tuning.Name</span>
+}
+
+@code {
+
+}

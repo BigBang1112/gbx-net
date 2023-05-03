@@ -742,14 +742,20 @@
   0DB CPlugFileWebP .webp
   0E7 CPlugVehicleVisModel
   0EA CPlugVehiclePhyModel
+  0EB CPlugVehiclePhyTuning
+  0EC CPlugVehiclePhyTunings
+  0ED CPlugVehicleCarPhyTuning
   0EF CPlugVehicleCameraRace3Model
+  0F1 CPlugVehicleMaterial
   0F4 CPlugGameSkin
   0F6 CPlugVehicleCameraRace2Model
+  0F7 CPlugVehicleCameraInternalModel
   0F8 CPlugAnimLocSimple
   0F9 CPlugLightUserModel
   108 CPlugFileWebM .webm
   10B CPlugCamShakeModel
   10C CPlugCamControlModel
+  10E CPlugVehicleCarPhyShape
   11E CPlugVehiclePhyModelCustom
   11F CPlugEntRecordData
   159 CPlugStaticObjectModel
@@ -1081,6 +1087,7 @@
   019 CGameModulePlaygroundHudModel
   01A CGameModuleMenuPageModel
   01B CGameEditorModel
+  01C CGameVehicleModel
   020 CGameItemPlacementParam
   024 CGamePixelArtModel
   025 CGameBlockItem
@@ -1093,3 +1100,4 @@
   062 SSceneDestructibleVisGroupState
   065 SSceneRopeVisEnt
   06E SSceneDestructibleVisState
+  0CB NSceneDynaVis_SMgr

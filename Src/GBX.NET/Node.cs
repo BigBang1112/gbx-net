@@ -72,6 +72,33 @@ public abstract class Node
         return type.FullName?.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::") ?? string.Empty;
     }
 
+    protected internal ExternalNode<T>[]? GetNodesFromRefTable<T>(ExternalNode<T>[]? nodesAtTheMoment) where T : Node
+    {
+        if (nodesAtTheMoment is null)
+        {
+            return null;
+        }
+
+        for (var i = 0; i < nodesAtTheMoment.Length; i++)
+        {
+            try
+            {
+                nodesAtTheMoment[i] = GetNodeFromRefTable(nodesAtTheMoment[i]);
+            }
+            catch
+            {
+                
+            }
+        }
+
+        return nodesAtTheMoment;
+    }
+
+    protected internal ExternalNode<T> GetNodeFromRefTable<T>(ExternalNode<T> nodeAtTheMoment) where T : Node
+    {
+        return nodeAtTheMoment with { Node = GetNodeFromRefTable(nodeAtTheMoment.Node, nodeAtTheMoment.File) as T };
+    }
+
     protected internal Node? GetNodeFromRefTable(Node? nodeAtTheMoment, GameBoxRefTable.File? nodeFile)
     {
         return GetNodeFromRefTable(gbxForRefTable, nodeAtTheMoment, nodeFile);

@@ -12,8 +12,8 @@ public class CFuncKeysReal : CFuncKeys
         SmoothStep
     }
 
-    private float[]? ys;
-    private ERealInterp realInterp;
+    private float[] ys = Array.Empty<float>();
+    private ERealInterp realInterp = ERealInterp.Linear;
     private bool forceTangentMinX;
     private bool forceTangentMaxX;
     private float forcedTangentMinX;
@@ -22,7 +22,7 @@ public class CFuncKeysReal : CFuncKeys
     [NodeMember]
     [AppliedWithChunk<Chunk0501A001>]
     [AppliedWithChunk<Chunk0501A002>]
-    public float[]? Ys { get => ys; set => ys = value; }
+    public float[] Ys { get => ys; set => ys = value; }
 
     [NodeMember]
     [AppliedWithChunk<Chunk0501A001>]
@@ -60,7 +60,7 @@ public class CFuncKeysReal : CFuncKeys
     {
         public override void ReadWrite(CFuncKeysReal n, GameBoxReaderWriter rw)
         {
-            rw.Array<float>(ref n.ys);
+            rw.Array<float>(ref n.ys!);
             rw.EnumInt32<ERealInterp>(ref n.realInterp);
         }
     }

@@ -6,12 +6,13 @@ namespace GBX.NET;
 public abstract class Chunk : IComparable<Chunk>
 {
     private uint? id;
+    private MemoryStream? unknown;
 
     /// <summary>
     /// Stream of unknown bytes
     /// </summary>
     [IgnoreDataMember]
-    public MemoryStream Unknown { get; } = new MemoryStream();
+    public MemoryStream Unknown => unknown ??= new MemoryStream();
 
     /// <summary>
     /// Raw data of the chunk. Always null with <see cref="GameBox.SeekForRawChunkData"/> set to false.

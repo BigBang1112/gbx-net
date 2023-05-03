@@ -24,120 +24,180 @@ public class CGameObjectPhyModel : CMwNod
 
     #region Fields
 
-    private CMwNod? specialProperties;
-    private EPersistence? persistence;
-    private EProgram? program;
     private CPlugSurface? moveShapeFid;
-    private bool? canStopEnemy;
-    private bool? canStopEnemyBullet;
-    private float? throwSpeed;
-    private float? throwAngularSpeed;
-    private int? armor;
-    private bool? hasALifeTime;
-    private int? lifeTimeDuration;
-    private float? scaleCoefMax;
-    private float? staminaSpawnCoef;
-    private int? timeBeforeDome;
-    private bool? healEnabled;
-    private int? healArmorGainPerSecond;
-    private bool? shieldEnabled;
-    private int? shieldDomeArmor;
-    private bool? bumperEnabled;
-    private bool? magnetEnabled;
+    private GameBoxRefTable.File? moveShapeFidFile;
+    private CPlugSurface? hitShapeFid;
+    private GameBoxRefTable.File? hitShapeFidFile;
+    private CPlugSurface? triggerShapeFid;
+    private GameBoxRefTable.File? triggerShapeFidFile;
+    private int triggerActionVersion = 5;
+    private CPlugTriggerAction[]? triggers;
+    private string? moveShape;
     private string? hitShape;
+    private CPlugDynaPointModel? dynaPointModel;
+    private EProgram? program;
     private string? triggerShape;
+    private string? actionModel;
+    private CGameActionModel?[]? actions;
+    private CMwNod? specialProperties;
+    private GameBoxRefTable.File? specialPropertiesFile;
+    private EPersistence? persistence = EPersistence.NeverRemove;
+    private bool canStopEnemy;
+    private bool canStopEnemyBullet;
+    private float throwSpeed = 30;
+    private float throwAngularSpeed = 10;
+    private int armor = 100;
+    private bool hasALifeTime;
+    private int lifeTimeDuration = 7000;
+    private float scaleCoefMax = 1;
+    private float staminaSpawnCoef = 1;
+    private int timeBeforeDome = 500;
+    private bool healEnabled;
+    private int healArmorGainPerSecond = 10;
+    private bool shieldEnabled;
+    private int shieldDomeArmor = 200;
+    private bool bumperEnabled;
+    private bool magnetEnabled;
 
     #endregion
 
     #region Properties
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk<Chunk2E006001>(sinceVersion: 16)]
-    public CMwNod? SpecialProperties { get => specialProperties; set => specialProperties = value; } // CPlugCharPhySpecialProperty
+    [AppliedWithChunk<Chunk2E006001>]
+    public CPlugSurface? MoveShapeFid
+    {
+        get => moveShapeFid = GetNodeFromRefTable(moveShapeFid, moveShapeFidFile) as CPlugSurface;
+        set => moveShapeFid = value;
+    }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk2E006001>]
+    public CPlugSurface? HitShapeFid
+    {
+        get => hitShapeFid = GetNodeFromRefTable(hitShapeFid, hitShapeFidFile) as CPlugSurface;
+        set => hitShapeFid = value;
+    }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk2E006001>]
+    public CPlugSurface? TriggerShapeFid
+    {
+        get => triggerShapeFid = GetNodeFromRefTable(triggerShapeFid, triggerShapeFidFile) as CPlugSurface;
+        set => triggerShapeFid = value;
+    }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk2E006001>]
+    public int TriggerActionVersion { get => triggerActionVersion; set => triggerActionVersion = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk<Chunk2E006001>(sinceVersion: 17)]
-    public EPersistence? Persistence { get => persistence; set => persistence = value; }
+    [AppliedWithChunk<Chunk2E006001>]
+    public CPlugTriggerAction[]? Triggers { get => triggers; set => triggers = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk2E006001>(sinceVersion: 2)]
+    public string? MoveShape { get => moveShape; set => moveShape = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk2E006001>(sinceVersion: 4)]
+    public string? HitShape { get => hitShape; set => hitShape = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk2E006001>(sinceVersion: 3)]
+    public CPlugDynaPointModel? DynaPointModel { get => dynaPointModel; set => dynaPointModel = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E006001>(sinceVersion: 5)]
     public EProgram? Program { get => program; set => program = value; }
 
     [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk<Chunk2E006001>(sinceVersion: 21)]
-    public CPlugSurface? MoveShapeFid { get => moveShapeFid; set => moveShapeFid = value; }
+    [AppliedWithChunk<Chunk2E006001>(sinceVersion: 7)]
+    public string? TriggerShape { get => triggerShape; set => triggerShape = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk2E006001>(sinceVersion: 13)]
+    public string? ActionModel { get => actionModel; set => actionModel = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk2E006001>(sinceVersion: 9)]
+    public CGameActionModel?[]? Actions { get => actions; set => actions = value; }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk2E006001>(sinceVersion: 16)]
+    public CMwNod? SpecialProperties // CPlugCharPhySpecialProperty?
+    {
+        get => specialProperties = GetNodeFromRefTable(specialProperties, specialPropertiesFile) as CMwNod;
+        set => specialProperties = value;
+    }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk2E006001>(sinceVersion: 17)]
+    public EPersistence? Persistence { get => persistence; set => persistence = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E006001>(sinceVersion: 18)]
-    public bool? CanStopEnemy { get => canStopEnemy; set => canStopEnemy = value; }
+    public bool CanStopEnemy { get => canStopEnemy; set => canStopEnemy = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E006001>(sinceVersion: 18)]
-    public bool? CanStopEnemyBullet { get => canStopEnemyBullet; set => canStopEnemyBullet = value; }
+    public bool CanStopEnemyBullet { get => canStopEnemyBullet; set => canStopEnemyBullet = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E006001>(sinceVersion: 19)]
-    public float? ThrowSpeed { get => throwSpeed; set => throwSpeed = value; }
+    public float ThrowSpeed { get => throwSpeed; set => throwSpeed = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E006001>(sinceVersion: 19)]
-    public float? ThrowAngularSpeed { get => throwAngularSpeed; set => throwAngularSpeed = value; }
+    public float ThrowAngularSpeed { get => throwAngularSpeed; set => throwAngularSpeed = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E006001>(sinceVersion: 19)]
-    public int? Armor { get => armor; set => armor = value; }
+    public int Armor { get => armor; set => armor = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E006001>(sinceVersion: 19)]
-    public bool? HasALifeTime { get => hasALifeTime; set => hasALifeTime = value; }
+    public bool HasALifeTime { get => hasALifeTime; set => hasALifeTime = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E006001>(sinceVersion: 19)]
-    public int? LifeTimeDuration { get => lifeTimeDuration; set => lifeTimeDuration = value; }
+    public int LifeTimeDuration { get => lifeTimeDuration; set => lifeTimeDuration = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E006001>(sinceVersion: 19)]
-    public float? ScaleCoefMax { get => scaleCoefMax; set => scaleCoefMax = value; }
+    public float ScaleCoefMax { get => scaleCoefMax; set => scaleCoefMax = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E006001>(sinceVersion: 19)]
-    public float? StaminaSpawnCoef { get => staminaSpawnCoef; set => staminaSpawnCoef = value; }
+    public float StaminaSpawnCoef { get => staminaSpawnCoef; set => staminaSpawnCoef = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E006001>(sinceVersion: 19)]
-    public int? TimeBeforeDome { get => timeBeforeDome; set => timeBeforeDome = value; }
+    public int TimeBeforeDome { get => timeBeforeDome; set => timeBeforeDome = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E006001>(sinceVersion: 19)]
-    public bool? HealEnabled { get => healEnabled; set => healEnabled = value; }
+    public bool HealEnabled { get => healEnabled; set => healEnabled = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E006001>(sinceVersion: 19)]
-    public int? HealArmorGainPerSecond { get => healArmorGainPerSecond; set => healArmorGainPerSecond = value; }
+    public int HealArmorGainPerSecond { get => healArmorGainPerSecond; set => healArmorGainPerSecond = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E006001>(sinceVersion: 19)]
-    public bool? ShieldEnabled { get => shieldEnabled; set => shieldEnabled = value; }
+    public bool ShieldEnabled { get => shieldEnabled; set => shieldEnabled = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E006001>(sinceVersion: 19)]
-    public int? ShieldDomeArmor { get => shieldDomeArmor; set => shieldDomeArmor = value; }
+    public int ShieldDomeArmor { get => shieldDomeArmor; set => shieldDomeArmor = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E006001>(sinceVersion: 23)]
-    public bool? BumperEnabled { get => bumperEnabled; set => bumperEnabled = value; }
+    public bool BumperEnabled { get => bumperEnabled; set => bumperEnabled = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk2E006001>(sinceVersion: 24)]
-    public bool? MagnetEnabled { get => magnetEnabled; set => magnetEnabled = value; }
-
-    [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk<Chunk2E006001>(sinceVersion: 2)]
-    public string? HitShape { get => hitShape; set => hitShape = value; }
-
-    [NodeMember(ExactlyNamed = true)]
-    [AppliedWithChunk<Chunk2E006001>(sinceVersion: 7)]
-    public string? TriggerShape { get => triggerShape; set => triggerShape = value; }
+    public bool MagnetEnabled { get => magnetEnabled; set => magnetEnabled = value; }
 
     #endregion
 
@@ -162,37 +222,20 @@ public class CGameObjectPhyModel : CMwNod
     {
         private int version;
 
-        public int U01 = 5;
-        public int U02;
+        public CMwNod? U01;
         public CMwNod? U03;
-        public string? U05;
-        public bool? U06;
-        public CMwNod? U07;
-        public int? U08;
         public Iso4? U09;
-        public string? U11;
-        public CMwNod? U12;
-        public CMwNod? U13;
         public string? U14;
         public CMwNod? U15;
-        public int? U16;
         public bool U17;
-        public CMwNod? U18;
         public int? U19;
         public bool? U20;
         public bool? U21;
         public bool? U22;
         public bool? U23;
         public bool? U24;
-        public bool? U25;
+        public bool U25 = true;
         public CMwNod? U26;
-        public CMwNod? U27;
-        public CMwNod? U28;
-        public CMwNod? U29;
-        public CMwNod? U30;
-        public GameBoxRefTable.File? U30File;
-        public CMwNod? U31;
-        public CMwNod? U32;
 
         public int Version { get => version; set => version = value; }
 
@@ -202,39 +245,41 @@ public class CGameObjectPhyModel : CMwNod
 
             if (version < 11)
             {
-                rw.NodeRef(ref U30, ref U30File); // MoveShape
-                rw.NodeRef(ref U31); // HitShape
-                rw.NodeRef(ref U32); // TriggerShape
+                rw.NodeRef<CPlugSurface>(ref n.moveShapeFid, ref n.moveShapeFidFile); // EGameObjectPhyModelShapeType == 0
+                rw.NodeRef<CPlugSurface>(ref n.hitShapeFid, ref n.hitShapeFidFile); // EGameObjectPhyModelShapeType == 1
+                rw.NodeRef<CPlugSurface>(ref n.triggerShapeFid, ref n.triggerShapeFidFile); // EGameObjectPhyModelShapeType == 2
             }
 
             if (version >= 8)
             {
-                rw.Int32(ref U01);
+                rw.Int32(ref n.triggerActionVersion); // EPlugTriggerActionVersion
+            }
+            else
+            {
+                n.triggerActionVersion = 5;
             }
 
-            rw.Int32(ref U02); // CPlugTriggerAction array
+            rw.ArrayArchive<CPlugTriggerAction>(ref n.triggers, n.triggerActionVersion); // CPlugTriggerAction::ArchiveTrigger
 
             if (version < 14)
             {
-                rw.NodeRef(ref U03);
+                rw.NodeRef(ref U03); // CPlugTriggerAction
             }
 
             if (version >= 2)
             {
-                rw.String(ref n.hitShape);
+                rw.String(ref n.moveShape);
                 
                 if (version >= 4)
                 {
-                    rw.String(ref U05);
+                    rw.String(ref n.hitShape);
                 }
 
                 if (version >= 3)
                 {
-                    rw.Boolean(ref U06);
-
-                    if (U06.GetValueOrDefault())
+                    if (rw.Boolean(n.dynaPointModel is not null))
                     {
-                        rw.NodeRef(ref U07);
+                        rw.Archive<CPlugDynaPointModel>(ref n.dynaPointModel);
                     }
 
                     if (version >= 5)
@@ -265,47 +310,55 @@ public class CGameObjectPhyModel : CMwNod
                                 {
                                     if (version >= 13)
                                     {
-                                        rw.String(ref U11);
+                                        rw.String(ref n.actionModel);
                                     }
 
-                                    rw.Int32(ref U16); // CGameActionModel array, Actions possibly
-
-                                    if (U16 > 0)
+                                    if (string.IsNullOrEmpty(n.actionModel))
                                     {
-                                        throw new Exception("U16 > 0");
+                                        rw.ArrayNode(ref n.actions); // sometimes maybe not available at all?
+                                    }
+
+                                    if (version < 11)
+                                    {
+                                        //HackRefCompat(&this->MoveShape);
+                                        //HackRefCompat(&this->HitShape);
+                                        //HackRefCompat(&this->TriggerShape);
                                     }
 
                                     if (version >= 21)
                                     {
-                                        rw.NodeRef(ref n.moveShapeFid);
+                                        rw.NodeRef(ref U01); // ???
                                     }
 
                                     if (version >= 11)
                                     {
-                                        if (n.moveShapeFid is null)
+                                        if (string.IsNullOrEmpty(n.moveShape))
                                         {
-                                            rw.NodeRef(ref U27); // MoveShape
+                                            rw.NodeRef<CPlugSurface>(ref n.moveShapeFid, ref n.moveShapeFidFile);
                                         }
                                         else
                                         {
-                                            // some fid stuff probably, prefer to throw before tested
-                                            throw new Exception("MoveShapeFid not null");
+                                            // Something is there but without it it works? xd
                                         }
 
                                         if (string.IsNullOrEmpty(n.hitShape))
                                         {
-                                            rw.NodeRef(ref U28);
+                                            rw.NodeRef<CPlugSurface>(ref n.hitShapeFid, ref n.hitShapeFidFile);
                                         }
 
                                         if (string.IsNullOrEmpty(n.triggerShape))
                                         {
-                                            rw.NodeRef(ref U29);
+                                            rw.NodeRef<CPlugSurface>(ref n.triggerShapeFid, ref n.triggerShapeFidFile);
                                         }
 
                                         if (version >= 12)
                                         {
                                             rw.String(ref U14);
-                                            rw.NodeRef(ref U15);
+
+                                            if (string.IsNullOrEmpty(U14))
+                                            {
+                                                rw.NodeRef(ref U15); // Solid?
+                                            }
 
                                             if (version >= 15)
                                             {
@@ -313,7 +366,7 @@ public class CGameObjectPhyModel : CMwNod
 
                                                 if (version >= 16)
                                                 {
-                                                    rw.NodeRef(ref n.specialProperties);
+                                                    rw.NodeRef(ref n.specialProperties, ref n.specialPropertiesFile); // CPlugFileImg? whatever, ill leave it SpecialProperties
 
                                                     if (version >= 17)
                                                     {

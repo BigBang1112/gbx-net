@@ -2,7 +2,6 @@
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
-using System;
 
 namespace GBX.NET;
 
@@ -21,6 +20,7 @@ public class GameBoxWriter : BinaryWriter
     internal ILogger? Logger { get; }
 
     public GbxState State { get; }
+    
     private int? IdVersion { get => State.IdVersion; set => State.IdVersion = value; }
     private IList<string> IdStrings => State.IdStrings;
     private SortedDictionary<int, Node?> AuxNodes => State.AuxNodes;
@@ -75,8 +75,13 @@ public class GameBoxWriter : BinaryWriter
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     public void Write(string? value, StringLengthPrefix lengthPrefix)
-    {
+    {        
         var length = value is null ? 0 : Encoding.UTF8.GetByteCount(value);
+
+        if (length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(length);
+        }
 
         switch (lengthPrefix)
         {
@@ -442,7 +447,28 @@ public class GameBoxWriter : BinaryWriter
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
-    public void WriteBigInt(BigInteger bigInteger) => Write(bigInteger.ToByteArray());
+    public void WriteBigInt(BigInteger bigInteger, int byteLength)
+    {
+        var bytes = bigInteger.ToByteArray();
+        
+        if (bytes.Length == byteLength)
+        {
+            // No padding necessary
+            Write(bytes);
+            return;
+        }
+        
+        if (bytes.Length > byteLength)
+        {
+            throw new ArgumentException($"Value too large to fit in {byteLength} bytes");
+        }
+        
+        // Pad with leading zeros
+        var paddedBytes = new byte[byteLength];
+        Array.Copy(bytes, 0, paddedBytes, byteLength - bytes.Length, bytes.Length);
+        
+        Write(paddedBytes);
+    }
 
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
@@ -599,6 +625,11 @@ public class GameBoxWriter : BinaryWriter
 
         var count = nodes.Count();
 
+        if (count > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(count);
+        }
+
         var nodeType = typeof(T);
 
         Write(count);
@@ -634,6 +665,11 @@ public class GameBoxWriter : BinaryWriter
         {
             Write(0);
             return;
+        }
+
+        if (dictionary.Count > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(dictionary.Count);
         }
 
         Write(dictionary.Count);
@@ -735,6 +771,11 @@ public class GameBoxWriter : BinaryWriter
             return;
         }
 
+        if (array.Length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(array.Length);
+        }
+
         Write(array.Length);
         WriteArray_NoPrefix(array);
     }
@@ -747,6 +788,11 @@ public class GameBoxWriter : BinaryWriter
         if (array is null)
         {
             throw new ArgumentNullException(nameof(array));
+        }
+
+        if (array.Length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(array.Length);
         }
 
 #if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
@@ -763,12 +809,16 @@ public class GameBoxWriter : BinaryWriter
         if (array is null)
         {
             Write(0);
+            return;
         }
-        else
+        
+        if (array.Length > 0x10000000) // ~268MB
         {
-            Write(array.Length);
-            Write(array);
+            throw new LengthLimitException(array.Length);
         }
+
+        Write(array.Length);
+        Write(array);
     }
 
     /// <summary>
@@ -791,6 +841,11 @@ public class GameBoxWriter : BinaryWriter
         {
             Write(0);
             return;
+        }
+        
+        if (array.Length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(array.Length);
         }
 
         Write(array.Length);
@@ -817,6 +872,11 @@ public class GameBoxWriter : BinaryWriter
             return;
         }
 
+        if (array.Length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(array.Length);
+        }
+
         Write(array.Length);
 
         for (var i = 0; i < array.Length; i++)
@@ -839,6 +899,11 @@ public class GameBoxWriter : BinaryWriter
         {
             Write(0);
             return;
+        }
+
+        if (list.Count > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(list.Count);
         }
 
         Write(list.Count);
@@ -865,6 +930,11 @@ public class GameBoxWriter : BinaryWriter
             return;
         }
 
+        if (list.Count > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(list.Count);
+        }
+
         Write(list.Count);
 
         for (var i = 0; i < list.Count; i++)
@@ -887,6 +957,11 @@ public class GameBoxWriter : BinaryWriter
         {
             Write(0);
             return;
+        }
+
+        if (list.Count > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(list.Count);
         }
 
         Write(list.Count);
@@ -914,6 +989,11 @@ public class GameBoxWriter : BinaryWriter
 
         var count = enumerable.Count();
 
+        if (count > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(count);
+        }
+
         Write(count);
 
         foreach (var element in enumerable)
@@ -931,6 +1011,11 @@ public class GameBoxWriter : BinaryWriter
         {
             Write(0);
             return;
+        }
+
+        if (dictionary.Count > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(dictionary.Count);
         }
 
         Write(dictionary.Count);
@@ -966,6 +1051,11 @@ public class GameBoxWriter : BinaryWriter
 
     public void WriteOptimizedIntArray_NoPrefix(int[] array, int? determineFrom = null)
     {
+        if (array.Length > 0x10000000) // ~268MB
+        {
+            throw new LengthLimitException(array.Length);
+        }
+        
         switch ((uint)determineFrom.GetValueOrDefault(array.Length))
         {
             case >= ushort.MaxValue:
@@ -1006,5 +1096,10 @@ public class GameBoxWriter : BinaryWriter
     {
         WriteSmallLen(value.Length);
         Write(value, StringLengthPrefix.None);
+    }
+    
+    public void WriteVec3_10b(Vec3 value)
+    {
+        Write((int)(value.X * 0x1FF) + ((int)(value.Y * 0x1FF) << 10) + ((int)(value.Z * 0x1FF) << 20));
     }
 }

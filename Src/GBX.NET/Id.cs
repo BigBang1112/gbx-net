@@ -5,6 +5,8 @@
 /// </summary>
 public readonly record struct Id
 {
+    public static readonly Id Empty = new();
+
     /// <summary>
     /// Represents an ID of the collection. Null if the <see cref="Id"/> is string-defined.
     /// </summary>
@@ -21,7 +23,6 @@ public readonly record struct Id
     /// <param name="str">An Id string.</param>
     public Id(string str)
     {
-        Index = null;
         String = str;
     }
 
@@ -32,22 +33,16 @@ public readonly record struct Id
     public Id(int collectionId)
     {
         Index = collectionId;
-        String = null;
     }
 
     public Int3 GetBlockSize() => ToString() switch
     {
-        "Desert" => (32, 16, 32),
-        "Snow" => (32, 16, 32),
-        "Rally" => (32, 16, 32),
-        "Island" => (64, 8, 64),
-        "Bay" => (32, 8, 32),
         "Coast" => (16, 4, 16),
-        "Valley" => (32, 8, 32),
-        "Stadium" => (32, 8, 32),
+        "Desert" or "Speed" or "Snow" or "Alpine" => (32, 16, 32),
+        "Rally" or "Bay" or "Stadium" or "Valley" or "Lagoon" or "Stadium2020" => (32, 8, 32),
+        "Island" => (64, 8, 64),
         "Canyon" => (64, 16, 64),
-        "Lagoon" => (32, 8, 32),
-        _ => throw new Exception(),
+        _ => throw new NotSupportedException("Block size not supported for this collection"),
     };
 
     /// <summary>

@@ -6,12 +6,16 @@
 public partial class CGameCtnDecoration : CGameCtnCollector, CGameCtnDecoration.IHeader
 {
     private CGameCtnDecorationSize? decoSize;
+    private GameBoxRefTable.File? decoSizeFile;
     private CGameCtnDecorationAudio? decoAudio;
     private GameBoxRefTable.File? decoAudioFile;
     private CGameCtnDecorationMood? decoMood;
+    private GameBoxRefTable.File? decoMoodFile;
     private CPlugDecoratorSolid? decoratorSolidWarp;
     private CGameCtnDecorationTerrainModifier? terrainModifierCovered;
+    private GameBoxRefTable.File? terrainModifierCoveredFile;
     private CGameCtnDecorationTerrainModifier? terrainModifierBase;
+    private GameBoxRefTable.File? terrainModifierBaseFile;
     private string? decorationZoneFrontierId;
     private bool isWaterOutsidePlayField;
     private CPlugGameSkin? vehicleFxSkin;
@@ -25,8 +29,12 @@ public partial class CGameCtnDecoration : CGameCtnCollector, CGameCtnDecoration.
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk03038011>]
-    public CGameCtnDecorationSize? DecoSize { get => decoSize; set => decoSize = value; }
-    
+    public CGameCtnDecorationSize? DecoSize
+    {
+        get => decoSize = GetNodeFromRefTable(decoSize, decoSizeFile) as CGameCtnDecorationSize;
+        set => decoSize = value;
+    }
+
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk03038012>]
     [AppliedWithChunk<Chunk03038019>]
@@ -42,11 +50,19 @@ public partial class CGameCtnDecoration : CGameCtnCollector, CGameCtnDecoration.
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk03038015>]
-    public CGameCtnDecorationTerrainModifier? TerrainModifierCovered { get => terrainModifierCovered; set => terrainModifierCovered = value; }
-    
+    public CGameCtnDecorationTerrainModifier? TerrainModifierCovered
+    {
+        get => terrainModifierCovered = GetNodeFromRefTable(terrainModifierCovered, terrainModifierCoveredFile) as CGameCtnDecorationTerrainModifier;
+        set => terrainModifierCovered = value;
+    }
+
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk03038016>]
-    public CGameCtnDecorationTerrainModifier? TerrainModifierBase { get => terrainModifierBase; set => terrainModifierBase = value; }
+    public CGameCtnDecorationTerrainModifier? TerrainModifierBase
+    {
+        get => terrainModifierBase = GetNodeFromRefTable(terrainModifierBase, terrainModifierBaseFile) as CGameCtnDecorationTerrainModifier;
+        set => terrainModifierBase = value;
+    }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk03038017>]
@@ -120,7 +136,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, CGameCtnDecoration.
     {
         public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnDecorationSize>(ref n.decoSize);
+            rw.NodeRef<CGameCtnDecorationSize>(ref n.decoSize, ref n.decoSizeFile);
         }
     }
 
@@ -150,11 +166,9 @@ public partial class CGameCtnDecoration : CGameCtnCollector, CGameCtnDecoration.
     [Chunk(0x03038013, "DecoMood")]
     public class Chunk03038013 : Chunk<CGameCtnDecoration>
     {
-        public int U01;
-
         public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnDecorationMood>(ref n.decoMood);
+            rw.NodeRef<CGameCtnDecorationMood>(ref n.decoMood, ref n.decoMoodFile);
         }
     }
 
@@ -186,7 +200,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, CGameCtnDecoration.
     {
         public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnDecorationTerrainModifier>(ref n.terrainModifierCovered);
+            rw.NodeRef<CGameCtnDecorationTerrainModifier>(ref n.terrainModifierCovered, ref n.terrainModifierCoveredFile);
         }
     }
 
@@ -202,7 +216,7 @@ public partial class CGameCtnDecoration : CGameCtnCollector, CGameCtnDecoration.
     {
         public override void ReadWrite(CGameCtnDecoration n, GameBoxReaderWriter rw)
         {
-            rw.NodeRef<CGameCtnDecorationTerrainModifier>(ref n.terrainModifierBase);
+            rw.NodeRef<CGameCtnDecorationTerrainModifier>(ref n.terrainModifierBase, ref n.terrainModifierBaseFile);
         }
     }
 

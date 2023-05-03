@@ -168,6 +168,73 @@ public class CPlugMaterial : CPlug
         }
     }
 
+    /// <summary>
+    /// CPlugMaterial 0x010 chunk
+    /// </summary>
+    [Chunk(0x09079010)]
+    public class Chunk09079010 : Chunk<CPlugMaterial>
+    {
+        public float U01;
+
+        public override void ReadWrite(CPlugMaterial n, GameBoxReaderWriter rw)
+        {
+            rw.Single(ref U01);
+        }
+    }
+
+    /// <summary>
+    /// CPlugMaterial 0x011 chunk
+    /// </summary>
+    [Chunk(0x09079011)]
+    public class Chunk09079011 : Chunk<CPlugMaterial>
+    {
+        public string[] U01 = Array.Empty<string>();
+
+        public override void ReadWrite(CPlugMaterial n, GameBoxReaderWriter rw)
+        {
+            rw.ArrayId(ref U01!);
+        }
+    }
+
+    #region 0x012 skippable chunk
+
+    /// <summary>
+    /// CPlugMaterial 0x012 skippable chunk
+    /// </summary>
+    [Chunk(0x09079012), IgnoreChunk]
+    public class Chunk09079012 : SkippableChunk<CPlugMaterial>
+    {
+
+    }
+
+    #endregion
+
+    #region 0x013 skippable chunk
+
+    /// <summary>
+    /// CPlugMaterial 0x013 skippable chunk
+    /// </summary>
+    [Chunk(0x09079013), IgnoreChunk]
+    public class Chunk09079013 : SkippableChunk<CPlugMaterial>
+    {
+
+    }
+
+    #endregion
+
+    #region 0x014 skippable chunk
+
+    /// <summary>
+    /// CPlugMaterial 0x014 skippable chunk
+    /// </summary>
+    [Chunk(0x09079014), IgnoreChunk]
+    public class Chunk09079014 : SkippableChunk<CPlugMaterial>
+    {
+
+    }
+
+    #endregion
+
     public class DeviceMat : IReadableWritableWithGbx
     {
         private Node? node;
@@ -242,9 +309,12 @@ public class CPlugMaterial : CPlug
                 case 0xC:
                     rw.Int16(ref u01);
                     rw.Int16(ref u02);
+
                     rw.Boolean(ref u03);
-                    rw.NodeRef(ref shader1, ref shader1File);
+                    rw.NodeRef(ref shader1, ref shader1File); // u03 == true: external node, false: internal node
+
                     rw.NodeRef(ref shader2, ref shader2File);
+                    rw.NodeRef(ref shader3, ref shader3File);
                     break;
                 case 0xD:
                     rw.Int16(ref u04);

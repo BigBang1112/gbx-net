@@ -1,11 +1,12 @@
 ﻿namespace GBX.NET;
 
+// since 10. 4. 2023, header is no longer immutable
 public class GameBoxHeader
 {
     public short Version { get; init; }
     public GameBoxFormat Format { get; init; }
     public GameBoxCompression CompressionOfRefTable { get; init; }
-    public GameBoxCompression CompressionOfBody { get; init; }
+    public GameBoxCompression CompressionOfBody { get; internal set; }
     public char? UnknownByte { get; init; }
     public uint Id { get; init; }
     public byte[] UserData { get; init; }

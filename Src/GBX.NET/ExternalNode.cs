@@ -8,11 +8,16 @@ public record ExternalNode<T>(T? Node, GameBoxRefTable.File? File) where T : Nod
 
     public override string ToString()
     {
-        if (IsEmpty)
+        if (Node is not null)
         {
-            return "Empty";
+            return Node.ToString();
         }
 
-        return base.ToString() ?? "";
+        if (File is not null)
+        {
+            return File.ToString();
+        }
+
+        return "Empty";
     }
 }

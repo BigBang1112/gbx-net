@@ -4,32 +4,31 @@ public partial class CGameGhost
 {
     public partial class Data
     {
-        public class Sample : NET.Sample
+        public class Sample
         {
-            private Data? owner;
+            public TimeInt32 Time { get; }
+            public byte[] Data { get; }
 
-            public Sample(byte[] data) : base(data)
+            public Vec3 Position { get; set; }
+            public Quat Rotation { get; set; }
+            public Vec3 Velocity { get; set; }
+            public float VelocitySpeed => Velocity.GetMagnitude() * 3.6f;
+            public Vec3 AngularVelocity { get; set; }
+
+            internal Sample(TimeInt32 time, byte[] data)
             {
-                
+                Time = time;
+                Data = data;
             }
 
-            internal void AssignTo(Data? ghostData)
+            public override string ToString()
             {
-                owner = ghostData;
-
-                if (owner == null || owner.samplePeriod.TotalMilliseconds <= 0)
-                {
-                    Timestamp = null;
-                    return;
-                }
-
-                UpdateTimestamp();
+                return $"{Time}, {Data.Length} bytes";
             }
 
-            internal void UpdateTimestamp()
+            internal virtual void Read(MemoryStream ms, GameBoxReader r, int version)
             {
-                if (owner is not null)
-                    Timestamp = TimeInt32.FromMilliseconds(owner.samplePeriod.TotalMilliseconds * owner.Samples.IndexOf(this));
+
             }
         }
     }

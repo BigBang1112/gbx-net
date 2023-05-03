@@ -13,9 +13,9 @@
     private static readonly Regex regexDecoItalic = new Regex(@"\$i(.*)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
     private static readonly Regex regexDecoBold = new Regex(@"\$o(.*)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
-    private static readonly Regex regexColor3WithZ = new Regex(@"\$([0-9a-f]{3})(.+?)(?=\$[0-9a-f]|\$z)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
-    private static readonly Regex regexColor2WithZ = new Regex(@"\$([0-9a-f]{2})(.+?)(?=\$[0-9a-f]|\$z)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
-    private static readonly Regex regexColor1WithZ = new Regex(@"\$([0-9a-f]{1})(.+?)(?=\$[0-9a-f]|\$z)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+    private static readonly Regex regexColor3WithZ = new Regex(@"\$([0-9a-f]{3})(.*?)(?=\$[0-9a-f]|\$z)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+    private static readonly Regex regexColor2WithZ = new Regex(@"\$([0-9a-f]{2})(.*?)(?=\$[0-9a-f]|\$z)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+    private static readonly Regex regexColor1WithZ = new Regex(@"\$([0-9a-f]{1})(.*?)(?=\$[0-9a-f]|\$z)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
     private static readonly Regex regexColor3 = new Regex(@"\$([0-9a-f]{3})(.+?$)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
     private static readonly Regex regexColor2 = new Regex(@"\$([0-9a-f]{2})(.+?$)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
     private static readonly Regex regexColor1 = new Regex(@"\$([0-9a-f]{1})(.+?$)", RegexOptions.IgnoreCase | RegexOptions.Compiled);

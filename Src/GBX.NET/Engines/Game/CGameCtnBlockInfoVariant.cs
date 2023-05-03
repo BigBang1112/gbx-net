@@ -45,6 +45,7 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
     private CGameTurbineModel? turbine;
     private CPlugFlockModel? flockModel;
     private GameBoxRefTable.File? flockModelFile;
+    private FlockEmitterState? flockEmmiter;
     private CGameSpawnModel? spawnModel;
     private GameBoxRefTable.File? spawnModelFile;
     private CPlugEntitySpawner?[]? entitySpawners;
@@ -121,6 +122,10 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
         get => flockModel = GetNodeFromRefTable(flockModel, flockModelFile) as CPlugFlockModel;
         set => flockModel = value;
     }
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk0315B006>(sinceVersion: 7)]
+    public FlockEmitterState? FlockEmmiter { get => flockEmmiter; set => flockEmmiter = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk0315B006>(sinceVersion: 8)]
@@ -332,6 +337,11 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
                             if (version >= 7)
                             {
                                 rw.NodeRef<CPlugFlockModel>(ref n.flockModel, ref n.flockModelFile);
+
+                                if (n.flockModel is not null || n.flockModelFile is not null)
+                                {
+                                    rw.Archive<FlockEmitterState>(ref n.flockEmmiter);
+                                }
 
                                 if (version >= 8)
                                 {
@@ -595,6 +605,43 @@ public abstract class CGameCtnBlockInfoVariant : CMwNod
             {
                 rw.Id(ref u09);
             }
+        }
+    }
+
+    public class FlockEmitterState : IReadableWritable, IVersionable
+    {
+        private float u01;
+        private float u02;
+        private int u03;
+        private bool u04;
+        private bool u05;
+        private Vec3 position;
+        private Mat3? matrix;
+
+        public int Version { get; set; } = 1;
+        public float U01 { get => u01; set => u01 = value; }
+        public float U02 { get => u02; set => u02 = value; }
+        public int U03 { get => u03; set => u03 = value; }
+        public bool U04 { get => u04; set => u04 = value; }
+        public bool U05 { get => u05; set => u05 = value; }
+        public Vec3 Position { get => position; set => position = value; }
+        public Mat3? Matrix { get => matrix; set => matrix = value; }
+
+        public void ReadWrite(GameBoxReaderWriter rw, int version = 0)
+        {
+            rw.VersionInt32(this);
+            rw.Single(ref u01); // 10 is a clear state
+            rw.Single(ref u02); // 0x40000000 is a clear state
+            rw.Int32(ref u03); // 5 is a clear state
+            rw.Boolean(ref u04);
+            rw.Boolean(ref u05); // true is a clear state
+
+            if (Version >= 1)
+            {
+                rw.Mat3(ref matrix);
+            }
+
+            rw.Vec3(ref position);
         }
     }
 }
