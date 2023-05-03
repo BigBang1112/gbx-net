@@ -41,9 +41,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Update="Components\ValueRenderers\CPlugVehicleCarPhyTuningValueRenderer.razor">
-		  <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-		</Content>
 		<Content Update="wwwroot\icon-192.png">
 			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
