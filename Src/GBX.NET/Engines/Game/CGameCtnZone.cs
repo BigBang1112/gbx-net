@@ -3,8 +3,13 @@
 [Node(0x0305C000)]
 public class CGameCtnZone : CMwNod
 {
+    private int height;
     private string? zoneId;
     private string? surfaceId;
+
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk0305C003>]
+    public int Height { get => height; set => height = value; }
 
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk0305C003>]
@@ -27,12 +32,11 @@ public class CGameCtnZone : CMwNod
     [Chunk(0x0305C003)]
     public class Chunk0305C003 : Chunk<CGameCtnZone>
     {
-        public int U01;
         public int U02;
 
         public override void ReadWrite(CGameCtnZone n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref U01);
+            rw.Int32(ref n.height);
             rw.Id(ref n.zoneId);
             rw.Id(ref n.surfaceId);
             rw.Int32(ref U02);
