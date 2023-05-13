@@ -1,4 +1,4 @@
-﻿namespace GBX.NET.Engines.Scene;
+﻿namespace GBX.NET.Engines.Plug;
 
 [Node(0x090EB000)] // previously CSceneVehicleTuning
 public class CPlugVehiclePhyTuning : CMwNod
