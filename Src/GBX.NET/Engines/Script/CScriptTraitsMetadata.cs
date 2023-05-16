@@ -142,7 +142,7 @@ public partial class CScriptTraitsMetadata : CMwNod
         {
             Version = r.ReadInt32();
 
-            if (Version < 2)
+            if (Version < 2 || Version > 5)
             {
                 throw new ChunkVersionNotSupportedException(Version);
             }
@@ -183,7 +183,7 @@ public partial class CScriptTraitsMetadata : CMwNod
         {
             w.Write(Version);
 
-            if (Version < 2)
+            if (Version < 2 || Version > 5)
             {
                 throw new ChunkVersionNotSupportedException(Version);
             }
