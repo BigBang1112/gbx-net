@@ -160,7 +160,7 @@ public partial class CScriptTraitsMetadata : CMwNod
                 {
                     var traitName = Version >= 3 ? r.ReadSmallString() : r.ReadString();
                     var type = ReadType(r);
-                    n.Traits.Add(traitName, ReadContents(r, type));
+                    n.Traits.Add(traitName, ReadContents(r, type, noContent: false));
                 }
 
                 return;
@@ -175,7 +175,7 @@ public partial class CScriptTraitsMetadata : CMwNod
             {
                 var traitName = r.ReadSmallString();
                 var typeIndex = r.ReadSmallLen();
-                n.Traits.Add(traitName, ReadContents(r, types[typeIndex]));
+                n.Traits.Add(traitName, ReadContents(r, types[typeIndex], noContent: false));
             }
         }
 
@@ -267,7 +267,8 @@ public partial class CScriptTraitsMetadata : CMwNod
                     {
                         var memberName = r.ReadString();
                         var memberType = ReadType(r);
-                        members.Add(memberName, ReadContents(r, memberType));
+                        
+                        members.Add(memberName, ReadContents(r, memberType, noContent: Version >= 6));
                     }
 
                     return new ScriptStructType(structName, members);
@@ -315,18 +316,18 @@ public partial class CScriptTraitsMetadata : CMwNod
         /// CScriptTraitsGenericContainer::ChunkContents
         /// </summary>
         /// <exception cref="NotSupportedException"></exception>
-        private ScriptTrait ReadContents(GameBoxReader r, IScriptType type) => type.Type switch
+        private ScriptTrait ReadContents(GameBoxReader r, IScriptType type, bool noContent) => type.Type switch
         {
-            EScriptType.Boolean => new ScriptTrait<bool>(type, r.ReadBoolean(asByte: Version >= 3)),
-            EScriptType.Integer => new ScriptTrait<int>(type, r.ReadInt32()),
-            EScriptType.Real => new ScriptTrait<float>(type, r.ReadSingle()),
-            EScriptType.Text => new ScriptTrait<string>(type, Version >= 3 ? r.ReadSmallString() : r.ReadString()),
-            EScriptType.Array => ReadScriptArray(r, type),
-            EScriptType.Vec2 => new ScriptTrait<Vec2>(type, r.ReadVec2()),
-            EScriptType.Vec3 => new ScriptTrait<Vec3>(type, r.ReadVec3()),
-            EScriptType.Int3 => new ScriptTrait<Int3>(type, r.ReadInt3()),
-            EScriptType.Int2 => new ScriptTrait<Int2>(type, r.ReadInt2()),
-            EScriptType.Struct => ReadScriptStruct(r, type),
+            EScriptType.Boolean => new ScriptTrait<bool>(type, !noContent && r.ReadBoolean(asByte: Version >= 3)),
+            EScriptType.Integer => new ScriptTrait<int>(type, noContent ? default : r.ReadInt32()),
+            EScriptType.Real => new ScriptTrait<float>(type, noContent ? default : r.ReadSingle()),
+            EScriptType.Text => new ScriptTrait<string>(type, noContent ? "" : (Version >= 3 ? r.ReadSmallString() : r.ReadString())),
+            EScriptType.Array => ReadScriptArray(r, type, noContent),
+            EScriptType.Vec2 => new ScriptTrait<Vec2>(type, noContent ? default : r.ReadVec2()),
+            EScriptType.Vec3 => new ScriptTrait<Vec3>(type, noContent ? default : r.ReadVec3()),
+            EScriptType.Int3 => new ScriptTrait<Int3>(type, noContent ? default : r.ReadInt3()),
+            EScriptType.Int2 => new ScriptTrait<Int2>(type, noContent ? default : r.ReadInt2()),
+            EScriptType.Struct => ReadScriptStruct(r, type, noContent),
             _ => throw new NotSupportedException($"{type} is not supported.")
         };
 
@@ -379,7 +380,7 @@ public partial class CScriptTraitsMetadata : CMwNod
             }
         }
 
-        private ScriptTrait ReadScriptArray(GameBoxReader r, IScriptType type)
+        private ScriptTrait ReadScriptArray(GameBoxReader r, IScriptType type, bool noContent)
         {
             if (type is not ScriptArrayType arrayType)
             {
@@ -395,7 +396,7 @@ public partial class CScriptTraitsMetadata : CMwNod
 
                 for (var i = 0; i < arrayFieldCount; i++)
                 {
-                    var valueContents = ReadContents(r, arrayType.ValueType);
+                    var valueContents = ReadContents(r, arrayType.ValueType, noContent);
 
                     array[i] = valueContents;
                 }
@@ -407,8 +408,8 @@ public partial class CScriptTraitsMetadata : CMwNod
 
             for (var i = 0; i < arrayFieldCount; i++)
             {
-                var keyContents = ReadContents(r, arrayType.KeyType);
-                var valueContents = ReadContents(r, arrayType.ValueType);
+                var keyContents = ReadContents(r, arrayType.KeyType, noContent);
+                var valueContents = ReadContents(r, arrayType.ValueType, noContent);
 
                 dictionary[keyContents] = valueContents;
             }
@@ -451,7 +452,7 @@ public partial class CScriptTraitsMetadata : CMwNod
             }
         }
 
-        private ScriptStructTrait ReadScriptStruct(GameBoxReader r, IScriptType type)
+        private ScriptStructTrait ReadScriptStruct(GameBoxReader r, IScriptType type, bool noContent)
         {
             if (Version < 4)
             {
@@ -467,7 +468,7 @@ public partial class CScriptTraitsMetadata : CMwNod
 
             foreach (var member in structType.Members)
             {
-                dictionary[member.Key] = ReadContents(r, member.Value.Type);
+                dictionary[member.Key] = ReadContents(r, member.Value.Type, noContent);
             }
 
             return new ScriptStructTrait(structType, dictionary);
