@@ -305,7 +305,11 @@ public partial class CScriptTraitsMetadata : CMwNod
                     {
                         w.Write(member.Key);
                         WriteType(w, member.Value.Type);
-                        WriteContents(w, member.Value);
+
+                        if (Version < 6)
+                        {
+                            WriteContents(w, member.Value);
+                        }
                     }
 
                     break;
