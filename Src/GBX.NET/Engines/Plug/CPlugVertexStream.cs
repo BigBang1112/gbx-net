@@ -55,10 +55,13 @@ public class CPlugVertexStream : CPlug
     private CPlugVertexStream? streamModel;
     private GameBoxRefTable.File? streamModelFile;
     private Vec3[] positions = Array.Empty<Vec3>();
+    private Vec3[] positions2 = Array.Empty<Vec3>();
     private Vec3[] normals = Array.Empty<Vec3>();
+    private Vec3[] normals2 = Array.Empty<Vec3>();
     private SortedDictionary<int, Vec2[]> uvs = new();
     private SortedDictionary<int, int[]> colors = new();
     private int[]? blendIndices;
+    private Vec2[]? blendWeight;
     private Vec3[]? tangentUs;
     private Vec3[]? tangentVs;
 
@@ -88,7 +91,15 @@ public class CPlugVertexStream : CPlug
 
     [NodeMember]
     [AppliedWithChunk<Chunk09056000>]
+    public Vec3[] Positions2 { get => positions2; set => positions2 = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk09056000>]
     public Vec3[] Normals { get => normals; set => normals = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk09056000>]
+    public Vec3[] Normals2 { get => normals2; set => normals2 = value; }
 
     [NodeMember]
     [AppliedWithChunk<Chunk09056000>]
@@ -101,6 +112,10 @@ public class CPlugVertexStream : CPlug
     [NodeMember]
     [AppliedWithChunk<Chunk09056000>]
     public int[]? BlendIndices { get => blendIndices; set => blendIndices = value; }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk09056000>]
+    public Vec2[]? BlendWeight { get => blendWeight; set => blendWeight = value; }
 
     [NodeMember]
     [AppliedWithChunk<Chunk09056000>]
@@ -170,6 +185,9 @@ public class CPlugVertexStream : CPlug
                                 rw.Array<Vec2>(ref uvs, n.count);
                                 n.UVs[uvsIndex] = uvs ?? throw new Exception("Null when it shouldn't be");
                                 break;
+                            case EPlugVDcl.BlendWeight:
+                                rw.Array<Vec2>(ref n.blendWeight!, n.count);
+                                break;
                             default:
                                 throw new Exception($"Unknown Float2 ({decl.WeightCount})");
                         }
@@ -179,6 +197,15 @@ public class CPlugVertexStream : CPlug
                         {
                             case EPlugVDcl.Position:
                                 rw.Array<Vec3>(ref n.positions!, n.count);
+                                break;
+                            case EPlugVDcl.Position1:
+                                rw.Array<Vec3>(ref n.positions2!, n.count);
+                                break;
+                            case EPlugVDcl.Normal:
+                                rw.ArrayVec3_10b(ref n.normals!, n.count);
+                                break;
+                            case EPlugVDcl.Normal1:
+                                rw.ArrayVec3_10b(ref n.normals2!, n.count);
                                 break;
                             default:
                                 throw new Exception($"Unknown Float3 ({decl.WeightCount})");
