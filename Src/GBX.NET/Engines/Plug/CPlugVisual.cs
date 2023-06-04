@@ -83,6 +83,12 @@ public abstract class CPlugVisual : CPlug
     [AppliedWithChunk<Chunk0900600F>]
     public Box BoundingBox { get; set; }
 
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk0900600D>]
+    [AppliedWithChunk<Chunk0900600E>]
+    [AppliedWithChunk<Chunk0900600F>]
+    public SkinData? VisualSkinData { get; private set; }
+
     internal CPlugVisual()
     {
         
@@ -330,6 +336,8 @@ public abstract class CPlugVisual : CPlug
     [Chunk(0x0900600D)]
     public class Chunk0900600D : Chunk<CPlugVisual>
     {
+        public int Version { get; set; }
+
         public override void Read(CPlugVisual n, GameBoxReader r)
         {
             n.ConvertChunkFlagsToFlags(r.ReadInt32());
@@ -345,7 +353,7 @@ public abstract class CPlugVisual : CPlug
                 if (GetType() == typeof(Chunk0900600F))
                 {
                     // CPlugVisual::ArchiveSkinData
-                    throw new NotSupportedException("CPlugVisual::ArchiveSkinData");
+                    n.VisualSkinData = SkinData.Read(r, Version);
                 }
                 else
                 {
@@ -376,7 +384,7 @@ public abstract class CPlugVisual : CPlug
                 if (GetType() == typeof(Chunk0900600F))
                 {
                     // CPlugVisual::ArchiveSkinData
-                    throw new NotSupportedException("CPlugVisual::ArchiveSkinData");
+                    n.VisualSkinData?.Write(w, Version); // not stable
                 }
                 else
                 {
@@ -419,8 +427,6 @@ public abstract class CPlugVisual : CPlug
         public ushort[]? U02;
         public int? U03;
         public int? U04;
-
-        public int Version { get; set; }
 
         public override void Read(CPlugVisual n, GameBoxReader r)
         {
@@ -680,6 +686,102 @@ public abstract class CPlugVisual : CPlug
             w.Write(U03);
             w.Write(U04);
             w.Write(U05);
+        }
+    }
+
+    public class SkinData
+    {
+        public bool U01 { get; set; }
+        public int U02 { get; set; }
+        public bool U03 { get; set; }
+        public bool U04 { get; set; }
+        public byte[]? BoneSetData { get; set; }
+        public string[]? BoneNames { get; set; }
+        public int[]? BoneIndices { get; set; }
+
+        public static SkinData Read(GameBoxReader r, int version = 0)
+        {
+            var u01 = r.ReadBoolean();
+            var u02 = r.ReadInt32();
+            var u03 = false;
+            var u04 = false;
+
+            if (version >= 3)
+            {
+                u03 = r.ReadBoolean();
+                u04 = r.ReadBoolean();
+            }
+
+            if (u03)
+            {
+                throw new Exception("U03 == true");
+            }
+
+            var boneSetCount = r.ReadInt32();
+            var boneSetData = default(byte[]);
+            var boneNames = default(string[]);
+            var boneIndices = default(int[]);
+
+            if (version == 0)
+            {
+                boneSetData = r.ReadBytes(boneSetCount * 48);
+            }
+            else
+            {
+                boneNames = r.ReadArray(boneSetCount, r => (string)r.ReadId());
+
+                if (version >= 2)
+                {
+                    boneIndices = r.ReadArray<int>();
+                }
+            }
+
+            return new()
+            {
+                U01 = u01,
+                U02 = u02,
+                U03 = u03,
+                U04 = u04,
+                BoneSetData = boneSetData,
+                BoneNames = boneNames,
+                BoneIndices = boneIndices
+            };
+        }
+
+        public void Write(GameBoxWriter w, int version)
+        {
+            w.Write(U01);
+            w.Write(U02);
+            
+            if (version >= 3)
+            {
+                w.Write(U03);
+                w.Write(U04);
+            }
+
+            if (U03)
+            {
+                throw new Exception("U03 == true");
+            }
+
+            w.Write(BoneNames is not null ? BoneNames.Length : (BoneSetData?.Length / 48 ?? 0));
+            
+            if (version == 0)
+            {
+                w.Write(BoneSetData);
+            }
+            else
+            {
+                foreach (var boneName in BoneNames ?? Array.Empty<string>())
+                {
+                    w.WriteId(boneName);
+                }
+                
+                if (version >= 2)
+                {
+                    w.WriteArray(BoneIndices);
+                }
+            }
         }
     }
 }
