@@ -4,18 +4,63 @@
 [Node(0x09056000)]
 public class CPlugVertexStream : CPlug
 {
+    public enum EPlugVDclType
+    {
+        U01,
+        Float2,
+        Float3,
+        Float4,
+        Color, // 4 bytes RGBA
+        Int32,
+        Dec3N = 14
+    }
+
+    public enum EPlugVDcl
+    {
+        Position,
+        Position1,
+        TgtRotation,
+        BlendWeight,
+        BlendIndices,
+        Normal,
+        Normal1,
+        PointSize,
+        Color0,
+        Color1,
+        TexCoord0,
+        TexCoord1,
+        TexCoord2,
+        TexCoord3,
+        TexCoord4,
+        TexCoord5,
+        TexCoord6,
+        TexCoord7,
+        TangentU,
+        TangentU1,
+        TangentV,
+        TangentV1,
+        Color2
+    }
+
+    public enum EPlugVDclSpace
+    {
+        Global3D,
+        Local3D,
+        Global2D
+    }
+    
     private int count;
     private uint flags;
     private DataDecl[]? dataDecls;
     private CPlugVertexStream? streamModel;
     private GameBoxRefTable.File? streamModelFile;
-    private Vec3[] vertices = Array.Empty<Vec3>();
+    private Vec3[] positions = Array.Empty<Vec3>();
     private Vec3[] normals = Array.Empty<Vec3>();
-    private Vec2[]? uvs1;
-    private Vec2[]? uvs2;
-    private Vec2[]? uvs3;
-    private Vec3[]? tangents1;
-    private Vec3[]? tangents2;
+    private SortedDictionary<int, Vec2[]> uvs = new();
+    private SortedDictionary<int, int[]> colors = new();
+    private int[]? blendIndices;
+    private Vec3[]? tangentUs;
+    private Vec3[]? tangentVs;
 
     [NodeMember]
     [AppliedWithChunk<Chunk09056000>]
@@ -33,9 +78,13 @@ public class CPlugVertexStream : CPlug
         set => streamModel = value;
     }
 
+    [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk09056000>]
+    public DataDecl[]? DataDecls { get => dataDecls; set => dataDecls = value; }
+
     [NodeMember]
     [AppliedWithChunk<Chunk09056000>]
-    public Vec3[] Vertices { get => vertices; set => vertices = value; }
+    public Vec3[] Positions { get => positions; set => positions = value; }
 
     [NodeMember]
     [AppliedWithChunk<Chunk09056000>]
@@ -43,23 +92,23 @@ public class CPlugVertexStream : CPlug
 
     [NodeMember]
     [AppliedWithChunk<Chunk09056000>]
-    public Vec2[]? Uvs1 { get => uvs1; set => uvs1 = value; }
+    public SortedDictionary<int, Vec2[]> UVs { get => uvs; set => uvs = value; }
 
     [NodeMember]
     [AppliedWithChunk<Chunk09056000>]
-    public Vec2[]? Uvs2 { get => uvs2; set => uvs2 = value; }
+    public SortedDictionary<int, int[]> Colors { get => colors; set => colors = value; }
 
     [NodeMember]
     [AppliedWithChunk<Chunk09056000>]
-    public Vec2[]? Uvs3 { get => uvs3; set => uvs3 = value; }
+    public int[]? BlendIndices { get => blendIndices; set => blendIndices = value; }
 
     [NodeMember]
     [AppliedWithChunk<Chunk09056000>]
-    public Vec3[]? Tangents1 { get => tangents1; set => tangents1 = value; }
-
+    public Vec3[]? TangentUs { get => tangentUs; set => tangentUs = value; }
+    
     [NodeMember]
     [AppliedWithChunk<Chunk09056000>]
-    public Vec3[]? Tangents2 { get => tangents2; set => tangents2 = value; }
+    public Vec3[]? TangentVs { get => tangentVs; set => tangentVs = value; }
 
     internal CPlugVertexStream()
     {
@@ -75,7 +124,6 @@ public class CPlugVertexStream : CPlug
     public class Chunk09056000 : Chunk<CPlugVertexStream>, IVersionable
     {
         public bool U04;
-        private Vec3[]? U01;
 
         public int Version { get; set; }
 
@@ -103,53 +151,85 @@ public class CPlugVertexStream : CPlug
 
             foreach (var decl in n.dataDecls)
             {
-                switch (decl.U01)
+                switch (decl.Type)
                 {
-                    case 4195328:
-                    case 5243904:
-                    case 6292480:
-                    case 8389632:
-                    case 10486784:
-                    case 12583936:
-                        rw.Array<Vec3>(ref n.vertices!, n.count);
+                    case EPlugVDclType.Float2:
+                        switch (decl.WeightCount)
+                        {
+                            case EPlugVDcl.TexCoord0:
+                            case EPlugVDcl.TexCoord1:
+                            case EPlugVDcl.TexCoord2:
+                            case EPlugVDcl.TexCoord3:
+                            case EPlugVDcl.TexCoord4:
+                            case EPlugVDcl.TexCoord5:
+                            case EPlugVDcl.TexCoord6:
+                            case EPlugVDcl.TexCoord7:
+                                var uvsIndex = (int)decl.WeightCount - (int)EPlugVDcl.TexCoord0;
+                                if (rw.Reader is not null) n.UVs = new();
+                                _ = n.UVs.TryGetValue(uvsIndex, out var uvs);
+                                rw.Array<Vec2>(ref uvs, n.count);
+                                n.UVs[uvsIndex] = uvs ?? throw new Exception("Null when it shouldn't be");
+                                break;
+                            default:
+                                throw new Exception($"Unknown Float2 ({decl.WeightCount})");
+                        }
                         break;
-                    case 272636933:
-                    case 273685509:
-                    case 274734085:
-                    case 276831237:
-                    case 278928389:
-                    case 281025541:
-                        rw.ArrayVec3_10b(ref n.normals!, n.count);
+                    case EPlugVDclType.Float3:
+                        switch (decl.WeightCount)
+                        {
+                            case EPlugVDcl.Position:
+                                rw.Array<Vec3>(ref n.positions!, n.count);
+                                break;
+                            default:
+                                throw new Exception($"Unknown Float3 ({decl.WeightCount})");
+                        }
                         break;
-                    case 542115848:
-                        rw.ArrayVec3_10b(ref U01, n.count);
+                    case EPlugVDclType.Float4:
+                        throw new Exception($"Unknown Float4 ({decl.WeightCount})");
+                    case EPlugVDclType.Color:
+                        switch (decl.WeightCount)
+                        {
+                            case EPlugVDcl.Color0:
+                            case EPlugVDcl.Color1:
+                            case EPlugVDcl.Color2:
+                                var colorsIndex = (int)decl.WeightCount - (int)EPlugVDcl.Color0;
+                                if (rw.Reader is not null) n.Colors = new();
+                                _ = n.Colors.TryGetValue(colorsIndex, out var colors);
+                                rw.Array<int>(ref colors, n.count);
+                                n.Colors[colorsIndex] = colors ?? throw new Exception("Null when it shoudlnt be");
+                                break;
+                            default:
+                                throw new Exception($"Unknown Color ({decl.WeightCount})");
+                        }
                         break;
-                    case 542116356:
-                        rw.ArrayVec3_10b(ref U01, n.count);
+                    case EPlugVDclType.Int32:
+                        switch (decl.WeightCount)
+                        {
+                            case EPlugVDcl.BlendIndices:
+                                rw.Array<int>(ref n.blendIndices, n.count);
+                                break;
+                            default:
+                                throw new Exception($"Unknown Int32 ({decl.WeightCount})");
+                        }
                         break;
-                    case 542114314: // this one has dupes?
-                    case 543162890:
-                    case 545260042: // uv match1
-                    case 547357194: // uv match2
-                    case 549454346: // uv match3
-                        rw.Array<Vec2>(ref n.uvs1!, count: n.count);
+                    case EPlugVDclType.Dec3N:
+                        switch (decl.WeightCount)
+                        {
+                            case EPlugVDcl.Normal:
+                                rw.ArrayVec3_10b(ref n.normals!, n.count);
+                                break;
+                            case EPlugVDcl.TangentU:
+                                rw.ArrayVec3_10b(ref n.tangentUs!, n.count);
+                                break;
+                            case EPlugVDcl.TangentV:
+                                rw.ArrayVec3_10b(ref n.tangentVs!, n.count);
+                                break;
+                            default:
+                                throw new Exception($"Unknown Dec3N ({decl.WeightCount})");
+                        }
                         break;
-                    case 545260043: // uv match1
-                    case 547357195: // uv match2
-                    case 549454347: // uv match3
-                        rw.Array<Vec2>(ref n.uvs2!, count: n.count);
-                        break;
-                    case 549454348:
-                        rw.Array<Vec2>(ref n.uvs3!, count: n.count);
-                        break;
-                    case 278928402: // t match1
-                    case 281025554: // t match2
-                        rw.ArrayVec3_10b(ref n.tangents1!, n.count);
-                        break;
-                    case 278928404: // t match1
-                    case 281025556: // t match2
-                        rw.ArrayVec3_10b(ref n.tangents2!, n.count);
-                        break;
+                    default:
+                        throw new NotSupportedException($"Unknown data decl type ({decl.WeightCount})");
                 }
             }
         }
@@ -159,26 +239,48 @@ public class CPlugVertexStream : CPlug
 
     public class DataDecl : IReadableWritable
     {
-        public uint U01;
-        public uint U02;
-        public ushort? U03;
-        public ushort Offset;
+        // DDDDXXXX XXXXXXBB BBBBBBBA AAAAAAAA
+        // A - WeightCount
+        // B - Type (Float2?, 2 = Float3, Float4?, 14 = Dec3N)
+        // D - Space
+        private uint flags1;
+
+        // AAAAAAAAXX
+        // A - Offset?
+        private uint flags2;
         
+        private ushort offset;
+
+        public uint Flags1 { get => flags1; set => flags1 = value; }
+        public uint Flags2 { get => flags2; set => flags2 = value; }
+        public ushort Offset { get => offset; set => offset = value; }
+
+        public EPlugVDcl WeightCount => (EPlugVDcl)(flags1 & 0x1FF);
+        public EPlugVDclType Type => (EPlugVDclType)((flags1 >> 9) & 0x1FF);
+        public EPlugVDclSpace Space => (EPlugVDclSpace)((flags1 >> 28) & 0xF);
+        
+        public ushort? U03;
+
         public void ReadWrite(GameBoxReaderWriter rw, int version = 0) // version is not really version in this case
         {
-            rw.UInt32(ref U01);
-            rw.UInt32(ref U02);
+            rw.UInt32(ref flags1);
+            rw.UInt32(ref flags2);
 
-            if ((U02 & 0xffc) != 0)
+            if ((flags2 & 0xFFC) != 0)
             {
                 rw.UInt16(ref U03);
-                rw.UInt16(ref Offset);
+                rw.UInt16(ref offset);
 
-                if (((ushort)(U02 >> 2) & 0x3ff) != Offset)
+                if (((ushort)(flags2 >> 2) & 0x3FF) != Offset)
                 {
                     throw new Exception("Invalid offset");
                 }
             }
+        }
+
+        public override string ToString()
+        {
+            return $"{Type} {Space} {WeightCount}";
         }
     }
 }
