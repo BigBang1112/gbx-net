@@ -36,7 +36,9 @@
             return;
         }
 
-        htmlString = Text.Replace("$g", "$888");
+        htmlString = Text.Replace(">", "&gt;").Replace("<", "&lt;");
+
+        htmlString = htmlString.Replace("$g", "$888");
 
         htmlString = regexDecoUppercaseStrip.Replace(htmlString, "$1");
         htmlString = regexDecoItalicStrip.Replace(htmlString, "$1");
