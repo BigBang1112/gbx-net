@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text;
 
 namespace GBX.NET;
 
@@ -202,6 +203,9 @@ public partial class GameBoxRefTable
         return mainBuilder.ToString();
     }
 
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public Node? GetNode(Node? nodeAtTheMoment, File? nodeFile, string? fileName, IExternalGameData? externalGameData)
     {
         var path = GetNodePath(nodeAtTheMoment, nodeFile, fileName);

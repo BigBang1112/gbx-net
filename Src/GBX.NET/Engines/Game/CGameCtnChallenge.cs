@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO.Compression;
 using System.Security;
 using System.Text;
@@ -1744,6 +1745,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Enumerates through all of the embedded Gbxs and yields them entirely.
     /// </summary>
     /// <returns>An enumerable of <see cref="GameBox"/>.</returns>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public IEnumerable<GameBox> GetEmbeddedGbxs()
     {
         if (EmbeddedData is null)
@@ -1834,6 +1838,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Enumerates through all of the embedded nodes and yields them entirely.
     /// </summary>
     /// <returns>An enumerable of nodes.</returns>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public IEnumerable<Node> GetEmbeddedNodes()
     {
         foreach (var gbx in GetEmbeddedGbxs())
@@ -1849,6 +1856,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Enumerates through all of the embedded items and yields them entirely.
     /// </summary>
     /// <returns>An enumerable of <see cref="CGameItemModel"/> nodes.</returns>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public IEnumerable<CGameItemModel> GetEmbeddedItemModels()
     {
         foreach (var node in GetEmbeddedNodes())
@@ -1864,6 +1874,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// Enumerates through all of the embedded materials and yields them entirely.
     /// </summary>
     /// <returns>An enumerable of <see cref="CPlugMaterialUserInst"/> nodes.</returns>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public IEnumerable<CPlugMaterialUserInst> GetEmbeddedMaterials()
     {
         foreach (var node in GetEmbeddedNodes())

@@ -1,4 +1,6 @@
-﻿namespace GBX.NET;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace GBX.NET;
 
 internal static class GbxCompressor
 {
@@ -12,6 +14,9 @@ internal static class GbxCompressor
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="VersionNotSupportedException">GBX files below version 3 are not supported.</exception>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public static bool Decompress(Stream input, Stream output)
     {
         using var r = new GameBoxReader(input);
@@ -45,6 +50,9 @@ internal static class GbxCompressor
         return true;
     }
 
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public static bool Compress(Stream input, Stream output)
     {
         using var r = new GameBoxReader(input);

@@ -10,6 +10,7 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<IsTrimmable>true</IsTrimmable>
 
 		<Version>1.2.1</Version>
 		<PackageReleaseNotes></PackageReleaseNotes>

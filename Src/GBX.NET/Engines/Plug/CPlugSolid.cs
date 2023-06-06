@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Utils;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace GBX.NET.Engines.Plug;
@@ -50,6 +51,9 @@ public class CPlugSolid : CPlug
     /// <param name="encoding">Encoding to use.</param>
     /// <param name="leaveOpen">If to keep the streams open.</param>
     /// <param name="corruptedMaterials">If to use a different way to handle corrupted material files (via header reference table, to avoid body parse). Exists due to TMTurbo problems. Can give much less accurate results.</param>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public void ExportToObj(string fileNameWithoutExtension,
                             string? gameDataFolderPath = null,
                             Encoding? encoding = null,
@@ -70,6 +74,9 @@ public class CPlugSolid : CPlug
     /// <param name="encoding">Encoding to use.</param>
     /// <param name="leaveOpen">If to keep the streams open.</param>
     /// <param name="corruptedMaterials">If to use a different way to handle corrupted material files (via header reference table, to avoid body parse). Exists due to TMTurbo problems. Can give much less accurate results.</param>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public void ExportToObj(Stream objStream, 
                             Stream mtlStream, 
                             string? gameDataFolderPath = null,

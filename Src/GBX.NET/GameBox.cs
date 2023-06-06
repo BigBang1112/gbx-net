@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Debugging;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GBX.NET;
 
@@ -103,6 +104,9 @@ public partial class GameBox
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="MissingLzoException"></exception>
     /// <exception cref="HeaderOnlyParseLimitationException">Writing is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     internal void Write(Stream stream, IDRemap remap, ILogger? logger)
     {
         logger?.LogDebug("Writing the body...");
@@ -139,6 +143,9 @@ public partial class GameBox
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="MissingLzoException"></exception>
     /// <exception cref="HeaderOnlyParseLimitationException">Writing is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     internal async Task WriteAsync(Stream stream, IDRemap remap, ILogger? logger, GameBoxAsyncWriteAction? asyncAction, CancellationToken cancellationToken)
     {
         logger?.LogDebug("Writing the body...");
@@ -179,6 +186,9 @@ public partial class GameBox
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="MissingLzoException"></exception>
     /// <exception cref="HeaderOnlyParseLimitationException">Saving is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public void Save(Stream stream, IDRemap remap = default, ILogger? logger = null)
     {
         Write(stream, remap, logger);
@@ -201,6 +211,9 @@ public partial class GameBox
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="MissingLzoException"></exception>
     /// <exception cref="HeaderOnlyParseLimitationException">Saving is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public void Save(string? fileName = default, IDRemap remap = default, ILogger? logger = null)
     {
         fileName ??= (FileName ?? throw new PropertyNullException(nameof(FileName)));
@@ -224,6 +237,9 @@ public partial class GameBox
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="MissingLzoException"></exception>
     /// <exception cref="HeaderOnlyParseLimitationException">Saving is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public async Task SaveAsync(Stream stream, IDRemap remap = default, ILogger? logger = null, GameBoxAsyncWriteAction? asyncAction = null, CancellationToken cancellationToken = default)
     {
         await WriteAsync(stream, remap, logger, asyncAction, cancellationToken);
@@ -248,6 +264,9 @@ public partial class GameBox
     /// <exception cref="ObjectDisposedException">The stream is closed.</exception>
     /// <exception cref="MissingLzoException"></exception>
     /// <exception cref="HeaderOnlyParseLimitationException">Saving is not supported in <see cref="GameBox"/> where only the header was parsed (without raw body being read).</exception>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public async Task SaveAsync(string? fileName = default, IDRemap remap = default, ILogger? logger = null, GameBoxAsyncWriteAction? asyncAction = null, CancellationToken cancellationToken = default)
     {
         fileName ??= (FileName ?? throw new PropertyNullException(nameof(FileName)));
@@ -364,6 +383,9 @@ public partial class GameBox
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="VersionNotSupportedException">GBX files below version 3 are not supported.</exception>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public static bool Decompress(Stream input, Stream output)
     {
         return GbxCompressor.Decompress(input, output);
@@ -386,6 +408,9 @@ public partial class GameBox
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="VersionNotSupportedException">GBX files below version 3 are not supported.</exception>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public static bool Decompress(string inputFileName, Stream output)
     {
         using var fs = File.OpenRead(inputFileName);
@@ -408,6 +433,9 @@ public partial class GameBox
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="VersionNotSupportedException">GBX files below version 3 are not supported.</exception>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public static bool Decompress(Stream input, string outputFileName)
     {
         using var fs = File.Create(outputFileName);
@@ -431,30 +459,45 @@ public partial class GameBox
     /// <exception cref="IOException">An I/O error occurs.</exception>
     /// <exception cref="VersionNotSupportedException">GBX files below version 3 are not supported.</exception>
     /// <exception cref="TextFormatNotSupportedException">Text-formatted GBX files are not supported.</exception>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public static bool Decompress(string inputFileName, string outputFileName)
     {
         using var fsInput = File.OpenRead(inputFileName);
         using var fsOutput = File.Create(outputFileName);
         return Decompress(fsInput, fsOutput);
     }
-    
+
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public static bool Compress(Stream input, Stream output)
     {
         return GbxCompressor.Compress(input, output);
     }
-    
+
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public static bool Compress(string inputFileName, Stream output)
     {
         using var fs = File.OpenRead(inputFileName);
         return Compress(fs, output);
     }
 
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public static bool Compress(Stream input, string outputFileName)
     {
         using var fs = File.Create(outputFileName);
         return Compress(input, fs);
     }
 
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public static bool Compress(string inputFileName, string outputFileName)
     {
         using var fsInput = File.OpenRead(inputFileName);

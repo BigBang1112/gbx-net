@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Utils;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text;
 
@@ -63,6 +64,9 @@ public partial class CPlugCrystal : CPlugTreeGenerator
     /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>
     /// <param name="encoding">Encoding to use.</param>
     /// <param name="leaveOpen">If to keep the streams open.</param>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public void ExportToObj(Stream objStream,
                             Stream mtlStream,
                             int? mergeVerticesDigitThreshold = null,
@@ -89,6 +93,9 @@ public partial class CPlugCrystal : CPlugTreeGenerator
     /// <param name="gameDataFolderPath">Folder for the Material.Gbx, Texture.Gbx, and .dds lookup.</param>
     /// <param name="encoding">Encoding to use.</param>
     /// <param name="leaveOpen">If to keep the streams open.</param>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public void ExportToObj(string fileNameWithoutExtension,
                             int? mergeVerticesDigitThreshold = null,
                             string? gameDataFolderPath = null,
