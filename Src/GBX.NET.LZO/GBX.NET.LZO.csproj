@@ -9,6 +9,7 @@
 		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
 		<PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<IsTrimmable>true</IsTrimmable>
 
 		<Version>1.0.2</Version>
 		<PackageReleaseNotes>Update to C# 10.</PackageReleaseNotes>

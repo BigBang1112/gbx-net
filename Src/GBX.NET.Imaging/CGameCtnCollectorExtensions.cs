@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 using GBX.NET.Engines.GameData;
 
 namespace GBX.NET.Imaging;
@@ -8,6 +9,7 @@ namespace GBX.NET.Imaging;
 /// <summary>
 /// Imaging extensions for <see cref="CGameCtnCollector"/>.
 /// </summary>
+[SupportedOSPlatform("windows")]
 public static class CGameCtnCollectorExtensions
 {
     /// <summary>
