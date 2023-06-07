@@ -6,7 +6,7 @@ namespace GBX.NET;
 public static class Lzo
 {
     private const string TrimWarningAlways = "The LZO type is dynamically loaded.";
-    internal const string TrimWarningIfDynamic = "The LZO type could be dynamically loaded if Lzo.SetLzo() was not called beforehand. If Lzo.SetLzo() was called, you can globally suppress this warning.";
+    internal const string TrimWarningIfDynamic = "The LZO type could be dynamically loaded if Lzo.SetLzo() was not called beforehand. If Lzo.SetLzo() was called, you can globally suppress this warning (preferably only from GBX.NET).";
 
     private const string expectedClassName = "MiniLZO";
     private const string expectedCompressMethodName = "Compress";
