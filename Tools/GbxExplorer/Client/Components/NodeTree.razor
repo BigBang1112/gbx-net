@@ -97,7 +97,7 @@
     public PropertyInfo? ParentProperty { get; set; }
 
     [Parameter]
-    public NodeTreeElement? Parent { get; set; }
+    public GbxExplorer.Client.Components.NodeTreeElement Parent { get; set; }
 
     /// <summary>
     /// Properties to render. Unused on enumerable case.
@@ -109,8 +109,8 @@
     /// ValueRenderer "root" of the tree. Used to check further metadata.
     /// </summary>
     [Parameter]
-    public ValueRenderer? ParentValueRenderer { get; set; }
-
+    public GbxExplorer.Client.Components.ValueRenderers.ValueRenderer ParentValueRenderer { get; set; }
+    
     public void Update()
     {
         if (Parent is null)

@@ -8,6 +8,7 @@
 		<NullabilityInfoContextSupport>true</NullabilityInfoContextSupport>
 		<BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
 		<Version>1.2.1</Version>
+		<TrimmerRemoveSymbols>true</TrimmerRemoveSymbols>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -32,7 +33,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\Src\GBX.NET\GBX.NET.csproj" />
+		<ProjectReference Include="..\..\..\Src\GBX.NET\GBX.NET.csproj">
+			<IsTrimmable>false</IsTrimmable>
+		</ProjectReference>
 		<ProjectReference Include="..\Shared\GbxExplorer.Shared.csproj" />
 	</ItemGroup>
 

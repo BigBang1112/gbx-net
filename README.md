@@ -200,6 +200,34 @@ var bronzeTime = gbx.Node.BronzeTime; // WRONG !!!
 var silverTime = map.SilverTime; // Correct
 ```
 
+## Trimming
+
+**Since 1.2.1**, GBX.NET officially supports full trimming, but you have to be careful using it. You're not forced to use trimming in case of complications.
+
+To make sure it works:
+
+1. Explicitly setting LZO is **required**:
+
+```cs
+GBX.NET.Lzo.SetLzo(typeof(GBX.NET.LZO.MiniLZO));
+```
+
+2. After that, currently, you can just suppress warnings on the `GameBox.Parse...` and possibly other methods. Sadly, it's not possible to suppress warnings only for a specific library reference, so you have to do it this way for now. This will improve in GBX.NET 2. **Please, do not suppress the warning globally.**
+
+```cs
+#pragma warning disable IL2026 // add these lines
+var gbx = GameBox.ParseNode<CGameCtnReplayRecord>(args[0], logger: logger);
+#pragma warning restore IL2026 // add these lines
+```
+
+3. In case you wanna use reflection on GBX.NET, it is strongly recommended to simply turn off trimming of this library. **In case of Blazor WebAssembly specifically, it's worth noting that the release build trims automatically**, so in case you're using reflection, modify your library reference:
+
+```xml
+<PackageReference Include="GBX.NET">
+    <IsTrimmable>false</IsTrimmable> <!-- add this line -->
+</PackageReference>
+```
+
 ## License
 
 - **The sub-library GBX.NET.LZO is licensed with [GNU General Public License v3.0](Src/GBX.NET.LZO/LICENSE.GPL-3.0-or-later.md). If you're going to use this library, please license your work under GPL-3.0-or-later.**
