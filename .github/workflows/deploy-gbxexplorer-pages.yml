@@ -34,7 +34,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: 7.0.202
+          dotnet-version: 7.0.x
         
       - name: Create appsettings.json
         uses: 1arp/create-a-file-action@0.2

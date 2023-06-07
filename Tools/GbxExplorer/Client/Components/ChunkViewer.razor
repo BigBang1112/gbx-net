@@ -156,7 +156,7 @@
     public Action<Chunk>? Deletion { get; set; }
 
     [Parameter]
-    public NodeValuePreview? NodeValuePreview { get; set; }
+    public GbxExplorer.Client.Components.ValuePreviews.NodeValuePreview ValuePreview { get; set; }
 
     private async Task OpenOrCloseChunkAsync(Type chunkType)
     {
@@ -172,7 +172,7 @@
         StateHasChanged();
         await Task.Delay(1);
 
-        NodeValuePreview?.UpdateNodeTreeExplorer();
+        ValuePreview?.UpdateNodeTreeExplorer();
     }
 
     private Dictionary<string, object?> GetValueRendererParameters(
@@ -197,6 +197,6 @@
     public void Update()
     {
         StateHasChanged();
-        NodeValuePreview?.UpdateNodeTreeExplorer();
+        ValuePreview?.UpdateNodeTreeExplorer();
     }
 }

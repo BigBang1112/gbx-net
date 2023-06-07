@@ -71,7 +71,7 @@
 
         @foreach (var chunk in headerChunks)
         {
-            <ChunkViewer Chunk="chunk" Deletion="c => DeleteHeaderChunk(headerChunks, c)" NodeValuePreview="this" />
+            <ChunkViewer Chunk="chunk" Deletion="c => DeleteHeaderChunk(headerChunks, c)" ValuePreview="this" />
         }
     }
 
@@ -84,7 +84,7 @@
     else
     {
         <Virtualize Context="chunk" Items="node.Chunks" OverscanCount="16" ItemSize="36">
-            <ChunkViewer Chunk="chunk" Deletion="DeleteBodyChunk" NodeValuePreview="this" />
+            <ChunkViewer Chunk="chunk" Deletion="DeleteBodyChunk" ValuePreview="this" />
         </Virtualize>
     }
 
