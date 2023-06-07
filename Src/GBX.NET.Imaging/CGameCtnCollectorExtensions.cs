@@ -9,7 +9,9 @@ namespace GBX.NET.Imaging;
 /// <summary>
 /// Imaging extensions for <see cref="CGameCtnCollector"/>.
 /// </summary>
+#if NET6_0_OR_GREATER
 [SupportedOSPlatform("windows")]
+#endif
 public static class CGameCtnCollectorExtensions
 {
     /// <summary>
