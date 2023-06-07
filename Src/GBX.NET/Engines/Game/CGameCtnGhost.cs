@@ -44,6 +44,7 @@ public partial class CGameCtnGhost : CGameGhost
     private string? ghostClubTag;
     private PlayerInputData[]? playerInputs;
     private IReadOnlyCollection<IInput>? inputs;
+    private bool steeringWheelSensitivity;
 
     #endregion
 
@@ -444,6 +445,22 @@ public partial class CGameCtnGhost : CGameGhost
         {
             DiscoverChunk<Chunk03092025>();
             inputs = value;
+        }
+    }
+
+    [NodeMember]
+    [AppliedWithChunk<Chunk03092025>]
+    public bool SteeringWheelSensitivity
+    {
+        get
+        {
+            DiscoverChunk<Chunk03092025>();
+            return steeringWheelSensitivity;
+        }
+        set
+        {
+            DiscoverChunk<Chunk03092025>();
+            steeringWheelSensitivity = value;
         }
     }
 
@@ -1235,8 +1252,6 @@ public partial class CGameCtnGhost : CGameGhost
     {
         private int version;
 
-        public bool U01;
-
         public int Version { get => version; set => version = value; }
 
         public Chunk03092019 Chunk019 { get; }
@@ -1258,7 +1273,7 @@ public partial class CGameCtnGhost : CGameGhost
                 return;
             }
 
-            rw.Boolean(ref U01);
+            rw.Boolean(ref n.steeringWheelSensitivity);
         }
     }
 

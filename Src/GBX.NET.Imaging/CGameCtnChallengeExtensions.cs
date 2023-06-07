@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
+using System.Runtime.Versioning;
 using GBX.NET.Engines.Game;
 
 namespace GBX.NET.Imaging;
@@ -7,6 +8,9 @@ namespace GBX.NET.Imaging;
 /// <summary>
 /// Imaging extensions for <see cref="CGameCtnChallenge"/>.
 /// </summary>
+#if NET6_0_OR_GREATER
+[SupportedOSPlatform("windows")]
+#endif
 public static class CGameCtnChallengeExtensions
 {
     /// <summary>

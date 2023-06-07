@@ -72,6 +72,10 @@ public abstract class Node
         return type.FullName?.Substring("GBX.NET.Engines".Length + 1).Replace(".", "::") ?? string.Empty;
     }
 
+#if NET6_0_OR_GREATER
+    // temporary solution, this could bloat the library af
+    [UnconditionalSuppressMessage("Trimming", "IL2026:Members annotated with 'RequiresUnreferencedCodeAttribute' require dynamic access otherwise can break functionality when trimming application code", Justification = "<Pending>")]
+#endif
     protected internal ExternalNode<T>[]? GetNodesFromRefTable<T>(ExternalNode<T>[]? nodesAtTheMoment) where T : Node
     {
         if (nodesAtTheMoment is null)
@@ -94,16 +98,27 @@ public abstract class Node
         return nodesAtTheMoment;
     }
 
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     protected internal ExternalNode<T> GetNodeFromRefTable<T>(ExternalNode<T> nodeAtTheMoment) where T : Node
     {
         return nodeAtTheMoment with { Node = GetNodeFromRefTable(nodeAtTheMoment.Node, nodeAtTheMoment.File) as T };
     }
 
+#if NET6_0_OR_GREATER
+    // temporary solution, this could bloat the library af
+    [UnconditionalSuppressMessage("Trimming", "IL2026:Members annotated with 'RequiresUnreferencedCodeAttribute' require dynamic access otherwise can break functionality when trimming application code", Justification = "<Pending>")]
+#endif
     protected internal Node? GetNodeFromRefTable(Node? nodeAtTheMoment, GameBoxRefTable.File? nodeFile)
     {
         return GetNodeFromRefTable(gbxForRefTable, nodeAtTheMoment, nodeFile);
     }
 
+#if NET6_0_OR_GREATER
+    // temporary solution, this could bloat the library af
+    [UnconditionalSuppressMessage("Trimming", "IL2026:Members annotated with 'RequiresUnreferencedCodeAttribute' require dynamic access otherwise can break functionality when trimming application code", Justification = "<Pending>")]
+#endif
     internal static Node? GetNodeFromRefTable(GameBox? gbx, Node? nodeAtTheMoment, GameBoxRefTable.File? nodeFile)
     {
         if (nodeAtTheMoment is not null || nodeFile is null || gbx is null)
@@ -1081,6 +1096,9 @@ public abstract class Node
     /// <param name="fileName">Relative or absolute file path. Null will pick the <see cref="GameBox.FileName"/> value from <see cref="GBX"/> object instead.</param>
     /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
     /// <param name="logger">Logger.</param>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public void Save(string? fileName = default, IDRemap remap = default, ILogger? logger = null)
     {
         var gbx = GetGbx();
@@ -1100,6 +1118,9 @@ public abstract class Node
     /// <param name="stream">Any kind of stream that supports writing.</param>
     /// <param name="remap">What to remap the newest node IDs to. Used for older games.</param>
     /// <param name="logger">Logger.</param>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public void Save(Stream stream, IDRemap remap = default, ILogger? logger = null)
     {
         var gbx = GetGbx();
@@ -1121,6 +1142,9 @@ public abstract class Node
     /// <param name="logger">Logger.</param>
     /// <param name="asyncAction">Specialized executions during asynchronous writing.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public async Task SaveAsync(string? fileName = default,
                                 IDRemap remap = default,
                                 ILogger? logger = null,
@@ -1146,6 +1170,9 @@ public abstract class Node
     /// <param name="logger">Logger.</param>
     /// <param name="asyncAction">Specialized executions during asynchronous writing.</param>
     /// <param name="cancellationToken">Cancellation token.</param>
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public async Task SaveAsync(Stream stream,
                                 IDRemap remap = default,
                                 ILogger? logger = null,

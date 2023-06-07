@@ -1,4 +1,5 @@
 ﻿using GBX.NET.Inputs;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GBX.NET.Engines.Game;
 
@@ -172,6 +173,9 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     /// </summary>
     [NodeMember(ExactlyNamed = true)]
     [AppliedWithChunk<Chunk03093002B>]
+#if NET6_0_OR_GREATER
+    [UnconditionalSuppressMessage("Trimming", "IL2026:Members annotated with 'RequiresUnreferencedCodeAttribute' require dynamic access otherwise can break functionality when trimming application code", Justification = "<Pending>")]
+#endif
     public CGameCtnChallenge? Challenge
     {
         get

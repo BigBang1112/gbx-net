@@ -24,6 +24,7 @@ public class GameBoxWriter : BinaryWriter
     private int? IdVersion { get => State.IdVersion; set => State.IdVersion = value; }
     private IList<string> IdStrings => State.IdStrings;
     private SortedDictionary<int, Node?> AuxNodes => State.AuxNodes;
+    private Dictionary<Node, int> AuxNodesByNodes => State.AuxNodesByNodes;
 
     /// <summary>
     /// Constructs a binary writer specialized for Gbx serializing.
@@ -421,24 +422,17 @@ public class GameBoxWriter : BinaryWriter
             node.Write(this);
             return;
         }
-        
-        foreach (var pair in AuxNodes) // This is not super efficient
-        {
-            if (pair.Value is null)
-            {
-                continue;
-            }
 
-            if (pair.Value.Equals(node))
-            {
-                Write(pair.Key + 1);
-                return;
-            }
+        if (AuxNodesByNodes.TryGetValue(node, out var auxIndex))
+        {
+            Write(auxIndex + 1);
+            return;
         }
 
         var index = AuxNodes.Count + State.ExtAuxNodes.Count;
 
         AuxNodes.Add(index, node);
+        AuxNodesByNodes.Add(node, index);
 
         Write(index + 1);
         Write(Chunk.Remap(node.Id, Remap));

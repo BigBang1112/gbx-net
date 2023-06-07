@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Text;
 
 namespace GBX.NET.Utils;
@@ -53,9 +54,12 @@ public class ObjFileExporter : IModelExporter, IDisposable
         this.corruptedMaterials = corruptedMaterials;
     }
 
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public virtual void Export(CPlugCrystal crystal)
     {
-        var invariant = System.Globalization.CultureInfo.InvariantCulture;
+        var invariant = CultureInfo.InvariantCulture;
 
         mtlWriter?.WriteLine("newmtl _Nothing");
         mtlWriter?.WriteLine("Ka 1.000 1.000 1.000");
@@ -212,7 +216,10 @@ public class ObjFileExporter : IModelExporter, IDisposable
         
         Merge();
     }
-
+    
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     internal virtual void Export(CPlugTree tree, CPlugSolid? mainNode)
     {
         var gbx = default(GameBox);
@@ -226,11 +233,17 @@ public class ObjFileExporter : IModelExporter, IDisposable
         Merge();
     }
 
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public virtual void Export(CPlugTree tree)
     {
         Export(tree, mainNode: null);
     }
-
+    
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     public virtual void Export(CPlugSolid2Model solid2)
     {
         for (var i = 0; i < solid2.Visuals.Length; i++)
@@ -283,6 +296,9 @@ public class ObjFileExporter : IModelExporter, IDisposable
 #endif
     }
 
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     private void ExportRecurse(CPlugTree tree, GameBox? gbx)
     {
         foreach (var t in tree.Children)
@@ -313,6 +329,9 @@ public class ObjFileExporter : IModelExporter, IDisposable
         WriteVisualWithMaterial(tree.Name, visual, corruptedMaterials ? null : tree.Shader as CPlugMaterial, tree.ShaderFile, gbx);
     }
 
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     private void WriteVisualWithMaterial(string? visualName,
         CPlugVisual visual, CPlugMaterial? material, GameBoxRefTable.File? materialFile, GameBox? gbx)
     {
@@ -394,6 +413,9 @@ public class ObjFileExporter : IModelExporter, IDisposable
         }
     }
 
+#if NET6_0_OR_GREATER
+    [RequiresUnreferencedCode(Lzo.TrimWarningIfDynamic)]
+#endif
     private void WriteCorruptedMaterialToMtl(GameBoxRefTable.File? materialFile, GameBox? gbx)
     {
         if (materialFile is null || gbx is null)
@@ -404,7 +426,7 @@ public class ObjFileExporter : IModelExporter, IDisposable
         objFaceWriter.WriteLine("usemtl " + materialFile.FileName);
         mtlWriter?.WriteLine("newmtl " + materialFile.FileName);
 
-        var materialFullFileName = Path.Combine(Path.GetDirectoryName(gbx.FileName),
+        var materialFullFileName = Path.Combine(Path.GetDirectoryName(gbx.FileName)!,
             gbx.RefTable?.GetRelativeFolderPathToFile(materialFile),
             materialFile.FileName);
 
@@ -421,7 +443,7 @@ public class ObjFileExporter : IModelExporter, IDisposable
             return;
         }
         
-        var textureFullFileName = Path.Combine(Path.GetDirectoryName(materialFullFileName),
+        var textureFullFileName = Path.Combine(Path.GetDirectoryName(materialFullFileName)!,
             matRefTable.GetRelativeFolderPathToFile(diffuseFile), diffuseFile.FileName);
 
         if (GameBox.ParseNode(textureFullFileName) is CPlugBitmap texture)
@@ -505,7 +527,7 @@ public class ObjFileExporter : IModelExporter, IDisposable
 
             if (corruptedMaterials)
             {
-                fullTextureFileName = Path.Combine(Path.GetDirectoryName(gbx.FileName), textureDirectory, textureFile.FileName);
+                fullTextureFileName = Path.Combine(Path.GetDirectoryName(gbx.FileName)!, textureDirectory, textureFile.FileName);
             }
 
             fullTextureFileName = fullTextureFileName.Replace('\\', '/');
