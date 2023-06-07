@@ -11,8 +11,8 @@
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<IsTrimmable>true</IsTrimmable>
 
-		<Version>1.0.2</Version>
-		<PackageReleaseNotes>Update to C# 10.</PackageReleaseNotes>
+		<Version>1.0.3</Version>
+		<PackageReleaseNotes>Added IsTrimmable.</PackageReleaseNotes>
 
 		<TargetFrameworks>net7.0;net6.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
 		<LangVersion>11</LangVersion>
