@@ -2,7 +2,7 @@ name: GbxExplorer Docker Image push to registry
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
     
 env:
   BUILD_DIR: Tools/GbxExplorer/Server
