@@ -64,7 +64,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     {
         Advanced,
         Simple,
-        HasGhostBlocks
+        HasGhostBlocks,
+        Gamepad = 4
     }
 
     /// <summary>
@@ -341,6 +342,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     public bool HasGhostBlocks => (editor & EditorMode.HasGhostBlocks) != 0;
+
+    /// <summary>
+    /// If the map was made using the gamepad editor.
+    /// </summary>
+    [NodeMember]
+    public bool CreatedWithGamepadEditor => (editor & EditorMode.Gamepad) != 0;
 
     /// <summary>
     /// If the map is a multilap.

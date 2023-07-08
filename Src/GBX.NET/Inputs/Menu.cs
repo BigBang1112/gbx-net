@@ -5,7 +5,7 @@
 /// </summary>
 /// <param name="Time"></param>
 /// <param name="Pressed"></param>
-public readonly record struct Menu(TimeInt32 Time, bool Pressed) : IInputState
+public readonly partial record struct Menu(TimeInt32 Time, bool Pressed) : IInputState
 {
 
 }

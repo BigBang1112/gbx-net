@@ -190,7 +190,6 @@ public class CGameObjectVisModel : CMwNod
         public int? U08;
         public int? U09;
         public CMwNod? U10;
-        public CMwNod? U11;
         public float? U12;
         public CMwNod? U13;
         public CMwNod? U14;
@@ -199,6 +198,10 @@ public class CGameObjectVisModel : CMwNod
         public CMwNod? U16;
         public GameBoxRefTable.File? U16File;
         public string? U17;
+        public float? U18;
+        public float? U19;
+        public float? U20;
+        public string? U21;
 
         public int Version { get => version; set => version = value; }
 
@@ -248,9 +251,21 @@ public class CGameObjectVisModel : CMwNod
             {
                 rw.String(ref U07);
 
+                if (version >= 11 && !string.IsNullOrEmpty(U07))
+                {
+                    rw.Single(ref U18);
+                    rw.Single(ref U19);
+                    rw.Single(ref U20);
+                }
+
                 if (version >= 12)
                 {
                     rw.String(ref n.smashParticleRef);
+
+                    if (!string.IsNullOrEmpty(n.smashParticleRef))
+                    {
+                        rw.Id(ref U21);
+                    }
 
                     if (version >= 13)
                     {
@@ -261,10 +276,11 @@ public class CGameObjectVisModel : CMwNod
                         {
                             rw.String(ref U17);
 
+                            // if length == 0 then CPlugSolid
+
                             if (version >= 16)
                             {
-                                rw.NodeRef(ref U10);
-                                rw.NodeRef(ref U11);
+                                rw.NodeRef(ref U10); // CPlugParticleEmitterModel
 
                                 if (version >= 19)
                                 {
