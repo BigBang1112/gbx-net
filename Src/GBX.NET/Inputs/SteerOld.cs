@@ -1,6 +1,6 @@
 ﻿namespace GBX.NET.Inputs;
 
-public readonly record struct SteerOld(TimeInt32 Time, float Value) : IInputSteer
+public readonly partial record struct SteerOld(TimeInt32 Time, float Value) : IInputSteer
 {
     public float NormalizedValue => GetValue();
 
