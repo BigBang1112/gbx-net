@@ -221,7 +221,7 @@ input.file {
         }
 
 input[type=text], select {
-    padding: 4px 8px;
+    padding: 4.5px 8px;
     background-color: #22262A88;
     font-family: inherit;
     border: none;
