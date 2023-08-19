@@ -32,7 +32,7 @@ hr {
 .header-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: 100%;
+    width: 97%;
     align-items: center;
     gap: 0.1rem;
 }
