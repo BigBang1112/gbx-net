@@ -1,6 +1,6 @@
 ﻿.chunk-button {
     font-weight: bold;
-    border-radius: 0.4rem;
+    border-radius: 0.2rem;
     transition: 0.1s;
     animation: fadeIn 0.2s;
 }
