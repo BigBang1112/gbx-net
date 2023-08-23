@@ -165,7 +165,6 @@ public partial class CPlugSolid2Model : CMwNod
         public string? U09;
         public int U12;
         public string U13 = "";
-        public int? U14;
         public Box[]? U15;
         public string[]? U16;
         public int[]? U17;
@@ -283,15 +282,7 @@ public partial class CPlugSolid2Model : CMwNod
 
                                                             if (version >= 15)
                                                             {
-                                                                if (version < 29)
-                                                                {
-                                                                    rw.Int32(ref materialCount);
-                                                                }
-
-                                                                if (version >= 30)
-                                                                {
-                                                                    rw.Int32(ref U14);
-                                                                }
+                                                                rw.Int32(ref materialCount);
 
                                                                 rw.ArrayArchive<Material>(ref n.customMaterials!, version, materialCount);
 
