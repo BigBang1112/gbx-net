@@ -27,7 +27,13 @@
     }
     else
     {
-        <span class="element-box" data-title="This value cannot be modified. Custom creation of nodes will be added later.">@(fileVal.ToString())</span>
+        var f = fileVal as GameBoxRefTable.File;
+        var gbx = typeof(Node).GetField("gbxForRefTable", BindingFlags.Instance | BindingFlags.NonPublic)?.GetValue(Owner) as GameBox;
+        var dirPath = f is null ? null : gbx?.RefTable?.GetRelativeFolderPathToFile(f);
+
+        <span class="element-box"
+              title="@(f is null || dirPath is null ? "" : Path.Combine(dirPath, f.FileName ?? ""))"
+              data-title="This value cannot be modified. Custom creation of nodes will be added later.">@(fileVal.ToString())</span>
     }
 }
 else
