@@ -1247,7 +1247,7 @@ public partial class CGameCtnGhost : CGameGhost
     /// <summary>
     /// CGameCtnGhost 0x025 skippable chunk (validation TM2)
     /// </summary>
-    [Chunk(0x03092025, "validation TM2")]
+    [Chunk(0x03092025, "validation TM2", ProcessSync = true)]
     public class Chunk03092025 : SkippableChunk<CGameCtnGhost>, IVersionable
     {
         private int version;
