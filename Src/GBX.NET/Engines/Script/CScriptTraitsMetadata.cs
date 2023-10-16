@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using GBX.NET.Builders.Engines.Script;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GBX.NET.Engines.Script;
 
@@ -42,6 +43,8 @@ public partial class CScriptTraitsMetadata : CMwNod
         Traits = null!;
 #endif
     }
+
+    public static CScriptTraitsMetadataBuilder Create() => new();
 
 #if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
     public bool TryGet(string name, [NotNullWhen(true)] out ScriptTrait? trait)
@@ -136,7 +139,7 @@ public partial class CScriptTraitsMetadata : CMwNod
     [Chunk(0x11002000)]
     public class Chunk11002000 : Chunk<CScriptTraitsMetadata>, IVersionable
     {
-        public int Version { get; set; }
+        public int Version { get; set; } = 5;
 
         public override void Read(CScriptTraitsMetadata n, GameBoxReader r)
         {

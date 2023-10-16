@@ -62,7 +62,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Builders\Engines\Script\" />
 		<Folder Include="Engines\Audio\" />
 		<Folder Include="Engines\Net\" />
 		<Folder Include="Engines\VirtualSkipper\" />
