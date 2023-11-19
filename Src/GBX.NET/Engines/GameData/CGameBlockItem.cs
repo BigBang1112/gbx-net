@@ -57,6 +57,8 @@ public class CGameBlockItem : CMwNod
     {
         private int version;
 
+        public byte U01;
+
         public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameBlockItem n, GameBoxReaderWriter rw)
@@ -65,6 +67,16 @@ public class CGameBlockItem : CMwNod
             rw.Id(ref n.archetypeBlockInfoId!);
             rw.Id(ref n.archetypeBlockInfoCollectionId!);
             rw.DictionaryNode(ref n.customizedVariants!);
+
+            if (version >= 1)
+            {
+                rw.Byte(ref U01);
+
+                if (version >= 2)
+                {
+                    throw new ChunkVersionNotSupportedException(version);
+                }
+            }
         }
     }
 
