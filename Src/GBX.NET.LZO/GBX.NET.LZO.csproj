@@ -11,11 +11,11 @@
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<IsTrimmable>true</IsTrimmable>
 
-		<Version>1.0.3</Version>
-		<PackageReleaseNotes>Added IsTrimmable.</PackageReleaseNotes>
+		<Version>1.0.4</Version>
+		<PackageReleaseNotes></PackageReleaseNotes>
 
-		<TargetFrameworks>net7.0;net6.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
-		<LangVersion>11</LangVersion>
+		<TargetFrameworks>net8.0;net7.0;net6.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
+		<LangVersion>12</LangVersion>
 		<Platforms>AnyCPU;x64;x86</Platforms>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
