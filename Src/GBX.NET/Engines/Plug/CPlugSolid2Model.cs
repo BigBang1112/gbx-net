@@ -165,6 +165,7 @@ public partial class CPlugSolid2Model : CMwNod
         public string? U09;
         public int U12;
         public string U13 = "";
+        public int? U14;
         public Box[]? U15;
         public string[]? U16;
         public int[]? U17;
@@ -198,7 +199,7 @@ public partial class CPlugSolid2Model : CMwNod
 
             ApplyToGeoms(n, n.materialIds, x => x.MaterialIndex, (x, y) => x.MaterialId = y);
 
-            var materialCount = version >= 29 ? rw.Int32(n.materialInsts.Length) : 0;
+            var materialCount = version >= 29 ? rw.Int32(n.customMaterials.Length) : 0;
 
             if (materialCount == 0)
             {
@@ -282,7 +283,15 @@ public partial class CPlugSolid2Model : CMwNod
 
                                                             if (version >= 15)
                                                             {
-                                                                rw.Int32(ref materialCount);
+                                                                if (version < 29)
+                                                                {
+                                                                    rw.Int32(ref materialCount);
+                                                                }
+
+                                                                if (version >= 30)
+                                                                {
+                                                                    rw.Int32(ref U14);
+                                                                }
 
                                                                 rw.ArrayArchive<Material>(ref n.customMaterials!, version, materialCount);
 
