@@ -489,12 +489,24 @@ public partial class CGameCtnGhost : CGameGhost
         
         public bool U03;
         public int[]? U04;
+        public int? U05;
+        public int? U06;
 
         public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnGhost n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
+
+            if (Version > 9)
+            {
+                throw new ChunkVersionNotSupportedException(version);
+            }
+
+            if (version >= 9)
+            {
+                rw.Int32(ref U05);
+            }
             
             // SGamePlayerMobilAppearanceParams::Archive
             rw.Ident(ref n.playerModel!);
@@ -527,6 +539,11 @@ public partial class CGameCtnGhost : CGameGhost
 
                     if (Version >= 5)
                     {
+                        if (Version >= 9)
+                        {
+                            rw.Int32(ref U06);
+                        }
+
                         rw.NodeRef<CPlugEntRecordData>(ref n.recordData);
                         rw.Array(ref U04);
 
@@ -541,11 +558,6 @@ public partial class CGameCtnGhost : CGameGhost
                                 if (Version >= 8)
                                 {
                                     rw.String(ref n.ghostClubTag);
-
-                                    if (Version > 8)
-                                    {
-                                        throw new ChunkVersionNotSupportedException(version);
-                                    }
                                 }
                             }
                         }
