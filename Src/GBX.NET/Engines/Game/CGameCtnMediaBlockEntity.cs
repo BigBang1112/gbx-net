@@ -137,12 +137,22 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMedi
         public float U10 = -1;
         public string? U11;
         public int? U12;
+        public int? U13;
+        public int? U14;
+        public int? U15;
+        public int? U16;
 
         public int Version { get => version; set => version = value; }
 
         public override void ReadWrite(CGameCtnMediaBlockEntity n, GameBoxReaderWriter rw)
         {
             rw.Int32(ref version);
+
+            if (version > 11)
+            {
+                throw new ChunkVersionNotSupportedException(version);
+            }
+
             rw.NodeRef<CPlugEntRecordData>(ref n.recordData!);
 
             if (version < 4)
@@ -168,6 +178,11 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMedi
                 
                 if (version >= 3)
                 {
+                    if (version >= 11)
+                    {
+                        rw.Int32(ref U13);
+                    }
+
                     // SGamePlayerMobilAppearanceParams::Archive
                     rw.Ident(ref n.playerModel);
                     rw.Vec3(ref U09); // some rgb, new light trail color?
@@ -183,6 +198,11 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMedi
 
                     if (version >= 4)
                     {
+                        if (version >= 11)
+                        {
+                            rw.Int32(ref U14);
+                        }
+
                         rw.ListKey<Key>(ref n.keys, version);
 
                         if (version == 5)
@@ -198,9 +218,10 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMedi
                             {
                                 rw.Int32(ref U12);
 
-                                if (version >= 10)
+                                if (version >= 11)
                                 {
-                                    throw new ChunkVersionNotSupportedException(version);
+                                    rw.Int32(ref U15);
+                                    rw.Int32(ref U16);
                                 }
                             }
                         }
