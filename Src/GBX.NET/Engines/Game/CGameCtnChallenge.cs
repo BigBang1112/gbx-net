@@ -5118,5 +5118,31 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
 
     #endregion
 
+    #region 0x06B skippable chunk [TM2020]
+
+    /// <summary>
+    /// CGameCtnChallenge 0x06B skippable chunk [TM2020]
+    /// </summary>
+    [Chunk(0x0304306B)]
+    public class Chunk0304306B : SkippableChunk<CGameCtnChallenge>
+    {
+        public int U01;
+        public int U02;
+        public int U03;
+        public int U04;
+        public int U05;
+
+        public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
+        {
+            rw.Int32(ref U01);
+            rw.Int32(ref U02);
+            rw.Int32(ref U03);
+            rw.Int32(ref U04);
+            rw.Int32(ref U05);
+        }
+    }
+
+    #endregion
+
     #endregion
 }
