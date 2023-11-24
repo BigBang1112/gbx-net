@@ -1,9 +1,9 @@
-FROM mcr.microsoft.com/dotnet/aspnet:7.0-alpine AS base
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:7.0-alpine AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
 WORKDIR /src
 COPY ["Tools/GbxExplorer/Server/GbxExplorer.Server.csproj", "Tools/GbxExplorer/Server/"]
 COPY ["Tools/GbxExplorer/Client/GbxExplorer.Client.csproj", "Tools/GbxExplorer/Client/"]
@@ -18,7 +18,7 @@ RUN dotnet build "GbxExplorer.Server.csproj" -c Release -o /app/build
 FROM build AS publish
 RUN dotnet publish "GbxExplorer.Server.csproj" -c Release -o /app/publish
 
-FROM mcr.microsoft.com/dotnet/runtime-deps:7.0-alpine
+FROM mcr.microsoft.com/dotnet/runtime-deps:8.0-alpine
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["./GbxExplorer.Server"]
