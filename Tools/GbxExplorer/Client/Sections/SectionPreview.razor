@@ -112,7 +112,7 @@
                             <ul>
                                 @foreach (var file in refTable.Files)
                                 {
-                                    <li>@file.FileName</li>
+                                    <li title="@Path.Combine(refTable.GetRelativeFolderPathToFile(file), file.FileName ?? "")">@file.FileName</li>
                                 }
                             </ul>
                         </div>

@@ -193,7 +193,10 @@ public class CGameCommonItemEntityModelEdition : CMwNod
 
                 if (version >= 6)
                 {
-                    rw.NodeRef(ref U22);
+                    if (version < 8)
+                    {
+                        rw.NodeRef(ref U22);
+                    }
 
                     if (version >= 7 && n.itemType == EItemType.PickUp)
                     {

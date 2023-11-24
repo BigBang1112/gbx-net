@@ -13,11 +13,11 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		
-		<Version>1.1.2</Version>
+		<Version>1.1.3</Version>
 		<PackageReleaseNotes></PackageReleaseNotes>
 		
-		<TargetFrameworks>net7.0;net6.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
-		<LangVersion>11</LangVersion>
+		<TargetFrameworks>net8.0;net7.0;net6.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
+		<LangVersion>12</LangVersion>
 		<Platforms>AnyCPU;x64;x86</Platforms>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageTags>gbx, trackmania, maniaplanet, gamebox, net, pak, encryption</PackageTags>

@@ -12,11 +12,11 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<IsTrimmable>true</IsTrimmable>
 
-		<Version>1.2.2</Version>
+		<Version>1.2.3</Version>
 		<PackageReleaseNotes></PackageReleaseNotes>
 
-		<TargetFrameworks>net7.0;net6.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
-		<LangVersion>11</LangVersion>
+		<TargetFrameworks>net8.0;net7.0;net6.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
+		<LangVersion>12</LangVersion>
 		<Platforms>AnyCPU;x64;x86</Platforms>
 
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -62,7 +62,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Builders\Engines\Script\" />
 		<Folder Include="Engines\Audio\" />
 		<Folder Include="Engines\Net\" />
 		<Folder Include="Engines\VirtualSkipper\" />

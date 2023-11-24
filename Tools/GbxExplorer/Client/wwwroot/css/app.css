@@ -53,12 +53,12 @@ h1, h2, h3 {
 
 .section {
     background: linear-gradient(90deg, rgba(20,21,24,0.95) 0%, rgba(25,26,31,0.95) 100%);
-    border-left: 0.5rem solid var(--border-side);
-    border-right: 0.5rem solid var(--border-side);
-    border-radius: 0.6rem / 0.3rem;
+    border-left: 0.2rem solid var(--border-side);
+    border-right: 0.2rem solid var(--border-side);
+    border-radius: 0.3rem / 0.2rem;
     padding: 0.8rem;
     backdrop-filter: blur(5px);
-    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.5);
+    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.2);
     transition: 0.1s all ease;
     background-blend-mode: lighten;
     box-sizing: border-box;
@@ -80,7 +80,7 @@ a {
     border: none;
     background: linear-gradient(90deg, rgba(20,21,24,0.5) 0%, rgba(16,17,20,0.6) 2%, rgba(17,18,20,0.6) 98%, rgba(21,23,26,0.5) 100%);
     padding: 0.5rem 0.7rem;
-    border-radius: 0.3rem;
+    border-radius: 0.2rem;
     align-items: center;
 }
 
@@ -143,8 +143,8 @@ a {
 
 .section.hoverable:hover, .section.hovered {
     background-color: var(--button-blue);
-    border-left: 0.5rem solid var(--button-blue-edge);
-    border-right: 0.5rem solid var(--button-blue-edge);
+    border-left: 0.2rem solid var(--button-blue-edge);
+    border-right: 0.2rem solid var(--button-blue-edge);
     cursor: pointer;
 }
 
@@ -198,7 +198,7 @@ input.file {
     font-weight: bold;
     background-color: #22262A88;
     padding: 5px 0.5rem;
-    border-radius: 0.3rem;
+    border-radius: 0.2rem;
     transition: 0.1s;
     animation: fadeIn 0.3s;
 }
@@ -221,11 +221,11 @@ input.file {
         }
 
 input[type=text], select {
-    padding: 4px 8px;
+    padding: 4.5px 8px;
     background-color: #22262A88;
     font-family: inherit;
     border: none;
-    border-radius: 0.3rem;
+    border-radius: 0.2rem;
     color: inherit;
     transition: background-color 0.1s;
     animation: fadeIn 0.3s;
@@ -255,7 +255,7 @@ select * {
 .textbox {
     padding: 4px 0 4px 8px;
     background-color: #22262A88;
-    border-radius: 0.3rem;
+    border-radius: 0.2rem;
     white-space: nowrap;
     min-width: 200px;
     max-width: 800px;
@@ -298,7 +298,7 @@ select * {
     left: 50%;
     padding: 6px;
     white-space: nowrap;
-    border-radius: 0.5rem;
+    border-radius: 0.2rem;
     background: #333E;
     z-index: 99999;
     animation: fadeIn 0.1s;

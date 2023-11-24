@@ -8,7 +8,7 @@
     }
     else
     {
-        <div style="display: flex;">
+        <div style="display: flex;padding-left: 5px;">
             <div style="display: flex;flex-direction: column;overflow:hidden;">
                 <big style="font-size:1.5rem;font-weight:bold;max-width: max-content;overflow:hidden;text-overflow: ellipsis;margin-right:0.5rem">@selectedGbx.FileName</big>
                 <p style="font-size: 0.6rem;overflow-wrap: anywhere;">SHA256: <span style="font-family: 'Source Code Pro', monospace;">@selectedGbx.Sha256</span></p>
@@ -27,7 +27,7 @@
             </div>
         </div>
 
-        <div style="background-color:#0505055F;border-radius:0.5rem;padding:1rem;flex:1;overflow:auto;">
+        <div style="background-color:#0505055F;border-radius:0.2rem;padding:1rem;flex:1;overflow:auto;">
             <div class="tree-overflow @(selectedGbx.Gbx.Node is null ? "centered-note" : "")">
 
             @if (selectedGbx.Gbx.Node is null)

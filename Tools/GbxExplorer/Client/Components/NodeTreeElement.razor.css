@@ -6,7 +6,7 @@
     white-space: nowrap;
     animation: fadeIn 0.3s;
     transition: background-color 0.1s;
-    border-radius: 0.3rem;
+    border-radius: 0.2rem;
 }
 
     .element.highlight {
@@ -18,13 +18,13 @@
     background-color: #22262A88;
     font-family: Source Code Pro;
     padding: 5px 0.5rem;
-    border-radius: 0.3rem;
+    border-radius: 0.2rem;
     transition: opacity 0.2s;
 }
 
 .member-name {
     padding: 1px 0.8rem;
-    border-radius: 0.3rem;
+    border-radius: 0.2rem;
     cursor: pointer;
     transition: 0.1s;
     background-color: #42495122;
