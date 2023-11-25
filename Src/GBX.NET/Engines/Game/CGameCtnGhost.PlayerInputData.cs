@@ -28,6 +28,7 @@ public partial class CGameCtnGhost
             NotStarted,
             Character,
             Vehicle,
+            VehicleMix
         }
 
         private EVersion version; // 8 in shootmania, 12 in tm2020
@@ -122,6 +123,7 @@ public partial class CGameCtnGhost
             rw.EnumInt32<EVersion>(ref this.version); // 8 in shootmania, 12 in tm2020
             rw.Int32(ref u02);
 
+            // version from the method parameter (the chunk version), NOT this.version
             if (version >= 4)
             {
                 rw.TimeInt32Nullable(ref startOffset);
@@ -428,6 +430,11 @@ public partial class CGameCtnGhost
                             if (started is EStart.NotStarted)
                             {
                                 started = (EStart)(states & 3);
+
+                                if (started is EStart.VehicleMix)
+                                {
+                                    started = EStart.Vehicle;
+                                }
                             }
 
                             if (started is EStart.Character)
