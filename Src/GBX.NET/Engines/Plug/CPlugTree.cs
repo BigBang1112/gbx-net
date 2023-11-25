@@ -204,6 +204,24 @@ public class CPlugTree : CPlug
 
     #endregion
 
+    #region 0x017 chunk
+
+    /// <summary>
+    /// CPlugTree 0x017 chunk
+    /// </summary>
+    [Chunk(0x0904F017)]
+    public class Chunk0904F017 : Chunk<CPlugTree>
+    {
+        public CPlugVisual? U01;
+
+        public override void ReadWrite(CPlugTree n, GameBoxReaderWriter rw)
+        {
+            rw.NodeRef<CPlugVisual>(ref U01);
+        }
+    }
+
+    #endregion
+
     #region 0x018 chunk (translation)
 
     /// <summary>
