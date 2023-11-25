@@ -728,6 +728,12 @@ public partial class CGameCtnGhost
                         if (started is EStart.NotStarted)
                         {
                             started = (EStart)(states & 3);
+
+                            if (started is EStart.VehicleMix)
+                            {
+                                started = EStart.Vehicle;
+                            }
+
                             horn = (states & 64) != 0; // a weird bit that can appear sometimes during the run too
                         }
                         else if (started is EStart.Vehicle)
