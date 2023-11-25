@@ -361,5 +361,18 @@ public class CGameItemPlacementParam : CMwNod
 
     #endregion
 
+    #region 0x005 skippable chunk
+
+    /// <summary>
+    /// CGameItemPlacementParam 0x005 skippable chunk
+    /// </summary>
+    [Chunk(0x2E020005), IgnoreChunk]
+    public class Chunk2E020005 : SkippableChunk<CGameItemPlacementParam>
+    {
+        // NPlugItemPlacement_SClass noderef
+    }
+
+    #endregion
+
     #endregion
 }
