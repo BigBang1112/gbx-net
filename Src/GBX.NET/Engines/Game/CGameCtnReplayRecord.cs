@@ -32,7 +32,6 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     private CPlugEntRecordData? recordData;
     private CCtnMediaBlockEventTrackMania? events;
     private TimeInt32? eventsDuration;
-    private ControlEntry[]? controlEntries;
     private string? game;
     private CCtnMediaBlockUiTMSimpleEvtsDisplay? simpleEventsDisplay;
     private CGameCtnMediaBlockScenery.Key[] sceneryVortexKeys = Array.Empty<CGameCtnMediaBlockScenery.Key>();
@@ -241,12 +240,6 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
     [AppliedWithChunk<Chunk03093003>]
     [AppliedWithChunk<Chunk0309300D>]
     public TimeInt32? EventsDuration => eventsDuration;
-
-    /// <summary>
-    /// Inputs (keyboard, pad, wheel) of the replay from TM1.0, TMO, Sunrise and ESWC. For inputs stored in TMU, TMUF, TMTurbo and TM2: see <see cref="CGameCtnGhost.ControlEntries"/> in <see cref="Ghosts"/>. TM2020 and Shootmania inputs aren't available in replays and ghosts. Can be null if <see cref="EventsDuration"/> is 0, which can happen when you save the replay in editor.
-    /// </summary>
-    [Obsolete("Use Inputs instead. Property will be removed in 1.3.0")]
-    public IReadOnlyCollection<ControlEntry>? ControlEntries => controlEntries;
 
     [NodeMember]
     [AppliedWithChunk<Chunk03093008>]
@@ -526,7 +519,6 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
 
             var numEntries = r.ReadInt32() - 1;
 
-            n.controlEntries = new ControlEntry[numEntries];
             n.inputs = new IInput[numEntries];
 
             for (var i = 0; i < numEntries; i++)
@@ -536,12 +528,6 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
                 var data = r.ReadUInt32();
 
                 var name = controlNames[controlNameIndex];
-
-                n.controlEntries[i] = name switch
-                {
-                    "Steer (analog)" => new ControlEntryAnalog(name, time, data), // Data is bugged
-                    _ => new ControlEntry(name, time, data),
-                };
 
                 n.inputs[i] = name switch
                 {
@@ -554,7 +540,6 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
                 };
             }
 
-            Array.Reverse(n.controlEntries); // Inputs are originally reversed
             Array.Reverse(n.inputs); // Inputs are originally reversed
 
             U02 = r.ReadInt32();
@@ -701,7 +686,6 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
             var numEntries = r.ReadInt32();
             U02 = r.ReadInt32();
 
-            n.controlEntries = new ControlEntry[numEntries];
             n.inputs = new IInput[numEntries];
 
             for (var i = 0; i < numEntries; i++)
@@ -711,13 +695,6 @@ public partial class CGameCtnReplayRecord : CMwNod, CGameCtnReplayRecord.IHeader
                 var data = r.ReadUInt32();
 
                 var name = controlNames[controlNameIndex];
-
-                n.controlEntries[i] = (string)name switch
-                {
-                    "Steer" or "Gas" or "AccelerateReal" or "BrakeReal"
-                      => new ControlEntryAnalog(name, time, data),
-                    _ => new ControlEntry(name, time, data),
-                };
 
                 n.inputs[i] = NET.Inputs.Input.Parse(time, name, data);
             }
