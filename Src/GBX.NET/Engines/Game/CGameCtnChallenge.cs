@@ -1280,16 +1280,19 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     [AppliedWithChunk<Chunk03043056>]
+    [AppliedWithChunk<Chunk0304306B>]
     public TimeSpan? DayTime
     {
         get
         {
             DiscoverChunk<Chunk03043056>();
+            DiscoverChunk<Chunk0304306B>();
             return dayTime;
         }
         set
         {
             DiscoverChunk<Chunk03043056>();
+            DiscoverChunk<Chunk0304306B>();
             dayTime = value;
         }
     }
@@ -1299,16 +1302,19 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     [AppliedWithChunk<Chunk03043056>]
+    [AppliedWithChunk<Chunk0304306B>]
     public bool DynamicDaylight
     {
         get
         {
             DiscoverChunk<Chunk03043056>();
+            DiscoverChunk<Chunk0304306B>();
             return dynamicDaylight;
         }
         set
         {
             DiscoverChunk<Chunk03043056>();
+            DiscoverChunk<Chunk0304306B>();
             dynamicDaylight = value;
         }
     }
@@ -1318,16 +1324,19 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     [AppliedWithChunk<Chunk03043056>]
+    [AppliedWithChunk<Chunk0304306B>]
     public TimeInt32? DayDuration
     {
         get
         {
             DiscoverChunk<Chunk03043056>();
+            DiscoverChunk<Chunk0304306B>();
             return dayDuration;
         }
         set
         {
             DiscoverChunk<Chunk03043056>();
+            DiscoverChunk<Chunk0304306B>();
             dayDuration = value;
         }
     }
