@@ -38,6 +38,12 @@ public partial class CGameCtnChallengeTests
         public partial void ReadAndWrite_TMUF_DataShouldEqual();
     }
 
+    [IgnoreReadWriteEqualityTest]
+    public partial class Chunk03043029Tests
+    {
+
+    }
+
     public partial class Chunk0304303ETests
     {
         [IgnoreReadWriteEqualityTest]

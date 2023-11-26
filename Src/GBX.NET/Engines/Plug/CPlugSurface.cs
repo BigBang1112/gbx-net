@@ -153,7 +153,7 @@ public partial class CPlugSurface : CPlug
         public int U01;
         public byte[]? U02;
 
-        public int U06;
+        public byte U03;
 
         public int Version { get => version; set => version = value; }
 
@@ -169,8 +169,13 @@ public partial class CPlugSurface : CPlug
             ArchiveSurf(ref n.surf, rw, n.surfVersion, version);
 
             rw.ArrayArchiveWithGbx<SurfMaterial>(ref n.materials); // ArchiveMaterials
-            
+
             rw.Bytes(ref U02);
+
+            if (version >= 4)
+            {
+                rw.Byte(ref U03);
+            }
 
             if (version >= 1)
             {
