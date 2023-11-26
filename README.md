@@ -86,6 +86,7 @@ Coming soon!
 - 0.0.1 - 0.9.0: System.Drawing.Common
 - 0.13.0+: TmEssentials
 - 0.15.0+: Microsoft.Extensions.Logging.Abstractions
+- 1.2.4+: System.IO.Hashing
 
 ### GBX.NET.Imaging
 - System.Drawing.Common
