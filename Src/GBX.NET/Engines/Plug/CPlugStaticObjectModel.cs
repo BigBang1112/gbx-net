@@ -22,10 +22,8 @@ public class CPlugStaticObjectModel : CMwNod
         U01 = r.ReadInt32();
         Mesh = r.ReadNodeRef<CPlugSolid2Model>();
 
-        if (r.ReadByte() == 0)
-        {
-            Shape = r.ReadNodeRef<CPlugSurface>();
-        }
+        r.ReadByte();
+        Shape = r.ReadNodeRef<CPlugSurface>();
     }
 
     protected override Task ReadChunkDataAsync(GameBoxReader r, CancellationToken cancellationToken)
@@ -40,10 +38,7 @@ public class CPlugStaticObjectModel : CMwNod
         w.Write(Mesh);
 
         w.Write(Shape is null ? (byte)1 : (byte)0);
-        if (Shape is not null)
-        {
-            w.Write(Shape);
-        }
+        w.Write(Shape);
     }
 
     protected override Task WriteChunkDataAsync(GameBoxWriter w, CancellationToken cancellationToken)
