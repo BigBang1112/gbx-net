@@ -1,10 +1,9 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.IO.Compression;
+using System.IO.Hashing;
 using System.Security;
 using System.Text;
 using GBX.NET.BlockInfo;
-using GBX.NET.Engines.Plug;
 
 namespace GBX.NET.Engines.Game;
 
@@ -3344,7 +3343,47 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
             rw.Bytes(ref n.hashedPassword, 16);
-            rw.UInt32(ref n.crc32);
+
+            if (rw.Reader is not null)
+            {
+                n.crc32 = rw.Reader.ReadUInt32();
+            }
+
+            if (rw.Writer is not null)
+            {
+                var toHash = n.hashedPassword is null
+                        ? $"0x00000000000000000000000000000000???{n.MapUid}"
+                        : $"0x{ToHex(n.hashedPassword).ToString()}???{n.MapUid}";
+                var crc32 = Crc32.HashToUInt32(Encoding.ASCII.GetBytes(toHash));
+
+                rw.Writer.Write(crc32);
+            }
+        }
+
+        private static Span<char> ToHex(byte[] value)
+        {
+            var str = new char[value.Length * 2];
+
+            for (var i = 0; i < value.Length; i++)
+            {
+                var hex1 = HexIntToChar((byte)(value[value.Length - 1 - i] % 16));
+                var hex2 = HexIntToChar((byte)(value[value.Length - 1 - i] / 16));
+
+                str[i * 2 + 1] = hex1;
+                str[i * 2] = hex2;
+            }
+
+            return str;
+        }
+
+        private static char HexIntToChar(byte v)
+        {
+            if (v < 10)
+            {
+                return (char)(v + 48);
+            }
+
+            return (char)(v + 55);
         }
     }
 
