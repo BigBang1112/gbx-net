@@ -29,7 +29,6 @@ public partial class CGameCtnGhost : CGameGhost
     private int? stuntScore;
     private Checkpoint[]? checkpoints;
     private TimeInt32 eventsDuration;
-    private ControlEntry[]? controlEntries;
     private string? validate_ExeVersion;
     private uint validate_ExeChecksum;
     private int validate_OsKind;
@@ -260,24 +259,6 @@ public partial class CGameCtnGhost : CGameGhost
         {
             DiscoverChunk<Chunk03092025>();
             eventsDuration = value;
-        }
-    }
-
-    /// <summary>
-    /// Inputs (keyboard, pad, wheel) of the ghost from TMU, TMUF, TMTurbo and TM2. TMTurbo stores the keyboard inputs as <see cref="ControlEntryAnalog"/>. For inputs stored in TM1.0, TMO, Sunrise and ESWC: see <see cref="CGameCtnReplayRecord.ControlEntries"/>. TM2020 and Shootmania inputs are available in <see cref="PlayerInputs"/>. Can be null if <see cref="EventsDuration"/> is 0, which can happen when you save the replay in editor.
-    /// </summary>
-    [Obsolete("Use Inputs instead. Property will be removed in 1.3.0")]
-    public ControlEntry[]? ControlEntries
-    {
-        get
-        {
-            DiscoverChunk<Chunk03092025>();
-            return controlEntries;
-        }
-        set
-        {
-            DiscoverChunk<Chunk03092025>();
-            controlEntries = value;
         }
     }
 
@@ -869,8 +850,6 @@ public partial class CGameCtnGhost : CGameGhost
             var numEntries = r.ReadInt32();
             U02 = r.ReadInt32();
 
-            n.controlEntries = new ControlEntry[numEntries];
-
             var inputs = new IInput[numEntries];
             n.inputs = inputs; // as n.inputs is IReadOnlyCollection
 
@@ -882,13 +861,6 @@ public partial class CGameCtnGhost : CGameGhost
 
                 var name = (string)controlNames[controlNameIndex];
 
-                n.controlEntries[i] = name switch
-                {
-                    "Steer" or "Gas" or "AccelerateReal" or "BrakeReal"
-                      => new ControlEntryAnalog(name, time, data),
-                    _ => new ControlEntry(name, time, data),
-                };
-
                 inputs[i] = NET.Inputs.Input.Parse(time, name, data);
             }
         }
@@ -896,30 +868,33 @@ public partial class CGameCtnGhost : CGameGhost
         private void WriteInputs(CGameCtnGhost n, GameBoxWriter w)
         {
             var controlNames = new List<string>();
+            var controlNameInds = new Dictionary<IInput, int>();
 
-            if (n.controlEntries is not null)
+            if (n.inputs is not null)
             {
-                foreach (var entry in n.controlEntries)
+                foreach (var input in n.inputs)
                 {
-                    if (!controlNames.Contains(entry.Name))
+                    // possible TryAdd
+                    if (!controlNameInds.ContainsKey(input))
                     {
-                        controlNames.Add(entry.Name);
+                        controlNameInds[input] = controlNames.Count;
+                        controlNames.Add(NET.Inputs.Input.GetName(input));
                     }
                 }
             }
 
             w.WriteList(controlNames, (x, w) => w.WriteId(x));
 
-            w.Write(n.controlEntries?.Length ?? 0);
+            w.Write(n.inputs?.Count ?? 0);
             w.Write(U02);
 
-            if (n.controlEntries is not null)
+            if (n.inputs is not null)
             {
-                foreach (var entry in n.controlEntries)
+                foreach (var input in n.inputs)
                 {
-                    w.Write(entry.Time.TotalMilliseconds + 100000);
-                    w.Write((byte)controlNames.IndexOf(entry.Name));
-                    w.Write(entry.Data);
+                    w.Write(input.Time.TotalMilliseconds + 100000);
+                    w.Write((byte)controlNameInds[input]);
+                    w.Write(input.Data);
                 }
             }
         }
