@@ -4033,9 +4033,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     #region 0x043 skippable chunk (genealogies)
 
     /// <summary>
-    /// CGameCtnChallenge 0x043 skippable chunk (generalogies)
+    /// CGameCtnChallenge 0x043 skippable chunk (genealogies)
     /// </summary>
-    [Chunk(0x03043043, "generalogies")]
+    [Chunk(0x03043043, "genealogies")]
     public class Chunk03043043 : SkippableChunk<CGameCtnChallenge>
     {
         public int U01;
