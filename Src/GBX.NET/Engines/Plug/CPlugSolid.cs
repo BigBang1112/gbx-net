@@ -240,16 +240,28 @@ public class CPlugSolid : CPlug
 
         public override void ReadWrite(CPlugSolid n, GameBoxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U02);
-            rw.NodeRef<CPlug>(ref n.tree, ref n.treeFile);
+            rw.Boolean(ref U01); // part of SetUseModel, possibly the 'Use' parameter
+            rw.Boolean(ref U02); // m_Model != null
+
+            if (U02) // True when referenced through CHmsItem?
+            {
+                // m_Model noderef
+            }
+
+            rw.NodeRef<CPlug>(ref n.tree, ref n.treeFile); // only if U02 is false?
         }
 
         public override async Task ReadWriteAsync(CPlugSolid n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U02);
-            n.tree = await rw.NodeRefAsync<CPlug>(n.tree, cancellationToken);
+            rw.Boolean(ref U01); // part of SetUseModel, possibly the 'Use' parameter
+            rw.Boolean(ref U02); // m_Model != null
+
+            if (U02) // True when referenced through CHmsItem?
+            {
+                // m_Model noderef
+            }
+
+            n.tree = await rw.NodeRefAsync<CPlug>(n.tree, cancellationToken); // only if U02 is false?
         }
     }
 
@@ -318,28 +330,30 @@ public class CPlugSolid : CPlug
 
         public override void ReadWrite(CPlugSolid n, GameBoxReaderWriter rw)
         {
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U02);
+            rw.Boolean(ref U01); // part of SetUseModel, possibly the 'Use' parameter
+            rw.Boolean(ref U02); // m_Model != null
 
             if (U02) // True when referenced through CHmsItem?
             {
                 rw.Boolean(ref U03);
+                // m_Model noderef
             }
 
-            rw.NodeRef<CPlug>(ref n.tree, ref n.treeFile); // only of U02 is false?
+            rw.NodeRef<CPlug>(ref n.tree, ref n.treeFile); // only if U02 is false?
         }
 
         public override async Task ReadWriteAsync(CPlugSolid n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default)
         {
-            rw.Boolean(ref U01);
-            rw.Boolean(ref U02);
+            rw.Boolean(ref U01); // part of SetUseModel, possibly the 'Use' parameter
+            rw.Boolean(ref U02); // m_Model != null
 
             if (U02) // True when referenced through CHmsItem?
             {
                 rw.Boolean(ref U03);
+                // m_Model noderef
             }
-            
-            n.tree = await rw.NodeRefAsync<CPlug>(n.tree, cancellationToken); // only of U02 is false?
+
+            n.tree = await rw.NodeRefAsync<CPlug>(n.tree, cancellationToken); // only if U02 is false?
         }
     }
 
