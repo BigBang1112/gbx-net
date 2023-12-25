@@ -19,6 +19,7 @@ public class CPlugSolid : CPlug
     private DateTime? fileWriteTime;
 
     [NodeMember(ExactlyNamed = true)]
+    [AppliedWithChunk<Chunk09005000>]
     public int TypeAndIndex { get => typeAndIndex; set => typeAndIndex = value; }
     
     [NodeMember(ExactlyNamed = true)]
