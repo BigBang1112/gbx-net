@@ -138,7 +138,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMedi
         public string? U11;
         public int? U12;
         public int? U13;
-        public int? U14;
+        public string? U14;
         public int? U15;
         public int? U16;
 
@@ -200,7 +200,7 @@ public partial class CGameCtnMediaBlockEntity : CGameCtnMediaBlock, CGameCtnMedi
                     {
                         if (version >= 11)
                         {
-                            rw.Int32(ref U14);
+                            rw.String(ref U14);
                         }
 
                         rw.ListKey<Key>(ref n.keys, version);
