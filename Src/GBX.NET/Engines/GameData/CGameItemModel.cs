@@ -328,13 +328,9 @@ public partial class CGameItemModel : CGameCtnCollector, CGameItemModel.IHeader 
     [Chunk(0x2E002009, "cameras")]
     public class Chunk2E002009 : Chunk<CGameItemModel>
     {
-        private int version;
-
-        public int Version { get => version; set => version = value; }
-
         public override void ReadWrite(CGameItemModel n, GameBoxReaderWriter rw)
         {
-            rw.Int32(ref version);
+            rw.Int32(10);
             rw.ArrayNode(ref n.cameras);
         }
     }

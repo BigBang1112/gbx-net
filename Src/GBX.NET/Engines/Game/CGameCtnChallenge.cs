@@ -416,7 +416,12 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     public string MapUid
     {
         get => mapInfo.Id;
-        set => mapInfo = new Ident(value, mapInfo.Collection, mapInfo.Author);
+        set
+        {
+            mapInfo = new Ident(value, mapInfo.Collection, mapInfo.Author);
+
+            CalculateCRC32();
+        }
     }
 
     /// <summary>
@@ -913,6 +918,8 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         {
             DiscoverChunk<Chunk03043029>();
             hashedPassword = value;
+
+            CalculateCRC32();
         }
     }
 
@@ -1280,16 +1287,19 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     [AppliedWithChunk<Chunk03043056>]
+    [AppliedWithChunk<Chunk0304306B>]
     public TimeSpan? DayTime
     {
         get
         {
             DiscoverChunk<Chunk03043056>();
+            DiscoverChunk<Chunk0304306B>();
             return dayTime;
         }
         set
         {
             DiscoverChunk<Chunk03043056>();
+            DiscoverChunk<Chunk0304306B>();
             dayTime = value;
         }
     }
@@ -1299,16 +1309,19 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     [AppliedWithChunk<Chunk03043056>]
+    [AppliedWithChunk<Chunk0304306B>]
     public bool DynamicDaylight
     {
         get
         {
             DiscoverChunk<Chunk03043056>();
+            DiscoverChunk<Chunk0304306B>();
             return dynamicDaylight;
         }
         set
         {
             DiscoverChunk<Chunk03043056>();
+            DiscoverChunk<Chunk0304306B>();
             dynamicDaylight = value;
         }
     }
@@ -1318,16 +1331,19 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     /// </summary>
     [NodeMember]
     [AppliedWithChunk<Chunk03043056>]
+    [AppliedWithChunk<Chunk0304306B>]
     public TimeInt32? DayDuration
     {
         get
         {
             DiscoverChunk<Chunk03043056>();
+            DiscoverChunk<Chunk0304306B>();
             return dayDuration;
         }
         set
         {
             DiscoverChunk<Chunk03043056>();
+            DiscoverChunk<Chunk0304306B>();
             dayDuration = value;
         }
     }
@@ -2229,6 +2245,41 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         foreach (var freeBlock in macroblock.BlockSpawns.Where(x => x.IsFree))
         {
             //PlaceFreeBlock(freeBlock.Name, (coord + (0, 1, 0)) * Collection.GetBlockSize() + freeBlock.AbsolutePositionInMap, freeBlock.PitchYawRoll);
+        }
+    }
+
+    public void CalculateCRC32()
+    {
+        var toHash = hashedPassword is null
+            ? $"0x00000000000000000000000000000000???{MapUid}"
+            : $"0x{ToHex(hashedPassword).ToString()}???{MapUid}";
+
+        crc32 = Crc32.HashToUInt32(Encoding.ASCII.GetBytes(toHash));
+
+        static Span<char> ToHex(byte[] value)
+        {
+            var str = new char[value.Length * 2];
+
+            for (var i = 0; i < value.Length; i++)
+            {
+                var hex1 = HexIntToChar((byte)(value[value.Length - 1 - i] % 16));
+                var hex2 = HexIntToChar((byte)(value[value.Length - 1 - i] / 16));
+
+                str[i * 2 + 1] = hex1;
+                str[i * 2] = hex2;
+            }
+
+            return str;
+        }
+
+        static char HexIntToChar(byte v)
+        {
+            if (v < 10)
+            {
+                return (char)(v + 48);
+            }
+
+            return (char)(v + 55);
         }
     }
 
@@ -3343,47 +3394,7 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
         public override void ReadWrite(CGameCtnChallenge n, GameBoxReaderWriter rw)
         {
             rw.Bytes(ref n.hashedPassword, 16);
-
-            if (rw.Reader is not null)
-            {
-                n.crc32 = rw.Reader.ReadUInt32();
-            }
-
-            if (rw.Writer is not null)
-            {
-                var toHash = n.hashedPassword is null
-                        ? $"0x00000000000000000000000000000000???{n.MapUid}"
-                        : $"0x{ToHex(n.hashedPassword).ToString()}???{n.MapUid}";
-                var crc32 = Crc32.HashToUInt32(Encoding.ASCII.GetBytes(toHash));
-
-                rw.Writer.Write(crc32);
-            }
-        }
-
-        private static Span<char> ToHex(byte[] value)
-        {
-            var str = new char[value.Length * 2];
-
-            for (var i = 0; i < value.Length; i++)
-            {
-                var hex1 = HexIntToChar((byte)(value[value.Length - 1 - i] % 16));
-                var hex2 = HexIntToChar((byte)(value[value.Length - 1 - i] / 16));
-
-                str[i * 2 + 1] = hex1;
-                str[i * 2] = hex2;
-            }
-
-            return str;
-        }
-
-        private static char HexIntToChar(byte v)
-        {
-            if (v < 10)
-            {
-                return (char)(v + 48);
-            }
-
-            return (char)(v + 55);
+            rw.UInt32(ref n.crc32);
         }
     }
 
@@ -4022,9 +4033,9 @@ public partial class CGameCtnChallenge : CMwNod, CGameCtnChallenge.IHeader
     #region 0x043 skippable chunk (genealogies)
 
     /// <summary>
-    /// CGameCtnChallenge 0x043 skippable chunk (generalogies)
+    /// CGameCtnChallenge 0x043 skippable chunk (genealogies)
     /// </summary>
-    [Chunk(0x03043043, "generalogies")]
+    [Chunk(0x03043043, "genealogies")]
     public class Chunk03043043 : SkippableChunk<CGameCtnChallenge>
     {
         public int U01;

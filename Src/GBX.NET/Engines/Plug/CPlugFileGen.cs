@@ -4,10 +4,18 @@
 [Node(0x0902F000)]
 public class CPlugFileGen : CPlugFileImg
 {
-    public int U01 { get; set; }
-    public int? U02 { get; set; }
-    public int[]? U03 { get; set; }
-    public Vec4[]? U04 { get; set; }
+    [NodeMember(ExactlyNamed = true)]
+    public int Version { get; set; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public int? GenKind { get; set; }
+
+    [NodeMember(ExactlyNamed = true)]
+    public int[]? GenNatural { get; set; }
+
+    [NodeMember]
+    public Vec4[]? GenColor { get; set; } // GxColor
+
     public float[]? U05 { get; set; }
 
     internal CPlugFileGen()
@@ -17,21 +25,21 @@ public class CPlugFileGen : CPlugFileImg
 
     protected override void ReadChunkData(GameBoxReader r, IProgress<GameBoxReadProgress>? progress, bool ignoreZeroIdChunk)
     {
-        U01 = r.ReadInt32();
+        Version = r.ReadInt32();
 
-        if (U01 < 0)
+        if (Version < 0)
         {
-            U01 &= 0x7fffffff;
+            Version &= 0x7fffffff;
 
-            U02 = r.ReadInt32();
-            U03 = r.ReadArray<int>();
-            U04 = r.ReadArray<Vec4>();
+            GenKind = r.ReadInt32();
+            GenNatural = r.ReadArray<int>();
+            GenColor = r.ReadArray<Vec4>();
             U05 = r.ReadArray<float>();
         }
         else
         {
-            U03 = r.ReadArray<int>();
-            U04 = r.ReadArray<Vec4>();
+            GenNatural = r.ReadArray<int>();
+            GenColor = r.ReadArray<Vec4>();
         }
     }
 

@@ -34,13 +34,14 @@
                         <div style="font-family:Source Code Pro">@header.CompressionOfRefTable</div>
                         <div>Body compression</div>
                         <div style="font-family:Source Code Pro">@header.CompressionOfBody</div>
-                        <div>
-                            <span class="tooltip-small-width" data-title="Is intended to be modified and not overwriten (just a theory).">
-                                Is editable?
-                            </span>
-                        </div>
+
                         @if (header.UnknownByte.HasValue)
                         {
+                            <div>
+                                <span class="tooltip-small-width" data-title="Is intended to be modified and not overwriten (just a theory).">
+                                    Is editable?
+                                </span>
+                            </div>
                             <div style="font-family:Source Code Pro">
                                 @switch (header.UnknownByte)
                                 {
