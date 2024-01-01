@@ -1,0 +1,18 @@
+CSceneVehicleCarMarksSamples 0x0A083000
+
+0x002
+ uint[] Stops
+
+0x003
+ string Name
+
+0x004
+ bool Disabled
+
+0x006
+ version
+ v1+
+  throw
+ int
+ if U01 > 0
+  throw

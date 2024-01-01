@@ -1,83 +1,60 @@
-﻿using GBX.NET.Debugging;
-using System.Runtime.Serialization;
+﻿namespace GBX.NET;
 
-namespace GBX.NET;
-
-public abstract class Chunk : IComparable<Chunk>
+/// <summary>
+/// A data chunk.
+/// </summary>
+public interface IChunk
 {
-    private uint? id;
-    private MemoryStream? unknown;
-
     /// <summary>
-    /// Stream of unknown bytes
+    /// ID of the chunk.
     /// </summary>
-    [IgnoreDataMember]
-    public MemoryStream Unknown => unknown ??= new MemoryStream();
+    uint Id { get; }
+}
 
-    /// <summary>
-    /// Raw data of the chunk. Always null with <see cref="GameBox.SeekForRawChunkData"/> set to false.
-    /// </summary>
-    public byte[]? RawData { get; internal set; }
+/// <summary>
+/// A data chunk.
+/// </summary>
+public abstract class Chunk : IChunk, IReadableWritableChunk, IEquatable<Chunk>
+{
+    /// <inheritdoc />
+    public abstract uint Id { get; }
 
-    public uint Id => GetStoredId();
-
-    private uint GetStoredId()
+    internal virtual void Read(IClass n, GbxReader r)
     {
-        id ??= GetId();
-        return id.Value;
+
     }
 
-    protected abstract uint GetId();
-
-    public override int GetHashCode() => (int)Id;
-
-    public override bool Equals(object? obj) => Equals(obj as Chunk);
-
-    public override string ToString() => $"Chunk 0x{Id:X8}";
-
-    public bool Equals(Chunk? chunk) => chunk is not null && chunk.Id == Id;
-
-    public static uint Remap(uint chunkID, IDRemap remap = IDRemap.Latest)
+    internal virtual void Write(IClass n, GbxWriter w)
     {
-        var classPart = chunkID & 0xFFFFF000;
-        var chunkPart = chunkID & 0xFFF;
 
-        switch (remap)
+    }
+
+    internal virtual void ReadWrite(IClass n, GbxReaderWriter rw)
+    {
+        if (rw.Reader is not null)
         {
-            case IDRemap.Latest:
-                {
-                    var newClassPart = classPart;
+            Read(n, rw.Reader);
+        }
 
-                    while (NodeManager.TryGetMapping(newClassPart, out uint newID))
-                    {
-                        newClassPart = newID;
-                    }
-
-                    return newClassPart + chunkPart;
-                }
-            case IDRemap.TrackMania2006:
-                {
-                    if (classPart == 0x2E001000)
-                    {
-                        return 0x2400A000 + chunkPart;
-                    }
-
-                    if (NodeManager.TryGetReverseMapping(classPart, out uint prevId))
-                    {
-                        return prevId + chunkPart;
-                    }
-
-                    return chunkID;
-                }
-            default:
-                return chunkID;
+        if (rw.Writer is not null)
+        {
+            Write(n, rw.Writer);
         }
     }
 
-    public virtual void OnLoad() { }
+    /// <inheritdoc />
+    public virtual void Read(IClass n, IGbxReader r) => Read(n, (GbxReader)r);
 
-    public int CompareTo(Chunk? other)
-    {
-        return Id.CompareTo(other?.Id);
-    }
+    /// <inheritdoc />
+    public virtual void Write(IClass n, IGbxWriter w) => Write(n, (GbxWriter)w);
+
+    /// <inheritdoc />
+    public virtual void ReadWrite(IClass n, IGbxReaderWriter rw) => ReadWrite(n, (GbxReaderWriter)rw);
+
+    /// <inheritdoc />
+    public override bool Equals(object? obj) => obj is Chunk other && Equals(other);
+    /// <inheritdoc />
+    public bool Equals(Chunk? other) => Id == other?.Id;
+    /// <inheritdoc />
+    public override int GetHashCode() => Id.GetHashCode();
 }

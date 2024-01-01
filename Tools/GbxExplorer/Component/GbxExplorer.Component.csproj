@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="BlazorMonaco" Version="3.1.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Shared\GbxExplorer.Shared.csproj" />
+	</ItemGroup>
+
+</Project>

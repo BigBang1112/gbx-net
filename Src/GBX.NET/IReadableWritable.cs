@@ -2,5 +2,5 @@
 
 public interface IReadableWritable
 {
-    void ReadWrite(GameBoxReaderWriter rw, int version = 0);
+    void ReadWrite(IGbxReaderWriter rw, int version = 0);
 }

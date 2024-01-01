@@ -1,10 +1,15 @@
-﻿namespace GBX.NET;
+﻿using GBX.NET.Managers;
+
+namespace GBX.NET;
 
 /// <summary>
-/// A struct that handles Id (lookback string) by either a string or an index.
+/// [CMwId] A struct that handles Id (lookback string) by either a string or an index.
 /// </summary>
 public readonly record struct Id
 {
+    /// <summary>
+    /// An empty <see cref="Id"/> with default values.
+    /// </summary>
     public static readonly Id Empty = new();
 
     /// <summary>
@@ -35,13 +40,18 @@ public readonly record struct Id
         Index = collectionId;
     }
 
+    /// <summary>
+    /// Gets the block size of the collection, if it is known.
+    /// </summary>
+    /// <returns>Size of the block.</returns>
+    /// <exception cref="NotSupportedException">Collection was not found to have a block size.</exception>
     public Int3 GetBlockSize() => ToString() switch
     {
-        "Coast" => (16, 4, 16),
-        "Desert" or "Speed" or "Snow" or "Alpine" => (32, 16, 32),
-        "Rally" or "Bay" or "Stadium" or "Valley" or "Lagoon" or "Stadium2020" => (32, 8, 32),
-        "Island" => (64, 8, 64),
-        "Canyon" => (64, 16, 64),
+        "Coast" => new Int3(16, 4, 16),
+        "Desert" or "Speed" or "Snow" or "Alpine" => new Int3(32, 16, 32),
+        "Rally" or "Bay" or "Stadium" or "Valley" or "Lagoon" or "Stadium2020" => new Int3(32, 8, 32),
+        "Island" => new Int3(64, 8, 64),
+        "Canyon" => new Int3(64, 16, 64),
         _ => throw new NotSupportedException("Block size not supported for this collection"),
     };
 
@@ -53,32 +63,15 @@ public readonly record struct Id
     {
         if (Index is null)
         {
-            return String ?? "";
+            return String ?? string.Empty;
         }
 
-        if (NodeManager.TryGetCollectionName(Index.Value, out string? value))
-        {
-            return value!;
-        }
-
-        return Index.Value.ToString();
+        return CollectionManager.GetName(Index.Value) ?? Index.Value.ToString();
     }
 
-    public static implicit operator Id(string a)
-    {
-        if (string.IsNullOrEmpty(a))
-        {
-            return new Id();
-        }
-
-        if (int.TryParse(a, out int collectionID))
-        {
-            return new Id(collectionID);
-        }
-        
-        return new Id(a);
-    }
-
-    public static implicit operator Id(int a) => new(a);
-    public static implicit operator string(Id a) => a.ToString();
+    /// <summary>
+    /// Implicitly converts an <see cref="Id"/> to a string.
+    /// </summary>
+    /// <param name="id">The <see cref="Id"/>.</param>
+    public static implicit operator string(Id id) => id.ToString();
 }

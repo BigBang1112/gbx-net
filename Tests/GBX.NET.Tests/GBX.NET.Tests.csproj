@@ -1,56 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0;net6.0;netcoreapp3.1;net462</TargetFrameworks>
-		<LangVersion>11</LangVersion>
+		<TargetFrameworks>net8.0;net6.0</TargetFrameworks>
+		<LangVersion>12</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
 
 		<IsPackable>false</IsPackable>
-		<Nullable>enable</Nullable>
+		<IsTestProject>true</IsTestProject>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.3.1" />
-		<PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
-		<PackageReference Include="xunit" Version="2.4.1" />
-		<PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-			<PrivateAssets>all</PrivateAssets>
-		</PackageReference>
-		<PackageReference Include="coverlet.collector" Version="3.2.0">
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-			<PrivateAssets>all</PrivateAssets>
-		</PackageReference>
-	</ItemGroup>
 
 	<ItemGroup>
 		<Content Include="Files\**">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
-		<Content Include="TestData\**">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+		<PackageReference Include="NSubstitute" Version="5.1.0" />
+		<PackageReference Include="xunit" Version="2.6.4" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.5.6">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="coverlet.collector" Version="6.0.0">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Generators\GBX.NET.Tests.Generators\GBX.NET.Tests.Generators.csproj" />
 		<ProjectReference Include="..\..\Src\GBX.NET.LZO\GBX.NET.LZO.csproj" />
 		<ProjectReference Include="..\..\Src\GBX.NET\GBX.NET.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="16.6.1" Condition="$(TargetFramework.StartsWith('net4')) AND '$(OS)' == 'Unix'" />
-		<ProjectReference Include="..\..\Generators\GBX.NET.Tests.Generators\GBX.NET.Tests.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Content Include="..\..\ExampleFiles\**">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="TestData\Chunks\CGameCtnChallenge.2015-06-18_15_10.zip" />
-	  <None Remove="TestData\Chunks\CGameCtnChallenge.2019-10-10_22_15.zip" />
 	</ItemGroup>
 
 </Project>

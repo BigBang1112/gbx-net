@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<Version>1.0.0</Version>
+		<PackageReleaseNotes></PackageReleaseNotes>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0;net6.0;netstandard2.0</TargetFrameworks>
+		<LangVersion>12</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IsTrimmable>true</IsTrimmable>
+		<IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))">true</IsAotCompatible>
+
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk</PackageTags>
+
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
+
+		<GenerateDocumentationFile>false</GenerateDocumentationFile>
+		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+	</PropertyGroup>
+	
+	<PropertyGroup>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="System.IO.Hashing" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -1,23 +1,14 @@
 ﻿namespace GBX.NET;
 
-public interface IReadableWritableChunk
+/// <summary>
+/// Supports reading/writing data at the same time for the Gbx class.
+/// </summary>
+public interface IReadableWritableChunk : IReadableChunk, IWritableChunk
 {
-    uint Id { get; }
-    MemoryStream Unknown { get; }
-
-    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
-    void Read(Node n, GameBoxReader r);
-    /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
-    void Write(Node n, GameBoxWriter w);
-    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
-    /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
-    void ReadWrite(Node n, GameBoxReaderWriter rw);
-
-    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
-    Task ReadAsync(Node n, GameBoxReader r, CancellationToken cancellationToken = default);
-    /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
-    Task WriteAsync(Node n, GameBoxWriter w, CancellationToken cancellationToken = default);
-    /// <exception cref="ChunkReadNotImplementedException">Chunk does not support reading.</exception>
-    /// <exception cref="ChunkWriteNotImplementedException">Chunk does not support writing.</exception>
-    Task ReadWriteAsync(Node n, GameBoxReaderWriter rw, CancellationToken cancellationToken = default);
+    /// <summary>
+    /// Reads and/or writes data via the reader/writer and uses Gbx class for it.
+    /// </summary>
+    /// <param name="n">A Gbx class.</param>
+    /// <param name="rw">A reader/writer.</param>
+    void ReadWrite(IClass n, IGbxReaderWriter rw);
 }

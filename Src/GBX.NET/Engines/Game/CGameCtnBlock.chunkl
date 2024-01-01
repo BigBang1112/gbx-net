@@ -1,0 +1,7 @@
+CGameCtnBlock 0x03057000 // Block placed on a map.
+
+0x002 [TM10]
+ ident BlockModel
+ byte<Direction> Direction
+ byte3 Coord
+ int Flags

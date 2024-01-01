@@ -1,14 +1,241 @@
 ﻿namespace GBX.NET.Engines.MwFoundations;
 
-/// <summary>
-/// The base of every existing node.
-/// </summary>
-/// <remarks>ID: 0x01001000</remarks>
-[Node(0x01001000)]
-public class CMwNod : Node
+[Class(0x01001000)]
+public class CMwNod : IClass
 {
-    internal CMwNod()
-    {
+    public static uint Id => 0x01001000;
 
+    private IChunkSet? chunks;
+    public IChunkSet Chunks => chunks ??= new ChunkSet();
+
+    public static T Read<T>(T node, IGbxReaderWriter rw) where T : IClass
+    {
+        var r = rw.Reader ?? throw new Exception("Reader is required but not available.");
+
+        while (true)
+        {
+            var chunkId = r.ReadHexUInt32();
+
+            if (chunkId == 0xFACADE01)
+            {
+                return node;
+            }
+
+#if NET8_0_OR_GREATER
+            var chunk = T.NewChunk(chunkId);
+#else
+            var chunk = ClassManager.NewChunk(chunkId);
+#endif
+
+            // Unknown or skippable chunk
+            if (chunk is null or ISkippableChunk)
+            {
+                var skip = r.ReadHexUInt32();
+
+                if (skip != 0x534B4950)
+                {
+                    if (chunk is not null)
+                    {
+                        return node;
+                    }
+
+                    throw new Exception("Chunk cannot be processed");
+                }
+
+                var chunkSize = r.ReadInt32();
+
+                switch (chunk)
+                {
+                    case IReadableWritableChunk<T> readableWritableT:
+                        readableWritableT.ReadWrite(node, rw);
+                        break;
+                    case IReadableChunk<T> readableT:
+                        readableT.Read(node, r);
+                        break;
+                    case IReadableWritableChunk readableWritable:
+                        readableWritable.ReadWrite(node, rw);
+                        break;
+                    case IReadableChunk readable:
+                        readable.Read(node, r);
+                        break;
+                    default:
+                        // TODO: possibility to skip
+                        var chunkData = r.ReadBytes(chunkSize);
+                        break;
+                }
+
+                continue;
+            }
+            
+            // Unskippable chunk
+            switch (chunk)
+            {
+                case IReadableWritableChunk<T> readableWritableT:
+                    readableWritableT.ReadWrite(node, rw);
+                    break;
+                case IReadableChunk<T> readableT:
+                    readableT.Read(node, r);
+                    break;
+                case IReadableWritableChunk readableWritable:
+                    readableWritable.ReadWrite(node, rw);
+                    break;
+                case IReadableChunk readable:
+                    readable.Read(node, r);
+                    break;
+                default:
+                    throw new Exception("Chunk cannot be processed");
+            }
+        }
     }
+
+    internal virtual void Read(GbxReaderWriter rw)
+    {
+        var r = rw.Reader ?? throw new Exception("Reader is required but not available.");
+
+        while (true)
+        {
+            var chunkId = r.ReadHexUInt32();
+
+            if (chunkId == 0xFACADE01)
+            {
+                return;
+            }
+
+            var chunk = ClassManager.NewChunk(chunkId);
+
+            // Unknown or skippable chunk
+            if (chunk is null or ISkippableChunk)
+            {
+                var skip = r.ReadHexUInt32();
+
+                if (skip != 0x534B4950)
+                {
+                    if (chunk is not null)
+                    {
+                        return;
+                    }
+
+                    throw new Exception("Chunk cannot be processed");
+                }
+
+                var chunkSize = r.ReadInt32();
+
+                switch (chunk)
+                {
+                    case IReadableWritableChunk readableWritable:
+                        readableWritable.ReadWrite(this, rw);
+                        // TODO: validate chunk size
+                        break;
+                    case IReadableChunk readable:
+                        readable.Read(this, r);
+                        // TODO: validate chunk size
+                        break;
+                    default:
+                        // TODO: possibility to skip
+                        var chunkData = r.ReadBytes(chunkSize);
+                        break;
+                }
+
+                continue;
+            }
+
+            // Unskippable chunk
+            switch (chunk)
+            {
+                case IReadableWritableChunk readableWritable:
+                    readableWritable.ReadWrite(this, rw);
+                    break;
+                case IReadableChunk readable:
+                    readable.Read(this, r);
+                    break;
+                default:
+                    throw new Exception("Chunk cannot be processed");
+            }
+        }
+    }
+
+    internal virtual void Write(GbxReaderWriter rw)
+    {
+        var w = rw.Writer ?? throw new Exception("Writer is required but not available.");
+
+        foreach (var chunk in Chunks)
+        {
+            w.WriteHexUInt32(chunk.Id);
+
+            var chunkW = w;
+            var chunkRw = rw;
+
+            var ms = default(MemoryStream);
+
+            if (chunk is ISkippableChunk)
+            {
+                w.WriteHexUInt32(0x534B4950);
+
+                ms = new MemoryStream();
+                chunkW = new GbxWriter(ms);
+                chunkRw = new GbxReaderWriter(chunkW);
+            }
+
+            switch (chunk)
+            {
+                case IReadableWritableChunk readableWritable:
+                    readableWritable.ReadWrite(this, chunkRw);
+                    break;
+                case IWritableChunk writable:
+                    writable.Write(this, chunkW);
+                    break;
+                default:
+                    throw new Exception("Chunk cannot be processed");
+            }
+
+            // Memory stream is not null only if chunk is skippable
+            if (ms is not null)
+            {
+                w.Write((uint)ms.Length);
+                ms.WriteTo(w.BaseStream);
+            }
+        }
+    }
+
+    internal virtual void ReadWrite(GbxReaderWriter rw)
+    {
+        if (rw.Reader is not null)
+        {
+            Read(rw);
+        }
+
+        if (rw.Writer is not null)
+        {
+            Write(rw);
+        }
+    }
+
+    /// <inheritdoc />
+    public virtual void ReadWrite(IGbxReaderWriter rw) => ReadWrite((GbxReaderWriter)rw);
+
+    [Chunk(0x01001000)]
+    public sealed class Chunk01001000 : Chunk<CMwNod>
+    {
+        public override uint Id => 0x01001000;
+
+        public string? U01;
+
+        internal override void Read(CMwNod n, GbxReader r)
+        {
+            U01 = r.ReadString();
+        }
+
+        internal override void Write(CMwNod n, GbxWriter w)
+        {
+            w.Write(U01);
+        }
+    }
+
+    public static IHeaderChunk? NewHeaderChunk(uint chunkId) => null;
+
+    public static IChunk? NewChunk(uint chunkId) => chunkId switch
+    {
+        0x01001000 => new Chunk01001000(),
+        _ => null
+    };
 }

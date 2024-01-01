@@ -1,4 +1,4 @@
-#pragma warning disable CS0164
+﻿#pragma warning disable CS0164
 #pragma warning disable IDE1006
 
 #region Copyright notice
@@ -63,13 +63,13 @@
 
 #endregion
 
-using System;
+using GBX.NET.Extensions;
 
 namespace GBX.NET.LZO;
 
-public static class MiniLZO
+public class MiniLZO : ILzo
 {
-    unsafe static uint lzo1x_1_compress_core(byte* @in, uint in_len, byte* @out, ref uint out_len, uint ti, void* wrkmem)
+    private unsafe static uint lzo1x_1_compress_core(byte* @in, uint in_len, byte* @out, ref uint out_len, uint ti, void* wrkmem)
     {
         byte* ip;
         byte* op;
@@ -220,16 +220,17 @@ public static class MiniLZO
         return ((uint)((in_end) - (ii - ti)));
     }
 
-    static readonly int[] MultiplyDeBruijnBitPosition = {
-              0, 1, 28, 2, 29, 14, 24, 3, 30, 22, 20, 15, 25, 17, 4, 8,
-              31, 27, 13, 23, 21, 19, 16, 7, 26, 12, 18, 6, 11, 5, 10, 9
-            };
+    private static readonly int[] MultiplyDeBruijnBitPosition = [
+        0, 1, 28, 2, 29, 14, 24, 3, 30, 22, 20, 15, 25, 17, 4, 8,
+        31, 27, 13, 23, 21, 19, 16, 7, 26, 12, 18, 6, 11, 5, 10, 9
+    ];
+
     private static int lzo_bitops_ctz32(uint v)
     {
         return MultiplyDeBruijnBitPosition[((uint)((v & -v) * 0x077CB531U)) >> 27];
     }
 
-    unsafe static int lzo1x_1_compress(byte* @in, uint in_len, byte* @out, ref uint out_len, byte* wrkmem)
+    private unsafe static int lzo1x_1_compress(byte* @in, uint in_len, byte* @out, ref uint out_len, byte* wrkmem)
     {
         byte* ip = @in;
         byte* op = @out;
@@ -465,17 +466,6 @@ public static class MiniLZO
     }
 
 
-
-    public static unsafe byte[] Decompress(byte[] @in, byte[] @out)
-    {
-        uint out_len = 0;
-        fixed (byte* @pIn = @in, wrkmem = new byte[IntPtr.Size * 16384], pOut = @out)
-        {
-            lzo1x_decompress(pIn, (uint)@in.Length, @pOut, ref @out_len, wrkmem);
-        }
-        return @out;
-    }
-
     public static unsafe void Decompress(byte* r, uint size_in, byte* w, ref uint size_out)
     {
         fixed (byte* wrkmem = new byte[IntPtr.Size * 16384])
@@ -484,7 +474,25 @@ public static class MiniLZO
         }
     }
 
-    public static unsafe byte[] Compress(byte[] input)
+    public static unsafe void Compress(byte* r, uint size_in, byte* w, ref uint size_out)
+    {
+        fixed (byte* wrkmem = new byte[IntPtr.Size * 16384])
+        {
+            lzo1x_1_compress(r, size_in, w, ref size_out, wrkmem);
+        }
+    }
+
+
+    public unsafe void Decompress(byte[] @in, byte[] @out)
+    {
+        uint out_len = 0;
+        fixed (byte* @pIn = @in, wrkmem = new byte[IntPtr.Size * 16384], pOut = @out)
+        {
+            lzo1x_decompress(pIn, (uint)@in.Length, @pOut, ref @out_len, wrkmem);
+        }
+    }
+
+    public unsafe byte[] Compress(byte[] input)
     {
         byte[] @out = new byte[input.Length + (input.Length / 16) + 64 + 3];
         uint out_len = 0;
@@ -494,13 +502,5 @@ public static class MiniLZO
         }
         Array.Resize(ref @out, (int)out_len);
         return @out;
-    }
-
-    public static unsafe void Compress(byte* r, uint size_in, byte* w, ref uint size_out)
-    {
-        fixed (byte* wrkmem = new byte[IntPtr.Size * 16384])
-        {
-            lzo1x_1_compress(r, size_in, w, ref size_out, wrkmem);
-        }
     }
 }

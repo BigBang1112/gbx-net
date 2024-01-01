@@ -1,9 +1,6 @@
-﻿using System;
+﻿namespace GBX.NET.Zlib;
 
-namespace GBX.NET.Zlib
+public class Class1
 {
-    public class Class1
-    {
 
-    }
 }

@@ -1,75 +1,36 @@
-﻿using System.Globalization;
+﻿namespace GBX.NET;
 
-namespace GBX.NET;
-
+/// <summary>
+/// [GmInt3] Represents a three-dimensional vector with <see cref="int"/> components (X, Y, Z).
+/// </summary>
+/// <param name="X">The X-component of the vector.</param>
+/// <param name="Y">The Y-component of the vector.</param>
+/// <param name="Z">The Z-component of the vector.</param>
 public readonly record struct Int3(int X, int Y, int Z)
 {
-    public Int3 GetXY() => new(X, Y, 0);
-    public Int3 GetXZ() => new(X, 0, Z);
-    public Int3 GetYZ() => new(0, Y, Z);
+    /// <summary>
+    /// Vector with all components set to zero.
+    /// </summary>
+    public static readonly Int3 Zero = new();
 
+    /// <summary>
+    /// Returns a string representation of the <see cref="Int3"/> vector.
+    /// </summary>
+    /// <returns>A string representation of the form "&lt;X, Y, Z&gt;".</returns>
     public override string ToString()
     {
         return $"<{X}, {Y}, {Z}>";
     }
 
-    public static readonly Int3 Zero = new();
-
-    public static Int3 operator +(Int3 a, Int3 b) => new(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
-    public static Int3 operator +(Int3 a, Int2 b) => new(a.X + b.X, a.Y + b.Y, a.Z);
-    public static Int3 operator +(Int3 a, int b) => new(a.X + b, a.Y + b, a.Z + b);
-    public static Vec3 operator +(Int3 a, float b) => new(a.X + b, a.Y + b, a.Z + b);
-
-    public static Int3 operator +(Int2 a, Int3 b) => b + a;
-    public static Int3 operator +(int a, Int3 b) => b + a;
-    public static Vec3 operator +(float a, Int3 b) => b + a;
-
-    public static Int3 operator -(Int3 a) => new(-a.X, -a.Y, -a.Z);
-    public static Int3 operator -(Int3 a, Int3 b) => new(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
-    public static Int3 operator -(Int3 a, Int2 b) => new(a.X - b.X, a.Y - b.Y, a.Z);
-    public static Int3 operator -(Int3 a, int b) => new(a.X - b, a.Y - b, a.Z - b);
-    public static Vec3 operator -(Int3 a, float b) => new(a.X - b, a.Y - b, a.Z - b);
-
-    public static Int3 operator *(Int3 a, Int3 b) => new(a.X * b.X, a.Y * b.Y, a.Z * b.Z);
-    public static Int3 operator *(Int3 a, Int2 b) => new(a.X * b.X, a.Y * b.Y, a.Z);
-    public static Int3 operator *(Int3 a, int b) => new(a.X * b, a.Y * b, a.Z * b);
-    public static Vec3 operator *(Int3 a, float b) => new(a.X * b, a.Y * b, a.Z * b);
-
-    public static Int3 operator *(Int2 a, Int3 b) => b * a;
-    public static Int3 operator *(int a, Int3 b) => b * a;
-    public static Vec3 operator *(float a, Int3 b) => b * a;
-
-    public static Int3 operator ^(Int3 a, Int3 b) => new(a.X ^ b.X, a.Y ^ b.Y, a.Z ^ b.Z);
-    public static Int3 operator ^(Int3 a, Int2 b) => new(a.X ^ b.X, a.Y ^ b.Y, a.Z);
-    public static Int3 operator ^(Int3 a, int b) => new(a.X ^ b, a.Y ^ b, a.Z ^ b);
-
-    public static Int3 operator ^(Int2 a, Int3 b) => b ^ a;
-    public static Int3 operator ^(int a, Int3 b) => b ^ a;
-
+    /// <summary>
+    /// Implicitly converts a tuple of integers to an <see cref="Int3"/> vector.
+    /// </summary>
+    /// <param name="v">The tuple containing X, Y, and Z components.</param>
     public static implicit operator Int3((int X, int Y, int Z) v) => new(v.X, v.Y, v.Z);
+
+    /// <summary>
+    /// Implicitly converts an <see cref="Int3"/> vector to a tuple of integers.
+    /// </summary>
+    /// <param name="v">The <see cref="Int3"/> vector to convert.</param>
     public static implicit operator (int X, int Y, int Z)(Int3 v) => (v.X, v.Y, v.Z);
-
-    public static explicit operator Int3(Vec3 a) => new((int)a.X, (int)a.Y, (int)a.Z);
-    public static explicit operator Int3(Byte3 a) => new(a.X, a.Y, a.Z);
-
-    public static explicit operator Int3(ReadOnlySpan<int> a) => GetInt3FromReadOnlySpan(a);
-    public static explicit operator Int3(Span<int> a) => GetInt3FromReadOnlySpan(a);
-    public static explicit operator Int3(int[] a) => GetInt3FromReadOnlySpan(a);
-
-    public static explicit operator Int3(Direction a) => a switch
-    {
-        Direction.North => (0, 0, 1),
-        Direction.East => (-1, 0, 0),
-        Direction.South => (0, 0, -1),
-        Direction.West => (1, 0, 0),
-        _ => (0, 0, 0),
-    };
-
-    public static Int3 GetInt3FromReadOnlySpan(ReadOnlySpan<int> a) => a.Length switch
-    {
-        0 => default,
-        1 => new(a[0], 0, 0),
-        2 => new(a[0], a[1], 0),
-        _ => new(a[0], a[1], a[2])
-    };
 }

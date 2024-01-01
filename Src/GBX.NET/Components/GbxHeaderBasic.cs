@@ -1,0 +1,94 @@
+﻿namespace GBX.NET.Components;
+
+/// <summary>
+/// The most basic Gbx header data that does not have any class specifics.
+/// </summary>
+/// <param name="Version">Version of Gbx.</param>
+/// <param name="Format">Format of Gbx.</param>
+/// <param name="CompressionOfRefTable">Compression of reference table.</param>
+/// <param name="CompressionOfBody">Compression of body.</param>
+/// <param name="UnknownByte">An unknown (also unused) byte. Potentially R(elease)/E(arlyAccess).</param>
+public readonly record struct GbxHeaderBasic(
+    ushort Version,
+    GbxFormat Format,
+    GbxCompression CompressionOfRefTable,
+    GbxCompression CompressionOfBody,
+    GbxUnknownByte UnknownByte)
+{
+    public static GbxHeaderBasic Create(
+        ushort Version = 6,
+        GbxFormat Format = GbxFormat.Binary,
+        GbxCompression CompressionOfRefTable = GbxCompression.Uncompressed,
+        GbxCompression CompressionOfBody = GbxCompression.Compressed,
+        GbxUnknownByte UnknownByte = GbxUnknownByte.R)
+    {
+        return new GbxHeaderBasic(Version, Format, CompressionOfRefTable, CompressionOfBody, UnknownByte);
+    }
+
+    internal static GbxHeaderBasic Parse(GbxReader reader)
+    {
+        var r = reader;
+
+        // GBX magic
+        if (!r.ReadGbxMagic())
+        {
+            throw new NotAGbxException();
+        }
+
+        var version = r.ReadUInt16();
+        var format = r.ReadFormatByte();
+        var compressionOfRefTable = (GbxCompression)r.ReadByte();
+        var compressionOfBody = (GbxCompression)r.ReadByte();
+        var unknownByte = GbxUnknownByte.R;
+
+        if (version >= 4)
+        {
+            unknownByte = (GbxUnknownByte)r.ReadByte();
+        }
+
+        return new GbxHeaderBasic(version, format, compressionOfRefTable, compressionOfBody, unknownByte);
+    }
+
+    /// <summary>
+    /// Parses a basic header from the specified <see cref="Stream"/>.
+    /// </summary>
+    /// <param name="stream">The <see cref="Stream"/> containing the data to parse.</param>
+    /// <param name="leaveOpen">A boolean indicating whether to leave the <paramref name="stream"/> open after parsing.</param>
+    /// <returns>A <see cref="GbxHeaderBasic"/> instance parsed from the input <paramref name="stream"/>.</returns>
+    public static GbxHeaderBasic Parse(Stream stream, bool leaveOpen = false)
+    {
+        using var r = new GbxReader(stream, leaveOpen);
+        return Parse(r);
+    }
+
+    /// <summary>
+    /// Parses a basic header from the specified file.
+    /// </summary>
+    /// <param name="fileName">The name of the file to parse.</param>
+    /// <returns>A <see cref="GbxHeaderBasic"/> instance parsed from the specified file.</returns>
+    public static GbxHeaderBasic Parse(string fileName)
+    {
+        using var fs = File.OpenRead(fileName);
+        return Parse(fs, leaveOpen: false);
+    }
+
+    internal bool Write(GbxWriter writer)
+    {
+        var w = writer;
+
+        // GBX magic
+        w.WriteGbxMagic();
+
+        w.Write(Version);
+        w.WriteFormat(Format);
+        w.Write((byte)CompressionOfRefTable);
+        w.Write((byte)CompressionOfBody);
+
+        if (Version >= 4)
+        {
+            w.Write((byte)UnknownByte);
+        }
+
+        return true;
+    }
+}

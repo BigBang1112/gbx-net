@@ -1,0 +1,126 @@
+CGameCtnGhost 0x03092000 // A ghost.
+- inherits: CGameGhost
+- chunk_Chunk03092000: Unexpected syntax
+- chunk_Chunk03092004: Unexpected syntax (args.Count != 1 or 2)
+- chunk_Chunk0309200B: Unexpected syntax (args.Count != 1 or 2)
+- chunk_Chunk0309200E: Unexpected syntax
+- chunk_Chunk03092011: Unexpected syntax
+- chunk_Chunk03092019: Unexpected syntax
+- chunk_Chunk0309201C: Unexpected syntax
+- chunk_Chunk0309201D: Unexpected syntax
+- chunk_Chunk03092025: Unexpected syntax
+- chunk_Chunk03092028: Unexpected syntax
+
+0x003
+ ident PlayerModel
+ string? SkinFile
+ string? GhostNickname
+
+0x005 (skippable) // race time
+ timeint? RaceTime
+
+0x006
+ ident PlayerModel
+ string? SkinFile
+ int
+ string? GhostNickname
+
+0x007 // old light trail color
+ vec3 LightTrailColor
+
+0x008 (skippable) // respawns
+ int? Respawns
+
+0x009 (skippable) // light trail color
+ vec3 LightTrailColor
+
+0x00A (skippable) // stunt score
+ int? StuntScore
+
+0x00C
+ int
+
+0x00D
+ ident PlayerModel
+ string? SkinFile
+ int
+ int
+ int
+ int
+ string? GhostNickname
+
+0x00F // ghost login
+ string? GhostLogin
+
+0x010 // validation map UID
+ id? Validate_ChallengeUid
+
+0x012
+ uint32
+ int128
+
+0x013 (skippable)
+ int
+ int
+
+0x014 (skippable)
+ int
+
+0x015 // ghost nickname
+ id? GhostNickname
+
+0x017 (skippable) // ghost metadata
+ list<packdesc> SkinPackDescs
+ string? GhostNickname
+ string? GhostAvatarName
+
+0x018
+ ident PlayerModel
+
+0x01A (skippable)
+ int
+
+0x01B (skippable, ignore) // race result
+
+0x01F (skippable, ignore) // OldColorHistory
+
+0x021 (skippable, ignore) // OldKeyStrokes
+
+0x022 (skippable, ignore) // timed pixel array
+
+0x023 (skippable)
+ version
+ string
+ int
+ string
+ int
+ int
+ string
+ int
+ string
+ v2+
+  byte
+  int
+  int
+  v3+
+   byte
+   byte
+
+0x024 (skippable, ignore) // match replay separators
+
+0x026 (skippable)
+ int128
+
+0x027 (skippable, ignore) // timed pixel array 2
+
+0x029 (skippable, ignore)
+
+0x02A (skippable, ignore)
+
+0x02B (skippable, ignore)
+
+0x02C (skippable, ignore)
+
+0x02D (skippable, ignore)
+
+0x02E (skippable, ignore)

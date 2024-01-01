@@ -1,25 +1,12 @@
-﻿@using Microsoft.AspNetCore.Components.Authorization
-
-<CascadingAuthenticationState>
-    <Router AppAssembly="@typeof(App).Assembly">
-        <Found Context="routeData">
-            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
-                <Authorizing>
-                    <div class="centered-container">
-                        <div class="section loading">Authorizing...</div>
-                    </div>
-                </Authorizing>
-                <NotAuthorized>
-                    <NotAuthorizedSimplifier></NotAuthorizedSimplifier>
-                </NotAuthorized>
-            </AuthorizeRouteView>
-            <FocusOnNavigate RouteData="@routeData" Selector="h1" />
-        </Found>
-        <NotFound>
-            <PageTitle>Not found</PageTitle>
-            <LayoutView Layout="@typeof(NotFoundLayout)">
-                Sorry, there's nothing at this address.
-            </LayoutView>
-        </NotFound>
-    </Router>
-</CascadingAuthenticationState>
+﻿<Router AppAssembly="@typeof(App).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+    </Found>
+    <NotFound>
+        <PageTitle>Not found</PageTitle>
+        <LayoutView Layout="@typeof(MainLayout)">
+            <p role="alert">Sorry, there's nothing at this address.</p>
+        </LayoutView>
+    </NotFound>
+</Router>

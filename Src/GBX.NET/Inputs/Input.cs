@@ -19,4 +19,40 @@ internal static class Input
         "SteerRight" => new SteerRight(time, data != 0),
         _ => new UnknownInput(time, name, data)
     };
+
+    public static string GetName(IInput input) => input switch
+    {
+        FakeDontInverseAxis => "_FakeDontInverseAxis",
+        FakeFinishLine => "_FakeFinishLine",
+        FakeIsRaceRunning => "_FakeIsRaceRunning",
+        Accelerate => nameof(Accelerate),
+        AccelerateReal => nameof(AccelerateReal),
+        Brake => nameof(Brake),
+        BrakeReal => nameof(BrakeReal),
+        Gas => nameof(Gas),
+        Horn => nameof(Horn),
+        Respawn => nameof(Respawn),
+        Steer => nameof(Steer),
+        SteerLeft => nameof(SteerLeft),
+        SteerRight => nameof(SteerRight),
+        _ => throw new ArgumentException($"Unknown input type: {input.GetType()}.", nameof(input))
+    };
+
+    private static int ToSteerValue(this uint data)
+    {
+        var dir = (data >> 16) & 0xFF;
+        var val = (int)(data & 0xFFFF);
+
+        return dir switch
+        {
+            0xFF => ushort.MaxValue + 1 - val,
+            1 => -ushort.MaxValue - 1,
+            _ => val * -1 * (int)(dir + 1)
+        };
+    }
+
+    private static int ToGasValue(this uint data)
+    {
+        return -ToSteerValue(data);
+    }
 }

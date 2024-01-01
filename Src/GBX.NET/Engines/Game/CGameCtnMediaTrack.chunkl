@@ -1,0 +1,26 @@
+CGameCtnMediaTrack 0x03078000 // MediaTracker track.
+- chunk_Chunk03078001: Unexpected syntax (listVersion)
+
+0x001 // main
+ string Name
+ list<CGameCtnMediaBlock>_deprec Blocks
+ int // = -1
+
+0x002 // TMS/TMU IsKeepPlaying
+ bool IsKeepPlaying
+
+0x003 // TMS/TMU IsReadOnly
+ bool IsReadOnly
+
+0x004 // TMUF parameters
+ bool IsKeepPlaying
+ bool IsReadOnly
+
+0x005 // MP parameters
+ version
+ bool IsKeepPlaying
+ bool IsReadOnly
+ bool IsCycling
+ v1+
+  float
+  float

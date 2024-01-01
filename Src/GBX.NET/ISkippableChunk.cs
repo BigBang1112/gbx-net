@@ -1,13 +1,5 @@
 ﻿namespace GBX.NET;
 
-public interface ISkippableChunk : IReadableWritableChunk
+public interface ISkippableChunk : IChunk
 {
-    bool Discovered { get; set; }
-    byte[] Data { get; set; }
-    GameBox? Gbx { get; set; }
-    Node? Node { get; set; }
-
-    void Write(GameBoxWriter w);
-    Task WriteAsync(GameBoxWriter w, CancellationToken cancellationToken);
-    void Discover();
 }

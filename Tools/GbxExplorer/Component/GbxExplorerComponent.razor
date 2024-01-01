@@ -1,0 +1,51 @@
+﻿<!--    Made by Erik Terwan    -->
+<!--   24th of November 2015   -->
+<!--        MIT License        -->
+<nav role="navigation">
+    <div id="menuToggle">
+        <!--
+        A fake / hidden checkbox is used as click reciever,
+        so you can use the :checked selector on it.
+        -->
+        <input type="checkbox" />
+
+        <!--
+        Some spans to act as a hamburger.
+
+        They are acting like a real hamburger,
+        not that McDonalds stuff.
+        -->
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <!--
+        Too bad the menu has to be inside of the button
+        but hey, it's pure CSS magic.
+        -->
+        <div id="menu">
+            <img width="200" src="_content/GbxExplorer.Component/logo.png" alt="GBX.NET Explorer" style="float: right;margin-right: 15px;" />
+            <div class="menu-list">
+                <button>Import Gbx/Pak files...</button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!--<StandaloneCodeEditor Id="my-editor-instance-id"
+    ConstructionOptions="EditorConstructionOptions"
+    CssClass="my-editor-class" />-->
+
+@code {
+    private StandaloneEditorConstructionOptions EditorConstructionOptions(StandaloneCodeEditor editor)
+    {
+        return new StandaloneEditorConstructionOptions
+            {
+                AutomaticLayout = true,
+                Language = "lua",
+                Value = "function xyz() {\n" +
+                        "   console.log(\"Hello world!\");\n" +
+                        "}"
+            };
+    }
+}

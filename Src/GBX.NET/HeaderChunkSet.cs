@@ -1,79 +1,77 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿namespace GBX.NET;
 
-namespace GBX.NET;
-
-public class HeaderChunkSet : SortedSet<Chunk>
+public interface IHeaderChunkSet : ISet<IHeaderChunk>
 {
-    public HeaderChunkSet() : base()
-    {
+    IHeaderChunk Create(uint chunkId);
+    T Create<T>() where T : IHeaderChunk, new();
+    bool Remove(uint chunkId);
+    bool Remove<T>() where T : IHeaderChunk;
+    IHeaderChunk? Get(uint chunkId);
+    T? Get<T>() where T : IHeaderChunk;
+}
 
+internal sealed class HeaderChunkSet : HashSet<IHeaderChunk>, IHeaderChunkSet
+{
+#if NET6_0_OR_GREATER
+    internal HeaderChunkSet(int capacity) : base(capacity) { }
+#else
+#pragma warning disable IDE0060
+    internal HeaderChunkSet(int capacity) : base() { }
+#pragma warning restore IDE0060
+#endif
+    internal HeaderChunkSet() : base() { }
+
+    public IHeaderChunk Create(uint chunkId)
+    {
+        var chunk = ClassManager.NewHeaderChunk(chunkId) ?? throw new Exception($"Header chunk {chunkId:X8} is not supported.");
+
+        Add(chunk);
+
+        return chunk;
     }
 
-    public HeaderChunkSet(IEnumerable<Chunk> collection) : base(collection)
+    public T Create<T>() where T : IHeaderChunk, new()
     {
+        var chunk = new T();
 
+        Add(chunk);
+
+        return chunk;
     }
 
-    public bool Remove(uint chunkID)
+    public bool Remove(uint chunkId)
     {
-        return RemoveWhere(x => x.Id == chunkID) > 0;
+        return RemoveWhere(x => x.Id == chunkId) > 0;
     }
 
-    public bool Remove<T>() where T : Chunk
+    public bool Remove<T>() where T : IHeaderChunk
     {
         return RemoveWhere(x => x is T) > 0;
     }
 
-    public Chunk Create(uint chunkId)
-    {
-        if (TryGet(chunkId, out var c))
-        {
-            return c ?? throw new ThisShouldNotHappenException();
-        }
-
-        var chunk = NodeManager.GetNewHeaderChunk(chunkId) ?? throw new Exception("Chunk ID does not exist.");
-
-        Add((Chunk)chunk);
-
-        return (Chunk)chunk;
-    }
-
-    public T Create<T>() where T : Chunk
-    {
-        return (T)Create(NodeManager.ChunkIdsByType[typeof(T)]);
-    }
-
-    public Chunk? Get(uint chunkId)
-    {
-        return this.FirstOrDefault(x => x.Id == chunkId);
-    }
-
-#if NET462_OR_GREATER || NETSTANDARD2_0
-    public bool TryGet(uint chunkId, out Chunk? chunk)
-#else
-    public bool TryGet(uint chunkId, [NotNullWhen(true)] out Chunk? chunk)
-#endif
-    {
-        chunk = Get(chunkId);
-        return chunk is not null;
-    }
-
-    public T? Get<T>() where T : Chunk
+    public IHeaderChunk? Get(uint chunkId)
     {
         foreach (var chunk in this)
         {
-            if (chunk is T t)
+            if (chunk.Id == chunkId)
             {
-                if (chunk is ISkippableChunk s) s.Discover();
-                return t;
+                return chunk;
             }
         }
-        return default;
+
+        return null;
     }
 
-    public bool TryGet<T>(out T? chunk) where T : Chunk
+    public T? Get<T>() where T : IHeaderChunk
     {
-        chunk = Get<T>();
-        return chunk is not null;
+        foreach (var chunk in this)
+        {
+            if (chunk is T c)
+            {
+                return c;
+            }
+        }
+
+        return default;
     }
 }

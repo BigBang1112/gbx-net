@@ -1,63 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-		<NullabilityInfoContextSupport>true</NullabilityInfoContextSupport>
-		<BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
-		<Version>1.2.5</Version>
-		<TrimmerRemoveSymbols>true</TrimmerRemoveSymbols>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Remove="wwwroot\img\classes\**" />
-		<Content Remove="wwwroot\img\classes\**" />
-		<EmbeddedResource Remove="wwwroot\img\classes\**" />
-		<None Remove="wwwroot\img\classes\**" />
-		<TypeScriptCompile Remove="wwwroot\img\classes\**" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.0" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Blazored.LocalStorage" Version="4.3.0" />
-		<PackageReference Include="GBX.NET.LZO" Version="1.0.2" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="7.0.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.0" PrivateAssets="all" />
-		<PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.8.4">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
-		<PackageReference Include="Toolbelt.Blazor.PWA.Updater" Version="2.1.0.1" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\..\..\Src\GBX.NET\GBX.NET.csproj">
-			<IsTrimmable>false</IsTrimmable>
-		</ProjectReference>
-		<ProjectReference Include="..\Shared\GbxExplorer.Shared.csproj" />
+		<ProjectReference Include="..\Component\GbxExplorer.Component.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
 	</ItemGroup>
-
-	<ItemGroup>
-		<Content Update="wwwroot\icon-192.png">
-			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Content>
-		<Content Update="wwwroot\icon-512.png">
-			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Content>
-	</ItemGroup>
-
-	<ItemGroup>
-		<None Include="wwwroot\js\main.js" />
-	</ItemGroup>
-
-	<ProjectExtensions><VisualStudio><UserProperties wwwroot_4manifest_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

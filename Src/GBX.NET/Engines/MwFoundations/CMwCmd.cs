@@ -1,11 +1,7 @@
 ﻿namespace GBX.NET.Engines.MwFoundations;
 
-/// <remarks>ID: 0x01005000</remarks>
-[Node(0x01005000)]
-public abstract class CMwCmd : CMwNod
+[Class(0x01005000)]
+public abstract class CMwCmd : CMwNod, IClass
 {
-    internal CMwCmd()
-    {
-
-    }
+    public static new uint Id => 0x01005000;
 }

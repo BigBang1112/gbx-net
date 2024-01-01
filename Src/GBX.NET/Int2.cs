@@ -1,50 +1,35 @@
 ﻿namespace GBX.NET;
 
+/// <summary>
+/// [GmInt2] Represents a two-dimensional vector with <see cref="int"/> components (X, Y).
+/// </summary>
+/// <param name="X">The X-component of the vector.</param>
+/// <param name="Y">The Y-component of the vector.</param>
 public readonly record struct Int2(int X, int Y)
 {
+    /// <summary>
+    /// Vector with all components set to zero.
+    /// </summary>
+    public static readonly Int2 Zero = new();
+
+    /// <summary>
+    /// Returns a string representation of the <see cref="Int2"/> vector.
+    /// </summary>
+    /// <returns>A string representation of the form "&lt;X, Y&gt;".</returns>
     public override string ToString()
     {
         return $"<{X}, {Y}>";
     }
 
-    public static readonly Int2 Zero = new();
-
-    public static Int2 operator +(Int2 a, Int2 b) => new(a.X + b.X, a.Y + b.Y);
-    public static Int2 operator +(Int2 a, int b) => new(a.X + b, a.Y + b);
-    public static Vec2 operator +(Int2 a, float b) => new(a.X + b, a.Y + b);
-
-    public static Int2 operator +(int a, Int2 b) => b + a;
-    public static Vec2 operator +(float a, Int2 b) => b + a;
-
-    public static Int2 operator -(Int2 a, Int2 b) => new(a.X - b.X, a.Y - b.Y);
-    public static Int2 operator -(Int2 a, int b) => new(a.X - b, a.Y - b);
-    public static Vec2 operator -(Int2 a, float b) => new(a.X - b, a.Y - b);
-
-    public static Int2 operator *(Int2 a, Int2 b) => new(a.X * b.X, a.Y * b.Y);
-    public static Int2 operator *(Int2 a, int b) => new(a.X * b, a.Y * b);
-    public static Vec2 operator *(Int2 a, float b) => new(a.X * b, a.Y * b);
-
-    public static Int2 operator *(int a, Int2 b) => b * a;
-    public static Vec2 operator *(float a, Int2 b) => b * a;
-
-    public static Int2 operator ^(Int2 a, Int2 b) => new(a.X ^ b.X, a.Y ^ b.Y);
-    public static Int2 operator ^(Int2 a, int b) => new(a.X ^ b, a.Y ^ b);
-
-    public static Int2 operator ^(int a, Int2 b) => b ^ a;
-
+    /// <summary>
+    /// Implicitly converts a tuple of integers to an <see cref="Int2"/> vector.
+    /// </summary>
+    /// <param name="v">The tuple containing X and Y components.</param>
     public static implicit operator Int2((int X, int Y) v) => new(v.X, v.Y);
+
+    /// <summary>
+    /// Implicitly converts an <see cref="Int2"/> vector to a tuple of integers.
+    /// </summary>
+    /// <param name="v">The <see cref="Int2"/> vector to convert.</param>
     public static implicit operator (int X, int Y)(Int2 v) => (v.X, v.Y);
-
-    public static explicit operator Int2(Vec2 a) => new((int)a.X, (int)a.Y);
-
-    public static explicit operator Int2(ReadOnlySpan<int> a) => GetInt2FromReadOnlySpan(a);
-    public static explicit operator Int2(Span<int> a) => GetInt2FromReadOnlySpan(a);
-    public static explicit operator Int2(int[] a) => GetInt2FromReadOnlySpan(a);
-
-    public static Int2 GetInt2FromReadOnlySpan(ReadOnlySpan<int> a) => a.Length switch
-    {
-        0 => default,
-        1 => new(a[0], 0),
-        _ => new(a[0], a[1])
-    };
 }

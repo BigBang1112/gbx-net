@@ -1,0 +1,321 @@
+CGameCtnChallenge 0x03043000 // A map.
+
+0x002 (header, struct: SHeaderTMDesc) [TM10.v3, TMSX.v10, TMNESWC.v10, TMU.v10, TMF.v11, MP3.v13, TMT.v13, MP4.v13, TM2020.v13] // map info
+ versionb
+ v2-
+  ident MapInfo
+  string MapName
+ bool
+ v1+
+  timeint BronzeTime
+  timeint SilverTime
+  timeint GoldTime
+  timeint AuthorTime
+  v3=
+   byte
+  v4+
+   int Cost
+   v5+
+    bool IsLapRace
+    v6=
+     bool IsMultilap
+    v7+
+     int<PlayMode> Mode
+     v9+
+      int
+      v10+
+       int AuthorScore
+       v11+
+        int<EditorMode> Editor
+        v12+
+         int
+         v13+
+          int NbCheckpoints
+          int NbLaps
+
+0x003 (header, struct: SHeaderCommon) [TM10.v0, TMSX.v4, TMNESWC.v4, TMU.v5, TMF.v5, MP3.v11, TMT.v11, MP4.v11, TM2020.v11] // common
+ versionb
+ ident MapInfo
+ string MapName
+ byte<MapKind> KindInHeader
+ v1+
+  uint
+  string Password
+  v2+
+   ident Decoration
+   v3+
+    vec2 MapCoordOrigin
+    v4+
+     vec2 MapCoordTarget
+     v5+
+      data[16]
+      v6+
+       string MapType
+       string MapStyle
+       v8-
+        int
+       v8+
+        ulong LightmapCacheUid
+        v9+
+         byte LightmapVersion
+         v11+
+          id TitleId
+
+0x004 (header, struct: SHeaderVersion) [TMSX.v5, TMNESWC.v5, TMU.v6, TMF.v6, MP3.v6, TMT.v6, MP4.v6, TM2020.v6] // version
+ version
+
+0x005 (header, struct: SHeaderCommunity) [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // xml
+ string Xml
+
+0x007 (header, struct: SHeaderThumbnail) [TMU, TMF, MP3, TMT, MP4, TM2020] // thumbnail
+
+0x008 (header, struct: SHeaderAuthorInfo) [MP3, TMT, MP4, TM2020] // author info
+ version
+ int AuthorVersion
+ string AuthorLogin
+ string AuthorNickname
+ string AuthorZone
+ string AuthorExtraInfo
+
+0x00D [TM10, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // vehicle
+ ident PlayerModel
+
+0x00F [TM10] // TM1.0 block data
+ ident MapInfo
+ int3 Size
+ list<CGameCtnBlock>_deprec Blocks
+ bool NeedUnlock
+ ident Decoration
+
+0x011 [TM10, TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // parameters
+ CGameCtnCollectorList BlockStock
+ CGameCtnChallengeParameters ChallengeParameters
+ int<MapKind> Kind
+
+0x012 [TM10] // TM1.0 map name
+ string MapName
+
+0x013 // legacy block data
+
+0x014 (skippable) [TMSX, TMNESWC, TMU] // legacy password
+ bool
+ string Password
+
+0x016 (skippable) [TMSX, TMNESWC]
+ int // code says DoBool, likely IsPlatform (Mode == 1), but maps yield something like 1698004
+
+0x017 (skippable) [TMSX, TMNESWC, TMF, TMU] // checkpoints
+ int3[] Checkpoints
+
+0x018 (skippable) [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // laps
+ bool TMObjective_IsLapRace
+ int TMObjective_NbLaps
+
+0x019 (skippable) [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // mod
+ packdesc ModPackDesc
+
+0x01A
+ CMwNod? // assert: '!ReplayRecord || !ReplayRecord->m_Challenge' failed.
+
+0x01B // OldIgs
+ int
+ if U01 > 0
+  throw NotSupportedException("SOldIgs count > 0")
+
+0x01C (skippable) [TMSX, TMNESWC, TMU, TMF] // play mode
+ int<PlayMode> Mode
+
+0x01D
+ CMwNod? // assert: '!ReplayRecord || !ReplayRecord->m_Challenge' failed.
+
+0x01F [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // block data
+
+0x020 // legacy legacy mediatracker
+ CGameCtnMediaClip? ClipIntro
+ CMwNod?
+ CMwNod?
+ CGameCtnMediaClipGroup? ClipGroupInGame
+ CGameCtnMediaClipGroup? ClipGroupEndRace
+
+0x021 [TMSX, TMNESWC, TMU, TMF] // legacy mediatracker
+ CGameCtnMediaClip? ClipIntro
+ CGameCtnMediaClipGroup? ClipGroupInGame
+ CGameCtnMediaClipGroup? ClipGroupEndRace
+
+0x022 [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020]
+ int // = 1
+
+0x023 // map origin
+ vec2 MapCoordOrigin
+ MapCoordTarget = MapCoordOrigin
+
+0x024 [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // music
+ packdesc CustomMusicPackDesc
+
+0x025 [TMSX, TMNESWC, TMU, TMF, MP3, TMT, MP4, TM2020] // map origin and target
+ vec2 MapCoordOrigin
+ vec2 MapCoordTarget
+
+0x026 [TMNESWC, TMF, TMU, MP3, TMT, MP4, TM2020] // clip global
+ CMwNod?
+
+0x027 // old realtime thumbnail
+ bool HasCustomCamThumbnail
+ if !HasCustomCamThumbnail
+  return
+ byte
+ vec3 // Iso4 technically
+ vec3 // camera calibration matrix?
+ vec3
+ vec3 ThumbnailPosition
+ float ThumbnailFov
+ float ThumbnailNearClipPlane
+ float ThumbnailFarClipPlane
+
+0x028 (base: 0x027) [TMU, TMF, MP3, TMT, MP4, TM2020] // old realtime thumbnail + comments
+ base
+ string? Comments
+
+0x029 (skippable) [TMF, MP3, TMT, MP4, TM2020] // password
+ data[16] HashedPassword
+ uint Crc32
+
+0x02A [TMF, MP3, TMT, MP4, TM2020]
+ bool // code hints to something with locking (NeedUnlock?)
+
+0x02D (skippable) // realtime thumbnail + comments
+
+0x034 (skippable) [MP3, TMT, MP4, TM2020]
+ data
+
+0x036 (skippable, base: 0x02D) [MP3, TMT, MP4, TM2020] // realtime thumbnail + comments
+
+0x038 (skippable, ignore) [MP3, TMT, MP4, TM2020]
+
+0x03A (skippable, ignore)
+
+0x03D (skippable) [MP3, TMT, MP4] // lightmaps
+
+0x03E (skippable) [MP3, TMT, MP4, TM2020] // CarMarksBuffer
+ version
+ v1+
+  throw
+ CSceneVehicleCarMarksSamples[]_deprec CarMarksBuffer
+
+0x040 (skippable) [MP3.v2, TMT.v4, MP4.v4, TM2020.v7] // items
+
+0x041 (skippable, ignore)
+
+0x042 (skippable) [MP3, TMT, MP4, TM2020] // author
+ version // = 1
+ int AuthorVersion
+ string AuthorLogin
+ string AuthorNickname
+ string AuthorZone
+ string AuthorExtraInfo
+
+0x043 (skippable) [MP3, TMT, MP4, TM2020] // genealogies
+
+0x044 (skippable) [MP3, TMT, MP4, TM2020] // metadata
+
+0x047 (skippable) [MP3, TMT]
+ version
+ string?
+ v1+
+  throw
+
+0x048 (skippable) [MP3, TMT, MP4, TM2020] // baked blocks
+
+0x049 (skippable) [MP3, TMT, MP4, TM2020] // mediatracker
+ version // = 2
+ CGameCtnMediaClip? ClipIntro
+ CGameCtnMediaClip? ClipPodium
+ CGameCtnMediaClipGroup? ClipGroupInGame
+ CGameCtnMediaClipGroup? ClipGroupEndRace
+ v2+
+  CGameCtnMediaClip? ClipAmbiance
+ v1+
+  int3 TriggerSize
+
+0x04B (skippable) [MP3, TMT, MP4, TM2020] // objectives
+ string? ObjectiveTextAuthor
+ string? ObjectiveTextGold
+ string? ObjectiveTextSilver
+ string? ObjectiveTextBronze
+
+0x04D (skippable, ignore) [MP3, TMT]
+
+0x04E (skippable, ignore)
+
+0x04F (skippable, ignore) [MP3, TMT, MP4, TM2020]
+
+0x050 (skippable) [MP3, TMT, MP4, TM2020] // offzones
+
+0x051 (skippable) [MP3, TMT, MP4, TM2020] // title info
+ version
+ id TitleId
+ string BuildVersion
+
+0x052 (skippable) [MP3, TMT, MP4, TM2020] // deco height
+ version
+ int DecoBaseHeightOffset
+
+0x053 (skippable) [MP3, TMT, MP4, TM2020] // bot paths
+ version // = 3
+ list<BotPath> BotPaths
+
+0x054 (skippable) [MP3, TMT, MP4, TM2020] // embedded objects
+
+0x055 (skippable, ignore) [MP3, TMT, MP4, TM2020]
+
+0x056 (skippable) [MP4, TM2020] // light settings
+ version // = 3
+ int
+ timeofday? DayTime
+ int
+ bool DynamicDaylight
+ timeint? DayDuration
+
+0x057 (skippable, ignore) [MP4, TM2020]
+
+0x058 (skippable) [MP4] // SubMapsInfos
+ version
+ int U01
+ if U01 > 0
+  throw
+
+0x059 (skippable) [MP4, TM2020]
+
+0x05A (skippable) [TM2020]
+ int
+ int
+
+0x05B (skippable) [TM2020] // lightmaps
+
+0x05C (skippable, ignore) [TM2020]
+
+0x05D (skippable, ignore) [TM2020]
+
+0x05E (skippable, ignore) [TM2020]
+
+0x05F (skippable) [TM2020] // free blocks
+
+0x060 (skippable, ignore) [TM2020]
+
+0x061 (skippable, ignore) [TM2020]
+
+0x062 (skippable) [TM2020] // MapElemColor
+
+0x063 (skippable) [TM2020] // AnimPhaseOffset
+
+0x064 (skippable, ignore) [TM2020]
+
+0x065 (skippable) [TM2020] // foreground pack desc
+
+0x067 (skippable, ignore) [TM2020]
+
+0x068 (skippable) [TM2020] // MapElemLmQuality
+
+0x069 (skippable) [TM2020] // macroblock instances
+
+0x06B (skippable) [TM2020] // light settings 2

@@ -1,45 +1,35 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Product>GBX.NET.PAK</Product>
-		<AssemblyName>GBX.NET.PAK</AssemblyName>
-		<AssemblyTitle>GBX.NET.PAK</AssemblyTitle>
-		<Authors>Petr Pivoňka (BigBang1112)</Authors>
-		<Description>A PAK file parser using the GBX.NET features.</Description>
-		<Copyright>Copyright © Petr 'BigBang1112' Pivoňka</Copyright>
-		<PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
-		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-		<Nullable>enable</Nullable>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-		
-		<Version>1.1.3</Version>
+		<Version>2.0.0</Version>
 		<PackageReleaseNotes></PackageReleaseNotes>
-		
-		<TargetFrameworks>net8.0;net7.0;net6.0;netstandard2.1;netstandard2.0;net462</TargetFrameworks>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0;net6.0;netstandard2.0</TargetFrameworks>
 		<LangVersion>12</LangVersion>
-		<Platforms>AnyCPU;x64;x86</Platforms>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IsTrimmable>true</IsTrimmable>
+		<IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))">true</IsAotCompatible>
+
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<PackageTags>gbx, trackmania, maniaplanet, gamebox, net, pak, encryption</PackageTags>
+		<PackageTags>gbx, trackmania, maniaplanet, gamebox, net, chunk</PackageTags>
 
 		<RepositoryType>git</RepositoryType>
-		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/BigBang1112/gbx-net</RepositoryUrl>
-		
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<PackageProjectUrl>https://github.com/BigBang1112/gbx-net</PackageProjectUrl>
+
+		<GenerateDocumentationFile>false</GenerateDocumentationFile>
 		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-		<NoWarn>1591</NoWarn>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Using Remove="System.Net.Http" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<None Update="LICENSE.GPL-3.0-or-later.md">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		
+		<ProjectReference Include="..\GBX.NET.Crypto\GBX.NET.Crypto.csproj" />
 		<ProjectReference Include="..\GBX.NET\GBX.NET.csproj" />
 	</ItemGroup>
 
