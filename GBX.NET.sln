@@ -40,6 +40,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Položky řešení", "Položky řešení", "{6A6CAA3D-18B0-4937-B071-688C11D1A537}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GbxExplorer.Photino", "Tools\GbxExplorer\Photino\GbxExplorer.Photino.csproj", "{36863733-DF0F-4B9C-9612-BB4FE5036250}"
@@ -66,11 +67,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{8F4F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Trimming", "Trimming", "{09B7FD75-652F-496A-BF00-11094CB1C14C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMapInfo_Untrimmed", "Samples\Trimming\SimpleMapInfo_Untrimmed\SimpleMapInfo_Untrimmed.csproj", "{46248AC5-687A-43B9-A782-860752DE1BB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMapInfo_Untrimmed", "Samples\Trimming\SimpleMapInfo_Untrimmed\SimpleMapInfo_Untrimmed.csproj", "{46248AC5-687A-43B9-A782-860752DE1BB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMapInfo_Trimmed", "Samples\Trimming\SimpleMapInfo_Trimmed\SimpleMapInfo_Trimmed.csproj", "{C25B0485-F59A-47AE-BAD3-891D037CD71E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMapInfo_Trimmed", "Samples\Trimming\SimpleMapInfo_Trimmed\SimpleMapInfo_Trimmed.csproj", "{C25B0485-F59A-47AE-BAD3-891D037CD71E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMapInfo_TrimmedGeneric", "Samples\Trimming\SimpleMapInfo_TrimmedGeneric\SimpleMapInfo_TrimmedGeneric.csproj", "{D140ABC0-E797-4E7D-918D-CF2B602171CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleMapInfo_TrimmedGeneric", "Samples\Trimming\SimpleMapInfo_TrimmedGeneric\SimpleMapInfo_TrimmedGeneric.csproj", "{D140ABC0-E797-4E7D-918D-CF2B602171CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
