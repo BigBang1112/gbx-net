@@ -2,11 +2,11 @@
   "profiles": {
     "ClassIdTxtFromGbxClassInfo": {
       "commandName": "Project",
-      "commandLineArgs": "GbxClassInfo/TmForeverLauncher.txt GbxClassInfo/TmForeverServer.txt GbxClassInfo/TmForever.txt GbxClassInfo/TurboConfig.txt GbxClassInfo/Turbo.txt GbxClassInfo/ManiaplanetLauncher.txt GbxClassInfo/ManiaplanetServer.txt GbxClassInfo/ManiaplanetLogs.txt GbxClassInfo/Maniaplanet.txt"
+      "commandLineArgs": "GbxClassInfo/Vsk5OnlineLauncher.txt GbxClassInfo/Vsk5Online.txt GbxClassInfo/TmForeverLauncher.txt GbxClassInfo/TmForeverServer.txt GbxClassInfo/TmForever.txt GbxClassInfo/TurboConfig.txt GbxClassInfo/Turbo.txt GbxClassInfo/ManiaplanetLauncher.txt GbxClassInfo/ManiaplanetServer.txt GbxClassInfo/ManiaplanetLogs.txt GbxClassInfo/Maniaplanet.txt"
     },
     "UpdateClassId": {
       "commandName": "Project",
-      "commandLineArgs": "GbxClassInfo/TmForeverLauncher.txt GbxClassInfo/TmForeverServer.txt GbxClassInfo/TmForever.txt GbxClassInfo/TurboConfig.txt GbxClassInfo/Turbo.txt GbxClassInfo/ManiaplanetLauncher.txt GbxClassInfo/ManiaplanetServer.txt GbxClassInfo/ManiaplanetLogs.txt GbxClassInfo/Maniaplanet.txt > ../../../../../Resources/ClassId.txt"
+      "commandLineArgs": "GbxClassInfo/Vsk5OnlineLauncher.txt GbxClassInfo/Vsk5Online.txt GbxClassInfo/TmForeverLauncher.txt GbxClassInfo/TmForeverServer.txt GbxClassInfo/TmForever.txt GbxClassInfo/TurboConfig.txt GbxClassInfo/Turbo.txt GbxClassInfo/ManiaplanetLauncher.txt GbxClassInfo/ManiaplanetServer.txt GbxClassInfo/ManiaplanetLogs.txt GbxClassInfo/Maniaplanet.txt > ../../../../../Resources/ClassId.txt"
     }
   }
 }

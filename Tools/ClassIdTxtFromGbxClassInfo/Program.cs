@@ -43,7 +43,7 @@ foreach (var fileName in args)
             name = split[1];
         }
 
-        if (classIdDict.TryGetValue(classId, out var existingName) && !string.IsNullOrWhiteSpace(existingName))
+        if (classIdDict.TryGetValue(classId, out var existingName) && string.IsNullOrWhiteSpace(name))
         {
             continue;
         }
