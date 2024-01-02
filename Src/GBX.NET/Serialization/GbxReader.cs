@@ -503,14 +503,14 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
         var checksum = default(byte[]);
         var locatorUrl = "";
 
-        if (packDescVersion >= 3)
+        if (version >= 3)
         {
             checksum = ReadBytes(32);
         }
 
         var filePath = ReadString();
 
-        if ((filePath.Length > 0 && packDescVersion >= 1) || packDescVersion >= 3)
+        if ((filePath.Length > 0 && version >= 1) || version >= 3)
         {
             locatorUrl = ReadString();
         }
