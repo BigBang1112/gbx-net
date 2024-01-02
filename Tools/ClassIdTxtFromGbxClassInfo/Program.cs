@@ -24,7 +24,30 @@ await foreach (var line in File.ReadLinesAsync("ManiaPlanet32.txt"))
 
 foreach (var engineGroup in dict.OrderBy(x => x.Key).GroupBy(x => (x.Key >> 24) & 0xFF))
 {
-    Console.WriteLine($"{engineGroup.Key:X2}");
+    Console.WriteLine($"{engineGroup.Key:X2} {engineGroup.Key switch
+    {
+        0x01 => "MwFoundations",
+        0x03 => "Game",
+        0x04 => "Graphic",
+        0x05 => "Function",
+        0x06 => "Hms",
+        0x07 => "Control",
+        0x09 => "Plug",
+        0x0A => "Scene",
+        0x0B => "System",
+        0x0C => "Vision",
+        0x10 => "Audio",
+        0x11 => "Script",
+        0x12 => "Net",
+        0x13 => "Input",
+        0x14 => "Xml",
+        0x24 => "TrackMania",
+        0x2D => "ShootMania",
+        0x2E => "GameData",
+        0x2F => "Meta",
+        0x30 => "MetaNotPersistent",
+        _ => "",
+    }}");
 
     foreach (var kvp in engineGroup.OrderBy(x => x.Key))
     {
