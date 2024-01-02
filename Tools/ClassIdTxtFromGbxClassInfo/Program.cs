@@ -2,31 +2,34 @@
 
 if (args.Length == 0)
 {
-    Console.WriteLine("Usage: ClassIdTxtFromGbxClassInfo <GbxClassInfo.txt>");
+    Console.WriteLine("Usage: ClassIdTxtFromGbxClassInfo <GbxClassInfo.txt> [<GbxClassInfo.txt>..]");
     Console.ReadKey();
     return;
 }
 
 var dict = new Dictionary<uint, string?>();
 
-await foreach (var line in File.ReadLinesAsync(args[0]))
+foreach (var fileName in args)
 {
-    var split = line.Split('\t');
-    var classIdStr = split[0];
-
-    if (!uint.TryParse(classIdStr, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var classId))
+    await foreach (var line in File.ReadLinesAsync(fileName))
     {
-        continue;
+        var split = line.Split('\t');
+        var classIdStr = split[0];
+
+        if (!uint.TryParse(classIdStr, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var classId))
+        {
+            continue;
+        }
+
+        var name = default(string);
+
+        if (split.Length > 1)
+        {
+            name = split[1];
+        }
+
+        dict[classId] = name;
     }
-
-    var name = default(string);
-
-    if (split.Length > 1)
-    {
-        name = split[1];
-    }
-
-    dict[classId] = name;
 }
 
 foreach (var engineGroup in dict.OrderBy(x => x.Key).GroupBy(x => (x.Key >> 24) & 0xFF))
