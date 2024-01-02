@@ -553,13 +553,8 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
         return TimeSpan.FromSeconds(Convert.ToInt32(dayTime / (float)ushort.MaxValue * maxSecs));
     }
 
-    internal T[] ReadArray<T>(int length, bool lengthInBytes = false) where T : struct
+    private static int ValidateCollectionLength<T>(int length, bool lengthInBytes) where T : struct
     {
-        if (length == 0)
-        {
-            return [];
-        }
-
         if (length < 0)
         {
             throw new ArgumentOutOfRangeException(nameof(length), "Length is not valid.");
@@ -572,7 +567,19 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
             throw new Exception($"Length is too big to handle ({(l < 0 ? length : l)}).");
         }
 
-        if (l > 1_500_000)
+        return l;
+    }
+
+    internal T[] ReadArray<T>(int length, bool lengthInBytes = false) where T : struct
+    {
+        if (length == 0)
+        {
+            return [];
+        }
+
+        var l = ValidateCollectionLength<T>(length, lengthInBytes);
+
+        if (l > 1_000_000)
         {
             return MemoryMarshal.Cast<byte, T>(ReadBytes(l)).ToArray();
         }
@@ -602,6 +609,50 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
     {
         ReadDeprecVersion();
         return ReadArray<T>(length, lengthInBytes);
+    }
+
+    internal IList<T> ReadList<T>(int length, bool lengthInBytes = false) where T : struct
+    {
+        if (length == 0)
+        {
+            return [];
+        }
+
+        var l = ValidateCollectionLength<T>(length, lengthInBytes);
+
+        var list = new List<T>(length);
+
+        if (l > 1_000_000)
+        {
+            var largerSpan = MemoryMarshal.Cast<byte, T>(ReadBytes(l));
+
+            for (var i = 0; i < largerSpan.Length; i++)
+            {
+                list.Add(largerSpan[i]);
+            }
+        }
+
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        Span<byte> bytes = stackalloc byte[l];
+        Read(bytes);
+#else
+        var bytes = ReadBytes(l);
+#endif
+
+        var span = MemoryMarshal.Cast<byte, T>(bytes);
+
+        for (var i = 0; i < span.Length; i++)
+        {
+            list.Add(span[i]);
+        }
+
+        return list;
+    }
+
+    internal IList<T> ReadList_deprec<T>(int length, bool lengthInBytes = false) where T : struct
+    {
+        ReadDeprecVersion();
+        return ReadList<T>(length, lengthInBytes);
     }
 
     /// <summary>
