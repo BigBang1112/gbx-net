@@ -49,7 +49,6 @@ public interface IGbxWriter : IDisposable
     void WriteIdAsString(string? value);
     void Write(Ident? value);
     void Write(PackDesc? value);
-    void Write(IClass value);
     void WriteNodeRef<T>(T value) where T : IClass;
     void Write(TimeInt32 value);
     void Write(TimeSingle value);
@@ -461,11 +460,6 @@ internal sealed class GbxWriter : BinaryWriter, IGbxWriter
         {
             Write(value.LocatorUrl);
         }
-    }
-
-    public void Write(IClass value)
-    {
-        throw new NotImplementedException();
     }
 
     public void WriteNodeRef<T>(T value) where T : IClass

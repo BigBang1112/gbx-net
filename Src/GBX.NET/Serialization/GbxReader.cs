@@ -49,7 +49,6 @@ public interface IGbxReader : IDisposable
     Id ReadId();
     Ident ReadIdent();
     PackDesc ReadPackDesc();
-    IClass ReadNodeRef();
     T ReadNodeRef<T>() where T : IClass;
     TimeInt32 ReadTimeInt32();
     TimeSingle ReadTimeSingle();
@@ -534,11 +533,6 @@ internal sealed class GbxReader : BinaryReader, IGbxReader
         }
 
         return new PackDesc(filePath, checksum, locatorUrl);
-    }
-
-    public IClass ReadNodeRef()
-    {
-        throw new NotImplementedException();
     }
 
     public T ReadNodeRef<T>() where T : IClass
