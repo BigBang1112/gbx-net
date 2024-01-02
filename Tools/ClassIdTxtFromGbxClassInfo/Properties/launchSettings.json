@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "ClassIdTxtFromGbxClassInfo": {
+      "commandName": "Project",
+      "commandLineArgs": "ManiaPlanet32.txt"
+    },
+    "UpdateClassId": {
+      "commandName": "Project",
+      "commandLineArgs": "ManiaPlanet32.txt > ../../../../../Resources/ClassId.txt"
+    }
+  }
+}

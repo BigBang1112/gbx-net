@@ -13,6 +13,7 @@
 12 Net
 13 Input
 14 Xml
+21 VirtualSkipper
 24 TrackMania
 2D ShootMania
 2E GameData

@@ -1,8 +1,15 @@
 ﻿using System.Globalization;
 
+if (args.Length == 0)
+{
+    Console.WriteLine("Usage: ClassIdTxtFromGbxClassInfo <GbxClassInfo.txt>");
+    Console.ReadKey();
+    return;
+}
+
 var dict = new Dictionary<uint, string?>();
 
-await foreach (var line in File.ReadLinesAsync("ManiaPlanet32.txt"))
+await foreach (var line in File.ReadLinesAsync(args[0]))
 {
     var split = line.Split('\t');
     var classIdStr = split[0];
@@ -41,6 +48,7 @@ foreach (var engineGroup in dict.OrderBy(x => x.Key).GroupBy(x => (x.Key >> 24) 
         0x12 => "Net",
         0x13 => "Input",
         0x14 => "Xml",
+        0x21 => "VirtualSkipper",
         0x24 => "TrackMania",
         0x2D => "ShootMania",
         0x2E => "GameData",
